@@ -214,15 +214,20 @@ function App() {
     return () => controller.abort()
   }, [])
 
-  useEffect(() => { localStorage.setItem('dailyLoreWords', JSON.stringify(words)) }, [words])
+  useEffect(() => {
+    try { localStorage.setItem('dailyLoreWords', JSON.stringify(words)) }
+    catch (error) { console.warn('Saved words could not be stored on this device:', error) }
+  }, [words])
   useEffect(() => { setWords(current => current.map(item => !item.definition && offlineMeaning(item.word) ? { ...item, definition: offlineMeaning(item.word) } : item)) }, [])
   const clean = value => value.toLowerCase().replace(/^[^a-z]+|[^a-z]+$/g, '')
   const selectedSaved = words.find(w => w.word === selected)
   const isSaved = Boolean(selectedSaved)
   const activeMeaning = lookup.options?.[meaningIndex] || null
-  const selectedSentence = selectedSaved?.sentence || currentPage.text.split(/(?<=[.!?])\s+/).find(sentence =>
+  // Avoid lookbehind regex: Safari on iOS 15 cannot parse it and may show a blank screen.
+  const sentenceParts = currentPage.text.match(/[^.!?]+[.!?]*|[^.!?]+$/g) || [currentPage.text]
+  const selectedSentence = selectedSaved?.sentence || sentenceParts.find(sentence =>
     sentence.toLowerCase().split(/[^a-z]+/).includes(selected)
-  ) || currentPage.text
+  )?.trim() || currentPage.text
 
   useEffect(() => {
     if (!selected) return
