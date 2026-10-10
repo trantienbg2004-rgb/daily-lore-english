@@ -84,3 +84,12 @@
 @keyframes lore-enter-bottom{from{transform:translateY(100%)}to{transform:translateY(0)}}
 @keyframes lore-enter-top{from{transform:translateY(-100%)}to{transform:translateY(0)}}
 @media(prefers-reduced-motion:reduce){.reading-mode .story-layer{animation-duration:.01ms!important}}
+
+/* Let JavaScript distinguish vertical story swipes from horizontal page swipes on iOS. */
+.reading-mode .reader-gesture { touch-action: none; -webkit-touch-callout: none; }
+.reading-mode .word-token { touch-action: none; }
+
+/* Swipe-only page navigation: no arrow buttons, subtle passive progress dots. */
+.reading-mode .page-control{justify-content:center}
+.reading-mode .page-control .dots span{display:block;width:7px;height:7px;border-radius:50%;background:#c9c9c3}
+.reading-mode .page-control .dots span.active{background:#171715;transform:scale(1.35)}

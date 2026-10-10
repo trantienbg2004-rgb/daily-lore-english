@@ -185,6 +185,7 @@ function App() {
   const [revealed, setRevealed] = useState(false)
   const [finished, setFinished] = useState(false)
   const gesture = useRef(null)
+  const suppressWordClick = useRef(false)
   const wheelLock = useRef(0)
   const wheelAccum = useRef(0)
   const [slide, setSlide] = useState(null)
@@ -294,19 +295,53 @@ function App() {
     if (reviewIndex + 1 >= words.length) setFinished(true)
     else { setReviewIndex(i => i + 1); setRevealed(false) }
   }
+  // Treat word buttons as part of the reading surface, not as navigation controls.
+  // This makes swiping across the paragraph work on touch screens.
   const startGesture = event => {
-    if (event.target.closest('button')) { gesture.current = null; return }
-    gesture.current = { x: event.touches[0].clientX, y: event.touches[0].clientY }
+    if (event.touches.length !== 1 || selected) { gesture.current = null; return }
+    const control = event.target.closest('button')
+    if (control && !control.classList.contains('word-token')) { gesture.current = null; return }
+    suppressWordClick.current = false
+    gesture.current = { x: event.touches[0].clientX, y: event.touches[0].clientY, moved: false }
+  }
+  const moveGesture = event => {
+    if (!gesture.current || event.touches.length !== 1) return
+    const dx = event.touches[0].clientX - gesture.current.x
+    const dy = event.touches[0].clientY - gesture.current.y
+    if (Math.max(Math.abs(dx), Math.abs(dy)) > 12) {
+      gesture.current.moved = true
+      suppressWordClick.current = true
+    }
   }
   const endGesture = event => {
     if (!gesture.current || selected) return
     const dx = event.changedTouches[0].clientX - gesture.current.x
     const dy = event.changedTouches[0].clientY - gesture.current.y
     gesture.current = null
-    if (Math.max(Math.abs(dx), Math.abs(dy)) < 55) return
-    if (Math.abs(dx) > Math.abs(dy) * 1.2) changePage(dx < 0 ? 1 : -1)
-    else if (Math.abs(dy) > Math.abs(dx) * 1.2) changeStory(dy < 0 ? 1 : -1)
+    if (Math.max(Math.abs(dx), Math.abs(dy)) < 48) return
+    if (Math.abs(dx) > Math.abs(dy) * 1.15) changePage(dx < 0 ? 1 : -1)
+    else if (Math.abs(dy) > Math.abs(dx) * 1.15) changeStory(dy < 0 ? 1 : -1)
   }
+  const cancelGesture = () => { gesture.current = null; suppressWordClick.current = false }
+  const onWordClick = (event, word) => {
+    if (suppressWordClick.current) {
+      event.preventDefault()
+      suppressWordClick.current = false
+      return
+    }
+    setSelected(word)
+  }
+  // Warm up just the next page and the next article, without downloading the whole library.
+  useEffect(() => {
+    if (tab !== 'read' || !story) return
+    const urls = [story.pages[page + 1]?.image, stories[storyIndex + 1]?.pages?.[0]?.image]
+    const images = urls.filter(Boolean).map(url => {
+      const img = new Image()
+      img.src = url
+      return img
+    })
+    return () => { images.forEach(img => { img.onload = null; img.onerror = null }) }
+  }, [tab, storyIndex, page, stories])
   useEffect(() => {
     if (tab !== 'read' || selected) return
     const onKey = event => {
@@ -338,14 +373,14 @@ function App() {
   const renderStory = (item, index, pageNumber, interactive) => {
     const itemPage = item.pages[pageNumber] || item.pages[0]
     const tokens = itemPage.text.split(/(\s+)/)
-    return <div className="reader-gesture" aria-hidden={!interactive} onTouchStart={interactive ? startGesture : undefined} onTouchEnd={interactive ? endGesture : undefined}>
+    return <div className="reader-gesture" aria-hidden={!interactive} onTouchStart={interactive ? startGesture : undefined} onTouchMove={interactive ? moveGesture : undefined} onTouchEnd={interactive ? endGesture : undefined} onTouchCancel={interactive ? cancelGesture : undefined}>
       <header className="topbar"><span className="brand">DAILY LORE <em>ENGLISH</em></span><span className="edition">ISSUE NO. {String(index + 1).padStart(3, '0')}</span></header>
       <div className="article-heading"><div className="eyebrow">{item.category}</div><h1>{item.title}</h1><p className="deck">{item.subtitle}</p></div>
-      <div className="article-media"><img src={itemPage.image} alt={itemPage.caption} onError={e => { e.currentTarget.style.opacity = '.35' }}/><div className="photo-caption">{itemPage.caption}</div></div>
+      <div className="article-media"><img src={itemPage.image} alt={itemPage.caption} decoding="async" loading={interactive ? "eager" : "lazy"} onError={e => { e.currentTarget.style.opacity = '.35' }}/><div className="photo-caption">{itemPage.caption}</div></div>
       <section className="reading-card"><div className="reading-topline"><span>THE SHORT STORY · {pageNumber + 1}/{item.pages.length}</span><button className="icon-button" disabled={!interactive} onClick={() => speak(itemPage.text)} aria-label="Read aloud"><Icon name="volume" size={21}/></button></div>
-        <p className="article-text">{tokens.map((token, i) => { const word = clean(token); return /^\s+$/.test(token) || !word ? token : <button key={i} type="button" disabled={!interactive} className={'word-token ' + (words.some(w => w.word === word) ? 'known' : '')} onClick={() => setSelected(word)}>{token}</button> })}</p>
+        <p className="article-text">{tokens.map((token, i) => { const word = clean(token); return /^\s+$/.test(token) || !word ? token : <button key={i} type="button" disabled={!interactive} className={'word-token ' + (words.some(w => w.word === word) ? 'known' : '')} onClick={event => onWordClick(event, word)}>{token}</button> })}</p>
       </section>
-      <div className="page-control"><button disabled={!interactive || pageNumber === 0} onClick={() => changePage(-1)} aria-label="Previous page"><Icon name="left"/></button><div className="dots">{item.pages.map((_, i) => <button key={i} disabled={!interactive} aria-label={`Page ${i + 1}`} className={pageNumber === i ? 'active' : ''} onClick={() => setPage(i)}/>)}</div><button disabled={!interactive || pageNumber === item.pages.length - 1} onClick={() => changePage(1)} aria-label="Next page"><Icon name="right"/></button></div>
+      <div className="page-control" aria-label={`Page ${pageNumber + 1} of ${item.pages.length}`}><div className="dots" aria-hidden="true">{item.pages.map((_, i) => <span key={i} className={pageNumber === i ? 'active' : ''}/>)}</div></div>
     </div>
   }
   return (
