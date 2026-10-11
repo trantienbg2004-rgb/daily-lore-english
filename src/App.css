@@ -35,96 +35,84 @@
 .meaning-option.chosen{background:transparent;border-color:#a65f50;border-width:1.5px}
 
 
-/* One-screen reading layout; other tabs retain their normal scrolling. */
-.app-shell.reading-mode{height:100dvh;min-height:0;overflow:hidden;padding-bottom:76px;box-sizing:border-box}
-.reading-mode .app-content{height:100%;box-sizing:border-box;padding-bottom:0}
-.reading-mode .reader-gesture{height:100%;min-height:0;display:flex;flex-direction:column;overflow:hidden}
-.reading-mode .topbar{flex:0 0 auto;padding:clamp(9px,2.1vh,22px) 0 clamp(9px,2vh,20px)}
-.reading-mode .brand{font-size:clamp(13px,1.9vh,17px)}
-.reading-mode .brand em{font-size:8px;margin-top:2px}
-.reading-mode .article-heading{flex:0 0 auto;padding:clamp(9px,1.7vh,20px) 0 clamp(7px,1.3vh,14px)}
-.reading-mode .eyebrow{font-size:clamp(8px,1.25vh,10px)}
-.reading-mode .article-heading h1{font-size:clamp(19px,3.6vh,31px);line-height:1.16;letter-spacing:-1.1px;margin:clamp(5px,1vh,10px) 0}
-.reading-mode .deck{font-size:clamp(10px,1.55vh,12px);line-height:1.35}
-.reading-mode .article-media{flex:0 0 auto}
-.reading-mode .article-media img{height:clamp(85px,20vh,170px);object-fit:cover}
-.reading-mode .photo-caption{font-size:clamp(9px,1.2vh,11px);margin-top:5px;line-height:1.2}
-.reading-mode .reading-card{flex:1 1 auto;min-height:0;padding-top:clamp(9px,1.8vh,18px);display:flex;flex-direction:column;justify-content:center}
-.reading-mode .reading-topline{font-size:clamp(8px,1.2vh,10px)}
-.reading-mode .article-text{font-size:clamp(14px,2.65vh,21px);line-height:1.4;letter-spacing:-.2px;margin:clamp(6px,1vh,12px) 0}
-.reading-mode .page-control{flex:0 0 auto;margin:clamp(5px,1vh,12px) 0 clamp(7px,1.5vh,16px)}
-.reading-mode .page-control>button{height:35px;width:35px}
-@media(max-height:740px){
- .reading-mode .article-heading h1{font-size:clamp(18px,3.25vh,26px)}
- .reading-mode .article-media img{height:clamp(75px,17vh,125px)}
- .reading-mode .article-text{font-size:clamp(13px,2.45vh,18px);line-height:1.33}
- .reading-mode .reading-card{padding-top:7px}
-}
-@media(max-height:590px){
- .reading-mode .article-heading h1{font-size:clamp(16px,3vh,21px)}
- .reading-mode .article-media img{height:clamp(55px,13vh,90px)}
- .reading-mode .article-text{font-size:clamp(12px,2.35vh,16px);line-height:1.27}
- .reading-mode .topbar{padding:6px 0}
- .reading-mode .article-heading{padding:6px 0}
- .reading-mode .page-control{margin:3px 0}
-}
 
-/* Vertical story feed with visible sliding transition; horizontal pages stay independent. */
-.reading-mode .story-viewport{height:100%;position:relative;overflow:hidden;overscroll-behavior:contain}
-.reading-mode .story-layer{position:absolute;inset:0;will-change:transform;background:#f8f8f2}
-.reading-mode .story-layer .reader-gesture{height:100%}
-.reading-mode .story-layer.outgoing{z-index:2;pointer-events:none}
-.reading-mode .story-layer:not(.outgoing){z-index:1}
-.reading-mode .story-layer.slide-up{animation:lore-slide-up .52s cubic-bezier(.22,.7,.25,1) both}
-.reading-mode .story-layer.slide-down{animation:lore-slide-down .52s cubic-bezier(.22,.7,.25,1) both}
-.reading-mode .story-layer.enter-from-bottom{animation:lore-enter-bottom .52s cubic-bezier(.22,.7,.25,1) both}
-.reading-mode .story-layer.enter-from-top{animation:lore-enter-top .52s cubic-bezier(.22,.7,.25,1) both}
-@keyframes lore-slide-up{from{transform:translateY(0)}to{transform:translateY(-100%)}}
-@keyframes lore-slide-down{from{transform:translateY(0)}to{transform:translateY(100%)}}
-@keyframes lore-enter-bottom{from{transform:translateY(100%)}to{transform:translateY(0)}}
-@keyframes lore-enter-top{from{transform:translateY(-100%)}to{transform:translateY(0)}}
+/* DAILY NEWS — single viewport, reliable iPhone safe areas, responsive pages. */
+.app-shell.reading-mode {
+  width:100%; height:100vh; height:100dvh; min-height:0; overflow:hidden;
+  padding-bottom:calc(70px + env(safe-area-inset-bottom, 0px)); box-sizing:border-box;
+}
+.reading-mode .app-content {height:100%; min-height:0; box-sizing:border-box; padding-bottom:0}
+.reading-mode .story-viewport {height:100%; position:relative; overflow:hidden; overscroll-behavior:contain}
+.reading-mode .story-layer {position:absolute; inset:0; background:#f8f8f2; will-change:transform}
+.reading-mode .story-layer.outgoing {z-index:2; pointer-events:none}
+.reading-mode .story-layer:not(.outgoing) {z-index:1}
+.reading-mode .reader-gesture {
+  height:100%; min-height:0; display:flex; flex-direction:column; overflow:hidden;
+  touch-action:none; -webkit-touch-callout:none;
+}
+.reading-mode .word-token {touch-action:none}
+.reading-mode .topbar {flex:0 0 auto; justify-content:flex-start; padding:clamp(8px,1.5vh,17px) 0 clamp(8px,1.3vh,15px)}
+.reading-mode .brand {font-size:clamp(17px,2.4vh,21px); letter-spacing:-.5px}
+.reading-mode .article-heading {flex:0 0 auto; padding:clamp(8px,1.2vh,14px) 0 clamp(7px,1vh,11px)}
+.reading-mode .article-heading h1 {
+  font-size:clamp(21px,3.4vh,34px); line-height:1.14; letter-spacing:-1.1px;
+  margin:clamp(5px,.8vh,9px) 0;
+  overflow-wrap:anywhere;
+}
+.reading-mode .eyebrow {font-size:9px}
+.reading-mode .deck {font-size:clamp(10px,1.5vh,12px); line-height:1.35}
+.reading-mode .article-heading-continued {padding:5px 0 4px}
+.reading-mode .article-heading-continued .eyebrow,
+.reading-mode .article-heading-continued .deck {display:none}
+.reading-mode .article-heading-continued h1 {
+  font-size:clamp(12px,1.8vh,16px); letter-spacing:-.2px; line-height:1.2;
+  margin:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+}
+.reading-mode .article-media {flex:0 0 auto}
+.reading-mode .article-media img {
+  height:clamp(65px,19vh,160px); object-fit:contain;
+  background:#edece5; border:1px solid #deddd5; border-radius:5px;
+}
+.reading-mode .photo-caption {font-size:clamp(9px,1.2vh,11px); line-height:1.25; margin-top:4px; max-height:32px; overflow:hidden}
+.reading-mode .article-media-empty {display:none}
+.reading-mode .reading-card {
+  min-height:0; flex:1 1 0; padding-top:clamp(6px,1.2vh,12px);
+  padding-bottom:0; display:flex; flex-direction:column; justify-content:flex-start;
+  overflow:hidden;
+}
+.reading-mode .reading-topline {flex:0 0 auto; font-size:clamp(8px,1.2vh,10px)}
+.reading-mode .article-text {
+  flex:0 0 auto; font-size:clamp(15px,2.7vh,22px); line-height:1.39;
+  letter-spacing:-.15px; margin:clamp(7px,1.2vh,11px) 0 8px;
+  overflow-wrap:anywhere;
+}
+.reading-mode .page-control {flex:0 0 auto; justify-content:center; margin:5px 0 8px}
+.reading-mode .page-control .dots {display:flex; justify-content:center; flex-wrap:nowrap; gap:7px}
+.reading-mode .page-control .dots span {width:6px; height:6px; border-radius:50%; background:#cecdc7}
+.reading-mode .page-control .dots span.active {background:#171715; transform:scale(1.3)}
+.reading-mode .page-meter {height:4px; width:min(140px,60%); border-radius:3px; background:#e0dfd8; overflow:hidden}
+.reading-mode .page-meter span {height:100%; display:block; background:#171715; transition:width .15s ease}
+.reading-mode .bottom-nav {height:calc(70px + env(safe-area-inset-bottom, 0px)); padding-bottom:env(safe-area-inset-bottom, 0px)}
+/* Preserve vertical swipe transitions. */
+.reading-mode .story-layer.slide-up{animation:dn-slide-up .52s cubic-bezier(.22,.7,.25,1) both}
+.reading-mode .story-layer.slide-down{animation:dn-slide-down .52s cubic-bezier(.22,.7,.25,1) both}
+.reading-mode .story-layer.enter-from-bottom{animation:dn-enter-bottom .52s cubic-bezier(.22,.7,.25,1) both}
+.reading-mode .story-layer.enter-from-top{animation:dn-enter-top .52s cubic-bezier(.22,.7,.25,1) both}
+@keyframes dn-slide-up {from{transform:translateY(0)}to{transform:translateY(-100%)}}
+@keyframes dn-slide-down {from{transform:translateY(0)}to{transform:translateY(100%)}}
+@keyframes dn-enter-bottom {from{transform:translateY(100%)}to{transform:translateY(0)}}
+@keyframes dn-enter-top {from{transform:translateY(-100%)}to{transform:translateY(0)}}
 @media(prefers-reduced-motion:reduce){.reading-mode .story-layer{animation-duration:.01ms!important}}
-
-/* Let JavaScript distinguish vertical story swipes from horizontal page swipes on iOS. */
-.reading-mode .reader-gesture { touch-action: none; -webkit-touch-callout: none; }
-.reading-mode .word-token { touch-action: none; }
-
-/* Swipe-only page navigation: no arrow buttons, subtle passive progress dots. */
-.reading-mode .page-control{justify-content:center}
-.reading-mode .page-control .dots span{display:block;width:7px;height:7px;border-radius:50%;background:#c9c9c3}
-.reading-mode .page-control .dots span.active{background:#171715;transform:scale(1.35)}
-
-.feed-empty{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;height:100%;padding:24px;box-sizing:border-box}.feed-empty h2{font-family:Georgia,serif;font-size:24px;font-weight:400}.feed-empty p{font-size:13px;line-height:1.6;color:#777}
-.feed-end-indicator{position:absolute;bottom:2px;left:0;right:0;text-align:center;font-size:10px;color:#777;z-index:3;pointer-events:none}.feed-end-indicator button{pointer-events:auto;border:0;background:none;text-decoration:underline;font:inherit;color:#9e6052}
-
-/* Long article safety: never let text overlap the photo or bottom navigation. */
-.reading-mode .reader-gesture{min-height:0;overflow:hidden}
-.reading-mode .reading-card{
-  flex:1 1 0;
-  min-height:0;
-  overflow-y:auto;
-  overflow-x:hidden;
-  justify-content:flex-start;
-  overscroll-behavior:contain;
-  -webkit-overflow-scrolling:touch;
-  padding-bottom:8px;
+@media(max-height:600px){
+ .reading-mode .article-heading h1{font-size:clamp(18px,3vh,23px)}
+ .reading-mode .article-heading-continued h1{font-size:13px}
+ .reading-mode .article-text{font-size:clamp(13px,2.45vh,17px);line-height:1.3}
+ .reading-mode .article-media img{height:clamp(45px,13vh,90px)}
+ .reading-mode .topbar{padding:5px 0}
+ .reading-mode .article-heading{padding:5px 0}
 }
-.reading-mode .article-text{flex:0 0 auto;overflow-wrap:anywhere}
-.reading-mode .reading-topline{flex:0 0 auto}
-.reading-mode .page-control .dots{max-width:100%;flex-wrap:wrap;justify-content:center;row-gap:5px}
-.reading-mode .article-heading{min-height:0}
-
-/* Reading pages after the cover use the space for text rather than repeating the same photo. */
-.reading-mode .article-media-repeated{display:none}
-.reading-mode .reading-card{justify-content:flex-start;overflow-y:auto;min-height:0}
-.reading-mode .article-text{flex:0 0 auto}
-.reading-mode .page-control .dots{max-width:100%;flex-wrap:wrap;justify-content:center}
-
-/* DAILY NEWS: one viewport per page, no internal vertical scrolling. */
-.reading-mode .topbar{justify-content:flex-start}
-.reading-mode .brand{font-size:clamp(16px,2.35vh,21px);letter-spacing:-.45px}
-.reading-mode .reading-card{overflow:hidden!important;min-height:0;justify-content:flex-start;padding-bottom:0}
-.reading-mode .article-text{overflow:visible!important;max-height:none!important;flex:0 0 auto}
-.reading-mode .article-media-empty{display:none!important}
-.reading-mode .article-media:not(.article-media-empty) img{height:clamp(85px,19vh,160px)}
-.reading-mode .page-control{margin-top:auto}
+.feed-empty{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;height:100%;padding:24px;box-sizing:border-box}
+.feed-empty h2{font-family:Georgia,serif;font-size:24px;font-weight:400}
+.feed-empty p{font-size:13px;line-height:1.6;color:#777}
+.feed-end-indicator{position:absolute;bottom:0;left:0;right:0;text-align:center;font-size:10px;color:#777;z-index:3;pointer-events:none}
+.feed-end-indicator button{pointer-events:auto;border:0;background:none;text-decoration:underline;font:inherit;color:#9e6052}

@@ -15,81 +15,83 @@ const readableStory = item => Array.isArray(item?.pages) && item.pages.length >=
   item.pages.reduce((sum, page) => sum + (typeof page.text === 'string' ? page.text.trim().split(/\s+/).filter(Boolean).length : 0), 0) >= 200
 const validStories = data => Array.isArray(data) && data.every(item => item && typeof item.title === 'string' && Array.isArray(item.pages) && item.pages.length > 0 && item.pages.every(p => typeof p.text === 'string' && typeof p.image === 'string'))
 
-// Keep the original text. Pagination below uses the actual rendered reading area.
+// Store original articles untouched: the phone decides how many reading pages fit.
 const paginateStory = item => ({ ...item, _sourcePages: item._sourcePages || item.pages })
 
-// Source paragraphs remain intact in storage. Layout is calculated on the device.
-const sentenceUnits = pages => {
-  const segmenter = new Intl.Segmenter('en', { granularity: 'sentence' })
-  return pages.flatMap((source, sourceIndex) => [...segmenter.segment(source.text)].map(part => ({
-    text: part.segment.trim(), sourceIndex, image: source.image, caption: source.caption,
-  })).filter(part => part.text))
-}
-
-// Measure the same font and width as the actual reading pane. No internal scrolling.
-const layoutPages = (item, reader) => {
+// Actual DOM measurements preserve readable type and avoid cutting paragraphs on iPhone.
+// The source article text is never discarded: long source pages become multiple screen pages.
+function layoutPages(item, reader) {
   const originals = item._sourcePages || item.pages
-  const units = sentenceUnits(originals)
-  if (!units.length) return originals
   const textEl = reader.querySelector('.article-text')
-  const card = reader.querySelector('.reading-card')
   const top = reader.querySelector('.reading-topline')
   const heading = reader.querySelector('.article-heading')
   const bar = reader.querySelector('.topbar')
   const dots = reader.querySelector('.page-control')
   const media = reader.querySelector('.article-media')
-  if (!textEl || !card || !top || !heading || !bar || !dots || !media) return item.pages
-  const css = getComputedStyle(textEl)
+  if (!textEl || !top || !heading || !bar || !dots || !media) return item.pages
+  const textCss = getComputedStyle(textEl)
+  const readerHeight = reader.getBoundingClientRect().height
+  const width = textEl.getBoundingClientRect().width
+  if (readerHeight < 200 || width < 100) return item.pages
+
+  // Heading is large on the cover, compact on all subsequent pages.
+  const previousHeadingState = heading.classList.contains('article-heading-continued')
+  heading.classList.remove('article-heading-continued')
+  const coverHeadingHeight = heading.getBoundingClientRect().height
+  heading.classList.add('article-heading-continued')
+  const continuedHeadingHeight = heading.getBoundingClientRect().height
+  heading.classList.toggle('article-heading-continued', previousHeadingState)
+
+  // Test the exact width and font in a hidden paragraph with a little safety room.
   const probe = document.createElement('p')
   probe.className = 'article-text'
   Object.assign(probe.style, {
-    position:'fixed', left:'-9999px', top:'0', visibility:'hidden', pointerEvents:'none',
-    width:`${textEl.getBoundingClientRect().width}px`, height:'auto', maxHeight:'none',
-    minHeight:'0', overflow:'visible', margin:'0', padding:'0',
-    font:css.font, lineHeight:css.lineHeight, letterSpacing:css.letterSpacing,
-    overflowWrap:css.overflowWrap,
+    position: 'fixed', left: '-20000px', top: '0', visibility: 'hidden',
+    pointerEvents: 'none', width: `${width}px`, margin: '0', padding: '0',
+    height: 'auto', maxHeight: 'none', overflow: 'visible',
+    font: textCss.font, lineHeight: textCss.lineHeight,
+    letterSpacing: textCss.letterSpacing, overflowWrap: 'anywhere',
   })
   document.body.appendChild(probe)
-  const available = reader.clientHeight - bar.offsetHeight - heading.offsetHeight - dots.offsetHeight
-    - top.offsetHeight - parseFloat(css.marginTop || 0) - parseFloat(css.marginBottom || 0) - 28
-  // A page containing a photograph has less room for text.
-  const imageHeight = Math.max(media.offsetHeight, Math.min(160, Math.max(85, reader.clientHeight * 0.19)) + 19)
-  const withImage = Math.max(45, available - imageHeight - 10)
-  const withoutImage = Math.max(45, available)
-  const measure = list => { probe.textContent = list.map(x => x.text).join(' '); return probe.getBoundingClientRect().height }
-  const pages = []
-  let pending = []
-  let pendingSource = 0
-  const flush = () => {
-    if (!pending.length) return
-    const source = originals[pendingSource]
-    const showImage = pendingSource === 0 || (source.image && source.image !== originals[0].image)
-    pages.push({ image:showImage ? source.image : '', caption:showImage ? source.caption : '', text:pending.map(x=>x.text).join(' ') })
-    pending = []
+  const measure = value => {
+    probe.textContent = value
+    return probe.getBoundingClientRect().height
   }
-  for (const unit of units) {
-    if (pending.length && unit.sourceIndex !== pendingSource) flush()
-    if (!pending.length) pendingSource = unit.sourceIndex
-    const source = originals[pendingSource]
-    const image = pendingSource === 0 || (source.image && source.image !== originals[0].image)
-    // Show each source image once, at its first resulting page.
-    const firstInSource = !pages.some(p => p.image && p.image === source.image)
-    const limit = image && firstInSource ? withImage : withoutImage
-    if (pending.length && measure([...pending,unit]) > limit) {
-      flush()
-      pendingSource = unit.sourceIndex
+  // Always reserve the bottom dots, heading, top line, and breathing room.
+  const textMargin = parseFloat(textCss.marginTop || 0) + parseFloat(textCss.marginBottom || 0)
+  const baseRoom = readerHeight - bar.offsetHeight - dots.offsetHeight - top.offsetHeight - textMargin - 85
+  const photoHeight = Math.min(160, Math.max(65, readerHeight * 0.19)) + 45
+  const coverRoom = Math.max(24, baseRoom - coverHeadingHeight - photoHeight)
+  const ordinaryRoom = Math.max(24, baseRoom - continuedHeadingHeight)
+  const imageRoom = Math.max(24, ordinaryRoom - photoHeight)
+  const result = []
+  const shownImages = new Set()
+  for (const original of originals) {
+    const words = (original.text || '').match(/\S+/g) || []
+    let offset = 0
+    while (offset < words.length) {
+      const withImage = !!original.image && !shownImages.has(original.image)
+      const room = result.length === 0 ? (withImage ? coverRoom : baseRoom - coverHeadingHeight)
+        : (withImage ? imageRoom : ordinaryRoom)
+      let low = 1, high = words.length - offset, best = 1
+      // Binary search for the largest chunk that fits. At most ~7 measurements per page.
+      while (low <= high) {
+        const middle = Math.floor((low + high) / 2)
+        const candidate = words.slice(offset, offset + middle).join(' ')
+        if (measure(candidate) <= room) { best = middle; low = middle + 1 }
+        else high = middle - 1
+      }
+      result.push({
+        image: withImage ? original.image : '',
+        caption: withImage ? original.caption : '',
+        text: words.slice(offset, offset + best).join(' '),
+      })
+      if (withImage) shownImages.add(original.image)
+      offset += best
     }
-    pending.push(unit)
-  }
-  flush()
-  // Ensure an image is shown only on the first page of its source section.
-  const used = new Set()
-  for (const page of pages) {
-    if (page.image && used.has(page.image)) { page.image = ''; page.caption = '' }
-    if (page.image) used.add(page.image)
   }
   probe.remove()
-  return pages
+  return result.length ? result : originals
 }
 
 const dictionary = {
@@ -314,7 +316,9 @@ function App() {
       observer.observe(viewport)
     }
     window.addEventListener('resize', recalculate)
-    return () => { cancelAnimationFrame(frame); observer?.disconnect(); window.removeEventListener('resize', recalculate) }
+    window.visualViewport?.addEventListener('resize', recalculate)
+    document.fonts?.ready.then(recalculate).catch(() => {})
+    return () => { cancelAnimationFrame(frame); observer?.disconnect(); window.removeEventListener('resize', recalculate); window.visualViewport?.removeEventListener('resize', recalculate) }
   }, [tab, storyIndex, stories.length, story?._sourcePages])
 
 
@@ -599,12 +603,16 @@ function App() {
     const tokens = itemPage.text.split(/(\s+)/)
     return <div className="reader-gesture" aria-hidden={!interactive} onTouchStart={interactive ? startGesture : undefined} onTouchMove={interactive ? moveGesture : undefined} onTouchEnd={interactive ? endGesture : undefined} onTouchCancel={interactive ? cancelGesture : undefined}>
       <header className="topbar"><span className="brand">DAILY NEWS</span></header>
-      <div className="article-heading"><div className="eyebrow">{item.category}</div><h1>{item.title}</h1><p className="deck">{item.subtitle}</p></div>
+      <div className={'article-heading ' + (pageNumber > 0 ? 'article-heading-continued' : '')}><div className="eyebrow">{item.category}</div><h1>{item.title}</h1><p className="deck">{item.subtitle}</p></div>
       <div className={"article-media " + (!itemPage.image ? "article-media-empty" : "")}><img src={itemPage.image || undefined} alt={itemPage.caption} decoding="async" loading={interactive ? "eager" : "lazy"} onError={e => { e.currentTarget.style.opacity = '.35' }}/><div className="photo-caption">{itemPage.caption}</div></div>
       <section className="reading-card"><div className="reading-topline"><span>THE SHORT STORY · {pageNumber + 1}/{item.pages.length}</span><button className="icon-button" disabled={!interactive} onClick={() => speak(itemPage.text)} aria-label="Read aloud"><Icon name="volume" size={21}/></button></div>
         <p className="article-text">{tokens.map((token, i) => { const word = clean(token); return /^\s+$/.test(token) || !word ? token : <button key={i} type="button" disabled={!interactive} className={'word-token ' + (words.some(w => w.word === word) ? 'known' : '')} onClick={event => onWordClick(event, word)}>{token}</button> })}</p>
       </section>
-      <div className="page-control" aria-label={`Page ${pageNumber + 1} of ${item.pages.length}`}><div className="dots" aria-hidden="true">{item.pages.map((_, i) => <span key={i} className={pageNumber === i ? 'active' : ''}/>)}</div></div>
+      <div className="page-control" aria-label={`Page ${pageNumber + 1} of ${item.pages.length}`}>
+        {item.pages.length <= 12
+          ? <div className="dots" aria-hidden="true">{item.pages.map((_, i) => <span key={i} className={pageNumber === i ? 'active' : ''}/>)}</div>
+          : <div className="page-meter" aria-hidden="true"><span style={{width: `${((pageNumber + 1) / item.pages.length) * 100}%`}}/></div>}
+      </div>
     </div>
   }
   return (
