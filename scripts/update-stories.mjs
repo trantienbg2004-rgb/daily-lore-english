@@ -8,13 +8,24 @@ const PER_RUN = 12
 const CHUNK_SIZE = 12
 const UA = 'DailyLoreEnglish/4.0 (educational reading; https://github.com/trantienbg2004-rgb/daily-lore-english)'
 const PUBLISH_ONLY = process.argv.includes('--publish-only')
-const topics = [
-
-  'Aurora','Octopus','Bioluminescence','Coral reef','Hummingbird','Black hole','Honey bee','Volcano','Deep sea','Rainforest','Solar eclipse','Saturn','Mushroom','Ocean current','Antarctica','Dolphin','Photosynthesis','Mars','Glacier','Butterfly','Tardigrade','Milky Way','Sleep','Memory','Earthquake','Red panda','Mangrove','Comet','Seahorse','Meteor shower','Penguin','Tropical cyclone','Giant panda','Axolotl','Tsunami','Water cycle','Lunar eclipse','Koala','Venus','Cave','Platypus','Jellyfish','Earth atmosphere','Quantum mechanics','Ocean','Neutron star','Polar bear','Arctic Ocean','Blue whale','Cuttlefish','Baobab','Telescope','Volcanic lightning','Microbiome','Geothermal energy','Monsoon','Mangrove forest','Coral bleaching','Solar wind',
-  'Pangolin','Narwhal','Orca','Sea otter','Manta ray','Whale shark','Electric eel','Leafcutter ant','Firefly','Praying mantis','Dragonfly','Chameleon','Komodo dragon','Snow leopard','Arctic fox','Fennec fox','Sloth','Capybara','Meerkat','Raven','Albatross','Puffin','Flamingo','Kingfisher','Toucan','Woodpecker','Owl','Bat','Cicada','Salamander','Poison dart frog','Sea turtle','Starfish','Sea anemone','Kelp forest','Seagrass','Peat bog','Wetland','Taiga','Tundra','Savanna','Desert','Sand dune','Oasis','Canyon','Fjord','Geyser','Hot spring','Sinkhole','Stalactite','Cenote','Delta','Estuary','Atoll','Barrier reef','Mid-ocean ridge','Mariana Trench','Great Barrier Reef','Amazon rainforest','Sahara','Himalayas','Mount Everest','Lake Baikal','Dead Sea','Galápagos Islands',
-  'Northern lights','Light pollution','Rainbow','Halo (optical phenomenon)','Mirage','Lightning','Thunder','Hail','Snowflake','Cloud','Fog','Atmospheric river','Jet stream','El Niño','La Niña','Ocean gyre','Tide','Rip current','Rogue wave','Bioluminescent bay','Ecosystem','Food web','Symbiosis','Mutualism (biology)','Mycorrhiza','Pollination','Seed dispersal','Carnivorous plant','Venus flytrap','Pitcher plant','Bamboo','Redwood','Giant sequoia','Banyan','Ginkgo','Lichen','Moss','Fern','Algae','Phytoplankton','Zooplankton','Krill','Coral polyp','Cell (biology)','DNA','RNA','Chromosome','Evolution','Natural selection','Adaptation','Camouflage','Mimicry','Hibernation','Migration (ecology)','Circadian rhythm','REM sleep','Dream','Human brain','Neuron','Neuroplasticity','Synesthesia','Placebo','Immune system','Gut microbiota',
-  'Exoplanet','Habitable zone','Proxima Centauri','Andromeda Galaxy','Nebula','Supernova','Pulsar','Magnetar','Quasar','Dark matter','Dark energy','Gravitational wave','Event horizon','Accretion disk','Asteroid','Kuiper belt','Oort cloud','Dwarf planet','Pluto','Europa (moon)','Enceladus','Titan (moon)','Io (moon)','Ganymede (moon)','Jupiter','Neptune','Uranus','Mercury (planet)','International Space Station','James Webb Space Telescope','Hubble Space Telescope','Voyager 1','Apollo 11','Artemis program','Solar flare','Coronal mass ejection','Magnetosphere','Van Allen radiation belt',
-  'Plate tectonics','Continental drift','Subduction','Fault (geology)','Seismology','Geology','Fossil','Amber','Dinosaur','Trilobite','Ammonite','Mass extinction','Ice age','Permafrost','Greenhouse effect','Climate change','Carbon cycle','Nitrogen cycle','Ozone layer','Renewable energy','Wind turbine','Hydroelectricity','Tidal power','Solar power','Battery','Lithium-ion battery','Semiconductor','Transistor','Fiber-optic communication','Laser','Holography','Microscope','Electron microscope','Magnetic resonance imaging','3D printing','Robotics','Artificial intelligence','Machine learning','Cryptography','Internet','World Wide Web','GPS','Satellite navigation','Geostationary orbit','International Date Line','Time zone','Leap year','Calendar','Prime number','Fibonacci sequence','Fractal','Chaos theory','Probability','Infinity','Pi','Golden ratio']
+// Curated categories provide a discovery stream, not a fixed list of article titles.
+// Prioritize the reader's interests while keeping other subjects in the mix.
+const DISCOVERY_FILE = 'public/feed/discovery-state.json'
+const categories = [
+  {name:'History', category:'Category:World history'},
+  {name:'History', category:'Category:Ancient history'},
+  {name:'History', category:'Category:Modern history'},
+  {name:'War & history', category:'Category:Military history'},
+  {name:'War & history', category:'Category:Wars by period'},
+  {name:'War & history', category:'Category:Battles by war'},
+  {name:'Philosophy', category:'Category:Philosophical concepts'},
+  {name:'Philosophy', category:'Category:Philosophers'},
+  {name:'Politics', category:'Category:Political concepts'},
+  {name:'Politics', category:'Category:Political history'},
+  {name:'Science', category:'Category:Natural sciences'},
+  {name:'Geography', category:'Category:Geography'},
+]
+const MAX_CANDIDATES = 90
 const valid = s => s && typeof s.title === 'string' && Array.isArray(s.pages) && s.pages.length > 0 && s.pages.every(p => typeof p.text === 'string' && typeof p.image === 'string')
 const id = s => s.sourceUrl || s.sourceTitle || `${s.category}:${s.title}`
 const countWords = s => (s.match(/\b[\p{L}\p{N}]+(?:['’\-][\p{L}\p{N}]+)*\b/gu) || []).length
@@ -118,28 +129,71 @@ async function getArticle(topic) {
   return { category: 'DISCOVER · WIKIPEDIA', title: p.title.toUpperCase(), subtitle: 'Read the full story · Wikipedia', sourceTitle: topic, sourceUrl: url, contentType: 'knowledge', license: 'CC BY-SA 4.0 (verify source page and media license)', attribution: `Wikipedia contributors, “${p.title}”, ${url}`, pages }
 }
 
+async function discoverCategory(category, cursor) {
+  const u = new URL('https://en.wikipedia.org/w/api.php')
+  Object.entries({action:'query',list:'categorymembers',cmtitle:category,cmtype:'page',cmnamespace:'0',cmlimit:'100',format:'json'}).forEach(([k,v])=>u.searchParams.set(k,v))
+  if (cursor) u.searchParams.set('cmcontinue',cursor)
+  const result = await fetchJson(u)
+  return {titles:(result.query?.categorymembers||[]).map(x=>x.title),next:result.continue?.cmcontinue||null}
+}
+async function discoverRecent() {
+  const u = new URL('https://en.wikipedia.org/w/api.php')
+  Object.entries({action:'query',list:'recentchanges',rctype:'new',rcnamespace:'0',rclimit:'50',rcprop:'title',format:'json'}).forEach(([k,v])=>u.searchParams.set(k,v))
+  const result = await fetchJson(u)
+  return (result.query?.recentchanges||[]).map(x=>x.title)
+}
+function normalizedTitle(value) { return String(value||'').replace(/_/g,' ').trim().toLowerCase() }
+const skipTitle = title => !title || /^(list of|outline of|index of|timeline of|glossary of|bibliography of|portal:)/i.test(title) || /\(disambiguation\)$/i.test(title)
 const raw = JSON.parse(await fs.readFile(FILE, 'utf8'))
 if (!Array.isArray(raw) || !raw.length || !raw.every(valid)) throw Error('Invalid existing library; refusing to overwrite')
 const map = new Map()
 for (const s of raw) if (!map.has(id(s))) map.set(id(s), s)
 const library = [...map.values()]
 const urls = new Set(library.map(s => s.sourceUrl).filter(Boolean))
-const titles = new Set(library.map(s => (s.sourceTitle || '').toLowerCase()).filter(Boolean))
+const titles = new Set(library.flatMap(s => [s.sourceTitle, s.title, s.sourceUrl?.split('/wiki/')[1] ? decodeURIComponent(s.sourceUrl.split('/wiki/')[1]) : ''].filter(Boolean).map(normalizedTitle)))
 let added = 0
+let attempted = 0
+let state = {round:0,cursors:{}}
+try { state = {...state,...JSON.parse(await fs.readFile(DISCOVERY_FILE,'utf8'))} } catch {}
+if (!state.cursors || typeof state.cursors !== 'object') state.cursors = {}
 if (!PUBLISH_ONLY) {
-  for (const topic of topics) {
-    if (added >= PER_RUN) break
-    if (titles.has(topic.toLowerCase())) continue
+  const candidates = []
+  // Rotate category order each run, so a single popular category cannot monopolize the feed.
+  const start = state.round % categories.length
+  const order = [...categories.slice(start),...categories.slice(0,start)]
+  for (const group of order) {
     try {
-      const story = await getArticle(topic)
-      if (urls.has(story.sourceUrl)) continue
+      let page = await discoverCategory(group.category,state.cursors[group.category])
+      if (!page.titles.length && state.cursors[group.category]) page = await discoverCategory(group.category,null)
+      state.cursors[group.category] = page.next
+      // Draw across categories rather than downloading an entire category in one run.
+      candidates.push(...page.titles.filter(t=>!skipTitle(t)).slice(0,9).map(title=>({title,category:group.name})))
+    } catch(e) { console.warn(`Discovery unavailable (${group.category}): ${e.message}`) }
+  }
+  // Recent new pages supplement the established encyclopedia, but are not trusted automatically.
+  try { candidates.push(...(await discoverRecent()).filter(t=>!skipTitle(t)).slice(0,30).map(title=>({title,category:'New on Wikipedia'}))) }
+  catch(e) { console.warn(`Recent pages unavailable: ${e.message}`) }
+  state.round = (state.round + 1) % categories.length
+  const uniqueCandidates = [...new Map(candidates.map(x=>[normalizedTitle(x.title),x])).values()]
+  // Interleave sources to keep subject variety; do not publish pages with poor text or no image.
+  for (const candidate of uniqueCandidates) {
+    if (added >= PER_RUN || attempted >= MAX_CANDIDATES) break
+    if (titles.has(normalizedTitle(candidate.title))) continue
+    attempted++
+    try {
+      const story = await getArticle(candidate.title)
+      if (urls.has(story.sourceUrl) || titles.has(normalizedTitle(story.title))) continue
+      story.sourceTitle = story.title.replace(/_/g,' ')
+      story.category = `DISCOVER · ${candidate.category.toUpperCase()}`
       library.unshift(story)
       urls.add(story.sourceUrl)
-      titles.add(topic.toLowerCase())
+      titles.add(normalizedTitle(story.title))
       added++
-      console.log(`Full article: ${story.title} (${story.pages.length} pages, ${story.pages.reduce((n, p) => n + countWords(p.text), 0)} words)`)
-    } catch (error) { console.warn(`Skipped ${topic}: ${error.message}`) }
+      console.log(`Discovered [${candidate.category}]: ${story.title} (${story.pages.length} pages)`)
+    } catch(error) { console.warn(`Skipped ${candidate.title}: ${error.message}`) }
   }
+  await fs.mkdir(DIR,{recursive:true})
+  await fs.writeFile(DISCOVERY_FILE,JSON.stringify(state,null,2)+'\n')
 }
 if (added) await fs.writeFile(FILE, JSON.stringify(library, null, 2) + '\n')
 await fs.mkdir(DIR, { recursive: true })
@@ -147,4 +201,4 @@ const chunks = Math.ceil(library.length / CHUNK_SIZE)
 for (let i = 0; i < chunks; i++) await fs.writeFile(`${DIR}/${String(i).padStart(4, '0')}.json`, JSON.stringify(library.slice(i * CHUNK_SIZE, (i + 1) * CHUNK_SIZE)))
 for (const filename of await fs.readdir(DIR)) if (/^\d{4}\.json$/.test(filename) && Number(filename.slice(0, 4)) >= chunks) await fs.unlink(`${DIR}/${filename}`)
 await fs.writeFile(`${DIR}/manifest.json`, JSON.stringify({ version: 2, chunks, total: library.length, updatedAt: new Date().toISOString() }))
-console.log(`${added} full articles added; total ${library.length}; published ${chunks} chunks`)
+console.log(`${added} discovered articles added; total ${library.length}; published ${chunks} chunks; ${attempted} candidates checked`)
