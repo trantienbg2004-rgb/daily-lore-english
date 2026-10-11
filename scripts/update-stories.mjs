@@ -4,28 +4,37 @@ import fs from 'node:fs/promises'
 // Existing story records and their IDs are preserved for reading history.
 const FILE = 'public/stories.json'
 const DIR = 'public/feed'
-const PER_RUN = 12
+const PER_RUN = 30
 const CHUNK_SIZE = 12
 const UA = 'DailyLoreEnglish/4.0 (educational reading; https://github.com/trantienbg2004-rgb/daily-lore-english)'
 const PUBLISH_ONLY = process.argv.includes('--publish-only')
-// Curated categories provide a discovery stream, not a fixed list of article titles.
-// Prioritize the reader's interests while keeping other subjects in the mix.
+// No topic restrictions: use diverse categories and random encyclopedia articles.
 const DISCOVERY_FILE = 'public/feed/discovery-state.json'
 const categories = [
-  {name:'History', category:'Category:World history'},
-  {name:'History', category:'Category:Ancient history'},
-  {name:'History', category:'Category:Modern history'},
-  {name:'War & history', category:'Category:Military history'},
-  {name:'War & history', category:'Category:Wars by period'},
-  {name:'War & history', category:'Category:Battles by war'},
-  {name:'Philosophy', category:'Category:Philosophical concepts'},
-  {name:'Philosophy', category:'Category:Philosophers'},
-  {name:'Politics', category:'Category:Political concepts'},
-  {name:'Politics', category:'Category:Political history'},
-  {name:'Science', category:'Category:Natural sciences'},
-  {name:'Geography', category:'Category:Geography'},
+  {name:'History',category:'Category:World history'},
+  {name:'Politics',category:'Category:Political concepts'},
+  {name:'Philosophy',category:'Category:Philosophical concepts'},
+  {name:'Science',category:'Category:Natural sciences'},
+  {name:'Geography',category:'Category:Geography'},
+  {name:'Technology',category:'Category:Technology'},
+  {name:'Medicine',category:'Category:Medicine'},
+  {name:'Art',category:'Category:Visual arts'},
+  {name:'Music',category:'Category:Music'},
+  {name:'Literature',category:'Category:Literature'},
+  {name:'Sports',category:'Category:Sports'},
+  {name:'Film',category:'Category:Cinema'},
+  {name:'Food',category:'Category:Food and drink'},
+  {name:'Economics',category:'Category:Economics'},
+  {name:'Nature',category:'Category:Biology'},
+  {name:'Mathematics',category:'Category:Mathematics'},
+  {name:'Education',category:'Category:Education'},
+  {name:'Psychology',category:'Category:Psychology'},
+  {name:'Architecture',category:'Category:Architecture'},
+  {name:'Business',category:'Category:Business'},
+  {name:'Environment',category:'Category:Environment'},
+  {name:'Culture',category:'Category:Culture'},
 ]
-const MAX_CANDIDATES = 90
+const MAX_CANDIDATES = 130
 const valid = s => s && typeof s.title === 'string' && Array.isArray(s.pages) && s.pages.length > 0 && s.pages.every(p => typeof p.text === 'string' && typeof p.image === 'string')
 const id = s => s.sourceUrl || s.sourceTitle || `${s.category}:${s.title}`
 const countWords = s => (s.match(/\b[\p{L}\p{N}]+(?:['’\-][\p{L}\p{N}]+)*\b/gu) || []).length
@@ -142,6 +151,12 @@ async function discoverRecent() {
   const result = await fetchJson(u)
   return (result.query?.recentchanges||[]).map(x=>x.title)
 }
+async function discoverRandom() {
+  const u = new URL('https://en.wikipedia.org/w/api.php')
+  Object.entries({action:'query',list:'random',rnnamespace:'0',rnlimit:'50',format:'json'}).forEach(([k,v])=>u.searchParams.set(k,v))
+  const result = await fetchJson(u)
+  return (result.query?.random || []).map(x=>x.title)
+}
 function normalizedTitle(value) { return String(value||'').replace(/_/g,' ').trim().toLowerCase() }
 const skipTitle = title => !title || /^(list of|outline of|index of|timeline of|glossary of|bibliography of|portal:)/i.test(title) || /\(disambiguation\)$/i.test(title)
 const raw = JSON.parse(await fs.readFile(FILE, 'utf8'))
@@ -157,8 +172,12 @@ let state = {round:0,cursors:{}}
 try { state = {...state,...JSON.parse(await fs.readFile(DISCOVERY_FILE,'utf8'))} } catch {}
 if (!state.cursors || typeof state.cursors !== 'object') state.cursors = {}
 if (!PUBLISH_ONLY) {
-  const candidates = []
-  // Rotate category order each run, so a single popular category cannot monopolize the feed.
+  const randomCandidates = []
+  const categoryCandidates = []
+  const recentCandidates = []
+  // Random pages span all topics, not just the selected category list.
+  try { randomCandidates.push(...(await discoverRandom()).filter(t=>!skipTitle(t)).map(title=>({title,category:'All topics'}))) }
+  catch(e) { console.warn(`Random discovery unavailable: ${e.message}`) }
   const start = state.round % categories.length
   const order = [...categories.slice(start),...categories.slice(0,start)]
   for (const group of order) {
@@ -166,14 +185,18 @@ if (!PUBLISH_ONLY) {
       let page = await discoverCategory(group.category,state.cursors[group.category])
       if (!page.titles.length && state.cursors[group.category]) page = await discoverCategory(group.category,null)
       state.cursors[group.category] = page.next
-      // Draw across categories rather than downloading an entire category in one run.
-      candidates.push(...page.titles.filter(t=>!skipTitle(t)).slice(0,9).map(title=>({title,category:group.name})))
+      categoryCandidates.push(...page.titles.filter(t=>!skipTitle(t)).slice(0,7).map(title=>({title,category:group.name})))
     } catch(e) { console.warn(`Discovery unavailable (${group.category}): ${e.message}`) }
   }
-  // Recent new pages supplement the established encyclopedia, but are not trusted automatically.
-  try { candidates.push(...(await discoverRecent()).filter(t=>!skipTitle(t)).slice(0,30).map(title=>({title,category:'New on Wikipedia'}))) }
+  try { recentCandidates.push(...(await discoverRecent()).filter(t=>!skipTitle(t)).slice(0,40).map(title=>({title,category:'New on Wikipedia'}))) }
   catch(e) { console.warn(`Recent pages unavailable: ${e.message}`) }
   state.round = (state.round + 1) % categories.length
+  // Mix the three discovery streams fairly, so all subjects have a chance.
+  const candidates = []
+  const pools = [randomCandidates, categoryCandidates, recentCandidates]
+  while (pools.some(p => p.length) && candidates.length < 240) {
+    for (const pool of pools) if (pool.length) candidates.push(pool.shift())
+  }
   const uniqueCandidates = [...new Map(candidates.map(x=>[normalizedTitle(x.title),x])).values()]
   // Interleave sources to keep subject variety; do not publish pages with poor text or no image.
   for (const candidate of uniqueCandidates) {
