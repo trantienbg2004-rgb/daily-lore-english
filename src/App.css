@@ -120,3 +120,17 @@
 /* V14: consistent circular page indicators, never a progress bar. */
 .reading-mode .page-control .dots {max-width:100%; gap:6px; align-items:center}
 .reading-mode .page-control .dots span {display:block; flex:0 0 6px; width:6px; height:6px; border-radius:50%}
+
+/* V16: measured pagination instead of guessed line and photo heights. */
+.reading-mode .reader-gesture .article-text { max-width:100%; }
+.reading-mode .reader-gesture .reading-card { min-height:0; }
+.reading-mode .reader-gesture .article-media img { height:clamp(62px,17dvh,148px); }
+.reading-mode .reader-gesture .photo-caption {
+  max-height:2.5em; overflow:hidden; overflow-wrap:anywhere;
+}
+.reading-mode .page-control { flex-shrink:0; position:relative; z-index:1; }
+.reading-mode .layout-measure-fixture { isolation:isolate; }
+@media (max-height:620px) {
+  .reading-mode .article-media img { height:clamp(44px,12dvh,85px); }
+  .reading-mode .article-text { font-size:clamp(14px,2.4dvh,18px); }
+}

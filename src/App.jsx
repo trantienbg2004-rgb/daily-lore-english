@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import './App.css'
 import { initializeSeenHistory, persistReadMarker, readLegacyHistory } from './lib/seenHistory.js'
 import initialStories from './stories.json'
@@ -19,90 +19,110 @@ const paginateStory = item => ({ ...item, _sourcePages: item._sourcePages || ite
 // The source article text is never discarded: long source pages become multiple screen pages.
 function layoutPages(item, reader) {
   const originals = item._sourcePages || item.pages
-  const textEl = reader.querySelector('.article-text')
-  const top = reader.querySelector('.reading-topline')
-  const heading = reader.querySelector('.article-heading')
-  const bar = reader.querySelector('.topbar')
-  const dots = reader.querySelector('.page-control')
-  const media = reader.querySelector('.article-media')
-  if (!textEl || !top || !heading || !bar || !dots || !media) return item.pages
-  const textCss = getComputedStyle(textEl)
-  const readerHeight = reader.getBoundingClientRect().height
-  const width = textEl.getBoundingClientRect().width
-  if (readerHeight < 200 || width < 100) return item.pages
+  const bounds = reader.getBoundingClientRect()
+  if (bounds.width < 100 || bounds.height < 220) return item.pages
 
-  // Heading is large on the cover, compact on all subsequent pages.
-  const previousHeadingState = heading.classList.contains('article-heading-continued')
-  heading.classList.remove('article-heading-continued')
-  const coverHeadingHeight = heading.getBoundingClientRect().height
-  heading.classList.add('article-heading-continued')
-  const continuedHeadingHeight = heading.getBoundingClientRect().height
-  heading.classList.toggle('article-heading-continued', previousHeadingState)
-
-  // Test the exact width and font in a hidden paragraph with a little safety room.
-  const probe = document.createElement('p')
-  probe.className = 'article-text'
-  Object.assign(probe.style, {
-    position: 'fixed', left: '-20000px', top: '0', visibility: 'hidden',
-    pointerEvents: 'none', width: `${width}px`, margin: '0', padding: '0',
-    height: 'auto', maxHeight: 'none', overflow: 'visible',
-    font: textCss.font, lineHeight: textCss.lineHeight,
-    letterSpacing: textCss.letterSpacing, overflowWrap: 'anywhere',
+  // The actual reader layout is our measuring instrument. Unlike estimated
+  // heights, this accounts for multiline photo credits, safe areas, fonts,
+  // word buttons, the title and page dots on the CURRENT device.
+  const fixture = reader.cloneNode(true)
+  fixture.setAttribute('aria-hidden', 'true')
+  fixture.classList.add('layout-measure-fixture')
+  Object.assign(fixture.style, {
+    position: 'fixed', left: '-20000px', top: '0',
+    width: `${bounds.width}px`, height: `${bounds.height}px`,
+    minHeight: '0', visibility: 'hidden', pointerEvents: 'none',
+    zIndex: '-1', transform: 'none',
   })
-  document.body.appendChild(probe)
-  const measure = value => {
-    probe.textContent = value
-    return probe.getBoundingClientRect().height
-  }
-  // Always reserve the bottom dots, heading, top line, and breathing room.
-  const textMargin = parseFloat(textCss.marginTop || 0) + parseFloat(textCss.marginBottom || 0)
-  const baseRoom = readerHeight - bar.offsetHeight - dots.offsetHeight - top.offsetHeight - textMargin - 85
-  const photoHeight = Math.min(160, Math.max(65, readerHeight * 0.19)) + 45
-  const coverRoom = Math.max(24, baseRoom - coverHeadingHeight - photoHeight)
-  const ordinaryRoom = Math.max(24, baseRoom - continuedHeadingHeight)
-  const imageRoom = Math.max(24, ordinaryRoom - photoHeight)
-  // Source pages are transport chunks, not real reading pages. Joining their
-  // text first prevents an almost empty page at every source-chunk boundary.
+  const heading = fixture.querySelector('.article-heading')
+  const media = fixture.querySelector('.article-media')
+  const caption = fixture.querySelector('.photo-caption')
+  const photo = fixture.querySelector('.article-media img')
+  const card = fixture.querySelector('.reading-card')
+  const paragraph = fixture.querySelector('.article-text')
+  if (!heading || !media || !caption || !photo || !card || !paragraph) return item.pages
+
   const allWords = originals.flatMap(p => (p.text || '').match(/\S+/g) || [])
   const images = originals.filter(p => p.image).filter((p, i, list) =>
     list.findIndex(other => other.image === p.image) === i)
-  const result = []
-  let offset = 0
-  // Do not force a new page when a source chunk ends. The UI owns pagination.
-  while (offset < allWords.length) {
-    const first = result.length === 0
-    // Keep the cover photo, and show additional original photos occasionally.
-    const mediaIndex = first ? 0 : (result.length % 4 === 0 ? Math.floor(result.length / 4) : -1)
-    const media = images[mediaIndex]
-    const withImage = !!media
-    const room = first ? (withImage ? coverRoom : baseRoom - coverHeadingHeight)
-      : (withImage ? imageRoom : ordinaryRoom)
-    let low = 1, high = allWords.length - offset, best = 1
-    while (low <= high) {
-      const mid = Math.floor((low + high) / 2)
-      if (measure(allWords.slice(offset, offset + mid).join(' ')) <= room) {
-        best = mid
-        low = mid + 1
-      } else high = mid - 1
-    }
-    const remaining = allWords.length - offset
-    // Balance a near-empty last page with its predecessor instead of leaving
-    // a solitary sentence surrounded by whitespace.
-    if (remaining > best && remaining - best < Math.min(34, Math.floor(best * .45))) {
-      const share = Math.ceil(remaining / 2)
-      if (share <= best) best = share
-    }
-    result.push({
-      image: media?.image || '',
-      caption: media?.caption || '',
-      text: allWords.slice(offset, offset + best).join(' '),
-    })
-    offset += best
-  }
-  probe.remove()
-  return result.length ? result : originals
-}
+  if (!allWords.length) return originals
 
+  // Measure real interactive word buttons, not plain text. Their inline box
+  // metrics can differ from regular text (notably on iOS Safari).
+  const measureWords = (offset, length) => {
+    const content = document.createDocumentFragment()
+    for (let i = offset; i < offset + length; i++) {
+      if (i > offset) content.appendChild(document.createTextNode(' '))
+      const token = allWords[i]
+      if (!token.toLowerCase().replace(/^[^a-z]+|[^a-z]+$/g, '')) {
+        content.appendChild(document.createTextNode(token))
+      } else {
+        const button = document.createElement('button')
+        button.className = 'word-token'
+        button.type = 'button'
+        button.textContent = token
+        content.appendChild(button)
+      }
+    }
+    paragraph.replaceChildren(content)
+    return paragraph.getBoundingClientRect().height
+  }
+
+  // Respect the available space inside the flex reading card, including
+  // bottom navigation, pagination dots, paragraphs margins and photo captions.
+  const configurePage = (isCover, image) => {
+    heading.classList.toggle('article-heading-continued', !isCover)
+    media.classList.toggle('article-media-empty', !image)
+    caption.textContent = image?.caption || ''
+    // CSS gives images a fixed height; no need to fetch images in the probe.
+    photo.removeAttribute('src')
+    paragraph.textContent = ''
+    const r = card.getBoundingClientRect()
+    const p = paragraph.getBoundingClientRect()
+    const marginBottom = parseFloat(getComputedStyle(paragraph).marginBottom) || 0
+    // Conservative inset handles fractional Safari line rounding.
+    return Math.max(0, r.bottom - p.top - marginBottom - 32)
+  }
+
+  reader.parentElement.appendChild(fixture)
+  try {
+    const result = []
+    let offset = 0
+    while (offset < allWords.length) {
+      const first = result.length === 0
+      // Preserve cover photo; occasional further photos from the source.
+      const index = first ? 0 : (result.length % 4 === 0 ? Math.floor(result.length / 4) : -1)
+      const image = images[index] || null
+      const room = configurePage(first, image)
+      let low = 1, high = allWords.length - offset, best = 0
+      while (low <= high) {
+        const mid = Math.floor((low + high) / 2)
+        if (measureWords(offset, mid) <= room) {
+          best = mid
+          low = mid + 1
+        } else high = mid - 1
+      }
+      // Exceptionally small windows cannot fit even a line: retain one token.
+      // The regular mobile viewport styles are sized to avoid this case.
+      best = Math.max(1, best)
+      const remaining = allWords.length - offset
+      // Avoid pages with a tiny last sentence when both halves fit.
+      if (remaining > best && remaining - best < Math.min(35, Math.floor(best * 0.42))) {
+        const balanced = Math.ceil(remaining / 2)
+        if (balanced <= best) best = balanced
+      }
+      result.push({
+        image: image?.image || '',
+        caption: image?.caption || '',
+        text: allWords.slice(offset, offset + best).join(' '),
+      })
+      offset += best
+    }
+    return result
+  } finally {
+    fixture.remove()
+  }
+}
 const dictionary = {
   coincidence: 'Two events happening together by chance.', rotates: 'Turns around a central point or axis.',
   gravity: 'The force that attracts objects towards each other.', gradually: 'Slowly, over a period of time.',
@@ -300,14 +320,16 @@ function App() {
   const story = stories[storyIndex] || null
   const currentPage = story?.pages?.[page] || null
 
-  // Recalculate when the actual screen dimensions change. No cut sentences or empty pages.
-  useEffect(() => {
+  // Recalculate before paint when dimensions change; avoid flashing truncated text.
+  useLayoutEffect(() => {
     if (tab !== 'read' || !story) return
     let frame = 0
     let observer
+    let cancelled = false
     const recalculate = () => {
       cancelAnimationFrame(frame)
       frame = requestAnimationFrame(() => {
+        if (cancelled) return
         const reader = document.querySelector('.story-layer:not(.outgoing) .reader-gesture')
         if (!reader) return
         const next = layoutPages(story, reader)
@@ -328,7 +350,7 @@ function App() {
     window.addEventListener('resize', recalculate)
     window.visualViewport?.addEventListener('resize', recalculate)
     document.fonts?.ready.then(recalculate).catch(() => {})
-    return () => { cancelAnimationFrame(frame); observer?.disconnect(); window.removeEventListener('resize', recalculate); window.visualViewport?.removeEventListener('resize', recalculate) }
+    return () => { cancelled = true; cancelAnimationFrame(frame); observer?.disconnect(); window.removeEventListener('resize', recalculate); window.visualViewport?.removeEventListener('resize', recalculate) }
   }, [tab, storyIndex, stories.length, story?._sourcePages])
 
 
