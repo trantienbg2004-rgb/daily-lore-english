@@ -214,7 +214,7 @@ function App() {
     feedBusy.current = true
     setFeedLoading(true)
     try {
-      const manifestResponse = await fetch(`${import.meta.env.BASE_URL}feed/manifest.json`, { cache: 'no-store' })
+      const manifestResponse = await fetch(`${import.meta.env.BASE_URL}feed/manifest.json?t=${Date.now()}`, { cache: 'no-store' })
       if (!manifestResponse.ok) throw new Error('Feed not published yet')
       const manifest = await manifestResponse.json()
       const count = Number(manifest.chunks) || 0
@@ -222,7 +222,7 @@ function App() {
       let next = cursor
       // Read at most 8 chunks per request, or stop once 8 unseen stories are available.
       while (next < count && next < cursor + 8 && added.length < 8) {
-        const response = await fetch(`${import.meta.env.BASE_URL}feed/${String(next).padStart(4, '0')}.json`, { cache: 'force-cache' })
+        const response = await fetch(`${import.meta.env.BASE_URL}feed/${String(next).padStart(4, '0')}.json?v=${encodeURIComponent(manifest.updatedAt || Date.now())}`, { cache: 'no-store' })
         if (!response.ok) throw new Error(`Feed chunk ${next} unavailable`)
         const batch = await response.json()
         if (!validStories(batch)) throw new Error('Invalid feed data')
@@ -257,6 +257,9 @@ function App() {
       setFeedLoading(false)
     }
   }
+
+  // A manual refresh must rescan from chunk zero: existing chunks can be republished.
+  const refreshFeed = () => loadFeed(0)
 
   useEffect(() => { loadFeed(0) }, [])
   useEffect(() => {
@@ -445,8 +448,8 @@ function App() {
         {tab === 'read' && <div className="story-viewport" onWheel={onReaderWheel}>
           {slide && stories[slide.from] && <div key={'old-'+slide.stamp} className={'story-layer outgoing '+(slide.direction>0?'slide-up':'slide-down')}>{renderStory(stories[slide.from], slide.from, slide.fromPage, false)}</div>}
           {story && <div key={'active-'+storyIndex} className={'story-layer '+(slide?(slide.direction>0?'enter-from-bottom':'enter-from-top'):'')}>{renderStory(story, storyIndex, page, true)}</div>}
-          {story && storyIndex === stories.length - 1 && !feedLoading && <div className="feed-end-indicator">{feedDone ? 'All stories read · New articles coming soon' : 'Loading next stories…'} <button onClick={() => loadFeed(feedCursor)} disabled={feedLoading}>Refresh</button></div>}
-          {!story && <div className="feed-empty"><h2>{feedLoading ? 'Finding your next story…' : feedDone ? 'You’re all caught up.' : 'Stories are temporarily unavailable.'}</h2><p>{feedDone ? 'You have read every available story on this device. New stories will appear when published.' : 'Check your connection or try again.'}</p><button className="primary" onClick={() => loadFeed(feedCursor)} disabled={feedLoading}>{feedLoading ? 'Loading…' : 'Check for new stories'}</button></div>}
+          {story && storyIndex === stories.length - 1 && !feedLoading && <div className="feed-end-indicator">{feedDone ? 'All stories read · New articles coming soon' : 'Loading next stories…'} <button onClick={refreshFeed} disabled={feedLoading}>Refresh</button></div>}
+          {!story && <div className="feed-empty"><h2>{feedLoading ? 'Finding your next story…' : feedDone ? 'You’re all caught up.' : 'Stories are temporarily unavailable.'}</h2><p>{feedDone ? 'You have read every available story on this device. New stories will appear when published.' : 'Check your connection or try again.'}</p><button className="primary" onClick={refreshFeed} disabled={feedLoading}>{feedLoading ? 'Loading…' : 'Check for new stories'}</button></div>}
         </div>}
         {tab === 'words' && <><header className="section-header"><span className="eyebrow">YOUR PERSONAL COLLECTION</span><h1>Saved words<span className="period">.</span></h1><p>Small discoveries, remembered.</p></header><div className="count-line">{words.length} {words.length === 1 ? 'WORD' : 'WORDS'} COLLECTED</div>{words.length === 0 ? <div className="empty"><Icon name="bookmark" size={40}/><h2>Your collection begins here.</h2><p>Read a story, tap a word, and save it to keep learning.</p><button className="primary" onClick={() => setTab('read')}>Start reading →</button></div> : <div className="saved-list">{words.map(item => <div className="saved-item" key={item.word}><div><h2><button className="saved-word-open" onClick={() => setSelected(item.word)}>{item.word}</button></h2>{item.partOfSpeech && <span className="word-meta">{item.partOfSpeech}</span>}{item.phonetic && <span className="word-meta">{item.phonetic}</span>}<p>{item.definition || offlineMeaning(item.word) || 'No definition yet. See the example sentence below.'}</p>{item.sentence && <p className="word-context">“{item.sentence}”</p>}</div><button onClick={() => { setWords(current => current.filter(w => w.word !== item.word)); setReviewIndex(0); setFinished(false) }} aria-label={`Remove ${item.word}`}><Icon name="close" size={19}/></button></div>)}</div>}</>}
         {tab === 'review' && <><header className="section-header"><span className="eyebrow">A MOMENT TO REMEMBER</span><h1>Daily review<span className="period">.</span></h1><p>Learn a little. Remember a lot.</p></header>{words.length === 0 ? <div className="empty"><Icon name="layers" size={42}/><h2>Nothing to review yet.</h2><p>Save a few words while reading. They will appear here.</p><button className="primary" onClick={() => setTab('read')}>Explore a story →</button></div> : finished ? <div className="empty"><Icon name="check" size={44}/><h2>Beautiful work.</h2><p>You have reviewed all {words.length} saved words.</p><button className="primary" onClick={() => { setFinished(false); setReviewIndex(0); setRevealed(false) }}>Review again →</button></div> : <><div className="review-count">CARD {Math.min(reviewIndex + 1, words.length)} OF {words.length}</div><button className="flashcard" onClick={() => setRevealed(r => !r)}><span>{revealed ? 'THE MEANING' : 'DO YOU REMEMBER?'}</span><strong>{revealed ? (words[Math.min(reviewIndex, words.length - 1)].definition || offlineMeaning(words[Math.min(reviewIndex, words.length - 1)].word) || 'No definition yet. Open this word in Words to retry.') : words[Math.min(reviewIndex, words.length - 1)].word}</strong><small>{revealed ? 'Tap to see the word' : 'Tap to reveal meaning'}</small></button><button className="primary review-next" onClick={nextReview}>{reviewIndex + 1 >= words.length ? 'Finish review' : 'Next word'} →</button></>}</>}
