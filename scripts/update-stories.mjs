@@ -4,7 +4,7 @@ import fs from 'node:fs/promises'
 // Existing story records and their IDs are preserved for reading history.
 const FILE = 'public/stories.json'
 const DIR = 'public/feed'
-const PER_RUN = 30
+const PER_RUN = 25
 const CHUNK_SIZE = 12
 const UA = 'DailyLoreEnglish/4.0 (educational reading; https://github.com/trantienbg2004-rgb/daily-lore-english)'
 const PUBLISH_ONLY = process.argv.includes('--publish-only')
@@ -34,7 +34,7 @@ const categories = [
   {name:'Environment',category:'Category:Environment'},
   {name:'Culture',category:'Category:Culture'},
 ]
-const MAX_CANDIDATES = 130
+const MAX_CANDIDATES = 80
 const valid = s => s && typeof s.title === 'string' && Array.isArray(s.pages) && s.pages.length > 0 && s.pages.every(p => typeof p.text === 'string' && typeof p.image === 'string')
 const id = s => s.sourceUrl || s.sourceTitle || `${s.category}:${s.title}`
 const countWords = s => (s.match(/\b[\p{L}\p{N}]+(?:['’\-][\p{L}\p{N}]+)*\b/gu) || []).length
@@ -79,10 +79,35 @@ function buildPages(extract, image, caption) {
   if (pages.length < 3 || pages.reduce((n, p) => n + countWords(p.text), 0) < 240) return []
   return pages
 }
+// All Wikimedia requests are serialized and paced to reduce HTTP 429 errors.
+const sleep = ms => new Promise(resolve => setTimeout(resolve, ms))
+let lastRequest = 0
 async function fetchJson(url) {
-  const response = await fetch(url, { headers: { 'User-Agent': UA, Accept: 'application/json' }, signal: AbortSignal.timeout(20000) })
-  if (!response.ok) throw Error(`HTTP ${response.status}`)
-  return response.json()
+  for (let attempt = 0; attempt < 5; attempt++) {
+    const wait = Math.max(0, 1400 - (Date.now() - lastRequest))
+    if (wait) await sleep(wait)
+    lastRequest = Date.now()
+    let response
+    try {
+      response = await fetch(url, {
+        headers: {'User-Agent': UA, Accept:'application/json'},
+        signal: AbortSignal.timeout(25000)
+      })
+    } catch (error) {
+      if (attempt === 4) throw error
+      await sleep(Math.min(30000, 2500 * 2 ** attempt))
+      continue
+    }
+    if (response.ok) return response.json()
+    if (![429,500,502,503,504].includes(response.status) || attempt === 4)
+      throw Error(`HTTP ${response.status}`)
+    const seconds = Number(response.headers.get('retry-after'))
+    const backoff = Number.isFinite(seconds) && seconds > 0
+      ? Math.min(120000, seconds * 1000)
+      : Math.min(90000, 5000 * 2 ** attempt)
+    console.warn(`Wikipedia HTTP ${response.status}; waiting ${Math.ceil(backoff / 1000)}s before retry`)
+    await sleep(backoff)
+  }
 }
 // Wikipedia image gallery: use images embedded in the original article, not random search.
 // Images are only attached when Wikimedia metadata provides an open licence.
@@ -126,6 +151,7 @@ async function getArticle(topic) {
   const caption = `Wikipedia / Wikimedia Commons · Attribution and image licensing: see original source`
   const pages = buildPages(p.extract, image, caption)
   // Source images are spread across sections; no invented or unrelated photographs.
+  if (!pages.length) throw Error('Insufficient clean text')
   const gallery = await getArticleImages(p.title, image, caption)
   if (gallery.length > 1) {
     for (let i = 0; i < pages.length; i++) {
@@ -179,7 +205,7 @@ if (!PUBLISH_ONLY) {
   try { randomCandidates.push(...(await discoverRandom()).filter(t=>!skipTitle(t)).map(title=>({title,category:'All topics'}))) }
   catch(e) { console.warn(`Random discovery unavailable: ${e.message}`) }
   const start = state.round % categories.length
-  const order = [...categories.slice(start),...categories.slice(0,start)]
+  const order = [...categories.slice(start),...categories.slice(0,start)].slice(0,8)
   for (const group of order) {
     try {
       let page = await discoverCategory(group.category,state.cursors[group.category])
@@ -190,7 +216,7 @@ if (!PUBLISH_ONLY) {
   }
   try { recentCandidates.push(...(await discoverRecent()).filter(t=>!skipTitle(t)).slice(0,40).map(title=>({title,category:'New on Wikipedia'}))) }
   catch(e) { console.warn(`Recent pages unavailable: ${e.message}`) }
-  state.round = (state.round + 1) % categories.length
+  state.round = (state.round + 8) % categories.length
   // Mix the three discovery streams fairly, so all subjects have a chance.
   const candidates = []
   const pools = [randomCandidates, categoryCandidates, recentCandidates]

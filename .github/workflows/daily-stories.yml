@@ -1,7 +1,7 @@
 name: Update knowledge and news stories
 on:
   schedule:
-    - cron: '17 0,4,8,12,16,20 * * *'
+    - cron: '7,37 * * * *'
   workflow_dispatch:
 permissions:
   contents: write
@@ -11,7 +11,7 @@ concurrency:
 jobs:
   update:
     runs-on: ubuntu-latest
-    timeout-minutes: 8
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
         with:
@@ -25,9 +25,9 @@ jobs:
         run: |
           git config user.name 'daily-lore-bot'
           git config user.email 'daily-lore-bot@users.noreply.github.com'
-          git add public/stories.json public/feed
+          git add public/stories.json public/feed/
           if ! git diff --cached --quiet; then
-            git commit -m 'Update daily lore news and discoveries'
+            git commit -m 'Update daily news library and feed'
             git pull --rebase origin main
             git push origin HEAD:main
           fi
