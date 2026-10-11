@@ -111,17 +111,17 @@ async function fetchJson(url) {
 }
 // Wikipedia image gallery: use images embedded in the original article, not random search.
 // Images are only attached when Wikimedia metadata provides an open licence.
-async function getArticleImages(title, leadImage, leadCaption) {
+async function getArticleImages(title, leadImage, leadCaption, host = 'en.wikipedia.org') {
   const result = [{ image: leadImage, caption: leadCaption }]
   try {
-    const u = new URL('https://en.wikipedia.org/w/api.php')
+    const u = new URL(`https://${host}/w/api.php`)
     Object.entries({action:'parse',page:title,prop:'images',format:'json'}).forEach(([k,v])=>u.searchParams.set(k,v))
     const parsed = await fetchJson(u)
     const names = (parsed.parse?.images || []).filter(name =>
       /\.(jpg|jpeg|png|webp)$/i.test(name) && !/\b(icon|logo|flag|map locator|symbol|coat of arms|wikimedia|commons|question mark|edit|button)\b/i.test(name)
     ).slice(0, 22)
     if (!names.length) return result
-    const info = new URL('https://en.wikipedia.org/w/api.php')
+    const info = new URL(`https://${host}/w/api.php`)
     Object.entries({action:'query',prop:'imageinfo',iiprop:'url|size|extmetadata',iiurlwidth:'1100',titles:names.map(n=>'File:'+n).join('|'),format:'json',formatversion:'2'}).forEach(([k,v])=>info.searchParams.set(k,v))
     const data = await fetchJson(info)
     for (const file of data.query?.pages || []) {
@@ -139,20 +139,21 @@ async function getArticleImages(title, leadImage, leadCaption) {
   return result
 }
 
-async function getArticle(topic) {
-  const u = new URL('https://en.wikipedia.org/w/api.php')
+async function getArticle(topic, source = 'wikipedia') {
+  const host = source === 'wikivoyage' ? 'en.wikivoyage.org' : 'en.wikipedia.org'
+  const u = new URL(`https://${host}/w/api.php`)
   Object.entries({ action: 'query', prop: 'extracts|pageimages|info', exintro: '0', explaintext: '1', exsectionformat: 'plain', piprop: 'original|thumbnail', pithumbsize: '1200', inprop: 'url', redirects: '1', format: 'json', formatversion: '2', titles: topic }).forEach(([k, v]) => u.searchParams.set(k, v))
   const data = await fetchJson(u)
   const p = data.query?.pages?.[0]
   if (!p || p.missing || !p.extract) throw Error('No article text')
   const image = p.original?.source || p.thumbnail?.source
   if (!image || !/^https:\/\//.test(image)) throw Error('No article image')
-  const url = p.fullurl || `https://en.wikipedia.org/wiki/${encodeURIComponent(p.title.replace(/ /g, '_'))}`
-  const caption = `Wikipedia / Wikimedia Commons · Attribution and image licensing: see original source`
+  const url = p.fullurl || `https://${host}/wiki/${encodeURIComponent(p.title.replace(/ /g, '_'))}`
+  const caption = `${source === 'wikivoyage' ? 'Wikivoyage' : 'Wikipedia'} / Wikimedia Commons · Attribution and image licensing: see original source`
   const pages = buildPages(p.extract, image, caption)
   // Source images are spread across sections; no invented or unrelated photographs.
   if (!pages.length) throw Error('Insufficient clean text')
-  const gallery = await getArticleImages(p.title, image, caption)
+  const gallery = await getArticleImages(p.title, image, caption, host)
   if (gallery.length > 1) {
     for (let i = 0; i < pages.length; i++) {
       const choice = gallery[Math.min(gallery.length - 1, Math.floor(i * gallery.length / pages.length))]
@@ -161,7 +162,7 @@ async function getArticle(topic) {
     }
   }
   if (!pages.length) throw Error('Insufficient clean text')
-  return { category: 'DISCOVER · WIKIPEDIA', title: p.title.toUpperCase(), subtitle: 'Read the full story · Wikipedia', sourceTitle: topic, sourceUrl: url, contentType: 'knowledge', license: 'CC BY-SA 4.0 (verify source page and media license)', attribution: `Wikipedia contributors, “${p.title}”, ${url}`, pages }
+  return { category: `DISCOVER · ${source.toUpperCase()}`, title: p.title.toUpperCase(), subtitle: `Read the full story · ${source === 'wikivoyage' ? 'Wikivoyage' : 'Wikipedia'}`, sourceTitle: topic, sourceUrl: url, contentType: 'knowledge', license: source === 'wikivoyage' ? 'CC BY-SA 3.0 (verify source page and media license)' : 'CC BY-SA 4.0 (verify source page and media license)', attribution: `${source === 'wikivoyage' ? 'Wikivoyage' : 'Wikipedia'} contributors, “${p.title}”, ${url}`, pages }
 }
 
 async function discoverCategory(category, cursor) {
@@ -183,6 +184,25 @@ async function discoverRandom() {
   const result = await fetchJson(u)
   return (result.query?.random || []).map(x=>x.title)
 }
+// Wikivoyage provides long, openly licensed destination articles (second source).
+// This seed list rotates across runs; it does not limit Wikipedia discovery.
+const destinations = [
+ 'Paris','London','New York City','Tokyo','Rome','Bangkok','Singapore','Hong Kong',
+ 'Seoul','Beijing','Shanghai','Hanoi','Ho Chi Minh City','Da Nang','Hoi An','Hue',
+ 'Sydney','Melbourne','Auckland','Toronto','Vancouver','Montreal','Mexico City',
+ 'Rio de Janeiro','Buenos Aires','Lima','Cusco','Santiago de Chile','Bogotá',
+ 'Cairo','Marrakech','Cape Town','Nairobi','Zanzibar','Istanbul','Athens','Berlin',
+ 'Vienna','Prague','Budapest','Warsaw','Amsterdam','Brussels','Copenhagen',
+ 'Stockholm','Oslo','Helsinki','Reykjavik','Lisbon','Madrid','Barcelona',
+ 'Venice','Florence','Naples','Milan','Edinburgh','Dublin','Oxford','Cambridge',
+ 'Kyoto','Osaka','Hiroshima','Nara','Taipei','Manila','Jakarta','Bali','Kuala Lumpur',
+ 'Phnom Penh','Siem Reap','Vientiane','Luang Prabang','Yangon','Kathmandu',
+ 'Delhi','Mumbai','Jaipur','Agra','Varanasi','Colombo','Dubai','Abu Dhabi',
+ 'Jerusalem','Petra','Amman','Doha','Muscat','Tashkent','Samarkand','Almaty',
+ 'Grand Canyon','Yellowstone National Park','Yosemite National Park',
+ 'Great Barrier Reef','Galápagos Islands','Mount Everest','Antarctica',
+ 'Swiss Alps','Lake Como','Sahara','Amazon rainforest'
+]
 function normalizedTitle(value) { return String(value||'').replace(/_/g,' ').trim().toLowerCase() }
 const skipTitle = title => !title || /^(list of|outline of|index of|timeline of|glossary of|bibliography of|portal:)/i.test(title) || /\(disambiguation\)$/i.test(title)
 const raw = JSON.parse(await fs.readFile(FILE, 'utf8'))
@@ -194,11 +214,14 @@ const urls = new Set(library.map(s => s.sourceUrl).filter(Boolean))
 const titles = new Set(library.flatMap(s => [s.sourceTitle, s.title, s.sourceUrl?.split('/wiki/')[1] ? decodeURIComponent(s.sourceUrl.split('/wiki/')[1]) : ''].filter(Boolean).map(normalizedTitle)))
 let added = 0
 let attempted = 0
+let bySource = { wikipedia: 0, wikivoyage: 0 }
 let state = {round:0,cursors:{}}
 try { state = {...state,...JSON.parse(await fs.readFile(DISCOVERY_FILE,'utf8'))} } catch {}
 if (!state.cursors || typeof state.cursors !== 'object') state.cursors = {}
 if (!PUBLISH_ONLY) {
   const randomCandidates = []
+  const voyageCandidates = destinations.slice(state.voyageCursor || 0, (state.voyageCursor || 0) + 22).map(title => ({title,category:'Travel & places',source:'wikivoyage'}))
+  state.voyageCursor = ((state.voyageCursor || 0) + 22) % destinations.length
   const categoryCandidates = []
   const recentCandidates = []
   // Random pages span all topics, not just the selected category list.
@@ -219,18 +242,18 @@ if (!PUBLISH_ONLY) {
   state.round = (state.round + 8) % categories.length
   // Mix the three discovery streams fairly, so all subjects have a chance.
   const candidates = []
-  const pools = [randomCandidates, categoryCandidates, recentCandidates]
+  const pools = [voyageCandidates, randomCandidates, categoryCandidates, recentCandidates]
   while (pools.some(p => p.length) && candidates.length < 240) {
     for (const pool of pools) if (pool.length) candidates.push(pool.shift())
   }
-  const uniqueCandidates = [...new Map(candidates.map(x=>[normalizedTitle(x.title),x])).values()]
+  const uniqueCandidates = [...new Map(candidates.map(x=>[`${x.source || 'wikipedia'}:${normalizedTitle(x.title)}`,x])).values()]
   // Interleave sources to keep subject variety; do not publish pages with poor text or no image.
   for (const candidate of uniqueCandidates) {
     if (added >= PER_RUN || attempted >= MAX_CANDIDATES) break
-    if (titles.has(normalizedTitle(candidate.title))) continue
+    if (candidate.source !== 'wikivoyage' && titles.has(normalizedTitle(candidate.title))) continue
     attempted++
     try {
-      const story = await getArticle(candidate.title)
+      const story = await getArticle(candidate.title, candidate.source || 'wikipedia')
       if (urls.has(story.sourceUrl) || titles.has(normalizedTitle(story.title))) continue
       story.sourceTitle = story.title.replace(/_/g,' ')
       story.category = `DISCOVER · ${candidate.category.toUpperCase()}`
@@ -238,6 +261,7 @@ if (!PUBLISH_ONLY) {
       urls.add(story.sourceUrl)
       titles.add(normalizedTitle(story.title))
       added++
+      bySource[candidate.source || 'wikipedia']++
       console.log(`Discovered [${candidate.category}]: ${story.title} (${story.pages.length} pages)`)
     } catch(error) { console.warn(`Skipped ${candidate.title}: ${error.message}`) }
   }
@@ -250,4 +274,4 @@ const chunks = Math.ceil(library.length / CHUNK_SIZE)
 for (let i = 0; i < chunks; i++) await fs.writeFile(`${DIR}/${String(i).padStart(4, '0')}.json`, JSON.stringify(library.slice(i * CHUNK_SIZE, (i + 1) * CHUNK_SIZE)))
 for (const filename of await fs.readdir(DIR)) if (/^\d{4}\.json$/.test(filename) && Number(filename.slice(0, 4)) >= chunks) await fs.unlink(`${DIR}/${filename}`)
 await fs.writeFile(`${DIR}/manifest.json`, JSON.stringify({ version: 2, chunks, total: library.length, updatedAt: new Date().toISOString() }))
-console.log(`${added} discovered articles added; total ${library.length}; published ${chunks} chunks; ${attempted} candidates checked`)
+console.log(`${added} discovered articles added; total ${library.length}; published ${chunks} chunks; ${attempted} candidates checked; Wikipedia +${bySource.wikipedia}; Wikivoyage +${bySource.wikivoyage}`)
