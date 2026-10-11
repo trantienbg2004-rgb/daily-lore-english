@@ -1,144 +1,111 @@
 import fs from 'node:fs/promises'
 
-// Daily Lore English: free, incremental feed builder (Node.js 22+).
-// --publish-only rebuilds the feed without fetching external content.
+// Daily Lore English: full-text Wikipedia reader; no AI key, no paid service.
+// Existing story records and their IDs are preserved for reading history.
 const FILE = 'public/stories.json'
-const FEED_DIR = 'public/feed'
-const MAX_STORIES = 5000
+const DIR = 'public/feed'
+const PER_RUN = 12
 const CHUNK_SIZE = 12
-const NEWS_PER_SOURCE = 5
-const KNOWLEDGE_PER_RUN = 18
-const MAX_NEWS_AGE_HOURS = 72
+const UA = 'DailyLoreEnglish/4.0 (educational reading; https://github.com/trantienbg2004-rgb/daily-lore-english)'
 const PUBLISH_ONLY = process.argv.includes('--publish-only')
-const UA = 'DailyLoreEnglish/3.0 (educational reading; https://github.com/trantienbg2004-rgb/daily-lore-english)'
 const topics = [
+
   'Aurora','Octopus','Bioluminescence','Coral reef','Hummingbird','Black hole','Honey bee','Volcano','Deep sea','Rainforest','Solar eclipse','Saturn','Mushroom','Ocean current','Antarctica','Dolphin','Photosynthesis','Mars','Glacier','Butterfly','Tardigrade','Milky Way','Sleep','Memory','Earthquake','Red panda','Mangrove','Comet','Seahorse','Meteor shower','Penguin','Tropical cyclone','Giant panda','Axolotl','Tsunami','Water cycle','Lunar eclipse','Koala','Venus','Cave','Platypus','Jellyfish','Earth atmosphere','Quantum mechanics','Ocean','Neutron star','Polar bear','Arctic Ocean','Blue whale','Cuttlefish','Baobab','Telescope','Volcanic lightning','Microbiome','Geothermal energy','Monsoon','Mangrove forest','Coral bleaching','Solar wind',
   'Pangolin','Narwhal','Orca','Sea otter','Manta ray','Whale shark','Electric eel','Leafcutter ant','Firefly','Praying mantis','Dragonfly','Chameleon','Komodo dragon','Snow leopard','Arctic fox','Fennec fox','Sloth','Capybara','Meerkat','Raven','Albatross','Puffin','Flamingo','Kingfisher','Toucan','Woodpecker','Owl','Bat','Cicada','Salamander','Poison dart frog','Sea turtle','Starfish','Sea anemone','Kelp forest','Seagrass','Peat bog','Wetland','Taiga','Tundra','Savanna','Desert','Sand dune','Oasis','Canyon','Fjord','Geyser','Hot spring','Sinkhole','Stalactite','Cenote','Delta','Estuary','Atoll','Barrier reef','Mid-ocean ridge','Mariana Trench','Great Barrier Reef','Amazon rainforest','Sahara','Himalayas','Mount Everest','Lake Baikal','Dead Sea','Galápagos Islands',
   'Northern lights','Light pollution','Rainbow','Halo (optical phenomenon)','Mirage','Lightning','Thunder','Hail','Snowflake','Cloud','Fog','Atmospheric river','Jet stream','El Niño','La Niña','Ocean gyre','Tide','Rip current','Rogue wave','Bioluminescent bay','Ecosystem','Food web','Symbiosis','Mutualism (biology)','Mycorrhiza','Pollination','Seed dispersal','Carnivorous plant','Venus flytrap','Pitcher plant','Bamboo','Redwood','Giant sequoia','Banyan','Ginkgo','Lichen','Moss','Fern','Algae','Phytoplankton','Zooplankton','Krill','Coral polyp','Cell (biology)','DNA','RNA','Chromosome','Evolution','Natural selection','Adaptation','Camouflage','Mimicry','Hibernation','Migration (ecology)','Circadian rhythm','REM sleep','Dream','Human brain','Neuron','Neuroplasticity','Synesthesia','Placebo','Immune system','Gut microbiota',
   'Exoplanet','Habitable zone','Proxima Centauri','Andromeda Galaxy','Nebula','Supernova','Pulsar','Magnetar','Quasar','Dark matter','Dark energy','Gravitational wave','Event horizon','Accretion disk','Asteroid','Kuiper belt','Oort cloud','Dwarf planet','Pluto','Europa (moon)','Enceladus','Titan (moon)','Io (moon)','Ganymede (moon)','Jupiter','Neptune','Uranus','Mercury (planet)','International Space Station','James Webb Space Telescope','Hubble Space Telescope','Voyager 1','Apollo 11','Artemis program','Solar flare','Coronal mass ejection','Magnetosphere','Van Allen radiation belt',
-  'Plate tectonics','Continental drift','Subduction','Fault (geology)','Seismology','Geology','Fossil','Amber','Dinosaur','Trilobite','Ammonite','Mass extinction','Ice age','Permafrost','Greenhouse effect','Climate change','Carbon cycle','Nitrogen cycle','Ozone layer','Renewable energy','Wind turbine','Hydroelectricity','Tidal power','Solar power','Battery','Lithium-ion battery','Semiconductor','Transistor','Fiber-optic communication','Laser','Holography','Microscope','Electron microscope','Magnetic resonance imaging','3D printing','Robotics','Artificial intelligence','Machine learning','Cryptography','Internet','World Wide Web','GPS','Satellite navigation','Geostationary orbit','International Date Line','Time zone','Leap year','Calendar','Prime number','Fibonacci sequence','Fractal','Chaos theory','Probability','Infinity','Pi','Golden ratio'
-]
-const feeds = [
-  { url: 'https://feeds.bbci.co.uk/news/world/rss.xml', category: 'WORLD NEWS', source: 'BBC News' },
-  { url: 'https://feeds.bbci.co.uk/news/science_and_environment/rss.xml', category: 'SCIENCE NEWS', source: 'BBC News' },
-  { url: 'https://feeds.bbci.co.uk/news/technology/rss.xml', category: 'TECH NEWS', source: 'BBC News' },
-]
-const decode = value => String(value || '')
-  .replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g, '$1')
-  .replace(/<[^>]+>/g, ' ')
-  .replace(/&(#x[0-9a-f]+|#\d+|amp|lt|gt|quot|apos|nbsp|ndash|mdash|hellip);/gi, (_, entity) => {
-    const named = { amp: '&', lt: '<', gt: '>', quot: '"', apos: "'", nbsp: ' ', ndash: '–', mdash: '—', hellip: '…' }
-    if (entity.startsWith('#')) {
-      const n = entity[1]?.toLowerCase() === 'x' ? parseInt(entity.slice(2), 16) : parseInt(entity.slice(1), 10)
-      return Number.isFinite(n) && n > 0 && n <= 0x10ffff ? String.fromCodePoint(n) : ''
+  'Plate tectonics','Continental drift','Subduction','Fault (geology)','Seismology','Geology','Fossil','Amber','Dinosaur','Trilobite','Ammonite','Mass extinction','Ice age','Permafrost','Greenhouse effect','Climate change','Carbon cycle','Nitrogen cycle','Ozone layer','Renewable energy','Wind turbine','Hydroelectricity','Tidal power','Solar power','Battery','Lithium-ion battery','Semiconductor','Transistor','Fiber-optic communication','Laser','Holography','Microscope','Electron microscope','Magnetic resonance imaging','3D printing','Robotics','Artificial intelligence','Machine learning','Cryptography','Internet','World Wide Web','GPS','Satellite navigation','Geostationary orbit','International Date Line','Time zone','Leap year','Calendar','Prime number','Fibonacci sequence','Fractal','Chaos theory','Probability','Infinity','Pi','Golden ratio']
+const valid = s => s && typeof s.title === 'string' && Array.isArray(s.pages) && s.pages.length > 0 && s.pages.every(p => typeof p.text === 'string' && typeof p.image === 'string')
+const id = s => s.sourceUrl || s.sourceTitle || `${s.category}:${s.title}`
+const countWords = s => (s.match(/\b[\p{L}\p{N}]+(?:['’\-][\p{L}\p{N}]+)*\b/gu) || []).length
+const sentenceSegmenter = new Intl.Segmenter('en', { granularity: 'sentence' })
+const sentences = text => [...sentenceSegmenter.segment(text)].map(x => x.segment.trim()).filter(Boolean)
+const normalize = text => String(text || '').replace(/\[[0-9]+\]/g, '').replace(/\s+/g, ' ').trim()
+const cleanParagraphs = extract => String(extract || '').split(/\n\s*\n|\n/)
+  .map(normalize)
+  .filter(p => countWords(p) >= 18 && !/^(see also|references|external links|notes|further reading|bibliography)\b/i.test(p))
+
+function buildPages(extract, image, caption) {
+  const paragraphs = cleanParagraphs(extract)
+  const pieces = []
+  for (const paragraph of paragraphs) {
+    if (pieces.reduce((n, p) => n + countWords(p), 0) >= 800) break
+    for (const sentence of sentences(paragraph)) {
+      // The plain-text Wikipedia API occasionally exposes broken IPA/parentheses.
+      if (/^[\s:;,.)\]]/.test(sentence) || /[([]\s*$/.test(sentence)) continue
+      if (countWords(sentence) < 5) continue
+      pieces.push(sentence)
+      if (pieces.reduce((n, p) => n + countWords(p), 0) >= 800) break
     }
-    return named[entity.toLowerCase()] || ''
-  }).replace(/\s+/g, ' ').trim()
-const field = (xml, tag) => decode(xml.match(new RegExp(`<${tag}(?:\\s[^>]*)?>([\\s\\S]*?)<\\/${tag}>`, 'i'))?.[1] || '')
-const isHttps = value => typeof value === 'string' && /^https:\/\//i.test(value)
-const fetchWithTimeout = async (url, accept = 'application/json') => {
-  const response = await fetch(url, { headers: { 'User-Agent': UA, Accept: accept }, signal: AbortSignal.timeout(14000) })
-  if (!response.ok) throw Error(`HTTP ${response.status} for ${url}`)
-  return response
-}
-const storyId = item => item.sourceUrl || item.sourceTitle || `${item.category}:${item.title}`
-const validStory = item => item && typeof item.title === 'string' && Array.isArray(item.pages) && item.pages.length > 0 && item.pages.every(page => typeof page.text === 'string' && typeof page.image === 'string')
-const sentenceSplit = text => (text.match(/[^.!?]+[.!?]+(?:[”"']|$)?|[^.!?]+$/g) || []).map(s => s.trim()).filter(Boolean)
-const articlePages = (sentences, image, caption) => {
-  const pages = []
-  for (let i = 0; i < sentences.length && pages.length < 5; i += 2) {
-    const text = sentences.slice(i, i + 2).join(' ')
-    if (text) pages.push({ image, caption, text })
   }
+  const pages = []
+  let current = []
+  let currentWords = 0
+  for (const sentence of pieces) {
+    const n = countWords(sentence)
+    if (currentWords + n > 115 && currentWords >= 45) {
+      pages.push({ image, caption, text: current.join(' ') })
+      current = []
+      currentWords = 0
+    }
+    current.push(sentence)
+    currentWords += n
+  }
+  if (current.length) {
+    if (pages.length && currentWords < 35) pages[pages.length - 1].text += ' ' + current.join(' ')
+    else pages.push({ image, caption, text: current.join(' ') })
+  }
+  // Reject broken/short extracts; do not publish RSS-length filler.
+  if (pages.length < 3 || pages.reduce((n, p) => n + countWords(p.text), 0) < 240) return []
   return pages
 }
-const rawLibrary = JSON.parse(await fs.readFile(FILE, 'utf8'))
-if (!Array.isArray(rawLibrary) || !rawLibrary.length || !rawLibrary.every(validStory)) throw Error('Invalid story library; refusing to overwrite')
-// Preserve existing read-history IDs; never mutate existing story URLs or titles.
-const unique = new Map()
-for (const item of rawLibrary) if (!unique.has(storyId(item))) unique.set(storyId(item), item)
-const library = [...unique.values()]
-const knownUrls = new Set(library.map(x => x.sourceUrl).filter(Boolean))
-const knownTopics = new Set(library.map(x => x.sourceTitle).filter(Boolean))
-let newsAdded = 0
-let knowledgeAdded = 0
+async function fetchJson(url) {
+  const response = await fetch(url, { headers: { 'User-Agent': UA, Accept: 'application/json' }, signal: AbortSignal.timeout(20000) })
+  if (!response.ok) throw Error(`HTTP ${response.status}`)
+  return response.json()
+}
+async function getArticle(topic) {
+  const u = new URL('https://en.wikipedia.org/w/api.php')
+  Object.entries({ action: 'query', prop: 'extracts|pageimages|info', exintro: '0', explaintext: '1', exsectionformat: 'plain', piprop: 'original|thumbnail', pithumbsize: '1200', inprop: 'url', redirects: '1', format: 'json', formatversion: '2', titles: topic }).forEach(([k, v]) => u.searchParams.set(k, v))
+  const data = await fetchJson(u)
+  const p = data.query?.pages?.[0]
+  if (!p || p.missing || !p.extract) throw Error('No article text')
+  const image = p.original?.source || p.thumbnail?.source
+  if (!image || !/^https:\/\//.test(image)) throw Error('No article image')
+  const url = p.fullurl || `https://en.wikipedia.org/wiki/${encodeURIComponent(p.title.replace(/ /g, '_'))}`
+  const caption = `Wikipedia / Wikimedia Commons · Attribution and image licensing: see original source`
+  const pages = buildPages(p.extract, image, caption)
+  if (!pages.length) throw Error('Insufficient clean text')
+  return { category: 'DISCOVER · WIKIPEDIA', title: p.title.toUpperCase(), subtitle: 'Read the full story · Wikipedia', sourceTitle: topic, sourceUrl: url, contentType: 'knowledge', license: 'CC BY-SA 4.0 (verify source page and media license)', attribution: `Wikipedia contributors, “${p.title}”, ${url}`, pages }
+}
 
+const raw = JSON.parse(await fs.readFile(FILE, 'utf8'))
+if (!Array.isArray(raw) || !raw.length || !raw.every(valid)) throw Error('Invalid existing library; refusing to overwrite')
+const map = new Map()
+for (const s of raw) if (!map.has(id(s))) map.set(id(s), s)
+const library = [...map.values()]
+const urls = new Set(library.map(s => s.sourceUrl).filter(Boolean))
+const titles = new Set(library.map(s => (s.sourceTitle || '').toLowerCase()).filter(Boolean))
+let added = 0
 if (!PUBLISH_ONLY) {
-  for (const feed of feeds) {
-    try {
-      const xml = await (await fetchWithTimeout(feed.url, 'application/rss+xml, application/xml, text/xml, */*')).text()
-      const items = [...xml.matchAll(/<item(?:\s[^>]*)?>([\s\S]*?)<\/item>/gi)].map(m => m[1])
-      let fromThisFeed = 0
-      for (const item of items) {
-        if (fromThisFeed >= NEWS_PER_SOURCE || library.length >= MAX_STORIES) break
-        const title = field(item, 'title')
-        const link = field(item, 'link')
-        const desc = field(item, 'description')
-        const date = Date.parse(field(item, 'pubDate'))
-        const image = item.match(/<media:content\b[^>]*\burl=["']([^"']+)["'][^>]*\bmedium=["']image["']/i)?.[1]
-          || item.match(/<media:thumbnail\b[^>]*\burl=["']([^"']+)["']/i)?.[1]
-          || item.match(/<media:content\b[^>]*\burl=["']([^"']+)["']/i)?.[1]
-        if (!title || !isHttps(link) || knownUrls.has(link) || !desc || !isHttps(image)) continue
-        if (!Number.isFinite(date) || date > Date.now() + 3600000 || Date.now() - date > MAX_NEWS_AGE_HOURS * 3600000) continue
-        const preview = desc.split(/\s+/).slice(0, 45).join(' ').trim()
-        if (preview.length < 55) continue
-        // RSS previews are deliberately short: never invent a full article from a headline.
-        library.unshift({
-          category: feed.category,
-          title: title.toUpperCase(),
-          subtitle: `${feed.source} · ${new Date(date).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' })}`,
-          sourceTitle: title, sourceUrl: link, publishedAt: new Date(date).toISOString(), contentType: 'news',
-          pages: [{ image, caption: `Image from ${feed.source} RSS · see original source for credits`, text: `${preview}${/[.!?]$/.test(preview) ? '' : '.'}` }],
-        })
-        knownUrls.add(link)
-        fromThisFeed++
-        newsAdded++
-      }
-      console.log(`News source ${feed.category}: ${fromThisFeed} new previews`)
-    } catch (error) { console.warn(`News source ${feed.category} skipped: ${error.message}`) }
-  }
-
   for (const topic of topics) {
-    if (knowledgeAdded >= KNOWLEDGE_PER_RUN || library.length >= MAX_STORIES) break
-    if (knownTopics.has(topic)) continue
+    if (added >= PER_RUN) break
+    if (titles.has(topic.toLowerCase())) continue
     try {
-      const url = `https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(topic)}`
-      const data = await (await fetchWithTimeout(url)).json()
-      if (data.type === 'disambiguation' || !data.extract || data.extract.length < 220) continue
-      const sentences = sentenceSplit(data.extract)
-      if (sentences.length < 4) continue
-      // originalimage is generally higher resolution than thumbnail.
-      const image = isHttps(data.originalimage?.source) ? data.originalimage.source : data.thumbnail?.source
-      if (!isHttps(image)) continue
-      const sourceUrl = data.content_urls?.desktop?.page || `https://en.wikipedia.org/wiki/${encodeURIComponent(topic.replace(/ /g, '_'))}`
-      if (knownUrls.has(sourceUrl)) { knownTopics.add(topic); continue }
-      const pages = articlePages(sentences, image, `${data.title} · Wikimedia Commons / Wikipedia; image license and author: see source`)
-      if (pages.length < 2) continue
-      library.unshift({ category: 'DISCOVER · FROM WIKIPEDIA', title: data.title.toUpperCase(), subtitle: data.description || 'Discover something about our world', sourceTitle: topic, sourceUrl, contentType: 'knowledge', pages })
-      knownTopics.add(topic)
-      knownUrls.add(sourceUrl)
-      knowledgeAdded++
-      console.log(`Knowledge: ${topic} (${pages.length} pages)`)
-    } catch (error) { console.warn(`Wikipedia topic skipped (${topic}): ${error.message}`) }
+      const story = await getArticle(topic)
+      if (urls.has(story.sourceUrl)) continue
+      library.unshift(story)
+      urls.add(story.sourceUrl)
+      titles.add(topic.toLowerCase())
+      added++
+      console.log(`Full article: ${story.title} (${story.pages.length} pages, ${story.pages.reduce((n, p) => n + countWords(p.text), 0)} words)`)
+    } catch (error) { console.warn(`Skipped ${topic}: ${error.message}`) }
   }
 }
-
-// New additions are at the beginning; older existing stories remain available.
-// Enforce the cap without silently removing already-published stories.
-if (library.length > MAX_STORIES) console.warn(`Library has ${library.length} stories; preserving existing entries rather than deleting read-history references`)
-if (newsAdded || knowledgeAdded || library.length !== rawLibrary.length) {
-  await fs.writeFile(FILE, JSON.stringify(library, null, 2) + '\n')
-}
-await fs.mkdir(FEED_DIR, { recursive: true })
+if (added) await fs.writeFile(FILE, JSON.stringify(library, null, 2) + '\n')
+await fs.mkdir(DIR, { recursive: true })
 const chunks = Math.ceil(library.length / CHUNK_SIZE)
-for (let i = 0; i < chunks; i++) {
-  await fs.writeFile(`${FEED_DIR}/${String(i).padStart(4, '0')}.json`, JSON.stringify(library.slice(i * CHUNK_SIZE, (i + 1) * CHUNK_SIZE)))
-}
-// Remove only obsolete numbered feed chunks.
-for (const name of await fs.readdir(FEED_DIR)) {
-  if (/^\d{4}\.json$/.test(name) && Number(name.slice(0, 4)) >= chunks) await fs.unlink(`${FEED_DIR}/${name}`)
-}
-const manifest = { version: 2, chunks, total: library.length, updatedAt: new Date().toISOString() }
-await fs.writeFile(`${FEED_DIR}/manifest.json`, JSON.stringify(manifest))
-console.log(`${newsAdded} news previews, ${knowledgeAdded} knowledge stories added; total ${library.length}`)
-console.log(`Published ${chunks} feed chunks for ${library.length} stories`)
+for (let i = 0; i < chunks; i++) await fs.writeFile(`${DIR}/${String(i).padStart(4, '0')}.json`, JSON.stringify(library.slice(i * CHUNK_SIZE, (i + 1) * CHUNK_SIZE)))
+for (const filename of await fs.readdir(DIR)) if (/^\d{4}\.json$/.test(filename) && Number(filename.slice(0, 4)) >= chunks) await fs.unlink(`${DIR}/${filename}`)
+await fs.writeFile(`${DIR}/manifest.json`, JSON.stringify({ version: 2, chunks, total: library.length, updatedAt: new Date().toISOString() }))
+console.log(`${added} full articles added; total ${library.length}; published ${chunks} chunks`)
