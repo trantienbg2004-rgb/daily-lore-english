@@ -8,13 +8,15 @@ export async function validateFeed(base=process.cwd()) {
   const n=manifest.chunks
   if(!Number.isSafeInteger(n)||n<1||!Number.isSafeInteger(manifest.total)||manifest.total<1)
     throw Error('Invalid manifest counts')
-  if(n>19000) throw Error('Feed approaching Cloudflare free static asset limit')
+  if(n>18500) throw Error('Feed approaching Cloudflare free tier limit (20,000 static assets); migrate storage before continuing')
+  const maxChunk=Number.isSafeInteger(manifest.chunkSize) ? manifest.chunkSize : 12
+  if(maxChunk<12||maxChunk>48)throw Error('Unsafe feed chunkSize')
   const seen=new Set()
   let total=0
   for(let i=0;i<n;i++) {
     const name=String(i).padStart(4,'0')+'.json'
     const batch=JSON.parse(await fs.readFile(path.join(folder,name),'utf8'))
-    if(!Array.isArray(batch)||batch.length<1||batch.length>12)throw Error(`Bad batch ${name}: ${batch.length} articles`)
+    if(!Array.isArray(batch)||batch.length<1||batch.length>maxChunk)throw Error(`Bad batch ${name}: ${batch.length} articles`)
     for(const article of batch) {
       if(!isStory(article))throw Error(`Invalid article in ${name}`)
       const id=storyId(article)

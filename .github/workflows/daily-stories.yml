@@ -1,8 +1,10 @@
 name: Update knowledge and news stories
 on:
   schedule:
+    # Regular replenishment twice an hour. GitHub may delay scheduled jobs.
     - cron: '7,37 * * * *'
-    - cron: '15 1 * * *'
+    # Four larger backfill waves a day while building the article reserve.
+    - cron: '15 1,7,13,19 * * *'
   workflow_dispatch:
 permissions:
   contents: write
@@ -20,26 +22,30 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Test collector without calling external APIs
-        run: node --test scripts/test/ingestion.test.mjs
-      - name: Fetch and publish long articles
+      - name: Test collector before updating
+        run: node --test scripts/test/*.test.mjs
+      - name: Verify React application builds before touching content
+        run: |
+          npm ci --no-audit --no-fund
+          npm run build
+      - name: Fetch and publish articles with durable queue
         env:
-          BOOTSTRAP: ${{ github.event_name == 'workflow_dispatch' || github.event.schedule == '15 1 * * *' }}
+          BOOTSTRAP: ${{ github.event_name == 'workflow_dispatch' || github.event.schedule == '15 1,7,13,19 * * *' }}
         run: |
           if [ "$BOOTSTRAP" = "true" ]; then
             node scripts/update-stories.mjs --bootstrap
           else
             node scripts/update-stories.mjs
           fi
-      - name: Check feed integrity
+      - name: Check feed integrity before publishing
         run: node scripts/validate-feed.mjs
-      - name: Commit and push if changed
+      - name: Commit and push new articles, cursors and metrics
         run: |
-          git config user.name 'daily-lore-bot'
-          git config user.email 'daily-lore-bot@users.noreply.github.com'
+          git config user.name 'daily-news-bot'
+          git config user.email 'daily-news-bot@users.noreply.github.com'
           git add public/stories.json public/feed/
           if ! git diff --cached --quiet; then
-            git commit -m 'Update daily news content library'
+            git commit -m 'Replenish Daily News evergreen content library'
             git pull --rebase origin main
             git push origin HEAD:main
           fi

@@ -1,14 +1,11 @@
 import { useEffect, useRef, useState } from 'react'
 import './App.css'
+import { initializeSeenHistory, persistReadMarker, readLegacyHistory } from './lib/seenHistory.js'
 import initialStories from './stories.json'
 
 
 // Stable IDs let this device remember read stories across new deployments.
 const storyId = item => item.sourceUrl || item.sourceTitle || `${item.category}:${item.title}`
-const readHistory = () => {
-  try { const value = JSON.parse(localStorage.getItem('dailyLoreSeenV1') || '[]'); return new Set(Array.isArray(value) ? value : []) }
-  catch { return new Set() }
-}
 // Hide legacy one-page RSS summaries while retaining local read history and saved words.
 // Filter only when reading from the published library; do not mutate stored articles.
 const readableStory = item => Array.isArray(item?.pages) && item.pages.length >= 3 &&
@@ -282,8 +279,9 @@ function App() {
   const [feedDone, setFeedDone] = useState(false)
   const [feedLoading, setFeedLoading] = useState(true)
   const feedBusy = useRef(false)
-  const seenRef = useRef(readHistory())
+  const seenRef = useRef(readLegacyHistory())
   const loadedRef = useRef(new Set())
+  const historyDbRef = useRef(null)
   const [page, setPage] = useState(0)
   const [selected, setSelected] = useState('')
   const [lookup, setLookup] = useState({ status: 'idle', options: [] })
@@ -365,7 +363,13 @@ function App() {
       if (version !== feedVersionRef.current || chunkOrderRef.current.length !== count) {
         // Preserve existing queue and reading history; only reset the scan.
         // Newly published chunks can change every old chunk's contents.
-        chunkOrderRef.current = shuffle(Array.from({ length: count }, (_, i) => i))
+        // Fresh chunks first: users who already read thousands of older articles
+        // should not scan through the entire archive before reaching new ones.
+        const n = Math.min(24, count)
+        chunkOrderRef.current = [
+          ...shuffle(Array.from({ length:n }, (_, i) => count - n + i)),
+          ...shuffle(Array.from({ length:count - n }, (_, i) => i)),
+        ]
         cursorRef.current = 0
         feedVersionRef.current = version
       } else if (rescan) {
@@ -424,20 +428,28 @@ function App() {
   const refreshFeed = () => loadFeed(true)
   const storiesRef = useRef(stories)
   storiesRef.current = stories
-  useEffect(() => { loadFeed() }, [])
+  useEffect(() => {
+    let stopped = false
+    initializeSeenHistory().then(({seen,db}) => {
+      if (stopped) {db?.close();return}
+      seenRef.current = seen
+      historyDbRef.current = db
+      loadFeed()
+    })
+    return () => {stopped = true;historyDbRef.current?.close()}
+  }, [])
   useEffect(() => {
     if (!story) return
     const id = storyId(story)
     if (seenRef.current.has(id)) return
     seenRef.current.add(id)
-    try { localStorage.setItem('dailyLoreSeenV1', JSON.stringify([...seenRef.current])) }
-    catch (error) { console.warn('Reading history could not be saved:', error) }
+    persistReadMarker(historyDbRef.current, id, seenRef.current)
   }, [storyIndex, story])
   useEffect(() => {
     if (!feedDone && !feedLoading && !scanFailedRef.current && (stories.length === 0 || stories.length - storyIndex <= 4)) loadFeed()
   }, [storyIndex, stories.length, feedCursor, feedDone, feedLoading])
   // Recheck the manifest when the reader returns to the tab. Also check every
-  // five minutes while the app is open; no need to reload or erase progress.
+  // one minute while the app is open; no need to reload or erase progress.
   useEffect(() => {
     const check = () => {
       if (document.visibilityState === 'visible' && !feedBusy.current) {
@@ -445,7 +457,7 @@ function App() {
         if (doneRef.current) loadFeed(true)
       }
     }
-    const timer = setInterval(check, 5 * 60 * 1000)
+    const timer = setInterval(check, 60 * 1000)
     document.addEventListener('visibilitychange', check)
     window.addEventListener('focus', check)
     return () => {

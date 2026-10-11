@@ -3,15 +3,15 @@ import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { isStory, storyId, normalizedTitle, skipTitle, countWords, mediaWikiHtmlToText, makePages, usableImageName, allowedMediaLicense, decodeEntities } from './lib/content.mjs'
 
-// DAILY NEWS — append-only feed, Wikimedia pageview-based discovery and source-specific parsing.
+// DAILY NEWS V15 — resumable, append-only multi-source library with long-page discovery.
 // No scraping of copyrighted full-length news and no paid AI/API keys.
 const DEFAULTS = {
-  maxArticles: 48, maxCandidates: 140, paceMs: 1600, timeBudgetMs: 13 * 60 * 1000,
-  chunkSize: 12, minWords: 240,
+  maxArticles: 85, maxCandidates: 180, paceMs: 1600, timeBudgetMs: 9 * 60 * 1000,
+  chunkSize: 32, minWords: 240, targetPerDay: 400, reserveGoal: 2500,
 }
 const WIKI = {wikipedia:'en.wikipedia.org', wikivoyage:'en.wikivoyage.org'}
 const REPO = 'https://github.com/trantienbg2004-rgb/daily-lore-english'
-const USER_AGENT = `DailyNewsReader/13.0 (contact: ${REPO}; learning reader) node-fetch/1.0`
+const USER_AGENT = `DailyNewsReader/15.0 (contact: ${REPO}; learning reader) node-fetch/1.0`
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms))
 const iso = () => new Date().toISOString()
 
@@ -100,11 +100,45 @@ export async function fetchWikipediaBatch(candidates,client) {
   if (!candidates.length) return {stories:[],rejected:{}}
   const titles=candidates.map(c=>c.title)
   const result=await client.get(api('wikipedia',{
-    action:'query',prop:'extracts|pageimages',explaintext:1,exsectionformat:'plain',
+    action:'query',prop:'extracts|pageimages|pageprops',ppprop:'wikibase_item',explaintext:1,exsectionformat:'plain',
     piprop:'thumbnail|name',pithumbsize:1000,redirects:1,titles:titles.join('|'),
   }))
   const pages=(result.query?.pages||[]).filter(p=>!p.missing&&!p.invalid)
   const photos=await imageMetadata('wikipedia', pages.map(p=>p.pageimage).filter(Boolean),client)
+  const fallbackImages=new Map()
+  // P18 is the main-image property of the very same Wikipedia article's
+  // Wikidata entity, not an unrelated stock photo. Every file is verified for
+  // license through imageMetadata before reuse.
+  const withoutCover=pages.filter(p=>countWords(p.extract||'')>=DEFAULTS.minWords &&
+    (!p.pageimage || !photos.has(normalizedTitle('File:'+p.pageimage))) &&
+    /^Q\d+$/.test(p.pageprops?.wikibase_item||''))
+  if (withoutCover.length) {
+    try {
+      const ids=[...new Set(withoutCover.map(p=>p.pageprops.wikibase_item))].slice(0,40)
+      const req=new URL('https://www.wikidata.org/w/api.php')
+      Object.entries({action:'wbgetentities',format:'json',ids:ids.join('|'),props:'claims'})
+        .forEach(([k,v])=>req.searchParams.set(k,v))
+      const data=await client.get(req)
+      const images=[]
+      for(const p of withoutCover) {
+        const claim=data.entities?.[p.pageprops.wikibase_item]?.claims?.P18?.[0]?.mainsnak?.datavalue?.value
+        if(typeof claim==='string' && usableImageName(claim)) {
+          fallbackImages.set(normalizedTitle(p.title),claim)
+          images.push(claim)
+        }
+      }
+      const verified=await imageMetadata('wikipedia',images,client)
+      for(const [k,v] of [...fallbackImages]) {
+        const licensed=verified.get(normalizedTitle('File:'+v))
+        if(licensed)fallbackImages.set(k,licensed)
+        else fallbackImages.delete(k)
+      }
+    } catch(error) {
+      if(error instanceof RateLimitError||error instanceof TimeBudgetError)throw error
+      // Image fallback is optional; a Wikidata outage never discards valid
+      // Wikipedia covers or the whole batch.
+    }
+  }
   const byTitle=new Map(candidates.map(c=>[normalizedTitle(c.title),c]))
   for(const r of result.query?.redirects||[]) {
     const old=byTitle.get(normalizedTitle(r.from))
@@ -113,7 +147,7 @@ export async function fetchWikipediaBatch(candidates,client) {
   const stories=[], rejected={}
   for(const page of pages) {
     const candidate=byTitle.get(normalizedTitle(page.title)) || {category:'ALL TOPICS'}
-    const image=page.pageimage && photos.get(normalizedTitle('File:'+page.pageimage))
+    const image=(page.pageimage && photos.get(normalizedTitle('File:'+page.pageimage))) || fallbackImages.get(normalizedTitle(page.title))
     const text=page.extract||''
     if (countWords(text)<DEFAULTS.minWords) {rejected['Insufficient clean text']=(rejected['Insufficient clean text']||0)+1; continue}
     if (!image) {rejected['No reusable article image']=(rejected['No reusable article image']||0)+1; continue}
@@ -210,6 +244,43 @@ const destinations=[
  'Galápagos Islands','Mount Everest','Antarctica','Swiss Alps','Lake Como',
 ]
 
+// Enumerate long, non-redirect pages rather than random stubs. MediaWiki's
+// apminsize filter operates *before* article bodies are downloaded. The cursor
+// is persisted only together with the candidate queue, so no discovery work is
+// lost between runs. This is a discovery mechanism, not a demand on live news.
+export async function discoverLongPages(source, client, state, {limit=200}={}) {
+  if (!WIKI[source]) throw Error('Unknown encyclopedia source')
+  state.longPageCursors ||= {}
+  const opts = {
+    action:'query', list:'allpages', apnamespace:0, apfilterredir:'nonredirects',
+    apminsize:source==='wikipedia' ? 11000 : 8500, aplimit:limit,
+  }
+  if (state.longPageCursors[source]) opts.apcontinue=state.longPageCursors[source]
+  const data=await client.get(api(source,opts))
+  const pages=(data.query?.allpages||[])
+    .filter(p=>typeof p.title==='string' && !skipTitle(p.title))
+    .map(p=>({source,title:p.title,category:source==='wikipedia'?'ALL TOPICS':'TRAVEL & PLACES'}))
+  // Enumerators can reach the end. Start the next sweep at the beginning;
+  // existing URLs are removed against the permanent common library.
+  state.longPageCursors[source]=data.continue?.apcontinue||null
+  return pages
+}
+
+// A queue is essential: an earlier revision advanced discovery cursors after
+// finding 100+ titles but processed only the first handful, silently losing
+// the remainder forever. Serialize the rest and resume next workflow run.
+export function mergeCandidateQueue(existing, discovered, knownKeys=new Set(), failed={}) {
+  const seen=new Set(), out=[]
+  for(const item of [...existing,...discovered]) {
+    if(!item || !WIKI[item.source] || typeof item.title!=='string' || skipTitle(item.title))continue
+    const key=`${item.source}:${normalizedTitle(item.title)}`
+    if(seen.has(key)||knownKeys.has(key)||failed[key])continue
+    seen.add(key)
+    out.push({source:item.source,title:item.title,category:item.category||'ALL TOPICS'})
+  }
+  return out
+}
+
 const formatTopTitle=article=>article.replace(/_/g,' ').trim()
 export function parsePopular(data) {
   return (data.items?.[0]?.articles||[]).map(item => formatTopTitle(item.article || '')).filter(t=>!skipTitle(t))
@@ -248,7 +319,10 @@ async function discovery(client,state,date,log) {
       if (!state.categoryTokens) state.categoryTokens={}
       state.categoryTokens[cat]=result.continue?.cmcontinue||null
       cats.push(...titles.slice(0,14).map(title=>({title,source,category:label})))
-    } catch(e) {if(e instanceof RateLimitError||e instanceof TimeBudgetError)throw e;log.warn(`Category ${cat}: ${e.message}`)}
+    } catch(e) {
+      log.warn(`Category ${cat}: ${e.message}`)
+      if(e instanceof RateLimitError||e instanceof TimeBudgetError) break
+    }
   }
   state.categoryCursor=((state.categoryCursor||0)+4)%categories.length
   pools.push(cats)
@@ -318,88 +392,163 @@ export async function runUpdate({base=process.cwd(), fetchImpl=fetch, date=new D
   const original=await readLibrary(base)
   const folder=path.join(base,'public/feed')
   const stateFile=path.join(folder,'discovery-state.json')
-  let state={categoryTokens:{},voyageQueue:[],failed:{},...await fs.readFile(stateFile,'utf8').then(JSON.parse).catch(()=>({}))}
-  // Legacy cursor names from V11 remain harmless; this version owns the fields above.
-  state.failed||={}
-  for(const [key,timestamp] of Object.entries(state.failed)) if (Date.now()-timestamp>14*86400000) delete state.failed[key]
-  const knownUrls=new Set(original.stories.map(s=>s.sourceUrl).filter(Boolean))
-  const knownKeys=new Set(original.stories.map(s=>rejectionKey(s.sourceUrl?.includes('wikivoyage')?'wikivoyage':'wikipedia',s.sourceTitle||s.title)))
-  const newStories=[], explored=new Set(), counters={wikipedia:0,wikivoyage:0}, failures={}
-  let attempted=0, paused=false
-  try {
-    const candidates=await discovery(client,state,date,log)
-    const fresh=candidates.filter(item=>{
-      const key=rejectionKey(item.source,item.title)
-      if (knownKeys.has(key)||state.failed[key]||explored.has(key)||skipTitle(item.title))return false
-      explored.add(key)
-      return true
-    })
-    // Bulk Wikipedia extraction: groups of 12, not 3 expensive requests per page.
-    // Alternate with Wikivoyage to keep the user's feed diverse.
-    let pointer=0
-    const addStory=(next,source)=>{
-      const key=rejectionKey(source,next.sourceTitle)
-      if(knownUrls.has(next.sourceUrl)||knownKeys.has(key))return
-      newStories.push(next)
-      knownUrls.add(next.sourceUrl)
-      knownKeys.add(key)
-      counters[source]++
-      log.log(`Added [${source}] ${next.sourceTitle} (${next.pages.length} source pages)`)
-    }
-    while(pointer<fresh.length && newStories.length<config.maxArticles && attempted<config.maxCandidates && Date.now()-begin<config.timeBudgetMs) {
-      const segment=fresh.slice(pointer,pointer+15);pointer+=15
-      const wiki=segment.filter(item=>item.source==='wikipedia').slice(0,Math.max(0,config.maxCandidates-attempted))
-      const voyage=segment.filter(item=>item.source==='wikivoyage')
-      if(wiki.length && attempted<config.maxCandidates && newStories.length<config.maxArticles) {
-        attempted+=wiki.length
-        try {
-          const {stories,rejected}=await fetchWikipediaBatch(wiki,client)
-          for(const [reason,count] of Object.entries(rejected)) failures[reason]=(failures[reason]||0)+count
-          for(const story of stories) if(newStories.length<config.maxArticles)addStory(story,'wikipedia')
-        } catch(error) {
-          if(error instanceof RateLimitError||error instanceof TimeBudgetError){paused=true;log.warn(`Paused this run safely: ${error.message}`);break}
-          log.warn(`Batch of ${wiki.length} pages failed: ${error.message}`)
-        }
+  const state={categoryTokens:{},voyageQueue:[],failed:{},candidateQueue:[],longPageCursors:{},
+    ...await fs.readFile(stateFile,'utf8').then(JSON.parse).catch(()=>({}))}
+  state.failed ||= {}
+  state.voyageQueue ||= []
+  state.candidateQueue ||= []
+  const now=Date.now()
+  for(const [key,timestamp] of Object.entries(state.failed))
+    if(now-Number(timestamp)>30*86400000)delete state.failed[key]
+  const knownUrls=new Set(original.stories.map(item=>item.sourceUrl).filter(Boolean))
+  const knownKeys=new Set(original.stories.map(item=>rejectionKey(item.sourceUrl?.includes('wikivoyage')?'wikivoyage':'wikipedia',item.sourceTitle||item.title)))
+  let queue=mergeCandidateQueue(state.candidateQueue,[],knownKeys,state.failed)
+  let paused=false
+  const failures={}
+  // First drain a durable backlog. When it is low, refill it from independent
+  // Wikipedia and Wikivoyage enumerators plus popular/category discovery.
+  if(queue.length < 250) {
+    const fresh=[]
+    try {
+      const oldDiscovery=await discovery(client,state,date,log)
+      fresh.push(...oldDiscovery)
+      for (const source of ['wikipedia','wikivoyage']) {
+        const long=await discoverLongPages(source,client,state)
+        fresh.push(...long)
+        log.log(`Discovered [${source}] ${long.length} long-page candidates`)
       }
-      for(const item of voyage) {
-        if(newStories.length>=config.maxArticles||attempted>=config.maxCandidates||Date.now()-begin>config.timeBudgetMs)break
-        const key=rejectionKey(item.source,item.title)
-        attempted++
-        try {
-          const story=await getArticle(item,client,links=>{
-            const existing=new Set(state.voyageQueue.map(normalizedTitle))
-            for(const title of links) {
-              const normalized=normalizedTitle(title)
-              if(state.voyageQueue.length>=3000)break
-              if(!existing.has(normalized)&&!skipTitle(title)){existing.add(normalized);state.voyageQueue.push(title)}
-            }
-          })
-          addStory(story,'wikivoyage')
-        } catch(error) {
-          if(error instanceof RateLimitError||error instanceof TimeBudgetError){paused=true;log.warn(`Paused this run safely: ${error.message}`);break}
-          failures[error.message]=(failures[error.message]||0)+1
-          if(/^(?:Insufficient|No reusable|Page not found|Unsupported)/.test(error.message))state.failed[key]=Date.now()
-          else log.warn(`Skipped ${item.title}: ${error.message}`)
-        }
-      }
-      if(paused)break
+    } catch(error) {
+      if(error instanceof RateLimitError||error instanceof TimeBudgetError) {
+        paused=true; log.warn(`Discovery paused safely: ${error.message}`)
+      } else log.warn(`Discovery incomplete; keeping existing backlog: ${error.message}`)
     }
-
-  } catch(error) {
-    if(error instanceof RateLimitError||error instanceof TimeBudgetError) {paused=true;log.warn(`Discovery paused safely: ${error.message}`)}
-    else throw error
+    // Mix fresh sources so a long run of alphabetical pages cannot dominate.
+    const popular=fresh.filter(c=>c.category==='POPULAR')
+    const wiki=fresh.filter(c=>c.source==='wikipedia'&&c.category!=='POPULAR')
+    const voyage=fresh.filter(c=>c.source==='wikivoyage')
+    const mixed=[]
+    while(popular.length||wiki.length||voyage.length) {
+      if(popular.length)mixed.push(popular.shift())
+      if(wiki.length)mixed.push(wiki.shift())
+      if(voyage.length)mixed.push(voyage.shift())
+      if(wiki.length)mixed.push(wiki.shift())
+    }
+    queue=mergeCandidateQueue(queue,mixed,knownKeys,state.failed)
   }
-  // Prevent unlimited state JSON size and remove consumed destination queue entries.
+  const newStories=[],counters={wikipedia:0,wikivoyage:0}
+  const processed=new Set()
+  let attempted=0
+  const addStory=(story,source)=>{
+    const key=rejectionKey(source,story.sourceTitle)
+    if(knownUrls.has(story.sourceUrl)||knownKeys.has(key))return
+    newStories.push(story)
+    knownUrls.add(story.sourceUrl)
+    knownKeys.add(key)
+    counters[source]++
+    log.log(`Added [${source}] ${story.sourceTitle} (${story.pages.length} source pages)`)
+  }
+  const recordFailed=(item,reason)=>{
+    const key=rejectionKey(item.source,item.title)
+    state.failed[key]=Date.now()
+    failures[reason]=(failures[reason]||0)+1
+  }
+  // Process stable queue positions. Successful and permanently unsuitable
+  // entries are removed. On upstream throttling, remaining entries survive.
+  let cursor=0
+  while(!paused && cursor<queue.length && newStories.length<config.maxArticles && attempted<config.maxCandidates && Date.now()-begin<config.timeBudgetMs) {
+    const todo=queue.slice(cursor,cursor+24)
+    const wiki=todo.filter(item=>item.source==='wikipedia').slice(0,Math.min(20,config.maxCandidates-attempted))
+    const travel=todo.filter(item=>item.source==='wikivoyage')
+    const wikiKeys=new Set(wiki.map(item=>rejectionKey(item.source,item.title)))
+    if(wiki.length) {
+      try {
+        const batch=await fetchWikipediaBatch(wiki,client)
+        attempted+=wiki.length
+        for(const [reason,count] of Object.entries(batch.rejected))failures[reason]=(failures[reason]||0)+count
+        const normalizedFound=new Set(batch.stories.map(s=>normalizedTitle(s.sourceTitle)))
+        const accepted=new Set()
+        for(const story of batch.stories)if(newStories.length<config.maxArticles) {
+          addStory(story,'wikipedia')
+          accepted.add(normalizedTitle(story.sourceTitle))
+        }
+        for(const entry of wiki) {
+          const key=rejectionKey(entry.source,entry.title)
+          const title=normalizedTitle(entry.title)
+          if(accepted.has(title))processed.add(key)
+          else if(!normalizedFound.has(title)) {
+            // Permanently short/imageless pages are not retried every run.
+            // Redirect aliases are also retired after their canonical story
+            // was accepted under a different sourceTitle.
+            processed.add(key)
+            state.failed[key]=Date.now()
+          }
+          // If the article was valid but the per-run cap was reached, it
+          // remains queued for the next run — no silent content loss.
+        }
+      } catch(error) {
+        if(error instanceof RateLimitError||error instanceof TimeBudgetError) {
+          paused=true;log.warn(`Paused without losing queue: ${error.message}`);break
+        }
+        log.warn(`Batch unavailable; retaining ${wiki.length} items: ${error.message}`)
+      }
+    }
+    for(const entry of travel) {
+      if(paused||attempted>=config.maxCandidates||newStories.length>=config.maxArticles||Date.now()-begin>=config.timeBudgetMs)break
+      try {
+        const story=await getArticle(entry,client,links=>{
+          const known=new Set(state.voyageQueue.map(normalizedTitle))
+          for(const title of links) {
+            const key=normalizedTitle(title)
+            if(state.voyageQueue.length>=3500)break
+            if(!known.has(key)&&!skipTitle(title)) {known.add(key);state.voyageQueue.push(title)}
+          }
+        })
+        addStory(story,'wikivoyage')
+        processed.add(rejectionKey(entry.source,entry.title))
+        attempted++
+      } catch(error) {
+        if(error instanceof RateLimitError||error instanceof TimeBudgetError) {
+          paused=true;log.warn(`Paused without losing queue: ${error.message}`);break
+        }
+        attempted++
+        // Retry temporary API failures on a future run, but avoid retrying
+        // invalid/short/imageless items every 30 minutes.
+        if(/^(?:Insufficient|No reusable|Page not found|Unsupported)/.test(error.message))recordFailed(entry,error.message)
+        else log.warn(`Temporary problem, retaining ${entry.title}: ${error.message}`)
+        if(state.failed[rejectionKey(entry.source,entry.title)])processed.add(rejectionKey(entry.source,entry.title))
+      }
+    }
+    if(paused)break
+    cursor+=todo.length
+  }
+  // If a run is paused, keep *every* unprocessed title. This is the key
+  // guarantee preventing discovery from skipping thousands of candidates.
+  queue=mergeCandidateQueue(queue.filter(item=>!processed.has(rejectionKey(item.source,item.title))),[],knownKeys,state.failed)
+  state.candidateQueue=queue
   state.voyageQueue=[...new Set(state.voyageQueue.map(t=>String(t).trim()))]
-    .filter(t=>!knownKeys.has(rejectionKey('wikivoyage',t)) && !state.failed[rejectionKey('wikivoyage',t)]).slice(-3000)
+    .filter(t=>!knownKeys.has(rejectionKey('wikivoyage',t))&&!state.failed[rejectionKey('wikivoyage',t)]).slice(-3500)
   const entries=Object.entries(state.failed)
-  if(entries.length>16000) state.failed=Object.fromEntries(entries.slice(-16000))
+  if(entries.length>30000)state.failed=Object.fromEntries(entries.slice(-30000))
+  // All previous chunks remain in place; old articles are not overwritten.
   const published=await publish(base,original,newStories,{chunkSize:config.chunkSize})
+  const day=date.toISOString().slice(0,10)
+  state.supply ||= {daily:{}}
+  state.supply.daily ||= {}
+  state.supply.daily[day]=(state.supply.daily[day]||0)+newStories.length
+  for(const key of Object.keys(state.supply.daily))
+    if(Date.parse(day+'T00:00:00Z')-Date.parse(key+'T00:00:00Z')>15*86400000)delete state.supply.daily[key]
+  const status={updatedAt:iso(),total:published.total,addedThisRun:newStories.length,
+    addedToday:state.supply.daily[day],targetPerDay:config.targetPerDay,
+    reserveGoal:config.reserveGoal,remainingQueue:queue.length,
+    lastAttempted:attempted,lastRequests:client.stats.requests,paused}
   await fs.mkdir(folder,{recursive:true})
   await fs.writeFile(stateFile,JSON.stringify(state,null,2)+'\n')
+  await fs.writeFile(path.join(folder,'supply-status.json'),JSON.stringify(status,null,2)+'\n')
   const result={added:newStories.length,total:published.total,chunks:published.chunks,attempted,
-    pages:counters,failures,requests:client.stats.requests,paused,changed:published.changed}
+    pages:counters,failures,requests:client.stats.requests,paused,changed:published.changed,
+    queueRemaining:queue.length,addedToday:status.addedToday}
   log.log(`${result.added} discovered articles added; total ${result.total}; published ${result.chunks} chunks; ${result.attempted} candidates checked; Wikipedia +${counters.wikipedia}; Wikivoyage +${counters.wikivoyage}; ${result.requests} API requests; ${paused?'paused for rate limit':'completed'}`)
+  log.log(`SUPPLY STATUS: ${result.addedToday}/${config.targetPerDay} new stories today; ${result.queueRemaining} candidates saved for next run; long-term reserve goal ${config.reserveGoal}`)
   log.log(`Rejection summary: ${JSON.stringify(failures)}`)
   return result
 }
@@ -407,6 +556,6 @@ export async function runUpdate({base=process.cwd(), fetchImpl=fetch, date=new D
 const calledAsScript=process.argv[1] && path.resolve(process.argv[1])===fileURLToPath(import.meta.url)
 if(calledAsScript) {
   const bootstrap=process.argv.includes('--bootstrap')
-  runUpdate({settings:bootstrap?{maxArticles:100,maxCandidates:280,timeBudgetMs:16*60*1000}: {}})
+  runUpdate({settings:bootstrap?{maxArticles:180,maxCandidates:380,timeBudgetMs:17*60*1000}: {}})
     .catch(error=>{console.error(`FATAL: ${error.stack||error}`);process.exitCode=1})
 }

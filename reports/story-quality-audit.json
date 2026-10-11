@@ -1,0 +1,452 @@
+{
+  "note": "Structural checks only; not a judgment of factual accuracy, writing quality, image resolution, or licensing.",
+  "source": "public/feed/manifest.json + all feed chunks",
+  "stats": {
+    "manifestTotal": 42,
+    "rawEntries": 42,
+    "total": 42,
+    "news": 18,
+    "knowledge": 19,
+    "other": 5,
+    "short": 41,
+    "missingSource": 3,
+    "duplicate": 0,
+    "missingImage": 0,
+    "onePage": 18,
+    "readyForReview": 1
+  },
+  "warnings": [],
+  "issues": [
+    {
+      "index": 0,
+      "title": "TROPICAL CYCLONE",
+      "type": "knowledge",
+      "pages": 3,
+      "words": 130,
+      "reasons": [
+        "short-under-180-words"
+      ]
+    },
+    {
+      "index": 1,
+      "title": "PENGUIN",
+      "type": "knowledge",
+      "pages": 3,
+      "words": 87,
+      "reasons": [
+        "short-under-180-words"
+      ]
+    },
+    {
+      "index": 2,
+      "title": "METEOR SHOWER",
+      "type": "knowledge",
+      "pages": 4,
+      "words": 131,
+      "reasons": [
+        "short-under-180-words"
+      ]
+    },
+    {
+      "index": 3,
+      "title": "SEAHORSE",
+      "type": "knowledge",
+      "pages": 2,
+      "words": 60,
+      "reasons": [
+        "short-under-180-words"
+      ]
+    },
+    {
+      "index": 4,
+      "title": "COMET",
+      "type": "knowledge",
+      "pages": 4,
+      "words": 167,
+      "reasons": [
+        "short-under-180-words"
+      ]
+    },
+    {
+      "index": 5,
+      "title": "MANGROVE",
+      "type": "knowledge",
+      "pages": 4,
+      "words": 139,
+      "reasons": [
+        "short-under-180-words"
+      ]
+    },
+    {
+      "index": 6,
+      "title": "RED PANDA",
+      "type": "knowledge",
+      "pages": 5,
+      "words": 76,
+      "reasons": [
+        "short-under-180-words"
+      ]
+    },
+    {
+      "index": 7,
+      "title": "EARTHQUAKE",
+      "type": "knowledge",
+      "pages": 2,
+      "words": 103,
+      "reasons": [
+        "short-under-180-words"
+      ]
+    },
+    {
+      "index": 8,
+      "title": "MEMORY",
+      "type": "knowledge",
+      "pages": 2,
+      "words": 66,
+      "reasons": [
+        "short-under-180-words"
+      ]
+    },
+    {
+      "index": 9,
+      "title": "GLACIER",
+      "type": "knowledge",
+      "pages": 3,
+      "words": 128,
+      "reasons": [
+        "short-under-180-words"
+      ]
+    },
+    {
+      "index": 10,
+      "title": "MARS",
+      "type": "knowledge",
+      "pages": 4,
+      "words": 144,
+      "reasons": [
+        "short-under-180-words"
+      ]
+    },
+    {
+      "index": 11,
+      "title": "PHOTOSYNTHESIS",
+      "type": "knowledge",
+      "pages": 3,
+      "words": 123,
+      "reasons": [
+        "short-under-180-words"
+      ]
+    },
+    {
+      "index": 12,
+      "title": "DOLPHIN",
+      "type": "knowledge",
+      "pages": 2,
+      "words": 59,
+      "reasons": [
+        "short-under-180-words"
+      ]
+    },
+    {
+      "index": 13,
+      "title": "ANTARCTICA",
+      "type": "knowledge",
+      "pages": 3,
+      "words": 73,
+      "reasons": [
+        "short-under-180-words"
+      ]
+    },
+    {
+      "index": 14,
+      "title": "SATURN",
+      "type": "knowledge",
+      "pages": 4,
+      "words": 94,
+      "reasons": [
+        "short-under-180-words"
+      ]
+    },
+    {
+      "index": 15,
+      "title": "SOLAR ECLIPSE",
+      "type": "knowledge",
+      "pages": 3,
+      "words": 145,
+      "reasons": [
+        "short-under-180-words"
+      ]
+    },
+    {
+      "index": 17,
+      "title": "BLACK HOLE",
+      "type": "knowledge",
+      "pages": 3,
+      "words": 92,
+      "reasons": [
+        "short-under-180-words"
+      ]
+    },
+    {
+      "index": 18,
+      "title": "NVIDIA-BACKED DATA CENTRE FIRM SCRAPS IPO AS AI VALUATION CONCERNS DEEPEN",
+      "type": "news",
+      "pages": 1,
+      "words": 16,
+      "reasons": [
+        "one-page",
+        "short-under-180-words"
+      ]
+    },
+    {
+      "index": 19,
+      "title": "FIRED OPENAI RESEARCHERS SAY THEY WERE LET GO FOR 'PRIORITISING SAFETY'",
+      "type": "news",
+      "pages": 1,
+      "words": 13,
+      "reasons": [
+        "one-page",
+        "short-under-180-words"
+      ]
+    },
+    {
+      "index": 20,
+      "title": "ANTHROPIC BANS USERS FROM BEING 'CRUEL' TO ITS AI SYSTEMS",
+      "type": "news",
+      "pages": 1,
+      "words": 17,
+      "reasons": [
+        "one-page",
+        "short-under-180-words"
+      ]
+    },
+    {
+      "index": 21,
+      "title": "PRIZE-WINNING IMAGE WHICH SPARKED BACKLASH WAS AI-GENERATED, NIKON RULES",
+      "type": "news",
+      "pages": 1,
+      "words": 18,
+      "reasons": [
+        "one-page",
+        "short-under-180-words"
+      ]
+    },
+    {
+      "index": 22,
+      "title": "ROGUE ANTHROPIC AI AGENT GAVE POLICE FAKE TIP IN UNSOLVED MURDER CASE",
+      "type": "news",
+      "pages": 1,
+      "words": 26,
+      "reasons": [
+        "one-page",
+        "short-under-180-words"
+      ]
+    },
+    {
+      "index": 23,
+      "title": "ISAIAS BECOMES MAJOR CATEGORY THREE STORM BEFORE LANDFALL",
+      "type": "news",
+      "pages": 1,
+      "words": 21,
+      "reasons": [
+        "one-page",
+        "short-under-180-words"
+      ]
+    },
+    {
+      "index": 24,
+      "title": "'PEOPLE DON'T THINK RECYCLING AT WORK IS PART OF THEIR JOB DESCRIPTION'",
+      "type": "news",
+      "pages": 1,
+      "words": 19,
+      "reasons": [
+        "one-page",
+        "short-under-180-words"
+      ]
+    },
+    {
+      "index": 25,
+      "title": "HOW DRONES ARE HUNTING FIRES HIDDEN BENEATH THE CAIRNGORMS",
+      "type": "news",
+      "pages": 1,
+      "words": 21,
+      "reasons": [
+        "one-page",
+        "short-under-180-words"
+      ]
+    },
+    {
+      "index": 26,
+      "title": "HURRICANE ISAIAS DOWNGRADED AFTER MAKING LANDFALL IN FLORIDA",
+      "type": "news",
+      "pages": 1,
+      "words": 20,
+      "reasons": [
+        "one-page",
+        "short-under-180-words"
+      ]
+    },
+    {
+      "index": 27,
+      "title": "HUNDREDS PROTEST OVER DATA CENTRE PLANS",
+      "type": "news",
+      "pages": 1,
+      "words": 13,
+      "reasons": [
+        "one-page",
+        "short-under-180-words"
+      ]
+    },
+    {
+      "index": 28,
+      "title": "EXPEDITION HOPES TO FIND AVIATOR AMELIA EARHART'S PLANE ON REMOTE ISLAND",
+      "type": "news",
+      "pages": 1,
+      "words": 19,
+      "reasons": [
+        "one-page",
+        "short-under-180-words"
+      ]
+    },
+    {
+      "index": 29,
+      "title": "US MURDERER CHRISTA PIKE DISCHARGED FROM HOSPITAL 10 DAYS AFTER FAILED EXECUTION",
+      "type": "news",
+      "pages": 1,
+      "words": 22,
+      "reasons": [
+        "one-page",
+        "short-under-180-words"
+      ]
+    },
+    {
+      "index": 30,
+      "title": "RUSSIAN GLIDE BOMB ATTACK ON ZAPORIZHZHIA KILLS AT LEAST 20 PEOPLE",
+      "type": "news",
+      "pages": 1,
+      "words": 19,
+      "reasons": [
+        "one-page",
+        "short-under-180-words"
+      ]
+    },
+    {
+      "index": 31,
+      "title": "YOUNG MEN LIVE IN FEAR OF BEING SNATCHED OFF THE STREETS AND SOLD TO MYANMAR'S ARMY",
+      "type": "news",
+      "pages": 1,
+      "words": 16,
+      "reasons": [
+        "one-page",
+        "short-under-180-words"
+      ]
+    },
+    {
+      "index": 32,
+      "title": "TWELVE KILLED AND 300 INJURED IN ATTACK ON AIRPORT IN SAUDI CAPITAL RIYADH",
+      "type": "news",
+      "pages": 1,
+      "words": 19,
+      "reasons": [
+        "one-page",
+        "short-under-180-words"
+      ]
+    },
+    {
+      "index": 33,
+      "title": "KING WARNS MALICIOUS ONLINE ACTORS ARE EVOLVING TACTICS",
+      "type": "news",
+      "pages": 1,
+      "words": 39,
+      "reasons": [
+        "one-page",
+        "short-under-180-words"
+      ]
+    },
+    {
+      "index": 34,
+      "title": "FOUR DEAD AND THOUSANDS WITHOUT POWER AFTER HURRICANE ISAIAS LASHES US",
+      "type": "news",
+      "pages": 1,
+      "words": 38,
+      "reasons": [
+        "one-page",
+        "short-under-180-words"
+      ]
+    },
+    {
+      "index": 35,
+      "title": "'TIME FOR UKRAINE TO GET NEW PRESIDENT,' SAYS TRUMP AFTER ZELENSKY CONDEMNS DIESEL DEAL",
+      "type": "news",
+      "pages": 1,
+      "words": 37,
+      "reasons": [
+        "one-page",
+        "short-under-180-words"
+      ]
+    },
+    {
+      "index": 36,
+      "title": "WHY DOES THE MOON ALWAYS SHOW US THE SAME FACE?",
+      "type": "other",
+      "pages": 4,
+      "words": 121,
+      "reasons": [
+        "missing-source",
+        "short-under-180-words"
+      ]
+    },
+    {
+      "index": 37,
+      "title": "WHY DO WE DREAM?",
+      "type": "other",
+      "pages": 3,
+      "words": 91,
+      "reasons": [
+        "missing-source",
+        "short-under-180-words"
+      ]
+    },
+    {
+      "index": 38,
+      "title": "HOW DO TREES COMMUNICATE?",
+      "type": "other",
+      "pages": 3,
+      "words": 83,
+      "reasons": [
+        "missing-source",
+        "short-under-180-words"
+      ]
+    },
+    {
+      "index": 39,
+      "title": "AURORA",
+      "type": "other",
+      "pages": 3,
+      "words": 100,
+      "reasons": [
+        "short-under-180-words"
+      ]
+    },
+    {
+      "index": 40,
+      "title": "OCTOPUS",
+      "type": "other",
+      "pages": 4,
+      "words": 104,
+      "reasons": [
+        "short-under-180-words"
+      ]
+    },
+    {
+      "index": 41,
+      "title": "BIOLUMINESCENCE",
+      "type": "knowledge",
+      "pages": 2,
+      "words": 89,
+      "reasons": [
+        "short-under-180-words"
+      ]
+    }
+  ]
+}
