@@ -11,54 +11,91 @@ const readHistory = () => {
 }
 const validStories = data => Array.isArray(data) && data.every(item => item && typeof item.title === 'string' && Array.isArray(item.pages) && item.pages.length > 0 && item.pages.every(p => typeof p.text === 'string' && typeof p.image === 'string'))
 
-// Reflow all source pages into balanced reading pages. Never create a one-word page.
-// The original story ID and source data remain unchanged.
-const paginateStory = item => {
+// Keep the original text. Pagination below uses the actual rendered reading area.
+const paginateStory = item => ({ ...item, _sourcePages: item._sourcePages || item.pages })
+
+const sentenceUnits = pages => {
   const segmenter = new Intl.Segmenter('en', { granularity: 'sentence' })
-  const units = []
-  for (const source of item.pages) {
-    const parts = [...segmenter.segment(source.text)].map(x => x.segment.trim()).filter(Boolean)
-    for (const part of parts) {
-      const tokens = part.split(/\s+/).filter(Boolean)
-      // Extremely long source sentences can wrap within a scrollable reading panel.
-      if (tokens.length) units.push({ text: part, image: source.image, caption: source.caption, count: tokens.length })
-    }
-  }
-  if (!units.length) return item
-  const totalWords = units.reduce((sum, unit) => sum + unit.count, 0)
-  // Aim for substantial pages, but do not make the last page an orphan.
-  const target = 75
-  const pageCount = Math.max(1, Math.ceil(totalWords / target))
-  const ideal = totalWords / pageCount
+  return pages.flatMap(source => [...segmenter.segment(source.text)].map(part => ({
+    text: part.segment.trim(), image: source.image, caption: source.caption,
+  })).filter(part => part.text))
+}
+
+// Measure rendered typography, not an arbitrary number of words. Keep sentences whole.
+const layoutPages = (item, reader) => {
+  const sourcePages = item._sourcePages || item.pages
+  const units = sentenceUnits(sourcePages)
+  if (!units.length) return sourcePages
+  const card = reader.querySelector('.reading-card')
+  const topline = reader.querySelector('.reading-topline')
+  const article = reader.querySelector('.article-text')
+  if (!card || !article || !topline) return item.pages
+  const style = getComputedStyle(article)
+  const probe = document.createElement('p')
+  probe.className = 'article-text'
+  Object.assign(probe.style, {
+    position: 'absolute', visibility: 'hidden', pointerEvents: 'none',
+    width: `${article.getBoundingClientRect().width}px`, height: 'auto',
+    maxHeight: 'none', overflow: 'visible', margin: '0',
+    font: style.font, letterSpacing: style.letterSpacing,
+    lineHeight: style.lineHeight, overflowWrap: style.overflowWrap,
+  })
+  document.body.appendChild(probe)
+  const cardHeight = card.clientHeight
+  const headerHeight = topline.getBoundingClientRect().height
+  const margin = parseFloat(style.marginTop) + parseFloat(style.marginBottom)
+  // The same header/image is used in the source; reserve space on cover pages.
+  const firstCapacity = Math.max(85, cardHeight - headerHeight - margin - 18)
+  const media = reader.querySelector('.article-media')
+  const mediaHeight = media && getComputedStyle(media).display !== 'none' ? media.getBoundingClientRect().height : 0
+  const otherCapacity = Math.max(firstCapacity, firstCapacity + mediaHeight - 12)
   const pages = []
-  let group = []
-  let count = 0
-  let consumed = 0
-  const flush = () => {
-    if (!group.length) return
-    const source = group[0]
-    pages.push({ image: source.image, caption: source.caption, text: group.map(x => x.text).join(' ') })
-    consumed += count
-    group = []
-    count = 0
+  let current = []
+  let currentImage = units[0].image
+  let currentCaption = units[0].caption
+  const fits = (parts, limit) => {
+    probe.textContent = parts.map(x => x.text).join(' ')
+    return probe.getBoundingClientRect().height <= limit
   }
-  for (let i = 0; i < units.length; i++) {
-    const unit = units[i]
-    const remaining = units.slice(i).reduce((sum, x) => sum + x.count, 0)
-    const slots = pageCount - pages.length
-    // Keep a sentence intact. Split only at sentence boundaries, and balance the remainder.
-    if (group.length && slots > 1 && count + unit.count > Math.max(ideal * 1.15, 85) && remaining - unit.count >= 35) flush()
-    group.push(unit)
-    count += unit.count
-    if (slots > 1 && count >= ideal && remaining - unit.count >= Math.max(35, ideal * .55)) flush()
+  const flush = () => {
+    if (!current.length) return
+    pages.push({ image: currentImage, caption: currentCaption, text: current.map(x => x.text).join(' ') })
+    current = []
+  }
+  for (const unit of units) {
+    const limit = pages.length === 0 ? firstCapacity : otherCapacity
+    if (current.length && !fits([...current, unit], limit)) {
+      flush()
+      currentImage = unit.image
+      currentCaption = unit.caption
+    }
+    // A single unusually long sentence stays intact and can scroll inside the text panel.
+    current.push(unit)
   }
   flush()
-  // Rebalance an orphan page by merging it with its predecessor.
-  if (pages.length > 1 && pages.at(-1).text.split(/\s+/).length < 25) {
-    const last = pages.pop()
-    pages[pages.length - 1].text += ' ' + last.text
+  probe.remove()
+  // Prevent tiny final pages when the preceding page has room for the combined text.
+  if (pages.length > 1) {
+    const last = pages.at(-1)
+    if (last.text.trim().split(/\s+/).length < 15) {
+      const prev = pages.at(-2)
+      if (fitsAfterRemoval(prev.text + ' ' + last.text, otherCapacity, style, article)) {
+        prev.text += ' ' + last.text
+        pages.pop()
+      }
+    }
   }
-  return { ...item, pages }
+  return pages
+}
+const fitsAfterRemoval = (text, capacity, style, article) => {
+  const probe = document.createElement('p')
+  probe.className = 'article-text'
+  Object.assign(probe.style, { position:'absolute', visibility:'hidden', width:`${article.getBoundingClientRect().width}px`, height:'auto', maxHeight:'none', overflow:'visible', margin:'0', font:style.font, letterSpacing:style.letterSpacing, lineHeight:style.lineHeight })
+  probe.textContent = text
+  document.body.appendChild(probe)
+  const fits = probe.getBoundingClientRect().height <= capacity
+  probe.remove()
+  return fits
 }
 
 const dictionary = {
@@ -256,6 +293,36 @@ function App() {
   const slideTimer = useRef(null)
   const story = stories[storyIndex] || null
   const currentPage = story?.pages?.[page] || null
+
+  // Recalculate when the actual screen dimensions change. No cut sentences or empty pages.
+  useEffect(() => {
+    if (tab !== 'read' || !story) return
+    let frame = 0
+    let observer
+    const recalculate = () => {
+      cancelAnimationFrame(frame)
+      frame = requestAnimationFrame(() => {
+        const reader = document.querySelector('.story-layer:not(.outgoing) .reader-gesture')
+        if (!reader) return
+        const next = layoutPages(story, reader)
+        const before = story.pages.map(p => p.text).join('\u0000')
+        const after = next.map(p => p.text).join('\u0000')
+        if (before !== after) {
+          setStories(old => old.map((item, i) => i === storyIndex ? { ...item, pages: next } : item))
+          setPage(p => Math.min(p, next.length - 1))
+        }
+      })
+    }
+    recalculate()
+    const viewport = document.querySelector('.story-viewport')
+    if (viewport && typeof ResizeObserver !== 'undefined') {
+      observer = new ResizeObserver(recalculate)
+      observer.observe(viewport)
+    }
+    window.addEventListener('resize', recalculate)
+    return () => { cancelAnimationFrame(frame); observer?.disconnect(); window.removeEventListener('resize', recalculate) }
+  }, [tab, storyIndex, stories.length, story?._sourcePages])
+
 
   // Read paginated static feed, skipping previously read IDs on this device.
   // A finite feed ends explicitly: it never replays seen stories as if new.
