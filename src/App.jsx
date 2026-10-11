@@ -314,50 +314,86 @@ function App() {
   }, [tab, storyIndex, stories.length, story?._sourcePages])
 
 
-  // Read paginated static feed, skipping previously read IDs on this device.
-  // A finite feed ends explicitly: it never replays seen stories as if new.
-  const loadFeed = async (cursor = 0) => {
+  // One shared feed; each browser keeps its own read history. Shuffle the
+  // chunk order once per session and shuffle articles within each chunk.
+  // This avoids everyone starting on the same article without replaying reads.
+  const chunkOrderRef = useRef([])
+  const feedVersionRef = useRef('')
+  const cursorRef = useRef(0)
+  const doneRef = useRef(false)
+  const scanFailedRef = useRef(false)
+  const shuffle = values => {
+    const copy = [...values]
+    for (let i = copy.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1))
+      ;[copy[i], copy[j]] = [copy[j], copy[i]]
+    }
+    return copy
+  }
+
+  const loadFeed = async (rescan = false) => {
     if (feedBusy.current) return
     feedBusy.current = true
     setFeedLoading(true)
     try {
-      const manifestResponse = await fetch(`${import.meta.env.BASE_URL}feed/manifest.json?t=${Date.now()}`, { cache: 'no-store' })
-      if (!manifestResponse.ok) throw new Error('Feed not published yet')
-      const manifest = await manifestResponse.json()
-      const count = Number(manifest.chunks) || 0
+      const response = await fetch(`${import.meta.env.BASE_URL}feed/manifest.json?t=${Date.now()}`, { cache: 'no-store' })
+      if (!response.ok) throw new Error('Feed manifest unavailable')
+      const manifest = await response.json()
+      const count = Number(manifest.chunks)
+      if (!Number.isSafeInteger(count) || count < 0) throw new Error('Invalid feed manifest')
+      const version = `${manifest.updatedAt || ''}:${count}`
+      if (version !== feedVersionRef.current || chunkOrderRef.current.length !== count) {
+        // Preserve existing queue and reading history; only reset the scan.
+        // Newly published chunks can change every old chunk's contents.
+        chunkOrderRef.current = shuffle(Array.from({ length: count }, (_, i) => i))
+        cursorRef.current = 0
+        feedVersionRef.current = version
+      } else if (rescan) {
+        cursorRef.current = 0
+      }
+
       const added = []
-      let next = cursor
-      // Read at most 8 chunks per request, or stop once 8 unseen stories are available.
-      while (next < count && next < cursor + 8 && added.length < 8) {
-        const response = await fetch(`${import.meta.env.BASE_URL}feed/${String(next).padStart(4, '0')}.json?v=${encodeURIComponent(manifest.updatedAt || Date.now())}`, { cache: 'no-store' })
-        if (!response.ok) throw new Error(`Feed chunk ${next} unavailable`)
-        const batch = await response.json()
-        if (!validStories(batch)) throw new Error('Invalid feed data')
-        for (const item of batch) {
+      const stagedIds = new Set()
+      const start = cursorRef.current
+      let next = start
+      while (next < count && next < start + 8 && added.length < 8) {
+        const chunkNumber = chunkOrderRef.current[next]
+        const url = `${import.meta.env.BASE_URL}feed/${String(chunkNumber).padStart(4, '0')}.json?v=${encodeURIComponent(manifest.updatedAt || '')}`
+        const chunkResponse = await fetch(url, { cache: 'no-store' })
+        if (!chunkResponse.ok) throw new Error(`Feed chunk ${chunkNumber} unavailable`)
+        const batch = await chunkResponse.json()
+        if (!validStories(batch)) throw new Error(`Invalid feed chunk ${chunkNumber}`)
+        for (const item of shuffle(batch)) {
           const id = storyId(item)
-          if (!seenRef.current.has(id) && !loadedRef.current.has(id)) {
-            loadedRef.current.add(id)
+          if (!seenRef.current.has(id) && !loadedRef.current.has(id) && !stagedIds.has(id)) {
+            stagedIds.add(id)
             added.push(item)
           }
         }
         next++
       }
-      if (added.length) setStories(old => [...old, ...added.map(paginateStory)])
+      stagedIds.forEach(id => loadedRef.current.add(id))
+      scanFailedRef.current = false
+      cursorRef.current = next
+      doneRef.current = next >= count
       setFeedCursor(next)
-      setFeedDone(next >= count)
+      setFeedDone(doneRef.current)
+      if (added.length) setStories(old => [...old, ...added.map(paginateStory)])
     } catch (error) {
+      scanFailedRef.current = true
       console.warn('Feed unavailable:', error.message)
-      // First-time migration fallback, not an infinite loop.
-      if (cursor === 0 && loadedRef.current.size === 0) {
+      // Never advance the cursor on an unsuccessful scan.
+      if (!storiesRef.current.length && loadedRef.current.size === 0) {
         try {
-          const response = await fetch(`${import.meta.env.BASE_URL}stories.json`, { cache: 'no-store' })
-          const data = await response.json()
+          const fallback = await fetch(`${import.meta.env.BASE_URL}stories.json`, { cache: 'no-store' })
+          if (!fallback.ok) throw new Error('Fallback unavailable')
+          const data = await fallback.json()
           if (validStories(data)) {
-            const unseen = data.filter(item => !seenRef.current.has(storyId(item)))
+            const unseen = shuffle(data.filter(item => !seenRef.current.has(storyId(item))))
             unseen.forEach(item => loadedRef.current.add(storyId(item)))
             setStories(unseen.map(paginateStory))
           }
-        } catch { /* Display retry below */ }
+        } catch { /* Keep retry available */ }
       }
     } finally {
       feedBusy.current = false
@@ -365,10 +401,10 @@ function App() {
     }
   }
 
-  // A manual refresh must rescan from chunk zero: existing chunks can be republished.
-  const refreshFeed = () => loadFeed(0)
-
-  useEffect(() => { loadFeed(0) }, [])
+  const refreshFeed = () => loadFeed(true)
+  const storiesRef = useRef(stories)
+  storiesRef.current = stories
+  useEffect(() => { loadFeed() }, [])
   useEffect(() => {
     if (!story) return
     const id = storyId(story)
@@ -378,8 +414,26 @@ function App() {
     catch (error) { console.warn('Reading history could not be saved:', error) }
   }, [storyIndex, story])
   useEffect(() => {
-    if (stories.length && stories.length - storyIndex <= 4 && !feedDone && !feedLoading) loadFeed(feedCursor)
+    if (!feedDone && !feedLoading && !scanFailedRef.current && (stories.length === 0 || stories.length - storyIndex <= 4)) loadFeed()
   }, [storyIndex, stories.length, feedCursor, feedDone, feedLoading])
+  // Recheck the manifest when the reader returns to the tab. Also check every
+  // five minutes while the app is open; no need to reload or erase progress.
+  useEffect(() => {
+    const check = () => {
+      if (document.visibilityState === 'visible' && !feedBusy.current) {
+        // A completed scan needs a rescan to detect newly published stories.
+        if (doneRef.current) loadFeed(true)
+      }
+    }
+    const timer = setInterval(check, 5 * 60 * 1000)
+    document.addEventListener('visibilitychange', check)
+    window.addEventListener('focus', check)
+    return () => {
+      clearInterval(timer)
+      document.removeEventListener('visibilitychange', check)
+      window.removeEventListener('focus', check)
+    }
+  }, [])
 
   useEffect(() => {
     try { localStorage.setItem('dailyLoreWords', JSON.stringify(words)) }
