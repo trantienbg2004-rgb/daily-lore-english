@@ -96,3 +96,20 @@
 
 .feed-empty{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;height:100%;padding:24px;box-sizing:border-box}.feed-empty h2{font-family:Georgia,serif;font-size:24px;font-weight:400}.feed-empty p{font-size:13px;line-height:1.6;color:#777}
 .feed-end-indicator{position:absolute;bottom:2px;left:0;right:0;text-align:center;font-size:10px;color:#777;z-index:3;pointer-events:none}.feed-end-indicator button{pointer-events:auto;border:0;background:none;text-decoration:underline;font:inherit;color:#9e6052}
+
+/* Long article safety: never let text overlap the photo or bottom navigation. */
+.reading-mode .reader-gesture{min-height:0;overflow:hidden}
+.reading-mode .reading-card{
+  flex:1 1 0;
+  min-height:0;
+  overflow-y:auto;
+  overflow-x:hidden;
+  justify-content:flex-start;
+  overscroll-behavior:contain;
+  -webkit-overflow-scrolling:touch;
+  padding-bottom:8px;
+}
+.reading-mode .article-text{flex:0 0 auto;overflow-wrap:anywhere}
+.reading-mode .reading-topline{flex:0 0 auto}
+.reading-mode .page-control .dots{max-width:100%;flex-wrap:wrap;justify-content:center;row-gap:5px}
+.reading-mode .article-heading{min-height:0}

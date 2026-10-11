@@ -11,6 +11,40 @@ const readHistory = () => {
 }
 const validStories = data => Array.isArray(data) && data.every(item => item && typeof item.title === 'string' && Array.isArray(item.pages) && item.pages.length > 0 && item.pages.every(p => typeof p.text === 'string' && typeof p.image === 'string'))
 
+// Split long source pages into readable screens without changing story IDs or source files.
+// Prefer sentence boundaries; exceptionally long sentences are split at word boundaries.
+const paginateStory = item => {
+  const limit = 38
+  const segmenter = new Intl.Segmenter('en', { granularity: 'sentence' })
+  const pages = []
+  for (const original of item.pages) {
+    const parts = [...segmenter.segment(original.text)].map(x => x.segment.trim()).filter(Boolean)
+    let current = []
+    let count = 0
+    const flush = () => {
+      if (!current.length) return
+      pages.push({ ...original, text: current.join(' ').trim() })
+      current = []
+      count = 0
+    }
+    for (const sentence of parts) {
+      const words = sentence.split(/\s+/).filter(Boolean)
+      if (words.length > limit) {
+        flush()
+        for (let i = 0; i < words.length; i += limit) {
+          pages.push({ ...original, text: words.slice(i, i + limit).join(' ') })
+        }
+      } else {
+        if (count && count + words.length > limit) flush()
+        current.push(sentence)
+        count += words.length
+      }
+    }
+    flush()
+  }
+  return pages.length ? { ...item, pages } : item
+}
+
 const dictionary = {
   coincidence: 'Two events happening together by chance.', rotates: 'Turns around a central point or axis.',
   gravity: 'The force that attracts objects towards each other.', gradually: 'Slowly, over a period of time.',
@@ -235,7 +269,7 @@ function App() {
         }
         next++
       }
-      if (added.length) setStories(old => [...old, ...added])
+      if (added.length) setStories(old => [...old, ...added.map(paginateStory)])
       setFeedCursor(next)
       setFeedDone(next >= count)
     } catch (error) {
@@ -248,7 +282,7 @@ function App() {
           if (validStories(data)) {
             const unseen = data.filter(item => !seenRef.current.has(storyId(item)))
             unseen.forEach(item => loadedRef.current.add(storyId(item)))
-            setStories(unseen)
+            setStories(unseen.map(paginateStory))
           }
         } catch { /* Display retry below */ }
       }
