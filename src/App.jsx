@@ -14,88 +14,78 @@ const validStories = data => Array.isArray(data) && data.every(item => item && t
 // Keep the original text. Pagination below uses the actual rendered reading area.
 const paginateStory = item => ({ ...item, _sourcePages: item._sourcePages || item.pages })
 
+// Source paragraphs remain intact in storage. Layout is calculated on the device.
 const sentenceUnits = pages => {
   const segmenter = new Intl.Segmenter('en', { granularity: 'sentence' })
-  return pages.flatMap(source => [...segmenter.segment(source.text)].map(part => ({
-    text: part.segment.trim(), image: source.image, caption: source.caption,
+  return pages.flatMap((source, sourceIndex) => [...segmenter.segment(source.text)].map(part => ({
+    text: part.segment.trim(), sourceIndex, image: source.image, caption: source.caption,
   })).filter(part => part.text))
 }
 
-// Measure rendered typography, not an arbitrary number of words. Keep sentences whole.
+// Measure the same font and width as the actual reading pane. No internal scrolling.
 const layoutPages = (item, reader) => {
-  const sourcePages = item._sourcePages || item.pages
-  const units = sentenceUnits(sourcePages)
-  if (!units.length) return sourcePages
+  const originals = item._sourcePages || item.pages
+  const units = sentenceUnits(originals)
+  if (!units.length) return originals
+  const textEl = reader.querySelector('.article-text')
   const card = reader.querySelector('.reading-card')
-  const topline = reader.querySelector('.reading-topline')
-  const article = reader.querySelector('.article-text')
-  if (!card || !article || !topline) return item.pages
-  const style = getComputedStyle(article)
+  const top = reader.querySelector('.reading-topline')
+  const heading = reader.querySelector('.article-heading')
+  const bar = reader.querySelector('.topbar')
+  const dots = reader.querySelector('.page-control')
+  const media = reader.querySelector('.article-media')
+  if (!textEl || !card || !top || !heading || !bar || !dots || !media) return item.pages
+  const css = getComputedStyle(textEl)
   const probe = document.createElement('p')
   probe.className = 'article-text'
   Object.assign(probe.style, {
-    position: 'absolute', visibility: 'hidden', pointerEvents: 'none',
-    width: `${article.getBoundingClientRect().width}px`, height: 'auto',
-    maxHeight: 'none', overflow: 'visible', margin: '0',
-    font: style.font, letterSpacing: style.letterSpacing,
-    lineHeight: style.lineHeight, overflowWrap: style.overflowWrap,
+    position:'fixed', left:'-9999px', top:'0', visibility:'hidden', pointerEvents:'none',
+    width:`${textEl.getBoundingClientRect().width}px`, height:'auto', maxHeight:'none',
+    minHeight:'0', overflow:'visible', margin:'0', padding:'0',
+    font:css.font, lineHeight:css.lineHeight, letterSpacing:css.letterSpacing,
+    overflowWrap:css.overflowWrap,
   })
   document.body.appendChild(probe)
-  const cardHeight = card.clientHeight
-  const headerHeight = topline.getBoundingClientRect().height
-  const margin = parseFloat(style.marginTop) + parseFloat(style.marginBottom)
-  // The same header/image is used in the source; reserve space on cover pages.
-  const firstCapacity = Math.max(85, cardHeight - headerHeight - margin - 18)
-  const media = reader.querySelector('.article-media')
-  const mediaHeight = media && getComputedStyle(media).display !== 'none' ? media.getBoundingClientRect().height : 0
-  const otherCapacity = Math.max(firstCapacity, firstCapacity + mediaHeight - 12)
+  const available = reader.clientHeight - bar.offsetHeight - heading.offsetHeight - dots.offsetHeight
+    - top.offsetHeight - parseFloat(css.marginTop || 0) - parseFloat(css.marginBottom || 0) - 28
+  // A page containing a photograph has less room for text.
+  const imageHeight = Math.max(media.offsetHeight, Math.min(160, Math.max(85, reader.clientHeight * 0.19)) + 19)
+  const withImage = Math.max(45, available - imageHeight - 10)
+  const withoutImage = Math.max(45, available)
+  const measure = list => { probe.textContent = list.map(x => x.text).join(' '); return probe.getBoundingClientRect().height }
   const pages = []
-  let current = []
-  let currentImage = units[0].image
-  let currentCaption = units[0].caption
-  const fits = (parts, limit) => {
-    probe.textContent = parts.map(x => x.text).join(' ')
-    return probe.getBoundingClientRect().height <= limit
-  }
+  let pending = []
+  let pendingSource = 0
   const flush = () => {
-    if (!current.length) return
-    pages.push({ image: currentImage, caption: currentCaption, text: current.map(x => x.text).join(' ') })
-    current = []
+    if (!pending.length) return
+    const source = originals[pendingSource]
+    const showImage = pendingSource === 0 || (source.image && source.image !== originals[0].image)
+    pages.push({ image:showImage ? source.image : '', caption:showImage ? source.caption : '', text:pending.map(x=>x.text).join(' ') })
+    pending = []
   }
   for (const unit of units) {
-    const limit = pages.length === 0 ? firstCapacity : otherCapacity
-    if (current.length && !fits([...current, unit], limit)) {
+    if (pending.length && unit.sourceIndex !== pendingSource) flush()
+    if (!pending.length) pendingSource = unit.sourceIndex
+    const source = originals[pendingSource]
+    const image = pendingSource === 0 || (source.image && source.image !== originals[0].image)
+    // Show each source image once, at its first resulting page.
+    const firstInSource = !pages.some(p => p.image && p.image === source.image)
+    const limit = image && firstInSource ? withImage : withoutImage
+    if (pending.length && measure([...pending,unit]) > limit) {
       flush()
-      currentImage = unit.image
-      currentCaption = unit.caption
+      pendingSource = unit.sourceIndex
     }
-    // A single unusually long sentence stays intact and can scroll inside the text panel.
-    current.push(unit)
+    pending.push(unit)
   }
   flush()
-  probe.remove()
-  // Prevent tiny final pages when the preceding page has room for the combined text.
-  if (pages.length > 1) {
-    const last = pages.at(-1)
-    if (last.text.trim().split(/\s+/).length < 15) {
-      const prev = pages.at(-2)
-      if (fitsAfterRemoval(prev.text + ' ' + last.text, otherCapacity, style, article)) {
-        prev.text += ' ' + last.text
-        pages.pop()
-      }
-    }
+  // Ensure an image is shown only on the first page of its source section.
+  const used = new Set()
+  for (const page of pages) {
+    if (page.image && used.has(page.image)) { page.image = ''; page.caption = '' }
+    if (page.image) used.add(page.image)
   }
-  return pages
-}
-const fitsAfterRemoval = (text, capacity, style, article) => {
-  const probe = document.createElement('p')
-  probe.className = 'article-text'
-  Object.assign(probe.style, { position:'absolute', visibility:'hidden', width:`${article.getBoundingClientRect().width}px`, height:'auto', maxHeight:'none', overflow:'visible', margin:'0', font:style.font, letterSpacing:style.letterSpacing, lineHeight:style.lineHeight })
-  probe.textContent = text
-  document.body.appendChild(probe)
-  const fits = probe.getBoundingClientRect().height <= capacity
   probe.remove()
-  return fits
+  return pages
 }
 
 const dictionary = {
@@ -305,8 +295,8 @@ function App() {
         const reader = document.querySelector('.story-layer:not(.outgoing) .reader-gesture')
         if (!reader) return
         const next = layoutPages(story, reader)
-        const before = story.pages.map(p => p.text).join('\u0000')
-        const after = next.map(p => p.text).join('\u0000')
+        const before = story.pages.map(p => `${p.image}|${p.text}`).join('\u0000')
+        const after = next.map(p => `${p.image}|${p.text}`).join('\u0000')
         if (before !== after) {
           setStories(old => old.map((item, i) => i === storyIndex ? { ...item, pages: next } : item))
           setPage(p => Math.min(p, next.length - 1))
@@ -550,9 +540,9 @@ function App() {
     const itemPage = item.pages[pageNumber] || item.pages[0]
     const tokens = itemPage.text.split(/(\s+)/)
     return <div className="reader-gesture" aria-hidden={!interactive} onTouchStart={interactive ? startGesture : undefined} onTouchMove={interactive ? moveGesture : undefined} onTouchEnd={interactive ? endGesture : undefined} onTouchCancel={interactive ? cancelGesture : undefined}>
-      <header className="topbar"><span className="brand">DAILY LORE <em>ENGLISH</em></span><span className="edition">ISSUE NO. {String(index + 1).padStart(3, '0')}</span></header>
+      <header className="topbar"><span className="brand">DAILY NEWS</span></header>
       <div className="article-heading"><div className="eyebrow">{item.category}</div><h1>{item.title}</h1><p className="deck">{item.subtitle}</p></div>
-      <div className={"article-media " + (pageNumber > 0 && itemPage.image === item.pages[0].image ? "article-media-repeated" : "")}><img src={itemPage.image} alt={itemPage.caption} decoding="async" loading={interactive ? "eager" : "lazy"} onError={e => { e.currentTarget.style.opacity = '.35' }}/><div className="photo-caption">{itemPage.caption}</div></div>
+      <div className={"article-media " + (!itemPage.image ? "article-media-empty" : "")}><img src={itemPage.image || undefined} alt={itemPage.caption} decoding="async" loading={interactive ? "eager" : "lazy"} onError={e => { e.currentTarget.style.opacity = '.35' }}/><div className="photo-caption">{itemPage.caption}</div></div>
       <section className="reading-card"><div className="reading-topline"><span>THE SHORT STORY · {pageNumber + 1}/{item.pages.length}</span><button className="icon-button" disabled={!interactive} onClick={() => speak(itemPage.text)} aria-label="Read aloud"><Icon name="volume" size={21}/></button></div>
         <p className="article-text">{tokens.map((token, i) => { const word = clean(token); return /^\s+$/.test(token) || !word ? token : <button key={i} type="button" disabled={!interactive} className={'word-token ' + (words.some(w => w.word === word) ? 'known' : '')} onClick={event => onWordClick(event, word)}>{token}</button> })}</p>
       </section>

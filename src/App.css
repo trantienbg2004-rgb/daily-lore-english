@@ -119,3 +119,12 @@
 .reading-mode .reading-card{justify-content:flex-start;overflow-y:auto;min-height:0}
 .reading-mode .article-text{flex:0 0 auto}
 .reading-mode .page-control .dots{max-width:100%;flex-wrap:wrap;justify-content:center}
+
+/* DAILY NEWS: one viewport per page, no internal vertical scrolling. */
+.reading-mode .topbar{justify-content:flex-start}
+.reading-mode .brand{font-size:clamp(16px,2.35vh,21px);letter-spacing:-.45px}
+.reading-mode .reading-card{overflow:hidden!important;min-height:0;justify-content:flex-start;padding-bottom:0}
+.reading-mode .article-text{overflow:visible!important;max-height:none!important;flex:0 0 auto}
+.reading-mode .article-media-empty{display:none!important}
+.reading-mode .article-media:not(.article-media-empty) img{height:clamp(85px,19vh,160px)}
+.reading-mode .page-control{margin-top:auto}

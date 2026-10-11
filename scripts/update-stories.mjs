@@ -64,6 +64,36 @@ async function fetchJson(url) {
   if (!response.ok) throw Error(`HTTP ${response.status}`)
   return response.json()
 }
+// Wikipedia image gallery: use images embedded in the original article, not random search.
+// Images are only attached when Wikimedia metadata provides an open licence.
+async function getArticleImages(title, leadImage, leadCaption) {
+  const result = [{ image: leadImage, caption: leadCaption }]
+  try {
+    const u = new URL('https://en.wikipedia.org/w/api.php')
+    Object.entries({action:'parse',page:title,prop:'images',format:'json'}).forEach(([k,v])=>u.searchParams.set(k,v))
+    const parsed = await fetchJson(u)
+    const names = (parsed.parse?.images || []).filter(name =>
+      /\.(jpg|jpeg|png|webp)$/i.test(name) && !/\b(icon|logo|flag|map locator|symbol|coat of arms|wikimedia|commons|question mark|edit|button)\b/i.test(name)
+    ).slice(0, 22)
+    if (!names.length) return result
+    const info = new URL('https://en.wikipedia.org/w/api.php')
+    Object.entries({action:'query',prop:'imageinfo',iiprop:'url|size|extmetadata',iiurlwidth:'1100',titles:names.map(n=>'File:'+n).join('|'),format:'json',formatversion:'2'}).forEach(([k,v])=>info.searchParams.set(k,v))
+    const data = await fetchJson(info)
+    for (const file of data.query?.pages || []) {
+      const image = file.imageinfo?.[0]
+      const meta = image?.extmetadata || {}
+      const license = String(meta.LicenseShortName?.value || '')
+      const url = image?.thumburl || image?.url
+      if (!url?.startsWith('https://') || image.width < 650 || image.height < 300) continue
+      if (!/CC BY|CC0|Public domain|PD-/i.test(license)) continue
+      if (url === leadImage || result.some(x=>x.image === url)) continue
+      result.push({image:url,caption:`${file.title.replace(/^File:/,'')} · Wikimedia Commons · ${license} · See source for credits`})
+      if (result.length >= 4) break
+    }
+  } catch (error) { console.warn(`Extra article images unavailable (${title}): ${error.message}`) }
+  return result
+}
+
 async function getArticle(topic) {
   const u = new URL('https://en.wikipedia.org/w/api.php')
   Object.entries({ action: 'query', prop: 'extracts|pageimages|info', exintro: '0', explaintext: '1', exsectionformat: 'plain', piprop: 'original|thumbnail', pithumbsize: '1200', inprop: 'url', redirects: '1', format: 'json', formatversion: '2', titles: topic }).forEach(([k, v]) => u.searchParams.set(k, v))
@@ -75,6 +105,15 @@ async function getArticle(topic) {
   const url = p.fullurl || `https://en.wikipedia.org/wiki/${encodeURIComponent(p.title.replace(/ /g, '_'))}`
   const caption = `Wikipedia / Wikimedia Commons · Attribution and image licensing: see original source`
   const pages = buildPages(p.extract, image, caption)
+  // Source images are spread across sections; no invented or unrelated photographs.
+  const gallery = await getArticleImages(p.title, image, caption)
+  if (gallery.length > 1) {
+    for (let i = 0; i < pages.length; i++) {
+      const choice = gallery[Math.min(gallery.length - 1, Math.floor(i * gallery.length / pages.length))]
+      pages[i].image = choice.image
+      pages[i].caption = choice.caption
+    }
+  }
   if (!pages.length) throw Error('Insufficient clean text')
   return { category: 'DISCOVER · WIKIPEDIA', title: p.title.toUpperCase(), subtitle: 'Read the full story · Wikipedia', sourceTitle: topic, sourceUrl: url, contentType: 'knowledge', license: 'CC BY-SA 4.0 (verify source page and media license)', attribution: `Wikipedia contributors, “${p.title}”, ${url}`, pages }
 }
