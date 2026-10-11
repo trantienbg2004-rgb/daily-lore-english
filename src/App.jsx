@@ -64,31 +64,43 @@ function layoutPages(item, reader) {
   const coverRoom = Math.max(24, baseRoom - coverHeadingHeight - photoHeight)
   const ordinaryRoom = Math.max(24, baseRoom - continuedHeadingHeight)
   const imageRoom = Math.max(24, ordinaryRoom - photoHeight)
+  // Source pages are transport chunks, not real reading pages. Joining their
+  // text first prevents an almost empty page at every source-chunk boundary.
+  const allWords = originals.flatMap(p => (p.text || '').match(/\S+/g) || [])
+  const images = originals.filter(p => p.image).filter((p, i, list) =>
+    list.findIndex(other => other.image === p.image) === i)
   const result = []
-  const shownImages = new Set()
-  for (const original of originals) {
-    const words = (original.text || '').match(/\S+/g) || []
-    let offset = 0
-    while (offset < words.length) {
-      const withImage = !!original.image && !shownImages.has(original.image)
-      const room = result.length === 0 ? (withImage ? coverRoom : baseRoom - coverHeadingHeight)
-        : (withImage ? imageRoom : ordinaryRoom)
-      let low = 1, high = words.length - offset, best = 1
-      // Binary search for the largest chunk that fits. At most ~7 measurements per page.
-      while (low <= high) {
-        const middle = Math.floor((low + high) / 2)
-        const candidate = words.slice(offset, offset + middle).join(' ')
-        if (measure(candidate) <= room) { best = middle; low = middle + 1 }
-        else high = middle - 1
-      }
-      result.push({
-        image: withImage ? original.image : '',
-        caption: withImage ? original.caption : '',
-        text: words.slice(offset, offset + best).join(' '),
-      })
-      if (withImage) shownImages.add(original.image)
-      offset += best
+  let offset = 0
+  // Do not force a new page when a source chunk ends. The UI owns pagination.
+  while (offset < allWords.length) {
+    const first = result.length === 0
+    // Keep the cover photo, and show additional original photos occasionally.
+    const mediaIndex = first ? 0 : (result.length % 4 === 0 ? Math.floor(result.length / 4) : -1)
+    const media = images[mediaIndex]
+    const withImage = !!media
+    const room = first ? (withImage ? coverRoom : baseRoom - coverHeadingHeight)
+      : (withImage ? imageRoom : ordinaryRoom)
+    let low = 1, high = allWords.length - offset, best = 1
+    while (low <= high) {
+      const mid = Math.floor((low + high) / 2)
+      if (measure(allWords.slice(offset, offset + mid).join(' ')) <= room) {
+        best = mid
+        low = mid + 1
+      } else high = mid - 1
     }
+    const remaining = allWords.length - offset
+    // Balance a near-empty last page with its predecessor instead of leaving
+    // a solitary sentence surrounded by whitespace.
+    if (remaining > best && remaining - best < Math.min(34, Math.floor(best * .45))) {
+      const share = Math.ceil(remaining / 2)
+      if (share <= best) best = share
+    }
+    result.push({
+      image: media?.image || '',
+      caption: media?.caption || '',
+      text: allWords.slice(offset, offset + best).join(' '),
+    })
+    offset += best
   }
   probe.remove()
   return result.length ? result : originals
@@ -609,9 +621,15 @@ function App() {
         <p className="article-text">{tokens.map((token, i) => { const word = clean(token); return /^\s+$/.test(token) || !word ? token : <button key={i} type="button" disabled={!interactive} className={'word-token ' + (words.some(w => w.word === word) ? 'known' : '')} onClick={event => onWordClick(event, word)}>{token}</button> })}</p>
       </section>
       <div className="page-control" aria-label={`Page ${pageNumber + 1} of ${item.pages.length}`}>
-        {item.pages.length <= 12
-          ? <div className="dots" aria-hidden="true">{item.pages.map((_, i) => <span key={i} className={pageNumber === i ? 'active' : ''}/>)}</div>
-          : <div className="page-meter" aria-hidden="true"><span style={{width: `${((pageNumber + 1) / item.pages.length) * 100}%`}}/></div>}
+        <div className="dots" aria-hidden="true">{(() => {
+          // A moving set of dots; each dot corresponds to a real nearby page.
+          // Keep the total bounded on narrow phones, never change to a bar.
+          const count = item.pages.length
+          const visible = Math.min(count, 11)
+          const first = Math.max(0, Math.min(pageNumber - Math.floor(visible / 2), count - visible))
+          return Array.from({ length: visible }, (_, i) => first + i).map(i =>
+            <span key={i} className={pageNumber === i ? 'active' : ''}/>)
+        })()}</div>
       </div>
     </div>
   }
