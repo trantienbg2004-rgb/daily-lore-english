@@ -9,8 +9,88 @@ const readHistory = () => {
   try { const value = JSON.parse(localStorage.getItem('dailyLoreSeenV1') || '[]'); return new Set(Array.isArray(value) ? value : []) }
   catch { return new Set() }
 }
-const readableStory = item => Array.isArray(item?.pages) && item.pages.length >= 3 && item.pages.reduce((sum, p) => sum + (p.text?.trim().split(/\s+/).length || 0), 0) >= 200
+// Hide legacy one-page RSS summaries while retaining local read history and saved words.
+// Filter only when reading from the published library; do not mutate stored articles.
+const readableStory = item => Array.isArray(item?.pages) && item.pages.length >= 3 &&
+  item.pages.reduce((sum, page) => sum + (typeof page.text === 'string' ? page.text.trim().split(/\s+/).filter(Boolean).length : 0), 0) >= 200
 const validStories = data => Array.isArray(data) && data.every(item => item && typeof item.title === 'string' && Array.isArray(item.pages) && item.pages.length > 0 && item.pages.every(p => typeof p.text === 'string' && typeof p.image === 'string'))
+
+// Keep the original text. Pagination below uses the actual rendered reading area.
+const paginateStory = item => ({ ...item, _sourcePages: item._sourcePages || item.pages })
+
+// Source paragraphs remain intact in storage. Layout is calculated on the device.
+const sentenceUnits = pages => {
+  const segmenter = new Intl.Segmenter('en', { granularity: 'sentence' })
+  return pages.flatMap((source, sourceIndex) => [...segmenter.segment(source.text)].map(part => ({
+    text: part.segment.trim(), sourceIndex, image: source.image, caption: source.caption,
+  })).filter(part => part.text))
+}
+
+// Measure the same font and width as the actual reading pane. No internal scrolling.
+const layoutPages = (item, reader) => {
+  const originals = item._sourcePages || item.pages
+  const units = sentenceUnits(originals)
+  if (!units.length) return originals
+  const textEl = reader.querySelector('.article-text')
+  const card = reader.querySelector('.reading-card')
+  const top = reader.querySelector('.reading-topline')
+  const heading = reader.querySelector('.article-heading')
+  const bar = reader.querySelector('.topbar')
+  const dots = reader.querySelector('.page-control')
+  const media = reader.querySelector('.article-media')
+  if (!textEl || !card || !top || !heading || !bar || !dots || !media) return item.pages
+  const css = getComputedStyle(textEl)
+  const probe = document.createElement('p')
+  probe.className = 'article-text'
+  Object.assign(probe.style, {
+    position:'fixed', left:'-9999px', top:'0', visibility:'hidden', pointerEvents:'none',
+    width:`${textEl.getBoundingClientRect().width}px`, height:'auto', maxHeight:'none',
+    minHeight:'0', overflow:'visible', margin:'0', padding:'0',
+    font:css.font, lineHeight:css.lineHeight, letterSpacing:css.letterSpacing,
+    overflowWrap:css.overflowWrap,
+  })
+  document.body.appendChild(probe)
+  const available = reader.clientHeight - bar.offsetHeight - heading.offsetHeight - dots.offsetHeight
+    - top.offsetHeight - parseFloat(css.marginTop || 0) - parseFloat(css.marginBottom || 0) - 28
+  // A page containing a photograph has less room for text.
+  const imageHeight = Math.max(media.offsetHeight, Math.min(160, Math.max(85, reader.clientHeight * 0.19)) + 19)
+  const withImage = Math.max(45, available - imageHeight - 10)
+  const withoutImage = Math.max(45, available)
+  const measure = list => { probe.textContent = list.map(x => x.text).join(' '); return probe.getBoundingClientRect().height }
+  const pages = []
+  let pending = []
+  let pendingSource = 0
+  const flush = () => {
+    if (!pending.length) return
+    const source = originals[pendingSource]
+    const showImage = pendingSource === 0 || (source.image && source.image !== originals[0].image)
+    pages.push({ image:showImage ? source.image : '', caption:showImage ? source.caption : '', text:pending.map(x=>x.text).join(' ') })
+    pending = []
+  }
+  for (const unit of units) {
+    if (pending.length && unit.sourceIndex !== pendingSource) flush()
+    if (!pending.length) pendingSource = unit.sourceIndex
+    const source = originals[pendingSource]
+    const image = pendingSource === 0 || (source.image && source.image !== originals[0].image)
+    // Show each source image once, at its first resulting page.
+    const firstInSource = !pages.some(p => p.image && p.image === source.image)
+    const limit = image && firstInSource ? withImage : withoutImage
+    if (pending.length && measure([...pending,unit]) > limit) {
+      flush()
+      pendingSource = unit.sourceIndex
+    }
+    pending.push(unit)
+  }
+  flush()
+  // Ensure an image is shown only on the first page of its source section.
+  const used = new Set()
+  for (const page of pages) {
+    if (page.image && used.has(page.image)) { page.image = ''; page.caption = '' }
+    if (page.image) used.add(page.image)
+  }
+  probe.remove()
+  return pages
+}
 
 const dictionary = {
   coincidence: 'Two events happening together by chance.', rotates: 'Turns around a central point or axis.',
@@ -208,50 +288,116 @@ function App() {
   const story = stories[storyIndex] || null
   const currentPage = story?.pages?.[page] || null
 
-  // Read paginated static feed, skipping previously read IDs on this device.
-  // A finite feed ends explicitly: it never replays seen stories as if new.
-  const loadFeed = async (cursor = 0) => {
+  // Recalculate when the actual screen dimensions change. No cut sentences or empty pages.
+  useEffect(() => {
+    if (tab !== 'read' || !story) return
+    let frame = 0
+    let observer
+    const recalculate = () => {
+      cancelAnimationFrame(frame)
+      frame = requestAnimationFrame(() => {
+        const reader = document.querySelector('.story-layer:not(.outgoing) .reader-gesture')
+        if (!reader) return
+        const next = layoutPages(story, reader)
+        const before = story.pages.map(p => `${p.image}|${p.text}`).join('\u0000')
+        const after = next.map(p => `${p.image}|${p.text}`).join('\u0000')
+        if (before !== after) {
+          setStories(old => old.map((item, i) => i === storyIndex ? { ...item, pages: next } : item))
+          setPage(p => Math.min(p, next.length - 1))
+        }
+      })
+    }
+    recalculate()
+    const viewport = document.querySelector('.story-viewport')
+    if (viewport && typeof ResizeObserver !== 'undefined') {
+      observer = new ResizeObserver(recalculate)
+      observer.observe(viewport)
+    }
+    window.addEventListener('resize', recalculate)
+    return () => { cancelAnimationFrame(frame); observer?.disconnect(); window.removeEventListener('resize', recalculate) }
+  }, [tab, storyIndex, stories.length, story?._sourcePages])
+
+
+  // One shared feed; each browser keeps its own read history. Shuffle the
+  // chunk order once per session and shuffle articles within each chunk.
+  // This avoids everyone starting on the same article without replaying reads.
+  const chunkOrderRef = useRef([])
+  const feedVersionRef = useRef('')
+  const cursorRef = useRef(0)
+  const doneRef = useRef(false)
+  const scanFailedRef = useRef(false)
+  const shuffle = values => {
+    const copy = [...values]
+    for (let i = copy.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1))
+      ;[copy[i], copy[j]] = [copy[j], copy[i]]
+    }
+    return copy
+  }
+
+  const loadFeed = async (rescan = false) => {
     if (feedBusy.current) return
     feedBusy.current = true
     setFeedLoading(true)
     try {
-      const manifestResponse = await fetch(`${import.meta.env.BASE_URL}feed/manifest.json?t=${Date.now()}`, { cache: 'no-store' })
-      if (!manifestResponse.ok) throw new Error('Feed not published yet')
-      const manifest = await manifestResponse.json()
-      const count = Number(manifest.chunks) || 0
+      const response = await fetch(`${import.meta.env.BASE_URL}feed/manifest.json?t=${Date.now()}`, { cache: 'no-store' })
+      if (!response.ok) throw new Error('Feed manifest unavailable')
+      const manifest = await response.json()
+      const count = Number(manifest.chunks)
+      if (!Number.isSafeInteger(count) || count < 0) throw new Error('Invalid feed manifest')
+      const version = `${manifest.updatedAt || ''}:${count}`
+      if (version !== feedVersionRef.current || chunkOrderRef.current.length !== count) {
+        // Preserve existing queue and reading history; only reset the scan.
+        // Newly published chunks can change every old chunk's contents.
+        chunkOrderRef.current = shuffle(Array.from({ length: count }, (_, i) => i))
+        cursorRef.current = 0
+        feedVersionRef.current = version
+      } else if (rescan) {
+        cursorRef.current = 0
+      }
+
       const added = []
-      let next = cursor
-      // Read at most 8 chunks per request, or stop once 8 unseen stories are available.
-      while (next < count && next < cursor + 8 && added.length < 8) {
-        const response = await fetch(`${import.meta.env.BASE_URL}feed/${String(next).padStart(4, '0')}.json?v=${encodeURIComponent(manifest.updatedAt || Date.now())}`, { cache: 'no-store' })
-        if (!response.ok) throw new Error(`Feed chunk ${next} unavailable`)
-        const batch = await response.json()
-        if (!validStories(batch)) throw new Error('Invalid feed data')
-        for (const item of batch) {
+      const stagedIds = new Set()
+      const start = cursorRef.current
+      let next = start
+      while (next < count && next < start + 8 && added.length < 8) {
+        const chunkNumber = chunkOrderRef.current[next]
+        const url = `${import.meta.env.BASE_URL}feed/${String(chunkNumber).padStart(4, '0')}.json?v=${encodeURIComponent(manifest.updatedAt || '')}`
+        const chunkResponse = await fetch(url, { cache: 'no-store' })
+        if (!chunkResponse.ok) throw new Error(`Feed chunk ${chunkNumber} unavailable`)
+        const batch = await chunkResponse.json()
+        if (!validStories(batch)) throw new Error(`Invalid feed chunk ${chunkNumber}`)
+        for (const item of shuffle(batch)) {
           const id = storyId(item)
-          if (readableStory(item) && !seenRef.current.has(id) && !loadedRef.current.has(id)) {
-            loadedRef.current.add(id)
+          if (readableStory(item) && !seenRef.current.has(id) && !loadedRef.current.has(id) && !stagedIds.has(id)) {
+            stagedIds.add(id)
             added.push(item)
           }
         }
         next++
       }
-      if (added.length) setStories(old => [...old, ...added])
+      stagedIds.forEach(id => loadedRef.current.add(id))
+      scanFailedRef.current = false
+      cursorRef.current = next
+      doneRef.current = next >= count
       setFeedCursor(next)
-      setFeedDone(next >= count)
+      setFeedDone(doneRef.current)
+      if (added.length) setStories(old => [...old, ...added.map(paginateStory)])
     } catch (error) {
+      scanFailedRef.current = true
       console.warn('Feed unavailable:', error.message)
-      // First-time migration fallback, not an infinite loop.
-      if (cursor === 0 && loadedRef.current.size === 0) {
+      // Never advance the cursor on an unsuccessful scan.
+      if (!storiesRef.current.length && loadedRef.current.size === 0) {
         try {
-          const response = await fetch(`${import.meta.env.BASE_URL}stories.json`, { cache: 'no-store' })
-          const data = await response.json()
+          const fallback = await fetch(`${import.meta.env.BASE_URL}stories.json`, { cache: 'no-store' })
+          if (!fallback.ok) throw new Error('Fallback unavailable')
+          const data = await fallback.json()
           if (validStories(data)) {
-            const unseen = data.filter(item => readableStory(item) && !seenRef.current.has(storyId(item)))
+            const unseen = shuffle(data.filter(item => readableStory(item) && !seenRef.current.has(storyId(item))))
             unseen.forEach(item => loadedRef.current.add(storyId(item)))
-            setStories(unseen)
+            setStories(unseen.map(paginateStory))
           }
-        } catch { /* Display retry below */ }
+        } catch { /* Keep retry available */ }
       }
     } finally {
       feedBusy.current = false
@@ -259,10 +405,10 @@ function App() {
     }
   }
 
-  // A manual refresh must rescan from chunk zero: existing chunks can be republished.
-  const refreshFeed = () => loadFeed(0)
-
-  useEffect(() => { loadFeed(0) }, [])
+  const refreshFeed = () => loadFeed(true)
+  const storiesRef = useRef(stories)
+  storiesRef.current = stories
+  useEffect(() => { loadFeed() }, [])
   useEffect(() => {
     if (!story) return
     const id = storyId(story)
@@ -272,8 +418,26 @@ function App() {
     catch (error) { console.warn('Reading history could not be saved:', error) }
   }, [storyIndex, story])
   useEffect(() => {
-    if (stories.length && stories.length - storyIndex <= 4 && !feedDone && !feedLoading) loadFeed(feedCursor)
+    if (!feedDone && !feedLoading && !scanFailedRef.current && (stories.length === 0 || stories.length - storyIndex <= 4)) loadFeed()
   }, [storyIndex, stories.length, feedCursor, feedDone, feedLoading])
+  // Recheck the manifest when the reader returns to the tab. Also check every
+  // five minutes while the app is open; no need to reload or erase progress.
+  useEffect(() => {
+    const check = () => {
+      if (document.visibilityState === 'visible' && !feedBusy.current) {
+        // A completed scan needs a rescan to detect newly published stories.
+        if (doneRef.current) loadFeed(true)
+      }
+    }
+    const timer = setInterval(check, 5 * 60 * 1000)
+    document.addEventListener('visibilitychange', check)
+    window.addEventListener('focus', check)
+    return () => {
+      clearInterval(timer)
+      document.removeEventListener('visibilitychange', check)
+      window.removeEventListener('focus', check)
+    }
+  }, [])
 
   useEffect(() => {
     try { localStorage.setItem('dailyLoreWords', JSON.stringify(words)) }
@@ -434,9 +598,9 @@ function App() {
     const itemPage = item.pages[pageNumber] || item.pages[0]
     const tokens = itemPage.text.split(/(\s+)/)
     return <div className="reader-gesture" aria-hidden={!interactive} onTouchStart={interactive ? startGesture : undefined} onTouchMove={interactive ? moveGesture : undefined} onTouchEnd={interactive ? endGesture : undefined} onTouchCancel={interactive ? cancelGesture : undefined}>
-      <header className="topbar"><span className="brand">DAILY LORE <em>ENGLISH</em></span><span className="edition">ISSUE NO. {String(index + 1).padStart(3, '0')}</span></header>
+      <header className="topbar"><span className="brand">DAILY NEWS</span></header>
       <div className="article-heading"><div className="eyebrow">{item.category}</div><h1>{item.title}</h1><p className="deck">{item.subtitle}</p></div>
-      <div className="article-media"><img src={itemPage.image} alt={itemPage.caption} decoding="async" loading={interactive ? "eager" : "lazy"} onError={e => { e.currentTarget.style.opacity = '.35' }}/><div className="photo-caption">{itemPage.caption}</div></div>
+      <div className={"article-media " + (!itemPage.image ? "article-media-empty" : "")}><img src={itemPage.image || undefined} alt={itemPage.caption} decoding="async" loading={interactive ? "eager" : "lazy"} onError={e => { e.currentTarget.style.opacity = '.35' }}/><div className="photo-caption">{itemPage.caption}</div></div>
       <section className="reading-card"><div className="reading-topline"><span>THE SHORT STORY · {pageNumber + 1}/{item.pages.length}</span><button className="icon-button" disabled={!interactive} onClick={() => speak(itemPage.text)} aria-label="Read aloud"><Icon name="volume" size={21}/></button></div>
         <p className="article-text">{tokens.map((token, i) => { const word = clean(token); return /^\s+$/.test(token) || !word ? token : <button key={i} type="button" disabled={!interactive} className={'word-token ' + (words.some(w => w.word === word) ? 'known' : '')} onClick={event => onWordClick(event, word)}>{token}</button> })}</p>
       </section>
