@@ -11,38 +11,54 @@ const readHistory = () => {
 }
 const validStories = data => Array.isArray(data) && data.every(item => item && typeof item.title === 'string' && Array.isArray(item.pages) && item.pages.length > 0 && item.pages.every(p => typeof p.text === 'string' && typeof p.image === 'string'))
 
-// Split long source pages into readable screens without changing story IDs or source files.
-// Prefer sentence boundaries; exceptionally long sentences are split at word boundaries.
+// Reflow all source pages into balanced reading pages. Never create a one-word page.
+// The original story ID and source data remain unchanged.
 const paginateStory = item => {
-  const limit = 38
   const segmenter = new Intl.Segmenter('en', { granularity: 'sentence' })
-  const pages = []
-  for (const original of item.pages) {
-    const parts = [...segmenter.segment(original.text)].map(x => x.segment.trim()).filter(Boolean)
-    let current = []
-    let count = 0
-    const flush = () => {
-      if (!current.length) return
-      pages.push({ ...original, text: current.join(' ').trim() })
-      current = []
-      count = 0
+  const units = []
+  for (const source of item.pages) {
+    const parts = [...segmenter.segment(source.text)].map(x => x.segment.trim()).filter(Boolean)
+    for (const part of parts) {
+      const tokens = part.split(/\s+/).filter(Boolean)
+      // Extremely long source sentences can wrap within a scrollable reading panel.
+      if (tokens.length) units.push({ text: part, image: source.image, caption: source.caption, count: tokens.length })
     }
-    for (const sentence of parts) {
-      const words = sentence.split(/\s+/).filter(Boolean)
-      if (words.length > limit) {
-        flush()
-        for (let i = 0; i < words.length; i += limit) {
-          pages.push({ ...original, text: words.slice(i, i + limit).join(' ') })
-        }
-      } else {
-        if (count && count + words.length > limit) flush()
-        current.push(sentence)
-        count += words.length
-      }
-    }
-    flush()
   }
-  return pages.length ? { ...item, pages } : item
+  if (!units.length) return item
+  const totalWords = units.reduce((sum, unit) => sum + unit.count, 0)
+  // Aim for substantial pages, but do not make the last page an orphan.
+  const target = 75
+  const pageCount = Math.max(1, Math.ceil(totalWords / target))
+  const ideal = totalWords / pageCount
+  const pages = []
+  let group = []
+  let count = 0
+  let consumed = 0
+  const flush = () => {
+    if (!group.length) return
+    const source = group[0]
+    pages.push({ image: source.image, caption: source.caption, text: group.map(x => x.text).join(' ') })
+    consumed += count
+    group = []
+    count = 0
+  }
+  for (let i = 0; i < units.length; i++) {
+    const unit = units[i]
+    const remaining = units.slice(i).reduce((sum, x) => sum + x.count, 0)
+    const slots = pageCount - pages.length
+    // Keep a sentence intact. Split only at sentence boundaries, and balance the remainder.
+    if (group.length && slots > 1 && count + unit.count > Math.max(ideal * 1.15, 85) && remaining - unit.count >= 35) flush()
+    group.push(unit)
+    count += unit.count
+    if (slots > 1 && count >= ideal && remaining - unit.count >= Math.max(35, ideal * .55)) flush()
+  }
+  flush()
+  // Rebalance an orphan page by merging it with its predecessor.
+  if (pages.length > 1 && pages.at(-1).text.split(/\s+/).length < 25) {
+    const last = pages.pop()
+    pages[pages.length - 1].text += ' ' + last.text
+  }
+  return { ...item, pages }
 }
 
 const dictionary = {
@@ -469,7 +485,7 @@ function App() {
     return <div className="reader-gesture" aria-hidden={!interactive} onTouchStart={interactive ? startGesture : undefined} onTouchMove={interactive ? moveGesture : undefined} onTouchEnd={interactive ? endGesture : undefined} onTouchCancel={interactive ? cancelGesture : undefined}>
       <header className="topbar"><span className="brand">DAILY LORE <em>ENGLISH</em></span><span className="edition">ISSUE NO. {String(index + 1).padStart(3, '0')}</span></header>
       <div className="article-heading"><div className="eyebrow">{item.category}</div><h1>{item.title}</h1><p className="deck">{item.subtitle}</p></div>
-      <div className="article-media"><img src={itemPage.image} alt={itemPage.caption} decoding="async" loading={interactive ? "eager" : "lazy"} onError={e => { e.currentTarget.style.opacity = '.35' }}/><div className="photo-caption">{itemPage.caption}</div></div>
+      <div className={"article-media " + (pageNumber > 0 && itemPage.image === item.pages[0].image ? "article-media-repeated" : "")}><img src={itemPage.image} alt={itemPage.caption} decoding="async" loading={interactive ? "eager" : "lazy"} onError={e => { e.currentTarget.style.opacity = '.35' }}/><div className="photo-caption">{itemPage.caption}</div></div>
       <section className="reading-card"><div className="reading-topline"><span>THE SHORT STORY · {pageNumber + 1}/{item.pages.length}</span><button className="icon-button" disabled={!interactive} onClick={() => speak(itemPage.text)} aria-label="Read aloud"><Icon name="volume" size={21}/></button></div>
         <p className="article-text">{tokens.map((token, i) => { const word = clean(token); return /^\s+$/.test(token) || !word ? token : <button key={i} type="button" disabled={!interactive} className={'word-token ' + (words.some(w => w.word === word) ? 'known' : '')} onClick={event => onWordClick(event, word)}>{token}</button> })}</p>
       </section>

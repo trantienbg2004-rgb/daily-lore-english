@@ -113,3 +113,9 @@
 .reading-mode .reading-topline{flex:0 0 auto}
 .reading-mode .page-control .dots{max-width:100%;flex-wrap:wrap;justify-content:center;row-gap:5px}
 .reading-mode .article-heading{min-height:0}
+
+/* Reading pages after the cover use the space for text rather than repeating the same photo. */
+.reading-mode .article-media-repeated{display:none}
+.reading-mode .reading-card{justify-content:flex-start;overflow-y:auto;min-height:0}
+.reading-mode .article-text{flex:0 0 auto}
+.reading-mode .page-control .dots{max-width:100%;flex-wrap:wrap;justify-content:center}
