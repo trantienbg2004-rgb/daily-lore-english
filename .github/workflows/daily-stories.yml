@@ -1,10 +1,7 @@
-name: Update knowledge and news stories
+name: "Update Daily News English articles"
 on:
   schedule:
-    # Regular replenishment twice an hour. GitHub may delay scheduled jobs.
     - cron: '7,37 * * * *'
-    # Four larger backfill waves a day while building the article reserve.
-    - cron: '15 1,7,13,19 * * *'
   workflow_dispatch:
 permissions:
   contents: write
@@ -22,34 +19,23 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Test collector before updating
+      - name: Verify existing reader functionality
         run: node --test scripts/test/*.test.mjs
-      - name: Verify React application builds before touching content
+      - name: Verify React build before publishing
         run: |
           npm ci --no-audit --no-fund
           npm run build
-      - name: Fetch and publish articles with durable queue
-        env:
-          BOOTSTRAP: ${{ github.event_name == 'workflow_dispatch' || github.event.schedule == '15 1,7,13,19 * * *' }}
-        run: |
-          if [ "$BOOTSTRAP" = "true" ]; then
-            node scripts/update-stories.mjs --bootstrap
-          else
-            node scripts/update-stories.mjs
-          fi
-      - name: Import licensed long-form NASA news when full text is available
-        run: node scripts/import-nasa.mjs
-      - name: Import long-form official health and earth-science reporting
-        run: node scripts/import-agency-news.mjs
-      - name: Check feed integrity before publishing
-        run: node scripts/validate-feed.mjs
-      - name: Commit and push new articles, cursors and metrics
+      - name: Collect source-attributed English reporting
+        run: node scripts/v22a-collect.mjs
+      - name: Verify at least 50 stories from three organizations
+        run: node scripts/v22a-check.mjs --strict
+      - name: Commit news-feed only (never republish encyclopedia content)
         run: |
           git config user.name 'daily-news-bot'
           git config user.email 'daily-news-bot@users.noreply.github.com'
-          git add public/stories.json public/feed/
+          git add -A public/news-feed/
           if ! git diff --cached --quiet; then
-            git commit -m 'Replenish Daily News evergreen content library'
+            git commit -m 'Update verified English publisher news feed'
             git pull --rebase origin main
             git push origin HEAD:main
           fi

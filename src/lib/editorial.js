@@ -19,12 +19,17 @@ export function editorialScore(item) {
   if (!item) return -100
   const text = (item.pages || []).map(p => p.text).join(' ')
   const words = text.trim().split(/\s+/).filter(Boolean)
-  if (words.length < 200) return -100
+  // Genuine RSS news previews are intentionally short; give them a fair rank.
+  if (words.length < 200 && item.contentType !== 'news-preview') return -100
   let score = Math.min(18, Math.floor(words.length / 40))
   const title = displayHeadline(item)
   if (title.split(/\s+/).length >= 5 && title.length <= 110) score += 7
   if (/\b(why|how|what|when|researchers|study|report|scientists|finds|reveals|shows|launch|changes|impact|warning)\b/i.test(title)) score += 10
   if (item.contentType === 'news') score += 100
+  if (item.contentType === 'news-preview') score += 55
+  // Calendar notices are not the breaking news people expect in the main feed.
+  // Retain access instead of silently deleting them from the staged archive.
+  if (/\b(?:seminar|lecture series|workshop|webinar|calendar of events)\b/i.test(title)) score -= 220
   if (/wikivoyage\.org/.test(lower(item.sourceUrl))) score -= 13
   const travelSignals = (text.match(/\b(updated|bus stop|airport|road|turn left|entrance fee|price|take the bus|highway|taxi|km from|route)\b/gi) || []).length
   score -= Math.min(35, travelSignals * 3)

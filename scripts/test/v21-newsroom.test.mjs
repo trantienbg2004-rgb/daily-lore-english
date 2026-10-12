@@ -113,11 +113,11 @@ test('V21 newsroom-first chunk scan never loses older chunks',()=>{
  assert.equal(new Set(order).size,28)
  assert.deepEqual([...order].sort((a,b)=>a-b),Array.from({length:28},(_,i)=>i))
 })
-test('V21 workflow invokes newsroom importer; old app, words and V20.1 keyboard untouched',()=>{
+test('V22-B replaces scheduled evergreen ingest while retaining V21 word UI and keyboard features',()=>{
  const workflow=readFileSync(new URL('../../.github/workflows/daily-stories.yml',import.meta.url),'utf8')
- assert.match(workflow,/node scripts\/import-agency-news\.mjs/)
- assert.match(workflow,/node scripts\/import-nasa\.mjs/)
- assert.match(workflow,/node scripts\/update-stories\.mjs/)
+ assert.match(workflow,/node scripts\/v22a-collect\.mjs/)
+ assert.match(workflow,/node scripts\/v22a-check\.mjs --strict/)
+ assert.doesNotMatch(workflow,/node scripts\/update-stories\.mjs/)
  const app=readFileSync(new URL('../../src/App.jsx',import.meta.url),'utf8')
  assert.match(app,/DAILY NEWS/)
  assert.match(app,/readerKeyboard/)

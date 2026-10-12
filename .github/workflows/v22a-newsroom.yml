@@ -1,8 +1,6 @@
 name: "V22-A · Collect English News (staging)"
 on:
   # Stage fresh news separately; NEVER switch V21 reading feed automatically.
-  schedule:
-    - cron: '23 0,6,12,18 * * *'
   workflow_dispatch:
 permissions:
   contents: write

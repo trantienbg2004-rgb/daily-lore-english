@@ -44,6 +44,9 @@ export function photoSourceLink(page) {
 // both hosts for thumbnail URLs; never retry arbitrary third-party hosts.
 export function photoCandidates(image) {
   if (!image) return []
+  // Only our own shipped neutral source card may use a relative URL. Other
+  // remote paths are rejected, preserving the V20 image security behavior.
+  if (image === '/news-feed/source-card.svg') return [image]
   try {
     const original = new URL(image)
     if (original.protocol !== 'https:') return []

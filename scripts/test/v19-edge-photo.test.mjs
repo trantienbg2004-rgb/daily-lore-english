@@ -29,11 +29,11 @@ test('V19: visible branding, vocabulary, reading pagination, and existing feed i
   assert.match(app,/<span className="brand">DAILY NEWS<\/span>/)
   assert.doesNotMatch(app,/DAILY LORE|ISSUE NO\./)
   for(const token of ['lookupWord(', 'saveWord', 'nextReview', 'layoutPages(', 'initializeSeenHistory()', 'onTouchEnd=', 'onPointerUp=', 'photoLabel(']) assert.ok(app.includes(token),token)
-  assert.ok(app.includes('BUFFER_TARGET = 30'))
+  assert.ok(app.includes('BUFFER_TARGET = 50'))
 })
 test('V19: urgent feed search targets one first unread article and releases without a 36-chunk wait',()=>{
   assert.match(app,/target: urgent \? 1 : BUFFER_TARGET - remaining - appended/)
-  assert.match(app,/maxChunks: 9, concurrency: 3/)
+  assert.match(app,/maxChunks: 9, concurrency: urgent \? 1 : 2/)
   assert.match(app,/if \(!urgent \|\| appended > 0\) break/)
   assert.match(app,/if \(storyIndex < stories.length - 1\) return/)
   assert.match(app,/loadFeed\(\{urgent: true, forceCheck: doneRef.current\}\)/)

@@ -1,13 +1,12 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import './App.css'
 import { initializeSeenHistory, persistReadMarker, readLegacyHistory } from './lib/seenHistory.js'
-import { storyId, readableStory, validStories, shuffle, chunkOrder, fetchManifest, scanFeed } from './lib/feedQueue.js'
+import { storyId, readableStory, validStories, newsChunkOrder, fetchManifest, scanFeed } from './lib/feedQueue.js'
 import { createEdgeNavigation } from './lib/edgeNavigation.js'
 import { photoLabel, photoSourceLink } from './lib/photoPresentation.js'
 import { resolvePhoto, photoResult } from './lib/photoLoad.js'
 import { displayHeadline, readerSection, orderEditorial } from './lib/editorial.js'
 import { handleReaderArrowKey } from './lib/readerKeyboard.js'
-import initialStories from './stories.json'
 
 
 // Store original articles untouched: the phone decides how many reading pages fit.
@@ -453,8 +452,11 @@ function App() {
 
   // Keep a large, ready-to-swipe queue. Background scans never replace the
   // visible article, and a failed request never advances past a missing chunk.
-  const BUFFER_TARGET = 30
-  const BUFFER_REFILL_AT = 16
+  // Keep at least 50 upcoming articles prefetched. RSS previews are still
+  // shown in the original sideways-page / vertical-swipe reader.
+  const BUFFER_TARGET = 50
+  const BUFFER_REFILL_AT = 30
+  const NEWS_FEED_PATH = 'news-feed'
   const chunkOrderRef = useRef([])
   const feedVersionRef = useRef('')
   const cursorRef = useRef(0)
@@ -493,12 +495,15 @@ function App() {
     try {
       let manifest = manifestRef.current
       if (checkDue || !manifest) {
-        manifest = await fetchManifest(fetch, import.meta.env.BASE_URL)
+        manifest = await fetchManifest(fetch, import.meta.env.BASE_URL, Date.now(), NEWS_FEED_PATH)
+        if (manifest.feedType !== 'news' || manifest.ready !== true || manifest.sourceCount < 3 || manifest.count < 1) {
+          throw new Error('Verified publisher newsroom not ready; the old encyclopedia feed is disabled')
+        }
         manifestRef.current = manifest
         lastManifestCheckRef.current = Date.now()
       }
       if (manifest.version !== feedVersionRef.current || chunkOrderRef.current.length !== manifest.count) {
-        chunkOrderRef.current = chunkOrder(manifest.count)
+        chunkOrderRef.current = newsChunkOrder(manifest.count)
         cursorRef.current = 0
         doneRef.current = false
         setFeedDone(false)
@@ -523,7 +528,7 @@ function App() {
             loaded: loadedRef.current, target: urgent ? 1 : BUFFER_TARGET - remaining - appended,
             // Urgent reads return after the FIRST unread story, not after 30.
             // Otherwise the reader can appear stuck while a 36-chunk scan runs.
-            maxChunks: 9, concurrency: 3,
+            maxChunks: 9, concurrency: urgent ? 1 : 2, feedPath: NEWS_FEED_PATH,
           })
           result.ids.forEach(id => loadedRef.current.add(id))
           cursorRef.current = result.cursor
@@ -555,18 +560,7 @@ function App() {
     } catch (error) {
       console.warn('Feed temporarily unavailable:', error?.message || error)
       setFeedRetrying(true)
-      if (!storiesRef.current.length && loadedRef.current.size === 0) {
-        try {
-          const fallback = await fetch(`${import.meta.env.BASE_URL}stories.json`, {cache: 'no-store'})
-          if (!fallback.ok) throw new Error('Fallback unavailable')
-          const data = await fallback.json()
-          if (validStories(data)) {
-            const unseen = orderEditorial(shuffle(data.filter(item => readableStory(item) && !seenRef.current.has(storyId(item)))))
-            unseen.forEach(item => loadedRef.current.add(storyId(item)))
-            if (unseen.length) setStories(unseen.map(paginateStory))
-          }
-        } catch { /* Retry automatically; never discard reading history. */ }
-      }
+      // Do not silently fall back to Wikipedia/Wikivoyage or embedded legacy stories.
       scheduleRetry()
     } finally {
       feedBusy.current = false
@@ -629,6 +623,15 @@ function App() {
     boundaryProbeRef.current = {key, time: now}
     loadFeed({urgent: true, forceCheck: doneRef.current})
   }, [tab, storyIndex, stories.length, feedLoading, feedCursor, feedDone])
+  // Limit mounted article data while preserving 40 previous stories for backwards
+  // navigation. Seen IDs remain in IndexedDB; saved words stay untouched.
+  useEffect(() => {
+    if (slide || storyIndex < 100 || tab !== 'read') return
+    const remove = storyIndex - 40
+    storyIndexRef.current = 40
+    setStories(old => old.slice(remove))
+    setStoryIndex(40)
+  }, [storyIndex, slide, tab])
   // A forward swipe at the edge is completed as soon as its next item arrives.
   useEffect(() => {
     if (tab !== 'read') { edgeControllerRef.current.cancel(); return }

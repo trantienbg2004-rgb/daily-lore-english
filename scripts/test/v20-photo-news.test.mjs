@@ -132,9 +132,9 @@ test('V20 NASA importer appends real full-text stories and preserves existing ch
  } finally {await fs.rm(root,{force:true,recursive:true})}
 })
 
-test('V20 NASA outage is isolated; original V15 content collector is unchanged',async()=>{
- assert.match(workflow,/node scripts\/update-stories\.mjs/)
- assert.match(workflow,/node scripts\/import-nasa\.mjs/)
+test('V20 NASA importer remains independently testable while V22-B scheduled jobs use news only',async()=>{
+ assert.match(workflow,/node scripts\/v22a-collect\.mjs/)
+ assert.doesNotMatch(workflow,/node scripts\/update-stories\.mjs/)
  const fetchImpl=async()=>{throw Error('NASA unavailable')}
  const root=await fs.mkdtemp(path.join(os.tmpdir(),'dn-nasa-down-'))
  try {
