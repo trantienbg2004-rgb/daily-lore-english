@@ -8,6 +8,8 @@ import { isStory, storyId, normalizedTitle, skipTitle, countWords, mediaWikiHtml
 const DEFAULTS = {
   maxArticles: 85, maxCandidates: 180, paceMs: 1600, timeBudgetMs: 9 * 60 * 1000,
   chunkSize: 32, minWords: 240, targetPerDay: 400, reserveGoal: 2500,
+  // V21: prefer knowledge and verified news over new destination directories.
+  includeTravel: false,
 }
 const WIKI = {wikipedia:'en.wikipedia.org', wikivoyage:'en.wikivoyage.org'}
 const REPO = 'https://github.com/trantienbg2004-rgb/daily-lore-english'
@@ -298,15 +300,17 @@ async function topArticles(client, state, date) {
   if (state.popularOffset>=popular.length) {state.popularOffset=0;state.archiveMonth=((state.archiveMonth||0)+1)%48}
   return batch.map(title=>({title,source:'wikipedia',category:'POPULAR'}))
 }
-async function discovery(client,state,date,log) {
+async function discovery(client,state,date,log,{includeTravel=true}={}) {
   const pools=[]
   try { pools.push(await topArticles(client,state,date)) }
   catch(e) {if (e instanceof RateLimitError||e instanceof TimeBudgetError) throw e; log.warn(`Popular discovery unavailable: ${e.message}`)}
-  const begin=state.voyageCursor||0
-  const seeds=[...destinations.slice(begin),...destinations.slice(0,begin)].slice(0,18)
-  state.voyageCursor=(begin+18)%destinations.length
-  const queued=(state.voyageQueue||[]).slice(0,40)
-  pools.push([...seeds,...queued].map(title=>({title,source:'wikivoyage',category:'TRAVEL & PLACES'})))
+  if(includeTravel){
+    const begin=state.voyageCursor||0
+    const seeds=[...destinations.slice(begin),...destinations.slice(0,begin)].slice(0,18)
+    state.voyageCursor=(begin+18)%destinations.length
+    const queued=(state.voyageQueue||[]).slice(0,40)
+    pools.push([...seeds,...queued].map(title=>({title,source:'wikivoyage',category:'TRAVEL & PLACES'})))
+  }
   const source='wikipedia',cats=[]
   for (let offset=0;offset<4;offset++) {
     const index=((state.categoryCursor||0)+offset)%categories.length
@@ -386,7 +390,7 @@ export async function publish(base,original,newStories,{chunkSize=12,now=iso}={}
 
 const rejectionKey = (source,title)=>`${source}:${normalizedTitle(title)}`
 export async function runUpdate({base=process.cwd(), fetchImpl=fetch, date=new Date(), settings={},log=console,sleepImpl=sleep}={}) {
-  const config={...DEFAULTS,...settings}
+  const config={...DEFAULTS,includeTravel:process.env.DAILY_NEWS_INCLUDE_TRAVEL==='1',...settings}
   const begin=Date.now()
   const client=createClient({fetchImpl,sleepImpl,paceMs:config.paceMs,deadline:begin+config.timeBudgetMs,log})
   const original=await readLibrary(base)
@@ -402,7 +406,13 @@ export async function runUpdate({base=process.cwd(), fetchImpl=fetch, date=new D
     if(now-Number(timestamp)>30*86400000)delete state.failed[key]
   const knownUrls=new Set(original.stories.map(item=>item.sourceUrl).filter(Boolean))
   const knownKeys=new Set(original.stories.map(item=>rejectionKey(item.sourceUrl?.includes('wikivoyage')?'wikivoyage':'wikipedia',item.sourceTitle||item.title)))
-  let queue=mergeCandidateQueue(state.candidateQueue,[],knownKeys,state.failed)
+  // Preserve historical travel data on disk but stop feeding travel candidates
+  // into the active pipeline unless intentionally re-enabled.
+  const previousTravel=[...(state.pausedTravelQueue||[]),...state.candidateQueue.filter(x=>x.source==='wikivoyage')]
+  const activeCandidates=config.includeTravel
+    ? [...state.candidateQueue,...(state.pausedTravelQueue||[])]
+    : state.candidateQueue.filter(x=>x.source!=='wikivoyage')
+  let queue=mergeCandidateQueue(activeCandidates,[],knownKeys,state.failed)
   let paused=false
   const failures={}
   // First drain a durable backlog. When it is low, refill it from independent
@@ -410,9 +420,9 @@ export async function runUpdate({base=process.cwd(), fetchImpl=fetch, date=new D
   if(queue.length < 250) {
     const fresh=[]
     try {
-      const oldDiscovery=await discovery(client,state,date,log)
+      const oldDiscovery=await discovery(client,state,date,log,{includeTravel:config.includeTravel})
       fresh.push(...oldDiscovery)
-      for (const source of ['wikipedia','wikivoyage']) {
+      for (const source of config.includeTravel ? ['wikipedia','wikivoyage'] : ['wikipedia']) {
         const long=await discoverLongPages(source,client,state)
         fresh.push(...long)
         log.log(`Discovered [${source}] ${long.length} long-page candidates`)
@@ -524,7 +534,10 @@ export async function runUpdate({base=process.cwd(), fetchImpl=fetch, date=new D
   // If a run is paused, keep *every* unprocessed title. This is the key
   // guarantee preventing discovery from skipping thousands of candidates.
   queue=mergeCandidateQueue(queue.filter(item=>!processed.has(rejectionKey(item.source,item.title))),[],knownKeys,state.failed)
+  // Keep dormant candidates without feeding them into default V21 runs.
   state.candidateQueue=queue
+  state.pausedTravelQueue=config.includeTravel ? []
+    : mergeCandidateQueue(previousTravel,[],knownKeys,state.failed).filter(x=>x.source==='wikivoyage')
   state.voyageQueue=[...new Set(state.voyageQueue.map(t=>String(t).trim()))]
     .filter(t=>!knownKeys.has(rejectionKey('wikivoyage',t))&&!state.failed[rejectionKey('wikivoyage',t)]).slice(-3500)
   const entries=Object.entries(state.failed)

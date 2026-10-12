@@ -39,6 +39,8 @@ jobs:
           fi
       - name: Import licensed long-form NASA news when full text is available
         run: node scripts/import-nasa.mjs
+      - name: Import long-form official health and earth-science reporting
+        run: node scripts/import-agency-news.mjs
       - name: Check feed integrity before publishing
         run: node scripts/validate-feed.mjs
       - name: Commit and push new articles, cursors and metrics

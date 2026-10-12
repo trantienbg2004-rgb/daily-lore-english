@@ -23,8 +23,12 @@ export function shuffle(values, random = Math.random) {
 export function chunkOrder(count, random = Math.random) {
   if (!Number.isSafeInteger(count) || count < 0) throw new Error('Invalid chunk count')
   const recent = Math.min(24, count)
+  // V21: check freshly published newsroom chunks first, then diversify.
+  // Historic content remains reachable; the permanent seen set still wins.
+  const newest = Math.min(4, recent)
   return [
-    ...shuffle(Array.from({length: recent}, (_, i) => count - recent + i), random),
+    ...Array.from({length: newest}, (_, i) => count - 1 - i),
+    ...shuffle(Array.from({length: recent - newest}, (_, i) => count - recent + i), random),
     ...shuffle(Array.from({length: count - recent}, (_, i) => i), random),
   ]
 }
