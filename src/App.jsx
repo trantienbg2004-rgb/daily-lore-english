@@ -3,11 +3,25 @@ import './App.css'
 import { initializeSeenHistory, persistReadMarker, readLegacyHistory } from './lib/seenHistory.js'
 import { storyId, readableStory, validStories, shuffle, chunkOrder, fetchManifest, scanFeed } from './lib/feedQueue.js'
 import { createEdgeNavigation } from './lib/edgeNavigation.js'
+import { photoLabel, photoSourceLink } from './lib/photoPresentation.js'
 import initialStories from './stories.json'
 
 
 // Store original articles untouched: the phone decides how many reading pages fit.
 const paginateStory = item => ({ ...item, _sourcePages: item._sourcePages || item.pages })
+
+// Photo frames use their true intrinsic aspect ratio. Fit within both the
+// reader width and the viewport's responsive photo height, without cropping.
+function fitPhoto(img) {
+  if (!img?.naturalWidth || !img?.naturalHeight || !img.parentElement) return
+  const maxHeight = parseFloat(getComputedStyle(img).maxHeight) || 148
+  const maxWidth = img.parentElement.clientWidth
+  const ratio = img.naturalWidth / img.naturalHeight
+  if (!maxWidth || !Number.isFinite(ratio) || ratio <= 0) return
+  const width = Math.min(maxWidth, maxHeight * ratio)
+  img.style.width = `${width}px`
+  img.style.height = `${width / ratio}px`
+}
 
 // Actual DOM measurements preserve readable type and avoid cutting paragraphs on iPhone.
 // The source article text is never discarded: long source pages become multiple screen pages.
@@ -67,8 +81,12 @@ function layoutPages(item, reader) {
   const configurePage = (isCover, image) => {
     heading.classList.toggle('article-heading-continued', !isCover)
     media.classList.toggle('article-media-empty', !image)
-    caption.textContent = image?.caption || ''
-    // CSS gives images a fixed height; no need to fetch images in the probe.
+    caption.textContent = photoLabel(image)
+    // V19: reserve the maximum responsive image height when measuring. Actual
+    // images may be shorter according to their aspect ratio, never taller.
+    // This avoids cutting a word off even before the photo finishes loading.
+    photo.style.height = getComputedStyle(photo).maxHeight
+    photo.style.width = '100%'
     photo.removeAttribute('src')
     paragraph.textContent = ''
     const r = card.getBoundingClientRect()
@@ -321,6 +339,8 @@ function App() {
   const suppressWordClick = useRef(false)
   const wheelLock = useRef(0)
   const wheelAccum = useRef(0)
+  const pointerGesture = useRef(null)
+  const lastNavigationGesture = useRef(0)
   const [slide, setSlide] = useState(null)
   const slideTimer = useRef(null)
   const story = stories[storyIndex] || null
@@ -338,6 +358,7 @@ function App() {
         if (cancelled) return
         const reader = document.querySelector('.story-layer:not(.outgoing) .reader-gesture')
         if (!reader) return
+        fitPhoto(reader.querySelector('.article-media img'))
         const next = layoutPages(story, reader)
         const before = story.pages.map(p => `${p.image}|${p.text}`).join('\u0000')
         const after = next.map(p => `${p.image}|${p.text}`).join('\u0000')
@@ -372,6 +393,7 @@ function App() {
   const retryAttemptRef = useRef(0)
   const retryTimerRef = useRef(null)
   const afterBusyRef = useRef(false)
+  const boundaryProbeRef = useRef({key: '', time: 0})
   const storiesRef = useRef(stories)
   const storyIndexRef = useRef(storyIndex)
   storiesRef.current = stories
@@ -428,8 +450,10 @@ function App() {
             fetchImpl: fetch, baseUrl: import.meta.env.BASE_URL,
             order: chunkOrderRef.current, cursor: cursorRef.current,
             updatedAt: manifest.updatedAt, seen: seenRef.current,
-            loaded: loadedRef.current, target: BUFFER_TARGET - remaining - appended,
-            maxChunks: 36, concurrency: 3,
+            loaded: loadedRef.current, target: urgent ? 1 : BUFFER_TARGET - remaining - appended,
+            // Urgent reads return after the FIRST unread story, not after 30.
+            // Otherwise the reader can appear stuck while a 36-chunk scan runs.
+            maxChunks: 9, concurrency: 3,
           })
           result.ids.forEach(id => loadedRef.current.add(id))
           cursorRef.current = result.cursor
@@ -479,8 +503,8 @@ function App() {
       setFeedLoading(false)
       if (afterBusyRef.current) {
         afterBusyRef.current = false
-        // The in-flight prefetch may have found nothing. Honor the edge swipe
-        // after it finishes rather than waiting for another navigation event.
+        // Complete a forward swipe queued during a background scan, even
+        // if that scan contained no eligible articles.
         if (edgeControllerRef.current.isWaiting()) {
           queueMicrotask(() => loadFeed({forceCheck: doneRef.current, urgent: true}))
         }
@@ -514,10 +538,27 @@ function App() {
     persistReadMarker(historyDbRef.current, id, seenRef.current)
   }, [storyIndex, story])
   useEffect(() => {
-    if (!feedLoading && !feedBusy.current && !feedDone && stories.length - storyIndex < BUFFER_REFILL_AT) {
+    if (tab !== 'read' || !historyReadyRef.current) return
+    const remaining = stories.length - storyIndex
+    // Keep replenishing ahead of the reader, including when the cursor reached
+    // an older manifest. A changed online manifest is checked separately.
+    if (!feedLoading && !feedBusy.current && !feedDone && remaining < BUFFER_REFILL_AT) {
       loadFeed()
     }
-  }, [storyIndex, stories.length, feedCursor, feedDone, feedLoading])
+  }, [tab, storyIndex, stories.length, feedCursor, feedDone, feedLoading])
+  useEffect(() => {
+    if (tab !== 'read' || !historyReadyRef.current || !stories.length) return
+    // Reaching the last ready story starts an urgent scan immediately — NOT
+    // only after navigating backward and forward or repeating the swipe.
+    // The key and cooldown prevent tight request loops on a finished archive.
+    if (storyIndex < stories.length - 1) return
+    const key = `${storyIndex}:${stories.length}:${feedVersionRef.current}:${cursorRef.current}`
+    const now = Date.now()
+    if (boundaryProbeRef.current.key === key && now - boundaryProbeRef.current.time < 15000) return
+    if (doneRef.current && now - lastManifestCheckRef.current < 60000) return
+    boundaryProbeRef.current = {key, time: now}
+    loadFeed({urgent: true, forceCheck: doneRef.current})
+  }, [tab, storyIndex, stories.length, feedLoading, feedCursor, feedDone])
   // A forward swipe at the edge is completed as soon as its next item arrives.
   useEffect(() => {
     if (tab !== 'read') { edgeControllerRef.current.cancel(); return }
@@ -627,6 +668,28 @@ function App() {
     if (direction > 0) edgeControllerRef.current.forward(storyIndexRef.current, storiesRef.current.length)
     else if (direction < 0) edgeControllerRef.current.backward(storyIndexRef.current)
   }
+  const handleNavigationGesture = (dx, dy) => {
+    if (Math.max(Math.abs(dx), Math.abs(dy)) < 48) return
+    // iOS can emit both pointerup and touchend. One gesture = one article.
+    const now = Date.now()
+    if (now - lastNavigationGesture.current < 280) return
+    if (Math.abs(dx) > Math.abs(dy) * 1.15) changePage(dx < 0 ? 1 : -1)
+    else if (Math.abs(dy) > Math.abs(dx) * 1.15) changeStory(dy < 0 ? 1 : -1)
+    else return
+    lastNavigationGesture.current = now
+  }
+  // Pointer events catch edge gestures missed by touchend after late image
+  // loads or a mobile browser cancel. The touch fallback is deduplicated.
+  const startPointer = event => {
+    if (event.pointerType !== 'touch' || selected || event.target.closest('button, a, summary')) return
+    pointerGesture.current = {id: event.pointerId, x: event.clientX, y: event.clientY}
+  }
+  const endPointer = event => {
+    if (!pointerGesture.current || pointerGesture.current.id !== event.pointerId) return
+    const {x, y} = pointerGesture.current
+    pointerGesture.current = null
+    handleNavigationGesture(event.clientX - x, event.clientY - y)
+  }
   const nextReview = () => {
     if (reviewIndex + 1 >= words.length) setFinished(true)
     else { setReviewIndex(i => i + 1); setRevealed(false) }
@@ -636,7 +699,7 @@ function App() {
   const startGesture = event => {
     if (event.touches.length !== 1 || selected) { gesture.current = null; return }
     const control = event.target.closest('button')
-    if (control && !control.classList.contains('word-token')) { gesture.current = null; return }
+    if ((control && !control.classList.contains('word-token')) || event.target.closest('a, summary')) { gesture.current = null; return }
     suppressWordClick.current = false
     gesture.current = { x: event.touches[0].clientX, y: event.touches[0].clientY, moved: false }
   }
@@ -654,9 +717,7 @@ function App() {
     const dx = event.changedTouches[0].clientX - gesture.current.x
     const dy = event.changedTouches[0].clientY - gesture.current.y
     gesture.current = null
-    if (Math.max(Math.abs(dx), Math.abs(dy)) < 48) return
-    if (Math.abs(dx) > Math.abs(dy) * 1.15) changePage(dx < 0 ? 1 : -1)
-    else if (Math.abs(dy) > Math.abs(dx) * 1.15) changeStory(dy < 0 ? 1 : -1)
+    handleNavigationGesture(dx, dy)
   }
   const cancelGesture = () => { gesture.current = null; suppressWordClick.current = false }
   const onWordClick = (event, word) => {
@@ -709,10 +770,14 @@ function App() {
   const renderStory = (item, index, pageNumber, interactive) => {
     const itemPage = item.pages[pageNumber] || item.pages[0]
     const tokens = itemPage.text.split(/(\s+)/)
-    return <div className="reader-gesture" aria-hidden={!interactive} onTouchStart={interactive ? startGesture : undefined} onTouchMove={interactive ? moveGesture : undefined} onTouchEnd={interactive ? endGesture : undefined} onTouchCancel={interactive ? cancelGesture : undefined}>
-      <header className="topbar"><span className="brand">DAILY NEWS</span></header>
+    return <div className="reader-gesture" aria-hidden={!interactive} onTouchStart={interactive ? startGesture : undefined} onTouchMove={interactive ? moveGesture : undefined} onTouchEnd={interactive ? endGesture : undefined} onTouchCancel={interactive ? cancelGesture : undefined} onPointerDown={interactive ? startPointer : undefined} onPointerUp={interactive ? endPointer : undefined} onPointerCancel={interactive ? () => {pointerGesture.current = null} : undefined}>
+      <header className="topbar"><span className="brand">DAILY NEWS</span>{interactive && index === stories.length - 1 && <span className="reader-edge-status" role="status" aria-live="polite">{waitingForNext ? (feedRetrying ? 'Reconnecting…' : 'Finding next…') : feedDone ? 'Up to date' : feedLoading ? 'Loading…' : 'Swipe up · Next ↓'}</span>}</header>
       <div className={'article-heading ' + (pageNumber > 0 ? 'article-heading-continued' : '')}><div className="eyebrow">{item.category}</div><h1>{item.title}</h1><p className="deck">{item.subtitle}</p></div>
-      <div className={"article-media " + (!itemPage.image ? "article-media-empty" : "")}><img src={itemPage.image || undefined} alt={itemPage.caption} decoding="async" loading={interactive ? "eager" : "lazy"} onError={e => { e.currentTarget.style.opacity = '.35' }}/><div className="photo-caption">{itemPage.caption}</div></div>
+      <div className={"article-media " + (!itemPage.image ? "article-media-empty" : "")}>
+        <img src={itemPage.image || undefined} alt={photoLabel(itemPage)} decoding="async" loading={interactive ? "eager" : "lazy"} onLoad={e => fitPhoto(e.currentTarget)} onError={e => { e.currentTarget.style.opacity = '.35' }}/>
+        <div className="photo-caption" title={photoLabel(itemPage)}>{photoLabel(itemPage)}</div>
+        {itemPage.image && <details className="photo-credits"><summary aria-label="Photo attribution and license" title="Photo information">i</summary><div className="photo-credits-content"><strong>Image credits</strong><p>{itemPage.caption || 'Please refer to the original image for attribution and licensing.'}</p>{photoSourceLink(itemPage) && <a href={photoSourceLink(itemPage)} target="_blank" rel="noopener noreferrer">View image source</a>}</div></details>}
+      </div>
       <section className="reading-card"><div className="reading-topline"><span>THE SHORT STORY · {pageNumber + 1}/{item.pages.length}</span><button className="icon-button" disabled={!interactive} onClick={() => speak(itemPage.text)} aria-label="Read aloud"><Icon name="volume" size={21}/></button></div>
         <p className="article-text">{tokens.map((token, i) => { const word = clean(token); return /^\s+$/.test(token) || !word ? token : <button key={i} type="button" disabled={!interactive} className={'word-token ' + (words.some(w => w.word === word) ? 'known' : '')} onClick={event => onWordClick(event, word)}>{token}</button> })}</p>
       </section>
@@ -735,13 +800,12 @@ function App() {
         {tab === 'read' && <div className="story-viewport" onWheel={onReaderWheel}>
           {slide && stories[slide.from] && <div key={'old-'+slide.stamp} className={'story-layer outgoing '+(slide.direction>0?'slide-up':'slide-down')}>{renderStory(stories[slide.from], slide.from, slide.fromPage, false)}</div>}
           {story && <div key={'active-'+storyIndex} className={'story-layer '+(slide?(slide.direction>0?'enter-from-bottom':'enter-from-top'):'')}>{renderStory(story, storyIndex, page, true)}</div>}
-          {story && storyIndex === stories.length - 1 && (waitingForNext || !feedLoading) && <div className="feed-end-indicator" role="status" aria-live="polite">{waitingForNext ? (feedRetrying ? 'Connection interrupted · Retrying…' : 'Finding your next story…') : feedDone ? 'All available stories read · New articles coming soon' : 'More stories loading in the background'} <button onClick={refreshFeed} disabled={feedLoading}>Refresh</button></div>}
           {!story && <div className="feed-empty"><h2>{feedLoading ? 'Finding your next story…' : feedDone ? 'You’re all caught up.' : 'Stories are temporarily unavailable.'}</h2><p>{feedDone ? 'You have read every available story on this device. New stories will appear when published.' : 'Check your connection or try again.'}</p><button className="primary" onClick={refreshFeed} disabled={feedLoading}>{feedLoading ? 'Loading…' : 'Check for new stories'}</button></div>}
         </div>}
         {tab === 'words' && <><header className="section-header"><span className="eyebrow">YOUR PERSONAL COLLECTION</span><h1>Saved words<span className="period">.</span></h1><p>Small discoveries, remembered.</p></header><div className="count-line">{words.length} {words.length === 1 ? 'WORD' : 'WORDS'} COLLECTED</div>{words.length === 0 ? <div className="empty"><Icon name="bookmark" size={40}/><h2>Your collection begins here.</h2><p>Read a story, tap a word, and save it to keep learning.</p><button className="primary" onClick={() => setTab('read')}>Start reading →</button></div> : <div className="saved-list">{words.map(item => <div className="saved-item" key={item.word}><div><h2><button className="saved-word-open" onClick={() => setSelected(item.word)}>{item.word}</button></h2>{item.partOfSpeech && <span className="word-meta">{item.partOfSpeech}</span>}{item.phonetic && <span className="word-meta">{item.phonetic}</span>}<p>{item.definition || offlineMeaning(item.word) || 'No definition yet. See the example sentence below.'}</p>{item.sentence && <p className="word-context">“{item.sentence}”</p>}</div><button onClick={() => { setWords(current => current.filter(w => w.word !== item.word)); setReviewIndex(0); setFinished(false) }} aria-label={`Remove ${item.word}`}><Icon name="close" size={19}/></button></div>)}</div>}</>}
         {tab === 'review' && <><header className="section-header"><span className="eyebrow">A MOMENT TO REMEMBER</span><h1>Daily review<span className="period">.</span></h1><p>Learn a little. Remember a lot.</p></header>{words.length === 0 ? <div className="empty"><Icon name="layers" size={42}/><h2>Nothing to review yet.</h2><p>Save a few words while reading. They will appear here.</p><button className="primary" onClick={() => setTab('read')}>Explore a story →</button></div> : finished ? <div className="empty"><Icon name="check" size={44}/><h2>Beautiful work.</h2><p>You have reviewed all {words.length} saved words.</p><button className="primary" onClick={() => { setFinished(false); setReviewIndex(0); setRevealed(false) }}>Review again →</button></div> : <><div className="review-count">CARD {Math.min(reviewIndex + 1, words.length)} OF {words.length}</div><button className="flashcard" onClick={() => setRevealed(r => !r)}><span>{revealed ? 'THE MEANING' : 'DO YOU REMEMBER?'}</span><strong>{revealed ? (words[Math.min(reviewIndex, words.length - 1)].definition || offlineMeaning(words[Math.min(reviewIndex, words.length - 1)].word) || 'No definition yet. Open this word in Words to retry.') : words[Math.min(reviewIndex, words.length - 1)].word}</strong><small>{revealed ? 'Tap to see the word' : 'Tap to reveal meaning'}</small></button><button className="primary review-next" onClick={nextReview}>{reviewIndex + 1 >= words.length ? 'Finish review' : 'Next word'} →</button></>}</>}
       </main>
-      <nav className="bottom-nav" aria-label="Main navigation">{[['read', 'book', 'Read'], ['words', 'bookmark', 'Words'], ['review', 'layers', 'Review']].map(([key, icon, label]) => <button key={key} className={tab === key ? 'current' : ''} onClick={() => { setTab(key); setSelected('') }}><Icon name={icon} size={25}/><span>{label}</span></button>)}</nav>
+      <nav className="bottom-nav" aria-label="Main navigation">{[['read', 'book', 'Read'], ['words', 'bookmark', 'Words'], ['review', 'layers', 'Review']].map(([key, icon, label]) => <button key={key} className={tab === key ? 'current' : ''} onClick={() => { if (key === 'read' && tab === 'read' && story && storyIndex === stories.length - 1) changeStory(1); else { setTab(key); setSelected('') } }}><Icon name={icon} size={25}/><span>{key === 'read' && tab === 'read' && story && storyIndex === stories.length - 1 ? waitingForNext ? 'Finding…' : feedDone ? 'Check again' : 'Next ↓' : label}</span></button>)}</nav>
       {selected && <div className="overlay" onClick={() => setSelected('')}>
         <div className="definition-sheet" onClick={e => e.stopPropagation()}>
           <div className="sheet-header"><span>WORD NOTES</span><button onClick={() => setSelected('')} aria-label="Close"><Icon name="close" size={22}/></button></div>
