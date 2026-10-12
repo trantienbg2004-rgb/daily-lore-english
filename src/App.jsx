@@ -1,16 +1,9 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import './App.css'
 import { initializeSeenHistory, persistReadMarker, readLegacyHistory } from './lib/seenHistory.js'
+import { storyId, readableStory, validStories, shuffle, chunkOrder, fetchManifest, scanFeed } from './lib/feedQueue.js'
 import initialStories from './stories.json'
 
-
-// Stable IDs let this device remember read stories across new deployments.
-const storyId = item => item.sourceUrl || item.sourceTitle || `${item.category}:${item.title}`
-// Hide legacy one-page RSS summaries while retaining local read history and saved words.
-// Filter only when reading from the published library; do not mutate stored articles.
-const readableStory = item => Array.isArray(item?.pages) && item.pages.length >= 3 &&
-  item.pages.reduce((sum, page) => sum + (typeof page.text === 'string' ? page.text.trim().split(/\s+/).filter(Boolean).length : 0), 0) >= 200
-const validStories = data => Array.isArray(data) && data.every(item => item && typeof item.title === 'string' && Array.isArray(item.pages) && item.pages.length > 0 && item.pages.every(p => typeof p.text === 'string' && typeof p.image === 'string'))
 
 // Store original articles untouched: the phone decides how many reading pages fit.
 const paginateStory = item => ({ ...item, _sourcePages: item._sourcePages || item.pages })
@@ -302,6 +295,7 @@ function App() {
   const seenRef = useRef(readLegacyHistory())
   const loadedRef = useRef(new Set())
   const historyDbRef = useRef(null)
+  const historyReadyRef = useRef(false)
   const [page, setPage] = useState(0)
   const [selected, setSelected] = useState('')
   const [lookup, setLookup] = useState({ status: 'idle', options: [] })
@@ -354,111 +348,116 @@ function App() {
   }, [tab, storyIndex, stories.length, story?._sourcePages])
 
 
-  // One shared feed; each browser keeps its own read history. Shuffle the
-  // chunk order once per session and shuffle articles within each chunk.
-  // This avoids everyone starting on the same article without replaying reads.
+  // Keep a large, ready-to-swipe queue. Background scans never replace the
+  // visible article, and a failed request never advances past a missing chunk.
+  const BUFFER_TARGET = 30
+  const BUFFER_REFILL_AT = 16
   const chunkOrderRef = useRef([])
   const feedVersionRef = useRef('')
   const cursorRef = useRef(0)
   const doneRef = useRef(false)
-  const scanFailedRef = useRef(false)
-  const shuffle = values => {
-    const copy = [...values]
-    for (let i = copy.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1))
-      ;[copy[i], copy[j]] = [copy[j], copy[i]]
-    }
-    return copy
+  const lastManifestCheckRef = useRef(0)
+  const retryAttemptRef = useRef(0)
+  const retryTimerRef = useRef(null)
+  const storiesRef = useRef(stories)
+  const storyIndexRef = useRef(storyIndex)
+  storiesRef.current = stories
+  storyIndexRef.current = storyIndex
+
+  const scheduleRetry = () => {
+    clearTimeout(retryTimerRef.current)
+    const delay = Math.min(60000, 4000 * 2 ** Math.min(retryAttemptRef.current++, 4))
+    retryTimerRef.current = setTimeout(() => loadFeed({forceCheck: true}), delay)
   }
 
-  const loadFeed = async (rescan = false) => {
-    if (feedBusy.current) return
+  const loadFeed = async ({forceCheck = false, forceScan = false} = {}) => {
+    // Avoid selecting articles before IndexedDB read history has been hydrated.
+    if (!historyReadyRef.current || feedBusy.current) return
+    const remaining = Math.max(0, storiesRef.current.length - storyIndexRef.current)
+    const checkDue = forceCheck || Date.now() - lastManifestCheckRef.current >= 60000
+    if (remaining >= BUFFER_TARGET && !checkDue && !forceScan) return
     feedBusy.current = true
-    setFeedLoading(true)
+    if (remaining === 0) setFeedLoading(true)
     try {
-      const response = await fetch(`${import.meta.env.BASE_URL}feed/manifest.json?t=${Date.now()}`, { cache: 'no-store' })
-      if (!response.ok) throw new Error('Feed manifest unavailable')
-      const manifest = await response.json()
-      const count = Number(manifest.chunks)
-      if (!Number.isSafeInteger(count) || count < 0) throw new Error('Invalid feed manifest')
-      const version = `${manifest.updatedAt || ''}:${count}`
-      if (version !== feedVersionRef.current || chunkOrderRef.current.length !== count) {
-        // Preserve existing queue and reading history; only reset the scan.
-        // Newly published chunks can change every old chunk's contents.
-        // Fresh chunks first: users who already read thousands of older articles
-        // should not scan through the entire archive before reaching new ones.
-        const n = Math.min(24, count)
-        chunkOrderRef.current = [
-          ...shuffle(Array.from({ length:n }, (_, i) => count - n + i)),
-          ...shuffle(Array.from({ length:count - n }, (_, i) => i)),
-        ]
+      let manifest = manifestRef.current
+      if (checkDue || !manifest) {
+        manifest = await fetchManifest(fetch, import.meta.env.BASE_URL)
+        manifestRef.current = manifest
+        lastManifestCheckRef.current = Date.now()
+      }
+      if (manifest.version !== feedVersionRef.current || chunkOrderRef.current.length !== manifest.count) {
+        chunkOrderRef.current = chunkOrder(manifest.count)
         cursorRef.current = 0
-        feedVersionRef.current = version
-      } else if (rescan) {
+        doneRef.current = false
+        setFeedDone(false)
+        setFeedCursor(0)
+        feedVersionRef.current = manifest.version
+      } else if (forceScan) {
         cursorRef.current = 0
+        doneRef.current = false
+        setFeedDone(false)
+        setFeedCursor(0)
       }
 
-      const added = []
-      const stagedIds = new Set()
-      const start = cursorRef.current
-      let next = start
-      while (next < count && next < start + 8 && added.length < 8) {
-        const chunkNumber = chunkOrderRef.current[next]
-        const url = `${import.meta.env.BASE_URL}feed/${String(chunkNumber).padStart(4, '0')}.json?v=${encodeURIComponent(manifest.updatedAt || '')}`
-        const chunkResponse = await fetch(url, { cache: 'no-store' })
-        if (!chunkResponse.ok) throw new Error(`Feed chunk ${chunkNumber} unavailable`)
-        const batch = await chunkResponse.json()
-        if (!validStories(batch)) throw new Error(`Invalid feed chunk ${chunkNumber}`)
-        for (const item of shuffle(batch)) {
-          const id = storyId(item)
-          if (readableStory(item) && !seenRef.current.has(id) && !loadedRef.current.has(id) && !stagedIds.has(id)) {
-            stagedIds.add(id)
-            added.push(item)
-          }
-        }
-        next++
+      if (remaining < BUFFER_TARGET && !doneRef.current) {
+        const result = await scanFeed({
+          fetchImpl: fetch, baseUrl: import.meta.env.BASE_URL,
+          order: chunkOrderRef.current, cursor: cursorRef.current,
+          updatedAt: manifest.updatedAt, seen: seenRef.current,
+          loaded: loadedRef.current, target: BUFFER_TARGET - remaining,
+          maxChunks: 36, concurrency: 3,
+        })
+        // Save successful chunks even if a later chunk failed. The next scan
+        // resumes at the failed chunk and will not duplicate staged articles.
+        result.ids.forEach(id => loadedRef.current.add(id))
+        cursorRef.current = result.cursor
+        doneRef.current = result.done
+        setFeedCursor(result.cursor)
+        setFeedDone(result.done)
+        if (result.items.length) setStories(old => [...old, ...result.items.map(paginateStory)])
+        if (result.error) throw result.error
+      } else {
+        setFeedDone(doneRef.current)
       }
-      stagedIds.forEach(id => loadedRef.current.add(id))
-      scanFailedRef.current = false
-      cursorRef.current = next
-      doneRef.current = next >= count
-      setFeedCursor(next)
-      setFeedDone(doneRef.current)
-      if (added.length) setStories(old => [...old, ...added.map(paginateStory)])
+      retryAttemptRef.current = 0
+      clearTimeout(retryTimerRef.current)
     } catch (error) {
-      scanFailedRef.current = true
-      console.warn('Feed unavailable:', error.message)
-      // Never advance the cursor on an unsuccessful scan.
+      console.warn('Feed temporarily unavailable:', error?.message || error)
       if (!storiesRef.current.length && loadedRef.current.size === 0) {
         try {
-          const fallback = await fetch(`${import.meta.env.BASE_URL}stories.json`, { cache: 'no-store' })
+          const fallback = await fetch(`${import.meta.env.BASE_URL}stories.json`, {cache: 'no-store'})
           if (!fallback.ok) throw new Error('Fallback unavailable')
           const data = await fallback.json()
           if (validStories(data)) {
             const unseen = shuffle(data.filter(item => readableStory(item) && !seenRef.current.has(storyId(item))))
             unseen.forEach(item => loadedRef.current.add(storyId(item)))
-            setStories(unseen.map(paginateStory))
+            if (unseen.length) setStories(unseen.map(paginateStory))
           }
-        } catch { /* Keep retry available */ }
+        } catch { /* Retry automatically; never discard reading history. */ }
       }
+      scheduleRetry()
     } finally {
       feedBusy.current = false
       setFeedLoading(false)
     }
   }
 
-  const refreshFeed = () => loadFeed(true)
-  const storiesRef = useRef(stories)
-  storiesRef.current = stories
+  const manifestRef = useRef(null)
+  const refreshFeed = () => loadFeed({forceCheck: true, forceScan: true})
   useEffect(() => {
     let stopped = false
-    initializeSeenHistory().then(({seen,db}) => {
-      if (stopped) {db?.close();return}
-      seenRef.current = seen
+    initializeSeenHistory().then(({seen, db}) => {
+      if (stopped) { db?.close(); return }
+      seenRef.current = new Set([...seenRef.current, ...seen])
       historyDbRef.current = db
-      loadFeed()
+      historyReadyRef.current = true
+      loadFeed({forceCheck: true})
     })
-    return () => {stopped = true;historyDbRef.current?.close()}
+    return () => {
+      stopped = true
+      clearTimeout(retryTimerRef.current)
+      historyDbRef.current?.close()
+    }
   }, [])
   useEffect(() => {
     if (!story) return
@@ -468,24 +467,25 @@ function App() {
     persistReadMarker(historyDbRef.current, id, seenRef.current)
   }, [storyIndex, story])
   useEffect(() => {
-    if (!feedDone && !feedLoading && !scanFailedRef.current && (stories.length === 0 || stories.length - storyIndex <= 4)) loadFeed()
+    if (!feedLoading && !feedBusy.current && !feedDone && stories.length - storyIndex < BUFFER_REFILL_AT) {
+      loadFeed()
+    }
   }, [storyIndex, stories.length, feedCursor, feedDone, feedLoading])
-  // Recheck the manifest when the reader returns to the tab. Also check every
-  // one minute while the app is open; no need to reload or erase progress.
+  // Check for published content while the reader is open or regains focus.
+  // A missing connection is retried automatically with bounded backoff.
   useEffect(() => {
     const check = () => {
-      if (document.visibilityState === 'visible' && !feedBusy.current) {
-        // A completed scan needs a rescan to detect newly published stories.
-        if (doneRef.current) loadFeed(true)
-      }
+      if (document.visibilityState === 'visible') loadFeed({forceCheck: true})
     }
-    const timer = setInterval(check, 60 * 1000)
+    const timer = setInterval(check, 60000)
     document.addEventListener('visibilitychange', check)
     window.addEventListener('focus', check)
+    window.addEventListener('online', check)
     return () => {
       clearInterval(timer)
       document.removeEventListener('visibilitychange', check)
       window.removeEventListener('focus', check)
+      window.removeEventListener('online', check)
     }
   }, [])
 
@@ -608,7 +608,7 @@ function App() {
   // Warm up just the next page and the next article, without downloading the whole library.
   useEffect(() => {
     if (tab !== 'read' || !story) return
-    const urls = [story?.pages?.[page + 1]?.image, stories[storyIndex + 1]?.pages?.[0]?.image]
+    const urls = [story?.pages?.[page + 1]?.image, stories[storyIndex + 1]?.pages?.[0]?.image, stories[storyIndex + 2]?.pages?.[0]?.image]
     const images = urls.filter(Boolean).map(url => {
       const img = new Image()
       img.src = url
