@@ -2,6 +2,7 @@ import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import './App.css'
 import { initializeSeenHistory, persistReadMarker, readLegacyHistory } from './lib/seenHistory.js'
 import { storyId, readableStory, validStories, shuffle, chunkOrder, fetchManifest, scanFeed } from './lib/feedQueue.js'
+import { createEdgeNavigation } from './lib/edgeNavigation.js'
 import initialStories from './stories.json'
 
 
@@ -291,6 +292,17 @@ function App() {
   const [feedCursor, setFeedCursor] = useState(0)
   const [feedDone, setFeedDone] = useState(false)
   const [feedLoading, setFeedLoading] = useState(true)
+  const [feedRetrying, setFeedRetrying] = useState(false)
+  const [waitingForNext, setWaitingForNext] = useState(false)
+  const edgeActionsRef = useRef(null)
+  const edgeControllerRef = useRef(null)
+  if (!edgeControllerRef.current) {
+    edgeControllerRef.current = createEdgeNavigation({
+      advance: direction => edgeActionsRef.current?.advance(direction),
+      requestMore: () => edgeActionsRef.current?.requestMore(),
+      onWaitingChange: value => setWaitingForNext(value),
+    })
+  }
   const feedBusy = useRef(false)
   const seenRef = useRef(readLegacyHistory())
   const loadedRef = useRef(new Set())
@@ -359,6 +371,7 @@ function App() {
   const lastManifestCheckRef = useRef(0)
   const retryAttemptRef = useRef(0)
   const retryTimerRef = useRef(null)
+  const afterBusyRef = useRef(false)
   const storiesRef = useRef(stories)
   const storyIndexRef = useRef(storyIndex)
   storiesRef.current = stories
@@ -370,14 +383,21 @@ function App() {
     retryTimerRef.current = setTimeout(() => loadFeed({forceCheck: true}), delay)
   }
 
-  const loadFeed = async ({forceCheck = false, forceScan = false} = {}) => {
+  const loadFeed = async ({forceCheck = false, forceScan = false, urgent = false} = {}) => {
     // Avoid selecting articles before IndexedDB read history has been hydrated.
-    if (!historyReadyRef.current || feedBusy.current) return
+    if (!historyReadyRef.current) return
+    if (feedBusy.current) {
+      // The edge swipe must not be dropped just because prefetch is in flight.
+      if (urgent) afterBusyRef.current = true
+      return
+    }
     const remaining = Math.max(0, storiesRef.current.length - storyIndexRef.current)
     const checkDue = forceCheck || Date.now() - lastManifestCheckRef.current >= 60000
-    if (remaining >= BUFFER_TARGET && !checkDue && !forceScan) return
+    if (remaining >= BUFFER_TARGET && !checkDue && !forceScan && !urgent) return
     feedBusy.current = true
-    if (remaining === 0) setFeedLoading(true)
+    if (remaining === 0 || urgent) setFeedLoading(true)
+    setFeedRetrying(false)
+    let appended = 0
     try {
       let manifest = manifestRef.current
       if (checkDue || !manifest) {
@@ -400,29 +420,47 @@ function App() {
       }
 
       if (remaining < BUFFER_TARGET && !doneRef.current) {
-        const result = await scanFeed({
-          fetchImpl: fetch, baseUrl: import.meta.env.BASE_URL,
-          order: chunkOrderRef.current, cursor: cursorRef.current,
-          updatedAt: manifest.updatedAt, seen: seenRef.current,
-          loaded: loadedRef.current, target: BUFFER_TARGET - remaining,
-          maxChunks: 36, concurrency: 3,
-        })
-        // Save successful chunks even if a later chunk failed. The next scan
-        // resumes at the failed chunk and will not duplicate staged articles.
-        result.ids.forEach(id => loadedRef.current.add(id))
-        cursorRef.current = result.cursor
-        doneRef.current = result.done
-        setFeedCursor(result.cursor)
-        setFeedDone(result.done)
-        if (result.items.length) setStories(old => [...old, ...result.items.map(paginateStory)])
-        if (result.error) throw result.error
+        // An urgent boundary swipe scans past chunks containing only seen articles.
+        // V17 sometimes stopped after one empty batch and never resumed until
+        // the user navigated backward and forward again.
+        do {
+          const result = await scanFeed({
+            fetchImpl: fetch, baseUrl: import.meta.env.BASE_URL,
+            order: chunkOrderRef.current, cursor: cursorRef.current,
+            updatedAt: manifest.updatedAt, seen: seenRef.current,
+            loaded: loadedRef.current, target: BUFFER_TARGET - remaining - appended,
+            maxChunks: 36, concurrency: 3,
+          })
+          result.ids.forEach(id => loadedRef.current.add(id))
+          cursorRef.current = result.cursor
+          doneRef.current = result.done
+          setFeedCursor(result.cursor)
+          setFeedDone(result.done)
+          if (result.items.length) {
+            appended += result.items.length
+            setStories(old => [...old, ...result.items.map(paginateStory)])
+          }
+          if (result.error) throw result.error
+          if (!result.scanned) break
+          // Normal background refills remain bounded. An explicit end swipe
+          // can search the rest of the archive until it finds unread content.
+          // As soon as one unread article arrives, release the reader; the
+          // ordinary prefetch effect can fill the remaining buffer afterward.
+          if (!urgent || appended > 0) break
+        } while (!doneRef.current && remaining + appended < BUFFER_TARGET)
       } else {
         setFeedDone(doneRef.current)
+      }
+      // A retry can also exhaust the archive; do not leave the reader waiting
+      // indefinitely. A queued edge request still gets its follow-up attempt.
+      if (!appended && doneRef.current && !afterBusyRef.current && edgeControllerRef.current.isWaiting()) {
+        edgeControllerRef.current.noMore()
       }
       retryAttemptRef.current = 0
       clearTimeout(retryTimerRef.current)
     } catch (error) {
       console.warn('Feed temporarily unavailable:', error?.message || error)
+      setFeedRetrying(true)
       if (!storiesRef.current.length && loadedRef.current.size === 0) {
         try {
           const fallback = await fetch(`${import.meta.env.BASE_URL}stories.json`, {cache: 'no-store'})
@@ -439,6 +477,14 @@ function App() {
     } finally {
       feedBusy.current = false
       setFeedLoading(false)
+      if (afterBusyRef.current) {
+        afterBusyRef.current = false
+        // The in-flight prefetch may have found nothing. Honor the edge swipe
+        // after it finishes rather than waiting for another navigation event.
+        if (edgeControllerRef.current.isWaiting()) {
+          queueMicrotask(() => loadFeed({forceCheck: doneRef.current, urgent: true}))
+        }
+      }
     }
   }
 
@@ -456,6 +502,7 @@ function App() {
     return () => {
       stopped = true
       clearTimeout(retryTimerRef.current)
+      edgeControllerRef.current.cancel()
       historyDbRef.current?.close()
     }
   }, [])
@@ -471,6 +518,11 @@ function App() {
       loadFeed()
     }
   }, [storyIndex, stories.length, feedCursor, feedDone, feedLoading])
+  // A forward swipe at the edge is completed as soon as its next item arrives.
+  useEffect(() => {
+    if (tab !== 'read') { edgeControllerRef.current.cancel(); return }
+    edgeControllerRef.current.onQueueChanged(storyIndex, stories.length)
+  }, [tab, storyIndex, stories.length])
   // Check for published content while the reader is open or regains focus.
   // A missing connection is retried automatically with bounded backoff.
   useEffect(() => {
@@ -556,14 +608,24 @@ function App() {
     window.speechSynthesis.speak(utterance)
   }
   const changePage = direction => { if (story) setPage(p => Math.max(0, Math.min(story.pages.length - 1, p + direction))) }
-  const changeStory = direction => {
-    const next = storyIndex + direction
-    if (next < 0 || next >= stories.length) return
+  const navigateStory = direction => {
+    const from = storyIndexRef.current
+    const next = from + direction
+    if (next < 0 || next >= storiesRef.current.length) return
     clearTimeout(slideTimer.current)
-    setSlide({ from: storyIndex, fromPage: page, direction, stamp: Date.now() })
+    setSlide({ from, fromPage: page, direction, stamp: Date.now() })
+    storyIndexRef.current = next
     setStoryIndex(next)
     setPage(0)
     slideTimer.current = setTimeout(() => setSlide(null), 560)
+  }
+  edgeActionsRef.current = {
+    advance: navigateStory,
+    requestMore: () => loadFeed({urgent: true, forceCheck: doneRef.current}),
+  }
+  const changeStory = direction => {
+    if (direction > 0) edgeControllerRef.current.forward(storyIndexRef.current, storiesRef.current.length)
+    else if (direction < 0) edgeControllerRef.current.backward(storyIndexRef.current)
   }
   const nextReview = () => {
     if (reviewIndex + 1 >= words.length) setFinished(true)
@@ -673,7 +735,7 @@ function App() {
         {tab === 'read' && <div className="story-viewport" onWheel={onReaderWheel}>
           {slide && stories[slide.from] && <div key={'old-'+slide.stamp} className={'story-layer outgoing '+(slide.direction>0?'slide-up':'slide-down')}>{renderStory(stories[slide.from], slide.from, slide.fromPage, false)}</div>}
           {story && <div key={'active-'+storyIndex} className={'story-layer '+(slide?(slide.direction>0?'enter-from-bottom':'enter-from-top'):'')}>{renderStory(story, storyIndex, page, true)}</div>}
-          {story && storyIndex === stories.length - 1 && !feedLoading && <div className="feed-end-indicator">{feedDone ? 'All stories read · New articles coming soon' : 'Loading next stories…'} <button onClick={refreshFeed} disabled={feedLoading}>Refresh</button></div>}
+          {story && storyIndex === stories.length - 1 && (waitingForNext || !feedLoading) && <div className="feed-end-indicator" role="status" aria-live="polite">{waitingForNext ? (feedRetrying ? 'Connection interrupted · Retrying…' : 'Finding your next story…') : feedDone ? 'All available stories read · New articles coming soon' : 'More stories loading in the background'} <button onClick={refreshFeed} disabled={feedLoading}>Refresh</button></div>}
           {!story && <div className="feed-empty"><h2>{feedLoading ? 'Finding your next story…' : feedDone ? 'You’re all caught up.' : 'Stories are temporarily unavailable.'}</h2><p>{feedDone ? 'You have read every available story on this device. New stories will appear when published.' : 'Check your connection or try again.'}</p><button className="primary" onClick={refreshFeed} disabled={feedLoading}>{feedLoading ? 'Loading…' : 'Check for new stories'}</button></div>}
         </div>}
         {tab === 'words' && <><header className="section-header"><span className="eyebrow">YOUR PERSONAL COLLECTION</span><h1>Saved words<span className="period">.</span></h1><p>Small discoveries, remembered.</p></header><div className="count-line">{words.length} {words.length === 1 ? 'WORD' : 'WORDS'} COLLECTED</div>{words.length === 0 ? <div className="empty"><Icon name="bookmark" size={40}/><h2>Your collection begins here.</h2><p>Read a story, tap a word, and save it to keep learning.</p><button className="primary" onClick={() => setTab('read')}>Start reading →</button></div> : <div className="saved-list">{words.map(item => <div className="saved-item" key={item.word}><div><h2><button className="saved-word-open" onClick={() => setSelected(item.word)}>{item.word}</button></h2>{item.partOfSpeech && <span className="word-meta">{item.partOfSpeech}</span>}{item.phonetic && <span className="word-meta">{item.phonetic}</span>}<p>{item.definition || offlineMeaning(item.word) || 'No definition yet. See the example sentence below.'}</p>{item.sentence && <p className="word-context">“{item.sentence}”</p>}</div><button onClick={() => { setWords(current => current.filter(w => w.word !== item.word)); setReviewIndex(0); setFinished(false) }} aria-label={`Remove ${item.word}`}><Icon name="close" size={19}/></button></div>)}</div>}</>}
