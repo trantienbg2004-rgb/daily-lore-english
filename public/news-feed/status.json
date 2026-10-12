@@ -1,19 +1,21 @@
 {
-  "updatedAt": "2026-10-12T16:27:15.472Z",
+  "updatedAt": "2026-10-12T20:14:22.970Z",
   "ready": true,
-  "total": 333,
+  "total": 338,
   "requiredTotal": 50,
-  "sourceCount": 3,
+  "sourceCount": 4,
   "requiredSources": 3,
   "byPublisher": {
-    "NASA": 18,
+    "NASA": 19,
     "VnExpress International": 309,
-    "NOAA National Ocean Service": 6
+    "NOAA National Ocean Service": 6,
+    "U.S. Geological Survey": 4
   },
   "byOrganization": {
-    "NASA": 18,
+    "NASA": 19,
     "VnExpress International": 309,
-    "NOAA National Ocean Service": 6
+    "NOAA National Ocean Service": 6,
+    "U.S. Geological Survey": 4
   },
   "report": {
     "sources": {
@@ -51,15 +53,6 @@
         },
         "publisher": "VnExpress International"
       },
-      "VnExpress International | PERSPECTIVES": {
-        "feed": "https://e.vnexpress.net/rss/perspectives.rss",
-        "items": 60,
-        "accepted": 9,
-        "rejected": {
-          "stale-or-invalid-date": 51
-        },
-        "publisher": "VnExpress International"
-      },
       "VnExpress International | TECHNOLOGY": {
         "feed": "https://e.vnexpress.net/rss/tech.rss",
         "items": 60,
@@ -84,6 +77,31 @@
         },
         "publisher": "VOA Learning English"
       },
+      "VnExpress International | PERSPECTIVES": {
+        "feed": "https://e.vnexpress.net/rss/perspectives.rss",
+        "items": 60,
+        "accepted": 9,
+        "rejected": {
+          "stale-or-invalid-date": 51
+        },
+        "publisher": "VnExpress International"
+      },
+      "VOA Learning English | WORLD": {
+        "feed": "https://learningenglish.voanews.com/api/zkm-ql-vomx-tpej-rqi",
+        "items": 20,
+        "accepted": 0,
+        "rejected": {
+          "invalid-description": 17,
+          "stale-or-invalid-date": 3
+        },
+        "publisher": "VOA Learning English"
+      },
+      "National Institutes of Health | HEALTH & SCIENCE": {
+        "feed": "https://www.nih.gov/news-releases/feed.xml",
+        "items": 0,
+        "accepted": 0,
+        "error": "HTTP 403"
+      },
       "VOA Learning English | SCIENCE & TECHNOLOGY": {
         "feed": "https://learningenglish.voanews.com/api/zmg_pl-vomx-tpeymtm",
         "items": 20,
@@ -104,33 +122,22 @@
         },
         "publisher": "Voice of America"
       },
-      "National Institutes of Health | HEALTH & SCIENCE": {
-        "feed": "https://www.nih.gov/news-releases/feed.xml",
-        "items": 0,
-        "accepted": 0,
-        "error": "HTTP 403"
-      },
-      "VOA Learning English | WORLD": {
-        "feed": "https://learningenglish.voanews.com/api/zkm-ql-vomx-tpej-rqi",
-        "items": 20,
-        "accepted": 0,
-        "rejected": {
-          "invalid-description": 17,
-          "stale-or-invalid-date": 3
-        },
-        "publisher": "VOA Learning English"
-      },
       "U.S. Geological Survey | SCIENCE & ENVIRONMENT": {
         "feed": "https://www.usgs.gov/news/national-news-release/feed",
-        "items": 0,
-        "accepted": 0,
-        "error": "HTTP 405"
+        "items": 30,
+        "accepted": 4,
+        "rejected": {
+          "stale-or-invalid-date": 26
+        },
+        "publisher": "U.S. Geological Survey"
       },
       "NASA | SCIENCE & SPACE": {
         "feed": "https://science.nasa.gov/feed/",
         "items": 10,
-        "accepted": 10,
-        "rejected": {},
+        "accepted": 9,
+        "rejected": {
+          "invalid-headline": 1
+        },
         "publisher": "NASA"
       },
       "NOAA National Ocean Service | ENVIRONMENT & OCEANS": {
@@ -157,11 +164,11 @@
       }
     },
     "dedupe": {
-      "duplicateUrl": 351
+      "duplicateUrl": 348
     },
-    "previous": 327,
-    "newCandidates": 357,
-    "sourceCards": 24,
+    "previous": 333,
+    "newCandidates": 353,
+    "sourceCards": 29,
     "realPublisherImages": 309
   }
 }
