@@ -227,3 +227,46 @@
 @media(prefers-reduced-motion:reduce) {
   .reading-mode .reader-gesture .page-surface {animation:none!important;transition:none!important}
 }
+
+/* V20: verified photos only. A failed/pending image never creates a frame. */
+.reading-mode .reader-gesture .article-media:empty { display:none!important }
+.reading-mode .reader-gesture .article-media:not(:has(.photo-figure)) { display:none!important }
+.reading-mode .reader-gesture .article-media .photo-figure {
+  display:inline-flex; width:max-content; max-width:100%; margin:0 auto;
+  border:0!important; outline:0!important; padding:0; background:none!important;
+}
+.reading-mode .reader-gesture .article-media img {
+  display:block; max-width:100%; max-height:var(--dn-photo-height);
+  width:auto; height:auto; border:0!important; outline:0!important;
+  background:none!important; object-fit:contain;
+}
+.reading-mode .reader-gesture .photo-credits {display:none!important}
+.reading-mode .reader-gesture .photo-caption {max-width:min(100%,96vw)}
+.reading-mode .source-footer {
+  display:flex; flex:0 0 auto; align-items:center; gap:9px;
+  justify-content:space-between; border-top:1px solid #e0dfd6;
+  padding:8px 0 6px; margin-top:auto; min-height:53px;
+}
+.reading-mode .source-footer .original-link {
+  flex:0 1 auto; text-decoration:none; text-align:center;
+  border:1px solid #292724; border-radius:5px; padding:10px 12px;
+  font:600 clamp(10px,1.4dvh,12px)/1.15 'DM Sans',sans-serif;
+  color:#f8f8f2; background:#262522; white-space:nowrap;
+}
+.reading-mode .source-footer .original-link span{padding-left:5px}
+.reading-mode .source-footer .credits-link {
+  border:0; background:transparent; color:#696660; padding:9px 2px;
+  font:500 clamp(10px,1.25dvh,12px)/1.2 'DM Sans',sans-serif;
+  text-decoration:underline; text-underline-offset:3px;
+}
+.reading-mode .source-footer .credits-link:disabled {opacity:.5}
+.sources-sheet {max-height:85dvh; overflow-y:auto}
+.sources-sheet h2{font-size:24px; margin:16px 0 12px}
+.sources-sheet p{font:13px/1.6 'DM Sans',sans-serif; min-height:0; margin:12px 0; overflow-wrap:anywhere}
+.sources-sheet a{color:#9b564a; overflow-wrap:anywhere}
+.sources-sheet .source-credit-list {border-top:1px solid #d8d8d0; margin-top:16px; padding-top:12px; font-size:12px}
+.sources-sheet .source-credit-list p{font-size:11px}
+@media(max-height:620px){
+ .reading-mode .source-footer{min-height:48px; padding:5px 0}
+ .reading-mode .source-footer .original-link{padding:8px}
+}

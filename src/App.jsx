@@ -3,7 +3,9 @@ import './App.css'
 import { initializeSeenHistory, persistReadMarker, readLegacyHistory } from './lib/seenHistory.js'
 import { storyId, readableStory, validStories, shuffle, chunkOrder, fetchManifest, scanFeed } from './lib/feedQueue.js'
 import { createEdgeNavigation } from './lib/edgeNavigation.js'
-import { photoLabel, photoSourceLink, photoCandidates } from './lib/photoPresentation.js'
+import { photoLabel, photoSourceLink } from './lib/photoPresentation.js'
+import { resolvePhoto, photoResult } from './lib/photoLoad.js'
+import { displayHeadline, readerSection, orderEditorial } from './lib/editorial.js'
 import initialStories from './stories.json'
 
 
@@ -23,23 +25,39 @@ function fitPhoto(img) {
   img.style.height = `${width / ratio}px`
 }
 
-// V19.1: invalid photos never leave broken icons or blank frames. Try both
-// Wikimedia thumbnail hosts before asking the reader to reflow without media.
-function ArticlePhoto({ image, label, onBroken, interactive }) {
-  const candidates = photoCandidates(image)
-  const [attempt, setAttempt] = useState(0)
-  const [ready, setReady] = useState(false)
-  useEffect(() => { setAttempt(0); setReady(false) }, [image])
-  const url = candidates[Math.min(attempt, candidates.length - 1)]
-  const failed = () => {
-    if (attempt + 1 < candidates.length) { setReady(false); setAttempt(n => n + 1) }
-    else if (image) onBroken(image)
-  }
-  return <img src={url || undefined} alt={label} decoding="async"
-    loading={interactive ? 'eager' : 'lazy'}
-    className={ready ? 'photo-loaded' : 'photo-loading'}
-    onLoad={event => { fitPhoto(event.currentTarget); setReady(true) }}
-    onError={failed}/>
+// V20: NEVER mount an <img> until pixels have loaded. A broken thumbnail
+// cannot leave a native broken-image icon or steal reading space.
+function ArticlePhoto({ image, label, onBroken, onReady }) {
+  const [asset, setAsset] = useState(() => photoResult(image))
+  useEffect(() => {
+    let active = true
+    const known = photoResult(image)
+    setAsset(known)
+    if (!image) return () => { active = false }
+    if (known?.failed) { onBroken(image); return () => { active = false } }
+    if (!known) resolvePhoto(image).then(result => {
+      if (!active) return
+      setAsset(result)
+      if (!result?.url) onBroken(image)
+      else onReady()
+    })
+    return () => { active = false }
+  }, [image])
+  if (!asset?.url) return null
+  return <figure className="photo-figure">
+    <img src={asset.url} alt={label} decoding="async" loading="eager"
+      width={asset.width} height={asset.height}
+      onLoad={event => fitPhoto(event.currentTarget)}
+      onError={() => onBroken(image)} />
+    {label && <figcaption className="photo-caption" title={label}>{label}</figcaption>}
+  </figure>
+}
+
+function safeStoryUrl(url) {
+  try {
+    const parsed = new URL(url)
+    return ['https:','http:'].includes(parsed.protocol) ? parsed.href : ''
+  } catch { return '' }
 }
 
 // Actual DOM measurements preserve readable type and avoid cutting paragraphs on iPhone.
@@ -63,11 +81,23 @@ function layoutPages(item, reader, badImages = new Set()) {
   })
   const heading = fixture.querySelector('.article-heading')
   const media = fixture.querySelector('.article-media')
-  const caption = fixture.querySelector('.photo-caption')
-  const photo = fixture.querySelector('.article-media img')
+  // The live reader deliberately has no image DOM until the bytes load.
+  // Create measuring-only photo nodes in the invisible fixture.
+  const figure = fixture.querySelector('.photo-figure') || document.createElement('figure')
+  figure.className = 'photo-figure'
+  const caption = fixture.querySelector('.photo-caption') || document.createElement('figcaption')
+  caption.className = 'photo-caption'
+  const photo = fixture.querySelector('.article-media img') || document.createElement('img')
+  if (!figure.contains(photo)) figure.appendChild(photo)
+  if (!figure.contains(caption)) figure.appendChild(caption)
+  if (!media.contains(figure)) media.appendChild(figure)
   const card = fixture.querySelector('.reading-card')
   const paragraph = fixture.querySelector('.article-text')
-  if (!heading || !media || !caption || !photo || !card || !paragraph) return item.pages
+  // Measure pages from a stable baseline. Only the final page reserves
+  // the source footer; otherwise its existing DOM state double-counts.
+  const existingFooter = fixture.querySelector('.source-footer')
+  if (existingFooter) existingFooter.style.display = 'none'
+  if (!heading || !media || !card || !paragraph) return item.pages
 
   const allWords = originals.flatMap(p => (p.text || '').match(/\S+/g) || [])
   const images = originals.filter(p => p.image && !badImages.has(p.image)).filter((p, i, list) =>
@@ -100,6 +130,7 @@ function layoutPages(item, reader, badImages = new Set()) {
   const configurePage = (isCover, image) => {
     heading.classList.toggle('article-heading-continued', !isCover)
     media.classList.toggle('article-media-empty', !image)
+    media.style.display = image ? 'flex' : 'none'
     caption.textContent = photoLabel(image)
     // V19: reserve the maximum responsive image height when measuring. Actual
     // images may be shorter according to their aspect ratio, never taller.
@@ -132,6 +163,12 @@ function layoutPages(item, reader, badImages = new Set()) {
           best = mid
           low = mid + 1
         } else high = mid - 1
+      }
+      // The last page has an original-article button and a credit link.
+      // Reserve that measured footer space so it never covers vocabulary text.
+      if (offset + best >= allWords.length && room > 96) {
+        const safeRoom = Math.max(0, room - 82)
+        while (best > 1 && measureWords(offset,best) > safeRoom) best--
       }
       // Exceptionally small windows cannot fit even a line: retain one token.
       // The regular mobile viewport styles are sized to avoid this case.
@@ -348,6 +385,8 @@ function App() {
   const [page, setPage] = useState(0)
   const [pageMotion, setPageMotion] = useState(null)
   const [brokenImages, setBrokenImages] = useState(() => new Set())
+  const [photoVersion, setPhotoVersion] = useState(0)
+  const [showCredits, setShowCredits] = useState(false)
   const markBrokenImage = image => {
     if (!image) return
     setBrokenImages(previous => {
@@ -408,7 +447,7 @@ function App() {
     window.visualViewport?.addEventListener('resize', recalculate)
     document.fonts?.ready.then(recalculate).catch(() => {})
     return () => { cancelled = true; cancelAnimationFrame(frame); observer?.disconnect(); window.removeEventListener('resize', recalculate); window.visualViewport?.removeEventListener('resize', recalculate) }
-  }, [tab, storyIndex, stories.length, story?._sourcePages, brokenImages])
+  }, [tab, storyIndex, stories.length, story?._sourcePages, brokenImages, photoVersion])
 
 
   // Keep a large, ready-to-swipe queue. Background scans never replace the
@@ -492,7 +531,7 @@ function App() {
           setFeedDone(result.done)
           if (result.items.length) {
             appended += result.items.length
-            setStories(old => [...old, ...result.items.map(paginateStory)])
+            setStories(old => [...old, ...orderEditorial(result.items).map(paginateStory)])
           }
           if (result.error) throw result.error
           if (!result.scanned) break
@@ -521,7 +560,7 @@ function App() {
           if (!fallback.ok) throw new Error('Fallback unavailable')
           const data = await fallback.json()
           if (validStories(data)) {
-            const unseen = shuffle(data.filter(item => readableStory(item) && !seenRef.current.has(storyId(item))))
+            const unseen = orderEditorial(shuffle(data.filter(item => readableStory(item) && !seenRef.current.has(storyId(item)))))
             unseen.forEach(item => loadedRef.current.add(storyId(item)))
             if (unseen.length) setStories(unseen.map(paginateStory))
           }
@@ -837,17 +876,19 @@ function App() {
     return <div className="reader-gesture" aria-hidden={!interactive} onTouchStart={interactive ? startGesture : undefined} onTouchMove={interactive ? moveGesture : undefined} onTouchEnd={interactive ? endGesture : undefined} onTouchCancel={interactive ? cancelGesture : undefined} onPointerDown={interactive ? startPointer : undefined} onPointerMove={interactive ? movePointer : undefined} onPointerUp={interactive ? endPointer : undefined} onPointerCancel={interactive ? () => {pointerGesture.current = null; releasePageSurface()} : undefined}>
       <header className="topbar"><span className="brand">DAILY NEWS</span>{interactive && index === stories.length - 1 && <span className="reader-edge-status" role="status" aria-live="polite">{waitingForNext ? (feedRetrying ? 'Reconnecting…' : 'Finding next…') : feedDone ? 'Up to date' : feedLoading ? 'Loading…' : 'Swipe up · Next ↓'}</span>}</header>
       <div key={`${index}:${pageNumber}`} className={'page-surface ' + (interactive && pageMotion ? (pageMotion > 0 ? 'page-enter-left' : 'page-enter-right') : '')}>
-      <div className={'article-heading ' + (pageNumber > 0 ? 'article-heading-continued' : '')}><div className="eyebrow">{item.category}</div><h1>{item.title}</h1><p className="deck">{item.subtitle}</p></div>
+      <div className={'article-heading ' + (pageNumber > 0 ? 'article-heading-continued' : '')}><div className="eyebrow">{readerSection(item)}</div><h1>{displayHeadline(item)}</h1><p className="deck">{item.subtitle}</p></div>
       <div className={"article-media " + (!itemPage.image || brokenImages.has(itemPage.image) ? "article-media-empty" : "")}>
-        <figure className="photo-figure">
-          <ArticlePhoto key={itemPage.image || 'no-photo'} image={brokenImages.has(itemPage.image) ? '' : itemPage.image} label={photoLabel(itemPage)} onBroken={markBrokenImage} interactive={interactive}/>
-          <div className="photo-caption" title={photoLabel(itemPage)}>{photoLabel(itemPage)}</div>
-          {itemPage.image && !brokenImages.has(itemPage.image) && <details className="photo-credits"><summary aria-label="Photo attribution and license" title="Photo information">i</summary><div className="photo-credits-content"><strong>Image credits</strong><p>{itemPage.caption || 'Please refer to the original image for attribution and licensing.'}</p>{photoSourceLink(itemPage) && <a href={photoSourceLink(itemPage)} target="_blank" rel="noopener noreferrer">View image source</a>}</div></details>}
-        </figure>
+        <ArticlePhoto key={itemPage.image || 'no-photo'} image={brokenImages.has(itemPage.image) ? '' : itemPage.image}
+          label={photoLabel(itemPage)} onBroken={markBrokenImage}
+          onReady={() => setPhotoVersion(n => n + 1)} />
       </div>
-      <section className="reading-card"><div className="reading-topline"><span>THE SHORT STORY · {pageNumber + 1}/{item.pages.length}</span><button className="icon-button" disabled={!interactive} onClick={() => speak(itemPage.text)} aria-label="Read aloud"><Icon name="volume" size={21}/></button></div>
+      <section className="reading-card"><div className="reading-topline"><span>{item.contentType === 'news' ? 'THE REPORT' : 'THE SHORT STORY'} · {pageNumber + 1}/{item.pages.length}</span><button className="icon-button" disabled={!interactive} onClick={() => speak(itemPage.text)} aria-label="Read aloud"><Icon name="volume" size={21}/></button></div>
         <p className="article-text">{tokens.map((token, i) => { const word = clean(token); return /^\s+$/.test(token) || !word ? token : <button key={i} type="button" disabled={!interactive} className={'word-token ' + (words.some(w => w.word === word) ? 'known' : '')} onClick={event => onWordClick(event, word)}>{token}</button> })}</p>
       </section>
+      {pageNumber === item.pages.length - 1 && <div className="source-footer">
+        {safeStoryUrl(item.sourceUrl) && <a className="original-link" href={safeStoryUrl(item.sourceUrl)} target="_blank" rel="noopener noreferrer">Read original article <span aria-hidden="true">↗</span></a>}
+        <button className="credits-link" disabled={!interactive} onClick={() => setShowCredits(true)}>Sources &amp; licenses</button>
+      </div>}
       <div className="page-control" aria-label={`Page ${pageNumber + 1} of ${item.pages.length}`}>
         <div className="dots" aria-hidden="true">{(() => {
           // A moving set of dots; each dot corresponds to a real nearby page.
@@ -874,6 +915,21 @@ function App() {
         {tab === 'review' && <><header className="section-header"><span className="eyebrow">A MOMENT TO REMEMBER</span><h1>Daily review<span className="period">.</span></h1><p>Learn a little. Remember a lot.</p></header>{words.length === 0 ? <div className="empty"><Icon name="layers" size={42}/><h2>Nothing to review yet.</h2><p>Save a few words while reading. They will appear here.</p><button className="primary" onClick={() => setTab('read')}>Explore a story →</button></div> : finished ? <div className="empty"><Icon name="check" size={44}/><h2>Beautiful work.</h2><p>You have reviewed all {words.length} saved words.</p><button className="primary" onClick={() => { setFinished(false); setReviewIndex(0); setRevealed(false) }}>Review again →</button></div> : <><div className="review-count">CARD {Math.min(reviewIndex + 1, words.length)} OF {words.length}</div><button className="flashcard" onClick={() => setRevealed(r => !r)}><span>{revealed ? 'THE MEANING' : 'DO YOU REMEMBER?'}</span><strong>{revealed ? (words[Math.min(reviewIndex, words.length - 1)].definition || offlineMeaning(words[Math.min(reviewIndex, words.length - 1)].word) || 'No definition yet. Open this word in Words to retry.') : words[Math.min(reviewIndex, words.length - 1)].word}</strong><small>{revealed ? 'Tap to see the word' : 'Tap to reveal meaning'}</small></button><button className="primary review-next" onClick={nextReview}>{reviewIndex + 1 >= words.length ? 'Finish review' : 'Next word'} →</button></>}</>}
       </main>
       <nav className="bottom-nav" aria-label="Main navigation">{[['read', 'book', 'Read'], ['words', 'bookmark', 'Words'], ['review', 'layers', 'Review']].map(([key, icon, label]) => <button key={key} className={tab === key ? 'current' : ''} onClick={() => { if (key === 'read' && tab === 'read' && story && storyIndex === stories.length - 1) changeStory(1); else { setTab(key); setSelected('') } }}><Icon name={icon} size={25}/><span>{key === 'read' && tab === 'read' && story && storyIndex === stories.length - 1 ? waitingForNext ? 'Finding…' : feedDone ? 'Check again' : 'Next ↓' : label}</span></button>)}</nav>
+      {showCredits && story && <div className="overlay" onClick={() => setShowCredits(false)}>
+        <section className="definition-sheet sources-sheet" role="dialog" aria-label="Sources and licenses" onClick={event => event.stopPropagation()}>
+          <div className="sheet-header"><span>ABOUT THIS ARTICLE</span><button aria-label="Close sources" onClick={() => setShowCredits(false)}>×</button></div>
+          <h2>Sources &amp; credits</h2>
+          <p><strong>Article:</strong> {story.attribution || story.sourceTitle || story.title}</p>
+          <p><strong>Text license:</strong> {story.license || 'See original article for terms'}</p>
+          {safeStoryUrl(story.sourceUrl) && <a href={safeStoryUrl(story.sourceUrl)} target="_blank" rel="noopener noreferrer">Original article ↗</a>}
+          <div className="source-credit-list"><strong>Image attributions</strong>{(() => {
+            const pages = story._sourcePages || story.pages
+            const distinct = [...new Map(pages.filter(p => p.image).map(p => [p.image,p])).values()]
+            return distinct.length ? distinct.map((p,i) => <p key={i}>{p.caption || photoLabel(p)} {photoSourceLink(p) && <a href={photoSourceLink(p)} target="_blank" rel="noopener noreferrer">Photo license ↗</a>}</p>) : <p>No article photos.</p>
+          })()}</div>
+          <button className="primary" onClick={() => setShowCredits(false)}>Back to reading</button>
+        </section>
+      </div>}
       {selected && <div className="overlay" onClick={() => setSelected('')}>
         <div className="definition-sheet" onClick={e => e.stopPropagation()}>
           <div className="sheet-header"><span>WORD NOTES</span><button onClick={() => setSelected('')} aria-label="Close"><Icon name="close" size={22}/></button></div>

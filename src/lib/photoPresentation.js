@@ -45,13 +45,33 @@ export function photoSourceLink(page) {
 export function photoCandidates(image) {
   if (!image) return []
   try {
-    const first = new URL(image)
-    if (!['https:', 'http:'].includes(first.protocol)) return []
-    if (!['thumb.wikimedia.org', 'upload.wikimedia.org'].includes(first.hostname) ||
-        !first.pathname.includes('/wikipedia/commons/thumb/')) return [first.href]
-    for (const key of [...first.searchParams.keys()]) if (/^utm_/i.test(key)) first.searchParams.delete(key)
-    const second = new URL(first.href)
-    second.hostname = first.hostname === 'thumb.wikimedia.org' ? 'upload.wikimedia.org' : 'thumb.wikimedia.org'
-    return [first.href, second.href]
+    const original = new URL(image)
+    if (original.protocol !== 'https:') return []
+    const host = original.hostname
+    const urls = [original.href]
+    // Wikimedia Commons' supported redirect provides a filename-based
+    // fallback independent of changing thumbnail domains or sizes.
+    if (['thumb.wikimedia.org','upload.wikimedia.org'].includes(host)) {
+      const match = original.pathname.match(/^\/wikipedia\/commons\/(?:thumb\/)?([0-9a-f])\/([0-9a-f]{2})\/([^/]+)(?:\/[^/]+)?$/i)
+      if (match) {
+        const [,one,two,file] = match
+        const normalizedFile = decodeURIComponent(file)
+        if (/\.(?:jpe?g|png|webp|gif)$/i.test(normalizedFile)) {
+          const cleanName = encodeURIComponent(normalizedFile.replace(/ /g,'_'))
+          urls.push(`https://commons.wikimedia.org/wiki/Special:Redirect/file/${cleanName}?width=960`)
+          urls.push(`https://upload.wikimedia.org/wikipedia/commons/${one}/${two}/${file}`)
+        }
+        if (original.pathname.includes('/thumb/')) {
+          const other = new URL(original.href)
+          other.hostname = host === 'thumb.wikimedia.org' ? 'upload.wikimedia.org' : 'thumb.wikimedia.org'
+          urls.splice(1,0,other.href)
+        }
+      }
+    }
+    return [...new Set(urls)].map(url => {
+      const result = new URL(url)
+      for(const key of [...result.searchParams.keys()]) if(/^utm_/i.test(key)) result.searchParams.delete(key)
+      return result.href
+    })
   } catch { return [] }
 }
