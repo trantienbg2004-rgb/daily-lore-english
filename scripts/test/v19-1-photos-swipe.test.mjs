@@ -9,7 +9,7 @@ const feed=new URL('../../public/feed/', import.meta.url)
 test('V19.1 Wikimedia thumbnails retry the alternative host without altering original data',()=>{
  const url='https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9a/GANDHI_ASHRAM_03.jpg/1280px-GANDHI_ASHRAM_03.jpg?utm_source=en.wikivoyage.org'
  const candidates=photoCandidates(url)
- assert.equal(candidates.length,2)
+ assert.equal(candidates.length,4)
  assert.equal(new URL(candidates[0]).hostname,'thumb.wikimedia.org')
  assert.equal(new URL(candidates[1]).hostname,'upload.wikimedia.org')
  assert.ok(candidates.every(u=>!u.includes('utm_source')))
@@ -21,16 +21,19 @@ test('V19.1 old Wikimedia thumbnail and new thumb host both link to Commons cred
  assert.equal(photoLabel({image, caption:'Wikimedia Commons'}),'GANDHI ASHRAM 03')
  assert.equal(photoSourceLink({image,caption:''}),'https://commons.wikimedia.org/wiki/File:GANDHI_ASHRAM_03.jpg')
 })
-test('V19.1 visibly displays photo NAME only and retains full credit behind info disclosure',()=>{
- assert.match(app,/className="photo-caption" title=\{photoLabel\(itemPage\)\}/)
- assert.match(app,/photoSourceLink\(itemPage\)/)
- assert.match(app,/className="photo-credits"/)
+test('V20 photo names remain compact and attribution moved to the final source panel',()=>{
+ assert.match(app,/className="photo-caption" title=\{label\}/)
+ assert.match(app,/photoSourceLink\(p\)/)
+ assert.match(app,/Sources &amp; licenses/)
+ assert.match(app,/Read original article/)
+ assert.doesNotMatch(app,/className="photo-credits"/)
  assert.doesNotMatch(app,/className="photo-caption"[^>]*>\{itemPage\.caption\}/)
  assert.match(css,/\.photo-caption\s*\{[^}]*text-overflow:ellipsis/)
 })
-test('V19.1 photo failure retries before removal, and repaginates from pristine source',()=>{
- assert.match(app,/if \(attempt \+ 1 < candidates\.length\)/)
- assert.match(app,/else if \(image\) onBroken\(image\)/)
+test('V20 image failures are resolved before mounting; reflows from original source',()=>{
+ assert.match(app,/resolvePhoto\(image\)/)
+ assert.match(app,/if \(!asset\?\.url\) return null/)
+ assert.match(app,/if \(!result\?\.url\) onBroken\(image\)/)
  assert.match(app,/setBrokenImages\(previous =>/)
  assert.match(app,/brokenImages\.has\(itemPage\.image\)/)
  assert.match(app,/layoutPages\(story, reader, brokenImages\)/)
@@ -58,14 +61,16 @@ test('V19.1 preserves brand and existing core reader, vocabulary and feed featur
  assert.doesNotMatch(app,/DAILY LORE|ISSUE NO\./)
  for(const fragment of ['initializeSeenHistory(', 'persistReadMarker(', 'scanFeed(', 'edgeControllerRef.current.forward(', 'lookupWord(', 'saveWord', 'nextReview', 'word-token', 'layoutPages(']) assert.ok(app.includes(fragment),fragment)
 })
-test('V19.1 untouched V19 baseline keeps original 28 feed files and usable manifest',()=>{
+test('V20 full feed matches its live manifest as GitHub Actions appends new chunks',()=>{
+ const manifest=JSON.parse(readFileSync(new URL('manifest.json',feed),'utf8'))
  const files=readdirSync(feed).filter(n=>/^\d{4}\.json$/.test(n))
- assert.equal(files.length,28)
- let count=0
- for(const file of files) {
+ assert.equal(files.length,manifest.chunks)
+ let total=0
+ for(const file of files){
   const rows=JSON.parse(readFileSync(new URL(file,feed),'utf8'))
-  assert.ok(Array.isArray(rows))
-  count+=rows.length
+  assert.ok(Array.isArray(rows)&&rows.length>0)
+  total+=rows.length
  }
- assert.equal(count,696)
+ assert.equal(total,manifest.total)
+ assert.ok(total>=400)
 })

@@ -16,11 +16,12 @@ test('V19: generic photo caption becomes human-readable filename, never a URL',(
   assert.equal(photoLabel({image:'https://example.org/img/Beautiful_Landscape.png',caption:'Beautiful Landscape.png · Photographer · CC BY-SA 4.0 · Credits: https://commons.wikimedia.org/wiki/File:Beautiful_Landscape.png'}),'Beautiful Landscape')
   assert.equal(photoLabel({image:'',caption:'foo'}),'')
 })
-test('V19: actual photo credit and license remain available, but below-photo caption is short',()=>{
-  assert.match(app, /className="photo-caption" title=\{photoLabel\(itemPage\)\}/)
-  assert.match(app,/className="photo-credits"/)
-  assert.match(app,/itemPage\.caption \|\|/)
-  assert.match(app,/photoSourceLink\(itemPage\)/)
+test('V20 photo credit and license remain accessible on last page, not overlaying images',()=>{
+  assert.match(app,/className="photo-caption" title=\{label\}/)
+  assert.match(app,/Sources &amp; licenses/)
+  assert.match(app,/photoSourceLink\(p\)/)
+  assert.match(app,/source-footer/)
+  assert.doesNotMatch(app,/className="photo-credits"/)
   assert.match(css,/\.reading-mode \.article-media img\s*\{[^}]*width:auto; height:auto; max-width:100%; max-height:/)
   assert.match(css,/object-fit:contain/)
 })
