@@ -6,6 +6,7 @@ import { createEdgeNavigation } from './lib/edgeNavigation.js'
 import { photoLabel, photoSourceLink } from './lib/photoPresentation.js'
 import { resolvePhoto, photoResult } from './lib/photoLoad.js'
 import { displayHeadline, readerSection, orderEditorial } from './lib/editorial.js'
+import { handleReaderArrowKey } from './lib/readerKeyboard.js'
 import initialStories from './stories.json'
 
 
@@ -842,17 +843,20 @@ function App() {
     })
     return () => { images.forEach(img => { img.onload = null; img.onerror = null }) }
   }, [tab, storyIndex, page, stories, brokenImages])
+  // V20.1: refresh the keyboard handler whenever the page changes. V20
+  // omitted `page` from the dependencies, so ArrowRight kept reading a stale
+  // page index (often page 0) and could not progress beyond page 2.
   useEffect(() => {
-    if (tab !== 'read' || selected) return
-    const onKey = event => {
-      if (event.key === 'ArrowRight') { event.preventDefault(); changePage(1) }
-      if (event.key === 'ArrowLeft') { event.preventDefault(); changePage(-1) }
-      if (event.key === 'ArrowDown') { event.preventDefault(); changeStory(1) }
-      if (event.key === 'ArrowUp') { event.preventDefault(); changeStory(-1) }
-    }
+    const onKey = event => handleReaderArrowKey(event, {
+      enabled: tab === 'read' && !selected && !showCredits && !!story,
+      onNextPage: () => changePage(1),
+      onPrevPage: () => changePage(-1),
+      onNextStory: () => changeStory(1),
+      onPrevStory: () => changeStory(-1),
+    })
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
-  }, [tab, selected, storyIndex, story?.pages?.length])
+  }, [tab, selected, showCredits, page, storyIndex, story?.pages?.length, stories.length])
 
   // Desktop: wheel navigates stories instead of scrolling the reading screen.
   const onReaderWheel = event => {
@@ -890,6 +894,7 @@ function App() {
         <button className="credits-link" disabled={!interactive} onClick={() => setShowCredits(true)}>Sources &amp; licenses</button>
       </div>}
       <div className="page-control" aria-label={`Page ${pageNumber + 1} of ${item.pages.length}`}>
+        <button type="button" className="page-arrow page-arrow-prev" aria-label="Previous page" title="Previous page (←)" disabled={!interactive || pageNumber === 0} onClick={() => changePage(-1)}><Icon name="left" size={17}/></button>
         <div className="dots" aria-hidden="true">{(() => {
           // A moving set of dots; each dot corresponds to a real nearby page.
           // Keep the total bounded on narrow phones, never change to a bar.
@@ -899,6 +904,7 @@ function App() {
           return Array.from({ length: visible }, (_, i) => first + i).map(i =>
             <span key={i} className={pageNumber === i ? 'active' : ''}/>)
         })()}</div>
+        <button type="button" className="page-arrow page-arrow-next" aria-label="Next page" title="Next page (→)" disabled={!interactive || pageNumber === item.pages.length - 1} onClick={() => changePage(1)}><Icon name="right" size={17}/></button>
       </div>
       </div>
     </div>
