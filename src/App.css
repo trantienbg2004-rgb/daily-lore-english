@@ -172,3 +172,58 @@
   .reading-mode .article-media {--dn-photo-height:clamp(44px,12dvh,85px)}
   .reading-mode .photo-caption {font-size:9px}
 }
+
+
+/* DAILY NEWS V19.1 — let pictures own their geometry, not a beige frame. */
+.reading-mode .reader-gesture .page-surface {
+  flex:1 1 0; min-height:0; min-width:0;
+  display:flex; flex-direction:column; transform:translate3d(0,0,0);
+  backface-visibility:hidden;
+}
+.reading-mode .reader-gesture .article-media {
+  --dn-photo-height:clamp(92px,24dvh,210px);
+  display:flex; justify-content:center; align-items:center;
+  background:none; border:0; padding:0; min-height:0;
+}
+.reading-mode .reader-gesture .article-media .photo-figure {
+  position:relative; display:inline-flex; flex-direction:column;
+  align-items:stretch; justify-content:center;
+  width:max-content; max-width:100%; margin:0;
+  padding:0; border:0; background:none;
+}
+.reading-mode .reader-gesture .article-media img {
+  width:auto; height:auto; max-width:100%; max-height:var(--dn-photo-height);
+  object-fit:contain; display:block; flex:0 0 auto; align-self:center;
+  border:0; outline:0; background:none; box-shadow:none;
+  border-radius:2px;
+}
+.reading-mode .reader-gesture .article-media img.photo-loading {visibility:hidden}
+.reading-mode .reader-gesture .article-media img.photo-loaded {visibility:visible}
+.reading-mode .reader-gesture .article-media-empty {display:none}
+.reading-mode .reader-gesture .photo-caption {
+  display:block; width:auto; max-width:100%; margin-top:5px;
+  white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+  font:normal 10px/1.3 'DM Sans',sans-serif; text-align:center;
+  color:#77746e; border:0; background:none;
+}
+.reading-mode .reader-gesture .photo-credits {top:6px; right:6px}
+.reading-mode .reader-gesture .page-surface.page-enter-left {
+  animation:dn-page-enter-left 270ms cubic-bezier(.18,.78,.22,1) both;
+}
+.reading-mode .reader-gesture .page-surface.page-enter-right {
+  animation:dn-page-enter-right 270ms cubic-bezier(.18,.78,.22,1) both;
+}
+@keyframes dn-page-enter-left {
+  from {transform:translate3d(45px,0,0);opacity:.58}
+  to {transform:translate3d(0,0,0);opacity:1}
+}
+@keyframes dn-page-enter-right {
+  from {transform:translate3d(-45px,0,0);opacity:.58}
+  to {transform:translate3d(0,0,0);opacity:1}
+}
+@media(max-height:620px) {
+  .reading-mode .reader-gesture .article-media {--dn-photo-height:clamp(58px,16dvh,125px)}
+}
+@media(prefers-reduced-motion:reduce) {
+  .reading-mode .reader-gesture .page-surface {animation:none!important;transition:none!important}
+}

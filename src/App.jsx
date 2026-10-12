@@ -3,7 +3,7 @@ import './App.css'
 import { initializeSeenHistory, persistReadMarker, readLegacyHistory } from './lib/seenHistory.js'
 import { storyId, readableStory, validStories, shuffle, chunkOrder, fetchManifest, scanFeed } from './lib/feedQueue.js'
 import { createEdgeNavigation } from './lib/edgeNavigation.js'
-import { photoLabel, photoSourceLink } from './lib/photoPresentation.js'
+import { photoLabel, photoSourceLink, photoCandidates } from './lib/photoPresentation.js'
 import initialStories from './stories.json'
 
 
@@ -15,7 +15,7 @@ const paginateStory = item => ({ ...item, _sourcePages: item._sourcePages || ite
 function fitPhoto(img) {
   if (!img?.naturalWidth || !img?.naturalHeight || !img.parentElement) return
   const maxHeight = parseFloat(getComputedStyle(img).maxHeight) || 148
-  const maxWidth = img.parentElement.clientWidth
+  const maxWidth = Math.min(img.parentElement.clientWidth, img.parentElement.parentElement?.clientWidth || Infinity)
   const ratio = img.naturalWidth / img.naturalHeight
   if (!maxWidth || !Number.isFinite(ratio) || ratio <= 0) return
   const width = Math.min(maxWidth, maxHeight * ratio)
@@ -23,9 +23,28 @@ function fitPhoto(img) {
   img.style.height = `${width / ratio}px`
 }
 
+// V19.1: invalid photos never leave broken icons or blank frames. Try both
+// Wikimedia thumbnail hosts before asking the reader to reflow without media.
+function ArticlePhoto({ image, label, onBroken, interactive }) {
+  const candidates = photoCandidates(image)
+  const [attempt, setAttempt] = useState(0)
+  const [ready, setReady] = useState(false)
+  useEffect(() => { setAttempt(0); setReady(false) }, [image])
+  const url = candidates[Math.min(attempt, candidates.length - 1)]
+  const failed = () => {
+    if (attempt + 1 < candidates.length) { setReady(false); setAttempt(n => n + 1) }
+    else if (image) onBroken(image)
+  }
+  return <img src={url || undefined} alt={label} decoding="async"
+    loading={interactive ? 'eager' : 'lazy'}
+    className={ready ? 'photo-loaded' : 'photo-loading'}
+    onLoad={event => { fitPhoto(event.currentTarget); setReady(true) }}
+    onError={failed}/>
+}
+
 // Actual DOM measurements preserve readable type and avoid cutting paragraphs on iPhone.
 // The source article text is never discarded: long source pages become multiple screen pages.
-function layoutPages(item, reader) {
+function layoutPages(item, reader, badImages = new Set()) {
   const originals = item._sourcePages || item.pages
   const bounds = reader.getBoundingClientRect()
   if (bounds.width < 100 || bounds.height < 220) return item.pages
@@ -51,7 +70,7 @@ function layoutPages(item, reader) {
   if (!heading || !media || !caption || !photo || !card || !paragraph) return item.pages
 
   const allWords = originals.flatMap(p => (p.text || '').match(/\S+/g) || [])
-  const images = originals.filter(p => p.image).filter((p, i, list) =>
+  const images = originals.filter(p => p.image && !badImages.has(p.image)).filter((p, i, list) =>
     list.findIndex(other => other.image === p.image) === i)
   if (!allWords.length) return originals
 
@@ -327,6 +346,17 @@ function App() {
   const historyDbRef = useRef(null)
   const historyReadyRef = useRef(false)
   const [page, setPage] = useState(0)
+  const [pageMotion, setPageMotion] = useState(null)
+  const [brokenImages, setBrokenImages] = useState(() => new Set())
+  const markBrokenImage = image => {
+    if (!image) return
+    setBrokenImages(previous => {
+      if (previous.has(image)) return previous
+      const next = new Set(previous)
+      next.add(image)
+      return next
+    })
+  }
   const [selected, setSelected] = useState('')
   const [lookup, setLookup] = useState({ status: 'idle', options: [] })
   const [meaningIndex, setMeaningIndex] = useState(0)
@@ -359,7 +389,7 @@ function App() {
         const reader = document.querySelector('.story-layer:not(.outgoing) .reader-gesture')
         if (!reader) return
         fitPhoto(reader.querySelector('.article-media img'))
-        const next = layoutPages(story, reader)
+        const next = layoutPages(story, reader, brokenImages)
         const before = story.pages.map(p => `${p.image}|${p.text}`).join('\u0000')
         const after = next.map(p => `${p.image}|${p.text}`).join('\u0000')
         if (before !== after) {
@@ -378,7 +408,7 @@ function App() {
     window.visualViewport?.addEventListener('resize', recalculate)
     document.fonts?.ready.then(recalculate).catch(() => {})
     return () => { cancelled = true; cancelAnimationFrame(frame); observer?.disconnect(); window.removeEventListener('resize', recalculate); window.visualViewport?.removeEventListener('resize', recalculate) }
-  }, [tab, storyIndex, stories.length, story?._sourcePages])
+  }, [tab, storyIndex, stories.length, story?._sourcePages, brokenImages])
 
 
   // Keep a large, ready-to-swipe queue. Background scans never replace the
@@ -648,7 +678,13 @@ function App() {
     utterance.rate = 0.85
     window.speechSynthesis.speak(utterance)
   }
-  const changePage = direction => { if (story) setPage(p => Math.max(0, Math.min(story.pages.length - 1, p + direction))) }
+  const changePage = direction => {
+    if (!story) return
+    const next = Math.max(0, Math.min(story.pages.length - 1, page + direction))
+    if (next === page) return
+    setPageMotion(direction)
+    setPage(next)
+  }
   const navigateStory = direction => {
     const from = storyIndexRef.current
     const next = from + direction
@@ -658,6 +694,7 @@ function App() {
     storyIndexRef.current = next
     setStoryIndex(next)
     setPage(0)
+    setPageMotion(null)
     slideTimer.current = setTimeout(() => setSlide(null), 560)
   }
   edgeActionsRef.current = {
@@ -667,6 +704,26 @@ function App() {
   const changeStory = direction => {
     if (direction > 0) edgeControllerRef.current.forward(storyIndexRef.current, storiesRef.current.length)
     else if (direction < 0) edgeControllerRef.current.backward(storyIndexRef.current)
+  }
+  // Horizontal reading is finger-driven. Only the page surface moves;
+  // the masthead and bottom navigation remain anchored like a newspaper.
+  const movePageSurface = (dx, dy) => {
+    if (typeof document === 'undefined') return
+    if (Math.abs(dx) < 8 || Math.abs(dx) < Math.abs(dy) * 1.2) return
+    const surface = document.querySelector('.story-layer:not(.outgoing) .page-surface')
+    if (!surface) return
+    const distance = Math.max(-72, Math.min(72, dx * 0.4))
+    surface.style.transition = 'none'
+    surface.style.transform = `translate3d(${distance}px, 0, 0)`
+    surface.style.opacity = String(1 - Math.abs(distance) / 450)
+  }
+  const releasePageSurface = () => {
+    if (typeof document === 'undefined') return
+    const surface = document.querySelector('.story-layer:not(.outgoing) .page-surface')
+    if (!surface) return
+    surface.style.transition = 'transform 220ms cubic-bezier(.2,.75,.25,1), opacity 220ms ease'
+    surface.style.transform = 'translate3d(0,0,0)'
+    surface.style.opacity = '1'
   }
   const handleNavigationGesture = (dx, dy) => {
     if (Math.max(Math.abs(dx), Math.abs(dy)) < 48) return
@@ -684,10 +741,15 @@ function App() {
     if (event.pointerType !== 'touch' || selected || event.target.closest('button, a, summary')) return
     pointerGesture.current = {id: event.pointerId, x: event.clientX, y: event.clientY}
   }
+  const movePointer = event => {
+    if (!pointerGesture.current || pointerGesture.current.id !== event.pointerId) return
+    movePageSurface(event.clientX - pointerGesture.current.x, event.clientY - pointerGesture.current.y)
+  }
   const endPointer = event => {
     if (!pointerGesture.current || pointerGesture.current.id !== event.pointerId) return
     const {x, y} = pointerGesture.current
     pointerGesture.current = null
+    releasePageSurface()
     handleNavigationGesture(event.clientX - x, event.clientY - y)
   }
   const nextReview = () => {
@@ -707,6 +769,7 @@ function App() {
     if (!gesture.current || event.touches.length !== 1) return
     const dx = event.touches[0].clientX - gesture.current.x
     const dy = event.touches[0].clientY - gesture.current.y
+    movePageSurface(dx, dy)
     if (Math.max(Math.abs(dx), Math.abs(dy)) > 12) {
       gesture.current.moved = true
       suppressWordClick.current = true
@@ -717,9 +780,10 @@ function App() {
     const dx = event.changedTouches[0].clientX - gesture.current.x
     const dy = event.changedTouches[0].clientY - gesture.current.y
     gesture.current = null
+    releasePageSurface()
     handleNavigationGesture(dx, dy)
   }
-  const cancelGesture = () => { gesture.current = null; suppressWordClick.current = false }
+  const cancelGesture = () => { gesture.current = null; releasePageSurface(); suppressWordClick.current = false }
   const onWordClick = (event, word) => {
     if (suppressWordClick.current) {
       event.preventDefault()
@@ -732,13 +796,13 @@ function App() {
   useEffect(() => {
     if (tab !== 'read' || !story) return
     const urls = [story?.pages?.[page + 1]?.image, stories[storyIndex + 1]?.pages?.[0]?.image, stories[storyIndex + 2]?.pages?.[0]?.image]
-    const images = urls.filter(Boolean).map(url => {
+    const images = urls.filter(url => url && !brokenImages.has(url)).map(url => {
       const img = new Image()
       img.src = url
       return img
     })
     return () => { images.forEach(img => { img.onload = null; img.onerror = null }) }
-  }, [tab, storyIndex, page, stories])
+  }, [tab, storyIndex, page, stories, brokenImages])
   useEffect(() => {
     if (tab !== 'read' || selected) return
     const onKey = event => {
@@ -770,13 +834,16 @@ function App() {
   const renderStory = (item, index, pageNumber, interactive) => {
     const itemPage = item.pages[pageNumber] || item.pages[0]
     const tokens = itemPage.text.split(/(\s+)/)
-    return <div className="reader-gesture" aria-hidden={!interactive} onTouchStart={interactive ? startGesture : undefined} onTouchMove={interactive ? moveGesture : undefined} onTouchEnd={interactive ? endGesture : undefined} onTouchCancel={interactive ? cancelGesture : undefined} onPointerDown={interactive ? startPointer : undefined} onPointerUp={interactive ? endPointer : undefined} onPointerCancel={interactive ? () => {pointerGesture.current = null} : undefined}>
+    return <div className="reader-gesture" aria-hidden={!interactive} onTouchStart={interactive ? startGesture : undefined} onTouchMove={interactive ? moveGesture : undefined} onTouchEnd={interactive ? endGesture : undefined} onTouchCancel={interactive ? cancelGesture : undefined} onPointerDown={interactive ? startPointer : undefined} onPointerMove={interactive ? movePointer : undefined} onPointerUp={interactive ? endPointer : undefined} onPointerCancel={interactive ? () => {pointerGesture.current = null; releasePageSurface()} : undefined}>
       <header className="topbar"><span className="brand">DAILY NEWS</span>{interactive && index === stories.length - 1 && <span className="reader-edge-status" role="status" aria-live="polite">{waitingForNext ? (feedRetrying ? 'Reconnecting…' : 'Finding next…') : feedDone ? 'Up to date' : feedLoading ? 'Loading…' : 'Swipe up · Next ↓'}</span>}</header>
+      <div key={`${index}:${pageNumber}`} className={'page-surface ' + (interactive && pageMotion ? (pageMotion > 0 ? 'page-enter-left' : 'page-enter-right') : '')}>
       <div className={'article-heading ' + (pageNumber > 0 ? 'article-heading-continued' : '')}><div className="eyebrow">{item.category}</div><h1>{item.title}</h1><p className="deck">{item.subtitle}</p></div>
-      <div className={"article-media " + (!itemPage.image ? "article-media-empty" : "")}>
-        <img src={itemPage.image || undefined} alt={photoLabel(itemPage)} decoding="async" loading={interactive ? "eager" : "lazy"} onLoad={e => fitPhoto(e.currentTarget)} onError={e => { e.currentTarget.style.opacity = '.35' }}/>
-        <div className="photo-caption" title={photoLabel(itemPage)}>{photoLabel(itemPage)}</div>
-        {itemPage.image && <details className="photo-credits"><summary aria-label="Photo attribution and license" title="Photo information">i</summary><div className="photo-credits-content"><strong>Image credits</strong><p>{itemPage.caption || 'Please refer to the original image for attribution and licensing.'}</p>{photoSourceLink(itemPage) && <a href={photoSourceLink(itemPage)} target="_blank" rel="noopener noreferrer">View image source</a>}</div></details>}
+      <div className={"article-media " + (!itemPage.image || brokenImages.has(itemPage.image) ? "article-media-empty" : "")}>
+        <figure className="photo-figure">
+          <ArticlePhoto key={itemPage.image || 'no-photo'} image={brokenImages.has(itemPage.image) ? '' : itemPage.image} label={photoLabel(itemPage)} onBroken={markBrokenImage} interactive={interactive}/>
+          <div className="photo-caption" title={photoLabel(itemPage)}>{photoLabel(itemPage)}</div>
+          {itemPage.image && !brokenImages.has(itemPage.image) && <details className="photo-credits"><summary aria-label="Photo attribution and license" title="Photo information">i</summary><div className="photo-credits-content"><strong>Image credits</strong><p>{itemPage.caption || 'Please refer to the original image for attribution and licensing.'}</p>{photoSourceLink(itemPage) && <a href={photoSourceLink(itemPage)} target="_blank" rel="noopener noreferrer">View image source</a>}</div></details>}
+        </figure>
       </div>
       <section className="reading-card"><div className="reading-topline"><span>THE SHORT STORY · {pageNumber + 1}/{item.pages.length}</span><button className="icon-button" disabled={!interactive} onClick={() => speak(itemPage.text)} aria-label="Read aloud"><Icon name="volume" size={21}/></button></div>
         <p className="article-text">{tokens.map((token, i) => { const word = clean(token); return /^\s+$/.test(token) || !word ? token : <button key={i} type="button" disabled={!interactive} className={'word-token ' + (words.some(w => w.word === word) ? 'known' : '')} onClick={event => onWordClick(event, word)}>{token}</button> })}</p>
@@ -791,6 +858,7 @@ function App() {
           return Array.from({ length: visible }, (_, i) => first + i).map(i =>
             <span key={i} className={pageNumber === i ? 'active' : ''}/>)
         })()}</div>
+      </div>
       </div>
     </div>
   }

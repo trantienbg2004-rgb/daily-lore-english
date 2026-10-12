@@ -6,7 +6,7 @@ function decodedFileName(source) {
   if (!source) return ''
   try {
     const u = new URL(source)
-    const path = decodeURIComponent(u.pathname.split('/').pop() || '')
+    const path = decodeURIComponent(u.pathname.split('/').pop() || '').replace(/^\d+px-/, '')
     return path.replace(/\.(jpe?g|png|gif|webp|svg|tiff?|avif)$/i, '')
   } catch { return '' }
 }
@@ -30,10 +30,28 @@ export function photoSourceLink(page) {
   }
   try {
     const url = new URL(page.image)
-    if (url.hostname === 'upload.wikimedia.org') {
-      const file = decodeURIComponent(url.pathname.split('/').pop() || '')
+    if (url.hostname === 'upload.wikimedia.org' || url.hostname === 'thumb.wikimedia.org') {
+      const file = decodeURIComponent(url.pathname.split('/').pop() || '').replace(/^\d+px-/, '')
       if (file) return `https://commons.wikimedia.org/wiki/File:${encodeURIComponent(file).replace(/%2F/g, '/')}`
     }
   } catch { /* no trusted source URL */ }
   return ''
+}
+
+
+// Wikimedia moved thumbnails to thumb.wikimedia.org during 2026. Some
+// networks or older URLs still work only on upload.wikimedia.org. Attempt
+// both hosts for thumbnail URLs; never retry arbitrary third-party hosts.
+export function photoCandidates(image) {
+  if (!image) return []
+  try {
+    const first = new URL(image)
+    if (!['https:', 'http:'].includes(first.protocol)) return []
+    if (!['thumb.wikimedia.org', 'upload.wikimedia.org'].includes(first.hostname) ||
+        !first.pathname.includes('/wikipedia/commons/thumb/')) return [first.href]
+    for (const key of [...first.searchParams.keys()]) if (/^utm_/i.test(key)) first.searchParams.delete(key)
+    const second = new URL(first.href)
+    second.hostname = first.hostname === 'thumb.wikimedia.org' ? 'upload.wikimedia.org' : 'thumb.wikimedia.org'
+    return [first.href, second.href]
+  } catch { return [] }
 }
