@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"/><title>DAILY NEWS · V22-A Preview</title>
+<style>
+:root{color-scheme:light;font-family:Georgia,'Times New Roman',serif;color:#182026;background:#f7f6f2}*{box-sizing:border-box}body{margin:0}header{position:sticky;top:0;z-index:3;background:#f7f6f2f2;border-bottom:1px solid #d8d3c9;padding:15px max(18px,calc((100vw - 860px)/2));display:flex;align-items:center;justify-content:space-between;gap:12px}.brand{font-weight:bold;letter-spacing:.19em;font-size:21px}.sub{font:11px system-ui,sans-serif;color:#666;letter-spacing:.1em}main{max-width:860px;margin:0 auto;padding:25px 18px 65px}h1{font-size:clamp(30px,5vw,48px);margin:6px 0 7px;line-height:1.1}.intro{font:15px/1.6 system-ui,sans-serif;color:#5e625e;max-width:700px}.status{border:1px solid #d9d4c9;padding:13px 16px;border-radius:8px;font:13px/1.6 system-ui,sans-serif;margin:20px 0 27px;background:#fff}.items{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,370px),1fr));gap:22px}.card{background:#fff;border:1px solid #e2ded7;border-radius:11px;overflow:hidden;box-shadow:0 1px 5px #00000009;display:flex;flex-direction:column}.cover{width:100%;aspect-ratio:16/10;object-fit:cover;display:block;background:#eceae5}.copy{padding:17px 19px 19px;display:flex;flex:1;flex-direction:column}.meta{font:11px/1.5 system-ui,sans-serif;color:#a15d38;text-transform:uppercase;letter-spacing:.08em}.headline{font-size:24px;line-height:1.16;margin:9px 0 11px}.excerpt{font:14px/1.6 system-ui,sans-serif;color:#424b4c;flex:1}.source{color:#59666b;font:12px system-ui,sans-serif;margin:14px 0}.link{display:inline-flex;align-items:center;gap:5px;color:#a43d2a;text-decoration:none;font:700 13px system-ui,sans-serif}.link:hover{text-decoration:underline}button{border:1px solid #9e3121;background:#9e3121;color:white;border-radius:5px;padding:9px 12px;cursor:pointer;font:13px system-ui,sans-serif}@media(max-width:480px){header{padding:13px 16px}.brand{font-size:16px}main{padding-top:21px}}
+</style></head><body><header><span class="brand">DAILY NEWS</span><span class="sub">V22-A · STAGING ONLY</span></header>
+<main><h1>English news, not encyclopedias.</h1><p class="intro">Đây là trang kiểm tra tin thật của V22-A. Ứng dụng đang sử dụng V21 bình thường; trang này chỉ đọc kho tin thử nghiệm, không xóa dữ liệu cũ. Nội dung ngắn được giữ đúng theo RSS; bài đầy đủ mở tại nhà xuất bản.</p>
+<button id="reload" type="button">Kiểm tra lại nguồn tin</button><section id="status" class="status" role="status">Đang đọc trạng thái kho tin…</section><section id="items" class="items" aria-label="Các bài báo dùng để kiểm tra"></section></main>
+<script type="module">
+const $=sel=>document.querySelector(sel),site=$('#items'),status=$('#status')
+function el(tag,cls,text){const d=document.createElement(tag);if(cls)d.className=cls;if(text!==undefined)d.textContent=String(text);return d}
+function safeLink(url){try{const u=new URL(url);return u.protocol==='https:'?u.href:null}catch{return null}}
+function card(story){
+ const url=safeLink(story.sourceUrl||story.url);if(!url)return null
+ const box=el('article','card');const pic=story.image||story.pages?.[0]?.image
+ if(safeLink(pic)){const im=el('img','cover');im.loading='lazy';im.alt=story.imageKind==='source-card'?'Thẻ hình trung tính, không phải ảnh báo':`Ảnh từ ${story.newsSource||story.source||'nguồn bài'}`;im.src=pic;im.onerror=()=>im.remove();box.append(im)}
+ const content=el('div','copy');content.append(el('span','meta',story.category||'NEWS'),el('h2','headline',story.title||''),el('p','excerpt',story.description||story.pages?.[0]?.text||''))
+ const date=story.publishedAt&&Number.isFinite(Date.parse(story.publishedAt))?new Date(story.publishedAt).toLocaleDateString('vi-VN'):''
+ content.append(el('p','source',`${story.newsSource||story.source||''}${date?' · '+date:''}`));const link=el('a','link','Read original article ↗');link.href=url;link.target='_blank';link.rel='noopener noreferrer';content.append(link);box.append(content);return box
+}
+async function show(){site.replaceChildren();status.textContent='Đang tải dữ liệu…';try{
+ const m=await fetch('/news-feed/manifest.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw Error(`HTTP ${r.status}`);return r.json()})
+ let report;try{report=await fetch('/news-feed/status.json',{cache:'no-store'}).then(r=>r.ok?r.json():null)}catch{}
+ const breakdown=Object.entries(report?.byPublisher||{}).map(([name,n])=>`${name}: ${n}`).join(' · ')
+ status.textContent=`${m.ready?'ĐỦ ĐIỀU KIỆN KIỂM TRA BƯỚC V22-B':'ĐANG THU THẬP'} — ${m.total||0}/50 bài; ${m.sourceCount||0}/3 tổ chức nguồn độc lập.${breakdown?'\n'+breakdown:''}${report?.report?.sourceCards!==undefined?'\nThẻ đồ họa thay ảnh chưa rõ quyền: '+report.report.sourceCards:''}`
+ const ids=[];for(let i=0;i<Math.min(m.chunks||0,Math.ceil(50/32));i++)ids.push(String(i).padStart(4,'0'))
+ const chunks=await Promise.all(ids.map(async id=>{const r=await fetch(`/news-feed/${id}.json`);if(!r.ok)throw Error('Missing chunk '+id);return r.json()}))
+ const fragment=document.createDocumentFragment();for(const s of chunks.flat().slice(0,50)){const c=card(s);if(c)fragment.append(c)}site.append(fragment)
+ if(!site.childElementCount)site.append(el('p','intro','Chưa có bản tin hợp lệ. Hãy chạy GitHub Actions: V22-A · Collect News.'))
+ }catch(e){status.textContent=`Chưa tải được kho V22-A: ${e.message}. Kho V21 vẫn không bị ảnh hưởng.`}}
+$('#reload').addEventListener('click',show);show()
+</script></body></html>

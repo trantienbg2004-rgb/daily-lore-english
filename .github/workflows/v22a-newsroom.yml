@@ -1,0 +1,38 @@
+name: "V22-A · Collect English News (staging)"
+on:
+  # Stage fresh news separately; NEVER switch V21 reading feed automatically.
+  schedule:
+    - cron: '23 0,6,12,18 * * *'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: daily-news-content
+  cancel-in-progress: false
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: "Validate staging code and preserve reader regressions"
+        run: node --test scripts/test/*.test.mjs
+      - name: "Collect RSS previews and safely reusable NASA stories"
+        run: node scripts/v22a-collect.mjs
+      - name: "Validate staging integrity and print sources"
+        run: node scripts/v22a-check.mjs
+      - name: "Commit staged newsroom without changing V21 feed"
+        run: |
+          git config user.name 'daily-news-bot'
+          git config user.email 'daily-news-bot@users.noreply.github.com'
+          git add -A public/news-feed/
+          if ! git diff --cached --quiet; then
+            git commit -m 'V22-A replenish staged publisher news'
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
