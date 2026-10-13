@@ -1,7 +1,10 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import './App.css'
 import { initializeSeenHistory, persistReadMarker, readLegacyHistory } from './lib/seenHistory.js'
-import { storyId, readableStory, validStories, newsChunkOrder, fetchManifest, scanFeed } from './lib/feedQueue.js'
+import { storyId } from './lib/feedQueue.js'
+import { planReadingPages } from './lib/readerPagination.js'
+import { sanitizeReadingArticle } from './lib/articleCleanup.js'
+import { refreshCatalog, refillCatalog, REFRESH_INTERVAL_MS } from './lib/continuousReader.js'
 import { createEdgeNavigation } from './lib/edgeNavigation.js'
 import { photoLabel, photoSourceLink } from './lib/photoPresentation.js'
 import { resolvePhoto, photoResult } from './lib/photoLoad.js'
@@ -10,7 +13,10 @@ import { handleReaderArrowKey } from './lib/readerKeyboard.js'
 
 
 // Store original articles untouched: the phone decides how many reading pages fit.
-const paginateStory = item => ({ ...item, _sourcePages: item._sourcePages || item.pages })
+const paginateStory = original => {
+  const item = sanitizeReadingArticle(original)
+  return { ...item, _sourcePages: item.pages }
+}
 
 // Photo frames use their true intrinsic aspect ratio. Fit within both the
 // reader width and the viewport's responsive photo height, without cropping.
@@ -49,7 +55,7 @@ function ArticlePhoto({ image, label, onBroken, onReady }) {
       width={asset.width} height={asset.height}
       onLoad={event => fitPhoto(event.currentTarget)}
       onError={() => onBroken(image)} />
-    {label && <figcaption className="photo-caption" title={label}>{label}</figcaption>}
+    {/* Photographer and licence appear in Sources & credits, not inside reading pages. */}
   </figure>
 }
 
@@ -63,134 +69,68 @@ function safeStoryUrl(url) {
 // Actual DOM measurements preserve readable type and avoid cutting paragraphs on iPhone.
 // The source article text is never discarded: long source pages become multiple screen pages.
 function layoutPages(item, reader, badImages = new Set()) {
-  const originals = item._sourcePages || item.pages
   const bounds = reader.getBoundingClientRect()
   if (bounds.width < 100 || bounds.height < 220) return item.pages
-
-  // The actual reader layout is our measuring instrument. Unlike estimated
-  // heights, this accounts for multiline photo credits, safe areas, fonts,
-  // word buttons, the title and page dots on the CURRENT device.
   const fixture = reader.cloneNode(true)
   fixture.setAttribute('aria-hidden', 'true')
   fixture.classList.add('layout-measure-fixture')
   Object.assign(fixture.style, {
-    position: 'fixed', left: '-20000px', top: '0',
-    width: `${bounds.width}px`, height: `${bounds.height}px`,
-    minHeight: '0', visibility: 'hidden', pointerEvents: 'none',
-    zIndex: '-1', transform: 'none',
+    position:'fixed', left:'-20000px', top:'0', width:`${bounds.width}px`,
+    height:`${bounds.height}px`, minHeight:'0', visibility:'hidden',
+    pointerEvents:'none', zIndex:'-1', transform:'none',
   })
   const heading = fixture.querySelector('.article-heading')
   const media = fixture.querySelector('.article-media')
-  // The live reader deliberately has no image DOM until the bytes load.
-  // Create measuring-only photo nodes in the invisible fixture.
-  const figure = fixture.querySelector('.photo-figure') || document.createElement('figure')
-  figure.className = 'photo-figure'
-  const caption = fixture.querySelector('.photo-caption') || document.createElement('figcaption')
-  caption.className = 'photo-caption'
-  const photo = fixture.querySelector('.article-media img') || document.createElement('img')
-  if (!figure.contains(photo)) figure.appendChild(photo)
-  if (!figure.contains(caption)) figure.appendChild(caption)
-  if (!media.contains(figure)) media.appendChild(figure)
-  const card = fixture.querySelector('.reading-card')
   const paragraph = fixture.querySelector('.article-text')
-  // Measure pages from a stable baseline. Only the final page reserves
-  // the source footer; otherwise its existing DOM state double-counts.
-  const existingFooter = fixture.querySelector('.source-footer')
-  if (existingFooter) existingFooter.style.display = 'none'
-  if (!heading || !media || !card || !paragraph) return item.pages
-
-  const allWords = originals.flatMap(p => (p.text || '').match(/\S+/g) || [])
-  const images = originals.filter(p => p.image && !badImages.has(p.image)).filter((p, i, list) =>
-    list.findIndex(other => other.image === p.image) === i)
-  if (!allWords.length) return originals
-
-  // Measure real interactive word buttons, not plain text. Their inline box
-  // metrics can differ from regular text (notably on iOS Safari).
-  const measureWords = (offset, length) => {
-    const content = document.createDocumentFragment()
-    for (let i = offset; i < offset + length; i++) {
-      if (i > offset) content.appendChild(document.createTextNode(' '))
-      const token = allWords[i]
-      if (!token.toLowerCase().replace(/^[^a-z]+|[^a-z]+$/g, '')) {
-        content.appendChild(document.createTextNode(token))
-      } else {
-        const button = document.createElement('button')
-        button.className = 'word-token'
-        button.type = 'button'
-        button.textContent = token
-        content.appendChild(button)
-      }
-    }
-    paragraph.replaceChildren(content)
-    return paragraph.getBoundingClientRect().height
-  }
-
-  // Respect the available space inside the flex reading card, including
-  // bottom navigation, pagination dots, paragraphs margins and photo captions.
-  const configurePage = (isCover, image) => {
-    heading.classList.toggle('article-heading-continued', !isCover)
-    media.classList.toggle('article-media-empty', !image)
-    media.style.display = image ? 'flex' : 'none'
-    caption.textContent = photoLabel(image)
-    // V19: reserve the maximum responsive image height when measuring. Actual
-    // images may be shorter according to their aspect ratio, never taller.
-    // This avoids cutting a word off even before the photo finishes loading.
-    photo.style.height = getComputedStyle(photo).maxHeight
-    photo.style.width = '100%'
-    photo.removeAttribute('src')
-    paragraph.textContent = ''
-    const r = card.getBoundingClientRect()
-    const p = paragraph.getBoundingClientRect()
-    const marginBottom = parseFloat(getComputedStyle(paragraph).marginBottom) || 0
-    // Conservative inset handles fractional Safari line rounding.
-    return Math.max(0, r.bottom - p.top - marginBottom - 32)
-  }
-
+  const card = fixture.querySelector('.reading-card')
+  const figure = document.createElement('figure')
+  figure.className = 'photo-figure'
+  const photo = document.createElement('img')
+  caption.className = 'photo-caption'
+  figure.append(photo)
+  media?.replaceChildren(figure)
+  const footer = fixture.querySelector('.source-footer')
+  if (footer) footer.style.display = 'none'
+  if (!heading || !media || !paragraph || !card) return item.pages
   reader.parentElement.appendChild(fixture)
   try {
-    const result = []
-    let offset = 0
-    while (offset < allWords.length) {
-      const first = result.length === 0
-      // Preserve cover photo; occasional further photos from the source.
-      const index = first ? 0 : (result.length % 4 === 0 ? Math.floor(result.length / 4) : -1)
-      const image = images[index] || null
-      const room = configurePage(first, image)
-      let low = 1, high = allWords.length - offset, best = 0
-      while (low <= high) {
-        const mid = Math.floor((low + high) / 2)
-        if (measureWords(offset, mid) <= room) {
-          best = mid
-          low = mid + 1
-        } else high = mid - 1
+    const fits = ({text, cover:isCover, image}) => {
+      heading.classList.toggle('article-heading-continued', !isCover)
+      media.classList.toggle('article-media-empty', !image)
+      media.style.display = image ? 'flex' : 'none'
+      if (image) {
+        // The photo may be narrower at its actual aspect ratio. Reserve the
+        // maximum displayed height to prevent late image loading overflow.
+        photo.style.height = ''
+        photo.style.width = '100%'
+        const max = parseFloat(getComputedStyle(photo).maxHeight) || 140
+        photo.style.height = `${max}px`
+        photo.style.maxHeight = `${max}px`
       }
-      // The last page has an original-article button and a credit link.
-      // Reserve that measured footer space so it never covers vocabulary text.
-      if (offset + best >= allWords.length && room > 96) {
-        const safeRoom = Math.max(0, room - 82)
-        while (best > 1 && measureWords(offset,best) > safeRoom) best--
+      const fragment = document.createDocumentFragment()
+      const tokens = String(text || '').split(/(\s+)/u)
+      for (const token of tokens) {
+        if (!token || /^\s+$/u.test(token) || !/[a-z]/i.test(token)) fragment.appendChild(document.createTextNode(token))
+        else { const span = document.createElement('button'); span.type = 'button'; span.className = 'word-token'; span.textContent = token; fragment.appendChild(span) }
       }
-      // Exceptionally small windows cannot fit even a line: retain one token.
-      // The regular mobile viewport styles are sized to avoid this case.
-      best = Math.max(1, best)
-      const remaining = allWords.length - offset
-      // Avoid pages with a tiny last sentence when both halves fit.
-      if (remaining > best && remaining - best < Math.min(35, Math.floor(best * 0.42))) {
-        const balanced = Math.ceil(remaining / 2)
-        if (balanced <= best) best = balanced
-      }
-      result.push({
-        image: image?.image || '',
-        caption: image?.caption || '',
-        text: allWords.slice(offset, offset + best).join(' '),
-      })
-      offset += best
+      paragraph.replaceChildren(fragment)
+      const room = card.getBoundingClientRect().bottom - paragraph.getBoundingClientRect().top - 13
+      const height = paragraph.getBoundingClientRect().height
+      // An image-only cover is fine; one orphan word beneath an image is not.
+      return room > 26 && height <= room
     }
-    return result
-  } finally {
-    fixture.remove()
-  }
+    // Failed/corrupt thumbnails may not reserve visual space. Reflow their
+    // article text immediately, without altering the original source pages.
+    const cleanSources = (item._sourcePages || item.pages).map(p =>
+      badImages.has(p.image) ? {...p,image:'',caption:''} : p)
+    const next = planReadingPages({...item,_sourcePages:cleanSources}, fits)
+    return next.length ? next : item.pages
+  } catch (error) {
+    console.warn('Screen pagination deferred:', error?.message || error)
+    return item.pages
+  } finally {fixture.remove()}
 }
+
 const dictionary = {
   coincidence: 'Two events happening together by chance.', rotates: 'Turns around a central point or axis.',
   gravity: 'The force that attracts objects towards each other.', gradually: 'Slowly, over a period of time.',
@@ -433,7 +373,7 @@ function App() {
         const after = next.map(p => `${p.image}|${p.text}`).join('\u0000')
         if (before !== after) {
           setStories(old => old.map((item, i) => i === storyIndex ? { ...item, pages: next } : item))
-          setPage(p => Math.min(p, next.length - 1))
+          setPage(p => Math.min(p, next.length))
         }
       })
     }
@@ -450,22 +390,19 @@ function App() {
   }, [tab, storyIndex, stories.length, story?._sourcePages, brokenImages, photoVersion])
 
 
-  // Keep a large, ready-to-swipe queue. Background scans never replace the
-  // visible article, and a failed request never advances past a missing chunk.
-  // Keep at least 50 upcoming articles prefetched. RSS previews are still
-  // shown in the original sideways-page / vertical-swipe reader.
-  const BUFFER_TARGET = 50
-  const BUFFER_REFILL_AT = 30
-  const NEWS_FEED_PATH = 'news-feed'
-  const chunkOrderRef = useRef([])
-  const feedVersionRef = useRef('')
+  // D12: search BOTH verified reader pools rather than selecting a single
+  // 58-image feed and pretending those 58 stories are infinite.
+  // Newly published chunks are checked automatically while the app is open.
+  const BUFFER_TARGET = 45
+  const BUFFER_REFILL_AT = 24
+  const poolsRef = useRef([])
   const cursorRef = useRef(0)
   const doneRef = useRef(false)
   const lastManifestCheckRef = useRef(0)
   const retryAttemptRef = useRef(0)
   const retryTimerRef = useRef(null)
   const afterBusyRef = useRef(false)
-  const boundaryProbeRef = useRef({key: '', time: 0})
+  const boundaryProbeRef = useRef({key:'',time:0})
   const storiesRef = useRef(stories)
   const storyIndexRef = useRef(storyIndex)
   storiesRef.current = stories
@@ -474,110 +411,71 @@ function App() {
   const scheduleRetry = () => {
     clearTimeout(retryTimerRef.current)
     const delay = Math.min(60000, 4000 * 2 ** Math.min(retryAttemptRef.current++, 4))
-    retryTimerRef.current = setTimeout(() => loadFeed({forceCheck: true}), delay)
+    retryTimerRef.current = setTimeout(() => loadFeed({forceCheck:true}), delay)
   }
 
-  const loadFeed = async ({forceCheck = false, forceScan = false, urgent = false} = {}) => {
-    // Avoid selecting articles before IndexedDB read history has been hydrated.
+  const loadFeed = async ({forceCheck=false, forceScan=false, urgent=false}={}) => {
     if (!historyReadyRef.current) return
     if (feedBusy.current) {
-      // The edge swipe must not be dropped just because prefetch is in flight.
       if (urgent) afterBusyRef.current = true
       return
     }
-    const remaining = Math.max(0, storiesRef.current.length - storyIndexRef.current)
-    const checkDue = forceCheck || Date.now() - lastManifestCheckRef.current >= 60000
-    if (remaining >= BUFFER_TARGET && !checkDue && !forceScan && !urgent) return
+    const remaining = Math.max(0,storiesRef.current.length-storyIndexRef.current-1)
+    const checkDue = forceCheck || !poolsRef.current.length || Date.now()-lastManifestCheckRef.current>=REFRESH_INTERVAL_MS
+    if (remaining>=BUFFER_TARGET && !checkDue && !forceScan && !urgent) return
     feedBusy.current = true
-    if (remaining === 0 || urgent) setFeedLoading(true)
+    if (!storiesRef.current.length || urgent) setFeedLoading(true)
     setFeedRetrying(false)
     let appended = 0
     try {
-      let manifest = manifestRef.current
-      if (checkDue || !manifest) {
-        manifest = await fetchManifest(fetch, import.meta.env.BASE_URL, Date.now(), NEWS_FEED_PATH)
-        if (manifest.feedType !== 'news' || manifest.ready !== true || manifest.sourceCount < 3 || manifest.count < 1) {
-          throw new Error('Verified publisher newsroom not ready; the old encyclopedia feed is disabled')
-        }
-        manifestRef.current = manifest
-        lastManifestCheckRef.current = Date.now()
+      if (checkDue) {
+        const catalog = await refreshCatalog({fetchImpl:fetch,baseUrl:import.meta.env.BASE_URL,pools:poolsRef.current})
+        if (!catalog.hasAvailable) throw Error(`No ready licensed world feed: ${catalog.failures.join('; ')}`)
+        poolsRef.current = catalog.pools
+        lastManifestCheckRef.current = catalog.checkedAt
+        // An updated manifest rewinds only THAT pool, not the current article.
+        doneRef.current = poolsRef.current.every(p=>p.done)
       }
-      if (manifest.version !== feedVersionRef.current || chunkOrderRef.current.length !== manifest.count) {
-        chunkOrderRef.current = newsChunkOrder(manifest.count)
-        cursorRef.current = 0
-        doneRef.current = false
-        setFeedDone(false)
-        setFeedCursor(0)
-        feedVersionRef.current = manifest.version
-      } else if (forceScan) {
-        cursorRef.current = 0
-        doneRef.current = false
-        setFeedDone(false)
-        setFeedCursor(0)
-      }
-
-      if (remaining < BUFFER_TARGET && !doneRef.current) {
-        // An urgent boundary swipe scans past chunks containing only seen articles.
-        // V17 sometimes stopped after one empty batch and never resumed until
-        // the user navigated backward and forward again.
-        do {
-          const result = await scanFeed({
-            fetchImpl: fetch, baseUrl: import.meta.env.BASE_URL,
-            order: chunkOrderRef.current, cursor: cursorRef.current,
-            updatedAt: manifest.updatedAt, seen: seenRef.current,
-            loaded: loadedRef.current, target: urgent ? 1 : BUFFER_TARGET - remaining - appended,
-            // Urgent reads return after the FIRST unread story, not after 30.
-            // Otherwise the reader can appear stuck while a 36-chunk scan runs.
-            maxChunks: 9, concurrency: urgent ? 1 : 2, feedPath: NEWS_FEED_PATH,
-          })
-          result.ids.forEach(id => loadedRef.current.add(id))
-          cursorRef.current = result.cursor
-          doneRef.current = result.done
-          setFeedCursor(result.cursor)
-          setFeedDone(result.done)
-          if (result.items.length) {
-            appended += result.items.length
-            setStories(old => [...old, ...orderEditorial(result.items).map(paginateStory)])
-          }
-          if (result.error) throw result.error
-          if (!result.scanned) break
-          // Normal background refills remain bounded. An explicit end swipe
-          // can search the rest of the archive until it finds unread content.
-          // As soon as one unread article arrives, release the reader; the
-          // ordinary prefetch effect can fill the remaining buffer afterward.
-          if (!urgent || appended > 0) break
-        } while (!doneRef.current && remaining + appended < BUFFER_TARGET)
-      } else {
+      if (forceScan) poolsRef.current = poolsRef.current.map(p=>({...p,cursor:0,done:false}))
+      if (remaining<BUFFER_TARGET || urgent || forceScan) {
+        const result = await refillCatalog({fetchImpl:fetch,baseUrl:import.meta.env.BASE_URL,
+          pools:poolsRef.current,seen:seenRef.current,loaded:loadedRef.current,
+          target:urgent?1:Math.max(1,BUFFER_TARGET-remaining),urgent})
+        poolsRef.current = result.pools
+        doneRef.current = result.done
+        cursorRef.current = result.pools.reduce((total,p)=>total+p.cursor,0)
+        setFeedCursor(cursorRef.current)
         setFeedDone(doneRef.current)
-      }
-      // A retry can also exhaust the archive; do not leave the reader waiting
-      // indefinitely. A queued edge request still gets its follow-up attempt.
-      if (!appended && doneRef.current && !afterBusyRef.current && edgeControllerRef.current.isWaiting()) {
+        appended = result.items.length
+        if (appended) setStories(old=>[...old,...orderEditorial(result.items).map(paginateStory)])
+        if (result.errors.length) {
+          console.warn('Some reader sources temporarily unavailable:',result.errors)
+          if (!appended) {setFeedRetrying(true);scheduleRetry()}
+        } else {
+          retryAttemptRef.current = 0
+          clearTimeout(retryTimerRef.current)
+        }
+      } else setFeedDone(doneRef.current)
+      if (!appended && doneRef.current && edgeControllerRef.current.isWaiting()) {
         edgeControllerRef.current.noMore()
       }
-      retryAttemptRef.current = 0
-      clearTimeout(retryTimerRef.current)
     } catch (error) {
-      console.warn('Feed temporarily unavailable:', error?.message || error)
+      console.warn('Feed temporarily unavailable:',error?.message||error)
       setFeedRetrying(true)
-      // Do not silently fall back to Wikipedia/Wikivoyage or embedded legacy stories.
       scheduleRetry()
     } finally {
       feedBusy.current = false
       setFeedLoading(false)
       if (afterBusyRef.current) {
         afterBusyRef.current = false
-        // Complete a forward swipe queued during a background scan, even
-        // if that scan contained no eligible articles.
         if (edgeControllerRef.current.isWaiting()) {
-          queueMicrotask(() => loadFeed({forceCheck: doneRef.current, urgent: true}))
+          if (doneRef.current) edgeControllerRef.current.noMore()
+          else queueMicrotask(()=>loadFeed({forceCheck:false,urgent:true}))
         }
       }
     }
   }
-
-  const manifestRef = useRef(null)
-  const refreshFeed = () => loadFeed({forceCheck: true, forceScan: true})
+  const refreshFeed = () => loadFeed({forceCheck:true,forceScan:true})
   useEffect(() => {
     let stopped = false
     initializeSeenHistory().then(({seen, db}) => {
@@ -616,10 +514,10 @@ function App() {
     // only after navigating backward and forward or repeating the swipe.
     // The key and cooldown prevent tight request loops on a finished archive.
     if (storyIndex < stories.length - 1) return
-    const key = `${storyIndex}:${stories.length}:${feedVersionRef.current}:${cursorRef.current}`
+    const key = `${storyIndex}:${stories.length}:${poolsRef.current.map(p=>p.version + p.cursor).join('|')}`
     const now = Date.now()
     if (boundaryProbeRef.current.key === key && now - boundaryProbeRef.current.time < 15000) return
-    if (doneRef.current && now - lastManifestCheckRef.current < 60000) return
+    if (doneRef.current && now - lastManifestCheckRef.current < REFRESH_INTERVAL_MS) return
     boundaryProbeRef.current = {key, time: now}
     loadFeed({urgent: true, forceCheck: doneRef.current})
   }, [tab, storyIndex, stories.length, feedLoading, feedCursor, feedDone])
@@ -643,7 +541,7 @@ function App() {
     const check = () => {
       if (document.visibilityState === 'visible') loadFeed({forceCheck: true})
     }
-    const timer = setInterval(check, 60000)
+    const timer = setInterval(check, REFRESH_INTERVAL_MS)
     document.addEventListener('visibilitychange', check)
     window.addEventListener('focus', check)
     window.addEventListener('online', check)
@@ -723,7 +621,7 @@ function App() {
   }
   const changePage = direction => {
     if (!story) return
-    const next = Math.max(0, Math.min(story.pages.length - 1, page + direction))
+    const next = Math.max(0, Math.min(story.pages.length, page + direction))
     if (next === page) return
     setPageMotion(direction)
     setPage(next)
@@ -878,36 +776,39 @@ function App() {
 
   // Each story has its own vertical screen; horizontal pages are independent.
   const renderStory = (item, index, pageNumber, interactive) => {
-    const itemPage = item.pages[pageNumber] || item.pages[0]
-    const tokens = itemPage.text.split(/(\s+)/)
+    const closing = pageNumber === item.pages.length
+    const itemPage = closing ? null : (item.pages[pageNumber] || item.pages[0])
+    const tokens = closing ? [] : itemPage.text.split(/(\s+)/)
+    const total = item.pages.length + 1 // always a distinct source / next-story page
     return <div className="reader-gesture" aria-hidden={!interactive} onTouchStart={interactive ? startGesture : undefined} onTouchMove={interactive ? moveGesture : undefined} onTouchEnd={interactive ? endGesture : undefined} onTouchCancel={interactive ? cancelGesture : undefined} onPointerDown={interactive ? startPointer : undefined} onPointerMove={interactive ? movePointer : undefined} onPointerUp={interactive ? endPointer : undefined} onPointerCancel={interactive ? () => {pointerGesture.current = null; releasePageSurface()} : undefined}>
       <header className="topbar"><span className="brand">DAILY NEWS</span>{interactive && index === stories.length - 1 && <span className="reader-edge-status" role="status" aria-live="polite">{waitingForNext ? (feedRetrying ? 'Reconnecting…' : 'Finding next…') : feedDone ? 'Up to date' : feedLoading ? 'Loading…' : 'Swipe up · Next ↓'}</span>}</header>
       <div key={`${index}:${pageNumber}`} className={'page-surface ' + (interactive && pageMotion ? (pageMotion > 0 ? 'page-enter-left' : 'page-enter-right') : '')}>
+      {closing ? <section className="story-end" aria-label="Article completed">
+        <div className="story-end-center"><Icon name="book" size={56}/><h2>That's the story.</h2>
+          
+          {safeStoryUrl(item.sourceUrl) && <a className="story-end-cta" href={safeStoryUrl(item.sourceUrl)} target="_blank" rel="noopener noreferrer">Read the original article <span aria-hidden="true">↗</span></a>}
+          <button className="story-end-credits" type="button" disabled={!interactive} onClick={() => setShowCredits(true)}>Sources &amp; credits</button>
+        </div><div className="story-end-next">↑ Swipe up for the next story</div>
+      </section> : <>
       <div className={'article-heading ' + (pageNumber > 0 ? 'article-heading-continued' : '')}><div className="eyebrow">{readerSection(item)}</div><h1>{displayHeadline(item)}</h1><p className="deck">{item.subtitle}</p></div>
       <div className={"article-media " + (!itemPage.image || brokenImages.has(itemPage.image) ? "article-media-empty" : "")}>
         <ArticlePhoto key={itemPage.image || 'no-photo'} image={brokenImages.has(itemPage.image) ? '' : itemPage.image}
           label={photoLabel(itemPage)} onBroken={markBrokenImage}
           onReady={() => setPhotoVersion(n => n + 1)} />
       </div>
-      <section className="reading-card"><div className="reading-topline"><span>{item.contentType === 'news' ? 'THE REPORT' : 'THE SHORT STORY'} · {pageNumber + 1}/{item.pages.length}</span><button className="icon-button" disabled={!interactive} onClick={() => speak(itemPage.text)} aria-label="Read aloud"><Icon name="volume" size={21}/></button></div>
+      <section className={'reading-card ' + (!itemPage.image || brokenImages.has(itemPage.image) ? 'reading-card-no-photo' : 'reading-card-with-photo')}><div className="reading-topline"><span>{item.readingKind === 'full' ? 'FULL ARTICLE' : 'THE REPORT'} · {pageNumber + 1}/{item.pages.length}</span><button className="icon-button" disabled={!interactive} onClick={() => speak(itemPage.text)} aria-label="Read aloud"><Icon name="volume" size={21}/></button></div>
         <p className="article-text">{tokens.map((token, i) => { const word = clean(token); return /^\s+$/.test(token) || !word ? token : <button key={i} type="button" disabled={!interactive} className={'word-token ' + (words.some(w => w.word === word) ? 'known' : '')} onClick={event => onWordClick(event, word)}>{token}</button> })}</p>
       </section>
-      {pageNumber === item.pages.length - 1 && <div className="source-footer">
-        {safeStoryUrl(item.sourceUrl) && <a className="original-link" href={safeStoryUrl(item.sourceUrl)} target="_blank" rel="noopener noreferrer">Read original article <span aria-hidden="true">↗</span></a>}
-        <button className="credits-link" disabled={!interactive} onClick={() => setShowCredits(true)}>Sources &amp; licenses</button>
-      </div>}
-      <div className="page-control" aria-label={`Page ${pageNumber + 1} of ${item.pages.length}`}>
+      </>}
+      <div className="page-control" aria-label={`Page ${pageNumber + 1} of ${total}`}>{!closing && <span className="dn-swipe-hint" aria-hidden="true">‹ SWIPE TO CONTINUE</span>}
         <button type="button" className="page-arrow page-arrow-prev" aria-label="Previous page" title="Previous page (←)" disabled={!interactive || pageNumber === 0} onClick={() => changePage(-1)}><Icon name="left" size={17}/></button>
         <div className="dots" aria-hidden="true">{(() => {
-          // A moving set of dots; each dot corresponds to a real nearby page.
-          // Keep the total bounded on narrow phones, never change to a bar.
-          const count = item.pages.length
-          const visible = Math.min(count, 11)
-          const first = Math.max(0, Math.min(pageNumber - Math.floor(visible / 2), count - visible))
+          const visible = Math.min(total, 11)
+          const first = Math.max(0, Math.min(pageNumber - Math.floor(visible / 2), total - visible))
           return Array.from({ length: visible }, (_, i) => first + i).map(i =>
-            <span key={i} className={pageNumber === i ? 'active' : ''}/>)
+            <span key={i} className={pageNumber === first + i ? 'active' : ''}/>)
         })()}</div>
-        <button type="button" className="page-arrow page-arrow-next" aria-label="Next page" title="Next page (→)" disabled={!interactive || pageNumber === item.pages.length - 1} onClick={() => changePage(1)}><Icon name="right" size={17}/></button>
+        <button type="button" className="page-arrow page-arrow-next" aria-label="Next page" title="Next page (→)" disabled={!interactive || closing} onClick={() => changePage(1)}><Icon name="right" size={17}/></button>
       </div>
       </div>
     </div>
@@ -930,11 +831,12 @@ function App() {
           <h2>Sources &amp; credits</h2>
           <p><strong>Article:</strong> {story.attribution || story.sourceTitle || story.title}</p>
           <p><strong>Text license:</strong> {story.license || 'See original article for terms'}</p>
+          {story.sourceMediaCredit && <p><strong>Original media attribution:</strong> {story.sourceMediaCredit}</p>}
           {safeStoryUrl(story.sourceUrl) && <a href={safeStoryUrl(story.sourceUrl)} target="_blank" rel="noopener noreferrer">Original article ↗</a>}
           <div className="source-credit-list"><strong>Image attributions</strong>{(() => {
             const pages = story._sourcePages || story.pages
             const distinct = [...new Map(pages.filter(p => p.image).map(p => [p.image,p])).values()]
-            return distinct.length ? distinct.map((p,i) => <p key={i}>{p.caption || photoLabel(p)} {photoSourceLink(p) && <a href={photoSourceLink(p)} target="_blank" rel="noopener noreferrer">Photo license ↗</a>}</p>) : <p>No article photos.</p>
+            return distinct.length ? distinct.map((p,i) => <p key={i}>{p.imageProvenance?.credit || p.caption || photoLabel(p)} {p.imageProvenance?.license || ''} {p.imageProvenance?.sourceImageUrl && <a href={p.imageProvenance.sourceImageUrl} target="_blank" rel="noopener noreferrer">Image in original article ↗</a>}</p>) : <p>No reusable original-article images in this article.</p>
           })()}</div>
           <button className="primary" onClick={() => setShowCredits(false)}>Back to reading</button>
         </section>

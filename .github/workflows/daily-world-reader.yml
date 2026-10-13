@@ -1,0 +1,42 @@
+name: DAILY NEWS - daily licensed world reporting
+on:
+  schedule:
+    # Two daily runs. GitHub schedules are best-effort, not exact.
+    - cron: '17 0,12 * * *'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: daily-news-content
+  cancel-in-progress: false
+jobs:
+  update-world-reader:
+    runs-on: ubuntu-latest
+    timeout-minutes: 29
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify article cleanup, publisher-image licence gate and continuous reader
+        run: node --test scripts/test/v22d13-final.test.mjs scripts/test/v22d11d12-reader.test.mjs scripts/test/v22d7-final-reader.test.mjs
+      - name: Collect Global Voices, GOV.UK and European Commission; source-image check
+        run: node scripts/v22d13-refresh.mjs
+      - name: Validate published article feed
+        run: node scripts/v22d7-check.mjs --strict
+      - name: Validate optional original-photo pool only when present
+        run: node scripts/v22d13-verify.mjs
+      - name: Commit latest verified data, not fabricated pictures
+        run: |
+          git config user.name 'daily-news-bot'
+          git config user.email 'daily-news-bot@users.noreply.github.com'
+          for dir in public/world-reader public/world-reader-pilot public/source-visual-reader public/original-reader-media; do
+            if [ -d "$dir" ]; then git add -A "$dir"; fi
+          done
+          if ! git diff --cached --quiet; then
+            git commit -m 'Refresh publisher-verified world news'
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi

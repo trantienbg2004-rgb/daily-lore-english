@@ -7,8 +7,8 @@ export const readableStory = item => {
   const words = item.pages.reduce((sum, page) => sum + (typeof page.text === 'string'
     ? page.text.trim().split(/\s+/).filter(Boolean).length : 0), 0)
   // Publisher RSS previews are deliberately short. Never fabricate additional text.
-  if (item.contentType === 'news-preview') return words >= 7 && Boolean(item.sourceUrl?.startsWith('https://'))
-  return item.pages.length >= 3 && words >= 200
+  if (item.contentType === 'news-preview') return false // V22-C rejects RSS snippets
+  return item.contentType === 'news' && item.readingKind === 'full' && item.pages.length >= 2 && words >= 240
 }
 
 export const validStories = data => Array.isArray(data) && data.every(item =>
@@ -54,8 +54,11 @@ export async function fetchManifest(fetchImpl, baseUrl, nonce = Date.now(), feed
   const manifest = await response.json()
   const count = Number(manifest?.chunks)
   if (!Number.isSafeInteger(count) || count < 0 || count > 100000) throw new Error('Invalid feed manifest')
-  return {count, version: `${manifest.updatedAt || ''}:${count}`, updatedAt: manifest.updatedAt || '',
-    ready: manifest.ready, feedType: manifest.feedType, sourceCount: manifest.sourceCount}
+  const total = manifest?.total == null ? null : Number(manifest.total)
+  if (total !== null && (!Number.isSafeInteger(total) || total < 0 || total > 1000000)) throw new Error('Invalid feed total')
+  return {count, total, version: `${manifest.contentHash || manifest.updatedAt || ''}:${count}:${total ?? 'unknown'}`, updatedAt: manifest.updatedAt || '',
+    ready: manifest.ready, feedType: manifest.feedType, sourceCount: manifest.sourceCount,
+    withVerifiedPhoto: Number(manifest.withVerifiedPhoto || 0), sourcePhotosOnly: manifest.sourcePhotosOnly === true, contentHash: manifest.contentHash || ''}
 }
 
 async function fetchChunk(fetchImpl, baseUrl, chunkNumber, updatedAt, feedPath = 'feed') {

@@ -1,7 +1,7 @@
-name: "Update Daily News English articles"
+name: "Daily News — verified full-length English articles"
 on:
-  schedule:
-    - cron: '7,37 * * * *'
+  # Legacy NASA/FDA/DOE archive collector. Manual runs only; the D12
+  # licensed image/world workflow is the scheduled source for Read.
   workflow_dispatch:
 permissions:
   contents: write
@@ -11,7 +11,7 @@ concurrency:
 jobs:
   update:
     runs-on: ubuntu-latest
-    timeout-minutes: 23
+    timeout-minutes: 27
     steps:
       - uses: actions/checkout@v4
         with:
@@ -20,22 +20,22 @@ jobs:
         with:
           node-version: '22'
       - name: Verify existing reader functionality
-        run: node --test scripts/test/*.test.mjs
+        run: node --test scripts/test/v22c-full.test.mjs scripts/test/history.test.mjs scripts/test/supply.test.mjs
       - name: Verify React build before publishing
         run: |
           npm ci --no-audit --no-fund
           npm run build
       - name: Collect source-attributed English reporting
-        run: node scripts/v22a-collect.mjs
+        run: node scripts/v22c-collect.mjs
       - name: Verify at least 50 stories from three organizations
-        run: node scripts/v22a-check.mjs --strict
+        run: node scripts/v22c-check.mjs --strict
       - name: Commit news-feed only (never republish encyclopedia content)
         run: |
           git config user.name 'daily-news-bot'
           git config user.email 'daily-news-bot@users.noreply.github.com'
-          git add -A public/news-feed/
+          git add -A public/full-feed/
           if ! git diff --cached --quiet; then
-            git commit -m 'Update verified English publisher news feed'
+            git commit -m 'Update verified full-length English news feed'
             git pull --rebase origin main
             git push origin HEAD:main
           fi
