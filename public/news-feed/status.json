@@ -1,20 +1,20 @@
 {
-  "updatedAt": "2026-10-13T17:32:20.513Z",
+  "updatedAt": "2026-10-13T21:57:01.055Z",
   "ready": true,
-  "total": 388,
+  "total": 396,
   "requiredTotal": 50,
   "sourceCount": 4,
   "requiredSources": 3,
   "byPublisher": {
-    "NASA": 31,
+    "NASA": 38,
+    "NOAA National Ocean Service": 7,
     "VnExpress International": 347,
-    "NOAA National Ocean Service": 6,
     "U.S. Geological Survey": 4
   },
   "byOrganization": {
-    "NASA": 31,
+    "NASA": 38,
+    "NOAA National Ocean Service": 7,
     "VnExpress International": 347,
-    "NOAA National Ocean Service": 6,
     "U.S. Geological Survey": 4
   },
   "report": {
@@ -35,6 +35,15 @@
         "rejected": {},
         "publisher": "VnExpress International"
       },
+      "VnExpress International | WORLD": {
+        "feed": "https://e.vnexpress.net/rss/world.rss",
+        "items": 60,
+        "accepted": 56,
+        "rejected": {
+          "stale-or-invalid-date": 4
+        },
+        "publisher": "VnExpress International"
+      },
       "VnExpress International | BUSINESS": {
         "feed": "https://e.vnexpress.net/rss/business.rss",
         "items": 60,
@@ -44,12 +53,12 @@
         },
         "publisher": "VnExpress International"
       },
-      "VnExpress International | WORLD": {
-        "feed": "https://e.vnexpress.net/rss/world.rss",
+      "VnExpress International | PERSPECTIVES": {
+        "feed": "https://e.vnexpress.net/rss/perspectives.rss",
         "items": 60,
-        "accepted": 56,
+        "accepted": 10,
         "rejected": {
-          "stale-or-invalid-date": 4
+          "stale-or-invalid-date": 50
         },
         "publisher": "VnExpress International"
       },
@@ -77,30 +86,11 @@
         },
         "publisher": "VOA Learning English"
       },
-      "VnExpress International | PERSPECTIVES": {
-        "feed": "https://e.vnexpress.net/rss/perspectives.rss",
-        "items": 60,
-        "accepted": 10,
-        "rejected": {
-          "stale-or-invalid-date": 50
-        },
-        "publisher": "VnExpress International"
-      },
       "National Institutes of Health | HEALTH & SCIENCE": {
         "feed": "https://www.nih.gov/news-releases/feed.xml",
         "items": 0,
         "accepted": 0,
         "error": "HTTP 403"
-      },
-      "Voice of America | TECHNOLOGY": {
-        "feed": "https://www.voanews.com/api/zyritl-vomx-tpettmq",
-        "items": 20,
-        "accepted": 0,
-        "rejected": {
-          "invalid-description": 4,
-          "stale-or-invalid-date": 16
-        },
-        "publisher": "Voice of America"
       },
       "VOA Learning English | WORLD": {
         "feed": "https://learningenglish.voanews.com/api/zkm-ql-vomx-tpej-rqi",
@@ -111,6 +101,16 @@
           "stale-or-invalid-date": 3
         },
         "publisher": "VOA Learning English"
+      },
+      "Voice of America | TECHNOLOGY": {
+        "feed": "https://www.voanews.com/api/zyritl-vomx-tpettmq",
+        "items": 20,
+        "accepted": 0,
+        "rejected": {
+          "invalid-description": 4,
+          "stale-or-invalid-date": 16
+        },
+        "publisher": "Voice of America"
       },
       "VOA Learning English | SCIENCE & TECHNOLOGY": {
         "feed": "https://learningenglish.voanews.com/api/zmg_pl-vomx-tpeymtm",
@@ -125,14 +125,16 @@
       "NASA | SCIENCE & SPACE": {
         "feed": "https://science.nasa.gov/feed/",
         "items": 10,
-        "accepted": 10,
-        "rejected": {},
+        "accepted": 9,
+        "rejected": {
+          "invalid-headline": 1
+        },
         "publisher": "NASA"
       },
       "NOAA National Ocean Service | ENVIRONMENT & OCEANS": {
         "feed": "https://oceanservice.noaa.gov/rss/nosnews.xml",
-        "items": 405,
-        "accepted": 6,
+        "items": 406,
+        "accepted": 7,
         "rejected": {
           "stale-or-invalid-date": 319,
           "invalid-description": 46,
@@ -162,11 +164,11 @@
       }
     },
     "dedupe": {
-      "duplicateUrl": 347
+      "duplicateUrl": 353
     },
-    "previous": 374,
+    "previous": 388,
     "newCandidates": 361,
-    "sourceCards": 41,
+    "sourceCards": 49,
     "realPublisherImages": 347
   }
 }
