@@ -1,0 +1,52 @@
+name: DAILY LORE - curated world knowledge library
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/lore/**'
+      - 'scripts/lore-collect.mjs'
+      - '.github/workflows/daily-lore-library.yml'
+  schedule:
+    - cron: '23 2 * * *'
+permissions:
+  contents: write
+concurrency:
+  group: daily-lore-editorial-publication
+  cancel-in-progress: false
+jobs:
+  publish-curated-knowledge:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check deterministic article-quality and reader contract
+        run: node --test scripts/test/lore-final.test.mjs
+      - name: Collect curated encyclopedia features and embedded licensed images
+        run: node scripts/lore-collect.mjs --limit=270
+      - name: Verify every published article and photo metadata
+        run: node scripts/lore-verify.mjs
+      - name: Commit only verified curated release
+        shell: bash
+        run: |
+          git config user.name 'daily-lore-bot'
+          git config user.email 'daily-lore-bot@users.noreply.github.com'
+          git add public/lore-reader
+          if git diff --cached --quiet; then
+            echo 'Curated library unchanged; keeping last good release.'
+            exit 0
+          fi
+          git commit -m 'Publish curated English knowledge reading library'
+          for attempt in 1 2 3 4 5; do
+            git fetch origin main
+            if git rebase origin/main && git push origin HEAD:main; then exit 0; fi
+            git rebase --abort || true
+            sleep $((attempt * 4))
+          done
+          echo 'Could not publish verified data after retries.' >&2
+          exit 1

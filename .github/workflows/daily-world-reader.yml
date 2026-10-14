@@ -1,9 +1,6 @@
 name: DAILY NEWS - daily licensed world reporting
 on:
-  schedule:
-    # Two daily runs. GitHub schedules are best-effort, not exact.
-    - cron: '17 0,12 * * *'
-  workflow_dispatch:
+  workflow_dispatch: # Archived previous news collector; no automatic updates
 permissions:
   contents: write
 concurrency:

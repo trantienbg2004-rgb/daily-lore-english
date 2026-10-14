@@ -9,6 +9,7 @@ export function displayHeadline(item) {
 }
 export function readerSection(item) {
   const source = lower(item?.sourceUrl)
+  if (item?.contentType === 'lore') return 'DISCOVER · ' + String(item.category || 'KNOWLEDGE').toUpperCase()
   if (item?.contentType === 'news') return 'NEWS · ' + String(item.category || 'LATEST').replace(/^NEWS\s*·?\s*/i,'')
   if (source.includes('wikivoyage.org')) return 'DISCOVER · TRAVEL & PLACES'
   return String(item?.category || 'DISCOVER · ALL TOPICS')

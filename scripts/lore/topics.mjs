@@ -1,0 +1,24 @@
+/** Human-curated, topic-first discovery. Do not feed random Wikipedia pages.
+ * Each entry is a specific encyclopedia subject, NOT a generated article.
+ * A missing/unsuitable page is simply rejected after real content validation.
+ */
+const topics = {
+ History: `Fall of the Western Roman Empire|French Revolution|Haitian Revolution|Russian Revolution|American Revolution|Meiji Restoration|The Black Death|Hundred Years' War|Thirty Years' War|Seven Years' War|Opium Wars|Taiping Rebellion|Indian Rebellion of 1857|Partition of India|Scramble for Africa|Decolonisation of Africa|Berlin Wall|Cuban Missile Crisis|Cold War|Space Race|Magna Carta|Protestant Reformation|Glorious Revolution|Suffragette|Abolitionism|History of printing|Great Fire of London|Dust Bowl|Great Depression|Fall of Constantinople|Norman Conquest|Napoleonic Wars`,
+ Culture: `Japanese tea ceremony|Chinese New Year|Diwali|Holi|Hanami|Obon|Day of the Dead|Oktoberfest|Carnival in Brazil|Intangible cultural heritage|Flamenco|Kabuki|Noh|Ballet|Origami|Calligraphy|Japanese cuisine|Mediterranean diet|Kimchi|Sushi|History of coffee|Tea culture|History of chocolate|Mardi Gras|Nowruz|Mid-Autumn Festival|Haka|Tango|Capoeira|Wayang|Traditional Chinese medicine|Gamelan`,
+ Society: `Urbanization|Demographic transition|Universal education|Women's suffrage|Public library|Industrial society|Mass media|Literacy|Social mobility|Consumerism|Public health|Migration|Human migration|Ageing of populations|Digital divide|Culture shock|Food security|Water scarcity|Social stratification|Child labour|Housing crisis|Public transportation|Social welfare|Community garden|Remote work|Globalization|Civil rights movement|Universal suffrage|Public space|Human rights|Environmental justice|Volunteering`,
+ Geography: `Great Barrier Reef|Sahara|Gobi Desert|Amazon rainforest|Himalayas|Andes|Alps|Nile|Amazon River|Danube|Great Rift Valley|Ring of Fire|Galápagos Islands|Madagascar|Iceland|Lake Baikal|Dead Sea|Atacama Desert|Serengeti|Okavango Delta|Mekong|Mount Everest|Mariana Trench|Coral reef|Monsoon|Tectonic plate|Mediterranean Sea|Aral Sea|Patagonia|Yellowstone National Park|Grand Canyon|Ha Long Bay`,
+ Economics: `Industrial Revolution|Second Industrial Revolution|Green Revolution|Silk Road|Trans-Saharan trade|Columbian exchange|Triangular trade|History of money|Gold standard|Bretton Woods system|Great Depression|Tulip mania|South Sea Bubble|Dot-com bubble|2008 financial crisis|History of banking|International trade|Fair trade|Supply chain|Containerization|History of agriculture|Economic globalization|Microfinance|Cooperative|Gig economy|Trade union|Market economy|Economic inequality|Economic history of Japan|Spice trade|East India Company|Marshall Plan`,
+ Science: `Scientific Revolution|History of the telescope|James Webb Space Telescope|Hubble Space Telescope|International Space Station|Apollo 11|Voyager program|Mars rover|Plate tectonics|Evolution|Natural selection|DNA|Human genome|Germ theory of disease|Vaccination|Penicillin|Periodic table|Photosynthesis|Climate change|Ocean current|Aurora|Black hole|Exoplanet|Solar eclipse|Deep sea exploration|Quantum mechanics|Radioactivity|Electricity|Artificial intelligence|Bioluminescence|CRISPR genome editing|Biodiversity`,
+ Civilizations: `Ancient Egypt|Indus Valley Civilisation|Maya civilization|Inca Empire|Aztec Empire|Sumer|Mesopotamia|Ancient Greece|Achaemenid Empire|Byzantine Empire|Mongol Empire|Song dynasty|Tang dynasty|Han dynasty|Khmer Empire|Angkor Wat|Machu Picchu|Petra|Great Wall of China|Stonehenge|Terracotta Army|Cahokia|Kingdom of Aksum|Great Zimbabwe|Easter Island|Göbekli Tepe|Nubia|Phoenicia|Olmecs|Mississippian culture|Nok culture|Harappan architecture`,
+ 'People & Ideas': `Ada Lovelace|Marie Curie|Alan Turing|Leonardo da Vinci|Galileo Galilei|Isaac Newton|Charles Darwin|Rosalind Franklin|Florence Nightingale|Frederick Douglass|Harriet Tubman|Nelson Mandela|Mahatma Gandhi|Martin Luther King Jr.|Rachel Carson|Jane Goodall|Alexander Fleming|Louis Pasteur|Ibn al-Haytham|Al-Khwarizmi|Hypatia|Mary Wollstonecraft|Wangari Maathai|Socrates|Confucius|Aristotle|Buddhism|Stoicism|The Enlightenment|Humanism|Feminism|Printing press`
+}
+// These are actual encyclopedia page lookup titles; accuracy is checked by API,
+// not asserted in advance. No fabricated news articles or topical fill-ins.
+export const CURATED_TOPICS = Object.entries(topics).flatMap(([category,names])=>names.split('|').map(title=>({category,title,source:'wikipedia'})))
+export const TOPIC_CATEGORIES = Object.keys(topics)
+export function scheduledTopics({index=0,count=80}={}) {
+ const byCat=TOPIC_CATEGORIES.map(category=>CURATED_TOPICS.filter(t=>t.category===category))
+ const interleaved=[]
+ for(let i=0;i<Math.max(...byCat.map(a=>a.length));i++)for(const group of byCat)if(group[i])interleaved.push(group[i])
+ return Array.from({length:Math.min(count,interleaved.length)},(_,i)=>interleaved[(index+i)%interleaved.length])
+}
