@@ -9,7 +9,9 @@ on:
       - 'scripts/test/lore-continuity.test.mjs'
       - '.github/workflows/daily-lore-library.yml'
   schedule:
-    - cron: '23 2 * * *'
+    # Pre-publish independently of reader activity; no secret in browser.
+    # Reader starts monitoring aggressively when 30 unread articles remain.
+    - cron: '23 */3 * * *'
 permissions:
   contents: write
 concurrency:

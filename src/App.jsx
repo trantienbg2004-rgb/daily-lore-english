@@ -5,6 +5,7 @@ import { storyId } from './lib/feedQueue.js'
 import { planReadingPages } from './lib/readerPagination.js'
 import { sanitizeReadingArticle } from './lib/articleCleanup.js'
 import { refreshCatalog, refillCatalog, REFRESH_INTERVAL_MS } from './lib/continuousReader.js'
+import { QUEUE_TARGET, LOW_STOCK_POLL_MS, queuedUnread, lowOnStories, refreshDue } from './lib/loreStockPolicy.js'
 import { createEdgeNavigation } from './lib/edgeNavigation.js'
 import { photoLabel, photoSourceLink } from './lib/photoPresentation.js'
 import { resolvePhoto, photoResult } from './lib/photoLoad.js'
@@ -393,12 +394,12 @@ function App() {
   // D12: search BOTH verified reader pools rather than selecting a single
   // 58-image feed and pretending those 58 stories are infinite.
   // Newly published chunks are checked automatically while the app is open.
-  const BUFFER_TARGET = 45
-  const BUFFER_REFILL_AT = 24
+  const BUFFER_TARGET = QUEUE_TARGET
   const poolsRef = useRef([])
   const cursorRef = useRef(0)
   const doneRef = useRef(false)
   const lastManifestCheckRef = useRef(0)
+  const wasLowOnStoriesRef = useRef(false)
   const retryAttemptRef = useRef(0)
   const retryTimerRef = useRef(null)
   const afterBusyRef = useRef(false)
@@ -420,8 +421,11 @@ function App() {
       if (urgent) afterBusyRef.current = true
       return
     }
-    const remaining = Math.max(0,storiesRef.current.length-storyIndexRef.current-1)
-    const checkDue = forceCheck || !poolsRef.current.length || Date.now()-lastManifestCheckRef.current>=REFRESH_INTERVAL_MS
+    const remaining = queuedUnread(storiesRef.current.length, storyIndexRef.current)
+    const checkDue = forceCheck || refreshDue({
+      remaining, checkedAt:lastManifestCheckRef.current,
+      noCatalog:!poolsRef.current.length,
+    })
     if (remaining>=BUFFER_TARGET && !checkDue && !forceScan && !urgent) return
     feedBusy.current = true
     if (!storiesRef.current.length || urgent) setFeedLoading(true)
@@ -501,10 +505,17 @@ function App() {
   }, [storyIndex, story])
   useEffect(() => {
     if (tab !== 'read' || !historyReadyRef.current) return
-    const remaining = stories.length - storyIndex
-    // Keep replenishing ahead of the reader, including when the cursor reached
-    // an older manifest. A changed online manifest is checked separately.
-    if (!feedLoading && !feedBusy.current && !feedDone && remaining < BUFFER_REFILL_AT) {
+    const remaining = queuedUnread(stories.length,storyIndex)
+    const low = lowOnStories(remaining)
+    const enteredLow = low && !wasLowOnStoriesRef.current
+    wasLowOnStoriesRef.current = low
+    // At exactly 30 queued unread stories, check for a NEW publication now,
+    // not only when the archive is exhausted. When no new publication exists,
+    // the separate timer keeps checking without a request storm.
+    if (!feedLoading && !feedBusy.current && low &&
+        (enteredLow || refreshDue({remaining,checkedAt:lastManifestCheckRef.current}))) {
+      loadFeed({forceCheck:true})
+    } else if (!feedLoading && !feedBusy.current && !feedDone && remaining < BUFFER_TARGET) {
       loadFeed()
     }
   }, [tab, storyIndex, stories.length, feedCursor, feedDone, feedLoading])
@@ -535,13 +546,14 @@ function App() {
     if (tab !== 'read') { edgeControllerRef.current.cancel(); return }
     edgeControllerRef.current.onQueueChanged(storyIndex, stories.length)
   }, [tab, storyIndex, stories.length])
-  // Check for published content while the reader is open or regains focus.
-  // A missing connection is retried automatically with bounded backoff.
+  // Low stock: check for new published articles once a minute even after
+  // exhausting the current release; otherwise preserve the 5-minute cadence.
+  // Browser readers do not contain GitHub credentials or run a scraper.
   useEffect(() => {
     const check = () => {
-      if (document.visibilityState === 'visible') loadFeed({forceCheck: true})
+      if (document.visibilityState === 'visible') loadFeed()
     }
-    const timer = setInterval(check, REFRESH_INTERVAL_MS)
+    const timer = setInterval(check, LOW_STOCK_POLL_MS)
     document.addEventListener('visibilitychange', check)
     window.addEventListener('focus', check)
     window.addEventListener('online', check)
