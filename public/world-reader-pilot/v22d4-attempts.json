@@ -42,5 +42,13 @@
   "https://www.gov.uk/government/news/trustees-appointed-to-the-science-museum-group-board": {
     "reason": "too-long",
     "retryAfter": "2026-10-20T15:35:31.859Z"
+  },
+  "https://www.gov.uk/government/news/change-of-his-majestys-ambassador-to-yemen": {
+    "reason": "short-or-no-main-text",
+    "retryAfter": "2026-10-21T10:04:49.420Z"
+  },
+  "https://www.gov.uk/government/speeches/exchequer-secretary-to-the-treasury-speech-at-the-west-midlands-growth-summit": {
+    "reason": "too-long",
+    "retryAfter": "2026-10-21T10:04:49.420Z"
   }
 }

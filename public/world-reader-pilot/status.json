@@ -1,11 +1,10 @@
 {
-  "updatedAt": "2026-10-13T15:35:31.859Z",
-  "acceptedThisRun": 1,
-  "total": 168,
-  "readerReady": false,
-  "counts": {
-    "GOV.UK": 95,
-    "European Commission": 19,
-    "Global Voices": 54
-  }
+  "updatedAt": "2026-10-14T10:04:49.420Z",
+  "acceptedThisRun": 3,
+  "total": 183,
+  "reasons": {
+    "short-or-no-main-text": 1,
+    "too-long": 1
+  },
+  "readerReady": false
 }
