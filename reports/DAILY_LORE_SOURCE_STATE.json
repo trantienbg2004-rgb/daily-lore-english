@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "cursor": 349,
+  "cursor": 429,
   "decisions": {
     "Science|scientific revolution": {
       "reason": "short-or-non-narrative",
@@ -1146,6 +1146,271 @@
       "reason": "short-or-non-narrative",
       "checkedAt": "2026-10-14T12:22:35.163Z",
       "skipUntil": "2026-11-13T12:22:35.163Z"
+    },
+    "Science|galaxy formation and evolution": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T14:35:55.860Z",
+      "skipUntil": "2026-11-13T14:35:55.860Z"
+    },
+    "People & Ideas|alexander von humboldt": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T14:35:55.860Z",
+      "skipUntil": "2026-11-13T14:35:55.860Z"
+    },
+    "Society|the great migration (african american)": {
+      "reason": "page-missing",
+      "checkedAt": "2026-10-14T14:35:55.860Z",
+      "skipUntil": "2026-11-13T14:35:55.860Z"
+    },
+    "Economics|history of paper": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T14:35:55.860Z",
+      "skipUntil": "2026-11-13T14:35:55.860Z"
+    },
+    "Science|star formation": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T14:35:55.860Z",
+      "skipUntil": "2026-11-13T14:35:55.860Z"
+    },
+    "Civilizations|valley of the kings": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T14:35:55.860Z",
+      "skipUntil": "2026-11-13T14:35:55.860Z"
+    },
+    "People & Ideas|carl linnaeus": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T14:35:55.860Z",
+      "skipUntil": "2026-11-13T14:35:55.860Z"
+    },
+    "Culture|peking opera": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T14:35:55.860Z",
+      "skipUntil": "2026-11-13T14:35:55.860Z"
+    },
+    "Society|great migration": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T14:35:55.860Z",
+      "skipUntil": "2026-11-13T14:35:55.860Z"
+    },
+    "Geography|caspian sea": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T14:35:55.860Z",
+      "skipUntil": "2026-11-13T14:35:55.860Z"
+    },
+    "Economics|history of the printing press": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T14:35:55.860Z",
+      "skipUntil": "2026-11-13T14:35:55.860Z"
+    },
+    "Science|stellar evolution": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T14:35:55.860Z",
+      "skipUntil": "2026-11-13T14:35:55.860Z"
+    },
+    "People & Ideas|louis braille": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T14:35:55.860Z",
+      "skipUntil": "2026-11-13T14:35:55.860Z"
+    },
+    "History|revolutions of 1848": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T14:35:55.860Z",
+      "skipUntil": "2026-11-13T14:35:55.860Z"
+    },
+    "Culture|chinese calligraphy": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T14:35:55.860Z",
+      "skipUntil": "2026-11-13T14:35:55.860Z"
+    },
+    "Geography|caribbean sea": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T14:35:55.860Z",
+      "skipUntil": "2026-11-13T14:35:55.860Z"
+    },
+    "Economics|history of textiles": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T14:35:55.860Z",
+      "skipUntil": "2026-11-13T14:35:55.860Z"
+    },
+    "Science|supernova": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T14:35:55.860Z",
+      "skipUntil": "2026-11-13T14:35:55.860Z"
+    },
+    "People & Ideas|johannes gutenberg": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T14:35:55.860Z",
+      "skipUntil": "2026-11-13T14:35:55.860Z"
+    },
+    "History|unification of italy": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T14:35:55.860Z",
+      "skipUntil": "2026-11-13T14:35:55.860Z"
+    },
+    "Culture|chinese art": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T14:35:55.860Z",
+      "skipUntil": "2026-11-13T14:35:55.860Z"
+    },
+    "Society|suburbanization": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T14:35:55.860Z",
+      "skipUntil": "2026-11-13T14:35:55.860Z"
+    },
+    "Geography|south china sea": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T14:35:55.860Z",
+      "skipUntil": "2026-11-13T14:35:55.860Z"
+    },
+    "Economics|textile industry": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T14:35:55.860Z",
+      "skipUntil": "2026-11-13T14:35:55.860Z"
+    },
+    "Science|neutron star": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T14:35:55.860Z",
+      "skipUntil": "2026-11-13T14:35:55.860Z"
+    },
+    "Civilizations|ancient mesopotamia": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T14:35:55.860Z",
+      "skipUntil": "2026-11-13T14:35:55.860Z"
+    },
+    "People & Ideas|james watt": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T14:35:55.860Z",
+      "skipUntil": "2026-11-13T14:35:55.860Z"
+    },
+    "Culture|dragon boat festival": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T14:35:55.860Z",
+      "skipUntil": "2026-11-13T14:35:55.860Z"
+    },
+    "Geography|baltic sea": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T14:35:55.860Z",
+      "skipUntil": "2026-11-13T14:35:55.860Z"
+    },
+    "Economics|cotton gin": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T14:35:55.860Z",
+      "skipUntil": "2026-11-13T14:35:55.860Z"
+    },
+    "Science|pulsar": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T14:35:55.860Z",
+      "skipUntil": "2026-11-13T14:35:55.860Z"
+    },
+    "People & Ideas|george stephenson": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T14:35:55.860Z",
+      "skipUntil": "2026-11-13T14:35:55.860Z"
+    },
+    "Culture|lantern festival": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T14:35:55.860Z",
+      "skipUntil": "2026-11-13T14:35:55.860Z"
+    },
+    "Society|garden city movement": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T14:35:55.860Z",
+      "skipUntil": "2026-11-13T14:35:55.860Z"
+    },
+    "Geography|strait of gibraltar": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T14:35:55.860Z",
+      "skipUntil": "2026-11-13T14:35:55.860Z"
+    },
+    "Science|gravitational waves": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T14:35:55.860Z",
+      "skipUntil": "2026-11-13T14:35:55.860Z"
+    },
+    "People & Ideas|henry ford": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T14:35:55.860Z",
+      "skipUntil": "2026-11-13T14:35:55.860Z"
+    },
+    "Culture|korean tea ceremony": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T14:35:55.860Z",
+      "skipUntil": "2026-11-13T14:35:55.860Z"
+    },
+    "Geography|strait of malacca": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T14:35:55.860Z",
+      "skipUntil": "2026-11-13T14:35:55.860Z"
+    },
+    "Science|gravitational lens": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T14:35:55.860Z",
+      "skipUntil": "2026-11-13T14:35:55.860Z"
+    },
+    "Civilizations|hammurabi": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T14:35:55.860Z",
+      "skipUntil": "2026-11-13T14:35:55.860Z"
+    },
+    "Culture|korean cuisine": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T14:35:55.860Z",
+      "skipUntil": "2026-11-13T14:35:55.860Z"
+    },
+    "Society|history of public transportation": {
+      "reason": "page-missing",
+      "checkedAt": "2026-10-14T14:35:55.860Z",
+      "skipUntil": "2026-11-13T14:35:55.860Z"
+    },
+    "Geography|bosporus": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T14:35:55.860Z",
+      "skipUntil": "2026-11-13T14:35:55.860Z"
+    },
+    "Science|space exploration": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T14:35:55.860Z",
+      "skipUntil": "2026-11-13T14:35:55.860Z"
+    },
+    "Civilizations|code of hammurabi": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T14:35:55.860Z",
+      "skipUntil": "2026-11-13T14:35:55.860Z"
+    },
+    "People & Ideas|katherine johnson": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T14:35:55.860Z",
+      "skipUntil": "2026-11-13T14:35:55.860Z"
+    },
+    "Culture|korean traditional music": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T14:35:55.860Z",
+      "skipUntil": "2026-11-13T14:35:55.860Z"
+    },
+    "Society|history of rail transport": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T14:35:55.860Z",
+      "skipUntil": "2026-11-13T14:35:55.860Z"
+    },
+    "Economics|automobile industry": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T14:35:55.860Z",
+      "skipUntil": "2026-11-13T14:35:55.860Z"
+    },
+    "Science|space probe": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T14:35:55.860Z",
+      "skipUntil": "2026-11-13T14:35:55.860Z"
+    },
+    "Culture|korean culture": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T14:35:55.860Z",
+      "skipUntil": "2026-11-13T14:35:55.860Z"
+    },
+    "Economics|history of the automobile": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T14:35:55.860Z",
+      "skipUntil": "2026-11-13T14:35:55.860Z"
     }
   }
 }
