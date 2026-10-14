@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500;6..96,600&family=Inter:wght@400;500;600;700&family=Lora:wght@400;500;600&display=swap');
 #root{min-height:100vh}.app-shell{max-width:520px;min-height:100vh;margin:0 auto;background:#f8f8f2;box-shadow:0 0 60px #00000010;position:relative;padding-bottom:95px}.app-content{padding:0 28px 38px}.topbar{padding:30px 0 34px;display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid #d8d8d0}.brand{font-family:'Libre Baskerville',Georgia,serif;font-size:17px;letter-spacing:-.8px;font-weight:700}.brand em{font-family:'DM Sans',sans-serif;font-size:9px;font-style:normal;letter-spacing:1.5px;display:block;margin-top:5px;font-weight:500}.edition{font-size:9px;letter-spacing:1.3px;color:#777}.article-heading{padding:30px 0 22px}.eyebrow{font-size:10px;font-weight:700;letter-spacing:2px;color:#9e6052}.article-heading h1,.section-header h1{font-family:'Libre Baskerville',Georgia,serif;font-weight:400;line-height:1.26;letter-spacing:-1.8px}.article-heading h1{font-size:clamp(29px,7vw,40px);margin:14px 0 16px}.deck{font-size:13px;line-height:1.7;color:#777;max-width:340px}.article-media img{width:100%;height:230px;object-fit:cover;border-radius:4px;display:block;background:#d9d9d2}.photo-caption{font-size:11px;color:#81817d;font-style:italic;margin-top:10px}.reading-card{padding-top:34px;min-height:225px}.reading-topline{display:flex;justify-content:space-between;align-items:center;color:#8b8b86;letter-spacing:1.7px;font-size:10px;font-weight:700}.icon-button,.sheet-header button,.saved-item button{border:0;background:transparent;color:#171715}.article-text{font-family:Georgia,'Times New Roman',serif;font-size:clamp(22px,5.1vw,27px);line-height:1.65;letter-spacing:-.35px;margin:18px 0 10px}.word-token{display:inline;background:none;border:0;padding:0;color:inherit;font-family:inherit;font-size:inherit;line-height:inherit;text-align:left}.word-token:active,.word-token:hover{color:#a65f50}.word-token.known{color:#a65f50}.page-control{display:flex;align-items:center;justify-content:space-between;margin:25px 0 4px}.page-control>button{border:1px solid #e4e3dc;background:transparent;border-radius:50%;height:42px;width:42px;display:grid;place-items:center}.page-control>button:disabled{opacity:.2}.dots{display:flex;gap:9px}.dots button{width:7px;height:7px;border:0;border-radius:50%;background:#c9c9c3;padding:0}.dots button.active{background:#171715;transform:scale(1.35)}.hint{text-align:center;color:#9b9b96;font-size:11px;margin-top:20px}.bottom-nav{height:76px;position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:min(520px,100%);display:flex;background:#f8f8f2;border-top:1px solid #e4e3dd;z-index:5}.bottom-nav button{flex:1;border:0;background:transparent;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;color:#a2a29d;font-size:11px}.bottom-nav button.current{color:#171715;font-weight:700}.section-header{padding:58px 0 34px}.section-header h1{font-size:clamp(36px,8vw,49px);margin:16px 0}.section-header p{color:#777;font-size:14px}.period{color:#a65f50}.count-line,.review-count{border-top:1px solid #deded6;padding-top:17px;font-size:10px;font-weight:700;letter-spacing:1.7px;color:#85857f}.empty{padding:70px 12px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:15px}.empty h2{font-family:Georgia,serif;font-weight:400;font-size:27px;margin:10px 0 0}.empty p{font-size:14px;line-height:1.7;color:#777;max-width:275px;margin:0}.primary{border:0;border-radius:30px;padding:14px 22px;background:#171715;color:white;font-weight:700;font-size:13px;margin-top:12px}.primary:disabled{opacity:.5}.saved-list{margin-top:20px}.saved-item{display:flex;justify-content:space-between;align-items:flex-start;border-bottom:1px solid #deded6;padding:20px 0}.saved-item h2{font-family:Georgia,serif;font-size:25px;font-weight:400;margin:0 0 8px}.saved-item p{font-size:13px;line-height:1.6;color:#777;margin:0}.saved-item button{padding:8px}.flashcard{display:flex;flex-direction:column;justify-content:space-between;align-items:center;text-align:center;width:100%;height:330px;margin-top:22px;background:#eae9e1;border:1px solid #dfded5;border-radius:8px;padding:32px 20px;color:#171715}.flashcard span{font-size:10px;letter-spacing:2px;color:#777}.flashcard strong{font-family:Georgia,serif;font-weight:400;font-size:clamp(27px,7vw,39px);line-height:1.4}.flashcard small{font-size:12px;color:#999}.review-next{width:100%;margin-top:22px}.overlay{position:fixed;inset:0;background:#0005;z-index:10;display:flex;align-items:flex-end;justify-content:center}.definition-sheet{width:min(520px,100%);background:#f8f8f2;border-radius:20px 20px 0 0;padding:24px 28px 34px;box-shadow:0 -15px 60px #0002}.sheet-header{display:flex;align-items:center;justify-content:space-between;font-size:10px;letter-spacing:1.7px;color:#999}.definition-sheet h2{font-family:Georgia,serif;font-size:38px;font-weight:400;margin:25px 0 10px}.definition-sheet p{font-size:15px;line-height:1.7;color:#666;min-height:50px}.sheet-actions{display:flex;gap:12px;margin-top:20px}.sheet-actions button{flex:1;margin:0;display:flex;align-items:center;justify-content:center;gap:8px}.outline{border:1px solid #d8d8d0;border-radius:30px;background:transparent;padding:13px;font-weight:600}@media(max-width:400px){.app-content{padding-left:21px;padding-right:21px}.article-media img{height:200px}.article-heading h1{font-size:29px}}
 
 /* Two-direction story navigation */
@@ -449,3 +450,155 @@
 /* DAILY LORE V4.2 — source line ABOVE original article button; preserves existing App.css. */
 .reading-mode .story-end-attribution { max-width:92%; overflow-wrap:anywhere; text-align:center; text-decoration:none; font-size:clamp(11px,1.5vh,12px); line-height:1.35; }
 .reading-mode .story-end-attribution:hover,.reading-mode .story-end-attribution:focus-visible { text-decoration:underline; }
+
+/* DAILY LORE READ V5 */
+/* Editorial reader only. All selectors scoped: Words and Review remain unchanged. */
+.lore-editorial-v5 {
+  --lore-paper:#f8f8f2;
+  --lore-ink:#221e1c;
+  --lore-accent:#9f6557;
+}
+.lore-editorial-v5 .reader-gesture { color:var(--lore-ink); }
+/* No repeated DAILY LORE brand on reading pages; keep unobtrusive live-feed status. */
+.lore-editorial-v5 .lore-reader-topbar {
+  position:absolute; z-index:2; top:7px; right:24px;
+  min-height:0; padding:0; border:0; background:transparent;
+  pointer-events:none;
+}
+.lore-editorial-v5 .reader-edge-status {
+  margin:0; padding:3px 0; font:500 10px/1.3 'Inter',system-ui,sans-serif;
+  color:#807973; background:var(--lore-paper);
+}
+/* Cover uses a display face; subsequent pages use a small one-line running title. */
+.lore-editorial-v5 .lore-article-heading {
+  flex:0 0 auto; padding:clamp(11px,1.6dvh,18px) 0 clamp(8px,1.1dvh,12px);
+}
+.lore-editorial-v5 .lore-article-heading .eyebrow {
+  font:600 10px/1.2 'Inter',system-ui,sans-serif;
+  letter-spacing:.17em; color:var(--lore-accent);
+  margin:0 0 clamp(7px,1.2dvh,12px);
+}
+.lore-editorial-v5 .lore-article-heading h1 {
+  display:-webkit-box; -webkit-box-orient:vertical; -webkit-line-clamp:2;
+  overflow:hidden; overflow-wrap:normal; word-break:normal;
+  margin:0; color:#191715;
+  font-family:'Bodoni Moda','Bodoni MT','Times New Roman',serif;
+  font-weight:500; text-transform:uppercase;
+  font-size:clamp(30px,8.2vw,43px); line-height:1.08;
+  letter-spacing:-.025em;
+}
+.lore-editorial-v5 .lore-article-heading h1.lore-headline-long {
+  font-size:clamp(25px,6.9vw,35px);
+  letter-spacing:-.02em;
+}
+.lore-editorial-v5 .lore-deck {
+  margin:clamp(9px,1.35dvh,13px) 0 0;
+  max-width:36ch;
+  font:400 clamp(11px,1.5dvh,13px)/1.45 'Inter',system-ui,sans-serif;
+  color:#817d77; display:-webkit-box; -webkit-box-orient:vertical;
+  -webkit-line-clamp:2; overflow:hidden;
+}
+.lore-editorial-v5 .lore-article-heading.article-heading-continued {
+  padding:clamp(10px,1.6dvh,16px) 0 clamp(7px,1dvh,12px);
+}
+.lore-editorial-v5 .lore-article-heading.article-heading-continued .eyebrow,
+.lore-editorial-v5 .lore-article-heading.article-heading-continued .deck {display:none;}
+.lore-editorial-v5 .lore-article-heading.article-heading-continued h1,
+.lore-editorial-v5 .lore-article-heading.article-heading-continued h1.lore-headline-long {
+  display:block; white-space:nowrap; text-overflow:ellipsis; overflow:hidden;
+  font-family:'Bodoni Moda',Georgia,serif; text-transform:none;
+  font-size:clamp(14px,2.1dvh,18px); letter-spacing:-.01em;
+  line-height:1.18; font-weight:500;
+}
+/* Images keep the publisher's aspect ratio, align to the left, with a subtle paper frame. */
+.lore-editorial-v5 .reader-gesture .article-media {
+  --dn-photo-height:clamp(110px,29dvh,245px);
+  justify-content:flex-start; align-items:flex-start;
+  min-height:0; padding:0; margin:clamp(4px,.8dvh,8px) 0 clamp(9px,1.35dvh,14px);
+}
+.lore-editorial-v5 .reader-gesture .article-media .photo-figure.lore-photo-figure {
+  position:relative; display:inline-flex; flex-direction:column;
+  flex:0 1 auto; width:max-content; max-width:78%; margin:0;
+  padding:3px; border:1px solid rgba(40,34,27,.16);
+  border-radius:5px; background:#fdfcf8;
+  box-shadow:0 5px 15px rgba(29,24,17,.12), 0 1px 3px rgba(29,24,17,.07);
+  align-items:flex-start; justify-content:flex-start;
+}
+.lore-editorial-v5 .reader-gesture .article-media .lore-photo-figure img {
+  display:block; align-self:flex-start; cursor:zoom-in;
+  max-width:100%; max-height:calc(var(--dn-photo-height) - 8px);
+  width:auto; height:auto; object-fit:contain;
+  border-radius:2px; background:transparent;
+  box-shadow:none; outline:0;
+}
+.lore-editorial-v5 .lore-photo-figure img:focus-visible {outline:2px solid #a06b5a; outline-offset:4px;}
+.lore-editorial-v5 .lore-photo-zoom-trigger {
+  position:absolute; top:9px; right:9px; z-index:1;
+  display:grid; place-items:center; width:32px; height:32px;
+  padding:0; border:0; border-radius:50%; cursor:zoom-in;
+  background:rgba(26,25,23,.73); color:white;
+  box-shadow:0 2px 6px rgba(0,0,0,.16);
+  font:600 21px/1 system-ui,sans-serif;
+}
+.lore-photo-zoom-trigger:focus-visible {outline:2px solid #a06b5a; outline-offset:2px;}
+/* The text receives a restrained typographic frame, never a distracting card. */
+.lore-editorial-v5 .reading-card {
+  border-top:1px solid rgba(51,44,35,.09);
+  box-shadow:0 -7px 12px -15px rgba(29,24,17,.28);
+  padding-top:clamp(9px,1.4dvh,16px);
+}
+.lore-editorial-v5 .reading-topline {
+  font:600 clamp(9px,1.25dvh,11px)/1.2 'Inter',system-ui,sans-serif;
+  letter-spacing:.14em; color:#89847e;
+}
+.lore-editorial-v5 .article-text {
+  font-family:'Lora',Georgia,'Times New Roman',serif;
+  font-size:clamp(18px,2.74dvh,23px);
+  font-weight:400; line-height:1.46;
+  letter-spacing:-.012em; color:var(--lore-ink);
+  margin:clamp(10px,1.3dvh,14px) 0 8px;
+  -webkit-font-smoothing:antialiased;
+  font-synthesis:none; overflow-wrap:break-word;
+}
+.lore-editorial-v5 .word-token {
+  font:inherit; letter-spacing:inherit;
+  color:inherit; background:transparent;
+}
+.lore-editorial-v5 .word-token.known {color:#a7685d;}
+.lore-editorial-v5 .dn-swipe-hint,
+.lore-editorial-v5 .page-control {font-family:'Inter',system-ui,sans-serif;}
+/* Don't enlarge the bottom navigation or modify data-related components. */
+@media(max-height:680px) {
+  .lore-editorial-v5 .lore-article-heading {padding:9px 0 7px;}
+  .lore-editorial-v5 .lore-article-heading h1 {font-size:clamp(26px,7vw,34px);}
+  .lore-editorial-v5 .lore-article-heading h1.lore-headline-long {font-size:clamp(23px,6vw,29px);}
+  .lore-editorial-v5 .reader-gesture .article-media {--dn-photo-height:clamp(95px,23dvh,170px); margin:3px 0 7px;}
+  .lore-editorial-v5 .article-text {font-size:clamp(17px,2.65dvh,20px); line-height:1.43;}
+  .lore-editorial-v5 .lore-deck {font-size:11px;}
+}
+@media(max-height:560px) {
+  .lore-editorial-v5 .reader-gesture .article-media {--dn-photo-height:clamp(75px,19dvh,130px);}
+  .lore-editorial-v5 .lore-article-heading h1 {font-size:26px;}
+  .lore-editorial-v5 .article-text {font-size:16px;line-height:1.37;}
+}
+/* Full-screen viewer is portalled to document.body, outside swipe/overflow layers. */
+.lore-lightbox {
+  position:fixed; inset:0; z-index:10000; box-sizing:border-box;
+  background:rgba(18,17,16,.95); display:flex;
+  align-items:center; justify-content:center; padding:65px 14px 55px;
+  cursor:zoom-out;
+}
+.lore-lightbox img {
+  display:block; width:auto; height:auto; max-width:100%; max-height:100%;
+  object-fit:contain; cursor:default;
+  border-radius:2px;
+  box-shadow:0 12px 45px rgba(0,0,0,.35);
+}
+.lore-lightbox-close {
+  position:absolute; top:max(16px,env(safe-area-inset-top,16px)); right:16px;
+  display:grid; place-items:center; width:44px; height:44px;
+  border:1px solid #ffffff4d; border-radius:50%;
+  color:#fff; background:#302e2c; cursor:pointer;
+  font:400 32px/1 sans-serif;
+}
+.lore-lightbox-close:focus-visible {outline:2px solid #fff; outline-offset:4px;}

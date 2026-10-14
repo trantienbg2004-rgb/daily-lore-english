@@ -1,4 +1,5 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react'
+import { createPortal } from 'react-dom'
 import './App.css'
 import { initializeSeenHistory, persistReadMarker, readLegacyHistory } from './lib/seenHistory.js'
 import { storyId } from './lib/feedQueue.js'
@@ -34,8 +35,10 @@ function fitPhoto(img) {
 
 // V20: NEVER mount an <img> until pixels have loaded. A broken thumbnail
 // cannot leave a native broken-image icon or steal reading space.
+// DAILY LORE READ V5: original-photo fit + accessible full-screen preview.
 function ArticlePhoto({ image, label, onBroken, onReady }) {
   const [asset, setAsset] = useState(() => photoResult(image))
+  const [zoomed, setZoomed] = useState(false)
   useEffect(() => {
     let active = true
     const known = photoResult(image)
@@ -50,14 +53,37 @@ function ArticlePhoto({ image, label, onBroken, onReady }) {
     })
     return () => { active = false }
   }, [image])
+  useEffect(() => {
+    if (!zoomed) return
+    const closeOnEscape = event => { if (event.key === 'Escape') setZoomed(false) }
+    window.addEventListener('keydown', closeOnEscape)
+    return () => window.removeEventListener('keydown', closeOnEscape)
+  }, [zoomed])
   if (!asset?.url) return null
-  return <figure className="photo-figure">
+  return <figure className="photo-figure lore-photo-figure">
     <img src={asset.url} alt={label} decoding="async" loading="eager"
-      width={asset.width} height={asset.height}
+      width={asset.width} height={asset.height} role="button" tabIndex={0}
+      aria-label={`Enlarge image: ${label || 'article photo'}`}
+      onClick={() => setZoomed(true)}
+      onKeyDown={event => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); setZoomed(true) } }}
       onLoad={event => fitPhoto(event.currentTarget)}
       onError={() => onBroken(image)} />
-    {/* Photographer and licence appear in Sources & credits, not inside reading pages. */}
+    <button type="button" className="lore-photo-zoom-trigger" aria-label="Enlarge photo" onClick={() => setZoomed(true)}><span aria-hidden="true">⛶</span></button>
+    {zoomed && createPortal(<div className="lore-lightbox" role="dialog" aria-modal="true" aria-label="Enlarged article photograph" onClick={event => { event.stopPropagation(); setZoomed(false) }}>
+      <button type="button" className="lore-lightbox-close" aria-label="Close enlarged photograph" onClick={event => { event.stopPropagation(); setZoomed(false) }}>×</button>
+      <img src={asset.url} alt={label} onClick={event => event.stopPropagation()} />
+    </div>, document.body)}
   </figure>
+}
+
+// DAILY LORE READ V5: a teaser is useful only when it adds context.
+function editorialDeck(article) {
+  const deck = String(article?.subtitle || '').trim()
+  if (!deck) return ''
+  const original = String((article?._sourcePages || article?.pages || [])[0]?.text || '').trim()
+  const normalized = value => value.toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim()
+  if (original && normalized(original).startsWith(normalized(deck).slice(0, 65))) return ''
+  return deck
 }
 
 function safeStoryUrl(url) {
@@ -85,7 +111,7 @@ function layoutPages(item, reader, badImages = new Set()) {
   const paragraph = fixture.querySelector('.article-text')
   const card = fixture.querySelector('.reading-card')
   const figure = document.createElement('figure')
-  figure.className = 'photo-figure'
+  figure.className = 'photo-figure lore-photo-figure'
   const photo = document.createElement('img')
   // Images carry credits in Sources & credits; no caption DOM is needed here.
   figure.append(photo)
@@ -793,7 +819,7 @@ function App() {
     const tokens = closing ? [] : itemPage.text.split(/(\s+)/)
     const total = item.pages.length + 1 // always a distinct source / next-story page
     return <div className="reader-gesture" aria-hidden={!interactive} onTouchStart={interactive ? startGesture : undefined} onTouchMove={interactive ? moveGesture : undefined} onTouchEnd={interactive ? endGesture : undefined} onTouchCancel={interactive ? cancelGesture : undefined} onPointerDown={interactive ? startPointer : undefined} onPointerMove={interactive ? movePointer : undefined} onPointerUp={interactive ? endPointer : undefined} onPointerCancel={interactive ? () => {pointerGesture.current = null; releasePageSurface()} : undefined}>
-      <header className="topbar"><span className="brand">DAILY LORE</span>{interactive && index === stories.length - 1 && <span className="reader-edge-status" role="status" aria-live="polite">{waitingForNext ? (feedRetrying ? 'Reconnecting…' : 'Finding next…') : feedDone ? 'Up to date' : feedLoading ? 'Loading…' : 'Swipe up · Next ↓'}</span>}</header>
+      <header className="topbar lore-reader-topbar">{interactive && index === stories.length - 1 && <span className="reader-edge-status" role="status" aria-live="polite">{waitingForNext ? (feedRetrying ? 'Reconnecting…' : 'Finding next…') : feedDone ? 'Up to date' : feedLoading ? 'Loading…' : 'Swipe up · Next ↓'}</span>}</header>
       <div key={`${index}:${pageNumber}`} className={'page-surface ' + (interactive && pageMotion ? (pageMotion > 0 ? 'page-enter-left' : 'page-enter-right') : '')}>
       {closing ? <section className="story-end" aria-label="Article completed">
         <div className="story-end-center"><Icon name="book" size={56}/><h2>That's the story.</h2>
@@ -802,7 +828,11 @@ function App() {
           {safeStoryUrl(item.sourceUrl) && <a className="story-end-cta" href={safeStoryUrl(item.sourceUrl)} target="_blank" rel="noopener noreferrer">Read the original article <span aria-hidden="true">↗</span></a>}
         </div><div className="story-end-next">↑ Swipe up for the next story</div>
       </section> : <>
-      <div className={'article-heading ' + (pageNumber > 0 ? 'article-heading-continued' : '')}><div className="eyebrow">{readerSection(item)}</div><h1>{displayHeadline(item)}</h1><p className="deck">{item.subtitle}</p></div>
+      <div className={'article-heading lore-article-heading ' + (pageNumber > 0 ? 'article-heading-continued' : '')}>
+        <div className="eyebrow">{readerSection(item)}</div>
+        <h1 className={displayHeadline(item).length > 49 ? 'lore-headline-long' : ''} title={displayHeadline(item)}>{displayHeadline(item)}</h1>
+        {pageNumber === 0 && editorialDeck(item) && <p className="deck lore-deck">{editorialDeck(item)}</p>}
+      </div>
       <div className={"article-media " + (!itemPage.image || brokenImages.has(itemPage.image) ? "article-media-empty" : "")}>
         <ArticlePhoto key={itemPage.image || 'no-photo'} image={brokenImages.has(itemPage.image) ? '' : itemPage.image}
           label={photoLabel(itemPage)} onBroken={markBrokenImage}
@@ -826,7 +856,7 @@ function App() {
     </div>
   }
   return (
-    <div className={"app-shell " + (tab === "read" ? "reading-mode" : "")}>
+    <div className={"app-shell " + (tab === "read" ? "reading-mode lore-editorial-v5" : "")}>
       <main className="app-content">
         {tab === 'read' && <div className="story-viewport" onWheel={onReaderWheel}>
           {slide && stories[slide.from] && <div key={'old-'+slide.stamp} className={'story-layer outgoing '+(slide.direction>0?'slide-up':'slide-down')}>{renderStory(stories[slide.from], slide.from, slide.fromPage, false)}</div>}
