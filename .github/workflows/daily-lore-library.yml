@@ -11,7 +11,7 @@ on:
   schedule:
     # Pre-publish independently of reader activity; no secret in browser.
     # Reader starts monitoring aggressively when 30 unread articles remain.
-    - cron: '23 */3 * * *'
+    - cron: '17 * * * *'
 permissions:
   contents: write
 concurrency:
@@ -31,7 +31,7 @@ jobs:
       - name: Check deterministic article-quality and reader contract
         run: node --test scripts/test/lore-final.test.mjs scripts/test/lore-continuity.test.mjs
       - name: Collect curated encyclopedia features and embedded licensed images
-        run: node scripts/lore-collect.mjs --limit=140
+        run: node scripts/lore-collect.mjs --limit=80
       - name: Verify every published article and photo metadata
         run: node scripts/lore-verify.mjs
       - name: Commit only verified curated release

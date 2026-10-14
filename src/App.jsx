@@ -798,8 +798,8 @@ function App() {
       {closing ? <section className="story-end" aria-label="Article completed">
         <div className="story-end-center"><Icon name="book" size={56}/><h2>That's the story.</h2>
           
+          <button className="story-end-credits story-end-attribution" type="button" disabled={!interactive} onClick={() => setShowCredits(true)} aria-label="View article author, text license and individual image credits">{item.sourceName || item.publisher || 'Original source'} · Text &amp; image credits</button>
           {safeStoryUrl(item.sourceUrl) && <a className="story-end-cta" href={safeStoryUrl(item.sourceUrl)} target="_blank" rel="noopener noreferrer">Read the original article <span aria-hidden="true">↗</span></a>}
-          <button className="story-end-credits" type="button" disabled={!interactive} onClick={() => setShowCredits(true)}>Sources &amp; credits</button>
         </div><div className="story-end-next">↑ Swipe up for the next story</div>
       </section> : <>
       <div className={'article-heading ' + (pageNumber > 0 ? 'article-heading-continued' : '')}><div className="eyebrow">{readerSection(item)}</div><h1>{displayHeadline(item)}</h1><p className="deck">{item.subtitle}</p></div>
@@ -842,13 +842,13 @@ function App() {
           <div className="sheet-header"><span>ABOUT THIS ARTICLE</span><button aria-label="Close sources" onClick={() => setShowCredits(false)}>×</button></div>
           <h2>Sources &amp; credits</h2>
           <p><strong>Article:</strong> {story.attribution || story.sourceTitle || story.title}</p>
-          <p><strong>Text license:</strong> {story.license || 'See original article for terms'}</p>
+          <p><strong>Text license:</strong> {story.license || 'See original article for terms'} {safeStoryUrl(story.licenseUrl) && <a href={safeStoryUrl(story.licenseUrl)} target="_blank" rel="noopener noreferrer">License terms ↗</a>}</p>
           {story.sourceMediaCredit && <p><strong>Original media attribution:</strong> {story.sourceMediaCredit}</p>}
           {safeStoryUrl(story.sourceUrl) && <a href={safeStoryUrl(story.sourceUrl)} target="_blank" rel="noopener noreferrer">Original article ↗</a>}
           <div className="source-credit-list"><strong>Image attributions</strong>{(() => {
             const pages = story._sourcePages || story.pages
             const distinct = [...new Map(pages.filter(p => p.image).map(p => [p.image,p])).values()]
-            return distinct.length ? distinct.map((p,i) => <p key={i}>{p.imageProvenance?.credit || p.caption || photoLabel(p)} {p.imageProvenance?.license || ''} {p.imageProvenance?.sourceImageUrl && <a href={p.imageProvenance.sourceImageUrl} target="_blank" rel="noopener noreferrer">Image in original article ↗</a>}</p>) : <p>No reusable original-article images in this article.</p>
+            return distinct.length ? distinct.map((p,i) => <p key={i}>{p.imageProvenance?.credit || p.caption || photoLabel(p)} {p.imageProvenance?.license || ''} {safeStoryUrl(p.imageProvenance?.licenseUrl) && <a href={safeStoryUrl(p.imageProvenance.licenseUrl)} target="_blank" rel="noopener noreferrer">Image license ↗</a>} {p.imageProvenance?.sourceImageUrl && <a href={p.imageProvenance.sourceImageUrl} target="_blank" rel="noopener noreferrer">Image in original article ↗</a>}</p>) : <p>No reusable original-article images in this article.</p>
           })()}</div>
           <button className="primary" onClick={() => setShowCredits(false)}>Back to reading</button>
         </section>

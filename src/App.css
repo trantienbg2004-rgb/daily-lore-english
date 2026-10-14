@@ -445,3 +445,7 @@
   .reading-mode .reader-gesture .article-text {font-size:15px;line-height:1.28}
   .reading-mode .reader-gesture .dn-editorial-cover {min-height:44px}
 }
+
+/* DAILY LORE V4.2 — source line ABOVE original article button; preserves existing App.css. */
+.reading-mode .story-end-attribution { max-width:92%; overflow-wrap:anywhere; text-align:center; text-decoration:none; font-size:clamp(11px,1.5vh,12px); line-height:1.35; }
+.reading-mode .story-end-attribution:hover,.reading-mode .story-end-attribution:focus-visible { text-decoration:underline; }
