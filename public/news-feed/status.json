@@ -1,20 +1,20 @@
 {
-  "updatedAt": "2026-10-13T21:57:01.055Z",
+  "updatedAt": "2026-10-14T01:07:52.942Z",
   "ready": true,
-  "total": 396,
+  "total": 404,
   "requiredTotal": 50,
   "sourceCount": 4,
   "requiredSources": 3,
   "byPublisher": {
+    "VnExpress International": 355,
     "NASA": 38,
     "NOAA National Ocean Service": 7,
-    "VnExpress International": 347,
     "U.S. Geological Survey": 4
   },
   "byOrganization": {
+    "VnExpress International": 355,
     "NASA": 38,
     "NOAA National Ocean Service": 7,
-    "VnExpress International": 347,
     "U.S. Geological Survey": 4
   },
   "report": {
@@ -22,10 +22,8 @@
       "VnExpress International | TOP STORIES": {
         "feed": "https://e.vnexpress.net/rss/home.rss",
         "items": 25,
-        "accepted": 24,
-        "rejected": {
-          "invalid-headline": 1
-        },
+        "accepted": 25,
+        "rejected": {},
         "publisher": "VnExpress International"
       },
       "VnExpress International | WORLD & VIETNAM": {
@@ -33,15 +31,6 @@
         "items": 60,
         "accepted": 60,
         "rejected": {},
-        "publisher": "VnExpress International"
-      },
-      "VnExpress International | WORLD": {
-        "feed": "https://e.vnexpress.net/rss/world.rss",
-        "items": 60,
-        "accepted": 56,
-        "rejected": {
-          "stale-or-invalid-date": 4
-        },
         "publisher": "VnExpress International"
       },
       "VnExpress International | BUSINESS": {
@@ -53,24 +42,17 @@
         },
         "publisher": "VnExpress International"
       },
-      "VnExpress International | PERSPECTIVES": {
-        "feed": "https://e.vnexpress.net/rss/perspectives.rss",
+      "VnExpress International | WORLD": {
+        "feed": "https://e.vnexpress.net/rss/world.rss",
         "items": 60,
-        "accepted": 10,
+        "accepted": 56,
         "rejected": {
-          "stale-or-invalid-date": 50
+          "stale-or-invalid-date": 4
         },
         "publisher": "VnExpress International"
       },
       "VnExpress International | LIFE": {
         "feed": "https://e.vnexpress.net/rss/life.rss",
-        "items": 60,
-        "accepted": 60,
-        "rejected": {},
-        "publisher": "VnExpress International"
-      },
-      "VnExpress International | TECHNOLOGY": {
-        "feed": "https://e.vnexpress.net/rss/tech.rss",
         "items": 60,
         "accepted": 60,
         "rejected": {},
@@ -86,11 +68,21 @@
         },
         "publisher": "VOA Learning English"
       },
-      "National Institutes of Health | HEALTH & SCIENCE": {
-        "feed": "https://www.nih.gov/news-releases/feed.xml",
-        "items": 0,
-        "accepted": 0,
-        "error": "HTTP 403"
+      "VnExpress International | TECHNOLOGY": {
+        "feed": "https://e.vnexpress.net/rss/tech.rss",
+        "items": 60,
+        "accepted": 60,
+        "rejected": {},
+        "publisher": "VnExpress International"
+      },
+      "VnExpress International | PERSPECTIVES": {
+        "feed": "https://e.vnexpress.net/rss/perspectives.rss",
+        "items": 60,
+        "accepted": 10,
+        "rejected": {
+          "stale-or-invalid-date": 50
+        },
+        "publisher": "VnExpress International"
       },
       "VOA Learning English | WORLD": {
         "feed": "https://learningenglish.voanews.com/api/zkm-ql-vomx-tpej-rqi",
@@ -102,16 +94,6 @@
         },
         "publisher": "VOA Learning English"
       },
-      "Voice of America | TECHNOLOGY": {
-        "feed": "https://www.voanews.com/api/zyritl-vomx-tpettmq",
-        "items": 20,
-        "accepted": 0,
-        "rejected": {
-          "invalid-description": 4,
-          "stale-or-invalid-date": 16
-        },
-        "publisher": "Voice of America"
-      },
       "VOA Learning English | SCIENCE & TECHNOLOGY": {
         "feed": "https://learningenglish.voanews.com/api/zmg_pl-vomx-tpeymtm",
         "items": 20,
@@ -121,6 +103,22 @@
           "invalid-description": 11
         },
         "publisher": "VOA Learning English"
+      },
+      "National Institutes of Health | HEALTH & SCIENCE": {
+        "feed": "https://www.nih.gov/news-releases/feed.xml",
+        "items": 0,
+        "accepted": 0,
+        "error": "HTTP 403"
+      },
+      "Voice of America | TECHNOLOGY": {
+        "feed": "https://www.voanews.com/api/zyritl-vomx-tpettmq",
+        "items": 20,
+        "accepted": 0,
+        "rejected": {
+          "invalid-description": 4,
+          "stale-or-invalid-date": 16
+        },
+        "publisher": "Voice of America"
       },
       "NASA | SCIENCE & SPACE": {
         "feed": "https://science.nasa.gov/feed/",
@@ -164,11 +162,11 @@
       }
     },
     "dedupe": {
-      "duplicateUrl": 353
+      "duplicateUrl": 354
     },
-    "previous": 388,
-    "newCandidates": 361,
+    "previous": 396,
+    "newCandidates": 362,
     "sourceCards": 49,
-    "realPublisherImages": 347
+    "realPublisherImages": 355
   }
 }
