@@ -6,6 +6,7 @@ on:
     paths:
       - 'scripts/lore/**'
       - 'scripts/lore-collect.mjs'
+      - 'scripts/test/lore-continuity.test.mjs'
       - '.github/workflows/daily-lore-library.yml'
   schedule:
     - cron: '23 2 * * *'
@@ -26,9 +27,9 @@ jobs:
         with:
           node-version: '22'
       - name: Check deterministic article-quality and reader contract
-        run: node --test scripts/test/lore-final.test.mjs
+        run: node --test scripts/test/lore-final.test.mjs scripts/test/lore-continuity.test.mjs
       - name: Collect curated encyclopedia features and embedded licensed images
-        run: node scripts/lore-collect.mjs --limit=270
+        run: node scripts/lore-collect.mjs --limit=140
       - name: Verify every published article and photo metadata
         run: node scripts/lore-verify.mjs
       - name: Commit only verified curated release
@@ -36,7 +37,7 @@ jobs:
         run: |
           git config user.name 'daily-lore-bot'
           git config user.email 'daily-lore-bot@users.noreply.github.com'
-          git add public/lore-reader
+          git add public/lore-reader reports/DAILY_LORE_SOURCE_STATE.json
           if git diff --cached --quiet; then
             echo 'Curated library unchanged; keeping last good release.'
             exit 0

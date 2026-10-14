@@ -8,6 +8,7 @@ import {fileURLToPath} from 'node:url'
 import {CURATED_TOPICS,scheduledTopics,TOPIC_CATEGORIES} from './lore/topics.mjs'
 import {collectWikipediaTopic} from './lore/wiki.mjs'
 import {editorialGate} from './lore/editorial.mjs'
+import {loadProgress,saveProgress,chooseTopics,markDecision,keyFor} from './lore/state.mjs'
 const hash=any=>createHash('sha256').update(JSON.stringify(any)).digest('hex')
 const exists=async p=>fs.access(p).then(()=>true,()=>false)
 export async function readExisting(base){
@@ -50,35 +51,56 @@ export async function publishLibrary({base=process.cwd(),stories=[],now=new Date
  }finally{await fs.rm(temp,{recursive:true,force:true})}
  return {published:true,manifest}
 }
-export async function collectLore({base=process.cwd(),now=new Date(),fetchImpl=fetch,limit=270,log=console,collector=collectWikipediaTopic}={}){
- const before=await readExisting(base),ids=new Set(before.map(s=>s.sourceTitle?.toLowerCase()||s.title.toLowerCase()))
- const candidates=scheduledTopics({index:0,count:CURATED_TOPICS.length}).filter(t=>!ids.has(t.title.toLowerCase()))
+export async function collectLore({base=process.cwd(),now=new Date(),fetchImpl=fetch,limit=140,log=console,collector=collectWikipediaTopic}={}){
+ const before=await readExisting(base)
+ const ids=new Set(before.map(s=>s.sourceTitle?.toLowerCase()||s.title.toLowerCase()))
+ const existingKeys=new Set(before.map(s=>keyFor({category:s.category,title:s.sourceTitle||s.title})))
+ const state=await loadProgress(base)
+ const choices=chooseTopics(scheduledTopics({index:0,count:CURATED_TOPICS.length}),state,existingKeys,now,limit)
  const collected=[],rejected={},errors=[]
- const todo=candidates.slice(0,limit)
- let index=0
- async function worker(){
-  while(index<todo.length){
-   const topic=todo[index++]
-   try{
-    const result=await collector(topic,{fetchImpl,now})
-    if(result.story){
-     const key=result.story.sourceTitle.toLowerCase()
-     if(!ids.has(key)){ids.add(key);collected.push(result.story)}
-    }else rejected[result.reason||'unspecified']=(rejected[result.reason||'unspecified']||0)+1
-   }catch(e){const reason=String(e?.message||e).slice(0,120);errors.push(`${topic.title}: ${reason}`)}
+ let attempted=0,rateLimited=false
+ // Intentionally sequential: Wikimedia's shared GitHub Actions IP may be
+ // throttled; parallel requests amplify 429 and cannot increase real supply.
+ for(const topic of choices.topics){
+  attempted++
+  try{
+   const result=await collector(topic,{fetchImpl,now})
+   if(result.story){
+    const key=result.story.sourceTitle.toLowerCase()
+    if(!ids.has(key)){ids.add(key);collected.push(result.story)}
+   }else rejected[result.reason||'unspecified']=(rejected[result.reason||'unspecified']||0)+1
+   markDecision(state,topic,result,now)
+  }catch(e){
+   const reason=String(e?.message||e).slice(0,120)
+   errors.push(`${topic.title}: ${reason}`)
+   // Stop immediately when Wikimedia asks us to slow down. Other topics stay
+   // eligible on the next scheduled run rather than being falsely rejected.
+   if(e?.rateLimited||/HTTP 429/.test(reason)){rateLimited=true;break}
   }
  }
- await Promise.all(Array.from({length:3},()=>worker()))
+ // The cursor is advanced only past the actually attempted topic. A stopped
+ // batch never silently skips the rest of the selected entries.
+ const allTopics=scheduledTopics({index:0,count:CURATED_TOPICS.length})
+ if(attempted){
+  const last=choices.topics[attempted-1]
+  const index=allTopics.findIndex(t=>keyFor(t)===keyFor(last))
+  state.cursor=index<0?choices.cursor:(index+1)%allTopics.length
+ }else state.cursor=choices.cursor
  const all=[...before,...collected]
  const output=await publishLibrary({base,stories:all,now})
- const report={date:now.toISOString(),candidateCount:todo.length,previous:before.length,added:collected.length,total:all.length,published:output.published,reason:output.reason||'',rejected,errors:errors.slice(0,20),byTopic:output.manifest.byTopic,withVerifiedPhoto:output.manifest.withVerifiedPhoto}
+ await saveProgress(base,state)
+ const report={date:now.toISOString(),catalogTopics:allTopics.length,candidateCount:choices.topics.length,attempted,
+  deferred:choices.skipped,rateLimited,previous:before.length,added:collected.length,total:all.length,
+  published:output.published,unchanged:!!output.unchanged,reason:output.reason||'',rejected,
+  errors:errors.slice(0,20),byTopic:output.manifest.byTopic,withVerifiedPhoto:output.manifest.withVerifiedPhoto}
  await fs.mkdir(path.join(base,'reports'),{recursive:true})
  await fs.writeFile(path.join(base,'reports/DAILY_LORE_QUALITY_REPORT.json'),JSON.stringify(report,null,2)+'\n')
  log.log('DAILY LORE RELEASE:',JSON.stringify(report))
  if(!output.manifest.ready)throw Error(`Quality gate blocks release: ${report.total} accepted stories, need >=15. See quality report.`)
  return report
 }
+
 if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.url)){
- const limitArg=process.argv.find(x=>x.startsWith('--limit=')),limit=limitArg?Number(limitArg.slice(8)):270
- collectLore({limit:Number.isSafeInteger(limit)&&limit>0?limit:270}).catch(e=>{console.error('DAILY LORE INGEST ERROR:',e.message);process.exitCode=1})
+ const limitArg=process.argv.find(x=>x.startsWith('--limit=')),limit=limitArg?Number(limitArg.slice(8)):140
+ collectLore({limit:Number.isSafeInteger(limit)&&limit>0?limit:140}).catch(e=>{console.error('DAILY LORE INGEST ERROR:',e.message);process.exitCode=1})
 }

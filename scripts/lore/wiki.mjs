@@ -3,20 +3,57 @@ const UA='DailyLoreEnglish/1.0 (https://github.com/trantienbg2004-rgb/daily-lore
 const strip=t=>String(t||'').replace(/<[^>]+>/g,' ').replace(/&amp;/g,'&').replace(/&quot;/g,'"').replace(/&#39;/g,"'").replace(/&nbsp;/g,' ').replace(/\s+/g,' ').trim()
 const excluded=/(?:^|[_\s-])(?:logo|icon|coat[_\s-]of[_\s-]arms|flag[_\s-]of|wikidata|wikimedia|commons[_\s-]logo|locator[_\s-]map|disambiguation|question[_\s-]mark|symbol|seal[_\s-]of|emblem|blank[_\s-]map)(?:[_\s.-]|$)/i
 function getUrl(endpoint,params){return `${endpoint}?${new URLSearchParams({format:'json',formatversion:'2',...params})}`}
-export async function getJson(url,{fetchImpl=fetch,attempts=3}={}){
+/** Respect Wikimedia API limits globally rather than retrying 429 in a tight
+ * loop. One GitHub Actions job uses one sequential collector. Injected mock
+ * fetches in offline tests are not delayed. */
+let nextRequestAt=0
+const wait=ms=>new Promise(resolve=>setTimeout(resolve,ms))
+export class WikipediaRateLimitError extends Error {
+ constructor(message='Wikimedia HTTP 429; stop this batch and retry tomorrow'){
+  super(message);this.name='WikipediaRateLimitError';this.rateLimited=true
+ }
+}
+function retryAfterMs(header){
+ if(!header)return 0
+ const sec=Number(header)
+ if(Number.isFinite(sec))return Math.max(0,sec*1000)
+ const date=Date.parse(header)
+ return Number.isFinite(date)?Math.max(0,date-Date.now()):0
+}
+export async function getJson(url,{fetchImpl=fetch,attempts=3,waitImpl=wait,spacingMs=1450}={}){
  for(let n=0;n<attempts;n++){
   try{
+   // Tests use injected local mocks; live requests are paced across both APIs.
+   if(fetchImpl===fetch){
+    const ms=nextRequestAt-Date.now()
+    if(ms>0)await waitImpl(ms)
+    nextRequestAt=Date.now()+spacingMs
+   }
    const controller=new AbortController();const timer=setTimeout(()=>controller.abort(),18000)
    try{
     const response=await fetchImpl(url,{headers:{'User-Agent':UA,Accept:'application/json'},signal:controller.signal})
+    if(response.status===429){
+     const retry=retryAfterMs(response.headers?.get?.('retry-after'))
+     if(retry>60000)throw new WikipediaRateLimitError(`Wikimedia requested ${Math.ceil(retry/1000)}s cooldown; defer remaining topics`)
+     const delay=Math.max(retry,8000*2**n)
+     nextRequestAt=Math.max(nextRequestAt,Date.now()+delay)
+     if(n===attempts-1)throw new WikipediaRateLimitError()
+     await waitImpl(delay)
+     continue
+    }
     if(!response.ok)throw Error(`HTTP ${response.status}`)
     const result=await response.json()
     if(result?.error)throw Error(`API ${result.error.code||'unknown'}`)
     return result
    }finally{clearTimeout(timer)}
-  }catch(e){if(n===attempts-1)throw e;await new Promise(r=>setTimeout(r,(n+1)*650))}
+  }catch(e){
+   if(e?.rateLimited)throw e
+   if(n===attempts-1)throw e
+   await waitImpl(Math.min(12000,2000*2**n))
+  }
  }
 }
+
 export function approvedCommonsImage(page){
  const info=page?.imageinfo?.[0]
  if(!info||!/^https:\/\/(?:upload|thumb)\.wikimedia\.org\//.test(info.thumburl||info.url||''))return null
