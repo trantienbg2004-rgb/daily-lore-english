@@ -1,0 +1,641 @@
+{
+  "version": 1,
+  "cursor": 200,
+  "decisions": {
+    "Science|scientific revolution": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "History|french revolution": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "Culture|chinese new year": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "Society|demographic transition": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "Geography|sahara": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "Economics|second industrial revolution": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "History|haitian revolution": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "Society|universal education": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "Geography|gobi desert": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "Economics|green revolution": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "Civilizations|maya civilization": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "People & Ideas|alan turing": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "Culture|holi": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "Geography|amazon rainforest": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "Culture|hanami": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "Society|public library": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "Geography|himalayas": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "Economics|trans-saharan trade": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "People & Ideas|galileo galilei": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "Culture|obon": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "Society|industrial society": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "Geography|andes": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "Economics|columbian exchange": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "Civilizations|sumer": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "History|the black death": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "Culture|day of the dead": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "Society|mass media": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "Geography|alps": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "Science|voyager program": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "History|hundred years' war": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "Culture|oktoberfest": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "Society|literacy": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "Economics|history of money": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "Science|mars rover": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "Civilizations|ancient greece": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "History|thirty years' war": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "Culture|carnival in brazil": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "Society|social mobility": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "Geography|amazon river": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "Economics|gold standard": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "Civilizations|achaemenid empire": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "People & Ideas|florence nightingale": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "History|seven years' war": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "Culture|intangible cultural heritage": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "Society|consumerism": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "Geography|danube": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "Civilizations|byzantine empire": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "People & Ideas|frederick douglass": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "History|opium wars": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "Culture|flamenco": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "Geography|great rift valley": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "Culture|kabuki": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "Society|migration": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "Geography|ring of fire": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "Economics|tulip mania": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "Science|dna": {
+      "reason": "title",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-10-21T11:56:43.378Z"
+    },
+    "Culture|noh": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "Society|human migration": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "Geography|galápagos islands": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "Science|human genome": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "Culture|ballet": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "Society|ageing of populations": {
+      "reason": "page-missing",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "Economics|dot-com bubble": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "Science|germ theory of disease": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "History|scramble for africa": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "Culture|origami": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "Society|digital divide": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "Civilizations|khmer empire": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "People & Ideas|rachel carson": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "History|decolonisation of africa": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "Culture|calligraphy": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "Society|culture shock": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "Geography|lake baikal": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "Economics|history of banking": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "Science|penicillin": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "People & Ideas|jane goodall": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "Culture|japanese cuisine": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "Geography|dead sea": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "Economics|international trade": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "Civilizations|machu picchu": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "People & Ideas|alexander fleming": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "Culture|mediterranean diet": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "Geography|atacama desert": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "Economics|fair trade": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "Civilizations|petra": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "People & Ideas|louis pasteur": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "Culture|kimchi": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "Society|social stratification": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "Geography|serengeti": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "Economics|supply chain": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "Civilizations|great wall of china": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "People & Ideas|ibn al-haytham": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "Culture|sushi": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "Society|child labour": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "Geography|okavango delta": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "Economics|containerization": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "Civilizations|stonehenge": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "People & Ideas|al-khwarizmi": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "Culture|history of coffee": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "Society|housing crisis": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "Geography|mekong": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "Science|aurora": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "Civilizations|terracotta army": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "History|protestant reformation": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "Culture|tea culture": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "Society|public transportation": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "Economics|economic globalization": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "Civilizations|cahokia": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "People & Ideas|mary wollstonecraft": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "History|glorious revolution": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "Culture|history of chocolate": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "Society|social welfare": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "Geography|mariana trench": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "Economics|microfinance": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "People & Ideas|wangari maathai": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "Culture|mardi gras": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "Society|community garden": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "Geography|coral reef": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "Economics|cooperative": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "Science|solar eclipse": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "People & Ideas|socrates": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "Culture|nowruz": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "Society|remote work": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "Geography|monsoon": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "Economics|gig economy": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "Civilizations|easter island": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    },
+    "People & Ideas|confucius": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T11:56:43.378Z",
+      "skipUntil": "2026-11-13T11:56:43.378Z"
+    }
+  }
+}
