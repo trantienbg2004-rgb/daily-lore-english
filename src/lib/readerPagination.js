@@ -2,7 +2,7 @@
  * A media cover can be image-only, but NEVER strand a word or half a sentence
  * just to fill the narrow remaining space below a photograph.
  */
-const ABBREVIATIONS = /^(?:Mr|Mrs|Ms|Dr|Prof|Sr|Jr|St|vs|etc|e\.g|i\.e|U\.S|U\.K|No|Fig|Sept|Oct|Nov|Dec|Jan|Feb|Mar|Apr|Jun|Jul)\.$/i
+const ABBREVIATIONS = /^(?:Mr|Mrs|Ms|Dr|Prof|Sr|Jr|St|vs|etc|c|ca|circa|approx|e\.g|i\.e|U\.S|U\.K|No|Fig|Sept|Oct|Nov|Dec|Jan|Feb|Mar|Apr|Jun|Jul)\.$/i
 const trim = text => String(text || '').replace(/\s+/gu, ' ').trim()
 const wordCount = text => trim(text).split(/\s+/u).filter(Boolean).length
 

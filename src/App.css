@@ -602,3 +602,65 @@
   font:400 32px/1 sans-serif;
 }
 .lore-lightbox-close:focus-visible {outline:2px solid #fff; outline-offset:4px;}
+
+/* DAILY LORE READ V6 */
+/* A single editorial column on every page. All scope is Read-only. */
+.lore-editorial-v5 .reader-gesture .page-surface {
+  display:flex; flex-direction:column; min-width:0;
+}
+.lore-editorial-v5 .reader-gesture .article-media {
+  display:flex; flex-direction:column; align-items:flex-start;
+  justify-content:flex-start; width:100%; min-width:0;
+  flex:0 0 auto; clear:both; float:none;
+}
+.lore-editorial-v5 .reader-gesture .article-media .photo-figure.lore-photo-figure {
+  display:inline-flex; flex-direction:column; align-self:flex-start;
+  align-items:stretch; margin:0; float:none;
+  width:max-content; max-width:min(78%,340px);
+}
+.lore-editorial-v5 .reader-gesture .article-media .lore-photo-figure img {
+  display:block; align-self:flex-start; max-width:100%;
+}
+.lore-editorial-v5 .reader-gesture .article-media .lore-photo-caption {
+  display:block; max-width:100%; box-sizing:border-box;
+  margin:7px 1px 2px; padding:0;
+  color:#77716d; text-align:left;
+  font:italic 400 clamp(10px,1.45dvh,12px)/1.4 'Inter',system-ui,sans-serif;
+  white-space:normal; overflow-wrap:anywhere;
+}
+.lore-editorial-v5 .reader-gesture .reading-card {
+  clear:both; float:none; width:100%; box-sizing:border-box;
+  flex:1 1 0; min-height:0; display:flex; flex-direction:column;
+}
+/* Read-aloud control stays accessible but no longer takes a metadata row. */
+.lore-editorial-v5 .reading-topline {
+  display:flex; justify-content:flex-end; min-height:21px;
+  line-height:1; letter-spacing:normal;
+}
+.lore-editorial-v5 .reading-topline .icon-button {
+  display:grid; place-items:center; min-width:30px; min-height:24px;
+  margin-left:auto; padding:0;
+}
+/* Page number takes the former swipe hint's place, exactly above navigation. */
+.lore-editorial-v5 .page-control {
+  display:flex; flex-direction:column; align-items:center;
+  justify-content:center; flex:0 0 auto; gap:7px;
+  margin:4px 0 7px; padding:0;
+}
+.lore-editorial-v5 .lore-page-count {
+  font:500 12px/1.15 'Inter',system-ui,sans-serif;
+  color:#77716d; letter-spacing:.05em; text-align:center;
+  font-variant-numeric:tabular-nums;
+}
+.lore-editorial-v5 .lore-page-nav {
+  display:flex; align-items:center; justify-content:center; gap:17px;
+  min-height:33px; max-width:100%;
+}
+.lore-editorial-v5 .page-control .dots {
+  display:flex; align-items:center; justify-content:center;
+  margin:0;
+}
+@media(max-height:620px) {
+  .lore-editorial-v5 .page-control {gap:4px; margin:2px 0 4px;}
+  .lore-editorial-v5 .reader-gesture .article-media .lore-photo-caption {font-size:10px;line-height:1.25;margin-top:4px;}
+}

@@ -69,6 +69,7 @@ function ArticlePhoto({ image, label, onBroken, onReady }) {
       onLoad={event => fitPhoto(event.currentTarget)}
       onError={() => onBroken(image)} />
     <button type="button" className="lore-photo-zoom-trigger" aria-label="Enlarge photo" onClick={() => setZoomed(true)}><span aria-hidden="true">⛶</span></button>
+    {label && label !== 'Article photograph' && <figcaption className="lore-photo-caption">{label}</figcaption>}
     {zoomed && createPortal(<div className="lore-lightbox" role="dialog" aria-modal="true" aria-label="Enlarged article photograph" onClick={event => { event.stopPropagation(); setZoomed(false) }}>
       <button type="button" className="lore-lightbox-close" aria-label="Close enlarged photograph" onClick={event => { event.stopPropagation(); setZoomed(false) }}>×</button>
       <img src={asset.url} alt={label} onClick={event => event.stopPropagation()} />
@@ -113,8 +114,10 @@ function layoutPages(item, reader, badImages = new Set()) {
   const figure = document.createElement('figure')
   figure.className = 'photo-figure lore-photo-figure'
   const photo = document.createElement('img')
-  // Images carry credits in Sources & credits; no caption DOM is needed here.
-  figure.append(photo)
+  // Measure the actual caption below each photograph, not just its pixels.
+  const measuredCaption = document.createElement('figcaption')
+  measuredCaption.className = 'lore-photo-caption'
+  figure.append(photo, measuredCaption)
   media?.replaceChildren(figure)
   const footer = fixture.querySelector('.source-footer')
   if (footer) footer.style.display = 'none'
@@ -125,6 +128,8 @@ function layoutPages(item, reader, badImages = new Set()) {
       heading.classList.toggle('article-heading-continued', !isCover)
       media.classList.toggle('article-media-empty', !image)
       media.style.display = image ? 'flex' : 'none'
+      measuredCaption.textContent = image ? photoLabel(image) : ''
+      measuredCaption.style.display = measuredCaption.textContent && measuredCaption.textContent !== 'Article photograph' ? 'block' : 'none'
       if (image) {
         // The photo may be narrower at its actual aspect ratio. Reserve the
         // maximum displayed height to prevent late image loading overflow.
@@ -838,11 +843,13 @@ function App() {
           label={photoLabel(itemPage)} onBroken={markBrokenImage}
           onReady={() => setPhotoVersion(n => n + 1)} />
       </div>
-      <section className={'reading-card ' + (!itemPage.image || brokenImages.has(itemPage.image) ? 'reading-card-no-photo' : 'reading-card-with-photo')}><div className="reading-topline"><span>{item.readingKind === 'full' ? 'KNOWLEDGE STORY' : 'THE ARTICLE'} · {pageNumber + 1}/{item.pages.length}</span><button className="icon-button" disabled={!interactive} onClick={() => speak(itemPage.text)} aria-label="Read aloud"><Icon name="volume" size={21}/></button></div>
+      <section className={'reading-card ' + (!itemPage.image || brokenImages.has(itemPage.image) ? 'reading-card-no-photo' : 'reading-card-with-photo')}><div className="reading-topline"><button className="icon-button" disabled={!interactive} onClick={() => speak(itemPage.text)} aria-label="Read aloud"><Icon name="volume" size={21}/></button></div>
         <p className="article-text">{tokens.map((token, i) => { const word = clean(token); return /^\s+$/.test(token) || !word ? token : <button key={i} type="button" disabled={!interactive} className={'word-token ' + (words.some(w => w.word === word) ? 'known' : '')} onClick={event => onWordClick(event, word)}>{token}</button> })}</p>
       </section>
       </>}
-      <div className="page-control" aria-label={`Page ${pageNumber + 1} of ${total}`}>{!closing && <span className="dn-swipe-hint" aria-hidden="true">‹ SWIPE TO CONTINUE</span>}
+      <div className="page-control" aria-label={closing ? "Article completed" : `Page ${pageNumber + 1} of ${item.pages.length}`}>
+        {!closing && <div className="lore-page-count" aria-label={`Page ${pageNumber + 1} of ${item.pages.length}`}>{pageNumber + 1}/{item.pages.length}</div>}
+        <div className="lore-page-nav">
         <button type="button" className="page-arrow page-arrow-prev" aria-label="Previous page" title="Previous page (←)" disabled={!interactive || pageNumber === 0} onClick={() => changePage(-1)}><Icon name="left" size={17}/></button>
         <div className="dots" aria-hidden="true">{(() => {
           const visible = Math.min(total, 11)
@@ -851,6 +858,7 @@ function App() {
             <span key={i} className={pageNumber === first + i ? 'active' : ''}/>)
         })()}</div>
         <button type="button" className="page-arrow page-arrow-next" aria-label="Next page" title="Next page (→)" disabled={!interactive || closing} onClick={() => changePage(1)}><Icon name="right" size={17}/></button>
+        </div>
       </div>
       </div>
     </div>
