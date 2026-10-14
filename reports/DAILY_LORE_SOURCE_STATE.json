@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "cursor": 509,
+  "cursor": 589,
   "decisions": {
     "Science|scientific revolution": {
       "reason": "short-or-non-narrative",
@@ -1691,6 +1691,301 @@
       "reason": "short-or-non-narrative",
       "checkedAt": "2026-10-14T19:20:44.680Z",
       "skipUntil": "2026-11-13T19:20:44.680Z"
+    },
+    "Science|aerodynamics": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T23:11:31.271Z",
+      "skipUntil": "2026-11-13T23:11:31.271Z"
+    },
+    "Civilizations|harappa": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T23:11:31.271Z",
+      "skipUntil": "2026-11-13T23:11:31.271Z"
+    },
+    "People & Ideas|zheng he": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T23:11:31.271Z",
+      "skipUntil": "2026-11-13T23:11:31.271Z"
+    },
+    "Culture|bharatanatyam": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T23:11:31.271Z",
+      "skipUntil": "2026-11-13T23:11:31.271Z"
+    },
+    "Society|social security": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T23:11:31.271Z",
+      "skipUntil": "2026-11-13T23:11:31.271Z"
+    },
+    "Geography|niagara falls": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T23:11:31.271Z",
+      "skipUntil": "2026-11-13T23:11:31.271Z"
+    },
+    "Science|scientific method": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T23:11:31.271Z",
+      "skipUntil": "2026-11-13T23:11:31.271Z"
+    },
+    "Civilizations|mohenjo-daro": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T23:11:31.271Z",
+      "skipUntil": "2026-11-13T23:11:31.271Z"
+    },
+    "Society|feminism in the united states": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T23:11:31.271Z",
+      "skipUntil": "2026-11-13T23:11:31.271Z"
+    },
+    "Geography|angel falls": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T23:11:31.271Z",
+      "skipUntil": "2026-11-13T23:11:31.271Z"
+    },
+    "Science|microscope": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T23:11:31.271Z",
+      "skipUntil": "2026-11-13T23:11:31.271Z"
+    },
+    "People & Ideas|james cook": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T23:11:31.271Z",
+      "skipUntil": "2026-11-13T23:11:31.271Z"
+    },
+    "Culture|indian cuisine": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T23:11:31.271Z",
+      "skipUntil": "2026-11-13T23:11:31.271Z"
+    },
+    "Society|women's rights": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T23:11:31.271Z",
+      "skipUntil": "2026-11-13T23:11:31.271Z"
+    },
+    "Geography|mount kilimanjaro": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T23:11:31.271Z",
+      "skipUntil": "2026-11-13T23:11:31.271Z"
+    },
+    "Science|electron microscope": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T23:11:31.271Z",
+      "skipUntil": "2026-11-13T23:11:31.271Z"
+    },
+    "Civilizations|chola dynasty": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T23:11:31.271Z",
+      "skipUntil": "2026-11-13T23:11:31.271Z"
+    },
+    "People & Ideas|roald amundsen": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T23:11:31.271Z",
+      "skipUntil": "2026-11-13T23:11:31.271Z"
+    },
+    "Culture|indian classical music": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T23:11:31.271Z",
+      "skipUntil": "2026-11-13T23:11:31.271Z"
+    },
+    "Society|civil liberties": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T23:11:31.271Z",
+      "skipUntil": "2026-11-13T23:11:31.271Z"
+    },
+    "Geography|mount fuji": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T23:11:31.271Z",
+      "skipUntil": "2026-11-13T23:11:31.271Z"
+    },
+    "Economics|hyperinflation in the weimar republic": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T23:11:31.271Z",
+      "skipUntil": "2026-11-13T23:11:31.271Z"
+    },
+    "Science|genome sequencing": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T23:11:31.271Z",
+      "skipUntil": "2026-11-13T23:11:31.271Z"
+    },
+    "Culture|yoga": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T23:11:31.271Z",
+      "skipUntil": "2026-11-13T23:11:31.271Z"
+    },
+    "Society|freedom of speech": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T23:11:31.271Z",
+      "skipUntil": "2026-11-13T23:11:31.271Z"
+    },
+    "Geography|mount etna": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T23:11:31.271Z",
+      "skipUntil": "2026-11-13T23:11:31.271Z"
+    },
+    "Economics|history of currency": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T23:11:31.271Z",
+      "skipUntil": "2026-11-13T23:11:31.271Z"
+    },
+    "Science|human genome project": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T23:11:31.271Z",
+      "skipUntil": "2026-11-13T23:11:31.271Z"
+    },
+    "Civilizations|khmer architecture": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T23:11:31.271Z",
+      "skipUntil": "2026-11-13T23:11:31.271Z"
+    },
+    "People & Ideas|hatshepsut": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T23:11:31.271Z",
+      "skipUntil": "2026-11-13T23:11:31.271Z"
+    },
+    "History|louis and clark expedition": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T23:11:31.271Z",
+      "skipUntil": "2026-11-13T23:11:31.271Z"
+    },
+    "Society|freedom of the press": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T23:11:31.271Z",
+      "skipUntil": "2026-11-13T23:11:31.271Z"
+    },
+    "Geography|mount vesuvius": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T23:11:31.271Z",
+      "skipUntil": "2026-11-13T23:11:31.271Z"
+    },
+    "Economics|history of central banking": {
+      "reason": "page-missing",
+      "checkedAt": "2026-10-14T23:11:31.271Z",
+      "skipUntil": "2026-11-13T23:11:31.271Z"
+    },
+    "Science|mendelian inheritance": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T23:11:31.271Z",
+      "skipUntil": "2026-11-13T23:11:31.271Z"
+    },
+    "Civilizations|srivijaya": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T23:11:31.271Z",
+      "skipUntil": "2026-11-13T23:11:31.271Z"
+    },
+    "Culture|persian cuisine": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T23:11:31.271Z",
+      "skipUntil": "2026-11-13T23:11:31.271Z"
+    },
+    "Society|history of journalism": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T23:11:31.271Z",
+      "skipUntil": "2026-11-13T23:11:31.271Z"
+    },
+    "Geography|krakatoa": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T23:11:31.271Z",
+      "skipUntil": "2026-11-13T23:11:31.271Z"
+    },
+    "Economics|history of insurance": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T23:11:31.271Z",
+      "skipUntil": "2026-11-13T23:11:31.271Z"
+    },
+    "Science|cell theory": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T23:11:31.271Z",
+      "skipUntil": "2026-11-13T23:11:31.271Z"
+    },
+    "Civilizations|majapahit": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T23:11:31.271Z",
+      "skipUntil": "2026-11-13T23:11:31.271Z"
+    },
+    "History|transcontinental railroad": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T23:11:31.271Z",
+      "skipUntil": "2026-11-13T23:11:31.271Z"
+    },
+    "Society|history of radio": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T23:11:31.271Z",
+      "skipUntil": "2026-11-13T23:11:31.271Z"
+    },
+    "Geography|mount st. helens": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T23:11:31.271Z",
+      "skipUntil": "2026-11-13T23:11:31.271Z"
+    },
+    "Economics|history of accounting": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T23:11:31.271Z",
+      "skipUntil": "2026-11-13T23:11:31.271Z"
+    },
+    "Science|microbiology": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T23:11:31.271Z",
+      "skipUntil": "2026-11-13T23:11:31.271Z"
+    },
+    "Civilizations|borobudur": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T23:11:31.271Z",
+      "skipUntil": "2026-11-13T23:11:31.271Z"
+    },
+    "History|history of the united nations": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T23:11:31.271Z",
+      "skipUntil": "2026-11-13T23:11:31.271Z"
+    },
+    "Culture|islamic architecture": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T23:11:31.271Z",
+      "skipUntil": "2026-11-13T23:11:31.271Z"
+    },
+    "Society|history of television": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T23:11:31.271Z",
+      "skipUntil": "2026-11-13T23:11:31.271Z"
+    },
+    "Geography|yellowstone caldera": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T23:11:31.271Z",
+      "skipUntil": "2026-11-13T23:11:31.271Z"
+    },
+    "Economics|bank of england": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T23:11:31.271Z",
+      "skipUntil": "2026-11-13T23:11:31.271Z"
+    },
+    "Science|antibiotic": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T23:11:31.271Z",
+      "skipUntil": "2026-11-13T23:11:31.271Z"
+    },
+    "Civilizations|maya script": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T23:11:31.271Z",
+      "skipUntil": "2026-11-13T23:11:31.271Z"
+    },
+    "History|history of the european union": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T23:11:31.271Z",
+      "skipUntil": "2026-11-13T23:11:31.271Z"
+    },
+    "Society|history of photography": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T23:11:31.271Z",
+      "skipUntil": "2026-11-13T23:11:31.271Z"
+    },
+    "Geography|yosemite national park": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T23:11:31.271Z",
+      "skipUntil": "2026-11-13T23:11:31.271Z"
+    },
+    "Economics|federal reserve": {
+      "reason": "short-or-non-narrative",
+      "checkedAt": "2026-10-14T23:11:31.271Z",
+      "skipUntil": "2026-11-13T23:11:31.271Z"
     }
   }
 }
