@@ -1,13 +1,13 @@
 {
   "version": 22,
-  "stage": "V22-D5 multi-publisher pilot",
+  "stage": "V22-D4 multi-topic pilot",
   "feedType": "licensed-world",
-  "updatedAt": "2026-10-13T15:35:31.859Z",
-  "total": 168,
+  "updatedAt": "2026-10-14T10:04:49.420Z",
+  "total": 183,
   "chunks": 1,
-  "chunkSize": 500,
+  "chunkSize": 300,
   "sourceCount": 3,
   "ready": false,
   "readerReady": false,
-  "contentPolicy": "verified-per-publisher"
+  "contentPolicy": "per-publisher-verified"
 }
