@@ -111,6 +111,7 @@ function layoutPages(item, reader, badImages = new Set()) {
   const media = fixture.querySelector('.article-media')
   const paragraph = fixture.querySelector('.article-text')
   const card = fixture.querySelector('.reading-card')
+  const pager = fixture.querySelector('.page-control')
   const figure = document.createElement('figure')
   figure.className = 'photo-figure lore-photo-figure'
   const photo = document.createElement('img')
@@ -121,7 +122,7 @@ function layoutPages(item, reader, badImages = new Set()) {
   media?.replaceChildren(figure)
   const footer = fixture.querySelector('.source-footer')
   if (footer) footer.style.display = 'none'
-  if (!heading || !media || !paragraph || !card) return item.pages
+  if (!heading || !media || !paragraph || !card || !pager) return item.pages
   reader.parentElement.appendChild(fixture)
   try {
     const fits = ({text, cover:isCover, image}) => {
@@ -146,10 +147,13 @@ function layoutPages(item, reader, badImages = new Set()) {
         else { const span = document.createElement('button'); span.type = 'button'; span.className = 'word-token'; span.textContent = token; fragment.appendChild(span) }
       }
       paragraph.replaceChildren(fragment)
-      const room = card.getBoundingClientRect().bottom - paragraph.getBoundingClientRect().top - 13
-      const height = paragraph.getBoundingClientRect().height
-      // An image-only cover is fine; one orphan word beneath an image is not.
-      return room > 26 && height <= room
+      // Read V7: photo, caption, text and pager flow in one column.
+      // A stretched card can create an apparent blank page; instead check
+      // that navigation actually remains inside the visible reading surface.
+      const bounds = fixture.getBoundingClientRect()
+      const bottom = pager.getBoundingClientRect().bottom
+      const paragraphHeight = paragraph.getBoundingClientRect().height
+      return paragraphHeight > 0 && bottom <= bounds.bottom - 8
     }
     // Failed/corrupt thumbnails may not reserve visual space. Reflow their
     // article text immediately, without altering the original source pages.

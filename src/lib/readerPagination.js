@@ -72,8 +72,18 @@ export function planReadingPages(item, fits, {maxPages = 250} = {}) {
       if (fragment) {fragment = ''; index += count}
       else index += count
     } else if (image) {
-      // Reserve a distinct image cover. Never display a single orphan word.
-      text = ''
+      // Read V7: a long opening sentence must not create a nearly empty
+      // photo-only page when a meaningful fragment does fit beneath the photo.
+      // Prefer clause boundaries; never strand a single word below an image.
+      const current = fragment || units[index]
+      const [first, rest] = splitOversizedSentence(current, canFit)
+      if (wordCount(first) >= 6 && canFit(first)) {
+        text = first
+        if (rest) fragment = rest
+        else { fragment = ''; index++ }
+      } else {
+        text = ''
+      }
     } else {
       const current = fragment || units[index]
       const [first, rest] = splitOversizedSentence(current, canFit)

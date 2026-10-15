@@ -664,3 +664,66 @@
   .lore-editorial-v5 .page-control {gap:4px; margin:2px 0 4px;}
   .lore-editorial-v5 .reader-gesture .article-media .lore-photo-caption {font-size:10px;line-height:1.25;margin-top:4px;}
 }
+
+/* DAILY LORE READ V7 — mobile content flow and frameless pager arrows. */
+/* The previous flex:1 card stretched to the bottom even on image-only pages.
+   Natural height keeps the caption, text and pager in one continuous column. */
+.lore-editorial-v5 .reader-gesture .reading-card {
+  flex:0 0 auto;
+  height:auto;
+  min-height:0;
+  overflow:visible;
+}
+.lore-editorial-v5 .reader-gesture .page-control {
+  flex:0 0 auto;
+  margin-top:clamp(10px,1.6dvh,18px);
+  margin-bottom:clamp(8px,1.2dvh,14px);
+}
+/* On phones, leave enough reading space below a cover photograph. */
+@media (max-width:600px) {
+  .lore-editorial-v5 .reader-gesture .article-media {
+    --dn-photo-height:clamp(100px,20dvh,178px);
+  }
+}
+@media (max-width:600px) and (max-height:680px) {
+  .lore-editorial-v5 .reader-gesture .article-media {
+    --dn-photo-height:clamp(78px,17dvh,124px);
+  }
+}
+/* The caption is editorial text, never part of the article's body. */
+.lore-editorial-v5 .reader-gesture .article-media .lore-photo-caption {
+  font:italic 400 clamp(11px,1.55dvh,13px)/1.38 Georgia,'Times New Roman',serif;
+  margin:6px 1px 2px;
+  color:#746f69;
+}
+/* Arrow-only touch targets: keep a 44px hit box, draw no pill or square. */
+.lore-editorial-v5 .lore-page-nav .page-arrow {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  flex:0 0 44px;
+  width:44px;
+  height:44px;
+  padding:0;
+  border:0 !important;
+  border-radius:0 !important;
+  background:transparent !important;
+  box-shadow:none !important;
+  appearance:none;
+  -webkit-appearance:none;
+  color:#35332f;
+  cursor:pointer;
+}
+.lore-editorial-v5 .lore-page-nav .page-arrow:disabled {
+  color:#bdbbb6;
+  opacity:.55;
+  cursor:default;
+}
+.lore-editorial-v5 .lore-page-nav .page-arrow:focus-visible {
+  outline:2px solid #9f6557;
+  outline-offset:1px;
+}
+.lore-editorial-v5 .lore-page-nav .page-arrow svg {
+  width:20px;
+  height:20px;
+}
