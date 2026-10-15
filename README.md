@@ -1,16 +1,32 @@
-# React + Vite
+# DAILY LORE — English Knowledge Reader
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+A React/Vite reader for curated English-language knowledge stories from Wikipedia/Wikimedia Commons. Swipe horizontally through article pages, vertically between articles, and save vocabulary with Read / Words / Review.
 
-Currently, two official plugins are available:
+## Development
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+```sh
+npm ci
+npm run dev
+npm run test
+npm run build
+```
 
-## React Compiler
+## Active publishing pipeline
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- `.github/workflows/daily-lore-library.yml` runs hourly at minute 17 and on selected source changes.
+- `scripts/lore-collect.mjs` discovers and quality-checks curated topics using `scripts/lore/`.
+- `scripts/lore-verify.mjs` validates the approved publication.
+- `public/lore-reader/` is the **only active article feed**. `reports/DAILY_LORE_SOURCE_STATE.json` tracks discovery progress. **Do not delete or regenerate these files manually.**
+- The website loads the feed from `/lore-reader/manifest.json` and reads the chunk JSON files.
 
-## Expanding the Oxlint configuration
+## Reader and user data
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+`src/App.jsx`, `src/App.css`, `src/lib/` and `src/index.css` are application code; do not remove them just because some module names mention 'news'. User vocabulary/history is stored in browser localStorage/IndexedDB and is not part of this repository.
+
+## Old workflows and archive
+
+Historical news workflows are kept under `.github/legacy-workflows/` and are not scheduled. Removed V22 news-data/script/test artifacts can be recovered from the pre-cleanup Git branch or `DAILY_LORE_CLEANUP_REMOVED_FILES.zip` in the cleanup kit. Do not re-enable old workflows unless explicitly restoring the news product.
+
+## Important limits
+
+New stories are published only when source articles meet editorial/rights checks; the hourly job cannot guarantee fresh stories each run. The Read client fetches a new manifest when unread supply is low but cannot initiate server-side scraping instantly.
