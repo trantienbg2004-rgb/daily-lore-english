@@ -52,7 +52,7 @@ export function inspectStagedRelease(report,drafts){
   issues.push(...errors.map(x=>`Draft ${i+1}: ${x}`))
  }
  return {status:issues.length===0?'PASS':'BLOCKED',sourceCount:report?.sourceCount||0,candidates:report?.candidates||0,
-  eligible:report?.eligible||0,geminiCalls:report?.geminiCalls||0,drafts:list.length,
+  eligible:report?.eligible||0,geminiCalls:report?.geminiCalls||0,geminiCandidateAttempts:report?.geminiCandidateAttempts||0,editorialRepairs:report?.editorialRepairs||0,drafts:list.length,
   rejectionCounts:report?.rejected||{},sources:(report?.sourceStatus||[]).map(s=>({source:s.source,feedItems:s.feedItems||0,errors:s.errors||[],error:s.error||''})),
   issues,details,publicFilesChanged:false}
 }
@@ -64,7 +64,9 @@ export function formatSummary(result){
  `| News source adapters | ${result.sourceCount} |`,
  `| RSS candidates | ${result.candidates} |`,
  `| Rights-eligible source articles | ${result.eligible} |`,
- `| Gemini attempts | ${result.geminiCalls} |`,
+ `| Actual Gemini API requests | ${result.geminiCalls} |`,
+ `| News articles attempted with Gemini | ${result.geminiCandidateAttempts} |`,
+ `| Successful editorial regeneration | ${result.editorialRepairs} |`,
  `| Complete three-level stories | ${result.drafts} |`,
  '', '**No publication, no deletion of old articles, no main-branch deployment.**',
  '', '### Source results',

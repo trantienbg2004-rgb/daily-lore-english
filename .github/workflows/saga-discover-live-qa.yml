@@ -11,6 +11,7 @@ on:
       - 'scripts/test/saga-discover-ingestion.test.mjs'
       - 'scripts/test/saga-discover-three-levels.test.mjs'
       - 'scripts/test/saga-discover-extractor-fix.test.mjs'
+      - 'scripts/test/saga-discover-editorial-repair.test.mjs'
       - 'scripts/test/saga-discover-live-qa.test.mjs'
   workflow_dispatch:
 permissions:
@@ -32,7 +33,7 @@ jobs:
       - name: Run all reader regression tests
         run: npm test
       - name: Run ingestion, Gemini, and live QA tests
-        run: node --test scripts/test/saga-discover-ingestion.test.mjs scripts/test/saga-discover-gemini.test.mjs scripts/test/saga-discover-live-qa.test.mjs
+        run: node --test scripts/test/saga-discover-ingestion.test.mjs scripts/test/saga-discover-gemini.test.mjs scripts/test/saga-discover-live-qa.test.mjs scripts/test/saga-discover-editorial-repair.test.mjs
       - name: Run extractor and rights regression tests
         run: node --test scripts/test/saga-discover-extractor-fix.test.mjs
       - name: Verify production build without deploying
@@ -45,7 +46,7 @@ jobs:
             echo 'GEMINI_API_KEY repository secret missing. No request sent.' >&2
             exit 1
           fi
-          node scripts/discover-collect.mjs --gemini --max=8 --max-ai=1
+          node scripts/discover-collect.mjs --gemini --max=8 --max-ai=3 --target-drafts=1
       - name: Independent live draft / reader contract gate
         if: always()
         run: node scripts/discover-live-qa.mjs
