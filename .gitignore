@@ -22,3 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Local SAGA Discover staging (never commit harvested data)
+reports/saga-discover-local/
