@@ -32,8 +32,9 @@ export async function refreshCatalog({fetchImpl,baseUrl,pools=[],now=Date.now(),
  }
  return {pools:next,failures,hasAvailable:next.length>0,checkedAt:now}
 }
-async function refillGlobal({pool,fetchImpl,baseUrl,seen,loaded,seenAt,profile,recent,target,random,maxShards=10}){
- const selected=pickGlobalCandidates(pool.index,{seen,loaded,seenAt,profile,recent,count:Math.max(target*3,90),random})
+async function refillGlobal({pool,fetchImpl,baseUrl,seen,loaded,seenAt,profile,recent,target,random,maxShards=10,newsOnly=false}){
+ const candidates=newsOnly?pool.index.filter(e=>e.contentType==='news'):pool.index
+ const selected=pickGlobalCandidates(candidates,{seen,loaded,seenAt,profile,recent,count:Math.max(target*3,90),random})
  const chosen=[],used=new Set()
  for(const entry of selected.items){if(!used.has(entry.shard)){if(used.size>=maxShards)continue;used.add(entry.shard)}chosen.push(entry)}
  const byShard=new Map(),errors=[]
@@ -56,23 +57,24 @@ async function refillGlobal({pool,fetchImpl,baseUrl,seen,loaded,seenAt,profile,r
  const items=[]
  for(const entry of chosen){
   const story=indexed.get(`${entry.shard}:${entry.id}`)
-  if(story&&readableStory(story)&&!loaded.has(entry.id)&&items.length<target){loaded.add(entry.id);items.push(story)}
+  if(story&&(!newsOnly||story.contentType==='news')&&readableStory(story)&&!loaded.has(entry.id)&&items.length<target){loaded.add(entry.id);items.push(story)}
  }
  // Global mode does not permanently end: earlier read stories can re-enter
  // after the complete unseen library is exhausted and leave the active queue.
- return {items,errors,done:pool.index.length===0||(!selected.items.length&&!selected.fallback),fallback:selected.fallback}
+ return {items,errors,done:candidates.length===0||(!selected.items.length&&!selected.fallback),fallback:selected.fallback}
 }
 export async function refillCatalog({fetchImpl,baseUrl,pools,seen=new Set(),loaded=new Set(),seenAt=new Map(),profile={categories:{}},recent=[],target=30,urgent=false,
- scanFeedImpl=scanFeed,maxChunksPerPool=9,random=Math.random}){
+ scanFeedImpl=scanFeed,maxChunksPerPool=9,random=Math.random,newsOnly=false}){
  const updated=pools.map(p=>({...p})),items=[],errors=[]
  for(const pool of updated){
   if(pool.index){
-   const result=await refillGlobal({pool,fetchImpl,baseUrl,seen,loaded,seenAt,profile,recent,target:target-items.length,random,maxShards:urgent?3:10})
+   const result=await refillGlobal({pool,fetchImpl,baseUrl,seen,loaded,seenAt,profile,recent,target:target-items.length,random,maxShards:urgent?3:10,newsOnly})
    items.push(...result.items);errors.push(...result.errors)
    pool.done=result.done;pool.fallback=result.fallback
    continue
   }
   if(pool.done)continue
+  if(newsOnly){pool.done=true;continue} // Legacy shard fallback is disabled for news-only.
   let loops=0
   do{
    const r=await scanFeedImpl({fetchImpl,baseUrl,order:pool.order,cursor:pool.cursor,updatedAt:pool.manifest.updatedAt,seen,loaded,
