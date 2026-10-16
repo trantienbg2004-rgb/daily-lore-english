@@ -1,0 +1,55 @@
+name: SAGA Discover - licensed 3-level daily news publication
+on:
+  workflow_dispatch:
+  schedule:
+    # 06:23 Hanoi time; GitHub scheduled jobs can be delayed.
+    - cron: '23 23 * * *'
+permissions:
+  contents: write
+concurrency:
+  group: saga-curated-publication
+  cancel-in-progress: false
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - name: Test Reader, Discover and publishing invariants
+        run: |
+          npm test
+          node --test scripts/test/saga-recommendation-v1.test.mjs scripts/test/saga-recommendation-v2.test.mjs scripts/test/saga-discover-bridge.test.mjs scripts/test/saga-news-level-switch.test.mjs scripts/test/saga-discover-editorial-repair.test.mjs
+      - name: Collect only licensed source text and create Gemini reading levels
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: node scripts/discover-publish.mjs
+      - name: Verify published Reader and production build
+        run: |
+          node scripts/lore-verify.mjs
+          npm run build
+      - name: Commit strictly content-only changes
+        shell: bash
+        run: |
+          git config user.name 'saga-discover-bot'
+          git config user.email 'saga-discover-bot@users.noreply.github.com'
+          git add public/lore-reader
+          if git diff --cached --quiet; then
+            echo 'No approved new news today. Old articles stay published.'
+            exit 0
+          fi
+          git commit -m 'SAGA Discover: publish licensed three-level news'
+          for attempt in 1 2 3; do
+            git fetch origin main
+            if git rebase origin/main && git push origin HEAD:main; then exit 0; fi
+            git rebase --abort || true
+            sleep $((attempt * 5))
+          done
+          echo 'Publication push blocked. Main remains unchanged.' >&2
+          exit 1

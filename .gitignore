@@ -22,3 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Discover staging reports include private review metadata and should never be committed
+reports/saga-discover-local/

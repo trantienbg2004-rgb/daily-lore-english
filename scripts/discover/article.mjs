@@ -1,0 +1,67 @@
+import {compact,decode,wordCount} from './clean.mjs'
+import {readingParagraphs,extractGlobalVoicesAuthor,htmlReadingDiagnostics} from './htmlArticle.mjs'
+
+/** Restrict extraction to a bona fide editorial container. Never scrape all
+ * paragraphs on a publisher's home page or use newsletter/sidebar copy. */
+const attr=(html,key)=>String(html).match(new RegExp(`\\b${key}\\s*=\\s*(?:"([^"]*)"|'([^']*)')`,'i'))?.slice(1).find(x=>x!==undefined)||''
+function meta(html,key){
+ const needle=key.toLowerCase()
+ for(const m of String(html).matchAll(/<meta\b[^>]*>/gi)){
+  if([attr(m[0],'property').toLowerCase(),attr(m[0],'name').toLowerCase()].includes(needle))return decode(attr(m[0],'content'))
+ }
+ return ''
+}
+function articleLicense(html){
+ for(const [tag] of String(html).matchAll(/<link\b[^>]*>/gi)){
+  if(/\blicense\b/i.test(attr(tag,'rel'))){
+   const url=attr(tag,'href').replace(/^http:/i,'https:')
+   if(/^https:\/\/creativecommons\.org\/licenses\/(?:by|by-sa)\/\d(?:\.\d)?\/?(?:[#?].*)?$/i.test(url))return url
+   // An explicit non-commercial, no-derivatives or incompatible license
+   // overrides a site's generic footer.
+   return 'restricted-license'
+  }
+ }
+ const footers=[...String(html).matchAll(/<footer\b[^>]*>([\s\S]*?)<\/footer\s*>/gi)]
+ // Legacy Global Voices WordPress layouts sometimes use a named div footer.
+ for(const m of String(html).matchAll(/<div\b[^>]*(?:class|id)\s*=\s*["'][^"']*(?:site-footer|footer-content|footer-widget|global-footer)[^"']*["'][^>]*>([\s\S]{0,8000}?)<\/div\s*>/gi))footers.push(m)
+ for(const [,footer] of footers){
+  const txt=compact(footer)
+  if(/(?:this site is licensed|creative commons attribution)/i.test(txt)){
+   const link=footer.match(/https?:\/\/creativecommons\.org\/licenses\/by\/(?:3\.0|4\.0)\/?/i)
+   if(link)return link[0].replace(/^http:/i,'https:')
+   if(/Creative Commons Attribution 3\.0/i.test(txt))return 'https://creativecommons.org/licenses/by/3.0/'
+  }
+ }
+ // Some live publisher themes use a non-semantic footer. Only accept the
+ // publisher's exact sitewide notice near the END of an actual page, never
+ // an isolated CC link or a quote copied into the article body.
+ const tail=String(html).slice(-35000)
+ const notice=tail.lastIndexOf('This site is licensed as')
+ if(notice>=0){
+  const nearby=tail.slice(notice,notice+1800)
+  const proven=nearby.match(/https?:\/\/creativecommons\.org\/licenses\/by\/(?:3\.0|4\.0)\/?/i)
+  if(proven&&/Creative Commons Attribution/i.test(compact(nearby)))return proven[0].replace(/^http:/i,'https:')
+ }
+ return ''
+}
+const thirdPartyCredits=/(?:\b(?:Photo|Picture|Image|Credit)\s*(?::|by|©)[^\n<]{0,130}\b(?:Reuters|AP Photo|Associated Press|AFP|Getty Images|Shutterstock|iStock|Adobe Stock)\b)|(?:©|copyright)\s*(?:Reuters|Associated Press|Getty Images|Shutterstock)/i
+const syndicated=/(?:\b(?:content[- ]sharing agreement|reprinted with permission|republished (?:from|with permission)|originally published (?:by|in|at)|syndicated from)\b)/i
+const excludedSource=/(?:^|\b)(?:AP Photo|Reuters|AFP|Getty Images|Shutterstock)(?:\b|$)/i
+export function extractArticle(html,sourceId){
+ const paragraphs=readingParagraphs(html)
+ const text=paragraphs.join('\n\n')
+ const author=sourceId==='global-voices'?extractGlobalVoicesAuthor(html):meta(html,'author')||meta(html,'article:author')||''
+ const license=articleLicense(html)
+ // Restrictions within story byline/source and opening body take precedence
+ // over a generic footer CC license. Image credits never grant image rights.
+ const nearStart=String(html).match(/<h1\b/i)?.index||0
+ const opening=compact(String(html).slice(nearStart,nearStart+20000))
+ return {
+  text,wordCount:wordCount(text),paragraphCount:paragraphs.length,
+  extractionStats:htmlReadingDiagnostics(html),imageHint:meta(html,'og:image'),
+  hasThirdPartyNotice:thirdPartyCredits.test(String(html).slice(0,160000)),
+  hasSyndicatedRights:sourceId==='global-voices'&&syndicated.test(opening.slice(0,4800)),
+  explicitLicense:license,credits:'',author:excludedSource.test(author)?'':author,
+  publishedAt:meta(html,'article:published_time')||'',sourceId,
+ }
+}

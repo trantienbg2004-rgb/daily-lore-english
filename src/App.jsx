@@ -13,6 +13,7 @@ import { resolvePhoto, photoResult } from './lib/photoLoad.js'
 import { displayHeadline, readerSection } from './lib/editorial.js'
 import { loadRecommendationProfile, rememberReading, rankRecommendations } from './lib/recommendationEngine.js'
 import { handleReaderArrowKey } from './lib/readerKeyboard.js'
+import {NEWS_LEVELS, NEWS_LEVEL_KEY, isNewsLevel, loadNewsLevel, applyNewsLevel} from './lib/newsLevels.js'
 
 
 // Store original articles untouched: the phone decides how many reading pages fit.
@@ -351,6 +352,9 @@ function Icon({ name, size = 24 }) {
 function App() {
   const [tab, setTab] = useState('read')
   const [storyIndex, setStoryIndex] = useState(0)
+  const [readingLevel, setReadingLevel] = useState(() => loadNewsLevel(typeof localStorage === 'undefined' ? null : localStorage))
+  const readingLevelRef = useRef(readingLevel)
+  readingLevelRef.current = readingLevel
   const [stories, setStories] = useState([])
   const [feedCursor, setFeedCursor] = useState(0)
   const [feedDone, setFeedDone] = useState(false)
@@ -369,6 +373,7 @@ function App() {
   const feedBusy = useRef(false)
   const seenRef = useRef(readLegacyHistory())
   const loadedRef = useRef(new Set())
+  const seenAtRef = useRef(new Map())
   const historyDbRef = useRef(null)
   const historyReadyRef = useRef(false)
   const [page, setPage] = useState(0)
@@ -401,6 +406,14 @@ function App() {
   const lastNavigationGesture = useRef(0)
   const [slide, setSlide] = useState(null)
   const slideTimer = useRef(null)
+  const changeReadingLevel = level => {
+    if (!isNewsLevel(level) || level === readingLevel) return
+    setReadingLevel(level)
+    try { localStorage.setItem(NEWS_LEVEL_KEY, level) } catch { /* private mode */ }
+    setStories(items => items.map(item => item.levelVariants ? paginateStory(applyNewsLevel(item, level)) : item))
+    setPage(0)
+    setPageMotion(null)
+  }
   const story = stories[storyIndex] || null
   const currentPage = story?.pages?.[page] || null
 
@@ -492,7 +505,8 @@ function App() {
       if (forceScan) poolsRef.current = poolsRef.current.map(p=>({...p,cursor:0,done:false}))
       if (remaining<BUFFER_TARGET || urgent || forceScan) {
         const result = await refillCatalog({fetchImpl:fetch,baseUrl:import.meta.env.BASE_URL,
-          pools:poolsRef.current,seen:seenRef.current,loaded:loadedRef.current,
+          pools:poolsRef.current,seen:seenRef.current,loaded:loadedRef.current,seenAt:seenAtRef.current,
+          profile:recommendationProfileRef.current,recent:storiesRef.current.slice(Math.max(0,storyIndexRef.current-5),storyIndexRef.current+1),
           target:urgent?1:Math.max(1,BUFFER_TARGET-remaining),urgent})
         poolsRef.current = result.pools
         doneRef.current = result.done
@@ -501,9 +515,9 @@ function App() {
         setFeedDone(doneRef.current)
         appended = result.items.length
         if (appended) {
-          const recommended = rankRecommendations(result.items,{profile:recommendationProfileRef.current,
+          const recommended = poolsRef.current.some(p=>Array.isArray(p.index)) ? result.items : rankRecommendations(result.items,{profile:recommendationProfileRef.current,
             seen:seenRef.current,recent:storiesRef.current.slice(Math.max(0,storyIndexRef.current-5),storyIndexRef.current+1)})
-          setStories(old=>[...old,...recommended.map(paginateStory)])
+          setStories(old=>[...old,...recommended.map(item => paginateStory(applyNewsLevel(item, readingLevelRef.current)))])
         }
         if (result.errors.length) {
           console.warn('Some reader sources temporarily unavailable:',result.errors)
@@ -535,10 +549,11 @@ function App() {
   const refreshFeed = () => loadFeed({forceCheck:true,forceScan:true})
   useEffect(() => {
     let stopped = false
-    initializeSeenHistory().then(({seen, db}) => {
+    initializeSeenHistory().then(({seen, db, seenAt}) => {
       if (stopped) { db?.close(); return }
       seenRef.current = new Set([...seenRef.current, ...seen])
       historyDbRef.current = db
+      seenAtRef.current = seenAt || new Map()
       historyReadyRef.current = true
       loadFeed({forceCheck: true})
     })
@@ -554,7 +569,7 @@ function App() {
     const id = storyId(story)
     if (seenRef.current.has(id)) return
     seenRef.current.add(id)
-    persistReadMarker(historyDbRef.current, id, seenRef.current)
+    persistReadMarker(historyDbRef.current, id, seenRef.current, localStorage, seenAtRef.current)
     recommendationProfileRef.current = rememberReading(recommendationProfileRef.current, story, localStorage)
   }, [storyIndex, story])
   useEffect(() => {
@@ -592,7 +607,11 @@ function App() {
     if (slide || storyIndex < 100 || tab !== 'read') return
     const remove = storyIndex - 40
     storyIndexRef.current = 40
-    setStories(old => old.slice(remove))
+    setStories(old => {
+      const retained=old.slice(remove)
+      loadedRef.current=new Set(retained.map(storyId))
+      return retained
+    })
     setStoryIndex(40)
   }, [storyIndex, slide, tab])
   // A forward swipe at the edge is completed as soon as its next item arrives.
@@ -847,7 +866,7 @@ function App() {
     const tokens = closing ? [] : itemPage.text.split(/(\s+)/)
     const total = item.pages.length + 1 // always a distinct source / next-story page
     return <div className="reader-gesture" aria-hidden={!interactive} onTouchStart={interactive ? startGesture : undefined} onTouchMove={interactive ? moveGesture : undefined} onTouchEnd={interactive ? endGesture : undefined} onTouchCancel={interactive ? cancelGesture : undefined} onPointerDown={interactive ? startPointer : undefined} onPointerMove={interactive ? movePointer : undefined} onPointerUp={interactive ? endPointer : undefined} onPointerCancel={interactive ? () => {pointerGesture.current = null; releasePageSurface()} : undefined}>
-      <header className="topbar lore-reader-topbar">{interactive && index === stories.length - 1 && <span className="reader-edge-status" role="status" aria-live="polite">{waitingForNext ? (feedRetrying ? 'Reconnecting…' : 'Finding next…') : feedDone ? 'Up to date' : feedLoading ? 'Loading…' : 'Swipe up · Next ↓'}</span>}</header>
+      <header className="topbar lore-reader-topbar">{interactive && item.levelVariants && <label className="saga-news-level">Level <select aria-label="English reading level" disabled={!interactive} value={readingLevel} onChange={event => changeReadingLevel(event.target.value)} onKeyDown={event => event.stopPropagation()}>{NEWS_LEVELS.map(level => <option key={level} value={level}>{level}</option>)}</select></label>}{interactive && index === stories.length - 1 && <span className="reader-edge-status" role="status" aria-live="polite">{waitingForNext ? (feedRetrying ? 'Reconnecting…' : 'Finding next…') : feedDone ? 'Up to date' : feedLoading ? 'Loading…' : 'Swipe up · Next ↓'}</span>}</header>
       <div key={`${index}:${pageNumber}`} className={'page-surface ' + (interactive && pageMotion ? (pageMotion > 0 ? 'page-enter-left' : 'page-enter-right') : '')}>
       {closing ? <section className="story-end" aria-label="Article completed">
         <div className="story-end-center"><Icon name="book" size={56}/><h2>That's the story.</h2>

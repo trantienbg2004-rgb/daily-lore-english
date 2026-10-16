@@ -15,7 +15,7 @@ on:
 permissions:
   contents: write
 concurrency:
-  group: daily-lore-editorial-publication
+  group: saga-curated-publication
   cancel-in-progress: false
 jobs:
   publish-curated-knowledge:
@@ -34,6 +34,8 @@ jobs:
         run: node scripts/lore-collect.mjs --limit=80
       - name: Verify every published article and photo metadata
         run: node scripts/lore-verify.mjs
+      - name: Rebuild global recommendation catalog index
+        run: node scripts/build-reader-index.mjs
       - name: Commit only verified curated release
         shell: bash
         run: |
