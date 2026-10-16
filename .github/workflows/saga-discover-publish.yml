@@ -1,0 +1,79 @@
+name: SAGA Discover - automatic news
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '17 0,12 * * *'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: saga-news-publication
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          persist-credentials: true
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run regression tests
+        run: |
+          npm test
+          node --test scripts/test/saga-recommendation-v2.test.mjs scripts/test/saga-discover-bridge.test.mjs scripts/test/saga-news-level-switch.test.mjs scripts/test/saga-discover-editorial-repair.test.mjs
+
+      - name: Collect and publish verified news
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: node scripts/auto-news.mjs
+
+      - name: Validate and build
+        run: |
+          node scripts/lore-verify.mjs
+          npm run build
+
+      - name: Commit news catalog
+        shell: bash
+        run: |
+          set -e
+          git config user.name "saga-news-bot"
+          git config user.email "saga-news-bot@users.noreply.github.com"
+          git add public/lore-reader/
+
+          if git diff --cached --quiet; then
+            echo "No new approved news."
+            exit 0
+          fi
+
+          git commit -m "SAGA: publish verified news"
+
+          for attempt in 1 2 3; do
+            git fetch origin main
+
+            if git rebase origin/main && git push origin HEAD:main; then
+              echo "SAGA NEWS PUBLISHED"
+              exit 0
+            fi
+
+            git rebase --abort || true
+            sleep $((attempt * 5))
+          done
+
+          echo "Push failed; publication not confirmed."
+          exit 1

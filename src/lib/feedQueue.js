@@ -57,9 +57,10 @@ export async function fetchManifest(fetchImpl, baseUrl, nonce = Date.now(), feed
   if (!Number.isSafeInteger(count) || count < 0 || count > 100000) throw new Error('Invalid feed manifest')
   const total = manifest?.total == null ? null : Number(manifest.total)
   if (total !== null && (!Number.isSafeInteger(total) || total < 0 || total > 1000000)) throw new Error('Invalid feed total')
-  return {count, total, version: `${manifest.contentHash || manifest.updatedAt || ''}:${count}:${total ?? 'unknown'}`, updatedAt: manifest.updatedAt || '',
+  return {count, total, version: `${manifest.contentHash || manifest.updatedAt || ''}:${manifest.catalogIndexHash || ''}:${count}:${total ?? 'unknown'}`, updatedAt: manifest.updatedAt || '',
     ready: manifest.ready, feedType: manifest.feedType, sourceCount: manifest.sourceCount, editorialVersion: Number(manifest.editorialVersion || 0),
-    withVerifiedPhoto: Number(manifest.withVerifiedPhoto || 0), sourcePhotosOnly: manifest.sourcePhotosOnly === true, contentHash: manifest.contentHash || ''}
+    withVerifiedPhoto: Number(manifest.withVerifiedPhoto || 0), sourcePhotosOnly: manifest.sourcePhotosOnly === true, contentHash: manifest.contentHash || '',
+    indexFile: manifest.catalogIndex === 'catalog-index.json' ? 'catalog-index.json' : '', indexHash: manifest.catalogIndexHash || ''}
 }
 
 async function fetchChunk(fetchImpl, baseUrl, chunkNumber, updatedAt, feedPath = 'feed') {

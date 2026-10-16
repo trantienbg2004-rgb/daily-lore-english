@@ -5,6 +5,7 @@ import fs from 'node:fs/promises'
 import path from 'node:path'
 import {createHash} from 'node:crypto'
 import {fileURLToPath} from 'node:url'
+import {isPublishedNewsStory} from './discover/bridge.mjs'
 import {CURATED_TOPICS,scheduledTopics,TOPIC_CATEGORIES} from './lore/topics.mjs'
 import {collectWikipediaTopic} from './lore/wiki.mjs'
 import {editorialGate} from './lore/editorial.mjs'
@@ -22,15 +23,15 @@ export async function readExisting(base){
   if(!Array.isArray(part))throw Error('Corrupt existing lore chunk')
   chunks.push(...part)
  }
- if(chunks.length!==manifest.total||chunks.some(s=>!editorialGate(s).accepted))throw Error('Existing lore publication does not pass quality gates')
+ if(chunks.length!==manifest.total||chunks.some(s=>!(editorialGate(s).accepted||isPublishedNewsStory(s))))throw Error('Existing lore publication does not pass quality gates')
  return chunks
 }
 export async function publishLibrary({base=process.cwd(),stories=[],now=new Date(),minStories=15}={}){
- const approved=[...new Map(stories.filter(x=>editorialGate(x).accepted).map(x=>[x.id,x])).values()]
+ const approved=[...new Map(stories.filter(x=>editorialGate(x).accepted||isPublishedNewsStory(x)).map(x=>[x.id,x])).values()]
  const byTopic=Object.fromEntries(TOPIC_CATEGORIES.map(x=>[x,approved.filter(p=>p.category===x).length]))
- const manifest={feedType:'lore',editorialVersion:1,ready:approved.length>=minStories,total:approved.length,chunks:Math.ceil(approved.length/20),sourceCount:1,
+ const manifest={feedType:'lore',editorialVersion:1,ready:approved.length>=minStories,total:approved.length,chunks:Math.ceil(approved.length/20),sourceCount:new Set(approved.map(x=>x.sourceName||x.publisher)).size,
   withVerifiedPhoto:approved.filter(p=>p.pages.some(x=>x.image)).length,sourcePhotosOnly:true,byTopic,
-  contentHash:hash(approved.map(x=>[x.id,x.sourceRevisionId,x.pages])),updatedAt:now.toISOString(),licenseNotice:'CC BY-SA 4.0 text; per-image Commons credits in article'}
+  contentHash:hash(approved.map(x=>[x.id,x.sourceRevisionId,x.pages])),updatedAt:now.toISOString(),licenseNotice:'Licenses and original sources are provided per article; Wikimedia photos retain separate credits'}
  if(!manifest.ready)return {published:false,manifest,reason:`only ${approved.length} approved articles; minimum ${minStories}`}
  const out=path.join(base,'public/lore-reader')
  if(await exists(path.join(out,'manifest.json'))){

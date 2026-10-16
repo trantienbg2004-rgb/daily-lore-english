@@ -10,8 +10,10 @@ import { QUEUE_TARGET, LOW_STOCK_POLL_MS, queuedUnread, lowOnStories, refreshDue
 import { createEdgeNavigation } from './lib/edgeNavigation.js'
 import { photoLabel, photoSourceLink } from './lib/photoPresentation.js'
 import { resolvePhoto, photoResult } from './lib/photoLoad.js'
-import { displayHeadline, readerSection, orderEditorial } from './lib/editorial.js'
+import { displayHeadline, readerSection } from './lib/editorial.js'
+import { loadRecommendationProfile, rememberReading, rankRecommendations } from './lib/recommendationEngine.js'
 import { handleReaderArrowKey } from './lib/readerKeyboard.js'
+import {NEWS_LEVELS, NEWS_LEVEL_KEY, isNewsLevel, loadNewsLevel, applyNewsLevel} from './lib/newsLevels.js'
 
 
 // Store original articles untouched: the phone decides how many reading pages fit.
@@ -350,6 +352,9 @@ function Icon({ name, size = 24 }) {
 function App() {
   const [tab, setTab] = useState('read')
   const [storyIndex, setStoryIndex] = useState(0)
+  const [readingLevel, setReadingLevel] = useState(() => loadNewsLevel(typeof localStorage === 'undefined' ? null : localStorage))
+  const readingLevelRef = useRef(readingLevel)
+  readingLevelRef.current = readingLevel
   const [stories, setStories] = useState([])
   const [feedCursor, setFeedCursor] = useState(0)
   const [feedDone, setFeedDone] = useState(false)
@@ -368,6 +373,7 @@ function App() {
   const feedBusy = useRef(false)
   const seenRef = useRef(readLegacyHistory())
   const loadedRef = useRef(new Set())
+  const seenAtRef = useRef(new Map())
   const historyDbRef = useRef(null)
   const historyReadyRef = useRef(false)
   const [page, setPage] = useState(0)
@@ -400,6 +406,14 @@ function App() {
   const lastNavigationGesture = useRef(0)
   const [slide, setSlide] = useState(null)
   const slideTimer = useRef(null)
+  const changeReadingLevel = level => {
+    if (!isNewsLevel(level) || level === readingLevel) return
+    setReadingLevel(level)
+    try { localStorage.setItem(NEWS_LEVEL_KEY, level) } catch { /* private mode */ }
+    setStories(items => items.map(item => item.levelVariants ? paginateStory(applyNewsLevel(item, level)) : item))
+    setPage(0)
+    setPageMotion(null)
+  }
   const story = stories[storyIndex] || null
   const currentPage = story?.pages?.[page] || null
 
@@ -442,6 +456,7 @@ function App() {
   // 58-image feed and pretending those 58 stories are infinite.
   // Newly published chunks are checked automatically while the app is open.
   const BUFFER_TARGET = QUEUE_TARGET
+  const recommendationProfileRef = useRef(loadRecommendationProfile(typeof localStorage === 'undefined' ? null : localStorage))
   const poolsRef = useRef([])
   const cursorRef = useRef(0)
   const doneRef = useRef(false)
@@ -490,15 +505,20 @@ function App() {
       if (forceScan) poolsRef.current = poolsRef.current.map(p=>({...p,cursor:0,done:false}))
       if (remaining<BUFFER_TARGET || urgent || forceScan) {
         const result = await refillCatalog({fetchImpl:fetch,baseUrl:import.meta.env.BASE_URL,
-          pools:poolsRef.current,seen:seenRef.current,loaded:loadedRef.current,
-          target:urgent?1:Math.max(1,BUFFER_TARGET-remaining),urgent})
+          pools:poolsRef.current,seen:seenRef.current,loaded:loadedRef.current,seenAt:seenAtRef.current,
+          profile:recommendationProfileRef.current,recent:storiesRef.current.slice(Math.max(0,storyIndexRef.current-5),storyIndexRef.current+1),
+          target:urgent?1:Math.max(1,BUFFER_TARGET-remaining),urgent,newsOnly:true})
         poolsRef.current = result.pools
         doneRef.current = result.done
         cursorRef.current = result.pools.reduce((total,p)=>total+p.cursor,0)
         setFeedCursor(cursorRef.current)
         setFeedDone(doneRef.current)
         appended = result.items.length
-        if (appended) setStories(old=>[...old,...orderEditorial(result.items).map(paginateStory)])
+        if (appended) {
+          const recommended = poolsRef.current.some(p=>Array.isArray(p.index)) ? result.items : rankRecommendations(result.items,{profile:recommendationProfileRef.current,
+            seen:seenRef.current,recent:storiesRef.current.slice(Math.max(0,storyIndexRef.current-5),storyIndexRef.current+1)})
+          setStories(old=>[...old,...recommended.map(item => paginateStory(applyNewsLevel(item, readingLevelRef.current)))])
+        }
         if (result.errors.length) {
           console.warn('Some reader sources temporarily unavailable:',result.errors)
           if (!appended) {setFeedRetrying(true);scheduleRetry()}
@@ -529,10 +549,11 @@ function App() {
   const refreshFeed = () => loadFeed({forceCheck:true,forceScan:true})
   useEffect(() => {
     let stopped = false
-    initializeSeenHistory().then(({seen, db}) => {
+    initializeSeenHistory().then(({seen, db, seenAt}) => {
       if (stopped) { db?.close(); return }
       seenRef.current = new Set([...seenRef.current, ...seen])
       historyDbRef.current = db
+      seenAtRef.current = seenAt || new Map()
       historyReadyRef.current = true
       loadFeed({forceCheck: true})
     })
@@ -548,7 +569,8 @@ function App() {
     const id = storyId(story)
     if (seenRef.current.has(id)) return
     seenRef.current.add(id)
-    persistReadMarker(historyDbRef.current, id, seenRef.current)
+    persistReadMarker(historyDbRef.current, id, seenRef.current, localStorage, seenAtRef.current)
+    recommendationProfileRef.current = rememberReading(recommendationProfileRef.current, story, localStorage)
   }, [storyIndex, story])
   useEffect(() => {
     if (tab !== 'read' || !historyReadyRef.current) return
@@ -585,7 +607,11 @@ function App() {
     if (slide || storyIndex < 100 || tab !== 'read') return
     const remove = storyIndex - 40
     storyIndexRef.current = 40
-    setStories(old => old.slice(remove))
+    setStories(old => {
+      const retained=old.slice(remove)
+      loadedRef.current=new Set(retained.map(storyId))
+      return retained
+    })
     setStoryIndex(40)
   }, [storyIndex, slide, tab])
   // A forward swipe at the edge is completed as soon as its next item arrives.
@@ -840,7 +866,7 @@ function App() {
     const tokens = closing ? [] : itemPage.text.split(/(\s+)/)
     const total = item.pages.length + 1 // always a distinct source / next-story page
     return <div className="reader-gesture" aria-hidden={!interactive} onTouchStart={interactive ? startGesture : undefined} onTouchMove={interactive ? moveGesture : undefined} onTouchEnd={interactive ? endGesture : undefined} onTouchCancel={interactive ? cancelGesture : undefined} onPointerDown={interactive ? startPointer : undefined} onPointerMove={interactive ? movePointer : undefined} onPointerUp={interactive ? endPointer : undefined} onPointerCancel={interactive ? () => {pointerGesture.current = null; releasePageSurface()} : undefined}>
-      <header className="topbar lore-reader-topbar">{interactive && index === stories.length - 1 && <span className="reader-edge-status" role="status" aria-live="polite">{waitingForNext ? (feedRetrying ? 'Reconnecting…' : 'Finding next…') : feedDone ? 'Up to date' : feedLoading ? 'Loading…' : 'Swipe up · Next ↓'}</span>}</header>
+      <header className="topbar lore-reader-topbar">{interactive && item.levelVariants && <label className="saga-news-level">Level <select aria-label="English reading level" disabled={!interactive} value={readingLevel} onChange={event => changeReadingLevel(event.target.value)} onKeyDown={event => event.stopPropagation()}>{NEWS_LEVELS.map(level => <option key={level} value={level}>{level}</option>)}</select></label>}{interactive && index === stories.length - 1 && <span className="reader-edge-status" role="status" aria-live="polite">{waitingForNext ? (feedRetrying ? 'Reconnecting…' : 'Finding next…') : feedDone ? 'Up to date' : feedLoading ? 'Loading…' : 'Swipe up · Next ↓'}</span>}</header>
       <div key={`${index}:${pageNumber}`} className={'page-surface ' + (interactive && pageMotion ? (pageMotion > 0 ? 'page-enter-left' : 'page-enter-right') : '')}>
       {closing ? <section className="story-end" aria-label="Article completed">
         <div className="story-end-center"><Icon name="book" size={56}/><h2>That's the story.</h2>
@@ -885,7 +911,7 @@ function App() {
         {tab === 'read' && <div className="story-viewport" onWheel={onReaderWheel}>
           {slide && stories[slide.from] && <div key={'old-'+slide.stamp} className={'story-layer outgoing '+(slide.direction>0?'slide-up':'slide-down')}>{renderStory(stories[slide.from], slide.from, slide.fromPage, false)}</div>}
           {story && <div key={'active-'+storyIndex} className={'story-layer '+(slide?(slide.direction>0?'enter-from-bottom':'enter-from-top'):'')}>{renderStory(story, storyIndex, page, true)}</div>}
-          {!story && <div className="feed-empty"><h2>{feedLoading ? 'Preparing your next discovery…' : feedDone ? 'You’re all caught up.' : 'Stories are temporarily unavailable.'}</h2><p>{feedDone ? 'You have read every available story on this device. New knowledge stories will appear as they pass editorial checks.' : 'Check your connection or try again.'}</p><button className="primary" onClick={refreshFeed} disabled={feedLoading}>{feedLoading ? 'Loading…' : 'Check for new stories'}</button></div>}
+          {!story && <div className="feed-empty"><h2>{feedLoading ? 'Preparing your next discovery…' : feedDone ? 'You’re all caught up.' : 'Stories are temporarily unavailable.'}</h2><p>{feedDone ? 'You have read every available story on this device. New verified news stories will appear after publication.' : 'Check your connection or try again.'}</p><button className="primary" onClick={refreshFeed} disabled={feedLoading}>{feedLoading ? 'Loading…' : 'Check for new stories'}</button></div>}
         </div>}
         {tab === 'words' && <><header className="section-header"><span className="eyebrow">YOUR PERSONAL COLLECTION</span><h1>Saved words<span className="period">.</span></h1><p>Small discoveries, remembered.</p></header><div className="count-line">{words.length} {words.length === 1 ? 'WORD' : 'WORDS'} COLLECTED</div>{words.length === 0 ? <div className="empty"><Icon name="bookmark" size={40}/><h2>Your collection begins here.</h2><p>Read a story, tap a word, and save it to keep learning.</p><button className="primary" onClick={() => setTab('read')}>Start reading →</button></div> : <div className="saved-list">{words.map(item => <div className="saved-item" key={item.word}><div><h2><button className="saved-word-open" onClick={() => setSelected(item.word)}>{item.word}</button></h2>{item.partOfSpeech && <span className="word-meta">{item.partOfSpeech}</span>}{item.phonetic && <span className="word-meta">{item.phonetic}</span>}<p>{item.definition || offlineMeaning(item.word) || 'No definition yet. See the example sentence below.'}</p>{item.sentence && <p className="word-context">“{item.sentence}”</p>}</div><button onClick={() => { setWords(current => current.filter(w => w.word !== item.word)); setReviewIndex(0); setFinished(false) }} aria-label={`Remove ${item.word}`}><Icon name="close" size={19}/></button></div>)}</div>}</>}
         {tab === 'review' && <><header className="section-header"><span className="eyebrow">A MOMENT TO REMEMBER</span><h1>Daily review<span className="period">.</span></h1><p>Learn a little. Remember a lot.</p></header>{words.length === 0 ? <div className="empty"><Icon name="layers" size={42}/><h2>Nothing to review yet.</h2><p>Save a few words while reading. They will appear here.</p><button className="primary" onClick={() => setTab('read')}>Explore a story →</button></div> : finished ? <div className="empty"><Icon name="check" size={44}/><h2>Beautiful work.</h2><p>You have reviewed all {words.length} saved words.</p><button className="primary" onClick={() => { setFinished(false); setReviewIndex(0); setRevealed(false) }}>Review again →</button></div> : <><div className="review-count">CARD {Math.min(reviewIndex + 1, words.length)} OF {words.length}</div><button className="flashcard" onClick={() => setRevealed(r => !r)}><span>{revealed ? 'THE MEANING' : 'DO YOU REMEMBER?'}</span><strong>{revealed ? (words[Math.min(reviewIndex, words.length - 1)].definition || offlineMeaning(words[Math.min(reviewIndex, words.length - 1)].word) || 'No definition yet. Open this word in Words to retry.') : words[Math.min(reviewIndex, words.length - 1)].word}</strong><small>{revealed ? 'Tap to see the word' : 'Tap to reveal meaning'}</small></button><button className="primary review-next" onClick={nextReview}>{reviewIndex + 1 >= words.length ? 'Finish review' : 'Next word'} →</button></>}</>}
