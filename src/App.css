@@ -727,3 +727,71 @@
   width:20px;
   height:20px;
 }
+
+/* SAGA READ V8 — photo-sized paper frames, anchored pager and mobile flow. */
+.lore-editorial-v5 .reader-gesture .page-surface {
+  flex:1 1 0;
+  min-height:0;
+  overflow:hidden;
+}
+.lore-editorial-v5 .reader-gesture .article-media .photo-figure.lore-photo-figure {
+  box-sizing:border-box;
+  flex:0 0 auto;
+  width:fit-content;
+  max-width:min(78%,340px);
+  min-width:0;
+  align-self:flex-start;
+  overflow:visible;
+}
+.lore-editorial-v5 .reader-gesture .article-media .lore-photo-figure img {
+  box-sizing:border-box;
+  width:100%;
+  max-width:100%;
+  height:auto;
+}
+.lore-editorial-v5 .reader-gesture .article-media .lore-photo-caption {
+  box-sizing:border-box;
+  display:block;
+  width:100%;
+  max-width:100%;
+  min-width:0;
+  margin:6px 0 2px;
+  overflow-wrap:anywhere;
+  word-break:normal;
+  white-space:normal;
+}
+/* The pager is bottom-anchored inside the fixed-height reading surface.
+   It must NOT follow the paragraph's length on short pages. */
+.lore-editorial-v5 .reader-gesture .page-control {
+  margin-top:auto;
+  margin-bottom:0;
+  padding-top:clamp(6px,1dvh,12px);
+  padding-bottom:clamp(9px,1.5dvh,15px);
+  flex:0 0 auto;
+  width:100%;
+  box-sizing:border-box;
+}
+/* Reserve comfortable text space on small phones, also for tall photographs. */
+@media(max-width:600px) {
+  .lore-editorial-v5 .reader-gesture .article-media {
+    --dn-photo-height:clamp(95px,18dvh,156px);
+  }
+}
+@media(max-width:600px) and (max-height:680px) {
+  .lore-editorial-v5 .reader-gesture .article-media {
+    --dn-photo-height:clamp(78px,16dvh,116px);
+  }
+}
+
+/* SAGA V8: the pager is a SIBLING of .page-surface, not its child.
+   Horizontal page animations do not move the controls; the flex surface
+   occupies the remaining height regardless of text length. */
+.lore-editorial-v5 .reader-gesture > .page-control {
+  position:relative;
+  z-index:2;
+  width:100%;
+  flex:0 0 auto;
+  margin:0;
+  padding-top:clamp(6px,1dvh,12px);
+  padding-bottom:clamp(9px,1.5dvh,15px);
+}

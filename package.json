@@ -8,7 +8,7 @@
     "build": "vite build",
     "lint": "oxlint",
     "preview": "vite preview",
-    "test": "node --test scripts/test/history.test.mjs scripts/test/lore-continuity.test.mjs scripts/test/lore-final-handover.test.mjs scripts/test/lore-final.test.mjs scripts/test/lore-low-stock.test.mjs scripts/test/read-editorial-v5.test.mjs scripts/test/read-editorial-v6.test.mjs"
+    "test": "node --test scripts/test/history.test.mjs scripts/test/lore-continuity.test.mjs scripts/test/lore-final-handover.test.mjs scripts/test/lore-final.test.mjs scripts/test/lore-low-stock.test.mjs scripts/test/read-editorial-v5.test.mjs scripts/test/read-editorial-v6.test.mjs scripts/test/read-mobile-v7.test.mjs scripts/test/saga-mobile-v8.test.mjs"
   },
   "dependencies": {
     "react": "^19.2.8",

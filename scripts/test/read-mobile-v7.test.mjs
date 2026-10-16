@@ -35,9 +35,10 @@ test('No style can draw a pill or square around Read arrows',()=>{
   assert.match(css,/flex:0 0 44px/)
 })
 
-test('Natural flow includes pager within available viewport for measurement',()=>{
+test('Pager stays reserved while pagination checks text fits above it',()=>{
   assert.match(app,/const pager = fixture\.querySelector\('\.page-control'\)/)
-  assert.match(app,/pager\.getBoundingClientRect\(\)\.bottom/)
+  assert.match(app,/pagerBounds\.top - 8/)
+  assert.match(app,/pagerBounds\.bottom <= viewportBottom - 2/)
   assert.match(css,/\.lore-editorial-v5 \.reader-gesture \.reading-card\s*\{\s*flex:0 0 auto;/)
 })
 

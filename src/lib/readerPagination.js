@@ -25,24 +25,26 @@ export function sentenceUnits(text) {
 }
 
 function splitOversizedSentence(text, fits) {
-  // In an unusually long sentence, prefer a natural clause boundary.
+  // First calculate how many words really fit, then prefer a nearby clause
+  // break. The old algorithm would choose a 6-word semicolon fragment even
+  // if the viewport had room for 25 words (notably the CRISPR article).
   const words = text.split(/\s+/u)
-  const breaks = []
-  for (let i = 0; i < words.length - 1; i++) {
-    if (/[,;:—–][”’"')\]]*$/u.test(words[i])) breaks.push(i + 1)
+  let take = 0, low = 1, high = words.length
+  while (low <= high) {
+    const mid = Math.floor((low + high) / 2)
+    if (fits(words.slice(0, mid).join(' '))) { take = mid; low = mid + 1 }
+    else high = mid - 1
   }
-  let take = 0
-  for (const size of breaks) if (fits(words.slice(0, size).join(' '))) take = size
-  if (!take) {
-    // Only when NO complete sentence or clause fits on an otherwise empty page.
-    let low = 1, high = words.length
-    while (low <= high) {
-      const mid = Math.floor((low + high) / 2)
-      if (fits(words.slice(0, mid).join(' '))) { take = mid; low = mid + 1 }
-      else high = mid - 1
+  const capacity = take
+  if (capacity >= 8) {
+    const closeBreaks = []
+    for (let i = 0; i < capacity; i++) {
+      if (/[,;:—–][”’"')\]]*$/u.test(words[i])) closeBreaks.push(i + 1)
     }
+    const preferred = closeBreaks.filter(n => n >= 8 && n >= capacity * .72)
+    if (preferred.length) take = preferred[preferred.length - 1]
   }
-  // Even an extremely small viewport must make forward progress.
+  // A tiny viewport still makes progress; normal viewports use their space.
   take = Math.max(1, take)
   return [words.slice(0, take).join(' '), words.slice(take).join(' ')]
 }

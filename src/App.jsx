@@ -23,14 +23,20 @@ const paginateStory = original => {
 // Photo frames use their true intrinsic aspect ratio. Fit within both the
 // reader width and the viewport's responsive photo height, without cropping.
 function fitPhoto(img) {
-  if (!img?.naturalWidth || !img?.naturalHeight || !img.parentElement) return
+  if (!img?.naturalWidth || !img?.naturalHeight) return
+  const frame = img.closest('.lore-photo-figure')
+  const media = img.closest('.article-media')
+  if (!frame || !media || !media.clientWidth) return
   const maxHeight = parseFloat(getComputedStyle(img).maxHeight) || 148
-  const maxWidth = Math.min(img.parentElement.clientWidth, img.parentElement.parentElement?.clientWidth || Infinity)
   const ratio = img.naturalWidth / img.naturalHeight
-  if (!maxWidth || !Number.isFinite(ratio) || ratio <= 0) return
-  const width = Math.min(maxWidth, maxHeight * ratio)
-  img.style.width = `${width}px`
-  img.style.height = `${width / ratio}px`
+  if (!Number.isFinite(ratio) || ratio <= 0) return
+  // Size the entire paper frame from the IMAGE, never from a long caption.
+  // A max-content figure otherwise expands past the reader on iPhone.
+  const maxWidth = Math.min(media.clientWidth * .78, 340)
+  const imageWidth = Math.min(maxWidth - 8, maxHeight * ratio)
+  frame.style.width = `${Math.ceil(imageWidth + 8)}px`
+  img.style.width = '100%'
+  img.style.height = 'auto'
 }
 
 // V20: NEVER mount an <img> until pixels have loaded. A broken thumbnail
@@ -132,13 +138,18 @@ function layoutPages(item, reader, badImages = new Set()) {
       measuredCaption.textContent = image ? photoLabel(image) : ''
       measuredCaption.style.display = measuredCaption.textContent && measuredCaption.textContent !== 'Article photograph' ? 'block' : 'none'
       if (image) {
-        // The photo may be narrower at its actual aspect ratio. Reserve the
-        // maximum displayed height to prevent late image loading overflow.
-        photo.style.height = ''
+        // Use the verified intrinsic image geometry whenever available.
+        // Caption wrapping uses the SAME frame width as the actual photo.
+        const asset = photoResult(image.image)
+        const maxHeight = parseFloat(getComputedStyle(photo).maxHeight) || 140
+        const ratio = asset?.width && asset?.height ? asset.width / asset.height : 1.3
+        const maxWidth = Math.min(media.clientWidth * .78, 340)
+        const width = Math.max(1, Math.min(maxWidth - 8, maxHeight * ratio))
+        figure.style.width = `${Math.ceil(width + 8)}px`
         photo.style.width = '100%'
-        const max = parseFloat(getComputedStyle(photo).maxHeight) || 140
-        photo.style.height = `${max}px`
-        photo.style.maxHeight = `${max}px`
+        photo.style.height = `${width / ratio}px`
+      } else {
+        figure.style.width = ''
       }
       const fragment = document.createDocumentFragment()
       const tokens = String(text || '').split(/(\s+)/u)
@@ -147,13 +158,14 @@ function layoutPages(item, reader, badImages = new Set()) {
         else { const span = document.createElement('button'); span.type = 'button'; span.className = 'word-token'; span.textContent = token; fragment.appendChild(span) }
       }
       paragraph.replaceChildren(fragment)
-      // Read V7: photo, caption, text and pager flow in one column.
-      // A stretched card can create an apparent blank page; instead check
-      // that navigation actually remains inside the visible reading surface.
-      const bounds = fixture.getBoundingClientRect()
-      const bottom = pager.getBoundingClientRect().bottom
-      const paragraphHeight = paragraph.getBoundingClientRect().height
-      return paragraphHeight > 0 && bottom <= bounds.bottom - 8
+      // Read V8: the pager has a fixed bottom position. Measure the text
+      // against its TOP edge, not the pager's bottom (which no longer moves).
+      // Reject overflow instead of silently hiding words behind navigation.
+      const textBounds = paragraph.getBoundingClientRect()
+      const pagerBounds = pager.getBoundingClientRect()
+      const viewportBottom = fixture.getBoundingClientRect().bottom
+      return textBounds.height > 0 && textBounds.bottom <= pagerBounds.top - 8
+        && pagerBounds.bottom <= viewportBottom - 2
     }
     // Failed/corrupt thumbnails may not reserve visual space. Reflow their
     // article text immediately, without altering the original source pages.
@@ -851,6 +863,7 @@ function App() {
         <p className="article-text">{tokens.map((token, i) => { const word = clean(token); return /^\s+$/.test(token) || !word ? token : <button key={i} type="button" disabled={!interactive} className={'word-token ' + (words.some(w => w.word === word) ? 'known' : '')} onClick={event => onWordClick(event, word)}>{token}</button> })}</p>
       </section>
       </>}
+      </div>
       <div className="page-control" aria-label={closing ? "Article completed" : `Page ${pageNumber + 1} of ${item.pages.length}`}>
         {!closing && <div className="lore-page-count" aria-label={`Page ${pageNumber + 1} of ${item.pages.length}`}>{pageNumber + 1}/{item.pages.length}</div>}
         <div className="lore-page-nav">
@@ -863,7 +876,6 @@ function App() {
         })()}</div>
         <button type="button" className="page-arrow page-arrow-next" aria-label="Next page" title="Next page (→)" disabled={!interactive || closing} onClick={() => changePage(1)}><Icon name="right" size={17}/></button>
         </div>
-      </div>
       </div>
     </div>
   }
