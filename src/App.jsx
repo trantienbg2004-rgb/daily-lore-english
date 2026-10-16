@@ -10,7 +10,8 @@ import { QUEUE_TARGET, LOW_STOCK_POLL_MS, queuedUnread, lowOnStories, refreshDue
 import { createEdgeNavigation } from './lib/edgeNavigation.js'
 import { photoLabel, photoSourceLink } from './lib/photoPresentation.js'
 import { resolvePhoto, photoResult } from './lib/photoLoad.js'
-import { displayHeadline, readerSection, orderEditorial } from './lib/editorial.js'
+import { displayHeadline, readerSection } from './lib/editorial.js'
+import { loadRecommendationProfile, rememberReading, rankRecommendations } from './lib/recommendationEngine.js'
 import { handleReaderArrowKey } from './lib/readerKeyboard.js'
 
 
@@ -442,6 +443,7 @@ function App() {
   // 58-image feed and pretending those 58 stories are infinite.
   // Newly published chunks are checked automatically while the app is open.
   const BUFFER_TARGET = QUEUE_TARGET
+  const recommendationProfileRef = useRef(loadRecommendationProfile(typeof localStorage === 'undefined' ? null : localStorage))
   const poolsRef = useRef([])
   const cursorRef = useRef(0)
   const doneRef = useRef(false)
@@ -498,7 +500,11 @@ function App() {
         setFeedCursor(cursorRef.current)
         setFeedDone(doneRef.current)
         appended = result.items.length
-        if (appended) setStories(old=>[...old,...orderEditorial(result.items).map(paginateStory)])
+        if (appended) {
+          const recommended = rankRecommendations(result.items,{profile:recommendationProfileRef.current,
+            seen:seenRef.current,recent:storiesRef.current.slice(Math.max(0,storyIndexRef.current-5),storyIndexRef.current+1)})
+          setStories(old=>[...old,...recommended.map(paginateStory)])
+        }
         if (result.errors.length) {
           console.warn('Some reader sources temporarily unavailable:',result.errors)
           if (!appended) {setFeedRetrying(true);scheduleRetry()}
@@ -549,6 +555,7 @@ function App() {
     if (seenRef.current.has(id)) return
     seenRef.current.add(id)
     persistReadMarker(historyDbRef.current, id, seenRef.current)
+    recommendationProfileRef.current = rememberReading(recommendationProfileRef.current, story, localStorage)
   }, [storyIndex, story])
   useEffect(() => {
     if (tab !== 'read' || !historyReadyRef.current) return
