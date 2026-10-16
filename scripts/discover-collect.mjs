@@ -11,7 +11,7 @@ import {parseFeed} from './discover/rss.mjs'
 import {extractArticle} from './discover/article.mjs'
 import {rightsDecision} from './discover/rights.mjs'
 import {uniqueCandidates} from './discover/dedupe.mjs'
-import {generateDraft} from './discover/geminiEditor.mjs'
+import {generateThreeLevels,buildLevelPages} from './discover/geminiLevels.mjs'
 
 const cap=(n,min,max)=>Number.isSafeInteger(n)?Math.max(min,Math.min(max,n)):min
 export async function collectDiscover({fetchImpl=fetch,geminiFetchImpl=fetchImpl,now=new Date(),sources=SOURCES,
@@ -20,7 +20,7 @@ export async function collectDiscover({fetchImpl=fetch,geminiFetchImpl=fetchImpl
  if(useGemini&&!apiKey)throw Error('GEMINI_API_KEY missing. Zero requests sent; nothing published.')
  maxPerFeed=cap(maxPerFeed,1,20);maxGemini=cap(maxGemini,0,10)
  const report={generatedAt:now.toISOString(),mode:useGemini?'gemini-staging':'discovery-staging',model:useGemini?'gemini-2.5-flash':null,
-  sourceCount:sources.length,sourceStatus:[],candidates:0,eligible:0,geminiCalls:0,drafts:0,
+  sourceCount:sources.length,sourceStatus:[],candidates:0,eligible:0,geminiCalls:0,drafts:0,completeThreeLevelDrafts:0,
   rejected:{},publishEnabled:false,publicFilesChanged:false}
  const increment=(key)=>{report.rejected[key]=(report.rejected[key]||0)+1}
  const discovered=[]
@@ -58,16 +58,18 @@ export async function collectDiscover({fetchImpl=fetch,geminiFetchImpl=fetchImpl
   for(const candidate of eligible.slice(0,maxGemini)){
    try{
     report.geminiCalls++
-    const result=await generateDraft({source:candidate,apiKey,fetchImpl:geminiFetchImpl})
+    const result=await generateThreeLevels({source:candidate,apiKey,fetchImpl:geminiFetchImpl})
     drafts.push({id:candidate.id,sourceId:candidate.sourceId,sourceName:candidate.sourceName,sourceUrl:candidate.sourceUrl,
       originalPublishedAt:candidate.publishedAt,rights:candidate.rights,model:result.model,
-      ...result.draft,editorialState:'AI-assisted draft; human factual/legal/photo review required',imageUrl:''})
+      title:candidate.title,levelVariants:buildLevelPages(result.levelVariants),
+      editorialState:'Three AI-assisted reading levels; human factual/legal/photo review required',imageUrl:''})
    }catch(e){const reason=String(e?.message||e).slice(0,220);increment('gemini-rejected');report.sourceStatus.push({source:'gemini:'+candidate.id,error:reason});
     // A quota error is a hard stop, never silently switch to paid tier.
     if(/quota|rate| 429| 503/i.test(reason))break}
   }
  }
  report.drafts=drafts.length
+ report.completeThreeLevelDrafts=drafts.length
  if(writeFiles){
   const base=path.resolve(outputDir)
   // Refuse to write anywhere under public/, to prevent accidental publication.

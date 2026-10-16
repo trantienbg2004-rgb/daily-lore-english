@@ -795,3 +795,41 @@
   padding-top:clamp(6px,1dvh,12px);
   padding-bottom:clamp(9px,1.5dvh,15px);
 }
+
+/* SAGA Discover: unobtrusive, persistent language-level selector.
+   Lives inside the already bottom-anchored pager; never follows text length. */
+.lore-editorial-v5 .reader-gesture .saga-page-meta {
+  position:relative; display:flex; justify-content:center; align-items:center;
+  width:100%; min-height:32px; box-sizing:border-box;
+}
+.lore-editorial-v5 .reader-gesture .saga-page-meta .lore-page-count {
+  margin:0; flex:0 1 auto; text-align:center;
+}
+.lore-editorial-v5 .reader-gesture .saga-level-picker {
+  position:absolute; right:0; top:50%; transform:translateY(-50%);
+  display:flex; align-items:center; max-width:92px; z-index:5;
+}
+.lore-editorial-v5 .reader-gesture .saga-level-picker select {
+  appearance:none; -webkit-appearance:none; padding:6px 17px 6px 8px;
+  font:600 10px/1.25 system-ui,-apple-system,sans-serif;
+  letter-spacing:.2px; color:#61574c; border:1px solid #d2ccc0;
+  border-radius:16px; background:#f8f8f2; max-width:92px;
+  cursor:pointer; outline-offset:2px;
+}
+.lore-editorial-v5 .reader-gesture .saga-level-picker::after {
+  content:'⌄'; position:absolute; right:6px; top:47%; transform:translateY(-50%);
+  pointer-events:none; font:700 12px/1 system-ui,sans-serif; color:#83786a;
+}
+.lore-editorial-v5 .reader-gesture .saga-level-picker select:focus-visible {
+  outline:2px solid #a56b5b;
+}
+.saga-level-visually-hidden {
+  position:absolute!important; width:1px!important; height:1px!important;
+  padding:0!important; margin:-1px!important; overflow:hidden!important;
+  clip:rect(0,0,0,0)!important; white-space:nowrap!important; border:0!important;
+}
+@media(max-width:360px) {
+  .lore-editorial-v5 .reader-gesture .saga-level-picker select {
+    font-size:9px; padding-left:5px; padding-right:14px;
+  }
+}

@@ -1,3 +1,4 @@
+import {hasLevelVariants, READING_LEVELS} from './readingLevels.js'
 // DAILY NEWS V17: feed scanning is separate from React so it can be tested
 // against thousands of articles without rendering or calling external APIs.
 export const storyId = item => item.sourceUrl || item.sourceTitle || `${item.category}:${item.title}`
@@ -8,6 +9,13 @@ export const readableStory = item => {
     ? page.text.trim().split(/\s+/).filter(Boolean).length : 0), 0)
   // Publisher RSS previews are deliberately short. Never fabricate additional text.
   if (item.contentType === 'news-preview') return false // V22-C rejects RSS snippets
+  if (item.contentType === 'news' && item.levelVariants) {
+    if (!hasLevelVariants(item)) return false
+    return READING_LEVELS.every(level => {
+      const count = item.levelVariants[level].pages.reduce((sum,p) => sum + p.text.trim().split(/\s+/u).filter(Boolean).length,0)
+      return count >= 180 && count <= 350
+    }) && typeof item.sourceUrl === 'string' && item.sourceUrl.startsWith('https://')
+  }
   if (item.contentType === 'lore') return item.editorialVersion === 1 && item.readingKind === 'full' && item.pages.length >= 3 && words >= 400 && words <= 800 && item.pages.some(p => p.image && p.imageProvenance?.license)
   return item.contentType === 'news' && item.readingKind === 'full' && item.pages.length >= 2 && words >= 240
 }

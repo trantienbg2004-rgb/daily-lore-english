@@ -4,6 +4,7 @@ import './App.css'
 import { initializeSeenHistory, persistReadMarker, readLegacyHistory } from './lib/seenHistory.js'
 import { storyId } from './lib/feedQueue.js'
 import { planReadingPages } from './lib/readerPagination.js'
+import { READING_LEVELS, savedReadingLevel, saveReadingLevel, hasLevelVariants, selectReadingLevel, cacheMeasuredLevelPages } from './lib/readingLevels.js'
 import { sanitizeReadingArticle } from './lib/articleCleanup.js'
 import { refreshCatalog, refillCatalog, REFRESH_INTERVAL_MS } from './lib/continuousReader.js'
 import { QUEUE_TARGET, LOW_STOCK_POLL_MS, queuedUnread, lowOnStories, refreshDue } from './lib/loreStockPolicy.js'
@@ -15,8 +16,10 @@ import { handleReaderArrowKey } from './lib/readerKeyboard.js'
 
 
 // Store original articles untouched: the phone decides how many reading pages fit.
-const paginateStory = original => {
+const paginateStory = (original, readingLevel) => {
   const item = sanitizeReadingArticle(original)
+  // Future Discover stories have three editions, but only ONE source/seen ID.
+  if (hasLevelVariants(item)) return selectReadingLevel(item, readingLevel)
   return { ...item, _sourcePages: item.pages }
 }
 
@@ -349,6 +352,21 @@ function Icon({ name, size = 24 }) {
 
 function App() {
   const [tab, setTab] = useState('read')
+  const [readingLevel, setReadingLevel] = useState(() => savedReadingLevel(typeof localStorage === 'undefined' ? null : localStorage))
+  const readingLevelRef = useRef(readingLevel)
+  const changeReadingLevel = next => {
+    if (!READING_LEVELS.includes(next) || next === readingLevelRef.current) return
+    readingLevelRef.current = next
+    saveReadingLevel(typeof localStorage === 'undefined' ? null : localStorage, next)
+    setReadingLevel(next)
+    // Three versions use different sentence lengths. Return to the beginning
+    // of THIS story rather than pretend that page numbers align semantically.
+    setPage(0)
+    setPageMotion(null)
+    setSelected('')
+    setShowCredits(false)
+    setStories(previous => previous.map(item => hasLevelVariants(item) ? selectReadingLevel(item, next) : item))
+  }
   const [storyIndex, setStoryIndex] = useState(0)
   const [stories, setStories] = useState([])
   const [feedCursor, setFeedCursor] = useState(0)
@@ -420,7 +438,12 @@ function App() {
         const before = story.pages.map(p => `${p.image}|${p.text}`).join('\u0000')
         const after = next.map(p => `${p.image}|${p.text}`).join('\u0000')
         if (before !== after) {
-          setStories(old => old.map((item, i) => i === storyIndex ? { ...item, pages: next } : item))
+          setStories(old => old.map((item, i) => {
+            if (i !== storyIndex) return item
+            return hasLevelVariants(item)
+              ? selectReadingLevel(cacheMeasuredLevelPages(item, item._selectedReadingLevel, next), item._selectedReadingLevel)
+              : { ...item, pages: next }
+          }))
           setPage(p => Math.min(p, next.length))
         }
       })
@@ -498,7 +521,7 @@ function App() {
         setFeedCursor(cursorRef.current)
         setFeedDone(doneRef.current)
         appended = result.items.length
-        if (appended) setStories(old=>[...old,...orderEditorial(result.items).map(paginateStory)])
+        if (appended) setStories(old=>[...old,...orderEditorial(result.items).map(item => paginateStory(item, readingLevelRef.current))])
         if (result.errors.length) {
           console.warn('Some reader sources temporarily unavailable:',result.errors)
           if (!appended) {setFeedRetrying(true);scheduleRetry()}
@@ -865,7 +888,15 @@ function App() {
       </>}
       </div>
       <div className="page-control" aria-label={closing ? "Article completed" : `Page ${pageNumber + 1} of ${item.pages.length}`}>
-        {!closing && <div className="lore-page-count" aria-label={`Page ${pageNumber + 1} of ${item.pages.length}`}>{pageNumber + 1}/{item.pages.length}</div>}
+        <div className="saga-page-meta">
+          {!closing && <div className="lore-page-count" aria-label={`Page ${pageNumber + 1} of ${item.pages.length}`}>{pageNumber + 1}/{item.pages.length}</div>}
+          {hasLevelVariants(item) && <label className="saga-level-picker" onTouchStart={e => e.stopPropagation()} onTouchMove={e => e.stopPropagation()} onTouchEnd={e => e.stopPropagation()} onPointerDown={e => e.stopPropagation()} onPointerUp={e => e.stopPropagation()}>
+            <span className="saga-level-visually-hidden">Reading difficulty</span>
+            <select aria-label="Reading difficulty" value={readingLevel} disabled={!interactive} onChange={e => changeReadingLevel(e.target.value)}>
+              {READING_LEVELS.map(level => <option key={level} value={level}>{level}</option>)}
+            </select>
+          </label>}
+        </div>
         <div className="lore-page-nav">
         <button type="button" className="page-arrow page-arrow-prev" aria-label="Previous page" title="Previous page (←)" disabled={!interactive || pageNumber === 0} onClick={() => changePage(-1)}><Icon name="left" size={17}/></button>
         <div className="dots" aria-hidden="true">{(() => {

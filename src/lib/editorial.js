@@ -1,3 +1,4 @@
+import {hasLevelVariants} from './readingLevels.js'
 // V20 editorial FIRST PASS. Quality ranking does not fabricate journalism,
 // rewrite factual claims, delete older articles or hide any user's topics.
 const lower = value => String(value || '').toLowerCase()
@@ -21,7 +22,7 @@ export function editorialScore(item) {
   const text = (item.pages || []).map(p => p.text).join(' ')
   const words = text.trim().split(/\s+/).filter(Boolean)
   // Genuine RSS news previews are intentionally short; give them a fair rank.
-  if (words.length < 200 && item.contentType !== 'news-preview') return -100
+  if (words.length < 200 && item.contentType !== 'news-preview' && !hasLevelVariants(item)) return -100
   let score = Math.min(18, Math.floor(words.length / 40))
   const title = displayHeadline(item)
   if (title.split(/\s+/).length >= 5 && title.length <= 110) score += 7
