@@ -1,0 +1,61 @@
+name: SAGA Discover - live five-source and Gemini QA
+on:
+  push:
+    branches:
+      - 'feature/saga-discover-live-qa-*'
+    paths:
+      - '.github/workflows/saga-discover-live-qa.yml'
+      - 'scripts/discover-live-qa.mjs'
+      - 'scripts/test/saga-discover-live-qa.test.mjs'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: saga-discover-live-qa-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  validate-and-sample:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install locked dependencies
+        run: npm ci --no-audit --no-fund
+      - name: Run all reader regression tests
+        run: npm test
+      - name: Run ingestion, Gemini, and live QA tests
+        run: node --test scripts/test/saga-discover-ingestion.test.mjs scripts/test/saga-discover-gemini.test.mjs scripts/test/saga-discover-live-qa.test.mjs
+      - name: Verify production build without deploying
+        run: npm run build
+      - name: Live five-source sample (up to one three-level Gemini story)
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          if [ -z "$GEMINI_API_KEY" ]; then
+            echo 'GEMINI_API_KEY repository secret missing. No request sent.' >&2
+            exit 1
+          fi
+          node scripts/discover-collect.mjs --gemini --max=8 --max-ai=1
+      - name: Independent live draft / reader contract gate
+        if: always()
+        run: node scripts/discover-live-qa.mjs
+      - name: Confirm published library was not touched
+        if: always()
+        shell: bash
+        run: |
+          if [ -n "$(git status --porcelain -- public/lore-reader public/discover-reader)" ]; then
+            echo 'Published library was unexpectedly modified.' >&2
+            exit 1
+          fi
+          echo 'Published library unchanged.'
+      - name: Upload private staging diagnostics (3 days)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: saga-discover-live-qa
+          path: reports/saga-discover-local/
+          if-no-files-found: warn
+          retention-days: 3
