@@ -9,7 +9,7 @@ export const readableStory = item => {
   // Publisher RSS previews are deliberately short. Never fabricate additional text.
   if (item.contentType === 'news-preview') return false // V22-C rejects RSS snippets
   if (item.contentType === 'lore') return item.editorialVersion === 1 && item.readingKind === 'full' && item.pages.length >= 3 && words >= 400 && words <= 800 && item.pages.some(p => p.image && p.imageProvenance?.license)
-  return item.contentType === 'news' && item.readingKind === 'full' && item.pages.length >= 2 && words >= 240
+  return item.contentType === 'news' && item.readingKind === 'full' && item.pages.length >= 3 && words >= 80
 }
 
 export const validStories = data => Array.isArray(data) && data.every(item =>

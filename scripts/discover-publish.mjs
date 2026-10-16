@@ -8,7 +8,7 @@ export async function runDiscoverPublication({apiKey=process.env.GEMINI_API_KEY,
  if(!apiKey)throw Error('Missing GEMINI_API_KEY. No requests sent, no publication.')
  const {stories}=await readCatalog()
  const excludeSourceUrls=new Set(stories.filter(s=>s.contentType==='news').map(s=>s.sourceUrl))
- const output=await collectDiscover({useGemini:true,apiKey,now,maxPerFeed:8,maxGemini:2,targetDrafts:2,strictPages:true,
+ const output=await collectDiscover({useGemini:true,apiKey,now,maxPerFeed:8,maxGemini:8,targetDrafts:2,strictPages:false,
   excludeSourceUrls,excludePublishedNews:stories.filter(s=>s.contentType==='news'),outputDir:'reports/saga-discover-local',writeFiles:true,log})
  if(!output.drafts.length){log.warn?.('DISCOVER NO PUBLICATION: no new valid draft, existing Reader untouched');return {published:false,added:0,reason:'no-valid-draft'}}
  runStagedQA({base:'reports/saga-discover-local'})

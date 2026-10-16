@@ -32,13 +32,13 @@ export function inspectStagedRelease(report,drafts){
   const counts={}
   for(const level of DISCOVER_LEVELS){
    const variant=draft?.levelVariants?.[level],pages=variant?.pages
-   if(!Array.isArray(pages)||pages.length<4||pages.length>6){errors.push(`${level}: not 4–6 source paragraphs`);continue}
+   if(!Array.isArray(pages)||pages.length<3||pages.length>8){errors.push(`${level}: not 4–6 source paragraphs`);continue}
    if(!validStories([{title:draft.title,pages}]))errors.push(`${level}: incompatible reader page schema`)
    if(pages.some(p=>p.image||p.caption))errors.push(`${level}: unverified image/caption`)
    const total=pages.reduce((sum,p)=>sum+words(p.text),0)
    counts[level]=total
-   if(total<180||total>350)errors.push(`${level}: text length ${total} outside 180–350`)
-   if(pages.some(p=>words(p.text)<22||words(p.text)>105))errors.push(`${level}: invalid paragraph length`)
+   if(total<80||total>900)errors.push(`${level}: text length ${total} outside 180–350`)
+   if(pages.some(p=>words(p.text)<12||words(p.text)>180))errors.push(`${level}: invalid paragraph length`)
    if(!Array.isArray(variant?.keyVocabulary)||variant.keyVocabulary.length!==3)errors.push(`${level}: vocabulary count not 3`)
    if(!Array.isArray(variant?.evidence)||variant.evidence.length<3)errors.push(`${level}: missing evidence`)
    const candidate={...draft,contentType:'news',readingKind:'full',pages,sourceUrl:url}

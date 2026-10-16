@@ -514,7 +514,16 @@ function App() {
         setFeedCursor(cursorRef.current)
         setFeedDone(doneRef.current)
         appended = result.items.length
-        if (appended) {
+        if (!appended && !result.errors.length && remaining === 0 && storiesRef.current.length) {
+          const previous = storiesRef.current
+          const recycled = previous.slice(0, Math.min(previous.length, 12))
+          setStories(old => [...old, ...recycled.map(item => ({
+            ...item, pages: (item._sourcePages || item.pages).map(p => ({...p}))
+          }))])
+          appended = recycled.length
+          console.info('SAGA: archive rotated without clearing history or saved words')
+        }
+        if (result.items.length) {
           const recommended = poolsRef.current.some(p=>Array.isArray(p.index)) ? result.items : rankRecommendations(result.items,{profile:recommendationProfileRef.current,
             seen:seenRef.current,recent:storiesRef.current.slice(Math.max(0,storyIndexRef.current-5),storyIndexRef.current+1)})
           setStories(old=>[...old,...recommended.map(item => paginateStory(applyNewsLevel(item, readingLevelRef.current)))])
@@ -597,7 +606,7 @@ function App() {
     const key = `${storyIndex}:${stories.length}:${poolsRef.current.map(p=>p.version + p.cursor).join('|')}`
     const now = Date.now()
     if (boundaryProbeRef.current.key === key && now - boundaryProbeRef.current.time < 15000) return
-    if (doneRef.current && now - lastManifestCheckRef.current < REFRESH_INTERVAL_MS) return
+    if (doneRef.current && !storiesRef.current.length && now - lastManifestCheckRef.current < REFRESH_INTERVAL_MS) return
     boundaryProbeRef.current = {key, time: now}
     loadFeed({urgent: true, forceCheck: doneRef.current})
   }, [tab, storyIndex, stories.length, feedLoading, feedCursor, feedDone])

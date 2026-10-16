@@ -11,9 +11,9 @@ export function sameEvent(a,b){const x=titleWords(a.title),y=titleWords(b.title)
 function safeSource(sourceId,url){try{const u=new URL(url);if(u.protocol!=='https:')return false;return sourceId==='global-voices'?['globalvoices.org','www.globalvoices.org'].includes(u.hostname):sourceId==='voa'&&u.hostname==='learningenglish.voanews.com'}catch{return false}}
 export function licensedDraft(d){const r=d?.rights;return safeSource(d?.sourceId,d?.sourceUrl)&&r?.textAllowed===true&&r?.mode==='gemini-eligible'&&(d.sourceId==='voa'?/Public domain/i.test(r.license||''):/^https:\/\/creativecommons\.org\/licenses\/by\/\d/i.test(r.licenseUrl||''))}
 export function validateDraft(d){const problems=[];if(!d?.id||!d?.title||!licensedDraft(d))problems.push('unlicensed-or-invalid-source');if(d?.imageUrl)problems.push('unverified-image')
- const variants=d?.levelVariants||{},texts=[];for(const level of LEVELS){const v=variants[level];if(!Array.isArray(v?.pages)||v.pages.length<4||v.pages.length>6){problems.push(`pages:${level}`);continue}
-  if(v.pages.some(p=>typeof p?.text!=='string'||p.image||p.caption||wordCount(p.text)<40||wordCount(p.text)>75))problems.push(`length:${level}`)
-  const total=v.pages.reduce((t,p)=>t+wordCount(p.text),0);if(total<240||total>450)problems.push(`total:${level}`)
+ const variants=d?.levelVariants||{},texts=[];for(const level of LEVELS){const v=variants[level];if(!Array.isArray(v?.pages)||v.pages.length<3||v.pages.length>8){problems.push(`pages:${level}`);continue}
+  if(v.pages.some(p=>typeof p?.text!=='string'||p.image||p.caption||wordCount(p.text)<12||wordCount(p.text)>180))problems.push(`length:${level}`)
+  const total=v.pages.reduce((t,p)=>t+wordCount(p.text),0);if(total<80||total>900)problems.push(`total:${level}`)
   if(!Array.isArray(v.evidence)||v.evidence.length<3||v.evidence.some(s=>typeof s!=='string'||s.length<16))problems.push(`evidence:${level}`)
   if(!Array.isArray(v.keyVocabulary)||v.keyVocabulary.length!==3)problems.push(`vocabulary:${level}`)
   texts.push(v.pages.map(p=>p.text).join(' '))

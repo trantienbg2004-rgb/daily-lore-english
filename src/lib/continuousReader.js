@@ -33,7 +33,10 @@ export async function refreshCatalog({fetchImpl,baseUrl,pools=[],now=Date.now(),
  return {pools:next,failures,hasAvailable:next.length>0,checkedAt:now}
 }
 async function refillGlobal({pool,fetchImpl,baseUrl,seen,loaded,seenAt,profile,recent,target,random,maxShards=10,newsOnly=false}){
- const candidates=newsOnly?pool.index.filter(e=>e.contentType==='news'):pool.index
+ const news=pool.index.filter(e=>e.contentType==='news')
+ const lore=pool.index.filter(e=>e.contentType==='lore')
+ const unreadNews=news.some(e=>!seen.has(e.id)&&!loaded.has(e.id))
+ const candidates=newsOnly?(unreadNews?news:(lore.length?lore:news)):pool.index
  const selected=pickGlobalCandidates(candidates,{seen,loaded,seenAt,profile,recent,count:Math.max(target*3,90),random})
  const chosen=[],used=new Set()
  for(const entry of selected.items){if(!used.has(entry.shard)){if(used.size>=maxShards)continue;used.add(entry.shard)}chosen.push(entry)}
@@ -57,7 +60,7 @@ async function refillGlobal({pool,fetchImpl,baseUrl,seen,loaded,seenAt,profile,r
  const items=[]
  for(const entry of chosen){
   const story=indexed.get(`${entry.shard}:${entry.id}`)
-  if(story&&(!newsOnly||story.contentType==='news')&&readableStory(story)&&!loaded.has(entry.id)&&items.length<target){loaded.add(entry.id);items.push(story)}
+  if(story&&true&&readableStory(story)&&!loaded.has(entry.id)&&items.length<target){loaded.add(entry.id);items.push(story)}
  }
  // Global mode does not permanently end: earlier read stories can re-enter
  // after the complete unseen library is exhausted and leave the active queue.
@@ -74,7 +77,7 @@ export async function refillCatalog({fetchImpl,baseUrl,pools,seen=new Set(),load
    continue
   }
   if(pool.done)continue
-  if(newsOnly){pool.done=true;continue} // Legacy shard fallback is disabled for news-only.
+  // No index? Keep the legacy shard scanner available as a last resort.
   let loops=0
   do{
    const r=await scanFeedImpl({fetchImpl,baseUrl,order:pool.order,cursor:pool.cursor,updatedAt:pool.manifest.updatedAt,seen,loaded,

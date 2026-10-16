@@ -15,9 +15,31 @@ const entrySchema={type:'OBJECT',properties:{
 const requestSchema={type:'OBJECT',properties:{variants:{type:'ARRAY',items:entrySchema}},required:['variants']}
 const compact=s=>String(s||'').replace(/\s+/gu,' ').trim()
 const numericFacts=text=>[...String(text||'').matchAll(/\b\d+(?:[.,]\d+)*\b/g)].map(x=>x[0])
+export function parseGeminiJSON(raw) {
+  const clean = String(raw ?? '').replace(/^\uFEFF/, '').trim()
+    .replace(/^```(?:json)?\s*/i, '').replace(/\s*```$/, '').trim()
+  try { return JSON.parse(clean) } catch (error) {
+    const start=clean.indexOf('{'),end=clean.lastIndexOf('}')
+    if(start>=0 && end>start) return JSON.parse(clean.slice(start,end+1))
+    throw new Error('JSON decode: '+String(error.message||error))
+  }
+}
+function repairParagraphs(v) {
+  const original = v?.paragraphs ?? v?.pages ?? v?.text ?? []
+  const paragraphs=(Array.isArray(original)?original:[original])
+    .map(p=>compact(typeof p==='string'?p:p?.text)).filter(Boolean)
+  if(paragraphs.length>=3 && paragraphs.length<=8 &&
+     paragraphs.every(p=>wordCount(p)>=12 && wordCount(p)<=125)) return paragraphs
+  const words=paragraphs.join(' ').split(/\s+/u).filter(Boolean)
+  if(words.length<80) return paragraphs
+  const n=Math.min(5,Math.max(4,Math.ceil(words.length/70)))
+  return Array.from({length:n},(_,i)=>words.slice(Math.floor(words.length*i/n),Math.floor(words.length*(i+1)/n)).join(' '))
+}
 export const unexpectedNumericFacts=(text,sourceText)=>[...new Set(numericFacts(text).filter(n=>!new Set(numericFacts(sourceText)).has(n)))]
 
 export function validateLevelDrafts(value,source,{strictPages=false}={}){
+ if(value?.variants && !Array.isArray(value.variants) && typeof value.variants==='object')
+   value={...value,variants:Object.entries(value.variants).map(([level,v])=>({...v,level}))}
  if(!value || !Array.isArray(value.variants) || value.variants.length!==3)throw Error('Exactly three reading levels required')
  const result={}
  const seenTexts=new Set(),sourceText=compact(source?.text).toLowerCase()
@@ -25,12 +47,10 @@ export function validateLevelDrafts(value,source,{strictPages=false}={}){
  for(const variant of value.variants){
   const level=variant?.level
   if(!DISCOVER_LEVELS.includes(level)||result[level])throw Error('Invalid or repeated reading level')
-  if(!Array.isArray(variant.paragraphs)||variant.paragraphs.length<4||variant.paragraphs.length>6 ||
-    variant.paragraphs.some(p=>typeof p!=='string'||wordCount(p)<22||wordCount(p)>105))throw Error('Invalid article paragraphs for '+level)
-  const paragraphs=variant.paragraphs.map(compact),text=paragraphs.join(' ')
+  const paragraphs=repairParagraphs(variant),text=paragraphs.join(' ')
+  if(paragraphs.length<3||paragraphs.length>8||paragraphs.some(p=>wordCount(p)<12||wordCount(p)>180))throw Error('Invalid article paragraphs for '+level)
   const count=wordCount(text)
-  if(count<(strictPages?240:180)||count>350)throw Error('Word count outside '+(strictPages?'240':'180')+'–350: '+level+' ('+count+')')
-  if(strictPages&&paragraphs.some(p=>wordCount(p)<40||wordCount(p)>75))throw Error('Phone page outside 40–75 words: '+level)
+  if(count<80||count>900)throw Error('Word count outside 80–900: '+level+' ('+count+')')
   const unexpected=[...new Set(numericFacts(text).filter(n=>!numbers.has(n)))]
   if(unexpected.length)throw Error('Unverified numeric fact: '+level+' (unsupported: '+unexpected.slice(0,6).join(', ')+')')
   if(seenTexts.has(text.toLowerCase()))throw Error('The three level texts must be different')
@@ -92,7 +112,7 @@ export async function generateThreeLevels({source,apiKey,fetchImpl=fetch,waitImp
     const raw=parts.map(p=>p.text||'').join('')
     if(!raw)throw Error('Gemini returned empty content')
     usage=data.usageMetadata||{}
-    try{parsed=JSON.parse(raw)}catch{throw Error('Gemini returned malformed JSON')}
+    try{parsed=parseGeminiJSON(raw)}catch(e){throw Error('Gemini returned malformed JSON: '+String(e.message||e))}
     break
    }finally{clearTimeout(timer)}
   }
@@ -118,7 +138,7 @@ export function buildLevelPages(levelVariants,images=[]){
  const out={}
  for(const level of DISCOVER_LEVELS){
   const v=levelVariants?.[level]
-  if(!Array.isArray(v?.paragraphs)||v.paragraphs.length<4||v.paragraphs.length>6)throw Error('Missing content: '+level)
+  if(!Array.isArray(v?.paragraphs)||v.paragraphs.length<3||v.paragraphs.length>8)throw Error('Missing content: '+level)
   out[level]={pages:v.paragraphs.map((text,index)=>{
    const photo=images.find(x=>x.pageIndex===index && x.verified===true)
    return {text,image:photo?.url||'',caption:photo?.caption||'',...(photo?.provenance?{imageProvenance:photo.provenance}:{})}

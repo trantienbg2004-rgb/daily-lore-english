@@ -77,7 +77,7 @@ export async function collectDiscover({fetchImpl=fetch,geminiFetchImpl=fetchImpl
       originalPublishedAt:candidate.publishedAt,rights:candidate.rights,model:result.model,
       title:candidate.title,levelVariants:buildLevelPages(result.levelVariants),
       editorialState:'Three AI-assisted reading levels; human factual/legal/photo review required',imageUrl:''})
-   }catch(e){const reason=String(e?.message||e).slice(0,220);increment('gemini-rejected');report.sourceStatus.push({source:'gemini:'+candidate.id,error:reason});
+   }catch(e){const reason=String(e?.message||e).slice(0,600);console.error('SAGA GEMINI REJECTED:',candidate.sourceUrl,e?.stack||e);increment('gemini-rejected');report.sourceStatus.push({source:'gemini:'+candidate.id,error:reason});
     // A quota error is a hard stop, never silently switch to paid tier.
     if(/quota|rate| 429| 503|HTTP 401|HTTP 403/i.test(reason))break}
   }
