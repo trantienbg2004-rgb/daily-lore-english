@@ -25,34 +25,45 @@ export async function collectDiscover({fetchImpl=fetch,geminiFetchImpl=fetchImpl
  const increment=(key)=>{report.rejected[key]=(report.rejected[key]||0)+1}
  const discovered=[]
  for(const source of sources){
-  let found=0;const errs=[]
+  let found=0,staleFeedEntries=0,latestFeedPublication='';const errs=[]
   for(const feedUrl of source.feedUrls){
    try{
     // Feed endpoints can be on publisher-authorized dedicated hosts.
     const feedHosts=[...new Set([...source.hosts,new URL(feedUrl).hostname])]
     const xml=await fetchText(feedUrl,{fetchImpl,hosts:feedHosts})
     const entries=parseFeed(xml,source,{maxItems:maxPerFeed,now})
+    if(!entries.length){
+      // Date diagnostics only: never publish an archived VOA article as recent.
+      const older=parseFeed(xml,source,{maxItems:1,now,maxAgeDays:3650})
+      if(older.length){staleFeedEntries++;if(older[0].publishedAt>latestFeedPublication)latestFeedPublication=older[0].publishedAt}
+    }
     discovered.push(...entries);found+=entries.length
    }catch(e){errs.push(String(e?.message||e).slice(0,180));increment('feed-error:'+source.id)
     if(e?.rateLimited)break}
   }
-  report.sourceStatus.push({source:source.id,feedItems:found,errors:errs})
+  report.sourceStatus.push({source:source.id,feedItems:found,staleFeeds:staleFeedEntries,latestStalePublication:latestFeedPublication||null,errors:errs})
  }
  const candidates=uniqueCandidates(discovered);report.candidates=candidates.length
- const eligible=[],metadata=[]
+ const eligible=[],metadata=[],perSourceResults=new Map(sources.map(s=>[s.id,{attempted:0,eligible:0,rejected:{},sampleExtraction:null}]))
  for(const candidate of candidates){
   const source=sources.find(s=>s.id===candidate.sourceId)
   if(!source?.fetchFullText){metadata.push({...candidate,mode:'discovery-only',reason:source?.rightsPolicy||'restricted'});continue}
+  perSourceResults.get(source.id).attempted++
   try{
    const html=await fetchText(candidate.sourceUrl,{fetchImpl,hosts:source.hosts,maxBytes:2300000})
    const article=extractArticle(html,source.id)
    const rights=rightsDecision(source,article)
-   if(!rights.textAllowed){metadata.push({...candidate,mode:'discovery-only',reason:rights.reason});increment(rights.reason);continue}
+   const stats=perSourceResults.get(source.id)
+   stats.sampleExtraction||={words:article.wordCount,paragraphs:article.paragraphCount,licenseFound:!!article.explicitLicense,authorFound:!!article.author,containerStats:article.extractionStats}
+   if(!rights.textAllowed){
+    stats.rejected[rights.reason]=(stats.rejected[rights.reason]||0)+1;metadata.push({...candidate,mode:'discovery-only',reason:rights.reason});increment(rights.reason);continue}
+   stats.eligible++
    eligible.push({...candidate,text:article.text,rights,author:article.author||candidate.author,
     imageRightsVerified:false,imageUrl:'',articleWordCount:article.wordCount})
-  }catch(e){increment('article-fetch-error:'+source.id);metadata.push({...candidate,mode:'discovery-only',reason:'article-fetch-error'})}
+  }catch(e){increment('article-fetch-error:'+source.id);perSourceResults.get(source.id).rejected['article-fetch-error']=(perSourceResults.get(source.id).rejected['article-fetch-error']||0)+1;metadata.push({...candidate,mode:'discovery-only',reason:'article-fetch-error'})}
  }
  report.eligible=eligible.length
+ for(const row of report.sourceStatus){row.articleDiagnostics=perSourceResults.get(row.source)||{attempted:0,eligible:0,rejected:{}}}
  const drafts=[]
  if(useGemini){
   for(const candidate of eligible.slice(0,maxGemini)){

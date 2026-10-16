@@ -6,6 +6,11 @@ on:
     paths:
       - '.github/workflows/saga-discover-live-qa.yml'
       - 'scripts/discover-live-qa.mjs'
+      - 'scripts/discover/**'
+      - 'scripts/discover-collect.mjs'
+      - 'scripts/test/saga-discover-ingestion.test.mjs'
+      - 'scripts/test/saga-discover-three-levels.test.mjs'
+      - 'scripts/test/saga-discover-extractor-fix.test.mjs'
       - 'scripts/test/saga-discover-live-qa.test.mjs'
   workflow_dispatch:
 permissions:
@@ -28,6 +33,8 @@ jobs:
         run: npm test
       - name: Run ingestion, Gemini, and live QA tests
         run: node --test scripts/test/saga-discover-ingestion.test.mjs scripts/test/saga-discover-gemini.test.mjs scripts/test/saga-discover-live-qa.test.mjs
+      - name: Run extractor and rights regression tests
+        run: node --test scripts/test/saga-discover-extractor-fix.test.mjs
       - name: Verify production build without deploying
         run: npm run build
       - name: Live five-source sample (up to one three-level Gemini story)

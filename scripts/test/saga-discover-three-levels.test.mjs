@@ -89,7 +89,7 @@ test('collect pipeline stages exactly one 3-level article with no public release
  const feedUrl='https://learningenglish.voanews.com/a/test/12345.html'
  const feed=(url)=>`<rss version="2.0"><channel><item><title>Teachers explain new science ideas to their families</title><link>${url}</link><pubDate>${pubDate}</pubDate></item></channel></rss>`
  const paragraph='Teachers and scientists met to discuss the community study findings in local schools. Families joined small activities to learn about the findings. The researchers explained their methods and described what the available evidence could and could not show.'
- const html=`<html><body><article>${Array(14).fill(`<p>${paragraph}</p>`).join('')}</article></body></html>`
+ const html=`<html><body><article>${Array.from({length:14},(_,i)=>`<p>${paragraph} The school hosted follow-up discussion ${i} to document further feedback.</p>`).join('')}</article></body></html>`
  const noFeed='<rss version="2.0"><channel></channel></rss>'
  let geminiCalls=0,articleCalls=0
  const fetchImpl=async url=>{

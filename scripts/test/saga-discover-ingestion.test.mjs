@@ -13,7 +13,7 @@ const title='A new scientific study explores community health'
 const feed=(url)=>`<rss version="2.0"><channel><item><title>${title}</title><link>${url}</link><pubDate>Thu, 15 Oct 2026 10:00:00 GMT</pubDate><description>Preview only</description></item></channel></rss>`
 const atom=(url)=>`<feed xmlns="http://www.w3.org/2005/Atom"><entry><title>${title}</title><link rel="alternate" href="${url}"/><updated>2026-10-15T10:00:00Z</updated><summary>Preview only</summary></entry></feed>`
 const p='Researchers examined several communities and recorded changes in daily habits after a long public education campaign, while local teachers worked with students to share accurate information and collect feedback from residents.'
-const html=(other='')=>`<html><head><meta property="og:image" content="https://news.example/x.jpg"/>${other}</head><body><article><h1>${title}</h1>${Array(11).fill(`<p>${p}</p>`).join('')}</article></body></html>`
+const html=(other='')=>`<html><head><meta property="og:image" content="https://news.example/x.jpg"/>${other}</head><body><article><h1>${title}</h1><div class="byline">Written by <a rel="author">Mong Palatino</a></div>${Array.from({length:11},(_,i)=>`<p>${p} The research team documented additional context from location number ${i}.</p>`).join('')}</article></body></html>`
 test('five distinct sources configured; 3 metadata-only sources cannot silently become Gemini inputs',()=>{
  assert.deepEqual(SOURCES.map(s=>s.id),['voa','global-voices','the-conversation','bbc','npr'])
  assert.equal(SOURCES.filter(s=>s.fetchFullText).length,2)

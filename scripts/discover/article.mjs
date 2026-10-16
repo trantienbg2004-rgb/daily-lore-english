@@ -1,26 +1,67 @@
 import {compact,decode,wordCount} from './clean.mjs'
-// Conservative HTML reader: only take paragraphs INSIDE recognizable article containers.
-// Unknown page markup is rejected, never replaced by broad page text scraping.
-const articleMarkers=[/<article\b[^>]*>/i,/<(?:div|section)\b[^>]*(?:id|class)\s*=\s*["'][^"']*(?:article-content|article-body|story-body|main-content|wsw)[^"']*["'][^>]*>/i,/<(?:div|section)\b[^>]*itemprop\s*=\s*["']articleBody["'][^>]*>/i]
-function contentWindow(html){
- for(const re of articleMarkers){const m=re.exec(html);if(m){const start=m.index+m[0].length;return html.slice(start,start+170000)}}
+import {readingParagraphs,extractGlobalVoicesAuthor,htmlReadingDiagnostics} from './htmlArticle.mjs'
+
+/** Restrict extraction to a bona fide editorial container. Never scrape all
+ * paragraphs on a publisher's home page or use newsletter/sidebar copy. */
+const attr=(html,key)=>String(html).match(new RegExp(`\\b${key}\\s*=\\s*(?:"([^"]*)"|'([^']*)')`,'i'))?.slice(1).find(x=>x!==undefined)||''
+function meta(html,key){
+ const needle=key.toLowerCase()
+ for(const m of String(html).matchAll(/<meta\b[^>]*>/gi)){
+  if([attr(m[0],'property').toLowerCase(),attr(m[0],'name').toLowerCase()].includes(needle))return decode(attr(m[0],'content'))
+ }
  return ''
 }
-function meta(html,key){const safe=key.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');const re=new RegExp(`<meta\\b(?=[^>]*(?:property|name)\\s*=\\s*["']${safe}["'])[^>]*>`, 'i');return decode(re.exec(html)?.[0].match(/\bcontent\s*=\s*["']([^"']*)["']/i)?.[1]||'')}
-function endAt(html){let stop=html.length; for(const re of [/<(?:footer|aside|nav)\b/i,/<div\b[^>]*(?:class|id)=["'][^"']*(?:related-articles|share-buttons|comments|recommended|sidebar)[^"']*["']/i]){const m=re.exec(html);if(m&&m.index<stop)stop=m.index}return html.slice(0,stop)}
-export function extractArticle(html,sourceId){
- const body=endAt(contentWindow(html))
- const textParts=[]
- for(const m of body.matchAll(/<p\b[^>]*>([\s\S]*?)<\/p\s*>/gi)){
-  const txt=compact(m[1]);if(wordCount(txt)>=8&&txt.length<2800&&!/^(?:read more|see also|copyright|download|subscribe|follow us)\b/i.test(txt))textParts.push(txt)
+function articleLicense(html){
+ for(const [tag] of String(html).matchAll(/<link\b[^>]*>/gi)){
+  if(/\blicense\b/i.test(attr(tag,'rel'))){
+   const url=attr(tag,'href').replace(/^http:/i,'https:')
+   if(/^https:\/\/creativecommons\.org\/licenses\/(?:by|by-sa)\/\d(?:\.\d)?\/?(?:[#?].*)?$/i.test(url))return url
+   // An explicit non-commercial, no-derivatives or incompatible license
+   // overrides a site's generic footer.
+   return 'restricted-license'
+  }
  }
- const text=textParts.join('\n\n')
- const credits=compact(body.match(/(?:Photo|Image|Credit):?\s*[^<]{5,180}/i)?.[0]||'')
- const thirdParty=/\b(?:Associated Press|Reuters|Agence France-Presse|\bAFP\b|Getty Images|Shutterstock|AP Photo|iStock|Adobe Stock)\b/i.test(credits+' '+body.slice(0,18000))
- const licenseLinks=[...String(html).matchAll(/<link\b[^>]*rel\s*=\s*["']license["'][^>]*>/gi)].map(m=>m[0].match(/\bhref\s*=\s*["']([^"']+)["']/i)?.[1]||'')
- const explicitLicense=licenseLinks.find(x=>/^https?:\/\/creativecommons\.org\/licenses\/(?:by|by-sa)\//i.test(x))||''
- const image=meta(html,'og:image')
- return {text,wordCount:wordCount(text),imageHint:image,hasThirdPartyNotice:thirdParty,
-  explicitLicense,credits,author:meta(html,'article:author')||meta(html,'author')||'',
-  publishedAt:meta(html,'article:published_time')||'',sourceId}
+ const footers=[...String(html).matchAll(/<footer\b[^>]*>([\s\S]*?)<\/footer\s*>/gi)]
+ // Legacy Global Voices WordPress layouts sometimes use a named div footer.
+ for(const m of String(html).matchAll(/<div\b[^>]*(?:class|id)\s*=\s*["'][^"']*(?:site-footer|footer-content|footer-widget|global-footer)[^"']*["'][^>]*>([\s\S]{0,8000}?)<\/div\s*>/gi))footers.push(m)
+ for(const [,footer] of footers){
+  const txt=compact(footer)
+  if(/(?:this site is licensed|creative commons attribution)/i.test(txt)){
+   const link=footer.match(/https?:\/\/creativecommons\.org\/licenses\/by\/(?:3\.0|4\.0)\/?/i)
+   if(link)return link[0].replace(/^http:/i,'https:')
+   if(/Creative Commons Attribution 3\.0/i.test(txt))return 'https://creativecommons.org/licenses/by/3.0/'
+  }
+ }
+ // Some live publisher themes use a non-semantic footer. Only accept the
+ // publisher's exact sitewide notice near the END of an actual page, never
+ // an isolated CC link or a quote copied into the article body.
+ const tail=String(html).slice(-35000)
+ const notice=tail.lastIndexOf('This site is licensed as')
+ if(notice>=0){
+  const nearby=tail.slice(notice,notice+1800)
+  const proven=nearby.match(/https?:\/\/creativecommons\.org\/licenses\/by\/(?:3\.0|4\.0)\/?/i)
+  if(proven&&/Creative Commons Attribution/i.test(compact(nearby)))return proven[0].replace(/^http:/i,'https:')
+ }
+ return ''
+}
+const thirdPartyCredits=/(?:\b(?:Photo|Picture|Image|Credit)\s*(?::|by|©)[^\n<]{0,130}\b(?:Reuters|AP Photo|Associated Press|AFP|Getty Images|Shutterstock|iStock|Adobe Stock)\b)|(?:©|copyright)\s*(?:Reuters|Associated Press|Getty Images|Shutterstock)/i
+const syndicated=/(?:\b(?:content[- ]sharing agreement|reprinted with permission|republished (?:from|with permission)|originally published (?:by|in|at)|syndicated from)\b)/i
+const excludedSource=/(?:^|\b)(?:AP Photo|Reuters|AFP|Getty Images|Shutterstock)(?:\b|$)/i
+export function extractArticle(html,sourceId){
+ const paragraphs=readingParagraphs(html)
+ const text=paragraphs.join('\n\n')
+ const author=sourceId==='global-voices'?extractGlobalVoicesAuthor(html):meta(html,'author')||meta(html,'article:author')||''
+ const license=articleLicense(html)
+ // Restrictions within story byline/source and opening body take precedence
+ // over a generic footer CC license. Image credits never grant image rights.
+ const nearStart=String(html).match(/<h1\b/i)?.index||0
+ const opening=compact(String(html).slice(nearStart,nearStart+20000))
+ return {
+  text,wordCount:wordCount(text),paragraphCount:paragraphs.length,
+  extractionStats:htmlReadingDiagnostics(html),imageHint:meta(html,'og:image'),
+  hasThirdPartyNotice:thirdPartyCredits.test(String(html).slice(0,160000)),
+  hasSyndicatedRights:sourceId==='global-voices'&&syndicated.test(opening.slice(0,4800)),
+  explicitLicense:license,credits:'',author:excludedSource.test(author)?'':author,
+  publishedAt:meta(html,'article:published_time')||'',sourceId,
+ }
 }
