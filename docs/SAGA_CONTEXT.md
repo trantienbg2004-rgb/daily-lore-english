@@ -56,3 +56,10 @@ Nguồn hiện tại: Global Voices và VOA Learning English có thể vào bư�
 1. Hoàn tất kiểm thử nhánh sửa phân trang, tạo PR, merge khi đạt, xác nhận chính bài từng bị che chữ trên `saga.id.vn`.
 2. Theo dõi một lượt workflow có sự kiện `schedule` thật; nếu lịch GitHub không chạy hoặc tin không tăng, chẩn đoán log/quota trước khi điều chỉnh. Giữ giới hạn Gemini, cổng QA và điều kiện bản quyền ảnh.
 3. Mở rộng số ảnh bằng chứng cứ riêng cho từng ảnh ở bài mới; không tự lấy ảnh RSS/OpenGraph khi chưa rõ giấy phép. Theo dõi tỷ lệ bài có ảnh và chất lượng tin sau các lượt xuất bản.
+
+## Xác nhận sau phát hành — 2026-10-17
+
+- PR #3 đã merge vào `main` tại `a03e02d`; Cloudflare Workers Builds hoàn tất thành công và `saga.id.vn` đã tải bản JavaScript mới. Lỗi thanh chuyển trang che chữ trong bài Telenor/Myanmar đã hết trên production: ở khung 390×844, Level B1–B2 có 7 trang, khoảng cách chữ–pager tối thiểu 48 px, trang ngắn nhất 23 từ và toàn bộ văn bản giữ nguyên. Đổi sang A1–A2 tạo 4 trang, không tái hiện hàng trăm trang một từ.
+- Thử luồng đọc trên production sau sửa: 18 lần chuyển bài, đi qua đủ 15 tựa khác nhau rồi tiếp tục đọc lại, không có màn hình trống. Kho production vẫn có **15 news, 1 ảnh có chứng cứ, 0 lore được index**. Ảnh Telenor hiển thị; bài thiếu ảnh hợp lệ vẫn giữ bố cục đọc chữ.
+- Nhánh sửa đã qua 81/81 kiểm thử, `node scripts/lore-verify.mjs`, `npm run build`, `git diff --check`. Kiểm tra trước phát hành thêm khung 320×568: 7 trang B1–B2, khoảng cách tối thiểu 20 px và không có trang trống. Các kiểm tra trình duyệt là giả lập kích thước/cảm ứng, không thay thế thử trên mọi mẫu điện thoại thật.
+- Chưa có bằng chứng lượt GitHub Actions kích hoạt bởi sự kiện `schedule`; lượt thủ công gần nhất đã tăng kho từ 12 lên 15. Cần theo dõi lượt theo lịch tiếp theo để xác nhận tăng trưởng tự động thực tế. Không thể hứa bài *mới* ở mọi lần vuốt: khi nguồn hoặc QA không tạo bài mới, Reader xoay vòng bài đã xuất bản.
