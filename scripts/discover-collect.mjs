@@ -129,7 +129,7 @@ export async function collectDiscover({fetchImpl=fetch,geminiFetchImpl=fetchImpl
   await fs.writeFile(path.join(base,'gemini-drafts.json'),JSON.stringify(drafts,null,2)+'\n')
  }
  log.log('SAGA DISCOVER STAGING:',JSON.stringify({candidates:report.candidates,eligible:report.eligible,geminiCalls:report.geminiCalls,drafts:report.drafts,errors:Object.keys(report.rejected).length}))
- return {report,metadata,eligible,drafts}
+ return {report,metadata,eligible,drafts,selectedCandidateUrls:selectedCandidates.map(candidate=>candidate.sourceUrl)}
 }
 const isCLI=process.argv[1]&&import.meta.url===pathToFileURL(path.resolve(process.argv[1])).href
 if(isCLI){

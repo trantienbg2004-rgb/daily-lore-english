@@ -5,10 +5,13 @@ import {collectDiscover,rankNewsCandidates} from '../discover-collect.mjs'
 import {runAutoNews} from '../auto-news.mjs'
 
 test('push publication rotates batches and stops when Gemini quota is exhausted',async()=>{
- const batches=[]
+ const batches=[],skipped=[]
  const results=await runAutoNews({apiKey:'fake',rounds:3,runNumber:10,log:{log(){},warn(){}},
-  publish:async({candidateBatch})=>{batches.push(candidateBatch);return {published:true,quotaExhausted:batches.length===2}}})
- assert.deepEqual(batches,[30,31])
+  publish:async({candidateBatch,skipSourceUrls})=>{
+   batches.push(candidateBatch);skipped.push([...skipSourceUrls]);return {published:true,attemptedSourceUrls:['url-'+batches.length],quotaExhausted:batches.length===2}
+  }})
+ assert.deepEqual(batches,[0,0])
+ assert.deepEqual(skipped,[[],['url-1']])
  assert.equal(results.length,2)
  await assert.rejects(runAutoNews({apiKey:'fake',rounds:4,publish:async()=>({})}),/between 1 and 3/)
 })
