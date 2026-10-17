@@ -39,7 +39,8 @@ const stripHtml=value=>String(value||'').replace(/<[^>]*>/g,' ').replace(/&(?:am
 const blockedTitle=/\b(?:flag|coat of arms|logo|icon|map|diagram|chart|infographic|symbol|seal|emblem|denoise)\b/i
 const licensePattern=/^https:\/\/creativecommons\.org\/(?:licenses\/(?:by|by-sa)\/(?:2\.0|2\.5|3\.0|4\.0)|publicdomain\/(?:zero|mark)\/1\.0)(?:\/|$)/i
 export function commonsQueryFor(title){return subjects.find(([pattern])=>pattern.test(title||''))?.[1]||contextualPlaces.find(place=>new RegExp(`\\b${place.replaceAll(' ','\\s+')}\\b`,'i').test(title||''))||contextualAliases.find(([pattern])=>pattern.test(title||''))?.[1]||''}
-export function commonsQueryIsContextual(title){const query=commonsQueryFor(title);return !!query&&(!subjects.some(([,term])=>term===query)||query==='Mozambique street'||query==='Quinoa farmer')}
+export function commonsQueryIsContextual(title){const query=commonsQueryFor(title);return !!query&&(
+ !subjects.some(([,term])=>term===query)||['Mozambique street','Quinoa farmer','Nepal','Zamboanga City','climate change'].includes(query))}
 export function approvedCommonsPhoto(page,query){
  const info=page?.imageinfo?.[0],meta=info?.extmetadata||{}
  const file=String(page?.title||'').replace(/^File:/,'').replace(/\.[^.]+$/,'').replace(/[_()]/g,' ').trim()

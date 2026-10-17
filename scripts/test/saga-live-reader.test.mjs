@@ -2,7 +2,7 @@ import test from 'node:test'
 import assert from 'node:assert/strict'
 import fs from 'node:fs'
 import {refreshCatalog,refillCatalog,REFRESH_INTERVAL_MS} from '../../src/lib/continuousReader.js'
-import {approvedCommonsPhoto,searchCommonsImages,commonsQueryFor} from '../discover/commonsMedia.mjs'
+import {approvedCommonsPhoto,searchCommonsImages,commonsQueryFor,commonsQueryIsContextual} from '../discover/commonsMedia.mjs'
 import {validatedNewsHeadline} from '../discover/headline.mjs'
 import {buildThreeLevelRequest} from '../discover/geminiLevels.mjs'
 import {displayHeadline} from '../../src/lib/editorial.js'
@@ -83,6 +83,7 @@ test('country-only Commons photos must show a place, not an unrelated official o
   excludeUrls:['https://commons.wikimedia.org/wiki/File:existing.jpg']}),[])
  assert.equal(commonsQueryFor('Rana Tharu women in Nepal'),'Tharu Nepal')
  assert.equal(commonsQueryFor('Women at Nampula protests'),'Nampula Mozambique')
+ assert.equal(commonsQueryIsContextual('Nepal reflects on protests'),true)
 })
 
 test('Commons rate limiting stops photo discovery instead of spending Gemini quota',async()=>{

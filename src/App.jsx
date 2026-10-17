@@ -383,6 +383,13 @@ function App() {
   const historyReadyRef = useRef(false)
   const [page, setPage] = useState(0)
   const [pageMotion, setPageMotion] = useState(null)
+  useEffect(() => {
+    if (pageMotion === null) return
+    // Image measurements can rerender a page during its entrance animation.
+    // Always clear the motion class so later pages cannot remain shifted.
+    const timer = setTimeout(() => setPageMotion(null), 320)
+    return () => clearTimeout(timer)
+  }, [page, pageMotion, storyIndex])
   const [brokenImages, setBrokenImages] = useState(() => new Set())
   const [photoVersion, setPhotoVersion] = useState(0)
   const [showCredits, setShowCredits] = useState(false)

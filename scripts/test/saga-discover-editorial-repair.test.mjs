@@ -49,6 +49,17 @@ test('a rejected headline is repaired without throwing away three valid levels',
  assert.deepEqual(Object.keys(requests[1].generationConfig.responseSchema.properties),['headline'])
 })
 
+test('a short publisher clause avoids a second AI call for the headline',async()=>{
+ const titledSource={...source,title:'Science report reaches local schools, but teachers seek more details'}
+ let calls=0
+ const result=await generateThreeLevels({source:titledSource,apiKey:'fake',fetchImpl:async()=>{
+  calls++;return fakeRes({...valid(),headline:'An unrelated and unsupported display title'})
+ }})
+ assert.equal(result.headline,'Science report reaches local schools')
+ assert.equal(result.requestCount,1)
+ assert.equal(calls,1)
+})
+
 test('persistent hallucinated numbers never escape the quality gate; bounded requests',async()=>{
  const bad=valid();bad.variants[2].paragraphs[0]+=' The count increased to 987654.'
  let calls=0

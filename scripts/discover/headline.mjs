@@ -16,3 +16,17 @@ export function validatedNewsHeadline(value,sourceTitle,sourceText=null){
  }
  return headline
 }
+
+// A publisher's own short title is preferable to spending another free AI
+// request on a display title. A complete clause before a contrast also works.
+export function sourceNewsHeadline(sourceTitle,sourceText){
+ const source=compact(sourceTitle)
+ const options=[source,source.split(/,\s+but\b/i)[0],source.split(/\s+[—–]\s+|:\s+/u)[0]]
+ for(const option of options){
+  if(option.split(/\s+/).length>=5){
+   const valid=validatedNewsHeadline(option,source,sourceText)
+   if(valid)return valid
+  }
+ }
+ return ''
+}

@@ -5,7 +5,7 @@
 import {wordCount} from './clean.mjs'
 import {GEMINI_MODEL,GEMINI_THINKING} from './geminiEditor.mjs'
 import {smartPaginate} from './smartPaginate.mjs'
-import {validatedNewsHeadline} from './headline.mjs'
+import {validatedNewsHeadline,sourceNewsHeadline} from './headline.mjs'
 
 export const DISCOVER_LEVELS=Object.freeze(['A1-A2','B1-B2','C1-C2'])
 const entrySchema={type:'OBJECT',properties:{
@@ -122,7 +122,8 @@ export async function generateThreeLevels({source,apiKey,fetchImpl=fetch,waitImp
   if(!parsed)throw Error('Gemini returned no usable JSON')
   try{
    const levelVariants=validateLevelDrafts(parsed,source,{strictPages})
-   let headline=validatedNewsHeadline(parsed.headline,source.title,source.text),headlineRepaired=false
+   let headline=validatedNewsHeadline(parsed.headline,source.title,source.text)||
+    sourceNewsHeadline(source.title,source.text),headlineRepaired=false
    if(!headline&&repair<maxEditorialRepairs){
     requestCount++;onRequest({requestCount,repair,attempt:0,headlineOnly:true})
     const response=await fetchImpl(endpoint,{method:'POST',headers:{'Content-Type':'application/json','x-goog-api-key':apiKey},body:JSON.stringify(headlineRepairRequest(source,parsed.headline))})
