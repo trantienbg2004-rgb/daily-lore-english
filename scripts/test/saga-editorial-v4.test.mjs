@@ -42,7 +42,9 @@ test('Global Voices caption must prove the individual photo license',()=>{
  const caption='<div class="wp-caption aligncenter"><a href="https://commons.wikimedia.org/wiki/File:Myanmar.jpg"><img src="https://globalvoices.org/wp-content/uploads/myanmar.webp" alt="Myanmar Telenor"></a><p class="wp-caption-text">Photo by Bjoertvedt. <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.en">CC BY-SA 4.0</a></p></div>'
  const image=licensedArticleImage(caption,source)
  assert.equal(image?.provenance.license,'CC BY-SA')
+ assert.match(image?.provenance.credit||'',/Photo by Bjoertvedt/)
  assert.equal(image?.provenance.imagePageUrl,'https://commons.wikimedia.org/wiki/File:Myanmar.jpg')
+ assert.equal(licensedArticleImage(caption.replace('href="https://creativecommons.org/licenses/by-sa/4.0/deed.en"','href=" https://creativecommons.org/licenses/by-sa/4.0/deed.en"'),source)?.provenance.license,'CC BY-SA')
  assert.equal(licensedArticleImage(caption.replace('Photo by Bjoertvedt','Getty Images, fair use'),source),null)
  assert.equal(licensedArticleImage(caption.replace('https://creativecommons.org/licenses/by-sa/4.0/deed.en','https://creativecommons.org/licenses/by-nc/4.0/'),source),null)
  assert.equal(licensedArticleImage(caption.replace('https://creativecommons.org/licenses/by-sa/4.0/deed.en','https://creativecommons.org/licenses/by-sa/4.0/extra'),source),null)

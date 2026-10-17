@@ -4,6 +4,7 @@ import fs from 'node:fs'
 import {smartPaginate} from '../discover/smartPaginate.mjs'
 import {validateLevelDrafts} from '../discover/geminiLevels.mjs'
 import {applyNewsLevel} from '../../src/lib/newsLevels.js'
+import {photoCreditMatches} from '../discover/bridge.mjs'
 const dir='public/lore-reader/'
 test('published catalog has no lore but original historical shards remain',()=>{
  const m=JSON.parse(fs.readFileSync(dir+'manifest.json'))
@@ -14,6 +15,24 @@ test('published catalog has no lore but original historical shards remain',()=>{
  assert.ok(fs.existsSync(dir+'0000.json')&&fs.existsSync(dir+'0010.json'))
  const old=JSON.parse(fs.readFileSync(dir+'0000.json'))
  assert.ok(old.some(x=>x.contentType==='lore'))
+})
+test('published photo count and credits match every reading level',()=>{
+ const manifest=JSON.parse(fs.readFileSync(dir+'manifest.json'))
+ const news=Array.from({length:manifest.chunks},(_,i)=>JSON.parse(fs.readFileSync(dir+String(i).padStart(4,'0')+'.json'))).flat().filter(s=>s.contentType==='news')
+ const pictured=news.filter(s=>s.pages.some(p=>p.image))
+ assert.equal(manifest.withVerifiedPhoto,pictured.length)
+ for(const story of pictured){
+  const cover=story.pages[0]
+  assert.match(cover.imageProvenance?.licenseUrl||'',/^https:\/\/creativecommons\.org\/licenses\/(?:by|by-sa)\//)
+  assert.ok(cover.imageProvenance?.credit?.length>=3)
+  assert.equal(cover.imageProvenance.sourceImageUrl,story.sourceUrl)
+  assert.ok(cover.imageProvenance.imagePageUrl)
+  for(const level of ['A1-A2','B1-B2','C1-C2']){
+   const page=story.levelVariants[level].pages[0]
+   assert.equal(page.image,cover.image)
+   assert.ok(photoCreditMatches({imageUrl:cover.image,imageProvenance:cover.imageProvenance},page))
+  }
+ }
 })
 test('natural pagination keeps text and tolerates any positive number of pages',()=>{
  const a='One short sentence.'

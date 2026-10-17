@@ -54,6 +54,7 @@ export async function publishDiscover({root=process.cwd(),drafts=[],limit=2,now=
    const tmp=target+'.stage-'+process.pid;await fs.writeFile(tmp,JSON.stringify(accepted.slice(i,i+20))+'\n');await fs.rename(tmp,target);addedFiles.push(target)}
   const updated={...manifest,total:manifest.total+accepted.length,chunks:manifest.chunks+addedFiles.length,
    sourceCount:new Set([...stories,...accepted].map(s=>s.sourceName||s.publisher)).size,
+   withVerifiedPhoto:[...stories,...accepted].filter(s=>s.pages.some(p=>p.image)).length,
    contentHash:sha({previous:manifest.contentHash,added:accepted.map(s=>[s.id,s.pages,s.levelVariants])}),updatedAt:now.toISOString(),
    byTopic:{...manifest.byTopic}}
   for(const story of accepted)updated.byTopic[story.category]=(updated.byTopic[story.category]||0)+1

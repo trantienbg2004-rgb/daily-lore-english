@@ -42,12 +42,12 @@ export function licensedArticleImage(html,sourceUrl){
    ||figure.match(/<p\b[^>]*class\s*=\s*(?:"[^"]*\bwp-caption-text\b[^"]*"|'[^']*\bwp-caption-text\b[^']*')[^>]*>([\s\S]*?)<\/p\s*>/i)?.[1]||''
   if(!creditSection)continue
   const licenseUrl=[...creditSection.matchAll(/<a\b[^>]*>/gi)]
-   .map(link=>decode(getAttr(link[0],'href')).replace(/^http:/i,'https:'))
+   .map(link=>decode(getAttr(link[0],'href')).trim().replace(/^http:/i,'https:'))
    .find(url=>approved.test(url))||''
   if(!licenseUrl)continue
   const text=compact(creditSection)
   if(!text || text.length>450)continue
-  const credit=compact(creditSection.replace(/<a\b[^>]*>[\s\S]*?<\/a>/gi,' ')).slice(0,170)
+  const credit=compact(creditSection.replace(/<\/?a\b[^>]*>/gi,'').replace(/CC\s*BY(?:-SA)?\s*[\d.]*/gi,'')).slice(0,170)
   if(!credit||!/(?:photo|image|credit|by|©|courtesy)/i.test(text))continue
   const caption=decode(getAttr(img,'alt'))||text.slice(0,120)
   const imagePageUrl=safeURL(getAttr(figure.match(/<a\b[^>]*>/i)?.[0]||'','href'),sourceUrl)
