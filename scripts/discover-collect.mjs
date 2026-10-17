@@ -16,13 +16,15 @@ import {generateThreeLevels,buildLevelPages} from './discover/geminiLevels.mjs'
 import {sameEvent} from './discover/bridge.mjs'
 
 const cap=(n,min,max)=>Number.isSafeInteger(n)?Math.max(min,Math.min(max,n)):min
+const priorityTitle=/\b(?:world|global|international|politic|government|election|parliament|diplomat|summit|united nations|war|conflict|peace|econom|trade|market|inflation|tariff|finance|bank|sanction|refugee|migration)\w*\b/i
+export function rankNewsCandidates(items){return [...items].sort((a,b)=>Number(priorityTitle.test(b.title))-Number(priorityTitle.test(a.title)) || b.publishedAt.localeCompare(a.publishedAt))}
 export async function collectDiscover({fetchImpl=fetch,geminiFetchImpl=fetchImpl,now=new Date(),sources=SOURCES,
   maxPerFeed=8,maxGemini=3,targetDrafts=1,useGemini=false,apiKey='',log=console,
-  geminiIntervalMs=5000,geminiWaitImpl=ms=>new Promise(r=>setTimeout(r,ms)),outputDir='reports/saga-discover-local',writeFiles=true,strictPages=false,excludeSourceUrls=new Set(),excludePublishedNews=[]}={}){
+  maxGeminiCalls=8,geminiIntervalMs=5000,geminiWaitImpl=ms=>new Promise(r=>setTimeout(r,ms)),outputDir='reports/saga-discover-local',writeFiles=true,strictPages=false,excludeSourceUrls=new Set(),excludePublishedNews=[]}={}){
  if(useGemini&&!apiKey)throw Error('GEMINI_API_KEY missing. Zero requests sent; nothing published.')
- maxPerFeed=cap(maxPerFeed,1,20);maxGemini=cap(maxGemini,0,10);targetDrafts=cap(targetDrafts,1,10)
+ maxPerFeed=cap(maxPerFeed,1,20);maxGemini=cap(maxGemini,0,20);targetDrafts=cap(targetDrafts,1,10);maxGeminiCalls=cap(maxGeminiCalls,1,8)
  const report={generatedAt:now.toISOString(),mode:useGemini?'gemini-staging':'discovery-staging',model:useGemini?'gemini-2.5-flash':null,
-  sourceCount:sources.length,sourceStatus:[],candidates:0,eligible:0,geminiCalls:0,geminiCandidateAttempts:0,editorialRepairs:0,targetDrafts,drafts:0,completeThreeLevelDrafts:0,
+  sourceCount:sources.length,sourceStatus:[],candidates:0,eligible:0,geminiCalls:0,maxGeminiCalls,geminiCandidateAttempts:0,editorialRepairs:0,targetDrafts,drafts:0,completeThreeLevelDrafts:0,
   rejected:{},publishEnabled:false,publicFilesChanged:false}
  const increment=(key)=>{report.rejected[key]=(report.rejected[key]||0)+1}
  const discovered=[]
@@ -45,7 +47,7 @@ export async function collectDiscover({fetchImpl=fetch,geminiFetchImpl=fetchImpl
   }
   report.sourceStatus.push({source:source.id,feedItems:found,staleFeeds:staleFeedEntries,latestStalePublication:latestFeedPublication||null,errors:errs})
  }
- const candidates=uniqueCandidates(discovered).filter(c=>!excludeSourceUrls.has(c.sourceUrl)&&!excludePublishedNews.some(old=>sameEvent(c,old)));report.candidates=candidates.length
+ const candidates=rankNewsCandidates(uniqueCandidates(discovered).filter(c=>!excludeSourceUrls.has(c.sourceUrl)&&!excludePublishedNews.some(old=>sameEvent(c,old))));report.candidates=candidates.length
  const eligible=[],metadata=[],perSourceResults=new Map(sources.map(s=>[s.id,{attempted:0,eligible:0,rejected:{},sampleExtraction:null}]))
  for(const candidate of candidates){
   const source=sources.find(s=>s.id===candidate.sourceId)
@@ -78,10 +80,10 @@ export async function collectDiscover({fetchImpl=fetch,geminiFetchImpl=fetchImpl
  }
  if(useGemini){
   for(const candidate of eligible.slice(0,maxGemini)){
-   if(drafts.length>=targetDrafts)break
+   if(drafts.length>=targetDrafts || report.geminiCalls>=maxGeminiCalls)break
    try{
     report.geminiCandidateAttempts++
-    const result=await generateThreeLevels({source:candidate,apiKey,strictPages,fetchImpl:rateLimitedGeminiFetch,onRequest:()=>{report.geminiCalls++}})
+    const result=await generateThreeLevels({source:candidate,apiKey,strictPages,fetchImpl:rateLimitedGeminiFetch,onRequest:()=>{if(report.geminiCalls>=maxGeminiCalls)throw Error('Gemini free-tier run budget exhausted');report.geminiCalls++}})
     if(result.editorialRepaired)report.editorialRepairs++
     drafts.push({id:candidate.id,sourceId:candidate.sourceId,sourceName:candidate.sourceName,sourceUrl:candidate.sourceUrl,
       originalPublishedAt:candidate.publishedAt,rights:candidate.rights,model:result.model,
@@ -90,7 +92,7 @@ export async function collectDiscover({fetchImpl=fetch,geminiFetchImpl=fetchImpl
       imageUrl:candidate.verifiedPhoto?.url||'',imageRightsVerified:!!candidate.verifiedPhoto,imageProvenance:candidate.verifiedPhoto?.provenance||null})
    }catch(e){const reason=String(e?.message||e).slice(0,600);console.error('SAGA GEMINI REJECTED:',candidate.sourceUrl,e?.stack||e);increment('gemini-rejected');report.sourceStatus.push({source:'gemini:'+candidate.id,error:reason});
     // A quota error is a hard stop, never silently switch to paid tier.
-    if(/quota|rate| 429| 503|HTTP 401|HTTP 403/i.test(reason))break}
+    if(/quota|rate|budget exhausted| 429| 503|HTTP 401|HTTP 403/i.test(reason))break}
   }
  }
  report.drafts=drafts.length

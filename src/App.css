@@ -805,6 +805,7 @@
   box-sizing:border-box; display:flex; flex:0 0 auto; align-items:center; justify-content:space-between;
   gap:12px; width:100%; min-width:0; min-height:43px;
   padding:8px 0 9px!important; margin:0; border-bottom:1px solid rgba(44,40,34,.12);
+  pointer-events:auto; touch-action:manipulation;
 }
 .lore-editorial-v5 .saga-toolbar-story {
   flex:1 1 auto; min-width:0; display:block; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
@@ -825,6 +826,7 @@
   min-width:73px; max-width:88px; padding:6px 8px;
   border:1px solid #d4cdc1; border-radius:999px;
   background:#efede6; color:#35302b; font:600 11px/1.2 'Inter',system-ui,sans-serif;
+  pointer-events:auto; touch-action:manipulation; cursor:pointer;
 }
 .lore-editorial-v5 .saga-toolbar-audio {
   display:grid; flex:0 0 32px; place-items:center; width:32px; height:32px;

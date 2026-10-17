@@ -34,9 +34,7 @@ jobs:
         run: npm ci
 
       - name: Run regression tests
-        run: |
-          npm test
-          node --test scripts/test/saga-recommendation-v2.test.mjs scripts/test/saga-discover-bridge.test.mjs scripts/test/saga-news-level-switch.test.mjs scripts/test/saga-discover-editorial-repair.test.mjs
+        run: npm test
 
       - name: Collect and publish verified news
         env:

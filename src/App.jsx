@@ -779,7 +779,7 @@ function App() {
   // Pointer events catch edge gestures missed by touchend after late image
   // loads or a mobile browser cancel. The touch fallback is deduplicated.
   const startPointer = event => {
-    if (event.pointerType !== 'touch' || selected || event.target.closest('button, a, summary')) return
+    if (event.pointerType !== 'touch' || selected || event.target.closest('button, a, summary, select, label')) return
     pointerGesture.current = {id: event.pointerId, x: event.clientX, y: event.clientY}
   }
   const movePointer = event => {
@@ -802,7 +802,7 @@ function App() {
   const startGesture = event => {
     if (event.touches.length !== 1 || selected) { gesture.current = null; return }
     const control = event.target.closest('button')
-    if ((control && !control.classList.contains('word-token')) || event.target.closest('a, summary')) { gesture.current = null; return }
+    if ((control && !control.classList.contains('word-token')) || event.target.closest('a, summary, select, label')) { gesture.current = null; return }
     suppressWordClick.current = false
     gesture.current = { x: event.touches[0].clientX, y: event.touches[0].clientY, moved: false }
   }
@@ -949,7 +949,7 @@ function App() {
           <div className="source-credit-list"><strong>Image attributions</strong>{(() => {
             const pages = story._sourcePages || story.pages
             const distinct = [...new Map(pages.filter(p => p.image).map(p => [p.image,p])).values()]
-            return distinct.length ? distinct.map((p,i) => <p key={i}>{p.imageProvenance?.credit || p.caption || photoLabel(p)} {p.imageProvenance?.license || ''} {safeStoryUrl(p.imageProvenance?.licenseUrl) && <a href={safeStoryUrl(p.imageProvenance.licenseUrl)} target="_blank" rel="noopener noreferrer">Image license ↗</a>} {p.imageProvenance?.sourceImageUrl && <a href={p.imageProvenance.sourceImageUrl} target="_blank" rel="noopener noreferrer">Image in original article ↗</a>}</p>) : <p>No reusable original-article images in this article.</p>
+            return distinct.length ? distinct.map((p,i) => <p key={i}>{p.imageProvenance?.credit || p.caption || photoLabel(p)} {p.imageProvenance?.license || ''} {safeStoryUrl(p.imageProvenance?.licenseUrl) && <a href={safeStoryUrl(p.imageProvenance.licenseUrl)} target="_blank" rel="noopener noreferrer">Image license ↗</a>} {safeStoryUrl(p.imageProvenance?.imagePageUrl) && <a href={safeStoryUrl(p.imageProvenance.imagePageUrl)} target="_blank" rel="noopener noreferrer">Original image ↗</a>} {safeStoryUrl(p.imageProvenance?.sourceImageUrl) && <a href={safeStoryUrl(p.imageProvenance.sourceImageUrl)} target="_blank" rel="noopener noreferrer">Image in original article ↗</a>}</p>) : <p>No reusable original-article images in this article.</p>
           })()}</div>
           <button className="primary" onClick={() => setShowCredits(false)}>Back to reading</button>
         </section>

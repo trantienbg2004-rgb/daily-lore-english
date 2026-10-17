@@ -39,8 +39,9 @@ test('Historical circa abbreviation does not cause mid-phrase sentence splitting
 })
 test('Sentence-first paginator remains lossless and supplies cover photos',()=>{
   const text='The Hittites formed a powerful kingdom in Anatolia. Its neighbors influenced regional trade. Their monuments survived for centuries.'
-  const pages=planReadingPages({pages:[{text,image:'wiki-image',caption:'Historical map'}]}, ({text:t,image})=>t.split(/\s+/).filter(Boolean).length <= (image?8:11))
+  const pages=planReadingPages({pages:[{text,image:'wiki-image',caption:'Historical map',imageProvenance:{credit:'Map by Ada',license:'CC BY'}}]}, ({text:t,image})=>t.split(/\s+/).filter(Boolean).length <= (image?8:11))
   assert.equal(pages.map(p=>p.text).join(' ').replace(/\s+/g,' ').trim(),text)
   assert.equal(pages[0].caption,'Historical map')
+  assert.equal(pages[0].imageProvenance.credit,'Map by Ada')
   assert.ok(pages.length>1)
 })
