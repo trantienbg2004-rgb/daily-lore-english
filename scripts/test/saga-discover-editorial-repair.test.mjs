@@ -1,7 +1,13 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
 import {generateThreeLevels,buildThreeLevelRequest,validateLevelDrafts,DISCOVER_LEVELS} from '../discover/geminiLevels.mjs'
-import {collectDiscover} from '../discover-collect.mjs'
+import {collectDiscover,rankNewsCandidates} from '../discover-collect.mjs'
+
+test('world politics and economy news are considered before lifestyle items',()=>{
+ const day='2026-10-16T12:00:00Z'
+ const rows=[{title:'A new local poetry book',publishedAt:day},{title:'Global trade summit reaches new agreement',publishedAt:day}]
+ assert.equal(rankNewsCandidates(rows)[0].title,rows[1].title)
+})
 
 const quote='Researchers invited families to study the new science report in local schools.'
 const note='They explained the evidence from community meetings, and shared what the study could show to people who were interested in the findings.'
@@ -69,4 +75,12 @@ test('one invalid news article moves to next eligible article and stops after a 
  assert.equal(r.report.rejected['gemini-rejected'],1)
  assert.equal(r.report.publishEnabled,false)
  assert.equal(r.report.publicFilesChanged,false)
+ aiCalls=0
+ const capped=await collectDiscover({sources:publishers,fetchImpl,geminiFetchImpl:async()=>{aiCalls++;return fakeRes(failed)},
+  now:new Date('2026-10-17T00:00:00Z'),apiKey:'fake',useGemini:true,maxGemini:3,maxGeminiCalls:2,targetDrafts:2,
+  geminiIntervalMs:0,writeFiles:false,log:{log(){}}})
+ assert.equal(aiCalls,2)
+ assert.equal(capped.report.geminiCalls,2)
+ assert.equal(capped.report.geminiCandidateAttempts,1)
+ assert.equal(capped.drafts.length,0)
 })

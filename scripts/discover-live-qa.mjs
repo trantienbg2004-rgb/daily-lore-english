@@ -5,6 +5,7 @@ import fs from 'node:fs'
 import path from 'node:path'
 import {pathToFileURL} from 'node:url'
 import {DISCOVER_LEVELS} from './discover/geminiLevels.mjs'
+import {photoCreditMatches} from './discover/bridge.mjs'
 import {readableStory,validStories} from '../src/lib/feedQueue.js'
 
 const compact=x=>String(x??'').trim()
@@ -36,6 +37,7 @@ export function inspectStagedRelease(report,drafts){
    if(!Array.isArray(pages)||pages.length<1){errors.push(`${level}: missing content pages`);continue}
    if(!validStories([{title:draft.title,pages}]))errors.push(`${level}: incompatible reader page schema`)
    if(pages.some((p,i)=>i===0 ? (!!p.image !== !!draft?.imageUrl || (p.image && p.image!==draft.imageUrl)) : (p.image||p.caption)))errors.push(`${level}: unverified or misplaced photo`)
+   if(!photoCreditMatches(draft,pages[0])||pages.slice(1).some(p=>p.imageProvenance))errors.push(`${level}: missing or mismatched image attribution`)
    const total=pages.reduce((sum,p)=>sum+words(p.text),0)
    counts[level]=total
    if(total<10)errors.push(`${level}: insufficient actual content`)

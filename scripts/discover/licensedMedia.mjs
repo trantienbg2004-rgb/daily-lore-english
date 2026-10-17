@@ -4,8 +4,8 @@
 const decode=x=>String(x||'').replace(/&amp;/gi,'&').replace(/&quot;/gi,'\"').replace(/&apos;/gi,"'")
 const compact=s=>decode(String(s||'').replace(/<[^>]+>/g,' ')).replace(/\s+/g,' ').trim()
 const getAttr=(tag,key)=>String(tag).match(new RegExp(`\\b${key}\\s*=\\s*(?:"([^"]*)"|'([^']*)')`,'i'))?.slice(1).find(x=>x!==undefined)||''
-const approved=/^https:\/\/creativecommons\.org\/licenses\/(?:by|by-sa)\/(?:2\.0|2\.5|3\.0|4\.0)\/?(?:[#?].*)?$/i
-const blocked=/\b(?:Reuters|Getty Images|AFP|Associated Press|AP Photo|Shutterstock|iStock|Alamy|all rights reserved|permission required|NC|ND)\b/i
+const approved=/^https:\/\/creativecommons\.org\/licenses\/(?:by|by-sa)\/(?:2\.0|2\.5|3\.0|4\.0)\/(?:deed(?:\.[a-z-]+)?)?(?:[#?].*)?$/i
+const blocked=/\b(?:Reuters|Getty Images|AFP|Associated Press|AP Photo|Shutterstock|iStock|Alamy|all rights reserved|permission required|fair use|NC|ND)\b/i
 const safeURL=(url,base)=>{
  try {const parsed=new URL(decode(url),base || undefined);if(parsed.protocol!=='https:' || !/\.(?:jpe?g|png|webp)(?:$|\?)/i.test(parsed.pathname+parsed.search))return '';return parsed.href}
  catch{return ''}
@@ -28,7 +28,9 @@ export function articleImageHint(html,baseUrl=''){
 export function licensedArticleImage(html,sourceUrl){
  // A photo must carry a licence IN ITS OWN figure/caption. A page-level CC footer is not proof.
  const hints=[]
- for(const match of String(html||'').matchAll(/<figure\b[^>]*>[\s\S]{0,9000}?<\/figure\s*>/gi)){
+ const figures=[...String(html||'').matchAll(/<figure\b[^>]*>[\s\S]{0,9000}?<\/figure\s*>/gi),
+  ...String(html||'').matchAll(/<div\b[^>]*class\s*=\s*(?:"[^"]*\bwp-caption\b[^"]*"|'[^']*\bwp-caption\b[^']*')[^>]*>[\s\S]{0,9000}?<\/div\s*>/gi)]
+ for(const match of figures){
   const figure=match[0]
   if(blocked.test(compact(figure)))continue
   const img=figure.match(/<img\b[^>]*>/i)?.[0]
@@ -36,16 +38,20 @@ export function licensedArticleImage(html,sourceUrl){
   const src=getAttr(img,'data-src')||getAttr(img,'src')
   const url=safeURL(src,sourceUrl)
   if(!url)continue
-  const creditSection=figure.match(/<figcaption\b[^>]*>([\s\S]*?)<\/figcaption\s*>/i)?.[1]||''
+  const creditSection=figure.match(/<figcaption\b[^>]*>([\s\S]*?)<\/figcaption\s*>/i)?.[1]
+   ||figure.match(/<p\b[^>]*class\s*=\s*(?:"[^"]*\bwp-caption-text\b[^"]*"|'[^']*\bwp-caption-text\b[^']*')[^>]*>([\s\S]*?)<\/p\s*>/i)?.[1]||''
   if(!creditSection)continue
-  const licenseUrl=decode((creditSection.match(/https?:\/\/creativecommons\.org\/licenses\/(?:by|by-sa)\/(?:2\.0|2\.5|3\.0|4\.0)\/?/i)||[])[0]||'').replace(/^http:/i,'https:')
-  if(!approved.test(licenseUrl))continue
+  const licenseUrl=[...creditSection.matchAll(/<a\b[^>]*>/gi)]
+   .map(link=>decode(getAttr(link[0],'href')).trim().replace(/^http:/i,'https:'))
+   .find(url=>approved.test(url))||''
+  if(!licenseUrl)continue
   const text=compact(creditSection)
   if(!text || text.length>450)continue
-  const credit=compact(creditSection.replace(/<a\b[^>]*>[\s\S]*?<\/a>/gi,' ')).slice(0,170)
+  const credit=compact(creditSection.replace(/<\/?a\b[^>]*>/gi,'').replace(/CC\s*BY(?:-SA)?\s*[\d.]*/gi,'')).slice(0,170)
   if(!credit||!/(?:photo|image|credit|by|©|courtesy)/i.test(text))continue
   const caption=decode(getAttr(img,'alt'))||text.slice(0,120)
-  hints.push({url,caption,verified:true,provenance:{credit,license:licenseUrl.includes('/by-sa/')?'CC BY-SA':'CC BY',licenseUrl,sourceImageUrl:sourceUrl}})
+  const imagePageUrl=safeURL(getAttr(figure.match(/<a\b[^>]*>/i)?.[0]||'','href'),sourceUrl)
+  hints.push({url,caption,verified:true,provenance:{credit,license:licenseUrl.includes('/by-sa/')?'CC BY-SA':'CC BY',licenseUrl,sourceImageUrl:sourceUrl,...(imagePageUrl?{imagePageUrl}:{})}})
  }
  return hints[0]||null
 }

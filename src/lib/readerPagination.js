@@ -93,7 +93,7 @@ export function planReadingPages(item, fits, {maxPages = 250} = {}) {
       if (rest) fragment = rest
       else {fragment = ''; index++}
     }
-    pages.push({image:image?.image || '',caption:image?.caption || '',text})
+    pages.push({image:image?.image || '',caption:image?.caption || '',...(image?.imageProvenance ? {imageProvenance:image.imageProvenance} : {}),text})
   }
   if (index < units.length || fragment) throw Error('Reading article exceeds page safety limit; source preserved')
   // Every source token must still exist exactly once, in the same order.
