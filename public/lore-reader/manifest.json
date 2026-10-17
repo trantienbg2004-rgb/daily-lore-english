@@ -2,22 +2,22 @@
   "feedType": "news",
   "editorialVersion": 1,
   "ready": true,
-  "total": 16,
-  "chunks": 17,
+  "total": 17,
+  "chunks": 18,
   "sourceCount": 1,
-  "withVerifiedPhoto": 16,
+  "withVerifiedPhoto": 17,
   "sourcePhotosOnly": false,
   "byTopic": {
-    "Society": 13,
+    "Society": 14,
     "Economics": 1,
     "Politics": 1,
     "Science": 1
   },
-  "contentHash": "87d7123048a9934a26c99f40ae336383d1bcaed734fd5f9f4f9f2d0da58eff95",
-  "updatedAt": "2026-10-17T13:26:01.086Z",
+  "contentHash": "f35555a5169e0768c05073856f57f764bfd6f2261fbfcab61490946f932995a9",
+  "updatedAt": "2026-10-17T13:31:28.097Z",
   "licenseNotice": "Only independently written, source-attributed educational news summaries are indexed. Historic lore shard files remain stored.",
   "catalogIndex": "catalog-index.json",
   "catalogIndexVersion": 2,
   "newsOnly": true,
-  "catalogIndexHash": "dcb02a857995a75635959c94c78d0ac08cc7409c5117960ac8e3e1bf78661545"
+  "catalogIndexHash": "adc42686d92027642e63b25492a9e5b1670ae00f6adeb732263a5c8118a20df4"
 }
