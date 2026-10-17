@@ -881,7 +881,13 @@ function App() {
     const tokens = closing ? [] : itemPage.text.split(/(\s+)/)
     const total = item.pages.length + 1 // always a distinct source / next-story page
     return <div className="reader-gesture" aria-hidden={!interactive} onTouchStart={interactive ? startGesture : undefined} onTouchMove={interactive ? moveGesture : undefined} onTouchEnd={interactive ? endGesture : undefined} onTouchCancel={interactive ? cancelGesture : undefined} onPointerDown={interactive ? startPointer : undefined} onPointerMove={interactive ? movePointer : undefined} onPointerUp={interactive ? endPointer : undefined} onPointerCancel={interactive ? () => {pointerGesture.current = null; releasePageSurface()} : undefined}>
-      <header className="topbar lore-reader-topbar">{interactive && item.levelVariants && <label className="saga-news-level">Level <select aria-label="English reading level" disabled={!interactive} value={readingLevel} onChange={event => changeReadingLevel(event.target.value)} onKeyDown={event => event.stopPropagation()}>{NEWS_LEVELS.map(level => <option key={level} value={level}>{level}</option>)}</select></label>}{interactive && index === stories.length - 1 && <span className="reader-edge-status" role="status" aria-live="polite">{waitingForNext ? (feedRetrying ? 'Reconnecting…' : 'Finding next…') : feedDone ? 'Up to date' : feedLoading ? 'Loading…' : 'Swipe up · Next ↓'}</span>}</header>
+      <header className="topbar lore-reader-topbar">
+        <span className="saga-toolbar-story" title={pageNumber > 0 ? displayHeadline(item) : readerSection(item)}>{pageNumber > 0 ? displayHeadline(item) : readerSection(item)}</span>
+        <div className="saga-toolbar-actions">
+          {interactive && item.levelVariants && <label className="saga-news-level"><span className="saga-level-sr">Reading level</span><select aria-label="English reading level" value={readingLevel} onChange={event => changeReadingLevel(event.target.value)} onKeyDown={event => event.stopPropagation()}>{NEWS_LEVELS.map(level => <option key={level} value={level}>{level}</option>)}</select></label>}
+          {interactive && !closing && <button type="button" className="icon-button saga-toolbar-audio" onClick={() => speak(itemPage.text)} aria-label="Read aloud"><Icon name="volume" size={20}/></button>}
+        </div>
+      </header>
       <div key={`${index}:${pageNumber}`} className={'page-surface ' + (interactive && pageMotion ? (pageMotion > 0 ? 'page-enter-left' : 'page-enter-right') : '')}>
       {closing ? <section className="story-end" aria-label="Article completed">
         <div className="story-end-center"><Icon name="book" size={56}/><h2>That's the story.</h2>
@@ -900,7 +906,7 @@ function App() {
           label={photoLabel(itemPage)} onBroken={markBrokenImage}
           onReady={() => setPhotoVersion(n => n + 1)} />
       </div>
-      <section className={'reading-card ' + (!itemPage.image || brokenImages.has(itemPage.image) ? 'reading-card-no-photo' : 'reading-card-with-photo')}><div className="reading-topline"><button className="icon-button" disabled={!interactive} onClick={() => speak(itemPage.text)} aria-label="Read aloud"><Icon name="volume" size={21}/></button></div>
+      <section className={'reading-card ' + (!itemPage.image || brokenImages.has(itemPage.image) ? 'reading-card-no-photo' : 'reading-card-with-photo')}><div className="reading-topline" aria-hidden="true" />
         <p className="article-text">{tokens.map((token, i) => { const word = clean(token); return /^\s+$/.test(token) || !word ? token : <button key={i} type="button" disabled={!interactive} className={'word-token ' + (words.some(w => w.word === word) ? 'known' : '')} onClick={event => onWordClick(event, word)}>{token}</button> })}</p>
       </section>
       </>}

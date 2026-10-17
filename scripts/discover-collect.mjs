@@ -9,6 +9,7 @@ import {SOURCES} from './discover/sources/index.mjs'
 import {fetchText} from './discover/network.mjs'
 import {parseFeed} from './discover/rss.mjs'
 import {extractArticle} from './discover/article.mjs'
+import {licensedArticleImage,articleImageHint} from './discover/licensedMedia.mjs'
 import {rightsDecision} from './discover/rights.mjs'
 import {uniqueCandidates} from './discover/dedupe.mjs'
 import {generateThreeLevels,buildLevelPages} from './discover/geminiLevels.mjs'
@@ -59,8 +60,10 @@ export async function collectDiscover({fetchImpl=fetch,geminiFetchImpl=fetchImpl
    if(!rights.textAllowed){
     stats.rejected[rights.reason]=(stats.rejected[rights.reason]||0)+1;metadata.push({...candidate,mode:'discovery-only',reason:rights.reason});increment(rights.reason);continue}
    stats.eligible++
+   const verifiedPhoto=licensedArticleImage(html,candidate.sourceUrl)
    eligible.push({...candidate,text:article.text,rights,author:article.author||candidate.author,
-    imageRightsVerified:false,imageUrl:'',articleWordCount:article.wordCount})
+    verifiedPhoto,photoHint:articleImageHint(html,candidate.sourceUrl)||candidate.photoHints?.[0]||'',
+    imageRightsVerified:!!verifiedPhoto,imageUrl:verifiedPhoto?.url||'',articleWordCount:article.wordCount})
   }catch(e){increment('article-fetch-error:'+source.id);perSourceResults.get(source.id).rejected['article-fetch-error']=(perSourceResults.get(source.id).rejected['article-fetch-error']||0)+1;metadata.push({...candidate,mode:'discovery-only',reason:'article-fetch-error'})}
  }
  report.eligible=eligible.length
@@ -82,8 +85,9 @@ export async function collectDiscover({fetchImpl=fetch,geminiFetchImpl=fetchImpl
     if(result.editorialRepaired)report.editorialRepairs++
     drafts.push({id:candidate.id,sourceId:candidate.sourceId,sourceName:candidate.sourceName,sourceUrl:candidate.sourceUrl,
       originalPublishedAt:candidate.publishedAt,rights:candidate.rights,model:result.model,
-      title:candidate.title,levelVariants:buildLevelPages(result.levelVariants),
-      editorialState:'Three AI-assisted reading levels; human factual/legal/photo review required',imageUrl:''})
+      title:candidate.title,levelVariants:buildLevelPages(result.levelVariants,candidate.verifiedPhoto?[{pageIndex:0,verified:true,url:candidate.verifiedPhoto.url,caption:candidate.verifiedPhoto.caption,provenance:candidate.verifiedPhoto.provenance}]:[]),
+      editorialState:'Three AI-assisted reading levels; human factual/legal/photo review required',
+      imageUrl:candidate.verifiedPhoto?.url||'',imageRightsVerified:!!candidate.verifiedPhoto,imageProvenance:candidate.verifiedPhoto?.provenance||null})
    }catch(e){const reason=String(e?.message||e).slice(0,600);console.error('SAGA GEMINI REJECTED:',candidate.sourceUrl,e?.stack||e);increment('gemini-rejected');report.sourceStatus.push({source:'gemini:'+candidate.id,error:reason});
     // A quota error is a hard stop, never silently switch to paid tier.
     if(/quota|rate| 429| 503|HTTP 401|HTTP 403/i.test(reason))break}

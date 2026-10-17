@@ -10,6 +10,7 @@ import {readableStory,validStories} from '../src/lib/feedQueue.js'
 const compact=x=>String(x??'').trim()
 const words=x=>compact(x).split(/\s+/u).filter(Boolean).length
 const isHttps=x=>{try{return new URL(x).protocol==='https:'}catch{return false}}
+const safePhoto=d=>!d?.imageUrl || (d.imageRightsVerified===true && isHttps(d.imageUrl) && /^https:\/\/creativecommons\.org\/licenses\/(?:by|by-sa)\/(?:2\.0|2\.5|3\.0|4\.0)\/?/i.test(d.imageProvenance?.licenseUrl||'') && !!d.imageProvenance?.credit && isHttps(d.imageProvenance?.sourceImageUrl))
 
 export function inspectStagedRelease(report,drafts){
  const issues=[],seen=new Set(),details=[]
@@ -27,14 +28,14 @@ export function inspectStagedRelease(report,drafts){
   if(!isHttps(url))errors.push('Invalid source URL')
   if(!compact(draft?.sourceName)||!compact(draft?.title))errors.push('Missing source or title')
   if(draft?.rights?.textAllowed!==true||draft?.rights?.mode!=='gemini-eligible')errors.push('Rights gate not satisfied')
-  if(draft?.imageUrl)errors.push('Unverified source image must not be published')
+  if(!safePhoto(draft))errors.push('Unverified source image must not be published')
   if(!draft?.levelVariants||DISCOVER_LEVELS.some(level=>!draft.levelVariants[level]))errors.push('Incomplete three-level variants')
   const counts={}
   for(const level of DISCOVER_LEVELS){
    const variant=draft?.levelVariants?.[level],pages=variant?.pages
    if(!Array.isArray(pages)||pages.length<1){errors.push(`${level}: missing content pages`);continue}
    if(!validStories([{title:draft.title,pages}]))errors.push(`${level}: incompatible reader page schema`)
-   if(pages.some(p=>p.image||p.caption))errors.push(`${level}: unverified image/caption`)
+   if(pages.some((p,i)=>i===0 ? (!!p.image !== !!draft?.imageUrl || (p.image && p.image!==draft.imageUrl)) : (p.image||p.caption)))errors.push(`${level}: unverified or misplaced photo`)
    const total=pages.reduce((sum,p)=>sum+words(p.text),0)
    counts[level]=total
    if(total<10)errors.push(`${level}: insufficient actual content`)
@@ -78,13 +79,13 @@ export function formatSummary(result){
  return lines.join('\n')
 }
 
-export function runStagedQA({base='reports/saga-discover-local',summaryFile=process.env.GITHUB_STEP_SUMMARY}={}){
+export function runStagedQA({base='reports/saga-discover-local',summaryFile=process.env.GITHUB_STEP_SUMMARY,logSummary=true}={}){
  const file=path.join(base,'source-report.json'),draftFile=path.join(base,'gemini-drafts.json')
  if(!fs.existsSync(file)||!fs.existsSync(draftFile))throw Error('Missing real staging output; inspect collection step')
  const result=inspectStagedRelease(JSON.parse(fs.readFileSync(file,'utf8')),JSON.parse(fs.readFileSync(draftFile,'utf8')))
  fs.writeFileSync(path.join(base,'quality-report.json'),JSON.stringify(result,null,2)+'\n')
  const summary=formatSummary(result)
- console.log(summary)
+ if(logSummary)console.log(summary)
  if(summaryFile)fs.appendFileSync(summaryFile,summary+'\n')
  if(result.status!=='PASS')throw Error('SAGA live staging BLOCKED; do not publish')
  return result

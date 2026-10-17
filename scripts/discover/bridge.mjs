@@ -10,16 +10,17 @@ const titleWords=s=>new Set(String(s||'').toLowerCase().normalize('NFKD').replac
 export function sameEvent(a,b){const x=titleWords(a.title),y=titleWords(b.title);const intersection=[...x].filter(v=>y.has(v)).length;return intersection>=4&&intersection/Math.max(1,Math.min(x.size,y.size))>=.78 &&Math.abs(Date.parse(a.publishedAt)-Date.parse(b.publishedAt))<7*864e5}
 function safeSource(sourceId,url){try{const u=new URL(url);if(u.protocol!=='https:')return false;return sourceId==='global-voices'?['globalvoices.org','www.globalvoices.org'].includes(u.hostname):sourceId==='voa'&&u.hostname==='learningenglish.voanews.com'}catch{return false}}
 export function licensedDraft(d){const r=d?.rights;return safeSource(d?.sourceId,d?.sourceUrl)&&r?.textAllowed===true&&r?.mode==='gemini-eligible'&&(d.sourceId==='voa'?/Public domain/i.test(r.license||''):/^https:\/\/creativecommons\.org\/licenses\/by\/\d/i.test(r.licenseUrl||''))}
-export function validateDraft(d){const problems=[];if(!d?.id||!d?.title||!licensedDraft(d))problems.push('unlicensed-or-invalid-source');if(d?.imageUrl)problems.push('unverified-image')
+const verifiedPhoto=d=>!d?.imageUrl || (d.imageRightsVerified===true && /^https:\/\/creativecommons\.org\/licenses\/(?:by|by-sa)\/(?:2\.0|2\.5|3\.0|4\.0)\/?/i.test(d.imageProvenance?.licenseUrl||'') && typeof d.imageProvenance?.credit==='string' && d.imageProvenance.credit.length>=3 && d.imageProvenance?.sourceImageUrl===d.sourceUrl)
+export function validateDraft(d){const problems=[];if(!d?.id||!d?.title||!licensedDraft(d))problems.push('unlicensed-or-invalid-source');if(!verifiedPhoto(d))problems.push('unverified-image')
  const variants=d?.levelVariants||{},texts=[];for(const level of LEVELS){const v=variants[level];if(!Array.isArray(v?.pages)||v.pages.length<1){problems.push(`pages:${level}`);continue}
-  if(v.pages.some(p=>typeof p?.text!=='string'||p.image||p.caption||!p.text.trim()))problems.push(`length:${level}`)
+  if(v.pages.some((p,i)=>typeof p?.text!=='string'||!p.text.trim()||(i===0?(p.image||'')!==(d.imageUrl||''):(p.image||p.caption))))problems.push(`length:${level}`)
   const total=v.pages.reduce((t,p)=>t+wordCount(p.text),0);if(total<10)problems.push(`total:${level}`)
   if(!Array.isArray(v.evidence)||v.evidence.length<3||v.evidence.some(s=>typeof s!=='string'||s.length<16))problems.push(`evidence:${level}`)
   if(!Array.isArray(v.keyVocabulary)||v.keyVocabulary.length!==3)problems.push(`vocabulary:${level}`)
   texts.push(v.pages.map(p=>p.text).join(' '))
  }if(new Set(texts).size!==3)problems.push('levels-not-distinct');return problems}
 export function toReaderStory(d){const errors=validateDraft(d);if(errors.length)throw Error('Discover QA blocked: '+errors.join(', '))
- const levels=Object.fromEntries(LEVELS.map(level=>[level,{pages:d.levelVariants[level].pages.map(p=>({text:p.text.trim(),image:'',caption:''})),keyVocabulary:d.levelVariants[level].keyVocabulary,evidence:d.levelVariants[level].evidence}]))
+ const levels=Object.fromEntries(LEVELS.map(level=>[level,{pages:d.levelVariants[level].pages.map((p,i)=>({text:p.text.trim(),image:i===0?(p.image||''):'',caption:i===0?(p.caption||''):'',...(i===0 && p.imageProvenance?{imageProvenance:p.imageProvenance}:{})})),keyVocabulary:d.levelVariants[level].keyVocabulary,evidence:d.levelVariants[level].evidence}]))
  const category=/\b(market|business|trade|econom|tariff|bank|inflation)\b/i.test(d.title)?'Economics':/\b(science|research|health|space|climate|technology)\b/i.test(d.title)?'Science':'Society'
  const item={id:d.id,title:d.title,sourceTitle:d.title,sourceUrl:d.sourceUrl,sourceName:d.sourceName,publisher:d.sourceName,contentType:'news',readingKind:'full',editorialVersion:1,
   category,publishedAt:d.originalPublishedAt||new Date().toISOString(),license:d.rights.license,licenseUrl:d.rights.licenseUrl,

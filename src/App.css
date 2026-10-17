@@ -798,3 +798,43 @@
 
 /* SAGA Discover: discreet CEFR control, respecting the existing paper reader UI. */
 .lore-editorial-v5 .saga-news-level{display:flex;align-items:center;gap:5px;font-size:10px;color:#6f6e67;white-space:nowrap}.lore-editorial-v5 .saga-news-level select{font:inherit;font-size:11px;background:#f8f8f2;border:1px solid #d8d8d0;border-radius:6px;color:#25251f;padding:5px 3px;max-width:92px}.lore-editorial-v5 .saga-news-level select:focus-visible{outline:2px solid #a65f50}
+
+/* SAGA V4 - EDITORIAL HEADER, non-overlapping controls */
+.lore-editorial-v5 .reader-gesture .topbar.lore-reader-topbar {
+  position:relative!important; left:auto!important; right:auto!important; top:auto!important;
+  box-sizing:border-box; display:flex; flex:0 0 auto; align-items:center; justify-content:space-between;
+  gap:12px; width:100%; min-width:0; min-height:43px;
+  padding:8px 0 9px!important; margin:0; border-bottom:1px solid rgba(44,40,34,.12);
+}
+.lore-editorial-v5 .saga-toolbar-story {
+  flex:1 1 auto; min-width:0; display:block; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+  font:500 clamp(10px,1.65dvh,13px)/1.25 'Inter',sans-serif; letter-spacing:.025em;
+  color:#6e6963;
+}
+.lore-editorial-v5 .saga-toolbar-actions {
+  flex:0 0 auto; min-width:0; display:flex; flex-direction:row; align-items:center; gap:9px;
+  position:static!important;
+}
+.lore-editorial-v5 .saga-news-level {
+  position:static!important; inset:auto!important; float:none!important; transform:none!important;
+  z-index:auto!important; display:flex; align-items:center; margin:0; padding:0; flex-shrink:0;
+}
+.lore-editorial-v5 .saga-level-sr {position:absolute;clip-path:inset(50%);width:1px;height:1px;overflow:hidden;white-space:nowrap;}
+.lore-editorial-v5 .saga-news-level select {
+  appearance:auto; box-sizing:border-box; flex-shrink:0;
+  min-width:73px; max-width:88px; padding:6px 8px;
+  border:1px solid #d4cdc1; border-radius:999px;
+  background:#efede6; color:#35302b; font:600 11px/1.2 'Inter',system-ui,sans-serif;
+}
+.lore-editorial-v5 .saga-toolbar-audio {
+  display:grid; flex:0 0 32px; place-items:center; width:32px; height:32px;
+  padding:3px; margin:0; border:0; background:transparent; color:#322f2b;
+}
+.lore-editorial-v5 .reading-card .reading-topline {display:none;min-height:0;padding:0;margin:0}
+.lore-editorial-v5 .reader-gesture .article-heading {clear:both;position:relative;min-width:0;margin-top:0}
+.lore-editorial-v5 .reader-gesture .article-heading h1 {max-width:100%; overflow-wrap:break-word}
+@media(max-width:380px){
+  .lore-editorial-v5 .reader-gesture .topbar.lore-reader-topbar{gap:7px}
+  .lore-editorial-v5 .saga-toolbar-actions{gap:5px}
+  .lore-editorial-v5 .saga-toolbar-audio{width:29px;flex-basis:29px}
+}
