@@ -1,25 +1,24 @@
+import { pathToFileURL } from 'node:url'
 import { runDiscoverPublication } from './discover-publish.mjs'
 
-const key = process.env.GEMINI_API_KEY
-
-if (!key) {
-  console.error('GEMINI_API_KEY missing. No publication performed.')
-  process.exit(1)
+export async function runAutoNews({publish=runDiscoverPublication,apiKey=process.env.GEMINI_API_KEY,
+  rounds=1,runNumber=Number(process.env.GITHUB_RUN_NUMBER||0),log=console}={}){
+ if(!apiKey)throw Error('GEMINI_API_KEY missing. No publication performed.')
+ if(!Number.isInteger(rounds)||rounds<1||rounds>3)throw Error('Publication rounds must be between 1 and 3')
+ const results=[]
+ for(let round=0;round<rounds;round++){
+  const result=await publish({apiKey,now:new Date(),log,candidateBatch:runNumber*rounds+round})
+  results.push(result)
+  log.log('SAGA AUTO NEWS RESULT:',JSON.stringify({round:round+1,...result}))
+  if(result.quotaExhausted){log.warn?.('Gemini quota or service limit reached; stopping publication rounds.');break}
+ }
+ return results
 }
 
-try {
-  const result = await runDiscoverPublication({
-    apiKey: key,
-    now: new Date(),
-    log: console
-  })
-
-  console.log('SAGA AUTO NEWS RESULT:', JSON.stringify(result))
-
-  if (!result.published) {
-    console.log('No eligible new stories. Existing catalog preserved.')
-  }
-} catch (error) {
-  console.error('SAGA AUTO NEWS FAILED:', error)
-  process.exitCode = 1
+if(process.argv[1]&&import.meta.url===pathToFileURL(process.argv[1]).href){
+ const rounds=process.env.SAGA_PUBLICATION_ROUNDS==='3'?3:1
+ runAutoNews({rounds}).catch(error=>{
+  console.error('SAGA AUTO NEWS FAILED:',error)
+  process.exitCode=1
+ })
 }

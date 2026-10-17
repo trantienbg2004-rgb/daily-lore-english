@@ -27,7 +27,7 @@ export async function collectDiscover({fetchImpl=fetch,geminiFetchImpl=fetchImpl
  if(useGemini&&!apiKey)throw Error('GEMINI_API_KEY missing. Zero requests sent; nothing published.')
  maxPerFeed=cap(maxPerFeed,1,20);maxGemini=cap(maxGemini,0,20);targetDrafts=cap(targetDrafts,1,10);maxGeminiCalls=cap(maxGeminiCalls,1,12)
  const report={generatedAt:now.toISOString(),mode:useGemini?'gemini-staging':'discovery-staging',model:useGemini?GEMINI_MODEL:null,
-  sourceCount:sources.length,sourceStatus:[],candidates:0,eligible:0,geminiCalls:0,maxGeminiCalls,geminiCandidateAttempts:0,editorialRepairs:0,targetDrafts,drafts:0,completeThreeLevelDrafts:0,
+  sourceCount:sources.length,sourceStatus:[],candidates:0,eligible:0,geminiCalls:0,maxGeminiCalls,geminiCandidateAttempts:0,editorialRepairs:0,targetDrafts,drafts:0,completeThreeLevelDrafts:0,quotaExhausted:false,
   rejected:{},publishEnabled:false,publicFilesChanged:false}
  const increment=(key)=>{report.rejected[key]=(report.rejected[key]||0)+1}
  const discovered=[]
@@ -108,7 +108,11 @@ export async function collectDiscover({fetchImpl=fetch,geminiFetchImpl=fetchImpl
     if(e?.rateLimited){increment('commons-rate-limited');report.sourceStatus.push({source:'commons',error:reason});break}
     console.error('SAGA GEMINI REJECTED:',candidate.sourceUrl,e?.stack||e);increment('gemini-rejected');report.sourceStatus.push({source:'gemini:'+candidate.id,error:reason});
     // A quota error is a hard stop, never silently switch to paid tier.
-    if(/quota|rate|budget exhausted| 429| 503|HTTP 401|HTTP 403/i.test(reason))break}
+    if(/quota|rate|budget exhausted| 429| 503|HTTP 401|HTTP 403/i.test(reason)){
+     // The per-round request cap is not the provider's quota. Another round
+     // may safely use its own bounded allowance.
+     if(!/budget exhausted/i.test(reason))report.quotaExhausted=true
+     break}}
   }
  }
  report.drafts=drafts.length

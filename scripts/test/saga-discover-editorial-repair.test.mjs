@@ -2,6 +2,16 @@ import test from 'node:test'
 import assert from 'node:assert/strict'
 import {generateThreeLevels,buildThreeLevelRequest,validateLevelDrafts,DISCOVER_LEVELS} from '../discover/geminiLevels.mjs'
 import {collectDiscover,rankNewsCandidates} from '../discover-collect.mjs'
+import {runAutoNews} from '../auto-news.mjs'
+
+test('push publication rotates batches and stops when Gemini quota is exhausted',async()=>{
+ const batches=[]
+ const results=await runAutoNews({apiKey:'fake',rounds:3,runNumber:10,log:{log(){},warn(){}},
+  publish:async({candidateBatch})=>{batches.push(candidateBatch);return {published:true,quotaExhausted:batches.length===2}}})
+ assert.deepEqual(batches,[30,31])
+ assert.equal(results.length,2)
+ await assert.rejects(runAutoNews({apiKey:'fake',rounds:4,publish:async()=>({})}),/between 1 and 3/)
+})
 
 test('world politics and economy news are considered before lifestyle items',()=>{
  const day='2026-10-16T12:00:00Z'
@@ -117,6 +127,7 @@ test('one invalid news article moves to next eligible article and stops after a 
  assert.equal(capped.report.geminiCalls,2)
  assert.equal(capped.report.geminiCandidateAttempts,1)
  assert.equal(capped.drafts.length,0)
+ assert.equal(capped.report.quotaExhausted,false)
  const rotated=await collectDiscover({sources:publishers,fetchImpl,geminiFetchImpl:async()=>fakeRes({...valid(),headline:'Community research report'}),
   now:new Date('2026-10-17T00:00:00Z'),apiKey:'fake',useGemini:true,maxGemini:1,candidateBatch:1,targetDrafts:1,
   geminiIntervalMs:0,writeFiles:false,log:{log(){}}})

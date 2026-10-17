@@ -2,6 +2,11 @@ name: SAGA Discover - automatic news
 
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/saga-discover-publish.yml'
+      - 'scripts/**'
   schedule:
     # Avoid the top-of-hour GitHub Actions traffic peak.
     - cron: '17 */4 * * *'
@@ -41,6 +46,7 @@ jobs:
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           SAGA_GEMINI_MODEL: gemini-3.1-flash-lite
+          SAGA_PUBLICATION_ROUNDS: ${{ github.event_name == 'push' && '3' || '1' }}
         run: node scripts/auto-news.mjs
 
       - name: Validate and build
