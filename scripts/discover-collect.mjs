@@ -97,7 +97,7 @@ export async function collectDiscover({fetchImpl=fetch,geminiFetchImpl=fetchImpl
     const cover=images[0]
     if(!cover){increment('no-licensed-photo');continue}
     report.geminiCandidateAttempts++
-    const result=await generateThreeLevels({source:candidate,apiKey,strictPages,fetchImpl:rateLimitedGeminiFetch,onRequest:()=>{if(report.geminiCalls>=maxGeminiCalls)throw Error('Gemini free-tier run budget exhausted');report.geminiCalls++}})
+    const result=await generateThreeLevels({source:candidate,apiKey,strictPages,fetchImpl:rateLimitedGeminiFetch,waitImpl:geminiWaitImpl,onRequest:()=>{if(report.geminiCalls>=maxGeminiCalls)throw Error('Gemini free-tier run budget exhausted');report.geminiCalls++}})
     if(result.editorialRepaired)report.editorialRepairs++
     drafts.push({id:candidate.id,sourceId:candidate.sourceId,sourceName:candidate.sourceName,sourceUrl:candidate.sourceUrl,
       originalPublishedAt:candidate.publishedAt,rights:candidate.rights,model:result.model,
@@ -106,9 +106,12 @@ export async function collectDiscover({fetchImpl=fetch,geminiFetchImpl=fetchImpl
       imageUrl:cover?.url||'',imageRightsVerified:!!cover,imageProvenance:cover?.provenance||null})
    }catch(e){const reason=String(e?.message||e).slice(0,600)
     if(e?.rateLimited){increment('commons-rate-limited');report.sourceStatus.push({source:'commons',error:reason});break}
-    console.error('SAGA GEMINI REJECTED:',candidate.sourceUrl,e?.stack||e);increment('gemini-rejected');report.sourceStatus.push({source:'gemini:'+candidate.id,error:reason});
-    // A quota error is a hard stop, never silently switch to paid tier.
-    if(/quota|rate|budget exhausted| 429| 503|HTTP 401|HTTP 403/i.test(reason)){
+    console.error('SAGA GEMINI REJECTED:',JSON.stringify({sourceUrl:candidate.sourceUrl,statusCode:e?.statusCode||null,errorStatus:e?.errorStatus||null,error:reason}));increment('gemini-rejected');report.sourceStatus.push({source:'gemini:'+candidate.id,error:reason,statusCode:e?.statusCode||null,errorStatus:e?.errorStatus||null});
+    // 503 is a transient provider failure for this article, not a quota stop.
+    // Continue to other candidates while preserving any valid drafts.
+    if(e?.statusCode===503||/HTTP 503\b/.test(reason))continue
+    // A 429 may be a daily quota; stop to protect the zero-cost workflow.
+    if(e?.statusCode===429||/budget exhausted|HTTP 429|HTTP 401|HTTP 403/i.test(reason)){
      // The per-round request cap is not the provider's quota. Another round
      // may safely use its own bounded allowance.
      if(!/budget exhausted/i.test(reason))report.quotaExhausted=true

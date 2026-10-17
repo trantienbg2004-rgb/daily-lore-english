@@ -29,9 +29,11 @@ export async function generateDraft({source,apiKey,fetchImpl=fetch,waitImpl=ms=>
  for(let attempt=0;attempt<=maxRetries;attempt++){
   const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),45000)
   try{
-   const response=await fetchImpl(endpoint,{method:'POST',headers:{'Content-Type':'application/json','x-goog-api-key':apiKey},body:JSON.stringify(buildGeminiRequest(source)),signal:controller.signal})
-   if(response.status===429||response.status===503){if(attempt===maxRetries)throw Error(`Gemini ${response.status}: quota/service unavailable`);await waitImpl(Math.min(20000,2500*2**attempt));continue}
-   if(!response.ok)throw Error('Gemini HTTP '+response.status+' (verify model access/key/quota)')
+   let response
+   try{response=await fetchImpl(endpoint,{method:'POST',headers:{'Content-Type':'application/json','x-goog-api-key':apiKey},body:JSON.stringify(buildGeminiRequest(source)),signal:controller.signal})}
+   catch(error){if(attempt<maxRetries&&['AbortError','TypeError'].includes(error?.name)){await waitImpl(2500*2**attempt);continue}throw error}
+   if(response.status===429||response.status===503){if(attempt===maxRetries){const error=new Error(`Gemini HTTP ${response.status} ${response.status===503?'UNAVAILABLE':'RESOURCE_EXHAUSTED'} after ${attempt+1} attempt(s)`);error.statusCode=response.status;error.errorStatus=response.status===503?'UNAVAILABLE':'RESOURCE_EXHAUSTED';throw error}await waitImpl(Math.min(20000,2500*2**attempt));continue}
+   if(!response.ok){const error=new Error('Gemini HTTP '+response.status+' (verify model access/key/quota)');error.statusCode=response.status;throw error}
    const responseJSON=await response.json(),parts=responseJSON?.candidates?.[0]?.content?.parts||[]
    const text=parts.map(p=>p.text||'').join('')
    if(!text)throw Error('Gemini returned no text')

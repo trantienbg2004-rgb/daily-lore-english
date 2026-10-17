@@ -91,33 +91,45 @@ export async function generateThreeLevels({source,apiKey,fetchImpl=fetch,waitImp
  if(!source?.rights?.textAllowed||source?.rights?.mode!=='gemini-eligible')throw Error('Rights gate blocks AI processing')
  if(wordCount(source?.text)<180)throw Error('Insufficient source text')
  if(!Number.isInteger(maxEditorialRepairs)||maxEditorialRepairs<0||maxEditorialRepairs>2)throw Error('Invalid editorial repair budget')
- const endpoint=`https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent`
- let repairReason='',requestCount=0
+ const models=GEMINI_MODEL==='gemini-2.5-flash-lite'?[GEMINI_MODEL]:[GEMINI_MODEL,'gemini-2.5-flash-lite']
+ let repairReason='',requestCount=0,usedModel=GEMINI_MODEL
  for(let repair=0;repair<=maxEditorialRepairs;repair++){
   // Only recover from *editorial* failures; never hide permission or API failures.
   let parsed,usage={}
+  for(const model of models){
+   const endpoint=`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`
   for(let attempt=0;attempt<=maxRetries;attempt++){
    const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),90000)
    try{
     const request=buildThreeLevelRequest(source,{repairReason,strictPages})
+    if(model.startsWith('gemini-2.'))request.generationConfig.thinkingConfig={thinkingBudget:0}
     requestCount++
     onRequest({requestCount,repair,attempt})
-    const response=await fetchImpl(endpoint,{method:'POST',headers:{'Content-Type':'application/json','x-goog-api-key':apiKey},body:JSON.stringify(request),signal:controller.signal})
+    let response
+    try{response=await fetchImpl(endpoint,{method:'POST',headers:{'Content-Type':'application/json','x-goog-api-key':apiKey},body:JSON.stringify(request),signal:controller.signal})}
+    catch(error){
+     if(attempt<maxRetries&&['AbortError','TypeError'].includes(error?.name)){await waitImpl(3000*2**attempt);continue}
+     throw error
+    }
     if(response.status===429||response.status===503){
-     if(attempt===maxRetries)throw Error(`Gemini ${response.status}: quota/service unavailable`)
+     if(attempt===maxRetries){
+      if(response.status===503&&model!==models.at(-1))break
+      const error=new Error(`Gemini HTTP ${response.status} ${response.status===503?'UNAVAILABLE':'RESOURCE_EXHAUSTED'} after ${attempt+1} attempt(s)`);error.statusCode=response.status;error.errorStatus=response.status===503?'UNAVAILABLE':'RESOURCE_EXHAUSTED';throw error}
      const afterRaw=response.headers?.get?.('retry-after')
      const after=afterRaw==null?NaN:Number(afterRaw)
      await waitImpl(Math.min(30000,Math.max(Number.isFinite(after)?after*1000:0,3000*2**attempt)))
      continue
     }
-    if(!response.ok)throw Error(`Gemini HTTP ${response.status} (check model access/key/quota)`)
+    if(!response.ok){const error=new Error(`Gemini HTTP ${response.status} (check model access/key/quota)`);error.statusCode=response.status;throw error}
     const data=await response.json(),parts=data?.candidates?.[0]?.content?.parts||[]
     const raw=parts.map(p=>p.text||'').join('')
     if(!raw)throw Error('Gemini returned empty content')
     usage=data.usageMetadata||{}
     try{parsed=parseGeminiJSON(raw)}catch(e){throw Error('Gemini returned malformed JSON: '+String(e.message||e))}
-    break
+    usedModel=model;break
    }finally{clearTimeout(timer)}
+  }
+  if(parsed)break
   }
   if(!parsed)throw Error('Gemini returned no usable JSON')
   try{
@@ -126,15 +138,15 @@ export async function generateThreeLevels({source,apiKey,fetchImpl=fetch,waitImp
     sourceNewsHeadline(source.title,source.text),headlineRepaired=false
    if(!headline&&repair<maxEditorialRepairs){
     requestCount++;onRequest({requestCount,repair,attempt:0,headlineOnly:true})
-    const response=await fetchImpl(endpoint,{method:'POST',headers:{'Content-Type':'application/json','x-goog-api-key':apiKey},body:JSON.stringify(headlineRepairRequest(source,parsed.headline))})
-    if(!response.ok)throw Error(`Gemini ${response.status}: headline repair unavailable`)
+    const response=await fetchImpl(`https://generativelanguage.googleapis.com/v1beta/models/${usedModel}:generateContent`,{method:'POST',headers:{'Content-Type':'application/json','x-goog-api-key':apiKey},body:JSON.stringify(headlineRepairRequest(source,parsed.headline))})
+    if(!response.ok){const error=new Error(`Gemini HTTP ${response.status}: headline repair unavailable`);error.statusCode=response.status;error.errorStatus=response.status===503?'UNAVAILABLE':response.status===429?'RESOURCE_EXHAUSTED':'';throw error}
     const data=await response.json()
     const raw=(data?.candidates?.[0]?.content?.parts||[]).map(p=>p.text||'').join('')
     headline=validatedNewsHeadline(parseGeminiJSON(raw).headline,source.title,source.text)
     headlineRepaired=!!headline
    }
    if(!headline)throw Error('Headline is too long or unsupported by source')
-   return {levelVariants,headline,model:GEMINI_MODEL,usage,reviewRequired:true,
+   return {levelVariants,headline,model:usedModel,usage,reviewRequired:true,
     requestCount,editorialRepaired:repair>0||headlineRepaired}
   }catch(e){
    const message=String(e?.message||e)

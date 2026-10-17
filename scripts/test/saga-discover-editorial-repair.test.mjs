@@ -114,6 +114,29 @@ test('rate limit waits/retries only the API error, not an editorial regeneration
  assert.equal(r.editorialRepaired,false)
 })
 
+test('persistent 503 switches to the free fallback model within the call budget',async()=>{
+ const urls=[]
+ const result=await generateThreeLevels({source,apiKey:'fake',fetchImpl:async url=>{
+  urls.push(url)
+  return urls.length<=3?{ok:false,status:503,headers:{get:()=>null}}:fakeRes(valid())
+ },waitImpl:async()=>{}})
+ assert.equal(urls.length,4)
+ assert.ok(urls.slice(0,3).every(url=>url.includes('/gemini-2.5-flash:')))
+ assert.match(urls[3],/gemini-2\.5-flash-lite:/)
+ assert.equal(result.model,'gemini-2.5-flash-lite')
+})
+
+test('temporary network failure retries once before accepting a valid draft',async()=>{
+ let calls=0
+ const result=await generateThreeLevels({source,apiKey:'fake',fetchImpl:async()=>{
+  calls++
+  if(calls===1)throw new TypeError('temporary fetch failure')
+  return fakeRes(valid())
+ },waitImpl:async()=>{}})
+ assert.equal(calls,2)
+ assert.equal(result.requestCount,2)
+})
+
 test('one invalid news article moves to next eligible article and stops after a good three-level draft',async()=>{
  const publishers=[{id:'voa',name:'VOA Learning English',feedUrls:['https://learningenglish.voanews.com/feed/'],hosts:['learningenglish.voanews.com'],fetchFullText:true,policyUrl:'https://learningenglish.voanews.com/p/6861.html'}]
  const urls=['https://learningenglish.voanews.com/a/first/','https://learningenglish.voanews.com/a/second/','https://learningenglish.voanews.com/a/third/']
@@ -133,6 +156,16 @@ test('one invalid news article moves to next eligible article and stops after a 
  assert.equal(r.report.rejected['gemini-rejected'],1)
  assert.equal(r.report.publishEnabled,false)
  assert.equal(r.report.publicFilesChanged,false)
+ aiCalls=0
+ const unavailable=await collectDiscover({sources:publishers,fetchImpl,
+  geminiFetchImpl:async()=>{aiCalls++;return aiCalls<=6?{ok:false,status:503,headers:{get:()=>null}}:fakeRes({...valid(),headline:'Community research report'})},
+  now:new Date('2026-10-17T00:00:00Z'),apiKey:'fake',useGemini:true,maxGemini:3,maxGeminiCalls:8,targetDrafts:1,
+  geminiIntervalMs:0,geminiWaitImpl:async()=>{},writeFiles:false,log:{log(){}}})
+ assert.equal(unavailable.report.geminiCalls,7)
+ assert.equal(unavailable.report.geminiCandidateAttempts,2)
+ assert.equal(unavailable.report.quotaExhausted,false)
+ assert.equal(unavailable.report.drafts,1)
+ assert.equal(unavailable.report.sourceStatus.find(x=>x.statusCode===503)?.errorStatus,'UNAVAILABLE')
  aiCalls=0
  const capped=await collectDiscover({sources:publishers,fetchImpl,geminiFetchImpl:async()=>{aiCalls++;return fakeRes(failed)},
   now:new Date('2026-10-17T00:00:00Z'),apiKey:'fake',useGemini:true,maxGemini:3,maxGeminiCalls:2,targetDrafts:2,
