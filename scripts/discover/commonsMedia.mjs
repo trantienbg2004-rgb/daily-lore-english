@@ -2,6 +2,10 @@
  * eyewitness photography of the reported event. Missing proof means no image.
  */
 const subjects=[
+ [/\bKok River\b/i,'Kok River Thailand',/Kok River.*Thailand|Thailand.*Kok River/i,/elephant|boat|resort/i],
+ [/\bperegrine falcons?\b/i,'Australian peregrine falcon',/Peregrine falcon.*(?:Australia|Australian|NSW|Botany Bay|Western Austra)/i,/avocet|flickr/i],
+ [/\bCasablanca\b.*\b(?:music|musician)/i,'Casablanca musicians',/Krav Boca.*Casablanca|BOULEVARD Casablanca/i,/Amsterdam|1956/i],
+ [/\bcotton\b.*\bUyghur\b/i,'Xinjiang cotton field',/Cotton harvest in Xinjiang|Xinjiang.*cotton|棉花地/i,/\.pdf|diagram|map/i],
  [/\bVenezuela\b.*\bearthquakes?\b|\bearthquakes?\b.*\bVenezuela\b/i,'Venezuela earthquake',/Venezuela.*earthquake|earthquake.*Venezuela/i,/\b(?:map|location|relief)\b/i],
  [/\bNampula\b/i,'Nampula Mozambique',/Nampula.*Mozambique|Mozambique.*Nampula/i,/\b(?:airport|hospital|division|elbaite)\b/i],
  [/\bTharu\b/i,'Tharu Nepal',/Tharu/i,/food|dish|cuisine/i],

@@ -86,6 +86,23 @@ test('country-only Commons photos must show a place, not an unrelated official o
  assert.equal(commonsQueryIsContextual('Nepal reflects on protests'),true)
 })
 
+test('subject illustrations require an image title matching the reported place or subject',()=>{
+ const image=(title)=>({title:`File:${title}.jpg`,imageinfo:[{mime:'image/jpeg',width:900,height:600,
+  thumburl:'https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a.jpg',
+  descriptionurl:`https://commons.wikimedia.org/wiki/File:${title.replaceAll(' ','_')}.jpg`,
+  extmetadata:{LicenseUrl:{value:'https://creativecommons.org/licenses/by/4.0/'},LicenseShortName:{value:'CC BY 4.0'},Artist:{value:'Example photographer'}}}]})
+ assert.equal(commonsQueryFor('Poisoned waters in Thailand’s Kok River'),'Kok River Thailand')
+ assert.ok(approvedCommonsPhoto(image('Tha Ton, Kok River, Mae Ai, Thailand'),'Kok River Thailand'))
+ assert.equal(approvedCommonsPhoto(image('Elephants, Kok River, Thailand'),'Kok River Thailand'),null)
+ assert.equal(commonsQueryFor('Peregrine falcons in Australia'),'Australian peregrine falcon')
+ assert.ok(approvedCommonsPhoto(image('Peregrine falcon in Botany Bay NSW'),'Australian peregrine falcon'))
+ assert.equal(commonsQueryFor('Casablanca music scene'),'Casablanca musicians')
+ assert.ok(approvedCommonsPhoto(image('Krav Boca sur les toits de Casablanca en 2019'),'Casablanca musicians'))
+ assert.equal(commonsQueryFor('Cotton law affects Uyghur farmers'),'Xinjiang cotton field')
+ assert.ok(approvedCommonsPhoto(image('Cotton harvest in Xinjiang'),'Xinjiang cotton field'))
+ assert.equal(approvedCommonsPhoto(image('Cotton harvest in Texas'),'Xinjiang cotton field'),null)
+})
+
 test('Commons rate limiting stops photo discovery instead of spending Gemini quota',async()=>{
  await assert.rejects(searchCommonsImages('Current affairs in Mozambique',{
   fetchImpl:async()=>({ok:false,status:429})
