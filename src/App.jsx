@@ -105,6 +105,12 @@ function safeStoryUrl(url) {
 // Actual DOM measurements preserve readable type and avoid cutting paragraphs on iPhone.
 // The source article text is never discarded: long source pages become multiple screen pages.
 function layoutPages(item, reader, badImages = new Set()) {
+  // News pages are already prepared by the editorial pipeline.
+  // Do not split them again using viewport measurements.
+  if (item?.contentType === 'news') {
+    return (item._sourcePages || item.pages).map(page => ({...page}));
+  }
+
   const bounds = reader.getBoundingClientRect()
   if (bounds.width < 100 || bounds.height < 220) return item.pages
   const fixture = reader.cloneNode(true)
