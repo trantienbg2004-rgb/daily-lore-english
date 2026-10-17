@@ -105,12 +105,8 @@ function safeStoryUrl(url) {
 // Actual DOM measurements preserve readable type and avoid cutting paragraphs on iPhone.
 // The source article text is never discarded: long source pages become multiple screen pages.
 function layoutPages(item, reader, badImages = new Set()) {
-  // News pages are already prepared by the editorial pipeline.
-  // Do not split them again using viewport measurements.
-  if (item?.contentType === 'news') {
-    return (item._sourcePages || item.pages).map(page => ({...page}));
-  }
-
+  // Editorial pages are source units, not guaranteed screen-sized. Measure
+  // every level against the actual phone viewport and the anchored pager.
   const bounds = reader.getBoundingClientRect()
   if (bounds.width < 100 || bounds.height < 220) return item.pages
   const fixture = reader.cloneNode(true)
@@ -172,8 +168,10 @@ function layoutPages(item, reader, badImages = new Set()) {
       const textBounds = paragraph.getBoundingClientRect()
       const pagerBounds = pager.getBoundingClientRect()
       const viewportBottom = fixture.getBoundingClientRect().bottom
+      // The flex pager ends exactly at the reader's bottom; allow subpixel
+      // rounding while keeping the entire paragraph above the pager.
       return textBounds.height > 0 && textBounds.bottom <= pagerBounds.top - 8
-        && pagerBounds.bottom <= viewportBottom - 2
+        && pagerBounds.bottom <= viewportBottom + 1
     }
     // Failed/corrupt thumbnails may not reserve visual space. Reflow their
     // article text immediately, without altering the original source pages.
