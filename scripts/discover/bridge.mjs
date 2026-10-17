@@ -22,22 +22,31 @@ export const verifiedPhoto=d=>{
  return d.imageRightsVerified===true&&/^https:\/\//i.test(d.imageUrl)&&license&&typeof p.credit==='string'&&p.credit.length>=3&&(original||commons)
 }
 const photoCreditFields=['credit','license','licenseUrl','sourceImageUrl','imagePageUrl','originType']
+export const draftPhotos=d=>Array.isArray(d?.images)?d.images:
+ (d?.imageUrl?[{url:d.imageUrl,verified:d.imageRightsVerified,provenance:d.imageProvenance}]:[])
 export function photoCreditMatches(d,page){
- if(!d?.imageUrl)return !page?.imageProvenance
- return !!page?.imageProvenance && photoCreditFields.every(key=>(page.imageProvenance[key]||'')===(d.imageProvenance?.[key]||''))
+ if(!page?.image)return !page?.imageProvenance&&!page?.caption
+ const source=draftPhotos(d).find(photo=>photo.url===page.image)
+ return !!source?.provenance&&!!page.imageProvenance&&
+  (!source.caption||source.caption===page.caption)&&
+  photoCreditFields.every(key=>(page.imageProvenance[key]||'')===(source.provenance[key]||''))
 }
-export function validateDraft(d){const problems=[];if(!d?.id||!d?.title||!licensedDraft(d))problems.push('unlicensed-or-invalid-source');if(!verifiedPhoto(d))problems.push('unverified-image')
+export function validateDraft(d){const problems=[];if(!d?.id||!d?.title||!licensedDraft(d))problems.push('unlicensed-or-invalid-source')
+ const images=draftPhotos(d),urls=images.map(photo=>photo.url)
+ if(images.length>3||new Set(urls).size!==urls.length||(images[0]?.url||'')!==(d?.imageUrl||'')||
+  images.some(photo=>photo.verified!==true||!verifiedPhoto({...d,imageUrl:photo.url,imageRightsVerified:true,imageProvenance:photo.provenance})))problems.push('unverified-image')
+ if(!verifiedPhoto(d))problems.push('unverified-image')
  if(d?.headline&&!validatedNewsHeadline(d.headline,d.title))problems.push('unverified-headline')
  const variants=d?.levelVariants||{},texts=[];for(const level of LEVELS){const v=variants[level];if(!Array.isArray(v?.pages)||v.pages.length<1){problems.push(`pages:${level}`);continue}
-  if(v.pages.some((p,i)=>typeof p?.text!=='string'||!p.text.trim()||(i===0?(p.image||'')!==(d.imageUrl||''):(p.image||p.caption))))problems.push(`length:${level}`)
-  if(!photoCreditMatches(d,v.pages[0])||v.pages.slice(1).some(p=>p.imageProvenance))problems.push(`photo-credit:${level}`)
+  if(v.pages.some((p,i)=>typeof p?.text!=='string'||!p.text.trim()||(i===0&&(p.image||'')!==(d.imageUrl||''))))problems.push(`length:${level}`)
+  if(v.pages.some(p=>!photoCreditMatches(d,p))||new Set(v.pages.filter(p=>p.image).map(p=>p.image)).size!==v.pages.filter(p=>p.image).length)problems.push(`photo-credit:${level}`)
   const total=v.pages.reduce((t,p)=>t+wordCount(p.text),0);if(total<10)problems.push(`total:${level}`)
   if(!Array.isArray(v.evidence)||v.evidence.length<3||v.evidence.some(s=>typeof s!=='string'||s.length<16))problems.push(`evidence:${level}`)
   if(!Array.isArray(v.keyVocabulary)||v.keyVocabulary.length!==3)problems.push(`vocabulary:${level}`)
   texts.push(v.pages.map(p=>p.text).join(' '))
  }if(new Set(texts).size!==3)problems.push('levels-not-distinct');return problems}
 export function toReaderStory(d){const errors=validateDraft(d);if(errors.length)throw Error('Discover QA blocked: '+errors.join(', '))
- const levels=Object.fromEntries(LEVELS.map(level=>[level,{pages:d.levelVariants[level].pages.map((p,i)=>({text:p.text.trim(),image:i===0?(p.image||''):'',caption:i===0?(p.caption||''):'',...(i===0 && p.imageProvenance?{imageProvenance:p.imageProvenance}:{})})),keyVocabulary:d.levelVariants[level].keyVocabulary,evidence:d.levelVariants[level].evidence}]))
+ const levels=Object.fromEntries(LEVELS.map(level=>[level,{pages:d.levelVariants[level].pages.map(p=>({text:p.text.trim(),image:p.image||'',caption:p.caption||'',...(p.imageProvenance?{imageProvenance:p.imageProvenance}:{})})),keyVocabulary:d.levelVariants[level].keyVocabulary,evidence:d.levelVariants[level].evidence}]))
  const category=/\b(market|business|trade|econom\w*|tariff|bank|inflation|finance)\b/i.test(d.title)?'Economics'
   :/\b(politic\w*|government|election|parliament|diplomat\w*|summit|war|conflict|sanction\w*|junta)\b/i.test(d.title)?'Politics'
   :/\b(science|research|health|space|climate|technology)\b/i.test(d.title)?'Science':'Society'

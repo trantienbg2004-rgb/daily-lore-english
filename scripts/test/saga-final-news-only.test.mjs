@@ -4,7 +4,7 @@ import fs from 'node:fs'
 import {smartPaginate} from '../discover/smartPaginate.mjs'
 import {validateLevelDrafts} from '../discover/geminiLevels.mjs'
 import {applyNewsLevel} from '../../src/lib/newsLevels.js'
-import {photoCreditMatches} from '../discover/bridge.mjs'
+import {photoCreditMatches,verifiedPhoto} from '../discover/bridge.mjs'
 const dir='public/lore-reader/'
 test('published catalog has no lore but original historical shards remain',()=>{
  const m=JSON.parse(fs.readFileSync(dir+'manifest.json'))
@@ -22,19 +22,20 @@ test('published photo count and credits match every reading level',()=>{
  const pictured=news.filter(s=>s.pages.some(p=>p.image))
  assert.equal(manifest.withVerifiedPhoto,pictured.length)
  for(const story of pictured){
-  const cover=story.pages[0]
-  assert.match(cover.imageProvenance?.licenseUrl||'',/^https:\/\/creativecommons\.org\/(?:licenses\/(?:by|by-sa)\/|publicdomain\/(?:zero|mark)\/)/)
-  assert.ok(cover.imageProvenance?.credit?.length>=3)
-  if(cover.imageProvenance.originType==='wikimedia-commons'){
-   assert.match(cover.imageProvenance.sourceImageUrl,/^https:\/\/commons\.wikimedia\.org\/wiki\/File:/)
-   assert.equal(cover.imageProvenance.imagePageUrl,cover.imageProvenance.sourceImageUrl)
-   assert.match(cover.caption,/^Illustrative image:/)
-  }else assert.equal(cover.imageProvenance.sourceImageUrl,story.sourceUrl)
-  assert.ok(cover.imageProvenance.imagePageUrl)
+  const photos=story.pages.filter(page=>page.image)
+  const media={images:photos.map(page=>({url:page.image,caption:page.caption,provenance:page.imageProvenance,verified:true}))}
+  for(const photo of photos){
+   assert.ok(verifiedPhoto({...story,imageUrl:photo.image,imageRightsVerified:true,imageProvenance:photo.imageProvenance}))
+   assert.ok(photo.imageProvenance.imagePageUrl)
+   if(photo.imageProvenance.originType==='wikimedia-commons')assert.match(photo.caption,/^Illustrative image:/)
+  }
   for(const level of ['A1-A2','B1-B2','C1-C2']){
-   const page=story.levelVariants[level].pages[0]
-   assert.equal(page.image,cover.image)
-   assert.ok(photoCreditMatches({imageUrl:cover.image,imageProvenance:cover.imageProvenance},page))
+   for(const [index,photo] of story.pages.entries()){
+    const page=story.levelVariants[level].pages[index]
+    if(!page)break
+    assert.equal(page.image,photo.image)
+    assert.ok(photoCreditMatches(media,page))
+   }
   }
  }
 })

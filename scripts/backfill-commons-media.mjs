@@ -3,7 +3,7 @@ import fs from 'node:fs/promises'
 import path from 'node:path'
 import {createHash} from 'node:crypto'
 import {fileURLToPath} from 'node:url'
-import {searchCommonsImage} from './discover/commonsMedia.mjs'
+import {searchCommonsImages} from './discover/commonsMedia.mjs'
 import {buildReaderIndex} from './build-reader-index.mjs'
 
 const base=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..')
@@ -21,17 +21,23 @@ export async function backfillCommonsMedia({root=base,apply=false,fetchImpl=fetc
   for(const story of stories){
    if(story.contentType!=='news')continue
    total++
-   if(story.pages?.[0]?.image){pictured++;continue}
-   const photo=await searchCommonsImage(story.title,{fetchImpl})
-   if(!photo)continue
-   changed.push({title:story.title,file:path.basename(file),imagePageUrl:photo.provenance.imagePageUrl,license:photo.provenance.license})
-   pictured++;dirty=true
-   for(const level of ['A1-A2','B1-B2','C1-C2']){
-    const page=story.levelVariants?.[level]?.pages?.[0]
-    if(!page||page.image)throw Error(`Unexpected photo state: ${story.id} ${level}`)
-    Object.assign(page,{image:photo.url,caption:photo.caption,imageProvenance:photo.provenance})
+   const levels=['A1-A2','B1-B2','C1-C2']
+   const occupied=story.pages.filter(page=>page.image)
+   const slots=[0,1,2].filter(index=>story.pages[index]&&!story.pages[index].image&&
+    levels.every(level=>story.levelVariants?.[level]?.pages?.[index]&&!story.levelVariants[level].pages[index].image))
+   if(slots.length){
+    const photos=await searchCommonsImages(story.title,{fetchImpl,limit:slots.length,
+     excludeUrls:occupied.flatMap(page=>[page.image,page.imageProvenance?.imagePageUrl].filter(Boolean))})
+    for(const [position,photo] of photos.entries()){
+     const pageIndex=slots[position]
+     changed.push({title:story.title,file:path.basename(file),pageIndex,imagePageUrl:photo.provenance.imagePageUrl,license:photo.provenance.license})
+     dirty=true
+     for(const level of levels)Object.assign(story.levelVariants[level].pages[pageIndex],
+      {image:photo.url,caption:photo.caption,imageProvenance:photo.provenance})
+     Object.assign(story.pages[pageIndex],{image:photo.url,caption:photo.caption,imageProvenance:photo.provenance})
+    }
    }
-   Object.assign(story.pages[0],{image:photo.url,caption:photo.caption,imageProvenance:photo.provenance})
+   if(story.pages.some(page=>page.image))pictured++
   }
   if(dirty)shards.push({file,stories})
  }

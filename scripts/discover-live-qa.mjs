@@ -5,14 +5,15 @@ import fs from 'node:fs'
 import path from 'node:path'
 import {pathToFileURL} from 'node:url'
 import {DISCOVER_LEVELS} from './discover/geminiLevels.mjs'
-import {photoCreditMatches,verifiedPhoto} from './discover/bridge.mjs'
+import {draftPhotos,photoCreditMatches,verifiedPhoto} from './discover/bridge.mjs'
 import {validatedNewsHeadline} from './discover/headline.mjs'
 import {readableStory,validStories} from '../src/lib/feedQueue.js'
 
 const compact=x=>String(x??'').trim()
 const words=x=>compact(x).split(/\s+/u).filter(Boolean).length
 const isHttps=x=>{try{return new URL(x).protocol==='https:'}catch{return false}}
-const safePhoto=d=>verifiedPhoto(d)
+const safePhoto=d=>verifiedPhoto(d)&&draftPhotos(d).every(photo=>photo.verified===true&&
+ verifiedPhoto({...d,imageUrl:photo.url,imageRightsVerified:true,imageProvenance:photo.provenance}))
 
 export function inspectStagedRelease(report,drafts){
  const issues=[],seen=new Set(),details=[]
@@ -38,8 +39,8 @@ export function inspectStagedRelease(report,drafts){
    const variant=draft?.levelVariants?.[level],pages=variant?.pages
    if(!Array.isArray(pages)||pages.length<1){errors.push(`${level}: missing content pages`);continue}
    if(!validStories([{title:draft.title,pages}]))errors.push(`${level}: incompatible reader page schema`)
-   if(pages.some((p,i)=>i===0 ? (!!p.image !== !!draft?.imageUrl || (p.image && p.image!==draft.imageUrl)) : (p.image||p.caption)))errors.push(`${level}: unverified or misplaced photo`)
-   if(!photoCreditMatches(draft,pages[0])||pages.slice(1).some(p=>p.imageProvenance))errors.push(`${level}: missing or mismatched image attribution`)
+   if((pages[0]?.image||'')!==(draft?.imageUrl||'')||pages.some(p=>p.image&&!draftPhotos(draft).some(photo=>photo.url===p.image)))errors.push(`${level}: unverified or misplaced photo`)
+   if(pages.some(p=>!photoCreditMatches(draft,p))||new Set(pages.filter(p=>p.image).map(p=>p.image)).size!==pages.filter(p=>p.image).length)errors.push(`${level}: missing or mismatched image attribution`)
    const total=pages.reduce((sum,p)=>sum+words(p.text),0)
    counts[level]=total
    if(total<10)errors.push(`${level}: insufficient actual content`)

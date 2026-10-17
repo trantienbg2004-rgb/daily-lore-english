@@ -9,8 +9,8 @@ import {SOURCES} from './discover/sources/index.mjs'
 import {fetchText} from './discover/network.mjs'
 import {parseFeed} from './discover/rss.mjs'
 import {extractArticle} from './discover/article.mjs'
-import {licensedArticleImage,articleImageHint} from './discover/licensedMedia.mjs'
-import {searchCommonsImage} from './discover/commonsMedia.mjs'
+import {licensedArticleImages,articleImageHint} from './discover/licensedMedia.mjs'
+import {searchCommonsImages} from './discover/commonsMedia.mjs'
 import {rightsDecision} from './discover/rights.mjs'
 import {uniqueCandidates} from './discover/dedupe.mjs'
 import {generateThreeLevels,buildLevelPages} from './discover/geminiLevels.mjs'
@@ -64,10 +64,10 @@ export async function collectDiscover({fetchImpl=fetch,geminiFetchImpl=fetchImpl
    if(!rights.textAllowed){
     stats.rejected[rights.reason]=(stats.rejected[rights.reason]||0)+1;metadata.push({...candidate,mode:'discovery-only',reason:rights.reason});increment(rights.reason);continue}
    stats.eligible++
-   const verifiedPhoto=licensedArticleImage(html,candidate.sourceUrl)
+   const verifiedPhotos=licensedArticleImages(html,candidate.sourceUrl)
    eligible.push({...candidate,text:article.text,rights,author:article.author||candidate.author,
-    verifiedPhoto,photoHint:articleImageHint(html,candidate.sourceUrl)||candidate.photoHints?.[0]||'',
-    imageRightsVerified:!!verifiedPhoto,imageUrl:verifiedPhoto?.url||'',articleWordCount:article.wordCount})
+    verifiedPhotos,photoHint:articleImageHint(html,candidate.sourceUrl)||candidate.photoHints?.[0]||'',
+    imageRightsVerified:verifiedPhotos.length>0,imageUrl:verifiedPhotos[0]?.url||'',articleWordCount:article.wordCount})
   }catch(e){increment('article-fetch-error:'+source.id);perSourceResults.get(source.id).rejected['article-fetch-error']=(perSourceResults.get(source.id).rejected['article-fetch-error']||0)+1;metadata.push({...candidate,mode:'discovery-only',reason:'article-fetch-error'})}
  }
  report.eligible=eligible.length
@@ -85,14 +85,18 @@ export async function collectDiscover({fetchImpl=fetch,geminiFetchImpl=fetchImpl
    if(drafts.length>=targetDrafts || report.geminiCalls>=maxGeminiCalls)break
    try{
     report.geminiCandidateAttempts++
-    const photo=candidate.verifiedPhoto || await searchCommonsImage(candidate.title,{fetchImpl})
     const result=await generateThreeLevels({source:candidate,apiKey,strictPages,fetchImpl:rateLimitedGeminiFetch,onRequest:()=>{if(report.geminiCalls>=maxGeminiCalls)throw Error('Gemini free-tier run budget exhausted');report.geminiCalls++}})
+    const photos=[...candidate.verifiedPhotos]
+    if(photos.length<3)photos.push(...await searchCommonsImages(candidate.title,{fetchImpl,limit:3-photos.length,
+      excludeUrls:photos.flatMap(photo=>[photo.url,photo.provenance.imagePageUrl])}))
+    const images=photos.slice(0,3).map((photo,pageIndex)=>({...photo,pageIndex}))
+    const cover=images[0]
     if(result.editorialRepaired)report.editorialRepairs++
     drafts.push({id:candidate.id,sourceId:candidate.sourceId,sourceName:candidate.sourceName,sourceUrl:candidate.sourceUrl,
       originalPublishedAt:candidate.publishedAt,rights:candidate.rights,model:result.model,
-      title:candidate.title,headline:result.headline||'',levelVariants:buildLevelPages(result.levelVariants,photo?[{pageIndex:0,verified:true,url:photo.url,caption:photo.caption,provenance:photo.provenance}]:[]),
+      title:candidate.title,headline:result.headline||'',images,levelVariants:buildLevelPages(result.levelVariants,images),
       editorialState:'Three AI-assisted reading levels; human factual/legal/photo review required',
-      imageUrl:photo?.url||'',imageRightsVerified:!!photo,imageProvenance:photo?.provenance||null})
+      imageUrl:cover?.url||'',imageRightsVerified:!!cover,imageProvenance:cover?.provenance||null})
    }catch(e){const reason=String(e?.message||e).slice(0,600);console.error('SAGA GEMINI REJECTED:',candidate.sourceUrl,e?.stack||e);increment('gemini-rejected');report.sourceStatus.push({source:'gemini:'+candidate.id,error:reason});
     // A quota error is a hard stop, never silently switch to paid tier.
     if(/quota|rate|budget exhausted| 429| 503|HTTP 401|HTTP 403/i.test(reason))break}

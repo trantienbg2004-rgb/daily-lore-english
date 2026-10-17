@@ -2,7 +2,7 @@ import test from 'node:test'
 import assert from 'node:assert/strict'
 import fs from 'node:fs'
 import {refreshCatalog,refillCatalog,REFRESH_INTERVAL_MS} from '../../src/lib/continuousReader.js'
-import {approvedCommonsPhoto} from '../discover/commonsMedia.mjs'
+import {approvedCommonsPhoto,searchCommonsImages} from '../discover/commonsMedia.mjs'
 import {validatedNewsHeadline} from '../discover/headline.mjs'
 import {buildThreeLevelRequest} from '../discover/geminiLevels.mjs'
 import {displayHeadline} from '../../src/lib/editorial.js'
@@ -50,6 +50,18 @@ test('Commons illustrations require individual reusable license and author evide
  unattributed.imageinfo[0].extmetadata.Artist.value=''
  assert.equal(approvedCommonsPhoto(unattributed,'International Monetary Fund'),null)
  assert.equal(approvedCommonsPhoto(page,'Ukraine market'),null)
+})
+
+test('Commons search can supply distinct, credited images for later pages',async()=>{
+ const make=(id,licensed=true)=>({index:id,title:`File:International Monetary Fund headquarters ${id}.jpg`,imageinfo:[{
+  mime:'image/jpeg',width:900,height:600,thumburl:`https://thumb.wikimedia.org/wikipedia/commons/thumb/${id}.jpg`,
+  descriptionurl:`https://commons.wikimedia.org/wiki/File:International_Monetary_Fund_headquarters_${id}.jpg`,
+  extmetadata:{LicenseUrl:{value:licensed?'https://creativecommons.org/licenses/by/4.0/':'https://creativecommons.org/licenses/by-nc/4.0/'},
+   LicenseShortName:{value:licensed?'CC BY 4.0':'CC BY-NC 4.0'},Artist:{value:`Photographer ${id}`}}}]})
+ const fetchImpl=async()=>({ok:true,json:async()=>({query:{pages:{one:make(1),two:make(2,false),three:make(3)}}})})
+ const photos=await searchCommonsImages('IMF discusses global growth',{fetchImpl,limit:3,
+  excludeUrls:['https://commons.wikimedia.org/wiki/File:International_Monetary_Fund_headquarters_1.jpg']})
+ assert.deepEqual(photos.map(photo=>photo.provenance.credit),['Photographer 3 / Wikimedia Commons'])
 })
 
 test('continued-page duplicate heading is hidden while toolbar title stays',()=>{
