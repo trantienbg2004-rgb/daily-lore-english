@@ -49,6 +49,15 @@ test('a rejected headline is repaired without throwing away three valid levels',
  assert.deepEqual(Object.keys(requests[1].generationConfig.responseSchema.properties),['headline'])
 })
 
+test('an unrepairable headline does not regenerate valid reading levels',async()=>{
+ let calls=0
+ await assert.rejects(generateThreeLevels({source,apiKey:'fake',fetchImpl:async()=>{
+  calls++
+  return fakeRes(calls===1?{...valid(),headline:'An unrelated and unsupported display title'}:{headline:'Another unrelated title'})
+ }}),/editorial validation failed after 2 request\(s\): Headline is too long or unsupported by source/)
+ assert.equal(calls,2)
+})
+
 test('a short publisher clause avoids a second AI call for the headline',async()=>{
  const titledSource={...source,title:'Science report reaches local schools, but teachers seek more details'}
  let calls=0

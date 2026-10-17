@@ -138,6 +138,10 @@ export async function generateThreeLevels({source,apiKey,fetchImpl=fetch,waitImp
     requestCount,editorialRepaired:repair>0||headlineRepaired}
   }catch(e){
    const message=String(e?.message||e)
+   // Valid reading levels need no regeneration when only the display headline
+   // failed. A new three-level request would spend quota on unchanged content.
+   if(message==='Headline is too long or unsupported by source')
+    throw Error('Gemini editorial validation failed after '+requestCount+' request(s): '+message)
    // Validation errors are deterministic reasons to request one corrected draft.
    // If still invalid, fail closed without modifying the source or accepting it.
    if(repair===maxEditorialRepairs)throw Error('Gemini editorial validation failed after '+requestCount+' request(s): '+message)
