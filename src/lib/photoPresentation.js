@@ -14,7 +14,9 @@ function decodedFileName(source) {
 export function photoLabel(page) {
   if (!page?.image) return ''
   const original = String(page.caption || '').trim()
-  const first = original.split(/\s[·|]\s/)[0].replace(/^File:/i, '').trim()
+  const first = original.split(/\s[·|]\s/)[0]
+    .replace(/\s+(?:Photo by|Image via|Image by|Photo credit|Credit:|Licensed under)\b.*$/i, '')
+    .replace(/^File:/i, '').trim()
   const usable = first && !GENERIC.test(first) && !/^https?:\/\//.test(first)
   const filename = decodedFileName(page.image)
   const candidate = (usable ? first.replace(/\.(jpe?g|png|webp|gif|svg)$/i, '') : filename) || 'Article photograph'

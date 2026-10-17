@@ -85,6 +85,12 @@ test('country-only Commons photos must show a place, not an unrelated official o
  assert.equal(commonsQueryFor('Women at Nampula protests'),'Nampula Mozambique')
 })
 
+test('Commons rate limiting stops photo discovery instead of spending Gemini quota',async()=>{
+ await assert.rejects(searchCommonsImages('Current affairs in Mozambique',{
+  fetchImpl:async()=>({ok:false,status:429})
+ }),/Wikimedia Commons 429 rate limit/)
+})
+
 test('continued-page duplicate heading is hidden while toolbar title stays',()=>{
  const css=fs.readFileSync('src/App.css','utf8')
  const app=fs.readFileSync('src/App.jsx','utf8')
@@ -103,6 +109,8 @@ test('visible photo descriptions stay short while full credits remain in article
  assert.match(page.caption,/Bangladeshi migrant workers/)
  assert.equal(page.imageProvenance.credit,'Original photographer')
  assert.equal(photoLabel({image:page.image,caption:'Illustrative image: Damage in Gaza Strip during the October 2023 - 29'}),'Damage in Gaza Strip, October 2023')
+ assert.equal(photoLabel({image:page.image,caption:'Location of Cambodia and Bangladesh. Image via Wikipedia by TUBS.'}),
+  'Location of Cambodia and Bangladesh.')
 })
 
 test('all published news has a short display headline while original source titles remain intact',()=>{

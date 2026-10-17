@@ -89,21 +89,24 @@ export async function collectDiscover({fetchImpl=fetch,geminiFetchImpl=fetchImpl
   for(const candidate of selectedCandidates){
    if(drafts.length>=targetDrafts || report.geminiCalls>=maxGeminiCalls)break
    try{
-    report.geminiCandidateAttempts++
-    const result=await generateThreeLevels({source:candidate,apiKey,strictPages,fetchImpl:rateLimitedGeminiFetch,onRequest:()=>{if(report.geminiCalls>=maxGeminiCalls)throw Error('Gemini free-tier run budget exhausted');report.geminiCalls++}})
+    // Check photo rights before spending any of the free Gemini quota.
     const photos=[...candidate.verifiedPhotos]
     if(photos.length<3)photos.push(...await searchCommonsImages(candidate.title,{fetchImpl,limit:3-photos.length,
       excludeUrls:photos.flatMap(photo=>[photo.url,photo.provenance.imagePageUrl])}))
     const images=photos.slice(0,3).map((photo,pageIndex)=>({...photo,pageIndex}))
     const cover=images[0]
     if(!cover){increment('no-licensed-photo');continue}
+    report.geminiCandidateAttempts++
+    const result=await generateThreeLevels({source:candidate,apiKey,strictPages,fetchImpl:rateLimitedGeminiFetch,onRequest:()=>{if(report.geminiCalls>=maxGeminiCalls)throw Error('Gemini free-tier run budget exhausted');report.geminiCalls++}})
     if(result.editorialRepaired)report.editorialRepairs++
     drafts.push({id:candidate.id,sourceId:candidate.sourceId,sourceName:candidate.sourceName,sourceUrl:candidate.sourceUrl,
       originalPublishedAt:candidate.publishedAt,rights:candidate.rights,model:result.model,
       title:candidate.title,headline:result.headline||'',images,levelVariants:buildLevelPages(result.levelVariants,images),
       editorialState:'Three AI-assisted reading levels; human factual/legal/photo review required',
       imageUrl:cover?.url||'',imageRightsVerified:!!cover,imageProvenance:cover?.provenance||null})
-   }catch(e){const reason=String(e?.message||e).slice(0,600);console.error('SAGA GEMINI REJECTED:',candidate.sourceUrl,e?.stack||e);increment('gemini-rejected');report.sourceStatus.push({source:'gemini:'+candidate.id,error:reason});
+   }catch(e){const reason=String(e?.message||e).slice(0,600)
+    if(e?.rateLimited){increment('commons-rate-limited');report.sourceStatus.push({source:'commons',error:reason});break}
+    console.error('SAGA GEMINI REJECTED:',candidate.sourceUrl,e?.stack||e);increment('gemini-rejected');report.sourceStatus.push({source:'gemini:'+candidate.id,error:reason});
     // A quota error is a hard stop, never silently switch to paid tier.
     if(/quota|rate|budget exhausted| 429| 503|HTTP 401|HTTP 403/i.test(reason))break}
   }

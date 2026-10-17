@@ -30,7 +30,8 @@ test('published photo count and credits match every reading level',()=>{
   const media={images:photos.map(page=>({url:page.image,caption:page.caption,provenance:page.imageProvenance,verified:true}))}
   for(const photo of photos){
    assert.ok(verifiedPhoto({...story,imageUrl:photo.image,imageRightsVerified:true,imageProvenance:photo.imageProvenance}))
-   assert.ok(photo.imageProvenance.imagePageUrl)
+   if(photo.imageProvenance.originType==='wikimedia-commons')assert.ok(photo.imageProvenance.imagePageUrl)
+   else assert.ok(photo.imageProvenance.sourceImageUrl)
    assert.ok(photo.caption?.trim())
    assert.doesNotMatch(photoLabel(photo),/^Illustrat/i)
   }

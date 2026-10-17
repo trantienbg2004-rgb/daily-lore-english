@@ -102,4 +102,14 @@ test('one invalid news article moves to next eligible article and stops after a 
   geminiIntervalMs:0,writeFiles:false,log:{log(){}}})
  assert.equal(rotated.report.candidateBatch,1)
  assert.equal(rotated.drafts[0]?.sourceUrl,urls[1].replace(/\/$/,''))
+ const noPhotoFetch=async url=>url.includes('commons.wikimedia.org')?
+  {ok:true,json:async()=>({query:{pages:{}}})}:fetchImpl(url)
+ let wastedGeminiCalls=0
+ const noPhoto=await collectDiscover({sources:publishers,fetchImpl:noPhotoFetch,
+  geminiFetchImpl:async()=>{wastedGeminiCalls++;return fakeRes(valid())},
+  now:new Date('2026-10-17T00:00:00Z'),apiKey:'fake',useGemini:true,maxGemini:1,targetDrafts:1,
+  geminiIntervalMs:0,writeFiles:false,log:{log(){}}})
+ assert.equal(noPhoto.report.rejected['no-licensed-photo'],1)
+ assert.equal(noPhoto.report.geminiCalls,0)
+ assert.equal(wastedGeminiCalls,0)
 })

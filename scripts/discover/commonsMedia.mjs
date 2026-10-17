@@ -76,6 +76,7 @@ export async function searchCommonsImages(title,{fetchImpl=fetch,timeoutMs=10000
  const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),timeoutMs)
  try{
   const response=await fetchImpl(url.href,{signal:controller.signal,headers:{'User-Agent':'SAGA/0.1 (https://saga.id.vn; educational image attribution)'}})
+  if(response.status===429){const error=new Error('Wikimedia Commons 429 rate limit');error.rateLimited=true;throw error}
   if(!response.ok)return []
   const data=await response.json()
   const pages=Object.values(data?.query?.pages||{}).sort((a,b)=>(a.index??99)-(b.index??99))
@@ -88,6 +89,6 @@ export async function searchCommonsImages(title,{fetchImpl=fetch,timeoutMs=10000
    }
   }
   return photos
- }catch{return []}finally{clearTimeout(timer)}
+ }catch(error){if(error?.rateLimited)throw error;return []}finally{clearTimeout(timer)}
 }
 export async function searchCommonsImage(title,options={}){return (await searchCommonsImages(title,{...options,limit:1}))[0]||null}
