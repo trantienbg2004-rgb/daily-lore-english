@@ -97,4 +97,9 @@ test('one invalid news article moves to next eligible article and stops after a 
  assert.equal(capped.report.geminiCalls,2)
  assert.equal(capped.report.geminiCandidateAttempts,1)
  assert.equal(capped.drafts.length,0)
+ const rotated=await collectDiscover({sources:publishers,fetchImpl,geminiFetchImpl:async()=>fakeRes({...valid(),headline:'Community research report'}),
+  now:new Date('2026-10-17T00:00:00Z'),apiKey:'fake',useGemini:true,maxGemini:1,candidateBatch:1,targetDrafts:1,
+  geminiIntervalMs:0,writeFiles:false,log:{log(){}}})
+ assert.equal(rotated.report.candidateBatch,1)
+ assert.equal(rotated.drafts[0]?.sourceUrl,urls[1].replace(/\/$/,''))
 })

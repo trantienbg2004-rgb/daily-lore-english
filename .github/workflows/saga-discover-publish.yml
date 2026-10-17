@@ -40,6 +40,7 @@ jobs:
       - name: Collect and publish verified news
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          SAGA_GEMINI_MODEL: gemini-2.5-flash-lite
         run: node scripts/auto-news.mjs
 
       - name: Validate and build

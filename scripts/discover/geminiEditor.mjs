@@ -1,5 +1,6 @@
 import {wordCount} from './clean.mjs'
-export const GEMINI_MODEL='gemini-2.5-flash'
+// Explicit allowlist prevents an arbitrary paid model from entering the free workflow.
+export const GEMINI_MODEL=process.env.SAGA_GEMINI_MODEL==='gemini-2.5-flash-lite'?'gemini-2.5-flash-lite':'gemini-2.5-flash'
 const schema={type:'OBJECT',properties:{title:{type:'STRING'},level:{type:'STRING',enum:['A2','B1','B2','C1']},paragraphs:{type:'ARRAY',items:{type:'STRING'}},keyVocabulary:{type:'ARRAY',items:{type:'OBJECT',properties:{word:{type:'STRING'},meaningVi:{type:'STRING'}},required:['word','meaningVi']}},evidence:{type:'ARRAY',items:{type:'STRING'}}},required:['title','level','paragraphs','keyVocabulary','evidence']}
 function numericFacts(text){return [...text.matchAll(/\b(?:\d{1,4}(?:[.,]\d{3})*|\d+(?:\.\d+)?)\b/g)].map(x=>x[0]).filter(Boolean)}
 export function validateDraft(data,source){

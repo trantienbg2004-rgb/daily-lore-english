@@ -9,6 +9,7 @@ export async function runDiscoverPublication({apiKey=process.env.GEMINI_API_KEY,
  const {stories}=await readCatalog()
  const excludeSourceUrls=new Set(stories.filter(s=>s.contentType==='news').map(s=>s.sourceUrl))
  const output=await collectDiscover({useGemini:true,apiKey,now,maxPerFeed:20,maxGemini:20,maxGeminiCalls:12,targetDrafts:10,strictPages:false,
+  candidateBatch:Number(process.env.GITHUB_RUN_NUMBER||0),
   excludeSourceUrls,excludePublishedNews:stories.filter(s=>s.contentType==='news'),outputDir:'reports/saga-discover-local',writeFiles:true,log})
  if(!output.drafts.length){log.warn?.('DISCOVER NO PUBLICATION: no new valid draft, existing Reader untouched');return {published:false,added:0,reason:'no-valid-draft'}}
  runStagedQA({base:'reports/saga-discover-local',summaryFile:null,logSummary:false})

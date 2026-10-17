@@ -14,6 +14,7 @@ import {searchCommonsImages} from './discover/commonsMedia.mjs'
 import {rightsDecision} from './discover/rights.mjs'
 import {uniqueCandidates} from './discover/dedupe.mjs'
 import {generateThreeLevels,buildLevelPages} from './discover/geminiLevels.mjs'
+import {GEMINI_MODEL} from './discover/geminiEditor.mjs'
 import {sameEvent} from './discover/bridge.mjs'
 
 const cap=(n,min,max)=>Number.isSafeInteger(n)?Math.max(min,Math.min(max,n)):min
@@ -22,10 +23,10 @@ const promotionalTitle=/^(?:support|donate|subscribe|newsletter|join us|become a
 export function rankNewsCandidates(items){return [...items].sort((a,b)=>Number(priorityTitle.test(b.title))-Number(priorityTitle.test(a.title)) || b.publishedAt.localeCompare(a.publishedAt))}
 export async function collectDiscover({fetchImpl=fetch,geminiFetchImpl=fetchImpl,now=new Date(),sources=SOURCES,
   maxPerFeed=8,maxGemini=3,targetDrafts=1,useGemini=false,apiKey='',log=console,
-  maxGeminiCalls=8,geminiIntervalMs=5000,geminiWaitImpl=ms=>new Promise(r=>setTimeout(r,ms)),outputDir='reports/saga-discover-local',writeFiles=true,strictPages=false,excludeSourceUrls=new Set(),excludePublishedNews=[]}={}){
+  maxGeminiCalls=8,candidateBatch=0,geminiIntervalMs=5000,geminiWaitImpl=ms=>new Promise(r=>setTimeout(r,ms)),outputDir='reports/saga-discover-local',writeFiles=true,strictPages=false,excludeSourceUrls=new Set(),excludePublishedNews=[]}={}){
  if(useGemini&&!apiKey)throw Error('GEMINI_API_KEY missing. Zero requests sent; nothing published.')
  maxPerFeed=cap(maxPerFeed,1,20);maxGemini=cap(maxGemini,0,20);targetDrafts=cap(targetDrafts,1,10);maxGeminiCalls=cap(maxGeminiCalls,1,12)
- const report={generatedAt:now.toISOString(),mode:useGemini?'gemini-staging':'discovery-staging',model:useGemini?'gemini-2.5-flash':null,
+ const report={generatedAt:now.toISOString(),mode:useGemini?'gemini-staging':'discovery-staging',model:useGemini?GEMINI_MODEL:null,
   sourceCount:sources.length,sourceStatus:[],candidates:0,eligible:0,geminiCalls:0,maxGeminiCalls,geminiCandidateAttempts:0,editorialRepairs:0,targetDrafts,drafts:0,completeThreeLevelDrafts:0,
   rejected:{},publishEnabled:false,publicFilesChanged:false}
  const increment=(key)=>{report.rejected[key]=(report.rejected[key]||0)+1}
@@ -71,6 +72,10 @@ export async function collectDiscover({fetchImpl=fetch,geminiFetchImpl=fetchImpl
   }catch(e){increment('article-fetch-error:'+source.id);perSourceResults.get(source.id).rejected['article-fetch-error']=(perSourceResults.get(source.id).rejected['article-fetch-error']||0)+1;metadata.push({...candidate,mode:'discovery-only',reason:'article-fetch-error'})}
  }
  report.eligible=eligible.length
+ const batchCount=maxGemini?Math.max(1,Math.ceil(eligible.length/maxGemini)):1
+ const safeBatch=Number.isSafeInteger(candidateBatch)&&candidateBatch>=0?candidateBatch:0
+ const selectedCandidates=eligible.slice((safeBatch%batchCount)*maxGemini,((safeBatch%batchCount)+1)*maxGemini)
+ report.candidateBatch=safeBatch%batchCount
  for(const row of report.sourceStatus){row.articleDiagnostics=perSourceResults.get(row.source)||{attempted:0,eligible:0,rejected:{}}}
  const drafts=[]
  let lastGeminiRequestAt=0
@@ -81,7 +86,7 @@ export async function collectDiscover({fetchImpl=fetch,geminiFetchImpl=fetchImpl
   return geminiFetchImpl(...args)
  }
  if(useGemini){
-  for(const candidate of eligible.slice(0,maxGemini)){
+  for(const candidate of selectedCandidates){
    if(drafts.length>=targetDrafts || report.geminiCalls>=maxGeminiCalls)break
    try{
     report.geminiCandidateAttempts++
