@@ -2,7 +2,7 @@
 // rewrite factual claims, delete older articles or hide any user's topics.
 const lower = value => String(value || '').toLowerCase()
 export function displayHeadline(item) {
-  const original = String(item?.sourceTitle || item?.title || '').replace(/_/g,' ').trim()
+  const original = String((item?.contentType === 'news' && item?.headline) || item?.sourceTitle || item?.title || '').replace(/_/g,' ').trim()
   // The collector stored many Wikipedia titles in all caps for the old theme.
   // Recover the publisher's original casing when it is available.
   return original || 'Untitled article'

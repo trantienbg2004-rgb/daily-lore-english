@@ -5,13 +5,15 @@ import fs from 'node:fs'
 import path from 'node:path'
 import {pathToFileURL} from 'node:url'
 import {DISCOVER_LEVELS} from './discover/geminiLevels.mjs'
-import {photoCreditMatches} from './discover/bridge.mjs'
+import {draftPhotos,photoCreditMatches,verifiedPhoto} from './discover/bridge.mjs'
+import {validatedNewsHeadline} from './discover/headline.mjs'
 import {readableStory,validStories} from '../src/lib/feedQueue.js'
 
 const compact=x=>String(x??'').trim()
 const words=x=>compact(x).split(/\s+/u).filter(Boolean).length
 const isHttps=x=>{try{return new URL(x).protocol==='https:'}catch{return false}}
-const safePhoto=d=>!d?.imageUrl || (d.imageRightsVerified===true && isHttps(d.imageUrl) && /^https:\/\/creativecommons\.org\/licenses\/(?:by|by-sa)\/(?:2\.0|2\.5|3\.0|4\.0)\/?/i.test(d.imageProvenance?.licenseUrl||'') && !!d.imageProvenance?.credit && isHttps(d.imageProvenance?.sourceImageUrl))
+const safePhoto=d=>verifiedPhoto(d)&&draftPhotos(d).every(photo=>photo.verified===true&&
+ verifiedPhoto({...d,imageUrl:photo.url,imageRightsVerified:true,imageProvenance:photo.provenance}))
 
 export function inspectStagedRelease(report,drafts){
  const issues=[],seen=new Set(),details=[]
@@ -28,6 +30,7 @@ export function inspectStagedRelease(report,drafts){
   seen.add(id)
   if(!isHttps(url))errors.push('Invalid source URL')
   if(!compact(draft?.sourceName)||!compact(draft?.title))errors.push('Missing source or title')
+  if(draft?.headline&&!validatedNewsHeadline(draft.headline,draft.title))errors.push('Unsupported or long headline')
   if(draft?.rights?.textAllowed!==true||draft?.rights?.mode!=='gemini-eligible')errors.push('Rights gate not satisfied')
   if(!safePhoto(draft))errors.push('Unverified source image must not be published')
   if(!draft?.levelVariants||DISCOVER_LEVELS.some(level=>!draft.levelVariants[level]))errors.push('Incomplete three-level variants')
@@ -36,8 +39,8 @@ export function inspectStagedRelease(report,drafts){
    const variant=draft?.levelVariants?.[level],pages=variant?.pages
    if(!Array.isArray(pages)||pages.length<1){errors.push(`${level}: missing content pages`);continue}
    if(!validStories([{title:draft.title,pages}]))errors.push(`${level}: incompatible reader page schema`)
-   if(pages.some((p,i)=>i===0 ? (!!p.image !== !!draft?.imageUrl || (p.image && p.image!==draft.imageUrl)) : (p.image||p.caption)))errors.push(`${level}: unverified or misplaced photo`)
-   if(!photoCreditMatches(draft,pages[0])||pages.slice(1).some(p=>p.imageProvenance))errors.push(`${level}: missing or mismatched image attribution`)
+   if((pages[0]?.image||'')!==(draft?.imageUrl||'')||pages.some(p=>p.image&&!draftPhotos(draft).some(photo=>photo.url===p.image)))errors.push(`${level}: unverified or misplaced photo`)
+   if(pages.some(p=>!photoCreditMatches(draft,p))||new Set(pages.filter(p=>p.image).map(p=>p.image)).size!==pages.filter(p=>p.image).length)errors.push(`${level}: missing or mismatched image attribution`)
    const total=pages.reduce((sum,p)=>sum+words(p.text),0)
    counts[level]=total
    if(total<10)errors.push(`${level}: insufficient actual content`)

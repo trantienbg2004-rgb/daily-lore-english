@@ -59,7 +59,9 @@ export function planReadingPages(item, fits, {maxPages = 250} = {}) {
   let index = 0, photoIndex = 0, fragment = ''
   while ((index < units.length || fragment) && pages.length < maxPages) {
     const cover = pages.length === 0
-    const image = photoIndex < images.length && (cover || (pages.length >= 3 && (pages.length - 1) % 3 === 0)) ? images[photoIndex] : null
+    // Each independently licensed photo gets the next reading page when space
+    // allows. A page may still become image-only on a very short viewport.
+    const image = photoIndex < images.length ? images[photoIndex] : null
     if (image) photoIndex++
     const canFit = text => fits({text, cover, image})
     let text = ''

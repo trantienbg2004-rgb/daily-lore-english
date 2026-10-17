@@ -25,7 +25,7 @@ export function articleImageHint(html,baseUrl=''){
  }}
  return ''
 }
-export function licensedArticleImage(html,sourceUrl){
+export function licensedArticleImages(html,sourceUrl,{limit=3}={}){
  // A photo must carry a licence IN ITS OWN figure/caption. A page-level CC footer is not proof.
  const hints=[]
  const figures=[...String(html||'').matchAll(/<figure\b[^>]*>[\s\S]{0,9000}?<\/figure\s*>/gi),
@@ -51,7 +51,8 @@ export function licensedArticleImage(html,sourceUrl){
   if(!credit||!/(?:photo|image|credit|by|©|courtesy)/i.test(text))continue
   const caption=decode(getAttr(img,'alt'))||text.slice(0,120)
   const imagePageUrl=safeURL(getAttr(figure.match(/<a\b[^>]*>/i)?.[0]||'','href'),sourceUrl)
-  hints.push({url,caption,verified:true,provenance:{credit,license:licenseUrl.includes('/by-sa/')?'CC BY-SA':'CC BY',licenseUrl,sourceImageUrl:sourceUrl,...(imagePageUrl?{imagePageUrl}:{})}})
+  if(!hints.some(photo=>photo.url===url))hints.push({url,caption,verified:true,provenance:{credit,license:licenseUrl.includes('/by-sa/')?'CC BY-SA':'CC BY',licenseUrl,sourceImageUrl:sourceUrl,...(imagePageUrl?{imagePageUrl}:{})}})
  }
- return hints[0]||null
+ return hints.slice(0,Math.max(0,Math.min(3,limit)))
 }
+export function licensedArticleImage(html,sourceUrl){return licensedArticleImages(html,sourceUrl,{limit:1})[0]||null}

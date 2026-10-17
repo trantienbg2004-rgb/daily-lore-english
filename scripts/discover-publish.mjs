@@ -8,11 +8,11 @@ export async function runDiscoverPublication({apiKey=process.env.GEMINI_API_KEY,
  if(!apiKey)throw Error('Missing GEMINI_API_KEY. No requests sent, no publication.')
  const {stories}=await readCatalog()
  const excludeSourceUrls=new Set(stories.filter(s=>s.contentType==='news').map(s=>s.sourceUrl))
- const output=await collectDiscover({useGemini:true,apiKey,now,maxPerFeed:20,maxGemini:20,maxGeminiCalls:8,targetDrafts:4,strictPages:false,
+ const output=await collectDiscover({useGemini:true,apiKey,now,maxPerFeed:20,maxGemini:20,maxGeminiCalls:12,targetDrafts:10,strictPages:false,
   excludeSourceUrls,excludePublishedNews:stories.filter(s=>s.contentType==='news'),outputDir:'reports/saga-discover-local',writeFiles:true,log})
  if(!output.drafts.length){log.warn?.('DISCOVER NO PUBLICATION: no new valid draft, existing Reader untouched');return {published:false,added:0,reason:'no-valid-draft'}}
  runStagedQA({base:'reports/saga-discover-local',summaryFile:null,logSummary:false})
- const result=await publishDiscover({drafts:output.drafts,limit:4,now})
+ const result=await publishDiscover({drafts:output.drafts,limit:10,now})
  if(result.published)await buildReaderIndex()
  if(result.rejected?.length)for(const rejection of result.rejected)log.warn?.('SAGA PUBLISH REJECTED:',rejection.title,rejection.reason)
  if(process.env.GITHUB_STEP_SUMMARY){const summary=['## SAGA automatic news publication','',

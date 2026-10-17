@@ -3,6 +3,17 @@ import assert from 'node:assert/strict'
 import fs from 'node:fs'
 import {planReadingPages} from '../../src/lib/readerPagination.js'
 
+test('licensed photographs continue onto the second and third reading pages without losing text',()=>{
+ const source='A verified report explains the international event in clear terms. '.repeat(15).trim()
+ const photos=[1,2,3].map(number=>({image:`licensed-${number}`,caption:`Photo ${number}`,
+  imageProvenance:{credit:`Photographer ${number}`,license:'CC BY 4.0'}}))
+ const pages=planReadingPages({pages:photos.map((photo,index)=>({...photo,text:index===0?source:''}))},
+  ({text,image})=>words(text)<=(image?14:24))
+ assert.deepEqual(pages.slice(0,3).map(page=>page.image),photos.map(photo=>photo.image))
+ assert.equal(pages.map(page=>page.text).join(' '),source)
+ assert.ok(pages.every(page=>!page.image||page.imageProvenance?.credit))
+})
+
 const css=fs.readFileSync('src/App.css','utf8')
 const app=fs.readFileSync('src/App.jsx','utf8')
 const words=s=>String(s).trim().split(/\s+/u).filter(Boolean).length
@@ -43,5 +54,5 @@ test('Pager stays reserved while pagination checks text fits above it',()=>{
 })
 
 test('No invasive changes to Words, Review, gestures, zoom or automatic article supply',()=>{
-  for(const s of ['onTouchStart={interactive ? startGesture','onClick={() => changePage(-1)}','onClick={() => changePage(1)}','setZoomed(true)','tab === \'words\'','tab === \'review\'','LOW_STOCK_POLL_MS']) assert.ok(app.includes(s),s)
+  for(const s of ['onTouchStart={interactive ? startGesture','onClick={() => changePage(-1)}','onClick={() => changePage(1)}','setZoomed(true)','tab === \'words\'','tab === \'review\'','REFRESH_INTERVAL_MS']) assert.ok(app.includes(s),s)
 })

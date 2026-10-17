@@ -3,7 +3,8 @@ name: SAGA Discover - automatic news
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 */6 * * *'
+    # Avoid the top-of-hour GitHub Actions traffic peak.
+    - cron: '17 */4 * * *'
 
 permissions:
   contents: write
@@ -62,9 +63,7 @@ jobs:
           git commit -m "SAGA: publish verified news"
 
           for attempt in 1 2 3; do
-            git fetch origin main
-
-            if git rebase origin/main && git push origin HEAD:main; then
+            if git pull --rebase origin main && git push origin HEAD:main; then
               echo "SAGA NEWS PUBLISHED"
               exit 0
             fi

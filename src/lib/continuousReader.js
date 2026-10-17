@@ -2,16 +2,16 @@
 import {fetchManifest,newsChunkOrder,scanFeed,fetchWithTimeout,validStories,readableStory,storyId} from './feedQueue.js'
 import {pickGlobalCandidates} from './recommendationEngine.js'
 export const PUBLISHED_POOLS=['lore-reader']
-export const REFRESH_INTERVAL_MS=5*60_000
+export const REFRESH_INTERVAL_MS=3*60_000
 export function eligibleManifest(m,path){
  return path==='lore-reader'&&m?.ready===true&&m?.editorialVersion===1&&
  Number.isInteger(m.count)&&m.count>=1&&m.count<100000&&
  (m.newsOnly===true ? m.feedType==='news'&&m.total>=1 : m.feedType==='lore'&&m.total>=15&&Number(m.withVerifiedPhoto)>=15&&m.sourcePhotosOnly===true)
 }
-async function getIndex(fetchImpl,baseUrl,path,manifest){
+async function getIndex(fetchImpl,baseUrl,path,manifest,now){
  if(!manifest.indexFile)return null
- const url=`${baseUrl}${path}/${manifest.indexFile}?v=${encodeURIComponent(manifest.indexHash||manifest.contentHash||'')}`
- const res=await fetchWithTimeout(fetchImpl,url,{cache:'no-cache'})
+ const url=`${baseUrl}${path}/${manifest.indexFile}?t=${now}`
+ const res=await fetchWithTimeout(fetchImpl,url,{cache:'no-store'})
  if(!res.ok)throw Error(`Global index HTTP ${res.status}`)
  const data=await res.json()
  if(data.version!==2||data.total!==manifest.total||!Array.isArray(data.entries)||data.entries.length!==manifest.total||
@@ -19,26 +19,30 @@ async function getIndex(fetchImpl,baseUrl,path,manifest){
  return data.entries
 }
 export async function refreshCatalog({fetchImpl,baseUrl,pools=[],now=Date.now(),fetchManifestImpl=fetchManifest}){
- const old=new Map(pools.map(p=>[p.path,p])),next=[],failures=[]
+ const old=new Map(pools.map(p=>[p.path,p])),next=[],failures=[],newIds=[]
  for(const name of PUBLISHED_POOLS){
   try{
    const m=await fetchManifestImpl(fetchImpl,baseUrl,now,name)
    if(!eligibleManifest(m,name))throw Error('curated-release-not-ready')
    const p=old.get(name)
-   if(p?.version===m.version){next.push(p);continue}
    let index=null
-   if(m.indexFile){try{index=await getIndex(fetchImpl,baseUrl,name,m)}catch(e){if(m.newsOnly)throw e;console.warn('Global index unavailable; using existing shard scanner:',e?.message||e)}}
+   if(m.indexFile){try{index=await getIndex(fetchImpl,baseUrl,name,m,now)}catch(e){if(m.newsOnly)throw e;console.warn('Global index unavailable; using existing shard scanner:',e?.message||e)}}
    if(m.newsOnly&&!index)throw Error('News-only requires verified catalog index')
+   if(p?.version===m.version){next.push(p);continue}
+   const known=new Set(p?.index?.map(entry=>entry.id)||[])
+   if(p)for(const entry of index||[])if(entry.contentType==='news'&&!known.has(entry.id))newIds.push(entry.id)
    next.push({path:name,manifest:m,version:m.version,index,order:newsChunkOrder(m.count),cursor:0,done:false,cache:new Map()})
   }catch(e){failures.push(`${name}: ${e?.message||e}`);if(old.has(name))next.push(old.get(name))}
  }
- return {pools:next,failures,hasAvailable:next.length>0,checkedAt:now}
+ return {pools:next,failures,newIds,hasAvailable:next.length>0,checkedAt:now}
 }
-async function refillGlobal({pool,fetchImpl,baseUrl,seen,loaded,seenAt,profile,recent,target,random,maxShards=10,newsOnly=false}){
+async function refillGlobal({pool,fetchImpl,baseUrl,seen,loaded,seenAt,profile,recent,target,random,maxShards=10,newsOnly=false,priorityIds=new Set()}){
  const candidates=newsOnly||pool.manifest.newsOnly ? pool.index.filter(e=>e.contentType==='news') : pool.index
  const selected=pickGlobalCandidates(candidates,{seen,loaded,seenAt,profile,recent,count:Math.max(target*3,90),random})
+ const priority=candidates.filter(e=>priorityIds.has(e.id)&&!seen.has(e.id)&&!loaded.has(e.id))
+ const selection=[...priority,...selected.items.filter(e=>!priorityIds.has(e.id))]
  const chosen=[],used=new Set()
- for(const entry of selected.items){if(!used.has(entry.shard)){if(used.size>=maxShards)continue;used.add(entry.shard)}chosen.push(entry)}
+ for(const entry of selection){if(!used.has(entry.shard)){if(used.size>=maxShards)continue;used.add(entry.shard)}chosen.push(entry)}
  const byShard=new Map(),errors=[]
  const results=await Promise.allSettled([...used].map(async shard=>{
   if(pool.cache?.has(shard))return [shard,pool.cache.get(shard)]
@@ -66,11 +70,11 @@ async function refillGlobal({pool,fetchImpl,baseUrl,seen,loaded,seenAt,profile,r
  return {items,errors,done:candidates.length===0||(!selected.items.length&&!selected.fallback),fallback:selected.fallback}
 }
 export async function refillCatalog({fetchImpl,baseUrl,pools,seen=new Set(),loaded=new Set(),seenAt=new Map(),profile={categories:{}},recent=[],target=30,urgent=false,
- scanFeedImpl=scanFeed,maxChunksPerPool=9,random=Math.random,newsOnly=false}){
+ scanFeedImpl=scanFeed,maxChunksPerPool=9,random=Math.random,newsOnly=false,priorityIds=new Set()}){
  const updated=pools.map(p=>({...p})),items=[],errors=[]
  for(const pool of updated){
   if(pool.index){
-   const result=await refillGlobal({pool,fetchImpl,baseUrl,seen,loaded,seenAt,profile,recent,target:target-items.length,random,maxShards:urgent?3:10,newsOnly})
+   const result=await refillGlobal({pool,fetchImpl,baseUrl,seen,loaded,seenAt,profile,recent,target:target-items.length,random,maxShards:Math.max(urgent?3:10,priorityIds.size),newsOnly,priorityIds})
    items.push(...result.items);errors.push(...result.errors)
    pool.done=result.done;pool.fallback=result.fallback
    continue
