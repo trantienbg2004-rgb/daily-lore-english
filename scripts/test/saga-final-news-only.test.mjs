@@ -5,6 +5,7 @@ import {smartPaginate} from '../discover/smartPaginate.mjs'
 import {validateLevelDrafts} from '../discover/geminiLevels.mjs'
 import {applyNewsLevel} from '../../src/lib/newsLevels.js'
 import {photoCreditMatches,verifiedPhoto,isPublishedNewsStory} from '../discover/bridge.mjs'
+import {photoLabel} from '../../src/lib/photoPresentation.js'
 const dir='public/lore-reader/'
 test('published catalog has no lore but original historical shards remain',()=>{
  const m=JSON.parse(fs.readFileSync(dir+'manifest.json'))
@@ -30,7 +31,8 @@ test('published photo count and credits match every reading level',()=>{
   for(const photo of photos){
    assert.ok(verifiedPhoto({...story,imageUrl:photo.image,imageRightsVerified:true,imageProvenance:photo.imageProvenance}))
    assert.ok(photo.imageProvenance.imagePageUrl)
-   if(photo.imageProvenance.originType==='wikimedia-commons')assert.match(photo.caption,/^Illustrative image:/)
+   assert.ok(photo.caption?.trim())
+   assert.doesNotMatch(photoLabel(photo),/^Illustrat/i)
   }
   for(const level of ['A1-A2','B1-B2','C1-C2']){
    for(const [index,photo] of story.pages.entries()){

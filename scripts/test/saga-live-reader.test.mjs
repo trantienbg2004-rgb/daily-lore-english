@@ -2,7 +2,7 @@ import test from 'node:test'
 import assert from 'node:assert/strict'
 import fs from 'node:fs'
 import {refreshCatalog,refillCatalog,REFRESH_INTERVAL_MS} from '../../src/lib/continuousReader.js'
-import {approvedCommonsPhoto,searchCommonsImages} from '../discover/commonsMedia.mjs'
+import {approvedCommonsPhoto,searchCommonsImages,commonsQueryFor} from '../discover/commonsMedia.mjs'
 import {validatedNewsHeadline} from '../discover/headline.mjs'
 import {buildThreeLevelRequest} from '../discover/geminiLevels.mjs'
 import {displayHeadline} from '../../src/lib/editorial.js'
@@ -43,13 +43,13 @@ test('Commons illustrations require individual reusable license and author evide
   thumburl:'https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a.jpg',
   descriptionurl:'https://commons.wikimedia.org/wiki/File:International_Monetary_Fund_headquarters.jpg',
   extmetadata:{LicenseUrl:{value:'https://creativecommons.org/licenses/by/4.0/'},LicenseShortName:{value:'CC BY 4.0'},Artist:{value:'Example photographer'}}}]}
- assert.ok(approvedCommonsPhoto(page,'International Monetary Fund'))
+ assert.ok(approvedCommonsPhoto(page,'International Monetary Fund headquarters'))
  const restricted=structuredClone(page)
  restricted.imageinfo[0].extmetadata.LicenseUrl.value='https://creativecommons.org/licenses/by-nc/4.0/'
- assert.equal(approvedCommonsPhoto(restricted,'International Monetary Fund'),null)
+ assert.equal(approvedCommonsPhoto(restricted,'International Monetary Fund headquarters'),null)
  const unattributed=structuredClone(page)
  unattributed.imageinfo[0].extmetadata.Artist.value=''
- assert.equal(approvedCommonsPhoto(unattributed,'International Monetary Fund'),null)
+ assert.equal(approvedCommonsPhoto(unattributed,'International Monetary Fund headquarters'),null)
  assert.equal(approvedCommonsPhoto(page,'Ukraine market'),null)
 })
 
@@ -63,6 +63,26 @@ test('Commons search can supply distinct, credited images for later pages',async
  const photos=await searchCommonsImages('IMF discusses global growth',{fetchImpl,limit:3,
   excludeUrls:['https://commons.wikimedia.org/wiki/File:International_Monetary_Fund_headquarters_1.jpg']})
  assert.deepEqual(photos.map(photo=>photo.provenance.credit),['Photographer 3 / Wikimedia Commons'])
+})
+
+test('country-only Commons photos must show a place, not an unrelated official or animal',async()=>{
+ const page=(title,index)=>({index,title:`File:${title}.jpg`,imageinfo:[{
+  mime:'image/jpeg',width:900,height:600,thumburl:`https://thumb.wikimedia.org/wikipedia/commons/thumb/${index}.jpg`,
+  descriptionurl:`https://commons.wikimedia.org/wiki/File:${title.replaceAll(' ','_')}.jpg`,
+  extmetadata:{LicenseUrl:{value:'https://creativecommons.org/licenses/by/4.0/'},
+   LicenseShortName:{value:'CC BY 4.0'},Artist:{value:'Photographer'}}} ]})
+ const entries={one:page('Mozambique army personnel',1),two:page('Maputo street in Mozambique',2),
+  three:page('Mozambique eagle',3),four:page('Mozambique city centre',4)}
+ assert.equal(approvedCommonsPhoto(entries.one,'Mozambique'),null)
+ assert.equal(approvedCommonsPhoto(entries.three,'Mozambique'),null)
+ const fetchImpl=async()=>({ok:true,json:async()=>({query:{pages:entries}})})
+ const photos=await searchCommonsImages('Current affairs in Mozambique',{fetchImpl,limit:3})
+ assert.equal(photos.length,1)
+ assert.match(photos[0].caption,/Maputo street/)
+ assert.deepEqual(await searchCommonsImages('Current affairs in Mozambique',{fetchImpl,
+  excludeUrls:['https://commons.wikimedia.org/wiki/File:existing.jpg']}),[])
+ assert.equal(commonsQueryFor('Rana Tharu women in Nepal'),'Tharu Nepal')
+ assert.equal(commonsQueryFor('Women at Nampula protests'),'Nampula Mozambique')
 })
 
 test('continued-page duplicate heading is hidden while toolbar title stays',()=>{

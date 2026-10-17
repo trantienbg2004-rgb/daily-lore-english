@@ -2,6 +2,11 @@
  * eyewitness photography of the reported event. Missing proof means no image.
  */
 const subjects=[
+ [/\bVenezuela\b.*\bearthquakes?\b|\bearthquakes?\b.*\bVenezuela\b/i,'Venezuela earthquake',/Venezuela.*earthquake|earthquake.*Venezuela/i,/\b(?:map|location|relief)\b/i],
+ [/\bNampula\b/i,'Nampula Mozambique',/Nampula.*Mozambique|Mozambique.*Nampula/i,/\b(?:airport|hospital|division|elbaite)\b/i],
+ [/\bTharu\b/i,'Tharu Nepal',/Tharu/i,/food|dish|cuisine/i],
+ [/\bLGBTQ\+?\b.*\bMozambique\b|\bMozambique\b.*\bLGBTQ\+?\b/i,'Mozambique street',/Mozambique|Maputo/i,/\b(?:map|army|military|minister|airport|hospital|zebras?)\b/i],
+ [/\bEl Ni[nñ]o\b.*\bLatin America\b|\bLatin America\b.*\bfood security\b/i,'Quinoa farmer',/Quinoa farmer/i],
  [/\b(?:IMF|International Monetary Fund)\b/i,'International Monetary Fund headquarters',/International Monetary Fund|IMF/i,/\bart\b|policy|dataset|statistical/i],
  [/\bGaza\b/i,'Gaza City',/Gaza/i,/damage|airstrike|bomb|war|displacement|girl walks/i],
  [/\bSudan\b/i,'Sudan Khartoum city',/Sudan|Khartoum/i,/development corporation|flag|map/i],
@@ -28,10 +33,13 @@ const subjects=[
 // labelled contextual image. File-title matching still requires that place.
 const contextualPlaces=['Trinidad and Tobago','Latin America','Mozambique','Ecuador','Cambodia','Bangladesh','Croatia','Australia','Brazil','Ghana','China','Libya','Sahel','Africa','Jamaica','Haiti','Nepal','Peru','Ukraine','Myanmar']
 const contextualAliases=[[/\bTogolese\b/i,'Togo'],[/\bGhanaians\b/i,'Ghana'],[/\bCasablanca\b/i,'Casablanca'],[/\bPereira\b/i,'Pereira'],[/\bSouth Korean\b/i,'South Korea'],[/\bVenezuela\b/i,'Venezuela'],[/\bCatalan\b/i,'Catalonia']]
+const contextualScene=/\b(?:city|town|village|street|landscape|coast|river|mountain|forest|farm|market|skyline|buildings?|valley|countryside|neighborhood|neighbourhood|plaza|square)\b/i
+const unrelatedContext=/\b(?:ambassador|minister|army|military|soldier|police|eagle|bird|penguin|airport|hospital|administrative|division|diagram|painting|poster|sailboat|boat|museum)\b/i
 const stripHtml=value=>String(value||'').replace(/<[^>]*>/g,' ').replace(/&(?:amp|quot|apos|nbsp);/gi,m=>({'&amp;':'&','&quot;':'"','&apos;':"'",'&nbsp;':' '}[m.toLowerCase()]||m)).replace(/\s+/g,' ').trim()
 const blockedTitle=/\b(?:flag|coat of arms|logo|icon|map|diagram|chart|infographic|symbol|seal|emblem|denoise)\b/i
 const licensePattern=/^https:\/\/creativecommons\.org\/(?:licenses\/(?:by|by-sa)\/(?:2\.0|2\.5|3\.0|4\.0)|publicdomain\/(?:zero|mark)\/1\.0)(?:\/|$)/i
 export function commonsQueryFor(title){return subjects.find(([pattern])=>pattern.test(title||''))?.[1]||contextualPlaces.find(place=>new RegExp(`\\b${place.replaceAll(' ','\\s+')}\\b`,'i').test(title||''))||contextualAliases.find(([pattern])=>pattern.test(title||''))?.[1]||''}
+export function commonsQueryIsContextual(title){const query=commonsQueryFor(title);return !!query&&(!subjects.some(([,term])=>term===query)||query==='Mozambique street'||query==='Quinoa farmer')}
 export function approvedCommonsPhoto(page,query){
  const info=page?.imageinfo?.[0],meta=info?.extmetadata||{}
  const file=String(page?.title||'').replace(/^File:/,'').replace(/\.[^.]+$/,'').replace(/[_()]/g,' ').trim()
@@ -39,6 +47,8 @@ export function approvedCommonsPhoto(page,query){
  const subject=subjects.find(([,term])=>term===query)
  if(!file||blockedTitle.test(file)||!terms.some(t=>file.toLowerCase().includes(t))||
    (subject&&(!subject[2].test(file)||subject[3]?.test(file)))||
+   (!subject&&(!contextualScene.test(file)||unrelatedContext.test(file)))||
+   (query==='Mozambique street'&&!/\b(?:street|av\.?|avenida|centro)\b/i.test(file))||
    (query==='Ukraine market'&&/solidarity|square|pig heads/i.test(file)))return null
  if(!['image/jpeg','image/png','image/webp'].includes(info?.mime)||info.width<600||info.height<350)return null
  const rawLicense=String(meta.LicenseUrl?.value||'').replace(/^http:/i,'https:')
@@ -58,6 +68,8 @@ export function approvedCommonsPhoto(page,query){
 export async function searchCommonsImages(title,{fetchImpl=fetch,timeoutMs=10000,limit=3,excludeUrls=[]}={}){
  const query=commonsQueryFor(title)
  if(!query)return []
+ if(commonsQueryIsContextual(title)&&excludeUrls.length)return []
+ if(commonsQueryIsContextual(title))limit=Math.min(limit,1)
  const url=new URL('https://commons.wikimedia.org/w/api.php')
  for(const [key,value] of Object.entries({action:'query',generator:'search',gsrsearch:query,gsrnamespace:'6',gsrlimit:'12',
   prop:'imageinfo',iiprop:'url|size|mime|extmetadata',iiurlwidth:'800',format:'json'}))url.searchParams.set(key,value)
