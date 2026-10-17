@@ -3,6 +3,17 @@ import assert from 'node:assert/strict'
 import {generateThreeLevels,buildThreeLevelRequest,validateLevelDrafts,DISCOVER_LEVELS} from '../discover/geminiLevels.mjs'
 import {collectDiscover,rankNewsCandidates} from '../discover-collect.mjs'
 import {runAutoNews} from '../auto-news.mjs'
+import {sourceNewsHeadline} from '../discover/headline.mjs'
+
+test('reviewed newsroom title shortenings remain source-backed and phone sized',()=>{
+ const cases=[
+  ['How two elections reshaped the India–Bangladesh border','Two elections reshaped India-Bangladesh border'],
+  ['How Cambodia’s law on ‘freedom parks’ curtailed people’s right to protest','Cambodia law curtailed right to protest'],
+  ['Indigenous plants offer Ghanaians an alternative to costly Western medicine','Plants offer Ghanaians a medicine alternative'],
+  ['How Croatian communities are taking on planned poultry slaughterhouses','Croatian communities fight slaughterhouse plans'],
+ ]
+ for(const [title,expected] of cases)assert.equal(sourceNewsHeadline(title,title),expected)
+})
 
 test('push publication rotates batches and stops when Gemini quota is exhausted',async()=>{
  const batches=[],skipped=[]

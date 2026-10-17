@@ -2,6 +2,16 @@
 const compact=value=>String(value||'').replace(/\s+/gu,' ').trim()
 const words=value=>compact(value).toLowerCase().normalize('NFKD').replace(/[^a-z0-9 ]/g,' ').split(/\s+/).filter(x=>x.length>=4&&!['about','after','from','with','this','that','their','these','into','over','under','when','what','would'].includes(x))
 const numbers=value=>[...compact(value).matchAll(/\b\d+(?:[.,]\d+)*\b/g)].map(x=>x[0])
+const titleKey=value=>compact(value).toLowerCase().replace(/[’‘]/g,"'").replace(/[–—]/g,'-')
+
+// Editorial shortenings of specific publisher headlines that repeatedly fail
+// the phone-width limit. Keep the original title and validate each fallback.
+const reviewedHeadlines=new Map([
+ ['How two elections reshaped the India-Bangladesh border','Two elections reshaped India-Bangladesh border'],
+ ["How Cambodia's law on 'freedom parks' curtailed people's right to protest",'Cambodia law curtailed right to protest'],
+ ['Indigenous plants offer Ghanaians an alternative to costly Western medicine','Plants offer Ghanaians a medicine alternative'],
+ ['How Croatian communities are taking on planned poultry slaughterhouses','Croatian communities fight slaughterhouse plans'],
+].map(([title,headline])=>[titleKey(title),headline]))
 
 export function validatedNewsHeadline(value,sourceTitle,sourceText=null){
  const headline=compact(value),source=compact(sourceTitle)
@@ -28,5 +38,5 @@ export function sourceNewsHeadline(sourceTitle,sourceText){
    if(valid)return valid
   }
  }
- return ''
+ return validatedNewsHeadline(reviewedHeadlines.get(titleKey(source)),source,sourceText)
 }
