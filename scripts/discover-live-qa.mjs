@@ -5,13 +5,14 @@ import fs from 'node:fs'
 import path from 'node:path'
 import {pathToFileURL} from 'node:url'
 import {DISCOVER_LEVELS} from './discover/geminiLevels.mjs'
-import {photoCreditMatches} from './discover/bridge.mjs'
+import {photoCreditMatches,verifiedPhoto} from './discover/bridge.mjs'
+import {validatedNewsHeadline} from './discover/headline.mjs'
 import {readableStory,validStories} from '../src/lib/feedQueue.js'
 
 const compact=x=>String(x??'').trim()
 const words=x=>compact(x).split(/\s+/u).filter(Boolean).length
 const isHttps=x=>{try{return new URL(x).protocol==='https:'}catch{return false}}
-const safePhoto=d=>!d?.imageUrl || (d.imageRightsVerified===true && isHttps(d.imageUrl) && /^https:\/\/creativecommons\.org\/licenses\/(?:by|by-sa)\/(?:2\.0|2\.5|3\.0|4\.0)\/?/i.test(d.imageProvenance?.licenseUrl||'') && !!d.imageProvenance?.credit && isHttps(d.imageProvenance?.sourceImageUrl))
+const safePhoto=d=>verifiedPhoto(d)
 
 export function inspectStagedRelease(report,drafts){
  const issues=[],seen=new Set(),details=[]
@@ -28,6 +29,7 @@ export function inspectStagedRelease(report,drafts){
   seen.add(id)
   if(!isHttps(url))errors.push('Invalid source URL')
   if(!compact(draft?.sourceName)||!compact(draft?.title))errors.push('Missing source or title')
+  if(draft?.headline&&!validatedNewsHeadline(draft.headline,draft.title))errors.push('Unsupported or long headline')
   if(draft?.rights?.textAllowed!==true||draft?.rights?.mode!=='gemini-eligible')errors.push('Rights gate not satisfied')
   if(!safePhoto(draft))errors.push('Unverified source image must not be published')
   if(!draft?.levelVariants||DISCOVER_LEVELS.some(level=>!draft.levelVariants[level]))errors.push('Incomplete three-level variants')

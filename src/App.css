@@ -835,6 +835,7 @@
 .lore-editorial-v5 .reading-card .reading-topline {display:none;min-height:0;padding:0;margin:0}
 .lore-editorial-v5 .reader-gesture .article-heading {clear:both;position:relative;min-width:0;margin-top:0}
 .lore-editorial-v5 .reader-gesture .article-heading h1 {max-width:100%; overflow-wrap:break-word}
+.lore-editorial-v5 .reader-gesture .article-heading-continued {display:none}
 @media(max-width:380px){
   .lore-editorial-v5 .reader-gesture .topbar.lore-reader-topbar{gap:7px}
   .lore-editorial-v5 .saga-toolbar-actions{gap:5px}

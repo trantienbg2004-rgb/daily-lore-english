@@ -6,7 +6,7 @@ import { storyId } from './lib/feedQueue.js'
 import { planReadingPages } from './lib/readerPagination.js'
 import { sanitizeReadingArticle } from './lib/articleCleanup.js'
 import { refreshCatalog, refillCatalog, REFRESH_INTERVAL_MS } from './lib/continuousReader.js'
-import { QUEUE_TARGET, LOW_STOCK_POLL_MS, queuedUnread, lowOnStories, refreshDue } from './lib/loreStockPolicy.js'
+import { QUEUE_TARGET, queuedUnread, lowOnStories, refreshDue } from './lib/loreStockPolicy.js'
 import { createEdgeNavigation } from './lib/edgeNavigation.js'
 import { photoLabel, photoSourceLink } from './lib/photoPresentation.js'
 import { resolvePhoto, photoResult } from './lib/photoLoad.js'
@@ -466,9 +466,11 @@ function App() {
   const doneRef = useRef(false)
   const lastManifestCheckRef = useRef(0)
   const wasLowOnStoriesRef = useRef(false)
+  const wasCriticalOnStoriesRef = useRef(false)
   const retryAttemptRef = useRef(0)
   const retryTimerRef = useRef(null)
   const afterBusyRef = useRef(false)
+  const checkAfterBusyRef = useRef(false)
   const boundaryProbeRef = useRef({key:'',time:0})
   const storiesRef = useRef(stories)
   const storyIndexRef = useRef(storyIndex)
@@ -485,6 +487,7 @@ function App() {
     if (!historyReadyRef.current) return
     if (feedBusy.current) {
       if (urgent) afterBusyRef.current = true
+      if (forceCheck) checkAfterBusyRef.current = true
       return
     }
     const remaining = queuedUnread(storiesRef.current.length, storyIndexRef.current)
@@ -497,21 +500,24 @@ function App() {
     if (!storiesRef.current.length || urgent) setFeedLoading(true)
     setFeedRetrying(false)
     let appended = 0
+    let newIds = []
     try {
       if (checkDue) {
         const catalog = await refreshCatalog({fetchImpl:fetch,baseUrl:import.meta.env.BASE_URL,pools:poolsRef.current})
         if (!catalog.hasAvailable) throw Error(`No curated DAILY LORE release yet: ${catalog.failures.join('; ')}`)
         poolsRef.current = catalog.pools
+        newIds = catalog.newIds || []
         lastManifestCheckRef.current = catalog.checkedAt
         // An updated manifest rewinds only THAT pool, not the current article.
         doneRef.current = poolsRef.current.every(p=>p.done)
       }
       if (forceScan) poolsRef.current = poolsRef.current.map(p=>({...p,cursor:0,done:false}))
-      if (remaining<BUFFER_TARGET || urgent || forceScan) {
+      if (remaining<BUFFER_TARGET || urgent || forceScan || newIds.length) {
         const result = await refillCatalog({fetchImpl:fetch,baseUrl:import.meta.env.BASE_URL,
           pools:poolsRef.current,seen:seenRef.current,loaded:loadedRef.current,seenAt:seenAtRef.current,
           profile:recommendationProfileRef.current,recent:storiesRef.current.slice(Math.max(0,storyIndexRef.current-5),storyIndexRef.current+1),
-          target:urgent?1:Math.max(1,BUFFER_TARGET-remaining),urgent,newsOnly:true})
+          target:Math.max(newIds.length,urgent?1:Math.max(1,BUFFER_TARGET-remaining)),urgent,newsOnly:true,
+          priorityIds:new Set(newIds)})
         poolsRef.current = result.pools
         doneRef.current = result.done
         cursorRef.current = result.pools.reduce((total,p)=>total+p.cursor,0)
@@ -530,7 +536,15 @@ function App() {
         if (result.items.length) {
           const recommended = poolsRef.current.some(p=>Array.isArray(p.index)) ? result.items : rankRecommendations(result.items,{profile:recommendationProfileRef.current,
             seen:seenRef.current,recent:storiesRef.current.slice(Math.max(0,storyIndexRef.current-5),storyIndexRef.current+1)})
-          setStories(old=>[...old,...recommended.filter(item=>item.contentType==='news').map(item => paginateStory(applyNewsLevel(item, readingLevelRef.current)))])
+          const prepared = recommended.filter(item=>item.contentType==='news').map(item => paginateStory(applyNewsLevel(item, readingLevelRef.current)))
+          const freshIds = new Set(newIds)
+          setStories(old => {
+            if (!old.length || !freshIds.size) return [...old,...prepared]
+            const immediate = prepared.filter(item=>freshIds.has(storyId(item)))
+            const later = prepared.filter(item=>!freshIds.has(storyId(item)))
+            const next = Math.min(storyIndexRef.current+1,old.length)
+            return [...old.slice(0,next),...immediate,...old.slice(next),...later]
+          })
         }
         if (result.errors.length) {
           console.warn('Some reader sources temporarily unavailable:',result.errors)
@@ -550,7 +564,11 @@ function App() {
     } finally {
       feedBusy.current = false
       setFeedLoading(false)
-      if (afterBusyRef.current) {
+      if (checkAfterBusyRef.current) {
+        checkAfterBusyRef.current = false
+        afterBusyRef.current = false
+        queueMicrotask(()=>loadFeed({forceCheck:true,urgent:edgeControllerRef.current.isWaiting()}))
+      } else if (afterBusyRef.current) {
         afterBusyRef.current = false
         if (edgeControllerRef.current.isWaiting()) {
           if (doneRef.current) edgeControllerRef.current.noMore()
@@ -590,12 +608,16 @@ function App() {
     const remaining = queuedUnread(stories.length,storyIndex)
     const low = lowOnStories(remaining)
     const enteredLow = low && !wasLowOnStoriesRef.current
+    const critical = remaining < 3
+    const enteredCritical = critical && !wasCriticalOnStoriesRef.current
     wasLowOnStoriesRef.current = low
+    wasCriticalOnStoriesRef.current = critical
+    if (feedBusy.current && (enteredLow || enteredCritical)) checkAfterBusyRef.current = true
     // At exactly 30 queued unread stories, check for a NEW publication now,
     // not only when the archive is exhausted. When no new publication exists,
     // the separate timer keeps checking without a request storm.
     if (!feedLoading && !feedBusy.current && low &&
-        (enteredLow || refreshDue({remaining,checkedAt:lastManifestCheckRef.current}))) {
+        (enteredLow || enteredCritical || refreshDue({remaining,checkedAt:lastManifestCheckRef.current}))) {
       loadFeed({forceCheck:true})
     } else if (!feedLoading && !feedBusy.current && !feedDone && remaining < BUFFER_TARGET) {
       loadFeed()
@@ -632,14 +654,14 @@ function App() {
     if (tab !== 'read') { edgeControllerRef.current.cancel(); return }
     edgeControllerRef.current.onQueueChanged(storyIndex, stories.length)
   }, [tab, storyIndex, stories.length])
-  // Low stock: check for new published articles once a minute even after
-  // exhausting the current release; otherwise preserve the 5-minute cadence.
+  // Probe the uncached manifest and catalog index every three minutes, and
+  // immediately when the reader returns to the foreground.
   // Browser readers do not contain GitHub credentials or run a scraper.
   useEffect(() => {
     const check = () => {
-      if (document.visibilityState === 'visible') loadFeed()
+      if (document.visibilityState === 'visible') loadFeed({forceCheck:true})
     }
-    const timer = setInterval(check, LOW_STOCK_POLL_MS)
+    const timer = setInterval(check, REFRESH_INTERVAL_MS)
     document.addEventListener('visibilitychange', check)
     window.addEventListener('focus', check)
     window.addEventListener('online', check)
@@ -947,7 +969,7 @@ function App() {
           <div className="source-credit-list"><strong>Image attributions</strong>{(() => {
             const pages = story._sourcePages || story.pages
             const distinct = [...new Map(pages.filter(p => p.image).map(p => [p.image,p])).values()]
-            return distinct.length ? distinct.map((p,i) => <p key={i}>{p.imageProvenance?.credit || p.caption || photoLabel(p)} {p.imageProvenance?.license || ''} {safeStoryUrl(p.imageProvenance?.licenseUrl) && <a href={safeStoryUrl(p.imageProvenance.licenseUrl)} target="_blank" rel="noopener noreferrer">Image license ↗</a>} {safeStoryUrl(p.imageProvenance?.imagePageUrl) && <a href={safeStoryUrl(p.imageProvenance.imagePageUrl)} target="_blank" rel="noopener noreferrer">Original image ↗</a>} {safeStoryUrl(p.imageProvenance?.sourceImageUrl) && <a href={safeStoryUrl(p.imageProvenance.sourceImageUrl)} target="_blank" rel="noopener noreferrer">Image in original article ↗</a>}</p>) : <p>No reusable original-article images in this article.</p>
+            return distinct.length ? distinct.map((p,i) => <p key={i}>{p.imageProvenance?.credit || p.caption || photoLabel(p)} {p.imageProvenance?.license || ''} {safeStoryUrl(p.imageProvenance?.licenseUrl) && <a href={safeStoryUrl(p.imageProvenance.licenseUrl)} target="_blank" rel="noopener noreferrer">Image license ↗</a>} {safeStoryUrl(p.imageProvenance?.imagePageUrl) && <a href={safeStoryUrl(p.imageProvenance.imagePageUrl)} target="_blank" rel="noopener noreferrer">{p.imageProvenance?.originType === 'wikimedia-commons' ? 'Wikimedia Commons file ↗' : 'Original image ↗'}</a>} {p.imageProvenance?.originType !== 'wikimedia-commons' && safeStoryUrl(p.imageProvenance?.sourceImageUrl) && <a href={safeStoryUrl(p.imageProvenance.sourceImageUrl)} target="_blank" rel="noopener noreferrer">Image in original article ↗</a>}</p>) : <p>No verified reusable images in this article.</p>
           })()}</div>
           <button className="primary" onClick={() => setShowCredits(false)}>Back to reading</button>
         </section>

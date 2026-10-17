@@ -3,6 +3,7 @@ import fs from 'node:fs/promises'
 import path from 'node:path'
 import {createHash} from 'node:crypto'
 import {readableStory,validStories,storyId} from '../../src/lib/feedQueue.js'
+import {validatedNewsHeadline} from './headline.mjs'
 export const LEVELS=['A1-A2','B1-B2','C1-C2']
 export const wordCount=s=>String(s||'').trim().split(/\s+/u).filter(Boolean).length
 const sha=x=>createHash('sha256').update(JSON.stringify(x)).digest('hex')
@@ -10,13 +11,23 @@ const titleWords=s=>new Set(String(s||'').toLowerCase().normalize('NFKD').replac
 export function sameEvent(a,b){const x=titleWords(a.title),y=titleWords(b.title);const intersection=[...x].filter(v=>y.has(v)).length;return intersection>=4&&intersection/Math.max(1,Math.min(x.size,y.size))>=.78 &&Math.abs(Date.parse(a.publishedAt)-Date.parse(b.publishedAt))<7*864e5}
 function safeSource(sourceId,url){try{const u=new URL(url);if(u.protocol!=='https:')return false;return sourceId==='global-voices'?['globalvoices.org','www.globalvoices.org'].includes(u.hostname):sourceId==='voa'&&u.hostname==='learningenglish.voanews.com'}catch{return false}}
 export function licensedDraft(d){const r=d?.rights;return safeSource(d?.sourceId,d?.sourceUrl)&&r?.textAllowed===true&&r?.mode==='gemini-eligible'&&(d.sourceId==='voa'?/Public domain/i.test(r.license||''):/^https:\/\/creativecommons\.org\/licenses\/by\/\d/i.test(r.licenseUrl||''))}
-const verifiedPhoto=d=>!d?.imageUrl || (d.imageRightsVerified===true && /^https:\/\/creativecommons\.org\/licenses\/(?:by|by-sa)\/(?:2\.0|2\.5|3\.0|4\.0)\/?/i.test(d.imageProvenance?.licenseUrl||'') && typeof d.imageProvenance?.credit==='string' && d.imageProvenance.credit.length>=3 && d.imageProvenance?.sourceImageUrl===d.sourceUrl)
-const photoCreditFields=['credit','license','licenseUrl','sourceImageUrl','imagePageUrl']
+export const verifiedPhoto=d=>{
+ if(!d?.imageUrl)return true
+ const p=d.imageProvenance||{}
+ const license=/^https:\/\/creativecommons\.org\/(?:licenses\/(?:by|by-sa)\/(?:2\.0|2\.5|3\.0|4\.0)|publicdomain\/(?:zero|mark)\/1\.0)(?:\/|$)/i.test(p.licenseUrl||'')
+ const original=p.sourceImageUrl===d.sourceUrl && !p.originType
+ const commons=p.originType==='wikimedia-commons'&&p.sourceImageUrl===p.imagePageUrl&&
+  /^https:\/\/commons\.wikimedia\.org\/wiki\/File:/i.test(p.imagePageUrl||'')&&
+  /^https:\/\/(?:thumb|upload)\.wikimedia\.org\//i.test(d.imageUrl)
+ return d.imageRightsVerified===true&&/^https:\/\//i.test(d.imageUrl)&&license&&typeof p.credit==='string'&&p.credit.length>=3&&(original||commons)
+}
+const photoCreditFields=['credit','license','licenseUrl','sourceImageUrl','imagePageUrl','originType']
 export function photoCreditMatches(d,page){
  if(!d?.imageUrl)return !page?.imageProvenance
  return !!page?.imageProvenance && photoCreditFields.every(key=>(page.imageProvenance[key]||'')===(d.imageProvenance?.[key]||''))
 }
 export function validateDraft(d){const problems=[];if(!d?.id||!d?.title||!licensedDraft(d))problems.push('unlicensed-or-invalid-source');if(!verifiedPhoto(d))problems.push('unverified-image')
+ if(d?.headline&&!validatedNewsHeadline(d.headline,d.title))problems.push('unverified-headline')
  const variants=d?.levelVariants||{},texts=[];for(const level of LEVELS){const v=variants[level];if(!Array.isArray(v?.pages)||v.pages.length<1){problems.push(`pages:${level}`);continue}
   if(v.pages.some((p,i)=>typeof p?.text!=='string'||!p.text.trim()||(i===0?(p.image||'')!==(d.imageUrl||''):(p.image||p.caption))))problems.push(`length:${level}`)
   if(!photoCreditMatches(d,v.pages[0])||v.pages.slice(1).some(p=>p.imageProvenance))problems.push(`photo-credit:${level}`)
@@ -30,7 +41,7 @@ export function toReaderStory(d){const errors=validateDraft(d);if(errors.length)
  const category=/\b(market|business|trade|econom\w*|tariff|bank|inflation|finance)\b/i.test(d.title)?'Economics'
   :/\b(politic\w*|government|election|parliament|diplomat\w*|summit|war|conflict|sanction\w*|junta)\b/i.test(d.title)?'Politics'
   :/\b(science|research|health|space|climate|technology)\b/i.test(d.title)?'Science':'Society'
- const item={id:d.id,title:d.title,sourceTitle:d.title,sourceUrl:d.sourceUrl,sourceName:d.sourceName,publisher:d.sourceName,contentType:'news',readingKind:'full',editorialVersion:1,
+ const item={id:d.id,title:d.title,sourceTitle:d.title,...(d.headline?{headline:d.headline}:{}),sourceUrl:d.sourceUrl,sourceName:d.sourceName,publisher:d.sourceName,contentType:'news',readingKind:'full',editorialVersion:1,
   category,publishedAt:d.originalPublishedAt||new Date().toISOString(),license:d.rights.license,licenseUrl:d.rights.licenseUrl,
   attribution:`${d.sourceName} — original reporting; SAGA AI-assisted educational adaptation`,
   editorialState:'Machine screened and source-attributed; not a guarantee of semantic accuracy',levelVariants:levels,pages:levels['B1-B2'].pages}

@@ -66,4 +66,12 @@ test('publisher rejects unverified image, accepts a correctly credited first-pag
  const qa=inspectStagedRelease({mode:'gemini-staging',publishEnabled:false,publicFilesChanged:false,completeThreeLevelDrafts:1},[missingCredit])
  assert.equal(qa.status,'BLOCKED')
  assert.ok(qa.issues.some(issue=>issue.includes('missing or mismatched image attribution')))
+ const commons=structuredClone(d)
+ commons.imageUrl='https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ab/example.jpg/800px-example.jpg'
+ commons.imageProvenance={credit:'Mira / Wikimedia Commons',license:'CC BY 4.0',licenseUrl:licensedUrl,
+  sourceImageUrl:'https://commons.wikimedia.org/wiki/File:Example.jpg',imagePageUrl:'https://commons.wikimedia.org/wiki/File:Example.jpg',originType:'wikimedia-commons'}
+ for(const variant of Object.values(commons.levelVariants))Object.assign(variant.pages[0],{image:commons.imageUrl,
+  caption:'Illustrative image: Example',imageProvenance:commons.imageProvenance})
+ assert.deepEqual(validateDraft(commons),[])
+ assert.equal(inspectStagedRelease({mode:'gemini-staging',publishEnabled:false,publicFilesChanged:false,completeThreeLevelDrafts:1},[commons]).status,'PASS')
 })

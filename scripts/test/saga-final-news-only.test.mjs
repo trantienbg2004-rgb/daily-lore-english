@@ -23,9 +23,13 @@ test('published photo count and credits match every reading level',()=>{
  assert.equal(manifest.withVerifiedPhoto,pictured.length)
  for(const story of pictured){
   const cover=story.pages[0]
-  assert.match(cover.imageProvenance?.licenseUrl||'',/^https:\/\/creativecommons\.org\/licenses\/(?:by|by-sa)\//)
+  assert.match(cover.imageProvenance?.licenseUrl||'',/^https:\/\/creativecommons\.org\/(?:licenses\/(?:by|by-sa)\/|publicdomain\/(?:zero|mark)\/)/)
   assert.ok(cover.imageProvenance?.credit?.length>=3)
-  assert.equal(cover.imageProvenance.sourceImageUrl,story.sourceUrl)
+  if(cover.imageProvenance.originType==='wikimedia-commons'){
+   assert.match(cover.imageProvenance.sourceImageUrl,/^https:\/\/commons\.wikimedia\.org\/wiki\/File:/)
+   assert.equal(cover.imageProvenance.imagePageUrl,cover.imageProvenance.sourceImageUrl)
+   assert.match(cover.caption,/^Illustrative image:/)
+  }else assert.equal(cover.imageProvenance.sourceImageUrl,story.sourceUrl)
   assert.ok(cover.imageProvenance.imagePageUrl)
   for(const level of ['A1-A2','B1-B2','C1-C2']){
    const page=story.levelVariants[level].pages[0]

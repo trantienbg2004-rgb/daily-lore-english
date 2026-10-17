@@ -43,5 +43,5 @@ test('Pager stays reserved while pagination checks text fits above it',()=>{
 })
 
 test('No invasive changes to Words, Review, gestures, zoom or automatic article supply',()=>{
-  for(const s of ['onTouchStart={interactive ? startGesture','onClick={() => changePage(-1)}','onClick={() => changePage(1)}','setZoomed(true)','tab === \'words\'','tab === \'review\'','LOW_STOCK_POLL_MS']) assert.ok(app.includes(s),s)
+  for(const s of ['onTouchStart={interactive ? startGesture','onClick={() => changePage(-1)}','onClick={() => changePage(1)}','setZoomed(true)','tab === \'words\'','tab === \'review\'','REFRESH_INTERVAL_MS']) assert.ok(app.includes(s),s)
 })
