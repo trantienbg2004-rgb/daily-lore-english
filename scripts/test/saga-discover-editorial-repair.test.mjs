@@ -35,6 +35,20 @@ test('Gemini regenerates a rejected draft once, checking all three levels again'
  assert.ok(!JSON.stringify(result.levelVariants).includes('987654'))
 })
 
+test('a rejected headline is repaired without throwing away three valid levels',async()=>{
+ let calls=0,requests=[]
+ const first={...valid(),headline:'A very long and unsupported headline about unrelated discoveries elsewhere'}
+ const result=await generateThreeLevels({source,apiKey:'fake',fetchImpl:async(_url,options)=>{
+  calls++;requests.push(JSON.parse(options.body));return fakeRes(calls===1?first:{headline:'Science report from local schools'})
+ }})
+ assert.equal(calls,2)
+ assert.equal(result.headline,'Science report from local schools')
+ assert.equal(result.requestCount,2)
+ assert.equal(Object.keys(result.levelVariants).length,3)
+ assert.ok(requests[0].contents[0].parts[0].text.includes('sourceEvidenceSpans'))
+ assert.deepEqual(Object.keys(requests[1].generationConfig.responseSchema.properties),['headline'])
+})
+
 test('persistent hallucinated numbers never escape the quality gate; bounded requests',async()=>{
  const bad=valid();bad.variants[2].paragraphs[0]+=' The count increased to 987654.'
  let calls=0

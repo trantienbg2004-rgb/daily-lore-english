@@ -8,6 +8,12 @@ export const source = Object.freeze({
   'https://globalvoices.org/-/topics/science/feed/',
   'https://globalvoices.org/-/world/asia/feed/',
   'https://globalvoices.org/-/world/europe/feed/',
+  'https://globalvoices.org/-/world/africa/feed/',
+  'https://globalvoices.org/-/world/latin-america/feed/',
+  'https://globalvoices.org/-/world/middle-east-north-africa/feed/',
+  'https://globalvoices.org/-/world/americas/feed/',
+  'https://globalvoices.org/-/topics/human-rights/feed/',
+  'https://globalvoices.org/-/topics/freedom-of-speech/feed/',
   'https://globalvoices.org/feed/'
  ],
  hosts:['globalvoices.org'],fetchFullText:true,rightsPolicy:'per-article-cc-by',

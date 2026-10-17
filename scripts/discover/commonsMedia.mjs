@@ -24,10 +24,14 @@ const subjects=[
  [/\bHaiti\b/i,'Haiti market',/Haiti/i],
  [/\b(?:climate|environment)\b/i,'climate change',/climate|environment/i],
 ]
+// When no precise event query exists, a named place can supply a clearly
+// labelled contextual image. File-title matching still requires that place.
+const contextualPlaces=['Trinidad and Tobago','Latin America','Mozambique','Ecuador','Cambodia','Bangladesh','Croatia','Australia','Brazil','Ghana','China','Libya','Sahel','Africa','Jamaica','Haiti','Nepal','Peru','Ukraine','Myanmar']
+const contextualAliases=[[/\bTogolese\b/i,'Togo'],[/\bGhanaians\b/i,'Ghana'],[/\bCasablanca\b/i,'Casablanca'],[/\bPereira\b/i,'Pereira'],[/\bSouth Korean\b/i,'South Korea'],[/\bVenezuela\b/i,'Venezuela'],[/\bCatalan\b/i,'Catalonia']]
 const stripHtml=value=>String(value||'').replace(/<[^>]*>/g,' ').replace(/&(?:amp|quot|apos|nbsp);/gi,m=>({'&amp;':'&','&quot;':'"','&apos;':"'",'&nbsp;':' '}[m.toLowerCase()]||m)).replace(/\s+/g,' ').trim()
 const blockedTitle=/\b(?:flag|coat of arms|logo|icon|map|diagram|chart|infographic|symbol|seal|emblem|denoise)\b/i
 const licensePattern=/^https:\/\/creativecommons\.org\/(?:licenses\/(?:by|by-sa)\/(?:2\.0|2\.5|3\.0|4\.0)|publicdomain\/(?:zero|mark)\/1\.0)(?:\/|$)/i
-export function commonsQueryFor(title){return subjects.find(([pattern])=>pattern.test(title||''))?.[1]||''}
+export function commonsQueryFor(title){return subjects.find(([pattern])=>pattern.test(title||''))?.[1]||contextualPlaces.find(place=>new RegExp(`\\b${place.replaceAll(' ','\\s+')}\\b`,'i').test(title||''))||contextualAliases.find(([pattern])=>pattern.test(title||''))?.[1]||''}
 export function approvedCommonsPhoto(page,query){
  const info=page?.imageinfo?.[0],meta=info?.extmetadata||{}
  const file=String(page?.title||'').replace(/^File:/,'').replace(/\.[^.]+$/,'').replace(/[_()]/g,' ').trim()
