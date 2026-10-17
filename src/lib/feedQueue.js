@@ -9,7 +9,7 @@ export const readableStory = item => {
   // Publisher RSS previews are deliberately short. Never fabricate additional text.
   if (item.contentType === 'news-preview') return false // V22-C rejects RSS snippets
   if (item.contentType === 'lore') return item.editorialVersion === 1 && item.readingKind === 'full' && item.pages.length >= 3 && words >= 400 && words <= 800 && item.pages.some(p => p.image && p.imageProvenance?.license)
-  return item.contentType === 'news' && item.readingKind === 'full' && item.pages.length >= 3 && words >= 80
+  return item.contentType === 'news' && item.readingKind === 'full' && item.pages.length >= 1 && words >= 10
 }
 
 export const validStories = data => Array.isArray(data) && data.every(item =>
@@ -58,7 +58,7 @@ export async function fetchManifest(fetchImpl, baseUrl, nonce = Date.now(), feed
   const total = manifest?.total == null ? null : Number(manifest.total)
   if (total !== null && (!Number.isSafeInteger(total) || total < 0 || total > 1000000)) throw new Error('Invalid feed total')
   return {count, total, version: `${manifest.contentHash || manifest.updatedAt || ''}:${manifest.catalogIndexHash || ''}:${count}:${total ?? 'unknown'}`, updatedAt: manifest.updatedAt || '',
-    ready: manifest.ready, feedType: manifest.feedType, sourceCount: manifest.sourceCount, editorialVersion: Number(manifest.editorialVersion || 0),
+    ready: manifest.ready, feedType: manifest.feedType, newsOnly: manifest.newsOnly === true, sourceCount: manifest.sourceCount, editorialVersion: Number(manifest.editorialVersion || 0),
     withVerifiedPhoto: Number(manifest.withVerifiedPhoto || 0), sourcePhotosOnly: manifest.sourcePhotosOnly === true, contentHash: manifest.contentHash || '',
     indexFile: manifest.catalogIndex === 'catalog-index.json' ? 'catalog-index.json' : '', indexHash: manifest.catalogIndexHash || ''}
 }

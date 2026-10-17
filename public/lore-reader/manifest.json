@@ -1,26 +1,23 @@
 {
-  "feedType": "lore",
+  "feedType": "news",
   "editorialVersion": 1,
   "ready": true,
-  "total": 205,
+  "total": 6,
   "chunks": 12,
-  "sourceCount": 3,
-  "withVerifiedPhoto": 203,
+  "sourceCount": 4,
+  "withVerifiedPhoto": 0,
   "sourcePhotosOnly": true,
   "byTopic": {
-    "History": 47,
-    "Culture": 16,
-    "Society": 14,
-    "Geography": 13,
-    "Economics": 19,
-    "Science": 30,
-    "Civilizations": 33,
-    "People & Ideas": 33
+    "Economics": 3,
+    "Society": 1,
+    "Politics": 1,
+    "Technology": 1
   },
-  "contentHash": "33e0b8b457f815665d48bc4ea3dccfcb847e897179130190221826ec98f4e92f",
-  "updatedAt": "2026-10-16T23:32:12.219Z",
-  "licenseNotice": "CC BY-SA 4.0 text; per-image Commons credits in article",
+  "contentHash": "b88f14ce9ca743a618127402f81453ccf89585e41746da8cc754e4b7d4c080ab",
+  "updatedAt": "2026-10-17T00:04:44.438Z",
+  "licenseNotice": "Only independently written, source-attributed educational news summaries are indexed. Historic lore shard files remain stored.",
   "catalogIndex": "catalog-index.json",
   "catalogIndexVersion": 2,
-  "catalogIndexHash": "14e6c8df09f7fc1587d749a61afe261c14c9158f1e207203d9e551c8e9f2e8c9"
+  "newsOnly": true,
+  "catalogIndexHash": "3f0fa3c495dbbf40d7d889429acd84825f56be485c6466abffd50a994f7a2238"
 }

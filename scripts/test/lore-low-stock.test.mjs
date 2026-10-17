@@ -50,7 +50,9 @@ test('On live catalog growth from 84 to 120, reader appends only 36 new articles
 test('Workflow schedules real background ingestion; no GitHub secrets embedded in browser',async()=>{
  const config=await fs.readFile(new URL('../../.github/workflows/daily-lore-library.yml',import.meta.url),'utf8')
  const app=await fs.readFile(new URL('../../src/App.jsx',import.meta.url),'utf8')
- assert.match(config,/cron: '17 \* \* \* \*'/)
+ assert.match(config,/if: false/)
+ const news=await fs.readFile(new URL('../../.github/workflows/saga-discover-publish.yml',import.meta.url),'utf8')
+ assert.match(news,/cron: '0 \*\/6 \* \* \*'/)
  assert.match(config,/node scripts\/lore-collect\.mjs --limit=80/)
  assert.match(app,/const low = lowOnStories\(remaining\)/)
  assert.match(app,/loadFeed\(\{forceCheck:true\}\)/)

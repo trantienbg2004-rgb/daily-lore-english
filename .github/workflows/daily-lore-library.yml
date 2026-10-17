@@ -1,17 +1,6 @@
 name: DAILY LORE - curated world knowledge library
 on:
   workflow_dispatch:
-  push:
-    branches: [main]
-    paths:
-      - 'scripts/lore/**'
-      - 'scripts/lore-collect.mjs'
-      - 'scripts/test/lore-continuity.test.mjs'
-      - '.github/workflows/daily-lore-library.yml'
-  schedule:
-    # Pre-publish independently of reader activity; no secret in browser.
-    # Reader starts monitoring aggressively when 30 unread articles remain.
-    - cron: '17 * * * *'
 permissions:
   contents: write
 concurrency:
@@ -19,6 +8,7 @@ concurrency:
   cancel-in-progress: false
 jobs:
   publish-curated-knowledge:
+    if: false # Archived: SAGA is now strict news-only. Never republish legacy lore.
     runs-on: ubuntu-latest
     timeout-minutes: 45
     steps:

@@ -516,7 +516,7 @@ function App() {
         appended = result.items.length
         if (!appended && !result.errors.length && remaining === 0 && storiesRef.current.length) {
           const previous = storiesRef.current
-          const recycled = previous.slice(0, Math.min(previous.length, 12))
+          const recycled = previous.filter(item=>item.contentType==='news').slice(0, Math.min(previous.length, 12))
           setStories(old => [...old, ...recycled.map(item => ({
             ...item, pages: (item._sourcePages || item.pages).map(p => ({...p}))
           }))])
@@ -526,7 +526,7 @@ function App() {
         if (result.items.length) {
           const recommended = poolsRef.current.some(p=>Array.isArray(p.index)) ? result.items : rankRecommendations(result.items,{profile:recommendationProfileRef.current,
             seen:seenRef.current,recent:storiesRef.current.slice(Math.max(0,storyIndexRef.current-5),storyIndexRef.current+1)})
-          setStories(old=>[...old,...recommended.map(item => paginateStory(applyNewsLevel(item, readingLevelRef.current)))])
+          setStories(old=>[...old,...recommended.filter(item=>item.contentType==='news').map(item => paginateStory(applyNewsLevel(item, readingLevelRef.current)))])
         }
         if (result.errors.length) {
           console.warn('Some reader sources temporarily unavailable:',result.errors)

@@ -6,9 +6,10 @@ import {fileURLToPath} from 'node:url'
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../..')
 const read=p=>fs.readFile(path.join(root,p),'utf8')
 const exists=p=>fs.access(path.join(root,p)).then(()=>true,()=>false)
-test('Single live DAILY LORE workflow: hourly safe paced publication without disabling attribution',async()=>{
+test('Legacy lore publisher is archived while files remain available for recovery',async()=>{
  const workflow=await read('.github/workflows/daily-lore-library.yml')
- assert.match(workflow,/cron: '17 \* \* \* \*'/)
+ assert.doesNotMatch(workflow,/cron:/)
+ assert.match(workflow,/if: false/)
  assert.match(workflow,/node scripts\/lore-collect\.mjs --limit=80/)
  assert.match(workflow,/git add public\/lore-reader reports\/DAILY_LORE_SOURCE_STATE\.json/)
  assert.match(workflow,/concurrency:/)

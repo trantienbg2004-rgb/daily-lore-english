@@ -4,8 +4,9 @@ import {pickGlobalCandidates} from './recommendationEngine.js'
 export const PUBLISHED_POOLS=['lore-reader']
 export const REFRESH_INTERVAL_MS=5*60_000
 export function eligibleManifest(m,path){
- return path==='lore-reader'&&m?.feedType==='lore'&&m?.ready===true&&m?.editorialVersion===1&&
- Number.isInteger(m.count)&&m.count>=1&&m.count<100000&&m.total>=15&&Number(m.withVerifiedPhoto)>=15&&m.sourcePhotosOnly===true
+ return path==='lore-reader'&&m?.ready===true&&m?.editorialVersion===1&&
+ Number.isInteger(m.count)&&m.count>=1&&m.count<100000&&
+ (m.newsOnly===true ? m.feedType==='news'&&m.total>=1 : m.feedType==='lore'&&m.total>=15&&Number(m.withVerifiedPhoto)>=15&&m.sourcePhotosOnly===true)
 }
 async function getIndex(fetchImpl,baseUrl,path,manifest){
  if(!manifest.indexFile)return null
@@ -26,17 +27,15 @@ export async function refreshCatalog({fetchImpl,baseUrl,pools=[],now=Date.now(),
    const p=old.get(name)
    if(p?.version===m.version){next.push(p);continue}
    let index=null
-   if(m.indexFile){try{index=await getIndex(fetchImpl,baseUrl,name,m)}catch(e){console.warn('Global index unavailable; using existing shard scanner:',e?.message||e)}}
+   if(m.indexFile){try{index=await getIndex(fetchImpl,baseUrl,name,m)}catch(e){if(m.newsOnly)throw e;console.warn('Global index unavailable; using existing shard scanner:',e?.message||e)}}
+   if(m.newsOnly&&!index)throw Error('News-only requires verified catalog index')
    next.push({path:name,manifest:m,version:m.version,index,order:newsChunkOrder(m.count),cursor:0,done:false,cache:new Map()})
   }catch(e){failures.push(`${name}: ${e?.message||e}`);if(old.has(name))next.push(old.get(name))}
  }
  return {pools:next,failures,hasAvailable:next.length>0,checkedAt:now}
 }
 async function refillGlobal({pool,fetchImpl,baseUrl,seen,loaded,seenAt,profile,recent,target,random,maxShards=10,newsOnly=false}){
- const news=pool.index.filter(e=>e.contentType==='news')
- const lore=pool.index.filter(e=>e.contentType==='lore')
- const unreadNews=news.some(e=>!seen.has(e.id)&&!loaded.has(e.id))
- const candidates=newsOnly?(unreadNews?news:(lore.length?lore:news)):pool.index
+ const candidates=newsOnly||pool.manifest.newsOnly ? pool.index.filter(e=>e.contentType==='news') : pool.index
  const selected=pickGlobalCandidates(candidates,{seen,loaded,seenAt,profile,recent,count:Math.max(target*3,90),random})
  const chosen=[],used=new Set()
  for(const entry of selected.items){if(!used.has(entry.shard)){if(used.size>=maxShards)continue;used.add(entry.shard)}chosen.push(entry)}
@@ -60,7 +59,7 @@ async function refillGlobal({pool,fetchImpl,baseUrl,seen,loaded,seenAt,profile,r
  const items=[]
  for(const entry of chosen){
   const story=indexed.get(`${entry.shard}:${entry.id}`)
-  if(story&&true&&readableStory(story)&&!loaded.has(entry.id)&&items.length<target){loaded.add(entry.id);items.push(story)}
+  if(story&&(!newsOnly&&!pool.manifest.newsOnly||story.contentType==='news')&&readableStory(story)&&!loaded.has(entry.id)&&items.length<target){loaded.add(entry.id);items.push(story)}
  }
  // Global mode does not permanently end: earlier read stories can re-enter
  // after the complete unseen library is exhausted and leave the active queue.
@@ -77,7 +76,8 @@ export async function refillCatalog({fetchImpl,baseUrl,pools,seen=new Set(),load
    continue
   }
   if(pool.done)continue
-  // No index? Keep the legacy shard scanner available as a last resort.
+  // Never scan legacy shards in production news-only mode.
+  if(newsOnly||pool.manifest.newsOnly){pool.done=true;errors.push({path:pool.path,message:'News-only index unavailable'});continue}
   let loops=0
   do{
    const r=await scanFeedImpl({fetchImpl,baseUrl,order:pool.order,cursor:pool.cursor,updatedAt:pool.manifest.updatedAt,seen,loaded,

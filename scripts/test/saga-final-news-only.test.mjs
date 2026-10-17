@@ -1,0 +1,34 @@
+import test from 'node:test'
+import assert from 'node:assert/strict'
+import fs from 'node:fs'
+import {smartPaginate} from '../discover/smartPaginate.mjs'
+import {validateLevelDrafts} from '../discover/geminiLevels.mjs'
+import {applyNewsLevel} from '../../src/lib/newsLevels.js'
+const dir='public/lore-reader/'
+test('published catalog has no lore but original historical shards remain',()=>{
+ const m=JSON.parse(fs.readFileSync(dir+'manifest.json'))
+ const idx=JSON.parse(fs.readFileSync(dir+'catalog-index.json'))
+ assert.equal(m.newsOnly,true);assert.equal(m.feedType,'news')
+ assert.equal(idx.total,m.total);assert.ok(idx.total>=6)
+ assert.ok(idx.entries.every(e=>e.contentType==='news'))
+ assert.ok(fs.existsSync(dir+'0000.json')&&fs.existsSync(dir+'0010.json'))
+ const old=JSON.parse(fs.readFileSync(dir+'0000.json'))
+ assert.ok(old.some(x=>x.contentType==='lore'))
+})
+test('natural pagination keeps text and tolerates any positive number of pages',()=>{
+ const a='One short sentence.'
+ assert.deepEqual(smartPaginate(a),[a])
+ const text=Array.from({length:21},(_,i)=>`The verified report describes development number ${i}.`).join(' ')
+ const pages=smartPaginate(text,{targetWords:40})
+ assert.ok(pages.length>=2)
+ assert.equal(pages.join(' '),text)
+})
+test('3 independent levels remain acceptable with any positive page count',()=>{
+ const data={variants:['A1-A2','B1-B2','C1-C2'].map((level,i)=>({level,paragraphs:Array.from({length:1+i*3},()=>`Verified reporting ${i===0?'notes':i===1?'explains':'contextualizes'} the development using distinct language and accurate evidence.`),evidence:Array(3).fill('The verified report describes the event and its consequences.'),keyVocabulary:[{word:'report',meaningVi:'báo cáo'},{word:'event',meaningVi:'sự kiện'},{word:'impact',meaningVi:'tác động'}]}))}
+ const source={text:'The verified report describes the event and its consequences. '+Array(50).fill('Verified reporting can explain the context without invented claims.').join(' ')}
+ const validated=validateLevelDrafts(data,source)
+ assert.equal(Object.keys(validated).length,3)
+ for(const level of ['A1-A2','B1-B2','C1-C2'])assert.ok(validated[level].paragraphs.length>=1)
+ const story={contentType:'news',levelVariants:Object.fromEntries(Object.entries(validated).map(([level,v])=>[level,{pages:v.paragraphs.map(text=>({text,image:'',caption:''}))}]))}
+ for(const level of ['A1-A2','B1-B2','C1-C2'])assert.ok(applyNewsLevel(story,level).pages.length>=1)
+})

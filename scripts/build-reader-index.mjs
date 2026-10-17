@@ -16,6 +16,7 @@ export async function buildReaderIndex(root=base){
   const articles=JSON.parse(await fs.readFile(path.join(dir,`${shard}.json`),'utf8'))
   if(!validStories(articles))throw Error(`Invalid shard ${shard}`)
   for(const item of articles){
+   if(manifest.newsOnly===true&&item.contentType!=='news')continue
    const id=storyId(item)
    if(!id||ids.has(id))throw Error(`Missing or duplicate story identifier: ${id}`)
    ids.add(id)

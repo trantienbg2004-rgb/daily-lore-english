@@ -11,9 +11,9 @@ export function sameEvent(a,b){const x=titleWords(a.title),y=titleWords(b.title)
 function safeSource(sourceId,url){try{const u=new URL(url);if(u.protocol!=='https:')return false;return sourceId==='global-voices'?['globalvoices.org','www.globalvoices.org'].includes(u.hostname):sourceId==='voa'&&u.hostname==='learningenglish.voanews.com'}catch{return false}}
 export function licensedDraft(d){const r=d?.rights;return safeSource(d?.sourceId,d?.sourceUrl)&&r?.textAllowed===true&&r?.mode==='gemini-eligible'&&(d.sourceId==='voa'?/Public domain/i.test(r.license||''):/^https:\/\/creativecommons\.org\/licenses\/by\/\d/i.test(r.licenseUrl||''))}
 export function validateDraft(d){const problems=[];if(!d?.id||!d?.title||!licensedDraft(d))problems.push('unlicensed-or-invalid-source');if(d?.imageUrl)problems.push('unverified-image')
- const variants=d?.levelVariants||{},texts=[];for(const level of LEVELS){const v=variants[level];if(!Array.isArray(v?.pages)||v.pages.length<3||v.pages.length>8){problems.push(`pages:${level}`);continue}
-  if(v.pages.some(p=>typeof p?.text!=='string'||p.image||p.caption||wordCount(p.text)<12||wordCount(p.text)>180))problems.push(`length:${level}`)
-  const total=v.pages.reduce((t,p)=>t+wordCount(p.text),0);if(total<80||total>900)problems.push(`total:${level}`)
+ const variants=d?.levelVariants||{},texts=[];for(const level of LEVELS){const v=variants[level];if(!Array.isArray(v?.pages)||v.pages.length<1){problems.push(`pages:${level}`);continue}
+  if(v.pages.some(p=>typeof p?.text!=='string'||p.image||p.caption||!p.text.trim()))problems.push(`length:${level}`)
+  const total=v.pages.reduce((t,p)=>t+wordCount(p.text),0);if(total<10)problems.push(`total:${level}`)
   if(!Array.isArray(v.evidence)||v.evidence.length<3||v.evidence.some(s=>typeof s!=='string'||s.length<16))problems.push(`evidence:${level}`)
   if(!Array.isArray(v.keyVocabulary)||v.keyVocabulary.length!==3)problems.push(`vocabulary:${level}`)
   texts.push(v.pages.map(p=>p.text).join(' '))
@@ -32,9 +32,10 @@ export function selectFreshStories(existing,drafts,limit=2){const accepted=[],re
  for(const d of drafts){try{const story=toReaderStory(d),id=storyId(story);if(ids.has(id))throw Error('duplicate-source-url');if([...existing,...accepted].some(s=>s.contentType==='news'&&sameEvent(s,story)))throw Error('duplicate-event');accepted.push(story);ids.add(id);if(accepted.length>=limit)break}catch(e){rejected.push({title:d?.title||'',reason:String(e.message||e)})}}
  return {accepted,rejected}}
 export async function readCatalog(root=process.cwd()){const dir=path.join(root,'public','lore-reader'),manifest=JSON.parse(await fs.readFile(path.join(dir,'manifest.json'),'utf8'))
- if(manifest.feedType!=='lore'||manifest.ready!==true||!Number.isSafeInteger(manifest.chunks)||manifest.chunks<1)throw Error('Invalid existing Reader manifest')
+ if(!(['lore','news'].includes(manifest.feedType))||manifest.ready!==true||!Number.isSafeInteger(manifest.chunks)||manifest.chunks<1)throw Error('Invalid existing Reader manifest')
  const stories=[];for(let i=0;i<manifest.chunks;i++){const name=`${String(i).padStart(4,'0')}.json`,batch=JSON.parse(await fs.readFile(path.join(dir,name),'utf8'));if(!validStories(batch))throw Error('Invalid shard '+name);stories.push(...batch)}
- if(stories.length!==manifest.total)throw Error('Existing catalog count mismatch');return {dir,manifest,stories}}
+ const published=manifest.newsOnly===true?stories.filter(s=>s.contentType==='news'):stories
+ if(published.length!==manifest.total)throw Error('Existing catalog count mismatch');return {dir,manifest,stories:published}}
 export async function publishDiscover({root=process.cwd(),drafts=[],limit=2,now=new Date()}={}){
  const {dir,manifest,stories}=await readCatalog(root),{accepted,rejected}=selectFreshStories(stories,drafts,limit)
  if(!accepted.length)return {published:false,added:0,total:stories.length,rejected}

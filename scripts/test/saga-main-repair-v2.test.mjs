@@ -25,7 +25,7 @@ test('Long Gemini paragraph is split without manufacturing new numbers',()=>{
  assert.throws(()=>validateLevelDrafts(value,source),/Unverified numeric fact/)
 })
 
-test('Reader prioritizes news, then falls back to lore and reuses oldest when read',async()=>{
+test('Reader is news-only and cycles seen news, never returning lore',async()=>{
  const root='public/lore-reader/'
  const manifest=JSON.parse(fs.readFileSync(root+'manifest.json','utf8'))
  const index=JSON.parse(fs.readFileSync(root+'catalog-index.json','utf8')).entries
@@ -40,18 +40,15 @@ test('Reader prioritizes news, then falls back to lore and reuses oldest when re
  }
  const run=async(entries,seen=new Set())=>refillCatalog({
   fetchImpl,baseUrl:'/',pools:[{path:'lore-reader',manifest,index:entries,cursor:0,done:false,cache:new Map()}],
-  seen,loaded:new Set(),newsOnly:true,target:5,random:()=>0.31
+  seen,loaded:new Set(),newsOnly:true,target:6,random:()=>0.31
  })
- const news=index.filter(e=>e.contentType==='news')
- const lore=index.filter(e=>e.contentType==='lore')
- assert.ok(news.length>=2&&lore.length>=203)
+ assert.equal(index.filter(e=>e.contentType==='lore').length,0)
  const first=await run(index)
- assert.equal(first.items.length,2)
+ assert.ok(first.items.length>=6)
  assert.ok(first.items.every(s=>s.contentType==='news'))
- const fallback=await run(index,new Set(news.map(e=>e.id)))
- assert.ok(fallback.items.length>0&&fallback.items.every(s=>s.contentType==='lore'))
- const noNews=await run(lore)
- assert.ok(noNews.items.length>0)
- const allSeen=await run(lore,new Set(lore.map(e=>e.id)))
+ const allSeen=await run(index,new Set(index.map(e=>e.id)))
  assert.ok(allSeen.items.length>0)
+ assert.ok(allSeen.items.every(s=>s.contentType==='news'))
+ const onlyLore=await run([{id:'fake-lore',shard:'0000',contentType:'lore'}])
+ assert.equal(onlyLore.items.length,0)
 })

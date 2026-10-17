@@ -17,7 +17,7 @@ import {sameEvent} from './discover/bridge.mjs'
 const cap=(n,min,max)=>Number.isSafeInteger(n)?Math.max(min,Math.min(max,n)):min
 export async function collectDiscover({fetchImpl=fetch,geminiFetchImpl=fetchImpl,now=new Date(),sources=SOURCES,
   maxPerFeed=8,maxGemini=3,targetDrafts=1,useGemini=false,apiKey='',log=console,
-  outputDir='reports/saga-discover-local',writeFiles=true,strictPages=false,excludeSourceUrls=new Set(),excludePublishedNews=[]}={}){
+  geminiIntervalMs=5000,geminiWaitImpl=ms=>new Promise(r=>setTimeout(r,ms)),outputDir='reports/saga-discover-local',writeFiles=true,strictPages=false,excludeSourceUrls=new Set(),excludePublishedNews=[]}={}){
  if(useGemini&&!apiKey)throw Error('GEMINI_API_KEY missing. Zero requests sent; nothing published.')
  maxPerFeed=cap(maxPerFeed,1,20);maxGemini=cap(maxGemini,0,10);targetDrafts=cap(targetDrafts,1,10)
  const report={generatedAt:now.toISOString(),mode:useGemini?'gemini-staging':'discovery-staging',model:useGemini?'gemini-2.5-flash':null,
@@ -66,12 +66,19 @@ export async function collectDiscover({fetchImpl=fetch,geminiFetchImpl=fetchImpl
  report.eligible=eligible.length
  for(const row of report.sourceStatus){row.articleDiagnostics=perSourceResults.get(row.source)||{attempted:0,eligible:0,rejected:{}}}
  const drafts=[]
+ let lastGeminiRequestAt=0
+ const rateLimitedGeminiFetch=async(...args)=>{
+  const elapsed=Date.now()-lastGeminiRequestAt
+  if(lastGeminiRequestAt&&elapsed<geminiIntervalMs)await geminiWaitImpl(geminiIntervalMs-elapsed)
+  lastGeminiRequestAt=Date.now()
+  return geminiFetchImpl(...args)
+ }
  if(useGemini){
   for(const candidate of eligible.slice(0,maxGemini)){
    if(drafts.length>=targetDrafts)break
    try{
     report.geminiCandidateAttempts++
-    const result=await generateThreeLevels({source:candidate,apiKey,strictPages,fetchImpl:geminiFetchImpl,onRequest:()=>{report.geminiCalls++}})
+    const result=await generateThreeLevels({source:candidate,apiKey,strictPages,fetchImpl:rateLimitedGeminiFetch,onRequest:()=>{report.geminiCalls++}})
     if(result.editorialRepaired)report.editorialRepairs++
     drafts.push({id:candidate.id,sourceId:candidate.sourceId,sourceName:candidate.sourceName,sourceUrl:candidate.sourceUrl,
       originalPublishedAt:candidate.publishedAt,rights:candidate.rights,model:result.model,
