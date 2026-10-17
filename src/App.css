@@ -384,7 +384,8 @@
   margin:clamp(3px,.7dvh,7px) auto clamp(4px,.9dvh,9px);
 }
 .reading-mode .reader-gesture .article-media .photo-figure {
-  max-height:calc(var(--dn-photo-height) + 18px);
+  /* The image has a height limit; the caption must remain in normal flow. */
+  max-height:none;
   display:flex;
   flex-direction:column;
   align-items:flex-start;
@@ -479,17 +480,12 @@
   margin:0 0 clamp(7px,1.2dvh,12px);
 }
 .lore-editorial-v5 .lore-article-heading h1 {
-  display:-webkit-box; -webkit-box-orient:vertical; -webkit-line-clamp:2;
-  overflow:hidden; overflow-wrap:normal; word-break:normal;
+  display:block; overflow:visible; overflow-wrap:break-word; word-break:normal;
   margin:0; color:#191715;
   font-family:'Bodoni Moda','Bodoni MT','Times New Roman',serif;
   font-weight:500; text-transform:uppercase;
-  font-size:clamp(30px,8.2vw,43px); line-height:1.08;
+  font-size:clamp(27px,7.6vw,40px); line-height:1.08;
   letter-spacing:-.025em;
-}
-.lore-editorial-v5 .lore-article-heading h1.lore-headline-long {
-  font-size:clamp(25px,6.9vw,35px);
-  letter-spacing:-.02em;
 }
 .lore-editorial-v5 .lore-deck {
   margin:clamp(9px,1.35dvh,13px) 0 0;
@@ -571,7 +567,6 @@
 @media(max-height:680px) {
   .lore-editorial-v5 .lore-article-heading {padding:9px 0 7px;}
   .lore-editorial-v5 .lore-article-heading h1 {font-size:clamp(26px,7vw,34px);}
-  .lore-editorial-v5 .lore-article-heading h1.lore-headline-long {font-size:clamp(23px,6vw,29px);}
   .lore-editorial-v5 .reader-gesture .article-media {--dn-photo-height:clamp(95px,23dvh,170px); margin:3px 0 7px;}
   .lore-editorial-v5 .article-text {font-size:clamp(17px,2.65dvh,20px); line-height:1.43;}
   .lore-editorial-v5 .lore-deck {font-size:11px;}
@@ -737,11 +732,16 @@
 .lore-editorial-v5 .reader-gesture .article-media .photo-figure.lore-photo-figure {
   box-sizing:border-box;
   flex:0 0 auto;
-  width:fit-content;
-  max-width:min(78%,340px);
+  width:100%;
+  max-width:340px;
   min-width:0;
   align-self:flex-start;
   overflow:visible;
+  padding:0;
+  border:0;
+  border-radius:0;
+  background:transparent;
+  box-shadow:none;
 }
 .lore-editorial-v5 .reader-gesture .article-media .lore-photo-figure img {
   box-sizing:border-box;
@@ -752,13 +752,16 @@
 .lore-editorial-v5 .reader-gesture .article-media .lore-photo-caption {
   box-sizing:border-box;
   display:block;
-  width:100%;
+  width:auto;
   max-width:100%;
   min-width:0;
   margin:6px 0 2px;
   overflow-wrap:anywhere;
   word-break:normal;
   white-space:normal;
+  border:0;
+  box-shadow:none;
+  background:transparent;
 }
 /* The pager is bottom-anchored inside the fixed-height reading surface.
    It must NOT follow the paragraph's length on short pages. */
@@ -808,7 +811,7 @@
   pointer-events:auto; touch-action:manipulation;
 }
 .lore-editorial-v5 .saga-toolbar-story {
-  flex:1 1 auto; min-width:0; display:block; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+  flex:1 1 auto; min-width:0; display:block; white-space:normal; overflow:visible; overflow-wrap:break-word;
   font:500 clamp(10px,1.65dvh,13px)/1.25 'Inter',sans-serif; letter-spacing:.025em;
   color:#6e6963;
 }
@@ -835,7 +838,14 @@
 .lore-editorial-v5 .reading-card .reading-topline {display:none;min-height:0;padding:0;margin:0}
 .lore-editorial-v5 .reader-gesture .article-heading {clear:both;position:relative;min-width:0;margin-top:0}
 .lore-editorial-v5 .reader-gesture .article-heading h1 {max-width:100%; overflow-wrap:break-word}
-.lore-editorial-v5 .reader-gesture .article-heading-continued {display:none}
+.lore-editorial-v5 .reader-gesture .article-heading-continued {
+  display:block;
+  min-height:clamp(12px,2dvh,20px);
+  padding:0;
+}
+.lore-editorial-v5 .reader-gesture .article-heading.article-heading-continued .eyebrow,
+.lore-editorial-v5 .reader-gesture .article-heading.article-heading-continued h1,
+.lore-editorial-v5 .reader-gesture .article-heading.article-heading-continued .deck {display:none}
 @media(max-width:380px){
   .lore-editorial-v5 .reader-gesture .topbar.lore-reader-topbar{gap:7px}
   .lore-editorial-v5 .saga-toolbar-actions{gap:5px}

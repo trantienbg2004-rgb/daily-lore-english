@@ -11,7 +11,7 @@ test('reading level and read-aloud buttons share a non-overlapping semantic head
  assert.match(app,/<header className="topbar lore-reader-topbar">/)
  assert.match(app,/saga-toolbar-story/)
  assert.match(app,/saga-toolbar-audio/)
- assert.match(css,/\.saga-toolbar-story\s*\{[\s\S]*?min-width:0;[\s\S]*?text-overflow:ellipsis/)
+ assert.match(css,/\.saga-toolbar-story\s*\{[^}]*min-width:0;[^}]*white-space:normal;[^}]*overflow-wrap:break-word;/s)
  assert.match(css,/\.saga-news-level\s*\{[\s\S]*?position:static!important/)
  assert.equal((app.match(/aria-label="Read aloud"/g)||[]).length,1)
  assert.ok(app.includes('Image license ↗'))

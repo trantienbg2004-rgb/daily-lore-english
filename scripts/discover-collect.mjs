@@ -91,6 +91,7 @@ export async function collectDiscover({fetchImpl=fetch,geminiFetchImpl=fetchImpl
       excludeUrls:photos.flatMap(photo=>[photo.url,photo.provenance.imagePageUrl])}))
     const images=photos.slice(0,3).map((photo,pageIndex)=>({...photo,pageIndex}))
     const cover=images[0]
+    if(!cover){increment('no-licensed-photo');continue}
     if(result.editorialRepaired)report.editorialRepairs++
     drafts.push({id:candidate.id,sourceId:candidate.sourceId,sourceName:candidate.sourceName,sourceUrl:candidate.sourceUrl,
       originalPublishedAt:candidate.publishedAt,rights:candidate.rights,model:result.model,

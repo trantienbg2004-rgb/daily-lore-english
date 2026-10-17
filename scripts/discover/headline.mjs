@@ -5,7 +5,7 @@ const numbers=value=>[...compact(value).matchAll(/\b\d+(?:[.,]\d+)*\b/g)].map(x=
 
 export function validatedNewsHeadline(value,sourceTitle,sourceText=null){
  const headline=compact(value),source=compact(sourceTitle)
- if(!source||headline.length<14||headline.length>64||headline.split(/\s+/).length>12||/[!?…]$/.test(headline))return ''
+ if(!source||headline.length<14||headline.length>48||headline.split(/\s+/).length>8||/[!?…]$/.test(headline))return ''
  const sourceWords=new Set(words(source))
  if([...new Set(words(headline))].filter(x=>sourceWords.has(x)).length<Math.min(2,sourceWords.size))return ''
  if(sourceText!==null){

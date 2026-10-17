@@ -53,7 +53,7 @@ test('Workflow schedules real background ingestion; no GitHub secrets embedded i
  assert.match(config,/if: false/)
  const news=await fs.readFile(new URL('../../.github/workflows/saga-discover-publish.yml',import.meta.url),'utf8')
  assert.match(news,/cron: '17 \*\/4 \* \* \*'/)
- assert.match(news,/git pull --rebase origin main/)
+ assert.match(news,/git pull --rebase origin "\$\{GITHUB_REF_NAME\}"/)
  assert.match(config,/node scripts\/lore-collect\.mjs --limit=80/)
  assert.match(app,/const low = lowOnStories\(remaining\)/)
  assert.match(app,/loadFeed\(\{forceCheck:true\}\)/)

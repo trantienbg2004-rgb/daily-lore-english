@@ -4,6 +4,7 @@ import path from 'node:path'
 import {createHash} from 'node:crypto'
 import {fileURLToPath} from 'node:url'
 import {storyId,validStories} from '../src/lib/feedQueue.js'
+import {isPublishedNewsStory} from './discover/bridge.mjs'
 const base=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..')
 export async function buildReaderIndex(root=base){
  const dir=path.join(root,'public','lore-reader')
@@ -17,6 +18,7 @@ export async function buildReaderIndex(root=base){
   if(!validStories(articles))throw Error(`Invalid shard ${shard}`)
   for(const item of articles){
    if(manifest.newsOnly===true&&item.contentType!=='news')continue
+   if(manifest.newsOnly===true&&!isPublishedNewsStory(item))throw Error(`Unlicensed or non-journalism story in shard ${shard}: ${item.id}`)
    const id=storyId(item)
    if(!id||ids.has(id))throw Error(`Missing or duplicate story identifier: ${id}`)
    ids.add(id)

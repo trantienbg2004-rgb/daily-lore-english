@@ -24,6 +24,10 @@ const paginateStory = original => {
 
 // Photo frames use their true intrinsic aspect ratio. Fit within both the
 // reader width and the viewport's responsive photo height, without cropping.
+function photoFrameSize(mediaWidth,maxHeight,ratio) {
+  const imageWidth=Math.max(1,Math.min(mediaWidth*.78-8,332,maxHeight*ratio))
+  return {imageWidth,frameWidth:Math.min(mediaWidth,Math.max(imageWidth+8,260))}
+}
 function fitPhoto(img) {
   if (!img?.naturalWidth || !img?.naturalHeight) return
   const frame = img.closest('.lore-photo-figure')
@@ -32,12 +36,10 @@ function fitPhoto(img) {
   const maxHeight = parseFloat(getComputedStyle(img).maxHeight) || 148
   const ratio = img.naturalWidth / img.naturalHeight
   if (!Number.isFinite(ratio) || ratio <= 0) return
-  // Size the entire paper frame from the IMAGE, never from a long caption.
-  // A max-content figure otherwise expands past the reader on iPhone.
-  const maxWidth = Math.min(media.clientWidth * .78, 340)
-  const imageWidth = Math.min(maxWidth - 8, maxHeight * ratio)
-  frame.style.width = `${Math.ceil(imageWidth + 8)}px`
-  img.style.width = '100%'
+  // Leave room for a short caption even when the source photo is very narrow.
+  const {imageWidth,frameWidth}=photoFrameSize(media.clientWidth,maxHeight,ratio)
+  frame.style.width = `${Math.ceil(frameWidth)}px`
+  img.style.width = `${Math.ceil(imageWidth)}px`
   img.style.height = 'auto'
 }
 
@@ -143,15 +145,14 @@ function layoutPages(item, reader, badImages = new Set()) {
       measuredCaption.style.display = measuredCaption.textContent && measuredCaption.textContent !== 'Article photograph' ? 'block' : 'none'
       if (image) {
         // Use the verified intrinsic image geometry whenever available.
-        // Caption wrapping uses the SAME frame width as the actual photo.
+        // Match the live photo and caption widths during pagination.
         const asset = photoResult(image.image)
         const maxHeight = parseFloat(getComputedStyle(photo).maxHeight) || 140
         const ratio = asset?.width && asset?.height ? asset.width / asset.height : 1.3
-        const maxWidth = Math.min(media.clientWidth * .78, 340)
-        const width = Math.max(1, Math.min(maxWidth - 8, maxHeight * ratio))
-        figure.style.width = `${Math.ceil(width + 8)}px`
-        photo.style.width = '100%'
-        photo.style.height = `${width / ratio}px`
+        const {imageWidth,frameWidth}=photoFrameSize(media.clientWidth,maxHeight,ratio)
+        figure.style.width = `${Math.ceil(frameWidth)}px`
+        photo.style.width = `${Math.ceil(imageWidth)}px`
+        photo.style.height = `${imageWidth / ratio}px`
       } else {
         figure.style.width = ''
       }
@@ -917,8 +918,7 @@ function App() {
         </div><div className="story-end-next">↑ Swipe up for the next story</div>
       </section> : <>
       <div className={'article-heading lore-article-heading ' + (pageNumber > 0 ? 'article-heading-continued' : '')}>
-        <div className="eyebrow">{readerSection(item)}</div>
-        <h1 className={displayHeadline(item).length > 49 ? 'lore-headline-long' : ''} title={displayHeadline(item)}>{displayHeadline(item)}</h1>
+        <h1 title={displayHeadline(item)}>{displayHeadline(item)}</h1>
         {pageNumber === 0 && editorialDeck(item) && <p className="deck lore-deck">{editorialDeck(item)}</p>}
       </div>
       <div className={"article-media " + (!itemPage.image || brokenImages.has(itemPage.image) ? "article-media-empty" : "")}>

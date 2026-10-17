@@ -33,6 +33,7 @@ export function photoCreditMatches(d,page){
 }
 export function validateDraft(d){const problems=[];if(!d?.id||!d?.title||!licensedDraft(d))problems.push('unlicensed-or-invalid-source')
  const images=draftPhotos(d),urls=images.map(photo=>photo.url)
+ if(!d?.imageUrl||!images.length)problems.push('missing-licensed-cover')
  if(images.length>3||new Set(urls).size!==urls.length||(images[0]?.url||'')!==(d?.imageUrl||'')||
   images.some(photo=>photo.verified!==true||!verifiedPhoto({...d,imageUrl:photo.url,imageRightsVerified:true,imageProvenance:photo.provenance})))problems.push('unverified-image')
  if(!verifiedPhoto(d))problems.push('unverified-image')
@@ -56,7 +57,13 @@ export function toReaderStory(d){const errors=validateDraft(d);if(errors.length)
   editorialState:'Machine screened and source-attributed; not a guarantee of semantic accuracy',levelVariants:levels,pages:levels['B1-B2'].pages}
  if(!validStories([item])||!readableStory(item))throw Error('Reader contract blocked news')
  return item}
-export function isPublishedNewsStory(s){return s?.contentType==='news'&&s?.readingKind==='full'&&!!s.sourceUrl&&!!s.license&&Array.isArray(s.levelVariants?.['A1-A2']?.pages)&&Array.isArray(s.levelVariants?.['B1-B2']?.pages)&&Array.isArray(s.levelVariants?.['C1-C2']?.pages)&&validStories([s])&&readableStory(s)}
+export function isJournalismStory(s){
+ try{const host=new URL(s?.sourceUrl).hostname.toLowerCase();return ['globalvoices.org','www.globalvoices.org','learningenglish.voanews.com','www.voanews.com','voanews.com','www.bbc.com','www.bbc.co.uk','www.npr.org','theconversation.com'].includes(host)}catch{return false}
+}
+export function hasLicensedCover(s){return ['A1-A2','B1-B2','C1-C2'].every(level=>{
+ const page=s?.levelVariants?.[level]?.pages?.[0];return !!page?.image&&verifiedPhoto({...s,imageUrl:page.image,imageRightsVerified:true,imageProvenance:page.imageProvenance})
+})}
+export function isPublishedNewsStory(s){return s?.contentType==='news'&&s?.readingKind==='full'&&isJournalismStory(s)&&!!s.license&&hasLicensedCover(s)&&Array.isArray(s.levelVariants?.['A1-A2']?.pages)&&Array.isArray(s.levelVariants?.['B1-B2']?.pages)&&Array.isArray(s.levelVariants?.['C1-C2']?.pages)&&validStories([s])&&readableStory(s)}
 export function selectFreshStories(existing,drafts,limit=2){const accepted=[],rejected=[],ids=new Set(existing.map(storyId))
  for(const d of drafts){try{const story=toReaderStory(d),id=storyId(story);if(ids.has(id))throw Error('duplicate-source-url');if([...existing,...accepted].some(s=>s.contentType==='news'&&sameEvent(s,story)))throw Error('duplicate-event');accepted.push(story);ids.add(id);if(accepted.length>=limit)break}catch(e){rejected.push({title:d?.title||'',reason:String(e.message||e)})}}
  return {accepted,rejected}}

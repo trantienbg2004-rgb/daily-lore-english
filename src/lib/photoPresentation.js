@@ -18,7 +18,25 @@ export function photoLabel(page) {
   const usable = first && !GENERIC.test(first) && !/^https?:\/\//.test(first)
   const filename = decodedFileName(page.image)
   const candidate = (usable ? first.replace(/\.(jpe?g|png|webp|gif|svg)$/i, '') : filename) || 'Article photograph'
-  return candidate.replace(/_/g, ' ').replace(/\s+/g, ' ').slice(0, 150)
+  const description = candidate
+    .replace(/^(?:Illustrative image|Illustrative photo|Illustration):\s*/i, '')
+    .replace(/_/g, ' ')
+    .replace(/\bInternational Monetary Fund\b(?:\s*\(IMF\)|\s+IMF)?/gi, 'IMF')
+    .replace(/\bWorld Bank Group\b/gi, 'World Bank')
+    .replace(/^\d+\s+(?=[A-Za-z])/u, '')
+    .replace(/\s*[-–]\s*(?:Creative Commons|panoramio).*$/i, '')
+    .replace(/\s+(?:IMG|DSC|DSCN)\s*\d+\b.*$/i, '')
+    .replace(/\s+\d{5,}\b.*$/u, '')
+    .replace(/\s*[-–]\s*\d{1,3}$/u, '')
+    .replace(/\s+during the\s+([A-Za-z]+\s+(?:19|20)\d{2})\b/iu, ', $1')
+    .replace(/\s+/g, ' ').trim()
+  const limit = 52
+  const year = description.match(/\b(?:19|20)\d{2}\b/u)?.[0]
+  const suffix = year && !description.slice(0, limit).includes(year) ? `, ${year}` : '…'
+  const short = description.length > limit
+    ? `${description.slice(0, limit - suffix.length + 1).replace(/\s+\S*$/u, '').trim()}${suffix}`
+    : description
+  return short || 'Article photograph'
 }
 
 export function photoSourceLink(page) {

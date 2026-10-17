@@ -4,7 +4,7 @@ import fs from 'node:fs'
 import {smartPaginate} from '../discover/smartPaginate.mjs'
 import {validateLevelDrafts} from '../discover/geminiLevels.mjs'
 import {applyNewsLevel} from '../../src/lib/newsLevels.js'
-import {photoCreditMatches,verifiedPhoto} from '../discover/bridge.mjs'
+import {photoCreditMatches,verifiedPhoto,isPublishedNewsStory} from '../discover/bridge.mjs'
 const dir='public/lore-reader/'
 test('published catalog has no lore but original historical shards remain',()=>{
  const m=JSON.parse(fs.readFileSync(dir+'manifest.json'))
@@ -12,6 +12,7 @@ test('published catalog has no lore but original historical shards remain',()=>{
  assert.equal(m.newsOnly,true);assert.equal(m.feedType,'news')
  assert.equal(idx.total,m.total);assert.ok(idx.total>=6)
  assert.ok(idx.entries.every(e=>e.contentType==='news'))
+ assert.ok(idx.entries.every(e=>['Global Voices','VOA Learning English','BBC News','NPR','The Conversation'].includes(e.publisher)))
  assert.ok(fs.existsSync(dir+'0000.json')&&fs.existsSync(dir+'0010.json'))
  const old=JSON.parse(fs.readFileSync(dir+'0000.json'))
  assert.ok(old.some(x=>x.contentType==='lore'))
@@ -20,6 +21,8 @@ test('published photo count and credits match every reading level',()=>{
  const manifest=JSON.parse(fs.readFileSync(dir+'manifest.json'))
  const news=Array.from({length:manifest.chunks},(_,i)=>JSON.parse(fs.readFileSync(dir+String(i).padStart(4,'0')+'.json'))).flat().filter(s=>s.contentType==='news')
  const pictured=news.filter(s=>s.pages.some(p=>p.image))
+ assert.equal(pictured.length,news.length)
+ assert.ok(news.every(isPublishedNewsStory))
  assert.equal(manifest.withVerifiedPhoto,pictured.length)
  for(const story of pictured){
   const photos=story.pages.filter(page=>page.image)

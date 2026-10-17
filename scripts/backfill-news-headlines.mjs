@@ -8,21 +8,21 @@ import {buildReaderIndex} from './build-reader-index.mjs'
 
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..')
 const headlines={
- 'saga:imf-weo-2026-october':'IMF warns global growth remains uneven',
- 'saga:un-security-council-2026-10-15':'UN discusses violence in Gaza and West Bank',
- 'saga:un-sudan-dialogue-20261016':'UN urges talks as Sudan fighting intensifies',
- 'saga:wbg-japan-energy-asia-20261015':'World Bank and Japan announce Asia energy project',
- 'saga:nepal-world-bank-cat-bond-20261015':'Nepal weighs World Bank earthquake bond',
- 'saga:imf-ai-global-economy-forum-20261016':'IMF examines AI and the global economy',
- 'saga-news:04b045c50f3974aafc6bdbdf':'Hoax falsely links Brazil’s Lula to child abuse',
- 'saga-news:5671bbde35b632a5b6667de8':'Peru Indigenous communities confront Amazon fires',
- 'saga-news:8002e77bdcfaa28419f131ea':'Authoritarian states expand surveillance market',
+ 'saga:imf-weo-2026-october':'IMF sees uneven global growth',
+ 'saga:un-security-council-2026-10-15':'UN debates Gaza and West Bank violence',
+ 'saga:un-sudan-dialogue-20261016':'UN urges talks on Sudan fighting',
+ 'saga:wbg-japan-energy-asia-20261015':'World Bank, Japan announce energy project',
+ 'saga:nepal-world-bank-cat-bond-20261015':'Nepal weighs World Bank quake bond',
+ 'saga:imf-ai-global-economy-forum-20261016':'IMF examines AI and global economy',
+ 'saga-news:04b045c50f3974aafc6bdbdf':'Hoax links Brazil’s Lula to child abuse',
+ 'saga-news:5671bbde35b632a5b6667de8':'Peru’s Indigenous people face Amazon fires',
+ 'saga-news:8002e77bdcfaa28419f131ea':'Authoritarian states build surveillance market',
  'saga-news:6f87a799a62e2aa671403732':'Telenor faces Myanmar data lawsuit',
- 'saga-news:a3fe88508a659675e79dafc0':'Nepal seeks clearer flood aid and rebuilding plan',
- 'saga-news:5c60d15b568bd196260fcb22':'Chabacano poetry book celebrates Philippine language',
- 'saga-news:cb2efe1cee545ca1fcad5d1d':'Bangladesh–Malaysia recruitment costs face scrutiny',
- 'saga-news:a3f9a58e68bc3a8e97167289':'Ukrainian small businesses survive years of war',
- 'saga-news:e2c1802a9ffac04433d4fab2':'Haiti vendors protest gang warfare',
+ 'saga-news:a3fe88508a659675e79dafc0':'Nepal seeks clear flood aid plan',
+ 'saga-news:5c60d15b568bd196260fcb22':'Poetry book promotes Chabacano',
+ 'saga-news:cb2efe1cee545ca1fcad5d1d':'Bangladesh–Malaysia recruitment costs questioned',
+ 'saga-news:a3f9a58e68bc3a8e97167289':'Ukrainian small businesses endure war',
+ 'saga-news:e2c1802a9ffac04433d4fab2':'Haiti vendors protest gang violence',
 }
 export async function backfillNewsHeadlines({base=root,apply=false,log=console}={}){
  const dir=path.join(base,'public','lore-reader'),manifestFile=path.join(dir,'manifest.json')

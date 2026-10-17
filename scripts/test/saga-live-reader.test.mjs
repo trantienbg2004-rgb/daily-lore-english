@@ -6,6 +6,7 @@ import {approvedCommonsPhoto,searchCommonsImages} from '../discover/commonsMedia
 import {validatedNewsHeadline} from '../discover/headline.mjs'
 import {buildThreeLevelRequest} from '../discover/geminiLevels.mjs'
 import {displayHeadline} from '../../src/lib/editorial.js'
+import {photoLabel} from '../../src/lib/photoPresentation.js'
 
 test('uncached catalog growth prioritizes a new news story without removing the loaded story',async()=>{
  const stories=JSON.parse(fs.readFileSync('public/lore-reader/0014.json','utf8')).filter(s=>s.contentType==='news')
@@ -67,22 +68,36 @@ test('Commons search can supply distinct, credited images for later pages',async
 test('continued-page duplicate heading is hidden while toolbar title stays',()=>{
  const css=fs.readFileSync('src/App.css','utf8')
  const app=fs.readFileSync('src/App.jsx','utf8')
- assert.match(css,/\.lore-editorial-v5 \.reader-gesture \.article-heading-continued \{display:none\}/)
+ assert.match(css,/\.lore-editorial-v5 \.reader-gesture \.article-heading-continued \{\s*display:block;\s*min-height:/)
+ assert.match(css,/\.lore-editorial-v5 \.reader-gesture \.article-heading\.article-heading-continued \.deck \{display:none\}/)
  assert.match(app,/pageNumber > 0 \? displayHeadline\(item\) : readerSection\(item\)/)
+ assert.ok(!app.includes('<div className="eyebrow">{readerSection(item)}</div>'))
+})
+
+test('visible photo descriptions stay short while full credits remain in article data',()=>{
+ const page={image:'https://upload.wikimedia.org/wikipedia/commons/a/a.jpg',caption:'Illustrative image: Secretary of State Andrew Mitchell speaking to Bangladeshi migrant workers in Tunisia 5499005871',imageProvenance:{credit:'Original photographer',license:'CC BY 4.0'}}
+ assert.ok(photoLabel(page).startsWith('Secretary of State'))
+ assert.ok(photoLabel(page).length<=53)
+ assert.ok(!/illustrat/i.test(photoLabel(page)))
+ assert.ok(!photoLabel(page).includes('5499005871'))
+ assert.match(page.caption,/Bangladeshi migrant workers/)
+ assert.equal(page.imageProvenance.credit,'Original photographer')
+ assert.equal(photoLabel({image:page.image,caption:'Illustrative image: Damage in Gaza Strip during the October 2023 - 29'}),'Damage in Gaza Strip, October 2023')
 })
 
 test('all published news has a short display headline while original source titles remain intact',()=>{
  const manifest=JSON.parse(fs.readFileSync('public/lore-reader/manifest.json','utf8'))
  const stories=Array.from({length:manifest.chunks},(_,i)=>JSON.parse(fs.readFileSync(`public/lore-reader/${String(i).padStart(4,'0')}.json`,'utf8'))).flat().filter(s=>s.contentType==='news')
- assert.equal(stories.length,15)
+ assert.equal(stories.length,manifest.total)
  for(const story of stories){
   assert.equal(validatedNewsHeadline(story.headline,story.sourceTitle),story.headline)
   assert.equal(displayHeadline(story),story.headline)
   assert.equal(story.sourceTitle,story.title)
-  assert.ok(story.headline.length<=64)
+  assert.ok(story.headline.length<=48)
  }
  const source={title:'World Bank and Japan announce first DRIVE energy project in Asia',text:'The World Bank and Japan announced the new project.'}
  assert.equal(validatedNewsHeadline('World Bank reports 999 new projects',source.title,source.text),'')
  assert.equal(validatedNewsHeadline('World Bank and Boeing announce Asia project',source.title,source.text),'')
- assert.match(buildThreeLevelRequest(source).systemInstruction.parts[0].text,/headline of 6–10 words and at most 64 characters/)
+ assert.equal(validatedNewsHeadline('World Bank and Japan announce a major new energy project across Asia',source.title),'')
+ assert.match(buildThreeLevelRequest(source).systemInstruction.parts[0].text,/headline of 5–8 words and at most 48 characters/)
 })
