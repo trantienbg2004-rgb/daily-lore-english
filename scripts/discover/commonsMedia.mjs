@@ -3,9 +3,14 @@
  */
 import {imageCaptionKey} from './imageUniqueness.mjs'
 const subjects=[
+ [/\bStreet art in Russia\b/i,'anti-war graffiti Kazan',/anti.war graffiti.*Kazan/i,/diagram|chart|map|poster/i],
+ [/\bWest Africa\b.*\bdemocra\w*\b/i,'Ghana protest',/(?:Ghana.*protest|protest.*Ghana)/i,/diagram|chart|map|poster/i],
+ [/\bUyghur\b.*\bdigital\b/i,'China data center',/(?:China.*data cent|data cent.*China)/i,/diagram|chart|map|poster/i],
+ [/\bSahel\b.*\bprotest\b|\bprotest\b.*\bSahel\b/i,'Mali protest',/(?:Mali.*protest|protest.*Mali|Kidal.*manifest|manifest.*Kidal)/i,/diagram|chart|map|poster|soldier/i],
+ [/\bAI\b.*\b(?:cities|pollution)\b/i,'air quality sensor',/air quality.*sensor|sensor.*air quality/i,/diagram|chart|map|poster/i],
+ [/\bfisheries\b.*\bdigital\b|\bdigital\b.*\bfisheries\b/i,'fishing boats Hastings',/Fishing boats at Hastings/i,/diagram|chart|map|poster|James Dobie|Yale|B2005/i],
  [/(?:\bBangladesh\b.*\b(?:protest|democra\w*)\b|\b(?:protest|democra\w*)\b.*\bBangladesh\b)/i,'Bangladesh protest',/(?:Bangladesh.*(?:protest|uprising)|(?:protest|uprising).*Bangladesh)/i,/diagram|chart|map|poster/i],
  [/\b(?:indoor|invisible) pollution\b/i,'indoor air pollution',/indoor.*(?:air|pollution)|(?:air|pollution).*indoor/i,/diagram|chart|map|poster/i],
- [/\bfisheries\b.*\bdigital\b|\bdigital\b.*\bfisheries\b/i,'fishing vessel Europe',/(?:fishing|fishery).*(?:vessel|boat).*(?:Europe|European)|(?:Europe|European).*(?:fishing|fishery).*(?:vessel|boat)/i,/diagram|chart|map|poster/i],
  [/\bclimate models\b/i,'climate research',/climate.*research|research.*climate/i,/diagram|chart|map|poster/i],
  [/\bwetlands\b.*\bEurope\b|\bEurope\b.*\bwetlands\b/i,'European wetland',/(?:European|Europe).*wetland|wetland.*(?:European|Europe)/i,/diagram|chart|map|poster/i],
  [/\bbioeconomy\b/i,'bio-based products',/bio.based products/i,/catalogue|poster|logo/i],
