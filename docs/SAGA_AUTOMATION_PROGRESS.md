@@ -32,4 +32,3 @@ Updated: 2026-10-19 (Asia/Ho_Chi_Minh)
 2. Build a Commons visual/context review gate; test accepted and rejected examples before a small legacy backfill. Do not run automatic Commons backfill yet.
 3. After the image gate is proven, evaluate additional independent sources one at a time, including History & Geography and Sports. Stage 3 is not started; stage 4 production integration and scheduled workflow observation are pending.
 4. Preserve the ignored artifact and local context notes. Do not merge, run the production publication workflow, deploy, or spend paid quota.
-
