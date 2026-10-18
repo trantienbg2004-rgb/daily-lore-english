@@ -13,7 +13,7 @@ test('published catalog has no lore but original historical shards remain',()=>{
  assert.equal(m.newsOnly,true);assert.equal(m.feedType,'news')
  assert.equal(idx.total,m.total);assert.ok(idx.total>=6)
  assert.ok(idx.entries.every(e=>e.contentType==='news'))
- assert.ok(idx.entries.every(e=>['Global Voices','VOA Learning English','BBC News','NPR','The Conversation'].includes(e.publisher)))
+ assert.ok(idx.entries.every(e=>['Global Voices','Rhinoceros Media','VOA Learning English','BBC News','NPR','The Conversation'].includes(e.publisher)))
  assert.ok(fs.existsSync(dir+'0000.json')&&fs.existsSync(dir+'0010.json'))
  const old=JSON.parse(fs.readFileSync(dir+'0000.json'))
  assert.ok(old.some(x=>x.contentType==='lore'))

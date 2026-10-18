@@ -51,6 +51,7 @@ jobs:
 
       - name: Validate and build
         run: |
+          npm test
           node scripts/lore-verify.mjs
           npm run build
 
