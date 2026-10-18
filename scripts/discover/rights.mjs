@@ -27,5 +27,10 @@ export function rightsDecision(source,article){
   if(!article.author)return {...metadata,reason:'unverified-author'}
   return {mode:'gemini-eligible',textAllowed:true,imageAllowed:false,reason:'verified-cc-by-text',license:'CC BY 4.0',licenseUrl:article.explicitLicense}
  }
+ if(source.id==='nasa-earth'){
+  if(article.hasThirdPartyNotice||article.hasSyndicatedRights)return {...metadata,reason:'third-party-content-detected'}
+  if(!article.hasNasaImageCredit)return {...metadata,reason:'no-nasa-image-credit'}
+  return {mode:'gemini-eligible',textAllowed:true,imageAllowed:false,reason:'nasa-first-party-report',license:'NASA public information',licenseUrl:source.policyUrl}
+ }
  return metadata
 }

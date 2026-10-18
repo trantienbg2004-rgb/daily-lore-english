@@ -1,9 +1,14 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
 import fs from 'node:fs'
-import {rssImageHints,articleImageHint,licensedArticleImage,licensedArticleImages} from '../discover/licensedMedia.mjs'
+import {rssImageHints,articleImageHint,licensedArticleImage,licensedArticleImages,photoRelevanceScore,assignArticlePhotos} from '../discover/licensedMedia.mjs'
+import {articleMediaBlocks} from '../discover/htmlArticle.mjs'
 import {validateDraft,toReaderStory} from '../discover/bridge.mjs'
 import {inspectStagedRelease} from '../discover-live-qa.mjs'
+import {source as nasaEarth} from '../discover/sources/nasaEarth.mjs'
+import {extractArticle} from '../discover/article.mjs'
+import {rightsDecision} from '../discover/rights.mjs'
+import {requireOriginalArticlePhotos} from '../discover-publish.mjs'
 
 const app=fs.readFileSync('src/App.jsx','utf8'),css=fs.readFileSync('src/App.css','utf8')
 
@@ -24,6 +29,44 @@ test('RSS thumbnail and OpenGraph image are discovered but not licensed automati
  const html='<meta property="og:image" content="https://pics.example.org/cover.jpg">'
  assert.equal(articleImageHint(html),'https://pics.example.org/cover.jpg')
  assert.equal(licensedArticleImage(html,'https://news.example.org/article'),null)
+})
+
+test('article media finds editorial images but rejects unlicensed OG and author avatars',()=>{
+ const url='https://globalvoices.org/2026/10/17/poetry-story/'
+ const html='<meta property="og:image" content="https://globalvoices.org/book.jpg"><article><img src="https://globalvoices.org/avatar.jpg" alt="Author avatar"><figure><img src="https://globalvoices.org/book.jpg" alt="Chabacano poetry anthology" width="800" height="450"><figcaption>Book photo used with permission</figcaption></figure><img src="https://globalvoices.org/field.jpg" aria-describedby="credit-field" width="800" height="500"><p id="credit-field">Photo by Mira, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></p></article>'
+ assert.equal(articleMediaBlocks(html).filter(x=>x.kind==='metadata').length,1)
+ assert.equal(articleImageHint(html,url),'https://globalvoices.org/book.jpg')
+ assert.deepEqual(licensedArticleImages(html,url).map(p=>p.url),['https://globalvoices.org/field.jpg'])
+})
+
+test('city-only scenery is irrelevant to a poetry book and later photos need page subject overlap',()=>{
+ const title='Poetry book promotes Chabacano language in Zamboanga'
+ for(const caption of ["Zamboanga City's Sunset",'Zamboanga City Hall','Barangay Cawit Zamboanga City Philippines'])assert.equal(photoRelevanceScore({caption},title,'Writers published poems in Chabacano.'),0)
+ assert.equal(photoRelevanceScore({caption:'Jamaican police patrol'},'Trinidad and Tobago Special Operations Bill','The police patrols are part of security policy.'),0)
+ assert.ok(photoRelevanceScore({caption:'Chabacano poetry anthology'},title,'Writers published poems.')>0)
+ const levels=Object.fromEntries(['A1-A2','B1-B2','C1-C2'].map(level=>[level,{pages:[{text:'A poetry book uses Chabacano.'},{text:'The anthology includes many poems.'},{text:'Readers discuss the book.'},{text:'The language has a future.'}]}]))
+ assert.deepEqual(assignArticlePhotos([{caption:'Chabacano poetry anthology',url:'https://example.org/book.jpg'}],title,levels).map(photo=>photo.pageIndex),[0])
+ assert.deepEqual(assignArticlePhotos([{caption:'Zamboanga sunset',url:'https://example.org/sunset.jpg'}],title,levels),[])
+})
+
+test('NASA Earth Observatory requires a first-party story and credits its own matching photos',()=>{
+ const url='https://science.nasa.gov/earth/earth-observatory/amazon-fires/'
+ const text=Array.from({length:16},(_,i)=>`<p>The Amazon fires have spread during the drought, and NASA scientists measured smoke above the rainforest with satellite instruments during observation ${i}.</p>`).join('')
+ const image='<figure class="hds-media-inner"><img width="1200" height="800" src="https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/amazon-fires/fire.jpg?w=1200" alt="Amazon fires and smoke over the rainforest"></figure>'
+ const thirdParty='<figure class="hds-media-inner"><img width="1200" height="800" src="https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/another-story/forest.jpg?w=1200" alt="Amazon forest"></figure>'
+ const html=`<article>${image}${thirdParty}${text}<p>NASA Earth Observatory images by Lauren Dauphin, using NASA satellite data.</p></article>`
+ const article=extractArticle(html,nasaEarth.id)
+ assert.equal(rightsDecision(nasaEarth,article).textAllowed,true)
+ const photos=licensedArticleImages(html,url,{articleTitle:'Amazon Fires Spread',articleText:article.text,limit:5})
+ assert.equal(photos.length,1)
+ assert.equal(photos[0].provenance.originType,'nasa-earth-observatory')
+ assert.equal(rightsDecision(nasaEarth,extractArticle(html.replace('NASA Earth Observatory images by Lauren Dauphin','Getty Images by Lauren Dauphin'),nasaEarth.id)).textAllowed,false)
+})
+
+test('publication rejects Commons photos even if they have a valid CC license',()=>{
+ const sourceUrl='https://globalvoices.org/2026/10/17/story/'
+ assert.throws(()=>requireOriginalArticlePhotos([{sourceUrl,images:[{url:'https://upload.wikimedia.org/a.jpg',provenance:{sourceImageUrl:'https://commons.wikimedia.org/wiki/File:City.jpg',originType:'wikimedia-commons'}}]}]),/Non-original photo/)
+ assert.doesNotThrow(()=>requireOriginalArticlePhotos([{sourceUrl,images:[]}]))
 })
 
 test('only per-figure CC image credits permit optional image publication',()=>{

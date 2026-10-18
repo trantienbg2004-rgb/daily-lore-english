@@ -47,6 +47,12 @@ test('new verified newsroom receives an early attempt without blocking establish
  assert.deepEqual(balanceNewsSources(rows,[{publisher:'Global Voices'}]).map(x=>x.id),['r0','g0','r1','g1','g2','g3'])
 })
 
+test('within each newsroom, articles with multiple licensed original photos reach Gemini first',()=>{
+ const rows=[{sourceId:'global-voices',sourceName:'Global Voices',id:'plain',title:'World economy report',publishedAt:'2026-10-18',verifiedPhotos:[]},
+  {sourceId:'global-voices',sourceName:'Global Voices',id:'pictured',title:'World economy investigation',publishedAt:'2026-10-17',verifiedPhotos:[{},{}]}]
+ assert.equal(selectNewsCandidates(rows,[],1)[0].id,'pictured')
+})
+
 test('selection reserves most Gemini candidates for another eligible newsroom across batches',()=>{
  const rows=[...Array.from({length:30},(_,i)=>({sourceId:'global-voices',sourceName:'Global Voices',id:'g'+i})),
   ...Array.from({length:8},(_,i)=>({sourceId:'rhinoceros',sourceName:'Rhinoceros Media',id:'r'+i}))]
@@ -237,14 +243,16 @@ test('one invalid news article moves to next eligible article and stops after a 
   geminiIntervalMs:0,writeFiles:false,log:{log(){}}})
  assert.equal(rotated.report.candidateBatch,1)
  assert.equal(rotated.drafts[0]?.sourceUrl,urls[1].replace(/\/$/,''))
- const noPhotoFetch=async url=>url.includes('commons.wikimedia.org')?
-  {ok:true,json:async()=>({query:{pages:{}}})}:fetchImpl(url)
+ let commonsCalls=0
+ const noPhotoFetch=async url=>{if(String(url).includes('commons.wikimedia.org')){commonsCalls++;return {ok:true,json:async()=>({query:{pages:{}}})}}return fetchImpl(url)}
  let wastedGeminiCalls=0
  const noPhoto=await collectDiscover({sources:publishers,fetchImpl:noPhotoFetch,
-  geminiFetchImpl:async()=>{wastedGeminiCalls++;return fakeRes(valid())},
+  geminiFetchImpl:async()=>{wastedGeminiCalls++;return fakeRes(collectorValid())},
   now:new Date('2026-10-17T00:00:00Z'),apiKey:'fake',useGemini:true,maxGemini:1,targetDrafts:1,
   geminiIntervalMs:0,writeFiles:false,log:{log(){}}})
- assert.equal(noPhoto.report.rejected['no-licensed-photo'],1)
- assert.equal(noPhoto.report.geminiCalls,0)
- assert.equal(wastedGeminiCalls,0)
+ assert.equal(noPhoto.drafts.length,1)
+ assert.equal(noPhoto.drafts[0].imageUrl,'')
+ assert.equal(noPhoto.report.geminiCalls,1)
+ assert.equal(wastedGeminiCalls,1)
+ assert.equal(commonsCalls,0)
 })

@@ -4,6 +4,8 @@ const localOnly=/\b(?:Lansing|Michigan|Ingham|Eaton County|city council|county b
 
 export function isFocusedNews(candidate){
  const title=String(candidate?.title||'')
+ if(candidate?.sourceId==='nasa-earth')return /^https:\/\/science\.nasa\.gov\/earth\/earth-observatory\/[^/]+$/i.test(candidate.sourceUrl||'')&&
+  /\b(?:climate|drought|flood\w*|fire\w*|hurricane\w*|storm\w*|sea ice|glacier\w*|rainforest|heat\w*|pollution|erosion|satellite\w*|earthquake\w*|el ni[ñn]o|water|agricultur\w*|crop\w*)\b/i.test(title)
  if(candidate?.sourceId==='rhinoceros')return !localOnly.test(title)&&
   /\b(?:global|international|cross[- ]border|U\.S\.|United States|federal|world)\b/i.test(title)&&publicAffairs.test(title)
  if(candidate?.sourceId==='horizon')return publicAffairs.test(title)

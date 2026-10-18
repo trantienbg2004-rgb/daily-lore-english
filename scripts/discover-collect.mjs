@@ -9,8 +9,7 @@ import {SOURCES} from './discover/sources/index.mjs'
 import {fetchText} from './discover/network.mjs'
 import {parseFeed} from './discover/rss.mjs'
 import {extractArticle} from './discover/article.mjs'
-import {licensedArticleImages,articleImageHint} from './discover/licensedMedia.mjs'
-import {searchCommonsImages} from './discover/commonsMedia.mjs'
+import {licensedArticleImages,articleImageHint,assignArticlePhotos} from './discover/licensedMedia.mjs'
 import {rightsDecision} from './discover/rights.mjs'
 import {uniqueCandidates} from './discover/dedupe.mjs'
 import {generateThreeLevels,buildLevelPages} from './discover/geminiLevels.mjs'
@@ -26,6 +25,7 @@ export function rankNewsCandidates(items){return [...items].sort((a,b)=>Number(p
 export function balanceNewsSources(items,published=[]){
  const groups=new Map()
  for(const item of items){if(!groups.has(item.sourceId))groups.set(item.sourceId,[]);groups.get(item.sourceId).push(item)}
+ for(const rows of groups.values())rows.sort((a,b)=>(b.verifiedPhotos?.length||0)-(a.verifiedPhotos?.length||0)||Number(priorityTitle.test(b.title))-Number(priorityTitle.test(a.title))||String(b.publishedAt||'').localeCompare(String(a.publishedAt||'')))
  const counts=new Map()
  for(const story of published){const name=story.publisher||story.sourceName||'';counts.set(name,(counts.get(name)||0)+1)}
  const names=[...groups.keys()].sort((a,b)=>(counts.get(groups.get(a)[0].sourceName)||0)-(counts.get(groups.get(b)[0].sourceName)||0))
@@ -92,9 +92,9 @@ export async function collectDiscover({fetchImpl=fetch,geminiFetchImpl=fetchImpl
    if(!rights.textAllowed){
     stats.rejected[rights.reason]=(stats.rejected[rights.reason]||0)+1;metadata.push({...candidate,mode:'discovery-only',reason:rights.reason});increment(rights.reason);continue}
    stats.eligible++
-   const verifiedPhotos=licensedArticleImages(html,candidate.sourceUrl,{usedImageUrls:usedMedia.urls,usedImageCaptions:usedMedia.captions})
+   const verifiedPhotos=licensedArticleImages(html,candidate.sourceUrl,{limit:5,usedImageUrls:usedMedia.urls,usedImageCaptions:usedMedia.captions,articleTitle:candidate.title,articleText:article.text})
    eligible.push({...candidate,text:article.text,rights,author:article.author||candidate.author,
-    verifiedPhotos,photoHint:articleImageHint(html,candidate.sourceUrl)||candidate.photoHints?.[0]||'',
+    verifiedPhotos,nativeImageCount:verifiedPhotos.length,photoHint:articleImageHint(html,candidate.sourceUrl)||candidate.photoHints?.[0]||'',
     imageRightsVerified:verifiedPhotos.length>0,imageUrl:verifiedPhotos[0]?.url||'',articleWordCount:article.wordCount})
   }catch(e){increment('article-fetch-error:'+source.id);perSourceResults.get(source.id).rejected['article-fetch-error']=(perSourceResults.get(source.id).rejected['article-fetch-error']||0)+1;metadata.push({...candidate,mode:'discovery-only',reason:'article-fetch-error'})}
  }
@@ -118,16 +118,14 @@ export async function collectDiscover({fetchImpl=fetch,geminiFetchImpl=fetchImpl
    try{
     // Check photo rights before spending any of the free Gemini quota.
     const available=photo=>imageKeys(photo).every(key=>!usedMedia.urls.has(key))&&!usedMedia.captions.has(imageCaptionKey(photo.caption))
+    // Only original article photographs with per-image licence proof. A place
+    // name alone never licenses or justifies an unrelated Commons landscape.
     const photos=candidate.verifiedPhotos.filter(available)
-    const imageQueryTitle=candidate.sourceId==='rhinoceros'&&/\bLansing\b/i.test(candidate.text)?candidate.title+' Lansing':candidate.title
-    if(photos.length<3)photos.push(...await searchCommonsImages(imageQueryTitle,{fetchImpl,limit:3-photos.length,
-      excludeUrls:[...usedMedia.urls,...photos.flatMap(photo=>imageKeys(photo))],excludeCaptions:[...usedMedia.captions]}))
-    const images=photos.slice(0,3).map((photo,pageIndex)=>({...photo,pageIndex}))
-    const cover=images[0]
-    if(!cover){increment('no-licensed-photo');continue}
     report.geminiCandidateAttempts++
     const result=await generateThreeLevels({source:candidate,apiKey,strictPages,fetchImpl:rateLimitedGeminiFetch,waitImpl:geminiWaitImpl,onRequest:()=>{if(report.geminiCalls>=maxGeminiCalls)throw Error('Gemini free-tier run budget exhausted');report.geminiCalls++}})
     if(result.editorialRepaired)report.editorialRepairs++
+    const images=assignArticlePhotos(photos,candidate.title,result.levelVariants)
+    const cover=images.find(photo=>photo.pageIndex===0)
     drafts.push({id:candidate.id,sourceId:candidate.sourceId,sourceName:candidate.sourceName,sourceUrl:candidate.sourceUrl,author:candidate.author,
       originalPublishedAt:candidate.publishedAt,rights:candidate.rights,model:result.model,
       title:candidate.title,headline:result.headline||'',images,levelVariants:buildLevelPages(result.levelVariants,images),

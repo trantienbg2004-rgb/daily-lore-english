@@ -16,17 +16,16 @@ test('published catalog has no lore but original historical shards remain',()=>{
  assert.equal(m.newsOnly,true);assert.equal(m.feedType,'news')
  assert.equal(idx.total,m.total);assert.ok(idx.total>=6)
  assert.ok(idx.entries.every(e=>e.contentType==='news'))
- assert.ok(idx.entries.every(e=>['Global Voices','Rhinoceros Media','Horizon Magazine','VOA Learning English','BBC News','NPR','The Conversation'].includes(e.publisher)))
+ assert.ok(idx.entries.every(e=>['Global Voices','Rhinoceros Media','Horizon Magazine','NASA Earth Observatory','VOA Learning English','BBC News','NPR','The Conversation'].includes(e.publisher)))
  assert.ok(fs.existsSync(dir+'0000.json')&&fs.existsSync(dir+'0010.json'))
  const old=JSON.parse(fs.readFileSync(dir+'0000.json'))
  assert.ok(old.some(x=>x.contentType==='lore'))
 })
-test('published photo count and credits match every reading level',()=>{
+test('optional source photos have individual credits at every reading level',()=>{
  const manifest=JSON.parse(fs.readFileSync(dir+'manifest.json'))
  const retired=new Set(manifest.retiredSourceUrls||[])
  const news=Array.from({length:manifest.chunks},(_,i)=>JSON.parse(fs.readFileSync(dir+String(i).padStart(4,'0')+'.json'))).flat().filter(s=>s.contentType==='news'&&!retired.has(s.sourceUrl))
  const pictured=news.filter(s=>s.pages.some(p=>p.image))
- assert.equal(pictured.length,news.length)
  assert.ok(news.every(isPublishedNewsStory))
  assert.equal(manifest.withVerifiedPhoto,pictured.length)
  for(const story of pictured){
@@ -34,8 +33,8 @@ test('published photo count and credits match every reading level',()=>{
   const media={images:photos.map(page=>({url:page.image,caption:page.caption,provenance:page.imageProvenance,verified:true}))}
   for(const photo of photos){
    assert.ok(verifiedPhoto({...story,imageUrl:photo.image,imageRightsVerified:true,imageProvenance:photo.imageProvenance}))
-   if(photo.imageProvenance.originType==='wikimedia-commons')assert.ok(photo.imageProvenance.imagePageUrl)
-   else assert.ok(photo.imageProvenance.sourceImageUrl)
+   assert.ok([undefined,'nasa-earth-observatory'].includes(photo.imageProvenance.originType))
+   assert.equal(photo.imageProvenance.sourceImageUrl,story.sourceUrl)
    assert.ok(photo.caption?.trim())
    assert.doesNotMatch(photoLabel(photo),/^Illustrat/i)
   }

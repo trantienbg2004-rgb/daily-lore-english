@@ -68,7 +68,8 @@ export function extractArticle(html,sourceId){
   text,wordCount:wordCount(text),paragraphCount:paragraphs.length,
   extractionStats:htmlReadingDiagnostics(html),imageHint:meta(html,'og:image'),
   hasThirdPartyNotice:thirdPartyCredits.test(String(html).slice(0,160000)),
-  hasSyndicatedRights:['global-voices','rhinoceros','horizon'].includes(sourceId)&&syndicated.test(opening.slice(0,4800)),
+  hasNasaImageCredit:/NASA Earth Observatory images? by\s+[^<.]{3,160}/i.test(String(html)),
+  hasSyndicatedRights:['global-voices','rhinoceros','horizon','nasa-earth'].includes(sourceId)&&syndicated.test(opening.slice(0,4800)),
   explicitLicense:license,credits:'',author:excludedSource.test(author)?'':author,
   publishedAt:meta(html,'article:published_time')||'',sourceId,
  }

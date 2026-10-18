@@ -1,8 +1,15 @@
 /** Offline by default? This CLI is for the secret-backed GitHub scheduled workflow. */
 import {collectDiscover} from './discover-collect.mjs'
 import {runStagedQA} from './discover-live-qa.mjs'
-import {readCatalog,publishDiscover} from './discover/bridge.mjs'
+import {readCatalog,publishDiscover,draftPhotos} from './discover/bridge.mjs'
 import {buildReaderIndex} from './build-reader-index.mjs'
+
+export function requireOriginalArticlePhotos(drafts){
+ for(const draft of drafts)for(const photo of draftPhotos(draft)){
+  const proof=photo.provenance||{}
+  if(proof.sourceImageUrl!==draft.sourceUrl||proof.originType&&proof.originType!=='nasa-earth-observatory')throw Error(`Non-original photo blocked: ${draft.sourceUrl}`)
+ }
+}
 
 export async function runDiscoverPublication({apiKey=process.env.GEMINI_API_KEY,now=new Date(),log=console,candidateBatch=Number(process.env.GITHUB_RUN_NUMBER||0),skipSourceUrls=new Set()}={}){
  if(!apiKey)throw Error('Missing GEMINI_API_KEY. No requests sent, no publication.')
@@ -12,6 +19,7 @@ export async function runDiscoverPublication({apiKey=process.env.GEMINI_API_KEY,
   candidateBatch,
   excludeSourceUrls,excludePublishedNews:stories.filter(s=>s.contentType==='news'),outputDir:'reports/saga-discover-local',writeFiles:true,log})
  if(!output.drafts.length){log.warn?.('DISCOVER NO PUBLICATION: no new valid draft, existing Reader untouched');return {published:false,added:0,reason:'no-valid-draft',quotaExhausted:output.report.quotaExhausted,attemptedSourceUrls:output.selectedCandidateUrls}}
+ requireOriginalArticlePhotos(output.drafts)
  runStagedQA({base:'reports/saga-discover-local',summaryFile:null,logSummary:false})
  const result=await publishDiscover({drafts:output.drafts,limit:10,now})
  if(result.published)await buildReaderIndex()

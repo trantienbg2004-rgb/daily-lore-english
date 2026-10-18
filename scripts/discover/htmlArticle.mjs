@@ -98,3 +98,37 @@ export function htmlReadingDiagnostics(html){
   authorFound:!!extractGlobalVoicesAuthor(raw),articleParagraphs:readingParagraphs(raw).length
  }
 }
+
+/** Candidate media from an article, including metadata hints. Rights are
+ * checked separately for each image; an OpenGraph URL is never a licence. */
+export function articleMediaBlocks(rawHtml){
+ const html=String(rawHtml||'').slice(0,2_000_000)
+ const blocks=[]
+ for(const match of html.matchAll(/<meta\b[^>]*>/gi)){
+  const tag=match[0],name=(attr(tag,'property')||attr(tag,'name')).toLowerCase()
+  if(['og:image','twitter:image'].includes(name))blocks.push({kind:'metadata',markup:tag})
+ }
+ for(const match of html.matchAll(/<figure\b[^>]*>[\s\S]{0,12000}?<\/figure\s*>|<div\b[^>]*class\s*=\s*(?:"[^"]*\bwp-caption\b[^"]*"|'[^']*\bwp-caption\b[^']*')[^>]*>[\s\S]{0,12000}?<\/div\s*>/gi)){
+  if(/<img\b/i.test(match[0]))blocks.push({kind:'editorial',markup:match[0],position:match.index})
+ }
+ // Some themes link a standalone body image to its caption with aria-describedby.
+ // Require that exact link inside the article, never a nearby credit from a
+ // different image, sidebar or recommendation card.
+ const start=html.search(/<article\b/i)
+ const end=start<0?-1:html.indexOf('</article>',start)
+ if(start>=0&&end>start){
+  const body=html.slice(start,end)
+  for(const match of body.matchAll(/<img\b[^>]*>/gi)){
+   const id=attr(match[0],'aria-describedby')
+   if(!id||!/^[\w-]{3,100}$/.test(id)){
+    // Keep uncaptained body images as discovery hints only. A publisher
+    // cannot use them without independent per-image rights evidence.
+    if(!/(?:logo|icon|avatar|banner|advert)/i.test([attr(match[0],'class'),attr(match[0],'alt'),attr(match[0],'src')].join(' ')))blocks.push({kind:'body-image',markup:match[0],position:start+match.index})
+    continue
+   }
+   const caption=body.match(new RegExp(`<[^>]+id=["']${id}["'][^>]*>[\\s\\S]{0,2000}?<\\/[a-z]+\\s*>`,'i'))?.[0]
+   if(caption)blocks.push({kind:'editorial',markup:`<figure>${match[0]}<figcaption>${caption}</figcaption></figure>`,position:start+match.index})
+  }
+ }
+ return blocks
+}
