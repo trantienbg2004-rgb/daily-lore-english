@@ -136,6 +136,20 @@ test('a rejected headline is repaired without throwing away three valid levels',
  assert.deepEqual(Object.keys(requests[1].generationConfig.responseSchema.properties),['headline'])
 })
 
+test('an invalid CEFR variant headline gets a small repair without regenerating valid prose',async()=>{
+ let calls=0,requests=[]
+ const first=valid();first.variants[0].headline='An unrelated and unsupported headline about something else entirely'
+ const result=await generateThreeLevels({source,apiKey:'fake',fetchImpl:async(_url,options)=>{
+  calls++;requests.push(JSON.parse(options.body))
+  return fakeRes(calls===1?first:{headlines:valid().variants.map(v=>({level:v.level,headline:v.headline}))})
+ }})
+ assert.equal(calls,2)
+ assert.equal(result.requestCount,2)
+ assert.equal(result.editorialRepaired,true)
+ assert.equal(result.levelVariants['A1-A2'].headline,valid().variants[0].headline)
+ assert.deepEqual(Object.keys(requests[1].generationConfig.responseSchema.properties),['headlines'])
+})
+
 test('an unrepairable headline does not regenerate valid reading levels',async()=>{
  let calls=0
  await assert.rejects(generateThreeLevels({source,apiKey:'fake',fetchImpl:async()=>{
