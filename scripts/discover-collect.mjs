@@ -16,6 +16,7 @@ import {uniqueCandidates} from './discover/dedupe.mjs'
 import {generateThreeLevels,buildLevelPages} from './discover/geminiLevels.mjs'
 import {GEMINI_MODEL} from './discover/geminiEditor.mjs'
 import {sameEvent} from './discover/bridge.mjs'
+import {isFocusedNews} from './discover/newsFocus.mjs'
 
 const cap=(n,min,max)=>Number.isSafeInteger(n)?Math.max(min,Math.min(max,n)):min
 const priorityTitle=/\b(?:world|global|international|politic|government|election|parliament|diplomat|summit|united nations|war|conflict|peace|econom|trade|market|inflation|tariff|finance|bank|sanction|refugee|migration)\w*\b/i
@@ -60,7 +61,7 @@ export async function collectDiscover({fetchImpl=fetch,geminiFetchImpl=fetchImpl
     // Feed endpoints can be on publisher-authorized dedicated hosts.
     const feedHosts=[...new Set([...source.hosts,new URL(feedUrl).hostname])]
     const xml=await fetchText(feedUrl,{fetchImpl,hosts:feedHosts,maxBytes:source.maxFeedBytes||1800000})
-    const entries=parseFeed(xml,source,{maxItems:maxPerFeed,now})
+    const entries=parseFeed(xml,source,{maxItems:maxPerFeed,now,maxAgeDays:source.maxAgeDays||60})
     if(!entries.length){
       // Date diagnostics only: never publish an archived VOA article as recent.
       const older=parseFeed(xml,source,{maxItems:1,now,maxAgeDays:3650})
@@ -72,7 +73,9 @@ export async function collectDiscover({fetchImpl=fetch,geminiFetchImpl=fetchImpl
   }
   report.sourceStatus.push({source:source.id,feedItems:found,staleFeeds:staleFeedEntries,latestStalePublication:latestFeedPublication||null,errors:errs})
  }
- const candidates=rankNewsCandidates(uniqueCandidates(discovered).filter(c=>!promotionalTitle.test(c.title)&&!excludeSourceUrls.has(c.sourceUrl)&&!excludePublishedNews.some(old=>sameEvent(c,old))));report.candidates=candidates.length
+ const unique=uniqueCandidates(discovered).filter(c=>!promotionalTitle.test(c.title)&&!excludeSourceUrls.has(c.sourceUrl)&&!excludePublishedNews.some(old=>sameEvent(c,old)))
+ const candidates=rankNewsCandidates(unique.filter(isFocusedNews));report.candidates=candidates.length
+ report.rejected['off-focus-topic']=unique.length-candidates.length
  const eligible=[],metadata=[],perSourceResults=new Map(sources.map(s=>[s.id,{attempted:0,eligible:0,rejected:{},sampleExtraction:null}]))
  for(const candidate of candidates){
   const source=sources.find(s=>s.id===candidate.sourceId)
@@ -122,7 +125,7 @@ export async function collectDiscover({fetchImpl=fetch,geminiFetchImpl=fetchImpl
     report.geminiCandidateAttempts++
     const result=await generateThreeLevels({source:candidate,apiKey,strictPages,fetchImpl:rateLimitedGeminiFetch,waitImpl:geminiWaitImpl,onRequest:()=>{if(report.geminiCalls>=maxGeminiCalls)throw Error('Gemini free-tier run budget exhausted');report.geminiCalls++}})
     if(result.editorialRepaired)report.editorialRepairs++
-    drafts.push({id:candidate.id,sourceId:candidate.sourceId,sourceName:candidate.sourceName,sourceUrl:candidate.sourceUrl,
+    drafts.push({id:candidate.id,sourceId:candidate.sourceId,sourceName:candidate.sourceName,sourceUrl:candidate.sourceUrl,author:candidate.author,
       originalPublishedAt:candidate.publishedAt,rights:candidate.rights,model:result.model,
       title:candidate.title,headline:result.headline||'',images,levelVariants:buildLevelPages(result.levelVariants,images),
       editorialState:'Three AI-assisted reading levels; human factual/legal/photo review required',

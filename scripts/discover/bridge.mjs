@@ -9,7 +9,7 @@ export const wordCount=s=>String(s||'').trim().split(/\s+/u).filter(Boolean).len
 const sha=x=>createHash('sha256').update(JSON.stringify(x)).digest('hex')
 const titleWords=s=>new Set(String(s||'').toLowerCase().normalize('NFKD').replace(/[^a-z0-9 ]/g,' ').split(/\s+/).filter(x=>x.length>3&&!['about','from','after','their','with','this','that','have','into','against','says','news','when','world'].includes(x)))
 export function sameEvent(a,b){const x=titleWords(a.title),y=titleWords(b.title);const intersection=[...x].filter(v=>y.has(v)).length;return intersection>=4&&intersection/Math.max(1,Math.min(x.size,y.size))>=.78 &&Math.abs(Date.parse(a.publishedAt)-Date.parse(b.publishedAt))<7*864e5}
-function safeSource(sourceId,url){try{const u=new URL(url);if(u.protocol!=='https:')return false;return sourceId==='global-voices'?['globalvoices.org','www.globalvoices.org'].includes(u.hostname):sourceId==='voa'?u.hostname==='learningenglish.voanews.com':sourceId==='rhinoceros'&&u.hostname==='rhinocerosmedia.org'}catch{return false}}
+function safeSource(sourceId,url){try{const u=new URL(url);if(u.protocol!=='https:')return false;return sourceId==='global-voices'?['globalvoices.org','www.globalvoices.org'].includes(u.hostname):sourceId==='voa'?u.hostname==='learningenglish.voanews.com':sourceId==='rhinoceros'?u.hostname==='rhinocerosmedia.org':sourceId==='horizon'&&u.hostname==='projects.research-and-innovation.ec.europa.eu'}catch{return false}}
 export function licensedDraft(d){const r=d?.rights;return safeSource(d?.sourceId,d?.sourceUrl)&&r?.textAllowed===true&&r?.mode==='gemini-eligible'&&(d.sourceId==='voa'?/Public domain/i.test(r.license||''):/^https:\/\/creativecommons\.org\/licenses\/by\/\d/i.test(r.licenseUrl||''))}
 export const verifiedPhoto=d=>{
  if(!d?.imageUrl)return true
@@ -51,14 +51,14 @@ export function toReaderStory(d){const errors=validateDraft(d);if(errors.length)
  const category=/\b(market|business|trade|econom\w*|tariff|bank|inflation|finance)\b/i.test(d.title)?'Economics'
   :/\b(politic\w*|government|election|parliament|diplomat\w*|summit|war|conflict|sanction\w*|junta)\b/i.test(d.title)?'Politics'
   :/\b(science|research|health|space|climate|technology)\b/i.test(d.title)?'Science':'Society'
- const item={id:d.id,title:d.title,sourceTitle:d.title,...(d.headline?{headline:d.headline}:{}),sourceUrl:d.sourceUrl,sourceName:d.sourceName,publisher:d.sourceName,contentType:'news',readingKind:'full',editorialVersion:1,
+ const item={id:d.id,title:d.title,sourceTitle:d.title,...(d.headline?{headline:d.headline}:{}),sourceUrl:d.sourceUrl,sourceName:d.sourceName,publisher:d.sourceName,...(d.author?{author:d.author}:{}),contentType:'news',readingKind:'full',editorialVersion:1,
   category,publishedAt:d.originalPublishedAt||new Date().toISOString(),license:d.rights.license,licenseUrl:d.rights.licenseUrl,
-  attribution:`${d.sourceName} — original reporting; SAGA AI-assisted educational adaptation`,
+  attribution:d.sourceId==='horizon'?`This article was originally published in Horizon, the EU Research and Innovation magazine. Original reporting by ${d.author}; SAGA AI-assisted educational adaptation`:`${d.sourceName} — original reporting; SAGA AI-assisted educational adaptation`,
   editorialState:'Machine screened and source-attributed; not a guarantee of semantic accuracy',levelVariants:levels,pages:levels['B1-B2'].pages}
  if(!validStories([item])||!readableStory(item))throw Error('Reader contract blocked news')
  return item}
 export function isJournalismStory(s){
- try{const host=new URL(s?.sourceUrl).hostname.toLowerCase();return ['globalvoices.org','www.globalvoices.org','learningenglish.voanews.com','www.voanews.com','voanews.com','www.bbc.com','www.bbc.co.uk','www.npr.org','theconversation.com','rhinocerosmedia.org'].includes(host)}catch{return false}
+ try{const host=new URL(s?.sourceUrl).hostname.toLowerCase();return ['globalvoices.org','www.globalvoices.org','learningenglish.voanews.com','www.voanews.com','voanews.com','www.bbc.com','www.bbc.co.uk','www.npr.org','theconversation.com','rhinocerosmedia.org','projects.research-and-innovation.ec.europa.eu'].includes(host)}catch{return false}
 }
 export function hasLicensedCover(s){return ['A1-A2','B1-B2','C1-C2'].every(level=>{
  const page=s?.levelVariants?.[level]?.pages?.[0];return !!page?.image&&verifiedPhoto({...s,imageUrl:page.image,imageRightsVerified:true,imageProvenance:page.imageProvenance})
@@ -70,7 +70,8 @@ export function selectFreshStories(existing,drafts,limit=2){const accepted=[],re
 export async function readCatalog(root=process.cwd()){const dir=path.join(root,'public','lore-reader'),manifest=JSON.parse(await fs.readFile(path.join(dir,'manifest.json'),'utf8'))
  if(!(['lore','news'].includes(manifest.feedType))||manifest.ready!==true||!Number.isSafeInteger(manifest.chunks)||manifest.chunks<1)throw Error('Invalid existing Reader manifest')
  const stories=[];for(let i=0;i<manifest.chunks;i++){const name=`${String(i).padStart(4,'0')}.json`,batch=JSON.parse(await fs.readFile(path.join(dir,name),'utf8'));if(!validStories(batch))throw Error('Invalid shard '+name);stories.push(...batch)}
- const published=manifest.newsOnly===true?stories.filter(s=>s.contentType==='news'):stories
+ const retired=new Set(manifest.retiredSourceUrls||[])
+ const published=manifest.newsOnly===true?stories.filter(s=>s.contentType==='news'&&!retired.has(s.sourceUrl)):stories
  if(published.length!==manifest.total)throw Error('Existing catalog count mismatch');return {dir,manifest,stories:published}}
 export async function publishDiscover({root=process.cwd(),drafts=[],limit=2,now=new Date()}={}){
  const {dir,manifest,stories}=await readCatalog(root),{accepted,rejected}=selectFreshStories(stories,drafts,limit)

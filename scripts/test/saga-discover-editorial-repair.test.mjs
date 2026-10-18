@@ -6,6 +6,9 @@ import {licensedDraft,isJournalismStory} from '../discover/bridge.mjs'
 import {extractArticle} from '../discover/article.mjs'
 import {rightsDecision} from '../discover/rights.mjs'
 import {source as rhinoceros} from '../discover/sources/rhinoceros.mjs'
+import {source as horizon} from '../discover/sources/horizon.mjs'
+import {SOURCES} from '../discover/sources/index.mjs'
+import {isFocusedNews} from '../discover/newsFocus.mjs'
 import {commonsQueryFor} from '../discover/commonsMedia.mjs'
 import {runAutoNews} from '../auto-news.mjs'
 import {sourceNewsHeadline} from '../discover/headline.mjs'
@@ -65,6 +68,25 @@ test('Rhinoceros text requires a CC BY notice on the individual article',()=>{
  assert.equal(rightsDecision(rhinoceros,licensed).textAllowed,true)
  assert.equal(rightsDecision(rhinoceros,extractArticle(body,'rhinoceros')).textAllowed,false)
  assert.equal(commonsQueryFor('Lansing city government election'),'Lansing')
+})
+
+test('stale VOA feeds are inactive and local Michigan articles cannot enter the new queue',()=>{
+ assert.equal(SOURCES.some(source=>source.id==='voa'),false)
+ assert.equal(isFocusedNews({sourceId:'rhinoceros',title:'Lansing City Council Meeting: October 12, 2026'}),false)
+ assert.equal(isFocusedNews({sourceId:'rhinoceros',title:'BWL data centers in Michigan'}),false)
+ assert.equal(isFocusedNews({sourceId:'global-voices',title:'International trade sanctions reshape Asian markets'}),true)
+ assert.equal(isFocusedNews({sourceId:'global-voices',title:'New poetry collection celebrates a local artist'}),false)
+})
+
+test('Horizon article needs its own republish control and named journalist',()=>{
+ const body='<article>'+Array.from({length:12},(_,i)=>`<p>European researchers explain how bioeconomy investments affect industry and supply chains across the continent in report ${i}, with public evidence and context.</p>`).join('')+'</article>'
+ const byline='<span class="article--author_name uppercase">Anthony King</span>'
+ const republish='<a href="/en/article/modal/15311" class="use-ajax republish">Republish</a>'
+ const article=extractArticle(republish+byline+body,'horizon')
+ assert.equal(article.author,'Anthony King')
+ assert.equal(rightsDecision(horizon,article).textAllowed,true)
+ assert.equal(rightsDecision(horizon,extractArticle(byline+body,'horizon')).textAllowed,false)
+ assert.equal(rightsDecision(horizon,extractArticle(republish+body,'horizon')).textAllowed,false)
 })
 
 const quote='Researchers invited families to study the new science report in local schools.'

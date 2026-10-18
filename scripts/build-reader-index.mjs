@@ -12,6 +12,7 @@ export async function buildReaderIndex(root=base){
  const manifest=JSON.parse(await fs.readFile(manifestFile,'utf8'))
  if(manifest.ready!==true||!Number.isSafeInteger(manifest.chunks)||manifest.chunks<1)throw Error('Invalid published catalog')
  const entries=[],ids=new Set()
+ const retired=new Set(manifest.retiredSourceUrls||[])
  for(let n=0;n<manifest.chunks;n++){
   const shard=String(n).padStart(4,'0')
   const articles=JSON.parse(await fs.readFile(path.join(dir,`${shard}.json`),'utf8'))
@@ -19,6 +20,7 @@ export async function buildReaderIndex(root=base){
   for(const item of articles){
    if(manifest.newsOnly===true&&item.contentType!=='news')continue
    if(manifest.newsOnly===true&&!isPublishedNewsStory(item))throw Error(`Unlicensed or non-journalism story in shard ${shard}: ${item.id}`)
+   if(retired.has(item.sourceUrl))continue
    const id=storyId(item)
    if(!id||ids.has(id))throw Error(`Missing or duplicate story identifier: ${id}`)
    ids.add(id)

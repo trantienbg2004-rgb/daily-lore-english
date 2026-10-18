@@ -20,7 +20,8 @@ test('published catalog has no lore but original historical shards remain',()=>{
 })
 test('published photo count and credits match every reading level',()=>{
  const manifest=JSON.parse(fs.readFileSync(dir+'manifest.json'))
- const news=Array.from({length:manifest.chunks},(_,i)=>JSON.parse(fs.readFileSync(dir+String(i).padStart(4,'0')+'.json'))).flat().filter(s=>s.contentType==='news')
+ const retired=new Set(manifest.retiredSourceUrls||[])
+ const news=Array.from({length:manifest.chunks},(_,i)=>JSON.parse(fs.readFileSync(dir+String(i).padStart(4,'0')+'.json'))).flat().filter(s=>s.contentType==='news'&&!retired.has(s.sourceUrl))
  const pictured=news.filter(s=>s.pages.some(p=>p.image))
  assert.equal(pictured.length,news.length)
  assert.ok(news.every(isPublishedNewsStory))

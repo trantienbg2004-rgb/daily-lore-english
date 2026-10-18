@@ -21,5 +21,11 @@ export function rightsDecision(source,article){
   if(!article.author)return {...metadata,reason:'unverified-author'}
   return {mode:'gemini-eligible',textAllowed:true,imageAllowed:false,reason:'verified-cc-by-text',license:'CC BY 4.0',licenseUrl:article.explicitLicense}
  }
+ if(source.id==='horizon'){
+  if(article.hasSyndicatedRights)return {...metadata,reason:'syndicated-content-sharing'}
+  if(article.explicitLicense!=='https://creativecommons.org/licenses/by/4.0/')return {...metadata,reason:'no-per-article-republish-proof'}
+  if(!article.author)return {...metadata,reason:'unverified-author'}
+  return {mode:'gemini-eligible',textAllowed:true,imageAllowed:false,reason:'verified-cc-by-text',license:'CC BY 4.0',licenseUrl:article.explicitLicense}
+ }
  return metadata
 }

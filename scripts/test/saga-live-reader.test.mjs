@@ -133,7 +133,8 @@ test('visible photo descriptions stay short while full credits remain in article
 
 test('all published news has a short display headline while original source titles remain intact',()=>{
  const manifest=JSON.parse(fs.readFileSync('public/lore-reader/manifest.json','utf8'))
- const stories=Array.from({length:manifest.chunks},(_,i)=>JSON.parse(fs.readFileSync(`public/lore-reader/${String(i).padStart(4,'0')}.json`,'utf8'))).flat().filter(s=>s.contentType==='news')
+ const retired=new Set(manifest.retiredSourceUrls||[])
+ const stories=Array.from({length:manifest.chunks},(_,i)=>JSON.parse(fs.readFileSync(`public/lore-reader/${String(i).padStart(4,'0')}.json`,'utf8'))).flat().filter(s=>s.contentType==='news'&&!retired.has(s.sourceUrl))
  assert.equal(stories.length,manifest.total)
  for(const story of stories){
   assert.equal(validatedNewsHeadline(story.headline,story.sourceTitle),story.headline)

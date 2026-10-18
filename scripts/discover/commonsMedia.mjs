@@ -2,6 +2,17 @@
  * eyewitness photography of the reported event. Missing proof means no image.
  */
 const subjects=[
+ [/\b(?:indoor|invisible) pollution\b/i,'indoor air pollution',/indoor.*(?:air|pollution)|(?:air|pollution).*indoor/i,/diagram|chart|map|poster/i],
+ [/\bfisheries\b.*\bdigital\b|\bdigital\b.*\bfisheries\b/i,'fishing vessel Europe',/(?:fishing|fishery).*(?:vessel|boat).*(?:Europe|European)|(?:Europe|European).*(?:fishing|fishery).*(?:vessel|boat)/i,/diagram|chart|map|poster/i],
+ [/\bclimate models\b/i,'climate research',/climate.*research|research.*climate/i,/diagram|chart|map|poster/i],
+ [/\bwetlands\b.*\bEurope\b|\bEurope\b.*\bwetlands\b/i,'European wetland',/(?:European|Europe).*wetland|wetland.*(?:European|Europe)/i,/diagram|chart|map|poster/i],
+ [/\bbioeconomy\b/i,'bio-based products',/bio.based products/i,/catalogue|poster|logo/i],
+ [/\bAI\b.*\banimal testing\b/i,'laboratory mouse',/lab(?:oratory)? (?:mice|mouse)|mouse.*lab/i,/diagram|drawing|vector/i],
+ [/\bhousing crisis\b.*\benergy poverty\b/i,'European apartment buildings',/apartment buildings?.*(?:Barcelona|Spain|Europe)|(?:Barcelona|Spain|Europe).*apartment buildings?/i,/mural|mailboxes/i],
+ [/\bsatellites?\b/i,'satellite solar panels',/satellite.*solar panel|solar panel.*satellite/i,/diagram|illustration|drawing/i],
+ [/\belectric motors?\b/i,'electric motor',/electric motor/i,/diagram|working process|historic|former/i],
+ [/\bfarmers?\b.*\bdigital tools\b/i,'precision agriculture',/precision (?:agriculture|farming)/i,/diagram|figure|comparison|journal|cover/i],
+ [/\bAI\b.*\bsea of data\b/i,'ocean plankton',/plankton/i,/diagram|methods|sequencing|imaging|size/i],
  [/\bKok River\b/i,'Kok River Thailand',/Kok River.*Thailand|Thailand.*Kok River/i,/elephant|boat|resort/i],
  [/\bperegrine falcons?\b/i,'Australian peregrine falcon',/Peregrine falcon.*(?:Australia|Australian|NSW|Botany Bay|Western Austra)/i,/avocet|flickr/i],
  [/\bCasablanca\b.*\b(?:music|musician)/i,'Casablanca musicians',/Krav Boca.*Casablanca|BOULEVARD Casablanca/i,/Amsterdam|1956/i],
