@@ -231,6 +231,48 @@ test('an invalid CEFR variant headline gets a small repair without regenerating 
  assert.deepEqual(Object.keys(requests[1].generationConfig.responseSchema.properties),['headlines'])
 })
 
+test('four observed NASA headline failures keep valid prose when repair repeats all levels',async()=>{
+ const cases=[
+  {title:'Fighting Drought in Texas Cotton Country',context:'Texas cotton farmers face drought and water shortages.',
+   initial:['Texas Farmers Have No Water','',''],repaired:['Texas Farmers Face Drought','Texas Cotton Farms Confront Drought','Drought and Water Shortages in Texas']},
+  {title:'Hurricane Simon Lurks Off the Mexican Coast',context:'Hurricane Simon is a storm near Mexico and approaches the Mexican coast.',
+   initial:['','',''],repaired:['Storm Near the Mexican Coast','Hurricane Simon Near Mexican Coast','Hurricane Simon Approaches Mexican Coast']},
+  {title:'Floodwaters Overwhelm Thailand',context:'Big floods and heavy rains cause widespread flooding and affect Thailand.',
+   initial:['Big Floods In Thailand','Heavy Rains Cause Widespread Thailand Floods',''],repaired:['Big Floods Hit Thailand','Heavy Rains Flood Thailand','Widespread Flooding Affects Thailand']},
+  {title:'Fires Arrive in the Amazon Rainforest',context:'Many fires burn in the Amazon rainforest and spread across the region.',
+   initial:['Many Fires Burn in the Amazon','',''],repaired:['Many Fires Burn in the Amazon','Amazon Rainforest Fires Spread','Fires Spread Across Amazon Rainforest']},
+ ]
+ for(const observed of cases){
+  const input={...valid(),headline:'Unrelated display words',variants:valid().variants.map((v,i)=>({...v,headline:observed.initial[i]}))}
+  const caseSource={...source,title:observed.title,text:source.text+' '+observed.context}
+  let calls=0
+  const result=await generateThreeLevels({source:caseSource,apiKey:'fake',fetchImpl:async(_url,options)=>{
+   calls++
+   if(calls===1)return fakeRes(input)
+   const request=JSON.parse(options.body)
+   const repairOnly=JSON.parse(request.contents[0].parts[0].text).repairOnly
+   assert.deepEqual(request.generationConfig.responseSchema.properties.headlines.items.properties.level.enum,repairOnly)
+   // A model may still return every level; valid originals must be retained.
+   return fakeRes({headlines:DISCOVER_LEVELS.map((level,i)=>({level,headline:observed.repaired[i]}))})
+  }})
+  assert.equal(calls,2,observed.title)
+  for(const [i,level] of DISCOVER_LEVELS.entries()){
+   assert.deepEqual(result.levelVariants[level].paragraphs,validateLevelDrafts(input,caseSource,{ignoreHeadlines:true})[level].paragraphs)
+   if(input.variants[i].headline&&headlineValidation(input.variants[i].headline,caseSource.title,caseSource.text).headline)
+    assert.equal(result.levelVariants[level].headline,input.variants[i].headline)
+  }
+ }
+})
+
+test('headline repair reports missing and duplicated requested levels without regenerating prose',async()=>{
+ const input=valid();input.variants[0].headline=''
+ let calls=0
+ await assert.rejects(generateThreeLevels({source,apiKey:'fake',fetchImpl:async()=>{
+  calls++;return fakeRes(calls===1?input:{headlines:[{level:'B1-B2',headline:'Researchers explain science in local schools'}]})
+ }}),error=>error.headlineOnlyFailure&&/missing: A1-A2/.test(error.message))
+ assert.equal(calls,2)
+})
+
 test('an unsupported display headline does not regenerate valid reading levels',async()=>{
  let calls=0
  const result=await generateThreeLevels({source,apiKey:'fake',fetchImpl:async()=>{
