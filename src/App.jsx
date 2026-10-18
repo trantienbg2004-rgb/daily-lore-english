@@ -76,7 +76,7 @@ function ArticlePhoto({ image, label, onBroken, onReady }) {
       aria-label={`Enlarge image: ${label || 'article photo'}`}
       onClick={() => setZoomed(true)}
       onKeyDown={event => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); setZoomed(true) } }}
-      onLoad={event => fitPhoto(event.currentTarget)}
+      onLoad={event => { fitPhoto(event.currentTarget); onReady() }}
       onError={() => onBroken(image)} />
     <button type="button" className="lore-photo-zoom-trigger" aria-label="Enlarge photo" onClick={() => setZoomed(true)}><span aria-hidden="true">⛶</span></button>
     {label && label !== 'Article photograph' && <figcaption className="lore-photo-caption">{label}</figcaption>}

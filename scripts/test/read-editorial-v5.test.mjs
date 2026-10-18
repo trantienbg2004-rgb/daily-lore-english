@@ -22,6 +22,7 @@ test('Preserves gestures, reading pagination, source credits and vocabulary view
   for(const item of ['function layoutPages(', 'changeStory(direction)', 'className="reader-gesture"','setShowCredits(true)','setTab(key)', 'tab === \'words\'', 'tab === \'review\'']) assert.ok(app.includes(item),item);
   assert.doesNotMatch(app,/saga-news-scroll|scrollAtStart/);
   assert.doesNotMatch(css,/\.page-surface\s*\{[^}]*overflow-y:\s*auto/);
+  assert.match(app,/onLoad=\{event => \{ fitPhoto\(event\.currentTarget\); onReady\(\) \}\}/);
 });
 test('Editorial CSS is scoped to Read only',()=>{
   assert.match(css,/\/\* DAILY LORE READ V5 \*\//);
