@@ -918,7 +918,7 @@ function App() {
     const total = item.pages.length + 1 // always a distinct source / next-story page
     return <div className="reader-gesture" aria-hidden={!interactive} onTouchStart={interactive ? startGesture : undefined} onTouchMove={interactive ? moveGesture : undefined} onTouchEnd={interactive ? endGesture : undefined} onTouchCancel={interactive ? cancelGesture : undefined} onPointerDown={interactive ? startPointer : undefined} onPointerMove={interactive ? movePointer : undefined} onPointerUp={interactive ? endPointer : undefined} onPointerCancel={interactive ? () => {pointerGesture.current = null; releasePageSurface()} : undefined}>
       <header className="topbar lore-reader-topbar">
-        <span className="saga-toolbar-story" title={pageNumber > 0 ? displayHeadline(item) : readerSection(item)}>{pageNumber > 0 ? displayHeadline(item) : readerSection(item)}</span>
+        <span className="saga-toolbar-story" title={readerSection(item)}>{readerSection(item)}</span>
         <div className="saga-toolbar-actions">
           {interactive && item.levelVariants && <label className="saga-news-level"><span className="saga-level-sr">Reading level</span><select aria-label="English reading level" value={readingLevel} onChange={event => changeReadingLevel(event.target.value)} onKeyDown={event => event.stopPropagation()}>{NEWS_LEVELS.map(level => <option key={level} value={level}>{level}</option>)}</select></label>}
           {interactive && !closing && <button type="button" className="icon-button saga-toolbar-audio" onClick={() => speak(itemPage.text)} aria-label="Read aloud"><Icon name="volume" size={20}/></button>}

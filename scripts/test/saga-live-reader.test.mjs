@@ -111,12 +111,13 @@ test('Commons rate limiting stops photo discovery instead of spending Gemini quo
  }),/Wikimedia Commons 429 rate limit/)
 })
 
-test('continued-page duplicate heading is hidden while toolbar title stays',()=>{
+test('toolbar keeps the section label while every news page shows its complete headline',()=>{
  const css=fs.readFileSync('src/App.css','utf8')
  const app=fs.readFileSync('src/App.jsx','utf8')
  assert.match(css,/\.lore-editorial-v5 \.reader-gesture \.article-heading-continued \{\s*display:block;\s*min-height:/)
  assert.match(css,/\.lore-editorial-v5 \.reader-gesture \.article-heading\.article-heading-continued \.deck \{display:none\}/)
- assert.match(app,/pageNumber > 0 \? displayHeadline\(item\) : readerSection\(item\)/)
+ assert.match(app,/className="saga-toolbar-story" title=\{readerSection\(item\)\}>\{readerSection\(item\)\}/)
+ assert.match(app,/pageNumber > 0 && item\.contentType !== 'news' \? 'article-heading-continued' : ''/)
  assert.ok(!app.includes('<div className="eyebrow">{readerSection(item)}</div>'))
 })
 

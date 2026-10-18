@@ -23,6 +23,8 @@ test('Photo frame tracks image width during live rendering and pagination',()=>{
 test('Every news page uses the same complete headline layout',()=>{
   assert.match(app,/pageNumber > 0 && item\.contentType !== 'news' \? 'article-heading-continued' : ''/)
   assert.match(css,/display:block; -webkit-line-clamp:unset;\s*overflow:visible/)
+  assert.match(css,/overflow:visible; margin:0; color:#24211e; text-transform:uppercase;/)
+  assert.match(css,/font:400 clamp\(23px,3\.4dvh,30px\)\/1\.08/)
 })
 test('Page counter uses actual reading-page count, replaces SWIPE and top Knowledge Story counter',()=>{
   assert.match(app,/className="lore-page-count"/)
