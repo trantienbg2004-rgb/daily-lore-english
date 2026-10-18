@@ -10,7 +10,12 @@ const genericScene=/\b(?:sunset|sunrise|skyline|landscape|city hall|town hall|pa
 const stopWords=new Set('about after again along also among around article behind being between caption city country from image images into journalist magazine media other people photo photograph picture province region report source story street their these those through under village where which while world'.split(' '))
 const placeWords=new Set('africa asia europe america myanmar bangladesh cambodia jamaica nepal peru india croatia trinidad tobago zamboanga lansing michigan sisak port spain kenya'.split(' '))
 const countryWords=new Set('myanmar bangladesh cambodia jamaica nepal peru india croatia trinidad tobago kenya'.split(' '))
-const normalizeWord=value=>value.toLowerCase().replace(/(?:ies)$/,'y').replace(/(?:es|s)$/,'').replace(/^(?:chicken)$/,'poultry').replace(/^(?:judiciary)$/,'court').replace(/^(?:uprising)$/,'protest')
+const normalizeWord=value=>{
+ let word=value.toLowerCase().replace(/ies$/,'y')
+ if(/(?:sses|ches|shes|xes|zes)$/.test(word))word=word.slice(0,-2)
+ else if(/[^s]s$/.test(word))word=word.slice(0,-1)
+ return word.replace(/^(?:chicken)$/,'poultry').replace(/^(?:judiciary)$/,'court').replace(/^(?:uprising)$/,'protest')
+}
 const subjectWords=value=>new Set(String(value||'').toLowerCase().normalize('NFKD').replace(/[^a-z0-9]+/g,' ').split(/\s+/).map(normalizeWord).filter(word=>word.length>=4&&!stopWords.has(word)&&!placeWords.has(word)))
 /** Conservative lexical subject match. A shared location never counts as a
  * subject; uncertain illustrations become text-only rather than scenic filler. */
@@ -124,11 +129,24 @@ export function assignArticlePhotos(photos,title,levelVariants){
   return typeof page==='string'?page:page?.text||''
  }
  const assigned=[],used=new Set()
- const coverCandidates=photos.map((photo,index)=>({
-  photo,index,titleScore:photoRelevanceScore(photo,title),
-  pageScores:levels.map(level=>photoRelevanceScore(photo,'',textAt(level,0))),
-  latestYear:Math.max(0,...[...String(photo.caption||'').matchAll(/\b(?:19|20)\d{2}\b/g)].map(match=>Number(match[0]))),
- })).filter(row=>row.titleScore>0&&row.pageScores.every(score=>score>0))
+ const imageYear=photo=>{
+  const pathname=new URL(photo.url).pathname
+  const dated=pathname.match(/(?:19|20)\d{2}(?:0[1-9]|1[0-2])(?:0[1-9]|[12]\d|3[01])/)
+  if(dated)return Number(dated[0].slice(0,4))
+  return Math.max(0,...[...String(photo.caption||'').matchAll(/\b(?:19|20)\d{2}\b/g)].map(match=>Number(match[0])))
+ }
+ const coverCandidates=photos.map((photo,index)=>{
+  const previous=photos[index-1]
+  const sameSceneComparison=index>0&&photo.provenance?.originType==='nasa-earth-observatory'&&
+   previous?.provenance?.sourceImageUrl===photo.provenance.sourceImageUrl&&
+   /\bsame(?:\s+\w+){0,3}\s+(?:area|region|place|scene)\b/i.test(photo.caption)&&imageYear(photo)>imageYear(previous)
+  // A later NASA frame may say "the same area" without repeating the place.
+  // It inherits the article subject only when it is a dated same-scene pair.
+  const subject=sameSceneComparison?{...photo,caption:photo.caption+' '+title}:photo
+  return {photo,index,titleScore:photoRelevanceScore(subject,title),
+   pageScores:levels.map(level=>photoRelevanceScore(subject,'',textAt(level,0))),
+   latestYear:imageYear(photo)}
+ }).filter(row=>row.titleScore>0&&row.pageScores.every(score=>score>0))
  // Comparison articles often place an older baseline before the current image.
  // The lead must show the latest event when both images fit every first page.
  coverCandidates.sort((a,b)=>b.latestYear-a.latestYear||

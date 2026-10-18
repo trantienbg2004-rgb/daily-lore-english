@@ -2,25 +2,25 @@
   "feedType": "news",
   "editorialVersion": 1,
   "ready": true,
-  "total": 50,
-  "chunks": 36,
+  "total": 54,
+  "chunks": 37,
   "sourceCount": 3,
-  "withVerifiedPhoto": 7,
+  "withVerifiedPhoto": 11,
   "sourcePhotosOnly": true,
   "byTopic": {
     "Politics": 11,
     "Economy": 4,
     "Conflict & Security": 5,
-    "Society": 6,
+    "Society": 7,
     "Culture": 3,
     "Science & Technology": 7,
-    "Environment": 11,
+    "Environment": 14,
     "Health": 3,
     "History & Geography": 0,
     "Sports": 0
   },
-  "contentHash": "df4e4c09610322da586ece7419486d19575d05fed984701d940a5808672d8e0d",
-  "updatedAt": "2026-10-18T19:52:07.366Z",
+  "contentHash": "411e641dd069bb50575abbdd130ddbea6c218598d3467004dd784f57bdecc6e4",
+  "updatedAt": "2026-10-18T20:04:04.877Z",
   "licenseNotice": "Only independently written, source-attributed educational news summaries are indexed. Historic lore shard files remain stored.",
   "catalogIndex": "catalog-index.json",
   "catalogIndexVersion": 2,
@@ -39,5 +39,5 @@
     "https://rhinocerosmedia.org/august-24-recap"
   ],
   "uniqueCoverImages": true,
-  "catalogIndexHash": "a768f8685adc07ffab7d32c6a2d1cd63889129a844f94d21f3619c619d342025"
+  "catalogIndexHash": "2cbfb9438b74e1705df5e241c8ff56b95ecae0d98a8ed4fc2da05109512bd752"
 }

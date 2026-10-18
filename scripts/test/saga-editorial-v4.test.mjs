@@ -102,6 +102,37 @@ test('current event image leads when a NASA comparison includes an older baselin
  assert.equal(assigned.find(photo=>photo.pageIndex===1)?.url,photos[0].url)
 })
 
+test('dated NASA same-area image may inherit the source subject from its comparison',()=>{
+ const sourceUrl='https://science.nasa.gov/earth/earth-observatory/floodwaters-overwhelm-thailand'
+ const base='https://assets.science.nasa.gov/content/dam/science/esd/eo/images/iotd/2026/floodwaters-overwhelm-thailand/'
+ const provenance={originType:'nasa-earth-observatory',sourceImageUrl:sourceUrl}
+ const photos=[
+  {url:base+'thailandflooding_oli_20251007.jpg',caption:'A river meanders across vegetated land in an earlier image',provenance},
+  {url:base+'thailandflooding_oli2_20261002.jpg',caption:'The same area shows floodwaters across agricultural land',provenance},
+ ]
+ const levels=Object.fromEntries(['A1-A2','B1-B2','C1-C2'].map(level=>[level,{pages:[
+  {text:'Thailand has severe floods after heavy rain in 2026.'},
+  {text:'The river and farms are under water.'},
+ ]}]))
+ const assigned=assignArticlePhotos(photos,'Floodwaters Overwhelm Thailand',levels)
+ assert.equal(assigned.find(photo=>photo.pageIndex===0)?.url,photos[1].url)
+ assert.equal(assignArticlePhotos([{...photos[1],caption:'An unrelated city photo'}],'Floodwaters Overwhelm Thailand',levels).length,0)
+})
+
+test('gravity waves image follows the page that discusses waves in all levels',()=>{
+ const storm={url:'https://example.org/storm.jpg',caption:'Hurricane Simon near the Mexican coast'}
+ const waves={url:'https://example.org/waves.jpg',caption:'Gravity waves visible in satellite imagery of Hurricane Simon'}
+ const levels=Object.fromEntries(['A1-A2','B1-B2','C1-C2'].map(level=>[level,{pages:[
+  {text:'Hurricane Simon approaches the Mexican coast.'},
+  {text:'The storm brought heavy rain to the coast.'},
+  {text:'Satellites saw gravity waves high in the air around Hurricane Simon.'},
+  {text:'Forecasters continue to watch the storm.'},
+ ]}]))
+ assert.ok(photoRelevanceScore(waves,'','Satellites saw gravity waves in the air')>=2)
+ const assigned=assignArticlePhotos([storm,waves],'Hurricane Simon near Mexican coast',levels)
+ assert.equal(assigned.find(photo=>photo.url===waves.url)?.pageIndex,2)
+})
+
 test('publication rejects Commons photos even if they have a valid CC license',()=>{
  const sourceUrl='https://globalvoices.org/2026/10/17/story/'
  assert.throws(()=>requireOriginalArticlePhotos([{sourceUrl,images:[{url:'https://upload.wikimedia.org/a.jpg',provenance:{sourceImageUrl:'https://commons.wikimedia.org/wiki/File:City.jpg',originType:'wikimedia-commons'}}]}]),/Non-original photo/)
