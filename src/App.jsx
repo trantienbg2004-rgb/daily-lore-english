@@ -26,7 +26,7 @@ const paginateStory = original => {
 // Photo frames use their true intrinsic aspect ratio. Fit within both the
 // reader width and the viewport's responsive photo height, without cropping.
 function photoFrameSize(mediaWidth,maxHeight,ratio) {
-  const imageWidth=Math.max(1,Math.min(mediaWidth*.78-8,332,maxHeight*ratio))
+  const imageWidth=Math.max(1,Math.min(mediaWidth*.94-10,420,maxHeight*ratio))
   return {imageWidth,frameWidth:Math.min(mediaWidth,imageWidth+10)}
 }
 function fitPhoto(img) {
@@ -37,10 +37,21 @@ function fitPhoto(img) {
   const maxHeight = parseFloat(getComputedStyle(img).maxHeight) || 148
   const ratio = img.naturalWidth / img.naturalHeight
   if (!Number.isFinite(ratio) || ratio <= 0) return
-  const {imageWidth,frameWidth}=photoFrameSize(media.clientWidth,maxHeight,ratio)
+  let {imageWidth,frameWidth}=photoFrameSize(media.clientWidth,maxHeight,ratio)
   frame.style.width = `${Math.ceil(frameWidth)}px`
   img.style.width = `${Math.ceil(imageWidth)}px`
   img.style.height = 'auto'
+  const text = img.closest('.page-surface')?.querySelector('.article-text')
+  const pager = img.closest('.reader-gesture')?.querySelector('.page-control')
+  if (text && pager) {
+    const excess = text.getBoundingClientRect().bottom - pager.getBoundingClientRect().top + 12
+    if (excess > 0) {
+      imageWidth = Math.max(1, imageWidth - excess * ratio)
+      frameWidth = Math.min(media.clientWidth, imageWidth + 10)
+      frame.style.width = `${Math.ceil(frameWidth)}px`
+      img.style.width = `${Math.ceil(imageWidth)}px`
+    }
+  }
 }
 
 // V20: NEVER mount an <img> until pixels have loaded. A broken thumbnail
@@ -70,7 +81,7 @@ function ArticlePhoto({ image, label, onBroken, onReady }) {
     return () => window.removeEventListener('keydown', closeOnEscape)
   }, [zoomed])
   if (!asset?.url) return null
-  return <figure className="photo-figure lore-photo-figure">
+  return <><figure className="photo-figure lore-photo-figure">
     <img src={asset.url} alt={label} decoding="async" loading="eager"
       width={asset.width} height={asset.height} role="button" tabIndex={0}
       aria-label={`Enlarge image: ${label || 'article photo'}`}
@@ -83,7 +94,7 @@ function ArticlePhoto({ image, label, onBroken, onReady }) {
       <button type="button" className="lore-lightbox-close" aria-label="Close enlarged photograph" onClick={event => { event.stopPropagation(); setZoomed(false) }}>×</button>
       <img src={asset.url} alt={label} onClick={event => event.stopPropagation()} />
     </div>, document.body)}
-  </figure>
+  </figure>{label && label !== 'Article photograph' && <p className="lore-photo-caption">{label}</p>}</>
 }
 
 // DAILY LORE READ V5: a teaser is useful only when it adds context.
@@ -127,8 +138,10 @@ function layoutPages(item, reader, badImages = new Set()) {
   const figure = document.createElement('figure')
   figure.className = 'photo-figure lore-photo-figure'
   const photo = document.createElement('img')
+  const measuredCaption = document.createElement('p')
+  measuredCaption.className = 'lore-photo-caption'
   figure.append(photo)
-  media?.replaceChildren(figure)
+  media?.replaceChildren(figure, measuredCaption)
   const footer = fixture.querySelector('.source-footer')
   if (footer) footer.style.display = 'none'
   if (!heading || !media || !paragraph || !card || !pager) return item.pages
@@ -138,6 +151,8 @@ function layoutPages(item, reader, badImages = new Set()) {
       heading.classList.toggle('article-heading-continued', !isCover)
       media.classList.toggle('article-media-empty', !image)
       media.style.display = image ? 'flex' : 'none'
+      measuredCaption.textContent = image ? photoLabel(image) : ''
+      measuredCaption.style.display = measuredCaption.textContent && measuredCaption.textContent !== 'Article photograph' ? 'block' : 'none'
       if (image) {
         // Use the verified intrinsic image geometry whenever available.
         // Match the live photo width during pagination.
@@ -917,7 +932,7 @@ function App() {
           {safeStoryUrl(item.sourceUrl) && <a className="story-end-cta" href={safeStoryUrl(item.sourceUrl)} target="_blank" rel="noopener noreferrer">Read the original article <span aria-hidden="true">↗</span></a>}
         </div><div className="story-end-next">↑ Swipe up for the next story</div>
       </section> : <>
-      <div className={'article-heading lore-article-heading ' + (pageNumber > 0 ? 'article-heading-continued' : '')}>
+      <div className={'article-heading lore-article-heading ' + (pageNumber > 0 && item.contentType !== 'news' ? 'article-heading-continued' : '')}>
         <h1 title={displayHeadline(item)} aria-live={item.contentType === 'news' ? 'polite' : undefined}>{displayHeadline(item)}</h1>
         {pageNumber === 0 && editorialDeck(item) && <p className="deck lore-deck">{editorialDeck(item)}</p>}
       </div>

@@ -26,13 +26,14 @@ test('Pager is a sibling below the swiping page surface, never linked to text he
   assert.match(app, /textBounds.bottom <= pagerBounds.top - 8/)
 })
 
-test('Portrait photos keep their own height and a snug frame in the reading flow',()=>{
+test('Portrait photos keep their own height, caption and a snug frame in the reading flow',()=>{
   assert.match(app,/function photoFrameSize\(mediaWidth,maxHeight,ratio\)/)
   assert.match(app,/frame.style.width =/)
   assert.match(app,/frameWidth:Math\.min\(mediaWidth,imageWidth\+10\)/)
   assert.match(css,/SAGA READ V8/)
   assert.match(css,/\.reader-gesture \.article-media \.photo-figure \{\s*\/\*[^]*?max-height:none;/)
-  assert.doesNotMatch(app,/<figcaption className="lore-photo-caption">/)
+  assert.match(app,/<p className="lore-photo-caption">\{label\}<\/p>/)
+  assert.match(css,/--dn-photo-height:clamp\(125px,31dvh,280px\)/)
 })
 
 test('A long first sentence fills cover reasonably instead of stopping at earliest semicolon',()=>{
