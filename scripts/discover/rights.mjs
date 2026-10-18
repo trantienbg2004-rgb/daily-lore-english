@@ -15,5 +15,11 @@ export function rightsDecision(source,article){
   if(!/^https?:\/\/creativecommons\.org\/licenses\/by\/\d/i.test(article.explicitLicense))return {...metadata,reason:'no-explicit-cc-by-proof'}
   return {mode:'gemini-eligible',textAllowed:true,imageAllowed:false,reason:'verified-cc-by-text',license:'CC BY',licenseUrl:article.explicitLicense}
  }
+ if(source.id==='rhinoceros'){
+  if(article.hasThirdPartyNotice||article.hasSyndicatedRights)return {...metadata,reason:'third-party-content-detected'}
+  if(article.explicitLicense!=='https://creativecommons.org/licenses/by/4.0/')return {...metadata,reason:'no-per-article-cc-by-proof'}
+  if(!article.author)return {...metadata,reason:'unverified-author'}
+  return {mode:'gemini-eligible',textAllowed:true,imageAllowed:false,reason:'verified-cc-by-text',license:'CC BY 4.0',licenseUrl:article.explicitLicense}
+ }
  return metadata
 }

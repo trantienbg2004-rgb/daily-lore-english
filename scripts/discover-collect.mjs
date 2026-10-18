@@ -21,6 +21,16 @@ const cap=(n,min,max)=>Number.isSafeInteger(n)?Math.max(min,Math.min(max,n)):min
 const priorityTitle=/\b(?:world|global|international|politic|government|election|parliament|diplomat|summit|united nations|war|conflict|peace|econom|trade|market|inflation|tariff|finance|bank|sanction|refugee|migration)\w*\b/i
 const promotionalTitle=/^(?:support|donate|subscribe|newsletter|join us|become a member)\b/i
 export function rankNewsCandidates(items){return [...items].sort((a,b)=>Number(priorityTitle.test(b.title))-Number(priorityTitle.test(a.title)) || b.publishedAt.localeCompare(a.publishedAt))}
+export function balanceNewsSources(items,published=[]){
+ const groups=new Map()
+ for(const item of items){if(!groups.has(item.sourceId))groups.set(item.sourceId,[]);groups.get(item.sourceId).push(item)}
+ const counts=new Map()
+ for(const story of published){const name=story.publisher||story.sourceName||'';counts.set(name,(counts.get(name)||0)+1)}
+ const names=[...groups.keys()].sort((a,b)=>(counts.get(groups.get(a)[0].sourceName)||0)-(counts.get(groups.get(b)[0].sourceName)||0))
+ const ordered=[]
+ while(ordered.length<items.length)for(const name of names){const next=groups.get(name).shift();if(next)ordered.push(next)}
+ return ordered
+}
 export async function collectDiscover({fetchImpl=fetch,geminiFetchImpl=fetchImpl,now=new Date(),sources=SOURCES,
   maxPerFeed=8,maxGemini=3,targetDrafts=1,useGemini=false,apiKey='',log=console,
   maxGeminiCalls=8,candidateBatch=0,geminiIntervalMs=5000,geminiWaitImpl=ms=>new Promise(r=>setTimeout(r,ms)),outputDir='reports/saga-discover-local',writeFiles=true,strictPages=false,excludeSourceUrls=new Set(),excludePublishedNews=[]}={}){
@@ -74,7 +84,8 @@ export async function collectDiscover({fetchImpl=fetch,geminiFetchImpl=fetchImpl
  report.eligible=eligible.length
  const batchCount=maxGemini?Math.max(1,Math.ceil(eligible.length/maxGemini)):1
  const safeBatch=Number.isSafeInteger(candidateBatch)&&candidateBatch>=0?candidateBatch:0
- const selectedCandidates=eligible.slice((safeBatch%batchCount)*maxGemini,((safeBatch%batchCount)+1)*maxGemini)
+ const balanced=balanceNewsSources(eligible,excludePublishedNews)
+ const selectedCandidates=balanced.slice((safeBatch%batchCount)*maxGemini,((safeBatch%batchCount)+1)*maxGemini)
  report.candidateBatch=safeBatch%batchCount
  for(const row of report.sourceStatus){row.articleDiagnostics=perSourceResults.get(row.source)||{attempted:0,eligible:0,rejected:{}}}
  const drafts=[]
@@ -91,7 +102,8 @@ export async function collectDiscover({fetchImpl=fetch,geminiFetchImpl=fetchImpl
    try{
     // Check photo rights before spending any of the free Gemini quota.
     const photos=[...candidate.verifiedPhotos]
-    if(photos.length<3)photos.push(...await searchCommonsImages(candidate.title,{fetchImpl,limit:3-photos.length,
+    const imageQueryTitle=candidate.sourceId==='rhinoceros'&&/\bLansing\b/i.test(candidate.text)?candidate.title+' Lansing':candidate.title
+    if(photos.length<3)photos.push(...await searchCommonsImages(imageQueryTitle,{fetchImpl,limit:3-photos.length,
       excludeUrls:photos.flatMap(photo=>[photo.url,photo.provenance.imagePageUrl])}))
     const images=photos.slice(0,3).map((photo,pageIndex)=>({...photo,pageIndex}))
     const cover=images[0]

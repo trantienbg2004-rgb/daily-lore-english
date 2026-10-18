@@ -1,7 +1,11 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
 import {generateThreeLevels,buildThreeLevelRequest,validateLevelDrafts,DISCOVER_LEVELS} from '../discover/geminiLevels.mjs'
-import {collectDiscover,rankNewsCandidates} from '../discover-collect.mjs'
+import {collectDiscover,rankNewsCandidates,balanceNewsSources} from '../discover-collect.mjs'
+import {extractArticle} from '../discover/article.mjs'
+import {rightsDecision} from '../discover/rights.mjs'
+import {source as rhinoceros} from '../discover/sources/rhinoceros.mjs'
+import {commonsQueryFor} from '../discover/commonsMedia.mjs'
 import {runAutoNews} from '../auto-news.mjs'
 import {sourceNewsHeadline} from '../discover/headline.mjs'
 
@@ -31,6 +35,20 @@ test('world politics and economy news are considered before lifestyle items',()=
  const day='2026-10-16T12:00:00Z'
  const rows=[{title:'A new local poetry book',publishedAt:day},{title:'Global trade summit reaches new agreement',publishedAt:day}]
  assert.equal(rankNewsCandidates(rows)[0].title,rows[1].title)
+})
+
+test('new verified newsroom receives an early attempt without blocking established feeds',()=>{
+ const rows=[...Array.from({length:4},(_,i)=>({sourceId:'global-voices',sourceName:'Global Voices',id:'g'+i})),
+  ...Array.from({length:2},(_,i)=>({sourceId:'rhinoceros',sourceName:'Rhinoceros Media',id:'r'+i}))]
+ assert.deepEqual(balanceNewsSources(rows,[{publisher:'Global Voices'}]).map(x=>x.id),['r0','g0','r1','g1','g2','g3'])
+})
+
+test('Rhinoceros text requires a CC BY notice on the individual article',()=>{
+ const body='<article>'+Array.from({length:12},(_,i)=>`<p>Local reporters checked public records and interviewed residents about decision ${i} affecting their neighborhood, city government, and taxes this month.</p>`).join('')+'</article>'
+ const licensed=extractArticle('<meta name="author" content="Rhinoceros Newsroom">'+body+'<p>Free to republish and remix under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></p>','rhinoceros')
+ assert.equal(rightsDecision(rhinoceros,licensed).textAllowed,true)
+ assert.equal(rightsDecision(rhinoceros,extractArticle(body,'rhinoceros')).textAllowed,false)
+ assert.equal(commonsQueryFor('Lansing city government election'),'Lansing')
 })
 
 const quote='Researchers invited families to study the new science report in local schools.'

@@ -35,7 +35,7 @@ const subjects=[
 ]
 // When no precise event query exists, a named place can supply a clearly
 // labelled contextual image. File-title matching still requires that place.
-const contextualPlaces=['Trinidad and Tobago','Latin America','Mozambique','Ecuador','Cambodia','Bangladesh','Croatia','Australia','Brazil','Ghana','China','Libya','Sahel','Africa','Jamaica','Haiti','Nepal','Peru','Ukraine','Myanmar']
+const contextualPlaces=['Trinidad and Tobago','Latin America','Mozambique','Ecuador','Cambodia','Bangladesh','Croatia','Australia','Brazil','Ghana','China','Libya','Sahel','Africa','Jamaica','Haiti','Nepal','Peru','Ukraine','Myanmar','Lansing']
 const contextualAliases=[[/\bTogolese\b/i,'Togo'],[/\bGhanaians\b/i,'Ghana'],[/\bCasablanca\b/i,'Casablanca'],[/\bPereira\b/i,'Pereira'],[/\bSouth Korean\b/i,'South Korea'],[/\bVenezuela\b/i,'Venezuela'],[/\bCatalan\b/i,'Catalonia']]
 const contextualScene=/\b(?:city|town|village|street|landscape|coast|river|mountain|forest|farm|market|skyline|buildings?|valley|countryside|neighborhood|neighbourhood|plaza|square)\b/i
 const unrelatedContext=/\b(?:ambassador|minister|army|military|soldier|police|eagle|bird|penguin|airport|hospital|administrative|division|diagram|painting|poster|sailboat|boat|museum)\b/i

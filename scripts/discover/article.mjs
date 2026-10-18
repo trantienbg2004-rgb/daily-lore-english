@@ -11,7 +11,13 @@ function meta(html,key){
  }
  return ''
 }
-function articleLicense(html){
+function articleLicense(html,sourceId){
+ if(sourceId==='rhinoceros'){
+  // This newsroom prints the CC BY notice on each story. Its RSS/channel
+  // license alone is insufficient because embedded media have separate rights.
+  const notice=String(html).match(/Free to republish and remix under[\s\S]{0,450}?https:\/\/creativecommons\.org\/licenses\/by\/4\.0\//i)
+  if(notice)return 'https://creativecommons.org/licenses/by/4.0/'
+ }
  for(const [tag] of String(html).matchAll(/<link\b[^>]*>/gi)){
   if(/\blicense\b/i.test(attr(tag,'rel'))){
    const url=attr(tag,'href').replace(/^http:/i,'https:')
@@ -51,7 +57,7 @@ export function extractArticle(html,sourceId){
  const paragraphs=readingParagraphs(html)
  const text=paragraphs.join('\n\n')
  const author=sourceId==='global-voices'?extractGlobalVoicesAuthor(html):meta(html,'author')||meta(html,'article:author')||''
- const license=articleLicense(html)
+ const license=articleLicense(html,sourceId)
  // Restrictions within story byline/source and opening body take precedence
  // over a generic footer CC license. Image credits never grant image rights.
  const nearStart=String(html).match(/<h1\b/i)?.index||0
@@ -60,7 +66,7 @@ export function extractArticle(html,sourceId){
   text,wordCount:wordCount(text),paragraphCount:paragraphs.length,
   extractionStats:htmlReadingDiagnostics(html),imageHint:meta(html,'og:image'),
   hasThirdPartyNotice:thirdPartyCredits.test(String(html).slice(0,160000)),
-  hasSyndicatedRights:sourceId==='global-voices'&&syndicated.test(opening.slice(0,4800)),
+  hasSyndicatedRights:['global-voices','rhinoceros'].includes(sourceId)&&syndicated.test(opening.slice(0,4800)),
   explicitLicense:license,credits:'',author:excludedSource.test(author)?'':author,
   publishedAt:meta(html,'article:published_time')||'',sourceId,
  }
