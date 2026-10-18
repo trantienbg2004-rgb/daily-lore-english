@@ -4,6 +4,7 @@ import path from 'node:path'
 import {createHash} from 'node:crypto'
 import {readableStory,validStories,storyId} from '../../src/lib/feedQueue.js'
 import {validatedNewsHeadline} from './headline.mjs'
+import {imageCaptionKey,imageKeys,usedCatalogImages} from './imageUniqueness.mjs'
 export const LEVELS=['A1-A2','B1-B2','C1-C2']
 export const wordCount=s=>String(s||'').trim().split(/\s+/u).filter(Boolean).length
 const sha=x=>createHash('sha256').update(JSON.stringify(x)).digest('hex')
@@ -64,8 +65,12 @@ export function hasLicensedCover(s){return ['A1-A2','B1-B2','C1-C2'].every(level
  const page=s?.levelVariants?.[level]?.pages?.[0];return !!page?.image&&verifiedPhoto({...s,imageUrl:page.image,imageRightsVerified:true,imageProvenance:page.imageProvenance})
 })}
 export function isPublishedNewsStory(s){return s?.contentType==='news'&&s?.readingKind==='full'&&isJournalismStory(s)&&!!s.license&&hasLicensedCover(s)&&Array.isArray(s.levelVariants?.['A1-A2']?.pages)&&Array.isArray(s.levelVariants?.['B1-B2']?.pages)&&Array.isArray(s.levelVariants?.['C1-C2']?.pages)&&validStories([s])&&readableStory(s)}
-export function selectFreshStories(existing,drafts,limit=2){const accepted=[],rejected=[],ids=new Set(existing.map(storyId))
- for(const d of drafts){try{const story=toReaderStory(d),id=storyId(story);if(ids.has(id))throw Error('duplicate-source-url');if([...existing,...accepted].some(s=>s.contentType==='news'&&sameEvent(s,story)))throw Error('duplicate-event');accepted.push(story);ids.add(id);if(accepted.length>=limit)break}catch(e){rejected.push({title:d?.title||'',reason:String(e.message||e)})}}
+export function selectFreshStories(existing,drafts,limit=2){const accepted=[],rejected=[],ids=new Set(existing.map(storyId)),used=usedCatalogImages(existing)
+ for(const d of drafts){try{const story=toReaderStory(d),id=storyId(story);if(ids.has(id))throw Error('duplicate-source-url');if([...existing,...accepted].some(s=>s.contentType==='news'&&sameEvent(s,story)))throw Error('duplicate-event')
+  const photos=draftPhotos(d)
+  if(photos.some(photo=>imageKeys(photo).some(key=>used.urls.has(key))||used.captions.has(imageCaptionKey(photo.caption))))throw Error('image-already-published')
+  accepted.push(story);ids.add(id);for(const photo of photos){for(const key of imageKeys(photo))used.urls.add(key);if(photo.caption)used.captions.add(imageCaptionKey(photo.caption))}
+  if(accepted.length>=limit)break}catch(e){rejected.push({title:d?.title||'',reason:String(e.message||e)})}}
  return {accepted,rejected}}
 export async function readCatalog(root=process.cwd()){const dir=path.join(root,'public','lore-reader'),manifest=JSON.parse(await fs.readFile(path.join(dir,'manifest.json'),'utf8'))
  if(!(['lore','news'].includes(manifest.feedType))||manifest.ready!==true||!Number.isSafeInteger(manifest.chunks)||manifest.chunks<1)throw Error('Invalid existing Reader manifest')

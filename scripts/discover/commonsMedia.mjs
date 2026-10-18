@@ -1,7 +1,9 @@
 /** Conservative Commons illustration search. A file is never presented as
  * eyewitness photography of the reported event. Missing proof means no image.
  */
+import {imageCaptionKey} from './imageUniqueness.mjs'
 const subjects=[
+ [/(?:\bBangladesh\b.*\b(?:protest|democra\w*)\b|\b(?:protest|democra\w*)\b.*\bBangladesh\b)/i,'Bangladesh protest',/(?:Bangladesh.*(?:protest|uprising)|(?:protest|uprising).*Bangladesh)/i,/diagram|chart|map|poster/i],
  [/\b(?:indoor|invisible) pollution\b/i,'indoor air pollution',/indoor.*(?:air|pollution)|(?:air|pollution).*indoor/i,/diagram|chart|map|poster/i],
  [/\bfisheries\b.*\bdigital\b|\bdigital\b.*\bfisheries\b/i,'fishing vessel Europe',/(?:fishing|fishery).*(?:vessel|boat).*(?:Europe|European)|(?:Europe|European).*(?:fishing|fishery).*(?:vessel|boat)/i,/diagram|chart|map|poster/i],
  [/\bclimate models\b/i,'climate research',/climate.*research|research.*climate/i,/diagram|chart|map|poster/i],
@@ -81,10 +83,9 @@ export function approvedCommonsPhoto(page,query){
   provenance:{credit:`${artist} / Wikimedia Commons`,license,licenseUrl:rawLicense,
    sourceImageUrl:imagePageUrl,imagePageUrl,originType:'wikimedia-commons'}}
 }
-export async function searchCommonsImages(title,{fetchImpl=fetch,timeoutMs=10000,limit=3,excludeUrls=[]}={}){
+export async function searchCommonsImages(title,{fetchImpl=fetch,timeoutMs=10000,limit=3,excludeUrls=[],excludeCaptions=[]}={}){
  const query=commonsQueryFor(title)
  if(!query)return []
- if(commonsQueryIsContextual(title)&&excludeUrls.length)return []
  if(commonsQueryIsContextual(title))limit=Math.min(limit,1)
  const url=new URL('https://commons.wikimedia.org/w/api.php')
  for(const [key,value] of Object.entries({action:'query',generator:'search',gsrsearch:query,gsrnamespace:'6',gsrlimit:'12',
@@ -99,7 +100,7 @@ export async function searchCommonsImages(title,{fetchImpl=fetch,timeoutMs=10000
   const excluded=new Set(excludeUrls),photos=[]
   for(const page of pages){
    const photo=approvedCommonsPhoto(page,query)
-   if(photo&&!excluded.has(photo.url)&&!excluded.has(photo.provenance.imagePageUrl)){
+   if(photo&&!excluded.has(photo.url)&&!excluded.has(photo.provenance.imagePageUrl)&&!excludeCaptions.includes(imageCaptionKey(photo.caption))){
     photos.push(photo);excluded.add(photo.url);excluded.add(photo.provenance.imagePageUrl)
     if(photos.length>=Math.max(1,Math.min(3,limit)))break
    }

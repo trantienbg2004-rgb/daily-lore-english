@@ -6,6 +6,7 @@ const compact=s=>decode(String(s||'').replace(/<[^>]+>/g,' ')).replace(/\s+/g,' 
 const getAttr=(tag,key)=>String(tag).match(new RegExp(`\\b${key}\\s*=\\s*(?:"([^"]*)"|'([^']*)')`,'i'))?.slice(1).find(x=>x!==undefined)||''
 const approved=/^https:\/\/creativecommons\.org\/licenses\/(?:by|by-sa)\/(?:2\.0|2\.5|3\.0|4\.0)\/(?:deed(?:\.[a-z-]+)?)?(?:[#?].*)?$/i
 const blocked=/\b(?:Reuters|Getty Images|AFP|Associated Press|AP Photo|Shutterstock|iStock|Alamy|all rights reserved|permission required|fair use|NC|ND)\b/i
+import {imageCaptionKey} from './imageUniqueness.mjs'
 const safeURL=(url,base)=>{
  try {const parsed=new URL(decode(url),base || undefined);if(parsed.protocol!=='https:' || !/\.(?:jpe?g|png|webp)(?:$|\?)/i.test(parsed.pathname+parsed.search))return '';return parsed.href}
  catch{return ''}
@@ -25,7 +26,7 @@ export function articleImageHint(html,baseUrl=''){
  }}
  return ''
 }
-export function licensedArticleImages(html,sourceUrl,{limit=3}={}){
+export function licensedArticleImages(html,sourceUrl,{limit=3,usedImageUrls=new Set(),usedImageCaptions=new Set()}={}){
  // A photo must carry a licence IN ITS OWN figure/caption. A page-level CC footer is not proof.
  const hints=[]
  const figures=[...String(html||'').matchAll(/<figure\b[^>]*>[\s\S]{0,9000}?<\/figure\s*>/gi),
@@ -51,6 +52,7 @@ export function licensedArticleImages(html,sourceUrl,{limit=3}={}){
   if(!credit||!/(?:photo|image|credit|by|©|courtesy)/i.test(text))continue
   const caption=decode(getAttr(img,'alt'))||text.slice(0,120)
   const imagePageUrl=safeURL(getAttr(figure.match(/<a\b[^>]*>/i)?.[0]||'','href'),sourceUrl)
+  if(usedImageUrls.has(url)||(imagePageUrl&&usedImageUrls.has(imagePageUrl))||usedImageCaptions.has(imageCaptionKey(caption)))continue
   if(!hints.some(photo=>photo.url===url))hints.push({url,caption,verified:true,provenance:{credit,license:licenseUrl.includes('/by-sa/')?'CC BY-SA':'CC BY',licenseUrl,sourceImageUrl:sourceUrl,...(imagePageUrl?{imagePageUrl}:{})}})
  }
  return hints.slice(0,Math.max(0,Math.min(3,limit)))

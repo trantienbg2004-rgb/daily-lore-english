@@ -17,6 +17,7 @@ import {generateThreeLevels,buildLevelPages} from './discover/geminiLevels.mjs'
 import {GEMINI_MODEL} from './discover/geminiEditor.mjs'
 import {sameEvent} from './discover/bridge.mjs'
 import {isFocusedNews} from './discover/newsFocus.mjs'
+import {imageCaptionKey,imageKeys,usedCatalogImages} from './discover/imageUniqueness.mjs'
 
 const cap=(n,min,max)=>Number.isSafeInteger(n)?Math.max(min,Math.min(max,n)):min
 const priorityTitle=/\b(?:world|global|international|politic|government|election|parliament|diplomat|summit|united nations|war|conflict|peace|econom|trade|market|inflation|tariff|finance|bank|sanction|refugee|migration)\w*\b/i
@@ -53,6 +54,7 @@ export async function collectDiscover({fetchImpl=fetch,geminiFetchImpl=fetchImpl
   sourceCount:sources.length,sourceStatus:[],candidates:0,eligible:0,geminiCalls:0,maxGeminiCalls,geminiCandidateAttempts:0,editorialRepairs:0,targetDrafts,drafts:0,completeThreeLevelDrafts:0,quotaExhausted:false,
   rejected:{},publishEnabled:false,publicFilesChanged:false}
  const increment=(key)=>{report.rejected[key]=(report.rejected[key]||0)+1}
+ const usedMedia=usedCatalogImages(excludePublishedNews)
  const discovered=[]
  for(const source of sources){
   let found=0,staleFeedEntries=0,latestFeedPublication='';const errs=[]
@@ -90,7 +92,7 @@ export async function collectDiscover({fetchImpl=fetch,geminiFetchImpl=fetchImpl
    if(!rights.textAllowed){
     stats.rejected[rights.reason]=(stats.rejected[rights.reason]||0)+1;metadata.push({...candidate,mode:'discovery-only',reason:rights.reason});increment(rights.reason);continue}
    stats.eligible++
-   const verifiedPhotos=licensedArticleImages(html,candidate.sourceUrl)
+   const verifiedPhotos=licensedArticleImages(html,candidate.sourceUrl,{usedImageUrls:usedMedia.urls,usedImageCaptions:usedMedia.captions})
    eligible.push({...candidate,text:article.text,rights,author:article.author||candidate.author,
     verifiedPhotos,photoHint:articleImageHint(html,candidate.sourceUrl)||candidate.photoHints?.[0]||'',
     imageRightsVerified:verifiedPhotos.length>0,imageUrl:verifiedPhotos[0]?.url||'',articleWordCount:article.wordCount})
@@ -115,10 +117,11 @@ export async function collectDiscover({fetchImpl=fetch,geminiFetchImpl=fetchImpl
    if(drafts.length>=targetDrafts || report.geminiCalls>=maxGeminiCalls)break
    try{
     // Check photo rights before spending any of the free Gemini quota.
-    const photos=[...candidate.verifiedPhotos]
+    const available=photo=>imageKeys(photo).every(key=>!usedMedia.urls.has(key))&&!usedMedia.captions.has(imageCaptionKey(photo.caption))
+    const photos=candidate.verifiedPhotos.filter(available)
     const imageQueryTitle=candidate.sourceId==='rhinoceros'&&/\bLansing\b/i.test(candidate.text)?candidate.title+' Lansing':candidate.title
     if(photos.length<3)photos.push(...await searchCommonsImages(imageQueryTitle,{fetchImpl,limit:3-photos.length,
-      excludeUrls:photos.flatMap(photo=>[photo.url,photo.provenance.imagePageUrl])}))
+      excludeUrls:[...usedMedia.urls,...photos.flatMap(photo=>imageKeys(photo))],excludeCaptions:[...usedMedia.captions]}))
     const images=photos.slice(0,3).map((photo,pageIndex)=>({...photo,pageIndex}))
     const cover=images[0]
     if(!cover){increment('no-licensed-photo');continue}
@@ -130,6 +133,7 @@ export async function collectDiscover({fetchImpl=fetch,geminiFetchImpl=fetchImpl
       title:candidate.title,headline:result.headline||'',images,levelVariants:buildLevelPages(result.levelVariants,images),
       editorialState:'Three AI-assisted reading levels; human factual/legal/photo review required',
       imageUrl:cover?.url||'',imageRightsVerified:!!cover,imageProvenance:cover?.provenance||null})
+    for(const photo of images){for(const key of imageKeys(photo))usedMedia.urls.add(key);usedMedia.captions.add(imageCaptionKey(photo.caption))}
    }catch(e){const reason=String(e?.message||e).slice(0,600)
     if(e?.rateLimited){increment('commons-rate-limited');report.sourceStatus.push({source:'commons',error:reason});break}
     console.error('SAGA GEMINI REJECTED:',JSON.stringify({sourceUrl:candidate.sourceUrl,statusCode:e?.statusCode||null,errorStatus:e?.errorStatus||null,error:reason}));increment('gemini-rejected');report.sourceStatus.push({source:'gemini:'+candidate.id,error:reason,statusCode:e?.statusCode||null,errorStatus:e?.errorStatus||null});

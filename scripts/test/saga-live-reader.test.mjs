@@ -79,8 +79,10 @@ test('country-only Commons photos must show a place, not an unrelated official o
  const photos=await searchCommonsImages('Current affairs in Mozambique',{fetchImpl,limit:3})
  assert.equal(photos.length,1)
  assert.match(photos[0].caption,/Maputo street/)
- assert.deepEqual(await searchCommonsImages('Current affairs in Mozambique',{fetchImpl,
-  excludeUrls:['https://commons.wikimedia.org/wiki/File:existing.jpg']}),[])
+ const alternative=await searchCommonsImages('Current affairs in Mozambique',{fetchImpl,
+  excludeUrls:['https://commons.wikimedia.org/wiki/File:Maputo_street_in_Mozambique.jpg']})
+ assert.equal(alternative.length,1)
+ assert.match(alternative[0].caption,/Mozambique city centre/)
  assert.equal(commonsQueryFor('Rana Tharu women in Nepal'),'Tharu Nepal')
  assert.equal(commonsQueryFor('Women at Nampula protests'),'Nampula Mozambique')
  assert.equal(commonsQueryIsContextual('Nepal reflects on protests'),true)

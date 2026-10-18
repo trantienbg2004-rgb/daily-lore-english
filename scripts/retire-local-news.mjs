@@ -7,6 +7,7 @@ import {createHash} from 'node:crypto'
 import {pathToFileURL} from 'node:url'
 import {readCatalog} from './discover/bridge.mjs'
 import {isFocusedNews} from './discover/newsFocus.mjs'
+import {coverDuplicates} from './discover/imageUniqueness.mjs'
 import {buildReaderIndex} from './build-reader-index.mjs'
 
 export async function retireLocalNews({root=process.cwd(),apply=false,minimum=45}={}){
@@ -15,15 +16,16 @@ export async function retireLocalNews({root=process.cwd(),apply=false,minimum=45
   !isFocusedNews({sourceId:'rhinoceros',title:story.title}))
  const remaining=stories.filter(story=>!remove.includes(story))
  const publishers=new Set(remaining.map(story=>story.publisher))
- const ready=remaining.length>=minimum&&publishers.size>=2&&publishers.has('Horizon Magazine')
- const result={ready,removed:remove.length,remaining:remaining.length,publishers:[...publishers],applied:false}
+ const duplicateCovers=coverDuplicates(remaining)
+ const ready=remaining.length>=minimum&&publishers.size>=2&&publishers.has('Horizon Magazine')&&duplicateCovers.length===0
+ const result={ready,removed:remove.length,remaining:remaining.length,publishers:[...publishers],duplicateCovers:duplicateCovers.length,applied:false}
  if(!apply||!ready||!remove.length)return result
  const retiredSourceUrls=[...new Set([...(manifest.retiredSourceUrls||[]),...remove.map(story=>story.sourceUrl)])]
  const byTopic={}
  for(const story of remaining)byTopic[story.category]=(byTopic[story.category]||0)+1
  const updated={...manifest,total:remaining.length,sourceCount:publishers.size,
   withVerifiedPhoto:remaining.filter(story=>story.pages.some(page=>page.image)).length,
-  byTopic,retiredSourceUrls,
+  byTopic,retiredSourceUrls,uniqueCoverImages:true,
   contentHash:createHash('sha256').update(JSON.stringify({previous:manifest.contentHash,retiredSourceUrls})).digest('hex'),
   updatedAt:new Date().toISOString()}
  delete updated.catalogIndexHash

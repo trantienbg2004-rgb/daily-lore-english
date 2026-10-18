@@ -5,13 +5,14 @@ import {createHash} from 'node:crypto'
 import {fileURLToPath} from 'node:url'
 import {storyId,validStories} from '../src/lib/feedQueue.js'
 import {isPublishedNewsStory} from './discover/bridge.mjs'
+import {coverDuplicates} from './discover/imageUniqueness.mjs'
 const base=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..')
 export async function buildReaderIndex(root=base){
  const dir=path.join(root,'public','lore-reader')
  const manifestFile=path.join(dir,'manifest.json')
  const manifest=JSON.parse(await fs.readFile(manifestFile,'utf8'))
  if(manifest.ready!==true||!Number.isSafeInteger(manifest.chunks)||manifest.chunks<1)throw Error('Invalid published catalog')
- const entries=[],ids=new Set()
+ const entries=[],ids=new Set(),indexedStories=[]
  const retired=new Set(manifest.retiredSourceUrls||[])
  for(let n=0;n<manifest.chunks;n++){
   const shard=String(n).padStart(4,'0')
@@ -21,6 +22,7 @@ export async function buildReaderIndex(root=base){
    if(manifest.newsOnly===true&&item.contentType!=='news')continue
    if(manifest.newsOnly===true&&!isPublishedNewsStory(item))throw Error(`Unlicensed or non-journalism story in shard ${shard}: ${item.id}`)
    if(retired.has(item.sourceUrl))continue
+   indexedStories.push(item)
    const id=storyId(item)
    if(!id||ids.has(id))throw Error(`Missing or duplicate story identifier: ${id}`)
    ids.add(id)
@@ -31,6 +33,7 @@ export async function buildReaderIndex(root=base){
   }
  }
  if(entries.length!==manifest.total)throw Error(`Catalog total mismatch: ${entries.length} versus ${manifest.total}`)
+ if(manifest.uniqueCoverImages===true&&coverDuplicates(indexedStories).length)throw Error('Duplicate published cover image URL or caption')
  const checksum=createHash('sha256').update(JSON.stringify(entries)).digest('hex')
  const index={version:2,contentHash:manifest.contentHash||'',total:entries.length,entries}
  const indexFile=path.join(dir,'catalog-index.json')

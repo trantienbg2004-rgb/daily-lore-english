@@ -3,7 +3,7 @@ import assert from 'node:assert/strict'
 import fs from 'node:fs/promises'
 import os from 'node:os'
 import path from 'node:path'
-import {validateDraft,toReaderStory,publishDiscover,readCatalog} from '../discover/bridge.mjs'
+import {validateDraft,toReaderStory,publishDiscover,readCatalog,selectFreshStories} from '../discover/bridge.mjs'
 import {buildReaderIndex} from '../build-reader-index.mjs'
 import {readExisting,publishLibrary} from '../lore-collect.mjs'
 const para='A careful journalist reported a new community research project. The report described public discussions about science and education in local schools. Teachers explained why people should compare sources before sharing information. Families asked questions about methods and evidence. The study encourages readers to check the original report and consider its limitations.'
@@ -22,4 +22,11 @@ test('reject wrong page length, incomplete level and publisher-restricted licens
 test('append shard, no mutation old file, index updated and stable duplicate id',async()=>{const {root,dir}=await fixture();try{const prior=await fs.readFile(path.join(dir,'0000.json'),'utf8');const result=await publishDiscover({root,drafts:[make('one')]});assert.equal(result.added,1);assert.deepEqual(result.newShards,['0001.json']);assert.equal(await fs.readFile(path.join(dir,'0000.json'),'utf8'),prior);assert.equal(JSON.parse(await fs.readFile(path.join(dir,'manifest.json'),'utf8')).withVerifiedPhoto,21);const idx=await buildReaderIndex(root);assert.equal(idx.count,21);const twice=await publishDiscover({root,drafts:[make('one')]});assert.equal(twice.added,0)}finally{await fs.rm(root,{recursive:true,force:true})}})
 test('new licensed news photo updates manifest photo count',async()=>{const {root,dir}=await fixture();try{const draft=make('photo');assert.equal((await publishDiscover({root,drafts:[draft]})).added,1);assert.equal(JSON.parse(await fs.readFile(path.join(dir,'manifest.json'),'utf8')).withVerifiedPhoto,21)}finally{await fs.rm(root,{recursive:true,force:true})}})
 test('event dedupe across different article URLs',async()=>{const {root}=await fixture();try{const result=await publishDiscover({root,drafts:[make('one'),make('two')]});assert.equal(result.added,1);assert.equal(result.rejected.length,1)}finally{await fs.rm(root,{recursive:true,force:true})}})
+test('publisher rejects a different article reusing a cover image or caption',()=>{
+ const first=make('one','International energy markets expand')
+ const second=make('two','Satellite technology changes transport')
+ const result=selectFreshStories([], [first,second],2)
+ assert.equal(result.accepted.length,1)
+ assert.match(result.rejected[0].reason,/image-already-published/)
+})
 test('scheduled encyclopedia publisher must preserve previously published news',async()=>{const {root}=await fixture();try{await publishDiscover({root,drafts:[make('one')]});const current=await readExisting(root);assert.equal(current.length,21);const p=await publishLibrary({base:root,stories:current,now:new Date('2026-10-18T00:00:00Z')});assert.equal(p.manifest.total,21);assert.equal((await readCatalog(root)).stories.filter(s=>s.contentType==='news').length,1)}finally{await fs.rm(root,{recursive:true,force:true})}})

@@ -6,6 +6,7 @@ import {validateLevelDrafts} from '../discover/geminiLevels.mjs'
 import {applyNewsLevel} from '../../src/lib/newsLevels.js'
 import {photoCreditMatches,verifiedPhoto,isPublishedNewsStory} from '../discover/bridge.mjs'
 import {photoLabel} from '../../src/lib/photoPresentation.js'
+import {coverDuplicates} from '../discover/imageUniqueness.mjs'
 const dir='public/lore-reader/'
 test('published catalog has no lore but original historical shards remain',()=>{
  const m=JSON.parse(fs.readFileSync(dir+'manifest.json'))
@@ -13,7 +14,7 @@ test('published catalog has no lore but original historical shards remain',()=>{
  assert.equal(m.newsOnly,true);assert.equal(m.feedType,'news')
  assert.equal(idx.total,m.total);assert.ok(idx.total>=6)
  assert.ok(idx.entries.every(e=>e.contentType==='news'))
- assert.ok(idx.entries.every(e=>['Global Voices','Rhinoceros Media','VOA Learning English','BBC News','NPR','The Conversation'].includes(e.publisher)))
+ assert.ok(idx.entries.every(e=>['Global Voices','Rhinoceros Media','Horizon Magazine','VOA Learning English','BBC News','NPR','The Conversation'].includes(e.publisher)))
  assert.ok(fs.existsSync(dir+'0000.json')&&fs.existsSync(dir+'0010.json'))
  const old=JSON.parse(fs.readFileSync(dir+'0000.json'))
  assert.ok(old.some(x=>x.contentType==='lore'))
@@ -45,6 +46,14 @@ test('published photo count and credits match every reading level',()=>{
    }
   }
  }
+})
+test('published cover photos have unique URLs and captions after legacy retirement',()=>{
+ const manifest=JSON.parse(fs.readFileSync(dir+'manifest.json'))
+ const retired=new Set(manifest.retiredSourceUrls||[])
+ const news=Array.from({length:manifest.chunks},(_,i)=>JSON.parse(fs.readFileSync(dir+String(i).padStart(4,'0')+'.json'))).flat().filter(s=>s.contentType==='news'&&!retired.has(s.sourceUrl))
+ const duplicates=coverDuplicates(news)
+ if(manifest.uniqueCoverImages===true)assert.deepEqual(duplicates,[])
+ else assert.ok(duplicates.every(row=>/lansing.*michigan.*skyline|landscape.of.bangladesh/i.test(row.key)))
 })
 test('natural pagination keeps text and tolerates any positive number of pages',()=>{
  const a='One short sentence.'
