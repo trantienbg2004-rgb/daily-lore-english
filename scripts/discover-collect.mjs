@@ -47,7 +47,7 @@ export async function collectDiscover({fetchImpl=fetch,geminiFetchImpl=fetchImpl
    try{
     // Feed endpoints can be on publisher-authorized dedicated hosts.
     const feedHosts=[...new Set([...source.hosts,new URL(feedUrl).hostname])]
-    const xml=await fetchText(feedUrl,{fetchImpl,hosts:feedHosts})
+    const xml=await fetchText(feedUrl,{fetchImpl,hosts:feedHosts,maxBytes:source.maxFeedBytes||1800000})
     const entries=parseFeed(xml,source,{maxItems:maxPerFeed,now})
     if(!entries.length){
       // Date diagnostics only: never publish an archived VOA article as recent.
