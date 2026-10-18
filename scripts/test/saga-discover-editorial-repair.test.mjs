@@ -94,7 +94,8 @@ const note='They explained the evidence from community meetings, and shared what
 const source={title:'Science in local schools',sourceName:'Global Voices',sourceUrl:'https://globalvoices.org/2026/10/16/local-schools/',publishedAt:'2026-10-16T00:00:00Z',text:Array(15).fill(quote+' '+note).join(' '),rights:{textAllowed:true,mode:'gemini-eligible'}}
 const words='Families and researchers talked about science in their schools. They discussed what the local report meant for people in their community. The researchers explained the evidence and described what the current study could show. The families also talked about how scientific ideas can be presented to students.'
 const paragraphs=Array(5).fill(words)
-const valid=()=>({headline:'Science report from local schools',variants:DISCOVER_LEVELS.map((level,i)=>({level,paragraphs:[...paragraphs.slice(0,4),paragraphs[4]+' '+['These ideas can help people learn from each other.','Their discussion provided a useful context for reading the evidence.','The discussion provided a more nuanced account of the scientific findings.'][i]],keyVocabulary:[{word:'science',meaningVi:'khoa học'},{word:'school',meaningVi:'trường học'},{word:'research',meaningVi:'nghiên cứu'}],evidence:[quote,quote,quote]}))})
+const valid=()=>({headline:'Science report from local schools',variants:DISCOVER_LEVELS.map((level,i)=>({level,headline:['Science helps people in local schools','Local schools discuss science findings','Science inquiry reframes local schools'][i],paragraphs:[...paragraphs.slice(0,4),paragraphs[4]+' '+['These ideas can help people learn from each other.','Their discussion provided a useful context for reading the evidence.','The discussion provided a more nuanced account of the scientific findings.'][i]],keyVocabulary:[{word:'science',meaningVi:'khoa học'},{word:'school',meaningVi:'trường học'},{word:'research',meaningVi:'nghiên cứu'}],evidence:[quote,quote,quote]}))})
+const collectorValid=()=>({...valid(),headline:'Community research report',variants:valid().variants.map((variant,i)=>({...variant,headline:['Community research report helps families','Climate community research report explained','Community research report informs climate debate'][i]}))})
 const fakeRes=data=>({ok:true,status:200,json:async()=>({candidates:[{content:{parts:[{text:JSON.stringify(data)}]}}],usageMetadata:{totalTokenCount:777}})})
 
 test('numeric claim is rejected, even if the number occurs only in a publication date',()=>{
@@ -201,7 +202,7 @@ test('one invalid news article moves to next eligible article and stops after a 
  const fetchImpl=async u=>u.includes('commons.wikimedia.org')?{ok:true,json:async()=>({query:{pages:{1:{title:'File:Climate change photo.jpg',imageinfo:[{mime:'image/jpeg',width:800,height:500,descriptionurl:'https://commons.wikimedia.org/wiki/File:Climate_change_photo.jpg',thumburl:'https://upload.wikimedia.org/wikipedia/commons/thumb/example.jpg',extmetadata:{LicenseUrl:{value:'https://creativecommons.org/licenses/by/4.0/'},LicenseShortName:{value:'CC BY 4.0'},Artist:{value:'Mira'}}}]}}}})}:{ok:true,status:200,url:u,headers:{get:()=>u.includes('/feed/')?'application/rss+xml':'text/html'},text:async()=>u.includes('/feed/')?feed:html}
  let aiCalls=0
  const failed=valid();failed.variants[0].paragraphs[0]+=' It involved 999999 students.'
- const r=await collectDiscover({sources:publishers,fetchImpl,geminiFetchImpl:async()=>{aiCalls++;return fakeRes(aiCalls<=2?failed:{...valid(),headline:'Community research report'})},now:new Date('2026-10-17T00:00:00Z'),apiKey:'fake',useGemini:true,maxGemini:3,targetDrafts:1,writeFiles:false,log:{log(){}}})
+ const r=await collectDiscover({sources:publishers,fetchImpl,geminiFetchImpl:async()=>{aiCalls++;return fakeRes(aiCalls<=2?failed:collectorValid())},now:new Date('2026-10-17T00:00:00Z'),apiKey:'fake',useGemini:true,maxGemini:3,targetDrafts:1,writeFiles:false,log:{log(){}}})
  assert.equal(r.report.candidates,3)
  assert.equal(r.report.eligible,3)
  assert.equal(r.report.geminiCandidateAttempts,2)
@@ -214,7 +215,7 @@ test('one invalid news article moves to next eligible article and stops after a 
  assert.equal(r.report.publicFilesChanged,false)
  aiCalls=0
  const unavailable=await collectDiscover({sources:publishers,fetchImpl,
-  geminiFetchImpl:async()=>{aiCalls++;return aiCalls<=6?{ok:false,status:503,headers:{get:()=>null}}:fakeRes({...valid(),headline:'Community research report'})},
+  geminiFetchImpl:async()=>{aiCalls++;return aiCalls<=6?{ok:false,status:503,headers:{get:()=>null}}:fakeRes(collectorValid())},
   now:new Date('2026-10-17T00:00:00Z'),apiKey:'fake',useGemini:true,maxGemini:3,maxGeminiCalls:8,targetDrafts:1,
   geminiIntervalMs:0,geminiWaitImpl:async()=>{},writeFiles:false,log:{log(){}}})
  assert.equal(unavailable.report.geminiCalls,7)
@@ -231,7 +232,7 @@ test('one invalid news article moves to next eligible article and stops after a 
  assert.equal(capped.report.geminiCandidateAttempts,1)
  assert.equal(capped.drafts.length,0)
  assert.equal(capped.report.quotaExhausted,false)
- const rotated=await collectDiscover({sources:publishers,fetchImpl,geminiFetchImpl:async()=>fakeRes({...valid(),headline:'Community research report'}),
+ const rotated=await collectDiscover({sources:publishers,fetchImpl,geminiFetchImpl:async()=>fakeRes(collectorValid()),
   now:new Date('2026-10-17T00:00:00Z'),apiKey:'fake',useGemini:true,maxGemini:1,candidateBatch:1,targetDrafts:1,
   geminiIntervalMs:0,writeFiles:false,log:{log(){}}})
  assert.equal(rotated.report.candidateBatch,1)

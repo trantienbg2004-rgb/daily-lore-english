@@ -4,6 +4,8 @@ import fs from 'node:fs'
 import {smartPaginate} from '../discover/smartPaginate.mjs'
 import {validateLevelDrafts} from '../discover/geminiLevels.mjs'
 import {applyNewsLevel} from '../../src/lib/newsLevels.js'
+import {displayHeadline} from '../../src/lib/editorial.js'
+import {planReadingPages} from '../../src/lib/readerPagination.js'
 import {photoCreditMatches,verifiedPhoto,isPublishedNewsStory} from '../discover/bridge.mjs'
 import {photoLabel} from '../../src/lib/photoPresentation.js'
 import {coverDuplicates} from '../discover/imageUniqueness.mjs'
@@ -55,20 +57,51 @@ test('published cover photos have unique URLs and captions after legacy retireme
  if(manifest.uniqueCoverImages===true)assert.deepEqual(duplicates,[])
  else assert.ok(duplicates.every(row=>/lansing.*michigan.*skyline|landscape.of.bangladesh/i.test(row.key)))
 })
-test('natural pagination keeps text and tolerates any positive number of pages',()=>{
+
+test('every active news level has four to six balanced pages and its own headline',()=>{
+ const manifest=JSON.parse(fs.readFileSync(dir+'manifest.json'))
+ const retired=new Set(manifest.retiredSourceUrls||[])
+ const news=Array.from({length:manifest.chunks},(_,i)=>JSON.parse(fs.readFileSync(dir+String(i).padStart(4,'0')+'.json'))).flat().filter(s=>s.contentType==='news'&&!retired.has(s.sourceUrl))
+ assert.equal(news.length,manifest.total)
+ for(const story of news){
+  const headlines=[]
+  for(const level of ['A1-A2','B1-B2','C1-C2']){
+   const variant=story.levelVariants[level]
+   assert.ok(variant.pages.length>=4&&variant.pages.length<=6,`${story.id}: ${level} page count`)
+   const words=variant.pages.map(page=>page.text.trim().split(/\s+/u).length)
+   assert.ok(words.every(count=>count>=12),`${story.id}: ${level} sparse page`)
+   assert.ok(Math.min(...words)/Math.max(...words)>=0.45,`${story.id}: ${level} unbalanced pages`)
+   assert.ok(variant.headline?.length>=14&&variant.headline.length<=60)
+   assert.equal(displayHeadline(applyNewsLevel(story,level)),variant.headline)
+   headlines.push(variant.headline.toLowerCase())
+  }
+  assert.equal(new Set(headlines).size,3,`${story.id}: repeated CEFR headline`)
+ }
+})
+test('pagination creates four to six substantial complete-sentence pages',()=>{
  const a='One short sentence.'
- assert.deepEqual(smartPaginate(a),[a])
+ assert.throws(()=>smartPaginate(a),/Too little complete text/)
  const text=Array.from({length:21},(_,i)=>`The verified report describes development number ${i}.`).join(' ')
- const pages=smartPaginate(text,{targetWords:40})
- assert.ok(pages.length>=2)
+ const pages=smartPaginate(text)
+ assert.ok(pages.length>=4&&pages.length<=6)
+ assert.ok(pages.every(page=>page.split(/\s+/u).length>=12))
  assert.equal(pages.join(' '),text)
 })
-test('3 independent levels remain acceptable with any positive page count',()=>{
- const data={variants:['A1-A2','B1-B2','C1-C2'].map((level,i)=>({level,paragraphs:Array.from({length:1+i*3},()=>`Verified reporting ${i===0?'notes':i===1?'explains':'contextualizes'} the development using distinct language and accurate evidence.`),evidence:Array(3).fill('The verified report describes the event and its consequences.'),keyVocabulary:[{word:'report',meaningVi:'báo cáo'},{word:'event',meaningVi:'sự kiện'},{word:'impact',meaningVi:'tác động'}]}))}
- const source={text:'The verified report describes the event and its consequences. '+Array(50).fill('Verified reporting can explain the context without invented claims.').join(' ')}
+
+test('Reader does not collapse four editorial news pages to three on a wide viewport',()=>{
+ const text=Array.from({length:12},(_,i)=>`The verified report explains another relevant part of this event for readers ${i}.`).join(' ')
+ const originals=smartPaginate(text).map((section,i)=>({text:section,image:i===0?'licensed-cover':'',caption:''}))
+ const rendered=planReadingPages({contentType:'news',pages:originals},({text:part})=>part.split(/\s+/u).length<=150)
+ assert.ok(rendered.length>=4)
+ assert.equal(rendered.map(page=>page.text).join(' '),text)
+ assert.equal(rendered.filter(page=>page.image).length,1)
+})
+test('three independent levels have CEFR headlines and four to six pages',()=>{
+ const data={variants:['A1-A2','B1-B2','C1-C2'].map((level,i)=>({level,headline:['Verified report describes the event','Verified report examines the event','Verified report contextualizes the event'][i],paragraphs:Array.from({length:8+i*3},()=>`Verified reporting ${i===0?'notes':i===1?'explains':'contextualizes'} the development using distinct language and accurate evidence.`),evidence:Array(3).fill('The verified report describes the event and its consequences.'),keyVocabulary:[{word:'report',meaningVi:'báo cáo'},{word:'event',meaningVi:'sự kiện'},{word:'impact',meaningVi:'tác động'}]}))}
+ const source={title:'Verified report describes the event',text:'The verified report describes the event and its consequences. '+Array(50).fill('Verified reporting can explain the context without invented claims.').join(' ')}
  const validated=validateLevelDrafts(data,source)
  assert.equal(Object.keys(validated).length,3)
- for(const level of ['A1-A2','B1-B2','C1-C2'])assert.ok(validated[level].paragraphs.length>=1)
+ for(const level of ['A1-A2','B1-B2','C1-C2'])assert.ok(validated[level].paragraphs.length>=4&&validated[level].paragraphs.length<=6)
  const story={contentType:'news',levelVariants:Object.fromEntries(Object.entries(validated).map(([level,v])=>[level,{pages:v.paragraphs.map(text=>({text,image:'',caption:''}))}]))}
- for(const level of ['A1-A2','B1-B2','C1-C2'])assert.ok(applyNewsLevel(story,level).pages.length>=1)
+ for(const level of ['A1-A2','B1-B2','C1-C2'])assert.ok(applyNewsLevel(story,level).pages.length>=4)
 })

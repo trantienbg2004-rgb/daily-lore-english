@@ -39,16 +39,16 @@ export function validateDraft(d){const problems=[];if(!d?.id||!d?.title||!licens
   images.some(photo=>photo.verified!==true||!verifiedPhoto({...d,imageUrl:photo.url,imageRightsVerified:true,imageProvenance:photo.provenance})))problems.push('unverified-image')
  if(!verifiedPhoto(d))problems.push('unverified-image')
  if(d?.headline&&!validatedNewsHeadline(d.headline,d.title))problems.push('unverified-headline')
- const variants=d?.levelVariants||{},texts=[];for(const level of LEVELS){const v=variants[level];if(!Array.isArray(v?.pages)||v.pages.length<1){problems.push(`pages:${level}`);continue}
+ const variants=d?.levelVariants||{},texts=[];for(const level of LEVELS){const v=variants[level];if(!Array.isArray(v?.pages)||v.pages.length<4||v.pages.length>6){problems.push(`pages:${level}`);continue}
   if(v.pages.some((p,i)=>typeof p?.text!=='string'||!p.text.trim()||(i===0&&(p.image||'')!==(d.imageUrl||''))))problems.push(`length:${level}`)
   if(v.pages.some(p=>!photoCreditMatches(d,p))||new Set(v.pages.filter(p=>p.image).map(p=>p.image)).size!==v.pages.filter(p=>p.image).length)problems.push(`photo-credit:${level}`)
-  const total=v.pages.reduce((t,p)=>t+wordCount(p.text),0);if(total<10)problems.push(`total:${level}`)
+  const counts=v.pages.map(p=>wordCount(p.text)),total=counts.reduce((a,b)=>a+b,0);if(total<48||Math.min(...counts)<12||Math.min(...counts)/Math.max(...counts)<.45)problems.push(`total:${level}`)
   if(!Array.isArray(v.evidence)||v.evidence.length<3||v.evidence.some(s=>typeof s!=='string'||s.length<16))problems.push(`evidence:${level}`)
   if(!Array.isArray(v.keyVocabulary)||v.keyVocabulary.length!==3)problems.push(`vocabulary:${level}`)
   texts.push(v.pages.map(p=>p.text).join(' '))
  }if(new Set(texts).size!==3)problems.push('levels-not-distinct');return problems}
 export function toReaderStory(d){const errors=validateDraft(d);if(errors.length)throw Error('Discover QA blocked: '+errors.join(', '))
- const levels=Object.fromEntries(LEVELS.map(level=>[level,{pages:d.levelVariants[level].pages.map(p=>({text:p.text.trim(),image:p.image||'',caption:p.caption||'',...(p.imageProvenance?{imageProvenance:p.imageProvenance}:{})})),keyVocabulary:d.levelVariants[level].keyVocabulary,evidence:d.levelVariants[level].evidence}]))
+ const levels=Object.fromEntries(LEVELS.map(level=>[level,{...(d.levelVariants[level].headline?{headline:d.levelVariants[level].headline}:{}),pages:d.levelVariants[level].pages.map(p=>({text:p.text.trim(),image:p.image||'',caption:p.caption||'',...(p.imageProvenance?{imageProvenance:p.imageProvenance}:{})})),keyVocabulary:d.levelVariants[level].keyVocabulary,evidence:d.levelVariants[level].evidence}]))
  const category=/\b(market|business|trade|econom\w*|tariff|bank|inflation|finance)\b/i.test(d.title)?'Economics'
   :/\b(politic\w*|government|election|parliament|diplomat\w*|summit|war|conflict|sanction\w*|junta)\b/i.test(d.title)?'Politics'
   :/\b(science|research|health|space|climate|technology)\b/i.test(d.title)?'Science':'Society'
@@ -64,7 +64,7 @@ export function isJournalismStory(s){
 export function hasLicensedCover(s){return ['A1-A2','B1-B2','C1-C2'].every(level=>{
  const page=s?.levelVariants?.[level]?.pages?.[0];return !!page?.image&&verifiedPhoto({...s,imageUrl:page.image,imageRightsVerified:true,imageProvenance:page.imageProvenance})
 })}
-export function isPublishedNewsStory(s){return s?.contentType==='news'&&s?.readingKind==='full'&&isJournalismStory(s)&&!!s.license&&hasLicensedCover(s)&&Array.isArray(s.levelVariants?.['A1-A2']?.pages)&&Array.isArray(s.levelVariants?.['B1-B2']?.pages)&&Array.isArray(s.levelVariants?.['C1-C2']?.pages)&&validStories([s])&&readableStory(s)}
+export function isPublishedNewsStory(s){return s?.contentType==='news'&&s?.readingKind==='full'&&isJournalismStory(s)&&!!s.license&&hasLicensedCover(s)&&LEVELS.every(level=>{const v=s.levelVariants?.[level];if(!Array.isArray(v?.pages)||v.pages.length<4||v.pages.length>6)return false;const sizes=v.pages.map(p=>wordCount(p.text));return Math.min(...sizes)>=12&&Math.min(...sizes)/Math.max(...sizes)>=.45})&&validStories([s])&&readableStory(s)}
 export function selectFreshStories(existing,drafts,limit=2){const accepted=[],rejected=[],ids=new Set(existing.map(storyId)),used=usedCatalogImages(existing)
  for(const d of drafts){try{const story=toReaderStory(d),id=storyId(story);if(ids.has(id))throw Error('duplicate-source-url');if([...existing,...accepted].some(s=>s.contentType==='news'&&sameEvent(s,story)))throw Error('duplicate-event')
   const photos=draftPhotos(d)

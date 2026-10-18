@@ -98,6 +98,27 @@ export function planReadingPages(item, fits, {maxPages = 250} = {}) {
     pages.push({image:image?.image || '',caption:image?.caption || '',...(image?.imageProvenance ? {imageProvenance:image.imageProvenance} : {}),text})
   }
   if (index < units.length || fragment) throw Error('Reading article exceeds page safety limit; source preserved')
+  // Keep the four editorial beats visible for news, even when a wide screen
+  // could merge them. Splitting a fitted page cannot introduce overflow.
+  if (item?.contentType === 'news' && originals.length >= 4) {
+    while (pages.length < 4) {
+      let choice=-1,parts=[]
+      for (let i=0;i<pages.length;i++) {
+        const candidate=sentenceUnits(pages[i].text)
+        if (candidate.length>parts.length && candidate.length>1) {choice=i;parts=candidate}
+      }
+      if(choice<0)throw Error('News text cannot form four complete screen pages')
+      let cut=1,score=Infinity
+      const total=wordCount(pages[choice].text)
+      for(let i=1;i<parts.length;i++) {
+        const left=wordCount(parts.slice(0,i).join(' '))
+        const difference=Math.abs(total-2*left)
+        if(difference<score){score=difference;cut=i}
+      }
+      const page=pages[choice]
+      pages.splice(choice,1,{...page,text:parts.slice(0,cut).join(' ')},{image:'',caption:'',text:parts.slice(cut).join(' ')})
+    }
+  }
   // Every source token must still exist exactly once, in the same order.
   const originalWords = trim(raw)
   if (trim(pages.map(p => p.text).join(' ')) !== originalWords) throw Error('Paginator text-integrity check failed')

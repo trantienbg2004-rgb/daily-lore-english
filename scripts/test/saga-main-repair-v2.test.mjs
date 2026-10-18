@@ -12,9 +12,9 @@ test('Gemini fenced JSON and surrounding prose can be decoded',()=>{
 
 test('Long Gemini paragraph is split without manufacturing new numbers',()=>{
  const statement='Families asked questions about the evidence and discussed why careful reporting matters in local communities.'
- const source={text:Array(30).fill(statement).join(' ')}
+ const source={title:'Families discuss local evidence',text:Array(30).fill(statement).join(' ')}
  const value={variants:['A1-A2','B1-B2','C1-C2'].map((level,i)=>({
-  level,paragraphs:[Array(28).fill(statement+' '+['Simple words.','Clear context.','Nuanced context.'][i]).join(' ')],
+  level,headline:['Families discuss local evidence','Families examine local evidence','Families contextualize local evidence'][i],paragraphs:[Array(28).fill(statement+' '+['Simple words.','Clear context.','Nuanced context.'][i]).join(' ')],
   evidence:[statement,statement,statement],
   keyVocabulary:[{word:'evidence',meaningVi:'bằng chứng'},{word:'report',meaningVi:'báo cáo'},{word:'community',meaningVi:'cộng đồng'}]
  }))}

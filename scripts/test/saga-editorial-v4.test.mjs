@@ -61,7 +61,7 @@ test('Global Voices caption must prove the individual photo license',()=>{
 test('publisher rejects unverified image, accepts a correctly credited first-page image',()=>{
  const licensedUrl='https://creativecommons.org/licenses/by/4.0/'
  const d={id:'a',title:'Verifiable source report',sourceId:'global-voices',sourceName:'Global Voices',sourceUrl:'https://globalvoices.org/2026/10/17/report/',rights:{textAllowed:true,mode:'gemini-eligible',licenseUrl:licensedUrl,license:'CC BY'},imageRightsVerified:true,imageUrl:'https://images.example.org/event.jpg',imageProvenance:{credit:'Photograph by Mira',license:'CC BY',licenseUrl:licensedUrl,sourceImageUrl:'https://globalvoices.org/2026/10/17/report/'},originalPublishedAt:'2026-10-17T00:00:00.000Z'}
- d.levelVariants=Object.fromEntries(['A1-A2','B1-B2','C1-C2'].map((lv,i)=>[lv,{pages:[{text:'Verified information '+lv+' helps readers understand the situation and public reports.',image:d.imageUrl,caption:'Event photograph',imageProvenance:d.imageProvenance}],keyVocabulary:[{word:'news',meaningVi:'tin'},{word:'report',meaningVi:'báo cáo'},{word:'event',meaningVi:'sự kiện'}],evidence:['Long source evidence example 1','Long source evidence example 2','Long source evidence example 3']}]))
+ d.levelVariants=Object.fromEntries(['A1-A2','B1-B2','C1-C2'].map((lv,i)=>[lv,{pages:Array.from({length:4},(_,page)=>({text:`Verified information at ${lv} helps readers understand the situation and public reports in this carefully explained article section ${page}.`,image:page===0?d.imageUrl:'',caption:page===0?'Event photograph':'',...(page===0?{imageProvenance:d.imageProvenance}:{})})),keyVocabulary:[{word:'news',meaningVi:'tin'},{word:'report',meaningVi:'báo cáo'},{word:'event',meaningVi:'sự kiện'}],evidence:['Long source evidence example 1','Long source evidence example 2','Long source evidence example 3']}]))
  assert.deepEqual(validateDraft(d),[])
  const published=toReaderStory(d)
  assert.equal(published.levelVariants['B1-B2'].pages[0].image,d.imageUrl)
@@ -93,14 +93,14 @@ test('publisher preserves verified photographs on pages two and three',()=>{
   rights:{textAllowed:true,mode:'gemini-eligible',licenseUrl,license:'CC BY'},images:photos,
   imageUrl:photos[0].url,imageRightsVerified:true,imageProvenance:photos[0].provenance,
   levelVariants:Object.fromEntries(['A1-A2','B1-B2','C1-C2'].map(level=>[level,{
-   pages:photos.map((photo,index)=>({text:`Verified ${level} report section ${index} explains the public event carefully.`,image:photo.url,
-    caption:photo.caption,imageProvenance:photo.provenance})),
+   pages:[...photos.map((photo,index)=>({text:`Verified ${level} report section ${index} explains the public event carefully with reliable context for readers.`,image:photo.url,
+    caption:photo.caption,imageProvenance:photo.provenance})),{text:`Verified ${level} report section adds further factual context for readers of this public event.`,image:'',caption:''}],
    keyVocabulary:[{word:'news',meaningVi:'tin'},{word:'report',meaningVi:'báo cáo'},{word:'event',meaningVi:'sự kiện'}],
    evidence:['Long source evidence example 1','Long source evidence example 2','Long source evidence example 3']}]))}
  assert.deepEqual(validateDraft(draft),[])
  assert.equal(inspectStagedRelease({mode:'gemini-staging',publishEnabled:false,publicFilesChanged:false,completeThreeLevelDrafts:1},[draft]).status,'PASS')
  const published=toReaderStory(draft)
- assert.deepEqual(published.pages.map(page=>page.image),photos.map(photo=>photo.url))
+ assert.deepEqual(published.pages.map(page=>page.image),[...photos.map(photo=>photo.url),''])
  const tampered=structuredClone(draft)
  tampered.levelVariants['A1-A2'].pages[2].imageProvenance={...tampered.levelVariants['A1-A2'].pages[2].imageProvenance,
   licenseUrl:'https://creativecommons.org/licenses/by-nc/4.0/'}

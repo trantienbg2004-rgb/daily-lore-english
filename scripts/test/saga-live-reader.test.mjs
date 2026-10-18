@@ -148,5 +148,6 @@ test('all published news has a short display headline while original source titl
  assert.equal(validatedNewsHeadline('World Bank reports 999 new projects',source.title,source.text),'')
  assert.equal(validatedNewsHeadline('World Bank and Boeing announce Asia project',source.title,source.text),'')
  assert.equal(validatedNewsHeadline('World Bank and Japan announce a major new energy project across Asia',source.title),'')
- assert.match(buildThreeLevelRequest(source).systemInstruction.parts[0].text,/headline of 5–8 words and at most 48 characters/)
+ assert.match(buildThreeLevelRequest(source).systemInstruction.parts[0].text,/DIFFERENT headline inside EACH level variant/)
+ assert.match(buildThreeLevelRequest(source).systemInstruction.parts[0].text,/4–6 balanced complete editorial pages/)
 })
