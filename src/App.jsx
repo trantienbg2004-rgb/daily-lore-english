@@ -3,7 +3,8 @@ import { createPortal } from 'react-dom'
 import './App.css'
 import { initializeSeenHistory, persistReadMarker, readLegacyHistory } from './lib/seenHistory.js'
 import { storyId } from './lib/feedQueue.js'
-import { planReadingPages, wordCount } from './lib/readerPagination.js'
+import { planReadingPages } from './lib/readerPagination.js'
+import { shortNewsPages } from './lib/shortNewsPages.js'
 import { sanitizeReadingArticle } from './lib/articleCleanup.js'
 import { refreshCatalog, refillCatalog, REFRESH_INTERVAL_MS } from './lib/continuousReader.js'
 import { QUEUE_TARGET, queuedUnread, lowOnStories, refreshDue } from './lib/loreStockPolicy.js'
@@ -16,10 +17,10 @@ import { handleReaderArrowKey } from './lib/readerKeyboard.js'
 import {NEWS_LEVELS, NEWS_LEVEL_KEY, isNewsLevel, loadNewsLevel, applyNewsLevel} from './lib/newsLevels.js'
 
 
-// Store original articles untouched: the phone decides how many reading pages fit.
+// Keep the complete adaptation for attribution while Read shows short pages.
 const paginateStory = original => {
   const item = sanitizeReadingArticle(original)
-  return { ...item, _sourcePages: item.pages }
+  return { ...item, pages: item.contentType === 'news' ? shortNewsPages(item.pages) : item.pages, _sourcePages: item.pages }
 }
 
 // Photo frames use their true intrinsic aspect ratio. Fit within both the
@@ -104,9 +105,10 @@ function safeStoryUrl(url) {
   } catch { return '' }
 }
 
-// Actual DOM measurements preserve readable type and avoid cutting paragraphs on iPhone.
-// The source article text is never discarded: long source pages become multiple screen pages.
+// Older archive items retain viewport pagination; published news uses its
+// explicitly abridged four-to-six-page reading version.
 function layoutPages(item, reader, badImages = new Set()) {
+  if (item?.contentType === 'news') return item.pages
   // Editorial pages are source units, not guaranteed screen-sized. Measure
   // every level against the actual phone viewport and the anchored pager.
   const bounds = reader.getBoundingClientRect()
@@ -138,9 +140,6 @@ function layoutPages(item, reader, badImages = new Set()) {
   reader.parentElement.appendChild(fixture)
   try {
     const fits = ({text, cover:isCover, image}) => {
-      // Keep photo pages short even before the browser has established the
-      // intrinsic image size; a later image load can only reduce text space.
-      if (item.contentType === 'news' && image && wordCount(text) > 38) return false
       heading.classList.toggle('article-heading-continued', !isCover)
       media.classList.toggle('article-media-empty', !image)
       media.style.display = image ? 'flex' : 'none'
@@ -538,9 +537,7 @@ function App() {
         if (!appended && !result.errors.length && remaining === 0 && storiesRef.current.length) {
           const previous = storiesRef.current
           const recycled = previous.filter(item=>item.contentType==='news').slice(0, Math.min(previous.length, 12))
-          setStories(old => [...old, ...recycled.map(item => ({
-            ...item, pages: (item._sourcePages || item.pages).map(p => ({...p}))
-          }))])
+          setStories(old => [...old, ...recycled.map(item => paginateStory(applyNewsLevel(item, readingLevelRef.current)))])
           appended = recycled.length
           console.info('SAGA: archive rotated without clearing history or saved words')
         }
@@ -921,7 +918,7 @@ function App() {
       </header>
       <div key={`${index}:${pageNumber}`} className={'page-surface ' + (interactive && pageMotion ? (pageMotion > 0 ? 'page-enter-left' : 'page-enter-right') : '')}>
       {closing ? <section className="story-end" aria-label="Article completed">
-        <div className="story-end-center"><Icon name="book" size={56}/><h2>That's the story.</h2>
+        <div className="story-end-center"><Icon name="book" size={56}/><h2>That's the short version.</h2>
           
           <button className="story-end-credits story-end-attribution" type="button" disabled={!interactive} onClick={() => setShowCredits(true)} aria-label="View article author, text license and individual image credits">{item.sourceName || item.publisher || 'Original source'} · Text &amp; image credits</button>
           {safeStoryUrl(item.sourceUrl) && <a className="story-end-cta" href={safeStoryUrl(item.sourceUrl)} target="_blank" rel="noopener noreferrer">Read the original article <span aria-hidden="true">↗</span></a>}
