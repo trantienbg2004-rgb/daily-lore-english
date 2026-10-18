@@ -3,7 +3,7 @@ import { createPortal } from 'react-dom'
 import './App.css'
 import { initializeSeenHistory, persistReadMarker, readLegacyHistory } from './lib/seenHistory.js'
 import { storyId } from './lib/feedQueue.js'
-import { planReadingPages } from './lib/readerPagination.js'
+import { planReadingPages, wordCount } from './lib/readerPagination.js'
 import { sanitizeReadingArticle } from './lib/articleCleanup.js'
 import { refreshCatalog, refillCatalog, REFRESH_INTERVAL_MS } from './lib/continuousReader.js'
 import { QUEUE_TARGET, queuedUnread, lowOnStories, refreshDue } from './lib/loreStockPolicy.js'
@@ -138,6 +138,9 @@ function layoutPages(item, reader, badImages = new Set()) {
   reader.parentElement.appendChild(fixture)
   try {
     const fits = ({text, cover:isCover, image}) => {
+      // Keep photo pages short even before the browser has established the
+      // intrinsic image size; a later image load can only reduce text space.
+      if (item.contentType === 'news' && image && wordCount(text) > 38) return false
       heading.classList.toggle('article-heading-continued', !isCover)
       media.classList.toggle('article-media-empty', !image)
       media.style.display = image ? 'flex' : 'none'
