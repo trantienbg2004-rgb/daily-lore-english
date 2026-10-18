@@ -49,6 +49,15 @@ jobs:
           SAGA_PUBLICATION_ROUNDS: ${{ github.event_name == 'push' && '3' || '1' }}
         run: node scripts/auto-news.mjs
 
+      - name: Preserve drafts awaiting headline review
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: saga-headline-pending-${{ github.run_id }}
+          path: reports/saga-discover-local/headline-pending-*.json
+          if-no-files-found: ignore
+          retention-days: 7
+
       - name: Validate and build
         run: |
           npm test

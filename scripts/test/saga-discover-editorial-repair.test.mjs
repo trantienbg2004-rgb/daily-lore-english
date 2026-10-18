@@ -11,7 +11,7 @@ import {SOURCES} from '../discover/sources/index.mjs'
 import {isFocusedNews} from '../discover/newsFocus.mjs'
 import {commonsQueryFor} from '../discover/commonsMedia.mjs'
 import {runAutoNews} from '../auto-news.mjs'
-import {sourceNewsHeadline} from '../discover/headline.mjs'
+import {sourceNewsHeadline,headlineValidation} from '../discover/headline.mjs'
 
 test('reviewed newsroom title shortenings remain source-backed and phone sized',()=>{
  const cases=[
@@ -96,13 +96,95 @@ test('Horizon article needs its own republish control and named journalist',()=>
 })
 
 const quote='Researchers invited families to study the new science report in local schools.'
-const note='They explained the evidence from community meetings, and shared what the study could show to people who were interested in the findings.'
+const note='They explained the evidence from community meetings, and shared what the study could show to people who were interested in the findings. Their analysis examined scientific evidence and broader educational implications.'
 const source={title:'Science in local schools',sourceName:'Global Voices',sourceUrl:'https://globalvoices.org/2026/10/16/local-schools/',publishedAt:'2026-10-16T00:00:00Z',text:Array(15).fill(quote+' '+note).join(' '),rights:{textAllowed:true,mode:'gemini-eligible'}}
 const words='Families and researchers talked about science in their schools. They discussed what the local report meant for people in their community. The researchers explained the evidence and described what the current study could show. The families also talked about how scientific ideas can be presented to students.'
 const paragraphs=Array(5).fill(words)
-const valid=()=>({headline:'Science report from local schools',variants:DISCOVER_LEVELS.map((level,i)=>({level,headline:['Science helps people in local schools','Local schools discuss science findings','Science inquiry reframes local schools'][i],paragraphs:[...paragraphs.slice(0,4),paragraphs[4]+' '+['These ideas can help people learn from each other.','Their discussion provided a useful context for reading the evidence.','The discussion provided a more nuanced account of the scientific findings.'][i]],keyVocabulary:[{word:'science',meaningVi:'khoa học'},{word:'school',meaningVi:'trường học'},{word:'research',meaningVi:'nghiên cứu'}],evidence:[quote,quote,quote]}))})
-const collectorValid=()=>({...valid(),headline:'Community research report',variants:valid().variants.map((variant,i)=>({...variant,headline:['Community research report helps families','Climate community research report explained','Community research report informs climate debate'][i]}))})
+const valid=()=>({headline:'Science report from local schools',variants:DISCOVER_LEVELS.map((level,i)=>({level,headline:['Families study science in local schools','Researchers explain science in local schools','Analysis examines scientific evidence in schools'][i],paragraphs:[...paragraphs.slice(0,4),paragraphs[4]+' '+['These ideas can help people learn from each other.','Their discussion provided a useful context for reading the evidence.','The discussion provided a more nuanced account of the scientific findings.'][i]],keyVocabulary:[{word:'science',meaningVi:'khoa học'},{word:'school',meaningVi:'trường học'},{word:'research',meaningVi:'nghiên cứu'}],evidence:[quote,quote,quote]}))})
+const collectorValid=()=>({...valid(),headline:'Community research report',variants:valid().variants.map((variant,i)=>({...variant,headline:['Community research report for families','Families examine community research report','Community research analysis examines evidence'][i]}))})
 const fakeRes=data=>({ok:true,status:200,json:async()=>({candidates:[{content:{parts:[{text:JSON.stringify(data)}]}}],usageMetadata:{totalTokenCount:777}})})
+
+test('faithful source paraphrases pass without copying two title words',()=>{
+ const title='Drought grips Texas cotton farms'
+ const text='Texas cotton farmers are confronting a severe drought across their farms.'
+ assert.equal(headlineValidation('Farmers confront water shortages',title,text).headline,'Farmers confront water shortages')
+ assert.equal(headlineValidation('Texas farmers confront water shortages',title,text).headline,'Texas farmers confront water shortages')
+ assert.equal(headlineValidation('Nevada farmers confront water shortages',title,text).reason,'unsupported-source-term')
+ assert.equal(headlineValidation('Texas farmers confront 999 shortages',title,text).reason,'unsupported-number')
+})
+
+test('three level headlines stay distinct, sourced and suited to their bands',()=>{
+ const levels=validateLevelDrafts(valid(),source)
+ assert.match(levels['A1-A2'].headline,/Families study science/)
+ assert.match(levels['B1-B2'].headline,/Researchers explain science/)
+ assert.match(levels['C1-C2'].headline,/Analysis examines scientific evidence/)
+ assert.equal(new Set(Object.values(levels).map(v=>v.headline)).size,3)
+})
+
+test('invalid B1 headline uses the sourced display headline without another request',async()=>{
+ const first=valid();first.variants[1].headline='Unsupported invented discovery elsewhere'
+ let calls=0
+ const result=await generateThreeLevels({source,apiKey:'fake',fetchImpl:async()=>{calls++;return fakeRes(first)}})
+ assert.equal(calls,1)
+ assert.equal(result.levelVariants['B1-B2'].headline,first.headline)
+ assert.ok(result.levelVariants['B1-B2'].paragraphs.length>=4&&result.levelVariants['B1-B2'].paragraphs.length<=6)
+})
+
+test('B1 headline-only Gemini repair keeps all valid prose',async()=>{
+ const first=valid();first.headline='Unsupported invented display headline';first.variants[1].headline='Unsupported invented news headline'
+ let calls=0
+ const result=await generateThreeLevels({source,apiKey:'fake',fetchImpl:async(_url,options)=>{
+  calls++
+  if(calls===1)return fakeRes(first)
+  const task=JSON.parse(JSON.parse(options.body).contents[0].parts[0].text)
+  assert.deepEqual(task.repairOnly,['B1-B2'])
+  return fakeRes({headlines:[{level:'B1-B2',headline:valid().variants[1].headline}]})
+ }})
+ assert.equal(calls,2)
+ assert.equal(result.levelVariants['B1-B2'].headline,valid().variants[1].headline)
+ assert.deepEqual(result.levelVariants['A1-A2'].paragraphs,validateLevelDrafts(valid(),source)['A1-A2'].paragraphs)
+})
+
+test('headline repair retries one 503, then retains valid prose if unavailable',async()=>{
+ const first=valid();first.variants[0].headline='Unsupported invented beginner headline'
+ let calls=0,waits=[]
+ await assert.rejects(generateThreeLevels({source,apiKey:'fake',fetchImpl:async()=>{
+  calls++;return calls===1?fakeRes(first):{ok:false,status:503}
+ },waitImpl:async ms=>waits.push(ms)}),error=>{
+  assert.equal(error.statusCode,503)
+  assert.equal(error.headlineOnlyFailure,true)
+  assert.equal(error.pendingLevelDrafts['B1-B2'].headline,valid().variants[1].headline)
+  return true
+ })
+ assert.equal(calls,3)
+ assert.deepEqual(waits,[3000])
+})
+
+test('headline-only 503 can recover on its single retry without prose regeneration',async()=>{
+ const first=valid();first.variants[0].headline='Unsupported invented beginner headline'
+ let calls=0
+ const result=await generateThreeLevels({source,apiKey:'fake',fetchImpl:async()=>{
+  calls++
+  return calls===1?fakeRes(first):calls===2?{ok:false,status:503}:fakeRes({headlines:[{level:'A1-A2',headline:valid().variants[0].headline}]})
+ },waitImpl:async()=>{}})
+ assert.equal(calls,3)
+ assert.equal(result.requestCount,3)
+ assert.equal(result.levelVariants['C1-C2'].headline,valid().variants[2].headline)
+})
+
+test('headline repair stops immediately on 429 or a spent request budget',async()=>{
+ const first=valid();first.variants[0].headline='Unsupported invented beginner headline'
+ let calls=0
+ await assert.rejects(generateThreeLevels({source,apiKey:'fake',fetchImpl:async()=>{
+  calls++;return calls===1?fakeRes(first):{ok:false,status:429}
+ }}),error=>error.statusCode===429&&error.headlineOnlyFailure)
+ assert.equal(calls,2)
+ calls=0
+ await assert.rejects(generateThreeLevels({source,apiKey:'fake',fetchImpl:async()=>{calls++;return fakeRes(first)},
+  onRequest:({requestCount})=>{if(requestCount>1)throw Error('Gemini free-tier run budget exhausted')}}),error=>
+  error.headlineOnlyFailure&&!!error.pendingLevelDrafts['C1-C2'])
+ assert.equal(calls,1)
+})
 
 test('numeric claim is rejected, even if the number occurs only in a publication date',()=>{
  const v=valid();v.variants[1].paragraphs[1]+=' The survey reached 987654 families.'
@@ -122,18 +204,17 @@ test('Gemini regenerates a rejected draft once, checking all three levels again'
  assert.ok(!JSON.stringify(result.levelVariants).includes('987654'))
 })
 
-test('a rejected headline is repaired without throwing away three valid levels',async()=>{
+test('a rejected display headline reuses the validated B1 headline without an API repair',async()=>{
  let calls=0,requests=[]
  const first={...valid(),headline:'A very long and unsupported headline about unrelated discoveries elsewhere'}
  const result=await generateThreeLevels({source,apiKey:'fake',fetchImpl:async(_url,options)=>{
-  calls++;requests.push(JSON.parse(options.body));return fakeRes(calls===1?first:{headline:'Science report from local schools'})
+  calls++;requests.push(JSON.parse(options.body));return fakeRes(first)
  }})
- assert.equal(calls,2)
- assert.equal(result.headline,'Science report from local schools')
- assert.equal(result.requestCount,2)
+ assert.equal(calls,1)
+ assert.equal(result.headline,valid().variants[1].headline)
+ assert.equal(result.requestCount,1)
  assert.equal(Object.keys(result.levelVariants).length,3)
  assert.ok(requests[0].contents[0].parts[0].text.includes('sourceEvidenceSpans'))
- assert.deepEqual(Object.keys(requests[1].generationConfig.responseSchema.properties),['headline'])
 })
 
 test('an invalid CEFR variant headline gets a small repair without regenerating valid prose',async()=>{
@@ -141,7 +222,7 @@ test('an invalid CEFR variant headline gets a small repair without regenerating 
  const first=valid();first.variants[0].headline='An unrelated and unsupported headline about something else entirely'
  const result=await generateThreeLevels({source,apiKey:'fake',fetchImpl:async(_url,options)=>{
   calls++;requests.push(JSON.parse(options.body))
-  return fakeRes(calls===1?first:{headlines:valid().variants.map(v=>({level:v.level,headline:v.headline}))})
+   return fakeRes(calls===1?first:{headlines:[{level:'A1-A2',headline:valid().variants[0].headline}]})
  }})
  assert.equal(calls,2)
  assert.equal(result.requestCount,2)
@@ -150,22 +231,23 @@ test('an invalid CEFR variant headline gets a small repair without regenerating 
  assert.deepEqual(Object.keys(requests[1].generationConfig.responseSchema.properties),['headlines'])
 })
 
-test('an unrepairable headline does not regenerate valid reading levels',async()=>{
+test('an unsupported display headline does not regenerate valid reading levels',async()=>{
  let calls=0
- await assert.rejects(generateThreeLevels({source,apiKey:'fake',fetchImpl:async()=>{
+ const result=await generateThreeLevels({source,apiKey:'fake',fetchImpl:async()=>{
   calls++
-  return fakeRes(calls===1?{...valid(),headline:'An unrelated and unsupported display title'}:{headline:'Another unrelated title'})
- }}),/editorial validation failed after 2 request\(s\): Headline is too long or unsupported by source/)
- assert.equal(calls,2)
+  return fakeRes({...valid(),headline:'An unrelated and unsupported display title'})
+ }})
+ assert.equal(result.headline,valid().variants[1].headline)
+ assert.equal(calls,1)
 })
 
-test('a short publisher clause avoids a second AI call for the headline',async()=>{
+test('a validated B1 title avoids a second AI call for an invalid display title',async()=>{
  const titledSource={...source,title:'Science report reaches local schools, but teachers seek more details'}
  let calls=0
  const result=await generateThreeLevels({source:titledSource,apiKey:'fake',fetchImpl:async()=>{
   calls++;return fakeRes({...valid(),headline:'An unrelated and unsupported display title'})
  }})
- assert.equal(result.headline,'Science report reaches local schools')
+ assert.equal(result.headline,valid().variants[1].headline)
  assert.equal(result.requestCount,1)
  assert.equal(calls,1)
 })

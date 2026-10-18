@@ -135,6 +135,7 @@ export async function collectDiscover({fetchImpl=fetch,geminiFetchImpl=fetchImpl
   lastGeminiRequestAt=Date.now()
   return geminiFetchImpl(...args)
  }
+ const headlinePending=[]
  if(useGemini){
   for(const candidate of selectedCandidates){
    if(drafts.length>=targetDrafts || report.geminiCalls>=maxGeminiCalls)break
@@ -158,6 +159,12 @@ export async function collectDiscover({fetchImpl=fetch,geminiFetchImpl=fetchImpl
     for(const photo of images){for(const key of imageKeys(photo))usedMedia.urls.add(key);usedMedia.captions.add(imageCaptionKey(photo.caption))}
    }catch(e){const reason=String(e?.message||e).slice(0,600)
     if(e?.rateLimited){increment('commons-rate-limited');report.sourceStatus.push({source:'commons',error:reason});break}
+    if(e?.headlineOnlyFailure){
+     const failure=/budget exhausted/i.test(reason)?'budget':e?.statusCode===503?'http-503':e?.statusCode===429?'http-429':'validation'
+     headlinePending.push({sourceUrl:candidate.sourceUrl,sourceName:candidate.sourceName,title:candidate.title,
+      levelVariants:e.pendingLevelDrafts,reason,failure})
+     console.error('SAGA HEADLINE REPAIR:',JSON.stringify({sourceUrl:candidate.sourceUrl,failure,error:reason}))
+    }
     console.error('SAGA GEMINI REJECTED:',JSON.stringify({sourceUrl:candidate.sourceUrl,statusCode:e?.statusCode||null,errorStatus:e?.errorStatus||null,error:reason}));increment('gemini-rejected');report.sourceStatus.push({source:'gemini:'+candidate.id,error:reason,statusCode:e?.statusCode||null,errorStatus:e?.errorStatus||null});
     // 503 is a transient provider failure for this article, not a quota stop.
     // Continue to other candidates while preserving any valid drafts.
@@ -171,6 +178,7 @@ export async function collectDiscover({fetchImpl=fetch,geminiFetchImpl=fetchImpl
   }
  }
  report.drafts=drafts.length
+ report.headlinePending=headlinePending.length
  report.completeThreeLevelDrafts=drafts.length
  if(writeFiles){
   const base=path.resolve(outputDir)
@@ -182,6 +190,7 @@ export async function collectDiscover({fetchImpl=fetch,geminiFetchImpl=fetchImpl
   await fs.writeFile(path.join(base,'source-report.json'),JSON.stringify(report,null,2)+'\n')
   await fs.writeFile(path.join(base,'discovered-metadata.json'),JSON.stringify([...metadata,...eligible.map(({text,...rest})=>rest)],null,2)+'\n')
   await fs.writeFile(path.join(base,'gemini-drafts.json'),JSON.stringify(drafts,null,2)+'\n')
+  if(headlinePending.length)await fs.writeFile(path.join(base,`headline-pending-${process.hrtime.bigint()}.json`),JSON.stringify(headlinePending,null,2)+'\n')
  }
  log.log('SAGA DISCOVER STAGING:',JSON.stringify({candidates:report.candidates,eligible:report.eligible,geminiCalls:report.geminiCalls,drafts:report.drafts,errors:Object.keys(report.rejected).length}))
  return {report,metadata,eligible,drafts,selectedCandidateUrls:selectedCandidates.map(candidate=>candidate.sourceUrl)}

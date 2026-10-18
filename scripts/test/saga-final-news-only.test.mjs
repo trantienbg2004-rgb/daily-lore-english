@@ -97,7 +97,7 @@ test('Reader does not collapse four editorial news pages to three on a wide view
 })
 test('three independent levels have CEFR headlines and four to six pages',()=>{
  const data={variants:['A1-A2','B1-B2','C1-C2'].map((level,i)=>({level,headline:['Verified report describes the event','Verified report examines the event','Verified report contextualizes the event'][i],paragraphs:Array.from({length:8+i*3},()=>`Verified reporting ${i===0?'notes':i===1?'explains':'contextualizes'} the development using distinct language and accurate evidence.`),evidence:Array(3).fill('The verified report describes the event and its consequences.'),keyVocabulary:[{word:'report',meaningVi:'báo cáo'},{word:'event',meaningVi:'sự kiện'},{word:'impact',meaningVi:'tác động'}]}))}
- const source={title:'Verified report describes the event',text:'The verified report describes the event and its consequences. '+Array(50).fill('Verified reporting can explain the context without invented claims.').join(' ')}
+ const source={title:'Verified report describes the event',text:'The verified report describes the event and its consequences. The verified report examines the event and contextualizes its consequences. '+Array(50).fill('Verified reporting can explain the context without invented claims.').join(' ')}
  const validated=validateLevelDrafts(data,source)
  assert.equal(Object.keys(validated).length,3)
  for(const level of ['A1-A2','B1-B2','C1-C2'])assert.ok(validated[level].paragraphs.length>=4&&validated[level].paragraphs.length<=6)
