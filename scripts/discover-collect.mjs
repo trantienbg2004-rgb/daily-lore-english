@@ -11,11 +11,12 @@ import {parseFeed} from './discover/rss.mjs'
 import {extractArticle} from './discover/article.mjs'
 import {licensedArticleImages,articleImageHint,assignArticlePhotos} from './discover/licensedMedia.mjs'
 import {rightsDecision} from './discover/rights.mjs'
-import {uniqueCandidates} from './discover/dedupe.mjs'
+import {uniqueCandidates,relatedPriorStory} from './discover/dedupe.mjs'
 import {generateThreeLevels,buildLevelPages} from './discover/geminiLevels.mjs'
 import {GEMINI_MODEL} from './discover/geminiEditor.mjs'
 import {sameEvent} from './discover/bridge.mjs'
 import {isFocusedNews} from './discover/newsFocus.mjs'
+import {classifyNewsTopic,newsTopicCounts} from './discover/topics.mjs'
 import {imageCaptionKey,imageKeys,usedCatalogImages} from './discover/imageUniqueness.mjs'
 
 const cap=(n,min,max)=>Number.isSafeInteger(n)?Math.max(min,Math.min(max,n)):min
@@ -39,10 +40,24 @@ export function selectNewsCandidates(items,published,maxCandidates,candidateBatc
  const globalVoices=balanced.filter(item=>item.sourceId==='global-voices')
  const batch=Number.isSafeInteger(candidateBatch)&&candidateBatch>=0?candidateBatch:0
  const rotate=rows=>rows.length?[...rows.slice(batch%rows.length),...rows.slice(0,batch%rows.length)]:[]
- const reserved=Math.min(outside.length,Math.ceil(maxCandidates*.7))
- const selected=rotate(outside).slice(0,reserved)
- selected.push(...rotate(globalVoices).slice(0,maxCandidates-selected.length))
- if(selected.length<maxCandidates)selected.push(...rotate(outside).slice(reserved,maxCandidates-selected.length+reserved))
+ const counts=newsTopicCounts(published),selected=[]
+ const other=rotate(outside),gv=rotate(globalVoices)
+ const take=pool=>{
+  if(!pool.length)return false
+  let best=0,bestScore=-Infinity
+  for(let i=0;i<pool.length;i++){
+   const candidate=pool[i],topic=classifyNewsTopic({title:candidate.title,category:candidate.topic})
+   const score=Math.min(candidate.verifiedPhotos?.length||0,6)*5-Math.log1p(counts[topic])*3
+   if(score>bestScore){best=i;bestScore=score}
+  }
+  const [candidate]=pool.splice(best,1)
+  selected.push(candidate);counts[classifyNewsTopic({title:candidate.title,category:candidate.topic})]++
+  return true
+ }
+ const reserved=Math.min(other.length,Math.ceil(maxCandidates*.7))
+ while(selected.length<reserved)take(other)
+ while(selected.length<maxCandidates&&take(gv)){}
+ while(selected.length<maxCandidates&&take(other)){}
  return selected
 }
 export async function collectDiscover({fetchImpl=fetch,geminiFetchImpl=fetchImpl,now=new Date(),sources=SOURCES,
@@ -93,16 +108,24 @@ export async function collectDiscover({fetchImpl=fetch,geminiFetchImpl=fetchImpl
     stats.rejected[rights.reason]=(stats.rejected[rights.reason]||0)+1;metadata.push({...candidate,mode:'discovery-only',reason:rights.reason});increment(rights.reason);continue}
    stats.eligible++
    const verifiedPhotos=licensedArticleImages(html,candidate.sourceUrl,{limit:5,usedImageUrls:usedMedia.urls,usedImageCaptions:usedMedia.captions,articleTitle:candidate.title,articleText:article.text})
-   eligible.push({...candidate,text:article.text,rights,author:article.author||candidate.author,
+   const topic=classifyNewsTopic({title:candidate.title,text:article.text})
+   const prior=relatedPriorStory({...candidate,text:article.text,topic},excludePublishedNews)
+   eligible.push({...candidate,text:article.text,rights,author:article.author||candidate.author,topic,
+    ...(prior?{priorAngle:{title:prior.title,topic:classifyNewsTopic(prior),summary:String(prior.levelVariants?.['B1-B2']?.pages?.[0]?.text||'').slice(0,320)}}:{}),
     verifiedPhotos,nativeImageCount:verifiedPhotos.length,photoHint:articleImageHint(html,candidate.sourceUrl)||candidate.photoHints?.[0]||'',
     imageRightsVerified:verifiedPhotos.length>0,imageUrl:verifiedPhotos[0]?.url||'',articleWordCount:article.wordCount})
   }catch(e){increment('article-fetch-error:'+source.id);perSourceResults.get(source.id).rejected['article-fetch-error']=(perSourceResults.get(source.id).rejected['article-fetch-error']||0)+1;metadata.push({...candidate,mode:'discovery-only',reason:'article-fetch-error'})}
  }
  report.eligible=eligible.length
+ const awaitingPhotos=eligible.filter(candidate=>!candidate.verifiedPhotos.length)
+ report.awaitingVerifiedLeadPhoto=awaitingPhotos.length
+ report.photoQueue=awaitingPhotos.slice(0,100).map(candidate=>({sourceUrl:candidate.sourceUrl,title:candidate.title,sourceId:candidate.sourceId,publishedAt:candidate.publishedAt,reason:'no-individually-verified-relevant-photo'}))
+ if(awaitingPhotos.length)report.rejected['awaiting-verified-lead-photo']=awaitingPhotos.length
  const safeBatch=Number.isSafeInteger(candidateBatch)&&candidateBatch>=0?candidateBatch:0
- const selectedCandidates=selectNewsCandidates(eligible,excludePublishedNews,maxGemini,safeBatch)
+ const selectedCandidates=selectNewsCandidates(eligible.filter(candidate=>candidate.verifiedPhotos.length),excludePublishedNews,maxGemini,safeBatch)
  report.candidateBatch=safeBatch
  report.selectedSources=selectedCandidates.reduce((counts,candidate)=>({...counts,[candidate.sourceId]:(counts[candidate.sourceId]||0)+1}),{})
+ report.selectedTopics=selectedCandidates.reduce((counts,candidate)=>({...counts,[candidate.topic||classifyNewsTopic(candidate)]:(counts[candidate.topic||classifyNewsTopic(candidate)]||0)+1}),{})
  for(const row of report.sourceStatus){row.articleDiagnostics=perSourceResults.get(row.source)||{attempted:0,eligible:0,rejected:{}}}
  const drafts=[]
  let lastGeminiRequestAt=0
@@ -126,7 +149,8 @@ export async function collectDiscover({fetchImpl=fetch,geminiFetchImpl=fetchImpl
     if(result.editorialRepaired)report.editorialRepairs++
     const images=assignArticlePhotos(photos,candidate.title,result.levelVariants)
     const cover=images.find(photo=>photo.pageIndex===0)
-    drafts.push({id:candidate.id,sourceId:candidate.sourceId,sourceName:candidate.sourceName,sourceUrl:candidate.sourceUrl,author:candidate.author,
+    if(!cover){increment('no-page-one-relevant-photo');continue}
+    drafts.push({id:candidate.id,sourceId:candidate.sourceId,sourceName:candidate.sourceName,sourceUrl:candidate.sourceUrl,author:candidate.author,topic:candidate.topic,
       originalPublishedAt:candidate.publishedAt,rights:candidate.rights,model:result.model,
       title:candidate.title,headline:result.headline||'',images,levelVariants:buildLevelPages(result.levelVariants,images),
       editorialState:'Three AI-assisted reading levels; human factual/legal/photo review required',

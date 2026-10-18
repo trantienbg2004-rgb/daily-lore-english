@@ -32,6 +32,7 @@ export function inspectStagedRelease(report,drafts){
   if(!compact(draft?.sourceName)||!compact(draft?.title))errors.push('Missing source or title')
   if(draft?.headline&&!validatedNewsHeadline(draft.headline,draft.title))errors.push('Unsupported or long headline')
   if(draft?.rights?.textAllowed!==true||draft?.rights?.mode!=='gemini-eligible')errors.push('Rights gate not satisfied')
+  if(!draft?.imageUrl||!draftPhotos(draft).some((photo,index)=>(photo.pageIndex??index)===0&&photo.url===draft.imageUrl))errors.push('Missing verified lead image')
   if(!safePhoto(draft))errors.push('Unverified source image must not be published')
   if(!draft?.levelVariants||DISCOVER_LEVELS.some(level=>!draft.levelVariants[level]))errors.push('Incomplete three-level variants')
   const counts={}

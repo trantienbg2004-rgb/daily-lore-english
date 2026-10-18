@@ -204,8 +204,8 @@ test('one invalid news article moves to next eligible article and stops after a 
  const publishers=[{id:'voa',name:'VOA Learning English',feedUrls:['https://learningenglish.voanews.com/feed/'],hosts:['learningenglish.voanews.com'],fetchFullText:true,policyUrl:'https://learningenglish.voanews.com/p/6861.html'}]
  const urls=['https://learningenglish.voanews.com/a/first/','https://learningenglish.voanews.com/a/second/','https://learningenglish.voanews.com/a/third/']
  const feed='<rss version="2.0"><channel>'+urls.map((u,i)=>`<item><title>Climate community research report ${['Alpha','Beta','Gamma'][i]}</title><link>${u}</link><pubDate>Fri, 16 Oct 2026 12:00:00 GMT</pubDate></item>`).join('')+'</channel></rss>'
- const html='<html><body><article>'+Array.from({length:16},(_,i)=>'<p>'+quote+' '+note+' The discussion included a different classroom activity called lesson'+i+'.</p>').join('')+'</article></body></html>'
- const fetchImpl=async u=>u.includes('commons.wikimedia.org')?{ok:true,json:async()=>({query:{pages:{1:{title:'File:Climate change photo.jpg',imageinfo:[{mime:'image/jpeg',width:800,height:500,descriptionurl:'https://commons.wikimedia.org/wiki/File:Climate_change_photo.jpg',thumburl:'https://upload.wikimedia.org/wikipedia/commons/thumb/example.jpg',extmetadata:{LicenseUrl:{value:'https://creativecommons.org/licenses/by/4.0/'},LicenseShortName:{value:'CC BY 4.0'},Artist:{value:'Mira'}}}]}}}})}:{ok:true,status:200,url:u,headers:{get:()=>u.includes('/feed/')?'application/rss+xml':'text/html'},text:async()=>u.includes('/feed/')?feed:html}
+ const html=u=>'<html><body><article><figure><img src="'+u+'climate-community.jpg" alt="Climate community research report" width="800" height="500"><figcaption>Photo by Mira, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></figcaption></figure>'+Array.from({length:16},(_,i)=>'<p>'+quote+' '+note+' The discussion included a different classroom activity called lesson'+i+'.</p>').join('')+'</article></body></html>'
+ const fetchImpl=async u=>({ok:true,status:200,url:u,headers:{get:()=>u.includes('/feed/')?'application/rss+xml':'text/html'},text:async()=>u.includes('/feed/')?feed:html(u)})
  let aiCalls=0
  const failed=valid();failed.variants[0].paragraphs[0]+=' It involved 999999 students.'
  const r=await collectDiscover({sources:publishers,fetchImpl,geminiFetchImpl:async()=>{aiCalls++;return fakeRes(aiCalls<=2?failed:collectorValid())},now:new Date('2026-10-17T00:00:00Z'),apiKey:'fake',useGemini:true,maxGemini:3,targetDrafts:1,writeFiles:false,log:{log(){}}})
@@ -244,15 +244,15 @@ test('one invalid news article moves to next eligible article and stops after a 
  assert.equal(rotated.report.candidateBatch,1)
  assert.equal(rotated.drafts[0]?.sourceUrl,urls[1].replace(/\/$/,''))
  let commonsCalls=0
- const noPhotoFetch=async url=>{if(String(url).includes('commons.wikimedia.org')){commonsCalls++;return {ok:true,json:async()=>({query:{pages:{}}})}}return fetchImpl(url)}
+ const noPhotoFetch=async url=>{if(String(url).includes('commons.wikimedia.org')){commonsCalls++;return {ok:true,json:async()=>({query:{pages:{}}})}}const response=await fetchImpl(url);return String(url).includes('/feed/')?response:{...response,text:async()=>html(url).replace(/<figure>[\s\S]*?<\/figure>/,'')}}
  let wastedGeminiCalls=0
  const noPhoto=await collectDiscover({sources:publishers,fetchImpl:noPhotoFetch,
   geminiFetchImpl:async()=>{wastedGeminiCalls++;return fakeRes(collectorValid())},
   now:new Date('2026-10-17T00:00:00Z'),apiKey:'fake',useGemini:true,maxGemini:1,targetDrafts:1,
   geminiIntervalMs:0,writeFiles:false,log:{log(){}}})
- assert.equal(noPhoto.drafts.length,1)
- assert.equal(noPhoto.drafts[0].imageUrl,'')
- assert.equal(noPhoto.report.geminiCalls,1)
- assert.equal(wastedGeminiCalls,1)
+ assert.equal(noPhoto.drafts.length,0)
+ assert.equal(noPhoto.report.awaitingVerifiedLeadPhoto,3)
+ assert.equal(noPhoto.report.geminiCalls,0)
+ assert.equal(wastedGeminiCalls,0)
  assert.equal(commonsCalls,0)
 })

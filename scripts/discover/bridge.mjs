@@ -5,11 +5,12 @@ import {createHash} from 'node:crypto'
 import {readableStory,validStories,storyId} from '../../src/lib/feedQueue.js'
 import {validatedNewsHeadline} from './headline.mjs'
 import {imageCaptionKey,imageKeys,usedCatalogImages} from './imageUniqueness.mjs'
+import {classifyNewsTopic} from './topics.mjs'
+import {storyRelationship} from './dedupe.mjs'
 export const LEVELS=['A1-A2','B1-B2','C1-C2']
 export const wordCount=s=>String(s||'').trim().split(/\s+/u).filter(Boolean).length
 const sha=x=>createHash('sha256').update(JSON.stringify(x)).digest('hex')
-const titleWords=s=>new Set(String(s||'').toLowerCase().normalize('NFKD').replace(/[^a-z0-9 ]/g,' ').split(/\s+/).filter(x=>x.length>3&&!['about','from','after','their','with','this','that','have','into','against','says','news','when','world'].includes(x)))
-export function sameEvent(a,b){const x=titleWords(a.title),y=titleWords(b.title);const intersection=[...x].filter(v=>y.has(v)).length;return intersection>=4&&intersection/Math.max(1,Math.min(x.size,y.size))>=.78 &&Math.abs(Date.parse(a.publishedAt)-Date.parse(b.publishedAt))<7*864e5}
+export function sameEvent(a,b){return storyRelationship(a,b)==='duplicate'}
 function safeSource(sourceId,url){try{const u=new URL(url);if(u.protocol!=='https:')return false;return sourceId==='global-voices'?['globalvoices.org','www.globalvoices.org'].includes(u.hostname):sourceId==='voa'?u.hostname==='learningenglish.voanews.com':sourceId==='rhinoceros'?u.hostname==='rhinocerosmedia.org':sourceId==='nasa-earth'?u.hostname==='science.nasa.gov'&&u.pathname.startsWith('/earth/earth-observatory/'):sourceId==='horizon'&&u.hostname==='projects.research-and-innovation.ec.europa.eu'}catch{return false}}
 export function licensedDraft(d){const r=d?.rights;return safeSource(d?.sourceId,d?.sourceUrl)&&r?.textAllowed===true&&r?.mode==='gemini-eligible'&&(d.sourceId==='voa'?/Public domain/i.test(r.license||''):d.sourceId==='nasa-earth'?r.licenseUrl==='https://www.nasa.gov/nasa-brand-center/images-and-media/':/^https:\/\/creativecommons\.org\/licenses\/by\/\d/i.test(r.licenseUrl||''))}
 export const verifiedPhoto=d=>{
@@ -35,6 +36,7 @@ export function photoCreditMatches(d,page){
 }
 export function validateDraft(d){const problems=[];if(!d?.id||!d?.title||!licensedDraft(d))problems.push('unlicensed-or-invalid-source')
  const images=draftPhotos(d),urls=images.map(photo=>photo.url)
+ if(!d?.imageUrl||!images.some((photo,index)=>(photo.pageIndex??index)===0&&photo.url===d.imageUrl))problems.push('missing-verified-lead-image')
  if((images.find((photo,index)=>(photo.pageIndex??index)===0)?.url||'')!==(d?.imageUrl||''))problems.push('cover-image-mismatch')
  if(images.length>5||new Set(urls).size!==urls.length||images.some((photo,index)=>!Number.isInteger(photo.pageIndex??index)||(photo.pageIndex??index)<0||(photo.pageIndex??index)>5)||
   images.some(photo=>photo.verified!==true||!verifiedPhoto({...d,imageUrl:photo.url,imageRightsVerified:true,imageProvenance:photo.provenance})))problems.push('unverified-image')
@@ -50,9 +52,7 @@ export function validateDraft(d){const problems=[];if(!d?.id||!d?.title||!licens
  }if(new Set(texts).size!==3)problems.push('levels-not-distinct');return problems}
 export function toReaderStory(d){const errors=validateDraft(d);if(errors.length)throw Error('Discover QA blocked: '+errors.join(', '))
  const levels=Object.fromEntries(LEVELS.map(level=>[level,{...(d.levelVariants[level].headline?{headline:d.levelVariants[level].headline}:{}),pages:d.levelVariants[level].pages.map(p=>({text:p.text.trim(),image:p.image||'',caption:p.caption||'',...(p.imageProvenance?{imageProvenance:p.imageProvenance}:{})})),keyVocabulary:d.levelVariants[level].keyVocabulary,evidence:d.levelVariants[level].evidence}]))
- const category=/\b(market|business|trade|econom\w*|tariff|bank|inflation|finance)\b/i.test(d.title)?'Economics'
-  :/\b(politic\w*|government|election|parliament|diplomat\w*|summit|war|conflict|sanction\w*|junta)\b/i.test(d.title)?'Politics'
-  :/\b(science|research|health|space|climate|technology)\b/i.test(d.title)?'Science':'Society'
+ const category=classifyNewsTopic({title:d.title,text:d.levelVariants?.['B1-B2']?.pages?.map(p=>p.text).join(' ')||'',category:d.topic})
  const item={id:d.id,title:d.title,sourceTitle:d.title,...(d.headline?{headline:d.headline}:{}),sourceUrl:d.sourceUrl,sourceName:d.sourceName,publisher:d.sourceName,...(d.author?{author:d.author}:{}),contentType:'news',readingKind:'full',editorialVersion:1,
   category,publishedAt:d.originalPublishedAt||new Date().toISOString(),license:d.rights.license,licenseUrl:d.rights.licenseUrl,
   attribution:d.sourceId==='horizon'?`This article was originally published in Horizon, the EU Research and Innovation magazine. Original reporting by ${d.author}; SAGA AI-assisted educational adaptation`:`${d.sourceName} — original reporting; SAGA AI-assisted educational adaptation`,

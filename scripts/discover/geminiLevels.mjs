@@ -74,7 +74,10 @@ export function buildThreeLevelRequest(source,{repairReason='',strictPages=false
  const repair=String(repairReason||'').slice(0,240)
  const allowedNumerals=[...new Set(numericFacts(String(source.text).slice(0,14500)))].slice(0,75)
  const task={sourceTitle:source.title,sourceName:source.sourceName,sourceUrl:source.sourceUrl,publishedAt:source.publishedAt,
-  sourceText:String(source.text).slice(0,14500),sourceEvidenceSpans:evidenceExamples(String(source.text).slice(0,14500)),allowedNumerals, ...(repair?{previousDraftRejected:repair,
+  sourceText:String(source.text).slice(0,14500),sourceEvidenceSpans:evidenceExamples(String(source.text).slice(0,14500)),allowedNumerals,
+  ...(source.priorAngle?{previousPublishedAngle:source.priorAngle,
+   angleInstruction:'Use the new source article as the only source of facts. Emphasize its distinct focus and do not repeat the earlier story just to fill pages.'}:{}),
+  ...(repair?{previousDraftRejected:repair,
   repairInstructions:'Regenerate all three levels from verified source only. Remove unsupported claims. Preserve distinct CEFR headlines and levels, 4–6 balanced pages per band, and exact verifiable evidence. Never add filler.'}:{})}
  return {
   systemInstruction:{parts:[{text:instructions}]},
