@@ -846,9 +846,6 @@
 .lore-editorial-v5 .reader-gesture .article-heading.article-heading-continued .eyebrow,
 .lore-editorial-v5 .reader-gesture .article-heading.article-heading-continued h1,
 .lore-editorial-v5 .reader-gesture .article-heading.article-heading-continued .deck {display:none}
-.reading-mode .reader-gesture.saga-news-scroll {touch-action:pan-y}
-.reading-mode .reader-gesture.saga-news-scroll .page-surface {overflow-x:hidden;overflow-y:auto;overscroll-behavior:contain;touch-action:pan-y;scrollbar-width:thin}
-.reading-mode .reader-gesture.saga-news-scroll .word-token {touch-action:pan-y}
 @media(max-width:380px){
   .lore-editorial-v5 .reader-gesture .topbar.lore-reader-topbar{gap:7px}
   .lore-editorial-v5 .saga-toolbar-actions{gap:5px}

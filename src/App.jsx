@@ -107,7 +107,6 @@ function safeStoryUrl(url) {
 // Actual DOM measurements preserve readable type and avoid cutting paragraphs on iPhone.
 // The source article text is never discarded: long source pages become multiple screen pages.
 function layoutPages(item, reader, badImages = new Set()) {
-  if (item?.contentType === 'news' && item?._sourcePages?.length >= 4) return item._sourcePages
   // Editorial pages are source units, not guaranteed screen-sized. Measure
   // every level against the actual phone viewport and the anchored pager.
   const bounds = reader.getBoundingClientRect()
@@ -795,21 +794,13 @@ function App() {
     surface.style.transform = 'translate3d(0,0,0)'
     surface.style.opacity = '1'
   }
-  const handleNavigationGesture = (dx, dy, scrollAtStart = null) => {
+  const handleNavigationGesture = (dx, dy) => {
     if (Math.max(Math.abs(dx), Math.abs(dy)) < 48) return
     // iOS can emit both pointerup and touchend. One gesture = one article.
     const now = Date.now()
     if (now - lastNavigationGesture.current < 280) return
     if (Math.abs(dx) > Math.abs(dy) * 1.15) changePage(dx < 0 ? 1 : -1)
-    else if (Math.abs(dy) > Math.abs(dx) * 1.15) {
-      if (story?.contentType === 'news') {
-        const surface=document.querySelector('.story-layer:not(.outgoing) .page-surface')
-        const max=(surface?.scrollHeight||0)-(surface?.clientHeight||0)
-        const start=scrollAtStart ?? surface?.scrollTop ?? 0
-        if (max>2 && (dy<0 ? start<max-2 : start>2)) return
-      }
-      changeStory(dy < 0 ? 1 : -1)
-    }
+    else if (Math.abs(dy) > Math.abs(dx) * 1.15) changeStory(dy < 0 ? 1 : -1)
     else return
     lastNavigationGesture.current = now
   }
@@ -817,8 +808,7 @@ function App() {
   // loads or a mobile browser cancel. The touch fallback is deduplicated.
   const startPointer = event => {
     if (event.pointerType !== 'touch' || selected || event.target.closest('button, a, summary, select, label')) return
-    const surface=event.target.closest('.page-surface')
-    pointerGesture.current = {id: event.pointerId, x: event.clientX, y: event.clientY, scrollAtStart:surface?.scrollTop??null}
+    pointerGesture.current = {id: event.pointerId, x: event.clientX, y: event.clientY}
   }
   const movePointer = event => {
     if (!pointerGesture.current || pointerGesture.current.id !== event.pointerId) return
@@ -826,10 +816,10 @@ function App() {
   }
   const endPointer = event => {
     if (!pointerGesture.current || pointerGesture.current.id !== event.pointerId) return
-    const {x, y, scrollAtStart} = pointerGesture.current
+    const {x, y} = pointerGesture.current
     pointerGesture.current = null
     releasePageSurface()
-    handleNavigationGesture(event.clientX - x, event.clientY - y,scrollAtStart)
+    handleNavigationGesture(event.clientX - x, event.clientY - y)
   }
   const nextReview = () => {
     if (reviewIndex + 1 >= words.length) setFinished(true)
@@ -842,7 +832,7 @@ function App() {
     const control = event.target.closest('button')
     if ((control && !control.classList.contains('word-token')) || event.target.closest('a, summary, select, label')) { gesture.current = null; return }
     suppressWordClick.current = false
-    gesture.current = { x: event.touches[0].clientX, y: event.touches[0].clientY, moved: false, scrollAtStart:event.target.closest('.page-surface')?.scrollTop??null }
+    gesture.current = { x: event.touches[0].clientX, y: event.touches[0].clientY, moved: false }
   }
   const moveGesture = event => {
     if (!gesture.current || event.touches.length !== 1) return
@@ -858,10 +848,9 @@ function App() {
     if (!gesture.current || selected) return
     const dx = event.changedTouches[0].clientX - gesture.current.x
     const dy = event.changedTouches[0].clientY - gesture.current.y
-    const {scrollAtStart}=gesture.current
     gesture.current = null
     releasePageSurface()
-    handleNavigationGesture(dx, dy,scrollAtStart)
+    handleNavigationGesture(dx, dy)
   }
   const cancelGesture = () => { gesture.current = null; releasePageSurface(); suppressWordClick.current = false }
   const onWordClick = (event, word) => {
@@ -901,11 +890,6 @@ function App() {
   // Desktop: wheel navigates stories instead of scrolling the reading screen.
   const onReaderWheel = event => {
     if (selected || event.ctrlKey) return
-    if (story?.contentType === 'news') {
-      const surface=event.target.closest('.page-surface') || document.querySelector('.story-layer:not(.outgoing) .page-surface')
-      const max=(surface?.scrollHeight||0)-(surface?.clientHeight||0)
-      if(max>2 && (event.deltaY>0 ? surface.scrollTop<max-2 : surface.scrollTop>2))return
-    }
     if (event.cancelable) event.preventDefault()
     const now = Date.now()
     if (now < wheelLock.current) return
@@ -924,7 +908,7 @@ function App() {
     const itemPage = closing ? null : (item.pages[pageNumber] || item.pages[0])
     const tokens = closing ? [] : itemPage.text.split(/(\s+)/)
     const total = item.pages.length + 1 // always a distinct source / next-story page
-    return <div className={'reader-gesture ' + (item.contentType === 'news' ? 'saga-news-scroll' : '')} aria-hidden={!interactive} onTouchStart={interactive ? startGesture : undefined} onTouchMove={interactive ? moveGesture : undefined} onTouchEnd={interactive ? endGesture : undefined} onTouchCancel={interactive ? cancelGesture : undefined} onPointerDown={interactive ? startPointer : undefined} onPointerMove={interactive ? movePointer : undefined} onPointerUp={interactive ? endPointer : undefined} onPointerCancel={interactive ? () => {pointerGesture.current = null; releasePageSurface()} : undefined}>
+    return <div className="reader-gesture" aria-hidden={!interactive} onTouchStart={interactive ? startGesture : undefined} onTouchMove={interactive ? moveGesture : undefined} onTouchEnd={interactive ? endGesture : undefined} onTouchCancel={interactive ? cancelGesture : undefined} onPointerDown={interactive ? startPointer : undefined} onPointerMove={interactive ? movePointer : undefined} onPointerUp={interactive ? endPointer : undefined} onPointerCancel={interactive ? () => {pointerGesture.current = null; releasePageSurface()} : undefined}>
       <header className="topbar lore-reader-topbar">
         <span className="saga-toolbar-story" title={pageNumber > 0 ? displayHeadline(item) : readerSection(item)}>{pageNumber > 0 ? displayHeadline(item) : readerSection(item)}</span>
         <div className="saga-toolbar-actions">
