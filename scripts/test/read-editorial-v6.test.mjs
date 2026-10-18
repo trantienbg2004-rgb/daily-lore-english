@@ -5,17 +5,18 @@ import { sentenceUnits, planReadingPages } from '../../src/lib/readerPagination.
 const app=fs.readFileSync('src/App.jsx','utf8')
 const css=fs.readFileSync('src/App.css','utf8')
 
-test('Photo shows contextual caption immediately below image; zoom and credits stay',()=>{
-  assert.match(app,/<figcaption className="lore-photo-caption">\{label\}<\/figcaption>/)
+test('Photo keeps its description accessible without a visible caption; zoom and credits stay',()=>{
+  assert.doesNotMatch(app,/<figcaption className="lore-photo-caption">/)
+  assert.match(app,/alt=\{label\}/)
   assert.match(app,/label=\{photoLabel\(itemPage\)\}/)
   assert.match(app,/aria-label="Enlarge photo"/)
   assert.match(app,/setShowCredits\(true\)/)
-  assert.match(css,/\.lore-editorial-v5 \.reader-gesture \.article-media \.lore-photo-caption/)
 })
-test('Caption participates in actual screen-height measurement',()=>{
-  assert.match(app,/measuredCaption = document\.createElement\('figcaption'\)/)
-  assert.match(app,/measuredCaption\.textContent = image \? photoLabel\(image\)/)
-  assert.match(app,/figure\.append\(photo, measuredCaption\)/)
+test('Photo frame tracks image width during live rendering and pagination',()=>{
+  assert.match(app,/frameWidth:Math\.min\(mediaWidth,imageWidth\+10\)/)
+  assert.match(app,/figure\.append\(photo\)/)
+  assert.match(app,/figure\.style\.width = `\$\{Math\.ceil\(frameWidth\)\}px`/)
+  assert.match(css,/\.lore-editorial-v5 \.reader-gesture \.article-media \.photo-figure\.lore-photo-figure \{\s*width:max-content/)
 })
 test('Page counter uses actual reading-page count, replaces SWIPE and top Knowledge Story counter',()=>{
   assert.match(app,/className="lore-page-count"/)

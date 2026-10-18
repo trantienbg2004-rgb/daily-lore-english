@@ -854,14 +854,14 @@
 }
 .lore-editorial-v5 .reader-gesture .article-heading h1,
 .lore-editorial-v5 .reader-gesture .article-heading.article-heading-continued h1 {
-  display:-webkit-box; -webkit-box-orient:vertical; -webkit-line-clamp:2;
-  overflow:hidden; margin:0; color:#24211e;
-  font:400 clamp(26px,4dvh,33px)/1.08 'Bodoni Moda',Georgia,serif;
-  letter-spacing:-.035em;
+  display:block; -webkit-line-clamp:unset;
+  overflow:visible; margin:0; color:#24211e; text-transform:none;
+  font:400 clamp(21px,2.9dvh,26px)/1.12 'Bodoni Moda',Georgia,serif;
+  letter-spacing:-.025em;
 }
 .lore-editorial-v5 .reader-gesture .article-media .photo-figure.lore-photo-figure {
-  width:max-content; max-width:100%; padding:4px; border:1px solid #e5e0d7;
-  border-radius:7px; background:#fff;
+  width:max-content; max-width:100%; padding:4px; border:1px solid #e5e0d7!important;
+  border-radius:7px; background:#fff!important;
   box-shadow:0 7px 20px rgba(45,37,27,.17),0 2px 5px rgba(45,37,27,.08);
 }
 .lore-editorial-v5 .reader-gesture .article-media .lore-photo-figure img {

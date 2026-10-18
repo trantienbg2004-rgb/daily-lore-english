@@ -27,7 +27,7 @@ const paginateStory = original => {
 // reader width and the viewport's responsive photo height, without cropping.
 function photoFrameSize(mediaWidth,maxHeight,ratio) {
   const imageWidth=Math.max(1,Math.min(mediaWidth*.78-8,332,maxHeight*ratio))
-  return {imageWidth,frameWidth:Math.min(mediaWidth,Math.max(imageWidth+8,260))}
+  return {imageWidth,frameWidth:Math.min(mediaWidth,imageWidth+10)}
 }
 function fitPhoto(img) {
   if (!img?.naturalWidth || !img?.naturalHeight) return
@@ -37,7 +37,6 @@ function fitPhoto(img) {
   const maxHeight = parseFloat(getComputedStyle(img).maxHeight) || 148
   const ratio = img.naturalWidth / img.naturalHeight
   if (!Number.isFinite(ratio) || ratio <= 0) return
-  // Leave room for a short caption even when the source photo is very narrow.
   const {imageWidth,frameWidth}=photoFrameSize(media.clientWidth,maxHeight,ratio)
   frame.style.width = `${Math.ceil(frameWidth)}px`
   img.style.width = `${Math.ceil(imageWidth)}px`
@@ -80,7 +79,6 @@ function ArticlePhoto({ image, label, onBroken, onReady }) {
       onLoad={event => { fitPhoto(event.currentTarget); onReady() }}
       onError={() => onBroken(image)} />
     <button type="button" className="lore-photo-zoom-trigger" aria-label="Enlarge photo" onClick={() => setZoomed(true)}><span aria-hidden="true">⛶</span></button>
-    {label && label !== 'Article photograph' && <figcaption className="lore-photo-caption">{label}</figcaption>}
     {zoomed && createPortal(<div className="lore-lightbox" role="dialog" aria-modal="true" aria-label="Enlarged article photograph" onClick={event => { event.stopPropagation(); setZoomed(false) }}>
       <button type="button" className="lore-lightbox-close" aria-label="Close enlarged photograph" onClick={event => { event.stopPropagation(); setZoomed(false) }}>×</button>
       <img src={asset.url} alt={label} onClick={event => event.stopPropagation()} />
@@ -129,10 +127,7 @@ function layoutPages(item, reader, badImages = new Set()) {
   const figure = document.createElement('figure')
   figure.className = 'photo-figure lore-photo-figure'
   const photo = document.createElement('img')
-  // Measure the actual caption below each photograph, not just its pixels.
-  const measuredCaption = document.createElement('figcaption')
-  measuredCaption.className = 'lore-photo-caption'
-  figure.append(photo, measuredCaption)
+  figure.append(photo)
   media?.replaceChildren(figure)
   const footer = fixture.querySelector('.source-footer')
   if (footer) footer.style.display = 'none'
@@ -143,11 +138,9 @@ function layoutPages(item, reader, badImages = new Set()) {
       heading.classList.toggle('article-heading-continued', !isCover)
       media.classList.toggle('article-media-empty', !image)
       media.style.display = image ? 'flex' : 'none'
-      measuredCaption.textContent = image ? photoLabel(image) : ''
-      measuredCaption.style.display = measuredCaption.textContent && measuredCaption.textContent !== 'Article photograph' ? 'block' : 'none'
       if (image) {
         // Use the verified intrinsic image geometry whenever available.
-        // Match the live photo and caption widths during pagination.
+        // Match the live photo width during pagination.
         const asset = photoResult(image.image)
         const maxHeight = parseFloat(getComputedStyle(photo).maxHeight) || 140
         const ratio = asset?.width && asset?.height ? asset.width / asset.height : 1.3
@@ -920,7 +913,7 @@ function App() {
       {closing ? <section className="story-end" aria-label="Article completed">
         <div className="story-end-center"><Icon name="book" size={56}/><h2>That's the short version.</h2>
           
-          <button className="story-end-credits story-end-attribution" type="button" disabled={!interactive} onClick={() => setShowCredits(true)} aria-label="View article author, text license and individual image credits">{item.sourceName || item.publisher || 'Original source'} · Text &amp; image credits</button>
+          <button className="story-end-credits story-end-attribution" type="button" disabled={!interactive} onClick={() => setShowCredits(true)} aria-label="View article author, text license and individual image credits">Source</button>
           {safeStoryUrl(item.sourceUrl) && <a className="story-end-cta" href={safeStoryUrl(item.sourceUrl)} target="_blank" rel="noopener noreferrer">Read the original article <span aria-hidden="true">↗</span></a>}
         </div><div className="story-end-next">↑ Swipe up for the next story</div>
       </section> : <>

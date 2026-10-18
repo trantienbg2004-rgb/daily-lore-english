@@ -19,13 +19,14 @@ test('Legacy lore publisher is archived while files remain available for recover
   assert.equal(await exists('.github/legacy-workflows/'+old),true,'old workflow is preserved for recovery: '+old)
  }
 })
-test('Original article action has one source-credit line ABOVE it; full attributions remain accessible',async()=>{
+test('Original article action has a compact Source control above it; full attributions remain accessible',async()=>{
  const app=await read('src/App.jsx')
  const first=app.indexOf('className="story-end-attribution"')
  assert.equal(first,-1,'source attribution retains styling along existing button class')
  const attribution=app.indexOf('className="story-end-credits story-end-attribution"')
  const original=app.indexOf('className="story-end-cta"')
- assert.ok(attribution>0 && original>attribution,'credit line must be above original-article link')
+ assert.ok(attribution>0 && original>attribution,'Source control must be above original-article link')
+ assert.match(app,/>Source<\/button>/)
  assert.doesNotMatch(app,/>Sources &amp; credits<\/button>/)
  assert.match(app,/setShowCredits\(true\)/)
  assert.match(app,/<strong>Text license:<\/strong>/)
