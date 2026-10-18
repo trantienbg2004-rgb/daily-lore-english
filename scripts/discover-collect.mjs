@@ -31,6 +31,18 @@ export function balanceNewsSources(items,published=[]){
  while(ordered.length<items.length)for(const name of names){const next=groups.get(name).shift();if(next)ordered.push(next)}
  return ordered
 }
+export function selectNewsCandidates(items,published,maxCandidates,candidateBatch=0){
+ const balanced=balanceNewsSources(items,published)
+ const outside=balanced.filter(item=>item.sourceId!=='global-voices')
+ const globalVoices=balanced.filter(item=>item.sourceId==='global-voices')
+ const batch=Number.isSafeInteger(candidateBatch)&&candidateBatch>=0?candidateBatch:0
+ const rotate=rows=>rows.length?[...rows.slice(batch%rows.length),...rows.slice(0,batch%rows.length)]:[]
+ const reserved=Math.min(outside.length,Math.ceil(maxCandidates*.7))
+ const selected=rotate(outside).slice(0,reserved)
+ selected.push(...rotate(globalVoices).slice(0,maxCandidates-selected.length))
+ if(selected.length<maxCandidates)selected.push(...rotate(outside).slice(reserved,maxCandidates-selected.length+reserved))
+ return selected
+}
 export async function collectDiscover({fetchImpl=fetch,geminiFetchImpl=fetchImpl,now=new Date(),sources=SOURCES,
   maxPerFeed=8,maxGemini=3,targetDrafts=1,useGemini=false,apiKey='',log=console,
   maxGeminiCalls=8,candidateBatch=0,geminiIntervalMs=5000,geminiWaitImpl=ms=>new Promise(r=>setTimeout(r,ms)),outputDir='reports/saga-discover-local',writeFiles=true,strictPages=false,excludeSourceUrls=new Set(),excludePublishedNews=[]}={}){
@@ -82,11 +94,10 @@ export async function collectDiscover({fetchImpl=fetch,geminiFetchImpl=fetchImpl
   }catch(e){increment('article-fetch-error:'+source.id);perSourceResults.get(source.id).rejected['article-fetch-error']=(perSourceResults.get(source.id).rejected['article-fetch-error']||0)+1;metadata.push({...candidate,mode:'discovery-only',reason:'article-fetch-error'})}
  }
  report.eligible=eligible.length
- const batchCount=maxGemini?Math.max(1,Math.ceil(eligible.length/maxGemini)):1
  const safeBatch=Number.isSafeInteger(candidateBatch)&&candidateBatch>=0?candidateBatch:0
- const balanced=balanceNewsSources(eligible,excludePublishedNews)
- const selectedCandidates=balanced.slice((safeBatch%batchCount)*maxGemini,((safeBatch%batchCount)+1)*maxGemini)
- report.candidateBatch=safeBatch%batchCount
+ const selectedCandidates=selectNewsCandidates(eligible,excludePublishedNews,maxGemini,safeBatch)
+ report.candidateBatch=safeBatch
+ report.selectedSources=selectedCandidates.reduce((counts,candidate)=>({...counts,[candidate.sourceId]:(counts[candidate.sourceId]||0)+1}),{})
  for(const row of report.sourceStatus){row.articleDiagnostics=perSourceResults.get(row.source)||{attempted:0,eligible:0,rejected:{}}}
  const drafts=[]
  let lastGeminiRequestAt=0

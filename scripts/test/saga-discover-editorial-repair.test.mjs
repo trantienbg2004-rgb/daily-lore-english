@@ -1,7 +1,8 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
 import {generateThreeLevels,buildThreeLevelRequest,validateLevelDrafts,DISCOVER_LEVELS} from '../discover/geminiLevels.mjs'
-import {collectDiscover,rankNewsCandidates,balanceNewsSources} from '../discover-collect.mjs'
+import {collectDiscover,rankNewsCandidates,balanceNewsSources,selectNewsCandidates} from '../discover-collect.mjs'
+import {licensedDraft,isJournalismStory} from '../discover/bridge.mjs'
 import {extractArticle} from '../discover/article.mjs'
 import {rightsDecision} from '../discover/rights.mjs'
 import {source as rhinoceros} from '../discover/sources/rhinoceros.mjs'
@@ -41,6 +42,21 @@ test('new verified newsroom receives an early attempt without blocking establish
  const rows=[...Array.from({length:4},(_,i)=>({sourceId:'global-voices',sourceName:'Global Voices',id:'g'+i})),
   ...Array.from({length:2},(_,i)=>({sourceId:'rhinoceros',sourceName:'Rhinoceros Media',id:'r'+i}))]
  assert.deepEqual(balanceNewsSources(rows,[{publisher:'Global Voices'}]).map(x=>x.id),['r0','g0','r1','g1','g2','g3'])
+})
+
+test('selection reserves most Gemini candidates for another eligible newsroom across batches',()=>{
+ const rows=[...Array.from({length:30},(_,i)=>({sourceId:'global-voices',sourceName:'Global Voices',id:'g'+i})),
+  ...Array.from({length:8},(_,i)=>({sourceId:'rhinoceros',sourceName:'Rhinoceros Media',id:'r'+i}))]
+ for(const batch of [0,1,19]){
+  const selected=selectNewsCandidates(rows,[{publisher:'Global Voices'}],10,batch)
+  assert.equal(selected.length,10)
+  assert.equal(selected.filter(item=>item.sourceId==='rhinoceros').length,7)
+  assert.equal(new Set(selected.map(item=>item.id)).size,10)
+ }
+ const draft={sourceId:'rhinoceros',sourceUrl:'https://rhinocerosmedia.org/lansing-tax-debt-dashboard',
+  rights:{textAllowed:true,mode:'gemini-eligible',licenseUrl:'https://creativecommons.org/licenses/by/4.0/'}}
+ assert.equal(licensedDraft(draft),true)
+ assert.equal(isJournalismStory(draft),true)
 })
 
 test('Rhinoceros text requires a CC BY notice on the individual article',()=>{

@@ -9,7 +9,7 @@ export const wordCount=s=>String(s||'').trim().split(/\s+/u).filter(Boolean).len
 const sha=x=>createHash('sha256').update(JSON.stringify(x)).digest('hex')
 const titleWords=s=>new Set(String(s||'').toLowerCase().normalize('NFKD').replace(/[^a-z0-9 ]/g,' ').split(/\s+/).filter(x=>x.length>3&&!['about','from','after','their','with','this','that','have','into','against','says','news','when','world'].includes(x)))
 export function sameEvent(a,b){const x=titleWords(a.title),y=titleWords(b.title);const intersection=[...x].filter(v=>y.has(v)).length;return intersection>=4&&intersection/Math.max(1,Math.min(x.size,y.size))>=.78 &&Math.abs(Date.parse(a.publishedAt)-Date.parse(b.publishedAt))<7*864e5}
-function safeSource(sourceId,url){try{const u=new URL(url);if(u.protocol!=='https:')return false;return sourceId==='global-voices'?['globalvoices.org','www.globalvoices.org'].includes(u.hostname):sourceId==='voa'&&u.hostname==='learningenglish.voanews.com'}catch{return false}}
+function safeSource(sourceId,url){try{const u=new URL(url);if(u.protocol!=='https:')return false;return sourceId==='global-voices'?['globalvoices.org','www.globalvoices.org'].includes(u.hostname):sourceId==='voa'?u.hostname==='learningenglish.voanews.com':sourceId==='rhinoceros'&&u.hostname==='rhinocerosmedia.org'}catch{return false}}
 export function licensedDraft(d){const r=d?.rights;return safeSource(d?.sourceId,d?.sourceUrl)&&r?.textAllowed===true&&r?.mode==='gemini-eligible'&&(d.sourceId==='voa'?/Public domain/i.test(r.license||''):/^https:\/\/creativecommons\.org\/licenses\/by\/\d/i.test(r.licenseUrl||''))}
 export const verifiedPhoto=d=>{
  if(!d?.imageUrl)return true
@@ -58,7 +58,7 @@ export function toReaderStory(d){const errors=validateDraft(d);if(errors.length)
  if(!validStories([item])||!readableStory(item))throw Error('Reader contract blocked news')
  return item}
 export function isJournalismStory(s){
- try{const host=new URL(s?.sourceUrl).hostname.toLowerCase();return ['globalvoices.org','www.globalvoices.org','learningenglish.voanews.com','www.voanews.com','voanews.com','www.bbc.com','www.bbc.co.uk','www.npr.org','theconversation.com'].includes(host)}catch{return false}
+ try{const host=new URL(s?.sourceUrl).hostname.toLowerCase();return ['globalvoices.org','www.globalvoices.org','learningenglish.voanews.com','www.voanews.com','voanews.com','www.bbc.com','www.bbc.co.uk','www.npr.org','theconversation.com','rhinocerosmedia.org'].includes(host)}catch{return false}
 }
 export function hasLicensedCover(s){return ['A1-A2','B1-B2','C1-C2'].every(level=>{
  const page=s?.levelVariants?.[level]?.pages?.[0];return !!page?.image&&verifiedPhoto({...s,imageUrl:page.image,imageRightsVerified:true,imageProvenance:page.imageProvenance})
