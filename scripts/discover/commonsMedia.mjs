@@ -3,6 +3,7 @@
  */
 import {imageCaptionKey} from './imageUniqueness.mjs'
 const subjects=[
+ [/\bCapturing lost signals\b/i,'satellite antenna',/(?:satellite.*antenna|antenna.*satellite)/i,/diagram|chart|map|poster|drawing/i],
  [/\bStreet art in Russia\b/i,'anti-war graffiti Kazan',/anti.war graffiti.*Kazan/i,/diagram|chart|map|poster/i],
  [/\bWest Africa\b.*\bdemocra\w*\b/i,'Ghana protest',/(?:Ghana.*protest|protest.*Ghana)/i,/diagram|chart|map|poster/i],
  [/\bUyghur\b.*\bdigital\b/i,'China data center',/(?:China.*data cent|data cent.*China)/i,/diagram|chart|map|poster/i],
