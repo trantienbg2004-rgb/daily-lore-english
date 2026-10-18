@@ -1,7 +1,7 @@
 /** Extract photo metadata but publish ONLY photos with a verifiable per-image license.
  * RSS/OpenGraph image URLs alone are NOT permission to republish.
  */
-const decode=x=>String(x||'').replace(/&amp;/gi,'&').replace(/&quot;/gi,'\"').replace(/&apos;/gi,"'")
+const decode=x=>String(x||'').replace(/&amp;/gi,'&').replace(/&quot;/gi,'\"').replace(/&apos;/gi,"'").replace(/&nbsp;|&#160;/gi,' ')
 const compact=s=>decode(String(s||'').replace(/<[^>]+>/g,' ')).replace(/\s+/g,' ').trim()
 const getAttr=(tag,key)=>String(tag).match(new RegExp(`\\b${key}\\s*=\\s*(?:"([^"]*)"|'([^']*)')`,'i'))?.slice(1).find(x=>x!==undefined)||''
 const approved=/^https:\/\/creativecommons\.org\/licenses\/(?:by|by-sa)\/(?:2\.0|2\.5|3\.0|4\.0)\/(?:deed(?:\.[a-z-]+)?)?(?:[#?].*)?$/i
@@ -88,8 +88,13 @@ export function licensedArticleImages(html,sourceUrl,{limit=3,usedImageUrls=new 
 }
 function licensedNasaArticleImages(html,sourceUrl,{limit,usedImageUrls,usedImageCaptions,articleTitle,articleText}){
  const slug=new URL(sourceUrl).pathname.split('/').filter(Boolean).at(-1)
- const credit=compact(String(html).match(/NASA Earth Observatory images? by\s+[^<.]{3,160}/i)?.[0]||'').slice(0,170)
+ const creditBlock=[...String(html).matchAll(/<p\b[^>]*>[\s\S]*?<\/p\s*>/gi)]
+  .map(match=>match[0]).find(paragraph=>/NASA Earth Observatory images? by/i.test(paragraph))||''
+ // Credits may include U.S. agency names and linked data providers.
+ const credit=compact(creditBlock).split(/\b(?:Photos by|Story by)\b/i)[0]
+  .replace(/\s+([.,])/g,'$1').replace(/[\s,.]+$/,'').slice(0,300)
  if(!credit||/\b(?:Getty|Shutterstock|Reuters|AP Photo|copyright)\b/i.test(credit))return []
+ const separatelyCreditedPhotos=/\bPhotos by\b/i.test(compact(creditBlock))
  const photos=[]
  for(const block of articleMediaBlocks(html).filter(item=>item.kind==='editorial')){
   if(!/^<figure\b[^>]*class=["'][^"']*\bhds-media-inner\b/i.test(block.markup))continue
@@ -98,6 +103,8 @@ function licensedNasaArticleImages(html,sourceUrl,{limit,usedImageUrls,usedImage
   const url=safeURL(getAttr(img,'src'),sourceUrl)
   const caption=decode(getAttr(img,'alt')).trim()
   if(!url||!caption||new URL(url).hostname!=='assets.science.nasa.gov'||!new URL(url).pathname.includes('/'+slug+'/'))continue
+  // A shared NASA image credit cannot be assigned to separately credited field photos.
+  if(separatelyCreditedPhotos&&!/\b(?:satellite|landsat|modis|viirs|imagery|false.color|chart|plot|map|data visualization)\b/i.test(caption))continue
   if(/\b(?:logo|icon|avatar|advert|banner)\b/i.test(caption)||blocked.test(block.markup))continue
   if(usedImageUrls.has(url)||usedImageCaptions.has(imageCaptionKey(caption)))continue
   const photo={url,caption,verified:true,provenance:{credit,license:'NASA media use',licenseUrl:'https://www.nasa.gov/nasa-brand-center/images-and-media/',sourceImageUrl:sourceUrl,originType:'nasa-earth-observatory'}}
@@ -117,8 +124,19 @@ export function assignArticlePhotos(photos,title,levelVariants){
   return typeof page==='string'?page:page?.text||''
  }
  const assigned=[],used=new Set()
+ const coverCandidates=photos.map((photo,index)=>({
+  photo,index,titleScore:photoRelevanceScore(photo,title),
+  pageScores:levels.map(level=>photoRelevanceScore(photo,'',textAt(level,0))),
+  latestYear:Math.max(0,...[...String(photo.caption||'').matchAll(/\b(?:19|20)\d{2}\b/g)].map(match=>Number(match[0]))),
+ })).filter(row=>row.titleScore>0&&row.pageScores.every(score=>score>0))
+ // Comparison articles often place an older baseline before the current image.
+ // The lead must show the latest event when both images fit every first page.
+ coverCandidates.sort((a,b)=>b.latestYear-a.latestYear||
+  (b.titleScore+Math.min(...b.pageScores))-(a.titleScore+Math.min(...a.pageScores))||a.index-b.index)
+ const cover=coverCandidates[0]?.photo
+ if(cover){assigned.push({...cover,pageIndex:0});used.add(0)}
  for(const photo of photos){
-  if(!assigned.length&&photoRelevanceScore(photo,title,textAt('B1-B2',0))>0){assigned.push({...photo,pageIndex:0});used.add(0);continue}
+  if(photo===cover)continue
   let bestIndex=-1,bestScore=0
   for(let index=1;index<pages.length;index++){
    if(used.has(index))continue

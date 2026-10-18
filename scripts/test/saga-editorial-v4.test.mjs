@@ -63,6 +63,45 @@ test('NASA Earth Observatory requires a first-party story and credits its own ma
  assert.equal(rightsDecision(nasaEarth,extractArticle(html.replace('NASA Earth Observatory images by Lauren Dauphin','Getty Images by Lauren Dauphin'),nasaEarth.id)).textAllowed,false)
 })
 
+test('NASA data credits stay complete and separately credited field photos stay out',()=>{
+ const url='https://science.nasa.gov/earth/earth-observatory/fighting-drought-in-texas-cotton-country'
+ const base='https://assets.science.nasa.gov/content/dam/science/esd/eo/images/iotd/2026/fighting-drought-in-texas-cotton-country/'
+ const satellite='<figure class="hds-media-inner"><img width="1200" height="800" src="'+base+'texasdrought_oli_20260909.jpg" alt="A satellite image of Texas cotton farmland and dry lakes"></figure>'
+ const fieldPhoto='<figure class="hds-media-inner"><img width="1200" height="800" src="'+base+'nasaacresphoto.jpg" alt="Rows of wilted cotton photographed in a Texas field"></figure>'
+ const credits='<p><em>NASA Earth Observatory images by Lauren Dauphin, using Landsat data from the&nbsp;</em><a href="https://earthexplorer.usgs.gov/">U.S. Geological Survey</a><em> and the U.S. Drought Monitor.</em> Photos by Lacy Cotter-Vardeman and Adam Zwerner. Story by Adam Voiland.</p>'
+ const photos=licensedArticleImages(satellite+fieldPhoto+credits,url,{articleTitle:'Fighting Drought in Texas Cotton Country',articleText:'Satellite images show Texas cotton farmland during drought.',limit:5})
+ assert.equal(photos.length,1)
+ assert.equal(photos[0].url,base+'texasdrought_oli_20260909.jpg')
+ assert.match(photos[0].provenance.credit,/U\.S\. Geological Survey and the U\.S\. Drought Monitor/)
+ assert.doesNotMatch(photos[0].provenance.credit,/Photos by|Story by|&nbsp;/)
+})
+
+test('a cover photo must match the first page at every reading level',()=>{
+ const photo={url:'https://example.org/flood.jpg',caption:'Thailand floodwater covers farms',verified:true}
+ const levels={
+  'A1-A2':{pages:[{text:'People in Thailand see floodwater on farms.'},{text:'The river is high.'}]},
+  'B1-B2':{pages:[{text:'Thailand floodwater covers farms.'},{text:'Officials monitor the river.'}]},
+  'C1-C2':{pages:[{text:'Researchers discuss unrelated energy policy.'},{text:'Thailand floodwater covers farms.'}]},
+ }
+ assert.deepEqual(assignArticlePhotos([photo],'Thailand floodwater covers farms',levels),[])
+ levels['C1-C2'].pages[0].text='Thailand floodwater covers farms and disrupts crops.'
+ assert.deepEqual(assignArticlePhotos([photo],'Thailand floodwater covers farms',levels).map(item=>item.pageIndex),[0])
+})
+
+test('current event image leads when a NASA comparison includes an older baseline',()=>{
+ const photos=[
+  {url:'https://example.org/2025.jpg',caption:'Thailand floodwater near farms in October 2025',verified:true},
+  {url:'https://example.org/2026.jpg',caption:'Thailand floodwater covers farms in October 2026',verified:true},
+ ]
+ const levels=Object.fromEntries(['A1-A2','B1-B2','C1-C2'].map(level=>[level,{pages:[
+  {text:'Thailand floodwater covers farms in October 2026.'},
+  {text:'Thailand floodwater was also measured near farms in October 2025.'},
+ ]}]))
+ const assigned=assignArticlePhotos(photos,'Thailand floodwater covers farms',levels)
+ assert.equal(assigned.find(photo=>photo.pageIndex===0)?.url,photos[1].url)
+ assert.equal(assigned.find(photo=>photo.pageIndex===1)?.url,photos[0].url)
+})
+
 test('publication rejects Commons photos even if they have a valid CC license',()=>{
  const sourceUrl='https://globalvoices.org/2026/10/17/story/'
  assert.throws(()=>requireOriginalArticlePhotos([{sourceUrl,images:[{url:'https://upload.wikimedia.org/a.jpg',provenance:{sourceImageUrl:'https://commons.wikimedia.org/wiki/File:City.jpg',originType:'wikimedia-commons'}}]}]),/Non-original photo/)
