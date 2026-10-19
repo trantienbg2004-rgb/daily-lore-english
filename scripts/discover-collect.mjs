@@ -108,7 +108,8 @@ export async function collectDiscover({fetchImpl=fetch,geminiFetchImpl=fetchImpl
     stats.rejected[rights.reason]=(stats.rejected[rights.reason]||0)+1;metadata.push({...candidate,mode:'discovery-only',reason:rights.reason});increment(rights.reason);continue}
    stats.eligible++
    const verifiedPhotos=licensedArticleImages(html,candidate.sourceUrl,{limit:5,usedImageUrls:usedMedia.urls,usedImageCaptions:usedMedia.captions,articleTitle:candidate.title,articleText:article.text})
-   const topic=classifyNewsTopic({title:candidate.title,text:article.text})
+   const inferredTopic=classifyNewsTopic({title:candidate.title,text:article.text})
+   const topic=inferredTopic==='Society'&&source.defaultTopic?source.defaultTopic:inferredTopic
    const prior=relatedPriorStory({...candidate,text:article.text,topic},excludePublishedNews)
    eligible.push({...candidate,text:article.text,rights,author:article.author||candidate.author,topic,
     ...(prior?{priorAngle:{title:prior.title,topic:classifyNewsTopic(prior),summary:String(prior.levelVariants?.['B1-B2']?.pages?.[0]?.text||'').slice(0,320)}}:{}),

@@ -54,6 +54,9 @@ export function articleImageHint(html,baseUrl=''){
  return ''
 }
 export function licensedArticleImages(html,sourceUrl,{limit=3,usedImageUrls=new Set(),usedImageCaptions=new Set(),articleTitle='',articleText=''}={}){
+ // Essay image rights are separate from The Public Domain Review's text licence.
+ // Require an item-level source and visual review before adding any image path.
+ if(new URL(sourceUrl).hostname==='publicdomainreview.org')return []
  if(new URL(sourceUrl).hostname==='science.nasa.gov')return licensedNasaArticleImages(html,sourceUrl,{limit,usedImageUrls,usedImageCaptions,articleTitle,articleText})
  // A photo must carry a licence IN ITS OWN figure/caption. A page-level CC footer is not proof.
  const hints=[]

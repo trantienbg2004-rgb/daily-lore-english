@@ -1,5 +1,5 @@
 import {compact,decode,wordCount} from './clean.mjs'
-import {readingParagraphs,extractGlobalVoicesAuthor,htmlReadingDiagnostics} from './htmlArticle.mjs'
+import {readingParagraphs,extractGlobalVoicesAuthor,htmlReadingDiagnostics,htmlText} from './htmlArticle.mjs'
 
 /** Restrict extraction to a bona fide editorial container. Never scrape all
  * paragraphs on a publisher's home page or use newsletter/sidebar copy. */
@@ -12,6 +12,12 @@ function meta(html,key){
  return ''
 }
 function articleLicense(html,sourceId){
+ if(sourceId==='public-domain-review'){
+  const notice=String(html).match(/<div\b[^>]*class=["'][^"']*\bessay-license\b[^"']*["'][^>]*>([\s\S]{0,1400}?)<\/div\s*>/i)?.[1]||''
+  if(/text of this essay is published under/i.test(htmlText(notice))&&/https:\/\/creativecommons\.org\/licenses\/by-sa\/4\.0\//i.test(notice))
+   return 'https://creativecommons.org/licenses/by-sa/4.0/'
+  return ''
+ }
  if(sourceId==='horizon'&&/<a\b[^>]*href=["']\/en\/article\/modal\/\d+["'][^>]*class=["'][^"']*\brepublish\b/i.test(String(html)))return 'https://creativecommons.org/licenses/by/4.0/'
  if(sourceId==='rhinoceros'){
   // This newsroom prints the CC BY notice on each story. Its RSS/channel
@@ -54,10 +60,25 @@ function articleLicense(html,sourceId){
 const thirdPartyCredits=/(?:\b(?:Photo|Picture|Image|Credit)\s*(?::|by|©)[^\n<]{0,130}\b(?:Reuters|AP Photo|Associated Press|AFP|Getty Images|Shutterstock|iStock|Adobe Stock)\b)|(?:©|copyright)\s*(?:Reuters|Associated Press|Getty Images|Shutterstock)/i
 const syndicated=/(?:\b(?:content[- ]sharing agreement|reprinted with permission|republished (?:from|with permission)|originally published (?:by|in|at)|syndicated from)\b)/i
 const excludedSource=/(?:^|\b)(?:AP Photo|Reuters|AFP|Getty Images|Shutterstock)(?:\b|$)/i
+function publicDomainEssayParagraphs(html){
+ const start=String(html).search(/<div\b[^>]*class=["']essay-body["'][^>]*>/i)
+ if(start<0)return []
+ const end=String(html).slice(start).search(/<div\b[^>]*class=["'][^"']*(?:essay-footer|essay__footnote|essay__footer|essay-license)\b/i)
+ if(end<0)return []
+ const body=String(html).slice(start,start+end),seen=new Set(),paragraphs=[]
+ for(const match of body.matchAll(/<p\b([^>]*)>([\s\S]*?)<\/p\s*>/gi)){
+  if(/\b(?:caption|metadata|byline|credit|note)\b/i.test(match[1])||/\b(?:Source|Image credit)\s*<\/a>/i.test(match[2]))continue
+  const text=htmlText(match[2]),words=wordCount(text),key=text.toLowerCase()
+  if(words<9||words>500||seen.has(key))continue
+  seen.add(key);paragraphs.push(text)
+ }
+ return paragraphs
+}
 export function extractArticle(html,sourceId){
- const paragraphs=readingParagraphs(html)
+ const paragraphs=sourceId==='public-domain-review'?publicDomainEssayParagraphs(html):readingParagraphs(html)
  const text=paragraphs.join('\n\n')
- const author=sourceId==='global-voices'?extractGlobalVoicesAuthor(html):sourceId==='horizon'?
+ const author=sourceId==='global-voices'?extractGlobalVoicesAuthor(html):sourceId==='public-domain-review'?
+  htmlText(String(html).match(/<p\b[^>]*class=["'][^"']*\bbyline\b[^"']*["'][^>]*>([\s\S]{0,350}?)<\/p\s*>/i)?.[1]||'').replace(/^By(?:\s+|$)/i,'').trim():sourceId==='horizon'?
   decode(String(html).match(/class=["'][^"']*article--author_name[^"']*["'][^>]*>([^<]+)/i)?.[1]||'').trim():meta(html,'author')||meta(html,'article:author')||''
  const license=articleLicense(html,sourceId)
  // Restrictions within story byline/source and opening body take precedence
@@ -69,7 +90,7 @@ export function extractArticle(html,sourceId){
   extractionStats:htmlReadingDiagnostics(html),imageHint:meta(html,'og:image'),
   hasThirdPartyNotice:thirdPartyCredits.test(String(html).slice(0,160000)),
   hasNasaImageCredit:/NASA Earth Observatory images? by\s+[^<.]{3,160}/i.test(String(html)),
-  hasSyndicatedRights:['global-voices','rhinoceros','horizon','nasa-earth'].includes(sourceId)&&syndicated.test(opening.slice(0,4800)),
+  hasSyndicatedRights:['global-voices','rhinoceros','horizon','nasa-earth','public-domain-review'].includes(sourceId)&&syndicated.test(opening.slice(0,4800)),
   explicitLicense:license,credits:'',author:excludedSource.test(author)?'':author,
   publishedAt:meta(html,'article:published_time')||'',sourceId,
  }
