@@ -22,7 +22,7 @@ jobs:
           node-version: '22'
       - name: Verify four real Commons images without publication
         env:
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_API_KEY: ${{ secrets.SAGA_IMAGE_TEST_API_KEY }}
           SAGA_VISION_FREE_TIER_CONFIRMED: 'yes'
         run: node scripts/vision-audit.mjs
       - name: Preserve nonsecret validation observations
