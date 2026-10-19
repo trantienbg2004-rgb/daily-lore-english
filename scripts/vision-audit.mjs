@@ -53,12 +53,20 @@ async function loadSample(sample,index){
 async function main(){
  const preflight=process.argv.includes('--preflight')
  const model=process.env.SAGA_VISION_MODEL||'gemini-2.5-flash'
+ const selectedIds=process.env.SAGA_VISION_SAMPLE_IDS?.split(',').map(id=>id.trim()).filter(Boolean)
+ const selected=selectedIds?samples.filter(sample=>selectedIds.includes(sample.id)):samples
+ if(!selected.length||selected.length>4||selectedIds?.some(id=>!samples.some(sample=>sample.id===id)))
+  throw Error('invalid-vision-sample-selection')
  if(!preflight&&(process.env.SAGA_VISION_FREE_TIER_CONFIRMED!=='yes'||!process.env.GEMINI_API_KEY))
   throw Error('Free-tier project or secret not confirmed; zero Gemini calls')
- const budget={remaining:Math.min(4,samples.length)},rows=[]
+ const budget={remaining:selected.length},rows=[]
  await fs.mkdir(reportDir,{recursive:true})
- for(const [index,sample] of samples.entries()){
-  const {candidate,article,imageBytes}=await loadSample(sample,index)
+ // Verify every exact byte sequence before spending a single vision request.
+ const ready=[]
+ for(const [index,sample] of selected.entries()){
+  ready.push({sample,...await loadSample(sample,index)})
+ }
+ for(const [index,{sample,candidate,article,imageBytes}] of ready.entries()){
   if(preflight){rows.push({id:sample.id,source:'same manually reviewed 800px bytes',sha256:sample.sha256,manual:sample.manual});continue}
   if(index>0)await delay(16_000)
   const result=await screenCommonsVisual({candidate,article,subject:sample.subject,imageBytes,
@@ -70,7 +78,7 @@ async function main(){
    totalTokens:result.usage?.totalTokenCount??null}))
   if(result.status==='unavailable')break // 429, 503, malformed output or uncertainty: no retries.
  }
- const used=samples.length-budget.remaining
+ const used=selected.length-budget.remaining
  // An HTTP error has no usageMetadata: unknown token use must not read as zero.
  const tokenUsageKnown=rows.every(row=>row.cached||Number.isSafeInteger(row.usage?.totalTokenCount))
  const totalTokens=tokenUsageKnown?rows.reduce((sum,row)=>sum+(row.usage?.totalTokenCount||0),0):null
