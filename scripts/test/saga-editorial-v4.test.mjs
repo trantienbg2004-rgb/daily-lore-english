@@ -42,6 +42,8 @@ test('article media finds editorial images but rejects unlicensed OG and author 
 test('city-only scenery is irrelevant to a poetry book and later photos need page subject overlap',()=>{
  const title='Poetry book promotes Chabacano language in Zamboanga'
  for(const caption of ["Zamboanga City's Sunset",'Zamboanga City Hall','Barangay Cawit Zamboanga City Philippines'])assert.equal(photoRelevanceScore({caption},title,'Writers published poems in Chabacano.'),0)
+ assert.ok(photoRelevanceScore({caption:'City Hall roof repairs'},'Municipal budget review','The City Hall roof repairs took half the budget.')>0)
+ assert.ok(photoRelevanceScore({caption:'A map of flood zones'},'Flood warning','The map of flood zones identifies villages at risk.')>0)
  assert.equal(photoRelevanceScore({caption:'Jamaican police patrol'},'Trinidad and Tobago Special Operations Bill','The police patrols are part of security policy.'),0)
  assert.ok(photoRelevanceScore({caption:'Chabacano poetry anthology'},title,'Writers published poems.')>0)
  const levels=Object.fromEntries(['A1-A2','B1-B2','C1-C2'].map(level=>[level,{pages:[{text:'A poetry book uses Chabacano.'},{text:'The anthology includes many poems.'},{text:'Readers discuss the book.'},{text:'The language has a future.'}]}]))

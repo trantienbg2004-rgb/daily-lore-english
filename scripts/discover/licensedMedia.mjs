@@ -6,7 +6,6 @@ const compact=s=>decode(String(s||'').replace(/<[^>]+>/g,' ')).replace(/\s+/g,' 
 const getAttr=(tag,key)=>String(tag).match(new RegExp(`\\b${key}\\s*=\\s*(?:"([^"]*)"|'([^']*)')`,'i'))?.slice(1).find(x=>x!==undefined)||''
 const approved=/^https:\/\/creativecommons\.org\/licenses\/(?:by|by-sa)\/(?:2\.0|2\.5|3\.0|4\.0)\/(?:deed(?:\.[a-z-]+)?)?(?:[#?].*)?$/i
 const blocked=/\b(?:Reuters|Getty Images|AFP|Associated Press|AP Photo|Shutterstock|iStock|Alamy|all rights reserved|permission required|fair use|NC|ND)\b/i
-const genericScene=/\b(?:sunset|sunrise|skyline|landscape|city hall|town hall|park|street view|beach|tourist|scenic|map|flag|empty lot|vacant land)\b/i
 const stopWords=new Set('about after again along also among around article behind being between caption city country from image images into journalist magazine media other people photo photograph picture province region report source story street their these those through under village where which while world'.split(' '))
 const placeWords=new Set('africa asia europe america myanmar bangladesh cambodia jamaica nepal peru india croatia trinidad tobago zamboanga lansing michigan sisak port spain kenya'.split(' '))
 const countryWords=new Set('myanmar bangladesh cambodia jamaica nepal peru india croatia trinidad tobago kenya'.split(' '))
@@ -22,7 +21,6 @@ const subjectWords=value=>new Set(String(value||'').toLowerCase().normalize('NFK
 export function photoRelevanceScore(photo,articleTitle,pageText=''){
  const caption=String(photo?.caption||'').replace(/^Illustrative image:\s*/i,'')
  const title=String(articleTitle||'')
- if(genericScene.test(caption)&&!genericScene.test(title))return 0
  const mentionedCountries=value=>new Set(String(value).toLowerCase().split(/[^a-z]+/).map(word=>word==='jamaican'?'jamaica':word==='trinidadian'?'trinidad':word).filter(word=>countryWords.has(word)))
  const captionCountries=mentionedCountries(caption)
  const titleCountries=mentionedCountries(title)
