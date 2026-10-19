@@ -70,10 +70,16 @@ async function main(){
   if(result.status==='unavailable')break // 429, 503, malformed output or uncertainty: no retries.
  }
  const used=samples.length-budget.remaining
- const totalTokens=rows.reduce((sum,row)=>sum+(row.usage?.totalTokenCount||0),0)
+ // An HTTP error has no usageMetadata: unknown token use must not read as zero.
+ const tokenUsageKnown=rows.every(row=>row.cached||Number.isSafeInteger(row.usage?.totalTokenCount))
+ const totalTokens=tokenUsageKnown?rows.reduce((sum,row)=>sum+(row.usage?.totalTokenCount||0),0):null
+ const blocked=rows.some(row=>row.modelStatus==='unavailable')
  if(preflight)console.log(JSON.stringify({preflight:true,matched:rows.length,geminiCalls:0}))
- else console.log(JSON.stringify({geminiCalls:used,totalTokens,completed:rows.length,
-  stopped:rows.some(row=>row.modelStatus==='unavailable')}))
+ else {
+  console.log(JSON.stringify({geminiCalls:used,totalTokens,completed:rows.length-(blocked?1:0),
+   stopped:blocked,reason:blocked?rows.at(-1).reason:null}))
+  if(blocked)process.exitCode=1
+ }
 }
 
 main().catch(error=>{console.error('SAGA VISION AUDIT BLOCKED:',error.message);process.exitCode=1})
