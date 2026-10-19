@@ -20,8 +20,10 @@ export async function buildReaderIndex(root=base){
   if(!validStories(articles))throw Error(`Invalid shard ${shard}`)
   for(const item of articles){
    if(manifest.newsOnly===true&&item.contentType!=='news')continue
-   if(manifest.newsOnly===true&&!isPublishedNewsStory(item))throw Error(`Unlicensed or non-journalism story in shard ${shard}: ${item.id}`)
+   // Retired stories remain in archival shards. New publication rules apply
+   // only to stories that are actually indexed in the Reader.
    if(retired.has(item.sourceUrl))continue
+   if(manifest.newsOnly===true&&!isPublishedNewsStory(item))throw Error(`Unlicensed or non-journalism story in shard ${shard}: ${item.id}`)
    indexedStories.push(item)
    const id=storyId(item)
    if(!id||ids.has(id))throw Error(`Missing or duplicate story identifier: ${id}`)

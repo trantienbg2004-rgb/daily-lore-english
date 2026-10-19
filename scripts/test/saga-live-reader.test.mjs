@@ -77,15 +77,13 @@ test('country-only Commons photos must show a place, not an unrelated official o
  assert.equal(approvedCommonsPhoto(entries.three,'Mozambique'),null)
  const fetchImpl=async()=>({ok:true,json:async()=>({query:{pages:entries}})})
  const photos=await searchCommonsImages('Current affairs in Mozambique',{fetchImpl,limit:3})
- assert.equal(photos.length,1)
- assert.match(photos[0].caption,/Maputo street/)
+ assert.equal(photos.length,0)
  const alternative=await searchCommonsImages('Current affairs in Mozambique',{fetchImpl,
   excludeUrls:['https://commons.wikimedia.org/wiki/File:Maputo_street_in_Mozambique.jpg']})
- assert.equal(alternative.length,1)
- assert.match(alternative[0].caption,/Mozambique city centre/)
+ assert.equal(alternative.length,0)
  assert.equal(commonsQueryFor('Rana Tharu women in Nepal'),'Tharu Nepal')
  assert.equal(commonsQueryFor('Women at Nampula protests'),'Nampula Mozambique')
- assert.equal(commonsQueryIsContextual('Nepal reflects on protests'),true)
+ assert.equal(commonsQueryIsContextual('Nepal reflects on protests'),false)
 })
 
 test('subject illustrations require an image title matching the reported place or subject',()=>{
@@ -106,7 +104,7 @@ test('subject illustrations require an image title matching the reported place o
 })
 
 test('Commons rate limiting stops photo discovery instead of spending Gemini quota',async()=>{
- await assert.rejects(searchCommonsImages('Current affairs in Mozambique',{
+ await assert.rejects(searchCommonsImages('IMF discusses global growth',{
   fetchImpl:async()=>({ok:false,status:429})
  }),/Wikimedia Commons 429 rate limit/)
 })

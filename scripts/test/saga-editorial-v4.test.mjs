@@ -190,7 +190,8 @@ test('publisher rejects unverified image, accepts a correctly credited first-pag
  const commons=structuredClone(d)
  commons.imageUrl='https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ab/example.jpg/800px-example.jpg'
  commons.imageProvenance={credit:'Mira / Wikimedia Commons',license:'CC BY 4.0',licenseUrl:licensedUrl,
-  sourceImageUrl:'https://commons.wikimedia.org/wiki/File:Example.jpg',imagePageUrl:'https://commons.wikimedia.org/wiki/File:Example.jpg',originType:'wikimedia-commons'}
+  sourceImageUrl:'https://commons.wikimedia.org/wiki/File:Example.jpg',imagePageUrl:'https://commons.wikimedia.org/wiki/File:Example.jpg',originType:'wikimedia-commons',
+  visualReview:{sourceUrl:commons.sourceUrl,sha256:'a'.repeat(64),reviewer:'Test reviewer',reviewedAt:'2026-10-19'}}
  for(const variant of Object.values(commons.levelVariants))Object.assign(variant.pages[0],{image:commons.imageUrl,
   caption:'Illustrative image: Example',imageProvenance:commons.imageProvenance})
  assert.deepEqual(validateDraft(commons),[])

@@ -32,3 +32,18 @@ Updated: 2026-10-19 (Asia/Ho_Chi_Minh)
 2. Build a Commons visual/context review gate; test accepted and rejected examples before a small legacy backfill. Do not run automatic Commons backfill yet.
 3. After the image gate is proven, evaluate additional independent sources one at a time, including History & Geography and Sports. Stage 3 is not started; stage 4 production integration and scheduled workflow observation are pending.
 4. Preserve the ignored artifact and local context notes. Do not merge, run the production publication workflow, deploy, or spend paid quota.
+
+## Stage 2 Commons pilot — 2026-10-19
+
+- Branch only: 54 active news before and after. Verified covers rose from 11 to 12; text-only stories fell from 43 to 42. No article was removed and no interface file changed.
+- Commons search returns unverified candidates. Generic city/country searches, including Chabacano to Zamboanga scenery, were removed. A separate visual review binds the exact image SHA-256, its rights record, the source article and the text of all three versions of the target page. Retired archive shards remain stored but are excluded from current publication validation.
+- Eight text-only articles were screened. One received a cover; seven remain text-only:
+  1. Lula hoax: accepted [official 2023 portrait](https://commons.wikimedia.org/wiki/File:Foto_oficial_de_Luiz_In%C3%A1cio_Lula_da_Silva_(ombros).jpg), CC BY 2.0. The [official source](https://www.flickr.com/photos/palaciodoplanalto/52715235994/) and Commons page identify Ricardo Stuckert/PR. Reader caption explicitly calls it an archive portrait, not a photo of the 2026 hoax. Reviewed thumbnail SHA-256: 35cb26bee96aff5fb8073edd38c83e6886f2a1a798106ff0af792848fa19c1cc.
+  2. Penguin vaccination: rejected [Little penguin .jpg](https://commons.wikimedia.org/wiki/File:Little_penguin_.jpg) because the bird is only a tiny, unrecognizable speck at Reader size; SHA-256: 4451daf6465abef192d893979a8445a3784334f3b056b97a31dc5daf0632c20a. A visible Penguin Island bird photo shows neither vaccination nor the colonies named in the story.
+  3. Melbourne falcon nest: rejected [New South Wales falcon](https://commons.wikimedia.org/wiki/File:Peregrine_falcon_(Falco_peregrinus)_in_flight,_Cape_Baily,_Kamay_Botany_Bay_NSW_Jun_2022.jpg), photographed in 2022 at a different place; SHA-256: 79511e140cd74b2e32ef54b9237252cb56b97367c26b374bc18a13c64c440ff3.
+  4. Rana Tharu women: rejected [Kapilbastu community photo](https://commons.wikimedia.org/wiki/File:Tharu_Community_in_Kapilbastu,_Nepal_06.JPG), which does not establish the Rana Tharu subgroup or article's Kailali/Kanchanpur communities; SHA-256: fd45b24a6302924256df20a7eea70a847b4d5ed7a7fe6e9d9ec09d046e02bbfc.
+  5. Chabacano poetry book: no photograph of the named book found; place-only Zamboanga scenes rejected.
+  6. Peru wildfire: search returned 2019/2022 Amazon material without evidence of the reported 2026 communities or event.
+  7. Bangladesh–Malaysia recruitment: leading migrant-worker photo was made in Tunisia, unrelated to this reform.
+  8. European advanced motors: generic crane/capstan motor photographs do not identify the research or material reported.
+- Inspected thumbnails stay in ignored reports/saga-discover-local/commons-pilot/ and are not committed. Pixel inspection alone cannot establish identity or event date. This gate supports small manual batches, not unattended mass backfill. Do not expand to all 42 text-only stories or start Stage 3 yet. Future live Gemini behavior remains unverified; this pilot made no Gemini call and ran no production workflow.

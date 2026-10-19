@@ -21,7 +21,7 @@ test('published catalog has no lore but original historical shards remain',()=>{
  const old=JSON.parse(fs.readFileSync(dir+'0000.json'))
  assert.ok(old.some(x=>x.contentType==='lore'))
 })
-test('optional source photos have individual credits at every reading level',()=>{
+test('optional source and reviewed Commons photos have individual credits at every reading level',()=>{
  const manifest=JSON.parse(fs.readFileSync(dir+'manifest.json'))
  const retired=new Set(manifest.retiredSourceUrls||[])
  const news=Array.from({length:manifest.chunks},(_,i)=>JSON.parse(fs.readFileSync(dir+String(i).padStart(4,'0')+'.json'))).flat().filter(s=>s.contentType==='news'&&!retired.has(s.sourceUrl))
@@ -33,8 +33,14 @@ test('optional source photos have individual credits at every reading level',()=
   const media={images:photos.map(page=>({url:page.image,caption:page.caption,provenance:page.imageProvenance,verified:true}))}
   for(const photo of photos){
    assert.ok(verifiedPhoto({...story,imageUrl:photo.image,imageRightsVerified:true,imageProvenance:photo.imageProvenance}))
-   assert.ok([undefined,'nasa-earth-observatory'].includes(photo.imageProvenance.originType))
-   assert.equal(photo.imageProvenance.sourceImageUrl,story.sourceUrl)
+   if(photo.imageProvenance.originType==='wikimedia-commons'){
+    assert.match(photo.imageProvenance.imagePageUrl,/^https:\/\/commons\.wikimedia\.org\/wiki\/File:/)
+    assert.equal(photo.imageProvenance.visualReview?.sourceUrl,story.sourceUrl)
+    assert.match(photo.imageProvenance.visualReview?.sha256||'',/^[0-9a-f]{64}$/)
+   }else{
+    assert.ok([undefined,'nasa-earth-observatory'].includes(photo.imageProvenance.originType))
+    assert.equal(photo.imageProvenance.sourceImageUrl,story.sourceUrl)
+   }
    assert.ok(photo.caption?.trim())
    assert.doesNotMatch(photoLabel(photo),/^Illustrat/i)
   }

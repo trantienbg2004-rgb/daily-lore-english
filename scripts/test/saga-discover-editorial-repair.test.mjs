@@ -73,7 +73,7 @@ test('Rhinoceros text requires a CC BY notice on the individual article',()=>{
  const licensed=extractArticle('<meta name="author" content="Rhinoceros Newsroom">'+body+'<p>Free to republish and remix under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></p>','rhinoceros')
  assert.equal(rightsDecision(rhinoceros,licensed).textAllowed,true)
  assert.equal(rightsDecision(rhinoceros,extractArticle(body,'rhinoceros')).textAllowed,false)
- assert.equal(commonsQueryFor('Lansing city government election'),'Lansing')
+ assert.equal(commonsQueryFor('Lansing city government election'),'')
 })
 
 test('stale VOA feeds are inactive and local Michigan articles cannot enter the new queue',()=>{
