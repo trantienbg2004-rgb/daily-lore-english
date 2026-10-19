@@ -13,7 +13,8 @@ const article={sourceUrl:'https://globalvoices.org/penguin-report',pageIndex:0,
  pageTexts:['A penguin is part of the report.','The penguin colony is being studied.','Scientists are studying the penguin.']}
 const observation={subjectVisible:'yes',subjectProminent:'yes',pageRelevant:'yes',imageKind:'photo',
  observation:'A penguin clearly occupies the center of the image.'}
-const response=value=>({ok:true,json:async()=>({candidates:[{content:{parts:[{text:JSON.stringify(value)}]}}]})})
+const response=value=>({ok:true,json:async()=>({candidates:[{content:{parts:[{text:JSON.stringify(value)}]}}],
+ usageMetadata:{promptTokenCount:342,candidatesTokenCount:38,totalTokenCount:380}})})
 const options={candidate:photo,article,subject:'penguin',imageBytes:bytes,apiKey:'test-only',freeTierConfirmed:true}
 
 test('no verified free tier or exhausted budget makes zero vision calls',async()=>{
@@ -31,6 +32,7 @@ test('the Little Penguin false positive is vetoed when the bird is not visibly r
  assert.equal(result.status,'rejected')
  assert.equal(result.reason,'visual-mismatch')
  assert.equal(budget.remaining,0)
+ assert.equal(result.usage.totalTokenCount,380)
  assert.equal(request.contents[0].parts[1].inline_data.data,bytes.toString('base64'))
 })
 

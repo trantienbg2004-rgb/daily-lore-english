@@ -1,0 +1,35 @@
+name: SAGA isolated Commons vision audit
+
+on:
+  push:
+    branches: [fix/saga-cefr-headline-diagnostics-20261018]
+    paths: [.github/workflows/saga-vision-audit.yml]
+
+permissions:
+  contents: read
+
+jobs:
+  vision-audit:
+    if: ${{ contains(github.event.head_commit.message, '[vision-audit-once]') && github.run_attempt == '1' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify four real Commons images without publication
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          SAGA_VISION_FREE_TIER_CONFIRMED: 'yes'
+        run: node scripts/vision-audit.mjs
+      - name: Preserve nonsecret validation observations
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: saga-vision-audit-${{ github.run_id }}
+          path: reports/saga-discover-local/vision-audit/results.json
+          if-no-files-found: ignore
+          retention-days: 7

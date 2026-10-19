@@ -56,7 +56,7 @@ export async function screenCommonsVisual({candidate,article,subject,imageBytes,
   const cached=JSON.parse(await fs.readFile(cacheFile,'utf8'))
   if(cached.key===key&&cached.version===VERSION&&
    ['rejected','needs-evidence-review'].includes(cached.status)&&parseObservation(cached.observation))
-   return {status:cached.status,reason:cached.reason,observation:cached.observation,cached:true,key}
+   return {status:cached.status,reason:cached.reason,observation:cached.observation,usage:cached.usage||{},cached:true,key}
  }catch(error){if(error.code!=='ENOENT')return {status:'unavailable',reason:'vision-cache-invalid'}}}
  // An API key alone cannot prove that its project uses the free tier.
  if(!freeTierConfirmed||!apiKey)return {status:'unavailable',reason:'free-vision-not-configured'}
@@ -72,15 +72,20 @@ export async function screenCommonsVisual({candidate,article,subject,imageBytes,
   body:JSON.stringify(body),signal:AbortSignal.timeout(30000)})}
  catch{return {status:'unavailable',reason:'vision-request-failed'}}
  if(!response.ok)return {status:'unavailable',reason:`vision-http-${response.status}`}
- let observation
+ let observation,usage={}
  try{const data=await response.json();const raw=(data?.candidates?.[0]?.content?.parts||[]).map(part=>part.text||'').join('');
-  observation=parseObservation(JSON.parse(raw))}catch{return {status:'unavailable',reason:'vision-response-invalid'}}
+  observation=parseObservation(JSON.parse(raw))
+  for(const key of ['promptTokenCount','candidatesTokenCount','totalTokenCount']){
+   const count=data?.usageMetadata?.[key]
+   if(Number.isSafeInteger(count)&&count>=0)usage[key]=count
+  }
+ }catch{return {status:'unavailable',reason:'vision-response-invalid'}}
  if(!observation)return {status:'unavailable',reason:'vision-response-invalid'}
  // A positive observation is a lead for evidence review, never approval.
  const negative=['subjectVisible','subjectProminent','pageRelevant'].some(field=>observation[field]==='no')
  const status=negative?'rejected':'needs-evidence-review'
  const reason=negative?'visual-mismatch':'visual-observation-not-proof'
  if(cacheFile){await fs.mkdir(cacheDir,{recursive:true});await fs.writeFile(cacheFile,
-  JSON.stringify({version:VERSION,key,status,reason,observation})+'\n')}
- return {status,reason,observation,cached:false,key}
+  JSON.stringify({version:VERSION,key,status,reason,observation,usage})+'\n')}
+ return {status,reason,observation,usage,cached:false,key}
 }
