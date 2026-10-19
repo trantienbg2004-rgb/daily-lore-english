@@ -8,6 +8,10 @@ on:
 permissions:
   contents: read
 
+concurrency:
+  group: saga-vision-audit-${{ github.ref }}
+  cancel-in-progress: false
+
 jobs:
   vision-audit:
     if: ${{ contains(github.event.head_commit.message, '[vision-audit-once]') && github.run_attempt == '1' }}
