@@ -81,3 +81,15 @@ test('503 and malformed responses fail closed without retries',async()=>{
  assert.equal(malformed.reason,'vision-response-invalid')
  assert.equal(calls,2)
 })
+
+test('approved free alternative uses an isolated model cache and does not retry 503',async()=>{
+ let calls=0,requestedUrl=''
+ const alternate={...options,model:'gemini-3.1-flash-lite',budget:{remaining:1},fetchImpl:async url=>{
+  calls++;requestedUrl=url;return {ok:false,status:503}
+ }}
+ const result=await screenCommonsVisual(alternate)
+ assert.equal(result.reason,'vision-http-503')
+ assert.equal(calls,1)
+ assert.match(requestedUrl,/gemini-3\.1-flash-lite:generateContent$/)
+ assert.equal((await screenCommonsVisual({...alternate,model:'unverified-paid-model'})).reason,'unapproved-vision-model')
+})

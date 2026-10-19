@@ -28,6 +28,7 @@ jobs:
         env:
           GEMINI_API_KEY: ${{ secrets.SAGA_IMAGE_TEST_API_KEY }}
           SAGA_VISION_FREE_TIER_CONFIRMED: 'yes'
+          SAGA_VISION_MODEL: gemini-3.1-flash-lite
         run: node scripts/vision-audit.mjs
       - name: Preserve nonsecret validation observations
         if: always()

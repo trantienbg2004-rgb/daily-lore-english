@@ -52,6 +52,7 @@ async function loadSample(sample,index){
 
 async function main(){
  const preflight=process.argv.includes('--preflight')
+ const model=process.env.SAGA_VISION_MODEL||'gemini-2.5-flash'
  if(!preflight&&(process.env.SAGA_VISION_FREE_TIER_CONFIRMED!=='yes'||!process.env.GEMINI_API_KEY))
   throw Error('Free-tier project or secret not confirmed; zero Gemini calls')
  const budget={remaining:Math.min(4,samples.length)},rows=[]
@@ -61,10 +62,10 @@ async function main(){
   if(preflight){rows.push({id:sample.id,source:'same manually reviewed 800px bytes',sha256:sample.sha256,manual:sample.manual});continue}
   if(index>0)await delay(16_000)
   const result=await screenCommonsVisual({candidate,article,subject:sample.subject,imageBytes,
-   apiKey:process.env.GEMINI_API_KEY,freeTierConfirmed:true,budget,cacheDir:reportDir})
+   apiKey:process.env.GEMINI_API_KEY,freeTierConfirmed:true,budget,cacheDir:reportDir,model})
   rows.push({id:sample.id,sha256:sample.sha256,manual:sample.manual,modelStatus:result.status,
    reason:result.reason,observation:result.observation||null,usage:result.usage||{},cached:!!result.cached})
-  await fs.writeFile(path.join(reportDir,'results.json'),JSON.stringify({model:'gemini-2.5-flash',rows},null,2)+'\n')
+  await fs.writeFile(path.join(reportDir,'results.json'),JSON.stringify({model,rows},null,2)+'\n')
   console.log(JSON.stringify({sample:sample.id,status:result.status,reason:result.reason,
    totalTokens:result.usage?.totalTokenCount??null}))
   if(result.status==='unavailable')break // 429, 503, malformed output or uncertainty: no retries.
