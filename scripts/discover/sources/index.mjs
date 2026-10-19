@@ -5,5 +5,6 @@ import {source as npr} from './npr.mjs'
 import {source as rhinoceros} from './rhinoceros.mjs'
 import {source as horizon} from './horizon.mjs'
 import {source as nasaEarth} from './nasaEarth.mjs'
-export const SOURCES = Object.freeze([gv,horizon,nasaEarth,rhinoceros,tc,bbc,npr])
+import {source as publicDomainReview} from './publicDomainReview.mjs'
+export const SOURCES = Object.freeze([gv,horizon,nasaEarth,publicDomainReview,rhinoceros,tc,bbc,npr])
 export const BY_ID = Object.freeze(Object.fromEntries(SOURCES.map(s=>[s.id,s])))

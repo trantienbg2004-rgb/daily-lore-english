@@ -32,5 +32,11 @@ export function rightsDecision(source,article){
   if(!article.hasNasaImageCredit)return {...metadata,reason:'no-nasa-image-credit'}
   return {mode:'gemini-eligible',textAllowed:true,imageAllowed:false,reason:'nasa-first-party-report',license:'NASA public information',licenseUrl:source.policyUrl}
  }
+ if(source.id==='public-domain-review'){
+  if(article.hasThirdPartyNotice||article.hasSyndicatedRights)return {...metadata,reason:'third-party-content-detected'}
+  if(article.explicitLicense!=='https://creativecommons.org/licenses/by-sa/4.0/')return {...metadata,reason:'no-per-essay-cc-by-sa-proof'}
+  if(!article.author)return {...metadata,reason:'unverified-author'}
+  return {mode:'gemini-eligible',textAllowed:true,imageAllowed:false,reason:'verified-essay-cc-by-sa-text',license:'CC BY-SA 4.0',licenseUrl:article.explicitLicense}
+ }
  return metadata
 }
