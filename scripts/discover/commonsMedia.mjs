@@ -69,11 +69,17 @@ export function approvedCommonsPhoto(page,query){
  if(!/^(?:CC BY(?:-SA)?\s*(?:2\.0|2\.5|3\.0|4\.0)|CC0|Public domain)/i.test(license))return null
  const artist=stripHtml(meta.Artist?.value)
  if(!artist||artist.length>180)return null
+ const restrictions=stripHtml(meta.Restrictions?.value)
+ const description=stripHtml(meta.ImageDescription?.value)
+ if(/\b(?:all rights reserved|permission required|Getty|Reuters|Shutterstock|Alamy)\b/i.test([restrictions,description].join(' ')))return null
  const imagePageUrl=String(info.descriptionurl||'')
  const imageUrl=String(info.thumburl||info.url||'')
  if(!/^https:\/\/commons\.wikimedia\.org\/wiki\/File:/i.test(imagePageUrl)||
     !/^https:\/\/(?:thumb|upload)\.wikimedia\.org\//i.test(imageUrl))return null
  return {url:imageUrl,caption:`Illustrative image: ${file}`.slice(0,140),verified:false,
+  metadata:{description:description.slice(0,500),objectName:stripHtml(meta.ObjectName?.value).slice(0,160),
+   capturedAt:stripHtml(meta.DateTimeOriginal?.value).slice(0,160),
+   uploadedAt:stripHtml(meta.DateTime?.value).slice(0,80),restrictions:restrictions.slice(0,160)},
   provenance:{credit:`${artist} / Wikimedia Commons`,license,licenseUrl:rawLicense,
    sourceImageUrl:imagePageUrl,imagePageUrl,originType:'wikimedia-commons'}}
 }

@@ -11,7 +11,8 @@ const imageUrl='https://thumb.wikimedia.org/wikipedia/commons/thumb/1/11/Luiz_In
 const licence='https://creativecommons.org/licenses/by/2.0/'
 const imagePage=(title='Luiz Inacio Lula da Silva')=>({title:'File:'+title+'.jpg',imageinfo:[{
  mime:'image/jpeg',width:960,height:1200,thumburl:imageUrl,descriptionurl:imagePageUrl,
- extmetadata:{LicenseUrl:{value:licence},LicenseShortName:{value:'CC BY 2.0'},Artist:{value:'Ricardo Stuckert/PR'}}}]})
+ extmetadata:{LicenseUrl:{value:licence},LicenseShortName:{value:'CC BY 2.0'},Artist:{value:'Ricardo Stuckert/PR'},
+  DateTimeOriginal:{value:'2023-02-16'},ImageDescription:{value:'Official portrait of Lula'}}}]})
 const pageTexts=['Lula faced a false claim in Brazil.','Lula was targeted by an online hoax.','An online network distorted a statement by Lula.']
 const article={sourceUrl,title:'An online hoax about Lula',pageIndex:0,pageTexts}
 const review={sourceUrl,imagePageUrl,imageUrl,licenseUrl:licence,sha256,pageIndex:0,
@@ -27,6 +28,7 @@ const result=(changes={},articleChanges={},photo=candidate(),image=bytes)=>
 
 test('Commons filename and CC licence only produce an unverified candidate',()=>{
  assert.equal(candidate()?.verified,false)
+ assert.equal(candidate()?.metadata.capturedAt,'2023-02-16')
  assert.equal(commonsQueryFor('Chabacano poetry book in Zamboanga'),'')
  assert.equal(commonsQueryFor('Lansing local election'),'')
  assert.equal(commonsQueryFor('Little penguins vaccinated in Australia'),'Australian little penguin')
