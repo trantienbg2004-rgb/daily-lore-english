@@ -8,6 +8,12 @@ export const readableStory = item => {
     ? page.text.trim().split(/\s+/).filter(Boolean).length : 0), 0)
   // Publisher RSS previews are deliberately short. Never fabricate additional text.
   if (item.contentType === 'news-preview') return false // V22-C rejects RSS snippets
+  if (item.contentType === 'wiki') return item.editorialVersion === 2 && item.readingKind === 'full' &&
+    item.pages.length >= 5 && item.pages.length <= 7 && words >= 175 &&
+    item.pages[0]?.image && ['A1-A2','B1-B2','C1-C2'].every(level =>
+      Array.isArray(item.levelVariants?.[level]?.pages) &&
+      item.levelVariants[level].pages.length >= 5 && item.levelVariants[level].pages.length <= 7 &&
+      item.levelVariants[level].pages[0]?.image)
   if (item.contentType === 'lore') return item.editorialVersion === 1 && item.readingKind === 'full' && item.pages.length >= 3 && words >= 400 && words <= 800 && item.pages.some(p => p.image && p.imageProvenance?.license)
   return item.contentType === 'news' && item.readingKind === 'full' && item.pages.length >= 1 && words >= 10
 }
@@ -60,7 +66,8 @@ export async function fetchManifest(fetchImpl, baseUrl, nonce = Date.now(), feed
   return {count, total, version: `${manifest.contentHash || manifest.updatedAt || ''}:${manifest.catalogIndexHash || ''}:${count}:${total ?? 'unknown'}`, updatedAt: manifest.updatedAt || '',
     ready: manifest.ready, feedType: manifest.feedType, newsOnly: manifest.newsOnly === true, sourceCount: manifest.sourceCount, editorialVersion: Number(manifest.editorialVersion || 0),
     withVerifiedPhoto: Number(manifest.withVerifiedPhoto || 0), sourcePhotosOnly: manifest.sourcePhotosOnly === true, contentHash: manifest.contentHash || '',
-    indexFile: manifest.catalogIndex === 'catalog-index.json' ? 'catalog-index.json' : '', indexHash: manifest.catalogIndexHash || ''}
+    indexFile: manifest.catalogIndex === 'catalog-index.json' || /^catalog-index-[0-9a-f]{12}\.json$/.test(manifest.catalogIndex || '') ? manifest.catalogIndex : '',
+    indexHash: manifest.catalogIndexHash || '', byTopic: manifest.byTopic || {}}
 }
 
 async function fetchChunk(fetchImpl, baseUrl, chunkNumber, updatedAt, feedPath = 'feed') {

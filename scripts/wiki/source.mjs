@@ -50,12 +50,17 @@ export function parseWikipediaPage(data,{retrievedAt=new Date()}={}){
   !/^https:\/\/creativecommons\.org\/licenses\/by-sa\/4\.0\//.test(data?.license?.url||''))throw Error('Wikipedia source identity or text license unverified')
  if(typeof data.html!=='string'||data.html.length<1000||data.html.length>4_000_000)throw Error('Wikipedia article HTML unavailable or oversized')
  const $=load(data.html)
- const paragraphs=[]
+ const paragraphs=[],paragraphDetails=[]
  $('section p').each((_,element)=>{
   if($(element).closest(nonContent).length)return
   const clone=$(element).clone();clone.find('sup,style,script,.mw-editsection').remove()
   const text=clean(clone,$)
-  if(text.split(/\s+/).length>=22&&text.length<=3000)paragraphs.push(text)
+  const heading=clean($(element).closest('section').children('h2,h3,h4').first(),$)
+  if(/^(?:references|notes|further reading|external links|bibliography|see also)$/i.test(heading))return
+  if(text.split(/\s+/).length>=22&&text.length<=3000){
+   paragraphs.push(text)
+   paragraphDetails.push({heading,text})
+  }
  })
  const figures=[]
  $('section figure').each((position,figure)=>{
@@ -79,7 +84,7 @@ export function parseWikipediaPage(data,{retrievedAt=new Date()}={}){
  return {pageId:data.id,sourceTitle:String(data.title||'').trim(),sourceUrl:WIKI+'/wiki/'+encodeURIComponent(key),
   sourceRevisionId:revisionId,sourceRevisionUrl:`${WIKI}/w/index.php?oldid=${revisionId}`,
   sourceRetrievedAt:retrievedAt.toISOString(),textLicense:'CC BY-SA 4.0',textLicenseUrl:'https://creativecommons.org/licenses/by-sa/4.0/',
-  paragraphs,figures,wordCount:paragraphs.join(' ').split(/\s+/).length}
+  paragraphs,paragraphDetails,figures,wordCount:paragraphs.join(' ').split(/\s+/).length}
 }
 
 export async function fetchWikipediaPage(title,options={}){

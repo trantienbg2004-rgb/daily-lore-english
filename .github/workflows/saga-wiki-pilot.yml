@@ -1,0 +1,61 @@
+name: SAGA Wikipedia editorial pilot (branch only)
+
+on:
+  push:
+    branches: [feat/saga-wikipedia-first-20261020]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: saga-wiki-pilot-${{ github.ref_name }}
+  cancel-in-progress: false
+
+jobs:
+  pilot:
+    if: contains(github.event.head_commit.message, '[wiki-pilot-once]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - name: Check offline Wikipedia pipeline gates
+        run: node --test scripts/test/saga-wiki-*.test.mjs
+      - name: Generate at most one story from a preflighted Wikipedia article
+        env:
+          SAGA_WIKI_GEMINI_KEY: ${{ secrets.SAGA_IMAGE_TEST_API_KEY }}
+          SAGA_WIKI_FREE_TIER_CONFIRMED: '1'
+        run: node scripts/wiki-pipeline.mjs batch --max-calls=1 --max-candidates=1 --page-id=89732
+      - name: Check result before staging on development branch
+        run: |
+          node --test scripts/test/saga-wiki-*.test.mjs
+          node scripts/lore-verify.mjs
+          npm run build
+          git diff --check
+      - name: Commit pilot checkpoint on the same development branch
+        run: |
+          git config user.name "saga-wiki-pilot"
+          git config user.email "saga-wiki-pilot@users.noreply.github.com"
+          git add data/wiki-pipeline-state.json public/wiki-reader/
+          if git diff --cached --quiet; then
+            echo "No accepted pilot story. The status checkpoint is unchanged."
+            exit 0
+          fi
+          git commit -m "SAGA: stage bounded Wikipedia editorial pilot"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
+      - name: Preserve diagnostic state when the run stops
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: saga-wiki-pilot-${{ github.run_id }}
+          path: |
+            data/wiki-pipeline-state.json
+            public/wiki-reader/manifest.json
+          if-no-files-found: ignore
+          retention-days: 7

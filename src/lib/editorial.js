@@ -2,7 +2,7 @@
 // rewrite factual claims, delete older articles or hide any user's topics.
 const lower = value => String(value || '').toLowerCase()
 export function displayHeadline(item) {
-  const levelHeadline=item?.contentType==='news'&&item?.levelVariants?.[item.readingLevel]?.headline
+  const levelHeadline=['news','wiki'].includes(item?.contentType)&&item?.levelVariants?.[item.readingLevel]?.headline
   const original = String(levelHeadline || (item?.contentType === 'news' && item?.headline) || item?.sourceTitle || item?.title || '').replace(/_/g,' ').trim()
   // The collector stored many Wikipedia titles in all caps for the old theme.
   // Recover the publisher's original casing when it is available.
@@ -11,6 +11,7 @@ export function displayHeadline(item) {
 export function readerSection(item) {
   const source = lower(item?.sourceUrl)
   if (item?.contentType === 'lore') return 'DISCOVER · ' + String(item.category || 'KNOWLEDGE').toUpperCase()
+  if (item?.contentType === 'wiki') return 'DISCOVER · ' + String(item.category || 'KNOWLEDGE').toUpperCase()
   if (item?.contentType === 'news') return 'NEWS · ' + String(item.category || 'LATEST').replace(/^NEWS\s*·?\s*/i,'')
   if (source.includes('wikivoyage.org')) return 'DISCOVER · TRAVEL & PLACES'
   return String(item?.category || 'DISCOVER · ALL TOPICS')
