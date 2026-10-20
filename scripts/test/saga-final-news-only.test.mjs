@@ -37,6 +37,11 @@ test('optional source and reviewed Commons photos have individual credits at eve
     assert.match(photo.imageProvenance.imagePageUrl,/^https:\/\/commons\.wikimedia\.org\/wiki\/File:/)
     assert.equal(photo.imageProvenance.visualReview?.sourceUrl,story.sourceUrl)
     assert.match(photo.imageProvenance.visualReview?.sha256||'',/^[0-9a-f]{64}$/)
+   }else if(photo.imageProvenance.originType==='source-linked-commons-pd'){
+    assert.match(photo.imageProvenance.imagePageUrl,/^https:\/\/commons\.wikimedia\.org\/wiki\/File:/)
+    assert.match(photo.imageProvenance.sourceFigureImageUrl,/^https:\/\/globalvoices\.org\/wp-content\//)
+    assert.equal(photo.imageProvenance.license,'Public domain')
+    assert.equal(photo.imageProvenance.sourceImageUrl,story.sourceUrl)
    }else{
     assert.ok([undefined,'nasa-earth-observatory'].includes(photo.imageProvenance.originType))
     assert.equal(photo.imageProvenance.sourceImageUrl,story.sourceUrl)

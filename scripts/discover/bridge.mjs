@@ -18,6 +18,10 @@ export const verifiedPhoto=d=>{
  const p=d.imageProvenance||{}
  const license=/^https:\/\/creativecommons\.org\/(?:licenses\/(?:by|by-sa)\/(?:2\.0|2\.5|3\.0|4\.0)|publicdomain\/(?:zero|mark)\/1\.0)(?:\/|$)/i.test(p.licenseUrl||'')
  const original=p.sourceImageUrl===d.sourceUrl && !p.originType
+ const sourceLinkedPublicDomain=p.originType==='source-linked-commons-pd'&&p.sourceImageUrl===d.sourceUrl&&
+  /^https:\/\/commons\.wikimedia\.org\/wiki\/File:/i.test(p.imagePageUrl||'')&&
+  /^https:\/\/(?:thumb|upload)\.wikimedia\.org\//i.test(d.imageUrl)&&
+  /^https:\/\/(?:globalvoices\.org|www\.globalvoices\.org)\//i.test(p.sourceFigureImageUrl||'')
  const nasa=p.sourceImageUrl===d.sourceUrl&&p.originType==='nasa-earth-observatory'&&p.licenseUrl==='https://www.nasa.gov/nasa-brand-center/images-and-media/'&&/^https:\/\/assets\.science\.nasa\.gov\//i.test(d.imageUrl)
  const commons=p.originType==='wikimedia-commons'&&p.sourceImageUrl===p.imagePageUrl&&
   /^https:\/\/commons\.wikimedia\.org\/wiki\/File:/i.test(p.imagePageUrl||'')&&
@@ -25,7 +29,7 @@ export const verifiedPhoto=d=>{
   p.visualReview?.sourceUrl===d.sourceUrl&&
   /^[0-9a-f]{64}$/.test(p.visualReview?.sha256||'')&&
   !!p.visualReview?.reviewer&&!!p.visualReview?.reviewedAt
- return d.imageRightsVerified===true&&/^https:\/\//i.test(d.imageUrl)&&(license||nasa)&&typeof p.credit==='string'&&p.credit.length>=3&&(original||commons||nasa)
+ return d.imageRightsVerified===true&&/^https:\/\//i.test(d.imageUrl)&&(license||nasa)&&typeof p.credit==='string'&&p.credit.length>=3&&(original||commons||nasa||sourceLinkedPublicDomain)
 }
 const photoCreditFields=['credit','license','licenseUrl','sourceImageUrl','imagePageUrl','originType']
 export const draftPhotos=d=>Array.isArray(d?.images)?d.images:

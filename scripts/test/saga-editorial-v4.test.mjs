@@ -1,9 +1,9 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
 import fs from 'node:fs'
-import {rssImageHints,articleImageHint,licensedArticleImage,licensedArticleImages,photoRelevanceScore,assignArticlePhotos} from '../discover/licensedMedia.mjs'
+import {rssImageHints,articleImageHint,licensedArticleImage,licensedArticleImages,sourceLinkedCommonsImages,photoRelevanceScore,assignArticlePhotos} from '../discover/licensedMedia.mjs'
 import {articleMediaBlocks} from '../discover/htmlArticle.mjs'
-import {validateDraft,toReaderStory} from '../discover/bridge.mjs'
+import {validateDraft,toReaderStory,verifiedPhoto} from '../discover/bridge.mjs'
 import {inspectStagedRelease} from '../discover-live-qa.mjs'
 import {source as nasaEarth} from '../discover/sources/nasaEarth.mjs'
 import {extractArticle} from '../discover/article.mjs'
@@ -63,6 +63,34 @@ test('NASA Earth Observatory requires a first-party story and credits its own ma
  assert.equal(photos.length,1)
  assert.equal(photos[0].provenance.originType,'nasa-earth-observatory')
  assert.equal(rightsDecision(nasaEarth,extractArticle(html.replace('NASA Earth Observatory images by Lauren Dauphin','Getty Images by Lauren Dauphin'),nasaEarth.id)).textAllowed,false)
+})
+
+test('source-linked Commons public-domain event photo needs exact item rights and page context',async()=>{
+ const source='https://globalvoices.org/2026/10/bangladesh-migration'
+ const item='https://commons.wikimedia.org/wiki/File:Bangladesh_Malaysia_agreement_2024.jpg'
+ const figure=`<div class="wp-caption"><a href="${item}"><img src="https://globalvoices.org/wp-content/uploads/agreement.webp" alt="Bangladesh and Malaysia signed a labor agreement in 2024" width="800" height="450"></a><p class="wp-caption-text">Bangladesh and Malaysia signed a labor agreement in 2024. Image from government, Public domain.</p></div>`
+ const meta={query:{pages:{1:{imageinfo:[{mime:'image/jpeg',width:1200,height:700,descriptionurl:item,
+  thumburl:'https://thumb.wikimedia.org/wikipedia/commons/thumb/agreement.jpg',extmetadata:{LicenseShortName:{value:'Public domain'},UsageTerms:{value:'Public domain'},Artist:{value:'Government photo office'}}}]}}}}
+ let calls=0
+ const fetchImpl=async()=>{calls++;return {ok:true,json:async()=>meta}}
+ const opts={articleTitle:'Bangladesh Malaysia migration agreement',articleText:'Bangladesh and Malaysia signed a labor agreement in 2024.',fetchImpl}
+ const good=await sourceLinkedCommonsImages(figure,source,opts)
+ assert.equal(good.decisions[0].status,'VERIFIED')
+ assert.equal(calls,1)
+ const photo=good.photos[0]
+ assert.equal(verifiedPhoto({sourceUrl:source,imageUrl:photo.url,imageRightsVerified:true,imageProvenance:photo.provenance}),true)
+ assert.doesNotThrow(()=>requireOriginalArticlePhotos([{sourceUrl:source,images:[photo]}]))
+ const levels=Object.fromEntries(['A1-A2','B1-B2','C1-C2'].map(level=>[level,{pages:[{text:'Bangladesh and Malaysia signed a labor agreement in 2024.'}]}]))
+ assert.equal(assignArticlePhotos([photo],opts.articleTitle,levels)[0].pageIndex,0)
+ assert.equal((await sourceLinkedCommonsImages(figure.replace('Public domain','Used with permission'),source,opts)).decisions[0].status,'REVIEW')
+ assert.equal((await sourceLinkedCommonsImages(figure,source,{...opts,articleText:'Bangladesh and Malaysia discussed a deal in 2026.'})).decisions[0].reason,'image-date-absent-from-article')
+ const wrongRights=structuredClone(meta);wrongRights.query.pages[1].imageinfo[0].extmetadata.UsageTerms.value='Permission required'
+ const denied=await sourceLinkedCommonsImages(figure,source,{...opts,fetchImpl:async()=>({ok:true,json:async()=>wrongRights})})
+ assert.equal(denied.decisions[0].status,'REVIEW')
+ assert.equal(denied.photos.length,0)
+ const unavailable=await sourceLinkedCommonsImages(figure,source,{...opts,fetchImpl:async()=>({ok:false,status:503})})
+ assert.equal(unavailable.decisions[0].status,'REVIEW')
+ assert.equal(unavailable.photos.length,0)
 })
 
 test('NASA data credits stay complete and separately credited field photos stay out',()=>{

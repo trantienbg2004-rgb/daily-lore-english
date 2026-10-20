@@ -118,6 +118,59 @@ function licensedNasaArticleImages(html,sourceUrl,{limit,usedImageUrls,usedImage
 }
 export function licensedArticleImage(html,sourceUrl){return licensedArticleImages(html,sourceUrl,{limit:1})[0]||null}
 
+/** An editorial figure linking to its exact Commons file can establish its own
+ * public-domain rights without a vision API. A generic page footer cannot. */
+export async function sourceLinkedCommonsImages(html,sourceUrl,{articleTitle='',articleText='',usedImageUrls=new Set(),usedImageCaptions=new Set(),fetchImpl=fetch,cache=new Map(),limit=5}={}){
+ const decisions=[],photos=[]
+ const figures=articleMediaBlocks(html).filter(block=>block.kind==='editorial').slice(0,12)
+ for(const {markup} of figures){
+  const img=markup.match(/<img\b[^>]*>/i)?.[0]||''
+  const imageLink=[...markup.matchAll(/<a\b[^>]*>/gi)].map(match=>decode(getAttr(match[0],'href')))
+   .find(url=>/^https:\/\/commons\.wikimedia\.org\/wiki\/File:/i.test(url))
+  if(!img||!imageLink)continue
+  const captionHtml=markup.match(/<figcaption\b[^>]*>([\s\S]*?)<\/figcaption>/i)?.[1]||
+   markup.match(/<p\b[^>]*class=["'][^"']*\bwp-caption-text\b[^"']*["'][^>]*>([\s\S]*?)<\/p>/i)?.[1]||''
+  const caption=compact(captionHtml),alt=compact(getAttr(img,'alt'))
+  const result=(status,reason,photo)=>{decisions.push({status,reason,imagePageUrl:imageLink,...(photo?{photo}:{})})}
+  if(blocked.test(caption)||!caption||!/\bpublic domain\b/i.test(caption)){
+   result(blocked.test(caption)?'REJECTED':'REVIEW','individual-rights-not-proven');continue
+  }
+  const sourceImageUrl=safeURL(getAttr(img,'src'),sourceUrl)
+  if(!sourceImageUrl||new URL(sourceImageUrl).hostname!==new URL(sourceUrl).hostname){result('REVIEW','source-figure-image-unverified');continue}
+  const title=decodeURIComponent(new URL(imageLink).pathname.split('/').at(-1)).replace(/_/g,' ')
+  const api=new URL('https://commons.wikimedia.org/w/api.php')
+  for(const [key,value] of Object.entries({action:'query',titles:title,prop:'imageinfo',iiprop:'url|size|mime|extmetadata',iiurlwidth:'960',format:'json'}))api.searchParams.set(key,value)
+  let page
+  try{
+   if(cache.has(imageLink))page=cache.get(imageLink)
+   else{
+    const response=await fetchImpl(api.href,{headers:{'User-Agent':'SAGA/0.1 (https://saga.id.vn; source image verification)'},signal:AbortSignal.timeout(10000)})
+    if(!response.ok)throw Error('commons-unavailable')
+    page=Object.values((await response.json())?.query?.pages||{})[0]
+    cache.set(imageLink,page)
+   }
+  }catch{result('REVIEW','commons-rights-unavailable');continue}
+  const info=page?.imageinfo?.[0],meta=info?.extmetadata||{}
+  const rights=compact(meta.LicenseShortName?.value)+' '+compact(meta.UsageTerms?.value)
+  const artist=compact(meta.Artist?.value),restrictions=compact(meta.Restrictions?.value)
+  if(info?.descriptionurl!==imageLink||!/^public domain(?:\s+public domain)?$/i.test(rights.trim())||
+   !artist||blocked.test(restrictions)||!['image/jpeg','image/png','image/webp'].includes(info?.mime)||
+   info.width<600||info.height<350||!/^https:\/\/(?:thumb|upload)\.wikimedia\.org\//i.test(info.thumburl||'')){
+   result('REVIEW','commons-item-rights-or-identity-unproven');continue
+  }
+  const eventYear=title.match(/\b(?:19|20)\d{2}\b/)?.[0]
+  if(eventYear&&(!caption.includes(eventYear)||!String(articleText).includes(eventYear))){result('REVIEW','image-date-absent-from-article');continue}
+  const photo={url:info.thumburl,caption:(eventYear?`Archive (${eventYear}): `:'Source photo: ')+(caption||alt),verified:true,
+   provenance:{credit:`${artist} / Wikimedia Commons`,license:'Public domain',licenseUrl:'https://creativecommons.org/publicdomain/mark/1.0/',
+    sourceImageUrl:sourceUrl,imagePageUrl:imageLink,sourceFigureImageUrl:sourceImageUrl,originType:'source-linked-commons-pd'}}
+  if(photoRelevanceScore(photo,articleTitle,articleText)<1){result('REJECTED','image-subject-unrelated');continue}
+  if(usedImageUrls.has(photo.url)||usedImageUrls.has(imageLink)||usedImageCaptions.has(imageCaptionKey(photo.caption))){result('REJECTED','image-already-used');continue}
+  photos.push(photo);result('VERIFIED','source-figure-and-commons-public-domain-item',photo)
+  if(photos.length>=limit)break
+ }
+ return {photos,decisions}
+}
+
 /** Place source photos only where all CEFR versions discuss their subject. */
 export function assignArticlePhotos(photos,title,levelVariants){
  const levels=['A1-A2','B1-B2','C1-C2']
@@ -144,7 +197,7 @@ export function assignArticlePhotos(photos,title,levelVariants){
   return {photo,index,titleScore:photoRelevanceScore(subject,title),
    pageScores:levels.map(level=>photoRelevanceScore(subject,'',textAt(level,0))),
    latestYear:imageYear(photo)}
- }).filter(row=>row.titleScore>0&&row.pageScores.every(score=>score>0))
+ }).filter(row=>(row.titleScore>0||row.photo.provenance?.originType==='source-linked-commons-pd')&&row.pageScores.every(score=>score>0))
  // Comparison articles often place an older baseline before the current image.
  // The lead must show the latest event when both images fit every first page.
  coverCandidates.sort((a,b)=>b.latestYear-a.latestYear||

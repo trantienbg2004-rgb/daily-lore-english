@@ -7,7 +7,11 @@ import {buildReaderIndex} from './build-reader-index.mjs'
 export function requireOriginalArticlePhotos(drafts){
  for(const draft of drafts)for(const photo of draftPhotos(draft)){
   const proof=photo.provenance||{}
-  if(proof.sourceImageUrl!==draft.sourceUrl||proof.originType&&proof.originType!=='nasa-earth-observatory')throw Error(`Non-original photo blocked: ${draft.sourceUrl}`)
+  const linkedPublicDomain=proof.originType==='source-linked-commons-pd'&&
+   /^https:\/\/commons\.wikimedia\.org\/wiki\/File:/i.test(proof.imagePageUrl||'')&&
+   /^https:\/\/(?:globalvoices\.org|www\.globalvoices\.org)\//i.test(proof.sourceFigureImageUrl||'')
+  if(proof.sourceImageUrl!==draft.sourceUrl||proof.originType&&proof.originType!=='nasa-earth-observatory'&&!linkedPublicDomain)
+   throw Error(`Non-original photo blocked: ${draft.sourceUrl}`)
  }
 }
 
