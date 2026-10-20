@@ -1,0 +1,60 @@
+import test from 'node:test'
+import assert from 'node:assert/strict'
+import {parseWikipediaPage,verifyEmbeddedImage,wikiJson,WikiApiPause} from '../wiki/source.mjs'
+import {assignWikipediaPhotos} from '../wiki/media.mjs'
+
+const url='https://commons.wikimedia.org/wiki/File:Silk_Road_map.jpg'
+const figure={fileTitle:'File:Silk Road map.jpg',caption:'Main routes of the Silk Road across Asia',alt:'Silk Road routes map',heading:'Trade routes',position:1}
+const page={title:figure.fileTitle,imageinfo:[{mime:'image/jpeg',width:1800,height:900,
+ thumburl:'https://thumb.wikimedia.org/wikipedia/commons/thumb/map.jpg',descriptionurl:url,
+ extmetadata:{LicenseShortName:{value:'CC BY-SA 3.0'},LicenseUrl:{value:'https://creativecommons.org/licenses/by-sa/3.0'},Artist:{value:'Map maker'},ImageDescription:{value:'Routes of the Silk Road across Eurasia'}}}]}
+const source={pageId:42,sourceTitle:'Silk Road',sourceUrl:'https://en.wikipedia.org/wiki/Silk_Road',sourceRevisionId:99,
+ sourceRevisionUrl:'https://en.wikipedia.org/w/index.php?oldid=99',figures:[figure]}
+const levels=Object.fromEntries(['A1-A2','B1-B2','C1-C2'].map(level=>[level,{pages:Array.from({length:6},(_,index)=>({
+ text:index===0?'Silk Road routes linked cities across Asia and Europe.':'Silk Road merchants traded silk through several cities.',image:'',caption:''}))}]))
+
+test('Wikipedia revision parser extracts only article figures and keeps source identity',()=>{
+ const html='<body><section>'+('<p>The Silk Road linked many places in Eurasia and carried goods and ideas over land for centuries.</p>'.repeat(16))+
+  '<figure><a href="./File:Silk_Road_map.jpg"><img src="map.jpg" alt="Silk Road routes map"></a><figcaption>Main routes of the Silk Road across Asia</figcaption></figure>'+
+  '<div class="navbox"><figure><a href="./File:Random_city.jpg"><img src="city.jpg"></a><figcaption>Unrelated city</figcaption></figure></div></section></body>'
+ const parsed=parseWikipediaPage({id:42,key:'Silk_Road',title:'Silk Road',latest:{id:99},license:{url:'https://creativecommons.org/licenses/by-sa/4.0/deed.en'},html})
+ assert.equal(parsed.pageId,42);assert.equal(parsed.sourceRevisionId,99)
+ assert.deepEqual(parsed.figures.map(x=>x.fileTitle),['File:Silk Road map.jpg'])
+ assert.match(parsed.sourceRevisionUrl,/oldid=99/)
+})
+
+test('embedded file needs its own rights; a context match places a map on page one',()=>{
+ const verified=verifyEmbeddedImage(figure,page)
+ assert.equal(verified.status,'REVIEW')
+ const assigned=assignWikipediaPhotos([verified],source,levels)
+ assert.equal(assigned.status,'VERIFIED')
+ assert.equal(assigned.photos[0].pageIndex,0)
+ assert.equal(assigned.levelVariants['C1-C2'].pages[0].image,verified.photo.url)
+ assert.equal(assigned.photos[0].provenance.licenseUrl,'https://creativecommons.org/licenses/by-sa/3.0')
+ const outside=assignWikipediaPhotos([verified],{...source,figures:[]},levels)
+ assert.equal(outside.status,'REVIEW')
+ const restricted=structuredClone(page);restricted.imageinfo[0].extmetadata.LicenseShortName.value='Fair use'
+ assert.equal(verifyEmbeddedImage(figure,restricted).status,'REJECTED')
+})
+
+test('same place, unrelated object, wrong chart period and reused URL stay unapproved',()=>{
+ const city={...figure,fileTitle:'File:Silk Road city skyline.jpg',caption:'Skyline of a modern city',alt:'Modern skyline'}
+ const cityPage=structuredClone(page);cityPage.title=city.fileTitle
+ const cityCandidate=verifyEmbeddedImage(city,cityPage)
+ const unrelated=assignWikipediaPhotos([cityCandidate],{...source,figures:[city]},levels)
+ assert.equal(unrelated.status,'REVIEW')
+ const chart={...figure,fileTitle:'File:Silk Road trade chart 2025.jpg',caption:'Silk Road trade chart 2025',alt:'Trade chart 2025'}
+ const chartPage=structuredClone(page);chartPage.title=chart.fileTitle
+ const mismatch=assignWikipediaPhotos([verifyEmbeddedImage(chart,chartPage)],{...source,figures:[chart]},levels)
+ assert.equal(mismatch.status,'REVIEW')
+ const duplicate=assignWikipediaPhotos([verifyEmbeddedImage(figure,page)],source,levels,{usedUrls:new Set([page.imageinfo[0].thumburl])})
+ assert.equal(duplicate.status,'REVIEW')
+})
+
+test('Wikimedia 429 and 503 pause the batch; there is no key rotation or API retry loop',async()=>{
+ for(const status of [429,503]){
+  let calls=0
+  await assert.rejects(wikiJson('https://example.test',{fetchImpl:async()=>{calls++;return {status,ok:false,headers:{get:()=>null}}}}),WikiApiPause)
+  assert.equal(calls,1)
+ }
+})
