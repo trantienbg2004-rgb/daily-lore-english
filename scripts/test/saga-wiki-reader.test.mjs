@@ -15,8 +15,9 @@ const entries=Array.from({length:200},(_,i)=>({id:`https://en.wikipedia.org/wiki
  category:topics[i%10],publisher:'Wikipedia contributors',publishedAt:'2026-10-20T00:00:00Z',contentType:'wiki',title:`Page ${i}`}))
 const paragraph=Array.from({length:42},()=> 'A factual story explains how people discovered useful ideas across the world.').join(' ')
 function story(i){
+ const entry=entries[i]||{id:`https://en.wikipedia.org/wiki/Page_${i}`,category:topics[i%10]}
  const pages=Array.from({length:5},(_,p)=>({text:paragraph.slice(0,320),image:p===0?'https://thumb.wikimedia.org/image.jpg':''}))
- return {id:`saga-wiki:${i}`,sourceUrl:entries[i].id,title:`Page ${i}`,category:entries[i].category,
+ return {id:`saga-wiki:${i}`,sourceUrl:entry.id,title:`Page ${i}`,category:entry.category,
   contentType:'wiki',editorialVersion:2,readingKind:'full',pages,
   levelVariants:Object.fromEntries(['A1-A2','B1-B2','C1-C2'].map(level=>[level,{headline:`${level} Page ${i}`,pages}]))}
 }
@@ -56,4 +57,24 @@ test('after the whole Wiki catalog is seen, same-day stories do not repeat',()=>
  const seenAt=new Map(entries.map(entry=>[entry.id,now-60000]))
  assert.deepEqual(pickGlobalCandidates(entries,{seen,seenAt,avoidSameDay:true,now}).items,[])
  assert.ok(pickGlobalCandidates(entries,{seen,seenAt,avoidSameDay:true,now:now+86400000}).items.length>0)
+})
+
+test('a larger Wiki release adds only new story IDs while preserving the active queue',async()=>{
+ let total=200
+ const recent=Array.from({length:10},(_,i)=>({id:`https://en.wikipedia.org/wiki/Page_${200+i}`,shard:'0001',
+  category:topics[i],publisher:'Wikipedia contributors',publishedAt:'2026-10-21T00:00:00Z',contentType:'wiki',title:`Page ${200+i}`}))
+ const fetchImpl=async url=>({ok:true,json:async()=>url.includes('catalog-index')?
+  {version:3,contentHash:`hash-${total}`,total,entries:total===200?entries:[...entries,...recent]}:
+  String(url).includes('/0001.json')?recent.map((_,i)=>story(200+i)):[story(0)]})
+ const getManifest=async()=>({...manifest,total,withVerifiedPhoto:total,contentHash:`hash-${total}`,
+  byTopic:Object.fromEntries(topics.map(topic=>[topic,total===200?20:21])),version:`wiki-${total}`})
+ const first=await refreshCatalog({fetchImpl,baseUrl:'/',pools:[],fetchManifestImpl:getManifest})
+ assert.equal(first.pools.length,1)
+ total=210
+ const later=await refreshCatalog({fetchImpl,baseUrl:'/',pools:first.pools,fetchManifestImpl:getManifest})
+ assert.equal(later.newIds.length,10)
+ const loaded=new Set(entries.map(entry=>entry.id))
+ const filled=await refillCatalog({fetchImpl,baseUrl:'/',pools:later.pools,loaded,
+  priorityIds:new Set(later.newIds),target:10,random:()=>0})
+ assert.deepEqual(new Set(filled.items.map(item=>item.sourceUrl)),new Set(recent.map(row=>row.id)))
 })

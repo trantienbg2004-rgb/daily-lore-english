@@ -1,7 +1,7 @@
 /** Global indexed feed; V1 shard scanning remains a safe compatibility fallback. */
 import {fetchManifest,newsChunkOrder,scanFeed,fetchWithTimeout,validStories,readableStory,storyId} from './feedQueue.js'
 import {pickGlobalCandidates} from './recommendationEngine.js'
-export const PUBLISHED_POOLS=['lore-reader']
+export const PUBLISHED_POOLS=['wiki-reader']
 const WIKI_POOL='wiki-reader'
 export const REFRESH_INTERVAL_MS=3*60_000
 export function eligibleManifest(m,path){
@@ -9,9 +9,7 @@ export function eligibleManifest(m,path){
   Number.isInteger(m.count)&&m.count>=20&&m.total>=200&&m.withVerifiedPhoto===m.total&&
   ['Politics','Economy','Conflict & Security','Society','Culture','Science & Technology',
    'Environment','Health','History & Geography','Sports'].every(topic=>(m.byTopic?.[topic]||0)>=15)
- return path==='lore-reader'&&m?.ready===true&&m?.editorialVersion===1&&
- Number.isInteger(m.count)&&m.count>=1&&m.count<100000&&
- (m.newsOnly===true ? m.feedType==='news'&&m.total>=1 : m.feedType==='lore'&&m.total>=15&&Number(m.withVerifiedPhoto)>=15&&m.sourcePhotosOnly===true)
+ return false
 }
 async function getIndex(fetchImpl,baseUrl,path,manifest,now){
  if(!manifest.indexFile)return null
@@ -42,22 +40,8 @@ export async function refreshCatalog({fetchImpl,baseUrl,pools=[],now=Date.now(),
   if(old.has(WIKI_POOL)){next.push(old.get(WIKI_POOL));wikiReady=true;failures.push(`wiki-reader: ${error?.message||error}`)}
   else if(wikiDeclaredReady)return {pools:[],failures:[`wiki-reader: ${error?.message||error}`],newIds:[],hasAvailable:false,checkedAt:now}
  }
- if(wikiReady)return {pools:next,failures,newIds,hasAvailable:true,checkedAt:now}
- for(const name of PUBLISHED_POOLS){
-  try{
-   const m=await fetchManifestImpl(fetchImpl,baseUrl,now,name)
-   if(!eligibleManifest(m,name))throw Error('curated-release-not-ready')
-   const p=old.get(name)
-   let index=null
-   if(m.indexFile){try{index=await getIndex(fetchImpl,baseUrl,name,m,now)}catch(e){if(m.newsOnly)throw e;console.warn('Global index unavailable; using existing shard scanner:',e?.message||e)}}
-   if(m.newsOnly&&!index)throw Error('News-only requires verified catalog index')
-   if(p?.version===m.version){next.push(p);continue}
-   const known=new Set(p?.index?.map(entry=>entry.id)||[])
-   if(p)for(const entry of index||[])if(entry.contentType==='news'&&!known.has(entry.id))newIds.push(entry.id)
-   next.push({path:name,manifest:m,version:m.version,index,order:newsChunkOrder(m.count),cursor:0,done:false,cache:new Map()})
-  }catch(e){failures.push(`${name}: ${e?.message||e}`);if(old.has(name))next.push(old.get(name))}
- }
- return {pools:next,failures,newIds,hasAvailable:next.length>0,checkedAt:now}
+ if(!wikiReady&&!failures.length)failures.push('wiki-reader: approved 200-story release not ready')
+ return {pools:next,failures,newIds,hasAvailable:wikiReady,checkedAt:now}
 }
 async function refillGlobal({pool,fetchImpl,baseUrl,seen,loaded,seenAt,profile,recent,target,random,maxShards=10,newsOnly=false,priorityIds=new Set()}){
  const type=pool.path===WIKI_POOL?'wiki':newsOnly||pool.manifest.newsOnly?'news':null

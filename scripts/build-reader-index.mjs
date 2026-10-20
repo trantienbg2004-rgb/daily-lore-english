@@ -6,6 +6,8 @@ import {fileURLToPath} from 'node:url'
 import {storyId,validStories} from '../src/lib/feedQueue.js'
 import {isPublishedNewsStory} from './discover/bridge.mjs'
 import {coverDuplicates} from './discover/imageUniqueness.mjs'
+import {readWikiCatalog,validateWikiStory} from './wiki/catalog.mjs'
+import {WIKI_TOPICS} from './wiki/discovery.mjs'
 const base=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..')
 export async function buildReaderIndex(root=base){
  const dir=path.join(root,'public','lore-reader')
@@ -45,5 +47,24 @@ export async function buildReaderIndex(root=base){
  return {count:entries.length,shards:manifest.chunks,bytes:Buffer.byteLength(JSON.stringify(index)),checksum}
 }
 if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.url)){
- buildReaderIndex().then(v=>console.log(`SAGA GLOBAL INDEX PASS: ${v.count} stories, ${v.shards} shards, ${v.bytes} bytes`)).catch(e=>{console.error(e);process.exitCode=1})
+ verifyWikiRelease().then(v=>console.log(`SAGA WIKI INDEX: ${v.total} stories, ready=${v.ready}`)).catch(e=>{console.error(e);process.exitCode=1})
+}
+
+export async function verifyWikiRelease(root=base){
+ const {manifest,entries,stories}=await readWikiCatalog(root)
+ if(!manifest)return {total:0,ready:false}
+ const ids=new Set(),images=new Set(),counts=Object.fromEntries(WIKI_TOPICS.map(topic=>[topic,0]))
+ for(const story of stories){
+  const gate=validateWikiStory(story)
+  if(!gate.accepted||ids.has(story.sourcePageId))throw Error('Invalid or duplicate Wiki story')
+  ids.add(story.sourcePageId);counts[story.category]++
+  for(const page of story.pages)if(page.image){
+   if(images.has(page.image))throw Error('Repeated Wiki photo across stories')
+   images.add(page.image)
+  }
+ }
+ if(stories.length!==entries.length||manifest.total!==stories.length)throw Error('Wiki catalog total mismatch')
+ const shouldBeReady=stories.length>=200&&WIKI_TOPICS.every(topic=>counts[topic]>=15)
+ if(manifest.ready!==shouldBeReady||manifest.withVerifiedPhoto!==stories.length)throw Error('Wiki release readiness mismatch')
+ return {total:stories.length,ready:manifest.ready,byTopic:counts,images:images.size}
 }
