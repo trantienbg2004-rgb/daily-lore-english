@@ -1,9 +1,9 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
 import fs from 'node:fs'
-import {rssImageHints,articleImageHint,licensedArticleImage,licensedArticleImages,photoRelevanceScore,assignArticlePhotos} from '../discover/licensedMedia.mjs'
+import {rssImageHints,articleImageHint,licensedArticleImage,licensedArticleImages,sourceLinkedCommonsImages,photoRelevanceScore,assignArticlePhotos} from '../discover/licensedMedia.mjs'
 import {articleMediaBlocks} from '../discover/htmlArticle.mjs'
-import {validateDraft,toReaderStory} from '../discover/bridge.mjs'
+import {validateDraft,toReaderStory,verifiedPhoto} from '../discover/bridge.mjs'
 import {inspectStagedRelease} from '../discover-live-qa.mjs'
 import {source as nasaEarth} from '../discover/sources/nasaEarth.mjs'
 import {extractArticle} from '../discover/article.mjs'
@@ -42,6 +42,8 @@ test('article media finds editorial images but rejects unlicensed OG and author 
 test('city-only scenery is irrelevant to a poetry book and later photos need page subject overlap',()=>{
  const title='Poetry book promotes Chabacano language in Zamboanga'
  for(const caption of ["Zamboanga City's Sunset",'Zamboanga City Hall','Barangay Cawit Zamboanga City Philippines'])assert.equal(photoRelevanceScore({caption},title,'Writers published poems in Chabacano.'),0)
+ assert.ok(photoRelevanceScore({caption:'City Hall roof repairs'},'Municipal budget review','The City Hall roof repairs took half the budget.')>0)
+ assert.ok(photoRelevanceScore({caption:'A map of flood zones'},'Flood warning','The map of flood zones identifies villages at risk.')>0)
  assert.equal(photoRelevanceScore({caption:'Jamaican police patrol'},'Trinidad and Tobago Special Operations Bill','The police patrols are part of security policy.'),0)
  assert.ok(photoRelevanceScore({caption:'Chabacano poetry anthology'},title,'Writers published poems.')>0)
  const levels=Object.fromEntries(['A1-A2','B1-B2','C1-C2'].map(level=>[level,{pages:[{text:'A poetry book uses Chabacano.'},{text:'The anthology includes many poems.'},{text:'Readers discuss the book.'},{text:'The language has a future.'}]}]))
@@ -61,6 +63,104 @@ test('NASA Earth Observatory requires a first-party story and credits its own ma
  assert.equal(photos.length,1)
  assert.equal(photos[0].provenance.originType,'nasa-earth-observatory')
  assert.equal(rightsDecision(nasaEarth,extractArticle(html.replace('NASA Earth Observatory images by Lauren Dauphin','Getty Images by Lauren Dauphin'),nasaEarth.id)).textAllowed,false)
+})
+
+test('source-linked Commons public-domain event photo needs exact item rights and page context',async()=>{
+ const source='https://globalvoices.org/2026/10/bangladesh-migration'
+ const item='https://commons.wikimedia.org/wiki/File:Bangladesh_Malaysia_agreement_2024.jpg'
+ const figure=`<div class="wp-caption"><a href="${item}"><img src="https://globalvoices.org/wp-content/uploads/agreement.webp" alt="Bangladesh and Malaysia signed a labor agreement in 2024" width="800" height="450"></a><p class="wp-caption-text">Bangladesh and Malaysia signed a labor agreement in 2024. Image from government, Public domain.</p></div>`
+ const meta={query:{pages:{1:{imageinfo:[{mime:'image/jpeg',width:1200,height:700,descriptionurl:item,
+  thumburl:'https://thumb.wikimedia.org/wikipedia/commons/thumb/agreement.jpg',extmetadata:{LicenseShortName:{value:'Public domain'},UsageTerms:{value:'Public domain'},Artist:{value:'Government photo office'}}}]}}}}
+ let calls=0
+ const fetchImpl=async()=>{calls++;return {ok:true,json:async()=>meta}}
+ const opts={articleTitle:'Bangladesh Malaysia migration agreement',articleText:'Bangladesh and Malaysia signed a labor agreement in 2024.',fetchImpl}
+ const good=await sourceLinkedCommonsImages(figure,source,opts)
+ assert.equal(good.decisions[0].status,'VERIFIED')
+ assert.equal(calls,1)
+ const photo=good.photos[0]
+ assert.equal(verifiedPhoto({sourceUrl:source,imageUrl:photo.url,imageRightsVerified:true,imageProvenance:photo.provenance}),true)
+ assert.doesNotThrow(()=>requireOriginalArticlePhotos([{sourceUrl:source,images:[photo]}]))
+ const levels=Object.fromEntries(['A1-A2','B1-B2','C1-C2'].map(level=>[level,{pages:[{text:'Bangladesh and Malaysia signed a labor agreement in 2024.'}]}]))
+ assert.equal(assignArticlePhotos([photo],opts.articleTitle,levels)[0].pageIndex,0)
+ assert.equal((await sourceLinkedCommonsImages(figure.replace('Public domain','Used with permission'),source,opts)).decisions[0].status,'REVIEW')
+ assert.equal((await sourceLinkedCommonsImages(figure,source,{...opts,articleText:'Bangladesh and Malaysia discussed a deal in 2026.'})).decisions[0].reason,'image-date-absent-from-article')
+ const wrongRights=structuredClone(meta);wrongRights.query.pages[1].imageinfo[0].extmetadata.UsageTerms.value='Permission required'
+ const denied=await sourceLinkedCommonsImages(figure,source,{...opts,fetchImpl:async()=>({ok:true,json:async()=>wrongRights})})
+ assert.equal(denied.decisions[0].status,'REVIEW')
+ assert.equal(denied.photos.length,0)
+ const unavailable=await sourceLinkedCommonsImages(figure,source,{...opts,fetchImpl:async()=>({ok:false,status:503})})
+ assert.equal(unavailable.decisions[0].status,'REVIEW')
+ assert.equal(unavailable.photos.length,0)
+})
+
+test('NASA data credits stay complete and separately credited field photos stay out',()=>{
+ const url='https://science.nasa.gov/earth/earth-observatory/fighting-drought-in-texas-cotton-country'
+ const base='https://assets.science.nasa.gov/content/dam/science/esd/eo/images/iotd/2026/fighting-drought-in-texas-cotton-country/'
+ const satellite='<figure class="hds-media-inner"><img width="1200" height="800" src="'+base+'texasdrought_oli_20260909.jpg" alt="A satellite image of Texas cotton farmland and dry lakes"></figure>'
+ const fieldPhoto='<figure class="hds-media-inner"><img width="1200" height="800" src="'+base+'nasaacresphoto.jpg" alt="Rows of wilted cotton photographed in a Texas field"></figure>'
+ const credits='<p><em>NASA Earth Observatory images by Lauren Dauphin, using Landsat data from the&nbsp;</em><a href="https://earthexplorer.usgs.gov/">U.S. Geological Survey</a><em> and the U.S. Drought Monitor.</em> Photos by Lacy Cotter-Vardeman and Adam Zwerner. Story by Adam Voiland.</p>'
+ const photos=licensedArticleImages(satellite+fieldPhoto+credits,url,{articleTitle:'Fighting Drought in Texas Cotton Country',articleText:'Satellite images show Texas cotton farmland during drought.',limit:5})
+ assert.equal(photos.length,1)
+ assert.equal(photos[0].url,base+'texasdrought_oli_20260909.jpg')
+ assert.match(photos[0].provenance.credit,/U\.S\. Geological Survey and the U\.S\. Drought Monitor/)
+ assert.doesNotMatch(photos[0].provenance.credit,/Photos by|Story by|&nbsp;/)
+})
+
+test('a cover photo must match the first page at every reading level',()=>{
+ const photo={url:'https://example.org/flood.jpg',caption:'Thailand floodwater covers farms',verified:true}
+ const levels={
+  'A1-A2':{pages:[{text:'People in Thailand see floodwater on farms.'},{text:'The river is high.'}]},
+  'B1-B2':{pages:[{text:'Thailand floodwater covers farms.'},{text:'Officials monitor the river.'}]},
+  'C1-C2':{pages:[{text:'Researchers discuss unrelated energy policy.'},{text:'Thailand floodwater covers farms.'}]},
+ }
+ assert.deepEqual(assignArticlePhotos([photo],'Thailand floodwater covers farms',levels),[])
+ levels['C1-C2'].pages[0].text='Thailand floodwater covers farms and disrupts crops.'
+ assert.deepEqual(assignArticlePhotos([photo],'Thailand floodwater covers farms',levels).map(item=>item.pageIndex),[0])
+})
+
+test('current event image leads when a NASA comparison includes an older baseline',()=>{
+ const photos=[
+  {url:'https://example.org/2025.jpg',caption:'Thailand floodwater near farms in October 2025',verified:true},
+  {url:'https://example.org/2026.jpg',caption:'Thailand floodwater covers farms in October 2026',verified:true},
+ ]
+ const levels=Object.fromEntries(['A1-A2','B1-B2','C1-C2'].map(level=>[level,{pages:[
+  {text:'Thailand floodwater covers farms in October 2026.'},
+  {text:'Thailand floodwater was also measured near farms in October 2025.'},
+ ]}]))
+ const assigned=assignArticlePhotos(photos,'Thailand floodwater covers farms',levels)
+ assert.equal(assigned.find(photo=>photo.pageIndex===0)?.url,photos[1].url)
+ assert.equal(assigned.find(photo=>photo.pageIndex===1)?.url,photos[0].url)
+})
+
+test('dated NASA same-area image may inherit the source subject from its comparison',()=>{
+ const sourceUrl='https://science.nasa.gov/earth/earth-observatory/floodwaters-overwhelm-thailand'
+ const base='https://assets.science.nasa.gov/content/dam/science/esd/eo/images/iotd/2026/floodwaters-overwhelm-thailand/'
+ const provenance={originType:'nasa-earth-observatory',sourceImageUrl:sourceUrl}
+ const photos=[
+  {url:base+'thailandflooding_oli_20251007.jpg',caption:'A river meanders across vegetated land in an earlier image',provenance},
+  {url:base+'thailandflooding_oli2_20261002.jpg',caption:'The same area shows floodwaters across agricultural land',provenance},
+ ]
+ const levels=Object.fromEntries(['A1-A2','B1-B2','C1-C2'].map(level=>[level,{pages:[
+  {text:'Thailand has severe floods after heavy rain in 2026.'},
+  {text:'The river and farms are under water.'},
+ ]}]))
+ const assigned=assignArticlePhotos(photos,'Floodwaters Overwhelm Thailand',levels)
+ assert.equal(assigned.find(photo=>photo.pageIndex===0)?.url,photos[1].url)
+ assert.equal(assignArticlePhotos([{...photos[1],caption:'An unrelated city photo'}],'Floodwaters Overwhelm Thailand',levels).length,0)
+})
+
+test('gravity waves image follows the page that discusses waves in all levels',()=>{
+ const storm={url:'https://example.org/storm.jpg',caption:'Hurricane Simon near the Mexican coast'}
+ const waves={url:'https://example.org/waves.jpg',caption:'Gravity waves visible in satellite imagery of Hurricane Simon'}
+ const levels=Object.fromEntries(['A1-A2','B1-B2','C1-C2'].map(level=>[level,{pages:[
+  {text:'Hurricane Simon approaches the Mexican coast.'},
+  {text:'The storm brought heavy rain to the coast.'},
+  {text:'Satellites saw gravity waves high in the air around Hurricane Simon.'},
+  {text:'Forecasters continue to watch the storm.'},
+ ]}]))
+ assert.ok(photoRelevanceScore(waves,'','Satellites saw gravity waves in the air')>=2)
+ const assigned=assignArticlePhotos([storm,waves],'Hurricane Simon near Mexican coast',levels)
+ assert.equal(assigned.find(photo=>photo.url===waves.url)?.pageIndex,2)
 })
 
 test('publication rejects Commons photos even if they have a valid CC license',()=>{
@@ -120,7 +220,8 @@ test('publisher rejects unverified image, accepts a correctly credited first-pag
  const commons=structuredClone(d)
  commons.imageUrl='https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ab/example.jpg/800px-example.jpg'
  commons.imageProvenance={credit:'Mira / Wikimedia Commons',license:'CC BY 4.0',licenseUrl:licensedUrl,
-  sourceImageUrl:'https://commons.wikimedia.org/wiki/File:Example.jpg',imagePageUrl:'https://commons.wikimedia.org/wiki/File:Example.jpg',originType:'wikimedia-commons'}
+  sourceImageUrl:'https://commons.wikimedia.org/wiki/File:Example.jpg',imagePageUrl:'https://commons.wikimedia.org/wiki/File:Example.jpg',originType:'wikimedia-commons',
+  visualReview:{sourceUrl:commons.sourceUrl,sha256:'a'.repeat(64),reviewer:'Test reviewer',reviewedAt:'2026-10-19'}}
  for(const variant of Object.values(commons.levelVariants))Object.assign(variant.pages[0],{image:commons.imageUrl,
   caption:'Illustrative image: Example',imageProvenance:commons.imageProvenance})
  assert.deepEqual(validateDraft(commons),[])

@@ -9,7 +9,7 @@ import {SOURCES} from './discover/sources/index.mjs'
 import {fetchText} from './discover/network.mjs'
 import {parseFeed} from './discover/rss.mjs'
 import {extractArticle} from './discover/article.mjs'
-import {licensedArticleImages,articleImageHint,assignArticlePhotos} from './discover/licensedMedia.mjs'
+import {licensedArticleImages,sourceLinkedCommonsImages,articleImageHint,assignArticlePhotos} from './discover/licensedMedia.mjs'
 import {rightsDecision} from './discover/rights.mjs'
 import {uniqueCandidates,relatedPriorStory} from './discover/dedupe.mjs'
 import {generateThreeLevels,buildLevelPages} from './discover/geminiLevels.mjs'
@@ -93,7 +93,7 @@ export async function collectDiscover({fetchImpl=fetch,geminiFetchImpl=fetchImpl
  const unique=uniqueCandidates(discovered).filter(c=>!promotionalTitle.test(c.title)&&!excludeSourceUrls.has(c.sourceUrl)&&!excludePublishedNews.some(old=>sameEvent(c,old)))
  const candidates=rankNewsCandidates(unique.filter(isFocusedNews));report.candidates=candidates.length
  report.rejected['off-focus-topic']=unique.length-candidates.length
- const eligible=[],metadata=[],perSourceResults=new Map(sources.map(s=>[s.id,{attempted:0,eligible:0,rejected:{},sampleExtraction:null}]))
+ const eligible=[],metadata=[],commonsImageCache=new Map(),perSourceResults=new Map(sources.map(s=>[s.id,{attempted:0,eligible:0,rejected:{},sampleExtraction:null}]))
  for(const candidate of candidates){
   const source=sources.find(s=>s.id===candidate.sourceId)
   if(!source?.fetchFullText){metadata.push({...candidate,mode:'discovery-only',reason:source?.rightsPolicy||'restricted'});continue}
@@ -108,6 +108,9 @@ export async function collectDiscover({fetchImpl=fetch,geminiFetchImpl=fetchImpl
     stats.rejected[rights.reason]=(stats.rejected[rights.reason]||0)+1;metadata.push({...candidate,mode:'discovery-only',reason:rights.reason});increment(rights.reason);continue}
    stats.eligible++
    const verifiedPhotos=licensedArticleImages(html,candidate.sourceUrl,{limit:5,usedImageUrls:usedMedia.urls,usedImageCaptions:usedMedia.captions,articleTitle:candidate.title,articleText:article.text})
+   if(verifiedPhotos.length<5){const linked=await sourceLinkedCommonsImages(html,candidate.sourceUrl,{limit:5-verifiedPhotos.length,
+    usedImageUrls:usedMedia.urls,usedImageCaptions:usedMedia.captions,articleTitle:candidate.title,articleText:article.text,fetchImpl,cache:commonsImageCache})
+    verifiedPhotos.push(...linked.photos)}
    const topic=classifyNewsTopic({title:candidate.title,text:article.text})
    const prior=relatedPriorStory({...candidate,text:article.text,topic},excludePublishedNews)
    eligible.push({...candidate,text:article.text,rights,author:article.author||candidate.author,topic,

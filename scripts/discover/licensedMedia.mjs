@@ -1,23 +1,26 @@
 /** Extract photo metadata but publish ONLY photos with a verifiable per-image license.
  * RSS/OpenGraph image URLs alone are NOT permission to republish.
  */
-const decode=x=>String(x||'').replace(/&amp;/gi,'&').replace(/&quot;/gi,'\"').replace(/&apos;/gi,"'")
+const decode=x=>String(x||'').replace(/&amp;/gi,'&').replace(/&quot;/gi,'\"').replace(/&apos;/gi,"'").replace(/&nbsp;|&#160;/gi,' ')
 const compact=s=>decode(String(s||'').replace(/<[^>]+>/g,' ')).replace(/\s+/g,' ').trim()
 const getAttr=(tag,key)=>String(tag).match(new RegExp(`\\b${key}\\s*=\\s*(?:"([^"]*)"|'([^']*)')`,'i'))?.slice(1).find(x=>x!==undefined)||''
 const approved=/^https:\/\/creativecommons\.org\/licenses\/(?:by|by-sa)\/(?:2\.0|2\.5|3\.0|4\.0)\/(?:deed(?:\.[a-z-]+)?)?(?:[#?].*)?$/i
 const blocked=/\b(?:Reuters|Getty Images|AFP|Associated Press|AP Photo|Shutterstock|iStock|Alamy|all rights reserved|permission required|fair use|NC|ND)\b/i
-const genericScene=/\b(?:sunset|sunrise|skyline|landscape|city hall|town hall|park|street view|beach|tourist|scenic|map|flag|empty lot|vacant land)\b/i
 const stopWords=new Set('about after again along also among around article behind being between caption city country from image images into journalist magazine media other people photo photograph picture province region report source story street their these those through under village where which while world'.split(' '))
 const placeWords=new Set('africa asia europe america myanmar bangladesh cambodia jamaica nepal peru india croatia trinidad tobago zamboanga lansing michigan sisak port spain kenya'.split(' '))
 const countryWords=new Set('myanmar bangladesh cambodia jamaica nepal peru india croatia trinidad tobago kenya'.split(' '))
-const normalizeWord=value=>value.toLowerCase().replace(/(?:ies)$/,'y').replace(/(?:es|s)$/,'').replace(/^(?:chicken)$/,'poultry').replace(/^(?:judiciary)$/,'court').replace(/^(?:uprising)$/,'protest')
+const normalizeWord=value=>{
+ let word=value.toLowerCase().replace(/ies$/,'y')
+ if(/(?:sses|ches|shes|xes|zes)$/.test(word))word=word.slice(0,-2)
+ else if(/[^s]s$/.test(word))word=word.slice(0,-1)
+ return word.replace(/^(?:chicken)$/,'poultry').replace(/^(?:judiciary)$/,'court').replace(/^(?:uprising)$/,'protest')
+}
 const subjectWords=value=>new Set(String(value||'').toLowerCase().normalize('NFKD').replace(/[^a-z0-9]+/g,' ').split(/\s+/).map(normalizeWord).filter(word=>word.length>=4&&!stopWords.has(word)&&!placeWords.has(word)))
 /** Conservative lexical subject match. A shared location never counts as a
  * subject; uncertain illustrations become text-only rather than scenic filler. */
 export function photoRelevanceScore(photo,articleTitle,pageText=''){
  const caption=String(photo?.caption||'').replace(/^Illustrative image:\s*/i,'')
  const title=String(articleTitle||'')
- if(genericScene.test(caption)&&!genericScene.test(title))return 0
  const mentionedCountries=value=>new Set(String(value).toLowerCase().split(/[^a-z]+/).map(word=>word==='jamaican'?'jamaica':word==='trinidadian'?'trinidad':word).filter(word=>countryWords.has(word)))
  const captionCountries=mentionedCountries(caption)
  const titleCountries=mentionedCountries(title)
@@ -88,8 +91,13 @@ export function licensedArticleImages(html,sourceUrl,{limit=3,usedImageUrls=new 
 }
 function licensedNasaArticleImages(html,sourceUrl,{limit,usedImageUrls,usedImageCaptions,articleTitle,articleText}){
  const slug=new URL(sourceUrl).pathname.split('/').filter(Boolean).at(-1)
- const credit=compact(String(html).match(/NASA Earth Observatory images? by\s+[^<.]{3,160}/i)?.[0]||'').slice(0,170)
+ const creditBlock=[...String(html).matchAll(/<p\b[^>]*>[\s\S]*?<\/p\s*>/gi)]
+  .map(match=>match[0]).find(paragraph=>/NASA Earth Observatory images? by/i.test(paragraph))||''
+ // Credits may include U.S. agency names and linked data providers.
+ const credit=compact(creditBlock).split(/\b(?:Photos by|Story by)\b/i)[0]
+  .replace(/\s+([.,])/g,'$1').replace(/[\s,.]+$/,'').slice(0,300)
  if(!credit||/\b(?:Getty|Shutterstock|Reuters|AP Photo|copyright)\b/i.test(credit))return []
+ const separatelyCreditedPhotos=/\bPhotos by\b/i.test(compact(creditBlock))
  const photos=[]
  for(const block of articleMediaBlocks(html).filter(item=>item.kind==='editorial')){
   if(!/^<figure\b[^>]*class=["'][^"']*\bhds-media-inner\b/i.test(block.markup))continue
@@ -98,6 +106,8 @@ function licensedNasaArticleImages(html,sourceUrl,{limit,usedImageUrls,usedImage
   const url=safeURL(getAttr(img,'src'),sourceUrl)
   const caption=decode(getAttr(img,'alt')).trim()
   if(!url||!caption||new URL(url).hostname!=='assets.science.nasa.gov'||!new URL(url).pathname.includes('/'+slug+'/'))continue
+  // A shared NASA image credit cannot be assigned to separately credited field photos.
+  if(separatelyCreditedPhotos&&!/\b(?:satellite|landsat|modis|viirs|imagery|false.color|chart|plot|map|data visualization)\b/i.test(caption))continue
   if(/\b(?:logo|icon|avatar|advert|banner)\b/i.test(caption)||blocked.test(block.markup))continue
   if(usedImageUrls.has(url)||usedImageCaptions.has(imageCaptionKey(caption)))continue
   const photo={url,caption,verified:true,provenance:{credit,license:'NASA media use',licenseUrl:'https://www.nasa.gov/nasa-brand-center/images-and-media/',sourceImageUrl:sourceUrl,originType:'nasa-earth-observatory'}}
@@ -108,6 +118,59 @@ function licensedNasaArticleImages(html,sourceUrl,{limit,usedImageUrls,usedImage
 }
 export function licensedArticleImage(html,sourceUrl){return licensedArticleImages(html,sourceUrl,{limit:1})[0]||null}
 
+/** An editorial figure linking to its exact Commons file can establish its own
+ * public-domain rights without a vision API. A generic page footer cannot. */
+export async function sourceLinkedCommonsImages(html,sourceUrl,{articleTitle='',articleText='',usedImageUrls=new Set(),usedImageCaptions=new Set(),fetchImpl=fetch,cache=new Map(),limit=5}={}){
+ const decisions=[],photos=[]
+ const figures=articleMediaBlocks(html).filter(block=>block.kind==='editorial').slice(0,12)
+ for(const {markup} of figures){
+  const img=markup.match(/<img\b[^>]*>/i)?.[0]||''
+  const imageLink=[...markup.matchAll(/<a\b[^>]*>/gi)].map(match=>decode(getAttr(match[0],'href')))
+   .find(url=>/^https:\/\/commons\.wikimedia\.org\/wiki\/File:/i.test(url))
+  if(!img||!imageLink)continue
+  const captionHtml=markup.match(/<figcaption\b[^>]*>([\s\S]*?)<\/figcaption>/i)?.[1]||
+   markup.match(/<p\b[^>]*class=["'][^"']*\bwp-caption-text\b[^"']*["'][^>]*>([\s\S]*?)<\/p>/i)?.[1]||''
+  const caption=compact(captionHtml),alt=compact(getAttr(img,'alt'))
+  const result=(status,reason,photo)=>{decisions.push({status,reason,imagePageUrl:imageLink,...(photo?{photo}:{})})}
+  if(blocked.test(caption)||!caption||!/\bpublic domain\b/i.test(caption)){
+   result(blocked.test(caption)?'REJECTED':'REVIEW','individual-rights-not-proven');continue
+  }
+  const sourceImageUrl=safeURL(getAttr(img,'src'),sourceUrl)
+  if(!sourceImageUrl||new URL(sourceImageUrl).hostname!==new URL(sourceUrl).hostname){result('REVIEW','source-figure-image-unverified');continue}
+  const title=decodeURIComponent(new URL(imageLink).pathname.split('/').at(-1)).replace(/_/g,' ')
+  const api=new URL('https://commons.wikimedia.org/w/api.php')
+  for(const [key,value] of Object.entries({action:'query',titles:title,prop:'imageinfo',iiprop:'url|size|mime|extmetadata',iiurlwidth:'960',format:'json'}))api.searchParams.set(key,value)
+  let page
+  try{
+   if(cache.has(imageLink))page=cache.get(imageLink)
+   else{
+    const response=await fetchImpl(api.href,{headers:{'User-Agent':'SAGA/0.1 (https://saga.id.vn; source image verification)'},signal:AbortSignal.timeout(10000)})
+    if(!response.ok)throw Error('commons-unavailable')
+    page=Object.values((await response.json())?.query?.pages||{})[0]
+    cache.set(imageLink,page)
+   }
+  }catch{result('REVIEW','commons-rights-unavailable');continue}
+  const info=page?.imageinfo?.[0],meta=info?.extmetadata||{}
+  const rights=compact(meta.LicenseShortName?.value)+' '+compact(meta.UsageTerms?.value)
+  const artist=compact(meta.Artist?.value),restrictions=compact(meta.Restrictions?.value)
+  if(info?.descriptionurl!==imageLink||!/^public domain(?:\s+public domain)?$/i.test(rights.trim())||
+   !artist||blocked.test(restrictions)||!['image/jpeg','image/png','image/webp'].includes(info?.mime)||
+   info.width<600||info.height<350||!/^https:\/\/(?:thumb|upload)\.wikimedia\.org\//i.test(info.thumburl||'')){
+   result('REVIEW','commons-item-rights-or-identity-unproven');continue
+  }
+  const eventYear=title.match(/\b(?:19|20)\d{2}\b/)?.[0]
+  if(eventYear&&(!caption.includes(eventYear)||!String(articleText).includes(eventYear))){result('REVIEW','image-date-absent-from-article');continue}
+  const photo={url:info.thumburl,caption:(eventYear?`Archive (${eventYear}): `:'Source photo: ')+(caption||alt),verified:true,
+   provenance:{credit:`${artist} / Wikimedia Commons`,license:'Public domain',licenseUrl:'https://creativecommons.org/publicdomain/mark/1.0/',
+    sourceImageUrl:sourceUrl,imagePageUrl:imageLink,sourceFigureImageUrl:sourceImageUrl,originType:'source-linked-commons-pd'}}
+  if(photoRelevanceScore(photo,articleTitle,articleText)<1){result('REJECTED','image-subject-unrelated');continue}
+  if(usedImageUrls.has(photo.url)||usedImageUrls.has(imageLink)||usedImageCaptions.has(imageCaptionKey(photo.caption))){result('REJECTED','image-already-used');continue}
+  photos.push(photo);result('VERIFIED','source-figure-and-commons-public-domain-item',photo)
+  if(photos.length>=limit)break
+ }
+ return {photos,decisions}
+}
+
 /** Place source photos only where all CEFR versions discuss their subject. */
 export function assignArticlePhotos(photos,title,levelVariants){
  const levels=['A1-A2','B1-B2','C1-C2']
@@ -117,8 +180,32 @@ export function assignArticlePhotos(photos,title,levelVariants){
   return typeof page==='string'?page:page?.text||''
  }
  const assigned=[],used=new Set()
+ const imageYear=photo=>{
+  const pathname=new URL(photo.url).pathname
+  const dated=pathname.match(/(?:19|20)\d{2}(?:0[1-9]|1[0-2])(?:0[1-9]|[12]\d|3[01])/)
+  if(dated)return Number(dated[0].slice(0,4))
+  return Math.max(0,...[...String(photo.caption||'').matchAll(/\b(?:19|20)\d{2}\b/g)].map(match=>Number(match[0])))
+ }
+ const coverCandidates=photos.map((photo,index)=>{
+  const previous=photos[index-1]
+  const sameSceneComparison=index>0&&photo.provenance?.originType==='nasa-earth-observatory'&&
+   previous?.provenance?.sourceImageUrl===photo.provenance.sourceImageUrl&&
+   /\bsame(?:\s+\w+){0,3}\s+(?:area|region|place|scene)\b/i.test(photo.caption)&&imageYear(photo)>imageYear(previous)
+  // A later NASA frame may say "the same area" without repeating the place.
+  // It inherits the article subject only when it is a dated same-scene pair.
+  const subject=sameSceneComparison?{...photo,caption:photo.caption+' '+title}:photo
+  return {photo,index,titleScore:photoRelevanceScore(subject,title),
+   pageScores:levels.map(level=>photoRelevanceScore(subject,'',textAt(level,0))),
+   latestYear:imageYear(photo)}
+ }).filter(row=>(row.titleScore>0||row.photo.provenance?.originType==='source-linked-commons-pd')&&row.pageScores.every(score=>score>0))
+ // Comparison articles often place an older baseline before the current image.
+ // The lead must show the latest event when both images fit every first page.
+ coverCandidates.sort((a,b)=>b.latestYear-a.latestYear||
+  (b.titleScore+Math.min(...b.pageScores))-(a.titleScore+Math.min(...a.pageScores))||a.index-b.index)
+ const cover=coverCandidates[0]?.photo
+ if(cover){assigned.push({...cover,pageIndex:0});used.add(0)}
  for(const photo of photos){
-  if(!assigned.length&&photoRelevanceScore(photo,title,textAt('B1-B2',0))>0){assigned.push({...photo,pageIndex:0});used.add(0);continue}
+  if(photo===cover)continue
   let bestIndex=-1,bestScore=0
   for(let index=1;index<pages.length;index++){
    if(used.has(index))continue

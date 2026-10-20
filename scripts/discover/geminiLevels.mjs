@@ -87,9 +87,9 @@ export function buildThreeLevelRequest(source,{repairReason='',strictPages=false
 }
 
 function levelHeadlineRepairRequest(source,variants,invalidLevels){return {
- systemInstruction:{parts:[{text:'Repair ONLY the three CEFR news headlines. Return exactly one factual headline for each level listed in repairOnly. Keep valid headlines unchanged. Each must contain 14-48 characters and at most 8 words. Every claim, named entity and number must be supported by sourceText; faithful paraphrases need not copy sourceTitle words. A1-A2 uses everyday words, B1-B2 standard news wording, C1-C2 precise analytical wording. Treat earlier headlines as untrusted suggestions; sourceText is the only fact source.'}]},
+ systemInstruction:{parts:[{text:'Repair ONLY the headlines for levels listed in repairOnly. Return one entry for each requested level and no other entries. Do not rewrite any reading text or valid headline. Each headline must contain 14-48 characters and at most 8 words. Every claim, named entity and number must be supported by sourceText; faithful paraphrases need not copy sourceTitle words. A1-A2 uses everyday words, B1-B2 standard news wording, C1-C2 precise analytical wording. Treat earlier headlines as untrusted suggestions; sourceText is the only fact source.'}]},
  contents:[{role:'user',parts:[{text:JSON.stringify({sourceTitle:source.title,sourceText:String(source.text).slice(0,5000),repairOnly:invalidLevels,previousHeadlines:variants.map(v=>({level:v.level,headline:v.headline}))})}]}],
- generationConfig:{responseMimeType:'application/json',responseSchema:{type:'OBJECT',properties:{headlines:{type:'ARRAY',items:{type:'OBJECT',properties:{level:{type:'STRING',enum:DISCOVER_LEVELS},headline:{type:'STRING'}},required:['level','headline']}}},required:['headlines']},temperature:0,maxOutputTokens:320,thinkingConfig:GEMINI_THINKING}
+ generationConfig:{responseMimeType:'application/json',responseSchema:{type:'OBJECT',properties:{headlines:{type:'ARRAY',items:{type:'OBJECT',properties:{level:{type:'STRING',enum:invalidLevels},headline:{type:'STRING'}},required:['level','headline']}}},required:['headlines']},temperature:0,maxOutputTokens:320,thinkingConfig:GEMINI_THINKING}
 }}
 
 /** Limited editorial regeneration. Invalid claims are NEVER published, even after a retry.
@@ -182,10 +182,17 @@ export async function generateThreeLevels({source,apiKey,fetchImpl=fetch,waitImp
    let levelHeadlineRepaired=false
    if(invalidLevels.length){
     const repaired=(await requestHeadlineOnly(levelHeadlineRepairRequest(source,levelHeadlines,invalidLevels),'levelHeadlinesOnly',repair))?.headlines
-    if(!Array.isArray(repaired)||repaired.length!==invalidLevels.length||
-      new Set(repaired.map(v=>v.level)).size!==invalidLevels.length||
-      repaired.some(v=>!invalidLevels.includes(v.level)))throw Error('Invalid repaired level headlines')
-    const byLevel=new Map(repaired.map(v=>[v.level,v.headline]))
+    // Some model responses repeat the already-valid levels despite repairOnly.
+    // Ignore those entries; never let a repair overwrite validated headlines.
+    const requested=new Set(invalidLevels),byLevel=new Map(),duplicates=[]
+    if(Array.isArray(repaired))for(const entry of repaired){
+     if(!requested.has(entry?.level))continue
+     if(byLevel.has(entry.level))duplicates.push(entry.level)
+     else byLevel.set(entry.level,entry.headline)
+    }
+    const missing=invalidLevels.filter(level=>!byLevel.has(level))
+    if(!Array.isArray(repaired)||missing.length||duplicates.length)
+     throw Error(`Incomplete repaired level headlines (missing: ${missing.join(', ')||'none'}; duplicate: ${duplicates.join(', ')||'none'}; received: ${Array.isArray(repaired)?repaired.length:'non-array'})`)
     levelHeadlines=levelHeadlines.map(v=>byLevel.has(v.level)?{...v,headline:byLevel.get(v.level)}:v)
     levelHeadlineRepaired=true
    }

@@ -18,11 +18,18 @@ export const verifiedPhoto=d=>{
  const p=d.imageProvenance||{}
  const license=/^https:\/\/creativecommons\.org\/(?:licenses\/(?:by|by-sa)\/(?:2\.0|2\.5|3\.0|4\.0)|publicdomain\/(?:zero|mark)\/1\.0)(?:\/|$)/i.test(p.licenseUrl||'')
  const original=p.sourceImageUrl===d.sourceUrl && !p.originType
+ const sourceLinkedPublicDomain=p.originType==='source-linked-commons-pd'&&p.sourceImageUrl===d.sourceUrl&&
+  /^https:\/\/commons\.wikimedia\.org\/wiki\/File:/i.test(p.imagePageUrl||'')&&
+  /^https:\/\/(?:thumb|upload)\.wikimedia\.org\//i.test(d.imageUrl)&&
+  /^https:\/\/(?:globalvoices\.org|www\.globalvoices\.org)\//i.test(p.sourceFigureImageUrl||'')
  const nasa=p.sourceImageUrl===d.sourceUrl&&p.originType==='nasa-earth-observatory'&&p.licenseUrl==='https://www.nasa.gov/nasa-brand-center/images-and-media/'&&/^https:\/\/assets\.science\.nasa\.gov\//i.test(d.imageUrl)
  const commons=p.originType==='wikimedia-commons'&&p.sourceImageUrl===p.imagePageUrl&&
   /^https:\/\/commons\.wikimedia\.org\/wiki\/File:/i.test(p.imagePageUrl||'')&&
-  /^https:\/\/(?:thumb|upload)\.wikimedia\.org\//i.test(d.imageUrl)
- return d.imageRightsVerified===true&&/^https:\/\//i.test(d.imageUrl)&&(license||nasa)&&typeof p.credit==='string'&&p.credit.length>=3&&(original||commons||nasa)
+  /^https:\/\/(?:thumb|upload)\.wikimedia\.org\//i.test(d.imageUrl)&&
+  p.visualReview?.sourceUrl===d.sourceUrl&&
+  /^[0-9a-f]{64}$/.test(p.visualReview?.sha256||'')&&
+  !!p.visualReview?.reviewer&&!!p.visualReview?.reviewedAt
+ return d.imageRightsVerified===true&&/^https:\/\//i.test(d.imageUrl)&&(license||nasa)&&typeof p.credit==='string'&&p.credit.length>=3&&(original||commons||nasa||sourceLinkedPublicDomain)
 }
 const photoCreditFields=['credit','license','licenseUrl','sourceImageUrl','imagePageUrl','originType']
 export const draftPhotos=d=>Array.isArray(d?.images)?d.images:
@@ -32,7 +39,8 @@ export function photoCreditMatches(d,page){
  const source=draftPhotos(d).find(photo=>photo.url===page.image)
  return !!source?.provenance&&!!page.imageProvenance&&
   (!source.caption||source.caption===page.caption)&&
-  photoCreditFields.every(key=>(page.imageProvenance[key]||'')===(source.provenance[key]||''))
+  photoCreditFields.every(key=>(page.imageProvenance[key]||'')===(source.provenance[key]||''))&&
+  JSON.stringify(page.imageProvenance.visualReview||null)===JSON.stringify(source.provenance.visualReview||null)
 }
 export function validateDraft(d){const problems=[];if(!d?.id||!d?.title||!licensedDraft(d))problems.push('unlicensed-or-invalid-source')
  const images=draftPhotos(d),urls=images.map(photo=>photo.url)
