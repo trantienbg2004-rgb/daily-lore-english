@@ -8066,10 +8066,10 @@
       "checkedAt": "2026-10-21T03:10:15.799Z"
     },
     "27363348": {
-      "status": "FETCHED",
-      "reason": "pinned-source-ready",
+      "status": "REJECTED",
+      "reason": "insufficient-source-text-or-embedded-images",
       "revisionId": 1368202470,
-      "checkedAt": "2026-10-21T07:40:20.201Z"
+      "checkedAt": "2026-10-21T07:40:21.304Z"
     },
     "27449867": {
       "status": "PENDING",
@@ -9866,7 +9866,7 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-10-21T07:40:20.202Z",
+  "updatedAt": "2026-10-21T07:40:21.304Z",
   "dailyUsage": {
     "day": "2026-10-21",
     "calls": 4,
