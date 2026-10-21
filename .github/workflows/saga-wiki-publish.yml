@@ -6,11 +6,12 @@ on:
   workflow_dispatch:
     inputs:
       max_calls:
-        description: Gemini calls for this manual run
+        description: Gemini calls for this run, or probe model access without generation
         type: choice
         options:
           - '0'
           - '8'
+          - 'probe'
         default: '0'
 
 permissions:
@@ -58,7 +59,7 @@ jobs:
           SAGA_WIKI_FREE_TIER_CONFIRMED: '1'
           SAGA_WIKI_CHECKPOINT_BRANCH: feat/saga-wikipedia-first-20261020
           SAGA_WIKI_MODEL: ${{ steps.free_model.outputs.model || 'gemini-3.5-flash-lite' }}
-          SAGA_WIKI_MAX_CALLS: ${{ steps.free_model.outputs.available == 'true' && (github.event.inputs.max_calls || '8') || '0' }}
+          SAGA_WIKI_MAX_CALLS: ${{ steps.free_model.outputs.available == 'true' && github.event.inputs.max_calls != 'probe' && (github.event.inputs.max_calls || '8') || '0' }}
         run: node scripts/wiki-pipeline.mjs batch --max-calls="$SAGA_WIKI_MAX_CALLS" --max-candidates=24
       - name: Verify staged stories and Reader
         working-directory: staging
