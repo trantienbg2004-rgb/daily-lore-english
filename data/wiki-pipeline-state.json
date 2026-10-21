@@ -9506,10 +9506,10 @@
       "checkedAt": "2026-10-21T03:10:32.468Z"
     },
     "77205158": {
-      "status": "FETCHED",
-      "reason": "pinned-source-ready",
+      "status": "REJECTED",
+      "reason": "insufficient-source-text-or-embedded-images",
       "revisionId": 1377665064,
-      "checkedAt": "2026-10-21T22:34:17.711Z"
+      "checkedAt": "2026-10-21T22:34:23.372Z"
     },
     "77221081": {
       "status": "EVIDENCE_READY",
@@ -9866,7 +9866,7 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-10-21T22:34:17.711Z",
+  "updatedAt": "2026-10-21T22:34:23.373Z",
   "dailyUsage": {
     "day": "2026-10-21",
     "calls": 37,
