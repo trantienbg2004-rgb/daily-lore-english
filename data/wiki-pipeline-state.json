@@ -6992,10 +6992,10 @@
       "checkedAt": "2026-10-21T01:40:09.043Z"
     },
     "1858051": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
+      "revisionId": 1376295871,
+      "checkedAt": "2026-10-21T13:49:31.300Z"
     },
     "1878007": {
       "status": "REJECTED",
@@ -9866,7 +9866,7 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-10-21T13:49:24.376Z",
+  "updatedAt": "2026-10-21T13:49:31.301Z",
   "dailyUsage": {
     "day": "2026-10-21",
     "calls": 23,
