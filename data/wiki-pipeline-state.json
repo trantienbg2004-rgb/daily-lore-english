@@ -6710,10 +6710,10 @@
       "checkedAt": "2026-10-21T07:32:13.462Z"
     },
     "694630": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
+      "revisionId": 1374777267,
+      "checkedAt": "2026-10-21T22:37:11.799Z"
     },
     "711760": {
       "status": "PENDING",
@@ -9866,7 +9866,7 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-10-21T22:37:05.312Z",
+  "updatedAt": "2026-10-21T22:37:11.799Z",
   "dailyUsage": {
     "day": "2026-10-21",
     "calls": 37,
