@@ -8018,10 +8018,10 @@
       "checkedAt": "2026-10-21T13:01:40.099Z"
     },
     "25322095": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
+      "revisionId": 1378397211,
+      "checkedAt": "2026-10-21T13:02:52.450Z"
     },
     "25426162": {
       "status": "EVIDENCE_READY",
@@ -9866,7 +9866,7 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-10-21T13:02:50.600Z",
+  "updatedAt": "2026-10-21T13:02:52.458Z",
   "dailyUsage": {
     "day": "2026-10-21",
     "calls": 4,
