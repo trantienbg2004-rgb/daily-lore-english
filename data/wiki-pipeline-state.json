@@ -8420,10 +8420,10 @@
       "checkedAt": "2026-10-21T03:10:39.845Z"
     },
     "41397305": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
+      "revisionId": 1381117075,
+      "checkedAt": "2026-10-21T07:55:59.679Z"
     },
     "41612950": {
       "status": "EVIDENCE_READY",
@@ -9866,7 +9866,7 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-10-21T07:55:58.138Z",
+  "updatedAt": "2026-10-21T07:55:59.684Z",
   "dailyUsage": {
     "day": "2026-10-21",
     "calls": 4,
