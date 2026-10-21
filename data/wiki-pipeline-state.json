@@ -9446,10 +9446,10 @@
       "checkedAt": "2026-10-21T07:34:51.960Z"
     },
     "75778478": {
-      "status": "PENDING",
-      "reason": "queued",
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
       "revisionId": 1376699310,
-      "checkedAt": null
+      "checkedAt": "2026-10-21T18:12:13.759Z"
     },
     "75904154": {
       "status": "EVIDENCE_READY",
@@ -9866,7 +9866,7 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-10-21T18:12:07.735Z",
+  "updatedAt": "2026-10-21T18:12:13.760Z",
   "dailyUsage": {
     "day": "2026-10-21",
     "calls": 30,
