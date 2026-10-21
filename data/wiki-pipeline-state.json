@@ -6518,10 +6518,10 @@
       "checkedAt": "2026-10-21T03:10:21.121Z"
     },
     "407233": {
-      "status": "EVIDENCE_READY",
-      "reason": "5 rights-verified embedded images",
+      "status": "RETRY_LATER",
+      "reason": "editorial call budget exhausted",
       "revisionId": 1380990938,
-      "checkedAt": "2026-10-21T13:49:18.767Z"
+      "checkedAt": "2026-10-21T13:49:24.375Z"
     },
     "422290": {
       "status": "PENDING",
@@ -9866,7 +9866,7 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-10-21T13:49:18.768Z",
+  "updatedAt": "2026-10-21T13:49:24.376Z",
   "dailyUsage": {
     "day": "2026-10-21",
     "calls": 23,
