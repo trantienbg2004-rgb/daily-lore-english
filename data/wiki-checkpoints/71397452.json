@@ -2,9 +2,336 @@
   "pageId": 71397452,
   "title": "Helios Dust Instrumentation",
   "topic": "Science & Technology",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1379838220,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379838220",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-21T22:33:29.645Z"
+  "reason": "8 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Helios Dust1.jpg"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Helios bottom Marked.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d2/Helios_bottom_Marked.jpg/960px-Helios_bottom_Marked.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Helios bottom Marked.jpg",
+        "caption": "Bottom view of the Helios spacecraft. The three Zodiacal light photometers P15, P30, P90 show the black openings of their stray light baffles. The drift tube of the South (S) micrometeoroid sensor is seen next to the photometers.",
+        "alt": "",
+        "description": "Bottom view of the Helios spacecraft showing the three Zodiacal light photometers P15, P30, and P90 as well as the South (S) micrometeoroid sensor.",
+        "date": "2022-06-04 13:28:07",
+        "section": "Overview",
+        "position": 1,
+        "provenance": {
+          "credit": "Dusteg",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Helios_bottom_Marked.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Helios_Dust_Instrumentation",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379838220",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Helios P30 M.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/00/Helios_P30_M.jpg/960px-Helios_P30_M.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Helios P30 M.jpg",
+        "caption": "P30, one of the three small photometers making up the zodiacal light instrument. In operation, the light enters from upper right through the black Carbon fibre stray light suppressing baffle.",
+        "alt": "",
+        "description": "Helios P30 photometer. From left: photomultiplier with electronics, filter wheel, lens, baffle, and protective cover (removed before launch).",
+        "date": "2022-05-19 13:28:32",
+        "section": "Zodiacal light instrument",
+        "position": 2,
+        "provenance": {
+          "credit": "Dusteg",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Helios_P30_M.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Helios_Dust_Instrumentation",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379838220",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Helios E10a.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/38/Helios_E10a.jpg/960px-Helios_E10a.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Helios E10a.jpg",
+        "caption": "Display of the South and Ecliptic sensors and the common electronics box of the Helios Micrometeoroid Analyzer.",
+        "alt": "",
+        "description": "Display of the South and Ecliptic sensors and the common electronics box of the Helios Micrometeoroid Analyzer.",
+        "date": "2022-06-13 13:36:59",
+        "section": "Micrometeoroid analyzer",
+        "position": 3,
+        "provenance": {
+          "credit": "Dusteg",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Helios_E10a.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Helios_Dust_Instrumentation",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379838220",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:HeliosCalibration.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7b/HeliosCalibration.jpg/960px-HeliosCalibration.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:HeliosCalibration.jpg",
+        "caption": "Calibration of the Helios micrometeoroid analyzer with different projectile materials.",
+        "alt": "",
+        "description": "Calibration of the Helios micrometeoroid analyzer with different projectile materials.",
+        "date": "2022-06-20 16:29:23",
+        "section": "Micrometeoroid analyzer",
+        "position": 4,
+        "provenance": {
+          "credit": "Dusteg",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:HeliosCalibration.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Helios_Dust_Instrumentation",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379838220",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:HeliosOrbitWithImpacts.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/da/HeliosOrbitWithImpacts.jpg/960px-HeliosOrbitWithImpacts.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:HeliosOrbitWithImpacts.jpg",
+        "caption": "Helios 1 Orbit with meteoroid impacts and sensor viewing direction at time of impact. The length of the bars indicate the magnitude of the impact charge measured.",
+        "alt": "",
+        "description": "Helios 1 Orbit with meteoroid impacts and sensor viewing direction at time of impact. The length of the bars indicate the magnitude of impact charge. Data from 1974 to 1980.",
+        "date": "2022-06-29 13:29:50",
+        "section": "Micrometeoroid data",
+        "position": 5,
+        "provenance": {
+          "credit": "Dusteg",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:HeliosOrbitWithImpacts.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Helios_Dust_Instrumentation",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379838220",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:HeliosZL.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/66/HeliosZL.jpg/960px-HeliosZL.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:HeliosZL.jpg",
+        "caption": "Brightness of the zodiacal light along the orbits of Helios 1 and 2 as observed by the P15 photometers; blue: inward, red: outward motion. The peak at 0.8 au was caused by Comet West passing through the field of view.",
+        "alt": "",
+        "description": "Brightness of the zodiacal light along the orbits of Helios 1 and 2 as observed by the P15 photometers; blue: inward, red: outward motion. The peak at 0.8 AU was caused by Comet West passing through the field of view.",
+        "date": "2022-11-01 12:04:17",
+        "section": "Radial dependencies",
+        "position": 6,
+        "provenance": {
+          "credit": "Dusteg",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:HeliosZL.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Helios_Dust_Instrumentation",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379838220",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:HeliosMassSpectra.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a1/HeliosMassSpectra.jpg/960px-HeliosMassSpectra.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:HeliosMassSpectra.jpg",
+        "caption": "Helios mass spectroscopic analysis of interplanetary and interstellar grains.",
+        "alt": "",
+        "description": "Helios mass analysis of interplanetary and interstellar grains.",
+        "date": "2022-07-02 14:00:57",
+        "section": "Optical, physical, and chemical properties",
+        "position": 7,
+        "provenance": {
+          "credit": "Dusteg",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:HeliosMassSpectra.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Helios_Dust_Instrumentation",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379838220",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:HeliosStability.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3f/HeliosStability.jpg/960px-HeliosStability.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:HeliosStability.jpg",
+        "caption": "Repeatabiliy of Helios zodiacal light measurements from minimum (1975/1976) through maximum (1979/1980) of solar sunspot cycle 21. Red symbols indicate days with coronal mass ejections and enhanced plasma scattering. For comparison the brightness of Procyon was monitored.",
+        "alt": "",
+        "description": "Repeatabiliy of Helios zodiacal light measuremens from minimum (1975/1976) through maximum (1979/1980) of solar sunspot cycle 21. Red symbols indicate days with coronal mass ejections and the enhanced scattering by high electron density. For confirmation of the instrumental stability the brightness of Procyon was monitored.",
+        "date": "2022-11-19 13:58:08",
+        "section": "Cometary and interstellar dust streams",
+        "position": 8,
+        "provenance": {
+          "credit": "Dusteg",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:HeliosStability.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Helios_Dust_Instrumentation",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379838220",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "f3a8ba4f0f94d2b3da0b3377c5ab55b9150708d9c0c18c3fc5d8b6e788607a60",
+      "heading": "Lead",
+      "excerpt": "The Helios 1 and 2 spacecraft each carried two dust instruments to characterize the Zodiacal dust cloud inside the Earth’s orbit down to spa",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379838220"
+    },
+    {
+      "id": "P2",
+      "hash": "15dc37e030125102e87cfa9299a544c0286c1dc35d0758ce1fc6b86203ea73dd",
+      "heading": "Overview",
+      "excerpt": "The two Helios spacecraft were the result of a joint venture of West Germany's space agency DLR and NASA. The spacecraft were built in Germa",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379838220"
+    },
+    {
+      "id": "P3",
+      "hash": "c4fc9bf5698f4331a57230e6ee4ceed4d91457d5dcd7d681f793be860f8fa2c4",
+      "heading": "Zodiacal light instrument",
+      "excerpt": "The primary goal of the Zodiacal light instrument on Helios was to determine the three-dimensional spatial distribution of interplanetary du",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379838220"
+    },
+    {
+      "id": "P4",
+      "hash": "6ae347bbfcc20a4669dfb8b9e8f5793d237cfb8518199043cf08480fee3ab052",
+      "heading": "Zodiacal light instrument",
+      "excerpt": "These partial sky maps, because of the rotation of Helios, consisted of a band 1° wide at ecliptic latitude ß = 16° with 32 sectors 5.62°, 1",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379838220"
+    },
+    {
+      "id": "P5",
+      "hash": "fdb9beb809b3980c1dc46ab04e06f754b833e4f24577e3bddb5641bf3774a921",
+      "heading": "Zodiacal light instrument",
+      "excerpt": "This map has been realized by three small (36 mm aperture) photometers, P15, P30, and P90, one for each ecliptic latitude. A stepping motor ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379838220"
+    },
+    {
+      "id": "P6",
+      "hash": "f9936d75fef52184a7df4e73801091df73207b8918c8ceedcf02d6c2b4554a8b",
+      "heading": "Micrometeoroid analyzer",
+      "excerpt": "The goal of the Micrometeoroid Analyzer was 1. to determine the spatial distribution of the dust flux in the inner planetary system, and 2. ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379838220"
+    },
+    {
+      "id": "P7",
+      "hash": "c62d7f178e618c17bf77524d6cd13b9f0c3ea73ed5c9292adf07785a5cda3966",
+      "heading": "Micrometeoroid data",
+      "excerpt": "During ten orbits about the sun from 1974 to 1980 the Helios 1 micrometeoroid analyzer transmitted data of 235 dust impacts to Earth. Since ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379838220"
+    },
+    {
+      "id": "P8",
+      "hash": "f7060d857e3c8dbee62ae4a451ffa3fb2b7dad1adadbe6639225dbbf9d9b8bba",
+      "heading": "Results",
+      "excerpt": "The Zodiacal light carries information on those regions of interplanetary space along the line of sight, which contribute significantly to i",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379838220"
+    },
+    {
+      "id": "P9",
+      "hash": "bd2a2959084747c08b59d38f74c54dc3dec3d0550c67bce75de4e0b2b5b67c50",
+      "heading": "Radial dependencies",
+      "excerpt": "The zodiacal light instrument observed a strong increase of the zodiacal light brightness inward the Earth orbit. The brightness was more th",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379838220"
+    },
+    {
+      "id": "P10",
+      "hash": "c3e9c7242ca857b2eae0ca8d81232a828197775148521b80595a2e2dfbc86d13",
+      "heading": "Plane of symmetry",
+      "excerpt": "From the difference between the measured zodiacal light brightness during inbound and outbound parts of the orbit and between right and left",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379838220"
+    },
+    {
+      "id": "P11",
+      "hash": "ecad5670c00deacef241d2b97728b52478f079ddccefd257a1a3c4edf03bd0a9",
+      "heading": "Orbital distribution",
+      "excerpt": "Of the 235 impacts total 152 were recorded by the South sensor and 83 by the Ecliptic sensor. This excess of impacts on the South sensor had",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379838220"
+    },
+    {
+      "id": "P12",
+      "hash": "2f2a3298aa097b9bf07752ecbf86eab255baea45328937631776a4e19bda55f3",
+      "heading": "Optical, physical, and chemical properties",
+      "excerpt": "The measurements of zodiacal light color – essentially constant along the Helios orbit – and of polarization – showing a decrease closer tow",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379838220"
+    },
+    {
+      "id": "P13",
+      "hash": "dc8b7b04e0f1d0d9931fa9eff8ae209d75954a2af7cefcc4f0af7e0a6f534e16",
+      "heading": "Cometary and interstellar dust streams",
+      "excerpt": "The Helios zodiacal light measurements show excellent stability. This allows detecting local brightness excesses if they are crossed by the ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379838220"
+    },
+    {
+      "id": "P14",
+      "hash": "55bbfb38bb6b793f9fc49d2a0491ee7b469c637ab9214f763df24ee013426206",
+      "heading": "Zodiacal light instrument",
+      "excerpt": "Throughout their mission the Helios space probes were exposed to full sunlight, which exceed the typical zodiacal light intensity by factor ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379838220"
+    },
+    {
+      "id": "P15",
+      "hash": "78c416e3b793f7cca904da847258b1f143e7ec5071df9991e90f5992c2b66e65",
+      "heading": "Zodiacal light instrument",
+      "excerpt": "The Zodiacal light instrument was developed at the Max Planck Institute for Astronomy in Heidelberg by Christoph Leinert and colleagues and ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379838220"
+    },
+    {
+      "id": "P16",
+      "hash": "aa579d755041e1b9f3923b80fc74b81364612feeff7f23d694d6a38d30f5acf6",
+      "heading": "Micrometeoroid analyzer",
+      "excerpt": "The instrument consisted of two impact ionization time-of-flight mass spectrometers and was developed by PI Eberhard Grün, Principal Enginee",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379838220"
+    },
+    {
+      "id": "P17",
+      "hash": "1b0304c8296cb716580881ff645b8ca14a0f5ac95f906a88813f3635415232c9",
+      "heading": "Micrometeoroid analyzer",
+      "excerpt": "The South sensor was shielded by the spacecraft rim from direct sun light, whereas the ecliptic sensor was directly exposed to the intense s",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379838220"
+    },
+    {
+      "id": "P18",
+      "hash": "80e9c6c717ffa99ffc0bc554d7583dd25561e5f1d541a3a62206db5e3a9a1726",
+      "heading": "Radial dependencies",
+      "excerpt": "The radial flux of micrometeoroids recorded by Helios increased by a factor 5 to 10 depending on the mass from 10 kg to 10 kg. This informat",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379838220"
+    }
+  ],
+  "updatedAt": "2026-10-21T22:33:35.815Z"
 }
