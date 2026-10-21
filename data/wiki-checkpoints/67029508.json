@@ -2,9 +2,133 @@
   "pageId": 67029508,
   "title": "Klaus Hinrich Stahmer",
   "topic": "Culture",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1377189494,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377189494",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-21T07:39:59.724Z"
+  "reason": "1 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Stahmer-landschaftstimme.tif"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Stahmer mobile aktionen.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/46/Stahmer_mobile_aktionen.jpg/960px-Stahmer_mobile_aktionen.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Stahmer mobile aktionen.jpg",
+        "caption": "Section of the score Mobile Actions for strings, 1974",
+        "alt": "",
+        "description": "Ausschnitt der Partitur \"Mobile Aktionen\"",
+        "date": "2017-11-03",
+        "section": "Themes and contents",
+        "position": 1,
+        "provenance": {
+          "credit": "Klaus Hinrich Stahmer",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Stahmer_mobile_aktionen.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Klaus_Hinrich_Stahmer",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377189494",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "f540a95388c119271cf72e1a0b7efe937f1b04a71ae663d328ca26a46aa88260",
+      "heading": "Lead",
+      "excerpt": "Klaus Hinrich Stahmer (born 25 June 1941) is a German composer and musicologist. He gave added to the development of music in the 1980s thro",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377189494"
+    },
+    {
+      "id": "P2",
+      "hash": "7d8fbb22ba9e985199fc5f430a72e0ec1df236c46a1c2750025d1e5cac8aeee7",
+      "heading": "Life",
+      "excerpt": "Stahmer was born in Stettin. In 1945, the family fled to the West to escape the Russian military. During his school years in Lüneburg from 1",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377189494"
+    },
+    {
+      "id": "P3",
+      "hash": "84fd1e8063c6ace71e9caa70d850f7076a7eddac2cf41bf47c003244dba95510",
+      "heading": "Life",
+      "excerpt": "From 1969 to 2004, Stahmer was a university lecturer at the Hochschule für Musik Würzburg, teaching musicology, especially music history, hi",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377189494"
+    },
+    {
+      "id": "P4",
+      "hash": "a1bdfe72e164d15f844095a12eadfec367722f6b482660ffc98af0628c2028cc",
+      "heading": "Life",
+      "excerpt": "Stahmer extended his commitment to contemporary music beyond the university of Würzburg to all of Germany. In collaboration with the Hindemi",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377189494"
+    },
+    {
+      "id": "P5",
+      "hash": "5e5d731c1640fb687a0c1e57506d087c2081515881c2b7e25d85fc1cbda9e344",
+      "heading": "Life",
+      "excerpt": "In cultural politics, Stahmer was active in Deutscher Musikrat, and was president of the German section of the Internationale Gesellschaft f",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377189494"
+    },
+    {
+      "id": "P6",
+      "hash": "00536c171335a94542bcdcdc038a381bbc72715f20890b104aea3518d58e93e8",
+      "heading": "Work",
+      "excerpt": "After Threnos for viola and piano (1963) and other youthful works, Stahmer found new forms of expression in collaboration with visual artist",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377189494"
+    },
+    {
+      "id": "P7",
+      "hash": "7e9c311056531b06d7835a6df49253309769c09a21024e3b00455ca291e2d6c6",
+      "heading": "Style",
+      "excerpt": "\"Klaus Hinrich Stahmer belongs to the generation of composers who were influenced in their youth by twelve-tone music, Theodor W. Adorno's m",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377189494"
+    },
+    {
+      "id": "P8",
+      "hash": "75298a1edffe907b5eddcc84f72730db6a8c3ab2ad45b37586e4f30017258b00",
+      "heading": "Themes and contents",
+      "excerpt": "With a few exceptions, such as the Fantasie for violin or the Solo for double bass, Stahmer's compositions do not belong to the type of work",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377189494"
+    },
+    {
+      "id": "P9",
+      "hash": "f7567ba68c685561ee89d543680bebef5e74f5e28179248a8fc1c63907fe0b16",
+      "heading": "Life",
+      "excerpt": "Since his retirement from university service, Stahmer has worked primarily as a composer, and has traveled to the Middle East and the Far Ea",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377189494"
+    },
+    {
+      "id": "P10",
+      "hash": "e3f2454e6394146298b38579e05d59f21fbefffe0daa0728ebef41126ac954b6",
+      "heading": "Work",
+      "excerpt": "In addition, Stahmer explored the sonic possibilities of Elmar Daucher [de]'s lithophone, and installations by Edmund Kieselbach. Whereas he",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377189494"
+    },
+    {
+      "id": "P11",
+      "hash": "cbe28e3ea08cea7d1ada85ced3c9f02166bd7b1f2cde303135bb845cf92e5863",
+      "heading": "Work",
+      "excerpt": "Stahmer's compositions, including numerous vocal and instrumental solos, were often created in artistic collaboration with musicians such as",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377189494"
+    },
+    {
+      "id": "P12",
+      "hash": "1fe60462c8cd72b9f4bbe5c1391da8eef906a842dd987c55a8a9f23233247c65",
+      "heading": "Style",
+      "excerpt": "After a creative phase predominantly characterised by sound experiments, Stahmer sought ways to transfer these experiences to the more tradi",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377189494"
+    },
+    {
+      "id": "P13",
+      "hash": "f04ef976bf9447d6628e252919404a86bf1568a0e84fa979259f1cd4e0b8940e",
+      "heading": "Themes and contents",
+      "excerpt": "His chosen texts come from the Bible, Greek tragedy and contemporary poetry by authors such as Erich Arendt, Hans Magnus Enzensberger, Erich",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377189494"
+    }
+  ],
+  "updatedAt": "2026-10-21T07:40:01.210Z"
 }
