@@ -6236,10 +6236,10 @@
       "checkedAt": "2026-10-21T07:31:59.291Z"
     },
     "56738": {
-      "status": "PENDING",
-      "reason": "queued",
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
       "revisionId": 1366488374,
-      "checkedAt": null
+      "checkedAt": "2026-10-21T13:31:13.837Z"
     },
     "57768": {
       "status": "EVIDENCE_READY",
@@ -9866,7 +9866,7 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-10-21T13:31:11.031Z",
+  "updatedAt": "2026-10-21T13:31:13.857Z",
   "dailyUsage": {
     "day": "2026-10-21",
     "calls": 11,
