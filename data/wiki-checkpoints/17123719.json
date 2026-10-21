@@ -2,9 +2,227 @@
   "pageId": 17123719,
   "title": "Majorcan cartographic school",
   "topic": "History & Geography",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1371471796,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371471796",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-21T13:52:42.973Z"
+  "reason": "2 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Compass rose from Catalan Atlas (1375).jpg"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:El mar Mediterráneo en el Atlas catalán de Cresques Abraham.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3b/El_mar_Mediterr%C3%A1neo_en_el_Atlas_catal%C3%A1n_de_Cresques_Abraham.jpg/960px-El_mar_Mediterr%C3%A1neo_en_el_Atlas_catal%C3%A1n_de_Cresques_Abraham.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:El mar Mediterráneo en el Atlas catalán de Cresques Abraham.jpg",
+        "caption": "A part of the Catalan Atlas that was created by Majorca's cartographer Abraham Cresques in 1375",
+        "alt": "",
+        "description": "El mar Mediterráneo, copiado del Atlas catalán de Cresques Abraham. Copia de 1959 del original de 1375",
+        "date": "1959",
+        "section": "Majorcan style",
+        "position": 1,
+        "provenance": {
+          "credit": "Copia de 1959 del original de 1375",
+          "license": "CC BY 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:El_mar_Mediterr%C3%A1neo_en_el_Atlas_catal%C3%A1n_de_Cresques_Abraham.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Majorcan_cartographic_school",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371471796",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Caravane Marco Polo.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0c/Caravane_Marco_Polo.jpg/960px-Caravane_Marco_Polo.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Caravane Marco Polo.jpg",
+        "caption": "Marco Polo's caravan from the Catalan Atlas",
+        "alt": "",
+        "description": "Marco Polo's caravan traveling to India.",
+        "date": "C.E.1375 (H.E.11,375)",
+        "section": "Catalan Atlas and Abraham and Jehuda Cresques",
+        "position": 2,
+        "provenance": {
+          "credit": "Abraham Cresques, Atlas catalan",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Caravane_Marco_Polo.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Majorcan_cartographic_school",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371471796",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "a6bb394befc91c28c074812e17f253c61e0238fc9fdeea13a18121356b5ef856",
+      "heading": "Lead",
+      "excerpt": "Majorcan cartographic school is the term coined by historians to refer to the collection of predominantly Jewish cartographers, cosmographer",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371471796"
+    },
+    {
+      "id": "P2",
+      "hash": "d9c1e42aae1337f3be82bd0a565dbc13d02c2376b75f1837ffd120e8d78a4cdc",
+      "heading": "Origins",
+      "excerpt": "The island of Mallorca, the largest of the Balearic Islands in the western Mediterranean, had a long history of seafaring. Muslim and Jewish",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371471796"
+    },
+    {
+      "id": "P3",
+      "hash": "3e9c9b928cbfdad4174dc2e89cff4511e5fc942ae0212c887b88f6e2b8af3bcc",
+      "heading": "Origins",
+      "excerpt": "It retained its independence as the Kingdom of Majorca until 1344, when it was permanently annexed to the Crown of Aragon. This coincided wi",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371471796"
+    },
+    {
+      "id": "P4",
+      "hash": "6d672b5482fb9746a284f3c862bd54644bd42cee1718bd55d4fdd03d2c9531e5",
+      "heading": "Origins",
+      "excerpt": "Majorcan cosmographers and cartographers experimented and developed their own cartographic techniques. According to some scholars (e.g. Nord",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371471796"
+    },
+    {
+      "id": "P5",
+      "hash": "a3ada7e8cd15317a892c18115c88c6d3912224e20aa9e7353351cd23f58eb763",
+      "heading": "Origins",
+      "excerpt": "Portolan charts, which appeared rather suddenly after 1300, constitute a sharp departure from all earlier maps. Unlike the circular mappa mu",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371471796"
+    },
+    {
+      "id": "P6",
+      "hash": "cbd4b00e4ebee708da752ee672b7fa349d05953df9d4f832bef7008354d46250",
+      "heading": "Majorcan style",
+      "excerpt": "Regardless of the exact origin, historians agree that the Majorcans developed their own distinctive style or \"school\" of portolan cartograph",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371471796"
+    },
+    {
+      "id": "P7",
+      "hash": "edcf6e624f8ab4ba39a50c210b0208879a77ac388c3321bdec1ab660bdc7c366",
+      "heading": "Members",
+      "excerpt": "Unlike in Italy, where the crafts of instrument-making and cartography were distinct, most of the Majorcan cartographers also worked as make",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371471796"
+    },
+    {
+      "id": "P8",
+      "hash": "de367a5405b12561124d2380d2404eba283700056e7c2cf3d63f215325d6436d",
+      "heading": "Catalan Atlas and Abraham and Jehuda Cresques",
+      "excerpt": "Abraham Cresques, also known as Cresques the Jew, was appointed as a Master of Maps and Compasses by John I of Aragon. The money he got for ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371471796"
+    },
+    {
+      "id": "P9",
+      "hash": "68037c845ff53b5d961be16a7908209352a4b70f6d2fa8bdfd2dd38fc0339a15",
+      "heading": "Other Jewish cartographers",
+      "excerpt": "Another famous Jewish cartographer was Haym ibn Risch. He was forced to convert to Christianity and took the name Juan de Vallsecha. He was ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371471796"
+    },
+    {
+      "id": "P10",
+      "hash": "e1283b2c46d0f7f56771900d400af9ec8bae9b5fc50b5e6fc3113a1451c553ba",
+      "heading": "Origins",
+      "excerpt": "Both Majorca and Genoa have laid claim for the invention of the portolan chart, and it is unlikely this will ever be resolved. Few charts ha",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371471796"
+    },
+    {
+      "id": "P11",
+      "hash": "f6ae1f5a4cdcd9a8dcbb6e831ebc70120755dffafc153541fb7fda0215fcfbcb",
+      "heading": "Origins",
+      "excerpt": "On the other hand, some scholars have embraced the hypothesis first forwarded by A.E. Nordenskiöld, that the surviving charts are misleading",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371471796"
+    },
+    {
+      "id": "P12",
+      "hash": "15937d2e8b54c653458ae9934023a60ae06978f76db917d78e2940fca314a0b9",
+      "heading": "Majorcan style",
+      "excerpt": "As time and knowledge progressed, some cartographers stretched the geographic boundaries of the normal portolan to include a larger swathe o",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371471796"
+    },
+    {
+      "id": "P13",
+      "hash": "0f169f18f14fd43dab509d5fa925f2628a999ee2dd853ee256fbe8a86e1b3a79",
+      "heading": "Majorcan style",
+      "excerpt": "The distinction between the Majorcan and Italian school is one of style rather than range. Italian portolan charts were sparse and restraine",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371471796"
+    },
+    {
+      "id": "P14",
+      "hash": "cc47c3f2c95e7bb095bd5629b0d1dc03b98a9407479820683cab762c45cf4e02",
+      "heading": "Majorcan style",
+      "excerpt": "The Majorcan style, its beginnings already decipherable in the 1339 chart of Angelino Dulcert, and finding its epitome in the Catalan Atlas ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371471796"
+    },
+    {
+      "id": "P15",
+      "hash": "45b47c2673f0bea139091cf73040daed68bcde38af00bd08d9aae89ab2890fe8",
+      "heading": "Majorcan style",
+      "excerpt": "Among the miniature people routinely found in many Majorcan maps are depictions of the traders on the Silk Road and the trans-Saharan route,",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371471796"
+    },
+    {
+      "id": "P16",
+      "hash": "8308d4346eceef6c417f092fbe2ffca2715a0f9026067240038699a578d0ba66",
+      "heading": "Majorcan style",
+      "excerpt": "Although the Italian school largely adhered to its sparse style, some later Italian cartographers, such as the Pizzigani brothers and Battis",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371471796"
+    },
+    {
+      "id": "P17",
+      "hash": "cf3ac398b718f988ce98c86ffb1e330c416eef753a90c4ca2fe1b04c2b852309",
+      "heading": "Majorcan style",
+      "excerpt": "Although some historians distinguish the Italian maps as \"nautical\" and the Majorcan maps as \"nautico-geographic\", the Majorcan portolans di",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371471796"
+    },
+    {
+      "id": "P18",
+      "hash": "577b7cc20c9857a1f4176ec1158a9c5ccd7a1066d7d4cc9c578c7223cef1249e",
+      "heading": "Members",
+      "excerpt": "Most members of the Majorcan school, with the exception of Soler, were Jews, whether practicing or conversos. As a result, the school suffer",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371471796"
+    },
+    {
+      "id": "P19",
+      "hash": "78de51f0d3c93332a8e345211cf794a2f45ce8826bb97cc18c51b8c4cc194d71",
+      "heading": "Members",
+      "excerpt": "The production of medieval Portolan charts can be divided in two major schools: the Italian and the Catalan. Italian medieval cartographers ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371471796"
+    },
+    {
+      "id": "P20",
+      "hash": "9bfbe693c3be2cbb4132175017f73f1081c1d044bc2cd8bdcd224b8b92cc6ace",
+      "heading": "Members",
+      "excerpt": "The inhabitants of Majorca were great navigators and cartographers. Their geographical knowledge was earned from their own experience and de",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371471796"
+    },
+    {
+      "id": "P21",
+      "hash": "f5bddb7416ab67b8e639ad71fd458ab7d472958c903f822e46a5571ee3ae8b77",
+      "heading": "Members",
+      "excerpt": "The first known Majorcan map was made by Angelino Dulcert in 1339. Even in this early work, all the distinguishing features of the Majorcan ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371471796"
+    },
+    {
+      "id": "P22",
+      "hash": "6eb45cfc3c0aad80299b653bddfc09397e6f29f2cc8555af22a25fbe6782f8cf",
+      "heading": "Catalan Atlas and Abraham and Jehuda Cresques",
+      "excerpt": "The first two leaves, forming the oriental portion of the Catalan Atlas, illustrate numerous religious references as well as a synthesis of ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371471796"
+    },
+    {
+      "id": "P23",
+      "hash": "dd6622e38fde6bf3ac01b3adb83fa4f805b5bf80d356c47bfd187d6a53d08c37",
+      "heading": "Catalan Atlas and Abraham and Jehuda Cresques",
+      "excerpt": "In this town is the shrine of Mohammed the Prophet of the Saracens, who come here on pilgrimages from every country. And they say that, havi",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371471796"
+    }
+  ],
+  "updatedAt": "2026-10-21T13:52:48.501Z"
 }

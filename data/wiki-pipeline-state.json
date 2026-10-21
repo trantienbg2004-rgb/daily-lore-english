@@ -7766,10 +7766,10 @@
       "checkedAt": null
     },
     "17123719": {
-      "status": "FETCHED",
-      "reason": "pinned-source-ready",
+      "status": "EVIDENCE_READY",
+      "reason": "2 rights-verified embedded images",
       "revisionId": 1371471796,
-      "checkedAt": "2026-10-21T13:52:42.973Z"
+      "checkedAt": "2026-10-21T13:52:48.501Z"
     },
     "17213240": {
       "status": "RETRY_LATER",
@@ -9866,7 +9866,7 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-10-21T13:52:42.974Z",
+  "updatedAt": "2026-10-21T13:52:48.501Z",
   "dailyUsage": {
     "day": "2026-10-21",
     "calls": 23,
