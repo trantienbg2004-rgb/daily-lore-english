@@ -9368,10 +9368,10 @@
       "checkedAt": "2026-10-21T07:34:01.760Z"
     },
     "74786445": {
-      "status": "PENDING",
-      "reason": "queued",
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
       "revisionId": 1376699100,
-      "checkedAt": null
+      "checkedAt": "2026-10-21T08:11:57.299Z"
     },
     "74790405": {
       "status": "EVIDENCE_READY",
@@ -9866,7 +9866,7 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-10-21T08:11:55.475Z",
+  "updatedAt": "2026-10-21T08:11:57.299Z",
   "dailyUsage": {
     "day": "2026-10-21",
     "calls": 4,
