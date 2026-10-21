@@ -2,9 +2,232 @@
   "pageId": 2262519,
   "title": "Dieppe maps",
   "topic": "History & Geography",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1373119799,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373119799",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-21T07:40:08.587Z"
+  "reason": "5 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Guillaume Brouscon. World chart, which includes America and a large Terra Java (Australia). HM 46. PORTOLAN ATLAS and NAUTICAL ALMANAC. France, 1543.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9b/Guillaume_Brouscon._World_chart%2C_which_includes_America_and_a_large_Terra_Java_%28Australia%29._HM_46._PORTOLAN_ATLAS_and_NAUTICAL_ALMANAC._France%2C_1543.jpg/960px-Guillaume_Brouscon._World_chart%2C_which_includes_America_and_a_large_Terra_Java_%28Australia%29._HM_46._PORTOLAN_ATLAS_and_NAUTICAL_ALMANAC._France%2C_1543.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Guillaume Brouscon. World chart, which includes America and a large Terra Java (Australia). HM 46. PORTOLAN ATLAS and NAUTICAL ALMANAC. France, 1543.jpg",
+        "caption": "A world map by Guillaume Brouscon, an example of a Dieppe map, 1543.",
+        "alt": "",
+        "description": "World chart, which includes America and a large promontory of the \"Terre Ostrale\" (Terra Australis) inscribed in its northern part terre de lucac (Locach). HM 46. PORTOLAN ATLAS and NAUTICAL ALMANAC. France, 1543. Call Number: HM 46 Folio: Binding Description: World chart, which includes America and a large \"Terra Java\" (Australia?).",
+        "date": "1543",
+        "section": "",
+        "position": 0,
+        "provenance": {
+          "credit": "Guillaume Brouscon",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Guillaume_Brouscon._World_chart,_which_includes_America_and_a_large_Terra_Java_(Australia)._HM_46._PORTOLAN_ATLAS_and_NAUTICAL_ALMANAC._France,_1543.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Dieppe_maps",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373119799",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Australia first map.jpg"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Le Testu 1556 4th projection.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/29/Le_Testu_1556_4th_projection.jpg/960px-Le_Testu_1556_4th_projection.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Le Testu 1556 4th projection.jpg",
+        "caption": "Guillaume Le Testu's 1556 Cosmographie Universel, 4ème projection, where the northward extending promontory of the Terre australe is called Grande Jave.",
+        "alt": "",
+        "description": "Guillaume Le Testu’s 1556 Cosmographie Universel, 4me projection, where the northward extending promontory of the Terre australle is called Grande Jaue.",
+        "date": "1556",
+        "section": "The Dieppe school of mapmaking",
+        "position": 2,
+        "provenance": {
+          "credit": "Guillaume Le Testu",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Le_Testu_1556_4th_projection.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Dieppe_maps",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373119799",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Nicolas Desliens Map (1566).jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4e/Nicolas_Desliens_Map_%281566%29.jpg/960px-Nicolas_Desliens_Map_%281566%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Nicolas Desliens Map (1566).jpg",
+        "caption": "World map of Nicolas Desliens, 1566.",
+        "alt": "",
+        "description": "World map of Nicolas Desliens, 1566. This one is upside down: north is on top of the picture, while in the original it is south. Consequently, labels appear here written upside down.",
+        "date": "2011-05-03 10:48",
+        "section": "Gayle K. Brunelle's work",
+        "position": 3,
+        "provenance": {
+          "credit": "Nicolas Desliens",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Nicolas_Desliens_Map_(1566).jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Dieppe_maps",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373119799",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Globe terrestre de Jacques Vau de Claye (1583).gif"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:ORIGINAL DISCOVERY OF NEW HOLLAND, The Argus, 4 February 1790.jpg",
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/8/82/ORIGINAL_DISCOVERY_OF_NEW_HOLLAND%2C_The_Argus%2C_4_February_1790.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "fileTitle": "File:ORIGINAL DISCOVERY OF NEW HOLLAND, The Argus, 4 February 1790.jpg",
+        "caption": "Newspaper article of 4 February 1790",
+        "alt": "",
+        "description": "Newspaper article of 4 February 1790",
+        "date": "2013-01-30 11:05:22",
+        "section": "Debates over the theory of Portuguese discovery of Australia",
+        "position": 5,
+        "provenance": {
+          "credit": "Kattigara",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:ORIGINAL_DISCOVERY_OF_NEW_HOLLAND,_The_Argus,_4_February_1790.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Dieppe_maps",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373119799",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Desceliers 1550 map - Australia detail.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/28/Desceliers_1550_map_-_Australia_detail.jpg/960px-Desceliers_1550_map_-_Australia_detail.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Desceliers 1550 map - Australia detail.jpg",
+        "caption": "Map detail of Terre Australe by Desceliers, 1550",
+        "alt": "",
+        "description": "This is a detail from a 1550 world map by Pierre Desceliers, from the location where Australia would be, and purportedly showing Australian features. It is one of the Dieppe maps, which are commonly put forward as evidence for the theory that the Portuguese encountered Australia in the 16th century.",
+        "date": "1550",
+        "section": "Debates over the theory of Portuguese discovery of Australia",
+        "position": 6,
+        "provenance": {
+          "credit": "Pierre Desceliers",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Desceliers_1550_map_-_Australia_detail.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Dieppe_maps",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373119799",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Nicolas Desliens detail of Java la Grande 16th century.jpg"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "be8b24f1dec6af9cb76d65898dd22698657972d4177c3487db16ae597adb2d18",
+      "heading": "Lead",
+      "excerpt": "The Dieppe maps are a series of world maps and atlases produced in Dieppe, France, in the 1540s, 1550s, and 1560s. They are large hand-produ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373119799"
+    },
+    {
+      "id": "P2",
+      "hash": "dc87789d82535bc1e8cd34b7a32759ffe11e68e507db6d090b51cc77699492cc",
+      "heading": "Existing Dieppe maps",
+      "excerpt": "Sarah Toulouse has published a more detailed and comprehensive list of 37 charts and atlases made between 1542 and 1635 and belonging to the",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373119799"
+    },
+    {
+      "id": "P3",
+      "hash": "046ce1a36d58785b3216d330cdd4f17f86626bc1065ece9736df47a53c9812b2",
+      "heading": "The Dieppe school of mapmaking",
+      "excerpt": "Because many of the inscriptions on the Dieppe maps are written in French, Portuguese or Gallicised Portuguese, it has often been assumed th",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373119799"
+    },
+    {
+      "id": "P4",
+      "hash": "6e60db2a3cd9ee0b57757a381a257a7b01e54d46ce498f2329d3911f39ed04ab",
+      "heading": "The Dieppe school of mapmaking",
+      "excerpt": "Common features of most of the Dieppe world maps (see Vallard 1547, Desceliers 1550) are the compass roses and navigational rhumb lines, sug",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373119799"
+    },
+    {
+      "id": "P5",
+      "hash": "b4152b42b270247c5e8fa0571886a3b3a4eb06c5246b91112471d17d8879a769",
+      "heading": "The Dieppe school of mapmaking",
+      "excerpt": "Most of the Dieppe maps depict a large land mass entitled Jave la Grande or terre de lucac (Locach) between what is now Indonesia and Antarc",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373119799"
+    },
+    {
+      "id": "P6",
+      "hash": "cdb264099540ca44c03559eedc5924d640fedb72db396bfda06fa26e40c49f55",
+      "heading": "Gayle K. Brunelle's work",
+      "excerpt": "Professor Gayle K. Brunelle of California State University has argued that, although the Dieppe school of cartographers was active for only ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373119799"
+    },
+    {
+      "id": "P7",
+      "hash": "58bb25f937a213b92b185a7568a1b37e9f6c5bd08d3094106443598c7677bb01",
+      "heading": "Other writers",
+      "excerpt": "The Dieppe maps all depict the hypothetical southern continent, Terra Australis, incorporating a huge promontory extending northward called ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373119799"
+    },
+    {
+      "id": "P8",
+      "hash": "ec8fd951ad7400c5218fc321217f9bada4f819828d2ea60a51ac7d4efce6a9b4",
+      "heading": "Cosmography of Oronce Fine and Johannes Schoener",
+      "excerpt": "The cartographers of the Dieppe school incorporated into their world maps the cosmographic concepts of Oronce Fine, the first Professor of M",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373119799"
+    },
+    {
+      "id": "P9",
+      "hash": "1afb300f0d383ba45d2e8864d0a7703155c1eeb055da805b9a0ec198ff24234c",
+      "heading": "La Popelinière and French colonial expansion",
+      "excerpt": "The extent of French knowledge concerning Terra Australis in the mid-16th century is indicated by Lancelot Voisin de La Popelinière, who in ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373119799"
+    },
+    {
+      "id": "P10",
+      "hash": "260b787c84385c4e82311b52bd8959c125017d62f2fa9aa6e745928aa862b0e0",
+      "heading": "Debates over the theory of Portuguese discovery of Australia",
+      "excerpt": "Discussion of the Dieppe maps in contemporary Australia (except for the work of Robert J. King) is exclusively confined to the Jave la Grand",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373119799"
+    },
+    {
+      "id": "P11",
+      "hash": "320fb901f778942aaffc6b7145be35dc59db741027db0e17765c7d245c0ca31b",
+      "heading": "The Dieppe school of mapmaking",
+      "excerpt": "This group of writers argue that the maps are not necessarily literal records of voyages of exploration. On the 1543 world chart of Guillaum",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373119799"
+    },
+    {
+      "id": "P12",
+      "hash": "431036a01acad8fcd298622b2a0353b2b86b94c4ddfe5d9ba1c4948730db945b",
+      "heading": "The Dieppe school of mapmaking",
+      "excerpt": "It is noteworthy that the Unfortunate Isles (Islas Infortunadas) discovered during Magellan's voyage across the Pacific in 1522 appear on th",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373119799"
+    }
+  ],
+  "updatedAt": "2026-10-21T07:40:10.031Z"
 }
