@@ -8240,10 +8240,10 @@
       "checkedAt": null
     },
     "34564007": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
+      "revisionId": 1368955509,
+      "checkedAt": "2026-10-21T22:35:17.600Z"
     },
     "34682181": {
       "status": "PENDING",
@@ -9866,7 +9866,7 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-10-21T22:35:11.475Z",
+  "updatedAt": "2026-10-21T22:35:17.600Z",
   "dailyUsage": {
     "day": "2026-10-21",
     "calls": 37,
