@@ -2,9 +2,128 @@
   "pageId": 1357593,
   "title": "Sensitive high-resolution ion microprobe",
   "topic": "Science & Technology",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1381286172,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381286172",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-21T18:12:43.480Z"
+  "reason": "1 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:SHRIMP II.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/48/SHRIMP_II.jpg/960px-SHRIMP_II.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:SHRIMP II.jpg",
+        "caption": "SHRIMP II at Research School of Earth Sciences, Australian National University, Australia",
+        "alt": "",
+        "description": "SHRIMP II at Research School of Earth Sciences, Australian National University, Australia",
+        "date": "2023-01-31",
+        "section": "",
+        "position": 0,
+        "provenance": {
+          "credit": "Biggerbug",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:SHRIMP_II.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Sensitive_high-resolution_ion_microprobe",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381286172",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "6aa38ebcbe507d7d28d1d00a69f71fe0058260c200014af860d26d4c090f7fd1",
+      "heading": "Lead",
+      "excerpt": "The sensitive high-resolution ion microprobe (also sensitive high mass-resolution ion microprobe or SHRIMP) is a large-diameter, double-focu",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381286172"
+    },
+    {
+      "id": "P2",
+      "hash": "21156314ae6adc7c4a49f010d9c3793af8fdcd98c5f305bde65070667f5014cd",
+      "heading": "Lead",
+      "excerpt": "The SHRIMP is primarily used for geological and geochemical applications. It can measure the isotopic and elemental abundances in minerals a",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381286172"
+    },
+    {
+      "id": "P3",
+      "hash": "2717c4d9603c6c5663b14eaf28606e5e96259093d1bfff61c28c048df774a571",
+      "heading": "History and scientific impact",
+      "excerpt": "The SHRIMP originated in 1973 with a proposal by Prof. Bill Compston, trying to build an ion microprobe at the Research School of Earth Scie",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381286172"
+    },
+    {
+      "id": "P4",
+      "hash": "192d53427b0f199be327fa88414e02b13e0f4a20a85f144e1761098aa8c45182",
+      "heading": "History and scientific impact",
+      "excerpt": "The first major scientific impact was the discovery of Hadean (>4000 million year old) zircon grains at Mt. Narryer in Western Australia and",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381286172"
+    },
+    {
+      "id": "P5",
+      "hash": "ee3cc04d47b2ca318b92e4f93583ae34258928dc98a6bda53cfd3e166b0f229b",
+      "heading": "History and scientific impact",
+      "excerpt": "Growing interest from commercial companies and other academic research groups, notably Prof. John de Laeter of Curtin University (Perth, Wes",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381286172"
+    },
+    {
+      "id": "P6",
+      "hash": "45f869c5559e48261b8c566935bb38572744e4ef34f7be6077612f6f81c724a9",
+      "heading": "Primary column",
+      "excerpt": "In a typical U–Pb geochronology analytical mode, a beam of (O2) primary ions are produced from a high-purity oxygen gas discharge in the hol",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381286172"
+    },
+    {
+      "id": "P7",
+      "hash": "b4949479baa6c0c53358a64ff99d270983419064eb94f3417f787f67181e5e77",
+      "heading": "Sample chamber",
+      "excerpt": "The primary beam is 45° incident to the plane of the sample surface with secondary ions extracted at 90° and accelerated at 10 kV. Three qua",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381286172"
+    },
+    {
+      "id": "P8",
+      "hash": "7037a86e67ee4c0fce4fce1a36037af877d6a0aa972b93b07c59fe449e80081d",
+      "heading": "Electrostatic analyzer",
+      "excerpt": "The secondary ions are filtered and focussed according to their kinetic energy by a 1272 mm radius 90° electrostatic sector. A mechanically-",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381286172"
+    },
+    {
+      "id": "P9",
+      "hash": "fb1fb5bd4733147f07c79fe57de08ca8e39532e58b24aca694cf99cd323cfea9",
+      "heading": "Magnetic sector",
+      "excerpt": "The electromagnet has a 1000 mm radius through 72.5° to focus the secondary ions according to their mass/charge ratio according to the princ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381286172"
+    },
+    {
+      "id": "P10",
+      "hash": "9deec064aece8d60f3770216bfd13054df716bf2a218dab3dd76085b6572f6bc",
+      "heading": "Detectors",
+      "excerpt": "The ions pass through a collector slit in the focal plane of the magnetic sector and the collector assembly can be moved along an axis to op",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381286172"
+    },
+    {
+      "id": "P11",
+      "hash": "abbea7bd39750353c17e39544b5fdd1f8d0f596820020e61430331d03eb4eaf0",
+      "heading": "Vacuum system",
+      "excerpt": "Turbomolecular pumps evacuate the entire beam path of the SHRIMP to maximise transmission and reduce contamination. The sample chamber also ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381286172"
+    },
+    {
+      "id": "P12",
+      "hash": "286e4b55a55dc4af08ba7e2849993ab45e193293dc8731656879bce1d6326afd",
+      "heading": "Isotope dating",
+      "excerpt": "For U-Th-Pb geochronology a beam of primary ions (O2) are accelerated and collimated towards the target where it sputters \"secondary\" ions f",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381286172"
+    },
+    {
+      "id": "P13",
+      "hash": "65d43861d3406f3324982eff9f8c5d884988fe0899ceeba8d8b8f94081d5ca04",
+      "heading": "History and scientific impact",
+      "excerpt": "Fifteen SHRIMP instruments have now been installed around the world and SHRIMP results have been reported in more than 2000 peer reviewed sc",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381286172"
+    }
+  ],
+  "updatedAt": "2026-10-21T18:12:49.421Z"
 }
