@@ -2,9 +2,93 @@
   "pageId": 320674,
   "title": "Alexander I of Macedon",
   "topic": "Sports",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1379900151,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379900151",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-21T18:12:25.715Z"
+  "reason": "1 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Aristides and Alexander 479 BCE.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/38/Aristides_and_Alexander_479_BCE.jpg/960px-Aristides_and_Alexander_479_BCE.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Aristides and Alexander 479 BCE.jpg",
+        "caption": "Aristides, commander of the Athenians, informed by Alexander I that delaying the encounter with the Persians would help further diminish their already low supplies. Battle of Plataea, 479 BC.",
+        "alt": "",
+        "description": "Aristides and Alexander 479 BCE",
+        "date": "2018-12-22 08:03:13",
+        "section": "Biography",
+        "position": 0,
+        "provenance": {
+          "credit": "Unkown (published in 1832)",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Aristides_and_Alexander_479_BCE.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Alexander_I_of_Macedon",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379900151",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "c805189bf84da6efeb8c7b46928b3267f67570080bc2134e7da2c87f578f8ea1",
+      "heading": "Lead",
+      "excerpt": "Alexander I (Ancient Greek: Ἀλέξανδρος, romanized: Alexandros; died 454 BC), also known as Alexander the Philhellene (Ancient Greek: φιλέλλη",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379900151"
+    },
+    {
+      "id": "P2",
+      "hash": "cbfad010dedf1dccf0893c4c97872e517a86009f6fcf14884408fe6013437367",
+      "heading": "Biography",
+      "excerpt": "Alexander was the only son of Amyntas I and an unknown spouse, whose name was perhaps Eurydice. He had a sister named Gygaea (Greek: Γυγαίη)",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379900151"
+    },
+    {
+      "id": "P3",
+      "hash": "68d2d3ff5b8d549ca06afbe2211b8fac1324707bc452e7323490fbf66e972845",
+      "heading": "Biography",
+      "excerpt": "According to Herodotus, Alexander married Gygaea to the Persian general Bubares while a vassal of the Achaemenid Empire as a bribe to cover ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379900151"
+    },
+    {
+      "id": "P4",
+      "hash": "c6e8a3700160564902ffd6b8f4447b9d06376f51f45f10313fe320521773540d",
+      "heading": "Biography",
+      "excerpt": "Alexander came to the throne during the era of the kingdom's vassalage to Achaemenid Persia, dating back to the time of his father, Amyntas ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379900151"
+    },
+    {
+      "id": "P5",
+      "hash": "4551060b7c12f7f99587328f0ad0887a453a4ef50faa16b27b7466d7e9730fc8",
+      "heading": "Biography",
+      "excerpt": "From the time of Mardonius' conquest of Macedon, Herodotus refers to Alexander as hyparchos, meaning viceroy. Despite his cooperation with P",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379900151"
+    },
+    {
+      "id": "P6",
+      "hash": "0fbae192593970baa0558e73b7a614ed99e3e87fef36e0e465b08a9422aad703",
+      "heading": "Family tree",
+      "excerpt": "Modern historians disagree on a number of details concerning the genealogy of the Argead dynasty. Robin Lane Fox, for example, refutes Nicho",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379900151"
+    },
+    {
+      "id": "P7",
+      "hash": "26a310949e28d697d3ba5f54ead16c95bc86182e7463a4aabac849e5888a4596",
+      "heading": "Biography",
+      "excerpt": "Alexander claimed descent from Argive Greeks and Heracles. After a court of Elean hellanodikai determined his claim to be true, he was permi",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379900151"
+    },
+    {
+      "id": "P8",
+      "hash": "98f4c53ba54751581f5f324343a6fb4cabdb6844dc11e3dd99023b86b272b3ac",
+      "heading": "Biography",
+      "excerpt": "Herodotus and Plutarch report another story about Alexander's assistance to the Greeks. On the eve of the decisive Battle of Plataea (479 BC",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379900151"
+    }
+  ],
+  "updatedAt": "2026-10-21T18:12:31.647Z"
 }
