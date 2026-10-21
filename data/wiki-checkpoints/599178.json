@@ -2,9 +2,187 @@
   "pageId": 599178,
   "title": "Cosmopolitanism",
   "topic": "Society",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1380200839,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380200839",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-21T13:31:55.606Z"
+  "reason": "2 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Waterhouse-Diogenes.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7a/Waterhouse-Diogenes.jpg/960px-Waterhouse-Diogenes.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Waterhouse-Diogenes.jpg",
+        "caption": "Diogenes by John William Waterhouse, 1882",
+        "alt": "",
+        "description": "Diogenes (1882) by John William Waterhouse",
+        "date": "1882",
+        "section": "Philosophical roots",
+        "position": 0,
+        "provenance": {
+          "credit": "John William Waterhouse",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Waterhouse-Diogenes.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Cosmopolitanism",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380200839",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Cosmopolitan-FC-November-1917.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/dd/Cosmopolitan-FC-November-1917.jpg/960px-Cosmopolitan-FC-November-1917.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Cosmopolitan-FC-November-1917.jpg",
+        "caption": "November 1917 issue of Cosmopolitan cover by Harrison Fisher",
+        "alt": "",
+        "description": "Front cover of Cosmopolitan magazine for November 1917",
+        "date": "1917-11",
+        "section": "Political and sociological",
+        "position": 1,
+        "provenance": {
+          "credit": "International Magazine Company; Harrison Fisher, illustrator",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Cosmopolitan-FC-November-1917.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Cosmopolitanism",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380200839",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "7d78467eaa871b8cc53c58f03d15d85a978298212a712beec9b3db65ad50cf96",
+      "heading": "Lead",
+      "excerpt": "Cosmopolitanism is the idea that all human beings are members of a single community. Its adherents are known as cosmopolitan or cosmopolite.",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380200839"
+    },
+    {
+      "id": "P2",
+      "hash": "87edb77e12de49c2a2ed07a97d5c40aacd534c3e1bca80be53ee0520fa20d99d",
+      "heading": "Lead",
+      "excerpt": "For example, Kwame Anthony Appiah articulates a cosmopolitan community where individuals from varying locations (physical, economic, etc.) e",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380200839"
+    },
+    {
+      "id": "P3",
+      "hash": "67bb7106d4952745a1f403ca57b37471170ca56e4a8260e93aba16610f9997c1",
+      "heading": "Etymology",
+      "excerpt": "The word derives from the Ancient Greek: κοσμοπολίτης, or kosmopolitês, formed from \"κόσμος\", kosmos, i.e. \"world\", \"universe\", or \"cosmos\",",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380200839"
+    },
+    {
+      "id": "P4",
+      "hash": "8a176ddd02a0e388a94708ab18720e0db5d5949df4cdca7c5a47d070c6d0e7e6",
+      "heading": "Definitions",
+      "excerpt": "Definitions of cosmopolitanism usually begin with the Greek etymology of \"citizen of the world\". However, as Appiah points out, \"world\" in t",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380200839"
+    },
+    {
+      "id": "P5",
+      "hash": "95f06d6492c3aae4fd336cbc872a96c9d8f4544f355ffa884968068680a0787c",
+      "heading": "Definitions",
+      "excerpt": "Kleingeld and Brown distinguish between moral, political, cultural and economic forms of cosmopolitanism. In the United States, two forms of",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380200839"
+    },
+    {
+      "id": "P6",
+      "hash": "5a74e5da10e90aa56755742936f92d4776d4415527706d7ff10a2c6e68dcdb58",
+      "heading": "Philosophical roots",
+      "excerpt": "Cosmopolitanism can be traced back to Diogenes of Sinope (c. 412 B.C.E), one of the founders of Cynicism in Ancient Greece. It was said that",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380200839"
+    },
+    {
+      "id": "P7",
+      "hash": "8b3ac47cbff81e40d51c06de6ebafefe4e12535437da1fe72f26eee5b3b2a720",
+      "heading": "Modern cosmopolitan thinkers",
+      "excerpt": "In his 1795 essay \"Perpetual Peace: A Philosophical Sketch\", Immanuel Kant stages a ius cosmopoliticum (cosmopolitan law/right) as a guiding",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380200839"
+    },
+    {
+      "id": "P8",
+      "hash": "988a315137989d21a6a5a1b8456d8442e1931c6798aa5ff67df2006ce2b13df0",
+      "heading": "Contemporary cosmopolitan thinkers",
+      "excerpt": "Thich Nhat Hanh discusses what he calls \"Interbeing\" as a way of living one's life in relation to others; \"Interbeing\" might easily be compa",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380200839"
+    },
+    {
+      "id": "P9",
+      "hash": "1af816af973cf1b522882bb9538d79078d3226eb083e47ba22c4d21bf4c39403",
+      "heading": "Political and sociological",
+      "excerpt": "Emile Durkheim (1858–1917) observed the development of what he called the 'cult of the individual', which is a new religion that replaced th",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380200839"
+    },
+    {
+      "id": "P10",
+      "hash": "ea521d41863ee7774546e6f8e4e293c1867b059520f1ac9e4e66f8a1220b9efe",
+      "heading": "Vazha-Pshavela",
+      "excerpt": "In his 1905 essay «კოსმოპოლიტიზმი და პატრიოტიზმი» (Kosmopolitizmi da Patriotizmi; \"Cosmopolitanism and Patriotism\"), first published in the ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380200839"
+    },
+    {
+      "id": "P11",
+      "hash": "1dde1c27a99091d4017d12f4013bf20d98675cb05e38b19cd654de26a24450f6",
+      "heading": "Criticism",
+      "excerpt": "\"Cosmopolitanism\" became a rhetorical weapon used by nationalists against \"alien\" ideas that went counter to orthodoxy. European Jews were f",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380200839"
+    },
+    {
+      "id": "P12",
+      "hash": "89cac1998f1f60db4b49183a23df35452b232fc55b6bd0efd843f3aa27a5df88",
+      "heading": "Definitions",
+      "excerpt": "Cosmopolitanism can be defined as a global politics that, firstly, projects a sociality of common political engagement among all human being",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380200839"
+    },
+    {
+      "id": "P13",
+      "hash": "a5d2c53c248783fefcd37a46b00b60d3df6be7ae70c3f2650e9a82d036a9ad52",
+      "heading": "Philosophical roots",
+      "excerpt": "Stoicism, another Greek school of thought that was founded roughly a century later, built upon Diogenes' idea, with many of its thinkers and",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380200839"
+    },
+    {
+      "id": "P14",
+      "hash": "e9bd350c18258456c770310f98e29e09b4912f0bb1e5a0131c3fa1189a286878",
+      "heading": "Philosophical roots",
+      "excerpt": "The ancient Chinese philosopher Mozi in preserved scripts said that \"universal love and mutual benefit\" could be attained \"to regard other p",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380200839"
+    },
+    {
+      "id": "P15",
+      "hash": "67d7ab78697d090b80c66c084cc03b94c6eb60d36b18e20586b0bcc2decb8c05",
+      "heading": "Modern cosmopolitan thinkers",
+      "excerpt": "Kant's cosmopolitan right is fundamentally bound to the conditions of universal hospitality and the right of resort. Universal hospitality i",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380200839"
+    },
+    {
+      "id": "P16",
+      "hash": "782c161c9920693ea6ca1e6cd43c4a98ed28f3835c961cf4a54b6a3294a81da7",
+      "heading": "Modern cosmopolitan thinkers",
+      "excerpt": "The philosophical concepts of Emmanuel Levinas, on ethics, and Jacques Derrida, on hospitality, provide a theoretical framework for the rela",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380200839"
+    },
+    {
+      "id": "P17",
+      "hash": "c551ab771328a990fa3c41b9b5c95d14c5b9a7a78616f6f2f3c733e49a426709",
+      "heading": "Modern cosmopolitan thinkers",
+      "excerpt": "For Derrida, the foundation of ethics is hospitality, the readiness and the inclination to welcome the Other into one's home. Ethics, he cla",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380200839"
+    },
+    {
+      "id": "P18",
+      "hash": "532acf6a8bb492f717266e609b76b62b57ebed96ec2a8560fbd7a3c0fa11ee21",
+      "heading": "Modern cosmopolitan thinkers",
+      "excerpt": "There is a tradition of cosmopolitanism, and if we had time we could study this tradition, which comes to us from, on the one hand, Greek th",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380200839"
+    }
+  ],
+  "updatedAt": "2026-10-21T13:31:56.747Z"
 }
