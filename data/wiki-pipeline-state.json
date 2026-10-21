@@ -6986,10 +6986,10 @@
       "checkedAt": "2026-10-21T03:12:44.281Z"
     },
     "1827032": {
-      "status": "DRAFTED",
-      "reason": "draft durably saved before validation",
+      "status": "NEEDS_REVIEW",
+      "reason": "editorial: C1-C2:page-2:length-or-sentence",
       "revisionId": 1377646042,
-      "checkedAt": "2026-10-21T18:09:21.529Z"
+      "checkedAt": "2026-10-21T18:09:27.117Z"
     },
     "1858051": {
       "status": "RETRY_LATER",
@@ -9866,7 +9866,7 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-10-21T18:09:21.531Z",
+  "updatedAt": "2026-10-21T18:09:27.118Z",
   "dailyUsage": {
     "day": "2026-10-21",
     "calls": 26,
