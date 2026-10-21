@@ -2,9 +2,154 @@
   "pageId": 1858051,
   "title": "Plague of Athens",
   "topic": "Health",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1376295871,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376295871",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-21T13:49:31.300Z"
+  "reason": "1 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Myrtis reconstruction.jpg",
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/6/63/Myrtis_reconstruction.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "fileTitle": "File:Myrtis reconstruction.jpg",
+        "caption": "Α reconstructed appearance of Myrtis, an 11-year-old girl who died during the plague of Athens and whose skeleton was found in the Kerameikos mass grave, National Archaeological Museum of Athens",
+        "alt": "",
+        "description": "Myrtis' reconstructed appearance, National Archaeological Museum of Athens",
+        "date": "2010-09-25",
+        "section": "Care for the sick and dead",
+        "position": 0,
+        "provenance": {
+          "credit": "Tilemahos Efthimiadis",
+          "license": "CC BY-SA 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Myrtis_reconstruction.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Plague_of_Athens",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376295871",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Chifflart Périclès au lit de mort de son fils.JPG"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "0e239f83c372170ae5dbdff28b7011aca060cb512e30625b282fe671d3958462",
+      "heading": "Lead",
+      "excerpt": "The Plague of Athens (Ancient Greek: Λοιμὸς τῶν Ἀθηνῶν, Loimos tôn Athênôn) was an epidemic that devastated the city-state of Athens in anci",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376295871"
+    },
+    {
+      "id": "P2",
+      "hash": "04a7d29eac4a97af84a8f92d0b0c453a6ec7e739dba26223cb02d8a0aa36dc79",
+      "heading": "Lead",
+      "excerpt": "The war, along with the plague, had lasting effects on Athenian society. Short-term, there was civil disorder, and violations of usual funer",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376295871"
+    },
+    {
+      "id": "P3",
+      "hash": "ead9351a4979e6d0863453684fd507450a5b21e7db4c22db20f2dcd3288dc9b5",
+      "heading": "Lead",
+      "excerpt": "The plague returned in 429, and a third time in the winter of 427/426 BC. Thucydides left a detailed account of the plague's symptoms and ep",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376295871"
+    },
+    {
+      "id": "P4",
+      "hash": "011bc647b2e9521c2d6bc2240e95553fc2b50163dd0317d683335834a9a6cd9d",
+      "heading": "Background",
+      "excerpt": "Sparta and its allies, except for Corinth, were almost exclusively land-based powers, able to summon large land armies that were very nearly",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376295871"
+    },
+    {
+      "id": "P5",
+      "hash": "25d1d4e8b4a90ae18b151dfb864d8469dd7951d86622e3c67640bc425f76a591",
+      "heading": "Background",
+      "excerpt": "In his History of the Peloponnesian War, the historian Thucydides, who was present and contracted the disease himself and survived, describe",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376295871"
+    },
+    {
+      "id": "P6",
+      "hash": "c5d8fc45b68eb9a9bbaee865819fff46093a8d35cb43744a0972e1b356cacd60",
+      "heading": "Epidemiology",
+      "excerpt": "There was severe overcrowding due to the ongoing war. During this time, refugees from the Peloponnesian War had immigrated within the Long W",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376295871"
+    },
+    {
+      "id": "P7",
+      "hash": "44596bdc0a1bd97cab801ff322cec1b78ea6d1d7643cb7ea25433681de919a73",
+      "heading": "Social implications",
+      "excerpt": "Accounts of the Athenian plague graphically describe the social consequences of an epidemic. Thucydides describes a disappearance of social ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376295871"
+    },
+    {
+      "id": "P8",
+      "hash": "b5836ad47797340e25bd7b3ecc1bf71bb1e0b74f7175cf349f4e0b74e93ec27e",
+      "heading": "Fear of the law",
+      "excerpt": "Thucydides states that people ceased fearing the law since they felt they were already living under a death sentence. Likewise, people start",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376295871"
+    },
+    {
+      "id": "P9",
+      "hash": "d941c314875632baa0154b81d93e87e99cbc6b4f2b1bbedd106b0467dc6c65eb",
+      "heading": "Care for the sick and dead",
+      "excerpt": "Thucydides also describes violations of social norms motivated by the sheer contagiousness of the illness. For instance, he says that those ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376295871"
+    },
+    {
+      "id": "P10",
+      "hash": "d3e9bb15561d93fee75b648d3ae9d3593a493b0d8004a56b14b0f3546514fb46",
+      "heading": "Religious strife",
+      "excerpt": "The plague also caused religious uncertainty and doubt. Thucydides wrote that since the disease struck without regard to a person's piety to",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376295871"
+    },
+    {
+      "id": "P11",
+      "hash": "9c16869d960b254f416cc2749848f7f0e97b599fce10ccc8197ed385925f89e0",
+      "heading": "Aftermath",
+      "excerpt": "The plague was an unforeseen event that resulted in one of the largest recorded losses of life in ancient Greece as well as a breakdown of A",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376295871"
+    },
+    {
+      "id": "P12",
+      "hash": "c4aa4f9018e48fc896dc35991b3406fe3b4e90167705ea11055b5b9440bc73cc",
+      "heading": "Symptoms",
+      "excerpt": "Thucydides left a detailed account of what victims of the plague experienced, in order to \"describe what it was like, and set down the sympt",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376295871"
+    },
+    {
+      "id": "P13",
+      "hash": "3f6f31c6d4de6408722df060f8f0e9f9252f05d159263ec7592d49fbca5a86f8",
+      "heading": "Possible causes",
+      "excerpt": "Historians have long tried to identify the disease behind the Plague of Athens. The disease has traditionally been considered an outbreak of",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376295871"
+    },
+    {
+      "id": "P14",
+      "hash": "f32bb92f01f9eaeb66ae3bc096f80cdddc8a7b82e281719b701c63db7b70c1df",
+      "heading": "Typhus",
+      "excerpt": "In January 1999, the University of Maryland devoted their fifth annual medical conference, dedicated to notorious case histories, to the Pla",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376295871"
+    },
+    {
+      "id": "P15",
+      "hash": "aa4c267dd014d5edd4f9b2216ada517c7cae30c3d62aa8b90a01b59993c25db8",
+      "heading": "DNA analysis",
+      "excerpt": "A 2005 DNA study of dental pulp from teeth recovered from an ancient Greek burial pit, led by orthodontist Dr. Manolis Papagrigorakis of the",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376295871"
+    },
+    {
+      "id": "P16",
+      "hash": "45e3f69fb8050fa4a731232f9ba40e655128d9ac1635f0cf8dfea07aedf727b6",
+      "heading": "Viral hemorrhagic fever",
+      "excerpt": "Thucydides' narrative pointedly refers to increased risk among caregivers, more typical of the person-to-person contact spread of viral hemo",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376295871"
+    }
+  ],
+  "updatedAt": "2026-10-21T13:49:37.065Z"
 }
