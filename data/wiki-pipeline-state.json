@@ -8444,10 +8444,10 @@
       "checkedAt": "2026-10-21T07:33:01.621Z"
     },
     "42132949": {
-      "status": "FETCHED",
-      "reason": "pinned-source-ready",
+      "status": "EVIDENCE_READY",
+      "reason": "15 rights-verified embedded images",
       "revisionId": 1379616230,
-      "checkedAt": "2026-10-21T07:40:56.792Z"
+      "checkedAt": "2026-10-21T07:40:58.792Z"
     },
     "42333900": {
       "status": "PENDING",
@@ -9866,7 +9866,7 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-10-21T07:40:56.799Z",
+  "updatedAt": "2026-10-21T07:40:58.793Z",
   "dailyUsage": {
     "day": "2026-10-21",
     "calls": 4,
