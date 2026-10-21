@@ -2,9 +2,292 @@
   "pageId": 42962805,
   "title": "Conservation and restoration of plastic objects",
   "topic": "Culture",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1351820607,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1351820607",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-21T22:32:05.691Z"
+  "reason": "5 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:MUOVI Kaimu.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/18/MUOVI_Kaimu.jpg/960px-MUOVI_Kaimu.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:MUOVI Kaimu.jpg",
+        "caption": "A variety of plastic objects conserved in a museum (Finland)",
+        "alt": "",
+        "description": "Muovi Kainuun Museon näyttely 29.9. –29.12.2019",
+        "date": "2019-12-30 07:48:35",
+        "section": "",
+        "position": 0,
+        "provenance": {
+          "credit": "JarkkoTK",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:MUOVI_Kaimu.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Conservation_and_restoration_of_plastic_objects",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1351820607",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Plastic Recycling Code 01 PET.svg"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Erasers&Plasticizer.JPG",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d5/Erasers%26Plasticizer.JPG/960px-Erasers%26Plasticizer.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Erasers&Plasticizer.JPG",
+        "caption": "Over several years, plasticizers in a soft vinyl eraser have migrated to partially dissolve a plastic pen cap.",
+        "alt": "",
+        "description": "The eraser sat forgotten in a box in the basement for several years. (no exposure to heat!) The contained in the eraser dissolved the plastic tube lying on it to such an extent that it slowly deformed as if it had melted.",
+        "date": "2011-07-28",
+        "section": "Deterioration",
+        "position": 2,
+        "provenance": {
+          "credit": "StromBer",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Erasers%26Plasticizer.JPG",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Conservation_and_restoration_of_plastic_objects",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1351820607",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Plastic lamp cord - brittle after 50 yrs.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/48/Plastic_lamp_cord_-_brittle_after_50_yrs.jpg/960px-Plastic_lamp_cord_-_brittle_after_50_yrs.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Plastic lamp cord - brittle after 50 yrs.jpg",
+        "caption": "Loss of plasticizers over 50 years caused embrittlement of electrical lampcord.",
+        "alt": "",
+        "description": "Loss of plasticizers due to diffusion and evaporation eventually leads to the hardening of the plastic insulation, to the point that the slightest flexing causes the plastic to crumble apart.",
+        "date": "2011-06-25",
+        "section": "Deterioration",
+        "position": 3,
+        "provenance": {
+          "credit": "Dale Mahalko",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Plastic_lamp_cord_-_brittle_after_50_yrs.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Conservation_and_restoration_of_plastic_objects",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1351820607",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Plastique récent moins de 5 ans) mais dégradé UV altitude pyrénnées.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0e/Plastique_r%C3%A9cent_moins_de_5_ans%29_mais_d%C3%A9grad%C3%A9_UV_altitude_pyr%C3%A9nn%C3%A9es.jpg/960px-Plastique_r%C3%A9cent_moins_de_5_ans%29_mais_d%C3%A9grad%C3%A9_UV_altitude_pyr%C3%A9nn%C3%A9es.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Plastique récent moins de 5 ans) mais dégradé UV altitude pyrénnées.jpg",
+        "caption": "Outdoors UV radiation effects on vulnerable PVC conduit",
+        "alt": "",
+        "description": "Air corrosion of a recent plastic sheath (PVC) exposed to air, wind, ultraviolet solar radiation and bad weather (Pyrenees)",
+        "date": "2015-08-07 13:27:37",
+        "section": "Deterioration",
+        "position": 4,
+        "provenance": {
+          "credit": "Lamiot",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Plastique_r%C3%A9cent_moins_de_5_ans)_mais_d%C3%A9grad%C3%A9_UV_altitude_pyr%C3%A9nn%C3%A9es.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Conservation_and_restoration_of_plastic_objects",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1351820607",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:EYE Film Institute Netherlands - Nitrate film decay - 3.JPG",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/ce/EYE_Film_Institute_Netherlands_-_Nitrate_film_decay_-_3.JPG/960px-EYE_Film_Institute_Netherlands_-_Nitrate_film_decay_-_3.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:EYE Film Institute Netherlands - Nitrate film decay - 3.JPG",
+        "caption": "Decayed cellulose nitrate film",
+        "alt": "",
+        "description": "Film can with decayed nitrate film, EYE Film Institute Netherlands, Amsterdam.",
+        "date": "2014-12-18 15:10:55",
+        "section": "Deterioration",
+        "position": 5,
+        "provenance": {
+          "credit": "Hansmuller",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:EYE_Film_Institute_Netherlands_-_Nitrate_film_decay_-_3.JPG",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Conservation_and_restoration_of_plastic_objects",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1351820607",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "02910adac227a362d43b16147085ee88a9e914a8f44350571a3d546159cfc40a",
+      "heading": "Lead",
+      "excerpt": "Conservation and restoration of objects made from plastics is work dedicated to the conservation of objects of historical and personal value",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1351820607"
+    },
+    {
+      "id": "P2",
+      "hash": "5976dd9752500af9590497a9589085cfe87416b7a75bc25de8d463727fbb05e7",
+      "heading": "Background",
+      "excerpt": "Within museum collections, there are a variety of artworks and artifacts that are composed of organic plastic materials, either synthetic or",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1351820607"
+    },
+    {
+      "id": "P3",
+      "hash": "8d23126c219a1a9b4924ceefe91855449ec289fb4b3d47ac5a23eb8c737f3b38",
+      "heading": "Identification of plastics",
+      "excerpt": "Identification of plastic components of a collection is extremely important, because some plastics may release a harmful toxin or gas that c",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1351820607"
+    },
+    {
+      "id": "P4",
+      "hash": "2f6e06bd32773b123852bb713567ce3da971facf9a644884249d6838a7b1afef",
+      "heading": "Identification of plastics",
+      "excerpt": "Plastics are identified by various methods, including trade name, trademark, or patent number. Depending on the manufacturer, different chem",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1351820607"
+    },
+    {
+      "id": "P5",
+      "hash": "cda0850b5d4bfcba0d88834c20517b0bfa4b0e76053261e35cbe54de77206003",
+      "heading": "Identification of plastics",
+      "excerpt": "If there are no markings to identify the type of plastic used, it may still be identified by using various types of spectroscopic technology",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1351820607"
+    },
+    {
+      "id": "P6",
+      "hash": "6ab2a240dc144ed33bcee64f08d42248964d79bd65b18a0249f8bc805ff1dcd4",
+      "heading": "Common plastics",
+      "excerpt": "The list below is of chemical compositions that make up common plastics found in museum collections. These are some plastics that may degrad",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1351820607"
+    },
+    {
+      "id": "P7",
+      "hash": "afb0b069db80ea3f52d2c67f607e523609612c9c1aa981c883d380533aac391a",
+      "heading": "Deterioration",
+      "excerpt": "A difficult aspect of plastic deterioration is that one cannot see what types of chemical reactions are occurring in the interior of an obje",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1351820607"
+    },
+    {
+      "id": "P8",
+      "hash": "dff148e0137264a90d30c68d2086dee5d017a49e2427277f7066afac5c54abbd",
+      "heading": "Chemical processes",
+      "excerpt": "Understanding the different types of plastic chemical degradation helps in planning specific measures to protect plastic artifacts. Listed b",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1351820607"
+    },
+    {
+      "id": "P9",
+      "hash": "1387cf967200f04f7a41ecce57884e63c6516861035f40a27f984e39ba293714",
+      "heading": "Preventive care",
+      "excerpt": "A yearly checkup of plastic artifacts can help monitor their condition, as well as the condition of the surrounding objects to verify that t",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1351820607"
+    },
+    {
+      "id": "P10",
+      "hash": "61418bd9378397634d574a23dfc49f72b04afa867d10c386efd0d3d16ce6fa4b",
+      "heading": "Safe handling",
+      "excerpt": "Impermeable safety gloves such as those made of nitrile can help prevent toxins from entering the skin when handling plastic objects. Dust m",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1351820607"
+    },
+    {
+      "id": "P11",
+      "hash": "a3f13c9021239c26c0a353f34f7252bbb534fb22c910b0edb7043b049eabf0c1",
+      "heading": "Storage environment",
+      "excerpt": "Plastics are best stored with a relative humidity level of 50%, at a storage temperature of 18 °C (64 °F), in light-proof enclosures. Becaus",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1351820607"
+    },
+    {
+      "id": "P12",
+      "hash": "a7fa955312ec1a7db4ec10ba6b859424794bb39ed333f6a2d28d493327123520",
+      "heading": "Long-term storage supplies",
+      "excerpt": "Adsorbents such as activated carbon, silica gel, and zeolites are used to absorb gases that are released from plastics. These absorbents can",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1351820607"
+    },
+    {
+      "id": "P13",
+      "hash": "d89444906ad32e4707dbadfef714dbbba1be350f6af564e0626d1957d28bfbb3",
+      "heading": "Conservation",
+      "excerpt": "The process of conservation and restoration of plastics requires an understanding of chemical composition of the material and an appreciatio",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1351820607"
+    },
+    {
+      "id": "P14",
+      "hash": "0035d966412a4ee1d44c6d5fa6bc61f7e63350bf9d4575b38f0b637c27406608",
+      "heading": "Cleaning",
+      "excerpt": "The process of cleaning plastics is done with the use of appropriate solvents, after identifying the polymers that make up the composition o",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1351820607"
+    },
+    {
+      "id": "P15",
+      "hash": "6edbd1de7fb0ce0b45145e591a3ad1a1cf2d02d67e75e03c35052add3a4ba99e",
+      "heading": "Scratch removal",
+      "excerpt": "Within the field of contemporary art, where the surface finish is part of the artist's intent, the removal of scratches may need to be more ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1351820607"
+    },
+    {
+      "id": "P16",
+      "hash": "606aeb4f695bc1c2023a65d7cca4e4e69b53f7402bca03a32e56ee463c78aed7",
+      "heading": "Filling",
+      "excerpt": "Fillings may be needed if an object has suffered considerable loss of material due to accidental damage or chemical deterioration. The proce",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1351820607"
+    },
+    {
+      "id": "P17",
+      "hash": "4c8a015677f9692e7c6eac719e62293eb3cbeebdc932cf6538ce77e1b64d658b",
+      "heading": "Identification of plastics",
+      "excerpt": "The Museum of Design in Plastics (MoDiP), has created a guide to plastic objects that includes the manufacturing dates and manufacturing pro",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1351820607"
+    },
+    {
+      "id": "P18",
+      "hash": "56fb935cb7699ab21feac5e3c5e6948f9234615d730f73709ef37c1c052924f6",
+      "heading": "Identification of plastics",
+      "excerpt": "In 2022, the Getty Conservation Institute published a book on the properties of commonly used plastics and elastomers, including 56 \"fact sh",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1351820607"
+    },
+    {
+      "id": "P19",
+      "hash": "e7b1e0840b5a9fcae773b20f24d3340ad347085daa76a4e6066d461ecbc64477",
+      "heading": "Common plastics",
+      "excerpt": "The following are \"malignant\" plastic materials that will age rapidly if left untreated, and which have a higher risk of off-gassing or rele",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1351820607"
+    },
+    {
+      "id": "P20",
+      "hash": "0d491fe5b343eb1c63905864ad6db045de0ba71b0a504812e613a6f33d32a2c5",
+      "heading": "Common plastics",
+      "excerpt": "Environmental concerns have driven recent changes in plastic manufacturing towards biodegradable plastics, with a potentially negative effec",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1351820607"
+    },
+    {
+      "id": "P21",
+      "hash": "1a134869d17bc8afe498b507f55cce28bb715acbccd21aa9f22839bd6285ec2f",
+      "heading": "Chemical processes",
+      "excerpt": "Plastics composed of cellulose acetate, when exposed to water, often will give off a smell of vinegar (vinegar syndrome); the surface will h",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1351820607"
+    },
+    {
+      "id": "P22",
+      "hash": "45bc853acdede33d6e3395702fe538bd8d22fa7495923c74d53507a1ed6bd2e9",
+      "heading": "Storage environment",
+      "excerpt": "Monitoring plastics in their storage environment is done by tracking their status and condition by using log entries on spreadsheets or in a",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1351820607"
+    }
+  ],
+  "updatedAt": "2026-10-21T22:32:11.611Z"
 }
