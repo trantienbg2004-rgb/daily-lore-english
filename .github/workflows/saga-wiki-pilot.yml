@@ -63,5 +63,6 @@ jobs:
           path: |
             data/wiki-pipeline-state.json
             public/wiki-reader/manifest.json
+            reports/saga-wiki-local/
           if-no-files-found: ignore
           retention-days: 7

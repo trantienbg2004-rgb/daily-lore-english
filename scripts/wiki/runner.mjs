@@ -10,6 +10,16 @@ import {appendWikiStories,makeWikiStory,readWikiCatalog} from './catalog.mjs'
 
 const fileFor=base=>path.join(base,'data','wiki-pipeline-state.json')
 const safeText=value=>String(value||'').replace(/[\r\n]+/g,' ').slice(0,140)
+export async function writeWikiPending(base,{candidate,source,response,reason}){
+ const dir=path.join(base,'reports','saga-wiki-local')
+ await fs.mkdir(dir,{recursive:true})
+ const file=path.join(dir,`${source.pageId}-${source.sourceRevisionId}.json`)
+ const pending={pageId:source.pageId,revisionId:source.sourceRevisionId,sourceUrl:source.sourceRevisionUrl,
+  topic:candidate.topic,reason:safeText(reason),draft:response.result,evidence:response.evidence,
+  usage:response.usage,createdAt:new Date().toISOString()}
+ await fs.writeFile(file,JSON.stringify(pending,null,2)+'\n',{flag:'wx'})
+ return file
+}
 export async function readWikiState(base){
  try{
   const state=JSON.parse(await fs.readFile(fileFor(base),'utf8'))
@@ -57,7 +67,7 @@ export async function discoverWikiQueue({base,topics=WIKI_TOPICS,maxPerTopic=30,
 export async function runWikiBatch({base,maxCalls=0,maxCandidates=5,pageId=null,apiKey='',freeTierConfirmed=false,
  readCatalog=readWikiCatalog,readState=readWikiState,writeState=writeWikiState,
  fetchPage=fetchWikipediaPage,verifyFigures=verifyPageFigures,generate=generateWikiDraft,
- assign=assignWikipediaPhotos,makeStory=makeWikiStory,append=appendWikiStories}={}){
+ assign=assignWikipediaPhotos,makeStory=makeWikiStory,append=appendWikiStories,savePending=writeWikiPending}={}){
  if(!base||!Number.isSafeInteger(maxCalls)||maxCalls<0||maxCalls>20||
   !Number.isSafeInteger(maxCandidates)||maxCandidates<1||maxCandidates>100)throw Error('Unsafe Wiki batch limits')
  if(maxCalls>0&&(!freeTierConfirmed||!apiKey))throw Error('Free-tier confirmation and key required before Gemini calls')
@@ -87,9 +97,17 @@ export async function runWikiBatch({base,maxCalls=0,maxCandidates=5,pageId=null,
    if(maxCalls===0){await mark('source-verified',`${photos.length} rights-verified embedded images; editorial call pending`,source.sourceRevisionId);continue}
    const response=await generate({source,topic:candidate.topic,apiKey,freeTierConfirmed,budget})
    if(response.usage)for(const key of ['input','output','total'])stats.usage[key]+=Number(response.usage[key]||0)
-   if(!response.validation.accepted){await mark('review','editorial: '+response.validation.errors.join(','),source.sourceRevisionId);stats.review++;continue}
+   if(!response.validation.accepted){
+    try{await savePending(base,{candidate,source,response,reason:'editorial: '+response.validation.errors.join(',')})}
+    catch{throw new GeminiWikiPause('Pending editorial draft could not be preserved')}
+    await mark('review','editorial: '+response.validation.errors.join(','),source.sourceRevisionId);stats.review++;continue
+   }
    const selected=assign(rights,source,response.result.variants,{usedUrls})
-   if(selected.status!=='VERIFIED'){await mark('review',selected.reason,source.sourceRevisionId);stats.review++;continue}
+   if(selected.status!=='VERIFIED'){
+    try{await savePending(base,{candidate,source,response,reason:selected.reason})}
+    catch{throw new GeminiWikiPause('Pending editorial draft could not be preserved')}
+    await mark('review',selected.reason,source.sourceRevisionId);stats.review++;continue
+   }
    const story=makeStory({source,topic:candidate.topic,draft:{variants:selected.levelVariants},photos:selected.photos,evidence:response.evidence})
    await append(base,[story]);existingIds.add(source.pageId)
    for(const page of story.pages)if(page.image)usedUrls.add(page.image)

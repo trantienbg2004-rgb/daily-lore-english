@@ -1,6 +1,9 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
-import {discoverWikiQueue,runWikiBatch} from '../wiki/runner.mjs'
+import fs from 'node:fs/promises'
+import os from 'node:os'
+import path from 'node:path'
+import {discoverWikiQueue,runWikiBatch,writeWikiPending} from '../wiki/runner.mjs'
 import {discoverWikiCandidates} from '../wiki/discovery.mjs'
 
 const candidate={pageId:42,title:'Silk Road',topic:'Economy',score:80}
@@ -64,6 +67,21 @@ test('valid candidate publishes once within a two-call editorial budget',async()
   makeStory:()=>({sourcePageId:42,pages:[{image:'https://thumb.wikimedia.org/map'}]}),append:async()=>{appendCalls++}})
  assert.equal(calls,1);assert.equal(appendCalls,1);assert.equal(result.published,1)
  assert.equal(result.usage.total,300);assert.equal(stored.outcomes[42].status,'published')
+})
+
+test('rejected model prose is kept in an ignored review report, without source text or a key',async()=>{
+ const base=await fs.mkdtemp(path.join(os.tmpdir(),'saga-wiki-pending-'))
+ try{
+  const saved=await writeWikiPending(base,{candidate,source:{...source,sourceRevisionUrl:'https://en.wikipedia.org/w/index.php?oldid=123'},
+   response:{result:{variants:{'A1-A2':{pages:[{text:'A draft worth reviewing.'}]}}},
+    evidence:[{id:'P1',hash:'a'.repeat(64),excerpt:'source excerpt'}],usage:{total:100}},
+   reason:'unsupported-number-1914'})
+  const report=JSON.parse(await fs.readFile(saved,'utf8'))
+  assert.match(saved,/saga-wiki-local/)
+  assert.equal(report.draft.variants['A1-A2'].pages[0].text,'A draft worth reviewing.')
+  assert.equal(report.reason,'unsupported-number-1914')
+  assert.equal(JSON.stringify(report).includes('apiKey'),false)
+ }finally{await fs.rm(base,{recursive:true,force:true})}
 })
 
 test('one remaining editorial call is reserved rather than spent on an unauditable story',async()=>{
