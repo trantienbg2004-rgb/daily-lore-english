@@ -48,7 +48,7 @@ export function decideWikipediaPhoto(candidate,{source,levelVariants,usedUrls=ne
  const archived=explicitYears.length&&year(source.sourceTitle).length&&!year(source.sourceTitle).some(value=>explicitYears.includes(value))
  const caption=String(photo.caption||photo.alt).replace(/\s+/g,' ').trim()
  return {...candidate,status:'VERIFIED',reason:'source-embedded-item-rights-and-page-subject',pageIndex:choice.pageIndex,matchScore:choice.score,
-  photo:{...photo,caption:caption.slice(0,140),archive:!!archived,
+  photo:{...photo,caption,archive:!!archived,
    provenance:{...photo.provenance,sourceImageUrl:source.sourceUrl,sourceRevisionUrl:source.sourceRevisionUrl,
     evidence:{sourcePageId:source.pageId,sourceRevisionId:source.sourceRevisionId,fileTitle:photo.fileTitle,
      articleCaption:photo.caption,pageIndex:choice.pageIndex}}}}

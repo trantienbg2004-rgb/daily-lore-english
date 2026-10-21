@@ -3,7 +3,7 @@ import assert from 'node:assert/strict'
 import fs from 'node:fs/promises'
 import os from 'node:os'
 import path from 'node:path'
-import {makeWikiStory,validateWikiStory,appendWikiStories,readWikiCatalog,promoteWikiCatalog} from '../wiki/catalog.mjs'
+import {makeWikiStory,validateWikiStory,appendWikiStories,readWikiCatalog,promoteWikiCatalog,restoreWikiSourceCaptions} from '../wiki/catalog.mjs'
 
 function story(id){
  const source={pageId:id,sourceTitle:'Silk Road '+id,sourceUrl:`https://en.wikipedia.org/wiki/Silk_Road_${id}`,
@@ -60,6 +60,27 @@ test('versioned Wiki index commits only validated new articles and leaves news e
   duplicateImage.levelVariants['A1-A2'].pages[0].image=duplicateImage.pages[0].image
   duplicateImage.levelVariants['C1-C2'].pages[0].image=duplicateImage.pages[0].image
   await assert.rejects(appendWikiStories(base,[duplicateImage]),/already belongs/)
+ }finally{await fs.rm(base,{recursive:true,force:true})}
+})
+
+test('source caption correction creates a new shard and leaves the published shard intact',async()=>{
+ const base=await fs.mkdtemp(path.join(os.tmpdir(),'saga-wiki-caption-'))
+ try{
+  const original=story(42),full='Silk Road routes across Asia and Europe, as shown in the source article.'
+  for(const pages of [original.pages,...Object.values(original.levelVariants).map(level=>level.pages)]){
+   pages[0].caption='Silk Road rou'
+   pages[0].imageProvenance.evidence.articleCaption=full
+  }
+  await appendWikiStories(base,[original])
+  const oldShard=await fs.readFile(path.join(base,'public','wiki-reader','0000.json'),'utf8')
+  const corrected=await restoreWikiSourceCaptions(base,42)
+  assert.equal(corrected.restored,4)
+  assert.equal(corrected.shard,'0001')
+  assert.equal(await fs.readFile(path.join(base,'public','wiki-reader','0000.json'),'utf8'),oldShard)
+  const catalog=await readWikiCatalog(base)
+  assert.equal(catalog.stories[0].pages[0].caption,full)
+  assert.equal(catalog.entries[0].shard,'0001')
+  assert.equal((await restoreWikiSourceCaptions(base,42)).restored,0)
  }finally{await fs.rm(base,{recursive:true,force:true})}
 })
 
