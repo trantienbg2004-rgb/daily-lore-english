@@ -2,9 +2,123 @@
   "pageId": 627246,
   "title": "History of alternative medicine",
   "topic": "Health",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1374127706,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374127706",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-21T01:41:25.885Z"
+  "reason": "1 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Oct1899PHJDiseaseCannotExist.jpg"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:William Hogarth - Marriage à la Mode, Plate 3, (The Scene with the Quack) - Google Art Project.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5c/William_Hogarth_-_Marriage_%C3%A0_la_Mode%2C_Plate_3%2C_%28The_Scene_with_the_Quack%29_-_Google_Art_Project.jpg/960px-William_Hogarth_-_Marriage_%C3%A0_la_Mode%2C_Plate_3%2C_%28The_Scene_with_the_Quack%29_-_Google_Art_Project.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:William Hogarth - Marriage à la Mode, Plate 3, (The Scene with the Quack) - Google Art Project.jpg",
+        "caption": "\"Marriage à la Mode, Plate 3, (The Scene with the Quack)\" by William Hogarth, 1745",
+        "alt": "",
+        "description": "",
+        "date": "1745date QS:P571,+1745-00-00T00:00:00Z/9date QS:P571,+1745-00-00T00:00:00Z/9",
+        "section": "Before the \"fringe\"",
+        "position": 1,
+        "provenance": {
+          "credit": "William Hogarth",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:William_Hogarth_-_Marriage_%C3%A0_la_Mode,_Plate_3,_(The_Scene_with_the_Quack)_-_Google_Art_Project.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/History_of_alternative_medicine",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374127706",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Franz Anton Mesmer.jpg"
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Magnetiseur.JPG"
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:John Elliotson 1843 Punch Cartoon Mesmerism.jpg"
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Robert Hinckley The First Operation Under Ether 1881-96.JPG"
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Tom Harkin and junk food.jpg"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "0fb6bfafec84fc9dc05af3bbc20e7cadf9c3ec6d7826484b45aa067b91c5723e",
+      "heading": "Lead",
+      "excerpt": "The history of alternative medicine covers the history of a group of diverse medical practices that were collectively promoted as \"alternati",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374127706"
+    },
+    {
+      "id": "P2",
+      "hash": "4636d03d3277087d8f7624b40321c85ced7caa290ea5cfbca0e8f62d045df178",
+      "heading": "Lead",
+      "excerpt": "Much of what is now categorized as alternative medicine was developed as independent, complete medical systems, was developed long before bi",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374127706"
+    },
+    {
+      "id": "P3",
+      "hash": "db002baf5b7517d652cc8de120ad378a79c9e4a56d2072a623af29eca3b0d34c",
+      "heading": "Lead",
+      "excerpt": "Until the 1970s, western practitioners that were not part of the medical establishment were referred to \"irregular practitioners\", and were ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374127706"
+    },
+    {
+      "id": "P4",
+      "hash": "1a01c5ba977391e54a62937b920230212a740e89830d48ad2cd1b1e8ec499562",
+      "heading": "Alternative medicine",
+      "excerpt": "The concept of alternative medicine is problematic as it cannot exist autonomously as an object of study in its own right but must always be",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374127706"
+    },
+    {
+      "id": "P5",
+      "hash": "e77b1b1481764c1cd10ae861225c493c16b96c9004f1743f997e0dcefbc7814a",
+      "heading": "Before the \"fringe\"",
+      "excerpt": "Prior to the nineteenth century European medical training and practice was ostensibly self-regulated through a variety of antique corporatio",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374127706"
+    },
+    {
+      "id": "P6",
+      "hash": "627d35feead0eedc6b149544b43a942ccc2a9e3c811714f074ce5fe51f733518",
+      "heading": "Medical professionalisation",
+      "excerpt": "In the late eighteenth and nineteenth centuries regular and irregular medical practitioners became more clearly differentiated throughout mu",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374127706"
+    },
+    {
+      "id": "P7",
+      "hash": "582d7207c397e29d8c36f34dd0a5649bc0febbde4f73196192801a023ebb1c17",
+      "heading": "Nineteenth-century non-conventional medicine",
+      "excerpt": "From the late eighteenth century and more robustly from the mid-nineteenth century a number of non-conventional medical systems developed in",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374127706"
+    },
+    {
+      "id": "P8",
+      "hash": "6a8d7c34c63be55e249bd045b0acb2bc50ec5b04cd69dbdc9c7ca5efd983a1e5",
+      "heading": "Mesmerism",
+      "excerpt": "Mesmerism is the medical system proposed in the late eighteenth century by the Viennese-trained physician, Franz Anton Mesmer (1734–1815), f",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374127706"
+    }
+  ],
+  "updatedAt": "2026-10-21T01:41:27.942Z"
 }
