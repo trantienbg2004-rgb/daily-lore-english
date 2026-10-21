@@ -2,9 +2,254 @@
   "pageId": 6531362,
   "title": "Battle of the Sexes (tennis)",
   "topic": "Sports",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1379214914,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379214914",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-21T07:40:52.989Z"
+  "reason": "4 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Billie Jean King and Bobby Riggs 1973.jpg",
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/e/e0/Billie_Jean_King_and_Bobby_Riggs_1973.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "fileTitle": "File:Billie Jean King and Bobby Riggs 1973.jpg",
+        "caption": "Billie Jean King & Bobby Riggs in 1973",
+        "alt": "",
+        "description": "1973 American Tennis Champions Billy Jean King & Bobby Riggs Press Photo",
+        "date": "1973",
+        "section": "",
+        "position": 0,
+        "provenance": {
+          "credit": "Unknown authorUnknown author",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Billie_Jean_King_and_Bobby_Riggs_1973.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Battle_of_the_Sexes_(tennis)",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379214914",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Battle of the Sexes (Tennis).jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/13/Battle_of_the_Sexes_%28Tennis%29.jpg/960px-Battle_of_the_Sexes_%28Tennis%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Battle of the Sexes (Tennis).jpg",
+        "caption": "Paraphernalia from the Billie Jean King vs. Bobby Riggs match",
+        "alt": "",
+        "description": "From the \"Battle of the Sexes\" tennis match featuring Billie Jean King and Bobby Riggs at the Astrodome in Houston, Texas.",
+        "date": "2004-10-14 13:38:15",
+        "section": "1973: Riggs vs. King",
+        "position": 1,
+        "provenance": {
+          "credit": "dbking",
+          "license": "CC BY 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Battle_of_the_Sexes_(Tennis).jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Battle_of_the_Sexes_(tennis)",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379214914",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Fig4-Billie-Jean-Kings-dress-by-Ted-Tinling-1973.jpg"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Billie Jean King carried onto court.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e1/Billie_Jean_King_carried_onto_court.jpg/960px-Billie_Jean_King_carried_onto_court.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Billie Jean King carried onto court.jpg",
+        "caption": "Billie Jean King being carried onto the court on a litter before the match",
+        "alt": "",
+        "description": "Billie Jean King is carried on a litter onto the tennis court at the Houston Astrodome before the 1973 Battle of the Sexes against Bobby Riggs",
+        "date": "1973-09-20",
+        "section": "1973: Riggs vs. King",
+        "position": 3,
+        "provenance": {
+          "credit": "Associated Press, photographer uncredited",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Billie_Jean_King_carried_onto_court.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Battle_of_the_Sexes_(tennis)",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379214914",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Billie Awards (37807974).jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1f/Billie_Awards_%2837807974%29.jpg/960px-Billie_Awards_%2837807974%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Billie Awards (37807974).jpg",
+        "caption": "Portrait of Billie Jean King and the final match score over Bobby Riggs",
+        "alt": "",
+        "description": "Portrait of Billie Jean King and the final match score over Bobby Riggs",
+        "date": "2004-10-14",
+        "section": "Effects on women's tennis",
+        "position": 4,
+        "provenance": {
+          "credit": "dbking",
+          "license": "CC BY 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Billie_Awards_(37807974).jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Battle_of_the_Sexes_(tennis)",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379214914",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "bc6d22453ff1da54f160d31e465f74ce02861a19f48012c973849307539db649",
+      "heading": "Lead",
+      "excerpt": "In tennis, \"Battle of the Sexes\" describes various exhibition matches played between a man and a woman, or a doubles match between two men a",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379214914"
+    },
+    {
+      "id": "P2",
+      "hash": "7dfff53d7d94f678f355ca3a152481c1d3458b3d1ce772b0283c77df792e267c",
+      "heading": "Lead",
+      "excerpt": "Two other matches commonly referred to as a \"battle of the sexes\" include one held four months earlier in 1973 between Riggs and Margaret Co",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379214914"
+    },
+    {
+      "id": "P3",
+      "hash": "3a58fc3997b45e4a2a177f008edbf8a4ea590869e48d5144e0bc1e90ede84c38",
+      "heading": "Lead",
+      "excerpt": "At least eight other exhibition matches have been played between notable male and female tennis players starting in 1888, though only some o",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379214914"
+    },
+    {
+      "id": "P4",
+      "hash": "b05a748e60427067527ec949a7fe016c1de8ec7bfa9f1ff5468a3ce4bcfb339a",
+      "heading": "1973: Riggs vs. Court",
+      "excerpt": "Riggs had been one of the world's top male tennis players in the 1940s; he was ranked year-end number one three times and had won six major ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379214914"
+    },
+    {
+      "id": "P5",
+      "hash": "35c78921ec02bb0a106beced831fea58d221606d90ad1fd9d4983cf647e44e1f",
+      "heading": "1973: Riggs vs. Court",
+      "excerpt": "Riggs first challenged Billie Jean King, but when she declined, Margaret Court stepped in, accepting the guarantee of $20,000 for the match ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379214914"
+    },
+    {
+      "id": "P6",
+      "hash": "ece9136026ed3ae9093677f04cb678bd16aa5a43fa99847770644fdd3bf51230",
+      "heading": "1973: Riggs vs. King",
+      "excerpt": "Suddenly in the national limelight following his win over Court, Riggs taunted all female tennis players, prompting King to accept a lucrati",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379214914"
+    },
+    {
+      "id": "P7",
+      "hash": "d55c72a6646de066d98384de4c792b05ae58f4b56a8b67564251b794966f8cde",
+      "heading": "ABC telecast",
+      "excerpt": "The broadcasters on the ABC telecast were Howard Cosell, Rosemary Casals and Gene Scott who replaced Kramer the night prior to the event. Ki",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379214914"
+    },
+    {
+      "id": "P8",
+      "hash": "745712ad88f26552c4d275a8e062a1fde0ac0757942b2e992c4727b01990ad26",
+      "heading": "Allegations of match-throwing",
+      "excerpt": "There was some speculation that Riggs had deliberately lost the match. In 2013, National Public Radio aired an interview with Don Van Natta ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379214914"
+    },
+    {
+      "id": "P9",
+      "hash": "d684f1f9654d1d3161f249e32486245bf4eedcb1319bc1fda4c24a96f59f4fb0",
+      "heading": "The effects of age",
+      "excerpt": "Martina Navratilova in 2023 stated that the reason the 55-year-old Riggs lost to the 29-year-old King was simply because of age. Navratilova",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379214914"
+    },
+    {
+      "id": "P10",
+      "hash": "c22e4f756bd658d15427932ee9f37c2f03681861bb64020706e56e918cbdc665",
+      "heading": "Effects on women's tennis",
+      "excerpt": "King viewed the match as more than a publicity stunt, feeling that beating Riggs was important both for women's tennis and for the women's l",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379214914"
+    },
+    {
+      "id": "P11",
+      "hash": "d7edf84ae9c0de08fdc31d98e9c31c204db85b6f5402d9792ef49e6ea3e324ea",
+      "heading": "In popular culture",
+      "excerpt": "A few months after their match, King and Riggs were guest stars in \"The Pig Who Came to Dinner\" episode of The Odd Couple, which originally ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379214914"
+    },
+    {
+      "id": "P12",
+      "hash": "02211c15f56ff710a9c3f157b203810d2f67fb8fa5075b1fba98c4907890e2e1",
+      "heading": "1992: Navratilova vs. Connors",
+      "excerpt": "Nineteen years later, a third \"Battle of the Sexes\" match, entitled Battle of Champions, was played in 1992. Outdoors at Caesars Palace in P",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379214914"
+    },
+    {
+      "id": "P13",
+      "hash": "16a99059a22bf3ba8ce9070aca9804c8f961d1813d996f995b9b71c628640ec3",
+      "heading": "1888: Ernest Renshaw vs. Lottie Dod",
+      "excerpt": "In 1888, the Wimbledon's men's champion, Ernest Renshaw, played a handicap match against the ladies' champion, Lottie Dod, where Dod was sta",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379214914"
+    },
+    {
+      "id": "P14",
+      "hash": "8c636fd3774eadec29f0cd523c2e562d6c671df52804849b6496dd940a13b5ca",
+      "heading": "1922: Bill Tilden vs. Suzanne Lenglen",
+      "excerpt": "On May 27, 1921, Bill Tilden and Suzanne Lenglen played a match at Saint Cloud, France. It was only a single set, but Tilden prevailed 6–0. ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379214914"
+    },
+    {
+      "id": "P15",
+      "hash": "5714709dce354043780109bdefe4bc8791a41920f89a1b45b3e394974b3ec24e",
+      "heading": "1928–1933: Helen Wills vs. Bill Johnston, Edward Chandler, Phil Neer, and Elmer Griffin",
+      "excerpt": "In early 1928, Helen Wills played a series of matches against men. In losing, she took one set each from Bill Johnston and Edward Chandler, ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379214914"
+    },
+    {
+      "id": "P16",
+      "hash": "23f2995181664ef410a051cc68230482e38f3b21c327b95dcf1450ed601ac8b3",
+      "heading": "1936: Dorothy Round vs. H.W. \"Bunny\" Austin",
+      "excerpt": "The 1934 Wimbledon singles champion Dorothy Round played H.W. \"Bunny\" Austin (Wimbledon singles finalist in 1932) on July 31, 1936, at Jesmo",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379214914"
+    },
+    {
+      "id": "P17",
+      "hash": "dc545ad600cc69bbef7507edca2d0bd45e9ec7184557c71b7c5cadcaca047d25",
+      "heading": "1939: Alice Marble vs. Cyril Kemp",
+      "excerpt": "Alice Marble (USA), one of the best players of her day, came to Dublin in 1939 to compete in the Irish Championships at Fitzwilliam Lawn Ten",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379214914"
+    },
+    {
+      "id": "P18",
+      "hash": "4b6cb750f6a96fed7e2087ea87df1032950cb6923d63041d352523aebf159e2d",
+      "heading": "1975: ATP Tour",
+      "excerpt": "In 1975, Ion Tiriac defeated Abigail Maynard 6–0, 6–0 in their round one match at the then coed men's pro circuit (later renamed ATP Tour) o",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379214914"
+    },
+    {
+      "id": "P19",
+      "hash": "d0913c9991872bb43d399a6620cd2908f9a180be96d21503561e2cac48bc6ba3",
+      "heading": "1975: Challenge of the Sexes",
+      "excerpt": "On October 26, 1975, a Challenge of the Sexes event was held in Mission Viejo, California, televised on CBS. It involved male and female ath",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379214914"
+    },
+    {
+      "id": "P20",
+      "hash": "ee825e1706fadc0ea87a9137477fd68a2696f4614b42e942d39cc49c27c083e6",
+      "heading": "1985: Battle of the Sexes: The Challenge! (doubles)",
+      "excerpt": "On August 23, 1985, at age 67, Riggs returned to the tennis spotlight when he partnered with Vitas Gerulaitis, at the time a top-20 player, ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379214914"
+    }
+  ],
+  "updatedAt": "2026-10-21T07:40:54.507Z"
 }
