@@ -6092,10 +6092,10 @@
       "checkedAt": "2026-10-21T13:02:29.858Z"
     },
     "27006": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
+      "revisionId": 1375854739,
+      "checkedAt": "2026-10-21T13:50:25.429Z"
     },
     "27045": {
       "status": "PENDING",
@@ -9866,7 +9866,7 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-10-21T13:50:18.931Z",
+  "updatedAt": "2026-10-21T13:50:25.434Z",
   "dailyUsage": {
     "day": "2026-10-21",
     "calls": 23,
