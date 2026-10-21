@@ -5978,10 +5978,10 @@
   ],
   "outcomes": {
     "12": {
-      "status": "EVIDENCE_READY",
-      "reason": "12 rights-verified embedded images",
+      "status": "RETRY_LATER",
+      "reason": "editorial call budget exhausted",
       "revisionId": 1381080958,
-      "checkedAt": "2026-10-21T13:50:49.292Z"
+      "checkedAt": "2026-10-21T13:50:54.469Z"
     },
     "2024": {
       "status": "EVIDENCE_READY",
@@ -9866,7 +9866,7 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-10-21T13:50:49.293Z",
+  "updatedAt": "2026-10-21T13:50:54.471Z",
   "dailyUsage": {
     "day": "2026-10-21",
     "calls": 23,
