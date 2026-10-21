@@ -535,7 +535,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378625637"
     }
   ],
-  "updatedAt": "2026-10-21T22:30:16.903Z",
+  "updatedAt": "2026-10-21T22:30:34.961Z",
   "draft": {
     "outline": [
       "Origins and early royal building",
@@ -596,7 +596,7 @@
             ]
           },
           {
-            "text": "While monastic origins reach back to the mid-10th century, the first major church on the site was commissioned by King Edward the Confessor in the 1040s. In 1245, Henry III initiated a massive rebuilding campaign in the French Gothic style to create a fitting shrine for Edward.",
+            "text": "While monastic origins reach back to the mid-10th century, the first major church on the site was commissioned by King Edward the Confessor in the 1040s. Henry III initiated a massive rebuilding campaign in the French Gothic style to create a fitting shrine for Edward.",
             "evidenceIds": [
               "P2",
               "P6",
@@ -619,7 +619,7 @@
             ]
           },
           {
-            "text": "In the 21st century, plans for a modern corona structure above the central lantern were proposed but ultimately abandoned in 2010. Today, housing over 3,300 burials including monarchs, poets, and scientists, the site is recognized globally as a UNESCO World Heritage Site.",
+            "text": "Plans for a modern corona structure above the central lantern were proposed but ultimately abandoned in 2010. Today, housing over 3,300 burials including monarchs, poets, and scientists, the site is recognized globally as a UNESCO World Heritage Site.",
             "evidenceIds": [
               "P2",
               "P4",
@@ -653,7 +653,7 @@
             ]
           },
           {
-            "text": "Architectural development persisted across epochs, with Christopher Wren and Nicholas Hawksmoor directing late-period Gothic-Baroque restorations and constructing the western towers. Early 20th-century political unrest saw suffragette agitation, culminating in a 1914 explosion that fractured the ancient Coronation Chair.",
+            "text": "Architectural development persisted across epochs, with Christopher Wren and Nicholas Hawksmoor directing late-period Gothic-Baroque restorations and constructing the western towers. Early 20th-century political unrest saw suffragette agitation, culminating in a bomb explosion that fractured the ancient Coronation Chair.",
             "evidenceIds": [
               "P11",
               "P12",
@@ -672,11 +672,11 @@
       }
     }
   },
-  "repairAttempts": 0,
+  "repairAttempts": 1,
   "lastUsage": {
-    "input": 2877,
-    "output": 1541,
-    "total": 4418
+    "input": 3467,
+    "output": 963,
+    "total": 4430
   },
   "validation": null
 }
