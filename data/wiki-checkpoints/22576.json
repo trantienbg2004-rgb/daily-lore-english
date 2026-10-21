@@ -2,9 +2,509 @@
   "pageId": 22576,
   "title": "Olympic Games",
   "topic": "Sports",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1379072110,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379072110",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-21T01:40:00.308Z"
+  "reason": "15 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Olympia-stadion.jpg"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Baron Pierre de Coubertin.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ef/Baron_Pierre_de_Coubertin.jpg/960px-Baron_Pierre_de_Coubertin.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Baron Pierre de Coubertin.jpg",
+        "caption": "Pierre de Coubertin, co-founder of the International Olympic Committee and its second president",
+        "alt": "",
+        "description": "Baron Pierre de Coubertin, half-length portrait, standing, facing front",
+        "date": "2015",
+        "section": "Forerunners",
+        "position": 1,
+        "provenance": {
+          "credit": "Photograph from Bain News Service.",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Baron_Pierre_de_Coubertin.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Olympic_Games",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379072110",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Notis - Gim Nas Stik - 1834-08-16.png"
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Evangelos Zappas.jpg"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:1906 Intercalated Olympic Games Opening Ceremony.jpg",
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/8/86/1906_Intercalated_Olympic_Games_Opening_Ceremony.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "fileTitle": "File:1906 Intercalated Olympic Games Opening Ceremony.jpg",
+        "caption": "The opening ceremony of the 1896 Summer Olympics in Panathinaiko Stadium in Athens",
+        "alt": "",
+        "description": "The opening ceremony of the 1906 Intercalated Olympic Games.",
+        "date": "6 April 1896date QS:P571,+1896-04-06T00:00:00Z/11date QS:P571,+1896-04-06T00:00:00Z/11",
+        "section": "1896 Games",
+        "position": 4,
+        "provenance": {
+          "credit": "Unknown authorUnknown author Unknown authorUnknown author",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:1906_Intercalated_Olympic_Games_Opening_Ceremony.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Olympic_Games",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379072110",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Francis Field 1904.jpg"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Bundesarchiv Bild 102-05472, St. Moritz, Winterolympiade.jpg",
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/1/11/Bundesarchiv_Bild_102-05472%2C_St._Moritz%2C_Winterolympiade.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "fileTitle": "File:Bundesarchiv Bild 102-05472, St. Moritz, Winterolympiade.jpg",
+        "caption": "An ice hockey game during the 1928 Winter Olympics at St. Moritz",
+        "alt": "",
+        "description": "For documentary purposes the German Federal Archive often retained the original image captions, which may be erroneous, biased, obsolete or politically extreme. Die große Winter-Olympiade in St. Moritz! Neueste Aufnahmen von unserem nach St. Moritz entsandten Sonder-Bild-Berichterstatter. Olympische Eishockeyspiele in St. Moritz! Die canadische und schwedische Eishockeymannschaft nach dem großen Siege der Canadier, den voraussichtlichen Olympia-Siegern. For documentary purposes the German Federal Archive often retained the original image captio",
+        "date": "February 1928date QS:P571,+1928-02-00T00:00:00Z/10date QS:P571,+1928-02-00T00:00:00Z/10",
+        "section": "Winter Games",
+        "position": 6,
+        "provenance": {
+          "credit": "Unknown authorUnknown author Unknown authorUnknown author",
+          "license": "CC BY-SA 3.0 de",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/de/deed.en",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Bundesarchiv_Bild_102-05472,_St._Moritz,_Winterolympiade.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Olympic_Games",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379072110",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:031164 - Tokyo opening ceremony -7 - 1a - adjusted.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d7/031164_-_Tokyo_opening_ceremony_-7_-_1a_-_adjusted.jpg/960px-031164_-_Tokyo_opening_ceremony_-7_-_1a_-_adjusted.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:031164 - Tokyo opening ceremony -7 - 1a - adjusted.jpg",
+        "caption": "1964 Summer Paralympics in Tokyo",
+        "alt": "",
+        "description": "Members of the Australian Team march at the Opening Ceremony of the Tokyo 1964 Paralympic Summer Games",
+        "date": "1964-11-03",
+        "section": "Paralympics",
+        "position": 7,
+        "provenance": {
+          "credit": "John Sherwell",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:031164_-_Tokyo_opening_ceremony_-7_-_1a_-_adjusted.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Olympic_Games",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379072110",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Olympic Final 2000 (1936 cartoon).jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/38/Olympic_Final_2000_%281936_cartoon%29.jpg/960px-Olympic_Final_2000_%281936_cartoon%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Olympic Final 2000 (1936 cartoon).jpg",
+        "caption": "A Berliner Illustrirte Zeitung cartoon published during the 1936 Olympics in Berlin envisions the Olympics in 2000, when spectators would be replaced by television and radio, with the cheers of spectators broadcast through loudspeakers. Almost a century after the prediction, spectators still watch the Games in person and by globally-broadcast television coverage.",
+        "alt": "",
+        "description": "A humorous cartoon from the 1936 Berlin Olympics envisages the year 2000. Television technology has progressed to the point where spectators can watch events at home while radio, applying \"wireless\" technology, carries their promptings and applause to loudspeakers in the stadium. It appeared in the Olympia-Sonderheft of the Berliner Illustrierte Zeitung.",
+        "date": "2012-06-05",
+        "section": "Effect of television",
+        "position": 8,
+        "provenance": {
+          "credit": "cartoonist for the Berliner Illustrierte Zeitung",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Olympic_Final_2000_(1936_cartoon).jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Olympic_Games",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379072110",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Drones durante a abertura das Olimpíadas de Tóquio.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7c/Drones_durante_a_abertura_das_Olimp%C3%ADadas_de_T%C3%B3quio.jpg/960px-Drones_durante_a_abertura_das_Olimp%C3%ADadas_de_T%C3%B3quio.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Drones durante a abertura das Olimpíadas de Tóquio.jpg",
+        "caption": "Opening ceremony of the 2020 Summer Olympics in Tokyo",
+        "alt": "",
+        "description": "Dezenas de drones formam o Globo Terrestre no Estádio Olímpico de Tóquio.",
+        "date": "2021-07-23",
+        "section": "Opening ceremony",
+        "position": 10,
+        "provenance": {
+          "credit": "Breno Barros",
+          "license": "CC BY 3.0 br",
+          "licenseUrl": "https://creativecommons.org/licenses/by/3.0/br/deed.en",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Drones_durante_a_abertura_das_Olimp%C3%ADadas_de_T%C3%B3quio.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Olympic_Games",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379072110",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Birdsclosing.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/87/Birdsclosing.jpg/960px-Birdsclosing.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Birdsclosing.jpg",
+        "caption": "Athletes gather in the stadium during the closing ceremony of the 2008 Summer Olympics in Beijing",
+        "alt": "",
+        "description": "The Bird's nest, Beijing, during the closing ceremony of the 2008 olympic games, august 24th",
+        "date": "2008-08-24",
+        "section": "Closing ceremony",
+        "position": 11,
+        "provenance": {
+          "credit": "Jmex60",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Birdsclosing.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Olympic_Games",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379072110",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:CyclingTeamPursuitBeijing2008.jpg"
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Nagano 1998-Russia vs Czech Republic.jpg"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:1956 Summer Olympics (Melbourne) boycotting countries (blue).png",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f2/1956_Summer_Olympics_%28Melbourne%29_boycotting_countries_%28blue%29.png/960px-1956_Summer_Olympics_%28Melbourne%29_boycotting_countries_%28blue%29.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:1956 Summer Olympics (Melbourne) boycotting countries (blue).png",
+        "caption": "Countries that boycotted the 1956 Summer Olympics (shaded blue)",
+        "alt": "",
+        "description": "1956 Summer Olympics boycotting countries (blue color on the map)",
+        "date": "2017-02-06",
+        "section": "Boycotts",
+        "position": 14,
+        "provenance": {
+          "credit": "Paasikivi",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:1956_Summer_Olympics_(Melbourne)_boycotting_countries_(blue).png",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Olympic_Games",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379072110",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:1964 Summer Olympics (Tokyo) boycotting countries (red).png"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:1976 Summer Olympics (Montréal) boycotting countries (blue).png",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/ca/1976_Summer_Olympics_%28Montr%C3%A9al%29_boycotting_countries_%28blue%29.png/960px-1976_Summer_Olympics_%28Montr%C3%A9al%29_boycotting_countries_%28blue%29.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:1976 Summer Olympics (Montréal) boycotting countries (blue).png",
+        "caption": "Countries that boycotted the 1976 Summer Olympics (shaded blue)",
+        "alt": "",
+        "description": "1976 Summer Olympics boycotting countries (blue color on the map)",
+        "date": "2016-07-30",
+        "section": "Boycotts",
+        "position": 16,
+        "provenance": {
+          "credit": "Paasikivi",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:1976_Summer_Olympics_(Montr%C3%A9al)_boycotting_countries_(blue).png",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Olympic_Games",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379072110",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:1980 Summer Olympics (Moscow) boycotting countries (blue).svg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6c/1980_Summer_Olympics_%28Moscow%29_boycotting_countries_%28blue%29.svg/960px-1980_Summer_Olympics_%28Moscow%29_boycotting_countries_%28blue%29.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:1980 Summer Olympics (Moscow) boycotting countries (blue).svg",
+        "caption": "Countries that boycotted the 1980 Summer Olympics (shaded blue)",
+        "alt": "",
+        "description": "This is a map of nations that boycotted the 1980 Summer Olympics. This is a SVG version of File:1980 Summer Olympics (Moscow) boycotting countries (blue).png. This version also has Antarctica. Based on data from w:List of Olympic Games boycotts (the countries are also defined in this image's data in the same order they are in that article)",
+        "date": "2020-08-04",
+        "section": "Boycotts",
+        "position": 17,
+        "provenance": {
+          "credit": "SVG version by TheAwesomeHwyh, original PNG by Paasikivi, based on a blank map by NuclearVacuum",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:1980_Summer_Olympics_(Moscow)_boycotting_countries_(blue).svg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Olympic_Games",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379072110",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:1984 Summer Olympics (Los Angeles) boycotting countries (blue).png",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9f/1984_Summer_Olympics_%28Los_Angeles%29_boycotting_countries_%28blue%29.png/960px-1984_Summer_Olympics_%28Los_Angeles%29_boycotting_countries_%28blue%29.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:1984 Summer Olympics (Los Angeles) boycotting countries (blue).png",
+        "caption": "Countries that boycotted the 1984 Summer Olympics (shaded blue)",
+        "alt": "",
+        "description": "1984 Summer Olympics boycotting countries (blue color on the map)",
+        "date": "2016-07-30",
+        "section": "Boycotts",
+        "position": 18,
+        "provenance": {
+          "credit": "Paasikivi",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:1984_Summer_Olympics_(Los_Angeles)_boycotting_countries_(blue).png",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Olympic_Games",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379072110",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Bundesarchiv Bild 183-G00630, Sommerolympiade, Siegerehrung Weitsprung.jpg",
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/5/55/Bundesarchiv_Bild_183-G00630%2C_Sommerolympiade%2C_Siegerehrung_Weitsprung.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "fileTitle": "File:Bundesarchiv Bild 183-G00630, Sommerolympiade, Siegerehrung Weitsprung.jpg",
+        "caption": "Jesse Owens on the podium after winning the long jump at the 1936 Summer Olympics, where he won four gold medals; in his 1980 obituary, The New York Times called him \"perhaps the greatest and most famous athlete in track and field history\".",
+        "alt": "",
+        "description": "For documentary purposes the German Federal Archive often retained the original image captions, which may be erroneous, biased, obsolete or politically extreme. Sommerolympiade, Siegerehrung Weitsprung Olympische Spiele 1936 in Berlin, Siegerehrung im Weitsprung: Mitte Owens (USA) 1., links: Tajima (Japan) 3., rechts Long (Deutschland) 2., Zentralbild/Hoffmann For documentary purposes the German Federal Archive often retained the original image captions, which may be erroneous, biased, obsolete or politically extreme. Sommerolympiade, Siegerehr",
+        "date": "August 1936date QS:P571,+1936-08-00T00:00:00Z/10date QS:P571,+1936-08-00T00:00:00Z/10",
+        "section": "Politics",
+        "position": 19,
+        "provenance": {
+          "credit": "Unknown authorUnknown author Unknown authorUnknown author",
+          "license": "CC BY-SA 3.0 de",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/de/deed.en",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Bundesarchiv_Bild_183-G00630,_Sommerolympiade,_Siegerehrung_Weitsprung.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Olympic_Games",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379072110",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:John Carlos, Tommie Smith, Peter Norman 1968cr.jpg",
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/3/3e/John_Carlos%2C_Tommie_Smith%2C_Peter_Norman_1968cr.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "fileTitle": "File:John Carlos, Tommie Smith, Peter Norman 1968cr.jpg",
+        "caption": "Gold medallist Tommie Smith (centre) and bronze medallist John Carlos (right) showing the raised fist on the podium after the 200 m race at the 1968 Summer Olympics; both are wearing Olympic Project for Human Rights badges. Peter Norman (silver medallist, left) from Australia is also wearing an OPHR badge, in solidarity with Smith and Carlos.",
+        "alt": "",
+        "description": "American sprinters Tommie Smith and John Carlos, along with Australian Peter Norman, during the award ceremony of the 200 m race at the Mexican Olympic games. During the awards ceremony, Smith (center) and Carlos protested against racial discrimination: they went barefoot on the podium and listened to their anthem bowing their heads and raising a fist with a black glove. Mexico City, Mexico, 1968.",
+        "date": "1968-10-16",
+        "section": "Politics",
+        "position": 20,
+        "provenance": {
+          "credit": "Angelo Cozzi (Mondadori Publishers)",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:John_Carlos,_Tommie_Smith,_Peter_Norman_1968cr.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Olympic_Games",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379072110",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Marathon Hicks1904.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/66/Marathon_Hicks1904.jpg/960px-Marathon_Hicks1904.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Marathon Hicks1904.jpg",
+        "caption": "Thomas Hicks running the marathon at the 1904 Olympics in St. Louis",
+        "alt": "",
+        "description": "Tom Hicks, Marathon Olympic Champion and his supporters at the marathon, St. Louis Olympic Games, 1904",
+        "date": "1904",
+        "section": "Use of performance-enhancing drugs",
+        "position": 21,
+        "provenance": {
+          "credit": "Unknown authorUnknown author",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Marathon_Hicks1904.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Olympic_Games",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379072110",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Charlotte Cooper.jpg"
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Paavo Nurmi (Paris 1924).jpg"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Summer Olympics.svg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/62/Summer_Olympics.svg/960px-Summer_Olympics.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Summer Olympics.svg",
+        "caption": "Map of Summer Olympics locations with countries that have hosted one Summer Olympics shaded in green and countries that have hosted two or more shaded in blue",
+        "alt": "",
+        "description": "Please see the legend for more details.",
+        "date": "2009-09",
+        "section": "Host nations and cities",
+        "position": 24,
+        "provenance": {
+          "credit": "NuclearVacuum",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Summer_Olympics.svg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Olympic_Games",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379072110",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "d62fb290adbb767b648c913abc48a8402f57be03f54ff4b531c39b4f76942cad",
+      "heading": "Lead",
+      "excerpt": "The modern Olympic Games (Olympics; French: Jeux olympiques) are a series of international multi-sport events. Considered among the biggest ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379072110"
+    },
+    {
+      "id": "P2",
+      "hash": "44acb39c96828724a8e02f96d62d2f0b76b536a778fe042860e0bab3cac256dc",
+      "heading": "Lead",
+      "excerpt": "Their creation was inspired by the ancient Olympic Games, held in Olympia, Greece, from the 8th century BC to the 4th century AD. Baron Pier",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379072110"
+    },
+    {
+      "id": "P3",
+      "hash": "03aa9a0cc32c9561a38aa1975c321ef25a246b682f317b7842baaaf7de42fd78",
+      "heading": "Lead",
+      "excerpt": "The evolution of the Olympic Movement during the 20th and 21st centuries has resulted in numerous changes to the Olympic Games. Some of thes",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379072110"
+    },
+    {
+      "id": "P4",
+      "hash": "4a9e3ffbf1285e3bb7a6f9a5735c6da0dac6c414ccdac997171d713ee924e40b",
+      "heading": "Lead",
+      "excerpt": "The Olympic Movement consists of international sports federations (IFs), National Olympic Committees (NOCs), and organising committees for e",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379072110"
+    },
+    {
+      "id": "P5",
+      "hash": "59284e6d6a89a0ab123fe4a47d20fb70a41bf7897799a905dbab8fb3e1134302",
+      "heading": "Lead",
+      "excerpt": "Since the 1996 Summer Olympics, The Games have grown to the point that nearly every nation is now represented; colonies and overseas territo",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379072110"
+    },
+    {
+      "id": "P6",
+      "hash": "ea8f0d80d73acb268b982ad6805ad9ae2d95ec4339224ae7d07ca509c103b340",
+      "heading": "Ancient Olympics",
+      "excerpt": "The \"Ancient Olympic Games\" (Ancient Greek: τὰ Ὀλύμπια, ta Olympia) were religious and athletic festivals held every four years at the sanct",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379072110"
+    },
+    {
+      "id": "P7",
+      "hash": "c36ce10b2cfbbf59ef3cf7336deabb4feefc84dbf2e3b4ebdd2f00df4887c2dc",
+      "heading": "Forerunners",
+      "excerpt": "Various uses of the term \"Olympic\" to describe athletic events in the modern era have been documented since the 17th century. The first such",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379072110"
+    },
+    {
+      "id": "P8",
+      "hash": "542ac506f7a4a86c1a322bcedc7cb55887ab361631135bffb571ab9cf7207ff1",
+      "heading": "Revival",
+      "excerpt": "Greek interest in reviving the Olympic Games began with the Greek War of Independence from the Ottoman Empire in 1821. It was first proposed",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379072110"
+    },
+    {
+      "id": "P9",
+      "hash": "5ab2c1fc952a92740e5ae3fdc25dff3895529ea55c3844d82212611d4388d078",
+      "heading": "1896 Games",
+      "excerpt": "The first Games held under the auspices of the IOC were hosted in the Panathenaic Stadium in Athens in 1896. The Games brought together 14 n",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379072110"
+    },
+    {
+      "id": "P10",
+      "hash": "1f3c51c50f776a76db2e913e6585d568347793d42e9cee9589af5e41aee37ec1",
+      "heading": "Changes and adaptations",
+      "excerpt": "After the success of the 1896 Games, the Olympics entered a period of stagnation which threatened its survival. The Olympic Games held at th",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379072110"
+    },
+    {
+      "id": "P11",
+      "hash": "a6123955157caca8eab17e79e6077848e0934cc837ae0d6bfd8819cd6f190def",
+      "heading": "Winter Games",
+      "excerpt": "The Winter Olympics was created to feature snow and ice sports that were logistically impossible to hold during the Summer Games. Figure ska",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379072110"
+    },
+    {
+      "id": "P12",
+      "hash": "a3199648dca2bab8034403eb708fe8e28aa7ae2cb984223b538583521e926c2e",
+      "heading": "Paralympics",
+      "excerpt": "In 1948, Sir Ludwig Guttmann, determined to promote the rehabilitation of soldiers after World War II, organised a multi-sport event between",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379072110"
+    },
+    {
+      "id": "P13",
+      "hash": "068ad2f7de4d1ed5f79918c14ed74949163413f936d733347c93ed133e55f742",
+      "heading": "Youth Games",
+      "excerpt": "In 2010, the Olympic Games were complemented by the Youth Games, which give athletes between the ages of 14 and 18 the chance to compete. Th",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379072110"
+    }
+  ],
+  "updatedAt": "2026-10-21T01:40:01.890Z"
 }
