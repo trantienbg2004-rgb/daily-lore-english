@@ -2,9 +2,215 @@
   "pageId": 332902,
   "title": "Olympiad",
   "topic": "Sports",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1371958101,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371958101",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-21T13:02:42.766Z"
+  "reason": "2 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Top down aerial of the Stadium in Olympia, Greece (51223830819).jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8d/Top_down_aerial_of_the_Stadium_in_Olympia%2C_Greece_%2851223830819%29.jpg/960px-Top_down_aerial_of_the_Stadium_in_Olympia%2C_Greece_%2851223830819%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Top down aerial of the Stadium in Olympia, Greece (51223830819).jpg",
+        "caption": "Stadium at ancient Olympia",
+        "alt": "",
+        "description": "Greece",
+        "date": "2020-10-22 15:48",
+        "section": "",
+        "position": 0,
+        "provenance": {
+          "credit": "dronepicr",
+          "license": "CC BY 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Top_down_aerial_of_the_Stadium_in_Olympia,_Greece_(51223830819).jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Olympiad",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371958101",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Relief greek ballplayers 500bC.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b8/Relief_greek_ballplayers_500bC.jpg/960px-Relief_greek_ballplayers_500bC.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Relief greek ballplayers 500bC.jpg",
+        "caption": "A relief of the Greek Olympiad",
+        "alt": "",
+        "description": "Cast a relief with two teams at the ball game. The player on the left edge of the picture throws the ball, the team on the right is ready to defend. Original Athens, National Museum. approx. 500 BC Photographed by me in Glyptothek Munich",
+        "date": "28 January 2006 (according to Exif data)",
+        "section": "Examples of Ancient Olympiad dates",
+        "position": 1,
+        "provenance": {
+          "credit": "No machine-readable author provided. MatthiasKabel assumed (based on copyright claims).",
+          "license": "CC BY 2.5",
+          "licenseUrl": "https://creativecommons.org/licenses/by/2.5",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Relief_greek_ballplayers_500bC.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Olympiad",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371958101",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "9917a45d879e98919c54b13d2643f055038fd3b58bd6239b5c321f10b653cec0",
+      "heading": "Lead",
+      "excerpt": "Although the ancient Olympics were established during Greece's Archaic Era, it was not until Hippias that a consistent list was established ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371958101"
+    },
+    {
+      "id": "P2",
+      "hash": "d2a4163db62d2d560f03f75a5e62df56c6d16caa0cb9759809d1d405264c6ca1",
+      "heading": "Lead",
+      "excerpt": "Thus, for N less than 195, Olympiad N is reckoned as having started in the year 780 − ( 4 × N ) {\\displaystyle 780-(4\\times N)} BC and ended",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371958101"
+    },
+    {
+      "id": "P3",
+      "hash": "206aa8a77ed89f545445aa60b695e88fb0a8489b500e1b28b88c90639f33454d",
+      "heading": "Lead",
+      "excerpt": "In reference to the modern Olympics, their Olympiads are four year periods beginning on 1 January of the year of the Summer Games. Thus, the",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371958101"
+    },
+    {
+      "id": "P4",
+      "hash": "50acc4afee72f157fe84706dd1abe0d2495959a899285b558040246d4a41ae6c",
+      "heading": "Ancient Olympics",
+      "excerpt": "Each olympiad started with the holding of the games, which originally began on the first or second full moon after the summer solstice. Afte",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371958101"
+    },
+    {
+      "id": "P5",
+      "hash": "7b5d3881005ef3b3d8e7d15b8954c82f79c477579a8c624af76371393271154c",
+      "heading": "Historians",
+      "excerpt": "The sophist Hippias was the first writer to compile a comprehensive list of the Olympic victors (ολυμπιονίκες, olympioníkes). Although his O",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371958101"
+    },
+    {
+      "id": "P6",
+      "hash": "2ebf2c869d49d7ab2c1930bca0c15e6d2a532f9b64f62eaea15bd23acc7559b5",
+      "heading": "Anolympiad",
+      "excerpt": "Though the games were held without interruption, on more than one occasion they were held by others than the Eleians. The Eleians declared s",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371958101"
+    },
+    {
+      "id": "P7",
+      "hash": "d30702add70b109f2cd6de98bfe8f3082b7ebbd83ad9e6bad9e9e7a34ae45b46",
+      "heading": "End of the era",
+      "excerpt": "During the 3rd century, records of the games are so scanty that historians are not certain whether after 261 they were still held every four",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371958101"
+    },
+    {
+      "id": "P8",
+      "hash": "676ef8867eb7d59ec6d79e0bb58e12a58f7c3b1629c71d12e21117241d3d036a",
+      "heading": "Start and end",
+      "excerpt": "The Summer Olympics are more correctly referred to as the Games of the Olympiad. The first poster to announce the games using this term was ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371958101"
+    },
+    {
+      "id": "P9",
+      "hash": "5da359d4348171d289ef0d4db29bccb2ef051b2191ab15e6614833c589376f7d",
+      "heading": "Quadrennium",
+      "excerpt": "Some Olympic Committees often use the term quadrennium, which they claim refers to the same four-year period. However, it indicates these qu",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371958101"
+    },
+    {
+      "id": "P10",
+      "hash": "c902f5f544af0deebaa1699d114e6f6d73e1d787a3305e5948195e3fba81bc2f",
+      "heading": "Cultural programmes",
+      "excerpt": "Pierre de Coubertin, who founded the modern Olympic Games, proposed including the arts in the Olympics, returning to the ancient tradition i",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371958101"
+    },
+    {
+      "id": "P11",
+      "hash": "2778f02b37b3d752ce9fd5ec3fc65821fbcc0fed2de62db2000e10df3df38ca7",
+      "heading": "Other uses",
+      "excerpt": "The English term is still often used popularly to indicate the games themselves, a usage that is uncommon in ancient Greek (as an Olympiad i",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371958101"
+    },
+    {
+      "id": "P12",
+      "hash": "8bb9978b9386f7439633d8ae4871a586b7e9de8ee823eb1f65c2b01c2bcf4f83",
+      "heading": "Historians",
+      "excerpt": "In the 2nd century, Phlegon of Tralles summarized the events of each Olympiad in a book called Olympiads; fragments survive in the work of t",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371958101"
+    },
+    {
+      "id": "P13",
+      "hash": "8c3de7966dc75be0cdb483ec0f3fc2e4092b6fdbdae27c536cb36dd15bac4a61",
+      "heading": "End of the era",
+      "excerpt": "Although the end of the games has sometimes been linked to the anti-pagan laws of Theodosius I (391–392) or Theodosius II (435), this is no ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371958101"
+    },
+    {
+      "id": "P14",
+      "hash": "f938209334007faff41c110e57c2b971f3bebe7ab14e6a57b1ddab8909fa97b7",
+      "heading": "Start and end",
+      "excerpt": "The modern Olympiad is a period of four years: the first Olympiad started on 1 January 1896, and an Olympiad starts on 1 January of the year",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371958101"
+    },
+    {
+      "id": "P15",
+      "hash": "4b4a1dfca3d390df72675c99b601dcf43556c7567f45fde929eee41daa024637",
+      "heading": "Start and end",
+      "excerpt": "This means that the count of the Olympiads continues, even if Olympic Games are cancelled: For instance, the regular intervals would have me",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371958101"
+    },
+    {
+      "id": "P16",
+      "hash": "30ce64b1cdd500c9e3a55719619aec8af39678a55731b69b4b7c7bb77e1f7bda",
+      "heading": "Start and end",
+      "excerpt": "Nonetheless, the count of the Olympiads continued: The 1936 Games were those of the XI Olympiad, while the next Summer Games were those of 1",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371958101"
+    },
+    {
+      "id": "P17",
+      "hash": "634219d4fdbe1bdd0e8123570769c4e9208877fa6cf04d0af2973e005ef3839b",
+      "heading": "Start and end",
+      "excerpt": "For example, the first Winter Games, in 1924, are not designated as Winter Games of the VII Olympiad, but as the I Winter Olympic Games. (Th",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371958101"
+    },
+    {
+      "id": "P18",
+      "hash": "c4463d3df0f7c06f8d22a99e76753efef30d3261ff52a50891602849d5766715",
+      "heading": "Start and end",
+      "excerpt": "The 1936 Summer Games were the Games of the XI Olympiad. After the 1940 and 1944 Summer Games were canceled due to World War II, the Games r",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371958101"
+    },
+    {
+      "id": "P19",
+      "hash": "6686dcaa80c30d69471ec117d6e3bf5cb635e8729db7fa66fbfd9db4ae365b2b",
+      "heading": "Start and end",
+      "excerpt": "The 2020 Summer Games were the Games of the XXXII Olympiad. On 24 March 2020, due to the COVID-19 pandemic, it was postponed to 2021 rather ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371958101"
+    },
+    {
+      "id": "P20",
+      "hash": "eae2fbe9dc84557b0cb2da4632541917c18bd4d90bd94d720fec663401a4fda3",
+      "heading": "Start and end",
+      "excerpt": "Some media people have from time to time referred to a particular (e.g., the nth) Winter Olympics as \"the Games of the nth Winter Olympiad\",",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371958101"
+    },
+    {
+      "id": "P21",
+      "hash": "706c9f73e2f065a6fd6308679be53a55f61d2be2725caafdb64c461ae9ef53b3",
+      "heading": "Start and end",
+      "excerpt": "However, the IOC does not seem to make an official distinction between Olympiads for the summer and winter games, and such usage, particular",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371958101"
+    },
+    {
+      "id": "P22",
+      "hash": "5b396a9043c08261bc87f3af026605f2ccfd3b38ca8dca97a9ccce050f315b58",
+      "heading": "Cultural programmes",
+      "excerpt": "In 1952 the Organising Committee of the Olympic Games (OCOG) of the Helsinki games decided to drop the arts programme. However From 1954 to ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371958101"
+    }
+  ],
+  "updatedAt": "2026-10-21T13:02:44.060Z"
 }
