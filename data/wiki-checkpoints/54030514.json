@@ -2,9 +2,311 @@
   "pageId": 54030514,
   "title": "Election audit",
   "topic": "Politics",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1373314851,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373314851",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-21T07:39:46.964Z"
+  "reason": "6 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Boss Tweed, Nast.jpg",
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/e/e2/Boss_Tweed%2C_Nast.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "fileTitle": "File:Boss Tweed, Nast.jpg",
+        "caption": "Boss Tweed: As long as I count the votes, what are you going to do about it?",
+        "alt": "",
+        "description": "Caricature of Boss Tweed and election fraud by en:Thomas Nast. Includes three quotes: In counting there is strength That's what's the matter As long as I count the Votes, what are you going to do about it? Say?",
+        "date": "1871-10-07",
+        "section": "",
+        "position": 0,
+        "provenance": {
+          "credit": "Thomas Nast",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Boss_Tweed,_Nast.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Election_audit",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373314851",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:State audits.png",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/ca/State_audits.png/960px-State_audits.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:State audits.png",
+        "caption": "Most States Check Computer Counts Only on a Few Contests",
+        "alt": "",
+        "description": "Map compares US states on the number of election contests they audit, if any; whether by hand or machine; and whether the audit changes results, or is just informational. Information about audits is drawn from https://en.wikipedia.org/wiki/Election_audit, which is primarily based on https://www.verifiedvoting.org/auditlaws/ Information about public availability of ballots and ballot images is from 2020 lawyers' summaries for Reporters' Committee for Freedom of the Press: https://www.rcfp.org/open-government-sections/i-election-records/ and 2008",
+        "date": "2019-12-25",
+        "section": "Overview",
+        "position": 1,
+        "provenance": {
+          "credit": "Numbersinstitute",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:State_audits.png",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Election_audit",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373314851",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Colorado 2017 elections.png",
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/9/90/Colorado_2017_elections.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "fileTitle": "File:Colorado 2017 elections.png",
+        "caption": "Colorado elections in 2017, sample sizes needed for risk-limiting audits",
+        "alt": "",
+        "description": "Colorado elections in 2017, sample sizes needed for risk-limiting audits",
+        "date": "2018-04-24",
+        "section": "Risk-limiting audits",
+        "position": 2,
+        "provenance": {
+          "credit": "Numbersinstitute",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Colorado_2017_elections.png",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Election_audit",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373314851",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Ballot-foia.png",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e7/Ballot-foia.png/960px-Ballot-foia.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Ballot-foia.png",
+        "caption": "Ballots or scanned images available to public for independent audits",
+        "alt": "",
+        "description": "This map compiles information from lawyers writing in 2019-2020 for the Reporters Committee for Freedom of the Press (RCFP), a 2007 survey by the National Association of Secretaries of State (NASS), court opinions, and news articles. The table shows information available for each state. The map does not address public access or observation during a recount, since state rules are unclear and variable, and that access is not available to most members of the public. The table has information where available. See other maps for preservation of ball",
+        "date": "2020-07-21",
+        "section": "Ballot scans for 100% audits",
+        "position": 3,
+        "provenance": {
+          "credit": "Numbersinstitute",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Ballot-foia.png",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Election_audit",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373314851",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Keepimages.png",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fc/Keepimages.png/960px-Keepimages.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Keepimages.png",
+        "caption": "Ballot mages saved by election scanners",
+        "alt": "",
+        "description": "Ballot images are digital pictures of the front and back of paper ballots and are automatically created by election scanners, which count votes in the images. Sources: Counties which use Dominion and Clear Ballot equipment: https://verifiedvoting.org/verifier ES&S DS850 central scanner automatically saves images, according FL court case, p.129 \"all digital ballot images get saved to the internal one terabyte hard drive regardless of what selection was made in the EMS system.\" http://votewell.net/fl080720.pdf DS450 and DS950 are similar models, ",
+        "date": "2020-09-17",
+        "section": "Ballot scans for 100% audits",
+        "position": 4,
+        "provenance": {
+          "credit": "Numbersinstitute",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Keepimages.png",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Election_audit",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373314851",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Election Samples.png",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/95/Election_Samples.png/960px-Election_Samples.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Election Samples.png",
+        "caption": "Samples used for election audits",
+        "alt": "",
+        "description": "Number of cases and reliability in samples used for election audits. Some samples are specified as at least 1% (or 3%, 5%) of precincts or voting machines, rounded up to the next whole number of precincts or machines. The sample would typically be hand-counted to find errors made in earlier counts. Other samples are specified as the sample size needed to ensure at least 95% (or 50%) odds that the hand counts will reach one or more precincts where an error is present, given an assumption that 5% of precincts (rounded to the nearest precinct) hav",
+        "date": "2018-04-05",
+        "section": "Other variations",
+        "position": 5,
+        "provenance": {
+          "credit": "Numbersinstitute",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Election_Samples.png",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Election_audit",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373314851",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "e663c35790f8bfc5c40fe71e0c5afe1410c7f60affc2e4efc26b385bd25936bb",
+      "heading": "Lead",
+      "excerpt": "An election audit is any review conducted after polls close for the purpose of determining whether the votes were counted accurately (a resu",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373314851"
+    },
+    {
+      "id": "P2",
+      "hash": "68c7cf7873dbffe122b0a19dd5ee84c1947b77591c0cabd4ba94566c812ad216",
+      "heading": "Lead",
+      "excerpt": "Both results and process audits can be performed between elections for purposes of quality management, but if results audits are to be used ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373314851"
+    },
+    {
+      "id": "P3",
+      "hash": "33b382adbbd63a15e11b64d3b99e2506ac405c100a4bc2c0b235185eac799ee1",
+      "heading": "The need for verification of election results",
+      "excerpt": "In jurisdictions that tabulate election results exclusively with manual counts from paper ballots, or 'hand counts', officials do not need t",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373314851"
+    },
+    {
+      "id": "P4",
+      "hash": "fb5057561c1fb08ad68abf5516232f7f94b954e1cf92cfa187a6abe6a606e536",
+      "heading": "The need for verification of election results",
+      "excerpt": "Within and outside elections, use of computers for decision support comes with certain IT risks. Election-Day electronic miscounts can be ca",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373314851"
+    },
+    {
+      "id": "P5",
+      "hash": "754464f5fdd6d329fa12973ba6ba6617027db99d24137aa35ac3efc9bfe85767",
+      "heading": "The need for verification of election results",
+      "excerpt": "Computer-related risks specific to elections include local officials’ inability to draw upon the level of IT expertise available to managers",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373314851"
+    },
+    {
+      "id": "P6",
+      "hash": "b37362bd5bf7b5f28e0ad34139eac581f32ed577be5b6ec021c5f39b82960508",
+      "heading": "Examples of wrong outcomes found by audits",
+      "excerpt": "In 2012 in Palm Beach County, FL, a routine audit which hand-counted a sample of precincts, changed the outcomes in two Wellington City coun",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373314851"
+    },
+    {
+      "id": "P7",
+      "hash": "44418707b693789855825cea372d4f3921956efd6ca70b58e10eaa3bb84225e9",
+      "heading": "Examples of intrusions into election computers",
+      "excerpt": "Computers which tally votes or compile election results are known to have been hacked in the US in 2014 and 2016, Ukraine in 2014, and South",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373314851"
+    },
+    {
+      "id": "P8",
+      "hash": "e5ea101d9ede17e51061f5fb00c711243f08a8ee8a7e31486536313a493efe2d",
+      "heading": "Audit challenges unique to election results",
+      "excerpt": "Confirming that votes were credited to the correct candidates’ totals might seem to be a relatively uncomplicated task, but election manager",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373314851"
+    },
+    {
+      "id": "P9",
+      "hash": "15bfa7142d04ca000b567c4cc3341b4dd6da2b5e2e8ebd91256d57dfd136d119",
+      "heading": "Attributes of a good election results audit",
+      "excerpt": "No governing body or professional association has yet adopted a definitive set of best practices for election audits. However, in 2007 a gro",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373314851"
+    },
+    {
+      "id": "P10",
+      "hash": "1e504f3f6c6821160966dc32f4ad39778cbe6ed5e1b7513c921adca0ad3783d1",
+      "heading": "India",
+      "excerpt": "India has designed and uses voting machines with one button per candidate. The button, when pressed, prints the selected candidate on a slip",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373314851"
+    },
+    {
+      "id": "P11",
+      "hash": "a121376e92040f42d9ae442cde6cf57dfd22c9cdd9117c83bab62f9bb9f4b200",
+      "heading": "Venezuela",
+      "excerpt": "Venezuela has direct entry voting machines which tally electronically and also give the voter a printed paper with the votes, a Voter-verifi",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373314851"
+    },
+    {
+      "id": "P12",
+      "hash": "04a243e75a474bc7d9bd1c5be2faaf8ad494b4827e123a61bb9615b98340fce7",
+      "heading": "Overview",
+      "excerpt": "Only three US states and parts of three other states audit all contests on all ballots, to have an independent check whether all large and s",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373314851"
+    },
+    {
+      "id": "P13",
+      "hash": "4b8087d079ca48b0286a5ff293b52485408971f2dfacf61f55e30d7b04fe7767",
+      "heading": "Table of U.S. audit rules",
+      "excerpt": "Other state variations. Only DC requires that observers be able to see ballots being audited well enough to discern voter's marks. Three sta",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373314851"
+    },
+    {
+      "id": "P14",
+      "hash": "0d2e69a7cf3454081b04250a254c986bf728fe96c06bcdd6d414bba0e5d831cb",
+      "heading": "Risk-limiting audits",
+      "excerpt": "Risk-limiting audits are required in Colorado, North Carolina, Rhode Island and Virginia. These store voting machines' interpretation of eac",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373314851"
+    },
+    {
+      "id": "P15",
+      "hash": "163aa6fe6c6067b803391f1053887c6f95c9a8af671db14e2078fb329726b01d",
+      "heading": "Ballot scans for 100% audits",
+      "excerpt": "Humboldt County Elections Transparency Project, Clear Ballot, and TrueBallot scan all ballots with a commercial scanner, so extensive audits",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373314851"
+    },
+    {
+      "id": "P16",
+      "hash": "4691b153ae09c02d215e318767816696e05b64fc5ab44bdd6ab5baa66f2c21dc",
+      "heading": "Recounts",
+      "excerpt": "Recounts may be considered to be a specific type of audit, but not all audits are recounts. The Verified Voting Foundation explains the diff",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373314851"
+    },
+    {
+      "id": "P17",
+      "hash": "15cc30c5cf3667fd7b711769aca718ac3a89444b6a265643c432063f971e4c5f",
+      "heading": "Other variations",
+      "excerpt": "Hand and machine counts. Current audits in most states involve counting paper ballots by hand, but some states re-use the same machines used",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373314851"
+    },
+    {
+      "id": "P18",
+      "hash": "bec71fdd77402edef5c626acb55e229fd88026be908060af632b89620f3eec2c",
+      "heading": "Ballot transport and storage",
+      "excerpt": "Paper ballots and computer files need to be kept securely in case they are needed for recounts, audits or protests. North Carolina specifies",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373314851"
+    },
+    {
+      "id": "P19",
+      "hash": "58a687120e763f133bb058801df85bb5e5bcb0e4d532e5b13d6109e35eebd741",
+      "heading": "Rules",
+      "excerpt": "No US state has adequate laws on physical security of the ballots, and few localities do. During transport ballots are not necessarily locke",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373314851"
+    },
+    {
+      "id": "P20",
+      "hash": "2d82cd90c9e32617da9f77145c9d6b900bd1ed37e49f6d06c234b5688e14c428",
+      "heading": "Timing",
+      "excerpt": "Auditing in the US is done several days after the election, so paper ballots and computer files need to be stored securely. 2008 guidelines ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373314851"
+    },
+    {
+      "id": "P21",
+      "hash": "86243d837304f19f6fe64b4f150f4912ea2fd5f5648f609aee32e8f7bc68e697",
+      "heading": "Electronic backups",
+      "excerpt": "If audits cannot be done on election night, creating and verifying a paper or electronic backup of the paper ballots on election night, or t",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373314851"
+    },
+    {
+      "id": "P22",
+      "hash": "0e145eb91b5cd8309d7dddf548ed883be39a0cc9a16aedb520015e9aa794bca1",
+      "heading": "Seals",
+      "excerpt": "Election storage often uses tamper-evident seals, although seals can typically be removed and reapplied without damage, especially in the fi",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373314851"
+    }
+  ],
+  "updatedAt": "2026-10-21T07:39:48.420Z"
 }
