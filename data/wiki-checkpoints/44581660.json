@@ -2,9 +2,131 @@
   "pageId": 44581660,
   "title": "Kyakhta trade",
   "topic": "Economy",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1285969547,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1285969547",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-21T07:57:04.194Z"
+  "reason": "1 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Chinese Trader in Kyakhta (Russia) (Carl Peter Mazer) - Gothenburg Museum of Art - GKM 2136.tif"
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:The Russian road to China (1910) (14572099319).jpg"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Badain Jaran Desert Location Map.jpg",
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/0/0e/Badain_Jaran_Desert_Location_Map.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "fileTitle": "File:Badain Jaran Desert Location Map.jpg",
+        "caption": "Urga (Ulaanbaatar), Gobi Desert, Kalgan (Zhangjiakou) and Beijing. Kyakhta is directly north of Urga",
+        "alt": "",
+        "description": "A map of north china location the approximate location of the Badain Jaran desert. This also shows around how large the desert is compared to its surroundings",
+        "date": "2013-05-09 01:14:51",
+        "section": "Route",
+        "position": 2,
+        "provenance": {
+          "credit": "Sjoerd van Oort",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Badain_Jaran_Desert_Location_Map.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Kyakhta_trade",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1285969547",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "6cf0001530739e2949e6e6521bfeee7c030cf30c3c227428e753b623ced8c59f",
+      "heading": "Lead",
+      "excerpt": "The Kyakhta Trade (Russian: Кяхтинская торговля, Kyahtinskaya torgovlya, Chinese: 恰克图商路) refers to the trade between Russia and China throug",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1285969547"
+    },
+    {
+      "id": "P2",
+      "hash": "902e55cc8c16db791ea6389bcc3adb70eadcce7a224b15bea21bbea2cdf97cda",
+      "heading": "The earlier Nerchinsk trade 1689–1722",
+      "excerpt": "Russia and China came into direct contact after Russians made themselves masters of the Siberian forests between 1582 and 1639. In 1689 the ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1285969547"
+    },
+    {
+      "id": "P3",
+      "hash": "2faf2f461413b05c88a006123c069f772727e6a07470b50efbbee95fa0403e05",
+      "heading": "The foundation of Kyakhta",
+      "excerpt": "The Treaty of Kyakhta (1727) specified that all official trade between the two empires would pass through points near Kyakhta and Tsurukaitu",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1285969547"
+    },
+    {
+      "id": "P4",
+      "hash": "199bf6b05bf6f8d2170c4aa0ee9e59179ec797e436700def152d6181f5cd41ea",
+      "heading": "Route",
+      "excerpt": "The trade route followed the usual route to Irkutsk, by flatboat across Lake Baikal, and south by poling up the Selenge River past Selingins",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1285969547"
+    },
+    {
+      "id": "P5",
+      "hash": "6f9e51a0c0b89b02604f4e496be9dde19ced5680704c71229938b30f4f6b4a06",
+      "heading": "Route",
+      "excerpt": "To the south the route went south to Urga, southeast to Kalgan on the Great Wall and then Beijing. The crossing of the Gobi took at least 30",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1285969547"
+    },
+    {
+      "id": "P6",
+      "hash": "271fc0004987b68510da965c05ac6842efb71a33527a001ab28055c9c268919f",
+      "heading": "The state caravans",
+      "excerpt": "The treaty said that caravans would be three years apart. There were six state caravans from Kyakhta between 1727 and 1760. At Beijing the c",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1285969547"
+    },
+    {
+      "id": "P7",
+      "hash": "3a5e09abfedae06adcb79c30b0337e0f6e3d5919e6d6fe66d26ea090cae9007f",
+      "heading": "Goods and money",
+      "excerpt": "There was some amount of illegal and informal trade, but we have no numbers. There were many regulations prohibiting the export of certain g",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1285969547"
+    },
+    {
+      "id": "P8",
+      "hash": "e608486a246eeab9528a878c5ccef6f23d6720df77fc41dc9793927ecc89a54f",
+      "heading": "The Chinese side",
+      "excerpt": "The general tea trade in Mongolia was managed by seven companies, the largest of which was the Da Sheng Kui which was based in Hohhot after ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1285969547"
+    },
+    {
+      "id": "P9",
+      "hash": "2574b1eb3d8088364e226f013813c8ce114ce83d72f787bcecb5f889b3ee7884",
+      "heading": "The state caravans",
+      "excerpt": "There were no further caravans because of the Dzungar wars. In 1762 Catherine replaced state caravans with free trade. Russian goods would b",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1285969547"
+    },
+    {
+      "id": "P10",
+      "hash": "c55d5417f9ff1feaeab95cfc1b5a4daa55740fe0e27d0e07cf90398fb1ddb55b",
+      "heading": "Goods and money",
+      "excerpt": "Money value: The money value of goods had to be estimated, accounting practices were imperfect and there was some bribery. After the period ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1285969547"
+    },
+    {
+      "id": "P11",
+      "hash": "5ca68eff270a13ae6c00da1b0c6c1a5e4346e1a8eabb5b0210bd38b7a323bc72",
+      "heading": "Goods and money",
+      "excerpt": "Exports: Furs were 70-85% by value, with the percentage tending to decline, especially as European-made goods increased. Squirrel was the la",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1285969547"
+    },
+    {
+      "id": "P12",
+      "hash": "93049d6d4e69e55d307fccff2fb812d1f789b3ff5dd2e8411db581dc00ec1086",
+      "heading": "Goods and money",
+      "excerpt": "Imports: About 50-60% was cotton (it is not clear where this came from). Silk, both raw and processed was about a third. Tea imports started",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1285969547"
+    }
+  ],
+  "updatedAt": "2026-10-21T07:57:06.138Z"
 }
