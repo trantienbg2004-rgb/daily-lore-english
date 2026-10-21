@@ -9134,10 +9134,10 @@
       "checkedAt": null
     },
     "67492243": {
-      "status": "DRAFTED",
-      "reason": "draft durably saved before validation",
+      "status": "NEEDS_REVIEW",
+      "reason": "Missing repaired page",
       "revisionId": 1367533689,
-      "checkedAt": "2026-10-21T18:09:55.194Z"
+      "checkedAt": "2026-10-21T18:10:13.288Z"
     },
     "67568559": {
       "status": "PENDING",
@@ -9866,7 +9866,7 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-10-21T18:10:11.903Z",
+  "updatedAt": "2026-10-21T18:10:13.289Z",
   "dailyUsage": {
     "day": "2026-10-21",
     "calls": 28,
