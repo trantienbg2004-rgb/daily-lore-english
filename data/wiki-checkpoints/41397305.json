@@ -2,9 +2,126 @@
   "pageId": 41397305,
   "title": "Country life movement",
   "topic": "Society",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1381117075,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381117075",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-21T07:55:59.683Z"
+  "reason": "1 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Report of the Country Life Commission.jpg"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Franklin D. Roosevelt and four others in Ithaca, New York - NARA - 197032.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/61/Franklin_D._Roosevelt_and_four_others_in_Ithaca%2C_New_York_-_NARA_-_197032.jpg/960px-Franklin_D._Roosevelt_and_four_others_in_Ithaca%2C_New_York_-_NARA_-_197032.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Franklin D. Roosevelt and four others in Ithaca, New York - NARA - 197032.jpg",
+        "caption": "New York Governor Franklin D. Roosevelt (second from right) attends the 1931 American Country Life Association Conference at Cornell University",
+        "alt": "",
+        "description": "",
+        "date": "19 August 1931date QS:P571,+1931-08-19T00:00:00Z/11date QS:P571,+1931-08-19T00:00:00Z/11",
+        "section": "Projects",
+        "position": 1,
+        "provenance": {
+          "credit": "Unknown authorUnknown author or not provided Unknown authorUnknown author or not provided",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Franklin_D._Roosevelt_and_four_others_in_Ithaca,_New_York_-_NARA_-_197032.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Country_life_movement",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381117075",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "f682b2b6091066065211626d0deb9238049250e252bac7ac48b1c9283d1bcbed",
+      "heading": "Lead",
+      "excerpt": "The country life movement was an early 20th century American social movement which sought to improve the living conditions of America's rura",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381117075"
+    },
+    {
+      "id": "P2",
+      "hash": "c9fcf9f5ba08c9c1640cd761938f50df9063bdf379062d04c0ab8fbae4e156f5",
+      "heading": "Philosophy",
+      "excerpt": "The country life movement's adherents largely fell into three schools of thought. The first group was mainly composed of urban agrarians who",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381117075"
+    },
+    {
+      "id": "P3",
+      "hash": "187c6411522874049d7f9504a9500ad154cd36c986b0f624a5618af6d03ae7b8",
+      "heading": "Philosophy",
+      "excerpt": "A second segment of country-lifers sought to improve what they saw as declining rural living conditions by introducing progressive ideals to",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381117075"
+    },
+    {
+      "id": "P4",
+      "hash": "8f5079c91e5bdaa03a30bb56ef92286348e948a0e2330569647d43256c0662b7",
+      "heading": "Philosophy",
+      "excerpt": "The third group affiliated with the movement consisted of farmers who sought to bring technological progress to their profession. This group",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381117075"
+    },
+    {
+      "id": "P5",
+      "hash": "bc7bf9ff62988a3c073a8637303a55ecd5ce40687fdb71b73716f08d8022cc15",
+      "heading": "Goals",
+      "excerpt": "President Theodore Roosevelt appointed the Commission on Country Life in 1908 to address concerns raised by the country life movement. Corne",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381117075"
+    },
+    {
+      "id": "P6",
+      "hash": "2a7c772a122807d570534aba5711e54b4968383977594bd122d38751e6ba9364",
+      "heading": "Projects",
+      "excerpt": "The 1920 Census was the first to report that half the population lived in rural areas. They experienced their own progressive reforms, typic",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381117075"
+    },
+    {
+      "id": "P7",
+      "hash": "a8379c33caf657cdf294480e4645660e8105ac35d6d554ad2b190c5271e14931",
+      "heading": "Resistance",
+      "excerpt": "The movement's attempts at introducing urban reforms to rural America often met resistance from traditionalists who saw the country-lifers a",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381117075"
+    },
+    {
+      "id": "P8",
+      "hash": "bab327ae593b80b4391759f84df43513dd0c5b65e5984e9919bdc12a308affe6",
+      "heading": "Projects",
+      "excerpt": "The most urgent need was better transportation to get out of the mud. The railroad system was virtually complete; the need was for much bett",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381117075"
+    },
+    {
+      "id": "P9",
+      "hash": "7e7b89b70e85faaf64d15193a362db9cb7b96530b901e061b2ffe95e1a128f05",
+      "heading": "Projects",
+      "excerpt": "With the coming of the automobile after 1910, urgent efforts were made to upgrade and modernize dirt roads designed for horse-drawn wagon tr",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381117075"
+    },
+    {
+      "id": "P10",
+      "hash": "c5d655a56d546f24f1df2fe5808caf22134bd400816c10dcf6e43c1ed3fb824f",
+      "heading": "Projects",
+      "excerpt": "The rapidly increasing speed of automobiles, and especially trucks, made maintenance and repair a high-priority item. Concrete was first use",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381117075"
+    },
+    {
+      "id": "P11",
+      "hash": "f62a97afc5f28357f0910ded29f2c46202a642379a7371ed18e01f2aa1e08e12",
+      "heading": "Projects",
+      "excerpt": "Rural schools were often poorly funded, one room operations taught by young local women before they married, with occasional supervision by ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381117075"
+    },
+    {
+      "id": "P12",
+      "hash": "11f967daace22384f90a9bbc30582eb09fa5fbb83141fc48439a0221d7d3a569",
+      "heading": "Projects",
+      "excerpt": "Numerous other programs were aimed at rural youth, including 4-H clubs, Boy Scouts and Girl Scouts. County fairs not only gave prizes for th",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381117075"
+    }
+  ],
+  "updatedAt": "2026-10-21T07:56:01.605Z"
 }
