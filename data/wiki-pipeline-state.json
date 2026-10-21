@@ -6302,10 +6302,10 @@
       "checkedAt": null
     },
     "99232": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
+      "revisionId": 1376500096,
+      "checkedAt": "2026-10-21T13:02:14.547Z"
     },
     "147625": {
       "status": "PENDING",
@@ -9866,7 +9866,7 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-10-21T13:02:12.971Z",
+  "updatedAt": "2026-10-21T13:02:14.554Z",
   "dailyUsage": {
     "day": "2026-10-21",
     "calls": 4,
