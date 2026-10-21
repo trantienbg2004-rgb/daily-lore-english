@@ -2,9 +2,187 @@
   "pageId": 48302927,
   "title": "Access to public information in Serbia",
   "topic": "Society",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1345662073,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1345662073",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-21T07:56:34.409Z"
+  "reason": "2 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:M Marinovic.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7c/M_Marinovic.jpg/960px-M_Marinovic.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:M Marinovic.jpg",
+        "caption": "Milan Marinović, the incumbent Commissioner, appointed in July 2019.",
+        "alt": "",
+        "description": "The incumbent Commissioner, appointed in July 2019.",
+        "date": "2022-04-08",
+        "section": "",
+        "position": 0,
+        "provenance": {
+          "credit": "Djukapov",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:M_Marinovic.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Access_to_public_information_in_Serbia",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1345662073",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Rodoljub Šabić.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/20/Rodoljub_%C5%A0abi%C4%87.jpg/960px-Rodoljub_%C5%A0abi%C4%87.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Rodoljub Šabić.jpg",
+        "caption": "Rodoljub Šabić, first Commissioner for Information and protection of personal data (2004-2018)",
+        "alt": "",
+        "description": "Rodoljub Šabić",
+        "date": "2011-06-07",
+        "section": "Legal framework",
+        "position": 1,
+        "provenance": {
+          "credit": "Medija centar Beograd",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Rodoljub_%C5%A0abi%C4%87.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Access_to_public_information_in_Serbia",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1345662073",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "875b0aca2e0c2619a3d2a7f5b2079cff14e30d9a84fd26b72fd1d94f736b4f4b",
+      "heading": "Lead",
+      "excerpt": "Access to public information and freedom of information (FOI) refer to the right of access to information held by public bodies also known a",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1345662073"
+    },
+    {
+      "id": "P2",
+      "hash": "10171902a3a737b61f7c9b3232babc7d734e401b0fc281b5543aa30bb1f2fef2",
+      "heading": "Lead",
+      "excerpt": "In Serbia, access to public information is guaranteed in the Constitution and protected by the Law on free Access to Information of Public I",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1345662073"
+    },
+    {
+      "id": "P3",
+      "hash": "02960c39d38383e8d92399f3bbc73291c24a372df06f5026b5669aef0db374f2",
+      "heading": "Legal framework",
+      "excerpt": "Serbia is considered among the countries with the best regulatory framework regarding access to information of public relevance: the Global ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1345662073"
+    },
+    {
+      "id": "P4",
+      "hash": "825a17ce5d6703053ec4549449074a1bea92e44914e533aa18eeb7f5fc6ee066",
+      "heading": "Legal framework",
+      "excerpt": "The right of access to public information is defined in Article 51 of the Constitution of Serbia, which establishes the right of everybody t",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1345662073"
+    },
+    {
+      "id": "P5",
+      "hash": "2820e943311c0183b501b9a5c4ed40be07bb38f3d37e0795279062a9e5b69a19",
+      "heading": "Legal framework",
+      "excerpt": "The right to access to information of public relevance is translated into national law by the Law on Free Access to Information of Public Im",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1345662073"
+    },
+    {
+      "id": "P6",
+      "hash": "f6cbf7257d658ae03bfb3fde1317041d90d69a8f6f634233d421ee362898cfad",
+      "heading": "Access to public information in practice",
+      "excerpt": "Since the adoption of the Law on Access to Information in 2004, a significant increase in the number of requests has been registered by the ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1345662073"
+    },
+    {
+      "id": "P7",
+      "hash": "176d1d6529d7d916ff7eb1054c0ad8ea77e46d82512d1c8534a6325130e905d6",
+      "heading": "Youth Initiative for Human Rights v. Serbia",
+      "excerpt": "A landmark case by the European Court of Human Rights related to the right to access to information in Serbia. In 2006, the Belgrade-based N",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1345662073"
+    },
+    {
+      "id": "P8",
+      "hash": "74fde0678964ac085b8d2d68581eb802974f754ce25b71c917722fff9c6df080",
+      "heading": "Legal framework",
+      "excerpt": "The scope of the law is valued positively especially inasmuch as it extends the right to access to information to all natural person, notwit",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1345662073"
+    },
+    {
+      "id": "P9",
+      "hash": "3e77e69bf6ef9ba072445ecc77c75cab0a03953de06d5de6b002e22095da4b3f",
+      "heading": "Legal framework",
+      "excerpt": "Requests should be lodged in written form, with no need for the applicant to specify the reason for the request. The public authority shall ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1345662073"
+    },
+    {
+      "id": "P10",
+      "hash": "98daa29dc592538c0a11ebe53016448e2b3893158a39af19672c96ae87eced23",
+      "heading": "Legal framework",
+      "excerpt": "Limitations to the right to access to information are defined in Article 9 of the Law, establishing that legitimate limitation may derive if",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1345662073"
+    },
+    {
+      "id": "P11",
+      "hash": "3ade07df7ece08e7d7b280f74ea2ffca040b324b24d4c4a141132643908fa950",
+      "heading": "Legal framework",
+      "excerpt": "The authority in charge of monitoring the respect of the Law is the Commissioner for Information of Public Importance. The Commissioner is a",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1345662073"
+    },
+    {
+      "id": "P12",
+      "hash": "1807d081713f4f05d9b6368c40b87a21ef40ff8da66b07b4fa8ecaa64d8cd204",
+      "heading": "Legal framework",
+      "excerpt": "The Commissioner is entitled by Law to issue decisions on disputed cases, and his/her decisions should be enforced by the Government of the ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1345662073"
+    },
+    {
+      "id": "P13",
+      "hash": "b59d0b127cf4530813746f6b493ea0e456c73b23d03195a55ff6f83a3ca46c81",
+      "heading": "Legal framework",
+      "excerpt": "Aside from examining individual complaints related to violations of the right to free access to information, the Commissioner also addresses",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1345662073"
+    },
+    {
+      "id": "P14",
+      "hash": "627c305e94aaa0645df518ce9d1f96e2ecfaf887659af9705c52aaf85b7a1983",
+      "heading": "Legal framework",
+      "excerpt": "It has been noted that a significant limitation of the right set forth in the Constitution is due to the restrictions applied to the admissi",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1345662073"
+    },
+    {
+      "id": "P15",
+      "hash": "ce46908295b6a83aed486c6a6daf191336eb4dd7788cbdc5f514f87585f473c3",
+      "heading": "Access to public information in practice",
+      "excerpt": "In its annual report for 2015, the Commissioner for Information notes some limitation to the effective implementation of the law. These have",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1345662073"
+    },
+    {
+      "id": "P16",
+      "hash": "25aa1f6b1fbc7be2e924792e9ee4b4ee0628602eeaa6ad032aca3db97a82e1ab",
+      "heading": "Access to public information in practice",
+      "excerpt": "Considering the implementation of the Law on Access to Information in Serbia and its impact on the exercise of journalism, Freedom House has",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1345662073"
+    },
+    {
+      "id": "P17",
+      "hash": "f4a1741beee3cbe8a611ffffdf434a35b6e6a8a75832d1ff0abaaf10486e1941",
+      "heading": "Access to public information in practice",
+      "excerpt": "Concern over implementation, alignment with European standards, endowment of resources to the Commissioner for Information and enforcement o",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1345662073"
+    },
+    {
+      "id": "P18",
+      "hash": "a50930c41a54f7b23138960547e2339303f6b1ac5bedb4108531d3f132af57d9",
+      "heading": "Youth Initiative for Human Rights v. Serbia",
+      "excerpt": "YIHR appealed to the European Court of Human Rights under Article 6 and Article 10 of the Convention. In June 2013, the verdict of the ECtHR",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1345662073"
+    }
+  ],
+  "updatedAt": "2026-10-21T07:56:35.903Z"
 }
