@@ -2,9 +2,410 @@
   "pageId": 5142662,
   "title": "Italian fascism",
   "topic": "Politics",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1380358718,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380358718",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-21T07:57:01.192Z"
+  "reason": "11 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Mussolini mezzobusto.jpg"
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Fasces FR2.svg"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Has seven 1 a.jpg",
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/5/5f/Has_seven_1_a.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "fileTitle": "File:Has seven 1 a.jpg",
+        "caption": "Benito Mussolini and fascist Blackshirt youth in 1935",
+        "alt": "",
+        "description": "Picture of Benito Mussolini and Fascist Blackshirt youth in 1935 in Rome.",
+        "date": "2008-07-24",
+        "section": "Nationalism",
+        "position": 2,
+        "provenance": {
+          "credit": "Uploaded by User:R-41, original author unknown",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Has_seven_1_a.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Italian_fascism",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380358718",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:RegioniIrredenteItalia.jpg"
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Gran Consiglio Fascismo.jpg"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Corriere testata 1938.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/de/Corriere_testata_1938.jpg/960px-Corriere_testata_1938.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Corriere testata 1938.jpg",
+        "caption": "Front page of the Italian newspaper Corriere della Sera on 11 November 1938: \"Le leggi per la difesa della razza approvate dal Consiglio dei ministri\" (English: \"The laws for the defence of race approved by the Council of Ministers\"). On the same day, the Racial Laws entered into force under the Italian Fascist regime, enacting the racial discrimination and persecution of Italian Jews.",
+        "alt": "",
+        "description": "Front page of Corriere della Sera the day Italian racial laws were enacted by the Fascist regime, in 1938.",
+        "date": "1938-11-11",
+        "section": "Racism",
+        "position": 5,
+        "provenance": {
+          "credit": "Corriere della Sera",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Corriere_testata_1938.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Italian_fascism",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380358718",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Lupa Capitolina, Rome.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fb/Lupa_Capitolina%2C_Rome.jpg/960px-Lupa_Capitolina%2C_Rome.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Lupa Capitolina, Rome.jpg",
+        "caption": "Roman she-wolf, symbol of the founding legend of Rome",
+        "alt": "",
+        "description": "Lupa Capitolina: she-wolf with Romulus and Remus. Bronze, 12th century AD[1], 5th century BC (the twins are a 15th-century addition).",
+        "date": "2024-09-18 13:59:17",
+        "section": "Tradition",
+        "position": 6,
+        "provenance": {
+          "credit": "Wilfredor",
+          "license": "CC0",
+          "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Lupa_Capitolina,_Rome.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Italian_fascism",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380358718",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Giovanni Gentile.png"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Austria Hungary ethnic.svg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/47/Austria_Hungary_ethnic.svg/960px-Austria_Hungary_ethnic.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Austria Hungary ethnic.svg",
+        "caption": "Map indicating Italian-inhabited territories (bright green) within the Austro-Hungarian Empire in 1911",
+        "alt": "",
+        "description": "The ethnic groups of Austria-Hungary in 1910. Based on \"Distribution of Races in Austria-Hungary\" from the Historical Atlas by William R. Shepherd, 1911, File:Austria_hungary_1911.jpg. The city names were changed to those in use since 1945.",
+        "date": "2008-12-22",
+        "section": "Nationalist discontent",
+        "position": 9,
+        "provenance": {
+          "credit": "ArdadN",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Austria_Hungary_ethnic.svg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Italian_fascism",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380358718",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Promised Borders of the Tready of London.png",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a5/Promised_Borders_of_the_Tready_of_London.png/960px-Promised_Borders_of_the_Tready_of_London.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Promised Borders of the Tready of London.png",
+        "caption": "Territories promised to Italy by the Treaty of London (1915): South Tyrol/Trentino-Alto Adige (tan), the Julian March and Dalmatia (tan), and the Snežnik Plateau area (green). After the end of World War I (1914–1918), Dalmatia was not assigned to Italy but to Yugoslavia.",
+        "alt": "",
+        "description": "Approximate territory promised to Italy by the Entente Powers in the 1915 Treaty of London (tan), including Snežnik Plateau (green) where boundary was not clearly defined by the treaty",
+        "date": "2021-09-27",
+        "section": "Nationalist discontent",
+        "position": 10,
+        "provenance": {
+          "credit": "Jcw12",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Promised_Borders_of_the_Tready_of_London.png",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Italian_fascism",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380358718",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:A sociological study of violence in history (Italy 1919-1922).gif"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:March on Rome.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b2/Naples_Fascist_rally_on_24_October_1922.jpg/960px-Naples_Fascist_rally_on_24_October_1922.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:March on Rome.jpg",
+        "caption": "Mussolini and the fascist paramilitary Blackshirts' March on Rome in October 1922",
+        "alt": "",
+        "description": "Benito Mussolini al congresso fascista di Napoli, tenutosi come \"prova generale\" della marcia su Roma attuata pochi giorni dopo; con lui alcuni dei quadriumviri: da sinistra Emilio De Bono, Italo Balbo e Cesare Maria De Vecchi.",
+        "date": "Taken on 24 October 1922",
+        "section": "Empowerment of fascism",
+        "position": 12,
+        "provenance": {
+          "credit": "Unknown authorUnknown author",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Naples_Fascist_rally_on_24_October_1922.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Italian_fascism",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380358718",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Fiat 508 Balilla, advertisement, 1939, Netherlands.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/70/Fiat_508_Balilla%2C_advertisement%2C_1939%2C_Netherlands.jpg/960px-Fiat_508_Balilla%2C_advertisement%2C_1939%2C_Netherlands.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Fiat 508 Balilla, advertisement, 1939, Netherlands.jpg",
+        "caption": "1939 Dutch Fiat advertisement",
+        "alt": "",
+        "description": "An advertisement for the Fiat Topolino (image, 935 Dutch guilders) and the Fiat Balilla (1450 guilders) in the \"Nieuwe Tilburgsche Courant\" (a newspaper from Tilburg, Netherlands) of 1 April 1939.",
+        "date": "1939-04-01",
+        "section": "Economy",
+        "position": 13,
+        "provenance": {
+          "credit": "unknown (probably Garage Harry Kruijssen)",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Fiat_508_Balilla,_advertisement,_1939,_Netherlands.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Italian_fascism",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380358718",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Inaugurazione Littoria 001.jpg"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Vatican City annex.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bf/Vatican_City_annex.jpg/960px-Vatican_City_annex.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Vatican City annex.jpg",
+        "caption": "The \"Roman Question\" was resolved with the mutual recognition of the Kingdom of Italy and the Vatican City-State in 1929",
+        "alt": "",
+        "description": "Boundary map taken from the annex of the Lateran treaties. Colored areas are modifications of original image for purposes of clarification. dark grey: territory of Vatican City. light grey: territory of Vatican City. Security dispositive of Italy. Free access to public and to Italian police authorities may be revoked at any time for special ceremonial occasions. red: The small strip (3 m wide, 60 m long) alongside the northern colonnade is - according to the Lateran treaties - Italian territory and underlies Italian jurisdiction. This fact has ",
+        "date": "1929-02-11",
+        "section": "Relationship with the Catholic Church",
+        "position": 15,
+        "provenance": {
+          "credit": "Original: de:Bild:Vatikanstadt_Annex.jpg, amended by gugganij",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Vatican_City_annex.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Italian_fascism",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380358718",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Iscrizione fascista - Lavenone (Foto Luca Giarelli).jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9d/Iscrizione_fascista_-_Lavenone_%28Foto_Luca_Giarelli%29.jpg/960px-Iscrizione_fascista_-_Lavenone_%28Foto_Luca_Giarelli%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Iscrizione fascista - Lavenone (Foto Luca Giarelli).jpg",
+        "caption": "\"We dream of a Roman Italy\" was one of the many fascist slogans.",
+        "alt": "",
+        "description": "Fascist propaganda inscription. Lavenone.",
+        "date": "2010-02-15",
+        "section": "Italian fascist slogans",
+        "position": 16,
+        "provenance": {
+          "credit": "Luca Giarelli",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Iscrizione_fascista_-_Lavenone_(Foto_Luca_Giarelli).jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Italian_fascism",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380358718",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Concentrazione di azione antifascista.jpg",
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/b/be/Concentrazione_di_azione_antifascista.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "fileTitle": "File:Concentrazione di azione antifascista.jpg",
+        "caption": "1931 badge of a member of Concentrazione Antifascista Italiana",
+        "alt": "",
+        "description": "Certificate Concentration of action antifascist",
+        "date": "2017-02-15 10:49:10",
+        "section": "During Benito Mussolini's dictatorship",
+        "position": 18,
+        "provenance": {
+          "credit": "Benjamin Bosso",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Concentrazione_di_azione_antifascista.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Italian_fascism",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380358718",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:2013-04-25 Porta san Paolo Roma.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b9/2013-04-25_Porta_san_Paolo_Roma.jpg/960px-2013-04-25_Porta_san_Paolo_Roma.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:2013-04-25 Porta san Paolo Roma.jpg",
+        "caption": "Anti-fascist demonstration at Porta San Paolo in Rome, Italy, on the occasion of the Liberation Day on 25 April 2013",
+        "alt": "",
+        "description": "A view of Porta San Paolo in Rome on Liberation Day 2013",
+        "date": "2013-04-25 11:29:12",
+        "section": "Aftermath of World War II",
+        "position": 20,
+        "provenance": {
+          "credit": "Blackcat",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:2013-04-25_Porta_san_Paolo_Roma.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Italian_fascism",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380358718",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "e62dced3ef0f946fe5166dc56e90142a4902996560bd01920960a232dfe2b2e4",
+      "heading": "Lead",
+      "excerpt": "Italian fascism (Italian: fascismo italiano), also called classical fascism or simply fascism, is the original fascist ideology, which Giova",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380358718"
+    },
+    {
+      "id": "P2",
+      "hash": "2405654ba859e2072d24b0704b3d35bcae6d9a238767e1a9577783c288885520",
+      "heading": "Lead",
+      "excerpt": "Italian fascism was initially a left-wing nationalist and anti-clerical movement, and originated from ideological combinations of ultra-nati",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380358718"
+    },
+    {
+      "id": "P3",
+      "hash": "4721263c3342136e88a627d64eb6f818217fdd9976bdf91a2d849b18dab87dd7",
+      "heading": "Lead",
+      "excerpt": "Italian fascism promoted a corporatist economic system, whereby employer and employee syndicates were linked together in associations to col",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380358718"
+    },
+    {
+      "id": "P4",
+      "hash": "3953e0a419ff027d8a3fb566e2eac1716a9ac27e4be686fb77009cf33d2323f0",
+      "heading": "Lead",
+      "excerpt": "Originally, many Italian fascists were opposed to Nazism, as the fascist movement in Italy did not espouse Nordicism nor, initially, the ant",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380358718"
+    },
+    {
+      "id": "P5",
+      "hash": "2f333ea7c6310cbfec2a5ae6114a5164e7558673154ffb55d9a1ad001a521c58",
+      "heading": "Mussolini and the 1924 election",
+      "excerpt": "According to Payne, Mussolini found no solution to the party's dilemma and struggled to define the future course of his government. He still",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380358718"
+    },
+    {
+      "id": "P6",
+      "hash": "61b61794ebb28123f3c58a2201095ccadd2b57872b70bdab7288b0abe0a6eaff",
+      "heading": "Etymology",
+      "excerpt": "The Italian term fascismo is derived from fascio, meaning \"bundle of sticks\", ultimately from the Latin word fasces. This was the name given",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380358718"
+    },
+    {
+      "id": "P7",
+      "hash": "94bcc1808aebe5e834f22297a12a9732620feb8c2ec602e97cfdffc9faec4092",
+      "heading": "Nationalism",
+      "excerpt": "Italian fascism is based upon Italian nationalism and in particular, it seeks to complete what it considers the incomplete Italian nationali",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380358718"
+    },
+    {
+      "id": "P8",
+      "hash": "eb84ded4a671dfb1aad05d15cd06cf2a7e81a0b4f4ec2fb6144ff5d1967b8b69",
+      "heading": "Irredentism and expansionism",
+      "excerpt": "Italian fascism emphasized the need for the restoration and continuity of the Italian nationalist Risorgimento (\"Resurgence\", 1815–1871) tra",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380358718"
+    },
+    {
+      "id": "P9",
+      "hash": "2e62af8c2dee29989d56a512e2152a4757a339b06194020b5601c41dc5bfcce4",
+      "heading": "Racism",
+      "excerpt": "Until Benito Mussolini's personal friendship with Adolf Hitler and the military-political alliance between Fascist Italy and Nazi Germany, h",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380358718"
+    },
+    {
+      "id": "P10",
+      "hash": "8398ee3254e66f04000a34ec1960a6dad426a4cde98ae400c003027d3df2190b",
+      "heading": "Totalitarianism",
+      "excerpt": "In 1925, the National Fascist Party (PNF) declared that Italy's fascist state would be totalitarian. The term \"totalitarian\" had initially b",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380358718"
+    },
+    {
+      "id": "P11",
+      "hash": "d57c573163fc4329510ebcc8353d64ceef2d0f08bd55842f15e4f63657ea9b2c",
+      "heading": "Corporatist economics",
+      "excerpt": "Italian fascism promoted a corporatist economic system. The economy involved employer and employee syndicates being linked together in corpo",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380358718"
+    },
+    {
+      "id": "P12",
+      "hash": "be7f751b83f766db31da15ff0eeb1886bd9aff3e0fb1ed76a947470b10fa76c1",
+      "heading": "Age and gender roles",
+      "excerpt": "The Italian fascists' political anthem was called Giovinezza (\"Youth\"). Fascism identifies the physical age period of youth as a critical ti",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380358718"
+    },
+    {
+      "id": "P13",
+      "hash": "b46efaa4057fa2d72c36a7f2e767bf050bbffb947054e54fdcb8ec08f4a4a9ec",
+      "heading": "Tradition",
+      "excerpt": "Italian fascism believed that the success of Italian nationalism required a clear sense of a shared past amongst the Italian people along wi",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380358718"
+    },
+    {
+      "id": "P14",
+      "hash": "788622015e929d30766ae5b2325088e0576997794d0be0e1d157ce9ba89b0335",
+      "heading": "Doctrine",
+      "excerpt": "The Doctrine of Fascism (La dottrina del fascismo, 1932), authored by the actualist Italian philosopher Giovanni Gentile, is the official fo",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380358718"
+    }
+  ],
+  "updatedAt": "2026-10-21T07:57:02.559Z"
 }
