@@ -2,9 +2,156 @@
   "pageId": 13551707,
   "title": "Liquidity crisis",
   "topic": "Economy",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1379945990,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379945990",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-21T18:13:19.940Z"
+  "reason": "1 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:U.S. Private Sector Financial Surplus.png",
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/d/d6/U.S._Private_Sector_Financial_Surplus.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "fileTitle": "File:U.S. Private Sector Financial Surplus.png",
+        "caption": "Overvaluation caused a liquidity crisis during the 2008 financial crisis, in which the housing bubble grew on predatory loans and speculation until it burst",
+        "alt": "",
+        "description": "FRED graph of gross private savings and gross private investment for January 1990-September 2012.",
+        "date": "2012-11-03",
+        "section": "A model of liquidity crisis",
+        "position": 0,
+        "provenance": {
+          "credit": "Farcaster",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:U.S._Private_Sector_Financial_Surplus.png",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Liquidity_crisis",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379945990",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "2c1eabbc316896613b013cf5c31fb189019b893f9f716626c6397162ddcb0cf7",
+      "heading": "Lead",
+      "excerpt": "In financial economics, a liquidity crisis is an acute shortage of liquidity. Liquidity may refer to market liquidity (the ease with which a",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379945990"
+    },
+    {
+      "id": "P2",
+      "hash": "853a71d86e708f01519e8affcdaac0b73c9a2053a6dc7f69053fabfc10033a2e",
+      "heading": "Lead",
+      "excerpt": "The above-mentioned forces mutually reinforce each other during a liquidity crisis. Market participants in need of cash find it hard to loca",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379945990"
+    },
+    {
+      "id": "P3",
+      "hash": "fe2c05cb47a626be8f98775d189e1e97fe300a0995df0431d8971cc1f59656ab",
+      "heading": "Lead",
+      "excerpt": "Several mechanisms operating through the mutual reinforcement of asset market liquidity and funding liquidity can amplify the effects of a s",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379945990"
+    },
+    {
+      "id": "P4",
+      "hash": "09e8b715824a293f7ab7a4674f2402349d6f926b11971112c12c3010a6412113",
+      "heading": "A model of liquidity crisis",
+      "excerpt": "One of the earliest and most influential models of liquidity crisis and bank runs was given by Diamond and Dybvig in 1983. The Diamond–Dybvi",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379945990"
+    },
+    {
+      "id": "P5",
+      "hash": "3ee29c8070d58084c9819b2527814b3fd7a684fd624c4191f1fcf049676e4074",
+      "heading": "A model of liquidity crisis",
+      "excerpt": "Diamond and Dybvig demonstrate that when banks provide pure demand deposit contracts, we can actually have multiple equilibria. If confidenc",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379945990"
+    },
+    {
+      "id": "P6",
+      "hash": "18ff11fd6d6a6f6fab85adbdc24c6b239f93f84f78a0c4d576a95fb492455a7b",
+      "heading": "Amplification mechanisms",
+      "excerpt": "One of the mechanisms that can work to amplify the effects of a small negative shock to the economy is the balance sheet mechanism. Under th",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379945990"
+    },
+    {
+      "id": "P7",
+      "hash": "742af2dbca5547480469f8e9042f966e890c837adf8fb8c3d601333be867947f",
+      "heading": "Liquidity crises and asset prices",
+      "excerpt": "Many asset prices drop significantly during liquidity crises. Hence, asset prices are subject to liquidity risk and risk-averse investors na",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379945990"
+    },
+    {
+      "id": "P8",
+      "hash": "378bd44b2bf72445dc4e8af6b9e27fd65d25d2eb34dc8cee625b8b202575e43f",
+      "heading": "Liquidity crunch and flight to liquidity",
+      "excerpt": "A phenomenon frequently observed during liquidity crises is flight to liquidity as investors exit illiquid investments and turn to secondary",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379945990"
+    },
+    {
+      "id": "P9",
+      "hash": "40db688132229ea39ebf2e824bbbe46cb58a8383a400427f12c785947092cf28",
+      "heading": "Role for policy",
+      "excerpt": "There exists scope for government policy to alleviate a liquidity crunch by absorbing less liquid assets and in turn providing the private s",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379945990"
+    },
+    {
+      "id": "P10",
+      "hash": "ebc8402fed91cca4cea4252c723a80a9b917c22616ba77acad2ad24dcd1fcca7",
+      "heading": "Liquidity crisis in emerging markets",
+      "excerpt": "Some economists argue that financial liberalization and increased inflows of foreign capital, especially if short-term, can aggravate illiqu",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379945990"
+    },
+    {
+      "id": "P11",
+      "hash": "48d88cad97962c6b0b4d5f7912cd0a051397b38320d00a5ce0d07003abff1e2f",
+      "heading": "A model of liquidity crisis",
+      "excerpt": "Note that the underlying reason for withdrawals by depositors in the Diamond–Dybvig model is a shift in expectations. Alternatively, a bank ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379945990"
+    },
+    {
+      "id": "P12",
+      "hash": "ff3d02e08e87bf9b2dbc5ab0309ec5bc34756b01efeb599dd6e273fe3b7950d4",
+      "heading": "A model of liquidity crisis",
+      "excerpt": "The model also provides a suitable framework for analysis of devices that can be used to contain and even prevent a liquidity crisis (elabor",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379945990"
+    },
+    {
+      "id": "P13",
+      "hash": "0729e776db562a549d48c1ce6283b48fa70f78c167546c60f97c55adf7535ec4",
+      "heading": "Amplification mechanisms",
+      "excerpt": "Apart from the \"balance sheet mechanism\" described above, the lending channel can also dry up for reasons exogenous to the borrower's credit",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379945990"
+    },
+    {
+      "id": "P14",
+      "hash": "190e4f7f81ab8a96c25ae5fc79bf3963088e8830f727562c4f4156c2eba3230e",
+      "heading": "Amplification mechanisms",
+      "excerpt": "Besides, a liquidity crisis may even result due to uncertainty associated with market activities. Typically, market participants jump on the",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379945990"
+    },
+    {
+      "id": "P15",
+      "hash": "cdfd0630ffc4ea9bbea2f0e73dbf0101ba159ed467e58f451d321e4726a95267",
+      "heading": "Liquidity crises and asset prices",
+      "excerpt": "Liquidity crises such as the 2008 financial crisis and the Long-Term Capital Management crisis of 1998 also result in deviations from the La",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379945990"
+    },
+    {
+      "id": "P16",
+      "hash": "04ad30958acbfc23d629b40f63a8a889bf01531a617a05c7310e97d0d29e281a",
+      "heading": "Role for policy",
+      "excerpt": "Pre-emptive or ex-ante policy: Imposition of minimum equity-to-capital requirements or ceilings on debt-to-equity ratio on financial institu",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379945990"
+    },
+    {
+      "id": "P17",
+      "hash": "3c15991a4fb8efbc0fac4cc46069a7573bfd47a0299c0c54ceaf647834b0d477",
+      "heading": "Liquidity crisis in emerging markets",
+      "excerpt": "The onset of capital outflows can have particularly destabilising consequences for emerging markets. Unlike the banks of advanced economies,",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379945990"
+    }
+  ],
+  "updatedAt": "2026-10-21T18:13:25.429Z"
 }
