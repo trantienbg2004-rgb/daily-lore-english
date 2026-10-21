@@ -2,9 +2,110 @@
   "pageId": 66672242,
   "title": "The New Peace Process",
   "topic": "Conflict & Security",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1341849238,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1341849238",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-21T18:13:38.074Z"
+  "reason": "2 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Padyatra.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2a/Padyatra.jpg/960px-Padyatra.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Padyatra.jpg",
+        "caption": "Participants undertaking the 190km Shanti Padyatra",
+        "alt": "",
+        "description": "Padyatris undertaking the 190km padyatra from chatti to jagdalpur",
+        "date": "2018-10-02",
+        "section": "Bastar Dialogue 2: Shanti Padyatra",
+        "position": 0,
+        "provenance": {
+          "credit": "GehnaKapany",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Padyatra.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/The_New_Peace_Process",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1341849238",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Bastar Dialogue 5.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ea/Bastar_Dialogue_5.jpg/960px-Bastar_Dialogue_5.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Bastar Dialogue 5.jpg",
+        "caption": "Tribals performing a traditional dance for the participants during Bastar Dialogue 5",
+        "alt": "",
+        "description": "Participants performing a traditional dance during the Bastar Dialogue 5 event",
+        "date": "2021-03-26",
+        "section": "Bastar Dialogue 4: Pen Pandum",
+        "position": 1,
+        "provenance": {
+          "credit": "GehnaKapany",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Bastar_Dialogue_5.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/The_New_Peace_Process",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1341849238",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "a59ff3e8b4e37632128877ed5ba5d1f7fabab45ec25e086d21e252ccf8acf35c",
+      "heading": "Lead",
+      "excerpt": "The New Peace Process is an initiative of a conglomerate of tribal and non-government support groups and individuals, with the aim of bringi",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1341849238"
+    },
+    {
+      "id": "P2",
+      "hash": "43a7f18e807716997fc476701e211286e9912a2f6d8109a7c6ec9d1c803ff8f0",
+      "heading": "Bastar Dialogue 2: Shanti Padyatra",
+      "excerpt": "After establishing that the Peace Process should be helmed by the Adivasi community, Adivasis from the Gond community of Telangana assumed t",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1341849238"
+    },
+    {
+      "id": "P3",
+      "hash": "9a61a04de7c18ba01f61f77d0bf69bb27d9a510b1e9cb1401d73e375e6601e30",
+      "heading": "Bastar Dialogue 3: Cycle Yatra",
+      "excerpt": "The third Bastar dialogue was conducted on 2 and 3 March in Banjari, Raipur. The two points of discussion for this event were- rehabilitatio",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1341849238"
+    },
+    {
+      "id": "P4",
+      "hash": "6f231a75df5ae9f2a31b4609052b0a8c496eb1fbdfd301a3d93f8073b5e16b51",
+      "heading": "Bastar Dialogue 4: Pen Pandum",
+      "excerpt": "Pen Pandum, which translates to ‘Festival of the Gods’ in the local Gondi language, began in Konta, Chhattisgarh on 12 and 13 June 2019. The",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1341849238"
+    },
+    {
+      "id": "P5",
+      "hash": "9b8799ad7081284b573932e96c3c8a9df2310525d385b51db23915c6457935cc",
+      "heading": "Bastar Dialogue 5",
+      "excerpt": "Bastar Dialogue 5 consisted of a series of four meetings in Abujhmarh, Chhattisgarh from 22 June 2019 till September 2019 with the purpose o",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1341849238"
+    },
+    {
+      "id": "P6",
+      "hash": "1c7bacfba53cb48d3f0de632e1c72e27ace1bf02da866333a9ba77a44a253e5a",
+      "heading": "We All Bleed The Same",
+      "excerpt": "In an effort to disseminate information regarding menstrual hygiene while keeping in mind the lifestyle of tribal women, New Peace Process d",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1341849238"
+    },
+    {
+      "id": "P7",
+      "hash": "7312b3bec5b890c6791bb5ae37bd60d1b6602ba63fe5942a1b363b437beacf3c",
+      "heading": "Victims Register",
+      "excerpt": "Modelled after similar initiatives in Colombia, the Victims Register is an extension of the New Peace Process aimed at documenting stories o",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1341849238"
+    }
+  ],
+  "updatedAt": "2026-10-21T18:13:43.572Z"
 }
