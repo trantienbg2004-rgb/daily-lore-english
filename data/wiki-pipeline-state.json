@@ -5977,6 +5977,96 @@
     }
   ],
   "outcomes": {
+    "12": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "2024": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "2444": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "3201": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1370321979,
+      "checkedAt": null
+    },
+    "4746": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "5765": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1379818880,
+      "checkedAt": null
+    },
+    "7591": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "9457": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "11672": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1379942310,
+      "checkedAt": null
+    },
+    "13831": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "14194": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "14285": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "14914": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "19568": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "20810": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
     "21818": {
       "status": "source-verified",
       "reason": "12 rights-verified embedded images; editorial call pending",
@@ -5989,11 +6079,215 @@
       "revisionId": 1379072110,
       "checkedAt": "2026-10-20T16:35:31.257Z"
     },
-    "45633": {
-      "status": "paused",
-      "reason": "Gemini HTTP 503",
+    "24903": {
+      "status": "PENDING",
+      "reason": "queued",
       "revisionId": null,
-      "checkedAt": "2026-10-21T01:21:30.535Z"
+      "checkedAt": null
+    },
+    "26094": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "27006": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "27045": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "27566": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "30432": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "33134": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "34069": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "34254": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "36546": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "37476": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "37652": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1380900853,
+      "checkedAt": null
+    },
+    "38289": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "38894": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "43245": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "43616": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "44312": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "44443": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "44940": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "45633": {
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
+      "revisionId": 1377126508,
+      "checkedAt": "2026-10-21T01:38:48.750Z"
+    },
+    "49005": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "49147": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "50758": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "53900": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "54204": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "54751": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "56738": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1366488374,
+      "checkedAt": null
+    },
+    "57768": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "61322": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "66981": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "66997": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "67500": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "73664": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "81553": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1380618636,
+      "checkedAt": null
+    },
+    "82813": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
     },
     "89732": {
       "status": "published",
@@ -6001,11 +6295,1217 @@
       "revisionId": 1380887152,
       "checkedAt": "2026-10-20T16:58:23.918Z"
     },
+    "95157": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "99232": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "147625": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1367687515,
+      "checkedAt": null
+    },
+    "154242": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "164600": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1369828860,
+      "checkedAt": null
+    },
+    "170522": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "174410": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "177680": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "212724": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "228753": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "229666": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1380585492,
+      "checkedAt": null
+    },
+    "230539": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "234984": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "247849": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "254061": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1380708474,
+      "checkedAt": null
+    },
+    "254206": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "263257": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "264902": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "275454": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "276005": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "283810": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "292617": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1380761602,
+      "checkedAt": null
+    },
+    "295445": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1369911186,
+      "checkedAt": null
+    },
+    "295693": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "295888": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "300264": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "308634": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "319703": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "320674": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "332902": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "334322": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "335535": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "351186": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1371663658,
+      "checkedAt": null
+    },
+    "353831": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "356024": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "359626": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "398318": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "407233": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1380990938,
+      "checkedAt": null
+    },
+    "422290": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "429477": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "435800": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "451914": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "463734": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "524267": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1380753731,
+      "checkedAt": null
+    },
+    "532503": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "534060": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "569415": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1364351743,
+      "checkedAt": null
+    },
+    "583117": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "588268": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "592486": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1378640970,
+      "checkedAt": null
+    },
+    "595524": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "599178": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "620299": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "620513": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "623008": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1379508222,
+      "checkedAt": null
+    },
+    "627107": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "627246": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "633853": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "645686": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "650360": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "650906": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "655350": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "666100": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "666280": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "667057": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "667598": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "670499": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1373433823,
+      "checkedAt": null
+    },
+    "676659": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "685328": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "694630": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "711760": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "735092": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "743994": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "745163": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "803661": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "804218": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "917273": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "928591": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "930376": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "972242": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "1038280": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1376824977,
+      "checkedAt": null
+    },
+    "1042649": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "1089237": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1380971520,
+      "checkedAt": null
+    },
+    "1127534": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "1141372": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "1166041": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "1214936": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "1219810": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "1223546": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "1226357": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "1236844": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "1289723": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "1339195": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "1347800": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "1357593": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "1364686": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "1420643": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1380707224,
+      "checkedAt": null
+    },
+    "1436168": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "1442078": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "1502929": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "1568911": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "1589765": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "1591777": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "1598742": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "1638070": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1349611079,
+      "checkedAt": null
+    },
+    "1657023": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "1675329": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "1676383": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "1686485": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "1689284": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "1724851": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "1758866": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "1770354": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1362156586,
+      "checkedAt": null
+    },
+    "1777495": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1375112162,
+      "checkedAt": null
+    },
+    "1816882": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1328920420,
+      "checkedAt": null
+    },
     "1827032": {
       "status": "source-verified",
       "reason": "14 rights-verified embedded images; editorial call pending",
       "revisionId": 1377646042,
       "checkedAt": "2026-10-20T16:35:35.376Z"
+    },
+    "1858051": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "1878007": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "1894020": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "1923228": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "1923764": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "1923965": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1345703627,
+      "checkedAt": null
+    },
+    "1983326": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "1996004": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "1998027": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "2062612": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1351471301,
+      "checkedAt": null
+    },
+    "2115847": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "2201840": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "2240837": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1379704191,
+      "checkedAt": null
+    },
+    "2262519": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1373119799,
+      "checkedAt": null
+    },
+    "2344907": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "2393552": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1376689536,
+      "checkedAt": null
+    },
+    "2412774": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "2508128": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "2518076": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "2538448": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "2649947": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1369336527,
+      "checkedAt": null
+    },
+    "2666861": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "2744000": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "2777609": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "2785896": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "2825768": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "2846545": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "2872472": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "2900050": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "2996055": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "3032314": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "3141410": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "3162270": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "3189819": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "3218648": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "3279967": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "3354802": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "3449959": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "3461563": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "3487647": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "3517212": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "3552556": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "3628737": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "3707638": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "3738278": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "3995387": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "4008035": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "4161867": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "4165915": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "4186421": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "4282781": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1374812623,
+      "checkedAt": null
+    },
+    "4327126": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "4603334": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "4607152": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1377821690,
+      "checkedAt": null
+    },
+    "5021176": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "5121186": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "5142662": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "5213868": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "5286332": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "5546586": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1372390340,
+      "checkedAt": null
+    },
+    "5645470": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1380461433,
+      "checkedAt": null
+    },
+    "5678514": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "5778710": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1377301063,
+      "checkedAt": null
+    },
+    "5787426": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1334578649,
+      "checkedAt": null
+    },
+    "5794935": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "5951576": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "6012335": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "6137001": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "6303503": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "6384129": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "6518682": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "6531362": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "6668934": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1378890851,
+      "checkedAt": null
+    },
+    "6936288": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "6999780": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "7116046": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "7208744": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "7257968": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "7258068": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "7425590": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "7656679": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "7731766": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "8147257": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "8400322": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "8410651": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "8419649": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
     },
     "8455760": {
       "status": "review",
@@ -6013,11 +7513,1769 @@
       "revisionId": 1371384994,
       "checkedAt": "2026-10-21T01:20:44.018Z"
     },
+    "8611104": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "8720264": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "8950930": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "8973755": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1365991723,
+      "checkedAt": null
+    },
+    "9002676": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "9167123": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1323860967,
+      "checkedAt": null
+    },
+    "9282401": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "9301973": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "9398622": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "9436758": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "9528025": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1378994389,
+      "checkedAt": null
+    },
+    "9633432": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "9719652": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "9721593": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "9962115": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "10082018": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "10082768": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "10224447": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "10612527": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "10700479": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "11119616": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "11373849": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1363241944,
+      "checkedAt": null
+    },
+    "12015467": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1364120672,
+      "checkedAt": null
+    },
+    "12163175": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "12686484": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "12810607": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "12868203": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1355326990,
+      "checkedAt": null
+    },
+    "12999450": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "13165796": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1381104812,
+      "checkedAt": null
+    },
+    "13294262": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1380980056,
+      "checkedAt": null
+    },
+    "13468724": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1373226145,
+      "checkedAt": null
+    },
+    "13551707": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "13774191": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "13862336": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "14104519": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "14414065": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1379828951,
+      "checkedAt": null
+    },
+    "15147656": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "16094284": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "16295500": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "16334498": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "16768875": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "17113009": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1378434486,
+      "checkedAt": null
+    },
+    "17123719": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1371471796,
+      "checkedAt": null
+    },
+    "17213240": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "17363244": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "17987598": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1373824867,
+      "checkedAt": null
+    },
+    "18053246": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "18238359": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "18519026": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "18617142": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "18859390": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "18934647": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "18940658": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "19098431": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "19762116": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "19930192": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "20016887": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "20176151": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1380553173,
+      "checkedAt": null
+    },
+    "20636301": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1283457758,
+      "checkedAt": null
+    },
+    "20867787": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "20975518": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "20990504": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1372868836,
+      "checkedAt": null
+    },
+    "21342679": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "21431793": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "21747370": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "21924068": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "22031984": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1316278374,
+      "checkedAt": null
+    },
+    "22057774": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1378735555,
+      "checkedAt": null
+    },
+    "22311897": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "22332885": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "22539338": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "22564916": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "22570610": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "22677497": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "22743441": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "22778766": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "23278339": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "23423379": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1366154475,
+      "checkedAt": null
+    },
+    "23773961": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "24286774": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "24333167": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "24545319": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "24872654": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "24878360": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "25322095": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "25426162": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "25487647": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "25535894": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "25650674": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "26740386": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "27301862": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "27355965": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "27363348": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "27449867": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "27733408": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "28198471": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1372453883,
+      "checkedAt": null
+    },
+    "29213543": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "30096360": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "30686169": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "30974186": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1306965461,
+      "checkedAt": null
+    },
+    "31115405": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "31376228": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "31426964": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "31546082": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1368837774,
+      "checkedAt": null
+    },
+    "31614367": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "31617902": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "31660596": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1372322855,
+      "checkedAt": null
+    },
+    "32036020": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1375667535,
+      "checkedAt": null
+    },
+    "32078647": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "32733444": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "32907212": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "33185681": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1360754269,
+      "checkedAt": null
+    },
+    "33261166": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "33437405": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "33590179": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "33949149": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "34115107": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "34249574": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "34345090": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "34411704": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "34543329": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "34564007": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "34682181": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "36032909": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "36291355": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "36367550": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "36815432": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "37008258": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "37600900": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "37719142": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1373894783,
+      "checkedAt": null
+    },
+    "37872528": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "37998218": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1358497241,
+      "checkedAt": null
+    },
+    "38032018": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "38437692": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "38454300": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1376535017,
+      "checkedAt": null
+    },
+    "38497714": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1379099622,
+      "checkedAt": null
+    },
+    "38777061": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "38845187": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "38878055": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "39198876": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "39699737": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "39766716": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "39958236": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "39963848": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "40159918": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "40240568": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "40429591": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1326489799,
+      "checkedAt": null
+    },
+    "40628153": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "41241080": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "41270742": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1375572078,
+      "checkedAt": null
+    },
+    "41338940": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "41397305": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "41612950": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "41994159": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1377151789,
+      "checkedAt": null
+    },
+    "42089707": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "42132949": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "42333900": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "42431723": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "42848258": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "42962805": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "43656538": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1349497936,
+      "checkedAt": null
+    },
+    "43956140": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "43970763": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "44035599": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1380983925,
+      "checkedAt": null
+    },
+    "44581660": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "44589765": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "44895973": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "45508601": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "46399119": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "46504539": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "46543281": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "46578934": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "46590527": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1334159431,
+      "checkedAt": null
+    },
+    "46676535": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1364028474,
+      "checkedAt": null
+    },
+    "46840722": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "47276677": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "47561162": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "47671001": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "47720795": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "47877209": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "48090580": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "48302927": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "48691882": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "49213501": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1378612817,
+      "checkedAt": null
+    },
+    "49411310": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "49557688": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1378395460,
+      "checkedAt": null
+    },
+    "49602444": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "49682842": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "50714370": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "50781692": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "51422824": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "51522180": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "51614357": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1318675006,
+      "checkedAt": null
+    },
+    "51682055": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "51774438": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "52049646": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "52737319": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1365373171,
+      "checkedAt": null
+    },
+    "52759037": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "53033394": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "53106462": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "53125280": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "53188837": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "53251617": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "53335135": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1361547418,
+      "checkedAt": null
+    },
+    "53391866": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "53467438": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1380570004,
+      "checkedAt": null
+    },
+    "53695544": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "53755234": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "54030514": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "54137111": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1376870150,
+      "checkedAt": null
+    },
+    "55204891": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "55574351": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1344910833,
+      "checkedAt": null
+    },
+    "55760582": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "55893053": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "56320645": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "56391106": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1363905245,
+      "checkedAt": null
+    },
+    "56582473": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "56767592": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "57158394": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "57214291": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "57296076": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "57554825": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1350081547,
+      "checkedAt": null
+    },
+    "58326593": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "58562797": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1381124908,
+      "checkedAt": null
+    },
+    "58613604": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "59358771": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1347249197,
+      "checkedAt": null
+    },
+    "59774066": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "60284169": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "60454926": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "60637169": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "60660687": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1380538386,
+      "checkedAt": null
+    },
+    "60779659": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1366493795,
+      "checkedAt": null
+    },
+    "60847643": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1380178048,
+      "checkedAt": null
+    },
+    "61126352": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1380824194,
+      "checkedAt": null
+    },
+    "61443482": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1349951424,
+      "checkedAt": null
+    },
+    "61650441": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "61864508": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "62018441": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "62270764": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "63030629": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1380327090,
+      "checkedAt": null
+    },
+    "63074081": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1381055215,
+      "checkedAt": null
+    },
+    "63406512": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "63418335": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "63465223": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "63567907": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "63662981": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1364435740,
+      "checkedAt": null
+    },
+    "63842993": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
     "63925372": {
       "status": "source-verified",
       "reason": "3 rights-verified embedded images; editorial call pending",
       "revisionId": 1378076101,
       "checkedAt": "2026-10-20T16:35:24.058Z"
+    },
+    "64361239": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "64826131": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "64902589": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1337480612,
+      "checkedAt": null
+    },
+    "65091614": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1367889753,
+      "checkedAt": null
+    },
+    "65093954": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "65298680": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1345774724,
+      "checkedAt": null
+    },
+    "65516671": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "65816420": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1370282774,
+      "checkedAt": null
+    },
+    "65835041": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "65872280": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1376652822,
+      "checkedAt": null
+    },
+    "65890094": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "65936627": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1373626921,
+      "checkedAt": null
+    },
+    "66069494": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "66222507": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1319503314,
+      "checkedAt": null
+    },
+    "66550316": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "66672242": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "66760047": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "66828038": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "67029508": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "67154389": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "67368514": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "67387083": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1171708090,
+      "checkedAt": null
+    },
+    "67492243": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "67568559": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1376223353,
+      "checkedAt": null
+    },
+    "67583363": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "67928046": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "68043187": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1380322183,
+      "checkedAt": null
+    },
+    "68169189": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "68229989": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "68563040": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1377527816,
+      "checkedAt": null
+    },
+    "69082273": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1291869686,
+      "checkedAt": null
+    },
+    "69411572": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "69635423": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "69713049": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "69914560": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1364718788,
+      "checkedAt": null
+    },
+    "70018886": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "70105459": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "70131321": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "70549826": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1377898117,
+      "checkedAt": null
+    },
+    "70601084": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1372328545,
+      "checkedAt": null
+    },
+    "70704819": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1372564013,
+      "checkedAt": null
+    },
+    "71011896": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1277234480,
+      "checkedAt": null
+    },
+    "71204259": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1378984097,
+      "checkedAt": null
+    },
+    "71397452": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "71498816": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "71852937": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
     },
     "71983491": {
       "status": "source-verified",
@@ -6025,18 +9283,594 @@
       "revisionId": 1377298310,
       "checkedAt": "2026-10-20T17:04:19.641Z"
     },
+    "72279466": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "72339457": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1368556282,
+      "checkedAt": null
+    },
+    "72587491": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "72796144": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "73176035": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "73189274": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "73196367": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "73329192": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "73361785": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1359315796,
+      "checkedAt": null
+    },
+    "73539481": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1368843371,
+      "checkedAt": null
+    },
+    "74366520": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "74623488": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "74683957": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "74692541": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "74786445": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1376699100,
+      "checkedAt": null
+    },
+    "74790405": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "74792478": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "74820447": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1376698894,
+      "checkedAt": null
+    },
+    "74845559": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1350592293,
+      "checkedAt": null
+    },
+    "74970752": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1356345751,
+      "checkedAt": null
+    },
+    "74972533": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "75279733": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "75316280": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "75421891": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "75603722": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "75746300": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1339767114,
+      "checkedAt": null
+    },
+    "75750141": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1372985602,
+      "checkedAt": null
+    },
+    "75778478": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1376699310,
+      "checkedAt": null
+    },
+    "75904154": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "75991123": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "76043986": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1347077545,
+      "checkedAt": null
+    },
+    "76121002": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "76509216": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "76741852": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "76802291": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1379099173,
+      "checkedAt": null
+    },
+    "76986110": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "77122943": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "77205158": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "77221081": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "77244847": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "77274995": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "77294272": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "77422677": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1364169960,
+      "checkedAt": null
+    },
+    "77519023": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "77714691": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "77842374": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "78052299": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "78057836": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "78088507": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1371066597,
+      "checkedAt": null
+    },
+    "78256342": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1368177387,
+      "checkedAt": null
+    },
+    "78292907": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1357427744,
+      "checkedAt": null
+    },
+    "78554064": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "78843525": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1373197699,
+      "checkedAt": null
+    },
     "79425227": {
       "status": "source-verified",
       "reason": "2 rights-verified embedded images; editorial call pending",
       "revisionId": 1380582529,
       "checkedAt": "2026-10-20T16:35:04.695Z"
     },
+    "79511869": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "79549232": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "79652447": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1376065279,
+      "checkedAt": null
+    },
+    "79761972": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "79798169": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1372170273,
+      "checkedAt": null
+    },
+    "79836548": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "80005393": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "80050322": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "80275802": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "80327476": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "80384831": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "80598110": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "80758313": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "80852116": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "81091765": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "81094637": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1359335016,
+      "checkedAt": null
+    },
+    "81117122": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1333929285,
+      "checkedAt": null
+    },
+    "81143155": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "81225292": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "81409826": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "81429670": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "81474052": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "81481334": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "81744022": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1372723593,
+      "checkedAt": null
+    },
+    "82411497": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "82494979": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1379883816,
+      "checkedAt": null
+    },
+    "82517449": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1374815333,
+      "checkedAt": null
+    },
+    "82572163": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "82636318": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "82919461": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "82993222": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "83317465": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1368588682,
+      "checkedAt": null
+    },
+    "83397952": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "83447061": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "83529946": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "83542752": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1373933691,
+      "checkedAt": null
+    },
+    "83550617": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "83864026": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "83952679": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "84029747": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
+    "84029769": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": null,
+      "checkedAt": null
+    },
     "84311223": {
       "status": "rejected",
       "reason": "insufficient-source-text-or-embedded-images",
       "revisionId": 1379860215,
       "checkedAt": "2026-10-20T16:35:21.497Z"
+    },
+    "84545431": {
+      "status": "PENDING",
+      "reason": "queued",
+      "revisionId": 1380741566,
+      "checkedAt": null
     }
   },
-  "updatedAt": "2026-10-21T01:21:30.536Z"
+  "updatedAt": "2026-10-21T01:38:48.755Z",
+  "dailyUsage": {
+    "day": "2026-10-21",
+    "calls": 0,
+    "tokens": 0,
+    "usageUnknown": false
+  }
 }
