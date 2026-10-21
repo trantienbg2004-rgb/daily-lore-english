@@ -45,6 +45,11 @@ jobs:
           cache-dependency-path: staging/package-lock.json
       - run: npm ci
         working-directory: staging
+      - name: Refill Wikipedia queue only when a topic runs low
+        working-directory: staging
+        env:
+          SAGA_WIKI_CHECKPOINT_BRANCH: feat/saga-wikipedia-first-20261020
+        run: node scripts/wiki-pipeline.mjs topup --min-per-topic=8 --max-topics=3
       - name: Check free Gemini model access without generating text
         if: github.event.inputs.max_calls != '0'
         id: free_model
