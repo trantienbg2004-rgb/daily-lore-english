@@ -5990,10 +5990,10 @@
       "checkedAt": "2026-10-20T16:35:31.257Z"
     },
     "45633": {
-      "status": "source-verified",
-      "reason": "2 rights-verified embedded images; editorial call pending",
-      "revisionId": 1377126508,
-      "checkedAt": "2026-10-20T16:34:59.673Z"
+      "status": "paused",
+      "reason": "Gemini HTTP 503",
+      "revisionId": null,
+      "checkedAt": "2026-10-21T01:21:30.535Z"
     },
     "89732": {
       "status": "published",
@@ -6008,10 +6008,10 @@
       "checkedAt": "2026-10-20T16:35:35.376Z"
     },
     "8455760": {
-      "status": "source-verified",
-      "reason": "4 rights-verified embedded images; editorial call pending",
+      "status": "review",
+      "reason": "editorial: A1-A2:page-4:unsupported-number-1914,B1-B2:page-4:unsupported-number-1914",
       "revisionId": 1371384994,
-      "checkedAt": "2026-10-20T16:34:50.481Z"
+      "checkedAt": "2026-10-21T01:20:44.018Z"
     },
     "63925372": {
       "status": "source-verified",
@@ -6038,5 +6038,5 @@
       "checkedAt": "2026-10-20T16:35:21.497Z"
     }
   },
-  "updatedAt": "2026-10-21T01:15:18.407Z"
+  "updatedAt": "2026-10-21T01:21:30.536Z"
 }
