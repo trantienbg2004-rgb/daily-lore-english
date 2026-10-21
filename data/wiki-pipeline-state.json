@@ -9278,10 +9278,10 @@
       "checkedAt": null
     },
     "71983491": {
-      "status": "FETCHED",
-      "reason": "pinned-source-ready",
+      "status": "EVIDENCE_READY",
+      "reason": "5 rights-verified embedded images",
       "revisionId": 1377298310,
-      "checkedAt": "2026-10-21T01:39:44.678Z"
+      "checkedAt": "2026-10-21T01:39:45.967Z"
     },
     "72279466": {
       "status": "PENDING",
@@ -9866,7 +9866,7 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-10-21T01:39:44.686Z",
+  "updatedAt": "2026-10-21T01:39:45.968Z",
   "dailyUsage": {
     "day": "2026-10-21",
     "calls": 3,
