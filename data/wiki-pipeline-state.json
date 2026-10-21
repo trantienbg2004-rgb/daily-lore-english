@@ -9134,10 +9134,10 @@
       "checkedAt": null
     },
     "67492243": {
-      "status": "EVIDENCE_READY",
-      "reason": "3 rights-verified embedded images",
+      "status": "DRAFTED",
+      "reason": "draft durably saved before validation",
       "revisionId": 1367533689,
-      "checkedAt": "2026-10-21T18:09:34.477Z"
+      "checkedAt": "2026-10-21T18:09:55.194Z"
     },
     "67568559": {
       "status": "PENDING",
@@ -9866,7 +9866,7 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-10-21T18:09:53.921Z",
+  "updatedAt": "2026-10-21T18:09:55.197Z",
   "dailyUsage": {
     "day": "2026-10-21",
     "calls": 27,

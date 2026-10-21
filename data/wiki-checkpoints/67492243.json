@@ -2,10 +2,10 @@
   "pageId": 67492243,
   "title": "Economy of the Inca Empire",
   "topic": "Economy",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1367533689,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1367533689",
-  "reason": "3 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -211,5 +211,164 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1367533689"
     }
   ],
-  "updatedAt": "2026-10-21T18:09:34.478Z"
+  "updatedAt": "2026-10-21T18:09:55.196Z",
+  "draft": {
+    "outline": [
+      "Introduction to the Inca economy and collective labor",
+      "Scholarly debates on economic classification and models",
+      "The role of the ayllu, land division, and local customs",
+      "Absence of wide currency, labor rewards, and Quipu records",
+      "Infrastructure, roads, bridges, and rapid communication systems",
+      "State redistribution, storehouses, and the limits of the system"
+    ],
+    "variants": {
+      "A1-A2": {
+        "headline": "The Inca Empire Economy",
+        "pages": [
+          {
+            "text": "The Inca Empire lasted from 1438 to 1532. Its economy grew through farming and sharing goods between groups. People worked together as a team. This helped them live well in the high mountains.",
+            "evidenceIds": [
+              "P1",
+              "P2"
+            ]
+          },
+          {
+            "text": "Families in an ayllu shared the land and worked hard. They grew many types of potatoes and corn. Officials counted the men to see who needed to work on roads, farms, or buildings.",
+            "evidenceIds": [
+              "P7",
+              "P9",
+              "P10"
+            ]
+          },
+          {
+            "text": "Most places did not use money. Instead, people helped each other and expected help back. The government took extra food and clothes and gave them to people who needed help.",
+            "evidenceIds": [
+              "P2",
+              "P12",
+              "P13"
+            ]
+          },
+          {
+            "text": "The Incas did not have a written language. They used knotted strings called quipu to count goods and remember important numbers. Special workers kept these strings safe and correct.",
+            "evidenceIds": [
+              "P11"
+            ]
+          },
+          {
+            "text": "Workers built long roads and strong rope bridges over deep rivers. These roads helped rulers send messages across the land very fast using young runners called chasquis.",
+            "evidenceIds": [
+              "P14",
+              "P15",
+              "P16"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "How the Inca Empire Managed Wealth",
+        "pages": [
+          {
+            "text": "Lasting from 1438 to 1532, the Inca Empire built a centrally organized economy based on collective labor and local traditions of reciprocity. Scholars have long debated its exact nature, comparing it to feudal, socialist, or redistributive systems.",
+            "evidenceIds": [
+              "P1",
+              "P2",
+              "P4",
+              "P5"
+            ]
+          },
+          {
+            "text": "The basic social unit was the ayllu, a group of families that owned land collectively. Leaders called kurakas divided the land using a local unit called the tupus. Officials regularly counted the population to organize labor conscription for farming, construction, and livestock.",
+            "evidenceIds": [
+              "P7",
+              "P9",
+              "P10"
+            ]
+          },
+          {
+            "text": "Most Inca territories did not use currency. Instead, labor was rewarded through social standing and future mutual assistance, a principle known as ayni. The state collected a portion of crops and labor, redistributing surplus goods to communities in need.",
+            "evidenceIds": [
+              "P12",
+              "P13"
+            ]
+          },
+          {
+            "text": "Because the empire lacked a written language, administrators used knotted colored strings called quipu to record stored goods and available workforces. Trained specialists known as quipucamayocs managed these complex numerical records.",
+            "evidenceIds": [
+              "P11"
+            ]
+          },
+          {
+            "text": "To connect the empire, engineers built extensive road networks like the Qhapaq Ñan and suspension bridges over deep canyons. Fast messengers called chasquis relayed important news and alerts across the mountains every day.",
+            "evidenceIds": [
+              "P14",
+              "P15",
+              "P16"
+            ]
+          },
+          {
+            "text": "State storehouses held enormous quantities of goods. The government relied on these accumulated supplies to meet administrative needs and provide continuous gifts to local lords and military chiefs to maintain political loyalty.",
+            "evidenceIds": [
+              "P17"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "Economic Structures of the Inca State",
+        "pages": [
+          {
+            "text": "Spanning from 1438 to 1532, the Inca Empire established an economic apparatus centered on collective labor, tribute regulation, and institutionalized reciprocity. While early twentieth-century scholars variously classified the system as feudal, slave, or socialist, subsequent academic consensus adopted Karl Polanyi's substantivist frameworks, notably John Murra's vertical archipelago model.",
+            "evidenceIds": [
+              "P1",
+              "P2",
+              "P4",
+              "P5"
+            ]
+          },
+          {
+            "text": "Economic productivity stemmed from the ayllu, a socio-territorial framework of kin-based families whose collective land was distributed by kurakas using standardized measurements called tupus. State censuses facilitated labor conscription, mobilizing adolescents and adults for specialized tasks in agriculture, textile production, and infrastructure.",
+            "evidenceIds": [
+              "P7",
+              "P9",
+              "P10"
+            ]
+          },
+          {
+            "text": "While monetary currencies were largely absent outside coastal regions, labor prestations were compensated through social standing and mutual assistance principles like ayni and minka. The central apparatus gathered substantial agricultural surpluses to provision villages facing scarcity.",
+            "evidenceIds": [
+              "P12",
+              "P13"
+            ]
+          },
+          {
+            "text": "In the absence of a written script, administration relied on the quipu—an intricate system of knotted, color-coded strings managed by specialists called quipucamayocs. These devices quantified stored commodities, demographic data, and potentially oral narratives.",
+            "evidenceIds": [
+              "P11"
+            ]
+          },
+          {
+            "text": "Imperial authority was projected through the Qhapaq Ñan road network and sophisticated suspension bridges woven from natural fibers. This infrastructure enabled rapid communication via chasqui runners stationed in tambos and immediate warning alerts transmitted through bonfire chains.",
+            "evidenceIds": [
+              "P14",
+              "P15",
+              "P16"
+            ]
+          },
+          {
+            "text": "The state apparatus required vast stockpiles within central storehouses. Much of this accumulated wealth was rapidly consumed by reciprocal obligations, as the administration continuously supplied gifts to ethnic lords, military chiefs, and huacas to preserve political stability.",
+            "evidenceIds": [
+              "P17"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2707,
+    "output": 1617,
+    "total": 4324
+  },
+  "validation": null
 }
