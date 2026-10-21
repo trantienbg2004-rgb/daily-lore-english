@@ -9356,10 +9356,10 @@
       "checkedAt": "2026-10-21T13:02:01.610Z"
     },
     "74683957": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
+      "revisionId": 1381139894,
+      "checkedAt": "2026-10-21T22:36:41.722Z"
     },
     "74692541": {
       "status": "EVIDENCE_READY",
@@ -9866,7 +9866,7 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-10-21T22:36:35.403Z",
+  "updatedAt": "2026-10-21T22:36:41.723Z",
   "dailyUsage": {
     "day": "2026-10-21",
     "calls": 37,
