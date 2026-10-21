@@ -2,9 +2,360 @@
   "pageId": 34254,
   "title": "Yellow fever",
   "topic": "Health",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1380935170,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380935170",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-21T22:32:43.243Z"
+  "reason": "9 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Aedes aegypti bloodfeeding CDC Gathany.jpg",
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/f/f1/Aedes_aegypti_bloodfeeding_CDC_Gathany.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "fileTitle": "File:Aedes aegypti bloodfeeding CDC Gathany.jpg",
+        "caption": "Aedes aegypti feeding",
+        "alt": "",
+        "description": "The yellow fever mosquito Aedes aegypti, taking a bloodmeal.",
+        "date": "2005",
+        "section": "Transmission",
+        "position": 0,
+        "provenance": {
+          "credit": "James Gathany",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Aedes_aegypti_bloodfeeding_CDC_Gathany.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Yellow_fever",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380935170",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Aedes aegypti E-A-Goeldi 1905.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/50/Aedes_aegypti_E-A-Goeldi_1905.jpg/960px-Aedes_aegypti_E-A-Goeldi_1905.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Aedes aegypti E-A-Goeldi 1905.jpg",
+        "caption": "Adults of the yellow fever mosquito A. aegypti: The male is on the left, females are on the right. Only the female mosquito bites humans to transmit the disease.",
+        "alt": "",
+        "description": "Colour print of the yellow fever or dengue mosquito Aedes aegypti (then called Stegomyia fasciata, today also Stegomyia aegypti). To the left, the male, in the middle and on the right, the female. Above left, a flying pair in copula.",
+        "date": "1905",
+        "section": "Transmission",
+        "position": 1,
+        "provenance": {
+          "credit": "Own scan, slightly modified. Original by Emil August Goeldi (1859 - 1917).",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Aedes_aegypti_E-A-Goeldi_1905.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Yellow_fever",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380935170",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Yellow fever certificate.JPG",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/98/Yellow_fever_certificate.JPG/960px-Yellow_fever_certificate.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Yellow fever certificate.JPG",
+        "caption": "The cover of a certificate that confirms the holder has been vaccinated against yellow fever",
+        "alt": "",
+        "description": "A photograph of a certificate of vaccination as required to prove that someone has been vaccinated against yellow fever",
+        "date": "2009-11-03",
+        "section": "Vaccination",
+        "position": 2,
+        "provenance": {
+          "credit": "Smartse",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Yellow_fever_certificate.JPG",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Yellow_fever",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380935170",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Yellow fever vaccination travel requirements map.svg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/07/Yellow_fever_vaccination_travel_requirements_map.svg/960px-Yellow_fever_vaccination_travel_requirements_map.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Yellow fever vaccination travel requirements map.svg",
+        "caption": "Vaccination against yellow fever 10 days before entering this country/territory is required for travellers coming from... All countries Risk countries (including airport transfers) Risk countries (excluding airport transfers) No requirement (risk country) No requirement (non-risk country)",
+        "alt": "",
+        "description": "Yellow fever vaccination travel requirements map. Vaccination against yellow fever 10 days before entering this country/territory is required for travellers coming from... All countries Risk countries (including airport transfers1) Risk countries (excluding airport transfers2) No requirement (risk country)3 No requirement (non-risk country) These countries/territories also require the vaccination of travellers who transit through a risk country's airport, usually if this takes longer than 12 hours, but sometimes there is no minimum transfer tim",
+        "date": "2020-11-30",
+        "section": "Vaccination",
+        "position": 3,
+        "provenance": {
+          "credit": "Nederlandse Leeuw",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Yellow_fever_vaccination_travel_requirements_map.svg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Yellow_fever",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380935170",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Luchemos todos contra el dengue.jpg"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Yellow fever Africa 2009.jpeg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/59/Yellow_fever_Africa_2009.jpeg/960px-Yellow_fever_Africa_2009.jpeg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Yellow fever Africa 2009.jpeg",
+        "caption": "Areas with risk of yellow fever in Africa (2017)",
+        "alt": "",
+        "description": "Yellow fever map CDC. Current as of November 2022.",
+        "date": "2023-06-28 06:57:37",
+        "section": "Africa",
+        "position": 5,
+        "provenance": {
+          "credit": "CDC",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Yellow_fever_Africa_2009.jpeg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Yellow_fever",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380935170",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Yellow fever South America 2009.jpeg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6b/Yellow_fever_South_America_2009.jpeg/960px-Yellow_fever_South_America_2009.jpeg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Yellow fever South America 2009.jpeg",
+        "caption": "Areas with risk of yellow fever in South America (2018)",
+        "alt": "",
+        "description": "Gelbfieber in Südamerika 2018. Areas with risk of yellow fever in South America as of 2022.",
+        "date": "2023-06-28 06:56:12",
+        "section": "South America",
+        "position": 6,
+        "provenance": {
+          "credit": "https://www.cdc.gov/yellowfever/maps/south_america.html",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Yellow_fever_South_America_2009.jpeg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Yellow_fever",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380935170",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Affinerie des sucres (1).JPG",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/aa/Affinerie_des_sucres_%281%29.JPG/960px-Affinerie_des_sucres_%281%29.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Affinerie des sucres (1).JPG",
+        "caption": "Sugar curing house, 1762: Sugar pots and jars on sugar plantations served as breeding place for larvae of A. aegypti, the vector of yellow fever.",
+        "alt": "",
+        "description": "Sugar curing house, 1762. Sugar pots and jars on sugar plantation served as breeding place for larvae of A. aegypti, the vector of yellow fever. Image Reference affinerie_des_sucres, as shown on www.slaveryimages.org, compiled by Jerome Handler and Michael Tuite, and sponsored by the Virginia Foundation for the Humanities and the University of Virginia Library.\"",
+        "date": "2011-01-27",
+        "section": "Early history",
+        "position": 7,
+        "provenance": {
+          "credit": "Denis Diderot, Encyclopédie, ou, Dictionnaire Raisonné des Sciences, des Arts et des Metiers . . . Recueil de Planches, sur les Sciences . . . (Paris, 1762), vol. 1, plate VI. (Copy in Special Collections, University of Virginia Library)",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Affinerie_des_sucres_(1).JPG",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Yellow_fever",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380935170",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Yellow Fever Deaths Lafayette Cemetery 1 New Orleans.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/88/Yellow_Fever_Deaths_Lafayette_Cemetery_1_New_Orleans.jpg/960px-Yellow_Fever_Deaths_Lafayette_Cemetery_1_New_Orleans.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Yellow Fever Deaths Lafayette Cemetery 1 New Orleans.jpg",
+        "caption": "Headstones of people who died in the yellow fever epidemic of 1878 can be found in New Orleans' cemeteries.",
+        "alt": "",
+        "description": "Yellow Fever Deaths Lafayette Cemetery 1 New Orleans",
+        "date": "2014-02-26 08:20:27",
+        "section": "Early history",
+        "position": 8,
+        "provenance": {
+          "credit": "Michael Homan",
+          "license": "CC BY 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Yellow_Fever_Deaths_Lafayette_Cemetery_1_New_Orleans.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Yellow_fever",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380935170",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:James Biddle to Sec Nav Thompson re deaths aboard USS Macedonian 3 August 1822 p 1.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f9/James_Biddle_to_Sec_Nav_Thompson_re_deaths_aboard_USS_Macedonian_3_August_1822_p_1.jpg/960px-James_Biddle_to_Sec_Nav_Thompson_re_deaths_aboard_USS_Macedonian_3_August_1822_p_1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:James Biddle to Sec Nav Thompson re deaths aboard USS Macedonian 3 August 1822 p 1.jpg",
+        "caption": "A page from Commodore James Biddle's list of the 76 dead (74 of yellow fever) aboard the USS Macedonian, dated 3 August 1822",
+        "alt": "",
+        "description": "Commodore James Biddle to Sec Nav dtd 3 August 1822 reporting 76 deaths aboard the USS Macedonian of yellow fever. Enclosure first page list of dead.",
+        "date": "1822",
+        "section": "Early history",
+        "position": 9,
+        "provenance": {
+          "credit": "Commodore James Biddle USN",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:James_Biddle_to_Sec_Nav_Thompson_re_deaths_aboard_USS_Macedonian_3_August_1822_p_1.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Yellow_fever",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380935170",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "735402585bb39c04250e64eee4b92b035be8dee80d17a5d9cedcff49e822225a",
+      "heading": "Lead",
+      "excerpt": "Yellow fever is a viral disease of typically short duration. In most cases, symptoms include fever, chills, loss of appetite, nausea, muscle",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380935170"
+    },
+    {
+      "id": "P2",
+      "hash": "e5f73218aee254baa20054dd90935b43e8a1e6d7bf76c65c75dc7a6a67d149ff",
+      "heading": "Lead",
+      "excerpt": "The disease is caused by the yellow fever virus and is spread by the bite of an infected mosquito. It infects humans, other primates, and se",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380935170"
+    },
+    {
+      "id": "P3",
+      "hash": "e34d3c990646aaee5b67555b0060b82330b98a9cc0594e588523403803f15c1e",
+      "heading": "Lead",
+      "excerpt": "A safe and effective vaccine against yellow fever exists, and some countries require vaccinations for travelers. Other efforts to prevent in",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380935170"
+    },
+    {
+      "id": "P4",
+      "hash": "bc773c66bd2b735e75c18e492d8bd12e057124b51badbb9a12c9b5c62fb705f7",
+      "heading": "Lead",
+      "excerpt": "In 2013, yellow fever was estimated to have caused 130,000 severe infections and 78,000 deaths in Africa. Approximately 90 percent of an est",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380935170"
+    },
+    {
+      "id": "P5",
+      "hash": "041cb8e22b1a8024732bf9e63bfc3539cb951aaee7106f2c031fbb6c8e56e935",
+      "heading": "Lead",
+      "excerpt": "The disease originated in Africa and spread to the Americas starting in the 17th century with the European trafficking of enslaved Africans ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380935170"
+    },
+    {
+      "id": "P6",
+      "hash": "094bbdab4d8858864a9144e82155eeb6333f826639760b453d7052de56c85165",
+      "heading": "Signs and symptoms",
+      "excerpt": "Yellow fever begins after an incubation period of three to six days. Most cases cause only mild infection with fever, headache, chills, back",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380935170"
+    },
+    {
+      "id": "P7",
+      "hash": "3d4eea3ab3f3698d6beb04671f5aea1fd9af7ef0f75ecf52606c507e9be1b562",
+      "heading": "Complication",
+      "excerpt": "Yellow fever can lead to death for 20% to 50% of those who develop severe disease. Jaundice, fatigue, heart rhythm problems, seizures and in",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380935170"
+    },
+    {
+      "id": "P8",
+      "hash": "42924759178498c9c2cd8c952461b527b1b2e89b6854d7414d9491af94c9d296",
+      "heading": "Cause",
+      "excerpt": "Yellow fever is caused by Yellow fever virus (YFV), an enveloped RNA virus 40–50 nm in width, the type species and namesake of the family Fl",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380935170"
+    },
+    {
+      "id": "P9",
+      "hash": "4b9f32163df7439e626bb3186620a69134f608faffe742ab9528d813d890b230",
+      "heading": "Transmission",
+      "excerpt": "Yellow fever virus is mainly transmitted through the bite of the yellow fever mosquito Aedes aegypti, but other mostly Aedes mosquitoes such",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380935170"
+    },
+    {
+      "id": "P10",
+      "hash": "68023c7c81184b0b00296d429190d0be767e5d3a439179e26be2173550ee8559",
+      "heading": "Pathogenesis",
+      "excerpt": "After transmission from a mosquito, the viruses replicate in the lymph nodes and infect dendritic cells in particular. From there, they reac",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380935170"
+    },
+    {
+      "id": "P11",
+      "hash": "da9718b8d1d88f717a8b8cd75292f6a5d685a2cbe7819cf864244b4ba1706cd8",
+      "heading": "Diagnosis",
+      "excerpt": "Yellow fever is most frequently a clinical diagnosis, based on symptomatology and travel history. Mild cases of the disease can only be conf",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380935170"
+    },
+    {
+      "id": "P12",
+      "hash": "849ac60ccdf0f6ca35ac2476fbcd4129210e29580eb6ff5f027b818d114ae09b",
+      "heading": "Prevention",
+      "excerpt": "Personal prevention of yellow fever includes vaccination and avoidance of mosquito bites in areas where yellow fever is endemic. Institution",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380935170"
+    },
+    {
+      "id": "P13",
+      "hash": "85404bd208abfc3d96f30db64c291f9ff430f6791ecdf44c8dc6ffb34d35ebd4",
+      "heading": "Vaccination",
+      "excerpt": "Vaccination is recommended for those traveling to affected areas, because non-native people tend to develop more severe illness when infecte",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380935170"
+    },
+    {
+      "id": "P14",
+      "hash": "272e20a12e34a8a379e6b7ae9a7eaa5f13461578d65c968ecc089781f09b3e5e",
+      "heading": "Compulsory vaccination",
+      "excerpt": "Some countries in Asia are considered to be potentially in danger of yellow fever epidemics, as both mosquitoes with the capability to trans",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380935170"
+    },
+    {
+      "id": "P15",
+      "hash": "39e2c8207028eb28bca06c0301bf4a623c9030316dfdb288761d1f19c66458df",
+      "heading": "Vector control",
+      "excerpt": "Control of the yellow fever mosquito A. aegypti is of major importance, especially because the same mosquito can also transmit dengue fever ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380935170"
+    },
+    {
+      "id": "P16",
+      "hash": "5839ab8e633ea2186a18c88eb0d17144272e5496722e597684ae5443dd84edf5",
+      "heading": "Treatment",
+      "excerpt": "As with other Flavivirus infections, no cure is known for yellow fever. Hospitalization is advisable and intensive care may be necessary bec",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380935170"
+    },
+    {
+      "id": "P17",
+      "hash": "e79666601c5a501e29359da2438ecc84354bcbcc18e79c97a09fb86236dbd308",
+      "heading": "Epidemiology",
+      "excerpt": "Yellow fever is common in tropical and subtropical areas of South America and Africa. Worldwide, about 600 million people live in endemic ar",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380935170"
+    },
+    {
+      "id": "P18",
+      "hash": "bab99f9bc96377e53d075e64ae63b12afa44deffde39b731997c50db505f33f5",
+      "heading": "Africa",
+      "excerpt": "An estimated 90% of yellow fever infections occur on the African continent. In 2016, a large outbreak originated in Angola and spread to nei",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380935170"
+    }
+  ],
+  "updatedAt": "2026-10-21T22:32:49.509Z"
 }
