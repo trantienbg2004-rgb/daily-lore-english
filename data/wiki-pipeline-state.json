@@ -6458,10 +6458,10 @@
       "checkedAt": "2026-10-21T07:56:20.250Z"
     },
     "319703": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
+      "revisionId": 1380496327,
+      "checkedAt": "2026-10-21T18:15:49.839Z"
     },
     "320674": {
       "status": "RETRY_LATER",
@@ -9866,7 +9866,7 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-10-21T18:15:43.550Z",
+  "updatedAt": "2026-10-21T18:15:49.841Z",
   "dailyUsage": {
     "day": "2026-10-21",
     "calls": 30,
