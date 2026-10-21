@@ -4,6 +4,14 @@ on:
   schedule:
     - cron: '23 1,7,13,19 * * *'
   workflow_dispatch:
+    inputs:
+      max_calls:
+        description: Gemini calls for this manual run
+        type: choice
+        options:
+          - '0'
+          - '8'
+        default: '0'
 
 permissions:
   contents: write
@@ -43,7 +51,8 @@ jobs:
           SAGA_WIKI_FREE_TIER_CONFIRMED: '1'
           SAGA_WIKI_CHECKPOINT_BRANCH: feat/saga-wikipedia-first-20261020
           SAGA_WIKI_MODEL: gemini-3.5-flash-lite
-        run: node scripts/wiki-pipeline.mjs batch --max-calls=8 --max-candidates=24
+          SAGA_WIKI_MAX_CALLS: ${{ github.event.inputs.max_calls || '8' }}
+        run: node scripts/wiki-pipeline.mjs batch --max-calls="$SAGA_WIKI_MAX_CALLS" --max-candidates=24
       - name: Verify staged stories and Reader
         working-directory: staging
         run: |
