@@ -6278,10 +6278,10 @@
       "checkedAt": "2026-10-21T03:07:48.364Z"
     },
     "81553": {
-      "status": "PENDING",
-      "reason": "queued",
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
       "revisionId": 1380618636,
-      "checkedAt": null
+      "checkedAt": "2026-10-21T13:02:03.998Z"
     },
     "82813": {
       "status": "EVIDENCE_READY",
@@ -9866,7 +9866,7 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-10-21T13:02:01.611Z",
+  "updatedAt": "2026-10-21T13:02:04.007Z",
   "dailyUsage": {
     "day": "2026-10-21",
     "calls": 4,
