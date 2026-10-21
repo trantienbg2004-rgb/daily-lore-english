@@ -6194,10 +6194,10 @@
       "checkedAt": "2026-10-21T01:41:19.789Z"
     },
     "45633": {
-      "status": "RETRY_LATER",
-      "reason": "Gemini HTTP 404; preserve candidate",
+      "status": "EVIDENCE_READY",
+      "reason": "2 rights-verified embedded images",
       "revisionId": 1377126508,
-      "checkedAt": "2026-10-21T03:56:52.077Z"
+      "checkedAt": "2026-10-21T13:27:50.067Z"
     },
     "49005": {
       "status": "EVIDENCE_READY",
@@ -9866,7 +9866,7 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-10-21T13:02:58.221Z",
+  "updatedAt": "2026-10-21T13:27:50.073Z",
   "dailyUsage": {
     "day": "2026-10-21",
     "calls": 4,
