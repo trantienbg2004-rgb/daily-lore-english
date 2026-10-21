@@ -31,7 +31,7 @@ jobs:
         env:
           SAGA_WIKI_GEMINI_KEY: ${{ secrets.SAGA_IMAGE_TEST_API_KEY }}
           SAGA_WIKI_FREE_TIER_CONFIRMED: '1'
-          SAGA_WIKI_MODEL: gemini-2.5-flash-lite
+          SAGA_WIKI_MODEL: gemini-3.5-flash-lite
           SAGA_WIKI_CHECKPOINT_BRANCH: ${{ github.ref_name }}
           SAGA_WIKI_BATCH_MODE: ${{ contains(github.event.head_commit.message, '[wiki-batch-once]') }}
         run: |

@@ -74,8 +74,8 @@ test('only confirmed free-tier text models can be selected',async()=>{
  const fetchImpl=async url=>{requested=url;return {ok:true,status:200,json:async()=>({
   candidates:[{content:{parts:[{text:'{}'}]}}],usageMetadata:{promptTokenCount:1,candidatesTokenCount:1,totalTokenCount:2}})}}
  await callFreeWikiGemini('prompt',{apiKey:'test-key',freeTierConfirmed:true,budget:{maxCalls:1},fetchImpl,
-  model:'gemini-2.5-flash-lite'})
- assert.match(requested,/\/models\/gemini-2\.5-flash-lite:generateContent$/)
+  model:'gemini-3.5-flash-lite'})
+ assert.match(requested,/\/models\/gemini-3\.5-flash-lite:generateContent$/)
  requested=''
  await assert.rejects(callFreeWikiGemini('prompt',{apiKey:'test-key',freeTierConfirmed:true,budget:{maxCalls:1},fetchImpl,
   model:'gemini-2.5-pro'}),/Unreviewed Gemini model/)
