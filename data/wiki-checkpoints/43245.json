@@ -2,10 +2,10 @@
   "pageId": 43245,
   "title": "Westminster Abbey",
   "topic": "Culture",
-  "status": "EVIDENCE_READY",
+  "status": "RETRY_LATER",
   "revisionId": 1378625637,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378625637",
-  "reason": "16 rights-verified embedded images",
+  "reason": "Gemini circuit open",
   "rights": [
     {
       "status": "REVIEW",
@@ -535,5 +535,5 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378625637"
     }
   ],
-  "updatedAt": "2026-10-21T01:40:32.424Z"
+  "updatedAt": "2026-10-21T01:40:34.614Z"
 }
