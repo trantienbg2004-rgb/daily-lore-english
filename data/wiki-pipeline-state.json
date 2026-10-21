@@ -7700,10 +7700,10 @@
       "checkedAt": "2026-10-21T13:50:01.144Z"
     },
     "13551707": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
+      "revisionId": 1379945990,
+      "checkedAt": "2026-10-21T18:13:19.936Z"
     },
     "13774191": {
       "status": "EVIDENCE_READY",
@@ -9866,7 +9866,7 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-10-21T18:13:13.413Z",
+  "updatedAt": "2026-10-21T18:13:19.944Z",
   "dailyUsage": {
     "day": "2026-10-21",
     "calls": 30,
