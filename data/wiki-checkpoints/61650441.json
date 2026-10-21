@@ -2,9 +2,332 @@
   "pageId": 61650441,
   "title": "Democracy in Mexico",
   "topic": "Politics",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1381251267,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381251267",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-21T01:40:59.334Z"
+  "reason": "7 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Vista de la Plaza Mayor de la Ciudad de México - Cristobal de Villalpando.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/39/Vista_de_la_Plaza_Mayor_de_la_Ciudad_de_M%C3%A9xico_-_Cristobal_de_Villalpando.jpg/960px-Vista_de_la_Plaza_Mayor_de_la_Ciudad_de_M%C3%A9xico_-_Cristobal_de_Villalpando.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Vista de la Plaza Mayor de la Ciudad de México - Cristobal de Villalpando.jpg",
+        "caption": "View of the Plaza Mayor of Mexico City (1695), showing the damage to the viceroy's palace from the 1692 riot (top right).",
+        "alt": "",
+        "description": "View of the Plaza Mayor of Mexico city, 1695 by Cristóbal de Villalpando.",
+        "date": "1695",
+        "section": "Colonial government: 1521–1808",
+        "position": 2,
+        "provenance": {
+          "credit": "Cristóbal de Villalpando",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Vista_de_la_Plaza_Mayor_de_la_Ciudad_de_M%C3%A9xico_-_Cristobal_de_Villalpando.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Democracy_in_Mexico",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381251267",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:José de Iturrigaray.jpg"
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Constitucion Cadiz 1812.png"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Bandera del Primer Imperio Mexicano.svg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/32/Bandera_del_Primer_Imperio_Mexicano.svg/960px-Bandera_del_Primer_Imperio_Mexicano.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Bandera del Primer Imperio Mexicano.svg",
+        "caption": "Flag of the Mexican Empire. The motif is Aztec, with an eagle perched on a nopal cactus. Note the crown on the eagle's head, indicating the monarchy.",
+        "alt": "",
+        "description": "Flag of the First Mexican Empire. The flag have the Colors of the Three Imperial Guarantees: Independence, Religion and Union. In the center is the National Arms, conformed by the Crowned Mexican Eagle, this time without the Snake.",
+        "date": "2012-05-22",
+        "section": "First Empire: 1821-1823",
+        "position": 5,
+        "provenance": {
+          "credit": "Ludovicus Ferdinandus Can have elements by Sodacan and Heralder",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Bandera_del_Primer_Imperio_Mexicano.svg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Democracy_in_Mexico",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381251267",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Bandera de la Primera República Federal de los Estados Unidos Mexicanos.svg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e2/Bandera_de_la_Primera_Rep%C3%BAblica_Federal_de_los_Estados_Unidos_Mexicanos.svg/960px-Bandera_de_la_Primera_Rep%C3%BAblica_Federal_de_los_Estados_Unidos_Mexicanos.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Bandera de la Primera República Federal de los Estados Unidos Mexicanos.svg",
+        "caption": "Flag of the First Federal Republic of the United Mexican States. The eagle of the new republic no longer wears a crown and has a snake in its mouth.",
+        "alt": "",
+        "description": "Flag adopted by the First Federal Republic by decree of April 14th, 1823.",
+        "date": "2014-05-17 21:23:47",
+        "section": "Constitution of 1824 and early republic to 1855",
+        "position": 6,
+        "provenance": {
+          "credit": "Ludovicus Ferdinandus can have elements by Sodacan and Heralder",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Bandera_de_la_Primera_Rep%C3%BAblica_Federal_de_los_Estados_Unidos_Mexicanos.svg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Democracy_in_Mexico",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381251267",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Imperial Standard of Mexico (1864-1867).svg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fe/Imperial_Standard_of_Mexico_%281864-1867%29.svg/960px-Imperial_Standard_of_Mexico_%281864-1867%29.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Imperial Standard of Mexico (1864-1867).svg",
+        "caption": "Flag of the Second Mexican Empire",
+        "alt": "",
+        "description": "Flag of Mexico (1864-1867)",
+        "date": "1864-1867",
+        "section": "Liberals and conservatives, 1857-1876",
+        "position": 7,
+        "provenance": {
+          "credit": "TownDown",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Imperial_Standard_of_Mexico_(1864-1867).svg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Democracy_in_Mexico",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381251267",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Bandera de México (1880-1893).png",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e0/Bandera_de_M%C3%A9xico_%281880-1893%29.png/960px-Bandera_de_M%C3%A9xico_%281880-1893%29.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Bandera de México (1880-1893).png",
+        "caption": "Flag of the Restored Republic",
+        "alt": "",
+        "description": "Bandera utilizada en la primera etapa del porfiriato.",
+        "date": "1880-12-01",
+        "section": "Liberals and conservatives, 1857-1876",
+        "position": 8,
+        "provenance": {
+          "credit": "Porfirio Díaz",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Bandera_de_M%C3%A9xico_(1880-1893).png",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Democracy_in_Mexico",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381251267",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Porfirio-1867.jpg"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Plutarco elias calles.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/41/Plutarco_elias_calles.jpg/960px-Plutarco_elias_calles.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Plutarco elias calles.jpg",
+        "caption": "Plutarco Elías Calles, Founder of el Maximato and the PRI",
+        "alt": "",
+        "description": "Mexican President Plutarco Elías Calles",
+        "date": "1924",
+        "section": "Post-revolution government: 1920-1940",
+        "position": 10,
+        "provenance": {
+          "credit": "Aurelio Escobar Castellanos",
+          "license": "CC BY 2.5",
+          "licenseUrl": "https://creativecommons.org/licenses/by/2.5",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Plutarco_elias_calles.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Democracy_in_Mexico",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381251267",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Logotipo-PRI-Elecciones15.png"
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Escudo pan largo.png"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Nt-tlatelolco-massacre.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ae/Nt-tlatelolco-massacre.jpg/960px-Nt-tlatelolco-massacre.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Nt-tlatelolco-massacre.jpg",
+        "caption": "Monument to Tlatelolco Massacre",
+        "alt": "",
+        "description": "Tlatelolco massacre",
+        "date": "2006-11-27",
+        "section": "Protests and splintering: 1960 - 2000",
+        "position": 13,
+        "provenance": {
+          "credit": "-- Nuno Tavares ☜ PT",
+          "license": "CC BY-SA 2.5",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.5",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Nt-tlatelolco-massacre.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Democracy_in_Mexico",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381251267",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "415bb66256b34882fa8caa623769f6d268a36be59c08d7b4ac4233e72357c6ec",
+      "heading": "Lead",
+      "excerpt": "Democracy in Mexico dates to the establishment of the federal republic of Mexico in 1824. After a long history under the Spanish Empire (152",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381251267"
+    },
+    {
+      "id": "P2",
+      "hash": "4dea9b27e43a50b6db091e8cd39b83b3ca2d00a18178f6c5acf7ce18ccbe4f87",
+      "heading": "Lead",
+      "excerpt": "The liberals drafted and ratified the Constitution of 1857, which enshrined rights such as universal male suffrage and eliminated Church and",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381251267"
+    },
+    {
+      "id": "P3",
+      "hash": "07a485a3386d8fab9890cffcf930e9bc25d3076766b42c264fb6bed701f02bd1",
+      "heading": "Lead",
+      "excerpt": "From 1876 to 1911, regular elections were held, but the electorate remained politically unengaged. This era was known as the Porfiriato – th",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381251267"
+    },
+    {
+      "id": "P4",
+      "hash": "f7543050c6635f59a74e66ac747d0ddb24059ac2ffd1e12a8588c7d306d4ecf2",
+      "heading": "Lead",
+      "excerpt": "Mexican politics was then dominated by the secular Constitutionalists, who had won the ensuing civil war. Regular elections were held, but r",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381251267"
+    },
+    {
+      "id": "P5",
+      "hash": "350b8f43a9129b6536c5652e795a68c6bc8fcda8628d40056bff44819ad886cd",
+      "heading": "Lead",
+      "excerpt": "Mexican politics saw change in 2000 when the conservative opposition National Action Party (PAN) candidate Vicente Fox won the presidential ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381251267"
+    },
+    {
+      "id": "P6",
+      "hash": "8b141000f955b46b581c33fa440f1aaea96dafb8d2959e1c6137af62e4a26071",
+      "heading": "Colonial government: 1521–1808",
+      "excerpt": "As an overseas territory of the Spanish Empire, colonial Mexico was a component of Spain's absolute monarchy and was overseen by the Council",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381251267"
+    },
+    {
+      "id": "P7",
+      "hash": "8e7d5739b8ac6f5385b984cd55f219c209d7af62b704e256413f9ecce183419e",
+      "heading": "Independence era, 1808-1821",
+      "excerpt": "Rule of Spain and its overseas territories by an absolute monarch was disrupted when Spain was invaded by Napoleon's armies in 1808, touchin",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381251267"
+    },
+    {
+      "id": "P8",
+      "hash": "9b87ffb398900d08905f96beeff3e0ce13941e8e55e035948f87bf97b14e469a",
+      "heading": "First Empire: 1821-1823",
+      "excerpt": "Mexico did not initially establish a democracy upon securing independence: Agustín de Iturbide manipulated the newly founded political insti",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381251267"
+    },
+    {
+      "id": "P9",
+      "hash": "f208a8bf395351d7a6d6d2e348cdc4fd793690d26f93ed9c11688c857eedcf91",
+      "heading": "Constitution of 1824 and early republic to 1855",
+      "excerpt": "The ouster of the First Empire provided an opportunity to establish a federated republic with representative democratic forms under the Cons",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381251267"
+    },
+    {
+      "id": "P10",
+      "hash": "dc0258362f1665bce038f4f14e36d7b9c03078cfbd7365300f9842c7448f774b",
+      "heading": "Second Constituent Congress",
+      "excerpt": "With the fall of Iturbide's monarchy, Mexican leaders began crafting a constitution, creating a federal republic. A Second Constituent Congr",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381251267"
+    },
+    {
+      "id": "P11",
+      "hash": "201cf397d909ba581289970836f1fa02a296b876311814a07e20138e35af3af6",
+      "heading": "Democracy truncated by coups",
+      "excerpt": "Despite promises for democracy, the era after the ratification of the Constitution of 1824 was marked by successive military coups. Only one",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381251267"
+    },
+    {
+      "id": "P12",
+      "hash": "4020640ff64a6bf58e9d74533cd942226330c6ae46b803dcb7714ce88040c052",
+      "heading": "Liberals and conservatives, 1857-1876",
+      "excerpt": "The removal of Santa Anna created a short period of democracy, truncated by renewed fighting between the liberal and conservative factions, ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381251267"
+    },
+    {
+      "id": "P13",
+      "hash": "aaf3728cf72ac4c7b45c40d200df262860e491014e64303b46b8a8c6e531b939",
+      "heading": "Liberal in-fighting and French invasion",
+      "excerpt": "Santa Anna's ousting prompted the creation of a new constitution based on principles of radical liberalism. The Constitution of 1857 incorpo",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381251267"
+    },
+    {
+      "id": "P14",
+      "hash": "1cc9e80ae2aac641a5244b0a9aede2f8524115d0854fc7aded0d801891dbbbb2",
+      "heading": "Increase of executive power",
+      "excerpt": "After Juarez's death, Sebastián Lerdo de Tejada was elected president. Lerdo de Tejada did not reinforce the existing democratic structure, ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381251267"
+    },
+    {
+      "id": "P15",
+      "hash": "68b2cf91bfc011c7a4bacca5f6c6080a54609818fed295f9e444eb27292a358f",
+      "heading": "Porfiriato: 1876-1911",
+      "excerpt": "Though Porfirio Díaz's coup d'état brought stability to Mexico's politics and significant economic growth in a period known as the Porfirato",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381251267"
+    },
+    {
+      "id": "P16",
+      "hash": "ac9d6fea84af0b7555e3259b3760f0f59fee2f6afe2fdad8b55337b7686b196b",
+      "heading": "First term",
+      "excerpt": "During his first term, Díaz employed no mass repression, imprisonments or execution of his enemies, and allowed for national and local elect",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381251267"
+    },
+    {
+      "id": "P17",
+      "hash": "d1c9481cfa723608234bef2d2c633a8c09fb2ff78f4578239fca605cb1a16f8c",
+      "heading": "Second term and extensions",
+      "excerpt": "Díaz's second term marked the \"first effective and long-lasting dictatorship to emerge in Mexico since the advent of independence\" through a",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381251267"
+    },
+    {
+      "id": "P18",
+      "hash": "b58d4d4a2f81cb8732cb17bee44c57fa1cb58594b3e016172a1f5d4acca75bc6",
+      "heading": "The Creelman Interview and potential for regime change",
+      "excerpt": "The extended rule of Díaz seemed to likely to end in 1908, when, in the Creelman Interview, the dictator announced Mexico was ready for a de",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381251267"
+    }
+  ],
+  "updatedAt": "2026-10-21T01:41:00.643Z"
 }

@@ -8924,10 +8924,10 @@
       "checkedAt": null
     },
     "61650441": {
-      "status": "FETCHED",
-      "reason": "pinned-source-ready",
+      "status": "EVIDENCE_READY",
+      "reason": "7 rights-verified embedded images",
       "revisionId": 1381251267,
-      "checkedAt": "2026-10-21T01:40:59.330Z"
+      "checkedAt": "2026-10-21T01:41:00.642Z"
     },
     "61864508": {
       "status": "PENDING",
@@ -9866,7 +9866,7 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-10-21T01:40:59.338Z",
+  "updatedAt": "2026-10-21T01:41:00.643Z",
   "dailyUsage": {
     "day": "2026-10-21",
     "calls": 3,
