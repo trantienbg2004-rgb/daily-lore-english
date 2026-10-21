@@ -8150,10 +8150,10 @@
       "checkedAt": null
     },
     "31660596": {
-      "status": "PENDING",
-      "reason": "queued",
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
       "revisionId": 1372322855,
-      "checkedAt": null
+      "checkedAt": "2026-10-21T13:32:17.431Z"
     },
     "32036020": {
       "status": "EVIDENCE_READY",
@@ -9866,7 +9866,7 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-10-21T13:32:15.321Z",
+  "updatedAt": "2026-10-21T13:32:17.432Z",
   "dailyUsage": {
     "day": "2026-10-21",
     "calls": 11,
