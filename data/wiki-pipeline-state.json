@@ -6314,10 +6314,10 @@
       "checkedAt": null
     },
     "154242": {
-      "status": "EVIDENCE_READY",
-      "reason": "4 rights-verified embedded images",
+      "status": "RETRY_LATER",
+      "reason": "editorial call budget exhausted",
       "revisionId": 1359563466,
-      "checkedAt": "2026-10-21T18:15:37.551Z"
+      "checkedAt": "2026-10-21T18:15:43.549Z"
     },
     "164600": {
       "status": "EVIDENCE_READY",
@@ -9866,7 +9866,7 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-10-21T18:15:37.552Z",
+  "updatedAt": "2026-10-21T18:15:43.550Z",
   "dailyUsage": {
     "day": "2026-10-21",
     "calls": 30,
