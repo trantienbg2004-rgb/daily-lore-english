@@ -8204,10 +8204,10 @@
       "checkedAt": "2026-10-21T07:36:14.319Z"
     },
     "33949149": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
+      "revisionId": 1361337377,
+      "checkedAt": "2026-10-21T13:01:35.208Z"
     },
     "34115107": {
       "status": "PENDING",
@@ -9866,11 +9866,12 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-10-21T08:12:39.000Z",
+  "updatedAt": "2026-10-21T13:01:35.209Z",
   "dailyUsage": {
     "day": "2026-10-21",
     "calls": 4,
     "tokens": 0,
-    "usageUnknown": true
+    "usageUnknown": true,
+    "tokenAccountingUnavailable": false
   }
 }
