@@ -7052,10 +7052,10 @@
       "checkedAt": "2026-10-21T07:33:51.487Z"
     },
     "2115847": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
+      "revisionId": 1379837199,
+      "checkedAt": "2026-10-21T07:40:11.707Z"
     },
     "2201840": {
       "status": "EVIDENCE_READY",
@@ -9866,7 +9866,7 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-10-21T07:40:10.032Z",
+  "updatedAt": "2026-10-21T07:40:11.708Z",
   "dailyUsage": {
     "day": "2026-10-21",
     "calls": 4,
