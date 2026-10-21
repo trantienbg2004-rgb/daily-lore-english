@@ -2,9 +2,216 @@
   "pageId": 24545319,
   "title": "Native American disease and epidemics",
   "topic": "Health",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1380363273,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380363273",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-21T13:31:20.703Z"
+  "reason": "3 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Ancient sick native american.jpg"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Acuna-Soto EID-v8n4p360 Fig1.png",
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/5/56/Acuna-Soto_EID-v8n4p360_Fig1.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "fileTitle": "File:Acuna-Soto EID-v8n4p360 Fig1.png",
+        "caption": "Graph of population decline in central Mexico caused by successive epidemics",
+        "alt": "",
+        "description": "(original caption) Figure 1. The 16th-century population collapse in Mexico, based on estimates of Cook and Simpson (1). The 1545 and 1576 cocoliztli epidemics appear to have been hemorrhagic fevers caused by an indigenous viral agent and aggravated by unusual climatic conditions. The Mexican population did not recover to pre-Hispanic levels until the 20th century.",
+        "date": "2002-04",
+        "section": "On population",
+        "position": 1,
+        "provenance": {
+          "credit": "Rodolfo Acuna-Soto, David W. Stahle, Malcolm K. Cleaveland, and Matthew D. Therrell",
+          "license": "CC0",
+          "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Acuna-Soto_EID-v8n4p360_Fig1.png",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Native_American_disease_and_epidemics",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380363273",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Measles Aztec drawing.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b1/Measles_Aztec_drawing.jpg/960px-Measles_Aztec_drawing.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Measles Aztec drawing.jpg",
+        "caption": "Drawing of Aztec people suffering from measles epidemic",
+        "alt": "",
+        "description": "Sixteenth century Aztec drawing of a measles victim",
+        "date": "16th centurydate QS:P,+1550-00-00T00:00:00Z/7date QS:P,+1550-00-00T00:00:00Z/7",
+        "section": "On population",
+        "position": 2,
+        "provenance": {
+          "credit": "Unknown authorUnknown author",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Measles_Aztec_drawing.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Native_American_disease_and_epidemics",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380363273",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Aztec smallpox victims.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/39/Aztec_smallpox_victims.jpg/960px-Aztec_smallpox_victims.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Aztec smallpox victims.jpg",
+        "caption": "Sixteenth-century Aztec drawings of victims of smallpox (above) and measles (below)",
+        "alt": "",
+        "description": "16th century Aztec drawing of smallpox victims",
+        "date": "16th centurydate QS:P,+1550-00-00T00:00:00Z/7date QS:P,+1550-00-00T00:00:00Z/7",
+        "section": "Smallpox",
+        "position": 3,
+        "provenance": {
+          "credit": "Unknown authorUnknown author",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Aztec_smallpox_victims.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Native_American_disease_and_epidemics",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380363273",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "ad67f0bb29011297bff7311a5c7b16896bd1a91d9396988946a07fee7d597d2a",
+      "heading": "Lead",
+      "excerpt": "The history of disease and epidemics that affected the Indigenous peoples of the Americas is defined by two distinct factors: localized ende",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380363273"
+    },
+    {
+      "id": "P2",
+      "hash": "306db9bec11882a8fec12f1699b4eab7d66cb1fec8643ae19f221f41e896c2a6",
+      "heading": "Lead",
+      "excerpt": "Prior to 1492, endemic conditions in the Americas included localized parasites, treponema infections, Chagas disease, and regional gastroint",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380363273"
+    },
+    {
+      "id": "P3",
+      "hash": "e774a5862be26e6f1e6e0b242baa9c489c995ba0129f6addad82d8609c6137e4",
+      "heading": "Lead",
+      "excerpt": "While localized conditions were typically chronic, aggravating factors such as malnutrition, sudden changes in diet, physical exhaustion, st",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380363273"
+    },
+    {
+      "id": "P4",
+      "hash": "000e4be0c38d3fefbfb14a872605e99afd87f9aa8a26b4bfe977aca770cf7c56",
+      "heading": "Background",
+      "excerpt": "The arrival and settlement of Europeans in the Americas resulted in what is known as the Columbian exchange. Europeans also took plants and ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380363273"
+    },
+    {
+      "id": "P5",
+      "hash": "e7f8079527a47a151d6d7abb708ce85dcd4b0cb23600d082bc8e3a6c8d3f7a60",
+      "heading": "Background",
+      "excerpt": "But Europeans also unintentionally brought new infectious diseases. Most Old World diseases of known origin can be traced to Africa and Asia",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380363273"
+    },
+    {
+      "id": "P6",
+      "hash": "7ae8a05815923da39a314f6a5bcc477d268b7432e92dcfed8f4557b8cafaca7b",
+      "heading": "History of epidemics",
+      "excerpt": "Since there were numerous epidemics and all were not equally recorded, historical accounts of epidemics are often vague or contradictory in ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380363273"
+    },
+    {
+      "id": "P7",
+      "hash": "b9d6894cab5cbe946ce2030035f0ee46a8fcff1eeeb2e0fcea460585336a0f5c",
+      "heading": "Reactions of the Native Americans",
+      "excerpt": "Native Americans initially believed that illness primarily resulted from being out of balance, in relation to their spirituality. Theoretica",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380363273"
+    },
+    {
+      "id": "P8",
+      "hash": "2565a04bac34a38291b7c5fa2bf2b6fc012ceb0eb50067a3913a71e6837cbbb2",
+      "heading": "Forced settlements and disease spread",
+      "excerpt": "In Florida, Spanish settlers forced indigenous groups into concentration camps. Since the early 16th century, the native people of this land",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380363273"
+    },
+    {
+      "id": "P9",
+      "hash": "3e4af7bfdd3f5e377a8534ae2e359a39fca884d0bb6bfeafb53763023492f672",
+      "heading": "On population",
+      "excerpt": "Many Native American tribes suffered high mortality and depopulation, averaging 25–50% of the tribes' members dead from disease. Additionall",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380363273"
+    },
+    {
+      "id": "P10",
+      "hash": "d7a732dbafb940029c29048c3bcf26a9bdf9a8728e87e9d30ac60b44d129b8cf",
+      "heading": "Impact on environment and society",
+      "excerpt": "Some 21st-century climate scientists have suggested that a severe reduction of the indigenous population in the Americas and the accompanyin",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380363273"
+    },
+    {
+      "id": "P11",
+      "hash": "2e6ddc351be87f2e92a4412474ee459c0a982f1eb9b34a78e4fe587e65b92f34",
+      "heading": "Biological weapon theory",
+      "excerpt": "Historian David Stannard asserts that by \"focusing almost entirely on disease ... contemporary authors increasingly have created the impress",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380363273"
+    },
+    {
+      "id": "P12",
+      "hash": "4f81e63c640e5d5a1f6b458c8f9ad0cd0d5749226a84e4934b4069a3d9708dd7",
+      "heading": "Smallpox",
+      "excerpt": "A single soldier arriving in Mexico in 1520 was carrying smallpox and initiated the devastating plagues that swept through the native popula",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380363273"
+    },
+    {
+      "id": "P13",
+      "hash": "17fce6115336fcc3865cde88dbf94278d2306321e3136676d949116a9f1d25bb",
+      "heading": "19th century",
+      "excerpt": "In 1832 President Andrew Jackson signed Congressional authorization and funding to set up a smallpox vaccination program for Indian tribes. ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380363273"
+    },
+    {
+      "id": "P14",
+      "hash": "406750bc617c605b4f04932da17bc3b3a786a79a4a57a3336ee53e5131bc3821",
+      "heading": "Background",
+      "excerpt": "Each of these diseases resulted in sweeping epidemics among Native Americans, who sufered disability, illness, and a high mortality rate. Th",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380363273"
+    },
+    {
+      "id": "P15",
+      "hash": "9521e6027b415474f5a8a979c7b36f35dd131dcb916e9bad589b0432e11fb051",
+      "heading": "Background",
+      "excerpt": "Although a variety of infectious diseases existed in the Americas in pre-Columbian times, the limited size of the populations, smaller numbe",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380363273"
+    },
+    {
+      "id": "P16",
+      "hash": "f6b967b7617fe8ca762734c14327bb387a08c0ee95d26e86868e97207d4c56b8",
+      "heading": "Background",
+      "excerpt": "One notable infectious disease that may be of American origin is syphilis, which originated in the Americas before 1492. However, a 2005 art",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380363273"
+    },
+    {
+      "id": "P17",
+      "hash": "cfda1c403936c0ab6c2cbad23e22ceb54eee28271919ddd286636099c3c0d144",
+      "heading": "History of epidemics",
+      "excerpt": "In 1493, the first recorded influenza epidemic to strike the Americas occurred on the island of Hispaniola in the northern Spanish settlemen",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380363273"
+    },
+    {
+      "id": "P18",
+      "hash": "a31cf9dffb70c2d1a2eb7aa1f2c108ed4729c04951881b801a97831ea5903671",
+      "heading": "History of epidemics",
+      "excerpt": "Historians agree that when colonists settled for the very first time at Jamestown, it was one of the coldest periods for the previous thousa",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380363273"
+    }
+  ],
+  "updatedAt": "2026-10-21T13:31:22.777Z"
 }
