@@ -3,13 +3,26 @@
 import fs from 'node:fs/promises'
 import path from 'node:path'
 import {discoverWikiCandidates,balanceWikiCandidates,WIKI_TOPICS} from './discovery.mjs'
-import {fetchWikipediaPage,verifyPageFigures,WikiApiPause} from './source.mjs'
-import {generateWikiDraft,GeminiWikiPause} from './editor.mjs'
+import {fetchWikipediaPage,fetchWikipediaRevision,verifyPageFigures,WikiApiPause} from './source.mjs'
+import {generateWikiDraft,GeminiWikiPause,selectWikiEvidence,repairTargets} from './editor.mjs'
 import {assignWikipediaPhotos} from './media.mjs'
 import {appendWikiStories,makeWikiStory,readWikiCatalog} from './catalog.mjs'
 
 const fileFor=base=>path.join(base,'data','wiki-pipeline-state.json')
+const checkpointFile=(base,pageId)=>path.join(base,'data','wiki-checkpoints',`${pageId}.json`)
 const safeText=value=>String(value||'').replace(/[\r\n]+/g,' ').slice(0,140)
+export async function readWikiCheckpoint(base,pageId){
+ try{return JSON.parse(await fs.readFile(checkpointFile(base,pageId),'utf8'))}
+ catch(error){if(error.code==='ENOENT')return null;throw error}
+}
+export async function writeWikiCheckpoint(base,checkpoint){
+ if(!Number.isSafeInteger(checkpoint?.pageId))throw Error('Invalid checkpoint identity')
+ const file=checkpointFile(base,checkpoint.pageId);await fs.mkdir(path.dirname(file),{recursive:true})
+ const stage=file+'.tmp-'+process.pid
+ await fs.writeFile(stage,JSON.stringify({...checkpoint,updatedAt:new Date().toISOString()},null,2)+'\n')
+ await fs.rename(stage,file)
+ return file
+}
 export async function writeWikiPending(base,{candidate,source,response,reason}){
  const dir=path.join(base,'reports','saga-wiki-local')
  await fs.mkdir(dir,{recursive:true})
@@ -24,6 +37,7 @@ export async function readWikiState(base){
  try{
   const state=JSON.parse(await fs.readFile(fileFor(base),'utf8'))
   if(state.version!==1||!Array.isArray(state.queue)||typeof state.outcomes!=='object')throw Error('Invalid Wiki pipeline state')
+  for(const candidate of state.queue)state.outcomes[candidate.pageId]??={status:'PENDING',reason:'queued',revisionId:candidate.revisionId||null,checkedAt:null}
   return state
  }catch(error){if(error.code==='ENOENT')return {version:1,queue:[],outcomes:{},updatedAt:null};throw error}
 }
@@ -60,68 +74,113 @@ export async function discoverWikiQueue({base,topics=WIKI_TOPICS,maxPerTopic=30,
  }
  const regrouped=WIKI_TOPICS.map(topic=>({topic,candidates:state.queue.filter(row=>row.topic===topic)}))
  state.queue=balanceWikiCandidates(regrouped,{topicCounts:counts,limit:state.queue.length})
+ for(const candidate of state.queue)state.outcomes[candidate.pageId]??={status:'PENDING',reason:'queued',revisionId:candidate.revisionId||null,checkedAt:null}
  await writeState(base,state)
  return {candidates:state.queue.length,scanned:groups.reduce((n,g)=>n+g.scannedPages,0),errors,byTopic:Object.fromEntries(groups.map(g=>[g.topic,g.candidates.length]))}
 }
 
 export async function runWikiBatch({base,maxCalls=0,maxCandidates=5,pageId=null,apiKey='',freeTierConfirmed=false,
  readCatalog=readWikiCatalog,readState=readWikiState,writeState=writeWikiState,
- fetchPage=fetchWikipediaPage,verifyFigures=verifyPageFigures,generate=generateWikiDraft,
- assign=assignWikipediaPhotos,makeStory=makeWikiStory,append=appendWikiStories,savePending=writeWikiPending}={}){
+ readCheckpoint=readWikiCheckpoint,writeCheckpoint=writeWikiCheckpoint,onPersist=async()=>{},
+ fetchPage=fetchWikipediaPage,fetchRevision=fetchWikipediaRevision,verifyFigures=verifyPageFigures,generate=generateWikiDraft,
+ assign=assignWikipediaPhotos,makeStory=makeWikiStory,append=appendWikiStories}={}){
  if(!base||!Number.isSafeInteger(maxCalls)||maxCalls<0||maxCalls>20||
   !Number.isSafeInteger(maxCandidates)||maxCandidates<1||maxCandidates>100)throw Error('Unsafe Wiki batch limits')
  if(maxCalls>0&&(!freeTierConfirmed||!apiKey))throw Error('Free-tier confirmation and key required before Gemini calls')
  const state=await readState(base),catalog=await readCatalog(base)
  const existingIds=new Set(catalog.stories.map(story=>story.sourcePageId))
  const usedUrls=new Set(catalog.stories.flatMap(story=>story.pages.map(page=>page.image).filter(Boolean)))
- const budget={maxCalls,usedCalls:0},stats={attempted:0,published:0,review:0,rejected:0,paused:false,apiCalls:0,usage:{input:0,output:0,total:0},decisions:[]}
+ const today=new Date().toISOString().slice(0,10)
+ if(state.dailyUsage?.day!==today)state.dailyUsage={day:today,calls:0,tokens:0,usageUnknown:false}
+ const persistDurably=async()=>{try{await onPersist()}catch(error){error.checkpointFailure=true;throw error}}
+ const initialTokens=state.dailyUsage.tokens
+ const budget={maxCalls,usedCalls:0,dailyCalls:state.dailyUsage.calls,dailyTokens:initialTokens,maxDailyCalls:100,maxTokens:250000,
+  onRequest:async current=>{state.dailyUsage.calls=current.dailyCalls;await writeState(base,state);await persistDurably()},
+  onUsage:async current=>{current.dailyTokens=initialTokens+current.usage.total;state.dailyUsage.tokens=current.dailyTokens;await writeState(base,state);await persistDurably()}}
+ const stats={attempted:0,published:0,review:0,rejected:0,prepared:0,paused:false,apiCalls:0,usage:{input:0,output:0,total:0},decisions:[]}
  for(const candidate of state.queue.filter(row=>pageId===null||row.pageId===pageId)){
-  if(stats.attempted>=maxCandidates||maxCalls>0&&maxCalls-budget.usedCalls<2)break
-  if(existingIds.has(candidate.pageId)||state.outcomes[candidate.pageId]?.status==='published')continue
-  // Stable rejected candidates are skipped. REVIEW candidates may be rechecked
-  // only if their source revision has changed in a later discovery batch.
-  if(['rejected','review'].includes(state.outcomes[candidate.pageId]?.status))continue
+  if(stats.attempted>=maxCandidates)break
+  const prior=state.outcomes[candidate.pageId]
+  if(existingIds.has(candidate.pageId)){
+   if(prior?.status!=='PUBLISHED'){
+    state.outcomes[candidate.pageId]={status:'PUBLISHED',reason:'catalog already contains article',revisionId:prior?.revisionId||null,checkedAt:new Date().toISOString()}
+    await writeState(base,state);await persistDurably()
+   }
+   continue
+  }
+  if(['published','PUBLISHED'].includes(prior?.status))continue
+  if(['rejected','review','REJECTED','NEEDS_REVIEW'].includes(prior?.status))continue
+  let checkpoint=await readCheckpoint(base,candidate.pageId)||{pageId:candidate.pageId,title:candidate.title,topic:candidate.topic,status:'PENDING'}
+  const cachedValidation=checkpoint.status==='VALIDATED'&&checkpoint.validation?.accepted
+  if(!cachedValidation&&(maxCalls===0||budget.circuitOpen||budget.maxCalls-budget.usedCalls<2)&&checkpoint.evidence&&checkpoint.rights)continue
   stats.attempted++
-  const mark=async(status,reason,revisionId=null)=>{
+  const persist=async()=>{await writeCheckpoint(base,checkpoint);await writeState(base,state);await persistDurably()}
+  const mark=async(status,reason,revisionId=checkpoint.revisionId||null)=>{
+   checkpoint={...checkpoint,status,reason:safeText(reason),revisionId}
    state.outcomes[candidate.pageId]={status,reason:safeText(reason),revisionId,checkedAt:new Date().toISOString()}
    stats.decisions.push({pageId:candidate.pageId,status,reason:safeText(reason)})
-   await writeState(base,state)
+   await persist()
   }
   try{
-   const source=await fetchPage(candidate.title)
-   if(source.pageId!==candidate.pageId){await mark('rejected','source-page-id-changed',source.sourceRevisionId);stats.rejected++;continue}
-   if(source.wordCount<650||source.figures.length<1){await mark('rejected','insufficient-source-text-or-embedded-images',source.sourceRevisionId);stats.rejected++;continue}
-   const rights=await verifyFigures(source)
+   const source=checkpoint.revisionId?await fetchRevision({pageId:candidate.pageId,title:candidate.title,revisionId:checkpoint.revisionId}):await fetchPage(candidate.title)
+   if(source.pageId!==candidate.pageId){await mark('REJECTED','source-page-id-changed',source.sourceRevisionId);stats.rejected++;continue}
+   if(!checkpoint.revisionId){checkpoint.revisionId=source.sourceRevisionId;checkpoint.sourceRevisionUrl=source.sourceRevisionUrl;await mark('FETCHED','pinned-source-ready')}
+   if(source.wordCount<650||source.figures.length<1){await mark('REJECTED','insufficient-source-text-or-embedded-images');stats.rejected++;continue}
+   const evidence=selectWikiEvidence(source)
+   const rights=checkpoint.rights||await verifyFigures(source)
    const photos=rights.filter(row=>row.status==='REVIEW'&&row.photo&&!usedUrls.has(row.photo.url))
-   if(!photos.length){await mark('review','no-rights-verified-embedded-image',source.sourceRevisionId);stats.review++;continue}
-   if(maxCalls===0){await mark('source-verified',`${photos.length} rights-verified embedded images; editorial call pending`,source.sourceRevisionId);continue}
-   const response=await generate({source,topic:candidate.topic,apiKey,freeTierConfirmed,budget})
-   if(response.usage)for(const key of ['input','output','total'])stats.usage[key]+=Number(response.usage[key]||0)
+   if(!photos.length){await mark('NEEDS_REVIEW','no-rights-verified-embedded-image');stats.review++;continue}
+   checkpoint.rights=rights
+   checkpoint.evidence??=evidence.map(({id,hash,heading,text})=>({id,hash,heading,excerpt:text.slice(0,140),revisionUrl:source.sourceRevisionUrl}))
+   await mark('EVIDENCE_READY',`${photos.length} rights-verified embedded images`);stats.prepared++
+   if(maxCalls===0&&!cachedValidation)continue
+   if(!cachedValidation&&(budget.circuitOpen||budget.maxCalls-budget.usedCalls<2)){
+    await mark('RETRY_LATER',budget.circuitOpen?'Gemini circuit open':'editorial call budget exhausted');stats.paused=true;continue
+   }
+   const response=cachedValidation
+    ?{result:checkpoint.draft,validation:checkpoint.validation,evidence:checkpoint.evidence,usage:null}
+    :await generate({source,topic:candidate.topic,apiKey,freeTierConfirmed,budget,
+    draft:checkpoint.draft||null,repairAttempts:checkpoint.repairAttempts||0,savedEvidence:checkpoint.evidence,
+    priorValidation:checkpoint.validation?.errors?.some(error=>error.includes(':audit-'))?checkpoint.validation:null,
+    onDraft:async({result,repairAttempts,usage,evidence:currentEvidence})=>{
+     checkpoint.draft=result;checkpoint.repairAttempts=repairAttempts;checkpoint.lastUsage=usage||null
+     checkpoint.validation=null
+     checkpoint.evidence=currentEvidence.map(({id,hash,heading,text})=>({id,hash,heading,excerpt:text.slice(0,140),revisionUrl:source.sourceRevisionUrl}))
+     await mark('DRAFTED','draft durably saved before validation')
+    }})
+   if(response.usage&&!budget.usage)for(const key of ['input','output','total'])stats.usage[key]+=Number(response.usage[key]||0)
+   // Injected generators in tests may return directly; still checkpoint their output.
+   if(!checkpoint.draft){checkpoint.draft=response.result;checkpoint.repairAttempts=response.repairAttempts||0;await mark('DRAFTED','draft saved')}
    if(!response.validation.accepted){
-    try{await savePending(base,{candidate,source,response,reason:'editorial: '+response.validation.errors.join(',')})}
-    catch{throw new GeminiWikiPause('Pending editorial draft could not be preserved')}
-    await mark('review','editorial: '+response.validation.errors.join(','),source.sourceRevisionId);stats.review++;continue
+    checkpoint.validation=response.validation
+    const repairable=(checkpoint.repairAttempts||0)<2&&Object.keys(repairTargets(response.validation.errors)).length>0
+    await mark(repairable?'NEEDS_REPAIR':'NEEDS_REVIEW','editorial: '+response.validation.errors.join(','))
+    stats.review++;continue
    }
+   checkpoint.validation=response.validation
+   await mark('VALIDATED','local factual, style, length, structure and source audit passed')
    const selected=assign(rights,source,response.result.variants,{usedUrls})
-   if(selected.status!=='VERIFIED'){
-    try{await savePending(base,{candidate,source,response,reason:selected.reason})}
-    catch{throw new GeminiWikiPause('Pending editorial draft could not be preserved')}
-    await mark('review',selected.reason,source.sourceRevisionId);stats.review++;continue
-   }
+   if(selected.status!=='VERIFIED'){await mark('NEEDS_REVIEW',selected.reason);stats.review++;continue}
    const story=makeStory({source,topic:candidate.topic,draft:{variants:selected.levelVariants},photos:selected.photos,evidence:response.evidence})
    await append(base,[story]);existingIds.add(source.pageId)
    for(const page of story.pages)if(page.image)usedUrls.add(page.image)
-   await mark('published',`${selected.photos.length} verified embedded images`,source.sourceRevisionId)
-   stats.published++
+   await mark('PUBLISHED',`${selected.photos.length} verified embedded images`);stats.published++
   }catch(error){
-   if(error instanceof GeminiWikiPause||error instanceof WikiApiPause){
-    stats.paused=true;await mark('paused',error.message);break
+   if(error.checkpointFailure)throw error
+   if(error instanceof GeminiWikiPause){
+    stats.paused=true
+    if(error.status==='INVALID_JSON'){await mark('NEEDS_REVIEW',error.message);stats.review++}
+    else {budget.circuitOpen=true;await mark('RETRY_LATER',error.message)}
+    continue
    }
-   await mark('review',error.message);stats.review++
+   if(error instanceof WikiApiPause){stats.paused=true;await mark('RETRY_LATER',error.message);break}
+   await mark('NEEDS_REVIEW',error.message);stats.review++
   }
  }
  stats.apiCalls=budget.usedCalls
+ state.dailyUsage.usageUnknown=state.dailyUsage.usageUnknown||!!budget.usageUnknown
  if(budget.usageUnknown)stats.usage=null
  else if(budget.usage)stats.usage=budget.usage
+ await writeState(base,state);await persistDurably()
  return stats
 }

@@ -91,6 +91,13 @@ export async function fetchWikipediaPage(title,options={}){
  const url=`${WIKI}/w/rest.php/v1/page/${encodeURIComponent(String(title).replace(/ /g,'_'))}/with_html`
  return parseWikipediaPage(await wikiJson(url,options))
 }
+export async function fetchWikipediaRevision({pageId,title,revisionId},options={}){
+ if(!Number.isSafeInteger(pageId)||!Number.isSafeInteger(revisionId))throw Error('Pinned Wikipedia identity required')
+ const data=await wikiJson(`${WIKI}/w/rest.php/v1/revision/${revisionId}/with_html`,options)
+ if(data.id!==revisionId||data.page?.id!==pageId)throw Error('Pinned Wikipedia revision identity changed')
+ return parseWikipediaPage({id:pageId,latest:{id:revisionId},title:data.page.title||title,
+  key:data.page.key||String(title).replace(/ /g,'_'),html:data.html,license:data.license})
+}
 
 const approvedLicense=value=>{
  const text=String(value||'').trim()
