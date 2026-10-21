@@ -2,9 +2,131 @@
   "pageId": 27006,
   "title": "Serendipity",
   "topic": "Science & Technology",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1375854739,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375854739",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-21T13:50:25.432Z"
+  "reason": "2 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Horace Walpole.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a0/Horace_Walpole.jpg/960px-Horace_Walpole.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Horace Walpole.jpg",
+        "caption": "Portrait of Horace Walpole by Joshua Reynolds, 1756",
+        "alt": "",
+        "description": "",
+        "date": "between circa 1756 and circa 1757date QS:P571,+1756-00-00T00:00:00Z/8,P1319,+1756-00-00T00:00:00Z/9,",
+        "section": "",
+        "position": 0,
+        "provenance": {
+          "credit": "Joshua Reynolds",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Horace_Walpole.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Serendipity",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375854739",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Semachrysa jade female habitus (Morphbank 791597) - ZooKeys-214-001-g002.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2b/Semachrysa_jade_female_habitus_%28Morphbank_791597%29_-_ZooKeys-214-001-g002.jpg/960px-Semachrysa_jade_female_habitus_%28Morphbank_791597%29_-_ZooKeys-214-001-g002.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Semachrysa jade female habitus (Morphbank 791597) - ZooKeys-214-001-g002.jpg",
+        "caption": "The serendipitous discovery of a new species of lacewing, Semachrysa jade, was made on Flickr.",
+        "alt": "The serendipitous discovery of the Malasian ''[[Semachrysa jade]]'' [[lacewing]]as, a new species, was made on [[Flickr]].",
+        "description": "Semachrysa jade female habitus (Morphbank: 791597). Forewing length: 15.0 mm. Photographer: Guek Hock Ping.",
+        "date": "2012-08-09",
+        "section": "Discoveries",
+        "position": 1,
+        "provenance": {
+          "credit": "Photographer: Guek Hock Ping, also known as Kurt (OrionMystery).",
+          "license": "CC BY 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Semachrysa_jade_female_habitus_(Morphbank_791597)_-_ZooKeys-214-001-g002.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Serendipity",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375854739",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "de646a8fe7d8ad9bef6309bee0dc244641aa2f18a9999c8e58f5b5e6319d0d06",
+      "heading": "Lead",
+      "excerpt": "Serendipity is an unplanned fortunate discovery. The term was coined by Horace Walpole in 1754, after he read a Persian fairy tale called Th",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375854739"
+    },
+    {
+      "id": "P2",
+      "hash": "8efaeeaf515a191ed70c735d65a6811c9f079724f4e07d275069cc9d76c6af6c",
+      "heading": "Lead",
+      "excerpt": "The concept is often associated with scientific and technological breakthroughs, where accidental discoveries led to new insights or inventi",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375854739"
+    },
+    {
+      "id": "P3",
+      "hash": "224827e4eb8f8442cfae42438d19eb394b7d0ed2cc731d54fec229741d4b5dc7",
+      "heading": "Definition",
+      "excerpt": "Christian Busch views serendipity as \"active luck\", where chance encounters and human action come together. A missed flight or a casual walk",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375854739"
+    },
+    {
+      "id": "P4",
+      "hash": "e0de2f39281055be6d5cce586175bd74b3528ec6e3e915f1cc0d9d136e6435a0",
+      "heading": "Definition",
+      "excerpt": "While serendipity in popular usage is often understood as a matter of pure chance, scientific discussions emphasize the crucial role of huma",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375854739"
+    },
+    {
+      "id": "P5",
+      "hash": "a8c82ab231531a9054bc710b84aa1b70584d5dfd05689ab3b8ab5d0db6a75937",
+      "heading": "Related terms",
+      "excerpt": "William Boyd coined the term zemblanity in the late twentieth century to mean somewhat the opposite of serendipity: \"making unhappy, unlucky",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375854739"
+    },
+    {
+      "id": "P6",
+      "hash": "2d377d886672f4460084024935c0f45ecfa11177a8cc85e7355d6ecf6cace76a",
+      "heading": "Etymology",
+      "excerpt": "The first noted use of \"serendipity\" was by Horace Walpole on 28 January 1754. In a letter he wrote to his friend Horace Mann, Walpole expla",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375854739"
+    },
+    {
+      "id": "P7",
+      "hash": "07e20486965606cb8837ae38da773890a44c7cbf9fc35f2805383676d098ff49",
+      "heading": "Inventions",
+      "excerpt": "The term \"serendipity\" is often applied to inventions made by chance rather than intent. Andrew F. Smith, the editor of The Oxford Companion",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375854739"
+    },
+    {
+      "id": "P8",
+      "hash": "2c663e10bad90f2883dab5d668ad0eb464422fb6fa838d1e56505b3570327834",
+      "heading": "Discoveries",
+      "excerpt": "Serendipity contributed to entomologist Shaun Winterton discovering Semachrysa jade, a new species of lacewing, which he found not in its na",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375854739"
+    },
+    {
+      "id": "P9",
+      "hash": "ff11cd3f40a83aca76d321f55061a3cf5e5cc5c03e336de2248151a95c7f3a9c",
+      "heading": "Online activity",
+      "excerpt": "Serendipity is a design principle for online activity that would present viewpoints that diverge from those participants already hold. Harva",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375854739"
+    },
+    {
+      "id": "P10",
+      "hash": "3c5d06c41be240ab760d30de40cd4457ba45d9d2f5f612a7221688bc02751a11",
+      "heading": "Related terms",
+      "excerpt": "Bahramdipity is derived directly from Bahram Gur as characterized in The Three Princes of Serendip. It describes the suppression of serendip",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375854739"
+    }
+  ],
+  "updatedAt": "2026-10-21T13:50:31.171Z"
 }
