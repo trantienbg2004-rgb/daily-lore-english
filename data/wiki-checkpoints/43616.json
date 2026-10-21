@@ -2,9 +2,152 @@
   "pageId": 43616,
   "title": "Arsinoe II",
   "topic": "Sports",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1366700782,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1366700782",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-21T22:33:11.805Z"
+  "reason": "1 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Arsinoe II, a Ptolemy queen.jpeg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/66/Arsinoe_II%2C_a_Ptolemy_queen.jpeg/960px-Arsinoe_II%2C_a_Ptolemy_queen.jpeg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Arsinoe II, a Ptolemy queen.jpeg",
+        "caption": "Arsinoe II. Getty Center collections, 2018",
+        "alt": "",
+        "description": "Arsinoe II, a Ptolemaic queen",
+        "date": "April 20, 2018",
+        "section": "",
+        "position": 0,
+        "provenance": {
+          "credit": "Peter D. Tillman",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Arsinoe_II,_a_Ptolemy_queen.jpeg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Arsinoe_II",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1366700782",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Oktadrachmon Ptolemaios II Arsinoe II.jpg"
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Arsinoe II.jpg"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "a6aea376f8446c1d94b4d377756e6be7da3f15279daa0c2bf2f59ffa236a5fa9",
+      "heading": "Lead",
+      "excerpt": "Arsinoë II (Koine Greek: Ἀρσινόη, c. 316 BC – 270 or 268 BC) was Queen consort of Thrace, Anatolia, and Macedonia by her first and second ma",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1366700782"
+    },
+    {
+      "id": "P2",
+      "hash": "557f613135548d1dd1fb467352317ef285076abbfcc4e7227e094e7872995054",
+      "heading": "Early life",
+      "excerpt": "Arsinoë was the first daughter of Pharaoh Ptolemy I Soter, founder of the Hellenistic state of Egypt, and his second wife Berenice I of Egyp",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1366700782"
+    },
+    {
+      "id": "P3",
+      "hash": "386542656e2d2555789cfbd12ff55d1a060a414771b28c2a1a930e05f7cde920",
+      "heading": "Early life",
+      "excerpt": "She may have been born in Memphis, but was raised in the new city of Alexandria, where her father moved his capital. Nothing is known of her",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1366700782"
+    },
+    {
+      "id": "P4",
+      "hash": "a5d8975961c387830c6b389b9f9f5422a24b2617bed5c85af050d6851f0d903d",
+      "heading": "Queen of Lysimachus",
+      "excerpt": "Around the age of 15, Arsinoë married King Lysimachus, who was then around 60 years old. Together, the pair had three sons: Ptolemy Epigonos",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1366700782"
+    },
+    {
+      "id": "P5",
+      "hash": "e215a0354aeb53ad22fd6d0756a0fdb946ce7e472b25e2c2005c3f98ccccd5af",
+      "heading": "Queen of Ptolemy Keraunos",
+      "excerpt": "It is not known which year she left for Egypt. She may have left as early as 280/279 BC, directly after the murder of the younger sons, or a",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1366700782"
+    },
+    {
+      "id": "P6",
+      "hash": "e00106ed35184524ad00f4929a8be35952d50889d40f0b25be3a694cee5c9945",
+      "heading": "Queen of Egypt",
+      "excerpt": "In Egypt, she is believed to have instigated the accusation and exile of Arsinoe I, the wife of her younger brother Ptolemy II. Whether this",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1366700782"
+    },
+    {
+      "id": "P7",
+      "hash": "cade8a8577935b097cede3c45da26d41eab9985be640d074531ffd7a92fc432f",
+      "heading": "Queen of Ptolemy Keraunos",
+      "excerpt": "In 281 BC, Lysimachus died in battle and Arsinoë fled to Cassandreia (Κασσάνδρεια). There, she married her paternal half-brother Ptolemy Ker",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1366700782"
+    },
+    {
+      "id": "P8",
+      "hash": "58756eac9b4cbea87d46e4e87f2cc7c70f4615380b6da01fde80c3772c7880e6",
+      "heading": "Deification",
+      "excerpt": "She died in 270 or 268 BC and circumstantial evidence supports the latter date. After her death, Ptolemy II established a cult of Arsinoe Ph",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1366700782"
+    },
+    {
+      "id": "P9",
+      "hash": "96fdadbfb811109442af477e80cac250d36888507b21f4adde6c4c43ae4d3954",
+      "heading": "Marriage and issue",
+      "excerpt": "After Lysimachus's death in 281 BC, Arsinoe was briefly married to her half-brother Ptolemy Ceraunus from 280 to 279 BC and then to her full",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1366700782"
+    },
+    {
+      "id": "P10",
+      "hash": "94c9b468a5a148b38680ac8dafc89b2c2902b3dfdee61d9e8c62753cac9e7833",
+      "heading": "Queen of Ptolemy Keraunos",
+      "excerpt": "As Ptolemy Keraunos was becoming more powerful, Arsinoë decided it was time to stop him and conspired against him with her sons. This action",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1366700782"
+    },
+    {
+      "id": "P11",
+      "hash": "426d4dc08de079c210e588504f9d124f0047bc99ddb3d7350e94efff6e1da78c",
+      "heading": "Queen of Ptolemy Keraunos",
+      "excerpt": "Arsinoë sought refuge in the Samothrace temple complex, which she had benefited during her tenure as queen. She eventually left from Samothr",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1366700782"
+    },
+    {
+      "id": "P12",
+      "hash": "e6887bbcaa17387830b29b55acbe1ebaaaf8352f50119ca9fcc6fe435e7bea49",
+      "heading": "Queen of Egypt",
+      "excerpt": "Whatever the case, after the divorce of Ptolemy, Arsinoe II then married her brother. As a result, both were given the epithet \"Philadelphoi",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1366700782"
+    },
+    {
+      "id": "P13",
+      "hash": "18fac8ac37f45d75b2bbcbed9cf34f0b003f24a0ddf45cf5605bededf978ecb9",
+      "heading": "Queen of Egypt",
+      "excerpt": "Her role as queen was unprecedented in the dynasty at the time and became a role model for later Ptolemaic queens: she acted alongside her b",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1366700782"
+    },
+    {
+      "id": "P14",
+      "hash": "12ffc181a5669910527a1dc094888eca74df87d64b00d91872c2e4c625c83ebe",
+      "heading": "Deification",
+      "excerpt": "Arsinoe's cult was also propagated in Alexandria. An annual priesthood, known as the Canephorus of Arsinoe Philadelphus, was established by ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1366700782"
+    },
+    {
+      "id": "P15",
+      "hash": "c56fcc972fce7ad7fa36c4a4f2a12ca4c1ec6483c2bc97a0668888fbf9f28186",
+      "heading": "Deification",
+      "excerpt": "Arsinoe seems to have been a genuinely popular goddess throughout the Ptolemaic period, with both Greeks and Egyptians, in Egypt and beyond.",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1366700782"
+    }
+  ],
+  "updatedAt": "2026-10-21T22:33:17.499Z"
 }

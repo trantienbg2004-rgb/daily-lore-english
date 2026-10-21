@@ -6170,10 +6170,10 @@
       "checkedAt": "2026-10-21T22:31:16.970Z"
     },
     "43616": {
-      "status": "FETCHED",
-      "reason": "pinned-source-ready",
+      "status": "EVIDENCE_READY",
+      "reason": "1 rights-verified embedded images",
       "revisionId": 1366700782,
-      "checkedAt": "2026-10-21T22:33:11.803Z"
+      "checkedAt": "2026-10-21T22:33:17.499Z"
     },
     "44312": {
       "status": "EVIDENCE_READY",
@@ -9866,7 +9866,7 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-10-21T22:33:11.811Z",
+  "updatedAt": "2026-10-21T22:33:17.500Z",
   "dailyUsage": {
     "day": "2026-10-21",
     "calls": 37,
