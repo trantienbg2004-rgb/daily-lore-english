@@ -2,9 +2,223 @@
   "pageId": 3517212,
   "title": "Gwadar Port",
   "topic": "Economy",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1380742871,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380742871",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-21T13:01:42.366Z"
+  "reason": "3 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Pakistan-CIA WFB Map.png"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Iran-Pakistan border (Cro).PNG",
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/9/9b/Iran-Pakistan_border_%28Cro%29.PNG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "fileTitle": "File:Iran-Pakistan border (Cro).PNG",
+        "caption": "Gwadar near the Iran–Pakistan border",
+        "alt": "",
+        "description": "Iran-Pakistan border with Croatian description",
+        "date": "2011-12-24",
+        "section": "History",
+        "position": 1,
+        "provenance": {
+          "credit": "Orijentolog",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Iran-Pakistan_border_(Cro).PNG",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Gwadar_Port",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380742871",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Txu-pclmaps-oclc-6654394-makran-ng-41.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7e/Txu-pclmaps-oclc-6654394-makran-ng-41.jpg/960px-Txu-pclmaps-oclc-6654394-makran-ng-41.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Txu-pclmaps-oclc-6654394-makran-ng-41.jpg",
+        "caption": "Map including Gwadar (SoP, 1965)",
+        "alt": "",
+        "description": "Iran-Pakistan border",
+        "date": "Published 1965;Scanned 2016-05-27 10:43:24",
+        "section": "History",
+        "position": 2,
+        "provenance": {
+          "credit": "Survey of Pakistan",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Txu-pclmaps-oclc-6654394-makran-ng-41.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Gwadar_Port",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380742871",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:CPEC Western Alignment.png",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4a/CPEC_Western_Alignment.png/960px-CPEC_Western_Alignment.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:CPEC Western Alignment.png",
+        "caption": "The Western Alignment of CPEC is depicted by the red line. The 1,153 kilometre route will link the M1 Motorway near Islamabad with Gwadar Port. The Western Alignment will also connect to the Karakoram Highway, which is being rebuilt and overhauled as part of CPEC to provide improved access to Gilgit Baltistan and the Chinese region of Xinjiang.",
+        "alt": "",
+        "description": "The Western Alignment of CPEC is depicted by the red line.",
+        "date": "2016-05-18",
+        "section": "Expansion under CPEC",
+        "position": 3,
+        "provenance": {
+          "credit": "Nomi887",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:CPEC_Western_Alignment.png",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Gwadar_Port",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380742871",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "776a28c7135fab0b38e4e52b0cc1156ae697bc3eef41b056fa51d49b73e66a16",
+      "heading": "Lead",
+      "excerpt": "Gwadar Port (Urdu: گوادر بندرگاہ [ˈɡwaːdəɾ ˈbəndəɾɡaː]) is a deep-sea port situated on the Arabian Sea at Gwadar in Pakistan's Balochistan p",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380742871"
+    },
+    {
+      "id": "P2",
+      "hash": "69c620c51b4062ce3f3e193832502337949619b82a9c0a55b89fc322ac79e5b8",
+      "heading": "Lead",
+      "excerpt": "The potential of Gwadar to serve as a deep-water port was first identified in 1954, when the city was still under Omani rule. Plans for cons",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380742871"
+    },
+    {
+      "id": "P3",
+      "hash": "ef640515590aa61dbc4f6dd7074c1972628bf3384c69e979459af24c38790ebb",
+      "heading": "Lead",
+      "excerpt": "In 2015, it was announced that the city and port would be further developed under CPEC at a cost of $1.62 billion, with the aim of linking n",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380742871"
+    },
+    {
+      "id": "P4",
+      "hash": "943d4859b9a7535ce0c6f88c30a1b9f450d4e232f8747cb528668609717b3e5a",
+      "heading": "Lead",
+      "excerpt": "Gwadar Port became formally operational on 14 November 2016, when it was inaugurated by Pakistan's Prime Minister Muhammad Nawaz Sharif; the",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380742871"
+    },
+    {
+      "id": "P5",
+      "hash": "ab9e57da9110d8aeaa60e3f3fbc89871a9d653dcea9bb467cf759cdaeee9edb9",
+      "heading": "Location",
+      "excerpt": "Gwadar Port is situated on the shores of the Arabian Sea in the city of Gwadar, located in the Pakistani province of Balochistan. The port i",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380742871"
+    },
+    {
+      "id": "P6",
+      "hash": "e1d85a35feddb195eba132d1b8029d27d3fa8ee573c57242d7ab18c0663cf9bc",
+      "heading": "History",
+      "excerpt": "In 1783, the Khan of Kalat, Mir Noori Naseer Khan Baloch, granted Gwadar to Taimur Sultan, the vanquished leader of Muscat, who was entruste",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380742871"
+    },
+    {
+      "id": "P7",
+      "hash": "0713dbba628f3ab4580c568e4ea6ab0d5c0e1161ca820e41659e1c9c595f80d8",
+      "heading": "Construction",
+      "excerpt": "Gwadar Port is being developed in two phases: Phase I covered building of three multipurpose berths and related port infrastructure and port",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380742871"
+    },
+    {
+      "id": "P8",
+      "hash": "09d9f779fe838a1d000ff0ddbf6dbb96a64f6e0cd0f3d1248c227eec42955358",
+      "heading": "Phase II",
+      "excerpt": "The second phase of construction is currently underway as part of planned improvements under CPEC and other ancillary projects. The total pr",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380742871"
+    },
+    {
+      "id": "P9",
+      "hash": "6306c3799ab7c1e54fe30152b1eaa29dbfeaf0234a0bdbcdd5f08ee8d44efcb7",
+      "heading": "Expansion under CPEC",
+      "excerpt": "Under the China-Pakistan Economic Corridor plan, the state-owned China Overseas Port Holding Company (COPHC) will expand Gwadar Port with co",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380742871"
+    },
+    {
+      "id": "P10",
+      "hash": "074428c64bdfb420a5c44e8d25ca345d4f982bb8c178564662df381ac9f3d2c3",
+      "heading": "Financing",
+      "excerpt": "The government of China in August 2015 announced that the previously announced concessionary loans for several projects in Gwadar totalling ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380742871"
+    },
+    {
+      "id": "P11",
+      "hash": "2c9da01ecebd569501e7aff58c343ba14a32d524d2c5fadcbf685cd66b232f50",
+      "heading": "Gwadar Special Economic Zone",
+      "excerpt": "The expanded port will be located near a 2,282-acre free trade area in Gwadar which is being modelled on the lines of the Special Economic Z",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380742871"
+    },
+    {
+      "id": "P12",
+      "hash": "b6da1ef284caa473d5144a23e311fc594053852c42956014f30cb91cdec4214d",
+      "heading": "Operations",
+      "excerpt": "Gwadar Port is owned by the government-owned Gwadar Port Authority and operated by China Overseas Port Holding Company (COPHC), a state-run ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380742871"
+    },
+    {
+      "id": "P13",
+      "hash": "080a42d006db1023404b6fb1fcf4653547e16e64406feb2463e930e5b2dce2f9",
+      "heading": "Port of Singapore Authority (2007–2013)",
+      "excerpt": "Following the completion of Phase I, the Government of Pakistan in February 2007 signed a 40-year agreement with PSA International for devel",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380742871"
+    },
+    {
+      "id": "P14",
+      "hash": "83fff91b8a494215be6094695cd70887a79d998101d21ee880e7084b93222b51",
+      "heading": "China Overseas Port Holding Company (2013–present)",
+      "excerpt": "On 18 February 2013, Pakistan awarded a contract for construction and operation of Gwadar Port to a Chinese state-owned enterprise. As per d",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380742871"
+    },
+    {
+      "id": "P15",
+      "hash": "4a1b748b05870cfa1507d0f437ce99aeb98bc81e6c7a9738f813bb003efc0082",
+      "heading": "Gwadar Port as a means to circumvent the Straits of Malacca",
+      "excerpt": "The Straits of Malacca provide China with its shortest maritime access to Europe, Africa, and the Middle East. Approximately 80% of its Midd",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380742871"
+    },
+    {
+      "id": "P16",
+      "hash": "155acf28835cf6a7bd5a744313a00798329e4363d1884d3decbd3a06717cc869",
+      "heading": "Military use",
+      "excerpt": "Pakistan reportedly gave China private assurances that it could convert the Gwadar deep-water port into a permanent military facility. Class",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380742871"
+    },
+    {
+      "id": "P17",
+      "hash": "0f95198c4b3bdd3c5322e5cf221b4860d8dd3b01483e4638efd57ce5e663d329",
+      "heading": "Improved access to western China",
+      "excerpt": "Planned investments in Gwadar Port as part of CPEC will improve connectivity to the restive Xinjiang Uyghur Autonomous Region, thereby incre",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380742871"
+    },
+    {
+      "id": "P18",
+      "hash": "553dd7fba4a40c28010f63905d6423a8992428058713bde03354d4d8c9ef70eb",
+      "heading": "A new transit hub for the Central Asian Republics",
+      "excerpt": "Upon completion of CPEC-related infrastructure projects, transit times between Kashgar, China and Pakistan's Gwadar Port will be greatly red",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380742871"
+    },
+    {
+      "id": "P19",
+      "hash": "1573486f1e3a308b98b19280f70be7e0afd4b7f5bf3129be409e14ef3bc51e58",
+      "heading": "Comparison to Chabahar Port projects",
+      "excerpt": "In May 2016, Indian Prime Minister Narendra Modi and his Iranian counterpart President Hassan Rouhani signed a series of twelve agreements i",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380742871"
+    }
+  ],
+  "updatedAt": "2026-10-21T13:01:43.717Z"
 }
