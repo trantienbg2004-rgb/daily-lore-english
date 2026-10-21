@@ -2,9 +2,263 @@
   "pageId": 650360,
   "title": "Olympic sports",
   "topic": "Sports",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1373879238,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373879238",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-21T01:40:50.594Z"
+  "reason": "3 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Athens archery.jpg"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Curling Torino 2006 Pinerolo Palaghiaccio scena1.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c3/Curling_Torino_2006_Pinerolo_Palaghiaccio_scena1.jpg/960px-Curling_Torino_2006_Pinerolo_Palaghiaccio_scena1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Curling Torino 2006 Pinerolo Palaghiaccio scena1.jpg",
+        "caption": "Curling became an official Olympic sport at the 1998 Winter Olympics in Nagano after a 74-year absence.",
+        "alt": "",
+        "description": "Curling nelle olimpiadi invernali di Torino del 2006. Pinerolo, Palaghiaccio, interno.",
+        "date": "20 February 2006 (according to Exif data)",
+        "section": "Changes in Olympic sports",
+        "position": 1,
+        "provenance": {
+          "credit": "No machine-readable author provided. Feddar assumed (based on copyright claims).",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Curling_Torino_2006_Pinerolo_Palaghiaccio_scena1.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Olympic_sports",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373879238",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Brasil vence a França no vôlei masculino 1037987-15.08.2016 ffz-6369.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b0/Brasil_vence_a_Fran%C3%A7a_no_v%C3%B4lei_masculino_1037987-15.08.2016_ffz-6369.jpg/960px-Brasil_vence_a_Fran%C3%A7a_no_v%C3%B4lei_masculino_1037987-15.08.2016_ffz-6369.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Brasil vence a França no vôlei masculino 1037987-15.08.2016 ffz-6369.jpg",
+        "caption": "Volleyball has been part of the Summer Olympics since 1964.",
+        "alt": "",
+        "description": "Rio de Janeiro - Seleção brasileira masculina de vôlei vence a da França por 3 sets a 1 no Maracanãzinho e vai às quartas-de-final ( Fernando Frazão/Agência Brasil)",
+        "date": "2016-08-16 00:23:34",
+        "section": "Summer Olympics",
+        "position": 2,
+        "provenance": {
+          "credit": "Fernando Frazão/Agência Brasil",
+          "license": "CC BY 3.0 br",
+          "licenseUrl": "https://creativecommons.org/licenses/by/3.0/br/deed.en",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Brasil_vence_a_Fran%C3%A7a_no_v%C3%B4lei_masculino_1037987-15.08.2016_ffz-6369.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Olympic_sports",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373879238",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Ice hockey at the 2014 Winter Olympics – Men's tournament Czech Republic vs Slovakia 2.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/64/Ice_hockey_at_the_2014_Winter_Olympics_%E2%80%93_Men%27s_tournament_Czech_Republic_vs_Slovakia_2.jpg/960px-Ice_hockey_at_the_2014_Winter_Olympics_%E2%80%93_Men%27s_tournament_Czech_Republic_vs_Slovakia_2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Ice hockey at the 2014 Winter Olympics – Men's tournament Czech Republic vs Slovakia 2.jpg",
+        "caption": "Ice hockey was introduced at the 1920 Summer Olympics and then moved to the Winter Games in 1924.",
+        "alt": "",
+        "description": "Ice hockey at the 2014 Winter Olympics – Men's tournament Czech Republic vs Slovakia",
+        "date": "2014-02-18 21:31:30",
+        "section": "Winter Olympics",
+        "position": 3,
+        "provenance": {
+          "credit": "Pawel Maryanov",
+          "license": "CC BY 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Ice_hockey_at_the_2014_Winter_Olympics_%E2%80%93_Men%27s_tournament_Czech_Republic_vs_Slovakia_2.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Olympic_sports",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373879238",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:1904 tug of war.jpg"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "a44dcc31a05f208300c19c7a3ff3c2faab8be58d00a07a3156bcb5edf5f5f0de",
+      "heading": "Lead",
+      "excerpt": "Olympic sports are sports that are contested in the Summer Olympic Games and Winter Olympic Games. The 2024 Summer Olympics included 32 spor",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373879238"
+    },
+    {
+      "id": "P2",
+      "hash": "cc92e0426b23ae1d7fde6c7b80488fb6655d0b0f6955b23b8549a0138901ddd7",
+      "heading": "Lead",
+      "excerpt": "The 2020 Summer Olympics in Tokyo saw the introduction of four new sports, with karate, skateboarding, sport climbing and surfing making the",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373879238"
+    },
+    {
+      "id": "P3",
+      "hash": "79025b90c9cac078e47b66752c455970ab58ce434a87374e3874300bcf8ae5d9",
+      "heading": "Early history and scope",
+      "excerpt": "From the 18th century onwards, researchers took a greater interest in the value of traditional games in elucidating cultural values and iden",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373879238"
+    },
+    {
+      "id": "P4",
+      "hash": "461ab1e07458e37b82936d7966d2c16cda3c5159d470bc3b3c9f896800d87cdb",
+      "heading": "Olympic sports definitions",
+      "excerpt": "The International Olympic Committee (IOC) considers an Olympic sport to comprise all disciplines governed by an international sports federat",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373879238"
+    },
+    {
+      "id": "P5",
+      "hash": "0fb96fe9baf3ed4d8ba627c3a7957af704388e13b142ff19b38e64c6c7d11511",
+      "heading": "Olympic sports definitions",
+      "excerpt": "Other notable multi-discipline sports are gymnastics (artistic, rhythmic, and trampoline), cycling (road, track, mountain, and BMX), volleyb",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373879238"
+    },
+    {
+      "id": "P6",
+      "hash": "18633781cf603e68a624dcf0eec6f81a3f9e026793c8d2ba4b890372d636076b",
+      "heading": "Criteria for inclusion and thresholds",
+      "excerpt": "Sports eligible for inclusion in the Olympic programme are only those governed by international federations recognized by the IOC, as stated",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373879238"
+    },
+    {
+      "id": "P7",
+      "hash": "ad74a3b8d8b89c31e2527307fdc8df82c13c8e89e033d8df7dd933cceb41141c",
+      "heading": "Changes in Olympic sports",
+      "excerpt": "The list of Olympic sports has changed considerably during the course of Olympic history, and has gradually increased over time. The Olympic",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373879238"
+    },
+    {
+      "id": "P8",
+      "hash": "3d5a9f0b4f7f5e5e25b1f4e013e81fa865541de2c539822d8aaf4c91359bed45",
+      "heading": "Changes between 2000–2030",
+      "excerpt": "The sports of baseball and softball were both voted off the program by the IOC Session in Singapore on 11 July 2005, a decision that was rea",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373879238"
+    },
+    {
+      "id": "P9",
+      "hash": "feeba47897f1a4e3e53f8c27ce3d09d7fc37b9dfd125d48d5bc023e4a4d05a16",
+      "heading": "Changes after 2030",
+      "excerpt": "In June 2026, the IOC introduced a \"Fit for the Future\" methodology for the 2032 Summer Olympics onward, changing the program to be based ar",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373879238"
+    },
+    {
+      "id": "P10",
+      "hash": "751116dfc0e636fa0c221ab8ca35c9ae3f8c52e9c2004dd5a0d5eec7e49cc698",
+      "heading": "Summer Olympics",
+      "excerpt": "At the first Olympic Games, ten sports were contested. Since then, the number of sports contested at the Summer Olympic Games has gradually ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373879238"
+    },
+    {
+      "id": "P11",
+      "hash": "8f41248644df428bdf31239548e4dc4658513bb4124ae93a9e53e909148c95d4",
+      "heading": "Current and discontinued summer program",
+      "excerpt": "The following sports (and disciplines) make up the current and discontinued Summer Olympic Games official program and are listed alphabetica",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373879238"
+    },
+    {
+      "id": "P12",
+      "hash": "327b49825851dddc700acc211a7253af5e268b9a2f81934b2b500d56eb2fff88",
+      "heading": "Feats and artistic events",
+      "excerpt": "Art competitions were held between the 1912 and 1948 Games, with medals awarded. The IOC classifies art competitions as non-sport competitio",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373879238"
+    },
+    {
+      "id": "P13",
+      "hash": "e999176394998e660877ce446a554d9ad43c388018cb065d0278a56f90cd62aa",
+      "heading": "Demonstration summer sports",
+      "excerpt": "Between 1924 and 1992, the IOC officially recognized demonstration sports, allowing host countries to organize demonstrations of non-Olympic",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373879238"
+    },
+    {
+      "id": "P14",
+      "hash": "379a3f3a3ee7cdf648262c70ce4b382040221f526820b248788eef872f6b4942",
+      "heading": "Unofficial summer sports",
+      "excerpt": "Several sports, while not officially recognized by the IOC as demonstration sports, have nonetheless been held alongside or as part of the O",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373879238"
+    },
+    {
+      "id": "P15",
+      "hash": "698d1c9deb6143f0f526f0847678a9c7ade2ae6c7c45d6fe08403c41c0e5710b",
+      "heading": "Winter Olympics",
+      "excerpt": "Before 1924, ice sports like figure skating and ice hockey were held at the Summer Olympic Games. These two sports made their debuts at the ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373879238"
+    },
+    {
+      "id": "P16",
+      "hash": "89260d45838f0b33e2f4b567792993e22619320c2dba4dce799d322bfbd9140d",
+      "heading": "Current and discontinued winter program",
+      "excerpt": "The following sports (and disciplines) make up the current Winter Olympic Games official program and are listed alphabetically, according to",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373879238"
+    },
+    {
+      "id": "P17",
+      "hash": "547daf33c66dd2e650b2592fc7e84f9efde7d6b70cb979a9a3f6a74f17cd5370",
+      "heading": "Demonstration winter sports",
+      "excerpt": "The following sports or disciplines have been demonstration sports at the Winter Olympic Games for the years shown, but have never been incl",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373879238"
+    },
+    {
+      "id": "P18",
+      "hash": "2907a2984d307179601d0b846b9582910efc1967c12c4c9c6e85d26ee7232f2f",
+      "heading": "Recognized international federations",
+      "excerpt": "Such sports, if eligible under the terms of the Olympic Charter, may apply for inclusion in the program at future Games, through a recommend",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373879238"
+    },
+    {
+      "id": "P19",
+      "hash": "be715936bdb71de359812d7bdc288d945d64cfd5bc2ee97493d63a5bcaf5e0f6",
+      "heading": "Olympic sports definitions",
+      "excerpt": "The IOC definition of a \"discipline\" may differ from that used by an international federation. For example, the IOC considers artistic gymna",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373879238"
+    },
+    {
+      "id": "P20",
+      "hash": "08d7114697e116beac698ec80aac902864c52acb6687bdcb787658a478d0d563",
+      "heading": "Olympic sports definitions",
+      "excerpt": "An event, by IOC definition, is a competition that leads to the award of medals. Therefore, the sport of aquatics includes a total of 46 Oly",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373879238"
+    },
+    {
+      "id": "P21",
+      "hash": "42f3dd1343c60d070c1fe9c8b6d96b38e52822c6d93988b7fe8b1812e0c1c727",
+      "heading": "Criteria for inclusion and thresholds",
+      "excerpt": "In the past, several criteria concerning widely practiced sports, disciplines or events have been abolished. However, the number of sports r",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373879238"
+    },
+    {
+      "id": "P22",
+      "hash": "f2a5245570d1225fdc0d2d9482d10c56b50b1908c198f24fb71b5a4e23e506d7",
+      "heading": "Criteria for inclusion and thresholds",
+      "excerpt": "In previous years, sports that depend primarily on mechanical propulsion, such as motor sports, could not be considered for recognition as O",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373879238"
+    },
+    {
+      "id": "P23",
+      "hash": "d48e77b1dd9c2717332925af46e7f46bd5fd1ce7053431a62c88b596b0606a12",
+      "heading": "Changes in Olympic sports",
+      "excerpt": "The only summer sports that have never been absent from the Olympic program are athletics, aquatics (swimming), cycling, fencing, and gymnas",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373879238"
+    },
+    {
+      "id": "P24",
+      "hash": "777e1ae50292682c3e58f31a9df22aa82db9588cdc225a44d0412121c9696133",
+      "heading": "Changes in Olympic sports",
+      "excerpt": "Women first competed in the 1900 Olympic Games, participating in five sports (croquet, sailing, tennis, golf and equestrian). With the addit",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373879238"
+    }
+  ],
+  "updatedAt": "2026-10-21T01:40:51.927Z"
 }
