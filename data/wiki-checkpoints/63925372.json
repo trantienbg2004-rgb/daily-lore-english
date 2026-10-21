@@ -2,10 +2,10 @@
   "pageId": 63925372,
   "title": "Hebraization of Palestinian place names",
   "topic": "History & Geography",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1378076101,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378076101",
-  "reason": "3 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -213,5 +213,159 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378076101"
     }
   ],
-  "updatedAt": "2026-10-21T13:39:15.510Z"
+  "updatedAt": "2026-10-21T13:39:35.065Z",
+  "draft": {
+    "outline": [
+      "Introduction to the history and extensive scope of place-name Hebraization across Palestine.",
+      "Ancient linguistic roots, ancient transformations, and the later emergence of Arabized forms.",
+      "Early 20th-century mapping efforts, Zionist initiatives, and early naming committees.",
+      "British Mandate policies, administrative friction, and the response of local Jewish institutions.",
+      "Post-1948 government committees, the Negev naming push, and ongoing cataloging efforts.",
+      "Archeological missteps, contemporary street name restorations, and historical reflections."
+    ],
+    "variants": {
+      "A1-A2": {
+        "headline": "Changing Place Names in Palestine",
+        "pages": [
+          {
+            "text": "New Hebrew names were given to many places in Palestine over a long time. This happened during the British Mandate, after 1948, and in the Palestinian territories occupied in 1967. A study in 1992 counted about 2,780 historical locations with changed names.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Before these changes, many names in the region came from Arabic. These Arabic names had grown from older Aramaic, Greek, and ancient Hebrew words over many centuries following the early conquests and changes in the local languages.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "Plans to use Hebrew names started early in the 20th century. In 1907, a special map was used to add new Hebrew names and new Jewish communities. Later, in 1925, a Jewish group formed a special committee to name new settlements.",
+            "evidenceIds": [
+              "P3",
+              "P7"
+            ]
+          },
+          {
+            "text": "The Israeli government later encouraged giving Hebrew names to strengthen connections to the land. Some ancient biblical names were brought back. Other sites were given new Hebrew names or used words that sounded like the older Arabic names.",
+            "evidenceIds": [
+              "P4"
+            ]
+          },
+          {
+            "text": "In 1949, a new committee was created to name places in the Negev region. Later, committees merged to cover the entire country. Officials worked hard to replace remaining Arabic names with Hebrew ones, though some mistakes happened.",
+            "evidenceIds": [
+              "P9",
+              "P10",
+              "P14"
+            ]
+          },
+          {
+            "text": "Today, some things are changing back in certain places. In some mixed cities, people have started to restore the original Arabic street names that were replaced after 1948, showing a growing trend to bring back older local names.",
+            "evidenceIds": [
+              "P4",
+              "P11"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "The History of Hebraizing Place Names",
+        "pages": [
+          {
+            "text": "Hebrew-language names were assigned to locations across Palestine across several distinct eras. These included the British Mandate, the period following the 1948 war, and the subsequent occupation of Palestinian territories in 1967. A 1992 study recorded nearly 2,800 historical sites that underwent this process, including numerous villages, ruins, wadis, and springs.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "The etymologies of the region's existing place names varied widely, incorporating ancient Nabataean, Canaanite, and Hebrew roots. Through classical antiquity, these names evolved into Aramaic and Greek, and were later Arabized following the Muslim conquest of the Levant.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "Organized efforts began early in the 20th century. In 1907, Zionist organizations utilized European maps as a base to overlay new Hebrew place names for future Jewish colonies. By 1925, the Jewish National Fund established a dedicated committee to name newly established settlements.",
+            "evidenceIds": [
+              "P3",
+              "P7"
+            ]
+          },
+          {
+            "text": "The Israeli government actively encouraged Hebraization to strengthen Jewish ties to the land. While some ancient biblical names were successfully restored, others were adapted from Arabic phonetically or assigned entirely new names where no ancient tradition existed, causing historical traditions to be lost.",
+            "evidenceIds": [
+              "P4"
+            ]
+          },
+          {
+            "text": "Government committees expanded their scope rapidly after 1949, systematically renaming geographic features in the Negev and beyond. By 1960, officials noted that the replacement of Arabic names was nearly comprehensive, though the process occasionally suffered from archaeological errors and misidentifications.",
+            "evidenceIds": [
+              "P9",
+              "P10",
+              "P14"
+            ]
+          },
+          {
+            "text": "While state maps and signs frequently displayed bilingual options, tensions over naming persisted for decades. In recent years, a counter-trend has emerged in mixed cities within Israel, where communities have begun restoring the original Arabic street names that were replaced after 1948.",
+            "evidenceIds": [
+              "P4",
+              "P11"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "Toponymic Transformation in Palestine",
+        "pages": [
+          {
+            "text": "The systematic Hebraization of Palestinian toponyms unfolded across successive historical phases: the British Mandate, the aftermath of the 1948 Arab-Israeli conflict, and the post-1967 occupation. A comprehensive 1992 study cataloged approximately 2,780 altered historical localities, spanning villages, architectural ruins, water sources, and topographical features.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "The underlying etymologies of the region's historical nomenclature were complex, featuring ancient linguistic strata influenced by Nabataean, Canaanite, and Hebrew forms. Subsequent administrative shifts during classical antiquity and the subsequent Muslim conquest yielded Aramaic, Greek, and ultimately Arabized derivatives.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "Early institutional frameworks emerged at the outset of the 20th century. The World Zionist Congress utilized European cartography in 1907 to project future Hebrew designations onto the landscape, a practice formalized in 1925 with the creation of the JNF Names Committee.",
+            "evidenceIds": [
+              "P3",
+              "P7"
+            ]
+          },
+          {
+            "text": "State-sponsored Hebraization served to consolidate national connections to the territory. Authorities revived ancient biblical nomenclature, adopted phonetic homophones from Arabic, or imposed novel Hebrew designations on sites lacking prior records, occasionally eclipsing established historical traditions.",
+            "evidenceIds": [
+              "P4"
+            ]
+          },
+          {
+            "text": "Following the 1948 war, dedicated state bodies such as the Negev naming committee and the subsequent Government Naming Committee institutionalized nationwide toponymic revision. Archival records indicate that by 1960, the replacement of Arabic designations was extensive, though complicated by occasional archaeological misidentifications.",
+            "evidenceIds": [
+              "P9",
+              "P10",
+              "P14"
+            ]
+          },
+          {
+            "text": "Despite longstanding administrative unification efforts and bilingual signage, contemporary municipal dynamics reflect a shifting landscape. Recent years have witnessed a localized reversion trend, whereby original Arabic street names replaced in the wake of 1948 are actively restored in mixed urban centers.",
+            "evidenceIds": [
+              "P4",
+              "P11"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 3027,
+    "output": 1837,
+    "total": 4864
+  },
+  "validation": null
 }
