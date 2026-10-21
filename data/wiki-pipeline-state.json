@@ -7772,10 +7772,10 @@
       "checkedAt": "2026-10-21T13:52:54.408Z"
     },
     "17213240": {
-      "status": "DRAFTED",
-      "reason": "draft durably saved before validation",
+      "status": "NEEDS_REVIEW",
+      "reason": "Missing repaired page",
       "revisionId": 1373455290,
-      "checkedAt": "2026-10-21T18:10:37.357Z"
+      "checkedAt": "2026-10-21T18:10:55.620Z"
     },
     "17363244": {
       "status": "RETRY_LATER",
@@ -9866,7 +9866,7 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-10-21T18:10:53.281Z",
+  "updatedAt": "2026-10-21T18:10:55.621Z",
   "dailyUsage": {
     "day": "2026-10-21",
     "calls": 30,
