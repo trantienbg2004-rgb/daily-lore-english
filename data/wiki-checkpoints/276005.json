@@ -2,9 +2,198 @@
   "pageId": 276005,
   "title": "Asylum seeker",
   "topic": "Society",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1377958854,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377958854",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-21T13:01:48.823Z"
+  "reason": "1 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:CIA, Conrad Schumanns Sprung in die Freiheit, August 1961 (cropped) 1.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/70/CIA%2C_Conrad_Schumanns_Sprung_in_die_Freiheit%2C_August_1961_%28cropped%29_1.jpg/960px-CIA%2C_Conrad_Schumanns_Sprung_in_die_Freiheit%2C_August_1961_%28cropped%29_1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:CIA, Conrad Schumanns Sprung in die Freiheit, August 1961 (cropped) 1.jpg",
+        "caption": "Konrad Schumann, an East German border guard, fleeing East Germany towards West Germany in 1962",
+        "alt": "",
+        "description": "15 August 1961. East German guard Conrad Schumann jumps to freedom in West Berlin. From the booklet \"A City Torn Apart: Building of the Berlin Wall.\" For more information, visit CIA's Historical Collections webpage (www.cia.gov/library/publications/historical-collection-pu...).",
+        "date": "1961-08-15",
+        "section": "Asylum and protection",
+        "position": 0,
+        "provenance": {
+          "credit": "The Central Intelligence Agency",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:CIA,_Conrad_Schumanns_Sprung_in_die_Freiheit,_August_1961_(cropped)_1.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Asylum_seeker",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377958854",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "ffcf0b8317068324b36a88ff62bae57a17b33a5987fd7261baf80711fa849710",
+      "heading": "Lead",
+      "excerpt": "An asylum seeker or asylum-seeker is a person who leaves their country of residence, enters another country, and makes in that other country",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377958854"
+    },
+    {
+      "id": "P2",
+      "hash": "ff926f11b5a54eb1ddfdf1fb7e061c4314d082eac2706786d56c6ca10428afc8",
+      "heading": "Lead",
+      "excerpt": "The relevant immigration authorities of the country of asylum determine whether the asylum seeker will be granted the right of asylum protec",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377958854"
+    },
+    {
+      "id": "P3",
+      "hash": "85f06c06c08c71d37f0cdad5e728cfbd1805c778aabc92d18be01902e30b010a",
+      "heading": "Lead",
+      "excerpt": "The asylum seeker may be simultaneously recognized as a refugee and given refugee status if their circumstances fall into the definition of ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377958854"
+    },
+    {
+      "id": "P4",
+      "hash": "e4cf4d2c0f8e8803e3ecc47b9b5883f362a59465520548ae58d03c00a0fb4f13",
+      "heading": "Lead",
+      "excerpt": "The terms asylum seeker, refugee and illegal immigrant are often confused. In North American English, the term asylee is used both for an as",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377958854"
+    },
+    {
+      "id": "P5",
+      "hash": "02e81f5eb98e638baa3f9774bbb5111a55de77011c00c8f78d6c04fec32ddbbc",
+      "heading": "Asylum and protection",
+      "excerpt": "2. This right may not be invoked in the case of prosecutions genuinely arising from non-political crimes or from acts contrary to the purpos",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377958854"
+    },
+    {
+      "id": "P6",
+      "hash": "ebf1043a7fe4baa80d1dde6a0c876049dbc6e0344b9e4f5e3db5c1c3f52d35e0",
+      "heading": "Subsidiary protection status",
+      "excerpt": "Subsidiary protection is an international protection for persons seeking asylum who do not qualify as refugees. It is an option to get asylu",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377958854"
+    },
+    {
+      "id": "P7",
+      "hash": "ec101ec7ab8b880b0ac7eedb187756681e2473cc171c7ff6092317f07aa8c960",
+      "heading": "Temporary protection visa",
+      "excerpt": "Temporary protection visas are used to persons in Australia who applied for refugee status after making an unauthorised arrival. It is the m",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377958854"
+    },
+    {
+      "id": "P8",
+      "hash": "418a56a61eea5fd71038e737edd881b1f00e135aa635fe2c878ed575ca9d1866",
+      "heading": "Statistics of asylum decisions",
+      "excerpt": "In the past 2 decades the number people applying for asylum every year varied between 0.6 and 2.8 million. Outcomes of asylum applications 2",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377958854"
+    },
+    {
+      "id": "P9",
+      "hash": "548f2693ba3a7abbbd563429eaa2c0381cc5a633f6480992a0400972e6b35353",
+      "heading": "Group determination",
+      "excerpt": "Asylum seekers may be given refugee status on a group basis. Refugees who went through the group status determination are also referred to a",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377958854"
+    },
+    {
+      "id": "P10",
+      "hash": "2eb3a0de277e3b1c75f12b84690af841440de9a45617217f77d4a7b9b1d13a37",
+      "heading": "Individual assessment",
+      "excerpt": "For persons who do not come into the country as part of a bigger group, individual asylum interviews are conducted to establish whether the ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377958854"
+    },
+    {
+      "id": "P11",
+      "hash": "b5de9f7a0795ceefe98a9b9c7465a3e185730acd6416755fef053dbef0bab644",
+      "heading": "Appeals",
+      "excerpt": "In many countries, asylum applicants can challenge a rejection by challenging the decision in a court or migration review panel. In the Unit",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377958854"
+    },
+    {
+      "id": "P12",
+      "hash": "5d69dd11e0fe0334e9424cdf6fa491fda7df004c201255d46417ab4f8cc2d802",
+      "heading": "Rights of asylum seekers",
+      "excerpt": "Whilst waiting for a decision asylum seekers have limited rights in the country of asylum. In most countries they are not allowed to work an",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377958854"
+    },
+    {
+      "id": "P13",
+      "hash": "e8142acfc64c7b60e3981afcbdae87b61cd369c0adf3a219afed426fd01b0b14",
+      "heading": "Concerns in asylum-seeking processes",
+      "excerpt": "Non-governmental organizations concerned with refugees and asylum seekers have pointed out difficulties for displaced persons to seek asylum",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377958854"
+    },
+    {
+      "id": "P14",
+      "hash": "097211c9eef22e594b6f6142679c6c2bb7f893479c120f6875f3b8f42a1bc9e1",
+      "heading": "Destitution",
+      "excerpt": "Because asylum seekers often have to wait for months or years for the results of their asylum applications and because they are usually not ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377958854"
+    },
+    {
+      "id": "P15",
+      "hash": "c9db759c77db6b063cc56f7bc8b34b13c80a35e2bf5e2136ae8d6e2f8ab0997b",
+      "heading": "Identity",
+      "excerpt": "Absence of identity documents or disputes of identity can make the demonstration of persecution for the right of asylum more complex. Person",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377958854"
+    },
+    {
+      "id": "P16",
+      "hash": "e2b07922503e7a4b5e555d8435bb2af982f432ddc9290d318c05e7b14527a119",
+      "heading": "Refusal of asylum",
+      "excerpt": "It often happens that the country neither recognizes the refugee status of the asylum seekers nor sees them as legitimate migrants and thus ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377958854"
+    },
+    {
+      "id": "P17",
+      "hash": "d4a73328c8de3b92d2dede68e08782a05eef3e5b05f3ae4f0830cc3beeeee1a7",
+      "heading": "Asylum and protection",
+      "excerpt": "Asylum seekers who have committed crimes against peace, a war crime or a crime against humanity, or other non-political crimes, or whose act",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377958854"
+    },
+    {
+      "id": "P18",
+      "hash": "6a3f1ce4e7b11b6383ad3b90824bfe1e21e162b1cb2c6f745986e2ce12323a68",
+      "heading": "Asylum and protection",
+      "excerpt": "The practical determination of whether a person obtains the right of asylum or not is most often left to certain government agencies within ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377958854"
+    },
+    {
+      "id": "P19",
+      "hash": "de804f160cd61157dab7cf04ce4db9fec1eae083cb78d64fae31b39ee8d1f982",
+      "heading": "Asylum and protection",
+      "excerpt": "In many countries, country-of-origin information is used by migration officials as part of the assessment of asylum claims, and governments ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377958854"
+    },
+    {
+      "id": "P20",
+      "hash": "648001e05e403c485ea1ac3651676dcb442d259b1b7ba52a9f471863499089fe",
+      "heading": "Statistics of asylum decisions",
+      "excerpt": "The percentage of women among asylum seekers to Europe from 2008 to 2018 was 31%, which could be explained by factors including gender inequ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377958854"
+    },
+    {
+      "id": "P21",
+      "hash": "58fb5d6720edf1b431d300ad6bd5a553999d3267019e9c6394200e7397eec373",
+      "heading": "Concerns in asylum-seeking processes",
+      "excerpt": "In recent years, the public as well as policy makers of many countries are focusing more and more on refugees arriving through third country",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377958854"
+    },
+    {
+      "id": "P22",
+      "hash": "a30ec6aa995955c6bb671c33881304f13625fa7967625afce0d1ff64975be807",
+      "heading": "Concerns in asylum-seeking processes",
+      "excerpt": "Legal interpreters are assigned to assist asylum seekers throughout interviews and court proceedings. These legal interpreters reflect the t",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377958854"
+    },
+    {
+      "id": "P23",
+      "hash": "8a8447dfbf0556a930b484728e5329a2785be9556ff90fa39c97bac21794f142",
+      "heading": "Concerns in asylum-seeking processes",
+      "excerpt": "Quality of life of asylum seekers and refugees is highly correlated with the mental health status. The presence of mental disorders like dep",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377958854"
+    }
+  ],
+  "updatedAt": "2026-10-21T13:01:50.306Z"
 }
