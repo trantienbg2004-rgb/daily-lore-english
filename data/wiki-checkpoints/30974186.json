@@ -2,9 +2,160 @@
   "pageId": 30974186,
   "title": "Mayan cities",
   "topic": "History & Geography",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1306965461,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1306965461",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-21T07:56:48.686Z"
+  "reason": "2 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Tikal temple jaguar.jpg"
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Palenque 16.jpg"
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Mayamap.png"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Chichen Itza ruins in Mexico -- by John Romkey.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ad/Chichen_Itza_ruins_in_Mexico_--_by_John_Romkey.jpg/960px-Chichen_Itza_ruins_in_Mexico_--_by_John_Romkey.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Chichen Itza ruins in Mexico -- by John Romkey.jpg",
+        "caption": "Chichén Itzá was the most important city in the northern Maya region.",
+        "alt": "",
+        "description": "This is the structure called \"The Observatory\" in the Chichen Itza ruins in Mexico.",
+        "date": "2005-02-15 15:14:22",
+        "section": "Classic Period",
+        "position": 3,
+        "provenance": {
+          "credit": "John Romkey from USA",
+          "license": "CC BY 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Chichen_Itza_ruins_in_Mexico_--_by_John_Romkey.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Mayan_cities",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1306965461",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Zacuelu2.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b4/Zacuelu2.jpg/960px-Zacuelu2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Zacuelu2.jpg",
+        "caption": "Zaculeu fell to the Spanish in 1525.",
+        "alt": "",
+        "description": "Zacuelu, Guatemala: Main pyramid",
+        "date": "2011-09-08 14:17:47",
+        "section": "Conquest and rediscovery",
+        "position": 4,
+        "provenance": {
+          "credit": "HJPD",
+          "license": "CC BY 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Zacuelu2.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Mayan_cities",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1306965461",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "0c7690df60dee751573da324ce26a760d0af27d7ad2f89990078985bbcfc0b61",
+      "heading": "Lead",
+      "excerpt": "Maya cities were the centres of population of the pre-Columbian Maya civilization of Mesoamerica. They served the specialised roles of admin",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1306965461"
+    },
+    {
+      "id": "P2",
+      "hash": "e9c2a4c42c50c77b38d92f5fa9a9833629767e809aa112e908cf9dcc7cf1dc90",
+      "heading": "Lead",
+      "excerpt": "The political relationship between Classic Maya city-states has been likened to the relationships between city-states in Classical Greece an",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1306965461"
+    },
+    {
+      "id": "P3",
+      "hash": "4f2d8dbac607e205553d24befc18174ec790f454ed22760e5b14ed2a1aed03e7",
+      "heading": "Architectural organization",
+      "excerpt": "Maya cities were not formally planned like the cities of highland Mexico and were subject to irregular expansion, with the haphazard additio",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1306965461"
+    },
+    {
+      "id": "P4",
+      "hash": "c7ec1ddc95f5f8fca6a391a44d528758a3c826a61193f41852c5ca678a3366dd",
+      "heading": "Architectural organization",
+      "excerpt": "The ceremonial centre of the Maya city was where the ruling elite lived, and where the administrative functions of the city were performed, ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1306965461"
+    },
+    {
+      "id": "P5",
+      "hash": "6eb6b37efbaadefb6e9cda92f691193d17e0ccd63d8075d63d6c68f7fec6ab40",
+      "heading": "Population estimates",
+      "excerpt": "Until the 1960s, scholarly opinion was that the ruins of Maya centres were not true cities but were rather empty ceremonial centres where th",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1306965461"
+    },
+    {
+      "id": "P6",
+      "hash": "c39bd2e951e67dbdbcd6224fe9a408425433f327367f044d030cb21f561c4705",
+      "heading": "Middle Preclassic Period",
+      "excerpt": "During the Middle Preclassic Period (1000-400 BC), small villages began to grow to form cities. Aguada Fenix in Tabasco, Mexico is the oldes",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1306965461"
+    },
+    {
+      "id": "P7",
+      "hash": "80655bacf9bc21d5b742e34108e11a70bbd5901c59314f8e2912fa011c19c167",
+      "heading": "Late Preclassic Period",
+      "excerpt": "In the Late Preclassic Period (400 BC - 250 AD), the enormous city of El Mirador grew to cover approximately 16 square kilometres (6.2 sq mi",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1306965461"
+    },
+    {
+      "id": "P8",
+      "hash": "5794431e4d78fc41ed1eab56cc946981edb4b88ebf9a543471b1e611faaf8084",
+      "heading": "Classic Period",
+      "excerpt": "During the Classic Period (AD 250-900), the Maya civilization achieved its greatest florescence. During the Early Classic (AD 250-300), citi",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1306965461"
+    },
+    {
+      "id": "P9",
+      "hash": "fac7c62918a2dd1f830f0f78507a730925ba11a51cc9d77ce7a6bc0ff82e2a37",
+      "heading": "Postclassic Period",
+      "excerpt": "The Postclassic Period (AD 900-c.1524) was marked by a series of changes that distinguished its cities from those of the preceding Classic P",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1306965461"
+    },
+    {
+      "id": "P10",
+      "hash": "014e9bff8f0a6415fddded0b4c9560959097d3d604f26d225acbb787582cfd50",
+      "heading": "Conquest and rediscovery",
+      "excerpt": "The cities of the Postclassic highland Maya kingdoms fell to the invading Spanish conquistadors in the first half of the 16th century. The K",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1306965461"
+    },
+    {
+      "id": "P11",
+      "hash": "6137167d161198244b075c6aecbd627f3db6b2a5c76ca6fb95af7c672e8fa14a",
+      "heading": "Late Preclassic Period",
+      "excerpt": "The city of Tikal, later to be one of the most important of the Classic Period Maya cities, was already a significant city by around 350 BC,",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1306965461"
+    },
+    {
+      "id": "P12",
+      "hash": "12ba539597033baacbfe93df1885cd4576be12f562fe1eec72315ae3ea8ecf2f",
+      "heading": "Conquest and rediscovery",
+      "excerpt": "By the 19th century, the existence of five former Maya cities was known in the Petén region of Guatemala. Nojpetén had been visited by Spani",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1306965461"
+    }
+  ],
+  "updatedAt": "2026-10-21T07:56:50.032Z"
 }
