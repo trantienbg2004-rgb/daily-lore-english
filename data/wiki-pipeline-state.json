@@ -8366,10 +8366,10 @@
       "checkedAt": "2026-10-21T07:32:55.401Z"
     },
     "39958236": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
+      "revisionId": 1374128641,
+      "checkedAt": "2026-10-21T18:14:45.343Z"
     },
     "39963848": {
       "status": "EVIDENCE_READY",
@@ -9866,7 +9866,7 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-10-21T18:14:37.817Z",
+  "updatedAt": "2026-10-21T18:14:45.352Z",
   "dailyUsage": {
     "day": "2026-10-21",
     "calls": 30,
