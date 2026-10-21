@@ -9626,10 +9626,10 @@
       "checkedAt": null
     },
     "79761972": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
+      "revisionId": 1323913249,
+      "checkedAt": "2026-10-21T07:39:53.264Z"
     },
     "79798169": {
       "status": "PENDING",
@@ -9866,7 +9866,7 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-10-21T07:39:51.507Z",
+  "updatedAt": "2026-10-21T07:39:53.265Z",
   "dailyUsage": {
     "day": "2026-10-21",
     "calls": 4,
