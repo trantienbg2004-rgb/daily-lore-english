@@ -6248,10 +6248,10 @@
       "checkedAt": null
     },
     "61322": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
+      "revisionId": 1370887710,
+      "checkedAt": "2026-10-21T07:39:39.979Z"
     },
     "66981": {
       "status": "PENDING",
@@ -9866,7 +9866,7 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-10-21T07:39:37.409Z",
+  "updatedAt": "2026-10-21T07:39:39.980Z",
   "dailyUsage": {
     "day": "2026-10-21",
     "calls": 4,
