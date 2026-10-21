@@ -2,9 +2,258 @@
   "pageId": 24878360,
   "title": "German question",
   "topic": "Politics",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1362093523,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1362093523",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-21T13:01:38.718Z"
+  "reason": "5 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:177 leuchtkugeln nr 23.jpg",
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/a/ac/177_leuchtkugeln_nr_23.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "fileTitle": "File:177 leuchtkugeln nr 23.jpg",
+        "caption": "German unity as fiasco with each state viewing itself separate. Cartoon from Münchner Leuchtkugeln, 1848.Caption reads: \"German Unity. A Tragedy in one Act.\"",
+        "alt": "",
+        "description": "Münchner 'Leuchtkugeln', 1848.",
+        "date": "1848",
+        "section": "",
+        "position": 0,
+        "provenance": {
+          "credit": "Unknown authorUnknown author",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:177_leuchtkugeln_nr_23.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/German_question",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1362093523",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Map-GermanConfederation.svg"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Nationalversammlung in der Paulskirche.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/19/Zeitgen%C3%B6ssige_Lithografie_der_Nationalversammlung_in_der_Paulskirche.jpg/960px-Zeitgen%C3%B6ssige_Lithografie_der_Nationalversammlung_in_der_Paulskirche.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Nationalversammlung in der Paulskirche.jpg",
+        "caption": "First German National assembly at St. Paul's Church, Frankfurt 1848/49",
+        "alt": "",
+        "description": "The opening of the Frankfurt Parliament in Frankfurt's Paulskirche in 1848. Coloured, contemporary engraving. View at the President's table, over which the portrait Germania by Philipp Veit emerges.",
+        "date": "1848",
+        "section": "March Revolution",
+        "position": 2,
+        "provenance": {
+          "credit": "from a contemporary drawing of the Parliament in 1848; after a drawing by Ludwig von Elliot",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Zeitgen%C3%B6ssige_Lithografie_der_Nationalversammlung_in_der_Paulskirche.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/German_question",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1362093523",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Ac.prussiamap3.png"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Sprachenkarte Deutschland1880.png",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bb/Sprachenkarte_Deutschland1880.png/960px-Sprachenkarte_Deutschland1880.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Sprachenkarte Deutschland1880.png",
+        "caption": "Language map from a German atlas, printed in 1881",
+        "alt": "",
+        "description": "Language map of Germany, from a German atlas printed in 1881. The colours in this scan have been enhanced, but regional representations have not been altered. Note: this map identifies even areas with a German-speaking minority as \"German\".",
+        "date": "2007-11-03",
+        "section": "Austro-Prussian War and Franco-Prussian War",
+        "position": 4,
+        "provenance": {
+          "credit": "--Ulamm",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Sprachenkarte_Deutschland1880.png",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/German_question",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1362093523",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:KurtVonSchuschnigg1936.jpg"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Stimmzettel-Anschluss.jpg",
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/5/57/Stimmzettel-Anschluss.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "fileTitle": "File:Stimmzettel-Anschluss.jpg",
+        "caption": "Voting ballot from 10 April 1938. The ballot text reads, \"Do you agree with the reunification of Austria with the German Reich that was enacted on 13 March 1938, and do you vote for the party of our leader Adolf Hitler?\" The large circle is labeled \"Yes\", the smaller \"No\".",
+        "alt": "",
+        "description": "Voting ballot from 10 April 1938. (\"Referendum and Großdeutscher Reichstag; Ballot; Do you agree with the reunification of Austria with the German Reich that was enacted on 13 March 1938 and do you vote for the party of our leader; Adolf Hitler?; Yes; No\")",
+        "date": "1938",
+        "section": "Later influence",
+        "position": 6,
+        "provenance": {
+          "credit": "Unknown authorUnknown author",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Stimmzettel-Anschluss.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/German_question",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1362093523",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Nazi Germany.svg"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Map-Germany-1945.svg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6f/Map-Germany-1945.svg/960px-Map-Germany-1945.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Map-Germany-1945.svg",
+        "caption": "Occupation zone borders in Germany, 1947. The territories east of the Oder–Neisse line under Polish and Soviet administration and Saar Protectorate shown as white.",
+        "alt": "",
+        "description": "Occupation zone borders in Germany, 1947. The territories east of the Oder-Neisse line, under Polish and Soviet administration/annexation, are shown as cream as is the likewise detached Saar protectorate. Berlin is the multinational area within the Soviet zone.",
+        "date": "17 March 2008 (original upload date)",
+        "section": "East and West Germany and reunification",
+        "position": 8,
+        "provenance": {
+          "credit": "User:52 Pickup",
+          "license": "CC BY-SA 2.5",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.5",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Map-Germany-1945.svg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/German_question",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1362093523",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "320f027e71169e4e6c3494dccde0569def887d887cf3e625fb0460505f9c71a2",
+      "heading": "Lead",
+      "excerpt": "The \"German question\" was a debate in the 19th century, especially during the Revolutions of 1848, over the best way to achieve a unificatio",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1362093523"
+    },
+    {
+      "id": "P2",
+      "hash": "4453e9cfd839a2faa781c59245275e24759f155a1569d57feec1de8e0ec32bf4",
+      "heading": "Lead",
+      "excerpt": "The solutions are also referred to by the names of the states they proposed to create, Kleindeutschland and Großdeutschland (\"Lesser Germany",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1362093523"
+    },
+    {
+      "id": "P3",
+      "hash": "caa697d14def1017d0bab6d1ec5b86c72aff92e450ac8e68c4a8433d3da37977",
+      "heading": "Background",
+      "excerpt": "There is, in political geography, no Germany proper to speak of. There are Kingdoms and Grand Duchies, and Duchies and Principalities, inhab",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1362093523"
+    },
+    {
+      "id": "P4",
+      "hash": "cda6fe3b6d9f2bd101a64950cfbc870dc2e350139cd3c701c9286bffd9cf3f52",
+      "heading": "Background",
+      "excerpt": "Over the centuries, the Holy Roman Empire had to cope with a continuous loss of authority to its constituent estates. The disastrous Thirty ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1362093523"
+    },
+    {
+      "id": "P5",
+      "hash": "c431403d122937d860b5155d3771985ae206a916b46e0ff56c89a02e936619c0",
+      "heading": "Background",
+      "excerpt": "This rivalry between Austria and Prussia resulted in the War of the Austrian Succession, and then outlasted the French Revolution and Napole",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1362093523"
+    },
+    {
+      "id": "P6",
+      "hash": "3f042893ab4c2f79639804395234af905d3888a610633745c3edce83794ac4a2",
+      "heading": "March Revolution",
+      "excerpt": "In 1848, German liberals and nationalists united in revolution, forming the Frankfurt Parliament. The Greater German movement within this Na",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1362093523"
+    },
+    {
+      "id": "P7",
+      "hash": "ef30731b6ff47c60e0b1d982517648def811745d1a788a6d49e3a023f10a2e39",
+      "heading": "Austro-Prussian War and Franco-Prussian War",
+      "excerpt": "These efforts were finally terminated by Austria's humiliating defeat in 1866 Austro-Prussian War. After the Peace of Prague, the Prussian M",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1362093523"
+    },
+    {
+      "id": "P8",
+      "hash": "9d98569145a66eb12fc2da9bab4cbec89a808a5be244f66d2dd542bf94a01620",
+      "heading": "Later influence",
+      "excerpt": "The idea of Austrian territories with a significant German-speaking population joining a Greater German state was maintained by some circles",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1362093523"
+    },
+    {
+      "id": "P9",
+      "hash": "cac2844fc760cf0d9fdfd288ee27dd2294cda0cfab8689b6362d3a8ee57ffb98",
+      "heading": "East and West Germany and reunification",
+      "excerpt": "This unification lasted only until the end of World War II. With the defeat of the Nazi regime in 1945, \"Greater Germany\" was separated into",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1362093523"
+    },
+    {
+      "id": "P10",
+      "hash": "b4eca6f1dc7dc0bca37832a125c103328ff8bb9643c0b42d53a2d06b32ab033f",
+      "heading": "Background",
+      "excerpt": "While a number of factors swayed allegiances in the debate, the most prominent was religion. The Großdeutsche Lösung would have implied a do",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1362093523"
+    },
+    {
+      "id": "P11",
+      "hash": "5b29a2ff732a65b7884f59eb24161ec02703cdd97bef90752a532074a2f8776d",
+      "heading": "March Revolution",
+      "excerpt": "Those supporting the Großdeutsche position argued that since the Habsburgs had ruled the Holy Roman Empire for almost 400 years from 1440 to",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1362093523"
+    },
+    {
+      "id": "P12",
+      "hash": "3ef120fa2f6840f68c2de702e0ce840f3c037ae47f5aaf9c99306222cfa63439",
+      "heading": "March Revolution",
+      "excerpt": "Thus, some members of the assembly, and Prussia in particular, promoted the Kleindeutsche Lösung, which excluded the whole Austrian Empire w",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1362093523"
+    },
+    {
+      "id": "P13",
+      "hash": "262295182fc1390f44c536e6bf3e884ce9880dacf8733289209a242087c3fa50",
+      "heading": "Austro-Prussian War and Franco-Prussian War",
+      "excerpt": "At the same time, Bismarck established the North German Confederation, seeking to prevent the Austrian and Bavarian Catholics in the south f",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1362093523"
+    },
+    {
+      "id": "P14",
+      "hash": "0b0daf7e66f1d6f98703cf66fb5699054ad5432b7521c521109a541971833407",
+      "heading": "Later influence",
+      "excerpt": "In 1931, there was an attempt to create a customs union between the Weimar Republic and Austria. The move was protested by France, and banke",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1362093523"
+    },
+    {
+      "id": "P15",
+      "hash": "e5b34ac14f20f8f1be0fe6e0d075b2b2640bd1b2d75d4ec75433aa68ea96995c",
+      "heading": "Later influence",
+      "excerpt": "In Germany, Adolf Hitler, an Austrian German by birth, had been a firm proponent of the unification of Germany and Austria. A demand for a G",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1362093523"
+    }
+  ],
+  "updatedAt": "2026-10-21T13:01:40.099Z"
 }
