@@ -2,10 +2,10 @@
   "pageId": 17213240,
   "title": "Treaty rights",
   "topic": "Conflict & Security",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1373455290,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373455290",
-  "reason": "1 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -174,5 +174,139 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373455290"
     }
   ],
-  "updatedAt": "2026-10-21T18:10:19.802Z"
+  "updatedAt": "2026-10-21T18:10:37.358Z",
+  "draft": {
+    "outline": [
+      "Introduction to treaty rights in settler states",
+      "Historical foundations and legal status",
+      "Land use conflicts and resource competition",
+      "Case studies in the United States",
+      "Legal developments and protections in Canada"
+    ],
+    "variants": {
+      "A1-A2": {
+        "headline": "What Are Treaty Rights?",
+        "pages": [
+          {
+            "text": "Treaty rights are special rights for native peoples. They come from treaties made with settler countries. These countries are Australia, Canada, New Zealand, and the United States.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "In the past, European powers made treaties with native groups. Early treaties were like peace deals between equals. Later, nations signed treaties to take native lands for colonial growth.",
+            "evidenceIds": [
+              "P5"
+            ]
+          },
+          {
+            "text": "Today, these agreements are still very important. In the United States, the Constitution says treaties are the supreme law. In Canada, Section 35 protects native treaty rights.",
+            "evidenceIds": [
+              "P6"
+            ]
+          },
+          {
+            "text": "Native groups often kept the right to hunt and fish on ceded lands. This causes fights with other sports and commercial hunters over the same animals and fish.",
+            "evidenceIds": [
+              "P16"
+            ]
+          },
+          {
+            "text": "In Wisconsin, local groups protested Ojibwe spearfishing in the 1980s and 1990s. Courts later upheld the old treaties, saying native groups could fish without state rules.",
+            "evidenceIds": [
+              "P17"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "The History and Impact of Treaty Rights",
+        "pages": [
+          {
+            "text": "Treaty rights refer to specific legal protections for indigenous peoples established through agreements with settler societies in countries like Australia, Canada, New Zealand, and the United States. Because indigenous groups vary and not all signed treaties, the concept applies differently across regions.",
+            "evidenceIds": [
+              "P1",
+              "P2"
+            ]
+          },
+          {
+            "text": "Historically, early European colonial powers treated indigenous nations as peers in military alliances. As colonialism expanded, these agreements increasingly involved ceding indigenous lands to accommodate growing settler populations.",
+            "evidenceIds": [
+              "P5"
+            ]
+          },
+          {
+            "text": "Defenders argue that native peoples reserved their inherent rights during inter-governmental negotiations rather than receiving them as grants. In the United States, the Constitution designates treaties as supreme law, while Canada enshrined them under Section 35 of the 1982 constitutional reforms.",
+            "evidenceIds": [
+              "P4",
+              "P6"
+            ]
+          },
+          {
+            "text": "Reserved rights to hunt and fish often spark intense conflicts over limited natural resources. In northern Wisconsin during the 1980s, court-affirmed Ojibwe spearfishing rights faced fierce, sometimes violent public backlashes before federal courts reaffirmed the treaties.",
+            "evidenceIds": [
+              "P16",
+              "P17"
+            ]
+          },
+          {
+            "text": "Canadian law requires governments to consult indigenous peoples regarding land and river management projects, a mandate that does not exist in the United States. Meanwhile, tribal jurisdictions face ongoing legal battles regarding civil and criminal authority.",
+            "evidenceIds": [
+              "P9",
+              "P16"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "Legal Frameworks of Treaty Rights",
+        "pages": [
+          {
+            "text": "In settler-colonial states including Australia, Canada, New Zealand, and the United States, treaty rights delineate the specific legal entitlements of indigenous populations. The operational scope of these rights varies widely; for instance, Australia lacks historical treaties entirely, rendering related discussions speculative.",
+            "evidenceIds": [
+              "P1",
+              "P2"
+            ]
+          },
+          {
+            "text": "While critics contend that states confer special racial privileges through treaties, legal defenders maintain that indigenous groups merely reserved pre-existing inherent rights during sovereign negotiations. Early diplomatic instruments mirrored peer military alliances before transitioning into instruments of territorial cessions.",
+            "evidenceIds": [
+              "P3",
+              "P4",
+              "P5"
+            ]
+          },
+          {
+            "text": "Constitutional architecture secures these agreements in North America. Article Six of the United States Constitution elevates treaties to supreme law, whereas Canadian jurisprudence anchors them via Section 35 of the Constitution Act, 1982, leaving undefined parameters to judicial interpretation.",
+            "evidenceIds": [
+              "P6",
+              "P12",
+              "P13"
+            ]
+          },
+          {
+            "text": "Resource competition frequently engenders jurisdictional friction. Reserved rights to hunt and fish on ceded lands precipitate clashes with commercial and recreational stakeholders. Such disputes manifested sharply during the Wisconsin spearfishing protests, which ultimately reaffirmed tribal harvesting exemptions from state regulatory oversight.",
+            "evidenceIds": [
+              "P16",
+              "P17"
+            ]
+          },
+          {
+            "text": "Litigation continuously shapes judicial competence on tribal lands. Landmark decisions such as Williams v. Lee established broad tribal civil and criminal jurisdiction, distinguishing contemporary American jurisprudence from Canadian statutory frameworks, which mandate procedural consultation for resource management.",
+            "evidenceIds": [
+              "P9",
+              "P16"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2730,
+    "output": 920,
+    "total": 3650
+  },
+  "validation": null
 }
