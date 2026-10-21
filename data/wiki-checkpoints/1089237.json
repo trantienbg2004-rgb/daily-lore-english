@@ -2,10 +2,10 @@
   "pageId": 1089237,
   "title": "Wilsons Promontory",
   "topic": "Environment",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1380971520,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380971520",
-  "reason": "4 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -272,5 +272,173 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380971520"
     }
   ],
-  "updatedAt": "2026-10-21T22:31:23.240Z"
+  "updatedAt": "2026-10-21T22:31:41.313Z",
+  "draft": {
+    "outline": [
+      "Introduction to the southernmost point of mainland Australia",
+      "Indigenous heritage and European exploration history",
+      "Establishment of the protected national park and its geography",
+      "Diverse wildlife, camping, and popular hiking trails",
+      "Modern updates, climate influences, and natural events"
+    ],
+    "variants": {
+      "A1-A2": {
+        "headline": "Discover Wilsons Promontory",
+        "pages": [
+          {
+            "text": "Wilsons Promontory is a special peninsula. It is the southernmost part of the Australian mainland. People also call it Wilsons Prom or The Prom. Most of this lovely land is protected by a national park and a marine national park.",
+            "evidenceIds": [
+              "P1",
+              "P2"
+            ]
+          },
+          {
+            "text": "Indigenous Koori people lived here long ago. They were there at least 6,500 years before Europeans arrived. The area is very important to traditional owners. They have sacred stories about the land and consider it their traditional home.",
+            "evidenceIds": [
+              "P3",
+              "P4"
+            ]
+          },
+          {
+            "text": "George Bass was the first European to see the promontory in 1798. Later, Governor Hunter gave the place its name. Seal hunting and whaling happened here in the nineteenth century. Public campaigns later helped protect the land as a park.",
+            "evidenceIds": [
+              "P5",
+              "P6",
+              "P15",
+              "P16"
+            ]
+          },
+          {
+            "text": "Tidal River is the main place for visitors to stay. It has a big campground near the beach. Visitors can see many animals here, like wombats, kangaroos, and emus. Some animals even walk near the tents to look for food.",
+            "evidenceIds": [
+              "P10",
+              "P20",
+              "P22"
+            ]
+          },
+          {
+            "text": "The park has many hiking trails for people to explore. Mount Oberon is a popular place to hike for great views. Wildfires happened in past years, but the natural beauty of the area stays strong and lovely for everyone.",
+            "evidenceIds": [
+              "P11",
+              "P12",
+              "P17"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "Exploring Australia's Southern Promontory",
+        "pages": [
+          {
+            "text": "Wilsons Promontory forms the southernmost tip of the Australian mainland in Victoria. Commonly known as The Prom, the peninsula features rugged granite cliffs, sandy beaches, and extensive coastal dunes, mostly protected by national parks.",
+            "evidenceIds": [
+              "P1",
+              "P2",
+              "P7"
+            ]
+          },
+          {
+            "text": "Indigenous Koori people occupied the promontory for thousands of years, leaving behind shell middens along the coast. The area holds deep cultural significance in Aboriginal dreamtime stories, representing the traditional country of the Gunaikurnai and Boon wurrung people.",
+            "evidenceIds": [
+              "P3",
+              "P4"
+            ]
+          },
+          {
+            "text": "European exploration began in 1798 when George Bass sighted the land. Following early nineteenth-century sealing and whaling, naturalists campaigned to protect the region. It became a temporary reserve in 1898 and permanent by 1908.",
+            "evidenceIds": [
+              "P5",
+              "P9",
+              "P15",
+              "P16"
+            ]
+          },
+          {
+            "text": "Tidal River serves as the primary hub for visitors, offering a large campground situated among sand dunes. The park supports diverse wildlife, including wombats, kangaroos, and numerous bird species, though feeding animals remains strictly prohibited.",
+            "evidenceIds": [
+              "P10",
+              "P19",
+              "P20",
+              "P22"
+            ]
+          },
+          {
+            "text": "Visitors enjoy various hiking tracks, ranging from short walks to overnight circuits in the northern and southern sections. Mount Oberon remains a popular destination, providing sweeping summit views despite occasional cool and windy weather.",
+            "evidenceIds": [
+              "P11",
+              "P12"
+            ]
+          },
+          {
+            "text": "The local oceanic climate experiences heavy influence from the Roaring Forties, bringing cooler summers and wet winters. Major bushfires occurred in 2005 and 2009, yet the landscape's natural beauty and ecosystem resilience remain largely intact.",
+            "evidenceIds": [
+              "P14",
+              "P17"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "The History and Ecology of Wilsons Promontory",
+        "pages": [
+          {
+            "text": "Wilsons Promontory constitutes the southernmost extremity of the Australian mainland. Encompassing diverse geomorphological features like intertidal mudflats, plunging granite cliffs, and coastal swamps, the peninsula is largely safeguarded by dedicated national and marine parks.",
+            "evidenceIds": [
+              "P1",
+              "P2",
+              "P7"
+            ]
+          },
+          {
+            "text": "Indigenous habitation dates back at least 6,500 years, evidenced by coastal middens highlighting dietary reliance on marine resources. The landscape is integral to traditional Gunaikurnai and Boon wurrung culture, featuring prominently in foundational Dreamtime narratives associated with the spirit ancestor Loo-errn.",
+            "evidenceIds": [
+              "P3",
+              "P4",
+              "P6"
+            ]
+          },
+          {
+            "text": "Following George Bass's initial sighting in 1798 and subsequent nineteenth-century commercial exploitation via sealing and whaling, persistent advocacy by natural history societies culminated in permanent reservation status by 1908.",
+            "evidenceIds": [
+              "P5",
+              "P9",
+              "P15",
+              "P16"
+            ]
+          },
+          {
+            "text": "Tidal River functions as the central tourism node, flanked by tannin-stained waterways and extensive camping facilities. The ecosystem hosts a rich assemblage of marsupials, avian fauna, and recovering marine mammal populations, including southern right whales.",
+            "evidenceIds": [
+              "P10",
+              "P19",
+              "P20",
+              "P21"
+            ]
+          },
+          {
+            "text": "Recreational infrastructure includes varied hiking trails requiring navigational proficiency in northern circuits, alongside popular ascents up Mount Oberon. Proposals to enhance pedestrian access from sea level indicate ongoing management adaptations.",
+            "evidenceIds": [
+              "P11",
+              "P12"
+            ]
+          },
+          {
+            "text": "Climatically conditioned by the Roaring Forties, the region experiences robust oceanic weather patterns. Despite significant anthropogenic and lightning-induced wildfire events in the twenty-first century, the prominent coastal wilderness retains its ecological integrity.",
+            "evidenceIds": [
+              "P14",
+              "P16",
+              "P17"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2961,
+    "output": 1707,
+    "total": 4668
+  },
+  "validation": null
 }
