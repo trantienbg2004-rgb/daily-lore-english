@@ -8996,10 +8996,10 @@
       "checkedAt": null
     },
     "63925372": {
-      "status": "DRAFTED",
-      "reason": "draft durably saved before validation",
+      "status": "EVIDENCE_READY",
+      "reason": "3 rights-verified embedded images",
       "revisionId": 1378076101,
-      "checkedAt": "2026-10-21T13:39:35.064Z"
+      "checkedAt": "2026-10-21T13:46:24.786Z"
     },
     "64361239": {
       "status": "PENDING",
@@ -9866,7 +9866,7 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-10-21T13:46:18.028Z",
+  "updatedAt": "2026-10-21T13:46:24.790Z",
   "dailyUsage": {
     "day": "2026-10-21",
     "calls": 19,
