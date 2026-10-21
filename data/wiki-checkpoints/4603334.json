@@ -2,9 +2,169 @@
   "pageId": 4603334,
   "title": "Prince's Club",
   "topic": "Sports",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1368019342,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368019342",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-21T13:32:23.625Z"
+  "reason": "3 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Princes Club 1857.jpg",
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/8/8b/Princes_Club_1857.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "fileTitle": "File:Princes Club 1857.jpg",
+        "caption": "The Old Prince's Club in 1857 with view of a rackets court",
+        "alt": "",
+        "description": "The Old Prince's Club at Hans Place, Belgrave Square, London",
+        "date": "1857",
+        "section": "Original Prince's Club",
+        "position": 0,
+        "provenance": {
+          "credit": "Unknown authorUnknown author",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Princes_Club_1857.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Prince's_Club",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368019342",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Prince's Club London, floor plan.png",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5b/Prince%27s_Club_London%2C_floor_plan.png/960px-Prince%27s_Club_London%2C_floor_plan.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Prince's Club London, floor plan.png",
+        "caption": "Floor plan of the 1889 club, designed by Edward Herbert Bourchier",
+        "alt": "",
+        "description": "Floor plan of the Prince's Club in London, designed by E. H. Bourchier",
+        "date": "18 October 1889",
+        "section": "New Prince's Club",
+        "position": 1,
+        "provenance": {
+          "credit": "The Building News and Engineering Journal",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Prince%27s_Club_London,_floor_plan.png",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Prince's_Club",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368019342",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Prince's Club London, interiors.png",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fa/Prince%27s_Club_London%2C_interiors.png/960px-Prince%27s_Club_London%2C_interiors.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Prince's Club London, interiors.png",
+        "caption": "Illustration of the club's rooms",
+        "alt": "",
+        "description": "Illustration of the interiors of the Prince's Club in London, designed by E. H. Bourchier",
+        "date": "11 October 1889",
+        "section": "New Prince's Club",
+        "position": 2,
+        "provenance": {
+          "credit": "William Harold Oakley",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Prince%27s_Club_London,_interiors.png",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Prince's_Club",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368019342",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "294cfc81af641ef20a64c274fabd2ecb189a9511bd062c8c7876c40b939a5f5f",
+      "heading": "Lead",
+      "excerpt": "The Prince's Club was a socially exclusive gentlemen's multisports club in London, England. The original 'Prince's Club' was founded in 1853",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368019342"
+    },
+    {
+      "id": "P2",
+      "hash": "ff15382d4a9859724fcc78d68f0cab001da3ee297a551649dfc5a5fb7a6c1e9a",
+      "heading": "Original Prince's Club",
+      "excerpt": "The original \"Prince's Club\" was founded in 1853 by George and James Prince, owners of a wine and cigar shop in Regent Street, and it opened",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368019342"
+    },
+    {
+      "id": "P3",
+      "hash": "eecf51122e1c97a2daf1b284833d05d4d452dd484cdf6cffd104335542051802",
+      "heading": "Original Prince's Club",
+      "excerpt": "The club's main rackets court, which became known as the Prince's Match Court, set the standard dimensions (60 x 30 ft) and was the location",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368019342"
+    },
+    {
+      "id": "P4",
+      "hash": "2b46f93e9281148cf962bfa7f2eefec45764bc704807addd20e931b6ceef5d87",
+      "heading": "Original Prince's Club",
+      "excerpt": "In April 1860, the club opened \"very handsome and commodious\" Victorian Turkish baths \"realising the Roman process of a gymnasium, or philis",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368019342"
+    },
+    {
+      "id": "P5",
+      "hash": "f29cdd7a8039ca0f8cbd39b56514813f4acbeee159121d3b2d701ab20e0f6eca",
+      "heading": "Original Prince's Club",
+      "excerpt": "In 1871 the Prince's Cricket Ground was added, laid out on the site of Cattleugh's nursery gardens, as well as a croquet lawn, followed by l",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368019342"
+    },
+    {
+      "id": "P6",
+      "hash": "95b6cd7e5117879553efed9a07f4a54d1a38ee68baa1d89e7c2369f1b92a03bf",
+      "heading": "New Prince's Club",
+      "excerpt": "The \"New Prince's Club\", officially named the \"Prince's Racquet and Tennis Club\", was a socially exclusive club and sports centre for the up",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368019342"
+    },
+    {
+      "id": "P7",
+      "hash": "913eccad8cc21edecf1161cb5bfe462b2c584f9bf4ee45b0401f2ef8a36cfbed",
+      "heading": "Prince's Skating Club",
+      "excerpt": "In November 1896 at nearby Montpelier Square the Prince's Skating Club was founded, which hosted Prince's Ice Hockey Club. In March 1900, th",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368019342"
+    },
+    {
+      "id": "P8",
+      "hash": "3b0ca2c163a0e11adff1ed01a91b86d069df878af0ca80e1769af10eb644d11a",
+      "heading": "Prince's Club during Second World War",
+      "excerpt": "In mid-1940 after the Fall of France the Prince's Club became No 1 Army Postal Distribution Centre (No 1 APDC) run by the Royal Engineers (P",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368019342"
+    },
+    {
+      "id": "P9",
+      "hash": "36d28832a48fcc83bc695f467003274a69e59b6505cda5e1e3d80b9e8ff50552",
+      "heading": "Original Prince's Club",
+      "excerpt": "The Prince's Club was one of the earliest lawn tennis locations after the sport was introduced in the mid-1870s. The club had two lawn tenni",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368019342"
+    },
+    {
+      "id": "P10",
+      "hash": "271cbec76409abdea0702c4fa1d77d0b9eacc51e1683381aef34b20897a6eaca",
+      "heading": "Original Prince's Club",
+      "excerpt": "Since the second half of the 1870s areas of the club's ground were gradually repurposed for building activities, enabled by the Cadogan and ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368019342"
+    },
+    {
+      "id": "P11",
+      "hash": "7ffe51c00e8dc217b436fd2724bc5343232cea35eca904e7354560f11450cad8",
+      "heading": "New Prince's Club",
+      "excerpt": "The new club also had two bowling alleys and several baths, including an \"elegantly constructed\" Turkish bath decorated by the Sicilian arti",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368019342"
+    },
+    {
+      "id": "P12",
+      "hash": "a6dc96c1162b271dcae8c70f55df9055001d6579e5e275fedc36c06f450d6b18",
+      "heading": "Prince's Club during Second World War",
+      "excerpt": "The Home Postal Depot, Royal Engineers moved from Sutton Coldfield to take over the premises in 1948 and remained its occupiers until the bu",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368019342"
+    }
+  ],
+  "updatedAt": "2026-10-21T13:32:25.525Z"
 }
