@@ -506,7 +506,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379072110"
     }
   ],
-  "updatedAt": "2026-10-21T13:47:20.385Z",
+  "updatedAt": "2026-10-21T13:47:44.408Z",
   "draft": {
     "outline": [
       "Introduction to modern Olympic Games",
@@ -532,7 +532,7 @@
             ]
           },
           {
-            "text": "The first modern games took place in Athens in 1896. Later, the games grew very large. Nearly every nation is now represented. Athletes compete for gold, silver, and bronze medals.",
+            "text": "The first modern games took place in Athens in 1896. Later, the games grew very large. Nearly every nation is now represented, and athletes compete for gold, silver, and bronze medals.",
             "evidenceIds": [
               "P4",
               "P5",
@@ -548,7 +548,7 @@
             ]
           },
           {
-            "text": "Organizing such huge events brings many challenges, like high costs and political issues. Still, the Olympics give athletes a chance to win global fame every few years.",
+            "text": "Organizing such events brings many challenges, including boycotts, doping, match fixing, bribery, and terrorism. Still, the Olympics give athletes a chance to win global fame every two years.",
             "evidenceIds": [
               "P3",
               "P5",
@@ -646,11 +646,11 @@
       }
     }
   },
-  "repairAttempts": 0,
+  "repairAttempts": 1,
   "lastUsage": {
-    "input": 2843,
-    "output": 1420,
-    "total": 4263
+    "input": 2915,
+    "output": 413,
+    "total": 3328
   },
   "validation": null
 }
