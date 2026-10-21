@@ -2,9 +2,128 @@
   "pageId": 74683957,
   "title": "Cost-of-living crisis",
   "topic": "Economy",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1381139894,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381139894",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-21T22:36:41.722Z"
+  "reason": "1 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Marcha en Puerto Aysén 2.JPG",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/35/Marcha_en_Puerto_Ays%C3%A9n_2.JPG/960px-Marcha_en_Puerto_Ays%C3%A9n_2.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Marcha en Puerto Aysén 2.JPG",
+        "caption": "2012 Aysén protests due to the high cost of living in Patagonia",
+        "alt": "",
+        "description": "Protestas en el Puente Presidente Ibáñez en Puerto Aysén, Chile.",
+        "date": "2012-02-18",
+        "section": "By region",
+        "position": 0,
+        "provenance": {
+          "credit": "Valeria Silva Guerrero",
+          "license": "CC BY-SA 3.0 cl",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/cl/deed.en",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Marcha_en_Puerto_Ays%C3%A9n_2.JPG",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Cost-of-living_crisis",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381139894",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "c1fcf1951a78f7848b190c6f6e81ae3cb19fbde95c7ae919d0f8ae032f2f2230",
+      "heading": "Lead",
+      "excerpt": "A cost-of-living crisis is a situation or period of high inflation with increases in the nominal cost of living while real wages decrease. A",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381139894"
+    },
+    {
+      "id": "P2",
+      "hash": "f737a724c59fed473de6cddc0d2c1833bd8dfa18e476af3575e5ac2f5b794693",
+      "heading": "Lead",
+      "excerpt": "During the 2020s, a cost-of-living crisis impacted many countries around the world amid global inflation. In February 2023, 3 out of 4 consu",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381139894"
+    },
+    {
+      "id": "P3",
+      "hash": "d7d666a16b260ca0c305aa235a5b42ff9fd401792e9dd4a7342bb55fe51bdde2",
+      "heading": "Health",
+      "excerpt": "Cost-of-living crises have had significant and wide-ranging negative consequences for mental and physical well-being. For example, high food",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381139894"
+    },
+    {
+      "id": "P4",
+      "hash": "cdc9670d896e356c1b9da30353d35520a227d3e67468faeffab773d258709d91",
+      "heading": "Health",
+      "excerpt": "Mental health also declines across the board due to the stress of being unable to afford to live properly. Rates of depression and anxiety i",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381139894"
+    },
+    {
+      "id": "P5",
+      "hash": "9c2199a3b9f6328208aedceb74e13c959b1ff8c9b9904cef5c3f436267454c92",
+      "heading": "Job market",
+      "excerpt": "Workers are more likely to quit their job and switch to a higher-paying one because their current job no longer pays enough to cover their l",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381139894"
+    },
+    {
+      "id": "P6",
+      "hash": "1023a3a1a789eb113b57a3455ae2e053398e40b228a5b33dfa3cac31eff4269c",
+      "heading": "Business and investments",
+      "excerpt": "Small businesses will be negatively affected due to higher material and energy prices. Customers also have less purchasing power, and so wil",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381139894"
+    },
+    {
+      "id": "P7",
+      "hash": "d9cd93c2952dafd746339581d14a15ab4a1113fc5fcab09d0fd806e53daf7294",
+      "heading": "Spending and debt",
+      "excerpt": "Consumer confidence drops. Non-essential spending is reduced, with luxury goods, travel and fashion seeing the greatest declines. People are",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381139894"
+    },
+    {
+      "id": "P8",
+      "hash": "5ce07fab358cd6ff612d6a26cc5ff92ebd0d589d92a618b3ee42908964ed9d96",
+      "heading": "By region",
+      "excerpt": "In 2022, The Guardian reported that numerous countries were being impacted by a cost of living crisis, including Belgium, Germany, India, Ni",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381139894"
+    },
+    {
+      "id": "P9",
+      "hash": "c96209c8345a79852ea07e7438073e083719780adb6ea9640fd007deb657fc3d",
+      "heading": "Ireland",
+      "excerpt": "Ireland is currently experiencing a cost-of-living crisis, resulting in Ireland becoming the most expensive country in the European Union. T",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381139894"
+    },
+    {
+      "id": "P10",
+      "hash": "cbb540e3d73c184a41f1cddeca38bbf82ac3e56deae2dca2f9681dca4c8c1f3c",
+      "heading": "New Zealand",
+      "excerpt": "New Zealand is currently experiencing a cost-of-living crisis, with increasing unemployment and a contracting GDP alongside record numbers l",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381139894"
+    },
+    {
+      "id": "P11",
+      "hash": "b5b971d43cf56c24ed64c899baf857a6ebe3d4ae4cf412adff2c11bbc0a59fb2",
+      "heading": "United States",
+      "excerpt": "Nearly half of Americans, especially lower-income families, have struggled to afford the basic cost of living in part due to inflation durin",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381139894"
+    },
+    {
+      "id": "P12",
+      "hash": "bb9ae43e50e07848b06680dffd64e7a8d53f4c434efa296d78ad2fb7fd38e19e",
+      "heading": "United Kingdom",
+      "excerpt": "In late 2021, the prices of many essential goods in the United Kingdom began increasing faster than household incomes, resulting in a fall i",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381139894"
+    },
+    {
+      "id": "P13",
+      "hash": "0a0287320a16d1857dae766ed6b59f85b411b16aa7225887b3da99d2572b1a41",
+      "heading": "United Kingdom",
+      "excerpt": "While all in the UK are affected by rising prices, the crisis most substantially affects people living in poverty. The British government ha",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381139894"
+    }
+  ],
+  "updatedAt": "2026-10-21T22:36:47.406Z"
 }
