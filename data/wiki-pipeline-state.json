@@ -9602,10 +9602,10 @@
       "checkedAt": null
     },
     "79425227": {
-      "status": "source-verified",
-      "reason": "2 rights-verified embedded images; editorial call pending",
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
       "revisionId": 1380582529,
-      "checkedAt": "2026-10-20T16:35:04.695Z"
+      "checkedAt": "2026-10-21T01:39:40.101Z"
     },
     "79511869": {
       "status": "PENDING",
@@ -9866,7 +9866,7 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-10-21T01:39:38.129Z",
+  "updatedAt": "2026-10-21T01:39:40.102Z",
   "dailyUsage": {
     "day": "2026-10-21",
     "calls": 3,
