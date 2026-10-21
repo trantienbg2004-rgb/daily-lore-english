@@ -2,9 +2,178 @@
   "pageId": 334322,
   "title": "Greater Albania",
   "topic": "Politics",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1376211720,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376211720",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-21T07:41:00.927Z"
+  "reason": "2 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Map of Independent Albania.png",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/40/Map_of_Independent_Albania.png/960px-Map_of_Independent_Albania.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Map of Independent Albania.png",
+        "caption": "Proposal of 4 autonomous \"Albanian vilayets\" within the Ottoman Empire by the League of Prizren, as agreed after the Albanian revolt of 1912",
+        "alt": "",
+        "description": "Map portraying the boundaries and controlled areas of Albania after its declaration of Independence.",
+        "date": "2020-07-30",
+        "section": "",
+        "position": 0,
+        "provenance": {
+          "credit": "N.Hoxha",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Map_of_Independent_Albania.png",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Greater_Albania",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376211720",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Map of Albania during WWII.png",
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/9/90/Map_of_Albania_during_WWII.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "fileTitle": "File:Map of Albania during WWII.png",
+        "caption": "The Italian Protectorate of Albania established by Italy in August 1941.",
+        "alt": "",
+        "description": "Map of Albania during WWII",
+        "date": "2010-03-14",
+        "section": "World War II",
+        "position": 1,
+        "provenance": {
+          "credit": "Пакко",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Map_of_Albania_during_WWII.png",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Greater_Albania",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376211720",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:AlbaniansOutsideAlbania.png"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "f238528a81497bbff5ce54bbe402d6f3d587f12035e084d233f7e49018648ad9",
+      "heading": "Lead",
+      "excerpt": "Greater Albania (Albanian: Shqipëria e Madhe) is an irredentist and nationalist concept that seeks to unite the lands that many Albanians co",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376211720"
+    },
+    {
+      "id": "P2",
+      "hash": "17bd0ff5ea3a3680c4a01f2672821da6bdb50e0bcf92636a9d215f72ce929596",
+      "heading": "Lead",
+      "excerpt": "The unification of an even larger area into a single territory under Albanian authority had been theoretically conceived by the League of Pr",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376211720"
+    },
+    {
+      "id": "P3",
+      "hash": "6b6d3f85b8717bda468089e59d1b9d523090fb36f97a0890d74b07a5aa3ee005",
+      "heading": "Terminology",
+      "excerpt": "Albanian nationalists dislike the expression \"Greater Albania\" and prefer to use the term \"Ethnic Albania\". Ethnic Albania (Albanian: Shqipë",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376211720"
+    },
+    {
+      "id": "P4",
+      "hash": "2abbfa14e7de478b298096cf830ae907acddce089905613725ca786a1373b2b1",
+      "heading": "Under the Ottoman Empire",
+      "excerpt": "Prior to the Balkan Wars of the beginning of the 20th century, Albanians were subjects of the Ottoman Empire. The Albanian independence move",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376211720"
+    },
+    {
+      "id": "P5",
+      "hash": "802cc033a4b323197a65dc9acd34077edb17565dbd9627271e8cf595b215fd37",
+      "heading": "Under the Ottoman Empire",
+      "excerpt": "Albanian nationalism overall was a reaction to the gradual breakup of the Ottoman Empire and a response to Balkan and Christian national mov",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376211720"
+    },
+    {
+      "id": "P6",
+      "hash": "4b26727f7647441cb1c1e0b3e3237b76953e5ecd06335343aa3f060c06169a92",
+      "heading": "Balkan Wars and Albanian independence (1912–1913)",
+      "excerpt": "The imminence of collapsing Ottoman rule through military defeat during the Balkan Wars pushed Albanians represented by Ismail Qemali to dec",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376211720"
+    },
+    {
+      "id": "P7",
+      "hash": "0f035e6e8cc39f1cc9a30c84f150432a5e8cd1959c51a4c5d91acc5b513e5d23",
+      "heading": "World War II",
+      "excerpt": "On 7 April 1939, Italy's Benito Mussolini, after a prolonged interest and overarching sphere of influence during the interwar period, invade",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376211720"
+    },
+    {
+      "id": "P8",
+      "hash": "df7d1bb65b8141644e3f2ea87391fcc4e38501213c5af13be365ef6327548d8c",
+      "heading": "Yugoslav Wars",
+      "excerpt": "The Kosovo Liberation Army (KLA) was an ethnic-Albanian paramilitary organisation which sought the separation of Kosovo from Yugoslavia duri",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376211720"
+    },
+    {
+      "id": "P9",
+      "hash": "b1dcda16b4e534fee5dd1b3fab484ebef997fcac1a6755b120850890d52702b6",
+      "heading": "2000s–present",
+      "excerpt": "Political parties advocating and willing to fight for a Greater Albania emerged in Albania during the 2000s. They were the National Liberati",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376211720"
+    },
+    {
+      "id": "P10",
+      "hash": "82945528c9ff3ff9303da8b4d906a2c4c4e9cf20e1e730b52453f7889b9774c9",
+      "heading": "Public opinion",
+      "excerpt": "According to the Gallup Balkan Monitor 2010 report, the idea of a Greater Albania was supported by the majority of Albanians in Albania (63%",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376211720"
+    },
+    {
+      "id": "P11",
+      "hash": "1b97d7e83349df7e74b100f4afaa43caa55b0f28ae5161bef1a267ffc135de15",
+      "heading": "Political uses of the concept",
+      "excerpt": "The Albanian question in the Balkan peninsula is in part the consequence of the decisions made by Western powers in late 19th and early 20th",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376211720"
+    },
+    {
+      "id": "P12",
+      "hash": "c906fefc38d2255ff0e43e71870eb9621dbda095a2615fa2c929091f36cee6fd",
+      "heading": "Use in other media",
+      "excerpt": "The concept is also often used, especially with Ilirida (the proposed western region of North Macedonia), by nationalists in circles of Mace",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376211720"
+    },
+    {
+      "id": "P13",
+      "hash": "4a39a335aeef210879244edc4879e2e5c7cd5a70d9ad2f350c9b07d507511107",
+      "heading": "Kosovo",
+      "excerpt": "Kosovo has an overwhelmingly Albanian majority, estimated to be around 90%. The 2011 census stated a higher percentage Albanian people, but ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376211720"
+    },
+    {
+      "id": "P14",
+      "hash": "a899c88d462b35b3b26230f067ccc552eae5ec342bfdcc63fcd761dd4ae2d65a",
+      "heading": "Montenegro",
+      "excerpt": "The irredentist claims in Montenegro are in the border areas, including Kraja, Mërkot and Shestan (Ulcinj and Bar), Malësia (Tuzi) and Sandž",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376211720"
+    },
+    {
+      "id": "P15",
+      "hash": "98576df6b76320f473085c786476b1c7ba5646599d4ca47453633818728d497b",
+      "heading": "North Macedonia",
+      "excerpt": "The western part of North Macedonia is an area with a large ethnic Albanian minority. The Albanian population in North Macedonia make up 25%",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376211720"
+    },
+    {
+      "id": "P16",
+      "hash": "a1d2755615fd3aa74d43213834658145b6fe75e96418dc913a845d489451ad7a",
+      "heading": "Preševo Valley",
+      "excerpt": "The irredentist claims in Central Serbia (excluding Kosovo) are in the southern Preševo Valley, including municipalities of Preševo (Albania",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376211720"
+    }
+  ],
+  "updatedAt": "2026-10-21T07:41:02.584Z"
 }
