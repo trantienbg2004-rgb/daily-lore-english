@@ -125,7 +125,7 @@ export function validateWikiDraft(result,{source,topic,evidence}={}){
   for(const [index,page] of pages.entries()){
    const label=`${level}:page-${index+1}`
    const words=count(page?.text)
-   if(typeof page?.text!=='string'||words<(index===0?35:42)||words>(index===0?66:105)||!/[.!?]$/.test(page.text.trim()))errors.push(label+':length-or-sentence')
+   if(typeof page?.text!=='string'||words<(index===0?35:32)||words>(index===0?66:105)||!/[.!?]$/.test(page.text.trim()))errors.push(label+':length-or-sentence')
    if(!Array.isArray(page?.evidenceIds)||!page.evidenceIds.length||page.evidenceIds.some(id=>!ids.has(id)))errors.push(label+':evidence-id')
    else{
     const cited=page.evidenceIds.map(id=>byId.get(id)).join(' ')

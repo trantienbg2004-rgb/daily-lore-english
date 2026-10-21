@@ -20,6 +20,17 @@ test('one prompt can retain source IDs for three distinct 5-page versions',()=>{
  assert.equal(checked.accepted,true)
 })
 
+test('a concise later reading page remains valid without padded prose',()=>{
+ const concise=structuredClone(draft)
+ concise.variants['A1-A2'].pages[1].text=
+  'Merchants connected distant Asian cities and traded silk along routes that helped ideas travel between communities. Trade across Asian cities helped merchants share silk and ideas with other communities during this historical period.'
+ const checked=validateWikiDraft(concise,{source,topic:'Economy',evidence})
+ assert.equal(checked.accepted,true)
+ concise.variants['A1-A2'].pages[1].text=sentence
+ assert.ok(validateWikiDraft(concise,{source,topic:'Economy',evidence}).errors
+  .includes('A1-A2:page-2:length-or-sentence'))
+})
+
 test('a late source caveat survives the evidence budget and the prompt preserves uncertainty',()=>{
  const rows=Array.from({length:24},(_,i)=>({heading:`Section ${i}`,
   text:Array.from({length:12},()=>`Researchers described the ancient device and its surviving bronze gears in section ${i}.`).join(' ')}))
