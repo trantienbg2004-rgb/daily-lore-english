@@ -43,6 +43,7 @@ test('versioned Wiki index commits only validated new articles and leaves news e
   assert.equal(stored.stories.length,1)
   assert.equal(stored.manifest.targetStories,50)
   assert.equal(stored.manifest.targetMet,false)
+  assert.equal(stored.manifest.verifiedImageCount,1)
   assert.match(stored.manifest.catalogIndex,/^catalog-index-[0-9a-f]{12}\.json$/)
   const shardPath=path.join(base,'public','wiki-reader','0000.json')
   const original=await fs.readFile(shardPath,'utf8')

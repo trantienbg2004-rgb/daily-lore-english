@@ -37,6 +37,26 @@ test('embedded file needs its own rights; a context match places a map on page o
  assert.equal(verifyEmbeddedImage(figure,restricted).status,'REJECTED')
 })
 
+test('a second embedded licensed image appears on its relevant later page',()=>{
+ const diagram={...figure,fileTitle:'File:Silk Road caravan route diagram.jpg',caption:'Caravan trade routes across Central Asia',
+  alt:'Caravans on trade routes',position:2}
+ const diagramPage=structuredClone(page)
+ diagramPage.title=diagram.fileTitle
+ diagramPage.imageinfo[0].thumburl='https://thumb.wikimedia.org/wikipedia/commons/thumb/caravans.jpg'
+ diagramPage.imageinfo[0].descriptionurl='https://commons.wikimedia.org/wiki/File:Silk_Road_caravan_route_diagram.jpg'
+ const variants=structuredClone(levels)
+ for(const variant of Object.values(variants))variant.pages[1].text='Caravans followed trade routes across Central Asia.'
+ const result=assignWikipediaPhotos([verifyEmbeddedImage(figure,page),verifyEmbeddedImage(diagram,diagramPage)],
+  {...source,figures:[figure,diagram]},variants)
+ assert.equal(result.status,'VERIFIED')
+ assert.equal(result.photos.length,2)
+ for(const variant of Object.values(result.levelVariants)){
+  assert.equal(variant.pages[0].image,page.imageinfo[0].thumburl)
+  assert.equal(variant.pages[1].image,diagramPage.imageinfo[0].thumburl)
+  assert.equal(variant.pages[1].imageProvenance.evidence.pageIndex,1)
+ }
+})
+
 test('same place, unrelated object, wrong chart period and reused URL stay unapproved',()=>{
  const city={...figure,fileTitle:'File:Silk Road city skyline.jpg',caption:'Skyline of a modern city',alt:'Modern skyline'}
  const cityPage=structuredClone(page);cityPage.title=city.fileTitle
