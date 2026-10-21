@@ -2,9 +2,316 @@
   "pageId": 56738,
   "title": "Geography of Rwanda",
   "topic": "Environment",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1366488374,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1366488374",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-21T13:31:13.849Z"
+  "reason": "6 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Rwanda2021OSM.png",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/71/Rwanda2021OSM.png/960px-Rwanda2021OSM.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Rwanda2021OSM.png",
+        "caption": "Enlargeable, detailed map of Rwanda",
+        "alt": "Detailed map of Rwanda showing towns, roads, lakes and international borders",
+        "description": "This map of Rwanda shows the country's cities, towns, villages and some other geographical details, and is likely the most comprehensive map of the country in this respect that you'll find anywhere online. It has been stitched together from panels of Open Street Map (which is freely licensed to all) with details plotted by the uploader.",
+        "date": "2021-05-14",
+        "section": "Area and borders",
+        "position": 0,
+        "provenance": {
+          "credit": "Kelisi",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Rwanda2021OSM.png",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Geography_of_Rwanda",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1366488374",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Rwanda relief location map.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0a/Rwanda_relief_location_map.jpg/960px-Rwanda_relief_location_map.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Rwanda relief location map.jpg",
+        "caption": "Relief of Rwanda",
+        "alt": "",
+        "description": "Physical location map of Rwanda",
+        "date": "2010-03-15",
+        "section": "Geology",
+        "position": 1,
+        "provenance": {
+          "credit": "Carport",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Rwanda_relief_location_map.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Geography_of_Rwanda",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1366488374",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Rwanda Topography.png",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/11/Rwanda_Topography.png/960px-Rwanda_Topography.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Rwanda Topography.png",
+        "caption": "Topographic map of Rwanda",
+        "alt": "",
+        "description": "Topographic map of Rwanda. Created with GMT from publicly released SRTM data.",
+        "date": "2007-06-17",
+        "section": "Topography",
+        "position": 2,
+        "provenance": {
+          "credit": "Sadalmelik",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Rwanda_Topography.png",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Geography_of_Rwanda",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1366488374",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:KageraRuvubu.jpg"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:A man walks through heavy rain under an umbrella in Kigali, Rwanda. Emmanuel Kwizera.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/46/A_man_walks_through_heavy_rain_under_an_umbrella_in_Kigali%2C_Rwanda._Emmanuel_Kwizera.jpg/960px-A_man_walks_through_heavy_rain_under_an_umbrella_in_Kigali%2C_Rwanda._Emmanuel_Kwizera.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:A man walks through heavy rain under an umbrella in Kigali, Rwanda. Emmanuel Kwizera.jpg",
+        "caption": "Rain in Kigali (January 2020)",
+        "alt": "A man carrying an umbrella walks along a wet street during heavy rainfall in Kigali",
+        "description": "A man walks through heavy rain under an umbrella in Kigali, Rwanda. Emmanuel Kwizera",
+        "date": "2020-01-26 10:43:03",
+        "section": "Climate",
+        "position": 4,
+        "provenance": {
+          "credit": "Emmanuelkwizera",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:A_man_walks_through_heavy_rain_under_an_umbrella_in_Kigali,_Rwanda._Emmanuel_Kwizera.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Geography_of_Rwanda",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1366488374",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Akagera National Park Wetlands.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9f/Akagera_National_Park_Wetlands.jpg/960px-Akagera_National_Park_Wetlands.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Akagera National Park Wetlands.jpg",
+        "caption": "Savanna, wetland and open water in Akagera National Park",
+        "alt": "",
+        "description": "Blick über den Akagera-Nationalpark",
+        "date": "2011-09-18 08:58:14",
+        "section": "Biodiversity",
+        "position": 5,
+        "provenance": {
+          "credit": "François Terrier",
+          "license": "CC BY 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Akagera_National_Park_Wetlands.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Geography_of_Rwanda",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1366488374",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:A hill with terraces.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/17/A_hill_with_terraces.jpg/960px-A_hill_with_terraces.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:A hill with terraces.jpg",
+        "caption": "Terraced cultivation on a hillside",
+        "alt": "",
+        "description": "A hill with terraces",
+        "date": "2022-05-16 04:27:55",
+        "section": "Ecology",
+        "position": 6,
+        "provenance": {
+          "credit": "Peace Batuma",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:A_hill_with_terraces.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Geography_of_Rwanda",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1366488374",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "aafae5f582a907938d6ebac4546d9eb51dc336e7958e193f658bbf232b733f6c",
+      "heading": "Lead",
+      "excerpt": "The geography of Rwanda is defined by its position in the Eastern African highlands, a few degrees south of the Equator and near the western",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1366488374"
+    },
+    {
+      "id": "P2",
+      "hash": "d71267fd376f386ba194ce8505875b6dd9772cd959048c031eb65df58910b419",
+      "heading": "Lead",
+      "excerpt": "The major geomorphological divisions of Rwanda run from west to east: the Albertine Rift mountains, the central plateau and the eastern lowl",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1366488374"
+    },
+    {
+      "id": "P3",
+      "hash": "c1902b87bf79180917f124afc98eab913d78be3040aeaa1bac44af1479eb971f",
+      "heading": "Lead",
+      "excerpt": "The Congo–Nile watershed runs roughly north–south through the western highlands, dividing the country between two major drainage basins. Abo",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1366488374"
+    },
+    {
+      "id": "P4",
+      "hash": "d404de88ef6e611d32d1eee33c272b805a570aed63466d74c5e1210987f1fe72",
+      "heading": "Lead",
+      "excerpt": "The population recorded at the 2022 census was 13,246,394, giving a population density of 503 inhabitants per square kilometre, among the hi",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1366488374"
+    },
+    {
+      "id": "P5",
+      "hash": "d9aea282f925a0026bc19c38096118841d6a55626897fbdecf5dbe19811d6ee8",
+      "heading": "Area and borders",
+      "excerpt": "Rwanda's territory covers 26,338 km (10,169 sq mi), of which 24,668 km (9,524 sq mi) is land and 1,670 km (640 sq mi), or about 6%, is water",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1366488374"
+    },
+    {
+      "id": "P6",
+      "hash": "d2fd4ea9fb7e206aa8e09801df6bb214fb5ee94c9107dc0d89a6c60964540402",
+      "heading": "Extreme points",
+      "excerpt": "Rwanda's geographical extreme points all lie along its international borders rather than at named settlements. The country extends from 1°02",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1366488374"
+    },
+    {
+      "id": "P7",
+      "hash": "2a8206fb5d2f122864a083a97addcff16e5dc10fa4ac976a9767451de81380b2",
+      "heading": "Access to the sea",
+      "excerpt": "Rwanda has no coastline and no maritime claims. The nearest ocean is the Indian Ocean; the closest stretch of coast, near Tanga in Tanzania,",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1366488374"
+    },
+    {
+      "id": "P8",
+      "hash": "66ce5931ef8ffb004e51865adb3cb96370f3c97fb1c25210dc4a7ce0a6051c7e",
+      "heading": "Geology",
+      "excerpt": "Rwanda lies entirely on the Victoria Microplate. Its western border follows the Albertine Rift, the western branch of the East African Rift,",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1366488374"
+    },
+    {
+      "id": "P9",
+      "hash": "df1d778a6cc5176f68e1e3beb08cf2b0f31a0dfdbca0423af9640e867e4ff230",
+      "heading": "Topography",
+      "excerpt": "Rwanda's terrain is predominantly mountainous and hilly, with savanna areas in the east and many lakes across the country. Relief falls cons",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1366488374"
+    },
+    {
+      "id": "P10",
+      "hash": "ff2b2d9589c3addfafac52c57d7f3ea504f3d0f18bfb60d132704a2f6da67939",
+      "heading": "Albertine Rift and the Virunga Mountains",
+      "excerpt": "Mountains dominate central and western Rwanda. These mountains are part of the Albertine Rift Mountains that flank the Albertine branch of t",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1366488374"
+    },
+    {
+      "id": "P11",
+      "hash": "ec783308ec486718efd6509ffc4e4ad20086498771c7425e37479b9374fadcb2",
+      "heading": "Central plateau",
+      "excerpt": "The centre of the country is predominantly rolling hills, forming a plateau that descends eastward from the Albertine Rift highlands. Kigali",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1366488374"
+    },
+    {
+      "id": "P12",
+      "hash": "36f44363b516a4693c45eccb79b97a80a9541cb7f14da6591d1a8d8fa6784997",
+      "heading": "Eastern lowlands and the Akagera basin",
+      "excerpt": "The eastern border region consists of savanna, plains and swamps. This is the lowest and driest part of the country, and it contains a netwo",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1366488374"
+    },
+    {
+      "id": "P13",
+      "hash": "e20b84eb24ccc0c20dac0016f57359909671c9022ea0bae80db038f180fbd0dd",
+      "heading": "Hydrography",
+      "excerpt": "The watershed between the major Congo and Nile drainage basins runs from north to south through Rwanda's western highlands. About 80% of Rwa",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1366488374"
+    },
+    {
+      "id": "P14",
+      "hash": "3b513a7c5ca4b449d2b0a285ff0c7fdc1033d71d60486e54ce59f32a448a2935",
+      "heading": "Climate",
+      "excerpt": "Rwanda has a temperate tropical highland climate, with lower temperatures than are typical for equatorial countries because of its high elev",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1366488374"
+    },
+    {
+      "id": "P15",
+      "hash": "e9298a653c2ba1b351b5bd8b2ba4fef581a03e5ddcd0d403066fcf93783c4a86",
+      "heading": "Natural hazards",
+      "excerpt": "Natural hazards in Rwanda include periodic droughts and floods, particularly during the rainy seasons, as well as volcanism in the Virunga M",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1366488374"
+    },
+    {
+      "id": "P16",
+      "hash": "a99bfcde58d19b5af1737f1f6c1568ec8641b671d7cbc72c06f87422e8856a28",
+      "heading": "Biodiversity",
+      "excerpt": "Rwanda's ecosystems include mountain forests, savannas and wetlands, which together support rich biodiversity despite the small national ter",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1366488374"
+    },
+    {
+      "id": "P17",
+      "hash": "850b2732daa10aa5ec82d0f7a94cbefb8bda550298d6e5bca9f6764f34171e09",
+      "heading": "Ecology",
+      "excerpt": "Rwanda's environment is shaped by its highland geography and dense population, both of which put pressure on natural resources. Major enviro",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1366488374"
+    },
+    {
+      "id": "P18",
+      "hash": "77b8672a034d51955c9a27a6e057512895403c2f6aa15937920806fa1087b1a8",
+      "heading": "Tree cover extent and loss",
+      "excerpt": "Global Forest Watch publishes annual estimates of tree cover loss and 2000 tree cover extent derived from time-series analysis of Landsat sa",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1366488374"
+    },
+    {
+      "id": "P19",
+      "hash": "2d15b662ccfaacef711f75708c0f1d85a70691655e3231f26dfc1b80c8a2a545",
+      "heading": "Demographics",
+      "excerpt": "The fifth Population and Housing Census recorded a resident population of 13,246,394 as of 15 August 2022. The corresponding population dens",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1366488374"
+    },
+    {
+      "id": "P20",
+      "hash": "8c3754a978b758feb37abcd86d4102d810cc6a5bc15f42095d025494e789872c",
+      "heading": "Political geography",
+      "excerpt": "Rwanda is a landlocked country in East Africa. Administratively, Rwanda is divided into four provinces (intara): the Northern, Southern, Eas",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1366488374"
+    },
+    {
+      "id": "P21",
+      "hash": "57a3b009dff2a09c4aacb185d3973ad0d817cafca05432b5fa887727002ee8b4",
+      "heading": "Urbanisation",
+      "excerpt": "Rwanda remains predominantly rural. At the 2022 census 3,701,245 people, or 27.9% of the resident population, lived in urban areas. Urban se",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1366488374"
+    },
+    {
+      "id": "P22",
+      "hash": "6fa94273fc2a3e9df277753be3db245e26ad9e4922cd45cb94ab99199847737e",
+      "heading": "Trade corridors and regional links",
+      "excerpt": "Rwanda shares strong cross-border trade and transport links with its neighbours. Key regional infrastructure routes include the Central Corr",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1366488374"
+    }
+  ],
+  "updatedAt": "2026-10-21T13:31:16.230Z"
 }

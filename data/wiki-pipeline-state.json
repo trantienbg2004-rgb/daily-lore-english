@@ -6236,10 +6236,10 @@
       "checkedAt": "2026-10-21T07:31:59.291Z"
     },
     "56738": {
-      "status": "FETCHED",
-      "reason": "pinned-source-ready",
+      "status": "EVIDENCE_READY",
+      "reason": "6 rights-verified embedded images",
       "revisionId": 1366488374,
-      "checkedAt": "2026-10-21T13:31:13.837Z"
+      "checkedAt": "2026-10-21T13:31:16.230Z"
     },
     "57768": {
       "status": "EVIDENCE_READY",
@@ -9866,7 +9866,7 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-10-21T13:31:13.857Z",
+  "updatedAt": "2026-10-21T13:31:16.231Z",
   "dailyUsage": {
     "day": "2026-10-21",
     "calls": 11,
