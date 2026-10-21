@@ -6182,10 +6182,10 @@
       "checkedAt": "2026-10-21T07:56:23.136Z"
     },
     "44443": {
-      "status": "FETCHED",
-      "reason": "pinned-source-ready",
+      "status": "EVIDENCE_READY",
+      "reason": "1 rights-verified embedded images",
       "revisionId": 1381046402,
-      "checkedAt": "2026-10-21T13:31:45.340Z"
+      "checkedAt": "2026-10-21T13:31:47.092Z"
     },
     "44940": {
       "status": "RETRY_LATER",
@@ -9866,7 +9866,7 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-10-21T13:31:45.340Z",
+  "updatedAt": "2026-10-21T13:31:47.093Z",
   "dailyUsage": {
     "day": "2026-10-21",
     "calls": 11,

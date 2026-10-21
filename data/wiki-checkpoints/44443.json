@@ -2,9 +2,93 @@
   "pageId": 44443,
   "title": "Anti-capitalism",
   "topic": "Politics",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1381046402,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381046402",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-21T13:31:45.340Z"
+  "reason": "1 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Pyramid of Capitalist System.jpg",
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/e/e8/Pyramid_of_Capitalist_System.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "fileTitle": "File:Pyramid of Capitalist System.jpg",
+        "caption": "The \"Pyramid of Capitalist System\" cartoon made by the Industrial Workers of the World (1911) is an example of a socialist critique of capitalism and of social stratification.",
+        "alt": "",
+        "description": "A 1911 Industrial Worker (IWW newspaper) publication advocating industrial unionism that shows the critique of capitalism. It is based on a flyer of the \"Union of Russian Socialists\" spread in 1900 and 1901 (the File:Capitalist pyramid 1900.png)",
+        "date": "1911",
+        "section": "",
+        "position": 0,
+        "provenance": {
+          "credit": "Artist not credited. Published by International Pub. Co., Cleveland, Ohio.",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Pyramid_of_Capitalist_System.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Anti-capitalism",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381046402",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "c612a8b6040e2d5bd17abc0f40990fcd14bb76b555cf518987eada8522d699a8",
+      "heading": "Lead",
+      "excerpt": "Anti-capitalism is a political ideology and movement encompassing a variety of attitudes and ideas that oppose capitalism. Anti-capitalists ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381046402"
+    },
+    {
+      "id": "P2",
+      "hash": "dda0e52d1ab916c62b87a3221fec51f4ec922074f3b8cbb7a0af180a5801bda1",
+      "heading": "Characteristics",
+      "excerpt": "Anti-capitalism can range from a reformist position, which aims to limit corporate power and oppose neoliberal policies, to a radical positi",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381046402"
+    },
+    {
+      "id": "P3",
+      "hash": "763b8b8f0e4e795519ef1eebedd85980eec403aef0935405b108f0ca270a2a94",
+      "heading": "Characteristics",
+      "excerpt": "Various economic systems have been proposed as an alternative to capitalism. American economist Michael Albert proposed a system of particip",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381046402"
+    },
+    {
+      "id": "P4",
+      "hash": "bda1aa18d3f113e5849d0e3ee707698df7dac57d35d49a30655a2a215f14504b",
+      "heading": "History",
+      "excerpt": "Early opposition to the rise of capitalism first arose during the 17th century, when feudal landowners first came under threat from the incr",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381046402"
+    },
+    {
+      "id": "P5",
+      "hash": "30c44b282ab56e34bc96a8404143367aad94aa3c3267dea6a9e63dbbf2b97bea",
+      "heading": "1960s–1980s",
+      "excerpt": "Contemporary anti-capitalism finds its roots among the New Left and the counterculture of the 1960s, which infused anti-capitalism with a po",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381046402"
+    },
+    {
+      "id": "P6",
+      "hash": "d07c5689502f2fe441d0f22a5a104b33b9b1675d61452933ceaf6fe532132aa9",
+      "heading": "1990s",
+      "excerpt": "By the 1990s, neoliberalism had asserted a hegemonic influence over the global economy. In reaction against the rise of neoliberalism, a new",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381046402"
+    },
+    {
+      "id": "P7",
+      "hash": "fd39798a6d735d987645fd8748c347127e222a552624f9a708064b06486445af",
+      "heading": "1990s",
+      "excerpt": "In 1995, the establishment of the World Trade Organization (WTO), which sought to promote a neoliberal policy of economic globalization, met",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381046402"
+    },
+    {
+      "id": "P8",
+      "hash": "53ec32f89a884488edc258a79e1f289db1173f43d2ce12b89acfa9d9972331bc",
+      "heading": "1990s",
+      "excerpt": "Towards the end of the 1990s, the British environmentalist group Reclaim the Streets sought to build ties with the anti-globalisation moveme",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381046402"
+    }
+  ],
+  "updatedAt": "2026-10-21T13:31:47.093Z"
 }
