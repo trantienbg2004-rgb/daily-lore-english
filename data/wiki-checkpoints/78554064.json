@@ -2,9 +2,291 @@
   "pageId": 78554064,
   "title": "History of the LED",
   "topic": "Science & Technology",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1379345274,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379345274",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-21T07:39:43.538Z"
+  "reason": "5 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:SiC LED historic.jpg",
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/6/64/SiC_LED_historic.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "fileTitle": "File:SiC LED historic.jpg",
+        "caption": "Green electroluminescence from a point contact on a crystal of SiC recreates Round's original experiment from 1907.",
+        "alt": "",
+        "description": "This image shows a replication of H.J. Round's experiments in which he discovered the effect underlying the light emitting diode (LED). A negatively charged needle contacts a positively charged crystal of silicon carbide or carborundum. At a voltage of 9 V and a current of 30 mA a green glow can be observed at the contact point between needle and crystal. A more detailed version of the setup can be found at www.dlip.de",
+        "date": "2009-05-05",
+        "section": "",
+        "position": 0,
+        "provenance": {
+          "credit": "Biolippi",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:SiC_LED_historic.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/History_of_the_LED",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379345274",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:0603 LED.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0d/0603_LED.jpg/960px-0603_LED.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:0603 LED.jpg",
+        "caption": "0603 SMD (Surface Mount Device) package LED",
+        "alt": "",
+        "description": "0603 SMD (Surface Mount Device) package LED.",
+        "date": "2023-01-30",
+        "section": "Early experiments",
+        "position": 1,
+        "provenance": {
+          "credit": "Ashkananisi7",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:0603_LED.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/History_of_the_LED",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379345274",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:1 watt red power led.jpg"
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:SNX100.jpg"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:0603 SMD LED.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/71/0603_SMD_LED.jpg/960px-0603_SMD_LED.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:0603 SMD LED.jpg",
+        "caption": "0603 SMD (Surface Mount Device) package red LED",
+        "alt": "",
+        "description": "0603 SMD (Surface Mount Device) package LED.",
+        "date": "2023-01-13",
+        "section": "Early experiments",
+        "position": 4,
+        "provenance": {
+          "credit": "Ashkananisi7",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:0603_SMD_LED.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/History_of_the_LED",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379345274",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Red LED..jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bb/Red_LED..jpg/960px-Red_LED..jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Red LED..jpg",
+        "caption": "Close-up of Red LED",
+        "alt": "",
+        "description": "Close-up of Red LED. Golden wire bond is visible.",
+        "date": "2023-02-24",
+        "section": "Early experiments",
+        "position": 5,
+        "provenance": {
+          "credit": "Ashkananisi7",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Red_LED..jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/History_of_the_LED",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379345274",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:InGaN-based green LED top view.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6c/InGaN-based_green_LED_top_view.jpg/960px-InGaN-based_green_LED_top_view.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:InGaN-based green LED top view.jpg",
+        "caption": "Close-up of InGaN-based green LED",
+        "alt": "",
+        "description": "High efficiency InGaN/GaN green light emitting diode",
+        "date": "2026-03-24 13:25:46",
+        "section": "Early experiments",
+        "position": 6,
+        "provenance": {
+          "credit": "Mister rf",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:InGaN-based_green_LED_top_view.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/History_of_the_LED",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379345274",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:TI-30-LED-Display-3682e1.jpg"
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:8-digit-multiplex-7-segment-LED-X-Ray.tif"
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Haitz-law.svg"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "e85e6ca81cb3fea5cf66607d93f6a5b87ee430705be7ddc16e52692e7c01c969",
+      "heading": "Lead",
+      "excerpt": "The history of the light-emitting diode begins with the 1906 discovery of electroluminescence from a solid state diode by Henry Joseph Round",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379345274"
+    },
+    {
+      "id": "P2",
+      "hash": "b6d77c2647fd5e93772d6427901a2c1f18618c0bfd3eafce3a242fc22ee6a5d4",
+      "heading": "Early experiments",
+      "excerpt": "Henry Joseph Round, of Marconi Labs, made his discovery in 1906 while using a cat's-whisker detector and passing current through combination",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379345274"
+    },
+    {
+      "id": "P3",
+      "hash": "d5874ba47beddb8b66713d40fb1374e280be5316218eee374187de1b628647cc",
+      "heading": "Early experiments",
+      "excerpt": "SIRS: – During an investigation of the unsymmetrical passage of current through a contact of carborundum and other substances, a curious phe",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379345274"
+    },
+    {
+      "id": "P4",
+      "hash": "e79bbb32f0a444a830a4ca59f8812644c811431c27a0e78dc32ba83b64d56900",
+      "heading": "Early experiments",
+      "excerpt": "There seems to be some connection between the above effect and the e.m.f. produced by a junction of carborundum and another conductor when h",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379345274"
+    },
+    {
+      "id": "P5",
+      "hash": "361aee1ee5acda7e842a6290b18aaae27508c594eb520bbd4543e56c61b4abe7",
+      "heading": "Early experiments",
+      "excerpt": "A light-emitting diode was created, in 1927, by Russian inventor Oleg Losev, that also used silicon carbide as a semiconductor. Despite havi",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379345274"
+    },
+    {
+      "id": "P6",
+      "hash": "04a187611de3d37c4b78103aaff0e2abfc0dd03aebecaf1141d6c4c84aa911bd",
+      "heading": "Initial commercial development",
+      "excerpt": "Until 1968, visible and infrared LEDs were extremely costly, on the order of US$200 per unit, and so had little practical use. The first com",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379345274"
+    },
+    {
+      "id": "P7",
+      "hash": "72f8734df72430e60a4a1bd3b9e3f9158caa537207db4c7056429c5b3e17a619",
+      "heading": "Blue LED",
+      "excerpt": "The first blue-violet LED, using magnesium-doped gallium nitride was made at Stanford University in 1972 by Herb Maruska and Wally Rhines, d",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379345274"
+    },
+    {
+      "id": "P8",
+      "hash": "86e87e96cf15522db9c797be2f872777cf025a05920f8d7803513afb3ea8a40f",
+      "heading": "White LEDs and the illumination breakthrough",
+      "excerpt": "Even though white light can be created using individual red, green and blue LEDs, this results in poor color rendering, since only three nar",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379345274"
+    },
+    {
+      "id": "P9",
+      "hash": "eba89fd4e7077e4f554821f82a77ffa9cd45f544f731cdb03fed674b8f2d2ee5",
+      "heading": "Polychromatic",
+      "excerpt": "In 2024, QPixel introduced as polychromatic LED that could replace the 3-subpixel model for digital displays. The technology uses a gallium ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379345274"
+    },
+    {
+      "id": "P10",
+      "hash": "a601444cc3fc0a2ae27ffdda36b803e94abaa19dfba09af87df2eea9f3a22b1e",
+      "heading": "Early experiments",
+      "excerpt": "In 1936, Georges Destriau observed that electroluminescence could be produced when zinc sulphide (ZnS) powder is suspended in an insulator a",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379345274"
+    },
+    {
+      "id": "P11",
+      "hash": "3c92a84eb3f98fd5e3600f49e6a3c5503532913889842beff4d9819f851f9854",
+      "heading": "Early experiments",
+      "excerpt": "Hungarian Zoltán Bay together with György Szigeti patenting a lighting device in Hungary in 1939 based on silicon carbide, with an option on",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379345274"
+    },
+    {
+      "id": "P12",
+      "hash": "967905f56019e7741f977033351ea932fa2019e2501c29705b50e41e4349f9d1",
+      "heading": "Early experiments",
+      "excerpt": "Rubin Braunstein of the Radio Corporation of America reported on infrared emission from gallium arsenide (GaAs) and other semiconductor allo",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379345274"
+    },
+    {
+      "id": "P13",
+      "hash": "ade145c2f61c4500f5394ee63d1439bfe79111839c690b003aeb945a3e127942",
+      "heading": "Early experiments",
+      "excerpt": "In September 1961, while working at Texas Instruments in Dallas, Texas, James R. Biard and Gary Pittman discovered near-infrared (900 nm) li",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379345274"
+    },
+    {
+      "id": "P14",
+      "hash": "a9dad252fefe10724d318b050f680e20a82ca971f8a5bc97886ec7fac2589834",
+      "heading": "Early experiments",
+      "excerpt": "After establishing the priority of their work based on engineering notebooks predating submissions from G.E. Labs, RCA Research Labs, IBM Re",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379345274"
+    },
+    {
+      "id": "P15",
+      "hash": "a059a2cc3d6d23d5343f5160a308e4b2a5bc9f328f5762f335a231ccf5cc7017",
+      "heading": "Early experiments",
+      "excerpt": "In the 1960s, several laboratories focused on LEDs that would emit visible light. A particularly important device was demonstrated by Nick H",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379345274"
+    },
+    {
+      "id": "P16",
+      "hash": "ac54e32e5593f9172e04f6798452608590ca668e7df2a896301a9bace9d1b5e6",
+      "heading": "Early experiments",
+      "excerpt": "M. George Craford, a former graduate student of Holonyak, invented the first yellow LED and improved the brightness of red and red-orange LE",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379345274"
+    },
+    {
+      "id": "P17",
+      "hash": "829bb6d88a807cb7fa6189ccdf7851f2589fcf2bce25e411ec47587eb10ee27c",
+      "heading": "Early experiments",
+      "excerpt": "In the early 1990s, Shuji Nakamura, Hiroshi Amano and Isamu Akasaki invented blue light-emitting diodes that were dramatically more efficien",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379345274"
+    },
+    {
+      "id": "P18",
+      "hash": "924e2136b3c7d123d3b3163acf2f29b700143b7f9fa4c4684b51c15f1d8da5c3",
+      "heading": "Initial commercial development",
+      "excerpt": "The Hewlett-Packard company (HP) was engaged in research and development (R&D) on practical LEDs between 1962 and 1968, by a research team u",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379345274"
+    },
+    {
+      "id": "P19",
+      "hash": "6c12c7d7a2c61aa958c6f8f8b027009d6217e0b501d50793e877e7520a38fa3a",
+      "heading": "Initial commercial development",
+      "excerpt": "Monsanto was the first organization to mass-produce visible LEDs, using Gallium arsenide phosphide (GaAsP) in 1968 to produce red LEDs suita",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379345274"
+    }
+  ],
+  "updatedAt": "2026-10-21T07:39:44.821Z"
 }
