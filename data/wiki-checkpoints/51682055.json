@@ -2,9 +2,162 @@
   "pageId": 51682055,
   "title": "Multi-component gas analyzer system",
   "topic": "Science & Technology",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1377208867,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377208867",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-21T22:36:05.568Z"
+  "reason": "3 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:A selection of instruments used for monitoring volcanoes.jpg",
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/f/fc/A_selection_of_instruments_used_for_monitoring_volcanoes.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "fileTitle": "File:A selection of instruments used for monitoring volcanoes.jpg",
+        "caption": "A multi-component gas analyzer system is often one of many instruments used to measure gases and monitor volcanic activity.",
+        "alt": "",
+        "description": "This image depicts instruments used in volcano monitoring. These were deployed in the vicinity of Mount Merapi in 2014.",
+        "date": "2014-10-14",
+        "section": "",
+        "position": 0,
+        "provenance": {
+          "credit": "Patrick Allard.",
+          "license": "CC BY-SA 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:A_selection_of_instruments_used_for_monitoring_volcanoes.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Multi-component_gas_analyzer_system",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377208867",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Multi-Component Gas Analyzer (Multi-GAS) permanent station.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/17/Multi-Component_Gas_Analyzer_%28Multi-GAS%29_permanent_station.jpg/960px-Multi-Component_Gas_Analyzer_%28Multi-GAS%29_permanent_station.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Multi-Component Gas Analyzer (Multi-GAS) permanent station.jpg",
+        "caption": "Multi-GAS permanent field station. Set-up consists of a Multi-GAS, satellite terminal, 12V batteries, and solar panel control located inside the wooden box. Satellite antenna, solar panels, and multi-GAS intake/outtake located outside of the box.",
+        "alt": "",
+        "description": "Multi-GAS station used to measure volcanic gases. Measures CO2, SO2, H2S. Helps understand volcano activity.",
+        "date": "2020-10-04",
+        "section": "System mechanics",
+        "position": 1,
+        "provenance": {
+          "credit": "Brynnams",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Multi-Component_Gas_Analyzer_(Multi-GAS)_permanent_station.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Multi-component_gas_analyzer_system",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377208867",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Example of CO2 H2S multi-GAS data.png",
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/9/93/Example_of_CO2_H2S_multi-GAS_data.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "fileTitle": "File:Example of CO2 H2S multi-GAS data.png",
+        "caption": "Raw multi-GAS data showing the correlation between CO2 and H2S. Fitting a linear regression line to raw data allows for the calculation of the CO2/H2S ratio for monitoring changes in the gas output of the system.",
+        "alt": "",
+        "description": "This is an example of what raw data from a Multi-GAS may look like. The axes include volcanic gases CO2 and H2S. The slope represents the linear regression and R is the correlation coefficient.",
+        "date": "2020-10-04",
+        "section": "Volcano monitoring",
+        "position": 2,
+        "provenance": {
+          "credit": "Brynnams",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Example_of_CO2_H2S_multi-GAS_data.png",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Multi-component_gas_analyzer_system",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377208867",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "481e7fefca435cc40097abd8b5b3999208558807ee2e67c8c67a1b4494a61e82",
+      "heading": "Lead",
+      "excerpt": "A multi-component gas analyzer system (Multi-GAS) is an instrument package used to take real-time high-resolution measurements of volcanic g",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377208867"
+    },
+    {
+      "id": "P2",
+      "hash": "ecc752ed6d5bcb86226c6a26edab3b552cc15deb3683aa2da0b22171a85362e1",
+      "heading": "Lead",
+      "excerpt": "Multi-GAS instruments have been used to measure volcanic gases at Mount Etna, Stromboli, Vulcano Italy, Villarrica (volcano) Chile, Masaya V",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377208867"
+    },
+    {
+      "id": "P3",
+      "hash": "32c3c4ca5983dd4e6f99c6407d850361f1bed267d258c308cd3bb1ad28c97a8a",
+      "heading": "Lead",
+      "excerpt": "The development of this instrument has helped scientists to monitor real-time changes in volcanic gas composition, allowing for more rapid h",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377208867"
+    },
+    {
+      "id": "P4",
+      "hash": "da9b86b1b1f26644dc1e5b7d55ba746174598f9e4583383fbbad4d4db3282586",
+      "heading": "System mechanics",
+      "excerpt": "Multi-component gas analyzer systems are used for measuring the major components of volcanic gases. CO2, SO2, H2S, and pressure-temperature-",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377208867"
+    },
+    {
+      "id": "P5",
+      "hash": "2d1c04126841f7d35a290ebfd5f97cc1cd82fecd1bc722d8f099f1ba42977924",
+      "heading": "Volcano monitoring",
+      "excerpt": "Monitoring changes in gas composition allows for an understanding of changes occurring in the associated volcanic system. Multi-GAS measurem",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377208867"
+    },
+    {
+      "id": "P6",
+      "hash": "99609da70fa9a0730afffff199d051386c8f51c2b48caf82435e4f66dfa99a39",
+      "heading": "Case studies",
+      "excerpt": "Multi-GAS stations have been employed at many volcanoes all around the world and due to its simple design it can be employed by many groups,",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377208867"
+    },
+    {
+      "id": "P7",
+      "hash": "f8df27c271ac0b1f46941eb1ec823c583e20babac234f0c2d1bc4191cd59e8a2",
+      "heading": "Mount Etna, Italy",
+      "excerpt": "A permanent multi-GAS installment was placed by Mount Etna's summit crater to collect real-time measurements of H2O, CO2, and SO2 over a 2-y",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377208867"
+    },
+    {
+      "id": "P8",
+      "hash": "d39a6ac573cb7a7b90fd7a7f665314f9acd540c5242e241dca059fdcc6230d14",
+      "heading": "Krýsuvík, Iceland",
+      "excerpt": "A multi-GAS was emplaced in the Krýsuvík geothermal system to collect real-time time-series data of H2O, CO2, SO2, and H2S. Molar ratios wer",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377208867"
+    },
+    {
+      "id": "P9",
+      "hash": "fb07288c2a19767125eb62faf13ba9c3ff53abb5ae33316855666d7bfc03b872",
+      "heading": "Yellowstone, United States",
+      "excerpt": "To help understand caldera dynamics a multi-GAS was used to measure temporal variations in volcanic gases at Yellowstone. Temporal variation",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377208867"
+    },
+    {
+      "id": "P10",
+      "hash": "332aadbb5953f8ff9d2bbf69745427680cce0714bb5887e6c814526141293af6",
+      "heading": "Nyiragongo, Democratic Republic of the Congo",
+      "excerpt": "CO2/SO2 molar ratios from multi-GAS measurements confirmed a previous observation that an increase in lava lake levels correlates with an in",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377208867"
+    },
+    {
+      "id": "P11",
+      "hash": "f3228046d22b9838483830a2ea19e80cb54df844b8a940f4fc458a724390e451",
+      "heading": "Deep Earth Carbon Degassing Project (DECADE)",
+      "excerpt": "The DECADE project supported initiatives to set up and expand the use of permanent instrumentation for continuous CO2, and SO2 measurements ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377208867"
+    }
+  ],
+  "updatedAt": "2026-10-21T22:36:11.483Z"
 }
