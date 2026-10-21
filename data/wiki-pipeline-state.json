@@ -9740,10 +9740,10 @@
       "checkedAt": null
     },
     "81481334": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
+      "revisionId": 1369393842,
+      "checkedAt": "2026-10-21T22:36:24.156Z"
     },
     "81744022": {
       "status": "PENDING",
@@ -9866,7 +9866,7 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-10-21T22:36:17.382Z",
+  "updatedAt": "2026-10-21T22:36:24.162Z",
   "dailyUsage": {
     "day": "2026-10-21",
     "calls": 37,
