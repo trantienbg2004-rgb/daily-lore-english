@@ -2,9 +2,187 @@
   "pageId": 72587491,
   "title": "Craft cocktail movement",
   "topic": "Society",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1361363056,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1361363056",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-21T07:40:30.232Z"
+  "reason": "2 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:15-09-26-RalfR-WLC-0019.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/88/15-09-26-RalfR-WLC-0019.jpg/960px-15-09-26-RalfR-WLC-0019.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:15-09-26-RalfR-WLC-0019.jpg",
+        "caption": "A Martinez, newly popular in the early years of the cocktail renaissance",
+        "alt": "",
+        "description": "Martinez",
+        "date": "2015-09-26 12:11:15",
+        "section": "",
+        "position": 0,
+        "provenance": {
+          "credit": "Ralf Roletschek",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:15-09-26-RalfR-WLC-0019.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Craft_cocktail_movement",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1361363056",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:VTR - The \"Old Cuban\" (6038903420).jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fb/VTR_-_The_%22Old_Cuban%22_%286038903420%29.jpg/960px-VTR_-_The_%22Old_Cuban%22_%286038903420%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:VTR - The \"Old Cuban\" (6038903420).jpg",
+        "caption": "An Old Cuban cocktail, created by Audrey Saunders in 2001",
+        "alt": "",
+        "description": "Sort of a cross between a Mojito and a French 75. Nice Summer drink.",
+        "date": "2011-08-12 18:46",
+        "section": "Cocktails",
+        "position": 1,
+        "provenance": {
+          "credit": "Edsel Little",
+          "license": "CC BY-SA 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:VTR_-_The_%22Old_Cuban%22_(6038903420).jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Craft_cocktail_movement",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1361363056",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "477f4423a4f422596d011da2825e8ddf772a0eb986071f13b67a9aec0a7e594d",
+      "heading": "Lead",
+      "excerpt": "The craft cocktail movement is a social movement spurred by the cocktail renaissance, a period of time in the late 20th and early 21st centu",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1361363056"
+    },
+    {
+      "id": "P2",
+      "hash": "155eb653314ab939ad24ce3ab0a05d8f2067c7468028605de7b8bbefbddfbc08",
+      "heading": "Lead",
+      "excerpt": "The renaissance spanned from the late 1980s into the late 2010s, starting with isolated bars and bartenders in Manhattan, New York City, ini",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1361363056"
+    },
+    {
+      "id": "P3",
+      "hash": "34a197fe9a66a03f54d86c8f002e7fb77ca2124b8bca8f9e5a895c73f9119d71",
+      "heading": "History",
+      "excerpt": "The cocktail renaissance spanned from the early 2000s through 2017. It has no clear single origin, though it was largely influenced by three",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1361363056"
+    },
+    {
+      "id": "P4",
+      "hash": "4eb9d2ba0b91cd7f427aa60339d0587d6d7e615ddfed24d33b3fe0fe70c38678",
+      "heading": "History",
+      "excerpt": "Among the movement's early pioneers was bartender Dale DeGroff, who in the 1980s began popularizing classic cocktails and creating new ones ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1361363056"
+    },
+    {
+      "id": "P5",
+      "hash": "b91f3055885cb509d0417e44b0402f6f976279c71935f8ac9ab7155353e13562",
+      "heading": "History",
+      "excerpt": "Another pioneer, Sasha Petraske, began visiting the New York City bar Angel's Share (opened 1993), ordering its classics and learning the pr",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1361363056"
+    },
+    {
+      "id": "P6",
+      "hash": "88cf0330a7c1e01396ddbe2887625b717952292a7719a609fbbd3262724ff08b",
+      "heading": "Characteristics",
+      "excerpt": "The craft cocktail movement is characterized by a return to traditions, a revival of old recipes, a reintroduction of forgotten spirits, and",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1361363056"
+    },
+    {
+      "id": "P7",
+      "hash": "4d5e5fa6fcbd7a574623f170454e18b47a2e0efea9f3463850662d2c0eaae587",
+      "heading": "Cocktails",
+      "excerpt": "Some of these drinks were early to the cocktail renaissance and may seem simple or dated by modern standards. The breakfast martini and porn",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1361363056"
+    },
+    {
+      "id": "P8",
+      "hash": "a9e2f9a46c1299f90f4458ec8e869890bdece72ba7a1e8b0825623a6b97a48ed",
+      "heading": "Distilling",
+      "excerpt": "The movement led to more craft distilling and distribution. As classic cocktails called for ingredients that were not distributed in certain",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1361363056"
+    },
+    {
+      "id": "P9",
+      "hash": "cb12bdf89b1e76d482bff768d4b53726d866dcbc7f724b43bab47c05324c2ef8",
+      "heading": "History",
+      "excerpt": "Tales of the Cocktail, an annual industry event, was founded during the cocktail renaissance, in 2003. The event initially hoped to introduc",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1361363056"
+    },
+    {
+      "id": "P10",
+      "hash": "c309c4d887da60140211986e2fe85361e63b3f6f760f81343aafec236e0da484",
+      "heading": "History",
+      "excerpt": "In the 2000s, proteges of Dale DeGroff and Sasha Petraske opened bars in New York City, and a parallel movement took place on the U.S. West ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1361363056"
+    },
+    {
+      "id": "P11",
+      "hash": "bdd445a21cb13cc615d8f9afa8e9312d95f84f6d3152bc93bb7216ff213abf98",
+      "heading": "History",
+      "excerpt": "Into the 2010s, bars across America began to diversify, attempting to stand out from the blueprint of the pioneering New York City cocktail ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1361363056"
+    },
+    {
+      "id": "P12",
+      "hash": "ad6be2f3a09b4eed3468344e187bad49ce95c8f86393981a92c529bb714f4dab",
+      "heading": "History",
+      "excerpt": "By the late 2010s, craft cocktails had become mainstream, changing the way nearly everybody drank at bars and at home. The number of microdi",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1361363056"
+    },
+    {
+      "id": "P13",
+      "hash": "77b9a2aea2f8bdccb9355e3d4515fc3e1e1e9f0c98dcf19cf97565403457dc1f",
+      "heading": "Characteristics",
+      "excerpt": "The movement involved the repopularization of Manhattans, old fashioneds, and hand-shaken daiquiris, displacing mudslides, Long Island iced ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1361363056"
+    },
+    {
+      "id": "P14",
+      "hash": "111542ec39e6ad7be2f0720c7ef9b58c7638cc37ffb9c144899dbf761bf07e32",
+      "heading": "Characteristics",
+      "excerpt": "In the short term, the cocktail renaissance led to a greater number of bars and cocktail bar job creations, job security, and advancement. O",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1361363056"
+    },
+    {
+      "id": "P15",
+      "hash": "b5a44b9c41907ab5eb928bcfc3f5af4eaa4c9cc0b160283c8a2927bcff24ab35",
+      "heading": "Characteristics",
+      "excerpt": "The movement has predominantly spread in large cities, though it has influenced small-town and even rural bars. The Oxford Companion to Spir",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1361363056"
+    },
+    {
+      "id": "P16",
+      "hash": "7cba08e0e8ae7cec9216fa19fd20e878a3c24e661065b278325e8034d3a8c3fe",
+      "heading": "Characteristics",
+      "excerpt": "Drinks to rise in popularity from the movement included Prohibition-era classics: bee's knees, last words, and negronis; pre-Prohibition dri",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1361363056"
+    },
+    {
+      "id": "P17",
+      "hash": "8cda698038230d4a3f7e1e02ccfa79e728d4aac48e397a49802bcebe45752d63",
+      "heading": "Characteristics",
+      "excerpt": "The movement also led to a revival of the speakeasy, through speakeasy-style bars. The trend was led by Angel's Share (opened 1993) and Milk",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1361363056"
+    },
+    {
+      "id": "P18",
+      "hash": "0c3b83850c65034c25efd46e7b0122ab990fdb4f07baaa657973a2fc395142cf",
+      "heading": "Distilling",
+      "excerpt": "Spirits companies began to hire brand ambassadors, traveling from bar to bar, or sometimes globally, to convince bars and patrons to feature",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1361363056"
+    }
+  ],
+  "updatedAt": "2026-10-21T07:40:31.621Z"
 }
