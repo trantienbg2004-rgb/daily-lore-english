@@ -9278,10 +9278,10 @@
       "checkedAt": "2026-10-21T07:39:51.506Z"
     },
     "71983491": {
-      "status": "DRAFTED",
-      "reason": "draft durably saved before validation",
+      "status": "NEEDS_REVIEW",
+      "reason": "Targeted repair changed an unrelated sentence",
       "revisionId": 1377298310,
-      "checkedAt": "2026-10-21T13:30:02.149Z"
+      "checkedAt": "2026-10-21T13:30:19.718Z"
     },
     "72279466": {
       "status": "REJECTED",
@@ -9866,7 +9866,7 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-10-21T13:30:18.313Z",
+  "updatedAt": "2026-10-21T13:30:19.719Z",
   "dailyUsage": {
     "day": "2026-10-21",
     "calls": 10,
