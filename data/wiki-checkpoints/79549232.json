@@ -2,9 +2,471 @@
   "pageId": 79549232,
   "title": "Noirlac Abbey",
   "topic": "Culture",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1380999323,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380999323",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-21T07:56:37.613Z"
+  "reason": "10 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Planta cister.svg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/af/Planta_cister.svg/960px-Planta_cister.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Planta cister.svg",
+        "caption": "Cistercian monastery floor plan. (White areas= Monks' quarters/ Gray areas=Lay brothers' quarters) 1.Church, 2.High altar, 3.Side altars, 4.Sacristy, 5.Lavatorium, 6.Matins stair, 7.Upper enclosure, 8.Monks' choir, 9.Bench for the sick, 10.Cloister entrance, 11.Lay brothers' choir, 12.Lay brothers' passage, 13.Courtyard, 14.Book cupboard (armarium), 15.Cloister, 16.Chapter house, 17.Dormitory stair, 18.Monks' dormitory, 19.Latrines, 20.Parlor, 21.Passage, 22.Scriptorium, 23.Novitiate, 24.Warming",
+        "alt": "",
+        "description": "Planta de monasterio cisterciense. 1.-Iglesia, 2.-Altar principal, 3.-Altares secundarios, 4.-Sacristía, 5.- Lavatorio, 6.-Escalera de maitines, 7.-Clausura alta, 8.-Coro de monjes, 9.-Banco de enfermos, 10.-Entrada del claustro, 11.-Coro de conversos, 12.-Callejón de conversos, 13.-Patio, 14.-Armarium para los libros, 15.-Claustro, 16.-Sala capitular,17.-Escalera dormitorio, 18.-Dormitorio monjes, 19.-Letrinas, 20.-Locutorio, 21.-Paso, 22.-Scritorium, 23.-Sala de novicios, 24.-Calefactorio, 25.-Refectorio de monjes, 26.-Púlpito de lectura, 27.",
+        "date": "2007-02-05",
+        "section": "Construction and development",
+        "position": 0,
+        "provenance": {
+          "credit": "Chabacano",
+          "license": "CC BY 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Planta_cister.svg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Noirlac_Abbey",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380999323",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Plan Montrond 1650.png"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Louis, Grand Condé.PNG",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0d/Louis%2C_Grand_Cond%C3%A9.PNG/960px-Louis%2C_Grand_Cond%C3%A9.PNG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Louis, Grand Condé.PNG",
+        "caption": "Le Grand Condé",
+        "alt": "",
+        "description": "",
+        "date": "between 1654 and 1658date QS:P,+1654-00-00T00:00:00Z/8,P1319,+1654-00-00T00:00:00Z/9,P1326,+1658-00-",
+        "section": "In commendam rule",
+        "position": 2,
+        "provenance": {
+          "credit": "Justus van Egmont",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Louis,_Grand_Cond%C3%A9.PNG",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Noirlac_Abbey",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380999323",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Musée Saint-Vic Saint-Amand-Montrond.JPG",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e8/Mus%C3%A9e_Saint-Vic_Saint-Amand-Montrond.JPG/960px-Mus%C3%A9e_Saint-Vic_Saint-Amand-Montrond.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Musée Saint-Vic Saint-Amand-Montrond.JPG",
+        "caption": "Hôtel Saint-Vic, nowadays Saint-Amand-Montrond's museum",
+        "alt": "",
+        "description": "Musée Saint-Vic à Saint-Amand-Montrond, Cher, France",
+        "date": "2009-09-27",
+        "section": "18th century rehabilitation by Louis d'Aurillac",
+        "position": 3,
+        "provenance": {
+          "credit": "KoS",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Mus%C3%A9e_Saint-Vic_Saint-Amand-Montrond.JPG",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Noirlac_Abbey",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380999323",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Noirlac - Galerie ouest en 1877.jpg"
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Blason département fr Cher.svg"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Lucien Roy, plan d'ensemble.jpg",
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/6/6a/Lucien_Roy%2C_plan_d%27ensemble.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "fileTitle": "File:Lucien Roy, plan d'ensemble.jpg",
+        "caption": "Map of the abbey by Lucien Roy, 1912",
+        "alt": "",
+        "description": "Lucien Roy, plan d'ensemble, 20 juillet 1912",
+        "date": "2003-05-27 09:10:22",
+        "section": "A structure built around the cloister",
+        "position": 6,
+        "provenance": {
+          "credit": "Lucien Roy, 20 juillet 1912",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Lucien_Roy,_plan_d%27ensemble.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Noirlac_Abbey",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380999323",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Abbaye de Noirlac - Le Cloître 3.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/af/Abbaye_de_Noirlac_-_Le_Clo%C3%AEtre_3.jpg/960px-Abbaye_de_Noirlac_-_Le_Clo%C3%AEtre_3.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Abbaye de Noirlac - Le Cloître 3.jpg",
+        "caption": "View of two galleries",
+        "alt": "",
+        "description": "Le Cloître était strictement réservé aux religieux",
+        "date": "2025-04-26 10:47:07",
+        "section": "A structure built around the cloister",
+        "position": 7,
+        "provenance": {
+          "credit": "Selmoval",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Abbaye_de_Noirlac_-_Le_Clo%C3%AEtre_3.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Noirlac_Abbey",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380999323",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Lucien Roy, coupe de l'église.jpg",
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/a/af/Lucien_Roy%2C_coupe_de_l%27%C3%A9glise.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "fileTitle": "File:Lucien Roy, coupe de l'église.jpg",
+        "caption": "Longitudinal section of Noirlac church, Lucien Roy, 1912",
+        "alt": "",
+        "description": "Lucien Roy, couple longitudinale de l'église, 20 juillet 1912",
+        "date": "2003-05-27 09:12:09",
+        "section": "Abbey church",
+        "position": 8,
+        "provenance": {
+          "credit": "Lucien Roy, 20 juillet 1912",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Lucien_Roy,_coupe_de_l%27%C3%A9glise.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Noirlac_Abbey",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380999323",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Noirlac abbey facade east1.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e6/Noirlac_abbey_facade_east1.jpg/960px-Noirlac_abbey_facade_east1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Noirlac abbey facade east1.jpg",
+        "caption": "The apse and the transept from outside",
+        "alt": "",
+        "description": "Abbaye de Noirlac",
+        "date": "2007-08-12 20:48",
+        "section": "The apse and the transept",
+        "position": 9,
+        "provenance": {
+          "credit": "PhR61",
+          "license": "CC BY 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Noirlac_abbey_facade_east1.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Noirlac_Abbey",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380999323",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Noirlac 04 2009.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ea/Noirlac_04_2009.jpg/960px-Noirlac_04_2009.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Noirlac 04 2009.jpg",
+        "caption": "Chapter House, seen from the cloister eastern gallery",
+        "alt": "",
+        "description": "Kapitelsaal des Zisterzienserklosters Noirlac im französischen Département Cher",
+        "date": "2009-08-31",
+        "section": "Monks buildings",
+        "position": 10,
+        "provenance": {
+          "credit": "Manfred Heyde",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Noirlac_04_2009.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Noirlac_Abbey",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380999323",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Noirlac 05 2009.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e3/Noirlac_05_2009.jpg/960px-Noirlac_05_2009.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Noirlac 05 2009.jpg",
+        "caption": "A 18th century monk bedroom",
+        "alt": "",
+        "description": "Zisterzienserklosters Noirlac im französischen Département Cher - Mönchzelle",
+        "date": "2009-08-31",
+        "section": "The Chapter House",
+        "position": 11,
+        "provenance": {
+          "credit": "Manfred Heyde",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Noirlac_05_2009.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Noirlac_Abbey",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380999323",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Noirlac Réfectoire.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f6/Noirlac_R%C3%A9fectoire.jpg/960px-Noirlac_R%C3%A9fectoire.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Noirlac Réfectoire.jpg",
+        "caption": "The refectory",
+        "alt": "",
+        "description": "Abbaye de Noirlac, département du Cher, france. Réfectoire",
+        "date": "2007-12-15 20:48:44",
+        "section": "The south building",
+        "position": 12,
+        "provenance": {
+          "credit": "PhR61",
+          "license": "CC BY 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Noirlac_R%C3%A9fectoire.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Noirlac_Abbey",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380999323",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "626acc6fd2a7385884fa99adaa5740fb5815fabeada50633217301e1a70ea16e",
+      "heading": "Lead",
+      "excerpt": "Noirlac Abbey is a former Cistercian abbey located in Bruère-Allichamps, near Saint-Amand-Montrond, in the Cher department. The abbey was of",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380999323"
+    },
+    {
+      "id": "P2",
+      "hash": "26074f8c89aa3685066858b84f05d60cf05002c36238c1cc1cacaf44cd2e615f",
+      "heading": "Lead",
+      "excerpt": "It then briefly housed an orphanage, harboured Spanish Civil War refugees and finally operated as an annex to the hospice located in Saint-A",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380999323"
+    },
+    {
+      "id": "P3",
+      "hash": "eb741dac0c4c76b1899f7796b389301e99e6df7546493cdeeb57b2167b7bc428",
+      "heading": "Lead",
+      "excerpt": "It is one of the best-preserved Cistercian abbeys in the country; the Cher department restored it between 1950 and 1980. The ensemble curren",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380999323"
+    },
+    {
+      "id": "P4",
+      "hash": "9ee31b80419592318bdd69751b865b111ea3bd76956470b0b2209a5c2e1dbfbc",
+      "heading": "Foundation",
+      "excerpt": "The abbey was founded in 1136 by a small group of monks from Clairvaux Abbey in Burgundy. It was originally named Maison-Dieu (English: God-",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380999323"
+    },
+    {
+      "id": "P5",
+      "hash": "c384e0e35bf89eab24453f9424db23fdebab51f5772b884b53aec319d505fbb5",
+      "heading": "Foundation",
+      "excerpt": "The monks occupied lands belonging to the lord Ebbes V of Charenton. It was an inhospitable, marshy, wooded area near the Cher river. A lett",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380999323"
+    },
+    {
+      "id": "P6",
+      "hash": "043c773fcccf08ce4c36959dcb3c1da9e3bbf4d50aa4ce43ab63483c3848d197",
+      "heading": "Construction and development",
+      "excerpt": "The abbey was built primarily during the 12th century. The church, consecrated in 1147, was constructed following the Bernardine blueprint p",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380999323"
+    },
+    {
+      "id": "P7",
+      "hash": "7796d44ffbbcfb5de831b6fcb92b87603a5487ee52e31aeeb5a8107814d512de",
+      "heading": "Impact of the Hundred Years' War (1337–1453)",
+      "excerpt": "During the Hundred Years' War, the Berry region and the monastery frequently suffered devastation (e.g. Sir Robert Knolles and his men occup",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380999323"
+    },
+    {
+      "id": "P8",
+      "hash": "8d76a67d2cbdb0370cf54321b07f21781b80963d5cd28c321c546e72feb5af5c",
+      "heading": "In commendam rule",
+      "excerpt": "Noirlac Abbey was placed under the In commendam rule in 1510: this system authorised the abbey management to be transferred to a cleric or l",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380999323"
+    },
+    {
+      "id": "P9",
+      "hash": "adf37acfcf021d596f5fc2f517de35af1561d837e560cb1b710ebe9a15213f61",
+      "heading": "18th century rehabilitation by Louis d'Aurillac",
+      "excerpt": "The condition of the abbey in the early 18th century is known thanks to a visit report by the historian and liturgist Edmond Martène. He the",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380999323"
+    },
+    {
+      "id": "P10",
+      "hash": "b6ae79483ba15398f5640e6d70b9740b809ad967ef23301736f7f88d826b1dfd",
+      "heading": "French Revolution and 19th century",
+      "excerpt": "In 1790, the abbey was secularised and sold a year later as a national property for 150 000 French livres to Jean Amable Desjobert. Desjober",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380999323"
+    },
+    {
+      "id": "P11",
+      "hash": "219458a6c91bf9ccd5207d9a8b0b3e09c92afc7c8af15c19cb1ad3273233c55a",
+      "heading": "Involvement of the Cher department",
+      "excerpt": "Following the end of commercial operations, the monastery buildings underwent a detailed examination. Abbot Jules Pailler, the parish priest",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380999323"
+    },
+    {
+      "id": "P12",
+      "hash": "ab1d28ae93a2a49cd30f77304bc0f86309593e05ff295e31a8205af7f02546ba",
+      "heading": "Rehabilitation into a cultural centre",
+      "excerpt": "By 1949, once more, Noirlac abbey found itself empty. Restoration works began in 1950, under the direction of Michel Ranjard and Pierre Lebo",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380999323"
+    },
+    {
+      "id": "P13",
+      "hash": "918832d515e1c729a635f04a2baf515599fb755eabcdf42488cee069ed6a04bc",
+      "heading": "List of Abbots",
+      "excerpt": "The list of abbots of Noirlac Abbey was compiled by Dom Chevillard. It covers the period from its foundation to the year 1746, with one fina",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380999323"
+    },
+    {
+      "id": "P14",
+      "hash": "5f26274646194e67c7f413976e34a1d49ede836471881b0675fc819d20352639",
+      "heading": "A structure built around the cloister",
+      "excerpt": "Cistercian rules required a strict separation in the community between the monks and the lay brothers. The layout of the buildings in Cister",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380999323"
+    },
+    {
+      "id": "P15",
+      "hash": "71df56ff7c704a4f4e88d7d10b5ecc22b556f78eec1877c2369c5d4ba20b30e5",
+      "heading": "Abbey church",
+      "excerpt": "The church was built to meet the requirements of Cistercian liturgy. The choir is shallow, with a single altar and two side chapels, one on ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380999323"
+    },
+    {
+      "id": "P16",
+      "hash": "6c2d34aae8f3aeae97a04a1454e10df38a8abcfbf0adca0109b409882e8bf3e9",
+      "heading": "The apse and the transept",
+      "excerpt": "In its current state, the apse of the church comprises a choir, lower than the rest of the building, closed by a flat wall framed by two but",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380999323"
+    },
+    {
+      "id": "P17",
+      "hash": "a8e567dfe5297063d3a35eac7133b71c814abcf0d2a83682f99a0a6b9aa80eef",
+      "heading": "The western facade",
+      "excerpt": "The western façade suffered significant damage, partially mitigated by recent restorations. The entrance to the church was originally made t",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380999323"
+    },
+    {
+      "id": "P18",
+      "hash": "315f926b8f445a25a23cc2fa7d4d36c811747c81a2ab36ad7788795b1a3dafd8",
+      "heading": "Monks buildings",
+      "excerpt": "The eastern section of the cloister was used exclusively by the monks. The original edifice has significantly been altered in the 18th centu",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380999323"
+    },
+    {
+      "id": "P19",
+      "hash": "9629a4d86ba5c3438cd349bb85461753ecb2646984ab4b98514fd165312f4d77",
+      "heading": "The Chapter House",
+      "excerpt": "The chapter house was reserved for chapter meetings; it was used as well as a reading room. At the end of the 12th century, there were aroun",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380999323"
+    },
+    {
+      "id": "P20",
+      "hash": "a188a1e54dfffd8faf4ac940e460dce36dbdaa3dc967bb769b029f25275eaf3a",
+      "heading": "The monks' dormitory",
+      "excerpt": "The monks slept in a communal hall until Pope Alexander VI, around 1500, authorized them to sleep in individual cells. Renovations carried o",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380999323"
+    },
+    {
+      "id": "P21",
+      "hash": "1a8fa782baa099f839c1d3c677874b8c499856b54f8f7da65898f221ac51b2e4",
+      "heading": "The south building",
+      "excerpt": "This wing is an extension of the monks' building, located at its southern end. Its structure is largely medieval, it was remodeled in the 18",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380999323"
+    },
+    {
+      "id": "P22",
+      "hash": "4cda2203d49bba548959e20e9e26429b34fc03050fc5b4b39cd0b28e98523626",
+      "heading": "The south wing and the refectory",
+      "excerpt": "The monk's refectory covers the main part of the south wing; two large halls adjoin it to the east. To the north lay the kitchens and the la",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380999323"
+    },
+    {
+      "id": "P23",
+      "hash": "39aa9dbbd2df3576ac9ba1ef07a099b89e464591db994aba683fb7db2f6bf597",
+      "heading": "The lay brothers' building",
+      "excerpt": "The ground floor of the lay brothers' building served as a storeroom: small silos and a vat have been found there. The upper floor housed a ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380999323"
+    },
+    {
+      "id": "P24",
+      "hash": "36ee7e81e3d16d108a75c8b71056c3bff0519bd9f3a0cc2d87666d2dea671fa1",
+      "heading": "The service building",
+      "excerpt": "The entire structure dates back to the 12th century. At that time, the ground floor harboured at least three groin-vaulted rooms, including ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380999323"
+    },
+    {
+      "id": "P25",
+      "hash": "47e51409064f077bb3a3ba7b3752ede705c11c92662a726de89930346056813a",
+      "heading": "Foundation",
+      "excerpt": "Our brothers at Maison-Dieu, in the diocese of Bourges, are in need of bread; we have heard that the Lord King's harvest in that region is p",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380999323"
+    },
+    {
+      "id": "P26",
+      "hash": "75db78ec1cdd32ffb779cddf4c4a17c2fa88cf7f9c932b78741b7d501ac7ce13",
+      "heading": "Foundation",
+      "excerpt": "An initial founding charter was issued in 1150 by Ebbes V of Charenton. He granted all the seigneurial rights he held at the site known as L",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380999323"
+    },
+    {
+      "id": "P27",
+      "hash": "ba388bc3359572618ea549ac7d687cccf18c7883fb0375c8847f084a57c8a6d8",
+      "heading": "Foundation",
+      "excerpt": "The donation made by Ebbes V of Charenton was confirmed by his wife Agnès, in 1159, at the request of Pierre de La Châtre, then Archbishop o",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380999323"
+    },
+    {
+      "id": "P28",
+      "hash": "8f2c5e6f52c1f25ccbd1bb26a03c940ac4bcb27fa18d7deadad9a942636f296c",
+      "heading": "Construction and development",
+      "excerpt": "In the early 13th century, a porch was added to the façade. In the following years the refectory was constructed, south of the cloister. The",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380999323"
+    },
+    {
+      "id": "P29",
+      "hash": "4e95e494ff04dca52e642572f3dbf378bead4e39364ac207f685140b5366b64b",
+      "heading": "Construction and development",
+      "excerpt": "Throughout the first half of the 13th century, donations kept poured in, comprising woodlands, land, vineyards, ponds, mills and townhouses.",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380999323"
+    }
+  ],
+  "updatedAt": "2026-10-21T07:56:39.251Z"
 }
