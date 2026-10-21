@@ -2,10 +2,10 @@
   "pageId": 21818,
   "title": "National park",
   "topic": "Environment",
-  "status": "DRAFTED",
+  "status": "VALIDATED",
   "revisionId": 1375296178,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375296178",
-  "reason": "draft durably saved before validation",
+  "reason": "local factual, style, length, structure and source audit passed",
   "priorReviewReason": "Missing repaired page",
   "rights": [
     {
@@ -458,7 +458,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375296178"
     }
   ],
-  "updatedAt": "2026-10-21T13:45:51.060Z",
+  "updatedAt": "2026-10-21T13:46:11.942Z",
   "draft": {
     "outline": [
       "Introduction to national parks and their core conservation purpose",
@@ -583,5 +583,8 @@
     "output": 103,
     "total": 2911
   },
-  "validation": null
+  "validation": {
+    "accepted": true,
+    "errors": []
+  }
 }
