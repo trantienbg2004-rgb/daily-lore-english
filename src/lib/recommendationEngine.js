@@ -42,11 +42,13 @@ export function rankRecommendations(items,{profile={categories:{}},seen=new Set(
 // 15% exploration is chosen from older shards/older items, then shuffled into
 // the ranked stream. The rest is ordered by freshness + interest + diversity.
 // Seen history is an absolute exclusion until no unread catalog item remains.
-export function pickGlobalCandidates(entries,{seen=new Set(),loaded=new Set(),seenAt=new Map(),profile={categories:{}},recent=[],count=100,now=Date.now(),random=Math.random}={}){
+export function pickGlobalCandidates(entries,{seen=new Set(),loaded=new Set(),seenAt=new Map(),profile={categories:{}},recent=[],count=100,now=Date.now(),random=Math.random,avoidSameDay=false}={}){
  const valid=entries.filter(x=>x?.id&&typeof x.shard==='string')
  const unread=valid.filter(x=>!seen.has(x.id))
  const fallback=unread.length===0
- const pool=(fallback?valid.filter(x=>!loaded.has(x.id)):unread.filter(x=>!loaded.has(x.id)))
+ const startOfDay=new Date(now).setHours(0,0,0,0)
+ const pool=(fallback?valid.filter(x=>!loaded.has(x.id)&&(!avoidSameDay||(seenAt.get(x.id)||0)<startOfDay)):
+  unread.filter(x=>!loaded.has(x.id)))
  if(!pool.length)return {items:[],fallback,hasUnread:unread.length>0}
  const scored=pool.map(item=>({item,score:fallback?-(seenAt.get(item.id)||0):freshness(item,now)+interest(item,profile)+(random()-.5)*10}))
  scored.sort((a,b)=>b.score-a.score)

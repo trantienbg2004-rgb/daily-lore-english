@@ -1,12 +1,14 @@
 /** Global indexed feed; V1 shard scanning remains a safe compatibility fallback. */
 import {fetchManifest,newsChunkOrder,scanFeed,fetchWithTimeout,validStories,readableStory,storyId} from './feedQueue.js'
 import {pickGlobalCandidates} from './recommendationEngine.js'
-export const PUBLISHED_POOLS=['lore-reader']
+export const PUBLISHED_POOLS=['wiki-reader']
+const WIKI_POOL='wiki-reader'
 export const REFRESH_INTERVAL_MS=3*60_000
 export function eligibleManifest(m,path){
- return path==='lore-reader'&&m?.ready===true&&m?.editorialVersion===1&&
- Number.isInteger(m.count)&&m.count>=1&&m.count<100000&&
- (m.newsOnly===true ? m.feedType==='news'&&m.total>=1 : m.feedType==='lore'&&m.total>=15&&Number(m.withVerifiedPhoto)>=15&&m.sourcePhotosOnly===true)
+ if(path===WIKI_POOL)return m?.ready===true&&m?.feedType==='wiki'&&m?.editorialVersion===2&&
+  Number.isInteger(m.count)&&m.count>=1&&Number.isInteger(m.total)&&m.total>=1&&
+  m.withVerifiedPhoto===m.total&&!!m.indexFile
+ return false
 }
 async function getIndex(fetchImpl,baseUrl,path,manifest,now){
  if(!manifest.indexFile)return null
@@ -14,30 +16,39 @@ async function getIndex(fetchImpl,baseUrl,path,manifest,now){
  const res=await fetchWithTimeout(fetchImpl,url,{cache:'no-store'})
  if(!res.ok)throw Error(`Global index HTTP ${res.status}`)
  const data=await res.json()
- if(data.version!==2||data.total!==manifest.total||!Array.isArray(data.entries)||data.entries.length!==manifest.total||
+ if(data.version!==(path===WIKI_POOL?3:2)||data.total!==manifest.total||!Array.isArray(data.entries)||data.entries.length!==manifest.total||
   data.contentHash!==(manifest.contentHash||''))throw Error('Global index mismatch')
  return data.entries
 }
 export async function refreshCatalog({fetchImpl,baseUrl,pools=[],now=Date.now(),fetchManifestImpl=fetchManifest}){
  const old=new Map(pools.map(p=>[p.path,p])),next=[],failures=[],newIds=[]
- for(const name of PUBLISHED_POOLS){
-  try{
-   const m=await fetchManifestImpl(fetchImpl,baseUrl,now,name)
-   if(!eligibleManifest(m,name))throw Error('curated-release-not-ready')
-   const p=old.get(name)
-   let index=null
-   if(m.indexFile){try{index=await getIndex(fetchImpl,baseUrl,name,m,now)}catch(e){if(m.newsOnly)throw e;console.warn('Global index unavailable; using existing shard scanner:',e?.message||e)}}
-   if(m.newsOnly&&!index)throw Error('News-only requires verified catalog index')
-   if(p?.version===m.version){next.push(p);continue}
-   const known=new Set(p?.index?.map(entry=>entry.id)||[])
-   if(p)for(const entry of index||[])if(entry.contentType==='news'&&!known.has(entry.id))newIds.push(entry.id)
-   next.push({path:name,manifest:m,version:m.version,index,order:newsChunkOrder(m.count),cursor:0,done:false,cache:new Map()})
-  }catch(e){failures.push(`${name}: ${e?.message||e}`);if(old.has(name))next.push(old.get(name))}
+ let wikiReady=false
+ let wikiDeclaredReady=false
+ try{
+  const m=await fetchManifestImpl(fetchImpl,baseUrl,now,WIKI_POOL)
+  wikiDeclaredReady=m?.ready===true&&m?.feedType==='wiki'
+  if(eligibleManifest(m,WIKI_POOL)){
+   const index=await getIndex(fetchImpl,baseUrl,WIKI_POOL,m,now)
+   const p=old.get(WIKI_POOL),known=new Set(p?.index?.map(entry=>entry.id)||[])
+   for(const entry of index)if(entry.contentType==='wiki'&&!known.has(entry.id))newIds.push(entry.id)
+   next.push(p?.version===m.version?p:{path:WIKI_POOL,manifest:m,version:m.version,index,
+    order:newsChunkOrder(m.count),cursor:0,done:false,cache:new Map()})
+   wikiReady=true
+  }else if(old.has(WIKI_POOL)){next.push(old.get(WIKI_POOL));wikiReady=true;failures.push('wiki-reader: new release not ready; retaining verified prior catalog')}
+ }catch(error){
+  if(old.has(WIKI_POOL)){next.push(old.get(WIKI_POOL));wikiReady=true;failures.push(`wiki-reader: ${error?.message||error}`)}
+  else if(wikiDeclaredReady)return {pools:[],failures:[`wiki-reader: ${error?.message||error}`],newIds:[],hasAvailable:false,checkedAt:now}
  }
- return {pools:next,failures,newIds,hasAvailable:next.length>0,checkedAt:now}
+ if(!wikiReady&&!failures.length)failures.push('wiki-reader: no approved Wikipedia stories yet')
+ return {pools:next,failures,newIds,hasAvailable:wikiReady,checkedAt:now}
 }
-async function refillGlobal({pool,fetchImpl,baseUrl,seen,loaded,seenAt,profile,recent,target,random,maxShards=10,newsOnly=false,priorityIds=new Set()}){
- const candidates=newsOnly||pool.manifest.newsOnly ? pool.index.filter(e=>e.contentType==='news') : pool.index
+async function refillGlobal({pool,fetchImpl,baseUrl,seen,loaded,seenAt,profile,recent,target,random,maxShards=10,newsOnly=false,priorityIds=new Set(),allowRepeat=false}){
+ const type=pool.path===WIKI_POOL?'wiki':newsOnly||pool.manifest.newsOnly?'news':null
+ const candidates=type?pool.index.filter(e=>e.contentType===type):pool.index
+ // Once every approved story has been read, release loaded IDs for the next
+ // cycle. This matters when the first release contains only one story.
+ if(allowRepeat&&pool.path===WIKI_POOL&&candidates.length&&candidates.every(e=>seen.has(e.id))&&
+    candidates.every(e=>loaded.has(e.id)))for(const entry of candidates)loaded.delete(entry.id)
  const selected=pickGlobalCandidates(candidates,{seen,loaded,seenAt,profile,recent,count:Math.max(target*3,90),random})
  const priority=candidates.filter(e=>priorityIds.has(e.id)&&!seen.has(e.id)&&!loaded.has(e.id))
  const selection=[...priority,...selected.items.filter(e=>!priorityIds.has(e.id))]
@@ -63,18 +74,18 @@ async function refillGlobal({pool,fetchImpl,baseUrl,seen,loaded,seenAt,profile,r
  const items=[]
  for(const entry of chosen){
   const story=indexed.get(`${entry.shard}:${entry.id}`)
-  if(story&&(!newsOnly&&!pool.manifest.newsOnly||story.contentType==='news')&&readableStory(story)&&!loaded.has(entry.id)&&items.length<target){loaded.add(entry.id);items.push(story)}
+  if(story&&(!type||story.contentType===type)&&readableStory(story)&&!loaded.has(entry.id)&&items.length<target){loaded.add(entry.id);items.push(story)}
  }
  // Global mode does not permanently end: earlier read stories can re-enter
  // after the complete unseen library is exhausted and leave the active queue.
- return {items,errors,done:candidates.length===0||(!selected.items.length&&!selected.fallback),fallback:selected.fallback}
+ return {items,errors,done:candidates.length===0||selected.items.length===0,fallback:selected.fallback}
 }
 export async function refillCatalog({fetchImpl,baseUrl,pools,seen=new Set(),loaded=new Set(),seenAt=new Map(),profile={categories:{}},recent=[],target=30,urgent=false,
  scanFeedImpl=scanFeed,maxChunksPerPool=9,random=Math.random,newsOnly=false,priorityIds=new Set()}){
  const updated=pools.map(p=>({...p})),items=[],errors=[]
  for(const pool of updated){
   if(pool.index){
-   const result=await refillGlobal({pool,fetchImpl,baseUrl,seen,loaded,seenAt,profile,recent,target:target-items.length,random,maxShards:Math.max(urgent?3:10,priorityIds.size),newsOnly,priorityIds})
+   const result=await refillGlobal({pool,fetchImpl,baseUrl,seen,loaded,seenAt,profile,recent,target:target-items.length,random,maxShards:Math.max(urgent?3:10,priorityIds.size),newsOnly,priorityIds,allowRepeat:urgent})
    items.push(...result.items);errors.push(...result.errors)
    pool.done=result.done;pool.fallback=result.fallback
    continue

@@ -40,11 +40,19 @@ test('oldest-read fallback happens only after every article is seen',()=>{
  assert.equal(unread.fallback,false);assert.deepEqual(unread.items.map(x=>x.id),['url-39'])
 })
 test('global index fetches only requested shards and preserves prefetch queue',async()=>{
- const entries=list(300),records=new Map(),requests=[]
- const manifest={feedType:'lore',ready:true,editorialVersion:1,chunks:15,total:300,withVerifiedPhoto:300,sourcePhotosOnly:true,updatedAt:'2026-10-16',contentHash:'h',catalogIndex:'catalog-index.json',catalogIndexHash:'z'}
+ const topics=['Politics','Economy','Conflict & Security','Society','Culture','Science & Technology','Environment','Health','History & Geography','Sports']
+ const entries=list(300).map((row,i)=>({...row,shard:String(Math.floor(i/10)).padStart(4,'0'),category:topics[i%10],contentType:'wiki'}))
+ const records=new Map(),requests=[]
+ const manifest={feedType:'wiki',ready:true,editorialVersion:2,chunks:30,total:300,withVerifiedPhoto:300,
+  byTopic:Object.fromEntries(topics.map(topic=>[topic,30])),updatedAt:'2026-10-16',contentHash:'h',catalogIndex:'catalog-index-aaaaaaaaaaaa.json'}
  records.set('manifest.json',manifest)
- records.set('catalog-index.json',{version:2,total:300,contentHash:'h',entries})
- for(let i=0;i<15;i++)records.set(`${String(i).padStart(4,'0')}.json`,entries.slice(i*20,(i+1)*20).map(story))
+ records.set('catalog-index-aaaaaaaaaaaa.json',{version:3,total:300,contentHash:'h',entries})
+ const wikiStory=row=>{
+  const pages=Array.from({length:5},(_,i)=>({text:'A carefully sourced story about world knowledge and its wider meaning. '.repeat(5),image:i===0?`https://thumb.wikimedia.org/${row.id}.jpg`:''}))
+  return {...story(row),contentType:'wiki',editorialVersion:2,pages,
+   levelVariants:Object.fromEntries(['A1-A2','B1-B2','C1-C2'].map(level=>[level,{headline:row.id,pages}]))}
+ }
+ for(let i=0;i<30;i++)records.set(`${String(i).padStart(4,'0')}.json`,entries.slice(i*10,(i+1)*10).map(wikiStory))
  const fetchImpl=async url=>{const key=String(url).split('/').pop().split('?')[0];requests.push(key);return records.has(key)?{ok:true,json:async()=>records.get(key)}:{ok:false,status:404}}
  const catalog=await refreshCatalog({fetchImpl,baseUrl:'/',now:999})
  assert.equal(catalog.pools[0].index.length,300)

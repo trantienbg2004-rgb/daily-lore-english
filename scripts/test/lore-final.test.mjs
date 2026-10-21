@@ -8,7 +8,7 @@ import {paragraphsFromExtract,selectNarrative,makeStory,editorialGate,wordCount}
 import {approvedCommonsImage,collectWikipediaTopic} from '../lore/wiki.mjs'
 import {publishLibrary,readExisting,collectLore} from '../lore-collect.mjs'
 import {readableStory,fetchManifest,scanFeed} from '../../src/lib/feedQueue.js'
-import {PUBLISHED_POOLS,eligibleManifest,refreshCatalog,refillCatalog} from '../../src/lib/continuousReader.js'
+import {PUBLISHED_POOLS,eligibleManifest,refreshCatalog} from '../../src/lib/continuousReader.js'
 const sentence='Across many centuries, historians examined how ordinary people shaped the history of their communities through trade, invention, education, and cultural exchange.'
 const paragraph=Array(5).fill(sentence).join(' ')
 const extract=Array.from({length:10},(_,i)=>paragraph+' Scholars recorded the unique events of chapter '+(i+1)+', describing the lives of communities and institutions.').join('\n\n')
@@ -80,14 +80,13 @@ test('Atomic publisher blocks underfilled releases, preserves good data, idempot
  }finally{await fs.rm(base,{recursive:true,force:true})}
 })
 test('Library appears only in curated pool; old news pools not loaded',async()=>{
- assert.deepEqual(PUBLISHED_POOLS,['lore-reader'])
- const m={feedType:'lore',ready:true,editorialVersion:1,count:1,total:22,withVerifiedPhoto:20,sourcePhotosOnly:true,sourceCount:1,version:'a',updatedAt:'today'}
- assert.equal(eligibleManifest(m,'lore-reader'),true)
+ assert.deepEqual(PUBLISHED_POOLS,['wiki-reader'])
+ const m={feedType:'lore',ready:true,editorialVersion:1,count:1,total:22,withVerifiedPhoto:20,sourcePhotosOnly:true}
+ assert.equal(eligibleManifest(m,'lore-reader'),false)
  assert.equal(eligibleManifest({...m,feedType:'news'},'lore-reader'),false)
  const catalog=await refreshCatalog({fetchImpl:()=>{},baseUrl:'/',fetchManifestImpl:async()=>m})
- assert.equal(catalog.hasAvailable,true)
- const r=await refillCatalog({fetchImpl:()=>{},baseUrl:'/',pools:catalog.pools,scanFeedImpl:async()=>({items:[make()],ids:new Set([make().sourceUrl]),cursor:1,done:true,scanned:1})})
- assert.equal(r.items.length,1)
+ assert.equal(catalog.hasAvailable,false)
+ assert.deepEqual(catalog.pools,[])
 })
 test('Reader text is intact and vocabulary UI remains in app',async()=>{
  const app=await fs.readFile(new URL('../../src/App.jsx',import.meta.url),'utf8')

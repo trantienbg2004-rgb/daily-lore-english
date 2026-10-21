@@ -1,42 +1,8 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
 import fs from 'node:fs'
-import {refreshCatalog,refillCatalog,REFRESH_INTERVAL_MS} from '../../src/lib/continuousReader.js'
 import {approvedCommonsPhoto,searchCommonsImages,commonsQueryFor,commonsQueryIsContextual} from '../discover/commonsMedia.mjs'
-import {validatedNewsHeadline} from '../discover/headline.mjs'
-import {buildThreeLevelRequest} from '../discover/geminiLevels.mjs'
-import {displayHeadline} from '../../src/lib/editorial.js'
 import {photoLabel} from '../../src/lib/photoPresentation.js'
-
-test('uncached catalog growth prioritizes a new news story without removing the loaded story',async()=>{
- const stories=JSON.parse(fs.readFileSync('public/lore-reader/0014.json','utf8')).filter(s=>s.contentType==='news')
- const old=stories[0],fresh=stories[1]
- let revision=1
- const requests=[]
- const response=data=>({ok:true,json:async()=>data})
- const fetchImpl=async(url,options)=>{
-  requests.push({url,options})
-  if(url.includes('catalog-index.json'))return response({version:2,total:revision,contentHash:`hash-${revision}`,
-   entries:stories.slice(0,revision).map(s=>({id:s.sourceUrl,shard:'0014',contentType:'news',category:s.category,publisher:s.publisher,publishedAt:s.publishedAt}))})
-  if(url.includes('/0014.json'))return response(stories)
-  throw Error(`Unexpected request ${url}`)
- }
- const manifest=async()=>({ready:true,editorialVersion:1,count:1,total:revision,newsOnly:true,feedType:'news',
-  version:`hash-${revision}`,contentHash:`hash-${revision}`,indexFile:'catalog-index.json'})
- const first=await refreshCatalog({fetchImpl,baseUrl:'/',now:100,pools:[],fetchManifestImpl:manifest})
- assert.deepEqual(first.newIds,[])
- const loaded=new Set([old.sourceUrl])
- revision=2
- const next=await refreshCatalog({fetchImpl,baseUrl:'/',now:200,pools:first.pools,fetchManifestImpl:manifest})
- assert.deepEqual(next.newIds,[fresh.sourceUrl])
- const refill=await refillCatalog({fetchImpl,baseUrl:'/',pools:next.pools,loaded,target:1,newsOnly:true,
-  priorityIds:new Set(next.newIds)})
- assert.deepEqual(refill.items.map(s=>s.sourceUrl),[fresh.sourceUrl])
- assert.ok(loaded.has(old.sourceUrl)&&loaded.has(fresh.sourceUrl))
- assert.equal(requests.filter(r=>r.url.includes('catalog-index.json')).length,2)
- assert.ok(requests.filter(r=>r.url.includes('catalog-index.json')).every(r=>r.options.cache==='no-store'&&/\?t=\d+$/.test(r.url)))
- assert.equal(REFRESH_INTERVAL_MS,180000)
-})
 
 test('Commons illustrations require individual reusable license and author evidence',()=>{
  const page={title:'File:International Monetary Fund headquarters.jpg',imageinfo:[{mime:'image/jpeg',width:900,height:600,
@@ -132,23 +98,4 @@ test('visible photo descriptions stay short while full credits remain in article
  assert.equal(photoLabel({image:page.image,caption:'Illustrative image: Damage in Gaza Strip during the October 2023 - 29'}),'Damage in Gaza Strip, October 2023')
  assert.equal(photoLabel({image:page.image,caption:'Location of Cambodia and Bangladesh. Image via Wikipedia by TUBS.'}),
   'Location of Cambodia and Bangladesh.')
-})
-
-test('all published news has a short display headline while original source titles remain intact',()=>{
- const manifest=JSON.parse(fs.readFileSync('public/lore-reader/manifest.json','utf8'))
- const retired=new Set(manifest.retiredSourceUrls||[])
- const stories=Array.from({length:manifest.chunks},(_,i)=>JSON.parse(fs.readFileSync(`public/lore-reader/${String(i).padStart(4,'0')}.json`,'utf8'))).flat().filter(s=>s.contentType==='news'&&!retired.has(s.sourceUrl))
- assert.equal(stories.length,manifest.total)
- for(const story of stories){
-  assert.equal(validatedNewsHeadline(story.headline,story.sourceTitle),story.headline)
-  assert.equal(displayHeadline(story),story.headline)
-  assert.equal(story.sourceTitle,story.title)
-  assert.ok(story.headline.length<=48)
- }
- const source={title:'World Bank and Japan announce first DRIVE energy project in Asia',text:'The World Bank and Japan announced the new project.'}
- assert.equal(validatedNewsHeadline('World Bank reports 999 new projects',source.title,source.text),'')
- assert.equal(validatedNewsHeadline('World Bank and Boeing announce Asia project',source.title,source.text),'')
- assert.equal(validatedNewsHeadline('World Bank and Japan announce a major new energy project across Asia',source.title),'')
- assert.match(buildThreeLevelRequest(source).systemInstruction.parts[0].text,/DIFFERENT headline inside EACH level variant/)
- assert.match(buildThreeLevelRequest(source).systemInstruction.parts[0].text,/4–6 balanced complete editorial pages/)
 })

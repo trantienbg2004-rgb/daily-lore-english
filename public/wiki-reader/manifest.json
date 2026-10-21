@@ -1,0 +1,28 @@
+{
+  "feedType": "wiki",
+  "editorialVersion": 2,
+  "ready": true,
+  "targetStories": 50,
+  "targetPerTopic": 5,
+  "targetMet": false,
+  "total": 1,
+  "chunks": 1,
+  "withVerifiedPhoto": 1,
+  "byTopic": {
+    "Politics": 0,
+    "Economy": 0,
+    "Conflict & Security": 0,
+    "Society": 0,
+    "Culture": 0,
+    "Science & Technology": 1,
+    "Environment": 0,
+    "Health": 0,
+    "History & Geography": 0,
+    "Sports": 0
+  },
+  "contentHash": "e9e9433fcc1000beeb4498d3683377bee3be48436a44d2aa741a8d911f076628",
+  "catalogIndex": "catalog-index-e9e9433fcc10.json",
+  "catalogIndexVersion": 3,
+  "updatedAt": "2026-10-21T01:10:25.214Z",
+  "licenseNotice": "Wikipedia text adaptations: CC BY-SA 4.0; each embedded image has separate credit and rights."
+}

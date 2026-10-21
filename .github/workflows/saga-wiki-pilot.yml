@@ -1,0 +1,60 @@
+name: SAGA Wikipedia editorial pilot (branch only)
+
+on:
+  push:
+    branches: [feat/saga-wikipedia-first-20261020]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: saga-wiki-collection
+  cancel-in-progress: false
+
+jobs:
+  pilot:
+    if: contains(github.event.head_commit.message, '[wiki-pilot-once]') || contains(github.event.head_commit.message, '[wiki-batch-once]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - name: Check offline Wikipedia pipeline gates
+        run: node --test scripts/test/saga-wiki-*.test.mjs
+      - name: Run one bounded free-tier Wikipedia editorial batch
+        env:
+          SAGA_WIKI_GEMINI_KEY: ${{ secrets.SAGA_IMAGE_TEST_API_KEY }}
+          SAGA_WIKI_FREE_TIER_CONFIRMED: '1'
+          SAGA_WIKI_MODEL: gemini-3.5-flash-lite
+          SAGA_WIKI_CHECKPOINT_BRANCH: ${{ github.ref_name }}
+          SAGA_WIKI_BATCH_MODE: ${{ contains(github.event.head_commit.message, '[wiki-batch-once]') }}
+        run: |
+          if [ "$SAGA_WIKI_BATCH_MODE" = 'true' ]; then
+            node scripts/wiki-pipeline.mjs batch --max-calls=8 --max-candidates=24
+          else
+            node scripts/wiki-pipeline.mjs batch --max-calls=2 --max-candidates=1 --page-id=45633
+          fi
+      - name: Check result before staging on development branch
+        run: |
+          npm test
+          node scripts/lore-verify.mjs
+          npm run build
+          git diff --check
+      - name: Preserve diagnostic state when the run stops
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: saga-wiki-pilot-${{ github.run_id }}
+          path: |
+            data/wiki-pipeline-state.json
+            data/wiki-checkpoints/
+            public/wiki-reader/manifest.json
+            reports/saga-wiki-local/
+          if-no-files-found: ignore
+          retention-days: 7
