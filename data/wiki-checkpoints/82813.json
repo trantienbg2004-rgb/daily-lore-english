@@ -2,9 +2,218 @@
   "pageId": 82813,
   "title": "Pelops",
   "topic": "Sports",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1377986531,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377986531",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-21T07:56:51.741Z"
+  "reason": "3 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Coleção Bühler-Brockhaus (15).jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4c/Cole%C3%A7%C3%A3o_B%C3%BChler-Brockhaus_%2815%29.jpg/960px-Cole%C3%A7%C3%A3o_B%C3%BChler-Brockhaus_%2815%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Coleção Bühler-Brockhaus (15).jpg",
+        "caption": "Roman mosaic with Pelops and Hippodamia, kept in the D. Diogo de Sousa Museum in Braga, Portugal.",
+        "alt": "",
+        "description": "D. Diogo de Sousa Museum in Braga Portugal.",
+        "date": "2021-10-31 11:00:12",
+        "section": "",
+        "position": 0,
+        "provenance": {
+          "credit": "Joseolgon",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Cole%C3%A7%C3%A3o_B%C3%BChler-Brockhaus_(15).jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Pelops",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377986531",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Pelops and Hippodamia racing.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/12/Pelops_and_Hippodamia_racing.jpg/960px-Pelops_and_Hippodamia_racing.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Pelops and Hippodamia racing.jpg",
+        "caption": "Pelops and Hippodamia racing in a bas-relief (Metropolitan Museum of Art)",
+        "alt": "",
+        "description": "Pelops and Hippodamia racing",
+        "date": "2007-10",
+        "section": "Courting Hippodamia",
+        "position": 1,
+        "provenance": {
+          "credit": "Haiduc",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Pelops_and_Hippodamia_racing.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Pelops",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377986531",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Remains of the Pelopeion in Olympia on October 14, 2020.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4e/Remains_of_the_Pelopeion_in_Olympia_on_October_14%2C_2020.jpg/960px-Remains_of_the_Pelopeion_in_Olympia_on_October_14%2C_2020.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Remains of the Pelopeion in Olympia on October 14, 2020.jpg",
+        "caption": "Remains of the Pelopion in Olympia",
+        "alt": "",
+        "description": "Remains of the Pelopeion in Olympia. In the background, the Temple of Hera and Kronion Hill.",
+        "date": "2020-10-14 13:50:50",
+        "section": "Shrines",
+        "position": 2,
+        "provenance": {
+          "credit": "George E. Koronaios",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Remains_of_the_Pelopeion_in_Olympia_on_October_14,_2020.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Pelops",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377986531",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "6c18ca1e9eea41e4812085158c3378c159c342f249812ebff6a1e96e19ec1a9f",
+      "heading": "Lead",
+      "excerpt": "In Greek mythology, Pelops (/ˈpiːlɒps, ˈpɛlɒps/; Ancient Greek: Πέλοψ, romanized: Pélops) was king of Pisa in the Peloponnesus region (Πελοπ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377986531"
+    },
+    {
+      "id": "P2",
+      "hash": "453d56456f58b7f0a403d7b09d553d83869edfcfe180eab4e102c2e86fff0d7e",
+      "heading": "Lead",
+      "excerpt": "He was venerated at Olympia, where his cult developed into the founding myth of the Olympic Games, the most important expression of unity, n",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377986531"
+    },
+    {
+      "id": "P3",
+      "hash": "fb89cc8e68e49ce51121c8b7ce02c101db39c242251c7ec13c167c5b30dcba49",
+      "heading": "Family",
+      "excerpt": "Pelops was a son of Tantalus and either Dione, Euryanassa, Eurythemista, or Clytia. In some accounts, he was called a bastard son of Tantalu",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377986531"
+    },
+    {
+      "id": "P4",
+      "hash": "31d3ffd1ec6a65683bf5755a692883dc31c350ed4ba6a2c6df015a04eced30bb",
+      "heading": "Family",
+      "excerpt": "Of Phrygian or Lydian birth, he departed his homeland for Greece, and won the crown of Pisa or Olympia from King Oenomaus in a chariot race,",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377986531"
+    },
+    {
+      "id": "P5",
+      "hash": "5619aebc70c82ff2162b303bc5f51a714d68a0a0786a19ac49771af42893ac8d",
+      "heading": "Family",
+      "excerpt": "Pelops and Hippodamia had numerous children. Their sons include Pittheus (or his mother was Dia), Troezen, Alcathous, Dimoetes, Atreus, Thye",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377986531"
+    },
+    {
+      "id": "P6",
+      "hash": "7b1961b362523985eda4719d5cb46effe6ed5cdef433d2ab55e0b708a4f3174f",
+      "heading": "Tantalus's savage banquet",
+      "excerpt": "Pelops's father was Tantalus, king at Mount Sipylus in Anatolia. Wanting to make an offering to the Olympians, Tantalus cut Pelops into piec",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377986531"
+    },
+    {
+      "id": "P7",
+      "hash": "cd064de958b9b435f1b954fa59987de28702f73c64ab26b023044c76870516d5",
+      "heading": "Courting Hippodamia",
+      "excerpt": "Having grown to manhood, Pelops wanted to marry Hippodamia. Her father, King Oenomaus, fearful of a prophecy that claimed he would be killed",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377986531"
+    },
+    {
+      "id": "P8",
+      "hash": "4a2978ecec7594131356cfedde210332f527fc56994c8c9eb388662ef356bab3",
+      "heading": "Olympic Games",
+      "excerpt": "After his victory, Pelops organized chariot races as thanksgiving to the gods and as funeral games in honor of King Oenomaus, in order to be",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377986531"
+    },
+    {
+      "id": "P9",
+      "hash": "e28687144bf31e32930013bfaf0196e7a43e0702dd96689260b810a02b228852",
+      "heading": "Curse of the Pelopidai",
+      "excerpt": "As Myrtilus died, he cursed Pelops for his ultimate betrayal. This was one of the sources of the curse that destroyed his family: two of his",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377986531"
+    },
+    {
+      "id": "P10",
+      "hash": "8bef273ffd9e18ec04f30e5f1d45b9b77e536814d5539e906c3e2be048c33d1a",
+      "heading": "Origin",
+      "excerpt": "Pelops is believed to have Anatolian origins. He may have been originally worshipped in Phrygia or Lydia or both. Other ancient mythographer",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377986531"
+    },
+    {
+      "id": "P11",
+      "hash": "9bae2d9b4adc4c1137dd8b54bc47e20a675877883a51f8219c98843df2e05222",
+      "heading": "Shrines",
+      "excerpt": "The shrine of Pelops at Olympia, the Pelopion, \"drenched in glorious blood\", described by Pausanias stood apart from the temple of Zeus, nex",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377986531"
+    },
+    {
+      "id": "P12",
+      "hash": "34f0c17c704385c6fd72860f41de52c322ab7fb39ba2ba63d5535b44a50bd8c8",
+      "heading": "Family",
+      "excerpt": "Four of their daughters married into the House of Perseus: Astydameia (who married Alcaeus), Nicippe (who married Sthenelus), Lysidice (who ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377986531"
+    },
+    {
+      "id": "P13",
+      "hash": "18975796237d7ea0c92fc390e21a83567d177480aff62a0745d95e1980ac5b84",
+      "heading": "Family",
+      "excerpt": "By the nymph Axioche (Ἀξιόχη) or Danais Pelops was father of Chrysippus. The latter was also called the son of Hippodamia and brother of Ple",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377986531"
+    },
+    {
+      "id": "P14",
+      "hash": "475121da484b98992e2ea8c7b2823845bb39a7b08a30bafdc95b3bf876223c01",
+      "heading": "Tantalus's savage banquet",
+      "excerpt": "After Pelops's resurrection, Poseidon took him to Olympus, and made him the youth apprentice, teaching him also to drive the divine chariot.",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377986531"
+    },
+    {
+      "id": "P15",
+      "hash": "5395119ab722dc430897e3986872cd7106445e3baded028d2f862db90580437e",
+      "heading": "Courting Hippodamia",
+      "excerpt": "Pelops came to ask for her hand and prepared to race Oenomaus. Worried about losing, Pelops went to the seaside and invoked Poseidon. Remind",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377986531"
+    },
+    {
+      "id": "P16",
+      "hash": "2f767a9bd65d23a5daf55a194507fd2a99a10fafd7e1f25c3467298b7c217d6b",
+      "heading": "Courting Hippodamia",
+      "excerpt": "Two episodes involving charioteers were added into the plain account of the heroic chariot race. In the first related by Theopompus, having ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377986531"
+    },
+    {
+      "id": "P17",
+      "hash": "bc5b2a8e8ed043a8b557e297dacd7fc20edf327898c54f96f9928b1561a4a80b",
+      "heading": "Courting Hippodamia",
+      "excerpt": "The second, found in several versions, has Pelops, still unsure of himself, the winged horses and chariot of divine providence he had secure",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377986531"
+    },
+    {
+      "id": "P18",
+      "hash": "a51287eb871d34db74130a5d78be7ee6d4b2167ae7adc1a512598d5b3ba9cdd5",
+      "heading": "Origin",
+      "excerpt": "Also, according to Strabo, Pelops's cult may have come to the Peloponnese originally from Phthiotis, and was first based in Laconia: \"... th",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377986531"
+    },
+    {
+      "id": "P19",
+      "hash": "94c6c974658220eae1452b2f1af928da12f3c2a8daa0c25ce576ab39a426fbd3",
+      "heading": "Shrines",
+      "excerpt": "Giant-sized bones were and are often found in Greece, the remains of gigantic prehistoric animals. In ancient times there was obviously no k",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377986531"
+    }
+  ],
+  "updatedAt": "2026-10-21T07:56:53.902Z"
 }
