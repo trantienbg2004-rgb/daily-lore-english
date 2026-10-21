@@ -9644,10 +9644,10 @@
       "checkedAt": "2026-10-21T07:57:17.472Z"
     },
     "80005393": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
+      "revisionId": 1368977379,
+      "checkedAt": "2026-10-21T13:31:52.562Z"
     },
     "80050322": {
       "status": "EVIDENCE_READY",
@@ -9866,7 +9866,7 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-10-21T13:31:50.648Z",
+  "updatedAt": "2026-10-21T13:31:52.563Z",
   "dailyUsage": {
     "day": "2026-10-21",
     "calls": 11,
