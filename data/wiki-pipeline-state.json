@@ -7292,10 +7292,10 @@
       "checkedAt": "2026-10-21T07:36:18.950Z"
     },
     "4282781": {
-      "status": "PENDING",
-      "reason": "queued",
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
       "revisionId": 1374812623,
-      "checkedAt": null
+      "checkedAt": "2026-10-21T22:35:36.102Z"
     },
     "4327126": {
       "status": "EVIDENCE_READY",
@@ -9866,7 +9866,7 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-10-21T22:35:29.443Z",
+  "updatedAt": "2026-10-21T22:35:36.108Z",
   "dailyUsage": {
     "day": "2026-10-21",
     "calls": 37,
