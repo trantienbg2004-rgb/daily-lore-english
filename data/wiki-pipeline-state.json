@@ -6164,10 +6164,10 @@
       "checkedAt": "2026-10-21T03:13:27.679Z"
     },
     "43245": {
-      "status": "VALIDATED",
-      "reason": "local factual, style, length, structure and source audit passed",
+      "status": "PUBLISHED",
+      "reason": "1 verified embedded images",
       "revisionId": 1378625637,
-      "checkedAt": "2026-10-21T22:31:10.962Z"
+      "checkedAt": "2026-10-21T22:31:16.970Z"
     },
     "43616": {
       "status": "PENDING",
@@ -9866,7 +9866,7 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-10-21T22:31:10.963Z",
+  "updatedAt": "2026-10-21T22:31:16.970Z",
   "dailyUsage": {
     "day": "2026-10-21",
     "calls": 35,
