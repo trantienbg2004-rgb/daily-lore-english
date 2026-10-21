@@ -2,10 +2,10 @@
   "pageId": 22576,
   "title": "Olympic Games",
   "topic": "Sports",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1379072110,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379072110",
-  "reason": "15 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REJECTED",
@@ -506,5 +506,151 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379072110"
     }
   ],
-  "updatedAt": "2026-10-21T13:46:54.756Z"
+  "updatedAt": "2026-10-21T13:47:20.385Z",
+  "draft": {
+    "outline": [
+      "Introduction to modern Olympic Games",
+      "Ancient roots and revival history",
+      "Growth, challenges, and global reach",
+      "Expansion into Winter and youth games",
+      "Conclusion on modern structure"
+    ],
+    "variants": {
+      "A1-A2": {
+        "headline": "The Story of the Olympic Games",
+        "pages": [
+          {
+            "text": "The Olympic Games are huge sports events held around the world. They include Summer Games and Winter Games. Thousands of athletes from more than 200 teams take part in them. These teams represent different countries and territories.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "The modern games were inspired by ancient Greek festivals held in Olympia. Baron Pierre de Coubertin started the International Olympic Committee in 1894. This group leads the Olympic movement and makes the rules for the games.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "The first modern games took place in Athens in 1896. Later, the games grew very large. Nearly every nation is now represented. Athletes compete for gold, silver, and bronze medals.",
+            "evidenceIds": [
+              "P4",
+              "P5",
+              "P9"
+            ]
+          },
+          {
+            "text": "Over time, the games expanded to include winter sports like ice hockey and figure skating. A separate Winter Olympics was created. There are also youth games for younger athletes and other special events.",
+            "evidenceIds": [
+              "P3",
+              "P11",
+              "P13"
+            ]
+          },
+          {
+            "text": "Organizing such huge events brings many challenges, like high costs and political issues. Still, the Olympics give athletes a chance to win global fame every few years.",
+            "evidenceIds": [
+              "P3",
+              "P5",
+              "P11"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "Evolution of the Modern Olympics",
+        "pages": [
+          {
+            "text": "The modern Olympic Games are premier international multi-sport events divided into Summer and Winter editions. They feature thousands of athletes representing over 200 sovereign states and territories, often replacing world championships during their respective years.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Inspired by ancient Greek religious and athletic festivals in Olympia, the modern movement was shaped by Baron Pierre de Coubertin. He founded the International Olympic Committee in 1894, which led to the first modern games in Athens in 1896 with support from Greek benefactors.",
+            "evidenceIds": [
+              "P2",
+              "P8",
+              "P9"
+            ]
+          },
+          {
+            "text": "The twentieth and twenty-first centuries brought major changes. The IOC shifted from pure amateurism to accepting professional athletes. World wars caused cancellations, and political tensions led to boycotts during the Cold War.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "To accommodate snow and ice sports, the Winter Olympics were established as a separate event in 1924. After 1992, the Winter and Summer Games were staggered two years apart. The IOC also introduced the Youth Olympic Games and other inclusive sports festivals.",
+            "evidenceIds": [
+              "P3",
+              "P11",
+              "P13"
+            ]
+          },
+          {
+            "text": "Today, nearly every nation participates in the Olympics. While media exposure and commercial sponsorship provide global platforms for athletes and host cities, the movement continues to navigate modern challenges like doping, financial costs, and logistical shifts.",
+            "evidenceIds": [
+              "P3",
+              "P4",
+              "P5",
+              "P11"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "History and Structure of the Olympics",
+        "pages": [
+          {
+            "text": "The modern Olympic Games constitute a preeminent international multi-sport institution comprising distinct Summer and Winter cycles. Engaging thousands of athletes across more than 200 national delegations, the Games operate under the governance of the International Olympic Committee.",
+            "evidenceIds": [
+              "P1",
+              "P2",
+              "P4"
+            ]
+          },
+          {
+            "text": "Tracing its intellectual lineage to ancient Hellenic festivals in Olympia, the contemporary iteration was catalyzed by Pierre de Coubertin in 1894. Early financial foundations relied heavily on Greek trusts and benefactors to restore the Panathenaic Stadium for the inaugural 1896 Games.",
+            "evidenceIds": [
+              "P2",
+              "P6",
+              "P8",
+              "P9"
+            ]
+          },
+          {
+            "text": "Throughout the twentieth century, the Olympic Movement underwent profound structural transformations. Economic pressures, the abandonment of strict amateurism, and commercialization reshaped participation. Geopolitical conflicts necessitated cancellations during world wars and prominent boycotts during the Cold War era.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "Logistical demands prompted the bifurcation of the schedule in 1994, separating the Winter and Summer editions by a two-year interval within each Olympiad. Further diversification manifested through the establishment of the Youth Olympic Games and tailored programs for athletes with disabilities.",
+            "evidenceIds": [
+              "P1",
+              "P3",
+              "P11",
+              "P13"
+            ]
+          },
+          {
+            "text": "Representing nearly every sovereign territory today, the Olympic apparatus balances widespread media exposure and national prestige against recurrent controversies such as doping, commercial overreach, and complex financial administration managed through the Olympic Charter.",
+            "evidenceIds": [
+              "P2",
+              "P3",
+              "P5"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2843,
+    "output": 1420,
+    "total": 4263
+  },
+  "validation": null
 }
