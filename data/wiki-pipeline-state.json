@@ -7268,10 +7268,10 @@
       "checkedAt": null
     },
     "4008035": {
-      "status": "EVIDENCE_READY",
-      "reason": "1 rights-verified embedded images",
+      "status": "RETRY_LATER",
+      "reason": "editorial call budget exhausted",
       "revisionId": 1379610977,
-      "checkedAt": "2026-10-21T18:16:37.590Z"
+      "checkedAt": "2026-10-21T18:16:43.813Z"
     },
     "4161867": {
       "status": "PENDING",
@@ -9866,7 +9866,7 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-10-21T18:16:37.590Z",
+  "updatedAt": "2026-10-21T18:16:43.814Z",
   "dailyUsage": {
     "day": "2026-10-21",
     "calls": 30,
