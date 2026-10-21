@@ -6068,11 +6068,10 @@
       "checkedAt": "2026-10-21T03:09:09.352Z"
     },
     "21818": {
-      "status": "NEEDS_REPAIR",
-      "reason": "retry saved draft after page-array parser update",
-      "priorReviewReason": "Missing repaired page",
+      "status": "EVIDENCE_READY",
+      "reason": "12 rights-verified embedded images",
       "revisionId": 1375296178,
-      "checkedAt": "2026-10-21T13:39:12.402Z"
+      "checkedAt": "2026-10-21T13:45:24.451Z"
     },
     "22576": {
       "status": "RETRY_LATER",
@@ -9867,7 +9866,7 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-10-21T13:39:39.972Z",
+  "updatedAt": "2026-10-21T13:45:24.452Z",
   "dailyUsage": {
     "day": "2026-10-21",
     "calls": 16,
