@@ -2,9 +2,333 @@
   "pageId": 44312,
   "title": "Invention",
   "topic": "Science & Technology",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1377805792,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377805792",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-21T07:56:21.811Z"
+  "reason": "6 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Science and Invention Nov 1928 Cover 2.jpg",
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/a/a0/Science_and_Invention_Nov_1928_Cover_2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "fileTitle": "File:Science and Invention Nov 1928 Cover 2.jpg",
+        "caption": "'BUILD YOUR OWN TELEVISION RECEIVER.' Science and Invention magazine cover, November 1928",
+        "alt": "Cover of Science and Invention Magazine",
+        "description": "The television image would be viewed through the cone. The image was 1.5 inches square (4 by 4 cm) and had 48 scan lines at 7.5 frames per second. (This was a low definition \"48p\" display.) The man is using a 125 hertz tuning fork to adjust the scanning wheel to 450 RPM. By looking through the tuning fork at the line pattern on the hub, he could see when the wheel was at the correct speed. \"How to build the S&I Television Receiver\" starts on page 618. Science and Invention, November 1928. Volume 16 Number 7. Published by Experimenter Publishing",
+        "date": "Magazine published November 1928, this page scanned July 2008.",
+        "section": "",
+        "position": 0,
+        "provenance": {
+          "credit": "Experimenter Publishing",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Science_and_Invention_Nov_1928_Cover_2.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Invention",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377805792",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Alessandro Volta.jpeg"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Edison and phonograph edit2.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c5/Edison_and_phonograph_edit2.jpg/960px-Edison_and_phonograph_edit2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Edison and phonograph edit2.jpg",
+        "caption": "Thomas Edison with phonograph. Edison was one of the most prolific inventors in history, holding 1,093 U.S. patents in his name.",
+        "alt": "",
+        "description": "Thomas Edison and his early phonograph. Cropped from U.S.A. Library of Congress copy. Edited Version. Dust removed by Arad.",
+        "date": "circa 1877date QS:P,+1877-00-00T00:00:00Z/9,P1480,Q5727902 (probably 18 April 1878, based on the ext",
+        "section": "Conceptual means",
+        "position": 2,
+        "provenance": {
+          "credit": "Levin C. Handy (per http://hdl.loc.gov/loc.pnp/cwpbh.04326)",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Edison_and_phonograph_edit2.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Invention",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377805792",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Gutenberg-Presse im Gutenberg-Museum, Mainz, Deutschland (48988294536).jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/12/Gutenberg-Presse_im_Gutenberg-Museum%2C_Mainz%2C_Deutschland_%2848988294536%29.jpg/960px-Gutenberg-Presse_im_Gutenberg-Museum%2C_Mainz%2C_Deutschland_%2848988294536%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Gutenberg-Presse im Gutenberg-Museum, Mainz, Deutschland (48988294536).jpg",
+        "caption": "Johannes Gutenberg's printing press was voted the most important invention of the second millennium.",
+        "alt": "",
+        "description": "Mainz",
+        "date": "2019-10-09 15:57",
+        "section": "Play",
+        "position": 3,
+        "provenance": {
+          "credit": "dronepicr",
+          "license": "CC BY 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Gutenberg-Presse_im_Gutenberg-Museum,_Mainz,_Deutschland_(48988294536).jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Invention",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377805792",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Photographing Sound in 1884. A rare photograph taken at Volta Laboratory by J. Harris Rogers, a friend of Bell and Tainter (Smithsonian photo 44312-E) i009.jpg",
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/5/5e/Photographing_Sound_in_1884._A_rare_photograph_taken_at_Volta_Laboratory_by_J._Harris_Rogers%2C_a_friend_of_Bell_and_Tainter_%28Smithsonian_photo_44312-E%29_i009.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "fileTitle": "File:Photographing Sound in 1884. A rare photograph taken at Volta Laboratory by J. Harris Rogers, a friend of Bell and Tainter (Smithsonian photo 44312-E) i009.jpg",
+        "caption": "A rare 1884 photo showing the experimental recording of voice patterns by a photographic process at the Alexander Graham Bell Laboratory in Washington, D.C. Many of their experimental designs panned out in failure.",
+        "alt": "",
+        "description": "A description of the procedure used is found on page 67, of Tainter's unpublished autobiography. There, Tainter quotes Chichester Bell as follows: \"A jet of bichromate of potash solution, vibrated by the voice, was directed against a glass plate immediately in front of a slit, on which light was concentrated by means of a lens. The jet was so arranged that the light on its way to the slit had to pass through the nappe and as the thickness of this was constantly changing, the illumination of the slit was also varied. By means of a lens ... an im",
+        "date": "1884",
+        "section": "Exploration",
+        "position": 4,
+        "provenance": {
+          "credit": "J. Harris Rogers",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Photographing_Sound_in_1884._A_rare_photograph_taken_at_Volta_Laboratory_by_J._Harris_Rogers,_a_friend_of_Bell_and_Tainter_(Smithsonian_photo_44312-E)_i009.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Invention",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377805792",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Eric Magnus Tigerstedt.jpg"
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Arabic Numerals.svg"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:ZST Bratislava Petrzalka 3.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e2/ZST_Bratislava_Petrzalka_3.jpg/960px-ZST_Bratislava_Petrzalka_3.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:ZST Bratislava Petrzalka 3.jpg",
+        "caption": "Railways — probably the most important invention in land transport (railway station in Bratislava, Slovakia)",
+        "alt": "",
+        "description": "Bratislava-Petržalka Railway Station",
+        "date": "2007-09-30",
+        "section": "Implementation",
+        "position": 7,
+        "provenance": {
+          "credit": "Wizzard",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:ZST_Bratislava_Petrzalka_3.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Invention",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377805792",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:US Patent cover.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f5/US_Patent_cover_%28US_Patent_5%2C860%2C492%29.jpg/960px-US_Patent_cover_%28US_Patent_5%2C860%2C492%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:US Patent cover.jpg",
+        "caption": "U.S. patent",
+        "alt": "",
+        "description": "United States Patent Cover from a real patent issued",
+        "date": "1996",
+        "section": "As defined by patent law",
+        "position": 8,
+        "provenance": {
+          "credit": "USPTO",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:US_Patent_cover_(US_Patent_5,860,492).jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Invention",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377805792",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "01b0e53c6462c27614f1572c2c91c3885a32207af71fb79772d901fccbb56aa6",
+      "heading": "Lead",
+      "excerpt": "An invention is a unique or novel device, method, composition, idea, or process. An invention may be an improvement upon a machine, product,",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377805792"
+    },
+    {
+      "id": "P2",
+      "hash": "9710b4359aa4f31cc3a79c55bbb639330e42f388b5957924f791edf0008bd54b",
+      "heading": "Lead",
+      "excerpt": "An inventor creates or discovers an invention. The word inventor comes from the Latin verb invenire, invent-, to find. Although inventing is",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377805792"
+    },
+    {
+      "id": "P3",
+      "hash": "077d14b0a9a7067bb538a8b37293c9205f09f945868a1d4e801358248559fb64",
+      "heading": "Lead",
+      "excerpt": "Some inventions can be patented. The system of patents was established to encourage inventors by granting limited-term, limited monopoly on ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377805792"
+    },
+    {
+      "id": "P4",
+      "hash": "9a88ad4def3455f8924ba0d3bbdd118a99d2ecf463196effab8eb86c967648a8",
+      "heading": "Lead",
+      "excerpt": "Another meaning of invention is cultural invention, which is an innovative set of useful social behaviours adopted by people and passed on t",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377805792"
+    },
+    {
+      "id": "P5",
+      "hash": "37cb7f7598cd2d4e83dd6e25ac4b33049358f3c7dc4349a8f455c0a578b5f300",
+      "heading": "Exploration",
+      "excerpt": "Invention is often an exploratory process with an uncertain or unknown outcome. There are failures as well as successes. Inspiration can sta",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377805792"
+    },
+    {
+      "id": "P6",
+      "hash": "aac56876636ae7a0ba3a6b7934fe96b731105339eb5cd85b47e2ba0fde5bb086",
+      "heading": "History",
+      "excerpt": "The earliest inventions pre-date anatomically modern humans. Crude stone tools, such as the Oldowan tools, date back around 2.9 million year",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377805792"
+    },
+    {
+      "id": "P7",
+      "hash": "c111b5eca5841a484df114c9056e7ee0e37a4dd17d16afd6e41b50a9baed77fe",
+      "heading": "Types",
+      "excerpt": "Scientific-technological inventions include railroads, aviation, vaccination, hybridization, antibiotics [such as calpol], astronautics, hol",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377805792"
+    },
+    {
+      "id": "P8",
+      "hash": "9d1dfe5f5fcf5ac03298ab3b015a0aff9bfa4b1cc50e76e32d7f232044bf0679",
+      "heading": "Practical means",
+      "excerpt": "Ideas for an invention may be developed on paper or on a computer, by writing or drawing, by trial and error, by making models, by experimen",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377805792"
+    },
+    {
+      "id": "P9",
+      "hash": "dc54166d4a75d09d7aef1681543c61cd07efaffe25f60e504fcaa1688ee2b6d2",
+      "heading": "Conceptual means",
+      "excerpt": "Invention is often a creative process. An open and curious mind allows an inventor to see beyond what is known. Seeing a new possibility, co",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377805792"
+    },
+    {
+      "id": "P10",
+      "hash": "c047fd2872fd30c0b6d3829e367db35c5958f716f0ae1a09d83a0e53bbe71b5b",
+      "heading": "Play",
+      "excerpt": "Play may lead to invention. Childhood curiosity, experimentation, and imagination can develop one's play instinct. Inventors feel the need t",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377805792"
+    },
+    {
+      "id": "P11",
+      "hash": "5c2c55e7a4c75adae7f62ed2bc7cf60c12b0e975d43ed8dc049544d7259c1411",
+      "heading": "Re-envisioning",
+      "excerpt": "To invent is to see anew. Inventors often envision a new idea, seeing it in their mind's eye. New ideas can arise when the conscious mind tu",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377805792"
+    },
+    {
+      "id": "P12",
+      "hash": "69afa6d151c00c1419f1bb2d368951da528487fbe3c7a9e1cb8db1fab31e1dba",
+      "heading": "Insight",
+      "excerpt": "Insight can also be a vital element of invention. Such inventive insights may begin with questions, doubt or a hunch. It may begin by recogn",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377805792"
+    },
+    {
+      "id": "P13",
+      "hash": "7dca9ae5d09d623308193bd556655731af68a0dba0289477b64e4ea2dea3b810",
+      "heading": "Improvement",
+      "excerpt": "Inventors may, for example, try to improve something by making it more effective, healthier, faster, more efficient, easier to use, serve mo",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377805792"
+    },
+    {
+      "id": "P14",
+      "hash": "0e4fba1c1a810347e1afd3f6bf7a6c9398feb5daa4ba01b9d324b2ee6dc4c4ad",
+      "heading": "Implementation",
+      "excerpt": "In economic theory, inventions are one of the chief examples of \"positive externalities\", a beneficial side effect that falls on those outsi",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377805792"
+    },
+    {
+      "id": "P15",
+      "hash": "2239566104bb192a4400a2f02a0fc66d934054469fb03a30b8d11c3b1ac28816",
+      "heading": "Comparison with innovation",
+      "excerpt": "In contrast to invention, innovation is the implementation of a creative idea that specifically leads to greater value or usefulness. That i",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377805792"
+    },
+    {
+      "id": "P16",
+      "hash": "1d16142ac9e20e37baf490e1bd9c2b52ce7070cb5c8567f7a8464a7c04f648d7",
+      "heading": "As defined by patent law",
+      "excerpt": "The term invention is also an important legal concept and central to patent law systems worldwide. As is often the case for legal concepts, ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377805792"
+    },
+    {
+      "id": "P17",
+      "hash": "b5c6184996f38620071315803381d058947d6b5a50da2cb11c7ec3226eb7bb2d",
+      "heading": "In the arts",
+      "excerpt": "Invention has a long and important history in the arts. Inventive thinking has always played a vital role in the creative process. While som",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377805792"
+    },
+    {
+      "id": "P18",
+      "hash": "b95ca3da2e6c1b0fb66f8e2c292007d216a7c9cd5ba3b73c568c812662bb8ff6",
+      "heading": "Gender gap in inventions",
+      "excerpt": "Historically, women in many regions have been unrecognised for their inventive contributions (except Russia and France), despite being the s",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377805792"
+    },
+    {
+      "id": "P19",
+      "hash": "0c39f570ab0bce1376a2f3f58de3abb15f87e010d3f944e073b5dd9562899223",
+      "heading": "History",
+      "excerpt": "Some of the first human inventions were bedding, clothing, and hafting. Other notable pre-historic inventions were agriculture, fish hooks, ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377805792"
+    },
+    {
+      "id": "P20",
+      "hash": "b02bb11e30d28333bd81e9a6127e79391f23a9ac97d48a6ac0ef5490f0c9c75f",
+      "heading": "History",
+      "excerpt": "The 21st century has seen several notable machine-generated inventions. For example, the 2006 evolved antenna from NASA. Genetic algorithms ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377805792"
+    },
+    {
+      "id": "P21",
+      "hash": "64b0b308bfeaf6704a063cce32afef43bff515f691a6e4003ed1144617a880db",
+      "heading": "Types",
+      "excerpt": "Sociopolitical inventions comprise new laws, institutions, and procedures that change modes of social behavior and establish new forms of hu",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377805792"
+    },
+    {
+      "id": "P22",
+      "hash": "70a8720ad6dff4e09e56221cb8edec2a88027d251fe25d23bc53e443d567ad88",
+      "heading": "Practical means",
+      "excerpt": "In addition, many inventors keep records of their working process – notebooks, photos, etc., including Leonardo da Vinci, Galileo Galilei, E",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377805792"
+    },
+    {
+      "id": "P23",
+      "hash": "a7864e6dc85e4dae70fab296939106fcb7d37136bff8c9caa2c8875bba2f78fc",
+      "heading": "Practical means",
+      "excerpt": "In the process of developing an invention, the initial idea may change. The invention may become simpler, more practical, it may expand, or ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377805792"
+    }
+  ],
+  "updatedAt": "2026-10-21T07:56:23.136Z"
 }
