@@ -68,6 +68,6 @@ export async function verifyWikiRelease(root=base){
  const targetMet=wikiTargetMet(stories.length,counts)
  if(manifest.ready!==shouldBeReady||manifest.targetMet!==targetMet||
   manifest.targetStories!==WIKI_TARGET_STORIES||manifest.targetPerTopic!==WIKI_TARGET_PER_TOPIC||
-  manifest.withVerifiedPhoto!==stories.length)throw Error('Wiki release readiness mismatch')
+  manifest.withVerifiedPhoto!==stories.length||manifest.verifiedImageCount!==images.size)throw Error('Wiki release readiness mismatch')
  return {total:stories.length,ready:manifest.ready,targetMet,byTopic:counts,images:images.size}
 }

@@ -125,12 +125,14 @@ export async function appendWikiStories(base,newStories,{now=new Date()}={}){
  for(const entry of entries)counts[entry.category]++
  const ready=entries.length>0
  const targetMet=wikiTargetMet(entries.length,counts)
+ const verifiedImageCount=[...before.stories,...accepted].reduce((total,story)=>total+
+  story.pages.filter(page=>page.image).length,0)
  const contentHash=catalogHash(entries,[...before.stories,...accepted])
  const indexName=`catalog-index-${contentHash.slice(0,12)}.json`
  await fs.writeFile(path.join(before.dir,indexName),JSON.stringify({version:3,contentHash,total:entries.length,entries})+'\n',{flag:'wx'})
  const manifest={feedType:'wiki',editorialVersion:2,ready,targetStories:WIKI_TARGET_STORIES,
   targetPerTopic:WIKI_TARGET_PER_TOPIC,targetMet,total:entries.length,chunks:nextShard,
-  withVerifiedPhoto:entries.length,byTopic:counts,contentHash,catalogIndex:indexName,catalogIndexVersion:3,
+  withVerifiedPhoto:entries.length,verifiedImageCount,byTopic:counts,contentHash,catalogIndex:indexName,catalogIndexVersion:3,
   updatedAt:now.toISOString(),licenseNotice:'Wikipedia text adaptations: CC BY-SA 4.0; each embedded image has separate credit and rights.'}
  const stage=path.join(before.dir,'manifest.json.tmp-'+process.pid)
  await fs.writeFile(stage,JSON.stringify(manifest,null,2)+'\n')
