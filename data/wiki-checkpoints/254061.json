@@ -2,9 +2,437 @@
   "pageId": 254061,
   "title": "Timbuktu",
   "topic": "History & Geography",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1380708474,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380708474",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-21T13:02:39.563Z"
+  "reason": "12 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Caillie 1830 Timbuktu view.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/18/Caillie_1830_Timbuktu_view.jpg/960px-Caillie_1830_Timbuktu_view.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Caillie 1830 Timbuktu view.jpg",
+        "caption": "Timbuktu looking west, René Caillié (1830)",
+        "alt": "",
+        "description": "Original caption: \"Vue d'une partie de la ville de Temboctou, prise du sommet d'une colline, à l'Est-Nord-Est.\" Timbuktu looking west. Caillié had visited Timbuktu is 1828. Three mosques are depicted. In the foreground is the Sidi Yahia Mosque. On the right hand side is the Sankoré Mosque. In the middle distance is the Grand Mosque (Djingareyber Mosque).",
+        "date": "1830",
+        "section": "Toponymy",
+        "position": 0,
+        "provenance": {
+          "credit": "René Caillié (1799-1838)",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Caillie_1830_Timbuktu_view.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Timbuktu",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380708474",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Barth 1858 Timbuktu from terrace.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/aa/Barth_1858_Timbuktu_from_terrace.jpg/960px-Barth_1858_Timbuktu_from_terrace.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Barth 1858 Timbuktu from terrace.jpg",
+        "caption": "View of Timbuktu, Heinrich Barth (1858)",
+        "alt": "",
+        "description": "Timbuktu from the terrace of the traveller's house",
+        "date": "1858",
+        "section": "Toponymy",
+        "position": 1,
+        "provenance": {
+          "credit": "Drawn by Martin Bernatz (1802–1878) after a sketch by Heinrich Barth (1821-1865). The lithograph was produced and printed by M. & N. Hanhart",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Barth_1858_Timbuktu_from_terrace.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Timbuktu",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380708474",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:A camel ride in the Sahara Desert.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e1/A_camel_ride_in_the_Sahara_Desert.jpg/960px-A_camel_ride_in_the_Sahara_Desert.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:A camel ride in the Sahara Desert.jpg",
+        "caption": "A camel ride in the Sahara desert, outside Timbuktu",
+        "alt": "",
+        "description": "While visiting Timbuktu to assist in the building of a new archive for the manuscripts of Timbuktu, members of the South African team were treated to a camel ride in the Sahara Desert.",
+        "date": "2009-03-26 09:19:48",
+        "section": "Geography",
+        "position": 2,
+        "provenance": {
+          "credit": "Carosaun",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:A_camel_ride_in_the_Sahara_Desert.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Timbuktu",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380708474",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Bilma-Salzkarawane1.jpg"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Women pounding grain.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f0/Women_pounding_grain.jpg/960px-Women_pounding_grain.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Women pounding grain.jpg",
+        "caption": "Women pounding grain",
+        "alt": "",
+        "description": "This is an image of \"African people at work\" from",
+        "date": "2009-03-28",
+        "section": "Agriculture",
+        "position": 4,
+        "provenance": {
+          "credit": "Carosaun",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Women_pounding_grain.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Timbuktu",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380708474",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Timbuktu-139086.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/af/Timbuktu-139086.jpg/960px-Timbuktu-139086.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Timbuktu-139086.jpg",
+        "caption": "Reconstruction of the Ben Essayouti Library, Timbuktu",
+        "alt": "",
+        "description": "Reconstruction of the Ben Essayouti Library, Timbuktu",
+        "date": "2014-11-20",
+        "section": "Arts and culture",
+        "position": 5,
+        "provenance": {
+          "credit": "UNESCO Bureau of Mali",
+          "license": "CC BY-SA 3.0 igo",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/igo/deed.en",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Timbuktu-139086.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Timbuktu",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380708474",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Sankore Moske Timboektoe.JPG",
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/7/77/Sankore_Moske_Timboektoe.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "fileTitle": "File:Sankore Moske Timboektoe.JPG",
+        "caption": "Sankore Mosque",
+        "alt": "",
+        "description": "De Sankoré Moskee in Timboektoe. De op twee na oudste moskee van de stad was het centrum van geleerdheid in het Songhay rijk. J.S. Lecocq 2005 (egen werk).",
+        "date": "2007-01-20",
+        "section": "Sankoré",
+        "position": 6,
+        "provenance": {
+          "credit": "Baz Lecocq at nl.wikipedia",
+          "license": "CC BY 2.5 nl",
+          "licenseUrl": "https://creativecommons.org/licenses/by/2.5/nl/deed.en",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Sankore_Moske_Timboektoe.JPG",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Timbuktu",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380708474",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Timbuktu-107971.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4a/Timbuktu-107971.jpg/960px-Timbuktu-107971.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Timbuktu-107971.jpg",
+        "caption": "The mausoleums, erected in the 15th and 16th centuries, being restored by local workers",
+        "alt": "",
+        "description": "Timbuktu (Mali)",
+        "date": "2005-02-01",
+        "section": "World Heritage Site",
+        "position": 7,
+        "provenance": {
+          "credit": "Francesco Bandarin",
+          "license": "CC BY-SA 3.0 igo",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/igo/deed.en",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Timbuktu-107971.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Timbuktu",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380708474",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Timbuktu-manuscripts-astronomy-mathematics.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4f/Timbuktu-manuscripts-astronomy-mathematics.jpg/960px-Timbuktu-manuscripts-astronomy-mathematics.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Timbuktu-manuscripts-astronomy-mathematics.jpg",
+        "caption": "Pages of the Timbuktu Manuscripts, showing both mathematics and a heritage of astronomy in medieval Islam",
+        "alt": "",
+        "description": "Image of Timbuktu manuscripts.",
+        "date": "Taken on 11 November 2007",
+        "section": "Centre of learning",
+        "position": 8,
+        "provenance": {
+          "credit": "Elias Altmimi",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Timbuktu-manuscripts-astronomy-mathematics.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Timbuktu",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380708474",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Kuntamarabut.jpg",
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/6/66/Kuntamarabut.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "fileTitle": "File:Kuntamarabut.jpg",
+        "caption": "Moorish marabout of the Kuntua tribe, an ethnic Kounta clan, from which the Al Kounti manuscript collection derives its name. Dated 1898.",
+        "alt": "",
+        "description": "Réclus, La Géographie, 1898 (member of the Kunta clan of marabutish status)",
+        "date": "2008-01-12 12:46:28",
+        "section": "Manuscripts and libraries",
+        "position": 9,
+        "provenance": {
+          "credit": "Unknown authorUnknown author",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Kuntamarabut.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Timbuktu",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380708474",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Timbuktu-139085.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/df/Timbuktu-139085.jpg/960px-Timbuktu-139085.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Timbuktu-139085.jpg",
+        "caption": "Manuscripts of the Ahmed Baba Centre",
+        "alt": "",
+        "description": "Manuscripts of the Ahmed Baba Centre, Timbuktu",
+        "date": "2013-06-06",
+        "section": "Manuscripts and libraries",
+        "position": 10,
+        "provenance": {
+          "credit": "UNESCO Bureau of Mali",
+          "license": "CC BY-SA 3.0 igo",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/igo/deed.en",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Timbuktu-139085.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Timbuktu",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380708474",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:ASC Leiden - van Achterberg Collection - 04 - 61 - Le Touareg Mohamed - Tombouctou, Mali - Novembre-décembre 1993.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2b/ASC_Leiden_-_van_Achterberg_Collection_-_04_-_61_-_Le_Touareg_Mohamed_-_Tombouctou%2C_Mali_-_Novembre-d%C3%A9cembre_1993.jpg/960px-ASC_Leiden_-_van_Achterberg_Collection_-_04_-_61_-_Le_Touareg_Mohamed_-_Tombouctou%2C_Mali_-_Novembre-d%C3%A9cembre_1993.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:ASC Leiden - van Achterberg Collection - 04 - 61 - Le Touareg Mohamed - Tombouctou, Mali - Novembre-décembre 1993.jpg",
+        "caption": "A Tuareg man, wearing traditional attire, in Timbuktu",
+        "alt": "",
+        "description": "The Tuareg Mohamed is standing in a striped robe with a large white headscarf and sandals in front of the double door with white iron fittings of the hotel Bouctou. A closed shutter of a window with white iron fittings.",
+        "date": "November-December 1993",
+        "section": "Language",
+        "position": 11,
+        "provenance": {
+          "credit": "Angeline A. van Achterberg",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:ASC_Leiden_-_van_Achterberg_Collection_-_04_-_61_-_Le_Touareg_Mohamed_-_Tombouctou,_Mali_-_Novembre-d%C3%A9cembre_1993.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Timbuktu",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380708474",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Airport in Timbuktu.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/59/Airport_in_Timbuktu.jpg/960px-Airport_in_Timbuktu.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Airport in Timbuktu.jpg",
+        "caption": "Timbuktu Airport",
+        "alt": "",
+        "description": "Timbuktu Airport",
+        "date": "2001-10-16",
+        "section": "Infrastructure",
+        "position": 12,
+        "provenance": {
+          "credit": "upyernoz from Haverford, USA",
+          "license": "CC BY 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Airport_in_Timbuktu.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Timbuktu",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380708474",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Bactombou.png"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "bc9714a7fa31e5e933faf18544d8d21f98b77254ebfd5f2f2d86447ebb8d2450",
+      "heading": "Lead",
+      "excerpt": "Timbuktu (/ˌtɪmbʌkˈtuː/ TIM-buk-TOO; French: Tombouctou; Koyra Chiini: Tunbutu; Tuareg: ⵜⵏⵀⵗⵜ, romanized: Tin Bukt) is an ancient city in Ma",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380708474"
+    },
+    {
+      "id": "P2",
+      "hash": "48511674f38603459c36b09fc8bb0813b69b87db30bb180602367b2dc37b0e43",
+      "heading": "Lead",
+      "excerpt": "Archaeological evidence suggests prehistoric settlements in the region, predating the city's Islamic scholarly and trade prominence in the m",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380708474"
+    },
+    {
+      "id": "P3",
+      "hash": "4a2fe1ee3ad856c1f8556e419ca473fd302403ee91bfb42de266ca54a3bf0611",
+      "heading": "Lead",
+      "excerpt": "A Moroccan army defeated the Songhai in 1591 and made Timbuktu their capital. The invaders established a new ruling class, the Arma, who aft",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380708474"
+    },
+    {
+      "id": "P4",
+      "hash": "7532e140ac19a75be53ecc219d06b8d8b5545aa45dc52e97e06e56f720b336d6",
+      "heading": "Lead",
+      "excerpt": "In recent history, Timbuktu has faced threats from extremist groups leading to the destruction of cultural sites; efforts by local and inter",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380708474"
+    },
+    {
+      "id": "P5",
+      "hash": "724e00969711cb081c5891e4562f01c102a9dbcf585324d33f293e98f9c624fb",
+      "heading": "Toponymy",
+      "excerpt": "Over the centuries, the spelling of Timbuktu has varied a great deal: from Tenbuch on the Catalan Atlas (1375), to traveller Antonio Malfant",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380708474"
+    },
+    {
+      "id": "P6",
+      "hash": "bb2eee81959724c618b16115c0b1b4cbcd45b77268269b9ccbeaeceb786d691e",
+      "heading": "Prehistory",
+      "excerpt": "Like other important Medieval West African towns such as Djenné (Jenné-Jeno), Gao, and Dia, Iron Age settlements have been discovered near T",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380708474"
+    },
+    {
+      "id": "P7",
+      "hash": "1ff9a13a4d3212782901048abcd71476a6043a9bee3b16fcfd1ec42e495cd984",
+      "heading": "History",
+      "excerpt": "Timbuktu has acquired a reputation in the Western world as an exotic, mysterious place, but the city was once a well known trade center and ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380708474"
+    },
+    {
+      "id": "P8",
+      "hash": "fbe47c6ca50ab3f40cdc2ae715baa35dcad671706ab22cbc68635cdc0e388031",
+      "heading": "Siege of Timbuktu",
+      "excerpt": "On 8 August 2023, in an attack on Mali's government, Timbuktu was brought under a total blockade by the al-Qaeda ally Jama'at Nasr al-Islam ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380708474"
+    },
+    {
+      "id": "P9",
+      "hash": "0ef78940c33393117ca3918e0de8c2c30feb05630f2feae0ee83400e6678c239",
+      "heading": "Geography",
+      "excerpt": "Timbuktu is located on the southern edge of the Sahara 15 km (9+1⁄2 mi) north of the main channel of the River Niger. The town is surrounded",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380708474"
+    },
+    {
+      "id": "P10",
+      "hash": "b94a64f384b70d057c264ed1dafa70c4b0fb7baa5a4569492cf5f1beb501eab6",
+      "heading": "Climate",
+      "excerpt": "Timbuktu features a hot desert climate (BWh) according to the Köppen Climate Classification. The weather is extremely hot and dry throughout",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380708474"
+    },
+    {
+      "id": "P11",
+      "hash": "34179095ceceedc28071efca0c07215084b21772b376f709ead2b0427dda9505",
+      "heading": "Salt trade",
+      "excerpt": "The wealth and very existence of Timbuktu depended on its position as the southern terminus of an important trans-Saharan trade route; nowad",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380708474"
+    },
+    {
+      "id": "P12",
+      "hash": "ed81e37bc08922807fff4ca5189223b2607bbdeb95306b858cab587a15d2bb30",
+      "heading": "Agriculture",
+      "excerpt": "There is insufficient rainfall in the Timbuktu region for purely rain-fed agriculture and crops are therefore irrigated using water from the",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380708474"
+    },
+    {
+      "id": "P13",
+      "hash": "1a81c2528a06ae95bc1d84b4d3a2b52c4c9be9d76bc0fa7a7d79593a46f0a82b",
+      "heading": "Tourism",
+      "excerpt": "Most tourists visit Timbuktu between November and February when the air temperature is lower. In the 1980s, accommodation for tourists was p",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380708474"
+    },
+    {
+      "id": "P14",
+      "hash": "ce2f90e35b3c559ba4aa95a8262096b885de08c7f7f2a884b9681b4cc417d068",
+      "heading": "Attacks",
+      "excerpt": "Starting in 2008, al-Qaeda in the Islamic Maghreb began kidnapping groups of tourists in the Sahel region. In January 2009, four tourists we",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380708474"
+    },
+    {
+      "id": "P15",
+      "hash": "4df2cda69bb8d7c3d8a2fc2674a4075766ecc1de68621bd016c75f99baebb40b",
+      "heading": "Early accounts in the West",
+      "excerpt": "Tales of Timbuktu's fabulous wealth helped prompt European exploration of the west coast of Africa. Among the most famous descriptions of Ti",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380708474"
+    },
+    {
+      "id": "P16",
+      "hash": "d78f52f3acca9496c49f64888560d232d3583f4047b0e329c4cac8d2dcf515a7",
+      "heading": "Leo Africanus",
+      "excerpt": "Perhaps most famous among the accounts written about Timbuktu is that by Leo Africanus, born El Hasan ben Muhammed el- Wazzan-ez-Zayyati in ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380708474"
+    },
+    {
+      "id": "P17",
+      "hash": "753ed70a12bf2a39843d7c16d66ae90e2cbac8887cccf8ed6634094b93732517",
+      "heading": "Shabeni",
+      "excerpt": "The natives of the town of Timbuctoo may be computed at 40,000, exclusive of slaves and foreigners ... The natives are all blacks: almost ev",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380708474"
+    },
+    {
+      "id": "P18",
+      "hash": "cb3192b4100e975c63903dbf2c42eca6a49627f9cf753fd8a56a157209463db6",
+      "heading": "Djinguereber",
+      "excerpt": "The Djinguereber Mosque was built in 1327 under Mansa Musa. Mansa Musa's pilgrimage to Mecca, during which he distributed vast amounts of go",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380708474"
+    }
+  ],
+  "updatedAt": "2026-10-21T13:02:41.043Z"
 }
