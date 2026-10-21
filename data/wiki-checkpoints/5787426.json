@@ -1,0 +1,106 @@
+{
+  "pageId": 5787426,
+  "title": "Time geography",
+  "topic": "History & Geography",
+  "status": "EVIDENCE_READY",
+  "revisionId": 1334578649,
+  "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1334578649",
+  "reason": "1 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Sample of time geographical description.png"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Space-time prism 1500x1125.png",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7e/Space-time_prism_1500x1125.png/960px-Space-time_prism_1500x1125.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Space-time prism 1500x1125.png",
+        "caption": "Schematic and example of a space-time prism using transit network data: On the right is a schematic diagram of a space-time prism, and on the left is a map of the potential path area for two different time budgets.",
+        "alt": "",
+        "description": "An schematic and example of a space-time prism",
+        "date": "2019-07-04",
+        "section": "Later developments",
+        "position": 1,
+        "provenance": {
+          "credit": "Jamaps",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Space-time_prism_1500x1125.png",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Time_geography",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1334578649",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "62e57be277cee333d960c82dd20f7ea228cbb3cff667fa6413c978ce8a1c274c",
+      "heading": "Lead",
+      "excerpt": "Time geography or time-space geography is an evolving transdisciplinary perspective on spatial and temporal processes and events such as soc",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1334578649"
+    },
+    {
+      "id": "P2",
+      "hash": "70a6cbcfa71026c482f8c26ad9f3a1ab32dea5cd6b4d3944784acb78e2be516e",
+      "heading": "Origins",
+      "excerpt": "The Swedish geographer Torsten Hägerstrand created time geography in the mid-1960s based on ideas he had developed during his earlier empiri",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1334578649"
+    },
+    {
+      "id": "P3",
+      "hash": "6fb7eecdbc13250770cf7bb8d23483df42b0a7caf707ce593b10e50b509bdc39",
+      "heading": "Origins",
+      "excerpt": "Hägerstrand's earliest formulation of time geography informally described its key ontological features: \"In time-space the individual descri",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1334578649"
+    },
+    {
+      "id": "P4",
+      "hash": "7d48d1437fbd8de7b98799752e85c4756021542c89337d98e6fdb970b5577aa7",
+      "heading": "Origins",
+      "excerpt": "While this innovative visual language is an essential feature of time geography, Hägerstrand's colleague Bo Lenntorp emphasized that it is t",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1334578649"
+    },
+    {
+      "id": "P5",
+      "hash": "74ee1c9b74307b5f9c25a150a02851d212df7fb8b08067b711aea4cb8a826c36",
+      "heading": "Origins",
+      "excerpt": "By 1981, geographers Nigel Thrift and Allan Pred were already defending time geography against those who would see it \"merely as a rigid des",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1334578649"
+    },
+    {
+      "id": "P6",
+      "hash": "964d502ca0f1574ca4ab6af4021343d40483b4cc6b612921bceb8247812f9c53",
+      "heading": "Later developments",
+      "excerpt": "In 1993, British geographer Gillian Rose noted that \"time-geography shares the feminist interest in the quotidian paths traced by people, an",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1334578649"
+    },
+    {
+      "id": "P7",
+      "hash": "954fc709e59f6e966c1c92c98626298669c2bae377e09f4b789664fdc9aac607",
+      "heading": "Later developments",
+      "excerpt": "GIS software has been developed to compute and analyze time-geographic problems at a variety of spatial scales. Such analyses have used diff",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1334578649"
+    },
+    {
+      "id": "P8",
+      "hash": "5792c44df2cad641c5fd7326406acd9b35f32d8110779d6e44128b4782a9e8ba",
+      "heading": "Later developments",
+      "excerpt": "Benjamin Bach and colleagues have generalized the space-time cube into a framework for temporal data visualization that applies to all data ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1334578649"
+    },
+    {
+      "id": "P9",
+      "hash": "1bfc11cefb6484c8d0dfa2fc80345199a93b54fa2b16324fe02a5b5ad95e3210",
+      "heading": "Later developments",
+      "excerpt": "In the COVID-19 pandemic, time geography approaches were applied to identify close contacts. The pandemic imposed restrictions on the physic",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1334578649"
+    }
+  ],
+  "updatedAt": "2026-10-21T03:10:52.498Z"
+}

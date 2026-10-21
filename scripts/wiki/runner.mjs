@@ -117,6 +117,7 @@ export async function runWikiBatch({base,maxCalls=0,maxCandidates=5,pageId=null,
   const persist=async()=>{await writeCheckpoint(base,checkpoint);await writeState(base,state);await persistDurably()}
   const mark=async(status,reason,revisionId=checkpoint.revisionId||null)=>{
    checkpoint={...checkpoint,status,reason:safeText(reason),revisionId}
+   state.dailyUsage.usageUnknown=state.dailyUsage.usageUnknown||!!budget.usageUnknown
    state.outcomes[candidate.pageId]={status,reason:safeText(reason),revisionId,checkedAt:new Date().toISOString()}
    stats.decisions.push({pageId:candidate.pageId,status,reason:safeText(reason)})
    await persist()

@@ -5,7 +5,7 @@ import os from 'node:os'
 import path from 'node:path'
 import {selectWikiEvidence,supplementWikiEvidence,validateWikiDraft,repairTargets,applyWikiRepair,
  callFreeWikiGemini,GeminiWikiPause} from '../wiki/editor.mjs'
-import {runWikiBatch,writeWikiState,readWikiCheckpoint} from '../wiki/runner.mjs'
+import {runWikiBatch,writeWikiState,readWikiState,readWikiCheckpoint} from '../wiki/runner.mjs'
 
 const sentence='Merchants connected distant Asian cities and traded silk along routes that helped ideas travel between communities.'
 const paragraphs=Array.from({length:9},(_,i)=>({heading:`Period ${i}`,
@@ -114,11 +114,12 @@ test('Gemini 503 preserves the candidate and prepares another source without mor
   let calls=0,fetches=0
   const result=await runWikiBatch({...baseOptions(base),maxCandidates:2,
    fetchPage:async title=>{fetches++;return {...source,pageId:title==='Second source'?2:source.pageId}},
-   generate:async()=>{calls++;throw new GeminiWikiPause('Gemini HTTP 503; circuit open',503)}})
+   generate:async({budget})=>{calls++;budget.usageUnknown=true;throw new GeminiWikiPause('Gemini HTTP 503; circuit open',503)}})
   assert.equal(calls,1);assert.equal(fetches,2);assert.equal(result.paused,true)
   const second=await readWikiCheckpoint(base,2)
   assert.ok(second.evidence?.length);assert.ok(second.rights?.length)
   assert.equal(second.status,'RETRY_LATER')
+  assert.equal((await readWikiState(base)).dailyUsage.usageUnknown,true)
  }finally{await fs.rm(base,{recursive:true,force:true})}
 })
 

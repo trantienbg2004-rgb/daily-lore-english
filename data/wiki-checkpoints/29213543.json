@@ -1,0 +1,201 @@
+{
+  "pageId": 29213543,
+  "title": "ESPRESSO",
+  "topic": "Science & Technology",
+  "status": "EVIDENCE_READY",
+  "revisionId": 1379513375,
+  "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379513375",
+  "reason": "3 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:ESPRESSO spectrograph concept at the Preliminary Design Review..jpg"
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:ESPRESSO spectrograph optical design at the Preliminary Design Review..jpg"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:ESPRESSO first light spectrum.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/79/ESPRESSO_first_light_spectrum.jpg/960px-ESPRESSO_first_light_spectrum.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:ESPRESSO first light spectrum.jpg",
+        "caption": "Data from ESPRESSO First Light",
+        "alt": "",
+        "description": "This colourful image shows spectral data from the First Light of the ESPRESSO instrument on ESO's Very Large Telescope in Chile. The light from a star has been dispersed into its component colours. This view has been colourised to indicate how the wavelengths change across the image, but these are not exactly the colours that would be seen visually. Close inspection shows many dark spectral lines in the stellar spectra and also the regular double spots from a calibration light source. The dark gaps are features of how the data is taken, and are",
+        "date": "2017-12-06 12:00:00",
+        "section": "Sensitivity",
+        "position": 3,
+        "provenance": {
+          "credit": "ESO/ESPRESSO team",
+          "license": "CC BY 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:ESPRESSO_first_light_spectrum.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/ESPRESSO",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379513375",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:ESPRESSO instrument achieves first light with all four Unit Telescopes.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/94/ESPRESSO_instrument_achieves_first_light_with_all_four_Unit_Telescopes.jpg/960px-ESPRESSO_instrument_achieves_first_light_with_all_four_Unit_Telescopes.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:ESPRESSO instrument achieves first light with all four Unit Telescopes.jpg",
+        "caption": "First light of the ESPRESSO instrument with all four unit telescopes",
+        "alt": "",
+        "description": "The ESPRESSO instrument on ESO’s Very Large Telescope in Chile has used the combined light of all four of the 8.2-metre Unit Telescopes for the first time. Combining light from the Unit Telescopes in this way makes the VLT the largest optical telescope in existence in terms of collecting area. This picture shows in highly simplified form how the light collected by all four VLT Unit Telescopes is combined in the ESPRESSO instrument, located under the VLT platform.",
+        "date": "2018-02-13 15:00:00",
+        "section": "Instrument",
+        "position": 4,
+        "provenance": {
+          "credit": "ESO/L. Calçada",
+          "license": "CC BY 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:ESPRESSO_instrument_achieves_first_light_with_all_four_Unit_Telescopes.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/ESPRESSO",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379513375",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Engineering rendering of the ESPRESSO instrument.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/73/Engineering_rendering_of_the_ESPRESSO_instrument.jpg/960px-Engineering_rendering_of_the_ESPRESSO_instrument.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Engineering rendering of the ESPRESSO instrument.jpg",
+        "caption": "Engineering rendering of the ESPRESSO instrument",
+        "alt": "",
+        "description": "This picture shows an engineering rendering of the main mechanical and optical components of the ESPRESSO instrument on ESO’s Very Large Telescope at the Paranal Observatory in northern Chile. ESPRESSO will be an ultra-precise spectrograph that is capable of combining light from all four VLT Unit Telescopes to create a virtual 16-metre aperture telescope. The instrument is mounted inside a vacuum vessel that is in turn inside two thermal isolation enclosures to shield it from external disturbances. The extensions from the top of the instrument ",
+        "date": "2013-08-07 15:00:00",
+        "section": "Status",
+        "position": 5,
+        "provenance": {
+          "credit": "ESO/ESPRESSO Consortium Acknowledgement: Samuel Santana Tschudi",
+          "license": "CC BY 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Engineering_rendering_of_the_ESPRESSO_instrument.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/ESPRESSO",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379513375",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "e0c6b23e54a24b0e567ed758394d9a698424a8a21c46f0dbae80c19d0c1ee102",
+      "heading": "Lead",
+      "excerpt": "ESPRESSO (Echelle Spectrograph for Rocky Exoplanet- and Stable Spectroscopic Observations) is a third-generation, fiber-fed, cross-dispersed",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379513375"
+    },
+    {
+      "id": "P2",
+      "hash": "9a3d720cf7c9dafa96a76955d2f64d3236e43940b4c16b2796c6cabaf05be55f",
+      "heading": "Lead",
+      "excerpt": "ESPRESSO is the successor of a line of echelle spectrometers that include CORAVEL, Elodie, Coralie, and HARPS. It measures changes in the li",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379513375"
+    },
+    {
+      "id": "P3",
+      "hash": "27c832860726b9fca6fd65d175c233645f5d20fa617e3d5712b4b4262268cdb6",
+      "heading": "Lead",
+      "excerpt": "In 2026, a solar telescope was installed to observe our own Sun. The Paranal Solar ESPRESSO Telescope (PoET) uses a 60 cm mirror to collect ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379513375"
+    },
+    {
+      "id": "P4",
+      "hash": "82e15f887acad405f672dd21f46a87a91b28e810effddf029e4d8f49a3a60054",
+      "heading": "Sensitivity",
+      "excerpt": "ESPRESSO builds on the foundations laid by the High Accuracy Radial Velocity Planet Searcher (HARPS) instrument at the 3.6-metre telescope a",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379513375"
+    },
+    {
+      "id": "P5",
+      "hash": "8062718c62e22ea50b0f8db5976f7b4efbf0d351592391f063b819df7afa92a2",
+      "heading": "Sensitivity",
+      "excerpt": "The instrument is capable of operating in 1-UT mode (using one of the telescopes) and in 4-UT mode. In 4-UT mode, in which all the four 8-m ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379513375"
+    },
+    {
+      "id": "P6",
+      "hash": "d9b29265a3dc953dd7617f5c39249b2d397fd61d95d68bfc537572830de8ecb2",
+      "heading": "Status",
+      "excerpt": "All design work was completed and finalised by April 2013, with the manufacturing phase of the project commencing thereafter. ESPRESSO was t",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379513375"
+    },
+    {
+      "id": "P7",
+      "hash": "4178fd4c0f30c6e1cc52a6031acb4afd48f483916503854634e651d1885b5dec",
+      "heading": "Sensitivity",
+      "excerpt": "The best-suited candidate stars for ESPRESSO are non-active, non-rotating, quiet G dwarfs to red dwarfs. It operates at the peak of its effi",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379513375"
+    },
+    {
+      "id": "P8",
+      "hash": "0df6200bbb2c250a9150d864b68b71320ec0b21aeab7313720a8dab5e9354a89",
+      "heading": "Status",
+      "excerpt": "A problem was discovered in the ESPRESSO charge-coupled device controllers, digital imaging hardware, where a differential nonlinearity issu",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379513375"
+    },
+    {
+      "id": "P9",
+      "hash": "7aa52304e1038888af583c7b9e067f4d4e47e810adb934c70a74f92fa2481b92",
+      "heading": "Status",
+      "excerpt": "On August 29, 2019, the ESPRESSO ETC was updated to reflect the gain in transmission after the technical mission of July. This gain influx w",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379513375"
+    },
+    {
+      "id": "P10",
+      "hash": "d0770ab7e0679d06375777fd74661f588397c9ea29187c43f8448224f76e5b7a",
+      "heading": "Status",
+      "excerpt": "As of April 6, 2020, the red radial velocity detector has, at least for a very short time, achieved the ≈10 cm/s precision, while the blue d",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379513375"
+    },
+    {
+      "id": "P11",
+      "hash": "e02003f06f463f3dd712d06edb8bd3a46026430b040f54b399f37e8f5af30b4a",
+      "heading": "Status",
+      "excerpt": "On May 24, 2020, a team led by A. Suárez Mascareño confirmed the existence of the exoplanet Proxima b, finding it to be about 1.17 times the",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379513375"
+    },
+    {
+      "id": "P12",
+      "hash": "68344320d6b6bd53bdd3bfafb083421430507d7c6de605f127543584a1e38439",
+      "heading": "Status",
+      "excerpt": "On August 28, 2020, it was announced that in the coming weeks minimal science operations are planned to be resumed at the Paranal Observator",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379513375"
+    },
+    {
+      "id": "P13",
+      "hash": "620d7309255f3af61bf3f44640478aa7ed43a8ab37b9a530fab8e0e816a2c26f",
+      "heading": "Status",
+      "excerpt": "As of June 11, 2021, there is still an ongoing issue with the blue cryostat detector caused by temperature instabilities, and there has been",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379513375"
+    },
+    {
+      "id": "P14",
+      "hash": "209a57916464f400daa45cc8eb2fa94bf59af6d6048f5f6c3f5b42b8c78e5500",
+      "heading": "Status",
+      "excerpt": "A major instrument intervention was scheduled between May 1 and May 16, 2022, and the instrument will be out of operations between May 1 unt",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379513375"
+    },
+    {
+      "id": "P15",
+      "hash": "e0ee1d84759b36983faef61a4e7aff437acbe328f15c183762ce813b83725643",
+      "heading": "Status",
+      "excerpt": "As a result of the instrument intervention the blue cryostat stability has dramatically improved. However, because of a change of the cross ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379513375"
+    }
+  ],
+  "updatedAt": "2026-10-21T03:09:43.849Z"
+}
