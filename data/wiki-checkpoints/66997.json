@@ -2,9 +2,213 @@
   "pageId": 66997,
   "title": "Epidemiology",
   "topic": "Health",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1380973508,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380973508",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-21T13:02:36.224Z"
+  "reason": "2 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:XBio illustration – Epidemiology.png",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b1/XBio_illustration_%E2%80%93_Epidemiology.png/960px-XBio_illustration_%E2%80%93_Epidemiology.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:XBio illustration – Epidemiology.png",
+        "caption": "Epidemiology is the study of health outcomes and diseases in specific populations.",
+        "alt": "",
+        "description": "The study of health outcomes and diseases in specific populations.",
+        "date": "2026-06-26 15:22:41",
+        "section": "",
+        "position": 0,
+        "provenance": {
+          "credit": "explorebiology",
+          "license": "CC BY 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:XBio_illustration_%E2%80%93_Epidemiology.png",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Epidemiology",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380973508",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Snow-cholera-map.jpg",
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/c/c7/Snow-cholera-map.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "fileTitle": "File:Snow-cholera-map.jpg",
+        "caption": "Original map by John Snow showing the clusters of cholera cases in the London epidemic of 1854",
+        "alt": "",
+        "description": "A variant of the original map drawn by Dr. John Snow (1813-1858), a British physician who is one of the founders of medical epidemiology, showing cases of cholera in the London epidemics of 1854, clustered around the locations of water pumps.",
+        "date": "2005-11-06 11:10:39",
+        "section": "Modern era",
+        "position": 1,
+        "provenance": {
+          "credit": "after John Snow after John Snow",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Snow-cholera-map.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Epidemiology",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380973508",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Epidemiologic study hierarchy.png"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "dfef3b73b754f18b9453b5422e4848c589994a760fa7e0762f7b0d94352cc3ef",
+      "heading": "Lead",
+      "excerpt": "Epidemiology is the study and analysis of the distribution (who, when, and where), patterns and determinants of health and disease condition",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380973508"
+    },
+    {
+      "id": "P2",
+      "hash": "4ceadb7501a8858f4d5fac225f85ac1e6cab9ae89d763c3767b5ec3001359c1b",
+      "heading": "Lead",
+      "excerpt": "It is a cornerstone of public health, and shapes policy decisions and evidence-based practice by identifying risk factors for disease and ta",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380973508"
+    },
+    {
+      "id": "P3",
+      "hash": "e4ed5f276a33459f61940f85d1ed75151cf5a99cacfa3290b56e0dbb93ee7361",
+      "heading": "Lead",
+      "excerpt": "Major areas of epidemiological study include disease causation, transmission, outbreak investigation, disease surveillance, environmental ep",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380973508"
+    },
+    {
+      "id": "P4",
+      "hash": "8ece9967b749c4baed9ca7217c5f567e2a51cd5d45e2d3bc0e3ec4b00a05e4a3",
+      "heading": "Lead",
+      "excerpt": "Epidemiology, literally meaning 'the study of what is upon the people', is derived from Greek epi 'upon, among', demos 'people' and logos 's",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380973508"
+    },
+    {
+      "id": "P5",
+      "hash": "8d5441b0eefbaf91c6aca47f44f0f6f7a0cc36baa083258f782d0af1e80f2a5e",
+      "heading": "Lead",
+      "excerpt": "The distinction between \"epidemic\" and \"endemic\" was first drawn by Hippocrates, The term \"epidemiology\" appears to have first been used to ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380973508"
+    },
+    {
+      "id": "P6",
+      "hash": "848b479084c3411c7c5a618fd1751045da913b2ec52937ad44c762192eeefc70",
+      "heading": "History",
+      "excerpt": "The Greek physician Hippocrates, taught by Democritus, was known as the father of medicine, sought a logic to sickness; he is the first pers",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380973508"
+    },
+    {
+      "id": "P7",
+      "hash": "a8309b0a18be19a75fcb1b3d223d9e7b28069d47af62cfa721bdfd49513d649d",
+      "heading": "Colonialism",
+      "excerpt": "The British Empire developed Epidemiological tracking strategies through colonialism. In the West Indies, the British statistician and gener",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380973508"
+    },
+    {
+      "id": "P8",
+      "hash": "f77903719a702c04c24c92dc327298e8178d021e6ebbad80ecab56bc8c8f2994",
+      "heading": "Slavery",
+      "excerpt": "Western physicians knew of air's central role to human life prior to the eighteenth century, but they failed to understand how it could beco",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380973508"
+    },
+    {
+      "id": "P9",
+      "hash": "0cd551525aac508ee324122a407b59ba4c0d3edaf19f5a91b35b1a1799249a22",
+      "heading": "Modern era",
+      "excerpt": "In the middle of the 16th century, a doctor from Verona named Girolamo Fracastoro was the first to propose a theory that the very small, uns",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380973508"
+    },
+    {
+      "id": "P10",
+      "hash": "805c30dbd503dd60c9f4b2d01243ebe0bdaab3ea96eb576e1f6fac0663ff8f96",
+      "heading": "21st century",
+      "excerpt": "Since the 2000s, genome-wide association studies (GWAS) have been commonly performed to identify genetic risk factors for many diseases and ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380973508"
+    },
+    {
+      "id": "P11",
+      "hash": "4045d4c9ccc0b92a84d21330c3de315cda1b45bbab6ae67a972f1e882a993ee3",
+      "heading": "Types of studies",
+      "excerpt": "Epidemiologists employ a range of study designs from the observational to experimental and generally categorized as descriptive (involving t",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380973508"
+    },
+    {
+      "id": "P12",
+      "hash": "3612b02fe852d4e4a4b3049b616867df5c0f81e2741fe13b0e6738bd726e1b93",
+      "heading": "Case series",
+      "excerpt": "Case-series may refer to the qualitative study of the experience of a single patient, or small group of patients with a similar diagnosis, o",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380973508"
+    },
+    {
+      "id": "P13",
+      "hash": "7f1c887879f0414f3bb95aa58ab097b6c4bde4206630874ef0797a232f2a25cd",
+      "heading": "Case-control studies",
+      "excerpt": "Case-control studies select subjects based on their disease status. It is a retrospective study. A group of individuals that are disease pos",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380973508"
+    },
+    {
+      "id": "P14",
+      "hash": "a566363bf8e33eec5cff69cc0b133be6af95edb3e7c2d54f00f821df875bbb40",
+      "heading": "Cohort studies",
+      "excerpt": "Cohort studies select subjects based on their exposure status. The study subjects should be at risk of the outcome under investigation at th",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380973508"
+    },
+    {
+      "id": "P15",
+      "hash": "c64765f94d84ef182857b118c74b16eed847ea07215b47c1248e88df7fb5344d",
+      "heading": "Causal inference",
+      "excerpt": "Although epidemiology is sometimes viewed as a collection of statistical tools used to elucidate the associations of exposures to health out",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380973508"
+    },
+    {
+      "id": "P16",
+      "hash": "8cd5514de6616d7273bae01ba2a7e25738933c8b59f7a2cf213e138749be2c1f",
+      "heading": "Bradford Hill criteria",
+      "excerpt": "In 1965, Austin Bradford Hill proposed a series of considerations to help assess evidence of causation, which have come to be commonly known",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380973508"
+    },
+    {
+      "id": "P17",
+      "hash": "2d5a9b99522e29f372b7a6bc6ba5cf36c9e3feb5485222ff166e4ef1e13bdfba",
+      "heading": "Legal interpretation",
+      "excerpt": "Epidemiological studies can only go to prove that an agent could have caused, but not that it did cause, an effect in any particular case:",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380973508"
+    },
+    {
+      "id": "P18",
+      "hash": "1ba0c57b4100855cee40c38184f37ef7e2006912230ee6709eb74afc043ff086",
+      "heading": "Population-based health management",
+      "excerpt": "Modern population-based health management is complex, requiring a multiple set of skills (medical, political, technological, mathematical, e",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380973508"
+    },
+    {
+      "id": "P19",
+      "hash": "6080619275c47eee3919431eab7688834c7ce559159f582545f785913402ab54",
+      "heading": "Applied field epidemiology",
+      "excerpt": "Applied epidemiology is the practice of using epidemiological methods to protect or improve the health of a population. Applied field epidem",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380973508"
+    },
+    {
+      "id": "P20",
+      "hash": "70ca1554bafa5f33596c7e779c1f50767f98df46e532510729b7c8c61dfc2ab0",
+      "heading": "Humanitarian context",
+      "excerpt": "As the surveillance and reporting of diseases and other health factors become increasingly difficult in humanitarian crisis situations, the ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380973508"
+    },
+    {
+      "id": "P21",
+      "hash": "ed55cc8fc7fc464158808e45e44565080b142993b75a67ad41274000e5e7b439",
+      "heading": "Epidemic wave",
+      "excerpt": "The concept of waves in epidemics has implications especially for communicable diseases. A working definition for the term \"epidemic wave\" i",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380973508"
+    }
+  ],
+  "updatedAt": "2026-10-21T13:02:37.416Z"
 }
