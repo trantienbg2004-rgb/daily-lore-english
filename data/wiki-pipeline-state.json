@@ -7496,10 +7496,10 @@
       "checkedAt": null
     },
     "8410651": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
+      "revisionId": 1376825430,
+      "checkedAt": "2026-10-21T08:12:07.196Z"
     },
     "8419649": {
       "status": "PENDING",
@@ -9866,7 +9866,7 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-10-21T08:12:05.437Z",
+  "updatedAt": "2026-10-21T08:12:07.200Z",
   "dailyUsage": {
     "day": "2026-10-21",
     "calls": 4,
