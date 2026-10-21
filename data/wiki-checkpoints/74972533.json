@@ -2,9 +2,205 @@
   "pageId": 74972533,
   "title": "Gang Suppression Force",
   "topic": "Conflict & Security",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1381219152,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381219152",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-21T07:57:08.236Z"
+  "reason": "1 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Kenyan force arriving in haiti.png",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/67/Kenyan_force_arriving_in_haiti.png/960px-Kenyan_force_arriving_in_haiti.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Kenyan force arriving in haiti.png",
+        "caption": "GSF Kenyan police unit arriving in Port-au-Prince, 2025",
+        "alt": "",
+        "description": "MSS arriving in Haiti",
+        "date": "2025-05-14",
+        "section": "Deployment",
+        "position": 0,
+        "provenance": {
+          "credit": "International Crisis Group",
+          "license": "CC BY 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Kenyan_force_arriving_in_haiti.png",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Gang_Suppression_Force",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381219152",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "113d3323f3a6eb67063237f4a1c20ae4d698d0b1a2b893d33be3387622b95fcd",
+      "heading": "Lead",
+      "excerpt": "The Gang Suppression Force (GSF), previously the Multinational Security Support Mission (MSS), is an international police and military force",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381219152"
+    },
+    {
+      "id": "P2",
+      "hash": "95ec8d2912d2c76552e49f5325dbe8d3bb88d84d1d902faa2fbb0016f5a0b819",
+      "heading": "Lead",
+      "excerpt": "The MSS mission was led by Kenya and coordinated with the Haitian National Police; although it is endorsed by the UNSC it is not a United Na",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381219152"
+    },
+    {
+      "id": "P3",
+      "hash": "22e01fa963dc635ecec8d6382ae4ba833683426cbc9f61a3cd8713bc86aa3f3b",
+      "heading": "Lead",
+      "excerpt": "In October 2025, the United Nations Security Council adopted Resolution 2793, which transformed the MSS into the Gang Suppression Force (GSF",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381219152"
+    },
+    {
+      "id": "P4",
+      "hash": "48d9759070a96a9dec58ff9dc05c1658db914bb72deff1c4910a446420f117ea",
+      "heading": "Background",
+      "excerpt": "Haiti's government collapsed after the July 2021 assassination of President Jovenel Moïse, after which the prime minister, Ariel Henry, assu",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381219152"
+    },
+    {
+      "id": "P5",
+      "hash": "a00343b5d60fcaf217161e7d929c4625766770d4e7fb0621e361b310a77602b4",
+      "heading": "Background",
+      "excerpt": "Since 2021, the Haitian National Police (HNP) has suffered 100 fatalities and declined by over 7,000 personnel; by the end of 2023, only aro",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381219152"
+    },
+    {
+      "id": "P6",
+      "hash": "971fc1072efd8763a262740492bcf03dfbc097483a5fc0b15c0342652077f84b",
+      "heading": "UNSC Resolution 2699",
+      "excerpt": "One year after the Haitian government's formal request to the U.N. for international assistance, the United States and Ecuador drafted Unite",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381219152"
+    },
+    {
+      "id": "P7",
+      "hash": "981a2bf0e06616401601a3e5da2fc076bbb92d7b7f109b6f5c19496b81fa3c02",
+      "heading": "Preparations",
+      "excerpt": "The United States has pledged $200 million to the mission and an additional $100 million in humanitarian aid. Canada announced $123 million ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381219152"
+    },
+    {
+      "id": "P8",
+      "hash": "0a28b443b85c6f65b8863b052d136fc2214ea8091ced66adc0937d0e638d847c",
+      "heading": "Deployment",
+      "excerpt": "On 25 June 2024, Kenya's first contingent of 400 elite police officers landed in Port-au-Prince's international airport after months of dela",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381219152"
+    },
+    {
+      "id": "P9",
+      "hash": "719c89e69924f468853493fc3cc39d972ddc17426a0cd557d492e40619132425",
+      "heading": "Transition to GSF",
+      "excerpt": "In October 2025, United Nations Security Council adopted Resolution 2793 co-penned by the United States and Panama, to transform the MSS it ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381219152"
+    },
+    {
+      "id": "P10",
+      "hash": "d4764f2d04e2f016543a2a82e9b536928b3a2bb6c109cfb17ede5cd0ee3248fc",
+      "heading": "Haiti",
+      "excerpt": "In a 2023 survey, 70% of Haitians said they favor the deployment of an international armed force to fight the gangs, as authorized by the Un",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381219152"
+    },
+    {
+      "id": "P11",
+      "hash": "c6572c16bb3b9fe6d2d6ff834a2f78fdcda8d9722be8c499ed4cca8e7b7de97b",
+      "heading": "United States",
+      "excerpt": "As the United Nations sanctions an independent Kenya-led multinational mission to the tumultuous nation of Haiti, Sir Ronald Sanders, Antigu",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381219152"
+    },
+    {
+      "id": "P12",
+      "hash": "ab51b6f7b68b8c4a5ddf48166b24aeb51fab3ba8644fbc758ba5e9ae77738dbe",
+      "heading": "Kenya",
+      "excerpt": "Nominated Senator Karen Nyamu asserts that Kenya's leadership in the UN-backed mission in Haiti will bolster its global reputation as a depe",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381219152"
+    },
+    {
+      "id": "P13",
+      "hash": "4fed548cf5571ab6e66c52cba2d7b0c13ffdd663d9fc1a0458beeb4579dcd96e",
+      "heading": "Personnel",
+      "excerpt": "As of June 2025, 991 personnel were deployed in Haiti, which include mostly Kenyans but also 150 Guatemalans, 78 Salvadorans, 23 Jamaicans, ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381219152"
+    },
+    {
+      "id": "P14",
+      "hash": "14775fd2ed10fb669d3ef7666be180d116c84a40efd318be9658079648018d88",
+      "heading": "Analysis",
+      "excerpt": "In June 2025, a year after their deployment, Kenyan President William Ruto declared that the MSS made little progress in fighting the gangs.",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381219152"
+    },
+    {
+      "id": "P15",
+      "hash": "4ee0c338707c82bf364b8c2d1d16bab093a8d0c8206bcc5c666631ec40e21a16",
+      "heading": "Casualties",
+      "excerpt": "On 24 February 2025, the Mission suffered its first casualty when a Kenyan Police officer, Samuel Tompei Kaetuai, was killed in a gunfight w",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381219152"
+    },
+    {
+      "id": "P16",
+      "hash": "5eed3945bb9fa7ed4eb31e48fb1f0c015bd34addf40223b8fe1b26d3d4513514",
+      "heading": "Background",
+      "excerpt": "Haiti has previously been subject to international policing missions. U.S. troops and U.N. civilian police conducted patrols in the mid-1990",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381219152"
+    },
+    {
+      "id": "P17",
+      "hash": "9b152e14e2f88c9763f6bc1b2d8fa2add571000f37fdf583bac772c16d9e0ee6",
+      "heading": "UNSC Resolution 2699",
+      "excerpt": "According to Le Monde, the controversial history of past United Nations interventions in Haiti and widespread opposition to American involve",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381219152"
+    },
+    {
+      "id": "P18",
+      "hash": "1df347f740b22b6c812331a72440e3aed1a3b975c74959025c77069b17e67d88",
+      "heading": "UNSC Resolution 2699",
+      "excerpt": "In February 2024, conferences in Brazil and Guyana regarding the mission were followed by additional commitments by various countries; the U",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381219152"
+    },
+    {
+      "id": "P19",
+      "hash": "0e2797cb3b3932b2caf999b5c5767309ccdfe066503898b34be59183fee32274",
+      "heading": "Preparations",
+      "excerpt": "On 30 March 2024, 70 Canadian soldiers from the 1st Battalion, Royal 22e Régiment were deployed to Jamaica to provide training and support t",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381219152"
+    },
+    {
+      "id": "P20",
+      "hash": "29d179e10641d19388c5c5890062a6b5ed7162c55e4751679a1967b9f164eded",
+      "heading": "Preparations",
+      "excerpt": "On 20 May 2024, Toussaint Louverture International Airport in the capital of Haiti was reopened after being closed for three months. The US ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381219152"
+    },
+    {
+      "id": "P21",
+      "hash": "55d98b6660c42ae215e27ed1e6de403857f8d8270c1da2880f44169c0907abb9",
+      "heading": "Preparations",
+      "excerpt": "On 23 May 2024, in recognition of its willingness to lead the mission, US President Joe Biden announced that Kenya will be granted a Major n",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381219152"
+    },
+    {
+      "id": "P22",
+      "hash": "cfd244e7dcdc68656cbc90dd931c94cd1eb4d64061bf597c88d3320872232886",
+      "heading": "Preparations",
+      "excerpt": "On 25 February 2025, UN Secretary-General Antonio Guterres said that the MSS will not transition to a UN peacekeeping force and instead, wil",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381219152"
+    },
+    {
+      "id": "P23",
+      "hash": "fd2c45b70c057d1b4157d8e0d58986f96453c2fde4a858691ea1eca141d9f156",
+      "heading": "Deployment",
+      "excerpt": "Three months into the Multinational Security Support (MSS) mission, little progress has been made, with no tangible improvement in Haiti's s",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381219152"
+    },
+    {
+      "id": "P24",
+      "hash": "c4f9e3deb8e36a9d758211c4cd53525182675aeca002056a8b9357c2e280038b",
+      "heading": "Deployment",
+      "excerpt": "6 soldiers of the Royal Bahamas Defence Force (from an initially promised 150) were deployed on 18 October 2024. Then on 3 January 2025, 75 ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381219152"
+    }
+  ],
+  "updatedAt": "2026-10-21T07:57:09.547Z"
 }
