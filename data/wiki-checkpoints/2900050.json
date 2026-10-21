@@ -2,9 +2,192 @@
   "pageId": 2900050,
   "title": "Invention Secrecy Act",
   "topic": "Science & Technology",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1380686519,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380686519",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-21T07:56:55.831Z"
+  "reason": "2 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:AVRO CANADA VZ-9AV AVROCAR at Wright Patterson AFB.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/63/AVRO_CANADA_VZ-9AV_AVROCAR_at_Wright_Patterson_AFB.jpg/960px-AVRO_CANADA_VZ-9AV_AVROCAR_at_Wright_Patterson_AFB.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:AVRO CANADA VZ-9AV AVROCAR at Wright Patterson AFB.jpg",
+        "caption": "The Avrocar at Wright-Patterson Air Force Base. Under the ISA, Air Force Materiel Command determined which inventions were restricted on behalf of the United States Air Force.",
+        "alt": "",
+        "description": "This craft is on display in the research and development extension.",
+        "date": "2012-02-18 15:52:03",
+        "section": "Invention Secrecy Act screening process",
+        "position": 1,
+        "provenance": {
+          "credit": "Alvintrusty",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:AVRO_CANADA_VZ-9AV_AVROCAR_at_Wright_Patterson_AFB.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Invention_Secrecy_Act",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380686519",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:1790- United States utility patents issued, by year - bar chart.svg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ab/1790-_United_States_utility_patents_issued%2C_by_year_-_bar_chart.svg/960px-1790-_United_States_utility_patents_issued%2C_by_year_-_bar_chart.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:1790- United States utility patents issued, by year - bar chart.svg",
+        "caption": "Timeline of United States utility patents issued by year.",
+        "alt": "",
+        "description": "Bar chart showing number of United States utility patents issued by year, from 1790 Data source for Version 4 (through 30 Dec 2025): https://ppubs.uspto.gov/pubwebapp/#Basic-Search (Patent Office basic search). Search for \"20241231\".pd. and then for \"20251230\".pd. and click \"Search\" button. Sort resultant lists by patent number and find highest patent numbers for these two dates, and subtract the 2024 number (12,185,647) from the 2025 number (12,514,138) to determine number of patents issued during 2025 (328,491). Data source for Version 3 (thr",
+        "date": "2023-05-11",
+        "section": "Types of Secrecy Orders",
+        "position": 2,
+        "provenance": {
+          "credit": "RCraig09",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:1790-_United_States_utility_patents_issued,_by_year_-_bar_chart.svg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Invention_Secrecy_Act",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380686519",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Information Security Oversight Office (ISOO) 2011 Annual Report to the President.pdf"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "4433703e672d361d277c3bfb90afa51cbd173b82a6bc941bd3b80fadf727aa69",
+      "heading": "Lead",
+      "excerpt": "The Invention Secrecy Act of 1951 (Pub. L. 82–256, 66 Stat. 3, enacted February 1, 1952, codified at 35 U.S.C. ch. 17) is a United States fe",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380686519"
+    },
+    {
+      "id": "P2",
+      "hash": "d43fbd291060a9c7e9b69d76a41290fc286e447f8e54001b2dcbd2c6a3d108b8",
+      "heading": "Lead",
+      "excerpt": "The statute empowers selected federal agencies to decide whether a patent application poses a risk and to compel its classification under se",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380686519"
+    },
+    {
+      "id": "P3",
+      "hash": "9906b3c1173d2e6382e64d4d1bdf57f93565920160fca1b32fe34cc16209bd56",
+      "heading": "Lead",
+      "excerpt": "Critics, including attorneys and academics, describe the system as lacking oversight and limiting avenues of appeal. Commentators have liken",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380686519"
+    },
+    {
+      "id": "P4",
+      "hash": "b4e845ab9746832bf0eed85b20150ddfb64700b2c0018c2eb58559130d149c3f",
+      "heading": "Lead",
+      "excerpt": "Other critics contend that secrecy orders chill research, stall economic development, and entrench the military–industrial complex by sideli",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380686519"
+    },
+    {
+      "id": "P5",
+      "hash": "3566e378f7c1e0c75a3d8f1965bd712951242fce1ae5ce8984895cc3d13e202f",
+      "heading": "World War I and II background",
+      "excerpt": "Invention secrecy in the United States can be traced to at least the 1910s, and it accelerated during the 1940s alongside the classified dev",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380686519"
+    },
+    {
+      "id": "P6",
+      "hash": "8ee41ad1b08e7ee8d2c5e299ede8e47819a7c38629f6a72bcb83139af99637bf",
+      "heading": "Invention Secrecy Act of 1951",
+      "excerpt": "The Invention Secrecy Act (ISA) of 1951 made such patent secrecy permanent, though the order to suppress any invention must be renewed each ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380686519"
+    },
+    {
+      "id": "P7",
+      "hash": "e8d28d4bb08a054b6bee888848c0f93e5436c9f0b6e335d086185760afaada38",
+      "heading": "Invention Secrecy Act screening process",
+      "excerpt": "Under this Act, defense agencies provide the Patent Office with a classified list of sensitive technologies in the form of the \"Patent Secur",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380686519"
+    },
+    {
+      "id": "P8",
+      "hash": "80cea6bb903efb0f4579cb4405d461551fa36402206f8b813006a7aed3413941",
+      "heading": "Types of Secrecy Orders",
+      "excerpt": "There are three known types of secrecy orders that can be enforced, referred to as Types I, II, and III. Violation of a United States govern",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380686519"
+    },
+    {
+      "id": "P9",
+      "hash": "8410ad8fc912e7162ca1759895c06b02e9b73b5203ae95be5c06715e04b2ba79",
+      "heading": "Known public examples of restricted technologies",
+      "excerpt": "Notable examples include inventors who publicly resisted secrecy orders. In 1958, the Associated Press reported on Vienna-born physicist Ott",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380686519"
+    },
+    {
+      "id": "P10",
+      "hash": "0ea7f71151b26208603909c69e8c1364b58e421bfae189dd9b8dae06081116f2",
+      "heading": "Criticism and concerns",
+      "excerpt": "Secrecy orders can bar public disclosure entirely, prohibit sales to anyone outside the defense sector, block exports, and seal restricted a",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380686519"
+    },
+    {
+      "id": "P11",
+      "hash": "4358cc8f41f0c314336c76c4ff9b756fb90bd9b455712744ef9f245daf065a7c",
+      "heading": "Handling and evaluation of ideas and patents",
+      "excerpt": "Critics argue that the ISA lacks published standards for deciding which inventions may be placed under secrecy orders and provides no clear ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380686519"
+    },
+    {
+      "id": "P12",
+      "hash": "956fcd70828127f58ef1697290d8f4046c9407e0bb134686f54fd7e377f5ff98",
+      "heading": "Impacts on economics and creation of inventions",
+      "excerpt": "Multiple studies conclude that the ISA reduces the overall number of new inventions disclosed, because scientific and technical progress typ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380686519"
+    },
+    {
+      "id": "P13",
+      "hash": "621a3d57431d0d86b94e82de28469877f63a0a0f9e837b1aee2b0133fa00f913",
+      "heading": "Declassified Category Review Lists",
+      "excerpt": "The Federation of American Scientists and Steven Aftergood obtained Category Review Lists through Freedom of Information Act requests after ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380686519"
+    },
+    {
+      "id": "P14",
+      "hash": "5b7d115670ed4079114721eee727eadac13c6c9afecc05575679ad6bba18acfc",
+      "heading": "World War I and II background",
+      "excerpt": "...detrimental to the public safety or defense, or may assist the enemy or endanger the successful prosecution of the war, [the Commissioner",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380686519"
+    },
+    {
+      "id": "P15",
+      "hash": "13e513dca5d91a676b671844d0b941e34106ac931076f23358fdf93d4d8e4a3f",
+      "heading": "World War I and II background",
+      "excerpt": "In 1940, the United States Patent and Trademark Office (USPTO) and the military created the Army and Navy Patent Advisory Board, later renam",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380686519"
+    },
+    {
+      "id": "P16",
+      "hash": "97f72a34268335f6c5ad29a48fce0f7bf902347985d4a11b3fd7430d97fdfd54",
+      "heading": "World War I and II background",
+      "excerpt": "The Commissioner lifted most secrecy orders in 1945, rescinding more than 6,500 patents, though several hundred remained in place on nationa",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380686519"
+    },
+    {
+      "id": "P17",
+      "hash": "5a84b7195bc9daf7b6da39a4319086630f8bc0a2879045ec2fe807d8fa39a1b4",
+      "heading": "Invention Secrecy Act of 1951",
+      "excerpt": "The ISA authorized the Commissioner of Patents to flag applications, including those submitted by private inventors, for review by defense a",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380686519"
+    },
+    {
+      "id": "P18",
+      "hash": "183dbbdac7b189f6aec9782ed71cdc8e7b4c054091428449c7c739d3219619ff",
+      "heading": "Invention Secrecy Act of 1951",
+      "excerpt": "Under a secrecy order, a patent may be withheld from export, limited in access to defense agencies, or placed under classification. By law, ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380686519"
+    }
+  ],
+  "updatedAt": "2026-10-21T07:56:57.200Z"
 }
