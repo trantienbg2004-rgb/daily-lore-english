@@ -2,10 +2,10 @@
   "pageId": 650360,
   "title": "Olympic sports",
   "topic": "Sports",
-  "status": "EVIDENCE_READY",
+  "status": "RETRY_LATER",
   "revisionId": 1373879238,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373879238",
-  "reason": "3 rights-verified embedded images",
+  "reason": "Gemini circuit open",
   "rights": [
     {
       "status": "REJECTED",
@@ -260,5 +260,5 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373879238"
     }
   ],
-  "updatedAt": "2026-10-21T01:40:51.927Z"
+  "updatedAt": "2026-10-21T01:40:53.081Z"
 }
