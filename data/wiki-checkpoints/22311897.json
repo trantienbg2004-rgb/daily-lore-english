@@ -2,9 +2,232 @@
   "pageId": 22311897,
   "title": "Conservation and restoration of stained glass",
   "topic": "Culture",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1367759750,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1367759750",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-21T22:34:41.697Z"
+  "reason": "5 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Sainte-chapelle.JPG"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Glass trinity church.JPG",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/36/Glass_trinity_church.JPG/960px-Glass_trinity_church.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Glass trinity church.JPG",
+        "caption": "Figure 2 – Faded faces on a panel form Holy Trinity Church in Stratford-upon-Avon, UK.",
+        "alt": "",
+        "description": "Fading paint on a glass panel from Holy Trinity Church in Stratford-upon-Avon, UK. October 2008.",
+        "date": "20 October 2008 (according to Exif data)",
+        "section": "Deterioration of the glass",
+        "position": 1,
+        "provenance": {
+          "credit": "A. B. Solomon",
+          "license": "CC BY 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Glass_trinity_church.JPG",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Conservation_and_restoration_of_stained_glass",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1367759750",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Clerestory trinity church.JPG",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9b/Clerestory_trinity_church.JPG/960px-Clerestory_trinity_church.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Clerestory trinity church.JPG",
+        "caption": "Figure 3 – The leaded clerestory windows of Holy Trinity Church have been weakened by time and the elements.",
+        "alt": "",
+        "description": "The leaded clerestory windows of Holy Trinity Church, Stratford-upon-Avon. October 2008.",
+        "date": "2008-10-18",
+        "section": "Structural deformation and deterioration",
+        "position": 2,
+        "provenance": {
+          "credit": "A. B. Solomon",
+          "license": "CC BY 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Clerestory_trinity_church.JPG",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Conservation_and_restoration_of_stained_glass",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1367759750",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Glass notre dame paris.JPG"
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Protective grill.JPG"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Conservation yorkminster.JPG",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/be/Conservation_yorkminster.JPG/960px-Conservation_yorkminster.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Conservation yorkminster.JPG",
+        "caption": "Figure 6 – A view of the conservation-related scaffolding around the east end of York Minster, England",
+        "alt": "",
+        "description": "Conservation work taking place at York Minster, York, UK. December 2008.",
+        "date": "2008-12-19",
+        "section": "Other options and considerations",
+        "position": 5,
+        "provenance": {
+          "credit": "A. B. Solomon",
+          "license": "CC BY 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Conservation_yorkminster.JPG",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Conservation_and_restoration_of_stained_glass",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1367759750",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Windowreplica yorkminster.JPG",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2f/Windowreplica_yorkminster.JPG/960px-Windowreplica_yorkminster.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Windowreplica yorkminster.JPG",
+        "caption": "Figure 7 – A digitally produced replica of the Great East Window of York Minster",
+        "alt": "",
+        "description": "Digital replica created to obscure conservation work taking place at York Minster, York, UK. December 2008.",
+        "date": "17 December 2008 (according to Exif data)",
+        "section": "Other options and considerations",
+        "position": 6,
+        "provenance": {
+          "credit": "A. B. Solomon",
+          "license": "CC BY 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Windowreplica_yorkminster.JPG",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Conservation_and_restoration_of_stained_glass",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1367759750",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Conserved glass yorkminster.JPG",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6b/Conserved_glass_yorkminster.JPG/960px-Conserved_glass_yorkminster.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Conserved glass yorkminster.JPG",
+        "caption": "Figure 8 – Detail of a removed and restored panel from York Minster",
+        "alt": "",
+        "description": "Conserved stained glass at York Minster, York, UK. December 2008.",
+        "date": "2008-12-16",
+        "section": "Other options and considerations",
+        "position": 7,
+        "provenance": {
+          "credit": "A. B. Solomon",
+          "license": "CC BY 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Conserved_glass_yorkminster.JPG",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Conservation_and_restoration_of_stained_glass",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1367759750",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "f4684efdf896b76125254d48c2572f99dd2a80fed166e5cb0d92bfe80887e998",
+      "heading": "Lead",
+      "excerpt": "Stained glass conservation refers to the protection and preservation of historic stained glass for present and future generations. It involv",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1367759750"
+    },
+    {
+      "id": "P2",
+      "hash": "ea381fda2e04a8223f327bc2173d6abe4cbed478e4552b51488444ff4f2c55b8",
+      "heading": "Lead",
+      "excerpt": "Stained glass is lauded as one of the most beautiful and compelling forms of architectural decoration; however, it is also one of the most v",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1367759750"
+    },
+    {
+      "id": "P3",
+      "hash": "f08437a38c4bdc913502d0cd6d148b9933ac7dff0ba37792f503158a266abb00",
+      "heading": "Lead",
+      "excerpt": "Owing to the delicate nature of the materials, and the incalculable historic and aesthetic value of stained glass work, any and all treatmen",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1367759750"
+    },
+    {
+      "id": "P4",
+      "hash": "d9536cc131032cc982f51cb096824adc08685fb01dd6e06f4b7d3224881ca861",
+      "heading": "Deterioration of stained glass",
+      "excerpt": "The primary aim of conservation is to slow the rate of deterioration, caused by various factors, to the point where the loss of significance",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1367759750"
+    },
+    {
+      "id": "P5",
+      "hash": "c7989a5d6882c1a15c4bccc6d54487dfd3a7993fcff421accc04ccfccd8868c6",
+      "heading": "Causes",
+      "excerpt": "The vast majority of stained glass was originally created to function as part of the building envelope, separating the interior of the struc",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1367759750"
+    },
+    {
+      "id": "P6",
+      "hash": "d436e6b56a5fbd7b0a68ec2706d34ce775c7bcffe2b5465727d8a89c811ebd8e",
+      "heading": "Deterioration of the glass",
+      "excerpt": "Although glass as a material is known for its chemical stability resistance to natural deterioration, impurities, and variations in glass co",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1367759750"
+    },
+    {
+      "id": "P7",
+      "hash": "ae31368d35b8c3ef3460fa5c4dcb3b01e7dc4c992eea1a94f8a5649d922feb78",
+      "heading": "Breakdown of paints, enamels, stains",
+      "excerpt": "As previously mentioned, the paint/stain layer may suffer as the result of deterioration within the fabric of the glass itself; however, thi",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1367759750"
+    },
+    {
+      "id": "P8",
+      "hash": "2cfc9b5400a93dc53fb1a09f56a409d351a11f5dfc88b2ba82b55065c630ffd8",
+      "heading": "Structural deformation and deterioration",
+      "excerpt": "The breakdown of the skeletal structure that holds the glass in place, such as damage to tracery and the corrosion of metal cames and fixing",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1367759750"
+    },
+    {
+      "id": "P9",
+      "hash": "6348679c777afcdde8741805d65acce7b208863b28763ac483237613b2c3aaf0",
+      "heading": "Creating a conservation plan",
+      "excerpt": "In many ways, proper conservation is as much about research and documentation as it is about 'hands-on' conservation treatments and restorat",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1367759750"
+    },
+    {
+      "id": "P10",
+      "hash": "299e0fbad13cccc504631b9cfc91e076bdefe816d2970757eb90e33e12de8932",
+      "heading": "Basic conservation philosophy",
+      "excerpt": "In J. Sloan's discussion of stained glass conservation in the United States, the author gives the following list of ethical and philosophica",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1367759750"
+    },
+    {
+      "id": "P11",
+      "hash": "ebaa217db8b880aae97198f209d857e0856a9f655e35055273a9f144e6f53e44",
+      "heading": "Research",
+      "excerpt": "Owing to the incredible amount of chemical and methodological variability to be found when dealing with stained glass, research into the gen",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1367759750"
+    },
+    {
+      "id": "P12",
+      "hash": "8d3882464d1439e44da8d34a3d4f84b27800004f32ecf969db68464626d05adf",
+      "heading": "Decision making and implementation",
+      "excerpt": "Decisions should be made using the information gathered during research, and implemented by experienced conservators. Caretakers and project",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1367759750"
+    }
+  ],
+  "updatedAt": "2026-10-21T22:34:47.743Z"
 }
