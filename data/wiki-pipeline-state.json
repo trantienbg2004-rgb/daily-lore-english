@@ -9506,10 +9506,10 @@
       "checkedAt": "2026-10-21T03:10:32.468Z"
     },
     "77205158": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
+      "revisionId": 1377665064,
+      "checkedAt": "2026-10-21T22:34:17.711Z"
     },
     "77221081": {
       "status": "EVIDENCE_READY",
@@ -9866,7 +9866,7 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-10-21T22:34:11.430Z",
+  "updatedAt": "2026-10-21T22:34:17.711Z",
   "dailyUsage": {
     "day": "2026-10-21",
     "calls": 37,
