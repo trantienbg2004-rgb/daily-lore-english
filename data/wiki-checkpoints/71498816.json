@@ -2,9 +2,107 @@
   "pageId": 71498816,
   "title": "Anthropology of technology",
   "topic": "Science & Technology",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1364349109,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1364349109",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-21T13:53:19.810Z"
+  "reason": "1 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Mendel II 072 r.jpg",
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/a/a5/Mendel_II_072_r.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "fileTitle": "File:Mendel II 072 r.jpg",
+        "caption": "Blacksmith at work, Nuremberg c. 1606",
+        "alt": "",
+        "description": "Adam Dürr, Neberschmit (Neberschmied) Transkription und weitere Informationen siehe http://www.nuernberger-hausbuecher.de/75-Amb-2-317b-72-r/data",
+        "date": "1606",
+        "section": "",
+        "position": 0,
+        "provenance": {
+          "credit": "AnonymousUnknown author",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Mendel_II_072_r.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Anthropology_of_technology",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1364349109",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "57a04524aa84952659f9250cbbfa21876ddb0098ea4c10c916ac65f345b5bebe",
+      "heading": "Lead",
+      "excerpt": "The anthropology of technology (AoT) is a unique, diverse, and growing field of study that bears much in common with kindred developments in",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1364349109"
+    },
+    {
+      "id": "P2",
+      "hash": "29b4116c7fa27d6c767208f404ba04cce861986745e073f08b14f0ecc0255a6e",
+      "heading": "Lead",
+      "excerpt": "AoT encompasses not only the study of the processes and products of modern science and engineering, but also the techniques of small-scale s",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1364349109"
+    },
+    {
+      "id": "P3",
+      "hash": "ca064dec2ddd4f99fa55910e0ae0cb16c9645d74ee9cbd6a0f9a35b8fea18afd",
+      "heading": "Lead",
+      "excerpt": "Although most AoT scholars continue to employ the term “technology,” the modern use of the term often connotes the technological products of",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1364349109"
+    },
+    {
+      "id": "P4",
+      "hash": "d9636e3346124e0a084808a10451dbd691ffe54235f9ad0caa95c9f44452edfc",
+      "heading": "Lead",
+      "excerpt": "Anthropologists of technology, as they study traditional activities such as pottery manufacture and use, prefer to speak of techniques or sk",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1364349109"
+    },
+    {
+      "id": "P5",
+      "hash": "d7bbf5d183b6bcdd1569a3a9936369af96716dfd3e19aead610991f8ca579720",
+      "heading": "History of the Anthropology of Technology",
+      "excerpt": "Nineteenth century anthropologists focused on technology as a mechanism for classifying and ranking human societies. A common assumption was",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1364349109"
+    },
+    {
+      "id": "P6",
+      "hash": "16c0482b0ef6e4c3ccedaca7e81e08f918aab302fdddbeb17136d522059e6cb3",
+      "heading": "The French Influence",
+      "excerpt": "The first steps toward today's Anthropology of Technology were undertaken by francophone anthropologists, and reflected a twentieth-century ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1364349109"
+    },
+    {
+      "id": "P7",
+      "hash": "9a84890bf7ba3641d3f45474e835dd4d67479c0d1161c82bbd6b931cdff4bb20",
+      "heading": "Recent Developments",
+      "excerpt": "The 1980s and 1990s saw significant development in Anthropology of Technology, thanks in part to pioneering developments in the history and ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1364349109"
+    },
+    {
+      "id": "P8",
+      "hash": "0d0f7773b7382c13387932cd75803025a44e7c71f4422ce054d276a666396bf0",
+      "heading": "Archaeological Applications of the Anthropology of Technology",
+      "excerpt": "Most historians and sociologists of technology have worked in industrial societies, where ample information about the thoughts and motivatio",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1364349109"
+    },
+    {
+      "id": "P9",
+      "hash": "7728b79a259a631ff7dd6528a18d83159062121f57cb844e99a0ecaa796260fa",
+      "heading": "The Anthropology of Technology and Emerging Technologies",
+      "excerpt": "Spurring the development of AoT in the 2000s is the stunning penetration of advanced technologies throughout the world and across social div",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1364349109"
+    },
+    {
+      "id": "P10",
+      "hash": "b2eaccbfa8f83592f829d4b4cf95bd3b07b714b39df2445d064d1fe3ab6c475b",
+      "heading": "Recent Developments",
+      "excerpt": "Some of the most interesting work in the Anthropology of Technology has been conducted in sub-Saharan African iron metallurgy, where local i",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1364349109"
+    }
+  ],
+  "updatedAt": "2026-10-21T13:53:25.160Z"
 }
