@@ -8774,10 +8774,10 @@
       "checkedAt": null
     },
     "55204891": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
+      "revisionId": 1381236590,
+      "checkedAt": "2026-10-21T13:02:11.530Z"
     },
     "55574351": {
       "status": "PENDING",
@@ -9866,7 +9866,7 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-10-21T13:02:09.494Z",
+  "updatedAt": "2026-10-21T13:02:11.531Z",
   "dailyUsage": {
     "day": "2026-10-21",
     "calls": 4,
