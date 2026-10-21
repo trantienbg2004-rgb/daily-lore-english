@@ -2,9 +2,221 @@
   "pageId": 1141372,
   "title": "Yiddishist movement",
   "topic": "Culture",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1380742239,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380742239",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-21T13:48:55.416Z"
+  "reason": "3 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Czernowitz Conference anniversary 1928.png"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Yiddish writers Odessa.png",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/eb/Yiddish_writers_Odessa.png/960px-Yiddish_writers_Odessa.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Yiddish writers Odessa.png",
+        "caption": "Yiddish writers from Odessa (left to right) Mendele Moykher-Sforim, Alter Druyanow, Yehoshu'a Ravnitski, Ḥayim Naḥman Bialik, and Yitshak Dov Berkowitz, 1910",
+        "alt": "",
+        "description": "Yiddish writers (left to right) Mendele Moykher-Sforim (Sholem Yankev Abramovitsh), Alter Druyanow, Yehoshu‘a Ḥana Ravnitski, Ḥayim Naḥman Bialik, and Yitsḥak Dov Berkowitz, Odessa, ca. 1910. YIVO",
+        "date": "1910-02-01",
+        "section": "19th-century origins",
+        "position": 1,
+        "provenance": {
+          "credit": "Unknown authorUnknown author",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Yiddish_writers_Odessa.png",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Yiddishist_movement",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380742239",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Czern-conf leaders.jpg",
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/f/fd/Czern-conf_leaders.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "fileTitle": "File:Czern-conf leaders.jpg",
+        "caption": "A widely publicized postcard depicting attendees of the conference: Avrom Reyzen, I. L. Peretz, Sholem Asch, Chaim Zhitlowsky, and Hersh Dovid Nomberg (l-r).",
+        "alt": "",
+        "description": "A widely publicized postcard depicting attendees of the 1908 en:Czernowitz Conference: en:Avrom Reyzen, en:I. L. Peretz, en:Sholem Asch, en:Chaim Zhitlowsky, and en:Hersh Dovid Nomberg (l-r).",
+        "date": "1908",
+        "section": "Status of Yiddish",
+        "position": 2,
+        "provenance": {
+          "credit": "theyouthwillsleepnolonger",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Czern-conf_leaders.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Yiddishist_movement",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380742239",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Bund election poster.svg"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Karol Marx.B005.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b9/Karol_Marx.B005.jpg/960px-Karol_Marx.B005.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Karol Marx.B005.jpg",
+        "caption": "Yiddish translation of Das Kapital, translated by Doctor Jacob Abraham Maryson, published by Maryson's publishing company, the Kropotkin Literatur Gezelshaft, New York, 1917.",
+        "alt": "",
+        "description": "דאָס קאַפּיטאַל",
+        "date": "2007-07-22",
+        "section": "United States",
+        "position": 4,
+        "provenance": {
+          "credit": "Joystick.pl",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Karol_Marx.B005.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Yiddishist_movement",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380742239",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "3e1cd8354a8c038a027a333c6c1a1ffa598fd945c26e3502c37738a98885fa87",
+      "heading": "Lead",
+      "excerpt": "Yiddishism is a cultural and linguistic movement that advocates and promotes the use of Yiddish, the traditional vernacular of Ashkenazi Jew",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380742239"
+    },
+    {
+      "id": "P2",
+      "hash": "228837a6cb88fd1994992c30e9b4dd70b810785a1f1c4dfe77eea5e8167fd582",
+      "heading": "Lead",
+      "excerpt": "The movement sharply lost momentum in the course of the 20th century, hampered by the language's low prestige in a context of both Jewish as",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380742239"
+    },
+    {
+      "id": "P3",
+      "hash": "49b4266979edfd15724627e9a299b8bcf2a7af2a66fa31e07ee888f6576ff6b2",
+      "heading": "19th-century origins",
+      "excerpt": "The Haskalah, or Jewish Enlightenment, movement that arose in the late 18th century played a large role in rejecting Yiddish as a Jewish lan",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380742239"
+    },
+    {
+      "id": "P4",
+      "hash": "2d9f16aee83e720c8b00b84b2a7f3089fc9399f09a6218df927e7edd1eb4e708",
+      "heading": "19th-century origins",
+      "excerpt": "Joshua Mordechai Lifshitz, who is considered the father of Yiddishism and Yiddish lexicography, circulated an essay entitled “The Four Class",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380742239"
+    },
+    {
+      "id": "P5",
+      "hash": "512c6a9f1aa4fa72e30a79ce41a39483e6aeec59fba285d30372107ff909ffd8",
+      "heading": "19th-century origins",
+      "excerpt": "Although an adherent of the Enlightenment, [Lifshitz] broke with its sterile anti-Yiddish philosophy, to become an early ideologue of Yiddis",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380742239"
+    },
+    {
+      "id": "P6",
+      "hash": "eda233e0b954582a35f9e5989b34d6923ad1577d275a59388902b105945eac64",
+      "heading": "The Czernowitz Conference",
+      "excerpt": "The Conference for the Yiddish Language (קאָנפֿערענץ פֿאָר דער ייִדישער שפּראַך, Konferents for der Yidisher Shprakh), commonly known as the",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380742239"
+    },
+    {
+      "id": "P7",
+      "hash": "b05e0b165582391c4cb5694c82c5844fabb3213a947f47ae8702d22d2aadcfdf",
+      "heading": "Conference",
+      "excerpt": "There was no political party or organizational affiliation, and invitations were distributed by geographic proximity. The General Jewish Lab",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380742239"
+    },
+    {
+      "id": "P8",
+      "hash": "0df9a7549082f207f92d6bff1781a80498e1b1d653d8f515b14ed034455beb92",
+      "heading": "Status of Yiddish",
+      "excerpt": "Pinski correctly expected there would be a question of the status of Yiddish. Attendees questioned if Yiddish was only \"a\" national language",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380742239"
+    },
+    {
+      "id": "P9",
+      "hash": "36280954a4fbb92f6931b707f70fee37df24e998fa5e284f96b57fd056acbc21",
+      "heading": "Legacy",
+      "excerpt": "The conference ultimately only had a symbolic value, but marked a high point of developing Yiddish culture, increasing its prestige. It did ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380742239"
+    },
+    {
+      "id": "P10",
+      "hash": "2711c3c082533dfab84bbfc592cd01e8f23786cd7bf6f655cf93a47c1e82eb03",
+      "heading": "YIVO",
+      "excerpt": "YIVO (Yiddish Scientific Institute) was established in Wilno, Poland (Vilnius, now part of Lithuania) in 1925. YIVO was initially proposed b",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380742239"
+    },
+    {
+      "id": "P11",
+      "hash": "f45cfde6041aa48ff573e0a8223c9a380a1cf873c60b5c823094588c3bb3b4c5",
+      "heading": "Soviet Russia – The Bund",
+      "excerpt": "The General Jewish Labour Bund in Lithuania, Poland and Russia, a secular Jewish socialist party in the Russian Empire, was founded in Vilni",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380742239"
+    },
+    {
+      "id": "P12",
+      "hash": "6d82855498d3b0875d6d98e9937774af998502cbb68b34cce90b01bb974ca9e8",
+      "heading": "United States",
+      "excerpt": "As many Eastern European Jews began to emigrate to the United States, the movement became very active there, especially in New York City. On",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380742239"
+    },
+    {
+      "id": "P13",
+      "hash": "3d4a0e24b41c38cd611b45a727ec9511c2de4ddb13f2eb1b5ae43582f6d68d4b",
+      "heading": "Contemporary Yiddishism",
+      "excerpt": "However, the Holocaust's destruction of the extensive European Jewish Yiddish-speaking communities, both secular and religious led to a larg",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380742239"
+    },
+    {
+      "id": "P14",
+      "hash": "6534250f2937b3290ea6eea5999de9965a8c45d0e33e01ef462a17d4ef4964f0",
+      "heading": "19th-century origins",
+      "excerpt": "Several prominent Yiddish authors also emerged in this time, transforming the perception of Yiddish from a \"jargon\" of no literary value int",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380742239"
+    },
+    {
+      "id": "P15",
+      "hash": "d0a8bb39a4a687c4c842eb667c4ff72c124e7e78a1fa4be8af92ace7f555b535",
+      "heading": "Conference",
+      "excerpt": "Solomon Birnbaum, Nathan's son, kept the minutes, which were lost or destroyed during World War I. The agenda attempted to avoid politics, b",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380742239"
+    },
+    {
+      "id": "P16",
+      "hash": "e4f2efc8be4efc6c88a0457c4162c56bdcc60d0a91face9750e42f3e345fd558",
+      "heading": "Status of Yiddish",
+      "excerpt": "Meanwhile, Zionist and religious attendees felt that pro-Yiddish sentiments impacted the revival of Hebrew. Some were deeply upset when Hebr",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380742239"
+    },
+    {
+      "id": "P17",
+      "hash": "e77fbddbeb7f4a72a45628fc42a796690d407a5d3afd4f21b959e4c6b2f7c205",
+      "heading": "Status of Yiddish",
+      "excerpt": "Nomberg proposed a resolution that was ultimately adopted, which deemed Yiddish was a national language of the Jewish people. It was a compr",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380742239"
+    },
+    {
+      "id": "P18",
+      "hash": "58a91f6434474a6c088cd898a53486f8a1d77b7ee070eb893472ec012cb8189a",
+      "heading": "Legacy",
+      "excerpt": "Modern scholarly assessment varies, with Philip Kutner noting the conference was a failure, but also held that it legitimized what was until",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380742239"
+    }
+  ],
+  "updatedAt": "2026-10-21T13:49:01.273Z"
 }
