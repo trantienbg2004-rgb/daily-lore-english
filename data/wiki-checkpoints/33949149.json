@@ -2,9 +2,252 @@
   "pageId": 33949149,
   "title": "History of hearing aids",
   "topic": "Science & Technology",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1361337377,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1361337377",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-21T13:01:35.208Z"
+  "reason": "3 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Madame de Meuron.jpg"
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:King goa's chair.jpg"
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Rein hearing aid catalog.jpg"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Vacuum tube hearing aid use 1933.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/44/Vacuum_tube_hearing_aid_use_1933.jpg/960px-Vacuum_tube_hearing_aid_use_1933.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Vacuum tube hearing aid use 1933.jpg",
+        "caption": "A 1933 ad for early vacuum tube hearing aids.",
+        "alt": "",
+        "description": "Illustration on the cover of an electronics magazine of use of the first mass market vacuum tube hearing aids in 1933. Amplifying hearing aids, made possible by the invention of the triode vacuum tube by Lee De Forest in 1906, had just come on the market a few years before, and were a great improvement over previous crude electric hearing aids that used the amplifying ability of a carbon microphone. The hearing aid consisted of a box about the size of a loaf of bread, with a built-in microphone, that the user directed toward the speaking person",
+        "date": "1933-12",
+        "section": "Electronic hearing aids",
+        "position": 3,
+        "provenance": {
+          "credit": "Unknown authorUnknown author",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Vacuum_tube_hearing_aid_use_1933.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/History_of_hearing_aids",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1361337377",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Museum of Medicine Berlin Germany Telephone hearing aids.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c5/Museum_of_Medicine_Berlin_Germany_Telephone_hearing_aids.jpg/960px-Museum_of_Medicine_Berlin_Germany_Telephone_hearing_aids.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Museum of Medicine Berlin Germany Telephone hearing aids.jpg",
+        "caption": "These German hearing aids date from around 1920 to 1950. They include an attachment similar to a telephone receiver. Museum of Medicine, Berlin, Germany.",
+        "alt": "",
+        "description": "Early 20th century German hearing aids designed with parts similar to telephone receivers. The hearing aids displayed date from approximately 1920 to 1950. Museum of Medicine, Berlin, Germany.",
+        "date": "2012-07-11",
+        "section": "Electronic hearing aids",
+        "position": 4,
+        "provenance": {
+          "credit": "we-make-money-not-art",
+          "license": "CC BY-SA 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Museum_of_Medicine_Berlin_Germany_Telephone_hearing_aids.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/History_of_hearing_aids",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1361337377",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Hearing aid 1980s close up.jpg"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Oticon Bluetooth hearing aids.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/96/Oticon_Bluetooth_hearing_aids.jpg/960px-Oticon_Bluetooth_hearing_aids.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Oticon Bluetooth hearing aids.jpg",
+        "caption": "Oticon hearing aids to be used with Bluetooth wireless devices.",
+        "alt": "",
+        "description": "Oticon brand hearings aids for bluetooth devices, used by people with impaired hearing.",
+        "date": "2012-07-11",
+        "section": "Digital hearing aid",
+        "position": 6,
+        "provenance": {
+          "credit": "ikesters",
+          "license": "CC BY-SA 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Oticon_Bluetooth_hearing_aids.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/History_of_hearing_aids",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1361337377",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "f791dcf505632b5cdcfc5eeba0a6e67e146b8b6406caac132340e57aa5731241",
+      "heading": "Lead",
+      "excerpt": "The first hearing aid was created in the 17th century. The movement toward modern hearing aids began with the creation of the telephone, and",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1361337377"
+    },
+    {
+      "id": "P2",
+      "hash": "352b113b5c0f695fc0a34f5e32c02ca1a80313e21bcf13d4c1c32439f35cb438",
+      "heading": "Lead",
+      "excerpt": "The invention of the carbon microphone, transmitters, digital signal processing chip or DSP, and the development of computer technology help",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1361337377"
+    },
+    {
+      "id": "P3",
+      "hash": "9f748c8a799f546ee828428a9a7b93c89a99e3b640596db26c6b91b41389a5a3",
+      "heading": "Ear trumpet",
+      "excerpt": "The use of ear trumpets for the partially deaf dates back to the 17th century. By the late 18th century, their use was becoming increasingly",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1361337377"
+    },
+    {
+      "id": "P4",
+      "hash": "78d35d659cd0bbd3adf6ea23d580e09b5b6dfa1a092ac315da66f078b5504ae1",
+      "heading": "Ear trumpet",
+      "excerpt": "The first firm to begin commercial production of the ear trumpet was established by Frederick C. Rein in London in 1800. As well as producin",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1361337377"
+    },
+    {
+      "id": "P5",
+      "hash": "4845f44309de5553a874dc84841ca699ad9b727745af5fc6dc9a78c615740389",
+      "heading": "Ear trumpet",
+      "excerpt": "Ear trumpets were famously used by Beethoven around 1814 when the composer's hearing deteriorated. The ones that he used were made by his fr",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1361337377"
+    },
+    {
+      "id": "P6",
+      "hash": "3cb25339082a917e2f6cb4ce8be9c1b756de9355d40aa2545db19a2aeea0acca",
+      "heading": "Electronic hearing aids",
+      "excerpt": "The first electronic hearing aids were constructed after the invention of the telephone and microphone in the 1870s and 1880s. The technolog",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1361337377"
+    },
+    {
+      "id": "P7",
+      "hash": "0e02276cf12e8f87f47667a5f194fcbe6d141e668c6a7866787feaa638985818",
+      "heading": "Transistor hearing aids",
+      "excerpt": "The development of transistors in 1948 by Bell Laboratories led to major improvements to the hearing aid. The transistor was invented by Joh",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1361337377"
+    },
+    {
+      "id": "P8",
+      "hash": "9fa87ce1cafa42bbb6e1ddbb4c1ab424dae1a4bb512f2bcb7510ec503b961bfe",
+      "heading": "Digital hearing aid",
+      "excerpt": "Beginning in the early 1960s, Bell Telephone Laboratories created digital processing for creating both speech and audio signals on a large m",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1361337377"
+    },
+    {
+      "id": "P9",
+      "hash": "eabfe81307f4475c974657d10c0a04e2943c6258e9c4740da9f89a0cf807fb35",
+      "heading": "Ear trumpet",
+      "excerpt": "Rein was commissioned to design a special acoustic chair for the ailing King John VI of Portugal in 1819. The throne was designed with ornat",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1361337377"
+    },
+    {
+      "id": "P10",
+      "hash": "a092fc6f46b0f26712923cd53375cbfc99c84c64e0b0907284637efc689a9e66",
+      "heading": "Ear trumpet",
+      "excerpt": "Toward the late 19th century, hidden hearing aids became increasingly popular. Rein pioneered many notable designs, including his 'acoustic ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1361337377"
+    },
+    {
+      "id": "P11",
+      "hash": "853d37f7374bc42ab107ca03755d3b2c8593ed7f17bad640f74d7887e907e621",
+      "heading": "Electronic hearing aids",
+      "excerpt": "The first electric hearing aid called the Akouphone, was created by Miller Reese Hutchison in 1898. It used a carbon transmitter, so that th",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1361337377"
+    },
+    {
+      "id": "P12",
+      "hash": "53fb802b2c9b2b8827f7e8290c9bc4513b191d335a28aec5c27958acabf797ae",
+      "heading": "Electronic hearing aids",
+      "excerpt": "One of the first manufacturers of the electronically amplified hearing aid was the Siemens company in 1913. Their hearing aids were bulky an",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1361337377"
+    },
+    {
+      "id": "P13",
+      "hash": "2c5f382ce6a43bff2a5eca80c775610b0bc2b8704a77a4e4ce4209462fc988b8",
+      "heading": "Electronic hearing aids",
+      "excerpt": "The first vacuum tube hearing aid was patented by a Naval engineer Earl Hanson in 1920. It was called the Vactuphone and used the telephone ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1361337377"
+    },
+    {
+      "id": "P14",
+      "hash": "75127dec1b4164954cc9574a12c6fec3e9014ac938131c733fb241e73ceca364",
+      "heading": "Electronic hearing aids",
+      "excerpt": "During the 1920s and 1930s, the vacuum tube hearing aid became more successful and began to decrease in size with better miniaturization tec",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1361337377"
+    },
+    {
+      "id": "P15",
+      "hash": "99721814e8167fb86655a5118236cdf24d407b8c0a2168529d212bc089e16ccf",
+      "heading": "Electronic hearing aids",
+      "excerpt": "Military technological advances that occurred in World War II helped the development of hearing aids. One of the major advances that World W",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1361337377"
+    },
+    {
+      "id": "P16",
+      "hash": "13d454edaaa3dd728976352949341650c500f4e935f490f52ac2d020e1e3ecb7",
+      "heading": "Transistor hearing aids",
+      "excerpt": "The act of putting transistors into hearing aids happened so quickly that the new hearing aids were not properly tested before release. It w",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1361337377"
+    },
+    {
+      "id": "P17",
+      "hash": "93916516e5d0a2cda72b539971019d21483acc6030c56907ec6093a92f9d4c9b",
+      "heading": "Transistor hearing aids",
+      "excerpt": "Zenith was the first company to realize the problem with transistors was the body heat of individuals. After coming to this conclusion, the ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1361337377"
+    },
+    {
+      "id": "P18",
+      "hash": "1f05c84fbeeee742b4a004d623f19a0ae29bec5c288adb3ff5ccd7b484fe7724",
+      "heading": "Digital hearing aid",
+      "excerpt": "In the 1970s, the microprocessor was created. This microprocessor helped to open up the door to miniaturization of the digital hearing aid. ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1361337377"
+    },
+    {
+      "id": "P19",
+      "hash": "7a2f8105cd35ad39426ac112a862b3bd99f95e9455f9e685f9041749f1107d67",
+      "heading": "Digital hearing aid",
+      "excerpt": "Also in the 1970s came the creation of the hybrid hearing aid in which the analog components of a conventional hearing aid consisting of amp",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1361337377"
+    },
+    {
+      "id": "P20",
+      "hash": "c8b69e413c522a098fa325544179fcb1c1fd29e50efb9cb5af3294f69fba74a5",
+      "heading": "Digital hearing aid",
+      "excerpt": "The hybrid device was effective from a practical point of view because of the low power consumption and compact size. At that time, low-powe",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1361337377"
+    },
+    {
+      "id": "P21",
+      "hash": "0deab11b658ac3df80e3a75cd38bf70f68255eba2674eda01723a51e5a86a005",
+      "heading": "Digital hearing aid",
+      "excerpt": "A hybrid hearing aid was developed by Etymotic Design. A little later, Stephan Mangold and Arne Leijon created a programmable multi-channel ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1361337377"
+    }
+  ],
+  "updatedAt": "2026-10-21T13:01:36.897Z"
 }
