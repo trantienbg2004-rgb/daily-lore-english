@@ -2,9 +2,214 @@
   "pageId": 6137001,
   "title": "California hide trade",
   "topic": "Economy",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1307841200,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1307841200",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-21T07:55:53.541Z"
+  "reason": "4 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Hide Droughing.jpg",
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/e/e4/Hide_Droughing.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "fileTitle": "File:Hide Droughing.jpg",
+        "caption": "Illustration from the 1840 book Two Years Before the Mast",
+        "alt": "",
+        "description": "Illustration of Hide Droghing in 1830s Mexican Alta California, part of the California Hide Trade. From the 1911 edition of the 1840 book \"Two Years Before the Mast\" , written by Richard Henry Dana.",
+        "date": "1911",
+        "section": "",
+        "position": 0,
+        "provenance": {
+          "credit": "E. Boyd Smith",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Hide_Droughing.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/California_hide_trade",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1307841200",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Vaqueros.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ac/Vaqueros.jpg/960px-Vaqueros.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Vaqueros.jpg",
+        "caption": "A Californio rancher takes in cattle, a duty that would begin the process of the California Hide Trade.",
+        "alt": "",
+        "description": "Painting of a Mexican Vaquero in action roping cattle during 1830s Mexican California.",
+        "date": "1877",
+        "section": "Process of trade",
+        "position": 1,
+        "provenance": {
+          "credit": "James Walker",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Vaqueros.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/California_hide_trade",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1307841200",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Maritime Fur Trade-WorldContext.png",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c6/Maritime_Fur_Trade-WorldContext.png/960px-Maritime_Fur_Trade-WorldContext.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Maritime Fur Trade-WorldContext.png",
+        "caption": "Key hide trading ports",
+        "alt": "",
+        "description": "World map showing the context of the Maritime Fur Trade era, circa 1790 to 1840. Main sources consulted include: Gibson, James R. (1992). Otter Skins, Boston Ships, and China Goods: The Maritime Fur Trade of the Northwest Coast, 1785-1841. McGill-Queen's University Press. ISBN 0-7735-2028-7 Gibson, James R. (1997). The Lifeline of the Oregon Country: The Fraser-Columbia Brigade System, 1811-47. University of British Columbia (UBC) Press. ISBN 0774806435 Haycox, Stephen W. (2002). Alaska: An American Colony. University of Washington Press. ISBN ",
+        "date": "2010-04-10",
+        "section": "Hubs of influence",
+        "position": 2,
+        "provenance": {
+          "credit": "Pfly",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Maritime_Fur_Trade-WorldContext.png",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/California_hide_trade",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1307841200",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:USS Boston (1799).jpg",
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/3/3e/USS_Boston_%281799%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "fileTitle": "File:USS Boston (1799).jpg",
+        "caption": "The USS Boston, a vessel similar to those trading in California ports",
+        "alt": "",
+        "description": "",
+        "date": "1802date QS:P571,+1802-00-00T00:00:00Z/9date QS:P571,+1802-00-00T00:00:00Z/9",
+        "section": "International political ramifications and multicultural interactions",
+        "position": 3,
+        "provenance": {
+          "credit": "Jean-Jérôme Baugean",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:USS_Boston_(1799).jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/California_hide_trade",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1307841200",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "f688afd62abdc46645d5ba8888de9cc37f80e26f80378e37179d2a122ed3b9ef",
+      "heading": "Lead",
+      "excerpt": "The California hide trade was a trading system of various products based in cities along the California coastline, operating from the early ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1307841200"
+    },
+    {
+      "id": "P2",
+      "hash": "0112073d855c48b48dd1b82903dfc95914c3da9925c8b171256635e52af09961",
+      "heading": "Lead",
+      "excerpt": "In exchange for hides and tallow from cattle owned by California ranchers, sailors from around the globe, often representing corporations, s",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1307841200"
+    },
+    {
+      "id": "P3",
+      "hash": "ab0d032acdbdcf45ff4b6154c140ab08d92829a3bc3f2d8fd2c9fc47f99d8224",
+      "heading": "Lead",
+      "excerpt": "Sailing ships purchased each hide for one American dollar, to sell for a profit at a distant port. Such hides were sold for three dollars in",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1307841200"
+    },
+    {
+      "id": "P4",
+      "hash": "4722c5c3fc8becd37fbb52a7e41b9725d329fd8c50d42f84dcc0d707cdb8ff07",
+      "heading": "Process of trade",
+      "excerpt": "The California hide trade was based on the export of hide, horns and tallow during the early nineteenth century from around 1810. Rancheros ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1307841200"
+    },
+    {
+      "id": "P5",
+      "hash": "e7786acb296fb0c0a21df1e1ff07ee6081f7e0fdfb5596f8220835e91fcffe70",
+      "heading": "Process of trade",
+      "excerpt": "Constituting the most widely traded good, the California hides were often known as “California banknotes” due to their common use as a mediu",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1307841200"
+    },
+    {
+      "id": "P6",
+      "hash": "2165d632c45068f142c81fec9cebb985c1845499c280bb9359bfd54885956c17",
+      "heading": "Hubs of influence",
+      "excerpt": "By the mid-1820s, the hide and tallow trade, facilitated by Spanish missions and their clergy and later replaced by private ranches, represe",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1307841200"
+    },
+    {
+      "id": "P7",
+      "hash": "94aa3f8ad5e43cb6ed7a42f85cbaed60b44c4e8a0644ed7d3ccdd10109e7fed0",
+      "heading": "International political ramifications and multicultural interactions",
+      "excerpt": "The Hide Trade proved to gain momentum and come to its ultimate fruition as a result of Mexican Independence in 1821, when individual ranche",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1307841200"
+    },
+    {
+      "id": "P8",
+      "hash": "ffb106d943327045c456b3a8dd08acda9181c95a502c691b06c46cf263ad1e10",
+      "heading": "Process of trade",
+      "excerpt": "In order to take part in the exchange itself, the Mexican government, which ruled California at this time, instituted a fee for foreign ship",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1307841200"
+    },
+    {
+      "id": "P9",
+      "hash": "77aa4e3f06ca3ff43e2bcecbde7c5b90d3db48ce2dc652701872e60c5a0697f1",
+      "heading": "Process of trade",
+      "excerpt": "The settlers (Spanish speakers born in the area became known as Californios) were able to purchase any number of manufactured products from ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1307841200"
+    },
+    {
+      "id": "P10",
+      "hash": "6750adcf27a3579ce91d63f4eb6e01f1f067c6af9420ce620f86d56dfe025bc5",
+      "heading": "Hubs of influence",
+      "excerpt": "Prepared hides were taken onto Bostonian ships in California which sailed up and down the California shoreline, arriving and trading at thes",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1307841200"
+    },
+    {
+      "id": "P11",
+      "hash": "25f533a26f231934999b06e47540572ab63ffb90bdcbb47410e2823802ed131e",
+      "heading": "Hubs of influence",
+      "excerpt": "Goods from the trade would reach various corners of the globe including Canton in the Far East, Lima in Peru in South America, and Boston in",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1307841200"
+    },
+    {
+      "id": "P12",
+      "hash": "89de4783096cc844edab933d079fd566b694e55c8412483102aa591d30069f4b",
+      "heading": "International political ramifications and multicultural interactions",
+      "excerpt": "Though many nations including Russia and the United Kingdom came and traded along the California coastline at major ports, contributing to t",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1307841200"
+    },
+    {
+      "id": "P13",
+      "hash": "74034da8bab945c7c8a91096e71dc34dd80c0f6dc8c05c3ed3ccd28e798e6d16",
+      "heading": "International political ramifications and multicultural interactions",
+      "excerpt": "Competition between the two powers escalated over dominance in the trade, with the United States eventually gaining the upper hand. The flou",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1307841200"
+    },
+    {
+      "id": "P14",
+      "hash": "c421d38a880aca61af9bb15c3ba11f1612dd141f1bc14c5506c73b3d7f21b3f9",
+      "heading": "International political ramifications and multicultural interactions",
+      "excerpt": "California, during the tenure of the successful hide trade, represented a significant crossroads of various cultures, a frontier shaped by d",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1307841200"
+    },
+    {
+      "id": "P15",
+      "hash": "1bd2ca170e76fa821dd7e6210db51bf7ceef817b874808f4c31520fc918400cc",
+      "heading": "International political ramifications and multicultural interactions",
+      "excerpt": "Stories and accounts of the region such as Richard Henry Dana Jr.’s Two Years Before the Mast and Alfred Robinson’s Life in California, seen",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1307841200"
+    }
+  ],
+  "updatedAt": "2026-10-21T07:55:55.090Z"
 }
