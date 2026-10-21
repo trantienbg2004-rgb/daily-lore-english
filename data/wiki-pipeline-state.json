@@ -9356,10 +9356,10 @@
       "checkedAt": "2026-10-21T13:02:01.610Z"
     },
     "74683957": {
-      "status": "EVIDENCE_READY",
-      "reason": "1 rights-verified embedded images",
+      "status": "RETRY_LATER",
+      "reason": "editorial call budget exhausted",
       "revisionId": 1381139894,
-      "checkedAt": "2026-10-21T22:36:47.406Z"
+      "checkedAt": "2026-10-21T22:36:53.484Z"
     },
     "74692541": {
       "status": "EVIDENCE_READY",
@@ -9866,7 +9866,7 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-10-21T22:36:47.406Z",
+  "updatedAt": "2026-10-21T22:36:53.485Z",
   "dailyUsage": {
     "day": "2026-10-21",
     "calls": 37,
