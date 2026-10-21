@@ -2,9 +2,187 @@
   "pageId": 2538448,
   "title": "Concession (politics)",
   "topic": "Politics",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1364269803,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1364269803",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-21T22:33:47.789Z"
+  "reason": "2 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:President Ronald Reagan and Nancy Reagan Receive a Concession Telephone Call from Walter Mondale While at The Jorgensen Residence in Los Angeles California - DPLA - 3bfd79d380506c398b96a20baa2e2af4.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f3/President_Ronald_Reagan_and_Nancy_Reagan_Receive_a_Concession_Telephone_Call_from_Walter_Mondale_While_at_The_Jorgensen_Residence_in_Los_Angeles_California_-_DPLA_-_3bfd79d380506c398b96a20baa2e2af4.jpg/960px-thumbnail.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:President Ronald Reagan and Nancy Reagan Receive a Concession Telephone Call from Walter Mondale While at The Jorgensen Residence in Los Angeles California - DPLA - 3bfd79d380506c398b96a20baa2e2af4.jpg",
+        "caption": "Ronald Reagan receiving a concession phone call from Walter Mondale after the 1984 United States presidential election.",
+        "alt": "",
+        "description": "",
+        "date": "6 November 1984",
+        "section": "History",
+        "position": 0,
+        "provenance": {
+          "credit": "President (1981-1989 : Reagan). White House Photographic Office. 1981-1989",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:President_Ronald_Reagan_and_Nancy_Reagan_Receive_a_Concession_Telephone_Call_from_Walter_Mondale_While_at_The_Jorgensen_Residence_in_Los_Angeles_California_-_DPLA_-_3bfd79d380506c398b96a20baa2e2af4.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Concession_(politics)",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1364269803",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Dems Watching McCain Concede (3004082713).jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9a/Dems_Watching_McCain_Concede_%283004082713%29.jpg/960px-Dems_Watching_McCain_Concede_%283004082713%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Dems Watching McCain Concede (3004082713).jpg",
+        "caption": "Democrats quietly watch John McCain's 2008 concession speech.",
+        "alt": "",
+        "description": "A thoughtful crowd of celebrating Democrats quietly watch Senator John McCain make his concession speech.",
+        "date": "2008-11-04 23:19",
+        "section": "Template",
+        "position": 1,
+        "provenance": {
+          "credit": "IowaPolitics.com",
+          "license": "CC BY-SA 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Dems_Watching_McCain_Concede_(3004082713).jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Concession_(politics)",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1364269803",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "b8414f986b3400242d1fafc8d6d3f1a66bcc61fd223f4ed219c9508255623e90",
+      "heading": "Lead",
+      "excerpt": "In politics, a concession is the act of a losing candidate publicly yielding to a winning candidate after an election after the overall resu",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1364269803"
+    },
+    {
+      "id": "P2",
+      "hash": "29fa355424e202b5e73dbda486229371307c822a6f9e71752f621ed6877e195e",
+      "heading": "History",
+      "excerpt": "The first time in the United States that a candidate lost a presidential election and privately conceded was Federalist John Adams to Democr",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1364269803"
+    },
+    {
+      "id": "P3",
+      "hash": "02953146d3106a350fc33c52dba63648c98560caf708c297b7bd0420af7239de",
+      "heading": "History",
+      "excerpt": "The first \"concession telegram\" occurred when William Jennings Bryan sent William McKinley a message two days after the 1896 US presidential",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1364269803"
+    },
+    {
+      "id": "P4",
+      "hash": "58165b01e14b401e2713504bbc497f092441f619efb07f3d53f267078a46050a",
+      "heading": "History",
+      "excerpt": "Hon. Wm. McKinley, Canton, Ohio: Senator Jones has just informed me that the returns indicate your election, and I hasten to extend my congr",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1364269803"
+    },
+    {
+      "id": "P5",
+      "hash": "b8337e0ec6d45fe4d66dea781f7279a9b9c57b0eaa894b30a0eb581c249334c0",
+      "heading": "Presidential elections",
+      "excerpt": "Donald Trump has been an exception to the tradition of concession in American presidential politics, refusing to concede defeat and declarin",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1364269803"
+    },
+    {
+      "id": "P6",
+      "hash": "6ef437fefc6fb51ea0882399fdbb4ce8f6dfc08c4c6072125981f710de045e17",
+      "heading": "History",
+      "excerpt": "Over time, concession speeches were introduced aimed at the electorate, especially one's own supporters. These were first broadcast on the r",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1364269803"
+    },
+    {
+      "id": "P7",
+      "hash": "92bebb63c04df4cbf7fe4d95349721f4646e809d96fa1e7f9aed7c8c5e072b5d",
+      "heading": "Template",
+      "excerpt": "In modern U.S. elections (presidential or otherwise), a concession is usually a two-step process: first, the losing candidate makes a conces",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1364269803"
+    },
+    {
+      "id": "P8",
+      "hash": "83a447caa56d1c35a900507f6bc860c6bb52da9c3696cb168a4867c7f97ac45a",
+      "heading": "Timing of concession",
+      "excerpt": "Out of courtesy, the winner of the campaign usually waits for a concession speech, if one is forthcoming, before delivering the acceptance s",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1364269803"
+    },
+    {
+      "id": "P9",
+      "hash": "787ae7361d1f2a73a6a494e07bd605f6450cff3b268cf3782ac93f94bc031e3e",
+      "heading": "Importance",
+      "excerpt": "A concession, usually in the form of a concession speech, is considered a matter of courtesy and a gracious celebration of American democrac",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1364269803"
+    },
+    {
+      "id": "P10",
+      "hash": "1a5b6962b15cefc4b5f3f16f088b21c66aa0f8f9b2ca348a66f9193efcf4d917",
+      "heading": "Presidential elections",
+      "excerpt": "After an unexpected defeat in the 1916 election, Republican Charles Evans Hughes waited two weeks before sending a concession telegram to Pr",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1364269803"
+    },
+    {
+      "id": "P11",
+      "hash": "541a326103a4428b7994b52fd70189551879280f6e8db86192915621a48d438a",
+      "heading": "Gubernatorial elections",
+      "excerpt": "In the 2018 Georgia gubernatorial election, Democrat Stacey Abrams did not concede to Republican Brian Kemp, despite acknowledging him as go",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1364269803"
+    },
+    {
+      "id": "P12",
+      "hash": "da790d850e27f06a5e09a4e4f06b382930bef66205dec29a9bcd16f5df31327f",
+      "heading": "Senate elections",
+      "excerpt": "After losing the 2017 United States Senate special election in Alabama, Republican Roy Moore refused to concede defeat to Democrat Doug Jone",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1364269803"
+    },
+    {
+      "id": "P13",
+      "hash": "20235efbf4ea21591d163796a5687301d832a34a0d2f6d189d25d1d59c6d4f20",
+      "heading": "Belgium",
+      "excerpt": "Not all countries have a formality or tradition of concession speeches, especially not in multi-party systems, where there may be multiple c",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1364269803"
+    },
+    {
+      "id": "P14",
+      "hash": "ecebef3b212f682734297495c531d764d75b41590b957853b538d31d98070892",
+      "heading": "New Zealand",
+      "excerpt": "In the New Zealand political system, because of mixed-member proportional representation, it is difficult for one party to win enough seats ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1364269803"
+    },
+    {
+      "id": "P15",
+      "hash": "6b09771dd41b1c4b7f4cc8845b4bd0788177d1bb5b4e1a27787419daf02fec07",
+      "heading": "Peru",
+      "excerpt": "Following the 2021 Peruvian general election, Popular Force leader Keiko Fujimori, daughter of former Peruvian President Alberto Fujimori, r",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1364269803"
+    },
+    {
+      "id": "P16",
+      "hash": "fbfbcd868b2afb05eb80177d15ed617515934aca3f88fa9490254cbe5e130e1f",
+      "heading": "Philippines",
+      "excerpt": "Actor Fernando Poe Jr. did not concede to Gloria Macapagal Arroyo after the 2004 Philippine presidential election, and subsequently put the ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1364269803"
+    },
+    {
+      "id": "P17",
+      "hash": "e2cdaa4e67f6262bc88126b6a2fb0d0f0366d75cbe020064a907295d7282a3ae",
+      "heading": "United Kingdom",
+      "excerpt": "Following the 2015 general election, Labour Party leader, Ed Miliband telephoned the Conservative Party leader and Prime Minister, David Cam",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1364269803"
+    },
+    {
+      "id": "P18",
+      "hash": "a00bf27874cf7ae7b7be7701e682e7c2e2641654349129e95529d5aad1a7eb60",
+      "heading": "Template",
+      "excerpt": "A losing candidate usually thanks their supporters for their valiant efforts and points to the non-electoral successes of the campaign in bu",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1364269803"
+    }
+  ],
+  "updatedAt": "2026-10-21T22:33:53.473Z"
 }
