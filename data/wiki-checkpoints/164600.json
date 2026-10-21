@@ -2,9 +2,242 @@
   "pageId": 164600,
   "title": "General circulation model",
   "topic": "Environment",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1369828860,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369828860",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-21T13:02:31.994Z"
+  "reason": "3 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:AtmosphericModelSchematic.png"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Projected change in annual mean surface air temperature from the late 20th century to the middle 21st century, based on SRES emissions scenario A1B.png",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e6/Projected_change_in_annual_mean_surface_air_temperature_from_the_late_20th_century_to_the_middle_21st_century%2C_based_on_SRES_emissions_scenario_A1B.png/960px-Projected_change_in_annual_mean_surface_air_temperature_from_the_late_20th_century_to_the_middle_21st_century%2C_based_on_SRES_emissions_scenario_A1B.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Projected change in annual mean surface air temperature from the late 20th century to the middle 21st century, based on SRES emissions scenario A1B.png",
+        "caption": "Projected change in annual mean surface air temperature from the late 20th century to the middle 21st century, based on SRES emissions scenario A1B (credit: NOAA Geophysical Fluid Dynamics Laboratory)",
+        "alt": "In the 21st century, changes in global mean temperature are projected to vary across the world",
+        "description": "Surface air temperature change (2050s average minus 1971-2000 average), NOAA GFDL CM2.1 Climate Model, SRES A1B scenario. Description is based on the NOAA (2007a) public-domain source: This world map shows the projected change in annual mean surface air temperature from the late 20th century (1971-2000 average) to the middle 21st century (2051-2060 average). The change is in response to increasing atmospheric concentrations of greenhouse gases and aerosols based on a \"middle of the road\" estimate of future emissions. Future emissions are based ",
+        "date": "2007-02-02",
+        "section": "Emissions scenarios",
+        "position": 2,
+        "provenance": {
+          "credit": "NOAA Geophysical Fluid Dynamics Laboratory (GFDL)",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Projected_change_in_annual_mean_surface_air_temperature_from_the_late_20th_century_to_the_middle_21st_century,_based_on_SRES_emissions_scenario_A1B.png",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/General_circulation_model",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369828860",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Hadcm3-era-sst-annual.png",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/73/Hadcm3-era-sst-annual.png/960px-Hadcm3-era-sst-annual.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Hadcm3-era-sst-annual.png",
+        "caption": "SST errors in HadCM3",
+        "alt": "",
+        "description": "Sea surface temperature difference between HadCM3 and ERA-15; annual mean. ERA would not be reliable over sea ice, which has accordingly been masked out, as have the land areas. The SSTs are taken from the ERA dataset for convenience, but are input to ERA from standard sources (obs and satellites).",
+        "date": "13 June 2005 (original upload date)",
+        "section": "Model accuracy",
+        "position": 3,
+        "provenance": {
+          "credit": "William M. Connolley at English Wikipedia",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Hadcm3-era-sst-annual.png",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/General_circulation_model",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369828860",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Climate model NA annual precipitation 2002.jpg",
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/5/58/Climate_model_NA_annual_precipitation_2002.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "fileTitle": "File:Climate model NA annual precipitation 2002.jpg",
+        "caption": "North American precipitation from various models",
+        "alt": "",
+        "description": "Results of a coupled ocean-atmosphere global Climate Model Intercomparison Project (CMIP) being conducted by the w:Lawrence Livermore National Laboratory. This comparison relates to the spatial distribution of annual precipitation across w:North America. All models are compared to the \"Xie/Arkin\" observational data set. The difference between two differing observation-based data sets reflect observational uncertainties, so we would not expect any model to skillfully exceed these differences. All models are evaluated on the basis of pattern corr",
+        "date": "2005-04-11 18:13:37",
+        "section": "Model accuracy",
+        "position": 4,
+        "provenance": {
+          "credit": "Source: http://energycommerce.house.gov/107/hearings/07252002Hearing676/Karl1142.htm",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Climate_model_NA_annual_precipitation_2002.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/General_circulation_model",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369828860",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Global Warming Predictions.png"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "97e3f601d221a53cae06ead572cab53b784d38da934d90ab7cc8684da1ac6dac",
+      "heading": "Lead",
+      "excerpt": "A general circulation model (GCM) is a type of climate model. It employs a mathematical model of the general circulation of a planetary atmo",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369828860"
+    },
+    {
+      "id": "P2",
+      "hash": "96a0a51b51ce4fd3ce75b7fe0e3d1e9cc2ea40bef4f4aa3c87725c8d9aa91fda",
+      "heading": "Lead",
+      "excerpt": "Atmospheric GCMs (AGCMs) model the atmosphere and impose sea surface temperatures as boundary conditions. Coupled atmosphere-ocean GCMs (AOG",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369828860"
+    },
+    {
+      "id": "P3",
+      "hash": "39f104e80ca45a6f41480f0379bf4a13fcd3a8527065249e4fd17fa663015a3e",
+      "heading": "Lead",
+      "excerpt": "Versions designed for decade to century time scale climate applications were created by Syukuro Manabe and Kirk Bryan at the Geophysical Flu",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369828860"
+    },
+    {
+      "id": "P4",
+      "hash": "5a62a3a32111ebd6fbca0934e3535527bcbf9ce830d4e2bede36e4fa3d26ed48",
+      "heading": "Terminology",
+      "excerpt": "The acronym GCM originally stood for General Circulation Model. Recently, a second meaning came into use, namely Global Climate Model. While",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369828860"
+    },
+    {
+      "id": "P5",
+      "hash": "f99f31676185ed1548df1d5b7f7658caf87eb429d2c7d9ba721e9a7bfd1ea2d7",
+      "heading": "Projections",
+      "excerpt": "Coupled AOGCMs use transient climate simulations to project/predict climate changes under various scenarios. These can be idealised scenario",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369828860"
+    },
+    {
+      "id": "P6",
+      "hash": "66d26f96091ddfd4154599226b59d306595a31f3031d406d702bab45cdee0921",
+      "heading": "Model accuracy",
+      "excerpt": "The precise magnitude of future changes in climate is still uncertain; for the end of the 21st century (2071 to 2100), for SRES scenario A2,",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369828860"
+    },
+    {
+      "id": "P7",
+      "hash": "fc9a0212db54c49d3d58a8f8debc39971f4581f0b042f4f03a74dd32b093413a",
+      "heading": "Atmospheric and oceanic models",
+      "excerpt": "Atmospheric (AGCMs) and oceanic GCMs (OGCMs) can be coupled to form an atmosphere-ocean coupled general circulation model (CGCM or AOGCM). W",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369828860"
+    },
+    {
+      "id": "P8",
+      "hash": "88515854f13d31bd23b9ffe81d5a11f0a011b5216b5fad705b0f5ffd00f4815b",
+      "heading": "Structure",
+      "excerpt": "General Circulation Models (GCMs) discretise the equations for fluid motion and energy transfer and integrate these over time. Unlike simple",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369828860"
+    },
+    {
+      "id": "P9",
+      "hash": "2aa386c37486172c12be8f6d379a4d883ae1c7df7c65047df9cfc5336f16e968",
+      "heading": "Grid",
+      "excerpt": "The fluid equations for AGCMs are made discrete using either the finite difference method or the spectral method. For finite differences, a ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369828860"
+    },
+    {
+      "id": "P10",
+      "hash": "536fdfdf3d8a2e9eabe3f80a03c37a73b5fa7af2fb9103488ebd08fb3cfaabcf",
+      "heading": "Flux buffering",
+      "excerpt": "Some early versions of AOGCMs required an ad hoc process of \"flux correction\" to achieve a stable climate. This resulted from separately pre",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369828860"
+    },
+    {
+      "id": "P11",
+      "hash": "adf51853dd0b07b6bf2da9842648584bf39d308763d189d6441a24a9ada5dc01",
+      "heading": "Convection",
+      "excerpt": "Moist convection releases latent heat and is important to the Earth's energy budget. Convection occurs on too small a scale to be resolved b",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369828860"
+    },
+    {
+      "id": "P12",
+      "hash": "ba350d97f895dac4ce915278d1acc77c3f0d7a562b97d48ebde7c82064872135",
+      "heading": "Software",
+      "excerpt": "Most models include software to diagnose a wide range of variables for comparison with observations or study of atmospheric processes. An ex",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369828860"
+    },
+    {
+      "id": "P13",
+      "hash": "23d2592e9d511025e72d8178c211d77d4f8957162433cda3efb884a962f39b09",
+      "heading": "Emissions scenarios",
+      "excerpt": "For the six SRES marker scenarios, IPCC (2007:7–8) gave a \"best estimate\" of global mean temperature increase (2090–2099 relative to the per",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369828860"
+    },
+    {
+      "id": "P14",
+      "hash": "d0d0feba898034dc7d28532fd47749f93532128f71d9f363dfb76088356aabda",
+      "heading": "Model accuracy",
+      "excerpt": "AOGCMs internalise as many processes as are sufficiently understood. However, they are still under development and significant uncertainties",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369828860"
+    },
+    {
+      "id": "P15",
+      "hash": "970c4d0db850524e0050f0fd74829cdd2b95b9c89878c4ef26c181968b46b990",
+      "heading": "Relation to weather forecasting",
+      "excerpt": "The global climate models used for climate projections are similar in structure to (and often share computer code with) numerical models for",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369828860"
+    },
+    {
+      "id": "P16",
+      "hash": "cef8b7b35416c4d482debf8929380b3053d0c8772bcd33ef02a65dc0709d9d93",
+      "heading": "Computations",
+      "excerpt": "All climate models take account of incoming energy as short wave electromagnetic radiation, chiefly visible and short-wave (near) infrared, ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369828860"
+    },
+    {
+      "id": "P17",
+      "hash": "5c8e34e33e90632243e8d4c3b8d23b95262d566a24fff960091b558a269def7d",
+      "heading": "Earth-system models of intermediate complexity (EMICs)",
+      "excerpt": "The Climber-3 model uses a 2.5-dimensional statistical-dynamical model with 7.5° × 22.5° resolution and time step of 1/2 a day. An oceanic s",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369828860"
+    },
+    {
+      "id": "P18",
+      "hash": "ce0a938493b0e474770e651c95d94cf873722be80bee81dca0f40d081f35ea5a",
+      "heading": "Earth system models",
+      "excerpt": "GCMs can form part of Earth system models, e.g. by coupling ice sheet models for the dynamics of the Greenland and Antarctic ice sheets, and",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369828860"
+    },
+    {
+      "id": "P19",
+      "hash": "2b6acb71c69536db0730ef03ff60dc2e9b7f9f9b3ba254a956ff39adc01f29b2",
+      "heading": "History",
+      "excerpt": "In 1956, Norman Phillips developed a mathematical model that could realistically depict monthly and seasonal patterns in the troposphere. It",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369828860"
+    },
+    {
+      "id": "P20",
+      "hash": "64b5d202760045dfb6f442506ad5ac098d3613e81b98fdaf8411ebff5aae2a58",
+      "heading": "Structure",
+      "excerpt": "Three-dimensional (more properly four-dimensional) GCMs apply discrete equations for fluid motion and integrate these forward in time. They ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369828860"
+    },
+    {
+      "id": "P21",
+      "hash": "8363e992744891ead2acdee337ea81fb9014731dbe6524a5ac3d650731c9e223",
+      "heading": "Structure",
+      "excerpt": "A simple general circulation model (SGCM) consists of a dynamic core that relates properties such as temperature to others such as pressure ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369828860"
+    }
+  ],
+  "updatedAt": "2026-10-21T13:02:33.489Z"
 }
