@@ -9110,10 +9110,10 @@
       "checkedAt": "2026-10-21T03:13:33.843Z"
     },
     "67029508": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
+      "revisionId": 1377189494,
+      "checkedAt": "2026-10-21T07:39:59.720Z"
     },
     "67154389": {
       "status": "PENDING",
@@ -9866,7 +9866,7 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-10-21T07:39:57.390Z",
+  "updatedAt": "2026-10-21T07:39:59.731Z",
   "dailyUsage": {
     "day": "2026-10-21",
     "calls": 4,
