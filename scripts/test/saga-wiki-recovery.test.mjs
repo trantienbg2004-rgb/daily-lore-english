@@ -63,10 +63,12 @@ test('a repair changes only the failing CEFR page',()=>{
  const issues=validateWikiDraft(broken,{source,topic:'Politics',evidence}).errors
  const targets=repairTargets(issues)
  assert.deepEqual(targets,{'B1-B2':[4]})
- const fixed=applyWikiRepair(broken,{variants:{'B1-B2':{pages:{4:original.variants['B1-B2'].pages[3]}}}},targets)
+ const fixed=applyWikiRepair(broken,{variants:{'B1-B2':{pages:{4:original.variants['B1-B2'].pages[3]}}}},targets,issues)
  assert.deepEqual(fixed.variants['A1-A2'],original.variants['A1-A2'])
  assert.deepEqual(fixed.variants['C1-C2'],original.variants['C1-C2'])
  assert.deepEqual(validateWikiDraft(fixed,{source,topic:'Politics',evidence}).errors,[])
+ assert.throws(()=>applyWikiRepair(broken,{variants:{'B1-B2':{pages:{4:{text:'An entirely new account.',evidenceIds:['P1']}}}}},targets,issues),
+  /unrelated sentence/)
 })
 
 test('three 503 responses open the circuit after only two retries',async()=>{

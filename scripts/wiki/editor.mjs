@@ -147,7 +147,7 @@ export function validateWikiDraft(result,{source,topic,evidence}={}){
 export function wikiAuditPrompt(source,evidence,result){
  const cited=evidence.map(row=>`${row.id} [${row.heading}] ${row.text}`).join('\n\n')
  return `Audit this English-learning adaptation against ONLY the pinned Wikipedia passages below. Return JSON only.
-Check every substantive sentence in all three levels, including dates, names, superlatives, causal claims and uncertainty. A plausible claim is not enough: each claim must be directly supported by that page's cited evidence IDs. Treat debated reconstructions as uncertain in every level. Reject claims that transfer a modern simulation's limits to a historical original. Do not repair the story.
+Check every substantive sentence in all three levels, including dates, names, superlatives, causal claims and uncertainty. A plausible claim is not enough: each claim must be directly supported by that page's cited evidence IDs. Treat debated reconstructions as uncertain in every level. Reject claims that transfer a modern simulation's limits to a historical original. Also reject repeated pages, formulaic filler, a missing narrative arc, or prose plainly unsuitable for its stated CEFR level. Do not repair the story.
 Return {"accepted":true,"issues":[]} only if all pages are supported. Otherwise return {"accepted":false,"issues":[{"level":"A1-A2","page":1,"reason":"short concrete explanation"}]}.
 Title: ${source.sourceTitle}; revision: ${source.sourceRevisionId}
 PASSAGES:\n${cited}
@@ -194,7 +194,7 @@ export function supplementWikiEvidence(source,evidence,draft,errors){
  }
  return expanded
 }
-export function applyWikiRepair(draft,patch,targets){
+export function applyWikiRepair(draft,patch,targets,errors=[]){
  const next=structuredClone(draft)
  if(!patch||typeof patch!=='object'||!patch.variants)throw Error('Invalid targeted repair')
  for(const [level,items] of Object.entries(targets)){
@@ -210,6 +210,14 @@ export function applyWikiRepair(draft,patch,targets){
   }else for(const page of items.filter(Number.isInteger)){
    const replacement=incoming.pages?.[String(page)]
    if(!replacement||typeof replacement.text!=='string'||!Array.isArray(replacement.evidenceIds))throw Error('Missing repaired page')
+   const prefix=`${level}:page-${page}:`
+   const numeric=errors.map(error=>String(error).match(new RegExp(`^${prefix}unsupported-number-(?:context-)?(\\d+)$`))?.[1]).filter(Boolean)
+   if(numeric.length){
+    const before=String(next.variants[level].pages[page-1].text).split(/(?<=[.!?])\s+/)
+    const after=String(replacement.text).split(/(?<=[.!?])\s+/)
+    if(before.filter(sentence=>!numeric.some(number=>numerals(sentence).includes(number)))
+     .some(sentence=>!after.includes(sentence)))throw Error('Targeted repair changed an unrelated sentence')
+   }
    next.variants[level].pages[page-1]=replacement
   }
  }
@@ -217,7 +225,7 @@ export function applyWikiRepair(draft,patch,targets){
 }
 export function wikiRepairPrompt(source,evidence,draft,errors){
  const targets=repairTargets(errors)
- return `Repair ONLY the named English learning pages or headlines. Return JSON only: {"variants":{"A1-A2":{"pages":{"4":{"text":"...","evidenceIds":["P1"]}}}}}. Page keys are 1-based. For a page-count error return a complete 5-7 page array for that ONE level. Do not change any other level or page. Remove unsupported facts; never add a fact absent from the cited passages. Preserve 5-7 pages per level, 40-58 words on opening pages and 48-88 words on later pages. If a factual claim cannot be supported, rewrite that sentence using only direct evidence.\nTitle: ${source.sourceTitle}; revision: ${source.sourceRevisionId}\nErrors: ${JSON.stringify(errors)}\nTargets: ${JSON.stringify(targets)}\nPassages:\n${evidence.map(row=>`${row.id} [${row.heading}] ${row.text}`).join('\n\n')}\nCurrent targeted content:\n${JSON.stringify(Object.fromEntries(Object.keys(targets).map(level=>[level,draft.variants[level]])))}`
+ return `Repair ONLY the named English learning pages or headlines. Return JSON only: {"variants":{"A1-A2":{"pages":{"4":{"text":"...","evidenceIds":["P1"]}}}}}. Page keys are 1-based. For a page-count error return a complete 5-7 page array for that ONE level. Preserve all unaffected sentences VERBATIM and change only the faulty sentence or paragraph. Do not change any other level or page. Remove unsupported facts; never add a fact absent from the cited passages. Preserve 5-7 pages per level, 40-58 words on opening pages and 48-88 words on later pages. If a factual claim cannot be supported, rewrite that sentence using only direct evidence.\nTitle: ${source.sourceTitle}; revision: ${source.sourceRevisionId}\nErrors: ${JSON.stringify(errors)}\nTargets: ${JSON.stringify(targets)}\nPassages:\n${evidence.map(row=>`${row.id} [${row.heading}] ${row.text}`).join('\n\n')}\nCurrent targeted content:\n${JSON.stringify(Object.fromEntries(Object.keys(targets).map(level=>[level,draft.variants[level]])))}`
 }
 
 export async function generateWikiDraft({source,topic,apiKey,freeTierConfirmed=false,budget,fetchImpl=fetch,
@@ -250,7 +258,7 @@ export async function generateWikiDraft({source,topic,apiKey,freeTierConfirmed=f
   if(budget.maxCalls-budget.usedCalls<2)break // reserve one call for mandatory audit
   evidence=supplementWikiEvidence(source,evidence,result,validation.errors)
   const patch=await callFreeWikiGemini(wikiRepairPrompt(source,evidence,result,validation.errors),options)
-  result=applyWikiRepair(result,patch.result,targets)
+  result=applyWikiRepair(result,patch.result,targets,validation.errors)
   repairAttempts++
   await onDraft({result,repairAttempts,evidence,usage:patch.usage})
  }
