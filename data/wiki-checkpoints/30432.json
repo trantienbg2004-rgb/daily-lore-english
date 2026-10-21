@@ -2,10 +2,10 @@
   "pageId": 30432,
   "title": "Treaty",
   "topic": "Conflict & Security",
-  "status": "EVIDENCE_READY",
+  "status": "NEEDS_REVIEW",
   "revisionId": 1375829657,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375829657",
-  "reason": "4 rights-verified embedded images",
+  "reason": "Gemini returned invalid JSON; preserve candidate",
   "rights": [
     {
       "status": "REVIEW",
@@ -265,5 +265,5 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375829657"
     }
   ],
-  "updatedAt": "2026-10-21T13:28:48.679Z"
+  "updatedAt": "2026-10-21T13:29:08.477Z"
 }

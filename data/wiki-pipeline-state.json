@@ -6110,10 +6110,10 @@
       "checkedAt": "2026-10-21T03:07:43.580Z"
     },
     "30432": {
-      "status": "EVIDENCE_READY",
-      "reason": "4 rights-verified embedded images",
+      "status": "NEEDS_REVIEW",
+      "reason": "Gemini returned invalid JSON; preserve candidate",
       "revisionId": 1375829657,
-      "checkedAt": "2026-10-21T13:28:48.679Z"
+      "checkedAt": "2026-10-21T13:29:08.476Z"
     },
     "33134": {
       "status": "PENDING",
@@ -9866,7 +9866,7 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-10-21T13:29:06.210Z",
+  "updatedAt": "2026-10-21T13:29:08.478Z",
   "dailyUsage": {
     "day": "2026-10-21",
     "calls": 7,
