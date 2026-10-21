@@ -6482,10 +6482,10 @@
       "checkedAt": "2026-10-21T07:41:02.584Z"
     },
     "335535": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
+      "revisionId": 1348594744,
+      "checkedAt": "2026-10-21T13:01:52.227Z"
     },
     "351186": {
       "status": "NEEDS_REVIEW",
@@ -9866,7 +9866,7 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-10-21T13:01:50.307Z",
+  "updatedAt": "2026-10-21T13:01:52.228Z",
   "dailyUsage": {
     "day": "2026-10-21",
     "calls": 4,
