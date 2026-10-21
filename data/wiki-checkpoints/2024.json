@@ -2,9 +2,192 @@
   "pageId": 2024,
   "title": "Amber Road",
   "topic": "Economy",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1379988714,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379988714",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-21T07:40:22.937Z"
+  "reason": "1 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Baltis amber road.jpg",
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/6/67/Baltis_amber_road.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "fileTitle": "File:Baltis amber road.jpg",
+        "caption": "The ancient route from the Baltic Sea to the areas of the Roman Empire by the Mediterranean Sea",
+        "alt": "",
+        "description": "Amber way",
+        "date": "2011-02-26 19:01:04",
+        "section": "",
+        "position": 0,
+        "provenance": {
+          "credit": "Bearas",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Baltis_amber_road.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Amber_Road",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379988714",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Amber sources in Europe.jpg"
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:German Amber Roads.gif"
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Amber Road.jpg"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "b5bda7ede6840caab660f507d7a37a7476e134b5233b3aec8ffa39e6e70cf188",
+      "heading": "Lead",
+      "excerpt": "The Amber Road was an ancient trade route for the transfer of amber from coastal areas of the North Sea and the Baltic Sea to the Mediterran",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379988714"
+    },
+    {
+      "id": "P2",
+      "hash": "eeb61fc43418cf66db30a0d7d96d8587b4e4cc9c3dcf0d84168ca5fb82c7620b",
+      "heading": "Lead",
+      "excerpt": "As an important commodity, sometimes dubbed \"the gold of the north\", amber was transported from the North Sea and Baltic Sea coasts overland",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379988714"
+    },
+    {
+      "id": "P3",
+      "hash": "057452aeb12f5cefda247c83ecf2f947c7f1e3963f52540e0e062d039d025618",
+      "heading": "Lead",
+      "excerpt": "The route developed into an important trading and military route for the Roman Empire, and also formed the basis of several present-day tran",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379988714"
+    },
+    {
+      "id": "P4",
+      "hash": "c173db473189e5892bd15395c06b1cef964ae988dfdd7623ca8296cc85947f0d",
+      "heading": "Antiquity",
+      "excerpt": "The oldest trade in amber started from Sicily. The Sicilian amber trade was directed to Greece, North Africa and Spain. Sicilian amber was a",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379988714"
+    },
+    {
+      "id": "P5",
+      "hash": "97b0231eb582e2079b3433f0bbac11695d03ff83039e78ffe3528e5174253545",
+      "heading": "Antiquity",
+      "excerpt": "From at least the 16th century BC, amber was moved from Northern Europe to the Mediterranean area. The breast ornament of the Egyptian Phara",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379988714"
+    },
+    {
+      "id": "P6",
+      "hash": "b78576db655db48dc1680811e46231cce7a3fc733cfd2ed1a74203815dffe647",
+      "heading": "Known roads by country",
+      "excerpt": "EV9 The Amber Route is a long-distance cycling route between Gdańsk, Poland, and Pula, Croatia, which follows the course of the Amber Road.",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379988714"
+    },
+    {
+      "id": "P7",
+      "hash": "a204e648589948e19f92fdba55dfe618725ca50fd2e0378f3a97c7115c9d5aea",
+      "heading": "Austria",
+      "excerpt": "Near the villages of Petronell-Carnuntum and Bad Deutsch-Altenburg, the Roman ruins of Carnuntum mark a major trading site of the Amber Road",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379988714"
+    },
+    {
+      "id": "P8",
+      "hash": "3c43f8bcf8781f01e0fef871343b0c8ea6591bbe20950bd70e835d0162b56d96",
+      "heading": "Belgium",
+      "excerpt": "A small section led southwards from Antwerp and Bruges to the towns Braine-l'Alleud and Braine-le-Comte, both originally named \"Brennia-Bren",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379988714"
+    },
+    {
+      "id": "P9",
+      "hash": "d457d1d3cede79e18e73fad1dec21f4a86de74d19af5b6c145c98e00bc0e665e",
+      "heading": "Estonia",
+      "excerpt": "In Estonia, the old coastal Amber road route is going north-south along the E67 highway from Reiu in Häädemeeste Parish of Pärnu County, whe",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379988714"
+    },
+    {
+      "id": "P10",
+      "hash": "97e7862a147fa1f72fd96fefa6bdc26df9db5411cb682be13c40cbe16fba416b",
+      "heading": "France and Spain",
+      "excerpt": "Routes connected amber finding locations at Ambares (near Bordeaux), leading to Béarn and the Pyrenees. Routes connecting the amber finding ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379988714"
+    },
+    {
+      "id": "P11",
+      "hash": "65927ccd55b35aa873876e6f7e53f6caa9ab2fdb820de9d16d07e37ad55f94a1",
+      "heading": "Germany",
+      "excerpt": "Several roads connected the North Sea and Baltic Sea, especially the city of Hamburg to the Brenner Pass, proceeding southwards to Brindisi ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379988714"
+    },
+    {
+      "id": "P12",
+      "hash": "dd79d1e28ea79b9abb1ce1148ab74e23d2018de140f193a5e1312781682b1f28",
+      "heading": "Italy",
+      "excerpt": "In northern Italy, Aquileia was a major Roman city and near one end of the road where amber was found, and also shaped.",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379988714"
+    },
+    {
+      "id": "P13",
+      "hash": "fb7d2c0b9ed8d3ef0e12671abdce0615932a3c6b49fefe2255b3003e8c33a6ff",
+      "heading": "Poland",
+      "excerpt": "The shortest (and possibly oldest) road avoids alpine areas and led from the Baltic coastline (nowadays Lithuania and Poland), through Bisku",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379988714"
+    },
+    {
+      "id": "P14",
+      "hash": "5dfb3eaa07467e24ffebdafa6f86c3b0dc3fd1f9804c4411d2f53db644acb7c5",
+      "heading": "Slovenia",
+      "excerpt": "Coming from Aquileia (Italy), the Roman city of Emona (now within the Slovenian capital of Ljubljana) was on the south-west to north-east ro",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379988714"
+    },
+    {
+      "id": "P15",
+      "hash": "8ecbff037cf4960b103c94497402d5fc584a4ff5947fbd19e3ac2ee7c4e553a0",
+      "heading": "Switzerland",
+      "excerpt": "The Swiss region indicates a number of alpine roads, concentrating around the capital city Bern and probably originating from the banks of t",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379988714"
+    },
+    {
+      "id": "P16",
+      "hash": "06dce5d8cf3635a4a2dc4cbc95598aaebde917722673e44da97a61cd2fed65a3",
+      "heading": "Modern usage",
+      "excerpt": "There is an unofficial set of tourist sites stretching on a route along the Baltic coast from Gdańsk, Poland to Pärnu, Estonia called the \"A",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379988714"
+    },
+    {
+      "id": "P17",
+      "hash": "e59a130866d0d48f1a8de709ee91e2e453aac5175f628bc17c9d61b1e14223b9",
+      "heading": "Antiquity",
+      "excerpt": "In Roman times, a main route ran south from the Baltic coast (modern Lithuania), the entire north–south length of modern-day Poland (likely ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379988714"
+    },
+    {
+      "id": "P18",
+      "hash": "9e6c15f388d99f6a0122bbad40f5b6846893f9114ff8519b0f62bdc216a6ed3b",
+      "heading": "Antiquity",
+      "excerpt": "The Old Prussian towns of Kaup and Truso on the Baltic were the starting points of the route to the south. In Scandinavia the amber road pro",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379988714"
+    },
+    {
+      "id": "P19",
+      "hash": "823d3c99491eb253424ebbbfd885260c804ff4dec7cf50dabdfba7d36596618a",
+      "heading": "Modern usage",
+      "excerpt": "Dating from the 1st century BC amber deposit found in Partynice near Wrocław. It is the world's largest archaeological find of amber, estima",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379988714"
+    },
+    {
+      "id": "P20",
+      "hash": "b3c5bf5c8baec947b98dfa2aa3c6e066478272ec8bc122aca14984354ce29a41",
+      "heading": "Modern usage",
+      "excerpt": "The StudyEU Amber Road European University Alliance is a university network linked to the ancient route, formed to strengthen international ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379988714"
+    }
+  ],
+  "updatedAt": "2026-10-21T07:40:24.325Z"
 }
