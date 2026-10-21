@@ -2,9 +2,220 @@
   "pageId": 16768875,
   "title": "C. C. Pyle",
   "topic": "Sports",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1360014382,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1360014382",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-21T18:15:14.287Z"
+  "reason": "2 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Red Grange (center) signing professional contract with the Chicago Bears in November 1925 as George Halas (left) and Grange's manager C. C. Pyle look on.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/26/Red_Grange_%28center%29_signing_professional_contract_with_the_Chicago_Bears_in_November_1925_as_George_Halas_%28left%29_and_Grange%27s_manager_C._C._Pyle_look_on.jpg/960px-Red_Grange_%28center%29_signing_professional_contract_with_the_Chicago_Bears_in_November_1925_as_George_Halas_%28left%29_and_Grange%27s_manager_C._C._Pyle_look_on.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Red Grange (center) signing professional contract with the Chicago Bears in November 1925 as George Halas (left) and Grange's manager C. C. Pyle look on.jpg",
+        "caption": "Grange (center) signing his contract with the Bears, while Pyle (right) and George Halas (left) look on",
+        "alt": "",
+        "description": "Red Grange (center) signing professional contract with the Chicago Bears in November 1925 as George Halas (left) and Grange's manager C. C. Pyle look on.jpg",
+        "date": "November 1925",
+        "section": "Signing Red Grange",
+        "position": 0,
+        "provenance": {
+          "credit": "unknown (Life time: n/a)",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Red_Grange_(center)_signing_professional_contract_with_the_Chicago_Bears_in_November_1925_as_George_Halas_(left)_and_Grange%27s_manager_C._C._Pyle_look_on.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/C._C._Pyle",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1360014382",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:TIMEMagazine5Oct1925.jpg"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:One Minute to Play poster.jpeg",
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/6/68/One_Minute_to_Play_poster.jpeg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "fileTitle": "File:One Minute to Play poster.jpeg",
+        "caption": "Pyle saw to it that his name on the poster of the 1926 Red Grange silent film, One Minute to Play.",
+        "alt": "",
+        "description": "Poster for the American film One Minute to Play (1926).",
+        "date": "1926",
+        "section": "Founding the New York Yankees football team",
+        "position": 2,
+        "provenance": {
+          "credit": "Film Booking Offices of America",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:One_Minute_to_Play_poster.jpeg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/C._C._Pyle",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1360014382",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "51bc51592355d6c884d32b40cda68322053b5a1b436fd58473d687f78c1c1e53",
+      "heading": "Lead",
+      "excerpt": "Charles C. \"Charlie\" Pyle (March 26, 1882 – February 3, 1939), sometimes derisively referred to as \"Cash and Carry Pyle,\" was a theater owne",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1360014382"
+    },
+    {
+      "id": "P2",
+      "hash": "69de2fda8043b9d5530507025fd60e1ee79ef0a57d4e8eb10d149969f21df62e",
+      "heading": "Lead",
+      "excerpt": "Pyle was the founder of the New York Yankees football club in 1926, owning it until the team's demise at the end of the 1928 season.",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1360014382"
+    },
+    {
+      "id": "P3",
+      "hash": "c8c793693f202becd07269e16a8aaf799f9be85b9c033981ff855b4ef724be9b",
+      "heading": "Early life",
+      "excerpt": "Charlie Pyle was born March 26, 1882, in Delaware, Ohio, the son of a Methodist preacher. He was large and athletic, standing about 6 feet 1",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1360014382"
+    },
+    {
+      "id": "P4",
+      "hash": "f596acfbb9259eaeb079dea1246923824f03d4bac3c39c1fdaa162aebf90a2f3",
+      "heading": "Early life",
+      "excerpt": "Pyle dropped out of Ohio State University and headed west, where the loquacious and ambitious young man became involved in a series of busin",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1360014382"
+    },
+    {
+      "id": "P5",
+      "hash": "2b0a6bac4e8d6ade9013266f9dde2af585d0439f9fa6fc097dfc96ca187f9e73",
+      "heading": "Early life",
+      "excerpt": "Pyle became involved in the theater business, owning the Virginia and the Park theaters in Champaign, Illinois — home of the Illinois Fighti",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1360014382"
+    },
+    {
+      "id": "P6",
+      "hash": "daedfc4d7d167aea1cc400b9bd1a1658c186556223d2463831ad8ddc609483b9",
+      "heading": "Signing Red Grange",
+      "excerpt": "An avid football fan, Pyle spotted star Illini halfback Red Grange seated in the back row of the Virginia theater in the fall of 1924, Grang",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1360014382"
+    },
+    {
+      "id": "P7",
+      "hash": "a9361067c341fcf5c18b2de12d495340e84de2dca263044f1321eb537f760ba9",
+      "heading": "Founding the New York Yankees football team",
+      "excerpt": "Grange's contract with the Bears expired at the end of the 1925 season. Despite the deal's massive payout to the star player and his manager",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1360014382"
+    },
+    {
+      "id": "P8",
+      "hash": "d3389a95adad1a7d951b30b7491d5961be8d2df7f078c8bb2d748866c45aa045",
+      "heading": "Professional tennis promoter",
+      "excerpt": "In 1926, Pyle signed Lenglen and several of the best tennis players in the world to start the first professional tennis tour, which traveled",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1360014382"
+    },
+    {
+      "id": "P9",
+      "hash": "449b2da012c68a22a85a1e7ef5e067a9400c634838f8224ed752d73666882168",
+      "heading": "Later years and legacy",
+      "excerpt": "After managing the \"Ripley's Believe It or Not\" exhibit in the Chicago World's Fair, Pyle married comedian Elvia Allman Tourtellotte in 1937",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1360014382"
+    },
+    {
+      "id": "P10",
+      "hash": "58e792f2a8dd7f46c0e67d6a27f96fb9d8a8734e75321a504ed5823e7aa0fde5",
+      "heading": "Signing Red Grange",
+      "excerpt": "As the All-American Grange began to emerge as a national sports hero during his junior season of 1924, Pyle began to see the shifty running ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1360014382"
+    },
+    {
+      "id": "P11",
+      "hash": "24208584642f8fa49da09c1950f44d6744f15991fd7f368871ad00617ee03866",
+      "heading": "Signing Red Grange",
+      "excerpt": "\"Pyle sensed that maybe some money might be made by showing me off like a sword swallower and he asked me what I intended to do upon leaving",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1360014382"
+    },
+    {
+      "id": "P12",
+      "hash": "60a42a12c9216d2a83b26c80b6bcaaaced10b51d1fa0afe5cb813f6c7cc1573a",
+      "heading": "Signing Red Grange",
+      "excerpt": "Pyle and Grange worked out a contract drawing up an agent–client relationship, with three individuals ultimately acting in concert as manage",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1360014382"
+    },
+    {
+      "id": "P13",
+      "hash": "c3571f2b1d0933afc7819adf0efdbac92c036ba5722e55fc6b18f6691a564d76",
+      "heading": "Signing Red Grange",
+      "excerpt": "Grange later recalled that at the time \"I did not have the slightest idea of playing professional football and intended to get into some com",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1360014382"
+    },
+    {
+      "id": "P14",
+      "hash": "060b093f51b7c096f8bc3aa215a12e8bd6acc560864a72ff2678e39442f35b65",
+      "heading": "Signing Red Grange",
+      "excerpt": "With Grange's future in his hands under contract, Pyle traveled to Chicago and approached owners of the Chicago Bears, George Halas and Edwa",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1360014382"
+    },
+    {
+      "id": "P15",
+      "hash": "2a64934c1a1a8ed7628061adf03d424974f7c1b3212065b0847b0ded777a9769",
+      "heading": "Signing Red Grange",
+      "excerpt": "The Red Grange exhibition tour proved a smashing success. According to archival research by gridiron historian Chris Willis, the gross gate ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1360014382"
+    },
+    {
+      "id": "P16",
+      "hash": "fe4b68524bf4116ca408c98df3b9b166cbc99ecfef70c508798fa66554090d02",
+      "heading": "Signing Red Grange",
+      "excerpt": "Pyle also used his Hollywood connections to get Grange into pictures, with the handsome Illini hired to play the leading role of \"'Red' Wade",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1360014382"
+    },
+    {
+      "id": "P17",
+      "hash": "8eefcb15b772d54a8a37e2215121867872caf95351c9f28a0b0ea1455c48cc14",
+      "heading": "Founding the New York Yankees football team",
+      "excerpt": "Pyle sought a team in New York City as a sure-fire business proposition. However, in 1925 Tim Mara had purchased an NFL franchise for the Ne",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1360014382"
+    },
+    {
+      "id": "P18",
+      "hash": "80763ad3ce4604793f774be9f673722c5ce351d4148de8a3e9bb1b85cb09a436",
+      "heading": "Founding the New York Yankees football team",
+      "excerpt": "In this era of a struggling league with anemic attendances and no alternative revenue stream to dollars coming through the gate, Mara firmly",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1360014382"
+    },
+    {
+      "id": "P19",
+      "hash": "c6671bd04c60462e5230daa379d1f312011501a91bd56436cfa4e71256abf9fe",
+      "heading": "Founding the New York Yankees football team",
+      "excerpt": "Not to be denied, Pyle determined not only to launch his \"New York Yankees\" football team, but to form an entire new professional football l",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1360014382"
+    },
+    {
+      "id": "P20",
+      "hash": "df37e9f1b886743b8d3ef876425a202b9d5aefaabaa2f585c12d65e488f61761",
+      "heading": "Founding the New York Yankees football team",
+      "excerpt": "Pyle then took his team into the NFL for the 1927 season. As one of only twelve teams in the league and splitting the lucrative New York Cit",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1360014382"
+    },
+    {
+      "id": "P21",
+      "hash": "47d67e2ffbda2cb6fe0320c7aa133b0117ab5f4988455e2ee5a3a7cee56d6ae9",
+      "heading": "Founding the New York Yankees football team",
+      "excerpt": "Grange suffered a severe knee injury early in the 1927 system, for which he did not undergo surgery. Robbed of his ability to make explosive",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1360014382"
+    },
+    {
+      "id": "P22",
+      "hash": "e4aa35b15fb9af8b453926bf769860a1f9ceed0f801e62eef4ea05e175c39218",
+      "heading": "Founding the New York Yankees football team",
+      "excerpt": "Although the popular Red Grange remained a player and part owner of the Yankees, the number of tickets coming through the turnstile did not ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1360014382"
+    }
+  ],
+  "updatedAt": "2026-10-21T18:15:19.531Z"
 }
