@@ -63,10 +63,25 @@ test('successive free-tier editorial requests respect the per-minute spacing',as
  const budget={maxCalls:2,usedCalls:0}
  const options={apiKey:'test-key',freeTierConfirmed:true,budget,now:()=>time,
   waitImpl:async ms=>{waited+=ms;time+=ms},fetchImpl:async()=>{calls++;return {ok:true,status:200,
-   json:async()=>({candidates:[{content:{parts:[{text:'{}'}]}}]})}}}
+   json:async()=>({candidates:[{content:{parts:[{text:'{}'}]}}],
+    usageMetadata:{promptTokenCount:1,candidatesTokenCount:1,totalTokenCount:2}})}}}
  await callFreeWikiGemini('first',options)
  await callFreeWikiGemini('second',options)
  assert.equal(calls,2);assert.equal(waited,5000)
+})
+
+test('missing token usage stops further Gemini calls instead of treating usage as zero',async()=>{
+ let calls=0
+ const budget={maxCalls:3,usedCalls:0}
+ const options={apiKey:'test-key',freeTierConfirmed:true,budget,
+  fetchImpl:async()=>{calls++;return {ok:true,status:200,
+   json:async()=>({candidates:[{content:{parts:[{text:'{}'}]}}]})}}}
+ const first=await callFreeWikiGemini('draft',options)
+ assert.equal(first.usage,null)
+ assert.equal(budget.tokenAccountingUnavailable,true)
+ await assert.rejects(callFreeWikiGemini('audit',options),
+  error=>error instanceof GeminiWikiPause&&error.status==='USAGE_UNKNOWN')
+ assert.equal(calls,1)
 })
 
 test('only confirmed free-tier text models can be selected',async()=>{
