@@ -2,9 +2,194 @@
   "pageId": 38289,
   "title": "Economic depression",
   "topic": "Economy",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1371072228,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371072228",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-21T13:53:55.398Z"
+  "reason": "2 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Tompkins square riot 1874.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fb/Tompkins_square_riot_1874.jpg/960px-Tompkins_square_riot_1874.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Tompkins square riot 1874.jpg",
+        "caption": "New York City police using force to remove rioting protesters in Tompkins Square Park, 1874",
+        "alt": "",
+        "description": "Crowd driven from Tompkins Square by the mounted police, in the Tompkins Square Riot of 1874. Crowd driven from Tompkins Square by the mounted police, in the Tompkins Square Riot of 1874.",
+        "date": "31 January 1874date QS:P571,+1874-01-31T00:00:00Z/11date QS:P571,+1874-01-31T00:00:00Z/11",
+        "section": "Panic of 1837",
+        "position": 0,
+        "provenance": {
+          "credit": "Matt Morgan",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Tompkins_square_riot_1874.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Economic_depression",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371072228",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Unemployed men queued outside a depression soup kitchen opened in Chicago by Al Capone, 02-1931 - NARA - 541927.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6c/Unemployed_men_queued_outside_a_depression_soup_kitchen_opened_in_Chicago_by_Al_Capone%2C_02-1931_-_NARA_-_541927.jpg/960px-Unemployed_men_queued_outside_a_depression_soup_kitchen_opened_in_Chicago_by_Al_Capone%2C_02-1931_-_NARA_-_541927.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Unemployed men queued outside a depression soup kitchen opened in Chicago by Al Capone, 02-1931 - NARA - 541927.jpg",
+        "caption": "Unemployed men queued outside a depression soup kitchen opened in Chicago, Illinois by infamous gangster Al Capone, February 1931",
+        "alt": "",
+        "description": "The storefront sign reads \"Free Soup Coffee & Doughnuts for the Unemployed.\"",
+        "date": "February 1931date QS:P571,+1931-02-00T00:00:00Z/10date QS:P571,+1931-02-00T00:00:00Z/10",
+        "section": "Long Depression",
+        "position": 1,
+        "provenance": {
+          "credit": "Unknown authorUnknown author or not provided Unknown authorUnknown author or not provided",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Unemployed_men_queued_outside_a_depression_soup_kitchen_opened_in_Chicago_by_Al_Capone,_02-1931_-_NARA_-_541927.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Economic_depression",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371072228",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "69c43e1d2b4e9623615325b0610c39bc4ed068035e2dbb73b94df89eb0cbf804",
+      "heading": "Lead",
+      "excerpt": "An economic depression is a period of carried long-term economic downturn that is the result of lowered economic activity in one or more maj",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371072228"
+    },
+    {
+      "id": "P2",
+      "hash": "5ad378baba059d1071148def0adf3e671ec1c38ea86dda7f9f9e56e04b36d04e",
+      "heading": "Lead",
+      "excerpt": "Economic depressions may also be characterized by their length or duration, showing increases in unemployment, larger increases in unemploym",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371072228"
+    },
+    {
+      "id": "P3",
+      "hash": "3c5443affc6e1d876738191bdd1002fb0c2afae99ce2c60b16459595f3e79604",
+      "heading": "Definitions",
+      "excerpt": "In the United States the National Bureau of Economic Research determines contractions and expansions in the business cycle, but does not dec",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371072228"
+    },
+    {
+      "id": "P4",
+      "hash": "b1589381b6b8cef431df8aa9eaac9f43d76c66d995960a4ec8d2f0fac3fddc43",
+      "heading": "Definitions",
+      "excerpt": "There are also differences in the duration of depression across definitions. Some economists refer only to the period when economic activity",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371072228"
+    },
+    {
+      "id": "P5",
+      "hash": "0a2b1b1b2e79f004b55283c41977ebcbded07ee8db5e523fe054688311198648",
+      "heading": "Panic of 1837",
+      "excerpt": "The Panic of 1837 was an American financial crisis, built on a speculative real estate market. The bubble burst on 10 May 1837 in New York C",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371072228"
+    },
+    {
+      "id": "P6",
+      "hash": "0458d0221eeeab573dfea1fe94dbd419a73f9d40324f399f06d6161a9c3d999e",
+      "heading": "Definitions",
+      "excerpt": "A recession is briefly defined as a period of declining economic activity spread across the economy (according to NBER). Under the first def",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371072228"
+    },
+    {
+      "id": "P7",
+      "hash": "e05ac187a17066f01e91e8504563fdbe794f04a49846de89782d357d842c0dd4",
+      "heading": "Terminology",
+      "excerpt": "Today the term \"depression\" is most often associated with the Great Depression of the 1930s, but the term had been in use long before then. ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371072228"
+    },
+    {
+      "id": "P8",
+      "hash": "6c80d7f388bfac59fb629c2f31773b17ad0b839599a490b98fd8c09e369dc210",
+      "heading": "Occurrence",
+      "excerpt": "Due to the lack of an agreed definition and the strong negative associations, the characterization of any period as a \"depression\" is conten",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371072228"
+    },
+    {
+      "id": "P9",
+      "hash": "4d4c37252c87a200f715129f562dfcea9a766dc7e903b99ebcaaf7c8fd20956c",
+      "heading": "The General Crisis of 1640",
+      "excerpt": "Perhaps the largest depression of all time occurred during the General Crisis. The Ming Empire of China collapsed, revolutions and revolts w",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371072228"
+    },
+    {
+      "id": "P10",
+      "hash": "213b05cacc7dc8a34b65c308b331834ef0f97de08c9ab541d568a3619663462e",
+      "heading": "Great depression of 1837",
+      "excerpt": "This depression is acknowledged to be a worse depression in the United States than the later Great Depression of the 1930s. This depression ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371072228"
+    },
+    {
+      "id": "P11",
+      "hash": "fc91816342714ad0a5f99b75fd1245ac6df1e6609a74290ac07a3d407a908191",
+      "heading": "Long Depression",
+      "excerpt": "Starting with the adoption of the gold standard in Britain and the United States, the Long Depression (1873–1896) was longer than what is no",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371072228"
+    },
+    {
+      "id": "P12",
+      "hash": "b7ac73c3a7fd77322aaf0eaab8797c640376feed03c5980f995ac2de2ccba86f",
+      "heading": "Great Depression",
+      "excerpt": "The Great Depression of the 1930s affected most national economies in the world. This depression is generally considered to have begun with ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371072228"
+    },
+    {
+      "id": "P13",
+      "hash": "3f2583d248a9179a595d36b2b211d007051a26331b31fdbd9ff2d1f8cc923860",
+      "heading": "Greek depression",
+      "excerpt": "Beginning in 2009, Greece sank into a recession spurred by the Greek government-debt crisis that became a depression. The country saw an alm",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371072228"
+    },
+    {
+      "id": "P14",
+      "hash": "d2fbe1b1e2eb2f9fcd846e47a18933ffe27e48a90daf16c768e684d3c1df1e14",
+      "heading": "Post-communism depression",
+      "excerpt": "The economic crisis in the 1990s that struck former members of the Soviet Union was almost twice as intense as the Great Depression in the c",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371072228"
+    },
+    {
+      "id": "P15",
+      "hash": "362327664d198da3d66699f4771612d7eb511416c9a4291812a3b34938d8a7c8",
+      "heading": "Global",
+      "excerpt": "The late 1910s and early 1920s were marked by an economic depression that unraveled in particularly catastrophic circumstances: World War I ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371072228"
+    },
+    {
+      "id": "P16",
+      "hash": "3242f58288b5dba2afc2bd76ce2ed39b65aa49854dfc3623f9c3dc2ebb1df7bf",
+      "heading": "Regional",
+      "excerpt": "Several Latin American countries had severe downturns in the 1980s: by the Kehoe and Prescott definition of a great depression as at least o",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371072228"
+    },
+    {
+      "id": "P17",
+      "hash": "fbf98c9813b559487ade5f14cb6e49ca636a9189dd3e1a0093b3ab99eb096a88",
+      "heading": "Definitions",
+      "excerpt": "Under the second definition, depressions and recessions will always be distinct events however, having the same starting dates. This definit",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371072228"
+    },
+    {
+      "id": "P18",
+      "hash": "64905ff002d623d6a21617d8320bd9fea30baf574b4b388328bd6a5ffe17849c",
+      "heading": "Definitions",
+      "excerpt": "A useful example is a difference in the chronology of the Great Depression in the U.S. under the view of alternative definitions. Using the ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371072228"
+    },
+    {
+      "id": "P19",
+      "hash": "9b2d3391ee326d3d9c1eb7a77a0c13fc1ecc44c49faa854fe69143d63714c3f6",
+      "heading": "Terminology",
+      "excerpt": "However, in the 19th and early 20th centuries, financial crises were traditionally referred to as \"panics\", e.g., the 'major' Panic of 1907,",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371072228"
+    }
+  ],
+  "updatedAt": "2026-10-21T13:54:01.063Z"
 }
