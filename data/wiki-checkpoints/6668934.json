@@ -2,9 +2,185 @@
   "pageId": 6668934,
   "title": "Mark Monmonier",
   "topic": "History & Geography",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1378890851,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378890851",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-21T13:31:27.114Z"
+  "reason": "2 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Socialsecurityheadquarters.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5d/Socialsecurityheadquarters.jpg/960px-Socialsecurityheadquarters.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Socialsecurityheadquarters.jpg",
+        "caption": "Part of SSA headquarters in Woodlawn, Maryland",
+        "alt": "",
+        "description": "The headquarters of the Social Security Administration",
+        "date": "2010-05-12 03:13:56",
+        "section": "Student jobs and organizations",
+        "position": 0,
+        "provenance": {
+          "credit": "Coolcaesar",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Socialsecurityheadquarters.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Mark_Monmonier",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378890851",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Maxwell School of Citizenship and Public Affairs (Maxwell-Eggers complex).jpg"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:How to Lie with Maps - Flickr - byzantiumbooks.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/de/How_to_Lie_with_Maps_-_Flickr_-_byzantiumbooks.jpg/960px-How_to_Lie_with_Maps_-_Flickr_-_byzantiumbooks.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:How to Lie with Maps - Flickr - byzantiumbooks.jpg",
+        "caption": "How to lie with maps 2nd edition",
+        "alt": "",
+        "description": "We're Here! looking at maps everywhere, if you can believe that. Coincidentally, I've been reading How to Lie with Maps, but that wouldn't be needed for this group. Photo used by bucultureshock.com/map-with-no-roads/.",
+        "date": "Taken on 13 December 2016, 17:00",
+        "section": "Books",
+        "position": 2,
+        "provenance": {
+          "credit": "Bill Smith from Virginia Beach",
+          "license": "CC BY 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:How_to_Lie_with_Maps_-_Flickr_-_byzantiumbooks.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Mark_Monmonier",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378890851",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "225800e20790e93874676848e17320368a5c8cbf67841e2ba3be0f262309dd4f",
+      "heading": "Lead",
+      "excerpt": "Mark Stephen Monmonier (born February 2, 1943) is a Distinguished Professor of Geography and the Environment at the Maxwell School of Citize",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378890851"
+    },
+    {
+      "id": "P2",
+      "hash": "8cc4f4138f1e86b2faac7fdc6939e4f6f127883bb916cc6599bf502ce0158eb9",
+      "heading": "Early life",
+      "excerpt": "Monmonier was born in Baltimore, Maryland to parents John Carroll Monmonier and Martha Monmonier. His father worked for the Baltimore and Oh",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378890851"
+    },
+    {
+      "id": "P3",
+      "hash": "83d342d339fbd162d60e46c9750ebfe98fb7c85cd98092c683b464304321c7ac",
+      "heading": "Education and field",
+      "excerpt": "Monmonier first attended Johns Hopkins University to pursue a bachelor's in engineering, focusing on geophysical mechanics, under a Maryland",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378890851"
+    },
+    {
+      "id": "P4",
+      "hash": "17eda58212635bc9fdda03537ebc71f38f0310ebc60f9fc11d3ef39b3be30c40",
+      "heading": "Student jobs and organizations",
+      "excerpt": "As an undergraduate, Monmonier was a member of two honorary fraternities, Pi Tau Sigma and Tau Beta Pi. He worked as a GS-2 file clerk over ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378890851"
+    },
+    {
+      "id": "P5",
+      "hash": "cd7f65901dd62848fe77b5fc93eb7a59b6057599bce367ca0884ba16d16b5e9f",
+      "heading": "University of Rhode Island",
+      "excerpt": "After getting his Ph.D., Monmonier began his academic career as assistant professor of Geography at the University of Rhode Island in 1969, ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378890851"
+    },
+    {
+      "id": "P6",
+      "hash": "f5eb584c9429e416bfe93a4eb431b277851efaaf4627e2156cda6868b494a4fd",
+      "heading": "State University of New York at Albany",
+      "excerpt": "After a year at the University of Rhode Island, Monmonier started at State University of New York at Albany (SUNY) in 1970 as an assistant p",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378890851"
+    },
+    {
+      "id": "P7",
+      "hash": "789239e1605c6b9a61c28cd625a946de0c15b703b862de4e075135fb8148c0b1",
+      "heading": "Syracuse University",
+      "excerpt": "After learning from geographer Justin Friberg that Syracuse University was having difficulty hiring a cartography professor, and frustrated ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378890851"
+    },
+    {
+      "id": "P8",
+      "hash": "589ac407f8d43813d86d7092ad9edce4764782e9c043fb44e4e3325533e584bf",
+      "heading": "Other organizations",
+      "excerpt": "Monmonier served in numerous roles in the American Association of Geographers, and on panels advising the National Research Council and the ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378890851"
+    },
+    {
+      "id": "P9",
+      "hash": "210bd46c2a77c729a4a14900f9f41370bb2a79653c3a5e35caf0bd8e305daf6e",
+      "heading": "Research and publications",
+      "excerpt": "Monmonier's research has had multiple focuses. His early research was focused on methods of using computers to manage geographic data, and t",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378890851"
+    },
+    {
+      "id": "P10",
+      "hash": "e369875e51da4fb2875a78ad3035e776925f14f7ca108aabf5edc85a39901abf",
+      "heading": "Books",
+      "excerpt": "Monmonier has authored over 20 books, and his popular written works show a combination of serious study and a sense of humor. This is appare",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378890851"
+    },
+    {
+      "id": "P11",
+      "hash": "41f0ec6f04426afd6b18759336f74885d38823f3738f15ff2c64b02f217c249b",
+      "heading": "Cartography",
+      "excerpt": "Monmonier describes himself as an \"academic cartographer\" in his memoir. His professional work has involved teaching cartography classes and",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378890851"
+    },
+    {
+      "id": "P12",
+      "hash": "94e205e02328569f4d9902c4a323a5b62acc5a9274bb8055e155ac13cff851d5",
+      "heading": "Computer cartography",
+      "excerpt": "Monmonier's early career was dominated by studying and developing techniques in computer cartography. He was one of the early pioneers of re",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378890851"
+    },
+    {
+      "id": "P13",
+      "hash": "b02900b71cf781b636cdc4ca55e0ff20f443b2712bad43bc284a5d1252d7b3d5",
+      "heading": "History of cartography",
+      "excerpt": "Monmonier's research focuses on the twentieth-century history of cartography, in particular, map-related inventions and patents. David Woodw",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378890851"
+    },
+    {
+      "id": "P14",
+      "hash": "344b791a90996fcef99832a60204e10444f4804d586cfc7954c7af4e9489b1f1",
+      "heading": "Monmonier Algorithm",
+      "excerpt": "The \"Monmonier Algorithm\", an important research tool for geographic studies in linguistics and genetics, is based on an article titled \"Max",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378890851"
+    },
+    {
+      "id": "P15",
+      "hash": "da02beb5bf86a293755d92295ec9307fec047a65f6a2e7db6a5ce3ad98b2eb5e",
+      "heading": "Personal life",
+      "excerpt": "Monmonier married Margaret Janet (Kollner) Monmonier in 1965 after meeting her in 1964, and remained married until her death on November 9, ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378890851"
+    },
+    {
+      "id": "P16",
+      "hash": "08594c4a9156d848222d0ce5ae096b5c65457f66201ce29186275919f952d8f7",
+      "heading": "Books",
+      "excerpt": "Other of his books are aimed at more advanced audiences, or designed to serve as traditional textbooks. Computer-Assisted Cartography: Princ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378890851"
+    },
+    {
+      "id": "P17",
+      "hash": "b8af94d516443e6336a730dfdde5f4b1e7ae0046ca47591a69c45bc963f4a2ea",
+      "heading": "Books",
+      "excerpt": "Most of Monmonier's work is published by the University of Chicago Press. Geographer Russell S. Kirby stated in a review that his books have",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378890851"
+    }
+  ],
+  "updatedAt": "2026-10-21T13:31:29.110Z"
 }
