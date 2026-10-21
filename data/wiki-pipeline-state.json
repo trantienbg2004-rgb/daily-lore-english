@@ -8432,10 +8432,10 @@
       "checkedAt": "2026-10-21T07:32:22.251Z"
     },
     "41994159": {
-      "status": "PENDING",
-      "reason": "queued",
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
       "revisionId": 1377151789,
-      "checkedAt": null
+      "checkedAt": "2026-10-21T18:11:37.697Z"
     },
     "42089707": {
       "status": "EVIDENCE_READY",
@@ -9866,7 +9866,7 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-10-21T18:11:31.381Z",
+  "updatedAt": "2026-10-21T18:11:37.697Z",
   "dailyUsage": {
     "day": "2026-10-21",
     "calls": 30,
