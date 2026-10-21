@@ -6194,10 +6194,10 @@
       "checkedAt": "2026-10-21T01:41:19.789Z"
     },
     "45633": {
-      "status": "DRAFTED",
-      "reason": "draft durably saved before validation",
+      "status": "NEEDS_REVIEW",
+      "reason": "Missing repaired page",
       "revisionId": 1377126508,
-      "checkedAt": "2026-10-21T13:28:08.768Z"
+      "checkedAt": "2026-10-21T13:28:46.053Z"
     },
     "49005": {
       "status": "EVIDENCE_READY",
@@ -9866,7 +9866,7 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-10-21T13:28:44.838Z",
+  "updatedAt": "2026-10-21T13:28:46.054Z",
   "dailyUsage": {
     "day": "2026-10-21",
     "calls": 6,
