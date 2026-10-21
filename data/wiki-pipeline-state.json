@@ -9386,10 +9386,10 @@
       "checkedAt": null
     },
     "74820447": {
-      "status": "FETCHED",
-      "reason": "pinned-source-ready",
+      "status": "REJECTED",
+      "reason": "insufficient-source-text-or-embedded-images",
       "revisionId": 1376698894,
-      "checkedAt": "2026-10-21T18:15:01.871Z"
+      "checkedAt": "2026-10-21T18:15:08.378Z"
     },
     "74845559": {
       "status": "PENDING",
@@ -9866,7 +9866,7 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-10-21T18:15:01.872Z",
+  "updatedAt": "2026-10-21T18:15:08.379Z",
   "dailyUsage": {
     "day": "2026-10-21",
     "calls": 30,
