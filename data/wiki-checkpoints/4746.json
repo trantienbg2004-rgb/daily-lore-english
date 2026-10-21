@@ -2,9 +2,223 @@
   "pageId": 4746,
   "title": "Plague (disease)",
   "topic": "Health",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1380991506,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380991506",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-21T13:32:11.608Z"
+  "reason": "2 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Plague -buboes.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2f/Plague_-buboes.jpg/960px-Plague_-buboes.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Plague -buboes.jpg",
+        "caption": "Swollen inguinal lymph glands on a person infected with the bubonic plague. The swollen lymph glands are termed buboes from the Greek word for groin, swollen gland: bubo.",
+        "alt": "",
+        "description": "This plague patient is displaying a swollen, ruptured inguinal lymph node, or buboe. After the incubation period of 2-6 days, symptoms of the plague appear including severe malaise, headache, shaking chills, fever, and pain and swelling, or adenopathy, in the affected regional lymph nodes, also known as buboes.",
+        "date": "1993",
+        "section": "Bubonic plague",
+        "position": 0,
+        "provenance": {
+          "credit": "Photo Credit: Content Providers(s): CDC",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Plague_-buboes.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Plague_(disease)",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380991506",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:PlagueTypes.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a9/PlagueTypes.jpg/960px-PlagueTypes.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:PlagueTypes.jpg",
+        "caption": "Septicemic plague resulting in necrosis",
+        "alt": "",
+        "description": "Septicemic plague resulting in necrosis",
+        "date": "2015-09-14",
+        "section": "Septicemic plague",
+        "position": 1,
+        "provenance": {
+          "credit": "CDC",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:PlagueTypes.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Plague_(disease)",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380991506",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Xenopsylla chepsis (oriental rat flea).jpg"
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Ulceration of flea bite cause by yersinia pestis.jpg"
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:World distribution of plague 1998.PNG"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "ee7edc9cd5939d97ced33af82633db2d2c0f82be0def4d96c2af23b986482ef8",
+      "heading": "Lead",
+      "excerpt": "Plague is an infectious disease caused by the bacterium Yersinia pestis. Symptoms include fever, weakness, headache and black lips. Usually,",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380991506"
+    },
+    {
+      "id": "P2",
+      "hash": "74da3540b481e172e005eac68249d57ef8c6e651c80bc57df306abeb86822fbb",
+      "heading": "Lead",
+      "excerpt": "The bubonic and septicemic forms are generally spread by flea bites or handling an infected animal, whereas pneumonic plague is generally sp",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380991506"
+    },
+    {
+      "id": "P3",
+      "hash": "4e07820f121c58269595b11c26c5ff0725991d305e7bd1d39a17f4c253df93de",
+      "heading": "Lead",
+      "excerpt": "Vaccination is recommended only for people at high risk of exposure to plague. Those exposed to a case of pneumonic plague may be treated wi",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380991506"
+    },
+    {
+      "id": "P4",
+      "hash": "240ff84050a7d932b592b37d047f978bf286173399de7d885651c81caf9aae2f",
+      "heading": "Lead",
+      "excerpt": "Globally, about 600 cases are reported a year. In 2017, the countries with the most cases include the Democratic Republic of the Congo, Mada",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380991506"
+    },
+    {
+      "id": "P5",
+      "hash": "5180a4756893168aa5975740706d1a1e183a52944d293bf14dba3b7b1d878ac0",
+      "heading": "Signs and symptoms",
+      "excerpt": "There are several different clinical manifestations of plague. The most common form is bubonic plague, followed by septicemic and pneumonic ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380991506"
+    },
+    {
+      "id": "P6",
+      "hash": "e8346b38e59d872096e956d9f1a0f849f21b314881ff0e2439347e59cc390986",
+      "heading": "Bubonic plague",
+      "excerpt": "When a flea bites a human and contaminates the wound with regurgitated blood, the plague-causing bacteria are passed into the tissue. Y. pes",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380991506"
+    },
+    {
+      "id": "P7",
+      "hash": "e49815edfc202a3d4d0be3253be57b10b6b55a179502faaa051ae589079521e4",
+      "heading": "Septicemic plague",
+      "excerpt": "Lymphatics ultimately drain into the bloodstream, so the plague bacteria may enter the blood and travel to almost any part of the body. In s",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380991506"
+    },
+    {
+      "id": "P8",
+      "hash": "9381c943244e8c6b0f2326030a28a4d24d20555fa69952e06cab10e15f10cfb6",
+      "heading": "Pneumonic plague",
+      "excerpt": "The pneumonic form of plague arises from infection of the lungs. It causes coughing and thereby produces airborne droplets that contain bact",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380991506"
+    },
+    {
+      "id": "P9",
+      "hash": "d31c591c93c3e847c926441f05caed70efbee36ce74aee398c323a4f68b0cffe",
+      "heading": "Cause",
+      "excerpt": "Yersinia pestis circulates in animal reservoirs, particularly in rodents, in the natural foci of infection found on all continents except Au",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380991506"
+    },
+    {
+      "id": "P10",
+      "hash": "83da48642de78eff4a5019b1971574f8e3e756e275a7d15b05e9be3ef5056fc3",
+      "heading": "Diagnosis",
+      "excerpt": "Symptoms of plague are usually non-specific, necessitating laboratory testing to definitively diagnose the disease. Y. pestis can be identif",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380991506"
+    },
+    {
+      "id": "P11",
+      "hash": "fd1af3901acbc589bc14de2e21cf2836f3f7a799b748f067b01685d03f1571ea",
+      "heading": "Vaccination",
+      "excerpt": "Bacteriologist Waldemar Haffkine developed the first plague vaccine in 1897. He conducted a massive inoculation program in British India, an",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380991506"
+    },
+    {
+      "id": "P12",
+      "hash": "0a47faef90da59d1cf1d7c855b9f8c2b776b2ce122393ef44de8f47c72053e77",
+      "heading": "Prophylaxis",
+      "excerpt": "Pre-exposure prophylaxis for first responders and health care providers who will care for patients with pneumonic plague is not considered n",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380991506"
+    },
+    {
+      "id": "P13",
+      "hash": "04f89fc76e8657aebc455737023c6d7214d6c573d05dee498cff78e03ae63c41",
+      "heading": "Treatments",
+      "excerpt": "If diagnosed in time, the various forms of plague are usually highly responsive to antibiotic therapy. The antibiotics often used are strept",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380991506"
+    },
+    {
+      "id": "P14",
+      "hash": "530ac367dd424b90b3c85649ab54f2b896af0c4acb8548ba4e519d6124fa8965",
+      "heading": "Epidemiology",
+      "excerpt": "Globally about 600 cases are reported a year. In 2017, the countries with the most cases include the Democratic Republic of the Congo, Madag",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380991506"
+    },
+    {
+      "id": "P15",
+      "hash": "4a2925c00fafb1395e5a1ce440fc5be60331799ff6485068263fbbecc1848c62",
+      "heading": "Biological weapon",
+      "excerpt": "The plague has a long history as a biological weapon. Historical accounts from ancient China and medieval Europe details the use of infected",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380991506"
+    },
+    {
+      "id": "P16",
+      "hash": "11207386ca0479ca7e6380ab0c3a6c31371f14c99783852bbd98a4407582c712",
+      "heading": "Bubonic plague",
+      "excerpt": "Y. pestis spreads through the lymphatic vessels of the infected human until it reaches a lymph node, where it causes acute lymphadenitis. Th",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380991506"
+    },
+    {
+      "id": "P17",
+      "hash": "11e06d6ce6e2ab35d6eec04e1093a3bfe513a43ff59110b3f4c050d867ba4a16",
+      "heading": "Bubonic plague",
+      "excerpt": "If the lymph node is overwhelmed, the infection can pass into the bloodstream, causing secondary septicemic plague, and if the lungs are see",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380991506"
+    },
+    {
+      "id": "P18",
+      "hash": "a24e74b5cfd65ae3aa0193385ba4124d812b6059c139d365746fd0f85e8afbc0",
+      "heading": "Cause",
+      "excerpt": "A 21st-century study of a 1665 outbreak of plague in the village of Eyam in England's Derbyshire Dales – which isolated itself during the ou",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380991506"
+    },
+    {
+      "id": "P19",
+      "hash": "b02a91ee76387b9eaf9708c1ab34684c85f705815fe6ef7953d4fea2057a41c7",
+      "heading": "Diagnosis",
+      "excerpt": "Polymerase chain reaction (PCR) may also be used to diagnose plague, by detecting the presence of bacterial genes such as the pla gene (plas",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380991506"
+    },
+    {
+      "id": "P20",
+      "hash": "bf9096f0d528820e908dfa499b2809ea45f18bf2473e429d726f3c0cb10d23f5",
+      "heading": "Diagnosis",
+      "excerpt": "Blood tests to detect antibodies against Y. pestis can also be used to diagnose plague, however, this requires taking blood samples at diffe",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380991506"
+    },
+    {
+      "id": "P21",
+      "hash": "62a03a32cc4d6f9d61e29dca48b02a077d6728bb405eacbf9d6bc4b747bc3fc7",
+      "heading": "Diagnosis",
+      "excerpt": "In 2020, a study about rapid diagnostic tests that detect the F1 capsule antigen (F1RDT) by sampling sputum or bubo aspirate was released. R",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380991506"
+    }
+  ],
+  "updatedAt": "2026-10-21T13:32:13.533Z"
 }
