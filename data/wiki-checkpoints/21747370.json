@@ -2,9 +2,107 @@
   "pageId": 21747370,
   "title": "Titi Robin",
   "topic": "Culture",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1355055717,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1355055717",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-21T18:11:19.503Z"
+  "reason": "1 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:JSLP2022TitiRobin.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b0/JSLP2022TitiRobin.jpg/960px-JSLP2022TitiRobin.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:JSLP2022TitiRobin.jpg",
+        "caption": "Concert in Normandy in May 2022",
+        "alt": "",
+        "description": "Titi Robin au festival Jazz sous les pommiers 2022.",
+        "date": "2022-05-28 23:59:42",
+        "section": "",
+        "position": 0,
+        "provenance": {
+          "credit": "Selbymay",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:JSLP2022TitiRobin.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Titi_Robin",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1355055717",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "00478dcd77418a75e75887597334c2a88bd528b92fe2dff57cd5f2ea23af5986",
+      "heading": "Lead",
+      "excerpt": "Thierry \"Titi\" Robin (born 26 August 1957 in Rochefort-sur-Loire) is a French composer and improviser. His style combines elements from the ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1355055717"
+    },
+    {
+      "id": "P2",
+      "hash": "8fbec5b146739773feb9a908f4598035ab06cd84f7b26402c5ac3df97409d546",
+      "heading": "Artistic beginnings",
+      "excerpt": "Titi Robin, early in his career, performed at Arab and Romani community festivals that gave him the opportunity to test his musical approach",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1355055717"
+    },
+    {
+      "id": "P3",
+      "hash": "46e73531c2daa75acdf0d49b20ec22a1269ec8ec9b1c24cef6892f43dfb01616",
+      "heading": "Beginnings",
+      "excerpt": "In 1984 he appeared (guitar, ‘oud and buzuq) in duet with Hameed Khan, an Indian tabla player originally from Jaipur. In 1987, he founded th",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1355055717"
+    },
+    {
+      "id": "P4",
+      "hash": "c45698f2dc3ac02d6736768270d828434bcf0ba01aa0407dc78f76a3338d50a5",
+      "heading": "Les Trois Frères",
+      "excerpt": "Titi Robin while still with Hameed Khan, a duet which highlights melodic and rhythmic improvisational duels, meets Brittany singer, Érik Mar",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1355055717"
+    },
+    {
+      "id": "P5",
+      "hash": "465b2c50cee63d49cc6afccd792a110086678378dead1a4fcbf2c12cc97501a6",
+      "heading": "Gitans",
+      "excerpt": "This formation revealed Titi Robin mainly as an oudist (even if the particular instrument designed by his brother Patrick Robin and his pers",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1355055717"
+    },
+    {
+      "id": "P6",
+      "hash": "546af2723d93b2eb739365ac79efa044f86c21d2fc6709800e78571c87777935",
+      "heading": "Le Regard Nu",
+      "excerpt": "At the beginning of 1996, this group in a collective adventure, makes a radical thrust, coming out with an introspective instrumental record",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1355055717"
+    },
+    {
+      "id": "P7",
+      "hash": "071a4d8868045fc92f93f4b0ea4f6fe773135e7ab9ffc4ef9b5f6e948cddeb5f",
+      "heading": "Payo Michto & Kali Gadji",
+      "excerpt": "Tours of Gitans continue, as witnessed by the live album Payo Michto in 1997 (Francis Varis on the accordion). The voices are those of Saadn",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1355055717"
+    },
+    {
+      "id": "P8",
+      "hash": "0b536ca8c0009a13661d3d617bf83ae660b1fc43b182b30158aeccfc52f46f0e",
+      "heading": "Un Ciel de Cuivre",
+      "excerpt": "Ciel de Cuivre, released in 2000 is the album the artist considers the one that represents the diversity of his musical world the best. \"I d",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1355055717"
+    },
+    {
+      "id": "P9",
+      "hash": "0423f35a59ba59d1be594f74f90d266c225cb24ce6c4fb5ebc88e289783513d1",
+      "heading": "Titi Robin and Gulabi Sapera",
+      "excerpt": "Since 1992, Titi Robin regularly worked with Gulabi Sapera to whom he dedicated a book \"Gulabi Sapera, danseuse Gitane du Rajasthan\" (2000, ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1355055717"
+    },
+    {
+      "id": "P10",
+      "hash": "f3cf41042db16cea263b89e51d22fab940f33e6855a4ce18d672278e7db9b793",
+      "heading": "Encounters",
+      "excerpt": "At the invitation of Philippe Conrath for the Africolor festival, Titi Robin and the Reunion poet-singer Danyèl Waro, emblematic figure of t",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1355055717"
+    }
+  ],
+  "updatedAt": "2026-10-21T18:11:25.540Z"
 }
