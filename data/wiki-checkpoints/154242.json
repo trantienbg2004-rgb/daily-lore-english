@@ -2,9 +2,267 @@
   "pageId": 154242,
   "title": "PH meter",
   "topic": "Science & Technology",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1359563466,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1359563466",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-21T18:15:31.447Z"
+  "reason": "4 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Beckman Model M pH Meter 2006.072.002.tif"
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Beckman model 72 pH meter jw827b87k.tiff"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:PH Meter.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0f/PH_Meter.jpg/960px-PH_Meter.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:PH Meter.jpg",
+        "caption": "781 pH/Ion Meter pH meter by Metrohm",
+        "alt": "",
+        "description": "781 pH/Ion Meter pH meter manufactured by Metrohm",
+        "date": "2008-07-14",
+        "section": "",
+        "position": 2,
+        "provenance": {
+          "credit": "Datamax",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:PH_Meter.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/PH_meter",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1359563466",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:George Garcelon using Beckman pH meter 2004.012.020.tif"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:PH Meter 01.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/43/PH_Meter_01.jpg/960px-PH_Meter_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:PH Meter 01.jpg",
+        "caption": "5.739 pH/Ion at 23 °C temperature shown on photo. pH 7110 pH meter manufactured by inoLab",
+        "alt": "",
+        "description": "5.739 pH/Ion at 23 °C temperature shown on photo. pH 7110 pH meter manufactured by inoLab",
+        "date": "2017-11-09 17:21:45",
+        "section": "Calibration and operation",
+        "position": 4,
+        "provenance": {
+          "credit": "S Shamima Nasrin",
+          "license": "CC BY 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:PH_Meter_01.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/PH_meter",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1359563466",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:2009-03-30 Red pH meter reads 4.96.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a9/2009-03-30_Red_pH_meter_reads_4.96.jpg/960px-2009-03-30_Red_pH_meter_reads_4.96.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:2009-03-30 Red pH meter reads 4.96.jpg",
+        "caption": "A simple pH meter",
+        "alt": "",
+        "description": "Rix Dobbs uses a pH meter to measure the acidity of water in a bucket.",
+        "date": "2009-03-30",
+        "section": "Types of pH meters",
+        "position": 5,
+        "provenance": {
+          "credit": "Ildar Sagdejev (Specious)",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:2009-03-30_Red_pH_meter_reads_4.96.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/PH_meter",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1359563466",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Soil pH meter.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/14/Soil_pH_meter.jpg/960px-Soil_pH_meter.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Soil pH meter.jpg",
+        "caption": "Soil pH meter",
+        "alt": "",
+        "description": "Soil pH meter",
+        "date": "2013",
+        "section": "Types of pH meters",
+        "position": 6,
+        "provenance": {
+          "credit": "Gihan Jayaweera",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Soil_pH_meter.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/PH_meter",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1359563466",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Inline pH meter.tif"
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Here's the new Beckman Pocket pH Meter 2012.002 b49f13 001.tif"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "fcd45202d0321d3e76f5cf6782630565a160b7c1f942151ed5af3191784a328d",
+      "heading": "Lead",
+      "excerpt": "A pH meter is a scientific instrument that measures the hydrogen-ion activity in water-based solutions, indicating its acidity or alkalinity",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1359563466"
+    },
+    {
+      "id": "P2",
+      "hash": "e73fe58138f9c2980de4ef70a709c108de90f4ec1d4e978bf2f030e0485dd529",
+      "heading": "Applications",
+      "excerpt": "The rate and outcome of chemical reactions taking place in water often depends on the acidity of the water, and it is therefore useful to kn",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1359563466"
+    },
+    {
+      "id": "P3",
+      "hash": "351d8f92475e0402f4151892cb6ed7039f462a5255090b3bc6ae4dafa9b54e3a",
+      "heading": "Applications",
+      "excerpt": "Advances in the instrumentation and in detection have expanded the number of applications in which pH measurements can be conducted. The dev",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1359563466"
+    },
+    {
+      "id": "P4",
+      "hash": "2358169d02e712be1eae197a3cb92b2fcf37af469d5958196c52d6be9d114369",
+      "heading": "Principle of operation",
+      "excerpt": "Potentiometric pH meters measure the voltage between two electrodes and display the result converted into the corresponding pH value. They c",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1359563466"
+    },
+    {
+      "id": "P5",
+      "hash": "5a989ba8a97998c2d6a808747bf221942ed3b9c3766cb999f367aed8ec20af42",
+      "heading": "Principle of operation",
+      "excerpt": "In order to accurately measure the potential difference between the two sides of the glass membrane reference electrode, typically a silver ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1359563466"
+    },
+    {
+      "id": "P6",
+      "hash": "55f0c4a5e4498e6d1f3ee26f8172285409e35107f6af8e9a814e8370c1f81704",
+      "heading": "pH electrode and reference electrode design",
+      "excerpt": "Details of the fabrication and resulting microstructure of the glass membrane of the pH electrode are maintained as trade secrets by the man",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1359563466"
+    },
+    {
+      "id": "P7",
+      "hash": "1e8396cd8247ece9cf0f5be2e64d59fff8caad075a9b51052c8a8d95fc84717b",
+      "heading": "Maintenance",
+      "excerpt": "Because of the sensitivity of the electrodes to contaminants, cleanliness of the probes is essential for accuracy and precision. Probes are ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1359563466"
+    },
+    {
+      "id": "P8",
+      "hash": "a2130ce63c859fdf4b1bff122b30d8ce1fa4761b35c78a61fb28a2818819048b",
+      "heading": "Calibration and operation",
+      "excerpt": "Very precise measurements necessitate that the pH meter is calibrated before each measurement. More typically calibration is performed once ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1359563466"
+    },
+    {
+      "id": "P9",
+      "hash": "48efb74f8c2ed0948c22e9b8456192035ed2aaaf3ed83708c75dee7ddaa668a2",
+      "heading": "Types of pH meters",
+      "excerpt": "In general there are three major categories of pH meters. Benchtop pH meters are often used in laboratories and are used to measure samples ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1359563466"
+    },
+    {
+      "id": "P10",
+      "hash": "e3c0a9a9c0e88c57ebf13dc1a798ffc12f178d0220568e8affda0313ffe01feb",
+      "heading": "History",
+      "excerpt": "The concept of pH was defined in 1909 by S. P. L. Sørensen, and electrodes were used for pH measurement in the 1920s.",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1359563466"
+    },
+    {
+      "id": "P11",
+      "hash": "54bdbb6bc45fd80ab1ec6ea152505a2b0555c948815eb9c4dd8490ca3dc7fa98",
+      "heading": "Building a pH meter",
+      "excerpt": "Specialized manufacturing is required for the electrodes, and details of their design and construction are typically trade secrets. However,",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1359563466"
+    },
+    {
+      "id": "P12",
+      "hash": "45b1019a1d4866961ff12233b608d197d2e90c488403d046606aeb25d642141a",
+      "heading": "Principle of operation",
+      "excerpt": "The design of the electrodes is the key part: These are rod-like structures usually made of glass, with a bulb containing the sensor at the ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1359563466"
+    },
+    {
+      "id": "P13",
+      "hash": "96326df8e176cdb333739ad4abc165d2e3f9ae713c55b3138ae3cd25c9b4aec8",
+      "heading": "Principle of operation",
+      "excerpt": "The reference electrode is insensitive to the pH of the solution, being composed of a metallic conductor, which connects to the display. Thi",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1359563466"
+    },
+    {
+      "id": "P14",
+      "hash": "6ce2b86396a722733d1a6843a04b21b876cf6d1a866fd0906866c942bfaca609",
+      "heading": "Principle of operation",
+      "excerpt": "On immersion of the glass electrode and the reference electrode in the test solution, an electrical circuit is completed, in which there is ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1359563466"
+    },
+    {
+      "id": "P15",
+      "hash": "d99749e17f87c6b6e1ccaac00def6f8b5ad7840649fa8d7f5010ac11cb2afd4d",
+      "heading": "Principle of operation",
+      "excerpt": "For simplicity, many pH meters use a combination probe, constructed with the glass electrode and the reference electrode contained within a ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1359563466"
+    },
+    {
+      "id": "P16",
+      "hash": "33abb486ee08eb7b8f7092d23c805cadb397387b40bf9889bea6d31200236ea1",
+      "heading": "Principle of operation",
+      "excerpt": "The pH meter is calibrated with solutions of known pH, typically before each use, to ensure accuracy of measurement. To measure the pH of a ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1359563466"
+    },
+    {
+      "id": "P17",
+      "hash": "46113677d98c2e480c8b66bed8322bf8dfcbf9116c1b10a5dfc80a31db78743d",
+      "heading": "pH electrode and reference electrode design",
+      "excerpt": "The silver chloride electrode is most commonly used as a reference electrode in pH meters, although some designs use the saturated calomel e",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1359563466"
+    },
+    {
+      "id": "P18",
+      "hash": "67f5c2d581f34d207c7c027ead0ee785b9f70818cb92c7d2090919f444deedd4",
+      "heading": "pH electrode and reference electrode design",
+      "excerpt": "With these electrode designs, the voltmeter is detecting potential differences of ±1400 millivolts. The electrodes are further designed to r",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1359563466"
+    },
+    {
+      "id": "P19",
+      "hash": "6dc1318e1219b920227aea75e4416cebe39c4dee92ad785cf863fd3489ae82c9",
+      "heading": "Calibration and operation",
+      "excerpt": "Consistent with principles of good laboratory practice, calibration is performed with at least two standard buffer solutions that span the r",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1359563466"
+    }
+  ],
+  "updatedAt": "2026-10-21T18:15:37.551Z"
 }
