@@ -9284,10 +9284,10 @@
       "checkedAt": "2026-10-21T01:39:47.237Z"
     },
     "72279466": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
+      "revisionId": 1375175749,
+      "checkedAt": "2026-10-21T07:39:56.251Z"
     },
     "72339457": {
       "status": "PENDING",
@@ -9866,7 +9866,7 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-10-21T07:39:54.465Z",
+  "updatedAt": "2026-10-21T07:39:56.258Z",
   "dailyUsage": {
     "day": "2026-10-21",
     "calls": 4,
