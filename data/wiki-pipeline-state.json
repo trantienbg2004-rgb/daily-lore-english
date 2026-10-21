@@ -6806,10 +6806,10 @@
       "checkedAt": null
     },
     "1166041": {
-      "status": "FETCHED",
-      "reason": "pinned-source-ready",
+      "status": "REJECTED",
+      "reason": "insufficient-source-text-or-embedded-images",
       "revisionId": 1337527633,
-      "checkedAt": "2026-10-21T07:40:05.486Z"
+      "checkedAt": "2026-10-21T07:40:06.848Z"
     },
     "1214936": {
       "status": "PENDING",
@@ -9866,7 +9866,7 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-10-21T07:40:05.487Z",
+  "updatedAt": "2026-10-21T07:40:06.849Z",
   "dailyUsage": {
     "day": "2026-10-21",
     "calls": 4,
