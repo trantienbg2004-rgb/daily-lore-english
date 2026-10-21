@@ -2,9 +2,270 @@
   "pageId": 7208744,
   "title": "Looted art",
   "topic": "Culture",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1379622406,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379622406",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-21T07:40:34.487Z"
+  "reason": "6 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Sack of jerusalem.JPG"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Palma Giovane Warsaw.JPG",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a1/Palma_Giovane_Warsaw.JPG/960px-Palma_Giovane_Warsaw.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Palma Giovane Warsaw.JPG",
+        "caption": "Virgin and Child with St. John the Baptist and St. Stanisław by Palma il Giovane was looted by Napoleon and returned to Warsaw in the 1820s. It was later destroyed by the Germans during the Warsaw Uprising.",
+        "alt": "",
+        "description": "",
+        "date": "1618date QS:P571,+1618-00-00T00:00:00Z/9date QS:P571,+1618-00-00T00:00:00Z/9",
+        "section": "History",
+        "position": 1,
+        "provenance": {
+          "credit": "Palma il Giovane",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Palma_Giovane_Warsaw.JPG",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Looted_art",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379622406",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Raffael 051.jpg",
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/e/ea/Raffael_051.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "fileTitle": "File:Raffael 051.jpg",
+        "caption": "The Sistine Madonna by Raphael, looted by the Soviets after World War II and returned to the Dresden Gallery (Gemäldegalerie Alte Meister) in East Germany in 1955.",
+        "alt": "",
+        "description": "Madonna and Child Madonna and Child",
+        "date": "between circa 1512 and circa 1513date QS:P,+1512-00-00T00:00:00Z/8,P1319,+1512-00-00T00:00:00Z/9,P13",
+        "section": "Looting of Germany",
+        "position": 2,
+        "provenance": {
+          "credit": "Raphael",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Raffael_051.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Looted_art",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379622406",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Priam's treasure (r).jpg"
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Euphronios krater side B MET L.2006.10.jpg"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Throne Augustus Poniatowski.jpg",
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/7/76/Throne_Augustus_Poniatowski.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "fileTitle": "File:Throne Augustus Poniatowski.jpg",
+        "caption": "Throne of Stanisław August Poniatowski displayed in the Moscow Kremlin. The throne was looted after the collapse of the November Uprising in the 1830s. In the 1920s, the Soviet government returned it to Poland, yet it was deliberately destroyed by the Germans during World War II.",
+        "alt": "",
+        "description": "Throne of Stanisław Augustus Poniatowski displayed in the Kremlin, Moscow. In the 1920s the Soviet Union government returned it to Poland, yet it was deliberately destroyed by the Germans during the World War II (the eagles were taken as a souvenir by German officers).[1][2]",
+        "date": "19th centurydate QS:P,+1850-00-00T00:00:00Z/7date QS:P,+1850-00-00T00:00:00Z/7",
+        "section": "Looting of Poland",
+        "position": 5,
+        "provenance": {
+          "credit": "unknown scanned by Polaco77",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Throne_Augustus_Poniatowski.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Looted_art",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379622406",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Descent from the Cross (Rembrant).jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/67/Descent_from_the_Cross_%28Rembrant%29.jpg/960px-Descent_from_the_Cross_%28Rembrant%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Descent from the Cross (Rembrant).jpg",
+        "caption": "Rembrandt's Descent from the Cross was looted in 1806 by French soldiers from the Landgrave of Hesse-Kassel, Germany; current location: Hermitage, St. Petersburg.",
+        "alt": "",
+        "description": "Descent from the Cross Descent from the Cross",
+        "date": "1634date QS:P571,+1634-00-00T00:00:00Z/9date QS:P571,+1634-00-00T00:00:00Z/9",
+        "section": "Looting by France",
+        "position": 6,
+        "provenance": {
+          "credit": "Workshop of Rembrandt",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Descent_from_the_Cross_(Rembrant).jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Looted_art",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379622406",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Eisenhower, Bradley and Patton inspect looted art HD-SN-99-02758.JPEG",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/eb/Eisenhower%2C_Bradley_and_Patton_inspect_looted_art_HD-SN-99-02758.JPEG/960px-Eisenhower%2C_Bradley_and_Patton_inspect_looted_art_HD-SN-99-02758.JPEG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Eisenhower, Bradley and Patton inspect looted art HD-SN-99-02758.JPEG",
+        "caption": "General Dwight D. Eisenhower, Supreme Allied Commander, accompanied by General Omar N. Bradley and Lieutenant General George S. Patton, Jr., inspects art treasures hidden in a salt mine in Germany.",
+        "alt": "",
+        "description": "General Dwight D. Eisenhower, Supreme Allied Commander, accompanied by Gen. Omar N. Bradley, and Lt. Gen. George S. Patton, Jr., inspect art treasures stolen by Germans and hidden in salt mine in Germany. ID: HD-SN-99-02758. National Archive# 111-SC-204516 WAR & CONFLICT BOOK #: 1099. General Dwight D. Eisenhower, Supreme Allied Commander, accompanied by Gen. Omar N. Bradley, and Lt. Gen. George S. Patton, Jr., inspect art treasures stolen by Germans and hidden in salt mine in Germany. ID: HD-SN-99-02758. National Archive# 111-SC-204516 WAR & C",
+        "date": "Taken on 12 April 1945",
+        "section": "Looting by Nazi Germany",
+        "position": 7,
+        "provenance": {
+          "credit": "Lt. Moore, U.S. Army Lt. Moore, U.S. Army",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Eisenhower,_Bradley_and_Patton_inspect_looted_art_HD-SN-99-02758.JPEG",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Looted_art",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379622406",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Goldfund von Eberswalde.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b6/Goldfund_von_Eberswalde.jpg/960px-Goldfund_von_Eberswalde.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Goldfund von Eberswalde.jpg",
+        "caption": "The Eberswalde Hoard from Germany disappeared in 1945 from Berlin and was located in 2004 in a secret depot within Moscow's Pushkin Museum.",
+        "alt": "",
+        "description": "Der Goldfund von Eberswalde (bronzezeitlicher Goldschatz), 10.–9. Jh. v. Chr.; replica (the original was looted during World War II and is presently located at a museum in Moscow) <be />Collection: Museum für Vor- und Frühgeschichte Berlin",
+        "date": "2006-02",
+        "section": "Looting by the Soviet Union",
+        "position": 8,
+        "provenance": {
+          "credit": "Photograph: Andreas Praefcke",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Goldfund_von_Eberswalde.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Looted_art",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379622406",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "0c9b606e0bb06cc2c53030e7a9a8e7e370006fcd88ef15aa8252dc1be8d2a671",
+      "heading": "Lead",
+      "excerpt": "Looted art has been a consequence of looting during war, natural disaster and riot for centuries. Looting of art, archaeology and other cult",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379622406"
+    },
+    {
+      "id": "P2",
+      "hash": "66197b42dcbe3951fa81ff6f00e50b69ef68a9aaf110ee198dd4c0d72d92df64",
+      "heading": "Lead",
+      "excerpt": "Related terms include art theft (the stealing of valuable artifacts, mostly because of commercial reasons), illicit antiquities (covertly tr",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379622406"
+    },
+    {
+      "id": "P3",
+      "hash": "e23a4e2b08567b1357ed243e97a38e719fa154955ef54d2a63f8dab14a751dde",
+      "heading": "History",
+      "excerpt": "Art looting has a long history, the winning party of armed conflicts often plundering the loser, and in the absence of social order, the loc",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379622406"
+    },
+    {
+      "id": "P4",
+      "hash": "520781968699d60ebd05d18112ca2eb164ff64a607846861ad262f04119ef00a",
+      "heading": "History",
+      "excerpt": "Since the rise of an art market for monumental sculpture, abandoned monuments all over the world have been at risk, notably in Iran, Syria a",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379622406"
+    },
+    {
+      "id": "P5",
+      "hash": "e6e367bea710cd3e7d09b4452bd76ffad0d2ae65b5f0dac06cc87e2b82d16cd9",
+      "heading": "History",
+      "excerpt": "After the looting of Europe by Napoleon, others copied the institutionalized model of systematic plunder and looting. During the American Ci",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379622406"
+    },
+    {
+      "id": "P6",
+      "hash": "3bc2530a7efdd7843d7e6a7faf598dc5194b6eb5431ed56f0a4ce8af29262e23",
+      "heading": "Looting of Afghanistan",
+      "excerpt": "Many art pieces and artifacts from Afghanistan were looted during several wars; scores of artworks were smuggled to Britain and sold to weal",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379622406"
+    },
+    {
+      "id": "P7",
+      "hash": "09d070f87d5e430c09cae96e684dcab773bc652512c54114faabad43aba4373c",
+      "heading": "Looting of Cyprus",
+      "excerpt": "Following the invasion of Cyprus in 1974 by Turkey and the occupation of the northern part of the island, churches belonging to the Cypriot ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379622406"
+    },
+    {
+      "id": "P8",
+      "hash": "57a211f6de44fa780016d72549aaa20d0a4d20431508a0b6b41e9a086273f9ce",
+      "heading": "Non-Christian places of importance",
+      "excerpt": "Many non-Christian sites have been affected by the looting and destruction of northern Cyprus. During the time of the invasion, work on arch",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379622406"
+    },
+    {
+      "id": "P9",
+      "hash": "98ee38677db3e548782442b228d03855b83619d1f22b7bf71cdd1a8935952102",
+      "heading": "Looted religious sites and icons",
+      "excerpt": "On the island of Cyprus before the invasion, the majority of the inhabitants were Greek-Cypriots, and for these citizens, the Greek Orthodox",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379622406"
+    },
+    {
+      "id": "P10",
+      "hash": "654cea522e61d29210f43b547a3d4ba63e20bbdd7432e0a3db6c0dd7c0abd3fe",
+      "heading": "Aydin Dikmen considered a key suspect",
+      "excerpt": "Aydin Dikmen is a 60-year-old man who has been arrested in relation to the looting and selling of looted goods from the island of Cyprus. He",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379622406"
+    },
+    {
+      "id": "P11",
+      "hash": "6446857e40989612945317f21d1a03a7b667732d15108cb25687d408d63b595f",
+      "heading": "Looting of Germany",
+      "excerpt": "After World War II, Germany was looted by Allied and Soviet forces; the systematic pillaging and looting by the Allies (particularly the Sov",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379622406"
+    },
+    {
+      "id": "P12",
+      "hash": "bff90065d965d17d383f695111368c8c488d41126e50ff7cbfd61893dcea0a9f",
+      "heading": "Baldin Collection",
+      "excerpt": "In another high-profile case, Viktor Baldin, a Soviet army captain in World War II and later directed the Shchusev State Scientific Research",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379622406"
+    },
+    {
+      "id": "P13",
+      "hash": "00ef2ed9cf78347775c9d3a136cd8cfb269c78e39e427a8b40792607a0b91ce1",
+      "heading": "Looting of Indonesia",
+      "excerpt": "During the colonization of Indonesia by the Dutch which span for three and a half centuries, many cultural objects were taken either due to ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379622406"
+    },
+    {
+      "id": "P14",
+      "hash": "36f2fdd3cf6cb815a9166b91fbc4fef8ff48ae3f06ed186b4d788de6df14da6c",
+      "heading": "Looting of Latin and South America",
+      "excerpt": "Roger Atwood writes in Stealing History: Tomb Raiders, Smugglers, and the Looting of the Ancient World: \"Mayan stonework became one of those",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379622406"
+    }
+  ],
+  "updatedAt": "2026-10-21T07:40:36.120Z"
 }
