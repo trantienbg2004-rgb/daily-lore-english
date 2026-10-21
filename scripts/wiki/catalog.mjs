@@ -140,6 +140,41 @@ export async function appendWikiStories(base,newStories,{now=new Date()}={}){
  return {added:accepted.length,total:entries.length,ready,byTopic:counts}
 }
 
+/** Restore a caption from its already recorded, source-embedded evidence.
+ * Write a new shard and index; never alter a published shard in place. */
+export async function restoreWikiSourceCaptions(base,pageId,{now=new Date()}={}){
+ const before=await readWikiCatalog(base)
+ const index=before.stories.findIndex(story=>story.sourcePageId===pageId)
+ if(index<0)throw Error('Published Wiki story not found')
+ const revised=structuredClone(before.stories[index])
+ let restored=0
+ for(const pages of [revised.pages,...levels.map(level=>revised.levelVariants[level].pages)]){
+  for(const page of pages){
+   if(!page.image)continue
+   const sourceCaption=String(page.imageProvenance?.evidence?.articleCaption||'').replace(/\s+/g,' ').trim()
+   if(!sourceCaption||!sourceCaption.startsWith(page.caption))throw Error('Caption lacks exact source evidence')
+   if(sourceCaption.length>page.caption.length){page.caption=sourceCaption;restored++}
+  }
+ }
+ if(!restored)return {restored:0,total:before.stories.length}
+ const gate=validateWikiStory(revised)
+ if(!gate.accepted)throw Error('Revised Wiki story invalid: '+gate.errors.join(','))
+ const files=await fs.readdir(before.dir)
+ const nextShard=Math.max(-1,...files.filter(file=>/^\d{4}\.json$/.test(file)).map(file=>Number(file.slice(0,4))))+1
+ const shard=String(nextShard).padStart(4,'0')
+ await fs.writeFile(path.join(before.dir,shard+'.json'),JSON.stringify([revised])+'\n',{flag:'wx'})
+ const entries=before.entries.map((entry,i)=>i===index?{...entry,shard}:entry)
+ const stories=before.stories.map((story,i)=>i===index?revised:story)
+ const contentHash=catalogHash(entries,stories)
+ const catalogIndex=`catalog-index-${contentHash.slice(0,12)}.json`
+ await fs.writeFile(path.join(before.dir,catalogIndex),JSON.stringify({version:3,contentHash,total:entries.length,entries})+'\n',{flag:'wx'})
+ const manifest={...before.manifest,chunks:nextShard+1,contentHash,catalogIndex,updatedAt:now.toISOString()}
+ const stage=path.join(before.dir,'manifest.json.tmp-'+process.pid)
+ await fs.writeFile(stage,JSON.stringify(manifest,null,2)+'\n')
+ await fs.rename(stage,path.join(before.dir,'manifest.json'))
+ return {restored,total:entries.length,shard}
+}
+
 /** Copy only new, fully verified stories into the production catalog. */
 export async function promoteWikiCatalog(sourceRoot,targetRoot){
  const source=await readWikiCatalog(sourceRoot),target=await readWikiCatalog(targetRoot)

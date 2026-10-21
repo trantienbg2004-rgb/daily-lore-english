@@ -31,6 +31,9 @@ test('embedded file needs its own rights; a context match places a map on page o
  assert.equal(assigned.photos[0].pageIndex,0)
  assert.equal(assigned.levelVariants['C1-C2'].pages[0].image,verified.photo.url)
  assert.equal(assigned.photos[0].provenance.licenseUrl,'https://creativecommons.org/licenses/by-sa/3.0')
+ const longFigure={...figure,caption:`${figure.caption}. ${'Merchants traveled along these routes across Asia. '.repeat(5).trim()}`}
+ const longAssigned=assignWikipediaPhotos([verifyEmbeddedImage(longFigure,page)],{...source,figures:[longFigure]},levels)
+ assert.equal(longAssigned.levelVariants['A1-A2'].pages[0].caption,longFigure.caption)
  const outside=assignWikipediaPhotos([verified],{...source,figures:[]},levels)
  assert.equal(outside.status,'REVIEW')
  const restricted=structuredClone(page);restricted.imageinfo[0].extmetadata.LicenseShortName.value='Fair use'
