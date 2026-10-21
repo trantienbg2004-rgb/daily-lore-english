@@ -2,9 +2,537 @@
   "pageId": 37719142,
   "title": "Global surface temperature",
   "topic": "Environment",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1373894783,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373894783",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-21T13:52:07.101Z"
+  "reason": "14 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Common Era Temperature.svg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3a/Common_Era_Temperature.svg/960px-Common_Era_Temperature.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Common Era Temperature.svg",
+        "caption": "The blue line represents global surface temperature reconstructed over the last 2,000 years using proxy data from tree rings, corals, and ice cores. The red line shows direct surface temperature measurements since 1880.",
+        "alt": "",
+        "description": "Temperatures with respect to the 1850-1900 mean as per IPCC definition of pre-industrial temperatures over the last 2 millennia and observational values ranging from 1880 to 2020. All data is smoothed using a 5 year moving average. The 2000 year record is computed in https://www.nature.com/articles/s41561-019-0400-0 using a wide set of proxies that have been vetted by the Pages2k Consortium [1]. They include tree ring data, data from corals and ice core data. A direct link to data is at https://figshare.com/articles/Reconstruction_ensemble_medi",
+        "date": "2020-02-23",
+        "section": "",
+        "position": 0,
+        "provenance": {
+          "credit": "Efbrazil",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Common_Era_Temperature.svg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Global_surface_temperature",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373894783",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Projected Change in Temperatures by 2090.svg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/29/Projected_Change_in_Temperatures.svg/960px-Projected_Change_in_Temperatures.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Projected Change in Temperatures by 2090.svg",
+        "caption": "Projected surface temperature changes relative to 1850–1900, based on CMIP6 multi-model mean changes",
+        "alt": "",
+        "description": "Coupled Model Intercomparison Project Phase 6 (CMIP6) multi-model mean projections (i.e., the average of the model projections available). Changes are shown relative to the 1850-1900. Data from the IPCC Sixth Assessment Report SPM.5. Note that maps were only produced for temperatures at 1C, 1.5C, 2C, and 4C. This graphic uses 1.5C and 4C as they average to the 2.7C that is the most likely outcome.",
+        "date": "2021-08-18",
+        "section": "Definition",
+        "position": 1,
+        "provenance": {
+          "credit": "Efbrazil",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Projected_Change_in_Temperatures.svg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Global_surface_temperature",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373894783",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Change in Average Temperature With Fahrenheit.svg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e0/Change_in_Average_Temperature_With_Fahrenheit.svg/960px-Change_in_Average_Temperature_With_Fahrenheit.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Change in Average Temperature With Fahrenheit.svg",
+        "caption": "Over the last 50 years the Arctic has warmed the most, and temperatures on land have generally increased more than sea surface temperatures.",
+        "alt": "",
+        "description": "Surface air temperature changes to date have been most pronounced in northern latitudes and over land masses. The image uses the trend of annual averages to smooth out climate variability due to factors such as El Niño. The map is improved from the highest quality rendering that NASA’s Scientific Visualization Studio generates, with horizontal and vertical lines removed and with a more legible projection of Kavraiskiy VII. Grey areas in the image have insufficient data for rendering. For a version without Fahrenheit, see File:Change in Average ",
+        "date": "2024-01-12",
+        "section": "Total warming and trends",
+        "position": 3,
+        "provenance": {
+          "credit": "NASA’s Scientific Visualization Studio, Key and Title by uploader (Eric Fisk)",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Change_in_Average_Temperature_With_Fahrenheit.svg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Global_surface_temperature",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373894783",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:20200324 Global average temperature - NASA-GISS HadCrut NOAA Japan BerkeleyE.svg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a0/20200324_Global_average_temperature_-_NASA-GISS_HadCrut_NOAA_Japan_BerkeleyE.svg/960px-20200324_Global_average_temperature_-_NASA-GISS_HadCrut_NOAA_Japan_BerkeleyE.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:20200324 Global average temperature - NASA-GISS HadCrut NOAA Japan BerkeleyE.svg",
+        "caption": "Global average temperature datasets from various scientific organizations show substantial agreement concerning the progress and extent of global warming: 1880– pairwise correlations of the four longer-term datasets are at least 99.29%.",
+        "alt": "",
+        "description": "Charts showing correlation of measured global average temperature, from several scientific organizations. UK Met Office source allowing download of all six datasets, adjusted to a common base value: https://climate.metoffice.cloud/temperature.html (scroll down to \"Get the data / Global mean temperature\") — Archive thereof: https://web.archive.org/web/20260118194423/https://climate.metoffice.cloud/temperature.html#datasets — Archive thereof: https://archive.ph/0ZAbZ Versions 14+ include SIX datasets, not just five as in earlier versions. Version",
+        "date": "2020-03-24",
+        "section": "Total warming and trends",
+        "position": 4,
+        "provenance": {
+          "credit": "RCraig09",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:20200324_Global_average_temperature_-_NASA-GISS_HadCrut_NOAA_Japan_BerkeleyE.svg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Global_surface_temperature",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373894783",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Stevenson screen exterior.JPG"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Stevenson screen interior.JPG",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f2/Stevenson_screen_interior.JPG/960px-Stevenson_screen_interior.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Stevenson screen interior.JPG",
+        "caption": "Interior of a Stevenson screen",
+        "alt": "",
+        "description": "Interior of a Stevenson screen showing (from left to right) the dewcell, wet bulb with wick attached to water supply, dry bulb and dry thermistor. The metal pipe is called a psychrometer and sucks air across the thermometers.",
+        "date": "26 July 2005 (according to Exif data)",
+        "section": "Early temperature records",
+        "position": 7,
+        "provenance": {
+          "credit": "CambridgeBayWeather",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Stevenson_screen_interior.JPG",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Global_surface_temperature",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373894783",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:1951+ Percent of global area at temperature records - Seasonal comparison - NOAA.svg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4e/1951%2B_Percent_of_global_area_at_temperature_records_-_Seasonal_comparison_-_NOAA.svg/960px-1951%2B_Percent_of_global_area_at_temperature_records_-_Seasonal_comparison_-_NOAA.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:1951+ Percent of global area at temperature records - Seasonal comparison - NOAA.svg",
+        "caption": "In recent decades, new high temperature records have substantially outpaced new low temperature records on a growing portion of Earth's surface. Comparison shows seasonal variability for record increases.",
+        "alt": "",
+        "description": "Charts comparing percentages of Earth's surface reaching record temperatures since 1951, comparing records for January, April, July and October, from NOAA data. Source of data for series of charts titled \"mm Month - Percent of global area at temperature records - Global warming - NOAA.svg\": — Source's title/subtitle: \"Mean Monthly Temperature Records Across the Globe\" — Publisher: National Centers for Environmental Information (NCEI) of the National Oceanic and Atmospheric Administration (NOAA) — Link (example; new page for each passing month t",
+        "date": "2023-07-28",
+        "section": "Warmest years",
+        "position": 8,
+        "provenance": {
+          "credit": "RCraig09",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:1951%2B_Percent_of_global_area_at_temperature_records_-_Seasonal_comparison_-_NOAA.svg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Global_surface_temperature",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373894783",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:20211115 Progression of global warming - decadal analysis - bar chart.svg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/32/20211115_Progression_of_global_warming_-_decadal_analysis_-_bar_chart.svg/960px-20211115_Progression_of_global_warming_-_decadal_analysis_-_bar_chart.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:20211115 Progression of global warming - decadal analysis - bar chart.svg",
+        "caption": "Global warming by decade: In the last four decades, global average surface temperatures during a given decade have almost always been higher than the average temperature in the preceding decade (data for 1850 to 2020 based on HadCRUT datasets).",
+        "alt": "",
+        "description": "Bar chart of global surface air temperature (global warming), categorized by decade, showing range of temperatures during each decade that were above, and that were below, that decade's average temperature. Data is from HadCRUT. See 4.6.0.0 NAVIGATION PAGE: https://www.metoffice.gov.uk/hadobs/hadcrut4/data/current/download.html (Choose \"HadCRUT4 time series: ensemble medians and uncertainties\", \"Global (NH+SH)/2\", \"Annual\".) SOURCE: https://www.metoffice.gov.uk/hadobs/hadcrut4/data/current/time_series/HadCRUT.4.6.0.0.annual_ns_avg.txt ARCHIVE: ",
+        "date": "2021-11-15",
+        "section": "Warmest decades",
+        "position": 9,
+        "provenance": {
+          "credit": "RCraig09",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:20211115_Progression_of_global_warming_-_decadal_analysis_-_bar_chart.svg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Global_surface_temperature",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373894783",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:20210827 Global surface temperature bar chart - bars color-coded by El Niño and La Niña intensity.svg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3c/20210827_Global_surface_temperature_bar_chart_-_bars_color-coded_by_El_Ni%C3%B1o_and_La_Ni%C3%B1a_intensity.svg/960px-20210827_Global_surface_temperature_bar_chart_-_bars_color-coded_by_El_Ni%C3%B1o_and_La_Ni%C3%B1a_intensity.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:20210827 Global surface temperature bar chart - bars color-coded by El Niño and La Niña intensity.svg",
+        "caption": "Colored bars show how El Niño years (red, regional warming) and La Niña years (blue, regional cooling) relate to overall global warming. The El Niño–Southern Oscillation has been linked to variability in longer-term global average temperature increase, with El Niño years usually corresponding to annual global temperature increases.",
+        "alt": "",
+        "description": "Bar chart of change in global average surface temperature, with bars color-coded by El Niño and La Niña intensity. Chart shows correlation of the (regional) El Niño–Southern Oscillation to global mean surface temperature. Suggested caption: Colored bars show how El Niño years (red, regional warming) and La Niña years (blue, regional cooling) relate to overall global warming. El Niño years usually correspond to average global temperature increases, and La Niña years usually contribute to average global temperature decreases. El Niño and La Niña ",
+        "date": "2021-08-27",
+        "section": "Factors influencing global temperature",
+        "position": 10,
+        "provenance": {
+          "credit": "RCraig09",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:20210827_Global_surface_temperature_bar_chart_-_bars_color-coded_by_El_Ni%C3%B1o_and_La_Ni%C3%B1a_intensity.svg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Global_surface_temperature",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373894783",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Global warming. Short-term variations versus a long-term trend (NCADAC).png",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/db/Global_warming._Short-term_variations_versus_a_long-term_trend_%28NCADAC%29.png/960px-Global_warming._Short-term_variations_versus_a_long-term_trend_%28NCADAC%29.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Global warming. Short-term variations versus a long-term trend (NCADAC).png",
+        "caption": "This graph shows how short-term variations occur in the measured temperature. The graph also shows a long-term trend of global warming.",
+        "alt": "Refer to caption",
+        "description": "This graph shows how short-term variations occur in the global temperature record. However, the graph still shows a long-term trend of global warming. Climate change is defined as a change in the average conditions over periods of 30 years or more. On these time scales, global temperature continues to increase. This is shown on the graph as the red line. Over shorter time scales, however, natural variability (due to the effects of El Niño and La Niña events in the Pacific Ocean, for example, or volcanic eruptions or changes in energy from the S",
+        "date": "2013-01-11",
+        "section": "Other reports and assessments",
+        "position": 11,
+        "provenance": {
+          "credit": "Walsh, John, et al.",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Global_warming._Short-term_variations_versus_a_long-term_trend_(NCADAC).png",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Global_surface_temperature",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373894783",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:GHCN Temperature Stations.png"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:20190909 STACKED country warming stripes AND global average (1901- ).png",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c6/20190909_STACKED_country_warming_stripes_AND_global_average_%281901-_%29.png/960px-20190909_STACKED_country_warming_stripes_AND_global_average_%281901-_%29.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:20190909 STACKED country warming stripes AND global average (1901- ).png",
+        "caption": "Top graphic (comprehensive): 196 rows represent 196 countries, grouped by continent. Each row has 118 color-coded annual temperatures, showing 1901—2018 warming patterns in each region and country. Bottom graphic (summary): global average 1901—2018. Data visualization: warming stripes.",
+        "alt": "",
+        "description": "* Top graphic: \"stacked\" Warming stripes showing annual mean temperatures for various countries (1901-2018), grouped by continent Bottom graphic: Warming stripes graphic depicting annual mean global temperatures (1901-2018, from World Meteorological Organization data) Original files combined in this graphic are shown and linked in the \"Other versions\" section, below. More complete descriptions of the two graphics are provided in the linked File: pages for those two images.",
+        "date": "2019-09-09",
+        "section": "Related research",
+        "position": 13,
+        "provenance": {
+          "credit": "Ed Hawkins (scientist), climate scientist at University of Reading. Uploader RCraig09 combined the two graphics to form the present composite graphic.",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:20190909_STACKED_country_warming_stripes_AND_global_average_(1901-_).png",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Global_surface_temperature",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373894783",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:1781- GloSAT surface air temperature.svg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/49/1781-_GloSAT_surface_air_temperature.svg/960px-1781-_GloSAT_surface_air_temperature.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:1781- GloSAT surface air temperature.svg",
+        "caption": "A December 2025 article published in the Copernicus Programme's Earth System Science Data presented a GloSAT global surface air temperature dataset based on marine air temperature observations rather than the sea surface temperature measurements typically used. GloSAT extended back to the 1780s, earlier than 1850 covered by previous datasets.",
+        "alt": "",
+        "description": "Chart showing GloSAT global surface air temperature since 1781, shown with HadCRUT5 data since 1850 GloSAT data from Morice, C. P., Berry, D. I., Cornes, R. C., Cowtan, K., Cropper, T., Hawkins, E., Kennedy, J. J., Osborn, T. J., Rayner, N. A., Recinos Rivas, B., Schurer, A. P., Taylor, M., Teleti, P. R., Wallis, E. J., Winn, J., and Kent, E. C. (15 December 2025). \"An observational record of global gridded near-surface air temperature change over land and ocean from 1781\". Earth System Science Data 17: 7079–7100. DOI:10.5194/essd-17-7079-2025.",
+        "date": "2025-12-25",
+        "section": "Temperature estimates from prior to 1850",
+        "position": 14,
+        "provenance": {
+          "credit": "RCraig09",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:1781-_GloSAT_surface_air_temperature.svg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Global_surface_temperature",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373894783",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:2000+ year global temperature including Medieval Warm Period and Little Ice Age - Ed Hawkins.svg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f8/2000%2B_year_global_temperature_including_Medieval_Warm_Period_and_Little_Ice_Age_-_Ed_Hawkins.svg/960px-2000%2B_year_global_temperature_including_Medieval_Warm_Period_and_Little_Ice_Age_-_Ed_Hawkins.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:2000+ year global temperature including Medieval Warm Period and Little Ice Age - Ed Hawkins.svg",
+        "caption": "Temperature record of the last 2,000 years (the so-called Medieval Warm Period and Little Ice Age were not planet-wide phenomena)",
+        "alt": "",
+        "description": "2000+ year graph of global temperature including so-called \"Medieval Warm Period\" (shaded in pink) and \"Little Ice Age\" (shaded in blue) - derived from graphic by Ed Hawkins. Suggested caption: Global average temperatures show that the Medieval Warm Period was not a planet-wide phenomenon, and that the Little Ice Age was not a distinct planet-wide time period but rather the end of a long temperature decline that preceded recent global warming.<ref name=Hawkins_20200130>{{cite web |last1=Hawkins |first1=Ed |title=2019 years |url=https://www.clim",
+        "date": "2020-03-08",
+        "section": "Tree rings and ice cores (from 1,000–2,000 years before present)",
+        "position": 15,
+        "provenance": {
+          "credit": "RCraig09",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:2000%2B_year_global_temperature_including_Medieval_Warm_Period_and_Little_Ice_Age_-_Ed_Hawkins.svg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Global_surface_temperature",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373894783",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Holocene Temperature Variations.png"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:EPICA temperature plot.svg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/ca/EPICA_temperature_plot.svg/960px-EPICA_temperature_plot.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:EPICA temperature plot.svg",
+        "caption": "Temperature estimates over 800,000 years of the EPICA ice cores in Antarctica. Temperatures are in Celsius relative to the average of the most recent 1,000 years; year 0 is 1950.",
+        "alt": "",
+        "description": "This figure shows the Antarctic temperature changes from EPICA during the last several glacial/interglacial cycles of the present ice age and a comparison to changes in global ice volume. The present day is on the right.",
+        "date": "2010-07-12",
+        "section": "Ice cores (from 800,000 years before present)",
+        "position": 17,
+        "provenance": {
+          "credit": "Autopilot",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:EPICA_temperature_plot.svg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Global_surface_temperature",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373894783",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Ice core data location.png",
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/c/c0/Ice_core_data_location.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "fileTitle": "File:Ice core data location.png",
+        "caption": "Ice core data location",
+        "alt": "",
+        "description": "Ice core data location from NOAA NCEI Map application",
+        "date": "2021-04-12",
+        "section": "Ice core locations",
+        "position": 18,
+        "provenance": {
+          "credit": "NOAA",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Ice_core_data_location.png",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Global_surface_temperature",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373894783",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Five Myr Climate Change.png"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "8325e225aeb014cb89763946358972bdaa1965e2afa388a55d30baaa479b69de",
+      "heading": "Lead",
+      "excerpt": "Global surface temperature (GST) is the average temperature of Earth's surface at a given time. It is a combination of sea surface temperatu",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373894783"
+    },
+    {
+      "id": "P2",
+      "hash": "49e838bfba770c13078da9516276b748ae836e484d7a815834a783052aa10994",
+      "heading": "Lead",
+      "excerpt": "Series of reliable temperature measurements in some regions began in the 1850—1880 time frame (this is called the instrumental temperature r",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373894783"
+    },
+    {
+      "id": "P3",
+      "hash": "6cb61d4c38c68d2a89c1c4089cf488d2a2119753ef6640f31e38b142828ec2be",
+      "heading": "Lead",
+      "excerpt": "GMST is often further aggregated by year or month. Through 1940, the average annual GMST increased, but was relatively stable between 1940 a",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373894783"
+    },
+    {
+      "id": "P4",
+      "hash": "2562773622db83f8c096bf9c0fd6fe99430cd69efd06ede0a234d3da2c6cc868",
+      "heading": "Lead",
+      "excerpt": "The global average and combined land and ocean surface temperature show a warming of 1.09 °C (range: 0.95 to 1.20 °C) from 1850–1900 to 2011",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373894783"
+    },
+    {
+      "id": "P5",
+      "hash": "ee3bbf97072cf6f63437562f7869856b96375cce418a77c8ca96c7c63feb0d0e",
+      "heading": "Absolute temperatures v. anomalies",
+      "excerpt": "The Earth's average surface absolute temperature for the 1961–1990 period has been derived by spatial interpolation of average observed near",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373894783"
+    },
+    {
+      "id": "P6",
+      "hash": "7b7d07923df01603e8e2a28374d6c173ee232eaaa06fdcc1c9ff58a55d3aae72",
+      "heading": "Lead",
+      "excerpt": "The global temperature record shows the changes of the temperature of the atmosphere and the oceans through various spans of time. There are",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373894783"
+    },
+    {
+      "id": "P7",
+      "hash": "98544bea32970cdeb7710b1788d731c45281bb1205a5d962ee3d56a127a1b7ab",
+      "heading": "Definition",
+      "excerpt": "The IPCC Sixth Assessment Report defines global mean surface temperature (GMST) as the \"estimated global average of near-surface air tempera",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373894783"
+    },
+    {
+      "id": "P8",
+      "hash": "9615f706a4c234214af48b11c7b9b4f2aafeac152413dd46d8f07db4cd7594dd",
+      "heading": "Total warming and trends",
+      "excerpt": "Changes in global temperatures over the past century provide evidence for the effects of increasing greenhouse gases. When the climate syste",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373894783"
+    },
+    {
+      "id": "P9",
+      "hash": "3f8bfdc03887e54eff8f5f1e613eccc5539454b4f845fe2793e6de8d6b4e1411",
+      "heading": "Methods",
+      "excerpt": "The instrumental temperature record is a record of temperatures within Earth's climate based on direct measurement of air temperature and oc",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373894783"
+    },
+    {
+      "id": "P10",
+      "hash": "9c39c335c980b7417c316611a594f25dd4898ca2500eec85611e6e6c78a62560",
+      "heading": "Early temperature records",
+      "excerpt": "On 15 December 2025, the Copernicus Programme's Earth System Science Data released the GloSAT reference analysis, a gridded data set of air ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373894783"
+    },
+    {
+      "id": "P11",
+      "hash": "572e02e1b344d011c7c0b3b495313cea98e4af2e65884d8bef7ca28165173efb",
+      "heading": "Satellite and balloon temperature records (1950s–present)",
+      "excerpt": "Weather balloon radiosonde measurements of atmospheric temperature at various altitudes begin to show an approximation of global coverage in",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373894783"
+    },
+    {
+      "id": "P12",
+      "hash": "381d65831374f3a92506ddd9bceb1aab0d1515cbb5210e7dd764c78735a08bff",
+      "heading": "Absolute temperatures v. anomalies",
+      "excerpt": "Records of global average surface temperature are usually presented as anomalies rather than as absolute temperatures. A temperature anomaly",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373894783"
+    },
+    {
+      "id": "P13",
+      "hash": "ab1212b5863a0f5e5184a9d526459acd4e2a328dc0223a7b50514527adb3f4f7",
+      "heading": "Siting of temperature measurement stations",
+      "excerpt": "The U.S. National Weather Service Cooperative Observer Program has established minimum standards regarding the instrumentation, siting, and ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373894783"
+    },
+    {
+      "id": "P14",
+      "hash": "5ba49cbd22b4effbb4b069ef85310f7e3be27c937a4e1db6809a7aeaca089c65",
+      "heading": "Warmest years",
+      "excerpt": "The year 2023 was 1.48 °C hotter than the average in the years 1850–1900 according to the Copernicus Climate Change Service. It was declared",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373894783"
+    },
+    {
+      "id": "P15",
+      "hash": "a09ee47666008fb0c569d0da51be20bc98401cce2aee5a7b815f99dfa20ff6df",
+      "heading": "Warmest decades",
+      "excerpt": "Numerous drivers have been found to influence annual global mean temperatures. An examination of the average global temperature changes by d",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373894783"
+    },
+    {
+      "id": "P16",
+      "hash": "e0c744e742f3a8bb8692d99a1146335d3f5717ac6612a6a5bcb5e0d1da2470ec",
+      "heading": "Robustness of evidence",
+      "excerpt": "There is a scientific consensus that climate is changing and that greenhouse gases emitted by human activities are the primary driver. The s",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373894783"
+    },
+    {
+      "id": "P17",
+      "hash": "b2be5b65a7113e95d471b9244b3d5d92e430ebe4e5bb3651af7088ecdfbab8d4",
+      "heading": "Other reports and assessments",
+      "excerpt": "The U.S. National Academy of Sciences, both in its 2002 report to President George W. Bush, and in later publications, has strongly endorsed",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373894783"
+    },
+    {
+      "id": "P18",
+      "hash": "eccf86f50aeca58f968bd583ef4a73b8b2322bcb8eed1da662a1b36c5dd9e16e",
+      "heading": "Internal climate variability and global warming",
+      "excerpt": "One of the issues that has been raised in the media is the view that global warming \"stopped in 1998\". This view ignores the presence of int",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373894783"
+    },
+    {
+      "id": "P19",
+      "hash": "6d5e325d689cc698e1db17ec7acfa38cbf5e54a4c2127bdba6746bee1227ce7b",
+      "heading": "Trends and predictions",
+      "excerpt": "Each of the seven years in 2015–2021 was clearly warmer than any pre-2014 year, and this trend is expected to be true for some time to come ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373894783"
+    },
+    {
+      "id": "P20",
+      "hash": "2ef22657066cc04a218ad9f613ee3edefaa5fa13d24721534fc8374f75b3aa8f",
+      "heading": "Regional temperature changes",
+      "excerpt": "The changes in climate are not expected to be uniform across the Earth. In particular, land areas change more quickly than oceans, and north",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373894783"
+    },
+    {
+      "id": "P21",
+      "hash": "6c48af0671bcd35cfc6102e5076d809555d0b58bc34a271e48a7a6930f8cafad",
+      "heading": "Temperature estimates from prior to 1850",
+      "excerpt": "The global temperature record shows the fluctuations of the temperature of the atmosphere and the oceans through various spans of time. Ther",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373894783"
+    },
+    {
+      "id": "P22",
+      "hash": "3728197ae8eebaa36c6e198809307111d7bfb86218428aa0b520f569f8e17fdf",
+      "heading": "Tree rings and ice cores (from 1,000–2,000 years before present)",
+      "excerpt": "Proxy measurements can be used to reconstruct the temperature record before the historical period. Quantities such as tree ring widths, cora",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373894783"
+    },
+    {
+      "id": "P23",
+      "hash": "97bb34cfc3342703a629d89732b9c5c40a3021701a7b8a83ea0744de398cc5e9",
+      "heading": "Indirect historical proxies",
+      "excerpt": "As well as natural, numerical proxies (tree-ring widths, for example) there exist records from the human historical period that can be used ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373894783"
+    },
+    {
+      "id": "P24",
+      "hash": "4137b9d1168920b2605d2f4c94cf0093c4afa340e87fc3fa6f03cc9716f11b01",
+      "heading": "Paleoclimate (from 12,000 years before present)",
+      "excerpt": "Many estimates of past temperatures have been made over Earth's history. The field of paleoclimatology includes ancient temperature records.",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373894783"
+    }
+  ],
+  "updatedAt": "2026-10-21T13:52:12.839Z"
 }
