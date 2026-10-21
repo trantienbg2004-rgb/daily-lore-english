@@ -2,9 +2,299 @@
   "pageId": 81481334,
   "title": "Decree of the Abolition of Slavery of April 27, 1848",
   "topic": "Politics",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1369393842,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369393842",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-21T22:36:24.161Z"
+  "reason": "4 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Décret d'abolition de l'esclavage-Archives nationales-BB-30-1125-A-296 page 2.tif"
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Décret d'abolition de l'esclavage-Archives nationales-BB-30-1125-A-296 page 3.tif"
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Paul Gavarni - Voilà une jolie liberté et un beau pays.jpg"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Bureau de Victor Schœlcher.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a2/Bureau_de_Victor_Sch%C5%93lcher.jpg/960px-Bureau_de_Victor_Sch%C5%93lcher.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Bureau de Victor Schœlcher.jpg",
+        "caption": "Desk on which the 1848 decree abolishing slavery was signed (Hôtel de la Marine)",
+        "alt": "",
+        "description": "Bureau sur lequel a été signé le décret d'abolition de l'esclavage de 1848",
+        "date": "2024-02-26 17:19:00",
+        "section": "Action in favor of abolition",
+        "position": 3,
+        "provenance": {
+          "credit": "Christian Pinatel de Salvator",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Bureau_de_Victor_Sch%C5%93lcher.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Decree_of_the_Abolition_of_Slavery_of_April_27%2C_1848",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369393842",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Unknown maker, France, Getty edu, Religious Ceremony on Martinique, Daguerreotype, summer 1850.png",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d2/Unknown_maker%2C_France%2C_Getty_edu%2C_Religious_Ceremony_on_Martinique%2C_Daguerreotype%2C_summer_1850.png/960px-Unknown_maker%2C_France%2C_Getty_edu%2C_Religious_Ceremony_on_Martinique%2C_Daguerreotype%2C_summer_1850.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Unknown maker, France, Getty edu, Religious Ceremony on Martinique, Daguerreotype, summer 1850.png",
+        "caption": "1850 - Daguerreotype depicting the religious ceremony marking the anniversary of the abolition of slavery in 1848 in Martinique.",
+        "alt": "",
+        "description": "Daguerreotype représentant la cérémonie religieuse pour l'anniversaire de l'abolition de l'esclavage de 1848 à la Martinique, en 1850.",
+        "date": "2016-08-20",
+        "section": "In the French colonies",
+        "position": 4,
+        "provenance": {
+          "credit": "Unknown maker, France",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Unknown_maker,_France,_Getty_edu,_Religious_Ceremony_on_Martinique,_Daguerreotype,_summer_1850.png",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Decree_of_the_Abolition_of_Slavery_of_April_27%2C_1848",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369393842",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Révolte d'esclaves à la Martinique en mai 1848.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/62/R%C3%A9volte_d%27esclaves_%C3%A0_la_Martinique_en_mai_1848.jpg/960px-R%C3%A9volte_d%27esclaves_%C3%A0_la_Martinique_en_mai_1848.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Révolte d'esclaves à la Martinique en mai 1848.jpg",
+        "caption": "Slave revolt in Martinique on May 22, 1848, leading to the abolition of slavery in the colony of Martinique the following day, ahead of the date planned by the authorities.",
+        "alt": "",
+        "description": "Émancipation des nègres. Gendarmes et colons affrontant les esclaves révoltés au Prêcheur en Martinique le 22 mai 1848. Bilan : plusieurs dizaines d'insurgés et de colons sont tués, et l'abolition de l'esclavage est décrétée dans la colonie le 23 mai 1848. Lithographie de F. Lesmert. Chambre de commerce et d'industrie Marseille-Provence, inv. n° PGE01080.",
+        "date": "1848-05-22",
+        "section": "In the French colonies",
+        "position": 5,
+        "provenance": {
+          "credit": "F. Lesmert (lithographe)",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:R%C3%A9volte_d%27esclaves_%C3%A0_la_Martinique_en_mai_1848.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Decree_of_the_Abolition_of_Slavery_of_April_27%2C_1848",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369393842",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Cayenne Victor Schoelcher statue by Louis-Ernest Barrias.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/14/Cayenne_Victor_Schoelcher_statue_by_Louis-Ernest_Barrias.jpg/960px-Cayenne_Victor_Schoelcher_statue_by_Louis-Ernest_Barrias.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Cayenne Victor Schoelcher statue by Louis-Ernest Barrias.jpg",
+        "caption": "Victor Schœlcher, author of the decree abolishing slavery on April 27, 1848, on a statue honoring him in Cayenne, French Guiana, sculpted by Barrias in 1896. Criticized for its paternalistic view of abolition, the statue was found toppled on July 18, 2020.",
+        "alt": "",
+        "description": "French Guiana, Cayenne, square Victor-Schoelcher: statue of Victor Schoelcher (1804-1893), with a slave whom he shows the way to liberty, following the definitive abolition of slavery in 1848 in France. The monument was erected in 1896, the statue is by the French sculptor Louis-Ernest Barrias (1841-1905), it is listed as Cultural Heritage Monument since 1999.",
+        "date": "2013-03-23 20:29:23",
+        "section": "In the French colonies",
+        "position": 6,
+        "provenance": {
+          "credit": "Cayambe",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Cayenne_Victor_Schoelcher_statue_by_Louis-Ernest_Barrias.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Decree_of_the_Abolition_of_Slavery_of_April_27%2C_1848",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369393842",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "da1c6ae547392f8a44046efc98e4649ccc97c6b2cab2800a129991946ae03b2c",
+      "heading": "Lead",
+      "excerpt": "The decree was issued 46 years after the reinstatement of slavery under Napoleon. Promoted by Victor Schœlcher, it definitively abolished sl",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369393842"
+    },
+    {
+      "id": "P2",
+      "hash": "cc7ebdf486aeb6cdf4a45035ca1058142733c15e4f09dfa0f5fce03f577e197d",
+      "heading": "In metropolitan France",
+      "excerpt": "In France, slavery was abolished in the continental kingdom by Louis X through the edict of 3 July 1315 [fr], which declared that all indivi",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369393842"
+    },
+    {
+      "id": "P3",
+      "hash": "09983c363a04b4c206d4f1cc8987c6ef9914432ac1fb753a9a83da6d153a1895",
+      "heading": "In metropolitan France",
+      "excerpt": "In 1642, King Louis XIII authorized the trade of enslaved Africans, limited to the French Antilles and not applicable to metropolitan France",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369393842"
+    },
+    {
+      "id": "P4",
+      "hash": "aeae496fdb1e1c4dd85b547095b8461a24af88c43e8a72903fe72d5c2df8c72a",
+      "heading": "In metropolitan France",
+      "excerpt": "The principle of the “Privilege of the Land of France [fr]” was challenged in the 18th century, as planters opposed legal precedents grantin",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369393842"
+    },
+    {
+      "id": "P5",
+      "hash": "76d4f211e8353ccc0d49cc9f3ef8dce3b7982e280f206b249a99fb4a489f72fe",
+      "heading": "In the colonies",
+      "excerpt": "In 1791, the Constituent Assembly reinstated the principle of the privilege of the land of France through the law of 28 September, which dec",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369393842"
+    },
+    {
+      "id": "P6",
+      "hash": "d6523907f27d16ee4ab3634082853c28e02ff4f5f7a8720410ec6c05a228bff6",
+      "heading": "Prohibition of the slave trade",
+      "excerpt": "At the Congress of Vienna on 8 February 1815, the slave trade—defined as the commerce, purchase, and transport of enslaved people in the col",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369393842"
+    },
+    {
+      "id": "P7",
+      "hash": "54186116950741cb7bbf2b47bad77a91e3c52ca9007da1b597e09662f526711b",
+      "heading": "Abolition postponed under the July Monarchy",
+      "excerpt": "In 1831, the government of Jacques Laffitte, which included members of the Society of Christian Morals [fr], an organization of liberal oppo",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369393842"
+    },
+    {
+      "id": "P8",
+      "hash": "4681de4c7850525df335e1cd319a23d425b88d823ea6704bad14afdd0f7285cd",
+      "heading": "Adjustment of the servile condition",
+      "excerpt": "Moderates argued that enslaved people needed to be “prepared for freedom” through education and religious instruction before full emancipati",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369393842"
+    },
+    {
+      "id": "P9",
+      "hash": "d7c470b2e6a0e8485033338f45e4a0fc2091de79113b44dd02c82ccc958110b4",
+      "heading": "Mackau laws",
+      "excerpt": "The Mackau laws represent the final legislative measures before the abolition of 1848. Passed in July 1845, they continued the approach of e",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369393842"
+    },
+    {
+      "id": "P10",
+      "hash": "7e77371a1328e8819c3348635a01175f8f1c9d9766084c5652e19dda1c150145",
+      "heading": "Uneven implementation",
+      "excerpt": "The implementation of these measures in the colonies was uneven. During sessions of the Chamber of Deputies, Ledru-Rollin and Agénor de Gasp",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369393842"
+    },
+    {
+      "id": "P11",
+      "hash": "168afa7849b23085085504bf27796a54fd4e2f7d4fec5bede2333b61d82ea821",
+      "heading": "Action in favor of abolition",
+      "excerpt": "As early as 1831, after a trip to Cuba, Victor Schœlcher argued in the Revue de Paris that enslaved people are human and therefore entitled ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369393842"
+    },
+    {
+      "id": "P12",
+      "hash": "97b1c7aa7567ddd42166a991aa51832ea5eaf32248fef0cb5b823889a5c046c1",
+      "heading": "Decree of March 4, 1848",
+      "excerpt": "Decree of the Provisional Government Creating the Commission for the Abolition of Slavery, March 4, 1848“The Provisional Government of the R",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369393842"
+    },
+    {
+      "id": "P13",
+      "hash": "bce52e5e2337a3aeaf7d83ac2844e231174dac988a53511c01c561d04a788d7a",
+      "heading": "In the French colonies",
+      "excerpt": "News that the Republic had abolished slavery, following the provisional government’s decision of 4 March, reached the French colonies a few ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369393842"
+    },
+    {
+      "id": "P14",
+      "hash": "319c65e06e196d695275bfddb904232896948e84d859fb411ad906acaf942f30",
+      "heading": "Effects on French citizens living in slaveholding countries",
+      "excerpt": "Article 8 of the 1848 decree prohibited French citizens from owning or trafficking in enslaved people, under penalty of loss of citizenship.",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369393842"
+    },
+    {
+      "id": "P15",
+      "hash": "43e40934e0cfce9cc3b22bfefcc1583ed01a7db36706e1de708e4e0785665b16",
+      "heading": "Compensation of slave owners",
+      "excerpt": "As provided in the decree of 27 April 1848, a law passed on 30 April 1849, during the presidency of Louis-Napoléon Bonaparte and the governm",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369393842"
+    },
+    {
+      "id": "P16",
+      "hash": "d864a0fa2f5683dd4cdf3301ddf304f3ddc6b88f092a7c072b9da4eee9c502af",
+      "heading": "A global movement",
+      "excerpt": "During the 19th century, several states that practiced the slave trade and slavery enacted abolition measures. The United States prohibited ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369393842"
+    },
+    {
+      "id": "P17",
+      "hash": "78f60a49785d6a70bf305317c3fe02674b89d0ee6cd5bcddf3d26006d50d2eca",
+      "heading": "Commemoration",
+      "excerpt": "The law recognizing the slave trade and slavery as crimes against humanity [fr] established a day of commemoration for the abolition. The da",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369393842"
+    },
+    {
+      "id": "P18",
+      "hash": "5ed82fadbe70a27312c5678f10189af117f98e9d616dd692f3aaf8800d023a50",
+      "heading": "In the colonies",
+      "excerpt": "The law of 4 February 1794 (16 Pluviôse Year II) was the first decree to abolish slavery throughout the French colonies, although its implem",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369393842"
+    },
+    {
+      "id": "P19",
+      "hash": "7aacd0c4d9fd97fc4635cf6b97dae3fece363d7ecd2d03d56f50049a031fa561",
+      "heading": "In the colonies",
+      "excerpt": "The law of 4 February 1794 was repealed by the law of 20 May 1802. Napoleon Bonaparte did not reinstate slavery in Guadeloupe or Guyana imme",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369393842"
+    },
+    {
+      "id": "P20",
+      "hash": "99d877324d88b09a6ceea610a4af0ee27834552694dcb70911e720615518037c",
+      "heading": "Prohibition of the slave trade",
+      "excerpt": "Following his return from Elba in 1815, Napoleon issued a decree abolishing the slave trade, aligning France with the Congress of Vienna’s d",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369393842"
+    },
+    {
+      "id": "P21",
+      "hash": "715170fce967585ff4957437daaf84258b42040a2c14e5cf8b390d4b8b3709f5",
+      "heading": "Prohibition of the slave trade",
+      "excerpt": "The prohibition of the slave trade faced opposition in France, particularly from Atlantic ports such as Bordeaux and Nantes, which sought to",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369393842"
+    },
+    {
+      "id": "P22",
+      "hash": "5d13ae6a7b28ea6512adc6ccc536153c07ac155bbf6a420cfeb856c66fcdd472",
+      "heading": "Prohibition of the slave trade",
+      "excerpt": "Despite official prohibitions, the transatlantic slave trade continued clandestinely in French, Spanish, and Portuguese colonies. In 1820, a",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369393842"
+    },
+    {
+      "id": "P23",
+      "hash": "29380b870a085a90c13cd447f64715987f2b0f64296ca206b57a5134cf46187c",
+      "heading": "Mackau laws",
+      "excerpt": "In July 1846, King Louis-Philippe I abolished slavery in the royal domains of Martinique and Guadeloupe, as well as on the island of Mayotte",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369393842"
+    },
+    {
+      "id": "P24",
+      "hash": "61223569f97cd2a64f43bbb6e0f0f1b689523815d5b725e4409f56037036b7f6",
+      "heading": "Action in favor of abolition",
+      "excerpt": "In April 1847, the Société de morale chrétienne conducted a petition campaign that collected 11,000 signatures, including those of three bis",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369393842"
+    },
+    {
+      "id": "P25",
+      "hash": "b191d3a92385b0274d5673f4af9daea46cb28a3bd4de3b7916bc5b18a5add431",
+      "heading": "In the French colonies",
+      "excerpt": "On 21 May, in Saint-Pierre, Martinique, a slave named Romain was arrested for playing a drum, a form of communication among enslaved people.",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369393842"
+    }
+  ],
+  "updatedAt": "2026-10-21T22:36:30.122Z"
 }
