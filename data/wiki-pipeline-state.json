@@ -9026,10 +9026,10 @@
       "checkedAt": null
     },
     "65093954": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
+      "revisionId": 1366819259,
+      "checkedAt": "2026-10-21T13:02:55.395Z"
     },
     "65298680": {
       "status": "PENDING",
@@ -9866,7 +9866,7 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-10-21T13:02:53.885Z",
+  "updatedAt": "2026-10-21T13:02:55.396Z",
   "dailyUsage": {
     "day": "2026-10-21",
     "calls": 4,
