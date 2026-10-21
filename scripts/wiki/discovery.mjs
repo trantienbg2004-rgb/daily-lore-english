@@ -11,17 +11,19 @@ export const CATEGORY_SEEDS=Object.freeze({
  Economy:['Economic history','Economic crises','Trade routes'],
  'Conflict & Security':['Wars','Treaties','Peace processes'],
  Society:['Social movements','Human rights','Migration'],
- Culture:['World Heritage Sites','Festivals','Languages'],
+ Culture:['World Heritage Sites','Festivals','Languages','Cultural heritage','World music','Literary movements'],
  'Science & Technology':['Scientific instruments','History of technology','Inventions'],
  Environment:['National parks','Environmental disasters','Climate change'],
  Health:['History of medicine','Epidemics','Public health'],
- 'History & Geography':['Historical geography','Ancient civilizations','Geographical regions'],
- Sports:['Olympic Games','History of sports','Sports competitions']
+ 'History & Geography':['Historical geography','Ancient civilizations','Geographical regions',
+  'Ancient cities','Archaeological sites','History of cartography'],
+ Sports:['Olympic Games','History of sports','Sports competitions','Ancient Olympic Games','History of tennis','History of cricket']
 })
 const unsuitable=/^(?:list of|lists of|index of|outline of|timeline of|category:|template:|portal:|[0-9]{4} in )/i
-const categoryUrl=title=>{
+const categoryUrl=(title,continuation='')=>{
  const u=new URL('https://en.wikipedia.org/w/api.php')
  for(const [key,value] of Object.entries({action:'query',list:'categorymembers',cmtitle:title,cmtype:'page|subcat',cmlimit:'50',format:'json',formatversion:'2'}))u.searchParams.set(key,value)
+ if(continuation)u.searchParams.set('cmcontinue',continuation)
  return u.href
 }
 const detailUrl=titles=>{
@@ -41,22 +43,32 @@ export function scoreWikiCandidate(page,{topic,existingIds=new Set(),topicCounts
  return Math.round((content+image+balance+stable)*100)/100
 }
 
-export async function discoverWikiCandidates({topic,fetchImpl=fetch,maxCandidates=30,subcategoryLimit=2,existingIds=new Set(),topicCounts={},seedLimit=3}={}){
+export async function discoverWikiCandidates({topic,fetchImpl=fetch,maxCandidates=30,subcategoryLimit=2,existingIds=new Set(),topicCounts={},seedLimit=3,maxCategoryPages=3}={}){
  if(!WIKI_TOPICS.includes(topic))throw Error('Unknown SAGA Wiki topic')
+ if(!Number.isSafeInteger(maxCategoryPages)||maxCategoryPages<1||maxCategoryPages>5)throw Error('Unsafe category page limit')
  const seeds=CATEGORY_SEEDS[topic].slice(0,seedLimit).map(name=>'Category:'+name)
  const found=new Map(),categories=[],errors=[]
+ const readCategory=async name=>{
+  let continuation='',pages=0,count=0
+  const subcategories=[]
+  do{
+   const response=await wikiJson(categoryUrl(name,continuation),{fetchImpl})
+   const members=response?.query?.categorymembers||[]
+   count+=members.length;pages++
+   for(const member of members){
+    if(member.ns===0)found.set(member.pageid,{pageid:member.pageid,title:member.title,ns:0})
+    if(member.ns===14)subcategories.push(member)
+   }
+   continuation=response?.continue?.cmcontinue||''
+  }while(continuation&&pages<maxCategoryPages)
+  categories.push({name,count,continued:!!continuation})
+  return subcategories
+ }
  for(const seed of seeds){
-  const response=await wikiJson(categoryUrl(seed),{fetchImpl})
-  const members=response?.query?.categorymembers||[]
-  categories.push({name:seed,count:members.length,continued:!!response.continue})
-  for(const member of members)if(member.ns===0)found.set(member.pageid,{pageid:member.pageid,title:member.title,ns:0})
-  const subcategories=members.filter(member=>member.ns===14).slice(0,subcategoryLimit)
+  const subcategories=(await readCategory(seed)).slice(0,subcategoryLimit)
   for(const sub of subcategories){
-   try{
-    const nested=await wikiJson(categoryUrl(sub.title),{fetchImpl})
-    categories.push({name:sub.title,count:nested?.query?.categorymembers?.length||0,continued:!!nested.continue})
-    for(const member of nested?.query?.categorymembers||[])if(member.ns===0)found.set(member.pageid,{pageid:member.pageid,title:member.title,ns:0})
-   }catch(error){if(error?.status===429||error?.status===503)throw error;errors.push({category:sub.title,reason:String(error.message).slice(0,100)})}
+   try{await readCategory(sub.title)}
+   catch(error){if(error?.status===429||error?.status===503)throw error;errors.push({category:sub.title,reason:String(error.message).slice(0,100)})}
   }
  }
  const pages=[]
@@ -69,7 +81,8 @@ export async function discoverWikiCandidates({topic,fetchImpl=fetch,maxCandidate
  const candidates=pages.map(page=>({...page,topic,score:scoreWikiCandidate(page,{topic,existingIds,topicCounts})}))
   .filter(page=>Number.isFinite(page.score)).sort((a,b)=>b.score-a.score||a.title.localeCompare(b.title))
   .slice(0,maxCandidates).map(page=>({pageId:page.pageid,title:page.title,topic,score:page.score,
-   pageLength:page.length,hasThumbnail:!!page.thumbnail,sourceUrl:page.fullurl||`https://en.wikipedia.org/wiki/${encodeURIComponent(page.title.replace(/ /g,'_'))}`}))
+   pageLength:page.length,revisionId:Number(page.lastrevid)||null,hasThumbnail:!!page.thumbnail,
+   sourceUrl:page.fullurl||`https://en.wikipedia.org/wiki/${encodeURIComponent(page.title.replace(/ /g,'_'))}`}))
  return {topic,candidates,categories,errors,scannedPages:pages.length}
 }
 

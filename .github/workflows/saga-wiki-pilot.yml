@@ -13,7 +13,7 @@ concurrency:
 
 jobs:
   pilot:
-    if: contains(github.event.head_commit.message, '[wiki-pilot-once]')
+    if: contains(github.event.head_commit.message, '[wiki-pilot-once]') || contains(github.event.head_commit.message, '[wiki-batch-once]')
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
@@ -27,14 +27,20 @@ jobs:
       - run: npm ci
       - name: Check offline Wikipedia pipeline gates
         run: node --test scripts/test/saga-wiki-*.test.mjs
-      - name: Generate at most one story from a preflighted Wikipedia article
+      - name: Run one bounded free-tier Wikipedia editorial batch
         env:
           SAGA_WIKI_GEMINI_KEY: ${{ secrets.SAGA_IMAGE_TEST_API_KEY }}
           SAGA_WIKI_FREE_TIER_CONFIRMED: '1'
-        run: node scripts/wiki-pipeline.mjs batch --max-calls=1 --max-candidates=1 --page-id=89732
+          SAGA_WIKI_BATCH_MODE: ${{ contains(github.event.head_commit.message, '[wiki-batch-once]') }}
+        run: |
+          if [ "$SAGA_WIKI_BATCH_MODE" = 'true' ]; then
+            node scripts/wiki-pipeline.mjs batch --max-calls=8 --max-candidates=24
+          else
+            node scripts/wiki-pipeline.mjs batch --max-calls=2 --max-candidates=1 --page-id=89732
+          fi
       - name: Check result before staging on development branch
         run: |
-          node --test scripts/test/saga-wiki-*.test.mjs
+          npm test
           node scripts/lore-verify.mjs
           npm run build
           git diff --check
@@ -47,7 +53,7 @@ jobs:
             echo "No accepted pilot story. The status checkpoint is unchanged."
             exit 0
           fi
-          git commit -m "SAGA: stage bounded Wikipedia editorial pilot"
+          git commit -m "SAGA: stage bounded Wikipedia editorial batch"
           git push origin "HEAD:${GITHUB_REF_NAME}"
       - name: Preserve diagnostic state when the run stops
         if: always()

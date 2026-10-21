@@ -25,20 +25,28 @@ export async function writeWikiState(base,state){
 }
 
 export async function discoverWikiQueue({base,topics=WIKI_TOPICS,maxPerTopic=30,seedLimit=1,subcategoryLimit=1,
+  maxCategoryPages=3,
   discover=discoverWikiCandidates,readCatalog=readWikiCatalog,readState=readWikiState,writeState=writeWikiState}={}){
  const catalog=await readCatalog(base),state=await readState(base)
  const existingIds=new Set(catalog.stories.map(story=>story.sourcePageId))
  const counts=Object.fromEntries(WIKI_TOPICS.map(topic=>[topic,catalog.entries.filter(e=>e.category===topic).length]))
  const groups=[],errors=[]
  for(const topic of topics){
-  try{groups.push(await discover({topic,maxCandidates:maxPerTopic,seedLimit,subcategoryLimit,existingIds,topicCounts:counts}))}
+  try{groups.push(await discover({topic,maxCandidates:maxPerTopic,seedLimit,subcategoryLimit,maxCategoryPages,existingIds,topicCounts:counts}))}
   catch(error){if(error instanceof WikiApiPause)throw error;errors.push({topic,reason:safeText(error.message)})}
  }
  const fresh=balanceWikiCandidates(groups,{existingIds,topicCounts:counts,limit:Math.max(100,topics.length*maxPerTopic)})
- const queued=new Set(state.queue.map(item=>item.pageId))
+ const queued=new Map(state.queue.map((item,index)=>[item.pageId,index]))
  for(const candidate of fresh){
-  if(queued.has(candidate.pageId)||state.outcomes[candidate.pageId]?.status==='rejected')continue
-  state.queue.push(candidate);queued.add(candidate.pageId)
+  const prior=state.outcomes[candidate.pageId]
+  if(['review','rejected'].includes(prior?.status)&&candidate.revisionId&&prior.revisionId&&
+   candidate.revisionId!==prior.revisionId)delete state.outcomes[candidate.pageId]
+  if(queued.has(candidate.pageId)){
+   state.queue[queued.get(candidate.pageId)]={...state.queue[queued.get(candidate.pageId)],revisionId:candidate.revisionId}
+   continue
+  }
+  if(state.outcomes[candidate.pageId]?.status==='rejected')continue
+  queued.set(candidate.pageId,state.queue.length);state.queue.push(candidate)
  }
  const regrouped=WIKI_TOPICS.map(topic=>({topic,candidates:state.queue.filter(row=>row.topic===topic)}))
  state.queue=balanceWikiCandidates(regrouped,{topicCounts:counts,limit:state.queue.length})
@@ -58,7 +66,7 @@ export async function runWikiBatch({base,maxCalls=0,maxCandidates=5,pageId=null,
  const usedUrls=new Set(catalog.stories.flatMap(story=>story.pages.map(page=>page.image).filter(Boolean)))
  const budget={maxCalls,usedCalls:0},stats={attempted:0,published:0,review:0,rejected:0,paused:false,apiCalls:0,usage:{input:0,output:0,total:0},decisions:[]}
  for(const candidate of state.queue.filter(row=>pageId===null||row.pageId===pageId)){
-  if(stats.attempted>=maxCandidates||budget.usedCalls>=maxCalls&&maxCalls>0)break
+  if(stats.attempted>=maxCandidates||maxCalls>0&&maxCalls-budget.usedCalls<2)break
   if(existingIds.has(candidate.pageId)||state.outcomes[candidate.pageId]?.status==='published')continue
   // Stable rejected candidates are skipped. REVIEW candidates may be rechecked
   // only if their source revision has changed in a later discovery batch.
@@ -95,5 +103,7 @@ export async function runWikiBatch({base,maxCalls=0,maxCandidates=5,pageId=null,
   }
  }
  stats.apiCalls=budget.usedCalls
+ if(budget.usageUnknown)stats.usage=null
+ else if(budget.usage)stats.usage=budget.usage
  return stats
 }

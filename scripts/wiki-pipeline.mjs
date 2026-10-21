@@ -21,8 +21,8 @@ try{
   const topics=options.topic?[options.topic]:WIKI_TOPICS
   if(topics.some(topic=>!WIKI_TOPICS.includes(topic)))throw Error('Unknown Wiki topic')
   console.log(JSON.stringify(await discoverWikiQueue({base,topics,
-   maxPerTopic:number('max-per-topic',20,100),seedLimit:number('seed-limit',1,3),
-   subcategoryLimit:number('subcategory-limit',1,4)})))
+   maxPerTopic:number('max-per-topic',20,100),seedLimit:number('seed-limit',1,6),
+   subcategoryLimit:number('subcategory-limit',1,4),maxCategoryPages:number('max-category-pages',3,5)})))
  }else if(action==='batch'){
   const maxCalls=number('max-calls',0,20)
   console.log(JSON.stringify(await runWikiBatch({base,maxCalls,maxCandidates:number('max-candidates',5,100),

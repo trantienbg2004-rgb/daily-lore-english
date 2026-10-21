@@ -11,11 +11,12 @@ function story(id){
  const image=`https://thumb.wikimedia.org/wikipedia/commons/thumb/${id}.jpg`
  const provenance={credit:'Map creator',license:'CC BY-SA 3.0',licenseUrl:'https://creativecommons.org/licenses/by-sa/3.0',
   imagePageUrl:`https://commons.wikimedia.org/wiki/File:Silk_Road_${id}.jpg`,sourceImageUrl:source.sourceUrl,
-  sourceRevisionUrl:source.sourceRevisionUrl,originType:'wikipedia-embedded',evidence:{sourcePageId:id,sourceRevisionId:100+id}}
+  sourceRevisionUrl:source.sourceRevisionUrl,originType:'wikipedia-embedded',evidence:{sourcePageId:id,sourceRevisionId:100+id,
+   fileTitle:`File:Silk_Road_${id}.jpg`,pageIndex:0}}
  const variants=Object.fromEntries(['A1-A2','B1-B2','C1-C2'].map((level,index)=>[level,{headline:`${['Simple','Clear','Analytical'][index]} Silk Road Story ${id}`,
   pages:Array.from({length:6},(_,page)=>({text:`Silk Road ${id} connected different trading cities in Eurasia during a long historical period. This is complete factual test text on page ${page}.`,
    evidenceIds:['P1'],image:page===0?image:'',caption:page===0?'Silk Road routes':'',...(page===0?{imageProvenance:provenance}:{})}))}]))
- return makeWikiStory({source,topic:'Economy',draft:{variants},photos:[{url:image}],evidence:[{id:'P1',hash:'abc',excerpt:'Silk Road routes'}]})
+ return makeWikiStory({source,topic:'Economy',draft:{variants},photos:[{url:image}],evidence:[{id:'P1',hash:'a'.repeat(64),excerpt:'Silk Road routes'}]})
 }
 
 test('Wiki stories keep pinned revisions, independent levels and individual photo credit',()=>{
@@ -26,6 +27,10 @@ test('Wiki stories keep pinned revisions, independent levels and individual phot
  assert.equal(s.pages[0].imageProvenance.sourceRevisionUrl,s.sourceRevisionUrl)
  const wrong=structuredClone(s);wrong.levelVariants['C1-C2'].pages[0].imageProvenance.licenseUrl=''
  assert.equal(validateWikiStory(wrong).accepted,false)
+ const unsupported=structuredClone(s);unsupported.levelVariants['A1-A2'].pages[1].evidenceIds=['P999']
+ assert.ok(validateWikiStory(unsupported).errors.includes('A1-A2:page-evidence'))
+ const outside=structuredClone(s);outside.levelVariants['C1-C2'].pages[0].image='https://example.com/unlicensed.jpg'
+ assert.ok(validateWikiStory(outside).errors.includes('C1-C2:image-rights'))
 })
 
 test('versioned Wiki index commits only validated new articles and leaves news elsewhere',async()=>{
@@ -37,6 +42,11 @@ test('versioned Wiki index commits only validated new articles and leaves news e
   const stored=await readWikiCatalog(base)
   assert.equal(stored.stories.length,1)
   assert.match(stored.manifest.catalogIndex,/^catalog-index-[0-9a-f]{12}\.json$/)
+  const shardPath=path.join(base,'public','wiki-reader','0000.json')
+  const original=await fs.readFile(shardPath,'utf8')
+  await fs.writeFile(shardPath,original.replace('complete factual test text','altered factual test text'))
+  await assert.rejects(readWikiCatalog(base),/content mismatch/)
+  await fs.writeFile(shardPath,original)
   assert.equal((await appendWikiStories(base,[story(42)])).added,0)
   const second=await appendWikiStories(base,[story(43)])
   assert.equal(second.total,2)

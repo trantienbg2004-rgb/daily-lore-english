@@ -6,6 +6,8 @@ import {createHash} from 'node:crypto'
 import {WIKI_TOPICS} from './discovery.mjs'
 
 const hash=value=>createHash('sha256').update(JSON.stringify(value)).digest('hex')
+const catalogHash=(entries,stories)=>hash({entries:entries.map(row=>[row.id,row.shard,row.category]),
+ stories:stories.map(story=>hash(story))})
 const levels=['A1-A2','B1-B2','C1-C2']
 const exists=async file=>fs.access(file).then(()=>true,()=>false)
 const nonempty=value=>typeof value==='string'&&value.trim().length>0
@@ -35,18 +37,28 @@ export function validateWikiStory(story){
  if(!Number.isSafeInteger(story?.sourcePageId)||!Number.isSafeInteger(story?.sourceRevisionId)||
   !/^https:\/\/en\.wikipedia\.org\/w\/index\.php\?oldid=\d+$/.test(story.sourceRevisionUrl||''))errors.push('source-revision')
  if(story?.license!=='CC BY-SA 4.0'||!nonempty(story.attribution))errors.push('text-license')
+ const evidence=story?.sourceEvidence
+ const evidenceIds=new Set()
+ if(!Array.isArray(evidence)||!evidence.length||evidence.some(row=>{
+  if(!/^P[1-9]\d*$/.test(row?.id||'')||!/^[a-f0-9]{64}$/.test(row?.hash||'')||!nonempty(row?.excerpt)||evidenceIds.has(row.id))return true
+  evidenceIds.add(row.id);return false
+ }))errors.push('source-evidence')
  const covers=[]
  for(const level of levels){
   const variant=story?.levelVariants?.[level],pages=variant?.pages
   if(!nonempty(variant?.headline)||!Array.isArray(pages)||pages.length<5||pages.length>7){errors.push(level+':structure');continue}
-  for(const page of pages){
-   if(!nonempty(page?.text)||!Array.isArray(page.evidenceIds)||!page.evidenceIds.length)errors.push(level+':page-evidence')
+  for(const [pageIndex,page] of pages.entries()){
+   if(!nonempty(page?.text)||!Array.isArray(page.evidenceIds)||!page.evidenceIds.length||
+    page.evidenceIds.some(id=>!evidenceIds.has(id)))errors.push(level+':page-evidence')
    if(page.image){
     const p=page.imageProvenance||{}
     if(!nonempty(page.caption)||!nonempty(p.credit)||!nonempty(p.license)||!nonempty(p.licenseUrl)||
+     !/^https:\/\/(?:thumb|upload)\.wikimedia\.org\//.test(page.image)||
+     !/^https:\/\/creativecommons\.org\/(?:licenses\/(?:by|by-sa)\/(?:2\.0|2\.5|3\.0|4\.0)|publicdomain\/(?:zero|mark)\/1\.0)(?:\/|$|[?#])/i.test(p.licenseUrl||'')||
      !/^https:\/\/commons\.wikimedia\.org\/wiki\/File:/i.test(p.imagePageUrl||'')||
      p.sourceImageUrl!==story.sourceUrl||p.sourceRevisionUrl!==story.sourceRevisionUrl||
-     p.evidence?.sourcePageId!==story.sourcePageId||p.evidence?.sourceRevisionId!==story.sourceRevisionId)errors.push(level+':image-rights')
+     p.evidence?.sourcePageId!==story.sourcePageId||p.evidence?.sourceRevisionId!==story.sourceRevisionId||
+     p.evidence?.pageIndex!==pageIndex||!/^File:/.test(p.evidence?.fileTitle||''))errors.push(level+':image-rights')
    }
   }
   if(!pages[0]?.image)errors.push(level+':lead-image')
@@ -74,6 +86,8 @@ export async function readWikiCatalog(base){
   stories.push(...data)
  }
  if(stories.length!==manifest.total)throw Error('Wiki catalog total mismatch')
+ if(index.entries.some((row,i)=>row.id!==stories[i]?.sourceUrl||row.sourcePageId!==stories[i]?.sourcePageId)||
+  catalogHash(index.entries,stories)!==manifest.contentHash)throw Error('Wiki catalog content mismatch')
  return {dir,manifest,entries:index.entries,stories}
 }
 
@@ -106,7 +120,7 @@ export async function appendWikiStories(base,newStories,{now=new Date()}={}){
  const counts=Object.fromEntries(WIKI_TOPICS.map(topic=>[topic,0]))
  for(const entry of entries)counts[entry.category]++
  const ready=entries.length>=200&&WIKI_TOPICS.every(topic=>counts[topic]>=15)
- const contentHash=hash(entries.map(row=>[row.id,row.shard,row.category]))
+ const contentHash=catalogHash(entries,[...before.stories,...accepted])
  const indexName=`catalog-index-${contentHash.slice(0,12)}.json`
  await fs.writeFile(path.join(before.dir,indexName),JSON.stringify({version:3,contentHash,total:entries.length,entries})+'\n',{flag:'wx'})
  const manifest={feedType:'wiki',editorialVersion:2,ready,total:entries.length,chunks:nextShard,
