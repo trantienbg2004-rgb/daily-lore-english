@@ -6074,10 +6074,10 @@
       "checkedAt": "2026-10-21T13:46:18.028Z"
     },
     "22576": {
-      "status": "DRAFTED",
-      "reason": "draft durably saved before validation",
+      "status": "NEEDS_REVIEW",
+      "reason": "editorial: A1-A2:page-3:length-or-sentence",
       "revisionId": 1379072110,
-      "checkedAt": "2026-10-21T13:48:13.035Z"
+      "checkedAt": "2026-10-21T13:48:18.510Z"
     },
     "24903": {
       "status": "PENDING",
@@ -9866,7 +9866,7 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-10-21T13:48:13.036Z",
+  "updatedAt": "2026-10-21T13:48:18.511Z",
   "dailyUsage": {
     "day": "2026-10-21",
     "calls": 23,

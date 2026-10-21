@@ -2,10 +2,10 @@
   "pageId": 22576,
   "title": "Olympic Games",
   "topic": "Sports",
-  "status": "DRAFTED",
+  "status": "NEEDS_REVIEW",
   "revisionId": 1379072110,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379072110",
-  "reason": "draft durably saved before validation",
+  "reason": "editorial: A1-A2:page-3:length-or-sentence",
   "rights": [
     {
       "status": "REJECTED",
@@ -506,7 +506,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379072110"
     }
   ],
-  "updatedAt": "2026-10-21T13:48:13.035Z",
+  "updatedAt": "2026-10-21T13:48:18.510Z",
   "draft": {
     "outline": [
       "Introduction to modern Olympic Games",
@@ -652,5 +652,10 @@
     "output": 439,
     "total": 3361
   },
-  "validation": null
+  "validation": {
+    "accepted": false,
+    "errors": [
+      "A1-A2:page-3:length-or-sentence"
+    ]
+  }
 }
