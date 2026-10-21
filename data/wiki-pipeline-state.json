@@ -7580,10 +7580,10 @@
       "checkedAt": null
     },
     "9633432": {
-      "status": "FETCHED",
-      "reason": "pinned-source-ready",
+      "status": "EVIDENCE_READY",
+      "reason": "6 rights-verified embedded images",
       "revisionId": 1381021044,
-      "checkedAt": "2026-10-21T08:12:00.963Z"
+      "checkedAt": "2026-10-21T08:12:02.450Z"
     },
     "9719652": {
       "status": "EVIDENCE_READY",
@@ -9866,7 +9866,7 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-10-21T08:12:00.972Z",
+  "updatedAt": "2026-10-21T08:12:02.451Z",
   "dailyUsage": {
     "day": "2026-10-21",
     "calls": 4,
