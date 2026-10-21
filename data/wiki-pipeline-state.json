@@ -6194,10 +6194,10 @@
       "checkedAt": "2026-10-21T01:41:19.789Z"
     },
     "45633": {
-      "status": "RETRY_LATER",
-      "reason": "Gemini HTTP 503; circuit open",
+      "status": "EVIDENCE_READY",
+      "reason": "2 rights-verified embedded images",
       "revisionId": 1377126508,
-      "checkedAt": "2026-10-21T01:39:33.229Z"
+      "checkedAt": "2026-10-21T03:56:49.190Z"
     },
     "49005": {
       "status": "PENDING",
@@ -9866,7 +9866,7 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-10-21T03:13:47.043Z",
+  "updatedAt": "2026-10-21T03:56:49.202Z",
   "dailyUsage": {
     "day": "2026-10-21",
     "calls": 3,
