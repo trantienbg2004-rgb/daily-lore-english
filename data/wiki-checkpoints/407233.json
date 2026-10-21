@@ -2,9 +2,302 @@
   "pageId": 407233,
   "title": "Global dimming",
   "topic": "Environment",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1380990938,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380990938",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-21T13:49:14.146Z"
+  "reason": "5 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Gocart sulfate optical thickness.png",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/67/Gocart_sulfate_optical_thickness.png/960px-Gocart_sulfate_optical_thickness.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Gocart sulfate optical thickness.png",
+        "caption": "Hotspots of sulfate aerosol pollution in 2005–2007 are highlighted in orange. Such sulfates rarely occur naturally outside of volcanic activity, and their increased levels are the main cause of global dimming.",
+        "alt": "",
+        "description": "GOCART model sulfate aerosol optical thickness 2005 to 2007 average. Data source: http://daac.gsfc.nasa.gov/giovanni/",
+        "date": "2012-02-26 15:34:27",
+        "section": "",
+        "position": 0,
+        "provenance": {
+          "credit": "Giorgiogp2",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Gocart_sulfate_optical_thickness.png",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Global_dimming",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380990938",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Julsrud 2022 dimming.jpg"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:SulufrDioxide2017.png",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/40/SulufrDioxide2017.png/960px-SulufrDioxide2017.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:SulufrDioxide2017.png",
+        "caption": "Satellite snapshot of atmospheric sulfur dioxide on 15 April 2017. Sulfur dioxide forms highly reflective sulfates, which are considered the main cause of global dimming.",
+        "alt": "",
+        "description": "This map shows SO2 particles in the world",
+        "date": "Photo Date: April 15, 2017",
+        "section": "Anthropogenic sulfates",
+        "position": 2,
+        "provenance": {
+          "credit": "Credit: The GEOS-5 data used on this site have been provided by the Global Modeling and Assimilation Office (GMAO) at NASA Goddard Space Flight Center through the online data portal in the NASA Center for Climate Simulation",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:SulufrDioxide2017.png",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Global_dimming",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380990938",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Bellouin 2019 smoke albedo effects.jpg"
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Aerosol dimming.jpg"
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Pollution over east China.jpg"
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Bellouin 2019 aerosol cloud interactions.jpg"
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Sfc.contrail.1.26.01.JPG"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Physical Drivers of climate change.svg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a0/Physical_Drivers_of_climate_change.svg/960px-Physical_Drivers_of_climate_change.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Physical Drivers of climate change.svg",
+        "caption": "This chart shows how much various physical factors affect climate change. For example, sulfur dioxide causes cooling because it reacts to form a variety of sunlight-reflecting sulfates. Its large error bar shows that there is a lot of uncertainty regarding the strength of cooling caused by sulfur dioxide in the atmosphere.",
+        "alt": "",
+        "description": "Contribution to observed climate change from 12 different drivers, as taken from the Summary for Policymakers of the sixth IPCC assessment report, adapted from figure SPM.2c. — Report link: IPCC (2021) Summary for Policymakers in AR6 WG1, p. 7 — Direct basis graphic link: https://www.ipcc.ch/report/ar6/wg1/downloads/figures/IPCC_AR6_WGI_SPM_Figure_2.png — Whiskers show the very likely range — Time period is 1850-1900 to 2010-2019. All contributions are from human activity, as natural variance and forcings have not contributed to warming in this",
+        "date": "2021-08-15",
+        "section": "Historical cooling",
+        "position": 8,
+        "provenance": {
+          "credit": "Eric Fisk",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Physical_Drivers_of_climate_change.svg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Global_dimming",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380990938",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Yang 2020 China lockdowns temperature.jpg"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Estimates of past and future SO2 global anthropogenic emissions.png",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/aa/Estimates_of_past_and_future_SO2_global_anthropogenic_emissions.png/960px-Estimates_of_past_and_future_SO2_global_anthropogenic_emissions.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Estimates of past and future SO2 global anthropogenic emissions.png",
+        "caption": "Early 2010s estimates of past and future anthropogenic global sulfur dioxide emissions, including the Representative Concentration Pathways. While no climate change scenario may reach Maximum Feasible Reductions (MFRs), all assume steep declines from today's levels. By 2019, sulfate emission reductions were confirmed to proceed at a very fast rate.",
+        "alt": "",
+        "description": "Based on literature search, this is a collection of estimates of past and future anthropogenic global sulphur dioxide emissions. The Cofala et al estimates are for sensitivity studies on SO2 emission policies, CLE: Current Legislation, MFR: Maximum Feasible Reductions. RCPs (Representative Concentration Pathways) are used in CMIP5 simulations for latest (2013-2014) IPCC 5th assesment report. References: Cofala, J., et al. (2007) Scenarios of global anthropogenic emissions of air pollutants and methane until 2030. Atmos. Env., 41:8387–8499. Smit",
+        "date": "2012-12-14",
+        "section": "Future",
+        "position": 10,
+        "provenance": {
+          "credit": "Sooooga",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Estimates_of_past_and_future_SO2_global_anthropogenic_emissions.png",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Global_dimming",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380990938",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Luo 2020 aerosol temps Europe.jpg"
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Xie et al 2022 Asian aerosols.png"
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Risser 2024 USA aerosol GHG rainfall.png"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Smith 2020 SAI RCP scenarios.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3c/Smith_2020_SAI_RCP_scenarios.jpg/960px-Smith_2020_SAI_RCP_scenarios.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Smith 2020 SAI RCP scenarios.jpg",
+        "caption": "This graph shows that if stratospheric aerosol injection were to be deployed starting from 2034, then it could be finely scaled to either halve the speed of warming by 2100, to halt it, or to reverse it entirely. The same degree of control is available under the scenarios of low, medium and high greenhouse gas emissions",
+        "alt": "",
+        "description": "This image comes from a 2020 paper devoted to analyzing costs of w:stratospheric aerosol injection (SAI). It shows baseline w:radiative forcing under three different w:Representative Concentration Pathway scenarios, and how it would be affected by the deployment of SAI to either halve the speed of warming, to halt the warming, or to reverse it entirely.",
+        "date": "2020-10-19",
+        "section": "Relevance for solar geoengineering",
+        "position": 14,
+        "provenance": {
+          "credit": "Wake Smith",
+          "license": "CC BY 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Smith_2020_SAI_RCP_scenarios.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Global_dimming",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380990938",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "a00872041a65053316f1e64c9553c1a62a4afd63fa107d1a8a6f33e7e2a34a19",
+      "heading": "Lead",
+      "excerpt": "Global dimming is a decline in the amount of sunlight reaching the Earth's surface. It is caused by atmospheric particulate matter, predomin",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380990938"
+    },
+    {
+      "id": "P2",
+      "hash": "387f183d379e72f2ea42abe3e7ec49e5feff83564922dec6bd26792a41464a36",
+      "heading": "Lead",
+      "excerpt": "Aerosols have a cooling effect on the earth's atmosphere, and global dimming has masked the extent of global warming experienced to date, wi",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380990938"
+    },
+    {
+      "id": "P3",
+      "hash": "1d09c3ad9f7686b5c15e2c066d452ec33f9920cfb7532a539916858dba71810e",
+      "heading": "Lead",
+      "excerpt": "Since the 1980s, a decrease in air pollution has led to a partial reversal of the dimming trend, sometimes referred to as global brightening",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380990938"
+    },
+    {
+      "id": "P4",
+      "hash": "af8398d588be7869ea36e46a9b1ddf0ab97698e9e05dfae5a89120b7f9c61e3b",
+      "heading": "Lead",
+      "excerpt": "The processes behind global dimming are similar to stratospheric aerosol injection. This is a proposed solar geoengineering intervention whi",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380990938"
+    },
+    {
+      "id": "P5",
+      "hash": "2f8ec9591abaa76f524bd87d5688ac67050417fcfd80d74fec0411841470c11b",
+      "heading": "History",
+      "excerpt": "In the 1970s, numerous studies showed that atmospheric aerosols could affect the propagation of sunlight through the atmosphere, a measure a",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380990938"
+    },
+    {
+      "id": "P6",
+      "hash": "29a340909b0edfee59745f519439d75f7478d900388ac755b541b04366d651db",
+      "heading": "Anthropogenic sulfates",
+      "excerpt": "Global dimming is primarily caused by the presence of sulfate particles which hang in the Earth's atmosphere as aerosols. These aerosols hav",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380990938"
+    },
+    {
+      "id": "P7",
+      "hash": "268577cb695a405dd14ae26c3b7de387a98ef6281450275d67f9db83536c296b",
+      "heading": "Black carbon",
+      "excerpt": "Another important type of aerosol is black carbon, colloquially known as soot. It is formed due to incomplete combustion of fossil fuels, as",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380990938"
+    },
+    {
+      "id": "P8",
+      "hash": "5d7e105f43d63ac61674dbd1145c206744df5538867e423ee56fd345f3689942",
+      "heading": "Reversal",
+      "excerpt": "After 1990, the global dimming trend had clearly switched to global brightening. This followed measures taken to combat air pollution by the",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380990938"
+    },
+    {
+      "id": "P9",
+      "hash": "2fe10b63715986260e62231f9f11f5b300fe920e73d3fb7834e766c3cce16269",
+      "heading": "Cooling from sulfate aerosols",
+      "excerpt": "It has been understood for a long time that any effect on solar irradiance from aerosols would necessarily impact Earth's radiation balance.",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380990938"
+    },
+    {
+      "id": "P10",
+      "hash": "26c98a2ea9bd3a0ca816b600e99eeea46d19a6775c89bd729cf62a35b9bb6c31",
+      "heading": "Warming from black carbon",
+      "excerpt": "Unlike sulfate pollution, black carbon contributes to both global dimming and global warming, since its particles absorb sunlight and heat u",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380990938"
+    },
+    {
+      "id": "P11",
+      "hash": "5226a4a59b5436310af6b9985b351ba62c2f6a16cd7497c047673875506c99c3",
+      "heading": "Minor role of aircraft contrails",
+      "excerpt": "Aircraft leave behind visible contrails (also known as vapor trails) as they travel. These contrails both reflect incoming solar radiation a",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380990938"
+    },
+    {
+      "id": "P12",
+      "hash": "59c10e7d2b748cc48301ba1d1a25c47561cf924814b5054d59db8702d44aec3d",
+      "heading": "Historical cooling",
+      "excerpt": "At the peak of global dimming, sulfur dioxide was able to counteract the warming trend completely. By 1975, the continually increasing conce",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380990938"
+    },
+    {
+      "id": "P13",
+      "hash": "4964dac05ad282b1e9169846870514df1aad6259e91277251de8e59a93060b23",
+      "heading": "Brightening and accelerated warming",
+      "excerpt": "Since the 1980s, the reduction in global dimming has contributed to higher global temperatures. Hot extremes have accelerated as global dimm",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380990938"
+    },
+    {
+      "id": "P14",
+      "hash": "5544886a8a4c785f795a2e28ec3ecff4c6a124ecbcdaccb52abcc652447eeede",
+      "heading": "Future",
+      "excerpt": "Since changes in aerosol concentrations already have an impact on the global climate, they would necessarily influence future projections as",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380990938"
+    },
+    {
+      "id": "P15",
+      "hash": "10a3dc3e9179ffdc734f86b3f04ccd61fb33773e53c784a31a70733c41a3a5b3",
+      "heading": "Relationship with water cycle",
+      "excerpt": "On regional and global scale, air pollution can affect the water cycle, in a manner similar to some natural processes. One example is the im",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380990938"
+    },
+    {
+      "id": "P16",
+      "hash": "1091c60f06a76b86a45e16bbedccd2ce4ffb81346ee3af747366c5989033e521",
+      "heading": "Relevance for solar geoengineering",
+      "excerpt": "Global dimming is also relevant for certain proposals about slowing, halting, or reversing global warming. An increase in planetary albedo o",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380990938"
+    },
+    {
+      "id": "P17",
+      "hash": "fa478ff0b88698a1ad52cce2832ce0c03c97ce32161bc9b9aa0de599de1a33bd",
+      "heading": "History",
+      "excerpt": "Subsequent research estimated an average reduction in sunlight striking the terrestrial surface of around 4–5% per decade over the late 1950",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380990938"
+    }
+  ],
+  "updatedAt": "2026-10-21T13:49:18.768Z"
 }
