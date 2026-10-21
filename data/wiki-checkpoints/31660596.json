@@ -2,9 +2,206 @@
   "pageId": 31660596,
   "title": "Iberian cartography, 1400–1600",
   "topic": "History & Geography",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1372322855,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1372322855",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-21T13:32:17.431Z"
+  "reason": "5 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Imperi de la Corona d'Aragó.png"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:1375 Atlas Catalan Abraham Cresques.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/35/1375_Atlas_Catalan_Abraham_Cresques.jpg/960px-1375_Atlas_Catalan_Abraham_Cresques.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:1375 Atlas Catalan Abraham Cresques.jpg",
+        "caption": "Dating from 1375, the full 8 sheet Catalan Atlas made by Abraham Cresques, cartographer to King Pere IV of Aragon. It was a gift from the King of the Crown of Aragon to the King of France. Many later maps and \"portolan charts\" are copies of this original Catalan one.",
+        "alt": "",
+        "description": "Atlas from the 14th century attributed to Abraham Cresques.",
+        "date": "1375date QS:P571,+1375-00-00T00:00:00Z/9date QS:P571,+1375-00-00T00:00:00Z/9",
+        "section": "",
+        "position": 1,
+        "provenance": {
+          "credit": "Cresques Abraham",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:1375_Atlas_Catalan_Abraham_Cresques.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Iberian_cartography%2C_1400%E2%80%931600",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1372322855",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Fernão Vaz Dourado 1571-1.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fc/Fern%C3%A3o_Vaz_Dourado_1571-1.jpg/960px-Fern%C3%A3o_Vaz_Dourado_1571-1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Fernão Vaz Dourado 1571-1.jpg",
+        "caption": "A pre-Mercator nautical chart of 1571, from Portuguese cartographer Fernão Vaz Dourado (c. 1520–c. 1580). It belongs to the so-called plane chart model, where observed latitudes and magnetic directions are plotted directly into the plane, with a constant scale, as if the Earth were plane (Portuguese National Archives of Torre do Tombo, Lisbon).",
+        "alt": "",
+        "description": "Nautical chart of Portuguese cartographer Fernão Vaz Dourado (c. 1520 - c. 1580), part of a nautical atlas drawn in 1571 and now kept in the Portuguese National Archives of Torre do Tombo (ANTT), Lisbon.",
+        "date": "Original work of 1571. Photo taken in 2008",
+        "section": "",
+        "position": 2,
+        "provenance": {
+          "credit": "Alvesgaspar Alvesgaspar",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Fern%C3%A3o_Vaz_Dourado_1571-1.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Iberian_cartography%2C_1400%E2%80%931600",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1372322855",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:TO map.gif"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Jorge Aguiar 1492 MR.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/21/Jorge_Aguiar_1492_MR.jpg/960px-Jorge_Aguiar_1492_MR.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Jorge Aguiar 1492 MR.jpg",
+        "caption": "Portolan chart by Jorge de Aguiar (1492), the oldest known signed and dated chart of Portuguese origin (Beinecke Rare Book and Manuscript Library, University of Yale, New Haven, USA)",
+        "alt": "",
+        "description": "Reproduction of Jorge de Aguiar's chart of the Mediterranean, Western Europe and African Coast (1492). Size of the original: 1030 × 770 mm.",
+        "date": "1492",
+        "section": "Portolan charts",
+        "position": 4,
+        "provenance": {
+          "credit": "Jorge de Aguiar Jorge de Aguiar",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Jorge_Aguiar_1492_MR.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Iberian_cartography%2C_1400%E2%80%931600",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1372322855",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Gutiérrez, the Americas, 1562.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e9/Guti%C3%A9rrez%2C_the_Americas%2C_1562.jpg/960px-Guti%C3%A9rrez%2C_the_Americas%2C_1562.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Gutiérrez, the Americas, 1562.jpg",
+        "caption": "Americae Sive Qvartae Orbis Partis Nova Et Exactissima Descriptio, 1562",
+        "alt": "",
+        "description": "Map by Diego Gutiérrez showing the Spanish Empire at its height. Made for the approval of Philip II, here shown in the guise of Neptune – a relatively small figure in a seahorse-drawn chariot that is west of Florida.",
+        "date": "1562",
+        "section": "Spanish oceanic and land exploration and navigation",
+        "position": 5,
+        "provenance": {
+          "credit": "Diego Gutiérrez",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Guti%C3%A9rrez,_the_Americas,_1562.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Iberian_cartography%2C_1400%E2%80%931600",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1372322855",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Brazil 16thc map.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/46/Brazil_16thc_map.jpg/960px-Brazil_16thc_map.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Brazil 16thc map.jpg",
+        "caption": "\"Terra Brasilis\", Miller Atlas, 1519, French National Library.",
+        "alt": "",
+        "description": "Map of Brazil in the Miller Atlas of 1519.",
+        "date": "1519",
+        "section": "Portuguese oceanic and land exploration and navigation",
+        "position": 6,
+        "provenance": {
+          "credit": "Lopo Homem",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Brazil_16thc_map.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Iberian_cartography%2C_1400%E2%80%931600",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1372322855",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "68ced93518bea7490d052af8ef31ecff8f84d85a3e546473bbaae6e33c8bb0d7",
+      "heading": "Lead",
+      "excerpt": "Cartography throughout the 14th-16th centuries played a significant role in the expansion of the kingdoms of the Iberian Peninsula for a mul",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1372322855"
+    },
+    {
+      "id": "P2",
+      "hash": "aa78af1571f7c1e4789b87f07f5a0d70d6fb394908127010490c50aac104377a",
+      "heading": "Lead",
+      "excerpt": "They were used to make the travel occurring at the time easier by eliminating the unnecessary resources spent when the most efficient route ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1372322855"
+    },
+    {
+      "id": "P3",
+      "hash": "7455de94b8481c6ed52dece900460112ccdab5291919ed9e7d1bb8a2313f1eb5",
+      "heading": "Lead",
+      "excerpt": "Even still, oftentimes before the availability of maps began to increase, they were used as decorative pieces that were commonly gifted to i",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1372322855"
+    },
+    {
+      "id": "P4",
+      "hash": "d03a37e3531a990b2274b9ea66f8c72535707012d80e604680d59ba54084b872",
+      "heading": "Lead",
+      "excerpt": "One other purpose behind maps was propaganda, and in those circumstances they were used to possibly distort or falsify information. The Dutc",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1372322855"
+    },
+    {
+      "id": "P5",
+      "hash": "fd6bad22f3f7b1136d2e94d02d7d164c5581a15db885b2f9866ea541d8d38f8d",
+      "heading": "Evolution of the map-making process",
+      "excerpt": "Evolutionary-wise, the specific measurements used in sea charts began to have a practical impact on world maps beginning in the early 14th c",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1372322855"
+    },
+    {
+      "id": "P6",
+      "hash": "b5859e18c6ac04e98895bcbd5a85d3361ced83d300e0b218c647dc5cee26b9db",
+      "heading": "Portolan charts",
+      "excerpt": "The term portolan is derivative from portolano which translates from Italian into 'pilot's book.' While the orientation of earlier maps was ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1372322855"
+    },
+    {
+      "id": "P7",
+      "hash": "715fbc9fd72ba10dd6bae33eb711cd1a7c55d7a272bc7b66bb7efcfb4590fb02",
+      "heading": "Spanish oceanic and land exploration and navigation",
+      "excerpt": "Unlike the maps being created in Portugal, those produced in Spain were heavily guarded with an air of secrecy. The Habsburgs heavily guarde",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1372322855"
+    },
+    {
+      "id": "P8",
+      "hash": "3fa92b1009cf856a7ed51780fa83f68200eb5f11e76032e807d59d60daef9ebb",
+      "heading": "Portuguese oceanic and land exploration and navigation",
+      "excerpt": "Cartography played a large role in the establishment of the expansive Portuguese trade route, and similarly, the trade route played its role",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1372322855"
+    },
+    {
+      "id": "P9",
+      "hash": "23d4b1e1208c6cb42d4a060a544b7b93d4ec264ea4a63204a4de0988f59620b6",
+      "heading": "Evolution of the map-making process",
+      "excerpt": "To better understand the map-making process, a step back in time is required, as Claudius Ptolemaeus, better known as Ptolemy, whose eight-v",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1372322855"
+    }
+  ],
+  "updatedAt": "2026-10-21T13:32:19.420Z"
 }
