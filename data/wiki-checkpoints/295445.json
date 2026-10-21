@@ -2,9 +2,187 @@
   "pageId": 295445,
   "title": "Global cooling",
   "topic": "Environment",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1369911186,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369911186",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-21T13:32:05.413Z"
+  "reason": "1 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Global Cooling Map.png"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:1965-1979 Survey of scientific papers re global warming vs cooling.svg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fa/1965-1979_Survey_of_scientific_papers_re_global_warming_vs_cooling.svg/960px-1965-1979_Survey_of_scientific_papers_re_global_warming_vs_cooling.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:1965-1979 Survey of scientific papers re global warming vs cooling.svg",
+        "caption": "Anthropogenic global warming—not global cooling or \"imminent ice ages\"—dominated peer-reviewed literature in the 1970s, contrary to false claims that climate science subsequently reversed its consensus.",
+        "alt": "",
+        "description": "Chart showing results of literature survey re which scientific articles predicted, implied, or evidenced global warming versus global cooling Data source: Peterson, Thomas C.; Connolley, William M.; Fleck, John. (1 September 2008). \"The Myth of the 1970s Global Cooling Scientific Consensus\". Bulletin of the American Meteorological Society 89 (9): 1235-1328. DOI:10.1175/2008BAMS2370.1. Fig. 1.",
+        "date": "2025-12-27",
+        "section": "",
+        "position": 1,
+        "provenance": {
+          "credit": "RCraig09",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:1965-1979_Survey_of_scientific_papers_re_global_warming_vs_cooling.svg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Global_cooling",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369911186",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Vostok Petit data.svg"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "83385c8a00ba56f228bee69f0dd7e13bba5d731e3d757a73245784bfa6687bf6",
+      "heading": "Lead",
+      "excerpt": "Global cooling was a conjecture, especially during the 1970s, of imminent cooling of the Earth culminating in a period of extensive glaciati",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369911186"
+    },
+    {
+      "id": "P2",
+      "hash": "dbd30bf52324e4ee9534194b9718750a33b152485912659f3bf30a670fbb69b9",
+      "heading": "Lead",
+      "excerpt": "An overall warming trend from the late Industrial Revolution did slow and reverse slightly from the 1940s to the 1970s due to high industria",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369911186"
+    },
+    {
+      "id": "P3",
+      "hash": "df1f56008e93113993ef96db74af4c2f822fa40f016a888ef081ae451e676f3a",
+      "heading": "Introduction: general awareness and concern",
+      "excerpt": "By the 1970s, scientists were becoming increasingly aware that estimates of global temperatures showed cooling since 1945, as well as the po",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369911186"
+    },
+    {
+      "id": "P4",
+      "hash": "efd9c7a8ada460fe776ac63d8cf26dffcb1fd5796cb6d4851f38f72621ad6051",
+      "heading": "Introduction: general awareness and concern",
+      "excerpt": "Currently, there are some concerns about the possible regional cooling effects of a slowdown or shutdown of thermohaline circulation, which ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369911186"
+    },
+    {
+      "id": "P5",
+      "hash": "d9b153b9542f036692527516d73764cd240fa314029d4dd3f94dc05d405adf67",
+      "heading": "1972 and 1974 National Science Board",
+      "excerpt": "The board's report of 1974, Science And The Challenges Ahead, continued on this theme. \"During the last 20-30 years, world temperature has f",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369911186"
+    },
+    {
+      "id": "P6",
+      "hash": "5ae9054fad47ff50393e9cc016544f50e562ef43f8759bbf2ee954e54f959ce0",
+      "heading": "Present level of knowledge",
+      "excerpt": "As the NAS report indicates, scientific knowledge regarding climate change was more uncertain than it is today. At the time that Rasool and ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369911186"
+    },
+    {
+      "id": "P7",
+      "hash": "5bf92135f165e778fa2ca5eecb816cac6eb1d0714aa3975a450093346926bd9e",
+      "heading": "Physical mechanisms",
+      "excerpt": "The cooling period is reproduced by current (1999 on) global climate models that include the physical effects of sulfate aerosols, and there",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369911186"
+    },
+    {
+      "id": "P8",
+      "hash": "b27eea0dde945774850a6b90610d7e0d3ca2147a8109e1af31b227d05f7f3f88",
+      "heading": "Aerosols",
+      "excerpt": "Human activity — mostly as a by-product of fossil fuel combustion, partly by land use changes — increases the number of tiny particles (aero",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369911186"
+    },
+    {
+      "id": "P9",
+      "hash": "8430b1fd7eeae40b8a3db93e970ba6b762eb4543344abba34e15e73c08b97126",
+      "heading": "Orbital forcing",
+      "excerpt": "Orbital forcing refers to the slow, cyclical changes in the tilt of Earth's axis and shape of its orbit. These cycles alter the total amount",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369911186"
+    },
+    {
+      "id": "P10",
+      "hash": "5315ca56641567f8a16f6767e76fa763f3a15eda78862d1ac9159cceb8ed85ba",
+      "heading": "Concern pre-1970s",
+      "excerpt": "In 1923, there was concern about a new ice age and Captain Donald Baxter MacMillan sailed toward the Arctic sponsored by the National Geogra",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369911186"
+    },
+    {
+      "id": "P11",
+      "hash": "d503d6a75aba1149685a9ebecf55f135d9dd0ef6a3e7d70fd429e62da8571162",
+      "heading": "1970s awareness",
+      "excerpt": "Concern peaked in the early 1970s, though \"the possibility of anthropogenic warming dominated the peer-reviewed literature even then\" (a coo",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369911186"
+    },
+    {
+      "id": "P12",
+      "hash": "7633927ec5925269d55208a736583583c7fb1bf9910d5f2b050e0755a7337188",
+      "heading": "1970 SCEP report",
+      "excerpt": "The 1970 Study of Critical Environmental Problems reported the possibility of warming from increased carbon dioxide, but no concerns about c",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369911186"
+    },
+    {
+      "id": "P13",
+      "hash": "04183bbc913beac057046431893ed12d8da4b56a2cd18bbaee340d8a38b15b1e",
+      "heading": "1971 to 1975: papers on warming and cooling factors",
+      "excerpt": "By 1971, studies indicated that human caused air pollution was spreading, but there was uncertainty as to whether aerosols would cause warmi",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369911186"
+    },
+    {
+      "id": "P14",
+      "hash": "6b3bec71fd67c65fab827d69b0a266c3ed008b095398ecbc27c2f99a0906cc98",
+      "heading": "1972 and 1974 National Science Board",
+      "excerpt": "The National Science Board's Patterns and Perspectives in Environmental Science report of 1972 discussed the cyclical behavior of climate, a",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369911186"
+    },
+    {
+      "id": "P15",
+      "hash": "4bf82660b8a2f93c2ee8051c44a7ee3d454555471a30a264426a96038f73d9ce",
+      "heading": "1975 National Academy of Sciences report",
+      "excerpt": "The report stated (p. 36) that, \"The average surface air temperature in the northern hemisphere increased from the 1880s until about 1940 an",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369911186"
+    },
+    {
+      "id": "P16",
+      "hash": "edc35822559fcb80836a9a8dfdef51514372fd3ccfda3150d24e18a98f7adaee",
+      "heading": "1974 Time magazine article",
+      "excerpt": "While these discussions were ongoing in scientific circles, other accounts appeared in the popular media. In their June 24, 1974, issue, Tim",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369911186"
+    },
+    {
+      "id": "P17",
+      "hash": "6c846bb895ee1df107d049696c173b4bdd588f1aecc6d83cea08e9d30e02b74f",
+      "heading": "1975 Newsweek article",
+      "excerpt": "An April 28, 1975, article in Newsweek magazine was titled \"The Cooling World\", it pointed to \"ominous signs that the Earth's weather patter",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369911186"
+    },
+    {
+      "id": "P18",
+      "hash": "59d10143696c81d30dd920da9493f14c8da23c76e124f88ccb889b7a1d44f072",
+      "heading": "Other 1970s sources",
+      "excerpt": "Academic analysis of the peer-reviewed studies published at that time shows that most papers examining aspects of climate during the 1970s w",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369911186"
+    },
+    {
+      "id": "P19",
+      "hash": "628cd977234630f684b465527f3fc0401aa51198d3d3bf17be895a674a0f05a0",
+      "heading": "1980s",
+      "excerpt": "Concerns about nuclear winter arose in the early 1980s from several reports. Similar speculations have appeared over effects due to catastro",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369911186"
+    },
+    {
+      "id": "P20",
+      "hash": "b4ad4edb2641d3386750705a11462737ba95d74796fcbfa5d7f14a6980592b79",
+      "heading": "1990s",
+      "excerpt": "In 1991, a prediction by Carl Sagan and other scientists who had worked on the famous TTAPS study on nuclear winter that massive oil well fi",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369911186"
+    }
+  ],
+  "updatedAt": "2026-10-21T13:32:07.236Z"
 }
