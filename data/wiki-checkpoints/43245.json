@@ -535,7 +535,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378625637"
     }
   ],
-  "updatedAt": "2026-10-21T22:30:34.961Z",
+  "updatedAt": "2026-10-21T22:30:52.951Z",
   "draft": {
     "outline": [
       "Origins and early royal building",
@@ -611,7 +611,7 @@
             ]
           },
           {
-            "text": "Later centuries brought major structural additions. Architects Christopher Wren, Nicholas Hawksmoor, and John James worked on the exterior, culminating in the completion of the iconic western towers in the 1740s. In 1914, suffragette activists targeted the building with a bomb, damaging the Coronation Chair.",
+            "text": "Later centuries brought major structural additions. Architects Christopher Wren, Nicholas Hawksmoor, and John James worked on the exterior, culminating in the completion of the iconic western towers in the 1740s. A bomb planted by suffragettes exploded inside the abbey, damaging the Coronation Chair.",
             "evidenceIds": [
               "P11",
               "P12",
@@ -619,7 +619,7 @@
             ]
           },
           {
-            "text": "Plans for a modern corona structure above the central lantern were proposed but ultimately abandoned in 2010. Today, housing over 3,300 burials including monarchs, poets, and scientists, the site is recognized globally as a UNESCO World Heritage Site.",
+            "text": "Plans for a modern corona structure above the central lantern were proposed, but efforts toward its construction were not continued. Today, housing over 3,300 burials including monarchs, poets, and scientists, the site is recognized globally as a UNESCO World Heritage Site.",
             "evidenceIds": [
               "P2",
               "P4",
@@ -672,11 +672,11 @@
       }
     }
   },
-  "repairAttempts": 1,
+  "repairAttempts": 2,
   "lastUsage": {
-    "input": 3467,
-    "output": 963,
-    "total": 4430
+    "input": 3040,
+    "output": 235,
+    "total": 3275
   },
   "validation": null
 }
