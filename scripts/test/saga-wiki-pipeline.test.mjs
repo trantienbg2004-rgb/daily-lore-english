@@ -112,6 +112,29 @@ test('valid candidate publishes once within a two-call editorial budget',async()
  assert.equal(result.usage.total,300);assert.equal(stored.outcomes[42].status,'PUBLISHED')
 })
 
+test('unknown token usage persists through the day and resumes after the daily reset',async()=>{
+ const stored=state(),today=new Date().toISOString().slice(0,10)
+ stored.dailyUsage={day:today,calls:1,tokens:0,usageUnknown:true,tokenAccountingUnavailable:true}
+ const saved={pageId:42,revisionId:123,status:'RETRY_LATER',evidence:[{id:'P1'}],
+  rights:[{status:'REVIEW',photo:{url:'https://thumb.wikimedia.org/map'}}]}
+ let calls=0
+ const options={base:'unused',maxCalls:2,maxCandidates:1,apiKey:'placeholder',freeTierConfirmed:true,
+  readState:async()=>stored,writeState:async()=>{},readCatalog:async()=>({stories:[]}),
+  readCheckpoint:async()=>saved,writeCheckpoint:async()=>{},fetchRevision:async()=>source,
+  verifyFigures:async()=>saved.rights,
+  generate:async()=>{calls++;return {validation:{accepted:true},result:{variants:{}},evidence:[],usage:null}},
+  assign:()=>({status:'VERIFIED',levelVariants:{},photos:[{url:'https://thumb.wikimedia.org/map'}]}),
+  makeStory:()=>({sourcePageId:42,pages:[{image:'https://thumb.wikimedia.org/map'}]}),append:async()=>{}}
+ await runWikiBatch(options)
+ assert.equal(calls,0)
+ assert.equal(stored.dailyUsage.tokenAccountingUnavailable,true)
+ stored.dailyUsage.day='2020-01-01'
+ const resumed=await runWikiBatch(options)
+ assert.equal(calls,1)
+ assert.equal(resumed.published,1)
+ assert.equal(stored.dailyUsage.tokenAccountingUnavailable,false)
+})
+
 test('rejected model prose is kept in an ignored review report, without source text or a key',async()=>{
  const base=await fs.mkdtemp(path.join(os.tmpdir(),'saga-wiki-pending-'))
  try{
