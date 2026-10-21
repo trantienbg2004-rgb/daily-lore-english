@@ -2,9 +2,414 @@
   "pageId": 13294262,
   "title": "Climate change in the Arctic",
   "topic": "Environment",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1380980056,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380980056",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-21T08:11:11.790Z"
+  "reason": "10 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:ArcticYearlongTempAnom HR.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/61/ArcticYearlongTempAnom_HR.jpg/960px-ArcticYearlongTempAnom_HR.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:ArcticYearlongTempAnom HR.jpg",
+        "caption": "The image above shows where average air temperatures (October 2010 – September 2011) were up to 2 degrees Celsius above (red) or below (blue) the long-term average (1981–2010).",
+        "alt": "",
+        "description": "The image shows where average air temperatures (October 2010-September 2011) were between 2 degrees Celsius above (red) or below (blue) the long-term average (1981-2010). The map is based on a NCEP/NCAR reanalysis of near-surface air temperature anomalies provided by NOAA’s Earth System Research Laboratory’s Physical Sciences Division.",
+        "date": "2011-11-30",
+        "section": "Warming",
+        "position": 0,
+        "provenance": {
+          "credit": "Hunter Allen and Richard Rivera (NOAA’s Climate Program Office)http://www.climatewatch.noaa.gov/article/2011/arctic-warming-exceeds-global-average",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:ArcticYearlongTempAnom_HR.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Climate_change_in_the_Arctic",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380980056",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Wunderling 2020 regional impact.jpg"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:NORTH POLE Ice (19626661335).jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/64/NORTH_POLE_Ice_%2819626661335%29.jpg/960px-NORTH_POLE_Ice_%2819626661335%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:NORTH POLE Ice (19626661335).jpg",
+        "caption": "The dark ocean surface reflects only 6 percent of incoming solar radiation, while sea ice reflects 50 to 70 percent.",
+        "alt": "",
+        "description": "NORTH POLE North Pole Keep",
+        "date": "2015-06-30 06:59:10",
+        "section": "Arctic amplification",
+        "position": 2,
+        "provenance": {
+          "credit": "Christopher Michel",
+          "license": "CC BY 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:NORTH_POLE_Ice_(19626661335).jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Climate_change_in_the_Arctic",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380980056",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Slater 2021 global ice loss.png",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c4/Slater_2021_global_ice_loss.png/960px-Slater_2021_global_ice_loss.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Slater 2021 global ice loss.png",
+        "caption": "On average, climate change has lowered the thickness of land ice with every year, and reduced the extent of sea ice cover.",
+        "alt": "",
+        "description": "The global ice losses caused by climate change between 1994 and 2017.",
+        "date": "2020-08-12",
+        "section": "Cryosphere loss",
+        "position": 3,
+        "provenance": {
+          "credit": "Thomas Slater, Isobel R. Lawrence, Inès N. Otosaka, Andrew Shepherd, Noel Gourmelen, Livia Jakob, Paul Tepes, Lin Gilbert, and Peter Nienow",
+          "license": "CC BY 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Slater_2021_global_ice_loss.png",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Climate_change_in_the_Arctic",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380980056",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Beckmann 2023 Greenland 2300 RCP85 extent.png"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Arctic Vegetation Index Trend (WH).png",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/63/Arctic_Vegetation_Index_Trend_%28WH%29.png/960px-Arctic_Vegetation_Index_Trend_%28WH%29.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Arctic Vegetation Index Trend (WH).png",
+        "caption": "Western Hemisphere Arctic Vegetation Index Trend",
+        "alt": "",
+        "description": "Over the past three decades, temperatures have risen faster in the Arctic than anywhere else in the world. Consequently, the growing season has gotten longer in the far northern latitudes, bringing major changes to plant communities in tundra and boreal (also known as taiga) ecosystems. For decades, instruments on various NASA and NOAA satellites have continuously monitored vegetation from space. The Moderate Resolution Imaging Spectroradiometer (MODIS) and Advanced Very High Resolution Radiometer (AVHRR) instruments measure the intensity of vi",
+        "date": "2013-03-16",
+        "section": "Impacts on Arctic flora",
+        "position": 6,
+        "provenance": {
+          "credit": "Ramakrishna Nemani of NASA’s Ames Research Center and Sangram Ganguly of the Bay Area Environmental Research Institute and NASA Ames",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Arctic_Vegetation_Index_Trend_(WH).png",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Climate_change_in_the_Arctic",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380980056",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Arctic Vegetation Index Trend (EH).png",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/49/Arctic_Vegetation_Index_Trend_%28EH%29.png/960px-Arctic_Vegetation_Index_Trend_%28EH%29.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Arctic Vegetation Index Trend (EH).png",
+        "caption": "Eastern Hemisphere Vegetation Index Trend",
+        "alt": "",
+        "description": "Over the past three decades, temperatures have risen faster in the Arctic than anywhere else in the world. Consequently, the growing season has gotten longer in the far northern latitudes, bringing major changes to plant communities in tundra and boreal (also known as taiga) ecosystems. For decades, instruments on various NASA and NOAA satellites have continuously monitored vegetation from space. The Moderate Resolution Imaging Spectroradiometer (MODIS) and Advanced Very High Resolution Radiometer (AVHRR) instruments measure the intensity of vi",
+        "date": "2013-03-16 12:04:06",
+        "section": "Impacts on Arctic flora",
+        "position": 7,
+        "provenance": {
+          "credit": "Ramakrishna Nemani of NASA’s Ames Research Center and Sangram Ganguly of the Bay Area Environmental Research Institute and NASA Ames",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Arctic_Vegetation_Index_Trend_(EH).png",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Climate_change_in_the_Arctic",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380980056",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Polar Bear Habitat.png",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/eb/Polar_Bear_Habitat.png/960px-Polar_Bear_Habitat.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Polar Bear Habitat.png",
+        "caption": "Projected change in polar bear habitat from 2001–2010 to 2041–2050",
+        "alt": "",
+        "description": "Projected changes (based on 10 IPCC AR-4 GCM models run with the SRES- A1B forcing scenario) in the spatial distribution and integrated annual area of optimal polar bear habitat. Base map shows the cumulative number of months per decade where optimal polar bear habitat was either lost (red) or gained (blue) from 2001–2010 to 2041–2050. Offshore gray shading denotes areas where optimal habitat was absent in both periods. Insets show the average annual ( 12 months) cumulative area of optimal habitat (right y-axis, line plot) for four 10-year peri",
+        "date": "2010-11-24 16:54:11",
+        "section": "Impacts on terrestrial fauna",
+        "position": 8,
+        "provenance": {
+          "credit": "USGS",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Polar_Bear_Habitat.png",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Climate_change_in_the_Arctic",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380980056",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:NASA Arctic chlorophyll increase.png"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Permafrost thaw ponds in Hudson Bay Canada near Greenland.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/73/Permafrost_thaw_ponds_in_Hudson_Bay_Canada_near_Greenland.jpg/960px-Permafrost_thaw_ponds_in_Hudson_Bay_Canada_near_Greenland.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Permafrost thaw ponds in Hudson Bay Canada near Greenland.jpg",
+        "caption": "Permafrost thaw ponds on Baffin Island",
+        "alt": "",
+        "description": "Photo shows what appears to be permafrost thaw ponds in Hudson Bay, Canada, near Greenland. (By inspection this photo appears to match a location at 66°11′10″N 73°26′42″W / 66.1861°N 73.445°W / 66.1861; -73.445 in Dewey Soper Migratory Bird Sanctuary on Baffin Island, overlooking the waters of the Hudson Bay near Greenland)",
+        "date": "2008-06-28",
+        "section": "Permafrost thaw",
+        "position": 10,
+        "provenance": {
+          "credit": "Steve Jurvetson",
+          "license": "CC BY 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Permafrost_thaw_ponds_in_Hudson_Bay_Canada_near_Greenland.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Climate_change_in_the_Arctic",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380980056",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Schuur 2022 century-scale permafrost projections.jpeg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7b/Schuur_2022_century-scale_permafrost_projections.jpeg/960px-Schuur_2022_century-scale_permafrost_projections.jpeg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Schuur 2022 century-scale permafrost projections.jpeg",
+        "caption": "Nine probable scenarios of greenhouse gas emissions from permafrost thaw during the 21st century, which show a limited, moderate and intense CO2 and CH4 emission response to low, medium and high-emission Representative Concentration Pathways. The vertical bar uses emissions of selected large countries as a comparison: the right-hand side of the scale shows their cumulative emissions since the start of the Industrial Revolution, while the left-hand side shows each country's cumulative emissions f",
+        "alt": "",
+        "description": "This graphic from Schuur et al. 2022 shows nine different scenarios for greenhouse gas emissions caused by permafrost thaw. Compared to the original image file, it has been modified to omit the embedded citation.",
+        "date": "27 September 2023 (original upload date)",
+        "section": "Permafrost thaw",
+        "position": 11,
+        "provenance": {
+          "credit": "The original uploader was InformationToKnowledge at English Wikipedia.",
+          "license": "CC BY 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Schuur_2022_century-scale_permafrost_projections.jpeg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Climate_change_in_the_Arctic",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380980056",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Winiger 2016 black carbon.jpg"
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Methane Hydrate phase diagram.jpg"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Sgubin2017 spg amoc collapse.jpg",
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/c/cd/Sgubin2017_spg_amoc_collapse.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "fileTitle": "File:Sgubin2017 spg amoc collapse.jpg",
+        "caption": "Modelled 21st century warming under the \"intermediate\" global warming scenario (top). The potential collapse of the subpolar gyre in this scenario (middle). The collapse of the entire Atlantic Meriditional Overturning Circulation (bottom).",
+        "alt": "",
+        "description": "2017 modelling which shows the 21st century warming trend under Representative Concentration Pathway 4.5 scenario, and how it will be affected by the collapse of the North Atlantic subpolar gyre, or by the collapse of the entire Atlantic Meriditional Overturning Circulation. Neither the image nor the original study makes reference to the baseline temperature against which the changes are plotted.",
+        "date": "2017-02-15",
+        "section": "On ocean circulation",
+        "position": 14,
+        "provenance": {
+          "credit": "No single person is credited with drawing this figure. The study which uses it lists the following authors: Giovanni Sgubin, Didier Swingedouw, Sybren Drijfhout,Yannick Mary, and Amine Bennabi.",
+          "license": "CC BY 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Sgubin2017_spg_amoc_collapse.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Climate_change_in_the_Arctic",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380980056",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Hjort 2018 permafrost infrastructure.png",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/97/Hjort_2018_permafrost_infrastructure.png/960px-Hjort_2018_permafrost_infrastructure.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Hjort 2018 permafrost infrastructure.png",
+        "caption": "Map of likely risk to infrastructure from permafrost thaw expected to occur by 2050.",
+        "alt": "",
+        "description": "This is Figure 3 of Hjort 2018, a paper devoted to analyzing w:infrastructure at risk of damage caused by w:permafrost thaw. This figure shows notable sites likely to be at risk by 2050.",
+        "date": "2018-12-11",
+        "section": "Infrastructure",
+        "position": 15,
+        "provenance": {
+          "credit": "Hjort, Jan; Karjalainen, Olli; Aalto, Juha; Westermann, Sebastian; Romanovsky, Vladimir E.; Nelson, Frederick E.; Etzelmüller, Bernd; Luoto, Miska; OpenStreetMap",
+          "license": "CC BY-SA 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Hjort_2018_permafrost_infrastructure.png",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Climate_change_in_the_Arctic",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380980056",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Langer 2023 thawed pollution.png"
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Langer 2023 alaska distributions.png"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "ff4a3e22f6799e9beca8834bc049081b11274c8bb5dfb7fbfa7fc1b2a719c9ae",
+      "heading": "Lead",
+      "excerpt": "Due to climate change in the Arctic, this polar region is expected to become \"profoundly different\" by 2050. The speed of change is \"among t",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380980056"
+    },
+    {
+      "id": "P2",
+      "hash": "efebb99dd50f82c586bccf71f70f2dad8d2e979787dbec5cc7924067aa4e0ce3",
+      "heading": "Lead",
+      "excerpt": "Natural life in the Arctic is affected greatly. As the tundra warms, its soil becomes more hospitable to earthworms and larger plants, and t",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380980056"
+    },
+    {
+      "id": "P3",
+      "hash": "688e26342b3c0451311d26ada40ba8bca532cecb97064c5a7a07fffcaed5aba9",
+      "heading": "Lead",
+      "excerpt": "The Arctic Ocean is expected to see its first ice-free events in the near future - most likely before 2050, and potentially in the late 2020",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380980056"
+    },
+    {
+      "id": "P4",
+      "hash": "2b2cac347ad5907e5977739f8080b9b10e1fe3c6d1ce05a54cf317c23c7116b9",
+      "heading": "Lead",
+      "excerpt": "Further, there are numerous implications which go beyond the Arctic region. Sea ice loss not only enhances warming in the Arctic but also ad",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380980056"
+    },
+    {
+      "id": "P5",
+      "hash": "547d6c015c7d50cbf10dda28daeb7ea828cfc64e4e60ffeb8eca386e76569fe7",
+      "heading": "Warming",
+      "excerpt": "The period of 1995–2005 was the warmest decade in the Arctic since at least the 17th century, with temperatures 2 °C (3.6 °F) above the 1951",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380980056"
+    },
+    {
+      "id": "P6",
+      "hash": "8ae54aee56f9b57fd5eff79e84a842d0a3f6a55934cf16a622d2101378fc47b0",
+      "heading": "Arctic amplification",
+      "excerpt": "Snow– and ice–albedo feedback have a substantial effect on regional temperatures. In particular, the presence of ice cover and sea ice makes",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380980056"
+    },
+    {
+      "id": "P7",
+      "hash": "55130c1b92b9dc5e79f28a1ad5080197c54743271b33b9e58c770ddf52dab470",
+      "heading": "Precipitation",
+      "excerpt": "Field studies in northwest Greenland have shown that increased summer rainfall can trigger large debris flows and slope failures in permafro",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380980056"
+    },
+    {
+      "id": "P8",
+      "hash": "2de442f719acbe7dbc07e51d8fe96c50b8375c5b9863074a218c1d8145bb229a",
+      "heading": "Sea ice",
+      "excerpt": "Sea ice in the Arctic region has declined in recent decades in area and volume due to climate change. It has been melting more in summer tha",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380980056"
+    },
+    {
+      "id": "P9",
+      "hash": "eebf8e21e18e79a1655ca035eda395029f4f01bb2c8c566e1cad1dc5b7bc5958",
+      "heading": "Greenland ice sheet",
+      "excerpt": "Greenland has had major glaciers and ice caps for at least 18 million years, but a single ice sheet first covered most of the island some 2.",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380980056"
+    },
+    {
+      "id": "P10",
+      "hash": "127b4addb60eae6302abba5fcd506cf275afe859fbca0376927b079c229611e4",
+      "heading": "Lakes",
+      "excerpt": "A January 2025 study published in the Proceedings of the National Academy of Sciences reported an \"abrupt, coherent, climate-driven transfor",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380980056"
+    },
+    {
+      "id": "P11",
+      "hash": "fa1b89f364ffc48688fdb5c74a66a023cbb6379523e823ea4337e66e7cdc2401",
+      "heading": "Impacts on Arctic flora",
+      "excerpt": "Climate change is expected to have a strong effect on the Arctic's flora, some of which is already being seen. NASA and NOAA have continuous",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380980056"
+    },
+    {
+      "id": "P12",
+      "hash": "3296cb6d1182d918e58b076db70c6177c85dbc0269fa42f35fb0c8d64dbbeec6",
+      "heading": "Impacts on terrestrial fauna",
+      "excerpt": "Arctic warming negatively affects the foraging and breeding ecology of native Arctic mammals, such as Arctic foxes or Arctic reindeer. In Ju",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380980056"
+    },
+    {
+      "id": "P13",
+      "hash": "82c7edb5c857980ea5284f60e665ee260baf476f323f47cc3ebd8b7e5150b618",
+      "heading": "Marine ecosystems",
+      "excerpt": "The reduction of sea ice has brought more sunlight to the phytoplankton and increased the annual marine primary production in the Arctic by ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380980056"
+    },
+    {
+      "id": "P14",
+      "hash": "6d94a0755faed332d078231eeddafd7ccc93cc00d44543b9c7032089bbf075e6",
+      "heading": "Greenhouse gas emissions from the Arctic",
+      "excerpt": "In 2024, the Arctic has transformed from a carbon sink to a carbon source due to the impacts of climate change, mainly rising temperatures a",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380980056"
+    },
+    {
+      "id": "P15",
+      "hash": "e3ee924bc269850eff698e35c733cc80bddf7d64b40ab04cbb9b601ebe7347d7",
+      "heading": "Permafrost thaw",
+      "excerpt": "Permafrost is an important component of hydrological systems and ecosystems within the Arctic landscape. In the Northern Hemisphere the terr",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380980056"
+    },
+    {
+      "id": "P16",
+      "hash": "754ed134678d3fba46300db377a69f11018beffa44e934280d8651d43914c2d9",
+      "heading": "Black carbon",
+      "excerpt": "Black carbon deposits (from the combustion of heavy fuel oil (HFO) of Arctic shipping) absorb solar radiation in the atmosphere and strongly",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380980056"
+    },
+    {
+      "id": "P17",
+      "hash": "718157cc883a85ae94bb13ad2a33c5b4125c433db044269f8d8e63e10183bdaf",
+      "heading": "Methane clathrate deposits",
+      "excerpt": "The clathrate gun hypothesis is a proposed explanation for the periods of rapid warming during the Quaternary. The hypothesis is that change",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380980056"
+    },
+    {
+      "id": "P18",
+      "hash": "d8d40c934fe2c58617e0142d5f131cc7fbb249358b763ade2d9c3d25446fae45",
+      "heading": "On ocean circulation",
+      "excerpt": "The Atlantic meridional overturning circulation (AMOC) is the main ocean current system in the Atlantic Ocean. It is a major component of Ea",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380980056"
+    }
+  ],
+  "updatedAt": "2026-10-21T08:11:13.381Z"
 }
