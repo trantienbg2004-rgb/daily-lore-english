@@ -9296,10 +9296,10 @@
       "checkedAt": null
     },
     "72587491": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
+      "revisionId": 1361363056,
+      "checkedAt": "2026-10-21T07:40:30.232Z"
     },
     "72796144": {
       "status": "PENDING",
@@ -9866,7 +9866,7 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-10-21T07:40:28.366Z",
+  "updatedAt": "2026-10-21T07:40:30.232Z",
   "dailyUsage": {
     "day": "2026-10-21",
     "calls": 4,
