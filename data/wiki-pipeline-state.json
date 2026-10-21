@@ -6074,10 +6074,10 @@
       "checkedAt": "2026-10-21T01:39:51.683Z"
     },
     "22576": {
-      "status": "EVIDENCE_READY",
-      "reason": "15 rights-verified embedded images",
+      "status": "RETRY_LATER",
+      "reason": "Gemini circuit open",
       "revisionId": 1379072110,
-      "checkedAt": "2026-10-21T01:40:01.890Z"
+      "checkedAt": "2026-10-21T01:40:03.146Z"
     },
     "24903": {
       "status": "PENDING",
@@ -9866,7 +9866,7 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-10-21T01:40:01.891Z",
+  "updatedAt": "2026-10-21T01:40:03.147Z",
   "dailyUsage": {
     "day": "2026-10-21",
     "calls": 3,
