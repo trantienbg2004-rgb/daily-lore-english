@@ -3,8 +3,8 @@ import assert from 'node:assert/strict'
 import fs from 'node:fs/promises'
 import os from 'node:os'
 import path from 'node:path'
-import {discoverWikiQueue,runWikiBatch,writeWikiPending} from '../wiki/runner.mjs'
-import {discoverWikiCandidates} from '../wiki/discovery.mjs'
+import {discoverWikiQueue,runWikiBatch,topUpWikiQueue,writeWikiPending} from '../wiki/runner.mjs'
+import {discoverWikiCandidates,WIKI_TOPICS} from '../wiki/discovery.mjs'
 
 const candidate={pageId:42,title:'Silk Road',topic:'Economy',score:80}
 const state=()=>({version:1,queue:[candidate],outcomes:{}})
@@ -21,6 +21,44 @@ test('discovery queues source identifiers without scraped text, balances topics 
  assert.equal(result.candidates,2)
  assert.deepEqual(new Set(stored.queue.map(row=>row.pageId)),new Set([42,43]))
  assert.equal(JSON.stringify(stored).includes('Wikipedia article body'),false)
+})
+
+test('automatic refill skips Wikipedia while every topic has enough pending sources',async()=>{
+ const queue=WIKI_TOPICS.flatMap((topic,index)=>Array.from({length:8},(_,i)=>({pageId:index*100+i+1,topic})))
+ let discoveries=0
+ const result=await topUpWikiQueue({base:'unused',readState:async()=>({queue,outcomes:{}}),
+  discoverQueue:async()=>{discoveries++}})
+ assert.equal(result.status,'supply-ready')
+ assert.equal(discoveries,0)
+})
+
+test('automatic refill appends fresh IDs without rebuilding the existing queue',async()=>{
+ let stored={version:1,queue:[candidate],outcomes:{42:{status:'PENDING'}}},persisted=0
+ const result=await topUpWikiQueue({base:'unused',minPerTopic:2,maxTopics:1,now:new Date('2026-10-21T00:00:00Z'),
+  readState:async()=>structuredClone(stored),writeState:async(_base,next)=>{stored=next},onPersist:async()=>{persisted++},
+  discoverQueue:async({topics,excludeQueued})=>{
+   assert.deepEqual(topics,['Politics']);assert.equal(excludeQueued,true)
+   stored.queue.push({pageId:43,title:'Parliament',topic:'Politics'})
+  }})
+ assert.equal(result.status,'refilled')
+ assert.equal(result.added,1)
+ assert.equal(stored.queue[0].pageId,42)
+ assert.equal(stored.lastAutoDiscoveryDay,'2026-10-21')
+ assert.equal(persisted,1)
+ const again=await topUpWikiQueue({base:'unused',now:new Date('2026-10-21T12:00:00Z'),
+  readState:async()=>stored,discoverQueue:async()=>{throw Error('should not rediscover')}})
+ assert.equal(again.status,'already-checked')
+})
+
+test('refill discovery excludes already queued pages from candidate ranking',async()=>{
+ let stored=state()
+ await discoverWikiQueue({base:'unused',topics:['Economy'],excludeQueued:true,
+  readCatalog:async()=>({stories:[],entries:[]}),readState:async()=>stored,writeState:async(_base,next)=>{stored=next},
+  discover:async({existingIds})=>{
+   assert.equal(existingIds.has(42),true)
+   return {topic:'Economy',candidates:[candidate,{pageId:44,title:'Trade',topic:'Economy'}],scannedPages:2}
+  }})
+ assert.deepEqual(new Set(stored.queue.map(row=>row.pageId)),new Set([42,44]))
 })
 
 test('category discovery follows bounded continuation pages before ranking',async()=>{

@@ -1,7 +1,7 @@
 import path from 'node:path'
 import {fileURLToPath} from 'node:url'
 import {execFileSync} from 'node:child_process'
-import {discoverWikiQueue,runWikiBatch} from './wiki/runner.mjs'
+import {discoverWikiQueue,runWikiBatch,topUpWikiQueue} from './wiki/runner.mjs'
 import {WIKI_TOPICS} from './wiki/discovery.mjs'
 
 const base=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..')
@@ -38,6 +38,9 @@ try{
   console.log(JSON.stringify(await discoverWikiQueue({base,topics,
    maxPerTopic:number('max-per-topic',20,100),seedLimit:number('seed-limit',1,6),
    subcategoryLimit:number('subcategory-limit',1,4),maxCategoryPages:number('max-category-pages',3,5)})))
+ }else if(action==='topup'){
+  console.log(JSON.stringify(await topUpWikiQueue({base,onPersist:pushCheckpoint,
+   minPerTopic:number('min-per-topic',8,30),maxTopics:number('max-topics',3,10)})))
  }else if(action==='batch'){
   const maxCalls=number('max-calls',0,20)
   console.log(JSON.stringify(await runWikiBatch({base,maxCalls,maxCandidates:number('max-candidates',5,100),
@@ -45,7 +48,7 @@ try{
    apiKey:process.env.SAGA_WIKI_GEMINI_KEY||'',freeTierConfirmed:process.env.SAGA_WIKI_FREE_TIER_CONFIRMED==='1',
    model:process.env.SAGA_WIKI_MODEL||'gemini-3.5-flash-lite',
    onPersist:pushCheckpoint})))
- }else throw Error('Usage: node scripts/wiki-pipeline.mjs discover|batch [--max-calls=1] [--max-candidates=5]')
+ }else throw Error('Usage: node scripts/wiki-pipeline.mjs discover|topup|batch [--max-calls=1] [--max-candidates=5]')
 }catch(error){
  console.error(JSON.stringify({status:'stopped',name:error.name||'Error',reason:String(error.message||error).slice(0,180)}))
  process.exitCode=1

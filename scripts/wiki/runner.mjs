@@ -49,10 +49,11 @@ export async function writeWikiState(base,state){
 }
 
 export async function discoverWikiQueue({base,topics=WIKI_TOPICS,maxPerTopic=30,seedLimit=1,subcategoryLimit=1,
-  maxCategoryPages=3,
+  maxCategoryPages=3,excludeQueued=false,
   discover=discoverWikiCandidates,readCatalog=readWikiCatalog,readState=readWikiState,writeState=writeWikiState}={}){
  const catalog=await readCatalog(base),state=await readState(base)
- const existingIds=new Set(catalog.stories.map(story=>story.sourcePageId))
+ const existingIds=new Set([...catalog.stories.map(story=>story.sourcePageId),
+  ...(excludeQueued?state.queue.map(row=>row.pageId):[])])
  const counts=Object.fromEntries(WIKI_TOPICS.map(topic=>[topic,catalog.entries.filter(e=>e.category===topic).length]))
  const groups=[],errors=[]
  for(const topic of topics){
@@ -77,6 +78,30 @@ export async function discoverWikiQueue({base,topics=WIKI_TOPICS,maxPerTopic=30,
  for(const candidate of state.queue)state.outcomes[candidate.pageId]??={status:'PENDING',reason:'queued',revisionId:candidate.revisionId||null,checkedAt:null}
  await writeState(base,state)
  return {candidates:state.queue.length,scanned:groups.reduce((n,g)=>n+g.scannedPages,0),errors,byTopic:Object.fromEntries(groups.map(g=>[g.topic,g.candidates.length]))}
+}
+
+const ACTIVE_QUEUE_STATUSES=new Set(['PENDING','FETCHED','EVIDENCE_READY','DRAFTED','VALIDATED','NEEDS_REPAIR','RETRY_LATER'])
+export async function topUpWikiQueue({base,minPerTopic=8,maxTopics=3,now=new Date(),
+ readState=readWikiState,writeState=writeWikiState,discoverQueue=discoverWikiQueue,onPersist=async()=>{}}={}){
+ if(!base||!Number.isSafeInteger(minPerTopic)||minPerTopic<1||minPerTopic>30||
+  !Number.isSafeInteger(maxTopics)||maxTopics<1||maxTopics>WIKI_TOPICS.length)throw Error('Unsafe Wiki discovery limits')
+ const state=await readState(base),day=now.toISOString().slice(0,10),beforeLength=state.queue.length
+ if(state.lastAutoDiscoveryDay===day)return {status:'already-checked',added:0}
+ const available=Object.fromEntries(WIKI_TOPICS.map(topic=>[topic,state.queue.filter(row=>
+  row.topic===topic&&ACTIVE_QUEUE_STATUSES.has(state.outcomes[row.pageId]?.status||'PENDING')).length]))
+ const topics=WIKI_TOPICS.filter(topic=>available[topic]<minPerTopic).slice(0,maxTopics)
+ if(!topics.length)return {status:'supply-ready',added:0,available}
+ try{
+  await discoverQueue({base,topics,excludeQueued:true,maxPerTopic:20,seedLimit:2,subcategoryLimit:1,maxCategoryPages:2})
+  const updated=await readState(base)
+  updated.lastAutoDiscoveryDay=day
+  await writeState(base,updated)
+  await onPersist()
+  return {status:'refilled',topics,added:updated.queue.length-beforeLength}
+ }catch(error){
+  if(error instanceof WikiApiPause)return {status:'retry-later',topics,added:0,reason:safeText(error.message)}
+  throw error
+ }
 }
 
 export async function runWikiBatch({base,maxCalls=0,maxCandidates=5,pageId=null,apiKey='',freeTierConfirmed=false,model='gemini-3.5-flash-lite',
