@@ -6002,10 +6002,10 @@
       "checkedAt": "2026-10-21T03:09:24.622Z"
     },
     "4746": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
+      "revisionId": 1380991506,
+      "checkedAt": "2026-10-21T13:32:11.608Z"
     },
     "5765": {
       "status": "EVIDENCE_READY",
@@ -9866,7 +9866,7 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-10-21T13:32:08.951Z",
+  "updatedAt": "2026-10-21T13:32:11.609Z",
   "dailyUsage": {
     "day": "2026-10-21",
     "calls": 11,
