@@ -2,9 +2,224 @@
   "pageId": 4008035,
   "title": "Efficiency movement",
   "topic": "Society",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1379610977,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379610977",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-21T18:16:31.970Z"
+  "reason": "1 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:TR-Enviro.JPG",
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/2/24/TR-Enviro.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "fileTitle": "File:TR-Enviro.JPG",
+        "caption": "1908 US editorial cartoon on Theodore Roosevelt and conservation",
+        "alt": "",
+        "description": "1908 US editorial cartoon on Theodore Roosevelt and conservation. Roosevelt is pointing to a sign with a quote: \"Protect and preserve the remaining forests upon public lands from devastation and destruction which have been the fate of those in forest sections of the country.\" From a statement by Commissioner of the General Land Office William A. Richards on March 9, 1903: The President's purpose and desire is to protect and preserve the remaining forests upon public lands from the devestation [sic] and destruction which has been the fate of tho",
+        "date": "1908",
+        "section": "Conservation",
+        "position": 0,
+        "provenance": {
+          "credit": "cartoonist for \"St. Paul Pioneer Press\"",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:TR-Enviro.JPG",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Efficiency_movement",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379610977",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Charles E. Bedaux - The Bedaux Unit Principle of Industrial Measurement, Journal of Applied Psychology, 1921.pdf"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "ed31d7c13a1d6c12feb06f8dae5a4589a0c1d606bbc9e6dbf1a6813dd9f0b4ae",
+      "heading": "Lead",
+      "excerpt": "The efficiency movement was a major movement in the United States, Britain and other industrial nations in the early 20th century that sough",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379610977"
+    },
+    {
+      "id": "P2",
+      "hash": "d177c2bcce686fff7c325960e76a1fa396ec91045ffc84094f70b74185efa433",
+      "heading": "United States",
+      "excerpt": "The efficiency movement played a central role in the Progressive Era in the United States, where it flourished 1890–1932. Adherents argued t",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379610977"
+    },
+    {
+      "id": "P3",
+      "hash": "e4d4f76844b1300cbfcdef9bbc1e6022724b4b69452f6abe85c4bd854f72d735",
+      "heading": "United States",
+      "excerpt": "Leaders including Herbert Croly, Charles R. van Hise, and Richard Ely sought to improve governmental performance by training experts in publ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379610977"
+    },
+    {
+      "id": "P4",
+      "hash": "6a4654540c37caa8950936119b0cdc1a19de662ecc573dbf1538b02b48bfb274",
+      "heading": "Municipal and state efficiency",
+      "excerpt": "Many cities set up \"efficiency bureaus\" to identify waste and apply the best practices. For example, Chicago created an Efficiency Division ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379610977"
+    },
+    {
+      "id": "P5",
+      "hash": "ff0fd167cfcbd71347f341aeeb57d173db53e1cbc84dba4c90281c956a2c2b66",
+      "heading": "Municipal and state efficiency",
+      "excerpt": "State governments were active as well. For example, Massachusetts set up its \"Commission on Economy and Efficiency\" in 1912. It made hundred",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379610977"
+    },
+    {
+      "id": "P6",
+      "hash": "4dbc0a3461e8b8a3ab63badbcbc2c4072f7a4046b0d8921244d7054e82032b4a",
+      "heading": "Philanthropy",
+      "excerpt": "Leading philanthropists such as Andrew Carnegie and John D. Rockefeller actively promoted the efficiency movement. In his many philanthropic",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379610977"
+    },
+    {
+      "id": "P7",
+      "hash": "0a619c4470a130863b9152189b38db4ae7e8edb6e9134be366b89d1478158380",
+      "heading": "Conservation",
+      "excerpt": "The conservation movement regarding national resources came to prominence during the Progressive Era. According to historian Samuel P. Hays,",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379610977"
+    },
+    {
+      "id": "P8",
+      "hash": "c8ab62eee7764a0a0988681482846a700629e533b2831e385fcaf00d78608e5f",
+      "heading": "National politics",
+      "excerpt": "In U.S. national politics, the most prominent figure was Herbert Hoover, a trained engineer who played down politics and believed dispassion",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379610977"
+    },
+    {
+      "id": "P9",
+      "hash": "f1228cc4e03c2bf4261d4e5bdd481c594ad349a768189f3c653f7f27f231e135",
+      "heading": "Antitrust",
+      "excerpt": "Boston lawyer Louis Brandeis (1856–1941) argued bigness conflicted with efficiency and added a new political dimension to the Efficiency Mov",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379610977"
+    },
+    {
+      "id": "P10",
+      "hash": "2995d7d3e316d46d9820b018bfb3e61c323c74a248efc0aadae4592d9429c3ac",
+      "heading": "Bedaux system",
+      "excerpt": "The Bedaux system, developed by Franco-American management consultant Charles Bedaux (1886–1944) built on the work of F. W. Taylor and Charl",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379610977"
+    },
+    {
+      "id": "P11",
+      "hash": "83912c856086aeb8d8eb21454ca254e1967e29a88e36bea4c80abd44399b7333",
+      "heading": "Relation to other movements",
+      "excerpt": "Later movements had echoes of the Efficiency Movement and were more directly inspired by Taylor and Taylorism. Technocracy, for instance, an",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379610977"
+    },
+    {
+      "id": "P12",
+      "hash": "e32f1700059ec31176d558fcb1ae877980d8913f0a49ef2ef658f2f6e5aa1694",
+      "heading": "Britain",
+      "excerpt": "In engineering, the concept of efficiency was developed in Britain in the mid-18th century by John Smeaton (1724–1792). Called the \"father o",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379610977"
+    },
+    {
+      "id": "P13",
+      "hash": "e2b659959886387b3d367514340d4cd29bd850177be5e1e951a459287923b503",
+      "heading": "Germany",
+      "excerpt": "In Germany the efficiency movement was called \"rationalization\" and it was a powerful social and economic force before 1933. In part it look",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379610977"
+    },
+    {
+      "id": "P14",
+      "hash": "51f780570d2d7659aee6385a4a1a27668dd2834d2212578a91b497c899c95777",
+      "heading": "Soviet Union",
+      "excerpt": "Ideas of Science Management was very popular in the Soviet Union. One of the leading theorists and practitioners of the Scientific Managemen",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379610977"
+    },
+    {
+      "id": "P15",
+      "hash": "5fcbb89ccbb77b3624cbcd0a3f6e3d3a254f8d8335ec27a12f78326dc6742153",
+      "heading": "Japan",
+      "excerpt": "W. Edwards Deming (1900–1993) brought the efficiency movement to Japan after World War II, teaching top management how to improve design (an",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379610977"
+    },
+    {
+      "id": "P16",
+      "hash": "80490f05da34caee7ce68d418dbb80af820e1e693aa4373024ee7d3c62b883fc",
+      "heading": "Philanthropy",
+      "excerpt": "To help an inefficient, ill-located, unnecessary school is a waste ... it is highly probable that enough money has been squandered on unwise",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379610977"
+    },
+    {
+      "id": "P17",
+      "hash": "d4f8e4b01e3d61410f70ba491cb590d706f66c708fcd266b92d4cc006335681e",
+      "heading": "Conservation",
+      "excerpt": "The only proper basis for the protection of game birds, wild fowl and, indeed, all animals is an economic one, and must be based upon carefu",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379610977"
+    },
+    {
+      "id": "P18",
+      "hash": "fa8d9c3b3b477b38378e2bbb0281fdd5e36ea481d6475faa1778c132307a4601",
+      "heading": "Conservation",
+      "excerpt": "President Roosevelt was the nation's foremost conservationist, putting the issue high on the national agenda by emphasizing the need to elim",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379610977"
+    },
+    {
+      "id": "P19",
+      "hash": "077173bf0939b01e1a28d8edbd4bdfb3b3aa14bbca55c36111e54c24a63877e6",
+      "heading": "Conservation",
+      "excerpt": "In 1908, Roosevelt sponsored the Conference of Governors held in the White House, with a focus on natural resources and their most efficient",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379610977"
+    },
+    {
+      "id": "P20",
+      "hash": "af4c6407865690b1aadf88e2c6f9654151cfd81400f861ba98069bf04d683034",
+      "heading": "Conservation",
+      "excerpt": "In contrast, environmentalist John Muir promulgated a very different view of conservation, rejecting the efficiency motivation. Muir instead",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379610977"
+    },
+    {
+      "id": "P21",
+      "hash": "7db661db4a72d03344dca355b1b3d18f2adcd0cd330cb1595e6032b065106fa3",
+      "heading": "Antitrust",
+      "excerpt": "As early as 1895 Brandeis had warned of the harm that giant corporations could do to competitors, customers, and their own workers. The grow",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379610977"
+    },
+    {
+      "id": "P22",
+      "hash": "83fa584149fee5c2f161c924ca5d89dcfc52e78355555cf45ea4b301f3fde89e",
+      "heading": "Bedaux system",
+      "excerpt": "The Bedaux System was influential in the United States in the 1920s and Europe in the 1930s and 1940s, especially in Britain.",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379610977"
+    },
+    {
+      "id": "P23",
+      "hash": "a014a97590ed1142b35eb3118afafcf5d9984fb189558a8dae4639d5a7f7a8e3",
+      "heading": "Bedaux system",
+      "excerpt": "From the 1920s to the 1950s there were about one thousand companies in 21 countries worldwide that were run on the Bedaux System, including ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379610977"
+    },
+    {
+      "id": "P24",
+      "hash": "3a8b95c0649da9d1153205fe6c655627910736883a09eaf53b624373ae61b8c9",
+      "heading": "Relation to other movements",
+      "excerpt": "Postmodern opponents of nuclear energy in the 1970s broadened their attack to try to discredit movements that saw salvation for human societ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379610977"
+    },
+    {
+      "id": "P25",
+      "hash": "981b0e8437a8dd7bbd6b753f851b1b8355d785adea3b8db1b7d257ae62a67ac4",
+      "heading": "Relation to other movements",
+      "excerpt": "Coming into usage in 1990, the Western term lean manufacturing (lean enterprise, lean production, or simply \"lean\") refers to a business ide",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379610977"
+    },
+    {
+      "id": "P26",
+      "hash": "19543c82faf6e4e0cc75d9181c92c31226b2e8389a2651d6bb37927aeef4f28c",
+      "heading": "Britain",
+      "excerpt": "Representative legislation included the Education Act 1902, which emphasized the role of experts in the schools system. Higher education was",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379610977"
+    }
+  ],
+  "updatedAt": "2026-10-21T18:16:37.590Z"
 }
