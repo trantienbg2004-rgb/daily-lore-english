@@ -7376,10 +7376,10 @@
       "checkedAt": "2026-10-21T03:10:52.497Z"
     },
     "5794935": {
-      "status": "FETCHED",
-      "reason": "pinned-source-ready",
+      "status": "EVIDENCE_READY",
+      "reason": "16 rights-verified embedded images",
       "revisionId": 1373940870,
-      "checkedAt": "2026-10-21T13:31:59.622Z"
+      "checkedAt": "2026-10-21T13:32:01.415Z"
     },
     "5951576": {
       "status": "EVIDENCE_READY",
@@ -9866,7 +9866,7 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-10-21T13:31:59.622Z",
+  "updatedAt": "2026-10-21T13:32:01.416Z",
   "dailyUsage": {
     "day": "2026-10-21",
     "calls": 11,
