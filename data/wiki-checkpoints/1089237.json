@@ -2,9 +2,275 @@
   "pageId": 1089237,
   "title": "Wilsons Promontory",
   "topic": "Environment",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1380971520,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380971520",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-21T01:40:36.070Z"
+  "reason": "4 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Erosion Damage, Wilsons Promontory, Australia - Mar 2012.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fe/Erosion_Damage%2C_Wilsons_Promontory%2C_Australia_-_Mar_2012.jpg/960px-Erosion_Damage%2C_Wilsons_Promontory%2C_Australia_-_Mar_2012.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Erosion Damage, Wilsons Promontory, Australia - Mar 2012.jpg",
+        "caption": "Erosion damage caused by the March 2011 floods, as viewed southwards towards Lilly Pilly Gully, March 2012.",
+        "alt": "",
+        "description": "A view looking south towards Lilly Pilly Gully of the erosion damage caused by the March 2011 floods in Wilsons Promontory. The forest was completely stripped and a deep gully created, in which ~400mm of rain fell in a 24 hour period.",
+        "date": "2012-03-06",
+        "section": "Human history",
+        "position": 0,
+        "provenance": {
+          "credit": "Diliff",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Erosion_Damage,_Wilsons_Promontory,_Australia_-_Mar_2012.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Wilsons_Promontory",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380971520",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Wilson's Promontory - Tidal River from Mt Oberon - Dec 2004.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/58/Wilson%27s_Promontory_-_Tidal_River_from_Mt_Oberon_-_Dec_2004.jpg/960px-Wilson%27s_Promontory_-_Tidal_River_from_Mt_Oberon_-_Dec_2004.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Wilson's Promontory - Tidal River from Mt Oberon - Dec 2004.jpg",
+        "caption": "Tidal River as viewed from the summit of Mount Oberon. The settlement of Tidal River is visible in the bottom-right corner, 2004",
+        "alt": "",
+        "description": "Tidal River to the north-west as viewed from the summit of Mount Oberon in Wilson's Promontory National Park, Victoria, Australia. Taken by myself with a Canon 10D and 17-40mm f/4L lens.",
+        "date": "2004-12-18",
+        "section": "Human history",
+        "position": 1,
+        "provenance": {
+          "credit": "Diliff",
+          "license": "CC BY 2.5",
+          "licenseUrl": "https://creativecommons.org/licenses/by/2.5",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Wilson%27s_Promontory_-_Tidal_River_from_Mt_Oberon_-_Dec_2004.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Wilsons_Promontory",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380971520",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Wilsons Prom Swamp Wallaby.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ac/Wilsons_Prom_Swamp_Wallaby.jpg/960px-Wilsons_Prom_Swamp_Wallaby.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Wilsons Prom Swamp Wallaby.jpg",
+        "caption": "Swamp wallaby at Wilsons Promontory",
+        "alt": "",
+        "description": "Swamp wallaby (Wallabia bicolor) at Wilsons Promotontory, Australia",
+        "date": "Taken on 4 December 2008",
+        "section": "Geography and wildlife",
+        "position": 2,
+        "provenance": {
+          "credit": "Phil Whitehouse",
+          "license": "CC BY 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Wilsons_Prom_Swamp_Wallaby.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Wilsons_Promontory",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380971520",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Wombat Wilsons Promontory.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f0/Wombat_Wilsons_Promontory.jpg/960px-Wombat_Wilsons_Promontory.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Wombat Wilsons Promontory.jpg",
+        "caption": "Common wombat at Wilsons Promontory National Park",
+        "alt": "",
+        "description": "Common wombat (Vombatus ursinus) at Wilsons Promontory National Park",
+        "date": "Taken on 3 December 2008",
+        "section": "Geography and wildlife",
+        "position": 3,
+        "provenance": {
+          "credit": "Phil Whitehouse",
+          "license": "CC BY 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Wombat_Wilsons_Promontory.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Wilsons_Promontory",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380971520",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:A194, Wilson's Promontory National Park, Australia, rocky beach, 2007.JPG"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "adb108e3aea707ddbc19caa26a3db8c6be5527aefdfaf095ea6e6e412467a247",
+      "heading": "Lead",
+      "excerpt": "Wilsons Promontory, colloquially known as Wilsons Prom or The Prom, is a peninsula that forms the southernmost part of the Australian mainla",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380971520"
+    },
+    {
+      "id": "P2",
+      "hash": "f7b759ac34bc033136771edf0a1c1160bd3179b8eac19d564fa7f976544e6483",
+      "heading": "Lead",
+      "excerpt": "South Point at 39°08′06″S 146°22′32″E / 39.13500°S 146.37556°E / -39.13500; 146.37556 is the southernmost tip of Wilsons Promontory and henc",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380971520"
+    },
+    {
+      "id": "P3",
+      "hash": "66acaf7364e87e02819f7c9a3d311e0a8c0b9ad026ee0a0118415bf5cff909e3",
+      "heading": "Human history",
+      "excerpt": "The promontory was first occupied by indigenous Koori people at least 6,500 years prior to European arrival. Middens along the western coast",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380971520"
+    },
+    {
+      "id": "P4",
+      "hash": "3e03ec428b137f77409fa04733722f322ec5b60bcbb63cc90c379559d773cac5",
+      "heading": "Human history",
+      "excerpt": "The promontory is mentioned in Aboriginal dreamtime stories, including the Bollum-Boukan, Loo-errn and Tiddalik myths. They consider it to b",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380971520"
+    },
+    {
+      "id": "P5",
+      "hash": "68d08dbec51291317f626e5963f4dc48bf4aeeade2efd6cd5900612aa8c9252c",
+      "heading": "Human history",
+      "excerpt": "The first European to see the promontory was George Bass in January 1798. He initially referred to it as \"Furneaux's Land\" in his diary, bel",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380971520"
+    },
+    {
+      "id": "P6",
+      "hash": "7693fc2b58ae9fa0157b45aef6677df903764686f16d9b747fc264e35e86c8c9",
+      "heading": "Name",
+      "excerpt": "The promontory is also known as \"Yiruk\" or \"Wamoon\" by some traditional owner groups. From the early 19th century, it has also been known as",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380971520"
+    },
+    {
+      "id": "P7",
+      "hash": "614f9e747a99662ef2acf624c1ec112125cd4d6267cb5d642a7e6bb9768018d4",
+      "heading": "Geography and wildlife",
+      "excerpt": "Coastal features include expansive intertidal mudflats, sandy beaches and sheltered coves interrupted by prominent headlands and plunging gr",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380971520"
+    },
+    {
+      "id": "P8",
+      "hash": "a6aa174912d481bce081906a3988850fe7008368e977c91deff69b16099170c6",
+      "heading": "National Park",
+      "excerpt": "The Wilsons Promontory National Park covers the southern portion of the peninsula, containing South Point, South East Point, and a number of",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380971520"
+    },
+    {
+      "id": "P9",
+      "hash": "a0ad8d9e6699ffe1fce10768f686b47f60fe67d60a4ba252e5bc2e0fe3776fa1",
+      "heading": "History",
+      "excerpt": "Lobbying by the Field Naturalists Club of Victoria (FNCV) and the Royal Society of Victoria (including Arthur Henry Shakespeare Lucas) led t",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380971520"
+    },
+    {
+      "id": "P10",
+      "hash": "e7b1cf39f5f9f1d927241357aaf83172b9cadcb2cc0dd972a916a39418c16bae",
+      "heading": "Camping",
+      "excerpt": "Tidal River is the main location for accommodation and camping in Wilsons Promontory National Park. The only road open to visitors leads fro",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380971520"
+    },
+    {
+      "id": "P11",
+      "hash": "4d80bdb15c0a9b7c35b09caafdd2792061f7a9665e5acd17744c485f5c4fac91",
+      "heading": "Hiking",
+      "excerpt": "The park has a number of different hiking trails. There are trails of differing levels of difficulty, including day hikes ranging from short",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380971520"
+    },
+    {
+      "id": "P12",
+      "hash": "4c2d269929eb0f214c60562e8bc5d1d8f4911946260a2851ccb78913b877a5fa",
+      "heading": "Mount Oberon",
+      "excerpt": "Mount Oberon, located in the park, is a popular hiking destination. Hikers generally start from Telegraph Saddle car park, around halfway up",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380971520"
+    },
+    {
+      "id": "P13",
+      "hash": "c286c6c90e1e262f5543e9bd68220e94094adcad6f74fd3c02391952ba3bf672",
+      "heading": "In popular culture",
+      "excerpt": "Australian indie game Big Walk, released in 2026, is set in a loose 1:20 recreation of Wilsons Promontory. The game's developers also record",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380971520"
+    },
+    {
+      "id": "P14",
+      "hash": "3c85141f01b0fbb178d5ec2c80298bca688a903f0af177a693d7c2f366027618",
+      "heading": "Climate",
+      "excerpt": "Wilsons Promontory has an Oceanic climate (Cfb) heavily influenced by the Roaring Forties, bringing summer temperatures far below what is th",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380971520"
+    },
+    {
+      "id": "P15",
+      "hash": "629ab313d9d9053c2be2de07145fcf1aeea4391bf17bf84ca51666e5ef229143",
+      "heading": "Human history",
+      "excerpt": "Seal hunting was conducted in the area in the 19th century. Shore-based whaling was also carried out in a cove at Wilsons Promontory from at",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380971520"
+    },
+    {
+      "id": "P16",
+      "hash": "625a358053bfdc55e87c0c642415e3549f68fa902046f19c2d0a3b938c1ec8c5",
+      "heading": "Human history",
+      "excerpt": "Throughout the 1880s and '90s, a public campaign to protect the area as a national park was waged, including by the Field Naturalists' Club ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380971520"
+    },
+    {
+      "id": "P17",
+      "hash": "032810154d9ec96610ed14222069856c79acccb6ae8f953c4b2a5a7b1974d362",
+      "heading": "Human history",
+      "excerpt": "In 2005 a burn started by staff got out of control and burnt 13% of the park, causing the evacuation of campers. In 2009, a lightning strike",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380971520"
+    },
+    {
+      "id": "P18",
+      "hash": "9b57c12ca2164f585e84f7e44771ce9ec74a21a843c3dd56884b1673290c449c",
+      "heading": "Name",
+      "excerpt": "Despite Wilson being significant enough for such a large amount of land to be named in his honour, he had slipped into obscurity until 2023,",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380971520"
+    },
+    {
+      "id": "P19",
+      "hash": "9a9ec45362526232d5088f8ac6acbe622fc57d1449f30ccf4b0971d1e49848eb",
+      "heading": "Geography and wildlife",
+      "excerpt": "Tidal River is the main river in Wilsons Promontory. The river runs into Norman Bay and swells with the tide. The river is a very fascinatin",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380971520"
+    },
+    {
+      "id": "P20",
+      "hash": "e18e3221c157d2e7d7f52fc0cef63e103c587b4933dc9c18924927a2a75c1798",
+      "heading": "Geography and wildlife",
+      "excerpt": "Wilsons Promontory is home to many marsupials, native birds and other creatures. One of the most common marsupials found on the promontory i",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380971520"
+    },
+    {
+      "id": "P21",
+      "hash": "256948a43def1583a0254293d5e330e16a70ebf931dff8792878588ca597ae6d",
+      "heading": "Geography and wildlife",
+      "excerpt": "As the Wilsons Promontory Marine National Park and Corner Inlet Marine National Park have been established, the area holds a variety of mari",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380971520"
+    },
+    {
+      "id": "P22",
+      "hash": "75dbffeb9f883da32d24e1031aa9e27b067bf29d097a07e2d314ef6ce4518590",
+      "heading": "Geography and wildlife",
+      "excerpt": "In Wilsons Promontory National Park, the wildlife around the Tidal River campground in the main park is accustomed to human presence, and ma",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380971520"
+    },
+    {
+      "id": "P23",
+      "hash": "8df2eea885816833d5c8d4c354edda43a25aeff271b7f3dba055b042e129d83d",
+      "heading": "Geography and wildlife",
+      "excerpt": "Outside the camping area, the wildlife is less accustomed to humans, and may be more difficult to spot. In the park, possums can be quite ea",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380971520"
+    }
+  ],
+  "updatedAt": "2026-10-21T01:40:37.367Z"
 }
