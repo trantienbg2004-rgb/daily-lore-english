@@ -2,9 +2,244 @@
   "pageId": 4282781,
   "title": "Ayn Ghazal (archaeological site)",
   "topic": "History & Geography",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1374812623,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374812623",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-21T22:35:36.105Z"
+  "reason": "3 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Ein Ghazal Venus.jpg"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Fertile crescent Neolithic B circa 7500 BC.svg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7e/Fertile_crescent_Neolithic_B_circa_7500_BC.svg/960px-Fertile_crescent_Neolithic_B_circa_7500_BC.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Fertile crescent Neolithic B circa 7500 BC.svg",
+        "caption": "Area of the Fertile Crescent, circa 9500 BP, with main sites. ʿAin Ghazal is one of the important sites of the Pre-Pottery Neolithic period. The area of Mesopotamia proper was not yet settled by humans.",
+        "alt": "",
+        "description": "Map of Southwest Asia showing the main archaeological sites of the Pre-Pottery Neolithic period, BCE c. 7500, in the \"Fertile Crescent\". Black squares indicate pre-agricultural sites.",
+        "date": "2025-08-13",
+        "section": "Background",
+        "position": 1,
+        "provenance": {
+          "credit": "Bjoertvedt, Lars A translator: Manlleus (ca)",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Fertile_crescent_Neolithic_B_circa_7500_BC.svg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Ayn_Ghazal_(archaeological_site)",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374812623",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:20100923 amman37.JPG",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/26/20100923_amman37.JPG/960px-20100923_amman37.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:20100923 amman37.JPG",
+        "caption": "Ain Ghazal Statues: closeup of one of the bicephalous statues, c. 7000 BC (9,000 years ago)",
+        "alt": "",
+        "description": "The statues of Ain Ghazal, at the Archaeological Museum of Jordan (Amman Citadel).",
+        "date": "2010-09-23",
+        "section": "Economy",
+        "position": 2,
+        "provenance": {
+          "credit": "Jean Housen",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:20100923_amman37.JPG",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Ayn_Ghazal_(archaeological_site)",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374812623",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Human statue from Ain Ghazal, Amman city, Jordan Museum.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/66/Human_statue_from_Ain_Ghazal%2C_Amman_city%2C_Jordan_Museum.jpg/960px-Human_statue_from_Ain_Ghazal%2C_Amman_city%2C_Jordan_Museum.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Human statue from Ain Ghazal, Amman city, Jordan Museum.jpg",
+        "caption": "One of the Ayn Ghazal statues in The Jordan Museum, in Amman",
+        "alt": "",
+        "description": "Human statue from Ain Ghazal city, in the outskirt of Amman, Jordan. Pre-pottery Neolithic period B, 8th millennium BCE. On display at the Jordan Museum, Amman, Jordan.",
+        "date": "2019-01-13 12:33:11",
+        "section": "Statues",
+        "position": 3,
+        "provenance": {
+          "credit": "Osama Shukir Muhammed Amin FRCP(Glasg)",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Human_statue_from_Ain_Ghazal,_Amman_city,_Jordan_Museum.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Ayn_Ghazal_(archaeological_site)",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374812623",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "b0e4ec57840ea9a6ee4d1202b4ce30b25ed96017b5e6b20dcca65a413329397b",
+      "heading": "Lead",
+      "excerpt": "Ayn Ghazal (Arabic: عين غزال, romanized: ʿayn ġazāl) is a Neolithic archaeological site located in Amman, Jordan, about 2 km (1.24 mi) north",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374812623"
+    },
+    {
+      "id": "P2",
+      "hash": "b9f394d421fa2d8fd13faabbe35fe0f833512a5ac445024bc795eb3956b315f9",
+      "heading": "Background",
+      "excerpt": "The settlement at Ayn Ghazal ('Spring of the Gazelle') first appeared in the Middle Pre-Pottery Neolithic B (MPPNB) and is split into two ph",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374812623"
+    },
+    {
+      "id": "P3",
+      "hash": "2ecdc70f19adda038a3d19a59fbe9b394e85a1b6248834d5d41abff2f98653f6",
+      "heading": "Background",
+      "excerpt": "The 9th millennium MPPNB period in the Levant represented a major transformation in prehistoric lifeways from small bands of mobile hunter–g",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374812623"
+    },
+    {
+      "id": "P4",
+      "hash": "7e25daac60c477926bda628f9d7ae79f29f7bbbb5cb20857f77ad60c467ba028",
+      "heading": "Background",
+      "excerpt": "In its prime era, around 7000 BCE (9000 BP), the site extended over 10–15 hectares (25–37 ac) and was inhabited by around 3,000 people (four",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374812623"
+    },
+    {
+      "id": "P5",
+      "hash": "f911a16e7f3a659748e6e4afe7a5126faba646f9e3d248ac8807c0444f716451",
+      "heading": "Location and physical dimensions",
+      "excerpt": "It is situated in a relatively rich environmental setting immediately adjacent to the Zarqa River (Wadi Zarqa), the longest drainage system ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374812623"
+    },
+    {
+      "id": "P6",
+      "hash": "1a8a28e0a42502298deb5faddf0e01b713325c30a616c402234ccbfaac115363",
+      "heading": "Economy",
+      "excerpt": "As an early farming community, the Ayn Ghazal people cultivated cereals (barley and ancient species of wheat), legumes (peas, beans, lentils",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374812623"
+    },
+    {
+      "id": "P7",
+      "hash": "396fabc06238e38ca5825e98e842cbbf461314b0dc7a523d1b18a78a670e7e03",
+      "heading": "Genetics",
+      "excerpt": "Y-DNA haplogroups such as E1b1b1b2 (E-Z830) has been found in remains at Ayn Ghazal, along with the general PPNB populations and in most Nat",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374812623"
+    },
+    {
+      "id": "P8",
+      "hash": "9400fea1594a300084c81d3ae15532f3b403eba6b9f80ae515f928bd7f5ae1cc",
+      "heading": "Statues",
+      "excerpt": "In the earlier levels at Ayn Ghazal there are small ceramic figures that seem to have been used as personal or familial ritual figures. Ther",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374812623"
+    },
+    {
+      "id": "P9",
+      "hash": "39183854851153f2ac9ab778bf6d12406efa4bfb3d43e8449c4835700dcc9f9a",
+      "heading": "Burial practices",
+      "excerpt": "Considerable evidence for mortuary practices during the PPNB period have been described in recent years. Post-mortem skull removal, commonly",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374812623"
+    },
+    {
+      "id": "P10",
+      "hash": "586ed61ab6a9ee2e1387b11adb2de09e2e480b89e786076c2a18f0dac90b8abf",
+      "heading": "Excavation and conservation",
+      "excerpt": "The site is located at the boundary between Amman's Tariq and Basman districts, next to, and named for, the Ayn Ghazal Interchange connectin",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374812623"
+    },
+    {
+      "id": "P11",
+      "hash": "ef12a84bffb0a390ffc3defd1d29c17869883e9baf90ab54f3833546be342682",
+      "heading": "Location and physical dimensions",
+      "excerpt": "Ayn Ghazal started as a typical aceramic, Neolithic village of modest size. It was set on terraced ground in a valley-side, and was built wi",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374812623"
+    },
+    {
+      "id": "P12",
+      "hash": "840e43923f2825ae386a4a3c1f4dfe6276c520e10934d66d00d5adbf7564204f",
+      "heading": "Location and physical dimensions",
+      "excerpt": "Evidence recovered from the excavations suggests that much of the surrounding countryside was forested and offered the inhabitants a wide va",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374812623"
+    },
+    {
+      "id": "P13",
+      "hash": "7ce59365502c1a1c87f81025f27f334d4afffe9711ecc3f12518f8b237deb74d",
+      "heading": "Economy",
+      "excerpt": "The estimated population of the MPPNB site from Ayn Ghazal is of 259–1,349 individuals with an area of 3.01–4.7 ha. It is argued that at its",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374812623"
+    },
+    {
+      "id": "P14",
+      "hash": "b96fe20263af1d9907322f7b0269d418669ad776a62d8ca2e79291c5d0ef33fc",
+      "heading": "Economy",
+      "excerpt": "The diet of the occupants of PPNB Ayn Ghazal was varied. Domesticated plants included wheat and barley species, but legumes (primarily lenti",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374812623"
+    },
+    {
+      "id": "P15",
+      "hash": "55a184f47d85ac43ab81e8d88b52b50132bdc29e22bdcaa1a0978eff3cf21217",
+      "heading": "Economy",
+      "excerpt": "Ayn Ghazal was in an area that was suitable for agriculture. Archaeologists think that throughout the mid east much of the land was exhauste",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374812623"
+    },
+    {
+      "id": "P16",
+      "hash": "97e10bdd7a22fbb232f53480ddf73020ce6fc302f8c6d1b5364e35b02ec316bb",
+      "heading": "Economy",
+      "excerpt": "There are evidences of mining activities as part of a production sequence conducted by craftsmen at the site of Ayn Ghazal, these potential ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374812623"
+    },
+    {
+      "id": "P17",
+      "hash": "a05415863fba25f3d9f216b35ceb0ec1bb90f9834a0edfdf49291f8c4cff1aae",
+      "heading": "Genetics",
+      "excerpt": "It is thought therefore, based on uniparental and autosomal data, that the Pre-Pottery Neolithic B populations at Ayn Ghazal Jordan, were mo",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374812623"
+    },
+    {
+      "id": "P18",
+      "hash": "496508ac0e307436a9c619eab69d23998742ea6367fd0cc4a02cbff7e9d1b05a",
+      "heading": "Statues",
+      "excerpt": "The 195 figurines (40 human and 155 animal) recovered were from MPPNB contexts; 81% of the figurines have been found to belong to the MPPNB ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374812623"
+    },
+    {
+      "id": "P19",
+      "hash": "6bc773f0ee607816c1251c63f2bf5404f92245f8dca75e014905908e76b20d6c",
+      "heading": "Statues",
+      "excerpt": "Ayn Ghazal is renowned for a set of anthropomorphic statues found buried in pits in the vicinity of some special buildings that may have had",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374812623"
+    },
+    {
+      "id": "P20",
+      "hash": "42cdac550137dec0ec70949fc6d53d8dd41dcb32dfba1d1bb1cca67b90c1cbf2",
+      "heading": "Burial practices",
+      "excerpt": "There is evidence of class in the way the dead were treated. Some people were buried in the floors of their houses. After the flesh had wast",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374812623"
+    },
+    {
+      "id": "P21",
+      "hash": "302ee74a9e62bd42cb789211fdf3f3880842d5e38def750cf5db0438598999c6",
+      "heading": "Burial practices",
+      "excerpt": "Scholars have estimated that a third of adult burials were found in trash pits with their heads intact. Why only some of the inhabitants wer",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374812623"
+    },
+    {
+      "id": "P22",
+      "hash": "31f9c270d24682c680f91288ce03c7630e893b800b3c4de33ba3af098b799d4f",
+      "heading": "Excavation and conservation",
+      "excerpt": "The site was discovered in 1974 by developers who were building Army St, the road connecting Amman and Zarqa. Excavation began in 1982; howe",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374812623"
+    }
+  ],
+  "updatedAt": "2026-10-21T22:35:41.578Z"
 }
