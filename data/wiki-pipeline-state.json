@@ -6296,10 +6296,10 @@
       "checkedAt": "2026-10-21T01:40:04.346Z"
     },
     "95157": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
+      "revisionId": 1381255721,
+      "checkedAt": "2026-10-21T13:31:06.983Z"
     },
     "99232": {
       "status": "REJECTED",
@@ -9866,7 +9866,7 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-10-21T13:31:04.140Z",
+  "updatedAt": "2026-10-21T13:31:07.004Z",
   "dailyUsage": {
     "day": "2026-10-21",
     "calls": 11,
