@@ -62,6 +62,7 @@ export async function callFreeWikiGemini(prompt,{apiKey,freeTierConfirmed=false,
  if(!budget||!Number.isSafeInteger(budget.maxCalls)||budget.maxCalls<1)throw new GeminiWikiPause('Free API call budget exhausted')
  if(!FREE_MODELS.has(model))throw new GeminiWikiPause('Unreviewed Gemini model blocked')
  if((budget.usedCalls||0)>=budget.maxCalls)throw new GeminiWikiPause('Free API call budget exhausted')
+ if(budget.tokenAccountingUnavailable)throw new GeminiWikiPause('Gemini token usage unavailable; retry after daily reset','USAGE_UNKNOWN')
  if(budget.circuitOpen)throw new GeminiWikiPause('Gemini circuit open',budget.circuitStatus)
  let response
  for(;;){
@@ -92,7 +93,10 @@ export async function callFreeWikiGemini(prompt,{apiKey,freeTierConfirmed=false,
  try{data=await response.json()}catch{budget.usageUnknown=true;throw new GeminiWikiPause('Gemini response unavailable; stop this batch')}
  const usage=data.usageMetadata?{input:data.usageMetadata.promptTokenCount??null,
   output:data.usageMetadata.candidatesTokenCount??null,total:data.usageMetadata.totalTokenCount??null}:null
- if(!usage||Object.values(usage).some(value=>!Number.isFinite(value)))budget.usageUnknown=true
+ if(!usage||Object.values(usage).some(value=>!Number.isFinite(value))){
+  budget.usageUnknown=true
+  budget.tokenAccountingUnavailable=true
+ }
  else{
   budget.usage??={input:0,output:0,total:0}
   for(const key of ['input','output','total'])budget.usage[key]+=usage[key]

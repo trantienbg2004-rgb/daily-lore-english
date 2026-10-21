@@ -116,10 +116,11 @@ export async function runWikiBatch({base,maxCalls=0,maxCandidates=5,pageId=null,
  const existingIds=new Set(catalog.stories.map(story=>story.sourcePageId))
  const usedUrls=new Set(catalog.stories.flatMap(story=>story.pages.map(page=>page.image).filter(Boolean)))
  const today=new Date().toISOString().slice(0,10)
- if(state.dailyUsage?.day!==today)state.dailyUsage={day:today,calls:0,tokens:0,usageUnknown:false}
+ if(state.dailyUsage?.day!==today)state.dailyUsage={day:today,calls:0,tokens:0,usageUnknown:false,tokenAccountingUnavailable:false}
  const persistDurably=async()=>{try{await onPersist()}catch(error){error.checkpointFailure=true;throw error}}
  const initialTokens=state.dailyUsage.tokens
- const budget={maxCalls,usedCalls:0,dailyCalls:state.dailyUsage.calls,dailyTokens:initialTokens,maxDailyCalls:100,maxTokens:250000,
+ const budget={maxCalls,usedCalls:0,dailyCalls:state.dailyUsage.calls,dailyTokens:initialTokens,
+  tokenAccountingUnavailable:!!state.dailyUsage.tokenAccountingUnavailable,maxDailyCalls:100,maxTokens:250000,
   onRequest:async current=>{state.dailyUsage.calls=current.dailyCalls;await writeState(base,state);await persistDurably()},
   onUsage:async current=>{current.dailyTokens=initialTokens+current.usage.total;state.dailyUsage.tokens=current.dailyTokens;await writeState(base,state);await persistDurably()}}
  const stats={attempted:0,published:0,review:0,rejected:0,prepared:0,paused:false,apiCalls:0,usage:{input:0,output:0,total:0},decisions:[]}
@@ -137,12 +138,13 @@ export async function runWikiBatch({base,maxCalls=0,maxCandidates=5,pageId=null,
   if(['rejected','review','REJECTED','NEEDS_REVIEW'].includes(prior?.status))continue
   let checkpoint=await readCheckpoint(base,candidate.pageId)||{pageId:candidate.pageId,title:candidate.title,topic:candidate.topic,status:'PENDING'}
   const cachedValidation=checkpoint.status==='VALIDATED'&&checkpoint.validation?.accepted
-  if(!cachedValidation&&(maxCalls===0||budget.circuitOpen||budget.maxCalls-budget.usedCalls<2)&&checkpoint.evidence&&checkpoint.rights)continue
+  if(!cachedValidation&&(maxCalls===0||budget.circuitOpen||budget.tokenAccountingUnavailable||budget.maxCalls-budget.usedCalls<2)&&checkpoint.evidence&&checkpoint.rights)continue
   stats.attempted++
   const persist=async()=>{await writeCheckpoint(base,checkpoint);await writeState(base,state);await persistDurably()}
   const mark=async(status,reason,revisionId=checkpoint.revisionId||null)=>{
    checkpoint={...checkpoint,status,reason:safeText(reason),revisionId}
    state.dailyUsage.usageUnknown=state.dailyUsage.usageUnknown||!!budget.usageUnknown
+   state.dailyUsage.tokenAccountingUnavailable=state.dailyUsage.tokenAccountingUnavailable||!!budget.tokenAccountingUnavailable
    state.outcomes[candidate.pageId]={status,reason:safeText(reason),revisionId,checkedAt:new Date().toISOString()}
    stats.decisions.push({pageId:candidate.pageId,status,reason:safeText(reason)})
    await persist()
@@ -160,8 +162,8 @@ export async function runWikiBatch({base,maxCalls=0,maxCandidates=5,pageId=null,
    checkpoint.evidence??=evidence.map(({id,hash,heading,text})=>({id,hash,heading,excerpt:text.slice(0,140),revisionUrl:source.sourceRevisionUrl}))
    await mark('EVIDENCE_READY',`${photos.length} rights-verified embedded images`);stats.prepared++
    if(maxCalls===0&&!cachedValidation)continue
-   if(!cachedValidation&&(budget.circuitOpen||budget.maxCalls-budget.usedCalls<2)){
-    await mark('RETRY_LATER',budget.circuitOpen?'Gemini circuit open':'editorial call budget exhausted');stats.paused=true;continue
+   if(!cachedValidation&&(budget.circuitOpen||budget.tokenAccountingUnavailable||budget.maxCalls-budget.usedCalls<2)){
+    await mark('RETRY_LATER',budget.tokenAccountingUnavailable?'Gemini token usage unavailable':budget.circuitOpen?'Gemini circuit open':'editorial call budget exhausted');stats.paused=true;continue
    }
    const response=cachedValidation
     ?{result:checkpoint.draft,validation:checkpoint.validation,evidence:checkpoint.evidence,usage:null}
@@ -205,6 +207,7 @@ export async function runWikiBatch({base,maxCalls=0,maxCandidates=5,pageId=null,
  }
  stats.apiCalls=budget.usedCalls
  state.dailyUsage.usageUnknown=state.dailyUsage.usageUnknown||!!budget.usageUnknown
+ state.dailyUsage.tokenAccountingUnavailable=state.dailyUsage.tokenAccountingUnavailable||!!budget.tokenAccountingUnavailable
  if(budget.usageUnknown)stats.usage=null
  else if(budget.usage)stats.usage=budget.usage
  await writeState(base,state);await persistDurably()
