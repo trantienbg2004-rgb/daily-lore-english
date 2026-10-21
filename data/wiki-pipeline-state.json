@@ -5990,10 +5990,10 @@
       "checkedAt": null
     },
     "2444": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "EVIDENCE_READY",
+      "reason": "10 rights-verified embedded images",
+      "revisionId": 1375682556,
+      "checkedAt": "2026-10-21T07:31:29.643Z"
     },
     "3201": {
       "status": "EVIDENCE_READY",
@@ -6008,34 +6008,34 @@
       "checkedAt": null
     },
     "5765": {
-      "status": "PENDING",
-      "reason": "queued",
+      "status": "EVIDENCE_READY",
+      "reason": "9 rights-verified embedded images",
       "revisionId": 1379818880,
-      "checkedAt": null
+      "checkedAt": "2026-10-21T07:36:01.195Z"
     },
     "7591": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "EVIDENCE_READY",
+      "reason": "12 rights-verified embedded images",
+      "revisionId": 1379078675,
+      "checkedAt": "2026-10-21T07:33:48.973Z"
     },
     "9457": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "EVIDENCE_READY",
+      "reason": "7 rights-verified embedded images",
+      "revisionId": 1380210078,
+      "checkedAt": "2026-10-21T07:36:11.548Z"
     },
     "11672": {
-      "status": "PENDING",
-      "reason": "queued",
+      "status": "REJECTED",
+      "reason": "insufficient-source-text-or-embedded-images",
       "revisionId": 1379942310,
-      "checkedAt": null
+      "checkedAt": "2026-10-21T07:31:05.504Z"
     },
     "13831": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "EVIDENCE_READY",
+      "reason": "6 rights-verified embedded images",
+      "revisionId": 1379988533,
+      "checkedAt": "2026-10-21T07:33:06.460Z"
     },
     "14194": {
       "status": "EVIDENCE_READY",
@@ -6200,10 +6200,10 @@
       "checkedAt": "2026-10-21T03:56:52.077Z"
     },
     "49005": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "EVIDENCE_READY",
+      "reason": "16 rights-verified embedded images",
+      "revisionId": 1381276519,
+      "checkedAt": "2026-10-21T07:31:19.466Z"
     },
     "49147": {
       "status": "EVIDENCE_READY",
@@ -6230,10 +6230,10 @@
       "checkedAt": null
     },
     "54751": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "EVIDENCE_READY",
+      "reason": "3 rights-verified embedded images",
+      "revisionId": 1376222781,
+      "checkedAt": "2026-10-21T07:31:59.291Z"
     },
     "56738": {
       "status": "PENDING",
@@ -6338,10 +6338,10 @@
       "checkedAt": "2026-10-21T01:40:57.587Z"
     },
     "177680": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "EVIDENCE_READY",
+      "reason": "14 rights-verified embedded images",
+      "revisionId": 1379430717,
+      "checkedAt": "2026-10-21T07:31:10.814Z"
     },
     "212724": {
       "status": "PENDING",
@@ -6362,10 +6362,10 @@
       "checkedAt": null
     },
     "230539": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "EVIDENCE_READY",
+      "reason": "5 rights-verified embedded images",
+      "revisionId": 1378743903,
+      "checkedAt": "2026-10-21T07:34:05.189Z"
     },
     "234984": {
       "status": "EVIDENCE_READY",
@@ -6440,10 +6440,10 @@
       "checkedAt": null
     },
     "295888": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "EVIDENCE_READY",
+      "reason": "4 rights-verified embedded images",
+      "revisionId": 1379554836,
+      "checkedAt": "2026-10-21T07:32:16.601Z"
     },
     "300264": {
       "status": "PENDING",
@@ -6488,10 +6488,10 @@
       "checkedAt": null
     },
     "351186": {
-      "status": "PENDING",
-      "reason": "queued",
+      "status": "NEEDS_REVIEW",
+      "reason": "no-rights-verified-embedded-image",
       "revisionId": 1371663658,
-      "checkedAt": null
+      "checkedAt": "2026-10-21T07:32:43.591Z"
     },
     "353831": {
       "status": "PENDING",
@@ -6572,10 +6572,10 @@
       "checkedAt": null
     },
     "569415": {
-      "status": "PENDING",
-      "reason": "queued",
+      "status": "REJECTED",
+      "reason": "insufficient-source-text-or-embedded-images",
       "revisionId": 1364351743,
-      "checkedAt": null
+      "checkedAt": "2026-10-21T07:33:45.206Z"
     },
     "583117": {
       "status": "EVIDENCE_READY",
@@ -6596,10 +6596,10 @@
       "checkedAt": null
     },
     "595524": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "REJECTED",
+      "reason": "insufficient-source-text-or-embedded-images",
+      "revisionId": 1379679284,
+      "checkedAt": "2026-10-21T07:34:36.212Z"
     },
     "599178": {
       "status": "PENDING",
@@ -6656,10 +6656,10 @@
       "checkedAt": "2026-10-21T01:40:53.081Z"
     },
     "650906": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "EVIDENCE_READY",
+      "reason": "12 rights-verified embedded images",
+      "revisionId": 1379614555,
+      "checkedAt": "2026-10-21T07:33:55.146Z"
     },
     "655350": {
       "status": "PENDING",
@@ -6704,10 +6704,10 @@
       "checkedAt": "2026-10-21T03:13:02.225Z"
     },
     "685328": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "REJECTED",
+      "reason": "insufficient-source-text-or-embedded-images",
+      "revisionId": 1378365759,
+      "checkedAt": "2026-10-21T07:32:13.462Z"
     },
     "694630": {
       "status": "PENDING",
@@ -6740,10 +6740,10 @@
       "checkedAt": null
     },
     "803661": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "EVIDENCE_READY",
+      "reason": "13 rights-verified embedded images",
+      "revisionId": 1381229880,
+      "checkedAt": "2026-10-21T07:33:26.318Z"
     },
     "804218": {
       "status": "EVIDENCE_READY",
@@ -6752,10 +6752,10 @@
       "checkedAt": "2026-10-21T03:08:23.167Z"
     },
     "917273": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "NEEDS_REVIEW",
+      "reason": "no-rights-verified-embedded-image",
+      "revisionId": 1381004682,
+      "checkedAt": "2026-10-21T07:32:40.518Z"
     },
     "928591": {
       "status": "PENDING",
@@ -6770,10 +6770,10 @@
       "checkedAt": null
     },
     "972242": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "EVIDENCE_READY",
+      "reason": "2 rights-verified embedded images",
+      "revisionId": 1375446699,
+      "checkedAt": "2026-10-21T07:35:24.197Z"
     },
     "1038280": {
       "status": "PENDING",
@@ -6782,10 +6782,10 @@
       "checkedAt": null
     },
     "1042649": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "EVIDENCE_READY",
+      "reason": "13 rights-verified embedded images",
+      "revisionId": 1381005522,
+      "checkedAt": "2026-10-21T07:35:01.221Z"
     },
     "1089237": {
       "status": "RETRY_LATER",
@@ -6818,16 +6818,16 @@
       "checkedAt": null
     },
     "1219810": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "EVIDENCE_READY",
+      "reason": "8 rights-verified embedded images",
+      "revisionId": 1359881177,
+      "checkedAt": "2026-10-21T07:34:44.541Z"
     },
     "1223546": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "EVIDENCE_READY",
+      "reason": "3 rights-verified embedded images",
+      "revisionId": 1374925645,
+      "checkedAt": "2026-10-21T07:34:49.917Z"
     },
     "1226357": {
       "status": "PENDING",
@@ -6926,10 +6926,10 @@
       "checkedAt": null
     },
     "1657023": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "REJECTED",
+      "reason": "insufficient-source-text-or-embedded-images",
+      "revisionId": 1379119803,
+      "checkedAt": "2026-10-21T07:34:40.414Z"
     },
     "1675329": {
       "status": "PENDING",
@@ -6944,10 +6944,10 @@
       "checkedAt": null
     },
     "1686485": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "NEEDS_REVIEW",
+      "reason": "no-rights-verified-embedded-image",
+      "revisionId": 1367579490,
+      "checkedAt": "2026-10-21T07:36:21.463Z"
     },
     "1689284": {
       "status": "PENDING",
@@ -6956,10 +6956,10 @@
       "checkedAt": null
     },
     "1724851": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "EVIDENCE_READY",
+      "reason": "6 rights-verified embedded images",
+      "revisionId": 1374229365,
+      "checkedAt": "2026-10-21T07:35:57.262Z"
     },
     "1758866": {
       "status": "PENDING",
@@ -7028,16 +7028,16 @@
       "checkedAt": "2026-10-21T03:11:31.086Z"
     },
     "1983326": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "EVIDENCE_READY",
+      "reason": "18 rights-verified embedded images",
+      "revisionId": 1380229009,
+      "checkedAt": "2026-10-21T07:33:59.205Z"
     },
     "1996004": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "EVIDENCE_READY",
+      "reason": "4 rights-verified embedded images",
+      "revisionId": 1373665813,
+      "checkedAt": "2026-10-21T07:31:56.317Z"
     },
     "1998027": {
       "status": "PENDING",
@@ -7046,10 +7046,10 @@
       "checkedAt": null
     },
     "2062612": {
-      "status": "PENDING",
-      "reason": "queued",
+      "status": "EVIDENCE_READY",
+      "reason": "4 rights-verified embedded images",
       "revisionId": 1351471301,
-      "checkedAt": null
+      "checkedAt": "2026-10-21T07:33:51.487Z"
     },
     "2115847": {
       "status": "PENDING",
@@ -7058,10 +7058,10 @@
       "checkedAt": null
     },
     "2201840": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "EVIDENCE_READY",
+      "reason": "1 rights-verified embedded images",
+      "revisionId": 1360630315,
+      "checkedAt": "2026-10-21T07:34:33.419Z"
     },
     "2240837": {
       "status": "EVIDENCE_READY",
@@ -7082,10 +7082,10 @@
       "checkedAt": "2026-10-21T03:11:16.149Z"
     },
     "2393552": {
-      "status": "PENDING",
-      "reason": "queued",
+      "status": "EVIDENCE_READY",
+      "reason": "5 rights-verified embedded images",
       "revisionId": 1376689536,
-      "checkedAt": null
+      "checkedAt": "2026-10-21T07:31:39.214Z"
     },
     "2412774": {
       "status": "EVIDENCE_READY",
@@ -7154,10 +7154,10 @@
       "checkedAt": null
     },
     "2872472": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "EVIDENCE_READY",
+      "reason": "11 rights-verified embedded images",
+      "revisionId": 1372267609,
+      "checkedAt": "2026-10-21T07:32:35.659Z"
     },
     "2900050": {
       "status": "PENDING",
@@ -7172,16 +7172,16 @@
       "checkedAt": "2026-10-21T01:40:26.058Z"
     },
     "3032314": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "EVIDENCE_READY",
+      "reason": "10 rights-verified embedded images",
+      "revisionId": 1380463233,
+      "checkedAt": "2026-10-21T07:35:35.881Z"
     },
     "3141410": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "EVIDENCE_READY",
+      "reason": "2 rights-verified embedded images",
+      "revisionId": 1374679844,
+      "checkedAt": "2026-10-21T07:33:14.008Z"
     },
     "3162270": {
       "status": "PENDING",
@@ -7196,10 +7196,10 @@
       "checkedAt": null
     },
     "3218648": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "EVIDENCE_READY",
+      "reason": "5 rights-verified embedded images",
+      "revisionId": 1376726219,
+      "checkedAt": "2026-10-21T07:33:09.347Z"
     },
     "3279967": {
       "status": "EVIDENCE_READY",
@@ -7286,10 +7286,10 @@
       "checkedAt": null
     },
     "4186421": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "REJECTED",
+      "reason": "insufficient-source-text-or-embedded-images",
+      "revisionId": 1358392800,
+      "checkedAt": "2026-10-21T07:36:18.950Z"
     },
     "4282781": {
       "status": "PENDING",
@@ -7352,16 +7352,16 @@
       "checkedAt": "2026-10-21T03:08:13.018Z"
     },
     "5645470": {
-      "status": "PENDING",
-      "reason": "queued",
+      "status": "EVIDENCE_READY",
+      "reason": "19 rights-verified embedded images",
       "revisionId": 1380461433,
-      "checkedAt": null
+      "checkedAt": "2026-10-21T07:35:29.664Z"
     },
     "5678514": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "EVIDENCE_READY",
+      "reason": "7 rights-verified embedded images",
+      "revisionId": 1368334923,
+      "checkedAt": "2026-10-21T07:34:13.910Z"
     },
     "5778710": {
       "status": "REJECTED",
@@ -7382,16 +7382,16 @@
       "checkedAt": null
     },
     "5951576": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "EVIDENCE_READY",
+      "reason": "17 rights-verified embedded images",
+      "revisionId": 1378298061,
+      "checkedAt": "2026-10-21T07:32:51.917Z"
     },
     "6012335": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "EVIDENCE_READY",
+      "reason": "2 rights-verified embedded images",
+      "revisionId": 1378455797,
+      "checkedAt": "2026-10-21T07:31:45.041Z"
     },
     "6137001": {
       "status": "PENDING",
@@ -7400,10 +7400,10 @@
       "checkedAt": null
     },
     "6303503": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "REJECTED",
+      "reason": "insufficient-source-text-or-embedded-images",
+      "revisionId": 1365255569,
+      "checkedAt": "2026-10-21T07:36:17.244Z"
     },
     "6384129": {
       "status": "PENDING",
@@ -7442,10 +7442,10 @@
       "checkedAt": "2026-10-21T03:11:06.905Z"
     },
     "7116046": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "EVIDENCE_READY",
+      "reason": "8 rights-verified embedded images",
+      "revisionId": 1380544609,
+      "checkedAt": "2026-10-21T07:31:50.069Z"
     },
     "7208744": {
       "status": "PENDING",
@@ -7520,10 +7520,10 @@
       "checkedAt": null
     },
     "8720264": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "EVIDENCE_READY",
+      "reason": "5 rights-verified embedded images",
+      "revisionId": 1361754480,
+      "checkedAt": "2026-10-21T07:34:30.683Z"
     },
     "8950930": {
       "status": "PENDING",
@@ -7568,10 +7568,10 @@
       "checkedAt": null
     },
     "9436758": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "EVIDENCE_READY",
+      "reason": "4 rights-verified embedded images",
+      "revisionId": 1336723736,
+      "checkedAt": "2026-10-21T07:35:43.004Z"
     },
     "9528025": {
       "status": "PENDING",
@@ -7586,10 +7586,10 @@
       "checkedAt": null
     },
     "9719652": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "EVIDENCE_READY",
+      "reason": "7 rights-verified embedded images",
+      "revisionId": 1379228653,
+      "checkedAt": "2026-10-21T07:34:27.782Z"
     },
     "9721593": {
       "status": "PENDING",
@@ -7598,10 +7598,10 @@
       "checkedAt": null
     },
     "9962115": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "EVIDENCE_READY",
+      "reason": "3 rights-verified embedded images",
+      "revisionId": 1373329079,
+      "checkedAt": "2026-10-21T07:32:02.080Z"
     },
     "10082018": {
       "status": "PENDING",
@@ -7622,22 +7622,22 @@
       "checkedAt": null
     },
     "10612527": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "EVIDENCE_READY",
+      "reason": "3 rights-verified embedded images",
+      "revisionId": 1364588051,
+      "checkedAt": "2026-10-21T07:36:04.726Z"
     },
     "10700479": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "EVIDENCE_READY",
+      "reason": "8 rights-verified embedded images",
+      "revisionId": 1377704995,
+      "checkedAt": "2026-10-21T07:35:51.029Z"
     },
     "11119616": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "EVIDENCE_READY",
+      "reason": "2 rights-verified embedded images",
+      "revisionId": 1360432345,
+      "checkedAt": "2026-10-21T07:31:42.085Z"
     },
     "11373849": {
       "status": "PENDING",
@@ -7820,10 +7820,10 @@
       "checkedAt": null
     },
     "18934647": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "NEEDS_REVIEW",
+      "reason": "no-rights-verified-embedded-image",
+      "revisionId": 1374819804,
+      "checkedAt": "2026-10-21T07:36:27.052Z"
     },
     "18940658": {
       "status": "PENDING",
@@ -7832,10 +7832,10 @@
       "checkedAt": null
     },
     "19098431": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "EVIDENCE_READY",
+      "reason": "16 rights-verified embedded images",
+      "revisionId": 1378430802,
+      "checkedAt": "2026-10-21T07:33:21.483Z"
     },
     "19762116": {
       "status": "EVIDENCE_READY",
@@ -7850,10 +7850,10 @@
       "checkedAt": "2026-10-21T03:08:35.649Z"
     },
     "20016887": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "EVIDENCE_READY",
+      "reason": "6 rights-verified embedded images",
+      "revisionId": 1346061935,
+      "checkedAt": "2026-10-21T07:36:07.707Z"
     },
     "20176151": {
       "status": "RETRY_LATER",
@@ -7910,10 +7910,10 @@
       "checkedAt": null
     },
     "22031984": {
-      "status": "PENDING",
-      "reason": "queued",
+      "status": "NEEDS_REVIEW",
+      "reason": "no-rights-verified-embedded-image",
       "revisionId": 1316278374,
-      "checkedAt": null
+      "checkedAt": "2026-10-21T07:34:24.223Z"
     },
     "22057774": {
       "status": "PENDING",
@@ -7970,10 +7970,10 @@
       "checkedAt": "2026-10-21T03:08:40.825Z"
     },
     "23278339": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "EVIDENCE_READY",
+      "reason": "8 rights-verified embedded images",
+      "revisionId": 1379638474,
+      "checkedAt": "2026-10-21T07:33:31.084Z"
     },
     "23423379": {
       "status": "PENDING",
@@ -8024,16 +8024,16 @@
       "checkedAt": null
     },
     "25426162": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "EVIDENCE_READY",
+      "reason": "4 rights-verified embedded images",
+      "revisionId": 1379505082,
+      "checkedAt": "2026-10-21T07:32:24.420Z"
     },
     "25487647": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "EVIDENCE_READY",
+      "reason": "1 rights-verified embedded images",
+      "revisionId": 1364112866,
+      "checkedAt": "2026-10-21T07:32:27.128Z"
     },
     "25535894": {
       "status": "PENDING",
@@ -8042,10 +8042,10 @@
       "checkedAt": null
     },
     "25650674": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "EVIDENCE_READY",
+      "reason": "7 rights-verified embedded images",
+      "revisionId": 1373246443,
+      "checkedAt": "2026-10-21T07:33:43.237Z"
     },
     "26740386": {
       "status": "PENDING",
@@ -8102,10 +8102,10 @@
       "checkedAt": null
     },
     "30686169": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "EVIDENCE_READY",
+      "reason": "9 rights-verified embedded images",
+      "revisionId": 1318293204,
+      "checkedAt": "2026-10-21T07:33:34.213Z"
     },
     "30974186": {
       "status": "PENDING",
@@ -8198,10 +8198,10 @@
       "checkedAt": null
     },
     "33590179": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "EVIDENCE_READY",
+      "reason": "2 rights-verified embedded images",
+      "revisionId": 1324680659,
+      "checkedAt": "2026-10-21T07:36:14.319Z"
     },
     "33949149": {
       "status": "PENDING",
@@ -8282,10 +8282,10 @@
       "checkedAt": null
     },
     "37600900": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "EVIDENCE_READY",
+      "reason": "4 rights-verified embedded images",
+      "revisionId": 1379750089,
+      "checkedAt": "2026-10-21T07:35:14.174Z"
     },
     "37719142": {
       "status": "PENDING",
@@ -8324,10 +8324,10 @@
       "checkedAt": "2026-10-21T03:08:44.778Z"
     },
     "38497714": {
-      "status": "PENDING",
-      "reason": "queued",
+      "status": "EVIDENCE_READY",
+      "reason": "5 rights-verified embedded images",
       "revisionId": 1379099622,
-      "checkedAt": null
+      "checkedAt": "2026-10-21T07:32:11.480Z"
     },
     "38777061": {
       "status": "PENDING",
@@ -8354,16 +8354,16 @@
       "checkedAt": null
     },
     "39699737": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "EVIDENCE_READY",
+      "reason": "4 rights-verified embedded images",
+      "revisionId": 1380279104,
+      "checkedAt": "2026-10-21T07:35:40.108Z"
     },
     "39766716": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "EVIDENCE_READY",
+      "reason": "9 rights-verified embedded images",
+      "revisionId": 1378302705,
+      "checkedAt": "2026-10-21T07:32:55.401Z"
     },
     "39958236": {
       "status": "PENDING",
@@ -8372,10 +8372,10 @@
       "checkedAt": null
     },
     "39963848": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "EVIDENCE_READY",
+      "reason": "2 rights-verified embedded images",
+      "revisionId": 1376421655,
+      "checkedAt": "2026-10-21T07:33:39.699Z"
     },
     "40159918": {
       "status": "PENDING",
@@ -8384,10 +8384,10 @@
       "checkedAt": null
     },
     "40240568": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "REJECTED",
+      "reason": "insufficient-source-text-or-embedded-images",
+      "revisionId": 1354356415,
+      "checkedAt": "2026-10-21T07:35:32.860Z"
     },
     "40429591": {
       "status": "PENDING",
@@ -8426,10 +8426,10 @@
       "checkedAt": null
     },
     "41612950": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "EVIDENCE_READY",
+      "reason": "15 rights-verified embedded images",
+      "revisionId": 1380020724,
+      "checkedAt": "2026-10-21T07:32:22.251Z"
     },
     "41994159": {
       "status": "PENDING",
@@ -8438,10 +8438,10 @@
       "checkedAt": null
     },
     "42089707": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "EVIDENCE_READY",
+      "reason": "1 rights-verified embedded images",
+      "revisionId": 1375684065,
+      "checkedAt": "2026-10-21T07:33:01.621Z"
     },
     "42132949": {
       "status": "PENDING",
@@ -8456,10 +8456,10 @@
       "checkedAt": null
     },
     "42431723": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "EVIDENCE_READY",
+      "reason": "9 rights-verified embedded images",
+      "revisionId": 1375665314,
+      "checkedAt": "2026-10-21T07:34:57.872Z"
     },
     "42848258": {
       "status": "EVIDENCE_READY",
@@ -8480,10 +8480,10 @@
       "checkedAt": null
     },
     "43956140": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "REJECTED",
+      "reason": "insufficient-source-text-or-embedded-images",
+      "revisionId": 1362963925,
+      "checkedAt": "2026-10-21T07:34:07.202Z"
     },
     "43970763": {
       "status": "PENDING",
@@ -8492,10 +8492,10 @@
       "checkedAt": null
     },
     "44035599": {
-      "status": "PENDING",
-      "reason": "queued",
+      "status": "EVIDENCE_READY",
+      "reason": "8 rights-verified embedded images",
       "revisionId": 1380983925,
-      "checkedAt": null
+      "checkedAt": "2026-10-21T07:31:33.238Z"
     },
     "44581660": {
       "status": "PENDING",
@@ -8510,10 +8510,10 @@
       "checkedAt": null
     },
     "44895973": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "EVIDENCE_READY",
+      "reason": "12 rights-verified embedded images",
+      "revisionId": 1378960590,
+      "checkedAt": "2026-10-21T07:35:05.243Z"
     },
     "45508601": {
       "status": "PENDING",
@@ -8522,10 +8522,10 @@
       "checkedAt": null
     },
     "46399119": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "EVIDENCE_READY",
+      "reason": "1 rights-verified embedded images",
+      "revisionId": 1365897642,
+      "checkedAt": "2026-10-21T07:35:08.001Z"
     },
     "46504539": {
       "status": "PENDING",
@@ -8552,16 +8552,16 @@
       "checkedAt": null
     },
     "46676535": {
-      "status": "PENDING",
-      "reason": "queued",
+      "status": "EVIDENCE_READY",
+      "reason": "3 rights-verified embedded images",
       "revisionId": 1364028474,
-      "checkedAt": null
+      "checkedAt": "2026-10-21T07:32:05.265Z"
     },
     "46840722": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "EVIDENCE_READY",
+      "reason": "10 rights-verified embedded images",
+      "revisionId": 1366308012,
+      "checkedAt": "2026-10-21T07:31:36.418Z"
     },
     "47276677": {
       "status": "PENDING",
@@ -8660,16 +8660,16 @@
       "checkedAt": null
     },
     "51522180": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "EVIDENCE_READY",
+      "reason": "6 rights-verified embedded images",
+      "revisionId": 1381006440,
+      "checkedAt": "2026-10-21T07:34:21.425Z"
     },
     "51614357": {
-      "status": "PENDING",
-      "reason": "queued",
+      "status": "EVIDENCE_READY",
+      "reason": "1 rights-verified embedded images",
       "revisionId": 1318675006,
-      "checkedAt": null
+      "checkedAt": "2026-10-21T07:33:17.276Z"
     },
     "51682055": {
       "status": "PENDING",
@@ -8696,10 +8696,10 @@
       "checkedAt": null
     },
     "52759037": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "EVIDENCE_READY",
+      "reason": "1 rights-verified embedded images",
+      "revisionId": 1365039123,
+      "checkedAt": "2026-10-21T07:35:17.383Z"
     },
     "53033394": {
       "status": "PENDING",
@@ -8846,10 +8846,10 @@
       "checkedAt": null
     },
     "58326593": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "EVIDENCE_READY",
+      "reason": "2 rights-verified embedded images",
+      "revisionId": 1362962701,
+      "checkedAt": "2026-10-21T07:33:36.680Z"
     },
     "58562797": {
       "status": "EVIDENCE_READY",
@@ -8882,10 +8882,10 @@
       "checkedAt": null
     },
     "60454926": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "EVIDENCE_READY",
+      "reason": "1 rights-verified embedded images",
+      "revisionId": 1376694762,
+      "checkedAt": "2026-10-21T07:35:45.695Z"
     },
     "60637169": {
       "status": "PENDING",
@@ -8930,10 +8930,10 @@
       "checkedAt": "2026-10-21T01:41:01.762Z"
     },
     "61864508": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "EVIDENCE_READY",
+      "reason": "1 rights-verified embedded images",
+      "revisionId": 1352877739,
+      "checkedAt": "2026-10-21T07:34:38.173Z"
     },
     "62018441": {
       "status": "PENDING",
@@ -8984,10 +8984,10 @@
       "checkedAt": "2026-10-21T03:11:28.450Z"
     },
     "63662981": {
-      "status": "PENDING",
-      "reason": "queued",
+      "status": "EVIDENCE_READY",
+      "reason": "1 rights-verified embedded images",
       "revisionId": 1364435740,
-      "checkedAt": null
+      "checkedAt": "2026-10-21T07:35:53.600Z"
     },
     "63842993": {
       "status": "PENDING",
@@ -9056,10 +9056,10 @@
       "checkedAt": "2026-10-21T03:09:40.673Z"
     },
     "65872280": {
-      "status": "PENDING",
-      "reason": "queued",
+      "status": "EVIDENCE_READY",
+      "reason": "1 rights-verified embedded images",
       "revisionId": 1376652822,
-      "checkedAt": null
+      "checkedAt": "2026-10-21T07:34:16.829Z"
     },
     "65890094": {
       "status": "PENDING",
@@ -9068,10 +9068,10 @@
       "checkedAt": null
     },
     "65936627": {
-      "status": "PENDING",
-      "reason": "queued",
+      "status": "EVIDENCE_READY",
+      "reason": "6 rights-verified embedded images",
       "revisionId": 1373626921,
-      "checkedAt": null
+      "checkedAt": "2026-10-21T07:35:20.972Z"
     },
     "66069494": {
       "status": "PENDING",
@@ -9152,10 +9152,10 @@
       "checkedAt": "2026-10-21T03:08:33.762Z"
     },
     "67928046": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "EVIDENCE_READY",
+      "reason": "1 rights-verified embedded images",
+      "revisionId": 1379593501,
+      "checkedAt": "2026-10-21T07:31:22.130Z"
     },
     "68043187": {
       "status": "PENDING",
@@ -9200,10 +9200,10 @@
       "checkedAt": null
     },
     "69713049": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "EVIDENCE_READY",
+      "reason": "7 rights-verified embedded images",
+      "revisionId": 1381055731,
+      "checkedAt": "2026-10-21T07:32:31.358Z"
     },
     "69914560": {
       "status": "PENDING",
@@ -9212,10 +9212,10 @@
       "checkedAt": null
     },
     "70018886": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "EVIDENCE_READY",
+      "reason": "4 rights-verified embedded images",
+      "revisionId": 1379701242,
+      "checkedAt": "2026-10-21T07:34:10.191Z"
     },
     "70105459": {
       "status": "PENDING",
@@ -9236,10 +9236,10 @@
       "checkedAt": null
     },
     "70601084": {
-      "status": "PENDING",
-      "reason": "queued",
+      "status": "EVIDENCE_READY",
+      "reason": "2 rights-verified embedded images",
       "revisionId": 1372328545,
-      "checkedAt": null
+      "checkedAt": "2026-10-21T07:34:46.625Z"
     },
     "70704819": {
       "status": "PENDING",
@@ -9326,10 +9326,10 @@
       "checkedAt": null
     },
     "73329192": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "EVIDENCE_READY",
+      "reason": "2 rights-verified embedded images",
+      "revisionId": 1376366122,
+      "checkedAt": "2026-10-21T07:31:13.307Z"
     },
     "73361785": {
       "status": "PENDING",
@@ -9344,10 +9344,10 @@
       "checkedAt": null
     },
     "74366520": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "EVIDENCE_READY",
+      "reason": "8 rights-verified embedded images",
+      "revisionId": 1375250160,
+      "checkedAt": "2026-10-21T07:32:59.195Z"
     },
     "74623488": {
       "status": "PENDING",
@@ -9362,10 +9362,10 @@
       "checkedAt": null
     },
     "74692541": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "EVIDENCE_READY",
+      "reason": "1 rights-verified embedded images",
+      "revisionId": 1358303467,
+      "checkedAt": "2026-10-21T07:34:01.760Z"
     },
     "74786445": {
       "status": "PENDING",
@@ -9374,10 +9374,10 @@
       "checkedAt": null
     },
     "74790405": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "EVIDENCE_READY",
+      "reason": "4 rights-verified embedded images",
+      "revisionId": 1375906372,
+      "checkedAt": "2026-10-21T07:31:53.558Z"
     },
     "74792478": {
       "status": "PENDING",
@@ -9398,10 +9398,10 @@
       "checkedAt": null
     },
     "74970752": {
-      "status": "PENDING",
-      "reason": "queued",
+      "status": "REJECTED",
+      "reason": "insufficient-source-text-or-embedded-images",
       "revisionId": 1356345751,
-      "checkedAt": null
+      "checkedAt": "2026-10-21T07:33:11.393Z"
     },
     "74972533": {
       "status": "PENDING",
@@ -9434,16 +9434,16 @@
       "checkedAt": null
     },
     "75746300": {
-      "status": "PENDING",
-      "reason": "queued",
+      "status": "REJECTED",
+      "reason": "insufficient-source-text-or-embedded-images",
       "revisionId": 1339767114,
-      "checkedAt": null
+      "checkedAt": "2026-10-21T07:36:23.438Z"
     },
     "75750141": {
-      "status": "PENDING",
-      "reason": "queued",
+      "status": "REJECTED",
+      "reason": "insufficient-source-text-or-embedded-images",
       "revisionId": 1372985602,
-      "checkedAt": null
+      "checkedAt": "2026-10-21T07:34:51.960Z"
     },
     "75778478": {
       "status": "PENDING",
@@ -9566,10 +9566,10 @@
       "checkedAt": null
     },
     "78057836": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "EVIDENCE_READY",
+      "reason": "2 rights-verified embedded images",
+      "revisionId": 1372172000,
+      "checkedAt": "2026-10-21T07:32:08.266Z"
     },
     "78088507": {
       "status": "PENDING",
@@ -9596,10 +9596,10 @@
       "checkedAt": null
     },
     "78843525": {
-      "status": "PENDING",
-      "reason": "queued",
+      "status": "EVIDENCE_READY",
+      "reason": "2 rights-verified embedded images",
       "revisionId": 1373197699,
-      "checkedAt": null
+      "checkedAt": "2026-10-21T07:32:37.555Z"
     },
     "79425227": {
       "status": "RETRY_LATER",
@@ -9656,10 +9656,10 @@
       "checkedAt": "2026-10-21T03:08:38.823Z"
     },
     "80275802": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "EVIDENCE_READY",
+      "reason": "1 rights-verified embedded images",
+      "revisionId": 1381152236,
+      "checkedAt": "2026-10-21T07:31:26.642Z"
     },
     "80327476": {
       "status": "PENDING",
@@ -9668,10 +9668,10 @@
       "checkedAt": null
     },
     "80384831": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "REJECTED",
+      "reason": "insufficient-source-text-or-embedded-images",
+      "revisionId": 1378184341,
+      "checkedAt": "2026-10-21T07:35:48.172Z"
     },
     "80598110": {
       "status": "PENDING",
@@ -9716,10 +9716,10 @@
       "checkedAt": null
     },
     "81225292": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "EVIDENCE_READY",
+      "reason": "2 rights-verified embedded images",
+      "revisionId": 1376860586,
+      "checkedAt": "2026-10-21T07:35:11.067Z"
     },
     "81409826": {
       "status": "PENDING",
@@ -9830,16 +9830,16 @@
       "checkedAt": null
     },
     "83864026": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "REJECTED",
+      "reason": "insufficient-source-text-or-embedded-images",
+      "revisionId": 1381208958,
+      "checkedAt": "2026-10-21T07:32:45.980Z"
     },
     "83952679": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "REJECTED",
+      "reason": "insufficient-source-text-or-embedded-images",
+      "revisionId": 1378853339,
+      "checkedAt": "2026-10-21T07:31:06.339Z"
     },
     "84029747": {
       "status": "EVIDENCE_READY",
@@ -9866,7 +9866,7 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-10-21T03:56:53.322Z",
+  "updatedAt": "2026-10-21T07:36:27.060Z",
   "dailyUsage": {
     "day": "2026-10-21",
     "calls": 4,
