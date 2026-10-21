@@ -7886,10 +7886,10 @@
       "checkedAt": null
     },
     "21342679": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
+      "revisionId": 1372578575,
+      "checkedAt": "2026-10-21T13:51:31.257Z"
     },
     "21431793": {
       "status": "EVIDENCE_READY",
@@ -9866,7 +9866,7 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-10-21T13:51:24.942Z",
+  "updatedAt": "2026-10-21T13:51:31.258Z",
   "dailyUsage": {
     "day": "2026-10-21",
     "calls": 23,
