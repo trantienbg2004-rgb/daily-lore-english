@@ -2,9 +2,166 @@
   "pageId": 645686,
   "title": "Kittanning Path",
   "topic": "Economy",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1376030182,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376030182",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-21T07:56:27.967Z"
+  "reason": "2 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:USGS National Map viewer showing Kittanning Run, Pennsylvania location near Altoona--MIxed Mode topo+Sat.png",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c1/USGS_National_Map_viewer_showing_Kittanning_Run%2C_Pennsylvania_location_near_Altoona--MIxed_Mode_topo%2BSat.png/960px-USGS_National_Map_viewer_showing_Kittanning_Run%2C_Pennsylvania_location_near_Altoona--MIxed_Mode_topo%2BSat.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:USGS National Map viewer showing Kittanning Run, Pennsylvania location near Altoona--MIxed Mode topo+Sat.png",
+        "caption": "USGS combined Topo and relief map image of the Kittanning Point promontory looming above and overshadowing the valley and streams below, directly west and above the confluence of Kittanning Run (denoted by the yellow circle labeled 'A') and Glenwhite Run (the major right branch stream to the north of the reservoirs). Foot travelers could follow either large stream or the smaller stream in the Kittanning Gap (lower down, at image right), or one of the several gaps of the Allegheny (to the south o",
+        "alt": "USGS National Map viewer showing Kittanning Run, Pennsylvania location near Altoona--MIxed Mode topo+Sat",
+        "description": "--MIxed Mode View, topology and Satellite terrain USGS National Map viewer showing Kittanning Run, Pennsylvania—one creek among several creating the gaps in the Allegheny—that is in the Allegheny Front. -- The bubble location shown is along the westbound railroad between Altoona —the tunnels at under the drainage divides at Gallitzin & Tunnelhill.",
+        "date": "2016-05-07",
+        "section": "",
+        "position": 0,
+        "provenance": {
+          "credit": "Tweaks by FrankB",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:USGS_National_Map_viewer_showing_Kittanning_Run,_Pennsylvania_location_near_Altoona--MIxed_Mode_topo%2BSat.png",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Kittanning_Path",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376030182",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:USGS overview indicating Kittanning Gap's, Pennsylvania location near Altoona, PA and showing the PRR Horseshoe Curve.png",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d3/USGS_overview_indicating_Kittanning_Gap%27s%2C_Pennsylvania_location_near_Altoona%2C_PA_and_showing_the_PRR_Horseshoe_Curve.png/960px-USGS_overview_indicating_Kittanning_Gap%27s%2C_Pennsylvania_location_near_Altoona%2C_PA_and_showing_the_PRR_Horseshoe_Curve.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:USGS overview indicating Kittanning Gap's, Pennsylvania location near Altoona, PA and showing the PRR Horseshoe Curve.png",
+        "caption": "Location of Kittanning Gap after GNIS finding of 'Kittanning Gap, Pennsylvania' seen in USGS National Map viewer screenshot. The gap is located effectively in a western suburb of Altoona, PA. The maps on this page also are showing the nearby PRR Horseshoe Curve, which crosses three other gaps, and the confluence of Kittanning Run with Glen White Run, which descends running nearly due west to east.The Kittanning Gap gives this 'choice way' of climbing the escarpment to wagons or mule trains on th",
+        "alt": "USGS overview indicating Kittanning Gap's, Pennsylvania location near Altoona, PA and showing the PRR Horseshoe Curve",
+        "description": "Display of data in the USGS National Map viewer after finding the term Kittaning Gap, by name Pennsylbania near Altoona, PA and showing the PRR Horseshoe Curve.",
+        "date": "2016-05-06",
+        "section": "",
+        "position": 1,
+        "provenance": {
+          "credit": "FrankB",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:USGS_overview_indicating_Kittanning_Gap%27s,_Pennsylvania_location_near_Altoona,_PA_and_showing_the_PRR_Horseshoe_Curve.png",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Kittanning_Path",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376030182",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "ed83de6b4648a580ea5b382906ba3cdf392a6abeb891a61608997b3b52a21085",
+      "heading": "Lead",
+      "excerpt": "The Kittanning Path was a major east-west Native American trail that crossed the Allegheny Mountains barrier ridge connecting the Susquehann",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376030182"
+    },
+    {
+      "id": "P2",
+      "hash": "dd6ba3daa8f2b7e153afeecd2a5c479b9d187485b9b9dd715d3927b44777b9ca",
+      "heading": "Nature and the path",
+      "excerpt": "The path is made up of a \"series of path alternatives\" that pass through seasonally or directionally more or less difficult notches— the gap",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376030182"
+    },
+    {
+      "id": "P3",
+      "hash": "fe28aa6a35b1b543b4e7ccd2b2ddbdc6bf44908335febc668e2fb55c1bd6f1bc",
+      "heading": "Nature and the path",
+      "excerpt": "For centuries the Kittanning Path, like the similar Chief Nemacolin's Trail to the south, was the overland route through very tough country ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376030182"
+    },
+    {
+      "id": "P4",
+      "hash": "218fe4b6ee08221944c6b010e20c49205fafde83e5668b9ba37e3662fe91a714",
+      "heading": "Nature and the path",
+      "excerpt": "The path made use of one of the few so-called gaps of the Allegheny that accompanied the feedwater streams draining into the Juniata River, ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376030182"
+    },
+    {
+      "id": "P5",
+      "hash": "65fbf8b5d6acb6fc83dc92691f039247bc55031a6694a0847eb4b058fb3508f4",
+      "heading": "Nature and the path",
+      "excerpt": "By the time of the French and Indian War, starting in 1754, Kittanning Village was believed by Europeans to be the largest Native American v",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376030182"
+    },
+    {
+      "id": "P6",
+      "hash": "33991940f1dbd0bd9acb1cf9401783a62da1a09dbcbdee91df3c541bb72bf4f2",
+      "heading": "Description (East to West)",
+      "excerpt": "It began southeast of Altoona at Frankstown on the Juniata River. It ran west, crossing the Allegheny Ridge approximately 5 mi (8 km) west o",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376030182"
+    },
+    {
+      "id": "P7",
+      "hash": "ff8cc397ca436999439aac332c7fdf993c5e28a5493cdf43f006583976caa4ed",
+      "heading": "History",
+      "excerpt": "The path was in use as early as 1721. In 1744 the English trader John Hart was granted a license by colonial authorities to trade with the I",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376030182"
+    },
+    {
+      "id": "P8",
+      "hash": "b8b526752d0084d36eafba7ea76f5f20ce890ec124f91dd02fc920cfea49441e",
+      "heading": "Preservation",
+      "excerpt": "The trail has been surveyed by historians through Cambria County. An authentic section of the original trail is preserved near Eckenrode Mil",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376030182"
+    },
+    {
+      "id": "P9",
+      "hash": "1909ee5290303075735d7f685860b5302825d0341268c80f0ef4c00db9d29402",
+      "heading": "Nature and the path",
+      "excerpt": "In an attempt to settle frontier borders and reduce conflict among Indian tribes, the English and Native Americans signed the Treaty of Fort",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376030182"
+    },
+    {
+      "id": "P10",
+      "hash": "d79bd88a90f2d1ea87307aabd2d9c1071a9b551731761d8f9ad36e19e4480a35",
+      "heading": "Description (East to West)",
+      "excerpt": "The path ran northwest through Cambria County, passing east of Carrolltown. It entered Indiana County approximately 1 mi (1.6 km) south of C",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376030182"
+    },
+    {
+      "id": "P11",
+      "hash": "d9ca530cf76d4dfdf56f72f485d1bdb2632fd2b27391ea184a5b19bc35a0de16",
+      "heading": "Description (East to West)",
+      "excerpt": "It followed a southwest course, through Yellow Creek State Park, then along the headwaters of Two Lick Creek, roughly past Uniontown, Pennsy",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376030182"
+    },
+    {
+      "id": "P12",
+      "hash": "bb9df632e0480907abf5f7e180d461cd2f9cba9e2a367cd8a2e726dd12493a7f",
+      "heading": "History",
+      "excerpt": "In the 1750s the path became the raiding route taken by Lenape. Unhappy with a treaty that took away much of their land rights in western Pe",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376030182"
+    },
+    {
+      "id": "P13",
+      "hash": "3bfe7c642b9196362676867408142b2d92540e52be3470c954525380e4523057",
+      "heading": "History",
+      "excerpt": "After the fort was burned, the British dispatched Lt. Colonel John Armstrong for retaliation. He pursued the Lenape along the path and campe",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376030182"
+    },
+    {
+      "id": "P14",
+      "hash": "d331edeeb6aea5d94b01b2f0a55ee2915a360f082503d7c750c9ecddb11f5c76",
+      "heading": "History",
+      "excerpt": "The path was also traveled by early German pioneer Conrad Weiser, who was accompanied by William Franklin, the son of Benjamin Franklin. Wei",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376030182"
+    },
+    {
+      "id": "P15",
+      "hash": "6eb6ed8cc61685e423666512b47efb931278eeff1183f95cef80a9b46e466842",
+      "heading": "History",
+      "excerpt": "The Kittanning Path is not to be confused with the Kittanning Road, which was built by American rebel forces in 1779 during the Sullivan Exp",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376030182"
+    }
+  ],
+  "updatedAt": "2026-10-21T07:56:29.439Z"
 }
