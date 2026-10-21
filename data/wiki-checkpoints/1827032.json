@@ -2,10 +2,10 @@
   "pageId": 1827032,
   "title": "History of democracy",
   "topic": "Politics",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1377646042,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377646042",
-  "reason": "14 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -483,5 +483,139 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377646042"
     }
   ],
-  "updatedAt": "2026-10-21T18:08:28.464Z"
+  "updatedAt": "2026-10-21T18:08:43.142Z",
+  "draft": {
+    "outline": [
+      "Introduction to democracy and ancient roots",
+      "Early prehistoric and global proto-democracies",
+      "Ancient assemblies in Mesopotamia and Phoenicia",
+      "The emergence of democratic systems in Athens",
+      "Philosophical development and legacy of democracy"
+    ],
+    "variants": {
+      "A1-A2": {
+        "headline": "The Long History of Democracy",
+        "pages": [
+          {
+            "text": "Democracy is a system of government where people share power. In a modern democracy, citizens can change society and hold their leaders to the law. Long ago, ancient Greece tried early forms of democracy that changed politics forever.",
+            "evidenceIds": [
+              "P1",
+              "P2"
+            ]
+          },
+          {
+            "text": "Long before cities existed, small groups of hunter-gatherers made choices together. These groups had about fifty to one hundred people. They often reached agreement without a chief. People call this early form of primitive democracy or tribalism.",
+            "evidenceIds": [
+              "P4",
+              "P7"
+            ]
+          },
+          {
+            "text": "Other ancient places also used assemblies. In ancient Mesopotamia, city-states had councils of elders and free men. These groups held final political power. They had to talk about big issues, like war, before making any choices.",
+            "evidenceIds": [
+              "P9"
+            ]
+          },
+          {
+            "text": "Athens is famous as the birthplace of democracy. The word comes from Greek words for common people and force. Solon was an important lawmaker in Athens who helped create a system where citizens could attend a public assembly and vote.",
+            "evidenceIds": [
+              "P13",
+              "P14"
+            ]
+          },
+          {
+            "text": "In Athens, famous thinkers like Socrates, Plato, and Aristotle studied different types of rule. Aristotle wrote about systems run by one person, a few people, or many people. Their ideas helped shape political philosophy for a very long time.",
+            "evidenceIds": [
+              "P16"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "Tracing the Roots of Democratic Rule",
+        "pages": [
+          {
+            "text": "Democracy is a political system where members share power, allowing citizens to intervene in society and hold leaders accountable. While modern representative systems use social contracts to balance state power and individual rights, democracy is widely associated with ancient Greek experiments.",
+            "evidenceIds": [
+              "P1",
+              "P2",
+              "P3"
+            ]
+          },
+          {
+            "text": "Long before sedentary societies emerged, small bands of hunter-gatherers practiced proto-democracy. In groups of fifty to one hundred closely tied individuals, decisions were reached through consensus or majority rule, frequently without naming a specific chief.",
+            "evidenceIds": [
+              "P4",
+              "P7"
+            ]
+          },
+          {
+            "text": "Ancient civilizations also experimented with governing by assembly. In pre-Babylonian Mesopotamia, ultimate power rested with free male citizens. City-states relied on councils of elders and young men who possessed final political authority and had to approve major issues like war.",
+            "evidenceIds": [
+              "P5",
+              "P9"
+            ]
+          },
+          {
+            "text": "Athens is traditionally regarded as the birthplace of democracy, deriving its name from the Greek words for the common people and might. Lawmakers like Solon divided citizens into property classes and established the Ecclesia, an assembly where all citizens could vote on laws and elect officials.",
+            "evidenceIds": [
+              "P13",
+              "P14"
+            ]
+          },
+          {
+            "text": "The democratic environment of Athens fostered the growth of political philosophy. Philosophers like Socrates, Plato, and Aristotle analyzed various systems of rule. Aristotle famously categorized governments based on whether power rested with one person, a few, or the many.",
+            "evidenceIds": [
+              "P16"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "Evolution and Philosophy of Democracy",
+        "pages": [
+          {
+            "text": "Democracy constitutes a system of shared institutional power distinguishing itself through citizen intervention and sovereign accountability. Eighteenth-century revivalists resurrected ancient Greek ideals to construct post-monarchical templates, fundamentally transforming the international political landscape over subsequent centuries.",
+            "evidenceIds": [
+              "P1",
+              "P2"
+            ]
+          },
+          {
+            "text": "Anthropological evidence indicates that primitive democracy or tribalism predates agrarian civilization. Small hunter-gatherer bands typically reached consensus or majority decisions within face-to-face community settings, frequently operating without designated chiefs.",
+            "evidenceIds": [
+              "P4",
+              "P7"
+            ]
+          },
+          {
+            "text": "Historical records from early Mesopotamia reveal loose power structures where ultimate authority resided with free male citizens. Major city-states utilized councils of elders and armed youth that maintained final political jurisdiction and required consultation on matters of war.",
+            "evidenceIds": [
+              "P9"
+            ]
+          },
+          {
+            "text": "Athenian institutional evolution formalized popular sovereignty through figures like Solon, who established property classes and empowered the Ecclesia. This sovereign assembly acquired responsibilities for legislation, judicial appeals, and magistrate elections within a mixed timocratic framework.",
+            "evidenceIds": [
+              "P13",
+              "P14"
+            ]
+          },
+          {
+            "text": "The Athenian milieu catalyzed foundational political philosophy. Philosophers such as Plato and Aristotle scrutinized systemic rule types, with Aristotle systematically dividing governance into autocracy, oligarchy, and democracy based on the numerical distribution of ruling power.",
+            "evidenceIds": [
+              "P16"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2717,
+    "output": 1361,
+    "total": 4078
+  },
+  "validation": null
 }
