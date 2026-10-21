@@ -6866,10 +6866,10 @@
       "checkedAt": "2026-10-21T18:12:55.485Z"
     },
     "1364686": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
+      "revisionId": 1368406153,
+      "checkedAt": "2026-10-21T22:34:29.782Z"
     },
     "1420643": {
       "status": "PENDING",
@@ -9866,7 +9866,7 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-10-21T22:34:23.373Z",
+  "updatedAt": "2026-10-21T22:34:29.786Z",
   "dailyUsage": {
     "day": "2026-10-21",
     "calls": 37,
