@@ -6506,10 +6506,10 @@
       "checkedAt": null
     },
     "359626": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
+      "revisionId": 1380595942,
+      "checkedAt": "2026-10-21T08:11:28.043Z"
     },
     "398318": {
       "status": "EVIDENCE_READY",
@@ -9866,7 +9866,7 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-10-21T08:11:24.980Z",
+  "updatedAt": "2026-10-21T08:11:28.050Z",
   "dailyUsage": {
     "day": "2026-10-21",
     "calls": 4,
