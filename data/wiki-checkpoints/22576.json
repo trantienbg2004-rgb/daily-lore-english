@@ -506,7 +506,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379072110"
     }
   ],
-  "updatedAt": "2026-10-21T13:47:44.408Z",
+  "updatedAt": "2026-10-21T13:48:13.035Z",
   "draft": {
     "outline": [
       "Introduction to modern Olympic Games",
@@ -548,7 +548,7 @@
             ]
           },
           {
-            "text": "Organizing such events brings many challenges, including boycotts, doping, match fixing, bribery, and terrorism. Still, the Olympics give athletes a chance to win global fame every two years.",
+            "text": "Organizing such events brings many challenges, including boycotts, doping, match fixing, bribery, and terrorism. Still, the Olympics and their media exposure provide athletes with the chance to attain national and international fame every two years.",
             "evidenceIds": [
               "P3",
               "P5",
@@ -646,11 +646,11 @@
       }
     }
   },
-  "repairAttempts": 1,
+  "repairAttempts": 2,
   "lastUsage": {
-    "input": 2915,
-    "output": 413,
-    "total": 3328
+    "input": 2922,
+    "output": 439,
+    "total": 3361
   },
   "validation": null
 }
