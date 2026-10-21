@@ -6800,10 +6800,10 @@
       "checkedAt": "2026-10-21T13:32:40.074Z"
     },
     "1141372": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
+      "revisionId": 1380742239,
+      "checkedAt": "2026-10-21T13:48:55.416Z"
     },
     "1166041": {
       "status": "REJECTED",
@@ -9866,7 +9866,7 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-10-21T13:48:49.048Z",
+  "updatedAt": "2026-10-21T13:48:55.416Z",
   "dailyUsage": {
     "day": "2026-10-21",
     "calls": 23,
