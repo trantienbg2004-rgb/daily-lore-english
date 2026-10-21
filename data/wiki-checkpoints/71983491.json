@@ -2,10 +2,10 @@
   "pageId": 71983491,
   "title": "International Campaign to Save the Monuments of Nubia",
   "topic": "Culture",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1377298310,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377298310",
-  "reason": "5 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REJECTED",
@@ -245,5 +245,168 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377298310"
     }
   ],
-  "updatedAt": "2026-10-21T13:29:39.179Z"
+  "updatedAt": "2026-10-21T13:30:02.149Z",
+  "draft": {
+    "outline": [
+      "The Aswan Dam project threatens Nubian monuments with flooding.",
+      "Egyptian and UNESCO leaders launch an international rescue campaign.",
+      "Global leaders and diplomats mobilize funding and expert support.",
+      "Engineering teams debate and execute complex temple relocations.",
+      "Local Nubian communities face repeated forced displacement."
+    ],
+    "variants": {
+      "A1-A2": {
+        "headline": "Saving Nubia's Temples",
+        "pages": [
+          {
+            "text": "In 1960, a big project started in Egypt. Builders wanted to make a new dam on the Nile River. This dam would help control floods and make electricity. But the water would cover twenty-two old temples and historical sites in Lower Nubia.",
+            "evidenceIds": [
+              "P1",
+              "P2",
+              "P3"
+            ]
+          },
+          {
+            "text": "Many old monuments were in great danger. A French expert named Christiane Desroches Noblecourt wanted to save them. She worked with Tharwat Okasha, the head of Egypt's culture ministry. They asked UNESCO for help to protect the ancient treasures.",
+            "evidenceIds": [
+              "P6",
+              "P7",
+              "P11"
+            ]
+          },
+          {
+            "text": "In March 1960, UNESCO announced a big international campaign. Countries from around the world joined together to help. Some nations gave money, while others sent engineers and workers to move the heavy stone buildings piece by piece.",
+            "evidenceIds": [
+              "P1",
+              "P8"
+            ]
+          },
+          {
+            "text": "The United States also decided to help the rescue work. First Lady Jacqueline Kennedy wrote a letter to support the campaign. Afterward, the US government gave money to save the temples and protect the ancient history.",
+            "evidenceIds": [
+              "P9"
+            ]
+          },
+          {
+            "text": "Engineers tried many different ideas to save the temples. Some groups moved entire stone blocks to higher ground. Other smaller temples were rescued by Egyptian workers using their own money and tools over several years.",
+            "evidenceIds": [
+              "P12",
+              "P15"
+            ]
+          },
+          {
+            "text": "While the temples were saved, local people suffered. The rising water forced native Nubians to leave their homes many times. They had to move to new cities because their ancestral lands were flooded forever by the new lake.",
+            "evidenceIds": [
+              "P10"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "The International Campaign for Nubia",
+        "pages": [
+          {
+            "text": "Following the 1952 revolution, Egypt launched plans to build the Aswan High Dam to control flooding, expand irrigation, and generate hydroelectric power. However, the resulting Lake Nasser would submerge the entire region of historical Lower Nubia, threatening twenty-two critical archaeological sites.",
+            "evidenceIds": [
+              "P1",
+              "P2",
+              "P3"
+            ]
+          },
+          {
+            "text": "Faced with this impending loss, French Egyptologist Christiane Desroches Noblecourt and Egyptian Culture Minister Tharwat Okasha rallied international support. After securing backing from UNESCO officials, the organization officially launched a global preservation campaign in March 1960.",
+            "evidenceIds": [
+              "P6",
+              "P7",
+              "P8",
+              "P11"
+            ]
+          },
+          {
+            "text": "Diplomatic efforts soon expanded worldwide. Prompted by First Lady Jacqueline Kennedy and various experts, the United States administration overcame domestic political opposition to contribute financial aid. Other nations, such as West Germany, directly funded the relocation of specific structures like the Temple of Kalabsha.",
+            "evidenceIds": [
+              "P8",
+              "P9"
+            ]
+          },
+          {
+            "text": "Engineers evaluated various ambitious proposals, including a rejected design to build a freshwater dam around the Abu Simbel temples. Ultimately, monuments had to be carefully dismantled into blocks and reassembled on higher ground, though the process occasionally revealed underlying ancient art by destroying later Christian wall paintings.",
+            "evidenceIds": [
+              "P12",
+              "P15"
+            ]
+          },
+          {
+            "text": "While the monuments were successfully preserved, the human cost was severe. The creation of Lake Nasser and related excavations forced native Nubians to relocate multiple times. Inadequate compensation and unsuitable new housing compelled many residents to immigrate to Egyptian and Sudanese cities.",
+            "evidenceIds": [
+              "P10"
+            ]
+          },
+          {
+            "text": "Running from 1960 to 1980 under UNESCO leadership, the collaborative rescue effort ultimately led to the creation of the World Heritage Convention in 1972. In April 1979, the relocated antiquities were officially inscribed on the World Heritage List.",
+            "evidenceIds": [
+              "P1",
+              "P4"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "Saving the Monuments of Nubia",
+        "pages": [
+          {
+            "text": "In the wake of the 1952 revolution, the Free Officers movement prioritized the construction of the Aswan Dam to regulate Nile flooding, enhance irrigation, and stimulate industrialization. This infrastructural undertaking necessitated the creation of Lake Nasser, which would inundate Lower Nubia and imperil twenty-two pivotal historical sites, including Abu Simbel and Philae.",
+            "evidenceIds": [
+              "P1",
+              "P2",
+              "P3"
+            ]
+          },
+          {
+            "text": "Recognizing the catastrophic cultural threat, CEDAE director Christiane Desroches Noblecourt and Egyptian Culture Minister Tharwat Okasha catalyzed an international rescue initiative. Following high-level diplomatic overtures, UNESCO Director-General Vittorino Veronese formally inaugurated the global campaign in March 1960 to reconcile heritage preservation with national development.",
+            "evidenceIds": [
+              "P6",
+              "P7",
+              "P8",
+              "P11"
+            ]
+          },
+          {
+            "text": "Mobilizing international aid required delicate diplomacy. While West Germany independently funded the relocation of the Temple of Kalabsha, U.S. participation was initially stymied by anti-communist opposition to Soviet involvement in the dam. Intervention by First Lady Jacqueline Kennedy and academic figures ultimately secured congressional authorization for financial contributions.",
+            "evidenceIds": [
+              "P8",
+              "P9"
+            ]
+          },
+          {
+            "text": "Technical approaches varied widely, from rejected proposals like an engineered freshwater lagoon around Abu Simbel to meticulous piecemeal dismantling. During the disassembly of converted structures, later Christian wall paintings were frequently destroyed, inadvertently exposing the ancient Egyptian strata beneath.",
+            "evidenceIds": [
+              "P12",
+              "P15"
+            ]
+          },
+          {
+            "text": "Concurrently, the flooding and construction precipitated the repeated displacement of indigenous Nubians across multiple decades. Inadequate agrarian and residential compensation left displaced populations with little choice but to emigrate toward urban centers in Egypt and Sudan.",
+            "evidenceIds": [
+              "P10"
+            ]
+          },
+          {
+            "text": "Spanning two decades under UNESCO auspices, this coalition of fifty nations successfully relocated the threatened monuments. The unprecedented collaborative endeavor culminated in the establishment of the 1972 World Heritage Convention and the subsequent inscription of the Nubian monuments onto the World Heritage List.",
+            "evidenceIds": [
+              "P1",
+              "P4"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2867,
+    "output": 1786,
+    "total": 4653
+  },
+  "validation": null
 }
