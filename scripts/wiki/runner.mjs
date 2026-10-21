@@ -79,7 +79,7 @@ export async function discoverWikiQueue({base,topics=WIKI_TOPICS,maxPerTopic=30,
  return {candidates:state.queue.length,scanned:groups.reduce((n,g)=>n+g.scannedPages,0),errors,byTopic:Object.fromEntries(groups.map(g=>[g.topic,g.candidates.length]))}
 }
 
-export async function runWikiBatch({base,maxCalls=0,maxCandidates=5,pageId=null,apiKey='',freeTierConfirmed=false,
+export async function runWikiBatch({base,maxCalls=0,maxCandidates=5,pageId=null,apiKey='',freeTierConfirmed=false,model='gemini-2.5-flash-lite',
  readCatalog=readWikiCatalog,readState=readWikiState,writeState=writeWikiState,
  readCheckpoint=readWikiCheckpoint,writeCheckpoint=writeWikiCheckpoint,onPersist=async()=>{},
  fetchPage=fetchWikipediaPage,fetchRevision=fetchWikipediaRevision,verifyFigures=verifyPageFigures,generate=generateWikiDraft,
@@ -140,7 +140,7 @@ export async function runWikiBatch({base,maxCalls=0,maxCandidates=5,pageId=null,
    }
    const response=cachedValidation
     ?{result:checkpoint.draft,validation:checkpoint.validation,evidence:checkpoint.evidence,usage:null}
-    :await generate({source,topic:candidate.topic,apiKey,freeTierConfirmed,budget,
+    :await generate({source,topic:candidate.topic,apiKey,freeTierConfirmed,budget,model,
     draft:checkpoint.draft||null,repairAttempts:checkpoint.repairAttempts||0,savedEvidence:checkpoint.evidence,
     priorValidation:checkpoint.validation?.errors?.some(error=>error.includes(':audit-'))?checkpoint.validation:null,
     onDraft:async({result,repairAttempts,usage,evidence:currentEvidence})=>{

@@ -1,7 +1,10 @@
 {
   "feedType": "wiki",
   "editorialVersion": 2,
-  "ready": false,
+  "ready": true,
+  "targetStories": 50,
+  "targetPerTopic": 5,
+  "targetMet": false,
   "total": 1,
   "chunks": 1,
   "withVerifiedPhoto": 1,

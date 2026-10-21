@@ -6,7 +6,7 @@ import {fileURLToPath} from 'node:url'
 import {storyId,validStories} from '../src/lib/feedQueue.js'
 import {isPublishedNewsStory} from './discover/bridge.mjs'
 import {coverDuplicates} from './discover/imageUniqueness.mjs'
-import {readWikiCatalog,validateWikiStory} from './wiki/catalog.mjs'
+import {readWikiCatalog,validateWikiStory,wikiTargetMet,WIKI_TARGET_STORIES,WIKI_TARGET_PER_TOPIC} from './wiki/catalog.mjs'
 import {WIKI_TOPICS} from './wiki/discovery.mjs'
 const base=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..')
 export async function buildReaderIndex(root=base){
@@ -64,7 +64,10 @@ export async function verifyWikiRelease(root=base){
   }
  }
  if(stories.length!==entries.length||manifest.total!==stories.length)throw Error('Wiki catalog total mismatch')
- const shouldBeReady=stories.length>=200&&WIKI_TOPICS.every(topic=>counts[topic]>=15)
- if(manifest.ready!==shouldBeReady||manifest.withVerifiedPhoto!==stories.length)throw Error('Wiki release readiness mismatch')
- return {total:stories.length,ready:manifest.ready,byTopic:counts,images:images.size}
+ const shouldBeReady=stories.length>0
+ const targetMet=wikiTargetMet(stories.length,counts)
+ if(manifest.ready!==shouldBeReady||manifest.targetMet!==targetMet||
+  manifest.targetStories!==WIKI_TARGET_STORIES||manifest.targetPerTopic!==WIKI_TARGET_PER_TOPIC||
+  manifest.withVerifiedPhoto!==stories.length)throw Error('Wiki release readiness mismatch')
+ return {total:stories.length,ready:manifest.ready,targetMet,byTopic:counts,images:images.size}
 }

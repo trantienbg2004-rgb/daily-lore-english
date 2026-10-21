@@ -1,8 +1,8 @@
-name: SAGA Wikipedia - staging collection
+name: SAGA Wikipedia - collect and publish
 
 on:
   schedule:
-    - cron: '23 1 * * *'
+    - cron: '23 1,7,13,19 * * *'
   workflow_dispatch:
 
 permissions:
@@ -17,32 +17,69 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 35
     steps:
-      - uses: actions/checkout@v4
+      - name: Check out durable staging branch
+        uses: actions/checkout@v4
         with:
           ref: feat/saga-wikipedia-first-20261020
+          path: staging
+          persist-credentials: true
+      - name: Check out current production branch
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          path: production
           persist-credentials: true
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
           cache: npm
+          cache-dependency-path: staging/package-lock.json
       - run: npm ci
-      - name: Generate and audit a bounded free-tier batch
+        working-directory: staging
+      - name: Prepare and edit a bounded free-tier batch
+        working-directory: staging
         env:
           SAGA_WIKI_GEMINI_KEY: ${{ secrets.SAGA_IMAGE_TEST_API_KEY }}
           SAGA_WIKI_FREE_TIER_CONFIRMED: '1'
           SAGA_WIKI_CHECKPOINT_BRANCH: feat/saga-wikipedia-first-20261020
+          SAGA_WIKI_MODEL: gemini-2.5-flash-lite
         run: node scripts/wiki-pipeline.mjs batch --max-calls=8 --max-candidates=24
-      - name: Verify before publication
+      - name: Verify staged stories and Reader
+        working-directory: staging
         run: |
           npm test
           node scripts/lore-verify.mjs
           npm run build
           git diff --check
-      - name: Preserve review reports
+      - run: npm ci
+        working-directory: production
+      - name: Promote only new verified Wiki stories
+        working-directory: staging
+        run: node scripts/wiki-promote.mjs ../production
+      - name: Verify production catalog before commit
+        working-directory: production
+        run: |
+          node scripts/lore-verify.mjs
+          npm run build
+          git diff --check
+      - name: Publish catalog to production branch
+        working-directory: production
+        run: |
+          git config user.name saga-wiki-publisher
+          git config user.email saga-wiki-publisher@users.noreply.github.com
+          git add public/wiki-reader/
+          if git diff --cached --quiet; then
+            echo 'No new approved Wiki stories'
+          else
+            git diff --cached --check
+            git commit -m 'SAGA: publish verified Wikipedia stories'
+            git push origin HEAD:main
+          fi
+      - name: Preserve diagnostic reports
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: saga-wiki-collection-${{ github.run_id }}
-          path: reports/saga-wiki-local/
+          path: staging/reports/saga-wiki-local/
           if-no-files-found: ignore
           retention-days: 7

@@ -9,6 +9,10 @@ const hash=value=>createHash('sha256').update(JSON.stringify(value)).digest('hex
 const catalogHash=(entries,stories)=>hash({entries:entries.map(row=>[row.id,row.shard,row.category]),
  stories:stories.map(story=>hash(story))})
 const levels=['A1-A2','B1-B2','C1-C2']
+export const WIKI_TARGET_STORIES=50
+export const WIKI_TARGET_PER_TOPIC=5
+export const wikiTargetMet=(total,counts)=>total>=WIKI_TARGET_STORIES&&
+ WIKI_TOPICS.every(topic=>(counts?.[topic]||0)>=WIKI_TARGET_PER_TOPIC)
 const exists=async file=>fs.access(file).then(()=>true,()=>false)
 const nonempty=value=>typeof value==='string'&&value.trim().length>0
 
@@ -119,15 +123,30 @@ export async function appendWikiStories(base,newStories,{now=new Date()}={}){
  }
  const counts=Object.fromEntries(WIKI_TOPICS.map(topic=>[topic,0]))
  for(const entry of entries)counts[entry.category]++
- const ready=entries.length>=200&&WIKI_TOPICS.every(topic=>counts[topic]>=15)
+ const ready=entries.length>0
+ const targetMet=wikiTargetMet(entries.length,counts)
  const contentHash=catalogHash(entries,[...before.stories,...accepted])
  const indexName=`catalog-index-${contentHash.slice(0,12)}.json`
  await fs.writeFile(path.join(before.dir,indexName),JSON.stringify({version:3,contentHash,total:entries.length,entries})+'\n',{flag:'wx'})
- const manifest={feedType:'wiki',editorialVersion:2,ready,total:entries.length,chunks:nextShard,
+ const manifest={feedType:'wiki',editorialVersion:2,ready,targetStories:WIKI_TARGET_STORIES,
+  targetPerTopic:WIKI_TARGET_PER_TOPIC,targetMet,total:entries.length,chunks:nextShard,
   withVerifiedPhoto:entries.length,byTopic:counts,contentHash,catalogIndex:indexName,catalogIndexVersion:3,
   updatedAt:now.toISOString(),licenseNotice:'Wikipedia text adaptations: CC BY-SA 4.0; each embedded image has separate credit and rights.'}
  const stage=path.join(before.dir,'manifest.json.tmp-'+process.pid)
  await fs.writeFile(stage,JSON.stringify(manifest,null,2)+'\n')
  await fs.rename(stage,path.join(before.dir,'manifest.json'))
  return {added:accepted.length,total:entries.length,ready,byTopic:counts}
+}
+
+/** Copy only new, fully verified stories into the production catalog. */
+export async function promoteWikiCatalog(sourceRoot,targetRoot){
+ const source=await readWikiCatalog(sourceRoot),target=await readWikiCatalog(targetRoot)
+ const existing=new Map(target.stories.map(story=>[story.sourcePageId,story]))
+ const additions=[]
+ for(const story of source.stories){
+  const prior=existing.get(story.sourcePageId)
+  if(prior){if(hash(prior)!==hash(story))throw Error(`Conflicting published Wiki story ${story.sourcePageId}`);continue}
+  additions.push(story)
+ }
+ return appendWikiStories(targetRoot,additions)
 }

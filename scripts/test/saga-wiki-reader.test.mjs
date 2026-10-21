@@ -22,10 +22,10 @@ function story(i){
   levelVariants:Object.fromEntries(['A1-A2','B1-B2','C1-C2'].map(level=>[level,{headline:`${level} Page ${i}`,pages}]))}
 }
 
-test('Wiki reader release requires 200 verified covers and all ten topic quotas',()=>{
+test('Wiki reader opens the first verified story while keeping photo integrity',()=>{
  assert.equal(eligibleManifest(manifest,'wiki-reader'),true)
- assert.equal(eligibleManifest({...manifest,total:199},'wiki-reader'),false)
- assert.equal(eligibleManifest({...manifest,byTopic:{...byTopic,Sports:14}},'wiki-reader'),false)
+ assert.equal(eligibleManifest({...manifest,count:1,total:1,withVerifiedPhoto:1,byTopic:{'Science & Technology':1}},'wiki-reader'),true)
+ assert.equal(eligibleManifest({...manifest,total:0},'wiki-reader'),false)
  assert.equal(eligibleManifest({...manifest,withVerifiedPhoto:199},'wiki-reader'),false)
 })
 
@@ -57,6 +57,18 @@ test('after the whole Wiki catalog is seen, same-day stories do not repeat',()=>
  const seenAt=new Map(entries.map(entry=>[entry.id,now-60000]))
  assert.deepEqual(pickGlobalCandidates(entries,{seen,seenAt,avoidSameDay:true,now}).items,[])
  assert.ok(pickGlobalCandidates(entries,{seen,seenAt,avoidSameDay:true,now:now+86400000}).items.length>0)
+})
+
+test('a one-story Wiki catalog can be read again immediately at the feed boundary',async()=>{
+ const entry=entries[0],single={...manifest,count:1,total:1,withVerifiedPhoto:1,byTopic:{[entry.category]:1}}
+ const fetchImpl=async url=>({ok:true,json:async()=>url.includes('catalog-index')?
+  {version:3,contentHash:'abc',total:1,entries:[entry]}:[story(0)]})
+ const catalog=await refreshCatalog({fetchImpl,baseUrl:'/',pools:[],fetchManifestImpl:async()=>single})
+ const loaded=new Set([entry.id])
+ const result=await refillCatalog({fetchImpl,baseUrl:'/',pools:catalog.pools,seen:new Set([entry.id]),loaded,
+  seenAt:new Map([[entry.id,Date.now()]]),target:1,urgent:true})
+ assert.equal(result.items.length,1)
+ assert.equal(result.items[0].sourceUrl,entry.id)
 })
 
 test('a larger Wiki release adds only new story IDs while preserving the active queue',async()=>{

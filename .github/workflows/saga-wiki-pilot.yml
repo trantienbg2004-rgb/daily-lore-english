@@ -31,13 +31,14 @@ jobs:
         env:
           SAGA_WIKI_GEMINI_KEY: ${{ secrets.SAGA_IMAGE_TEST_API_KEY }}
           SAGA_WIKI_FREE_TIER_CONFIRMED: '1'
+          SAGA_WIKI_MODEL: gemini-2.5-flash-lite
           SAGA_WIKI_CHECKPOINT_BRANCH: ${{ github.ref_name }}
           SAGA_WIKI_BATCH_MODE: ${{ contains(github.event.head_commit.message, '[wiki-batch-once]') }}
         run: |
           if [ "$SAGA_WIKI_BATCH_MODE" = 'true' ]; then
             node scripts/wiki-pipeline.mjs batch --max-calls=8 --max-candidates=24
           else
-            node scripts/wiki-pipeline.mjs batch --max-calls=2 --max-candidates=1 --page-id=89732
+            node scripts/wiki-pipeline.mjs batch --max-calls=2 --max-candidates=1 --page-id=45633
           fi
       - name: Check result before staging on development branch
         run: |

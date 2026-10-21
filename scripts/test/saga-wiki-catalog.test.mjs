@@ -3,7 +3,7 @@ import assert from 'node:assert/strict'
 import fs from 'node:fs/promises'
 import os from 'node:os'
 import path from 'node:path'
-import {makeWikiStory,validateWikiStory,appendWikiStories,readWikiCatalog} from '../wiki/catalog.mjs'
+import {makeWikiStory,validateWikiStory,appendWikiStories,readWikiCatalog,promoteWikiCatalog} from '../wiki/catalog.mjs'
 
 function story(id){
  const source={pageId:id,sourceTitle:'Silk Road '+id,sourceUrl:`https://en.wikipedia.org/wiki/Silk_Road_${id}`,
@@ -16,7 +16,7 @@ function story(id){
  const variants=Object.fromEntries(['A1-A2','B1-B2','C1-C2'].map((level,index)=>[level,{headline:`${['Simple','Clear','Analytical'][index]} Silk Road Story ${id}`,
   pages:Array.from({length:6},(_,page)=>({text:`Silk Road ${id} connected different trading cities in Eurasia during a long historical period. This is complete factual test text on page ${page}.`,
    evidenceIds:['P1'],image:page===0?image:'',caption:page===0?'Silk Road routes':'',...(page===0?{imageProvenance:provenance}:{})}))}]))
- return makeWikiStory({source,topic:'Economy',draft:{variants},photos:[{url:image}],evidence:[{id:'P1',hash:'a'.repeat(64),excerpt:'Silk Road routes'}]})
+ return makeWikiStory({source,topic:'Economy',draft:{variants},photos:[{url:image}],evidence:[{id:'P1',hash:'a'.repeat(64),excerpt:'Silk Road routes'}],now:new Date('2026-10-20T00:00:00Z')})
 }
 
 test('Wiki stories keep pinned revisions, independent levels and individual photo credit',()=>{
@@ -38,9 +38,11 @@ test('versioned Wiki index commits only validated new articles and leaves news e
  try{
   const newsDir=path.join(base,'public','lore-reader');await fs.mkdir(newsDir,{recursive:true});await fs.writeFile(path.join(newsDir,'keep.json'),'news archive')
   const first=await appendWikiStories(base,[story(42)])
-  assert.equal(first.added,1);assert.equal(first.ready,false)
+  assert.equal(first.added,1);assert.equal(first.ready,true)
   const stored=await readWikiCatalog(base)
   assert.equal(stored.stories.length,1)
+  assert.equal(stored.manifest.targetStories,50)
+  assert.equal(stored.manifest.targetMet,false)
   assert.match(stored.manifest.catalogIndex,/^catalog-index-[0-9a-f]{12}\.json$/)
   const shardPath=path.join(base,'public','wiki-reader','0000.json')
   const original=await fs.readFile(shardPath,'utf8')
@@ -58,4 +60,24 @@ test('versioned Wiki index commits only validated new articles and leaves news e
   duplicateImage.levelVariants['C1-C2'].pages[0].image=duplicateImage.pages[0].image
   await assert.rejects(appendWikiStories(base,[duplicateImage]),/already belongs/)
  }finally{await fs.rm(base,{recursive:true,force:true})}
+})
+
+test('promotion resumes from the staging catalog without duplicating or replacing published stories',async()=>{
+ const staging=await fs.mkdtemp(path.join(os.tmpdir(),'saga-wiki-staging-'))
+ const production=await fs.mkdtemp(path.join(os.tmpdir(),'saga-wiki-production-'))
+ try{
+  await appendWikiStories(staging,[story(42),story(43)])
+  await appendWikiStories(production,[story(42)])
+  const first=await promoteWikiCatalog(staging,production)
+  assert.equal(first.added,1)
+  assert.equal(first.total,2)
+  assert.equal((await promoteWikiCatalog(staging,production)).added,0)
+  const changed=story(42);changed.levelVariants['A1-A2'].headline='Conflicting approved text'
+  const conflict=await fs.mkdtemp(path.join(os.tmpdir(),'saga-wiki-conflict-'))
+  try{
+   await appendWikiStories(conflict,[changed])
+   await assert.rejects(promoteWikiCatalog(conflict,production),/Conflicting published/)
+  }finally{await fs.rm(conflict,{recursive:true,force:true})}
+  assert.equal((await readWikiCatalog(production)).stories.length,2)
+ }finally{await fs.rm(staging,{recursive:true,force:true});await fs.rm(production,{recursive:true,force:true})}
 })

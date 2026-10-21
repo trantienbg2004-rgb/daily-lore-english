@@ -69,6 +69,19 @@ test('successive free-tier editorial requests respect the per-minute spacing',as
  assert.equal(calls,2);assert.equal(waited,5000)
 })
 
+test('only confirmed free-tier text models can be selected',async()=>{
+ let requested=''
+ const fetchImpl=async url=>{requested=url;return {ok:true,status:200,json:async()=>({
+  candidates:[{content:{parts:[{text:'{}'}]}}],usageMetadata:{promptTokenCount:1,candidatesTokenCount:1,totalTokenCount:2}})}}
+ await callFreeWikiGemini('prompt',{apiKey:'test-key',freeTierConfirmed:true,budget:{maxCalls:1},fetchImpl,
+  model:'gemini-2.5-flash-lite'})
+ assert.match(requested,/\/models\/gemini-2\.5-flash-lite:generateContent$/)
+ requested=''
+ await assert.rejects(callFreeWikiGemini('prompt',{apiKey:'test-key',freeTierConfirmed:true,budget:{maxCalls:1},fetchImpl,
+  model:'gemini-2.5-pro'}),/Unreviewed Gemini model/)
+ assert.equal(requested,'')
+})
+
 test('editorial audit rejects unsupported claims and malformed reviews',()=>{
  assert.equal(validateWikiAudit({accepted:true,issues:[]}).accepted,true)
  assert.equal(validateWikiAudit({accepted:false,issues:[{level:'C1-C2',page:4,

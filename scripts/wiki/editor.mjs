@@ -3,7 +3,8 @@
 import {createHash} from 'node:crypto'
 import {WIKI_TOPICS} from './discovery.mjs'
 
-const MODEL='gemini-3.1-flash-lite'
+const MODEL='gemini-2.5-flash-lite'
+const FREE_MODELS=new Set([MODEL,'gemini-3.1-flash-lite'])
 const MIN_REQUEST_SPACING_MS=5000
 const LEVELS=['A1-A2','B1-B2','C1-C2']
 const count=text=>String(text||'').trim().split(/\s+/).filter(Boolean).length
@@ -59,7 +60,7 @@ export async function callFreeWikiGemini(prompt,{apiKey,freeTierConfirmed=false,
  waitImpl=ms=>new Promise(resolve=>setTimeout(resolve,ms)),now=Date.now}={}){
  if(!freeTierConfirmed||!apiKey)throw new GeminiWikiPause('Free-tier project and key not confirmed')
  if(!budget||!Number.isSafeInteger(budget.maxCalls)||budget.maxCalls<1)throw new GeminiWikiPause('Free API call budget exhausted')
- if(model!==MODEL)throw new GeminiWikiPause('Unreviewed Gemini model blocked')
+ if(!FREE_MODELS.has(model))throw new GeminiWikiPause('Unreviewed Gemini model blocked')
  if((budget.usedCalls||0)>=budget.maxCalls)throw new GeminiWikiPause('Free API call budget exhausted')
  if(budget.circuitOpen)throw new GeminiWikiPause('Gemini circuit open',budget.circuitStatus)
  let response
@@ -228,7 +229,7 @@ export function wikiRepairPrompt(source,evidence,draft,errors){
  return `Repair ONLY the named English learning pages or headlines. Return JSON only: {"variants":{"A1-A2":{"pages":{"4":{"text":"...","evidenceIds":["P1"]}}}}}. Page keys are 1-based. For a page-count error return a complete 5-7 page array for that ONE level. Preserve all unaffected sentences VERBATIM and change only the faulty sentence or paragraph. Do not change any other level or page. Remove unsupported facts; never add a fact absent from the cited passages. Preserve 5-7 pages per level, 40-58 words on opening pages and 48-88 words on later pages. If a factual claim cannot be supported, rewrite that sentence using only direct evidence.\nTitle: ${source.sourceTitle}; revision: ${source.sourceRevisionId}\nErrors: ${JSON.stringify(errors)}\nTargets: ${JSON.stringify(targets)}\nPassages:\n${evidence.map(row=>`${row.id} [${row.heading}] ${row.text}`).join('\n\n')}\nCurrent targeted content:\n${JSON.stringify(Object.fromEntries(Object.keys(targets).map(level=>[level,draft.variants[level]])))}`
 }
 
-export async function generateWikiDraft({source,topic,apiKey,freeTierConfirmed=false,budget,fetchImpl=fetch,
+export async function generateWikiDraft({source,topic,apiKey,freeTierConfirmed=false,budget,fetchImpl=fetch,model=MODEL,
  waitImpl,now,draft=null,repairAttempts=0,savedEvidence=[],priorValidation=null,onDraft=async()=>{}}={}){
  let evidence=selectWikiEvidence(source)
  for(const row of savedEvidence){
@@ -238,7 +239,7 @@ export async function generateWikiDraft({source,topic,apiKey,freeTierConfirmed=f
   if(!original)throw Error('Pinned evidence passage changed')
   evidence.push({id:row.id,hash:row.hash,heading:original.heading||'Lead',text:original.text})
  }
- const options={apiKey,freeTierConfirmed,budget,fetchImpl,waitImpl,now}
+ const options={apiKey,freeTierConfirmed,budget,fetchImpl,waitImpl,now,model}
  let result=draft,usage=null,validation
  if(!result){
   const generated=await callFreeWikiGemini(wikiStoryPrompt(source,topic,evidence),options)

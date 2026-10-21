@@ -6,9 +6,8 @@ const WIKI_POOL='wiki-reader'
 export const REFRESH_INTERVAL_MS=3*60_000
 export function eligibleManifest(m,path){
  if(path===WIKI_POOL)return m?.ready===true&&m?.feedType==='wiki'&&m?.editorialVersion===2&&
-  Number.isInteger(m.count)&&m.count>=20&&m.total>=200&&m.withVerifiedPhoto===m.total&&
-  ['Politics','Economy','Conflict & Security','Society','Culture','Science & Technology',
-   'Environment','Health','History & Geography','Sports'].every(topic=>(m.byTopic?.[topic]||0)>=15)
+  Number.isInteger(m.count)&&m.count>=1&&Number.isInteger(m.total)&&m.total>=1&&
+  m.withVerifiedPhoto===m.total&&!!m.indexFile
  return false
 }
 async function getIndex(fetchImpl,baseUrl,path,manifest,now){
@@ -40,14 +39,17 @@ export async function refreshCatalog({fetchImpl,baseUrl,pools=[],now=Date.now(),
   if(old.has(WIKI_POOL)){next.push(old.get(WIKI_POOL));wikiReady=true;failures.push(`wiki-reader: ${error?.message||error}`)}
   else if(wikiDeclaredReady)return {pools:[],failures:[`wiki-reader: ${error?.message||error}`],newIds:[],hasAvailable:false,checkedAt:now}
  }
- if(!wikiReady&&!failures.length)failures.push('wiki-reader: approved 200-story release not ready')
+ if(!wikiReady&&!failures.length)failures.push('wiki-reader: no approved Wikipedia stories yet')
  return {pools:next,failures,newIds,hasAvailable:wikiReady,checkedAt:now}
 }
-async function refillGlobal({pool,fetchImpl,baseUrl,seen,loaded,seenAt,profile,recent,target,random,maxShards=10,newsOnly=false,priorityIds=new Set()}){
+async function refillGlobal({pool,fetchImpl,baseUrl,seen,loaded,seenAt,profile,recent,target,random,maxShards=10,newsOnly=false,priorityIds=new Set(),allowRepeat=false}){
  const type=pool.path===WIKI_POOL?'wiki':newsOnly||pool.manifest.newsOnly?'news':null
  const candidates=type?pool.index.filter(e=>e.contentType===type):pool.index
- const selected=pickGlobalCandidates(candidates,{seen,loaded,seenAt,profile,recent,count:Math.max(target*3,90),random,
-  avoidSameDay:pool.path===WIKI_POOL})
+ // Once every approved story has been read, release loaded IDs for the next
+ // cycle. This matters when the first release contains only one story.
+ if(allowRepeat&&pool.path===WIKI_POOL&&candidates.length&&candidates.every(e=>seen.has(e.id))&&
+    candidates.every(e=>loaded.has(e.id)))for(const entry of candidates)loaded.delete(entry.id)
+ const selected=pickGlobalCandidates(candidates,{seen,loaded,seenAt,profile,recent,count:Math.max(target*3,90),random})
  const priority=candidates.filter(e=>priorityIds.has(e.id)&&!seen.has(e.id)&&!loaded.has(e.id))
  const selection=[...priority,...selected.items.filter(e=>!priorityIds.has(e.id))]
  const chosen=[],used=new Set()
@@ -83,7 +85,7 @@ export async function refillCatalog({fetchImpl,baseUrl,pools,seen=new Set(),load
  const updated=pools.map(p=>({...p})),items=[],errors=[]
  for(const pool of updated){
   if(pool.index){
-   const result=await refillGlobal({pool,fetchImpl,baseUrl,seen,loaded,seenAt,profile,recent,target:target-items.length,random,maxShards:Math.max(urgent?3:10,priorityIds.size),newsOnly,priorityIds})
+   const result=await refillGlobal({pool,fetchImpl,baseUrl,seen,loaded,seenAt,profile,recent,target:target-items.length,random,maxShards:Math.max(urgent?3:10,priorityIds.size),newsOnly,priorityIds,allowRepeat:urgent})
    items.push(...result.items);errors.push(...result.errors)
    pool.done=result.done;pool.fallback=result.fallback
    continue
