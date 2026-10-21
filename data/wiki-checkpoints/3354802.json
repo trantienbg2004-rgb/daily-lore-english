@@ -2,9 +2,213 @@
   "pageId": 3354802,
   "title": "Antifeminism",
   "topic": "Society",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1380873257,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380873257",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-21T08:12:17.980Z"
+  "reason": "2 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Antisuffragists.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6f/Antisuffragists.jpg/960px-Antisuffragists.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Antisuffragists.jpg",
+        "caption": "American antisuffragists in the early 20th century",
+        "alt": "",
+        "description": "Gegner des Frauenwahlrechts in den USA. / Antisuffragists in the USA.",
+        "date": "circa 1911date QS:P,+1911-00-00T00:00:00Z/9,P1480,Q5727902date QS:P,+1911-00-00T00:00:00Z/9,P1480,Q5",
+        "section": "United States",
+        "position": 0,
+        "provenance": {
+          "credit": "Harris & Ewing. User Katharina on de.wikipedia",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Antisuffragists.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Antifeminism",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380873257",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Feminazi STOP!.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/73/Feminazi_STOP%21.jpg/960px-Feminazi_STOP%21.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Feminazi STOP!.jpg",
+        "caption": "A group of Polish ultranationalists protest an International Women's Day march in Warsaw, 2010",
+        "alt": "",
+        "description": "A group of Polish extremist nationalists protest an International Women's Day march in Warsaw, 2010. They hold extremist flags, wear black and hold signs that read \"Feminazi stop\" with the venus symbol inside a Nazi flag.",
+        "date": "2010-03-07 14:09",
+        "section": "21st century",
+        "position": 1,
+        "provenance": {
+          "credit": "Kuba Bożanowski from Warsaw, Poland",
+          "license": "CC BY 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Feminazi_STOP!.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Antifeminism",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380873257",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:STOP ERA.gif"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "435416fcce2fd7958096970da833a434cab602abda08261b360b32103f66e318",
+      "heading": "Lead",
+      "excerpt": "Antifeminism or anti-feminism is opposition to feminism. In the late 19th century and early 20th century, antifeminists opposed particular p",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380873257"
+    },
+    {
+      "id": "P2",
+      "hash": "9f7428660128f8b98cdfc952b5a40cab90ba701aeceb119748794eae2b6dfaad",
+      "heading": "Lead",
+      "excerpt": "In the early 21st century, some antifeminists see their ideology as a response to perceived misandry, holding feminism responsible for sever",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380873257"
+    },
+    {
+      "id": "P3",
+      "hash": "47aa23636099b4e7b7350fe01112710ff3c0df8b8c2d3619527145ff2dd67842",
+      "heading": "Definition",
+      "excerpt": "Canadian sociologists Melissa Blais and Francis Dupuis-Déri write that antifeminist thought has primarily taken the form of masculinism, in ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380873257"
+    },
+    {
+      "id": "P4",
+      "hash": "ab1414836968ca4c7e8ae77639e39cf22bfd7811a7b822d0d32fd22c6acf9bb2",
+      "heading": "Definition",
+      "excerpt": "The term antifeminist is also used to describe public female figures, some of whom, such as Naomi Wolf, Camille Paglia, and Katie Roiphe, de",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380873257"
+    },
+    {
+      "id": "P5",
+      "hash": "3a695735785a7af0fe853096936bbeb67a1f01bb7318a4af16a7682766e72c0e",
+      "heading": "Definition",
+      "excerpt": "The meaning of antifeminism has varied across time and cultures, and antifeminism attracts both men and women. Some women, like those in the",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380873257"
+    },
+    {
+      "id": "P6",
+      "hash": "303f70cef36d619e180fe4011be94c6fe1ea77c09330b246a7510f2e483595f3",
+      "heading": "Ideology",
+      "excerpt": "Some antifeminists argue that feminism, despite claiming to advocate for equality, ignores rights issues unique to men. They believe that th",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380873257"
+    },
+    {
+      "id": "P7",
+      "hash": "d946e360e526520f444832cbd8b07b188e427e805b029ea51cd37420ec4b1477",
+      "heading": "19th century",
+      "excerpt": "The \"women's movement\" began in 1848, most famously articulated by Elizabeth Cady Stanton demanding voting rights, joined by Lucy Stone, Sus",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380873257"
+    },
+    {
+      "id": "P8",
+      "hash": "ddfcfa42785188a9e733efd4d019fcff3e569e122c5f762b1a5bcc2d1764fb2b",
+      "heading": "Early 20th century",
+      "excerpt": "Women's suffrage was achieved in the US in 1920, and early 20th-century antifeminism was primarily focused on fighting this. Suffragists sco",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380873257"
+    },
+    {
+      "id": "P9",
+      "hash": "fc849c338dabf4e7169428815d7679d4864a4e7a67d0ffb04a737d4628abecfe",
+      "heading": "Mid 20th century",
+      "excerpt": "In 1951, two journalists published Washington Confidential. The novel claimed that Communist leaders used their men and women to recruit a v",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380873257"
+    },
+    {
+      "id": "P10",
+      "hash": "a25153382e1855bdc182ed29f9a0e11b865735343f32d0e71209be7b73b6454c",
+      "heading": "Lead",
+      "excerpt": "The Equal Rights Amendment (ERA) is a perennially proposed amendment to the United States Constitution that would grant equal rights and opp",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380873257"
+    },
+    {
+      "id": "P11",
+      "hash": "d97ec9a88513a88097b2754c1d3a5961509e1333b4c9ff4f949c6dfdde0dd12d",
+      "heading": "21st century",
+      "excerpt": "Some current antifeminist practices can be traced back to the rise of the Christian right in the late 1970s. Antifeminist internet communiti",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380873257"
+    },
+    {
+      "id": "P12",
+      "hash": "1dd7ae2c348dc787286506a000c886859a76e2a35e919e4c536b26e62311c25f",
+      "heading": "Germany",
+      "excerpt": "In March 2019, the Verein Deutsche Sprache [de] (\"German Language Association\"), an advocacy group for German language purism, organized a p",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380873257"
+    },
+    {
+      "id": "P13",
+      "hash": "55e54a3fb5cf4238f5c111c5067c3819f35870b446e3e38817bc28cf6c5625f5",
+      "heading": "Serbia",
+      "excerpt": "In April 2022, far-right political party Leviathan, with a significant public profile of almost 300,000 Facebook followers, missed out on a ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380873257"
+    },
+    {
+      "id": "P14",
+      "hash": "cf2a90be7f130de7b5fe9605742c4c4bc05451176aa196fe7fbd643fbde61e1d",
+      "heading": "South Korea",
+      "excerpt": "Disgruntled young men have become vocal critics of feminism and feminist women who speak out in public in the recent years. Yoon Suk-yeol na",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380873257"
+    },
+    {
+      "id": "P15",
+      "hash": "74f66dc275843416f2ce289c5729bc0de390c0088e9de5e23ecf54093a680e30",
+      "heading": "Organizations",
+      "excerpt": "Founded in the U.S. by Phyllis Schlafly in 1972, Stop ERA, now known as \"Eagle Forum\", lobbied successfully to block the passage of the Equa",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380873257"
+    },
+    {
+      "id": "P16",
+      "hash": "903ec094d8c2ea5c5394e2aa421c46e9ba62a7bd3fa24ab1d9e0024166ca3943",
+      "heading": "Explanatory theories",
+      "excerpt": "According to Amherst College sociology professor Jerome L. Himmelstein, antifeminism is rooted in social stigmas against feminism and is thu",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380873257"
+    },
+    {
+      "id": "P17",
+      "hash": "f562208c217b5a9affd0b48b496927a415294fe6c8324922d63dceba2b32204f",
+      "heading": "Implicit feminism",
+      "excerpt": "University of Illinois at Chicago sociology professor Danielle Giffort argues that the stigma against feminism created by antifeminists has ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380873257"
+    },
+    {
+      "id": "P18",
+      "hash": "4929547502d236e47a5ff9d749ffeacc2e6be5977ac793bd0afbaf8ce8fbc937",
+      "heading": "Connections to far-right politics and extremism",
+      "excerpt": "Antifeminism and male supremacist beliefs are consistently identified as an underlying motivation for far-right politics. The rise of the Eu",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380873257"
+    },
+    {
+      "id": "P19",
+      "hash": "d6c97fd41caf3deb9df17a8ba716499c774b31cf741ea6afc43481b5fc6effbf",
+      "heading": "Role of antifeminist women in politics",
+      "excerpt": "Anti-feminist conservative family and migration policies are pursued by woman-led governments themselves, together with right-wing populist ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380873257"
+    },
+    {
+      "id": "P20",
+      "hash": "166acf5b70e917a665fd4ae7d0b95768df4d040f95617f2c4f9bed5f97125a1a",
+      "heading": "Definition",
+      "excerpt": "Men's studies scholar Michael Kimmel defines antifeminism as \"the opposition to women's equality\". He says that antifeminists oppose \"women'",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380873257"
+    },
+    {
+      "id": "P21",
+      "hash": "9b2b208bb06ced24269788f5911baa5241943024044fe5767d887f40d870bc76",
+      "heading": "Ideology",
+      "excerpt": "Antifeminism might be motivated by the belief that feminist theories of patriarchy and disadvantages suffered by women in society are incorr",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380873257"
+    }
+  ],
+  "updatedAt": "2026-10-21T08:12:19.450Z"
 }
