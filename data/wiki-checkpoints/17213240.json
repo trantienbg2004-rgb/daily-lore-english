@@ -2,9 +2,177 @@
   "pageId": 17213240,
   "title": "Treaty rights",
   "topic": "Conflict & Security",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1373455290,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373455290",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-21T01:40:17.306Z"
+  "reason": "1 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:00 5891 Monument Valley. - Navajo Indian Reservation.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/24/00_5891_Monument_Valley._-_Navajo_Indian_Reservation.jpg/960px-00_5891_Monument_Valley._-_Navajo_Indian_Reservation.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:00 5891 Monument Valley. - Navajo Indian Reservation.jpg",
+        "caption": "Navajo Reservation in Utah.",
+        "alt": "",
+        "description": "Monument Valley ist eine Navajo Indian Reservation in einem Gebiet an den Grenzen der Bundesstaaten Arizon (NO) und Utha (SO). Die Region ist bekannt für seine bis zu 600 Meter hohen monolithischen Sandsteingebilden.",
+        "date": "2004-02-25 10:23:04",
+        "section": "United States",
+        "position": 0,
+        "provenance": {
+          "credit": "W. Bulach",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:00_5891_Monument_Valley._-_Navajo_Indian_Reservation.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Treaty_rights",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373455290",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "46624add6ba6b8d97b30dd9af5130d7545b6d265c71585cebd927fd6b60f7ce6",
+      "heading": "Lead",
+      "excerpt": "In Australia, Canada, New Zealand and the United States the term treaty rights specifically refers to rights for indigenous peoples enumerat",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373455290"
+    },
+    {
+      "id": "P2",
+      "hash": "af44363c15b2a8ce2e3420d39e7101e046423b9cae7d69a90c226f78ef8a8126",
+      "heading": "Lead",
+      "excerpt": "Exactly who is indigenous is understood differently across these countries, and not all indigenous groups have signed treaties. Therefore th",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373455290"
+    },
+    {
+      "id": "P3",
+      "hash": "30363360b3abcbb430f87e5890bf2d9fc5251cd5946f4df9f67141bcc0fbe4de",
+      "heading": "Lead",
+      "excerpt": "Treaty rights are not the only rights claimed by indigenous peoples. Indigenous people claim inherent rights to self-determination, which im",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373455290"
+    },
+    {
+      "id": "P4",
+      "hash": "4e6de3b39af472761bbd47d498332749a7c222190f043a8cc9bda4ced11da029",
+      "heading": "Lead",
+      "excerpt": "Critics of the treaty relationship commonly claim that a state may grant special rights to indigenous people because of their racial status.",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373455290"
+    },
+    {
+      "id": "P5",
+      "hash": "e03ac5c9456659315286b2760bcd82ba503080ac0e83eafccad19ae340765b47",
+      "heading": "Historical background and legal theory",
+      "excerpt": "The early treaties between European colonial powers and the various indigenous peoples of the Americas were generally similar in manner to m",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373455290"
+    },
+    {
+      "id": "P6",
+      "hash": "fdfa78c2c304cdaed5470dd2abfe76785d154197e52002706f7352bba6778705",
+      "heading": "Continuation to present",
+      "excerpt": "Because Article Six of the United States Constitution declares treaties to be the supreme law of the land, treaties are just as valid today ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373455290"
+    },
+    {
+      "id": "P7",
+      "hash": "48c62345450d6efd301e9def67089481aa16429978fd63aa9b60c725131895f4",
+      "heading": "United States",
+      "excerpt": "Between the years 1778 and 1868, there were 373 treaties between the United States government and various Native American groups, including ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373455290"
+    },
+    {
+      "id": "P8",
+      "hash": "4d23b28817d0c8b0eb857b66a7bb49ce32b4dbb9e4f7b9e2fb8411e503b8ed92",
+      "heading": "Ex Parte Crow Dog",
+      "excerpt": "In this case, Crow Dog, a Native American, shot and killed another Native American on a reservation. The reservation police turned him over ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373455290"
+    },
+    {
+      "id": "P9",
+      "hash": "ad41d24bc5994faf82b684cd0818d0d30d5f28909aa9edadbdb9f0479cfbedaa",
+      "heading": "Williams v. Lee",
+      "excerpt": "As Native Americans became more integrated into American culture, more non-Native Americans began working and living on the reservations. Th",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373455290"
+    },
+    {
+      "id": "P10",
+      "hash": "c4ecad16a8ff539bebe5ff1ef46619b76b2a55b6f89b463e56335e307c168613",
+      "heading": "Oliphant v. Suquamish",
+      "excerpt": "The Supreme Court case Oliphant v. Suquamish attempted to settle this issue once and for all. This case centered around the question of if N",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373455290"
+    },
+    {
+      "id": "P11",
+      "hash": "180db64c0080e79320d903890fdc0d336f7bfab7fed29fc0de46388c09254557",
+      "heading": "Canada",
+      "excerpt": "Treaties are used to establish the relationship between Indigenous peoples and the Canadian Government and define the rights Indigenous peop",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373455290"
+    },
+    {
+      "id": "P12",
+      "hash": "e4f05a6d91dfb0cc5e18b9d4adc830c30db569e382a17018fbb1a4f0cd6281a9",
+      "heading": "Section 35",
+      "excerpt": "Section 35 recognizes and affirms the treaty rights and Aboriginal rights of the Indigenous peoples in Canada. The Constitution does not def",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373455290"
+    },
+    {
+      "id": "P13",
+      "hash": "9aefc1e9bc0b1fd62f393d530ca475a77e0da0c068aae453c439306ba4d777d7",
+      "heading": "Significant court cases",
+      "excerpt": "Some inherent Indigenous rights are not recognized by the Crown, as the Constitution does not define specifics. The Canadian government stip",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373455290"
+    },
+    {
+      "id": "P14",
+      "hash": "9ba295a11aca9ff6ec60f20d05ccc3e4f4b22de3315d1b8a0a75d020ab69dab3",
+      "heading": "R v Van der Peet",
+      "excerpt": "R v Van der Peet (1996) was pivotal in further defining Aboriginal rights in Section 35. It established criteria that are used to determine ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373455290"
+    },
+    {
+      "id": "P15",
+      "hash": "3df6c0618260a19d783ced9264f6ac003706ed8c2e3a6d44c50c947da81d4f42",
+      "heading": "R v Powley",
+      "excerpt": "R v Powley (2003) was the first major Aboriginal rights case concerning Métis peoples. It created “the Powley Test\", which addressed the cri",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373455290"
+    },
+    {
+      "id": "P16",
+      "hash": "1ce0ebc15dc8dff41bdfad6e8421a793645aa31b7cab9918058c7fdb0c0daa97",
+      "heading": "Violations",
+      "excerpt": "Many Native nations have reserved rights to hunt and fish in their accustomed places, which are often lands that were given up at the treaty",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373455290"
+    },
+    {
+      "id": "P17",
+      "hash": "d537c757f87ca2cff478a651356aaf46023878826a9d841d25448b409a09cf25",
+      "heading": "Spearfishing in Northern Wisconsin",
+      "excerpt": "Beginning in the 1980s and extending into the early 1990s, Northern Wisconsin was rife in protests against Ojibwe spearfishing. The Voigt de",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373455290"
+    },
+    {
+      "id": "P18",
+      "hash": "aba8c87c34b907095406b6513fbb126f9e5113ba1be6451c30cc9f3441c10ef8",
+      "heading": "Whaling in Washington",
+      "excerpt": "The right to hunt North Pacific gray whales has been a contentious issue for the Makah people in Washington state. The Makah people ceded mu",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373455290"
+    },
+    {
+      "id": "P19",
+      "hash": "471d385589956e1c7d0995df69db176cf96c84849f0ce21c2e80ae3796fc1dad",
+      "heading": "Annexation of Hawaii",
+      "excerpt": "Throughout the 19th century, the United States made several treaties with the then Kingdom of Hawaii, the last being in 1887. These treaties",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373455290"
+    },
+    {
+      "id": "P20",
+      "hash": "7839e63d44348d138a5add517399d66c2b2a16196e4e3e7c944b1e809c203fef",
+      "heading": "Dakota Access Pipeline",
+      "excerpt": "The Lakota people of Standing Rock reservation in North and South Dakota believe that the Dakota Access Pipeline (DAPL), which runs near the",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373455290"
+    }
+  ],
+  "updatedAt": "2026-10-21T01:40:18.566Z"
 }
