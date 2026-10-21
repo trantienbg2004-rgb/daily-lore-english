@@ -2,9 +2,201 @@
   "pageId": 2508128,
   "title": "Dvārakā–Kamboja route",
   "topic": "Economy",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1381077534,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381077534",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-21T13:32:41.738Z"
+  "reason": "1 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Bundesarchiv Bild 135-S-04-02-18, Tibetexpedition, Landschaftsaufnahme mit Karawane.jpg",
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/e/e6/Bundesarchiv_Bild_135-S-04-02-18%2C_Tibetexpedition%2C_Landschaftsaufnahme_mit_Karawane.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "fileTitle": "File:Bundesarchiv Bild 135-S-04-02-18, Tibetexpedition, Landschaftsaufnahme mit Karawane.jpg",
+        "caption": "A horse caravan.",
+        "alt": "",
+        "description": "For documentary purposes the German Federal Archive often retained the original image captions, which may be erroneous, biased, obsolete or politically extreme. Doptra Steppe zwischen Kampa-Dzong und Doptra For documentary purposes the German Federal Archive often retained the original image captions, which may be erroneous, biased, obsolete or politically extreme. Doptra Steppe zwischen Kampa-Dzong und DoptraFor documentary purposes the German Federal Archive often retained the original image captions, which may be erroneous, biased, obsolete ",
+        "date": "1938date QS:P571,+1938-00-00T00:00:00Z/9date QS:P571,+1938-00-00T00:00:00Z/9",
+        "section": "The route",
+        "position": 0,
+        "provenance": {
+          "credit": "Ernst Schäfer",
+          "license": "CC BY-SA 3.0 de",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/de/deed.en",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Bundesarchiv_Bild_135-S-04-02-18,_Tibetexpedition,_Landschaftsaufnahme_mit_Karawane.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Dv%C4%81rak%C4%81%E2%80%93Kamboja_route",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381077534",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Lapis.elephant.800pix.060203.jpg"
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Denario di A. Postumio Albinio con le statue dei dioscuri.jpg"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "7d977842ae1c123544844e3d217349794dc0022b3b5d6d915ea624e17fa3b804",
+      "heading": "Lead",
+      "excerpt": "The Dvārakā–Kamboja route is an ancient land trade route that was an important branch of the Silk Road during antiquity and the early mediev",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381077534"
+    },
+    {
+      "id": "P2",
+      "hash": "acbeebdc72805ca87611a02f844da3ee6f2f17a66b04030e55a417992610ed1d",
+      "heading": "The route",
+      "excerpt": "The Kamboja–Dvārakā trade route began at the seaport of Dvārakā. It passed through the Anarta region to Madhyamika, a city near Chittor. Sou",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381077534"
+    },
+    {
+      "id": "P3",
+      "hash": "712d107a2af8d72c61a50ab75ab2e41446788a86294e61beac8e3d87255f3bb4",
+      "heading": "The route",
+      "excerpt": "From Pushkalavati, the Kamboja-Dvārakā and Uttarapatha routes ran together to Bahlika through Kabul and Bamyan. At Bahlika, the road turned ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381077534"
+    },
+    {
+      "id": "P4",
+      "hash": "34b502476a2254e8c139e18dee4e78591d0b7f3cd48164a4188e0415d4c7e98c",
+      "heading": "Land trade",
+      "excerpt": "Both the historical record and archaeological evidence show that the ancient kingdoms in the northwest (Gandhāra and Kamboja) had economic a",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381077534"
+    },
+    {
+      "id": "P5",
+      "hash": "5db20fa77e1fac493ae8aade1bbce32aefb80efb1e9a1e4f16c696ed4cda9c4d",
+      "heading": "Archaeological evidence",
+      "excerpt": "Numerous precious objects discovered in excavations in Afghanistan, at Bamyan and Begram and Pakistan at Taxila, bear evidence to a close tr",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381077534"
+    },
+    {
+      "id": "P6",
+      "hash": "d994dc70784dec59a95e7491a1c88f6f154775dbe404a38261d56e53d2ccf337",
+      "heading": "The seaport and international trade",
+      "excerpt": "From the port of Dvārakā at the terminus of the Kamboja–Dvārakā Route, traders connected with sea trading routes to exchange goods as far we",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381077534"
+    },
+    {
+      "id": "P7",
+      "hash": "b8a851e098bdc4aa9706285440491e8dd3ec73343aad62cf0f6478886cffecd5",
+      "heading": "Historical records: western sea trade",
+      "excerpt": "The sea trade from the southern end of the Kamboja–Dvārakā Route to the west is documented in Greek, Buddhist and Jain records:",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381077534"
+    },
+    {
+      "id": "P8",
+      "hash": "6b0774d4091d770949c9714de0c8124fc387c21e5bcf61cf597548271c8afbf8",
+      "heading": "Archaeological evidence: western sea trade",
+      "excerpt": "There is good archaeological evidence of Roman trade goods in the first two centuries CE reaching Kamboja and Bactria through the Gujarati p",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381077534"
+    },
+    {
+      "id": "P9",
+      "hash": "97f0c554e8fd20dfaa2a949d75fd2a606e7938ebf155ecc8859697e951794e10",
+      "heading": "Historical records: eastern sea trade",
+      "excerpt": "The eastern and southern sea trade from the ports at the southern terminus of the Kamboja–Dvārakā Route is described in Buddhist, Jain and S",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381077534"
+    },
+    {
+      "id": "P10",
+      "hash": "d81202937186715f8aef0d8ed2c59bb5c5c8885a6cbc8cb82070bc57e148dfe8",
+      "heading": "Archaeological evidence: eastern sea trade",
+      "excerpt": "Archaeological digs in Sri Lanka have turned up coins, beads and intaglios from Bactria and Afghanistan. A fragment of a Gandhara Buddha sta",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381077534"
+    },
+    {
+      "id": "P11",
+      "hash": "1c0aceacb419d139b1939a2dad0b5981200f8ad3a7f676b7e2eb16b5bcf0397d",
+      "heading": "Facts in the original Pali sources",
+      "excerpt": "According to Malalasekara, in the entry 'Kamboja' in Dictionary of Pali Proper Names: 'The country was evidently on one of the great caravan",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381077534"
+    },
+    {
+      "id": "P12",
+      "hash": "cf3951d5fbdae950606c73380db050969f43c171ad4242e3ee22b2963088bc91",
+      "heading": "Archaeological evidence",
+      "excerpt": "Because archaeological digs in Gujarat have also found ancient ports, the Kamboja–Dvārakā Route is viewed as the logical corridor for those ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381077534"
+    },
+    {
+      "id": "P13",
+      "hash": "ffcb5d54efe5315cd704e5905373daa1eecec9fa26302cb9ce09bc3bd846dc9b",
+      "heading": "The seaport and international trade",
+      "excerpt": "Dvārakā was, however, not the only port at the route's terminus. Perhaps more important was Barygaza or Bharukaccha (modern Bharuch, located",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381077534"
+    },
+    {
+      "id": "P14",
+      "hash": "657ebc388dd5a7524044a674a133f2ee86d0f3823c489a097a505e404938292f",
+      "heading": "The seaport and international trade",
+      "excerpt": "Horse dealers from north-west Kamboja traded as far as Sri Lanka, and there may have been a trading community of them living in Anuradhapura",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381077534"
+    },
+    {
+      "id": "P15",
+      "hash": "d3b508ffca9808122fd319952927645d458f269137862524fc21cc97d0439409",
+      "heading": "The seaport and international trade",
+      "excerpt": "The chief export products from Kamboja were horses, ponies, blankets embroidered with threads of gold, Kambu/Kambuka silver, zinc, mashapurn",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381077534"
+    },
+    {
+      "id": "P16",
+      "hash": "f8c5d4b9edb01cf5c5d5700550e5aee64c4327f583138664e95fc47b6d771eb7",
+      "heading": "Historical records: western sea trade",
+      "excerpt": "The commerce of the western Indian coast was lucrative. Bharukacchan and Soparan traders who established settlements or trading posts in the",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381077534"
+    },
+    {
+      "id": "P17",
+      "hash": "7b23e47c64884c29c397dccef7c0bdb760bc0e6376063788c9c5d7265e823f1b",
+      "heading": "Archaeological evidence: western sea trade",
+      "excerpt": "Goods from Rome on the trade route included frankincense, coral of various colors (particularly red), figured linen from Egypt, wines, decor",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381077534"
+    },
+    {
+      "id": "P18",
+      "hash": "1ef5f331e2af326afae6e576c456ecb2002fc12b245cddd639da7d2981df3c7c",
+      "heading": "Historical records: eastern sea trade",
+      "excerpt": "The Pali work called Petavatthu says that traders went with caravans with wagons loaded with goods from Dvāravati to Kamboja. The Pali work ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381077534"
+    },
+    {
+      "id": "P19",
+      "hash": "65521b65b13f8d9c3668e79e72bc3ec9cca80021787ef32905e3b56606f69947",
+      "heading": "Facts in the original Pali sources",
+      "excerpt": "With regards Bāhiya Dārucīriya, Malalasekara writes that he 'engaged himself in trade, voyaging in a ship. Seven times he sailed down the In",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381077534"
+    },
+    {
+      "id": "P20",
+      "hash": "3a03619fc64907350a302264445d3e496244040b59c26819dccc34bf6887fbce",
+      "heading": "Facts in the original Pali sources",
+      "excerpt": "The Apadāna verses of Bāhiya say that he was born in the town of Bhārukaccha ( modern Bharuch) and departed on a ship from there. After bein",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381077534"
+    },
+    {
+      "id": "P21",
+      "hash": "a0d98b95573ff3eb1e33d7435e0a3f5647363d2cc71f7ba72937ada7f56e56a2",
+      "heading": "Facts in the original Pali sources",
+      "excerpt": "The source for Malalasekera's statement that Bāhiya sailed down the Indus and went to Suvaṇṇabhūmi is the Udāna Commentary of Dhammapāla, wh",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381077534"
+    },
+    {
+      "id": "P22",
+      "hash": "3d4b59da27b0495e1ec4f6b8bb2c2db48f9a981fe6b4d7c05065a79058820869",
+      "heading": "Facts in the original Pali sources",
+      "excerpt": "The port of Suppāraka, is either modern Sopara near Bhārukaccha or modern Bharuch, or Vasai near Mumbai, about 290 kilometers south of Bhāru",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381077534"
+    }
+  ],
+  "updatedAt": "2026-10-21T13:32:43.921Z"
 }
