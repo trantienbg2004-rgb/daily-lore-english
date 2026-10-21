@@ -2,9 +2,301 @@
   "pageId": 34564007,
   "title": "Deathcare",
   "topic": "Health",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1368955509,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368955509",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-21T22:35:17.600Z"
+  "reason": "5 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Utensils used for embalming.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a6/Utensils_used_for_embalming.jpg/960px-Utensils_used_for_embalming.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Utensils used for embalming.jpg",
+        "caption": "Utensils used for embalming.",
+        "alt": "",
+        "description": "Utensils_used_for_embalming",
+        "date": "2007-10-31",
+        "section": "History",
+        "position": 0,
+        "provenance": {
+          "credit": "Vladimir S",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Utensils_used_for_embalming.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Deathcare",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368955509",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Cremation at Manikarnika Ghat.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/80/Cremation_at_Manikarnika_Ghat.jpg/960px-Cremation_at_Manikarnika_Ghat.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Cremation at Manikarnika Ghat.jpg",
+        "caption": "Cremation rituals at Manikarnika Ghat, Varanasi, India, one of the most significant Hindu cremation sites.",
+        "alt": "",
+        "description": "Manikarnika Ghat with burning pyres as viewed from boat. This is one of the holiest place where traditional burning of hindu corpses takes place.",
+        "date": "2023-12-21",
+        "section": "History",
+        "position": 1,
+        "provenance": {
+          "credit": "Utkarsh2111",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Cremation_at_Manikarnika_Ghat.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Deathcare",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368955509",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Hindu funeral.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4e/Hindu_funeral.jpg/960px-Hindu_funeral.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Hindu funeral.jpg",
+        "caption": "Hindu funeral ritual/ceremony.",
+        "alt": "",
+        "description": "\"A deceased body being taken to a burning ground. A funeral procession moves through a rural landscape dotted with trees and bushes. The body in a white shroud is carried by four men with their hair shaved but for the tuft at the back of their head. All wear tripundra marks on forehead and body. They are preceded by the chief mourner, clad in white, who carries in a pot the fire with which he will set the funeral pyre ablaze. Behind the stretcher carrying the body are a group of male mourners, one of them carrying a large pot. All of them are u",
+        "date": "circa 1820date QS:P571,+1820-00-00T00:00:00Z/9,P1480,Q5727902date QS:P571,+1820-00-00T00:00:00Z/9,P1",
+        "section": "History",
+        "position": 2,
+        "provenance": {
+          "credit": "Unknown authorUnknown author Unknown authorUnknown author",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Hindu_funeral.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Deathcare",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368955509",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Covid-confirmed-deaths-since-5th-death.png",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/ce/Covid-confirmed-deaths-since-5th-death.png/960px-Covid-confirmed-deaths-since-5th-death.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Covid-confirmed-deaths-since-5th-death.png",
+        "caption": "Mortality rate of COVID-19.",
+        "alt": "",
+        "description": "Plot of days since 5th COVID death v number of deaths by country",
+        "date": "2020-03-29",
+        "section": "Government",
+        "position": 3,
+        "provenance": {
+          "credit": "Our World in Data",
+          "license": "CC BY 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Covid-confirmed-deaths-since-5th-death.png",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Deathcare",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368955509",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Natural Burial Ground - geograph.org.uk - 551087.jpg",
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/0/04/Natural_Burial_Ground_-_geograph.org.uk_-_551087.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "fileTitle": "File:Natural Burial Ground - geograph.org.uk - 551087.jpg",
+        "caption": "Natural burial ground.",
+        "alt": "",
+        "description": "Natural Burial Ground Looking along Loughborough Road towards the Loughborough skyline.",
+        "date": "2007-09-04",
+        "section": "Environmental impact",
+        "position": 4,
+        "provenance": {
+          "credit": "Mat Fascione",
+          "license": "CC BY-SA 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Natural_Burial_Ground_-_geograph.org.uk_-_551087.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Deathcare",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368955509",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "a8668cf88228743458fe969e354325c3908b9e04b125ab24188eb7268d85d4ed",
+      "heading": "Lead",
+      "excerpt": "Deathcare (also death care, death-care or after-deathcare) is the planning, provision, and improvement of post-death services, products, pol",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368955509"
+    },
+    {
+      "id": "P2",
+      "hash": "765211894f77591eb2e5b2d6a4d4f3d2c36008418cebdb85c92d1b84d4534b21",
+      "heading": "Lead",
+      "excerpt": "Deathcare, from the point of clinical death, has a diverse timeline. The first point of care often involves immediate healthcare professiona",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368955509"
+    },
+    {
+      "id": "P3",
+      "hash": "1a63a13b873c037927792929b02b0aeca02ca95ce1c6ce95aeb891c05b9c5fdb",
+      "heading": "Lead",
+      "excerpt": "In recent years, the role of death doulas, also known as end-of-life or death midwives, has gained increasing recognition in countries such ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368955509"
+    },
+    {
+      "id": "P4",
+      "hash": "b823dcde6d6db355218a1f7a7c8dc3b4f40258701315f4129b7a668b9c7bea77",
+      "heading": "Etymology",
+      "excerpt": "The word deathcare is a compound term from the words death and care. It can also take the form of death care, however this is mostly used in",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368955509"
+    },
+    {
+      "id": "P5",
+      "hash": "2114597bd86a16aa732586047aa26c2229208c08ab3e047bc3cf7aa509c22f2e",
+      "heading": "History",
+      "excerpt": "The provision of deathcare has historically and often continues to be a highly decentralized and diverse practice combining multiple actors ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368955509"
+    },
+    {
+      "id": "P6",
+      "hash": "f012e9cde1756c21fc21964ecd58f0b4277a44896522b8cf3c64f9b81b3a5e7c",
+      "heading": "21st century",
+      "excerpt": "The deathcare industry has undergone significant changes primarily motivated by environmental concerns, technological innovation, and public",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368955509"
+    },
+    {
+      "id": "P7",
+      "hash": "bc0e3f1b11ef9d02fad895cfbb022a332495912a04b0acd21fb8c3e4f4adc568",
+      "heading": "Government",
+      "excerpt": "National and regional governments are often responsible for providing the legal framework for deathcare to operate within, including laws an",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368955509"
+    },
+    {
+      "id": "P8",
+      "hash": "0c806915308a01d8ba91ce5c3ffbe01c675726944fcee849d0596375986d6a23",
+      "heading": "Industry",
+      "excerpt": "Analysts have stated that the deathcare industry can be divided into three portions: the ceremony and tribute (funeral or memorial service);",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368955509"
+    },
+    {
+      "id": "P9",
+      "hash": "4f6d77bd297cedd5423663accacbfd989716a7130b15d148749f11bb7d43bf5b",
+      "heading": "Environmental impact",
+      "excerpt": "Conventional burial methods, often involving metal caskets, can contribute to soil and groundwater contamination. Cremation consumes signifi",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368955509"
+    },
+    {
+      "id": "P10",
+      "hash": "8806485ede242cbd33e25a88672cdb5afd69c2bc29280dc5ed7c9c8346d5f6c6",
+      "heading": "History",
+      "excerpt": "Subsequent to the war, it became the norm to have loved ones’ bodies prepared and cared for by morticians, and for funeral home directors to",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368955509"
+    },
+    {
+      "id": "P11",
+      "hash": "81dfcb9180eaee20a5d87fb886240e8d77449a6b610300ba8738d1d96cda28cd",
+      "heading": "History",
+      "excerpt": "Coinciding with the professionalization of the funeral industry, the advances of the medical field changed expectations around an infectious",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368955509"
+    },
+    {
+      "id": "P12",
+      "hash": "091bca12456abe805238709a6853fe555b65467192a00db4e7048d4c9892510a",
+      "heading": "History",
+      "excerpt": "While these developments describe shifts within Western deathcare systems, many Indigenous communities globally have maintained distinct and",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368955509"
+    },
+    {
+      "id": "P13",
+      "hash": "6a74db1203621954a713fc0312f46e25ed91830cc08274ea9531898dd2d7b999",
+      "heading": "History",
+      "excerpt": "Western deathcare has evolved from family-led, home-based rituals to professionalized funeral practices, whereas Indigenous groups have main",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368955509"
+    },
+    {
+      "id": "P14",
+      "hash": "2a7cd21c8807f967c1100e3e0902624fab3cc66db3997941eee0b1f6aa88eae7",
+      "heading": "History",
+      "excerpt": "For example, among the Basotho people of Lesotho, funeral rites include animal slaughter, burial with possessions, and communal support that",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368955509"
+    },
+    {
+      "id": "P15",
+      "hash": "621fffab0bef289c10c5827fd0b298dd08c3b94b8ad153677cb43e9d5bd11373",
+      "heading": "History",
+      "excerpt": "Deathcare practices also vary across cultural and national contexts. In other countries, the social practices around deathcare vary compared",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368955509"
+    },
+    {
+      "id": "P16",
+      "hash": "9816f2d5fd04a88a3776f58d529eb15f49721d1af716e48f14d16bdfd62adc5c",
+      "heading": "21st century",
+      "excerpt": "The COVID-19 pandemic placed significant strain on those involved with deathcare as well as their families. Funeral service providers experi",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368955509"
+    },
+    {
+      "id": "P17",
+      "hash": "65ffbf88fcea387229abeb2493077475f7ebf203c7557197661a40d3a5184c22",
+      "heading": "Government",
+      "excerpt": "Governments can also become a major focal point for deathcare services in specific situations, such as with deaths in the military, prisons,",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368955509"
+    },
+    {
+      "id": "P18",
+      "hash": "e947e45845c95c70ed1926b552d8be6f84145479e1d2704e4857f21a58ebd6cd",
+      "heading": "Industry",
+      "excerpt": "Deathcare industry is a multifactorial sector including, but not limited to: companies and organizations that provide services related to de",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368955509"
+    },
+    {
+      "id": "P19",
+      "hash": "35ac5358725c8a9195de1832b8da780c1400acb7e0f8af1429b96dbe9831f868",
+      "heading": "Industry",
+      "excerpt": "There is a global marketplace for deathcare in the produces, services, and insurance that surrounds someone's death. This is a market that h",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368955509"
+    },
+    {
+      "id": "P20",
+      "hash": "234fdde2120bd3ce42b045982c699afda15db68f2a6194d8d117a6f93896f694",
+      "heading": "Industry",
+      "excerpt": "The deathcare process comes with multiple costs to allow for certain rituals to take place. Including to removal/transfer of remains to fune",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368955509"
+    },
+    {
+      "id": "P21",
+      "hash": "caf58fe96e0b9c5e9055d739d3e7b55a20d4d93ef4ae93eab37a9abbfd5d4e80",
+      "heading": "Industry",
+      "excerpt": "Deathcare industrial complex (DIC) has been outlined as a concept, mirroring the military-industrial complex concept, in at least the US and",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368955509"
+    },
+    {
+      "id": "P22",
+      "hash": "b847b260b5dbc1b0c0477f6fd17a6800c1aff8984ce7aafb29d9416e4a214999",
+      "heading": "Environmental impact",
+      "excerpt": "Localized efforts to reform and expand deathcare options have contributed to the development of natural deathcare movements. As awareness of",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368955509"
+    },
+    {
+      "id": "P23",
+      "hash": "ace8f96748526ecafb17e951d2530590e6c9f49309d3f00e6a3eb1aa0e87e09d",
+      "heading": "Environmental impact",
+      "excerpt": "In addition to environmental concerns, some government and industry stakeholders have introduced or explored new regulations and policies th",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368955509"
+    },
+    {
+      "id": "P24",
+      "hash": "c4cc34b45a111bce5844ce06130c87f3e2a60e66ff859d9c51e5b4284ee14924",
+      "heading": "Environmental impact",
+      "excerpt": "Beyond environmental considerations, green burial practices have been linked to changing cultural relationships with death and mourning, esp",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368955509"
+    }
+  ],
+  "updatedAt": "2026-10-21T22:35:23.680Z"
 }
