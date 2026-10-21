@@ -2,9 +2,229 @@
   "pageId": 42333900,
   "title": "Corin Curschellas",
   "topic": "Culture",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1337176526,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1337176526",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-21T13:51:49.317Z"
+  "reason": "1 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:CorinCurschellasLaGrischa.jpg",
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/7/74/CorinCurschellasLaGrischa.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "fileTitle": "File:CorinCurschellasLaGrischa.jpg",
+        "caption": "Corin Curschellas together with Albin Brun, Patricia Draeger and Claudio Strebel Spring 2012 («La Grischa»).",
+        "alt": "",
+        "description": "Corin Curschellas mit Albin Brun, Patricia Draeger und Claudio Strebel (\"La Grischa\"), im Frühling 2012.",
+        "date": "29 August 2012 (original upload date)",
+        "section": "",
+        "position": 0,
+        "provenance": {
+          "credit": "Corin Curschellas",
+          "license": "CC BY-SA 3.0 de",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/de/deed.en",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:CorinCurschellasLaGrischa.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Corin_Curschellas",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1337176526",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Corin Curschellas Echo 2001.jpg"
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Corin Curschellas Mono 2005.jpg"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "1ca165120593ae9ec1adb4cd00fbe725c2818e7654315de74d8151f3ab710192",
+      "heading": "Lead",
+      "excerpt": "Corin Curschellas (Romansh pronunciation: [ˈkɔrin kurˈʃeːlɐs]; born 2 July 1956) is a Swiss singer-songwriter, vocalist (jazz, folk music, w",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1337176526"
+    },
+    {
+      "id": "P2",
+      "hash": "570fc855aae63cecf912c31de1c4f4333fb476b72dca10df53e53fd438a5935e",
+      "heading": "Biography",
+      "excerpt": "Curschellas was born in 1956 in Chur (Graubünden, Switzerland where she grew up. She attended the local state school in Chur, Kantonsschule ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1337176526"
+    },
+    {
+      "id": "P3",
+      "hash": "e34aabc5e0da32bba8a9cdcffcc3cd64903c2c73e9707b390adbe2fbac4edcac",
+      "heading": "Biography",
+      "excerpt": "From 1977 to 1983 she studied theatre and theatre pedagogy at the Zurich University of the Arts as well as three semesters of Music Sciences",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1337176526"
+    },
+    {
+      "id": "P4",
+      "hash": "dab4146c564aeb7053d8b2030cb74575719f8b751b5691102ad91d5e37f23f96",
+      "heading": "Biography",
+      "excerpt": "From 1983 until 1989 Curschellas lived in Berlin, followed by two years in Basel. A grant she received enabled her to move to Paris in 1991,",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1337176526"
+    },
+    {
+      "id": "P5",
+      "hash": "af8724bc6443b308d999d0b7408898b4ca8fce32f131f22d27d645339128ae56",
+      "heading": "Biography",
+      "excerpt": "I have always lived in worlds foreign to me, but the poems and songs enabled me to connect with my home […] I certainly was homesick. In Ber",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1337176526"
+    },
+    {
+      "id": "P6",
+      "hash": "2d3663ba2663df7c32dbfc221a0a224deb2dd571802bc8ee7ed73058349011ec",
+      "heading": "Song",
+      "excerpt": "Corin Curschellas music covers different Music genres: Jazz, Folk, Chanson, World Music, Folk Song, Musical improvisation. She refers to her",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1337176526"
+    },
+    {
+      "id": "P7",
+      "hash": "f846f19ec36cad43b7c15f6a2f8bf52d476de7f8fe83b42069ae2f32b5273552",
+      "heading": "Musical Ethnography",
+      "excerpt": "A good part of Corin Curschellas’ musical work has an ethnographic aspect. She collects excerpts of Romansh cultural heritage – in the case ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1337176526"
+    },
+    {
+      "id": "P8",
+      "hash": "29b4accea7d52bc38c20d141a444ce010995779b3e7dfebcfdff4511fef25fa0",
+      "heading": "Solo Programs",
+      "excerpt": "From the program Mono comes Corin Curschellas’ musical rendition of the Canzun de Sontga Margriata (English: Song of Saint Margaret), one of",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1337176526"
+    },
+    {
+      "id": "P9",
+      "hash": "d80434196c13ba35c8029772a558337435ed55f0ffe8fc95980e425dd332dc77",
+      "heading": "Composition",
+      "excerpt": "Corin Curschellas produced her first substantial composition in 1979/1980 while she was still studying. It was a theatrical composition for ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1337176526"
+    },
+    {
+      "id": "P10",
+      "hash": "7d457f188b6ecc2252ce865d1d5380d489d5ae8a571ea6d1f287ced16df0fe1d",
+      "heading": "Theatre",
+      "excerpt": "In 2006 und 2007 Corin Curschellas played the part of Frau Rossi in the Musical Die schwarzen Brüder (The Black Brothers) 2008 she acted in ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1337176526"
+    },
+    {
+      "id": "P11",
+      "hash": "e621ffb1a33037754a30dbf24428c8f887696d7657b165c9c74a65288f681533",
+      "heading": "Radio Plays",
+      "excerpt": "In 2008 Corin Curschellas played in the series Jimmy Flitz by Roland Zoss, where she spoke the part of Tigerfliege (Tigerfly) and sang. In 2",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1337176526"
+    },
+    {
+      "id": "P12",
+      "hash": "0f163b2aa30f98451fb0b24ee95539c12cae6ee0510223a8eb91caf3c638cde6",
+      "heading": "Education",
+      "excerpt": "During her days in Berlin, Corin Curschellas taught at the Musikschule Kreuzberg. She has, from time to time, worked as guest lecturer at th",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1337176526"
+    },
+    {
+      "id": "P13",
+      "hash": "426a7661737945952b60123ba08d4bd510cb8558e9a20a3a4a1a81a05839be6a",
+      "heading": "Biography",
+      "excerpt": "Since 2005 the artist has lived in Zürich and in the Surselvan Rueun about 30 kilometers outside of Chur. In Rueun she lives together with h",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1337176526"
+    },
+    {
+      "id": "P14",
+      "hash": "a6b1d35ad2a5fb74468c15a0fd89804490a0194a80ef8a3689492e13e686f271",
+      "heading": "Biography",
+      "excerpt": "Corin Curschellas' actual mother tongue is the Swiss German dialect. Although from her father she learnt to speak near-perfect Surselvan, sh",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1337176526"
+    },
+    {
+      "id": "P15",
+      "hash": "38c59d3af0ac50d1f36c49358c48fd79355db90ce3163652166135f2ac1edd5c",
+      "heading": "Biography",
+      "excerpt": "Jeu sundel en ina fasa dalla veta nua ch’igl ei sco sche mellis dutgs vegnessen ensemen per sbuccar ella mar. Ei vegn tut pli ruasseivel, fe",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1337176526"
+    },
+    {
+      "id": "P16",
+      "hash": "87653cebfde16046759a97c4687d254e8dce4c748bd78cea6c7cca88e985e3bd",
+      "heading": "Biography",
+      "excerpt": "— Translation: I am at a phase in my life where a thousand streams flow together to pour out into the sea. Everything is more peaceful, more",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1337176526"
+    },
+    {
+      "id": "P17",
+      "hash": "49e9fd9f204e0557340cac57d878aba2102b66f7f6ffc361df9d15c05baced9b",
+      "heading": "Song",
+      "excerpt": "Corin Curschellas mostly sings in the Romansh Language, Swiss German and English, though also in Standard German, French or Italian, and eve",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1337176526"
+    },
+    {
+      "id": "P18",
+      "hash": "8e3db680961bc099671fdfebb75428f3ba9a139abefff223404b106081f43d02",
+      "heading": "Song",
+      "excerpt": "From 1977 to 1983 Corin Curschellas worked together with Walter Lietha, where they produced albums like \"Die Fahrenda\" (The Travellers) or \"",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1337176526"
+    },
+    {
+      "id": "P19",
+      "hash": "4eaf78f70e22d03fa354b9671f79b1a76e4e162d319b8e196bc1a3f18b53827d",
+      "heading": "Song",
+      "excerpt": "From 1993 to 1997, Corin Curschellas was lead singer for the \"Vienna Art Orchestra\". She toured with this Orchestra once again in 2009.",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1337176526"
+    },
+    {
+      "id": "P20",
+      "hash": "d9c5df8db8cdb2ce4e7586c16d035fd22f3f218ebf5853983c111a50a507699e",
+      "heading": "Song",
+      "excerpt": "Thereafter Corin Curschellas worked on productions with Peter Scherer, a noted musician, producer and composer for film and dance, Noël Akch",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1337176526"
+    },
+    {
+      "id": "P21",
+      "hash": "e968f21b35413a746f0209d4e1ff8be59751e8f8c95fa6ea99d413172d0e440f",
+      "heading": "Song",
+      "excerpt": "She brought out eight albums containing her own songs and realized numerous personal musical projects. A selection of these follows in chron",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1337176526"
+    },
+    {
+      "id": "P22",
+      "hash": "a998f18b234e91f492b4b9bdf5d961a0b40e43bac4d955db148aebefd4f99e01",
+      "heading": "Musical Ethnography",
+      "excerpt": "The concert project “Suisse Miniature” forms part of the same theme. The project was born out of one of the “Convivenza-Events” of Lia Ruman",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1337176526"
+    },
+    {
+      "id": "P23",
+      "hash": "32c511a0ad79694ec469926bbc27c4dbaf63096d1f7d381a57591279548ea8d6",
+      "heading": "Musical Ethnography",
+      "excerpt": "With La Pura in 1992 her first concern with ethnographic issues lies quite far back in the past. However, Corin Curschellas sees in it a bio",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1337176526"
+    },
+    {
+      "id": "P24",
+      "hash": "5b990918304bcf94c483fdbcfaacf689afd3411935a8097e770df97e4c53f43e",
+      "heading": "Solo Programs",
+      "excerpt": "The Goddess of Fertility, Margriata, for me represents the Symbol for Nature itself […] and the respectful, conscious manner we have to deal",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1337176526"
+    },
+    {
+      "id": "P25",
+      "hash": "95b53beb3586c738267801462e4183dcea818eff4df9ae6d89e2b01f19d266d6",
+      "heading": "Composition",
+      "excerpt": "In 2014 she worked on the cultural-political project \"Uccelin – eine Singvogel Suite\" (Uccelin – a Songbird Suite). Die Suite pays Hommage t",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1337176526"
+    },
+    {
+      "id": "P26",
+      "hash": "1ebac0a78e4b8bfe1fd8d854d7c589573273ee8969a71902611ba2099efb0bc2",
+      "heading": "Composition",
+      "excerpt": "Besides this, Corin Curschellas composes songs for Michael von der Heide (for example the award-winning Jeudi amour, 1998), and previously f",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1337176526"
+    }
+  ],
+  "updatedAt": "2026-10-21T13:51:54.919Z"
 }
