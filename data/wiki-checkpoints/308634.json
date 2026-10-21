@@ -2,9 +2,458 @@
   "pageId": 308634,
   "title": "Olympia, Greece",
   "topic": "Sports",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1375868976,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375868976",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-21T07:56:18.699Z"
+  "reason": "11 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Map greek sanctuaries-en.svg"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Olympia 34.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/55/Olympia_34.jpg/960px-Olympia_34.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Olympia 34.jpg",
+        "caption": "The archaeological site showing the stadium, the temple of Hera, the temple of Zeus. The line of trees, upper right, border a road to the north of the Alfeios. Geologically the site is terraced into the gentle north slope of the Alfeios valley visible in the background.",
+        "alt": "",
+        "description": "This is a photograph of a Natura 2000 protected area with ID",
+        "date": "2020-03-14 11:57:53",
+        "section": "The Altis",
+        "position": 2,
+        "provenance": {
+          "credit": "Panosgti34",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Olympia_34.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Olympia%2C_Greece",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375868976",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Remains of the Pelopeion in Olympia on October 14, 2020.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4e/Remains_of_the_Pelopeion_in_Olympia_on_October_14%2C_2020.jpg/960px-Remains_of_the_Pelopeion_in_Olympia_on_October_14%2C_2020.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Remains of the Pelopeion in Olympia on October 14, 2020.jpg",
+        "caption": "Peribolos wall remains seen in the foreground from the south against the backdrop of the Temple of Hera",
+        "alt": "",
+        "description": "Remains of the Pelopeion in Olympia. In the background, the Temple of Hera and Kronion Hill.",
+        "date": "2020-10-14 13:50:50",
+        "section": "The Pelopian sanctuary",
+        "position": 3,
+        "provenance": {
+          "credit": "George E. Koronaios",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Remains_of_the_Pelopeion_in_Olympia_on_October_14,_2020.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Olympia%2C_Greece",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375868976",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Ancient Olympia, Greece37.jpg",
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/3/3c/Ancient_Olympia%2C_Greece37.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "fileTitle": "File:Ancient Olympia, Greece37.jpg",
+        "caption": "Crypt (arched way to the stadium)",
+        "alt": "",
+        "description": "Ancient Olympia, Greece. Photo taken with Nokia N8 (12 Megapixel). Αρχαία Ολυμπία. Φωτογραφία που τράβηξα με το Nokia N8.",
+        "date": "2010-11-28 12:39",
+        "section": "History",
+        "position": 4,
+        "provenance": {
+          "credit": "John Karakatsanis from Athens, Greece",
+          "license": "CC BY-SA 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Ancient_Olympia,_Greece37.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Olympia%2C_Greece",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375868976",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Olympia - Temple of Hera 3.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/dd/Olympia_-_Temple_of_Hera_3.jpg/960px-Olympia_-_Temple_of_Hera_3.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Olympia - Temple of Hera 3.jpg",
+        "caption": "Ruins of the Temple of Hera",
+        "alt": "",
+        "description": "Olympia, Greek",
+        "date": "2007-07-28",
+        "section": "Geometric and Archaic periods",
+        "position": 5,
+        "provenance": {
+          "credit": "Matěj Baťha",
+          "license": "CC BY-SA 2.5",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.5",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Olympia_-_Temple_of_Hera_3.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Olympia%2C_Greece",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375868976",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Olympia-02.jpg"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Olimpia FilipTemple.JPG",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e8/Olimpia_FilipTemple.JPG/960px-Olimpia_FilipTemple.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Olimpia FilipTemple.JPG",
+        "caption": "Ruins of the Philippeion",
+        "alt": "",
+        "description": "Olympia Philip II of Macedon Temple (Philippeion).",
+        "date": "2006-07",
+        "section": "Hellenistic period",
+        "position": 7,
+        "provenance": {
+          "credit": "pufacz",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Olimpia_FilipTemple.JPG",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Olympia%2C_Greece",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375868976",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Greece-0585 (2215943566).jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/32/Greece-0585_%282215943566%29.jpg/960px-Greece-0585_%282215943566%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Greece-0585 (2215943566).jpg",
+        "caption": "Palaestra at Olympia",
+        "alt": "",
+        "description": "Greece.",
+        "date": "2005-10-04 16:37",
+        "section": "Hellenistic period",
+        "position": 8,
+        "provenance": {
+          "credit": "Dennis G. Jarvis",
+          "license": "CC BY-SA 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Greece-0585_(2215943566).jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Olympia%2C_Greece",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375868976",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Stadio Olimpia 2007.JPG",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bf/Stadio_Olimpia_2007.JPG/960px-Stadio_Olimpia_2007.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Stadio Olimpia 2007.JPG",
+        "caption": "The Olympia stadium",
+        "alt": "",
+        "description": "Stadiu di Olimpia ntô 2007",
+        "date": "2007-04-28",
+        "section": "Hellenistic period",
+        "position": 9,
+        "provenance": {
+          "credit": "Klone123",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Stadio_Olimpia_2007.JPG",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Olympia%2C_Greece",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375868976",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Plain d'Olympie. Partie des ruines (détail).jpg"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Kronios baths at olympia.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c0/Kronios_baths_at_olympia.jpg/960px-Kronios_baths_at_olympia.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Kronios baths at olympia.jpg",
+        "caption": "Kronios baths or north baths",
+        "alt": "",
+        "description": "Kronios baths or north baths",
+        "date": "2014-07-01 10:33:37",
+        "section": "1875–1881",
+        "position": 11,
+        "provenance": {
+          "credit": "Michael Nicht",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Kronios_baths_at_olympia.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Olympia%2C_Greece",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375868976",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Olympia train station 2008.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2b/Olympia_train_station_2008.jpg/960px-Olympia_train_station_2008.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Olympia train station 2008.jpg",
+        "caption": "Olympia's railway station",
+        "alt": "Olympia railway station",
+        "description": "Train station in Olympia, Greece. Greek name “ΟΛΥΜΠΙΑ”.",
+        "date": "2008-07-23",
+        "section": "The municipality",
+        "position": 12,
+        "provenance": {
+          "credit": "Jérôme",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Olympia_train_station_2008.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Olympia%2C_Greece",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375868976",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Olimpia Nuova, Piazza principale.jpg",
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/b/bb/Olimpia_Nuova%2C_Piazza_principale.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "fileTitle": "File:Olimpia Nuova, Piazza principale.jpg",
+        "caption": "Modern Olympia square with church",
+        "alt": "",
+        "description": "La piazza principale del paese di Olimpia Nuova e la chiesa di Santa Maria Ortodossa",
+        "date": "2010-02-01 07:55:44",
+        "section": "The municipality",
+        "position": 13,
+        "provenance": {
+          "credit": "Pufui Pc Pifpef I",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Olimpia_Nuova,_Piazza_principale.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Olympia%2C_Greece",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375868976",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Olympia Model 1.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1c/Olympia_Model_1.jpg/960px-Olympia_Model_1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Olympia Model 1.jpg",
+        "caption": "Architectural model of the enclosure of the sanctuary of Olympia, Greece.",
+        "alt": "",
+        "description": "Maqueta arquitectónica del recinto del santuario de Olimpia, en Grecia. Pertenece a la exposición La belleza del cuerpo, en el MARQ. Forma parte de la exposición permanente del Museo Británico.",
+        "date": "16 April 2009",
+        "section": "Municipal units",
+        "position": 14,
+        "provenance": {
+          "credit": "Dorieo (Own work)",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Olympia_Model_1.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Olympia%2C_Greece",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375868976",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Olympia flame1.jpg"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "9094814872dc5ffadb9eb3fddb04bf234bbb76bd6bd10cbd6d91492ad4d20686",
+      "heading": "Lead",
+      "excerpt": "Olympia (Modern Greek: Ολυμπία [oli(m)ˈbi.a]; Ancient Greek: Ὀλυμπία [olympí.aː]), officially Archaia Olympia (Greek: Αρχαία Ολυμπία lit. 'A",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375868976"
+    },
+    {
+      "id": "P2",
+      "hash": "92b4d67037d1860b667351a9a572c73d7ca0d5d0470cc73a1cd0da6b5c35a8c9",
+      "heading": "Lead",
+      "excerpt": "The sacred precinct, named the Altis, was primarily dedicated to Zeus, although other gods were worshipped there. The games conducted in his",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375868976"
+    },
+    {
+      "id": "P3",
+      "hash": "6248163a530cd32264782ddbd219dee4c9f2f6206fd904ee561a27a774d947ed",
+      "heading": "Lead",
+      "excerpt": "Ancient history records that Pisa and Elis, other villages in the region, contended with Olympia for management of the precinct, and that Ol",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375868976"
+    },
+    {
+      "id": "P4",
+      "hash": "b077fa99ad44466f1e642b46ca037059dfbb584762fa4837dee0fb1b90ea11df",
+      "heading": "Lead",
+      "excerpt": "Of special interest to Greeks is the Pelopion, tomb of the quasi-mythical king Pelops, who gives his name to the Peloponnese and was ancesto",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375868976"
+    },
+    {
+      "id": "P5",
+      "hash": "b717b19ebd20c79b52422f60ef6f7f0be4603c0e5920abcee3757dc4e1ddf02d",
+      "heading": "Lead",
+      "excerpt": "Another location that has a special interest to both ancients and moderns is the stadium. It is basically a field with start and end lines m",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375868976"
+    },
+    {
+      "id": "P6",
+      "hash": "5c8473aa047e9a12fe02db6796816d10659aa12231a3d317d257bfffbe265ef9",
+      "heading": "Architectural summary",
+      "excerpt": "Olympia lies in the valley of the Alfeiós River (also Anglicized as Alpheus or Alpheios) in the western part of the Peloponnese, today aroun",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375868976"
+    },
+    {
+      "id": "P7",
+      "hash": "37fc44c66661939f6eb8f077d77958afeb4ac4bb019727a15dcafa0e4b2102ad",
+      "heading": "The Altis",
+      "excerpt": "The Altis was an irregular quadrangular area more than 183 m (200 yd) on each side and walled except to the North where it was bounded by th",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375868976"
+    },
+    {
+      "id": "P8",
+      "hash": "e0aa7b8fcb267aecaac9b8e821d7efe8be9a214430af46741ba106144864a7d9",
+      "heading": "The Herakleian sanctuary",
+      "excerpt": "Pindar, the 5th-century-BC Theban poet, says that Heracles founded the \"sacred precinct\" (zatheon alsos) next to the tomb of Pelops in honor",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375868976"
+    },
+    {
+      "id": "P9",
+      "hash": "a6c4b8b95fb02374d2712bd580ddc4323a9522dbf5ea0e2a5a8857f52749a36f",
+      "heading": "The Pelopian sanctuary",
+      "excerpt": "The classical Pelopion was a separate sanctuary defined by a peribolos wall dating to the 6th century BC, long after the conventional start ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375868976"
+    },
+    {
+      "id": "P10",
+      "hash": "4c86be6f183481e740c17ccc8cbf7ed198ec19a8485d1b58c03fb04a475f09d7",
+      "heading": "Etymologies",
+      "excerpt": "The name Altis was derived from a corruption of the Elean word also meaning \"the grove\" because the area was wooded, olive and plane trees i",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375868976"
+    },
+    {
+      "id": "P11",
+      "hash": "11b40d893083a0e42452b4e98ff8fc12a042879054db2324e3202db7dfe6f467",
+      "heading": "Prehistory",
+      "excerpt": "It used to be thought that the site had been occupied since about 1500 BC, with a religious cult of Zeus developing around 1000 BC. It may b",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375868976"
+    },
+    {
+      "id": "P12",
+      "hash": "420a816236b7292fc420fb4cab088af43392345587a62065ad5ec85ef1f079d1",
+      "heading": "Geometric and Archaic periods",
+      "excerpt": "The first Olympic festival was organized on the site by the authorities of Elis in the 8th century BC – with tradition dating the first game",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375868976"
+    },
+    {
+      "id": "P13",
+      "hash": "f35d16e1881b538ec49006783998d66a9d5fd307edc0cf6620ac1ee18a9a65ad",
+      "heading": "Classical period",
+      "excerpt": "The classical period, between the 5th and 4th centuries BC, was the golden age of the site at Olympia. A wide range of new religious and sec",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375868976"
+    },
+    {
+      "id": "P14",
+      "hash": "325d8a3bd670858a586ad3b0e3bf9265bc549e786ac389dd5ae6d767a79f4513",
+      "heading": "Hellenistic period",
+      "excerpt": "The late 4th century BC saw the erection of the Philippeion. Around 300 BC the largest building on the site, the Leonidaion, was constructed",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375868976"
+    },
+    {
+      "id": "P15",
+      "hash": "7b8405101fd31f2eb1ed621fc2bc589ad4435ca6bff9bb4db9fa92778b7e53ae",
+      "heading": "Roman period",
+      "excerpt": "During the Roman period, the games were opened up to all citizens of the Roman Empire. A programme of new buildings and extensive repairs, i",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375868976"
+    },
+    {
+      "id": "P16",
+      "hash": "5fe199943726425014e20e2973e8affbf4b8956d84144cf6a2be8b3c314bc3e2",
+      "heading": "Discovery and early excavations",
+      "excerpt": "Over time the site was buried under alluvial deposits, up to 8 metres deep, long thought to be the result of river flooding. Modern research",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375868976"
+    },
+    {
+      "id": "P17",
+      "hash": "fe8a09ffe8d603dab737c0e6161890122fefbc40a077d08491523149f917f5bd",
+      "heading": "1875–1881",
+      "excerpt": "Since the 1870s, the excavation and preservation of Ancient Olympia has been the responsibility of the German Archaeological Institute at At",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375868976"
+    },
+    {
+      "id": "P18",
+      "hash": "c193c7e076ec3d24a24f9187199f83f204857a7b996da71f10ef8c25334b1251",
+      "heading": "1900–1950",
+      "excerpt": "Excavation continued in a more limited way by Dörpfeld between 1908 and 1929 but a new systematic excavation began in 1936 on the occasion o",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375868976"
+    },
+    {
+      "id": "P19",
+      "hash": "cf628a1bfb4ca9404a52dd8fccc462402d41fc711aa2318252c6935290b97505",
+      "heading": "1950 to present",
+      "excerpt": "Between 1952 and 1966, Kunze continued the excavation joined by architect Alfred Mallwitz. They excavated Pheidias' workshop, the Leonidaion",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375868976"
+    },
+    {
+      "id": "P20",
+      "hash": "32827203173de62c570ffeed3882ffbcf58dc533d4890acc9eef18da22ea480b",
+      "heading": "The municipality",
+      "excerpt": "The ancient site of the games had been included during all the intervening centuries within a community yet called Olympia. In modern terms ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375868976"
+    },
+    {
+      "id": "P21",
+      "hash": "12d3b364ceebc4f8273193b8ba0c44486e4f03c0b863a313841733bcc617112f",
+      "heading": "Municipal units",
+      "excerpt": "Archaia Olympia now applied to both a municipality and a unit. The municipality has an area of 545.121 km, the municipal unit 178.944 km.",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375868976"
+    },
+    {
+      "id": "P22",
+      "hash": "6d98ec6e1e8bd14f30d492712382d9681747ecdc285300c83a505f3499545bfa",
+      "heading": "Notable people",
+      "excerpt": "When Pierre de Coubertin, the founder of the International Olympic Committee, died in 1937, a monument to him was erected at ancient Olympia",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375868976"
+    },
+    {
+      "id": "P23",
+      "hash": "ca9794b4ee808dcf9877eb8b62b4e6373409391dee464d3adf8b58373538ef0d",
+      "heading": "Reinstitution of the games",
+      "excerpt": "After suppression of the ancient Olympic Games in 394 AD by Theodosius I, the spirit of the games, international peaceful competition by ind",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375868976"
+    }
+  ],
+  "updatedAt": "2026-10-21T07:56:20.250Z"
 }
