@@ -6068,8 +6068,9 @@
       "checkedAt": "2026-10-21T03:09:09.352Z"
     },
     "21818": {
-      "status": "NEEDS_REVIEW",
-      "reason": "Missing repaired page",
+      "status": "NEEDS_REPAIR",
+      "reason": "retry saved draft after page-array parser update",
+      "priorReviewReason": "Missing repaired page",
       "revisionId": 1375296178,
       "checkedAt": "2026-10-21T13:39:12.402Z"
     },

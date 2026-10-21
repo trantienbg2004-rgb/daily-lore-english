@@ -2,10 +2,11 @@
   "pageId": 21818,
   "title": "National park",
   "topic": "Environment",
-  "status": "NEEDS_REVIEW",
+  "status": "NEEDS_REPAIR",
   "revisionId": 1375296178,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375296178",
-  "reason": "Missing repaired page",
+  "reason": "retry saved draft after page-array parser update",
+  "priorReviewReason": "Missing repaired page",
   "rights": [
     {
       "status": "REVIEW",
