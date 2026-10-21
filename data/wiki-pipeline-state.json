@@ -9422,10 +9422,10 @@
       "checkedAt": null
     },
     "75421891": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
+      "revisionId": 1379526259,
+      "checkedAt": "2026-10-21T13:51:00.746Z"
     },
     "75603722": {
       "status": "PENDING",
@@ -9866,7 +9866,7 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-10-21T13:50:54.471Z",
+  "updatedAt": "2026-10-21T13:51:00.748Z",
   "dailyUsage": {
     "day": "2026-10-21",
     "calls": 23,
