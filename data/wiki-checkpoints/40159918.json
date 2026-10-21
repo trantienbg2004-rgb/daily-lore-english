@@ -2,9 +2,239 @@
   "pageId": 40159918,
   "title": "Ecosystem health",
   "topic": "Health",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1379854845,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379854845",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-21T08:11:54.143Z"
+  "reason": "3 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Studying Coral Health in St. Thomas, USVI (6762323251).jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e4/Studying_Coral_Health_in_St._Thomas%2C_USVI_%286762323251%29.jpg/960px-Studying_Coral_Health_in_St._Thomas%2C_USVI_%286762323251%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Studying Coral Health in St. Thomas, USVI (6762323251).jpg",
+        "caption": "Studying coral health in St. Thomas",
+        "alt": "Studying coral health in St. Thomas.",
+        "description": "Coral reefs are among the world's richest ecosystems, second only to tropical rain forests in plant and animal diversity. They are also extremely sensitive environments that have special temperature, salinity, light, oxygen, and nutrient needs. If environmental conditions shift or worsen from pollution or other disruption, the health of a coral reef ecosystem can suffer. EPA divers Becky Hemmer and Mel Parsons record observations on coral condition. Learn more @ www.epa.gov/bioindicators/coral/index.html These divers are from Region 2, where EP",
+        "date": "2012-01-25 16:42",
+        "section": "",
+        "position": 0,
+        "provenance": {
+          "credit": "USEPA Environmental-Protection-Agency",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Studying_Coral_Health_in_St._Thomas,_USVI_(6762323251).jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Ecosystem_health",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379854845",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:USFWS Ecosystem Restoration (26442711921).jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c4/USFWS_Ecosystem_Restoration_%2826442711921%29.jpg/960px-USFWS_Ecosystem_Restoration_%2826442711921%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:USFWS Ecosystem Restoration (26442711921).jpg",
+        "caption": "Fire can play a key role in ecosystem restoration.",
+        "alt": "Fire plays a key role in ecosystem restoration, and improves ecosystem health and diversity.",
+        "description": "Fire plays a key role in ecosystem restoration, and improves ecosystem health and diversity.",
+        "date": "2016-04-18 11:57",
+        "section": "Meaning",
+        "position": 1,
+        "provenance": {
+          "credit": "USFWS - Pacific Region",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:USFWS_Ecosystem_Restoration_(26442711921).jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Ecosystem_health",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379854845",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Conceptual-map-illustrating-the-connections-among-nonhuman-nature-ecosystem-services-environmental-ethics-environmental.jpg",
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/f/f2/Conceptual-map-illustrating-the-connections-among-nonhuman-nature-ecosystem-services-environmental-ethics-environmental.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "fileTitle": "File:Conceptual-map-illustrating-the-connections-among-nonhuman-nature-ecosystem-services-environmental-ethics-environmental.jpg",
+        "caption": "Conceptual map illustrating the connections among nonhuman nature, ecosystem services, environmental ethics, environmental justice, and public health",
+        "alt": "",
+        "description": "Conceptual map illustrating the connections among nonhuman nature, ecosystem services, environmental ethics, environmental justice, and public health.",
+        "date": "2016-08-25",
+        "section": "Relationship to human health: the health paradox",
+        "position": 2,
+        "provenance": {
+          "credit": "Viniece Jennings, Jessica Yun, Lincoln Larson",
+          "license": "CC BY 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Conceptual-map-illustrating-the-connections-among-nonhuman-nature-ecosystem-services-environmental-ethics-environmental.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Ecosystem_health",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379854845",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "3114da16227a099b1b167fa5ca9f4b842d0e0814c79adaa78ced2cc9c94f2469",
+      "heading": "Lead",
+      "excerpt": "Ecosystem health is a metaphor used to describe the condition of an ecosystem. Ecosystem condition can vary as a result of fire, flooding, d",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379854845"
+    },
+    {
+      "id": "P2",
+      "hash": "c32abd771198291353c1f36adde4c89bf087ff636792bdbdcd5df0ddc33c1183",
+      "heading": "History of the concept",
+      "excerpt": "The health metaphor applied to the environment has been in use at least since the early 1800s and the great American conservationist Aldo Le",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379854845"
+    },
+    {
+      "id": "P3",
+      "hash": "512dedb24d72a71e303ae50e2e1fce0e15fce173d2968d6bd76931407a3a9de0",
+      "heading": "Meaning",
+      "excerpt": "The term ecosystem health has been employed to embrace some suite of environmental goals deemed desirable. Edward Grumbine's highly cited pa",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379854845"
+    },
+    {
+      "id": "P4",
+      "hash": "9eda99f82facc45534ea226e2ff7793ebebd0535091216b7c591fdc9281695a9",
+      "heading": "Meaning",
+      "excerpt": "Grumbine describes each of these goals as a \"value statement\" and stresses the role of human values in setting ecosystem management goals.",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379854845"
+    },
+    {
+      "id": "P5",
+      "hash": "b0aab37ba2f9e9d69b61bfac4b0cffbc5a7cb88557ae3f526ad83cc953d55ae4",
+      "heading": "Meaning",
+      "excerpt": "It is the last goal mentioned in the survey, accommodating humans, that is most contentious. \"We have observed that when groups of stakehold",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379854845"
+    },
+    {
+      "id": "P6",
+      "hash": "61790965f925200d1441b40631c386c56f99d3faee734c9b8ca1b2d1e49a4f11",
+      "heading": "Health indicators",
+      "excerpt": "Health metrics are determined by stakeholder goals, which drive ecosystem definition. An ecosystem is an abstraction. \"Ecosystems cannot be ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379854845"
+    },
+    {
+      "id": "P7",
+      "hash": "9753b501f2260a44c1a571be57c5a97f5594675eac516af344f8c84e2ba661c1",
+      "heading": "Relationship to human health: the health paradox",
+      "excerpt": "A trade-off between human health and the \"health\" of nature has been termed the \"health paradox\" and it illuminates how human values drive p",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379854845"
+    },
+    {
+      "id": "P8",
+      "hash": "c2928d6f6a6247d514b580d27040fa270e0b423d76d6d275d4b352e61726644d",
+      "heading": "Criticism of the concept and proposed alternatives",
+      "excerpt": "Criticism of ecosystem health largely targets the failure of proponents to explicitly distinguish the normative (policy preference) dimensio",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379854845"
+    },
+    {
+      "id": "P9",
+      "hash": "f54c881152db10d72058eb3a60127db4f52bca561dd39224fe76cf0bac42b653",
+      "heading": "Related terms",
+      "excerpt": "Ecological health has been used as a medical term in reference to human allergy and multiple chemical sensitivity and as a public health ter",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379854845"
+    },
+    {
+      "id": "P10",
+      "hash": "303dd3f356bf3d3690eceb680021f271803a40cb0553ebe5130b4b714c4ba1d3",
+      "heading": "Meaning",
+      "excerpt": "Measuring ecosystem health requires extensive goal-driven environmental sampling. For example, a vision for ecosystem health of Lake Superio",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379854845"
+    },
+    {
+      "id": "P11",
+      "hash": "db7cec78804d1e12e7ac895053829f661fec3da6b8d8905aeaccc38167ae0efa",
+      "heading": "Meaning",
+      "excerpt": "Some authors have attempted broad definitions of ecosystem health, such as benchmarking as healthy the historical ecosystem state \"prior to ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379854845"
+    },
+    {
+      "id": "P12",
+      "hash": "b0b663677261e0cd8cec1684cdd91b801679002ba6bc72f6ab19bf5bdd642dde",
+      "heading": "Meaning",
+      "excerpt": "While this captures significant ecosystem properties, a generalization is elusive as those properties do not necessarily co-vary in nature. ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379854845"
+    },
+    {
+      "id": "P13",
+      "hash": "e79ed54aa5e215847ecf152e4f5b4dad058affeff11345e2fc1ade2c7ecba058",
+      "heading": "Meaning",
+      "excerpt": "\"Resilience is not desirable per se. There can be highly resilient states of ecosystems which are very undesirable from some human perspecti",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379854845"
+    },
+    {
+      "id": "P14",
+      "hash": "83ce9b871ce58cca89715ede771bf14f50332b796afbe71102958bd95ce35726",
+      "heading": "Meaning",
+      "excerpt": "Other authors have sought a numerical index of ecosystem health that would permit quantitative comparisons among ecosystems and within ecosy",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379854845"
+    },
+    {
+      "id": "P15",
+      "hash": "e974b93ae3ffb308945e2a09272bc971c5158df0fa4038f3771475a6f0355286",
+      "heading": "Meaning",
+      "excerpt": "Clement Loo argues that “if one becomes wedded to one particular guiding concept regarding the key factors … one runs the risk of failing to",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379854845"
+    },
+    {
+      "id": "P16",
+      "hash": "ce5ac0241a43cd6d0a2946951184e9e4e0572592cf18f80da5c848620aab6b59",
+      "heading": "Meaning",
+      "excerpt": "\"Another way to measure ecosystem health\" is using complex systems concepts such as criticality, meaning that a healthy ecosystem is in some",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379854845"
+    },
+    {
+      "id": "P17",
+      "hash": "5886435730ec3c68b9c4d65439e5da51d1df7020abf6e5c08a8bd4f67bb48d0d",
+      "heading": "Health indicators",
+      "excerpt": "Ecosystem definition determines the acceptable range of variability (reference conditions) and determines measurement variables. The latter ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379854845"
+    },
+    {
+      "id": "P18",
+      "hash": "1eef735e67e186099b8e9df269826be3ec17ff5a5c568f995305fd07f67bde6e",
+      "heading": "Health indicators",
+      "excerpt": "An indicator is a variable, such as a chemical or biological property, that when measured, is used to infer trends in another (unmeasured) e",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379854845"
+    },
+    {
+      "id": "P19",
+      "hash": "5e28158f341ec6bff8add4ef09e5cdcb53cc9918fd248076cb9eed6c505f2853",
+      "heading": "Health indicators",
+      "excerpt": "Ecosystem assessments employ two kinds of indicators, descriptive indicators and normative indicators. \"Indicators can be used descriptively",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379854845"
+    },
+    {
+      "id": "P20",
+      "hash": "fbc536c249ccb8027a29ba9d629b302409932ab96fabb47d0f555ca775806523",
+      "heading": "Health indicators",
+      "excerpt": "Used descriptively, high chlorophyll-a is an indicator of eutrophication, but it may also be used as an ecosystem health indicator. When use",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379854845"
+    },
+    {
+      "id": "P21",
+      "hash": "181543e4c3e69ec93fa713b84d21c1cbdb3ee811f3cd3f6749a1ed96d3962661",
+      "heading": "Health indicators",
+      "excerpt": "Estimation of ecosystem health has been criticized for intermingling the two types of environmental indicators. A health indicator is a norm",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379854845"
+    },
+    {
+      "id": "P22",
+      "hash": "3d0a3419478f29f17878882304be03a490f04ba97c4138f4b60cc8181c2ba764",
+      "heading": "Health indicators",
+      "excerpt": "The very act of selecting indicators of any kind is biased by the observer's perspective and separation of goals from descriptions has been ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379854845"
+    }
+  ],
+  "updatedAt": "2026-10-21T08:11:55.475Z"
 }
