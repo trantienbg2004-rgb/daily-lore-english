@@ -6428,10 +6428,10 @@
       "checkedAt": "2026-10-21T03:13:16.798Z"
     },
     "295445": {
-      "status": "PENDING",
-      "reason": "queued",
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
       "revisionId": 1369911186,
-      "checkedAt": null
+      "checkedAt": "2026-10-21T13:32:05.408Z"
     },
     "295693": {
       "status": "PENDING",
@@ -9866,7 +9866,7 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-10-21T13:32:03.185Z",
+  "updatedAt": "2026-10-21T13:32:05.423Z",
   "dailyUsage": {
     "day": "2026-10-21",
     "calls": 11,
