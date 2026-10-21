@@ -6068,10 +6068,10 @@
       "checkedAt": null
     },
     "21818": {
-      "status": "source-verified",
-      "reason": "12 rights-verified embedded images; editorial call pending",
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
       "revisionId": 1375296178,
-      "checkedAt": "2026-10-20T16:35:16.656Z"
+      "checkedAt": "2026-10-21T01:39:49.137Z"
     },
     "22576": {
       "status": "source-verified",
@@ -9866,7 +9866,7 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-10-21T01:39:47.238Z",
+  "updatedAt": "2026-10-21T01:39:49.138Z",
   "dailyUsage": {
     "day": "2026-10-21",
     "calls": 3,
