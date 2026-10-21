@@ -1,0 +1,68 @@
+name: SAGA Wikipedia - verified collection
+
+on:
+  schedule:
+    - cron: '23 1 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: saga-wiki-publication
+  cancel-in-progress: false
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - name: Require a qualified Wikipedia release before collecting
+        id: release
+        run: |
+          node scripts/lore-verify.mjs
+          node -e "const fs=require('node:fs'); const f='./public/wiki-reader/manifest.json'; const m=fs.existsSync(f)?require(f):{}; if(m.ready!==true||m.total<200) { console.log('Wiki release not ready; scheduled collection remains closed.'); process.exit(0) } fs.appendFileSync(process.env.GITHUB_OUTPUT,'ready=true\n')"
+      - name: Refresh topic-balanced Wikipedia candidates
+        if: steps.release.outputs.ready == 'true'
+        run: node scripts/wiki-pipeline.mjs discover --max-per-topic=30 --seed-limit=3 --subcategory-limit=1 --max-category-pages=3
+      - name: Generate and audit a bounded free-tier batch
+        if: steps.release.outputs.ready == 'true'
+        env:
+          SAGA_WIKI_GEMINI_KEY: ${{ secrets.SAGA_IMAGE_TEST_API_KEY }}
+          SAGA_WIKI_FREE_TIER_CONFIRMED: '1'
+        run: node scripts/wiki-pipeline.mjs batch --max-calls=8 --max-candidates=24
+      - name: Verify before publication
+        if: steps.release.outputs.ready == 'true'
+        run: |
+          npm test
+          node scripts/lore-verify.mjs
+          npm run build
+          git diff --check
+      - name: Publish only verified catalog changes
+        if: steps.release.outputs.ready == 'true'
+        run: |
+          git config user.name "saga-wiki-publisher"
+          git config user.email "saga-wiki-publisher@users.noreply.github.com"
+          git add data/wiki-pipeline-state.json public/wiki-reader/
+          if git diff --cached --quiet; then
+            echo "No qualified catalog or queue changes."
+            exit 0
+          fi
+          git commit -m "SAGA: publish verified Wikipedia stories"
+          git push origin HEAD:main
+      - name: Preserve review reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: saga-wiki-collection-${{ github.run_id }}
+          path: reports/saga-wiki-local/
+          if-no-files-found: ignore
+          retention-days: 7
