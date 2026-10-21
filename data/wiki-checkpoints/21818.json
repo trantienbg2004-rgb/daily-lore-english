@@ -2,10 +2,10 @@
   "pageId": 21818,
   "title": "National park",
   "topic": "Environment",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1375296178,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375296178",
-  "reason": "12 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -457,7 +457,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375296178"
     }
   ],
-  "updatedAt": "2026-10-21T13:38:42.870Z",
+  "updatedAt": "2026-10-21T13:38:49.887Z",
   "draft": {
     "outline": [
       "Introduction to national parks and their core conservation purpose",
@@ -489,9 +489,10 @@
             ]
           },
           {
-            "text": "Park rangers have many important jobs today. They take care of the plants and animals in the park. Rangers also help visitors stay safe, put out fires, and find people who are lost.",
+            "text": "Not all countries use the same rules for national parks. In some places, people live inside the parks. Critics also say that making parks can sometimes force native communities to leave their homes.",
             "evidenceIds": [
-              "P14"
+              "P6",
+              "P15"
             ]
           },
           {
@@ -576,22 +577,11 @@
       }
     }
   },
-  "repairAttempts": 0,
+  "repairAttempts": 1,
   "lastUsage": {
-    "input": 2737,
-    "output": 1396,
-    "total": 4133
+    "input": 2785,
+    "output": 413,
+    "total": 3198
   },
-  "validation": {
-    "accepted": false,
-    "errors": [
-      "A1-A2:page-2:length-or-sentence",
-      "A1-A2:page-3:length-or-sentence",
-      "A1-A2:page-4:length-or-sentence",
-      "A1-A2:page-4:evidence-context",
-      "A1-A2:page-5:length-or-sentence",
-      "B1-B2:page-4:length-or-sentence",
-      "C1-C2:page-3:length-or-sentence"
-    ]
-  }
+  "validation": null
 }
