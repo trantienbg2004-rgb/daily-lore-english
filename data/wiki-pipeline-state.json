@@ -7166,10 +7166,10 @@
       "checkedAt": "2026-10-21T07:56:57.198Z"
     },
     "2996055": {
-      "status": "EVIDENCE_READY",
-      "reason": "17 rights-verified embedded images",
+      "status": "NEEDS_REVIEW",
+      "reason": "Gemini returned invalid JSON; preserve candidate",
       "revisionId": 1374442712,
-      "checkedAt": "2026-10-21T22:29:38.427Z"
+      "checkedAt": "2026-10-21T22:29:52.523Z"
     },
     "3032314": {
       "status": "EVIDENCE_READY",
@@ -9866,7 +9866,7 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-10-21T22:29:50.560Z",
+  "updatedAt": "2026-10-21T22:29:52.637Z",
   "dailyUsage": {
     "day": "2026-10-21",
     "calls": 31,
