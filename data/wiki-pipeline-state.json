@@ -8498,10 +8498,10 @@
       "checkedAt": "2026-10-21T07:31:33.238Z"
     },
     "44581660": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
+      "revisionId": 1285969547,
+      "checkedAt": "2026-10-21T07:57:04.194Z"
     },
     "44589765": {
       "status": "PENDING",
@@ -9866,7 +9866,7 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-10-21T07:57:02.559Z",
+  "updatedAt": "2026-10-21T07:57:04.194Z",
   "dailyUsage": {
     "day": "2026-10-21",
     "calls": 4,
