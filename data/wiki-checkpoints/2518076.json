@@ -2,9 +2,168 @@
   "pageId": 2518076,
   "title": "Philadelphia Cricket Club",
   "topic": "Sports",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1370657998,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1370657998",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-21T13:31:33.385Z"
+  "reason": "1 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Philadelphia Cricket Club.jpg"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:National women's tennis.jpg",
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/7/71/National_women%27s_tennis.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "fileTitle": "File:National women's tennis.jpg",
+        "caption": "National Women's Tennis Tournament at the Philadelphia Cricket Club. Photo: circa 1910–20",
+        "alt": "",
+        "description": "Thompson, Paul , fl. 190--192- -- Photographer National Women's Tennis Tournament at the Cricket Club, St. Martins, Philadelphia Public domain image",
+        "date": "2015-10-06 11:04:55",
+        "section": "Tennis; Lawn, Pickleball, & Platform",
+        "position": 1,
+        "provenance": {
+          "credit": "Thompson, Paul",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:National_women%27s_tennis.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Philadelphia_Cricket_Club",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1370657998",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "9168e66391090277172b476d3960ae65da754b58a251939fb04f660b17330282",
+      "heading": "Lead",
+      "excerpt": "The club was established in 1854 in southeastern Pennsylvania, and has two locations, one in Chestnut Hill and the other in Flourtown, north",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1370657998"
+    },
+    {
+      "id": "P2",
+      "hash": "5c69827f754375ce57b4e8b7b08457de84bd02b48e153d66346f40d11d35bc7e",
+      "heading": "History",
+      "excerpt": "Founded on February 10, 1854, the Philadelphia Cricket Club is the oldest country club in the United States. As the name indicates, the club",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1370657998"
+    },
+    {
+      "id": "P3",
+      "hash": "84a80cb3f5e972a7a43cfb97e55c719e85fcce9714621f8bf316b217b8a02d58",
+      "heading": "History",
+      "excerpt": "For the first 30 years of the club's existence, the club did not own any grounds and thus played cricket on any grounds available, such as a",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1370657998"
+    },
+    {
+      "id": "P4",
+      "hash": "ac8633bf3308551316a72a23f759aeed52865fb8686017b1e6717bd20d2d1c14",
+      "heading": "Location",
+      "excerpt": "The Philadelphia Cricket Club has two locations. The original location in Chestnut Hill, Philadelphia where the main offices are located, al",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1370657998"
+    },
+    {
+      "id": "P5",
+      "hash": "fe1d980ed7740583be5d6849fb5f3543fb7b1b635e8594e5dabfca74ae92d269",
+      "heading": "Golf",
+      "excerpt": "When the Golf Association of Philadelphia was organized in 1897, the club was one of four founding members with Merion, Philadelphia Country",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1370657998"
+    },
+    {
+      "id": "P6",
+      "hash": "f18bc6b6890b60c5a444ca50e521b4564c7b8cc0c0dc2174e0a916ea0d23dc0c",
+      "heading": "St. Martins Course",
+      "excerpt": "The original nine-hole course was built in 1895 by famed architect Willie Tucker (St. Andrew's Golf Club, Sand Point Country Club, and Argyl",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1370657998"
+    },
+    {
+      "id": "P7",
+      "hash": "52098b56467ddfbd35dbf72a5c2afaaafedbae6c8e5276bdd0cd9efe4be36d2a",
+      "heading": "Wissahickon Course",
+      "excerpt": "A large tract of land was purchased in 1920, because the Club did not own the grounds on which the St. Martins golf course was built. It was",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1370657998"
+    },
+    {
+      "id": "P8",
+      "hash": "49f056688744103361e1b972341ebaf3eaf3b13e81b4766b16b8ad9891861ab5",
+      "heading": "Militia Hill Course",
+      "excerpt": "In 1999, the Board of Governors made a decision to begin the development of a third golf course located on land acquired in the original pur",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1370657998"
+    },
+    {
+      "id": "P9",
+      "hash": "3f097aa482044642c54bddd38c6afba495e72877f4c7b939f1a5c0ee555039e4",
+      "heading": "Cricket",
+      "excerpt": "The cricket team was initially disbanded in 1924 but was later revived in 1998. The club is now one of the hosts of the annual Philadelphia ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1370657998"
+    },
+    {
+      "id": "P10",
+      "hash": "3d445c08d5f95e645b310c6c8b2a799835c5e9aafb692f5cb5cb7d2a798ba9f0",
+      "heading": "Soccer",
+      "excerpt": "Philadelphia has a past in soccer so by 1902, this sport had become popular among cricket clubs in the city of Philadelphia so they decided ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1370657998"
+    },
+    {
+      "id": "P11",
+      "hash": "edfad6f3f7a1c10cc6231db07c938ade5d45e35d3db2d4fe0e68062c34d7af61",
+      "heading": "Squash",
+      "excerpt": "Eight singles courts and two hardball doubles courts round out PCC's squash program. Rich Wade is the director of squash. PCC has coached ma",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1370657998"
+    },
+    {
+      "id": "P12",
+      "hash": "828f7c49e5bc9081ae91de87200e42038a6aafb13da23183b6f22f659bbc9b4e",
+      "heading": "Swimming",
+      "excerpt": "In 2006 the swimming team placed fourth at the Country Club Swimming Association of Greater Philadelphia's League Championships led by the W",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1370657998"
+    },
+    {
+      "id": "P13",
+      "hash": "01ca9b7737811f3e2eacd0761453bdb760343d3842636e3932f6ce9145189b8f",
+      "heading": "Tennis; Lawn, Pickleball, & Platform",
+      "excerpt": "In 1881, the club was one of the founding members of the United States Lawn Tennis Association, today the USTA. The club hosted the inaugura",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1370657998"
+    },
+    {
+      "id": "P14",
+      "hash": "7645aa1d135d20f4fcef38680917e6e442b5bf8f7b0ec2a15012e20bc279bb26",
+      "heading": "Platform Tennis",
+      "excerpt": "In 2014, the platform tennis hut was listed as one of the most impressive by Town & Country. The club hosted the 2017 Philly Cricket Invitat",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1370657998"
+    },
+    {
+      "id": "P15",
+      "hash": "78e756808f718705a48545733b061c513d52c4759c8be62a608eca0f35183b83",
+      "heading": "Pickleball",
+      "excerpt": "Pickleball became a prominent sport at PCC in 2019. Constructing six outdoor courts and eight temporary indoor courts on the indoor tennis c",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1370657998"
+    },
+    {
+      "id": "P16",
+      "hash": "7f0b7d3da38224f2570b39fb09dd5b367834e0b74f485eaf23ecafa1c8a0af9c",
+      "heading": "Trapshooting",
+      "excerpt": "Due to the extensive efforts in recent years of the Trapshooting Committee, trapshooting has become a thriving sport at PCC. Competitions ar",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1370657998"
+    },
+    {
+      "id": "P17",
+      "hash": "f5ada6969d0c7c56ac0c82b3288380a4427529dce8ed36a16208391f8156774b",
+      "heading": "Wissahickon Course",
+      "excerpt": "On June 18, 2013, construction was started on a complete restoration of the Wissahickon course, led by designer Keith Foster and Director of",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1370657998"
+    },
+    {
+      "id": "P18",
+      "hash": "8af88b66c887e3fc3bda723461d91d7d43e9b8ae47d21a2ad3cf98e7b49c9617",
+      "heading": "Wissahickon Course",
+      "excerpt": "Since the completion of the 2014 renovation, Wissahickon has hosted the 2014 Philadelphia Open, the 2015 PGA Professional National Champions",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1370657998"
+    }
+  ],
+  "updatedAt": "2026-10-21T13:31:35.178Z"
 }
