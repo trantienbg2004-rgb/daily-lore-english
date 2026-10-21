@@ -2,9 +2,167 @@
   "pageId": 41994159,
   "title": "Global warming hiatus",
   "topic": "Environment",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1377151789,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377151789",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-21T18:11:37.697Z"
+  "reason": "2 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Global warming hiatus.gif"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:20200324 Global average temperature - NASA-GISS HadCrut NOAA Japan BerkeleyE.svg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a0/20200324_Global_average_temperature_-_NASA-GISS_HadCrut_NOAA_Japan_BerkeleyE.svg/960px-20200324_Global_average_temperature_-_NASA-GISS_HadCrut_NOAA_Japan_BerkeleyE.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:20200324 Global average temperature - NASA-GISS HadCrut NOAA Japan BerkeleyE.svg",
+        "caption": "Temperature data from various scientific organizations worldwide show a high correlation regarding the progress and extent of global warming.",
+        "alt": "",
+        "description": "Charts showing correlation of measured global average temperature, from several scientific organizations. UK Met Office source allowing download of all six datasets, adjusted to a common base value: https://climate.metoffice.cloud/temperature.html (scroll down to \"Get the data / Global mean temperature\") — Archive thereof: https://web.archive.org/web/20260118194423/https://climate.metoffice.cloud/temperature.html#datasets — Archive thereof: https://archive.ph/0ZAbZ Versions 14+ include SIX datasets, not just five as in earlier versions. Version",
+        "date": "2020-03-24",
+        "section": "",
+        "position": 1,
+        "provenance": {
+          "credit": "RCraig09",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:20200324_Global_average_temperature_-_NASA-GISS_HadCrut_NOAA_Japan_BerkeleyE.svg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Global_warming_hiatus",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377151789",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Amardeo Sarma lecture 1 EuroSkepCon2015.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/53/Amardeo_Sarma_lecture_1_EuroSkepCon2015.jpg/960px-Amardeo_Sarma_lecture_1_EuroSkepCon2015.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Amardeo Sarma lecture 1 EuroSkepCon2015.jpg",
+        "caption": "Amardeo Sarma lecturing about climate change denialism at the European Skeptics Congress, hosted by the Association for Skeptical Enquiry",
+        "alt": "",
+        "description": "Amardeo Sarma lecturing about climate change denialism and the future world energy and environmental problems during the European Skeptics Congress 2015.",
+        "date": "2015-09-11 16:31:51",
+        "section": "",
+        "position": 2,
+        "provenance": {
+          "credit": "Nederlandse Leeuw",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Amardeo_Sarma_lecture_1_EuroSkepCon2015.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Global_warming_hiatus",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377151789",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:20200327 Climate change deniers cherry picking time periods.gif"
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Karl 15 Temps before and after corrxnx.png"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "5182274023cf93594817ee13f3cc8a70504814cec08b083b338cbd719f9b13ce",
+      "heading": "Lead",
+      "excerpt": "A global warming hiatus, also sometimes referred to as a global warming pause or a global warming slowdown, is a period of relatively little",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377151789"
+    },
+    {
+      "id": "P2",
+      "hash": "56803afc5a252474739cf063e15857c84657a91fc253dd73f632b16d53d28d61",
+      "heading": "Lead",
+      "excerpt": "Publicity has surrounded claims of a global warming hiatus during the period 1998–2013. The exceptionally warm El Niño year of 1998 was an o",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377151789"
+    },
+    {
+      "id": "P3",
+      "hash": "cd861d7941b12b0d2ee4843d2482b24f9837464ecc85a18cec0afa145815907d",
+      "heading": "Lead",
+      "excerpt": "Research reported in July 2015 on an updated NOAA dataset casts doubt on the existence of a hiatus, and it finds no indication of a slowdown",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377151789"
+    },
+    {
+      "id": "P4",
+      "hash": "a0cd4a12d719b81bb05baa04cad1761aa667dda5490e529115793a59ac13c0e6",
+      "heading": "Lead",
+      "excerpt": "Independent of these discussions about data and measurements for earlier years, 2015 turned out to be much warmer than any of the earlier ye",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377151789"
+    },
+    {
+      "id": "P5",
+      "hash": "9c4b6c5ea4e81fb35ed1844fde8a1c39bd50d6e3d26f9ae587b51e522341c974",
+      "heading": "Surface temperature changes: hiatus periods",
+      "excerpt": "Climate is the statistics (usually, mean or variability) of weather: the classical period for averaging weather variables is 30 years in acc",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377151789"
+    },
+    {
+      "id": "P6",
+      "hash": "0bbab037e095e1527c8494cb3e8bc4a7a996df96ff11a3b29e4083d17e626647",
+      "heading": "Other aspects of the climate system",
+      "excerpt": "While hiatus periods have appeared in surface-air temperature records, other components of the climate system associated with warming have c",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377151789"
+    },
+    {
+      "id": "P7",
+      "hash": "0e6446472d06dcae236cd137eb8a911c7ed89118a23380a702d9f4720b968762",
+      "heading": "Development of perception of post-1998 hiatus",
+      "excerpt": "The warm El Niño year of 1998 was exceptional: the IPCC Third Assessment Report of 2001 highlighted that the \"high global temperature associ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377151789"
+    },
+    {
+      "id": "P8",
+      "hash": "7c528325df553fbfd1996c226d9ff9b27e161146d132ec1ff9e6f27c27a04618",
+      "heading": "Temperature dataset coverage and homogenization",
+      "excerpt": "The instrumental temperature record does not cover the entire globe: there are areas of incomplete or missing data, particularly in polar re",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377151789"
+    },
+    {
+      "id": "P9",
+      "hash": "637c680e5d2a3989b4693700c254a1650934b442ef03726ed7b48f5496dc0ea2",
+      "heading": "Natural variability",
+      "excerpt": "Natural climate variability can appear to slow down surface warming over short periods, but does not refute long-term climate change trends.",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377151789"
+    },
+    {
+      "id": "P10",
+      "hash": "c0b0cd1f9362436ad8a10086491259df4963163bf93314e13ede04588bfd6a0e",
+      "heading": "Effects of oceans",
+      "excerpt": "One proposal is that the hiatus was a part of natural climate variability, specifically related to decadal cooling in the eastern equatorial",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377151789"
+    },
+    {
+      "id": "P11",
+      "hash": "3f64d7ac0695f7230048a4ee613e4b22a981792e2654734ad8930bb84febb470",
+      "heading": "Volcanic activity",
+      "excerpt": "Several studies have proposed that possible slower surface warming during this period was caused in part by increased sulfur emissions from ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377151789"
+    },
+    {
+      "id": "P12",
+      "hash": "8a7e06d218881cbb16d2f5f87dd3d4eae0c3adc8c30093730820ccc9bc6d3ee1",
+      "heading": "Other factors",
+      "excerpt": "Additional proposed causes of the decreased rate of surface warming in about 1999-2014 include the emission of pine-smelling vapors from pin",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377151789"
+    },
+    {
+      "id": "P13",
+      "hash": "7fe3a1f372f8b2650f391aabf8d058c0553e94ab2aa2677de0acf038f131d497",
+      "heading": "Length of hiatus in relation to climate models",
+      "excerpt": "Two independent studies published in August 2014 concluded that, once surface temperatures start rising again, it is most likely that \"they ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377151789"
+    }
+  ],
+  "updatedAt": "2026-10-21T18:11:44.804Z"
 }
