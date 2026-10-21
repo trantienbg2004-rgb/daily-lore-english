@@ -7976,10 +7976,10 @@
       "checkedAt": "2026-10-21T07:33:31.084Z"
     },
     "23423379": {
-      "status": "FETCHED",
-      "reason": "pinned-source-ready",
+      "status": "EVIDENCE_READY",
+      "reason": "13 rights-verified embedded images",
       "revisionId": 1366154475,
-      "checkedAt": "2026-10-21T07:56:42.876Z"
+      "checkedAt": "2026-10-21T07:56:44.279Z"
     },
     "23773961": {
       "status": "EVIDENCE_READY",
@@ -9866,7 +9866,7 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-10-21T07:56:42.883Z",
+  "updatedAt": "2026-10-21T07:56:44.283Z",
   "dailyUsage": {
     "day": "2026-10-21",
     "calls": 4,
