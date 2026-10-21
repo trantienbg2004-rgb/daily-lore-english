@@ -2,9 +2,605 @@
   "pageId": 9282401,
   "title": "Science and inventions of Leonardo da Vinci",
   "topic": "Science & Technology",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1379158458,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379158458",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-21T13:31:39.119Z"
+  "reason": "16 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Uomo Vitruviano.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/11/Uomo_Vitruviano.jpg/960px-Uomo_Vitruviano.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Uomo Vitruviano.jpg",
+        "caption": "Vitruvian Man, c. 1490",
+        "alt": "",
+        "description": "Vitruvian Man, Gallerie dell'Accademia, Venice",
+        "date": "circa 1490date QS:P,+1490-00-00T00:00:00Z/9,P1480,Q5727902date QS:P,+1490-00-00T00:00:00Z/9,P1480,Q5",
+        "section": "",
+        "position": 0,
+        "provenance": {
+          "credit": "Leonardo da Vinci",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Uomo_Vitruviano.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Science_and_inventions_of_Leonardo_da_Vinci",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379158458",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Leonardo da Vinci - RCIN 919000, Verso The bones and muscles of the arm c.1510-11.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7a/Leonardo_da_Vinci_-_RCIN_919000%2C_Verso_The_bones_and_muscles_of_the_arm_c.1510-11.jpg/960px-Leonardo_da_Vinci_-_RCIN_919000%2C_Verso_The_bones_and_muscles_of_the_arm_c.1510-11.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Leonardo da Vinci - RCIN 919000, Verso The bones and muscles of the arm c.1510-11.jpg",
+        "caption": "Investigating the motion of the arm",
+        "alt": "",
+        "description": "",
+        "date": "2020-08-18 00:14:22",
+        "section": "Approach to scientific investigation",
+        "position": 1,
+        "provenance": {
+          "credit": "Leonardo da Vinci",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Leonardo_da_Vinci_-_RCIN_919000,_Verso_The_bones_and_muscles_of_the_arm_c.1510-11.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Science_and_inventions_of_Leonardo_da_Vinci",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379158458",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Study of the Graduations of Shadows on Spheres.jpg"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Lady with an Ermine - Leonardo da Vinci - Google Art Project.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f9/Lady_with_an_Ermine_-_Leonardo_da_Vinci_-_Google_Art_Project.jpg/960px-Lady_with_an_Ermine_-_Leonardo_da_Vinci_-_Google_Art_Project.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Lady with an Ermine - Leonardo da Vinci - Google Art Project.jpg",
+        "caption": "The Lady with an Ermine",
+        "alt": "",
+        "description": "",
+        "date": "circa 1490date QS:P571,+1490-00-00T00:00:00Z/9,P1480,Q5727902 Alternate: 1483-1490date QS:P571,+1490",
+        "section": "Light",
+        "position": 3,
+        "provenance": {
+          "credit": "Leonardo da Vinci",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Lady_with_an_Ermine_-_Leonardo_da_Vinci_-_Google_Art_Project.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Science_and_inventions_of_Leonardo_da_Vinci",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379158458",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Proportions of the Head.jpg"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Anatomy of a Male Nude.jpg",
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/f/f5/Anatomy_of_a_Male_Nude.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "fileTitle": "File:Anatomy of a Male Nude.jpg",
+        "caption": "Two anatomical studies",
+        "alt": "",
+        "description": "",
+        "date": "circa 1504 - 1506",
+        "section": "Topographic anatomy",
+        "position": 5,
+        "provenance": {
+          "credit": "Leonardo da Vinci",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Anatomy_of_a_Male_Nude.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Science_and_inventions_of_Leonardo_da_Vinci",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379158458",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:View of a Skull III.jpg"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Leonardo da Vinci - RCIN 912281, The cardiovascular system and principal organs of a woman c.1509-10.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e3/Leonardo_da_Vinci_-_RCIN_912281%2C_The_cardiovascular_system_and_principal_organs_of_a_woman_c.1509-10.jpg/960px-Leonardo_da_Vinci_-_RCIN_912281%2C_The_cardiovascular_system_and_principal_organs_of_a_woman_c.1509-10.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Leonardo da Vinci - RCIN 912281, The cardiovascular system and principal organs of a woman c.1509-10.jpg",
+        "caption": "The organs of a woman's body",
+        "alt": "",
+        "description": "An anatomical study of the principal organs and the arterial system of a female torso, pricked for transfer.",
+        "date": "from 1509 until 1510date QS:P571,+1550-00-00T00:00:00Z/7,P580,+1509-00-00T00:00:00Z/9,P582,+1510-00-",
+        "section": "Dissection",
+        "position": 7,
+        "provenance": {
+          "credit": "Leonardo da Vinci",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Leonardo_da_Vinci_-_RCIN_912281,_The_cardiovascular_system_and_principal_organs_of_a_woman_c.1509-10.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Science_and_inventions_of_Leonardo_da_Vinci",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379158458",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Views of a Foetus in the Womb.jpg"
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Leonardo anatomy of dog and man.JPG"
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Sedge.jpg"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Leonardo da Vinci - RCIN 912277, The rivers and mountains of central Italy c.1502-4.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2e/Leonardo_da_Vinci_-_RCIN_912277%2C_The_rivers_and_mountains_of_central_Italy_c.1502-4.jpg/960px-Leonardo_da_Vinci_-_RCIN_912277%2C_The_rivers_and_mountains_of_central_Italy_c.1502-4.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Leonardo da Vinci - RCIN 912277, The rivers and mountains of central Italy c.1502-4.jpg",
+        "caption": "A topographical map",
+        "alt": "",
+        "description": "",
+        "date": "2020-08-17 12:05:16",
+        "section": "Geology",
+        "position": 11,
+        "provenance": {
+          "credit": "Leonardo da Vinci",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Leonardo_da_Vinci_-_RCIN_912277,_The_rivers_and_mountains_of_central_Italy_c.1502-4.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Science_and_inventions_of_Leonardo_da_Vinci",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379158458",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Virgin of the Rocks (Louvre).jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fc/Virgin_of_the_Rocks_%28Louvre%29.jpg/960px-Virgin_of_the_Rocks_%28Louvre%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Virgin of the Rocks (Louvre).jpg",
+        "caption": "The Virgin of the Rocks",
+        "alt": "",
+        "description": "Madonna and Child Madonna and Child",
+        "date": "1482",
+        "section": "Geology",
+        "position": 12,
+        "provenance": {
+          "credit": "Leonardo da Vinci",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Virgin_of_the_Rocks_(Louvre).jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Science_and_inventions_of_Leonardo_da_Vinci",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379158458",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Leonardo da Vinci - Plan of Imola - Google Art ProjectFXD.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8d/Leonardo_da_Vinci_-_Plan_of_Imola_-_Google_Art_ProjectFXD.jpg/960px-Leonardo_da_Vinci_-_Plan_of_Imola_-_Google_Art_ProjectFXD.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Leonardo da Vinci - Plan of Imola - Google Art ProjectFXD.jpg",
+        "caption": "Leonardo's accurate map of Imola for Cesare Borgia",
+        "alt": "",
+        "description": "",
+        "date": "1502date QS:P571,+1502-00-00T00:00:00Z/9date QS:P571,+1502-00-00T00:00:00Z/9",
+        "section": "Cartography",
+        "position": 13,
+        "provenance": {
+          "credit": "Leonardo da Vinci",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Leonardo_da_Vinci_-_Plan_of_Imola_-_Google_Art_ProjectFXD.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Science_and_inventions_of_Leonardo_da_Vinci",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379158458",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Studies of Water passing Obstacles and falling.jpg"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Leonardo study AdorationofMagi.JPG",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ee/Leonardo_study_AdorationofMagi.JPG/960px-Leonardo_study_AdorationofMagi.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Leonardo study AdorationofMagi.JPG",
+        "caption": "Draft of the perspective for Adoration of the Magi",
+        "alt": "",
+        "description": "Leonardo da Vinci, studyof Adoration of the Magi Leonardo da Vinci, studyof Adoration of the Magi",
+        "date": "late 15-early 16th century",
+        "section": "Perspective",
+        "position": 15,
+        "provenance": {
+          "credit": "Leonardo da Vinci",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Leonardo_study_AdorationofMagi.JPG",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Science_and_inventions_of_Leonardo_da_Vinci",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379158458",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:De divina proportione - Vigintisex Basium Planum Vacuum.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/12/De_divina_proportione_-_Vigintisex_Basium_Planum_Vacuum.jpg/960px-De_divina_proportione_-_Vigintisex_Basium_Planum_Vacuum.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:De divina proportione - Vigintisex Basium Planum Vacuum.jpg",
+        "caption": "The rhombicuboctahedron, as published in De divina proportione",
+        "alt": "",
+        "description": "Illustrations by Leonardo da Vinci, from Luca Pacioli's \"De divina proportione\", 1509 edition.",
+        "date": "1509date QS:P571,+1509-00-00T00:00:00Z/9date QS:P571,+1509-00-00T00:00:00Z/9",
+        "section": "Geometry",
+        "position": 16,
+        "provenance": {
+          "credit": "Leonardo da Vinci",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:De_divina_proportione_-_Vigintisex_Basium_Planum_Vacuum.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Science_and_inventions_of_Leonardo_da_Vinci",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379158458",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Codice Atlantico - Perspectograph.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/55/Codice_Atlantico_-_Perspectograph.jpg/960px-Codice_Atlantico_-_Perspectograph.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Codice Atlantico - Perspectograph.jpg",
+        "caption": "Leonardo da Vinci, Codex Atlanticus: Painter using \"glass\" while drawing an armillary sphere in perspective",
+        "alt": "",
+        "description": "Prospettografo",
+        "date": "1480",
+        "section": "Anamorphosis",
+        "position": 17,
+        "provenance": {
+          "credit": "Leonardo da Vinci",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Codice_Atlantico_-_Perspectograph.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Science_and_inventions_of_Leonardo_da_Vinci",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379158458",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:OcchioBambinoCodiceAtlanticoS.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/44/OcchioBambinoCodiceAtlanticoS.jpg/960px-OcchioBambinoCodiceAtlanticoS.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:OcchioBambinoCodiceAtlanticoS.jpg",
+        "caption": "Two anamorphic drawings, a face of a baby and an eye in Codex Atlanticus folio 98 recto",
+        "alt": "",
+        "description": "Esempio di anamorfosi piana in un disegno di Leonardo Da Vinci raffigurante un viso di bambino ed un occhio.",
+        "date": "2021-08-18",
+        "section": "Anamorphosis",
+        "position": 18,
+        "provenance": {
+          "credit": "BeRenaissance",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:OcchioBambinoCodiceAtlanticoS.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Science_and_inventions_of_Leonardo_da_Vinci",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379158458",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Leonardo machine for grinding convex lenses.JPG"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Leonardo machines.JPG",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fa/Leonardo_machines.JPG/960px-Leonardo_machines.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Leonardo machines.JPG",
+        "caption": "Various hydraulic machines",
+        "alt": "",
+        "description": "Leonardo da Vinci, drawings of machines",
+        "date": "late 15-early 16th century",
+        "section": "Bridges and hydraulics",
+        "position": 20,
+        "provenance": {
+          "credit": "Leonardo da Vinci",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Leonardo_machines.JPG",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Science_and_inventions_of_Leonardo_da_Vinci",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379158458",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Leonardo da Vinci - RCIN 912647, A scene in an arsenal c.1485-90.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/72/Leonardo_da_Vinci_-_RCIN_912647%2C_A_scene_in_an_arsenal_c.1485-90.jpg/960px-Leonardo_da_Vinci_-_RCIN_912647%2C_A_scene_in_an_arsenal_c.1485-90.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Leonardo da Vinci - RCIN 912647, A scene in an arsenal c.1485-90.jpg",
+        "caption": "An arsenal",
+        "alt": "",
+        "description": "",
+        "date": "2020-08-17 12:20:49",
+        "section": "War machines",
+        "position": 21,
+        "provenance": {
+          "credit": "Leonardo da Vinci",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Leonardo_da_Vinci_-_RCIN_912647,_A_scene_in_an_arsenal_c.1485-90.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Science_and_inventions_of_Leonardo_da_Vinci",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379158458",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Da Vinci Scythed Chariot and Armoured Tank.JPG",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f7/Da_Vinci_Scythed_Chariot_and_Armoured_Tank.JPG/960px-Da_Vinci_Scythed_Chariot_and_Armoured_Tank.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Da Vinci Scythed Chariot and Armoured Tank.JPG",
+        "caption": "Leonardo's proposed vehicle",
+        "alt": "",
+        "description": "Drawing bij Leonardo da Vinci of a scythed chariot and an armoured tank.",
+        "date": "circa 1485date QS:P,+1485-00-00T00:00:00Z/9,P1480,Q5727902date QS:P,+1485-00-00T00:00:00Z/9,P1480,Q5",
+        "section": "War machines",
+        "position": 22,
+        "provenance": {
+          "credit": "Leonardo da Vinci",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Da_Vinci_Scythed_Chariot_and_Armoured_Tank.JPG",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Science_and_inventions_of_Leonardo_da_Vinci",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379158458",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Da Vinci codex du vol des oiseaux Luc Viatour.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bb/Da_Vinci_codex_du_vol_des_oiseaux_Luc_Viatour.jpg/960px-Da_Vinci_codex_du_vol_des_oiseaux_Luc_Viatour.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Da Vinci codex du vol des oiseaux Luc Viatour.jpg",
+        "caption": "From the Codex on the Flight of Birds",
+        "alt": "",
+        "description": "Codex flight of the birds by Leonardo da Vinci",
+        "date": "2007",
+        "section": "Flight",
+        "position": 23,
+        "provenance": {
+          "credit": "Photography Luc Viatour",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Da_Vinci_codex_du_vol_des_oiseaux_Luc_Viatour.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Science_and_inventions_of_Leonardo_da_Vinci",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379158458",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "9e020c5662f8665362fecc3ca41bc24a7d7b1fab0264224fea77627302419790",
+      "heading": "Lead",
+      "excerpt": "Leonardo da Vinci (1452–1519) was an Italian polymath, regarded as the epitome of the \"Renaissance Man\", displaying skills in numerous diver",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379158458"
+    },
+    {
+      "id": "P2",
+      "hash": "29d4f002e293f6e9ba4a3f13ea0b67281d8fc3b9ca79e7dc1d83e846ee039346",
+      "heading": "Lead",
+      "excerpt": "While the entire extent of his scientific studies has only become recognized in the last 150 years, during his lifetime he was employed for ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379158458"
+    },
+    {
+      "id": "P3",
+      "hash": "14379ad55843cea1b2292e85eba9d80cde78b98062988f80e35bb4ff24bffec4",
+      "heading": "Lead",
+      "excerpt": "One of Leonardo's drawings, the Vitruvian Man, is a study of the proportions of the human body, linking art and science in a single work tha",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379158458"
+    },
+    {
+      "id": "P4",
+      "hash": "83b44ce6964db987d218e0f0b9575afceb2de3d300428e20e353f4bcf2a98c75",
+      "heading": "Approach to scientific investigation",
+      "excerpt": "During the Renaissance, the study of art and science was not perceived as mutually exclusive; on the contrary, the one was seen as informing",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379158458"
+    },
+    {
+      "id": "P5",
+      "hash": "2dedd10578d916cdd75eb866488e6d98ee648b179c450769c0b50de48f52fc9b",
+      "heading": "Flight",
+      "excerpt": "The desire to fly is expressed in the many studies and drawings. His later journals contain a detailed study of the flight of birds and seve",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379158458"
+    },
+    {
+      "id": "P6",
+      "hash": "0950f1358e7c964051520916e672f21715e22ea472167d6d391300418abb2590",
+      "heading": "Approach to scientific investigation",
+      "excerpt": "As a scientist, Leonardo had no formal education in Latin and mathematics and did not attend a university. Because of these factors, his sci",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379158458"
+    },
+    {
+      "id": "P7",
+      "hash": "229810f731dcc25d6d4dc095e69f0fd45c4b9f90bc17a4e1b62fc988af8f399f",
+      "heading": "Notes and journals",
+      "excerpt": "Leonardo kept a series of journals in which he wrote almost daily, as well as separate notes and sheets of observations, comments and plans.",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379158458"
+    },
+    {
+      "id": "P8",
+      "hash": "9bd76766d7138f9bf88c8b7086f337e08f90b69364ef319329b248ea4ceb1026",
+      "heading": "Publication",
+      "excerpt": "Leonardo illustrated a book on mathematical proportion in art written by his friend Luca Pacioli and called De divina proportione, published",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379158458"
+    },
+    {
+      "id": "P9",
+      "hash": "d19259f414408856565cbcf7232f337187a78bdde441a00d681ad90216c5d749",
+      "heading": "Light",
+      "excerpt": "The lights which may illuminate other bodies that's of 4 kinds. These are; diffused light as that of the atmosphere; And Direct, as that of ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379158458"
+    },
+    {
+      "id": "P10",
+      "hash": "157ccca39894edd62f65944268892b81dfcfd8357e6e7ca1417a4ad3764b9b6c",
+      "heading": "Human anatomy",
+      "excerpt": "...to obtain a true and perfect knowledge ... I have dissected more than ten human bodies, destroying all the other members, and removing th",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379158458"
+    },
+    {
+      "id": "P11",
+      "hash": "06277d84f2bb92e32cb758250584b17f2c448193ed2155de5e2eaab372890822",
+      "heading": "Topographic anatomy",
+      "excerpt": "Leonardo began the formal study of the topographical anatomy of the human body when apprenticed to Andrea del Verrocchio. As a student he wo",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379158458"
+    },
+    {
+      "id": "P12",
+      "hash": "bc17b14c21dd7fdef18c7e7dd2bac6ddc253fdc0f268777af503bc25bbad78ac",
+      "heading": "Dissection",
+      "excerpt": "As Leonardo became successful as an artist, he was given permission to dissect human corpses at the Hospital of Santa Maria Nuova in Florenc",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379158458"
+    },
+    {
+      "id": "P13",
+      "hash": "bd23cd79fd3fb3a23407e8228de878b7d9e6faf794aeb51c7f9a9c43cbd9a391",
+      "heading": "Comparative anatomy",
+      "excerpt": "Leonardo not only studied human anatomy, but the anatomy of many other animals as well. He dissected cows, birds, monkeys and frogs, compari",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379158458"
+    },
+    {
+      "id": "P14",
+      "hash": "442f8f5386748e5a399d0139d8dbd5757efb5f288c40bf11d5ad8279cedd7453",
+      "heading": "Botany",
+      "excerpt": "The science of botany was long established by Leonardo's time, a treatise on the subject having been written as early as 300 BCE. Leonardo's",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379158458"
+    },
+    {
+      "id": "P15",
+      "hash": "3c279806b10d308e24c3348576e47c4fbaf5d21971880da71ecbef0e909703e6",
+      "heading": "Geology",
+      "excerpt": "As an adult, Leonardo had only two childhood memories, one of which was the finding of a cave in the Apennines. Although fearing that he mig",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379158458"
+    },
+    {
+      "id": "P16",
+      "hash": "da244747e1a4e321da8cc370da3b751412bf3eb1a4e95c4412032d30360a43a5",
+      "heading": "Cartography",
+      "excerpt": "In the early 16th century maps were rare and often inaccurate. Leonardo produced several extremely accurate maps such as the town plan of Im",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379158458"
+    },
+    {
+      "id": "P17",
+      "hash": "d142001ddfcdb3649696086d83c74d80bd7ae6f63b8a179526a06e5db3973f87",
+      "heading": "Hydrodynamics",
+      "excerpt": "All the branches of a water [course] at every stage of its course, if they are of equal rapidity, are equal to the body of the main stream.",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379158458"
+    },
+    {
+      "id": "P18",
+      "hash": "52cb4d44807fae751d6d62cda10cd0cfd5e7f568ea5611dc3c08f00cf8595b8a",
+      "heading": "Astronomy",
+      "excerpt": "Leonardo lived at a time when geocentric theories were the most widely used explanations to account for the relationship between the Earth a",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379158458"
+    },
+    {
+      "id": "P19",
+      "hash": "712febcf0915fc4ab5503950f02387dd1b2fcccd1bf0b6248fa6cbd80636eac2",
+      "heading": "Alchemy",
+      "excerpt": "Claims are sometimes made that Leonardo da Vinci was an alchemist. He was trained in the workshop of Verrocchio, who according to Vasari, wa",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379158458"
+    },
+    {
+      "id": "P20",
+      "hash": "48b3c63725d1e18e064b898fb0808c6edcc2575806142470ac28d7f61b19e5ed",
+      "heading": "Perspective",
+      "excerpt": "The art of perspective is of such a nature as to make what is flat appear in relief and what is in relief flat.",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379158458"
+    },
+    {
+      "id": "P21",
+      "hash": "3f911020a883050a5ae8fde48e641623d5e944c1b6f88597fb5e02b5f04b1d79",
+      "heading": "Geometry",
+      "excerpt": "While in Milan in 1496, Leonardo met a traveling monk and academic, Luca Pacioli. Under him, Leonardo studied mathematics. Pacioli, who firs",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379158458"
+    },
+    {
+      "id": "P22",
+      "hash": "788f082897369e37c35b2f61cb17fc921e614dfd3555c79b008b38296e913e15",
+      "heading": "Anamorphosis",
+      "excerpt": "...And if you will paint this on a wall in front of which you can move freely, it will look out of proportion… and if notwithstanding that y",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379158458"
+    },
+    {
+      "id": "P23",
+      "hash": "6044fcefdbb73e08d2f876427244ae003f830e2934a4b04359781d0b9d804745",
+      "heading": "Engineering and invention",
+      "excerpt": "He made designs for mills, fulling machines and engines that could be driven by water-power... In addition he used to make models and plans ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379158458"
+    },
+    {
+      "id": "P24",
+      "hash": "c5538c4009ab5255f3316691f4cf705ee39944727cea142ef20a721c8f269236",
+      "heading": "Practical inventions and projects",
+      "excerpt": "With the same rational and analytical approach that he used in anatomic studies, Leonardo faced the study and design of a bewildering number",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379158458"
+    }
+  ],
+  "updatedAt": "2026-10-21T13:31:40.985Z"
 }
