@@ -2,10 +2,10 @@
   "pageId": 43245,
   "title": "Westminster Abbey",
   "topic": "Culture",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1378625637,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378625637",
-  "reason": "16 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -535,5 +535,148 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378625637"
     }
   ],
-  "updatedAt": "2026-10-21T22:30:01.317Z"
+  "updatedAt": "2026-10-21T22:30:16.903Z",
+  "draft": {
+    "outline": [
+      "Origins and early royal building",
+      "Gothic expansion by Henry III",
+      "Tudor changes and the Reformation",
+      "Later towers and turbulent protests",
+      "Modern design stops and enduring legacy"
+    ],
+    "variants": {
+      "A1-A2": {
+        "headline": "The Story of Westminster Abbey",
+        "pages": [
+          {
+            "text": "Westminster Abbey is a famous church in London, England. For many years, kings and queens have had their special crowning ceremonies here. Many royal weddings also take place at this historic church, making it an important place for the country.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Long ago, a group of monks lived on this land. In the 1040s, King Edward the Confessor started building a big new church. Later, in 1245, King Henry III ordered workers to build a new church in a grand Gothic style with high stone vaults.",
+            "evidenceIds": [
+              "P2",
+              "P6",
+              "P7",
+              "P15"
+            ]
+          },
+          {
+            "text": "In the 1500s, King Henry VIII took control of England's monasteries, including this one. The monks had to leave. Later, Queen Elizabeth I made the church a special royal building that answered directly to the sovereign instead of other religious leaders.",
+            "evidenceIds": [
+              "P2",
+              "P9"
+            ]
+          },
+          {
+            "text": "Over hundreds of years, more parts were added to the building. In the 1740s, workers finished the two tall towers at the front of the church. In 1914, a bomb planted during a suffragette protest damaged the famous Coronation Chair inside.",
+            "evidenceIds": [
+              "P11",
+              "P12"
+            ]
+          },
+          {
+            "text": "Today, thousands of people visit the abbey. It holds the tombs of many famous monarchs, poets, and scientists. It remains a key symbol of British history and a UNESCO World Heritage Site.",
+            "evidenceIds": [
+              "P2",
+              "P4"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "History and Architecture of Westminster Abbey",
+        "pages": [
+          {
+            "text": "Formally titled the Collegiate Church of Saint Peter at Westminster, this London landmark has hosted every English and British monarch's coronation since 1066. At least 16 royal weddings and numerous royal burials have taken place within its walls since the medieval period.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "While monastic origins reach back to the mid-10th century, the first major church on the site was commissioned by King Edward the Confessor in the 1040s. In 1245, Henry III initiated a massive rebuilding campaign in the French Gothic style to create a fitting shrine for Edward.",
+            "evidenceIds": [
+              "P2",
+              "P6",
+              "P7"
+            ]
+          },
+          {
+            "text": "During the 16th-century English Reformation, Henry VIII seized the abbey's wealth and dissolved the monastery. Elizabeth I later established the church as a royal peculiar, directly accountable to the sovereign rather than regional bishops.",
+            "evidenceIds": [
+              "P2",
+              "P9"
+            ]
+          },
+          {
+            "text": "Later centuries brought major structural additions. Architects Christopher Wren, Nicholas Hawksmoor, and John James worked on the exterior, culminating in the completion of the iconic western towers in the 1740s. In 1914, suffragette activists targeted the building with a bomb, damaging the Coronation Chair.",
+            "evidenceIds": [
+              "P11",
+              "P12",
+              "P14"
+            ]
+          },
+          {
+            "text": "In the 21st century, plans for a modern corona structure above the central lantern were proposed but ultimately abandoned in 2010. Today, housing over 3,300 burials including monarchs, poets, and scientists, the site is recognized globally as a UNESCO World Heritage Site.",
+            "evidenceIds": [
+              "P2",
+              "P4",
+              "P13"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "The Evolution of Westminster Abbey",
+        "pages": [
+          {
+            "text": "Formally designated as the Collegiate Church of Saint Peter at Westminster, this Anglican institution has served as the invariable locus for English and British royal coronations since 1066. It additionally accommodates numerous royal sepulchres and historic dynastic nuptials.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Although exact early origins remain obscure, Benedictine monastic presence was established by the mid-tenth century. Edward the Confessor initiated the initial substantial Romanesque construction, succeeded by Henry III's ambitious 1245 Gothic reconfiguration designed to venerate Edward and rival French cathedrals.",
+            "evidenceIds": [
+              "P2",
+              "P6",
+              "P7"
+            ]
+          },
+          {
+            "text": "The English Reformation brought profound institutional disruption when Henry VIII confiscated monastic assets in the 1530s. Elizabeth I subsequently reconstituted the foundation as a royal peculiar, subordinating it directly to the sovereign rather than traditional diocesan structures.",
+            "evidenceIds": [
+              "P2",
+              "P9"
+            ]
+          },
+          {
+            "text": "Architectural development persisted across epochs, with Christopher Wren and Nicholas Hawksmoor directing late-period Gothic-Baroque restorations and constructing the western towers. Early 20th-century political unrest saw suffragette agitation, culminating in a 1914 explosion that fractured the ancient Coronation Chair.",
+            "evidenceIds": [
+              "P11",
+              "P12",
+              "P14"
+            ]
+          },
+          {
+            "text": "Recent proposals for a central corona architectural feature were formally abandoned in 2010 after preliminary evaluations. Holding more than 3,300 interments of prominent historical figures, the abbey maintains its status alongside associated parliamentary landmarks as a UNESCO World Heritage Site.",
+            "evidenceIds": [
+              "P2",
+              "P4",
+              "P13"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2877,
+    "output": 1541,
+    "total": 4418
+  },
+  "validation": null
 }
