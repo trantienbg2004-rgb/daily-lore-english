@@ -67,6 +67,12 @@ test('a repair changes only the failing CEFR page',()=>{
  assert.deepEqual(fixed.variants['A1-A2'],original.variants['A1-A2'])
  assert.deepEqual(fixed.variants['C1-C2'],original.variants['C1-C2'])
  assert.deepEqual(validateWikiDraft(fixed,{source,topic:'Politics',evidence}).errors,[])
+ const onePage=applyWikiRepair(broken,{variants:{'B1-B2':{pages:[original.variants['B1-B2'].pages[3]]}}},targets,issues)
+ assert.deepEqual(onePage.variants,original.variants)
+ const fullLevel=applyWikiRepair(broken,{variants:{'B1-B2':{pages:original.variants['B1-B2'].pages}}},targets,issues)
+ assert.deepEqual(fullLevel.variants,original.variants)
+ assert.throws(()=>applyWikiRepair(broken,{variants:{'B1-B2':{pages:[{...original.variants['B1-B2'].pages[3],page:2}]}}},targets,issues),
+  /Wrong repaired page number/)
  assert.throws(()=>applyWikiRepair(broken,{variants:{'B1-B2':{pages:{4:{text:'An entirely new account.',evidenceIds:['P1']}}}}},targets,issues),
   /unrelated sentence/)
 })

@@ -18,6 +18,23 @@ const number=(name,fallback,max)=>{
 }
 const checkpointBranch=process.env.SAGA_WIKI_CHECKPOINT_BRANCH
 const git=(...args)=>execFileSync('git',args,{cwd:base,encoding:'utf8'}).trim()
+let lastPushAt=0
+const wait=ms=>new Promise(resolve=>setTimeout(resolve,ms))
+async function pushWithPacing(){
+ for(let attempt=0;attempt<3;attempt++){
+  const delay=Math.max(0,6000-(Date.now()-lastPushAt))
+  if(delay)await wait(delay)
+  lastPushAt=Date.now()
+  try{git('push','origin',`HEAD:${checkpointBranch}`);return}
+  catch(error){
+   const remote=git('ls-remote','origin',`refs/heads/${checkpointBranch}`).split(/\s+/)[0]
+   if(remote===git('rev-parse','HEAD'))return
+   if(remote!==git('rev-parse','HEAD^'))throw Error('Checkpoint branch advanced; preserve local commit and stop')
+   if(attempt===2)throw error
+   await wait(6000*(attempt+1))
+  }
+ }
+}
 async function pushCheckpoint(){
  if(!checkpointBranch)return
  if(!/^[-a-zA-Z0-9_/]+$/.test(checkpointBranch)||git('branch','--show-current')!==checkpointBranch)
@@ -28,7 +45,7 @@ async function pushCheckpoint(){
  if(!git('diff','--cached','--name-only'))return
  git('diff','--cached','--check')
  git('commit','-m','SAGA: save Wikipedia candidate checkpoint')
- git('push','origin',`HEAD:${checkpointBranch}`)
+ await pushWithPacing()
 }
 
 try{

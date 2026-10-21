@@ -213,7 +213,12 @@ export function applyWikiRepair(draft,patch,targets,errors=[]){
    if(!Array.isArray(incoming.pages))throw Error('Missing repaired level pages')
    next.variants[level].pages=incoming.pages
   }else for(const page of items.filter(Number.isInteger)){
-   const replacement=incoming.pages?.[String(page)]
+   const pages=incoming.pages
+   const replacement=Array.isArray(pages)
+    ?pages.length===next.variants[level].pages.length?pages[page-1]
+     :pages.length===1&&items.filter(Number.isInteger).length===1?pages[0]:null
+    :pages?.[String(page)]
+   if(replacement?.page!==undefined&&replacement.page!==page)throw Error('Wrong repaired page number')
    if(!replacement||typeof replacement.text!=='string'||!Array.isArray(replacement.evidenceIds))throw Error('Missing repaired page')
    const prefix=`${level}:page-${page}:`
    const numeric=errors.map(error=>String(error).match(new RegExp(`^${prefix}unsupported-number-(?:context-)?(\\d+)$`))?.[1]).filter(Boolean)
