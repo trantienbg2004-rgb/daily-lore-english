@@ -2,9 +2,194 @@
   "pageId": 37476,
   "title": "Civil liberties",
   "topic": "Society",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1373410895,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373410895",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-21T13:02:24.799Z"
+  "reason": "2 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Li-ber-ty.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cd/Li-ber-ty.jpg/960px-Li-ber-ty.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Li-ber-ty.jpg",
+        "caption": "Broken Liberty: Istanbul Archaeology Museum",
+        "alt": "",
+        "description": "Broken Liberty: Li-ber-ty, Istanbul Archaeological Museums. Found at Istanbul.",
+        "date": "2006",
+        "section": "Overview",
+        "position": 0,
+        "provenance": {
+          "credit": "Nevit Dilmen (talk)",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Li-ber-ty.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Civil_liberties",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373410895",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Dyfikolkata (54).jpg",
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/8/87/Dyfikolkata_%2854%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "fileTitle": "File:Dyfikolkata (54).jpg",
+        "caption": "Huge rallies like this one in Kolkata are commonplace in India.",
+        "alt": "",
+        "description": "DYFI rally in Kolkata, India. Photo: Soman",
+        "date": "15 February 2004 (according to Exif data)",
+        "section": "India",
+        "position": 1,
+        "provenance": {
+          "credit": "No machine-readable author provided. Soman assumed (based on copyright claims).",
+          "license": "CC BY 2.5",
+          "licenseUrl": "https://creativecommons.org/licenses/by/2.5",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Dyfikolkata_(54).jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Civil_liberties",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373410895",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "6e0be2405ae6319a4c94ea51aa1c104bca9b383d325030db0593254c2cf44096",
+      "heading": "Lead",
+      "excerpt": "Civil liberties are fundamental rights and freedoms that governments pledge not to restrict, either through constitutions, legislation, or j",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373410895"
+    },
+    {
+      "id": "P2",
+      "hash": "34f9e5558e64e486f2c5b172fe1a6fced10806584f2c12a94024e6b4e71b7798",
+      "heading": "Lead",
+      "excerpt": "Libertarians advocate for the negative liberty aspect of civil liberties, emphasizing minimal government intervention in both personal and e",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373410895"
+    },
+    {
+      "id": "P3",
+      "hash": "0573326f4c6a9f0419701a17793b3d781359c6d2afe2f15fc1acd59295d125ca",
+      "heading": "Overview",
+      "excerpt": "Many contemporary nations have a constitution, a bill of rights, or similar constitutional documents that enumerate and seek to guarantee ci",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373410895"
+    },
+    {
+      "id": "P4",
+      "hash": "1be66bd28fae2eb2290fa94ba2b5b1a97a557fe0a3f8d1b1486b24cdb6d075f4",
+      "heading": "Overview",
+      "excerpt": "The formal concept of civil liberties is often dated back to Magna Carta, an English legal charter agreed in 1215 which in turn was based on",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373410895"
+    },
+    {
+      "id": "P5",
+      "hash": "b90cdb6a6f3f3f151fcc4f1ac598301426a43df47a08ea02f56a308427973afb",
+      "heading": "China",
+      "excerpt": "The Constitution of China especially its Fundamental Rights and Duties of Citizens, claims to protect many civil liberties. Taiwan, which is",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373410895"
+    },
+    {
+      "id": "P6",
+      "hash": "eb857fdd0e0933a0a7a1b5070ee7926d15394f567a1eeb4e52d4f91f3cb6a186",
+      "heading": "India",
+      "excerpt": "The Fundamental Rights – embodied in Part III of the constitution – guarantee liberties such that all Indians can lead their lives in peace ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373410895"
+    },
+    {
+      "id": "P7",
+      "hash": "48ae37ce78e2d1add75c81b18bd8ce3d5bb9c9d86cc275c69365104caa60a819",
+      "heading": "Japan",
+      "excerpt": "Since 1947, Japan, a country with a constitutional monarchy and known for its socially \"conservative society where change is gradual,\" has a",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373410895"
+    },
+    {
+      "id": "P8",
+      "hash": "ad4b20c409318a0d6a735ccaf378da6e3c5fad9546f2401f5cf6e104c551f595",
+      "heading": "Australia",
+      "excerpt": "Whilst Australia does not have an enshrined Bill of Rights or similar binding legal document, civil liberties are assumed as protected throu",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373410895"
+    },
+    {
+      "id": "P9",
+      "hash": "797e51af6e52d3be39695cf4b1bfe0feec13588542dcc8c32adc5af43c8a2555",
+      "heading": "European Convention on Human Rights",
+      "excerpt": "The European Convention on Human Rights, to which almost all European countries belong (apart from Belarus), enumerates a number of civil li",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373410895"
+    },
+    {
+      "id": "P10",
+      "hash": "3dcff73593ccc3a3f5036c992df72e2856d36a1c7002249a02d75ef707c82a6f",
+      "heading": "Czech Republic",
+      "excerpt": "Following the Velvet Revolution, a constitutional overhaul took place in Czechoslovakia. In 1991, the Charter of Fundamental Rights and Basi",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373410895"
+    },
+    {
+      "id": "P11",
+      "hash": "b015829e00aa33ea85cdfb080cd5381fe2e14f15a831086943112d2df35441d4",
+      "heading": "Germany",
+      "excerpt": "The German constitution, the \"Grundgesetz\" (lit. \"Base Law\"), starts with an elaborate listing of civil liberties and states in sec. 1 \"The ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373410895"
+    },
+    {
+      "id": "P12",
+      "hash": "d49499ed7268428d464d5a694ad3372c5f138a91a88de87377081946b0eb4fc8",
+      "heading": "United Kingdom",
+      "excerpt": "Civil liberties in the United Kingdom date back to Magna Carta in 1215 and 17th century English common law and statute law, such as the 1628",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373410895"
+    },
+    {
+      "id": "P13",
+      "hash": "b29abeef50bea90db301ef64c55c3beae75294f8ea66f06e926d74a3a7807c74",
+      "heading": "Russia",
+      "excerpt": "The Constitution of the Russian Federation guarantees in theory many of the same rights and civil liberties as the U.S. except to bear arms,",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373410895"
+    },
+    {
+      "id": "P14",
+      "hash": "03f2f07a7e8e1b6fa76170b60806c772068b5bd14247eac98c7f411d74acce14",
+      "heading": "Canada",
+      "excerpt": "The Constitution of Canada includes the Canadian Charter of Rights and Freedoms which guarantees many of the same rights as the U.S. Constit",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373410895"
+    },
+    {
+      "id": "P15",
+      "hash": "03a889ef3f40cb80a7e87bb669c1b4b70f50f3cd13aefb410dc0b4c1ae641208",
+      "heading": "Mexico",
+      "excerpt": "The Constitution of Mexico was ratified on February 5, 1917. Similar to the U.S. Constitution, the United Mexican States provides all citize",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373410895"
+    },
+    {
+      "id": "P16",
+      "hash": "cbeb22eace3beed56dd98271365e5b942817798dbc9f0e2c2620c3be797cc12b",
+      "heading": "United States",
+      "excerpt": "The United States Constitution, especially its Bill of Rights, protects civil liberties. The passage of the Fourteenth Amendment further pro",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373410895"
+    },
+    {
+      "id": "P17",
+      "hash": "ecc65ba3f227fb05b3b6507079da74b116b0137eec93992977b3f4a88a48e9ef",
+      "heading": "China",
+      "excerpt": "Although the 1982 constitution guarantees civil liberties, the Chinese government usually uses the \"subversion of state power\" and \"protecti",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373410895"
+    },
+    {
+      "id": "P18",
+      "hash": "7846573f9bdba32a48b2cd35e4593e95f8e0481e64e8059dd95f2b11615ea98a",
+      "heading": "India",
+      "excerpt": "These include individual rights common to most liberal democracies, incorporated in the fundamental law of the land and are enforceable in a",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373410895"
+    },
+    {
+      "id": "P19",
+      "hash": "6a4ff024303660130ea2cd5fd3e83d0f09ee1fba0c5259bdd3133cf4cab4f60b",
+      "heading": "India",
+      "excerpt": "All people, irrespective of race, religion, caste or sex, have the right to approach the High Courts or the Supreme Court for the enforcemen",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373410895"
+    }
+  ],
+  "updatedAt": "2026-10-21T13:02:26.086Z"
 }
