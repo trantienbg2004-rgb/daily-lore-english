@@ -6548,10 +6548,10 @@
       "checkedAt": null
     },
     "463734": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
+      "revisionId": 1376316409,
+      "checkedAt": "2026-10-21T13:52:26.276Z"
     },
     "524267": {
       "status": "EVIDENCE_READY",
@@ -9866,7 +9866,7 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-10-21T13:52:19.165Z",
+  "updatedAt": "2026-10-21T13:52:26.288Z",
   "dailyUsage": {
     "day": "2026-10-21",
     "calls": 23,
