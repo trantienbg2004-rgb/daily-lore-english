@@ -2,10 +2,10 @@
   "pageId": 21818,
   "title": "National park",
   "topic": "Environment",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1375296178,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375296178",
-  "reason": "12 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "priorReviewReason": "Missing repaired page",
   "rights": [
     {
@@ -458,7 +458,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375296178"
     }
   ],
-  "updatedAt": "2026-10-21T13:45:24.452Z",
+  "updatedAt": "2026-10-21T13:45:51.060Z",
   "draft": {
     "outline": [
       "Introduction to national parks and their core conservation purpose",
@@ -490,10 +490,9 @@
             ]
           },
           {
-            "text": "Not all countries use the same rules for national parks. In some places, people live inside the parks. Critics also say that making parks can sometimes force native communities to leave their homes.",
+            "text": "Many countries do not follow the IUCN definition for national parks. In the United Kingdom, a national park is a scenic area with some planning restrictions. There can be human settlements inside these parks.",
             "evidenceIds": [
-              "P6",
-              "P15"
+              "P6"
             ]
           },
           {
@@ -578,11 +577,11 @@
       }
     }
   },
-  "repairAttempts": 1,
+  "repairAttempts": 2,
   "lastUsage": {
-    "input": 2785,
-    "output": 413,
-    "total": 3198
+    "input": 2808,
+    "output": 103,
+    "total": 2911
   },
   "validation": null
 }
