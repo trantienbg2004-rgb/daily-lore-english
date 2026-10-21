@@ -2,9 +2,388 @@
   "pageId": 335535,
   "title": "Romantic literature",
   "topic": "Culture",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1348594744,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1348594744",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-21T13:01:52.228Z"
+  "reason": "12 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Des Knaben Wunderhorn III (1808).jpg"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Wordsworth on Helvellyn by Benjamin Robert Haydon.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8c/Wordsworth_on_Helvellyn_by_Benjamin_Robert_Haydon.jpg/960px-Wordsworth_on_Helvellyn_by_Benjamin_Robert_Haydon.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Wordsworth on Helvellyn by Benjamin Robert Haydon.jpg",
+        "caption": "William Wordsworth (pictured) and Samuel Taylor Coleridge helped to launch the Romantic Age in English literature in 1798 with their joint publication Lyrical Ballads",
+        "alt": "",
+        "description": "",
+        "date": "1842",
+        "section": "Great Britain",
+        "position": 1,
+        "provenance": {
+          "credit": "Benjamin Haydon",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Wordsworth_on_Helvellyn_by_Benjamin_Robert_Haydon.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Romantic_literature",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1348594744",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Byron 1813 by Phillips.jpg",
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/3/3c/Byron_1813_by_Phillips.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "fileTitle": "File:Byron 1813 by Phillips.jpg",
+        "caption": "Portrait of Lord Byron by Thomas Phillips, c. 1814. The Byronic hero first reached the wider public in Byron's semi-autobiographical epic narrative poem Childe Harold's Pilgrimage (1812–1818).",
+        "alt": "",
+        "description": "",
+        "date": "1813date QS:P571,+1813-00-00T00:00:00Z/9date QS:P571,+1813-00-00T00:00:00Z/9",
+        "section": "Great Britain",
+        "position": 2,
+        "provenance": {
+          "credit": "Thomas Phillips",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Byron_1813_by_Phillips.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Romantic_literature",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1348594744",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:PG 1063Burns Naysmith.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/aa/PG_1063Burns_Naysmith.jpg/960px-PG_1063Burns_Naysmith.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:PG 1063Burns Naysmith.jpg",
+        "caption": "Robert Burns in Alexander Nasmyth's portrait of 1787",
+        "alt": "",
+        "description": "Robert Burns, 1759 - 1796. Poet 1787. This half-length portrait of Burns, framed within an oval, has become the most well-known and widely reproduced image of the famous Scottish poet. Nasmyth's painting, commissioned by the publisher William Creech, was to be engraved for a new edition of Burn's poems. He is shown fashionably dressed against a landscape, evoking his rural background in Alloway, Ayrshire. Burns and Nasmyth had become good friends, having been introduced to one another in Edinburgh by a mutual patron, Patrick Miller of Dalswinto",
+        "date": "1787date QS:P571,+1787-00-00T00:00:00Z/9date QS:P571,+1787-00-00T00:00:00Z/9",
+        "section": "Scotland",
+        "position": 3,
+        "provenance": {
+          "credit": "Alexander Nasmyth",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:PG_1063Burns_Naysmith.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Romantic_literature",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1348594744",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Sir Henry Raeburn - Portrait of Sir Walter Scott.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a7/Sir_Henry_Raeburn_-_Portrait_of_Sir_Walter_Scott.jpg/960px-Sir_Henry_Raeburn_-_Portrait_of_Sir_Walter_Scott.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Sir Henry Raeburn - Portrait of Sir Walter Scott.jpg",
+        "caption": "Raeburn's portrait of Walter Scott in 1822",
+        "alt": "",
+        "description": "Portrait of Walter Scott (1771 - 1832), novelist and poet.",
+        "date": "1822",
+        "section": "Scotland",
+        "position": 4,
+        "provenance": {
+          "credit": "Henry Raeburn",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Sir_Henry_Raeburn_-_Portrait_of_Sir_Walter_Scott.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Romantic_literature",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1348594744",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Jean-Jacques Grandville - Frenzied Romans at the First Performance of Hernani - WGA10359.jpg",
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/f/f4/Jean-Jacques_Grandville_-_Frenzied_Romans_at_the_First_Performance_of_Hernani_-_WGA10359.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "fileTitle": "File:Jean-Jacques Grandville - Frenzied Romans at the First Performance of Hernani - WGA10359.jpg",
+        "caption": "The \"battle of Hernani\" was fought nightly at the theatre in 1830: lithograph, by J. J. Grandville",
+        "alt": "",
+        "description": "",
+        "date": "1830date QS:P571,+1830-00-00T00:00:00Z/9date QS:P571,+1830-00-00T00:00:00Z/9",
+        "section": "France",
+        "position": 5,
+        "provenance": {
+          "credit": "Jean Ignace Isidore Gérard Grandville",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Jean-Jacques_Grandville_-_Frenzied_Romans_at_the_First_Performance_of_Hernani_-_WGA10359.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Romantic_literature",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1348594744",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Wańkowicz Adam Mickiewicz.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/10/Wa%C5%84kowicz_Adam_Mickiewicz.jpg/960px-Wa%C5%84kowicz_Adam_Mickiewicz.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Wańkowicz Adam Mickiewicz.jpg",
+        "caption": "Adam Mickiewicz on the Ayu-Dag, by Walenty Wańkowicz, 1828",
+        "alt": "",
+        "description": "",
+        "date": "1828date QS:P571,+1828-00-00T00:00:00Z/9date QS:P571,+1828-00-00T00:00:00Z/9",
+        "section": "Poland",
+        "position": 6,
+        "provenance": {
+          "credit": "Walenty Wańkowicz",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Wa%C5%84kowicz_Adam_Mickiewicz.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Romantic_literature",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1348594744",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Juliusz Słowacki 1.PNG",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/17/Juliusz_S%C5%82owacki_1.PNG/960px-Juliusz_S%C5%82owacki_1.PNG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Juliusz Słowacki 1.PNG",
+        "caption": "Juliusz Słowacki, a Polish poet considered one of the \"Three National Bards\" of Polish literature—a major figure in the Polish Romantic period, and the father of modern Polish drama.",
+        "alt": "",
+        "description": "Juliusz Słowacki",
+        "date": "before 1849date QS:P,+1849-00-00T00:00:00Z/7,P1326,+1849-00-00T00:00:00Z/9date QS:P,+1849-00-00T00:0",
+        "section": "Poland",
+        "position": 7,
+        "provenance": {
+          "credit": "James Hopwood the Younger",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Juliusz_S%C5%82owacki_1.PNG",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Romantic_literature",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1348594744",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:José de Espronceda (detalle).jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/96/Jos%C3%A9_de_Espronceda_%28detalle%29.jpg/960px-Jos%C3%A9_de_Espronceda_%28detalle%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:José de Espronceda (detalle).jpg",
+        "caption": "El escritor José de Espronceda, portrait by Antonio María Esquivel (c. 1845) (Museo del Prado, Madrid)",
+        "alt": "",
+        "description": "Retrato del escritor y poeta español José de Espronceda (1808-1842).",
+        "date": "between circa 1842 and circa 1846date QS:P571,+1842-00-00T00:00:00Z/8,P1319,+1842-00-00T00:00:00Z/9,",
+        "section": "Spain",
+        "position": 8,
+        "provenance": {
+          "credit": "Antonio María Esquivel",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Jos%C3%A9_de_Espronceda_(detalle).jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Romantic_literature",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1348594744",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Almeida Garrett - litografia sobre papel.png",
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/c/c2/Almeida_Garrett_-_litografia_sobre_papel.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "fileTitle": "File:Almeida Garrett - litografia sobre papel.png",
+        "caption": "Portuguese poet, novelist, politician and playwright Almeida Garrett (1799–1854)",
+        "alt": "",
+        "description": "Lithograph on paper, depicting Almeida Garrett, Portuguese politician, poet and playwright.",
+        "date": "19th centurydate QS:P,+1850-00-00T00:00:00Z/7date QS:P,+1850-00-00T00:00:00Z/7",
+        "section": "Portugal",
+        "position": 9,
+        "provenance": {
+          "credit": "Unknown authorUnknown author",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Almeida_Garrett_-_litografia_sobre_papel.png",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Romantic_literature",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1348594744",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Manzoni 1805.jpg"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Grecian-Gothic neoclassical-romantic style-contrast 1816-Repton.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/62/Grecian-Gothic_neoclassical-romantic_style-contrast_1816-Repton.jpg/960px-Grecian-Gothic_neoclassical-romantic_style-contrast_1816-Repton.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Grecian-Gothic neoclassical-romantic style-contrast 1816-Repton.jpg",
+        "caption": "A print exemplifying the contrast between neoclassical vs. romantic styles of landscape and architecture (or the \"Grecian\" and the \"Gothic\" as they are termed here), 1816",
+        "alt": "",
+        "description": "A Feb. 1st 1816 print (published J. Taylor, London) which exemplifies the contrast between neo-classical vs. romantic styles of landscape and architecture (or the \"Grecian\" and the \"Gothic\" as they're termed here). This engraved plate accompanied Humphry Repton's 1816 book Fragments on the Theory and Practice of Landscape Gardening. Marianne Dashwood in Jane Austen's Sense and Sensibility is a famous proponent of the romantic aesthetic, while Edward Ferrars in the same book says \"I like a fine prospect, but not on picturesque principles. I do n",
+        "date": "1816-02-01",
+        "section": "South America",
+        "position": 11,
+        "provenance": {
+          "credit": "Humphry Repton",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Grecian-Gothic_neoclassical-romantic_style-contrast_1816-Repton.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Romantic_literature",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1348594744",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Decatur Boarding the Tripolitan Gunboat.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/12/Decatur_Boarding_the_Tripolitan_Gunboat.jpg/960px-Decatur_Boarding_the_Tripolitan_Gunboat.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Decatur Boarding the Tripolitan Gunboat.jpg",
+        "caption": "Dennis Malone Carter, Decatur Boarding the Tripolitan Gunboat, 1878. Romanticist vision of the Battle of Tripoli, during the First Barbary War. It represents the moment when the American war hero Stephen Decatur was fighting hand-to-hand against the Muslim pirate captain.",
+        "alt": "",
+        "description": "Oil painting of Decatur Boarding the Tripolitan Gunboat during the bombardment of Tripoli, 3 August 1804. Lieutenant Stephen Decatur (lower right center) in mortal combat with the Tripolitan Captain.",
+        "date": "19th centurydate QS:P,+1850-00-00T00:00:00Z/7date QS:P,+1850-00-00T00:00:00Z/7",
+        "section": "South America",
+        "position": 12,
+        "provenance": {
+          "credit": "Painter: Dennis Malone Carter",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Decatur_Boarding_the_Tripolitan_Gunboat.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Romantic_literature",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1348594744",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Cole Thomas The Course of Empire The Savage State 1836.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5b/Cole_Thomas_The_Course_of_Empire_The_Savage_State_1836.jpg/960px-Cole_Thomas_The_Course_of_Empire_The_Savage_State_1836.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Cole Thomas The Course of Empire The Savage State 1836.jpg",
+        "caption": "Thomas Cole, The Course of Empire: The Savage State (1 of 5), 1836",
+        "alt": "",
+        "description": "",
+        "date": "1834date QS:P571,+1834-00-00T00:00:00Z/9date QS:P571,+1834-00-00T00:00:00Z/9",
+        "section": "United States",
+        "position": 13,
+        "provenance": {
+          "credit": "Thomas Cole",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Cole_Thomas_The_Course_of_Empire_The_Savage_State_1836.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Romantic_literature",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1348594744",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "96007e9fc6ecc61a792b2e135f2df5be7ce0a7f4c11be3598bdd784f087772d8",
+      "heading": "Lead",
+      "excerpt": "In literature, Romanticism found recurrent themes in the evocation or criticism of the past, the cult of \"sensibility\" with its emphasis on ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1348594744"
+    },
+    {
+      "id": "P2",
+      "hash": "cdabbf33126f94404ec0a17405def6f813cd1625b7ac7184a57456e661ba521d",
+      "heading": "Lead",
+      "excerpt": "Some authors cite 16th-century poet Isabella di Morra as an early precursor of Romantic literature. Her lyrics covering themes of isolation ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1348594744"
+    },
+    {
+      "id": "P3",
+      "hash": "683e20a87f41a86f884e523a8fb390bf9cedbdba6ea796f4036ac0ada4045973",
+      "heading": "Lead",
+      "excerpt": "The precursors of Romanticism in English poetry go back to the middle of the 18th century, including figures such as Joseph Warton (headmast",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1348594744"
+    },
+    {
+      "id": "P4",
+      "hash": "64684c4f38d2cbcc37347043201bf04bed648f7393c902e677d5d90eb201a813",
+      "heading": "Germany",
+      "excerpt": "An early German influence came from Johann Wolfgang von Goethe, whose 1774 novel The Sorrows of Young Werther had young men throughout Europ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1348594744"
+    },
+    {
+      "id": "P5",
+      "hash": "977ca5815db3aa1cb23986e27fe6f1eb134f421d89aa848eb2a6f003d82245c1",
+      "heading": "Germany",
+      "excerpt": "Important motifs in German Romanticism are travelling, nature, for example the German Forest, and Germanic myths. The later German Romantici",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1348594744"
+    },
+    {
+      "id": "P6",
+      "hash": "88ce40f905afdce75aaa80aeb7cb75aac0589668ee68fc7f51253e1f6b5f2f1d",
+      "heading": "Great Britain",
+      "excerpt": "In English literature, the key figures of the Romantic movement are considered to be the group of poets including William Wordsworth, Samuel",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1348594744"
+    },
+    {
+      "id": "P7",
+      "hash": "e4b1bf44a93229998a49ec06eed2ad18d4920272926a771cc0133603282948b1",
+      "heading": "Scotland",
+      "excerpt": "Although after union with England in 1707 Scotland increasingly adopted English language and wider cultural norms, its literature developed ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1348594744"
+    },
+    {
+      "id": "P8",
+      "hash": "26390025ed02dcc1789365ab8f3b217af2bf2968e03a1f36de43c90a3665c741",
+      "heading": "France",
+      "excerpt": "Romanticism was relatively late in developing in French literature, more so than in the visual arts. The 18th-century precursor to Romantici",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1348594744"
+    },
+    {
+      "id": "P9",
+      "hash": "7b277e15df832800839ad04adcb21e830b6ed2a921effb150442ada65063b5ab",
+      "heading": "Poland",
+      "excerpt": "Romanticism in Poland is often taken to begin with the publication of Adam Mickiewicz's first poems in 1822, and end with the crushing of th",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1348594744"
+    },
+    {
+      "id": "P10",
+      "hash": "155b21fcc6b34780654277b9e3c8c726c53a39b262585db2a15690938ead2987",
+      "heading": "Russia",
+      "excerpt": "Early Russian Romanticism is associated with the writers Konstantin Batyushkov (A Vision on the Shores of the Lethe, 1809), Vasily Zhukovsky",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1348594744"
+    },
+    {
+      "id": "P11",
+      "hash": "1080a2fd7c4a67f844cbb2a72bd0240984dfe0a66cc72cf8cf174ad6903be035",
+      "heading": "Spain",
+      "excerpt": "Romanticism in Spanish literature developed a well-known literature with a huge variety of poets and playwrights. The most important Spanish",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1348594744"
+    }
+  ],
+  "updatedAt": "2026-10-21T13:01:54.101Z"
 }
