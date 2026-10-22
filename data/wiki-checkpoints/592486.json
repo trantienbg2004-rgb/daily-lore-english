@@ -2,9 +2,330 @@
   "pageId": 592486,
   "title": "Refrigerant",
   "topic": "Environment",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1378640970,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378640970",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-22T06:16:40.170Z"
+  "reason": "4 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Air conditioning unit-en.svg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f2/Air_conditioning_unit-en.svg/960px-Air_conditioning_unit-en.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Air conditioning unit-en.svg",
+        "caption": "A window air conditioner. The refrigerant circulates through the evaporator/cooling coil (blue), where it absorbs heat from the indoor air, making that air cooler. The refrigerant vapor then flows to the compressor, where an electric motor drives the vapor to higher pressure and temperature. The vapor releases heat and liquefies in the condenser (red). The condensed liquid then flows through an expansion valve, where it depressurizes and cools. After expansion, it returns to the evaporator as a ",
+        "alt": "Illustration of refrigerant circulation loop inside a window air conditioner",
+        "description": "An air conditioning unit: The coils and pipes in an air conditioning unit contain refrigerant gas. The refrigerant gas enters the compressor as warm, low-pressure gas and leaves it as hot, high-pressure gas. In the condenser coils, hot, compressed refrigerant gas loses heat to the outdoor air and becomes liquid while it is still warm. The warm, liquid refrigerant passes through the tiny opening of the expansion valve, expands, and partly turns to gas at a low temperature. In the cooling coils, the refrigerant takes up heat from the indoor air a",
+        "date": "2008-11-14 08:05",
+        "section": "",
+        "position": 0,
+        "provenance": {
+          "credit": "Pbroks13",
+          "license": "CC BY 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Air_conditioning_unit-en.svg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Refrigerant",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378640970",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Diethyl-ether-3D-balls.png",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9d/Diethyl-ether-3D-balls.png/960px-Diethyl-ether-3D-balls.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Diethyl-ether-3D-balls.png",
+        "caption": "Ball and stick model of diethyl ether, used in the earliest vapor-compression refrigeration systems. (In the drawing, white is a carbon atom, black is hydrogen, and red is oxygen.)",
+        "alt": "Chemical structure of diethyl ether",
+        "description": "3D structure of diethyl ether",
+        "date": "2007-05-16 23:29:29",
+        "section": "History",
+        "position": 1,
+        "provenance": {
+          "credit": "Benjah-bmm27",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Diethyl-ether-3D-balls.png",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Refrigerant",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378640970",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Natta projection of dichlorodifluoromethane.svg"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:CFCs & Ozone.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/70/CFCs_%26_Ozone.jpg/960px-CFCs_%26_Ozone.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:CFCs & Ozone.jpg",
+        "caption": "In the stratosphere, ozone (O3) naturally cycles to oxygen gas (O2) and back when it absorbs solar energy (the Chapman cycle). When CFCs are present, sunlight releases chlorine atoms that catalytically convert O3 to O2: Cl reacts with O3 to form ClO and O2, and ClO is then converted back to Cl, which can destroy further ozone. The net result is more oxygen and less ozone.",
+        "alt": "Illustration of chlorine-catalyzed ozone destruction in the atmosphere",
+        "description": "CFCs are released into the atmosphere via aerosols and refrigerants. Sunlight breaks the CFC molecules up so that there are lone chlorine atoms in the atmosphere. The Cl atoms bond to lone oxygen atoms that come from the breakdown of ozone molecules, which leaves less oxygen atoms available to bond with O2 to create ozone molecules. As a result, a hole in the ozone layer begins to form.",
+        "date": "2023-05-25",
+        "section": "Phase-out of CFCs and HCFCs (ozone-layer protection)",
+        "position": 3,
+        "provenance": {
+          "credit": "Nicole Leihe",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:CFCs_%26_Ozone.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Refrigerant",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378640970",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Isobutane 1.svg"
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:1,1,1,2-Tetrafluoroethane.svg"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:HCFC and HFC atmospheric trends.png",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/25/HCFC_and_HFC_atmospheric_trends.png/960px-HCFC_and_HFC_atmospheric_trends.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:HCFC and HFC atmospheric trends.png",
+        "caption": "The observed stabilization of HCFC concentrations (left graphs) and the growth of HFCs (right graphs) in Earth's atmosphere.",
+        "alt": "Graphic of atmospheric presence of HCFC and HFC showing effect of HCFC phase-out",
+        "description": "These graphs show the observed atmospheric changes for several common man-made halocarbons. The abundance of each gas is shown in parts per trillion (ppt). Multiple samples of each gas are gathered from sites around the world in the NOAA/GML Flask Sampling Network (colored lines). The gases shown are: hydrochlorofluorocarbons (HCFCs): 22, 141b, and 142b hydrofluorocarbons (HFCs): 32, 125, 134a, 143a, 152a, 227ea, and 365mfc The manufacturing of the HCFCs is scheduled to be transitioned to HFCs within most major markets by year 2020. Locations s",
+        "date": "2018-06-01",
+        "section": "Phase-down of HFCs (climate-change mitigation)",
+        "position": 6,
+        "provenance": {
+          "credit": "James W. Elkins and Stephen A. Montzka",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:HCFC_and_HFC_atmospheric_trends.png",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Refrigerant",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378640970",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:2,3,3,3-Tetrafluorpropen Structural Formula V3.svg"
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Refrigerants-CoolCraft.jpg"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "0533eb46ecaa4c40074b439f415a8fa389dce7b03406aaa198433de41dd64382",
+      "heading": "Lead",
+      "excerpt": "Refrigerants are working fluids that carry heat from a cold environment to a warm environment while circulating between them. For example, t",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378640970"
+    },
+    {
+      "id": "P2",
+      "hash": "bc344b1363efa0eede01637dc248115a0b8ba38e75c60a80cdc09f83dcb533b4",
+      "heading": "Lead",
+      "excerpt": "Refrigerants are the basis of vapor compression refrigeration systems. The refrigerant is circulated in a loop between the cold and warm env",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378640970"
+    },
+    {
+      "id": "P3",
+      "hash": "9f7d8665c0ed6f8ac9c9059bc309a30cd5feb5ecfd58a3e4397b89776cf21006",
+      "heading": "Lead",
+      "excerpt": "Refrigerants are also used in heat pumps, which work like refrigeration systems. In the winter, a heat pump absorbs heat from the cold outdo",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378640970"
+    },
+    {
+      "id": "P4",
+      "hash": "b0a5e532baa08b985fd8a62740cddaa11b2a7f7f8eaa81c568afcaed68309e7e",
+      "heading": "Lead",
+      "excerpt": "Refrigerants include naturally occurring fluids, such as ammonia, carbon dioxide, or isobutane, and synthetic fluids, such as chlorofluoroca",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378640970"
+    },
+    {
+      "id": "P5",
+      "hash": "2b5970e5821364b4aaf0599b9cd426a3d01ba8e205faee394562b2188fa1b9f4",
+      "heading": "Lead",
+      "excerpt": "Although refrigerants are most commonly associated with vapor-compression systems, they are also used for many other purposes. These applica",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378640970"
+    },
+    {
+      "id": "P6",
+      "hash": "fcf4127962fad8a552e7d1bb9bc6c69eb0c6b41aa94813a0091be94c5598fcbb",
+      "heading": "Requirements and desirable properties",
+      "excerpt": "The selection of a refrigerant for a given purpose depends on a combination of factors. Different refrigerants, having different properties,",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378640970"
+    },
+    {
+      "id": "P7",
+      "hash": "8e8ac5ab95ee79dba07cc201638d2f095ac2e9463a8ec023ea26b771a0457453",
+      "heading": "Thermophysical property requirements",
+      "excerpt": "In thermodynamic terms, refrigerants transport energy in the form of enthalpy, which increases or decreases substantially during evaporation",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378640970"
+    },
+    {
+      "id": "P8",
+      "hash": "a2c79316844d517c3038828da2c12e469b80e517d31f9303161748af61cbdf9d",
+      "heading": "Other requirements",
+      "excerpt": "The refrigerant must be chemically stable during use, non-corrosive to the system components, and miscible with the lubricant; compatible ra",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378640970"
+    },
+    {
+      "id": "P9",
+      "hash": "908e90af845ded666fb2caae1d44a604259047775209a7c26ea3220002d43610",
+      "heading": "History",
+      "excerpt": "Vapor compression refrigeration was first proposed by Oliver Evans in 1805, using diethyl ether as the refrigerant. In 1834, Jacob Perkins p",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378640970"
+    },
+    {
+      "id": "P10",
+      "hash": "f69cdbf2484013c899e11a26abc9131d7f822b6ac7190c94768e6fcb1101aec9",
+      "heading": "Development of halogenated refrigerants (CFCs and HCFCs)",
+      "excerpt": "In the 1920s, Thomas Midgley Jr., working with Albert Henne and Robert MacNeary, made a systematic study of synthetic refrigerants, seeking ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378640970"
+    },
+    {
+      "id": "P11",
+      "hash": "9818c22c206220fd53bad58c8610eac40d31ae99db4d522f8317216a87cb908d",
+      "heading": "Phase-out of CFCs and HCFCs (ozone-layer protection)",
+      "excerpt": "In 1974, Mario Molina and F. Sherwood Rowland predicted that CFCs would deplete the ozone layer that protects the Earth from ultraviolet rad",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378640970"
+    },
+    {
+      "id": "P12",
+      "hash": "fb7fb1ebb1ade7d24bd787d4dd1af9ba6523a03b66d5f2d074929a236fbb33a3",
+      "heading": "Renewed interest in natural refrigerants",
+      "excerpt": "Naturally occurring refrigerants had been used prior to the introduction of CFCs in 1931. These included ammonia, carbon dioxide, isobutane,",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378640970"
+    },
+    {
+      "id": "P13",
+      "hash": "a0355f25229b5d41f25594d108aa130680e21519335a7f02f45546ce2a285df0",
+      "heading": "Phase-down of HFCs (climate-change mitigation)",
+      "excerpt": "Hydrofluorocarbons (HFCs) were widely adopted as replacements for CFCs and HCFCs in the 1990s and 2000s. HFCs are not ozone-depleting, but t",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378640970"
+    },
+    {
+      "id": "P14",
+      "hash": "f889faa69457bb624f1af686b08eb17c4a2402f1ce530640a33eb5503d7b295d",
+      "heading": "Refrigerant safety, environmental management, and reclamation",
+      "excerpt": "Refrigerants can pose both direct and indirect risks. Depending on their chemistry, they may be flammable, toxic, or environmentally damagin",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378640970"
+    },
+    {
+      "id": "P15",
+      "hash": "0222ec3a6774bd273ba19b1a6d4484754aee2773f29057029743e8f2a45d7951",
+      "heading": "Comparative performance of refrigerants",
+      "excerpt": "ASHRAE provides the following model data for the comparative performance of refrigerants. These values are computed per kilowatt of refriger",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378640970"
+    },
+    {
+      "id": "P16",
+      "hash": "c65aca294473a874a44c002a2c85b8bd16c531b918ba4a5beaadfc11416e8199",
+      "heading": "Numbered classification of refrigerants",
+      "excerpt": "The R- numbering system, maintained by ASHRAE and ISO, uniquely identifies refrigerants according to their composition. The system originate",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378640970"
+    },
+    {
+      "id": "P17",
+      "hash": "a9fed8327a2a65ae90e619e43da6589a246ddf749a6dcc3e26d5280ce44943db",
+      "heading": "Main numbering system",
+      "excerpt": "The identifying numbers assigned to the hydrocarbons, halocarbons and ethers of the methane, ethane, ethene, propane, propene, butane, buten",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378640970"
+    },
+    {
+      "id": "P18",
+      "hash": "c126bd3783912f864270d03fd87b03f15135b3344462b3163da4541255bc95d8",
+      "heading": "Composition-designating prefixes",
+      "excerpt": "The standard allows the prefix R- to be replaced by a prefix describing the molecular components of the refrigerant. Examples include: CFC- ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378640970"
+    },
+    {
+      "id": "P19",
+      "hash": "fe19aa53cd88cb0e7f9bd4a94e6d90148fb8f85b02f93a17ca4fc4406284425f",
+      "heading": "Lead",
+      "excerpt": "Chillers are refrigeration systems that have a secondary loop which circulates a refrigerating liquid (as opposed to a refrigerant), with va",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378640970"
+    },
+    {
+      "id": "P20",
+      "hash": "180504fd7b609392422c8a6f734fcb7255cd11c8d0dd4804f7787a2e1473de21",
+      "heading": "Thermophysical property requirements",
+      "excerpt": "A refrigerant must have a boiling point below the desired temperature of the cold environment. Heat will then flow from the cold environment",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378640970"
+    },
+    {
+      "id": "P21",
+      "hash": "a76f4721667598f60a1abe1f22efa63c835a1c8b4c412fd5b9ff58611d0a7473",
+      "heading": "Thermophysical property requirements",
+      "excerpt": "Similarly, the refrigerant must have a boiling point above the temperature of the warm environment, so that heat will flow out of the refrig",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378640970"
+    },
+    {
+      "id": "P22",
+      "hash": "ebb551305a4374efb376a673d1953da4785ed7c00215b4da8cf3b751a9990f2c",
+      "heading": "Thermophysical property requirements",
+      "excerpt": "For most refrigeration systems, a critical-point temperature well above the condenser temperature is desirable. When the critical-point temp",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378640970"
+    },
+    {
+      "id": "P23",
+      "hash": "2efb1adaaa1c5c0e77a7b6efc579cd7db6034598e0985cb75543c62de822faba",
+      "heading": "Thermophysical property requirements",
+      "excerpt": "However, as the critical-point temperature rises, the vapor density at the compressor inlet decreases. A lower density raises the volumetric",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378640970"
+    },
+    {
+      "id": "P24",
+      "hash": "8d1a76fff159c187d409b5bc4985d29ac082192f3d836cfe9fb0310e14648f24",
+      "heading": "Thermophysical property requirements",
+      "excerpt": "The refrigerant vapor's specific heat capacity also strongly affects performance. A lower specific heat capacity avoids liquid formation in ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378640970"
+    },
+    {
+      "id": "P25",
+      "hash": "6de4ca9e8a797f6ba8de98377a8dbc6adc3d28395af4ce30163b9f398ca493ee",
+      "heading": "Thermophysical property requirements",
+      "excerpt": "A few refrigerants, like carbon dioxide, may operate in warm environments that are above the critical-point temperature. In these transcriti",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378640970"
+    },
+    {
+      "id": "P26",
+      "hash": "066d0777e254eefa41dbd009d50b97dbabb0fbdeac0d7c5ef75013331f608a8b",
+      "heading": "Thermophysical property requirements",
+      "excerpt": "Refrigerants are sometimes blended to achieve a balance of desired properties. Pure refrigerants vaporize at a constant temperature when pre",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378640970"
+    },
+    {
+      "id": "P27",
+      "hash": "59acec107e9a4e23033be7a828cdca41b53a878ac70bf1294dde592cf2321462",
+      "heading": "Thermophysical property requirements",
+      "excerpt": "For safety, an ideal refrigerant should be non-toxic and non-flammable. For environmental protection, the refrigerant should have no ozone d",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378640970"
+    },
+    {
+      "id": "P28",
+      "hash": "4bb57310889c904f5f63d46ba3b89cce63c46c0558963762fa0f263a58cbb8fd",
+      "heading": "Other requirements",
+      "excerpt": "The selection of a refrigerant for a specific purpose involves trade-offs among all the factors mentioned. Often, no refrigerant is entirely",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378640970"
+    }
+  ],
+  "updatedAt": "2026-10-22T06:16:45.507Z"
 }
