@@ -8528,10 +8528,10 @@
       "checkedAt": "2026-10-21T07:35:08.001Z"
     },
     "46504539": {
-      "status": "FETCHED",
-      "reason": "pinned-source-ready",
+      "status": "REJECTED",
+      "reason": "insufficient-source-text-or-embedded-images",
       "revisionId": 1367870556,
-      "checkedAt": "2026-10-22T08:40:37.105Z"
+      "checkedAt": "2026-10-22T08:40:42.819Z"
     },
     "46543281": {
       "status": "PENDING",
@@ -9866,7 +9866,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-22T08:40:37.106Z",
+  "updatedAt": "2026-10-22T08:40:42.820Z",
   "dailyUsage": {
     "day": "2026-10-22",
     "calls": 24,
