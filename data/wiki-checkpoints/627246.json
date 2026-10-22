@@ -2,10 +2,10 @@
   "pageId": 627246,
   "title": "History of alternative medicine",
   "topic": "Health",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1374127706,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374127706",
-  "reason": "1 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REJECTED",
@@ -120,5 +120,139 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374127706"
     }
   ],
-  "updatedAt": "2026-10-22T08:56:11.094Z"
+  "updatedAt": "2026-10-22T08:56:28.306Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "The Story of Alternative Medicine",
+        "pages": [
+          {
+            "text": "Alternative medicine includes many different health practices. They do not use the scientific method. People started to group them together in the 1970s. Before this time, western doctors called them irregular practices. Some systems were developed long ago in isolated places. Examples are traditional Chinese medicine and Ayurvedic medicine.",
+            "evidenceIds": [
+              "P1",
+              "P2"
+            ]
+          },
+          {
+            "text": "Many systems began in different ways. Homeopathy was created in western Europe. It used water remedies. At that time, regular western medicine was often dangerous. Doctors used toxins and drained blood. Later, other practices like chiropractic and osteopathy started in the United States. Western medicine was beginning to use science.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "Until the 1970s, western doctors dismissed unestablished practitioners as quackery. As science grew, regular medicine became more successful. In the 1970s, irregular practices were grouped with traditional nonwestern cultures. Marketing campaigns and social changes helped alternative medicine grow. Patients felt frustrated with limitations and side effects of regular medicine.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "The idea of alternative medicine is complex. It must always be defined in relation to mainstream medicine. This divides medicine into a mainstream and a fringe. The definition of mainstream medicine depends on time and place. Traditional systems in some countries are considered mainstream alongside Western biomedical science.",
+            "evidenceIds": [
+              "P4"
+            ]
+          },
+          {
+            "text": "Before the nineteenth century, European medical training was self-regulated. University-trained physicians formed an elite group. Provincial surgeons and apothecaries learned through apprenticeships. Medical theories included anatomy and blood circulation. However, treatments were largely unscientific, ineffective, and often dangerous. Later, regular and irregular practitioners became more clearly differentiated.",
+            "evidenceIds": [
+              "P5",
+              "P6"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "Evolution of Alternative Medicine",
+        "pages": [
+          {
+            "text": "The history of alternative medicine covers diverse medical practices promoted together since the 1970s. These products and theories are perceived to have healing effects but do not originate from scientific methods. They exist outside of biomedicine, which applies natural sciences to clinical practice using scientific methods to establish effectiveness.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Much alternative medicine developed as independent systems long before biomedicine. Examples include traditional Chinese medicine, European humoral theory, and Ayurvedic medicine. Other practices like homeopathy arose in western Europe against unscientific orthodox medicine. Early homeopathy used water remedies, which were harmless compared to toxic treatments and bloodletting used by mainstream doctors.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "In the United States, chiropractic and osteopathy developed as western medicine began incorporating scientific methods. Over time, osteopathic practitioners added biomedical training and diminished unscientific origins. Eventually, American osteopathic medicine became considered the same as biomedicine. Meanwhile, western practitioners outside the establishment were long dismissed as irregular practitioners or quacks.",
+            "evidenceIds": [
+              "P2",
+              "P3"
+            ]
+          },
+          {
+            "text": "During the 1970s, irregular practices were grouped with traditional nonwestern cultures and unproven methods under the banner of alternative medicine. Following the 1960s counterculture movement, marketing campaigns promoted alternatives to biomedicine. Changing social attitudes, cultural relativism, and patient frustration with side effects of evidence-based medicine fueled explosive growth in the 1990s.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "Defining alternative medicine remains problematic because it must be understood in relation to a changing medical orthodoxy. This division creates a mainstream and a fringe. What counts as mainstream medicine depends on time and place. In countries like India and China, traditional systems in conjunction with Western science may be considered conventional.",
+            "evidenceIds": [
+              "P4"
+            ]
+          },
+          {
+            "text": "Prior to the nineteenth century, European medical training involved self-regulation through corporations and guilds. University-trained physicians formed an elite, while provincial surgeons learned through apprenticeships. Although anatomy and blood circulation were understood, treatments were largely unscientific and dangerous. During the nineteenth century, states gradually assumed control over medical regulation to create official medicine.",
+            "evidenceIds": [
+              "P5",
+              "P6"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "Historical Shifts in Alternative Medicine",
+        "pages": [
+          {
+            "text": "Alternative medicine encompasses a diverse collection of practices, products, and theories perceived to offer healing effects despite lacking validation through the scientific method. Distinct from biomedicine, which applies natural sciences to clinical practice, alternative medicine emerged as a collective historical category in the 1970s, uniting historical irregular western practices with traditional nonwestern systems.",
+            "evidenceIds": [
+              "P1",
+              "P3"
+            ]
+          },
+          {
+            "text": "Numerous alternative systems developed independently and long before modern biomedicine in relatively isolated regions. Prominent examples include traditional Chinese medicine, European humoral theory, and Ayurvedic medicine. Conversely, practices such as homeopathy arose in western Europe in direct opposition to dogmatic orthodox medicine, offering harmless water-based remedies in contrast to toxic mainstream treatments like bloodletting.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "In the United States, practices like chiropractic and osteopathy emerged as western medicine slowly adopted scientific methods. While early osteopathy was considered irregular, practitioners eventually integrated biomedical training into their licensing requirements. Consequently, contemporary American osteopathic medicine is functionally equivalent to standard biomedicine, illustrating the mutable boundaries of medical professionalisation.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "The conceptual framework of alternative medicine is inherently relational, defining itself against a transient medical orthodoxy. This dichotomy creates a hierarchical divide between a medical mainstream and its periphery. The definition of mainstream medicine relies heavily on geographic and temporal context, as demonstrated in nations where traditional systems operate alongside Western biomedical science as conventional care.",
+            "evidenceIds": [
+              "P4"
+            ]
+          },
+          {
+            "text": "Prior to the nineteenth century, European medical practice was largely self-regulated through guilds and academic corporations. While regular elite physicians utilized anatomical knowledge and understood blood circulation, overall therapeutic interventions remained largely unscientific and hazardous. Gradually, throughout the nineteenth century, European and American states intervened to establish centralized medical regulation, forging an official scientific medicine.",
+            "evidenceIds": [
+              "P5",
+              "P6"
+            ]
+          },
+          {
+            "text": "The rise of alternative medicine accelerated following the 1960s counterculture movement. Fostered by anti-establishment sentiment, cultural relativism, and growing patient dissatisfaction with the limitations and side effects of evidence-based treatments, alternative practices experienced explosive growth. This expansion was further propelled in the 1990s when senior political figures diverted government research funds toward complementary and integrative medicine.",
+            "evidenceIds": [
+              "P3"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2598,
+    "output": 1332,
+    "total": 3930
+  },
+  "validation": null
 }
