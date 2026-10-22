@@ -8294,10 +8294,10 @@
       "checkedAt": "2026-10-21T13:52:19.164Z"
     },
     "37872528": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
+      "revisionId": 1369628047,
+      "checkedAt": "2026-10-22T08:42:36.974Z"
     },
     "37998218": {
       "status": "RETRY_LATER",
@@ -9866,7 +9866,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-22T08:42:30.664Z",
+  "updatedAt": "2026-10-22T08:42:36.975Z",
   "dailyUsage": {
     "day": "2026-10-22",
     "calls": 24,
