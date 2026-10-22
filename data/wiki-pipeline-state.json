@@ -8822,10 +8822,10 @@
       "checkedAt": null
     },
     "57158394": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
+      "revisionId": 1376882285,
+      "checkedAt": "2026-10-22T08:23:03.275Z"
     },
     "57214291": {
       "status": "EVIDENCE_READY",
@@ -9866,7 +9866,7 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-10-22T08:22:56.613Z",
+  "updatedAt": "2026-10-22T08:23:03.276Z",
   "dailyUsage": {
     "day": "2026-10-22",
     "calls": 9,
