@@ -8966,10 +8966,10 @@
       "checkedAt": "2026-10-22T06:14:33.066Z"
     },
     "63418335": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
+      "revisionId": 1365201916,
+      "checkedAt": "2026-10-22T13:03:00.058Z"
     },
     "63465223": {
       "status": "EVIDENCE_READY",
@@ -9866,7 +9866,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-22T13:02:53.480Z",
+  "updatedAt": "2026-10-22T13:03:00.059Z",
   "dailyUsage": {
     "day": "2026-10-22",
     "calls": 68,
