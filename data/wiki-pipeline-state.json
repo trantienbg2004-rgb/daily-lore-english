@@ -9734,10 +9734,10 @@
       "checkedAt": "2026-10-22T08:28:00.918Z"
     },
     "81474052": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
+      "revisionId": 1380486628,
+      "checkedAt": "2026-10-22T12:49:24.940Z"
     },
     "81481334": {
       "status": "RETRY_LATER",
@@ -9866,7 +9866,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-22T12:49:23.030Z",
+  "updatedAt": "2026-10-22T12:49:24.940Z",
   "dailyUsage": {
     "day": "2026-10-22",
     "calls": 60,
