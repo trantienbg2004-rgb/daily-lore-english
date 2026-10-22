@@ -6044,10 +6044,10 @@
       "checkedAt": "2026-10-21T03:09:31.061Z"
     },
     "14285": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
+      "revisionId": 1371017356,
+      "checkedAt": "2026-10-22T08:32:01.895Z"
     },
     "14914": {
       "status": "EVIDENCE_READY",
@@ -9866,7 +9866,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-22T08:31:55.018Z",
+  "updatedAt": "2026-10-22T08:32:01.896Z",
   "dailyUsage": {
     "day": "2026-10-22",
     "calls": 16,
