@@ -8234,10 +8234,10 @@
       "checkedAt": null
     },
     "34543329": {
-      "status": "FETCHED",
-      "reason": "pinned-source-ready",
+      "status": "REJECTED",
+      "reason": "insufficient-source-text-or-embedded-images",
       "revisionId": 1276521423,
-      "checkedAt": "2026-10-22T08:22:38.870Z"
+      "checkedAt": "2026-10-22T08:22:45.049Z"
     },
     "34564007": {
       "status": "RETRY_LATER",
@@ -9866,7 +9866,7 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-10-22T08:22:38.870Z",
+  "updatedAt": "2026-10-22T08:22:45.050Z",
   "dailyUsage": {
     "day": "2026-10-22",
     "calls": 9,
