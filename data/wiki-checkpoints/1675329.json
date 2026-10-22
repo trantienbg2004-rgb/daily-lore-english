@@ -2,9 +2,168 @@
   "pageId": 1675329,
   "title": "Jindyworobak Movement",
   "topic": "Culture",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1370612670,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1370612670",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-22T13:06:28.319Z"
+  "reason": "1 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Rex Ingamells.jpeg",
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/b/ba/Rex_Ingamells.jpeg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "fileTitle": "File:Rex Ingamells.jpeg",
+        "caption": "Rex Ingamells is generally considered the founder of the Jindyworobak Movement.",
+        "alt": "",
+        "description": "Portrait of w:Rex Ingamells.",
+        "date": "Dated 1936.",
+        "section": "",
+        "position": 0,
+        "provenance": {
+          "credit": "Cropped from http://collections.slsa.sa.gov.au/resource/B+6795.",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Rex_Ingamells.jpeg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Jindyworobak_Movement",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1370612670",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Corroborree.jpg"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "aaec108027229519c81253047c6bd638f430859aa9375b1b7a0e5fd94dc92517",
+      "heading": "Lead",
+      "excerpt": "The Jindyworobak Movement was an Australian literary movement of the 1930s and 1940s whose members, mostly poets, sought to contribute to a ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1370612670"
+    },
+    {
+      "id": "P2",
+      "hash": "987b2c1a9339ef7e9504d9e4ce4ca7e1930bb3524a15ff7198e9be2dfe0055e4",
+      "heading": "Lead",
+      "excerpt": "The movement began in Adelaide, South Australia, in 1937, when Rex Ingamells and other poets founded the Jindyworobak Club. Ingamells outlin",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1370612670"
+    },
+    {
+      "id": "P3",
+      "hash": "1deb670ad6d1fd72df608569ec4335db11e32fd919e601f24b0a9424e9b51dfb",
+      "heading": "Lead",
+      "excerpt": "The Jindyworobaks found inspiration in the Australian bush ballad tradition, Kangaroo (1928) by D. H. Lawrence and P. R. Stephensen's The Fo",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1370612670"
+    },
+    {
+      "id": "P4",
+      "hash": "84d3673eec4d52db28039efd3f76633a19164057c805d8379102ce127ade0f98",
+      "heading": "Origins and aims",
+      "excerpt": "Starting off as a literary club in Adelaide, South Australia in 1938, the Jindyworobak movement was supported by many Australian artists, po",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1370612670"
+    },
+    {
+      "id": "P5",
+      "hash": "36d72865077d8d04defcc8146b04ae938f3b1a74e79251630742c823a56ba555",
+      "heading": "Origins and aims",
+      "excerpt": "Ingamells produced Colonial Culture as a prose manifesto of the movement, \"in response to L. F. Giblin's urging that poets in Australia shou",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1370612670"
+    },
+    {
+      "id": "P6",
+      "hash": "b8f7ae0ed2461182fa882957ada18e45994d36282a070a145816ff0231ca6364",
+      "heading": "Influence and aftermath",
+      "excerpt": "Arguably, the movement failed to make a lasting impression, and its erosion signalled the arrival of modernist painting in Australia, as wel",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1370612670"
+    },
+    {
+      "id": "P7",
+      "hash": "0c8216cd9f2c0abc525fec0d9d1efa6bd07f63f1196e63bb8d108acb8477acbe",
+      "heading": "Jindoworobaks and Aboriginality",
+      "excerpt": "A wireegun, a clever-feller, sings That tree. He hums a song, a Mapooram, A song to close things up, or bring things out A song to bring a g",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1370612670"
+    },
+    {
+      "id": "P8",
+      "hash": "a6644e23312c6246d4ff5c6f2b183e876965531698f71e4330428eea16fc6cca",
+      "heading": "Origins and aims",
+      "excerpt": "In 1941, the poet and critic A. D. Hope ridiculed the Jindyworobaks as \"the Boy Scout school of poetry\", a comment for which he apologised i",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1370612670"
+    },
+    {
+      "id": "P9",
+      "hash": "49296d7f2f29f9723c01537622e9a67eb44d21063c245e2ec6066e36e4ebc8e9",
+      "heading": "Origins and aims",
+      "excerpt": "Although \"Jindies\" concentrated on Australian culture, not all were of Australian origin—for example, William Hart-Smith, who is sometimes c",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1370612670"
+    },
+    {
+      "id": "P10",
+      "hash": "60b3ffdb561e9638f1e42c36ce1eca49c4e23c4e3a7f4394e096bbcccc7b183e",
+      "heading": "Influence and aftermath",
+      "excerpt": "Judith Wright wrote in Because I was Invited in 1975 that the movement had succeeded in bringing poetry into the public arena:",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1370612670"
+    },
+    {
+      "id": "P11",
+      "hash": "c8da0e5efd2daca09db6a0c07cd899d828dfd8635b49c30e2502fd6eebfbcae7",
+      "heading": "Influence and aftermath",
+      "excerpt": "Ackland argues in The Cambridge Companion to Australian Literature that the movement \"reactualised debate on Indigenous culture, and promote",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1370612670"
+    },
+    {
+      "id": "P12",
+      "hash": "f525fa5f2466a7ed8a3a15a2bab1ea2002df20984b6c8dfa94c1b6fe1e30b98d",
+      "heading": "Influence and aftermath",
+      "excerpt": "Leading Australian poet Les Murray has sympathised with the Jindyworobaks' aims, and half-jokingly described himself as \"the last of the Jin",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1370612670"
+    },
+    {
+      "id": "P13",
+      "hash": "552ff75e092de333b72ab0c53898a44a44793caf44f21e36e74d19092d324e22",
+      "heading": "Influence and aftermath",
+      "excerpt": "Musicologist Roger Covell, writing about composer Clive Douglas in 1967, said \"if there ever was a musical Jindyworobak, it has been Clive D",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1370612670"
+    },
+    {
+      "id": "P14",
+      "hash": "ee6cebc6e4c31e6bf42009ec9c7b476e7ad675754ea91e81dd4df89234e2189b",
+      "heading": "Jindoworobaks and Aboriginality",
+      "excerpt": "The Australian literary historian Brian Clunes Ross has written on one of the common criticisms of the Jindyworobaks, one that has persisted",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1370612670"
+    },
+    {
+      "id": "P15",
+      "hash": "d5ee73cc7685e7450fa593b977f42e880a609edaab53ee04746132a471c67bb5",
+      "heading": "Jindoworobaks and Aboriginality",
+      "excerpt": "Ivor Indyk has suggested that the Jindyworobaks were looking for a kind of pastoral poetry, harking back to an Arcadian idyll which was remo",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1370612670"
+    },
+    {
+      "id": "P16",
+      "hash": "ee822144ab8c5c8f70ba0574d16d4423bb5923085f6add806a43dc36dc6c015a",
+      "heading": "Jindoworobaks and Aboriginality",
+      "excerpt": "\"aflame with energy, but they are also uninhabited, save for the ghostly remnants of Aboriginal tribes, and more frequently, the cockatoos a",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1370612670"
+    },
+    {
+      "id": "P17",
+      "hash": "82453618e887c3c42a143c75e6569aaa62b1210f364971924d805dd99467eee6",
+      "heading": "Jindoworobaks and Aboriginality",
+      "excerpt": "It is thus arguable in certain cases whether the poetry is aiming at an indigenous consciousness in whites or possession of the land, which ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1370612670"
+    },
+    {
+      "id": "P18",
+      "hash": "9d87e29163cfe144f685ac8bd1b7d350d5a21af780ad91d7cb07e2010481b284",
+      "heading": "Jindoworobaks and Aboriginality",
+      "excerpt": "The greatest indigenous influence on the Jindyworobaks was literature which had been taken down by white folklorists and anthropologists. Wr",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1370612670"
+    }
+  ],
+  "updatedAt": "2026-10-22T13:06:34.229Z"
 }
