@@ -9176,10 +9176,10 @@
       "checkedAt": "2026-10-22T08:50:47.918Z"
     },
     "68563040": {
-      "status": "FETCHED",
-      "reason": "pinned-source-ready",
+      "status": "REJECTED",
+      "reason": "insufficient-source-text-or-embedded-images",
       "revisionId": 1377527816,
-      "checkedAt": "2026-10-22T12:56:39.586Z"
+      "checkedAt": "2026-10-22T12:56:44.702Z"
     },
     "69082273": {
       "status": "PENDING",
@@ -9866,7 +9866,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-22T12:56:39.587Z",
+  "updatedAt": "2026-10-22T12:56:44.703Z",
   "dailyUsage": {
     "day": "2026-10-22",
     "calls": 64,
