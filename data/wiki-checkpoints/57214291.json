@@ -167,14 +167,14 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371289028"
     }
   ],
-  "updatedAt": "2026-10-22T09:02:32.705Z",
+  "updatedAt": "2026-10-22T09:02:50.651Z",
   "draft": {
     "variants": {
       "A1-A2": {
         "headline": "Peace in Afghanistan",
         "pages": [
           {
-            "text": "The history of Afghanistan includes many peace processes. After the US invasion in 2001, a meeting in Bonn led to a new government. This meeting was called a victor peace because the Taliban were not invited to take part.",
+            "text": "The history of Afghanistan includes many peace processes. After the US invasion, a meeting in Bonn led to a new government. This meeting was called a victor peace because the Taliban were not invited to take part.",
             "evidenceIds": [
               "P1",
               "P6"
@@ -321,7 +321,7 @@
             ]
           },
           {
-            "text": "In the wake of the 2021 regime change, localized armed resistance persisted. Observers, including the United States Institute of Peace, maintained that comprehensive peace processes remained an essential requirement for regional stability.",
+            "text": "In the wake of the regime change, localized armed resistance persisted. Observers, including the United States Institute of Peace, maintained that comprehensive peace processes remained an essential requirement for regional stability.",
             "evidenceIds": [
               "P2",
               "P16"
@@ -331,11 +331,11 @@
       }
     }
   },
-  "repairAttempts": 0,
+  "repairAttempts": 1,
   "lastUsage": {
-    "input": 3018,
-    "output": 1676,
-    "total": 4694
+    "input": 2941,
+    "output": 209,
+    "total": 3150
   },
   "validation": null
 }
