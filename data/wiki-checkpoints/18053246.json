@@ -2,9 +2,183 @@
   "pageId": 18053246,
   "title": "History of condoms",
   "topic": "Science & Technology",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1360319812,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1360319812",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-22T08:29:49.327Z"
+  "reason": "3 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:De Morbo Gallico.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ad/De_Morbo_Gallico.jpg/960px-De_Morbo_Gallico.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:De Morbo Gallico.jpg",
+        "caption": "A page from De Morbo Gallico ('On the French Disease'), Gabriele Falloppio's treatise on syphilis. Published in 1564, it describes what is possibly the first use of condoms.",
+        "alt": "",
+        "description": "A page from De Morbo Gallico (The French Disease) describing the earliest documented use of condoms.",
+        "date": "1564",
+        "section": "Renaissance",
+        "position": 0,
+        "provenance": {
+          "credit": "Gabriello Fallopio",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:De_Morbo_Gallico.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/History_of_condoms",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1360319812",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Condom 1900.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1d/Condom_1900.jpg/960px-Condom_1900.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Condom 1900.jpg",
+        "caption": "A condom made from animal intestine circa 1900",
+        "alt": "",
+        "description": "Condom by Bell & Croyden around 1900 made from an animal membrane (Caecal) (Science Museum London)",
+        "date": "circa 1900date QS:P,+1900-00-00T00:00:00Z/9,P1480,Q5727902 14 September 2004 (according to Exif data",
+        "section": "18th century",
+        "position": 1,
+        "provenance": {
+          "credit": "Stefan Kühn",
+          "license": "CC BY 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Condom_1900.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/History_of_condoms",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1360319812",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Surgeon Sage Says.jpg",
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/9/9f/Surgeon_Sage_Says.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "fileTitle": "File:Surgeon Sage Says.jpg",
+        "caption": "A World War I–era U.S. military poster promoting abstinence",
+        "alt": "",
+        "description": "A poster promoting the U.S. military's WWI policy of abstinence to prevent the spread of sexually transmitted diseases.",
+        "date": "World War I",
+        "section": "World War I to the 1920s",
+        "position": 2,
+        "provenance": {
+          "credit": "U.S. military",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Surgeon_Sage_Says.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/History_of_condoms",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1360319812",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "f4661b8bea37c77e7fb36256b1b63721a52f1cdc8a13698353da0e93ba0563b4",
+      "heading": "Lead",
+      "excerpt": "The history of condoms goes back at least several centuries, and perhaps beyond. For most of their history, condoms have been used both as a",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1360319812"
+    },
+    {
+      "id": "P2",
+      "hash": "8258884eb34a0943280e7cf80506beefb7d735d671b60915da401df2cdd6b73f",
+      "heading": "Antiquity",
+      "excerpt": "Whether condoms were used in ancient civilizations is debated by archaeologists and historians. Societies in the ancient civilizations of Eg",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1360319812"
+    },
+    {
+      "id": "P3",
+      "hash": "d7b7d3ef61ef1633b24f913d540d7df8588d10f73622688da5a18a846c8b431f",
+      "heading": "Antiquity",
+      "excerpt": "The loincloths worn by Egyptian and Greek laborers were very sparse, sometimes consisting of little more than a covering for the glans of th",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1360319812"
+    },
+    {
+      "id": "P4",
+      "hash": "bd7005ac41882ae7aef01cc26bae4a5d1361c364b623d2b3e4838fcf49b4c557",
+      "heading": "Antiquity",
+      "excerpt": "Contraceptives fell out of use in Europe after the decline of the Western Roman Empire in the 5th century; the use of contraceptive pessarie",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1360319812"
+    },
+    {
+      "id": "P5",
+      "hash": "f8407d5e94733eafe555d00dcfc21226812d0cc98e257b8b49563007abae0e1c",
+      "heading": "Renaissance",
+      "excerpt": "Prior to the 15th century, some use of glans condoms (devices covering only the head of the penis) is recorded in Asia. Glans condoms seem t",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1360319812"
+    },
+    {
+      "id": "P6",
+      "hash": "ef399313c87b1be7f5eb1d3b6fd58e142e16e981d7a3e5ce7ae251f59adb4f28",
+      "heading": "18th century",
+      "excerpt": "Written references to condom use became much more common during the 18th century. Not all of the attention was positive: in 1708, John Campb",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1360319812"
+    },
+    {
+      "id": "P7",
+      "hash": "1bf60f849b0f0de34d3bcb4c214fb7a88c14dd739930388387f245eeb66ffc7f",
+      "heading": "Expanded marketing and introduction of rubber",
+      "excerpt": "The early 19th century saw contraceptives promoted to the poorer classes for the first time: birth control advocates in England included Jer",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1360319812"
+    },
+    {
+      "id": "P8",
+      "hash": "9d54cda31beda8fa9c5617a9ef26c2be87e2ae637c96c4fdfcc1a958d715d02a",
+      "heading": "Increased popularity despite legal impediments",
+      "excerpt": "Distribution of condoms in the United States was limited by passage of the Comstock laws, which included a federal act banning the mailing o",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1360319812"
+    },
+    {
+      "id": "P9",
+      "hash": "c919d0750f4942b8fbdadc0515f11ee7e803daf0afdaed6a0b2dc065d5990574",
+      "heading": "World War I to the 1920s",
+      "excerpt": "The German military was the first to promote condom use among its soldiers, beginning in the second half of the 19th century. Early-20th-cen",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1360319812"
+    },
+    {
+      "id": "P10",
+      "hash": "e6301c221b770be2bcab94beb8ad6bb1d82b8fd813704677c8ad33f2d60a648b",
+      "heading": "Invention of spray-drying and manufacturing automation",
+      "excerpt": "Around 1920 patent lawyer, inventor and vice-president of the United States Rubber Company Ernest Hopkinson invented a simple new technique ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1360319812"
+    },
+    {
+      "id": "P11",
+      "hash": "d757fe8eeeb9914950b46ef04a87775b05c7ecd4ed761c3337b73c6812ff34ec",
+      "heading": "Great Depression",
+      "excerpt": "In 1927, senior medical officers in the American military began promoting condom distribution and educational programs to members of the arm",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1360319812"
+    },
+    {
+      "id": "P12",
+      "hash": "26309cccc6c45090169680e588cadd22a5f66feb990fd5f737748103483516b3",
+      "heading": "World War II to 1980",
+      "excerpt": "During World War II condoms were not only distributed to male U.S. military members, but enlisted men were also subject to significant contr",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1360319812"
+    },
+    {
+      "id": "P13",
+      "hash": "168724dc294f5214297a0e121c9fa11c7f4a2430255c6c1c0d6d060dede133e9",
+      "heading": "After the discovery of AIDS",
+      "excerpt": "The first New York Times story on acquired immunodeficiency syndrome (AIDS) was published on July 3, 1981. In 1982, it was first suggested t",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1360319812"
+    },
+    {
+      "id": "P14",
+      "hash": "88d26f50d518e796dc61be4d5154672a0094079a872b3129391d22b6fcc82f7f",
+      "heading": "Etymology and other terms",
+      "excerpt": "Etymological theories for the word \"condom\" abound. By the early 18th century, the invention and naming of the condom was attributed to an a",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1360319812"
+    }
+  ],
+  "updatedAt": "2026-10-22T08:29:55.040Z"
 }
