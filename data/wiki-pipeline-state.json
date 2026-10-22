@@ -7856,10 +7856,10 @@
       "checkedAt": "2026-10-21T07:36:07.707Z"
     },
     "20176151": {
-      "status": "DRAFTED",
-      "reason": "draft durably saved before validation",
+      "status": "VALIDATED",
+      "reason": "local factual, style, length, structure and source audit passed",
       "revisionId": 1380553173,
-      "checkedAt": "2026-10-22T06:11:56.760Z"
+      "checkedAt": "2026-10-22T06:12:14.750Z"
     },
     "20636301": {
       "status": "PENDING",
@@ -9866,7 +9866,7 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-10-22T06:12:11.310Z",
+  "updatedAt": "2026-10-22T06:12:14.751Z",
   "dailyUsage": {
     "day": "2026-10-22",
     "calls": 4,
