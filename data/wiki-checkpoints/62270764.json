@@ -2,10 +2,10 @@
   "pageId": 62270764,
   "title": "History of climate change policy and politics",
   "topic": "Politics",
-  "status": "DRAFTED",
+  "status": "VALIDATED",
   "revisionId": 1365696671,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1365696671",
-  "reason": "draft durably saved before validation",
+  "reason": "local factual, style, length, structure and source audit passed",
   "rights": [
     {
       "status": "REVIEW",
@@ -258,7 +258,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1365696671"
     }
   ],
-  "updatedAt": "2026-10-22T09:10:07.696Z",
+  "updatedAt": "2026-10-22T09:10:25.605Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -410,5 +410,8 @@
     "output": 1874,
     "total": 4685
   },
-  "validation": null
+  "validation": {
+    "accepted": true,
+    "errors": []
+  }
 }
