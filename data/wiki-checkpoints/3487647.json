@@ -2,10 +2,10 @@
   "pageId": 3487647,
   "title": "International Force East Timor",
   "topic": "Conflict & Security",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1371793899,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371793899",
-  "reason": "4 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -235,5 +235,154 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371793899"
     }
   ],
-  "updatedAt": "2026-10-22T08:54:03.625Z"
+  "updatedAt": "2026-10-22T08:54:16.843Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "The Crisis in East Timor",
+        "pages": [
+          {
+            "text": "Indonesia took control of East Timor in the year 1975. Many people in the territory wanted to be free. Later, a vote was held to decide if East Timor should be independent. Most people voted yes for freedom.",
+            "evidenceIds": [
+              "P2",
+              "P5"
+            ]
+          },
+          {
+            "text": "After the vote, terrible violence started in the region. Many people were killed, and hundreds of thousands had to leave their homes. The United Nations and leaders around the world saw the severe danger.",
+            "evidenceIds": [
+              "P5",
+              "P6"
+            ]
+          },
+          {
+            "text": "Australia helped make a plan to stop the fighting. The United Nations Security Council agreed to send a special multinational force to bring peace. This group was called the International Force East Timor.",
+            "evidenceIds": [
+              "P1",
+              "P10",
+              "P14"
+            ]
+          },
+          {
+            "text": "Major General Peter Cosgrove from Australia led the peacekeeping mission. Troops and supplies came from twenty-two different nations to help. Australia and New Zealand provided very large groups of soldiers.",
+            "evidenceIds": [
+              "P1",
+              "P8",
+              "P16"
+            ]
+          },
+          {
+            "text": "The coalition forces arrived in East Timor to stop the violence and help the United Nations mission. They worked to protect people and make the region safe again.",
+            "evidenceIds": [
+              "P16"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "Peacekeeping in East Timor",
+        "pages": [
+          {
+            "text": "Following years of Indonesian rule that began in 1975, the United Nations organized a referendum in East Timor. On 30 August 1999, the local population voted overwhelmingly in favor of gaining independence from Indonesia.",
+            "evidenceIds": [
+              "P2",
+              "P5"
+            ]
+          },
+          {
+            "text": "The announcement of the referendum results triggered severe violence and a humanitarian crisis. Pro-integrationist militia carried out attacks, displacing hundreds of thousands of residents and prompting urgent calls for international military intervention.",
+            "evidenceIds": [
+              "P5",
+              "P6"
+            ]
+          },
+          {
+            "text": "Public outrage grew in countries like Australia and Portugal. Activists and religious leaders pressured their governments to act. Indonesian President B. J. Habibie ultimately agreed to accept an international peacekeeping force.",
+            "evidenceIds": [
+              "P6",
+              "P12",
+              "P13"
+            ]
+          },
+          {
+            "text": "On 15 September 1999, the United Nations Security Council adopted Resolution 1264. It called for a multinational force to restore security, protect the United Nations mission, and facilitate humanitarian assistance operations.",
+            "evidenceIds": [
+              "P14"
+            ]
+          },
+          {
+            "text": "Led by Major General Peter Cosgrove, the International Force East Timor began deploying on 20 September 1999. Twenty-two nations contributed personnel and assets to the coalition, with Australia and New Zealand providing the largest military contingents.",
+            "evidenceIds": [
+              "P8",
+              "P16"
+            ]
+          },
+          {
+            "text": "The multinational force successfully secured Dili and moved into other regions, working alongside naval and air assets deployed by participating countries to maintain stability.",
+            "evidenceIds": [
+              "P7",
+              "P15",
+              "P17"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "INTERFET Intervention",
+        "pages": [
+          {
+            "text": "Following Indonesia's 1975 annexation of the former Portuguese colony of East Timor, the local resistance movement Falintil maintained opposition. Decades later, a UN-sponsored referendum conducted on 30 August 1999 demonstrated decisive support for independence.",
+            "evidenceIds": [
+              "P2",
+              "P5"
+            ]
+          },
+          {
+            "text": "The referendum outcome precipitated a severe security and humanitarian crisis. Widespread violence, instigated by anti-independence militia with alleged backing from elements of the Indonesian military, resulted in numerous fatalities and the displacement of roughly half the territory's population.",
+            "evidenceIds": [
+              "P5",
+              "P6",
+              "P11"
+            ]
+          },
+          {
+            "text": "In response to intense public pressure across nations such as Australia and Portugal, diplomatic efforts intensified. Indonesian President B. J. Habibie relented under severe economic and international pressure, formally announcing readiness to accept international peacekeeping forces.",
+            "evidenceIds": [
+              "P6",
+              "P12",
+              "P13"
+            ]
+          },
+          {
+            "text": "The United Nations Security Council issued Resolution 1264 on 15 September 1999. The resolution authorized a multinational coalition to restore peace and security, safeguard the existing UN mission, and support humanitarian operations.",
+            "evidenceIds": [
+              "P14"
+            ]
+          },
+          {
+            "text": "Commanded by Australian Major General Peter Cosgrove, the International Force East Timor commenced deployment on 20 September 1999. Twenty-two nations ultimately contributed personnel, with Australia providing 5,500 troops and New Zealand deploying a significant contingent.",
+            "evidenceIds": [
+              "P8",
+              "P16"
+            ]
+          },
+          {
+            "text": "Military operations relied on extensive logistical, aerial, and naval support from coalition partners. RAAF combat aircraft acted as a strategic deterrent, while naval vessels and infantry units systematically secured Dili and the western regencies.",
+            "evidenceIds": [
+              "P7",
+              "P15",
+              "P17"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 3006,
+    "output": 1454,
+    "total": 4460
+  },
+  "validation": null
 }
