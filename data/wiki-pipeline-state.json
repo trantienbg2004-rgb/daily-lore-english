@@ -8642,10 +8642,10 @@
       "checkedAt": null
     },
     "50714370": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
+      "revisionId": 1366866697,
+      "checkedAt": "2026-10-22T08:40:49.196Z"
     },
     "50781692": {
       "status": "EVIDENCE_READY",
@@ -9866,7 +9866,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-22T08:40:42.820Z",
+  "updatedAt": "2026-10-22T08:40:49.205Z",
   "dailyUsage": {
     "day": "2026-10-22",
     "calls": 24,
