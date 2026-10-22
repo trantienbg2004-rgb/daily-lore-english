@@ -6080,10 +6080,10 @@
       "checkedAt": "2026-10-22T08:17:36.890Z"
     },
     "24903": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
+      "revisionId": 1349367115,
+      "checkedAt": "2026-10-22T08:28:07.201Z"
     },
     "26094": {
       "status": "EVIDENCE_READY",
@@ -9866,7 +9866,7 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-10-22T08:28:00.919Z",
+  "updatedAt": "2026-10-22T08:28:07.201Z",
   "dailyUsage": {
     "day": "2026-10-22",
     "calls": 16,
