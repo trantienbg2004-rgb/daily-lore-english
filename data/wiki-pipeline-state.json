@@ -9518,10 +9518,10 @@
       "checkedAt": "2026-10-21T03:11:47.340Z"
     },
     "77244847": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
+      "revisionId": 1380533700,
+      "checkedAt": "2026-10-22T12:47:30.599Z"
     },
     "77274995": {
       "status": "PENDING",
@@ -9866,7 +9866,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-22T12:47:24.130Z",
+  "updatedAt": "2026-10-22T12:47:30.608Z",
   "dailyUsage": {
     "day": "2026-10-22",
     "calls": 60,
