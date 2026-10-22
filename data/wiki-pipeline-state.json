@@ -6308,10 +6308,10 @@
       "checkedAt": "2026-10-21T13:02:15.886Z"
     },
     "147625": {
-      "status": "FETCHED",
-      "reason": "pinned-source-ready",
+      "status": "NEEDS_REVIEW",
+      "reason": "no-rights-verified-embedded-image",
       "revisionId": 1367687515,
-      "checkedAt": "2026-10-22T08:49:48.440Z"
+      "checkedAt": "2026-10-22T08:49:53.972Z"
     },
     "154242": {
       "status": "RETRY_LATER",
@@ -9866,7 +9866,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-22T08:49:48.449Z",
+  "updatedAt": "2026-10-22T08:49:53.973Z",
   "dailyUsage": {
     "day": "2026-10-22",
     "calls": 32,
