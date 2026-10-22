@@ -8750,10 +8750,10 @@
       "checkedAt": null
     },
     "53695544": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
+      "revisionId": 1304842612,
+      "checkedAt": "2026-10-22T09:07:11.084Z"
     },
     "53755234": {
       "status": "REJECTED",
@@ -9866,7 +9866,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-22T09:07:04.784Z",
+  "updatedAt": "2026-10-22T09:07:11.085Z",
   "dailyUsage": {
     "day": "2026-10-22",
     "calls": 47,
