@@ -728,7 +728,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373524651"
     }
   ],
-  "updatedAt": "2026-10-22T09:11:39.700Z",
+  "updatedAt": "2026-10-22T09:12:25.353Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -741,7 +741,7 @@
             ]
           },
           {
-            "text": "London bought a huge amount of this coal. The city needed it to keep warm and to run many shops. Because wood was hard to find, people used coal inside their houses.",
+            "text": "London bought a huge amount of coal from the north east. The city was a voracious consumer of coal, needing it for domestic heating and manufacturing. As trees were cut down and firewood became scarce, Londoners gradually learned to burn coal indoors to keep warm.",
             "evidenceIds": [
               "P1",
               "P13"
@@ -848,7 +848,7 @@
             ]
           },
           {
-            "text": "Overland transportation costs rendered distant carriage economically unviable, elevating the significance of maritime shipping via small sailing vessels through the North Sea directly toward the river Thames.",
+            "text": "The prohibitive expense of overland transport, which caused coal prices to double within a mere five to ten miles from the pit-head, rendered distant carriage economically unviable. This geographic reality elevated the utmost significance of the coastal shipping trade, wherein small sailing vessels transported bulky cargoes from the north east rivers across the North Sea toward the river Thames.",
             "evidenceIds": [
               "P7",
               "P8",
@@ -865,11 +865,11 @@
       }
     }
   },
-  "repairAttempts": 0,
+  "repairAttempts": 1,
   "lastUsage": {
-    "input": 2871,
-    "output": 937,
-    "total": 3808
+    "input": 2763,
+    "output": 256,
+    "total": 3019
   },
   "validation": null
 }
