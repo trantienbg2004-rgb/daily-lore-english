@@ -2,10 +2,10 @@
   "pageId": 31376228,
   "title": "Economic history of the Arab world",
   "topic": "Economy",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1274814693,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1274814693",
-  "reason": "5 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REJECTED",
@@ -267,5 +267,157 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1274814693"
     }
   ],
-  "updatedAt": "2026-10-22T09:04:09.644Z"
+  "updatedAt": "2026-10-22T09:04:30.533Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "Trade and History in the Arab World",
+        "pages": [
+          {
+            "text": "The economic history of the Arab world covers economic activities stretching from the Atlantic Ocean to the Arabian Sea. Agriculture was the main part of the economy until modern times. Livestock grazing played a very large role. Important early industries included tanning, pottery, and metalwork in the region.",
+            "evidenceIds": [
+              "P1",
+              "P2"
+            ]
+          },
+          {
+            "text": "Major trade routes included the Silk Road and the spice trade. Traders also moved gold, salt, slaves, and luxury goods like ivory out of sub-Saharan Africa. Trade routes ran across the Arabian Peninsula to North Africa. This made trade and travel easier for students and merchants.",
+            "evidenceIds": [
+              "P2",
+              "P3"
+            ]
+          },
+          {
+            "text": "Around the ninth century, Arab people understood the economic value of gold. They traded gold in West Africa. North African regions grew financially by shipping gold to different territories. West African leader Mansa Musa brought a vast amount of gold to Mecca during a pilgrimage.",
+            "evidenceIds": [
+              "P4",
+              "P5"
+            ]
+          },
+          {
+            "text": "Pilgrims often traded along the Hajj journey to pay for their travels. Merchants joined the Hajj to get protection from armed guards. When travelers returned home, they brought goods back to sell. This caused shifts in designs and raised prices in their native lands.",
+            "evidenceIds": [
+              "P6"
+            ]
+          },
+          {
+            "text": "Trading along the East African Swahili coast began long ago. Traders used knowledge of monsoon winds to travel across the Indian Ocean. Omani Arab traders arrived in the late seventeenth century. They increased trade and exported slaves and ivory from the African interior.",
+            "evidenceIds": [
+              "P9",
+              "P11"
+            ]
+          },
+          {
+            "text": "A Waqf is a charitable endowment given by Muslims to help benefit their societies. It played a major role in the economy and the development of cities. Rulers created revenue sources to support communities, schools, and mosques. Some people also used Waqfs to protect family wealth.",
+            "evidenceIds": [
+              "P14",
+              "P16"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "Trade, Wealth, and Society in the Arab World",
+        "pages": [
+          {
+            "text": "The economic history of the Arab world spans from the Atlantic Ocean to the Arabian Sea, originating in the Arabian Peninsula and expanding during early Muslim conquests. Agriculture dominated the pre-modern economy, alongside significant livestock grazing and industries such as tanning, pottery, and metalwork.",
+            "evidenceIds": [
+              "P1",
+              "P2"
+            ]
+          },
+          {
+            "text": "Extensive trade networks, including the Silk Road, the spice trade, and trans-Saharan routes, moved gold, salt, slaves, and luxury goods like ivory. Routes crossing the Arabian Peninsula to North Africa facilitated commerce and travel, while Indian Ocean trade relied on monsoon wind patterns.",
+            "evidenceIds": [
+              "P2",
+              "P3",
+              "P9"
+            ]
+          },
+          {
+            "text": "Around the ninth century, Arabs recognized the economic impact of gold, participating actively in West African goldfields. Later, the West African leader Mansa Musa traveled to Mecca, distributing vast quantities of gold. His generous spending temporarily disrupted the Cairo economy due to the sheer volume of gold introduced.",
+            "evidenceIds": [
+              "P4",
+              "P5"
+            ]
+          },
+          {
+            "text": "The Hajj pilgrimage served as an important economic driver. Pilgrims traded along their routes to finance their journeys and paid taxes to local tribes. Merchants joined pilgrim caravans for protection, boosting regional commerce. Returning travelers brought back goods that shifted local designs and prices.",
+            "evidenceIds": [
+              "P6"
+            ]
+          },
+          {
+            "text": "Omani Arab traders arrived on the Swahili coast in the late seventeenth century, expanding trade networks. They exported ivory and slaves from the African interior to meet high demands in India and Europe. These slaves provided labor for growing clove plantations in Zanzibar and Pemba.",
+            "evidenceIds": [
+              "P11"
+            ]
+          },
+          {
+            "text": "A Waqf is a charitable endowment created to benefit society, fund schools, and build infrastructure. While intended for public good, some rulers and families used Waqfs to protect assets from government control or taxation. This practice sometimes allowed families to retain wealth across generations.",
+            "evidenceIds": [
+              "P14",
+              "P15",
+              "P16"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "Economic Structures of the Historical Arab World",
+        "pages": [
+          {
+            "text": "The economic history of the Arab world encompasses commercial and agricultural developments originating in the Arabian Peninsula and expanding across regions conquered during early Muslim campaigns, including the Maghreb, the Nile Valley, and the Fertile Crescent. Agriculture and livestock grazing constituted the foundation of the pre-modern economy.",
+            "evidenceIds": [
+              "P1",
+              "P2"
+            ]
+          },
+          {
+            "text": "Commercial vitality depended on extensive overland and maritime networks, including the Silk Road, the spice trade, and trans-Saharan routes supplying gold, salt, ivory, and enslaved people. Maritime commerce along the Swahili coast benefited from monsoon wind dynamics, connecting East Africa with India, China, and Arabia.",
+            "evidenceIds": [
+              "P2",
+              "P9"
+            ]
+          },
+          {
+            "text": "By the ninth century, Arab entities integrated deeply into the West African gold trade, stabilizing the relative value of silver through steady gold acquisition. The pilgrimage of West African leader Mansa Musa introduced immense quantities of gold to Mecca, generating inflationary pressures that adversely affected the Cairo economy.",
+            "evidenceIds": [
+              "P4",
+              "P5"
+            ]
+          },
+          {
+            "text": "The Hajj functioned as a vital commercial infrastructure. Pilgrims engaged in trading to finance expeditions, and merchants integrated into protected caravans to secure safe transit. Taxation of these routes fluctuated under Ottoman and subsequent governance, while returning travelers stimulated local markets with imported commodities.",
+            "evidenceIds": [
+              "P6",
+              "P7"
+            ]
+          },
+          {
+            "text": "Omani maritime expansion along the East African coast during the late seventeenth century intensified long-distance commerce. The exploitation of enslaved labor facilitated agricultural production on clove plantations in Zanzibar and Pemba, while interior African societies underwent political development centered on trade route control.",
+            "evidenceIds": [
+              "P11",
+              "P12"
+            ]
+          },
+          {
+            "text": "The Waqf institution served as a foundational charitable endowment supporting infrastructure, urban development, and educational institutions. Concurrently, elites utilized Waqf mechanisms to shelter assets from taxation, circumvent strict inheritance laws, and secure familial economic longevity, drawing both religious and critical socioeconomic analysis.",
+            "evidenceIds": [
+              "P14",
+              "P15",
+              "P16"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2629,
+    "output": 1258,
+    "total": 3887
+  },
+  "validation": null
 }
