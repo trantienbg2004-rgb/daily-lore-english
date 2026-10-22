@@ -8048,10 +8048,10 @@
       "checkedAt": "2026-10-21T07:33:43.237Z"
     },
     "26740386": {
-      "status": "FETCHED",
-      "reason": "pinned-source-ready",
+      "status": "EVIDENCE_READY",
+      "reason": "4 rights-verified embedded images",
       "revisionId": 1358677755,
-      "checkedAt": "2026-10-22T06:19:03.848Z"
+      "checkedAt": "2026-10-22T06:19:09.611Z"
     },
     "27301862": {
       "status": "PENDING",
@@ -9866,7 +9866,7 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-10-22T06:19:03.854Z",
+  "updatedAt": "2026-10-22T06:19:09.612Z",
   "dailyUsage": {
     "day": "2026-10-22",
     "calls": 8,

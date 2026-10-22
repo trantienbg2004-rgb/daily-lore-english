@@ -2,9 +2,247 @@
   "pageId": 26740386,
   "title": "Heritage science",
   "topic": "Culture",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1358677755,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1358677755",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-22T06:19:03.853Z"
+  "reason": "4 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Microscopic investigation 3D printed artwork.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c8/Microscopic_investigation_3D_printed_artwork.jpg/960px-Microscopic_investigation_3D_printed_artwork.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Microscopic investigation 3D printed artwork.jpg",
+        "caption": "Examination of a 3D printed artwork by Tom Lomax using microscopy",
+        "alt": "",
+        "description": "microscopic investigation of 3D printed artwork",
+        "date": "2016-12-06",
+        "section": "",
+        "position": 0,
+        "provenance": {
+          "credit": "Matijastrlic",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Microscopic_investigation_3D_printed_artwork.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Heritage_science",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1358677755",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Red Rot Leather.jpg"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:WoS publications 2015.png",
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/9/9d/WoS_publications_2015.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "fileTitle": "File:WoS publications 2015.png",
+        "caption": "Publication trends in the heritage science field, 2005–2014",
+        "alt": "",
+        "description": "WoS_publications_2015",
+        "date": "2016-01-08",
+        "section": "Research",
+        "position": 2,
+        "provenance": {
+          "credit": "Matijastrlic",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:WoS_publications_2015.png",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Heritage_science",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1358677755",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:SEAHA Mobile Heritage Lab.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/86/SEAHA_Mobile_Heritage_Lab.jpg/960px-SEAHA_Mobile_Heritage_Lab.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:SEAHA Mobile Heritage Lab.jpg",
+        "caption": "The SEAHA Mobile Heritage Laboratory for field research and public engagement with science and heritage",
+        "alt": "",
+        "description": "SEAHA_Mobile_Heritage_Lab in Malet Place, London WC1E",
+        "date": "2016-01-08",
+        "section": "Higher education",
+        "position": 3,
+        "provenance": {
+          "credit": "Matijastrlic",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:SEAHA_Mobile_Heritage_Lab.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Heritage_science",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1358677755",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:SI Museum Support Center.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/04/SI_Museum_Support_Center.jpg/960px-SI_Museum_Support_Center.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:SI Museum Support Center.jpg",
+        "caption": "The Museum Conservation Institute of the Smithsonian Institution is part of its Museum Support Center in Suitland, Maryland.",
+        "alt": "",
+        "description": "SI_Museum_Support_Center",
+        "date": "2016-01-08",
+        "section": "Professional activities",
+        "position": 4,
+        "provenance": {
+          "credit": "Matijastrlic",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:SI_Museum_Support_Center.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Heritage_science",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1358677755",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "4b155d366cfef671f17b130636c1c52f25154c0fb125e692ff81fc10391329a3",
+      "heading": "Lead",
+      "excerpt": "Heritage science is the interdisciplinary domain of scientific study of cultural and natural heritage. Heritage science draws on diverse hum",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1358677755"
+    },
+    {
+      "id": "P2",
+      "hash": "e9642c7a03b1357407775930f4eae28d8b6be990cbd6cb0c9caa79da89e55684",
+      "heading": "Lead",
+      "excerpt": "The above definition was developed through a community consultation organised by ICCROM and the European Research Infrastructure for Heritag",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1358677755"
+    },
+    {
+      "id": "P3",
+      "hash": "95f2fe4087f709035a72630b2747e2905a2a6d062d2a3f6451e7c39ea47a7b65",
+      "heading": "Lead",
+      "excerpt": "The term has become widely used after 2006, when it became increasingly evident that the more traditional terms conservation science or pres",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1358677755"
+    },
+    {
+      "id": "P4",
+      "hash": "031c2271b84413e0e4f1df697829696eaa842d94bd98fc1bc6886df983b18e9a",
+      "heading": "Lead",
+      "excerpt": "Heritage science is seen as \"key to the long-term sustainability of heritage: it is about managing change and risk and maximising social, cu",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1358677755"
+    },
+    {
+      "id": "P5",
+      "hash": "810995595271a0eb3e181c66e79b7287babb4fd71b74a7a63825a1f17b3702cf",
+      "heading": "Theory",
+      "excerpt": "The field still requires its literature canon, and opinions on whether heritage science is a domain in its own right or a field of research ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1358677755"
+    },
+    {
+      "id": "P6",
+      "hash": "29bcf45f837e892d39229a52fcd8c02542e19d75b3b35fef787b7a6f4436a8e5",
+      "heading": "Research",
+      "excerpt": "Heritage science is an increasingly lively science domain. Materials and techniques of the past are often very difficult to study and state-",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1358677755"
+    },
+    {
+      "id": "P7",
+      "hash": "a0e3d737a336c71c5c5048d568cea6a5234a125ca176a4b7f0bfd721181a07e7",
+      "heading": "Higher education",
+      "excerpt": "The heritage science career paths are various. Due to the cross-disciplinary nature of heritage science, any academic background is suitable",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1358677755"
+    },
+    {
+      "id": "P8",
+      "hash": "59064e06202474e25bf5d4de99b05995ea218ae47c3a6ac49b40332641298f51",
+      "heading": "Professional activities",
+      "excerpt": "A UK body, the National Heritage Science Forum was established to enable the 'users' and 'doers' of heritage science to access information o",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1358677755"
+    },
+    {
+      "id": "P9",
+      "hash": "55e60b1f969f953fb793f8dfe653eab70d662c48d787e6cf0d47cc1d6ef98f8e",
+      "heading": "Events",
+      "excerpt": "In addition, conferences organised by the Institute of Conservation, American Institute for Conservation and International Institute for Con",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1358677755"
+    },
+    {
+      "id": "P10",
+      "hash": "0590c8acc240e663f00e5daf94666d6e71c937221875eaae1ddcf3ffee635a29",
+      "heading": "Theory",
+      "excerpt": "Heritage science is an old field of research: in his Royal Institution Christmas Lecture in 1843, Michael Faraday already pointed out how po",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1358677755"
+    },
+    {
+      "id": "P11",
+      "hash": "e5553e356fac4ddf251d71e7b807fbe5d3183b19ea0bee0163d5f1f2a63b7913",
+      "heading": "Theory",
+      "excerpt": "Since the historical context of heritage is often unknown, there can be any number of variables affecting the heritage system under observat",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1358677755"
+    },
+    {
+      "id": "P12",
+      "hash": "762a56e882e23ca083fcd61b10fecbca7fd8b57fde5790a6a16ec65af1fa8297",
+      "heading": "Research",
+      "excerpt": "In academia, heritage science is often performed by scientists spending a proportion of their time on heritage-related research. The academi",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1358677755"
+    },
+    {
+      "id": "P13",
+      "hash": "9a60274acb0cef9ad8aba235b7ba62024bd855708bf31a797e03d259d1fa3df8",
+      "heading": "Research",
+      "excerpt": "The proportion per country varies greatly, about 20% of researchers being active in the US, 15% in the UK, 10% in Italy, 5% in France, and 5",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1358677755"
+    },
+    {
+      "id": "P14",
+      "hash": "b68a6b6eb1e0f3154aae8d944a554e2dfe8d2d3e337bde21d7a900585c4688fa",
+      "heading": "Research",
+      "excerpt": "While the results of the field are published in a large number of journals from the application and methodology field that accept interdisci",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1358677755"
+    },
+    {
+      "id": "P15",
+      "hash": "9b427aa03de523502dd1c60cc60a070c95ac3a700be455a362d485510a8ee7e4",
+      "heading": "Research",
+      "excerpt": "In 2017, in the frame of H2020-INFRADEV-2016-2, the European programme for the development and long-term sustainability of new pan-European ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1358677755"
+    },
+    {
+      "id": "P16",
+      "hash": "baa767e73d3be8c9a2e88f53c0004bfd288ea374af941e0f1c69584b3cd5f084",
+      "heading": "Research",
+      "excerpt": "At the University of Opole in Poland, the UNESCO Chair on Cultural Property Law publishes critical research relating to the intersection bet",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1358677755"
+    },
+    {
+      "id": "P17",
+      "hash": "e0a8e379c4f9d77e5a8e69b045e75daac1c4bf8a486d1b82ef6dbeaef9a4afd8",
+      "heading": "Higher education",
+      "excerpt": "At University College London, University of Oxford and University of Brighton, the Centre for Doctoral Training in Science and Engineering i",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1358677755"
+    },
+    {
+      "id": "P18",
+      "hash": "30a8892d6d1270a565a0d4730b33fd8b2fd5057275c73ac8a513705088f28eef",
+      "heading": "Higher education",
+      "excerpt": "Since the field requires significant cross-disciplinary and transferable skills, graduates may be able to take jobs in industry and academia",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1358677755"
+    },
+    {
+      "id": "P19",
+      "hash": "448b3d988cfffc2400c77810e9c8d8fc37f32557faa9e128dddd2d3f4f619e3e",
+      "heading": "Professional activities",
+      "excerpt": "The Heritage Science Research Network captures the current activity in the field in the UK. In Spain, the Spanish Network of Science and Tec",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1358677755"
+    }
+  ],
+  "updatedAt": "2026-10-22T06:19:09.611Z"
 }
