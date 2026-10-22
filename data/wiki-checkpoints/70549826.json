@@ -2,9 +2,91 @@
   "pageId": 70549826,
   "title": "V-in-square map",
   "topic": "History & Geography",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1377898117,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377898117",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-22T09:05:35.291Z"
+  "reason": "1 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Madrid, Biblioteca nacional de España, MS Vitr. 14-2, fol. 12v map.png",
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/8/89/Madrid%2C_Biblioteca_nacional_de_Espa%C3%B1a%2C_MS_Vitr._14-2%2C_fol._12v_map.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "fileTitle": "File:Madrid, Biblioteca nacional de España, MS Vitr. 14-2, fol. 12v map.png",
+        "caption": "A V-in-square map with all four edges correctly labelled by cardinal direction and the continents identified with Noah's sons and their climates (temperate Asia, frigid Europe and hot Africa)",
+        "alt": "",
+        "description": "w:V-in-square map in Madrid, w:Biblioteca nacional de España, MS Vitr. 14-2, fol. 12v.",
+        "date": "medieval",
+        "section": "",
+        "position": 0,
+        "provenance": {
+          "credit": "Van Duzer, Chet (2012). \"A Neglected Type of Medieval Mappamundi and Its Re-imaging in the Mare Historiarum (BnF MS Lat. 4915, Fol. 26v)\". Viator 43 (2): 277–301. DOI:10.1484/J.VIATOR.1.102714.",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Madrid,_Biblioteca_nacional_de_Espa%C3%B1a,_MS_Vitr._14-2,_fol._12v_map.png",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/V-in-square_map",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377898117",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Paris, Bibliothèque nationale de France, MS lat. 4915, fol. 26v map.png"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "de22044014b419fc72da4c8e2951e5346d8a4874c8da3797186a0617ad7878ee",
+      "heading": "Lead",
+      "excerpt": "The V-in-square (or V-in-◻) map is a highly schematic type of mappa mundi (world map) in use in Europe during the Middle Ages. It is based o",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377898117"
+    },
+    {
+      "id": "P2",
+      "hash": "f3a4b8f6722e7b16bfcef741f7845dea4db42646c9ba166636c2a14a53757f1f",
+      "heading": "Description",
+      "excerpt": "The V-in-square map is named from its basic shape, by analogy with the T and O map. It is a square map divided into three parts by a V. Thes",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377898117"
+    },
+    {
+      "id": "P3",
+      "hash": "c87755d42082063f2c5849962b9afc7cb9ee6c690ba02531b6b1ebc864ff574c",
+      "heading": "Description",
+      "excerpt": "David Woodward classifies it as a mappa mundi of the schematic tripartite type. Michael Andrews classifies it as of the oecumenical triparti",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377898117"
+    },
+    {
+      "id": "P4",
+      "hash": "4bcb0bd8e5175fe9bdfd3ff4f9b03da99393f36ad4b231c602dcde0cc07fe65f",
+      "heading": "Usage",
+      "excerpt": "The geography of V-in-square maps is based on a single sentence in the Etymologiae of Isidore of Seville, written in the early 7th century: ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377898117"
+    },
+    {
+      "id": "P5",
+      "hash": "1fb19330c758ee5e57a762311ae2d8e12054f15db368e48d8f03525af7a8499a",
+      "heading": "Usage",
+      "excerpt": "V-in-square maps appear only in manuscripts. The earliest known example is found with a copy of the Etymologiae made before 811. It continue",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377898117"
+    },
+    {
+      "id": "P6",
+      "hash": "08497eee58bb4569135b1c90963fb20821c5ad49306ed86178a3d0ba67706a36",
+      "heading": "Table of maps",
+      "excerpt": "The following is a table of V-in-square maps cited by Van Duzer 2012, plus the V-in-square-inspired map discussed in Marschner 2021 (marked ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377898117"
+    },
+    {
+      "id": "P7",
+      "hash": "634c2db36fcbee23338841695e5f46fb2d0d465f8072938d4ace66eb0dedb79d",
+      "heading": "Usage",
+      "excerpt": "A copy of Corpus Pelagianum made at Oviedo around 1200 (now Madrid, Biblioteca nacional de España, MS 1513, but known as the Códice de Batre",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377898117"
+    }
+  ],
+  "updatedAt": "2026-10-22T09:05:40.826Z"
 }
