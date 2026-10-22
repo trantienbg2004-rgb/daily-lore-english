@@ -9320,10 +9320,10 @@
       "checkedAt": "2026-10-21T22:34:11.429Z"
     },
     "73196367": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
+      "revisionId": 1316902381,
+      "checkedAt": "2026-10-22T08:20:02.719Z"
     },
     "73329192": {
       "status": "EVIDENCE_READY",
@@ -9866,7 +9866,7 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-10-22T08:19:56.435Z",
+  "updatedAt": "2026-10-22T08:20:02.726Z",
   "dailyUsage": {
     "day": "2026-10-22",
     "calls": 9,
