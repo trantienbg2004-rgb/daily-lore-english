@@ -8072,10 +8072,10 @@
       "checkedAt": "2026-10-21T07:40:21.304Z"
     },
     "27449867": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
+      "revisionId": 1186259870,
+      "checkedAt": "2026-10-22T14:37:20.025Z"
     },
     "27733408": {
       "status": "RETRY_LATER",
@@ -9866,7 +9866,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-22T14:37:12.778Z",
+  "updatedAt": "2026-10-22T14:37:20.032Z",
   "dailyUsage": {
     "day": "2026-10-22",
     "calls": 72,
