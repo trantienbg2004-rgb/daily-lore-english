@@ -2,10 +2,10 @@
   "pageId": 2240837,
   "title": "Abrupt climate change",
   "topic": "Environment",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1379704191,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379704191",
-  "reason": "3 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -197,5 +197,149 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379704191"
     }
   ],
-  "updatedAt": "2026-10-22T09:12:56.196Z"
+  "updatedAt": "2026-10-22T09:13:14.008Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "What Is Fast Climate Change?",
+        "pages": [
+          {
+            "text": "Climate change can happen very fast. This means the climate system changes faster than normal. These fast changes are different from slow changes. They can happen because of things inside the climate system. Past events include the end of the Carboniferous rainforest collapse and the Younger Dryas.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Scientists study these events using different time ideas. Some events took a long time to start, while others happened quickly. For example, ice-cores show Greenland had a sudden warming of ten degrees Celsius within a few years long ago.",
+            "evidenceIds": [
+              "P2",
+              "P4"
+            ]
+          },
+          {
+            "text": "There are different ways to define these fast changes. Physics looks at how the climate shifts faster than outside forces. Impacts look at how fast changes cause trouble for human and natural systems. This second idea explains why people study these events so much.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "Other fast events happened when glacial lakes drained quickly. The eight-point-two-kiloyear event happened because Glacial Lake Agassiz drained. Also, melting ice may have caused the Antarctic Cold Reversal about fourteen thousand five hundred years before present.",
+            "evidenceIds": [
+              "P6"
+            ]
+          },
+          {
+            "text": "Feedback loops are a big part of fast climate change. A warming event can cause another change that adds to even more warming. Thawing permafrost is one example because it releases methane gas into the air. This makes the planet warm up faster.",
+            "evidenceIds": [
+              "P8",
+              "P15"
+            ]
+          },
+          {
+            "text": "Scientists use models to look at the future. Climate models predict that surface temperatures could leave the usual range of variability by the year 2047 if greenhouse gas emissions continue. Crossing critical thresholds could lead to large and fast changes.",
+            "evidenceIds": [
+              "P2",
+              "P15"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "Understanding Abrupt Climate Change",
+        "pages": [
+          {
+            "text": "Abrupt climate change happens when the climate system transitions at a rate determined by its own energy-balance. This change is more rapid than the external forcing driving it. Past events include the Younger Dryas and Dansgaard-Oeschger events. Today, the term also describes sudden shifts detectable within a human lifetime.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Scientists define these events in terms of physics or impacts. Physically, the climate transitions faster than the responsible forcing. In terms of impacts, the change occurs so rapidly that human and natural systems struggle to adapt, which explains why researchers study these events extensively.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "The timescales of these events vary significantly. Ice-cores from Greenland show a sudden warming of ten degrees Celsius within a few years at the end of the Younger Dryas. Other shifts include a six degree Celsius warming on Antarctica twenty-two thousand years ago.",
+            "evidenceIds": [
+              "P4"
+            ]
+          },
+          {
+            "text": "Some abrupt changes are linked to the catastrophic draining of glacial lakes. The 8.2-kiloyear event is associated with the draining of Glacial Lake Agassiz. Additionally, rapid meltwater pulses from ice sheets likely caused the Antarctic Cold Reversal about fourteen thousand five hundred years ago.",
+            "evidenceIds": [
+              "P6"
+            ]
+          },
+          {
+            "text": "Feedback processes can drive abrupt changes when a warming event triggers further warming. Thawing permafrost releases methane, a powerful greenhouse gas that holds twice as much carbon as the current atmosphere. Melting ice sheets also reduce Earth albedo, warming the planet faster.",
+            "evidenceIds": [
+              "P8",
+              "P15"
+            ]
+          },
+          {
+            "text": "Climate models project that under ongoing greenhouse gas emissions, near-surface temperatures could depart from the variability range of the last 150 years as early as 2047. When critical thresholds or tipping points are crossed, they lead to accelerating and often irreversible changes.",
+            "evidenceIds": [
+              "P2",
+              "P15"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "Dynamics of Abrupt Climate Shifts",
+        "pages": [
+          {
+            "text": "Abrupt climate change describes transitions in the climate system occurring at a rate dictated by internal energy-balances rather than external forcings. Historical instances range from the Younger Dryas to Heinrich events. Modern usage also encompasses rapid shifts detectable within human lifespans, often driven by internal feedbacks and system tipping points.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Definitions partition into physical mechanics and societal impacts. Physically, the system reorganizes faster than the forcing mechanism. From an impact perspective, changes transpire too rapidly for natural and human systems to adapt, justifying the extensive research dedicated to these phenomena.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "Observed timescales exhibit high variability. Greenland ice-core records demonstrate a ten degree Celsius warming within years at the termination of the Younger Dryas. Conversely, the onset duration of the Paleocene-Eocene Thermal Maximum spans from decades to millennia.",
+            "evidenceIds": [
+              "P4",
+              "P5"
+            ]
+          },
+          {
+            "text": "Catastrophic drainage of glacial lakes frequently instigates abrupt shifts. The 8.2-kiloyear event correlates with Glacial Lake Agassiz emptying, while meltwater pulses likely triggered the Antarctic Cold Reversal approximately 14,500 years before present. Circulation shifts, such as Meridional Overturning Circulation shutdowns, further illustrate past instability.",
+            "evidenceIds": [
+              "P6",
+              "P7"
+            ]
+          },
+          {
+            "text": "Feedback loops amplify these dynamics. Warming induces secondary alterations that exacerbate temperature anomalies, exemplified by permafrost thaw releasing significant methane reserves and glacier reduction diminishing planetary albedo. Higher warming magnitudes and prolonged durations elevate the probability of such abrupt transitions.",
+            "evidenceIds": [
+              "P8",
+              "P14",
+              "P15"
+            ]
+          },
+          {
+            "text": "Earth system models project that continued greenhouse gas emissions could drive near-surface temperatures beyond the historical variability range of the past 150 years by 2047. Crossing critical tipping thresholds accelerates irreversible changes across ice sheets, ocean currents, and ecosystems.",
+            "evidenceIds": [
+              "P2",
+              "P15"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 1915,
+    "output": 1645,
+    "total": 3560
+  },
+  "validation": null
 }
