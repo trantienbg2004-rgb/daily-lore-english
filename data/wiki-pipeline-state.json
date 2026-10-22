@@ -8780,10 +8780,10 @@
       "checkedAt": "2026-10-21T13:02:12.970Z"
     },
     "55574351": {
-      "status": "PENDING",
-      "reason": "queued",
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
       "revisionId": 1344910833,
-      "checkedAt": null
+      "checkedAt": "2026-10-22T08:28:49.286Z"
     },
     "55760582": {
       "status": "RETRY_LATER",
@@ -9866,7 +9866,7 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-10-22T08:28:42.894Z",
+  "updatedAt": "2026-10-22T08:28:49.294Z",
   "dailyUsage": {
     "day": "2026-10-22",
     "calls": 16,
