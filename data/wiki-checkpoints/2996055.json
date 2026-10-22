@@ -2,10 +2,10 @@
   "pageId": 2996055,
   "title": "Anti-nuclear movement",
   "topic": "Society",
-  "status": "DRAFTED",
+  "status": "NEEDS_REPAIR",
   "revisionId": 1374442712,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374442712",
-  "reason": "draft durably saved before validation",
+  "reason": "editorial: C1-C2:page-2:evidence-context,C1-C2:page-2:unsupported-number-1945,C1-C2:page-2:unsupported-number-1954,C1-C2:page-2:unsupported-",
   "rights": [
     {
       "status": "REVIEW",
@@ -544,7 +544,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374442712"
     }
   ],
-  "updatedAt": "2026-10-22T08:36:48.245Z",
+  "updatedAt": "2026-10-22T08:36:54.439Z",
   "priorReviewReason": "Gemini returned invalid JSON; preserve candidate",
   "draft": {
     "variants": {
@@ -679,5 +679,13 @@
     "output": 1416,
     "total": 4213
   },
-  "validation": null
+  "validation": {
+    "accepted": false,
+    "errors": [
+      "C1-C2:page-2:evidence-context",
+      "C1-C2:page-2:unsupported-number-1945",
+      "C1-C2:page-2:unsupported-number-1954",
+      "C1-C2:page-2:unsupported-number-1963"
+    ]
+  }
 }

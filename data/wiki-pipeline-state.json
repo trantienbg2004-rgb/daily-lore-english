@@ -7166,10 +7166,10 @@
       "checkedAt": "2026-10-21T07:56:57.198Z"
     },
     "2996055": {
-      "status": "DRAFTED",
-      "reason": "draft durably saved before validation",
+      "status": "NEEDS_REPAIR",
+      "reason": "editorial: C1-C2:page-2:evidence-context,C1-C2:page-2:unsupported-number-1945,C1-C2:page-2:unsupported-number-1954,C1-C2:page-2:unsupported-",
       "revisionId": 1374442712,
-      "checkedAt": "2026-10-22T08:36:48.245Z"
+      "checkedAt": "2026-10-22T08:36:54.439Z"
     },
     "3032314": {
       "status": "EVIDENCE_READY",
@@ -9866,7 +9866,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-22T08:36:48.246Z",
+  "updatedAt": "2026-10-22T08:36:54.440Z",
   "dailyUsage": {
     "day": "2026-10-22",
     "calls": 17,
