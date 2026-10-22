@@ -7274,10 +7274,10 @@
       "checkedAt": "2026-10-21T18:16:43.813Z"
     },
     "4161867": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
+      "revisionId": 1342780009,
+      "checkedAt": "2026-10-22T08:50:54.253Z"
     },
     "4165915": {
       "status": "NEEDS_REVIEW",
@@ -9866,7 +9866,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-22T08:50:47.918Z",
+  "updatedAt": "2026-10-22T08:50:54.253Z",
   "dailyUsage": {
     "day": "2026-10-22",
     "calls": 32,
