@@ -8744,10 +8744,10 @@
       "checkedAt": "2026-10-22T09:00:28.445Z"
     },
     "53467438": {
-      "status": "PENDING",
-      "reason": "queued",
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
       "revisionId": 1380570004,
-      "checkedAt": null
+      "checkedAt": "2026-10-22T13:20:16.103Z"
     },
     "53695544": {
       "status": "REJECTED",
@@ -9866,7 +9866,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-22T13:16:18.736Z",
+  "updatedAt": "2026-10-22T13:20:16.105Z",
   "dailyUsage": {
     "day": "2026-10-22",
     "calls": 71,
