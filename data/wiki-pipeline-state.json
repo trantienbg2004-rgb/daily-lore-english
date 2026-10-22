@@ -6188,10 +6188,10 @@
       "checkedAt": "2026-10-21T13:31:48.216Z"
     },
     "44940": {
-      "status": "VALIDATED",
-      "reason": "local factual, style, length, structure and source audit passed",
+      "status": "PUBLISHED",
+      "reason": "4 verified embedded images",
       "revisionId": 1379648381,
-      "checkedAt": "2026-10-22T08:48:59.958Z"
+      "checkedAt": "2026-10-22T08:49:05.922Z"
     },
     "45633": {
       "status": "NEEDS_REVIEW",
@@ -9866,7 +9866,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-22T08:48:59.959Z",
+  "updatedAt": "2026-10-22T08:49:05.923Z",
   "dailyUsage": {
     "day": "2026-10-22",
     "calls": 32,
