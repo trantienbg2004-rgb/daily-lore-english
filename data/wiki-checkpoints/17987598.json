@@ -2,10 +2,10 @@
   "pageId": 17987598,
   "title": "Climate crisis",
   "topic": "Environment",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1373824867,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373824867",
-  "reason": "6 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -301,5 +301,145 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373824867"
     }
   ],
-  "updatedAt": "2026-10-22T08:55:08.605Z"
+  "updatedAt": "2026-10-22T08:55:21.928Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "What Is The Climate Crisis",
+        "pages": [
+          {
+            "text": "Climate crisis is a term. People use it to talk about global warming and climate change. It shows that the planet is in danger.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Some people think this name is good. They say it shows how bad things are. It can help people care more and act fast.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "Scientists and groups have used this word more. Over eleven thousand scientists said the crisis is here. They want big changes to save nature.",
+            "evidenceIds": [
+              "P4"
+            ]
+          },
+          {
+            "text": "Not everyone likes this name. Some warn it can make people scared or upset. Others think it is only a temporary problem that will pass.",
+            "evidenceIds": [
+              "P3",
+              "P5"
+            ]
+          },
+          {
+            "text": "Studies tested how people feel about these words. They found that terms like climate crisis create strong feelings. They make people feel a sense of urgency.",
+            "evidenceIds": [
+              "P12"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "Understanding The Climate Crisis Term",
+        "pages": [
+          {
+            "text": "The term climate crisis describes global warming, climate change, and their wide effects. Advocates use it to emphasize threats to Earth and urge aggressive action.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Supporters argue that calling it a crisis evokes greater gravity and spurs political willpower. Studies suggest the term conveys strong urgency and emotional response.",
+            "evidenceIds": [
+              "P2",
+              "P3"
+            ]
+          },
+          {
+            "text": "However, critics and scientists urge caution. Some fear the term sounds alarmist and causes backlash. Others worry it implies a temporary problem rather than a permanent challenge.",
+            "evidenceIds": [
+              "P3",
+              "P5"
+            ]
+          },
+          {
+            "text": "In scientific publications and mass media, the use of stronger language has grown. A 2020 article endorsed by thousands of scientists stated that the climate crisis has arrived.",
+            "evidenceIds": [
+              "P4",
+              "P6"
+            ]
+          },
+          {
+            "text": "Public campaigns have encouraged media organizations to adopt crisis terminology. Polls show changing public views, with more adults recognizing climate change as a critical crisis.",
+            "evidenceIds": [
+              "P10",
+              "P19"
+            ]
+          },
+          {
+            "text": "Psychological studies measured emotional responses to different terms. Results showed that phrases like climate crisis create stronger reactions than neutral terms like global warming.",
+            "evidenceIds": [
+              "P12"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "The Rhetoric Of The Climate Crisis",
+        "pages": [
+          {
+            "text": "The nomenclature surrounding anthropogenic climate change has evolved significantly. Terms like climate crisis and climate emergency are increasingly deployed to underscore planetary vulnerability.",
+            "evidenceIds": [
+              "P1",
+              "P6"
+            ]
+          },
+          {
+            "text": "Proponents contend that crisis framing captures the gravity of ongoing emissions. Research indicates such terminology elicits heightened emotional engagement and conveys acute urgency.",
+            "evidenceIds": [
+              "P2",
+              "P3"
+            ]
+          },
+          {
+            "text": "Conversely, detractors caution that alarmist framing can provoke counterproductive backlashes. Analysts note risks of misinterpreting crises as episodic events rather than systemic challenges.",
+            "evidenceIds": [
+              "P3",
+              "P5"
+            ]
+          },
+          {
+            "text": "Scientific consensus has increasingly embraced emphatic terminology. Endorsements by over eleven thousand scientists highlight the imperative for transformational adaptation and large-scale conservation efforts.",
+            "evidenceIds": [
+              "P4",
+              "P6",
+              "P14"
+            ]
+          },
+          {
+            "text": "Media strategies and advocacy campaigns have actively promoted crisis terminology to reshape public discourse. Legislative bodies and news outlets have progressively adopted these designations in recent years.",
+            "evidenceIds": [
+              "P18",
+              "P19",
+              "P21"
+            ]
+          },
+          {
+            "text": "Empirical psychological studies confirm that crisis terminology generates robust physiological responses across demographics. These terms successfully heighten urgency without triggering cognitive dissonance.",
+            "evidenceIds": [
+              "P12"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2885,
+    "output": 742,
+    "total": 3627
+  },
+  "validation": null
 }
