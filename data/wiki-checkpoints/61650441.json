@@ -329,14 +329,14 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381251267"
     }
   ],
-  "updatedAt": "2026-10-22T08:25:48.262Z",
+  "updatedAt": "2026-10-22T08:26:06.292Z",
   "draft": {
     "variants": {
       "A1-A2": {
         "headline": "The Long Path of Democracy in Mexico",
         "pages": [
           {
-            "text": "Democracy in Mexico has a very long history. It started when the federal republic was created in 1824. Before that time, Mexico was ruled by the Spanish Empire and became a brief empire after gaining independence. After 1824, the new republic faced many hard challenges.",
+            "text": "Democracy in Mexico has a very long history. It started when the federal republic was created. Before that time, Mexico was ruled by the Spanish Empire and became a brief empire after gaining independence. After that, the new republic faced many hard challenges.",
             "evidenceIds": [
               "P1"
             ]
@@ -460,11 +460,11 @@
       }
     }
   },
-  "repairAttempts": 0,
+  "repairAttempts": 1,
   "lastUsage": {
-    "input": 2907,
-    "output": 1457,
-    "total": 4364
+    "input": 3186,
+    "output": 548,
+    "total": 3734
   },
   "validation": null
 }
