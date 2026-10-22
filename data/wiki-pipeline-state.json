@@ -7796,10 +7796,10 @@
       "checkedAt": null
     },
     "18238359": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
+      "revisionId": 1369715495,
+      "checkedAt": "2026-10-22T08:20:27.154Z"
     },
     "18519026": {
       "status": "PENDING",
@@ -9866,7 +9866,7 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-10-22T08:20:20.575Z",
+  "updatedAt": "2026-10-22T08:20:27.164Z",
   "dailyUsage": {
     "day": "2026-10-22",
     "calls": 9,
