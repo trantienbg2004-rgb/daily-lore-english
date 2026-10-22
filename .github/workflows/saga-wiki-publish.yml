@@ -2,7 +2,7 @@ name: SAGA Wikipedia - collect and publish
 
 on:
   schedule:
-    - cron: '23 1,7,13,19 * * *'
+    - cron: '23 1,4,7,10,13,16,19,22 * * *'
   workflow_dispatch:
     inputs:
       max_calls:
@@ -65,7 +65,7 @@ jobs:
           SAGA_WIKI_CHECKPOINT_BRANCH: feat/saga-wikipedia-first-20261020
           SAGA_WIKI_MODEL: ${{ steps.free_model.outputs.model || 'gemini-3.5-flash-lite' }}
           SAGA_WIKI_MAX_CALLS: ${{ steps.free_model.outputs.available == 'true' && (github.event_name == 'schedule' || github.event.inputs.max_calls == '8') && '8' || '0' }}
-        run: node scripts/wiki-pipeline.mjs batch --max-calls="$SAGA_WIKI_MAX_CALLS" --max-candidates=24
+        run: node scripts/wiki-pipeline.mjs batch --max-calls="$SAGA_WIKI_MAX_CALLS" --max-candidates=16
       - name: Verify staged stories and Reader
         working-directory: staging
         run: |
