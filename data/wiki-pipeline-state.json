@@ -8186,10 +8186,10 @@
       "checkedAt": "2026-10-21T03:12:07.263Z"
     },
     "33261166": {
-      "status": "FETCHED",
-      "reason": "pinned-source-ready",
+      "status": "REJECTED",
+      "reason": "insufficient-source-text-or-embedded-images",
       "revisionId": 1363777768,
-      "checkedAt": "2026-10-22T14:51:25.421Z"
+      "checkedAt": "2026-10-22T14:51:30.777Z"
     },
     "33437405": {
       "status": "RETRY_LATER",
@@ -9866,7 +9866,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-22T14:51:25.422Z",
+  "updatedAt": "2026-10-22T14:51:30.778Z",
   "dailyUsage": {
     "day": "2026-10-22",
     "calls": 79,
