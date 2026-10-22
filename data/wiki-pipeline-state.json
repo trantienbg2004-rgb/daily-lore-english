@@ -9860,13 +9860,13 @@
       "checkedAt": "2026-10-20T16:35:21.497Z"
     },
     "84545431": {
-      "status": "PENDING",
-      "reason": "queued",
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
       "revisionId": 1380741566,
-      "checkedAt": null
+      "checkedAt": "2026-10-22T08:31:37.195Z"
     }
   },
-  "updatedAt": "2026-10-22T08:31:30.909Z",
+  "updatedAt": "2026-10-22T08:31:37.196Z",
   "dailyUsage": {
     "day": "2026-10-22",
     "calls": 16,
