@@ -2,9 +2,93 @@
   "pageId": 928591,
   "title": "Archelaus of Macedon",
   "topic": "Sports",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1370888997,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1370888997",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-22T08:21:50.820Z"
+  "reason": "1 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Euripides Pio-Clementino Inv302.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4a/Euripides_Pio-Clementino_Inv302.jpg/960px-Euripides_Pio-Clementino_Inv302.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Euripides Pio-Clementino Inv302.jpg",
+        "caption": "The bust of Euripides, who was hosted by Archelaus",
+        "alt": "",
+        "description": "Bust of Euripides, Roman copy after a Greek original from ca. 330 BC.",
+        "date": "2006",
+        "section": "Culture",
+        "position": 0,
+        "provenance": {
+          "credit": "Marie-Lan Nguyen",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Euripides_Pio-Clementino_Inv302.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Archelaus_of_Macedon",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1370888997",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "65562373ffb9183ea514ac0c4cf085856d9af7ab445ffc2183dec5a077661287",
+      "heading": "Lead",
+      "excerpt": "Archelaus (/ˌɑːrkɪˈleɪ.əs/; Ancient Greek: Ἀρχέλαος, romanized: Archélaos; died 399 BC) was king of the ancient Greek kingdom of Macedon fro",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1370888997"
+    },
+    {
+      "id": "P2",
+      "hash": "712e274b9a9546a4be7ca29e60581b29ad5414bb84626fb02cfd24d9c7fbf740",
+      "heading": "Family",
+      "excerpt": "Archelaus was the son of Perdiccas II and his wife, Simache, who is thought to have been once enslaved by Archelaus' uncle, Alcetas. Plato, ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1370888997"
+    },
+    {
+      "id": "P3",
+      "hash": "5db04072727b55831bfe38662476edb6a94cca1c3f2accfa17b963b14b5d10ba",
+      "heading": "Family",
+      "excerpt": "Archelaus had at least two daughters. Aristotle reports that Archelaus gave his eldest daughter to the king of Elimea while in a war against",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1370888997"
+    },
+    {
+      "id": "P4",
+      "hash": "fd8ec2d097c897e53728c54f8a434dfce65d917d310cf452419e7bb1524d3754",
+      "heading": "Family",
+      "excerpt": "Amyntas was most likely the son of Menelaus, Alexander I's second son, but he could have also been the son of Archelaus. The prevailing view",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1370888997"
+    },
+    {
+      "id": "P5",
+      "hash": "5833a0e84c2d4b143dc7b44184bfcb061c4e8a3fcd6426316c2a484c317f2fae",
+      "heading": "Reign",
+      "excerpt": "Almost immediately after he took power, Archelaus was faced with a situation which allowed him to completely reverse Macedon's relationship ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1370888997"
+    },
+    {
+      "id": "P6",
+      "hash": "ed88a4c26f68c8665a97bb9480afdb6df1190edd274000c7a7c95f7500d81960",
+      "heading": "Culture",
+      "excerpt": "Archelaus was also known as a man of culture and extended cultural and artistic contacts with southern Greece. In his new palace at Pella (w",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1370888997"
+    },
+    {
+      "id": "P7",
+      "hash": "6dfe9ce30413b4d17b12e9213e40f3fff3dc3c58d0e86434636be68eb7a157e7",
+      "heading": "Death",
+      "excerpt": "According to Aelian, Archelaus was killed in 399 BC during a hunt, by one of the royal pages, Crateuas. According to Constantine Paparrigopo",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1370888997"
+    },
+    {
+      "id": "P8",
+      "hash": "310e3e0cb7f3d6566452e83d5c5b9975d4d6420a37451d1b94c7d6dafb26cc31",
+      "heading": "Reign",
+      "excerpt": "Archelaus went on to institute many internal reforms. He issued an abundance of good quality coinage. He built strongholds, cut straight roa",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1370888997"
+    }
+  ],
+  "updatedAt": "2026-10-22T08:21:56.474Z"
 }
