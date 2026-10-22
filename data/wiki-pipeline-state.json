@@ -7640,10 +7640,10 @@
       "checkedAt": "2026-10-21T07:31:42.085Z"
     },
     "11373849": {
-      "status": "FETCHED",
-      "reason": "pinned-source-ready",
+      "status": "EVIDENCE_READY",
+      "reason": "1 rights-verified embedded images",
       "revisionId": 1363241944,
-      "checkedAt": "2026-10-22T08:49:12.468Z"
+      "checkedAt": "2026-10-22T08:49:18.133Z"
     },
     "12015467": {
       "status": "PENDING",
@@ -9866,7 +9866,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-22T08:49:12.477Z",
+  "updatedAt": "2026-10-22T08:49:18.134Z",
   "dailyUsage": {
     "day": "2026-10-22",
     "calls": 32,

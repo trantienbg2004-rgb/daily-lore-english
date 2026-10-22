@@ -2,9 +2,135 @@
   "pageId": 11373849,
   "title": "Global Carbon Project",
   "topic": "Environment",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1363241944,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1363241944",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-22T08:49:12.469Z"
+  "reason": "1 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:1850- Global carbon budget - Global Carbon Project - offset-stacked bar chart.svg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/62/1850-_Global_carbon_budget_-_Global_Carbon_Project_-_offset-stacked_bar_chart.svg/960px-1850-_Global_carbon_budget_-_Global_Carbon_Project_-_offset-stacked_bar_chart.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:1850- Global carbon budget - Global Carbon Project - offset-stacked bar chart.svg",
+        "caption": "GCP's Global Carbon Budget 2021 presented research (Friedlingstein et al. 2021) showing cumulative contributions to the global carbon budget since 1850 to illustrate how carbon source and sink components have been out of balance, causing an approximately 50% rise in atmospheric carbon dioxide concentration",
+        "alt": "",
+        "description": "Offset-stacked bar chart of global carbon budget since 1850, from the Global Carbon Project (2021) Source: Global Carbon Budget 2021. Global Carbon Project (p. 57 of PDF) (4 November 2021). Archived from the original on 11 December 2021. Archive thereof: https://web.archive.org/web/20211211094754/https://www.globalcarbonproject.org/carbonbudget/21/files/GCP_CarbonBudget_2021.pdf Quotation from source: \"The cumulative contributions to the global carbon budget from 1850. The carbon imbalance represents the gap in our current understanding of sour",
+        "date": "2022-01-02",
+        "section": "",
+        "position": 0,
+        "provenance": {
+          "credit": "RCraig09",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:1850-_Global_carbon_budget_-_Global_Carbon_Project_-_offset-stacked_bar_chart.svg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Global_Carbon_Project",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1363241944",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "fa538b7706f9827641417eca27cfa1552aa2fa97bba7335e373dd09517eaf88f",
+      "heading": "Lead",
+      "excerpt": "The Global Carbon Project (GCP) is an organisation that seeks to quantify global greenhouse gas emissions and their causes. Established in 2",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1363241944"
+    },
+    {
+      "id": "P2",
+      "hash": "53d808df6e7afb99cb65bba61604d6eec4049541168af0b00dbf6d39f865c4b8",
+      "heading": "Lead",
+      "excerpt": "The main object of the group has been to fully understand the carbon cycle. The project has brought together emissions experts, earth scient",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1363241944"
+    },
+    {
+      "id": "P3",
+      "hash": "ee067fae9e964e3038723796a213125d260d04caf8a2c65594555264b5ae4e2c",
+      "heading": "Lead",
+      "excerpt": "The Global Carbon Project collaborates with many groups to gather, analyze, and publish data on greenhouse gas emissions in an open and tran",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1363241944"
+    },
+    {
+      "id": "P4",
+      "hash": "7eab2b817b5da9fabaca0cd991b670a95e78d3750852be9581b88fd1784d1e74",
+      "heading": "Lead",
+      "excerpt": "The current chairman of the Global Carbon Project is Rob Jackson of Stanford University. Previous co-chairs include Naki Nakicenovic of the ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1363241944"
+    },
+    {
+      "id": "P5",
+      "hash": "fda02c107fb43244809b312c9c1ef4a26ab49aee34262c7fde63d99ed58d3f4c",
+      "heading": "Lead",
+      "excerpt": "For the most recent Global Carbon Budget released in December 2018, the GCP projects fossil CO2 emissions in 2018 to rise by 2.7% (range 1.8",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1363241944"
+    },
+    {
+      "id": "P6",
+      "hash": "b3573f7a7ee70009f5758e24cd4e15f78f663dac5139253373440ec23e71d2aa",
+      "heading": "Global Carbon Budget",
+      "excerpt": "Established by the GCP in 2005 the Global Carbon Budget is an annual publication of carbon cycle sources and sinks on a global level. In 201",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1363241944"
+    },
+    {
+      "id": "P7",
+      "hash": "93aab84eb2fc10a0453894be2021781848ee8fab5d9b261c38ba7870a012465f",
+      "heading": "Global Carbon Atlas",
+      "excerpt": "Established by the GCP in 2013 the Global Carbon Atlas is a tool for visualizing data related to the global carbon cycle.",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1363241944"
+    },
+    {
+      "id": "P8",
+      "hash": "4a3f71453aa62de3e0a5fa623edb537c7ae4dc7fead3ebf02eba48701d13f22b",
+      "heading": "Lead",
+      "excerpt": "For examples of earlier communications from GCP, in late 2006 researchers from the project determined that carbon dioxide emissions had dram",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1363241944"
+    },
+    {
+      "id": "P9",
+      "hash": "df181a1034e34da489c41b937748f873cd02727f01a224a4ca8f4f925173b554",
+      "heading": "Global Carbon Budget",
+      "excerpt": "The original measurements and data used to complete the global carbon budget are generated by multiple organizations and research groups aro",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1363241944"
+    },
+    {
+      "id": "P10",
+      "hash": "8025f911151f8f6543c54824baf521c93272427c533e0e79797c2cf86cf9c83b",
+      "heading": "Global Carbon Budget",
+      "excerpt": "The effort presented by the GCP is mainly one of synthesis, where results from individual groups are collated, analysed and evaluated for co",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1363241944"
+    },
+    {
+      "id": "P11",
+      "hash": "276ce8435a950fa30b0936e59c0698407f5f95112ea478c12b68498e23c961c2",
+      "heading": "Global Carbon Budget",
+      "excerpt": "The 2021 Global Carbon Budget report shows that a method has been shown to estimate the difference in emissions from land-use change from na",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1363241944"
+    },
+    {
+      "id": "P12",
+      "hash": "536fb8b6a321d93b0fd94e699e129bd67d0a879b6ed97e78d4e6324ed08f110b",
+      "heading": "Global Carbon Atlas",
+      "excerpt": "The Global Carbon Atlas is a platform to explore and visualize the most up-to-date data on carbon fluxes resulting from human activities and",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1363241944"
+    },
+    {
+      "id": "P13",
+      "hash": "02eb8ff5392cf78fe096b44e7f25e1ba9e226c319ffe3610d2e4253bd23ecc94",
+      "heading": "Global Carbon Atlas",
+      "excerpt": "This web-based application allows the dissemination of the most up to date information on the global carbon cycle to a wider audience, from ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1363241944"
+    },
+    {
+      "id": "P14",
+      "hash": "c1c82944acf10875f886ce661503f0b24dd0e27cacbc16b057430de0a28b57db",
+      "heading": "Global Carbon Atlas",
+      "excerpt": "All components of the Global Carbon Atlas are updated on an annual basis, most recently in December 2018, based on the data published in the",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1363241944"
+    }
+  ],
+  "updatedAt": "2026-10-22T08:49:18.133Z"
 }
