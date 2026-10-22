@@ -2,10 +2,10 @@
   "pageId": 20176151,
   "title": "Place names of Palestine",
   "topic": "History & Geography",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1380553173,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380553173",
-  "reason": "3 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -236,5 +236,140 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380553173"
     }
   ],
-  "updatedAt": "2026-10-22T06:11:39.424Z"
+  "updatedAt": "2026-10-22T06:11:56.761Z",
+  "draft": {
+    "outline": [
+      "Introduction to the ancient and diverse roots of Palestinian place names",
+      "The role of local communities in preserving historical nomenclature",
+      "Linguistic connections, Semitic continuity, and physical landscape features",
+      "Methods of identification through archaeology, travel records, and fieldwork",
+      "Modern developments, scholarly study, and the contemporary context"
+    ],
+    "variants": {
+      "A1-A2": {
+        "headline": "Ancient Names of Palestine",
+        "pages": [
+          {
+            "text": "The place names of Palestine have a very long history. Many names come from ancient Canaanite, Hebrew, and Aramaic languages. Over thousands of years, successive empires ruled the region. Each group left marks on how places are named, creating a rich history that people still study today.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Most place names in the region share Semitic roots. Very few names come from Greek or Turkish origins. Local populations used languages like Hebrew, Aramaic, and Arabic for thousands of years. Even when rulers changed, people often kept using the old names for their towns and fields.",
+            "evidenceIds": [
+              "P4"
+            ]
+          },
+          {
+            "text": "Many names describe physical features of the land, such as water sources. For example, words for wells and springs appear in both Hebrew and Arabic place names. Beersheba and Bir as 'Saba both relate to wells, while En Gedi and 'Ayn Jeddi refer to natural water springs.",
+            "evidenceIds": [
+              "P9"
+            ]
+          },
+          {
+            "text": "For a long time, researchers did not realize how well local people preserved ancient names. In the late 19th century, British groups began asking local farmers about place names. These farmers helped match modern Arabic names to ancient historical and archaeological sites.",
+            "evidenceIds": [
+              "P2",
+              "P7"
+            ]
+          },
+          {
+            "text": "Place names are also important for family history. Many Palestinian families use their village names as surnames. This tradition connects people to their places of origin. Today, place names remain a subject of deep scholarship and discussions about history and identity.",
+            "evidenceIds": [
+              "P3",
+              "P16"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "The History and Preservation of Palestinian Place Names",
+        "pages": [
+          {
+            "text": "Place names in Palestine reflect thousands of years of cultural exchange and successive imperial rulers. Most modern names are Arabized forms of ancient Canaanite, Biblical Hebrew, or Aramaic terms. Although these names have survived for millennia, their original meanings were often understood by only a few people.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Almost all regional place names share Semitic roots, with Latin influences appearing rarely and Greek or Turkish origins almost non-existent. Despite modifications introduced by classical ruling elites, the local population maintained the underlying Semitic naming traditions across generations.",
+            "evidenceIds": [
+              "P4"
+            ]
+          },
+          {
+            "text": "Toponymic continuity is strongly linked to the physical environment. Aharoni noted that many names survived with remarkable consistency because they reflected enduring agricultural features. Terms for water sources, such as 'be'er' in Hebrew and 'bir' in Arabic for wells, or 'en' and ''ayn' for springs, appear frequently.",
+            "evidenceIds": [
+              "P6",
+              "P9"
+            ]
+          },
+          {
+            "text": "In the late 19th century, the Palestine Exploration Fund recognized the importance of geographical naming. British Mandatory authorities subsequently gathered information from local fellahin, whose oral knowledge helped identify ancient archaeological sites. Scholars like Edward Robinson also used linguistic analysis of Arabic place names to uncover biblical locations.",
+            "evidenceIds": [
+              "P2",
+              "P21"
+            ]
+          },
+          {
+            "text": "Family naming customs also reflect this geography. Since past centuries, Palestinians have adopted village names as surnames, a practice visible in modern telephone directories. Since the establishment of Israel, thousands of place names have also been Hebraized, making place names a subject of contention tied to historical claims.",
+            "evidenceIds": [
+              "P3",
+              "P16",
+              "P22"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "Toponymic Continuity and Stratigraphy in Palestine",
+        "pages": [
+          {
+            "text": "The nomenclature of Palestine encapsulates a multilayered history shaped by successive imperial administrations. The prevailing topographic designations primarily represent Arabized adaptations of ancient Canaanite, Biblical Hebrew, and Aramaic terms transmitted across millennia, preserving linguistic strata largely opaque to casual observers.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Linguistic analysis reveals an overwhelming preponderance of Semitic roots, with negligible Greek or Turkish inputs and scarce Latin contributions. While classical antiquity introduced modifications driven by administrative elites, the underlying Semitic nomenclature persisted due to uninterrupted speech communities in the southern Levant.",
+            "evidenceIds": [
+              "P4",
+              "P17"
+            ]
+          },
+          {
+            "text": "Scholars such as Yohanan Aharoni documented exceptional pre-modern name preservation along the Eastern Mediterranean highland chain. This remarkable continuity is attributed to a shared Semitic linguistic background and the tendency of toponyms to reflect extant agricultural features, including hydrographic elements like springs and cisterns.",
+            "evidenceIds": [
+              "P6",
+              "P9"
+            ]
+          },
+          {
+            "text": "Systematic geographical inquiry began in the late 19th century when the Palestine Exploration Fund and British Mandatory authorities consulted local fellahin. These agrarian communities preserved authentic ancient nomenclature, enabling researchers to correlate modern toponyms with biblical and historical archaeological sites.",
+            "evidenceIds": [
+              "P2",
+              "P7",
+              "P21"
+            ]
+          },
+          {
+            "text": "Beyond cartography, toponyms permeated social structures through the adoption of nisba surnames derived from villages, a custom documented across centuries. In contemporary contexts, place names remain heavily contested, intersecting with cartographic and archaeological proofs used to validate competing historical claims.",
+            "evidenceIds": [
+              "P3",
+              "P16",
+              "P22"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2836,
+    "output": 1516,
+    "total": 4352
+  },
+  "validation": null
 }
