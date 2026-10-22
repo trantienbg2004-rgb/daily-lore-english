@@ -2,9 +2,225 @@
   "pageId": 62018441,
   "title": "Alexandria School of Medicine",
   "topic": "Health",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1379680228,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379680228",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-22T12:55:57.015Z"
+  "reason": "3 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Nuremberg chronicles - f 077v 1.png",
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/0/08/Nuremberg_chronicles_-_f_077v_1.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "fileTitle": "File:Nuremberg chronicles - f 077v 1.png",
+        "caption": "Alexandria, is the city where the empiricist school was founded, which required physicians to succeed, not theoretical knowledge",
+        "alt": "",
+        "description": "This is a part of a scan of an historical document: Title: Schedelsche Weltchronik or Nuremberg Chronicle",
+        "date": "1493",
+        "section": "",
+        "position": 0,
+        "provenance": {
+          "credit": "Hartmann Schedel",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Nuremberg_chronicles_-_f_077v_1.png",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Alexandria_School_of_Medicine",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379680228",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Ancientlibraryalex.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/64/Ancientlibraryalex.jpg/960px-Ancientlibraryalex.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Ancientlibraryalex.jpg",
+        "caption": "Alexandriks Library was a treasure trove of about 700,000 written rolls (of all the richest human knowledge so far, the richest in the world)",
+        "alt": "",
+        "description": "Artistic Rendering of the Library of Alexandria, based on some archaeological evidence.",
+        "date": "19th centurydate QS:P571,+1850-00-00T00:00:00Z/7date QS:P571,+1850-00-00T00:00:00Z/7",
+        "section": "History",
+        "position": 1,
+        "provenance": {
+          "credit": "O. Von Corven O. Von Corven",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Ancientlibraryalex.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Alexandria_School_of_Medicine",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379680228",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:David-Antiochus et Stratonice.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/73/David-Antiochus_et_Stratonice.jpg/960px-David-Antiochus_et_Stratonice.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:David-Antiochus et Stratonice.jpg",
+        "caption": "Erasistratus reveals cause of disease in Antiochus.",
+        "alt": "",
+        "description": "",
+        "date": "1774date QS:P571,+1774-00-00T00:00:00Z/9date QS:P571,+1774-00-00T00:00:00Z/9",
+        "section": "Erasistratus",
+        "position": 2,
+        "provenance": {
+          "credit": "Jacques-Louis David",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:David-Antiochus_et_Stratonice.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Alexandria_School_of_Medicine",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379680228",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "3af240ef7dfd83665d70de82f1418b17bab5fe7b06764e5d56355f7c826cc398",
+      "heading": "Lead",
+      "excerpt": "The Alexandria School of Medicine is one of the oldest empirical educational institutions in the history of medicine initiated during the He",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379680228"
+    },
+    {
+      "id": "P2",
+      "hash": "452484ec18bc4e1f7d83e06efd24588554176a9c25309045ab527973bc78f69d",
+      "heading": "History",
+      "excerpt": "The Greek city of Alexandria, at the mouth of the Nile, was planned and founded by Alexander the Great in 331 BC, and concentrated in it cul",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379680228"
+    },
+    {
+      "id": "P3",
+      "hash": "6f9c78b15ba7a46978718bc8261722151d82fd7ef858da6460b56421b9383d1d",
+      "heading": "Development of anatomy and physiology",
+      "excerpt": "As the medical science of ancient Greece plunged into political decadence and setbacks - scientific work was renewed in this area, especiall",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379680228"
+    },
+    {
+      "id": "P4",
+      "hash": "636fbed672c6937984c0dbf7efec9b4f10932e2618a9a7531f57ee7abc0da27b",
+      "heading": "Herophilos",
+      "excerpt": "Although Herophilos (c. 300 BC) is considered to be the founder of true anatomy, it is also a versatile advocate for the use of medicines. H",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379680228"
+    },
+    {
+      "id": "P5",
+      "hash": "c6670cdfd48bcb3157feb7003552dd6f131924029f4c8e997429b945850cb255",
+      "heading": "Herophilos",
+      "excerpt": "Herophilos was not only an anatomist but also one of the physicians of that school. He also describes numerous brain structures, which he ca",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379680228"
+    },
+    {
+      "id": "P6",
+      "hash": "07ee636a05e7b3ebf58546fa89eafa8e2a2ff1f44aab5e9996bcb5e5eadec0a3",
+      "heading": "Erasistratus",
+      "excerpt": "Erasistratus (304-250 BC), a Greek physician who grew up in Antioch, was an anatomist of that time, who described the numerous anatomical st",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379680228"
+    },
+    {
+      "id": "P7",
+      "hash": "dcdda4de5d50068b19735ff38a9375f5550b1276e173f0db5a663a6dfec12909",
+      "heading": "Development of surgery and pharmacology",
+      "excerpt": "The Alexandria School leads to the development of surgery and pharmacology. Medicines are prepared there, but at the same time poisons are i",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379680228"
+    },
+    {
+      "id": "P8",
+      "hash": "43174c800af088718fa3f86a1a1542182c9e339be5969562eea0e128fc33db3f",
+      "heading": "Establishing an empirical school",
+      "excerpt": "The flourishing of anatomy in the Alexandrian school led to scientific results that were not always in line with the dogmatic school hypothe",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379680228"
+    },
+    {
+      "id": "P9",
+      "hash": "09e1e502be39e6a4aa06d8933cdc6129221879a242aae153588b4a145f62123a",
+      "heading": "Glaucko Tarencio",
+      "excerpt": "An empiricist school is being developed in Alexandria in parallel. Although the empiricist mode of learning will only gain significance in 1",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379680228"
+    },
+    {
+      "id": "P10",
+      "hash": "465aca493bb2173dbe4cb057afaedd3c89293e65282e29aec2847e01b158490d",
+      "heading": "Disadvantages of the empirical school",
+      "excerpt": "The empirical school had its downsides. The abandonment of the theory caused a decline in the scientific level of medicine, which increasing",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379680228"
+    },
+    {
+      "id": "P11",
+      "hash": "88a04be179fc79f1d4cdbf05daa831dea37b1ed891fae109baa1d5935d3e9cdb",
+      "heading": "Alexandrian Medical School Principal of Medical Astrology",
+      "excerpt": "The beginnings of medical astrology are found in the works of physicians and philosophers from the Greco-Alexandrian period. Philosophers, b",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379680228"
+    },
+    {
+      "id": "P12",
+      "hash": "a4612cae6a91a19f6758df0cf5715ac0f307967578eb7a5226204ec7be2c817d",
+      "heading": "Erasistratus",
+      "excerpt": "He systematically dissected the corpses, the death row convicts, and probably the bodies of living animals, and thus scientifically advanced",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379680228"
+    },
+    {
+      "id": "P13",
+      "hash": "f8ddc825f839b7cb0a5c1cb08b115c7b072e213c613bfd335c943b95496c1c76",
+      "heading": "Erasistratus",
+      "excerpt": "However, Erasistratus's greatest merits are in the field of Physiology. He was the first to correctly describe the physiological functions o",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379680228"
+    },
+    {
+      "id": "P14",
+      "hash": "c9b417ca5712ed78e7cc18631f015aba46c05f84dcd0f4a3d6e639581cb0a316",
+      "heading": "Erasistratus",
+      "excerpt": "He also tried to explain to the mechanical principles breathing and digestion. The former realized the difference between motor and sensory ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379680228"
+    },
+    {
+      "id": "P15",
+      "hash": "8b32b18e147203c7630ab40282dc8638c39e1025e269f7eebbabf4a75de9cac6",
+      "heading": "Erasistratus",
+      "excerpt": "As most of the diseases, Erasistratus considered to be due to over-nutrition, he suggested that not much release be used against the plethor",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379680228"
+    },
+    {
+      "id": "P16",
+      "hash": "e89937cc1625f208f76ce189af608c3cd0904941f209ac65cda86530ffffa38f",
+      "heading": "Glaucko Tarencio",
+      "excerpt": "For him, only results were the reliable basis; acquired through personal experience, or the experience of other physicians, or similar analo",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379680228"
+    },
+    {
+      "id": "P17",
+      "hash": "f8a0cf990a5db2c2114f5ba09c8e0225db1b5b33bab4a48b97b6ab16395d0464",
+      "heading": "Glaucko Tarencio",
+      "excerpt": "Of the other greats of this school, one should also mention Oribasius a (6th century), who wrote collected works on medicine in 70 books and",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379680228"
+    },
+    {
+      "id": "P18",
+      "hash": "54fde3043c932ade0d3d477f7c7a9ec8c15287e5db655c111674895fe460b523",
+      "heading": "Alexandrian Medical School Principal of Medical Astrology",
+      "excerpt": "With all the differences between astrology and medicine, which are actually skills - artes (and medicine is actually until the 19th century,",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379680228"
+    },
+    {
+      "id": "P19",
+      "hash": "656ceb3d93fc5276263e9f8fe5d558fa852f7655c2fc29690071794bde6fe0ff",
+      "heading": "Alexandrian Medical School Principal of Medical Astrology",
+      "excerpt": "The role of astrology in medicine is indicated by a large group of texts in the so-called. popular Hermeticism, a scripture attributed to th",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379680228"
+    },
+    {
+      "id": "P20",
+      "hash": "3238f5dbf06419624c819c376b9299e44ecdc70e39ed3cb160ae2e2cc74891fe",
+      "heading": "Alexandrian Medical School Principal of Medical Astrology",
+      "excerpt": "Astrology plays an important role in medicine, not only in predicting the course of the disease, but also in their treatment. The connection",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379680228"
+    }
+  ],
+  "updatedAt": "2026-10-22T12:56:02.852Z"
 }
