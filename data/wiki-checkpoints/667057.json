@@ -2,9 +2,177 @@
   "pageId": 667057,
   "title": "Electoral district",
   "topic": "Politics",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1380758348,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380758348",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-22T08:22:15.045Z"
+  "reason": "1 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Michael Moore LibDem MP Office.jpg",
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/c/c9/Michael_Moore_LibDem_MP_Office.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "fileTitle": "File:Michael Moore LibDem MP Office.jpg",
+        "caption": "National and supranational representatives from electoral districts typically have offices in their respective districts. This photo shows the office of a Member of Parliament in the United Kingdom.",
+        "alt": "",
+        "description": "Constituency office of Michael Moore, the Liberal Democrat MP.",
+        "date": "13 October 2011, 14:34:00",
+        "section": "Terminology",
+        "position": 0,
+        "provenance": {
+          "credit": "Walter Baxter",
+          "license": "CC BY-SA 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Michael_Moore_LibDem_MP_Office.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Electoral_district",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380758348",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "26e0c18aa8c8012c95cdf5c88bac4efc03354926bbf0f9974cd7501e8ce25664",
+      "heading": "Lead",
+      "excerpt": "An electoral district, sometimes called a constituency, riding, circumscription, electorate, or ward, is a geographical portion of a politic",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380758348"
+    },
+    {
+      "id": "P2",
+      "hash": "84f463235772e3a8496af97bdf2b37373152efc7f6157fa9a64644a5e17db84c",
+      "heading": "Lead",
+      "excerpt": "Generally, only voters (constituents) who reside within the district are permitted to vote in an election held there. The district represent",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380758348"
+    },
+    {
+      "id": "P3",
+      "hash": "67c4841dc0207af8b2679bf3dcfeed4bbb3b1295635bb5fb60f13656aa2b37ee",
+      "heading": "Terminology",
+      "excerpt": "The names for electoral districts vary across countries and, occasionally, for the office being elected. The term constituency is commonly u",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380758348"
+    },
+    {
+      "id": "P4",
+      "hash": "3ffafae0d6c7c29ffdc83c97826f5d6a2f3a6d12adc9357cbbc0b4e3d61e0730",
+      "heading": "Terminology",
+      "excerpt": "In American English, the term congressional district is used. The term \"congressional district\" is largely used in the United States and is ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380758348"
+    },
+    {
+      "id": "P5",
+      "hash": "aa55a6924297fb2a5bfe0b90f496bff89f50fa76e0c936ac59aea4a326205adf",
+      "heading": "Terminology",
+      "excerpt": "In Canadian English, the term electoral district is used officially, but they are colloquially known as a riding or constituency. In some pa",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380758348"
+    },
+    {
+      "id": "P6",
+      "hash": "93df3004ad04b30607a544211285191c04eab429e8ea40965bf2797e8c835000",
+      "heading": "District magnitude",
+      "excerpt": "District magnitude refers to the number of seats assigned to each district, and in conjunction with number of districts, determines the numb",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380758348"
+    },
+    {
+      "id": "P7",
+      "hash": "988e2d784012bd74c909ff068a62becb9989778295a0e6ab21f1be9b3a373164",
+      "heading": "Minorities",
+      "excerpt": "Large district magnitude assists in the inclusion of minorities. Single-winner plurality elections (and other elections with lower district ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380758348"
+    },
+    {
+      "id": "P8",
+      "hash": "c830392a936338c3e276b814183f75a3ed5a31e06f06a6ec0cb6cd04daab49dd",
+      "heading": "Apportionment and redistricting",
+      "excerpt": "Apportionment is the process of allocating a number of representatives to different regions, such as states or provinces. Apportionment chan",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380758348"
+    },
+    {
+      "id": "P9",
+      "hash": "b7b56379b7f2bc675987158289617ce4e5f258d1e78a0152a09e5dedef71a886",
+      "heading": "Gerrymandering",
+      "excerpt": "Gerrymandering is the manipulation of electoral district boundaries for political gain. By creating a few \"forfeit\" districts where opposing",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380758348"
+    },
+    {
+      "id": "P10",
+      "hash": "10bd6aeb18e44c8cc4569f31bccca7bfc4721ce56f6a382cfc234cc837da5103",
+      "heading": "Swing seats and safe seats",
+      "excerpt": "Sometimes, particularly under non-proportional or winner-takes-all voting systems, elections can be prone to landslide victories. As the res",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380758348"
+    },
+    {
+      "id": "P11",
+      "hash": "412f1992b7ef25860f03d875166a82673fa1745bd5f2b073c7939c23a3ba2140",
+      "heading": "Constituency work",
+      "excerpt": "Elected representatives may spend much of the time serving the needs or demands of individual constituents, meaning either voters or residen",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380758348"
+    },
+    {
+      "id": "P12",
+      "hash": "91b8950fc45cefe7857e858f4dbf4700c3d9ab3de5bdcfba2d7c24886d2e737e",
+      "heading": "Special constituencies with additional membership requirements",
+      "excerpt": "In some assemblies, constituencies are defined not only by geography but also by criteria such as ethnicity, professional qualification, or ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380758348"
+    },
+    {
+      "id": "P13",
+      "hash": "14b9b85f2b61487aa68cacb385421e0205fb39edf0f416851a3803d92eba5e79",
+      "heading": "Voting without constituencies",
+      "excerpt": "Not all democratic political systems use separate districts or other electoral subdivisions to conduct elections. Members are not said to re",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380758348"
+    },
+    {
+      "id": "P14",
+      "hash": "d7a2f09a51802656968028f9fb075ba97557e5d4124dcb4fb90c86a6809f77c4",
+      "heading": "Terminology",
+      "excerpt": "In India, electoral districts are referred to as \"nirvācan kṣetra\" (Hindi: निर्वाचन क्षेत्र) in Hindi, which can be translated to English as",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380758348"
+    },
+    {
+      "id": "P15",
+      "hash": "85041ddc4fb28dfded7305be2dbceb03df1cc01bf5889ecaeef3106691c84b95",
+      "heading": "District magnitude",
+      "excerpt": "The term \"district magnitude\" was first used by the American political scientist Douglas W. Rae in his 1967 dissertation The Political Conse",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380758348"
+    },
+    {
+      "id": "P16",
+      "hash": "aadc731b8e420f60d1ca0f4e019a22dbc81313a4cc35010b01481b111c9ad33c",
+      "heading": "District magnitude",
+      "excerpt": "To have a higher district magnitude, either a legislative chamber needs to contain more members or the voters thereof needs to be divided in",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380758348"
+    },
+    {
+      "id": "P17",
+      "hash": "ab861aadbd03fed754eda19a443dfb8b2179205ac6d71367b1c758a5397b42df",
+      "heading": "District magnitude",
+      "excerpt": "The district magnitude affects the ease or difficulty to be elected, as the effective threshold, or de facto threshold, decreases as the dis",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380758348"
+    },
+    {
+      "id": "P18",
+      "hash": "df72d18fde2d996fff105e6fdf7ae7d3bbed4b35e640f5a061d752c8731f1bf9",
+      "heading": "District magnitude",
+      "excerpt": "Duverger drew a correlation between proportional representation in multi-member districts and the number of parties (fragmentation). The res",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380758348"
+    },
+    {
+      "id": "P19",
+      "hash": "926b7f80f85ff2a84670a9e77c0cb0e5564cb189b01766fc7a27a85a677224d9",
+      "heading": "District magnitude",
+      "excerpt": "Even first past the post election systems can produce multi-party legislatures. In Canada and several other countries, elections that use fi",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380758348"
+    },
+    {
+      "id": "P20",
+      "hash": "4a5424003aa009cc97d71cf25e210c299680199487bc8c4ddcfe93243bb601bc",
+      "heading": "District magnitude",
+      "excerpt": "Contests with district magnitude of 1 mostly use plurality voting in single-member districts (first-past-the-post voting) but instant-runoff",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380758348"
+    }
+  ],
+  "updatedAt": "2026-10-22T08:22:20.577Z"
 }
