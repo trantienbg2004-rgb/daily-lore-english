@@ -2,9 +2,212 @@
   "pageId": 3162270,
   "title": "Tour guide",
   "topic": "Culture",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1378401671,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378401671",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-22T12:57:03.063Z"
+  "reason": "4 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Tour Guide.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/32/Tour_Guide.jpg/960px-Tour_Guide.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Tour Guide.jpg",
+        "caption": "A tourist guide in the United Kingdom",
+        "alt": "",
+        "description": "Tour Guide In UK",
+        "date": "2004-09-11 14:43:44",
+        "section": "",
+        "position": 0,
+        "provenance": {
+          "credit": "Si Griffiths",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Tour_Guide.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Tour_guide",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378401671",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:\"A Tour Guide to the Famous Places of the Capital\" from Akizato Rito's Miyako meisho zue (1787).jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/30/%22A_Tour_Guide_to_the_Famous_Places_of_the_Capital%22_from_Akizato_Rito%27s_Miyako_meisho_zue_%281787%29.jpg/960px-%22A_Tour_Guide_to_the_Famous_Places_of_the_Capital%22_from_Akizato_Rito%27s_Miyako_meisho_zue_%281787%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:\"A Tour Guide to the Famous Places of the Capital\" from Akizato Rito's Miyako meisho zue (1787).jpg",
+        "caption": "A Japanese tourist consulting a tourist guide and a guide book from Akizato Ritō's Miyako meisho zue (1787)",
+        "alt": "",
+        "description": "A Japanese tourist consulting a guide book and a tour guide as shown in \"A Tour Guide to the Famous Places of the Capital\" from Akizato Ritō's Miyako meisho zue (都 名所 圖會; An Illustrated Guide to the Capital), illustrated by Shunchosai Takehara Nobushige. The store benefited from being situated near the Great Buddha erected by Toyotomi Hideyoshi, one of Kyoto's most popular tourist attractions.",
+        "date": "1787date QS:P571,+1787-00-00T00:00:00Z/9date QS:P571,+1787-00-00T00:00:00Z/9",
+        "section": "History",
+        "position": 1,
+        "provenance": {
+          "credit": "Shunchosai Takehara Nobushige Shunchosai Takehara Nobushige",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:%22A_Tour_Guide_to_the_Famous_Places_of_the_Capital%22_from_Akizato_Rito%27s_Miyako_meisho_zue_(1787).jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Tour_guide",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378401671",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Tour guide at the National Museum of the American Indian.jpg"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Casa Loma is operated by the Kiwanis Club of West Toronto Inc Proceeds for Charitable Work Thislittle souvenir of your visit to Casa Loma is presented to you by yourGuide A.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8d/Casa_Loma_is_operated_by_the_Kiwanis_Club_of_West_Toronto_Inc_Proceeds_for_Charitable_Work_Thislittle_souvenir_of_your_visit_to_Casa_Loma_is_presented_to_you_by_yourGuide_A.jpg/960px-thumbnail.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Casa Loma is operated by the Kiwanis Club of West Toronto Inc Proceeds for Charitable Work Thislittle souvenir of your visit to Casa Loma is presented to you by yourGuide A.jpg",
+        "caption": "Tour guide stands in front of Casa Loma in Ontario, Canada. Approximately mid twentieth century",
+        "alt": "",
+        "description": "Tour guide stands in front of Casa Loma in Ontario, Canada. Approximately mid twentieth century",
+        "date": "circa 1955date QS:P,+1955-00-00T00:00:00Z/9,P1480,Q5727902date QS:P,+1955-00-00T00:00:00Z/9,P1480,Q5",
+        "section": "History",
+        "position": 3,
+        "provenance": {
+          "credit": "Unknown authorUnknown author",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Casa_Loma_is_operated_by_the_Kiwanis_Club_of_West_Toronto_Inc_Proceeds_for_Charitable_Work_Thislittle_souvenir_of_your_visit_to_Casa_Loma_is_presented_to_you_by_yourGuide_A.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Tour_guide",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378401671",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Qajar Persia costume.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4d/Qajar_Persia_costume.jpg/960px-Qajar_Persia_costume.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Qajar Persia costume.jpg",
+        "caption": "a tour guide in Golestan Palace, wearing 19th-century Qajar Persia costume",
+        "alt": "",
+        "description": "a tour guide in Golestan Palace, wearing 19th-century Qajar Persia costume",
+        "date": "2024-10-25 11:01:37",
+        "section": "Iran",
+        "position": 4,
+        "provenance": {
+          "credit": "The.shahab",
+          "license": "CC0",
+          "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Qajar_Persia_costume.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Tour_guide",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378401671",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "91352c4797020840209ef5ce8e68d42cd3f17cbead6f55e1fa32705fcd7e9afa",
+      "heading": "Lead",
+      "excerpt": "A tourist guide is a person who guides visitors in the language of their choice and interprets the cultural and natural heritage of an area.",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378401671"
+    },
+    {
+      "id": "P2",
+      "hash": "395846c301e8ae9eb518910054ae9df3b65745a48c24aabec9d1d72fc8cb2b21",
+      "heading": "History",
+      "excerpt": "The profession of tourist guiding has ancient origins, with historical records indicating that guides accompanied travellers in classical an",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378401671"
+    },
+    {
+      "id": "P3",
+      "hash": "c06118e30aab3a34e6d900f319b46381bcd2e215ad655fb6c9f86f61c40405f3",
+      "heading": "World Federation of Tourist Guide Associations",
+      "excerpt": "The World Federation of Tourist Guide Associations (WFTGA) is the global representative body for the tourist guide profession. Founded in 19",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378401671"
+    },
+    {
+      "id": "P4",
+      "hash": "42cf7b75a54a6e7866239f12c1309a6c5461d4787edb0aba47d12ba630f0e8dc",
+      "heading": "International Standards",
+      "excerpt": "Three key international standards govern the tourist guide profession: EN 13809:2003: This European standard defines tourist guiding service",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378401671"
+    },
+    {
+      "id": "P5",
+      "hash": "cd9a896034e855bb3150a01e8998457b6613ec875b41a461891337e889759895",
+      "heading": "Australia",
+      "excerpt": "In Australia, tourist guides may be qualified with a Certificate III Guiding although this is not compulsory. They may belong to organisatio",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378401671"
+    },
+    {
+      "id": "P6",
+      "hash": "1dda5e88f3326a6629f81be5ed1a5270b383fb92b26a2a03bcc9156ccf884840",
+      "heading": "Europe",
+      "excerpt": "In Europe, tourist guides are represented by FEG, the European Federation of Tourist Guide Associations, which represents over 60,000 touris",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378401671"
+    },
+    {
+      "id": "P7",
+      "hash": "0db3e37763566f2a3a108d0501281b43bc9eab3c4745ec4327a140221cdfc0a8",
+      "heading": "Turkey",
+      "excerpt": "The regulation of tourist guiding in Turkey dates back to the Ottoman Empire, when the \"Regulation Concerning Persons Interpreting for Trave",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378401671"
+    },
+    {
+      "id": "P8",
+      "hash": "efe718d5242af5c663540e8447854365debfe0338c42ea8b440ed095ced62bbb",
+      "heading": "India",
+      "excerpt": "In India it is mandatory to have a license approved by the Ministry of Tourism (India) to work officially as a tourist guide. The government",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378401671"
+    },
+    {
+      "id": "P9",
+      "hash": "ecc01f50791793d57805cecd4e94f7875e55f142053889fe211d847383274b48",
+      "heading": "Iran",
+      "excerpt": "In Iran, those who want to become a certified tourist guide must take part in a dedicated course, pass a nationwide written exam and also a ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378401671"
+    },
+    {
+      "id": "P10",
+      "hash": "e99bf45e3973f6a75204f70d64504b5b3d6af2cc41a73ea9b72fb9ee311eb930",
+      "heading": "Japan",
+      "excerpt": "In Japan, tourist guides are required to pass a certification exam by the Commissioner of the Japan Tourism Agency and register with the rel",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378401671"
+    },
+    {
+      "id": "P11",
+      "hash": "e282130c1c8dd43c45f78ce84a35aaf034c0da7963bf6fdcbddcc05559932a92",
+      "heading": "South Africa",
+      "excerpt": "In South Africa tourist guides are required to register in terms of the Tourism Act 3, 2014. Training must be done through a trainer accredi",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378401671"
+    },
+    {
+      "id": "P12",
+      "hash": "46daddf89a252da28ac34895ecfb55308b17ce1dd06fd00008b5ec6a4212e537",
+      "heading": "Europe",
+      "excerpt": "In recent years, the growth of digital platforms offering so-called \"free tours\" has generated debate in several European countries. Profess",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378401671"
+    },
+    {
+      "id": "P13",
+      "hash": "59503f881213d7f520ac08072e4d53697fbfa4f34401c602dca53e82d195aff2",
+      "heading": "Turkey",
+      "excerpt": "To obtain a license, candidates must either graduate from a university-level tourist guidance programme — where the curriculum includes Turk",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378401671"
+    },
+    {
+      "id": "P14",
+      "hash": "cb642313d49cc5f7c09c544dfb0572a5a59347bc3908307db94ad246a217d426",
+      "heading": "Turkey",
+      "excerpt": "Operating as a tourist guide without a valid license is strictly prohibited; individuals found guiding without authorization face significan",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378401671"
+    }
+  ],
+  "updatedAt": "2026-10-22T12:57:09.038Z"
 }
