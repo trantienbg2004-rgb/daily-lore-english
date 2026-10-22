@@ -6632,10 +6632,10 @@
       "checkedAt": null
     },
     "627246": {
-      "status": "VALIDATED",
-      "reason": "local factual, style, length, structure and source audit passed",
+      "status": "NEEDS_REVIEW",
+      "reason": "no-verified-lead-photo",
       "revisionId": 1374127706,
-      "checkedAt": "2026-10-22T08:56:46.179Z"
+      "checkedAt": "2026-10-22T08:56:52.290Z"
     },
     "633853": {
       "status": "REJECTED",
@@ -9866,7 +9866,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-22T08:56:46.180Z",
+  "updatedAt": "2026-10-22T08:56:52.291Z",
   "dailyUsage": {
     "day": "2026-10-22",
     "calls": 38,
