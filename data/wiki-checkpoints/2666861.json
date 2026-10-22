@@ -2,9 +2,86 @@
   "pageId": 2666861,
   "title": "L'Olimpiade",
   "topic": "Sports",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1370629201,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1370629201",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-22T09:14:50.140Z"
+  "reason": "1 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Antonio Caldara - L'olimpiade 1733 Metastasio - (h71JAAAAcAAJ) GB - Title page.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/52/Antonio_Caldara_-_L%27olimpiade_1733_Metastasio_-_%28h71JAAAAcAAJ%29_GB_-_Title_page.jpg/960px-Antonio_Caldara_-_L%27olimpiade_1733_Metastasio_-_%28h71JAAAAcAAJ%29_GB_-_Title_page.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Antonio Caldara - L'olimpiade 1733 Metastasio - (h71JAAAAcAAJ) GB - Title page.jpg",
+        "caption": "Title page (1733)",
+        "alt": "",
+        "description": "Title page to the libretto for the opera L'Olimpiade by Metastasio as published for its original setting in 1733 by the Italian composer Antonio Caldara",
+        "date": "1733",
+        "section": "",
+        "position": 0,
+        "provenance": {
+          "credit": "Pietro Metastasio",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Antonio_Caldara_-_L%27olimpiade_1733_Metastasio_-_(h71JAAAAcAAJ)_GB_-_Title_page.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/L'Olimpiade",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1370629201",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "f7ca45f2a022bd10944f8cb92ff83ef430a2b58b33986be4759f7c4edc66e89e",
+      "heading": "Lead",
+      "excerpt": "L'Olimpiade is an opera libretto in three acts by Pietro Metastasio originally written for an operatic setting by Antonio Caldara of 1733. M",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1370629201"
+    },
+    {
+      "id": "P2",
+      "hash": "50ade19654a3026592e963f3ff072d0924748078a52a125ce41ca88c7ebb5d5c",
+      "heading": "Background",
+      "excerpt": "Metastasio, as Imperial court poet at the court of Vienna, was requested to write the libretto to help celebrate the birthday of Empress Eli",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1370629201"
+    },
+    {
+      "id": "P3",
+      "hash": "474c6744f88ad7c06ef47cb992d5cbd6a71df449b61e594ad9ccdc82a37c533f",
+      "heading": "Act 1",
+      "excerpt": "Megacles arrives in Sicyon just in time to enter the Olympic Games under the name of Lycidas, a friend who once saved his life. Unknown to M",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1370629201"
+    },
+    {
+      "id": "P4",
+      "hash": "e455acce4c59add753b7f55ffe9b5a06099d3ea2619aaf2ee8b937f2988ddf25",
+      "heading": "Act 2",
+      "excerpt": "Megacles wins the games, confesses the truth to Aristaea and departs, broken-hearted. When Lycidas comes to claim her, Aristaea reproaches h",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1370629201"
+    },
+    {
+      "id": "P5",
+      "hash": "e366b802fc62ebe9683e7a894b7a536e18175d77865b5928a66c6db89ea3e700",
+      "heading": "Act 3",
+      "excerpt": "Argene prevents the desperate Aristaea from suicide, Megacles is rescued by a fisherman, and Lycidas contemplates the assassination of the k",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1370629201"
+    },
+    {
+      "id": "P6",
+      "hash": "8e11e79f3fea7c0889f070022f86bbea823b5629a78f4d4b5da32a8f2e849ecc",
+      "heading": "Other settings of the libretto",
+      "excerpt": "More than 60 baroque and classical composers used the libretto for their own settings. The first composer to reuse the libretto was Antonio ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1370629201"
+    },
+    {
+      "id": "P7",
+      "hash": "9823092c7d718a234b7198ae618f9eeaaef85e64747005c83aaec1991e8d40a5",
+      "heading": "Other settings of the libretto",
+      "excerpt": "Mozart set Cleisthenes' last aria twice, first for Aloysia Weber (KV. 294) and latter for a subscription concert by Ludwig Fischer (K 512). ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1370629201"
+    }
+  ],
+  "updatedAt": "2026-10-22T09:14:56.071Z"
 }
