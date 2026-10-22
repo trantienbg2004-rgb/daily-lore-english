@@ -8084,10 +8084,10 @@
       "checkedAt": null
     },
     "28198471": {
-      "status": "PENDING",
-      "reason": "queued",
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
       "revisionId": 1372453883,
-      "checkedAt": null
+      "checkedAt": "2026-10-22T09:06:05.227Z"
     },
     "29213543": {
       "status": "EVIDENCE_READY",
@@ -9866,7 +9866,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-22T09:05:58.675Z",
+  "updatedAt": "2026-10-22T09:06:05.228Z",
   "dailyUsage": {
     "day": "2026-10-22",
     "calls": 47,
