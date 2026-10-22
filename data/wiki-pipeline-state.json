@@ -6542,10 +6542,10 @@
       "checkedAt": "2026-10-21T03:12:10.543Z"
     },
     "451914": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
+      "revisionId": 1371923892,
+      "checkedAt": "2026-10-22T08:30:07.557Z"
     },
     "463734": {
       "status": "RETRY_LATER",
@@ -9866,7 +9866,7 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-10-22T08:30:00.938Z",
+  "updatedAt": "2026-10-22T08:30:07.566Z",
   "dailyUsage": {
     "day": "2026-10-22",
     "calls": 16,
