@@ -7,6 +7,8 @@ const hits=(a,b)=>[...terms(a)].filter(word=>terms(b).has(word)).length
 const year=value=>String(value||'').match(/\b(?:1[5-9]|20)\d{2}\b/g)||[]
 const imageTopic=photo=>`${photo.caption} ${photo.alt} ${photo.description} ${photo.fileTitle.replace(/^File:/,'')}`
 const chart=/\b(?:chart|graph|plot|statistics|dataset|data|rate|index|trend)\b/i
+const captionNames=caption=>(String(caption||'').match(/\b[A-Z][a-z]{3,}\b/g)||[])
+ .filter(word=>!new Set(['The','This','Map','Regions','Historical','Expansion','Empire','Comparison','Territorial']).has(word))
 
 /** Rights proof alone leaves a candidate in REVIEW. This function requires
  * source-article placement plus a concrete subject match with a target page. */
@@ -33,7 +35,9 @@ export function decideWikipediaPhoto(candidate,{source,levelVariants,usedUrls=ne
   if(!contextOk)continue
   if(pageIndex===0){
    if(titleHits<1&&overlaps.some(count=>count<2))continue
-  }else if(overlaps.some(count=>count<2)&&titleHits<1)continue
+  }else if(overlaps.some(count=>count<2)&&titleHits<1&&
+   !captionNames(photo.caption).filter(name=>terms(photo.alt+' '+photo.fileTitle).has(name.toLowerCase()))
+    .some(name=>texts.every(text=>new RegExp(`\\b${name}\\b`,'i').test(text))))continue
   const specificHits=texts.map(text=>specific.filter(word=>terms(text).has(word)).length)
   scores.push({pageIndex,score:overlaps.reduce((a,b)=>a+b,0)+titleHits*(pageIndex===0?4:1)-pageIndex*.2,
    specificMin:Math.min(...specificHits),titleHits})

@@ -8,9 +8,9 @@ const model=name=>({name:`models/${name}`,supportedGenerationMethods:['generateC
 test('prefers listed free Flash-Lite model without a generation request',async()=>{
  let url,options
  const selected=await selectAvailableWikiModel({apiKey:'test-key',fetchImpl:async(u,o)=>{
-  url=u;options=o;return response([model('gemini-3.1-flash-lite'),model('gemini-3.5-flash-lite')])
+  url=u;options=o;return response([model('gemini-2.5-flash-lite'),model('gemini-3.1-flash-lite'),model('gemini-3.5-flash-lite')])
  }})
- assert.equal(selected.model,'gemini-3.1-flash-lite')
+ assert.equal(selected.model,'gemini-2.5-flash-lite')
  assert.equal(selected.available,true)
  assert.match(url,/\/models\?pageSize=1000$/)
  assert.equal(options.method,undefined)

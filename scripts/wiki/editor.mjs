@@ -4,7 +4,7 @@ import {createHash} from 'node:crypto'
 import {WIKI_TOPICS} from './discovery.mjs'
 
 const MODEL='gemini-3.5-flash-lite'
-const FREE_MODELS=new Set([MODEL,'gemini-3.1-flash-lite'])
+const FREE_MODELS=new Set([MODEL,'gemini-3.1-flash-lite','gemini-2.5-flash-lite'])
 const MIN_REQUEST_SPACING_MS=5000
 const LEVELS=['A1-A2','B1-B2','C1-C2']
 const PAGE_SCHEMA={type:'object',properties:{text:{type:'string'},evidenceIds:{type:'array',items:{type:'string'},minItems:1}},

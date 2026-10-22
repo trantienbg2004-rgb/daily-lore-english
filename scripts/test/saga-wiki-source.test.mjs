@@ -100,6 +100,21 @@ test('a relevant licensed image on a later page permits a text-only introduction
  }
 })
 
+test('a named place shared by all reading levels supports a later map',()=>{
+ const map={...figure,fileTitle:'File:Ukraine map.jpg',caption:'Regions of Ukraine annexed by Russia in 2022',
+  alt:'Map of Ukraine',position:2}
+ const mapPage=structuredClone(page)
+ mapPage.title=map.fileTitle
+ const variants=structuredClone(levels)
+ for(const variant of Object.values(variants))variant.pages[4].text='Russia occupied parts of Ukraine.'
+ const assigned=assignWikipediaPhotos([verifyEmbeddedImage(map,mapPage)],{...source,figures:[map]},variants)
+ assert.equal(assigned.status,'VERIFIED')
+ assert.equal(assigned.photos[0].pageIndex,4)
+ const unrelated=structuredClone(variants)
+ unrelated['C1-C2'].pages[4].text='Russia expanded elsewhere.'
+ assert.equal(assignWikipediaPhotos([verifyEmbeddedImage(map,mapPage)],{...source,figures:[map]},unrelated).status,'REVIEW')
+})
+
 test('same place, unrelated object, wrong chart period and reused URL stay unapproved',()=>{
  const city={...figure,fileTitle:'File:Silk Road city skyline.jpg',caption:'Skyline of a modern city',alt:'Modern skyline'}
  const cityPage=structuredClone(page);cityPage.title=city.fileTitle

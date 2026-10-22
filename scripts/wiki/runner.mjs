@@ -82,6 +82,8 @@ export async function discoverWikiQueue({base,topics=WIKI_TOPICS,maxPerTopic=30,
 
 const ACTIVE_QUEUE_STATUSES=new Set(['PENDING','FETCHED','EVIDENCE_READY','DRAFTED','VALIDATED','NEEDS_REPAIR','RETRY_LATER'])
 const TERMINAL_QUEUE_STATUSES=new Set(['published','PUBLISHED','rejected','REJECTED','review','NEEDS_REVIEW'])
+const retryableMediaReview=outcome=>outcome?.status==='NEEDS_REVIEW'&&
+ ['no-verified-lead-photo','no-verified-photo-placement'].includes(outcome.reason)
 const MODEL_503_COOLDOWN_MS=6*60*60*1000
 const coolingAfterModel503=(outcome,now)=>{
  if(outcome?.status!=='RETRY_LATER'||!/^Gemini HTTP 503\b/.test(outcome.reason||''))return false
@@ -136,7 +138,8 @@ export async function runWikiBatch({base,maxCalls=0,maxCandidates=5,pageId=null,
  const ordered=pageId===null?balanceWikiCandidates(WIKI_TOPICS.map(topic=>({topic,candidates:candidates.filter(row=>{
   const status=state.outcomes[row.pageId]?.status
   return row.topic===topic&&!coolingAfterModel503(state.outcomes[row.pageId],Date.now())&&
-   (!TERMINAL_QUEUE_STATUSES.has(status)||existingIds.has(row.pageId)&&status!=='PUBLISHED')
+   (!TERMINAL_QUEUE_STATUSES.has(status)||retryableMediaReview(state.outcomes[row.pageId])||
+    existingIds.has(row.pageId)&&status!=='PUBLISHED')
  })})),{topicCounts,limit:candidates.length}):candidates
  for(const candidate of ordered){
   if(stats.attempted>=maxCandidates)break
@@ -148,9 +151,10 @@ export async function runWikiBatch({base,maxCalls=0,maxCandidates=5,pageId=null,
    }
    continue
   }
-  if(TERMINAL_QUEUE_STATUSES.has(prior?.status))continue
+  if(TERMINAL_QUEUE_STATUSES.has(prior?.status)&&!retryableMediaReview(prior))continue
   let checkpoint=await readCheckpoint(base,candidate.pageId)||{pageId:candidate.pageId,title:candidate.title,topic:candidate.topic,status:'PENDING'}
-  const cachedValidation=checkpoint.status==='VALIDATED'&&checkpoint.validation?.accepted
+  const cachedValidation=checkpoint.validation?.accepted&&
+   (checkpoint.status==='VALIDATED'||retryableMediaReview(prior))
   if(!cachedValidation&&(maxCalls===0||budget.circuitOpen||budget.tokenAccountingUnavailable||budget.maxCalls-budget.usedCalls<2)&&checkpoint.evidence&&checkpoint.rights)continue
   stats.attempted++
   const persist=async()=>{await writeCheckpoint(base,checkpoint);await writeState(base,state);await persistDurably()}
