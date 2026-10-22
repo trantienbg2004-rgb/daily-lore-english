@@ -2,10 +2,10 @@
   "pageId": 44940,
   "title": "World Heritage Site",
   "topic": "Culture",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1379648381,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379648381",
-  "reason": "6 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -292,5 +292,140 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379648381"
     }
   ],
-  "updatedAt": "2026-10-22T08:48:05.262Z"
+  "updatedAt": "2026-10-22T08:48:23.084Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "Protecting World Heritage Sites",
+        "pages": [
+          {
+            "text": "World Heritage Sites are important places and landmarks. They have legal protection under an international treaty administered by UNESCO. These sites are chosen for their great cultural, historical, or scientific value to humanity. They include ancient ruins, forests, lakes, and monuments.",
+            "evidenceIds": [
+              "P1",
+              "P2"
+            ]
+          },
+          {
+            "text": "The story of these protected places began in Egypt. In 1954, the government decided to build a new dam. The water would cover many cultural treasures of ancient Egypt and Nubia. Egypt and Sudan asked UNESCO for help to rescue the endangered monuments and sites.",
+            "evidenceIds": [
+              "P6"
+            ]
+          },
+          {
+            "text": "UNESCO launched a campaign to save the monuments. Workers excavated hundreds of sites and moved important temples to higher ground. This successful rescue project led to other safeguarding campaigns around the world and inspired a new international convention to protect cultural heritage.",
+            "evidenceIds": [
+              "P15",
+              "P16"
+            ]
+          },
+          {
+            "text": "Countries must follow a specific process to list a site. First, a country puts a site on a tentative list. Then, experts evaluate the nomination file. The World Heritage Committee meets once a year to decide which properties to add to the official World Heritage List.",
+            "evidenceIds": [
+              "P9"
+            ]
+          },
+          {
+            "text": "Being listed brings international recognition, legal protection, and possible funds for conservation. However, sites can also face dangers like wars, natural disasters, pollution, or mass tourism. UNESCO wants to preserve these irreplaceable treasures so future generations can enjoy them.",
+            "evidenceIds": [
+              "P8",
+              "P12",
+              "P18"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "The History and Protection of World Heritage",
+        "pages": [
+          {
+            "text": "World Heritage Sites are landmarks and areas possessing cultural, historical, or scientific significance. Administered by UNESCO, these sites receive legal protection under an international treaty. They are judged to contain heritage of outstanding value to humanity, ranging from ancient ruins and historical structures to forests, islands, and deserts.",
+            "evidenceIds": [
+              "P1",
+              "P2"
+            ]
+          },
+          {
+            "text": "The origin of the program dates back to the mid-20th century. In 1954, Egypt planned to build the Aswan High Dam, which threatened to inundate a large stretch of the Nile valley containing ancient treasures. Consequently, the governments of Egypt and Sudan requested UNESCO's assistance in 1959 to rescue the endangered monuments.",
+            "evidenceIds": [
+              "P6"
+            ]
+          },
+          {
+            "text": "The resulting rescue campaign succeeded in excavating sites, recovering objects, and relocating several important temples to higher ground. This success inspired further safeguarding campaigns and led the International Council on Monuments and Sites, together with UNESCO, to draft a convention protecting cultural heritage.",
+            "evidenceIds": [
+              "P15",
+              "P16"
+            ]
+          },
+          {
+            "text": "The Convention Concerning the Protection of the World Cultural and Natural Heritage was adopted in November 1972. To nominate a site, a country must first include it on a tentative list before submitting a nomination file. Advisory bodies evaluate the files, and the World Heritage Committee makes the final decision.",
+            "evidenceIds": [
+              "P5",
+              "P9",
+              "P17"
+            ]
+          },
+          {
+            "text": "Listing can significantly increase tourism revenue and provide funds for conservation. Nonetheless, listed properties can face serious threats, including armed conflict, natural disasters, pollution, and rapid visitor growth. Sites facing severe risks may be added to a danger list to encourage counteractive measures and preserve them for future generations.",
+            "evidenceIds": [
+              "P8",
+              "P12",
+              "P13",
+              "P18"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "UNESCO World Heritage Conservation",
+        "pages": [
+          {
+            "text": "World Heritage Sites comprise internationally protected landmarks and areas recognized for their outstanding cultural, historical, or scientific significance. Governed by a UNESCO-administered treaty, these designations encompass diverse entities, from ancient architectural structures and urban centers to vulnerable wilderness areas and natural landscapes.",
+            "evidenceIds": [
+              "P1",
+              "P2"
+            ]
+          },
+          {
+            "text": "The international framework originated from a major preservation crisis in Egypt. The planned construction of the Aswan High Dam in 1954 threatened to submerge extensive Nile valley regions rich in ancient Egyptian and Nubian heritage. In response, Egyptian and Sudanese authorities petitioned UNESCO in 1959 for intervention.",
+            "evidenceIds": [
+              "P6"
+            ]
+          },
+          {
+            "text": "The subsequent rescue campaign successfully excavated numerous sites, recovered thousands of artifacts, and relocated prominent temple complexes. The triumph of this initiative catalyzed subsequent international safeguarding operations and laid the groundwork for a comprehensive convention protecting cultural and natural heritage.",
+            "evidenceIds": [
+              "P15",
+              "P16"
+            ]
+          },
+          {
+            "text": "Following years of international collaboration, the General Conference of UNESCO adopted the safeguarding convention in November 1972. Nomination procedures require states parties to maintain a tentative list, compile detailed nomination files, and submit to rigorous evaluations by specialized advisory bodies prior to annual committee reviews.",
+            "evidenceIds": [
+              "P5",
+              "P7",
+              "P9",
+              "P17"
+            ]
+          },
+          {
+            "text": "While inscription yields international recognition, legal protection, and potential financial assistance, listed properties frequently encounter vulnerabilities. Adverse pressures such as armed conflict, industrial pollution, and unregulated tourism can precipitate inscription on the List of World Heritage in Danger, thereby mobilizing international awareness and remedial conservation strategies.",
+            "evidenceIds": [
+              "P8",
+              "P12",
+              "P13",
+              "P18"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2608,
+    "output": 1479,
+    "total": 4087
+  },
+  "validation": null
 }
