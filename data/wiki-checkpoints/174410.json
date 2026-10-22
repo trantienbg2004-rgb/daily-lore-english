@@ -2,10 +2,10 @@
   "pageId": 174410,
   "title": "Armillary sphere",
   "topic": "Science & Technology",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1380728957,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380728957",
-  "reason": "13 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -458,5 +458,147 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380728957"
     }
   ],
-  "updatedAt": "2026-10-22T06:12:56.535Z"
+  "updatedAt": "2026-10-22T06:13:15.047Z",
+  "draft": {
+    "outline": [
+      "Introduction to the armillary sphere",
+      "Ancient origins in China and Greece",
+      "Global development and Islamic astronomy",
+      "Use in India, Korea, and Europe",
+      "Scientific importance and modern legacy"
+    ],
+    "variants": {
+      "A1-A2": {
+        "headline": "What Is an Armillary Sphere?",
+        "pages": [
+          {
+            "text": "An armillary sphere is a special model of the sky. It has a round frame made of metal rings. These rings show lines in the sky and important paths like the sun's path. It is very different from a simple globe that only shows the stars.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "People invented this tool a long time ago. Ancient China and ancient Greece both made armillary spheres long before modern times. Later, scientists in the Islamic world and medieval Europe also built and used them to study the stars and planets.",
+            "evidenceIds": [
+              "P1",
+              "P9"
+            ]
+          },
+          {
+            "text": "In India, astronomers used these spheres for early observations. Famous texts describe how they worked. Indian scholars used systems based on the equator, while Greek versions used different sky coordinates. They helped calculate star positions carefully.",
+            "evidenceIds": [
+              "P7"
+            ]
+          },
+          {
+            "text": "Countries also used the sphere as an important symbol. Portugal put the armillary sphere on flags and coats of arms during the Age of Discovery. King Manuel I used it as his personal symbol, and it appears in old art today.",
+            "evidenceIds": [
+              "P3",
+              "P13"
+            ]
+          },
+          {
+            "text": "Today, people still see armillary spheres in interesting places. A large metal sculpture of one stands in a big airport. Another artistic model helps light the special Paralympic heritage flame at Stoke Mandeville Stadium in the United Kingdom.",
+            "evidenceIds": [
+              "P4",
+              "P12"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "The History of the Armillary Sphere",
+        "pages": [
+          {
+            "text": "An armillary sphere is a mechanical model of the celestial sphere. It consists of a framework of graduated metal rings that represent important astronomical features, such as celestial coordinates and the ecliptic. Unlike a standard celestial globe, which maps constellations on a smooth surface, an armillary sphere uses rings to demonstrate the motion of objects in the sky.",
+            "evidenceIds": [
+              "P1",
+              "P8"
+            ]
+          },
+          {
+            "text": "Historical records show that the device was invented separately in ancient China, possibly by the fourth century BC, and in ancient Greece during the third century BC. When Earth sits at the center, it is called a geocentric model, whereas placing the Sun at the center creates a Copernican model.",
+            "evidenceIds": [
+              "P1",
+              "P2"
+            ]
+          },
+          {
+            "text": "Astronomers across different cultures refined the instrument over centuries. Islamic scholars like Ibrahim al-Fazari and Abbas Ibn Firnas built improved models, and Persian astronomers later described spherical astrolabes. In Korea, inventor Chang Yŏngsil constructed a famous armillary sphere named Honcheonui in 1433 by order of King Sejong.",
+            "evidenceIds": [
+              "P9",
+              "P10"
+            ]
+          },
+          {
+            "text": "Before the invention of the European telescope, the armillary sphere served as the primary instrument for determining celestial positions. Danish astronomer Tycho Brahe constructed three massive armillary spheres to make exceptionally precise measurements of stars and planets, detailing his work in his published astronomical mechanics.",
+            "evidenceIds": [
+              "P8",
+              "P11"
+            ]
+          },
+          {
+            "text": "Beyond science, the sphere holds deep cultural and national significance. Portugal famously associated the device with its Age of Discovery, featuring it prominently in heraldry and on the national flag. Modern variations also appear as major public sculptures and even in ceremonies honoring the Paralympic Movement.",
+            "evidenceIds": [
+              "P3",
+              "P4",
+              "P12",
+              "P13"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "Evolution and Legacy of the Armillary Sphere",
+        "pages": [
+          {
+            "text": "The armillary sphere functions as a sophisticated three-dimensional model of celestial coordinates, utilizing an interconnected skeletal framework of metal rings to delineate astronomical circles such as the ecliptic and celestial meridians. This structural configuration distinguishes it fundamentally from solid celestial globes designed primarily for mapping constellation cartography.",
+            "evidenceIds": [
+              "P1",
+              "P8"
+            ]
+          },
+          {
+            "text": "Historical attribution indicates independent invention in ancient China by the fourth century BC and in ancient Greece during the third century BC. Depending on the designated center, the apparatus operates as either a geocentric configuration or a heliocentric Copernican model, demonstrating apparent stellar movement relative to the observer.",
+            "evidenceIds": [
+              "P1",
+              "P2",
+              "P8"
+            ]
+          },
+          {
+            "text": "Cross-cultural refinement characterized its medieval trajectory. Islamic astronomers advanced its construction, while Indian treatises documented equatorial coordinate adaptations that contrasted with Greek ecliptical models. In East Asia, Korean artisans like Chang Yŏngsil engineered complex instruments such as the 1433 Honcheonui under royal directives.",
+            "evidenceIds": [
+              "P7",
+              "P9",
+              "P10"
+            ]
+          },
+          {
+            "text": "Prior to the seventeenth-century adoption of the telescope, the armillary sphere remained the premier observational instrument for fixing celestial positions. Tycho Brahe elevated its precision to unprecedented levels, constructing gargantuan metallic rings that enabled remarkably accurate empirical tracking of planetary and stellar trajectories.",
+            "evidenceIds": [
+              "P8",
+              "P11"
+            ]
+          },
+          {
+            "text": "Culturally, the instrument transcended pure science to become an enduring emblem of exploration. Quintessentially linked to Portuguese maritime expansion during the Age of Discovery, the armillary sphere permeates national heraldry, monumental airport exhibits, and contemporary ceremonial traditions such as the Paralympic heritage flame.",
+            "evidenceIds": [
+              "P3",
+              "P4",
+              "P12",
+              "P13"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2752,
+    "output": 1533,
+    "total": 4285
+  },
+  "validation": null
 }
