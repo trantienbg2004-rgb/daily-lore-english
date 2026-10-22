@@ -6500,10 +6500,10 @@
       "checkedAt": "2026-10-22T08:28:42.893Z"
     },
     "356024": {
-      "status": "FETCHED",
-      "reason": "pinned-source-ready",
+      "status": "REJECTED",
+      "reason": "insufficient-source-text-or-embedded-images",
       "revisionId": 1356233612,
-      "checkedAt": "2026-10-22T08:57:58.394Z"
+      "checkedAt": "2026-10-22T08:58:04.219Z"
     },
     "359626": {
       "status": "EVIDENCE_READY",
@@ -9866,7 +9866,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-22T08:57:58.394Z",
+  "updatedAt": "2026-10-22T08:58:04.220Z",
   "dailyUsage": {
     "day": "2026-10-22",
     "calls": 40,
