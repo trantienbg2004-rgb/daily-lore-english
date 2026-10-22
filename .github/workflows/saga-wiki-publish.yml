@@ -2,7 +2,7 @@ name: SAGA Wikipedia - collect and publish
 
 on:
   schedule:
-    - cron: '37 1,4,7,10,13,16,19,22 * * *'
+    - cron: '37 * * * *'
   workflow_dispatch:
     inputs:
       max_calls:
@@ -11,6 +11,7 @@ on:
         options:
           - '0'
           - '8'
+          - '20'
           - 'probe'
         default: '0'
 
@@ -51,7 +52,7 @@ jobs:
           SAGA_WIKI_CHECKPOINT_BRANCH: feat/saga-wikipedia-first-20261020
         run: node scripts/wiki-pipeline.mjs topup --min-per-topic=8 --max-topics=3
       - name: Check free Gemini model access without generating text
-        if: github.event_name == 'schedule' || github.event.inputs.max_calls == '8' || github.event.inputs.max_calls == 'probe'
+        if: github.event_name == 'schedule' || github.event.inputs.max_calls == '8' || github.event.inputs.max_calls == '20' || github.event.inputs.max_calls == 'probe'
         id: free_model
         working-directory: staging
         env:
@@ -65,8 +66,8 @@ jobs:
           SAGA_WIKI_CHECKPOINT_BRANCH: feat/saga-wikipedia-first-20261020
           SAGA_WIKI_MODEL: ${{ steps.free_model.outputs.model || 'gemini-3.5-flash-lite' }}
           SAGA_WIKI_MODELS: ${{ steps.free_model.outputs.models || '' }}
-          SAGA_WIKI_MAX_CALLS: ${{ steps.free_model.outputs.available == 'true' && (github.event_name == 'schedule' || github.event.inputs.max_calls == '8') && '8' || '0' }}
-        run: node scripts/wiki-pipeline.mjs batch --max-calls="$SAGA_WIKI_MAX_CALLS" --max-candidates=16
+          SAGA_WIKI_MAX_CALLS: ${{ steps.free_model.outputs.available == 'true' && (github.event_name == 'schedule' && '20' || github.event.inputs.max_calls == '20' && '20' || github.event.inputs.max_calls == '8' && '8') || '0' }}
+        run: node scripts/wiki-pipeline.mjs batch --max-calls="$SAGA_WIKI_MAX_CALLS" --max-candidates=40
       - name: Verify staged stories and Reader
         working-directory: staging
         run: |
