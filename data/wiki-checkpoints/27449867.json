@@ -2,9 +2,93 @@
   "pageId": 27449867,
   "title": "Celso Duarte",
   "topic": "Culture",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1186259870,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1186259870",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-22T14:37:20.031Z"
+  "reason": "1 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Celso Duarte Sextet.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/72/Celso_Duarte_Sextet.jpg/960px-Celso_Duarte_Sextet.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Celso Duarte Sextet.jpg",
+        "caption": "Celso Duarte Sextet in Olympia, Washington, May 2010",
+        "alt": "",
+        "description": "Photograph of Celso Duarte Sextet taken at the Capitol Theater, Olympia, Washington",
+        "date": "2010-05-01",
+        "section": "Critical reception",
+        "position": 0,
+        "provenance": {
+          "credit": "Cbl62 (talk)",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Celso_Duarte_Sextet.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Celso_Duarte",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1186259870",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "252ace4fc3769e0acd7e2f8cbf790c684f90f1331234c04059637cf2d17c99c9",
+      "heading": "Lead",
+      "excerpt": "Celso Duarte (born June 1974, in Villarrica, Paraguay) is a virtuoso of Paraguayan harp and Mexican jarocho harp, arranger, singer, and mult",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1186259870"
+    },
+    {
+      "id": "P2",
+      "hash": "f6ac75707742db1f9dcac1155ea501102c0b3ff15ea4e1caa0be3d531d2edb59",
+      "heading": "Early years",
+      "excerpt": "Duarte was born in Paraguay and raised in Mexico. He is the son of Celso Duarte González, one of Paraguay's leading harpists, and María Elen",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1186259870"
+    },
+    {
+      "id": "P3",
+      "hash": "8d45b350b6b442dd3951b1831658eed3645d3058a0fac85b0907c069df444f57",
+      "heading": "Early years",
+      "excerpt": "Duarte was raised in a musical family and started playing music when he was five or six. He later recalled, \"My family, they are musicians, ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1186259870"
+    },
+    {
+      "id": "P4",
+      "hash": "21a27a9b3d14c2d10e0db16f3c6d7bddc85594939d9f9f8c380b3e9154896522",
+      "heading": "Musical career and style",
+      "excerpt": "Duarte is a virtuoso on the Paraguayan harp and Mexican jarocho harp. In 1998, he met Lila Downs while playing a festival in Oaxaca, Mexico,",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1186259870"
+    },
+    {
+      "id": "P5",
+      "hash": "a09ac29e965aa2e163d0db96b3e3c43b37a1c16bd25b32e00586875800322c73",
+      "heading": "Musical career and style",
+      "excerpt": "In his solo career, Duarte has showcased traditional Paraguayan folk and son jarocho (a musical style from Veracruz, Mexico that draws from ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1186259870"
+    },
+    {
+      "id": "P6",
+      "hash": "15dead0be74f8831997fe4b49c533bdb0cdac9a6b0c27b34e6f4c24624f2f72a",
+      "heading": "Critical reception",
+      "excerpt": "Duarte has been acclaimed as a harp virtuoso and one of the leading figures of world music. Critical comments on Duarte include:",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1186259870"
+    },
+    {
+      "id": "P7",
+      "hash": "4bb8dfa4b423addd0c709cd066293e48ad93f42e465fc89a2eb1c03e0b1a0ad9",
+      "heading": "Musical career and style",
+      "excerpt": "Duarte has toured with his band, known variously as the Celso Duarte Quartet, the Celso Duarte Sextet, and the Celso Duarte Ensemble, at lea",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1186259870"
+    },
+    {
+      "id": "P8",
+      "hash": "d3071c9a68b5f5cebadff41a3bbee8d1b4b85776dc14e4c3809c22f0bdde64c2",
+      "heading": "Musical career and style",
+      "excerpt": "In addition to performing and recording, Duarte also spends time researching folkloric genres that are in danger of being lost. Asked about ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1186259870"
+    }
+  ],
+  "updatedAt": "2026-10-22T14:37:25.074Z"
 }
