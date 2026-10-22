@@ -7916,10 +7916,10 @@
       "checkedAt": "2026-10-21T07:34:24.223Z"
     },
     "22057774": {
-      "status": "FETCHED",
-      "reason": "pinned-source-ready",
+      "status": "REJECTED",
+      "reason": "insufficient-source-text-or-embedded-images",
       "revisionId": 1378735555,
-      "checkedAt": "2026-10-22T09:07:23.053Z"
+      "checkedAt": "2026-10-22T09:07:28.909Z"
     },
     "22311897": {
       "status": "RETRY_LATER",
@@ -9866,7 +9866,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-22T09:07:23.054Z",
+  "updatedAt": "2026-10-22T09:07:28.909Z",
   "dailyUsage": {
     "day": "2026-10-22",
     "calls": 47,
