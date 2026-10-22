@@ -2,10 +2,10 @@
   "pageId": 17213240,
   "title": "Treaty rights",
   "topic": "Conflict & Security",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1373455290,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373455290",
-  "reason": "1 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -174,7 +174,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373455290"
     }
   ],
-  "updatedAt": "2026-10-22T08:39:25.321Z",
+  "updatedAt": "2026-10-22T08:39:42.658Z",
   "draft": {
     "outline": [
       "Introduction to treaty rights in settler states",
@@ -188,9 +188,10 @@
         "headline": "What Are Treaty Rights?",
         "pages": [
           {
-            "text": "Treaty rights are special rights for native peoples. They come from treaties made with settler countries. These countries are Australia, Canada, New Zealand, and the United States.",
+            "text": "Treaty rights are specific rights for indigenous peoples. They come from treaties made with settler societies in Australia, Canada, New Zealand, and the United States. Not all indigenous groups have signed treaties, so these rights operate very differently across these different countries today.",
             "evidenceIds": [
-              "P1"
+              "P1",
+              "P2"
             ]
           },
           {
@@ -200,9 +201,9 @@
             ]
           },
           {
-            "text": "Today, these agreements are still very important. In the United States, the Constitution says treaties are the supreme law. In Canada, Section 35 protects native treaty rights.",
+            "text": "Early treaties between European colonial powers and indigenous peoples were often similar to military alliances between peers. Later, treaties increasingly involved the cession of land from indigenous peoples for the purposes of colonial expansion as European settler colonialism expanded throughout the Americas.",
             "evidenceIds": [
-              "P6"
+              "P5"
             ]
           },
           {
@@ -212,7 +213,7 @@
             ]
           },
           {
-            "text": "In Wisconsin, local groups protested Ojibwe spearfishing in the 1980s and 1990s. Courts later upheld the old treaties, saying native groups could fish without state rules.",
+            "text": "In Wisconsin, local groups protested Ojibwe spearfishing in the 1980s and early 1990s. The Voigt decision in 1983 reaffirmed older treaties allowing the Ojibwe to hunt, fish, and gather off-reservation. Judge Barbara Crabb later upheld the Voigt decision during subsequent legal challenges.",
             "evidenceIds": [
               "P17"
             ]
@@ -277,7 +278,7 @@
             ]
           },
           {
-            "text": "Constitutional architecture secures these agreements in North America. Article Six of the United States Constitution elevates treaties to supreme law, whereas Canadian jurisprudence anchors them via Section 35 of the Constitution Act, 1982, leaving undefined parameters to judicial interpretation.",
+            "text": "Constitutional architecture secures these agreements in North America. Article Six of the United States Constitution elevates treaties to supreme law, whereas Canadian jurisprudence anchors them via Section 35 of the Constitution Act, leaving undefined parameters to judicial interpretation.",
             "evidenceIds": [
               "P6",
               "P12",
@@ -302,11 +303,11 @@
       }
     }
   },
-  "repairAttempts": 0,
+  "repairAttempts": 1,
   "lastUsage": {
-    "input": 2730,
-    "output": 920,
-    "total": 3650
+    "input": 2802,
+    "output": 416,
+    "total": 3218
   },
   "validation": null,
   "priorReviewReason": "Missing repaired page"
