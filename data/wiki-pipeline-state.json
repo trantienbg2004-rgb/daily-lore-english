@@ -7430,10 +7430,10 @@
       "checkedAt": "2026-10-21T13:31:31.235Z"
     },
     "6936288": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
+      "revisionId": 1352577854,
+      "checkedAt": "2026-10-22T13:14:06.955Z"
     },
     "6999780": {
       "status": "EVIDENCE_READY",
@@ -9866,7 +9866,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-22T13:14:00.525Z",
+  "updatedAt": "2026-10-22T13:14:06.961Z",
   "dailyUsage": {
     "day": "2026-10-22",
     "calls": 71,
