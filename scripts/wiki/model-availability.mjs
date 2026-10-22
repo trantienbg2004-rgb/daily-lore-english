@@ -2,7 +2,9 @@
 import {appendFile} from 'node:fs/promises'
 import {pathToFileURL} from 'node:url'
 
-const FREE_MODELS=['gemini-3.5-flash-lite','gemini-3.1-flash-lite']
+// Try the stable 2.5 free model while both 3.x Lite endpoints return 503.
+// The project must still list it for generateContent before any request is sent.
+const FREE_MODELS=['gemini-2.5-flash-lite','gemini-3.1-flash-lite','gemini-3.5-flash-lite']
 
 export async function selectAvailableWikiModel({apiKey,fetchImpl=fetch}={}){
  if(!apiKey)return {available:false,model:null,reason:'missing-key'}

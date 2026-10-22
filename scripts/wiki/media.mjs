@@ -7,6 +7,8 @@ const hits=(a,b)=>[...terms(a)].filter(word=>terms(b).has(word)).length
 const year=value=>String(value||'').match(/\b(?:1[5-9]|20)\d{2}\b/g)||[]
 const imageTopic=photo=>`${photo.caption} ${photo.alt} ${photo.description} ${photo.fileTitle.replace(/^File:/,'')}`
 const chart=/\b(?:chart|graph|plot|statistics|dataset|data|rate|index|trend)\b/i
+const captionNames=caption=>(String(caption||'').match(/\b[A-Z][a-z]{3,}\b/g)||[])
+ .filter(word=>!new Set(['The','This','Map','Regions','Historical','Expansion','Empire','Comparison','Territorial']).has(word))
 
 /** Rights proof alone leaves a candidate in REVIEW. This function requires
  * source-article placement plus a concrete subject match with a target page. */
@@ -33,7 +35,9 @@ export function decideWikipediaPhoto(candidate,{source,levelVariants,usedUrls=ne
   if(!contextOk)continue
   if(pageIndex===0){
    if(titleHits<1&&overlaps.some(count=>count<2))continue
-  }else if(overlaps.some(count=>count<2)&&titleHits<1)continue
+  }else if(overlaps.some(count=>count<2)&&titleHits<1&&
+   !captionNames(photo.caption).filter(name=>terms(photo.alt+' '+photo.fileTitle).has(name.toLowerCase()))
+    .some(name=>texts.every(text=>new RegExp(`\\b${name}\\b`,'i').test(text))))continue
   const specificHits=texts.map(text=>specific.filter(word=>terms(text).has(word)).length)
   scores.push({pageIndex,score:overlaps.reduce((a,b)=>a+b,0)+titleHits*(pageIndex===0?4:1)-pageIndex*.2,
    specificMin:Math.min(...specificHits),titleHits})
@@ -57,16 +61,26 @@ export function decideWikipediaPhoto(candidate,{source,levelVariants,usedUrls=ne
 export function assignWikipediaPhotos(decisions,source,levelVariants,{usedUrls=new Set()}={}){
  const approved=decisions.map(row=>decideWikipediaPhoto(row,{source,levelVariants,usedUrls})).filter(row=>row.status==='VERIFIED')
  const coverScore=row=>row.matchScore+(/\.(?:jpe?g|webp)$/i.test(row.photo.fileTitle)?2:0)
- const lead=approved.filter(row=>row.pageIndex===0).sort((a,b)=>coverScore(b)-coverScore(a)||a.photo.position-b.photo.position)[0]
- if(!lead)return {status:'REVIEW',reason:'no-verified-lead-photo',decisions:approved}
- const byPage=new Map([[0,lead]])
- const chosen=new Set([lead.photo.url])
+ const directLead=approved.filter(row=>row.pageIndex===0).sort((a,b)=>coverScore(b)-coverScore(a)||a.photo.position-b.photo.position)[0]
+ // A source article's own first photo can introduce a detail explained later in the story.
+ // Keep its full caption on the cover, and only use it after a later page has proved the subject match.
+ const sourceLead=approved.filter(row=>row.photo.position===0&&!chart.test(row.photo.fileTitle+' '+row.photo.caption))
+  .sort((a,b)=>coverScore(b)-coverScore(a))[0]
+ const lead=directLead||(!sourceLead?null:{...sourceLead,pageIndex:0,photo:{...sourceLead.photo,
+  provenance:{...sourceLead.photo.provenance,evidence:{...sourceLead.photo.provenance.evidence,pageIndex:0}}}})
+ if(!lead&&!approved.length)return {status:'REVIEW',reason:'no-verified-photo-placement',decisions:approved}
+ const byPage=lead?new Map([[0,lead]]):new Map()
+ const chosen=lead?new Set([lead.photo.url]):new Set()
  const later=decisions.map(row=>decideWikipediaPhoto(row,{source,levelVariants,usedUrls,preferLater:true}))
-  .filter(row=>row.status==='VERIFIED').sort((a,b)=>b.matchScore-a.matchScore||a.photo.position-b.photo.position)
+  .filter(row=>row.status==='VERIFIED')
+ // A verified later-page match still works when no cover image qualifies for the stricter secondary-photo rule.
+ if(!lead)later.push(...approved.filter(row=>row.pageIndex>0))
+ later.sort((a,b)=>b.matchScore-a.matchScore||a.photo.position-b.photo.position)
  for(const row of later){
   if(row===lead||byPage.has(row.pageIndex)||chosen.has(row.photo.url))continue
   byPage.set(row.pageIndex,row);chosen.add(row.photo.url)
  }
+ if(!byPage.size)return {status:'REVIEW',reason:'no-verified-photo-placement',decisions:approved}
  const variants=structuredClone(levelVariants)
  for(const [pageIndex,row] of byPage)for(const level of ['A1-A2','B1-B2','C1-C2']){
   Object.assign(variants[level].pages[pageIndex],{image:row.photo.url,caption:row.photo.caption,imageProvenance:row.photo.provenance})

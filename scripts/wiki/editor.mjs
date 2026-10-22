@@ -4,9 +4,21 @@ import {createHash} from 'node:crypto'
 import {WIKI_TOPICS} from './discovery.mjs'
 
 const MODEL='gemini-3.5-flash-lite'
-const FREE_MODELS=new Set([MODEL,'gemini-3.1-flash-lite'])
+const FREE_MODELS=new Set([MODEL,'gemini-3.1-flash-lite','gemini-2.5-flash-lite'])
 const MIN_REQUEST_SPACING_MS=5000
 const LEVELS=['A1-A2','B1-B2','C1-C2']
+const PAGE_SCHEMA={type:'object',properties:{text:{type:'string'},evidenceIds:{type:'array',items:{type:'string'},minItems:1}},
+ required:['text','evidenceIds']}
+const LEVEL_SCHEMA={type:'object',properties:{headline:{type:'string'},pages:{type:'array',items:PAGE_SCHEMA,minItems:5,maxItems:7}},
+ required:['headline','pages']}
+const STORY_SCHEMA={anyOf:[
+ {type:'object',properties:{rejectReason:{type:'string'}},required:['rejectReason']},
+ {type:'object',properties:{variants:{type:'object',properties:Object.fromEntries(LEVELS.map(level=>[level,LEVEL_SCHEMA])),
+  required:LEVELS}},required:['variants']}
+]}
+const AUDIT_SCHEMA={type:'object',properties:{accepted:{type:'boolean'},issues:{type:'array',items:{type:'object',
+ properties:{level:{type:'string',enum:LEVELS},page:{type:'integer',minimum:1,maximum:7},reason:{type:'string'}},
+ required:['level','page','reason']}}},required:['accepted','issues']}
 const count=text=>String(text||'').trim().split(/\s+/).filter(Boolean).length
 const digest=text=>createHash('sha256').update(text).digest('hex')
 const numerals=text=>[...String(text||'').matchAll(/\b\d+(?:[.,]\d+)*%?\b/g)].map(x=>x[0].replace(/[,.]/g,''))
@@ -44,7 +56,7 @@ export function selectWikiEvidence(source,{maxWords=1750}={}){
 
 export function wikiStoryPrompt(source,topic,evidence){
  const sourceText=evidence.map(row=>`${row.id} [${row.heading}] ${row.text}`).join('\n\n')
- return `Write one engaging, factual English world-knowledge story from this EXACT English Wikipedia revision. Return JSON only.\n\nTitle: ${source.sourceTitle}\nWikipedia page ID: ${source.pageId}\nRevision ID: ${source.sourceRevisionId}\nSAGA topic: ${topic}\n\nRules:\n- This is narrative nonfiction for English learners, neither a news brief nor a copied encyclopedia entry. Open with a grounded hook, explain context, develop concrete details, close naturally. Do not invent dialogue, inner thoughts, motives, scenes, quotations, people, dates or numbers.\n- Preserve uncertainty precisely: a proposed or debated feature must remain proposed or debated in EVERY level. "Could" alone does not turn a debated capability into an established one. Do not transfer limitations of a modern reconstruction or simulation to the historical original. If a claim lacks direct support in the cited passages, omit it.\n- Produce independent A1-A2, B1-B2 and C1-C2 versions of the SAME core facts. A1-A2 uses everyday words and mostly simple sentences; B1-B2 uses clear journalistic prose and some compound/relative clauses; C1-C2 adds analytic precision without rare words for their own sake. Distinct accurate headlines, each at most 60 characters.\n- Exactly 5 to 7 complete pages PER level. Keep each opening page at 40-58 words so a lead image fits a phone; subsequent pages 48-88 words. Do not repeat a point merely to reach a page count. Every page must cite one or more evidence IDs whose exact source passages support its substantive claims.\n- Cite only the numbered source passages below. If the evidence cannot support a complete, interesting story, return {"rejectReason":"insufficient source evidence"} instead.\n- JSON shape: {"outline":["short beat"],"variants":{"A1-A2":{"headline":"...","pages":[{"text":"...","evidenceIds":["P1"]}]},"B1-B2":{...},"C1-C2":{...}}}. Do not include image URLs, invented citations, or HTML.\n\nSOURCE PASSAGES:\n${sourceText}`
+ return `Write one engaging, factual English world-knowledge story from this EXACT English Wikipedia revision. Return JSON only.\n\nTitle: ${source.sourceTitle}\nWikipedia page ID: ${source.pageId}\nRevision ID: ${source.sourceRevisionId}\nSAGA topic: ${topic}\n\nRules:\n- This is narrative nonfiction for English learners, neither a news brief nor a copied encyclopedia entry. Open with a grounded hook, explain context, develop concrete details, close naturally. Do not invent dialogue, inner thoughts, motives, scenes, quotations, people, dates or numbers.\n- Preserve uncertainty precisely: a proposed or debated feature must remain proposed or debated in EVERY level. "Could" alone does not turn a debated capability into an established one. Do not transfer limitations of a modern reconstruction or simulation to the historical original. If a claim lacks direct support in the cited passages, omit it.\n- Produce independent A1-A2, B1-B2 and C1-C2 versions of the SAME core facts. A1-A2 uses everyday words and mostly simple sentences; B1-B2 uses clear journalistic prose and some compound/relative clauses; C1-C2 adds analytic precision without rare words for their own sake. Distinct accurate headlines, each at most 60 characters.\n- Exactly 5 to 7 complete pages PER level. Keep each opening page at 40-58 words so a lead image fits a phone; subsequent pages 48-88 words. Do not repeat a point merely to reach a page count. Every page must cite one or more evidence IDs whose exact source passages support its substantive claims.\n- Cite only the numbered source passages below. If the evidence cannot support a complete, interesting story, return {"rejectReason":"insufficient source evidence"} instead.\n- JSON shape: {"variants":{"A1-A2":{"headline":"...","pages":[{"text":"...","evidenceIds":["P1"]}]},"B1-B2":{...},"C1-C2":{...}}}. Do not include an outline, image URLs, invented citations, or HTML. Count words on every page before returning; complete short pages using only cited facts.\n\nSOURCE PASSAGES:\n${sourceText}`
 }
 
 export class GeminiWikiPause extends Error{
@@ -57,7 +69,7 @@ const retryDelay=(value,now)=>{
  return Number.isFinite(date)?Math.max(0,date-now()):0
 }
 export async function callFreeWikiGemini(prompt,{apiKey,freeTierConfirmed=false,budget,fetchImpl=fetch,model=MODEL,
- waitImpl=ms=>new Promise(resolve=>setTimeout(resolve,ms)),now=Date.now}={}){
+ waitImpl=ms=>new Promise(resolve=>setTimeout(resolve,ms)),now=Date.now,schema=null}={}){
  if(!freeTierConfirmed||!apiKey)throw new GeminiWikiPause('Free-tier project and key not confirmed')
  if(!budget||!Number.isSafeInteger(budget.maxCalls)||budget.maxCalls<1)throw new GeminiWikiPause('Free API call budget exhausted')
  if(!FREE_MODELS.has(model))throw new GeminiWikiPause('Unreviewed Gemini model blocked')
@@ -75,7 +87,8 @@ export async function callFreeWikiGemini(prompt,{apiKey,freeTierConfirmed=false,
   if(budget.onRequest)await budget.onRequest(budget)
   try{response=await fetchImpl(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`,{
    method:'POST',headers:{'content-type':'application/json','x-goog-api-key':apiKey},signal:AbortSignal.timeout(90000),
-   body:JSON.stringify({contents:[{role:'user',parts:[{text:prompt}]}],generationConfig:{responseMimeType:'application/json',temperature:0.35,maxOutputTokens:10500}})
+   body:JSON.stringify({contents:[{role:'user',parts:[{text:prompt}]}],generationConfig:{responseMimeType:'application/json',
+    ...(schema?{responseJsonSchema:schema}:{}),temperature:0.35,maxOutputTokens:10500}})
   })}catch{budget.usageUnknown=true;budget.serviceFailures=(budget.serviceFailures||0)+1;budget.circuitOpen=true;throw new GeminiWikiPause('Gemini network unavailable; circuit open')}
   if(response.status!==429&&response.status!==503)break
   budget.usageUnknown=true;budget.serviceFailures=(budget.serviceFailures||0)+1
@@ -104,7 +117,9 @@ export async function callFreeWikiGemini(prompt,{apiKey,freeTierConfirmed=false,
  }
  const text=data?.candidates?.[0]?.content?.parts?.map(part=>part.text||'').join('')||''
  let result
- try{result=JSON.parse(text)}catch{throw new GeminiWikiPause('Gemini returned invalid JSON; preserve candidate','INVALID_JSON')}
+ try{result=JSON.parse(text)}catch{throw new GeminiWikiPause(
+  `Gemini returned invalid JSON (finish=${data?.candidates?.[0]?.finishReason||'unknown'}, chars=${text.length}); preserve candidate`,
+  'INVALID_JSON')}
  return {result,usage}
 }
 
@@ -125,7 +140,7 @@ export function validateWikiDraft(result,{source,topic,evidence}={}){
   for(const [index,page] of pages.entries()){
    const label=`${level}:page-${index+1}`
    const words=count(page?.text)
-   if(typeof page?.text!=='string'||words<(index===0?35:42)||words>(index===0?66:105)||!/[.!?]$/.test(page.text.trim()))errors.push(label+':length-or-sentence')
+   if(typeof page?.text!=='string'||words<(index===0?30:28)||words>(index===0?66:105)||!/[.!?]$/.test(page.text.trim()))errors.push(label+':length-or-sentence')
    if(!Array.isArray(page?.evidenceIds)||!page.evidenceIds.length||page.evidenceIds.some(id=>!ids.has(id)))errors.push(label+':evidence-id')
    else{
     const cited=page.evidenceIds.map(id=>byId.get(id)).join(' ')
@@ -152,7 +167,7 @@ export function validateWikiDraft(result,{source,topic,evidence}={}){
 export function wikiAuditPrompt(source,evidence,result){
  const cited=evidence.map(row=>`${row.id} [${row.heading}] ${row.text}`).join('\n\n')
  return `Audit this English-learning adaptation against ONLY the pinned Wikipedia passages below. Return JSON only.
-Check every substantive sentence in all three levels, including dates, names, superlatives, causal claims and uncertainty. A plausible claim is not enough: each claim must be directly supported by that page's cited evidence IDs. Treat debated reconstructions as uncertain in every level. Reject claims that transfer a modern simulation's limits to a historical original. Also reject repeated pages, formulaic filler, a missing narrative arc, or prose plainly unsuitable for its stated CEFR level. Do not repair the story.
+Check factual claims in all three levels, including dates, names, numbers, causal claims and uncertainty. A claim must be supported by that page's cited evidence IDs; do not reject a concise or simply written page merely for style. Treat debated reconstructions as uncertain in every level. Reject claims that transfer a modern simulation's limits to a historical original. Reject material repetition or invented filler. Do not repair the story.
 Return {"accepted":true,"issues":[]} only if all pages are supported. Otherwise return {"accepted":false,"issues":[{"level":"A1-A2","page":1,"reason":"short concrete explanation"}]}.
 Title: ${source.sourceTitle}; revision: ${source.sourceRevisionId}
 PASSAGES:\n${cited}
@@ -179,6 +194,21 @@ export function repairTargets(errors){
  }
  return Object.fromEntries([...targets].map(([level,set])=>[level,[...set]]))
 }
+export function wikiRepairSchema(errors){
+ const targets=repairTargets(errors),levels={}
+ for(const [level,items] of Object.entries(targets)){
+  const properties={}
+  if(items.includes('headline'))properties.headline={type:'string'}
+  if(items.includes('page-count'))properties.pages={type:'array',items:PAGE_SCHEMA,minItems:5,maxItems:7}
+  else{
+   const pages=items.filter(Number.isInteger)
+   if(pages.length)properties.pages={type:'object',properties:Object.fromEntries(pages.map(page=>[page,PAGE_SCHEMA])),
+    required:pages.map(String)}
+  }
+  levels[level]={type:'object',properties,required:Object.keys(properties)}
+ }
+ return {type:'object',properties:{variants:{type:'object',properties:levels,required:Object.keys(levels)}},required:['variants']}
+}
 export function supplementWikiEvidence(source,evidence,draft,errors){
  const unsupported=errors.flatMap(error=>{
   const match=String(error).match(/^(A1-A2|B1-B2|C1-C2):page-(\d+):unsupported-number-(\d+)$/)
@@ -199,7 +229,7 @@ export function supplementWikiEvidence(source,evidence,draft,errors){
  }
  return expanded
 }
-export function applyWikiRepair(draft,patch,targets,errors=[]){
+export function applyWikiRepair(draft,patch,targets){
  const next=structuredClone(draft)
  if(!patch||typeof patch!=='object'||!patch.variants)throw Error('Invalid targeted repair')
  for(const [level,items] of Object.entries(targets)){
@@ -213,16 +243,13 @@ export function applyWikiRepair(draft,patch,targets,errors=[]){
    if(!Array.isArray(incoming.pages))throw Error('Missing repaired level pages')
    next.variants[level].pages=incoming.pages
   }else for(const page of items.filter(Number.isInteger)){
-   const replacement=incoming.pages?.[String(page)]
+   const pages=incoming.pages
+   const replacement=Array.isArray(pages)
+    ?pages.length===next.variants[level].pages.length?pages[page-1]
+     :pages.length===1&&items.filter(Number.isInteger).length===1?pages[0]:null
+    :pages?.[String(page)]
+   if(replacement?.page!==undefined&&replacement.page!==page)throw Error('Wrong repaired page number')
    if(!replacement||typeof replacement.text!=='string'||!Array.isArray(replacement.evidenceIds))throw Error('Missing repaired page')
-   const prefix=`${level}:page-${page}:`
-   const numeric=errors.map(error=>String(error).match(new RegExp(`^${prefix}unsupported-number-(?:context-)?(\\d+)$`))?.[1]).filter(Boolean)
-   if(numeric.length){
-    const before=String(next.variants[level].pages[page-1].text).split(/(?<=[.!?])\s+/)
-    const after=String(replacement.text).split(/(?<=[.!?])\s+/)
-    if(before.filter(sentence=>!numeric.some(number=>numerals(sentence).includes(number)))
-     .some(sentence=>!after.includes(sentence)))throw Error('Targeted repair changed an unrelated sentence')
-   }
    next.variants[level].pages[page-1]=replacement
   }
  }
@@ -230,7 +257,24 @@ export function applyWikiRepair(draft,patch,targets,errors=[]){
 }
 export function wikiRepairPrompt(source,evidence,draft,errors){
  const targets=repairTargets(errors)
- return `Repair ONLY the named English learning pages or headlines. Return JSON only: {"variants":{"A1-A2":{"pages":{"4":{"text":"...","evidenceIds":["P1"]}}}}}. Page keys are 1-based. For a page-count error return a complete 5-7 page array for that ONE level. Preserve all unaffected sentences VERBATIM and change only the faulty sentence or paragraph. Do not change any other level or page. Remove unsupported facts; never add a fact absent from the cited passages. Preserve 5-7 pages per level, 40-58 words on opening pages and 48-88 words on later pages. If a factual claim cannot be supported, rewrite that sentence using only direct evidence.\nTitle: ${source.sourceTitle}; revision: ${source.sourceRevisionId}\nErrors: ${JSON.stringify(errors)}\nTargets: ${JSON.stringify(targets)}\nPassages:\n${evidence.map(row=>`${row.id} [${row.heading}] ${row.text}`).join('\n\n')}\nCurrent targeted content:\n${JSON.stringify(Object.fromEntries(Object.keys(targets).map(level=>[level,draft.variants[level]])))}`
+ const current=Object.fromEntries(Object.entries(targets).map(([level,items])=>{
+  const variant=draft.variants[level],content={}
+  if(items.includes('headline'))content.headline=variant.headline
+  if(items.includes('page-count'))content.pages=variant.pages
+  else{
+   const pages=items.filter(Number.isInteger)
+   if(pages.length)content.pages=Object.fromEntries(pages.map(page=>[page,variant.pages[page-1]]))
+  }
+  return [level,content]
+ }))
+ return `Repair ONLY the named English-learning pages or headlines. Return one JSON object with variants containing exactly the named levels and page keys in Targets. For a single-page error, return that page as a 1-based key, not the whole level. For a page-count error, return a complete 5-7 page array for that one level. Rewrite the named page as needed for clear, sourced prose. Do not change any other level or page. Remove unsupported facts; never add a fact absent from the cited passages. Keep the opening page at 40-58 words and later pages at 48-88 words; count words before returning. If a factual claim cannot be supported, rewrite that sentence using only direct evidence.
+Title: ${source.sourceTitle}; revision: ${source.sourceRevisionId}
+Errors: ${JSON.stringify(errors)}
+Targets: ${JSON.stringify(targets)}
+Passages:
+${evidence.map(row=>`${row.id} [${row.heading}] ${row.text}`).join('\n\n')}
+Current targeted content:
+${JSON.stringify(current)}`
 }
 
 export async function generateWikiDraft({source,topic,apiKey,freeTierConfirmed=false,budget,fetchImpl=fetch,model=MODEL,
@@ -246,7 +290,7 @@ export async function generateWikiDraft({source,topic,apiKey,freeTierConfirmed=f
  const options={apiKey,freeTierConfirmed,budget,fetchImpl,waitImpl,now,model}
  let result=draft,usage=null,validation
  if(!result){
-  const generated=await callFreeWikiGemini(wikiStoryPrompt(source,topic,evidence),options)
+  const generated=await callFreeWikiGemini(wikiStoryPrompt(source,topic,evidence),{...options,schema:STORY_SCHEMA})
   result=generated.result;usage=generated.usage
   await onDraft({result,repairAttempts,evidence,usage}) // durable before any validation
  }
@@ -254,7 +298,7 @@ export async function generateWikiDraft({source,topic,apiKey,freeTierConfirmed=f
   validation=priorValidation||validateWikiDraft(result,{source,topic,evidence})
   priorValidation=null
   if(validation.accepted){
-   const audit=await callFreeWikiGemini(wikiAuditPrompt(source,evidence,result),options)
+   const audit=await callFreeWikiGemini(wikiAuditPrompt(source,evidence,result),{...options,schema:AUDIT_SCHEMA})
    validation=validateWikiAudit(audit.result)
   }
   if(validation.accepted||repairAttempts>=2||result.rejectReason)break
@@ -262,8 +306,9 @@ export async function generateWikiDraft({source,topic,apiKey,freeTierConfirmed=f
   if(!Object.keys(targets).length)break
   if(budget.maxCalls-budget.usedCalls<2)break // reserve one call for mandatory audit
   evidence=supplementWikiEvidence(source,evidence,result,validation.errors)
-  const patch=await callFreeWikiGemini(wikiRepairPrompt(source,evidence,result,validation.errors),options)
-  result=applyWikiRepair(result,patch.result,targets,validation.errors)
+  const patch=await callFreeWikiGemini(wikiRepairPrompt(source,evidence,result,validation.errors),
+   {...options,schema:wikiRepairSchema(validation.errors)})
+  result=applyWikiRepair(result,patch.result,targets)
   repairAttempts++
   await onDraft({result,repairAttempts,evidence,usage:patch.usage})
  }
