@@ -6686,10 +6686,10 @@
       "checkedAt": null
     },
     "667598": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
+      "revisionId": 1367562998,
+      "checkedAt": "2026-10-22T06:15:45.409Z"
     },
     "670499": {
       "status": "REJECTED",
@@ -9866,7 +9866,7 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-10-22T06:15:39.106Z",
+  "updatedAt": "2026-10-22T06:15:45.410Z",
   "dailyUsage": {
     "day": "2026-10-22",
     "calls": 8,
