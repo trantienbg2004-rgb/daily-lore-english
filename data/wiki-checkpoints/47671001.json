@@ -2,9 +2,166 @@
   "pageId": 47671001,
   "title": "Intangible Cultural Heritage of the Philippines",
   "topic": "Culture",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1357891068,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1357891068",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-22T13:21:24.722Z"
+  "reason": "2 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Banaue Rice Terraces Harvest.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d2/Banaue_Rice_Terraces_Harvest.jpg/960px-Banaue_Rice_Terraces_Harvest.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Banaue Rice Terraces Harvest.jpg",
+        "caption": "A woman chanting the Hudhud Chants of the Ifugao while harvesting grains in the Ifugao Rice Terraces. The oral tradition was declared by UNESCO as one of the \"Eleven Masterpieces of the Oral and Intangible Heritage of Humanity\" in 2001, and later inscribed in the UNESCO Intangible Cultural Heritage Lists in 2008.",
+        "alt": "",
+        "description": "This is a photo of a cultural heritage property in the Philippines with ID",
+        "date": "2011-08-28 01:24:51",
+        "section": "UNESCO-inscribed ICH of the Philippines",
+        "position": 0,
+        "provenance": {
+          "credit": "Jsinglador",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Banaue_Rice_Terraces_Harvest.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Intangible_Cultural_Heritage_of_the_Philippines",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1357891068",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:A Woman At The Kalibo Ati-Atihan Festival, Philippines.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2c/A_Woman_At_The_Kalibo_Ati-Atihan_Festival%2C_Philippines.jpg/960px-A_Woman_At_The_Kalibo_Ati-Atihan_Festival%2C_Philippines.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:A Woman At The Kalibo Ati-Atihan Festival, Philippines.jpg",
+        "caption": "A woman at the Kalibo Ati-Atihan Festival.",
+        "alt": "",
+        "description": "The Kalibo Ati-Atihan festival is an annual religious festival that involves colorful costumes, dancing, parades, and more. It is one of the Philippines' largest festivals and lasts for an entire week in January, although the build up is often much longer.",
+        "date": "2019-01-20",
+        "section": "Proposed/ongoing nominations by the Philippines",
+        "position": 1,
+        "provenance": {
+          "credit": "Elisolidum",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:A_Woman_At_The_Kalibo_Ati-Atihan_Festival,_Philippines.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Intangible_Cultural_Heritage_of_the_Philippines",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1357891068",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "3ba060afb6f460a59c3c0ab9dfc3bafbb19476e991761ec6b2914f63df33adab",
+      "heading": "Lead",
+      "excerpt": "The Philippines, with the National Commission for Culture and the Arts as the de facto Ministry of Culture, ratified the 2003 Convention aft",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1357891068"
+    },
+    {
+      "id": "P2",
+      "hash": "5acb44eb7ebc06cd87c30a3d3c84b7b0bf0b3829e05c6a5c5328d935495961ea",
+      "heading": "Lead",
+      "excerpt": "Prior to the 2003 Convention, the Philippines was invited by UNESCO to nominate intangible heritage elements for the inclusion to the Procla",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1357891068"
+    },
+    {
+      "id": "P3",
+      "hash": "659b4f06dbd0c3fceab85acb4813d80dd0fb04decbbef1093b139dce674536da",
+      "heading": "Lead",
+      "excerpt": "As part of the objective of the Convention, the government of President Noynoy Aquino through the National Commission for Culture and the Ar",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1357891068"
+    },
+    {
+      "id": "P4",
+      "hash": "77bfa6515bfeafc6848b4b4602536f60dab447a29bcdad3451f06845d139e179",
+      "heading": "Lead",
+      "excerpt": "Between 2015 and 2017, UNESCO's Intangible Cultural Heritage Courier of Asia and the Pacific featured the darangen epic chant, punnuk tuggin",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1357891068"
+    },
+    {
+      "id": "P5",
+      "hash": "62b5c099d6bd7fe715803b5f81d3830e61c813fb98e9d5cbce742bcab0afc004",
+      "heading": "Lead",
+      "excerpt": "By 2016, according to the ICH Unit, National Commission for Culture and the Arts, there were 367 elements listed under the Philippine Invent",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1357891068"
+    },
+    {
+      "id": "P6",
+      "hash": "581588e2134464e8c2745bce3e55d203f13d5edf6849ce9d422a2ebe7ed61238",
+      "heading": "National Living Treasures",
+      "excerpt": "As defined by UNESCO, the bearers of intangible cultural heritage are to be known internationally as Living Human Treasures. The Filipino co",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1357891068"
+    },
+    {
+      "id": "P7",
+      "hash": "161576cf0c679861c551b4a02335b43868cb9531c0dd0d4f9f72d7c440da2c49",
+      "heading": "UNESCO-inscribed ICH of the Philippines",
+      "excerpt": "The Philippines has a total of seven intangible cultural heritage elements inscribed in the UNESCO Intangible Cultural Heritage Lists. These",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1357891068"
+    },
+    {
+      "id": "P8",
+      "hash": "90b3757b30963f7322d4cffe52b991a67274d9020ea13c0fe751495c94dc991d",
+      "heading": "Proposed/ongoing nominations by the Philippines",
+      "excerpt": "Numerous elements are being proposed for nomination by the Philippines for inclusion in the intangible cultural heritage lists within the co",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1357891068"
+    },
+    {
+      "id": "P9",
+      "hash": "95913fa256b8fe8f4c0a3fdb803aaf265f8d4c251530b05f424c0a3397f779e3",
+      "heading": "Intangible Cultural Heritage of the Philippines according to the Pinagmulan",
+      "excerpt": "The National Commission for Culture and the Arts through its UNESCO-backed Pinagmulan book, inventory of Philippine intangible cultural heri",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1357891068"
+    },
+    {
+      "id": "P10",
+      "hash": "cf6ab4cb3c9aca4598a7ce2413bb2cfbb2db0ce1f158b87892698cc33e916f89",
+      "heading": "Indigenous groups",
+      "excerpt": "The indigenous peoples of the Philippines consist of a large number of Austronesian ethnic groups, as well as Negritos. They are the bearers",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1357891068"
+    },
+    {
+      "id": "P11",
+      "hash": "57d54f3e70b363427c3b2f5162c7153abc883fc5aeadfeb5113034726a96bb34",
+      "heading": "National Living Treasures",
+      "excerpt": "A master of the heritage does not automatically qualify an individual or group for the award as the craft of the master should exude a highe",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1357891068"
+    },
+    {
+      "id": "P12",
+      "hash": "b36af7fb9f555529b35d0a8904772159de04ecac93e0f44459850fcd1c1f1e87",
+      "heading": "Proposed/ongoing nominations by the Philippines",
+      "excerpt": "The Philippines is a member of the committee on intangible cultural heritage since 2016, and will end its term in 2019. In 2017, the Ambassa",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1357891068"
+    },
+    {
+      "id": "P13",
+      "hash": "d9941fdca693a471b5c6bd8c638af108208020731cfbbfce41655fe8ea776361",
+      "heading": "Indigenous groups",
+      "excerpt": "In 1990, more than 100 highland peoples constituted approximately three percent of the Philippine population. Over the centuries, the isolat",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1357891068"
+    },
+    {
+      "id": "P14",
+      "hash": "0ad37194556c09e8922e890f49a9cc3623387d0a77b87eec07f877702d658ac1",
+      "heading": "Indigenous groups",
+      "excerpt": "The highland peoples are a primitive ethnic group like other Filipinos, although they did not, as a group, have as much contact with the out",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1357891068"
+    },
+    {
+      "id": "P15",
+      "hash": "2a8b8203cf7919e811c15471cb296545cd0b68cf1d9767d02cc7ec7a4a57d386",
+      "heading": "Indigenous groups",
+      "excerpt": "Due to the influx of Christianity, Islam, and other world religions in traditional communities, the indigenous practices, rituals, and spiri",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1357891068"
+    }
+  ],
+  "updatedAt": "2026-10-22T13:21:29.865Z"
 }
