@@ -6668,10 +6668,10 @@
       "checkedAt": "2026-10-21T13:53:13.055Z"
     },
     "666100": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
+      "revisionId": 1378008177,
+      "checkedAt": "2026-10-22T06:16:15.537Z"
     },
     "666280": {
       "status": "EVIDENCE_READY",
@@ -9866,7 +9866,7 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-10-22T06:16:09.117Z",
+  "updatedAt": "2026-10-22T06:16:15.540Z",
   "dailyUsage": {
     "day": "2026-10-22",
     "calls": 8,
