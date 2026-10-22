@@ -9704,10 +9704,10 @@
       "checkedAt": null
     },
     "81117122": {
-      "status": "PENDING",
-      "reason": "queued",
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
       "revisionId": 1333929285,
-      "checkedAt": null
+      "checkedAt": "2026-10-22T08:31:07.121Z"
     },
     "81143155": {
       "status": "RETRY_LATER",
@@ -9866,7 +9866,7 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-10-22T08:31:00.889Z",
+  "updatedAt": "2026-10-22T08:31:07.123Z",
   "dailyUsage": {
     "day": "2026-10-22",
     "calls": 16,
