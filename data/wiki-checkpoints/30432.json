@@ -265,7 +265,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375829657"
     }
   ],
-  "updatedAt": "2026-10-22T08:37:53.096Z",
+  "updatedAt": "2026-10-22T08:38:11.039Z",
   "priorReviewReason": "Gemini returned invalid JSON; preserve candidate",
   "draft": {
     "variants": {
@@ -273,7 +273,7 @@
         "headline": "Understanding Treaties",
         "pages": [
           {
-            "text": "A treaty is a formal agreement between countries or other groups. It is governed by international law and creates legally binding rules for all the parties that sign it.",
+            "text": "A treaty is an international agreement between sovereign states or other subjects of international law that is governed by international law and is legally binding on the parties.",
             "evidenceIds": [
               "P1"
             ]
@@ -285,7 +285,7 @@
             ]
           },
           {
-            "text": "Treaties are not required to follow any single standard form. Nations apply them to many different subjects, including trade, the environment, human rights, and global security.",
+            "text": "Treaties are not required to follow any standard form and differ widely in substance and complexity. They are applied to a wide range of subject matters such as security, trade, environment, and human rights.",
             "evidenceIds": [
               "P4"
             ]
@@ -298,7 +298,7 @@
             ]
           },
           {
-            "text": "Sometimes agreements can be broken or changed, but international rules exist to govern these actions. Treaties help countries resolve disputes and maintain peaceful relations together.",
+            "text": "The Vienna Convention on the Law of Treaties codified practices by establishing rules for creating, amending, interpreting, and terminating treaties, and for resolving disputes and alleged breaches.",
             "evidenceIds": [
               "P2",
               "P6"
@@ -353,10 +353,9 @@
         "headline": "Codification and Lifecycles of Treaties",
         "pages": [
           {
-            "text": "Treaties function as primary sources of international law, binding exclusively those sovereign states and international organizations that have formally signed and ratified them.",
+            "text": "A treaty is an international agreement between sovereign states or other subjects of international law, including international organizations, that is governed by international law and is legally binding on the parties.",
             "evidenceIds": [
-              "P1",
-              "P3"
+              "P1"
             ]
           },
           {
@@ -367,9 +366,8 @@
             ]
           },
           {
-            "text": "Because treaties lack a prescribed format, states utilize bilateral and multilateral structures to address diverse domains, ranging from environmental protection to institutional governance frameworks.",
+            "text": "Treaties are not required to follow any standard form and differ widely in substance and complexity. They are applied to a wide range of subject matters such as security, trade, environment, and human rights.",
             "evidenceIds": [
-              "P1",
               "P4"
             ]
           },
@@ -383,27 +381,26 @@
             ]
           },
           {
-            "text": "Substantive validity remains strictly conditioned upon adherence to peremptory norms, preventing agreements that permit aggressive warfare or violate foundational principles of international jurisprudence.",
+            "text": "In certain conditions a treaty may also be invalidated and thus rendered unenforceable, for example, if it violates a peremptory norm such as permitting a war of aggression or crimes against humanity.",
             "evidenceIds": [
               "P3"
             ]
           },
           {
-            "text": "Mandatory treaty registration with the United Nations serves to eradicate the destabilizing proliferation of secret covenants, while specialized judicial bodies handle subsequent dispute resolution and alleged breaches.",
+            "text": "Under the United Nations Charter, treaties must be registered with the UN to be invoked before it or enforced in its judiciary organ, the International Court of Justice, to prevent the practice of secret treaties.",
             "evidenceIds": [
-              "P5",
-              "P17"
+              "P5"
             ]
           }
         ]
       }
     }
   },
-  "repairAttempts": 0,
+  "repairAttempts": 1,
   "lastUsage": {
-    "input": 2618,
-    "output": 1218,
-    "total": 3836
+    "input": 2807,
+    "output": 529,
+    "total": 3336
   },
   "validation": null
 }
