@@ -2,9 +2,149 @@
   "pageId": 353831,
   "title": "Manu Dibango",
   "topic": "Culture",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1356486770,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1356486770",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-22T08:28:31.428Z"
+  "reason": "1 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Manu Dibango - Stuttgart 17.07.2013 - 2.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0a/Manu_Dibango_-_Stuttgart_17.07.2013_-_2.jpg/960px-Manu_Dibango_-_Stuttgart_17.07.2013_-_2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Manu Dibango - Stuttgart 17.07.2013 - 2.jpg",
+        "caption": "Manu Dibango - Stuttgart 17 July 2013 - 2",
+        "alt": "",
+        "description": "Manu Dibango at the Sommerfestival der Kulturen Stuttgart - 17.07.2013",
+        "date": "2013-07-17 19:39:29",
+        "section": "Career",
+        "position": 0,
+        "provenance": {
+          "credit": "Vonvon",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Manu_Dibango_-_Stuttgart_17.07.2013_-_2.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Manu_Dibango",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1356486770",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "11f7a80b1f13e8c9d7f787ea4e26d5c420349ed5349750b180f8cc07bfb0993f",
+      "heading": "Lead",
+      "excerpt": "Emmanuel N'Djoké \"Manu\" Dibango (12 December 1933 – 24 March 2020) was a Cameroonian musician and songwriter who played saxophone and vibrap",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1356486770"
+    },
+    {
+      "id": "P2",
+      "hash": "70bfba50b0332122f72d0146a640050e6dbac075b4a4b73f4022b965fdbaec7d",
+      "heading": "Early life",
+      "excerpt": "Emmanuel \"Manu\" Dibango was born in Douala, Cameroon, in 1933. His father, Michel Manfred N'Djoké Dibango, was a civil servant. Son of a far",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1356486770"
+    },
+    {
+      "id": "P3",
+      "hash": "c8e14e2d1a134099b2d20b31b9f29be68e66227535ed9d26df12545b48104c24",
+      "heading": "Early life",
+      "excerpt": "Dibango's uncle was the leader of his extended family. Upon his death, Dibango's father refused to take over, as he never fully initiated hi",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1356486770"
+    },
+    {
+      "id": "P4",
+      "hash": "ce3b3876ea0e0bc92d3b659494d5fbf9b73462a80ef63219943346b0df690729",
+      "heading": "Early life",
+      "excerpt": "In 1941, after being educated at his village school, Dibango was accepted into a colonial school, near his home, where he learned French. He",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1356486770"
+    },
+    {
+      "id": "P5",
+      "hash": "6f5e51a0c7034736ea0b1c7b45d429599e26cf6757f4f5a33abee3cd7e0ec596",
+      "heading": "Early life",
+      "excerpt": "In 1949, at the age of 15, Dibango was sent by his parents to college in Saint-Calais, France. After that, he attended the lycée de Chartres",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1356486770"
+    },
+    {
+      "id": "P6",
+      "hash": "833f14d6bbfdf9fb339fd9f4929b1c582d1f6c5bfa0b56ba5680240e0c6b2004",
+      "heading": "Career",
+      "excerpt": "After several stints with French jazz clubs, Dibango then moved to Belgium, where his talent attracted the owner of a Bantou club. He was th",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1356486770"
+    },
+    {
+      "id": "P7",
+      "hash": "fdd36b82757a1c86d0002af0fc5e169ef0907550f7e476ef8376475396e5630e",
+      "heading": "Death",
+      "excerpt": "On 24 March 2020, Dibango died from COVID-19 in Melun near Paris, France. The news of his death was confirmed by his family via social media",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1356486770"
+    },
+    {
+      "id": "P8",
+      "hash": "0e577c6f29d7485de3ede6cc2ed1927a39cc49e7fd4403ddbc630b8dbb6f8728",
+      "heading": "Career",
+      "excerpt": "In 1959, Kabasele recorded the pan-African anthem \"Indépendance Cha Cha\" and invited him to the Congolese capital of Léopoldville (present-d",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1356486770"
+    },
+    {
+      "id": "P9",
+      "hash": "2bae4fddf8780e89a10d59112b7247e46a5e6bf0671c920fffe9d931a2335869",
+      "heading": "Career",
+      "excerpt": "The lyrics of the song \"Soul Makossa\" on the album of the same name contain the word \"makossa\", which refers to a style of Cameroonian urban",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1356486770"
+    },
+    {
+      "id": "P10",
+      "hash": "92eb3429ff7a4cac8056bd01dff0589acfab5706726419670fcad8d388eda070",
+      "heading": "Career",
+      "excerpt": "In Canada, two other songs ranked on the AC charts. \"Pepe Soup\" was number 33 in 1974 and \"Ashiko Go\" was number 21 in 1975. His wife Coco d",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1356486770"
+    },
+    {
+      "id": "P11",
+      "hash": "1eb261fd501fb7c4954f78cf625d1bfd4581d3b35a24d56453e17dccaa979a7d",
+      "heading": "Career",
+      "excerpt": "He served as the first chairman of the Cameroon Music Corporation, with a high profile in disputes about artists' royalties. Dibango was app",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1356486770"
+    },
+    {
+      "id": "P12",
+      "hash": "e33ea0102746196f7d6beb96e829cd4a723eecc23693ae7b6feec050af0b5049",
+      "heading": "Career",
+      "excerpt": "His song \"Reggae Makossa\" is featured on the soundtrack to the 2006 video game Scarface: The World Is Yours. In August 2009, he played the c",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1356486770"
+    },
+    {
+      "id": "P13",
+      "hash": "f874fe9c335e3e44701070dd90e5571fcaca9cc5f899b0019f7100a01eee02f3",
+      "heading": "Career",
+      "excerpt": "His song \"New Bell\" is featured on the soundtrack to the 2008 video game Grand Theft Auto IV in the radio station International Funk 99.",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1356486770"
+    },
+    {
+      "id": "P14",
+      "hash": "745e12d54edf3beca1442a7cd4f2cf3a0577c309a89dab651419cea3ea859dd9",
+      "heading": "Career",
+      "excerpt": "In 1982, Michael Jackson used the \"Ma ma-se, ma ma-sa, ma ma-kossa\" hook from Dibango's 1972 single \"Soul Makossa\", without his permission a",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1356486770"
+    },
+    {
+      "id": "P15",
+      "hash": "90daebd2751547b0daf16db4a703f42b829117a7258bd3bbb9edb3fb477e5f7b",
+      "heading": "Career",
+      "excerpt": "In 2007, Rihanna sampled the same hook from Jackson's song for her track \"Don't Stop the Music\" and did not credit Dibango. When Rihanna had",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1356486770"
+    },
+    {
+      "id": "P16",
+      "hash": "280b77405c2a3f680cad98a03884d562db0ceb228d8a6c71d48b9dc0b09ecb7c",
+      "heading": "Career",
+      "excerpt": "On 8 September 2015, Michaëlle Jean, Secretary General of the Organisation Internationale de la Francophonie, honoured Manu Dibango with the",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1356486770"
+    }
+  ],
+  "updatedAt": "2026-10-22T08:28:37.065Z"
 }
