@@ -8834,10 +8834,10 @@
       "checkedAt": "2026-10-22T09:09:42.029Z"
     },
     "57296076": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
+      "revisionId": 1353717351,
+      "checkedAt": "2026-10-22T12:56:27.338Z"
     },
     "57554825": {
       "status": "REJECTED",
@@ -9866,7 +9866,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-22T12:56:20.886Z",
+  "updatedAt": "2026-10-22T12:56:27.347Z",
   "dailyUsage": {
     "day": "2026-10-22",
     "calls": 64,
