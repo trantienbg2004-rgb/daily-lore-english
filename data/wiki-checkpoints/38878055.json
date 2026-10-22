@@ -2,9 +2,124 @@
   "pageId": 38878055,
   "title": "Verismo (literature)",
   "topic": "Culture",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1380285932,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380285932",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-22T14:52:13.184Z"
+  "reason": "2 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Verga - Vita dei campi, Treves, 1897 (page 120 crop).jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/84/Verga_-_Vita_dei_campi%2C_Treves%2C_1897_%28page_120_crop%29.jpg/960px-Verga_-_Vita_dei_campi%2C_Treves%2C_1897_%28page_120_crop%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Verga - Vita dei campi, Treves, 1897 (page 120 crop).jpg",
+        "caption": "Illustration for the Treves edition of Giovanni Vergas's Vita dei campi, Milan, 1897",
+        "alt": "",
+        "description": "",
+        "date": "2020-01-25 11:02:20",
+        "section": "",
+        "position": 0,
+        "provenance": {
+          "credit": "Giovanni Verga",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Verga_-_Vita_dei_campi,_Treves,_1897_(page_120_crop).jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Verismo_(literature)",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380285932",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Luigi Capuana (before 1915) - Archivio Storico Ricordi FOTO001120 (cropped).jpg",
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/8/8a/Luigi_Capuana_%28before_1915%29_-_Archivio_Storico_Ricordi_FOTO001120_%28cropped%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "fileTitle": "File:Luigi Capuana (before 1915) - Archivio Storico Ricordi FOTO001120 (cropped).jpg",
+        "caption": "Luigi Capuana, one of the main exponents of verismo in literature, and the author of the novel Giacinta, generally regarded as the \"manifesto\" of the movement.",
+        "alt": "",
+        "description": "Portrait of Luigi Capuana, journalist (1839-1915). Photo by I. Strizzi, Roma, before 1915.",
+        "date": "before 1915date QS:P571,+1915-00-00T00:00:00Z/7,P1326,+1915-00-00T00:00:00Z/9date QS:P571,+1915-00-0",
+        "section": "Main figures",
+        "position": 1,
+        "provenance": {
+          "credit": "I. Strizzi I. Strizzi",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Luigi_Capuana_(before_1915)_-_Archivio_Storico_Ricordi_FOTO001120_(cropped).jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Verismo_(literature)",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380285932",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "c1cab71528a6e09781a3f89742ef50dc6c6774ca2e2a68c3fee5e89cd42d25d8",
+      "heading": "Lead",
+      "excerpt": "Verismo (Italian for 'realism', from vero, 'true') was an Italian literary movement which peaked between approximately 1875 and the early 19",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380285932"
+    },
+    {
+      "id": "P2",
+      "hash": "4762883d7b1f1f8e2be85c00431d033dac2a76de4bdcb58890456a13cf4f9820",
+      "heading": "Origin",
+      "excerpt": "Literary verismo was begun around 1875 and 1895 by a group of writers – mostly novelists and playwrights. It did not constitute a formal sch",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380285932"
+    },
+    {
+      "id": "P3",
+      "hash": "94f7b434c5ed24ff9454d2892ab4630706be4ec29ea5ce86a37def995ae1119e",
+      "heading": "Main figures",
+      "excerpt": "Literary verismo developed in the fruitful urban cultural life of Milan, which brought together intellectuals from different areas, but tend",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380285932"
+    },
+    {
+      "id": "P4",
+      "hash": "6f5f1b494de8f755c5813da343570bf857a7d29fc5311e4894ab3762de4d32f2",
+      "heading": "Main figures",
+      "excerpt": "Verismo, however, exerted some influence also in northern Italy. In Lombardy Emilio De Marchi attempted to reconcile the Manzonian tradition",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380285932"
+    },
+    {
+      "id": "P5",
+      "hash": "8280bd03c2a854d409f86ad8e1f6660b9024b23e9a20bf69d4c4592273e65359",
+      "heading": "Main figures",
+      "excerpt": "Though its key proponents were primarily novelists, a certain form of verismo is also visible in verse: Lorenzo Stecchetti (Olindo Guerrini)",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380285932"
+    },
+    {
+      "id": "P6",
+      "hash": "0bd47227ca605ee21afa0b9d93646507dfbb491643435474a99336c83816239d",
+      "heading": "Principles",
+      "excerpt": "The principles of canonical verismo are as follows: (1) the form must be impersonal; (2) the language and style must accord with the subject",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380285932"
+    },
+    {
+      "id": "P7",
+      "hash": "43269be39a189fff6d1e57e5a77b77bb4529b6b4de859818c6f68bbb16fd9217",
+      "heading": "Legacy",
+      "excerpt": "The early novels of Gabriele D'Annunzio, Terra vergine and Novelle della Pescara, were heavily influenced by verismo. Traces of the poetics ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380285932"
+    },
+    {
+      "id": "P8",
+      "hash": "25c4e22aaf45346b0229b98ae8670e8be84f602ae52c5f264b2b0a809f8f4f83",
+      "heading": "Main figures",
+      "excerpt": "The first author to theorize on Italian verismo was Capuana, who theorized the \"poetry of the real\" – thus Verga, at first part of the late ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380285932"
+    },
+    {
+      "id": "P9",
+      "hash": "612f5cc46252d4c8d71557a4a0a112cfcfac68130f316cf39c75432a9f1871ee",
+      "heading": "Main figures",
+      "excerpt": "The movement had its detractors as well. For example, the Florentine journalist and playwright Luigi Alberti considered verismo to be pollut",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380285932"
+    }
+  ],
+  "updatedAt": "2026-10-22T14:52:18.611Z"
 }
