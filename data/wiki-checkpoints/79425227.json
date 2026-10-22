@@ -2,10 +2,10 @@
   "pageId": 79425227,
   "title": "1878 Kanak revolt",
   "topic": "Society",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1380582529,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380582529",
-  "reason": "2 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REJECTED",
@@ -245,6 +245,158 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380582529"
     }
   ],
-  "updatedAt": "2026-10-22T08:38:41.405Z",
-  "priorReviewReason": "Gemini returned invalid JSON; preserve candidate"
+  "updatedAt": "2026-10-22T08:39:00.758Z",
+  "priorReviewReason": "Gemini returned invalid JSON; preserve candidate",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "The Great Kanak Revolt of 1878",
+        "pages": [
+          {
+            "text": "The Great Kanak Revolt of 1878 was a major uprising by the Kanak people in New Caledonia. A famous leader of this movement was Ataï, the great chief of Komalé. The Kanak people refer to this historic event as the War of Ataï.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "France declared New Caledonia a French colony in 1853. The administration used a system of conquest that favored alliances and opposed resistance. European settlers began to arrive, and land was taken from the local people to build public wealth and encourage settlement.",
+            "evidenceIds": [
+              "P4",
+              "P5",
+              "P9"
+            ]
+          },
+          {
+            "text": "In 1868, the administration made rules requiring indigenous people to live in specific delimited areas called reserves. These rules stated that indigenous property could not be sold or given away, which caused severe land loss and destabilization for the Kanak population.",
+            "evidenceIds": [
+              "P11"
+            ]
+          },
+          {
+            "text": "The discovery of nickel ore in 1870 started a rush of new settlers and immigrants. At the same time, growing livestock numbers caused problems. Cattle strayed into traditional food crops like yams and taro, destroying local gardens and polluting water reserves and sacred sites.",
+            "evidenceIds": [
+              "P14",
+              "P20",
+              "P21"
+            ]
+          },
+          {
+            "text": "Deep discontent grew among the Melanesians over many years. In 1878, Ataï met with the colonial governor at Teremba. He poured a bag of earth to show what they once had, and then a bag of stones to show what the colonists had left them.",
+            "evidenceIds": [
+              "P6"
+            ]
+          },
+          {
+            "text": "After the conflict, between 1,000 and 1,500 Kanaks were deported to nearby and distant islands. Rebel chiefs were executed without trial during operations, while others faced court-martial. The indigenous population steadily declined in the following decades.",
+            "evidenceIds": [
+              "P7",
+              "P15"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "The 1878 Kanak Revolt and Colonial Context",
+        "pages": [
+          {
+            "text": "The Great Kanak Revolt of 1878 describes the major insurrection of the Kanak people in New Caledonia. The movement was centered around the iconic figure of Ataï, the great chief of Komalé, whom the Kanaks remember in connection with the War of Ataï.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Following European discovery in 1774, New Caledonia was frequented by adventurers and traders before France proclaimed it a colony in 1853. The French administration implemented a conquest legislation that favored political alliances and utilized local rivalries. Governor Eugène du Bouzet subsequently declared all unoccupied land to be property of the French government.",
+            "evidenceIds": [
+              "P2",
+              "P4",
+              "P5"
+            ]
+          },
+          {
+            "text": "To organize the indigenous population, the colonial administration created the legal notion of the tribe in 1867 to enforce collective responsibility. By 1868, authorities required Melanesians to relocate into delimited reserves. These reserves prevented indigenous property from being sold or leased, leading to widespread dispossession.",
+            "evidenceIds": [
+              "P10",
+              "P11"
+            ]
+          },
+          {
+            "text": "The discovery of high-concentration nickel ore in 1870 triggered a nickel rush that brought various immigrant groups to the region. Meanwhile, European agriculture and livestock expanded dramatically. Unenclosed cattle strayed across the landscape, destroying traditional food crops such as yams and taro while polluting springs and sacred sites.",
+            "evidenceIds": [
+              "P14",
+              "P20",
+              "P21"
+            ]
+          },
+          {
+            "text": "Melanesian discontent had been building for years amid growing land dispossessions and conflicts. In 1878, Ataï met with colonial governor Léopold de Pritzbuer at Teremba. In a famous gesture, Ataï poured a bag of earth representing what the Kanaks once held, followed by a bag of stones representing what the colonists had left them.",
+            "evidenceIds": [
+              "P6"
+            ]
+          },
+          {
+            "text": "In the aftermath of the revolt, between 1,000 and 1,500 Kanaks were deported to various islands, including the Île des Pins and Bélep. Most rebel chiefs were executed during military operations without a formal trial, while the indigenous population experienced a significant decline recorded by official censuses.",
+            "evidenceIds": [
+              "P7",
+              "P15"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "Causes and Aftermath of the 1878 Revolt",
+        "pages": [
+          {
+            "text": "The Great Kanak Revolt of 1878 denotes the widespread insurrection staged by the indigenous Kanak population against French colonial rule in New Caledonia. The rebellion is historically anchored by the leadership of Ataï, the great chief of Komalé, and is locally designated as the War of Ataï.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Following initial visits by various maritime operators and missionaries, France proclaimed New Caledonia a colony in 1853. The administration established a framework of conquest that exploited inter-tribal dissensions. Through administrative declarations, the colonial government asserted ownership over unoccupied lands, systematically superseding prior customary agreements.",
+            "evidenceIds": [
+              "P2",
+              "P4",
+              "P5"
+            ]
+          },
+          {
+            "text": "Administrative decrees in 1867 instituted the legal concept of the tribe to enforce collective civic responsibility. By 1868, the administration mandated the confinement of Melanesians within delimited reserves. These designated territories prohibited indigenous property alienation, accelerating structural dispossession and demographic destabilization.",
+            "evidenceIds": [
+              "P10",
+              "P11"
+            ]
+          },
+          {
+            "text": "The 1870 discovery of garnierite initiated a significant nickel rush, diversifying the non-Kanak population through foreign immigration. Concurrently, rapid pastoral expansion led to severe environmental degradation. Unenclosed cattle populations destroyed traditional horticultural crops like yams and taro while simultaneously polluting vital water resources and sacred sites.",
+            "evidenceIds": [
+              "P14",
+              "P20",
+              "P21"
+            ]
+          },
+          {
+            "text": "Decades of systemic land expropriation culminated in the 1878 insurrection. Prior to open conflict, Ataï articulated indigenous grievances to Governor Léopold de Pritzbuer at Teremba by symbolically presenting two bags: one containing earth representing ancestral territorial possession, and another containing stones representing the diminished remnants left by settlers.",
+            "evidenceIds": [
+              "P6",
+              "P26"
+            ]
+          },
+          {
+            "text": "The suppression of the revolt resulted in the penal deportation of 1,000 to 1,500 Kanaks to peripheral islands. Captured rebel chiefs were typically executed summarily during operations without judicial proceedings. Official census data from subsequent decades documented a sharp contraction in the indigenous population.",
+            "evidenceIds": [
+              "P7",
+              "P15"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 3543,
+    "output": 1847,
+    "total": 5390
+  },
+  "validation": null
 }
