@@ -2,9 +2,197 @@
   "pageId": 532503,
   "title": "International Tennis Hall of Fame",
   "topic": "Sports",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1372807133,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1372807133",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-22T06:14:57.574Z"
+  "reason": "3 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:ITHF courtyard - straight on.png",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7d/ITHF_courtyard_-_straight_on.png/960px-ITHF_courtyard_-_straight_on.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:ITHF courtyard - straight on.png",
+        "caption": "The inner courtyard, horseshoe court, and clocktower of the Newport Casino, home to the International Tennis Hall of Fame.",
+        "alt": "",
+        "description": "this is the inner courtyard, horseshoe court, and clocktower of the Newport Casino, home to the International Tennis Hall of Fame.",
+        "date": "2023-06-02",
+        "section": "History",
+        "position": 0,
+        "provenance": {
+          "credit": "NicoFlynn",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:ITHF_courtyard_-_straight_on.png",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/International_Tennis_Hall_of_Fame",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1372807133",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:ITHF Bellevue Entrance.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b9/ITHF_Bellevue_Entrance.jpg/960px-ITHF_Bellevue_Entrance.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:ITHF Bellevue Entrance.jpg",
+        "caption": "Hall of Fame entrance on Bellevue Ave.",
+        "alt": "",
+        "description": "International Tennis Hall of Fame entrance on Bellevue Ave.",
+        "date": "2023-06-02 13:14:09",
+        "section": "Museum",
+        "position": 1,
+        "provenance": {
+          "credit": "NicoFlynn",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:ITHF_Bellevue_Entrance.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/International_Tennis_Hall_of_Fame",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1372807133",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Hall of Famers Gallery at the International Tennis Hall of Fame.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ec/Hall_of_Famers_Gallery_at_the_International_Tennis_Hall_of_Fame.jpg/960px-Hall_of_Famers_Gallery_at_the_International_Tennis_Hall_of_Fame.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Hall of Famers Gallery at the International Tennis Hall of Fame.jpg",
+        "caption": "Hall of Famers Gallery",
+        "alt": "",
+        "description": "Hall of Famers Gallery at the International Tennis Hall of Fame, Newport, Rhode Island",
+        "date": "2025-06-08 15:20:47",
+        "section": "Members",
+        "position": 2,
+        "provenance": {
+          "credit": "Kenneth C. Zirkel",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Hall_of_Famers_Gallery_at_the_International_Tennis_Hall_of_Fame.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/International_Tennis_Hall_of_Fame",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1372807133",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "b4029707c4497bb2a2401ea7a6a001623cd978de890302749f7774d25be22505",
+      "heading": "Lead",
+      "excerpt": "The International Tennis Hall of Fame is located in Newport, Rhode Island, United States. It honors both players and other contributors to t",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1372807133"
+    },
+    {
+      "id": "P2",
+      "hash": "10d598bd8d6b93e965308481306107562b673c2ac75ecb21577dfdc1ed143920",
+      "heading": "Lead",
+      "excerpt": "The location was the original home of the U.S. National Championships (now called the US Open), established in 1881. Since 1976, the complex",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1372807133"
+    },
+    {
+      "id": "P3",
+      "hash": "49f4909175e98710e2762d65cda1155a768c0cd714844aeef660acdc5b69fb74",
+      "heading": "History",
+      "excerpt": "The hall of fame and museum are located in the Newport Casino, which was commissioned in 1879 by James Gordon Bennett Jr. as part of an excl",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1372807133"
+    },
+    {
+      "id": "P4",
+      "hash": "8c1a7f0ff9fa0d4aa4703e66e477ce2084badb3c9c7985a028187cc2e0aceb03",
+      "heading": "History",
+      "excerpt": "The United States Lawn Tennis Association held its first championships at the Newport Casino in 1881. The event was held annually through 19",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1372807133"
+    },
+    {
+      "id": "P5",
+      "hash": "c3f973e0884482b2726ae3f644d0494c856a00abe35394e65da3472cc886bed5",
+      "heading": "History",
+      "excerpt": "But by the 1950s, the retreat was struggling financially, as tourism preferences changed. It was at risk of being demolished for redevelopme",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1372807133"
+    },
+    {
+      "id": "P6",
+      "hash": "77df6f814517851cd9f00c147092b6323786d05ddda19cded6c18cf7d48a3bbd",
+      "heading": "Museum",
+      "excerpt": "The museum chronicles the history of the sport from the 12th century through the modern day. The museum's permanent collection contains appr",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1372807133"
+    },
+    {
+      "id": "P7",
+      "hash": "6d70b7ce683ec9f0004197dbc0ef9acaacc0244a3b85eca23d6d2d292ff0876d",
+      "heading": "2015 renovation",
+      "excerpt": "The museum reopened in May 2015 following a nearly complete renovation of its exhibition spaces. The redesigned and reinterpreted galleries ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1372807133"
+    },
+    {
+      "id": "P8",
+      "hash": "8637b1c24b2a268431d23a5e898e46feaee9cc36b51c63897c8387a4b1c7d0db",
+      "heading": "2025 renovation",
+      "excerpt": "In May 2025, the museum unveiled a new look after an extensive $3 million renovation. Old exhibits were updated, interactive exhibits were a",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1372807133"
+    },
+    {
+      "id": "P9",
+      "hash": "efe087406bae91d527a0f6e672a2713420c68e82871c1449e9d45e69cf605d60",
+      "heading": "Hall of Fame Open",
+      "excerpt": "The Hall of Fame hosts several tournaments, including the Hall of Fame Open in July. The Hall of Fame Open is a part of the US Open Series, ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1372807133"
+    },
+    {
+      "id": "P10",
+      "hash": "453c1edac9a0a99d4f87dcb53a09728cb12703349de27ddb3964229419598f34",
+      "heading": "Members",
+      "excerpt": "Being inducted into the Tennis Hall of Fame is considered the ultimate honor in tennis. It represents the sum of one's achievements and cont",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1372807133"
+    },
+    {
+      "id": "P11",
+      "hash": "b0eb7dd2d0b42e0747ea89fafdf4f450e07408a23436b48df9483df0ee0a1ac8",
+      "heading": "History",
+      "excerpt": "Van Alen intended the facility to be \"a shrine to the ideals of the game\", and was elected president of the hall in 1957. The National Lawn ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1372807133"
+    },
+    {
+      "id": "P12",
+      "hash": "7ba23a105556bf1b4ddbddf66acc92cf98e245f73849009c4103964a0adf47d3",
+      "heading": "History",
+      "excerpt": "In 2015, Martina Hingis was appointed as the first Global Ambassador for the International Tennis Hall of Fame. In 2016, Guga Kuerten was ap",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1372807133"
+    },
+    {
+      "id": "P13",
+      "hash": "9648dafb8d086537535df2a002e17dd95b3982ca3bea74ed59c64c85404d7e4d",
+      "heading": "History",
+      "excerpt": "The current Board of Governors includes former professional tennis players Kim Clijsters (Honorary President), Patrick McEnroe (President), ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1372807133"
+    },
+    {
+      "id": "P14",
+      "hash": "ea4f05a09df7726ff9dd7b608b5152a22e6a724f99c682af8a255a35b12b11aa",
+      "heading": "2015 renovation",
+      "excerpt": "The museum was initially accredited by the American Alliance of Museums in 2013, and subsequently reaccredited in 2022. The museum became a ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1372807133"
+    },
+    {
+      "id": "P15",
+      "hash": "c9597e2e2727cc7266eab939fcc018fe1dccd235c45f3169b9a9cfac9c9c3a1f",
+      "heading": "Members",
+      "excerpt": "There is a seven-step process to be inducted into the Tennis Hall of Fame. A player or contributor must be nominated to be inducted, and the",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1372807133"
+    },
+    {
+      "id": "P16",
+      "hash": "994bbbde523666f31c6ca4d853568d2a6a5317882a8479701dc40f0fd05c0f23",
+      "heading": "Members",
+      "excerpt": "In addition to contributors, players are divided into three categories: Masters Players, Players, and Recent Players. Additionally, Wheelcha",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1372807133"
+    }
+  ],
+  "updatedAt": "2026-10-22T06:15:03.333Z"
 }
