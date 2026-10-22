@@ -2,9 +2,203 @@
   "pageId": 667598,
   "title": "Palace economy",
   "topic": "Economy",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1367562998,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1367562998",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-22T06:15:45.409Z"
+  "reason": "1 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Knossos1.png"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Palast schicht vii.png",
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/d/d3/Palast_schicht_vii.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "fileTitle": "File:Palast schicht vii.png",
+        "caption": "Palace at Alalakh",
+        "alt": "",
+        "description": "Palace of Alalakh (plan), level VII, about 1700 BC; after Wooley, A forgotten Kingdom, London 1953, p. 73, fig. 12",
+        "date": "2008-12-18 13:23:56",
+        "section": "Etymology",
+        "position": 1,
+        "provenance": {
+          "credit": "Udimu",
+          "license": "CC BY 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Palast_schicht_vii.png",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Palace_economy",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1367562998",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "37d5fabeb2509869604b04fb160cc20335f9683576bb76b3fcd8f03c1684530a",
+      "heading": "Lead",
+      "excerpt": "A palace economy or redistribution economy is a system of economic organization in which a substantial share of the wealth flows into the co",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1367562998"
+    },
+    {
+      "id": "P2",
+      "hash": "9740ce3cfaaf8f0590b0b1eeff24458347ced138393b33bb2960e90efbcce223",
+      "heading": "Lead",
+      "excerpt": "The concept of economic distribution is at least as old as the advent of the pharaohs. Anthropologists have noted many such systems, from th",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1367562998"
+    },
+    {
+      "id": "P3",
+      "hash": "0323ef2643f5074872bcc17ea1ed41b74a105054ebc38333df1672cad8bd1b47",
+      "heading": "Lead",
+      "excerpt": "A palace economy is a specific type of distribution system in which the economic activities of the civilization are conducted on or near the",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1367562998"
+    },
+    {
+      "id": "P4",
+      "hash": "020a588fa817030898a0f9b034423933b8f451a2bae68124137e8e4252e8392d",
+      "heading": "Lead",
+      "excerpt": "In ancient palace systems, the producers were typically part of the working capital. From highest to lowest, they were tied to the palace ec",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1367562998"
+    },
+    {
+      "id": "P5",
+      "hash": "92cc2cb0804e177f4a5c1604221e389ee30d512a7f3309f743d33f3fd11a0481",
+      "heading": "Etymology",
+      "excerpt": "The thread leading to the current use of the terms came from the study of the palaces of the Minoan and Mycenaean civilizations, which flour",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1367562998"
+    },
+    {
+      "id": "P6",
+      "hash": "236c1101ce8ed20b894642bf52fe03546781a4a164829177b52e17fd79df394d",
+      "heading": "Middle Minoan Crete",
+      "excerpt": "As early as the Middle Bronze Age, roughly the first half of the 2nd millennium BC, the eastern Mediterranean was dominated by a civilizatio",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1367562998"
+    },
+    {
+      "id": "P7",
+      "hash": "28351badfd53ff84c33a1b68959aa646b17a0d2af1452d626f140a2348a8bf1f",
+      "heading": "Late Minoan Crete",
+      "excerpt": "The economy of the Minoan civilization depended on the cultivation of wheat, olives, grapes and other products and also supported several in",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1367562998"
+    },
+    {
+      "id": "P8",
+      "hash": "16cf041aea7dfd0cd4205718c3550175c9aa1aa7afeade11572d163d3f0d57d3",
+      "heading": "Other locations",
+      "excerpt": "The palace economies in Ancient Egypt, Mesopotamia, Anatolia, and the Levant were waning in the late Bronze Age, being replaced by primitive",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1367562998"
+    },
+    {
+      "id": "P9",
+      "hash": "c56d5ffd6d20d5b6c67136444bbed5bd8488f3f929640365fc9dd70cedfee525",
+      "heading": "Asia",
+      "excerpt": "The mandala model for describing the patterns of diffuse political power in early Southeast Asian history, originated by O. W. Wolters 1982,",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1367562998"
+    },
+    {
+      "id": "P10",
+      "hash": "f0d04c224c87fd17f580d1142b2bcbb03dd9329b5715c88a7169295b2adb0bc2",
+      "heading": "Etymology",
+      "excerpt": "Nor is there any evidence in the tablets of anything approaching currency. Every commodity is listed separately, and there is never any sign",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1367562998"
+    },
+    {
+      "id": "P11",
+      "hash": "a7af5e0b5ac431d52f3895a0a0e03db89c06f6bbc67b874120afd95559040dd5",
+      "heading": "Etymology",
+      "excerpt": "Contemporaneously M. Finley had noticed the evidence of redistribution in the tablets and sought to understand how that could occur in those",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1367562998"
+    },
+    {
+      "id": "P12",
+      "hash": "7178fbece0416b3b03ade883a625529ce8fcb0f074e9aa7217c0dbf333af8b4f",
+      "heading": "Etymology",
+      "excerpt": "All the production work, the seeding and harvesting and milling and weaving, even the hunting and raiding, though carried on by individuals,",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1367562998"
+    },
+    {
+      "id": "P13",
+      "hash": "e76c7f3b3e39660669e1122a39481239180f67d9ee165cab584e0db55aafb895",
+      "heading": "Etymology",
+      "excerpt": "Finley further hypothesized that gift-giving, \"the basic organizing mechanism among many primitive peoples\", had been developed into a syste",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1367562998"
+    },
+    {
+      "id": "P14",
+      "hash": "11d273bb99d2794cbde097ab3aa8854f3dd4d7560aae7c7e9f737737a2562f11",
+      "heading": "Etymology",
+      "excerpt": "The act of giving was ... always the first half of a reciprocal action, the other half of which was a counter-gift.",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1367562998"
+    },
+    {
+      "id": "P15",
+      "hash": "40a4b70ccde49c201508e2f7fdfddf21c393cad5699b3622c318cbb996000f41",
+      "heading": "Etymology",
+      "excerpt": "Finley's observations were immediately and almost universally accepted; however, some reservations developed over the decades since then. My",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1367562998"
+    },
+    {
+      "id": "P16",
+      "hash": "832971475f8b62e1f646ab0430d3a338935ac6d6bbd660ec277609b072746768",
+      "heading": "Etymology",
+      "excerpt": "Like the other archaeologists of the time, Ventris did not use the term palace economy for anything more than the day-to-day economics of th",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1367562998"
+    },
+    {
+      "id": "P17",
+      "hash": "6070607609574994606d19375cb87c475650dae2db941e122a40625c84257766",
+      "heading": "Etymology",
+      "excerpt": "Exactly who was the first is unclear, but the best candidate is Karl Polanyi, the economic typologist, then toward the end of his life and a",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1367562998"
+    },
+    {
+      "id": "P18",
+      "hash": "c23675e04a28aff79696097ea8d1f6ee708d52e398cc82d0e4f8b894b79c8243",
+      "heading": "Etymology",
+      "excerpt": "By 1965, the concept of a palace economy was being applied widely to Aegean and Near and Middle Eastern civilizations of the Late Bronze Age",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1367562998"
+    },
+    {
+      "id": "P19",
+      "hash": "90159a42b568e09f7d692b812fa891a721c11d0e66c542976b18f57d60ef61ee",
+      "heading": "Etymology",
+      "excerpt": "... it is not so clear how small a palace can be ... What we can infer from the palace buildings is that there are administrative centres ..",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1367562998"
+    },
+    {
+      "id": "P20",
+      "hash": "5ddb7ffd2b4ffd9c5ec7be81e01966d60e4c37dd669c9b0aacf075b0fefcb0de",
+      "heading": "Etymology",
+      "excerpt": "This implication that the palace economy model might be simplistic foreshadowed the current trend. Halstead summarizes a forum begun by Naka",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1367562998"
+    },
+    {
+      "id": "P21",
+      "hash": "1b0fada0d2ef4828f0a3e54144d23c607dc5aea7efdd329485f7356ce0feae08",
+      "heading": "Etymology",
+      "excerpt": "The term 'redistribution' has been used with a range of meanings in the context of the Aegean Bronze Age and so obscures rather than illumin",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1367562998"
+    },
+    {
+      "id": "P22",
+      "hash": "d7c1fee6f5070f5b825e1bb3b614547093ab7b64c1900934f62b3916b77c4b8c",
+      "heading": "Middle Minoan Crete",
+      "excerpt": "The evolution of palatial structures, if that is what they were, began on Crete in the Middle Minoan (MM) period of the Middle Bronze Age. T",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1367562998"
+    },
+    {
+      "id": "P23",
+      "hash": "420097664e3ca658fe6096728f0636105d7690d98a12873fba07a9bd93b37479",
+      "heading": "Middle Minoan Crete",
+      "excerpt": "The type of economic system prevailing on Crete and presumably wherever Cretan influence reached is very well documented by hundreds of tabl",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1367562998"
+    }
+  ],
+  "updatedAt": "2026-10-22T06:15:51.289Z"
 }
