@@ -2,9 +2,154 @@
   "pageId": 63418335,
   "title": "Chicanafuturism",
   "topic": "Culture",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1365201916,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1365201916",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-22T13:03:00.059Z"
+  "reason": "1 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Our Lady (Alma Lopez).jpg"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Zapata mural at Chicano Park.JPG",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9d/Zapata_mural_at_Chicano_Park.JPG/960px-Zapata_mural_at_Chicano_Park.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Zapata mural at Chicano Park.JPG",
+        "caption": "Mural pertaining to the Mexican Revolution.",
+        "alt": "",
+        "description": "Image of Emiliano Zapata with English translation of famous quote “Es mejor morir de pie que vivir de rodillas.”",
+        "date": "2012-08-11 08:03:12",
+        "section": "Andrea Ramirez",
+        "position": 1,
+        "provenance": {
+          "credit": "Rpotance",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Zapata_mural_at_Chicano_Park.JPG",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Chicanafuturism",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1365201916",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "1240b32beff42dbe7fd7d284eb941d63558d5908e91a9d2a33e5c0cce63d7276",
+      "heading": "Lead",
+      "excerpt": "The term Chicanafuturism was originated by scholar Catherine S. Ramírez which she introduced in Aztlán: A Journal of Chicano Studies in 2004",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1365201916"
+    },
+    {
+      "id": "P2",
+      "hash": "daf6e947e1008139bad5048cd62625c7e0284b0a75f72a691e81b5e94afd74aa",
+      "heading": "Lead",
+      "excerpt": "Ramírez is \"a scholar of migration, citizenship, race, and gender; Latinx literary, cultural, and visual studies; and Mexican American histo",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1365201916"
+    },
+    {
+      "id": "P3",
+      "hash": "b927a69ba5c2573e3ae300f1be2f1525e086a06bf91f134feda89798b4b304fe",
+      "heading": "Concept/theory",
+      "excerpt": "Chicanafuturism examines the impact that technology and scientific innovation have on Mexican-American life and culture. It explores the use",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1365201916"
+    },
+    {
+      "id": "P4",
+      "hash": "e8392711fe6e1c5c096e5c20788727a5d67a0d9c2b7bc1b91d0eda0f54418350",
+      "heading": "Borderlands",
+      "excerpt": "Chicanafuturism includes the interrogation of the space between the U.S. and Mexico borders, in geopolitical and spiritual terms. Science-fi",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1365201916"
+    },
+    {
+      "id": "P5",
+      "hash": "637055a0f65b41602adc3d50aa0ffb53f52f8ee7e8f4d569c8a1392302dcda29",
+      "heading": "Feminism",
+      "excerpt": "Chicanafuturism is rooted in Chicana feminism and feminist theory, building on the work of Gloria Anzaldúa, Chela Sandoval, and others. This",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1365201916"
+    },
+    {
+      "id": "P6",
+      "hash": "4529b2c11335e117a22a0377ac6af6e3fac0ff102f862f0261ac944f253e1941",
+      "heading": "Afrofuturism",
+      "excerpt": "Chicanafuturism takes influence from Afrofuturism, which creates speculative fiction art forms through the lens of people of African descent",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1365201916"
+    },
+    {
+      "id": "P7",
+      "hash": "09327a1e102ce76dca1e115c8664f17e725f1f3220bd2474d7beaf7d241e35e3",
+      "heading": "Chicano Movement",
+      "excerpt": "The Chicano Movement of the 1960s, also known as the Chicano Civil Rights Movement or El Movimiento, was a civil rights movement extending t",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1365201916"
+    },
+    {
+      "id": "P8",
+      "hash": "1fa2be4af2fe055d898d4921604c27a46064dad73e1883f787d8d6b5e0e3184f",
+      "heading": "Influence from authors and artists",
+      "excerpt": "According to Ramírez, the authors that have had the biggest influence on her understanding of Chicanafuturism and the creation of the concep",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1365201916"
+    },
+    {
+      "id": "P9",
+      "hash": "ab74fcc76af7e85b9df7e519354597bfd6cd33f3716ef02a1f364f9d40554eb1",
+      "heading": "Octavia Butler",
+      "excerpt": "Octavia Butler's fiction works make great use of Afrofuturism and Feminism. Her book Parable of the Sower depicts the struggle of a communit",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1365201916"
+    },
+    {
+      "id": "P10",
+      "hash": "dc548fae03d3f7dce2cee901f90f75e4fdeb2ed96a5959b596134be7b719945b",
+      "heading": "Gloria Anzaldúa",
+      "excerpt": "Gloria Anzaldúa's writing has contributed significantly to feminist, Chicana, and queer theories. In her semi-autobiographical work Borderla",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1365201916"
+    },
+    {
+      "id": "P11",
+      "hash": "4529db82f361fd1a2d39be20b129927fdf297c20b6b16b6065617e9f40f78a8f",
+      "heading": "Marion C. Martinez",
+      "excerpt": "In addition to taking inspiration from Afrofuturism, Chicanafuturism draws from the art of Latina artists such as Marion C. Martinez. Martin",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1365201916"
+    },
+    {
+      "id": "P12",
+      "hash": "6163e3c3373ad390172d000d2cfcd2f8118835f67443cc6de7c11fd9a2c03ecd",
+      "heading": "Amparo Chi",
+      "excerpt": "Chicana artist Amparo Chi drew inspiration from murals by Chicano artists around the Los Angeles, where she was raised. Her work, Semillas d",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1365201916"
+    },
+    {
+      "id": "P13",
+      "hash": "69b9b2d9b24b8cf7ec5ed0e272250e1c3273e50db02ab716a25868a7cc2ae69c",
+      "heading": "Andrea Ramirez",
+      "excerpt": "Andrea Ramirez's artwork, Arbol de la Pura Vida, captures a family tree of sorts that centers around women. She developed her skills in her ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1365201916"
+    },
+    {
+      "id": "P14",
+      "hash": "bc8349216ae4506a7e985c428665b0fa6425acfab0464f57857694daac10cdc3",
+      "heading": "Feminism",
+      "excerpt": "The omission of Chicanas and the masculine-focused foundations of Chicano identity, created a shift in consciousness and a need for more rep",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1365201916"
+    },
+    {
+      "id": "P15",
+      "hash": "d130eda4953058cc7c02f2ec87d02311612189a8c441ba721ded81edfe106f04",
+      "heading": "Afrofuturism",
+      "excerpt": "“Chicanafuturism articulates colonial and postcolonial histories of indigenismo, mestizaje, hegemony, and survival” similarly to how Afrofut",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1365201916"
+    },
+    {
+      "id": "P16",
+      "hash": "0f70b8df2cdb9fb562992549d71b83955e0732017c71a1660e862d7094efa47f",
+      "heading": "Andrea Ramirez",
+      "excerpt": "There are many pieces in her work that are inspired by Otomi and Nahua traditions. The Otomi are Indigenous people that inhabited the centra",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1365201916"
+    }
+  ],
+  "updatedAt": "2026-10-22T13:03:05.615Z"
 }
