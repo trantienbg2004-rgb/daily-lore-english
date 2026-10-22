@@ -8936,10 +8936,10 @@
       "checkedAt": "2026-10-21T07:34:38.173Z"
     },
     "62018441": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
+      "revisionId": 1379680228,
+      "checkedAt": "2026-10-22T12:55:57.015Z"
     },
     "62270764": {
       "status": "PUBLISHED",
@@ -9866,7 +9866,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-22T12:55:50.923Z",
+  "updatedAt": "2026-10-22T12:55:57.015Z",
   "dailyUsage": {
     "day": "2026-10-22",
     "calls": 64,
