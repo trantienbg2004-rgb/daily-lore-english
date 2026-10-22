@@ -2,9 +2,151 @@
   "pageId": 73196367,
   "title": "Celloscope automated cell counter",
   "topic": "Science & Technology",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1316902381,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1316902381",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-22T08:20:02.723Z"
+  "reason": "4 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Celloscop 101 DS.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/da/Celloscop_101_DS.jpg/960px-Celloscop_101_DS.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Celloscop 101 DS.jpg",
+        "caption": "Celloscope 101 counter.",
+        "alt": "",
+        "description": "Celloscope automated cell counter",
+        "date": "2018-09-13",
+        "section": "",
+        "position": 0,
+        "provenance": {
+          "credit": "JNikus",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Celloscop_101_DS.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Celloscope_automated_cell_counter",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1316902381",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Erik Öhlin first blood counter-fix.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4a/Erik_%C3%96hlin_first_blood_counter-fix.jpg/960px-Erik_%C3%96hlin_first_blood_counter-fix.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Erik Öhlin first blood counter-fix.jpg",
+        "caption": "Erik Öhlin, with the Celloscope counter (left) and Swelab AutoCounter (right).",
+        "alt": "",
+        "description": "Engineer Erik Öhlin, founder of Swelab Instrument AB",
+        "date": "2023-03-03",
+        "section": "Successor cell counters",
+        "position": 1,
+        "provenance": {
+          "credit": "JNikus",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Erik_%C3%96hlin_first_blood_counter-fix.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Celloscope_automated_cell_counter",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1316902381",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Medonic CA 480 DS.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/38/Medonic_CA_480_DS.jpg/960px-Medonic_CA_480_DS.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Medonic CA 480 DS.jpg",
+        "caption": "Medonic Cellanalyzer CA 480.",
+        "alt": "",
+        "description": "Medonic Cellanalyzer CA 480",
+        "date": "2018-09-13",
+        "section": "Successor cell counters",
+        "position": 2,
+        "provenance": {
+          "credit": "JNikus",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Medonic_CA_480_DS.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Celloscope_automated_cell_counter",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1316902381",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Swelab AutoCounter 910.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/13/Swelab_AutoCounter_910.jpg/960px-Swelab_AutoCounter_910.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Swelab AutoCounter 910.jpg",
+        "caption": "Swelab AutoCounter 910.",
+        "alt": "",
+        "description": "Swelab AutoCounter 910",
+        "date": "2023-07-12",
+        "section": "Successor cell counters",
+        "position": 3,
+        "provenance": {
+          "credit": "JNikus",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Swelab_AutoCounter_910.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Celloscope_automated_cell_counter",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1316902381",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "24163be648d83faad328d31a58d2b2cbd1519b99c7e3ad464c2daf1d0ed32cbc",
+      "heading": "Lead",
+      "excerpt": "Celloscope automated cell counter was developed in the 1950s for enumeration of erythrocytes, leukocytes, and thrombocytes in blood samples.",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1316902381"
+    },
+    {
+      "id": "P2",
+      "hash": "3332e540e9d79c7730c58b8d9126cbc085012d875de4db9646dac13c208bb21b",
+      "heading": "History",
+      "excerpt": "The Celloscope was developed for the Swedish company AB Lars Ljungberg & Co under the direction of engineer Erik Öhlin at Linson Instrument ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1316902381"
+    },
+    {
+      "id": "P3",
+      "hash": "26809070afc3190a870aba0e53d48def832863fce0291b63a6854c11da1700f3",
+      "heading": "Method principle",
+      "excerpt": "Before the introduction of the first automated cell counters, hematologists were referred to manual cell count under the microscope. The Cel",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1316902381"
+    },
+    {
+      "id": "P4",
+      "hash": "d69672afc47cdc712d852114f1227f9fca68080a4f3532137fb0c0fb7907c0a5",
+      "heading": "Successor cell counters",
+      "excerpt": "The impedance method used in the Celloscope analyzer has been further developed to allow counting also of leukocyte subgroups. In addition t",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1316902381"
+    },
+    {
+      "id": "P5",
+      "hash": "5ceb4b81a33304feceb7a1eb6f74acaf60f2cab3c14c18ebfe2b765cf38f0e30",
+      "heading": "Successor cell counters",
+      "excerpt": "The cell counters of that time used LED screens for result review. In 1982, Medonic AB, another Swedish company with focus on hematology, wa",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1316902381"
+    },
+    {
+      "id": "P6",
+      "hash": "1b514a376cd059f1ec6d5726947c7f74ea791af9beac495582b2a8c2cbfb9acb",
+      "heading": "Successor cell counters",
+      "excerpt": "When Coulter was acquired by Beckman, former Coulter employees Dr. Harold R Crews, Andrew C Swanson, and Donald Grantham founded Clinical Di",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1316902381"
+    }
+  ],
+  "updatedAt": "2026-10-22T08:20:08.516Z"
 }
