@@ -2,10 +2,10 @@
   "pageId": 30432,
   "title": "Treaty",
   "topic": "Conflict & Security",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1375829657,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375829657",
-  "reason": "4 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -265,6 +265,145 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375829657"
     }
   ],
-  "updatedAt": "2026-10-22T08:37:39.696Z",
-  "priorReviewReason": "Gemini returned invalid JSON; preserve candidate"
+  "updatedAt": "2026-10-22T08:37:53.096Z",
+  "priorReviewReason": "Gemini returned invalid JSON; preserve candidate",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "Understanding Treaties",
+        "pages": [
+          {
+            "text": "A treaty is a formal agreement between countries or other groups. It is governed by international law and creates legally binding rules for all the parties that sign it.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Countries have used international agreements for a very long time. Over the years, these rules became more common and helped shape modern diplomacy and foreign policy around the world.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "Treaties are not required to follow any single standard form. Nations apply them to many different subjects, including trade, the environment, human rights, and global security.",
+            "evidenceIds": [
+              "P4"
+            ]
+          },
+          {
+            "text": "Before a treaty becomes fully active, a country often goes through a process of signing and later ratification. This allows nations to implement the rules domestically through local laws.",
+            "evidenceIds": [
+              "P10",
+              "P11"
+            ]
+          },
+          {
+            "text": "Sometimes agreements can be broken or changed, but international rules exist to govern these actions. Treaties help countries resolve disputes and maintain peaceful relations together.",
+            "evidenceIds": [
+              "P2",
+              "P6"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "The Framework of International Treaties",
+        "pages": [
+          {
+            "text": "A treaty is an international agreement between sovereign states or other subjects of international law. To be considered a true treaty, the document must be legally binding on all participating parties.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "International agreements became increasingly common during the early modern era. By the 20th century, the Vienna Convention on the Law of Treaties codified these practices by establishing clear rules for creating, amending, and terminating agreements.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "Treaties differ widely in substance and complexity, covering subjects such as security, trade, and human rights. They also establish governance frameworks for major international institutions like the United Nations.",
+            "evidenceIds": [
+              "P4"
+            ]
+          },
+          {
+            "text": "While a signature can sometimes immediately bind a state, it more commonly authenticates the text while formal consent is subject to future ratification through domestic legislation or executive orders.",
+            "evidenceIds": [
+              "P10",
+              "P11"
+            ]
+          },
+          {
+            "text": "Under international law, treaties must never violate peremptory norms, such as those prohibiting wars of aggression. If a treaty breaches these fundamental standards, it can be rendered entirely unenforceable.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "The United Nations requires treaties to be registered in order to prevent the hidden agreements that historically exacerbated conflicts. When disputes arise, specific panels or courts are often utilized to enforce compliance.",
+            "evidenceIds": [
+              "P5",
+              "P17"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "Codification and Lifecycles of Treaties",
+        "pages": [
+          {
+            "text": "Treaties function as primary sources of international law, binding exclusively those sovereign states and international organizations that have formally signed and ratified them.",
+            "evidenceIds": [
+              "P1",
+              "P3"
+            ]
+          },
+          {
+            "text": "The 20th century marked a definitive shift toward formal codification with the establishment of the Vienna Convention on the Law of Treaties, which regulates the entire lifecycle of international agreements.",
+            "evidenceIds": [
+              "P2",
+              "P6"
+            ]
+          },
+          {
+            "text": "Because treaties lack a prescribed format, states utilize bilateral and multilateral structures to address diverse domains, ranging from environmental protection to institutional governance frameworks.",
+            "evidenceIds": [
+              "P1",
+              "P4"
+            ]
+          },
+          {
+            "text": "The procedural pathway from initial authentication to domestic ratification ensures a deliberate gap before provisions are enacted into municipal law, complemented by tools like reservations and interpretive declarations.",
+            "evidenceIds": [
+              "P10",
+              "P11",
+              "P13",
+              "P14"
+            ]
+          },
+          {
+            "text": "Substantive validity remains strictly conditioned upon adherence to peremptory norms, preventing agreements that permit aggressive warfare or violate foundational principles of international jurisprudence.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "Mandatory treaty registration with the United Nations serves to eradicate the destabilizing proliferation of secret covenants, while specialized judicial bodies handle subsequent dispute resolution and alleged breaches.",
+            "evidenceIds": [
+              "P5",
+              "P17"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2618,
+    "output": 1218,
+    "total": 3836
+  },
+  "validation": null
 }
