@@ -8402,10 +8402,10 @@
       "checkedAt": "2026-10-22T06:18:57.230Z"
     },
     "41241080": {
-      "status": "RETRY_LATER",
-      "reason": "Gemini circuit open",
+      "status": "EVIDENCE_READY",
+      "reason": "12 rights-verified embedded images",
       "revisionId": 1379614259,
-      "checkedAt": "2026-10-21T01:41:06.913Z"
+      "checkedAt": "2026-10-22T08:26:31.467Z"
     },
     "41270742": {
       "status": "PENDING",
@@ -9866,7 +9866,7 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-10-22T08:26:24.250Z",
+  "updatedAt": "2026-10-22T08:26:31.489Z",
   "dailyUsage": {
     "day": "2026-10-22",
     "calls": 14,
