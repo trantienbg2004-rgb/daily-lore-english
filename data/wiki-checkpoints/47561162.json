@@ -2,9 +2,244 @@
   "pageId": 47561162,
   "title": "History of Sulzer diesel engines",
   "topic": "Science & Technology",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1376508385,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376508385",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-22T06:17:45.412Z"
+  "reason": "3 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Dieselmotor 1898.jpg",
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/8/83/Dieselmotor_1898.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "fileTitle": "File:Dieselmotor 1898.jpg",
+        "caption": "Sulzer diesel engine of 1898",
+        "alt": "",
+        "description": "First Diesel engine in 1898",
+        "date": "2011-12-06 13:40:53",
+        "section": "",
+        "position": 0,
+        "provenance": {
+          "credit": "SulzerAG",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Dieselmotor_1898.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/History_of_Sulzer_diesel_engines",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376508385",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Engine at NRM York - DSC07790.JPG",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6d/Engine_at_NRM_York_-_DSC07790.JPG/960px-Engine_at_NRM_York_-_DSC07790.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Engine at NRM York - DSC07790.JPG",
+        "caption": "Sulzer diesel engine from a railway locomotive at the National Railway Museum, York, England",
+        "alt": "",
+        "description": "Partially sectioned Sulzer 6LDA28A diesel engine of 1,160 bhp from a Class 24 locomotive. Photo taken at the National Railway Museum, York.",
+        "date": "2010-08-07",
+        "section": "Rail",
+        "position": 1,
+        "provenance": {
+          "credit": "Rept0n1x",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Engine_at_NRM_York_-_DSC07790.JPG",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/History_of_Sulzer_diesel_engines",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376508385",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:SULZER 9RTA76.JPG"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Sulzer 1D25.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/99/Sulzer_1D25.jpg/960px-Sulzer_1D25.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Sulzer 1D25.jpg",
+        "caption": "Sulzer diesel engine of 1912 at the Internal Fire – Museum of Power in Wales",
+        "alt": "",
+        "description": "1912 blast injection diesel. At the time of uploading, the oldest working Diesel in the UK",
+        "date": "2014-08-21",
+        "section": "Stationary",
+        "position": 3,
+        "provenance": {
+          "credit": "Internal Fire Mueum of Power",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Sulzer_1D25.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/History_of_Sulzer_diesel_engines",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376508385",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "04f9facbe59b6fde6db526a9aa3344d128cb0df8a3a096ee16fec016d6cb4497",
+      "heading": "Lead",
+      "excerpt": "This article covers the History of Sulzer diesel engines from 1898 to 1997. Sulzer Brothers foundry was established in Winterthur, Switzerla",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376508385"
+    },
+    {
+      "id": "P2",
+      "hash": "847629f14d6b81cfd6d88d89404f2e5ce8fde78fc004f1bab95bad5500a2c46e",
+      "heading": "Overview",
+      "excerpt": "Sulzer built diesel engines for stationary, road, rail and marine use. The engine types usually comprise a number, then some letters, then a",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376508385"
+    },
+    {
+      "id": "P3",
+      "hash": "db243ddb6c7881ae04e7f06da20d995d4712f2c8a3a569e5c64012192d6876af",
+      "heading": "Road",
+      "excerpt": "In 1937, Sulzer introduced an opposed piston two-stroke diesel engine for road use. This used a single crank with con-rods operating levers ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376508385"
+    },
+    {
+      "id": "P4",
+      "hash": "66737f4b8d8f7033ec3fd517c68ff672a87224fa786f16d95faf1dba8b90830e",
+      "heading": "Rail",
+      "excerpt": "Sulzer supplied the main and auxiliary engines for a large diesel locomotive built by A. Borsig of Berlin in 1912, the first large locomotiv",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376508385"
+    },
+    {
+      "id": "P5",
+      "hash": "f9ce9971730ed4349e793af19634790f945f0bd49059e05f7feb22109f22e1c1",
+      "heading": "Rail",
+      "excerpt": "Sulzer moved to a range of smaller locomotive engines and including railcars in the 1920s, but in the mid-1930s they came out with their LD ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376508385"
+    },
+    {
+      "id": "P6",
+      "hash": "cd585a350b7d0c570523a6bb140adbed0347098461403914ba23a2037a242628",
+      "heading": "Marine",
+      "excerpt": "Sulzer marine engines were well engineered and so various trials in the early days of oil engines paid dividends. In 1910 there was an icebr",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376508385"
+    },
+    {
+      "id": "P7",
+      "hash": "eaa3741062328e3c568a8be7a5e4371389e2fde35e394c78cb1e00791bf5dd8b",
+      "heading": "Stationary",
+      "excerpt": "While Sulzer was well known for its two-stroke engines, in 1931 there was a brief resume of their four stroke diesel engines which had been ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376508385"
+    },
+    {
+      "id": "P8",
+      "hash": "1ed168d9e1438ec47a13a599a0d15cef6a9557abde1719303265d78233525c65",
+      "heading": "Licences",
+      "excerpt": "Licences to build diesel engines to Sulzer's design were granted to Vickers-Armstrongs, and George Clark of Sunderland (after WW2), Wallsend",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376508385"
+    },
+    {
+      "id": "P9",
+      "hash": "8fccd2475ac945bc2e071458c5a51a8394985f3967ada43baa9fe67922638609",
+      "heading": "Rail",
+      "excerpt": "There was also an LVA range of V-format locomotive engines from 1960. 12LVA24 versions of these engines were installed in D1702-D1706 in the",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376508385"
+    },
+    {
+      "id": "P10",
+      "hash": "f0839820047e8eaef58b9a3a407e985d2c2c858de475b1b8bc92110e705a6efe",
+      "heading": "Marine",
+      "excerpt": "In 1911 the British Admiralty purchased a diesel motor launch they had been evaluating for some time. By Sulzer standards this had a very sm",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376508385"
+    },
+    {
+      "id": "P11",
+      "hash": "1292dcdb58045c7b18148aa3b57503af27db700b585a08587e6cf23e8f7a51f9",
+      "heading": "Marine",
+      "excerpt": "The MV Monte Penedo, Germany's first sea-going motor ship (in 1912), was fitted with two Sulzer 4S47 two-stroke crosshead diesel engines. Th",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376508385"
+    },
+    {
+      "id": "P12",
+      "hash": "de1facea24486c331165082a5163ef22b3509111aeb828fedd0cf9b4e09e2fc1",
+      "heading": "Marine",
+      "excerpt": "The US Navy also chose Sulzer for some of their submarines, following discussions held in Switzerland in 1915, a design for submarines was d",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376508385"
+    },
+    {
+      "id": "P13",
+      "hash": "036e4fed2e330b16ef0c57ceec74f17bea58e46958fc53ef97c1f94906f02bff",
+      "heading": "Marine",
+      "excerpt": "In the mid-1920s Sulzer started to advertise their airless Diesel engines, meaning they were using liquid injection rather than injecting th",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376508385"
+    },
+    {
+      "id": "P14",
+      "hash": "4051ec11a64d3761d7556e0b48b098d5d77c185f84f8bf7c5fb7b39de282961c",
+      "heading": "Marine",
+      "excerpt": "Sulzer's marine engine range in 1969 extended from the 3 cylinder version of the A25 auxiliary engine at 550 bhp to the 12 cylinder 48,000 b",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376508385"
+    },
+    {
+      "id": "P15",
+      "hash": "312f20669af65b2c4715b3e8c186893548f99b40297c218b21bd12c8e7fa980b",
+      "heading": "Marine",
+      "excerpt": "The RD type marine two-stroke cross-head engine ranged from the 5 cylinder 5RD44, to the 12 cylinder 12RD90. This was developed into the RND",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376508385"
+    },
+    {
+      "id": "P16",
+      "hash": "f0532fa9f2dabf045893094af38a44ca0113aa353f37bdb1a092a274de1595e9",
+      "heading": "Marine",
+      "excerpt": "A new marine range of engines in the later 1960s were the Z and ZV range covering 2,600 bhp to 6,600 bhp. These were again two-strokes but i",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376508385"
+    },
+    {
+      "id": "P17",
+      "hash": "14c7e0be7315349ab2ddbbcd1c0454909b84798e9465b790cae8c5cda404cc56",
+      "heading": "Marine",
+      "excerpt": "One Sulzer diesel engine still keeps the 1960 icebreaker Thor III in Drammen, Norway, operational. The icebreaker is at work in January, 202",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376508385"
+    },
+    {
+      "id": "P18",
+      "hash": "a48127db7ba723aca3954677b86a4ede2420b8b3673a262dc7bbd4f2d2422f41",
+      "heading": "Stationary",
+      "excerpt": "At the start of 1912 it was claimed that the largest diesel engines built for stationary work (of 2,000 and 2,400 bhp) were built by Sulzers",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376508385"
+    },
+    {
+      "id": "P19",
+      "hash": "8c709d39dc140f932fc9aae1c06ce707ba32bebac0cd226fced2c5eabf184889",
+      "heading": "Stationary",
+      "excerpt": "Sulzer could provide engines from 550 bhp upwards for electricity generation, pumping plant, and industrial applications. These designs were",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376508385"
+    },
+    {
+      "id": "P20",
+      "hash": "5af705828c28695ec18ef88573c736835e4ea9cf68fc58eeea06d50310f8a6b2",
+      "heading": "Stationary",
+      "excerpt": "The stationary versions of the marine RD and RND crosshead range were designated RF and RNF, but Z engines and the A25/AL25 auxiliary engine",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376508385"
+    },
+    {
+      "id": "P21",
+      "hash": "f330efc5ad0583a6d4b666cf819378d34bfc9d78657750ce6eab15415817871a",
+      "heading": "Stationary",
+      "excerpt": "Examples : Two twin cylinder engines at King Edward Mine, Camborne(http://kingedwardmine.co.uk/) They were originally installed for the Falm",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376508385"
+    },
+    {
+      "id": "P22",
+      "hash": "dbaeda233849f72e99642301c2d53d7eb821e81806861b57792effdcbf6c7c0d",
+      "heading": "Licences",
+      "excerpt": "A new Vickers-Armstrong licence in 1957 also allowed associates of the licensee, Cockatoo Docks and Engineering Co Pty Ltd of Sydney, Austra",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376508385"
+    }
+  ],
+  "updatedAt": "2026-10-22T06:17:51.321Z"
 }
