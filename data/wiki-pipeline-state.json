@@ -9536,10 +9536,10 @@
       "checkedAt": "2026-10-21T03:10:08.630Z"
     },
     "77422677": {
-      "status": "PENDING",
-      "reason": "queued",
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
       "revisionId": 1364169960,
-      "checkedAt": null
+      "checkedAt": "2026-10-22T12:48:18.668Z"
     },
     "77519023": {
       "status": "EVIDENCE_READY",
@@ -9866,7 +9866,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-22T12:48:12.180Z",
+  "updatedAt": "2026-10-22T12:48:18.668Z",
   "dailyUsage": {
     "day": "2026-10-22",
     "calls": 60,
