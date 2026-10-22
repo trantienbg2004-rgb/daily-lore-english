@@ -6848,10 +6848,10 @@
       "checkedAt": "2026-10-22T08:22:56.612Z"
     },
     "1339195": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
+      "revisionId": 1380155200,
+      "checkedAt": "2026-10-22T13:22:36.022Z"
     },
     "1347800": {
       "status": "RETRY_LATER",
@@ -9866,7 +9866,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-22T13:22:29.611Z",
+  "updatedAt": "2026-10-22T13:22:36.030Z",
   "dailyUsage": {
     "day": "2026-10-22",
     "calls": 71,
