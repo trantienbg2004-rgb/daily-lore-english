@@ -2,9 +2,96 @@
   "pageId": 70105459,
   "title": "Cosmic Dust Analyzer",
   "topic": "Science & Technology",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1375950371,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375950371",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-22T06:15:15.393Z"
+  "reason": "1 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Cassini Cosmic Dust Detector, CDA.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/ba/Cassini_Cosmic_Dust_Detector%2C_CDA.jpg/960px-Cassini_Cosmic_Dust_Detector%2C_CDA.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Cassini Cosmic Dust Detector, CDA.jpg",
+        "caption": "Cassini Cosmic Dust Detector, CDA",
+        "alt": "",
+        "description": "Cassini Cosmic Dust Detector, CDA",
+        "date": "2004-06-14",
+        "section": "",
+        "position": 0,
+        "provenance": {
+          "credit": "Dusteg",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Cassini_Cosmic_Dust_Detector,_CDA.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Cosmic_Dust_Analyzer",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375950371",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:CDA CAT3.gif"
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Cassini SC43713.gif"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "9bf7490cba33a26bffbffd13eb8ed1222c014cac2d475667ec7d609a507cab5f",
+      "heading": "Lead",
+      "excerpt": "The Cosmic Dust Analyzer (CDA) was a large-area (0.1 m total sensitive area) multi-sensor dust instrument included on the Cassini spacecraft",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375950371"
+    },
+    {
+      "id": "P2",
+      "hash": "7f297f41573a2f52eec70fb9d64ddcc4a1eeb76cc5684d4ebf2b39b1831bffca",
+      "heading": "Overview",
+      "excerpt": "The Cosmic Dust Analyzer was the seventh dust instrument from the Max Planck Institute for Nuclear Physics (MPIK), Heidelberg (Germany) foll",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375950371"
+    },
+    {
+      "id": "P3",
+      "hash": "300b72b2033cd160021f40d9ecc9c1bdee0d7483558bd40634aa9265a398bfc0",
+      "heading": "Overview",
+      "excerpt": "The main sensor of CDA was an impact ionization detector (IID), similar to the Galileo and Ulysses Dust Detectors. The center of the hemisph",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375950371"
+    },
+    {
+      "id": "P4",
+      "hash": "3ab196d5989fe75cc301e9e6f5c604e5b22f3b2097fc05d7110208876c06a843",
+      "heading": "Overview",
+      "excerpt": "CDA measured the micrometeoroid environment for 18 years, from 1999 until the last active seconds of Cassini in 2017 without major degradati",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375950371"
+    },
+    {
+      "id": "P5",
+      "hash": "26112528cfedfa6fa3f21401264f53ba78f5bf0633e41648978803378522371d",
+      "heading": "Overview",
+      "excerpt": "The Cassini spacecraft was a three-axes stabilized spacecraft with the antenna occasionally pointing to Earth in order to download data and ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375950371"
+    },
+    {
+      "id": "P6",
+      "hash": "9f949174e55e7a3249d0cf6ca8e532160a1ef56e1680054f3ea48ff03dd5be7c",
+      "heading": "During interplanetary cruise",
+      "excerpt": "From launch in 1997 until arrival at Saturn in 2004, Cassini–Huygens cruised interplanetary space from 0.7 to 10 AU. During this time there ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375950371"
+    },
+    {
+      "id": "P7",
+      "hash": "47d6acee94d19e28f7c9a11c131d3ece44bad76038fdfa912c39bf23065ed731",
+      "heading": "In Saturn orbit",
+      "excerpt": "During Cassini’s 292 orbits around Saturn (2004 to 2017) CDA measured several million dust impacts that characterize dust mostly in Saturn’s",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375950371"
+    }
+  ],
+  "updatedAt": "2026-10-22T06:15:21.189Z"
 }

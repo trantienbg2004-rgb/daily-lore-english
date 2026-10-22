@@ -9218,10 +9218,10 @@
       "checkedAt": "2026-10-21T07:34:10.191Z"
     },
     "70105459": {
-      "status": "FETCHED",
-      "reason": "pinned-source-ready",
+      "status": "EVIDENCE_READY",
+      "reason": "1 rights-verified embedded images",
       "revisionId": 1375950371,
-      "checkedAt": "2026-10-22T06:15:15.393Z"
+      "checkedAt": "2026-10-22T06:15:21.187Z"
     },
     "70131321": {
       "status": "PENDING",
@@ -9866,7 +9866,7 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-10-22T06:15:15.394Z",
+  "updatedAt": "2026-10-22T06:15:21.189Z",
   "dailyUsage": {
     "day": "2026-10-22",
     "calls": 8,
