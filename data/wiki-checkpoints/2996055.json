@@ -2,10 +2,10 @@
   "pageId": 2996055,
   "title": "Anti-nuclear movement",
   "topic": "Society",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1374442712,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374442712",
-  "reason": "17 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -544,6 +544,140 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374442712"
     }
   ],
-  "updatedAt": "2026-10-22T08:36:34.852Z",
-  "priorReviewReason": "Gemini returned invalid JSON; preserve candidate"
+  "updatedAt": "2026-10-22T08:36:48.245Z",
+  "priorReviewReason": "Gemini returned invalid JSON; preserve candidate",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "The Anti-Nuclear Movement",
+        "pages": [
+          {
+            "text": "The anti-nuclear movement is a social group. It works to stop nuclear technology. People in this movement include environmental groups and direct action groups. Some groups only want to stop nuclear weapons. Other groups want to stop both nuclear weapons and nuclear power plants.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "People have talked about nuclear weapons policy for a long time. Scientists and diplomats debated this topic even before the atomic bombings in 1945. Later, many people became worried about nuclear testing. In 1963, many countries agreed to stop testing nuclear weapons in the atmosphere.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "Opposition to nuclear power started to grow in the 1960s. In the early 1970s, people held large protests against a planned power plant in Germany. The project was cancelled in 1975. This success inspired more protests against nuclear power in Europe and North America.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "Many large protests happened over the years. In 1977, thousands of people protested in Spain. In 1982, one million people marched in New York City against nuclear weapons. After the Chernobyl disaster in 1986, people also marched in Rome to protest the Italian nuclear program.",
+            "evidenceIds": [
+              "P4"
+            ]
+          },
+          {
+            "text": "For many years after the Chernobyl disaster, nuclear power was less popular. Later, some countries started talking about nuclear power again. Then, the 2011 Fukushima accident happened. This new accident brought back strong opposition to nuclear power in many countries around the world.",
+            "evidenceIds": [
+              "P5"
+            ]
+          },
+          {
+            "text": "Anti-nuclear groups suggest other ways to get energy. They say people should use energy more carefully. They also support using renewable energy sources like sunlight and wind. These natural energy flows can help reduce our reliance on nuclear power and other fossil fuels.",
+            "evidenceIds": [
+              "P11"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "History of the Anti-Nuclear Movement",
+        "pages": [
+          {
+            "text": "The anti-nuclear movement is a global social movement that opposes various nuclear technologies. Environmental movements, professional organisations, and direct action groups participate at local, national, and international levels. While the initial objective was nuclear disarmament, opposition expanded since the late 1960s to include nuclear power as well.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Scientists and diplomats debated nuclear weapons policy prior to the 1945 atomic bombings of Hiroshima and Nagasaki. Public concern regarding nuclear weapons testing grew around 1954 following the Castle Bravo disaster. Consequently, many countries ratified the Partial Test Ban Treaty in 1963, prohibiting atmospheric nuclear testing.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "Local opposition to nuclear power emerged in the early 1960s. Large protests arose in the early 1970s against the proposed Wyhl Nuclear Power Plant in southern Germany. The project was cancelled in 1975, and this success inspired similar opposition across Europe and North America. Public protest became a major force during this decade.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "Massive demonstrations occurred globally over the following decades. In 1979, a protest in New York City drew 200,000 people after the Three Mile Island accident. The largest demonstration took place on June 12, 1982, when one million people protested against nuclear weapons in New York City. Following the 1986 Chernobyl disaster, up to 200,000 people marched in Rome.",
+            "evidenceIds": [
+              "P4"
+            ]
+          },
+          {
+            "text": "After the 1986 Chernobyl disaster, nuclear power disappeared from many policy agendas. However, discussions revived in the 2000s due to climate concerns and nuclear industry public relations. The 2011 Fukushima nuclear accident subsequently undermined proposed industry revivals and renewed global opposition, leading several nations to phase out nuclear power entirely.",
+            "evidenceIds": [
+              "P5"
+            ]
+          },
+          {
+            "text": "Anti-nuclear groups argue that reliance on nuclear energy can be reduced through energy conservation and efficiency measures. Furthermore, they advocate for transitioning to renewable energy sources. These alternatives involve natural phenomena such as sunlight, wind, tides, plant growth, and geothermal heat to sustainably power society without nuclear risks.",
+            "evidenceIds": [
+              "P11"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "The Global Anti-Nuclear Movement",
+        "pages": [
+          {
+            "text": "The anti-nuclear movement encompasses a diverse coalition of direct action groups, environmental movements, and professional organizations operating across local, national, and international spheres. Although the foundational objective centered on nuclear disarmament, the scope broadened significantly since the late 1960s to incorporate staunch opposition to commercial nuclear power generation.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Deliberations surrounding nuclear weapons policy among scientists and diplomats predate the 1945 atomic bombings of Hiroshima and Nagasaki. Public apprehension escalated substantially around 1954 in the wake of extensive testing, most notably the Castle Bravo disaster. This pressure culminated in the 1963 ratification of the Partial Test Ban Treaty, which successfully prohibited atmospheric nuclear testing.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "Initial localized resistance to nuclear power materialized during the early 1960s, followed by scientific concerns later in the decade. The cancellation of the proposed Wyhl Nuclear Power Plant in southern Germany in 1975 catalyzed widespread anti-nuclear sentiment, establishing a blueprint for successful civic resistance that rapidly diffused throughout Europe and North America.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "Throughout the late 1970s and 1980s, public mobilization reached unprecedented scales. Notable demonstrations included a 1979 protest in New York City following the Three Mile Island accident, a historic gathering of one million protesters against nuclear weapons in 1982, and substantial marches in Rome following the 1986 Chernobyl disaster. Public opposition directly preceded the decommissioning of several prominent nuclear facilities.",
+            "evidenceIds": [
+              "P4"
+            ]
+          },
+          {
+            "text": "In the aftermath of the 1986 Chernobyl catastrophe, nuclear energy largely receded from active policy discourse. Nevertheless, the 2000s witnessed a resurgence in pro-nuclear advocacy driven by climate change mitigation arguments and reactor design advancements. The 2011 Fukushima nuclear accident severely disrupted these renaissance ambitions, reinvigorating global opposition and prompting several governments to initiate nuclear phase-out policies.",
+            "evidenceIds": [
+              "P5"
+            ]
+          },
+          {
+            "text": "To mitigate reliance on nuclear technology, anti-nuclear organizations persistently advocate for rigorous energy conservation and efficiency protocols. Additionally, they champion the accelerated adoption of renewable energy flows, harnessing natural phenomena such as solar, wind, tidal, geothermal, and biomass resources to secure sustainable energy alternatives.",
+            "evidenceIds": [
+              "P11"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2797,
+    "output": 1416,
+    "total": 4213
+  },
+  "validation": null
 }
