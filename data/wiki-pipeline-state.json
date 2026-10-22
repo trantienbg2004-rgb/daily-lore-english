@@ -6680,10 +6680,10 @@
       "checkedAt": "2026-10-21T03:10:56.146Z"
     },
     "667057": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
+      "revisionId": 1380758348,
+      "checkedAt": "2026-10-22T08:22:15.041Z"
     },
     "667598": {
       "status": "RETRY_LATER",
@@ -9866,7 +9866,7 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-10-22T08:22:08.534Z",
+  "updatedAt": "2026-10-22T08:22:15.045Z",
   "dailyUsage": {
     "day": "2026-10-22",
     "calls": 9,
