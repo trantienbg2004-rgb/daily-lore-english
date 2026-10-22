@@ -6650,10 +6650,10 @@
       "checkedAt": "2026-10-21T07:56:29.439Z"
     },
     "650360": {
-      "status": "EVIDENCE_READY",
-      "reason": "3 rights-verified embedded images",
+      "status": "NEEDS_REVIEW",
+      "reason": "Gemini returned invalid JSON; preserve candidate",
       "revisionId": 1373879238,
-      "checkedAt": "2026-10-22T06:12:28.495Z"
+      "checkedAt": "2026-10-22T06:12:49.945Z"
     },
     "650906": {
       "status": "EVIDENCE_READY",
@@ -9866,7 +9866,7 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-10-22T06:12:48.793Z",
+  "updatedAt": "2026-10-22T06:12:49.946Z",
   "dailyUsage": {
     "day": "2026-10-22",
     "calls": 5,
