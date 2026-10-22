@@ -2,10 +2,10 @@
   "pageId": 7656679,
   "title": "History of chiropractic",
   "topic": "Health",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1379369211,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379369211",
-  "reason": "2 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REJECTED",
@@ -174,7 +174,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379369211"
     }
   ],
-  "updatedAt": "2026-10-22T12:59:28.090Z",
+  "updatedAt": "2026-10-22T12:59:47.444Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -249,9 +249,9 @@
             ]
           },
           {
-            "text": "To counter these prosecutions, chiropractors launched political campaigns to secure independent licensing statutes. Their efforts eventually succeeded across all fifty states, culminating with Louisiana in 1974.",
+            "text": "Joint manipulation has ancient roots globally. The Edwin Smith papyrus (1552 BC) describes Egyptian bone-setting for injuries. By the 18th century, bone-setters were recognized for efficiency, though they lacked the status of physicians. Famous practitioners like Sally Mapp treated many, as they were more affordable than licensed doctors, often serving those whom court physicians could not help.",
             "evidenceIds": [
-              "P4"
+              "P5"
             ]
           },
           {
@@ -307,11 +307,11 @@
       }
     }
   },
-  "repairAttempts": 1,
+  "repairAttempts": 2,
   "lastUsage": {
-    "input": 3170,
-    "output": 508,
-    "total": 3678
+    "input": 2594,
+    "output": 145,
+    "total": 2739
   },
   "validation": null
 }
