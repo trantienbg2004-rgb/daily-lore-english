@@ -5,7 +5,7 @@
   "status": "EVIDENCE_READY",
   "revisionId": 1380582529,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380582529",
-  "reason": "retry generation with structured JSON",
+  "reason": "2 rights-verified embedded images",
   "rights": [
     {
       "status": "REJECTED",
@@ -245,6 +245,6 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380582529"
     }
   ],
-  "updatedAt": "2026-10-22T08:34:32.460Z",
+  "updatedAt": "2026-10-22T08:38:41.405Z",
   "priorReviewReason": "Gemini returned invalid JSON; preserve candidate"
 }
