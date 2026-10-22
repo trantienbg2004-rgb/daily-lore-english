@@ -2,9 +2,114 @@
   "pageId": 77422677,
   "title": "EU Regulation on Deforestation-free products",
   "topic": "Environment",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1364169960,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1364169960",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-22T12:48:18.668Z"
+  "reason": "1 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:DSC 0316 (4074824326).jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/09/DSC_0316_%284074824326%29.jpg/960px-DSC_0316_%284074824326%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:DSC 0316 (4074824326).jpg",
+        "caption": "Palm oil plantation in Malaysia",
+        "alt": "Aerial view of a palm oil plantation in Malaysia, showing oil plants and a processing plant",
+        "description": "DSC_0316",
+        "date": "2009-10-19 11:16",
+        "section": "WTO cases",
+        "position": 0,
+        "provenance": {
+          "credit": "Marufish from Alor Setar, Malaysia",
+          "license": "CC BY-SA 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:DSC_0316_(4074824326).jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/EU_Regulation_on_Deforestation-free_products",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1364169960",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "f91b2aa81bb756f2b5dad9351edaf04d3c8de1b8bdf572f58a01969024282e54",
+      "heading": "Lead",
+      "excerpt": "The EU Regulation on Deforestation-free products (Regulation (EU) 2023/1115, abbreviated EUDR) is a European Union regulation on deforestati",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1364169960"
+    },
+    {
+      "id": "P2",
+      "hash": "173de7381e213348a0c14c3f91e9296f49f6b74e29fbcfa1da2fb6b247a0997a",
+      "heading": "Lead",
+      "excerpt": "The EUDR is a part of a bigger set of EU policies aimed at fighting climate change and biodiversity reduction, as codified in the European G",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1364169960"
+    },
+    {
+      "id": "P3",
+      "hash": "e2fbe8cbe09051a2cd19afe5fcff921f888f8ad8bd2f6c924e2849a12dd6da48",
+      "heading": "Lead",
+      "excerpt": "The regulation applies to operators who either place on the EU market or export from it, a specific set of commodities or products: palm oil",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1364169960"
+    },
+    {
+      "id": "P4",
+      "hash": "1f46c1b342e96a2385935733844fc13ae51cdb8b0e88484e3e9488b61e4be467",
+      "heading": "Lead",
+      "excerpt": "Reception of the regulation has been mixed. The Economist listed it as one of their top 5 sustainability wins for 2023. The New York Times r",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1364169960"
+    },
+    {
+      "id": "P5",
+      "hash": "6303f92fbb6b6d3fe084c94773f5e545e1186e2d991617ad6c28522e3ee3fda2",
+      "heading": "Lead",
+      "excerpt": "At the same time, the EUDR’s advocates claimed that even before implementation, it was having a positive impact. In the Financial Times, Nad",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1364169960"
+    },
+    {
+      "id": "P6",
+      "hash": "551ab6fe20b4bf6040eae5d18cd4f03725e563366300d4e57eea390323808f2c",
+      "heading": "WTO cases",
+      "excerpt": "Malaysia and Indonesia filed complaints against the EU at the World Trade Organization (WTO), claiming the EUDR to be discriminatory. The WT",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1364169960"
+    },
+    {
+      "id": "P7",
+      "hash": "e2e6d989c7c3f6946bdd5f506a0e61d30c1ac907a1c5502d59e02977ab914ebc",
+      "heading": "Lead",
+      "excerpt": "In October 2024, Following pressure from global partners and stakeholders about the imminent entry into effect of the regulation the Europea",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1364169960"
+    },
+    {
+      "id": "P8",
+      "hash": "8787e03ab9b50189db2bdba43d6bc342707feeba809a6b768c19fd31a39eb177",
+      "heading": "Lead",
+      "excerpt": "The regulation’s obligations apply from 30 December 2025 for large operators and traders, and from 30 June 2026 for micro and small enterpri",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1364169960"
+    },
+    {
+      "id": "P9",
+      "hash": "5d96ac4e9d6c47b85947d883e0f6b61fb97208e1425b9fd655ec44afe0d2f7b2",
+      "heading": "Lead",
+      "excerpt": "By 26th of November 2025 the EUDR was again postponed and decision of simplification was made. On May 3, 2026, the European Commission publi",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1364169960"
+    },
+    {
+      "id": "P10",
+      "hash": "e08c2680bf64fd2a34f1f2f687cdf152ec35d94c61079b4b578dec47e6237ee2",
+      "heading": "Lead",
+      "excerpt": "In a joint statement, COCERAL, FEDIOL and FEFAC, bodies representing European food and feed groups, said that the “simplification package do",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1364169960"
+    },
+    {
+      "id": "P11",
+      "hash": "47b32b9b6e7db33c63b7a4cb5f166cdc67bbec127174c5fbc42bb8fb04eb00e1",
+      "heading": "WTO cases",
+      "excerpt": "Indonesia's complaint, about biodiesel, was filed in August 2023 and retracted one day before the verdict in Malaysia’s case was published. ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1364169960"
+    }
+  ],
+  "updatedAt": "2026-10-22T12:48:24.362Z"
 }
