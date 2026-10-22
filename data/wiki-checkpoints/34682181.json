@@ -2,9 +2,136 @@
   "pageId": 34682181,
   "title": "Kostis Maraveyas",
   "topic": "Culture",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1376209947,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376209947",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-22T13:07:34.627Z"
+  "reason": "2 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Maraveyas-ilegal prix-europa000031 s11.jpg"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Maraveyas Mesogeios.jpg",
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/3/3c/Maraveyas_Mesogeios.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "fileTitle": "File:Maraveyas Mesogeios.jpg",
+        "caption": "Maraveyas as host of \"Mesogeios\"",
+        "alt": "",
+        "description": "Maraveyas as host of the music documentary \"Mesogeios\"",
+        "date": "2012-02-10",
+        "section": "Biography",
+        "position": 1,
+        "provenance": {
+          "credit": "Kosmarv",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Maraveyas_Mesogeios.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Kostis_Maraveyas",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376209947",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Mouzourakis Maraveyas at TIF 2026.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5d/Mouzourakis_Maraveyas_at_TIF_2026.jpg/960px-Mouzourakis_Maraveyas_at_TIF_2026.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Mouzourakis Maraveyas at TIF 2026.jpg",
+        "caption": "Maraveyas performing with Panos Mouzourakis in 2026.",
+        "alt": "",
+        "description": "Panos Mouzourakis and Kostis Maraveyas performing during the Thessaloniki International Fair 2026",
+        "date": "2026-09-08 21:16:15",
+        "section": "Biography",
+        "position": 2,
+        "provenance": {
+          "credit": "User:Kongr43gpen",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Mouzourakis_Maraveyas_at_TIF_2026.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Kostis_Maraveyas",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376209947",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "b57426fe60ca7ed0e2c0844e69d09580377a0204c23c567d604488eee2e21647",
+      "heading": "Lead",
+      "excerpt": "Kostis Maraveyas or Kostis Maravegias (Greek: Κωστής Μαραβέγιας), also known by his stage name Maraveyas ilegál or just Maraveyas, is a Gree",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376209947"
+    },
+    {
+      "id": "P2",
+      "hash": "bfa3b44212149634b5bde2e7136de68f9310c98f82d4cd6320e7655bf68a10c2",
+      "heading": "Lead",
+      "excerpt": "From 2017 to 2019 he has been one of the four judges of the TV show The Voice of Greece, winning all three seasons with his team.",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376209947"
+    },
+    {
+      "id": "P3",
+      "hash": "953ab3e994a5d133ad25016b5ca0c8543524fc2188d0d9bd706365c288612296",
+      "heading": "Biography",
+      "excerpt": "Maraveyas began his musical career in Italy where he studied Statistics and Mathematics at the University of Bari, as well as piano, harmony",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376209947"
+    },
+    {
+      "id": "P4",
+      "hash": "01952b491e282c5e56fa0564915df9e9f0d362f17a1c04aeaf02fff961b378a5",
+      "heading": "Biography",
+      "excerpt": "In 2010 Maraveyas performed during the opening night of Prix Europa organized by RBB in the Großen Sendesaal of RBB in Berlin, an annual Eur",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376209947"
+    },
+    {
+      "id": "P5",
+      "hash": "baa10e64226d0382cbc614dc8e1854a764e0aa3114dd133d8ca75323a21122e5",
+      "heading": "Biography",
+      "excerpt": "His digital single \"Fila Me Akoma\" featuring Panos Mouzourakis, the Greek cover version of Lorenzo Jovanotti's \"Baciami Ancora\", has won 2 M",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376209947"
+    },
+    {
+      "id": "P6",
+      "hash": "fc9a15da05b3586f45ace642c2935fe5949843e8958e6df70206f60ecb362149",
+      "heading": "Biography",
+      "excerpt": "Maraveyas served as the host of the music documentary \"Mesogeios\" (\"Mediterranean\"), for the 2011/2012 television season, a production by Pa",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376209947"
+    },
+    {
+      "id": "P7",
+      "hash": "7c425c85349eb9d1bf5f8384302ca7a6c2c3e2c6dc61dad34515d2403756339f",
+      "heading": "Biography",
+      "excerpt": "In March 2012, Maraveyas published his first novel \"Lola\", which was released by Metaichmio editions as a part of a CD with the same title. ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376209947"
+    },
+    {
+      "id": "P8",
+      "hash": "f0f92771ccff265626e847b3f9f46f73357ac21a434970284828f884a6615882",
+      "heading": "Biography",
+      "excerpt": "In 2014 he wrote and directed 12 episodes of the music documentary series \"Mousiki Pantou\" (Greek: Μουσική Παντού) which was transmitted on ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376209947"
+    },
+    {
+      "id": "P9",
+      "hash": "777a5e12a2e7d9349667499c827c28a1034528c8304742d68c1b2a10012748a5",
+      "heading": "Biography",
+      "excerpt": "In May 2016, he participated as a singer-songwriter in the French film \"Voir du pays\" which was awarded at the 69th edition of the Cannes Fi",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376209947"
+    },
+    {
+      "id": "P10",
+      "hash": "d8d92baedde56ec6cbb2142887ed089e0fc5aa44363211965823f875b96e2a37",
+      "heading": "Biography",
+      "excerpt": "From 2017 to 2019 he has been one of the four judges of the Greek version of the TV show The Voice (franchise), winning all three seasons wi",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376209947"
+    }
+  ],
+  "updatedAt": "2026-10-22T13:07:40.234Z"
 }
