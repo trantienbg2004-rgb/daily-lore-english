@@ -60,6 +60,61 @@ test('a second embedded licensed image appears on its relevant later page',()=>{
  }
 })
 
+test('a licensed source cover can introduce a detail explained on a later page',()=>{
+ const cover={...figure,fileTitle:'File:Silk Road caravan.jpg',caption:'Caravan trade routes across Central Asia',
+  alt:'Caravans on trade routes',position:0}
+ const coverPage=structuredClone(page)
+ coverPage.title=cover.fileTitle
+ const variants=structuredClone(levels)
+ for(const variant of Object.values(variants)){
+  variant.pages[0].text='Merchants connected distant places through exchange over many centuries.'
+  variant.pages[1].text='Caravans followed trade routes across Central Asia.'
+ }
+ const assigned=assignWikipediaPhotos([verifyEmbeddedImage(cover,coverPage)],{...source,figures:[cover]},variants)
+ assert.equal(assigned.status,'VERIFIED')
+ assert.equal(assigned.photos[0].pageIndex,0)
+ for(const variant of Object.values(assigned.levelVariants)){
+  assert.equal(variant.pages[0].image,coverPage.imageinfo[0].thumburl)
+  assert.equal(variant.pages[0].imageProvenance.evidence.pageIndex,0)
+  assert.equal(variant.pages[1].image,'')
+ }
+})
+
+test('a relevant licensed image on a later page permits a text-only introduction',()=>{
+ const later={...figure,fileTitle:'File:Caravan routes.jpg',
+  caption:'Caravan trade routes across Central Asia',alt:'Caravans on trade routes',position:2}
+ const laterPage=structuredClone(page)
+ laterPage.title=later.fileTitle
+ laterPage.imageinfo[0].thumburl='https://thumb.wikimedia.org/wikipedia/commons/thumb/caravans.jpg'
+ laterPage.imageinfo[0].descriptionurl='https://commons.wikimedia.org/wiki/File:Caravan_routes.jpg'
+ const variants=structuredClone(levels)
+ for(const variant of Object.values(variants))variant.pages[1].text='Caravans followed trade routes across Central Asia.'
+ const assigned=assignWikipediaPhotos([verifyEmbeddedImage(later,laterPage)],
+  {...source,figures:[figure,later]},variants)
+ assert.equal(assigned.status,'VERIFIED')
+ assert.equal(assigned.photos.length,1)
+ for(const variant of Object.values(assigned.levelVariants)){
+  assert.equal(variant.pages[0].image,'')
+  assert.equal(variant.pages[1].image,laterPage.imageinfo[0].thumburl)
+  assert.equal(variant.pages[1].imageProvenance.evidence.pageIndex,1)
+ }
+})
+
+test('a named place shared by all reading levels supports a later map',()=>{
+ const map={...figure,fileTitle:'File:Ukraine map.jpg',caption:'Regions of Ukraine annexed by Russia in 2022',
+  alt:'Map of Ukraine',position:2}
+ const mapPage=structuredClone(page)
+ mapPage.title=map.fileTitle
+ const variants=structuredClone(levels)
+ for(const variant of Object.values(variants))variant.pages[4].text='Russia occupied parts of Ukraine.'
+ const assigned=assignWikipediaPhotos([verifyEmbeddedImage(map,mapPage)],{...source,figures:[map]},variants)
+ assert.equal(assigned.status,'VERIFIED')
+ assert.equal(assigned.photos[0].pageIndex,4)
+ const unrelated=structuredClone(variants)
+ unrelated['C1-C2'].pages[4].text='Russia expanded elsewhere.'
+ assert.equal(assignWikipediaPhotos([verifyEmbeddedImage(map,mapPage)],{...source,figures:[map]},unrelated).status,'REVIEW')
+})
+
 test('same place, unrelated object, wrong chart period and reused URL stay unapproved',()=>{
  const city={...figure,fileTitle:'File:Silk Road city skyline.jpg',caption:'Skyline of a modern city',alt:'Modern skyline'}
  const cityPage=structuredClone(page);cityPage.title=city.fileTitle
