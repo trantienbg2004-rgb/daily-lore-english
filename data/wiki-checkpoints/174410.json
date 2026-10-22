@@ -458,7 +458,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380728957"
     }
   ],
-  "updatedAt": "2026-10-22T06:13:15.047Z",
+  "updatedAt": "2026-10-22T06:13:33.153Z",
   "draft": {
     "outline": [
       "Introduction to the armillary sphere",
@@ -567,7 +567,7 @@
             ]
           },
           {
-            "text": "Cross-cultural refinement characterized its medieval trajectory. Islamic astronomers advanced its construction, while Indian treatises documented equatorial coordinate adaptations that contrasted with Greek ecliptical models. In East Asia, Korean artisans like Chang Yŏngsil engineered complex instruments such as the 1433 Honcheonui under royal directives.",
+            "text": "Cross-cultural refinement characterized its medieval trajectory. Islamic astronomers advanced its construction, while Indian treatises documented equatorial coordinate adaptations that contrasted with Greek ecliptical models. In East Asia, Korean artisans like Chang Yŏngsil engineered complex instruments such as the Honcheonui under royal directives.",
             "evidenceIds": [
               "P7",
               "P9",
@@ -594,11 +594,11 @@
       }
     }
   },
-  "repairAttempts": 0,
+  "repairAttempts": 1,
   "lastUsage": {
-    "input": 2752,
-    "output": 1533,
-    "total": 4285
+    "input": 2902,
+    "output": 134,
+    "total": 3036
   },
   "validation": null
 }
