@@ -7916,10 +7916,10 @@
       "checkedAt": "2026-10-21T07:34:24.223Z"
     },
     "22057774": {
-      "status": "PENDING",
-      "reason": "queued",
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
       "revisionId": 1378735555,
-      "checkedAt": null
+      "checkedAt": "2026-10-22T09:07:23.053Z"
     },
     "22311897": {
       "status": "RETRY_LATER",
@@ -9866,7 +9866,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-22T09:07:16.757Z",
+  "updatedAt": "2026-10-22T09:07:23.054Z",
   "dailyUsage": {
     "day": "2026-10-22",
     "calls": 47,
