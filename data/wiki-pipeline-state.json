@@ -6896,10 +6896,10 @@
       "checkedAt": "2026-10-22T08:31:30.908Z"
     },
     "1568911": {
-      "status": "FETCHED",
-      "reason": "pinned-source-ready",
+      "status": "EVIDENCE_READY",
+      "reason": "2 rights-verified embedded images",
       "revisionId": 1379742501,
-      "checkedAt": "2026-10-22T08:52:00.349Z"
+      "checkedAt": "2026-10-22T08:52:06.106Z"
     },
     "1589765": {
       "status": "REJECTED",
@@ -9866,7 +9866,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-22T08:52:00.357Z",
+  "updatedAt": "2026-10-22T08:52:06.106Z",
   "dailyUsage": {
     "day": "2026-10-22",
     "calls": 32,

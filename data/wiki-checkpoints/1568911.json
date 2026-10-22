@@ -2,9 +2,148 @@
   "pageId": 1568911,
   "title": "Walter Clopton Wingfield",
   "topic": "Sports",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1379742501,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379742501",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-22T08:52:00.352Z"
+  "reason": "2 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Lawn Tennis rule book cover, 1874.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/25/Lawn_Tennis_rule_book_cover%2C_1874.jpg/960px-Lawn_Tennis_rule_book_cover%2C_1874.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Lawn Tennis rule book cover, 1874.jpg",
+        "caption": "Cover of the first edition of the book about Lawn Tennis by Walter Clopton Wingfield, published in February 1874.",
+        "alt": "",
+        "description": "Cover of the first edition of the book about Lawn Tennis by Walter Wingfied, published in February 1874, that founded modern Tennis. Of only two still existing books known, one is in possession of Racquet & Tennis Club, 570 Park Avenue, New York City.",
+        "date": "1874-02",
+        "section": "Lawn tennis",
+        "position": 0,
+        "provenance": {
+          "credit": "Unknown authorUnknown author",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Lawn_Tennis_rule_book_cover,_1874.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Walter_Clopton_Wingfield",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379742501",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Lawn Tennis Court 1874.jpg",
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/0/0d/Lawn_Tennis_Court_1874.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "fileTitle": "File:Lawn Tennis Court 1874.jpg",
+        "caption": "Lawn Tennis Court as designed by W. C. W.",
+        "alt": "",
+        "description": "Drawing of a Lawn Tennis court as originally designed by Walter Clopton Wingfield in 1874",
+        "date": "1874-02-25",
+        "section": "Lawn tennis",
+        "position": 1,
+        "provenance": {
+          "credit": "Walter Clopton Wingfield (1833-1912) ?",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Lawn_Tennis_Court_1874.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Walter_Clopton_Wingfield",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379742501",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Walter Clopton Wingfield (1833–1912) with bicycle.png"
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Blue Plaque 'Major Walton Clopton Wingfield' - geograph.org.uk - 1194611.jpg"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "dbad4fac300709aaa769d2eb3503d264727f517a07891b632d378e887b1200eb",
+      "heading": "Lead",
+      "excerpt": "Major Walter Clopton Wingfield MVO (16 October 1833 – 18 April 1912) was a Welsh inventor and a British Army officer who was one of the pion",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379742501"
+    },
+    {
+      "id": "P2",
+      "hash": "0cf5fe8de0fb4522bfa934909c809e07ecac09e01f10a2e9374796d2d5cdd11d",
+      "heading": "Family and early life",
+      "excerpt": "Wingfield was born on 16 October 1833 in Ruabon, Denbighshire, Wales, the son of Clopton Lewis Wingfield, major in the 66th Foot Regiment, a",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379742501"
+    },
+    {
+      "id": "P3",
+      "hash": "49b3f3ca030157ab2f5b9dbe83e098ecea9f3493433d7e220f02a4ccf2dc9795",
+      "heading": "Family and early life",
+      "excerpt": "During the decade he was based at his family estate, Rhysnant, Four Crosses, in Montgomeryshire, Wales, before moving into London in 1867. H",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379742501"
+    },
+    {
+      "id": "P4",
+      "hash": "76d3727cb32be4a957af84c2936a11a5546c3e81cffdb77825368af8bbd247c3",
+      "heading": "Family and early life",
+      "excerpt": "In 1870 he was appointed to the Honourable Corps of Gentlemen at Arms, giving him some employment at the courts of Queen Victoria and her so",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379742501"
+    },
+    {
+      "id": "P5",
+      "hash": "f9bee51356248087cb8ba7a4cc523cc31e31702671ff1c09a507141c64cafd49",
+      "heading": "Lawn tennis",
+      "excerpt": "In the late 1860s Wingfield was one of the persons experimenting with a lawn version of tennis. Vulcanised bouncing rubber balls offered an ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379742501"
+    },
+    {
+      "id": "P6",
+      "hash": "1492671e5aef0d11d4becd332f5008125a291c62c612b895f7a077e46e388826",
+      "heading": "Later life",
+      "excerpt": "Wingfield became vice-president of \"The Universal Cookery and Food Association\". In around 1890 he founded a culinary society called \"Le Cor",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379742501"
+    },
+    {
+      "id": "P7",
+      "hash": "b43854ce83467f12787d869b5f5d2bb5de785a969dfb72bd3a90fd2486891d90",
+      "heading": "Family",
+      "excerpt": "Wingfield married Alice Lydia Cleveland, daughter of a general, in Bangalore. Madras India in 1858. They had three sons, Watkin Harold (1859",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379742501"
+    },
+    {
+      "id": "P8",
+      "hash": "ce8a7254622c8a82f8489e87198f21d3f016bb6a38e40e855109719535004597",
+      "heading": "Lawn tennis",
+      "excerpt": "Wingfield however became notable for introducing the game in London when he patented a New and Improved Court for Playing the Ancient Game o",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379742501"
+    },
+    {
+      "id": "P9",
+      "hash": "41455d40845786d4618fe9d21fcb49a5bff5926cc05ebff18eeb21a9daa15c31",
+      "heading": "Lawn tennis",
+      "excerpt": "Tennis was becoming an important adjunct to cricket at the Marylebone Cricket Club (MCC); Real tennis was (and still is) played at Lord's Cr",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379742501"
+    },
+    {
+      "id": "P10",
+      "hash": "a6f040cf2355d447bbb8672e5e328739bc45083383ae4c6fc3711ead0554a7fa",
+      "heading": "Later life",
+      "excerpt": "On 22 November 1902 Edward VII made Wingfield a member (fourth class) of the Royal Victorian Order (MVO) for \"extraordinary, important and p",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379742501"
+    },
+    {
+      "id": "P11",
+      "hash": "1b1d180fb6ce1ad4f3829904c15e04ec871b62d1728e968a9aae501a3fe796e9",
+      "heading": "Later life",
+      "excerpt": "Wingfield lived at 112 Belgrave Road, Pimlico, London for a time and died at 33 St Georges Square, London (a Blue plaque commemorates this) ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379742501"
+    }
+  ],
+  "updatedAt": "2026-10-22T08:52:06.106Z"
 }
