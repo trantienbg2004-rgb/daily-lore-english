@@ -2,10 +2,10 @@
   "pageId": 2996055,
   "title": "Anti-nuclear movement",
   "topic": "Society",
-  "status": "DRAFTED",
+  "status": "VALIDATED",
   "revisionId": 1374442712,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374442712",
-  "reason": "draft durably saved before validation",
+  "reason": "local factual, style, length, structure and source audit passed",
   "rights": [
     {
       "status": "REVIEW",
@@ -544,7 +544,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374442712"
     }
   ],
-  "updatedAt": "2026-10-22T08:47:34.277Z",
+  "updatedAt": "2026-10-22T08:47:52.901Z",
   "priorReviewReason": "Gemini returned invalid JSON; preserve candidate",
   "draft": {
     "variants": {
@@ -679,5 +679,8 @@
     "output": 117,
     "total": 2820
   },
-  "validation": null
+  "validation": {
+    "accepted": true,
+    "errors": []
+  }
 }
