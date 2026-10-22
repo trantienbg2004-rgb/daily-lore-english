@@ -2,9 +2,149 @@
   "pageId": 60660687,
   "title": "Dry Corridor",
   "topic": "Environment",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1380538386,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380538386",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-22T08:51:18.483Z"
+  "reason": "1 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Dry Corridor and Arid Zones of the SICA region.png",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3a/Dry_Corridor_and_Arid_Zones_of_the_SICA_region.png/960px-Dry_Corridor_and_Arid_Zones_of_the_SICA_region.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Dry Corridor and Arid Zones of the SICA region.png",
+        "caption": "Map showing the dry corridor of Central America",
+        "alt": "Map showing Central America with dry corridor regions highlighted",
+        "description": "Map showing the dry corridor of Central America",
+        "date": "2023-10-16",
+        "section": "",
+        "position": 0,
+        "provenance": {
+          "credit": "Food and Agriculture Organization of the United Nations",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Dry_Corridor_and_Arid_Zones_of_the_SICA_region.png",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Dry_Corridor",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380538386",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "71f97c86587a6b4e57a7ac94ad6118dbb3cc49b05c9b29aba72ec1d2c8e8f380",
+      "heading": "Lead",
+      "excerpt": "The Dry Corridor or Central American Dry Corridor (CADC) is a tropical dry forest region on the Pacific Coast of Central America. This area,",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380538386"
+    },
+    {
+      "id": "P2",
+      "hash": "ab7d9211ecc0db916576245f15867f52e9ddb79a0f753af7568eb762aac2970f",
+      "heading": "Lead",
+      "excerpt": "Particularly vulnerable to climate change are the areas of Guatemala, El Salvador, and Honduras. Since 2001, these areas have suffered from ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380538386"
+    },
+    {
+      "id": "P3",
+      "hash": "df98cd817199161a6b40b340f8cbbd15e949146e77938e01c11d2e92674feb1e",
+      "heading": "History",
+      "excerpt": "Drought impact has been especially severe in Honduras and Guatemala. Spain colonized Central America in the 16th Century, with ambitions of ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380538386"
+    },
+    {
+      "id": "P4",
+      "hash": "0cbe55b2d92ea371e6e0e659f17f8c4ee08dfde7036bb1fe0b4a7d8e96f5a604",
+      "heading": "Drought and Climate Change",
+      "excerpt": "There is strong evidence that there is a strong correlation between climate change and severe drought events. Land and ocean evaporation inc",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380538386"
+    },
+    {
+      "id": "P5",
+      "hash": "c4e563525f58e6e13f15a60c685d103700613e7d049687456f58c79168e6784a",
+      "heading": "Drought and Climate Change",
+      "excerpt": "Moreover, projections indicate that agricultural droughts are projected to increase because, with more evaporation, there will be less runof",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380538386"
+    },
+    {
+      "id": "P6",
+      "hash": "d694b7ac27c869f09b88be36d3e531cfabc10833dc8c68913adc8d7275bd2816",
+      "heading": "Climate Migration",
+      "excerpt": "Approximately 8% of families in the region reported that they planned to migrate in an attempt to improve their situations, with the increas",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380538386"
+    },
+    {
+      "id": "P7",
+      "hash": "90edf92f5f43709481f8aabb4c102c99f74f691106147d02c05ce8d29c6a0578",
+      "heading": "Climate Justice",
+      "excerpt": "Climate Injustice is the unequal distribution of climate change-related consequences, like health or weather event impacts. It is a global h",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380538386"
+    },
+    {
+      "id": "P8",
+      "hash": "dc4e079ed9b9b1b43d159d89f84f0ef8614e5a0d4ebcdc8b6f3cd5fecfa6e29c",
+      "heading": "Drought and Climate Change",
+      "excerpt": "2019 was the fifth straight year of drought, and the \"second consecutive year of failed yields for subsistence farmers.\" The region's climat",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380538386"
+    },
+    {
+      "id": "P9",
+      "hash": "69afc8f5d89309ed9265a706c1aa8a3115d72cbc018ea6abcc3181120077c218",
+      "heading": "Drought and Climate Change",
+      "excerpt": "An effort to aid farmers in this climate crisis is led by the UN Environment Programme. They are working with farmers throughout the region ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380538386"
+    },
+    {
+      "id": "P10",
+      "hash": "56d05b6ba51ceefc31320a53f7238d43ca7dc21892a0039ea5c732ab56af7c59",
+      "heading": "Climate Migration",
+      "excerpt": "Climate migration such as that seen in the Dry Corridor is one of the sources of conflict at the US-Mexico border. While some U.S. political",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380538386"
+    },
+    {
+      "id": "P11",
+      "hash": "42b545d1cb764c16a84ee632698ac0191def4a7b1280d05d88d8667748bb2bc3",
+      "heading": "Climate Migration",
+      "excerpt": "The United States has played a significant role in the global climate patterns that underlie these migration pressures. Since 1850, the US h",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380538386"
+    },
+    {
+      "id": "P12",
+      "hash": "2e2a11d8c7a4f60804fe07f06e478f5b198c864086c6a614bc2a012337bf7e00",
+      "heading": "Climate Migration",
+      "excerpt": "Political theorists and ethicists argue that climate migrants should be allowed entry into the United States as compensation for their displ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380538386"
+    },
+    {
+      "id": "P13",
+      "hash": "668f26c20e06fb008e7cdb5aabf409993e5e11af77346893c45cb474f5ef364c",
+      "heading": "Climate Justice",
+      "excerpt": "According to the World Food Programme, the climate induced drought and resulting climate migration in the Dry Corridor is a case of climate ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380538386"
+    },
+    {
+      "id": "P14",
+      "hash": "3f4925c23363a09ccdc7d4320206f76d2a0213dcd50128d7e5326bfcdd4e8149",
+      "heading": "Climate Justice",
+      "excerpt": "Stakeholders will need to be address improvement from multiple angles, including providing short-term food security and assistance, addressi",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380538386"
+    },
+    {
+      "id": "P15",
+      "hash": "d5bbcf1a41fc9bbe36ca14be30bc4d13cd65898990de4b50cf397f228a13c82b",
+      "heading": "Climate Justice",
+      "excerpt": "Ultimately, according to the University of Manchester, as the largest contributor to climate change (92%), it is the Global North's responsi",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380538386"
+    },
+    {
+      "id": "P16",
+      "hash": "4d8fd6cf6598d65e7e0c0a92173bab43df47807819fda0112b4b0677ca3398b5",
+      "heading": "Climate Justice",
+      "excerpt": "Developing countries, like those located in the Dry Corridor, are the ones who have to deal with the consequences of climate change. They ar",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380538386"
+    }
+  ],
+  "updatedAt": "2026-10-22T08:51:24.124Z"
 }
