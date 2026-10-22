@@ -2,9 +2,131 @@
   "pageId": 60284169,
   "title": "Letterlocking",
   "topic": "Culture",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1367781464,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1367781464",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-22T14:37:37.041Z"
+  "reason": "2 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Faltbrief mit Briefschloss 1603.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/04/Faltbrief_mit_Briefschloss_1603.jpg/960px-Faltbrief_mit_Briefschloss_1603.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Faltbrief mit Briefschloss 1603.jpg",
+        "caption": "A locked letter from 1603",
+        "alt": "",
+        "description": "Letterlocking in year 1603",
+        "date": "1603-11-02",
+        "section": "",
+        "position": 0,
+        "provenance": {
+          "credit": "Deutsches Buch- und Schriftmuseum (DNB Ellen Wrogemann) [1]",
+          "license": "CC BY 3.0 de",
+          "licenseUrl": "https://creativecommons.org/licenses/by/3.0/de/deed.en",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Faltbrief_mit_Briefschloss_1603.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Letterlocking",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1367781464",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:41467 2021 21326 Fig7 HTML.png",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/48/41467_2021_21326_Fig7_HTML.png/960px-41467_2021_21326_Fig7_HTML.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:41467 2021 21326 Fig7 HTML.png",
+        "caption": "Letterlocking categories 1–64, based on manipulations and assigned security score",
+        "alt": "",
+        "description": "Letterlocking categories 1–64, based on manipulations and assigned security score. Filled letterlocking category numbers indicate that historic originals exist; unfilled numbers indicate hypothetical categories. Letterlocking formats show up to 12 edges with indicative examples.",
+        "date": "2021",
+        "section": "Varieties",
+        "position": 1,
+        "provenance": {
+          "credit": "Jana Dambrogio et al",
+          "license": "CC BY 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:41467_2021_21326_Fig7_HTML.png",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Letterlocking",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1367781464",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "fce9f2e175976da1637ef454c3863d7740cad7d984ae6652e5cf5bcf2a70243b",
+      "heading": "Lead",
+      "excerpt": "Letterlocking is the act of folding and securing a written message (such as a letter) on papyrus, parchment, or paper, without requiring it ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1367781464"
+    },
+    {
+      "id": "P2",
+      "hash": "57258c3a436b667df56490b410a6c311f9bf1a6824b512ccbe5da1da44eeb692",
+      "heading": "Lead",
+      "excerpt": "Letterlocking is also a discipline focusing on \"the materially engineered security and privacy of letters, both as a technology and a histor",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1367781464"
+    },
+    {
+      "id": "P3",
+      "hash": "dcfe7faa3931b60c4ae1c1c9bbe15cbc7e64f9e7710eb75cf2ef7fc0cafb94e2",
+      "heading": "Method",
+      "excerpt": "Letterlocking uses small slits, tabs, and holes placed directly into a letter, which combined with folding techniques are used to secure the",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1367781464"
+    },
+    {
+      "id": "P4",
+      "hash": "b755df0bbbd024da8d7fd66c706b314330ed1dad482e977ac1979c15e3806dca",
+      "heading": "Varieties",
+      "excerpt": "A particularly intricate method known as a spiral lock was in use by people of many social backgrounds in early modern Europe, including mon",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1367781464"
+    },
+    {
+      "id": "P5",
+      "hash": "42104cb6b54ca90d3aa50fb7f93578bcd148f78b9b1038c68f53128d6a56176c",
+      "heading": "Varieties",
+      "excerpt": "Margaret Douglas, Countess of Lennox, and her daughter-in-law wrote to Mary, Queen of Scots, on 11 November 1575. The materiality of their l",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1367781464"
+    },
+    {
+      "id": "P6",
+      "hash": "77272fa78432746e660d02f70dec1186f3682757a51815f7c41f74197d84fd96",
+      "heading": "Collections",
+      "excerpt": "The Brienne Collection is a postmaster's trunk of undelivered letters from various places in Europe sent to The Hague, the Netherlands, betw",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1367781464"
+    },
+    {
+      "id": "P7",
+      "hash": "c80e63d667ac100902ca957bf0ec97f146b78300aee35b15530309ffa0c3543f",
+      "heading": "Research",
+      "excerpt": "In March 2021, a group of researchers from the Massachusetts Institute of Technology used computational techniques to \"virtually unfold\" let",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1367781464"
+    },
+    {
+      "id": "P8",
+      "hash": "a58c484d85fdc60f2e5537041dbe007a9a7274adb393d7a1de261bdb87ec3798",
+      "heading": "Varieties",
+      "excerpt": "A Scottish diplomat in Italy, William Keith of Delny, sent letters to James VI of Scotland in 1595 which would tear in two if not opened wit",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1367781464"
+    },
+    {
+      "id": "P9",
+      "hash": "bf743d282b6420abaec1d7a0fd7eaa7eaaf8e8fcba4197c3246c3cc9f66880a6",
+      "heading": "Varieties",
+      "excerpt": "Intricate letterlocking works contain artistic elements, demonstrating more than a utilitarian purpose. While the use of sealing techniques ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1367781464"
+    },
+    {
+      "id": "P10",
+      "hash": "73a5a0bd78c75127cd35584ee54772311b65a5af1c4f7c8eb6c6a2cb7e8b53a5",
+      "heading": "Collections",
+      "excerpt": "The Envelope and Letter Folds Association (ELFA) is an informal organization of enthusiasts founded in 1988-89 and which at one time had loc",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1367781464"
+    }
+  ],
+  "updatedAt": "2026-10-22T14:37:43.081Z"
 }
