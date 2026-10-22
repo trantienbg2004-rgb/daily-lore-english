@@ -8924,10 +8924,10 @@
       "checkedAt": "2026-10-21T03:13:10.750Z"
     },
     "61650441": {
-      "status": "DRAFTED",
-      "reason": "draft durably saved before validation",
+      "status": "NEEDS_REVIEW",
+      "reason": "Targeted repair changed an unrelated sentence",
       "revisionId": 1381251267,
-      "checkedAt": "2026-10-22T08:26:06.291Z"
+      "checkedAt": "2026-10-22T08:26:24.248Z"
     },
     "61864508": {
       "status": "EVIDENCE_READY",
@@ -9866,7 +9866,7 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-10-22T08:26:19.852Z",
+  "updatedAt": "2026-10-22T08:26:24.250Z",
   "dailyUsage": {
     "day": "2026-10-22",
     "calls": 14,
