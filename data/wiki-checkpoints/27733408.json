@@ -2,9 +2,173 @@
   "pageId": 27733408,
   "title": "Celestial Sphere Woodrow Wilson Memorial",
   "topic": "Science & Technology",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1374451405,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374451405",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-22T13:03:17.743Z"
+  "reason": "2 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:CelestialSphere P8260337.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/db/CelestialSphere_P8260337.jpg/960px-CelestialSphere_P8260337.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:CelestialSphere P8260337.jpg",
+        "caption": "The Celestial Sphere Woodrow Wilson Memorial, Ariana Park, Palais des Nations, Geneva, Switzerland, 2010",
+        "alt": "",
+        "description": "The Celestial Sphere Woodrow Wilson Memorial, Ariana Park, Palais des Nations, Geneva, Switzerland, 2010.",
+        "date": "2010-06-11",
+        "section": "",
+        "position": 0,
+        "provenance": {
+          "credit": "ERASWK",
+          "license": "CC0",
+          "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:CelestialSphere_P8260337.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Celestial_Sphere_Woodrow_Wilson_Memorial",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374451405",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Aero Memorial by Paul Manship, Philadelphia - DSC06532.JPG",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fc/Aero_Memorial_by_Paul_Manship%2C_Philadelphia_-_DSC06532.JPG/960px-Aero_Memorial_by_Paul_Manship%2C_Philadelphia_-_DSC06532.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Aero Memorial by Paul Manship, Philadelphia - DSC06532.JPG",
+        "caption": "The Aero Memorial in Philadelphia",
+        "alt": "",
+        "description": "Aero Memorial by Paul Manship, 1950. Located on North 20th Street, near Logan Circle and across the street from the Franklin Institute, Philadelphia, Pennsylvania, USA.",
+        "date": "2011-10-20 10:53:07",
+        "section": "History",
+        "position": 1,
+        "provenance": {
+          "credit": "Daderot",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Aero_Memorial_by_Paul_Manship,_Philadelphia_-_DSC06532.JPG",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Celestial_Sphere_Woodrow_Wilson_Memorial",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374451405",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "b5007176801675b09fc685ed1d98ce258de010c1b5b118ff22d5b684ad1e7fae",
+      "heading": "Lead",
+      "excerpt": "The Celestial Sphere (also known as the Woodrow Wilson Memorial Sphere) is an armillary sphere artpiece situated in the Palais des Nations i",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374451405"
+    },
+    {
+      "id": "P2",
+      "hash": "69fde1058a728f7e23d9aea3a05d50fe066a35bf6ebde2711b5d086be6bd7dc0",
+      "heading": "Lead",
+      "excerpt": "The grounds of the Palais des Nations (seat of the United Nations Office at Geneva) contain many fine objects donated by member states of th",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374451405"
+    },
+    {
+      "id": "P3",
+      "hash": "cf5d4381118f7705a615b6ec9631d96c22b7cf3a9aad62f4b7cc0d2939301e01",
+      "heading": "History",
+      "excerpt": "Contacted in late 1935 by the Board of the Woodrow Wilson Foundation, Manship was asked to provide an idea for a memorial to President of th",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374451405"
+    },
+    {
+      "id": "P4",
+      "hash": "6b3fa3dcafca8d456a326dc1e3e55b75aeb9cba0fb96e0f509279406a7e4dc17",
+      "heading": "History",
+      "excerpt": "The first idea for Manship's contribution to the new buildings was to have him design two doors to the Assembly Hall from the Halle des Pas ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374451405"
+    },
+    {
+      "id": "P5",
+      "hash": "f77b404ede4cf45fd56bbf321814d56e8f2b49ab5fe9ff060933e90ce250c22d",
+      "heading": "History",
+      "excerpt": "The representation of the heavenly constellations is derived from Babylonia and Assyria: the Greeks and Latins added their names and gave th",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374451405"
+    },
+    {
+      "id": "P6",
+      "hash": "d2c49ae1f56e48373cd4872926a8fe3947d9f7a3b6b14e6aa5492eb05e77e9ec",
+      "heading": "Process",
+      "excerpt": "In spring of 1936, immediately after the approval by the committee, Manship began working on a large-scale model in wax. At his atelier, he ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374451405"
+    },
+    {
+      "id": "P7",
+      "hash": "3490291263fa0a21901ea1231d09e48bdf10f90f4b80eca778e06a6276205b31",
+      "heading": "A place for the Celestial Sphere",
+      "excerpt": "One of the main difficulties was to find a location for the sphere. Even though Manship designed it for the Court of Honour in front of the ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374451405"
+    },
+    {
+      "id": "P8",
+      "hash": "eebca36bb9c4e2c831b8814b2d4fe23c900b36ba8a5d9d0392b035f0f30efdc8",
+      "heading": "Dysfunctional rotation system and illumination",
+      "excerpt": "Due to the outbreak of the Second World War the rotation motor of the Celestial Sphere was used for several months only. In the files of the",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374451405"
+    },
+    {
+      "id": "P9",
+      "hash": "d1034a174763f46ff811795873274c355fbb797f0607fde675d3590b12c4a62d",
+      "heading": "Deteriorating conditions",
+      "excerpt": "The sphere began to have significant problems as early as 1942. The alloy used by the Bearzi Atelier contracted so sharply during the winter",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374451405"
+    },
+    {
+      "id": "P10",
+      "hash": "c08cd509016814e34dcb4b9fec4a571e58f20ae878fb72c6214a92711cd911ce",
+      "heading": "Restorations",
+      "excerpt": "A restoration of the monument was first undertaken in 1983, qualified as \"clumsy\" for using materials such as concrete in filling parts of t",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374451405"
+    },
+    {
+      "id": "P11",
+      "hash": "de74bfed6a8ee45ecce547b3e3f017755f5830cc5d255e89cc0771a31da36fb0",
+      "heading": "Symbol of Peace \"Pax Universalis\"",
+      "excerpt": "Today the Celestial Sphere stands in the Court d’Honneur of the Palais des Nations, itself a landmark of the City of Geneva. It serves as a ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374451405"
+    },
+    {
+      "id": "P12",
+      "hash": "869f304ba0bc7f1d0e71fc60180d84d935831f6aed35e485cf696868df32616f",
+      "heading": "History",
+      "excerpt": "In a letter written by Ham Armstrong to Arthus Sweetser dated 30 June 1935, we read that the building committee considered the Celestial Sph",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374451405"
+    },
+    {
+      "id": "P13",
+      "hash": "a2a70755da85fe74574baf622a3970a3fb2ea999055db6952f736c9d42046f51",
+      "heading": "Process",
+      "excerpt": "The original plaster moulds, executed by Flitzer, were ready in 1938 and were sent to the Bruno Bearzi Atelier in Florence for casting. Bear",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374451405"
+    },
+    {
+      "id": "P14",
+      "hash": "d2be33ba006d5a227e573b2fb5e52d1242948681a5d6adef9db25291568aa2e4",
+      "heading": "Process",
+      "excerpt": "The Celestial Sphere measures 410 cm. in diameter and weighs some 5,800 kg. The spherical frame is adorned with constellations and stars. Th",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374451405"
+    },
+    {
+      "id": "P15",
+      "hash": "4e65838a0726f0b0d8fb374fdc82f9d5c675ecaa6f5b5441f15733126101abf5",
+      "heading": "A place for the Celestial Sphere",
+      "excerpt": "The sphere is equipped with a motor. In the words of the artist it was designed \"so that it would rotate slowly\" around an axis turned to th",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374451405"
+    },
+    {
+      "id": "P16",
+      "hash": "1a764e0b1a184c2ebd8b84fcb79fa2d1e5650abfb1aebbe75d1e0ce2f1d1e6b3",
+      "heading": "Restorations",
+      "excerpt": "In 2003, some elements of the sphere were regilded towards a start of, restoration although it had to be delated for more than a decade. Fin",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374451405"
+    }
+  ],
+  "updatedAt": "2026-10-22T13:03:23.993Z"
 }
