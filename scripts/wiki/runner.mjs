@@ -82,6 +82,12 @@ export async function discoverWikiQueue({base,topics=WIKI_TOPICS,maxPerTopic=30,
 
 const ACTIVE_QUEUE_STATUSES=new Set(['PENDING','FETCHED','EVIDENCE_READY','DRAFTED','VALIDATED','NEEDS_REPAIR','RETRY_LATER'])
 const TERMINAL_QUEUE_STATUSES=new Set(['published','PUBLISHED','rejected','REJECTED','review','NEEDS_REVIEW'])
+const MODEL_503_COOLDOWN_MS=6*60*60*1000
+const coolingAfterModel503=(outcome,now)=>{
+ if(outcome?.status!=='RETRY_LATER'||!/^Gemini HTTP 503\b/.test(outcome.reason||''))return false
+ const elapsed=now-Date.parse(outcome.checkedAt)
+ return Number.isFinite(elapsed)&&elapsed>=0&&elapsed<MODEL_503_COOLDOWN_MS
+}
 export async function topUpWikiQueue({base,minPerTopic=8,maxTopics=3,now=new Date(),
  readState=readWikiState,writeState=writeWikiState,discoverQueue=discoverWikiQueue,onPersist=async()=>{}}={}){
  if(!base||!Number.isSafeInteger(minPerTopic)||minPerTopic<1||minPerTopic>30||
@@ -129,7 +135,8 @@ export async function runWikiBatch({base,maxCalls=0,maxCandidates=5,pageId=null,
  const topicCounts=Object.fromEntries(WIKI_TOPICS.map(topic=>[topic,catalog.stories.filter(story=>story.category===topic).length]))
  const ordered=pageId===null?balanceWikiCandidates(WIKI_TOPICS.map(topic=>({topic,candidates:candidates.filter(row=>{
   const status=state.outcomes[row.pageId]?.status
-  return row.topic===topic&&(!TERMINAL_QUEUE_STATUSES.has(status)||existingIds.has(row.pageId)&&status!=='PUBLISHED')
+  return row.topic===topic&&!coolingAfterModel503(state.outcomes[row.pageId],Date.now())&&
+   (!TERMINAL_QUEUE_STATUSES.has(status)||existingIds.has(row.pageId)&&status!=='PUBLISHED')
  })})),{topicCounts,limit:candidates.length}):candidates
  for(const candidate of ordered){
   if(stats.attempted>=maxCandidates)break

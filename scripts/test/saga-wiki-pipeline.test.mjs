@@ -112,6 +112,27 @@ test('a one-candidate batch reaches an unfilled topic before a well-stocked topi
  assert.equal(stored.outcomes[43].status,'NEEDS_REVIEW')
 })
 
+test('a candidate with a recent model 503 waits while another candidate proceeds',async()=>{
+ const other={...candidate,pageId:43,title:'World trade'}
+ const stored={version:1,queue:[candidate,other],outcomes:{42:{status:'RETRY_LATER',
+  reason:'Gemini HTTP 503; circuit open',checkedAt:new Date().toISOString()}}}
+ const visited=[]
+ await runWikiBatch({base:'unused',maxCalls:0,maxCandidates:1,...noDisk,
+  readState:async()=>stored,writeState:async()=>{},readCatalog:async()=>({stories:[]}),
+  fetchPage:async title=>{visited.push(title);return {...source,pageId:title==='World trade'?43:42}},
+  verifyFigures:async()=>[]})
+ assert.deepEqual(visited,['World trade'])
+ assert.equal(stored.outcomes[42].status,'RETRY_LATER')
+ assert.equal(stored.outcomes[43].status,'NEEDS_REVIEW')
+ stored.outcomes[42].checkedAt=new Date(Date.now()-7*60*60*1000).toISOString()
+ const visitedAfterCooldown=[]
+ await runWikiBatch({base:'unused',maxCalls:0,maxCandidates:1,...noDisk,
+  readState:async()=>stored,writeState:async()=>{},readCatalog:async()=>({stories:[]}),
+  fetchPage:async title=>{visitedAfterCooldown.push(title);return {...source,pageId:42}},
+  verifyFigures:async()=>[]})
+ assert.deepEqual(visitedAfterCooldown,['Silk Road'])
+})
+
 test('valid candidate publishes once within a two-call editorial budget',async()=>{
  const stored=state();let calls=0,appendCalls=0
  const result=await runWikiBatch({base:'unused',maxCalls:2,maxCandidates:1,apiKey:'placeholder',freeTierConfirmed:true,
