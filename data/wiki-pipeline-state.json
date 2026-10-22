@@ -8564,10 +8564,10 @@
       "checkedAt": "2026-10-21T07:31:36.418Z"
     },
     "47276677": {
-      "status": "FETCHED",
-      "reason": "pinned-source-ready",
+      "status": "NEEDS_REVIEW",
+      "reason": "no-rights-verified-embedded-image",
       "revisionId": 1375011431,
-      "checkedAt": "2026-10-22T14:50:48.947Z"
+      "checkedAt": "2026-10-22T14:50:54.897Z"
     },
     "47561162": {
       "status": "RETRY_LATER",
@@ -9866,7 +9866,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-22T14:50:48.947Z",
+  "updatedAt": "2026-10-22T14:50:54.898Z",
   "dailyUsage": {
     "day": "2026-10-22",
     "calls": 79,
