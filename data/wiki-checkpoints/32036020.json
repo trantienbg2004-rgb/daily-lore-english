@@ -2,10 +2,10 @@
   "pageId": 32036020,
   "title": "Onomasticon (Eusebius)",
   "topic": "History & Geography",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1375667535,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375667535",
-  "reason": "1 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -111,5 +111,132 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375667535"
     }
   ],
-  "updatedAt": "2026-10-22T08:56:58.364Z"
+  "updatedAt": "2026-10-22T08:57:16.165Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "The Onomasticon of Eusebius",
+        "pages": [
+          {
+            "text": "The Onomasticon is a special book about place names in Palestine and Transjordan. It was written in Greek by Eusebius, who was a bishop in Caesarea. He lived around the third and fourth centuries. The book is a gazetteer that lists old and current places.",
+            "evidenceIds": [
+              "P1",
+              "P6"
+            ]
+          },
+          {
+            "text": "The book sits between geography and word studies. It is very important for studying the Roman period in Palestine. Many early Christian pilgrims and mapmakers used its ideas. Yet, it was made for biblical scholars, not as a travel guide for regular pilgrims.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "Eusebius collected names from the holy scriptures and grouped them by their initial letters. This meant readers could easily find scattered places. He did not have a similar book to work from, making his geographical project entirely original.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "Eusebius identified about three hundred and forty places out of nearly nine-hundred and eighty biblical names. He often gave distances in Roman milestones from major points. However, his distance measurements differed slightly from standard Roman miles used on roads.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "Later, in the fourth century, Jerome translated this book into Latin while living in Bethlehem. This Latin version became the main source for researching the region in the West. It helped people understand many biblical locations across the ancient lands.",
+            "evidenceIds": [
+              "P8"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "Eusebius and His Ancient Gazetteer",
+        "pages": [
+          {
+            "text": "Authored by Eusebius, the bishop of Caesarea, the Onomasticon is a detailed gazetteer of historical and then-current place names in Palestine and Transjordan. Traditionally dated to before 324, the work occupies a unique position between geography and lexicography, serving as a vital resource for studying the region during the Roman period.",
+            "evidenceIds": [
+              "P1",
+              "P2"
+            ]
+          },
+          {
+            "text": "Although its influence reached early Christian pilgrims and mapmakers, the book was primarily designed as an exegetical tool for biblical scholars rather than a travel guide. Eusebius gathered entries directly from the scriptures and organized them by initial letters, noting that he lacked a direct precedent for his work.",
+            "evidenceIds": [
+              "P2",
+              "P3"
+            ]
+          },
+          {
+            "text": "Eusebius documented approximately nine hundred and eighty biblical place names, identifying around three hundred and forty with locations known in his own era. He frequently recorded distances from major reference points in Roman milestones. Scholars have noted discrepancies between these milestones and standard Roman road measurements, suggesting he relied on alternative sources.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "Scholars continue to debate the exact composition date, though evidence points to a period between 313 and mid-325. The text relied heavily on Hebrew scripture, with New Testament locations appearing mostly as an afterthought. Eusebius used Greco-Roman names for traditional Hebrew place names throughout the text.",
+            "evidenceIds": [
+              "P4",
+              "P6",
+              "P7"
+            ]
+          },
+          {
+            "text": "More than half a century after its creation, Jerome translated the Onomasticon into Latin while living in Bethlehem. Retitled to reflect Hebrew locations, Jerome's Latin edition became the primary source for Western scholars researching the geography of Palestine for centuries to follow.",
+            "evidenceIds": [
+              "P6",
+              "P8"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "The Textual Legacy of the Onomasticon",
+        "pages": [
+          {
+            "text": "Compiled by Eusebius, bishop of Caesarea, the Onomasticon stands as a foundational gazetteer cataloging historical and contemporary place names across Palestine and Transjordan. Traditionally assigned a completion date prior to 324, the text occupies a liminal space between ancient geography and lexicography, exerting profound influence on early Christian cartography and pilgrimage literature.",
+            "evidenceIds": [
+              "P1",
+              "P2"
+            ]
+          },
+          {
+            "text": "Despite contributing to the conceptualization of the Holy Land, the Onomasticon was conceived primarily as an exegetical instrument for biblical scholars rather than an itinerary for pilgrims. Eusebius constructed his project independently from existing precedents, extracting entries directly from scriptural texts and organizing them alphabetically by biblical books and initial letters.",
+            "evidenceIds": [
+              "P2",
+              "P3",
+              "P11"
+            ]
+          },
+          {
+            "text": "Within the approximately nine hundred and eighty biblical toponyms cataloged, Eusebius successfully correlated roughly three hundred and forty with contemporary sites. Distances were systematically recorded in Roman milestones from major reference points. Discrepancies between these milestone intervals and standard Roman road measurements indicate he utilized localized or alternative data rather than standard milestone surveys.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "Scholarly consensus regarding the precise chronological window of composition points to the years between 313 and mid-325, constrained by Eusebius's episcopal tenure and his interactions with Paulinus of Tyre. The text reflects a primary reliance on Hebrew scriptural sources, with New Testament localities integrated sparsely, potentially influenced by contemporary exegetical preferences.",
+            "evidenceIds": [
+              "P4",
+              "P7"
+            ]
+          },
+          {
+            "text": "Eusebius consistently substituted traditional Hebrew toponyms with Greco-Roman equivalents throughout the compilation. Decades later, in 388, Jerome produced a Latin translation in Bethlehem. This translation bridged the linguistic divide, establishing itself as the preeminent vehicle for geographical research on Palestine throughout the medieval West.",
+            "evidenceIds": [
+              "P6",
+              "P8"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2984,
+    "output": 1121,
+    "total": 4105
+  },
+  "validation": null
 }
