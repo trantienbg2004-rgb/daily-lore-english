@@ -6111,9 +6111,9 @@
     },
     "30432": {
       "status": "EVIDENCE_READY",
-      "reason": "retry generation with structured JSON",
+      "reason": "4 rights-verified embedded images",
       "revisionId": 1375829657,
-      "checkedAt": "2026-10-22T08:34:32.452Z"
+      "checkedAt": "2026-10-22T08:37:39.695Z"
     },
     "33134": {
       "status": "PENDING",
@@ -9866,7 +9866,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-22T08:37:00.486Z",
+  "updatedAt": "2026-10-22T08:37:39.697Z",
   "dailyUsage": {
     "day": "2026-10-22",
     "calls": 17,
