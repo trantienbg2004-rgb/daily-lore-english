@@ -2,9 +2,148 @@
   "pageId": 20636301,
   "title": "History of the mapping of California",
   "topic": "History & Geography",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1283457758,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1283457758",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-22T08:29:19.170Z"
+  "reason": "2 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Monterey Bay Canyon map \"Submerged Valley\".jpg"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Insel Kalifornien 1650.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/74/Insel_Kalifornien_1650.jpg/960px-Insel_Kalifornien_1650.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Insel Kalifornien 1650.jpg",
+        "caption": "1650 Nicolas Sanson map showing California as an island.",
+        "alt": "",
+        "description": "The en:Island of California as shown on a 1650 map by en:Nicolas Sanson",
+        "date": "1650",
+        "section": "History",
+        "position": 1,
+        "provenance": {
+          "credit": "Nicolas Sanson (1600–1667) Nicolas Sanson (1600–1667)",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Insel_Kalifornien_1650.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/History_of_the_mapping_of_California",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1283457758",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Davidson Seamount.jpg"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Monterey Canyon Bathymetric Chart.JPG",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/07/Monterey_Canyon_Bathymetric_Chart.JPG/960px-Monterey_Canyon_Bathymetric_Chart.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Monterey Canyon Bathymetric Chart.JPG",
+        "caption": "Modern Bathymetric chart of Monterey Canyon. Courtesy of NOAA.",
+        "alt": "",
+        "description": "Color bathymetric chart of Monterey Canyon, California",
+        "date": "1989",
+        "section": "Modern projects",
+        "position": 3,
+        "provenance": {
+          "credit": "National Oceanographic and Atmospheric Administration",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Monterey_Canyon_Bathymetric_Chart.JPG",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/History_of_the_mapping_of_California",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1283457758",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "2e5289a9871877f6fc8068d7f969d5dffa51efe9a66ef2e8fb4dbb3741af01e3",
+      "heading": "Lead",
+      "excerpt": "Exploration of California by Europeans began in 1542 with Juan Rodríguez Cabrillo of Spain. Although 16th-century maps correctly depicted Ca",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1283457758"
+    },
+    {
+      "id": "P2",
+      "hash": "7aec1618a7137200ba23c49263af4b34335faad28c5644d260ae3e26dc9c91ad",
+      "heading": "Lead",
+      "excerpt": "California quickly became a well-documented piece of the United States. Modern improvements to mapping technology, particularly GIS, have en",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1283457758"
+    },
+    {
+      "id": "P3",
+      "hash": "67faf9d5211baac551aedf39a0560a0652b24816149653fb362692186dbca0f0",
+      "heading": "Island of California myth",
+      "excerpt": "Island of California (Spanish: Isla de California) refers to the long-held global misconception, dating from the 16th century, that the Cali",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1283457758"
+    },
+    {
+      "id": "P4",
+      "hash": "4c1fdcb3375981813a1cb2359e7760f511ce58aee5f206a0dc0ad3fd385fdd78",
+      "heading": "Island of California myth",
+      "excerpt": "One of the most famous cartographic errors in history, it was propagated on many maps during the 17th and 18th centuries, despite contradict",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1283457758"
+    },
+    {
+      "id": "P5",
+      "hash": "fbff0eea7218993c6cbb4e751d055d47066001b42af7ba02e74e63e0983c1332",
+      "heading": "Early surveying and mapping efforts by the US",
+      "excerpt": "In 1841, Cadwalader Ringgold, an officer in the United States Navy, spent twenty days surveying the San Francisco Bay watershed as a member ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1283457758"
+    },
+    {
+      "id": "P6",
+      "hash": "9fa4faadac3a7484c1a8655bb3b8fa77583d89f46a8bdfeb673060cb7423907d",
+      "heading": "Modern projects",
+      "excerpt": "Surveying efforts in California continue today with the assistance of modern technology. Modern mapping in California involves using modern ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1283457758"
+    },
+    {
+      "id": "P7",
+      "hash": "5a4db2d8fe71b1d7b8b66526f1316dff6972059ae6843f7a25bb26bcd37a42f4",
+      "heading": "Early surveying and mapping efforts by the US",
+      "excerpt": "In 1857, the commanding officer of the United States Coast Survey Steamer, Active, discovered a deep submarine valley, or \"gulch\", in the ce",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1283457758"
+    },
+    {
+      "id": "P8",
+      "hash": "fdd7d9645647c93e40f535e5873e925251f814d43b78248f97d77f944ec78e7d",
+      "heading": "Early surveying and mapping efforts by the US",
+      "excerpt": "From the 1850s through the 1860s, the United States Coast Survey, now NOAA's Office of Coast Survey, published a set of color maps with five",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1283457758"
+    },
+    {
+      "id": "P9",
+      "hash": "f2d8bbb51794cd31d9d02b559650823d6a6e532a87f4ff6f7d5621911c2e8443",
+      "heading": "Early surveying and mapping efforts by the US",
+      "excerpt": "Shortly after statehood, the California state government appointed its first State Geologist and began commissioning geologic surveys of its",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1283457758"
+    },
+    {
+      "id": "P10",
+      "hash": "7c0a07ea4e2decb887631f77583d063bb9683d7a66debbd7084bc8379cde93ef",
+      "heading": "Early surveying and mapping efforts by the US",
+      "excerpt": "The State Mining Bureau was established in 1880, and the position of State Geologist was changed to State Mineralogist. In 1891, the first s",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1283457758"
+    },
+    {
+      "id": "P11",
+      "hash": "a128f6ae4b3b25ad10369e9791226f9e4e3a9bd4eed422fe31a0e19e98c77c64",
+      "heading": "Early surveying and mapping efforts by the US",
+      "excerpt": "In 1869, George Davidson, an assistant coast surveyor, compiled the book Pacific Coast: Coast Pilot of California, Oregon, and Washington Te",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1283457758"
+    }
+  ],
+  "updatedAt": "2026-10-22T08:29:25.135Z"
 }
