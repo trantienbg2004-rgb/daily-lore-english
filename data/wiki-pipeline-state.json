@@ -8156,10 +8156,10 @@
       "checkedAt": "2026-10-21T13:32:21.138Z"
     },
     "32036020": {
-      "status": "RETRY_LATER",
-      "reason": "Gemini HTTP 404; preserve candidate",
+      "status": "EVIDENCE_READY",
+      "reason": "1 rights-verified embedded images",
       "revisionId": 1375667535,
-      "checkedAt": "2026-10-22T14:36:31.003Z"
+      "checkedAt": "2026-10-22T14:49:06.861Z"
     },
     "32078647": {
       "status": "EVIDENCE_READY",
@@ -9866,7 +9866,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-22T14:49:00.824Z",
+  "updatedAt": "2026-10-22T14:49:06.867Z",
   "dailyUsage": {
     "day": "2026-10-22",
     "calls": 72,
