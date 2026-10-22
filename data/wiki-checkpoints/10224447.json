@@ -2,9 +2,134 @@
   "pageId": 10224447,
   "title": "Latin American Boom",
   "topic": "Culture",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1353013649,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1353013649",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-22T13:21:47.966Z"
+  "reason": "2 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Cortázar.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/19/Cort%C3%A1zar.jpg/960px-Cort%C3%A1zar.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Cortázar.jpg",
+        "caption": "Julio Cortázar",
+        "alt": "Head shot of a dark haired man in a suit and tie with a cigarette in his mouth. He is looking at the camera quizzically.",
+        "description": "Argentine writer Julio Cortázar, photographed at the UNESCO gardens in Paris.",
+        "date": "1967",
+        "section": "Julio Cortázar",
+        "position": 0,
+        "provenance": {
+          "credit": "Sara Facio",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Cort%C3%A1zar.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Latin_American_Boom",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1353013649",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Carlos Fuentes.jpg"
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Gabogarciamarquez1.png"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Vargas Losa Göteborg Book Fair 2011b.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e9/Vargas_Losa_G%C3%B6teborg_Book_Fair_2011b.jpg/960px-Vargas_Losa_G%C3%B6teborg_Book_Fair_2011b.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Vargas Losa Göteborg Book Fair 2011b.jpg",
+        "caption": "Mario Vargas Llosa",
+        "alt": "Greying man deep in concentration.",
+        "description": "Mario Vargas Llosa at Göteborg Book Fair 2011.",
+        "date": "2011-09-22",
+        "section": "Mario Vargas Llosa",
+        "position": 3,
+        "provenance": {
+          "credit": "Arild Vågen",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Vargas_Losa_G%C3%B6teborg_Book_Fair_2011b.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Latin_American_Boom",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1353013649",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "f88a41ca2ee3db5059b298169681a11d18a941dd74654111fd2ffa336a4e3d6f",
+      "heading": "Lead",
+      "excerpt": "The Latin American Boom (Spanish: Boom latinoamericano) was a literary movement of the 1960s and 1970s when the work of a group of relativel",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1353013649"
+    },
+    {
+      "id": "P2",
+      "hash": "6adca61279fffe1d109011585f66323387cc2e88ab3ae75514e81acd29cc5d02",
+      "heading": "Lead",
+      "excerpt": "The sudden success of the Boom authors was in large part due to the fact that their works were among the first Latin American novels to be p",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1353013649"
+    },
+    {
+      "id": "P3",
+      "hash": "745b29ed39d1fdcd181698f954178806fc025adfa3bc666e2ddcc3b4045fe7bf",
+      "heading": "Social influences",
+      "excerpt": "The 1960s and 1970s were decades of political turmoil all over Latin America, in a political and diplomatic climate strongly influenced by t",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1353013649"
+    },
+    {
+      "id": "P4",
+      "hash": "a9335ea8ab7583db717cccc42ee5571730a0b371a618f12e1c6e89bda1b607f8",
+      "heading": "Social influences",
+      "excerpt": "The period between 1950 and 1975 saw major changes in the way in which history and literature were approached in terms of interpretation and",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1353013649"
+    },
+    {
+      "id": "P5",
+      "hash": "1faf36f15353c2e4fbfbcff5ecb3e5197f19705e243fe1279a210f835bcd1ddc",
+      "heading": "Magical realism",
+      "excerpt": "In The Ends of Literature, Brett Levinson writes that magical realism, \"a key aesthetic mode within recent Latin American fiction ... materi",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1353013649"
+    },
+    {
+      "id": "P6",
+      "hash": "faf4ce83d01feb38accc1fd842546be776a127b90adb96e594ca07c2480ea77e",
+      "heading": "Origins",
+      "excerpt": "While most critics agree that the Boom started some time in the 1960s, there is some disagreement as to which work should be considered the ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1353013649"
+    },
+    {
+      "id": "P7",
+      "hash": "455f632015ee952cf154207c5a41dbd6f6e36b12b9d0c91126e46a8fcb493029",
+      "heading": "Conclusion",
+      "excerpt": "The greater attention paid to Latin American novelists and their international success in the 1960s, a phenomenon that was called the Boom, ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1353013649"
+    },
+    {
+      "id": "P8",
+      "hash": "0f19c875d94ba7855913e90056a603631f76981c29034f88d5bb2cc1d6810550",
+      "heading": "Literary influences",
+      "excerpt": "The rise of Latin American literature began with the writings of José Martí, Rubén Darío and José Asunción Silva's modernist departures from",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1353013649"
+    },
+    {
+      "id": "P9",
+      "hash": "07f330a93f45d8bc63d19dc69ab5441fc51878361ffbbbb98bc8be11f741a029",
+      "heading": "Hallmarks",
+      "excerpt": "The Boom novels are essentially modernist novels. They treat time as nonlinear, often use more than one perspective or narrative voice and f",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1353013649"
+    }
+  ],
+  "updatedAt": "2026-10-22T13:21:53.537Z"
 }
