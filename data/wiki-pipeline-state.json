@@ -9860,13 +9860,13 @@
       "checkedAt": "2026-10-20T16:35:21.497Z"
     },
     "84545431": {
-      "status": "FETCHED",
-      "reason": "pinned-source-ready",
+      "status": "REJECTED",
+      "reason": "insufficient-source-text-or-embedded-images",
       "revisionId": 1380741566,
-      "checkedAt": "2026-10-22T08:31:37.195Z"
+      "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-22T08:31:37.196Z",
+  "updatedAt": "2026-10-22T08:31:43.076Z",
   "dailyUsage": {
     "day": "2026-10-22",
     "calls": 16,
