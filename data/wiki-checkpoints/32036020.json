@@ -2,10 +2,10 @@
   "pageId": 32036020,
   "title": "Onomasticon (Eusebius)",
   "topic": "History & Geography",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1375667535,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375667535",
-  "reason": "1 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -111,7 +111,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375667535"
     }
   ],
-  "updatedAt": "2026-10-22T14:49:06.866Z",
+  "updatedAt": "2026-10-22T14:50:18.402Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -174,7 +174,7 @@
             ]
           },
           {
-            "text": "Scholars continue to debate the exact composition date, though evidence points to a period between 313 and mid-325. The text relied heavily on Hebrew scripture, with New Testament locations appearing mostly as an afterthought. Eusebius used Greco-Roman names for traditional Hebrew place names throughout the text.",
+            "text": "Scholars debate the composition date, though evidence suggests a period between 313 and mid-325. The text relied heavily on Hebrew scripture, with New Testament locations appearing as an afterthought. Eusebius used Greco-Roman names for traditional Hebrew place names throughout the work, reflecting his context as the bishop of Caesarea.",
             "evidenceIds": [
               "P4",
               "P6",
@@ -232,17 +232,11 @@
       }
     }
   },
-  "repairAttempts": 1,
+  "repairAttempts": 2,
   "lastUsage": {
-    "input": 2975,
-    "output": 267,
-    "total": 3242
+    "input": 2848,
+    "output": 145,
+    "total": 2993
   },
-  "validation": {
-    "accepted": false,
-    "errors": [
-      "B1-B2:page-4:unsupported-number-context-313",
-      "B1-B2:page-4:unsupported-number-context-325"
-    ]
-  }
+  "validation": null
 }
