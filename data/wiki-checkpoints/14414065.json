@@ -2,9 +2,204 @@
   "pageId": 14414065,
   "title": "Polar amplification",
   "topic": "Environment",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1379828951,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379828951",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-22T06:14:03.726Z"
+  "reason": "3 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:GISS temperature 2000-09.png",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f3/GISS_temperature_2000-09.png/960px-GISS_temperature_2000-09.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:GISS temperature 2000-09.png",
+        "caption": "NASA GISS temperature trend 2000–2009, showing strong arctic amplification",
+        "alt": "",
+        "description": "NASA image by Robert Simmon based on GISS surface temperature analysis data including ship and buoy data from the Hadley Centre. Caption by Adam Voiland.",
+        "date": "2013-05-26",
+        "section": "",
+        "position": 0,
+        "provenance": {
+          "credit": "Robert Simmon",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:GISS_temperature_2000-09.png",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Polar_amplification",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379828951",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:AntarcticaTemps3 1957-2006.png",
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/3/3a/AntarcticaTemps3_1957-2006.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "fileTitle": "File:AntarcticaTemps3 1957-2006.png",
+        "caption": "Temperature trends in West Antarctica (left) have greatly exceeded the global average; East Antarctica less so.",
+        "alt": "",
+        "description": "Analysis of weather station and satellite data, showing the continent-wide warming trend from 1957 through 2006.",
+        "date": "2009-01-23",
+        "section": "Amplification phase",
+        "position": 1,
+        "provenance": {
+          "credit": "Eric J. Steig (University of Washington), David P. Schneider (National Center for Atmospheric Research), Scott D. Rutherford (Roger Williams University), Michael E. Mann (Pennsylvania State University), Josefino C. Comiso (NASA Goddard Space Flight C",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:AntarcticaTemps3_1957-2006.png",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Polar_amplification",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379828951",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:NORTH POLE Ice (19626661335).jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/64/NORTH_POLE_Ice_%2819626661335%29.jpg/960px-NORTH_POLE_Ice_%2819626661335%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:NORTH POLE Ice (19626661335).jpg",
+        "caption": "The dark ocean surface reflects only 6 percent of incoming solar radiation, while sea ice reflects 50 to 70 percent.",
+        "alt": "",
+        "description": "NORTH POLE North Pole Keep",
+        "date": "2015-06-30 06:59:10",
+        "section": "Recent Arctic amplification",
+        "position": 2,
+        "provenance": {
+          "credit": "Christopher Michel",
+          "license": "CC BY 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:NORTH_POLE_Ice_(19626661335).jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Polar_amplification",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379828951",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "f576bbdb11bccbdb097447583a6205f1994e9f920a35f07a91c81a995736af21",
+      "heading": "Lead",
+      "excerpt": "Polar amplification is the phenomenon that any change in the net radiation balance (for example greenhouse intensification) tends to produce",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379828951"
+    },
+    {
+      "id": "P2",
+      "hash": "e98dc691af1723ba6ab5cefa09148008a44033f625e611d9700ba7cdd2ff2f19",
+      "heading": "Lead",
+      "excerpt": "In the extreme, the planet Venus is thought to have experienced a very large increase in greenhouse effect over its lifetime, so much so tha",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379828951"
+    },
+    {
+      "id": "P3",
+      "hash": "80a78239665038c5939ddbc1844feea485ed74929c96c00fdd0ed929899428ab",
+      "heading": "History",
+      "excerpt": "An observation-based study related to Arctic amplification was published in 1969 by Mikhail Budyko, and the study conclusion has been summar",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379828951"
+    },
+    {
+      "id": "P4",
+      "hash": "2a563e011393445fac9a55ee4d2fe51783a3a43f7337687d3f4ab4fbe6d205d1",
+      "heading": "Amplifying mechanisms",
+      "excerpt": "Feedbacks associated with sea ice and snow cover are widely cited as one of the principal causes of terrestrial polar amplification. These f",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379828951"
+    },
+    {
+      "id": "P5",
+      "hash": "62c03998173e14209c65f3c542f7cfe435931257ade4e0c213e12c77ccbfe632",
+      "heading": "Amplifying mechanisms",
+      "excerpt": "Some examples of climate system feedbacks thought to contribute to recent polar amplification include the reduction of snow cover and sea ic",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379828951"
+    },
+    {
+      "id": "P6",
+      "hash": "0ca5c5d89c5b017cbd4738affb8267afe9a34c985469a7371429c48797deaaa9",
+      "heading": "Ocean circulation",
+      "excerpt": "It has been estimated that 70% of global wind energy is transferred to the ocean and takes place within the Antarctic Circumpolar Current (A",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379828951"
+    },
+    {
+      "id": "P7",
+      "hash": "700072f8f976fb59deacaed5651b2393eba9114f6270ebc34d2a457235c7cc8e",
+      "heading": "Amplification factor",
+      "excerpt": "Polar amplification is quantified in terms of a polar amplification factor, generally defined as the ratio of some change in a polar tempera",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379828951"
+    },
+    {
+      "id": "P8",
+      "hash": "6f14cff80c67df4cd177b01722b6453db0e63772838e901386d68193b10db061",
+      "heading": "Amplification phase",
+      "excerpt": "It is observed that Arctic and Antarctic warming commonly proceed out of phase because of orbital forcing, resulting in the so-called polar ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379828951"
+    },
+    {
+      "id": "P9",
+      "hash": "7bdea43dbad7297da78ed16fc9924d564e8f38ac3809863d1bd5b4120d57fd47",
+      "heading": "Paleoclimate polar amplification",
+      "excerpt": "The glacial / interglacial cycles of the Pleistocene provide extensive palaeoclimate evidence of polar amplification, both from the Arctic a",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379828951"
+    },
+    {
+      "id": "P10",
+      "hash": "4a49142bb93825d4cae772177de6e4fd6b2f9f5fb9a6b85209138ee28ff5619b",
+      "heading": "Recent Arctic amplification",
+      "excerpt": "Suggested mechanisms leading to the observed Arctic amplification include Arctic sea ice decline (open water reflects less sunlight than sea",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379828951"
+    },
+    {
+      "id": "P11",
+      "hash": "b9f96d90eb7dc7b523de010282f7ae68b757700bc17a89e9c3c97c28b36ee3d8",
+      "heading": "Possible impacts on mid-latitude weather",
+      "excerpt": "Since the early 2000s, climate models have consistently identified that global warming will gradually push jet streams poleward. In 2008, th",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379828951"
+    },
+    {
+      "id": "P12",
+      "hash": "357a6bc71e4315200a8157c54d02fe77635bf28930f9aa466e1e535de0dfeed8",
+      "heading": "Amplifying mechanisms",
+      "excerpt": "The individual processes contributing to polar warming are critical to understanding climate sensitivity. Polar warming also affects many ec",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379828951"
+    },
+    {
+      "id": "P13",
+      "hash": "cf07cc0fa1d9d782169fbf4980af760187642c40f25c3bf5bb05d1f2418d89d8",
+      "heading": "Ocean circulation",
+      "excerpt": "Decreased oxygen and low-pH during La Niña are processes that correlate with decreased primary production and a more pronounced poleward flo",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379828951"
+    },
+    {
+      "id": "P14",
+      "hash": "6896473668050b69205420c17339524ce9554508aed1727a53a6fb8f6874b40a",
+      "heading": "Amplification factor",
+      "excerpt": "where Δ T p {\\displaystyle \\Delta {T}_{p}} is a change in polar temperature and Δ T ¯ {\\displaystyle \\Delta {\\overline {T}}} is, for example",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379828951"
+    },
+    {
+      "id": "P15",
+      "hash": "9c7999b4ae952c57dceee576d8056829019e9971fe9a12a991d784f730b73e62",
+      "heading": "Amplification factor",
+      "excerpt": "Common implementations define the temperature changes directly as the anomalies in surface air temperature relative to a recent reference in",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379828951"
+    },
+    {
+      "id": "P16",
+      "hash": "8818000f4d554982b9c7ff8ca15ea6850355e8da4ffd371ae893c73213076408",
+      "heading": "Recent Arctic amplification",
+      "excerpt": "The Arctic was historically described as warming twice as fast as the global average, but this estimate was based on older observations whic",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379828951"
+    },
+    {
+      "id": "P17",
+      "hash": "e71fd24b24c28cb9168cac6d720117b7dca8b65048fe0b28c219f45375db2b95",
+      "heading": "Recent Arctic amplification",
+      "excerpt": "The acceleration of Arctic amplification has not been linear: a 2022 analysis found that it occurred in two sharp steps, with the former aro",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379828951"
+    }
+  ],
+  "updatedAt": "2026-10-22T06:14:09.309Z"
 }
