@@ -2,9 +2,182 @@
   "pageId": 33437405,
   "title": "The Origins of Political Order",
   "topic": "Politics",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1378933760,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378933760",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-22T09:16:02.214Z"
+  "reason": "1 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:3pillars originofpoliticalorder.gif"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Fukuyama article2.png",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1c/Fukuyama_article2.png/960px-Fukuyama_article2.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Fukuyama article2.png",
+        "caption": "Origins of Political Order depend on three components, according to Fukuyama. States with all three components, are more stable, and are shown in the middle.",
+        "alt": "",
+        "description": "Origins of Political Order depend on three components, according to Fukuyama",
+        "date": "2014-03-24 20:52:07",
+        "section": "Three components of political order",
+        "position": 1,
+        "provenance": {
+          "credit": "DanielDemaret",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Fukuyama_article2.png",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/The_Origins_of_Political_Order",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378933760",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "5812c3ffc1c5d37811b262bf9bfa5762a3fb0ea4abd6b05134d5b46cf8dcefe3",
+      "heading": "Lead",
+      "excerpt": "The Origins of Political Order: From Prehuman Times to the French Revolution is a 2011 book by political economist Francis Fukuyama. The mai",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378933760"
+    },
+    {
+      "id": "P2",
+      "hash": "874eff7a675ddce54e40bc5407651cbb30ba253767ee22d0f5d34d8c1f43ffa2",
+      "heading": "Series of books",
+      "excerpt": "The book is the first of two books on the development of political order. This book goes from its origins to the French Revolution. The next",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378933760"
+    },
+    {
+      "id": "P3",
+      "hash": "42a251cceee789913151140642ce99d046bea4088c0b3b8b9a723c4851e6e3f7",
+      "heading": "Why states and institutions fail",
+      "excerpt": "The book is an attempt to understand why modern statebuilding and the building of institutions in countries like Afghanistan, Iraq, Somalia,",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378933760"
+    },
+    {
+      "id": "P4",
+      "hash": "aa528c3fd51502062eb362638e988c08e868fb4f9ff42152aa88730cdb605ce9",
+      "heading": "Why states and institutions fail",
+      "excerpt": "In the aftermath of its 2003 invasion of Iraq, the US administration seemed genuinely surprised when the Iraqi state itself collapsed in an ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378933760"
+    },
+    {
+      "id": "P5",
+      "hash": "0f37ab32f9e069dedcb54f7b6e8a528b61f5be44608ce8ab23e9ae61f9fce26b",
+      "heading": "Why states and institutions fail",
+      "excerpt": "The book is about \"getting to Denmark,\" in other words creating a stable, democratic, prosperous, and uncorrupt state. Fukuyama points out t",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378933760"
+    },
+    {
+      "id": "P6",
+      "hash": "8c769512df6ed90c27472c6c6d8dc36b87d31dfec48e6d2b1a7ed69d9d48f4f6",
+      "heading": "Aims and the analytical framework",
+      "excerpt": "Since the aim of the book is to understand how institutions and states develop in different countries, it is also a book on comparative hist",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378933760"
+    },
+    {
+      "id": "P7",
+      "hash": "cd062a3950d53748cacfde2ebca1b9d6ad32782f8f5030732374fd5ef97a508f",
+      "heading": "From chimpanzee hunting groups to tribes",
+      "excerpt": "In his quest for the origins of political order, Fukuyama first looks at the social order among chimpanzees, notes that the war-like hunting",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378933760"
+    },
+    {
+      "id": "P8",
+      "hash": "0627bcbfdf967e14f1beabe391be4b4cced2af918281cc0ab2764694b0cdbbf6",
+      "heading": "Challenge of tribes on the road towards the state",
+      "excerpt": "The next step for human societies was to escape beyond tribalism and beyond the \"tyranny of cousins\", to join tribes into larger coalitions ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378933760"
+    },
+    {
+      "id": "P9",
+      "hash": "926c5aa8c7425d3d14afc480feaad858f07118c1ba2f70e0ac8634f05480f351",
+      "heading": "Restrictions on marriage and inheritance as a strategy against corruption",
+      "excerpt": "Loyalty to the tribe or the family, rather than to the state, leads to corruption and weakening of the state. Various strategies were used t",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378933760"
+    },
+    {
+      "id": "P10",
+      "hash": "3338f62d0c03d5e7aa3cef63993e9d298f68e682c1fde0f8853a283c48db6c8a",
+      "heading": "Three components of political order",
+      "excerpt": "China, India, the Islamic world and Europe each developed these three components of political organization in different order, in different ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378933760"
+    },
+    {
+      "id": "P11",
+      "hash": "a50e03d8d0fe15eefc8eee4b40343522e64c0698a81e21659ef1615146d1e7a5",
+      "heading": "China",
+      "excerpt": "China is described as having the first modern state under the Qin dynasty, by the definition given, since it established an educated Mandari",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378933760"
+    },
+    {
+      "id": "P12",
+      "hash": "ed2c695c1380498d25ef3a48cc7d64b37024ce16e6d704c306848b6ed5862c39",
+      "heading": "India",
+      "excerpt": "India is contrasted with China. India could not use extreme force on its population due to the traditional power of the brahmin priestly cas",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378933760"
+    },
+    {
+      "id": "P13",
+      "hash": "301713d8e4b78f7483f918ada7196b5c159668fd5527c4fd16134274c30a830c",
+      "heading": "Muslim states",
+      "excerpt": "Certain Muslim states developed the practice of making imported slaves as the ruling class, as with the Mamluks of Egypt and the Janissaries",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378933760"
+    },
+    {
+      "id": "P14",
+      "hash": "f18e080bfe50d333ce557b7d202f02b224b1da6f613f5d76a0f8fd875f55671e",
+      "heading": "Europe",
+      "excerpt": "In 11th-century Europe, instead of the state having the upper hand as in China, or the Brahmins having the upper hand as in India, there was",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378933760"
+    },
+    {
+      "id": "P15",
+      "hash": "9002d08633b83b65f6aaaf7328cb1ac6fa4ea28fbed8f7a056b57e069ae4c0f5",
+      "heading": "Balance between the components",
+      "excerpt": "In China a strong modern state came to power first and the state subjugated any potential agents that might have demanded the other two comp",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378933760"
+    },
+    {
+      "id": "P16",
+      "hash": "645aed9ccb8fa2495a6e4815f5ba8cfcde377018c4bd4f005cddc20bb3779448",
+      "heading": "Aims and the analytical framework",
+      "excerpt": "It is an extension of Samuel P. Huntington's Political Order in Changing Societies and similar in scope to Jared Diamond’s Guns, Germs, and ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378933760"
+    },
+    {
+      "id": "P17",
+      "hash": "69d2b3077e82a6b7881a5242d11612524efa9ea587ff3c7b378ad42fc2397052",
+      "heading": "Aims and the analytical framework",
+      "excerpt": "\"Fukuyama borrows a phrase from contemporary social science to explain what he's really interested in: how to get to Denmark (ie a stable, p",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378933760"
+    },
+    {
+      "id": "P18",
+      "hash": "a790f97dc2b45074e39d321afa02bf600198a83495e180a5969ff8bacdf00c65",
+      "heading": "Aims and the analytical framework",
+      "excerpt": "Fukuyama develops his argument with respect to the history of China, India and the Middle East before focusing on the way European countries",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378933760"
+    },
+    {
+      "id": "P19",
+      "hash": "32065e85df2b16fa0816c3644a10c13dce908290c20307bee9736635df8d75fd",
+      "heading": "From chimpanzee hunting groups to tribes",
+      "excerpt": "Fukuyama uses recent work in sociobiology and other sources to show that sociability built on kin selection and reciprocal altruism is the o",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378933760"
+    },
+    {
+      "id": "P20",
+      "hash": "c0d8ad2c744f4e0dea6b7095bf7182303f93725ce305b463f51406d2e538df93",
+      "heading": "Challenge of tribes on the road towards the state",
+      "excerpt": "The challenge to transcend tribalism partly remains today in many parts of the world outside Western civilization, for example in Afghanista",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378933760"
+    }
+  ],
+  "updatedAt": "2026-10-22T09:16:08.329Z"
 }
