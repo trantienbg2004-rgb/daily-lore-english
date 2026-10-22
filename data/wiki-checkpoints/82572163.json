@@ -2,9 +2,177 @@
   "pageId": 82572163,
   "title": "Forum Lingkar Pena",
   "topic": "Culture",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1362542889,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1362542889",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-22T14:39:31.338Z"
+  "reason": "1 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:FLP diskusi di Imam Bonjol.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a5/FLP_diskusi_di_Imam_Bonjol.jpg/960px-FLP_diskusi_di_Imam_Bonjol.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:FLP diskusi di Imam Bonjol.jpg",
+        "caption": "A Forum Lingkar Pena meeting in Padang, West Sumatra, 2019",
+        "alt": "",
+        "description": "FLP diskusi di Imam Bonjol",
+        "date": "2019-09-01",
+        "section": "Growth",
+        "position": 0,
+        "provenance": {
+          "credit": "Ardzun",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:FLP_diskusi_di_Imam_Bonjol.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Forum_Lingkar_Pena",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1362542889",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "909943384cf6c50b26fc38f492788dea922016e7f934db4e7943350e58e018d3",
+      "heading": "Lead",
+      "excerpt": "Forum Lingkar Pena (FLP, translated as Pen Circle Forum) is a transnational writers' collective based in Indonesia. Established by sisters H",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1362542889"
+    },
+    {
+      "id": "P2",
+      "hash": "8f1da72a30fa69c18f0885aca044e1ea5ca4a73ca79c9cc381dd1b38af038a69",
+      "heading": "Lead",
+      "excerpt": "FLP is organizationally divided into four levels, from the central administrative body through school- and university-level chapters. Member",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1362542889"
+    },
+    {
+      "id": "P3",
+      "hash": "a4ed2e72279449681b903993848fa38890a6d4c9b2f75ec8b5786b401a25235c",
+      "heading": "Description",
+      "excerpt": "Forum Lingkar Pena (FLP) is a transnational writers' collective. It is based in Indonesia, but has numerous chapters in foreign countries. M",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1362542889"
+    },
+    {
+      "id": "P4",
+      "hash": "9a9a7fcf65921d12f43664eaa0e9bf442e0d034b39d1b20aa2442b6ddefe13a9",
+      "heading": "Description",
+      "excerpt": "Although most FLP members are young women enrolled in university, it also includes teachers, civil servants, domestic workers, and housewive",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1362542889"
+    },
+    {
+      "id": "P5",
+      "hash": "01257f2f94a20c86fc679925722859b7266245f5717b76398380c34d0c80631d",
+      "heading": "Description",
+      "excerpt": "Organizationally, FLP consists of four layers of administration. The central organization is under a chairperson; for the 2025–2029 period, ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1362542889"
+    },
+    {
+      "id": "P6",
+      "hash": "d76f96f31dfc41e1ab0ae766824999f9a2c35fd7fa7b58362162d7352336fbe2",
+      "heading": "Mission and programmes",
+      "excerpt": "According to its mission statement, FLP has five objectives: providing a forum for writers and potential writers, improving the quality of m",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1362542889"
+    },
+    {
+      "id": "P7",
+      "hash": "59ed49a70f2b7931aebee13f570c02b555a593e480e18052432e06b0a6f3b698",
+      "heading": "Establishment",
+      "excerpt": "FLP was established by Helvy Tiana Rosa and her younger sister Asma Nadia, based on a discussion held with students at the Ukhuwah Islamiyah",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1362542889"
+    },
+    {
+      "id": "P8",
+      "hash": "739a0ec9c4ce863698a6b4bbf7f4a642d4a0b1f8c02559dac1d729addd553501",
+      "heading": "Growth",
+      "excerpt": "At its onset, FLP consisted of some 30 individuals. Within a year, however, the organization had expanded, with Muthi Masfufah coordinating ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1362542889"
+    },
+    {
+      "id": "P9",
+      "hash": "888631837e0b72cb487ffadd3fbc1211d1c3f37fb22fd3586e69554bd9772b8e",
+      "heading": "Messaging",
+      "excerpt": "Although some works published by FLP members deal with non-Islamic themes, the majority of the community's works center around Islam. Partic",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1362542889"
+    },
+    {
+      "id": "P10",
+      "hash": "5165bd308df434767011c9c79da7d6d0c1ea65c340635966c8df8b79f4ec86c2",
+      "heading": "Position in Indonesian literature",
+      "excerpt": "Despite its size and influence, works by FLP have generally received little attention from the institutions that shape the Indonesian litera",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1362542889"
+    },
+    {
+      "id": "P11",
+      "hash": "8b5bbc212633bc48e44165ed6a9b92f691586322dc3d7625cb86c20ad32bde07",
+      "heading": "Mission and programmes",
+      "excerpt": "To realize these goals, FLP has implemented various programmes. Branches are expected to host workshops and facilitate publication. Awards a",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1362542889"
+    },
+    {
+      "id": "P12",
+      "hash": "18855c79d4064ff7d3cb6c1c03f06f85488e3c026f3d50ef9afd7a8612c0b659",
+      "heading": "Mission and programmes",
+      "excerpt": "Branches may also implement their own programmes, as informed by their particular circumstances. For instance, the branch in Yogyakarta—a ci",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1362542889"
+    },
+    {
+      "id": "P13",
+      "hash": "e59c7afaefd295417eca7ed8c48152b28615f314cf0a940fa9609b94a80b3b22",
+      "heading": "Establishment",
+      "excerpt": "The establishment of FLP was concurrent with the rise of literary works identified as sastra wangi (\"fragrant literature\"), works produced b",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1362542889"
+    },
+    {
+      "id": "P14",
+      "hash": "a5a4b08df194e4c985e7271f3a28aa63212ca2c7553688a93bcd141ab7e9f916",
+      "heading": "Growth",
+      "excerpt": "In June 2000, FLP established a partnership with the Ummi Group, a publisher of magazines such as Ummi and Annida. These magazines, which we",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1362542889"
+    },
+    {
+      "id": "P15",
+      "hash": "a2fac69c4b7ea3f69cbc249504827e686f6df6cc7177fdc01a650551e8e92b15",
+      "heading": "Growth",
+      "excerpt": "The FLP has also developed connections with the Prosperous Justice Party (Partai Keadilan Sejahtera, PKS), an Islamic political party. Rosa ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1362542889"
+    },
+    {
+      "id": "P16",
+      "hash": "4ec8dd1e798232a2b8dc086c3f2d627b20da02716ee41d66a278654d742c7740",
+      "heading": "Growth",
+      "excerpt": "By 2008, FLP consisted of 5,000 members, spread through 23 of Indonesia's provinces as well as eight foreign communities, including a Hong K",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1362542889"
+    },
+    {
+      "id": "P17",
+      "hash": "49ab3fefd8a8c491d159176c770aeb76ee513f45d26066ab667e4f596d82006c",
+      "heading": "Growth",
+      "excerpt": "After the magazine Annida closed, FLP focused on using blogs and workshops for recruitment. Membership had dwindled to 2,348 by 2018, at whi",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1362542889"
+    },
+    {
+      "id": "P18",
+      "hash": "7c4071d3f6dcb7eb2cc34be12dc73af9b17540ac37303310e2ccb225a0149805",
+      "heading": "Messaging",
+      "excerpt": "Literature is understood as a means of dakwah (proselytization). For the FLP, this does not mean preaching Islam to non-Muslims, but rather ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1362542889"
+    },
+    {
+      "id": "P19",
+      "hash": "e77c1a19cd229225d64e586d3d9149c28509e4844c8cf53804e05adfcb9ff8f1",
+      "heading": "Messaging",
+      "excerpt": "Members are held to similar expectations. They are urged to avoid dating and divert their gazes from non-muhrim (marriageable kin). Men are ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1362542889"
+    },
+    {
+      "id": "P20",
+      "hash": "1f488e2695544cb8cdc962187337bed3d9fbdce6582c0db88f3a81755aed3479",
+      "heading": "Position in Indonesian literature",
+      "excerpt": "The organization has received criticism for a perceived lack of quality, which former chairman Irfan Hidayatullah attributes to its members'",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1362542889"
+    }
+  ],
+  "updatedAt": "2026-10-22T14:39:36.899Z"
 }
