@@ -8210,10 +8210,10 @@
       "checkedAt": "2026-10-21T13:01:36.896Z"
     },
     "34115107": {
-      "status": "FETCHED",
-      "reason": "pinned-source-ready",
+      "status": "NEEDS_REVIEW",
+      "reason": "no-rights-verified-embedded-image",
       "revisionId": 1365337428,
-      "checkedAt": "2026-10-22T14:51:12.717Z"
+      "checkedAt": "2026-10-22T14:51:18.622Z"
     },
     "34249574": {
       "status": "EVIDENCE_READY",
@@ -9866,7 +9866,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-22T14:51:12.718Z",
+  "updatedAt": "2026-10-22T14:51:18.623Z",
   "dailyUsage": {
     "day": "2026-10-22",
     "calls": 79,
