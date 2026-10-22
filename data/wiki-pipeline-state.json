@@ -8960,10 +8960,10 @@
       "checkedAt": "2026-10-21T08:11:52.293Z"
     },
     "63406512": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
+      "revisionId": 1368043600,
+      "checkedAt": "2026-10-22T06:14:21.392Z"
     },
     "63418335": {
       "status": "PENDING",
@@ -9866,7 +9866,7 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-10-22T06:14:15.139Z",
+  "updatedAt": "2026-10-22T06:14:21.393Z",
   "dailyUsage": {
     "day": "2026-10-22",
     "calls": 8,
