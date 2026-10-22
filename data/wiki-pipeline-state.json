@@ -8270,10 +8270,10 @@
       "checkedAt": "2026-10-21T22:35:59.331Z"
     },
     "36815432": {
-      "status": "FETCHED",
-      "reason": "pinned-source-ready",
+      "status": "REJECTED",
+      "reason": "insufficient-source-text-or-embedded-images",
       "revisionId": 1361966992,
-      "checkedAt": "2026-10-22T08:20:38.513Z"
+      "checkedAt": "2026-10-22T08:20:44.282Z"
     },
     "37008258": {
       "status": "PENDING",
@@ -9866,7 +9866,7 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-10-22T08:20:38.514Z",
+  "updatedAt": "2026-10-22T08:20:44.282Z",
   "dailyUsage": {
     "day": "2026-10-22",
     "calls": 9,
