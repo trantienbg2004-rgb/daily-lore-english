@@ -8222,10 +8222,10 @@
       "checkedAt": "2026-10-21T03:12:41.518Z"
     },
     "34345090": {
-      "status": "EVIDENCE_READY",
-      "reason": "7 rights-verified embedded images",
+      "status": "RETRY_LATER",
+      "reason": "Gemini HTTP 503; circuit open",
       "revisionId": 1380485622,
-      "checkedAt": "2026-10-22T13:05:45.671Z"
+      "checkedAt": "2026-10-22T13:06:11.660Z"
     },
     "34411704": {
       "status": "REJECTED",
@@ -9866,7 +9866,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-22T13:06:07.701Z",
+  "updatedAt": "2026-10-22T13:06:11.685Z",
   "dailyUsage": {
     "day": "2026-10-22",
     "calls": 71,
