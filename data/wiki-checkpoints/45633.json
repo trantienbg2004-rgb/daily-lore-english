@@ -2,10 +2,10 @@
   "pageId": 45633,
   "title": "Economic history",
   "topic": "Economy",
-  "status": "NEEDS_REVIEW",
+  "status": "PUBLISHED",
   "revisionId": 1377126508,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377126508",
-  "reason": "no-verified-photo-placement",
+  "reason": "Manually reviewed original-source image placement",
   "rights": [
     {
       "status": "REJECTED",
@@ -183,7 +183,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377126508"
     }
   ],
-  "updatedAt": "2026-10-22T20:18:59.247Z",
+  "updatedAt": "2026-10-22T23:48:38.262Z",
   "draft": {
     "outline": [
       "Defining economic history and its core methods",
@@ -337,5 +337,16 @@
     "accepted": true,
     "errors": []
   },
-  "priorReviewReason": "Missing repaired page"
+  "priorReviewReason": "Missing repaired page",
+  "manualMediaReview": {
+    "imageSha256": "f98f9d0ad671bb65e7d82f4f3a4c3898649e915b7d70a30abcfee89a2347786a",
+    "fileTitle": "File:Zentralbibliothek Zürich Das Kapital Marx 1867.jpg",
+    "pageIndices": {
+      "A1-A2": 5,
+      "B1-B2": 5,
+      "C1-C2": 5
+    },
+    "rationale": "The pinned source embeds the 1867 cover of Marx’s Capital and discusses Marx’s historical analysis of capitalism. Each selected reading page concerns the history of capitalism. The original caption makes the archival object and date explicit.",
+    "reviewedAt": "2026-10-22T23:48:38.261Z"
+  }
 }

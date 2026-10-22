@@ -6194,10 +6194,10 @@
       "checkedAt": "2026-10-22T08:49:05.922Z"
     },
     "45633": {
-      "status": "NEEDS_REVIEW",
-      "reason": "no-verified-photo-placement",
+      "status": "PUBLISHED",
+      "reason": "Manually reviewed original-source image placement",
       "revisionId": 1377126508,
-      "checkedAt": "2026-10-22T20:18:59.247Z"
+      "checkedAt": "2026-10-22T23:48:38.263Z"
     },
     "49005": {
       "status": "EVIDENCE_READY",
@@ -6632,10 +6632,10 @@
       "checkedAt": "2026-10-22T12:49:06.160Z"
     },
     "627246": {
-      "status": "NEEDS_REVIEW",
-      "reason": "no-verified-photo-placement",
+      "status": "PUBLISHED",
+      "reason": "Manually reviewed original-source image placement",
       "revisionId": 1374127706,
-      "checkedAt": "2026-10-22T20:16:39.285Z"
+      "checkedAt": "2026-10-22T23:48:38.261Z"
     },
     "633853": {
       "status": "REJECTED",
@@ -9866,7 +9866,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-22T20:19:05.255Z",
+  "updatedAt": "2026-10-22T23:48:38.263Z",
   "dailyUsage": {
     "day": "2026-10-22",
     "calls": 83,

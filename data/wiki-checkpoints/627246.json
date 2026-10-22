@@ -2,10 +2,10 @@
   "pageId": 627246,
   "title": "History of alternative medicine",
   "topic": "Health",
-  "status": "NEEDS_REVIEW",
+  "status": "PUBLISHED",
   "revisionId": 1374127706,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374127706",
-  "reason": "no-verified-photo-placement",
+  "reason": "Manually reviewed original-source image placement",
   "rights": [
     {
       "status": "REJECTED",
@@ -120,7 +120,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374127706"
     }
   ],
-  "updatedAt": "2026-10-22T20:16:39.287Z",
+  "updatedAt": "2026-10-22T23:48:38.260Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -257,5 +257,16 @@
   "validation": {
     "accepted": true,
     "errors": []
+  },
+  "manualMediaReview": {
+    "imageSha256": "129c6c2fb85703de06539e6fdbf9742dd5551f1da08614b8926d88606b9a5df3",
+    "fileTitle": "File:William Hogarth - Marriage à la Mode, Plate 3, (The Scene with the Quack) - Google Art Project.jpg",
+    "pageIndices": {
+      "A1-A2": 2,
+      "B1-B2": 2,
+      "C1-C2": 4
+    },
+    "rationale": "The pinned source embeds this 1745 satire in its historical medicine section. The A1/B1 pages discuss quackery; the C1 page discusses pre-nineteenth-century European practice. The source caption states the artwork and date; it is not presented as a documentary photograph.",
+    "reviewedAt": "2026-10-22T23:48:38.259Z"
   }
 }
