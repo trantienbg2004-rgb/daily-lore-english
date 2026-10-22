@@ -2,10 +2,10 @@
   "pageId": 32036020,
   "title": "Onomasticon (Eusebius)",
   "topic": "History & Geography",
-  "status": "DRAFTED",
+  "status": "NEEDS_REPAIR",
   "revisionId": 1375667535,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375667535",
-  "reason": "draft durably saved before validation",
+  "reason": "editorial: B1-B2:page-4:unsupported-number-context-313,B1-B2:page-4:unsupported-number-context-325",
   "rights": [
     {
       "status": "REVIEW",
@@ -111,7 +111,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375667535"
     }
   ],
-  "updatedAt": "2026-10-22T08:57:34.212Z",
+  "updatedAt": "2026-10-22T08:57:40.201Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -238,5 +238,11 @@
     "output": 267,
     "total": 3242
   },
-  "validation": null
+  "validation": {
+    "accepted": false,
+    "errors": [
+      "B1-B2:page-4:unsupported-number-context-313",
+      "B1-B2:page-4:unsupported-number-context-325"
+    ]
+  }
 }
