@@ -2,9 +2,155 @@
   "pageId": 1420643,
   "title": "T and O map",
   "topic": "History & Geography",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1380707224,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380707224",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-22T06:14:39.251Z"
+  "reason": "2 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:T and O map Guntherus Ziner 1472.jpg",
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/7/70/T_and_O_map_Guntherus_Ziner_1472.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "fileTitle": "File:T and O map Guntherus Ziner 1472.jpg",
+        "caption": "This T and O map, from the first printed version of Isidore's Etymologiae, identifies the three known continents as populated by descendants of Sem (Shem), Iafeth (Japheth) and Cham (Ham).",
+        "alt": "",
+        "description": "T and O style mappa mundi (map of the known world) from the first printed version of Isidorus' Etymologiae (Kraus 13). The book was written in 623 and first printed in 1472 at Augsburg by one Günther Zainer (Guntherus Ziner), Isidor's sketch thus becoming the oldest printed map of the occident. Note: T-O-maps are typically displayed \"East-up\", show Jerusalem at the center and the paradise at the outmost East, balanced by the pillars of Hercules at the outmost West. T and O style mappa mundi (map of the known world) from the first printed versio",
+        "date": "2006-08-18 22:43:29",
+        "section": "",
+        "position": 0,
+        "provenance": {
+          "credit": "Isidore of Seville",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:T_and_O_map_Guntherus_Ziner_1472.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/T_and_O_map",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380707224",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Hereford Mappa Mundi 1300.jpg"
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Radkarte MKL1888 edited (T and O style, east-up).png"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Orthographic T&O.png",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/46/Orthographic_T%26O.png/960px-Orthographic_T%26O.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Orthographic T&O.png",
+        "caption": "A \"T-O\" map made with modern cartography",
+        "alt": "",
+        "description": "A modern orthographic map centered on Jerusalem, with [south-]east pointing up. Made for article T and O map, since those maps were also drawn this way.",
+        "date": "2006",
+        "section": "Spherical Earth concept",
+        "position": 3,
+        "provenance": {
+          "credit": "Foobaz",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Orthographic_T%26O.png",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/T_and_O_map",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380707224",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "0b1a2a6b5af10ce74491e96fa2ba38b7208a7dea190a3fc3361340cba8f0b4f8",
+      "heading": "Lead",
+      "excerpt": "A T and O map or O–T or T–O map (orbis terrarum, orb or circle of the lands; with the letter T inside an O), also known as an Isidoran map, ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380707224"
+    },
+    {
+      "id": "P2",
+      "hash": "7b8458e0eb8c754bd496431810da34bf699ad7560574fa7eacb0cf51529d2968",
+      "heading": "Lead",
+      "excerpt": "The earliest surviving example of a T-O map is found in a late 7th- or early 8th-century copy of Isidore of Seville's (c. 560 – 636) De natu",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380707224"
+    },
+    {
+      "id": "P3",
+      "hash": "f57e4fc793d99e8cc1f842a55378ed151cc8eed179df5dbd04cb2d0671e3067d",
+      "heading": "Relevant textual descriptions of the world",
+      "excerpt": "So the earth may be divided into three sides (trifarie), of which one part is Europe, another Asia, and the third is called Africa. Europe i",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380707224"
+    },
+    {
+      "id": "P4",
+      "hash": "b31caeef21b9c60e408301dce5ec2ffbb57de96b815ef462c74ec2e73e2b8d86",
+      "heading": "Relevant textual descriptions of the world",
+      "excerpt": "The world is called round after the roundness of a circle, because it is like a wheel [...] Because of this, the Ocean flowing around it is ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380707224"
+    },
+    {
+      "id": "P5",
+      "hash": "0a8f3cad439904eb336890b58f15a553645c930f6ef2cf094d331f361a6f5c84",
+      "heading": "Spherical Earth concept",
+      "excerpt": "Although Isidore taught in the Etymologiae that the Earth was \"round\", his meaning was ambiguous and some writers think he referred to a dis",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380707224"
+    },
+    {
+      "id": "P6",
+      "hash": "b07aac68c1c36d5500f010ba463c2db7d86cdbe692facf31c92562caffe24761",
+      "heading": "Boundaries, center and orientation",
+      "excerpt": "The T is the Mediterranean, the Nile, and the Don (formerly called the Tanais) dividing the three continents, Asia, Europe and Africa, and t",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380707224"
+    },
+    {
+      "id": "P7",
+      "hash": "8a5e63a8a5072ca3854ffbae76dbb397a92320f32d0523778e61e6ac31e27a80",
+      "heading": "Additional details",
+      "excerpt": "This qualitative and conceptual type of medieval cartography could yield extremely detailed maps in addition to simple representations. The ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380707224"
+    },
+    {
+      "id": "P8",
+      "hash": "9dd1c26aa4075b4ce9f1df3b321f04be03a75ecd141b7107834380f101edc247",
+      "heading": "Spherical Earth concept",
+      "excerpt": "The T and O map represents only half of the spherical Earth, presumably a convenient projection of the known northern temperate region. It w",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380707224"
+    },
+    {
+      "id": "P9",
+      "hash": "8b62ae0e49f0895dc0cecad848b0b4de0e6cc7c77fb1533205b3832a4f6969bb",
+      "heading": "Boundaries, center and orientation",
+      "excerpt": "The idea that Jerusalem was generally represented in the center of the map as the navel of the world, the umbilicus mundi, is a false genera",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380707224"
+    },
+    {
+      "id": "P10",
+      "hash": "693368ba77aab1aa8d19ca43de4ea8926d690b7ac2bbabbcf8aa37075edef772",
+      "heading": "Boundaries, center and orientation",
+      "excerpt": "The location of Paradise (the Garden of Eden) in the east of Asia is based upon the Septuagint translation of Genesis 2:8, which describes t",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380707224"
+    },
+    {
+      "id": "P11",
+      "hash": "aa709c5ed2c7c4a97a08494efb907727fdd89c2dcb6e37d716f2397dc84e7c3c",
+      "heading": "Additional details",
+      "excerpt": "Different cartographic material, which represented more useful tools for the traveler, were the itinerarium, which listed in order the names",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380707224"
+    },
+    {
+      "id": "P12",
+      "hash": "7c0a20edeb1c956424bd41ac129be6db8f78069adf35ab5c92f84264f2a04b3b",
+      "heading": "Additional details",
+      "excerpt": "Later maps of the T-and-O conceptual format featured many rivers and cities of Eastern as well as Western Europe, and other features encount",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380707224"
+    }
+  ],
+  "updatedAt": "2026-10-22T06:14:45.279Z"
 }
