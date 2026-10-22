@@ -9632,10 +9632,10 @@
       "checkedAt": "2026-10-21T07:39:54.459Z"
     },
     "79798169": {
-      "status": "PENDING",
-      "reason": "queued",
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
       "revisionId": 1372170273,
-      "checkedAt": null
+      "checkedAt": "2026-10-22T13:16:06.904Z"
     },
     "79836548": {
       "status": "EVIDENCE_READY",
@@ -9866,7 +9866,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-22T13:16:00.575Z",
+  "updatedAt": "2026-10-22T13:16:06.913Z",
   "dailyUsage": {
     "day": "2026-10-22",
     "calls": 71,
