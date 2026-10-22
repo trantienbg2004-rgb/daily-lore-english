@@ -2,9 +2,128 @@
   "pageId": 82919461,
   "title": "Yris Hotel",
   "topic": "Culture",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1377328161,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377328161",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-22T14:52:54.693Z"
+  "reason": "1 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Gjerde, Yris hotell, Boalthgården, Sogn og Fjordane - Riksantikvaren-T305 01 0026.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/da/Gjerde%2C_Yris_hotell%2C_Boalthg%C3%A5rden%2C_Sogn_og_Fjordane_-_Riksantikvaren-T305_01_0026.jpg/960px-Gjerde%2C_Yris_hotell%2C_Boalthg%C3%A5rden%2C_Sogn_og_Fjordane_-_Riksantikvaren-T305_01_0026.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Gjerde, Yris hotell, Boalthgården, Sogn og Fjordane - Riksantikvaren-T305 01 0026.jpg",
+        "caption": "The west facing facade",
+        "alt": "",
+        "description": "This image on crowdsourcing geotagging platform Fotodugnad",
+        "date": "1941",
+        "section": "Transition to hotel (1845–1909)",
+        "position": 0,
+        "provenance": {
+          "credit": "Halvor Vreim",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Gjerde,_Yris_hotell,_Boalthg%C3%A5rden,_Sogn_og_Fjordane_-_Riksantikvaren-T305_01_0026.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Yris_Hotel",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377328161",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "7fb83253dc0c6c34706000d2b8c0fd602c5917322377ff866e7aab1efa94c3f7",
+      "heading": "Lead",
+      "excerpt": "Originally established as a trading post, the property operated as an hotel throughout the 20th century. It is a protected cultural heritage",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377328161"
+    },
+    {
+      "id": "P2",
+      "hash": "b3b60ab9a74257baa35442b1aaf3525b160d5d46a14847c5174b2df6034ee31c",
+      "heading": "Location",
+      "excerpt": "The property is situated in the town centre of Nordfjordeid, at the south end of Eidsgata. Approximately 100 meters south of Kulturhuset Gam",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377328161"
+    },
+    {
+      "id": "P3",
+      "hash": "4106b128d96f7b468530dbbac678ae07c5ab923d8be446a352fdc10ddb068ba5",
+      "heading": "Early trading post (1634–1845)",
+      "excerpt": "The site originally served as a trading estate known as Handelsstaden Gjerde, which functioned as the central commercial hub for the mid-Nor",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377328161"
+    },
+    {
+      "id": "P4",
+      "hash": "e73ec6f67cdab17030c408946474f246bae25d8e02436414ac9590c68c229094",
+      "heading": "Early trading post (1634–1845)",
+      "excerpt": "In 1788, the estate was purchased by Tollev Lem Ravn, who constructed the current main building in 1790. Ravn operated a guesthouse on the p",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377328161"
+    },
+    {
+      "id": "P5",
+      "hash": "6124743f4effb1eb66580917fe2f43d6a6b03d763504c2a460fbe0d2605ccef7",
+      "heading": "Early trading post (1634–1845)",
+      "excerpt": "The commercial success of Handelsstaden Gjerde, and its eventual transition into a major hotel, was closely tied to Nordfjordeid's military ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377328161"
+    },
+    {
+      "id": "P6",
+      "hash": "9082b64c9da0014d4a5bf7a6f14da810fe36abc88c183935a6379a6d1c2cc40c",
+      "heading": "Transition to hotel (1845–1909)",
+      "excerpt": "In 1845, Peder Schrøder Boalth purchased Gjerdegarden and acquired licenses for rural trade and hospitality. Boalth eventually converted the",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377328161"
+    },
+    {
+      "id": "P7",
+      "hash": "763ce3066cd2ae4ed49a069fe463824d522779652def123f4eead434ff994543",
+      "heading": "Yris Hotell (1909–1990)",
+      "excerpt": "In 1909, hotelier Vilhelm Yri purchased the property for 34,000 NOK and renamed the establishment Yris Hotell. The hotel remained in the ext",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377328161"
+    },
+    {
+      "id": "P8",
+      "hash": "d87f16094fd3e32b224eefada09f6f6e1ac25fce21db68461d071c99d5994403",
+      "heading": "Recent history",
+      "excerpt": "In early 2026, the property at Rådhusvegen 2 was listed for sale on the open real estate market. In March 2026 the price was reduced due to ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377328161"
+    },
+    {
+      "id": "P9",
+      "hash": "35199b83c03f3cbe17077d7844e2ce1cadb0db222cea4583ce1993caed533c0b",
+      "heading": "Architecture and conservation",
+      "excerpt": "Yris Hotel is a notable example of late 18th-century Norwegian timber architecture. Because of its historical and architectural significance",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377328161"
+    },
+    {
+      "id": "P10",
+      "hash": "37aef4a4f10914a903a7c058469aa7622fe636348c411fd2fbe6b0d50dc9527b",
+      "heading": "Early trading post (1634–1845)",
+      "excerpt": "During the 18th, 19th, and early 20th centuries, annual military exercises brought a large influx of soldiers, ranking officers, and civilia",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377328161"
+    },
+    {
+      "id": "P11",
+      "hash": "2605045611a89ecc4f521ceb31ff99495ff3257957db6f692946e5d43119940e",
+      "heading": "Yris Hotell (1909–1990)",
+      "excerpt": "Following Wilhelm Yri's death in 1972, the establishment was operated by Herdis Bjørlo and Winnie Yri. During this final operational period,",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377328161"
+    },
+    {
+      "id": "P12",
+      "hash": "6d90066a4d58bdcee9350f7173963d4bbf6f3d79085bcff6a949fa0c7d729563",
+      "heading": "Recent history",
+      "excerpt": "In July 2026 the building was purchased by private individuals that intended on rehabilitating the building for new use. The new owners have",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377328161"
+    },
+    {
+      "id": "P13",
+      "hash": "df5b88a81e4a4ebcfc39dde0482dea28fdd73370253c4cce42faf2437ab19870",
+      "heading": "Architecture and conservation",
+      "excerpt": "To ensure the structural integrity of the historic building, it was previously awarded a preservation grant of 2.6 million NOK, which was al",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377328161"
+    }
+  ],
+  "updatedAt": "2026-10-22T14:53:00.757Z"
 }

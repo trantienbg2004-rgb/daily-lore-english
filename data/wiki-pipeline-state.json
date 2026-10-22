@@ -9782,10 +9782,10 @@
       "checkedAt": "2026-10-22T08:40:30.731Z"
     },
     "82919461": {
-      "status": "FETCHED",
-      "reason": "pinned-source-ready",
+      "status": "EVIDENCE_READY",
+      "reason": "1 rights-verified embedded images",
       "revisionId": 1377328161,
-      "checkedAt": "2026-10-22T14:52:54.692Z"
+      "checkedAt": "2026-10-22T14:53:00.756Z"
     },
     "82993222": {
       "status": "RETRY_LATER",
@@ -9866,7 +9866,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-22T14:52:54.694Z",
+  "updatedAt": "2026-10-22T14:53:00.758Z",
   "dailyUsage": {
     "day": "2026-10-22",
     "calls": 79,
