@@ -2,9 +2,79 @@
   "pageId": 247849,
   "title": "Cylon of Athens",
   "topic": "Sports",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1360644706,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1360644706",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-22T13:00:11.929Z"
+  "reason": "1 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Megara Gulf.jpg",
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/c/cc/Megara_Gulf.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "fileTitle": "File:Megara Gulf.jpg",
+        "caption": "Modern map shows the location of Megara where Cylon's supporters hailed from, relative to the city of Athens",
+        "alt": "",
+        "description": "Megara Gulf",
+        "date": "2015-03-27",
+        "section": "History in literature",
+        "position": 0,
+        "provenance": {
+          "credit": "Wolfymoza",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Megara_Gulf.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Cylon_of_Athens",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1360644706",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "a35e9ea3f0e9b5ca6fe3b5a3095af5f79cf138090e109532524025e345948c7a",
+      "heading": "Lead",
+      "excerpt": "Cylon (also Kylon; Ancient Greek: Κύλων) was an Athenian of the archaic period in Ancient Greece, primarily known for the events of the Cylo",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1360644706"
+    },
+    {
+      "id": "P2",
+      "hash": "41127e22e06c7fea76a820bf218ccf6673443a7ab32d179268408bb7172e86d7",
+      "heading": "History in literature",
+      "excerpt": "Scholarship has attempted to definitively date the events of Cylon's coup, but the only primary records of him come from Herodotus and Thucy",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1360644706"
+    },
+    {
+      "id": "P3",
+      "hash": "e2311a9e93dcd1d53f3d4f87c7121d65898e5ec3268f33f54e52f7a145d9c8c4",
+      "heading": "Political implications",
+      "excerpt": "Athenian government in the archaic period of ancient Greece was almost entirely made up of elites who had long standing power and had little",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1360644706"
+    },
+    {
+      "id": "P4",
+      "hash": "09ec8ccccf6490c4fdcb701a480f77aa9364ff55d0d502313178ec4c61bf34fc",
+      "heading": "Cylonian curse",
+      "excerpt": "Megacles and his genos, the Alcmaeonidae, were exiled from the city for violating the laws against killing suppliants. According to Herodotu",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1360644706"
+    },
+    {
+      "id": "P5",
+      "hash": "f42caa49c6644cb9bb1e13e8214a4e4d9101146afa724f6ce470bf47ef7432f0",
+      "heading": "Cylonian curse",
+      "excerpt": "Historian Tim Rood has attempted to explain the differences between Thucydides' and Herodotus' versions of the stories a chapter called The ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1360644706"
+    },
+    {
+      "id": "P6",
+      "hash": "f4cdf10239d28203602364f0565ddf6d942bd38a07f3edaa888a2393ee27eafb",
+      "heading": "Archeological discoveries",
+      "excerpt": "In April 2016, two mass graves containing 80 bodies were found in Palaio Faliro, a suburb about four miles from Athens. 36 of the skeletons ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1360644706"
+    }
+  ],
+  "updatedAt": "2026-10-22T13:00:17.593Z"
 }

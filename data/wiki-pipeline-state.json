@@ -6374,10 +6374,10 @@
       "checkedAt": "2026-10-21T03:11:54.175Z"
     },
     "247849": {
-      "status": "FETCHED",
-      "reason": "pinned-source-ready",
+      "status": "EVIDENCE_READY",
+      "reason": "1 rights-verified embedded images",
       "revisionId": 1360644706,
-      "checkedAt": "2026-10-22T13:00:11.926Z"
+      "checkedAt": "2026-10-22T13:00:17.592Z"
     },
     "254061": {
       "status": "EVIDENCE_READY",
@@ -9866,7 +9866,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-22T13:00:11.935Z",
+  "updatedAt": "2026-10-22T13:00:17.593Z",
   "dailyUsage": {
     "day": "2026-10-22",
     "calls": 68,
