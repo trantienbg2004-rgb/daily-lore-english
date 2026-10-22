@@ -2,9 +2,124 @@
   "pageId": 24286774,
   "title": "Steel crisis",
   "topic": "Economy",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1378564747,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378564747",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-22T06:18:21.747Z"
+  "reason": "2 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Evolution production acier pays.svg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/93/Evolution_production_acier_pays.svg/960px-Evolution_production_acier_pays.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Evolution production acier pays.svg",
+        "caption": "Steel production by countries. United States steel production faced a steep decline in the 1970s.",
+        "alt": "",
+        "description": "History of the development of steel production in each country as a proportion of world production.",
+        "date": "2022-10-22",
+        "section": "United States",
+        "position": 0,
+        "provenance": {
+          "credit": "Borvan53, from Toward a Fossil Free Future with HYBRIT: Development of Iron and Steelmaking Technology in Sweden and Finland",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Evolution_production_acier_pays.svg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Steel_crisis",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378564747",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Steel production and GPD per capita.svg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a2/Steel_production_and_GPD_per_capita.svg/960px-Steel_production_and_GPD_per_capita.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Steel production and GPD per capita.svg",
+        "caption": "Steel production and GDP. In most countries, steel production declines after reaching a certain level of GDP, suggesting that growth continues according to other factors.",
+        "alt": "",
+        "description": "Steel procuction and GPD. Five-year moving average. GPD in purchasing power parity (PPP) and in 1990 international Dollars.",
+        "date": "2019-12-19",
+        "section": "United States",
+        "position": 1,
+        "provenance": {
+          "credit": "Borvan53",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Steel_production_and_GPD_per_capita.svg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Steel_crisis",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378564747",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "9019c44fc883840165805874c933f2adb70f8579b4f319ab424a4380f1693d09",
+      "heading": "Lead",
+      "excerpt": "The steel crisis was a prolonged downturn in the global steel market, occurring during the 1973–1975 and early 1980s recessions. It followed",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378564747"
+    },
+    {
+      "id": "P2",
+      "hash": "df7eb2f9791bea7696de231d8c8bdc4c7d08bf4923d3407e19ce120779c8d0f6",
+      "heading": "United States",
+      "excerpt": "Steel production in the United States peaked at 111.4 million tons in 1973, and declined slightly to 97.9 million tons in 1978. By 1984, ste",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378564747"
+    },
+    {
+      "id": "P3",
+      "hash": "d9420e507310f6760d939bfac46ef2c9ac09fb8ea5c85dffa8d1a0232c033872",
+      "heading": "United States",
+      "excerpt": "The American Iron and Steel Institute finds employment in the steel industry peaked in 1953 at 650,000 employees. Employment declined to jus",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378564747"
+    },
+    {
+      "id": "P4",
+      "hash": "bc52785cd98b53114574f670b85ab1b53a6fb19a4139f2d94b3e027dce0e72f0",
+      "heading": "United States",
+      "excerpt": "Although foreign competition played a notable role in the decline of American steel employment, productivity gains have played an even large",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378564747"
+    },
+    {
+      "id": "P5",
+      "hash": "cbe83846717d175c1781172374abacb25b012bb0a18f11b49c3aaba6f2e84b0d",
+      "heading": "United States",
+      "excerpt": "From 1980 to 1988, U.S. Steel shuttered the 7 least-efficient of its 12 steel mills and slashed its industrial workforce from 75,000 employe",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378564747"
+    },
+    {
+      "id": "P6",
+      "hash": "bcead833d4e712904f01afd18b0000972c56af85934803582bd38333539686b9",
+      "heading": "Britain",
+      "excerpt": "In Britain, government policies played a significant role in the steel crisis, differing from the situation in the United States. The steel ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378564747"
+    },
+    {
+      "id": "P7",
+      "hash": "b3c82cc99bdda5c27a309b373868947cfbc1f724e539d9247a091360bc5ac530",
+      "heading": "European community",
+      "excerpt": "Many major steel producing countries and regions in Europe, such as Luxembourg, the Ruhr area in Germany, southwestern Sweden, Belgium, Ital",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378564747"
+    },
+    {
+      "id": "P8",
+      "hash": "bbe5a6eb220b1becb26f3e4963b5e00cec75cae5c7171c7e7825288261df218b",
+      "heading": "Britain",
+      "excerpt": "British steel employment numbered 197,000 jobs in 1974, falling to 179,000 in 1977, further still to 112,000 in 1980, and then a severe decl",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378564747"
+    },
+    {
+      "id": "P9",
+      "hash": "c51832ae91f82a092c081f43929a01d6266cd51d83768c0ae7e5bd0256ff13b2",
+      "heading": "European community",
+      "excerpt": "The causes of the declines in these countries were similar to the United Kingdom's: foreign competition (primarily against each other), over",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378564747"
+    }
+  ],
+  "updatedAt": "2026-10-22T06:18:27.385Z"
 }
