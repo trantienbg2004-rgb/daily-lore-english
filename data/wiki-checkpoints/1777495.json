@@ -2,9 +2,170 @@
   "pageId": 1777495,
   "title": "Global change",
   "topic": "Environment",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1375112162,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375112162",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-22T13:08:10.459Z"
+  "reason": "1 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:7 world series from our world in data.png",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/df/7_world_series_from_our_world_in_data.png/960px-7_world_series_from_our_world_in_data.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:7 world series from our world in data.png",
+        "caption": "Six global time series from Our World In Data as well as solar irradiance",
+        "alt": "",
+        "description": "Six global time series were downloaded from ourworldindata.org and truncated at year 1901; then total solar irradiation (TSI) was added. All programming was done in the R environment.",
+        "date": "2024-05-12",
+        "section": "Physical evidence",
+        "position": 0,
+        "provenance": {
+          "credit": "Ldecola",
+          "license": "CC0",
+          "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:7_world_series_from_our_world_in_data.png",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Global_change",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375112162",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "01132d2a7d6eac988e14279dc1ae70cb987d32b18d1962919a6f4cc4c0c23ce9",
+      "heading": "Lead",
+      "excerpt": "Global change in broad sense refers to planetary-scale changes in the Earth system. It is most commonly used to encompass the variety of cha",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375112162"
+    },
+    {
+      "id": "P2",
+      "hash": "87d44708acd19a37890d321065845cea2dd0831f8c869df69f3facd3277804e6",
+      "heading": "History of global-change research",
+      "excerpt": "The first global efforts to address the environmental impact of human activities on the environment worldwide date before the concept of glo",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375112162"
+    },
+    {
+      "id": "P3",
+      "hash": "49088a98a975b4958ef6e0c78990468986f986e14e86c11a91ba57c4fb73b4da",
+      "heading": "History of global-change research",
+      "excerpt": "The concept of global change was coined as researchers investigating climate change stated that not only the climate but also other componen",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375112162"
+    },
+    {
+      "id": "P4",
+      "hash": "f6032f1aad7c30a4be4f4a028247908809f381333aa7a63cbb8ea4dfc72bf18e",
+      "heading": "History of global-change research",
+      "excerpt": "In 2001, in Amsterdam, a conference was held focused around the four major global-change research programmes at the time: WCRP, IGBP, Intern",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375112162"
+    },
+    {
+      "id": "P5",
+      "hash": "575ad642319419a7956e7614f3865f995e75a8ec6157a594fb0314d5acc84c29",
+      "heading": "Causes",
+      "excerpt": "In the past, the main drivers of planetary-scale changes have been solar variation, plate tectonics, volcanism, proliferation and abatement ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375112162"
+    },
+    {
+      "id": "P6",
+      "hash": "2982dd5db9550d69a80394b071070f7c21ea9d92cee8822ebac968ab81e75e2f",
+      "heading": "Physical evidence",
+      "excerpt": "Humans have always altered their environment. The advent of agriculture around 10,000 years ago led to a radical change in land use that sti",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375112162"
+    },
+    {
+      "id": "P7",
+      "hash": "8e8e6eba01aaa01e4246a9d849ecf980edec40a34e5059bb9114b2b04a756568",
+      "heading": "Society",
+      "excerpt": "Global change in a societal context encompasses social, cultural, technological, political, economic and legal change. Terms closely related",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375112162"
+    },
+    {
+      "id": "P8",
+      "hash": "256597b3ca3b1bc48cd9f081cbcd8c39456d5b5b948169d272dbb1e3ede10d83",
+      "heading": "Planetary management",
+      "excerpt": "Humans are altering the planet's biogeochemical cycles in a largely unregulated way with limited knowledge of the consequences. Without step",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375112162"
+    },
+    {
+      "id": "P9",
+      "hash": "b5b4fa2bad17e7f8ee0a722794484718d52f54edb6a209410a1faa25e48bd02d",
+      "heading": "Causes",
+      "excerpt": "Scientists working on the International Geosphere-Biosphere Programme have said that Earth is now operating in a \"no analogue\" state. Measur",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375112162"
+    },
+    {
+      "id": "P10",
+      "hash": "bf22123ba954e60278c3b8e1c95acd46fc8d82aba65dad415a88279c28ed6bd7",
+      "heading": "Physical evidence",
+      "excerpt": "The 1950s marked a shift in gear: global change began accelerating. Between 1950 and 2010, the population more than doubled. In that time, r",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375112162"
+    },
+    {
+      "id": "P11",
+      "hash": "0eba430f03aab84b2f353a5bff627624c72fae02d89392be93d37cd97ff3bf34",
+      "heading": "Physical evidence",
+      "excerpt": "These changes to the human sub-system have a direct influence on all components of the Earth system. The chemical composition of the atmosph",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375112162"
+    },
+    {
+      "id": "P12",
+      "hash": "4edf992b1dac98b3c4212d4a42c6491ea8c609cae3a55cbffe4901b4062af49a",
+      "heading": "Physical evidence",
+      "excerpt": "In 2000, Nobel prize-winning scientist Paul Crutzen announced the scale of change is so great that in just 250 years, human society has push",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375112162"
+    },
+    {
+      "id": "P13",
+      "hash": "6de77ad69a043209162b5ca5291c863bc631af83118dae089dd5dc867e76bf82",
+      "heading": "Society",
+      "excerpt": "Since 1750, but more significantly, since the 1950s, global integration has accelerated. This era has witnessed global changes in communicat",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375112162"
+    },
+    {
+      "id": "P14",
+      "hash": "3695cda10a84243a1b4928b5295d0ee3be48c728bfdba42af160e5a7536c69aa",
+      "heading": "Society",
+      "excerpt": "Evidence, if more were needed, of the link between social and environmental global change came with the 2008 financial crisis. The crisis pu",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375112162"
+    },
+    {
+      "id": "P15",
+      "hash": "b9141a62c366fc8234cd7dec73a5e75f5fa2807164d12ec7f29c18322da0fec7",
+      "heading": "Society",
+      "excerpt": "Societies everywhere are facing unprecedented challenges as a result of rapid global change (including climate change). In such a context th",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375112162"
+    },
+    {
+      "id": "P16",
+      "hash": "e021273c7f8f062d56ff1d315e1a77135a4afa1dc96d5f3c5b05cb476e9497e2",
+      "heading": "Planetary management",
+      "excerpt": "Intensive research over the last 20 years has shown that tipping points do exist in the Earth system, and wide-scale change can be rapid – a",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375112162"
+    },
+    {
+      "id": "P17",
+      "hash": "eef92d3f8c689141df3bc8915709e4a89b0db024b8b9634adfce9182a381e6ab",
+      "heading": "Planetary management",
+      "excerpt": "There have been calls for a better way to manage the environment on a planetary scale, sometimes referred to as managing \"Earth's life suppo",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375112162"
+    },
+    {
+      "id": "P18",
+      "hash": "4986f329cd545f600c796594d817e8cbd188460781b666be7c35fb5ad047e369",
+      "heading": "Planetary management",
+      "excerpt": "In 2004, the IGBP published \"Global Change and the Earth System, a planet under pressure.\" The publication's executive summary concluded: \"A",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375112162"
+    },
+    {
+      "id": "P19",
+      "hash": "dab609e87b176a366449432eecb93c2eb2fba74ae62774aa4b8b3d78d2f14c06",
+      "heading": "Planetary management",
+      "excerpt": "In 2007, France called for UNEP to be replaced by a new and more powerful organization called the \"United Nations Environment Organization\".",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375112162"
+    }
+  ],
+  "updatedAt": "2026-10-22T13:08:16.173Z"
 }
