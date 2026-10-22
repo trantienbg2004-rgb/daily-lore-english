@@ -2,9 +2,191 @@
   "pageId": 10082018,
   "title": "Election recount",
   "topic": "Politics",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1378222395,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378222395",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-22T08:20:15.883Z"
+  "reason": "1 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:2008recountMN.JPG",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/46/2008recountMN.JPG/960px-2008recountMN.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:2008recountMN.JPG",
+        "caption": "Recounting optical-scan ballots by hand in the United States Senate election in Minnesota, 2008.",
+        "alt": "",
+        "description": "2008 United States senatorial election ballot recount in Olmsted County, Minnesota",
+        "date": "2008-11-19",
+        "section": "Recount methods",
+        "position": 0,
+        "provenance": {
+          "credit": "Jonathunder",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:2008recountMN.JPG",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Election_recount",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378222395",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "c9da19f1f3f8ab96d9a01321e93abcee2bf0b126675a8efe432987347495b41b",
+      "heading": "Lead",
+      "excerpt": "An election recount is a repeat tabulation of votes cast in an election that is used to determine the correctness of an initial count. Recou",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378222395"
+    },
+    {
+      "id": "P2",
+      "hash": "88d4edff42d7f26614aab3f837308ed90c2ce0f1cb286a01685eb09757884da6",
+      "heading": "Australia",
+      "excerpt": "Australian elections use instant-runoff voting and single transferable vote at the federal level to determine representatives for the House ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378222395"
+    },
+    {
+      "id": "P3",
+      "hash": "2b07766963c51ea60cf418526ba4a6b2a6ec7a6e1dae2173d8ca20fbe1737dd3",
+      "heading": "Australia",
+      "excerpt": "Similar processes occur at the state and territorial level. As in federal elections, candidates may request recounts subject to the discreti",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378222395"
+    },
+    {
+      "id": "P4",
+      "hash": "1fba7462ac61b22977f80d868419d3eac9ddd339809b3aa761805b474ccc5a64",
+      "heading": "Canada",
+      "excerpt": "Recounts in Canadian elections are formal process oversaw by judges, and therefore are often referred to as \"judicial recounts\". For federal",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378222395"
+    },
+    {
+      "id": "P5",
+      "hash": "af58e529ad383824f5239d0b7d4290719a022ca24635ea47699d58181bd47581",
+      "heading": "Canada",
+      "excerpt": "Recounts are conducted automatically if the difference between the vote tallies of the first and second place candidates falls below a certa",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378222395"
+    },
+    {
+      "id": "P6",
+      "hash": "6192bd080c75d71fab17bf49fedc957ff0e78018ce0d5a1e4d39269dd86fd716",
+      "heading": "Rarity of changes",
+      "excerpt": "It is extremely rare for elections to be overturned by recounts. In the twelve federal elections that took place between 1988 and 2015, judi",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378222395"
+    },
+    {
+      "id": "P7",
+      "hash": "11518ab388b1ce691d6ce74eb82d53649d7c7516f70ebc7280420e35f68868ef",
+      "heading": "Distinction from contested elections",
+      "excerpt": "Judicial recount are often conflated with contested elections in news reports and punditry. Recounts deal solely with the tabulation and cou",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378222395"
+    },
+    {
+      "id": "P8",
+      "hash": "cc1c4427a3faecf5944a41ba6757e37cbffd0bf466faa6dd2155dc04b35baecc",
+      "heading": "Ireland",
+      "excerpt": "In Irish presidential elections, recounts occur only at the approval of the High Court. Candidates or the Director of Public Prosecutions ma",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378222395"
+    },
+    {
+      "id": "P9",
+      "hash": "76fdc23505eee6e6221bbe6df896652bdd6db7f545e27792bf4610b13a5a47e8",
+      "heading": "New Zealand",
+      "excerpt": "New Zealand uses a mixed-member proportional representation system for elections to its Parliament. As in Australia, an official count takes",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378222395"
+    },
+    {
+      "id": "P10",
+      "hash": "12d048bfdfc52ab085fda7e77e2e96f05353e3cb673a5d5ac1a61b12785de633",
+      "heading": "Singapore",
+      "excerpt": "Elections in Singapore are determined through a First-past-the-post voting, with the candidate receiving the most votes being declared candi",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378222395"
+    },
+    {
+      "id": "P11",
+      "hash": "36915bbd70b556601ee3c49babeeeb3fbaee0fb14eee23d2d0ef9143b3de3a16",
+      "heading": "United States",
+      "excerpt": "In the United States recounts rarely reverse election results. Of the 4,687 statewide general elections held from 2000 to 2015, 27 were foll",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378222395"
+    },
+    {
+      "id": "P12",
+      "hash": "c809ccdfb3254827eeb5fba722f4082021bbaeedca1f9175e0b60fb141195b1f",
+      "heading": "Machine recount",
+      "excerpt": "A machine recount is a retabulation of ballots cast during the election. This can be done using an optical scan voting system, punched card ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378222395"
+    },
+    {
+      "id": "P13",
+      "hash": "ad7e33825271659846c1739b522883f174f9be97d0e9f9c9819e89cff6a49851",
+      "heading": "Manual recount",
+      "excerpt": "A manual or \"hand\" recount involves each individual physical representation of voter intent being reviewed for voter intent by one or more i",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378222395"
+    },
+    {
+      "id": "P14",
+      "hash": "4fc14fe34f4774023fa79e7f907accabdc5a71de924274ccf773bafcdfa6b4c9",
+      "heading": "Legal requirements",
+      "excerpt": "Recounts can be mandatory or optional. In some jurisdictions, recounts are mandatory in the event the difference between the top two candida",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378222395"
+    },
+    {
+      "id": "P15",
+      "hash": "dd0be04d507b59ab72a1a9fd0d10b7dcc2f915964e894ee83e9c0ef58f9face8",
+      "heading": "United Kingdom",
+      "excerpt": "More than one recount is allowed if a candidate or their agent requests one and the returning officer deems it appropriate. It is possible f",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378222395"
+    },
+    {
+      "id": "P16",
+      "hash": "3f809dc8ba2ca70a4ef28ad4020c1e4535d378be04f7884ad904d31c2b603193",
+      "heading": "Canada",
+      "excerpt": "The threshold, time limit, conditions that may justify the granting of a recount, and which court would oversee the recount are prescribed b",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378222395"
+    },
+    {
+      "id": "P17",
+      "hash": "c154b5126d0d29a4d033f927df589d547c85aed87eb8a0d266003e06c298f857",
+      "heading": "Rarity of changes",
+      "excerpt": "The changes of outcome in the 2008 and 2021 recounts were not entirely unexpected as apparent errors were identified in advance of the actua",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378222395"
+    },
+    {
+      "id": "P18",
+      "hash": "1475ef4ccb1849ecf4568f6d8e0bdcffb228f03c1d677eb8a355cdeed56e2de1",
+      "heading": "Rarity of changes",
+      "excerpt": "The 1988 recount for York North was conducted on November 30 and Progressive Conservative Micheal O'Brien was sworn in as MP. However, on ap",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378222395"
+    },
+    {
+      "id": "P19",
+      "hash": "2ce52ab61aa3cbabb7bf0fc93ccb1911e781f16c7cd94434f39e7b28892ed42a",
+      "heading": "Distinction from contested elections",
+      "excerpt": "Elections were frequently overturned in Canada in the 1800s under the Dominion Controverted Elections Act, for corrupted practices such as b",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378222395"
+    },
+    {
+      "id": "P20",
+      "hash": "cfca2062dd07c0eec5ee60f63f84369e052b241051b450621e441eef323b8462",
+      "heading": "Singapore",
+      "excerpt": "While Singapore adopts Non-resident citizen voting, if a recount of votes resulted in a margin that would involve overseas votes (where the ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378222395"
+    },
+    {
+      "id": "P21",
+      "hash": "c11888ae09acd69e3761594bcafe8bb9e90184c04efdd3cf9d074d9a6c80bc69",
+      "heading": "Manual recount",
+      "excerpt": "With DRE voting machines, a voter-verified paper audit trail (VVPAT) is examined from each voter. For some DREs that do not generate a VVPAT",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378222395"
+    },
+    {
+      "id": "P22",
+      "hash": "82cee62b1dd29229c44045d5c1618c319283ce51a21d33e5cd665fae80ad35ee",
+      "heading": "Legal requirements",
+      "excerpt": "Each jurisdiction has different criteria for optional recounts. Some areas permit recounts for any office or measure, while others require t",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378222395"
+    }
+  ],
+  "updatedAt": "2026-10-22T08:20:20.574Z"
 }
