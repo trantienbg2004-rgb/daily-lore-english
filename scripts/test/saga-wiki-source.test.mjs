@@ -115,6 +115,25 @@ test('a named place shared by all reading levels supports a later map',()=>{
  assert.equal(assignWikipediaPhotos([verifyEmbeddedImage(map,mapPage)],{...source,figures:[map]},unrelated).status,'REVIEW')
 })
 
+test('one licensed source photo may illustrate different pages in independent CEFR levels',()=>{
+ const variants=structuredClone(levels)
+ for(const [level,index] of [['A1-A2',1],['B1-B2',2],['C1-C2',3]]){
+  for(const p of variants[level].pages)p.text='Merchants connected distant places through exchange.'
+  variants[level].pages[index].text='Silk Road routes linked regions across Asia.'
+ }
+ const result=assignWikipediaPhotos([verifyEmbeddedImage(figure,page)],source,variants)
+ assert.equal(result.status,'VERIFIED')
+ for(const [level,index] of [['A1-A2',1],['B1-B2',2],['C1-C2',3]]){
+  const p=result.levelVariants[level].pages[index]
+  assert.equal(p.image,page.imageinfo[0].thumburl)
+  assert.equal(p.imageProvenance.evidence.pageIndex,index)
+  assert.equal(result.levelVariants[level].pages[0].image,'')
+ }
+ const unrelated=structuredClone(variants)
+ unrelated['C1-C2'].pages[3].text='Merchants connected distant places through exchange.'
+ assert.equal(assignWikipediaPhotos([verifyEmbeddedImage(figure,page)],source,unrelated).status,'REVIEW')
+})
+
 test('same place, unrelated object, wrong chart period and reused URL stay unapproved',()=>{
  const city={...figure,fileTitle:'File:Silk Road city skyline.jpg',caption:'Skyline of a modern city',alt:'Modern skyline'}
  const cityPage=structuredClone(page);cityPage.title=city.fileTitle

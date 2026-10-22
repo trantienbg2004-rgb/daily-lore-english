@@ -60,6 +60,27 @@ export function decideWikipediaPhoto(candidate,{source,levelVariants,usedUrls=ne
 
 export function assignWikipediaPhotos(decisions,source,levelVariants,{usedUrls=new Set()}={}){
  const approved=decisions.map(row=>decideWikipediaPhoto(row,{source,levelVariants,usedUrls})).filter(row=>row.status==='VERIFIED')
+ if(!approved.length){
+  // The three CEFR versions have independent pacing. A relevant photo can
+  // illustrate different page numbers while retaining one pinned source file.
+  const levels=['A1-A2','B1-B2','C1-C2']
+  const choices=decisions.map(candidate=>({candidate,perLevel:Object.fromEntries(levels.map(level=>[
+   level,decideWikipediaPhoto(candidate,{source,levelVariants:Object.fromEntries(levels.map(key=>[
+    key,levelVariants?.[level]])),usedUrls})]))}))
+   .filter(({perLevel})=>levels.every(level=>perLevel[level].status==='VERIFIED'))
+   .filter(({perLevel})=>new Set(levels.map(level=>perLevel[level].pageIndex===0)).size===1)
+  choices.sort((a,b)=>levels.reduce((sum,level)=>sum+b.perLevel[level].matchScore-a.perLevel[level].matchScore,0))
+  if(choices.length){
+   const selected=choices[0],variants=structuredClone(levelVariants)
+   for(const level of levels){
+    const row=selected.perLevel[level],page=variants[level].pages[row.pageIndex]
+    Object.assign(page,{image:row.photo.url,caption:row.photo.caption,imageProvenance:row.photo.provenance})
+   }
+   return {status:'VERIFIED',levelVariants:variants,
+    photos:[{...selected.perLevel['B1-B2'].photo,pageIndex:selected.perLevel['B1-B2'].pageIndex}],
+    decisions:levels.map(level=>selected.perLevel[level])}
+  }
+ }
  const coverScore=row=>row.matchScore+(/\.(?:jpe?g|webp)$/i.test(row.photo.fileTitle)?2:0)
  const directLead=approved.filter(row=>row.pageIndex===0).sort((a,b)=>coverScore(b)-coverScore(a)||a.photo.position-b.photo.position)[0]
  // A source article's own first photo can introduce a detail explained later in the story.
