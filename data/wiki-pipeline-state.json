@@ -9674,10 +9674,10 @@
       "checkedAt": "2026-10-21T07:35:48.172Z"
     },
     "80598110": {
-      "status": "FETCHED",
-      "reason": "pinned-source-ready",
+      "status": "REJECTED",
+      "reason": "insufficient-source-text-or-embedded-images",
       "revisionId": 1360548651,
-      "checkedAt": "2026-10-22T12:47:54.800Z"
+      "checkedAt": "2026-10-22T12:48:00.394Z"
     },
     "80758313": {
       "status": "NEEDS_REVIEW",
@@ -9866,7 +9866,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-22T12:47:54.808Z",
+  "updatedAt": "2026-10-22T12:48:00.396Z",
   "dailyUsage": {
     "day": "2026-10-22",
     "calls": 60,
