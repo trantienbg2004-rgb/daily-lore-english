@@ -6194,10 +6194,10 @@
       "checkedAt": "2026-10-21T01:41:19.789Z"
     },
     "45633": {
-      "status": "NEEDS_REPAIR",
-      "reason": "retry exact-page structured repair",
+      "status": "EVIDENCE_READY",
+      "reason": "2 rights-verified embedded images",
       "revisionId": 1377126508,
-      "checkedAt": "2026-10-22T08:14:04.185Z"
+      "checkedAt": "2026-10-22T08:24:34.690Z"
     },
     "49005": {
       "status": "EVIDENCE_READY",
@@ -9866,7 +9866,7 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-10-22T08:24:02.384Z",
+  "updatedAt": "2026-10-22T08:24:34.696Z",
   "dailyUsage": {
     "day": "2026-10-22",
     "calls": 9,
