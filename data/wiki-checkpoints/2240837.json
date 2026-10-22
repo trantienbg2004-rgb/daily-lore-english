@@ -2,10 +2,10 @@
   "pageId": 2240837,
   "title": "Abrupt climate change",
   "topic": "Environment",
-  "status": "DRAFTED",
+  "status": "VALIDATED",
   "revisionId": 1379704191,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379704191",
-  "reason": "draft durably saved before validation",
+  "reason": "local factual, style, length, structure and source audit passed",
   "rights": [
     {
       "status": "REVIEW",
@@ -197,7 +197,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379704191"
     }
   ],
-  "updatedAt": "2026-10-22T09:13:14.008Z",
+  "updatedAt": "2026-10-22T09:13:32.077Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -341,5 +341,8 @@
     "output": 1645,
     "total": 3560
   },
-  "validation": null
+  "validation": {
+    "accepted": true,
+    "errors": []
+  }
 }
