@@ -2,10 +2,10 @@
   "pageId": 31376228,
   "title": "Economic history of the Arab world",
   "topic": "Economy",
-  "status": "DRAFTED",
+  "status": "VALIDATED",
   "revisionId": 1274814693,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1274814693",
-  "reason": "draft durably saved before validation",
+  "reason": "local factual, style, length, structure and source audit passed",
   "rights": [
     {
       "status": "REJECTED",
@@ -267,7 +267,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1274814693"
     }
   ],
-  "updatedAt": "2026-10-22T09:04:30.533Z",
+  "updatedAt": "2026-10-22T09:04:46.812Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -419,5 +419,8 @@
     "output": 1258,
     "total": 3887
   },
-  "validation": null
+  "validation": {
+    "accepted": true,
+    "errors": []
+  }
 }
