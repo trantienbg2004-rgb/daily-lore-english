@@ -8690,10 +8690,10 @@
       "checkedAt": "2026-10-21T03:13:36.811Z"
     },
     "52737319": {
-      "status": "PENDING",
-      "reason": "queued",
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
       "revisionId": 1365373171,
-      "checkedAt": null
+      "checkedAt": "2026-10-22T08:23:38.882Z"
     },
     "52759037": {
       "status": "EVIDENCE_READY",
@@ -9866,7 +9866,7 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-10-22T08:23:32.527Z",
+  "updatedAt": "2026-10-22T08:23:38.889Z",
   "dailyUsage": {
     "day": "2026-10-22",
     "calls": 9,
