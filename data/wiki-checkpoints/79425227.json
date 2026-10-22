@@ -2,10 +2,10 @@
   "pageId": 79425227,
   "title": "1878 Kanak revolt",
   "topic": "Society",
-  "status": "NEEDS_REVIEW",
+  "status": "EVIDENCE_READY",
   "revisionId": 1380582529,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380582529",
-  "reason": "Gemini returned invalid JSON; preserve candidate",
+  "reason": "retry generation with structured JSON",
   "rights": [
     {
       "status": "REJECTED",
@@ -245,5 +245,6 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380582529"
     }
   ],
-  "updatedAt": "2026-10-21T13:29:37.033Z"
+  "updatedAt": "2026-10-22T08:34:32.460Z",
+  "priorReviewReason": "Gemini returned invalid JSON; preserve candidate"
 }
