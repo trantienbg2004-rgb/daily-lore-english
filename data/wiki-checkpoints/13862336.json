@@ -2,10 +2,10 @@
   "pageId": 13862336,
   "title": "Abbaye de Créteil",
   "topic": "Culture",
-  "status": "EVIDENCE_READY",
+  "status": "RETRY_LATER",
   "revisionId": 1366398466,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1366398466",
-  "reason": "1 rights-verified embedded images",
+  "reason": "Gemini circuit open",
   "rights": [
     {
       "status": "REJECTED",
@@ -135,5 +135,5 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1366398466"
     }
   ],
-  "updatedAt": "2026-10-22T14:39:06.985Z"
+  "updatedAt": "2026-10-22T14:39:12.713Z"
 }
