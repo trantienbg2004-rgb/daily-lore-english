@@ -2,9 +2,211 @@
   "pageId": 31426964,
   "title": "Virgin-soil epidemic",
   "topic": "Health",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1378541285,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378541285",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-22T09:14:32.163Z"
+  "reason": "3 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:FlorentineCodex BK12 F54 smallpox.jpg",
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/7/7d/FlorentineCodex_BK12_F54_smallpox.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "fileTitle": "File:FlorentineCodex BK12 F54 smallpox.jpg",
+        "caption": "A 16th-century illustration of Nahuas infected with smallpox",
+        "alt": "",
+        "description": "An illustrated panel appearing on fol.54 of Book XII of the en:Florentine Codex, the 16th-century compendium of materials and information on Aztec and Nahua history collected by Fray Bernardino de Sahagún. The drawing shows Nahuas infected with smallpox disease. The illustration accompanies text written in Nahuatl, which in English translation says in part: \". . . [The disease] brought great desolation: a great many died of it. They could no longer walk about, but lay in their dwellings and sleeping places, no longer able to move or stir. They ",
+        "date": "circa 1585date QS:P,+1585-00-00T00:00:00Z/9,P1480,Q5727902date QS:P,+1585-00-00T00:00:00Z/9,P1480,Q5",
+        "section": "",
+        "position": 0,
+        "provenance": {
+          "credit": "en:Bernardino de Sahagún (1499-1590), compiler. Original illustration by unknown 16th-century artist; this version of the drawing by unknown 16th-century copyist.",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:FlorentineCodex_BK12_F54_smallpox.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Virgin-soil_epidemic",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378541285",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Acuna-Soto EID-v8n4p360 Fig1.png",
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/5/56/Acuna-Soto_EID-v8n4p360_Fig1.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "fileTitle": "File:Acuna-Soto EID-v8n4p360 Fig1.png",
+        "caption": "Estimates of the population collapse of Mexico in the 16th century. The first wave of deaths is attributed to smallpox, and the following waves are attributed to an unknown hemorrhagic fever agent from the Cocoliztli epidemics.",
+        "alt": "",
+        "description": "(original caption) Figure 1. The 16th-century population collapse in Mexico, based on estimates of Cook and Simpson (1). The 1545 and 1576 cocoliztli epidemics appear to have been hemorrhagic fevers caused by an indigenous viral agent and aggravated by unusual climatic conditions. The Mexican population did not recover to pre-Hispanic levels until the 20th century.",
+        "date": "2002-04",
+        "section": "Cocoliztli epidemics",
+        "position": 1,
+        "provenance": {
+          "credit": "Rodolfo Acuna-Soto, David W. Stahle, Malcolm K. Cleaveland, and Matthew D. Therrell",
+          "license": "CC0",
+          "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Acuna-Soto_EID-v8n4p360_Fig1.png",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Virgin-soil_epidemic",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378541285",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Smallpox virus virions TEM PHIL 1849 (crop).png",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c0/Smallpox_virus_virions_TEM_PHIL_1849_%28crop%29.png/960px-Smallpox_virus_virions_TEM_PHIL_1849_%28crop%29.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Smallpox virus virions TEM PHIL 1849 (crop).png",
+        "caption": "Transmission electron microscopy image of the smallpox virus, a historically common agent of virgin-soil epidemics",
+        "alt": "",
+        "description": "Cropped version of File:Smallpox virus virions TEM PHIL 1849.JPG",
+        "date": "1975",
+        "section": "Debate",
+        "position": 2,
+        "provenance": {
+          "credit": "Photo Credit: Content Providers(s): CDC/ Dr. Fred Murphy; Sylvia Whitfield",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Smallpox_virus_virions_TEM_PHIL_1849_(crop).png",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Virgin-soil_epidemic",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378541285",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "be9f7ea88b7d82efb44dde878b778cdd70973f8a2ecff2f820fce49d40968abb",
+      "heading": "Lead",
+      "excerpt": "In epidemiology, a virgin-soil epidemic is an epidemic in which populations that previously were in isolation from a pathogen are immunologi",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378541285"
+    },
+    {
+      "id": "P2",
+      "hash": "d8da1f79b94528153d81281041501b63ed150d51b88767f45cd15f2f57b55668",
+      "heading": "Lead",
+      "excerpt": "When a population has been isolated from a particular pathogen without any contact, individuals in that population have not built up any imm",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378541285"
+    },
+    {
+      "id": "P3",
+      "hash": "b624e2aa52b4d0fd87a135be0420d96c0865872dde0522e3a76bf625062d0567",
+      "heading": "Lead",
+      "excerpt": "Diseases introduced to the Americas by Europeans and Africans include smallpox, yellow fever, measles and malaria as well as new strains of ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378541285"
+    },
+    {
+      "id": "P4",
+      "hash": "7d10d7b5e48b1388e462f4e95736ffa38575ac4b3a52d85f3800bdb452581c22",
+      "heading": "Lead",
+      "excerpt": "Virgin-soil epidemics also occurred in other regions. For example, the Roman Empire spread smallpox to new populations in Europe and the Mid",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378541285"
+    },
+    {
+      "id": "P5",
+      "hash": "45d67899ff60b5817d08d253fd65c6e1e8147e61c15b244822d4b86c1eda8187",
+      "heading": "Debate",
+      "excerpt": "The debate, as regards smallpox (Variola major or Variola minor), is sometimes complicated by problems in distinguishing its effects from th",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378541285"
+    },
+    {
+      "id": "P6",
+      "hash": "9006ccb89bf733bff328e476554cd5c99f41ad11bb80b11cc898911e9e2af8d2",
+      "heading": "History of the term",
+      "excerpt": "The term \"virgin soil epidemic\" was coined by Alfred Crosby as an epidemic \"in which the populations at risk have had no previous contact wi",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378541285"
+    },
+    {
+      "id": "P7",
+      "hash": "3d7f91bb2dc2bb6845c00a9b94970e1d72ac2b23118ceef3b90498f491b1315d",
+      "heading": "Native American epidemics",
+      "excerpt": "Due to limited interaction between communities and more limited instances of zoonosis, the spread of infectious diseases was generally hampe",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378541285"
+    },
+    {
+      "id": "P8",
+      "hash": "f918e23c3d874f3d69080e681218a26ccbeaf9ae433b8db53ca56bd1c4a9c304",
+      "heading": "Cocoliztli epidemics",
+      "excerpt": "A series of epidemics of unknown origin caused major population collapses in Central America in the 16th century, possibly due to little imm",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378541285"
+    },
+    {
+      "id": "P9",
+      "hash": "3f1d3f64232ad09176435e77095e8beda205b447eef6656cac59fc5acee581ff",
+      "heading": "Australian Aboriginal epidemics",
+      "excerpt": "The European colonization of Australia led to major epidemics among Aboriginal Australians, primarily due to smallpox, influenzas, tuberculo",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378541285"
+    },
+    {
+      "id": "P10",
+      "hash": "15005d216c1a4512b05b3b26ad0cbdb220f69d55b49238693c8ea2b5f5732d2e",
+      "heading": "Other instances",
+      "excerpt": "With malaria spreading in the Caribbean islands after European–African contact, the immunological resistance of African slaves to malaria in",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378541285"
+    },
+    {
+      "id": "P11",
+      "hash": "937528018eb83ac99bf0eb73b1a59024fcab7f3e9a911ae7eb48ed961edd4409",
+      "heading": "Debate",
+      "excerpt": "Research over the last few decades has questioned some aspects of the notion of virgin-soil epidemics. David S. Jones has argued that the te",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378541285"
+    },
+    {
+      "id": "P12",
+      "hash": "69878668fd7218193c6a7b181c702f7666efa041980cdfe263a59274bad33b99",
+      "heading": "History of the term",
+      "excerpt": "In one early use of the term, in 1973, Peter Moodie remarked that measles and chickenpox, which are usually childhood diseases, may in ‘virg",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378541285"
+    },
+    {
+      "id": "P13",
+      "hash": "980dc892ef3e8a8f619da3b234a92e51282d36e736f060e31c5dc3ee476f53f8",
+      "heading": "History of the term",
+      "excerpt": "The concept would later be adopted wholesale by Jared Diamond as a central theme in his popular book Guns, Germs and Steel as an explanation",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378541285"
+    },
+    {
+      "id": "P14",
+      "hash": "60c01c012b9a619366050dbfdc14335ff5c05b60a7be5e0a1b3ec13838336691",
+      "heading": "Debate",
+      "excerpt": "Paul Kelton has argued that the slave trade in indigenous people by Europeans exacerbated the spread and virulence of smallpox and that a vi",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378541285"
+    },
+    {
+      "id": "P15",
+      "hash": "928fd16e293d80dbffa982dac38d8eb600683e001b344a81e68e55f04a330556",
+      "heading": "Debate",
+      "excerpt": "Cristobal Silva has re-examined accounts by colonists of 17th-century New England epidemics and has interpreted and argued that they were pr",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378541285"
+    },
+    {
+      "id": "P16",
+      "hash": "03198c247dcf512d246f41b59bb094b434c071618424f6c5818c9b048ef76de7",
+      "heading": "Debate",
+      "excerpt": "Historian Gregory T. Cushman claims that virgin-soil epidemics were not the major cause of deaths due to disease among Pacific Island popula",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378541285"
+    },
+    {
+      "id": "P17",
+      "hash": "ba7257a117694f6184578a61a8f0101130e055237f1a61d08bb50e2e2d68531e",
+      "heading": "Debate",
+      "excerpt": "Historian Christopher R. Browning writes that \"Disease, colonization, and irreversible demographic decline were intertwined and mutually rei",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378541285"
+    },
+    {
+      "id": "P18",
+      "hash": "6465f1bb8bf4fde915f1fa3e88f3018d2891d025529d860f818407b14de198ea",
+      "heading": "Debate",
+      "excerpt": "Following this work, historian Jeffrey Ostler has argued that, in relation to European colonization of the Americas, \"virgin soil epidemics ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378541285"
+    }
+  ],
+  "updatedAt": "2026-10-22T09:14:38.089Z"
 }
