@@ -2,9 +2,142 @@
   "pageId": 1591777,
   "title": "Abstention",
   "topic": "Politics",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1354030972,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1354030972",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-22T08:50:24.328Z"
+  "reason": "1 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Canadaelections2011.png",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/82/Canadaelections2011.png/960px-Canadaelections2011.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Canadaelections2011.png",
+        "caption": "Comparative results of 2011 Canadian federal election with or without abstention",
+        "alt": "",
+        "description": "Résultats de l'élection fédérale canadienne de 2011 avec des diagrammes circulaires.",
+        "date": "2012-02-19",
+        "section": "",
+        "position": 0,
+        "provenance": {
+          "credit": "This image has been made by Zorion (User:Zorion) and released under the licenses stated above. You are free to use this image for any purpose without restriction as long as you credit me as author, follow the terms of license and cite Wikimedia Commo",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Canadaelections2011.png",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Abstention",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1354030972",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "bed83105e5bfad2784de89acad050102e5d782da8428344c78ee6fccb2a1b5a6",
+      "heading": "Lead",
+      "excerpt": "Abstention is a term in election procedure for when a participant in a vote either does not go to vote (on election day) or, in parliamentar",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1354030972"
+    },
+    {
+      "id": "P2",
+      "hash": "7c2b93503f639c610039fb990c90bb7c25a31a993a7cb2791b030243726630d7",
+      "heading": "Lead",
+      "excerpt": "An abstention may be used to indicate the voting individual's ambivalence about the measure, or mild disapproval that does not rise to the l",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1354030972"
+    },
+    {
+      "id": "P3",
+      "hash": "8dbf8874e0ce2d5a1658d406a12b83271ab6c95c215e5c1acc62f104ab5e7fa9",
+      "heading": "Lead",
+      "excerpt": "Abstentions do not count in tallying the vote negatively or positively; when members abstain, they are in effect attending only to contribut",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1354030972"
+    },
+    {
+      "id": "P4",
+      "hash": "239cb4e7ea2a9e0f24c0718a95ebb235687ef3869187c539cd89196db13baea4",
+      "heading": "Active abstention",
+      "excerpt": "An active abstention can occur when a voter votes in a way that balances out their vote as if they had never voted. This has occurred many t",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1354030972"
+    },
+    {
+      "id": "P5",
+      "hash": "c67d7081c79e50e1877ed04119b70e56d4a50821a64dd8ceff90522c69bbd3d5",
+      "heading": "Active abstention",
+      "excerpt": "In another manner, an intentionally spoilt vote could be interpreted as an active abstention. Because of the nature of an abstention, only i",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1354030972"
+    },
+    {
+      "id": "P6",
+      "hash": "ac598400dd26e3f1cf4cb7364123a03af5008c38f1189f4b16dbace28fcbdb3f",
+      "heading": "International and national parliamentary procedures",
+      "excerpt": "In the United Nations Security Council, representatives of the five countries holding a veto power (the United States, United Kingdom, Franc",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1354030972"
+    },
+    {
+      "id": "P7",
+      "hash": "db2f4a96b2ff5df131b2298ccb070a7cbfb53db652b7049833ef5449fb07213a",
+      "heading": "Justification",
+      "excerpt": "In support for this non-political strategy, some non-voters claim that voting does not make any positive difference. \"If voting changed anyt",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1354030972"
+    },
+    {
+      "id": "P8",
+      "hash": "fa8d6ecaaa89914104f3a0edfca809ed03129742098e8d490ca9903bbde1608e",
+      "heading": "Criticisms",
+      "excerpt": "Let's put it this way: Suppose we were slaves in the Old South, and that for some reason, each plantation had a system where the slaves were",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1354030972"
+    },
+    {
+      "id": "P9",
+      "hash": "797e83fd024637c2866896f351712dbf2a5966f7235389c59bed997cdcb23892",
+      "heading": "Alternatives",
+      "excerpt": "The German philosopher and founder of the Party of Nonvoters [de], Werner Peters [de] describes in his 2021 published book \"Nonvoters into p",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1354030972"
+    },
+    {
+      "id": "P10",
+      "hash": "2654307d9baf9a050cf82619f9af24ef8fec9d92ad6d6b6f80022f4628c5e228",
+      "heading": "International and national parliamentary procedures",
+      "excerpt": "In the Council of the European Union, an abstention on a matter decided by unanimity has the effect of a yes vote; on matters decided by qua",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1354030972"
+    },
+    {
+      "id": "P11",
+      "hash": "ad027b50f32bbf35edb895af3ed7e9f020763667d992ef02f176ccb2c986508d",
+      "heading": "International and national parliamentary procedures",
+      "excerpt": "In the Italian Senate, an abstention used to have the effects of a no vote. This was changed in 2017, when it was established that a measure",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1354030972"
+    },
+    {
+      "id": "P12",
+      "hash": "b99bf3d6ecc6becc49faaf9681204c1af0376ee5825089facd134e56ab40699c",
+      "heading": "International and national parliamentary procedures",
+      "excerpt": "In the United States House of Representatives and many other legislatures, members may vote \"present\" rather than for or against a bill or r",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1354030972"
+    },
+    {
+      "id": "P13",
+      "hash": "799744e2baefca8781280d8bf9605d23a9b6a887b8171a13fc82d1c34c589364",
+      "heading": "International and national parliamentary procedures",
+      "excerpt": "In the United States Senate, the Presiding Officer calls each senator's name alphabetically, and, if abstaining, the senator must give a rea",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1354030972"
+    },
+    {
+      "id": "P14",
+      "hash": "44fc8dc58e1b13d88a78c2365e64fa0a64cc099dcaec964f38d98c4606ae5a47",
+      "heading": "Justification",
+      "excerpt": "In addition to strategic non-voters, there are also ethical non-voters, those who reject voting outright, not merely as an ineffective tacti",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1354030972"
+    },
+    {
+      "id": "P15",
+      "hash": "ea23f201c747d57771bb20ef523ffae9f3df3f6af399f6c314e77cf586e7bfc4",
+      "heading": "Criticisms",
+      "excerpt": "Can you imagine slaves on a plantation sitting around voting for masters and spending their energy on campaigning and candidates when they c",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1354030972"
+    }
+  ],
+  "updatedAt": "2026-10-22T08:50:30.005Z"
 }
