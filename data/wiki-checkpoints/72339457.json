@@ -2,9 +2,112 @@
   "pageId": 72339457,
   "title": "Ancient Somali city-states",
   "topic": "History & Geography",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1368556282,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368556282",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-22T06:17:15.605Z"
+  "reason": "1 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Somali Frau Mauro ship.JPG"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Near East - india 3.JPG",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5d/Near_East_-_india_3.JPG/960px-Near_East_-_india_3.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Near East - india 3.JPG",
+        "caption": "The most prominent cities of the Old World from the Periplus of the Erythraean Sea.",
+        "alt": "",
+        "description": "Near East - india Trade route",
+        "date": "2009-03-29 17:33:05",
+        "section": "List of city states",
+        "position": 1,
+        "provenance": {
+          "credit": "me",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Near_East_-_india_3.JPG",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Ancient_Somali_city-states",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368556282",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "8de80767e34c9b73cb5ea3e97a12eaf882ac14a628d12565f0971b82beb9adef",
+      "heading": "Lead",
+      "excerpt": "In antiquity, ancestors of the Somali people were an important link in the Horn of Africa connecting the region's commerce with the rest of ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368556282"
+    },
+    {
+      "id": "P2",
+      "hash": "052bbef7f615c89418e7edc7422f4615a6ca78fb0e10dee0aa0e834581793f15",
+      "heading": "History",
+      "excerpt": "The ancient Somali city-states were founded upon an indigenous network involving caravan trades going back approximately four thousand years",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368556282"
+    },
+    {
+      "id": "P3",
+      "hash": "7d326785114cb9ddbc7bfdb819891dc45cd7023b88f94ced95d922f7e09a9425",
+      "heading": "History",
+      "excerpt": "After the Roman conquest of the Nabataean Empire and the Roman naval presence at Aden to curb pillaging, Somali and Gulf Arab merchants by a",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368556282"
+    },
+    {
+      "id": "P4",
+      "hash": "64f8b5ac6eee4ae263d729b110057b053beab062e6ac5ae5f804a082659c154c",
+      "heading": "History",
+      "excerpt": "For centuries, Indian merchants brought large quantities of cinnamon to Somalia and Arabia from Ceylon and the Spice Islands. The source of ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368556282"
+    },
+    {
+      "id": "P5",
+      "hash": "1a4493f7b78a18448b8a26f97b1b6e09f039be0ff756105dcc52dc496681f856",
+      "heading": "History",
+      "excerpt": "Aromata was one of the ports that lay in a line along the north Somali coast. Aromata was the sixth port after Zeyla (Aualites), Berbera (Ma",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368556282"
+    },
+    {
+      "id": "P6",
+      "hash": "809c1e7fed087c9e788966f2c46a5bdf0b036fa982e08cf51fce4de80502bd40",
+      "heading": "Trade and governance",
+      "excerpt": "An ancient document called the Periplus of the Erythraean Sea describes the political system of the city states as being decentralised and l",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368556282"
+    },
+    {
+      "id": "P7",
+      "hash": "8338c4ad6f854b8848cb3a1f001b2539051f68816964f220ed67fb9754768d62",
+      "heading": "History",
+      "excerpt": "In ancient times, Somalia was known to the Chinese as the \"Country of Pi-p'a-lo\", which had four port cities each trying to gain the suprema",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368556282"
+    },
+    {
+      "id": "P8",
+      "hash": "971ff887ffefce07803074219e2648932bd810d465eaeac773baaf6064869265",
+      "heading": "Trade and governance",
+      "excerpt": "A ship called the Beden was the principal vessel for traders from the different city-states. It was a fast, durable, double masted ship. The",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368556282"
+    },
+    {
+      "id": "P9",
+      "hash": "169f87f5df7f67b9eca541e0214717b5ac22bd06d897312a2e94e605e5c0c20c",
+      "heading": "Trade and governance",
+      "excerpt": "The ports of Mosylon, Mundus, Opone, Malao, Avalites and Sarapion, were trading in items such as spices, frankincense, myrrh and cassia. The",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368556282"
+    },
+    {
+      "id": "P10",
+      "hash": "d034d9e131853201465e13d825948ad1647b3331de747dc878f40370b155731b",
+      "heading": "Trade and governance",
+      "excerpt": "The Somali coast formed a section of the greater incense trade alongside South Asia and Southern Arabia on the Red Sea. Incense was a sought",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368556282"
+    }
+  ],
+  "updatedAt": "2026-10-22T06:17:21.407Z"
 }

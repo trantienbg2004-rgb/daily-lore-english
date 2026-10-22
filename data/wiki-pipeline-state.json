@@ -9290,10 +9290,10 @@
       "checkedAt": "2026-10-21T07:39:57.389Z"
     },
     "72339457": {
-      "status": "FETCHED",
-      "reason": "pinned-source-ready",
+      "status": "EVIDENCE_READY",
+      "reason": "1 rights-verified embedded images",
       "revisionId": 1368556282,
-      "checkedAt": "2026-10-22T06:17:15.605Z"
+      "checkedAt": "2026-10-22T06:17:21.406Z"
     },
     "72587491": {
       "status": "EVIDENCE_READY",
@@ -9866,7 +9866,7 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-10-22T06:17:15.605Z",
+  "updatedAt": "2026-10-22T06:17:21.407Z",
   "dailyUsage": {
     "day": "2026-10-22",
     "calls": 8,
