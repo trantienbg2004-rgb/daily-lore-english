@@ -64,6 +64,7 @@ jobs:
           SAGA_WIKI_FREE_TIER_CONFIRMED: '1'
           SAGA_WIKI_CHECKPOINT_BRANCH: feat/saga-wikipedia-first-20261020
           SAGA_WIKI_MODEL: ${{ steps.free_model.outputs.model || 'gemini-3.5-flash-lite' }}
+          SAGA_WIKI_MODELS: ${{ steps.free_model.outputs.models || '' }}
           SAGA_WIKI_MAX_CALLS: ${{ steps.free_model.outputs.available == 'true' && (github.event_name == 'schedule' || github.event.inputs.max_calls == '8') && '8' || '0' }}
         run: node scripts/wiki-pipeline.mjs batch --max-calls="$SAGA_WIKI_MAX_CALLS" --max-candidates=16
       - name: Verify staged stories and Reader
