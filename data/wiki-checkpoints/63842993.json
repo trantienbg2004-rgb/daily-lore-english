@@ -2,9 +2,170 @@
   "pageId": 63842993,
   "title": "Economics of vaccines",
   "topic": "Health",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1330882009,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1330882009",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-22T06:16:57.590Z"
+  "reason": "1 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Ebola Outbreak Map (ongoing).png",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/29/Ebola_Outbreak_Map_%28ongoing%29.png/960px-Ebola_Outbreak_Map_%28ongoing%29.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Ebola Outbreak Map (ongoing).png",
+        "caption": "The struggle to get access to vaccine in the 2013-2016 Ebola epidemic was primarily socio-economic, not technical",
+        "alt": "",
+        "description": "Continuation of the moribund map located at https://commons.wikimedia.org/wiki/File:Map_of_Ebola_Outbreak_-_1_October_2014.svg",
+        "date": "2014-12-06",
+        "section": "",
+        "position": 0,
+        "provenance": {
+          "credit": "Раціональне анархіст",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Ebola_Outbreak_Map_(ongoing).png",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Economics_of_vaccines",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1330882009",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "ba586afb0bf0dad2031aa5f2d56fff45d3563a11636ae76b82500b080e7929da",
+      "heading": "Lead",
+      "excerpt": "Vaccine development and production is economically complex and prone to market failure. Development is unprofitable in rich and poor countri",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1330882009"
+    },
+    {
+      "id": "P2",
+      "hash": "df305e52b5a1324ace383a338fb802425f9ded59d7cb6aa579e809d07b72cbee",
+      "heading": "Lead",
+      "excerpt": "Many of the diseases most demanding a vaccine, including HIV, malaria and tuberculosis, exist principally in poor countries. In the United S",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1330882009"
+    },
+    {
+      "id": "P3",
+      "hash": "5133fa1f0286634d716626dcf90ed8c05a434c51141c7f0e7319fb7f09d9a977",
+      "heading": "Lead",
+      "excerpt": "In contrast to research and development, the vaccine production market, even for out-of-patent vaccines, is highly concentrated. 80% of glob",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1330882009"
+    },
+    {
+      "id": "P4",
+      "hash": "25616fd84acbb87e1fdc444111f9f0af7f9b8b6a8384ce18ebc99393217f1224",
+      "heading": "Lead",
+      "excerpt": "Many vaccines have been highly cost-effective and beneficial for public health. Vaccine effort that is beneficial to society is vastly in ex",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1330882009"
+    },
+    {
+      "id": "P5",
+      "hash": "69a58ed6743a46ade9c46a8fae96c2e77b93dc5c1db179bfb71fad396d5aedec",
+      "heading": "Market concentration",
+      "excerpt": "While vaccine research and development is done by many small companies, large-scale vaccine manufacturing is done by an oligopoly of big man",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1330882009"
+    },
+    {
+      "id": "P6",
+      "hash": "60d836d611e6271ba2e3156e92a0304f5607c5db130d45fafe36c466dc1dbb80",
+      "heading": "National vaccine-manufacturing facilities",
+      "excerpt": "Some countries have set up local manufacturing facilities, especially during the COVID-19 pandemic. Sometimes the government simply gives a ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1330882009"
+    },
+    {
+      "id": "P7",
+      "hash": "10fa943677028ddd47c12eceb90f86bbe16d490299d6ae060919fc33ab0d0e90",
+      "heading": "Epidemic response",
+      "excerpt": "In the past, the market power of pharmaceutical companies has delayed responses to epidemics. Manufacturers have successfully negotiated fav",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1330882009"
+    },
+    {
+      "id": "P8",
+      "hash": "046f51ea761c1d07cb64c92369d98fe55c641013c39ae85f06846373209f097f",
+      "heading": "Market incentives",
+      "excerpt": "There is also no business incentive for pharmaceutical companies to test vaccines that are only of use to poor people. Vaccines developed fo",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1330882009"
+    },
+    {
+      "id": "P9",
+      "hash": "e0e15b1c4f85023bcf468275acc86f9c6382715d58369edd778af1de3044a52a",
+      "heading": "Demand",
+      "excerpt": "While the vaccine market makes up only 2-3% of the pharmaceutical market worldwide, it is growing at 10-15% per year, much faster than other",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1330882009"
+    },
+    {
+      "id": "P10",
+      "hash": "24149fdab1397c282118b5e7f333a6076675b2ed438d3781f007b3f1432c74f6",
+      "heading": "Public domain",
+      "excerpt": "Baker (2016) observed that the vast majority of the cost of most diagnostic, preventive and treatment procedures are patent royalties: The u",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1330882009"
+    },
+    {
+      "id": "P11",
+      "hash": "30df98f16c308f7ef4c2013fc5618d9230908ccc10e8978dae74d26488046b1b",
+      "heading": "Market concentration",
+      "excerpt": "Concentration and monopolization of the manufacture of specific drugs has also led to supply shortages, and significant healthcare costs for",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1330882009"
+    },
+    {
+      "id": "P12",
+      "hash": "f969b99422bad32ad73075d418b2614b64f04971c022cc68db1d222e9453c0c2",
+      "heading": "Market concentration",
+      "excerpt": "This oligopoly power allows vaccine manufacturers to engage in price discrimination, and vaccine prices are often two orders of magnitude (~",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1330882009"
+    },
+    {
+      "id": "P13",
+      "hash": "8c760786724c532aacbe8d56569569dab610f3ded99f16532248f68127f84d8e",
+      "heading": "Market concentration",
+      "excerpt": "The first decade of the 2000s saw a large number of mergers and acquisitions, and as of 2010, 80% of the global vaccine market was in the ha",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1330882009"
+    },
+    {
+      "id": "P14",
+      "hash": "4944eb02c8f8daa23afafe058b14d3df70ec74276e3a9ad367b4435c7d7dd260",
+      "heading": "National vaccine-manufacturing facilities",
+      "excerpt": "In 2017, the UK had draft plans to build a national facility, later called the UK Vaccine Manufacturing Innovation Centre (VMIC). Plans came",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1330882009"
+    },
+    {
+      "id": "P15",
+      "hash": "2d331eabe37f6644077a6e5f52515c390ecbc9728775bd4a12ce33051778ce5a",
+      "heading": "National vaccine-manufacturing facilities",
+      "excerpt": "Ghana built a US$122 million vaccine manufacturing facility using funding from the International Finance Corporation of the World Bank Group",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1330882009"
+    },
+    {
+      "id": "P16",
+      "hash": "5d8a9324141658366fdc102a76a9b1fd924f7e69bdf3cdf2603e2ee861bf7c2f",
+      "heading": "National vaccine-manufacturing facilities",
+      "excerpt": "Italy planned a public-private vaccine production facility. Canada built a publicly owned production facility, which at 24 million doses per",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1330882009"
+    },
+    {
+      "id": "P17",
+      "hash": "d643071464da156be575be4f93aeca8574b7ed618e123ccf8e287b46d4673692",
+      "heading": "Market incentives",
+      "excerpt": "In almost all cases, pharmaceuticals including vaccines are developed with public funding, but profits and control of price and availability",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1330882009"
+    },
+    {
+      "id": "P18",
+      "hash": "b36287729b85055ee811e63e2ca704a5c79ec3c16a8a40547fb248936dfb119f",
+      "heading": "Demand",
+      "excerpt": "Vaccines offer new opportunities for funding from public-private partnerships (such as CEPI and GAVI), governments, and philanthropic donors",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1330882009"
+    },
+    {
+      "id": "P19",
+      "hash": "6066fdb67bcd44c045e0c0e9dbe4d760651805c4cf572da4354c553bd7826f32",
+      "heading": "Public domain",
+      "excerpt": "Moreover, the cost of those diagnostic, preventive and treatment procedures would be lower the world over if the results of publicly funded ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1330882009"
+    }
+  ],
+  "updatedAt": "2026-10-22T06:17:03.301Z"
 }
