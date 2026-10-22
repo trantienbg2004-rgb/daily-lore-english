@@ -2,10 +2,10 @@
   "pageId": 2996055,
   "title": "Anti-nuclear movement",
   "topic": "Society",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1374442712,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374442712",
-  "reason": "17 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -544,7 +544,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374442712"
     }
   ],
-  "updatedAt": "2026-10-22T08:47:18.403Z",
+  "updatedAt": "2026-10-22T08:47:34.277Z",
   "priorReviewReason": "Gemini returned invalid JSON; preserve candidate",
   "draft": {
     "variants": {
@@ -640,9 +640,9 @@
             ]
           },
           {
-            "text": "Deliberations surrounding nuclear weapons policy among scientists and diplomats predate the 1945 atomic bombings of Hiroshima and Nagasaki. Public apprehension escalated substantially around 1954 in the wake of extensive testing, most notably the Castle Bravo disaster. This pressure culminated in the 1963 ratification of the Partial Test Ban Treaty, which successfully prohibited atmospheric nuclear testing.",
+            "text": "Scientists and diplomats have debated nuclear weapons policy since before the atomic bombings of Hiroshima and Nagasaki. The public became concerned about nuclear weapons testing following extensive nuclear testing, including the Castle Bravo disaster. Many countries ratified the Partial Test Ban Treaty, which prohibited atmospheric nuclear testing.",
             "evidenceIds": [
-              "P3"
+              "P2"
             ]
           },
           {
@@ -673,19 +673,11 @@
       }
     }
   },
-  "repairAttempts": 0,
+  "repairAttempts": 1,
   "lastUsage": {
-    "input": 2797,
-    "output": 1416,
-    "total": 4213
+    "input": 2703,
+    "output": 117,
+    "total": 2820
   },
-  "validation": {
-    "accepted": false,
-    "errors": [
-      "C1-C2:page-2:evidence-context",
-      "C1-C2:page-2:unsupported-number-1945",
-      "C1-C2:page-2:unsupported-number-1954",
-      "C1-C2:page-2:unsupported-number-1963"
-    ]
-  }
+  "validation": null
 }
