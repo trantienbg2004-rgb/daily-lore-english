@@ -111,7 +111,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375667535"
     }
   ],
-  "updatedAt": "2026-10-22T08:57:16.165Z",
+  "updatedAt": "2026-10-22T08:57:34.212Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -194,7 +194,7 @@
         "headline": "The Textual Legacy of the Onomasticon",
         "pages": [
           {
-            "text": "Compiled by Eusebius, bishop of Caesarea, the Onomasticon stands as a foundational gazetteer cataloging historical and contemporary place names across Palestine and Transjordan. Traditionally assigned a completion date prior to 324, the text occupies a liminal space between ancient geography and lexicography, exerting profound influence on early Christian cartography and pilgrimage literature.",
+            "text": "Compiled by Eusebius, bishop of Caesarea, the Onomasticon stands as a foundational gazetteer cataloging historical and contemporary place names across Palestine and Transjordan. Traditionally assigned a completion date, the text occupies a liminal space between ancient geography and lexicography, exerting profound influence on early Christian cartography and pilgrimage literature.",
             "evidenceIds": [
               "P1",
               "P2"
@@ -232,11 +232,11 @@
       }
     }
   },
-  "repairAttempts": 0,
+  "repairAttempts": 1,
   "lastUsage": {
-    "input": 2984,
-    "output": 1121,
-    "total": 4105
+    "input": 2975,
+    "output": 267,
+    "total": 3242
   },
   "validation": null
 }
