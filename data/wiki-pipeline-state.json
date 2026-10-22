@@ -9758,10 +9758,10 @@
       "checkedAt": null
     },
     "82494979": {
-      "status": "FETCHED",
-      "reason": "pinned-source-ready",
+      "status": "REJECTED",
+      "reason": "insufficient-source-text-or-embedded-images",
       "revisionId": 1379883816,
-      "checkedAt": "2026-10-22T13:20:47.770Z"
+      "checkedAt": "2026-10-22T13:20:53.440Z"
     },
     "82517449": {
       "status": "REJECTED",
@@ -9866,7 +9866,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-22T13:20:47.771Z",
+  "updatedAt": "2026-10-22T13:20:53.441Z",
   "dailyUsage": {
     "day": "2026-10-22",
     "calls": 71,
