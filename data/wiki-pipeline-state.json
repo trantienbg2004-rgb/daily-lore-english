@@ -6098,10 +6098,10 @@
       "checkedAt": "2026-10-21T13:50:37.016Z"
     },
     "27045": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
+      "revisionId": 1360712888,
+      "checkedAt": "2026-10-22T13:22:24.587Z"
     },
     "27566": {
       "status": "EVIDENCE_READY",
@@ -9866,7 +9866,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-22T13:22:17.570Z",
+  "updatedAt": "2026-10-22T13:22:24.595Z",
   "dailyUsage": {
     "day": "2026-10-22",
     "calls": 71,
