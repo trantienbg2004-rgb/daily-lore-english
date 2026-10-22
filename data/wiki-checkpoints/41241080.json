@@ -2,10 +2,10 @@
   "pageId": 41241080,
   "title": "History of advertising",
   "topic": "Economy",
-  "status": "DRAFTED",
+  "status": "VALIDATED",
   "revisionId": 1379614259,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379614259",
-  "reason": "draft durably saved before validation",
+  "reason": "local factual, style, length, structure and source audit passed",
   "rights": [
     {
       "status": "REVIEW",
@@ -442,7 +442,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379614259"
     }
   ],
-  "updatedAt": "2026-10-22T08:26:48.856Z",
+  "updatedAt": "2026-10-22T08:27:06.855Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -593,5 +593,8 @@
     "output": 1564,
     "total": 4413
   },
-  "validation": null
+  "validation": {
+    "accepted": true,
+    "errors": []
+  }
 }
