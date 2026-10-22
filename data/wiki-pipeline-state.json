@@ -9182,10 +9182,10 @@
       "checkedAt": "2026-10-22T12:56:44.702Z"
     },
     "69082273": {
-      "status": "PENDING",
-      "reason": "queued",
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
       "revisionId": 1291869686,
-      "checkedAt": null
+      "checkedAt": "2026-10-22T13:21:59.628Z"
     },
     "69411572": {
       "status": "PENDING",
@@ -9866,7 +9866,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-22T13:21:53.537Z",
+  "updatedAt": "2026-10-22T13:21:59.629Z",
   "dailyUsage": {
     "day": "2026-10-22",
     "calls": 71,
