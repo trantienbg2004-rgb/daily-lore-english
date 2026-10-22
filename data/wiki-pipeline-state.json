@@ -9230,10 +9230,10 @@
       "checkedAt": null
     },
     "70549826": {
-      "status": "PENDING",
-      "reason": "queued",
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
       "revisionId": 1377898117,
-      "checkedAt": null
+      "checkedAt": "2026-10-22T09:05:35.291Z"
     },
     "70601084": {
       "status": "EVIDENCE_READY",
@@ -9866,7 +9866,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-22T09:05:28.699Z",
+  "updatedAt": "2026-10-22T09:05:35.292Z",
   "dailyUsage": {
     "day": "2026-10-22",
     "calls": 47,
