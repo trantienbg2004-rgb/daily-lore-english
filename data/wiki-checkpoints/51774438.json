@@ -2,9 +2,128 @@
   "pageId": 51774438,
   "title": "Active design",
   "topic": "Health",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1369173480,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369173480",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-22T08:49:30.365Z"
+  "reason": "1 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Juist, Carl-Stegmann-Straße - panoramio.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2e/Juist%2C_Carl-Stegmann-Stra%C3%9Fe_-_panoramio.jpg/960px-Juist%2C_Carl-Stegmann-Stra%C3%9Fe_-_panoramio.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Juist, Carl-Stegmann-Straße - panoramio.jpg",
+        "caption": "Carfree Juist, Germany",
+        "alt": "Carfree Juist, Germany",
+        "description": "Juist, Carl-Stegmann-Straße",
+        "date": "5 December 2010 (original upload date)",
+        "section": "",
+        "position": 0,
+        "provenance": {
+          "credit": "Foto Fitti",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Juist,_Carl-Stegmann-Stra%C3%9Fe_-_panoramio.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Active_design",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369173480",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "2ede8e88f18922a8f4b537c004665c743ade66ccc620146d8742e0a8bec72ff4",
+      "heading": "Lead",
+      "excerpt": "Active design is a set of building and planning principles that promote physical activity. Active design in a building, landscape or city de",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369173480"
+    },
+    {
+      "id": "P2",
+      "hash": "22b0fc69860d8796183d93e712e9a663913b318e8d2752d1a199109d793c6f3f",
+      "heading": "In England",
+      "excerpt": "Sport England considers that the built environment has a vital role to play to encourage people to be physically active as part of their dai",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369173480"
+    },
+    {
+      "id": "P3",
+      "hash": "df54e562fdeeb6581929221efdbf85ee92e00ad7522e0fb37894921a4173f219",
+      "heading": "In England",
+      "excerpt": "In 2014, Sport England held a stakeholder session made up of a range of bodies and individuals including urban planning and public health pr",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369173480"
+    },
+    {
+      "id": "P4",
+      "hash": "8b7150bdda470c6da6369dbe5ace75e226043ea1d264c4f17156783dd21da6eb",
+      "heading": "In England",
+      "excerpt": "In 2016 Active Design: Planning for Health and Wellbeing through Sport and Physical Activity was shortlisted for an award at the Royal Town ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369173480"
+    },
+    {
+      "id": "P5",
+      "hash": "022049ca354b55a5a631357d0d38684e499018b175abfd4344355caacb558acc",
+      "heading": "In England",
+      "excerpt": "In 2017 Sport England prepared two animated films, Active Design by Sport England and The Ten Principles of Active Design, in addition to th",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369173480"
+    },
+    {
+      "id": "P6",
+      "hash": "3ea94762576037b772fee8fe7a4645db1b39fdcaaf206a5241ed477419822b79",
+      "heading": "In New York",
+      "excerpt": "Recognizing that physical inactivity was a significant factor in decreased life spans, notably because it promoted obesity, high blood press",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369173480"
+    },
+    {
+      "id": "P7",
+      "hash": "1595d0373a71ba057c684e9e11a25cf707434d825b5e303d3f47b81cad3fc09b",
+      "heading": "Goals",
+      "excerpt": "Sickness can lead to not working efficiently and effectively. Ineffective workers in the work force cause harm to the company and the people",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369173480"
+    },
+    {
+      "id": "P8",
+      "hash": "9c46492661aedc313eb19d7f4304d9c2e87001a16535c50262c326c3a18bdddc",
+      "heading": "Effects",
+      "excerpt": "There are few studies of the effects of implementing active design concepts, but they are in general agreement that the physical activity of",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369173480"
+    },
+    {
+      "id": "P9",
+      "hash": "c9627644b64bc18cc29a90e49d3642e0896dcf46dd8393478f720a6a215e6d1e",
+      "heading": "Implementation",
+      "excerpt": "Active design concepts may be applied in remodeling or repurposing existing buildings and landscapes. Some elements include widening sidewal",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369173480"
+    },
+    {
+      "id": "P10",
+      "hash": "d19a09bde0d5589d2060af3542ee4ca914dc2e07cf70880457604a5598ce5d04",
+      "heading": "Future",
+      "excerpt": "The future of active design may be to further incorporate requirements into law, as in the city of New York which set active design guidelin",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369173480"
+    },
+    {
+      "id": "P11",
+      "hash": "6245776c180437545c69ee8ad25308d30f75158ed4ffca89bf000b0f2019080e",
+      "heading": "In England",
+      "excerpt": "The active design principles are becoming increasingly embedded into built environment practice and placemaking design, with a growing list ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369173480"
+    },
+    {
+      "id": "P12",
+      "hash": "f9741554ec3b45b025969f8cac6689b8a7e95f1ed4694e3300331b1637bd626b",
+      "heading": "Effects",
+      "excerpt": "The National Institute for Health and Care Research (NIHR) has published a review of research on public health interventions to prevent obes",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369173480"
+    },
+    {
+      "id": "P13",
+      "hash": "32da884bd4e3113ef42d795db89d939b66e57d50f460784c7ef822d57c9818ca",
+      "heading": "Implementation",
+      "excerpt": "There are a number of concerns with the adoption of active design programmes. Developing communities are not always accepting of new forms o",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369173480"
+    }
+  ],
+  "updatedAt": "2026-10-22T08:49:36.017Z"
 }
