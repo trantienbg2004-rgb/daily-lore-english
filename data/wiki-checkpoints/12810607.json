@@ -2,9 +2,173 @@
   "pageId": 12810607,
   "title": "Deleveraging",
   "topic": "Economy",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1303792559,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1303792559",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-22T08:30:19.132Z"
+  "reason": "2 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Goldman Sachs - Leverage Ratio 2003-2012.png",
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/f/f4/Goldman_Sachs_-_Leverage_Ratio_2003-2012.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "fileTitle": "File:Goldman Sachs - Leverage Ratio 2003-2012.png",
+        "caption": "The leverage ratio, measured as debt divided by equity, for investment bank Goldman Sachs from 2003–2012. The lower the ratio, the greater the ability of the firm to withstand losses.",
+        "alt": "",
+        "description": "Bar chart showing the leverage ratio for Goldman-Sachs from 2003-2012. The leverage ratio (debt divided by equity) is a measure of the risk taken. The higher the ratio, the more risk undertaken.",
+        "date": "2013-11-19",
+        "section": "In microeconomics",
+        "position": 0,
+        "provenance": {
+          "credit": "Farcaster",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Goldman_Sachs_-_Leverage_Ratio_2003-2012.png",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Deleveraging",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1303792559",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:US Private Debt to GDP by Sector.png",
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/e/e2/US_Private_Debt_to_GDP_by_Sector.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "fileTitle": "File:US Private Debt to GDP by Sector.png",
+        "caption": "U.S. households and financial businesses began de-leveraging in the years following the subprime mortgage crisis.",
+        "alt": "",
+        "description": "US Private Debt to GDP ratio for Households, Non-Financial Business, and Financial Business. Each is layered, so the highest point represents the sum of all three data series. Other information Based on similar chart in Martin Wolf's book \"The Shifts and the Shocks\" as described in NYT article \"Why Weren't Alarm Bells Ringing\".",
+        "date": "2014-10-07",
+        "section": "In macroeconomics",
+        "position": 1,
+        "provenance": {
+          "credit": "Farcaster",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:US_Private_Debt_to_GDP_by_Sector.png",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Deleveraging",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1303792559",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "d39b43d6eb5bc53f89fb32bf59e7d4a322f5a10c2b5e634d4bec56b4ef7a081e",
+      "heading": "Lead",
+      "excerpt": "At the micro-economic level, deleveraging refers to the reduction of the leverage ratio, or the percentage of debt in the balance sheet of a",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1303792559"
+    },
+    {
+      "id": "P2",
+      "hash": "50e4fa9ab515d94473f6536f1ce0c07451435ba2a1d778cd17a615fc37cb2286",
+      "heading": "Lead",
+      "excerpt": "At the macro-economic level, deleveraging of an economy refers to the simultaneous reduction of debt levels in multiple sectors, including p",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1303792559"
+    },
+    {
+      "id": "P3",
+      "hash": "b78b260f7e3cf005f2a5ef8f7bd19499eae412270903fba55ae4241a3f49fcf0",
+      "heading": "In microeconomics",
+      "excerpt": "While leverage allows a borrower to acquire assets and multiply gains in good times, it also leads to multiple losses in bad times. During a",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1303792559"
+    },
+    {
+      "id": "P4",
+      "hash": "e49babbd4c7b9702dcb413830ee5214540f96cd146d9e32a9970e35e9dea94e3",
+      "heading": "In microeconomics",
+      "excerpt": "However, precaution is not the most common reason for deleveraging. Deleveraging usually happens after a market downturn and hence is driven",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1303792559"
+    },
+    {
+      "id": "P5",
+      "hash": "5c9e3983de93676c632817f8a5b7a18103eeaade600a069880dd68324a32b675",
+      "heading": "In microeconomics",
+      "excerpt": "To deleverage, one needs to raise cash to pay debt, either from raising capital or selling assets or both. A bank, for example, can cut expe",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1303792559"
+    },
+    {
+      "id": "P6",
+      "hash": "15cad91107ff5c69218d989b54ccf2e72d8ac36e889df59f225ce372e906029a",
+      "heading": "In macroeconomics",
+      "excerpt": "Deleveraging of an economy refers to the simultaneous reduction of leverage level in multiple private and public sectors, lowering the total",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1303792559"
+    },
+    {
+      "id": "P7",
+      "hash": "3fd5e4fd422de91993b8e26471ddc27e62751b04e3424a7b866363e9908da5a1",
+      "heading": "Historical episodes",
+      "excerpt": "The McKinsey Global Institute defines a significant episode of deleveraging in an economy as one in which the ratio of total debt to GDP dec",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1303792559"
+    },
+    {
+      "id": "P8",
+      "hash": "c7e24f0c38e577570fd54f21f8b8c0562cbac6a290685594339aff1008a108aa",
+      "heading": "Macro-economic consequences",
+      "excerpt": "Massive deleveraging in corporate and financial sectors can have serious macro-economic consequences, such as triggering Fisherian debt defl",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1303792559"
+    },
+    {
+      "id": "P9",
+      "hash": "91557ebda6a688f0cc1bff705580aaff1037cb4d7e7d93bd714fe93edc24596a",
+      "heading": "Government regulation and fiscal policy",
+      "excerpt": "According to the theory of leverage cycle of John Geanakoplos and originally by Hyman Minsky, in the absence of intervention, leverage becom",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1303792559"
+    },
+    {
+      "id": "P10",
+      "hash": "3308d12697578bbb58e79c81d8a64dd4707a6aa9224398b3c9f809f32d578d59",
+      "heading": "In microeconomics",
+      "excerpt": "Deleveraging is frustrating and painful for private sector entities in distress: selling assets at a discount can itself lead to heavy losse",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1303792559"
+    },
+    {
+      "id": "P11",
+      "hash": "bddc1957b842f5ffb7c83a7a228ae519b692e1defa90e6ea66e5d09b5bdccf6a",
+      "heading": "In macroeconomics",
+      "excerpt": "As in January 2012, four years after the start of the Great Recession, many mature economies and emerging economies in the world had just be",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1303792559"
+    },
+    {
+      "id": "P12",
+      "hash": "c46eb79c7ba6ff632a2ee5388a680acf468692fc51ec276b26793a464a486a93",
+      "heading": "Historical episodes",
+      "excerpt": "Based on this identification of deleveraging and Carmen Reinhart and Kenneth Rogoff’s definition for major episodes of financial crisis, it ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1303792559"
+    },
+    {
+      "id": "P13",
+      "hash": "1e9b4891db87382515fe2e36614369479441269ff2596b59e9ec994902cee162",
+      "heading": "Macro-economic consequences",
+      "excerpt": "In the financial sector, the need to deleverage causes financial intermediaries to shed assets and stop lending, resulting in a credit crunc",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1303792559"
+    },
+    {
+      "id": "P14",
+      "hash": "0e9fea94444a68a095f860f6044c827151ff4fe3b780c9b23802fc0bb051c792",
+      "heading": "Macro-economic consequences",
+      "excerpt": "In addition to causing deflation pressure, firms and households deleveraging their balance sheet often increase net savings by cutting expen",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1303792559"
+    },
+    {
+      "id": "P15",
+      "hash": "7d9ad66fb357008bae182d45af1e5ee59597e520b75b113f8b61ef60df0f64db",
+      "heading": "Government regulation and fiscal policy",
+      "excerpt": "Therefore, some economists, including John Geanakoplos, strongly argue that the Federal Reserve should monitor and regulate the system-wide ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1303792559"
+    },
+    {
+      "id": "P16",
+      "hash": "cab43ec2b12c6d6b13511c95b0260276bd96e7cfd741d207f92cd2690cb32324",
+      "heading": "Government regulation and fiscal policy",
+      "excerpt": "In addition, in the face of massive private sector deleveraging, monetary policy has limited effect, because the economy is likely to have b",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1303792559"
+    }
+  ],
+  "updatedAt": "2026-10-22T08:30:25.119Z"
 }
