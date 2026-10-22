@@ -2,10 +2,10 @@
   "pageId": 24333167,
   "title": "Discovery of penicillin",
   "topic": "Health",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1380230756,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380230756",
-  "reason": "5 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -242,5 +242,148 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380230756"
     }
   ],
-  "updatedAt": "2026-10-22T06:10:54.187Z"
+  "updatedAt": "2026-10-22T06:11:08.179Z",
+  "draft": {
+    "outline": [
+      "Ancient uses of mould and early observations",
+      "Fleming's accidental laboratory discovery in London",
+      "Initial reception and early challenges in isolation",
+      "Oxford team's development of mass production methods",
+      "World War II impact and shared Nobel Prize"
+    ],
+    "variants": {
+      "A1-A2": {
+        "headline": "The Discovery of Penicillin",
+        "pages": [
+          {
+            "text": "Long ago, people used mould to treat infections. Many cultures knew that fungi could help heal sick bodies. However, they did not know the exact parts that stopped the sickness. In 1928, a Scottish doctor named Alexander Fleming made a big discovery in London.",
+            "evidenceIds": [
+              "P1",
+              "P3"
+            ]
+          },
+          {
+            "text": "Fleming left some culture plates on his lab table before a holiday. When he came back, he saw a strange blue-green mould growing on one plate. He noticed that bacteria did not grow near the mould. The mould was killing the bad bacteria around it.",
+            "evidenceIds": [
+              "P10"
+            ]
+          },
+          {
+            "text": "Fleming named this new antibacterial substance \"penicillin\". He tested it on different bacteria and found it could kill some types. But Fleming could not isolate the pure chemical compound because he lacked strong training in chemistry, and his work stopped.",
+            "evidenceIds": [
+              "P1",
+              "P13",
+              "P16"
+            ]
+          },
+          {
+            "text": "Years later, in 1939, a group of scientists at Oxford University started researching penicillin again. Led by Howard Florey, the team figured out how to grow the mould well. They also extracted, purified, and stored the penicillin safely in their laboratory.",
+            "evidenceIds": [
+              "P2",
+              "P9"
+            ]
+          },
+          {
+            "text": "The team tested penicillin on animals to check if it was safe. Soon, the United States helped produce large amounts of the medicine. Penicillin saved thousands of soldiers during the Second World War. Fleming, Florey, and Chain won a Nobel Prize in 1945.",
+            "evidenceIds": [
+              "P2",
+              "P9"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "How Penicillin Changed Modern Medicine",
+        "pages": [
+          {
+            "text": "Long before modern laboratories existed, ancient societies across the world used moulds to treat infections. Although these traditional treatments often worked because many fungi naturally produce antibiotics, ancient practitioners could never precisely identify or isolate the active components responsible for the healing properties.",
+            "evidenceIds": [
+              "P1",
+              "P3"
+            ]
+          },
+          {
+            "text": "A major turning point occurred in 1928 at St Mary's Hospital in London. Scottish physician Alexander Fleming left several culture plates of bacteria on his laboratory bench before taking a holiday. Upon his return, he noticed that a contaminant blue-green mould had grown and killed nearby bacteria.",
+            "evidenceIds": [
+              "P1",
+              "P10"
+            ]
+          },
+          {
+            "text": "Fleming named the antibacterial substance \"penicillin\" and demonstrated that it could kill specific harmful bacteria. Yet, because he lacked advanced chemical training, his attempts to isolate the pure compound failed. Consequently, work on penicillin at St Mary's ended by 1929, and his initial publication received little attention.",
+            "evidenceIds": [
+              "P1",
+              "P7",
+              "P13",
+              "P16"
+            ]
+          },
+          {
+            "text": "Ten years later, in 1939, a dedicated team of scientists at the University of Oxford led by Howard Florey resumed the research. Using Fleming's original paper and a mould sample, they devised methods for cultivating the mould, purifying the extract, and measuring its purity with new assays.",
+            "evidenceIds": [
+              "P2",
+              "P9"
+            ]
+          },
+          {
+            "text": "After successful animal safety tests, the private sector and agricultural departments developed mass production techniques. Penicillin became vital during the Second World War, saving thousands of soldiers. In 1945, Fleming, Florey, and Chain shared the Nobel Prize in Physiology or Medicine for their monumental discovery and development.",
+            "evidenceIds": [
+              "P2",
+              "P9"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "Unraveling the Miracle Mould",
+        "pages": [
+          {
+            "text": "While ancient cultures globally exploited the empirical properties of fungi to combat infections, early practitioners remained inherently incapable of isolating active antimicrobial constituents. The foundational breakthrough materialized in 1928 at St Mary's Hospital, where Alexander Fleming experimentally verified that a contaminating Penicillium mould secreted a distinct antibacterial agent.",
+            "evidenceIds": [
+              "P1",
+              "P3"
+            ]
+          },
+          {
+            "text": "Fleming's serendipitous discovery relied on precise environmental conditions during his absence, which favoured initial mould proliferation followed by bacterial growth. Upon returning, he observed zones of inhibition surrounding the mould colony, leading him to coin the term \"penicillin\" for the active broth filtrate that selectively eradicated specific Gram-positive pathogens.",
+            "evidenceIds": [
+              "P1",
+              "P10",
+              "P13",
+              "P15"
+            ]
+          },
+          {
+            "text": "Despite initial demonstrations, academic reception proved indifferent. Furthermore, because Fleming lacked formal biochemical training and subsequent collaborative efforts stalled in purifying the compound, primary research at St Mary's effectively ceased by 1929, leaving the therapeutic potential largely dormant for a decade.",
+            "evidenceIds": [
+              "P1",
+              "P7",
+              "P16"
+            ]
+          },
+          {
+            "text": "The trajectory shifted radically in 1939 when Howard Florey spearheaded an Oxford research team to systematically reinvestigate penicillin. They engineered robust cultivation protocols, established purification and freeze-drying methodologies, and formulated reliable assays to quantify substance purity prior to conducting rigorous animal safety and efficacy trials.",
+            "evidenceIds": [
+              "P2",
+              "P9"
+            ]
+          },
+          {
+            "text": "Facilitated by agricultural scaling and industrial manufacturing techniques, penicillin transformed Allied military healthcare during the Second World War, preserving countless lives. In recognition of this monumental translational achievement, Fleming, Florey, and Ernst Chain jointly received the 1945 Nobel Prize in Physiology or Medicine.",
+            "evidenceIds": [
+              "P2",
+              "P9"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2663,
+    "output": 1581,
+    "total": 4244
+  },
+  "validation": null
 }
