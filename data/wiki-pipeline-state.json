@@ -6896,10 +6896,10 @@
       "checkedAt": "2026-10-22T08:31:30.908Z"
     },
     "1568911": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
+      "revisionId": 1379742501,
+      "checkedAt": "2026-10-22T08:52:00.349Z"
     },
     "1589765": {
       "status": "REJECTED",
@@ -9866,7 +9866,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-22T08:51:53.821Z",
+  "updatedAt": "2026-10-22T08:52:00.357Z",
   "dailyUsage": {
     "day": "2026-10-22",
     "calls": 32,
