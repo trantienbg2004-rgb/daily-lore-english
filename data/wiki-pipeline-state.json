@@ -8816,10 +8816,10 @@
       "checkedAt": "2026-10-22T08:31:55.016Z"
     },
     "56767592": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
+      "revisionId": 1375874941,
+      "checkedAt": "2026-10-22T09:13:44.553Z"
     },
     "57158394": {
       "status": "EVIDENCE_READY",
@@ -9866,7 +9866,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-22T09:13:38.104Z",
+  "updatedAt": "2026-10-22T09:13:44.570Z",
   "dailyUsage": {
     "day": "2026-10-22",
     "calls": 54,
