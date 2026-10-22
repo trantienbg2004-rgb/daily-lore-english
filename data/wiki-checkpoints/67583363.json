@@ -2,10 +2,10 @@
   "pageId": 67583363,
   "title": "Limitation of the Vend",
   "topic": "Economy",
-  "status": "DRAFTED",
+  "status": "VALIDATED",
   "revisionId": 1373524651,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373524651",
-  "reason": "draft durably saved before validation",
+  "reason": "local factual, style, length, structure and source audit passed",
   "rights": [
     {
       "status": "REVIEW",
@@ -728,7 +728,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373524651"
     }
   ],
-  "updatedAt": "2026-10-22T09:12:25.353Z",
+  "updatedAt": "2026-10-22T09:12:43.551Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -871,5 +871,8 @@
     "output": 256,
     "total": 3019
   },
-  "validation": null
+  "validation": {
+    "accepted": true,
+    "errors": []
+  }
 }
