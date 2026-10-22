@@ -9308,10 +9308,10 @@
       "checkedAt": "2026-10-22T09:15:38.022Z"
     },
     "73176035": {
-      "status": "FETCHED",
-      "reason": "pinned-source-ready",
+      "status": "REJECTED",
+      "reason": "insufficient-source-text-or-embedded-images",
       "revisionId": 1364303810,
-      "checkedAt": "2026-10-22T12:57:33.151Z"
+      "checkedAt": "2026-10-22T12:57:38.621Z"
     },
     "73189274": {
       "status": "REJECTED",
@@ -9866,7 +9866,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-22T12:57:33.152Z",
+  "updatedAt": "2026-10-22T12:57:38.622Z",
   "dailyUsage": {
     "day": "2026-10-22",
     "calls": 64,
