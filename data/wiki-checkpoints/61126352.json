@@ -2,9 +2,217 @@
   "pageId": 61126352,
   "title": "Flight shame",
   "topic": "Environment",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1380824194,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380824194",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-22T08:23:14.695Z"
+  "reason": "1 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:MD80 SAS (5822320224).jpg",
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/1/1e/MD80_SAS_%285822320224%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "fileTitle": "File:MD80 SAS (5822320224).jpg",
+        "caption": "A McDonnell Douglas MD-80 of Scandinavian Airlines leaving a trail of smoke as it climbs, thus adding to carbon emissions from air travel.",
+        "alt": "A McDonnell Douglas MD-80 of Scandinavian Airlines leaving a trail of smoke as it climbs, thus adding to carbon emissions from air travel.",
+        "description": "Dublin",
+        "date": "2011-05-17 18:52",
+        "section": "",
+        "position": 0,
+        "provenance": {
+          "credit": "Maarten Visser from Capelle aan den IJssel, Nederland",
+          "license": "CC BY-SA 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:MD80_SAS_(5822320224).jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Flight_shame",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380824194",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Wynes Nicholas CO2 emissions savings.svg"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "e9c118e6ffedfe1e7b79ecba8599bab700772c86ac19e163ebafb2e2fa89137f",
+      "heading": "Lead",
+      "excerpt": "Flight shame or flygskam (Swedish) is a social movement that discourages air travel due to its environmental impact, including outsized carb",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380824194"
+    },
+    {
+      "id": "P2",
+      "hash": "107875c853e0ae36d6fc34ae10e26f95b6db424c1039eb1256ba516a42a433b1",
+      "heading": "Lead",
+      "excerpt": "Flight shame refers to an individual's uneasiness over engaging in consumption that is energy-intense with consequences for the climate and ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380824194"
+    },
+    {
+      "id": "P3",
+      "hash": "28e102dc3ef5fc2ffd099797124d9d306803d6f6ac9d2625c46a6689a1473a2f",
+      "heading": "Lead",
+      "excerpt": "The movement took off in 2018 in Sweden and gained traction the following year throughout northern Europe. Flygskam is a Swedish word that l",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380824194"
+    },
+    {
+      "id": "P4",
+      "hash": "6f51151e6b2a6ebb630ea1e523e3d110af9d292ce0293318ed62adb440f00064",
+      "heading": "Origins",
+      "excerpt": "Staffan Lindberg [sv], a Swedish singer, was reported to have coined the term in 2017. Björn Ferry, an Olympic athlete, was also one of the ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380824194"
+    },
+    {
+      "id": "P5",
+      "hash": "b3386a670151eee4766633d83bea2e2e72df96927c4f3281b99250cc97ee7556",
+      "heading": "Tågskryt",
+      "excerpt": "Tågskryt, a Swedish word that literally means \"train brag\", has resulted from the flygskam movement. This idea encourages people to travel b",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380824194"
+    },
+    {
+      "id": "P6",
+      "hash": "e16df81c7a6738e05ee86cf05d322819290c6a73b77d968c939e44e833d9b71b",
+      "heading": "Impact",
+      "excerpt": "About 2.5 percent of global human carbon emissions come from commercial flights. Additionally, planes emit other gases such as nitrogen oxid",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380824194"
+    },
+    {
+      "id": "P7",
+      "hash": "c37b8ab0ded934117a30dfa70929a240755f4f2bfeb7026fbf4bbb07784a3776",
+      "heading": "Individual decisions",
+      "excerpt": "While reducing aviation emissions on a global scale requires policy changes because they reflect regulatory and business failures to address",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380824194"
+    },
+    {
+      "id": "P8",
+      "hash": "4bd31863e696dd8d5dbfad7689cacec57d24dc2eedb88af136e3529094f47ad5",
+      "heading": "Short-haul flight bans",
+      "excerpt": "By 2019, the flight shame movement had inspired dozens of organisations, including universities and businesses such as Klarna Bank AB, acros",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380824194"
+    },
+    {
+      "id": "P9",
+      "hash": "5a91488c04839d50679441e0aff1f63491a5e3be8ed1ad184d6f21e1405e189c",
+      "heading": "Industry response",
+      "excerpt": "The airline industry has recognised the movement as a threat to its business interests. In 2019, at the annual International Air Transport A",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380824194"
+    },
+    {
+      "id": "P10",
+      "hash": "2fcc716ff903e8671573c3ad4e77f2536b7845602f20b1fb2c2c8bb4492fcc64",
+      "heading": "COVID-19 pandemic",
+      "excerpt": "By April 2020, the COVID-19 pandemic had caused global air travel numbers to plummet, as airlines cut up to 95% of their trips, dwarfing the",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380824194"
+    },
+    {
+      "id": "P11",
+      "hash": "c8bb9c229d0bd338fe48a2ce7999873150e9ffa9ef8cbe8c4c88b04f041e4377",
+      "heading": "Public debate",
+      "excerpt": "The 2009 German short video The Bill, created by Germanwatch, explores how travel and its impacts are commonly viewed in everyday developed-",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380824194"
+    },
+    {
+      "id": "P12",
+      "hash": "754f99d05c5ab14e05aa853861f5a10e468f0c7fa10e5f2cd105366d3b777b99",
+      "heading": "Surveys",
+      "excerpt": "In autumn 2014, a German survey showed that Green Party voters travel more often by plane: 49% flew once a year compared to 42% of Left vote",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380824194"
+    },
+    {
+      "id": "P13",
+      "hash": "f7f56d798cef596a35fe2c7aa548d703f32a22a6c09cc76a276345a6187ce1ac",
+      "heading": "Individual decisions",
+      "excerpt": "In Sweden, train ridership has increased, while domestic flying has decreased. SJ, Sweden's main railway operator, reported that it sold 1.5",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380824194"
+    },
+    {
+      "id": "P14",
+      "hash": "db8d53f72f34416078b715d2eb0309487310ad72a777fd31511dbbc557d3f544",
+      "heading": "Individual decisions",
+      "excerpt": "The same pattern was seen in Germany. Deutsche Bahn AG railway service reported a record high number of travellers in 2019. German airports ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380824194"
+    },
+    {
+      "id": "P15",
+      "hash": "40fb3bfbc194266c7c5de484877e0355f5dc2772bca7c895ca6d8761542d7b5d",
+      "heading": "Individual decisions",
+      "excerpt": "In a 2019 survey of 6,000 people by the Swiss bank UBS, 21% of respondents in the United States, France, England and Germany said they flew ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380824194"
+    },
+    {
+      "id": "P16",
+      "hash": "64fe5ed2736e1c642ea51d37b24d04aa8d0eedd377f4b2fdfc56af15b6bc6c7d",
+      "heading": "Individual decisions",
+      "excerpt": "This pattern has so far not been observed in the Netherlands. A 2019 survey by NBTC-Nipo Research showed that almost 60% of Dutch people (a ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380824194"
+    },
+    {
+      "id": "P17",
+      "hash": "0adb61dd7ccec19dcd95ddcbc535fe94d9ed3d0b0da5fc71966e949eee35dc92",
+      "heading": "Individual decisions",
+      "excerpt": "Similarly, flight shame has not been a factor in Belgium either, where a new record of 35 million passengers departed or arrived by plane in",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380824194"
+    },
+    {
+      "id": "P18",
+      "hash": "8dcf0a64924d2eaf7f59851429c5367bdd6db032a9715fb3905fedbdfb5fa08a",
+      "heading": "Individual decisions",
+      "excerpt": "Some U.S. airline executives were concerned that flight shame popularised by Greta Thunberg could play a role as global air travel growth sl",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380824194"
+    },
+    {
+      "id": "P19",
+      "hash": "295529b09293baac307111ba62ab7c0870637e1b439641246b740b1cf04555b8",
+      "heading": "Individual decisions",
+      "excerpt": "Flight shame tends to occur mostly when surrounded by others who feel strongly about the ecological impacts that flying has. It is then depe",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380824194"
+    },
+    {
+      "id": "P20",
+      "hash": "180be8641785366314c0b3dd171fa740fecd8befe710526da0f2ca3ee619b7ae",
+      "heading": "Public debate",
+      "excerpt": "British writer George Marshall has investigated common rationalisations that act as barriers to making the personal choice to travel less, o",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380824194"
+    },
+    {
+      "id": "P21",
+      "hash": "bab603b671f38bf3eae0f123c4f6ccda2bc7dc5ffbfc454e58edc5f6f70e805f",
+      "heading": "Public debate",
+      "excerpt": "In a blog post, Alexandre de Juniac, then-director general and CEO of the airline trade association IATA, said that \"Flying is freedom\" and ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380824194"
+    },
+    {
+      "id": "P22",
+      "hash": "847a4f432a5038cb98cbc7b1ffcc8b693ea540fef9785bc5986863e9c76337ad",
+      "heading": "Public debate",
+      "excerpt": "Research professor Brené Brown has argued that flight guilt is more productive than flight shame: \"Shame is a focus on self, guilt is a focu",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380824194"
+    },
+    {
+      "id": "P23",
+      "hash": "3efa5b3e0a93e51adb75f774003912e30bed0751b67211654244eb9605aebe27",
+      "heading": "Public debate",
+      "excerpt": "In 2011, S. Cohen observed both air travel and concern over its climate impacts were growing, balanced by technology and physical resources,",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380824194"
+    },
+    {
+      "id": "P24",
+      "hash": "9679168041ddb50254abc2b76cf68e7ab3bee50d0b9c752e196bbde3d59f46a3",
+      "heading": "Public debate",
+      "excerpt": "In 2018, 11% of the global population took a flight, 4% flew abroad and 1% was responsible for half of global aviation emissions, according ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380824194"
+    },
+    {
+      "id": "P25",
+      "hash": "39adc309c5a40469eb4538981b5ade7e26e6e0a21166d8d6b62eb14be13f9501",
+      "heading": "Public debate",
+      "excerpt": "In 2021, Evelien van Leeuwen published an article about flight shaming which examined the motivations and the decision-making process of air",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380824194"
+    }
+  ],
+  "updatedAt": "2026-10-22T08:23:20.624Z"
 }
