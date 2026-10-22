@@ -2,10 +2,10 @@
   "pageId": 24333167,
   "title": "Discovery of penicillin",
   "topic": "Health",
-  "status": "DRAFTED",
+  "status": "VALIDATED",
   "revisionId": 1380230756,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380230756",
-  "reason": "draft durably saved before validation",
+  "reason": "local factual, style, length, structure and source audit passed",
   "rights": [
     {
       "status": "REVIEW",
@@ -242,7 +242,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380230756"
     }
   ],
-  "updatedAt": "2026-10-22T06:11:08.179Z",
+  "updatedAt": "2026-10-22T06:11:26.249Z",
   "draft": {
     "outline": [
       "Ancient uses of mould and early observations",
@@ -385,5 +385,8 @@
     "output": 1581,
     "total": 4244
   },
-  "validation": null
+  "validation": {
+    "accepted": true,
+    "errors": []
+  }
 }
