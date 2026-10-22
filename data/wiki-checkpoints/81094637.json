@@ -2,9 +2,108 @@
   "pageId": 81094637,
   "title": "Green alley",
   "topic": "Environment",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1359335016,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1359335016",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-22T13:02:29.583Z"
+  "reason": "2 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:WTMTL T52 DSF2289.JPG",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/30/WTMTL_T52_DSF2289.JPG/960px-WTMTL_T52_DSF2289.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:WTMTL T52 DSF2289.JPG",
+        "caption": "A green alley in Montreal's Ville-Marie borough",
+        "alt": "",
+        "description": "Ruelle verte - Tupper in Montréal",
+        "date": "2011-09-28",
+        "section": "",
+        "position": 0,
+        "provenance": {
+          "credit": "Patrick M. Lozeau, Alexandre Albert (Wikipedia Takes Montreal participant)",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:WTMTL_T52_DSF2289.JPG",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Green_alley",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1359335016",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Ruelle verte Bréfeur-St-Joseph04.JPG",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/59/Ruelle_verte_Br%C3%A9feur-St-Joseph04.JPG/960px-Ruelle_verte_Br%C3%A9feur-St-Joseph04.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Ruelle verte Bréfeur-St-Joseph04.JPG",
+        "caption": "Many alleys in Montreal are decorated with murals.",
+        "alt": "",
+        "description": "Ruelle verte à proximité du coin Brébeuf-St-Joseph dans le Plateau Mont-Royal.",
+        "date": "2011-09-18 13:11:36",
+        "section": "Montreal",
+        "position": 1,
+        "provenance": {
+          "credit": "Eminoro et Khayman",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Ruelle_verte_Br%C3%A9feur-St-Joseph04.JPG",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Green_alley",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1359335016",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Permeable pavers alley Chicago.jpg"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "f2690564e4591f6869a156a81516d3df8dfb33ff341043ba076fe663eef434f1",
+      "heading": "Lead",
+      "excerpt": "A green alley or green alleyway is an alley that has been converted to add vegetation and reduce the total paved area. Advocates of green al",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1359335016"
+    },
+    {
+      "id": "P2",
+      "hash": "1c5731be4d37ec6c6673e3919393454680f9e6652a1ed06b8b704a9ef9fa7b6c",
+      "heading": "History",
+      "excerpt": "The first attempt at a green alleyway project originated in Montreal in 1968. Residents of the Mile-End neighbourhood endeavoured to renovat",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1359335016"
+    },
+    {
+      "id": "P3",
+      "hash": "43a177fe96237cc667c66639f2dac10c3e76f4088d062bde9429167b1d37744f",
+      "heading": "Techniques and objectives",
+      "excerpt": "Green alleys can be constructed to serve a variety of purposes. In cities prone to flooding, permeable pavements may be installed to control",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1359335016"
+    },
+    {
+      "id": "P4",
+      "hash": "d624c74cd2cdb3e91d4ac774878fca69281bfad4dc7ba19d659de7b740477def",
+      "heading": "Montreal",
+      "excerpt": "The implementation of Montreal's Green Alleys Program (French: Programme des Ruelles Vertes) is based on the principle of community particip",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1359335016"
+    },
+    {
+      "id": "P5",
+      "hash": "afaa8b129c685e619f29b9760b790e2df2a52ae45782e951d8f2a19e452e2a7d",
+      "heading": "Chicago",
+      "excerpt": "The main objective of green alleys has been to improve Chicago's resilience to climate change-induced flooding. Chicago has the largest and ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1359335016"
+    },
+    {
+      "id": "P6",
+      "hash": "76dc0bfcce0b4b0afb112ab6b85bb1e8fdc6f9bf3ee807a14f9e1a2306383bd7",
+      "heading": "Los Angeles",
+      "excerpt": "In Los Angeles, the construction of green alleys is done in collaboration with the city and the Trust for Public Land. The passage of Califo",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1359335016"
+    }
+  ],
+  "updatedAt": "2026-10-22T13:02:35.682Z"
 }
