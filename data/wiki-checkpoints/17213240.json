@@ -2,10 +2,10 @@
   "pageId": 17213240,
   "title": "Treaty rights",
   "topic": "Conflict & Security",
-  "status": "DRAFTED",
+  "status": "NEEDS_REPAIR",
   "revisionId": 1373455290,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373455290",
-  "reason": "draft durably saved before validation",
+  "reason": "editorial: A1-A2:page-3:audit-This page repeats material almost verbatim from page 2, introducing repetitive filler.",
   "rights": [
     {
       "status": "REVIEW",
@@ -174,7 +174,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373455290"
     }
   ],
-  "updatedAt": "2026-10-22T08:39:42.658Z",
+  "updatedAt": "2026-10-22T08:40:00.770Z",
   "draft": {
     "outline": [
       "Introduction to treaty rights in settler states",
@@ -309,6 +309,11 @@
     "output": 416,
     "total": 3218
   },
-  "validation": null,
+  "validation": {
+    "accepted": false,
+    "errors": [
+      "A1-A2:page-3:audit-This page repeats material almost verbatim from page 2, introducing repetitive filler."
+    ]
+  },
   "priorReviewReason": "Missing repaired page"
 }

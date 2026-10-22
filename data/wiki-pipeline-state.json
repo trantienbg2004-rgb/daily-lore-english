@@ -7772,10 +7772,10 @@
       "checkedAt": "2026-10-21T13:52:54.408Z"
     },
     "17213240": {
-      "status": "DRAFTED",
-      "reason": "draft durably saved before validation",
+      "status": "NEEDS_REPAIR",
+      "reason": "editorial: A1-A2:page-3:audit-This page repeats material almost verbatim from page 2, introducing repetitive filler.",
       "revisionId": 1373455290,
-      "checkedAt": "2026-10-22T08:39:42.657Z"
+      "checkedAt": "2026-10-22T08:40:00.770Z"
     },
     "17363244": {
       "status": "RETRY_LATER",
@@ -9866,7 +9866,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-22T08:39:55.678Z",
+  "updatedAt": "2026-10-22T08:40:00.771Z",
   "dailyUsage": {
     "day": "2026-10-22",
     "calls": 24,
