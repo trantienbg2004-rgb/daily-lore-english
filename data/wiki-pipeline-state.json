@@ -7514,10 +7514,10 @@
       "checkedAt": "2026-10-21T01:20:44.018Z"
     },
     "8611104": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
+      "revisionId": 1365288920,
+      "checkedAt": "2026-10-22T08:21:02.914Z"
     },
     "8720264": {
       "status": "EVIDENCE_READY",
@@ -9866,7 +9866,7 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-10-22T08:20:56.392Z",
+  "updatedAt": "2026-10-22T08:21:02.924Z",
   "dailyUsage": {
     "day": "2026-10-22",
     "calls": 9,
