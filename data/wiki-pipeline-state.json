@@ -8486,10 +8486,10 @@
       "checkedAt": "2026-10-21T07:34:07.202Z"
     },
     "43970763": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
+      "revisionId": 1380851816,
+      "checkedAt": "2026-10-22T14:39:49.086Z"
     },
     "44035599": {
       "status": "EVIDENCE_READY",
@@ -9866,7 +9866,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-22T14:39:42.803Z",
+  "updatedAt": "2026-10-22T14:39:49.087Z",
   "dailyUsage": {
     "day": "2026-10-22",
     "calls": 72,
