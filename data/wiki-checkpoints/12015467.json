@@ -2,9 +2,177 @@
   "pageId": 12015467,
   "title": "Kaya identity",
   "topic": "Environment",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1364120672,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1364120672",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-22T08:58:58.490Z"
+  "reason": "1 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Kaya-identity-co2.svg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/43/Kaya-identity-co2.svg/960px-Kaya-identity-co2.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Kaya-identity-co2.svg",
+        "caption": "Kaya Identity: drivers of CO2 emissions in the World. Percentage change in the four parameters of the Kaya Identity, which determine total CO2 emissions.",
+        "alt": "",
+        "description": "Kaya Identity: drivers of CO₂ emissions, World Percentage change in the four parameters of the Kaya Identity, which determine total CO₂ emissions.",
+        "date": "2016",
+        "section": "",
+        "position": 0,
+        "provenance": {
+          "credit": "Our World in Data",
+          "license": "CC BY 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Kaya-identity-co2.svg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Kaya_identity",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1364120672",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "45d48023f63c72466e6d38e6c0ae0e1b83ab921280ab469072fb53ca3067b9b8",
+      "heading": "Lead",
+      "excerpt": "The Kaya identity is a mathematical identity that disaggregates the total emission level of the greenhouse gas carbon dioxide so that it can",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1364120672"
+    },
+    {
+      "id": "P2",
+      "hash": "8d0939da9c3458dc2d0ebf250f7667681ec188369d30dfa1e214e8621e0cab12",
+      "heading": "Overview",
+      "excerpt": "The Kaya identity was developed by Japanese energy economist Yoichi Kaya. It is the subject of his book Environment, Energy, and Economy: st",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1364120672"
+    },
+    {
+      "id": "P3",
+      "hash": "3859724f1efea3a4dadfc91ed099c9f76005a2b822719084a302c8b69b43fb4c",
+      "heading": "Global population (P)",
+      "excerpt": "Global population growth has been a defining trend of the modern era, shaped by demographic shifts, economic development, and social transfo",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1364120672"
+    },
+    {
+      "id": "P4",
+      "hash": "af0d13bc0fee69dd087665529e843b36ff1187ffaf4845d072348f71b738018a",
+      "heading": "Global population (P)",
+      "excerpt": "In the 20th century, the global population grew at an unprecedented rate due to declining mortality rates and medical advancements. However,",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1364120672"
+    },
+    {
+      "id": "P5",
+      "hash": "4c6cc449183f03874415fb27f3a727c5667bfff088c110b60e020f95909c6c0b",
+      "heading": "Global population (P)",
+      "excerpt": "Population growth patterns vary significantly across regions. Sub-Saharan Africa is expected to account for more than half of global populat",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1364120672"
+    },
+    {
+      "id": "P6",
+      "hash": "534c9174a1b0e5dc5e797cabec97e9354b71bc750d8ae13061fa2c1f9a7d65f3",
+      "heading": "GDP per capita (G/P)",
+      "excerpt": "Global GDP per capita has been on a consistent upward trajectory, reflecting economic expansion across both developed and developing nations",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1364120672"
+    },
+    {
+      "id": "P7",
+      "hash": "39c38c738fabe9457fe2953ea6878a45c14d9ff3860200e3984ffd782c52daba",
+      "heading": "Energy intensity of GDP (E/G)",
+      "excerpt": "Energy intensity of GDP, defined as the amount of energy consumed per unit of economic output, serves as a key metric for evaluating energy ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1364120672"
+    },
+    {
+      "id": "P8",
+      "hash": "bd1641e7b059cfd98781c75ccefabf9e52ffb9b0c1d22ebdadcab875772d3399",
+      "heading": "Emission intensity of energy (F/E)",
+      "excerpt": "Carbon emission intensity of energy, defined as the amount of CO2 emitted per unit of energy consumed, is a crucial metric in assessing the ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1364120672"
+    },
+    {
+      "id": "P9",
+      "hash": "b27eb9466608319c77da1e0bbb109b73413c49a1a4a527f35629a5f471bcc67a",
+      "heading": "Use in IPCC reports",
+      "excerpt": "The Kaya identity plays a core role in the development of future emissions scenarios in the IPCC Special Report on Emissions Scenarios. The ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1364120672"
+    },
+    {
+      "id": "P10",
+      "hash": "fdaef01719bb7b2cde41c8b00428a57b449ab5cc77b1689fafb72088c0900b44",
+      "heading": "GDP per capita (G/P)",
+      "excerpt": "Despite this overall growth, significant disparities will persist across regions. High-income countries, which had an average GDP per capita",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1364120672"
+    },
+    {
+      "id": "P11",
+      "hash": "47262f65fcea8679ba9e2cd864404009016b216bf229a3908f12fcb6e919ff6d",
+      "heading": "GDP per capita (G/P)",
+      "excerpt": "Emerging economies such as China and India are expected to play a crucial role in shaping future economic trends. China’s per capita GDP, wh",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1364120672"
+    },
+    {
+      "id": "P12",
+      "hash": "07fa18ae666a06833ad92e72a4793233ee26e2a905a742cbe0e7d1dd2e0f5bd9",
+      "heading": "GDP per capita (G/P)",
+      "excerpt": "At the lower end of the spectrum, low-income countries continue to face significant development challenges. Their GDP per capita is projecte",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1364120672"
+    },
+    {
+      "id": "P13",
+      "hash": "d26444a096d4e685bda933a1ae2676e424e77b90fc38e5fd5a9066501589ab6a",
+      "heading": "GDP per capita (G/P)",
+      "excerpt": "Several factors will shape the trajectory of GDP per capita in the coming decades. Technological advancements, energy efficiency improvement",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1364120672"
+    },
+    {
+      "id": "P14",
+      "hash": "d54bfa64fd4f80449824ff0c1b14c66907537a458a89d917ac1ddcd7212ed14c",
+      "heading": "GDP per capita (G/P)",
+      "excerpt": "While global GDP per capita is projected to continue increasing, the pace of economic convergence between developing and developed nations w",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1364120672"
+    },
+    {
+      "id": "P15",
+      "hash": "084390c77784d3c48749a9416be87fa8dcfa8f1410c7d3d8f07389ee37acf24f",
+      "heading": "Energy intensity of GDP (E/G)",
+      "excerpt": "Currently, developed economies, such as Japan and European nations, exhibit lower energy intensity due to advanced energy-saving technologie",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1364120672"
+    },
+    {
+      "id": "P16",
+      "hash": "2d0b796695f903842a9602fca444e40ed32d225cf2ce7951ccbf2a6ebd3e8d68",
+      "heading": "Energy intensity of GDP (E/G)",
+      "excerpt": "Looking ahead, global energy intensity is projected to continue decreasing, driven by technological innovations, improved energy efficiency ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1364120672"
+    },
+    {
+      "id": "P17",
+      "hash": "e0b413b5522562717f0891a2f753234e5639bd66b62f0f645558c51d127fdb68",
+      "heading": "Emission intensity of energy (F/E)",
+      "excerpt": "Despite this decline in carbon intensity, fossil fuels still dominate the global energy sector. As of 2018, 85% of the total primary energy ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1364120672"
+    },
+    {
+      "id": "P18",
+      "hash": "9388c3ac506f95b49e53990b2785f852c82ac0f992ce9afb266643aae71cb9ec",
+      "heading": "Emission intensity of energy (F/E)",
+      "excerpt": "The regional disparities in carbon intensity are also notable. Advanced economies, such as those in Europe and North America, have reduced t",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1364120672"
+    },
+    {
+      "id": "P19",
+      "hash": "62ac929c746575f63a38f0cb3ec80f15f94ae60dd588cac6cd9f7f5a9c0c46e9",
+      "heading": "Emission intensity of energy (F/E)",
+      "excerpt": "Looking ahead, the carbon intensity of energy is expected to continue decreasing, but the rate of decline will depend on policy decisions, t",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1364120672"
+    },
+    {
+      "id": "P20",
+      "hash": "9a20fa94d1c097b00e8fca27e84003f663fc975e8e51c7e8c6b58c74381cd761",
+      "heading": "Emission intensity of energy (F/E)",
+      "excerpt": "In the Modern Jazz scenario, a market-driven approach leads to rapid technological innovation, with renewable energy growth offsetting fossi",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1364120672"
+    }
+  ],
+  "updatedAt": "2026-10-22T08:59:04.363Z"
 }
