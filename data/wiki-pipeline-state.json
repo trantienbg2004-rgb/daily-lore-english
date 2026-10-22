@@ -9128,10 +9128,10 @@
       "checkedAt": null
     },
     "67387083": {
-      "status": "FETCHED",
-      "reason": "pinned-source-ready",
+      "status": "EVIDENCE_READY",
+      "reason": "1 rights-verified embedded images",
       "revisionId": 1171708090,
-      "checkedAt": "2026-10-22T12:54:09.078Z"
+      "checkedAt": "2026-10-22T12:54:14.671Z"
     },
     "67492243": {
       "status": "NEEDS_REVIEW",
@@ -9866,7 +9866,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-22T12:54:09.087Z",
+  "updatedAt": "2026-10-22T12:54:14.672Z",
   "dailyUsage": {
     "day": "2026-10-22",
     "calls": 64,

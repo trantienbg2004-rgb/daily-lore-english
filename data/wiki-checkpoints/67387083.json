@@ -2,9 +2,100 @@
   "pageId": 67387083,
   "title": "Earth 300",
   "topic": "Environment",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1171708090,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1171708090",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-22T12:54:09.081Z"
+  "reason": "1 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Earth 300 vessel design.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3f/Earth_300_vessel_design.jpg/960px-Earth_300_vessel_design.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Earth 300 vessel design.jpg",
+        "caption": "Design for the Earth 300 vessel",
+        "alt": "",
+        "description": "Architect's design for the Earth 300 research vessel",
+        "date": "2019-04-17 15:31:55",
+        "section": "",
+        "position": 0,
+        "provenance": {
+          "credit": "Iddes Yachts for the Earth 300 organisation",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Earth_300_vessel_design.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Earth_300",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1171708090",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "5d95f721926470d00bc79bd4e0b530cab51776aa68bec7bf8ff544c57975b923",
+      "heading": "Lead",
+      "excerpt": "Earth 300 is an organization that aspires to both inspire and support oceanographic research and awareness of the climate crisis. It has rel",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1171708090"
+    },
+    {
+      "id": "P2",
+      "hash": "b12cc62893b1354af754a0834b7af5d12b373adc1ea807a551443f6fc93e6cfd",
+      "heading": "Goals and purpose",
+      "excerpt": "Earth 300 is the idea of Aaron Olivera. Olivera previously organised finance for the Porsche-designed Royal Falcon One superyacht. He was in",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1171708090"
+    },
+    {
+      "id": "P3",
+      "hash": "294ff02f9f794b82befe1773b4b654d1df747a4bbd564ca6354b5d8cc84f3695",
+      "heading": "Goals and purpose",
+      "excerpt": "The vessel was designed by Ivan Salas Jefferson whose firm, Iddes Yachts, worked with the Polish naval architecture firm NED. It is intended",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1171708090"
+    },
+    {
+      "id": "P4",
+      "hash": "257f8052daaba63a4d5905347547b17cc8a49b2fc79f7b7715d9c27829737142",
+      "heading": "Proposed design",
+      "excerpt": "The design is for a vessel 300 m (980 ft) long and 60 m (200 ft) high. If built, it would be the largest superyacht to date. Designs include",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1171708090"
+    },
+    {
+      "id": "P5",
+      "hash": "cde1849381306aa444c309decfc34f52ce3a513728eb75e5efe944ea15ca4884",
+      "heading": "Propulsion",
+      "excerpt": "The vessel is intended to be eventually driven by a sustainable propulsion system with zero carbon emissions. The design proposes that it wo",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1171708090"
+    },
+    {
+      "id": "P6",
+      "hash": "fb1416e67225c7a8e3d046fdd31b0f2d829243c653af5e43f7eddb32ffaecb06",
+      "heading": "Partners and personnel",
+      "excerpt": "Earth 300's partners include Iddes Yachts, NED, Triton Submarines, and the Italian shipping company RINA. Technology firm IBM has joined the",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1171708090"
+    },
+    {
+      "id": "P7",
+      "hash": "0a54a00beacd731cf970667c7b6b2a27cc837f3d9784e6d1c30013ec65a4ba81",
+      "heading": "Construction",
+      "excerpt": "The organization estimates construction will cost $700 million and has considered shipyards in Europe and South Korea. It expects to launch ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1171708090"
+    },
+    {
+      "id": "P8",
+      "hash": "e289177a5c20ddaf986de024e06596cf019e6720f38a7866a31da832e7232784",
+      "heading": "Responses and coverage",
+      "excerpt": "The project has attracted media attention from publications including BBC Science Focus, Forbes, and Bloomberg News. Simon Redfern, dean of ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1171708090"
+    },
+    {
+      "id": "P9",
+      "hash": "49e6913fec581d7991549a80e6c488bec2ca4d24a2560e0c0eb11a448b54e708",
+      "heading": "Responses and coverage",
+      "excerpt": "Dawn Stover, writing for the Bulletin of the Atomic Scientists, referred to the project as \"overhyped\". Stover noted both the molten salt nu",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1171708090"
+    }
+  ],
+  "updatedAt": "2026-10-22T12:54:14.671Z"
 }
