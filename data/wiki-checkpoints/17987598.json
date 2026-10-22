@@ -2,10 +2,10 @@
   "pageId": 17987598,
   "title": "Climate crisis",
   "topic": "Environment",
-  "status": "DRAFTED",
+  "status": "NEEDS_REVIEW",
   "revisionId": 1373824867,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373824867",
-  "reason": "draft durably saved before validation",
+  "reason": "editorial: A1-A2:page-1:length-or-sentence,A1-A2:page-2:length-or-sentence,A1-A2:page-2:evidence-context,A1-A2:page-3:length-or-sentence,A1-",
   "rights": [
     {
       "status": "REVIEW",
@@ -301,7 +301,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373824867"
     }
   ],
-  "updatedAt": "2026-10-22T08:55:57.982Z",
+  "updatedAt": "2026-10-22T08:56:03.993Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -441,5 +441,28 @@
     "output": 1098,
     "total": 4768
   },
-  "validation": null
+  "validation": {
+    "accepted": false,
+    "errors": [
+      "A1-A2:page-1:length-or-sentence",
+      "A1-A2:page-2:length-or-sentence",
+      "A1-A2:page-2:evidence-context",
+      "A1-A2:page-3:length-or-sentence",
+      "A1-A2:page-3:evidence-context",
+      "A1-A2:page-4:length-or-sentence",
+      "A1-A2:page-4:evidence-context",
+      "A1-A2:page-5:length-or-sentence",
+      "B1-B2:page-1:length-or-sentence",
+      "B1-B2:page-2:length-or-sentence",
+      "B1-B2:page-3:length-or-sentence",
+      "B1-B2:page-5:length-or-sentence",
+      "B1-B2:page-6:length-or-sentence",
+      "C1-C2:page-1:length-or-sentence",
+      "C1-C2:page-2:length-or-sentence",
+      "C1-C2:page-3:length-or-sentence",
+      "C1-C2:page-4:length-or-sentence",
+      "C1-C2:page-5:length-or-sentence",
+      "C1-C2:page-6:length-or-sentence"
+    ]
+  }
 }
