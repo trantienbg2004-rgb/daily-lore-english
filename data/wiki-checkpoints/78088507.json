@@ -2,9 +2,189 @@
   "pageId": 78088507,
   "title": "Effects of climate change on hantavirus",
   "topic": "Environment",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1371066597,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371066597",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-22T13:09:28.243Z"
+  "reason": "1 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Ratsfrompicturesinmyphone.png",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1b/Ratsfrompicturesinmyphone.png/960px-Ratsfrompicturesinmyphone.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Ratsfrompicturesinmyphone.png",
+        "caption": "Zoonotic spillover",
+        "alt": "",
+        "description": "Picture of my rat",
+        "date": "2024-11-25",
+        "section": "Zoonotic spillover events",
+        "position": 0,
+        "provenance": {
+          "credit": "Ponyystack18",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Ratsfrompicturesinmyphone.png",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Effects_of_climate_change_on_hantavirus",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371066597",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:NOAA Nino.jpg"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "9baee913220fda2419301767b31905a908b267f01b001fc5af936a09c415ff5f",
+      "heading": "Lead",
+      "excerpt": "Orthohantaviruses (human hantaviruses) primarily transmit through contact with infected rodents, posing significant public health risks, spe",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371066597"
+    },
+    {
+      "id": "P2",
+      "hash": "c4e5b41e2ce05d278c97cf00075b3952b83d881e0efc628449a72c8d2d20fe0c",
+      "heading": "Hantavirus dynamics in Latin America and the Caribbean",
+      "excerpt": "In Latin America and the Caribbean (LAC), where biodiversity of rodents may be high, rodent species (like those from the Cricetidae family) ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371066597"
+    },
+    {
+      "id": "P3",
+      "hash": "7b0e933b439c20b1573bf935264d28411c79d80566025ca091c15397b3e61204",
+      "heading": "Hantavirus dynamics in Latin America and the Caribbean",
+      "excerpt": "All hantaviruses are closely linked to specific mammalian hosts with which they've co-evolved, initially thought to be limited to rodents li",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371066597"
+    },
+    {
+      "id": "P4",
+      "hash": "d7275ed6edf136ff66201af82d192a57c06849f75cde4ec18f8ddce579b6c668",
+      "heading": "Hantavirus dynamics in Latin America and the Caribbean",
+      "excerpt": "Hantavirus transmission varies significantly among species. Unlike other members of the Bunyaviridae family, hantaviruses do not have arthro",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371066597"
+    },
+    {
+      "id": "P5",
+      "hash": "2ea167406c114cea90416e267da1b19afb3681fb17ea72cc512b0fe11e72a2ea",
+      "heading": "Hantavirus dynamics in Latin America and the Caribbean",
+      "excerpt": "Climate and environmental changes significantly impact hantavirus transmission by altering rodent population dynamics. In LAC, intense hydro",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371066597"
+    },
+    {
+      "id": "P6",
+      "hash": "33c91793f9e70d4e0db4ab670b177875e555cc4fb7f3a22068a4cd0c6bbdd872",
+      "heading": "Ecosystem distributions",
+      "excerpt": "Climate change disrupts the ecosystem especially concerning hantavirus epidemiology. The impacts of climate change are shown in events such ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371066597"
+    },
+    {
+      "id": "P7",
+      "hash": "881619638079ffc9578468e4b42d53286d712d36392ff8d156d9038a9ce71ddb",
+      "heading": "Interactions between humans and rodents carrying hantavirus",
+      "excerpt": "Changes in land use, such as deforestation, agricultural expansion, and urbanization, increase human contact with rodent habitats, amplifyin",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371066597"
+    },
+    {
+      "id": "P8",
+      "hash": "afeb2ef2c81bc34fe546fcb3981f6ffcbcb1bba44873c848a2d095500a59dd5f",
+      "heading": "Seasonality",
+      "excerpt": "Hantavirus outbreaks often exhibit seasonal patterns, aligning with periods when rodent activity peaks. For example, spring and summer typic",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371066597"
+    },
+    {
+      "id": "P9",
+      "hash": "8c29d1dee16e08857e52c723b7b318d2ac8cba81e4e0213060374a1c2a40f036",
+      "heading": "Population focus",
+      "excerpt": "Climate change is expected to influence hantavirus outbreaks by impacting the populations of rodent hosts that carry the virus. Changes in t",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371066597"
+    },
+    {
+      "id": "P10",
+      "hash": "2cbf46b09b31e84220473bb5348e61e6be3715b102891fd2d754da06583f745d",
+      "heading": "El Niño's effect on carrier populations",
+      "excerpt": "ENSO, a climate phenomenon that alternates between warmer El Niño and cooler La Niña phases, disrupts global weather patterns, influencing r",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371066597"
+    },
+    {
+      "id": "P11",
+      "hash": "0b35bce6edbb82baaa5985ab60fbd8433a263d0a9aed431d7f78b352c5490915",
+      "heading": "Hantavirus dynamics in Latin America and the Caribbean",
+      "excerpt": "Excess moisture creates favorable conditions for rodents in human areas by, flooding their natural habitats, driving them to seek shelter in",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371066597"
+    },
+    {
+      "id": "P12",
+      "hash": "1f423fc2e48ed630071eb699973d04aa5b651101ba4239cf544b6521ba6ac128",
+      "heading": "Ecosystem distributions",
+      "excerpt": "Climate change can lead to increased agricultural activities and deforestation. These events directly affects the habitats of rodents which ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371066597"
+    },
+    {
+      "id": "P13",
+      "hash": "0680455bb29ab830169371f918c5c011a843a9001043ddc5cfb87ee164899177",
+      "heading": "Ecosystem distributions",
+      "excerpt": "Increased frequency of extreme weather events, such as floods and droughts, also alters the availability of resources for rodents. These dis",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371066597"
+    },
+    {
+      "id": "P14",
+      "hash": "8000a454994cd1a4339b07c3e9fc3365e3b66f09671b5409a7b0f434cb1074a3",
+      "heading": "Ecosystem distributions",
+      "excerpt": "Climate change does not just affect the climate in a direct sense; it transforms entire ecosystems, altering the habitats of disease vectors",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371066597"
+    },
+    {
+      "id": "P15",
+      "hash": "01f7aa9dc457ba21db40666f1d07b04ce5b6bf217586a0bb30e71e8a119ae22c",
+      "heading": "Interactions between humans and rodents carrying hantavirus",
+      "excerpt": "Climate change leads to an altered precipitation of warmer temperature patterns, this results in a boost in vegetation growth and availabili",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371066597"
+    },
+    {
+      "id": "P16",
+      "hash": "1cce6205d433972d50e0a9603e24ca4ed25751fce648d1c6a3880ee53a11c65c",
+      "heading": "Interactions between humans and rodents carrying hantavirus",
+      "excerpt": "Climate zones shifting due to the rapid warming temperatures are causing rodents to migrate into previously inhospitable areas, often closer",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371066597"
+    },
+    {
+      "id": "P17",
+      "hash": "9d4c440a4a3875952c0d8ddc30e6ae639b173e9805ac8ef4a5e0b4d039f5b858",
+      "heading": "Interactions between humans and rodents carrying hantavirus",
+      "excerpt": "Climate change has generated shifts in land use, including agricultural expansion into areas which were previously unused, overlapping with ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371066597"
+    },
+    {
+      "id": "P18",
+      "hash": "1d210a4d5d5ef73f1783f00cafd36c27ab42013b4a749fddb6e9368d79d31cf8",
+      "heading": "Seasonality",
+      "excerpt": "Climate change increase the likelihood of zoonotic spillover infection of Hantavirus from rodents to humans by causing droughts, floods, and",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371066597"
+    },
+    {
+      "id": "P19",
+      "hash": "1d5dbda2ed9c6b9519df6835d2ec555ebb6f6246d0b46683d585d1db006efcad",
+      "heading": "Seasonality",
+      "excerpt": "Extreme weather events such as prolonged droughts, intense storms, and temperature rising drives not only rodents but also humans to abundan",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371066597"
+    },
+    {
+      "id": "P20",
+      "hash": "23feb807d97b518a3dce4a8d54326b5d1f252a0c9fa0798a8c667c04a615c77a",
+      "heading": "El Niño's effect on carrier populations",
+      "excerpt": "In the southwestern United States, the 1993 hantavirus outbreak serves as a prime example of how ENSO can exacerbate disease risks. Unusual ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371066597"
+    },
+    {
+      "id": "P21",
+      "hash": "e690b796043f095fd4493097edb45cd5aa83adb1f46549c1ddb72982649e77ee",
+      "heading": "El Niño's effect on carrier populations",
+      "excerpt": "Rodents exhibit seasonal breeding patterns, sensitive to prolonged breeding seasons caused by warmer temperatures during ENSO. Rodent number",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371066597"
+    }
+  ],
+  "updatedAt": "2026-10-22T13:09:34.416Z"
 }
