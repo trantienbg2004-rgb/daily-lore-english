@@ -2,9 +2,138 @@
   "pageId": 13862336,
   "title": "Abbaye de Créteil",
   "topic": "Culture",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1366398466,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1366398466",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-22T14:39:01.179Z"
+  "reason": "1 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Abbaye de Créteil 1906.jpg"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Couverture programme 1er exposition de l'Abbaye de Créteil.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/10/Couverture_programme_1er_exposition_de_l%27Abbaye_de_Cr%C3%A9teil.jpg/960px-Couverture_programme_1er_exposition_de_l%27Abbaye_de_Cr%C3%A9teil.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Couverture programme 1er exposition de l'Abbaye de Créteil.jpg",
+        "caption": "Cover of the program for the 1st exhibition of l'Abbaye de Créteil, 21 July 1907",
+        "alt": "",
+        "description": "Couverture du programme de la 1ere exposition de l'Abbaye de Créteil",
+        "date": "1907-07-21",
+        "section": "History",
+        "position": 1,
+        "provenance": {
+          "credit": "Prévôt Puteaux",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Couverture_programme_1er_exposition_de_l%27Abbaye_de_Cr%C3%A9teil.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Abbaye_de_Cr%C3%A9teil",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1366398466",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Affiche Abbaye Créteil.jpg"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "ffa723f4ac45632dd8818e25a1e4385b4cbe0bbc60ce120ad3fc093dd7da19e5",
+      "heading": "Lead",
+      "excerpt": "L'Abbaye de Créteil or Abbaye group (French: Le Groupe de l'Abbaye) was a utopian artistic and literary community founded during the month o",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1366398466"
+    },
+    {
+      "id": "P2",
+      "hash": "7051bffec248c084bb39b598b699d04b59eface3db511c4a9ecdfd8edf990f65",
+      "heading": "History",
+      "excerpt": "In 1905 and early 1906 a group of young artists and poets holding meetings at various locations found that society, the way it was organized",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1366398466"
+    },
+    {
+      "id": "P3",
+      "hash": "fc14ebc152a9f73df700658ea8b1fcaf8c8517a05e79ddf6f9df6636948f9682",
+      "heading": "History",
+      "excerpt": "Georges Duhamel and Vildrac settled in Créteil, just to the southeast of Paris, in a house in a park-like setting along the river Marne. The",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1366398466"
+    },
+    {
+      "id": "P4",
+      "hash": "eecfebfeca4ebe171db540c1568805579bc7623157fc313eff84bf2076614761",
+      "heading": "History",
+      "excerpt": "Henri-Martin Barzun (father of the historian and cultural critic Jacques Barzun) was a financial contributor to his friends at the Abbaye de",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1366398466"
+    },
+    {
+      "id": "P5",
+      "hash": "7409234f96669966db083cde05cf24ba0418ea4e39365a21cb50e79943c526e4",
+      "heading": "History",
+      "excerpt": "In an unpublished part of his Souvenirs Gleizes wrote that an initial idea for the Abbaye of Créteil was to escape from corrupt Western civi",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1366398466"
+    },
+    {
+      "id": "P6",
+      "hash": "9fa82449acf545908debadef9b6035b806a3f1573ed42fa7f37645ecb4346ff3",
+      "heading": "History",
+      "excerpt": "The group tried to create a publishing house that would bring in sufficient income to support the Abbaye. The typographer Lucien Linard [fr]",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1366398466"
+    },
+    {
+      "id": "P7",
+      "hash": "ee195945f746a9d8679d7f8090ca9f27c57b10bce2408ffbeb6b95cdba7a8434",
+      "heading": "History",
+      "excerpt": "A synthetic view of the universe, presenting the remarkable phenomena of time and space, multiplicity and diversity, at once was his painted",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1366398466"
+    },
+    {
+      "id": "P8",
+      "hash": "2f5f3727a279043ee69f9344e47264a4835b6274fd19cb0b34dfdc7722f4ae5e",
+      "heading": "History",
+      "excerpt": "Many artists visited the community and participated in its project, including the poet Pierre Jean Jouve; the musician Albert Doyen [fr]; th",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1366398466"
+    },
+    {
+      "id": "P9",
+      "hash": "bb28bd317450208ca764c38c7b00401ed101a92e17d1adb78f1342ebb6cea95b",
+      "heading": "History",
+      "excerpt": "The fame of the Abbaye circulated even in Moscow, attracting many artists along the way. Filippo Tommaso Marinetti and Constantin Brâncuși w",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1366398466"
+    },
+    {
+      "id": "P10",
+      "hash": "64e3b29a886c263523d39ebb65ea039de0970f1a16ffba212bc1590cf0879086",
+      "heading": "History",
+      "excerpt": "The Abbaye group, in principle supporting themselves through the communal work of publishing, were supported by many Symbolists. Yet its mem",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1366398466"
+    },
+    {
+      "id": "P11",
+      "hash": "38466fde554193ab762a1bafe7ac312d42186030baa2039f23f0f7f481f61e7b",
+      "heading": "History",
+      "excerpt": "They wished instead \"to create an epic and heroic art, stripped of ornament and obscure allegory\", Robbins continues, \"an art dealing with t",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1366398466"
+    },
+    {
+      "id": "P12",
+      "hash": "544f9205f9f68de89d424e9d5b12f6d981cbf1dfac78a0ed90566adbab351ac7",
+      "heading": "History",
+      "excerpt": "The Abbaye attracted much interest but little revenue and its young members found themselves forced to close their beloved Abbaye on January",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1366398466"
+    },
+    {
+      "id": "P13",
+      "hash": "ccd52b58e819d77189bf0769612b9d40028d22fa3b96b5694012d94bacc824bb",
+      "heading": "History",
+      "excerpt": "Shortly after its dissolution, Gleizes moved to 7 rue du Delta near Montmartre, Paris, with artists Henri Doucet [fr], Amedeo Modigliani, Ma",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1366398466"
+    }
+  ],
+  "updatedAt": "2026-10-22T14:39:06.985Z"
 }
