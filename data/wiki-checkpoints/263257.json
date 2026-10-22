@@ -2,9 +2,119 @@
   "pageId": 263257,
   "title": "First language",
   "topic": "Culture",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1367784417,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1367784417",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-22T13:13:18.780Z"
+  "reason": "1 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Ana Dili.JPG",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c5/Ana_Dili.JPG/960px-Ana_Dili.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Ana Dili.JPG",
+        "caption": "The monument to the mother tongue (ana dili) in Nakhchivan, Azerbaijan",
+        "alt": "",
+        "description": "The monument for the Native (Azerbaijani) language in Nakhchivan, Azerbaijan",
+        "date": "2008-09-20",
+        "section": "",
+        "position": 0,
+        "provenance": {
+          "credit": "Ds02006 (talk) 17:44, 28 September 2008 (UTC)",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Ana_Dili.JPG",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/First_language",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1367784417",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Int-mother-lang-day-monument.jpg"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "445b480b8b5782309f253b16cba069457fff62e65b0d142032ca5e0d6bff2deb",
+      "heading": "Lead",
+      "excerpt": "A first language (L1), native language, native tongue, or mother tongue is the first language a person has been exposed to from birth or wit",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1367784417"
+    },
+    {
+      "id": "P2",
+      "hash": "5c1c190385fa1498fbcc51fdb92088b938f7b82edc2d031ccf5e56b0014cee32",
+      "heading": "Lead",
+      "excerpt": "The first language of a child is part of that child's personal, social and cultural identity. Another impact of the first language is that i",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1367784417"
+    },
+    {
+      "id": "P3",
+      "hash": "8caa86d9543e5df470118e50227c4f63b405f448de1268d186059325e42904d4",
+      "heading": "Definitions",
+      "excerpt": "A person qualifies as a \"native speaker\" of a language by being born and immersed in the language during youth, in a family in which the adu",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1367784417"
+    },
+    {
+      "id": "P4",
+      "hash": "88f99be04a9b2ab39e1ab49ec1c825b5021b54d56518e62ecb9ab615a06ba684",
+      "heading": "Definitions",
+      "excerpt": "The designation \"native language\", in its general usage, is thought to be imprecise and subject to various interpretations that are biased l",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1367784417"
+    },
+    {
+      "id": "P5",
+      "hash": "d408d3575b36b1750623786a81fbe7ab86d921ed78eb6a383096ead2d4b94b3c",
+      "heading": "Defining \"native speaker\"",
+      "excerpt": "Defining what constitutes a native speaker is difficult, and there is no test which can identify one. It is not known whether native speaker",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1367784417"
+    },
+    {
+      "id": "P6",
+      "hash": "436d32788a594b653c2720186a3f41be08c6a7442a2d83141151d74bec09a01d",
+      "heading": "Defining \"native language\"",
+      "excerpt": "In some countries, such as Kenya, India, Belarus, Ukraine and various East Asian and Central Asian countries, \"mother language\" or \"native l",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1367784417"
+    },
+    {
+      "id": "P7",
+      "hash": "3415bd4065c92d294ba7f4ab939d06ce2fc4a8fefc62f8f773df327ba7766c10",
+      "heading": "Bilingualism",
+      "excerpt": "A related concept is bilingualism. One definition is that a person is bilingual if they are equally proficient in two languages. Someone who",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1367784417"
+    },
+    {
+      "id": "P8",
+      "hash": "311df611652743921fe476aced7edb9567b4eb1225ef04d4ad33c96051b1adb8",
+      "heading": "Multilingualism",
+      "excerpt": "One can have two or more native languages, thus being a native bilingual or indeed multilingual. The order in which these languages are lear",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1367784417"
+    },
+    {
+      "id": "P9",
+      "hash": "f11633a17b6c11a86b35e270f0c4c7df263db1c84cc48e7c512e21c59e5df4f4",
+      "heading": "Defining \"native language\"",
+      "excerpt": "In the context of population censuses conducted on the Canadian population, Statistics Canada defines the mother tongue as \"the first langua",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1367784417"
+    },
+    {
+      "id": "P10",
+      "hash": "b24a6ba6e1e6d82ca8f3f1ae99f6329d775a87f4bd6839f00f13330f49dea6e3",
+      "heading": "Defining \"native language\"",
+      "excerpt": "Children brought up speaking more than one language can have more than one native language, and be bilingual or multilingual. By contrast, a",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1367784417"
+    },
+    {
+      "id": "P11",
+      "hash": "3ae963e1f5fc3b85efad9d4427afc3c0c660c3c2e9287ea13af4a3f50856c0cf",
+      "heading": "Defining \"native speaker\"",
+      "excerpt": "An article titled \"The Native Speaker: An Achievable Model?\" published by the Asian EFL Journal states that there are six general principles",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1367784417"
+    }
+  ],
+  "updatedAt": "2026-10-22T13:13:24.702Z"
 }
