@@ -2,9 +2,170 @@
   "pageId": 82993222,
   "title": "Double liability",
   "topic": "Economy",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1375372974,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375372974",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-22T08:58:10.855Z"
+  "reason": "1 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:John-Sherman-2-cropped.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4a/John-Sherman-2-cropped.jpg/960px-John-Sherman-2-cropped.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:John-Sherman-2-cropped.jpg",
+        "caption": "Senator John Sherman",
+        "alt": "",
+        "description": "Portrait of en:John Sherman, taken by en:Mathew Brady",
+        "date": "between 1865 and 1880date QS:P,+1850-00-00T00:00:00Z/7,P1319,+1865-00-00T00:00:00Z/9,P1326,+1880-00-",
+        "section": "United States",
+        "position": 0,
+        "provenance": {
+          "credit": "Mathew Benjamin Brady / Levin Corbin Handy",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:John-Sherman-2-cropped.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Double_liability",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375372974",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "92a6e1fb100354d03f2c6e3f61d0b34eb2c6453405879fb50986ecb9be1c2879",
+      "heading": "Lead",
+      "excerpt": "Double liability is a legal status where a person is financially liable for twice their investment's value, including their investment. It w",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375372974"
+    },
+    {
+      "id": "P2",
+      "hash": "7e1cb351df75a3a0fd301574394471bf5d9458bf7acf0db840a8ec7afa785e15",
+      "heading": "Definition",
+      "excerpt": "Double liability is a situation in which a shareholder's financial liability is fixed to their investment, plus an additional amount equal u",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375372974"
+    },
+    {
+      "id": "P3",
+      "hash": "4a21ccc2839155690d35f91772c83e0a2308ed7c6e824d4ac614d0ccce616bd8",
+      "heading": "Canada",
+      "excerpt": "In the event of the property and assets of the bank being insufficient to pay its debts and liabilities, each shareholder of the bank shall ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375372974"
+    },
+    {
+      "id": "P4",
+      "hash": "0d44f409290cf35f8e6a7c207bb6134aee851ac677570c4b5ea07e63e468bf2e",
+      "heading": "Canada",
+      "excerpt": "In 1830, the British Privy Council for Trade adopted a resolution that applied double liability to colonial bank charters of new banks and t",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375372974"
+    },
+    {
+      "id": "P5",
+      "hash": "668008a0f80fdfe0d6f07cee32c6518e93508454fa6651b6ea04854e0e306a49",
+      "heading": "Canada",
+      "excerpt": "The Bank Acts of 1870 and 1871 added double liability to the shareholders of the then 28 banks in operation. The added liability could now b",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375372974"
+    },
+    {
+      "id": "P6",
+      "hash": "df26f3a842be88964603c53c507bc66abb6cbcdea2c3ce4163aaa380653ef4e7",
+      "heading": "United States",
+      "excerpt": "For all debts, contracted by such association for circulation, deposits, or otherwise, each shareholder shall be liable to the amount, at th",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375372974"
+    },
+    {
+      "id": "P7",
+      "hash": "2a6b07652e2d5d3155b5821572e1c0173f7759b116181e2f268ebb376dd790ca",
+      "heading": "Downfall",
+      "excerpt": "Double liability was brought down after the mass failure of banks during the Great Depression. Shareholders were seen as innocents unfairly ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375372974"
+    },
+    {
+      "id": "P8",
+      "hash": "e39248280e1d32f03cbf3c8f5312695d64603d853127e9026a8e7e23e30f213f",
+      "heading": "Triple liability",
+      "excerpt": "With triple liability, shareholders are liable for the amount of their investment, plus twice that amount. Triple liability existed for Colo",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375372974"
+    },
+    {
+      "id": "P9",
+      "hash": "61aa1fc93c65f0b374426ee7dcc83fdcfd8d1c71bd449d26a2a019d70042755f",
+      "heading": "Canada",
+      "excerpt": "Under the Bank Act of 1934, the proportion of additional liability to be paid is limited to the proportion of maximum issuable notes to the ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375372974"
+    },
+    {
+      "id": "P10",
+      "hash": "be8b35c65a2bfda5ba54dfcd61456f35330ae80026c0fd2bde056621c2215a55",
+      "heading": "United States",
+      "excerpt": "Some states applied double liability to all corporate shareholders. Some banks also had double liability in their charter provisions. In 181",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375372974"
+    },
+    {
+      "id": "P11",
+      "hash": "cecae48a36e377b5d9c9b8eef1771c0b0ceaf378e62bb1ec858644c8357e5660",
+      "heading": "United States",
+      "excerpt": "In 1863, the National Banking Act was enacted, thus creating a system of national banks with double liability. The provision adding double l",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375372974"
+    },
+    {
+      "id": "P12",
+      "hash": "b30231320c181dee99a53bcb6411589b8087d67bb8354814849624b7bcd76733",
+      "heading": "United States",
+      "excerpt": "A 1864 revision to the National Bank Act established that shareholders were only liable for their own proportional share of the debt, even i",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375372974"
+    },
+    {
+      "id": "P13",
+      "hash": "100222f15e181154674437089c577f7baa7b6f031f7132617040d552ec9e50b1",
+      "heading": "United States",
+      "excerpt": "The Act of December 23, 1913 creating the federal reserve system made shareholders individually liable for all debt up to the amount prescri",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375372974"
+    },
+    {
+      "id": "P14",
+      "hash": "09d558e0974ac26f6ac2cbb4886895665cfedc31e438db55d8343dd7203162d8",
+      "heading": "United States",
+      "excerpt": "After the implementation of the National Bank Act, states gradually adopted double liability for their state banks, and by 1931, only Alabam",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375372974"
+    },
+    {
+      "id": "P15",
+      "hash": "b482aa5903e1c5ab6d3fcd99062195f1c2be14674a1a4ee192f02404a7ee2696",
+      "heading": "Downfall",
+      "excerpt": "Double liability was also seen as having failed its purpose of protecting the public. The fund were not immediately available, and many shar",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375372974"
+    },
+    {
+      "id": "P16",
+      "hash": "055b7a5a1c1be7fc3e88e95295a1e89ca05befd1944ba2046f752a12a0ce5c33",
+      "heading": "Downfall",
+      "excerpt": "In addition, the federal deposit insurance of the Banking Act of 1933 was seen as a superior alternative to double liability to fix banking'",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375372974"
+    },
+    {
+      "id": "P17",
+      "hash": "f4d159a9ece903a3b75023dfdfe0f00ddbe6d381077cea49ec9a0b1ab594e0b7",
+      "heading": "Downfall",
+      "excerpt": "Double liability was abolished for national bank shares issued after 16 June by 1933 amendments of the National Bank Act and the Federal Res",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375372974"
+    },
+    {
+      "id": "P18",
+      "hash": "66646e788d63a263e09e22a58b239be2bb28e1d2c9e1cc9d1fb83398c4a17fa0",
+      "heading": "Downfall",
+      "excerpt": "On the state level, legislatures started dismantling double liability in 1930, and by 1944, 31 states had abolished it. The last state with ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375372974"
+    },
+    {
+      "id": "P19",
+      "hash": "895ff986422496460874fc4d2038e8a52804926b32780cd7de3fbf26d259c31a",
+      "heading": "Downfall",
+      "excerpt": "As of 1957, however, 96 banks in 14 states still had additional liability (including double liability). Qualified individual liability (incl",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375372974"
+    }
+  ],
+  "updatedAt": "2026-10-22T08:58:16.526Z"
 }
