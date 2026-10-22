@@ -2,10 +2,10 @@
   "pageId": 7656679,
   "title": "History of chiropractic",
   "topic": "Health",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1379369211,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379369211",
-  "reason": "2 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REJECTED",
@@ -174,7 +174,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379369211"
     }
   ],
-  "updatedAt": "2026-10-22T12:53:04.121Z",
+  "updatedAt": "2026-10-22T12:53:27.400Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -193,25 +193,25 @@
             ]
           },
           {
-            "text": "Two years later, Palmer opened a school for chiropractic. A man named Samuel Weed created the name chiropractic by mixing two Greek words meaning hand and action.",
+            "text": "Two years later, Palmer opened a school for chiropractic. A man named Samuel Weed created the name chiropractic by mixing two Greek words meaning hand and action. This new practice began to grow steadily during this time period.",
             "evidenceIds": [
               "P1"
             ]
           },
           {
-            "text": "Early chiropractic ideas mixed natural healing, vitalism, and spinal manipulation. Palmer believed that adjusting the spine could help cure many different health problems through the nervous system.",
+            "text": "Early chiropractic ideas mixed natural healing, vitalism, and spinal manipulation. Palmer believed that adjusting the spine could help cure many different health problems through the nervous system. These early concepts formed the core foundation of the developing healthcare practice.",
             "evidenceIds": [
               "P2"
             ]
           },
           {
-            "text": "As chiropractic grew, practitioners faced legal trouble for practicing medicine without a license. Many chiropractors, including Palmer, were jailed during these early years of the profession.",
+            "text": "As chiropractic grew, practitioners faced legal trouble for practicing medicine without a license. Many chiropractors, including Palmer, were jailed during these early years of the profession. State medical boards frequently brought successful prosecutions against them.",
             "evidenceIds": [
               "P4"
             ]
           },
           {
-            "text": "Chiropractors fought back with political campaigns to get their own licensing laws. By 1974, all fifty states had passed separate licensing statutes for chiropractic practice.",
+            "text": "Chiropractors fought back with political campaigns to get their own licensing laws. By 1974, all fifty states had passed separate licensing statutes for chiropractic practice, completing a long journey of legal recognition.",
             "evidenceIds": [
               "P4"
             ]
@@ -257,8 +257,7 @@
           {
             "text": "Mainstream medicine remained heavily critical of the profession for decades. The American Medical Association labeled chiropractic an unscientific cult and boycotted it until losing a major antitrust lawsuit in 1987.",
             "evidenceIds": [
-              "P6",
-              "13"
+              "P6"
             ]
           }
         ]
@@ -267,7 +266,7 @@
         "headline": "Roots, Metaphysics, and Conflicts in Chiropractic",
         "pages": [
           {
-            "text": "Emerging in Davenport, Iowa, in 1895, the foundational moment of chiropractic occurred when D.D. Palmer performed an adjustment on William Harvey Lillard, a janitor who attributed his partial deafness to a spinal injury sustained while emptying trash.",
+            "text": "Emerging in Davenport, Iowa, the foundational moment of chiropractic occurred when D.D. Palmer performed an adjustment on William Harvey Lillard, a janitor who attributed his partial deafness to a spinal injury sustained while emptying trash.",
             "evidenceIds": [
               "P1"
             ]
@@ -289,8 +288,7 @@
           {
             "text": "The nascent profession encountered immediate friction with established medical authorities. Chiropractors frequently faced prosecution and imprisonment for practicing medicine without a license, prompting the profession to pursue separate legislative recognition.",
             "evidenceIds": [
-              "P4",
-              "13"
+              "P4"
             ]
           },
           {
@@ -302,19 +300,18 @@
           {
             "text": "Relations with conventional medicine remained contentious for much of the twentieth century. Notably, the American Medical Association categorized chiropractic as an unscientific cult before a 1987 antitrust ruling found the association guilty of restraining trade.",
             "evidenceIds": [
-              "P6",
-              "13"
+              "P6"
             ]
           }
         ]
       }
     }
   },
-  "repairAttempts": 0,
+  "repairAttempts": 1,
   "lastUsage": {
-    "input": 2786,
-    "output": 965,
-    "total": 3751
+    "input": 3170,
+    "output": 508,
+    "total": 3678
   },
   "validation": null
 }
