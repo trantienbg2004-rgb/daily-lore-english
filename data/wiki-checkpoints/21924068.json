@@ -2,9 +2,98 @@
   "pageId": 21924068,
   "title": "Indigenous archaeology",
   "topic": "Culture",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1380193787,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380193787",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-22T08:42:49.060Z"
+  "reason": "1 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:COLLEGE STUDENTS WORK WITH ARCHAEOLOGISTS AT \"KOSTER DIG\" AN ANCIENT INDIAN BURIAL SITE - NARA - 552495.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e6/COLLEGE_STUDENTS_WORK_WITH_ARCHAEOLOGISTS_AT_%22KOSTER_DIG%22_AN_ANCIENT_INDIAN_BURIAL_SITE_-_NARA_-_552495.jpg/960px-COLLEGE_STUDENTS_WORK_WITH_ARCHAEOLOGISTS_AT_%22KOSTER_DIG%22_AN_ANCIENT_INDIAN_BURIAL_SITE_-_NARA_-_552495.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:COLLEGE STUDENTS WORK WITH ARCHAEOLOGISTS AT \"KOSTER DIG\" AN ANCIENT INDIAN BURIAL SITE - NARA - 552495.jpg",
+        "caption": "College students work with indigenous peoples at an archaeological dig in East Saint Louis.",
+        "alt": "",
+        "description": "",
+        "date": "June 1973date QS:P571,+1973-06-00T00:00:00Z/10date QS:P571,+1973-06-00T00:00:00Z/10",
+        "section": "",
+        "position": 0,
+        "provenance": {
+          "credit": "Arthur Greenberg",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:COLLEGE_STUDENTS_WORK_WITH_ARCHAEOLOGISTS_AT_%22KOSTER_DIG%22_AN_ANCIENT_INDIAN_BURIAL_SITE_-_NARA_-_552495.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Indigenous_archaeology",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380193787",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:UNDER THE DIRECTION OF PAUL FRISH, SKILLED NAVAJO WORKMEN PERFORM DELICATE ARCHAEOLOGICAL OPERATIONS. THE DIG IS A... - NARA - 544162.tif"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "45fd5ac7aa062143bee084e14af475d3232bcbc2b41a01c0ef1ac4912c7e80bb",
+      "heading": "Lead",
+      "excerpt": "Indigenous archaeologies is a sub-discipline of archaeological practice that centers archaeology \"by, for, and with\" Indigenous people to cr",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380193787"
+    },
+    {
+      "id": "P2",
+      "hash": "4a1b8ee61236db58cd114b4ed239114c3ef15898e292f9d2f0f8c5d0df310b13",
+      "heading": "Lead",
+      "excerpt": "There is no singular paradigm which all practitioners follow, leading to the pluralization of the name. Methodologies can include, but are n",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380193787"
+    },
+    {
+      "id": "P3",
+      "hash": "ba582f93d8fb39c8927be34d6f5ebbd74baba1b42c67434913a0a5d25b5c84ad",
+      "heading": "Background",
+      "excerpt": "Archaeology has its origins in European colonial policies and replicated extractive practices through the collection of material culture, in",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380193787"
+    },
+    {
+      "id": "P4",
+      "hash": "71be950fe467ff84224a6f5bd994af4fbf4a1745e83600bd4f85e8b851204a04",
+      "heading": "Background",
+      "excerpt": "Until the latter 20th century, Indigenous communities lacked the legal standing to challenge these institutions. The rise of global anti-col",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380193787"
+    },
+    {
+      "id": "P5",
+      "hash": "9e2c5dbb2a276a4ed1d184ba5f00c0a997d86723befff5b1a92887bde52ba427",
+      "heading": "Core Critiques of Western Archaeology",
+      "excerpt": "The rising number of Indigenous voices in higher education has led to critiques of the role mainstream archaeology has played in objectifyin",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380193787"
+    },
+    {
+      "id": "P6",
+      "hash": "7f3ecae71672ed91eebcce9d6453a3cec128466010ce737751fcb0debd6f41fd",
+      "heading": "CRM",
+      "excerpt": "The necessity of development-related cultural resources management (CRM) archaeology has prompted archaeologists to work more closely with I",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380193787"
+    },
+    {
+      "id": "P7",
+      "hash": "2d2c6874cd83553e0213f86bedf8561adc83a9d2674f637acb7876ba8320f792",
+      "heading": "Self-Determination and Land Rights",
+      "excerpt": "Beyond field-based applications, Indigenous archaeologies empower Indigenous peoples as they work toward decolonization by providing direct ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380193787"
+    },
+    {
+      "id": "P8",
+      "hash": "88edadb559a724955c81fa96e0db09d9540a9c92ea8fb090227cbe720ac9751f",
+      "heading": "Repatriation",
+      "excerpt": "Indigenous archaeologies are beneficial in addressing the repatriation of Indigenous remains and objects of cultural patrimony to descendant",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380193787"
+    }
+  ],
+  "updatedAt": "2026-10-22T08:42:55.424Z"
 }
