@@ -7040,10 +7040,10 @@
       "checkedAt": "2026-10-21T07:31:56.317Z"
     },
     "1998027": {
-      "status": "FETCHED",
-      "reason": "pinned-source-ready",
+      "status": "EVIDENCE_READY",
+      "reason": "3 rights-verified embedded images",
       "revisionId": 1360655024,
-      "checkedAt": "2026-10-22T08:59:16.719Z"
+      "checkedAt": "2026-10-22T08:59:22.460Z"
     },
     "2062612": {
       "status": "EVIDENCE_READY",
@@ -9866,7 +9866,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-22T08:59:16.720Z",
+  "updatedAt": "2026-10-22T08:59:22.461Z",
   "dailyUsage": {
     "day": "2026-10-22",
     "calls": 40,

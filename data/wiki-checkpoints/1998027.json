@@ -2,9 +2,204 @@
   "pageId": 1998027,
   "title": "Environmental hazard",
   "topic": "Health",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1360655024,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1360655024",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-22T08:59:16.720Z"
+  "reason": "3 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:GHS-pictogram-pollu.svg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b9/GHS-pictogram-pollu.svg/960px-GHS-pictogram-pollu.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:GHS-pictogram-pollu.svg",
+        "caption": "The international pictogram for environmentally hazardous materials.",
+        "alt": "",
+        "description": "Globally Harmonized System of Classification and Labelling of Chemicals (GHS) pictogram for environmentally hazardous substances",
+        "date": "2008",
+        "section": "",
+        "position": 0,
+        "provenance": {
+          "credit": "Unknown authorUnknown author",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:GHS-pictogram-pollu.svg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Environmental_hazard",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1360655024",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Risk assessment process.png",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f6/Risk_assessment_process.png/960px-Risk_assessment_process.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Risk assessment process.png",
+        "caption": "The four-step risk assessment process",
+        "alt": "An illustration of the four steps in the risk assessment process: hazard identification, dose-response assessment, exposure assessment, and risk characterization.",
+        "description": "An illustration of the four steps in the risk assessment process: hazard identification, dose-response assessment, exposure assessment, and risk characterization.",
+        "date": "2017-06-20",
+        "section": "Environmental hazard identification",
+        "position": 1,
+        "provenance": {
+          "credit": "Environmental Protection Agency",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Risk_assessment_process.png",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Environmental_hazard",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1360655024",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Environmental risk conceptual model.png",
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/1/18/Environmental_risk_conceptual_model.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "fileTitle": "File:Environmental risk conceptual model.png",
+        "caption": "Illustration of a site conceptual model for environmental exposure",
+        "alt": "Illustration of a site conceptual model for environmental exposure. Illustrates a hazard source, environmental fate and transport, exposure point, exposure route, and potentially exposed populations.",
+        "description": "This figure is an example of a site conceptual model used for exposure pathway evaluation. It demonstrates the source of a given hazard, environmental fate and transport, the exposure point, the route of exposure, and the potential receptors for exposure.",
+        "date": "2005-11-30",
+        "section": "Environmental hazard identification",
+        "position": 2,
+        "provenance": {
+          "credit": "Agency for Toxic Substances and Disease Registry",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Environmental_risk_conceptual_model.png",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Environmental_hazard",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1360655024",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "87194fa394e9cb0414f65b0a10f095f35cd99bb1592291b7810f489980d3a179",
+      "heading": "Lead",
+      "excerpt": "An environmental hazard is something which is hazardous, either to the natural environment or of the natural environment and which is normal",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1360655024"
+    },
+    {
+      "id": "P2",
+      "hash": "ea2353a85f7f88917de6f33f950fba5b3bf34f209f6d9b34bcd7374e1a00827d",
+      "heading": "Lead",
+      "excerpt": "Well-known examples of hazards to the environment include potential oil spills, water pollution, slash and burn deforestation, air pollution",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1360655024"
+    },
+    {
+      "id": "P3",
+      "hash": "bc240d8cfa37d9ab5825a0950b6d47848080b5c911c0ceb4c6d5d59e0c9ee30e",
+      "heading": "Lead",
+      "excerpt": "Similarly, a hazard of an environment may be inherent in the whole of that environment, like a drowning hazard is inherent to the general un",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1360655024"
+    },
+    {
+      "id": "P4",
+      "hash": "31247d208afd45d0d23d12a4e1efefd2f61d62491785c1a16f168970c017260a",
+      "heading": "Lead",
+      "excerpt": "An active volcano may be a hazard to the environment, whether natural or artificial, and at the same time a hazard in and of the environment",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1360655024"
+    },
+    {
+      "id": "P5",
+      "hash": "e50a322f68ec5900d71563549629afee3b21d0de2fd5e29481261562259c3964",
+      "heading": "Types",
+      "excerpt": "A hazard can be defined as \"a source of danger\", or \"the potential occurrence of a natural or human-induced physical event or trend that may",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1360655024"
+    },
+    {
+      "id": "P6",
+      "hash": "a1031ffbfe5b87906adb1bc70fa63012e2d8ee7875668dcd55b46434d3f795bd",
+      "heading": "Hazards to the environment",
+      "excerpt": "Hazards to the environment usually imply hazards that are dangerous to a natural environment of biomes or ecosystems, but artificial environ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1360655024"
+    },
+    {
+      "id": "P7",
+      "hash": "5832eced6d5d8e123cb9e6ba3ea2e1fe478b6537594afac953183b27244caa5e",
+      "heading": "Hazards of the environment",
+      "excerpt": "Hazards of an environment are hazards that are normally present in the specific environment and are dangerous to people, other organisms or ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1360655024"
+    },
+    {
+      "id": "P8",
+      "hash": "4e43d674ee055d81022f34962792bc53e3b7e8a634bc626ed0b3a42074dbe4cc",
+      "heading": "Classification by type",
+      "excerpt": "Chemical hazards are substances that can cause harm or damage to humans, animals, or the environment. They can be in the form of solids, liq",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1360655024"
+    },
+    {
+      "id": "P9",
+      "hash": "ebfbbd7f296b2a5bdc740878536e288a919ea5fdd0f8ec291b60af89bf3c9389",
+      "heading": "Environmental hazard identification",
+      "excerpt": "Environmental hazard identification is the first step in environmental risk assessment, which is the process of assessing the likelihood, or",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1360655024"
+    },
+    {
+      "id": "P10",
+      "hash": "a03e7c2d0cc113ac875d48ab52fda16fde0f69ff85c9a3dbc718d37fc459afb4",
+      "heading": "Conceptual model of exposure",
+      "excerpt": "Hazards have the potential to cause adverse effects only if they come into contact with populations that may be harmed. For this reason, haz",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1360655024"
+    },
+    {
+      "id": "P11",
+      "hash": "559717ac6e3939016da21dea7048a404422db98e47c98b559b5cd01c6221839b",
+      "heading": "Evaluating hazard data",
+      "excerpt": "Once a conceptual model of exposure is developed for a given hazard, measurements should be taken to determine the presence and quantity of ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1360655024"
+    },
+    {
+      "id": "P12",
+      "hash": "0f7a0ab9de4bc5fc81abb5807af84ec9b23425f5ccf25328692e4c539dac5b34",
+      "heading": "Biological",
+      "excerpt": "Biological hazards, also known as biohazards, refer to biological substances that pose a threat to the health of living organisms, primarily",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1360655024"
+    },
+    {
+      "id": "P13",
+      "hash": "45473e880d172726a78e1b911007b7ef2322aaf1d9649046a85b04a5b1d145c7",
+      "heading": "Types",
+      "excerpt": "Without the potential for exposure there is no hazard, (and without the potential for harmful consequence there is no risk). Environmental h",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1360655024"
+    },
+    {
+      "id": "P14",
+      "hash": "21f9e1ab3eaba9ce487342b73ea060892b119c573d4fca4ad1ee9accdea23391",
+      "heading": "Classification by type",
+      "excerpt": "Physical hazards are factors within the environment that can harm the body without necessarily touching it. They include a wide range of env",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1360655024"
+    },
+    {
+      "id": "P15",
+      "hash": "0917e722e2a8df9ba16547c8d4629a47bd13dcfae98c1f60415aafea55d4a3f8",
+      "heading": "Classification by type",
+      "excerpt": "Biological hazards, also known as biohazards, are organisms or organic substances that pose a threat to the health of living organisms, prim",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1360655024"
+    },
+    {
+      "id": "P16",
+      "hash": "b87c2a3a7ce45b78222a1ad46955a4b7b961a8fda2d2f0aeef6e08ef0ba10c4b",
+      "heading": "Classification by type",
+      "excerpt": "Psychosocial hazards (or psychological hazards) are aspects of work and work environments that can cause psychological harm or mental ill-he",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1360655024"
+    },
+    {
+      "id": "P17",
+      "hash": "e03aeea73fc762f726d3cb2d9ede88944a138798f7bc7206f8a277012b8b33d3",
+      "heading": "Environmental hazard identification",
+      "excerpt": "In hazard identification, sources of data on the risks associated with prospective hazards are identified. For instance, if a site is known ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1360655024"
+    }
+  ],
+  "updatedAt": "2026-10-22T08:59:22.460Z"
 }
