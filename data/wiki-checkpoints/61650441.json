@@ -2,10 +2,10 @@
   "pageId": 61650441,
   "title": "Democracy in Mexico",
   "topic": "Politics",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1381251267,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381251267",
-  "reason": "7 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -329,5 +329,142 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381251267"
     }
   ],
-  "updatedAt": "2026-10-22T08:25:31.835Z"
+  "updatedAt": "2026-10-22T08:25:48.262Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "The Long Path of Democracy in Mexico",
+        "pages": [
+          {
+            "text": "Democracy in Mexico has a very long history. It started when the federal republic was created in 1824. Before that time, Mexico was ruled by the Spanish Empire and became a brief empire after gaining independence. After 1824, the new republic faced many hard challenges.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "The early years of the republic were not peaceful. Military officers staged many coups against the government. A powerful leader named Antonio López de Santa Anna held great power over the country until 1855. Liberal politicians finally forced him to leave office.",
+            "evidenceIds": [
+              "P1",
+              "P9"
+            ]
+          },
+          {
+            "text": "After Santa Anna left, liberals wrote a new constitution in 1857. This document gave rights to men and took away special privileges from the Church and the military. However, this caused deep anger among conservatives, leading to years of war and a foreign invasion.",
+            "evidenceIds": [
+              "P2",
+              "P12"
+            ]
+          },
+          {
+            "text": "From 1876 to 1911, a leader named Porfirio Díaz ruled the country. Elections happened regularly, but the people had little real voice. This long period of strict rule eventually caused great anger among the public and led directly to the Mexican Revolution.",
+            "evidenceIds": [
+              "P3",
+              "P15"
+            ]
+          },
+          {
+            "text": "After the revolution, a new constitution was made in 1917. For many decades, one political party kept near-complete control over elections. True political competition finally returned later, bringing new parties and peaceful changes in presidential power.",
+            "evidenceIds": [
+              "P3",
+              "P4",
+              "P5"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "A History of Mexican Democracy and Turmoil",
+        "pages": [
+          {
+            "text": "Mexican democracy traces its origins back to the establishment of the federal republic in 1824. Following centuries under Spanish colonial rule and a brief period as an empire, the new nation attempted to build a representative government. Unfortunately, this early promise was quickly disrupted.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Throughout the early decades, military coups continually undermined the young republic. Politician-general Antonio López de Santa Anna dominated political life until liberal politicians successfully ousted him in 1855, paving the way for the radical Constitution of 1857.",
+            "evidenceIds": [
+              "P1",
+              "P2",
+              "P9"
+            ]
+          },
+          {
+            "text": "The reforms sparked intense backlash from conservatives, plunging the country into years of conflict and a French intervention that briefly placed Maximilian Habsburg on a throne. Following the restoration of the republic, a period of relative stability gave way to the long dictatorship of Porfirio Díaz.",
+            "evidenceIds": [
+              "P2",
+              "P3",
+              "P15"
+            ]
+          },
+          {
+            "text": "Díaz maintained power for decades through manipulated elections and the suppression of dissent. Popular resentment eventually erupted into the Mexican Revolution of 1910. A new constitution was ratified in 1917, establishing principles that shaped modern politics.",
+            "evidenceIds": [
+              "P3",
+              "P4",
+              "P17",
+              "P18"
+            ]
+          },
+          {
+            "text": "For much of the twentieth century, the Institutional Revolutionary Party dominated the electoral system, maintaining a virtual one-party state. Significant democratic shifts finally arrived in 2000 when opposition candidate Vicente Fox won the presidency, marking a new chapter in Mexican political history.",
+            "evidenceIds": [
+              "P4",
+              "P5"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "Evolution and Struggle of Mexican Democracy",
+        "pages": [
+          {
+            "text": "The trajectory of Mexican democracy commenced with the foundation of the federal republic in 1824, following three centuries of Spanish imperial dominance and a transient imperial interlude under Agustín de Iturbide. The nascent state immediately encountered structural instability.",
+            "evidenceIds": [
+              "P1",
+              "P8"
+            ]
+          },
+          {
+            "text": "Successive military insurrections systematically eroded early constitutional principles. General Antonio López de Santa Anna emerged as the preeminent caudillo, exerting immense political sway until liberal factions orchestrated his ouster in 1855 and instituted the progressive Constitution of 1857.",
+            "evidenceIds": [
+              "P1",
+              "P2",
+              "P9"
+            ]
+          },
+          {
+            "text": "Ideological polarization between liberals and conservatives precipitated protracted civil conflict and a foreign intervention that installed Maximilian Habsburg as emperor. Following the liberal resurgence, Porfirio Díaz ascended to power via a coup in 1876, inaugurating the autocratic Porfiriato era.",
+            "evidenceIds": [
+              "P2",
+              "P3",
+              "P15"
+            ]
+          },
+          {
+            "text": "Díaz institutionalized an effective dictatorship by neutralizing legislative opposition, manipulating electoral mechanisms, and suppressing dissent. The systemic disenfranchisement catalyzed the Mexican Revolution of 1910, culminating in the ratification of the 1917 Constitution.",
+            "evidenceIds": [
+              "P3",
+              "P17",
+              "P18"
+            ]
+          },
+          {
+            "text": "The post-revolutionary political landscape was dominated by the Institutional Revolutionary Party, which preserved hegemonic control over the electoral apparatus for decades. Genuine multi-party competition and democratic alternation materialized definitively at the turn of the twenty-first century.",
+            "evidenceIds": [
+              "P4",
+              "P5"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2907,
+    "output": 1457,
+    "total": 4364
+  },
+  "validation": null
 }
