@@ -8828,10 +8828,10 @@
       "checkedAt": "2026-10-22T08:23:08.520Z"
     },
     "57214291": {
-      "status": "VALIDATED",
-      "reason": "local factual, style, length, structure and source audit passed",
+      "status": "NEEDS_REVIEW",
+      "reason": "no-verified-lead-photo",
       "revisionId": 1371289028,
-      "checkedAt": "2026-10-22T09:03:08.664Z"
+      "checkedAt": "2026-10-22T09:03:14.693Z"
     },
     "57296076": {
       "status": "PENDING",
@@ -9866,7 +9866,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-22T09:03:08.666Z",
+  "updatedAt": "2026-10-22T09:03:14.693Z",
   "dailyUsage": {
     "day": "2026-10-22",
     "calls": 43,
