@@ -6374,10 +6374,10 @@
       "checkedAt": "2026-10-21T03:11:54.175Z"
     },
     "247849": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
+      "revisionId": 1360644706,
+      "checkedAt": "2026-10-22T13:00:11.926Z"
     },
     "254061": {
       "status": "EVIDENCE_READY",
@@ -9866,7 +9866,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-22T13:00:05.901Z",
+  "updatedAt": "2026-10-22T13:00:11.935Z",
   "dailyUsage": {
     "day": "2026-10-22",
     "calls": 68,
