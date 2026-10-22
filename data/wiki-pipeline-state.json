@@ -9800,10 +9800,10 @@
       "checkedAt": null
     },
     "83397952": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
+      "revisionId": 1377698566,
+      "checkedAt": "2026-10-22T12:56:15.078Z"
     },
     "83447061": {
       "status": "PENDING",
@@ -9866,7 +9866,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-22T12:56:08.735Z",
+  "updatedAt": "2026-10-22T12:56:15.079Z",
   "dailyUsage": {
     "day": "2026-10-22",
     "calls": 64,
