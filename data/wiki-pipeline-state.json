@@ -9014,10 +9014,10 @@
       "checkedAt": null
     },
     "64902589": {
-      "status": "PENDING",
-      "reason": "queued",
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
       "revisionId": 1337480612,
-      "checkedAt": null
+      "checkedAt": "2026-10-22T08:19:38.601Z"
     },
     "65091614": {
       "status": "PENDING",
@@ -9866,7 +9866,7 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-10-22T08:19:32.341Z",
+  "updatedAt": "2026-10-22T08:19:38.602Z",
   "dailyUsage": {
     "day": "2026-10-22",
     "calls": 9,
