@@ -6872,10 +6872,10 @@
       "checkedAt": "2026-10-21T22:34:35.328Z"
     },
     "1420643": {
-      "status": "PENDING",
-      "reason": "queued",
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
       "revisionId": 1380707224,
-      "checkedAt": null
+      "checkedAt": "2026-10-22T06:14:39.251Z"
     },
     "1436168": {
       "status": "PENDING",
@@ -9866,7 +9866,7 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-10-22T06:14:33.067Z",
+  "updatedAt": "2026-10-22T06:14:39.251Z",
   "dailyUsage": {
     "day": "2026-10-22",
     "calls": 8,
