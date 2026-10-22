@@ -2,9 +2,157 @@
   "pageId": 1038280,
   "title": "Geoengineering",
   "topic": "Environment",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1376824977,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376824977",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-22T13:03:36.215Z"
+  "reason": "2 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Tree planting closeup.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/46/Tree_planting_closeup.jpg/960px-Tree_planting_closeup.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Tree planting closeup.jpg",
+        "caption": "Planting trees is a nature-based way to remove carbon dioxide from the atmosphere; however, the effect may only be temporary in some cases.",
+        "alt": "",
+        "description": "Two people placing a tree seedling in the ground",
+        "date": "2018-05-21 15:17:15",
+        "section": "Carbon dioxide removal",
+        "position": 0,
+        "provenance": {
+          "credit": "Shrinivaskulkarni1388",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Tree_planting_closeup.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Geoengineering",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376824977",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:SPICE SRM overview.jpg",
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/f/f7/SPICE_SRM_overview.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "fileTitle": "File:SPICE SRM overview.jpg",
+        "caption": "Proposed solar radiation modification using a tethered balloon to inject sulfate aerosols into the stratosphere",
+        "alt": "refer to caption and image description",
+        "description": "The SPICE project will investigate the feasibility of one so-called geoengineering technique: the idea of simulating natural processes that release small particles into the stratosphere, which then reflect a few percent of incoming solar radiation, with the effect of cooling the Earth with relative speed.",
+        "date": "2011-09-15",
+        "section": "Solar radiation modification",
+        "position": 1,
+        "provenance": {
+          "credit": "Hughhunt",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:SPICE_SRM_overview.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Geoengineering",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376824977",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:2007 Arctic Sea Ice.jpg"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "96219cd7454cf14841a3c0ae6847d6f0b84848471d2f53a0c58709a9a09b3f81",
+      "heading": "Lead",
+      "excerpt": "Geoengineering (also known as climate engineering or climate intervention) is the deliberate large-scale interventions in the Earth’s climat",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376824977"
+    },
+    {
+      "id": "P2",
+      "hash": "84e8e897bb88889f95fcc55ae2173bcaacafcdc388383667092431750184b2a7",
+      "heading": "Lead",
+      "excerpt": "Some types of geoengineering present political, social and ethical issues. One common objection is that focusing on these technologies could",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376824977"
+    },
+    {
+      "id": "P3",
+      "hash": "509c38c77b3ca0331cc674636a72e14a0392db3e676d8427f6af05630dc9ba41",
+      "heading": "Lead",
+      "excerpt": "Major scientific organizations have examined the potential, risks, and governance needs of geoengineering, including the US National Academi",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376824977"
+    },
+    {
+      "id": "P4",
+      "hash": "1ae5c14ac1616d0d29e0c3c64c65583885eed9fcff594b968cade30bebcd79bd",
+      "heading": "Carbon dioxide removal",
+      "excerpt": "Carbon dioxide removal (CDR) is a process in which carbon dioxide (CO2) is removed from Earth's atmosphere by deliberate human activities an",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376824977"
+    },
+    {
+      "id": "P5",
+      "hash": "ce15f478c6c8ea70eec03df61421874a542363247cb480558474cfe69530ac6c",
+      "heading": "Glacial geoengineering",
+      "excerpt": "Glacial geoengineering is in the early research stage and many proposals face major technical, environmental, and governance challenges. Sup",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376824977"
+    },
+    {
+      "id": "P6",
+      "hash": "cdda9f8b292c50386301e8a88fce9b3a35eed19f7eb254daa4869ff18fcc2aae",
+      "heading": "Carbon dioxide removal",
+      "excerpt": "CDR includes methods that are implemented on land or in aquatic systems. Land-based methods include afforestation, reforestation, agricultur",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376824977"
+    },
+    {
+      "id": "P7",
+      "hash": "49e8f96a1b1afcce03345e1d0c5836fe1c6edb507cfeadf689f2216f2546ecf3",
+      "heading": "Solar radiation modification",
+      "excerpt": "Solar radiation modification (SRM), also called solar geoengineering, is a group of large-scale approaches to reduce global warming by incre",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376824977"
+    },
+    {
+      "id": "P8",
+      "hash": "4f8209d484b15271f62a84ffa13164175dbb0e4edd0b8734cf6968ef3e01777e",
+      "heading": "Glacial geoengineering",
+      "excerpt": "Glacial geoengineering is a set of proposed geoengineering approaches that focus on slowing the loss of glaciers, ice sheets, and sea ice in",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376824977"
+    },
+    {
+      "id": "P9",
+      "hash": "f147e4ae60cfdcbab3a1e6957dd4a19ff793efa3ddc5677b728641830c33aaf2",
+      "heading": "Governance",
+      "excerpt": "Most governance issues relating to geoengineering are specific to the category or the specific method. Nevertheless, a couple of internation",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376824977"
+    },
+    {
+      "id": "P10",
+      "hash": "af9fcd606363a3041f8b6061749e0befc1774f0996de1f1cee72ba80b50f5523",
+      "heading": "Solar radiation modification",
+      "excerpt": "The most-researched SRM method is stratospheric aerosol injection (SAI), in which small reflective particles would be introduced into the up",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376824977"
+    },
+    {
+      "id": "P11",
+      "hash": "97e3da1ded6b73fa9ab70e610560d3bf6df7dd51e3a22cdbccf60661f3e42871",
+      "heading": "Glacial geoengineering",
+      "excerpt": "Proposed glacial geoengineering methods include regional or local solar radiation management, thinning cirrus clouds to allow more heat to e",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376824977"
+    },
+    {
+      "id": "P12",
+      "hash": "9314a2433f92a62a505a047d8943e545c03ce3b030bc627e57bc4388fd9dd747",
+      "heading": "Governance",
+      "excerpt": "The Conference of Parties to the Convention on Biological Diversity have made several decisions regarding \"climate related geoengineering.\" ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376824977"
+    },
+    {
+      "id": "P13",
+      "hash": "d952ae935e158cc1722d20c7d9066f4233a9ea082e938e2eb6d4beb749302b5c",
+      "heading": "Governance",
+      "excerpt": "The parties to the London Convention on the Prevention of Marine Pollution by Dumping of Wastes and Other Matter and its associated London P",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376824977"
+    }
+  ],
+  "updatedAt": "2026-10-22T13:03:41.638Z"
 }
