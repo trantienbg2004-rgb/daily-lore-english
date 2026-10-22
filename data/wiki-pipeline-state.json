@@ -8396,10 +8396,10 @@
       "checkedAt": null
     },
     "40628153": {
-      "status": "FETCHED",
-      "reason": "pinned-source-ready",
+      "status": "REJECTED",
+      "reason": "insufficient-source-text-or-embedded-images",
       "revisionId": 1371736991,
-      "checkedAt": "2026-10-22T06:18:51.604Z"
+      "checkedAt": "2026-10-22T06:18:57.230Z"
     },
     "41241080": {
       "status": "RETRY_LATER",
@@ -9866,7 +9866,7 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-10-22T06:18:51.608Z",
+  "updatedAt": "2026-10-22T06:18:57.231Z",
   "dailyUsage": {
     "day": "2026-10-22",
     "calls": 8,
