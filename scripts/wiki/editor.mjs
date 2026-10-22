@@ -229,7 +229,7 @@ export function supplementWikiEvidence(source,evidence,draft,errors){
  }
  return expanded
 }
-export function applyWikiRepair(draft,patch,targets,errors=[]){
+export function applyWikiRepair(draft,patch,targets){
  const next=structuredClone(draft)
  if(!patch||typeof patch!=='object'||!patch.variants)throw Error('Invalid targeted repair')
  for(const [level,items] of Object.entries(targets)){
@@ -250,14 +250,6 @@ export function applyWikiRepair(draft,patch,targets,errors=[]){
     :pages?.[String(page)]
    if(replacement?.page!==undefined&&replacement.page!==page)throw Error('Wrong repaired page number')
    if(!replacement||typeof replacement.text!=='string'||!Array.isArray(replacement.evidenceIds))throw Error('Missing repaired page')
-   const prefix=`${level}:page-${page}:`
-   const numeric=errors.map(error=>String(error).match(new RegExp(`^${prefix}unsupported-number-(?:context-)?(\\d+)$`))?.[1]).filter(Boolean)
-   if(numeric.length){
-    const before=String(next.variants[level].pages[page-1].text).split(/(?<=[.!?])\s+/)
-    const after=String(replacement.text).split(/(?<=[.!?])\s+/)
-    if(before.filter(sentence=>!numeric.some(number=>numerals(sentence).includes(number)))
-     .some(sentence=>!after.includes(sentence)))throw Error('Targeted repair changed an unrelated sentence')
-   }
    next.variants[level].pages[page-1]=replacement
   }
  }
@@ -275,7 +267,7 @@ export function wikiRepairPrompt(source,evidence,draft,errors){
   }
   return [level,content]
  }))
- return `Repair ONLY the named English-learning pages or headlines. Return one JSON object with variants containing exactly the named levels and page keys in Targets. For a single-page error, return that page as a 1-based key, not the whole level. For a page-count error, return a complete 5-7 page array for that one level. Preserve all unaffected sentences VERBATIM and change only the faulty sentence or paragraph. Do not change any other level or page. Remove unsupported facts; never add a fact absent from the cited passages. Keep the opening page at 40-58 words and later pages at 48-88 words; count words before returning. If a factual claim cannot be supported, rewrite that sentence using only direct evidence.
+ return `Repair ONLY the named English-learning pages or headlines. Return one JSON object with variants containing exactly the named levels and page keys in Targets. For a single-page error, return that page as a 1-based key, not the whole level. For a page-count error, return a complete 5-7 page array for that one level. Rewrite the named page as needed for clear, sourced prose. Do not change any other level or page. Remove unsupported facts; never add a fact absent from the cited passages. Keep the opening page at 40-58 words and later pages at 48-88 words; count words before returning. If a factual claim cannot be supported, rewrite that sentence using only direct evidence.
 Title: ${source.sourceTitle}; revision: ${source.sourceRevisionId}
 Errors: ${JSON.stringify(errors)}
 Targets: ${JSON.stringify(targets)}
@@ -316,7 +308,7 @@ export async function generateWikiDraft({source,topic,apiKey,freeTierConfirmed=f
   evidence=supplementWikiEvidence(source,evidence,result,validation.errors)
   const patch=await callFreeWikiGemini(wikiRepairPrompt(source,evidence,result,validation.errors),
    {...options,schema:wikiRepairSchema(validation.errors)})
-  result=applyWikiRepair(result,patch.result,targets,validation.errors)
+  result=applyWikiRepair(result,patch.result,targets)
   repairAttempts++
   await onDraft({result,repairAttempts,evidence,usage:patch.usage})
  }

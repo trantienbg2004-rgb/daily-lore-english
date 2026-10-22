@@ -73,8 +73,11 @@ test('a repair changes only the failing CEFR page',()=>{
  assert.deepEqual(fullLevel.variants,original.variants)
  assert.throws(()=>applyWikiRepair(broken,{variants:{'B1-B2':{pages:[{...original.variants['B1-B2'].pages[3],page:2}]}}},targets,issues),
   /Wrong repaired page number/)
- assert.throws(()=>applyWikiRepair(broken,{variants:{'B1-B2':{pages:{4:{text:'An entirely new account.',evidenceIds:['P1']}}}}},targets,issues),
-  /unrelated sentence/)
+ const rewritten=applyWikiRepair(broken,{variants:{'B1-B2':{pages:{4:{text:'An entirely new account.',evidenceIds:['P1']}}}}},targets)
+ assert.equal(rewritten.variants['B1-B2'].pages[3].text,'An entirely new account.')
+ assert.deepEqual(rewritten.variants['B1-B2'].pages.slice(0,3),original.variants['B1-B2'].pages.slice(0,3))
+ assert.ok(validateWikiDraft(rewritten,{source,topic:'Politics',evidence}).errors
+  .includes('B1-B2:page-4:length-or-sentence'))
 })
 
 test('a single-page repair receives only that page and requires its exact page key',()=>{

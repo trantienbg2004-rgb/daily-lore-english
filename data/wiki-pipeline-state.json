@@ -9602,10 +9602,10 @@
       "checkedAt": "2026-10-21T07:32:37.555Z"
     },
     "79425227": {
-      "status": "NEEDS_REVIEW",
-      "reason": "Targeted repair changed an unrelated sentence",
+      "status": "NEEDS_REPAIR",
+      "reason": "retry named page after removal of verbatim-sentence restriction",
       "revisionId": 1380582529,
-      "checkedAt": "2026-10-22T08:39:18.606Z"
+      "checkedAt": "2026-10-22T08:44:36.558Z"
     },
     "79511869": {
       "status": "EVIDENCE_READY",
@@ -9866,7 +9866,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-22T08:43:06.811Z",
+  "updatedAt": "2026-10-22T08:44:36.564Z",
   "dailyUsage": {
     "day": "2026-10-22",
     "calls": 24,
