@@ -2,10 +2,10 @@
   "pageId": 79425227,
   "title": "1878 Kanak revolt",
   "topic": "Society",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1380582529,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380582529",
-  "reason": "2 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REJECTED",
@@ -245,7 +245,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380582529"
     }
   ],
-  "updatedAt": "2026-10-22T08:46:32.849Z",
+  "updatedAt": "2026-10-22T08:46:46.397Z",
   "priorReviewReason": "Targeted repair changed an unrelated sentence",
   "draft": {
     "variants": {
@@ -375,7 +375,7 @@
             ]
           },
           {
-            "text": "Decades of systemic land expropriation culminated in the 1878 insurrection. Prior to open conflict, Ataï articulated indigenous grievances to Governor Léopold de Pritzbuer at Teremba by symbolically presenting two bags: one containing earth representing ancestral territorial possession, and another containing stones representing the diminished remnants left by settlers.",
+            "text": "Decades of systemic land expropriation culminated in open conflict. Prior to the 1878 insurrection, Ataï articulated indigenous grievances to the colonial governor of New Caledonia, Léopold de Pritzbuer, at Teremba. He symbolically presented two bags: one containing earth representing what they had, and another containing stones representing what settlers left them.",
             "evidenceIds": [
               "P6",
               "P26"
@@ -392,11 +392,11 @@
       }
     }
   },
-  "repairAttempts": 0,
+  "repairAttempts": 1,
   "lastUsage": {
-    "input": 3543,
-    "output": 1847,
-    "total": 5390
+    "input": 3391,
+    "output": 144,
+    "total": 3535
   },
   "validation": null
 }
