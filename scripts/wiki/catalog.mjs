@@ -65,7 +65,7 @@ export function validateWikiStory(story){
      p.evidence?.pageIndex!==pageIndex||!/^File:/.test(p.evidence?.fileTitle||''))errors.push(level+':image-rights')
    }
   }
-  if(!pages[0]?.image)errors.push(level+':lead-image')
+  if(!pages.some(page=>page.image))errors.push(level+':verified-image')
   covers.push(pages[0]?.image)
  }
  if(new Set(covers).size!==1)errors.push('cross-level-cover-mismatch')

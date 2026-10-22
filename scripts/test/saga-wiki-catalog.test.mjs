@@ -31,6 +31,18 @@ test('Wiki stories keep pinned revisions, independent levels and individual phot
  assert.ok(validateWikiStory(unsupported).errors.includes('A1-A2:page-evidence'))
  const outside=structuredClone(s);outside.levelVariants['C1-C2'].pages[0].image='https://example.com/unlicensed.jpg'
  assert.ok(validateWikiStory(outside).errors.includes('C1-C2:image-rights'))
+ const later=structuredClone(s)
+ for(const variant of Object.values(later.levelVariants)){
+  const image=variant.pages[0]
+  variant.pages[0]={...image,image:'',caption:'',imageProvenance:null}
+  variant.pages[1]={...variant.pages[1],image:image.image,caption:image.caption,
+   imageProvenance:{...image.imageProvenance,evidence:{...image.imageProvenance.evidence,pageIndex:1}}}
+ }
+ later.pages=structuredClone(later.levelVariants['B1-B2'].pages)
+ assert.equal(validateWikiStory(later).accepted,true)
+ const noImage=structuredClone(later)
+ noImage.levelVariants['A1-A2'].pages[1].image=''
+ assert.ok(validateWikiStory(noImage).errors.includes('A1-A2:verified-image'))
 })
 
 test('versioned Wiki index commits only validated new articles and leaves news elsewhere',async()=>{
