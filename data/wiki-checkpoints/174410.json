@@ -2,10 +2,10 @@
   "pageId": 174410,
   "title": "Armillary sphere",
   "topic": "Science & Technology",
-  "status": "DRAFTED",
+  "status": "VALIDATED",
   "revisionId": 1380728957,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380728957",
-  "reason": "draft durably saved before validation",
+  "reason": "local factual, style, length, structure and source audit passed",
   "rights": [
     {
       "status": "REVIEW",
@@ -458,7 +458,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380728957"
     }
   ],
-  "updatedAt": "2026-10-22T06:13:33.153Z",
+  "updatedAt": "2026-10-22T06:13:51.920Z",
   "draft": {
     "outline": [
       "Introduction to the armillary sphere",
@@ -600,5 +600,8 @@
     "output": 134,
     "total": 3036
   },
-  "validation": null
+  "validation": {
+    "accepted": true,
+    "errors": []
+  }
 }
