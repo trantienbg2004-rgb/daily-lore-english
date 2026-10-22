@@ -9116,10 +9116,10 @@
       "checkedAt": "2026-10-21T07:40:01.209Z"
     },
     "67154389": {
-      "status": "FETCHED",
-      "reason": "pinned-source-ready",
+      "status": "REJECTED",
+      "reason": "insufficient-source-text-or-embedded-images",
       "revisionId": 1377708769,
-      "checkedAt": "2026-10-22T13:14:43.340Z"
+      "checkedAt": "2026-10-22T13:14:48.551Z"
     },
     "67368514": {
       "status": "REJECTED",
@@ -9866,7 +9866,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-22T13:14:43.345Z",
+  "updatedAt": "2026-10-22T13:14:48.553Z",
   "dailyUsage": {
     "day": "2026-10-22",
     "calls": 71,
