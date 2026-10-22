@@ -2,10 +2,10 @@
   "pageId": 13774191,
   "title": "Expansionism",
   "topic": "Politics",
-  "status": "DRAFTED",
+  "status": "VALIDATED",
   "revisionId": 1369577066,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369577066",
-  "reason": "draft durably saved before validation",
+  "reason": "local factual, style, length, structure and source audit passed",
   "rights": [
     {
       "status": "REVIEW",
@@ -340,7 +340,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369577066"
     }
   ],
-  "updatedAt": "2026-10-22T09:03:39.209Z",
+  "updatedAt": "2026-10-22T09:03:57.288Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -480,5 +480,8 @@
     "output": 1103,
     "total": 3994
   },
-  "validation": null
+  "validation": {
+    "accepted": true,
+    "errors": []
+  }
 }
