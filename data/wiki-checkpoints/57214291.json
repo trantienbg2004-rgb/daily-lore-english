@@ -2,10 +2,10 @@
   "pageId": 57214291,
   "title": "Afghan peace process",
   "topic": "Conflict & Security",
-  "status": "DRAFTED",
+  "status": "VALIDATED",
   "revisionId": 1371289028,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371289028",
-  "reason": "draft durably saved before validation",
+  "reason": "local factual, style, length, structure and source audit passed",
   "rights": [
     {
       "status": "REVIEW",
@@ -167,7 +167,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371289028"
     }
   ],
-  "updatedAt": "2026-10-22T09:02:50.651Z",
+  "updatedAt": "2026-10-22T09:03:08.664Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -337,5 +337,8 @@
     "output": 209,
     "total": 3150
   },
-  "validation": null
+  "validation": {
+    "accepted": true,
+    "errors": []
+  }
 }
