@@ -6110,10 +6110,10 @@
       "checkedAt": "2026-10-21T03:07:43.580Z"
     },
     "30432": {
-      "status": "DRAFTED",
-      "reason": "draft durably saved before validation",
+      "status": "NEEDS_REVIEW",
+      "reason": "editorial: A1-A2:page-1:copied-source-passage,A1-A2:page-3:copied-source-passage,C1-C2:page-1:copied-source-passage,C1-C2:page-3:copied-sour",
       "revisionId": 1375829657,
-      "checkedAt": "2026-10-22T08:38:29.129Z"
+      "checkedAt": "2026-10-22T08:38:35.165Z"
     },
     "33134": {
       "status": "PENDING",
@@ -9866,7 +9866,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-22T08:38:29.131Z",
+  "updatedAt": "2026-10-22T08:38:35.166Z",
   "dailyUsage": {
     "day": "2026-10-22",
     "calls": 20,

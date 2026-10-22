@@ -2,10 +2,10 @@
   "pageId": 30432,
   "title": "Treaty",
   "topic": "Conflict & Security",
-  "status": "DRAFTED",
+  "status": "NEEDS_REVIEW",
   "revisionId": 1375829657,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375829657",
-  "reason": "draft durably saved before validation",
+  "reason": "editorial: A1-A2:page-1:copied-source-passage,A1-A2:page-3:copied-source-passage,C1-C2:page-1:copied-source-passage,C1-C2:page-3:copied-sour",
   "rights": [
     {
       "status": "REVIEW",
@@ -265,7 +265,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375829657"
     }
   ],
-  "updatedAt": "2026-10-22T08:38:29.129Z",
+  "updatedAt": "2026-10-22T08:38:35.165Z",
   "priorReviewReason": "Gemini returned invalid JSON; preserve candidate",
   "draft": {
     "variants": {
@@ -401,5 +401,15 @@
     "output": 469,
     "total": 3328
   },
-  "validation": null
+  "validation": {
+    "accepted": false,
+    "errors": [
+      "A1-A2:page-1:copied-source-passage",
+      "A1-A2:page-3:copied-source-passage",
+      "C1-C2:page-1:copied-source-passage",
+      "C1-C2:page-3:copied-source-passage",
+      "C1-C2:page-5:copied-source-passage",
+      "C1-C2:page-6:copied-source-passage"
+    ]
+  }
 }
