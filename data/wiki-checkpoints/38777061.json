@@ -2,9 +2,265 @@
   "pageId": 38777061,
   "title": "Internationalism (politics)",
   "topic": "Politics",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1375412630,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375412630",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-22T08:40:07.538Z"
+  "reason": "3 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:1846 - Anti-Corn Law League Meeting.jpg",
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/4/46/1846_-_Anti-Corn_Law_League_Meeting.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "fileTitle": "File:1846 - Anti-Corn Law League Meeting.jpg",
+        "caption": "Meeting of the Anti-Corn Law League, 1846",
+        "alt": "",
+        "description": "A meeting of the Anti-Corn Law League in Exeter Hall in 1846.",
+        "date": "mid-19th century",
+        "section": "Origins",
+        "position": 0,
+        "provenance": {
+          "credit": "Unknown authorUnknown author",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:1846_-_Anti-Corn_Law_League_Meeting.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Internationalism_(politics)",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375412630",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Ramsay MacDonald ggbain.37952.jpg"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Karl Marx 001.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d4/Karl_Marx_001.jpg/960px-Karl_Marx_001.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Karl Marx 001.jpg",
+        "caption": "Karl Marx was a prominent member of the First International, who drafted many of their pamphlets and statements.",
+        "alt": "",
+        "description": "Portrait of Karl Marx (1818–1883)",
+        "date": "before 24th August 1875",
+        "section": "International Workingmen's Association",
+        "position": 3,
+        "provenance": {
+          "credit": "John Jabez Edwin Mayall",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Karl_Marx_001.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Internationalism_(politics)",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375412630",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Kustodiev - Congress of Comintern.JPG",
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/4/45/Kustodiev_-_Congress_of_Comintern.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "fileTitle": "File:Kustodiev - Congress of Comintern.JPG",
+        "caption": "Boris Kustodiyev. Festival of the II Congress of Comintern on the Uritsky Square (former Palace square) in Petrograd",
+        "alt": "",
+        "description": "Boris Kustodiyev. Festival of the II Congress of Comintern on the Uritsky Square (former Palace square) in Petrograd",
+        "date": "1921date QS:P571,+1921-00-00T00:00:00Z/9date QS:P571,+1921-00-00T00:00:00Z/9",
+        "section": "Communist International",
+        "position": 4,
+        "provenance": {
+          "credit": "Boris Kustodiev",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Kustodiev_-_Congress_of_Comintern.JPG",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Internationalism_(politics)",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375412630",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "c3cc1ab3ced9bba59415b6dd3fe15ac0c2cdae1036f4652876acf2a0bdf7fb8f",
+      "heading": "Lead",
+      "excerpt": "Internationalism is a political principle that advocates greater political or economic cooperation among states and nations. It is associate",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375412630"
+    },
+    {
+      "id": "P2",
+      "hash": "668ed9a9b5ea91b8d930926d52950f95a0380a6b2b62eafe28514938711d1dbc",
+      "heading": "Lead",
+      "excerpt": "Supporters of internationalism are known as internationalists and generally believe that humans should unite across national, political, cul",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375412630"
+    },
+    {
+      "id": "P3",
+      "hash": "758f3d915f4fed40b5529c497de83aa1b12e695beaef86511c74593e84b7de8c",
+      "heading": "Lead",
+      "excerpt": "Internationalism has several interpretations and meanings, but is usually characterized by opposition to ultranationalism and isolationism; ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375412630"
+    },
+    {
+      "id": "P4",
+      "hash": "309482f1c099114f5e1b51ee070f3b0749cc5f079d0a80a37c9d8b6bafc79dd8",
+      "heading": "Origins",
+      "excerpt": "In 19th-century Great Britain, there was a liberal internationalist strand of political thought epitomized by Richard Cobden and John Bright",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375412630"
+    },
+    {
+      "id": "P5",
+      "hash": "c83dfaf300126442cfb12b4adf2277f82b6b6d437717c13f03cb34c4b15700cc",
+      "heading": "Origins",
+      "excerpt": "Free Trade! What is it? Why, breaking down the barriers that separate nations; those barriers behind which nestle the feelings of pride, rev",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375412630"
+    },
+    {
+      "id": "P6",
+      "hash": "ea874fb7ffaa8d34d0f4c483f30686ad597db32201ccccb51db72a9f77210d90",
+      "heading": "Modern expression",
+      "excerpt": "Internationalism is most commonly expressed as an appreciation for the diverse cultures in the world, and a desire for world peace. People w",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375412630"
+    },
+    {
+      "id": "P7",
+      "hash": "0a27f184351cb1ab357fabec4512f9798680666204809c553eff92c359699fc8",
+      "heading": "International organizations and internationalism",
+      "excerpt": "For both intergovernmental organizations and international non-governmental organizations to emerge, nations and peoples had to be strongly ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375412630"
+    },
+    {
+      "id": "P8",
+      "hash": "ac1a55abc73151332f018e7880b4801ce34062861be13726291340086d137fe3",
+      "heading": "Sovereign states vs. supranational powers balance",
+      "excerpt": "In the strict meaning of the word, internationalism is still based on the existence of sovereign state. Its aims are to encourage multilater",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375412630"
+    },
+    {
+      "id": "P9",
+      "hash": "9f1f3081c553162f7ec6ad8c540387479f305a96f162c5bb5240e4525dc10ce7",
+      "heading": "Socialist political theory",
+      "excerpt": "Internationalism is an important component of socialist political theory, based on the principle that working-class people of all countries ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375412630"
+    },
+    {
+      "id": "P10",
+      "hash": "a80f9ce63c14d86c4ae7177e8251e56bdf1f7e5b5e4446db383df1ada461a387",
+      "heading": "Anarchist internationalism",
+      "excerpt": "From its very inception, anarchism was regarded as essentially internationalist and internationalism considered one of its most clear and st",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375412630"
+    },
+    {
+      "id": "P11",
+      "hash": "61d003be884647f2c4bedc13a05545476d7e8810037603fb7ddd27b2cf5456ce",
+      "heading": "International Workingmen's Association",
+      "excerpt": "The International Workingmen's Association, or First International, was an organization founded in 1864, composed of various working class r",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375412630"
+    },
+    {
+      "id": "P12",
+      "hash": "54c9e2efc2c6f8831d9f0d3a8675ec1dcdf438ac22e6cde661732ba0b697287b",
+      "heading": "Socialist International",
+      "excerpt": "The Socialist International, known as the Second International, was founded in 1889 after the disintegration of the International Workingmen",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375412630"
+    },
+    {
+      "id": "P13",
+      "hash": "2b674242f41e3c3f6873ff738e93cd76564370ef6fdca635fda916645ac06944",
+      "heading": "Communist International",
+      "excerpt": "The Communist International, also known as the Comintern or the Third International, was formed in 1919 in the wake of the Russian Revolutio",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375412630"
+    },
+    {
+      "id": "P14",
+      "hash": "554b7f714c2896c61cc9d920e1746de7ce5a149258255ac24a4c85c9f98555d6",
+      "heading": "Fourth International",
+      "excerpt": "The fourth and final socialist international was founded by Leon Trotsky and his followers in 1938 in opposition to the Third International ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375412630"
+    },
+    {
+      "id": "P15",
+      "hash": "69a5a906fe4aa013566115448bd9c353c71ad80bbbd23abe2233eed5ceef32ae",
+      "heading": "Internationalism in practice",
+      "excerpt": "They fear, in a word, that Soviet America will become the counterpart of what they have been told Soviet Russia looks like. Actually America",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375412630"
+    },
+    {
+      "id": "P16",
+      "hash": "badc98eba36dea3c33962847c353c4caee6343104e942167f1f781b63d0484b5",
+      "heading": "Literature and criticism",
+      "excerpt": "In his work Banal Nationalism, critic Michael Billig argued internationalism was borne out of the rise of nationalism, and rejects attempts ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375412630"
+    },
+    {
+      "id": "P17",
+      "hash": "2665adf416f0c6afb01e8933d8036aef8b0f63840a9c956057ac4f9fc7e60698",
+      "heading": "Fascist internationalism",
+      "excerpt": "With the rise of fascism, fascist states began pursuing wider international networks in the 1930s and during World War II. Fascist internati",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375412630"
+    },
+    {
+      "id": "P18",
+      "hash": "44c3138c51514526516a973849b6151322b13358a36a21363ad44a2b70e31bd0",
+      "heading": "Origins",
+      "excerpt": "Cobden believed that Free Trade would pacify the world by interdependence, an idea also expressed by Adam Smith in his The Wealth of Nations",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375412630"
+    },
+    {
+      "id": "P19",
+      "hash": "b4f505a62307bd885e3c963bbfd7461f1b655a8d77ee214bdcc29bb1e96bc3c4",
+      "heading": "Origins",
+      "excerpt": "Those liberal conceptions of internationalism were harshly criticized by socialists and radicals at the time, who pointed out the links betw",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375412630"
+    },
+    {
+      "id": "P20",
+      "hash": "75e316acacc5f406b8beaef7f20f0220bf4e8797502a79100d28db1e5aa235a3",
+      "heading": "Origins",
+      "excerpt": "Other international organizations included the Inter-Parliamentary Union, established in 1889 by Frédéric Passy from France and William Rand",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375412630"
+    },
+    {
+      "id": "P21",
+      "hash": "1e2abbbcb577331e8d0efe741d0b919567da9b5661c83bd9956f45e7121c1690",
+      "heading": "Origins",
+      "excerpt": "J. A. Hobson, a Gladstonian liberal who became a socialist after the Great War, anticipated in his book Imperialism (1902) the growth of int",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375412630"
+    },
+    {
+      "id": "P22",
+      "hash": "c1845ba791d895008bfb480c23ec9cfc05f83cec3b1dcf9f147048b8e7fafa6e",
+      "heading": "Origins",
+      "excerpt": "Lord Lothian was an internationalist and an imperialist who in December 1914 looked forward to \"the voluntary federation of the free civilis",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375412630"
+    },
+    {
+      "id": "P23",
+      "hash": "80e3e8af90d79533a2058cda0b8835737858354e7a52779695771841e094133b",
+      "heading": "Origins",
+      "excerpt": "Internationalism expressed itself in Britain through the endorsement of the League of Nations by such people as Gilbert Murray. The Liberal ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375412630"
+    },
+    {
+      "id": "P24",
+      "hash": "bb8ff4b1f7ca5594846a6d755732fd74de5fce6ecc3117c80d1a5aad04017180",
+      "heading": "Modern expression",
+      "excerpt": "Internationalists also advocate the presence of international organizations, such as the United Nations, and often support a stronger form o",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375412630"
+    },
+    {
+      "id": "P25",
+      "hash": "eb8289aec2ddaa6c4f01ff4343e99e166fec75e048cb367e02da6636c6826a74",
+      "heading": "Modern expression",
+      "excerpt": "Contributors to the current version of internationalism include Albert Einstein, who was a socialist and believed in a world government, and",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375412630"
+    }
+  ],
+  "updatedAt": "2026-10-22T08:40:12.891Z"
 }

@@ -8330,10 +8330,10 @@
       "checkedAt": "2026-10-21T07:32:11.480Z"
     },
     "38777061": {
-      "status": "FETCHED",
-      "reason": "pinned-source-ready",
+      "status": "EVIDENCE_READY",
+      "reason": "3 rights-verified embedded images",
       "revisionId": 1375412630,
-      "checkedAt": "2026-10-22T08:40:07.538Z"
+      "checkedAt": "2026-10-22T08:40:12.891Z"
     },
     "38845187": {
       "status": "PENDING",
@@ -9866,7 +9866,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-22T08:40:07.539Z",
+  "updatedAt": "2026-10-22T08:40:12.892Z",
   "dailyUsage": {
     "day": "2026-10-22",
     "calls": 24,
