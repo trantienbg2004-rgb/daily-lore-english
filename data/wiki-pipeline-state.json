@@ -9572,10 +9572,10 @@
       "checkedAt": "2026-10-21T07:32:08.266Z"
     },
     "78088507": {
-      "status": "PENDING",
-      "reason": "queued",
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
       "revisionId": 1371066597,
-      "checkedAt": null
+      "checkedAt": "2026-10-22T13:09:28.243Z"
     },
     "78256342": {
       "status": "REJECTED",
@@ -9866,7 +9866,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-22T13:09:22.064Z",
+  "updatedAt": "2026-10-22T13:09:28.244Z",
   "dailyUsage": {
     "day": "2026-10-22",
     "calls": 71,
