@@ -9140,10 +9140,10 @@
       "checkedAt": "2026-10-21T18:10:13.288Z"
     },
     "67568559": {
-      "status": "FETCHED",
-      "reason": "pinned-source-ready",
+      "status": "REJECTED",
+      "reason": "insufficient-source-text-or-embedded-images",
       "revisionId": 1376223353,
-      "checkedAt": "2026-10-22T13:15:42.956Z"
+      "checkedAt": "2026-10-22T13:15:49.598Z"
     },
     "67583363": {
       "status": "PUBLISHED",
@@ -9866,7 +9866,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-22T13:15:42.957Z",
+  "updatedAt": "2026-10-22T13:15:49.598Z",
   "dailyUsage": {
     "day": "2026-10-22",
     "calls": 71,
