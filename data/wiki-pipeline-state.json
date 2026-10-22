@@ -7016,10 +7016,10 @@
       "checkedAt": "2026-10-21T13:48:49.047Z"
     },
     "1923764": {
-      "status": "FETCHED",
-      "reason": "pinned-source-ready",
+      "status": "EVIDENCE_READY",
+      "reason": "3 rights-verified embedded images",
       "revisionId": 1378484510,
-      "checkedAt": "2026-10-22T13:15:31.710Z"
+      "checkedAt": "2026-10-22T13:15:36.743Z"
     },
     "1923965": {
       "status": "REJECTED",
@@ -9866,7 +9866,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-22T13:15:31.711Z",
+  "updatedAt": "2026-10-22T13:15:36.744Z",
   "dailyUsage": {
     "day": "2026-10-22",
     "calls": 71,

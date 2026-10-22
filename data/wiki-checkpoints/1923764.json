@@ -2,9 +2,225 @@
   "pageId": 1923764,
   "title": "Bioarchaeology",
   "topic": "Culture",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1378484510,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378484510",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-22T13:15:31.711Z"
+  "reason": "3 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Bioarchaeology Laboratory, picture made by me.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/54/Bioarchaeology_Laboratory%2C_picture_made_by_me.jpg/960px-Bioarchaeology_Laboratory%2C_picture_made_by_me.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Bioarchaeology Laboratory, picture made by me.jpg",
+        "caption": "A skeleton in a bioarchaeology lab",
+        "alt": "",
+        "description": "Bioarchaeology lab made in my school in collaboration with Osteoarc association. Full skeleton of a 8-9 year old girl.",
+        "date": "2023-04-21",
+        "section": "Paleodemography",
+        "position": 0,
+        "provenance": {
+          "credit": "Andreacise",
+          "license": "CC BY 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Bioarchaeology_Laboratory,_picture_made_by_me.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Bioarchaeology",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378484510",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:JMueller CarbonDiagramV2.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/10/JMueller_CarbonDiagramV2.jpg/960px-JMueller_CarbonDiagramV2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:JMueller CarbonDiagramV2.jpg",
+        "caption": "The composition of carbon dioxide in the atmosphere influences the isotopic values of C3 and C4 plants, which then impacts the δC of consumer collagen and apatite based on their diets. The values in this diagram are average δC compositions for the respective categories based on Fig 11.1 in Staller et al. (2010).",
+        "alt": "",
+        "description": "carbon diagram",
+        "date": "2022-05-24",
+        "section": "Carbon",
+        "position": 2,
+        "provenance": {
+          "credit": "Jmariemueller",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:JMueller_CarbonDiagramV2.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Bioarchaeology",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378484510",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Sulfursignature JMueller illustrationV3.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/91/Sulfursignature_JMueller_illustrationV3.jpg/960px-Sulfursignature_JMueller_illustrationV3.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Sulfursignature JMueller illustrationV3.jpg",
+        "caption": "Figure 3 Illustration of different ecosystems with associated ranges of sulfur isotopic signatures.",
+        "alt": "Figure 3 Illustration of different ecosystems with associated ranges of sulfur isotopic signatures.",
+        "description": "approximate stable isotope sulfur values in ecosystem",
+        "date": "2022-05-24",
+        "section": "Sulfur",
+        "position": 4,
+        "provenance": {
+          "credit": "Jmariemueller",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Sulfursignature_JMueller_illustrationV3.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Bioarchaeology",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378484510",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "6055d0a66af3dd6013080247da57389932b819cc14e6ed818c2937f6b44b8eb7",
+      "heading": "Lead",
+      "excerpt": "Bioarchaeology (osteoarchaeology, osteology or palaeo-osteology) in Europe describes the study of biological remains from archaeological sit",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378484510"
+    },
+    {
+      "id": "P2",
+      "hash": "076523b886747692243fde1cdb53af4b71cf0eb633ec51f4cfeb5010da87c139",
+      "heading": "Lead",
+      "excerpt": "The term was minted by British archaeologist Grahame Clark who, in 1972, defined it as the study of animal and human bones from archaeologic",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378484510"
+    },
+    {
+      "id": "P3",
+      "hash": "b52b5baed977a00286d1cc5814d1e80bee6b57378471f3d381837aaa444078ad",
+      "heading": "Lead",
+      "excerpt": "Bioarchaeology was largely born from the practices of New Archaeology, which developed in the United States in the 1970s as a reaction to a ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378484510"
+    },
+    {
+      "id": "P4",
+      "hash": "357737f90e0f28eaa8ebc51cc922129a17eafa9d3de0b1b5699f80da84c72518",
+      "heading": "Paleodemography",
+      "excerpt": "Paleodemography studies demographic characteristics of past populations. Bioarchaeologists use paleodemography to create life tables, a type",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378484510"
+    },
+    {
+      "id": "P5",
+      "hash": "d7123420622ff0bae7e6f5a111aac2c5c9fcb6eddc4ad40a91d1fb10e413f107",
+      "heading": "Age",
+      "excerpt": "Age estimation attempts to determine the skeletal/biological age-at-death. The primary assumption is that an individual's skeletal age is cl",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378484510"
+    },
+    {
+      "id": "P6",
+      "hash": "229540db3bc0e861b59dc233cf3c74d62acdda8565e77ad16427de83aa0c3d9a",
+      "heading": "Sex",
+      "excerpt": "Differences in male and female skeletal anatomy are used by bioarchaeologists to determine the biological sex of human skeletons. Humans are",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378484510"
+    },
+    {
+      "id": "P7",
+      "hash": "c303c9e48867611a8bf2b7f354bf05e94740d8d1c3d98eeec76faf55a4943027",
+      "heading": "Modern sex determination methods",
+      "excerpt": "Recent developments in bioarchaeological methods have introduced more accurate and standardized techniques for sex estimation, especially wh",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378484510"
+    },
+    {
+      "id": "P8",
+      "hash": "3b40e365a698054d676c8b87f8424bd4c7bd923d7ccc9cb8726e006f423558be",
+      "heading": "Dental non-specific stress indicators",
+      "excerpt": "Dental non-specific stress indicators are features found on teeth that reflect episodes of physiological stress experienced during childhood",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378484510"
+    },
+    {
+      "id": "P9",
+      "hash": "17af510959a6237d62c55c40ca651b113dc41eabbb47e0ac8e6a64bfbba5853c",
+      "heading": "Enamel hypoplasia",
+      "excerpt": "Enamel hypoplasia refers to transverse furrows or pits that form in the enamel surface of teeth when the normal process of tooth growth stop",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378484510"
+    },
+    {
+      "id": "P10",
+      "hash": "7ffc2069035c87eb4912c9462846f21c729081928a575762f76fa37eb88a5e88",
+      "heading": "Porotic hyperostosis/cribra orbitalia",
+      "excerpt": "It was long assumed that iron deficiency anemia has marked effects on the flat bones of the cranium of infants and young children. That as t",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378484510"
+    },
+    {
+      "id": "P11",
+      "hash": "f7a042d29c3fc10464a02f4bd89f1acdf1e3e4608f89904df7f1e363268b7b20",
+      "heading": "Harris lines",
+      "excerpt": "Harris lines form before adulthood, when bone growth is temporarily halted or slowed down due to some sort of stress (typically disease or m",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378484510"
+    },
+    {
+      "id": "P12",
+      "hash": "235b12cc75793e2e78183142ffc5b77c36cc4f51b27fb83e62a7fcf0a0e5320e",
+      "heading": "Hair",
+      "excerpt": "The stress hormone cortisol is deposited in hair as it grows. This has been used successfully to detect fluctuating levels of stress in the ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378484510"
+    },
+    {
+      "id": "P13",
+      "hash": "80d1f9c330b2320ef480bd588f33a648a58ea3b2d40b471f63cf0ad15543bda5",
+      "heading": "Mechanical stress and activity indicators",
+      "excerpt": "Examining the effects that activities has upon the skeleton allows the archaeologist to examine who was doing what kinds of labor, and how a",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378484510"
+    },
+    {
+      "id": "P14",
+      "hash": "5849bd901c63f10370430a6d4e50fb24847401db0612a3742c8fc3c13c06097e",
+      "heading": "Injury and workload",
+      "excerpt": "Fractures to bones during or after excavation appear relatively fresh, with broken surfaces appearing white and unweathered. Distinguishing ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378484510"
+    },
+    {
+      "id": "P15",
+      "hash": "e74ad064e9d9f2dca90650f568d096feb3793b0e98ac09c3f88172e61d045d78",
+      "heading": "Diet and dental health",
+      "excerpt": "Dental caries are caused by localized destruction of tooth enamel, as a result of acids produced by bacteria feeding upon and fermenting car",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378484510"
+    },
+    {
+      "id": "P16",
+      "hash": "cb1fc2c9196ed6794231697121845fc909bc4502d1d97b42259915de4385919f",
+      "heading": "Stable isotope analysis",
+      "excerpt": "Stable isotope biogeochemistry uses variations in isotopic signatures and relates them to biogeochemical processes. The science is based on ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378484510"
+    },
+    {
+      "id": "P17",
+      "hash": "cf5f3ed76dab54f8c31c27b782c9195e41b99b9fe03d589de5a0bdf343001781",
+      "heading": "Carbon",
+      "excerpt": "Stable isotope analysis of carbon in human bone collagen allows bioarchaeologists to carry out dietary reconstruction and to make nutritiona",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378484510"
+    },
+    {
+      "id": "P18",
+      "hash": "f6699c4c7fdc1649210b49e20bd134cbb7a51a9d95d5490e01a315092b4ed081",
+      "heading": "Nitrogen",
+      "excerpt": "The nitrogen stable isotope system is based on the relative enrichment/depletion of N in comparison to N in δ15N. Carbon and nitrogen stable",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378484510"
+    },
+    {
+      "id": "P19",
+      "hash": "9b4b2e8fb62062ba4ae74f3d8f66ce892dec4db59c7e369353a1508d3efdc38b",
+      "heading": "Oxygen",
+      "excerpt": "The oxygen stable isotope system is based on the O/O (δO) ratio in a given material, which is enriched/depleted relative to a standard. The ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378484510"
+    },
+    {
+      "id": "P20",
+      "hash": "b81c151f7a8902f25c54732eba5f33ce99e5b93e2b3a055a6ef880a862d50b90",
+      "heading": "DNA",
+      "excerpt": "In 2012 archaeologists found skeletal remains of an adult male. He was buried under a car park in England. DNA evidence allowed the archaeol",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378484510"
+    }
+  ],
+  "updatedAt": "2026-10-22T13:15:36.743Z"
 }
