@@ -7490,10 +7490,10 @@
       "checkedAt": "2026-10-21T08:11:34.356Z"
     },
     "8400322": {
-      "status": "FETCHED",
-      "reason": "pinned-source-ready",
+      "status": "REJECTED",
+      "reason": "insufficient-source-text-or-embedded-images",
       "revisionId": 1379232085,
-      "checkedAt": "2026-10-22T08:29:37.610Z"
+      "checkedAt": "2026-10-22T08:29:43.114Z"
     },
     "8410651": {
       "status": "NEEDS_REVIEW",
@@ -9866,7 +9866,7 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-10-22T08:29:37.621Z",
+  "updatedAt": "2026-10-22T08:29:43.114Z",
   "dailyUsage": {
     "day": "2026-10-22",
     "calls": 16,
