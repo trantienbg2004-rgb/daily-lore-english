@@ -7490,10 +7490,10 @@
       "checkedAt": "2026-10-21T08:11:34.356Z"
     },
     "8400322": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
+      "revisionId": 1379232085,
+      "checkedAt": "2026-10-22T08:29:37.610Z"
     },
     "8410651": {
       "status": "NEEDS_REVIEW",
@@ -9866,7 +9866,7 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-10-22T08:29:30.976Z",
+  "updatedAt": "2026-10-22T08:29:37.621Z",
   "dailyUsage": {
     "day": "2026-10-22",
     "calls": 16,
