@@ -2,10 +2,10 @@
   "pageId": 67583363,
   "title": "Limitation of the Vend",
   "topic": "Economy",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1373524651,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373524651",
-  "reason": "23 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -728,5 +728,148 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373524651"
     }
   ],
-  "updatedAt": "2026-10-22T09:10:39.891Z"
+  "updatedAt": "2026-10-22T09:11:39.700Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "The Coal Cartel of Old England",
+        "pages": [
+          {
+            "text": "Long ago, a group of coal mine owners in north east England made a big price-fixing group. It was called the Limitation of the Vend. Their main buyers were ships that took the coal to other places.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "London bought a huge amount of this coal. The city needed it to keep warm and to run many shops. Because wood was hard to find, people used coal inside their houses.",
+            "evidenceIds": [
+              "P1",
+              "P13"
+            ]
+          },
+          {
+            "text": "The coal group worked out in the open. They had helpers to check if anyone broke the rules. They were never taken to court by the law, but Parliament looked into them many times.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "Even though their prices were high, almost all the coal shipped to London came from this group. Their mines were near rivers that led straight out to the sea.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "Transporting heavy coal by road was very costly. Water transport was much cheaper, so ships carried the heavy loads along the coast to the Thames river in London.",
+            "evidenceIds": [
+              "P7",
+              "P8",
+              "P9"
+            ]
+          },
+          {
+            "text": "This special group stayed together for a very long time. Scholars still study how it worked because it was one of the most durable business cartels ever known.",
+            "evidenceIds": [
+              "P4"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "Controlling the Coal Trade in England",
+        "pages": [
+          {
+            "text": "The Limitation of the Vend operated as a historic price-fixing cartel formed by coal mine owners in north east England. While often dated from 1771 to 1845, its roots extended much further back in time.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Its primary customers were ship captains who purchased coal cargoes to resell across England, particularly in London. As the planet's first large mineral-fuelled city, London consumed vast amounts of coal to replace scarce firewood.",
+            "evidenceIds": [
+              "P1",
+              "P13"
+            ]
+          },
+          {
+            "text": "The cartel functioned openly through an organized secretariat that could usually detect cheating. Although participants believed their combination was legally questionable, they felt morally justified and were never successfully prosecuted by the law.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "North east mines captured nearly the entire lucrative London market despite charging relatively high prices. Other nearby coalfields could rarely compete because the northern mines enjoyed exceptional sea-transport links via tidal rivers.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "Moving heavy materials by road was prohibitively expensive as transport costs doubled within a few short miles. Conversely, navigable rivers flowing into the North Sea provided a much cheaper coastal route to the river Thames.",
+            "evidenceIds": [
+              "P8",
+              "P9"
+            ]
+          },
+          {
+            "text": "Unlike most business combinations that quickly collapsed due to internal cheating, the Limitation maintained itself for an exceptionally long period. Scholars continue to study its detailed records as one of the most fascinating economic history problems.",
+            "evidenceIds": [
+              "P4"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "The Limitation of the Vend Cartel",
+        "pages": [
+          {
+            "text": "The Limitation of the Vend constituted an enduring price-fixing cartel established by coal mine owners in County Durham and Northumberland. Although its active era is frequently dated 1771–1845, the arrangement possessed significantly earlier historical antecedents.",
+            "evidenceIds": [
+              "P1",
+              "P6"
+            ]
+          },
+          {
+            "text": "The cartel's principal market was London, a voracious consumer that had bypassed natural urban growth constraints by transitioning into a mineral-fuelled metropolis dependent on coal for domestic heating and diverse manufacturing processes.",
+            "evidenceIds": [
+              "P1",
+              "P13"
+            ]
+          },
+          {
+            "text": "Administered openly by a sophisticated secretariat capable of detecting internal defection, the cartel operated without legal prosecution, notwithstanding multiple parliamentary investigations and participants' apparent awareness of its questionable legality.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "Despite maintaining elevated price structures, the cartel dominated the London market. Proximity to navigable tidal rivers furnished an insurmountable logistical advantage over rival coalfields, shielding the northern producers from effective undercutting.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "Overland transportation costs rendered distant carriage economically unviable, elevating the significance of maritime shipping via small sailing vessels through the North Sea directly toward the river Thames.",
+            "evidenceIds": [
+              "P7",
+              "P8",
+              "P9"
+            ]
+          },
+          {
+            "text": "Surviving unusually long compared to typical business combinations plagued by defection, the cartel left meticulous records that continue to provide cliometric data for economic historians analyzing enduring monopoly behaviors.",
+            "evidenceIds": [
+              "P4"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2871,
+    "output": 937,
+    "total": 3808
+  },
+  "validation": null
 }
