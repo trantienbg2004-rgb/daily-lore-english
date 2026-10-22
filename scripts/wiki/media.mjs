@@ -64,15 +64,19 @@ export function assignWikipediaPhotos(decisions,source,levelVariants,{usedUrls=n
   .sort((a,b)=>coverScore(b)-coverScore(a))[0]
  const lead=directLead||(!sourceLead?null:{...sourceLead,pageIndex:0,photo:{...sourceLead.photo,
   provenance:{...sourceLead.photo.provenance,evidence:{...sourceLead.photo.provenance.evidence,pageIndex:0}}}})
- if(!lead)return {status:'REVIEW',reason:'no-verified-lead-photo',decisions:approved}
- const byPage=new Map([[0,lead]])
- const chosen=new Set([lead.photo.url])
+ if(!lead&&!approved.length)return {status:'REVIEW',reason:'no-verified-photo-placement',decisions:approved}
+ const byPage=lead?new Map([[0,lead]]):new Map()
+ const chosen=lead?new Set([lead.photo.url]):new Set()
  const later=decisions.map(row=>decideWikipediaPhoto(row,{source,levelVariants,usedUrls,preferLater:true}))
-  .filter(row=>row.status==='VERIFIED').sort((a,b)=>b.matchScore-a.matchScore||a.photo.position-b.photo.position)
+  .filter(row=>row.status==='VERIFIED')
+ // A verified later-page match still works when no cover image qualifies for the stricter secondary-photo rule.
+ if(!lead)later.push(...approved.filter(row=>row.pageIndex>0))
+ later.sort((a,b)=>b.matchScore-a.matchScore||a.photo.position-b.photo.position)
  for(const row of later){
   if(row===lead||byPage.has(row.pageIndex)||chosen.has(row.photo.url))continue
   byPage.set(row.pageIndex,row);chosen.add(row.photo.url)
  }
+ if(!byPage.size)return {status:'REVIEW',reason:'no-verified-photo-placement',decisions:approved}
  const variants=structuredClone(levelVariants)
  for(const [pageIndex,row] of byPage)for(const level of ['A1-A2','B1-B2','C1-C2']){
   Object.assign(variants[level].pages[pageIndex],{image:row.photo.url,caption:row.photo.caption,imageProvenance:row.photo.provenance})

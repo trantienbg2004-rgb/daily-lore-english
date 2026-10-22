@@ -80,6 +80,26 @@ test('a licensed source cover can introduce a detail explained on a later page',
  }
 })
 
+test('a relevant licensed image on a later page permits a text-only introduction',()=>{
+ const later={...figure,fileTitle:'File:Caravan routes.jpg',
+  caption:'Caravan trade routes across Central Asia',alt:'Caravans on trade routes',position:2}
+ const laterPage=structuredClone(page)
+ laterPage.title=later.fileTitle
+ laterPage.imageinfo[0].thumburl='https://thumb.wikimedia.org/wikipedia/commons/thumb/caravans.jpg'
+ laterPage.imageinfo[0].descriptionurl='https://commons.wikimedia.org/wiki/File:Caravan_routes.jpg'
+ const variants=structuredClone(levels)
+ for(const variant of Object.values(variants))variant.pages[1].text='Caravans followed trade routes across Central Asia.'
+ const assigned=assignWikipediaPhotos([verifyEmbeddedImage(later,laterPage)],
+  {...source,figures:[figure,later]},variants)
+ assert.equal(assigned.status,'VERIFIED')
+ assert.equal(assigned.photos.length,1)
+ for(const variant of Object.values(assigned.levelVariants)){
+  assert.equal(variant.pages[0].image,'')
+  assert.equal(variant.pages[1].image,laterPage.imageinfo[0].thumburl)
+  assert.equal(variant.pages[1].imageProvenance.evidence.pageIndex,1)
+ }
+})
+
 test('same place, unrelated object, wrong chart period and reused URL stay unapproved',()=>{
  const city={...figure,fileTitle:'File:Silk Road city skyline.jpg',caption:'Skyline of a modern city',alt:'Modern skyline'}
  const cityPage=structuredClone(page);cityPage.title=city.fileTitle
