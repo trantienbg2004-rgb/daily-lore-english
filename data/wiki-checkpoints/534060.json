@@ -2,9 +2,182 @@
   "pageId": 534060,
   "title": "FairTax",
   "topic": "Politics",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1379058382,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379058382",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-22T08:27:37.470Z"
+  "reason": "2 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:U.S. Rep. John Linder with the 2007 Tax code and complete set of Title 26 of the US Code of Federal Regulations.jpg"
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:FairTax Rate Presentation.png"
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:FairTax married.png"
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:NRST-percentile.png"
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:TaxbaseStability.png"
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Tax supply and demand.svg"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Berryman political cartoon on income tax vs sales tax (3 June 1933).jpg",
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/c/c0/Berryman_political_cartoon_on_income_tax_vs_sales_tax_%283_June_1933%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "fileTitle": "File:Berryman political cartoon on income tax vs sales tax (3 June 1933).jpg",
+        "caption": "\"No, No! Not That Way\"—political cartoon from 1933 commenting on a general sales tax over an income tax",
+        "alt": "",
+        "description": "Title: \"No, No! Not That Way\" Location: Library of Congress, Prints and Photographs Division",
+        "date": "1933-06-03",
+        "section": "Tax compliance and evasion",
+        "position": 6,
+        "provenance": {
+          "credit": "Clifford K. Berryman",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Berryman_political_cartoon_on_income_tax_vs_sales_tax_(3_June_1933).jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/FairTax",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379058382",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Orlandotaxrallypic1.jpg",
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/6/63/Orlandotaxrallypic1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "fileTitle": "File:Orlandotaxrallypic1.jpg",
+        "caption": "A FairTax rally in Orlando, Florida on July 28, 2006",
+        "alt": "",
+        "description": "Image taken at the Orlando FairTax Rally - Taken By Jonathon Rube with ORLANDO360",
+        "date": "2 August 2006 (original upload date)",
+        "section": "FairTax movement",
+        "position": 7,
+        "provenance": {
+          "credit": "User:Orl360",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Orlandotaxrallypic1.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/FairTax",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379058382",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "a13be1495661f74d32d948a9f93ccb78ac57988999ccdaf4fdcdb0cff6098490",
+      "heading": "Lead",
+      "excerpt": "FairTax is a fixed rate sales tax proposal introduced as bill H.R. 25 in the United States Congress every year since 2005. The Fair Tax Act ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379058382"
+    },
+    {
+      "id": "P2",
+      "hash": "d3c9f0726c8052c060d901f0d51c8d64aa434fc7c65b4b9832e4995037072c9e",
+      "heading": "Lead",
+      "excerpt": "The Fair Tax Act (H.R. 25/S. 18) would apply a fixed rate sales tax at the point of sale on all new, final goods and services purchased for ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379058382"
+    },
+    {
+      "id": "P3",
+      "hash": "af1e481cf3c28a70a5860fd076d88ee053233cfa500ff8eea9721d5cd3655923",
+      "heading": "Lead",
+      "excerpt": "As defined in the proposed legislation, the initial sales tax rate is 30% (i.e. a purchase of $100 would incur a sales tax of $30, resulting",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379058382"
+    },
+    {
+      "id": "P4",
+      "hash": "429a675bf07e5e9be68564aa7de0cbe02d746885606b908d8dd5047d62b24792",
+      "heading": "Lead",
+      "excerpt": "Advocates expect a consumption tax to increase savings and investment, ease tax compliance and increase economic growth, increase incentives",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379058382"
+    },
+    {
+      "id": "P5",
+      "hash": "b8fbef1c98cd31db7aafb365d1456bd5ef99b923c44b95f1080849059cb315c9",
+      "heading": "Legislative overview and history",
+      "excerpt": "The legislation would remove the Internal Revenue Service (after three years), and establish Excise Tax and Sales Tax bureaus in the Departm",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379058382"
+    },
+    {
+      "id": "P6",
+      "hash": "c20f9273ad468a91f4149aec14225b5863acb3f82f7b15d2e3214dc83193de76",
+      "heading": "Tax rate",
+      "excerpt": "The sales tax rate, as defined in the legislation for the first year, is 23% of the total payment including the tax ($23 of every $100 spent",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379058382"
+    },
+    {
+      "id": "P7",
+      "hash": "eca895d6387035cadc6c9505bd688940df55c9bb4a817075c5a2875430a42f11",
+      "heading": "Sales tax rate",
+      "excerpt": "During the first year of implementation, the FairTax legislation would apply a 23% federal retail sales tax on the total transaction value o",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379058382"
+    },
+    {
+      "id": "P8",
+      "hash": "68c8215fdde3d6560aaf78c2a349e178f1be8581fd5c2fd122b5c9b19afa0143",
+      "heading": "Effective tax rate",
+      "excerpt": "A household's effective tax rate on consumption would vary with the annual expenditures on taxable items and the fixed monthly tax rebate. T",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379058382"
+    },
+    {
+      "id": "P9",
+      "hash": "6258491ae93d40b4c4d5e56712eb2568063189a9dbe0ab2484379fa5b5067996",
+      "heading": "Monthly tax rebate",
+      "excerpt": "Under the FairTax, family households of lawful U.S. residents would be eligible to receive a \"Family Consumption Allowance\" (FCA) based on f",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379058382"
+    },
+    {
+      "id": "P10",
+      "hash": "8cf536d61e70e4d1c0091093397db08553bd73aede37509d5c7b7ca4b18c6d53",
+      "heading": "Presentation of tax rate",
+      "excerpt": "Sales and income taxes behave differently due to differing definitions of tax base, which can make comparisons between the two confusing. Un",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379058382"
+    },
+    {
+      "id": "P11",
+      "hash": "b989ca9bcb9ea06271f4bd1653f1bf1bebe39aa68c669b3484cbb9d3b7d81884",
+      "heading": "Revenue neutrality",
+      "excerpt": "A key question surrounding the FairTax is whether the tax has the ability to be revenue-neutral; that is, whether the tax would result in an",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379058382"
+    },
+    {
+      "id": "P12",
+      "hash": "73acbaf10d4353a85b1a5bf5b28e15894e06178efb0624fe18941872e0739608",
+      "heading": "Taxable items and exemptions",
+      "excerpt": "The tax would be levied once at the final retail sale for personal consumption on new goods and services. Purchases of used items, exports a",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379058382"
+    },
+    {
+      "id": "P13",
+      "hash": "3227358664acc2f2f8f77ccab4873d3f584af0ba9f103147234426c6fba311b2",
+      "heading": "Distribution of tax burden",
+      "excerpt": "The FairTax's effect on the distribution of taxation or tax incidence (the effect on the distribution of economic welfare) is a point of dis",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379058382"
+    }
+  ],
+  "updatedAt": "2026-10-22T08:27:42.917Z"
 }
