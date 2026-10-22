@@ -81,6 +81,21 @@ test('successive free-tier editorial requests respect the per-minute spacing',as
  assert.equal(calls,2);assert.equal(waited,5000)
 })
 
+test('the expanded free-project budget still stops before request and token ceilings',async()=>{
+ let calls=0
+ const fetchImpl=async()=>{calls++;return {ok:true,status:200,json:async()=>({
+  candidates:[{content:{parts:[{text:'{}'}]}}],
+  usageMetadata:{promptTokenCount:1,candidatesTokenCount:1,totalTokenCount:2}})}}
+ for(const budget of [
+  {maxCalls:1,usedCalls:0,dailyCalls:450,dailyTokens:0},
+  {maxCalls:1,usedCalls:0,dailyCalls:0,dailyTokens:1500000}])
+  await assert.rejects(callFreeWikiGemini('draft',{apiKey:'test-key',freeTierConfirmed:true,budget,fetchImpl}),GeminiWikiPause)
+ assert.equal(calls,0)
+ await callFreeWikiGemini('draft',{apiKey:'test-key',freeTierConfirmed:true,
+  budget:{maxCalls:1,usedCalls:0,dailyCalls:449,dailyTokens:1499998},fetchImpl})
+ assert.equal(calls,1)
+})
+
 test('missing token usage stops further Gemini calls instead of treating usage as zero',async()=>{
  let calls=0
  const budget={maxCalls:3,usedCalls:0}

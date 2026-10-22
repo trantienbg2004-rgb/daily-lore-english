@@ -131,7 +131,7 @@ export async function runWikiBatch({base,maxCalls=0,maxCandidates=5,pageId=null,
  const persistDurably=async()=>{try{await onPersist()}catch(error){error.checkpointFailure=true;throw error}}
  const initialTokens=state.dailyUsage.tokens
  const budget={maxCalls,usedCalls:0,dailyCalls:state.dailyUsage.calls,dailyTokens:initialTokens,
-  tokenAccountingUnavailable:!!state.dailyUsage.tokenAccountingUnavailable,maxDailyCalls:100,maxTokens:250000,
+  tokenAccountingUnavailable:!!state.dailyUsage.tokenAccountingUnavailable,maxDailyCalls:450,maxTokens:1500000,
   onRequest:async current=>{state.dailyUsage.calls=current.dailyCalls;await writeState(base,state);await persistDurably()},
   onUsage:async current=>{current.dailyTokens=initialTokens+current.usage.total;state.dailyUsage.tokens=current.dailyTokens;await writeState(base,state);await persistDurably()}}
  const stats={attempted:0,published:0,review:0,rejected:0,prepared:0,paused:false,apiCalls:0,usage:{input:0,output:0,total:0},decisions:[]}

@@ -5,14 +5,14 @@ import {selectAvailableWikiModel} from '../wiki/model-availability.mjs'
 const response=(models,status=200)=>({ok:status===200,status,json:async()=>({models})})
 const model=name=>({name:`models/${name}`,supportedGenerationMethods:['generateContent']})
 
-test('prefers listed free Flash model and excludes 2.5 after an actual generation 404',async()=>{
+test('prefers higher-capacity listed free Lite model and excludes 2.5 after generation 404',async()=>{
  let url,options
  const selected=await selectAvailableWikiModel({apiKey:'test-key',fetchImpl:async(u,o)=>{
   url=u;options=o;return response([model('gemini-2.5-flash-lite'),model('gemini-3.6-flash'),
    model('gemini-3.8-flash'),model('gemini-3.1-flash-lite'),model('gemini-3.5-flash-lite')])
  }})
- assert.equal(selected.model,'gemini-3.6-flash')
- assert.deepEqual(selected.models,['gemini-3.6-flash','gemini-3.8-flash','gemini-3.1-flash-lite','gemini-3.5-flash-lite'])
+ assert.equal(selected.model,'gemini-3.5-flash-lite')
+ assert.deepEqual(selected.models,['gemini-3.5-flash-lite','gemini-3.1-flash-lite','gemini-3.8-flash','gemini-3.6-flash'])
  assert.equal(selected.available,true)
  assert.match(url,/\/models\?pageSize=1000$/)
  assert.equal(options.method,undefined)

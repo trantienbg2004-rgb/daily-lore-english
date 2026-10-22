@@ -4,7 +4,9 @@ import {pathToFileURL} from 'node:url'
 
 // 2.5 Flash-Lite appeared in this project's model list but generateContent returned 404.
 // Keep only approved free models that have not failed this account's access check.
-const FREE_MODELS=['gemini-3.6-flash','gemini-3.8-flash','gemini-3.1-flash-lite','gemini-3.5-flash-lite']
+// AI Studio shows 500 requests/day for each Lite model on this free project,
+// versus 20 requests/day for each full Flash model. Prefer the larger pool.
+const FREE_MODELS=['gemini-3.5-flash-lite','gemini-3.1-flash-lite','gemini-3.8-flash','gemini-3.6-flash']
 
 export async function selectAvailableWikiModel({apiKey,fetchImpl=fetch}={}){
  if(!apiKey)return {available:false,model:null,models:[],reason:'missing-key'}
