@@ -2,9 +2,183 @@
   "pageId": 43656538,
   "title": "Ozone depletion and climate change",
   "topic": "Environment",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1349497936,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1349497936",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-22T12:55:39.711Z"
+  "reason": "2 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Bob Watson.jpg",
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/f/fc/Bob_Watson.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "fileTitle": "File:Bob Watson.jpg",
+        "caption": "Sir Robert (Bob) Watson played an important role in both cases",
+        "alt": "",
+        "description": "Bob Watson",
+        "date": "2010-07-23 11:28:14",
+        "section": "Policy approach",
+        "position": 0,
+        "provenance": {
+          "credit": "Tim Schofield",
+          "license": "CC BY 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Bob_Watson.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Ozone_depletion_and_climate_change",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1349497936",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Atmosphere layers-en.svg"
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Radiative-forcings.svg"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Sources stratospheric chlorine.png",
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/2/27/Sources_stratospheric_chlorine.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "fileTitle": "File:Sources stratospheric chlorine.png",
+        "caption": "Sources of Stratospheric Chlorine",
+        "alt": "",
+        "description": "Sources of Stratospheric Chlorine. According to World Meteorological Organization, Scientific Assessment of Ozone Depletion: 1998, WMO Global Ozone Research and Monitoring Project - Report No. 44, Geneva, 1998. This image is a revised version of Image:Sources of stratospheric chlorine.png by User:Preetikapoor0.",
+        "date": "2014-03-14 00:42:08",
+        "section": "Science background",
+        "position": 3,
+        "provenance": {
+          "credit": "Junkcharts",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Sources_stratospheric_chlorine.png",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Ozone_depletion_and_climate_change",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1349497936",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "29ef4365cddf2a97801e4823a277af00baa6bdfac4c006a215b6c5b3899201b3",
+      "heading": "Lead",
+      "excerpt": "Ozone depletion and climate change are environmental challenges whose connections have been explored and which have been compared and contra",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1349497936"
+    },
+    {
+      "id": "P2",
+      "hash": "cca600bc491ecdfbb69c47bbb496654af25a92a3b17691b8ed56d8ede3fb4820",
+      "heading": "Lead",
+      "excerpt": "There is widespread scientific interest in better regulation of climate change, ozone depletion and air pollution, as in general the human r",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1349497936"
+    },
+    {
+      "id": "P3",
+      "hash": "dfa745b1c8022c0a5c81b56079b49c4ab5c3371724edf49c81bd30aecb064eab",
+      "heading": "Lead",
+      "excerpt": "There are some parallels between atmospheric chemistry and anthropogenic emissions in the discussions which have taken place and the regulat",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1349497936"
+    },
+    {
+      "id": "P4",
+      "hash": "f5e1515a69d5f7a6bb1870fcbd95dc7c664b275f33af5e53b51fe7ff374d0c80",
+      "heading": "Lead",
+      "excerpt": "Ozone depletion is not a primary cause of climate change; however, there exists a physical science connection between the two phenomena. The",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1349497936"
+    },
+    {
+      "id": "P5",
+      "hash": "80ac01df2ab2b189971148787f47fa9b87b69c0ab867d324105bc42ca0d45866",
+      "heading": "Lead",
+      "excerpt": "Additionally, chlorofluorocarbons (CFCs) and other halocarbons which have caused ozone depletion are strong greenhouse gases, and the warmin",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1349497936"
+    },
+    {
+      "id": "P6",
+      "hash": "8430cf93af18563edd91f02c2af922ab62c14bea7e5fc9cfe59cef79aa5f1165",
+      "heading": "Policy approach",
+      "excerpt": "There are both links and major differences between ozone depletion and global warming and the way the two challenges have been handled. Whil",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1349497936"
+    },
+    {
+      "id": "P7",
+      "hash": "b27984f875f53fad66f0f1473da0423a7ba7a17c4e268d102e947272d89d51f2",
+      "heading": "Policy and consensus",
+      "excerpt": "Aant Elzinga wrote in 1996 about the consensus, that the Intergovernmental Panel on Climate Change has tried in the prior two reports a glob",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1349497936"
+    },
+    {
+      "id": "P8",
+      "hash": "24bb6d5f34fe7a18db91b9b618a7c3777e37e9c0274e1e3e058e33b6d5373249",
+      "heading": "Public opinion",
+      "excerpt": "The two atmospheric problems have achieved significantly different levels of understanding by the public, including both the basic science a",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1349497936"
+    },
+    {
+      "id": "P9",
+      "hash": "f684edd79c3fb3b3eb1ac36e948c0c037d5e7c59e6e0cbf9170180c47e5dd053",
+      "heading": "Personal risk assessment and knowledge",
+      "excerpt": "Sheldon Ungar Archived 2021-05-06 at the Wayback Machine, a Canadian sociologist, assumes that while the quantity of specialized knowledge i",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1349497936"
+    },
+    {
+      "id": "P10",
+      "hash": "53ab648e4274a6960e6e6540a3b5c065cc621f198e51aaf2060469a3215e2623",
+      "heading": "Cost-benefit assessments and industry policy",
+      "excerpt": "Cass Sunstein and others have compared the differing approach of the United States to the Montreal Protocol, which it accepted, and the Kyot",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1349497936"
+    },
+    {
+      "id": "P11",
+      "hash": "59a052529365c07074a7f57d9353f296e393ed2426ec72dcbb1d1ba727ece4e1",
+      "heading": "Science background",
+      "excerpt": "There are various links between the two fields of human-atmospheric interaction. Policy experts have advocated for a closer linking of ozone",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1349497936"
+    },
+    {
+      "id": "P12",
+      "hash": "f222d064824442d52f1371419745556835696278fba8666aa07cd265314585ef",
+      "heading": "Policy approach",
+      "excerpt": "After the Vienna Convention, the halocarbon industry shifted its position and started supporting a protocol to limit CFC production. US manu",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1349497936"
+    },
+    {
+      "id": "P13",
+      "hash": "3bffb551f187ae33e411d8df1820728f38f9671faa0644c6092a7741286ddf27",
+      "heading": "Policy approach",
+      "excerpt": "The Vienna Convention was installed before a scientific consensus on the ozone hole was established. On the contrary, until the 1980s the EU",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1349497936"
+    },
+    {
+      "id": "P14",
+      "hash": "28e3adbc31c1343887eac021f98a3f5c52d9f0d7f8d78fb4cd2559692fd19176",
+      "heading": "Policy and consensus",
+      "excerpt": "In 2007, Reiner Grundmann compared climate actions in Europe and the United States, he interpreted the inaction besides existing consensus, ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1349497936"
+    },
+    {
+      "id": "P15",
+      "hash": "708950bc1529b0f1c03b3b3559498abef5a11b327edbc3ca5acecafad48f48fd",
+      "heading": "Policy and consensus",
+      "excerpt": "A linear model of policy-making, based on a position that \"the more knowledge we have, the better the political response will be\", was not a",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1349497936"
+    },
+    {
+      "id": "P16",
+      "hash": "22ea5f11525d5802249bd6fcb2dcef480a8b3a5b8341cf931a8b6b25291e75b0",
+      "heading": "Public opinion",
+      "excerpt": "The metaphors used in the CFC discussion (ozone shield, ozone hole) resonated better with non-scientists and their concerns. The ozone case ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1349497936"
+    }
+  ],
+  "updatedAt": "2026-10-22T12:55:44.771Z"
 }
