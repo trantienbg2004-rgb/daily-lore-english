@@ -7760,10 +7760,10 @@
       "checkedAt": "2026-10-21T18:15:25.270Z"
     },
     "17113009": {
-      "status": "PENDING",
-      "reason": "queued",
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
       "revisionId": 1378434486,
-      "checkedAt": null
+      "checkedAt": "2026-10-22T08:19:18.985Z"
     },
     "17123719": {
       "status": "RETRY_LATER",
@@ -9866,7 +9866,7 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-10-22T08:17:42.703Z",
+  "updatedAt": "2026-10-22T08:19:18.987Z",
   "dailyUsage": {
     "day": "2026-10-22",
     "calls": 9,
