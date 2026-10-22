@@ -81,6 +81,7 @@ export async function discoverWikiQueue({base,topics=WIKI_TOPICS,maxPerTopic=30,
 }
 
 const ACTIVE_QUEUE_STATUSES=new Set(['PENDING','FETCHED','EVIDENCE_READY','DRAFTED','VALIDATED','NEEDS_REPAIR','RETRY_LATER'])
+const TERMINAL_QUEUE_STATUSES=new Set(['published','PUBLISHED','rejected','REJECTED','review','NEEDS_REVIEW'])
 export async function topUpWikiQueue({base,minPerTopic=8,maxTopics=3,now=new Date(),
  readState=readWikiState,writeState=writeWikiState,discoverQueue=discoverWikiQueue,onPersist=async()=>{}}={}){
  if(!base||!Number.isSafeInteger(minPerTopic)||minPerTopic<1||minPerTopic>30||
@@ -124,7 +125,13 @@ export async function runWikiBatch({base,maxCalls=0,maxCandidates=5,pageId=null,
   onRequest:async current=>{state.dailyUsage.calls=current.dailyCalls;await writeState(base,state);await persistDurably()},
   onUsage:async current=>{current.dailyTokens=initialTokens+current.usage.total;state.dailyUsage.tokens=current.dailyTokens;await writeState(base,state);await persistDurably()}}
  const stats={attempted:0,published:0,review:0,rejected:0,prepared:0,paused:false,apiCalls:0,usage:{input:0,output:0,total:0},decisions:[]}
- for(const candidate of state.queue.filter(row=>pageId===null||row.pageId===pageId)){
+ const candidates=state.queue.filter(row=>pageId===null||row.pageId===pageId)
+ const topicCounts=Object.fromEntries(WIKI_TOPICS.map(topic=>[topic,catalog.stories.filter(story=>story.category===topic).length]))
+ const ordered=pageId===null?balanceWikiCandidates(WIKI_TOPICS.map(topic=>({topic,candidates:candidates.filter(row=>{
+  const status=state.outcomes[row.pageId]?.status
+  return row.topic===topic&&(!TERMINAL_QUEUE_STATUSES.has(status)||existingIds.has(row.pageId)&&status!=='PUBLISHED')
+ })})),{topicCounts,limit:candidates.length}):candidates
+ for(const candidate of ordered){
   if(stats.attempted>=maxCandidates)break
   const prior=state.outcomes[candidate.pageId]
   if(existingIds.has(candidate.pageId)){
@@ -134,8 +141,7 @@ export async function runWikiBatch({base,maxCalls=0,maxCandidates=5,pageId=null,
    }
    continue
   }
-  if(['published','PUBLISHED'].includes(prior?.status))continue
-  if(['rejected','review','REJECTED','NEEDS_REVIEW'].includes(prior?.status))continue
+  if(TERMINAL_QUEUE_STATUSES.has(prior?.status))continue
   let checkpoint=await readCheckpoint(base,candidate.pageId)||{pageId:candidate.pageId,title:candidate.title,topic:candidate.topic,status:'PENDING'}
   const cachedValidation=checkpoint.status==='VALIDATED'&&checkpoint.validation?.accepted
   if(!cachedValidation&&(maxCalls===0||budget.circuitOpen||budget.tokenAccountingUnavailable||budget.maxCalls-budget.usedCalls<2)&&checkpoint.evidence&&checkpoint.rights)continue

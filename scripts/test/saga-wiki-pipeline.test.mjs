@@ -99,6 +99,19 @@ test('no image rights means no Gemini call and a retained review reason',async()
  assert.equal(stored.outcomes[42].status,'NEEDS_REVIEW')
 })
 
+test('a one-candidate batch reaches an unfilled topic before a well-stocked topic',async()=>{
+ const stored={version:1,queue:[candidate,{pageId:43,title:'Peace process',topic:'Conflict & Security'}],outcomes:{}}
+ const visited=[]
+ const result=await runWikiBatch({base:'unused',maxCalls:0,maxCandidates:1,...noDisk,
+  readState:async()=>stored,writeState:async()=>{},
+  readCatalog:async()=>({stories:Array.from({length:5},(_,i)=>({sourcePageId:i+1,category:'Economy',pages:[]}))}),
+  fetchPage:async title=>{visited.push(title);return {...source,pageId:title==='Peace process'?43:42}},
+  verifyFigures:async()=>[]})
+ assert.deepEqual(visited,['Peace process'])
+ assert.equal(result.attempted,1)
+ assert.equal(stored.outcomes[43].status,'NEEDS_REVIEW')
+})
+
 test('valid candidate publishes once within a two-call editorial budget',async()=>{
  const stored=state();let calls=0,appendCalls=0
  const result=await runWikiBatch({base:'unused',maxCalls:2,maxCandidates:1,apiKey:'placeholder',freeTierConfirmed:true,
