@@ -5,6 +5,7 @@ import os from 'node:os'
 import path from 'node:path'
 import {discoverWikiQueue,runWikiBatch,topUpWikiQueue,writeWikiPending} from '../wiki/runner.mjs'
 import {discoverWikiCandidates,WIKI_TOPICS} from '../wiki/discovery.mjs'
+import {GeminiWikiPause} from '../wiki/editor.mjs'
 
 const candidate={pageId:42,title:'Silk Road',topic:'Economy',score:80}
 const state=()=>({version:1,queue:[candidate],outcomes:{}})
@@ -163,6 +164,26 @@ test('valid candidate publishes once within a two-call editorial budget',async()
   makeStory:()=>({sourcePageId:42,pages:[{image:'https://thumb.wikimedia.org/map'}]}),append:async()=>{appendCalls++}})
  assert.equal(calls,1);assert.equal(appendCalls,1);assert.equal(result.published,1)
  assert.equal(result.usage.total,300);assert.equal(stored.outcomes[42].status,'PUBLISHED')
+})
+
+test('a listed free model can fail with 404 or 503 and the next model uses the same bounded budget',async()=>{
+ for(const status of [404,503]){
+  const stored=state(),models=[]
+  const result=await runWikiBatch({base:'unused',maxCalls:4,maxCandidates:1,apiKey:'placeholder',freeTierConfirmed:true,
+   models:['gemini-3.6-flash','gemini-3.1-flash-lite'],...noDisk,
+   readState:async()=>stored,writeState:async()=>{},readCatalog:async()=>({stories:[]}),fetchPage:async()=>source,
+   verifyFigures:async()=>[{status:'REVIEW',photo:{url:'https://thumb.wikimedia.org/map',fileTitle:'File:Map.svg'}}],
+   generate:async({budget,model})=>{
+    budget.usedCalls++;models.push(model)
+    if(models.length===1){budget.circuitOpen=true;throw new GeminiWikiPause(`Gemini HTTP ${status}`,status)}
+    return {validation:{accepted:true},result:{variants:{}},evidence:[],usage:null}
+   },
+   assign:()=>({status:'VERIFIED',levelVariants:{},photos:[{url:'https://thumb.wikimedia.org/map'}]}),
+   makeStory:()=>({sourcePageId:42,pages:[{image:'https://thumb.wikimedia.org/map'}]}),append:async()=>{}})
+  assert.deepEqual(models,['gemini-3.6-flash','gemini-3.1-flash-lite'])
+  assert.equal(result.apiCalls,2)
+  assert.equal(result.published,1)
+ }
 })
 
 test('unknown token usage persists through the day and resumes after the daily reset',async()=>{
