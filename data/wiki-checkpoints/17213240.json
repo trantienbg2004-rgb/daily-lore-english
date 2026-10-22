@@ -2,10 +2,10 @@
   "pageId": 17213240,
   "title": "Treaty rights",
   "topic": "Conflict & Security",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1373455290,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373455290",
-  "reason": "1 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -174,7 +174,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373455290"
     }
   ],
-  "updatedAt": "2026-10-22T08:45:29.612Z",
+  "updatedAt": "2026-10-22T08:45:42.883Z",
   "draft": {
     "outline": [
       "Introduction to treaty rights in settler states",
@@ -201,7 +201,7 @@
             ]
           },
           {
-            "text": "Early treaties between European colonial powers and indigenous peoples were often similar to military alliances between peers. Later, treaties increasingly involved the cession of land from indigenous peoples for the purposes of colonial expansion as European settler colonialism expanded throughout the Americas.",
+            "text": "Early treaties between European colonial powers and indigenous peoples were generally similar to military alliances between peers. With the expansion of European settler colonialism in the Americas, treaties increasingly involved the cession of land from indigenous peoples for the purposes of colonial expansion.",
             "evidenceIds": [
               "P5"
             ]
@@ -303,17 +303,12 @@
       }
     }
   },
-  "repairAttempts": 1,
+  "repairAttempts": 2,
   "lastUsage": {
-    "input": 2802,
-    "output": 416,
-    "total": 3218
+    "input": 2570,
+    "output": 111,
+    "total": 2681
   },
-  "validation": {
-    "accepted": false,
-    "errors": [
-      "A1-A2:page-3:audit-This page repeats material almost verbatim from page 2, introducing repetitive filler."
-    ]
-  },
+  "validation": null,
   "priorReviewReason": "Missing repaired page"
 }
