@@ -292,7 +292,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379648381"
     }
   ],
-  "updatedAt": "2026-10-22T08:48:23.084Z",
+  "updatedAt": "2026-10-22T08:48:41.540Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -387,7 +387,7 @@
             ]
           },
           {
-            "text": "The international framework originated from a major preservation crisis in Egypt. The planned construction of the Aswan High Dam in 1954 threatened to submerge extensive Nile valley regions rich in ancient Egyptian and Nubian heritage. In response, Egyptian and Sudanese authorities petitioned UNESCO in 1959 for intervention.",
+            "text": "The international framework originated from a major preservation crisis in Egypt. The planned construction of the Aswan High Dam threatened to submerge extensive Nile valley regions rich in ancient Egyptian and Nubian heritage. In 1959, the governments of Egypt and Sudan requested UNESCO to assist them.",
             "evidenceIds": [
               "P6"
             ]
@@ -421,11 +421,11 @@
       }
     }
   },
-  "repairAttempts": 0,
+  "repairAttempts": 1,
   "lastUsage": {
-    "input": 2608,
-    "output": 1479,
-    "total": 4087
+    "input": 2451,
+    "output": 122,
+    "total": 2573
   },
   "validation": null
 }
