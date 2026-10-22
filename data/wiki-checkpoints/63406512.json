@@ -2,9 +2,169 @@
   "pageId": 63406512,
   "title": "Blue space",
   "topic": "Health",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1368043600,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368043600",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-22T06:14:21.393Z"
+  "reason": "3 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:View of Brooklyn Bridge Park from Manhattan Bridge.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/af/View_of_Brooklyn_Bridge_Park_from_Manhattan_Bridge.jpg/960px-View_of_Brooklyn_Bridge_Park_from_Manhattan_Bridge.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:View of Brooklyn Bridge Park from Manhattan Bridge.jpg",
+        "caption": "View of Brooklyn Bridge Park from Manhattan Bridge",
+        "alt": "",
+        "description": "View of Brooklyn Bridge Park from Manhattan Bridge (Photo gallery of DUMBO, Brooklyn)",
+        "date": "2019-06-28",
+        "section": "",
+        "position": 0,
+        "provenance": {
+          "credit": "(User:Wgreaves)",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:View_of_Brooklyn_Bridge_Park_from_Manhattan_Bridge.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Blue_space",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368043600",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Alumbrado 2023 - Parques del Río - 1c - Medellín.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/32/Alumbrado_2023_-_Parques_del_R%C3%ADo_-_1c_-_Medell%C3%ADn.jpg/960px-Alumbrado_2023_-_Parques_del_R%C3%ADo_-_1c_-_Medell%C3%ADn.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Alumbrado 2023 - Parques del Río - 1c - Medellín.jpg",
+        "caption": "Christmas lights in Medellín, Colombia, in 2023",
+        "alt": "",
+        "description": "Alumbrado navideño de Medellín 2023, en Parques del Río Medellín. Colombia.",
+        "date": "2023-12-27 19:52:26",
+        "section": "",
+        "position": 1,
+        "provenance": {
+          "credit": "SajoR",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Alumbrado_2023_-_Parques_del_R%C3%ADo_-_1c_-_Medell%C3%ADn.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Blue_space",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368043600",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Coastal path near Kirk Michael - geograph.org.uk - 4445856.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c8/Coastal_path_near_Kirk_Michael_-_geograph.org.uk_-_4445856.jpg/960px-Coastal_path_near_Kirk_Michael_-_geograph.org.uk_-_4445856.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Coastal path near Kirk Michael - geograph.org.uk - 4445856.jpg",
+        "caption": "Walkers on a coastal path in Michael, Isle of Man",
+        "alt": "",
+        "description": "Coastal path near Kirk Michael",
+        "date": "2015-04-21",
+        "section": "Increased physical activity",
+        "position": 2,
+        "provenance": {
+          "credit": "Jim Barton",
+          "license": "CC BY-SA 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Coastal_path_near_Kirk_Michael_-_geograph.org.uk_-_4445856.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Blue_space",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368043600",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "1173e2280914bbac85ce2d8b1e30a5e53850a98936e9a515cc4fcdb9ffabe7a4",
+      "heading": "Lead",
+      "excerpt": "In urban planning and design, blue space (or blue infrastructure) comprises areas dominated by surface waterbodies or watercourses. In conju",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368043600"
+    },
+    {
+      "id": "P2",
+      "hash": "7175994b9844aae734c7ec5df45149a6a4511df014594e33e83e1c10f8eea634",
+      "heading": "Lead",
+      "excerpt": "Accessible blue spaces can help revitalizing neighborhoods and promote increased social connectedness as seen on waterfront renovation proje",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368043600"
+    },
+    {
+      "id": "P3",
+      "hash": "8a52dc2126aa378c3cbf434049333215e01e19053c2f735be37e9b4f4be27fac",
+      "heading": "Lead",
+      "excerpt": "Because neighborhoods with access to attractive natural features are susceptible to gentrification, the social benefits associated with wate",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368043600"
+    },
+    {
+      "id": "P4",
+      "hash": "75e0f17da5adf060433e7252727db0b19d7fd8bea8c70a1825785a7666e884ee",
+      "heading": "Health benefits",
+      "excerpt": "Proximity to water bodies may bring some risks to humans, like water-borne diseases in drinking water, flooding risks, or drowning. But scie",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368043600"
+    },
+    {
+      "id": "P5",
+      "hash": "1f89708fce023f822f802874ea0e44c93715acb15d96df332bce3304ea3400c7",
+      "heading": "Increased physical activity",
+      "excerpt": "A variety of studies have found that people living near coastal areas have better health than those living further inland. Some studies have",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368043600"
+    },
+    {
+      "id": "P6",
+      "hash": "4a06c7f9c380d0ceedf8e80ee19baa918c8700e72308f3707accc29decb968c6",
+      "heading": "Reduced obesity",
+      "excerpt": "Visiting blue spaces may reduce obesity as it promotes increased physical activity. One study has suggested that living far from usable gree",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368043600"
+    },
+    {
+      "id": "P7",
+      "hash": "f6ad26af4939b52e8ef75357758176edef56e1b21e10f27eb74974b95c2fd389",
+      "heading": "Improved respiratory health",
+      "excerpt": "Living near blue spaces can improve the quality of life of people with respiratory diseases, such as asthma, which could be explained by the",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368043600"
+    },
+    {
+      "id": "P8",
+      "hash": "443d048f8a345466d33ea65e1e4d97e89120a196279a9ce5e61f9898023e87c0",
+      "heading": "Improved overall health",
+      "excerpt": "Researchers found that individuals across 15 countries in Europe and Australia report better general health when they live closer to the coa",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368043600"
+    },
+    {
+      "id": "P9",
+      "hash": "9649d086317d8d0550b116500006479f674069b1ace8cbe2fb6515916439255e",
+      "heading": "Improved mood and happiness",
+      "excerpt": "Exposure to blue spaces is also linked to increased happiness. A group of researchers studying the effect of green and blue spaces on happin",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368043600"
+    },
+    {
+      "id": "P10",
+      "hash": "1d324f10766293fcab6f13bb8f9271f28bedb7c44698bd264fea244bc889c0c3",
+      "heading": "Improved recovery from drug and alcohol addiction",
+      "excerpt": "Educational interventions in blue spaces - such as sailing - have been shown to have positive perceived effects on people undergoing drug an",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368043600"
+    },
+    {
+      "id": "P11",
+      "hash": "7cf9f307924141784676f91d27e5449b15b04d32a7ecd7dd025455e5fd6b5711",
+      "heading": "Quality assessment tools",
+      "excerpt": "In order to understand how blue spaces may influence health-promoting behaviours, a group of researchers that focuses on blue spaces has dev",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368043600"
+    },
+    {
+      "id": "P12",
+      "hash": "a8abe5293ba399aba20d40cbaf54c25bfba5750586d99619f8eb1d25d39d609a",
+      "heading": "Increased physical activity",
+      "excerpt": "Proximity to water bodies alone is not enough to promote increased levels of physical activity, as those bodies need to be accessible to peo",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368043600"
+    }
+  ],
+  "updatedAt": "2026-10-22T06:14:27.285Z"
 }
