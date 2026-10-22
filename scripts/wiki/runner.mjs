@@ -113,7 +113,7 @@ export async function topUpWikiQueue({base,minPerTopic=8,maxTopics=3,now=new Dat
  }
 }
 
-export async function runWikiBatch({base,maxCalls=0,maxCandidates=5,pageId=null,apiKey='',freeTierConfirmed=false,model='gemini-3.5-flash-lite',
+export async function runWikiBatch({base,maxCalls=0,maxCandidates=5,pageId=null,apiKey='',freeTierConfirmed=false,model='gemini-3.5-flash-lite',models=[],
  readCatalog=readWikiCatalog,readState=readWikiState,writeState=writeWikiState,
  readCheckpoint=readWikiCheckpoint,writeCheckpoint=writeWikiCheckpoint,onPersist=async()=>{},
  fetchPage=fetchWikipediaPage,fetchRevision=fetchWikipediaRevision,verifyFigures=verifyPageFigures,generate=generateWikiDraft,
@@ -121,6 +121,8 @@ export async function runWikiBatch({base,maxCalls=0,maxCandidates=5,pageId=null,
  if(!base||!Number.isSafeInteger(maxCalls)||maxCalls<0||maxCalls>20||
   !Number.isSafeInteger(maxCandidates)||maxCandidates<1||maxCandidates>100)throw Error('Unsafe Wiki batch limits')
  if(maxCalls>0&&(!freeTierConfirmed||!apiKey))throw Error('Free-tier confirmation and key required before Gemini calls')
+ const modelCandidates=[...new Set(models.length?models:[model])]
+ if(modelCandidates.length>4)throw Error('Unsafe Wiki model fallback list')
  const state=await readState(base),catalog=await readCatalog(base)
  const existingIds=new Set(catalog.stories.map(story=>story.sourcePageId))
  const usedUrls=new Set(catalog.stories.flatMap(story=>story.pages.map(page=>page.image).filter(Boolean)))
@@ -182,17 +184,28 @@ export async function runWikiBatch({base,maxCalls=0,maxCandidates=5,pageId=null,
    if(!cachedValidation&&(budget.circuitOpen||budget.tokenAccountingUnavailable||budget.maxCalls-budget.usedCalls<2)){
     await mark('RETRY_LATER',budget.tokenAccountingUnavailable?'Gemini token usage unavailable':budget.circuitOpen?'Gemini circuit open':'editorial call budget exhausted');stats.paused=true;continue
    }
-   const response=cachedValidation
-    ?{result:checkpoint.draft,validation:checkpoint.validation,evidence:checkpoint.evidence,usage:null}
-    :await generate({source,topic:candidate.topic,apiKey,freeTierConfirmed,budget,model,
-    draft:checkpoint.draft||null,repairAttempts:checkpoint.repairAttempts||0,savedEvidence:checkpoint.evidence,
-    priorValidation:checkpoint.validation?.errors?.some(error=>error.includes(':audit-'))?checkpoint.validation:null,
-    onDraft:async({result,repairAttempts,usage,evidence:currentEvidence})=>{
-     checkpoint.draft=result;checkpoint.repairAttempts=repairAttempts;checkpoint.lastUsage=usage||null
-     checkpoint.validation=null
-     checkpoint.evidence=currentEvidence.map(({id,hash,heading,text})=>({id,hash,heading,excerpt:text.slice(0,140),revisionUrl:source.sourceRevisionUrl}))
-     await mark('DRAFTED','draft durably saved before validation')
-    }})
+   let response=cachedValidation
+    ?{result:checkpoint.draft,validation:checkpoint.validation,evidence:checkpoint.evidence,usage:null}:null
+   if(!response)for(const [index,currentModel] of modelCandidates.entries()){
+    try{
+     response=await generate({source,topic:candidate.topic,apiKey,freeTierConfirmed,budget,model:currentModel,
+      draft:checkpoint.draft||null,repairAttempts:checkpoint.repairAttempts||0,savedEvidence:checkpoint.evidence,
+      priorValidation:checkpoint.validation?.errors?.some(error=>error.includes(':audit-'))?checkpoint.validation:null,
+      onDraft:async({result,repairAttempts,usage,evidence:currentEvidence})=>{
+       checkpoint.draft=result;checkpoint.repairAttempts=repairAttempts;checkpoint.lastUsage=usage||null
+       checkpoint.validation=null
+       checkpoint.evidence=currentEvidence.map(({id,hash,heading,text})=>({id,hash,heading,excerpt:text.slice(0,140),revisionUrl:source.sourceRevisionUrl}))
+       await mark('DRAFTED','draft durably saved before validation')
+      }})
+     break
+    }catch(error){
+     if(!(error instanceof GeminiWikiPause)||![404,503].includes(error.status)||
+      index===modelCandidates.length-1||budget.maxCalls-budget.usedCalls<2||budget.tokenAccountingUnavailable)throw error
+     // A model-specific 404/503 need not disable a separately listed free model.
+     budget.circuitOpen=false;budget.circuitStatus=null;budget.serviceFailures=0;budget.transientRetries=0
+     console.log(`Wiki Gemini ${currentModel} HTTP ${error.status}; trying ${modelCandidates[index+1]}`)
+    }
+   }
    if(response.usage&&!budget.usage)for(const key of ['input','output','total'])stats.usage[key]+=Number(response.usage[key]||0)
    // Injected generators in tests may return directly; still checkpoint their output.
    if(!checkpoint.draft){checkpoint.draft=response.result;checkpoint.repairAttempts=response.repairAttempts||0;await mark('DRAFTED','draft saved')}
