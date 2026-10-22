@@ -8078,10 +8078,10 @@
       "checkedAt": null
     },
     "27733408": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
+      "revisionId": 1374451405,
+      "checkedAt": "2026-10-22T13:03:17.740Z"
     },
     "28198471": {
       "status": "RETRY_LATER",
@@ -9866,7 +9866,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-22T13:03:11.545Z",
+  "updatedAt": "2026-10-22T13:03:17.748Z",
   "dailyUsage": {
     "day": "2026-10-22",
     "calls": 68,
