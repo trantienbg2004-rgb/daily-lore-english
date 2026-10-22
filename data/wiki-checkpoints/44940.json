@@ -2,10 +2,10 @@
   "pageId": 44940,
   "title": "World Heritage Site",
   "topic": "Culture",
-  "status": "DRAFTED",
+  "status": "VALIDATED",
   "revisionId": 1379648381,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379648381",
-  "reason": "draft durably saved before validation",
+  "reason": "local factual, style, length, structure and source audit passed",
   "rights": [
     {
       "status": "REVIEW",
@@ -292,7 +292,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379648381"
     }
   ],
-  "updatedAt": "2026-10-22T08:48:41.540Z",
+  "updatedAt": "2026-10-22T08:48:59.958Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -427,5 +427,8 @@
     "output": 122,
     "total": 2573
   },
-  "validation": null
+  "validation": {
+    "accepted": true,
+    "errors": []
+  }
 }
