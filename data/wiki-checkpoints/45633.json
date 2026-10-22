@@ -2,10 +2,10 @@
   "pageId": 45633,
   "title": "Economic history",
   "topic": "Economy",
-  "status": "NEEDS_REVIEW",
+  "status": "NEEDS_REPAIR",
   "revisionId": 1377126508,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377126508",
-  "reason": "Missing repaired page",
+  "reason": "retry exact-page structured repair",
   "rights": [
     {
       "status": "REJECTED",
@@ -183,7 +183,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377126508"
     }
   ],
-  "updatedAt": "2026-10-21T13:28:46.053Z",
+  "updatedAt": "2026-10-22T08:14:04.212Z",
   "draft": {
     "outline": [
       "Defining economic history and its core methods",
@@ -333,5 +333,6 @@
     "output": 1470,
     "total": 4129
   },
-  "validation": null
+  "validation": null,
+  "priorReviewReason": "Missing repaired page"
 }

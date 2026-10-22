@@ -6074,10 +6074,10 @@
       "checkedAt": "2026-10-21T13:46:18.028Z"
     },
     "22576": {
-      "status": "NEEDS_REVIEW",
-      "reason": "editorial: A1-A2:page-3:length-or-sentence",
+      "status": "NEEDS_REPAIR",
+      "reason": "retry concise page under revised reading-length gate",
       "revisionId": 1379072110,
-      "checkedAt": "2026-10-21T13:48:18.510Z"
+      "checkedAt": "2026-10-22T08:15:47.547Z"
     },
     "24903": {
       "status": "PENDING",
@@ -6194,10 +6194,10 @@
       "checkedAt": "2026-10-21T01:41:19.789Z"
     },
     "45633": {
-      "status": "NEEDS_REVIEW",
-      "reason": "Missing repaired page",
+      "status": "NEEDS_REPAIR",
+      "reason": "retry exact-page structured repair",
       "revisionId": 1377126508,
-      "checkedAt": "2026-10-21T13:28:46.053Z"
+      "checkedAt": "2026-10-22T08:14:04.185Z"
     },
     "49005": {
       "status": "EVIDENCE_READY",
@@ -6986,10 +6986,10 @@
       "checkedAt": "2026-10-21T03:12:44.281Z"
     },
     "1827032": {
-      "status": "NEEDS_REVIEW",
-      "reason": "editorial: C1-C2:page-2:length-or-sentence",
+      "status": "NEEDS_REPAIR",
+      "reason": "retry concise page under revised reading-length gate",
       "revisionId": 1377646042,
-      "checkedAt": "2026-10-21T18:09:27.117Z"
+      "checkedAt": "2026-10-22T08:15:47.565Z"
     },
     "1858051": {
       "status": "RETRY_LATER",
@@ -9866,7 +9866,7 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-10-22T06:19:21.233Z",
+  "updatedAt": "2026-10-22T08:15:47.566Z",
   "dailyUsage": {
     "day": "2026-10-22",
     "calls": 8,

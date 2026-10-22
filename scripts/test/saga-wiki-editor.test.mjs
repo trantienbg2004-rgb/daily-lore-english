@@ -117,9 +117,11 @@ test('editorial audit rejects unsupported claims and malformed reviews',()=>{
 
 test('a structurally valid story still fails when the separate source audit finds an unsupported claim',async()=>{
  let calls=0
+ const configs=[]
  const result=await generateWikiDraft({source,topic:'Economy',apiKey:'test-key',freeTierConfirmed:true,
   budget:{maxCalls:2,usedCalls:0},waitImpl:async()=>{},now:()=>10000,
-  fetchImpl:async()=>{
+  fetchImpl:async(_url,request)=>{
+   configs.push(JSON.parse(request.body).generationConfig)
    calls++
    const body=calls===1?draft:{accepted:false,issues:[{level:'B1-B2',page:2,
     reason:'The named trade agreement is absent from the cited passage'}]}
@@ -127,6 +129,9 @@ test('a structurally valid story still fails when the separate source audit find
     usageMetadata:{promptTokenCount:100,candidatesTokenCount:50,totalTokenCount:150}})}
   }})
  assert.equal(calls,2)
+ assert.equal(configs[0].responseMimeType,'application/json')
+ assert.ok(configs[0].responseJsonSchema.anyOf.some(branch=>branch.properties?.variants))
+ assert.deepEqual(configs[1].responseJsonSchema.required,['accepted','issues'])
  assert.equal(result.validation.accepted,false)
  assert.match(result.validation.errors[0],/audit/)
  assert.equal(result.usage.total,300)

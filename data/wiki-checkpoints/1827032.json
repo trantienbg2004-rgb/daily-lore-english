@@ -2,10 +2,10 @@
   "pageId": 1827032,
   "title": "History of democracy",
   "topic": "Politics",
-  "status": "NEEDS_REVIEW",
+  "status": "NEEDS_REPAIR",
   "revisionId": 1377646042,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377646042",
-  "reason": "editorial: C1-C2:page-2:length-or-sentence",
+  "reason": "retry concise page under revised reading-length gate",
   "rights": [
     {
       "status": "REVIEW",
@@ -483,7 +483,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377646042"
     }
   ],
-  "updatedAt": "2026-10-21T18:09:27.117Z",
+  "updatedAt": "2026-10-22T08:15:47.565Z",
   "draft": {
     "outline": [
       "Introduction to democracy and ancient roots",
@@ -622,5 +622,6 @@
     "errors": [
       "C1-C2:page-2:length-or-sentence"
     ]
-  }
+  },
+  "priorReviewReason": "editorial: C1-C2:page-2:length-or-sentence"
 }

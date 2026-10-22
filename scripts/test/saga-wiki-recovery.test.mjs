@@ -3,7 +3,7 @@ import assert from 'node:assert/strict'
 import fs from 'node:fs/promises'
 import os from 'node:os'
 import path from 'node:path'
-import {selectWikiEvidence,supplementWikiEvidence,validateWikiDraft,repairTargets,applyWikiRepair,
+import {selectWikiEvidence,supplementWikiEvidence,validateWikiDraft,repairTargets,applyWikiRepair,wikiRepairPrompt,wikiRepairSchema,
  callFreeWikiGemini,GeminiWikiPause} from '../wiki/editor.mjs'
 import {runWikiBatch,writeWikiState,readWikiState,readWikiCheckpoint} from '../wiki/runner.mjs'
 
@@ -75,6 +75,22 @@ test('a repair changes only the failing CEFR page',()=>{
   /Wrong repaired page number/)
  assert.throws(()=>applyWikiRepair(broken,{variants:{'B1-B2':{pages:{4:{text:'An entirely new account.',evidenceIds:['P1']}}}}},targets,issues),
   /unrelated sentence/)
+})
+
+test('a single-page repair receives only that page and requires its exact page key',()=>{
+ const story=draft()
+ story.variants['B1-B2'].pages[0].text='UNRELATED_FIRST_PAGE.'
+ story.variants['B1-B2'].pages[3].text='FAULTY_TARGET_PAGE.'
+ const errors=['B1-B2:page-4:unsupported-number-1914']
+ const prompt=wikiRepairPrompt(source,evidence,story,errors)
+ const schema=wikiRepairSchema(errors)
+ assert.match(prompt,/FAULTY_TARGET_PAGE/)
+ assert.doesNotMatch(prompt,/UNRELATED_FIRST_PAGE/)
+ assert.deepEqual(schema.properties.variants.required,['B1-B2'])
+ assert.deepEqual(schema.properties.variants.properties['B1-B2'].properties.pages.required,['4'])
+ assert.deepEqual(schema.properties.variants.properties['B1-B2'].properties.pages.properties['4'].required,
+  ['text','evidenceIds'])
+ assert.deepEqual(wikiRepairSchema(['A1-A2:page-count']).properties.variants.properties['A1-A2'].properties.pages.minItems,5)
 })
 
 test('three 503 responses open the circuit after only two retries',async()=>{
