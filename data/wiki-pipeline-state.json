@@ -8348,10 +8348,10 @@
       "checkedAt": null
     },
     "39198876": {
-      "status": "FETCHED",
-      "reason": "pinned-source-ready",
+      "status": "REJECTED",
+      "reason": "insufficient-source-text-or-embedded-images",
       "revisionId": 1339303804,
-      "checkedAt": "2026-10-22T08:58:28.707Z"
+      "checkedAt": "2026-10-22T08:58:34.212Z"
     },
     "39699737": {
       "status": "EVIDENCE_READY",
@@ -9866,7 +9866,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-22T08:58:28.715Z",
+  "updatedAt": "2026-10-22T08:58:34.213Z",
   "dailyUsage": {
     "day": "2026-10-22",
     "calls": 40,
