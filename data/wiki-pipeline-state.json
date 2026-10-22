@@ -8114,10 +8114,10 @@
       "checkedAt": "2026-10-21T07:56:50.032Z"
     },
     "31115405": {
-      "status": "FETCHED",
-      "reason": "pinned-source-ready",
+      "status": "NEEDS_REVIEW",
+      "reason": "no-rights-verified-embedded-image",
       "revisionId": 1375726738,
-      "checkedAt": "2026-10-22T09:14:08.210Z"
+      "checkedAt": "2026-10-22T09:14:14.351Z"
     },
     "31376228": {
       "status": "NEEDS_REVIEW",
@@ -9866,7 +9866,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-22T09:14:08.217Z",
+  "updatedAt": "2026-10-22T09:14:14.352Z",
   "dailyUsage": {
     "day": "2026-10-22",
     "calls": 54,
