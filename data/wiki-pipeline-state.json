@@ -7316,10 +7316,10 @@
       "checkedAt": "2026-10-21T03:10:13.009Z"
     },
     "5021176": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
+      "revisionId": 1380069602,
+      "checkedAt": "2026-10-22T13:00:41.741Z"
     },
     "5121186": {
       "status": "EVIDENCE_READY",
@@ -9866,7 +9866,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-22T13:00:35.454Z",
+  "updatedAt": "2026-10-22T13:00:41.742Z",
   "dailyUsage": {
     "day": "2026-10-22",
     "calls": 68,
