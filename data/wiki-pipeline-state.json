@@ -8726,10 +8726,10 @@
       "checkedAt": "2026-10-22T08:30:42.960Z"
     },
     "53251617": {
-      "status": "FETCHED",
-      "reason": "pinned-source-ready",
+      "status": "EVIDENCE_READY",
+      "reason": "1 rights-verified embedded images",
       "revisionId": 1380873616,
-      "checkedAt": "2026-10-22T12:47:00.937Z"
+      "checkedAt": "2026-10-22T12:47:06.302Z"
     },
     "53335135": {
       "status": "PENDING",
@@ -9866,7 +9866,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-22T12:47:00.948Z",
+  "updatedAt": "2026-10-22T12:47:06.303Z",
   "dailyUsage": {
     "day": "2026-10-22",
     "calls": 60,

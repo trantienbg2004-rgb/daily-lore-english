@@ -2,9 +2,154 @@
   "pageId": 53251617,
   "title": "Far-right subcultures",
   "topic": "Politics",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1380873616,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380873616",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-22T12:47:00.940Z"
+  "reason": "1 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Richard B. Spencer in 2016.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c4/Richard_B._Spencer_in_2016.jpg/960px-Richard_B._Spencer_in_2016.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Richard B. Spencer in 2016.jpg",
+        "caption": "Richard B. Spencer speaking at an alt-right meeting, 2016",
+        "alt": "",
+        "description": "Richard Bertrand Spencer (born May 11, 1978) is an American white nationalist, known for promoting white supremacist views. He is president of the National Policy Institute, a white nationalist think-tank, and Washington Summit Publishers, an independent publishing firm. Spencer has stated that he rejects the description of white supremacist, and describes himself as an identitarian. He advocates for a white homeland for a \"dispossessed white race\" and calls for \"peaceful ethnic cleansing\" to halt the \"deconstruction\" of European culture.",
+        "date": "2016-11-19 15:14:28",
+        "section": "Alt right digital subcultures",
+        "position": 0,
+        "provenance": {
+          "credit": "Vas Panagiotopoulos",
+          "license": "CC BY 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Richard_B._Spencer_in_2016.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Far-right_subcultures",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380873616",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Neo-Nazi Skinhead.jpg"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "04080feef200a438cf90f32cd5cc30216669e9c957e38455d489d3d04d28b18e",
+      "heading": "Lead",
+      "excerpt": "The most commonly discussed far right subculture is the white power music scene that emerged from the skinhead culture, although other far r",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380873616"
+    },
+    {
+      "id": "P2",
+      "hash": "2b54f63398e9abf840f007be3f235bbb7aedfa301d05619bb2ad34bbd36e8c97",
+      "heading": "Background",
+      "excerpt": "A subculture is understood in cultural studies as a smaller group within a dominant mainstream culture that distinguishes itself through uni",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380873616"
+    },
+    {
+      "id": "P3",
+      "hash": "92644e07c0ce6d0f70c6391d50f081aed941e3b689db81388a13d551cfe0ac80",
+      "heading": "Background",
+      "excerpt": "Subcultures, which remain within dominant society, are distinguished from countercultures, which seek to escape or destroy dominant society.",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380873616"
+    },
+    {
+      "id": "P4",
+      "hash": "c14b1743096a06ca50932e5f2a552a37f58c0285b3f164730a86ce7ba033be81",
+      "heading": "Background",
+      "excerpt": "According to the research literature, most right-wing activists come to be involved in the far-right through radical subcultures rather than",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380873616"
+    },
+    {
+      "id": "P5",
+      "hash": "d9c33d290d48e0b3f2bba25ba3c74facd3ccc15ebf1b18ef6bafd90290923b5c",
+      "heading": "The European right in the twentieth century",
+      "excerpt": "When modern fascism emerged, it drew on the aesthetics and networks of earlier right-wing subcultures in the countries where it took hold. V",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380873616"
+    },
+    {
+      "id": "P6",
+      "hash": "b94f65cd31f2a1d0b0499b8f2aa903d8d5f1cdb478a2467b4f0751bead199a3a",
+      "heading": "Skinheads and white power music",
+      "excerpt": "“Emerging from the skinhead youth subculture in Britain at the end of the 1970s, and spreading to the continent and across the Atlantic in t",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380873616"
+    },
+    {
+      "id": "P7",
+      "hash": "762b3eaf6f3d0d38a4673dbb5d7cf36122a42ef42699e067c7fa6e6169767938",
+      "heading": "National Socialist Black Metal and Neo-Paganism",
+      "excerpt": "National Socialist black metal (NSBM) is a far right subculture embedded in the larger black metal music scene, especially in Northern Europ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380873616"
+    },
+    {
+      "id": "P8",
+      "hash": "a3ab6f14dd3fa228bbaaba3595deddd4b0c00e2062f868e7af9dcf4af7329346",
+      "heading": "Siege Culture and accelerationism",
+      "excerpt": "While the post-war American far right was typically culturally conservative, James Mason - inspired by subcultures such as bikers and hippie",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380873616"
+    },
+    {
+      "id": "P9",
+      "hash": "d6e8f19afdb0f0e68bd5c5a04fdb47dae9cb0d35b30bd0b0e81f68bdfbf050d0",
+      "heading": "Hardbass and Fashwave",
+      "excerpt": "In Europe and North America “in the current post skinhead era,… the far right has found new cultural forms that are less workerist, less mas",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380873616"
+    },
+    {
+      "id": "P10",
+      "hash": "bd12ba67c5758816a481ee94d44a1c3264747a12138cd498d2b70b8487ff4242",
+      "heading": "Alt right digital subcultures",
+      "excerpt": "In the 2010s, the alt-right was one of the most prominent far right subcultures. Also referred to as the alternative right, the alt-right is",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380873616"
+    },
+    {
+      "id": "P11",
+      "hash": "62de36ece0f43ccc22396bb21e79179c264f379e5ab4473ba7e85b252542988a",
+      "heading": "Subcultural parasitism",
+      "excerpt": "Far-right ideologists try to infiltrate subcultures in order to spread their ideas among them. These attempts are defined as subcultural par",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380873616"
+    },
+    {
+      "id": "P12",
+      "hash": "8befbac27ba47fd70e8d940b50556685b4969fc6c3341d4227392e26c15151db",
+      "heading": "Skinheads and white power music",
+      "excerpt": "Over time, the White power music subculture has produced a number of music genres including Rock Against Communism (RAC) and National Social",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380873616"
+    },
+    {
+      "id": "P13",
+      "hash": "e0e6e39a3b01f39104201822b306dcdb6fa427997960a48160233bd9c8630d7f",
+      "heading": "Skinheads and white power music",
+      "excerpt": "In the 1990s, “skinhead gangs carried out much of the violence associated with the far right, as violence against political opponents and im",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380873616"
+    },
+    {
+      "id": "P14",
+      "hash": "b98a3c6120ca57afdafb64b413e9536fd23eb8203e20c76cd5d05c2f8d61c246",
+      "heading": "Alt right digital subcultures",
+      "excerpt": "Meme culture has come to play a major role in recent far right subcultures, as a way of generating in-group belonging and differentiating fr",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380873616"
+    },
+    {
+      "id": "P15",
+      "hash": "35b177365d1f14800d783d2ad0822eb2ad84a26495aa756ec580755d4b069418",
+      "heading": "Alt right digital subcultures",
+      "excerpt": "While much of the literature emphasises the declining role of masculinity in post-skinhead far right subcultures, there has also been the em",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380873616"
+    },
+    {
+      "id": "P16",
+      "hash": "46a248394573bcb300d0b5d25d186056defad7e8aa481e6c3c02152b7b218d71",
+      "heading": "Subcultural parasitism",
+      "excerpt": "Following the far right’s relative success in instrumentalising skinhead subculture, it has attempted to follow this model with left-wing su",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380873616"
+    }
+  ],
+  "updatedAt": "2026-10-22T12:47:06.302Z"
 }
