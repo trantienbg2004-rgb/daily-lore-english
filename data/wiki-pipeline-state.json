@@ -8390,10 +8390,10 @@
       "checkedAt": "2026-10-21T07:35:32.860Z"
     },
     "40429591": {
-      "status": "FETCHED",
-      "reason": "pinned-source-ready",
+      "status": "REJECTED",
+      "reason": "insufficient-source-text-or-embedded-images",
       "revisionId": 1326489799,
-      "checkedAt": "2026-10-22T13:06:16.313Z"
+      "checkedAt": "2026-10-22T13:06:22.082Z"
     },
     "40628153": {
       "status": "REJECTED",
@@ -9866,7 +9866,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-22T13:06:16.315Z",
+  "updatedAt": "2026-10-22T13:06:22.083Z",
   "dailyUsage": {
     "day": "2026-10-22",
     "calls": 71,
