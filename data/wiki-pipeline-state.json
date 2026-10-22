@@ -8402,10 +8402,10 @@
       "checkedAt": "2026-10-22T06:18:57.230Z"
     },
     "41241080": {
-      "status": "EVIDENCE_READY",
-      "reason": "12 rights-verified embedded images",
+      "status": "DRAFTED",
+      "reason": "draft durably saved before validation",
       "revisionId": 1379614259,
-      "checkedAt": "2026-10-22T08:26:31.467Z"
+      "checkedAt": "2026-10-22T08:26:48.856Z"
     },
     "41270742": {
       "status": "PENDING",
@@ -9866,7 +9866,7 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-10-22T08:26:47.655Z",
+  "updatedAt": "2026-10-22T08:26:48.857Z",
   "dailyUsage": {
     "day": "2026-10-22",
     "calls": 15,
