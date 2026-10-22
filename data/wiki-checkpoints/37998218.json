@@ -2,9 +2,152 @@
   "pageId": 37998218,
   "title": "Secondary burial",
   "topic": "History & Geography",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1358497241,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1358497241",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-22T08:41:30.963Z"
+  "reason": "2 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Arch Wanderpfad Fischbeker Heide Station 09.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/50/Arch_Wanderpfad_Fischbeker_Heide_Station_09.jpg/960px-Arch_Wanderpfad_Fischbeker_Heide_Station_09.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Arch Wanderpfad Fischbeker Heide Station 09.jpg",
+        "caption": "Partially reconstructed tree trunk burial – without burial mound – with a secondary burial in a semi-circular extension (background: centre left)",
+        "alt": "",
+        "description": "Archaeologic scenic route at Fischbeker Heide, station 8. Reconstructed trunk coffin burial of the middle Bronze Age without mounted tumulus. At the background is an a younger burial attached to the older existing tumulus. Reconstructed Archaeological useum Hamburg | Helms-Museum, Hamburg-Harburg, Germany.",
+        "date": "2012-05-25 11:54:00",
+        "section": "",
+        "position": 0,
+        "provenance": {
+          "credit": "Photographed by User:Bullenwächter",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Arch_Wanderpfad_Fischbeker_Heide_Station_09.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Secondary_burial",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1358497241",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Arch Wanderpfad Fischbeker Heide Station 09 younger burial.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c1/Arch_Wanderpfad_Fischbeker_Heide_Station_09_younger_burial.jpg/960px-Arch_Wanderpfad_Fischbeker_Heide_Station_09_younger_burial.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Arch Wanderpfad Fischbeker Heide Station 09 younger burial.jpg",
+        "caption": "Detail of the secondary burial. In the foreground is the stone arrangement of the old burial mound. In the background is that of the more recent extension",
+        "alt": "",
+        "description": "Archaeologic scenic route at Fischbeker Heide, station 8. Reconstructed middle Bronce Age burial attached to an existing older tumulus. Reconstructed Archaeological useum Hamburg | Helms-Museum, Hamburg-Harburg, Germany.",
+        "date": "2012-05-25 11:49:42",
+        "section": "",
+        "position": 1,
+        "provenance": {
+          "credit": "Photographed by User:Bullenwächter",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Arch_Wanderpfad_Fischbeker_Heide_Station_09_younger_burial.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Secondary_burial",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1358497241",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "ee233fbf36ff64f923af32476b0a6bf8c10c8f972027a4c7c2a56ce9fb85b978",
+      "heading": "Lead",
+      "excerpt": "The secondary burial (German: Nachbestattung or Sekundärbestattung), or “double funeral” (not to be confused with double burial in which two",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1358497241"
+    },
+    {
+      "id": "P2",
+      "hash": "f306ab0617d85aece993ece955b7dd9619fc53f6a887999032ab7578ce4027a1",
+      "heading": "Lead",
+      "excerpt": "Examples of secondary burial are known from the Paleolithic period, (including the Middle Paleolithic Mousterian culture and the Upper Paleo",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1358497241"
+    },
+    {
+      "id": "P3",
+      "hash": "fbde439aa82d4b76120075b6f7225985f60e886419c629a9fbe2fa932991fbf7",
+      "heading": "Overview",
+      "excerpt": "From an archaeological and ethnographic perspective, the burials of the dead are divided into two categories: primary burials and secondary ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1358497241"
+    },
+    {
+      "id": "P4",
+      "hash": "d7523786bcdcaa99589c8ce300d8bb6d4590bed266a9298f27549cbe9d9cebc1",
+      "heading": "Description",
+      "excerpt": "Secondary burial is evident in the archaeological record and has been documented ethnographically. There are many different treatments, proc",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1358497241"
+    },
+    {
+      "id": "P5",
+      "hash": "e092c640247e623745e7c9b5a9e08b5a86657e762d6f08c4c047750646bc1669",
+      "heading": "Identification",
+      "excerpt": "Archaeologists define a grave containing a primary burial as a positive process, adding up certain characteristics in to identify a primary ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1358497241"
+    },
+    {
+      "id": "P6",
+      "hash": "905195001f6f8bbe06129c3afcfd261c7cd7d4f9436e2ece4a6ebada4d10795b",
+      "heading": "Processes",
+      "excerpt": "There are many processes and traditions by which a culture may perform a secondary burial. They may cremate the individual and even perform ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1358497241"
+    },
+    {
+      "id": "P7",
+      "hash": "7c2672d6b7cf622ca1b0ddf19ae276fdf54e8ee169e042814bd165aff94f4c4b",
+      "heading": "Secondary burial architecture and structures/features",
+      "excerpt": "Artificial mounds and other, clearly visible, above-ground structures have been re-used since the New Stone Age (and even in later times, of",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1358497241"
+    },
+    {
+      "id": "P8",
+      "hash": "527b11a92888c469e46d92e8ec89dca7f8717e6e28f06d018def11462ca0d214",
+      "heading": "Insights and analysis",
+      "excerpt": "Much of the recordings of burial ceremonies were from the observations of explorers, missionaries, and administrative personnel who lived am",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1358497241"
+    },
+    {
+      "id": "P9",
+      "hash": "b1f2d9807f43117a6bf4345670315e7bdb0c42f652ec5956b8ac8e7be7348e8e",
+      "heading": "Identification",
+      "excerpt": "When there is a fully articulated skeleton, an archaeologist can look at the surrounding soil, under and around the remains, otherwise calle",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1358497241"
+    },
+    {
+      "id": "P10",
+      "hash": "6a14137306a941263f7fc2e2d21888a019604af5dde0770d0382e947ef978222",
+      "heading": "Processes",
+      "excerpt": "If cleaning the skeleton the members of the family, corporate body, or community may take the body to a location outside and leave the body ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1358497241"
+    },
+    {
+      "id": "P11",
+      "hash": "1b6df003efb02161ed965810062f42b85175a9403459ad3cfbf489ee8610f154",
+      "heading": "Secondary burial architecture and structures/features",
+      "excerpt": "Secondary burial in the Holy Land involved an initial interment in a tomb, for example, prone on a bench, until the body decayed. Subsequent",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1358497241"
+    },
+    {
+      "id": "P12",
+      "hash": "e47b96ed97d8e7c5991c585e7c9fcc82c16823eee153099abf4194634e2e8338",
+      "heading": "Secondary burial architecture and structures/features",
+      "excerpt": "This practice of secondary burial should be distinguished from the continual use of natural caves, even when this falls during the same hist",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1358497241"
+    },
+    {
+      "id": "P13",
+      "hash": "ad92ce8bac60fc9d89029526cfab89caf9f97d8d164daa7f214154fcb5514a50",
+      "heading": "Insights and analysis",
+      "excerpt": "Secondary burials are also seen in many cultures over the centuries outside of the Ngadju-Daya. The unique characteristics and frequency of ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1358497241"
+    }
+  ],
+  "updatedAt": "2026-10-22T08:41:36.815Z"
 }
