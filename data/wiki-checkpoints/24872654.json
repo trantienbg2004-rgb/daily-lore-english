@@ -2,9 +2,142 @@
   "pageId": 24872654,
   "title": "History of medical diagnosis",
   "topic": "Health",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1368253662,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368253662",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-22T12:48:36.677Z"
+  "reason": "1 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Konstantinderafrikaner.jpg",
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/8/8f/Konstantinderafrikaner.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "fileTitle": "File:Konstantinderafrikaner.jpg",
+        "caption": "the analysis of urine",
+        "alt": "",
+        "description": "People showing for a diagnose a sample of their urine to the physician Constantine the African.",
+        "date": "14th centurydate QS:P571,+1350-00-00T00:00:00Z/7date QS:P571,+1350-00-00T00:00:00Z/7",
+        "section": "Medieval Europe",
+        "position": 0,
+        "provenance": {
+          "credit": "Unknown artistUnknown artist Unknown artistUnknown artist",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Konstantinderafrikaner.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/History_of_medical_diagnosis",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368253662",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "5fef57bb2d2f73390d5360c7898fc1b3e9662d35660408b6f8e40d3389054915",
+      "heading": "Lead",
+      "excerpt": "The history of medical diagnosis began in earnest from the days of Imhotep in ancient Egypt and Hippocrates in ancient Greece but is far fro",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368253662"
+    },
+    {
+      "id": "P2",
+      "hash": "85b98d0db892d0c3408944d6de77d9fca7b91ccc341d09bce9047f5be30263bd",
+      "heading": "Ancient Egypt",
+      "excerpt": "An Egyptian medical textbook, the Edwin Smith Papyrus written by Imhotep (fl. 2630-2611 Before Christ), was the first to apply the method of",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368253662"
+    },
+    {
+      "id": "P3",
+      "hash": "ea9e2cc2ec7d7d946ede7f45375d913e9ed102a786dec1ce328be9fa8b4b2d83",
+      "heading": "Ancient Egypt",
+      "excerpt": "The first type of modern medical care has been found in Ancient Egypt (3300BCE to 525BCE). Ancient Egyptians believed that the relationship ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368253662"
+    },
+    {
+      "id": "P4",
+      "hash": "b79c685c11e7c4f7deb66e143d15a9933f3e73e959045a113e3deb0fbcc19556",
+      "heading": "Ancient Babylonia",
+      "excerpt": "A Babylonian medical textbook, the Diagnostic Handbook written by Esagil-kin-apli (fl. 1069-1046 BC), introduced the use of empiricism, logi",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368253662"
+    },
+    {
+      "id": "P5",
+      "hash": "afe133fe7d8ba85c5f82e376d3535a9c21a1b0039eae857e5d4f92dbd24a9397",
+      "heading": "Ancient Babylonia",
+      "excerpt": "Babylonian physicians had to pay very close attention to the patient and every sign that their body produced that could be relevant to the i",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368253662"
+    },
+    {
+      "id": "P6",
+      "hash": "679cb3afaefa6c4fe451742b747d442ec807f02b79cd67328935d549b0017a3a",
+      "heading": "Ancient China",
+      "excerpt": "Predated by Babylonian and Egyptian medicine, traditional Chinese medicine (TCM) was described in an ancient Chinese text, the Yellow Empero",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368253662"
+    },
+    {
+      "id": "P7",
+      "hash": "7e546296b94ca48ab4fc4052436ac3d8d4a30b97aad9a7c68bc19bd65b109d61",
+      "heading": "Ancient Greece",
+      "excerpt": "Over two thousand years ago, Hippocrates recorded the association between disease and heredity. In similar fashion, Pythagoras noted the ass",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368253662"
+    },
+    {
+      "id": "P8",
+      "hash": "d53ff9a17d215861fcda9be5c56255442dabfaa3d5151dcd33292f0f46a8747a",
+      "heading": "Ancient Colombia",
+      "excerpt": "Pre-Columbian medicine has been found in Mesoamerican cultures that started in the year 1,500 BC and ended due to the Spanish conquerors in ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368253662"
+    },
+    {
+      "id": "P9",
+      "hash": "e112c08b3c0af0e744d9ec7e8f602c5dca7fd2ea5181bac4ba2f054e277daed2",
+      "heading": "Islamic World",
+      "excerpt": "The Arabic physician, Abu al-Qasim al-Zahrawi (Abulcasis), wrote on hematology in his Al-Tasrif (1000). He provided the first description on",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368253662"
+    },
+    {
+      "id": "P10",
+      "hash": "df6f4238a164e659018cd174ec88cc70eef8e6ade631e05bfb68736329df6b27",
+      "heading": "Medieval Europe",
+      "excerpt": "Physicians used many different techniques to analyze the imbalance of the four humours in the body. Uroscopy was most widely used for diagno",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368253662"
+    },
+    {
+      "id": "P11",
+      "hash": "06bafad2d725d1925cf3d8a09ded577dedcbb987b43de8407f8f6c32a642c2d9",
+      "heading": "19th century",
+      "excerpt": "In the first half of the 19th century, the well-known British physiologist Marshall Hall emphasized the necessity of maintaining a close rel",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368253662"
+    },
+    {
+      "id": "P12",
+      "hash": "9503edd7f08914dc56fd14bd5f88d9ec10c70ab233b9113811c1756fbbf50dfd",
+      "heading": "Oslerian Practice",
+      "excerpt": "The ideals of William Osler, who transformed the practice of medicine in the early 1900s, were based on the principles of the diagnosis and ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368253662"
+    },
+    {
+      "id": "P13",
+      "hash": "dd258753a749e0c771cdd378b9ed5abd89634316034fa65b24f38643b083e6a6",
+      "heading": "Influence of DNA Technology",
+      "excerpt": "Garrod's conception of biological individuality was confirmed with the advent of the sequencing of the human genome. Finally the subtle rela",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368253662"
+    },
+    {
+      "id": "P14",
+      "hash": "9f1bf364d5dafcafc0fae19da1b9c6da783b3b3d8b022aafd615cf203456e707",
+      "heading": "Ancient Greece",
+      "excerpt": "The Hippocratic practices have continued to be crucial for typical medical procedures, bedside manners, and patient care. Hippocrates had a ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368253662"
+    },
+    {
+      "id": "P15",
+      "hash": "b8f0dc6d78188912bc5b4651a4a00bfc0270affc0475badec4f3acfc6ac98706",
+      "heading": "Ancient Greece",
+      "excerpt": "While Pythagoras might not have contributed as much to medical diagnosis and the procedural concepts that go into it, he contributed largely",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368253662"
+    }
+  ],
+  "updatedAt": "2026-10-22T12:48:42.377Z"
 }
