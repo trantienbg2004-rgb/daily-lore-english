@@ -2,10 +2,10 @@
   "pageId": 19930192,
   "title": "Baling Talks",
   "topic": "Conflict & Security",
-  "status": "DRAFTED",
+  "status": "VALIDATED",
   "revisionId": 1347302525,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1347302525",
-  "reason": "draft durably saved before validation",
+  "reason": "local factual, style, length, structure and source audit passed",
   "rights": [
     {
       "status": "REVIEW",
@@ -160,7 +160,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1347302525"
     }
   ],
-  "updatedAt": "2026-10-22T12:45:04.742Z",
+  "updatedAt": "2026-10-22T12:45:35.029Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -300,5 +300,8 @@
     "output": 1237,
     "total": 3911
   },
-  "validation": null
+  "validation": {
+    "accepted": true,
+    "errors": []
+  }
 }
