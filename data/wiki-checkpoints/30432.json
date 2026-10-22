@@ -265,7 +265,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375829657"
     }
   ],
-  "updatedAt": "2026-10-22T08:38:11.039Z",
+  "updatedAt": "2026-10-22T08:38:29.129Z",
   "priorReviewReason": "Gemini returned invalid JSON; preserve candidate",
   "draft": {
     "variants": {
@@ -273,7 +273,7 @@
         "headline": "Understanding Treaties",
         "pages": [
           {
-            "text": "A treaty is an international agreement between sovereign states or other subjects of international law that is governed by international law and is legally binding on the parties.",
+            "text": "A treaty is an international agreement between sovereign states or other subjects of international law that is governed by international law. Only documents that are legally binding on the parties are considered treaties under international law. Treaties may be bilateral or multilateral between parties.",
             "evidenceIds": [
               "P1"
             ]
@@ -285,7 +285,7 @@
             ]
           },
           {
-            "text": "Treaties are not required to follow any standard form and differ widely in substance and complexity. They are applied to a wide range of subject matters such as security, trade, environment, and human rights.",
+            "text": "Treaties are not required to follow any standard form and differ widely in substance and complexity. They are applied to a wide range of subject matters such as security, trade, environment, and human rights. Treaties are also used to establish governance frameworks for international institutions like the United Nations.",
             "evidenceIds": [
               "P4"
             ]
@@ -298,10 +298,9 @@
             ]
           },
           {
-            "text": "The Vienna Convention on the Law of Treaties codified practices by establishing rules for creating, amending, interpreting, and terminating treaties, and for resolving disputes and alleged breaches.",
+            "text": "The 20th century saw the Vienna Convention on the Law of Treaties codified practices by establishing rules for creating, amending, interpreting, and terminating treaties. It also established rules for resolving disputes and alleged breaches.",
             "evidenceIds": [
-              "P2",
-              "P6"
+              "P2"
             ]
           }
         ]
@@ -353,7 +352,7 @@
         "headline": "Codification and Lifecycles of Treaties",
         "pages": [
           {
-            "text": "A treaty is an international agreement between sovereign states or other subjects of international law, including international organizations, that is governed by international law and is legally binding on the parties.",
+            "text": "A treaty is an international agreement between sovereign states or other subjects of international law including international organizations that is governed by international law. Only documents that are legally binding on the parties are considered treaties. Treaties may be bilateral or multilateral involving multiple parties.",
             "evidenceIds": [
               "P1"
             ]
@@ -366,7 +365,7 @@
             ]
           },
           {
-            "text": "Treaties are not required to follow any standard form and differ widely in substance and complexity. They are applied to a wide range of subject matters such as security, trade, environment, and human rights.",
+            "text": "Treaties are not required to follow any standard form and differ widely in substance and complexity. They are applied to a wide range of subject matters such as security, trade, environment, and human rights. Treaties are also used to establish governance frameworks for international institutions such as the International Criminal Court and the United Nations.",
             "evidenceIds": [
               "P4"
             ]
@@ -381,13 +380,13 @@
             ]
           },
           {
-            "text": "In certain conditions a treaty may also be invalidated and thus rendered unenforceable, for example, if it violates a peremptory norm such as permitting a war of aggression or crimes against humanity.",
+            "text": "In certain conditions a treaty may also be invalidated and thus rendered unenforceable, for example, if it violates a peremptory norm known as jus cogens such as permitting a war of aggression or crimes against humanity.",
             "evidenceIds": [
               "P3"
             ]
           },
           {
-            "text": "Under the United Nations Charter, treaties must be registered with the UN to be invoked before it or enforced in its judiciary organ, the International Court of Justice, to prevent the practice of secret treaties.",
+            "text": "Under the United Nations Charter, which is itself a treaty, treaties must be registered with the UN to be invoked before it, or enforced in its judiciary organ, the International Court of Justice. This was done to prevent the practice of secret treaties which proliferated in the 19th and 20th centuries.",
             "evidenceIds": [
               "P5"
             ]
@@ -396,11 +395,11 @@
       }
     }
   },
-  "repairAttempts": 1,
+  "repairAttempts": 2,
   "lastUsage": {
-    "input": 2807,
-    "output": 529,
-    "total": 3336
+    "input": 2859,
+    "output": 469,
+    "total": 3328
   },
   "validation": null
 }
