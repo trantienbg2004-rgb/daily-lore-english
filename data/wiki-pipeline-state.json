@@ -8678,10 +8678,10 @@
       "checkedAt": "2026-10-21T22:36:17.381Z"
     },
     "51774438": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
+      "revisionId": 1369173480,
+      "checkedAt": "2026-10-22T08:49:30.365Z"
     },
     "52049646": {
       "status": "EVIDENCE_READY",
@@ -9866,7 +9866,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-22T08:49:23.864Z",
+  "updatedAt": "2026-10-22T08:49:30.365Z",
   "dailyUsage": {
     "day": "2026-10-22",
     "calls": 32,
