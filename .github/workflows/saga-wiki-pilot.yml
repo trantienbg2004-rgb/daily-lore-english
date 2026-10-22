@@ -38,7 +38,7 @@ jobs:
           if [ "$SAGA_WIKI_BATCH_MODE" = 'true' ]; then
             node scripts/wiki-pipeline.mjs batch --max-calls=8 --max-candidates=24
           else
-            node scripts/wiki-pipeline.mjs batch --max-calls=2 --max-candidates=1 --page-id=17213240
+            node scripts/wiki-pipeline.mjs batch --max-calls=2 --max-candidates=1 --page-id=3487647
           fi
       - name: Check result before staging on development branch
         run: |
