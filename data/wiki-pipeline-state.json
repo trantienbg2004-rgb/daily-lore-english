@@ -9302,10 +9302,10 @@
       "checkedAt": "2026-10-21T07:40:31.621Z"
     },
     "72796144": {
-      "status": "FETCHED",
-      "reason": "pinned-source-ready",
+      "status": "REJECTED",
+      "reason": "insufficient-source-text-or-embedded-images",
       "revisionId": 1372299338,
-      "checkedAt": "2026-10-22T09:15:32.866Z"
+      "checkedAt": "2026-10-22T09:15:38.022Z"
     },
     "73176035": {
       "status": "PENDING",
@@ -9866,7 +9866,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-22T09:15:32.876Z",
+  "updatedAt": "2026-10-22T09:15:38.023Z",
   "dailyUsage": {
     "day": "2026-10-22",
     "calls": 54,
