@@ -2,9 +2,165 @@
   "pageId": 75279733,
   "title": "Commercial determinants of health",
   "topic": "Health",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1370419821,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1370419821",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-22T12:55:09.365Z"
+  "reason": "3 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Commercial determinants of health.png"
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Tabakslobby.jpg"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Coca Cola Ad 1930s.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ed/Coca_Cola_Ad_1930s.jpg/960px-Coca_Cola_Ad_1930s.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Coca Cola Ad 1930s.jpg",
+        "caption": "Junk food and its advertising are commercial determinants of health.",
+        "alt": "",
+        "description": "An ad featuring women drinking Coke in-between shopping. Headline: “The good old pause that refreshes” This famous Coca-Cola slogan emphasizes the product’s value as a comforting, timeless break. Supporting Tagline: “Shopping won’t tire you out if you take time to pause and refresh” It aligns Coca-Cola with self-care and maintaining stamina during daily activities like shopping. Body Copy: “There’s a bargain counter everybody knows…the soda fountain. It offers you a welcome pause…to relax…and to enjoy the still more welcome pause that refreshes",
+        "date": "circa March 1938date QS:P,+1938-03-00T00:00:00Z/10,P1480,Q5727902date QS:P,+1938-03-00T00:00:00Z/10,",
+        "section": "Marketing",
+        "position": 2,
+        "provenance": {
+          "credit": "Coca-Cola Company",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Coca_Cola_Ad_1930s.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Commercial_determinants_of_health",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1370419821",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Banana Processing.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d3/Banana_Processing.jpg/960px-Banana_Processing.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Banana Processing.jpg",
+        "caption": "Ecuador produced 7.5 million tonnes of bananas in 2024. Agriculture employs more than a third of all people and the government has recently attempted to improve labor conditions following years of extractive practices",
+        "alt": "",
+        "description": "Women cleaning Cavendish bananas for packaging at a plantation in Ecuador (from whence most of America's bananas are imported.)",
+        "date": "2015-09-10 08:56",
+        "section": "Supply chains",
+        "position": 3,
+        "provenance": {
+          "credit": "David Brossard",
+          "license": "CC BY-SA 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Banana_Processing.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Commercial_determinants_of_health",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1370419821",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Moscow bus LiAZ-5256 11254 20130510 009 (9106911832).jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/19/Moscow_bus_LiAZ-5256_11254_20130510_009_%289106911832%29.jpg/960px-Moscow_bus_LiAZ-5256_11254_20130510_009_%289106911832%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Moscow bus LiAZ-5256 11254 20130510 009 (9106911832).jpg",
+        "caption": "Air pollution causes 6.7 million premature deaths every year.",
+        "alt": "",
+        "description": "Машина не отрегулирована, выпущена из резерва на замену газовых автобусов.",
+        "date": "Taken on 10 May 2013, 12:24",
+        "section": "Impact",
+        "position": 4,
+        "provenance": {
+          "credit": "Artem Svetlov from Moscow, Russia",
+          "license": "CC BY 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Moscow_bus_LiAZ-5256_11254_20130510_009_(9106911832).jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Commercial_determinants_of_health",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1370419821",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "e664ddb1d290a24763a543498ab145ff566df5a012d0be46cc431f17c739c71a",
+      "heading": "Lead",
+      "excerpt": "The commercial determinants of health (CDH), part of the broader social determinants of health, are the private sector activities that influ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1370419821"
+    },
+    {
+      "id": "P2",
+      "hash": "0cc9ef8ef61e7c31021b0a4a61bccde4ca61835d657cfffd4d0f4738d2547d0c",
+      "heading": "Lead",
+      "excerpt": "The commercial determinants of health cover three areas of focus: unhealthy commodities that contribute to disease and poor health; business",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1370419821"
+    },
+    {
+      "id": "P3",
+      "hash": "0eb9fd5beaac5d56bc7342b12833781f8dc60c7ad2471e47f2f565949aeb82ae",
+      "heading": "Introduction",
+      "excerpt": "Scholarship surrounding the topic emerged in 2013 when public health physician Dr. John Millar introduced the term \"corporate determinants o",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1370419821"
+    },
+    {
+      "id": "P4",
+      "hash": "00e6a9693a9669f00050de515b1fa46c40118bb3342cbd0fc51a5d7a712dc65d",
+      "heading": "Political influence",
+      "excerpt": "Corporations routinely invest substantial resources in lobbying governments, political parties, and policy actors on matters affecting their",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1370419821"
+    },
+    {
+      "id": "P5",
+      "hash": "c736765b1a6b94b8aeeeeaa7370578e5668bac4f27696421cd7030be1604e9e1",
+      "heading": "Political influence",
+      "excerpt": "CPA has been widely examined in public health scholarship, especially in regards to the tobacco industry. In the late 1990s, the release of ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1370419821"
+    },
+    {
+      "id": "P6",
+      "hash": "9be19b645079cc12fef3d976650a4ab5ff75bb542b2548bdc53e6c5379c5de40",
+      "heading": "Marketing",
+      "excerpt": "Corporations also shape health outcomes through their marketing practices, including product development, pricing decisions, advertising, an",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1370419821"
+    },
+    {
+      "id": "P7",
+      "hash": "24615945972c9783252bc4a848c8c8df392494ecc9b5a3d36577dedc708251d4",
+      "heading": "Supply chains",
+      "excerpt": "Corporations further extend their influence through the creation and control of large supply chains, which can boost their influence within ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1370419821"
+    },
+    {
+      "id": "P8",
+      "hash": "35e33c23bc3f4f700d3681fea0a2bb8ebb4e7487f2b4c7ff193dd1f21126a9f9",
+      "heading": "Corporate social responsibility",
+      "excerpt": "Corporate social responsibility initiatives, such as environmental programs, philanthropy, and volunteer efforts, are often used to redirect",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1370419821"
+    },
+    {
+      "id": "P9",
+      "hash": "e38f6119f10db1579902a7fc33fdf4c55c446824cc86593962883ef25d9fc48f",
+      "heading": "Impact",
+      "excerpt": "The main risk factors for developing non-communicable diseases (NCDs), which are responsible for 71% of all deaths and the leading cause of ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1370419821"
+    },
+    {
+      "id": "P10",
+      "hash": "583c56d5dce019b401c407a7e698f1d078aae5c0a62d1baba5d92f465af593ff",
+      "heading": "Impact",
+      "excerpt": "A fuller understanding of the commercial determinants of health and the ways risk factors interact with each other is critical for developin",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1370419821"
+    }
+  ],
+  "updatedAt": "2026-10-22T12:55:15.072Z"
 }
