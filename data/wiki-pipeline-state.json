@@ -7814,10 +7814,10 @@
       "checkedAt": "2026-10-21T03:11:39.313Z"
     },
     "18859390": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
+      "revisionId": 1377939080,
+      "checkedAt": "2026-10-22T08:42:01.520Z"
     },
     "18934647": {
       "status": "NEEDS_REVIEW",
@@ -9866,7 +9866,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-22T08:41:54.923Z",
+  "updatedAt": "2026-10-22T08:42:01.529Z",
   "dailyUsage": {
     "day": "2026-10-22",
     "calls": 24,
