@@ -10,7 +10,7 @@ test('prefers listed free Flash-Lite model without a generation request',async()
  const selected=await selectAvailableWikiModel({apiKey:'test-key',fetchImpl:async(u,o)=>{
   url=u;options=o;return response([model('gemini-3.1-flash-lite'),model('gemini-3.5-flash-lite')])
  }})
- assert.equal(selected.model,'gemini-3.5-flash-lite')
+ assert.equal(selected.model,'gemini-3.1-flash-lite')
  assert.equal(selected.available,true)
  assert.match(url,/\/models\?pageSize=1000$/)
  assert.equal(options.method,undefined)
@@ -18,8 +18,8 @@ test('prefers listed free Flash-Lite model without a generation request',async()
 
 test('uses only an approved available fallback',async()=>{
  const selected=await selectAvailableWikiModel({apiKey:'test-key',fetchImpl:async()=>response([
-  model('gemini-3.1-flash-lite'),model('gemini-3.5-flash')])})
- assert.equal(selected.model,'gemini-3.1-flash-lite')
+  model('gemini-3.5-flash-lite'),model('gemini-3.5-flash')])})
+ assert.equal(selected.model,'gemini-3.5-flash-lite')
 })
 
 test('pauses AI work when model access cannot be confirmed',async()=>{
