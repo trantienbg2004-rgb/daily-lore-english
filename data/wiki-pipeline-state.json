@@ -9140,10 +9140,10 @@
       "checkedAt": "2026-10-21T18:10:13.288Z"
     },
     "67568559": {
-      "status": "PENDING",
-      "reason": "queued",
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
       "revisionId": 1376223353,
-      "checkedAt": null
+      "checkedAt": "2026-10-22T13:15:42.956Z"
     },
     "67583363": {
       "status": "PUBLISHED",
@@ -9866,7 +9866,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-22T13:15:36.744Z",
+  "updatedAt": "2026-10-22T13:15:42.957Z",
   "dailyUsage": {
     "day": "2026-10-22",
     "calls": 71,
