@@ -60,6 +60,26 @@ test('a second embedded licensed image appears on its relevant later page',()=>{
  }
 })
 
+test('a licensed source cover can introduce a detail explained on a later page',()=>{
+ const cover={...figure,fileTitle:'File:Silk Road caravan.jpg',caption:'Caravan trade routes across Central Asia',
+  alt:'Caravans on trade routes',position:0}
+ const coverPage=structuredClone(page)
+ coverPage.title=cover.fileTitle
+ const variants=structuredClone(levels)
+ for(const variant of Object.values(variants)){
+  variant.pages[0].text='Merchants connected distant places through exchange over many centuries.'
+  variant.pages[1].text='Caravans followed trade routes across Central Asia.'
+ }
+ const assigned=assignWikipediaPhotos([verifyEmbeddedImage(cover,coverPage)],{...source,figures:[cover]},variants)
+ assert.equal(assigned.status,'VERIFIED')
+ assert.equal(assigned.photos[0].pageIndex,0)
+ for(const variant of Object.values(assigned.levelVariants)){
+  assert.equal(variant.pages[0].image,coverPage.imageinfo[0].thumburl)
+  assert.equal(variant.pages[0].imageProvenance.evidence.pageIndex,0)
+  assert.equal(variant.pages[1].image,'')
+ }
+})
+
 test('same place, unrelated object, wrong chart period and reused URL stay unapproved',()=>{
  const city={...figure,fileTitle:'File:Silk Road city skyline.jpg',caption:'Skyline of a modern city',alt:'Modern skyline'}
  const cityPage=structuredClone(page);cityPage.title=city.fileTitle

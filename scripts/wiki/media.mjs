@@ -57,7 +57,13 @@ export function decideWikipediaPhoto(candidate,{source,levelVariants,usedUrls=ne
 export function assignWikipediaPhotos(decisions,source,levelVariants,{usedUrls=new Set()}={}){
  const approved=decisions.map(row=>decideWikipediaPhoto(row,{source,levelVariants,usedUrls})).filter(row=>row.status==='VERIFIED')
  const coverScore=row=>row.matchScore+(/\.(?:jpe?g|webp)$/i.test(row.photo.fileTitle)?2:0)
- const lead=approved.filter(row=>row.pageIndex===0).sort((a,b)=>coverScore(b)-coverScore(a)||a.photo.position-b.photo.position)[0]
+ const directLead=approved.filter(row=>row.pageIndex===0).sort((a,b)=>coverScore(b)-coverScore(a)||a.photo.position-b.photo.position)[0]
+ // A source article's own first photo can introduce a detail explained later in the story.
+ // Keep its full caption on the cover, and only use it after a later page has proved the subject match.
+ const sourceLead=approved.filter(row=>row.photo.position===0&&!chart.test(row.photo.fileTitle+' '+row.photo.caption))
+  .sort((a,b)=>coverScore(b)-coverScore(a))[0]
+ const lead=directLead||(!sourceLead?null:{...sourceLead,pageIndex:0,photo:{...sourceLead.photo,
+  provenance:{...sourceLead.photo.provenance,evidence:{...sourceLead.photo.provenance.evidence,pageIndex:0}}}})
  if(!lead)return {status:'REVIEW',reason:'no-verified-lead-photo',decisions:approved}
  const byPage=new Map([[0,lead]])
  const chosen=new Set([lead.photo.url])
