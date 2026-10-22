@@ -9770,10 +9770,10 @@
       "checkedAt": "2026-10-22T13:20:29.466Z"
     },
     "82572163": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
+      "revisionId": 1362542889,
+      "checkedAt": "2026-10-22T14:39:31.338Z"
     },
     "82636318": {
       "status": "REJECTED",
@@ -9866,7 +9866,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-22T14:39:24.806Z",
+  "updatedAt": "2026-10-22T14:39:31.339Z",
   "dailyUsage": {
     "day": "2026-10-22",
     "calls": 72,
