@@ -9770,10 +9770,10 @@
       "checkedAt": "2026-10-22T13:20:29.466Z"
     },
     "82572163": {
-      "status": "EVIDENCE_READY",
-      "reason": "1 rights-verified embedded images",
+      "status": "RETRY_LATER",
+      "reason": "Gemini circuit open",
       "revisionId": 1362542889,
-      "checkedAt": "2026-10-22T14:39:36.899Z"
+      "checkedAt": "2026-10-22T14:39:42.802Z"
     },
     "82636318": {
       "status": "REJECTED",
@@ -9866,7 +9866,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-22T14:39:36.900Z",
+  "updatedAt": "2026-10-22T14:39:42.803Z",
   "dailyUsage": {
     "day": "2026-10-22",
     "calls": 72,
