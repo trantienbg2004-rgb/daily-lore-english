@@ -2,9 +2,135 @@
   "pageId": 16094284,
   "title": "Digital history",
   "topic": "Science & Technology",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1374840027,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374840027",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-22T08:22:03.026Z"
+  "reason": "1 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Social Network Analysis Visualization.png",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9b/Social_Network_Analysis_Visualization.png/960px-Social_Network_Analysis_Visualization.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Social Network Analysis Visualization.png",
+        "caption": "Example of historical research using digital means: network visualization of the ICIC archives, showing thousands of documents exchanged between League of Nations experts during the interwar period.",
+        "alt": "",
+        "description": "Graph representing the metadata of thousands of archive documents, documenting the social network of hundreds of League of Nations personals. Grandjean, Martin (2014). \"La connaissance est un réseau\". Les Cahiers du Numérique 10 (3): 37-54. DOI:10.3166/LCN.10.3.37-54.",
+        "date": "2013-11-02 22:02:28",
+        "section": "Notable Projects",
+        "position": 0,
+        "provenance": {
+          "credit": "Martin Grandjean",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Social_Network_Analysis_Visualization.png",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Digital_history",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374840027",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "76ad1106e44de8812be763d6e7eea4b037bf0e61a74de5ee2634213197286b7b",
+      "heading": "Lead",
+      "excerpt": "Digital history is the use of digital media to further historical analysis, presentation, and research. It is a branch of the digital humani",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374840027"
+    },
+    {
+      "id": "P2",
+      "hash": "e9165650d041bbd3e700488c4c7ba3cabcb9f0a3aba4f7beedd486fadbcb0eac",
+      "heading": "History",
+      "excerpt": "Rooted in earlier social science history work, particularly around the history of enslavement in the United States, early digital history in",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374840027"
+    },
+    {
+      "id": "P3",
+      "hash": "aebeb16bab00b9e77528071a70ef9ab6b4f4d8cb6b45f4e2b1a6fbc84bd03559",
+      "heading": "History",
+      "excerpt": "The more recent roots of digital history were in software rather than online networks. In 1982, the Library of Congress embarked on its Opti",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374840027"
+    },
+    {
+      "id": "P4",
+      "hash": "828c6673fe0eb0e25420694b494edf65030fd037d950756a7bb6fc102db86c75",
+      "heading": "History",
+      "excerpt": "Among the earliest online digital history projects were The Heritage Project of the University of Kansas, and medieval historian Dr. Lynn Ne",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374840027"
+    },
+    {
+      "id": "P5",
+      "hash": "2fa90627b12a463c9a9bff22d88ea8b85a1fb3c8178519f2918e3ea19663fb5c",
+      "heading": "History",
+      "excerpt": "Rosenzweig, who died October 11, 2007, founded the Center for History and New Media (CHNM) at George Mason University in 1994. Today, CHNM b",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374840027"
+    },
+    {
+      "id": "P6",
+      "hash": "b05688c878b1757d93e4b5a9d3d3ac0d20644fcee9eef407a131e4c28342bf4a",
+      "heading": "Applications",
+      "excerpt": "There are many potential benefits to the use of digital history when combined with traditional historical methods. Some of these application",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374840027"
+    },
+    {
+      "id": "P7",
+      "hash": "afe9a2af49eabcdabf279d84754206c528302a885b6c7913aca83b2da8cd4f04",
+      "heading": "Notable Projects",
+      "excerpt": "The collaborative nature of most digital history endeavors has meant that the discipline has developed primarily at institutions with the re",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374840027"
+    },
+    {
+      "id": "P8",
+      "hash": "1147592f1023b9119329f49852930d4cb4abe90758682aa8ca425c72f0d4f13a",
+      "heading": "Digital History Classes",
+      "excerpt": "Digital history is now a common course type in graduate and undergraduate curriculum. For example, the students in Digital History courses a",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374840027"
+    },
+    {
+      "id": "P9",
+      "hash": "288ba8840e6fa23b3a1c8d0fb795ddcfb10ed3fddb3eceec95876e24ec529198",
+      "heading": "Technology",
+      "excerpt": "Digital technology tools arrange ideas and allow the analysis of data, with many tools previously unavailable to historians providing option",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374840027"
+    },
+    {
+      "id": "P10",
+      "hash": "7bab69d1a7607bf4128b5873465937ea4966c8129c70e7a7c0ed24789a5d39fd",
+      "heading": "Applications",
+      "excerpt": "By adding new research methods to existing historical method, historians can benefit greatly from the ability to work with larger amounts of",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374840027"
+    },
+    {
+      "id": "P11",
+      "hash": "94a1be192f9840bccfffe291a2287e8e894edc6eb4aa789eba19b8bc5e41a9dc",
+      "heading": "Notable Projects",
+      "excerpt": "Some of the noteworthy projects emerging from these pioneering centers are The Geography of Slavery, The Texas Slavery Project, and The Coun",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374840027"
+    },
+    {
+      "id": "P12",
+      "hash": "98bd44d1aa07260ba8c1da1a4d24eb56b741dc80cd5d4aa8ec9ee28add8da0f0",
+      "heading": "Notable Projects",
+      "excerpt": "While many of the projects at VCDH, CHNM, and other university's centers have been geared towards academics and post-secondary education, th",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374840027"
+    },
+    {
+      "id": "P13",
+      "hash": "47d0faf70d25b1564727595a4a7f56b2ab80f44950612d1b282071395a1bcf6a",
+      "heading": "Notable Projects",
+      "excerpt": "In addition to Ayers, Thomas, Lutz, and Rosenzweig, numerous other individual scholars work with digital history techniques and have made an",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374840027"
+    },
+    {
+      "id": "P14",
+      "hash": "ba7b0a033e7b623b160b5d0c6d1f8f439c7ec8f743608e2c01654f6b94e75457",
+      "heading": "Notable Projects",
+      "excerpt": "Another notable project that makes use of digital tools for historical practice is The Quilt Index. As scholars became increasingly interest",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374840027"
+    }
+  ],
+  "updatedAt": "2026-10-22T08:22:08.534Z"
 }
