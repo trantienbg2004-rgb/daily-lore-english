@@ -8720,10 +8720,10 @@
       "checkedAt": null
     },
     "53188837": {
-      "status": "FETCHED",
-      "reason": "pinned-source-ready",
+      "status": "REJECTED",
+      "reason": "insufficient-source-text-or-embedded-images",
       "revisionId": 1345662231,
-      "checkedAt": "2026-10-22T08:30:37.195Z"
+      "checkedAt": "2026-10-22T08:30:42.960Z"
     },
     "53251617": {
       "status": "PENDING",
@@ -9866,7 +9866,7 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-10-22T08:30:37.196Z",
+  "updatedAt": "2026-10-22T08:30:42.961Z",
   "dailyUsage": {
     "day": "2026-10-22",
     "calls": 16,
