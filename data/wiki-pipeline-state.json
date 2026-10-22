@@ -7214,10 +7214,10 @@
       "checkedAt": "2026-10-21T08:12:19.450Z"
     },
     "3449959": {
-      "status": "FETCHED",
-      "reason": "pinned-source-ready",
+      "status": "EVIDENCE_READY",
+      "reason": "6 rights-verified embedded images",
       "revisionId": 1374721441,
-      "checkedAt": "2026-10-22T13:21:00.140Z"
+      "checkedAt": "2026-10-22T13:21:05.748Z"
     },
     "3461563": {
       "status": "EVIDENCE_READY",
@@ -9866,7 +9866,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-22T13:21:00.149Z",
+  "updatedAt": "2026-10-22T13:21:05.750Z",
   "dailyUsage": {
     "day": "2026-10-22",
     "calls": 71,
