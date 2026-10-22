@@ -6566,10 +6566,10 @@
       "checkedAt": "2026-10-22T06:15:09.083Z"
     },
     "534060": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
+      "revisionId": 1379058382,
+      "checkedAt": "2026-10-22T08:27:37.470Z"
     },
     "569415": {
       "status": "REJECTED",
@@ -9866,7 +9866,7 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-10-22T08:27:30.923Z",
+  "updatedAt": "2026-10-22T08:27:37.471Z",
   "dailyUsage": {
     "day": "2026-10-22",
     "calls": 16,
