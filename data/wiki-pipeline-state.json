@@ -9698,10 +9698,10 @@
       "checkedAt": "2026-10-22T06:18:45.341Z"
     },
     "81094637": {
-      "status": "PENDING",
-      "reason": "queued",
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
       "revisionId": 1359335016,
-      "checkedAt": null
+      "checkedAt": "2026-10-22T13:02:29.583Z"
     },
     "81117122": {
       "status": "NEEDS_REVIEW",
@@ -9866,7 +9866,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-22T13:02:23.472Z",
+  "updatedAt": "2026-10-22T13:02:29.584Z",
   "dailyUsage": {
     "day": "2026-10-22",
     "calls": 68,
