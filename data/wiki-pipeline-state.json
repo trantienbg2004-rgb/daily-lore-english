@@ -8054,10 +8054,10 @@
       "checkedAt": "2026-10-22T06:19:15.268Z"
     },
     "27301862": {
-      "status": "FETCHED",
-      "reason": "pinned-source-ready",
+      "status": "REJECTED",
+      "reason": "insufficient-source-text-or-embedded-images",
       "revisionId": 1378739224,
-      "checkedAt": "2026-10-22T08:22:27.193Z"
+      "checkedAt": "2026-10-22T08:22:32.525Z"
     },
     "27355965": {
       "status": "EVIDENCE_READY",
@@ -9866,7 +9866,7 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-10-22T08:22:27.194Z",
+  "updatedAt": "2026-10-22T08:22:32.526Z",
   "dailyUsage": {
     "day": "2026-10-22",
     "calls": 9,
