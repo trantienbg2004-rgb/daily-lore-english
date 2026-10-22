@@ -2,9 +2,128 @@
   "pageId": 64902589,
   "title": "Sea of the West",
   "topic": "History & Geography",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1337480612,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1337480612",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-22T08:19:38.601Z"
+  "reason": "1 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Buache1753Map.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b3/Buache1753Map.jpg/960px-Buache1753Map.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Buache1753Map.jpg",
+        "caption": "Buache, 1753, demonstrating the Mer de l'Ouest model developed by Joseph-Nicolas Delisle. California is at the lower right; the mythical sea is above it.",
+        "alt": "",
+        "description": "1753 world map by the French cartographer Philippe Buache",
+        "date": "1753",
+        "section": "",
+        "position": 0,
+        "provenance": {
+          "credit": "Philippe Buache",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Buache1753Map.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Sea_of_the_West",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1337480612",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "bab2a850a4ec2d514784b730551cf4bae584bbb20bda61140719fe1d65b51515",
+      "heading": "Lead",
+      "excerpt": "The Sea of the West, or Mer de l'Ouest, was a geographic misconception of an inland sea in the Pacific Northwest that appeared on many maps ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1337480612"
+    },
+    {
+      "id": "P2",
+      "hash": "d9af1f36f29e655abe6428c9449495a2722d8c2f38172480cc22a1d755e6bc5c",
+      "heading": "Lead",
+      "excerpt": "Belief in the sea's existence derived from writings describing two voyages of discovery, one by an Admiral Bartholomew de Fonte, and one by ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1337480612"
+    },
+    {
+      "id": "P3",
+      "hash": "ce07dafb506a1e1f14159ab222cfd0d93f43da7f4466c0e12aa88e21606019de",
+      "heading": "Origins",
+      "excerpt": "Juan de Fuca was born Ioannis Phokás (Greek: Ἰωάννης Φωκᾶς) in the Ionian Islands of Greece in 1536. Through an account by Michael Lok, de F",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1337480612"
+    },
+    {
+      "id": "P4",
+      "hash": "22c5b0825f418261c4209f0cafb4f97ff93f51d3bdca886a7ef624ef97c98a3c",
+      "heading": "Origins",
+      "excerpt": "Michael Lok's involvement is significant because Lok was the principal patron of the Frobisher Expedition in search of a Northwest Passage. ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1337480612"
+    },
+    {
+      "id": "P5",
+      "hash": "7bdf4e408f3828f9b5ccd5d62125b6875595e0324a012fd906537d41d87f472c",
+      "heading": "Origins",
+      "excerpt": "Whether based on the de Fuca account or otherwise, a few manuscript maps in the 1600s showed speculative geography that included branches of",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1337480612"
+    },
+    {
+      "id": "P6",
+      "hash": "70de7b1e6bbff532e8656f1d1fce305bacb81650c98c82af4e04554c00d03090",
+      "heading": "Development",
+      "excerpt": "The Sea of the West theme was ignored by most mapmakers until 1750. In that year, Joseph-Nicolas Delisle commissioned Philippe Buache to dra",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1337480612"
+    },
+    {
+      "id": "P7",
+      "hash": "b9f0fb56bbc80dc6c956f342312f0276faae8e20e037a0ba6709c99c360cc910",
+      "heading": "Disappearance",
+      "excerpt": "By the late 1700s, European presence in the northeast Pacific, and the flow of information from it, cast serious doubt on the Sea of the Wes",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1337480612"
+    },
+    {
+      "id": "P8",
+      "hash": "d7c125a42507e4af48e7799532fa7f705f89aa0da2c2257e875e64369b26395a",
+      "heading": "Origins",
+      "excerpt": "As cartographer to the king and teacher of his children, Guillaume Delisle's ideas had influence. On his earliest manuscript, Delisle wrote ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1337480612"
+    },
+    {
+      "id": "P9",
+      "hash": "01508cf8ed75703493304d6be935319aecde36983f9060cacb834ef042de2c8e",
+      "heading": "Origins",
+      "excerpt": "In 1708, a new account of a fantastic voyage had emerged that would eventually become highly influential. In April of that year, a short-liv",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1337480612"
+    },
+    {
+      "id": "P10",
+      "hash": "4bb3c8b176a7d53ac115902a1df95b86270618cbd5c87bb5fa64ebbc1e009880",
+      "heading": "Development",
+      "excerpt": "As \"Professor of Mathematics at the Royal College, member of the Royal Academies of Sciences in Paris, London, Berlin, Stockholm, Uppsala, a",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1337480612"
+    },
+    {
+      "id": "P11",
+      "hash": "be68db75bfe6718f5acbe759b449dacc5df7c9510dabc2b11fde447ca26bc123",
+      "heading": "Development",
+      "excerpt": "The concept gained another boost in 1768 when mapmaker Thomas Jefferys wrote a treatise called The Great Probability of a North West Passage",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1337480612"
+    },
+    {
+      "id": "P12",
+      "hash": "0fc2ff8c70625c30136c3241763defea029287827a392e7319b79517a9f824bf",
+      "heading": "Development",
+      "excerpt": "McGuirk described eight distinct cartographic interpretations of the sea's shape and extent. With a few aberrations, each of the 239 Mer de ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1337480612"
+    },
+    {
+      "id": "P13",
+      "hash": "d5eead18b1b0409e229201915e565bad87fc12e0aac6fb80eb65f1430732f78e",
+      "heading": "Disappearance",
+      "excerpt": "Information did not always travel rapidly or thoroughly. Publishers did not always know whether to accept the latest claims about discoverie",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1337480612"
+    }
+  ],
+  "updatedAt": "2026-10-22T08:19:44.377Z"
 }
