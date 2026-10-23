@@ -2,10 +2,10 @@
   "pageId": 14194,
   "title": "History of medicine",
   "topic": "Health",
-  "status": "DRAFTED",
+  "status": "VALIDATED",
   "revisionId": 1379614848,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379614848",
-  "reason": "draft durably saved before validation",
+  "reason": "local factual, style, length, structure and source audit passed",
   "rights": [
     {
       "status": "REVIEW",
@@ -683,7 +683,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379614848"
     }
   ],
-  "updatedAt": "2026-10-23T17:28:28.320Z",
+  "updatedAt": "2026-10-23T17:28:46.333Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -814,5 +814,8 @@
     "output": 1434,
     "total": 4285
   },
-  "validation": null
+  "validation": {
+    "accepted": true,
+    "errors": []
+  }
 }
