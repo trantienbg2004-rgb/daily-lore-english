@@ -2,10 +2,10 @@
   "pageId": 38894,
   "title": "Abolitionism",
   "topic": "Politics",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1381215194,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381215194",
-  "reason": "15 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -550,5 +550,143 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381215194"
     }
   ],
-  "updatedAt": "2026-10-23T20:32:28.163Z"
+  "updatedAt": "2026-10-23T20:32:45.104Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "The History of Ending Slavery",
+        "pages": [
+          {
+            "text": "Abolitionism is the political movement to end slavery and free enslaved people around the world. This important movement grew stronger in the western world during the late eighteenth and nineteenth centuries.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "France was the first country to fully outlaw slavery in 1315, though it was still used in its colonies. Later, Spain banned slavery for indigenous people in 1542. Japan also abolished chattel slavery starting in 1590.",
+            "evidenceIds": [
+              "P2",
+              "P3"
+            ]
+          },
+          {
+            "text": "The British movement began in the late eighteenth century. In 1807, the slave trade became illegal across the British Empire. Later, the Slavery Abolition Act of 1833 freed existing slaves in British colonies.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "In the United States, Vermont and Pennsylvania were the first states to abolish slavery. By 1804, other northern states also ended it. However, slavery stayed legal in the southern states for many more years.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "The United States fought a bloody Civil War. Afterward, the country passed the Thirteenth Amendment in December 1865. This finally ended slavery everywhere in the nation, except as a punishment for crime.",
+            "evidenceIds": [
+              "P4"
+            ]
+          },
+          {
+            "text": "Brazil was the last country in the Americas to outlaw slavery in 1888. During the twentieth century, international groups worked hard through treaties to completely eradicate the institution of slavery worldwide.",
+            "evidenceIds": [
+              "P4",
+              "P5"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "The Global Fight Against Slavery",
+        "pages": [
+          {
+            "text": "Abolitionism represents the worldwide political movement dedicated to ending slavery and liberating enslaved individuals. The movement gained significant momentum across the western world during the late eighteenth and nineteenth centuries.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "France became the first country to fully outlaw slavery in 1315, although the practice continued in its colonies. Spain followed by protecting indigenous populations with the New Laws in 1542, while Japan abolished chattel slavery under Toyotomi Hideyoshi beginning in 1590.",
+            "evidenceIds": [
+              "P2",
+              "P3"
+            ]
+          },
+          {
+            "text": "The British abolitionist movement emerged in the late eighteenth century. The 1772 Somersett case established that slavery had no basis in English law. Although the slave trade was banned in 1807 throughout the British Empire, enslaved people in colonies were not fully liberated until 1833.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "In North America, Vermont and Pennsylvania led the abolition effort in the late eighteenth century. By 1804, northern U.S. states had abolished slavery, while the institution persisted in the South. The United States eventually outlawed the slave importation in 1808.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "Following a destructive Civil War, the United States passed the Thirteenth Amendment in December 1865, abolishing slavery except as a criminal punishment. Meanwhile, Brazil became the final country in the Americas to outlaw slavery in 1888.",
+            "evidenceIds": [
+              "P4"
+            ]
+          },
+          {
+            "text": "During the twentieth century, the League of Nations established multiple commissions to investigate slavery globally. These bodies created international treaties, such as the 1926 Slavery Convention, aimed at eradicating the institution worldwide.",
+            "evidenceIds": [
+              "P5"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "Abolitionism and Global Emancipation",
+        "pages": [
+          {
+            "text": "Abolitionism denotes the concerted political movement aimed at dismantling institutionalized slavery and liberating enslaved populations globally. This phenomenon acquired substantial momentum throughout the western hemisphere during the late eighteenth and nineteenth centuries.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Historically, France was the initial state to completely outlaw slavery in 1315, notwithstanding its continued implementation within colonial territories. Subsequently, Spain enacted the New Laws in 1542 to abolish and penalize the enslavement of indigenous peoples, whereas Japan instituted the abolition of chattel slavery in 1590.",
+            "evidenceIds": [
+              "P2",
+              "P3"
+            ]
+          },
+          {
+            "text": "The British abolitionist campaign originated during the late eighteenth century, reinforced by the 1772 Somersett case which established that slavery lacked recognition within English law. The Slave Trade Act of 1807 prohibited the trade across the British Empire, though full liberation in colonies awaited the Slavery Abolition Act of 1833.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "In the United States, early legislative action occurred in Vermont and Pennsylvania during the late eighteenth century. Northern states achieved total abolition by 1804, whereas the southern states maintained the institution, and the federal government prohibited slave importation by 1808.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "The culmination of the American abolition process followed a severe civil conflict, resulting in the ratification of the Thirteenth Amendment in December 1865, which eradicated slavery except as a penal sanction. Brazil subsequently became the final nation in the Americas to abolish the institution in 1888.",
+            "evidenceIds": [
+              "P4"
+            ]
+          },
+          {
+            "text": "Throughout the twentieth century, the League of Nations instituted specialized bodies, including the Temporary Slavery Commission and subsequent committees of experts, to conduct international investigations and formulate treaties like the 1926 Slavery Convention to eradicate the practice globally.",
+            "evidenceIds": [
+              "P5"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 3026,
+    "output": 1546,
+    "total": 4572
+  },
+  "validation": null
 }
