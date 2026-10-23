@@ -2,10 +2,10 @@
   "pageId": 63925372,
   "title": "Hebraization of Palestinian place names",
   "topic": "History & Geography",
-  "status": "DRAFTED",
+  "status": "VALIDATED",
   "revisionId": 1378076101,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378076101",
-  "reason": "draft durably saved before validation",
+  "reason": "local factual, style, length, structure and source audit passed",
   "rights": [
     {
       "status": "REVIEW",
@@ -213,7 +213,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378076101"
     }
   ],
-  "updatedAt": "2026-10-23T16:57:59.437Z",
+  "updatedAt": "2026-10-23T16:58:16.411Z",
   "draft": {
     "outline": [
       "Introduction to the history and extensive scope of place-name Hebraization across Palestine.",
@@ -367,5 +367,8 @@
     "output": 357,
     "total": 3510
   },
-  "validation": null
+  "validation": {
+    "accepted": true,
+    "errors": []
+  }
 }
