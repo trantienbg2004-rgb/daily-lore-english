@@ -2,10 +2,10 @@
   "pageId": 18940658,
   "title": "Anti-communism",
   "topic": "Politics",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1380015458,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380015458",
-  "reason": "18 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -577,5 +577,121 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380015458"
     }
   ],
-  "updatedAt": "2026-10-23T17:22:54.415Z"
+  "updatedAt": "2026-10-23T17:23:16.029Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "What is Anti-Communism?",
+        "pages": [
+          {
+            "text": "Anti-communism is the opposition to communist ideas and groups. It started after the Russian Revolution in 1917. Many different people and groups have been anti-communist. This includes people with many different political views. It also includes some religious groups and people who make art or write books.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "The first group against communism was the White movement in Russia. They fought in a civil war starting in 1918. Other countries helped them. But the Red Army won the war. The Soviet Union was then created in 1922. Anti-communism became a big part of world politics after that.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "In the United States, anti-communism became strong in 1919. During the 1930s, many groups in America and Europe opposed communism. Some fascist governments also fought against it. Countries like Japan and China had strong anti-communist forces too. They formed alliances to stop the spread of communist ideas.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "After World War II, the United States and the Soviet Union became rivals. This was the Cold War. The United States helped many countries fight communism. There were wars in places like Korea and Vietnam. A group called NATO was created to be an anti-communist military alliance in 1949.",
+            "evidenceIds": [
+              "P4"
+            ]
+          },
+          {
+            "text": "The Cold War ended when the Soviet Union stopped existing in 1991. Most communist governments were replaced. However, anti-communism is still a part of politics today. Some groups still work against the communist government in China and other places. It remains a topic in many countries around the world.",
+            "evidenceIds": [
+              "P5"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "The History of Anti-Communism",
+        "pages": [
+          {
+            "text": "Anti-communism is the political and ideological opposition to communist beliefs and groups. While it gained global attention during the Cold War, it began much earlier. Organized resistance emerged following the 1917 October Revolution in Russia. Since then, it has appeared across the political spectrum, from anarchism to social democracy.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "The Russian White movement was the first organization dedicated to opposing communism. It fought the Bolshevik government during the Russian Civil War starting in 1918. Although foreign governments provided military support, the White movement was defeated. The Soviet Union was established in 1922, and anti-communism became a major global movement.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "During the 1920s and 1930s, opposition to communism grew in the United States and Europe. Conservatives, liberals, and fascists all opposed communist growth. In 1936, Nazi Germany and Imperial Japan formed the Anti-Comintern Pact. This alliance was specifically designed to counter the influence of international communist organizations during that period.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "After 1945, the Cold War began between the United States and the Soviet Union. The U.S. government supported global anti-communism as part of its containment policy. This led to military conflicts in Korea, Vietnam, and Afghanistan. In 1949, Western nations founded NATO to serve as an anti-communist military alliance.",
+            "evidenceIds": [
+              "P4"
+            ]
+          },
+          {
+            "text": "The Cold War ended with the dissolution of the Soviet Union in 1991. Most communist governments were overthrown during this time. However, anti-communism remains a feature of contemporary politics. Organized movements continue to oppose the government of the People's Republic of China and other remaining communist states today.",
+            "evidenceIds": [
+              "P5"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "Global Anti-Communist Movements",
+        "pages": [
+          {
+            "text": "Anti-communism encompasses diverse political and ideological opposition to communist governance and theory. Emerging as an organized force following the 1917 Russian Revolution, it transcended specific political labels. It has been adopted by movements ranging from liberalism and social democracy to nationalism and religious groups, reflecting broad resistance to communist influence.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "The Russian White movement represented the first instance of anti-communism as a formal government policy. Supported by international allies during the Russian Civil War, the movement sought to topple the Bolsheviks. Following the Red Army's victory and the 1922 creation of the Soviet Union, anti-communism evolved into a persistent global political feature.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "In the interwar period, anti-communism became a central pillar for various factions, including European conservatives and liberals. The 1936 Anti-Comintern Pact between Nazi Germany and Imperial Japan formalized this opposition. These forces sought to contain communist expansion, while in Asia, the Kuomintang emerged as a primary anti-communist power during the 1930s.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "The post-1945 era defined the Cold War, characterized by the rivalry between the capitalist United States and the Marxist–Leninist Soviet Union. U.S. containment policy fueled military interventions in Korea, Vietnam, and elsewhere. The 1949 establishment of NATO provided a permanent institutional framework for Western anti-communist military cooperation during this tense period.",
+            "evidenceIds": [
+              "P4"
+            ]
+          },
+          {
+            "text": "The collapse of the Soviet Union in 1991 marked the end of the Cold War and the decline of most communist regimes. Despite these geopolitical shifts, anti-communism persists as a contemporary political element. Modern movements continue to challenge the legitimacy and policies of remaining communist states, such as the People's Republic of China.",
+            "evidenceIds": [
+              "P5"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2770,
+    "output": 1216,
+    "total": 3986
+  },
+  "validation": null
 }
