@@ -1,110 +1,46 @@
-/** Context decisions for files already embedded in one pinned Wikipedia article. */
-const filler=new Set('about above after again also among article being between caption century commons during first from history image images into large main many other people photo picture shown shows some source their these this those through under which while with world years'.split(' '))
-const terms=value=>new Set(String(value||'').toLowerCase().normalize('NFKD').replace(/[^a-z0-9]+/g,' ').split(/\s+/)
- .filter(word=>word.length>=4&&!filler.has(word)).map(word=>word.endsWith('ing')&&word.length>6?word.slice(0,-3):
-  word.endsWith('s')&&word.length>4?word.slice(0,-1):word))
-const hits=(a,b)=>[...terms(a)].filter(word=>terms(b).has(word)).length
-const year=value=>String(value||'').match(/\b(?:1[5-9]|20)\d{2}\b/g)||[]
-const imageTopic=photo=>`${photo.caption} ${photo.alt} ${photo.description} ${photo.fileTitle.replace(/^File:/,'')}`
-const chart=/\b(?:chart|graph|plot|statistics|dataset|data|rate|index|trend)\b/i
-const captionNames=caption=>(String(caption||'').match(/\b[A-Z][a-z]{3,}\b/g)||[])
- .filter(word=>!new Set(['The','This','Map','Regions','Historical','Expansion','Empire','Comparison','Territorial']).has(word))
+/** Select rights-verified files embedded in the pinned source article. */
+const levels=['A1-A2','B1-B2','C1-C2']
+const licenseUrl=value=>String(value||'').replace(/^http:\/\/creativecommons\.org\//i,'https://creativecommons.org/')
 
-/** Rights proof alone leaves a candidate in REVIEW. This function requires
- * source-article placement plus a concrete subject match with a target page. */
 export function decideWikipediaPhoto(candidate,{source,levelVariants,usedUrls=new Set(),preferLater=false}={}){
- if(candidate.status==='REJECTED'||!candidate.photo)return candidate
- const photo=candidate.photo,subject=imageTopic(photo)
- if(!source?.figures?.some(f=>f.fileTitle===photo.fileTitle))return {...candidate,status:'REJECTED',reason:'not-embedded-in-source-revision'}
- if(usedUrls.has(photo.url)||usedUrls.has(photo.provenance.imagePageUrl))return {...candidate,status:'REJECTED',reason:'image-already-used'}
- const levels=['A1-A2','B1-B2','C1-C2']
- const variants=levels.map(level=>levelVariants?.[level]?.pages)
- if(variants.some(pages=>!Array.isArray(pages)||!pages.length))return {...candidate,status:'REVIEW',reason:'reading-pages-unavailable'}
- const explicitYears=year(photo.caption+' '+photo.description+' '+photo.date)
- const isChart=chart.test(photo.fileTitle+' '+photo.caption)
- const specific=[...terms(subject)].filter(word=>!terms(source.sourceTitle).has(word))
- const scores=[]
- const length=Math.min(...variants.map(pages=>pages.length))
- for(let pageIndex=0;pageIndex<length;pageIndex++){
-  const texts=variants.map(pages=>pages[pageIndex].text)
-  const overlaps=texts.map(text=>hits(photo.caption+' '+photo.alt,text))
-  const periodOk=!isChart||!explicitYears.length||texts.every(text=>explicitYears.some(value=>text.includes(value)))
-  if(!periodOk)continue
-  const titleHits=hits(photo.caption+' '+photo.alt+' '+photo.fileTitle,source.sourceTitle)
-  const contextOk=overlaps.every(count=>count>=1)
-  if(!contextOk)continue
-  if(pageIndex===0){
-   if(titleHits<1&&overlaps.some(count=>count<2))continue
-  }else if(overlaps.some(count=>count<2)&&titleHits<1&&
-   !captionNames(photo.caption).filter(name=>terms(photo.alt+' '+photo.fileTitle).has(name.toLowerCase()))
-    .some(name=>texts.every(text=>new RegExp(`\\b${name}\\b`,'i').test(text))))continue
-  const specificHits=texts.map(text=>specific.filter(word=>terms(text).has(word)).length)
-  scores.push({pageIndex,score:overlaps.reduce((a,b)=>a+b,0)+titleHits*(pageIndex===0?4:1)-pageIndex*.2,
-   specificMin:Math.min(...specificHits),titleHits})
- }
- if(!scores.length)return {...candidate,status:'REVIEW',reason:isChart?'chart-period-or-page-context-unproven':'visible-subject-page-context-unproven'}
- const reconstruction=/\b(?:reconstruction|re-creation|replica)\b/i.test(photo.caption)
- const eligible=preferLater?scores.filter(row=>row.pageIndex>0&&row.specificMin>=1&&row.titleHits>=1&&
-  (!reconstruction||/\b(?:hypothetical|reconstruction|re-creation|replica)\b/i.test(variants[0][row.pageIndex].text))):scores
- if(!eligible.length)return {...candidate,status:'REVIEW',reason:'later-page-specific-subject-unproven'}
- eligible.sort((a,b)=>preferLater?b.specificMin-a.specificMin||b.score-a.score:b.score-a.score)
- const choice=eligible[0]
- const archived=explicitYears.length&&year(source.sourceTitle).length&&!year(source.sourceTitle).some(value=>explicitYears.includes(value))
- const caption=String(photo.caption||photo.alt).replace(/\s+/g,' ').trim()
- return {...candidate,status:'VERIFIED',reason:'source-embedded-item-rights-and-page-subject',pageIndex:choice.pageIndex,matchScore:choice.score,
-  photo:{...photo,caption,archive:!!archived,
-   provenance:{...photo.provenance,sourceImageUrl:source.sourceUrl,sourceRevisionUrl:source.sourceRevisionUrl,
-    evidence:{sourcePageId:source.pageId,sourceRevisionId:source.sourceRevisionId,fileTitle:photo.fileTitle,
-     articleCaption:photo.caption,pageIndex:choice.pageIndex}}}}
+ if(candidate?.status!=='REVIEW'||!candidate.photo)return candidate
+ const photo=candidate.photo
+ if(!source?.figures?.some(figure=>figure.fileTitle===photo.fileTitle))
+  return {...candidate,status:'REJECTED',reason:'not-embedded-in-source-revision'}
+ if(usedUrls.has(photo.url)||usedUrls.has(photo.provenance?.imagePageUrl))
+  return {...candidate,status:'REJECTED',reason:'image-already-used'}
+ if(levels.some(level=>!Array.isArray(levelVariants?.[level]?.pages)||
+  levelVariants[level].pages.length<(preferLater?2:1)))
+  return {...candidate,status:'REVIEW',reason:'reading-pages-unavailable'}
+ const pageIndex=preferLater?1:0
+ return {...candidate,status:'VERIFIED',reason:'source-embedded-item-rights-verified',pageIndex,
+  photo:{...photo,caption:String(photo.caption||photo.alt||'').replace(/\s+/g,' ').trim(),
+   provenance:{...photo.provenance,licenseUrl:licenseUrl(photo.provenance?.licenseUrl),
+    sourceImageUrl:source.sourceUrl,sourceRevisionUrl:source.sourceRevisionUrl,
+    evidence:{sourcePageId:source.pageId,sourceRevisionId:source.sourceRevisionId,
+     fileTitle:photo.fileTitle,articleCaption:photo.caption,pageIndex}}}}
 }
 
 export function assignWikipediaPhotos(decisions,source,levelVariants,{usedUrls=new Set()}={}){
- const approved=decisions.map(row=>decideWikipediaPhoto(row,{source,levelVariants,usedUrls})).filter(row=>row.status==='VERIFIED')
- if(!approved.length){
-  // The three CEFR versions have independent pacing. A relevant photo can
-  // illustrate different page numbers while retaining one pinned source file.
-  const levels=['A1-A2','B1-B2','C1-C2']
-  const choices=decisions.map(candidate=>({candidate,perLevel:Object.fromEntries(levels.map(level=>[
-   level,decideWikipediaPhoto(candidate,{source,levelVariants:Object.fromEntries(levels.map(key=>[
-    key,levelVariants?.[level]])),usedUrls})]))}))
-   .filter(({perLevel})=>levels.every(level=>perLevel[level].status==='VERIFIED'))
-   .filter(({perLevel})=>new Set(levels.map(level=>perLevel[level].pageIndex===0)).size===1)
-  choices.sort((a,b)=>levels.reduce((sum,level)=>sum+b.perLevel[level].matchScore-a.perLevel[level].matchScore,0))
-  if(choices.length){
-   const selected=choices[0],variants=structuredClone(levelVariants)
-   for(const level of levels){
-    const row=selected.perLevel[level],page=variants[level].pages[row.pageIndex]
-    Object.assign(page,{image:row.photo.url,caption:row.photo.caption,imageProvenance:row.photo.provenance})
-   }
-   return {status:'VERIFIED',levelVariants:variants,
-    photos:[{...selected.perLevel['B1-B2'].photo,pageIndex:selected.perLevel['B1-B2'].pageIndex}],
-    decisions:levels.map(level=>selected.perLevel[level])}
+ const evaluated=decisions.map(candidate=>decideWikipediaPhoto(candidate,{source,levelVariants,usedUrls}))
+ const ordered=evaluated.filter(row=>row.status==='VERIFIED')
+  .sort((a,b)=>(a.photo.position??Infinity)-(b.photo.position??Infinity))
+ const diagnostics=evaluated.map(row=>({fileTitle:row.photo?.fileTitle||row.fileTitle,
+  levels:Object.fromEntries(levels.map(level=>[level,{status:row.status,reason:row.reason,
+   pageIndex:row.pageIndex}]))}))
+ if(!ordered.length)return {status:'REVIEW',reason:'no-verified-photo-placement',decisions:diagnostics}
+ const variants=structuredClone(levelVariants),photos=[],chosen=new Set()
+ for(const row of ordered){
+  if(photos.length>=4)break
+  const photo=row.photo
+  if(chosen.has(photo.url)||levels.some(level=>photos.length>=variants[level].pages.length))continue
+  const indexes=Object.fromEntries(levels.map(level=>[level,photos.length]))
+  for(const level of levels){
+   const pageIndex=indexes[level],page=variants[level].pages[pageIndex]
+   const provenance={...photo.provenance,evidence:{...photo.provenance.evidence,pageIndex}}
+   Object.assign(page,{image:photo.url,caption:photo.caption,imageProvenance:provenance})
   }
+  photos.push({...photo,pageIndex:indexes['B1-B2']});chosen.add(photo.url)
  }
- const coverScore=row=>row.matchScore+(/\.(?:jpe?g|webp)$/i.test(row.photo.fileTitle)?2:0)
- const directLead=approved.filter(row=>row.pageIndex===0).sort((a,b)=>coverScore(b)-coverScore(a)||a.photo.position-b.photo.position)[0]
- // A source article's own first photo can introduce a detail explained later in the story.
- // Keep its full caption on the cover, and only use it after a later page has proved the subject match.
- const sourceLead=approved.filter(row=>row.photo.position===0&&!chart.test(row.photo.fileTitle+' '+row.photo.caption))
-  .sort((a,b)=>coverScore(b)-coverScore(a))[0]
- const lead=directLead||(!sourceLead?null:{...sourceLead,pageIndex:0,photo:{...sourceLead.photo,
-  provenance:{...sourceLead.photo.provenance,evidence:{...sourceLead.photo.provenance.evidence,pageIndex:0}}}})
- if(!lead&&!approved.length)return {status:'REVIEW',reason:'no-verified-photo-placement',decisions:approved}
- const byPage=lead?new Map([[0,lead]]):new Map()
- const chosen=lead?new Set([lead.photo.url]):new Set()
- const later=decisions.map(row=>decideWikipediaPhoto(row,{source,levelVariants,usedUrls,preferLater:true}))
-  .filter(row=>row.status==='VERIFIED')
- // A verified later-page match still works when no cover image qualifies for the stricter secondary-photo rule.
- if(!lead)later.push(...approved.filter(row=>row.pageIndex>0))
- later.sort((a,b)=>b.matchScore-a.matchScore||a.photo.position-b.photo.position)
- for(const row of later){
-  if(row===lead||byPage.has(row.pageIndex)||chosen.has(row.photo.url))continue
-  byPage.set(row.pageIndex,row);chosen.add(row.photo.url)
- }
- if(!byPage.size)return {status:'REVIEW',reason:'no-verified-photo-placement',decisions:approved}
- const variants=structuredClone(levelVariants)
- for(const [pageIndex,row] of byPage)for(const level of ['A1-A2','B1-B2','C1-C2']){
-  Object.assign(variants[level].pages[pageIndex],{image:row.photo.url,caption:row.photo.caption,imageProvenance:row.photo.provenance})
- }
- return {status:'VERIFIED',levelVariants:variants,photos:[...byPage.values()].map(row=>({pageIndex:row.pageIndex,...row.photo})),decisions:approved}
+ return {status:'VERIFIED',levelVariants:variants,photos,decisions:diagnostics}
 }

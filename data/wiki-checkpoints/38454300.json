@@ -2,7 +2,7 @@
   "pageId": 38454300,
   "title": "Assisted migration",
   "topic": "Environment",
-  "status": "NEEDS_REPAIR",
+  "status": "NEEDS_REVIEW",
   "revisionId": 1376535017,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376535017",
   "reason": "editorial: A1-A2:page-2:copied-source-passage,A1-A2:page-3:copied-source-passage",
@@ -252,7 +252,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376535017"
     }
   ],
-  "updatedAt": "2026-10-23T12:53:06.119Z",
+  "updatedAt": "2026-10-23T15:22:28.645Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -362,7 +362,7 @@
       }
     }
   },
-  "repairAttempts": 1,
+  "repairAttempts": 2,
   "lastUsage": {
     "input": 2379,
     "output": 198,

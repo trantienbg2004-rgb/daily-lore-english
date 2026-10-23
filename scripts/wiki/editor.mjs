@@ -6,10 +6,14 @@ import {WIKI_TOPICS} from './discovery.mjs'
 const MODEL='gemini-3.5-flash-lite'
 const FREE_MODELS=new Set([MODEL,'gemini-3.1-flash-lite','gemini-3.6-flash','gemini-3.8-flash'])
 const MIN_REQUEST_SPACING_MS=5000
+// Verified for this Free Tier project in AI Studio on 2026-10-23:
+// Lite 15 RPM / 500 RPD, full Flash 5 RPM / 20 RPD. Leave headroom.
+const modelDailyCap=model=>model.endsWith('flash-lite')?450:18
+const modelSpacing=model=>model.endsWith('flash-lite')?MIN_REQUEST_SPACING_MS:15000
 const LEVELS=['A1-A2','B1-B2','C1-C2']
 const PAGE_SCHEMA={type:'object',properties:{text:{type:'string'},evidenceIds:{type:'array',items:{type:'string'},minItems:1}},
  required:['text','evidenceIds']}
-const LEVEL_SCHEMA={type:'object',properties:{headline:{type:'string'},pages:{type:'array',items:PAGE_SCHEMA,minItems:5,maxItems:7}},
+const LEVEL_SCHEMA={type:'object',properties:{headline:{type:'string'},pages:{type:'array',items:PAGE_SCHEMA,minItems:5,maxItems:6}},
  required:['headline','pages']}
 const STORY_SCHEMA={anyOf:[
  {type:'object',properties:{rejectReason:{type:'string'}},required:['rejectReason']},
@@ -17,7 +21,7 @@ const STORY_SCHEMA={anyOf:[
   required:LEVELS}},required:['variants']}
 ]}
 const AUDIT_SCHEMA={type:'object',properties:{accepted:{type:'boolean'},issues:{type:'array',items:{type:'object',
- properties:{level:{type:'string',enum:LEVELS},page:{type:'integer',minimum:1,maximum:7},reason:{type:'string'}},
+ properties:{level:{type:'string',enum:LEVELS},page:{type:'integer',minimum:1,maximum:6},reason:{type:'string'}},
  required:['level','page','reason']}}},required:['accepted','issues']}
 const count=text=>String(text||'').trim().split(/\s+/).filter(Boolean).length
 const digest=text=>createHash('sha256').update(text).digest('hex')
@@ -56,7 +60,7 @@ export function selectWikiEvidence(source,{maxWords=1750}={}){
 
 export function wikiStoryPrompt(source,topic,evidence){
  const sourceText=evidence.map(row=>`${row.id} [${row.heading}] ${row.text}`).join('\n\n')
- return `Write one engaging, factual English world-knowledge story from this EXACT English Wikipedia revision. Return JSON only.\n\nTitle: ${source.sourceTitle}\nWikipedia page ID: ${source.pageId}\nRevision ID: ${source.sourceRevisionId}\nSAGA topic: ${topic}\n\nRules:\n- This is narrative nonfiction for English learners, neither a news brief nor a copied encyclopedia entry. Open with a grounded hook, explain context, develop concrete details, close naturally. Do not invent dialogue, inner thoughts, motives, scenes, quotations, people, dates or numbers.\n- Preserve uncertainty precisely: a proposed or debated feature must remain proposed or debated in EVERY level. "Could" alone does not turn a debated capability into an established one. Do not transfer limitations of a modern reconstruction or simulation to the historical original. If a claim lacks direct support in the cited passages, omit it.\n- Produce independent A1-A2, B1-B2 and C1-C2 versions of the SAME core facts. A1-A2 uses everyday words and mostly simple sentences; B1-B2 uses clear journalistic prose and some compound/relative clauses; C1-C2 adds analytic precision without rare words for their own sake. Distinct accurate headlines, each at most 60 characters.\n- Exactly 5 to 7 complete pages PER level. Keep each opening page at 40-58 words so a lead image fits a phone; subsequent pages 48-88 words. Do not repeat a point merely to reach a page count. Every page must cite one or more evidence IDs whose exact source passages support its substantive claims.\n- Cite only the numbered source passages below. If the evidence cannot support a complete, interesting story, return {"rejectReason":"insufficient source evidence"} instead.\n- JSON shape: {"variants":{"A1-A2":{"headline":"...","pages":[{"text":"...","evidenceIds":["P1"]}]},"B1-B2":{...},"C1-C2":{...}}}. Do not include an outline, image URLs, invented citations, or HTML. Count words on every page before returning; complete short pages using only cited facts.\n\nSOURCE PASSAGES:\n${sourceText}`
+ return `Write one engaging, factual English world-knowledge story from this EXACT English Wikipedia revision. Return JSON only.\n\nTitle: ${source.sourceTitle}\nWikipedia page ID: ${source.pageId}\nRevision ID: ${source.sourceRevisionId}\nSAGA topic: ${topic}\n\nRules:\n- This is narrative nonfiction for English learners, neither a news brief nor a copied encyclopedia entry. Open with a grounded hook, explain context, develop concrete details, close naturally. Do not invent dialogue, inner thoughts, motives, scenes, quotations, people, dates or numbers.\n- Preserve uncertainty precisely: a proposed or debated feature must remain proposed or debated in EVERY level. "Could" alone does not turn a debated capability into an established one. Do not transfer limitations of a modern reconstruction or simulation to the historical original. If a claim lacks direct support in the cited passages, omit it.\n- Produce independent A1-A2, B1-B2 and C1-C2 versions of the SAME core facts. A1-A2 uses everyday words and mostly simple sentences; B1-B2 uses clear journalistic prose and some compound/relative clauses; C1-C2 adds analytic precision without rare words for their own sake. Distinct accurate headlines, each at most 60 characters.\n- Exactly 5 or 6 complete pages PER level; the three levels may have different page counts. Keep each opening page at 40-58 words so a lead image fits a phone; subsequent pages 48-88 words. Do not repeat a point merely to reach a page count. Every page must cite one or more evidence IDs whose exact source passages support its substantive claims.\n- Cite only the numbered source passages below. If the evidence cannot support a complete, interesting story, return {"rejectReason":"insufficient source evidence"} instead.\n- JSON shape: {"variants":{"A1-A2":{"headline":"...","pages":[{"text":"...","evidenceIds":["P1"]}]},"B1-B2":{...},"C1-C2":{...}}}. Do not include an outline, image URLs, invented citations, or HTML. Count words on every page before returning; complete short pages using only cited facts.\n\nSOURCE PASSAGES:\n${sourceText}`
 }
 
 export class GeminiWikiPause extends Error{
@@ -80,10 +84,13 @@ export async function callFreeWikiGemini(prompt,{apiKey,freeTierConfirmed=false,
  for(;;){
   if((budget.usedCalls||0)>=budget.maxCalls||
    (budget.dailyCalls||0)>=Math.min(budget.maxDailyCalls||450,450)||
-   (budget.dailyTokens||budget.usage?.total||0)>=Math.min(budget.maxTokens||1500000,1500000))
+   (budget.dailyTokens||budget.usage?.total||0)>=Math.min(budget.maxTokens||1500000,1500000)||
+   (budget.dailyModelCalls?.[model]||0)+(model.endsWith('flash-lite')?0:budget.legacyUnattributedCalls||0)>=modelDailyCap(model))
    throw new GeminiWikiPause('Free API call, daily or token budget exhausted')
-  if(budget.lastCallAt){const delay=budget.lastCallAt+MIN_REQUEST_SPACING_MS-now();if(delay>0)await waitImpl(delay)}
+  if(budget.lastCallAt){const delay=budget.lastCallAt+modelSpacing(model)-now();if(delay>0)await waitImpl(delay)}
   budget.lastCallAt=now();budget.usedCalls=(budget.usedCalls||0)+1;budget.dailyCalls=(budget.dailyCalls||0)+1
+  budget.dailyModelCalls??={}
+  budget.dailyModelCalls[model]=(budget.dailyModelCalls[model]||0)+1
   if(budget.onRequest)await budget.onRequest(budget)
   try{response=await fetchImpl(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`,{
    method:'POST',headers:{'content-type':'application/json','x-goog-api-key':apiKey},signal:AbortSignal.timeout(90000),
@@ -136,7 +143,7 @@ export function validateWikiDraft(result,{source,topic,evidence}={}){
   const variant=variants[level]
   if(!variant||typeof variant.headline!=='string'||variant.headline.length<10||variant.headline.length>60)errors.push(`${level}:headline`)
   const pages=variant?.pages
-  if(!Array.isArray(pages)||pages.length<5||pages.length>7){errors.push(`${level}:page-count`);continue}
+  if(!Array.isArray(pages)||pages.length<5||pages.length>6){errors.push(`${level}:page-count`);continue}
   for(const [index,page] of pages.entries()){
    const label=`${level}:page-${index+1}`
    const words=count(page?.text)
@@ -150,9 +157,12 @@ export function validateWikiDraft(result,{source,topic,evidence}={}){
    // A year elsewhere in the article cannot support this page's claim.
    const citedText=(page?.evidenceIds||[]).map(id=>byId.get(id)||'').join(' ')
    const citedNumbers=new Set(numerals(citedText))
-   for(const sentence of String(page?.text||'').split(/(?<=[.!?])\s+/))for(const number of numerals(sentence)){
+   // A period in a company abbreviation (for example, "Benz & Cie.") is not
+   // the end of a claim. Keep the following lowercase continuation attached.
+   const sentences=text=>String(text||'').split(/(?<=[.!?])\s+(?=["“‘(]?[A-Z0-9])/)
+   for(const sentence of sentences(page?.text))for(const number of numerals(sentence)){
     if(!citedNumbers.has(number)){errors.push(label+':unsupported-number-'+number);continue}
-    const relation=citedText.split(/(?<=[.!?])\s+/).filter(part=>numerals(part).includes(number))
+    const relation=sentences(citedText).filter(part=>numerals(part).includes(number))
      .some(part=>[...significant(sentence)].filter(term=>significant(part).has(term)).length>=2)
     if(!relation)errors.push(label+':unsupported-number-context-'+number)
    }
@@ -176,7 +186,7 @@ STORY:\n${JSON.stringify(result.variants)}`
 
 export function validateWikiAudit(result){
  if(typeof result?.accepted!=='boolean'||!Array.isArray(result.issues)||result.issues.length>30||
-  result.issues.some(issue=>!LEVELS.includes(issue?.level)||!Number.isSafeInteger(issue.page)||issue.page<1||issue.page>7||
+  result.issues.some(issue=>!LEVELS.includes(issue?.level)||!Number.isSafeInteger(issue.page)||issue.page<1||issue.page>6||
    typeof issue.reason!=='string'||issue.reason.length<8||issue.reason.length>250))
   throw new GeminiWikiPause('Gemini returned invalid editorial audit; preserve candidate')
  return {accepted:result.accepted&&result.issues.length===0,
@@ -199,7 +209,7 @@ export function wikiRepairSchema(errors){
  for(const [level,items] of Object.entries(targets)){
   const properties={}
   if(items.includes('headline'))properties.headline={type:'string'}
-  if(items.includes('page-count'))properties.pages={type:'array',items:PAGE_SCHEMA,minItems:5,maxItems:7}
+  if(items.includes('page-count'))properties.pages={type:'array',items:PAGE_SCHEMA,minItems:5,maxItems:6}
   else{
    const pages=items.filter(Number.isInteger)
    if(pages.length)properties.pages={type:'object',properties:Object.fromEntries(pages.map(page=>[page,PAGE_SCHEMA])),
@@ -267,7 +277,7 @@ export function wikiRepairPrompt(source,evidence,draft,errors){
   }
   return [level,content]
  }))
- return `Repair ONLY the named English-learning pages or headlines. Return one JSON object with variants containing exactly the named levels and page keys in Targets. For a single-page error, return that page as a 1-based key, not the whole level. For a page-count error, return a complete 5-7 page array for that one level. Rewrite the named page as needed for clear, sourced prose. Do not change any other level or page. Remove unsupported facts; never add a fact absent from the cited passages. Keep the opening page at 40-58 words and later pages at 48-88 words; count words before returning. If a factual claim cannot be supported, rewrite that sentence using only direct evidence.
+ return `Repair ONLY the named English-learning pages or headlines. Return one JSON object with variants containing exactly the named levels and page keys in Targets. For a single-page error, return that page as a 1-based key, not the whole level. For a page-count error, return a complete 5-6 page array for that one level. Rewrite the named page as needed for clear, sourced prose. Do not change any other level or page. Remove unsupported facts; never add a fact absent from the cited passages. Keep the opening page at 40-58 words and later pages at 48-88 words; count words before returning. If a factual claim cannot be supported, rewrite that sentence using only direct evidence.
 Title: ${source.sourceTitle}; revision: ${source.sourceRevisionId}
 Errors: ${JSON.stringify(errors)}
 Targets: ${JSON.stringify(targets)}

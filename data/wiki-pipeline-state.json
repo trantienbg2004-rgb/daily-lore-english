@@ -6266,10 +6266,10 @@
       "checkedAt": "2026-10-21T13:02:37.416Z"
     },
     "67500": {
-      "status": "NEEDS_REVIEW",
-      "reason": "Wiki story gate: A1-A2:image-rights,B1-B2:image-rights,C1-C2:image-rights",
+      "status": "PUBLISHED",
+      "reason": "1 verified embedded images",
       "revisionId": 1377122545,
-      "checkedAt": "2026-10-23T06:29:41.234Z"
+      "checkedAt": "2026-10-23T15:26:40.024Z"
     },
     "73664": {
       "status": "NEEDS_REVIEW",
@@ -7028,10 +7028,10 @@
       "checkedAt": "2026-10-21T03:11:31.086Z"
     },
     "1983326": {
-      "status": "EVIDENCE_READY",
-      "reason": "18 rights-verified embedded images",
+      "status": "PUBLISHED",
+      "reason": "3 verified embedded images",
       "revisionId": 1380229009,
-      "checkedAt": "2026-10-21T07:33:59.205Z"
+      "checkedAt": "2026-10-23T15:26:45.082Z"
     },
     "1996004": {
       "status": "EVIDENCE_READY",
@@ -8318,10 +8318,10 @@
       "checkedAt": "2026-10-22T09:00:40.351Z"
     },
     "38454300": {
-      "status": "NEEDS_REPAIR",
+      "status": "NEEDS_REVIEW",
       "reason": "editorial: A1-A2:page-2:copied-source-passage,A1-A2:page-3:copied-source-passage",
       "revisionId": 1376535017,
-      "checkedAt": "2026-10-23T12:53:06.118Z"
+      "checkedAt": "2026-10-23T15:22:28.645Z"
     },
     "38497714": {
       "status": "EVIDENCE_READY",
@@ -9278,10 +9278,10 @@
       "checkedAt": "2026-10-21T07:39:51.506Z"
     },
     "71983491": {
-      "status": "NEEDS_REVIEW",
-      "reason": "Targeted repair changed an unrelated sentence",
+      "status": "PUBLISHED",
+      "reason": "1 verified embedded images",
       "revisionId": 1377298310,
-      "checkedAt": "2026-10-21T13:30:19.718Z"
+      "checkedAt": "2026-10-23T15:21:10.681Z"
     },
     "72279466": {
       "status": "REJECTED",
@@ -9866,12 +9866,16 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-23T12:53:12.227Z",
+  "updatedAt": "2026-10-23T15:26:45.087Z",
   "dailyUsage": {
     "day": "2026-10-23",
-    "calls": 22,
-    "tokens": 72732,
+    "calls": 28,
+    "tokens": 94030,
     "usageUnknown": false,
-    "tokenAccountingUnavailable": false
+    "tokenAccountingUnavailable": false,
+    "modelCalls": {
+      "gemini-3.5-flash-lite": 6
+    },
+    "legacyUnattributedCalls": 22
   }
 }

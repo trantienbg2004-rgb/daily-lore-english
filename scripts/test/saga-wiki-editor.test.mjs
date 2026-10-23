@@ -41,6 +41,17 @@ test('a late source caveat survives the evidence budget and the prompt preserves
  assert.match(wikiStoryPrompt(example,'Science & Technology',picked),/must remain proposed or debated in EVERY level/)
 })
 
+test('each Level independently accepts five or six pages, while seven requires repair',()=>{
+ const varied=structuredClone(draft)
+ varied.variants['B1-B2'].pages.push(page(null,5))
+ assert.equal(validateWikiDraft(varied,{source,topic:'Economy',evidence}).accepted,true)
+ varied.variants['B1-B2'].pages.push(page(null,6))
+ assert.ok(validateWikiDraft(varied,{source,topic:'Economy',evidence}).errors.includes('B1-B2:page-count'))
+ const prompt=wikiStoryPrompt(source,'Economy',evidence)
+ assert.match(prompt,/Exactly 5 or 6 complete pages PER level/)
+ assert.doesNotMatch(prompt,/visible subject of one suitable image/)
+})
+
 test('fabricated numbers and missing evidence fail without an API call',()=>{
  const wrong=structuredClone(draft)
  wrong.variants['B1-B2'].pages[2].text+=' An unsupported report counted 999999 events.'
@@ -49,6 +60,16 @@ test('fabricated numbers and missing evidence fail without an API call',()=>{
  assert.equal(checked.accepted,false)
  assert.ok(checked.errors.some(reason=>reason.includes('unsupported-number-999999')))
  assert.ok(checked.errors.some(reason=>reason.includes('evidence-id')))
+})
+
+test('a sourced merger year after a company abbreviation stays in its sentence',()=>{
+ const merger={...source,paragraphDetails:structuredClone(source.paragraphDetails)}
+ merger.paragraphDetails[0].text+=' In 1926, the company merged with Benz & Cie. (founded by Carl Benz) to form Daimler-Benz.'
+ const cited=selectWikiEvidence(merger),story=structuredClone(draft)
+ story.variants['C1-C2'].pages[2].text+=' Gottlieb Daimler and Wilhelm Maybach established a company, which eventually merged with Benz & Cie. in 1926 to form Daimler-Benz.'
+ const checked=validateWikiDraft(story,{source:merger,topic:'Economy',evidence:cited})
+ assert.equal(checked.errors.some(reason=>reason.includes('unsupported-number-context-1926')),false)
+ assert.equal(checked.accepted,true)
 })
 
 test('free-tier gate, 503 and spent budget stop after at most one request',async()=>{
@@ -121,6 +142,22 @@ test('only confirmed free-tier text models can be selected',async()=>{
  await assert.rejects(callFreeWikiGemini('prompt',{apiKey:'test-key',freeTierConfirmed:true,budget:{maxCalls:1},fetchImpl,
   model:'gemini-2.5-pro'}),/Unreviewed Gemini model/)
  assert.equal(requested,'')
+})
+
+test('full Flash uses its own small daily pool and slower request spacing',async()=>{
+ let calls=0
+ const response=async()=>{calls++;return {ok:true,status:200,json:async()=>({
+  candidates:[{content:{parts:[{text:'{}'}]}}],usageMetadata:{promptTokenCount:1,candidatesTokenCount:1,totalTokenCount:2}})}}
+ await assert.rejects(callFreeWikiGemini('prompt',{apiKey:'test-key',freeTierConfirmed:true,
+  model:'gemini-3.8-flash',budget:{maxCalls:2,dailyModelCalls:{'gemini-3.8-flash':18}},fetchImpl:response}),
+ /daily or token budget exhausted/)
+ assert.equal(calls,0)
+ const waits=[]
+ const budget={maxCalls:2,lastCallAt:1000,dailyModelCalls:{'gemini-3.8-flash':0}}
+ await callFreeWikiGemini('prompt',{apiKey:'test-key',freeTierConfirmed:true,model:'gemini-3.8-flash',
+  budget,fetchImpl:response,now:()=>1000,waitImpl:async ms=>waits.push(ms)})
+ assert.deepEqual(waits,[15000])
+ assert.equal(budget.dailyModelCalls['gemini-3.8-flash'],1)
 })
 
 test('editorial audit rejects unsupported claims and malformed reviews',()=>{

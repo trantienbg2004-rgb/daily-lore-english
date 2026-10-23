@@ -45,6 +45,18 @@ test('Wiki stories keep pinned revisions, independent levels and individual phot
  assert.ok(validateWikiStory(noImage).errors.includes('A1-A2:verified-image'))
 })
 
+test('existing seven-page stories remain valid, while new stories stop at six pages',()=>{
+ const existing=story(55)
+ for(const variant of Object.values(existing.levelVariants))variant.pages.push({...variant.pages[5]})
+ existing.pages.push({...existing.pages[5]})
+ assert.equal(validateWikiStory(existing).accepted,true)
+ assert.ok(validateWikiStory(existing,{maxPages:6}).errors.includes('A1-A2:structure'))
+ const source={pageId:existing.sourcePageId,sourceTitle:existing.sourceTitle,sourceUrl:existing.sourceUrl,
+  sourceRevisionId:existing.sourceRevisionId,sourceRevisionUrl:existing.sourceRevisionUrl}
+ assert.throws(()=>makeWikiStory({source,topic:'Economy',draft:{variants:existing.levelVariants},
+  photos:[{url:existing.pages[0].image}],evidence:existing.sourceEvidence}),/Wiki story gate/)
+})
+
 test('versioned Wiki index commits only validated new articles and leaves news elsewhere',async()=>{
  const base=await fs.mkdtemp(path.join(os.tmpdir(),'saga-wiki-catalog-'))
  try{
@@ -53,7 +65,8 @@ test('versioned Wiki index commits only validated new articles and leaves news e
   assert.equal(first.added,1);assert.equal(first.ready,true)
   const stored=await readWikiCatalog(base)
   assert.equal(stored.stories.length,1)
-  assert.equal(stored.manifest.targetStories,50)
+  assert.equal(stored.manifest.targetStories,200)
+  assert.equal(stored.manifest.targetPerTopic,15)
   assert.equal(stored.manifest.targetMet,false)
   assert.equal(stored.manifest.verifiedImageCount,1)
   assert.match(stored.manifest.catalogIndex,/^catalog-index-[0-9a-f]{12}\.json$/)

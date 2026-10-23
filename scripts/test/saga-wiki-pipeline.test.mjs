@@ -3,7 +3,7 @@ import assert from 'node:assert/strict'
 import fs from 'node:fs/promises'
 import os from 'node:os'
 import path from 'node:path'
-import {discoverWikiQueue,runWikiBatch,topUpWikiQueue,writeWikiPending} from '../wiki/runner.mjs'
+import {discoverWikiQueue,runWikiBatch,topUpWikiQueue,writeWikiPending,wikiQuotaDay} from '../wiki/runner.mjs'
 import {discoverWikiCandidates,WIKI_TOPICS} from '../wiki/discovery.mjs'
 import {GeminiWikiPause} from '../wiki/editor.mjs'
 
@@ -100,12 +100,15 @@ test('no image rights means no Gemini call and a retained review reason',async()
  assert.equal(stored.outcomes[42].status,'NEEDS_REVIEW')
 })
 
-test('accepted media review is retried without another Gemini call when placement improves',async()=>{
+test('accepted media review and a canonical license retry without another Gemini call',async()=>{
+ for(const reason of ['no-verified-lead-photo','license-url-canonicalization-needed']){
  const stored=state()
- stored.outcomes[42]={status:'NEEDS_REVIEW',reason:'no-verified-lead-photo',revisionId:123}
+ stored.outcomes[42]={status:'NEEDS_REVIEW',reason,revisionId:123}
  const saved={pageId:42,revisionId:123,status:'NEEDS_REVIEW',rights:[{status:'REVIEW',
   photo:{url:'https://thumb.wikimedia.org/map',fileTitle:'File:Map.svg'}}],
-  validation:{accepted:true},draft:{variants:{}},evidence:[{id:'P1'}]}
+  validation:{accepted:true},draft:{variants:Object.fromEntries(['A1-A2','B1-B2','C1-C2']
+   .map(level=>[level,{pages:Array.from({length:5},()=>({text:'Verified text',evidenceIds:['P1']}))}]))},
+  evidence:[{id:'P1'}]}
  let appended=0
  const result=await runWikiBatch({base:'unused',maxCalls:0,maxCandidates:1,
   readState:async()=>stored,writeState:async()=>{},readCatalog:async()=>({stories:[]}),
@@ -117,6 +120,7 @@ test('accepted media review is retried without another Gemini call when placemen
  assert.equal(result.apiCalls,0)
  assert.equal(result.published,1)
  assert.equal(appended,1)
+ }
 })
 
 test('a one-candidate batch reaches an unfilled topic before a well-stocked topic',async()=>{
@@ -130,6 +134,22 @@ test('a one-candidate batch reaches an unfilled topic before a well-stocked topi
  assert.deepEqual(visited,['Peace process'])
  assert.equal(result.attempted,1)
  assert.equal(stored.outcomes[43].status,'NEEDS_REVIEW')
+})
+
+test('an evidence-ready candidate is processed before an untouched candidate in the same topic',async()=>{
+ const ready={...candidate,pageId:43,title:'Ready source',score:20}
+ const stored={version:1,queue:[candidate,ready],outcomes:{43:{status:'EVIDENCE_READY',reason:'verified image'}}}
+ const visited=[]
+ await runWikiBatch({base:'unused',maxCalls:2,maxCandidates:1,apiKey:'placeholder',freeTierConfirmed:true,
+  readState:async()=>stored,writeState:async()=>{},readCatalog:async()=>({stories:[]}),
+  readCheckpoint:async(_base,id)=>id===43?{pageId:43,revisionId:123,status:'EVIDENCE_READY',
+   rights:[{status:'REVIEW',photo:{url:'https://thumb.wikimedia.org/ready'}}],evidence:[{id:'P1'}]}:null,
+  writeCheckpoint:async()=>{},fetchRevision:async()=>{visited.push('Ready source');return {...source,pageId:43}},
+  fetchPage:async()=>{visited.push('untouched');return source},
+  generate:async()=>({validation:{accepted:true},result:{variants:{}},evidence:[],usage:null}),
+  assign:()=>({status:'VERIFIED',levelVariants:{},photos:[{url:'https://thumb.wikimedia.org/ready'}]}),
+  makeStory:()=>({sourcePageId:43,pages:[{image:'https://thumb.wikimedia.org/ready'}]}),append:async()=>{}})
+ assert.deepEqual(visited,['Ready source'])
 })
 
 test('a candidate with a recent model 503 waits while another candidate proceeds',async()=>{
@@ -187,7 +207,7 @@ test('a listed free model can fail with 404 or 503 and the next model uses the s
 })
 
 test('unknown token usage persists through the day and resumes after the daily reset',async()=>{
- const stored=state(),today=new Date().toISOString().slice(0,10)
+ const stored=state(),today=wikiQuotaDay()
  stored.dailyUsage={day:today,calls:1,tokens:0,usageUnknown:true,tokenAccountingUnavailable:true}
  const saved={pageId:42,revisionId:123,status:'RETRY_LATER',evidence:[{id:'P1'}],
   rights:[{status:'REVIEW',photo:{url:'https://thumb.wikimedia.org/map'}}]}
@@ -207,6 +227,11 @@ test('unknown token usage persists through the day and resumes after the daily r
  assert.equal(calls,1)
  assert.equal(resumed.published,1)
  assert.equal(stored.dailyUsage.tokenAccountingUnavailable,false)
+})
+
+test('daily budget resets at Pacific midnight rather than UTC midnight',()=>{
+ assert.equal(wikiQuotaDay(new Date('2026-10-23T06:59:59Z')),'2026-10-22')
+ assert.equal(wikiQuotaDay(new Date('2026-10-23T07:00:00Z')),'2026-10-23')
 })
 
 test('rejected model prose is kept in an ignored review report, without source text or a key',async()=>{

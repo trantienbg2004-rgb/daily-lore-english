@@ -82,13 +82,19 @@ export async function discoverWikiQueue({base,topics=WIKI_TOPICS,maxPerTopic=30,
 
 const ACTIVE_QUEUE_STATUSES=new Set(['PENDING','FETCHED','EVIDENCE_READY','DRAFTED','VALIDATED','NEEDS_REPAIR','RETRY_LATER'])
 const TERMINAL_QUEUE_STATUSES=new Set(['published','PUBLISHED','rejected','REJECTED','review','NEEDS_REVIEW'])
-const retryableMediaReview=outcome=>outcome?.status==='NEEDS_REVIEW'&&
- ['no-verified-lead-photo','no-verified-photo-placement'].includes(outcome.reason)
+const retryableTechnicalReview=outcome=>outcome?.status==='NEEDS_REVIEW'&&
+ ['no-verified-lead-photo','no-verified-photo-placement','license-url-canonicalization-needed',
+  'Targeted repair changed an unrelated sentence'].includes(outcome.reason)
 const MODEL_503_COOLDOWN_MS=6*60*60*1000
 const coolingAfterModel503=(outcome,now)=>{
  if(outcome?.status!=='RETRY_LATER'||!/^Gemini HTTP 503\b/.test(outcome.reason||''))return false
  const elapsed=now-Date.parse(outcome.checkedAt)
  return Number.isFinite(elapsed)&&elapsed>=0&&elapsed<MODEL_503_COOLDOWN_MS
+}
+export const wikiQuotaDay=(date=new Date())=>{
+ const parts=new Intl.DateTimeFormat('en-US',{timeZone:'America/Los_Angeles',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(date)
+ const value=type=>parts.find(part=>part.type===type).value
+ return `${value('year')}-${value('month')}-${value('day')}`
 }
 export async function topUpWikiQueue({base,minPerTopic=8,maxTopics=3,now=new Date(),
  readState=readWikiState,writeState=writeWikiState,discoverQueue=discoverWikiQueue,onPersist=async()=>{}}={}){
@@ -113,7 +119,7 @@ export async function topUpWikiQueue({base,minPerTopic=8,maxTopics=3,now=new Dat
  }
 }
 
-export async function runWikiBatch({base,maxCalls=0,maxCandidates=5,pageId=null,apiKey='',freeTierConfirmed=false,model='gemini-3.5-flash-lite',models=[],
+export async function runWikiBatch({base,maxCalls=0,maxCandidates=5,pageId=null,apiKey='',freeTierConfirmed=false,model='gemini-3.5-flash-lite',models=[],now=new Date(),
  readCatalog=readWikiCatalog,readState=readWikiState,writeState=writeWikiState,
  readCheckpoint=readWikiCheckpoint,writeCheckpoint=writeWikiCheckpoint,onPersist=async()=>{},
  fetchPage=fetchWikipediaPage,fetchRevision=fetchWikipediaRevision,verifyFigures=verifyPageFigures,generate=generateWikiDraft,
@@ -126,23 +132,42 @@ export async function runWikiBatch({base,maxCalls=0,maxCandidates=5,pageId=null,
  const state=await readState(base),catalog=await readCatalog(base)
  const existingIds=new Set(catalog.stories.map(story=>story.sourcePageId))
  const usedUrls=new Set(catalog.stories.flatMap(story=>story.pages.map(page=>page.image).filter(Boolean)))
- const today=new Date().toISOString().slice(0,10)
+ const today=wikiQuotaDay(now)
  if(state.dailyUsage?.day!==today)state.dailyUsage={day:today,calls:0,tokens:0,usageUnknown:false,tokenAccountingUnavailable:false}
+ state.dailyUsage.modelCalls??={}
+ state.dailyUsage.legacyUnattributedCalls??=Object.keys(state.dailyUsage.modelCalls).length?0:state.dailyUsage.calls
  const persistDurably=async()=>{try{await onPersist()}catch(error){error.checkpointFailure=true;throw error}}
  const initialTokens=state.dailyUsage.tokens
  const budget={maxCalls,usedCalls:0,dailyCalls:state.dailyUsage.calls,dailyTokens:initialTokens,
+  dailyModelCalls:{...state.dailyUsage.modelCalls},legacyUnattributedCalls:state.dailyUsage.legacyUnattributedCalls,
   tokenAccountingUnavailable:!!state.dailyUsage.tokenAccountingUnavailable,maxDailyCalls:450,maxTokens:1500000,
-  onRequest:async current=>{state.dailyUsage.calls=current.dailyCalls;await writeState(base,state);await persistDurably()},
+  onRequest:async current=>{state.dailyUsage.calls=current.dailyCalls;state.dailyUsage.modelCalls={...current.dailyModelCalls};
+   await writeState(base,state);await persistDurably()},
   onUsage:async current=>{current.dailyTokens=initialTokens+current.usage.total;state.dailyUsage.tokens=current.dailyTokens;await writeState(base,state);await persistDurably()}}
  const stats={attempted:0,published:0,review:0,rejected:0,prepared:0,paused:false,apiCalls:0,usage:{input:0,output:0,total:0},decisions:[]}
  const candidates=state.queue.filter(row=>pageId===null||row.pageId===pageId)
  const topicCounts=Object.fromEntries(WIKI_TOPICS.map(topic=>[topic,catalog.stories.filter(story=>story.category===topic).length]))
- const ordered=pageId===null?balanceWikiCandidates(WIKI_TOPICS.map(topic=>({topic,candidates:candidates.filter(row=>{
+ const checkpointCache=new Map()
+ const checkpointFor=async row=>{
+  if(!checkpointCache.has(row.pageId))checkpointCache.set(row.pageId,await readCheckpoint(base,row.pageId))
+  return checkpointCache.get(row.pageId)
+ }
+ const active=candidates.filter(row=>{
   const status=state.outcomes[row.pageId]?.status
-  return row.topic===topic&&!coolingAfterModel503(state.outcomes[row.pageId],Date.now())&&
-   (!TERMINAL_QUEUE_STATUSES.has(status)||retryableMediaReview(state.outcomes[row.pageId])||
+  return !coolingAfterModel503(state.outcomes[row.pageId],Date.now())&&
+   (!TERMINAL_QUEUE_STATUSES.has(status)||retryableTechnicalReview(state.outcomes[row.pageId])||
     existingIds.has(row.pageId)&&status!=='PUBLISHED')
- })})),{topicCounts,limit:candidates.length}):candidates
+ })
+ const ranked=await Promise.all(active.map(async row=>{
+  const checkpoint=await checkpointFor(row)
+  const rights=checkpoint?.rights?.filter(item=>item.photo).length||0
+  const priority=(checkpoint?.validation?.accepted?10000:checkpoint?.draft?8000:
+   checkpoint?.evidence&&rights?6000:0)+Math.min(rights,20)*10+(row.hasThumbnail?5:0)+(row.score||0)
+  return {row,priority}
+ }))
+ const ordered=pageId===null?balanceWikiCandidates(WIKI_TOPICS.map(topic=>({topic,candidates:ranked
+  .filter(item=>item.row.topic===topic).sort((a,b)=>b.priority-a.priority)
+  .map(item=>item.row)})),{topicCounts,limit:ranked.length}):active
  for(const candidate of ordered){
   if(stats.attempted>=maxCandidates)break
   const prior=state.outcomes[candidate.pageId]
@@ -153,10 +178,14 @@ export async function runWikiBatch({base,maxCalls=0,maxCandidates=5,pageId=null,
    }
    continue
   }
-  if(TERMINAL_QUEUE_STATUSES.has(prior?.status)&&!retryableMediaReview(prior))continue
-  let checkpoint=await readCheckpoint(base,candidate.pageId)||{pageId:candidate.pageId,title:candidate.title,topic:candidate.topic,status:'PENDING'}
-  const cachedValidation=checkpoint.validation?.accepted&&
-   (checkpoint.status==='VALIDATED'||retryableMediaReview(prior))
+  if(TERMINAL_QUEUE_STATUSES.has(prior?.status)&&!retryableTechnicalReview(prior))continue
+  let checkpoint=await checkpointFor(candidate)||{pageId:candidate.pageId,title:candidate.title,topic:candidate.topic,status:'PENDING'}
+  const validNewLengths=['A1-A2','B1-B2','C1-C2'].every(level=>{
+   const length=checkpoint.draft?.variants?.[level]?.pages?.length
+   return length===5||length===6
+  })
+  const cachedValidation=checkpoint.validation?.accepted&&validNewLengths&&
+   (checkpoint.status==='VALIDATED'||retryableTechnicalReview(prior))
   if(!cachedValidation&&(maxCalls===0||budget.circuitOpen||budget.tokenAccountingUnavailable||budget.maxCalls-budget.usedCalls<2)&&checkpoint.evidence&&checkpoint.rights)continue
   stats.attempted++
   const persist=async()=>{await writeCheckpoint(base,checkpoint);await writeState(base,state);await persistDurably()}
@@ -227,7 +256,7 @@ export async function runWikiBatch({base,maxCalls=0,maxCandidates=5,pageId=null,
    if(error.checkpointFailure)throw error
    if(error instanceof GeminiWikiPause){
     stats.paused=true
-    if(error.status==='INVALID_JSON'){await mark('NEEDS_REVIEW',error.message);stats.review++}
+    if(error.status==='INVALID_JSON'){await mark('RETRY_LATER',error.message)}
     else {budget.circuitOpen=true;await mark('RETRY_LATER',error.message)}
     continue
    }

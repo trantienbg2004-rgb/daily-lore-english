@@ -2,10 +2,10 @@
   "pageId": 71983491,
   "title": "International Campaign to Save the Monuments of Nubia",
   "topic": "Culture",
-  "status": "NEEDS_REVIEW",
+  "status": "PUBLISHED",
   "revisionId": 1377298310,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377298310",
-  "reason": "Targeted repair changed an unrelated sentence",
+  "reason": "1 verified embedded images",
   "rights": [
     {
       "status": "REJECTED",
@@ -245,7 +245,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377298310"
     }
   ],
-  "updatedAt": "2026-10-21T13:30:19.719Z",
+  "updatedAt": "2026-10-23T15:21:10.681Z",
   "draft": {
     "outline": [
       "The Aswan Dam project threatens Nubian monuments with flooding.",
@@ -259,7 +259,7 @@
         "headline": "Saving Nubia's Temples",
         "pages": [
           {
-            "text": "In 1960, a big project started in Egypt. Builders wanted to make a new dam on the Nile River. This dam would help control floods and make electricity. But the water would cover twenty-two old temples and historical sites in Lower Nubia.",
+            "text": "A major project started in Egypt. Builders wanted to make a new dam on the Nile River. This dam would help control floods and make electricity. But the water would cover twenty-two old temples and historical sites in Lower Nubia, including Abu Simbel.",
             "evidenceIds": [
               "P1",
               "P2",
@@ -306,7 +306,7 @@
         "headline": "The International Campaign for Nubia",
         "pages": [
           {
-            "text": "Following the 1952 revolution, Egypt launched plans to build the Aswan High Dam to control flooding, expand irrigation, and generate hydroelectric power. However, the resulting Lake Nasser would submerge the entire region of historical Lower Nubia, threatening twenty-two critical archaeological sites.",
+            "text": "Following the 1952 revolution, Egypt launched plans to build the Aswan High Dam to control flooding, expand irrigation, and generate hydroelectric power. However, the resulting Lake Nasser would submerge the entire region of historical Lower Nubia, threatening twenty-two critical archaeological sites, including the Abu Simbel temples.",
             "evidenceIds": [
               "P1",
               "P2",
@@ -343,7 +343,7 @@
             ]
           },
           {
-            "text": "Running from 1960 to 1980 under UNESCO leadership, the collaborative rescue effort ultimately led to the creation of the World Heritage Convention in 1972. In April 1979, the relocated antiquities were officially inscribed on the World Heritage List.",
+            "text": "Under UNESCO leadership, the collaborative rescue effort ultimately led to the creation of the World Heritage Convention in 1972. In April 1979, the relocated antiquities were officially inscribed on the World Heritage List.",
             "evidenceIds": [
               "P1",
               "P4"
@@ -402,11 +402,14 @@
       }
     }
   },
-  "repairAttempts": 0,
+  "repairAttempts": 1,
   "lastUsage": {
-    "input": 2867,
-    "output": 1786,
-    "total": 4653
+    "input": 2854,
+    "output": 229,
+    "total": 3083
   },
-  "validation": null
+  "validation": {
+    "accepted": true,
+    "errors": []
+  }
 }
