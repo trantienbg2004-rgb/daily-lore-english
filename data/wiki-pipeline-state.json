@@ -6698,10 +6698,10 @@
       "checkedAt": "2026-10-21T03:10:17.768Z"
     },
     "676659": {
-      "status": "VALIDATED",
-      "reason": "local factual, style, length, structure and source audit passed",
+      "status": "PUBLISHED",
+      "reason": "4 verified embedded images",
       "revisionId": 1381063357,
-      "checkedAt": "2026-10-23T17:15:00.683Z"
+      "checkedAt": "2026-10-23T17:15:06.901Z"
     },
     "685328": {
       "status": "REJECTED",
@@ -9866,7 +9866,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-23T17:15:00.684Z",
+  "updatedAt": "2026-10-23T17:15:06.901Z",
   "dailyUsage": {
     "day": "2026-10-23",
     "calls": 47,

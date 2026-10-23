@@ -5,14 +5,14 @@
   "targetStories": 200,
   "targetPerTopic": 15,
   "targetMet": false,
-  "total": 31,
-  "chunks": 33,
-  "withVerifiedPhoto": 31,
-  "verifiedImageCount": 60,
+  "total": 32,
+  "chunks": 34,
+  "withVerifiedPhoto": 32,
+  "verifiedImageCount": 64,
   "byTopic": {
     "Politics": 3,
     "Economy": 4,
-    "Conflict & Security": 3,
+    "Conflict & Security": 4,
     "Society": 3,
     "Culture": 4,
     "Science & Technology": 3,
@@ -21,9 +21,9 @@
     "History & Geography": 3,
     "Sports": 2
   },
-  "contentHash": "58bc60c148fd3e00e9436c8bab6e8b4503bc1ba37eca81e8c4c6f0af718f2d22",
-  "catalogIndex": "catalog-index-58bc60c148fd.json",
+  "contentHash": "369c88604408a67309da7642a78d9a01c27eddc5345160908a738b1f68e652f5",
+  "catalogIndex": "catalog-index-369c88604408.json",
   "catalogIndexVersion": 3,
-  "updatedAt": "2026-10-23T17:11:22.217Z",
+  "updatedAt": "2026-10-23T17:15:06.890Z",
   "licenseNotice": "Wikipedia text adaptations: CC BY-SA 4.0; each embedded image has separate credit and rights."
 }
