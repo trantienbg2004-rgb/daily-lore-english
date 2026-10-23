@@ -2,10 +2,10 @@
   "pageId": 37719142,
   "title": "Global surface temperature",
   "topic": "Environment",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1373894783,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373894783",
-  "reason": "14 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -534,5 +534,130 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373894783"
     }
   ],
-  "updatedAt": "2026-10-23T23:36:07.616Z"
+  "updatedAt": "2026-10-23T23:36:24.424Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "Tracking Global Surface Temperature",
+        "pages": [
+          {
+            "text": "Earth has a global surface temperature. This is the average temperature of the whole planet at a given time. It combines sea surface temperature and air temperature over land. Scientists use weather stations and satellites to get this data.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "For times before modern instruments, researchers use proxy data. They study tree rings, corals, and ice cores. These natural items help show what the climate was like long ago. Observations of rising temperatures support the scientific consensus on climate change.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Reliable temperature measurements in some regions started between 1850 and 1880. This period is known as the instrumental temperature record. The longest-running temperature data series starts in 1659 for Central England.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "Global temperatures are often presented as anomalies. An anomaly compares the current temperature to a long-term average baseline period, usually lasting 30 years. Records show that each of the last four decades has been successively warmer.",
+            "evidenceIds": [
+              "P12",
+              "P15"
+            ]
+          },
+          {
+            "text": "There is a strong scientific consensus that climate is changing. Human activities are the primary driver of this warming trend. Greenhouse gases emitted by human actions cause the climate system to react and change over time.",
+            "evidenceIds": [
+              "P8",
+              "P16"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "Understanding Earth's Surface Temperature",
+        "pages": [
+          {
+            "text": "Global surface temperature represents the average temperature of Earth's surface. It combines sea surface temperature and near-surface air temperature over land, weighted by their respective areas. Most temperature data comes from weather stations and satellites.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "To estimate temperatures in the distant past, scientists rely on proxy data from tree rings, corals, and ice cores. Reliable direct measurements in some regions began between 1850 and 1880, forming the instrumental temperature record.",
+            "evidenceIds": [
+              "P1",
+              "P2"
+            ]
+          },
+          {
+            "text": "Global average temperatures are usually presented as anomalies rather than absolute values. A temperature anomaly measures the difference against a baseline period, which is typically a span of 30 years.",
+            "evidenceIds": [
+              "P12"
+            ]
+          },
+          {
+            "text": "Analysis of global temperature changes reveals a clear trend of ongoing climate change. Each of the last four decades has been successively warmer at the Earth's surface than any preceding decade since 1850.",
+            "evidenceIds": [
+              "P15"
+            ]
+          },
+          {
+            "text": "Observations of rising global surface temperatures provide key lines of evidence supporting the scientific consensus on climate change. This consensus establishes that human activities and greenhouse gas emissions are driving the warming of the planet.",
+            "evidenceIds": [
+              "P1",
+              "P8",
+              "P16"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "The Dynamics of Global Surface Temperature",
+        "pages": [
+          {
+            "text": "Global surface temperature is defined as the area-weighted combination of sea surface temperature and near-surface air temperature over land. Data acquisition relies primarily on terrestrial weather stations and orbital satellites.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Reconstructing historical temperatures prior to the instrumental record necessitates paleoclimatic proxies, including tree rings, marine sediments, and ice cores. Direct instrumental records with quasi-global coverage originate around 1850.",
+            "evidenceIds": [
+              "P1",
+              "P2",
+              "P9"
+            ]
+          },
+          {
+            "text": "To account for variations, global surface temperature records are typically communicated as anomalies relative to a standardized multi-decade baseline period rather than as absolute thermal values.",
+            "evidenceIds": [
+              "P12"
+            ]
+          },
+          {
+            "text": "Decadal analyses of global temperature records demonstrate continuous warming. Specifically, each of the four preceding decades has been progressively warmer at the surface than any recorded decade since 1850.",
+            "evidenceIds": [
+              "P15"
+            ]
+          },
+          {
+            "text": "The documented upward trend in global surface temperature serves as a primary empirical pillar for the scientific consensus that anthropogenic greenhouse gas emissions are driving contemporary climate change.",
+            "evidenceIds": [
+              "P1",
+              "P8",
+              "P16"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 3022,
+    "output": 1200,
+    "total": 4222
+  },
+  "validation": null
 }
