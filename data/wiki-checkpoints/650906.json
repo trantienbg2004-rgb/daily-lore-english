@@ -2,10 +2,10 @@
   "pageId": 650906,
   "title": "History of cricket",
   "topic": "Sports",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1379614555,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379614555",
-  "reason": "12 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -448,5 +448,132 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379614555"
     }
   ],
-  "updatedAt": "2026-10-23T17:20:28.973Z"
+  "updatedAt": "2026-10-23T17:21:03.172Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "The History of Cricket",
+        "pages": [
+          {
+            "text": "Cricket is a very old and popular sport. Its known history began in late sixteenth-century England. Today, it is played all over the world. Millions of people watch and enjoy the game.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "The exact origin of cricket is not fully known. Children in south-east England may have created the game. The first clear written mention of the sport comes from the end of the sixteenth century.",
+            "evidenceIds": [
+              "P4"
+            ]
+          },
+          {
+            "text": "In the seventeenth century, people started to play cricket for money and bets. Wealthy patrons formed teams to win matches. This gambling helped cricket grow and become much more organized in England.",
+            "evidenceIds": [
+              "P9",
+              "P10"
+            ]
+          },
+          {
+            "text": "During the eighteenth and nineteenth centuries, cricket traveled across the oceans. British colonists brought the game to North America, the West Indies, India, and Australia. New countries began to play and love it.",
+            "evidenceIds": [
+              "P11"
+            ]
+          },
+          {
+            "text": "Today, the sport has many different formats. Some matches last for several days, while others finish very quickly. A global organization called the International Cricket Council helps govern the modern game worldwide.",
+            "evidenceIds": [
+              "P2",
+              "P3"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "From English Villages to Global Sports",
+        "pages": [
+          {
+            "text": "Cricket has a long history that started in late sixteenth-century England. Over the following centuries, the sport expanded globally. Today, it ranks as the second most popular spectator sport in the entire world.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "While some early speculations suggested the game began in France or Flanders, written records point to south-east England. Children living in local woodlands likely created the sport. A court case from 1598 provides the earliest universally accepted reference.",
+            "evidenceIds": [
+              "P4",
+              "P6"
+            ]
+          },
+          {
+            "text": "Gambling played a major role in the development of early professional cricket. Wealthy individuals formed teams to secure their bets. These matches attracted large crowds and led to the creation of the first county teams.",
+            "evidenceIds": [
+              "P9",
+              "P10"
+            ]
+          },
+          {
+            "text": "As the British Empire expanded, cricket spread to various parts of the world. Colonists and mariners introduced the sport to North America, the West Indies, and the Indian subcontinent during the eighteenth century.",
+            "evidenceIds": [
+              "P11"
+            ]
+          },
+          {
+            "text": "International competition began to grow during the nineteenth century. Organizations formed official championships in multiple countries. Today, the International Cricket Council governs the sport, overseeing diverse formats ranging from short matches to five-day games.",
+            "evidenceIds": [
+              "P2",
+              "P3",
+              "P18"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "Evolution and Global Expansion of Cricket",
+        "pages": [
+          {
+            "text": "Originating in sixteenth-century England, cricket evolved from a regional pastime into the world's second most popular spectator sport. Its contemporary structure encompasses diverse international competitions and formal matches dating back to the nineteenth century.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Although various speculative theories exist regarding foreign origins, documentary evidence traces the sport to south-east England. A documented court testimony from 1598 establishes that the game was actively played around the middle of the sixteenth century.",
+            "evidenceIds": [
+              "P4",
+              "P6"
+            ]
+          },
+          {
+            "text": "Financial incentives significantly influenced early organizational developments. High-stakes wagering prompted wealthy patrons to assemble teams, thereby fostering the establishment of early county fixtures and professional engagement within the sport.",
+            "evidenceIds": [
+              "P9",
+              "P10"
+            ]
+          },
+          {
+            "text": "Imperial expansion catalyzed the global diffusion of cricket. Throughout the eighteenth and nineteenth centuries, colonists, merchants, and military personnel introduced the discipline to North America, the Caribbean, and the Indian subcontinent.",
+            "evidenceIds": [
+              "P11"
+            ]
+          },
+          {
+            "text": "Institutional formalization marked the late nineteenth and early twentieth centuries with the establishment of domestic championships and the creation of governing bodies. Presently, the International Cricket Council regulates multiple formats across numerous member territories.",
+            "evidenceIds": [
+              "P2",
+              "P3",
+              "P18",
+              "P20"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2806,
+    "output": 833,
+    "total": 3639
+  },
+  "validation": null
 }
