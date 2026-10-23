@@ -2,10 +2,10 @@
   "pageId": 1983326,
   "title": "History of the automobile",
   "topic": "Science & Technology",
-  "status": "DRAFTED",
+  "status": "NEEDS_REPAIR",
   "revisionId": 1380229009,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380229009",
-  "reason": "draft durably saved before validation",
+  "reason": "editorial: A1-A2:page-1:unsupported-number-1772,C1-C2:page-3:unsupported-number-context-1926",
   "rights": [
     {
       "status": "REJECTED",
@@ -584,7 +584,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380229009"
     }
   ],
-  "updatedAt": "2026-10-23T15:08:28.720Z",
+  "updatedAt": "2026-10-23T15:08:35.883Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -707,5 +707,11 @@
     "output": 1125,
     "total": 4116
   },
-  "validation": null
+  "validation": {
+    "accepted": false,
+    "errors": [
+      "A1-A2:page-1:unsupported-number-1772",
+      "C1-C2:page-3:unsupported-number-context-1926"
+    ]
+  }
 }
