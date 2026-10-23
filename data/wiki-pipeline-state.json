@@ -7028,10 +7028,10 @@
       "checkedAt": "2026-10-21T03:11:31.086Z"
     },
     "1983326": {
-      "status": "EVIDENCE_READY",
-      "reason": "18 rights-verified embedded images",
+      "status": "VALIDATED",
+      "reason": "local factual, style, length, structure and source audit passed",
       "revisionId": 1380229009,
-      "checkedAt": "2026-10-23T15:21:17.531Z"
+      "checkedAt": "2026-10-23T15:21:44.794Z"
     },
     "1996004": {
       "status": "EVIDENCE_READY",
@@ -9866,7 +9866,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-23T15:21:42.804Z",
+  "updatedAt": "2026-10-23T15:21:44.796Z",
   "dailyUsage": {
     "day": "2026-10-23",
     "calls": 27,
