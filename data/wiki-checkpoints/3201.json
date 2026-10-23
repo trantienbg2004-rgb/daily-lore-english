@@ -2,10 +2,10 @@
   "pageId": 3201,
   "title": "Causes of climate change",
   "topic": "Environment",
-  "status": "DRAFTED",
+  "status": "VALIDATED",
   "revisionId": 1370321979,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1370321979",
-  "reason": "draft durably saved before validation",
+  "reason": "local factual, style, length, structure and source audit passed",
   "rights": [
     {
       "status": "REVIEW",
@@ -499,7 +499,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1370321979"
     }
   ],
-  "updatedAt": "2026-10-23T17:27:15.892Z",
+  "updatedAt": "2026-10-23T17:27:51.744Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -624,5 +624,8 @@
     "output": 119,
     "total": 2682
   },
-  "validation": null
+  "validation": {
+    "accepted": true,
+    "errors": []
+  }
 }
