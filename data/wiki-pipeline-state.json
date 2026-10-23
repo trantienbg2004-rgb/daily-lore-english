@@ -7832,10 +7832,10 @@
       "checkedAt": "2026-10-21T13:53:49.191Z"
     },
     "19098431": {
-      "status": "DRAFTED",
-      "reason": "draft durably saved before validation",
+      "status": "NEEDS_REPAIR",
+      "reason": "editorial: C1-C2:page-4:unsupported-number-context-776",
       "revisionId": 1378430802,
-      "checkedAt": "2026-10-23T16:58:47.565Z"
+      "checkedAt": "2026-10-23T16:58:54.477Z"
     },
     "19762116": {
       "status": "EVIDENCE_READY",
@@ -9866,7 +9866,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-23T16:58:47.566Z",
+  "updatedAt": "2026-10-23T16:58:54.478Z",
   "dailyUsage": {
     "day": "2026-10-23",
     "calls": 35,
