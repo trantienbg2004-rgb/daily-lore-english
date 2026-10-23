@@ -2,10 +2,10 @@
   "pageId": 583117,
   "title": "Trade route",
   "topic": "Economy",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1373272826,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373272826",
-  "reason": "13 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -498,5 +498,134 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373272826"
     }
   ],
-  "updatedAt": "2026-10-23T23:38:49.613Z"
+  "updatedAt": "2026-10-23T23:39:09.021Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "The History of Trade Routes",
+        "pages": [
+          {
+            "text": "A trade route is a path used to move cargo between places. Ancient routes helped people share goods, ideas, and cultures across the world. They connected distant markets with long paths and smaller roads.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Long-distance trade started long ago in the Chalcolithic period. Societies in Asia, Europe, and the Mediterranean built major networks to move items. Animals and portage helped make this travel possible.",
+            "evidenceIds": [
+              "P3",
+              "P4"
+            ]
+          },
+          {
+            "text": "Caravans carried luxury goods across large distances. Camels helped nomads control the spice and silk trade from the East. Transporting cheap goods was not profitable for these caravan operators.",
+            "evidenceIds": [
+              "P4"
+            ]
+          },
+          {
+            "text": "Water travel was also very important for early trade. The Egyptians used Red Sea routes to bring spices from East Africa and Arabia. Romans built hard highways using concrete made from volcanic ash.",
+            "evidenceIds": [
+              "P5",
+              "P6"
+            ]
+          },
+          {
+            "text": "In modern times, commercial activity shifted to new routes between countries. People started using trains, automobiles, and cargo airplanes. Pipelines were also built to transport oil and natural gas safely.",
+            "evidenceIds": [
+              "P2",
+              "P15"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "Evolution of Global Trade Routes",
+        "pages": [
+          {
+            "text": "A trade route serves as a logistical network of pathways and stoppages designed for the commercial transport of cargo. Ancient networks allowed civilizations to exchange goods, ideas, and technologies across vast distances, connecting major markets through long-distance arteries and smaller secondary routes.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "The development of early long-distance routes began during the Chalcolithic period. By the middle of the second millennium BCE, various societies across Southeast Asia, Western Asia, and the Mediterranean had established major transportation networks, facilitated by the domestication of beasts of burden and the use of organized caravans.",
+            "evidenceIds": [
+              "P3",
+              "P4"
+            ]
+          },
+          {
+            "text": "Caravans primarily carried luxury goods because transporting cheaper merchandise over large distances was unprofitable. The domestication of camels enabled Arabian nomads to control the profitable spice and silk trade stretching from the Far East toward the Arabian Peninsula, while maritime trade flourished in the Red Sea and Mediterranean.",
+            "evidenceIds": [
+              "P4",
+              "P5"
+            ]
+          },
+          {
+            "text": "The Romans constructed an extensive transportation network of hard-surfaced highways using concrete made from volcanic ash and lime. Meanwhile, maritime trade evolved from safe coastal navigation to crossing open bodies of water like the Arabian Sea by manipulating monsoon winds, making bulk commodity trade much more affordable.",
+            "evidenceIds": [
+              "P6",
+              "P17"
+            ]
+          },
+          {
+            "text": "In modern times, commercial activity shifted toward new routes operating under international free-trade agreements. Modern infrastructure expanded to include pipeline transport for oil and gas, alongside cargo airlines, automobiles, and extensive railway networks that helped unify nations and change the logistical landscape.",
+            "evidenceIds": [
+              "P2",
+              "P10",
+              "P15"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "The Historical Development of Trade Networks",
+        "pages": [
+          {
+            "text": "Trade routes constitute logistical frameworks comprising pathways and stoppages dedicated to the commercial transit of cargo. Historically, long-distance networks facilitated the exchange of material goods, cultural practices, and technological innovations across civilizations, linking primary commercial arteries with secondary distribution networks.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "The genesis of long-distance trade routes dates to the Chalcolithic period. By the middle of the second millennium BCE, prominent societies across the Mediterranean, Mesopotamia, South Asia, and China engineered extensive transportation networks, heavily reliant on portage and the domestication of beasts of burden.",
+            "evidenceIds": [
+              "P3",
+              "P4"
+            ]
+          },
+          {
+            "text": "Organized caravans specialized in transporting high-value luxury commodities, as low-value goods were economically unviable for overland transit. Concurrently, maritime navigation developed from coastal cabotage to pelagic voyages exploiting monsoon wind patterns, drastically reducing transport costs relative to overland alternatives.",
+            "evidenceIds": [
+              "P4",
+              "P17"
+            ]
+          },
+          {
+            "text": "Architectural and infrastructural advancements characterized regional networks, exemplified by Roman concrete highways constructed from volcanic ash and lime. Urban trading networks expanded along the Persian Gulf and eastern Mediterranean, generating an interdependent world system of interacting civilizations with distinct regional foci.",
+            "evidenceIds": [
+              "P6",
+              "P18"
+            ]
+          },
+          {
+            "text": "Contemporary logistics have transitioned toward modernized frameworks characterized by international free-trade agreements, specialized pipeline infrastructure for hydrocarbons, and multi-modal transport systems incorporating cargo aviation and railways. These innovations have systematically altered traditional political and logistical approaches to global commerce.",
+            "evidenceIds": [
+              "P2",
+              "P8",
+              "P15"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2594,
+    "output": 1329,
+    "total": 3923
+  },
+  "validation": null
 }
