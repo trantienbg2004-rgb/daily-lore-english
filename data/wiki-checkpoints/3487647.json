@@ -2,10 +2,10 @@
   "pageId": 3487647,
   "title": "International Force East Timor",
   "topic": "Conflict & Security",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1371793899,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371793899",
-  "reason": "4 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -235,7 +235,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371793899"
     }
   ],
-  "updatedAt": "2026-10-23T06:27:17.198Z",
+  "updatedAt": "2026-10-23T06:27:30.522Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -283,7 +283,7 @@
         "headline": "Peacekeeping in East Timor",
         "pages": [
           {
-            "text": "Following years of Indonesian rule that began in 1975, the United Nations organized a referendum in East Timor. On 30 August 1999, the local population voted overwhelmingly in favor of gaining independence from Indonesia.",
+            "text": "Indonesia invaded East Timor in 1975 and annexed the former Portuguese colony, leading to resistance from the local population. Decades later, the United Nations organized a referendum. On 30 August 1999, the people of East Timor voted overwhelmingly in favor of gaining independence from Indonesia.",
             "evidenceIds": [
               "P2",
               "P5"
@@ -318,7 +318,7 @@
             ]
           },
           {
-            "text": "The multinational force successfully secured Dili and moved into other regions, working alongside naval and air assets deployed by participating countries to maintain stability.",
+            "text": "The multinational force successfully secured Dili and began moving into the western regencies. Participating nations supported these operations by deploying naval vessels, such as frigates and landing ships, alongside combat and patrol aircraft to maintain stability and deter conflict in the region.",
             "evidenceIds": [
               "P7",
               "P15",
@@ -378,17 +378,11 @@
       }
     }
   },
-  "repairAttempts": 0,
+  "repairAttempts": 1,
   "lastUsage": {
-    "input": 3006,
-    "output": 1454,
-    "total": 4460
+    "input": 2899,
+    "output": 227,
+    "total": 3126
   },
-  "validation": {
-    "accepted": false,
-    "errors": [
-      "B1-B2:page-1:unsupported-number-context-1975",
-      "B1-B2:page-6:length-or-sentence"
-    ]
-  }
+  "validation": null
 }
