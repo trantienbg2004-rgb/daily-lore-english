@@ -534,7 +534,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373894783"
     }
   ],
-  "updatedAt": "2026-10-23T23:36:42.351Z",
+  "updatedAt": "2026-10-23T23:37:00.486Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -597,7 +597,7 @@
             ]
           },
           {
-            "text": "Analysis of global temperature changes reveals ongoing climate change. Each of the last four decades has been successively warmer at the Earth's surface than any preceding decade since records began in 1850.",
+            "text": "An examination of average global temperature changes by decades reveals continuing climate change. Each of the last four decades has been successively warmer at the Earth's surface than any preceding decade since 1850. The most recent decade from 2011 to 2020 was warmer than any multi-centennial period in the past eleven thousand seven hundred years.",
             "evidenceIds": [
               "P15"
             ]
@@ -630,7 +630,7 @@
             ]
           },
           {
-            "text": "Records of global average surface temperature are usually presented as anomalies rather than as absolute temperatures. A temperature anomaly is measured against a reference value, also called a baseline period or long-term average, which is usually a period of thirty years.",
+            "text": "Records of global average surface temperature are usually presented as anomalies instead of absolute temperatures. A temperature anomaly is measured against a reference value, which is also called a baseline period or a long-term average. This is usually a period of thirty years, such as the standard baseline period from 1951 to 1980.",
             "evidenceIds": [
               "P12"
             ]
@@ -653,11 +653,11 @@
       }
     }
   },
-  "repairAttempts": 1,
+  "repairAttempts": 2,
   "lastUsage": {
-    "input": 2903,
-    "output": 207,
-    "total": 3110
+    "input": 2919,
+    "output": 190,
+    "total": 3109
   },
   "validation": null
 }
