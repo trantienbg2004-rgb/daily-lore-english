@@ -9866,14 +9866,16 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-23T15:07:01.625Z",
+  "updatedAt": "2026-10-23T15:07:03.364Z",
   "dailyUsage": {
     "day": "2026-10-23",
-    "calls": 22,
+    "calls": 23,
     "tokens": 72732,
     "usageUnknown": false,
     "tokenAccountingUnavailable": false,
-    "modelCalls": {},
+    "modelCalls": {
+      "gemini-3.5-flash-lite": 1
+    },
     "legacyUnattributedCalls": 22
   }
 }
