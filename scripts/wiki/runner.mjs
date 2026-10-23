@@ -140,7 +140,7 @@ export async function runWikiBatch({base,maxCalls=0,maxCandidates=5,pageId=null,
  const initialTokens=state.dailyUsage.tokens
  const budget={maxCalls,usedCalls:0,dailyCalls:state.dailyUsage.calls,dailyTokens:initialTokens,
   dailyModelCalls:{...state.dailyUsage.modelCalls},legacyUnattributedCalls:state.dailyUsage.legacyUnattributedCalls,
-  tokenAccountingUnavailable:!!state.dailyUsage.tokenAccountingUnavailable,maxDailyCalls:450,maxTokens:1500000,
+  tokenAccountingUnavailable:!!state.dailyUsage.tokenAccountingUnavailable,maxDailyCalls:900,maxTokens:3000000,
   onRequest:async current=>{state.dailyUsage.calls=current.dailyCalls;state.dailyUsage.modelCalls={...current.dailyModelCalls};
    await writeState(base,state);await persistDurably()},
   onUsage:async current=>{current.dailyTokens=initialTokens+current.usage.total;state.dailyUsage.tokens=current.dailyTokens;await writeState(base,state);await persistDurably()}}
@@ -228,8 +228,9 @@ export async function runWikiBatch({base,maxCalls=0,maxCandidates=5,pageId=null,
       }})
      break
     }catch(error){
-     if(!(error instanceof GeminiWikiPause)||![404,503].includes(error.status)||
-      index===modelCandidates.length-1||budget.maxCalls-budget.usedCalls<2||budget.tokenAccountingUnavailable)throw error
+     if(!(error instanceof GeminiWikiPause)||![404,503,'MODEL_QUOTA'].includes(error.status)||
+      index===modelCandidates.length-1||budget.maxCalls-budget.usedCalls<(checkpoint.draft?1:2)||
+      budget.tokenAccountingUnavailable)throw error
      // A model-specific 404/503 need not disable a separately listed free model.
      budget.circuitOpen=false;budget.circuitStatus=null;budget.serviceFailures=0;budget.transientRetries=0
      console.log(`Wiki Gemini ${currentModel} HTTP ${error.status}; trying ${modelCandidates[index+1]}`)

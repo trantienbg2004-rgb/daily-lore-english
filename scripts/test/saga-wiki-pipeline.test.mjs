@@ -206,6 +206,25 @@ test('a listed free model can fail with 404 or 503 and the next model uses the s
  }
 })
 
+test('a full first Lite daily pool switches to the second listed Lite model',async()=>{
+ const stored=state(),models=[]
+ const result=await runWikiBatch({base:'unused',maxCalls:2,maxCandidates:1,apiKey:'placeholder',freeTierConfirmed:true,
+  models:['gemini-3.5-flash-lite','gemini-3.1-flash-lite'],...noDisk,
+  readState:async()=>stored,writeState:async()=>{},readCatalog:async()=>({stories:[]}),fetchPage:async()=>source,
+  verifyFigures:async()=>[{status:'REVIEW',photo:{url:'https://thumb.wikimedia.org/map',fileTitle:'File:Map.svg'}}],
+  generate:async({budget,model})=>{
+   models.push(model)
+   if(models.length===1)throw new GeminiWikiPause('first Lite pool used','MODEL_QUOTA')
+   budget.usedCalls+=2
+   return {validation:{accepted:true},result:{variants:{}},evidence:[],usage:null}
+  },
+  assign:()=>({status:'VERIFIED',levelVariants:{},photos:[{url:'https://thumb.wikimedia.org/map'}]}),
+  makeStory:()=>({sourcePageId:42,pages:[{image:'https://thumb.wikimedia.org/map'}]}),append:async()=>{}})
+ assert.deepEqual(models,['gemini-3.5-flash-lite','gemini-3.1-flash-lite'])
+ assert.equal(result.published,1)
+ assert.equal(result.apiCalls,2)
+})
+
 test('unknown token usage persists through the day and resumes after the daily reset',async()=>{
  const stored=state(),today=wikiQuotaDay()
  stored.dailyUsage={day:today,calls:1,tokens:0,usageUnknown:true,tokenAccountingUnavailable:true}
