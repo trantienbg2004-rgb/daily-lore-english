@@ -2,10 +2,10 @@
   "pageId": 398318,
   "title": "History of sport",
   "topic": "Sports",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1380921999,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380921999",
-  "reason": "10 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REJECTED",
@@ -414,5 +414,139 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380921999"
     }
   ],
-  "updatedAt": "2026-10-23T23:35:02.712Z"
+  "updatedAt": "2026-10-23T23:35:18.356Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "The Long History of Sports",
+        "pages": [
+          {
+            "text": "The history of sports goes back to the ancient world in 7000 BC. Long ago, people linked physical activities and games with warfare and entertainment. Studying this history helps us understand how societies changed over time.",
+            "evidenceIds": [
+              "P1",
+              "P2"
+            ]
+          },
+          {
+            "text": "Early sports were often connected to military training. Competitions helped show if people were ready for service. In ancient Egypt, monuments show that sports like wrestling, swimming, and weightlifting were already well-developed around 2000 BC.",
+            "evidenceIds": [
+              "P3",
+              "P6"
+            ]
+          },
+          {
+            "text": "In ancient Greece, sports became very formal. The first recorded Olympic Games took place in 776 BC in Olympia. These games included running, boxing, and wrestling, and they happened every four years.",
+            "evidenceIds": [
+              "P22"
+            ]
+          },
+          {
+            "text": "During the Middle Ages in Europe, entire villages played rough ballgames. Horse racing was a favorite activity for the wealthy ruling class, and successful medieval tournament fighters could gain fame and money.",
+            "evidenceIds": [
+              "P9",
+              "P10"
+            ]
+          },
+          {
+            "text": "In later centuries, British sports and rules began to spread around the world. Games like cricket became very popular in places such as India, Australia, and South Africa. Today, people everywhere still enjoy playing and watching many different sports.",
+            "evidenceIds": [
+              "P15"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "Origins and Evolution of Sport",
+        "pages": [
+          {
+            "text": "The history of sport extends back to the ancient world around 7000 BC. Physical activities that developed into sports had early connections to warfare and entertainment, providing modern researchers with insights into social change and human skill development.",
+            "evidenceIds": [
+              "P1",
+              "P2"
+            ]
+          },
+          {
+            "text": "From its earliest beginnings, sport was related to military training. Competitions determined physical fitness for service, while team sports helped train soldiers to work together. Archaeological evidence shows wrestling depictions in Sumer dating back to 3000 BC, and Egyptian monuments from 2000 BC reveal regulated sports like swimming, rowing, and weightlifting.",
+            "evidenceIds": [
+              "P3",
+              "P5",
+              "P6"
+            ]
+          },
+          {
+            "text": "Greece instituted sports formally with the first Olympic Games recorded in 776 BC in Olympia. These games featured footraces, wrestling, and chariot racing, united by an Olympic Truce that allowed athletes to travel safely. Minoan art also records ritual sporting events like bull-leaping.",
+            "evidenceIds": [
+              "P7",
+              "P22"
+            ]
+          },
+          {
+            "text": "In medieval Europe, villages competed in rough ballgames, while the ruling class favored horse racing and combat sports. Successful knights in medieval tournaments followed a circuit for fame and money, anticipating characteristics of modern sports stars and professional circuits.",
+            "evidenceIds": [
+              "P9",
+              "P10"
+            ]
+          },
+          {
+            "text": "By the Renaissance, sports were increasingly promoted for recreational, physical, and psychological benefits, drawing inspiration from classical Greece and Rome. Later, British sports and codified rules spread globally during the 19th and 20th centuries, establishing modern concepts of amateurism, professionalism, and fair play.",
+            "evidenceIds": [
+              "P11",
+              "P12",
+              "P15"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "Tracing the Historical Roots of Sport",
+        "pages": [
+          {
+            "text": "Tracing the history of sport back to the ancient world in 7000 BC reveals early functional links between physical activity, warfare, and entertainment. Although scarcer historical evidence complicates definitive theories on ultimate origins, studying these activities illuminates broader patterns of social evolution and human skill acquisition.",
+            "evidenceIds": [
+              "P1",
+              "P2"
+            ]
+          },
+          {
+            "text": "In antiquity, competition served as a vital metric for military readiness and unit cohesion. Archaeological records corroborate this trajectory, ranging from Sumerian stone slabs and bronze figurines depicting wrestling around 3000 to 2600 BC, to elaborate Egyptian monuments from 2000 BC documenting a regulated array of disciplines including athletics, ball games, and weightlifting.",
+            "evidenceIds": [
+              "P3",
+              "P5",
+              "P6",
+              "P19"
+            ]
+          },
+          {
+            "text": "Formal institutionalization materialized prominently in Ancient Greece, marked by the inaugural Olympic Games in 776 BC at Olympia. Operating on a four-year cycle that established a chronological unit, the games incorporated diverse events under the protection of an Olympic Truce, complemented by contemporaneous Cretan ritual bull-leaping and Homeric funeral games.",
+            "evidenceIds": [
+              "P7",
+              "P22"
+            ]
+          },
+          {
+            "text": "Medieval European society exhibited stratified sporting practices, contrasting violent Shrovetide football with elite horse racing and combat sports. Crucially, medieval tournaments anticipated modern professional structures, functioning as lucrative circuits where successful competitors accumulated wealth, social capital, and commercial engagement.",
+            "evidenceIds": [
+              "P9",
+              "P10"
+            ]
+          },
+          {
+            "text": "Renaissance humanism revived classical Greco-Roman concepts linking physical conditioning with intellectual and civic vigor, gradually pivoting sports toward recreational utility. Subsequently, the expansion of the British Empire propagated codified rules, amateurism, and tournament frameworks globally, deeply embedding sports like cricket within post-colonial nations.",
+            "evidenceIds": [
+              "P11",
+              "P12",
+              "P15"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2791,
+    "output": 1457,
+    "total": 4248
+  },
+  "validation": null
 }
