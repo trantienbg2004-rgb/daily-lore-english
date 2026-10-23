@@ -2,10 +2,10 @@
   "pageId": 27566,
   "title": "Summer Olympic Games",
   "topic": "Sports",
-  "status": "DRAFTED",
+  "status": "VALIDATED",
   "revisionId": 1381114289,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381114289",
-  "reason": "draft durably saved before validation",
+  "reason": "local factual, style, length, structure and source audit passed",
   "rights": [
     {
       "status": "REVIEW",
@@ -354,7 +354,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381114289"
     }
   ],
-  "updatedAt": "2026-10-23T00:56:29.112Z",
+  "updatedAt": "2026-10-23T00:56:47.037Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -508,5 +508,8 @@
     "output": 257,
     "total": 3421
   },
-  "validation": null
+  "validation": {
+    "accepted": true,
+    "errors": []
+  }
 }
