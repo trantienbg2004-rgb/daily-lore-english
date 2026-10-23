@@ -7472,10 +7472,10 @@
       "checkedAt": "2026-10-21T03:13:04.953Z"
     },
     "7656679": {
-      "status": "RETRY_LATER",
-      "reason": "Gemini HTTP 503; circuit open",
+      "status": "EVIDENCE_READY",
+      "reason": "2 rights-verified embedded images",
       "revisionId": 1379369211,
-      "checkedAt": "2026-10-22T13:00:05.899Z"
+      "checkedAt": "2026-10-23T16:57:11.309Z"
     },
     "7731766": {
       "status": "RETRY_LATER",
@@ -9866,7 +9866,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-23T16:57:04.601Z",
+  "updatedAt": "2026-10-23T16:57:11.311Z",
   "dailyUsage": {
     "day": "2026-10-23",
     "calls": 31,
