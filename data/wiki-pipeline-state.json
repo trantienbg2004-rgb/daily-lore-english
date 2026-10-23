@@ -7346,10 +7346,10 @@
       "checkedAt": "2026-10-21T03:11:13.508Z"
     },
     "5546586": {
-      "status": "RETRY_LATER",
-      "reason": "Gemini network unavailable; circuit open",
+      "status": "EVIDENCE_READY",
+      "reason": "1 rights-verified embedded images",
       "revisionId": 1372390340,
-      "checkedAt": "2026-10-22T20:18:45.504Z"
+      "checkedAt": "2026-10-23T00:54:13.471Z"
     },
     "5645470": {
       "status": "EVIDENCE_READY",
@@ -9866,12 +9866,12 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-22T23:50:46.528Z",
+  "updatedAt": "2026-10-23T00:54:13.473Z",
   "dailyUsage": {
-    "day": "2026-10-22",
-    "calls": 83,
-    "tokens": 224504,
-    "usageUnknown": true,
+    "day": "2026-10-23",
+    "calls": 0,
+    "tokens": 0,
+    "usageUnknown": false,
     "tokenAccountingUnavailable": false
   }
 }
