@@ -336,7 +336,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376916933"
     }
   ],
-  "updatedAt": "2026-10-23T23:40:15.375Z",
+  "updatedAt": "2026-10-23T23:40:40.430Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -355,7 +355,7 @@
             ]
           },
           {
-            "text": "The French Armed Forces landed in Beirut on August 21, 1982. The U.S. Marines arrived on August 25, and the Italian Armed Forces arrived on August 26. This initial force was tasked with securing Beirut's port through which fighters would be evacuated by ship.",
+            "text": "The French Armed Forces landed in Beirut on August 21, and the U.S. Marines arrived on August 25. The Italian Armed Forces arrived on August 26. This initial force was tasked with securing Beirut's port through which fighters would be evacuated by ship.",
             "evidenceIds": [
               "P9"
             ]
@@ -454,11 +454,11 @@
       }
     }
   },
-  "repairAttempts": 1,
+  "repairAttempts": 2,
   "lastUsage": {
-    "input": 2995,
-    "output": 380,
-    "total": 3375
+    "input": 2867,
+    "output": 123,
+    "total": 2990
   },
   "validation": null
 }
