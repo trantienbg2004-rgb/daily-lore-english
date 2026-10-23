@@ -2,10 +2,10 @@
   "pageId": 3279967,
   "title": "Multinational Force in Lebanon",
   "topic": "Conflict & Security",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1376916933,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376916933",
-  "reason": "9 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -336,5 +336,131 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376916933"
     }
   ],
-  "updatedAt": "2026-10-23T23:39:39.313Z"
+  "updatedAt": "2026-10-23T23:39:57.487Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "The Peace Force in Lebanon",
+        "pages": [
+          {
+            "text": "In August 1982, countries made a new peacekeeping group called the Multinational Force in Lebanon. They wanted to help stop fighting and help people leave safely after a big conflict involving Israel and the Palestine Liberation Organization.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "Four countries joined to help. These countries were the United States, France, Italy, and Britain. Their main job was to oversee a peaceful withdrawal and to train units of the local Lebanese Armed Forces.",
+            "evidenceIds": [
+              "P4"
+            ]
+          },
+          {
+            "text": "At first, the environment was peaceful. Troops from France, Italy, and the United States landed in Beirut to help secure the port and facilitate departures of fighters.",
+            "evidenceIds": [
+              "P9"
+            ]
+          },
+          {
+            "text": "Later, the situation changed and became very dangerous due to renewed civil war and tragic attacks. The peacekeeping mission faced severe violence, including a terrible bombing that killed many servicemen.",
+            "evidenceIds": [
+              "P5"
+            ]
+          },
+          {
+            "text": "Because the country remained unstable and warring factions entered Beirut, the international force ended its mission. They withdrew completely from Lebanon in July 1984.",
+            "evidenceIds": [
+              "P5"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "The Multinational Force in Lebanon",
+        "pages": [
+          {
+            "text": "The Multinational Force was established in August 1982 following a ceasefire mediated by the United States between Israel and the Palestine Liberation Organization. Its original purpose was to assist the Lebanese Armed Forces in safely evacuating the PLO and other foreign combatants from Beirut.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "This four-nation mission included military units from the United States, France, Italy, and later Britain. Beyond overseeing the withdrawal, the force was tasked with training the Lebanese Armed Forces and promoting national reconciliation.",
+            "evidenceIds": [
+              "P4",
+              "P6",
+              "P12"
+            ]
+          },
+          {
+            "text": "Initial deployments began in August 1982, with French, U.S., and Italian troops securing the port and surrounding areas to facilitate departures. The forces established specific zones of operation across Beirut to maintain order.",
+            "evidenceIds": [
+              "P9",
+              "P10",
+              "P11"
+            ]
+          },
+          {
+            "text": "However, the environment deteriorated sharply after political assassinations reignited the civil war. The force increasingly became viewed as a participant rather than a neutral peacekeeper amid escalating hostilities.",
+            "evidenceIds": [
+              "P5"
+            ]
+          },
+          {
+            "text": "Following a devastating October 1983 barracks bombing that caused numerous casualties among U.S. and French personnel, the mission became untenable. The international forces withdrew offshore before completely leaving Lebanon in July 1984.",
+            "evidenceIds": [
+              "P5"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "The International Mission in Lebanon",
+        "pages": [
+          {
+            "text": "Constituted in August 1982 in the wake of a U.S.-brokered ceasefire between Israel and the PLO, the Multinational Force aimed to facilitate the departure of foreign combatants and assist the Lebanese Armed Forces during a critical juncture of the civil war.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "The coalition comprised military contingents from the United States, France, Italy, and the United Kingdom. Their mandate encompassed overseeing the withdrawal, training the national army, and supporting institutional stability at the request of the Lebanese Government.",
+            "evidenceIds": [
+              "P4",
+              "P6",
+              "P12"
+            ]
+          },
+          {
+            "text": "Initial operations commenced in late August 1982 as multinational troops secured ports and designated zones in Beirut to orchestrate the evacuation of Palestinian and Syrian forces under observation.",
+            "evidenceIds": [
+              "P9",
+              "P10",
+              "P11"
+            ]
+          },
+          {
+            "text": "The mission profile shifted adversely following the assassination of President-elect Bashir Gemayel and subsequent outbreaks of internal violence, which progressively compromised the perceived neutrality of the coalition and cast its units into belligerent dynamics.",
+            "evidenceIds": [
+              "P5"
+            ]
+          },
+          {
+            "text": "Ultimately, mounting casualties from hostile incidents, culminating in the catastrophic October 1983 barracks bombing, precipitated the withdrawal of the multinational contingents, concluding their presence in Lebanon by July 1984.",
+            "evidenceIds": [
+              "P5",
+              "P14",
+              "P15"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 3037,
+    "output": 852,
+    "total": 3889
+  },
+  "validation": null
 }
