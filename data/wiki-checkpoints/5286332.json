@@ -2,10 +2,10 @@
   "pageId": 5286332,
   "title": "Operation Astute",
   "topic": "Conflict & Security",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1370630734,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1370630734",
-  "reason": "12 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -415,5 +415,140 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1370630734"
     }
   ],
-  "updatedAt": "2026-10-23T20:34:25.629Z"
+  "updatedAt": "2026-10-23T20:34:42.722Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "Operation Astute in East Timor",
+        "pages": [
+          {
+            "text": "In 2006, there was a crisis in East Timor. The government asked for help to stop the unrest. Australia started a military mission called Operation Astute to bring back peace and stability to the country.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "The mission began on 25 May 2006. Many soldiers and ships arrived to help. Airplanes flew from Australia to carry troops and supplies into Dili Airport, which was secured by initial forces.",
+            "evidenceIds": [
+              "P1",
+              "P2",
+              "P3"
+            ]
+          },
+          {
+            "text": "Other countries also sent people to help. Malaysia, New Zealand, and Portugal sent soldiers to work with the Australian forces. They helped keep law and order during this difficult time.",
+            "evidenceIds": [
+              "P1",
+              "P4",
+              "P5"
+            ]
+          },
+          {
+            "text": "Later, the United Nations sent a police mission. The international forces helped make sure the 2007 elections were peaceful. Over time, the situation calmed down and troop numbers were reduced.",
+            "evidenceIds": [
+              "P1",
+              "P5"
+            ]
+          },
+          {
+            "text": "The mission stayed for several years to help rebuild security forces. After the 2012 elections, it was decided to withdraw the foreign security forces because the country had stabilized.",
+            "evidenceIds": [
+              "P5",
+              "P15"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "The Australian-Led Mission in East Timor",
+        "pages": [
+          {
+            "text": "Operation Astute was an Australian-led military deployment to East Timor launched in response to the 2006 crisis. Established at the request of the local government, the mission aimed to quell unrest and restore stability.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Initial deployments involved a forward force securing Dili Airport, followed by a larger battalion group. Naval assets like frigates and landing ships, alongside Royal Australian Air Force transport planes, supported the arrivals from bases in Australia.",
+            "evidenceIds": [
+              "P2",
+              "P3",
+              "P8"
+            ]
+          },
+          {
+            "text": "Military contingents from nations such as New Zealand, Malaysia, and Portugal joined the effort. While most forces operated under Australian command, the Portuguese contingent maintained its own national command structure.",
+            "evidenceIds": [
+              "P1",
+              "P6",
+              "P10"
+            ]
+          },
+          {
+            "text": "The international forces worked alongside a United Nations police mission to maintain order. A key task was ensuring that the 2007 presidential and parliamentary elections proceeded peacefully as the security situation gradually improved.",
+            "evidenceIds": [
+              "P1",
+              "P5"
+            ]
+          },
+          {
+            "text": "As stability took hold and security forces were rebuilt, troop numbers were progressively reduced over the years. Following successful elections in 2012, a decision was finally made to withdraw the remaining foreign security forces.",
+            "evidenceIds": [
+              "P5",
+              "P15"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "Operation Astute and East Timor Stability",
+        "pages": [
+          {
+            "text": "Operation Astute constituted an Australian-led military intervention initiated on 25 May 2006 to address severe unrest during the East Timor crisis. The deployment occurred at the behest of the local government and proceeded under cooperative frameworks involving Australia, East Timor, and the United Nations.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Initial operational phases utilized commando companies and infantry battalions to secure Dili Airport as an entry point. Comprehensive naval assets, including frigates and amphibious landing ships, accompanied air transport efforts operating primarily through RAAF Base Darwin.",
+            "evidenceIds": [
+              "P2",
+              "P3",
+              "P8"
+            ]
+          },
+          {
+            "text": "Multinational contributions augmented the Australian forces, with contingents arriving from New Zealand, Malaysia, and Portugal. Operational command structures varied, as Malaysian and New Zealand units integrated under Australian command while Portuguese forces retained separate national command.",
+            "evidenceIds": [
+              "P1",
+              "P4",
+              "P6",
+              "P10"
+            ]
+          },
+          {
+            "text": "The International Stabilization Force operated concurrently with the United Nations Integrated Mission in East Timor. Together, they enforced public order and facilitated secure conditions for the 2007 presidential and parliamentary elections.",
+            "evidenceIds": [
+              "P1",
+              "P5"
+            ]
+          },
+          {
+            "text": "Sustained stabilization efforts allowed for gradual troop reductions across subsequent years. Following further democratic elections in 2012, authorities resolved to withdraw the remaining foreign security forces entirely as the nation achieved lasting stability.",
+            "evidenceIds": [
+              "P5",
+              "P15"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 1910,
+    "output": 888,
+    "total": 2798
+  },
+  "validation": null
 }
