@@ -2,10 +2,10 @@
   "pageId": 3487647,
   "title": "International Force East Timor",
   "topic": "Conflict & Security",
-  "status": "DRAFTED",
+  "status": "VALIDATED",
   "revisionId": 1371793899,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371793899",
-  "reason": "draft durably saved before validation",
+  "reason": "local factual, style, length, structure and source audit passed",
   "rights": [
     {
       "status": "REVIEW",
@@ -235,7 +235,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371793899"
     }
   ],
-  "updatedAt": "2026-10-23T06:27:30.522Z",
+  "updatedAt": "2026-10-23T06:27:49.399Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -384,5 +384,8 @@
     "output": 227,
     "total": 3126
   },
-  "validation": null
+  "validation": {
+    "accepted": true,
+    "errors": []
+  }
 }
