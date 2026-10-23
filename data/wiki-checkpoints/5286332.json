@@ -415,7 +415,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1370630734"
     }
   ],
-  "updatedAt": "2026-10-23T20:34:42.722Z",
+  "updatedAt": "2026-10-23T20:35:00.526Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -428,11 +428,12 @@
             ]
           },
           {
-            "text": "The mission began on 25 May 2006. Many soldiers and ships arrived to help. Airplanes flew from Australia to carry troops and supplies into Dili Airport, which was secured by initial forces.",
+            "text": "The mission began following a request from the government of East Timor. Many soldiers and ships arrived to help. Airplanes flew from Australia to carry troops and supplies into Dili Airport, which was secured by initial forces to help restore stability during the crisis.",
             "evidenceIds": [
               "P1",
               "P2",
-              "P3"
+              "P3",
+              "P4"
             ]
           },
           {
@@ -444,7 +445,7 @@
             ]
           },
           {
-            "text": "Later, the United Nations sent a police mission. The international forces helped make sure the 2007 elections were peaceful. Over time, the situation calmed down and troop numbers were reduced.",
+            "text": "Later, the United Nations sent a police mission. The international forces helped make sure the presidential and parliamentary elections proceeded reasonably peacefully. Over time, the situation calmed down and troop numbers were reduced as order was restored across the country.",
             "evidenceIds": [
               "P1",
               "P5"
@@ -504,7 +505,7 @@
         "headline": "Operation Astute and East Timor Stability",
         "pages": [
           {
-            "text": "Operation Astute constituted an Australian-led military intervention initiated on 25 May 2006 to address severe unrest during the East Timor crisis. The deployment occurred at the behest of the local government and proceeded under cooperative frameworks involving Australia, East Timor, and the United Nations.",
+            "text": "Operation Astute constituted an Australian-led military intervention initiated on May to address severe unrest during the East Timor crisis. The deployment occurred at the behest of the local government and proceeded under cooperative frameworks involving Australia, East Timor, and the United Nations.",
             "evidenceIds": [
               "P1"
             ]
@@ -544,11 +545,11 @@
       }
     }
   },
-  "repairAttempts": 0,
+  "repairAttempts": 1,
   "lastUsage": {
-    "input": 1910,
-    "output": 888,
-    "total": 2798
+    "input": 1932,
+    "output": 317,
+    "total": 2249
   },
   "validation": null
 }
