@@ -2,10 +2,10 @@
   "pageId": 19098431,
   "title": "Ancient Olympic Games",
   "topic": "Sports",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1378430802,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378430802",
-  "reason": "16 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -516,5 +516,136 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378430802"
     }
   ],
-  "updatedAt": "2026-10-23T16:58:32.835Z"
+  "updatedAt": "2026-10-23T16:58:47.565Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "The Ancient Olympic Games in Greece",
+        "pages": [
+          {
+            "text": "The ancient Olympic Games were athletic competitions held in ancient Greece. They took place at a religious sanctuary called Olympia to honor the god Zeus. People traditionally date the first games to 776 BC. They happened every four years, and athletes came from different city-states to compete.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "During the games, a special truce was announced so travelers could walk safely. Winners received crowns made from olive leaves. City-states used the games to show power and make political alliances. The site also featured a famous giant statue of Zeus.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "For many years, only freeborn Greek men could take part as athletes, although women could own winning horses. Unlike modern games, the ancient Olympics were always held at Olympia. Victors were greatly honored, and their names were written down for the future.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "Ancient Greeks believed the games came from mythology and the gods. Legends said sports were tied to worship and meant to bring peace and harmony. Historians note that these old stories are very hard to untangle today.",
+            "evidenceIds": [
+              "P4",
+              "P6"
+            ]
+          },
+          {
+            "text": "Later, the games continued under Roman rule, but they faced changes and declines. Emperor Augustus helped bring a revival, while Emperor Nero caused chaos by postponing events and demanding wins. Archaeological finds show the games continued until at least the late fourth century AD.",
+            "evidenceIds": [
+              "P1",
+              "P12",
+              "P13",
+              "P15"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "History of the Ancient Olympic Games",
+        "pages": [
+          {
+            "text": "The ancient Olympic Games were a series of athletic competitions held among representatives of Greek city-states. Hosted at the sanctuary of Olympia in honor of Zeus, the games traditionally began in 776 BC. They occurred every four years, forming a unit of time known as an Olympiad based on the sprint winners.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "An Olympic truce allowed athletes and pilgrims to travel safely. The prizes were simple olive leaf wreaths. City-states used the festival as a political tool to build alliances and assert dominance, while artists and poets displayed their works to potential patrons near the famous statue of Zeus.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "Initially, participation was limited to freeborn Greek men, though women could win as chariot owners. Unlike modern games, the competitions always remained in Olympia. Victors were celebrated, and their feats were carefully chronicled for future generations.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "Greeks attributed the genesis of the games to mythology, linking athletic competition directly to the worship of gods. While exact origins remain debated and difficult to untangle, historians and archaeological finds confirm that athletic traditions in the region date back to at least the eighth century BC.",
+            "evidenceIds": [
+              "P4",
+              "P6",
+              "P8"
+            ]
+          },
+          {
+            "text": "Following the Roman conquest, the Olympics experienced periods of neglect and revival. Emperor Augustus restored damaged structures, whereas Emperor Nero forced schedule changes and claimed fraudulent victories. International games persisted under Roman rule until archaeological evidence indicates they finally ended around the late fourth century AD.",
+            "evidenceIds": [
+              "P1",
+              "P12",
+              "P13",
+              "P15"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "Evolution and Legacy of the Ancient Olympics",
+        "pages": [
+          {
+            "text": "Originating as Panhellenic athletic competitions among Greek city-states, the ancient Olympic Games were hosted at the religious sanctuary of Olympia in veneration of Zeus. Traditionally dated to 776 BC, the quadrennial games established the Olympiad as a chronological framework, anchored by the victor of the stadion sprint.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "An enforced Olympic truce ensured safe passage for participants and pilgrims. Beyond athletic pursuits, the festival functioned as a geopolitical instrument for alliance formation and cultural dissemination. Furthermore, the sanctuary hosted significant artistic exhibitions alongside the monumental statue of Zeus.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "Participation criteria initially restricted athletes to freeborn Greek men, though female chariot owners achieved victories. Unlike contemporary counterparts, the venue remained permanently fixed at Olympia, where victors achieved enduring renown through chronicled feats.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "Rooted heavily in mythology, the games intertwined athletic competition with religious worship, though precise historical origins remain difficult to untangle. While 776 BC serves as the conventional inception date, scholarly consensus points generally to the eighth century BC based on converging archaeological evidence.",
+            "evidenceIds": [
+              "P4",
+              "P6",
+              "P8"
+            ]
+          },
+          {
+            "text": "The incorporation of Greece into the Roman Empire initiated fluctuating phases of decline and imperial revival. While figures like Augustus and Hadrian fostered restorations and cultural renaissances, disruptions such as Nero's manipulated athletic calendar strained the festival. Archaeological discoveries demonstrate that international games endured until at least the late fourth century AD.",
+            "evidenceIds": [
+              "P1",
+              "P12",
+              "P13",
+              "P14",
+              "P15"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2722,
+    "output": 1414,
+    "total": 4136
+  },
+  "validation": null
 }

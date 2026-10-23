@@ -7832,10 +7832,10 @@
       "checkedAt": "2026-10-21T13:53:49.191Z"
     },
     "19098431": {
-      "status": "EVIDENCE_READY",
-      "reason": "16 rights-verified embedded images",
+      "status": "DRAFTED",
+      "reason": "draft durably saved before validation",
       "revisionId": 1378430802,
-      "checkedAt": "2026-10-23T16:58:32.832Z"
+      "checkedAt": "2026-10-23T16:58:47.565Z"
     },
     "19762116": {
       "status": "EVIDENCE_READY",
@@ -9866,7 +9866,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-23T16:58:45.969Z",
+  "updatedAt": "2026-10-23T16:58:47.566Z",
   "dailyUsage": {
     "day": "2026-10-23",
     "calls": 35,
