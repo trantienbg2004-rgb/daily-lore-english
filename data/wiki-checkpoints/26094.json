@@ -2,10 +2,10 @@
   "pageId": 26094,
   "title": "Romanticism",
   "topic": "Culture",
-  "status": "DRAFTED",
+  "status": "VALIDATED",
   "revisionId": 1379902165,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379902165",
-  "reason": "draft durably saved before validation",
+  "reason": "local factual, style, length, structure and source audit passed",
   "rights": [
     {
       "status": "REVIEW",
@@ -672,7 +672,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379902165"
     }
   ],
-  "updatedAt": "2026-10-23T20:36:54.948Z",
+  "updatedAt": "2026-10-23T20:37:12.740Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -813,5 +813,8 @@
     "output": 131,
     "total": 2756
   },
-  "validation": null
+  "validation": {
+    "accepted": true,
+    "errors": []
+  }
 }
