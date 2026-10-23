@@ -2,10 +2,10 @@
   "pageId": 41612950,
   "title": "Anti-fascism",
   "topic": "Politics",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1380020724,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380020724",
-  "reason": "15 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REJECTED",
@@ -505,5 +505,121 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380020724"
     }
   ],
-  "updatedAt": "2026-10-23T23:38:02.112Z"
+  "updatedAt": "2026-10-23T23:38:18.621Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "The History of Anti-Fascism",
+        "pages": [
+          {
+            "text": "Anti-fascism is a political movement that opposes fascist groups, ideas, and individuals. It began in Europe during the 1920s. The movement grew very strong shortly before and during World War II. During the war, many countries and resistance groups fought against the Axis powers.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Before World War II, many Western nations did not take the threat of fascism very seriously. Sometimes, people even associated anti-fascism with communism. However, the start of World War II changed these views completely. Fascism came to be seen as a huge danger by the United States, the United Kingdom, and the Soviet Union.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "Anti-fascist movements first started in Italy when Benito Mussolini rose to power. Soon, these movements spread to other European countries and then across the entire world. In the early days, people from many different political backgrounds worked together to oppose fascism.",
+            "evidenceIds": [
+              "P7"
+            ]
+          },
+          {
+            "text": "In Italy, Mussolini used a secret police force to stop his opponents. During the 1920s, anti-fascist workers fought against Mussolini and his violent Blackshirts. When some trade unions made peace agreements, other workers formed groups like Arditi del Popolo to keep fighting.",
+            "evidenceIds": [
+              "P8"
+            ]
+          },
+          {
+            "text": "After World War II ended, anti-fascist movements continued in places where fascism tried to return. In Germany and the United States, antifa groups grew during the 1980s and 1990s, often supported by punk music scenes. In the 21st century, these groups grew even more to fight against the radical right.",
+            "evidenceIds": [
+              "P3"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "Global Resistance Against Fascism",
+        "pages": [
+          {
+            "text": "Anti-fascism is a political movement that opposes fascist ideologies, groups, and individuals. Originating in Europe during the 1920s, it reached its greatest significance shortly before and during World War II. During this conflict, the Axis powers were opposed by numerous allied nations and dozens of global resistance movements.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Before World War II, Western countries largely failed to take the threat of fascism seriously, and anti-fascism was sometimes linked with communism. However, the outbreak of the war fundamentally altered Western perceptions. Fascism was suddenly viewed as an existential threat not only by the Soviet Union, but also by the democratic United States and United Kingdom.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "Anti-fascist movements emerged initially in Italy during the rise of Benito Mussolini before spreading globally. The early period involved communist, socialist, anarchist, and Christian-democratic organizers. Until 1928, there was significant collaboration between communist and non-communist anti-fascists.",
+            "evidenceIds": [
+              "P7"
+            ]
+          },
+          {
+            "text": "In Italy, Mussolini's regime labeled its opponents as anti-fascists and established a secret police force for repression. Throughout the 1920s, anti-fascists fought against violent Blackshirts and Mussolini's rise. When some labor groups adopted pacified strategies, dissenting workers formed groups like Arditi del Popolo to continue the fight.",
+            "evidenceIds": [
+              "P8"
+            ]
+          },
+          {
+            "text": "Following World War II, the movement remained active wherever organized fascism re-emerged. A resurgence of antifa occurred in Germany during the 1980s in response to neo-Nazis infiltrating the punk scene. This subsequently influenced American antifa movements in the late 1980s and 1990s, which grew significantly in the 21st century to counter the radical right.",
+            "evidenceIds": [
+              "P3"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "The Evolution of Anti-Fascist Movements",
+        "pages": [
+          {
+            "text": "Anti-fascism encompasses political movements united in their opposition to fascist ideologies, organizations, and individuals. Initiated in Europe during the 1920s, the movement attained its historical zenith shortly before and during World War II, wherein the Axis powers were contested by an international coalition of allied nations and numerous clandestine resistance networks.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Prior to World War II, Western powers frequently underestimated the fascist threat, occasionally conflating anti-fascism with communism. Nevertheless, the onset of the war dramatically recalibrated Western perspectives. Consequently, fascism was reinterpreted as an existential peril by the Soviet Union alongside liberal democracies such as the United States and the United Kingdom.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "Initial anti-fascist mobilizations materialized in Italy amid Benito Mussolini's ascendancy, subsequently proliferating across Europe and internationally. This nascent phase incorporated communist, socialist, anarchist, and Christian-democratic intellectuals. Crucially, until the conclusion of the united front period in 1928, substantive collaboration persisted between communist and non-communist factions.",
+            "evidenceIds": [
+              "P7"
+            ]
+          },
+          {
+            "text": "Within Italy, Mussolini's administration co-opted the term anti-fascist to designate domestic adversaries, deploying a dedicated secret police apparatus for suppression. Throughout the 1920s, anti-fascist elements drawn from the labor movement resisted the violent Blackshirts. Following the capitulation of mainstream trade unions to legalist strategies, recalcitrant workers instituted autonomous defensive organizations such as the Arditi del Popolo.",
+            "evidenceIds": [
+              "P8"
+            ]
+          },
+          {
+            "text": "In the postwar era, anti-fascist activism persisted across territories where organized fascism attempted resurgence. A prominent resurgence of antifa manifested in 1980s Germany as a countermeasure to neo-Nazi infiltration of the punk subculture, subsequently catalyzing parallel movements in the United States. These networks experienced heightened prominence in the 21st century amid wider mainstream revivals of the radical right.",
+            "evidenceIds": [
+              "P3"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 3025,
+    "output": 1473,
+    "total": 4498
+  },
+  "validation": null
 }
