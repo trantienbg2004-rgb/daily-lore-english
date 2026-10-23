@@ -448,7 +448,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379614555"
     }
   ],
-  "updatedAt": "2026-10-23T17:21:03.172Z",
+  "updatedAt": "2026-10-23T17:21:41.024Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -537,7 +537,7 @@
             ]
           },
           {
-            "text": "Although various speculative theories exist regarding foreign origins, documentary evidence traces the sport to south-east England. A documented court testimony from 1598 establishes that the game was actively played around the middle of the sixteenth century.",
+            "text": "Although various speculative theories exist regarding foreign origins, documentary evidence traces the sport to south-east England. A documented court testimony from 1598 establishes that the game was actively played during the sixteenth century.",
             "evidenceIds": [
               "P4",
               "P6"
@@ -569,11 +569,11 @@
       }
     }
   },
-  "repairAttempts": 0,
+  "repairAttempts": 1,
   "lastUsage": {
-    "input": 2806,
-    "output": 833,
-    "total": 3639
+    "input": 2727,
+    "output": 220,
+    "total": 2947
   },
   "validation": null
 }
