@@ -2,10 +2,10 @@
   "pageId": 676659,
   "title": "Rwandan genocide",
   "topic": "Conflict & Security",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1381063357,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381063357",
-  "reason": "18 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -543,5 +543,132 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381063357"
     }
   ],
-  "updatedAt": "2026-10-23T17:13:41.949Z"
+  "updatedAt": "2026-10-23T17:14:24.389Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "The Rwandan Genocide",
+        "pages": [
+          {
+            "text": "The Rwandan genocide happened in 1994. It lasted for about one hundred days. During this time, many people were killed by militias. Most victims were from the Tutsi ethnic group. Some moderate Hutus and Twa people were also killed. The violence was extreme and caused great suffering across the country.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "The conflict had deep historical roots. In 1990, a civil war started when the Rwandan Patriotic Front invaded from Uganda. A tentative peace happened later, but tensions remained very high. The situation changed dramatically after the president was killed in a plane crash.",
+            "evidenceIds": [
+              "P2",
+              "P13"
+            ]
+          },
+          {
+            "text": "During the years before the violence, militias were trained and armed. The radio broadcasted propaganda against the Tutsi group. People were encouraged to view their neighbors with suspicion and fear. This propaganda helped spread hatred throughout the entire country very quickly.",
+            "evidenceIds": [
+              "P9",
+              "P11",
+              "P12"
+            ]
+          },
+          {
+            "text": "The international community failed to stop the terrible killings. The rebel forces eventually defeated the government and ended the genocide. Many people fled to neighboring countries as refugees. This movement of people caused further instability in the wider region.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "Today, the legacy of the genocide remains very important in Rwanda. The country has created special public holidays to remember the victims. Laws were also passed to prevent future ethnic division and hatred. The nation continues to deal with this tragic history.",
+            "evidenceIds": [
+              "P4"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "Understanding the 1994 Rwandan Conflict",
+        "pages": [
+          {
+            "text": "The Rwandan genocide was a devastating period of violence that occurred from April to July 1994 during the ongoing civil war. Over a span of approximately one hundred days, members of the Tutsi ethnic group, along with moderate Hutus and Twa, were systematically killed by militias. Scholarly estimates suggest that hundreds of thousands of people lost their lives amid widespread atrocities.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "The origins of the tragedy trace back to long-standing ethnic tensions and earlier conflicts. The Rwandan Civil War began in 1990 when the predominantly Tutsi rebel group invaded from Uganda. Although the Arusha Accords attempted to establish peace in 1993, the assassination of the president on April 6, 1994, ignited the mass violence.",
+            "evidenceIds": [
+              "P2",
+              "P13"
+            ]
+          },
+          {
+            "text": "In the years leading up to the crisis, authorities armed civilians and formed paramilitary groups like the Interahamwe. Meanwhile, a popular radio station broadcasted intense anti-Tutsi propaganda. Broadcasters characterized the entire ethnic group as a dangerous threat, effectively preparing the public for the subsequent systematic attacks.",
+            "evidenceIds": [
+              "P11",
+              "P12"
+            ]
+          },
+          {
+            "text": "Despite the immense scale of the violence, the international community failed to intervene and stop the killings. The rebel forces ultimately defeated the government troops, ending the genocide and prompting the flight of many refugees into neighboring countries, which triggered further regional conflict.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "The legacy of the genocide continues to influence modern Rwanda significantly. The government has established public commemoration holidays and enacted legislation to criminalize divisionism and genocide ideology. Meanwhile, domestic courts and specialized legal mechanisms were eventually set up to prosecute those responsible for the atrocities.",
+            "evidenceIds": [
+              "P4",
+              "P5"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "The Anatomy of the 1994 Rwandan Genocide",
+        "pages": [
+          {
+            "text": "The Rwandan genocide, recognized as the genocide against the Tutsi, unfolded over approximately one hundred days between April and July 1994 amid the Rwandan Civil War. While official constitutional figures cite over one million fatalities, scholarly consensus estimates that between 500,000 and 662,000 Tutsi were systematically murdered by Hutu militias, accompanied by widespread sexual violence and the targeting of moderate Hutus and Twa.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "The catastrophe was deeply rooted in historical grievances, including the social shifts of the 1959-1962 Hutu Revolution and the subsequent exile of Tutsis. Hostilities escalated significantly when the Rwandan Patriotic Front invaded from Uganda in 1990. Although the 1993 Arusha Accords offered a tentative peace, the fatal downing of President Juvénal Habyarimana's aircraft on April 6, 1994, served as the immediate catalyst for the genocide.",
+            "evidenceIds": [
+              "P2",
+              "P13"
+            ]
+          },
+          {
+            "text": "In the preceding years, the state expanded its military forces and armed civilians under the guise of civil defense. Hutu Power extremists mobilized paramilitary groups, while media outlets such as the RTLM disseminated dehumanizing propaganda that framed the entire Tutsi population as a collective security threat. The extent to which these actions were planned in advance remains a subject of ongoing historical debate and judicial scrutiny.",
+            "evidenceIds": [
+              "P9",
+              "P10",
+              "P11",
+              "P12"
+            ]
+          },
+          {
+            "text": "Faced with international inaction and failure to intervene, the RPF resumed military operations and ultimately defeated government forces, capturing state territory to halt the genocide. This victory precipitated the mass exodus of génocidaires and refugees into Zaire, directly contributing to regional destabilization and the outbreak of the First Congo War.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "In the aftermath, Rwanda confronted the monumental task of accountability and reconciliation. The RPF government enacted legislation in 1996 to initiate domestic trials for genocide and crimes against humanity, categorizing perpetrators based on their leadership roles and severity of conduct. Today, the legacy of the genocide persists through institutionalized public holidays and strict legislation criminalizing genocide ideology and divisionism.",
+            "evidenceIds": [
+              "P4",
+              "P5"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2995,
+    "output": 1224,
+    "total": 4219
+  },
+  "validation": null
 }
