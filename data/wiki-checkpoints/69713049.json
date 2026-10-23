@@ -2,10 +2,10 @@
   "pageId": 69713049,
   "title": "Criminalization of homosexuality",
   "topic": "Society",
-  "status": "DRAFTED",
+  "status": "VALIDATED",
   "revisionId": 1381055731,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381055731",
-  "reason": "draft durably saved before validation",
+  "reason": "local factual, style, length, structure and source audit passed",
   "rights": [
     {
       "status": "REVIEW",
@@ -269,7 +269,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381055731"
     }
   ],
-  "updatedAt": "2026-10-23T17:15:44.587Z",
+  "updatedAt": "2026-10-23T17:16:02.550Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -399,5 +399,8 @@
     "output": 1416,
     "total": 4180
   },
-  "validation": null
+  "validation": {
+    "accepted": true,
+    "errors": []
+  }
 }
