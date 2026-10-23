@@ -2,10 +2,10 @@
   "pageId": 9282401,
   "title": "Science and inventions of Leonardo da Vinci",
   "topic": "Science & Technology",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1379158458,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379158458",
-  "reason": "16 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -602,5 +602,141 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379158458"
     }
   ],
-  "updatedAt": "2026-10-23T20:37:27.148Z"
+  "updatedAt": "2026-10-23T20:37:44.120Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "Leonardo da Vinci, Artist and Inventor",
+        "pages": [
+          {
+            "text": "Leonardo da Vinci lived from 1452 to 1519. He was a famous Italian artist who also studied science, engineering, and nature. Today, he is known around the world for paintings like the Mona Lisa and the Last Supper, but he also spent much of his life working as an inventor and engineer.",
+            "evidenceIds": [
+              "P1",
+              "P2"
+            ]
+          },
+          {
+            "text": "During his lifetime, Leonardo did not go to a university and had no formal training in Latin or math. Because of this, other scholars largely ignored his science studies. Instead, he used his eyes as his main tool, watching the world closely and recording details in his personal journals.",
+            "evidenceIds": [
+              "P6",
+              "P7"
+            ]
+          },
+          {
+            "text": "Leonardo wrote and drew in his journals almost every day. He used his left hand and wrote in mirror script, which can be hard to read. These pages show his deep interest in how things worked, from flying machines and bridges to human anatomy and the movement of water.",
+            "evidenceIds": [
+              "P2",
+              "P7",
+              "P23"
+            ]
+          },
+          {
+            "text": "To better understand the body, Leonardo dissected human corpses. He also studied animals like cows, monkeys, and frogs to compare their structures with humans. His drawings of bones, muscles, and organs helped him create more realistic and powerful works of art.",
+            "evidenceIds": [
+              "P10",
+              "P12",
+              "P13"
+            ]
+          },
+          {
+            "text": "Leonardo designed many machines that were far ahead of his time. Although some ideas were too costly to build, his detailed drawings included early concepts for things like helicopters and parachutes. His careful observations linked art and science together in a remarkable way.",
+            "evidenceIds": [
+              "P2",
+              "P3"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "The Scientific Mind of Leonardo da Vinci",
+        "pages": [
+          {
+            "text": "Leonardo da Vinci is celebrated globally for masterpieces like the Mona Lisa, yet his genius extended far beyond painting. As an Italian polymath of the Renaissance, he immersed himself in diverse fields ranging from geometry and hydrodynamics to mechanics, anatomy, and civil engineering.",
+            "evidenceIds": [
+              "P1",
+              "P2"
+            ]
+          },
+          {
+            "text": "Lacking formal university education and knowledge of Latin, Leonardo relied primarily on intense visual observation rather than academic theory. His investigative processes are preserved in numerous journals, where he recorded daily thoughts, plans, and observations using his left hand in mirror script.",
+            "evidenceIds": [
+              "P6",
+              "P7"
+            ]
+          },
+          {
+            "text": "For Leonardo, art and science were closely intertwined. His artistic training informed his scientific approach, while his scientific studies helped him render the physical world with extraordinary precision. He studied human proportions closely, famously illustrating the Vitruvian Man as a link between art and science.",
+            "evidenceIds": [
+              "P3",
+              "P4"
+            ]
+          },
+          {
+            "text": "Leonardo advanced human anatomical knowledge through meticulous dissections of human corpses at various hospitals, collaborating with medical professionals. He also dissected animals such as monkeys, frogs, and cows to compare their anatomical structures with those of humans, recording his findings in detailed drawings.",
+            "evidenceIds": [
+              "P10",
+              "P12",
+              "P13"
+            ]
+          },
+          {
+            "text": "His notebooks contain thousands of pages featuring advanced mechanical designs and technical drawings. He conceived concepts for parachutes, helicopters, and armored vehicles, and understood complex principles like friction and leverage. Although many ideas proved impractical or too costly during his lifetime, his technical drawings pioneered modern drafting techniques.",
+            "evidenceIds": [
+              "P2",
+              "P24"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "Empirical Observation and Invention in the Renaissance",
+        "pages": [
+          {
+            "text": "Epitomizing the Renaissance ideal, Leonardo da Vinci integrated artistic mastery with extensive inquiries into diverse disciplines such as hydrodynamics, geometry, and mechanical engineering. While his paintings achieved widespread renown, his contemporary employment relied primarily on his aptitude for invention and engineering.",
+            "evidenceIds": [
+              "P1",
+              "P2"
+            ]
+          },
+          {
+            "text": "Operating without formal university training or proficiency in Latin, Leonardo approached natural philosophy through rigorous empirical observation rather than scholastic orthodoxy. His investigative methodologies relied almost exclusively on visual scrutiny, documenting his daily analyses, technical plans, and reflective notes in mirror script within surviving journals.",
+            "evidenceIds": [
+              "P6",
+              "P7"
+            ]
+          },
+          {
+            "text": "During the Renaissance, artistic and scientific pursuits were mutually reinforcing. Leonardo leveraged anatomical and optical insights to refine his artistic rendering. This synthesis is exemplified by the Vitruvian Man, which bridges artistic proportion with human anatomical study to reflect the concepts of microcosm and macrocosm.",
+            "evidenceIds": [
+              "P3",
+              "P4"
+            ]
+          },
+          {
+            "text": "To attain precise anatomical knowledge, Leonardo conducted systematic human dissections across multiple Italian hospitals in collaboration with medical practitioners. Complementing this, comparative anatomical studies involving various animal species allowed him to contrast structural morphologies through meticulous, illustrative sketches.",
+            "evidenceIds": [
+              "P10",
+              "P12",
+              "P13"
+            ]
+          },
+          {
+            "text": "Spanning over five thousand notebook pages, Leonardo's technical studies anticipated modern mechanical principles, including advanced leverage, gearing, friction, and aerodynamics. Although financial constraints and practical limitations prevented the realization of many ambitious designs—such as large-scale civil engineering projects—his graphic innovations introduced early forms of technical drawing techniques.",
+            "evidenceIds": [
+              "P2",
+              "P23",
+              "P24"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2743,
+    "output": 1471,
+    "total": 4214
+  },
+  "validation": null
 }
