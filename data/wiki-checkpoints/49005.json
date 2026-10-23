@@ -2,10 +2,10 @@
   "pageId": 49005,
   "title": "Atlantic slave trade",
   "topic": "Economy",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1381276519,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381276519",
-  "reason": "16 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -518,5 +518,123 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381276519"
     }
   ],
-  "updatedAt": "2026-10-23T20:33:22.692Z"
+  "updatedAt": "2026-10-23T20:33:36.392Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "The Story of the Atlantic Slave Trade",
+        "pages": [
+          {
+            "text": "The Atlantic slave trade involved moving enslaved people from Africa to the Americas. This trade lasted for many centuries, starting in the fifteenth century and continuing into the nineteenth century. Ships from both Europe and the New World carried these captive people across the ocean.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Most of the people who were taken came from Central and West Africa. Slave merchants in Africa sold these captives to buyers. European traders mostly purchased them on the coast instead of capturing them through raids. Some nations built forts or used their ships as bases to wait for cargoes.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "Europeans conquered lands in the Americas, but the native population shrank because of diseases. European workers were reluctant to emigrate there in large numbers. To solve this labor shortage, colonists turned to bringing enslaved people from sub-Saharan Africa to work the land.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "Enslaved Africans were sold to work on plantations growing crops like sugar, cotton, and tobacco. They also worked in mines and did construction. Over time, this system changed into chattel slavery. Enslaved people and their children became the legal property of their owners, bought and sold at markets.",
+            "evidenceIds": [
+              "P4"
+            ]
+          },
+          {
+            "text": "Seven main nations carried out most of this trade, usually bringing slaves to their own colonies. Millions of Africans were loaded onto ships for the journey. Tragically, many people died at sea before reaching the Americas. Near the start of the nineteenth century, various governments began to ban the trade.",
+            "evidenceIds": [
+              "P5",
+              "P6"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "History and Impact of Transatlantic Slaving",
+        "pages": [
+          {
+            "text": "The transatlantic slave trade was a massive historical movement operated by slave ships from Europe and the New World. It involved the forced transportation of enslaved African people to the Americas. Initiated by Europeans establishing a coastal trade in the fifteenth century, this practice persisted well into the nineteenth century, often utilizing the triangular trade route.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "The majority of the transported individuals originated from Central and West Africa. Rather than engaging in widespread raiding, Europeans typically purchased their captives from local African slave merchants. Traders gathered people using coastal forts or by utilizing their own anchored ships as floating bases, which often meant longer periods of confinement for the captives before departure.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "European conquest in the Americas created an urgent demand for a workforce. Because the indigenous population was shrinking due to European diseases and few Europeans were willing to emigrate, colonists faced severe labor shortages. The solution mirrored earlier practices used on island sugar plantations: importing enslaved people from sub-Saharan Africa.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "In the Americas, enslaved Africans labored on vast plantations producing coffee, tobacco, sugar, and cotton, as well as working in mines and construction. By the mid-seventeenth century, this labor transformed into a legal racial caste system of chattel slavery. Individuals and their offspring were treated as merchandise and property, valued according to health and expected productivity.",
+            "evidenceIds": [
+              "P4"
+            ]
+          },
+          {
+            "text": "Portugal, Britain, Spain, France, the Netherlands, the United States, and Denmark were the primary trading nations. Estimates suggest that about 12.75 million Africans were loaded onto ships, with up to two million perishing during the journey. Near the beginning of the nineteenth century, governments began banning the trade, though illegal smuggling persisted.",
+            "evidenceIds": [
+              "P6"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "Dynamics of the Transatlantic Slave Trade",
+        "pages": [
+          {
+            "text": "The transatlantic slave trade entailed the systematic maritime transportation of enslaved Africans to the Americas by European and New World merchants. Emerging from fifteenth-century European coastal initiatives, the trade persisted for centuries, frequently incorporating the triangular trade route and the Middle Passage during its earlier operational phases.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Originating predominantly from Central and West Africa, the captive populations were generally acquired through purchase from regional African merchants rather than direct European raiding. While the Portuguese constructed barracoons to assemble captives, northern Europeans often utilized their vessels as floating bases. This practice extended wait times on the coast, subjecting the initial captives to prolonged confinement aboard ship.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "The low population density of the Americas, exacerbated by indigenous demographic collapse driven by European diseases, created an acute labor deficit. European reluctance to emigrate precluded alternative labor recruitment. Consequently, colonists adopted the precedent established in mid-fifteenth-century island sugar plantations, sourcing labor from sub-Saharan Africa.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "Enslaved Africans were deployed across diverse sectors, including plantation agriculture for commodities like sugar, cotton, and tobacco, alongside mining and urban construction. By the mid-seventeenth century, the legal framework solidified into a racial chattel slavery system. Under the doctrine of partus sequitur ventrem, enslaved individuals and their descendants became the legal property of owners, valued as economic units.",
+            "evidenceIds": [
+              "P4"
+            ]
+          },
+          {
+            "text": "Seven nations dominated the trade volume, predominantly supplying their own colonial territories. Quantitative estimates indicate approximately 12.75 million African embarkations, accompanied by a substantial mortality rate where up to two million individuals perished at sea. Legislative bans were enacted by various governments near the dawn of the nineteenth century, though clandestine smuggling continued.",
+            "evidenceIds": [
+              "P5",
+              "P6"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2627,
+    "output": 1121,
+    "total": 3748
+  },
+  "validation": null
 }
