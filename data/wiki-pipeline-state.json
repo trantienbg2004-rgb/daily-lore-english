@@ -6266,10 +6266,10 @@
       "checkedAt": "2026-10-21T13:02:37.416Z"
     },
     "67500": {
-      "status": "VALIDATED",
-      "reason": "local factual, style, length, structure and source audit passed",
+      "status": "NEEDS_REVIEW",
+      "reason": "Wiki story gate: A1-A2:image-rights,B1-B2:image-rights,C1-C2:image-rights",
       "revisionId": 1377122545,
-      "checkedAt": "2026-10-23T06:29:35.156Z"
+      "checkedAt": "2026-10-23T06:29:41.234Z"
     },
     "73664": {
       "status": "EVIDENCE_READY",
@@ -9866,7 +9866,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-23T06:29:35.158Z",
+  "updatedAt": "2026-10-23T06:29:41.235Z",
   "dailyUsage": {
     "day": "2026-10-23",
     "calls": 14,
