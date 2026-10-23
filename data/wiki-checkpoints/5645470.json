@@ -596,7 +596,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380461433"
     }
   ],
-  "updatedAt": "2026-10-23T20:31:56.864Z",
+  "updatedAt": "2026-10-23T20:32:15.111Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -674,7 +674,7 @@
             ]
           },
           {
-            "text": "Maps in Ancient Babylonia were made by using accurate surveying techniques. A clay tablet found at Ga-Sur shows a river valley between two hills. Cuneiform inscriptions label the features on the map, including a plot of land owned by Azala. Hills are shown by overlapping semicircles, rivers by lines, and cities by circles.",
+            "text": "Maps in Ancient Babylonia were made by using accurate surveying techniques. For example, a clay tablet found at Ga-Sur shows a river valley between two hills. Cuneiform inscriptions label the features on the map, including a plot of land owned by Azala. Hills are shown by overlapping semicircles, rivers by lines, and cities by circles.",
             "evidenceIds": [
               "P6"
             ]
@@ -727,11 +727,11 @@
       }
     }
   },
-  "repairAttempts": 1,
+  "repairAttempts": 2,
   "lastUsage": {
-    "input": 2471,
-    "output": 94,
-    "total": 2565
+    "input": 2509,
+    "output": 137,
+    "total": 2646
   },
   "validation": null
 }
