@@ -2,10 +2,10 @@
   "pageId": 9282401,
   "title": "Science and inventions of Leonardo da Vinci",
   "topic": "Science & Technology",
-  "status": "DRAFTED",
+  "status": "VALIDATED",
   "revisionId": 1379158458,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379158458",
-  "reason": "draft durably saved before validation",
+  "reason": "local factual, style, length, structure and source audit passed",
   "rights": [
     {
       "status": "REVIEW",
@@ -602,7 +602,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379158458"
     }
   ],
-  "updatedAt": "2026-10-23T20:37:44.120Z",
+  "updatedAt": "2026-10-23T20:38:02.077Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -738,5 +738,8 @@
     "output": 1471,
     "total": 4214
   },
-  "validation": null
+  "validation": {
+    "accepted": true,
+    "errors": []
+  }
 }
