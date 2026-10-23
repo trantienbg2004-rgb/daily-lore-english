@@ -9278,10 +9278,10 @@
       "checkedAt": "2026-10-21T07:39:51.506Z"
     },
     "71983491": {
-      "status": "NEEDS_REVIEW",
-      "reason": "Targeted repair changed an unrelated sentence",
+      "status": "EVIDENCE_READY",
+      "reason": "5 rights-verified embedded images",
       "revisionId": 1377298310,
-      "checkedAt": "2026-10-21T13:30:19.718Z"
+      "checkedAt": "2026-10-23T15:07:01.623Z"
     },
     "72279466": {
       "status": "REJECTED",
@@ -9866,12 +9866,14 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-23T12:53:12.227Z",
+  "updatedAt": "2026-10-23T15:07:01.625Z",
   "dailyUsage": {
     "day": "2026-10-23",
     "calls": 22,
     "tokens": 72732,
     "usageUnknown": false,
-    "tokenAccountingUnavailable": false
+    "tokenAccountingUnavailable": false,
+    "modelCalls": {},
+    "legacyUnattributedCalls": 22
   }
 }
