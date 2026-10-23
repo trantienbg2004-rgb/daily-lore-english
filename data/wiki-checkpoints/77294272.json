@@ -191,44 +191,45 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381012040"
     }
   ],
-  "updatedAt": "2026-10-23T12:51:06.066Z",
+  "updatedAt": "2026-10-23T12:51:24.021Z",
   "draft": {
     "variants": {
       "A1-A2": {
         "headline": "Festival Totems in Crowds",
         "pages": [
           {
-            "text": "Festival totems are decorative objects, signs, toys, or symbols prominently displayed on poles by attendees at various music festivals and cultural events worldwide.",
+            "text": "Festival totems are decorative objects, signs, toys, or symbols prominently displayed on poles by attendees at various music festivals and cultural events worldwide. Often seen in crowds and campsites at large outdoor festivals, these totems serve various purposes ranging from artistic expression to practical communication in crowds.",
             "evidenceIds": [
               "P1"
             ]
           },
           {
-            "text": "At contemporary music and arts festivals, totems are commonly used by groups of attendees to locate one another in crowded environments.",
+            "text": "At contemporary music and arts festivals, totems are commonly used by groups of attendees to locate one another in crowded environments. Festivals have become known for vibrant displays of totems and flags that often feature unique handmade designs, humorous messages, current memes, or references to popular culture.",
             "evidenceIds": [
               "P2"
             ]
           },
           {
-            "text": "Typically, totems are DIY projects created by festival attendees from various crafting materials, though they have also recently become available to purchase online.",
+            "text": "Typically, totems are DIY projects created by festival attendees from various crafting materials, though they have also recently become available to purchase online from companies that specialize in totem creation.",
             "evidenceIds": [
-              "P1"
+              "P1",
+              "P3"
             ]
           },
           {
-            "text": "Ancient armies employed staffs and flags adorned with distinctive designs to distinguish allies from foes and serve as visible signs to rally around.",
+            "text": "Ancient armies employed staffs and flags adorned with distinctive designs to distinguish allies from foes and serve as visible signs to rally around. The concept of using related staffs to indicate locations was prevalent in ancient armies long before they were ever used at modern music festivals.",
             "evidenceIds": [
               "P4"
             ]
           },
           {
-            "text": "Festival attendees have opined that totems should not obstruct the view of others or interfere with the festival experience for fellow attendees.",
+            "text": "Festival attendees have opined that totems should not obstruct the view of others or interfere with the festival experience for fellow attendees. Others note that these totems supplement the festival experience and add artistic value while providing a crucial utilitarian purpose in finding friends.",
             "evidenceIds": [
               "P7"
             ]
           },
           {
-            "text": "Many festivals have implemented guidelines or restrictions regarding the size, material, height, and usage of totems due to safety and view concerns.",
+            "text": "Some organizers and attendees have raised concerns about safety and the potential for totems to block views of stages or performances. As a result, many festivals have implemented guidelines or restrictions regarding the size, material, height, and usage of totems.",
             "evidenceIds": [
               "P8"
             ]
@@ -272,7 +273,7 @@
             ]
           },
           {
-            "text": "Some organizers and attendees have raised concerns about safety and the potential for totems to block views of stages or performances, leading many festivals to implement guidelines or restrictions regarding the size, material, height, and usage of totems.",
+            "text": "Some organizers and attendees have raised concerns about safety and the potential for totems to block views of stages or performances. As a result, many festivals have implemented guidelines or restrictions regarding the size, material, height, and usage of totems.",
             "evidenceIds": [
               "P8"
             ]
@@ -325,11 +326,11 @@
       }
     }
   },
-  "repairAttempts": 1,
+  "repairAttempts": 2,
   "lastUsage": {
-    "input": 1604,
-    "output": 305,
-    "total": 1909
+    "input": 1675,
+    "output": 616,
+    "total": 2291
   },
   "validation": null
 }
