@@ -2,10 +2,10 @@
   "pageId": 73664,
   "title": "Astrolabe",
   "topic": "Science & Technology",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1376693845,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376693845",
-  "reason": "9 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -422,5 +422,156 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376693845"
     }
   ],
-  "updatedAt": "2026-10-23T06:29:47.940Z"
+  "updatedAt": "2026-10-23T06:30:07.678Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "The Astrolabe: An Ancient Star Tool",
+        "pages": [
+          {
+            "text": "An astrolabe is an old tool for looking at the stars. It acts as a star chart and a model of the sky. People used it to solve problems in astronomy long ago.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "The name comes from ancient words meaning star-taker. People in different parts of the world used this name. It helps people find positions of stars in the sky.",
+            "evidenceIds": [
+              "P1",
+              "P3",
+              "P4"
+            ]
+          },
+          {
+            "text": "An astrolabe is like a flat version of a round sphere. Writers and thinkers in ancient times wrote books about it. Later, Muslim astronomers made new improvements to its design.",
+            "evidenceIds": [
+              "P6",
+              "P7"
+            ]
+          },
+          {
+            "text": "The instrument is made of a metal disc and plates. These plates match specific places and latitudes. They help users find the exact position of stars and time.",
+            "evidenceIds": [
+              "P1",
+              "P11"
+            ]
+          },
+          {
+            "text": "Astrolabes were used for many different tasks over the centuries. People used them for time, prayer times, and finding directions. They were important tools in science and daily life.",
+            "evidenceIds": [
+              "P1",
+              "P19"
+            ]
+          },
+          {
+            "text": "Later, inventors made new types of astrolabes and clocks. Metal versions helped keep the instruments from bending. They remained important tools across many regions and history.",
+            "evidenceIds": [
+              "P10",
+              "P21",
+              "P22"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "History and Design of the Astrolabe",
+        "pages": [
+          {
+            "text": "An astrolabe is an astronomical instrument dating back to ancient times, serving as both a star chart and a physical model of the sky. It functions as an inclinometer and an analog calculation device capable of solving various astronomical problems.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "The Oxford English Dictionary traces the English word astrolabe through medieval Latin to the Greek astrolabos, meaning star-taker. In the medieval Islamic world, the Arabic translation also reflected this same meaning.",
+            "evidenceIds": [
+              "P3",
+              "P4"
+            ]
+          },
+          {
+            "text": "As a flat version of the armillary sphere, the astrolabe was discussed in early treatises by writers such as Theon of Alexandria. Muslim astronomers later refined the design by adding angular scales and azimuth circles.",
+            "evidenceIds": [
+              "P6",
+              "P7"
+            ]
+          },
+          {
+            "text": "Structurally, an astrolabe consists of a deep outer rim called a mater that holds flat plates known as tympans. These plates are engraved using stereographic projection based on the celestial equator and poles.",
+            "evidenceIds": [
+              "P11",
+              "P12"
+            ]
+          },
+          {
+            "text": "Astronomers utilized astrolabes for numerous applications, ranging from timekeeping and calendar calculations to determining prayer times and the direction of Mecca. Astrology and astronomy were closely linked during this era.",
+            "evidenceIds": [
+              "P19"
+            ]
+          },
+          {
+            "text": "Over time, diverse variations emerged, including spherical and linear astrolabes. Metal instruments eventually replaced wood in Western Europe to prevent warping, though they were heavier to handle.",
+            "evidenceIds": [
+              "P21",
+              "P22"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "The Astrolabe: Evolution and Mechanics",
+        "pages": [
+          {
+            "text": "Originating in antiquity, the astrolabe is a sophisticated astronomical instrument that functions as a star chart, inclinometer, and analog calculation device. It models the visible celestial hemisphere to compute precise astronomical positions day or night.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Etymologically derived from the Greek astrolabos via medieval Latin, the term translates to star-taker. Equivalent translations and historical folk etymologies were documented in medieval Islamic texts alongside formal treatises.",
+            "evidenceIds": [
+              "P3",
+              "P4",
+              "P5"
+            ]
+          },
+          {
+            "text": "Representing a planar projection of an armillary sphere, the instrument was analyzed in classical antiquity and significantly advanced during the Islamic Golden Age with the introduction of angular scales and azimuth markings.",
+            "evidenceIds": [
+              "P6",
+              "P7"
+            ]
+          },
+          {
+            "text": "The physical construction relies on stereographic projection using the South Pole as the projection point onto the equatorial plane. The mater houses specialized plates called tympans, which represent local latitude coordinates.",
+            "evidenceIds": [
+              "P11",
+              "P12"
+            ]
+          },
+          {
+            "text": "Scholars and astronomers utilized the instrument for a multitude of applications, encompassing mathematical astronomy, astrological observations, navigational tasks, timekeeping, and the determination of religious prayer schedules and direction.",
+            "evidenceIds": [
+              "P19"
+            ]
+          },
+          {
+            "text": "Technological evolution yielded specialized variants such as universal, spherical, and linear astrolabes. The transition to brass construction in Europe eliminated thermal and moisture warping, enhancing durability despite increased weight.",
+            "evidenceIds": [
+              "P21",
+              "P22",
+              "P23"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 3111,
+    "output": 975,
+    "total": 4086
+  },
+  "validation": null
 }
