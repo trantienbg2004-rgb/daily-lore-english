@@ -2,10 +2,10 @@
   "pageId": 398318,
   "title": "History of sport",
   "topic": "Sports",
-  "status": "DRAFTED",
+  "status": "NEEDS_REVIEW",
   "revisionId": 1380921999,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380921999",
-  "reason": "draft durably saved before validation",
+  "reason": "editorial: B1-B2:page-2:unsupported-number-context-3000,C1-C2:page-2:unsupported-number-context-3000",
   "rights": [
     {
       "status": "REJECTED",
@@ -414,7 +414,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380921999"
     }
   ],
-  "updatedAt": "2026-10-23T23:35:54.525Z",
+  "updatedAt": "2026-10-23T23:36:00.511Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -548,5 +548,11 @@
     "output": 205,
     "total": 2977
   },
-  "validation": null
+  "validation": {
+    "accepted": false,
+    "errors": [
+      "B1-B2:page-2:unsupported-number-context-3000",
+      "C1-C2:page-2:unsupported-number-context-3000"
+    ]
+  }
 }
