@@ -2,10 +2,10 @@
   "pageId": 69713049,
   "title": "Criminalization of homosexuality",
   "topic": "Society",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1381055731,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381055731",
-  "reason": "7 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -269,5 +269,135 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381055731"
     }
   ],
-  "updatedAt": "2026-10-23T17:15:14.213Z"
+  "updatedAt": "2026-10-23T17:15:44.587Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "Laws Against Same-Sex Acts",
+        "pages": [
+          {
+            "text": "In many parts of the world, laws make same-sex acts a crime. These laws are often not used for private acts. However, they can still cause big problems. They lead to unfair treatment, violence, and fear for many people. These laws also make it harder for people to get health care.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Some of these laws come from the British Empire. Other countries use religious laws to punish people. Today, many countries do not have these laws. But in some places, people can still face very harsh punishments, including death, for their sexual acts.",
+            "evidenceIds": [
+              "P3",
+              "P10"
+            ]
+          },
+          {
+            "text": "Long ago, some societies punished same-sex acts. In the Middle Ages, some European cities made new laws against them. These laws were often used to punish people during times of fear. Sometimes, people were even killed because of these old rules.",
+            "evidenceIds": [
+              "P4",
+              "P6"
+            ]
+          },
+          {
+            "text": "Today, these laws are hard to enforce because they happen in private. Even when they are not used, they make people feel unsafe. They can lead to police trouble or being treated badly by others. This causes a lot of pain and stress for many people.",
+            "evidenceIds": [
+              "P12",
+              "P13"
+            ]
+          },
+          {
+            "text": "Some countries still use fake medical tests to find out if someone is gay. These tests are not real science and are considered torture by the United Nations. Many people around the world are working to change these laws and protect human rights for everyone.",
+            "evidenceIds": [
+              "P5",
+              "P10"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "The History and Impact of Anti-Gay Laws",
+        "pages": [
+          {
+            "text": "Laws criminalizing same-sex acts exist in many regions today. While these laws are frequently unenforced regarding private, consensual conduct, they contribute to significant social harm. They often lead to police harassment, violence, and stigma. Furthermore, these laws discourage people from seeking necessary medical care, which worsens public health issues like HIV.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Many of these legal codes were inherited from the British Empire, which spread such laws to its colonies. Other nations base their laws on religious traditions. While a global wave of decriminalization occurred after World War II, some countries have recently increased enforcement, often citing the false belief that homosexuality is a foreign import.",
+            "evidenceIds": [
+              "P3",
+              "P7"
+            ]
+          },
+          {
+            "text": "Historical records show that prohibitions against same-sex acts have existed for centuries. Ancient societies, including the Assyrians and Germanic tribes, had various punishments for such acts. During the Middle Ages, European jurisdictions began adding sodomy prohibitions to secular law, often using them as a tool during times of social panic.",
+            "evidenceIds": [
+              "P4",
+              "P6"
+            ]
+          },
+          {
+            "text": "Enforcement of these laws is inherently difficult because they target private, consensual behavior. However, the existence of these laws creates a symbolic threat of state violence. This environment allows for blackmail, arbitrary arrests, and discrimination in areas like child custody and civil rights, causing severe psychological harm to LGBT individuals.",
+            "evidenceIds": [
+              "P12",
+              "P13"
+            ]
+          },
+          {
+            "text": "Some states continue to use medically discredited anal examinations to identify homosexual activity. The United Nations considers this practice a form of torture. Currently, dozens of countries maintain laws against same-sex acts, and in at least seven nations, these acts remain punishable by death, reflecting a persistent global struggle for human rights.",
+            "evidenceIds": [
+              "P5",
+              "P10"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "Global Perspectives on Criminalizing Homosexuality",
+        "pages": [
+          {
+            "text": "The criminalization of same-sex acts remains a significant issue in many jurisdictions. Although these laws are often not actively enforced against private, consensual conduct, they facilitate systemic stigmatization and police harassment. Additionally, such criminalization exacerbates public health crises, such as the HIV epidemic, by deterring individuals from accessing essential preventative care and medical treatment.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Legal frameworks often trace back to the British colonial era, where codes like the Indian Penal Code were exported globally. While many Western nations underwent decriminalization following World War II, other regions have seen a resurgence in enforcement. This is frequently driven by political narratives that frame homosexuality as a Western import, ignoring indigenous histories of tolerance.",
+            "evidenceIds": [
+              "P3",
+              "P7",
+              "P9"
+            ]
+          },
+          {
+            "text": "Historical precedents for these prohibitions are diverse. Ancient Roman law, such as the Lex Scantinia, and medieval European secular codes illustrate a long-standing pattern of state intervention. These laws were often inconsistently applied, frequently serving as instruments of social control during periods of moral panic or religious reform, such as the English Reformation.",
+            "evidenceIds": [
+              "P4",
+              "P6"
+            ]
+          },
+          {
+            "text": "The persistence of these laws creates a pervasive environment of insecurity. By defining same-sex conduct as criminal, states provide a justification for discrimination, including the denial of civil rights and child custody. This marginalization exposes LGBT individuals to violence from other citizens, while the fear of state authorities prevents victims from seeking legal protection.",
+            "evidenceIds": [
+              "P13"
+            ]
+          },
+          {
+            "text": "Enforcement mechanisms remain problematic, including the use of medically discredited anal examinations, which the United Nations classifies as torture. As of 2025, dozens of UN member states maintain de jure criminalization, with several imposing the death penalty. These laws continue to be maintained by legislative inertia, complicating the global pursuit of universal human rights.",
+            "evidenceIds": [
+              "P3",
+              "P5",
+              "P10",
+              "P12"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2764,
+    "output": 1416,
+    "total": 4180
+  },
+  "validation": null
 }
