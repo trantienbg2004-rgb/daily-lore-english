@@ -516,7 +516,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378430802"
     }
   ],
-  "updatedAt": "2026-10-23T17:11:59.674Z",
+  "updatedAt": "2026-10-23T17:12:24.369Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -620,10 +620,9 @@
             ]
           },
           {
-            "text": "Rooted heavily in mythology, the games intertwined athletic competition with religious worship, though precise historical origins remain difficult to untangle. While 776 BC serves as the conventional inception date, archaeological finds confirm that the games date from roughly this same period in the eighth century BC.",
+            "text": "To the ancient Greeks, it was important to root the Olympic Games in mythology, which was central to everyday life. The Greeks believed the games had their roots in religion, intending to bring peace and harmony. While the games are traditionally dated to 776 BC, this specific origin cannot be verified.",
             "evidenceIds": [
               "P4",
-              "P6",
               "P8"
             ]
           },
@@ -641,11 +640,11 @@
       }
     }
   },
-  "repairAttempts": 1,
+  "repairAttempts": 2,
   "lastUsage": {
-    "input": 2549,
-    "output": 133,
-    "total": 2682
+    "input": 2552,
+    "output": 132,
+    "total": 2684
   },
   "validation": null
 }
