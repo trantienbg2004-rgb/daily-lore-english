@@ -2,7 +2,7 @@ name: SAGA Wikipedia editorial pilot (branch only)
 
 on:
   push:
-    branches: [feat/saga-wikipedia-first-20261020]
+    branches: [feat/saga-wikipedia-first-20261020, feat/saga-wiki-final-20261023]
 
 permissions:
   contents: write

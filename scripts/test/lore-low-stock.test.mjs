@@ -29,7 +29,7 @@ test('old news workflow is absent and the isolated Wiki pilot cannot publish to 
  assert.match(wiki,/SAGA_IMAGE_TEST_API_KEY/)
  assert.match(wiki,/--max-calls=4/)
  assert.match(wiki,/--max-calls=2/)
- assert.match(wiki,/branches: \[feat\/saga-wikipedia-first-20261020\]/)
+ assert.match(wiki,/branches: \[feat\/saga-wikipedia-first-20261020, feat\/saga-wiki-final-20261023\]/)
  assert.doesNotMatch(wiki,/schedule:|cron:|push origin .*main/)
  assert.ok(!/GITHUB_TOKEN|GH_PAT|SAGA_IMAGE_TEST_API_KEY/.test(app))
 })
