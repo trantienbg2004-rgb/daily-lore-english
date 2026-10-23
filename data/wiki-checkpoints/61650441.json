@@ -2,10 +2,10 @@
   "pageId": 61650441,
   "title": "Democracy in Mexico",
   "topic": "Politics",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1381251267,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381251267",
-  "reason": "7 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -329,7 +329,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381251267"
     }
   ],
-  "updatedAt": "2026-10-23T17:12:37.449Z",
+  "updatedAt": "2026-10-23T17:13:20.903Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -356,7 +356,7 @@
             ]
           },
           {
-            "text": "From 1876 to 1911, a leader named Porfirio Díaz ruled the country. Elections happened regularly, but the people had little real voice. This long period of strict rule eventually caused great anger among the public and led directly to the Mexican Revolution.",
+            "text": "From 1876 to 1911, regular elections were held, but the electorate remained politically unengaged. This era was the presidency of Porfirio Díaz, who ascended to power via military coup. As resentment towards Díaz increased, the Mexican Revolution broke out.",
             "evidenceIds": [
               "P3",
               "P15"
@@ -382,7 +382,7 @@
             ]
           },
           {
-            "text": "Throughout the early decades, military coups continually undermined the young republic. Politician-general Antonio López de Santa Anna dominated political life until liberal politicians successfully ousted him in 1855, paving the way for the radical Constitution of 1857.",
+            "text": "Throughout the early decades, military coups continually undermined the young republic. Politician-general Antonio López de Santa Anna held immense sway over the fledgling Mexican democracy until liberal politicians successfully ousted him in 1855, paving the way for the Constitution of 1857.",
             "evidenceIds": [
               "P1",
               "P2",
@@ -398,7 +398,7 @@
             ]
           },
           {
-            "text": "Díaz maintained power for decades through manipulated elections and the suppression of dissent. Popular resentment eventually erupted into the Mexican Revolution of 1910. A new constitution was ratified in 1917, establishing principles that shaped modern politics.",
+            "text": "Díaz held power directly and indirectly until 1910. Popular resentment eventually erupted into the Mexican Revolution of 1910, which ended with the creation of the new Constitution after its ratification on 5 February 1917, establishing principles that shaped modern politics.",
             "evidenceIds": [
               "P3",
               "P4",
@@ -426,7 +426,7 @@
             ]
           },
           {
-            "text": "Successive military insurrections systematically eroded early constitutional principles. General Antonio López de Santa Anna emerged as the preeminent caudillo, exerting immense political sway until liberal factions orchestrated his ouster in 1855 and instituted the progressive Constitution of 1857.",
+            "text": "Successive military insurrections systematically eroded early constitutional principles. General Antonio López de Santa Anna emerged as a military strongman, exerting immense political sway until liberal factions orchestrated his ouster in 1855 and instituted the progressive Constitution of 1857.",
             "evidenceIds": [
               "P1",
               "P2",
@@ -460,11 +460,11 @@
       }
     }
   },
-  "repairAttempts": 1,
+  "repairAttempts": 2,
   "lastUsage": {
-    "input": 3186,
-    "output": 548,
-    "total": 3734
+    "input": 3086,
+    "output": 479,
+    "total": 3565
   },
   "validation": null
 }
