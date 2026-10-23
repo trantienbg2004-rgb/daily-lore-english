@@ -252,7 +252,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376535017"
     }
   ],
-  "updatedAt": "2026-10-23T12:52:42.083Z",
+  "updatedAt": "2026-10-23T12:53:00.126Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -362,11 +362,11 @@
       }
     }
   },
-  "repairAttempts": 0,
+  "repairAttempts": 1,
   "lastUsage": {
-    "input": 2475,
-    "output": 1282,
-    "total": 3757
+    "input": 2379,
+    "output": 198,
+    "total": 2577
   },
   "validation": null
 }
