@@ -6788,10 +6788,10 @@
       "checkedAt": "2026-10-21T07:35:01.221Z"
     },
     "1089237": {
-      "status": "DRAFTED",
-      "reason": "draft durably saved before validation",
+      "status": "NEEDS_REVIEW",
+      "reason": "editorial: C1-C2:page-4:audit-The evidence does not support the claim that Southern right whale population recovery was due to the cessation",
       "revisionId": 1380971520,
-      "checkedAt": "2026-10-23T16:56:47.402Z"
+      "checkedAt": "2026-10-23T16:57:04.599Z"
     },
     "1127534": {
       "status": "RETRY_LATER",
@@ -9866,7 +9866,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-23T16:56:59.483Z",
+  "updatedAt": "2026-10-23T16:57:04.601Z",
   "dailyUsage": {
     "day": "2026-10-23",
     "calls": 31,
