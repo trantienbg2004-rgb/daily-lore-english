@@ -100,9 +100,10 @@ test('no image rights means no Gemini call and a retained review reason',async()
  assert.equal(stored.outcomes[42].status,'NEEDS_REVIEW')
 })
 
-test('accepted media review is retried without another Gemini call when placement improves',async()=>{
+test('accepted media review and a canonical license retry without another Gemini call',async()=>{
+ for(const reason of ['no-verified-lead-photo','license-url-canonicalization-needed']){
  const stored=state()
- stored.outcomes[42]={status:'NEEDS_REVIEW',reason:'no-verified-lead-photo',revisionId:123}
+ stored.outcomes[42]={status:'NEEDS_REVIEW',reason,revisionId:123}
  const saved={pageId:42,revisionId:123,status:'NEEDS_REVIEW',rights:[{status:'REVIEW',
   photo:{url:'https://thumb.wikimedia.org/map',fileTitle:'File:Map.svg'}}],
   validation:{accepted:true},draft:{variants:{}},evidence:[{id:'P1'}]}
@@ -117,6 +118,7 @@ test('accepted media review is retried without another Gemini call when placemen
  assert.equal(result.apiCalls,0)
  assert.equal(result.published,1)
  assert.equal(appended,1)
+ }
 })
 
 test('a one-candidate batch reaches an unfilled topic before a well-stocked topic',async()=>{

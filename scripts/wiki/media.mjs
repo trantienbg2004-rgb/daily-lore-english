@@ -94,6 +94,8 @@ export function assignWikipediaPhotos(decisions,source,levelVariants,{usedUrls=n
   for(const level of levels){
    const pageIndex=indexes[level],page=variants[level].pages[pageIndex]
    const provenance={...row.perLevel[level].photo.provenance,
+    licenseUrl:String(row.perLevel[level].photo.provenance.licenseUrl||'')
+     .replace(/^http:\/\/creativecommons\.org\//i,'https://creativecommons.org/'),
     evidence:{...row.perLevel[level].photo.provenance.evidence,pageIndex}}
    Object.assign(page,{image:photo.url,caption:photo.caption,imageProvenance:provenance})
   }

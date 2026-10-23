@@ -40,6 +40,21 @@ test('embedded file needs its own rights; a context match places a map on page o
  assert.equal(verifyEmbeddedImage(figure,restricted).status,'REJECTED')
 })
 
+test('Commons HTTP license metadata is canonicalized before the story gate',()=>{
+ const cc0=structuredClone(page)
+ cc0.imageinfo[0].extmetadata.LicenseShortName.value='CC0'
+ cc0.imageinfo[0].extmetadata.LicenseUrl.value='http://creativecommons.org/publicdomain/zero/1.0/deed.en'
+ const verified=verifyEmbeddedImage(figure,cc0)
+ assert.equal(verified.status,'REVIEW')
+ assert.equal(verified.photo.provenance.licenseUrl,'https://creativecommons.org/publicdomain/zero/1.0/deed.en')
+ const legacy=structuredClone(verified)
+ legacy.photo.provenance.licenseUrl='http://creativecommons.org/publicdomain/zero/1.0/deed.en'
+ const assigned=assignWikipediaPhotos([legacy],source,levels)
+ assert.equal(assigned.status,'VERIFIED')
+ assert.equal(assigned.levelVariants['A1-A2'].pages[0].imageProvenance.licenseUrl,
+  'https://creativecommons.org/publicdomain/zero/1.0/deed.en')
+})
+
 test('a second embedded licensed image appears on its relevant later page',()=>{
  const diagram={...figure,fileTitle:'File:Silk Road caravan route diagram.jpg',caption:'Caravan trade routes across Central Asia',
   alt:'Caravans on trade routes',position:2}

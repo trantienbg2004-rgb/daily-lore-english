@@ -83,7 +83,8 @@ export async function discoverWikiQueue({base,topics=WIKI_TOPICS,maxPerTopic=30,
 const ACTIVE_QUEUE_STATUSES=new Set(['PENDING','FETCHED','EVIDENCE_READY','DRAFTED','VALIDATED','NEEDS_REPAIR','RETRY_LATER'])
 const TERMINAL_QUEUE_STATUSES=new Set(['published','PUBLISHED','rejected','REJECTED','review','NEEDS_REVIEW'])
 const retryableTechnicalReview=outcome=>outcome?.status==='NEEDS_REVIEW'&&
- ['no-verified-lead-photo','no-verified-photo-placement','Targeted repair changed an unrelated sentence'].includes(outcome.reason)
+ ['no-verified-lead-photo','no-verified-photo-placement','license-url-canonicalization-needed',
+  'Targeted repair changed an unrelated sentence'].includes(outcome.reason)
 const MODEL_503_COOLDOWN_MS=6*60*60*1000
 const coolingAfterModel503=(outcome,now)=>{
  if(outcome?.status!=='RETRY_LATER'||!/^Gemini HTTP 503\b/.test(outcome.reason||''))return false
