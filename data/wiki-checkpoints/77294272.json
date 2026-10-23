@@ -2,10 +2,10 @@
   "pageId": 77294272,
   "title": "Festival totem",
   "topic": "Culture",
-  "status": "DRAFTED",
+  "status": "NEEDS_REVIEW",
   "revisionId": 1381012040,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381012040",
-  "reason": "draft durably saved before validation",
+  "reason": "editorial: A1-A2:page-1:copied-source-passage,A1-A2:page-2:copied-source-passage,A1-A2:page-5:copied-source-passage,A1-A2:page-6:copied-sour",
   "rights": [
     {
       "status": "REVIEW",
@@ -191,7 +191,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381012040"
     }
   ],
-  "updatedAt": "2026-10-23T12:51:24.021Z",
+  "updatedAt": "2026-10-23T12:51:30.137Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -332,5 +332,14 @@
     "output": 616,
     "total": 2291
   },
-  "validation": null
+  "validation": {
+    "accepted": false,
+    "errors": [
+      "A1-A2:page-1:copied-source-passage",
+      "A1-A2:page-2:copied-source-passage",
+      "A1-A2:page-5:copied-source-passage",
+      "A1-A2:page-6:copied-source-passage",
+      "B1-B2:page-6:copied-source-passage"
+    ]
+  }
 }
