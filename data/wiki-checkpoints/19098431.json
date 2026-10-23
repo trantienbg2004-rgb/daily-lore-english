@@ -2,10 +2,10 @@
   "pageId": 19098431,
   "title": "Ancient Olympic Games",
   "topic": "Sports",
-  "status": "DRAFTED",
+  "status": "NEEDS_REVIEW",
   "revisionId": 1378430802,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378430802",
-  "reason": "draft durably saved before validation",
+  "reason": "editorial: C1-C2:page-4:unsupported-number-context-776",
   "rights": [
     {
       "status": "REVIEW",
@@ -516,7 +516,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378430802"
     }
   ],
-  "updatedAt": "2026-10-23T17:12:24.369Z",
+  "updatedAt": "2026-10-23T17:12:29.615Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -646,5 +646,10 @@
     "output": 132,
     "total": 2684
   },
-  "validation": null
+  "validation": {
+    "accepted": false,
+    "errors": [
+      "C1-C2:page-4:unsupported-number-context-776"
+    ]
+  }
 }
