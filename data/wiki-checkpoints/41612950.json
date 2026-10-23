@@ -2,10 +2,10 @@
   "pageId": 41612950,
   "title": "Anti-fascism",
   "topic": "Politics",
-  "status": "DRAFTED",
+  "status": "VALIDATED",
   "revisionId": 1380020724,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380020724",
-  "reason": "draft durably saved before validation",
+  "reason": "local factual, style, length, structure and source audit passed",
   "rights": [
     {
       "status": "REJECTED",
@@ -505,7 +505,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380020724"
     }
   ],
-  "updatedAt": "2026-10-23T23:38:18.621Z",
+  "updatedAt": "2026-10-23T23:38:36.695Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -621,5 +621,8 @@
     "output": 1473,
     "total": 4498
   },
-  "validation": null
+  "validation": {
+    "accepted": true,
+    "errors": []
+  }
 }

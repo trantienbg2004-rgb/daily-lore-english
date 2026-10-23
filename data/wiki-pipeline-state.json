@@ -8426,10 +8426,10 @@
       "checkedAt": "2026-10-21T07:56:01.605Z"
     },
     "41612950": {
-      "status": "DRAFTED",
-      "reason": "draft durably saved before validation",
+      "status": "VALIDATED",
+      "reason": "local factual, style, length, structure and source audit passed",
       "revisionId": 1380020724,
-      "checkedAt": "2026-10-23T23:38:18.620Z"
+      "checkedAt": "2026-10-23T23:38:36.695Z"
     },
     "41994159": {
       "status": "RETRY_LATER",
@@ -9866,7 +9866,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-23T23:38:34.895Z",
+  "updatedAt": "2026-10-23T23:38:36.696Z",
   "dailyUsage": {
     "day": "2026-10-23",
     "calls": 100,
