@@ -2,10 +2,10 @@
   "pageId": 81553,
   "title": "Teotihuacan",
   "topic": "History & Geography",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1380618636,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380618636",
-  "reason": "16 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -514,5 +514,151 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380618636"
     }
   ],
-  "updatedAt": "2026-10-23T23:34:16.456Z"
+  "updatedAt": "2026-10-23T23:34:30.262Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "The Ancient City of Teotihuacan",
+        "pages": [
+          {
+            "text": "Teotihuacan is a very old city in Mexico. It is located about forty kilometers northeast of modern Mexico City. This place is famous for its large and important pyramids built long before the Aztec Empire existed.",
+            "evidenceIds": [
+              "P1",
+              "P2"
+            ]
+          },
+          {
+            "text": "The city had many people living in it. At its highest point, it was one of the largest cities in the world. People lived in special multi-family houses and walked along the wide Avenue of the Dead.",
+            "evidenceIds": [
+              "P2",
+              "P3",
+              "P4"
+            ]
+          },
+          {
+            "text": "The early history of the city is quite mysterious. People do not know exactly who founded it. Later, the Aztecs found these great ruins and named the place Teotihuacan, which means birthplace of the gods.",
+            "evidenceIds": [
+              "P5",
+              "P7"
+            ]
+          },
+          {
+            "text": "The city had no major military walls or structures. Scholars debate how the city was ruled because they have not found records of kings. Many believe that the people used a form of collective governance.",
+            "evidenceIds": [
+              "P9",
+              "P11"
+            ]
+          },
+          {
+            "text": "Later on, major monuments were burned and destroyed. Scholars used to think foreign invaders attacked the city. Now, new evidence suggests the destruction might have been caused by an internal uprising.",
+            "evidenceIds": [
+              "P3",
+              "P12"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "Exploring the Ancient Metropolis of Teotihuacan",
+        "pages": [
+          {
+            "text": "Located in a sub-valley of the Valley of Mexico, Teotihuacan was an ancient Mesoamerican city situated forty kilometers northeast of modern-day Mexico City. It is widely known today for its architecturally significant pyramids, including the Pyramid of the Sun and the Pyramid of the Moon, which predated the Aztec Empire by many centuries.",
+            "evidenceIds": [
+              "P1",
+              "P2"
+            ]
+          },
+          {
+            "text": "At its zenith, Teotihuacan was the largest city in the Americas, with an estimated population ranging from 25,000 to over 100,000 people. The city covered twenty-one square kilometers and featured complex multi-family residential compounds, vibrant murals, and an extensive export network for fine obsidian tools.",
+            "evidenceIds": [
+              "P2",
+              "P3"
+            ]
+          },
+          {
+            "text": "The exact ethnicity of the inhabitants and the identity of the city's founders remain subjects of ongoing debate among scholars. Some suggest the population was multi-ethnic, consisting of migrants from various regions across Mesoamerica who were drawn to the thriving urban center.",
+            "evidenceIds": [
+              "P5",
+              "P6"
+            ]
+          },
+          {
+            "text": "Unlike many contemporaneous cities in the region, Teotihuacan lacks striking evidence of a king or authoritarian ruler, such as royal palaces or war depictions. Because of this absence, many scholars have concluded that the city relied on some form of collective governance rather than dynastic rule.",
+            "evidenceIds": [
+              "P9"
+            ]
+          },
+          {
+            "text": "Around 550 CE, the major monuments of the city were systematically burned and sacked. While earlier scholars assumed foreign invaders were responsible, recent evidence indicates the burning was concentrated on major civic structures, suggesting it may have stemmed from an internal uprising.",
+            "evidenceIds": [
+              "P3",
+              "P12"
+            ]
+          },
+          {
+            "text": "Centuries after the collapse of the city, Nahua migrants repopulated the area. When the later Aztecs encountered the magnificent ruins, they claimed a common ancestry with the original inhabitants and adopted various aspects of their culture and religious traditions.",
+            "evidenceIds": [
+              "P4",
+              "P7",
+              "P13"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "History and Mystery of Teotihuacan",
+        "pages": [
+          {
+            "text": "Situated in the Valley of Mexico forty kilometers northeast of modern-day Mexico City, Teotihuacan stands as one of the pre-Columbian Americas' most prominent ancient urban centers. Famous for monumental structures like the Pyramid of the Sun and the Pyramid of the Moon, the settlement flourished long before the rise of the Aztec Empire.",
+            "evidenceIds": [
+              "P1",
+              "P2"
+            ]
+          },
+          {
+            "text": "During its demographic peak in the first half of the first millennium, the city encompassed twenty-one square kilometers and housed a vast population. Archaeological remains reveal sophisticated multi-family residential compounds, well-preserved murals, the Avenue of the Dead, and a far-reaching trade network centered on obsidian tool exportation.",
+            "evidenceIds": [
+              "P2",
+              "P3"
+            ]
+          },
+          {
+            "text": "The precise ethnicity of Teotihuacan's populace and the origin of its founders continue to generate scholarly debate. Hypotheses range from specific linguistic groups such as Nahuas, Otomi, or Totonac to a decidedly multi-ethnic populace drawing migrants from Oaxaca, the Gulf Coast, and the Maya region.",
+            "evidenceIds": [
+              "P5",
+              "P6"
+            ]
+          },
+          {
+            "text": "A notable absence of dynastic markers distinguishes Teotihuacan from contemporaneous Mesoamerican polities. The lack of royal palaces, ceremonial ball courts, and artistic depictions of warfare and captive humiliation has led numerous researchers to theorize that the city operated under a system of collective governance.",
+            "evidenceIds": [
+              "P9"
+            ]
+          },
+          {
+            "text": "Around 550 CE, major civic structures along the Avenue of the Dead experienced systematic burning and destruction. While initial archaeological interpretations attributed this devastation to foreign invasion, contemporary evaluations suggest the damage was primarily restricted to upper-class structures, pointing toward a possible internal sociopolitical uprising.",
+            "evidenceIds": [
+              "P3",
+              "P12"
+            ]
+          },
+          {
+            "text": "Long after the metropolis fell into abandonment, later Nahua groups repopulated the surrounding area. Upon encountering the monumental ruins, the Aztecs integrated aspects of Teotihuacano heritage into their own cosmological framework, interpreting the site as the mythical birthplace of the gods.",
+            "evidenceIds": [
+              "P4",
+              "P7",
+              "P13"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2975,
+    "output": 1613,
+    "total": 4588
+  },
+  "validation": null
 }
