@@ -422,7 +422,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376693845"
     }
   ],
-  "updatedAt": "2026-10-23T12:51:54.128Z",
+  "updatedAt": "2026-10-23T12:52:12.078Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -464,9 +464,8 @@
             ]
           },
           {
-            "text": "Later, inventors made new types of astrolabes and clocks. Metal versions helped keep the instruments from bending. They remained important tools across many regions and history.",
+            "text": "Later, inventors created spherical and linear astrolabes. Western Europeans later built metal astrolabes out of brass to stop them from bending. These metal tools were heavier to use, but they helped keep the instruments from warping over time.",
             "evidenceIds": [
-              "P10",
               "P21",
               "P22"
             ]
@@ -567,11 +566,11 @@
       }
     }
   },
-  "repairAttempts": 1,
+  "repairAttempts": 2,
   "lastUsage": {
     "input": 3009,
-    "output": 207,
-    "total": 3216
+    "output": 215,
+    "total": 3224
   },
   "validation": null
 }
