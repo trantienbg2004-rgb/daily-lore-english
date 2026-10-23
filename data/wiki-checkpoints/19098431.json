@@ -2,10 +2,10 @@
   "pageId": 19098431,
   "title": "Ancient Olympic Games",
   "topic": "Sports",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1378430802,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378430802",
-  "reason": "16 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -516,7 +516,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378430802"
     }
   ],
-  "updatedAt": "2026-10-23T17:11:29.569Z",
+  "updatedAt": "2026-10-23T17:11:59.674Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -620,7 +620,7 @@
             ]
           },
           {
-            "text": "Rooted heavily in mythology, the games intertwined athletic competition with religious worship, though precise historical origins remain difficult to untangle. While 776 BC serves as the conventional inception date, scholarly consensus points generally to the eighth century BC based on converging archaeological evidence.",
+            "text": "Rooted heavily in mythology, the games intertwined athletic competition with religious worship, though precise historical origins remain difficult to untangle. While 776 BC serves as the conventional inception date, archaeological finds confirm that the games date from roughly this same period in the eighth century BC.",
             "evidenceIds": [
               "P4",
               "P6",
@@ -641,16 +641,11 @@
       }
     }
   },
-  "repairAttempts": 0,
+  "repairAttempts": 1,
   "lastUsage": {
-    "input": 2722,
-    "output": 1414,
-    "total": 4136
+    "input": 2549,
+    "output": 133,
+    "total": 2682
   },
-  "validation": {
-    "accepted": false,
-    "errors": [
-      "C1-C2:page-4:unsupported-number-context-776"
-    ]
-  }
+  "validation": null
 }
