@@ -83,10 +83,11 @@ export async function callFreeWikiGemini(prompt,{apiKey,freeTierConfirmed=false,
  let response
  for(;;){
   if((budget.usedCalls||0)>=budget.maxCalls||
-   (budget.dailyCalls||0)>=Math.min(budget.maxDailyCalls||450,450)||
-   (budget.dailyTokens||budget.usage?.total||0)>=Math.min(budget.maxTokens||1500000,1500000)||
-   (budget.dailyModelCalls?.[model]||0)+(model.endsWith('flash-lite')?0:budget.legacyUnattributedCalls||0)>=modelDailyCap(model))
+   (budget.dailyCalls||0)>=Math.min(budget.maxDailyCalls||900,900)||
+   (budget.dailyTokens||budget.usage?.total||0)>=Math.min(budget.maxTokens||3000000,3000000))
    throw new GeminiWikiPause('Free API call, daily or token budget exhausted')
+  if((budget.dailyModelCalls?.[model]||0)+(model.endsWith('flash-lite')?0:budget.legacyUnattributedCalls||0)>=modelDailyCap(model))
+   throw new GeminiWikiPause(`Free model ${model} daily quota exhausted`,'MODEL_QUOTA')
   if(budget.lastCallAt){const delay=budget.lastCallAt+modelSpacing(model)-now();if(delay>0)await waitImpl(delay)}
   budget.lastCallAt=now();budget.usedCalls=(budget.usedCalls||0)+1;budget.dailyCalls=(budget.dailyCalls||0)+1
   budget.dailyModelCalls??={}

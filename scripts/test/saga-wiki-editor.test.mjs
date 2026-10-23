@@ -108,12 +108,12 @@ test('the expanded free-project budget still stops before request and token ceil
   candidates:[{content:{parts:[{text:'{}'}]}}],
   usageMetadata:{promptTokenCount:1,candidatesTokenCount:1,totalTokenCount:2}})}}
  for(const budget of [
-  {maxCalls:1,usedCalls:0,dailyCalls:450,dailyTokens:0},
-  {maxCalls:1,usedCalls:0,dailyCalls:0,dailyTokens:1500000}])
+  {maxCalls:1,usedCalls:0,dailyCalls:900,dailyTokens:0},
+  {maxCalls:1,usedCalls:0,dailyCalls:0,dailyTokens:3000000}])
   await assert.rejects(callFreeWikiGemini('draft',{apiKey:'test-key',freeTierConfirmed:true,budget,fetchImpl}),GeminiWikiPause)
  assert.equal(calls,0)
  await callFreeWikiGemini('draft',{apiKey:'test-key',freeTierConfirmed:true,
-  budget:{maxCalls:1,usedCalls:0,dailyCalls:449,dailyTokens:1499998},fetchImpl})
+  budget:{maxCalls:1,usedCalls:0,dailyCalls:899,dailyTokens:2999998},fetchImpl})
  assert.equal(calls,1)
 })
 
@@ -150,7 +150,7 @@ test('full Flash uses its own small daily pool and slower request spacing',async
   candidates:[{content:{parts:[{text:'{}'}]}}],usageMetadata:{promptTokenCount:1,candidatesTokenCount:1,totalTokenCount:2}})}}
  await assert.rejects(callFreeWikiGemini('prompt',{apiKey:'test-key',freeTierConfirmed:true,
   model:'gemini-3.8-flash',budget:{maxCalls:2,dailyModelCalls:{'gemini-3.8-flash':18}},fetchImpl:response}),
- /daily or token budget exhausted/)
+ error=>error instanceof GeminiWikiPause&&error.status==='MODEL_QUOTA')
  assert.equal(calls,0)
  const waits=[]
  const budget={maxCalls:2,lastCallAt:1000,dailyModelCalls:{'gemini-3.8-flash':0}}
@@ -158,6 +158,23 @@ test('full Flash uses its own small daily pool and slower request spacing',async
   budget,fetchImpl:response,now:()=>1000,waitImpl:async ms=>waits.push(ms)})
  assert.deepEqual(waits,[15000])
  assert.equal(budget.dailyModelCalls['gemini-3.8-flash'],1)
+})
+
+test('two listed Lite models retain separate conservative free daily pools',async()=>{
+ let calls=0
+ const budget={maxCalls:2,usedCalls:0,dailyCalls:450,dailyTokens:1500000,
+  dailyModelCalls:{'gemini-3.5-flash-lite':450,'gemini-3.1-flash-lite':0}}
+ const fetchImpl=async()=>{calls++;return {ok:true,status:200,json:async()=>({
+  candidates:[{content:{parts:[{text:'{}'}]}}],
+  usageMetadata:{promptTokenCount:1,candidatesTokenCount:1,totalTokenCount:2}})}}
+ await assert.rejects(callFreeWikiGemini('prompt',{apiKey:'test-key',freeTierConfirmed:true,
+  model:'gemini-3.5-flash-lite',budget,fetchImpl}),
+  error=>error instanceof GeminiWikiPause&&error.status==='MODEL_QUOTA')
+ assert.equal(calls,0)
+ await callFreeWikiGemini('prompt',{apiKey:'test-key',freeTierConfirmed:true,
+  model:'gemini-3.1-flash-lite',budget,fetchImpl})
+ assert.equal(calls,1)
+ assert.equal(budget.dailyModelCalls['gemini-3.1-flash-lite'],1)
 })
 
 test('editorial audit rejects unsupported claims and malformed reviews',()=>{
