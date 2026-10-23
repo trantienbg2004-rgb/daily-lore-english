@@ -2,10 +2,10 @@
   "pageId": 5546586,
   "title": "Christian Topography",
   "topic": "History & Geography",
-  "status": "DRAFTED",
+  "status": "VALIDATED",
   "revisionId": 1372390340,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1372390340",
-  "reason": "draft durably saved before validation",
+  "reason": "local factual, style, length, structure and source audit passed",
   "rights": [
     {
       "status": "REVIEW",
@@ -123,7 +123,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1372390340"
     }
   ],
-  "updatedAt": "2026-10-23T00:55:03.236Z",
+  "updatedAt": "2026-10-23T00:55:21.283Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -272,5 +272,8 @@
     "output": 128,
     "total": 2012
   },
-  "validation": null
+  "validation": {
+    "accepted": true,
+    "errors": []
+  }
 }
