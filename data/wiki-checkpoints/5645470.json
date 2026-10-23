@@ -2,10 +2,10 @@
   "pageId": 5645470,
   "title": "History of cartography",
   "topic": "History & Geography",
-  "status": "DRAFTED",
+  "status": "NEEDS_REVIEW",
   "revisionId": 1380461433,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380461433",
-  "reason": "draft durably saved before validation",
+  "reason": "editorial: B1-B2:page-6:copied-source-passage",
   "rights": [
     {
       "status": "REVIEW",
@@ -596,7 +596,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380461433"
     }
   ],
-  "updatedAt": "2026-10-23T20:32:15.111Z",
+  "updatedAt": "2026-10-23T20:32:20.759Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -733,5 +733,10 @@
     "output": 137,
     "total": 2646
   },
-  "validation": null
+  "validation": {
+    "accepted": false,
+    "errors": [
+      "B1-B2:page-6:copied-source-passage"
+    ]
+  }
 }
