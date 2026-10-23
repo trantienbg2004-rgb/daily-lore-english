@@ -2,10 +2,10 @@
   "pageId": 67500,
   "title": "Festival",
   "topic": "Culture",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1377122545,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377122545",
-  "reason": "8 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -356,5 +356,146 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377122545"
     }
   ],
-  "updatedAt": "2026-10-23T06:28:55.885Z"
+  "updatedAt": "2026-10-23T06:29:17.022Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "Festivals around the world",
+        "pages": [
+          {
+            "text": "A festival is a special event celebrated by a community. It focuses on religion, traditions, or culture. Many festivals are national holidays or cultural fairs. They often connect to food, agriculture, and harvest time in autumn or other seasons.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Festivals serve many purposes. They give thanks to gods or saints and provide entertainment. Cultural and ethnic festivals help people share traditions and stories. Attendees often want socialization, escapism, and a strong sense of belonging across different places.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "The word festival comes from Latin and Old French. Long ago, it was used as an adjective. In Middle English, a festival day meant a religious holiday. Later, people began using it as a noun.",
+            "evidenceIds": [
+              "P3",
+              "P4"
+            ]
+          },
+          {
+            "text": "Festivals are important in human history and appear in almost all cultures. Many have religious origins and mark out the year. Others celebrate seasonal changes, historical events, or important military victories of ancient rulers.",
+            "evidenceIds": [
+              "P6",
+              "P7"
+            ]
+          },
+          {
+            "text": "There are many types of festivals, including music, arts, and food events. Most celebrations are local, modest, and loved by the public. They bring people together to share food, enjoy traditional activities, and celebrate important national holidays.",
+            "evidenceIds": [
+              "P8",
+              "P16",
+              "P22"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "The History and Purpose of Festivals",
+        "pages": [
+          {
+            "text": "A festival is a community event centered on religion, traditions, or culture. Often observed as national holidays or cultural fairs, many celebrations connect deeply to agriculture and harvest times, integrating religious observances and thanksgiving for successful crops into the seasonal calendar.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Beyond commemoration and giving thanks to deities, festivals provide entertainment and help communities preserve their traditions. Elders share stories to foster family unity, while attendees seek socialization, escapism, and a greater sense of belonging across geographical boundaries.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "The English word originated from Latin via Old French, initially functioning as an adjective for a religious holiday in Middle English. Its first recorded usage as a noun occurred much later in the late sixteenth century.",
+            "evidenceIds": [
+              "P3",
+              "P4"
+            ]
+          },
+          {
+            "text": "Found in virtually all cultures, festivals remain vital in both private and public life. Many possess religious origins that help mark the passage of the year, while others commemorate historical events, royal dynastic milestones, or agricultural seasons.",
+            "evidenceIds": [
+              "P6",
+              "P7"
+            ]
+          },
+          {
+            "text": "Festivals vary widely in scale, though the vast majority remain local and modest. They encompass diverse categories such as music, film, and food events, often culminating in shared meals that connect communities to older feasting traditions.",
+            "evidenceIds": [
+              "P8",
+              "P16",
+              "P21",
+              "P22"
+            ]
+          },
+          {
+            "text": "Scholarly literature indicates that festivals can disseminate political values, reinforce social conventions, and elevate the public image of a city. Their ephemeral nature creates lasting impacts on memory, perception, and community identity.",
+            "evidenceIds": [
+              "P12"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "Cultural Significance and Evolution of Festivals",
+        "pages": [
+          {
+            "text": "Festivals represent characteristic community events anchored in religious, traditional, or cultural frameworks. Exhibiting elements of glocalization, these gatherings frequently synthesize agricultural cycles with religious observances, yielding seasonal thanksgiving traditions such as autumn harvest celebrations.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Functionally, festivals fulfill communal mandates regarding commemoration, gratitude toward deities, and intergenerational transmission of heritage. By encouraging socialization and narrative sharing among elders and attendees, these gatherings foster belonging and adaptability across geographical boundaries.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "Etymologically derived from Latin through Old French, the term originally functioned as an adjectival modifier denoting a religious holiday in Middle English before its eventual transition into a noun during the late sixteenth century.",
+            "evidenceIds": [
+              "P3",
+              "P4"
+            ]
+          },
+          {
+            "text": "Pervasive across virtually all human societies, festivals occupy a prominent position in both private and public spheres. Their temporal markers delineate the annual cycle through religious observances, historical milestones, and dynastic commemorations.",
+            "evidenceIds": [
+              "P6",
+              "P7"
+            ]
+          },
+          {
+            "text": "Despite substantial structural variation surpassing simple binary dichotomies, the vast majority of festivals remain localized, modest, and populist. Specialized manifestations range from contemporary music and film events to traditional harvest and food gatherings.",
+            "evidenceIds": [
+              "P8",
+              "P21",
+              "P22"
+            ]
+          },
+          {
+            "text": "Academic analysis highlights the capacity of festivals to disseminate political values, reinforce social conventions, and rehabilitate urban identities. Because of their ephemerality, their primary impacts operate through incorporeal channels of memory, perception, and collective meaning.",
+            "evidenceIds": [
+              "P12"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2759,
+    "output": 1414,
+    "total": 4173
+  },
+  "validation": null
 }
