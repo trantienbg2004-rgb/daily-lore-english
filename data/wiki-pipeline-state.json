@@ -9278,10 +9278,10 @@
       "checkedAt": "2026-10-21T07:39:51.506Z"
     },
     "71983491": {
-      "status": "VALIDATED",
-      "reason": "local factual, style, length, structure and source audit passed",
+      "status": "NEEDS_REVIEW",
+      "reason": "no-verified-lead-photo",
       "revisionId": 1377298310,
-      "checkedAt": "2026-10-23T15:07:58.486Z"
+      "checkedAt": "2026-10-23T15:08:04.543Z"
     },
     "72279466": {
       "status": "REJECTED",
@@ -9866,7 +9866,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-23T15:07:58.487Z",
+  "updatedAt": "2026-10-23T15:08:04.544Z",
   "dailyUsage": {
     "day": "2026-10-23",
     "calls": 24,
