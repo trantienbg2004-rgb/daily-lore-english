@@ -2,10 +2,10 @@
   "pageId": 5546586,
   "title": "Christian Topography",
   "topic": "History & Geography",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1372390340,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1372390340",
-  "reason": "1 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -123,5 +123,154 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1372390340"
     }
   ],
-  "updatedAt": "2026-10-23T00:54:13.472Z"
+  "updatedAt": "2026-10-23T00:54:27.276Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "The Christian Topography of Cosmas",
+        "pages": [
+          {
+            "text": "The Christian Topography is a very old book written in the sixth century. It is one of the earliest geographical essays by a Christian author. A writer named Cosmas wrote the book. He was also known as Indicopleustes because he sailed to India long ago.",
+            "evidenceIds": [
+              "P1",
+              "P6"
+            ]
+          },
+          {
+            "text": "The book originally had five books. Later, the author added more books until there were twelve books in total. The text talked about different parts of the world. It also included maps and illustrations to help explain the ideas of the writer.",
+            "evidenceIds": [
+              "P1",
+              "P2",
+              "P3"
+            ]
+          },
+          {
+            "text": "Cosmas put forward the idea that the world is flat. He wrote that the heavens form the shape of a box with a curved lid. Most other Christians of that time believed the Earth was a sphere instead of flat.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "The author used passages from scriptures to support his thesis. He argued against the idea of a spherical Earth and called it pagan. Some monks also criticized his views, and Cosmas wrote to rebut their criticism.",
+            "evidenceIds": [
+              "P3",
+              "P4"
+            ]
+          },
+          {
+            "text": "When the author was not writing about his cosmology, he shared useful travel information. He travelled over much of the Red Sea coast and as far as modern Sri Lanka. He described and sketched some of what he saw.",
+            "evidenceIds": [
+              "P10"
+            ]
+          },
+          {
+            "text": "Today, only a few nearly complete manuscripts of this ancient work survive. The earliest and best manuscript is from the ninth century in the Vatican Library. Other copies from the eleventh century are kept in monasteries.",
+            "evidenceIds": [
+              "P7"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "Exploring the 6th-Century Christian Topography",
+        "pages": [
+          {
+            "text": "The Christian Topography is a sixth-century work and one of the earliest essays in scientific geography written by a Christian author. Originally consisting of five books by Cosmas Indicopleustes, the text was later expanded to twelve books around 550 AD.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "The author, Cosmas Indicopleustes, proposed the controversial idea that the world is flat and that the heavens resemble a box with a curved lid. Although most Christians and scholars of that period maintained that the Earth was a sphere, Cosmas rejected the geocentric model.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "To support his claims, Cosmas cited scriptural passages and dismissed the spherical Earth theory as pagan. His ideas faced opposition from fellow monks and contemporaries, such as John Philoponus, who wrote a direct refutation of his work.",
+            "evidenceIds": [
+              "P3",
+              "P4",
+              "P12"
+            ]
+          },
+          {
+            "text": "Despite his unusual cosmology, Cosmas was an experienced traveller who visited the Red Sea coast and modern Sri Lanka. His book offers valuable insights into Byzantine geographical knowledge and includes descriptions of places like Axum and trade routes.",
+            "evidenceIds": [
+              "P6",
+              "P10",
+              "P11"
+            ]
+          },
+          {
+            "text": "The work's historical influence was generally marginal, and it was never the chief geographical authority of the Middle Ages. However, scholars note that it is frequently miscited today as proof that medieval people universally believed in a flat Earth.",
+            "evidenceIds": [
+              "P5",
+              "P12"
+            ]
+          },
+          {
+            "text": "Only three nearly complete manuscripts of the text survive today. The earliest, housed in the Vatican Library, dates from the ninth century and contains ten books, while two eleventh-century manuscripts contain the full twelve books.",
+            "evidenceIds": [
+              "P7"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "Cosmas and the Christian Topography",
+        "pages": [
+          {
+            "text": "Authored in the sixth century, the Christian Topography stands as a pioneering essay in scientific geography by a Christian writer. Initiated as a five-book treatise by Cosmas Indicopleustes, the text underwent successive expansions until reaching twelve books around 550 AD.",
+            "evidenceIds": [
+              "P1",
+              "P2"
+            ]
+          },
+          {
+            "text": "Central to the work is the idiosyncratic cosmological thesis that the Earth is flat and enclosed by a box-shaped heaven with a curved lid. This assertion directly opposed the prevailing scholarly consensus of the era, which overwhelmingly favored a spherical Earth model.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "Cosmas attempted to substantiate his arguments through novel interpretations of scripture while stigmatizing spherical geography as pagan. This provoked domestic criticism from fellow monastics, as well as formal scholarly rebuttals from contemporaries like John Philoponus.",
+            "evidenceIds": [
+              "P3",
+              "P4",
+              "P12"
+            ]
+          },
+          {
+            "text": "Beyond its cosmological digressions, the treatise preserves substantive geographical data derived from the author's personal travels along the Red Sea and to Sri Lanka. These eyewitness observations provide rare contemporary documentation of sixth-century trade networks and political events.",
+            "evidenceIds": [
+              "P6",
+              "P10",
+              "P11"
+            ]
+          },
+          {
+            "text": "Although historical reception was decidedly marginal and failed to dominate medieval geographical thought, the text occupies an important historiographical role. Modern scholars frequently cite it to correct misconceptions regarding the prevalence of flat-Earth beliefs in medieval Europe.",
+            "evidenceIds": [
+              "P5",
+              "P12"
+            ]
+          },
+          {
+            "text": "Textual transmission relies upon three surviving nearly complete manuscript witnesses. The ninth-century Vatican manuscript preserves ten books, whereas two eleventh-century exemplars from Saint Catherine's Monastery and Mount Athos contain the complete twelve-book recension.",
+            "evidenceIds": [
+              "P7"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2066,
+    "output": 1564,
+    "total": 3630
+  },
+  "validation": null
 }
