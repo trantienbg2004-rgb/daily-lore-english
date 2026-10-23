@@ -2,10 +2,10 @@
   "pageId": 308634,
   "title": "Olympia, Greece",
   "topic": "Sports",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1375868976,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375868976",
-  "reason": "11 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REJECTED",
@@ -455,5 +455,126 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375868976"
     }
   ],
-  "updatedAt": "2026-10-23T20:30:55.283Z"
+  "updatedAt": "2026-10-23T20:31:08.750Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "The History of Ancient Olympia",
+        "pages": [
+          {
+            "text": "Olympia is a small town in Greece. It is famous for a nearby old site. This place was a major religious center in ancient times. The ancient Olympic Games were held there every four years from the eighth century BC to the fourth century AD.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "The sacred area was named the Altis. It was mainly dedicated to the god Zeus. Visitors came from all over the Greek world to join the games. This helped ancient Greeks feel like one nation.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "The famous stadium has a field with start and end lines. Athletes entered through a vaulted corridor. Spectators sat on the sloping sides of the field. The length of this field became an ancient unit of distance.",
+            "evidenceIds": [
+              "P5"
+            ]
+          },
+          {
+            "text": "Over time, the site was buried under deep layers. People long thought this was from river flooding. Modern research suggests sea waters from repeated tsunamis buried the site instead.",
+            "evidenceIds": [
+              "P16"
+            ]
+          },
+          {
+            "text": "German archaeologists began major excavations at the site in 1875. They uncovered many temples, statues, and bronze objects. Today, ancient Olympia is also the name of a modern municipality.",
+            "evidenceIds": [
+              "P17",
+              "P20"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "Exploring the Sanctuary of Ancient Olympia",
+        "pages": [
+          {
+            "text": "Olympia is a small town located in Elis on the Peloponnese peninsula in Greece. It is globally famous for its nearby archaeological site. In antiquity, this location served as a major Panhellenic religious sanctuary where the ancient Olympic Games took place every four years.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "The sacred precinct, known as the Altis, was primarily dedicated to Zeus. Although other gods were also worshipped there, the games drew visitors from across the Greek world. Despite its name, the site is not located near Mount Olympus.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "The ancient stadium features a field with start and end lines marked by transverse curbing. Athletes entered the running track through a vaulted corridor, while spectators sat on the sloping flanks of the field. The length of this track established the standard ancient Greek unit of distance.",
+            "evidenceIds": [
+              "P5"
+            ]
+          },
+          {
+            "text": "Over the centuries, alluvial deposits buried the ruins. While people long assumed this was caused by river flooding, modern research hypothesizes that repeated tsunamis brought sea waters that buried the site.",
+            "evidenceIds": [
+              "P16"
+            ]
+          },
+          {
+            "text": "Systematic excavations led by German archaeologists began in 1875, uncovering thousands of historical objects including temples and sculptures. Today, the name Archaia Olympia applies both to the historical ruins and to the modern municipality.",
+            "evidenceIds": [
+              "P17",
+              "P20"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "The Sanctuary and Legacy of Olympia",
+        "pages": [
+          {
+            "text": "Situated in the valley of the Alfeiós River on the Peloponnese peninsula, Olympia is internationally renowned for its adjacent archaeological complex. Throughout classical antiquity, this Panhellenic religious sanctuary hosted the ancient Olympic Games every four years from the eighth century BC to the fourth century AD.",
+            "evidenceIds": [
+              "P1",
+              "P6"
+            ]
+          },
+          {
+            "text": "The sacred precinct, designated the Altis, was principally dedicated to Zeus and functioned as a unifying national center for the ancient Greek world. Historical records indicate that neighboring villages contested the management of the precinct before Olympia secured control.",
+            "evidenceIds": [
+              "P2",
+              "P3"
+            ]
+          },
+          {
+            "text": "The stadium comprises a running track with boundaries marked by transverse curbing, accessed via a vaulted corridor. The dimensions of this field established the standard stadion unit of measurement used by ancient geographers.",
+            "evidenceIds": [
+              "P5"
+            ]
+          },
+          {
+            "text": "Buried beneath up to eight meters of deposits, the site was historically believed to have been submerged by river floods. However, modern scientific analysis of mollusc and foraminifera shells hypothesizes that repeated tsunamis caused the sedimentation.",
+            "evidenceIds": [
+              "P16"
+            ]
+          },
+          {
+            "text": "Following rediscovery in the eighteenth century, extensive excavations directed by the German Archaeological Institute began in 1875. These campaigns recovered numerous artifacts and architectural structures, anchoring the dual modern identity of Archaia Olympia as both an archaeological site and a municipal unit.",
+            "evidenceIds": [
+              "P17",
+              "P20"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 3109,
+    "output": 1252,
+    "total": 4361
+  },
+  "validation": null
 }
