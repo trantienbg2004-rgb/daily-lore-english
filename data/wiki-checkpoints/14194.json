@@ -2,10 +2,10 @@
   "pageId": 14194,
   "title": "History of medicine",
   "topic": "Health",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1379614848,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379614848",
-  "reason": "21 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -683,5 +683,136 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379614848"
     }
   ],
-  "updatedAt": "2026-10-23T17:28:06.797Z"
+  "updatedAt": "2026-10-23T17:28:28.320Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "The Long History of Medicine",
+        "pages": [
+          {
+            "text": "Medicine is the study of how people stay healthy. It looks at how doctors and treatments have changed over time. Historians study old tools and books to learn how people lived in the past. This helps us understand how we treat sickness and injury today in our world.",
+            "evidenceIds": [
+              "P1",
+              "P2"
+            ]
+          },
+          {
+            "text": "Long ago, people used plants to heal. In places like Egypt and India, they had their own ways to help the sick. Some early ideas were about magic or religion. People also used special herbs to help with pain. These were the first steps in the history of medicine.",
+            "evidenceIds": [
+              "P4",
+              "P7",
+              "P10"
+            ]
+          },
+          {
+            "text": "In ancient Greece, doctors thought the body had four fluids. They called these humors. They believed that being sick meant these fluids were not balanced. This idea was used for a very long time. Later, scientists learned that tiny germs are the real cause of many diseases.",
+            "evidenceIds": [
+              "P11",
+              "P3"
+            ]
+          },
+          {
+            "text": "In the Middle Ages, hospitals were often run by nuns. They helped poor people who were sick. Later, the first medical schools opened in Italy. These schools taught students about health. Over time, more people became doctors, and new tools were made to help them perform surgery safely.",
+            "evidenceIds": [
+              "P19",
+              "P17",
+              "P14"
+            ]
+          },
+          {
+            "text": "Today, medicine is very different. We have new machines and better ways to stop germs. We also have many more women working as nurses and doctors. Medicine continues to change as we learn more. It is a field that keeps growing to help people live better and healthier lives.",
+            "evidenceIds": [
+              "P3"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "How Medical Practices Have Evolved",
+        "pages": [
+          {
+            "text": "The history of medicine explores how human societies have managed health, illness, and injury from prehistory to the present. By studying archaeological evidence and written records, historians track the evolution of medical knowledge. This multidisciplinary field draws on sociology and science to understand how our approach to healing has changed.",
+            "evidenceIds": [
+              "P1",
+              "P2"
+            ]
+          },
+          {
+            "text": "Early medical traditions emerged in regions like Mesopotamia, Egypt, and India. In ancient India, the Atharvaveda provided early medical knowledge, combining magical charms with herbal remedies. Meanwhile, Mesopotamian practices blended naturalistic and supernatural beliefs. These early systems laid the groundwork for how different cultures viewed the human body and disease.",
+            "evidenceIds": [
+              "P3",
+              "P7",
+              "P10"
+            ]
+          },
+          {
+            "text": "For centuries, Western medicine relied on the theory of humors, which suggested that four bodily fluids—blood, phlegm, yellow bile, and black bile—controlled health. An imbalance in these fluids was thought to cause illness. This belief persisted until the 19th century, when the germ theory of disease finally replaced it.",
+            "evidenceIds": [
+              "P11",
+              "P3"
+            ]
+          },
+          {
+            "text": "During the Middle Ages, monastic hospitals provided basic care for the poor. As knowledge spread, the first medical schools, such as the Schola Medica Salernitana in Italy, began to formalize training. These institutions combined diverse influences from Greek, Latin, and Arabic sources, helping to revive medical study across the Western world.",
+            "evidenceIds": [
+              "P16",
+              "P17"
+            ]
+          },
+          {
+            "text": "The 20th century transformed medicine through professionalization and new technologies. Research centers connected to hospitals led to breakthroughs like antibiotics and advanced surgery. Furthermore, the field became more inclusive, with women entering the medical profession in greater numbers as nurses and physicians, fundamentally changing the landscape of modern healthcare delivery.",
+            "evidenceIds": [
+              "P3"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "The Development of Medical Science",
+        "pages": [
+          {
+            "text": "The history of medicine is a multidisciplinary field that documents the evolution of treatments and social systems surrounding health. Historians analyze both archaeological findings and written records to understand how societies have addressed illness. By integrating insights from health sciences and sociology, they map the progression of medical knowledge over time.",
+            "evidenceIds": [
+              "P1",
+              "P2"
+            ]
+          },
+          {
+            "text": "Ancient civilizations developed distinct healing traditions. In Mesopotamia, medicine was a hybrid of naturalistic and supernatural beliefs. Similarly, early Indian medicine, as recorded in the Atharvaveda, utilized both magical incantations and medicinal herbs. These practices demonstrate the diverse ways early societies attempted to manage health before the advent of modern scientific methods.",
+            "evidenceIds": [
+              "P7",
+              "P10"
+            ]
+          },
+          {
+            "text": "Western medical thought was long dominated by humoralism, a theory attributed to Galen of Pergamon. This framework posited that health depended on the balance of four bodily fluids. While this theory influenced medicine for centuries, it was eventually superseded in the 19th century by the germ theory, which provided a more accurate understanding of infectious diseases.",
+            "evidenceIds": [
+              "P11",
+              "P3"
+            ]
+          },
+          {
+            "text": "Institutional medical education emerged in the 9th century, with the Schola Medica Salernitana serving as a prominent example of international knowledge exchange. These schools synthesized Greek, Arabic, and Hebrew medical traditions. Simultaneously, religious institutions played a critical role in public health, as convents provided essential nursing care to the poor throughout medieval Europe.",
+            "evidenceIds": [
+              "P17",
+              "P19"
+            ]
+          },
+          {
+            "text": "The 20th century marked a period of rapid professionalization and technological advancement. Innovations in chemistry, genetics, and radiography, alongside the development of antibiotics, redefined medical capabilities. The inclusion of women as nurses and physicians further expanded the profession, establishing the diverse and highly specialized medical systems that characterize modern global healthcare today.",
+            "evidenceIds": [
+              "P3"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2851,
+    "output": 1434,
+    "total": 4285
+  },
+  "validation": null
 }
