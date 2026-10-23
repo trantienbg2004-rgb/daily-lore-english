@@ -2,10 +2,10 @@
   "pageId": 81553,
   "title": "Teotihuacan",
   "topic": "History & Geography",
-  "status": "DRAFTED",
+  "status": "VALIDATED",
   "revisionId": 1380618636,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380618636",
-  "reason": "draft durably saved before validation",
+  "reason": "local factual, style, length, structure and source audit passed",
   "rights": [
     {
       "status": "REVIEW",
@@ -514,7 +514,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380618636"
     }
   ],
-  "updatedAt": "2026-10-23T23:34:30.262Z",
+  "updatedAt": "2026-10-23T23:34:48.205Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -660,5 +660,8 @@
     "output": 1613,
     "total": 4588
   },
-  "validation": null
+  "validation": {
+    "accepted": true,
+    "errors": []
+  }
 }
