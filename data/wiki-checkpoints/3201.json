@@ -499,7 +499,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1370321979"
     }
   ],
-  "updatedAt": "2026-10-23T17:26:28.576Z",
+  "updatedAt": "2026-10-23T17:27:15.892Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -512,7 +512,7 @@
             ]
           },
           {
-            "text": "Carbon dioxide comes mainly from burning fossil fuels for energy, transport, and manufacturing. Other sources include deforestation and industrial processes like making cement, steel, and fertilizer.",
+            "text": "Carbon dioxide emissions primarily come from burning fossil fuels to provide energy for transport, manufacturing, heating, and electricity. Additional carbon dioxide emissions come from deforestation and industrial processes, which include the greenhouse gases released by the chemical reactions for making cement, steel, aluminum, and fertilizer.",
             "evidenceIds": [
               "P8"
             ]
@@ -618,11 +618,11 @@
       }
     }
   },
-  "repairAttempts": 0,
+  "repairAttempts": 1,
   "lastUsage": {
-    "input": 2764,
-    "output": 1220,
-    "total": 3984
+    "input": 2563,
+    "output": 119,
+    "total": 2682
   },
   "validation": null
 }
