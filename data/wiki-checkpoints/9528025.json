@@ -2,10 +2,10 @@
   "pageId": 9528025,
   "title": "Greenhouse gas emissions",
   "topic": "Environment",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1378994389,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378994389",
-  "reason": "15 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -531,5 +531,137 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378994389"
     }
   ],
-  "updatedAt": "2026-10-23T17:10:04.935Z"
+  "updatedAt": "2026-10-23T17:10:52.134Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "Understanding Greenhouse Gases",
+        "pages": [
+          {
+            "text": "Human activities release greenhouse gases into the air. These gases trap heat around the Earth and contribute to climate change. Carbon dioxide from burning fossil fuels like coal, oil, and gas is the main cause. People have increased carbon dioxide levels by about fifty percent since pre-industrial times.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Carbon dioxide is the main gas and accounts for more than half of all warming. Methane has a big short-term impact as well. Other gases like nitrous oxide and fluorinated gases play a lesser role. Energy use, including electricity and transport, is responsible for most of these total emissions.",
+            "evidenceIds": [
+              "P2",
+              "P3"
+            ]
+          },
+          {
+            "text": "Industrial activities and factories have grown rapidly since the middle of the twentieth century. Global population and economic activity grew quickly after World War Two. This expansion caused emissions to rise across the world. Power generation and transport remain major sources of these gases.",
+            "evidenceIds": [
+              "P3",
+              "P8",
+              "P9"
+            ]
+          },
+          {
+            "text": "Industrialized countries usually have much higher annual emissions per person than developing nations. People in rich nations often produce up to ten times more than the average in developing countries. China has experienced fast economic development and its emissions per person have increased quickly.",
+            "evidenceIds": [
+              "P4",
+              "P10"
+            ]
+          },
+          {
+            "text": "Experts use carbon footprints to compare how much greenhouse gas is produced by goods or services. This tracking helps people understand the effects of emissions on the climate. Tracking real-time carbon emissions helps scientists monitor sources like power stations and coal mines worldwide.",
+            "evidenceIds": [
+              "P5",
+              "P18"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "Tracking Global Greenhouse Gas Emissions",
+        "pages": [
+          {
+            "text": "Greenhouse gas emissions from human activities intensify the natural greenhouse effect, which contributes significantly to global climate change. Carbon dioxide released from burning fossil fuels like coal, oil, and natural gas remains the primary driver. Human activities have increased atmospheric carbon dioxide by about fifty percent over pre-industrial levels.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Carbon dioxide is the dominant greenhouse gas, accounting for more than half of total warming. Methane emissions carry almost the same short-term impact, while nitrous oxide and fluorinated gases play lesser roles. Overall energy production, including electricity generation, heat, and transport, is responsible for roughly seventy-three percent of global emissions.",
+            "evidenceIds": [
+              "P2",
+              "P3"
+            ]
+          },
+          {
+            "text": "Industrial activity powered by fossil fuels began significantly increasing greenhouse gas concentrations around 1750. Emissions then grew rapidly after 1950 alongside expansions in global population and economic activity. The power sector contributes the largest share of total emissions at approximately twenty-seven percent, followed by transport and industry.",
+            "evidenceIds": [
+              "P8",
+              "P9"
+            ]
+          },
+          {
+            "text": "Annual per capita emissions in industrialized countries are typically up to ten times higher than the average in developing nations. Meanwhile, China's rapid economic development has driven its per capita emissions close to the levels found in developed countries. Current emission rates average several tonnes per person per year.",
+            "evidenceIds": [
+              "P4",
+              "P10"
+            ]
+          },
+          {
+            "text": "A carbon footprint serves as an indicator to compare the total greenhouse gases emitted over an entire life cycle, from production to final consumption. Carbon accounting frameworks help measure and track these emissions to understand their impacts on the climate. Independent groups also monitor real-time emissions using satellite data and artificial intelligence.",
+            "evidenceIds": [
+              "P5",
+              "P17",
+              "P18"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "Dynamics and Accounting of Greenhouse Gases",
+        "pages": [
+          {
+            "text": "Anthropogenic greenhouse gas emissions intensify the atmospheric greenhouse effect, driving contemporary climate change. Combustion of fossil fuels constitutes the primary mechanism, having elevated atmospheric carbon dioxide by approximately fifty percent relative to pre-industrial benchmarks. Historical cumulative emissions reflect substantial contributions from both fossil fuel utilization and land-use changes.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Carbon dioxide represents the principal anthropogenic driver accounting for the majority of surface warming, while methane exerts a nearly equivalent immediate short-term impact. Nitrous oxide and various fluorinated gases contribute comparably minor fractions. Energy sectors, encompassing electricity, thermal generation, and transport, generate the vast majority of total global outputs.",
+            "evidenceIds": [
+              "P2",
+              "P3"
+            ]
+          },
+          {
+            "text": "Industrial expansion powered by fossil fuels initiated a sustained elevation of atmospheric greenhouse gas concentrations beginning around 1750, followed by accelerated growth post-1950 driven by global demographic and economic shifts. Sectoral analyses indicate the power generation domain remains the single largest contributor, followed by transport, industrial energy, and agricultural activities.",
+            "evidenceIds": [
+              "P3",
+              "P8",
+              "P9"
+            ]
+          },
+          {
+            "text": "Disparities in annual per capita emissions remain pronounced, with industrialized economies frequently recording rates up to an order of magnitude higher than developing counterparts. Concurrently, rapid economic development in nations such as China has propelled domestic per capita rates toward parity with traditional developed country groupings.",
+            "evidenceIds": [
+              "P4",
+              "P10"
+            ]
+          },
+          {
+            "text": "Carbon accounting methodologies and comprehensive life-cycle assessments provide structured frameworks for quantifying organizational and product carbon footprints. These indices evaluate supply chain emissions from initial production to final consumption. Advanced monitoring initiatives synthesize satellite observations with artificial intelligence to refine verification protocols for atmospheric carbon and methane.",
+            "evidenceIds": [
+              "P5",
+              "P17",
+              "P18"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2923,
+    "output": 1484,
+    "total": 4407
+  },
+  "validation": null
 }
