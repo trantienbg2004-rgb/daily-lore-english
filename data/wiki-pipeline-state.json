@@ -7028,10 +7028,10 @@
       "checkedAt": "2026-10-21T03:11:31.086Z"
     },
     "1983326": {
-      "status": "VALIDATED",
-      "reason": "local factual, style, length, structure and source audit passed",
+      "status": "NEEDS_REVIEW",
+      "reason": "Wiki story gate: A1-A2:image-rights,B1-B2:image-rights,C1-C2:image-rights",
       "revisionId": 1380229009,
-      "checkedAt": "2026-10-23T15:21:44.794Z"
+      "checkedAt": "2026-10-23T15:21:50.729Z"
     },
     "1996004": {
       "status": "EVIDENCE_READY",
@@ -9866,7 +9866,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-23T15:21:44.796Z",
+  "updatedAt": "2026-10-23T15:21:50.730Z",
   "dailyUsage": {
     "day": "2026-10-23",
     "calls": 27,
