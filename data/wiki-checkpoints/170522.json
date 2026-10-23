@@ -2,10 +2,10 @@
   "pageId": 170522,
   "title": "Consumerism",
   "topic": "Society",
-  "status": "DRAFTED",
+  "status": "VALIDATED",
   "revisionId": 1378616216,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378616216",
-  "reason": "draft durably saved before validation",
+  "reason": "local factual, style, length, structure and source audit passed",
   "rights": [
     {
       "status": "REVIEW",
@@ -289,7 +289,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378616216"
     }
   ],
-  "updatedAt": "2026-10-23T06:28:23.482Z",
+  "updatedAt": "2026-10-23T06:28:43.399Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -431,5 +431,8 @@
     "output": 1676,
     "total": 4452
   },
-  "validation": null
+  "validation": {
+    "accepted": true,
+    "errors": []
+  }
 }
