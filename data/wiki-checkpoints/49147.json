@@ -2,10 +2,10 @@
   "pageId": 49147,
   "title": "Fair trade",
   "topic": "Society",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1369370864,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369370864",
-  "reason": "6 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -300,5 +300,125 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369370864"
     }
   ],
-  "updatedAt": "2026-10-23T20:35:31.971Z"
+  "updatedAt": "2026-10-23T20:35:48.376Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "What Is Fair Trade?",
+        "pages": [
+          {
+            "text": "Fair trade is a special trade system. It helps workers in developing countries get better and fair conditions. The movement wants to pay higher prices to people who sell goods. It also wants to improve social and environmental rules.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "In the past, groups sold fair trade items in the north. Religious groups and non-governmental organizations started this in the 1940s and 1950s. They mostly sold handmade crafts like cross-stitch work and jute goods.",
+            "evidenceIds": [
+              "P7"
+            ]
+          },
+          {
+            "text": "The modern fair trade movement began in Europe in the 1960s. People saw fair trade as a political action against neo-imperialism. Radical student groups targeted big companies. They felt traditional business models had major flaws.",
+            "evidenceIds": [
+              "P8"
+            ]
+          },
+          {
+            "text": "In the 1980s, alternative trading organizations faced new challenges. The novelty of fair trade goods started to fade. Demand reached a plateau, and some handicrafts looked old-fashioned in the market.",
+            "evidenceIds": [
+              "P9"
+            ]
+          },
+          {
+            "text": "Fair trade products became much more popular with new certification initiatives. Before this, fair trade goods were sold in small worldshops across Europe and North America. Going to these shops was inconvenient for many customers.",
+            "evidenceIds": [
+              "P10"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "The Growth of Fair Trade Systems",
+        "pages": [
+          {
+            "text": "Fair trade is designed to help producers in developing countries achieve sustainable conditions. The movement advocates paying higher prices to exporters and improving social and environmental standards. It focuses on commodities like coffee, cocoa, and handicrafts.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Alternative trading organizations pioneered these supply chains in the 1940s and 1950s, selling handmade goods mostly in churches and fairs. By the 1960s, the movement expanded in Europe as a political gesture against neo-imperialism and flawed business models.",
+            "evidenceIds": [
+              "P7",
+              "P8"
+            ]
+          },
+          {
+            "text": "During the early 1980s, alternative trading groups faced plateauing demand and declining interest in traditional handicrafts. This shift forced supporters to rethink their goals, especially as structural reforms and falling commodity prices impacted small farmers.",
+            "evidenceIds": [
+              "P9"
+            ]
+          },
+          {
+            "text": "Sales finally accelerated with the creation of certification initiatives. Previously, fair trade was limited to small worldshops across Europe and North America, but the inconvenience of visiting specialized stores restricted broader consumer reach.",
+            "evidenceIds": [
+              "P10"
+            ]
+          },
+          {
+            "text": "To expand sales, fair trade goods needed to enter large distribution channels where consumers normally shop. Transnational companies eventually began offering fair trade commodities, with Starbucks and other major corporations introducing certified coffee options.",
+            "evidenceIds": [
+              "P10",
+              "P11"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "Evolution of the Fair Trade Movement",
+        "pages": [
+          {
+            "text": "Fair trade constitutes a structured trading arrangement intended to foster sustainable and equitable conditions for producers in developing countries. The movement prioritizes enhanced remuneration for exporters alongside elevated social and environmental benchmarks, focusing heavily on globally traded commodities.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Initial commercialization efforts emerged during the 1940s and 1950s through religious groups and politically oriented non-governmental organizations establishing alternative supply chains. By the 1960s, the movement evolved into a broader political gesture against neo-imperialism and traditional corporate models.",
+            "evidenceIds": [
+              "P7",
+              "P8"
+            ]
+          },
+          {
+            "text": "By the early 1980s, alternative trading organizations encountered stagnating demand and aesthetic fatigue regarding traditional handicrafts. Concurrently, agricultural structural reforms and plunging commodity prices compelled supporters to reevaluate their strategic objectives and address agricultural crises.",
+            "evidenceIds": [
+              "P9"
+            ]
+          },
+          {
+            "text": "Market penetration remained constrained while distribution was restricted to scattered small-scale worldshops. Overcoming this barrier necessitated expansion into mainstream distribution channels without eroding consumer trust in product origins and authenticity.",
+            "evidenceIds": [
+              "P10"
+            ]
+          },
+          {
+            "text": "Subsequent growth was catalyzed by formal certification initiatives and the eventual incorporation of fair trade commodities by large transnational enterprises. Major corporations progressively integrated certified options into their portfolios, shifting the movement's operational scale.",
+            "evidenceIds": [
+              "P10",
+              "P11"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2672,
+    "output": 887,
+    "total": 3559
+  },
+  "validation": null
 }
