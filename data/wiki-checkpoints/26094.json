@@ -672,7 +672,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379902165"
     }
   ],
-  "updatedAt": "2026-10-23T20:36:36.802Z",
+  "updatedAt": "2026-10-23T20:36:54.948Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -697,7 +697,7 @@
             ]
           },
           {
-            "text": "Most people agree that Romanticism was at its peak from 1800 to 1850. The movement started with ideas from an earlier German group called Sturm und Drang. Events and ideas from the French Revolution also helped shape the early movement.",
+            "text": "For most of the Western world, Romanticism was at its peak from approximately 1800 to 1850. The movement started with ideas from an earlier German movement called Sturm und Drang. Events and ideologies of the French Revolution also directly influenced the movement and its early participants.",
             "evidenceIds": [
               "P4",
               "P6"
@@ -807,11 +807,11 @@
       }
     }
   },
-  "repairAttempts": 0,
+  "repairAttempts": 1,
   "lastUsage": {
-    "input": 2775,
-    "output": 1558,
-    "total": 4333
+    "input": 2625,
+    "output": 131,
+    "total": 2756
   },
   "validation": null
 }
