@@ -2,10 +2,10 @@
   "pageId": 5645470,
   "title": "History of cartography",
   "topic": "History & Geography",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1380461433,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380461433",
-  "reason": "19 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -596,5 +596,142 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380461433"
     }
   ],
-  "updatedAt": "2026-10-23T17:28:59.980Z"
+  "updatedAt": "2026-10-23T17:29:31.002Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "The Long History of Maps",
+        "pages": [
+          {
+            "text": "Maps help humans find their way. When people first made maps is unclear. Ancient cultures like Babylon, Greece, Rome, China, and India made them. Early maps did not show Earth as round. People did not know the true shape of the Earth.",
+            "evidenceIds": [
+              "P1",
+              "P2"
+            ]
+          },
+          {
+            "text": "Finding the very first map is hard. Some ancient artifacts might be maps, but experts are not sure. A clay tablet from ancient Babylonia shows a river valley. Scholars date this small tablet to the twenty-fourth century BC.",
+            "evidenceIds": [
+              "P4",
+              "P6"
+            ]
+          },
+          {
+            "text": "In China, old maps also survived. Workers found ancient Chinese maps drawn on wooden blocks. These maps date back to the fourth century BC. Other silk maps were found in ancient tombs from the second century BC.",
+            "evidenceIds": [
+              "P13"
+            ]
+          },
+          {
+            "text": "Ancient Greek scholars studied the world too. A Greek scholar named Eratosthenes calculated the size of the Earth. He used lines on his maps to find places. Another scholar named Ptolemy used math to make better maps.",
+            "evidenceIds": [
+              "P8",
+              "P11"
+            ]
+          },
+          {
+            "text": "Today, making maps is much easier. Airplanes and satellites take pictures of the land. Free online services let people see accurate maps of the whole world. Maps are now more accessible than ever before.",
+            "evidenceIds": [
+              "P3"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "How Humans Learned to Map the World",
+        "pages": [
+          {
+            "text": "Maps have long allowed humans to explain and navigate the world. Although the exact origin remains unclear, early maps were independently invented by many cultures. Ancient civilizations such as Babylon, Greece, Rome, China, and India produced maps extensively.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Early mapmakers ignored the curvature of the Earth. This happened partly because the true shape was unknown and partly because small areas do not need curve corrections. However, maps of larger regions eventually used projections from model globes to control distortion.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "Identifying the oldest surviving map is difficult because ancient definitions and artifacts are not always precise. In Babylonia, surveyors created accurate maps on clay tablets. For instance, a small tablet from Ga-Sur shows a river valley between hills.",
+            "evidenceIds": [
+              "P4",
+              "P6"
+            ]
+          },
+          {
+            "text": "In China, wooden block maps from the fourth century BC survived because they stayed soaked in underground water. Later excavations found silk maps from the Han dynasty. Ancient Chinese writers also recorded geographical descriptions in early texts.",
+            "evidenceIds": [
+              "P13",
+              "P14"
+            ]
+          },
+          {
+            "text": "Hellenistic Greek scholars introduced major scientific changes. Eratosthenes calculated the Earth's circumference and used a grid of lines to reference locations. Later, Ptolemy used astronomy and mathematics to improve map projections and coordinate systems.",
+            "evidenceIds": [
+              "P8",
+              "P11"
+            ]
+          },
+          {
+            "text": "Modern technology has transformed cartography completely. Surveillance aircraft and satellites now document previously inaccessible regions. Today, online services make accurate world maps more accessible than ever.",
+            "evidenceIds": [
+              "P3"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "The Evolution of Cartography",
+        "pages": [
+          {
+            "text": "Maps represent a fundamental human invention designed for navigation and spatial explanation. While the precise inception of cartography remains obscure, rudimentary local maps emerged independently across diverse societies, including ancient Babylon, Greece, Rome, China, and India.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Early cartographers initially disregarded planetary curvature, reflecting both prevailing ignorance of Earth's true geometry and the negligible distortion over limited extents. Following Classical Greece, regional and global cartography increasingly relied on model projections to manage inevitable geometric distortion.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "Establishing a definitive earliest map is problematic due to ambiguous artifact classifications. Nevertheless, surviving archeological evidence demonstrates advanced Babylonian surveying, exemplified by a clay tablet depicting a river valley with cuneiform topographical labels.",
+            "evidenceIds": [
+              "P4",
+              "P6"
+            ]
+          },
+          {
+            "text": "Chinese cartographic heritage includes fourth-century BC wooden block maps preserved via water-logged subterranean conditions, alongside subsequent Han dynasty silk maps. Concurrently, early Chinese texts documented provincial economic, geographic, and agricultural systems.",
+            "evidenceIds": [
+              "P13",
+              "P14"
+            ]
+          },
+          {
+            "text": "Hellenistic scholarship introduced mathematical rigor to geography. Eratosthenes computed the terrestrial circumference and pioneered coordinate charting using meridians and parallels. Subsequently, Ptolemy refined perspective projection and coordinate systems to enhance mapping precision.",
+            "evidenceIds": [
+              "P8",
+              "P11"
+            ]
+          },
+          {
+            "text": "Contemporary cartography benefits from advanced transport, surveillance aviation, and satellite imagery, enabling the documentation of remote terrains. Digital platforms now provide unprecedented global access to precise cartographic data.",
+            "evidenceIds": [
+              "P3"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2678,
+    "output": 1390,
+    "total": 4068
+  },
+  "validation": null
 }
