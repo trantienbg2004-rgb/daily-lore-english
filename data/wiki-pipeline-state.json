@@ -6086,10 +6086,10 @@
       "checkedAt": "2026-10-22T08:28:12.997Z"
     },
     "26094": {
-      "status": "VALIDATED",
-      "reason": "local factual, style, length, structure and source audit passed",
+      "status": "PUBLISHED",
+      "reason": "4 verified embedded images",
       "revisionId": 1379902165,
-      "checkedAt": "2026-10-23T20:37:12.740Z"
+      "checkedAt": "2026-10-23T20:37:18.844Z"
     },
     "27006": {
       "status": "RETRY_LATER",
@@ -9866,7 +9866,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-23T20:37:12.741Z",
+  "updatedAt": "2026-10-23T20:37:18.845Z",
   "dailyUsage": {
     "day": "2026-10-23",
     "calls": 86,
