@@ -6788,10 +6788,10 @@
       "checkedAt": "2026-10-21T07:35:01.221Z"
     },
     "1089237": {
-      "status": "NEEDS_REVIEW",
-      "reason": "Targeted repair changed an unrelated sentence",
+      "status": "EVIDENCE_READY",
+      "reason": "4 rights-verified embedded images",
       "revisionId": 1380971520,
-      "checkedAt": "2026-10-21T22:31:59.331Z"
+      "checkedAt": "2026-10-23T16:56:14.696Z"
     },
     "1127534": {
       "status": "RETRY_LATER",
@@ -9866,7 +9866,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-23T15:26:45.087Z",
+  "updatedAt": "2026-10-23T16:56:14.702Z",
   "dailyUsage": {
     "day": "2026-10-23",
     "calls": 28,
