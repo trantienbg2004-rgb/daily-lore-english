@@ -2,10 +2,10 @@
   "pageId": 234984,
   "title": "Social movement",
   "topic": "Society",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1377822212,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377822212",
-  "reason": "6 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -325,5 +325,136 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377822212"
     }
   ],
-  "updatedAt": "2026-10-23T23:41:13.708Z"
+  "updatedAt": "2026-10-23T23:41:34.411Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "What is a social movement?",
+        "pages": [
+          {
+            "text": "A social movement is a group effort by many people. They want to make a social or political change. Sometimes, they want to stop a change. They can be individuals or organizations working together.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Social movements have a life cycle. They are created and they grow. They can succeed or fail. Eventually, they dissolve and cease to exist. Scholars study these groups to understand how they work.",
+            "evidenceIds": [
+              "P1",
+              "P11"
+            ]
+          },
+          {
+            "text": "History shows that urban areas and industrialization helped early movements grow. Workers gathered in big cities. They could easily meet, organize, and talk about economic issues that mattered to them.",
+            "evidenceIds": [
+              "P8"
+            ]
+          },
+          {
+            "text": "New technology helps modern movements. People use the internet and social media to connect with others globally. This helps them organize and share their goals with a large audience.",
+            "evidenceIds": [
+              "P4",
+              "P18"
+            ]
+          },
+          {
+            "text": "Movements need enough people to succeed. Experts note that groups often fail if they cannot mobilize enough support. A good strategy often starts with a small issue that many people care about.",
+            "evidenceIds": [
+              "P9"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "The History and Impact of Social Movements",
+        "pages": [
+          {
+            "text": "A social movement is a loosely organized effort by a large number of people to achieve a specific goal, typically social or political. These movements can promote social change or resist it, acting as a method of bottom-up change within nations. While many aim for equality, others seek to maintain existing power relationships.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Sociologists and political scientists study these groups using various theories. Some scholars argue that modern Western movements emerged due to increased education, labor mobility from 19th-century industrialization, and urbanization. Urban centers allowed people with shared goals to gather easily and organize effectively.",
+            "evidenceIds": [
+              "P2",
+              "P3",
+              "P8"
+            ]
+          },
+          {
+            "text": "Historically, Britain saw significant upheaval after 1815, leading to organized efforts like Chartism, an early working-class mass movement that campaigned for political reforms. The formal term social movement was introduced in scholarly discussions in 1848 by the German sociologist Lorenz von Stein.",
+            "evidenceIds": [
+              "P7"
+            ]
+          },
+          {
+            "text": "Various theories explain why these groups form. Deprivation theory suggests people organize when they feel deprived of resources, while mass society theory argues that movements give socially detached individuals a sense of empowerment. Other theories emphasize the necessity of resources and political opportunities.",
+            "evidenceIds": [
+              "P12",
+              "P13",
+              "P15",
+              "P16"
+            ]
+          },
+          {
+            "text": "In modern times, technology plays a major role. Movements frequently use the internet, social media, and communication tools to increase their speed, reach, and effectiveness, facilitating global civic engagement and collective action.",
+            "evidenceIds": [
+              "P4",
+              "P18"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "Dynamics and Theories of Social Movements",
+        "pages": [
+          {
+            "text": "Social movements constitute loosely organized collective efforts by large populations aiming to achieve specific social or political objectives. These groups can instigate structural transformations or alternatively resist them, functioning as endogenous mechanisms of political and social change from within nations.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Scholars such as Mario Diani argue that definitions of social movements generally share three core criteria: a network of informal interactions among individuals, groups, or organizations engaged in political or cultural conflict based on a shared collective identity. Other theorists like Charles Tilly and Sidney Tarrow emphasize sustained interactions and collective challenges against elites.",
+            "evidenceIds": [
+              "P5",
+              "P20",
+              "P21"
+            ]
+          },
+          {
+            "text": "The historical genesis of modern social movements is frequently attributed to 19th-century industrialization, urbanization, and the broader dissemination of literature. Urban environments facilitated dense social networks where working populations could congregate, addressing shared grievances regarding economic wellbeing and political rights.",
+            "evidenceIds": [
+              "P3",
+              "P8"
+            ]
+          },
+          {
+            "text": "Theoretical frameworks examining movement emergence encompass resource mobilization theory, which stresses the necessity of internal and external resources like funding and legitimacy, and political process theory, which emphasizes insurgent consciousness, organizational strength, and political opportunities. Additionally, framing perspectives incorporate cultural and psychological dimensions, addressing shared ideologies and the free-rider problem.",
+            "evidenceIds": [
+              "P15",
+              "P16",
+              "P17"
+            ]
+          },
+          {
+            "text": "The life cycle of a social movement spans from initial formation and growth to eventual success, failure, or dissolution. Contemporary research increasingly analyzes how technological integration, including the internet and social media platforms, enhances communication efficiency, mobilization capacity, and transnational civic engagement.",
+            "evidenceIds": [
+              "P4",
+              "P11",
+              "P18"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2751,
+    "output": 968,
+    "total": 3719
+  },
+  "validation": null
 }
