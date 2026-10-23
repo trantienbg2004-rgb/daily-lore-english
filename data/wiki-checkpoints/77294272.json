@@ -2,10 +2,10 @@
   "pageId": 77294272,
   "title": "Festival totem",
   "topic": "Culture",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1381012040,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381012040",
-  "reason": "5 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -191,5 +191,148 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381012040"
     }
   ],
-  "updatedAt": "2026-10-23T12:50:34.701Z"
+  "updatedAt": "2026-10-23T12:50:48.107Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "Festival Totems in Crowds",
+        "pages": [
+          {
+            "text": "Festival totems are signs or objects held high on poles by people at music events and outdoor festivals around the world today.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Attendees use these creative objects as helpful beacons so friends can find each other easily in very big and crowded places.",
+            "evidenceIds": [
+              "P1",
+              "P2"
+            ]
+          },
+          {
+            "text": "Many festival-goers make their own totems using various materials like wood or plastic, while others can now buy them online.",
+            "evidenceIds": [
+              "P1",
+              "P6"
+            ]
+          },
+          {
+            "text": "Ancient armies once carried similar staffs and flags into battles to show group identity and point in specific directions.",
+            "evidenceIds": [
+              "P4"
+            ]
+          },
+          {
+            "text": "Some people enjoy the art and usefulness of totems, but others debate if large poles block views of the music stages.",
+            "evidenceIds": [
+              "P7",
+              "P8"
+            ]
+          },
+          {
+            "text": "Because of safety concerns and blocked views, many festival organizers now create special rules about totem sizes and materials.",
+            "evidenceIds": [
+              "P8"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "Understanding Festival Totems",
+        "pages": [
+          {
+            "text": "Festival totems are decorative signs or objects displayed on poles by attendees at music festivals and cultural events worldwide. They serve multiple purposes, ranging from creative self-expression to practical navigation and communication within large, dense crowds.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "While the exact origin of festival totem use remains unconfirmed, contemporary events like Burning Man and Glastonbury are known for them. Typically, a totem uses a solid object instead of a loose flag to remain visible in any wind conditions.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "Attendees usually craft these items themselves using wood, metal, plastic, or foam, often featuring memes or current events. Recently, custom manufacturers have also begun selling them online due to growing popularity and specific event restrictions.",
+            "evidenceIds": [
+              "P3",
+              "P6"
+            ]
+          },
+          {
+            "text": "Historical comparisons note that ancient armies used similar staffs, flags, and vexilloids to distinguish allies and rally troops. The name totem itself may derive from a comparison to Native American totem poles, though they lack the same cultural significance.",
+            "evidenceIds": [
+              "P4",
+              "P5"
+            ]
+          },
+          {
+            "text": "Despite their practical benefits for finding friends at night, festival totems have sparked ongoing debate among attendees. Critics argue that tall poles often block the view of stages, interfering with the overall concert experience for fellow fans.",
+            "evidenceIds": [
+              "P7",
+              "P8"
+            ]
+          },
+          {
+            "text": "To address concerns about safety and obstructed views of performances, many festival organizers have implemented strict guidelines regarding the size, height, and allowed materials of totems.",
+            "evidenceIds": [
+              "P8"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "The Culture and Debate of Festival Totems",
+        "pages": [
+          {
+            "text": "Festival totems, occasionally referred to as rage sticks or doof sticks, are prominent decorative objects displayed on elevated poles by participants at music festivals and cultural events globally. They function primarily as utilitarian beacons for navigation within dense crowds while simultaneously serving as mediums for artistic expression.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Although the historical genesis of festival totem adoption remains unconfirmed, contemporary gatherings such as Electric Daisy Carnival and Tomorrowland exhibit vibrant displays. Utilizing three-dimensional objects rather than standard flags ensures visibility across various wind conditions and permits diverse creative designs.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "Participants traditionally construct these DIY projects from crafting materials like foam, plastic, or metal, integrating internet memes, current events, or pop culture references. Concurrently, increasing popularity has fostered a commercial market with online custom manufacturers.",
+            "evidenceIds": [
+              "P1",
+              "P3",
+              "P6"
+            ]
+          },
+          {
+            "text": "Nomenclature and historical context reveal parallels to ancient military standards. Writers have analogized modern totem carriers to historical vexilloids, which armies employed for tactical identification and leadership designation, while the moniker itself likely stems from visual comparisons to indigenous totem poles.",
+            "evidenceIds": [
+              "P4",
+              "P5"
+            ]
+          },
+          {
+            "text": "Notwithstanding their navigational utility in disorienting crowds, totems remain controversial within festival communities. While proponents emphasize their artistic contributions and practical benefits, detractors contend that oversized structures obstruct stage visibility and disrupt the shared audience experience.",
+            "evidenceIds": [
+              "P7"
+            ]
+          },
+          {
+            "text": "In response to ongoing concerns regarding crowd safety and visual obstructions, numerous event organizers have instituted specific regulatory frameworks governing the dimensions, material composition, and permissible usage of festival totems.",
+            "evidenceIds": [
+              "P8"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 1461,
+    "output": 905,
+    "total": 2366
+  },
+  "validation": null
 }
