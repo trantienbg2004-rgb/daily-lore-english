@@ -2,10 +2,10 @@
   "pageId": 38454300,
   "title": "Assisted migration",
   "topic": "Environment",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1376535017,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376535017",
-  "reason": "6 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -252,5 +252,121 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376535017"
     }
   ],
-  "updatedAt": "2026-10-23T12:52:24.946Z"
+  "updatedAt": "2026-10-23T12:52:42.083Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "Moving Plants and Animals for Climate Change",
+        "pages": [
+          {
+            "text": "Assisted migration is a nature conservation tactic. Plants or animals are intentionally moved to new geographic locations. This happens because their climate and habitat needs are changing. They are unable to migrate or disperse on their own to these new places.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Climate change is expected to drive many species out of their current ranges. It also creates new suitable habitats elsewhere. Scientists predict that a failure to migrate or adapt will result in about a quarter of the world's species dying out this century under moderate climate change.",
+            "evidenceIds": [
+              "P6"
+            ]
+          },
+          {
+            "text": "Assisted migration is a specific type of species introduction. Species introduction is any act of establishing a species in a habitat it does not currently occupy. Assisted migration acknowledges that natural dispersal rates may be too low to respond to rapid human-caused climate change.",
+            "evidenceIds": [
+              "P7"
+            ]
+          },
+          {
+            "text": "The practice has sparked debate over the possibility that the migrated species might spread diseases. They could also become too successful or invasive in the recipient ecosystems. Even so, several assisted migration projects have begun for several critically endangered species.",
+            "evidenceIds": [
+              "P8"
+            ]
+          },
+          {
+            "text": "Conservationists often use niche models to identify populations at risk and locate new potential habitats. These models predict future habitat suitability based on how closely climates resemble current conditions. However, these models make a number of unrealistic assumptions that restrict the usefulness of their predictions.",
+            "evidenceIds": [
+              "P10"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "Assisted Migration and Species Conservation",
+        "pages": [
+          {
+            "text": "Assisted migration involves the intentional establishment of populations beyond a species' historic range. The goal is tracking suitable habitats through a period of changing climate. It serves as a conservation tactic when plants or animals cannot migrate on their own to locations better suited to their climate tolerances.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Climate change is expected to drive many species out of current ranges while creating new habitats elsewhere. Scientists predict that failing to migrate or adapt will cause about a quarter of the world's species to die out this century under moderate climate change, as natural dispersal rates are far too slow.",
+            "evidenceIds": [
+              "P6"
+            ]
+          },
+          {
+            "text": "As a specific type of species introduction, assisted migration focuses on helping species reach sites where they can disperse fast enough through natural selection to keep pace with environmental changes. Practitioners view this as a small artificial boost to an otherwise natural process.",
+            "evidenceIds": [
+              "P7"
+            ]
+          },
+          {
+            "text": "Despite its potential to help species with poor natural dispersal avoid extinction, assisted migration has sparked debate. Critics worry that migrated species might spread diseases or become invasive in recipient ecosystems. Nevertheless, several projects have begun for critically endangered species.",
+            "evidenceIds": [
+              "P8"
+            ]
+          },
+          {
+            "text": "Conservationists frequently use niche models to identify populations at risk and locate potential new habitats. These models assume future suitability based on current climates. However, they rely on unrealistic assumptions, such as ignoring potential acclimatization, which limits confidence in predictions and leads some to reject the practice.",
+            "evidenceIds": [
+              "P10"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "Conservation Challenges of Assisted Migration",
+        "pages": [
+          {
+            "text": "Assisted migration constitutes an intentional conservation intervention whereby populations are established beyond historic boundaries to track suitable habitats amidst climatic shifts. This tactic addresses instances where organisms face habitat incompatibility due to climate change yet lack the dispersal capacity to reach requisite geographic locations independently.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Projections indicate climate change will evict numerous species from current ranges while generating novel suitable habitats elsewhere. Because natural dispersal rates frequently lag behind projected habitat shifts, niche modeling suggests that inaction could precipitate the extinction of approximately a quarter of global species this century.",
+            "evidenceIds": [
+              "P6"
+            ]
+          },
+          {
+            "text": "Operating as a specialized form of species introduction, assisted migration circumvents inadequate natural dispersal rates driven by anthropogenic climate change. Practitioners conceptualize the intervention as an incremental artificial catalyst facilitating movement to adjacent sites where natural selection can track environmental shifts.",
+            "evidenceIds": [
+              "P7"
+            ]
+          },
+          {
+            "text": "Although offering a mechanism for extinction avoidance among poor dispersers, assisted migration incites controversy regarding ecological risks such as disease transmission and invasiveness. Notwithstanding these apprehensions concerning recipient ecosystem integrity, several practical initiatives have commenced for critically endangered species.",
+            "evidenceIds": [
+              "P8"
+            ]
+          },
+          {
+            "text": "Conservationists deploy niche models to forecast future habitat suitability and identify vulnerable populations, yet these frameworks incorporate restrictive assumptions. By omitting variables like potential acclimatization, phenotypic plasticity, and shifting interspecies dynamics, these models introduce uncertainties that diminish predictive confidence and polarize management consensus.",
+            "evidenceIds": [
+              "P10"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2475,
+    "output": 1282,
+    "total": 3757
+  },
+  "validation": null
 }
