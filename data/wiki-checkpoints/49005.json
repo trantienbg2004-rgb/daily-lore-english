@@ -518,7 +518,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381276519"
     }
   ],
-  "updatedAt": "2026-10-23T20:33:36.392Z",
+  "updatedAt": "2026-10-23T20:33:54.329Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -620,7 +620,7 @@
             ]
           },
           {
-            "text": "Seven nations dominated the trade volume, predominantly supplying their own colonial territories. Quantitative estimates indicate approximately 12.75 million African embarkations, accompanied by a substantial mortality rate where up to two million individuals perished at sea. Legislative bans were enacted by various governments near the dawn of the nineteenth century, though clandestine smuggling continued.",
+            "text": "Seven nations dominated the trade volume, predominantly supplying their own colonial territories. Quantitative estimates indicate millions of African embarkations, accompanied by a substantial mortality rate where up to two million individuals perished at sea. Legislative bans were enacted by various governments near the dawn of the nineteenth century, though clandestine smuggling continued.",
             "evidenceIds": [
               "P5",
               "P6"
@@ -630,11 +630,11 @@
       }
     }
   },
-  "repairAttempts": 0,
+  "repairAttempts": 1,
   "lastUsage": {
-    "input": 2627,
-    "output": 1121,
-    "total": 3748
+    "input": 2467,
+    "output": 130,
+    "total": 2597
   },
   "validation": null
 }
