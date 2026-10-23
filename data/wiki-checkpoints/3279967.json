@@ -336,7 +336,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376916933"
     }
   ],
-  "updatedAt": "2026-10-23T23:39:57.487Z",
+  "updatedAt": "2026-10-23T23:40:15.375Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -355,7 +355,7 @@
             ]
           },
           {
-            "text": "At first, the environment was peaceful. Troops from France, Italy, and the United States landed in Beirut to help secure the port and facilitate departures of fighters.",
+            "text": "The French Armed Forces landed in Beirut on August 21, 1982. The U.S. Marines arrived on August 25, and the Italian Armed Forces arrived on August 26. This initial force was tasked with securing Beirut's port through which fighters would be evacuated by ship.",
             "evidenceIds": [
               "P9"
             ]
@@ -367,7 +367,7 @@
             ]
           },
           {
-            "text": "Because the country remained unstable and warring factions entered Beirut, the international force ended its mission. They withdrew completely from Lebanon in July 1984.",
+            "text": "The early peaceful environment ended as the civil war re-escalated after the assassination of President-elect Bashir Gemayel in September 1982. The international force ended its mission and went offshore before completely leaving Lebanon in July 1984 in the aftermath of the October 1983 barracks bombing that killed 241 U.S. and 58 French servicemen.",
             "evidenceIds": [
               "P5"
             ]
@@ -392,11 +392,9 @@
             ]
           },
           {
-            "text": "Initial deployments began in August 1982, with French, U.S., and Italian troops securing the port and surrounding areas to facilitate departures. The forces established specific zones of operation across Beirut to maintain order.",
+            "text": "The French Armed Forces landed in Beirut on August 21, with the U.S. Marines arriving on August 25 and the Italian Armed Forces on August 26. This initial force of U.S., French, and Italian troops was tasked with securing Beirut's port through which the Palestine Liberation Organization would be evacuated by ship. The next morning, the first ship arrived to begin evacuating forces.",
             "evidenceIds": [
-              "P9",
-              "P10",
-              "P11"
+              "P9"
             ]
           },
           {
@@ -456,11 +454,11 @@
       }
     }
   },
-  "repairAttempts": 0,
+  "repairAttempts": 1,
   "lastUsage": {
-    "input": 3037,
-    "output": 852,
-    "total": 3889
+    "input": 2995,
+    "output": 380,
+    "total": 3375
   },
   "validation": null
 }
