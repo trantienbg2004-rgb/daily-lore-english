@@ -2,10 +2,10 @@
   "pageId": 676659,
   "title": "Rwandan genocide",
   "topic": "Conflict & Security",
-  "status": "DRAFTED",
+  "status": "VALIDATED",
   "revisionId": 1381063357,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381063357",
-  "reason": "draft durably saved before validation",
+  "reason": "local factual, style, length, structure and source audit passed",
   "rights": [
     {
       "status": "REVIEW",
@@ -543,7 +543,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381063357"
     }
   ],
-  "updatedAt": "2026-10-23T17:14:24.389Z",
+  "updatedAt": "2026-10-23T17:15:00.683Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -670,5 +670,8 @@
     "output": 1224,
     "total": 4219
   },
-  "validation": null
+  "validation": {
+    "accepted": true,
+    "errors": []
+  }
 }
