@@ -2,10 +2,10 @@
   "pageId": 583117,
   "title": "Trade route",
   "topic": "Economy",
-  "status": "DRAFTED",
+  "status": "VALIDATED",
   "revisionId": 1373272826,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373272826",
-  "reason": "draft durably saved before validation",
+  "reason": "local factual, style, length, structure and source audit passed",
   "rights": [
     {
       "status": "REVIEW",
@@ -498,7 +498,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373272826"
     }
   ],
-  "updatedAt": "2026-10-23T23:39:09.021Z",
+  "updatedAt": "2026-10-23T23:39:26.982Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -627,5 +627,8 @@
     "output": 1329,
     "total": 3923
   },
-  "validation": null
+  "validation": {
+    "accepted": true,
+    "errors": []
+  }
 }
