@@ -2,10 +2,10 @@
   "pageId": 71983491,
   "title": "International Campaign to Save the Monuments of Nubia",
   "topic": "Culture",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1377298310,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377298310",
-  "reason": "5 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REJECTED",
@@ -245,7 +245,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377298310"
     }
   ],
-  "updatedAt": "2026-10-23T15:07:01.624Z",
+  "updatedAt": "2026-10-23T15:07:23.217Z",
   "draft": {
     "outline": [
       "The Aswan Dam project threatens Nubian monuments with flooding.",
@@ -259,7 +259,7 @@
         "headline": "Saving Nubia's Temples",
         "pages": [
           {
-            "text": "In 1960, a big project started in Egypt. Builders wanted to make a new dam on the Nile River. This dam would help control floods and make electricity. But the water would cover twenty-two old temples and historical sites in Lower Nubia.",
+            "text": "A major project started in Egypt. Builders wanted to make a new dam on the Nile River. This dam would help control floods and make electricity. But the water would cover twenty-two old temples and historical sites in Lower Nubia.",
             "evidenceIds": [
               "P1",
               "P2",
@@ -343,7 +343,7 @@
             ]
           },
           {
-            "text": "Running from 1960 to 1980 under UNESCO leadership, the collaborative rescue effort ultimately led to the creation of the World Heritage Convention in 1972. In April 1979, the relocated antiquities were officially inscribed on the World Heritage List.",
+            "text": "Under UNESCO leadership, the collaborative rescue effort ultimately led to the creation of the World Heritage Convention in 1972. In April 1979, the relocated antiquities were officially inscribed on the World Heritage List.",
             "evidenceIds": [
               "P1",
               "P4"
@@ -402,11 +402,11 @@
       }
     }
   },
-  "repairAttempts": 0,
+  "repairAttempts": 1,
   "lastUsage": {
-    "input": 2867,
-    "output": 1786,
-    "total": 4653
+    "input": 2854,
+    "output": 229,
+    "total": 3083
   },
   "validation": null
 }
