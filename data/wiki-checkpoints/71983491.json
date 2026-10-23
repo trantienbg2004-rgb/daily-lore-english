@@ -2,10 +2,10 @@
   "pageId": 71983491,
   "title": "International Campaign to Save the Monuments of Nubia",
   "topic": "Culture",
-  "status": "DRAFTED",
+  "status": "VALIDATED",
   "revisionId": 1377298310,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377298310",
-  "reason": "draft durably saved before validation",
+  "reason": "local factual, style, length, structure and source audit passed",
   "rights": [
     {
       "status": "REJECTED",
@@ -245,7 +245,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377298310"
     }
   ],
-  "updatedAt": "2026-10-23T15:07:23.217Z",
+  "updatedAt": "2026-10-23T15:07:58.487Z",
   "draft": {
     "outline": [
       "The Aswan Dam project threatens Nubian monuments with flooding.",
@@ -408,5 +408,8 @@
     "output": 229,
     "total": 3083
   },
-  "validation": null
+  "validation": {
+    "accepted": true,
+    "errors": []
+  }
 }
