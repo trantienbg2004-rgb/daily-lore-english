@@ -7826,10 +7826,10 @@
       "checkedAt": "2026-10-21T07:36:27.052Z"
     },
     "18940658": {
-      "status": "VALIDATED",
-      "reason": "local factual, style, length, structure and source audit passed",
+      "status": "PUBLISHED",
+      "reason": "4 verified embedded images",
       "revisionId": 1380015458,
-      "checkedAt": "2026-10-23T17:23:34.055Z"
+      "checkedAt": "2026-10-23T17:23:40.105Z"
     },
     "19098431": {
       "status": "NEEDS_REVIEW",
@@ -9866,7 +9866,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-23T17:23:34.057Z",
+  "updatedAt": "2026-10-23T17:23:40.105Z",
   "dailyUsage": {
     "day": "2026-10-23",
     "calls": 58,
