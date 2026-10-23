@@ -2,10 +2,10 @@
   "pageId": 463734,
   "title": "Public health",
   "topic": "Health",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1376316409,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376316409",
-  "reason": "17 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -571,5 +571,139 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376316409"
     }
   ],
-  "updatedAt": "2026-10-23T23:37:14.196Z"
+  "updatedAt": "2026-10-23T23:37:30.456Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "Understanding Public Health",
+        "pages": [
+          {
+            "text": "Public health is about keeping people healthy and stopping diseases before they start. It helps groups of people, from small towns to entire cities, live longer and better lives by focusing on physical and mental well-being.",
+            "evidenceIds": [
+              "P1",
+              "P6"
+            ]
+          },
+          {
+            "text": "This big field uses many tools to help communities. Experts look at health data, teach people about good habits, give vaccines, and make sure drinking water is clean and safe for everyone.",
+            "evidenceIds": [
+              "P3",
+              "P10",
+              "P12"
+            ]
+          },
+          {
+            "text": "In the past, growing cities needed new ways to fight illness. Great Britain became a leader in public health by building better sewer systems and working hard to control dangerous infectious diseases.",
+            "evidenceIds": [
+              "P5",
+              "P12"
+            ]
+          },
+          {
+            "text": "Today, public health also deals with long-term sickness like heart disease and cancer. Groups like the World Health Organization work hard around the world to stop sickness and help people stay healthy.",
+            "evidenceIds": [
+              "P13",
+              "P14"
+            ]
+          },
+          {
+            "text": "Poor countries still face big challenges because they often lack trained workers and money. Even with these difficulties, public health programs continue to save lives and protect communities everywhere.",
+            "evidenceIds": [
+              "P4",
+              "P16"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "The Mission and History of Public Health",
+        "pages": [
+          {
+            "text": "Public health is the science and art of preventing disease, prolonging life, and promoting well-being through organized societal efforts. It analyzes population health threats, addressing physical, psychological, and social factors for groups ranging from small communities to entire continents.",
+            "evidenceIds": [
+              "P1",
+              "P6"
+            ]
+          },
+          {
+            "text": "As an interdisciplinary field, public health covers environmental health, biostatistics, and public policy. Practical initiatives include vaccination delivery, air quality promotion, hand-washing education, and programs to prevent suicide and reduce smoking.",
+            "evidenceIds": [
+              "P2",
+              "P3"
+            ]
+          },
+          {
+            "text": "Historical public health efforts emerged in Great Britain during the nineteenth century because it was the first modern urban nation. Rapid urbanization created health distress, leading to vital sanitation projects like sewerage systems, alongside quarantine measures and scientific progress.",
+            "evidenceIds": [
+              "P5",
+              "P12"
+            ]
+          },
+          {
+            "text": "As infectious diseases decreased through the twentieth century, public health priorities shifted toward chronic illnesses like cancer and heart disease. Meanwhile, global organizations like the World Health Organization tackle major health emergencies and coordinate international disease eradication.",
+            "evidenceIds": [
+              "P13",
+              "P14"
+            ]
+          },
+          {
+            "text": "Significant disparities persist between developed and developing nations, where limited financial resources and shortages of trained workers hinder medical care. Furthermore, certain interventions remain controversial, sparking debates regarding personal freedom versus government responsibility in shaping health policies.",
+            "evidenceIds": [
+              "P4",
+              "P19"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "Global Frameworks and Evolution of Public Health",
+        "pages": [
+          {
+            "text": "Public health encompasses the collective science and organized efforts aimed at preventing disease, extending life expectancy, and enhancing societal well-being. By analyzing population-level determinants and health threats, it addresses physical, psychological, and social health parameters across scales ranging from local communities to global populations.",
+            "evidenceIds": [
+              "P1",
+              "P6"
+            ]
+          },
+          {
+            "text": "Operating as a multi-faceted interdisciplinary domain, public health integrates epidemiology, biostatistics, environmental health, and health economics. Implementation occurs through systematic case surveillance, promotion of healthy behaviors, vaccination distribution, and environmental interventions designed to mitigate risks.",
+            "evidenceIds": [
+              "P2",
+              "P3",
+              "P10"
+            ]
+          },
+          {
+            "text": "Historically, Great Britain pioneered modern public health frameworks during the nineteenth century in response to urban distress. Driven by rapid industrialization, initial strategies prioritized sanitation infrastructure, infectious disease containment via quarantine and vaccination, and the application of emerging scientific disciplines.",
+            "evidenceIds": [
+              "P5",
+              "P12"
+            ]
+          },
+          {
+            "text": "Following the epidemiological transition and the subsequent decline of infectious diseases in the twentieth century, public health mandates pivoted toward chronic conditions such as cardiovascular disease and malignancies. Concurrently, the World Health Organization directs international responses to health emergencies and coordinates global disease eradication campaigns.",
+            "evidenceIds": [
+              "P13",
+              "P14"
+            ]
+          },
+          {
+            "text": "Profound disparities in infrastructure and resource allocation separate developed regions from developing nations, where maternal and child health challenges remain acute. Moreover, utilitarian public health interventions frequently generate ethical dilemmas, balancing population-level risk mitigation against individual autonomy and personal liberties.",
+            "evidenceIds": [
+              "P4",
+              "P11",
+              "P19"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2681,
+    "output": 1310,
+    "total": 3991
+  },
+  "validation": null
 }
