@@ -448,7 +448,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379614555"
     }
   ],
-  "updatedAt": "2026-10-23T17:21:41.024Z",
+  "updatedAt": "2026-10-23T17:22:39.844Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -501,6 +501,7 @@
             "text": "While some early speculations suggested the game began in France or Flanders, written records point to south-east England. Children living in local woodlands likely created the sport. A court case from 1598 provides the earliest universally accepted reference.",
             "evidenceIds": [
               "P4",
+              "P5",
               "P6"
             ]
           },
@@ -540,6 +541,7 @@
             "text": "Although various speculative theories exist regarding foreign origins, documentary evidence traces the sport to south-east England. A documented court testimony from 1598 establishes that the game was actively played during the sixteenth century.",
             "evidenceIds": [
               "P4",
+              "P5",
               "P6"
             ]
           },
@@ -569,11 +571,11 @@
       }
     }
   },
-  "repairAttempts": 1,
+  "repairAttempts": 2,
   "lastUsage": {
-    "input": 2727,
-    "output": 220,
-    "total": 2947
+    "input": 2724,
+    "output": 232,
+    "total": 2956
   },
   "validation": null
 }
