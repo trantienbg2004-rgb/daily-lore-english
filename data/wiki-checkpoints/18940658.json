@@ -2,10 +2,10 @@
   "pageId": 18940658,
   "title": "Anti-communism",
   "topic": "Politics",
-  "status": "DRAFTED",
+  "status": "VALIDATED",
   "revisionId": 1380015458,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380015458",
-  "reason": "draft durably saved before validation",
+  "reason": "local factual, style, length, structure and source audit passed",
   "rights": [
     {
       "status": "REVIEW",
@@ -577,7 +577,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380015458"
     }
   ],
-  "updatedAt": "2026-10-23T17:23:16.029Z",
+  "updatedAt": "2026-10-23T17:23:34.056Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -693,5 +693,8 @@
     "output": 1216,
     "total": 3986
   },
-  "validation": null
+  "validation": {
+    "accepted": true,
+    "errors": []
+  }
 }
