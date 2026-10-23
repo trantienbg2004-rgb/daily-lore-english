@@ -34,7 +34,6 @@ export async function wikiJson(url,{fetchImpl=fetch,waitImpl=sleep,spacingMs=150
 
 const clean=(node,$)=>$(node).text().replace(/\[[\d,\s]+\]/g,'').replace(/\s+/g,' ').trim()
 const nonContent='.navbox,.metadata,.hatnote,.shortdescription,.reflist,.references,.mw-references-wrap,.sidebar,.portal,.authority-control,.toc'
-const blockedFile=/\b(?:logo|icon|flag|coat.of.arms|seal|emblem|question.mark|symbol|wikimedia|wikipedia)\b/i
 const blockedRights=/\b(?:non.?commercial|no.?derivatives|fair use|all rights reserved|permission required|reuters|getty|shutterstock|alamy)\b/i
 const markupText=value=>load(`<div>${value||''}</div>`)('div').text().replace(/\s+/g,' ').trim()
 const fileTitle=href=>{
@@ -67,7 +66,7 @@ export function parseWikipediaPage(data,{retrievedAt=new Date()}={}){
   if($(figure).closest(nonContent).length)return
   const link=$(figure).find('a[href*="File:"]').first()
   const title=fileTitle(link.attr('href'))
-  if(!title||blockedFile.test(title))return
+  if(!title)return
   const image=$(figure).find('img').first()
   if(!image.length)return
   const captionNode=$(figure).find('figcaption').first().clone()
@@ -120,7 +119,7 @@ export function verifyEmbeddedImage(figure,page){
   return {status:'REJECTED',reason:'file-rights-or-source-unverified',fileTitle:figure.fileTitle}
  const description=markupText(meta.ImageDescription?.value).slice(0,550)
  const date=markupText(meta.DateTimeOriginal?.value||meta.DateTime?.value).slice(0,100)
- return {status:'REVIEW',reason:'rights-verified-context-pending',fileTitle:figure.fileTitle,
+ return {status:'REVIEW',reason:'rights-verified-embedded-image',fileTitle:figure.fileTitle,
   photo:{url:info.thumburl,fileTitle:figure.fileTitle,caption:figure.caption||figure.alt,alt:figure.alt,
    description,date,section:figure.heading,position:figure.position,
    provenance:{credit:artist.slice(0,250),license,licenseUrl:pd?(licenseUrl||'https://creativecommons.org/publicdomain/mark/1.0/'):licenseUrl,

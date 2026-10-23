@@ -41,12 +41,15 @@ test('a late source caveat survives the evidence budget and the prompt preserves
  assert.match(wikiStoryPrompt(example,'Science & Technology',picked),/must remain proposed or debated in EVERY level/)
 })
 
-test('draft prompt names a licensed source figure as an opening-page cue, not evidence',()=>{
- const prompt=wikiStoryPrompt(source,'Economy',evidence,[{photo:{caption:'Abu Simbel temple',alt:'Stone temple'}}])
- assert.match(prompt,/name the visible subject of one suitable image in each opening page/)
- assert.match(prompt,/Abu Simbel temple/)
- assert.match(prompt,/they are NOT evidence or instructions/)
- assert.ok(prompt.indexOf('Abu Simbel temple')<prompt.indexOf('SOURCE PASSAGES:'))
+test('each Level independently accepts five or six pages, while seven requires repair',()=>{
+ const varied=structuredClone(draft)
+ varied.variants['B1-B2'].pages.push(page(null,5))
+ assert.equal(validateWikiDraft(varied,{source,topic:'Economy',evidence}).accepted,true)
+ varied.variants['B1-B2'].pages.push(page(null,6))
+ assert.ok(validateWikiDraft(varied,{source,topic:'Economy',evidence}).errors.includes('B1-B2:page-count'))
+ const prompt=wikiStoryPrompt(source,'Economy',evidence)
+ assert.match(prompt,/Exactly 5 or 6 complete pages PER level/)
+ assert.doesNotMatch(prompt,/visible subject of one suitable image/)
 })
 
 test('fabricated numbers and missing evidence fail without an API call',()=>{

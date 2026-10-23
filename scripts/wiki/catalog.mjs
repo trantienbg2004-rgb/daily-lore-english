@@ -30,12 +30,12 @@ export function makeWikiStory({source,topic,draft,photos,evidence=[],now=new Dat
   levelVariants:variants,pages:variants['B1-B2'].pages.map(page=>({...page})),
   sourceEvidence:evidence.map(row=>({id:row.id,hash:row.hash,excerpt:row.excerpt})),
   editorialState:'Source-grounded automated checks; not a guarantee of semantic accuracy'}
- const gate=validateWikiStory(story)
+ const gate=validateWikiStory(story,{maxPages:6})
  if(!gate.accepted)throw Error('Wiki story gate: '+gate.errors.join(','))
  return story
 }
 
-export function validateWikiStory(story){
+export function validateWikiStory(story,{maxPages=7}={}){
  const errors=[]
  if(story?.contentType!=='wiki'||story.editorialVersion!==2||!WIKI_TOPICS.includes(story.category))errors.push('identity')
  if(!Number.isSafeInteger(story?.sourcePageId)||!Number.isSafeInteger(story?.sourceRevisionId)||
@@ -50,7 +50,8 @@ export function validateWikiStory(story){
  const covers=[]
  for(const level of levels){
   const variant=story?.levelVariants?.[level],pages=variant?.pages
-  if(!nonempty(variant?.headline)||!Array.isArray(pages)||pages.length<5||pages.length>7){errors.push(level+':structure');continue}
+  // Stored articles may contain seven pages; newly created ones stop at six.
+  if(!nonempty(variant?.headline)||!Array.isArray(pages)||pages.length<5||pages.length>maxPages){errors.push(level+':structure');continue}
   for(const [pageIndex,page] of pages.entries()){
    if(!nonempty(page?.text)||!Array.isArray(page.evidenceIds)||!page.evidenceIds.length||
     page.evidenceIds.some(id=>!evidenceIds.has(id)))errors.push(level+':page-evidence')

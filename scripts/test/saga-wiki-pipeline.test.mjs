@@ -106,7 +106,9 @@ test('accepted media review and a canonical license retry without another Gemini
  stored.outcomes[42]={status:'NEEDS_REVIEW',reason,revisionId:123}
  const saved={pageId:42,revisionId:123,status:'NEEDS_REVIEW',rights:[{status:'REVIEW',
   photo:{url:'https://thumb.wikimedia.org/map',fileTitle:'File:Map.svg'}}],
-  validation:{accepted:true},draft:{variants:{}},evidence:[{id:'P1'}]}
+  validation:{accepted:true},draft:{variants:Object.fromEntries(['A1-A2','B1-B2','C1-C2']
+   .map(level=>[level,{pages:Array.from({length:5},()=>({text:'Verified text',evidenceIds:['P1']}))}]))},
+  evidence:[{id:'P1'}]}
  let appended=0
  const result=await runWikiBatch({base:'unused',maxCalls:0,maxCandidates:1,
   readState:async()=>stored,writeState:async()=>{},readCatalog:async()=>({stories:[]}),

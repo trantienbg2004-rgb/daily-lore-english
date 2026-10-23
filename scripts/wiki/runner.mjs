@@ -180,7 +180,11 @@ export async function runWikiBatch({base,maxCalls=0,maxCandidates=5,pageId=null,
   }
   if(TERMINAL_QUEUE_STATUSES.has(prior?.status)&&!retryableTechnicalReview(prior))continue
   let checkpoint=await checkpointFor(candidate)||{pageId:candidate.pageId,title:candidate.title,topic:candidate.topic,status:'PENDING'}
-  const cachedValidation=checkpoint.validation?.accepted&&
+  const validNewLengths=['A1-A2','B1-B2','C1-C2'].every(level=>{
+   const length=checkpoint.draft?.variants?.[level]?.pages?.length
+   return length===5||length===6
+  })
+  const cachedValidation=checkpoint.validation?.accepted&&validNewLengths&&
    (checkpoint.status==='VALIDATED'||retryableTechnicalReview(prior))
   if(!cachedValidation&&(maxCalls===0||budget.circuitOpen||budget.tokenAccountingUnavailable||budget.maxCalls-budget.usedCalls<2)&&checkpoint.evidence&&checkpoint.rights)continue
   stats.attempted++
@@ -213,7 +217,7 @@ export async function runWikiBatch({base,maxCalls=0,maxCandidates=5,pageId=null,
     ?{result:checkpoint.draft,validation:checkpoint.validation,evidence:checkpoint.evidence,usage:null}:null
    if(!response)for(const [index,currentModel] of modelCandidates.entries()){
     try{
-     response=await generate({source,topic:candidate.topic,apiKey,freeTierConfirmed,budget,model:currentModel,photoHints:photos,
+     response=await generate({source,topic:candidate.topic,apiKey,freeTierConfirmed,budget,model:currentModel,
       draft:checkpoint.draft||null,repairAttempts:checkpoint.repairAttempts||0,savedEvidence:checkpoint.evidence,
       priorValidation:checkpoint.validation?.errors?.some(error=>error.includes(':audit-'))?checkpoint.validation:null,
       onDraft:async({result,repairAttempts,usage,evidence:currentEvidence})=>{
