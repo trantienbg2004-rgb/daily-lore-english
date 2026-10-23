@@ -6200,10 +6200,10 @@
       "checkedAt": "2026-10-22T23:48:38.263Z"
     },
     "49005": {
-      "status": "DRAFTED",
-      "reason": "draft durably saved before validation",
+      "status": "VALIDATED",
+      "reason": "local factual, style, length, structure and source audit passed",
       "revisionId": 1381276519,
-      "checkedAt": "2026-10-23T20:33:54.328Z"
+      "checkedAt": "2026-10-23T20:34:12.373Z"
     },
     "49147": {
       "status": "EVIDENCE_READY",
@@ -9866,7 +9866,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-23T20:34:07.110Z",
+  "updatedAt": "2026-10-23T20:34:12.375Z",
   "dailyUsage": {
     "day": "2026-10-23",
     "calls": 78,

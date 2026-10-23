@@ -2,10 +2,10 @@
   "pageId": 49005,
   "title": "Atlantic slave trade",
   "topic": "Economy",
-  "status": "DRAFTED",
+  "status": "VALIDATED",
   "revisionId": 1381276519,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381276519",
-  "reason": "draft durably saved before validation",
+  "reason": "local factual, style, length, structure and source audit passed",
   "rights": [
     {
       "status": "REVIEW",
@@ -518,7 +518,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381276519"
     }
   ],
-  "updatedAt": "2026-10-23T20:33:54.329Z",
+  "updatedAt": "2026-10-23T20:34:12.374Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -636,5 +636,8 @@
     "output": 130,
     "total": 2597
   },
-  "validation": null
+  "validation": {
+    "accepted": true,
+    "errors": []
+  }
 }
