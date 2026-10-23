@@ -6548,10 +6548,10 @@
       "checkedAt": "2026-10-22T08:30:12.987Z"
     },
     "463734": {
-      "status": "VALIDATED",
-      "reason": "local factual, style, length, structure and source audit passed",
+      "status": "PUBLISHED",
+      "reason": "4 verified embedded images",
       "revisionId": 1376316409,
-      "checkedAt": "2026-10-23T23:37:48.417Z"
+      "checkedAt": "2026-10-23T23:37:54.531Z"
     },
     "524267": {
       "status": "EVIDENCE_READY",
@@ -9866,7 +9866,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-23T23:37:48.418Z",
+  "updatedAt": "2026-10-23T23:37:54.531Z",
   "dailyUsage": {
     "day": "2026-10-23",
     "calls": 98,
