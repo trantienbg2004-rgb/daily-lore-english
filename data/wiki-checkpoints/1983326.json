@@ -2,10 +2,10 @@
   "pageId": 1983326,
   "title": "History of the automobile",
   "topic": "Science & Technology",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1380229009,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380229009",
-  "reason": "18 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REJECTED",
@@ -584,5 +584,128 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380229009"
     }
   ],
-  "updatedAt": "2026-10-23T15:08:11.513Z"
+  "updatedAt": "2026-10-23T15:08:28.720Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "Early Cars and Engines",
+        "pages": [
+          {
+            "text": "Long ago, people made early ideas and designs for cars. In 1649, Hans Hautsch built a clockwork carriage. Later, in 1772, Nicolas-Joseph Cugnot built the first steam car that could carry people.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "In the early 1800s, inventors created new engines. Samuel Brown tested an early engine that used internal combustion in 1826. But people did not make many of them at that time.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Engineers soon began using gasoline in two-cycle and four-cycle engines. In 1886, Carl Benz made the first practical, marketable car. He made several identical copies for everyday use.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "Many inventors started making horseless carriages in America and Europe. Ransom E. Olds founded Oldsmobile and used an assembly line with identical parts to build thousands of cars.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "In 1908, the Ford Motor Company introduced the Model T at a low price. Later, a moving assembly line helped lower the price even more, making it mass-affordable.",
+            "evidenceIds": [
+              "P3"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "The Evolution of Early Automobiles",
+        "pages": [
+          {
+            "text": "Long before modern vehicles appeared, inventors explored various designs. Around 1672, Ferdinand Verbiest built a small steam-powered toy in China. By 1769, Nicolas-Joseph Cugnot constructed the first steam automobile capable of human transportation. Early internal combustion engines also emerged in the early 19th century, including François Isaac de Rivaz's hydrogen engine and Samuel Brown's 1826 industrially applied engine.",
+            "evidenceIds": [
+              "P1",
+              "P4",
+              "P10"
+            ]
+          },
+          {
+            "text": "During the mid-19th century, road transport development faced obstacles. In the United Kingdom, laws like the Locomotives Act 1865 required a person on foot with a red flag to precede mechanical vehicles, significantly hindering progress. Meanwhile, engineers advanced internal combustion engines by using gasoline and developing two- and four-cycle designs.",
+            "evidenceIds": [
+              "P2",
+              "P7"
+            ]
+          },
+          {
+            "text": "The modern car era truly began in 1886 when Carl Benz developed a gasoline-powered automobile and produced several identical copies. Gottlieb Daimler and Wilhelm Maybach also formed a company that later became Daimler-Benz. Entrepreneurs across America and Europe entered the horseless carriage business.",
+            "evidenceIds": [
+              "P2",
+              "P3"
+            ]
+          },
+          {
+            "text": "Production methods evolved rapidly. Ransom E. Olds pioneered the assembly line using interchangeable parts, producing thousands of Oldsmobiles. In 1908, the Ford Motor Company revolutionized manufacturing by selling the Model T at a modest price.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "By 1913, Ford introduced an advanced moving assembly line, which lowered the Model T's price by nearly fifty percent. This innovation made the vehicle widely accessible as the first mass-affordable automobile for the general public.",
+            "evidenceIds": [
+              "P3"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "From Steam to Mass Production",
+        "pages": [
+          {
+            "text": "Rudimentary concepts of self-propelled vehicles date back centuries. Following early historical milestones such as Hans Hautsch's 1649 clockwork carriage and Ferdinand Verbiest's 1672 steam-powered model, Nicolas-Joseph Cugnot successfully constructed the first steam-powered automobile capable of human transportation in 1769. Concurrently, early internal combustion engines emerged, highlighted by François Isaac de Rivaz's 1806 hydrogen-oxygen engine and Samuel Brown's 1826 test of an industrially applied combustion engine.",
+            "evidenceIds": [
+              "P1",
+              "P4",
+              "P10"
+            ]
+          },
+          {
+            "text": "Mid-nineteenth-century progress encountered regulatory setbacks, particularly in the United Kingdom, where the Locomotives Act of 1865 mandated that mechanical road vehicles be preceded by a pedestrian carrying a red flag. This legislation severely impeded British road transport development until its repeal in 1896 for vehicles weighing under three tons, following successful automotive advancements in France and Germany.",
+            "evidenceIds": [
+              "P2",
+              "P7"
+            ]
+          },
+          {
+            "text": "The inception of the modern automobile occurred in 1886 when Carl Benz created a practical, marketable gasoline-powered vehicle and manufactured multiple identical units. Simultaneously, Gottlieb Daimler and Wilhelm Maybach established Daimler Motoren Gesellschaft, which eventually merged with Benz & Cie. in 1926 to form Daimler-Benz.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "Entrepreneurial ventures flourished during the late nineteenth and early twentieth centuries. Ransom E. Olds founded Oldsmobile in 1897 and pioneered assembly line production utilizing interchangeable parts, yielding thousands of vehicles by 1903. This manufacturing framework anticipated industrial scaling strategies.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "In 1908, the Ford Motor Company transformed the automotive industry by releasing the Model T at a modest price point. The subsequent implementation of an advanced moving assembly line in 1913 enabled Ford to reduce the vehicle's price by nearly fifty percent, establishing it as the premier mass-affordable automobile.",
+            "evidenceIds": [
+              "P3"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2991,
+    "output": 1125,
+    "total": 4116
+  },
+  "validation": null
 }
