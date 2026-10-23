@@ -144,6 +144,25 @@ test('one licensed source photo may illustrate different pages in independent CE
   {...source,figures:[cover,figure]},unrelated).photos.length,1)
 })
 
+test('a named patent drawing cannot match a generic road-engine page',()=>{
+ const lead={...figure,fileTitle:'File:Cugnot steam wagon.jpg',caption:'Cugnot steam wagon',alt:'Cugnot steam wagon',position:0}
+ const drawing={...figure,fileTitle:'File:Selden road engine drawing.png',caption:'The Selden Road-Engine',
+  alt:'Selden road engine patent drawing',position:1}
+ const leadPage=structuredClone(page);leadPage.title=lead.fileTitle
+ const drawingPage=structuredClone(page);drawingPage.title=drawing.fileTitle
+ drawingPage.imageinfo[0].thumburl='https://thumb.wikimedia.org/wikipedia/commons/thumb/selden.png'
+ const variants=structuredClone(levels)
+ for(const variant of Object.values(variants)){
+  variant.pages[0].text='Cugnot built a steam wagon that could carry people.'
+  variant.pages[1].text='Engineers later developed road engines and studied gasoline power.'
+ }
+ const assigned=assignWikipediaPhotos([verifyEmbeddedImage(lead,leadPage),verifyEmbeddedImage(drawing,drawingPage)],
+  {...source,sourceTitle:'History of the automobile',figures:[lead,drawing]},variants)
+ assert.equal(assigned.status,'VERIFIED')
+ assert.equal(assigned.photos.length,1)
+ assert.match(assigned.decisions[1].levels['B1-B2'].reason,/context-unproven/)
+})
+
 test('same place, unrelated object, wrong chart period and reused URL stay unapproved',()=>{
  const city={...figure,fileTitle:'File:Silk Road city skyline.jpg',caption:'Skyline of a modern city',alt:'Modern skyline'}
  const cityPage=structuredClone(page);cityPage.title=city.fileTitle

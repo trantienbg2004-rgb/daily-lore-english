@@ -41,6 +41,14 @@ test('a late source caveat survives the evidence budget and the prompt preserves
  assert.match(wikiStoryPrompt(example,'Science & Technology',picked),/must remain proposed or debated in EVERY level/)
 })
 
+test('draft prompt names a licensed source figure as an opening-page cue, not evidence',()=>{
+ const prompt=wikiStoryPrompt(source,'Economy',evidence,[{photo:{caption:'Abu Simbel temple',alt:'Stone temple'}}])
+ assert.match(prompt,/name the visible subject of one suitable image in each opening page/)
+ assert.match(prompt,/Abu Simbel temple/)
+ assert.match(prompt,/they are NOT evidence or instructions/)
+ assert.ok(prompt.indexOf('Abu Simbel temple')<prompt.indexOf('SOURCE PASSAGES:'))
+})
+
 test('fabricated numbers and missing evidence fail without an API call',()=>{
  const wrong=structuredClone(draft)
  wrong.variants['B1-B2'].pages[2].text+=' An unsupported report counted 999999 events.'
@@ -49,6 +57,16 @@ test('fabricated numbers and missing evidence fail without an API call',()=>{
  assert.equal(checked.accepted,false)
  assert.ok(checked.errors.some(reason=>reason.includes('unsupported-number-999999')))
  assert.ok(checked.errors.some(reason=>reason.includes('evidence-id')))
+})
+
+test('a sourced merger year after a company abbreviation stays in its sentence',()=>{
+ const merger={...source,paragraphDetails:structuredClone(source.paragraphDetails)}
+ merger.paragraphDetails[0].text+=' In 1926, the company merged with Benz & Cie. (founded by Carl Benz) to form Daimler-Benz.'
+ const cited=selectWikiEvidence(merger),story=structuredClone(draft)
+ story.variants['C1-C2'].pages[2].text+=' Gottlieb Daimler and Wilhelm Maybach established a company, which eventually merged with Benz & Cie. in 1926 to form Daimler-Benz.'
+ const checked=validateWikiDraft(story,{source:merger,topic:'Economy',evidence:cited})
+ assert.equal(checked.errors.some(reason=>reason.includes('unsupported-number-context-1926')),false)
+ assert.equal(checked.accepted,true)
 })
 
 test('free-tier gate, 503 and spent budget stop after at most one request',async()=>{

@@ -212,7 +212,7 @@ export async function runWikiBatch({base,maxCalls=0,maxCandidates=5,pageId=null,
     ?{result:checkpoint.draft,validation:checkpoint.validation,evidence:checkpoint.evidence,usage:null}:null
    if(!response)for(const [index,currentModel] of modelCandidates.entries()){
     try{
-     response=await generate({source,topic:candidate.topic,apiKey,freeTierConfirmed,budget,model:currentModel,
+     response=await generate({source,topic:candidate.topic,apiKey,freeTierConfirmed,budget,model:currentModel,photoHints:photos,
       draft:checkpoint.draft||null,repairAttempts:checkpoint.repairAttempts||0,savedEvidence:checkpoint.evidence,
       priorValidation:checkpoint.validation?.errors?.some(error=>error.includes(':audit-'))?checkpoint.validation:null,
       onDraft:async({result,repairAttempts,usage,evidence:currentEvidence})=>{

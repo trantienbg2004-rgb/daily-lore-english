@@ -259,7 +259,7 @@
         "headline": "Saving Nubia's Temples",
         "pages": [
           {
-            "text": "A major project started in Egypt. Builders wanted to make a new dam on the Nile River. This dam would help control floods and make electricity. But the water would cover twenty-two old temples and historical sites in Lower Nubia.",
+            "text": "A major project started in Egypt. Builders wanted to make a new dam on the Nile River. This dam would help control floods and make electricity. But the water would cover twenty-two old temples and historical sites in Lower Nubia, including Abu Simbel.",
             "evidenceIds": [
               "P1",
               "P2",
@@ -306,7 +306,7 @@
         "headline": "The International Campaign for Nubia",
         "pages": [
           {
-            "text": "Following the 1952 revolution, Egypt launched plans to build the Aswan High Dam to control flooding, expand irrigation, and generate hydroelectric power. However, the resulting Lake Nasser would submerge the entire region of historical Lower Nubia, threatening twenty-two critical archaeological sites.",
+            "text": "Following the 1952 revolution, Egypt launched plans to build the Aswan High Dam to control flooding, expand irrigation, and generate hydroelectric power. However, the resulting Lake Nasser would submerge the entire region of historical Lower Nubia, threatening twenty-two critical archaeological sites, including the Abu Simbel temples.",
             "evidenceIds": [
               "P1",
               "P2",
@@ -408,8 +408,5 @@
     "output": 229,
     "total": 3083
   },
-  "validation": {
-    "accepted": true,
-    "errors": []
-  }
+  "validation": null
 }
