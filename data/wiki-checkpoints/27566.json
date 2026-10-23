@@ -354,7 +354,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381114289"
     }
   ],
-  "updatedAt": "2026-10-23T00:55:52.959Z",
+  "updatedAt": "2026-10-23T00:56:10.977Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -394,7 +394,7 @@
             ]
           },
           {
-            "text": "The United States has hosted the Summer Olympics four times in cities like St. Louis, Los Angeles, and Atlanta. The U.S. also leads the all-time medal count. The Games continue to change today, adding new sports for athletes to play. কন্যা",
+            "text": "The United States has hosted the Summer Olympics four times in cities like St. Louis, Los Angeles, and Atlanta. The U.S. also leads the all-time medal count. The Games continue to change today, adding new sports for athletes to play.",
             "evidenceIds": [
               "P4",
               "P13"
@@ -406,7 +406,7 @@
         "headline": "History and Growth of the Summer Olympics",
         "pages": [
           {
-            "text": "The Summer Olympic Games are the world's largest and most prestigious multi-sport international event. Usually held once every four years, the modern tradition began in Athens in 1896. The International Olympic Committee, founded by Pierre de Coubertin, organized this groundbreaking global competition.",
+            "text": "The Summer Olympic Games are the world's largest and most prestigious multi-sport international event. Usually held once every four years, the modern tradition began in Athens. The International Olympic Committee, founded by Pierre de Coubertin, organized this groundbreaking global competition.",
             "evidenceIds": [
               "P1",
               "P6"
@@ -442,7 +442,7 @@
             ]
           },
           {
-            "text": "The sports programme has evolved continually since 1896. The 2024 Games featured 32 sports, while future editions plan to introduce entirely new disciplines like flag football and squash. International sports federations govern the qualification rules for each specific competition.",
+            "text": "The sports programme has evolved continually since the early Games. The 2024 Games featured 32 sports, while future editions plan to introduce entirely new disciplines like flag football and squash. International sports federations govern the qualification rules for each specific competition.",
             "evidenceIds": [
               "P13",
               "P14"
@@ -502,11 +502,11 @@
       }
     }
   },
-  "repairAttempts": 0,
+  "repairAttempts": 1,
   "lastUsage": {
-    "input": 3188,
-    "output": 1304,
-    "total": 4492
+    "input": 3456,
+    "output": 404,
+    "total": 3860
   },
   "validation": null
 }
