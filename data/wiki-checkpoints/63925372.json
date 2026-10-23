@@ -2,10 +2,10 @@
   "pageId": 63925372,
   "title": "Hebraization of Palestinian place names",
   "topic": "History & Geography",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1378076101,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378076101",
-  "reason": "3 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -213,7 +213,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378076101"
     }
   ],
-  "updatedAt": "2026-10-23T16:57:41.134Z",
+  "updatedAt": "2026-10-23T16:57:59.437Z",
   "draft": {
     "outline": [
       "Introduction to the history and extensive scope of place-name Hebraization across Palestine.",
@@ -273,7 +273,7 @@
         "headline": "The History of Hebraizing Place Names",
         "pages": [
           {
-            "text": "Hebrew-language names were assigned to locations across Palestine across several distinct eras. These included the British Mandate, the period following the 1948 war, and the subsequent occupation of Palestinian territories in 1967. A 1992 study recorded nearly 2,800 historical sites that underwent this process, including numerous villages, ruins, wadis, and springs.",
+            "text": "Hebrew-language names were assigned to locations across Palestine across several distinct eras. These included the British Mandate, the period following the 1948 war, and the subsequent occupation of Palestinian territories in 1967. A study recorded historical sites that underwent this process, including numerous villages, ruins, wadis, and springs.",
             "evidenceIds": [
               "P1"
             ]
@@ -318,7 +318,7 @@
         "headline": "Toponymic Transformation in Palestine",
         "pages": [
           {
-            "text": "The systematic Hebraization of Palestinian toponyms unfolded across successive historical phases: the British Mandate, the aftermath of the 1948 Arab-Israeli conflict, and the post-1967 occupation. A comprehensive 1992 study cataloged approximately 2,780 altered historical localities, spanning villages, architectural ruins, water sources, and topographical features.",
+            "text": "The systematic Hebraization of Palestinian toponyms unfolded across successive historical phases: the British Mandate, the aftermath of the 1948 Arab-Israeli conflict, and the post-1967 occupation. A comprehensive study cataloged altered historical localities, spanning villages, architectural ruins, water sources, and topographical features.",
             "evidenceIds": [
               "P1"
             ]
@@ -343,7 +343,7 @@
             ]
           },
           {
-            "text": "Following the 1948 war, dedicated state bodies such as the Negev naming committee and the subsequent Government Naming Committee institutionalized nationwide toponymic revision. Archival records indicate that by 1960, the replacement of Arabic designations was extensive, though complicated by occasional archaeological misidentifications.",
+            "text": "Following the war, dedicated state bodies such as the Negev naming committee and the subsequent Government Naming Committee institutionalized nationwide toponymic revision. Archival records indicate that by 1960, the replacement of Arabic designations was extensive, though complicated by occasional archaeological misidentifications.",
             "evidenceIds": [
               "P9",
               "P10",
@@ -361,11 +361,11 @@
       }
     }
   },
-  "repairAttempts": 0,
+  "repairAttempts": 1,
   "lastUsage": {
-    "input": 3027,
-    "output": 1837,
-    "total": 4864
+    "input": 3153,
+    "output": 357,
+    "total": 3510
   },
   "validation": null
 }
