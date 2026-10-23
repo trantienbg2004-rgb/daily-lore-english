@@ -2,10 +2,10 @@
   "pageId": 5951576,
   "title": "History of electromagnetic theory",
   "topic": "Science & Technology",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1378298061,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378298061",
-  "reason": "17 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REJECTED",
@@ -565,5 +565,139 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378298061"
     }
   ],
-  "updatedAt": "2026-10-23T17:23:51.033Z"
+  "updatedAt": "2026-10-23T17:24:23.422Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "The long history of electricity and magnets",
+        "pages": [
+          {
+            "text": "Long ago, people did not understand lightning, static, or magnets. Ancient civilizations knew that amber attracts light objects and lodestone attracts iron. They also felt shocks from electric fish in rivers, but they did not know these things were connected.",
+            "evidenceIds": [
+              "P1",
+              "P3",
+              "P5"
+            ]
+          },
+          {
+            "text": "In later times, people built early machines to create electric sparks. Stephen Gray showed that some materials conduct electricity while others stop it. Researchers also invented the Leyden jar to store large amounts of electrical energy safely inside glass bottles.",
+            "evidenceIds": [
+              "P8",
+              "P9",
+              "P11"
+            ]
+          },
+          {
+            "text": "Benjamin Franklin used a kite in a storm to show that lightning is electricity. He then invented the lightning rod to keep buildings safe. Around the same time, people began to understand positive and negative charges clearly.",
+            "evidenceIds": [
+              "P12"
+            ]
+          },
+          {
+            "text": "In 1800, Alessandro Volta built the first device that could make a large electric current, which became known as the battery. This invention gave scientists a new way to study power and test exciting new ideas about energy.",
+            "evidenceIds": [
+              "P13"
+            ]
+          },
+          {
+            "text": "During the nineteenth century, Michael Faraday and Joseph Henry discovered electromagnetic induction. Later, James Clerk Maxwell united electricity and magnetism into a single scientific theory. He wrote equations to explain light, electric fields, and magnetic forces together.",
+            "evidenceIds": [
+              "P2",
+              "P14",
+              "P16"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "Discovering electricity and magnetism",
+        "pages": [
+          {
+            "text": "The history of electromagnetic theory began with ancient efforts to explain atmospheric electricity and mysterious natural phenomena. Early civilizations observed that rubbed amber attracts lightweight items and lodestone attracts iron. People also experienced powerful shocks from electric fish, though they could not explain these occurrences.",
+            "evidenceIds": [
+              "P1",
+              "P3",
+              "P5"
+            ]
+          },
+          {
+            "text": "During the eighteenth century, researchers improved electric machines using glass balls and plates. Stephen Gray conducted experiments demonstrating the difference between conductors and insulators. Soon afterward, the Leyden jar was invented independently by researchers to store electrical energy in large quantities.",
+            "evidenceIds": [
+              "P8",
+              "P9",
+              "P11"
+            ]
+          },
+          {
+            "text": "Benjamin Franklin famously flew a kite through a storm-threatened sky, using a key to charge a Leyden jar and establish the link between lightning and electricity. Following these investigations, he invented the lightning rod, and researchers established the convention of positive and negative electricity.",
+            "evidenceIds": [
+              "P12"
+            ]
+          },
+          {
+            "text": "In 1800, Alessandro Volta constructed the first device capable of producing a large electric current, which later became known as the electric battery. Napoleon later summoned Volta for a command performance of his experiments, awarding him many medals and decorations.",
+            "evidenceIds": [
+              "P13"
+            ]
+          },
+          {
+            "text": "By the nineteenth century, scientists recognized that electricity and magnetism were closely related. Michael Faraday and Joseph Henry independently discovered electromagnetic induction. James Clerk Maxwell subsequently announced his electromagnetic theory, reducing current knowledge into a comprehensive set of differential equations.",
+            "evidenceIds": [
+              "P2",
+              "P14",
+              "P16"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "Evolution of electromagnetic theory",
+        "pages": [
+          {
+            "text": "Inquiry into electromagnetism originated in antiquity through observations of atmospheric electricity, lodestones, and amber. While ancient civilizations recognized the distinct properties of amber and magnetic iron ore, they lacked a unifying explanatory framework. Similarly, physiological responses to electric fish were widely documented across cultures without any comprehension of a shared electrical origin.",
+            "evidenceIds": [
+              "P1",
+              "P3",
+              "P5"
+            ]
+          },
+          {
+            "text": "Eighteenth-century experimentation advanced significantly through modifications to electric generators and the classification of materials. Stephen Gray empirically distinguished between conductors and non-conductors by testing transmission across long lines. Concurrently, the independent invention of the Leyden jar provided researchers with a reliable capacitor capable of accumulating substantial electrical charges.",
+            "evidenceIds": [
+              "P8",
+              "P9",
+              "P11"
+            ]
+          },
+          {
+            "text": "Benjamin Franklin's empirical investigations, most notably his hazardous kite experiment, bridged the conceptual gap between atmospheric lightning and domestic electricity, leading directly to the invention of the lightning rod. This period also saw the establishment of positive and negative electrical nomenclature by figures such as Franklin and Ebenezer Kinnersley.",
+            "evidenceIds": [
+              "P12"
+            ]
+          },
+          {
+            "text": "The transition to sustained current electricity arrived in 1800 when Alessandro Volta constructed the primary apparatus for continuous electrical generation, the battery. Volta's breakthrough drew international acclaim, earning him recognition from Napoleon and numerous prestigious decorations.",
+            "evidenceIds": [
+              "P13"
+            ]
+          },
+          {
+            "text": "Nineteenth-century research culminated in the unification of electrical and magnetic phenomena. Following the independent discoveries of electromagnetic induction by Michael Faraday and Joseph Henry, James Clerk Maxwell formulated his electromagnetic theory of light in 1864. By synthesizing existing knowledge into differential equations, Maxwell successfully integrated magnetic force, electric currents, and electrostatic fields into a comprehensive dynamical framework.",
+            "evidenceIds": [
+              "P2",
+              "P14",
+              "P16"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2862,
+    "output": 1424,
+    "total": 4286
+  },
+  "validation": null
 }
