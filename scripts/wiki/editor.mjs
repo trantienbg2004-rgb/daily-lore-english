@@ -6,6 +6,10 @@ import {WIKI_TOPICS} from './discovery.mjs'
 const MODEL='gemini-3.5-flash-lite'
 const FREE_MODELS=new Set([MODEL,'gemini-3.1-flash-lite','gemini-3.6-flash','gemini-3.8-flash'])
 const MIN_REQUEST_SPACING_MS=5000
+// Verified for this Free Tier project in AI Studio on 2026-10-23:
+// Lite 15 RPM / 500 RPD, full Flash 5 RPM / 20 RPD. Leave headroom.
+const modelDailyCap=model=>model.endsWith('flash-lite')?450:18
+const modelSpacing=model=>model.endsWith('flash-lite')?MIN_REQUEST_SPACING_MS:15000
 const LEVELS=['A1-A2','B1-B2','C1-C2']
 const PAGE_SCHEMA={type:'object',properties:{text:{type:'string'},evidenceIds:{type:'array',items:{type:'string'},minItems:1}},
  required:['text','evidenceIds']}
@@ -80,10 +84,13 @@ export async function callFreeWikiGemini(prompt,{apiKey,freeTierConfirmed=false,
  for(;;){
   if((budget.usedCalls||0)>=budget.maxCalls||
    (budget.dailyCalls||0)>=Math.min(budget.maxDailyCalls||450,450)||
-   (budget.dailyTokens||budget.usage?.total||0)>=Math.min(budget.maxTokens||1500000,1500000))
+   (budget.dailyTokens||budget.usage?.total||0)>=Math.min(budget.maxTokens||1500000,1500000)||
+   (budget.dailyModelCalls?.[model]||0)+(model.endsWith('flash-lite')?0:budget.legacyUnattributedCalls||0)>=modelDailyCap(model))
    throw new GeminiWikiPause('Free API call, daily or token budget exhausted')
-  if(budget.lastCallAt){const delay=budget.lastCallAt+MIN_REQUEST_SPACING_MS-now();if(delay>0)await waitImpl(delay)}
+  if(budget.lastCallAt){const delay=budget.lastCallAt+modelSpacing(model)-now();if(delay>0)await waitImpl(delay)}
   budget.lastCallAt=now();budget.usedCalls=(budget.usedCalls||0)+1;budget.dailyCalls=(budget.dailyCalls||0)+1
+  budget.dailyModelCalls??={}
+  budget.dailyModelCalls[model]=(budget.dailyModelCalls[model]||0)+1
   if(budget.onRequest)await budget.onRequest(budget)
   try{response=await fetchImpl(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`,{
    method:'POST',headers:{'content-type':'application/json','x-goog-api-key':apiKey},signal:AbortSignal.timeout(90000),

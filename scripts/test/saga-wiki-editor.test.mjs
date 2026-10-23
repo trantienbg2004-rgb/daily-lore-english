@@ -123,6 +123,22 @@ test('only confirmed free-tier text models can be selected',async()=>{
  assert.equal(requested,'')
 })
 
+test('full Flash uses its own small daily pool and slower request spacing',async()=>{
+ let calls=0
+ const response=async()=>{calls++;return {ok:true,status:200,json:async()=>({
+  candidates:[{content:{parts:[{text:'{}'}]}}],usageMetadata:{promptTokenCount:1,candidatesTokenCount:1,totalTokenCount:2}})}}
+ await assert.rejects(callFreeWikiGemini('prompt',{apiKey:'test-key',freeTierConfirmed:true,
+  model:'gemini-3.8-flash',budget:{maxCalls:2,dailyModelCalls:{'gemini-3.8-flash':18}},fetchImpl:response}),
+ /daily or token budget exhausted/)
+ assert.equal(calls,0)
+ const waits=[]
+ const budget={maxCalls:2,lastCallAt:1000,dailyModelCalls:{'gemini-3.8-flash':0}}
+ await callFreeWikiGemini('prompt',{apiKey:'test-key',freeTierConfirmed:true,model:'gemini-3.8-flash',
+  budget,fetchImpl:response,now:()=>1000,waitImpl:async ms=>waits.push(ms)})
+ assert.deepEqual(waits,[15000])
+ assert.equal(budget.dailyModelCalls['gemini-3.8-flash'],1)
+})
+
 test('editorial audit rejects unsupported claims and malformed reviews',()=>{
  assert.equal(validateWikiAudit({accepted:true,issues:[]}).accepted,true)
  assert.equal(validateWikiAudit({accepted:false,issues:[{level:'C1-C2',page:4,

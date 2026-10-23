@@ -59,52 +59,49 @@ export function decideWikipediaPhoto(candidate,{source,levelVariants,usedUrls=ne
 }
 
 export function assignWikipediaPhotos(decisions,source,levelVariants,{usedUrls=new Set()}={}){
- const approved=decisions.map(row=>decideWikipediaPhoto(row,{source,levelVariants,usedUrls})).filter(row=>row.status==='VERIFIED')
- if(!approved.length){
-  // The three CEFR versions have independent pacing. A relevant photo can
-  // illustrate different page numbers while retaining one pinned source file.
-  const levels=['A1-A2','B1-B2','C1-C2']
-  const choices=decisions.map(candidate=>({candidate,perLevel:Object.fromEntries(levels.map(level=>[
-   level,decideWikipediaPhoto(candidate,{source,levelVariants:Object.fromEntries(levels.map(key=>[
-    key,levelVariants?.[level]])),usedUrls})]))}))
-   .filter(({perLevel})=>levels.every(level=>perLevel[level].status==='VERIFIED'))
-   .filter(({perLevel})=>new Set(levels.map(level=>perLevel[level].pageIndex===0)).size===1)
-  choices.sort((a,b)=>levels.reduce((sum,level)=>sum+b.perLevel[level].matchScore-a.perLevel[level].matchScore,0))
-  if(choices.length){
-   const selected=choices[0],variants=structuredClone(levelVariants)
-   for(const level of levels){
-    const row=selected.perLevel[level],page=variants[level].pages[row.pageIndex]
-    Object.assign(page,{image:row.photo.url,caption:row.photo.caption,imageProvenance:row.photo.provenance})
-   }
-   return {status:'VERIFIED',levelVariants:variants,
-    photos:[{...selected.perLevel['B1-B2'].photo,pageIndex:selected.perLevel['B1-B2'].pageIndex}],
-    decisions:levels.map(level=>selected.perLevel[level])}
+ const levels=['A1-A2','B1-B2','C1-C2']
+ const forLevel=(candidate,level,preferLater=false)=>decideWikipediaPhoto(candidate,{source,usedUrls,preferLater,
+  levelVariants:Object.fromEntries(levels.map(key=>[key,levelVariants?.[level]]))})
+ const evaluated=decisions.map(candidate=>({candidate,perLevel:Object.fromEntries(levels.map(level=>[
+  level,forLevel(candidate,level)]))}))
+ const complete=evaluated.filter(row=>levels.every(level=>row.perLevel[level].status==='VERIFIED'))
+ const score=row=>levels.reduce((sum,level)=>sum+row.perLevel[level].matchScore,0)
+ const cover=complete.filter(row=>levels.every(level=>row.perLevel[level].pageIndex===0))
+  .sort((a,b)=>score(b)-score(a)||a.candidate.photo.position-b.candidate.photo.position)[0]
+ // The article's own first illustration may introduce a later detail if it
+ // clearly names the main subject. Charts and reconstructions need direct
+ // page-one context and cannot use this introduction rule.
+ const sourceLead=complete.filter(row=>row.candidate.photo.position===0&&
+  hits(imageTopic(row.candidate.photo),source.sourceTitle)>=1&&
+  !/\b(?:chart|graph|plot|reconstruction|re-creation|replica)\b/i.test(imageTopic(row.candidate.photo)))
+  .sort((a,b)=>score(b)-score(a))[0]
+ const lead=cover||sourceLead
+ const diagnostics=evaluated.map(row=>({fileTitle:row.candidate.photo?.fileTitle,
+  levels:Object.fromEntries(levels.map(level=>[level,{status:row.perLevel[level].status,
+   reason:row.perLevel[level].reason,pageIndex:row.perLevel[level].pageIndex}]))}))
+ if(!lead)return {status:'REVIEW',reason:complete.length?'no-verified-lead-photo':'no-verified-photo-placement',
+  decisions:diagnostics}
+ const variants=structuredClone(levelVariants),photos=[],chosen=new Set()
+ const place=(row,indexes)=>{
+  const photo=row.perLevel['B1-B2'].photo
+  for(const level of levels){
+   const pageIndex=indexes[level],page=variants[level].pages[pageIndex]
+   const provenance={...row.perLevel[level].photo.provenance,
+    evidence:{...row.perLevel[level].photo.provenance.evidence,pageIndex}}
+   Object.assign(page,{image:photo.url,caption:photo.caption,imageProvenance:provenance})
   }
+  photos.push({...photo,pageIndex:indexes['B1-B2']});chosen.add(photo.url)
  }
- const coverScore=row=>row.matchScore+(/\.(?:jpe?g|webp)$/i.test(row.photo.fileTitle)?2:0)
- const directLead=approved.filter(row=>row.pageIndex===0).sort((a,b)=>coverScore(b)-coverScore(a)||a.photo.position-b.photo.position)[0]
- // A source article's own first photo can introduce a detail explained later in the story.
- // Keep its full caption on the cover, and only use it after a later page has proved the subject match.
- const sourceLead=approved.filter(row=>row.photo.position===0&&!chart.test(row.photo.fileTitle+' '+row.photo.caption))
-  .sort((a,b)=>coverScore(b)-coverScore(a))[0]
- const lead=directLead||(!sourceLead?null:{...sourceLead,pageIndex:0,photo:{...sourceLead.photo,
-  provenance:{...sourceLead.photo.provenance,evidence:{...sourceLead.photo.provenance.evidence,pageIndex:0}}}})
- if(!lead&&!approved.length)return {status:'REVIEW',reason:'no-verified-photo-placement',decisions:approved}
- const byPage=lead?new Map([[0,lead]]):new Map()
- const chosen=lead?new Set([lead.photo.url]):new Set()
- const later=decisions.map(row=>decideWikipediaPhoto(row,{source,levelVariants,usedUrls,preferLater:true}))
-  .filter(row=>row.status==='VERIFIED')
- // A verified later-page match still works when no cover image qualifies for the stricter secondary-photo rule.
- if(!lead)later.push(...approved.filter(row=>row.pageIndex>0))
- later.sort((a,b)=>b.matchScore-a.matchScore||a.photo.position-b.photo.position)
- for(const row of later){
-  if(row===lead||byPage.has(row.pageIndex)||chosen.has(row.photo.url))continue
-  byPage.set(row.pageIndex,row);chosen.add(row.photo.url)
+ place(lead,Object.fromEntries(levels.map(level=>[level,0])))
+ const later=complete.filter(row=>row!==lead).map(row=>({row,perLevel:Object.fromEntries(levels.map(level=>{
+  const direct=row.perLevel[level]
+  return [level,direct.pageIndex>0?direct:forLevel(row.candidate,level,true)]
+ }))})).filter(({perLevel})=>levels.every(level=>perLevel[level].status==='VERIFIED'&&perLevel[level].pageIndex>0))
+  .sort((a,b)=>score(b.row)-score(a.row))
+ for(const {row,perLevel} of later){
+  if(photos.length>=4||chosen.has(row.perLevel['B1-B2'].photo.url)||
+   levels.some(level=>variants[level].pages[perLevel[level].pageIndex].image))continue
+  place({...row,perLevel},Object.fromEntries(levels.map(level=>[level,perLevel[level].pageIndex])))
  }
- if(!byPage.size)return {status:'REVIEW',reason:'no-verified-photo-placement',decisions:approved}
- const variants=structuredClone(levelVariants)
- for(const [pageIndex,row] of byPage)for(const level of ['A1-A2','B1-B2','C1-C2']){
-  Object.assign(variants[level].pages[pageIndex],{image:row.photo.url,caption:row.photo.caption,imageProvenance:row.photo.provenance})
- }
- return {status:'VERIFIED',levelVariants:variants,photos:[...byPage.values()].map(row=>({pageIndex:row.pageIndex,...row.photo})),decisions:approved}
+ return {status:'VERIFIED',levelVariants:variants,photos,decisions:diagnostics}
 }

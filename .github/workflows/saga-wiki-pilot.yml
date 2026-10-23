@@ -15,7 +15,7 @@ jobs:
   pilot:
     if: contains(github.event.head_commit.message, '[wiki-pilot-once]') || contains(github.event.head_commit.message, '[wiki-batch-once]')
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
         with:
@@ -27,22 +27,32 @@ jobs:
       - run: npm ci
       - name: Check offline Wikipedia pipeline gates
         run: node --test scripts/test/saga-wiki-*.test.mjs
+      - name: List approved free models
+        id: free_model
+        env:
+          SAGA_WIKI_GEMINI_KEY: ${{ secrets.SAGA_IMAGE_TEST_API_KEY }}
+        run: node scripts/wiki/model-availability.mjs
       - name: Run one bounded free-tier Wikipedia editorial batch
         env:
           SAGA_WIKI_GEMINI_KEY: ${{ secrets.SAGA_IMAGE_TEST_API_KEY }}
           SAGA_WIKI_FREE_TIER_CONFIRMED: '1'
-          SAGA_WIKI_MODEL: gemini-3.5-flash-lite
+          SAGA_WIKI_MODEL: ${{ steps.free_model.outputs.model || 'gemini-3.5-flash-lite' }}
+          SAGA_WIKI_MODELS: ${{ steps.free_model.outputs.models || '' }}
+          SAGA_WIKI_MODEL_AVAILABLE: ${{ steps.free_model.outputs.available || 'false' }}
           SAGA_WIKI_CHECKPOINT_BRANCH: ${{ github.ref_name }}
           SAGA_WIKI_BATCH_MODE: ${{ contains(github.event.head_commit.message, '[wiki-batch-once]') }}
         run: |
-          if [ "$SAGA_WIKI_BATCH_MODE" = 'true' ]; then
-            node scripts/wiki-pipeline.mjs batch --max-calls=8 --max-candidates=24
+          if [ "$SAGA_WIKI_MODEL_AVAILABLE" != 'true' ]; then
+            node scripts/wiki-pipeline.mjs batch --max-calls=0 --max-candidates=12
+          elif [ "$SAGA_WIKI_BATCH_MODE" = 'true' ]; then
+            node scripts/wiki-pipeline.mjs batch --max-calls=4 --max-candidates=12
           else
             node scripts/wiki-pipeline.mjs batch --max-calls=2 --max-candidates=1 --page-id=3487647
           fi
       - name: Check result before staging on development branch
         run: |
           npm test
+          npm run lint
           node scripts/lore-verify.mjs
           npm run build
           git diff --check

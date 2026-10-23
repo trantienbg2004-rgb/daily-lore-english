@@ -80,7 +80,7 @@ test('a licensed source cover can introduce a detail explained on a later page',
  }
 })
 
-test('a relevant licensed image on a later page permits a text-only introduction',()=>{
+test('a later image alone cannot satisfy the new illustrated-cover requirement',()=>{
  const later={...figure,fileTitle:'File:Caravan routes.jpg',
   caption:'Caravan trade routes across Central Asia',alt:'Caravans on trade routes',position:2}
  const laterPage=structuredClone(page)
@@ -91,13 +91,8 @@ test('a relevant licensed image on a later page permits a text-only introduction
  for(const variant of Object.values(variants))variant.pages[1].text='Caravans followed trade routes across Central Asia.'
  const assigned=assignWikipediaPhotos([verifyEmbeddedImage(later,laterPage)],
   {...source,figures:[figure,later]},variants)
- assert.equal(assigned.status,'VERIFIED')
- assert.equal(assigned.photos.length,1)
- for(const variant of Object.values(assigned.levelVariants)){
-  assert.equal(variant.pages[0].image,'')
-  assert.equal(variant.pages[1].image,laterPage.imageinfo[0].thumburl)
-  assert.equal(variant.pages[1].imageProvenance.evidence.pageIndex,1)
- }
+ assert.equal(assigned.status,'REVIEW')
+ assert.equal(assigned.reason,'no-verified-lead-photo')
 })
 
 test('a named place shared by all reading levels supports a later map',()=>{
@@ -105,33 +100,48 @@ test('a named place shared by all reading levels supports a later map',()=>{
   alt:'Map of Ukraine',position:2}
  const mapPage=structuredClone(page)
  mapPage.title=map.fileTitle
+ mapPage.imageinfo[0].thumburl='https://thumb.wikimedia.org/wikipedia/commons/thumb/ukraine.jpg'
+ mapPage.imageinfo[0].descriptionurl='https://commons.wikimedia.org/wiki/File:Ukraine_map.jpg'
  const variants=structuredClone(levels)
  for(const variant of Object.values(variants))variant.pages[4].text='Russia occupied parts of Ukraine.'
- const assigned=assignWikipediaPhotos([verifyEmbeddedImage(map,mapPage)],{...source,figures:[map]},variants)
+ const assigned=assignWikipediaPhotos([verifyEmbeddedImage(figure,page),verifyEmbeddedImage(map,mapPage)],
+  {...source,figures:[figure,map]},variants)
  assert.equal(assigned.status,'VERIFIED')
- assert.equal(assigned.photos[0].pageIndex,4)
+ assert.equal(assigned.photos.length,2)
+ assert.equal(assigned.photos[1].pageIndex,4)
  const unrelated=structuredClone(variants)
  unrelated['C1-C2'].pages[4].text='Russia expanded elsewhere.'
- assert.equal(assignWikipediaPhotos([verifyEmbeddedImage(map,mapPage)],{...source,figures:[map]},unrelated).status,'REVIEW')
+ assert.equal(assignWikipediaPhotos([verifyEmbeddedImage(figure,page),verifyEmbeddedImage(map,mapPage)],
+  {...source,figures:[figure,map]},unrelated).photos.length,1)
 })
 
 test('one licensed source photo may illustrate different pages in independent CEFR levels',()=>{
  const variants=structuredClone(levels)
  for(const [level,index] of [['A1-A2',1],['B1-B2',2],['C1-C2',3]]){
   for(const p of variants[level].pages)p.text='Merchants connected distant places through exchange.'
+  variants[level].pages[0].text='Silk Road trade linked cities across Asia.'
   variants[level].pages[index].text='Silk Road routes linked regions across Asia.'
  }
- const result=assignWikipediaPhotos([verifyEmbeddedImage(figure,page)],source,variants)
+ const cover={...figure,fileTitle:'File:Silk Road trade.jpg',caption:'Silk Road trade linked cities across Asia',
+  alt:'Silk Road trade route',position:0}
+ const coverPage=structuredClone(page)
+ coverPage.title=cover.fileTitle
+ coverPage.imageinfo[0].thumburl='https://thumb.wikimedia.org/wikipedia/commons/thumb/cover.jpg'
+ coverPage.imageinfo[0].descriptionurl='https://commons.wikimedia.org/wiki/File:Silk_Road_trade.jpg'
+ const result=assignWikipediaPhotos([verifyEmbeddedImage(cover,coverPage),verifyEmbeddedImage(figure,page)],
+  {...source,figures:[cover,figure]},variants)
  assert.equal(result.status,'VERIFIED')
+ assert.equal(result.photos.length,2)
  for(const [level,index] of [['A1-A2',1],['B1-B2',2],['C1-C2',3]]){
   const p=result.levelVariants[level].pages[index]
   assert.equal(p.image,page.imageinfo[0].thumburl)
   assert.equal(p.imageProvenance.evidence.pageIndex,index)
-  assert.equal(result.levelVariants[level].pages[0].image,'')
+  assert.equal(result.levelVariants[level].pages[0].image,coverPage.imageinfo[0].thumburl)
  }
  const unrelated=structuredClone(variants)
  unrelated['C1-C2'].pages[3].text='Merchants connected distant places through exchange.'
- assert.equal(assignWikipediaPhotos([verifyEmbeddedImage(figure,page)],source,unrelated).status,'REVIEW')
+ assert.equal(assignWikipediaPhotos([verifyEmbeddedImage(cover,coverPage),verifyEmbeddedImage(figure,page)],
+  {...source,figures:[cover,figure]},unrelated).photos.length,1)
 })
 
 test('same place, unrelated object, wrong chart period and reused URL stay unapproved',()=>{

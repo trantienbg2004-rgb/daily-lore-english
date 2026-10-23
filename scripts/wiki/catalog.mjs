@@ -9,8 +9,8 @@ const hash=value=>createHash('sha256').update(JSON.stringify(value)).digest('hex
 const catalogHash=(entries,stories)=>hash({entries:entries.map(row=>[row.id,row.shard,row.category]),
  stories:stories.map(story=>hash(story))})
 const levels=['A1-A2','B1-B2','C1-C2']
-export const WIKI_TARGET_STORIES=50
-export const WIKI_TARGET_PER_TOPIC=5
+export const WIKI_TARGET_STORIES=200
+export const WIKI_TARGET_PER_TOPIC=15
 export const wikiTargetMet=(total,counts)=>total>=WIKI_TARGET_STORIES&&
  WIKI_TOPICS.every(topic=>(counts?.[topic]||0)>=WIKI_TARGET_PER_TOPIC)
 const exists=async file=>fs.access(file).then(()=>true,()=>false)
