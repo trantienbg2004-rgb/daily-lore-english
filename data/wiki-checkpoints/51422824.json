@@ -194,7 +194,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377419400"
     }
   ],
-  "updatedAt": "2026-10-24T08:07:15.317Z",
+  "updatedAt": "2026-10-24T08:07:33.334Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -291,7 +291,7 @@
             ]
           },
           {
-            "text": "Both legislative chambers ratified the instrument on November 29 and 30, 2016, thereby concluding the historical hostilities. This political resolution followed a complex trajectory that included clandestine preliminary meetings in 2011, transitional justice frameworks, and targeted mine clearance initiatives.",
+            "text": "Both houses of Congress ratified the new agreement on November 29 and 30, officially ending the conflict. This followed a trajectory that included exploratory meetings in 2011, transitional justice frameworks, and mine clearance initiatives.",
             "evidenceIds": [
               "P3",
               "P6",
@@ -310,11 +310,11 @@
       }
     }
   },
-  "repairAttempts": 1,
+  "repairAttempts": 2,
   "lastUsage": {
-    "input": 2907,
-    "output": 386,
-    "total": 3293
+    "input": 2629,
+    "output": 132,
+    "total": 2761
   },
   "validation": null
 }
