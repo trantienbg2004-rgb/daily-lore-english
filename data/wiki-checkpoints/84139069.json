@@ -2,10 +2,10 @@
   "pageId": 84139069,
   "title": "Justinian's wars",
   "topic": "Conflict & Security",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1381661374,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381661374",
-  "reason": "10 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -313,5 +313,123 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381661374"
     }
   ],
-  "updatedAt": "2026-10-24T04:26:01.670Z"
+  "updatedAt": "2026-10-24T04:26:18.845Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "Justinian and His Wars",
+        "pages": [
+          {
+            "text": "Emperor Justinian ruled from 527 to 565. He wanted to bring back the old borders of the Roman Empire. His reign had many wars in the west and the east. Historians study these wars because of old writers like Procopius.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "In the west, Justinian fought barbarian kingdoms. He conquered the Vandal Kingdom in North Africa between 533 and 534. He also brought Italy under Byzantine control after a long war with the Ostrogoths from 535 to 554.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "In the east, Justinian continued a war with Persia. This conflict lasted with short breaks until 562. Byzantium also fought less successful wars in Spain against the Visigothic Kingdom. These campaigns used many resources.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "The Byzantine army had about 150,000 men. It included field troops and frontier troops. Barbarians played a significant role in the army. However, researchers still debate the exact details of their involvement and troop sizes.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "After Justinian died, the empire struggled. New peoples like the Slavs, Avars, and Lombards attacked. The army lost discipline, and epidemics caused demographic losses. Justinian's big campaigns contributed to the later decline of Byzantium.",
+            "evidenceIds": [
+              "P2"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "The Wars and Foreign Policy of Justinian",
+        "pages": [
+          {
+            "text": "The reign of Emperor Justinian I from 527 to 565 was defined by extensive military campaigns aimed at recovering western Mediterranean territories lost by Rome in the fifth century. Believing it was his Christian duty to restore former borders, Justinian engaged in prolonged conflicts across both the western and eastern frontiers.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "In the west, his armies conquered the Vandal Kingdom in North Africa from 533 to 534 and brought Italy under Byzantine control following a destructive war with the Ostrogoths between 535 and 554. His forces also expanded Byzantine possessions in Spain through less successful wars against the Visigothic Kingdom.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Meanwhile, in the east, Justinian maintained hostilities with the Sasanian Empire of Persia. This intermittent conflict continued until 562. Much of our knowledge of these events comes from Procopius and other contemporary Byzantine historians who carefully documented the emperor's campaigns.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "The Byzantine military resembled earlier Roman structures, featuring field armies and frontier troops totaling roughly 150,000 men. Barbarians constituted a substantial component of these forces, though their exact role and recruitment remain a subject of scholarly debate among researchers.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Despite destroying kingdoms like the Vandals and Ostrogoths, Justinian's conquests drained imperial resources. By ignoring sixth-century realities, his campaigns left the empire vulnerable to new groups like the Slavs, Avars, and Lombards, ultimately contributing to the long-term decline of Byzantium.",
+            "evidenceIds": [
+              "P2"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "Military Campaigns of Justinian I",
+        "pages": [
+          {
+            "text": "Characterized by ambitious reconquests, the reign of Justinian I between 527 and 565 sought to reinstate the fifth-century territorial boundaries of the Roman Empire. Viewing state restoration as an imperial Christian obligation, Justinian prosecuted concurrent conflicts along both western and eastern geopolitical horizons, documented extensively by Procopius and other historians.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Western interventions achieved notable victories, including the subjugation of the Vandal Kingdom in North Africa from 533 to 534 and the incorporation of Italy following protracted hostilities with the Ostrogoths between 535 and 554. Concurrently, marginally successful campaigns against the Visigothic Kingdom expanded Byzantine footholds in Spain.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Along the eastern frontier, Justinian sustained protracted hostilities against the Sasanian Empire, persisting with intermittent truces until 562. These campaigns operated alongside complex diplomatic interactions, including a rejected Persian proposal during the mid-520s regarding imperial succession and the integration of the shah's son.",
+            "evidenceIds": [
+              "P1",
+              "P4"
+            ]
+          },
+          {
+            "text": "The contemporary Byzantine military apparatus comprised approximately 150,000 personnel distributed between mobile field forces and frontier units. Barbarian mercenaries and federated troops constituted a prominent yet debated demographic within these armed forces, which relied on administrative structures reminiscent of earlier Roman military organization.",
+            "evidenceIds": [
+              "P1",
+              "P9"
+            ]
+          },
+          {
+            "text": "Although Justinian successfully dismantled several barbarian states, his aggressive foreign policy strained imperial demographics and resources. By failing to adapt to emergent threats from groups such as the Slavs and Lombards, his campaigns are widely considered to have catalyzed the subsequent administrative and military decline of Byzantium.",
+            "evidenceIds": [
+              "P2"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2848,
+    "output": 1069,
+    "total": 3917
+  },
+  "validation": null
 }
