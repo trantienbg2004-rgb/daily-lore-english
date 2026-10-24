@@ -2,10 +2,10 @@
   "pageId": 656948,
   "title": "Olaudah Equiano",
   "topic": "Economy",
-  "status": "EVIDENCE_READY",
+  "status": "RETRY_LATER",
   "revisionId": 1381153572,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381153572",
-  "reason": "4 rights-verified embedded images",
+  "reason": "Gemini token usage unavailable",
   "rights": [
     {
       "status": "REVIEW",
@@ -239,5 +239,5 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381153572"
     }
   ],
-  "updatedAt": "2026-10-24T10:39:35.811Z"
+  "updatedAt": "2026-10-24T10:39:41.095Z"
 }
