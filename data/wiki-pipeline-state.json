@@ -7274,10 +7274,10 @@
       "checkedAt": "2026-10-24T05:40:46.074Z"
     },
     "1395": {
-      "status": "EVIDENCE_READY",
-      "reason": "3 rights-verified embedded images",
+      "status": "RETRY_LATER",
+      "reason": "Gemini token usage unavailable",
       "revisionId": 1380390857,
-      "checkedAt": "2026-10-24T10:20:13.269Z"
+      "checkedAt": "2026-10-24T10:20:19.143Z"
     },
     "2024": {
       "status": "EVIDENCE_READY",
@@ -11930,7 +11930,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-24T10:20:13.270Z",
+  "updatedAt": "2026-10-24T10:20:19.144Z",
   "dailyUsage": {
     "day": "2026-10-24",
     "calls": 117,
