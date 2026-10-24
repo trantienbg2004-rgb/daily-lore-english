@@ -108,8 +108,9 @@ function safeStoryUrl(url) {
 // Wiki and older archive items use viewport pagination; published news uses
 // its explicitly abridged four-to-six-page reading version.
 function layoutPages(item, reader, badImages = new Set()) {
-  // Measure and balance against the actual viewport. Published news already
-  // has its editorial page count; only move complete sentences within it.
+  if (item?.contentType === 'news') return item.pages
+  // Editorial pages are source units, not guaranteed screen-sized. Measure
+  // every level against the actual phone viewport and the anchored pager.
   const bounds = reader.getBoundingClientRect()
   if (bounds.width < 100 || bounds.height < 220) return item.pages
   const fixture = reader.cloneNode(true)
