@@ -8444,10 +8444,10 @@
       "checkedAt": "2026-10-21T07:33:01.621Z"
     },
     "42132949": {
-      "status": "DRAFTED",
-      "reason": "draft durably saved before validation",
+      "status": "VALIDATED",
+      "reason": "local factual, style, length, structure and source audit passed",
       "revisionId": 1379616230,
-      "checkedAt": "2026-10-24T02:05:25.569Z"
+      "checkedAt": "2026-10-24T02:05:43.566Z"
     },
     "42333900": {
       "status": "RETRY_LATER",
@@ -9866,7 +9866,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-24T02:05:38.328Z",
+  "updatedAt": "2026-10-24T02:05:43.568Z",
   "dailyUsage": {
     "day": "2026-10-23",
     "calls": 121,

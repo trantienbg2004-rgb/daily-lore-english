@@ -2,10 +2,10 @@
   "pageId": 42132949,
   "title": "Industrial Revolution in Scotland",
   "topic": "Science & Technology",
-  "status": "DRAFTED",
+  "status": "VALIDATED",
   "revisionId": 1379616230,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379616230",
-  "reason": "draft durably saved before validation",
+  "reason": "local factual, style, length, structure and source audit passed",
   "rights": [
     {
       "status": "REVIEW",
@@ -450,7 +450,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379616230"
     }
   ],
-  "updatedAt": "2026-10-24T02:05:25.570Z",
+  "updatedAt": "2026-10-24T02:05:43.567Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -566,5 +566,8 @@
     "output": 1255,
     "total": 3909
   },
-  "validation": null
+  "validation": {
+    "accepted": true,
+    "errors": []
+  }
 }
