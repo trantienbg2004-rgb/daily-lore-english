@@ -8606,10 +8606,10 @@
       "checkedAt": null
     },
     "1870896": {
-      "status": "FETCHED",
-      "reason": "pinned-source-ready",
+      "status": "EVIDENCE_READY",
+      "reason": "4 rights-verified embedded images",
       "revisionId": 1381110068,
-      "checkedAt": "2026-10-24T10:12:49.632Z"
+      "checkedAt": "2026-10-24T10:12:55.140Z"
     },
     "1878007": {
       "status": "REJECTED",
@@ -11930,7 +11930,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-24T10:12:49.642Z",
+  "updatedAt": "2026-10-24T10:12:55.141Z",
   "dailyUsage": {
     "day": "2026-10-24",
     "calls": 117,
