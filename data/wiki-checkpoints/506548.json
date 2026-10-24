@@ -2,10 +2,10 @@
   "pageId": 506548,
   "title": "Spice trade",
   "topic": "Economy",
-  "status": "EVIDENCE_READY",
+  "status": "RETRY_LATER",
   "revisionId": 1379455527,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379455527",
-  "reason": "9 rights-verified embedded images",
+  "reason": "Gemini token usage unavailable",
   "rights": [
     {
       "status": "REVIEW",
@@ -405,5 +405,5 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379455527"
     }
   ],
-  "updatedAt": "2026-10-24T10:45:47.571Z"
+  "updatedAt": "2026-10-24T10:45:53.176Z"
 }
