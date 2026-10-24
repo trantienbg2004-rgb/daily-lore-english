@@ -2,9 +2,264 @@
   "pageId": 371301,
   "title": "Electronic voting",
   "topic": "Politics",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1375762623,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375762623",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-24T10:41:18.365Z"
+  "reason": "4 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:ES&S M100 Automark cart.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c8/ES%26S_M100_Automark_cart.jpg/960px-ES%26S_M100_Automark_cart.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:ES&S M100 Automark cart.jpg",
+        "caption": "A cart holding an ES&S M100 ballot scanner and an AutoMARK assistive device, as used in Johnson County, Iowa, United States in 2010",
+        "alt": "",
+        "description": "A cart containing an ES&S M100 precinct count ballot scanner atop a ballot box, with an AutoMARK ballot marking device in a voting booth mounted on the rear, over storage space for transporting folded voting booths and other polling place supplies, as deployed on election day in Johnson County, Iowa in 2010.",
+        "date": "2010-11-02 08:03:39",
+        "section": "Paper-based electronic voting system",
+        "position": 1,
+        "provenance": {
+          "credit": "Douglas W. Jones",
+          "license": "CC0",
+          "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:ES%26S_M100_Automark_cart.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Electronic_voting",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375762623",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:EVM VVPAT.jpg"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:Electronic voting.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c6/Electronic_voting.jpg/960px-Electronic_voting.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Electronic voting.jpg",
+        "caption": "Smartphones are the mainstream for online voting used by the Japanese private sector, but e-voting is not possible due to the law in public office elections in Japan.",
+        "alt": "",
+        "description": "A photo of a Japanese company \"Grant Co., Ltd.\" (located in Osaka) voting on a developed product \"e-vote(ｅ投票)\"",
+        "date": "2020-02-17",
+        "section": "Online voting",
+        "position": 3,
+        "provenance": {
+          "credit": "Natsuki Koseki",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Electronic_voting.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Electronic_voting",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375762623",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Topvoter2.jpg"
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Jellybuttons.jpg"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:Desi accuvote-tsx vvpat.jpg",
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/2/22/Desi_accuvote-tsx_vvpat.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "fileTitle": "File:Desi accuvote-tsx vvpat.jpg",
+        "caption": "A Diebold Election Systems, Inc. model AccuVote-TSx DRE voting machine with VVPAT attachment",
+        "alt": "",
+        "description": "Photo of Diebold Elections System AccuVote-TSx DRE voting machine with a VVPAT attachment, at the right.",
+        "date": "27 March 2006 (original upload date)",
+        "section": "Audit trails",
+        "position": 6,
+        "provenance": {
+          "credit": "Joebeone at en.wikipedia.org",
+          "license": "CC BY 2.5",
+          "licenseUrl": "https://creativecommons.org/licenses/by/2.5",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Desi_accuvote-tsx_vvpat.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Electronic_voting",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375762623",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:Urnaeleições2006.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/da/Urnaelei%C3%A7%C3%B5es2006.jpg/960px-Urnaelei%C3%A7%C3%B5es2006.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Urnaeleições2006.jpg",
+        "caption": "Brazilian DRE voting machine",
+        "alt": "",
+        "description": "New model of an electronic voting machine to be used in 2006 Brazilian general elections.",
+        "date": "2006",
+        "section": "Hardware",
+        "position": 7,
+        "provenance": {
+          "credit": "Antonio Cruz/ABr",
+          "license": "CC BY 3.0 br",
+          "licenseUrl": "https://creativecommons.org/licenses/by/3.0/br/deed.en",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Urnaelei%C3%A7%C3%B5es2006.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Electronic_voting",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375762623",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "eac5f659c43eaaec6353963a44f41e1db69eb4bd2cc0f5d6d1ce36d8e06786c9",
+      "heading": "Lead",
+      "excerpt": "Depending on the particular implementation, e-voting may use standalone electronic voting machines (also called EVM) or computers connected ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375762623"
+    },
+    {
+      "id": "P2",
+      "hash": "56360849e96e0e9487fb71ca997181866f11cc4740ccf9e0a5bdf4ddf53afce7",
+      "heading": "Lead",
+      "excerpt": "A e-voting system must perform most of these tasks while complying with a set of standards established by regulatory bodies, and must be ali",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375762623"
+    },
+    {
+      "id": "P3",
+      "hash": "5386e9c7c41d6975288a6e89c225d6084388fd2b51f022595562def678407b19",
+      "heading": "Lead",
+      "excerpt": "Electronic voting technology can include punched cards, optical scan voting systems and specialized voting kiosks (including self-contained ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375762623"
+    },
+    {
+      "id": "P4",
+      "hash": "d4c0096ef3c2f65e01fee0f5838a0fb5a6140f21f0039e7ee6ff1dbae67afb4b",
+      "heading": "Lead",
+      "excerpt": "Many countries have used electronic voting for at least some elections, including Argentina, Australia, Bangladesh, Belgium, Brazil, Canada,",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375762623"
+    },
+    {
+      "id": "P5",
+      "hash": "ce1fb6b2547bf6272d58e945abdeb3ade8bd073fd9e21341346fcd1cd509ee0f",
+      "heading": "Benefits",
+      "excerpt": "Electronic voting technology intends to speed the counting of ballots, reduce the cost of paying staff to count votes manually and can provi",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375762623"
+    },
+    {
+      "id": "P6",
+      "hash": "db5b70cd6958cb23752f87a17e33ce75884f550f78d488069e3d2728f31d9ac2",
+      "heading": "Concerns and improvements",
+      "excerpt": "In a 2004 article for OpenDemocracy, security analyst Bruce Schneier claimed that computer security experts at the time were \"unanimous on w",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375762623"
+    },
+    {
+      "id": "P7",
+      "hash": "6ef9bda5512edc6f569242e66e4b02a81accc49c3784d71778b54082157330ce",
+      "heading": "New South Wales 2021 iVote failures",
+      "excerpt": "During the 2021 NSW Local Government Elections the online voting system \"iVote\" had technical issues that caused some access problems for so",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375762623"
+    },
+    {
+      "id": "P8",
+      "hash": "f8474de908d91f342e825447034f0944d0376af733edcfa41def80b507c5e4bf",
+      "heading": "Electronic voting machines",
+      "excerpt": "Electronic voting systems for electorates have been in use since the 1960s when punched card systems debuted. Their first widespread use was",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375762623"
+    },
+    {
+      "id": "P9",
+      "hash": "b88ce7e79bb2db3721fdd16f81130e740a515a375baf65e6804ade18a72ec183",
+      "heading": "Paper-based electronic voting system",
+      "excerpt": "Paper-based voting systems originated as a system where votes are cast and counted by hand, using paper ballots. With the advent of electron",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375762623"
+    },
+    {
+      "id": "P10",
+      "hash": "6a18a8d8380653112bea06c3c0bb086f5461b5c1edda208366087d8268e18941",
+      "heading": "Direct-recording electronic (DRE) voting system",
+      "excerpt": "A direct-recording electronic (DRE) voting machine records votes by means of a ballot display provided with mechanical or electro-optical co",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375762623"
+    },
+    {
+      "id": "P11",
+      "hash": "262d63c80e26a46bb5518755943e1859cd4e74b3860c13334a0e845eab331b80",
+      "heading": "Lead",
+      "excerpt": "A public network DRE voting system is an election system that uses electronic ballots and transmits vote data from the polling place to anot",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375762623"
+    },
+    {
+      "id": "P12",
+      "hash": "233ca21ba3567f7e3015ce576cd94ddb5d617b217ae917c2b9becd5433c5c0ce",
+      "heading": "Online government elections",
+      "excerpt": "Internet voting systems have gained popularity and have been used for government and membership organization elections and referendums in Es",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375762623"
+    },
+    {
+      "id": "P13",
+      "hash": "c60ddfea516a2f3da7fe02274329016c16b3925cf76cb0851176ad1b0edd361a",
+      "heading": "Effects on turnout",
+      "excerpt": "It has been argued political parties that have more support from less-wealthy voters—who tend to have less access to and familiarity with th",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375762623"
+    },
+    {
+      "id": "P14",
+      "hash": "fea1717cb9e8603c1b4c12fb57771cd86933d5d2a196a6d88f912990af557803",
+      "heading": "Online private elections",
+      "excerpt": "Online voting is widely used privately for shareholder votes for board members and shareholder resolutions, and other private organizations.",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375762623"
+    },
+    {
+      "id": "P15",
+      "hash": "f8a8bd100262eda775f4cba2bb9db74f8d71d40c2a647cd058565b94edc0763d",
+      "heading": "Blockchain voting",
+      "excerpt": "Blockchain technology has been proposed as an underlying infrastructure for electronic voting to address persistent challenges regarding ele",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375762623"
+    },
+    {
+      "id": "P16",
+      "hash": "49baf920b71be11eef16c36038fb07bab9e29e7c30446f977567f7980c2206e2",
+      "heading": "Sybil attacks",
+      "excerpt": "One of the biggest weaknesses of online voting is the difficulty of dealing with fake identities, especially when voting is implemented usin",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375762623"
+    },
+    {
+      "id": "P17",
+      "hash": "fd573beef47da960ce70e931b61ecdcaeac5751b66ab91a3e651eefe2351ebbd",
+      "heading": "Hybrid systems",
+      "excerpt": "There are also hybrid systems that include an electronic ballot marking device (usually a touch screen system similar to a DRE) or other ass",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375762623"
+    },
+    {
+      "id": "P18",
+      "hash": "e3b5313ee4a1747ef31288d1db0800ba991c6f2b5837d8bec178d029ec60a0f4",
+      "heading": "Spreadsheets",
+      "excerpt": "Data from different tally sheets or machines are often summed in spreadsheets. This step can introduce errors. Austria, Scotland, and Anne A",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375762623"
+    },
+    {
+      "id": "P19",
+      "hash": "4971fd0cb5e6d22e99c0137d5797aea11ffd32b52369ba19713c0e5e34641595",
+      "heading": "Analysis",
+      "excerpt": "Electronic voting systems may offer advantages compared to other voting techniques. An electronic voting system can be involved in any one o",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375762623"
+    },
+    {
+      "id": "P20",
+      "hash": "1126c266115b3561b57f6f3509dda43fa106f8a56ec8b24a00a793147c838054",
+      "heading": "Accessibility",
+      "excerpt": "Electronic voting machines can be made fully accessible for persons with disabilities. Punched card and optical scan machines are not fully ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375762623"
+    }
+  ],
+  "updatedAt": "2026-10-24T10:41:23.323Z"
 }
