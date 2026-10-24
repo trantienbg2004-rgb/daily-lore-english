@@ -543,7 +543,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381202308"
     }
   ],
-  "updatedAt": "2026-10-24T04:48:31.491Z",
+  "updatedAt": "2026-10-24T04:48:49.545Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -577,7 +577,7 @@
             ]
           },
           {
-            "text": "At first, water and wind gave most power to industries. Then the stationary steam engine became very important. Steam power grew quickly from 1800 to 1815. Machines also changed from wood to metal parts for better precision and interchangeability.",
+            "text": "At first, water and wind gave most power to industries. Then the stationary steam engine became very important. In Britain, steam power grew quickly. Machines also changed from wood to metal parts for better precision and interchangeability.",
             "evidenceIds": [
               "P19",
               "P20"
@@ -685,11 +685,11 @@
       }
     }
   },
-  "repairAttempts": 1,
+  "repairAttempts": 2,
   "lastUsage": {
-    "input": 2764,
-    "output": 215,
-    "total": 2979
+    "input": 2671,
+    "output": 117,
+    "total": 2788
   },
   "validation": null
 }
