@@ -2,10 +2,10 @@
   "pageId": 5765,
   "title": "Çatalhöyük",
   "topic": "History & Geography",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1379818880,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379818880",
-  "reason": "9 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -338,5 +338,149 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379818880"
     }
   ],
-  "updatedAt": "2026-10-24T03:57:00.631Z"
+  "updatedAt": "2026-10-24T03:57:17.476Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "Life at Catalhoyuk",
+        "pages": [
+          {
+            "text": "Catalhoyuk is a very old and large settlement in southern Turkey. It existed from around 7500 BC to 5600 BC. People lived there in mudbrick houses. The houses were built very close together like a maze. There were no streets on the ground. People walked on the roofs.",
+            "evidenceIds": [
+              "P1",
+              "P13"
+            ]
+          },
+          {
+            "text": "The houses did not have doors on the ground. People went inside through holes in the roof. They used ladders and stairs to climb up and down. Inside, the homes were kept very clean. Cooking was done near the south wall where hearths and ovens stood.",
+            "evidenceIds": [
+              "P13",
+              "P14",
+              "P15"
+            ]
+          },
+          {
+            "text": "The people of this ancient town grew crops like wheat and barley. They also gathered fruit and nuts from the hills. Food was stored in special bins. Some statues of female figures were found inside these storage bins to protect the food.",
+            "evidenceIds": [
+              "P7",
+              "P9"
+            ]
+          },
+          {
+            "text": "Men and women seemed to have equal social status in the community. No big palaces or special houses for kings have been found. Children learned how to build houses and do daily work by watching adults make objects like beads and statues.",
+            "evidenceIds": [
+              "P8"
+            ]
+          },
+          {
+            "text": "Families buried their dead right beneath the floors of their homes. Archaeologists found many human remains under beds and hearths. Over many years, old houses were rebuilt on top of rubble, which made the settlement grow into a high mound.",
+            "evidenceIds": [
+              "P15",
+              "P16"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "Exploring Ancient Catalhoyuk",
+        "pages": [
+          {
+            "text": "Catalhoyuk is a massive Neolithic and Chalcolithic proto-city located in southern Anatolia. Flourishing around 7000 BC, the settlement overlooked the Konya Plain in Turkey. It is celebrated by archaeologists for its exceptional preservation and large size during the early agricultural era.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "The town consisted entirely of domestic buildings clustered in a honeycomb-like maze. Without traditional streets or footpaths, inhabitants moved across the flat rooftops. People entered their mudbrick homes through ceiling openings using timber ladders and steep stairs.",
+            "evidenceIds": [
+              "P6",
+              "P13"
+            ]
+          },
+          {
+            "text": "Inside, homes featured smooth plastered walls and raised platforms used for domestic tasks and sleeping. Cooking hearths and ovens were typically placed against the south wall. Inhabitants maintained remarkably clean interiors, disposing of rubbish and sewage in external middens.",
+            "evidenceIds": [
+              "P14",
+              "P15"
+            ]
+          },
+          {
+            "text": "Agricultural activities supported the population, with residents cultivating domesticated wheat, barley, and peas while harvesting wild nuts and fruit. Numerous female figurines have been recovered from the site, with some discovered inside grain storage bins to supposedly protect food supplies.",
+            "evidenceIds": [
+              "P7",
+              "P9"
+            ]
+          },
+          {
+            "text": "Evidence suggests an egalitarian social structure where men and women shared equal status and nutrition. Children learned crafts and rituals by observing adults. Furthermore, inhabitants practiced intramural burial, placing their dead in pits beneath house floors, hearths, and sleeping platforms.",
+            "evidenceIds": [
+              "P8",
+              "P16"
+            ]
+          },
+          {
+            "text": "Over centuries, houses were partially demolished and rebuilt on rubble foundations, gradually creating an eighteen-layered mound. Modern archaeological projects have continually uncovered new details about the daily life, mortuary structures, and social organization of this remarkable ancient community.",
+            "evidenceIds": [
+              "P2",
+              "P5",
+              "P15"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "The Neolithic Proto-City of Catalhoyuk",
+        "pages": [
+          {
+            "text": "Catalhoyuk represents a prominent Neolithic and Chalcolithic tell situated on the Konya Plain in southern Anatolia. Flourishing approximately around 7000 BC, this proto-city is globally recognized for its expansive dimensions, remarkable architectural preservation, and indications of an early egalitarian social framework.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "The settlement was architecturally characterized by an aggregate formation of mudbrick dwellings arranged in a dense, honeycomb-like matrix. Devoid of ground-level streets or footpaths, the community utilized rooftops as thoroughfares, while domestic access was achieved exclusively via ceiling apertures connected to timber ladders.",
+            "evidenceIds": [
+              "P13"
+            ]
+          },
+          {
+            "text": "Interior spaces consistently displayed meticulously plastered walls, raised platforms for daily activities, and southern-oriented hearths. Scrupulous domestic hygiene was maintained, evidenced by minimal indoor refuse and the systematic accumulation of organic waste and ash in exterior middens.",
+            "evidenceIds": [
+              "P14",
+              "P15"
+            ]
+          },
+          {
+            "text": "Subsistence strategies relied heavily on cultivated cereal crops, including various wheat species and barley, supplemented by arboriculture and gathered legumes. The frequent recovery of female figurines, occasionally embedded within grain storage infrastructure, points toward ritual practices associated with agricultural protection.",
+            "evidenceIds": [
+              "P7",
+              "P9"
+            ]
+          },
+          {
+            "text": "Sociological investigations indicate minimal hierarchy, with gender parity reflected in comparable nutritional intake and social standing. Spatial organization and genetic studies suggest a community structured around kinship networks, matrilocality, and intermarrying groups inhabiting distinct quarters of the settlement.",
+            "evidenceIds": [
+              "P8",
+              "P12"
+            ]
+          },
+          {
+            "text": "Mortuary customs involved intramural inhumation, where deceased individuals were interred beneath domestic floors, beds, and hearths. The continuous cycles of partial building demolition and foundation rebuilding upon accumulated rubble ultimately generated the stratified eighteen-layered stratigraphic sequence observed today.",
+            "evidenceIds": [
+              "P2",
+              "P15",
+              "P16"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2784,
+    "output": 1565,
+    "total": 4349
+  },
+  "validation": null
 }
