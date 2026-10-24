@@ -11366,10 +11366,10 @@
       "checkedAt": "2026-10-21T07:31:13.307Z"
     },
     "73360935": {
-      "status": "FETCHED",
-      "reason": "pinned-source-ready",
+      "status": "REJECTED",
+      "reason": "insufficient-source-text-or-embedded-images",
       "revisionId": 1358162925,
-      "checkedAt": "2026-10-24T11:05:35.417Z"
+      "checkedAt": "2026-10-24T11:05:41.612Z"
     },
     "73361785": {
       "status": "REJECTED",
@@ -11930,7 +11930,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-24T11:05:35.417Z",
+  "updatedAt": "2026-10-24T11:05:41.613Z",
   "dailyUsage": {
     "day": "2026-10-24",
     "calls": 117,
