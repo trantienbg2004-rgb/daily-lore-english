@@ -218,7 +218,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1355326990"
     }
   ],
-  "updatedAt": "2026-10-24T09:26:14.032Z",
+  "updatedAt": "2026-10-24T09:26:32.033Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -250,7 +250,7 @@
             ]
           },
           {
-            "text": "Muslim scholars also invented and improved scientific instruments. These included astrolabes, quadrants, and compasses. They used these tools for navigation and to find the direction of Mecca.",
+            "text": "Muslim scholars invented and refined several scientific instruments in mathematical geography and cartography. These included the astrolabe, quadrant, gnomon, celestial sphere, sundial, and compass. Astrolabes were widely used as an aid to navigation and to find the Qibla, which is the direction of Mecca.",
             "evidenceIds": [
               "P14",
               "P15"
@@ -336,11 +336,11 @@
       }
     }
   },
-  "repairAttempts": 0,
+  "repairAttempts": 1,
   "lastUsage": {
-    "input": 3028,
-    "output": 1481,
-    "total": 4509
+    "input": 2829,
+    "output": 136,
+    "total": 2965
   },
   "validation": null
 }
