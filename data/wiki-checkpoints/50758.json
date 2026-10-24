@@ -2,10 +2,10 @@
   "pageId": 50758,
   "title": "Carmen Miranda",
   "topic": "Culture",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1378364331,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378364331",
-  "reason": "16 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -521,5 +521,155 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378364331"
     }
   ],
-  "updatedAt": "2026-10-24T02:04:01.122Z"
+  "updatedAt": "2026-10-24T02:04:19.338Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "The Life of Carmen Miranda",
+        "pages": [
+          {
+            "text": "Maria do Carmo Miranda da Cunha was born in Portugal in 1909 and raised in Brazil. Known as Carmen Miranda, she became a famous singer, dancer, and actress. People called her the Brazilian Bombshell because of her bright fruit hat outfits.",
+            "evidenceIds": [
+              "P1",
+              "P6"
+            ]
+          },
+          {
+            "text": "As a young woman, Miranda worked in a clothes and hat boutique. In 1929, she recorded music with Josué de Barros. Her 1930 recording of the song Taí made her a major star in Brazil as a singer of samba.",
+            "evidenceIds": [
+              "P2",
+              "P7"
+            ]
+          },
+          {
+            "text": "During the 1930s, she performed on the radio and appeared in Brazilian films. A 1939 musical gave the world her Baiana image, which was inspired by Afro-Brazilians from Bahia. Soon, an American producer offered her a contract.",
+            "evidenceIds": [
+              "P3",
+              "P4"
+            ]
+          },
+          {
+            "text": "Miranda arrived in New York in 1939 and performed on Broadway. She made her first Hollywood film in 1940. Her exotic clothes and accent became very famous. By 1945, she was the highest-paid woman in the United States.",
+            "evidenceIds": [
+              "P4",
+              "P8"
+            ]
+          },
+          {
+            "text": "Miranda made 14 Hollywood films between 1940 and 1953. Later, she grew tired of her stereotyped image and focused on nightclubs and television shows. She passed away in 1955, but she is remembered for popularizing Brazilian music.",
+            "evidenceIds": [
+              "P1",
+              "P5",
+              "P13"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "Carmen Miranda: The Brazilian Bombshell",
+        "pages": [
+          {
+            "text": "Born in Portugal in 1909 and raised in Brazil, Maria do Carmo Miranda da Cunha rose to international fame as Carmen Miranda. Nicknamed the Brazilian Bombshell, she became globally recognized for her vibrant performances and signature fruit hat costumes.",
+            "evidenceIds": [
+              "P1",
+              "P6"
+            ]
+          },
+          {
+            "text": "Before starting her music career, Miranda designed clothes in a boutique. Her breakthrough came in 1930 when her recording of Taí sold a record 35,000 copies, establishing her as Brazil's foremost interpreter of samba music.",
+            "evidenceIds": [
+              "P2",
+              "P7"
+            ]
+          },
+          {
+            "text": "After performing on the radio and starring in early Brazilian musical films, Miranda caught the attention of a Broadway producer in 1939. He offered her a contract to perform in New York, which launched her career in the United States.",
+            "evidenceIds": [
+              "P3",
+              "P4",
+              "P8"
+            ]
+          },
+          {
+            "text": "Miranda quickly became a media sensation in America, making her Hollywood film debut in 1940. She earned prestigious honors, including her footprints at Grauman's Chinese Theatre, and by 1945 she was the highest-paid woman in the United States.",
+            "evidenceIds": [
+              "P4",
+              "P10"
+            ]
+          },
+          {
+            "text": "While her American popularity soared, some critics in Brazil accused her of catering to commercialism and projecting a negative stereotype. Although she eventually grew to resent her limiting cinematic image, she remained a fixture on television variety shows.",
+            "evidenceIds": [
+              "P5",
+              "P9"
+            ]
+          },
+          {
+            "text": "Miranda continued performing into the 1950s despite health issues. She passed away in Los Angeles in 1955 after filming a television segment. Today, she is celebrated as a major precursor to Brazil's Tropicalismo cultural movement.",
+            "evidenceIds": [
+              "P1",
+              "P5",
+              "P13"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "The Rise and Legacy of Carmen Miranda",
+        "pages": [
+          {
+            "text": "Maria do Carmo Miranda da Cunha, universally known as Carmen Miranda, was a Portuguese-born Brazilian entertainer whose career spanned music, dance, and film. Her flamboyant aesthetic and iconic fruit headdresses cemented her status as the Brazilian Bombshell.",
+            "evidenceIds": [
+              "P1",
+              "P6"
+            ]
+          },
+          {
+            "text": "Initially working in a clothing boutique, Miranda transitioned to recording music alongside Josué de Barros. Her 1930 recording of Taí propelled her to stardom in Brazil, positioning her as a leading exponent of traditional samba culture.",
+            "evidenceIds": [
+              "P2",
+              "P7"
+            ]
+          },
+          {
+            "text": "During the 1930s, Miranda expanded her domestic profile through radio broadcasts and cinematic appearances in Brazilian chanchadas. Her participation in the 1939 musical Banana da Terra introduced the distinctive Baiana image inspired by Afro-Brazilians.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "A Broadway engagement in 1939 served as a catalyst for her American migration. Praised by critics for her magnetic stage presence, Miranda rapidly transitioned to Hollywood cinema, eventually achieving the distinction of becoming the highest-paid woman in the United States by 1945.",
+            "evidenceIds": [
+              "P4",
+              "P8"
+            ]
+          },
+          {
+            "text": "Despite her widespread commercial success, Miranda's trajectory encountered friction. Brazilian intellectuals criticized her for accommodating American commercialism and promoting reductive stereotypes, while Hollywood frequently homogenized her cultural identity.",
+            "evidenceIds": [
+              "P5",
+              "P9",
+              "P14"
+            ]
+          },
+          {
+            "text": "In her later years, Miranda sought creative autonomy, focusing on nightclub performances and television appearances. Following her death in 1955, her cultural legacy persisted, ultimately earning recognition as a precursor to Brazil's influential Tropicalismo movement.",
+            "evidenceIds": [
+              "P1",
+              "P5",
+              "P13",
+              "P15"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2969,
+    "output": 1603,
+    "total": 4572
+  },
+  "validation": null
 }
