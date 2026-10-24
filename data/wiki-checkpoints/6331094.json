@@ -2,10 +2,10 @@
   "pageId": 6331094,
   "title": "Atlantic World",
   "topic": "Economy",
-  "status": "EVIDENCE_READY",
+  "status": "RETRY_LATER",
   "revisionId": 1375911896,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375911896",
-  "reason": "5 rights-verified embedded images",
+  "reason": "Gemini token usage unavailable",
   "rights": [
     {
       "status": "REJECTED",
@@ -212,5 +212,5 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375911896"
     }
   ],
-  "updatedAt": "2026-10-24T11:05:23.048Z"
+  "updatedAt": "2026-10-24T11:05:28.922Z"
 }
