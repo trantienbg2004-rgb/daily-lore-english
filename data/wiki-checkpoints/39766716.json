@@ -2,10 +2,10 @@
   "pageId": 39766716,
   "title": "Anti-war movement",
   "topic": "Politics",
-  "status": "DRAFTED",
+  "status": "NEEDS_REVIEW",
   "revisionId": 1378302705,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378302705",
-  "reason": "draft durably saved before validation",
+  "reason": "editorial: B1-B2:page-5:unsupported-number-context-2021",
   "rights": [
     {
       "status": "REVIEW",
@@ -388,7 +388,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378302705"
     }
   ],
-  "updatedAt": "2026-10-24T06:30:41.516Z",
+  "updatedAt": "2026-10-24T06:30:47.467Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -515,5 +515,10 @@
     "output": 138,
     "total": 2790
   },
-  "validation": null
+  "validation": {
+    "accepted": false,
+    "errors": [
+      "B1-B2:page-5:unsupported-number-context-2021"
+    ]
+  }
 }

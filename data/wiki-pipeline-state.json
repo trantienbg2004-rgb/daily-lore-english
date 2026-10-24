@@ -9622,10 +9622,10 @@
       "checkedAt": "2026-10-21T07:35:40.108Z"
     },
     "39766716": {
-      "status": "DRAFTED",
-      "reason": "draft durably saved before validation",
+      "status": "NEEDS_REVIEW",
+      "reason": "editorial: B1-B2:page-5:unsupported-number-context-2021",
       "revisionId": 1378302705,
-      "checkedAt": "2026-10-24T06:30:41.515Z"
+      "checkedAt": "2026-10-24T06:30:47.467Z"
     },
     "39958236": {
       "status": "RETRY_LATER",
@@ -11290,7 +11290,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-24T06:30:41.517Z",
+  "updatedAt": "2026-10-24T06:30:47.468Z",
   "dailyUsage": {
     "day": "2026-10-23",
     "calls": 276,
