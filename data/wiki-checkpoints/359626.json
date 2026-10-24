@@ -2,10 +2,10 @@
   "pageId": 359626,
   "title": "Second Industrial Revolution",
   "topic": "Science & Technology",
-  "status": "DRAFTED",
+  "status": "VALIDATED",
   "revisionId": 1380595942,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380595942",
-  "reason": "draft durably saved before validation",
+  "reason": "local factual, style, length, structure and source audit passed",
   "rights": [
     {
       "status": "REVIEW",
@@ -463,7 +463,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380595942"
     }
   ],
-  "updatedAt": "2026-10-24T06:56:11.345Z",
+  "updatedAt": "2026-10-24T06:56:29.051Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -598,5 +598,8 @@
     "output": 315,
     "total": 3067
   },
-  "validation": null
+  "validation": {
+    "accepted": true,
+    "errors": []
+  }
 }
