@@ -10444,10 +10444,10 @@
       "checkedAt": null
     },
     "66550316": {
-      "status": "VALIDATED",
-      "reason": "local factual, style, length, structure and source audit passed",
+      "status": "PUBLISHED",
+      "reason": "3 verified embedded images",
       "revisionId": 1370579297,
-      "checkedAt": "2026-10-24T06:03:10.227Z"
+      "checkedAt": "2026-10-24T06:03:16.285Z"
     },
     "66672242": {
       "status": "RETRY_LATER",
@@ -11290,7 +11290,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-24T06:03:10.229Z",
+  "updatedAt": "2026-10-24T06:03:16.286Z",
   "dailyUsage": {
     "day": "2026-10-23",
     "calls": 250,
