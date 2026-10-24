@@ -2,10 +2,10 @@
   "pageId": 79549232,
   "title": "Noirlac Abbey",
   "topic": "Culture",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1380999323,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380999323",
-  "reason": "10 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -468,5 +468,137 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380999323"
     }
   ],
-  "updatedAt": "2026-10-24T06:54:47.350Z"
+  "updatedAt": "2026-10-24T06:55:04.755Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "The Story of Noirlac Abbey",
+        "pages": [
+          {
+            "text": "Noirlac Abbey is an old monastery in France. It was officially founded in the year 1136. Monks came from another abbey to start building it in 1150. They worked on the buildings for a very long time.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "The monastery went through hard times during the Hundred Years' War. Later, the buildings had many different uses over the years. They briefly became an orphanage and a place for refugees. These various fates helped save the buildings.",
+            "evidenceIds": [
+              "P1",
+              "P2"
+            ]
+          },
+          {
+            "text": "Today, Noirlac Abbey is one of the best-preserved Cistercian abbeys in the country. The local department restored the entire place between 1950 and 1980. Now, the ensemble serves as a cultural meeting centre for visitors.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "The abbey was built around a central cloister. This special layout kept the monks separated from other people. The church, the chapter house, and the dormitories were all arranged carefully around this quiet courtyard space.",
+            "evidenceIds": [
+              "P14"
+            ]
+          },
+          {
+            "text": "Inside the church, the choir and transept were finished in the twelfth century. Over the centuries, parts of the monastery were changed or rebuilt. Today, people can still visit these historic medieval buildings and see their architecture.",
+            "evidenceIds": [
+              "P6",
+              "P16",
+              "P18"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "History and Architecture of Noirlac Abbey",
+        "pages": [
+          {
+            "text": "Noirlac Abbey is a former Cistercian monastery located in the Cher department of France. Although officially founded in 1136, actual construction by monks from Clairvaux Abbey began around 1150 and continued into the thirteenth century. The monastery's influence later declined following the Hundred Years' War.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Over the centuries, the complex served several unusual purposes. It briefly housed an orphanage, provided shelter for refugees from the Spanish Civil War, and operated as a hospice annex. Ironically, these varied roles contributed to the survival of the historic structures.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "Between 1950 and 1980, the Cher department carried out extensive restorations. Today, the abbey is recognized as one of the best-preserved Cistercian sites in France and functions as a vibrant cultural meeting centre.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "Following strict Cistercian rules, the abbey was designed around a four-sided cloister that maintained a clear separation between the monks and lay brothers. The eastern wing contained essential spaces like the chapter house and the monks' dormitory.",
+            "evidenceIds": [
+              "P14",
+              "P18",
+              "P19"
+            ]
+          },
+          {
+            "text": "The abbey church followed the traditional Bernardine architectural blueprint. Its construction featured a shallow choir, transepts, and lancet windows. Although parts of the complex suffered damage during wars and fires, subsequent restorations preserved its medieval layout.",
+            "evidenceIds": [
+              "P6",
+              "P16",
+              "P17"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "Noirlac Abbey: From Cistercian Site to Cultural Hub",
+        "pages": [
+          {
+            "text": "Established in 1136 and constructed primarily from 1150 through the thirteenth century by monks from Clairvaux Abbey, Noirlac Abbey is situated in the Cher department of France. Its early growth was followed by a prolonged period of decline resulting from the devastation of the Hundred Years' War.",
+            "evidenceIds": [
+              "P1",
+              "P4",
+              "P6"
+            ]
+          },
+          {
+            "text": "Subsequent centuries subjected the monastic complex to diverse transformations. It accommodated an orphanage, sheltered refugees during the Spanish Civil War, and functioned as a hospice annex. These disparate functions inadvertently facilitated the preservation of the architectural ensemble.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "Extensive restoration initiatives conducted by the Cher department between 1950 and 1980 revitalized the site. Currently, Noirlac Abbey operates as an active cultural meeting centre, maintaining memberships in specialized European networks dedicated to Cistercian heritage.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "The architectural layout strictly adhered to Cistercian principles, utilizing a central cloister to segregate the daily movements of the monks from those of the lay brothers. Essential communal spaces, including the chapter house and the dormitory, anchored the eastern wing.",
+            "evidenceIds": [
+              "P14",
+              "P18",
+              "P19"
+            ]
+          },
+          {
+            "text": "The abbey church reflects the Bernardine blueprint characterized by a shallow choir, transverse chapels, and precise stonework. Despite enduring structural damage from historical conflicts and subsequent administrative changes under the commendam system, targeted twentieth-century interventions secured its enduring architectural integrity.",
+            "evidenceIds": [
+              "P6",
+              "P8",
+              "P12",
+              "P15",
+              "P16",
+              "P17"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 3177,
+    "output": 1024,
+    "total": 4201
+  },
+  "validation": null
 }
