@@ -9164,10 +9164,10 @@
       "checkedAt": "2026-10-22T12:47:48.007Z"
     },
     "68169189": {
-      "status": "VALIDATED",
-      "reason": "local factual, style, length, structure and source audit passed",
+      "status": "PUBLISHED",
+      "reason": "4 verified embedded images",
       "revisionId": 1371334782,
-      "checkedAt": "2026-10-24T02:07:38.275Z"
+      "checkedAt": "2026-10-24T02:07:44.272Z"
     },
     "68229989": {
       "status": "REJECTED",
@@ -9866,7 +9866,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-24T02:07:38.278Z",
+  "updatedAt": "2026-10-24T02:07:44.273Z",
   "dailyUsage": {
     "day": "2026-10-23",
     "calls": 126,
