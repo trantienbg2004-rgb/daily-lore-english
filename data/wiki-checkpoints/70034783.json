@@ -2,9 +2,135 @@
   "pageId": 70034783,
   "title": "Externalization (migration)",
   "topic": "Society",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1373931983,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373931983",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-24T10:41:53.750Z"
+  "reason": "1 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:Visa requirements for Afghan citizens.png",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/54/Visa_requirements_for_Afghan_citizens.png/960px-Visa_requirements_for_Afghan_citizens.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Visa requirements for Afghan citizens.png",
+        "caption": "Visa requirements for Afghan citizens are among the most strict in the world. In 2018, Afghan nationals could only access 30 countries without a visa.",
+        "alt": "",
+        "description": "Visa requirements for Afghan citizens Afghanistan Visa free access Visa on arrival eVisa Visa available both on arrival or online Visa required Afghanistan Visa free access Visa on arrival eVisa Visa available both on arrival or online Visa required",
+        "date": "2013-10-24 22:00:25",
+        "section": "Visa restrictions and carrier sanctions",
+        "position": 0,
+        "provenance": {
+          "credit": "Twofortnights",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Visa_requirements_for_Afghan_citizens.png",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Externalization_(migration)",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373931983",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "d676d3b03ee85715089e1b1716333cd5ac2c68af5bf863795429e1bc9df36a22",
+      "heading": "Lead",
+      "excerpt": "Externalization describes the efforts of wealthy, developed countries to prevent asylum seekers and other migrants from reaching their borde",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373931983"
+    },
+    {
+      "id": "P2",
+      "hash": "69b163c0fac91eb5dc8554a2db20cd7e33918de833ed2d2f3a88808deb754fac",
+      "heading": "History",
+      "excerpt": "According to sociologist David Scott FitzGerald, \"Measures to keep people from reaching sanctuary are as old as the asylum tradition itself.",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373931983"
+    },
+    {
+      "id": "P3",
+      "hash": "7810ee5e1214dfa30eb041bd7e6913566e53f1cb1f09fe3775f15dbccf8eb9f5",
+      "heading": "Motivation",
+      "excerpt": "FitzGerald argues that \"keeping refugees at a distance is a public relations scheme to render them invisible so their plight can be ignored\"",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373931983"
+    },
+    {
+      "id": "P4",
+      "hash": "5250e22fdc18c1a6207ae128cfbec0be3bd534ff0bfe3087a79125c6fea106ef",
+      "heading": "Effects",
+      "excerpt": "According to The Oxford Handbook of International Refugee Law, \"Extraterritorial migration control represents a fundamental challenge to ref",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373931983"
+    },
+    {
+      "id": "P5",
+      "hash": "7c4f6bf090a6612e67468f4869dbffe0611fdd4f2216b92271fede9c3e146670",
+      "heading": "Effects",
+      "excerpt": "FitzGerald states that \"smugglers can be blamed for deaths and abuses rather than the government policies that leave refugees seeking safety",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373931983"
+    },
+    {
+      "id": "P6",
+      "hash": "6ca8b6d2d14c4afc3375165da4f53aba1ea92aee72ca425568184396066ee7b3",
+      "heading": "Visa restrictions and carrier sanctions",
+      "excerpt": "There is a strong correlation between visa restrictions and the number of refugees from a country; all of the world's ten largest producers ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373931983"
+    },
+    {
+      "id": "P7",
+      "hash": "3164fe74b90bdd321afd9bb0cbb332ff69412a3a7cffcdf864adc7d25dbdcd21",
+      "heading": "Marketing",
+      "excerpt": "Another form of externalization is marketing campaigns aimed at people who are considering irregular migration to discourage them. The Unite",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373931983"
+    },
+    {
+      "id": "P8",
+      "hash": "c87c82e7b59ff2d9b7c487b81121ac90d54efe126f8fef8b166ac7a9f3b0b607",
+      "heading": "Interdiction of boats in international waters",
+      "excerpt": "Another form of externalization is the interception of boats in international waters to prevent them from reaching the destination country. ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373931983"
+    },
+    {
+      "id": "P9",
+      "hash": "614664d8caa9e0e272f98a5fcd32b6239e2b960d4c593f411ea855233a592a7e",
+      "heading": "Agreements with third countries",
+      "excerpt": "Cooperation in externalization can be voluntary, but it often involves the coercive and neocolonial exploitation of power imbalance by Globa",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373931983"
+    },
+    {
+      "id": "P10",
+      "hash": "0c9ddad034d1066179c4e91ba192ad600a1e93eb3aae6a3aafd310829821fee6",
+      "heading": "Australia",
+      "excerpt": "Australia's migration-control externalization policy, called the \"Pacific Solution\", dates to 2001 when the Australian navy began interdicti",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373931983"
+    },
+    {
+      "id": "P11",
+      "hash": "683467cca12003b6d7996720467d2aba3e391a6c687f2f2c657cb3a32bb40655",
+      "heading": "European Union",
+      "excerpt": "The signing of the Schengen Agreement in 1980s forced some countries, such as Italy, to start drafting their first laws to legislate the \"in",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373931983"
+    },
+    {
+      "id": "P12",
+      "hash": "e782653fd0be96f3fee549822b04d10209c717bd33df6d55b5cf6c573c03d334",
+      "heading": "Israel",
+      "excerpt": "In 2013, Israel announced that it had reached an agreement with a third country for the \"voluntary\" transference of asylum seekers and, in 2",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373931983"
+    },
+    {
+      "id": "P13",
+      "hash": "ab3ff9a5796d7978d21afc6bd5a11ca2ecbdb58e3de71628a63d2796ab9e2f75",
+      "heading": "Japan",
+      "excerpt": "Japan didn't have a refugee policy until the 1970s. When the first refugee boats from Vietnam reached the port of Chiba in '75 after being r",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373931983"
+    },
+    {
+      "id": "P14",
+      "hash": "caef72506f0c90254d124cf16a21b4b65ed8a4c91eeb1c1c29cd9ebe04cba625",
+      "heading": "South Korea",
+      "excerpt": "South Korea followed a similar policy as Japan in the 1970s and 1980s, allowing Vietnamese refugees to enter the country, being temporarily ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373931983"
+    }
+  ],
+  "updatedAt": "2026-10-24T10:41:59.318Z"
 }
