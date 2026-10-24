@@ -2,10 +2,10 @@
   "pageId": 6999780,
   "title": "History of terrorism",
   "topic": "Politics",
-  "status": "DRAFTED",
+  "status": "VALIDATED",
   "revisionId": 1379530340,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379530340",
-  "reason": "draft durably saved before validation",
+  "reason": "local factual, style, length, structure and source audit passed",
   "rights": [
     {
       "status": "REVIEW",
@@ -426,7 +426,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379530340"
     }
   ],
-  "updatedAt": "2026-10-24T06:52:58.746Z",
+  "updatedAt": "2026-10-24T06:53:16.625Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -555,5 +555,8 @@
     "output": 1345,
     "total": 4213
   },
-  "validation": null
+  "validation": {
+    "accepted": true,
+    "errors": []
+  }
 }
