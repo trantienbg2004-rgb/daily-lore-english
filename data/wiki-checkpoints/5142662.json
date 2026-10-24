@@ -2,10 +2,10 @@
   "pageId": 5142662,
   "title": "Italian fascism",
   "topic": "Politics",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1380358718,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380358718",
-  "reason": "11 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REJECTED",
@@ -407,5 +407,143 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380358718"
     }
   ],
-  "updatedAt": "2026-10-24T04:52:28.395Z"
+  "updatedAt": "2026-10-24T04:52:41.660Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "The Roots and Rules of Italian Fascism",
+        "pages": [
+          {
+            "text": "Italian fascism is the original fascist ideology. It was developed in Italy by Giovanni Gentile and Benito Mussolini. The National Fascist Party led the Kingdom of Italy from 1922 until 1943. This political movement changed Italy's history.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "The word fascismo comes from fascio, which means a bundle of sticks. This is related to the ancient Roman symbol of a bundle of rods tied around an axe. The symbol showed strength through unity.",
+            "evidenceIds": [
+              "P6"
+            ]
+          },
+          {
+            "text": "The movement was based on strong Italian nationalism. It wanted to complete the incomplete Risorgimento to bring together Italian territories. Fascists also looked back to the imperial legacy of Ancient Rome.",
+            "evidenceIds": [
+              "P2",
+              "P7"
+            ]
+          },
+          {
+            "text": "Italian fascism used a corporatist economic system. Employer and employee syndicates worked together with the state to set economic policy. Leaders called this economic system a third way.",
+            "evidenceIds": [
+              "P3",
+              "P11"
+            ]
+          },
+          {
+            "text": "In 1925, the party declared that Italy would be a totalitarian state. Mussolini wanted to forge an authoritarian national state and create a new kind of citizen. The official formulation of the ideology was published in 1932.",
+            "evidenceIds": [
+              "P10"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "Origins and Structure of Italian Fascism",
+        "pages": [
+          {
+            "text": "Italian fascism is the original fascist ideology developed in Italy by Giovanni Gentile and Benito Mussolini. It was associated with political parties led by Mussolini, including the National Fascist Party that governed the Kingdom of Italy from 1922 until 1943.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "The term fascismo derives from fascio, meaning bundle of sticks, from the Latin word fasces. The fascists associated the term with the ancient Roman fasces, a bundle of rods tied around an axe as a symbol of authority and strength through unity.",
+            "evidenceIds": [
+              "P6"
+            ]
+          },
+          {
+            "text": "Rooted in intense Italian nationalism and militarism, the movement sought to complete the nationalist Risorgimento project by incorporating unredeemed territories. Fascists claimed modern Italy was an heiress to the imperial legacy of Ancient Rome to create vital space.",
+            "evidenceIds": [
+              "P2",
+              "P7"
+            ]
+          },
+          {
+            "text": "Italian fascism promoted a corporatist economic system where employer and employee syndicates were linked together to work alongside the state. This system aimed to resolve class conflict through collaboration while opposing both classical liberalism and socialism.",
+            "evidenceIds": [
+              "P3",
+              "P11"
+            ]
+          },
+          {
+            "text": "In 1925, the party declared the fascist state would be totalitarian, aiming to forge an authoritarian national state and create politically active citizens. The official formulation was published in 1932 as The Doctrine of Philosophy.",
+            "evidenceIds": [
+              "P10"
+            ]
+          },
+          {
+            "text": "Although Mussolini initially denied antisemitism within the party, Italian laws eventually became explicitly antisemitic due to pressure from Nazi Germany during the latter half of the 1930s, leading to the promulgation of the Italian racial laws.",
+            "evidenceIds": [
+              "P4",
+              "P9"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "Ideological Foundations of Italian Fascism",
+        "pages": [
+          {
+            "text": "Italian fascism represents the foundational fascist ideology formulated by Giovanni Gentile and Benito Mussolini. It found institutional expression through the National Fascist Party and the Republican Fascist Party during their respective periods of governance in the Kingdom of Italy and the Italian Social Republic.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Etymologically derived from fascio, the terminology recalls the ancient Roman fasces, symbolizing civic magistrate authority and strength through unity. The organizational lineage traces from the Fasces of Revolutionary Action through the Italian Fasces of Combat to the National Fascist Party.",
+            "evidenceIds": [
+              "P6"
+            ]
+          },
+          {
+            "text": "Ideologically rooted in ultra-nationalism, national syndicalism, and irredentism, the movement sought to finalize the incomplete Risorgimento project. Proponents asserted an imperial continuity with Ancient Rome to justify territorial expansion and secure vital space within the Mediterranean basin.",
+            "evidenceIds": [
+              "P2",
+              "P7",
+              "8"
+            ]
+          },
+          {
+            "text": "The regime established a corporatist economic framework that linked employer and employee syndicates to coordinate national economic policy alongside the state. Positioned as a third alternative to capitalism and Marxism, this structure endeavored to neutralize class conflict.",
+            "evidenceIds": [
+              "P3",
+              "P11"
+            ]
+          },
+          {
+            "text": "By 1925, the party embraced totalitarianism, utilizing it to construct an authoritarian national state designed to cultivate politically active fascist citizens. This totalitarian framework received its definitive philosophical formulation in The Doctrine of Fascism, ghostwritten by Giovanni Gentile.",
+            "evidenceIds": [
+              "P10",
+              "P14"
+            ]
+          },
+          {
+            "text": "While early fascist rhetoric rejected certain racial doctrines and antisemitism, alignment with Nazi Germany in the late 1930s precipitated the institutionalization of explicit racial laws and discriminatory state policies directed against Jews, minority linguistic groups, and populations in occupied territories.",
+            "evidenceIds": [
+              "P4",
+              "P9"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2808,
+    "output": 1463,
+    "total": 4271
+  },
+  "validation": null
 }

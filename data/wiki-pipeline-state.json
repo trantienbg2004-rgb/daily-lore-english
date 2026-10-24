@@ -7948,10 +7948,10 @@
       "checkedAt": "2026-10-21T03:10:36.078Z"
     },
     "5142662": {
-      "status": "EVIDENCE_READY",
-      "reason": "11 rights-verified embedded images",
+      "status": "DRAFTED",
+      "reason": "draft durably saved before validation",
       "revisionId": 1380358718,
-      "checkedAt": "2026-10-24T04:52:28.395Z"
+      "checkedAt": "2026-10-24T04:52:41.659Z"
     },
     "5213868": {
       "status": "NEEDS_REVIEW",
@@ -10666,7 +10666,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-24T04:52:40.023Z",
+  "updatedAt": "2026-10-24T04:52:41.661Z",
   "dailyUsage": {
     "day": "2026-10-23",
     "calls": 204,
