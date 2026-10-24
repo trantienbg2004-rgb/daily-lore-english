@@ -2,10 +2,10 @@
   "pageId": 6999780,
   "title": "History of terrorism",
   "topic": "Politics",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1379530340,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379530340",
-  "reason": "10 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -426,5 +426,134 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379530340"
     }
   ],
-  "updatedAt": "2026-10-24T06:52:43.475Z"
+  "updatedAt": "2026-10-24T06:52:58.746Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "The History of Terrorism",
+        "pages": [
+          {
+            "text": "The history of terrorism has many different ideas. Scholars agree that terrorism is a disputed term. Very few people who are called terrorists use this word for themselves. Opponents in fights often call each other terrorists.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "The word terrorism started during the French Revolution. The ruling Jacobins used violence and mass executions to make people obey the state. Later, the term began to be used for groups that were not part of any government.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "In the nineteenth century, anarchist groups appeared. Anarchism was a prominent ideology linked with political violence. Anarchists committed important assassinations, including the killing of a Russian Tsar and a United States president.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "During the twentieth century, terrorism was connected to many different groups. These included socialist, fascist, and nationalist organizations. Many groups fought in independence struggles around the world during this time.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "There is still no universal scholarly consensus over the definition of terrorism today. The term is politically and emotionally charged. It has negative connotations and is usually applied to enemies and opponents in conflicts.",
+            "evidenceIds": [
+              "P4"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "Origins and Evolution of Terrorism",
+        "pages": [
+          {
+            "text": "The history of terrorism involves significant individuals, entities, and incidents. Scholars widely agree that terrorism is a disputed term. Opponents in violent conflicts frequently label each other as terrorists, while very few individuals describe themselves using that word.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Depending on definitions, the roots of terrorism can be traced back to the first century. However, the first English use of the term occurred during the French Revolution. The ruling Jacobins employed mass executions by guillotine to compel obedience and intimidate state enemies.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "By the mid-nineteenth century, the term began to be associated with non-governmental groups rather than just state violence. Anarchism emerged as a prominent ideology linked with terrorism, often in league with rising nationalism and anti-monarchism.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "Toward the end of the nineteenth century, various anarchist groups and individuals carried out major assassinations, including the killings of a Russian Tsar and a United States president. Similar tactics were later adopted by a vast array of political groups.",
+            "evidenceIds": [
+              "P2",
+              "P3"
+            ]
+          },
+          {
+            "text": "In the twentieth century, terrorism remained connected to socialist, fascist, and nationalist organizations, many engaged in third-world independence struggles. Some scholars also labeled the systematic internal violence of states like the Soviet Union and Nazi Germany as terrorist.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "No scholarly consensus exists regarding the definition of terrorism. This lack of agreement derives partly from the fact that the term is politically and emotionally charged, carrying intrinsically negative connotations when applied to opponents.",
+            "evidenceIds": [
+              "P4"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "Defining and Tracing Political Violence",
+        "pages": [
+          {
+            "text": "The historical taxonomy of terrorism encompasses diverse actors and incidents, though scholars largely concur that the term remains inherently contested. Parties in violent conflicts routinely ascribe the label to their adversaries, while those so designated rarely embrace the terminology themselves.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Although historical roots are sometimes traced back antiquity, the etymological origins in English stem from the French Revolution's Reign of Terror. During this period, the Jacobins utilized state-sanctioned violence and public executions to enforce compliance and intimidate political opponents.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "The semantic scope of terrorism shifted during the mid-nineteenth century, extending beyond state apparatuses to encompass non-governmental entities. Anarchism, frequently intersecting with nationalism and anti-monarchism, became the preeminent ideology associated with these violent methods.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "Late-nineteenth-century anarchism manifested in high-profile assassinations, including the targeted killings of a Russian monarch and an American chief executive. These actions presaged a broader twentieth-century phenomenon involving diverse ideological factions.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "Throughout the twentieth century, the application of the label expanded to incorporate socialist, fascist, and nationalist movements involved in decolonization and independence struggles. Certain analysts additionally categorized internal state repression under totalitarian regimes as terrorist violence.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "A definitive scholarly consensus regarding the conceptual boundaries of terrorism remains elusive. This ambiguity stems largely from the emotionally and politically charged nature of the vocabulary, which inherently carries pejorative connotations when directed at political antagonists.",
+            "evidenceIds": [
+              "P4"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2868,
+    "output": 1345,
+    "total": 4213
+  },
+  "validation": null
 }
