@@ -279,14 +279,14 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373665813"
     }
   ],
-  "updatedAt": "2026-10-24T05:42:34.933Z",
+  "updatedAt": "2026-10-24T05:42:53.108Z",
   "draft": {
     "variants": {
       "A1-A2": {
         "headline": "What is Uti Possidetis?",
         "pages": [
           {
-            "text": "Uti possidetis is an expression that originated in Roman private law as a procedure about land possession. Later, by a misleading analogy, it was transferred to international law, where it has had more than one meaning concerning sovereign rights to territory.",
+            "text": "Uti possidetis is an expression that originated in Roman private law, where it was the name of a procedure about possession of land. Later, it was transferred to international law, where it has had more than one meaning concerning sovereign right to territory.",
             "evidenceIds": [
               "P1"
             ]
@@ -304,7 +304,7 @@
             ]
           },
           {
-            "text": "In recent times, uti possidetis refers to a doctrine for drawing international boundaries. When colonial territories achieve independence or a polity breaks up, the old administrative boundaries between the new states ought to be followed.",
+            "text": "In recent times, uti possidetis refers to a doctrine for drawing international boundaries. When colonial territories achieve independence, or when a polity breaks up, the old administrative boundaries between the new states ought to be followed. This doctrine has its critics.",
             "evidenceIds": [
               "P4"
             ]
@@ -378,7 +378,7 @@
             ]
           },
           {
-            "text": "In recent times, uti possidetis refers to a doctrine for drawing international boundaries. When colonial territories achieve independence or a polity breaks up, the old administrative boundaries between the new states ought to be followed in default of a better rule.",
+            "text": "In recent times, uti possidetis refers to a doctrine for drawing international boundaries. When colonial territories achieve independence, or when a polity breaks up, then, in default of a better rule, the old administrative boundaries between the new states ought to be followed. This doctrine has its critics and is sometimes called uti possidetis juris.",
             "evidenceIds": [
               "P4",
               "P17"
@@ -395,11 +395,11 @@
       }
     }
   },
-  "repairAttempts": 1,
+  "repairAttempts": 2,
   "lastUsage": {
-    "input": 2934,
-    "output": 522,
-    "total": 3456
+    "input": 2790,
+    "output": 231,
+    "total": 3021
   },
   "validation": null
 }
