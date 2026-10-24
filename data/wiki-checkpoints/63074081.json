@@ -2,10 +2,10 @@
   "pageId": 63074081,
   "title": "Climate change in the Middle East and North Africa",
   "topic": "Environment",
-  "status": "DRAFTED",
+  "status": "VALIDATED",
   "revisionId": 1381055215,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381055215",
-  "reason": "draft durably saved before validation",
+  "reason": "local factual, style, length, structure and source audit passed",
   "rights": [
     {
       "status": "REVIEW",
@@ -382,7 +382,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381055215"
     }
   ],
-  "updatedAt": "2026-10-24T04:01:28.457Z",
+  "updatedAt": "2026-10-24T04:01:46.532Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -522,5 +522,8 @@
     "output": 1141,
     "total": 3826
   },
-  "validation": null
+  "validation": {
+    "accepted": true,
+    "errors": []
+  }
 }
