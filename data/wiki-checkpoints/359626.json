@@ -463,14 +463,14 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380595942"
     }
   ],
-  "updatedAt": "2026-10-24T06:55:52.981Z",
+  "updatedAt": "2026-10-24T06:56:11.345Z",
   "draft": {
     "variants": {
       "A1-A2": {
         "headline": "The New Age of Industry",
         "pages": [
           {
-            "text": "The Second Industrial Revolution was a time of fast scientific discovery and mass production. It started around 1870 and lasted until World War I began in 1914. This period brought huge changes to many countries.",
+            "text": "The Second Industrial Revolution was a time of fast scientific discovery and mass production. It was a phase of rapid industrial development, standardization, and mass production from the late nineteenth century into the early twentieth century. This period brought huge changes to many countries and lasted until World War I began.",
             "evidenceIds": [
               "P1",
               "P3"
@@ -491,14 +491,14 @@
             ]
           },
           {
-            "text": "Scientists and inventors created many useful products during this era. William Henry Perkin accidentally discovered the first synthetic dye, which started a new chemical industry.",
+            "text": "Scientists and inventors created many useful products during this era. William Henry Perkin accidentally discovered the first synthetic dye, which started a new chemical industry. Perkin found that aniline could be partly transformed into a crude mixture to produce an intense purple color, which he commercialized.",
             "evidenceIds": [
               "P14",
               "P19"
             ]
           },
           {
-            "text": "Karl Benz patented the first true automobile in 1886. It used a special engine and was designed entirely to generate its own power instead of using horses.",
+            "text": "Karl Benz patented the first true automobile in 1886. It used a special engine and was designed entirely to generate its own power instead of using horses or carriages. The vehicle featured wire wheels, a four-stroke engine, coil ignition, and evaporative cooling, transmitting power through roller chains to the rear axle.",
             "evidenceIds": [
               "P18"
             ]
@@ -592,11 +592,11 @@
       }
     }
   },
-  "repairAttempts": 0,
+  "repairAttempts": 1,
   "lastUsage": {
-    "input": 2785,
-    "output": 1401,
-    "total": 4186
+    "input": 2752,
+    "output": 315,
+    "total": 3067
   },
   "validation": null
 }
