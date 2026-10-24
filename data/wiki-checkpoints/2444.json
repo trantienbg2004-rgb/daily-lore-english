@@ -2,10 +2,10 @@
   "pageId": 2444,
   "title": "Conservation and restoration of cultural property",
   "topic": "Culture",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1375682556,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375682556",
-  "reason": "10 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REJECTED",
@@ -416,5 +416,129 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375682556"
     }
   ],
-  "updatedAt": "2026-10-24T06:26:59.914Z"
+  "updatedAt": "2026-10-24T06:27:19.287Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "Caring for Cultural Heritage",
+        "pages": [
+          {
+            "text": "The conservation and restoration of cultural property focuses on the protection and care of tangible cultural heritage. This field includes artworks, architecture, archaeology, and museum collections. Conservation activities involve preventive care, examination, documentation, research, treatment, and education for the future.",
+            "evidenceIds": [
+              "P1",
+              "P20"
+            ]
+          },
+          {
+            "text": "In the past, artists were normally the people called upon to repair damaged artworks. Over time, science and art became closely connected. Scientists began to study how the environment damages works of art. Later, universities and museums started offering professional training and courses.",
+            "evidenceIds": [
+              "P7",
+              "P18"
+            ]
+          },
+          {
+            "text": "Today, modern conservation laboratories use special equipment like microscopes and spectrometers. This equipment helps experts examine objects and understand their components. The collected data guides conservators in deciding the best treatments to provide for each unique object.",
+            "evidenceIds": [
+              "P8"
+            ]
+          },
+          {
+            "text": "Many cultural works are very sensitive to environmental conditions. Factors like temperature, humidity, and exposure to light can cause damage. Therefore, these valuable items must be protected in controlled environments where variables are maintained within safe limits.",
+            "evidenceIds": [
+              "P10"
+            ]
+          },
+          {
+            "text": "Modern conservation also focuses on sustainable practices. Professionals try to reduce waste, lower energy costs, and minimize the use of harmful solvents. These steps ensure that conservation work does not harm the environment or contribute to global warming.",
+            "evidenceIds": [
+              "P12"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "The Evolution of Cultural Property Conservation",
+        "pages": [
+          {
+            "text": "The conservation and restoration of cultural property focuses on the protection and care of tangible cultural heritage, including artworks, architecture, archaeology, and museum collections. Conservation activities range from preventive care and examination to documentation, research, treatment, and education.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Historically, the care of cultural heritage was primarily aimed at fixing objects for continued use and aesthetic enjoyment, and artists were normally called upon to make repairs. During the 19th century, however, science and art became intertwined as researchers began studying how environmental factors damage works of art.",
+            "evidenceIds": [
+              "P7"
+            ]
+          },
+          {
+            "text": "As the field developed, museums began employing specialized chemists to establish scientific approaches to object care. In modern conservation laboratories, professionals routinely use advanced equipment such as microscopes, spectrometers, and x-ray instruments to examine cultural works and determine appropriate treatments.",
+            "evidenceIds": [
+              "P8",
+              "P21"
+            ]
+          },
+          {
+            "text": "Because many cultural works are highly sensitive to environmental conditions, they require protection in controlled settings. Variables such as temperature, relative humidity, and exposure to light must be carefully maintained within damage-limiting levels to prevent deterioration, such as the fading of watercolor pigments.",
+            "evidenceIds": [
+              "P10"
+            ]
+          },
+          {
+            "text": "In recent years, the conservation-restoration profession has increasingly focused on environmental sustainability. Practitioners strive to reduce waste, lower energy costs, and minimize the use of toxic solvents, ensuring that their methods support both the preservation of artifacts and ecological responsibility.",
+            "evidenceIds": [
+              "P12"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "Principles and Practices in Cultural Heritage Conservation",
+        "pages": [
+          {
+            "text": "The conservation and restoration of cultural property encompasses the protection and stewardship of tangible cultural heritage, including diverse forms such as artworks, architecture, archaeology, and museum collections. This multidimensional field integrates preventive measures, rigorous examination, documentation, empirical research, treatment, and educational outreach.",
+            "evidenceIds": [
+              "P1",
+              "P3"
+            ]
+          },
+          {
+            "text": "Historically dominated by artists who repaired damaged objects for continued utility and aesthetic appreciation, the discipline underwent a profound methodological shift during the 19th and early 20th centuries. The integration of scientific analysis into artifact care marked the transition from traditional craftsmanship to an empirical profession supported by specialized laboratory research.",
+            "evidenceIds": [
+              "P7",
+              "P21",
+              "P22"
+            ]
+          },
+          {
+            "text": "Contemporary conservation laboratories employ sophisticated diagnostic instrumentation, including microscopes, spectrometers, and x-ray equipment. The empirical data derived from these analyses informs conservators as they evaluate physical needs, material properties, and ethical considerations to determine optimal treatment strategies.",
+            "evidenceIds": [
+              "P5",
+              "P8"
+            ]
+          },
+          {
+            "text": "Preventive conservation is critical because numerous cultural artifacts exhibit high vulnerability to ambient environmental fluctuations. Maintaining strict parameters for temperature, relative humidity, visible light, and ultraviolet radiation within controlled storage and display environments is essential for mitigating cumulative material degradation.",
+            "evidenceIds": [
+              "P10",
+              "P14"
+            ]
+          },
+          {
+            "text": "More recently, the profession has emphasized sustainable conservation practices to align institutional workflows with environmental responsibility. By actively reducing waste, lowering energy consumption, and restricting the deployment of harmful solvents, cultural institutions seek to minimize their ecological footprint while continuing their stewardship duties.",
+            "evidenceIds": [
+              "P12"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2657,
+    "output": 1337,
+    "total": 3994
+  },
+  "validation": null
 }
