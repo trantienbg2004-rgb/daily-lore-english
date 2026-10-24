@@ -2,10 +2,10 @@
   "pageId": 23423379,
   "title": "History of climate change science",
   "topic": "Environment",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1366154475,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1366154475",
-  "reason": "12 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -459,5 +459,148 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1366154475"
     }
   ],
-  "updatedAt": "2026-10-24T02:02:04.518Z"
+  "updatedAt": "2026-10-24T02:02:21.994Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "The History of Climate Science",
+        "pages": [
+          {
+            "text": "Long ago, people noticed that regional climates could change over time. In the nineteenth century, scientists began to study natural climate changes like ice ages. They also identified the natural greenhouse effect. Joseph Fourier first proposed this effect in eighteen twenty-four. Later, other scientists showed how the sun and certain gases warm the Earth.",
+            "evidenceIds": [
+              "P1",
+              "P7"
+            ]
+          },
+          {
+            "text": "In eighteen fifty-six, Eunice Newton Foote showed that carbon dioxide makes the sun's warming effect greater. John Tyndall later measured how different gases absorb heat. Svante Arrhenius made the first calculation of global warming from a doubling of carbon dioxide in eighteen ninety-six.",
+            "evidenceIds": [
+              "P1",
+              "P2"
+            ]
+          },
+          {
+            "text": "Early experiments had trouble measuring carbon dioxide absorption correctly. Many scientists thought oceans would absorb extra gas easily. By the nineteen fifties and sixties, better tools showed that carbon dioxide and water vapor absorption lines did not overlap completely, proving the greenhouse effect was real.",
+            "evidenceIds": [
+              "P10",
+              "P11"
+            ]
+          },
+          {
+            "text": "During the nineteen seventies, scientists studied both possible warming and cooling trends. Some researchers warned about global cooling from aerosols, while many more studies predicted warming from greenhouse gases. Governments started to discuss these environmental issues and the need for more research.",
+            "evidenceIds": [
+              "P3",
+              "P5",
+              "P12"
+            ]
+          },
+          {
+            "text": "By the nineteen nineties, computer models and observations improved greatly. A clear consensus formed among scientists. They concluded that human activities and greenhouse gases were bringing noticeable global warming. Since then, international panels have summarized ongoing research and tracked extreme weather events.",
+            "evidenceIds": [
+              "P4",
+              "P6",
+              "P14"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "Understanding Climate Change Science",
+        "pages": [
+          {
+            "text": "The scientific study of climate change began in the early nineteenth century with investigations into ancient ice ages and the natural greenhouse effect. Joseph Fourier first proposed the existence of the greenhouse effect in eighteen twenty-four, and researchers like Claude Pouillet and Eunice Newton Foote provided early supporting evidence.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "In eighteen fifty-nine, John Tyndall demonstrated that atmospheric gases like water vapor and carbon dioxide absorb infrared radiation. Svante Arrhenius later quantified these effects, offering the first prediction of global warming driven by increased carbon dioxide. However, early laboratory tests disputed these findings, mistakenly suggesting that carbon dioxide would have little climatic impact.",
+            "evidenceIds": [
+              "P2",
+              "P10"
+            ]
+          },
+          {
+            "text": "Improved spectrography in the nineteen fifties resolved earlier confusion by showing that carbon dioxide and water vapor absorption lines did not completely overlap. By the nineteen sixties, evidence for the warming effect of carbon dioxide grew stronger, alongside discoveries that air pollution aerosols could cause cooling effects.",
+            "evidenceIds": [
+              "P3",
+              "P11"
+            ]
+          },
+          {
+            "text": "During the nineteen seventies, mixed evidence regarding global temperatures led to debates between potential warming and cooling trends. Although a few scientists warned of severe cooling from aerosols, a broader survey of scientific literature showed that studies predicting warming received far more attention and emphasis.",
+            "evidenceIds": [
+              "P12"
+            ]
+          },
+          {
+            "text": "By the nineteen nineties, refined computer models and observational data confirmed key paleoclimate theories. A strong scientific consensus emerged, establishing that human-caused greenhouse gas emissions were driving discernible global warming. The newly formed Intergovernmental Panel on Climate Change began issuing regular assessment reports.",
+            "evidenceIds": [
+              "P4",
+              "P14"
+            ]
+          },
+          {
+            "text": "In the twenty-first century, research expanded into multiple disciplines, leading to attribution science. This modern field uses climate models to evaluate the specific role that human-caused climate change plays in the frequency and intensity of individual extreme weather events.",
+            "evidenceIds": [
+              "P6",
+              "P16"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "Evolution of Climate Science",
+        "pages": [
+          {
+            "text": "The scientific inquiry into anthropogenic and natural climate dynamics originated in the early nineteenth century. Initial investigations focused on paleoclimate shifts, ancient ice ages, and the foundational mechanics of the natural greenhouse effect, which was proposed by Joseph Fourier in eighteen twenty-four and subsequently reinforced by Claude Pouillet and Eunice Newton Foote.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "John Tyndall pioneered the measurement of atmospheric gas absorption spectra, identifying the critical role of trace gases like hydrocarbons and carbon dioxide. Svante Arrhenius advanced this foundation in eighteen ninety-six by producing the first quantitative estimation of global warming resulting from a hypothetical doubling of atmospheric carbon dioxide.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "Initial consensus was impeded by early experimental limitations that underestimated carbon dioxide absorption and suggested complete spectral overlap with water vapor. Resolution arrived in the nineteen fifties via advanced spectrography, demonstrating distinct absorption lines and confirming that increasing carbon dioxide concentrations would not be neutralized by atmospheric moisture.",
+            "evidenceIds": [
+              "P10",
+              "P11"
+            ]
+          },
+          {
+            "text": "During the nineteen seventies, empirical observations of global cooling trends and aerosol increases stimulated debate regarding future climatic trajectories. Despite competing hypotheses concerning solar variation and global dimming, literature surveys confirm that studies predicting greenhouse warming held a substantial majority in scientific emphasis.",
+            "evidenceIds": [
+              "P3",
+              "P12"
+            ]
+          },
+          {
+            "text": "By the nineteen nineties, improvements in computer simulations and validation of orbital Milankovitch cycles precipitated a robust scientific consensus. Assessments indicated that anthropogenic greenhouse gas emissions were unambiguously driving observable global warming, prompting the establishment of structured international reporting through the Intergovernmental Panel on Climate Change.",
+            "evidenceIds": [
+              "P4",
+              "P14"
+            ]
+          },
+          {
+            "text": "Contemporary research encompasses diverse disciplines, featuring extreme event attribution methodology developed in the twenty-first century. By leveraging advanced climate models, attribution science quantitatively evaluates the extent to which human-induced climate change influences the probability and severity of specific extreme weather phenomena.",
+            "evidenceIds": [
+              "P6",
+              "P16"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2877,
+    "output": 1610,
+    "total": 4487
+  },
+  "validation": null
 }
