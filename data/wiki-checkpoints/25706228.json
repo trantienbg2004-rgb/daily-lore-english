@@ -2,9 +2,201 @@
   "pageId": 25706228,
   "title": "Paleocontinent",
   "topic": "History & Geography",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1377527697,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377527697",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-24T10:43:11.622Z"
+  "reason": "1 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Laurasia-Gondwana.png"
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:North america craton nps.gif"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:Pangea continents and oceans.svg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b4/Pangea_continents_and_oceans.svg/960px-Pangea_continents_and_oceans.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Pangea continents and oceans.svg",
+        "caption": "Pangea",
+        "alt": "",
+        "description": "Pangea map, with names of the continents and the oceans surrounding it (Panthalassa, Paleo-Tethys, and Tethys).",
+        "date": "2010-07-30",
+        "section": "Pangea",
+        "position": 2,
+        "provenance": {
+          "credit": "Adrignola",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Pangea_continents_and_oceans.svg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Paleocontinent",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377527697",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "75babc606d3435421a118d236806c2111e8b49c1005e7d6bd27e540a5d688ce7",
+      "heading": "Lead",
+      "excerpt": "A paleocontinent or palaeocontinent is a distinct area of continental crust that existed as a major landmass in the geological past. There h",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377527697"
+    },
+    {
+      "id": "P2",
+      "hash": "19bc42070094a7dfeb1f35586fab68db2eb909d52ce96a0812c0caf28cb5c8e9",
+      "heading": "Lead",
+      "excerpt": "That is evident with how similar fossils are found on distant continents. Also, as continents move, mountain-building events (orogenies) occ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377527697"
+    },
+    {
+      "id": "P3",
+      "hash": "60e91e8d894f61f6d4345d3fc41cbc615f9ac2230672281ef33a40125bf78901",
+      "heading": "Lead",
+      "excerpt": "Examples include Laurentia, Baltica and Avalonia, which collided together during the Caledonian orogeny to form the Old Red Sandstone paleoc",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377527697"
+    },
+    {
+      "id": "P4",
+      "hash": "3fb6606bdaf807b977487ff9dd06a18d3c8906c6c9e1739fdce6a301dad0cd85",
+      "heading": "Examples",
+      "excerpt": "The examples below are condensed to portray a brief overview of several paleocontinents. The time scales are on the order of millions of yea",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377527697"
+    },
+    {
+      "id": "P5",
+      "hash": "63e1130f8506129f04fa89d5963938a72f3c0565d8aaf953ebe53b636c171207",
+      "heading": "Location",
+      "excerpt": "Gondwana was located in the Southern Hemisphere, with the land mass that makes up what is now the part of Antarctica that is closest to the ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377527697"
+    },
+    {
+      "id": "P6",
+      "hash": "df56acf789d0f9addaeffdb0d88e30a7fb63fc12040884ab349c9593a2bcac06",
+      "heading": "Formation",
+      "excerpt": "Gondwana was made of present-day South America, Africa, Arabia, India, Antarctica, Australia, and Madagascar. The continent had become fully",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377527697"
+    },
+    {
+      "id": "P7",
+      "hash": "5c1e84a4ee6ea967398df9a487e8c04a0fcd2fb3150e6d9702bc8ba154ccb838",
+      "heading": "Demise",
+      "excerpt": "Gondwana broke up in distinct stages. The continent started to split during the Jurassic Period around 180 million years ago. The first even",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377527697"
+    },
+    {
+      "id": "P8",
+      "hash": "cf34721ad484164d9ddcdf806e3043f190bed08dbd6ecd2d84f0a8a70affbd0e",
+      "heading": "Life",
+      "excerpt": "The life on Gondwana has changed throughout its existence. Gondwana was a smaller piece of Rodinia and stayed together all the way until the",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377527697"
+    },
+    {
+      "id": "P9",
+      "hash": "65b1bcdd5d7b0a72d0f03f99d75ca791f408b8c16b68f86f0661ad177509a7f1",
+      "heading": "Climate",
+      "excerpt": "Gondwana experienced a variety of climates as it has been a land mass from 600 million years ago in the Precambrian to the Early Jurassic wi",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377527697"
+    },
+    {
+      "id": "P10",
+      "hash": "214a122570f62f041b8308e194b6bbca149f136d9a2b05691d5e6ceca5f8f02a",
+      "heading": "Life",
+      "excerpt": "Also, vertebrates started to make an appearance in the fossil record. Terrestrial species started to become more prominent in the Silurian, ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377527697"
+    },
+    {
+      "id": "P11",
+      "hash": "55151c310a10fbcc43b338710ff498a61a2084fb30a2f9c5970fe739979372d9",
+      "heading": "Life",
+      "excerpt": "Amniotic eggs started to evolve, as more terrestrial land became available with the rising land masses and lowering sea levels. During the P",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377527697"
+    },
+    {
+      "id": "P12",
+      "hash": "717b2a8b7a4e2576aa4d348bf69634cb80f2b2379b43dc3e1fcaef345e239240",
+      "heading": "Location",
+      "excerpt": "The location of Laurentia has changed throughout time. During the late Proterozoic, it could be found surrounded by Siberia, South Africa, A",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377527697"
+    },
+    {
+      "id": "P13",
+      "hash": "815af78810e6030f8ae6bc4a5574b965fbacbeca1cbb43e88403e18560a8d9dd",
+      "heading": "Formation",
+      "excerpt": "Laurentia is the North American craton. It is one of the largest and oldest cratons dating back to Precambrian times. The craton itself incl",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377527697"
+    },
+    {
+      "id": "P14",
+      "hash": "8c186343d2af2ae238b12b2f7817eff8884ca43c7482f3a6d90cc2753bcacb21",
+      "heading": "Formation",
+      "excerpt": "The smaller land masses were made of Archean crust and belts of Early Proterozoic island arcs. Laurentia has been a part of many supercontin",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377527697"
+    },
+    {
+      "id": "P15",
+      "hash": "b32649ce3faa37e97a09a47eb7c804cd4dd7e76bc4c65838d2265f166aa15480",
+      "heading": "Demise",
+      "excerpt": "Laurentia is presently still coherent and still a continental craton and now goes by the name North America. The craton can be found stretch",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377527697"
+    },
+    {
+      "id": "P16",
+      "hash": "ed4ba7c601ec288fb58ac69db98e166e21c248b9e308293ac09af5e15de7ecb7",
+      "heading": "Life",
+      "excerpt": "The sea level rose in the Cambrian period, which gave rise to marine invertebrates, which flourished. Life in the Ordovician continued to be",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377527697"
+    },
+    {
+      "id": "P17",
+      "hash": "1f57468732155c3773f12fe44b4f64b4956d1bb8383012e456149bd2de99525c",
+      "heading": "Life",
+      "excerpt": "When Laurentia moved into the Devonian period, fish began to diversify, and life had begun colonizing land since organic soil accumulation c",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377527697"
+    },
+    {
+      "id": "P18",
+      "hash": "01034d8b6bac33f5d3527c4e60d11e2cbc0e4aad2eb5750635abefb07b052336",
+      "heading": "Climate",
+      "excerpt": "Laurentia experienced a variety of climates, as it has been a land mass for billions of years. The craton experienced an ice age during the ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377527697"
+    },
+    {
+      "id": "P19",
+      "hash": "3e81b86bff895f1e97ce9952653fbd38c82f5329a2031c811fea3cdf2e4e7519",
+      "heading": "Climate",
+      "excerpt": "The climate began to change when Laurentia entered the Mesozoic Era, which was dominated by a very large and lengthy monsoon season because ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377527697"
+    },
+    {
+      "id": "P20",
+      "hash": "5212d48ef5270ba085ac973db7cca9c768119008601fcfac7a5de3803c11a009",
+      "heading": "Location",
+      "excerpt": "The continent spanned from 85° N to 90° S. Pangea was centered over the equator and encompassed area from the north to the south poles. The ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377527697"
+    },
+    {
+      "id": "P21",
+      "hash": "7dad253fd0fe83cf19b8e7836c063727d1efd0eb58e881be712f0218c0fb328e",
+      "heading": "Formation",
+      "excerpt": "Pangea was created by the continent of Gondwanaland and the continent of Laurussia. During the Carboniferous period the two continents came ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377527697"
+    },
+    {
+      "id": "P22",
+      "hash": "5a0a5e1fd62a166d228634cf921d3dea1faf59f72cbcac620be2850b9716445d",
+      "heading": "Demise",
+      "excerpt": "Pangea broke apart after 70 million years. The supercontinent was torn apart through fragmentation, when parts of the main landmass would br",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377527697"
+    }
+  ],
+  "updatedAt": "2026-10-24T10:43:17.301Z"
 }
