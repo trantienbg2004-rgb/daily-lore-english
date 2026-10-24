@@ -2,10 +2,10 @@
   "pageId": 283810,
   "title": "Mass spectrometry",
   "topic": "Science & Technology",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1378449939,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378449939",
-  "reason": "12 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -492,5 +492,132 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378449939"
     }
   ],
-  "updatedAt": "2026-10-24T07:44:21.712Z"
+  "updatedAt": "2026-10-24T07:44:38.373Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "What Is Mass Spectrometry?",
+        "pages": [
+          {
+            "text": "Mass spectrometry is a scientific tool. It measures the mass and charge of tiny particles in a sample. Scientists use it to learn what a sample is made of. The results appear as a chart called a mass spectrum.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "First, a sample is turned into ions. This means the particles get an electric charge or break into charged pieces. Next, these ions move through electric or magnetic fields. Particles with different mass and charge move in different ways.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "A detector finds the charged particles at the end of the process. The system displays the final data as a spectrum chart. Researchers look at the known masses and patterns to identify the atoms and molecules.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "Mass spectrometry includes five main parts. These parts are the sample inlet, the ion source, the mass analyzer, the detector, and a data system. Each part can work independently to provide good flexibility for tests.",
+            "evidenceIds": [
+              "P6"
+            ]
+          },
+          {
+            "text": "History shows early work began long ago. In 1886, Eugen Goldstein found canal rays in gas discharges. Later scientists improved these devices to study particles. Today, researchers apply this technique across many different fields.",
+            "evidenceIds": [
+              "P1",
+              "P3"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "Understanding Mass Spectrometry",
+        "pages": [
+          {
+            "text": "Mass spectrometry is an analytical technique used to measure the mass-to-charge ratio of ions. The output is a mass spectrum, which plots signal intensity against this ratio. Researchers use these spectra to determine elemental signatures, particle masses, and the chemical structure of molecules in pure samples or complex mixtures.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "During a typical procedure, a solid, liquid, or gaseous sample is ionized by methods such as an electron beam. This process creates charged particles or fragments. An electric or magnetic field then separates these ions because particles with identical mass-to-charge ratios undergo the same amount of deflection.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "A detector records the separated ions. Scientists then identify the atoms or molecules by matching known masses to the identified values or by analyzing characteristic fragmentation patterns. Early instruments recorded these values on photographic plates or phosphor screens.",
+            "evidenceIds": [
+              "P2",
+              "P4"
+            ]
+          },
+          {
+            "text": "Every mass spectrometer consists of five core components: a sample inlet, an ion source, a mass analyzer, a detector, and a data system. Because these components can vary independently, the instrument offers great flexibility in analytical pipelines.",
+            "evidenceIds": [
+              "P6"
+            ]
+          },
+          {
+            "text": "The history of the field dates back to the late nineteenth century. Eugen Goldstein observed canal rays in 1886, and Wilhelm Wien later built a device to separate positive rays using perpendicular fields. J. J. Thomson subsequently improved this design by reducing pressure to create the mass spectrograph.",
+            "evidenceIds": [
+              "P3"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "Principles and Components of Mass Spectrometry",
+        "pages": [
+          {
+            "text": "Mass spectrometry is an analytical methodology designed to quantify the mass-to-charge ratio of ions, yielding a mass spectrum that charts signal intensity against this ratio. This framework enables researchers to elucidate isotopic signatures, molecular masses, and chemical structures across pure substances and intricate mixtures alike.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "The analytical workflow requires ionizing a solid, liquid, or gaseous sample via techniques such as electron bombardment. The resulting ions or molecular fragments are subsequently subjected to electric or magnetic fields, causing ions with equivalent mass-to-charge ratios to experience uniform deflection trajectories.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "Detection mechanisms, including electron multipliers, register the deflected ions. Analysts identify constituent particles by correlating empirical mass values with known reference data or by evaluating specific fragmentation patterns. Historically, early instruments utilized photographic plates or phosphor screens to record these spectra.",
+            "evidenceIds": [
+              "P2",
+              "P4"
+            ]
+          },
+          {
+            "text": "Instrumentation is modular, comprising five distinct functional components: a sample inlet, an ion source, a mass analyzer, a detector, and a data system. Each unit operates with relative independence, permitting substantial configuration flexibility within broader analytical pipelines.",
+            "evidenceIds": [
+              "P6"
+            ]
+          },
+          {
+            "text": "Historical developments originated with Eugen Goldstein's observation of canal rays in 1886. Wilhelm Wien advanced the field by constructing a device using perpendicular fields to separate positive ions according to their charge-to-mass ratio, a foundation that J. J. Thomson refined into early mass spectrographs.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "Mass analyzers utilize diverse static or dynamic electric and magnetic configurations to separate ions. Key performance metrics include mass resolving power, which defines the smallest detectable difference in the mass-to-charge ratio, typically quantified via the full width at half maximum of a given spectral peak.",
+            "evidenceIds": [
+              "P18",
+              "P20",
+              "P21"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2811,
+    "output": 1382,
+    "total": 4193
+  },
+  "validation": null
 }

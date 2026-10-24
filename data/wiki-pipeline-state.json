@@ -7602,10 +7602,10 @@
       "checkedAt": "2026-10-21T13:01:50.306Z"
     },
     "283810": {
-      "status": "EVIDENCE_READY",
-      "reason": "12 rights-verified embedded images",
+      "status": "DRAFTED",
+      "reason": "draft durably saved before validation",
       "revisionId": 1378449939,
-      "checkedAt": "2026-10-24T07:44:21.711Z"
+      "checkedAt": "2026-10-24T07:44:38.372Z"
     },
     "292617": {
       "status": "EVIDENCE_READY",
@@ -11610,7 +11610,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-24T07:44:37.027Z",
+  "updatedAt": "2026-10-24T07:44:38.374Z",
   "dailyUsage": {
     "day": "2026-10-24",
     "calls": 32,
