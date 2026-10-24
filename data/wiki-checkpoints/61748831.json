@@ -2,9 +2,414 @@
   "pageId": 61748831,
   "title": "Paleogeography of the India–Asia collision system",
   "topic": "History & Geography",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1381711714,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381711714",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-24T10:18:01.819Z"
+  "reason": "11 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:CollisionOnset.jpg"
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:HimalayaCollisionMap.jpg"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:TibetElevationMap.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1e/TibetElevationMap.jpg/960px-TibetElevationMap.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:TibetElevationMap.jpg",
+        "caption": "The evolution of Tibetan Plateau elevation through time. The color gradient illustrates the estimated timing at when the covered area reached its present-day elevation (i.e. around 4—5 km). Modified after Mulch & Chamberlain (2006).",
+        "alt": "",
+        "description": "When did Tibet meet its present-day elevation.",
+        "date": "2019-11-23 23:17:51",
+        "section": "Evolution of Tibet's geomorphology",
+        "position": 6,
+        "provenance": {
+          "credit": "Hkgeo4869",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:TibetElevationMap.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Paleogeography_of_the_India%E2%80%93Asia_collision_system",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381711714",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:TibetWrongModel.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6c/TibetWrongModel.jpg/960px-TibetWrongModel.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:TibetWrongModel.jpg",
+        "caption": "Figure illustrates how Tibet uplift is resulted from Indian-Asian continental collision .",
+        "alt": "",
+        "description": "Crustal thickening during the collision onset",
+        "date": "2019-11-23 11:07:52",
+        "section": "Tectonic models for crustal thickening",
+        "position": 7,
+        "provenance": {
+          "credit": "Hkgeo4869",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:TibetWrongModel.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Paleogeography_of_the_India%E2%80%93Asia_collision_system",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381711714",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:TibetOlderModel.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bc/TibetOlderModel.jpg/960px-TibetOlderModel.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:TibetOlderModel.jpg",
+        "caption": "Figure illustrating how the Lhasa block (South Tibet) experienced intense crustal thickening in the Mesozoic times.",
+        "alt": "",
+        "description": "Crustal thickening of Tibet in Mesozoic time.",
+        "date": "2019-11-23 11:07:52",
+        "section": "Mesozoic uplift model",
+        "position": 8,
+        "provenance": {
+          "credit": "Hkgeo4869",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:TibetOlderModel.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Paleogeography_of_the_India%E2%80%93Asia_collision_system",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381711714",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:TibetEvolutionMap.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8e/TibetEvolutionMap.jpg/960px-TibetEvolutionMap.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:TibetEvolutionMap.jpg",
+        "caption": "Generalized paleogeographic evolution of the Tibetan Plateau. Only tectonic blocks of interest, i.e. Lhasa block representing the S. Tibet (in yellow) and the simplified N. Tibet block (in blue) are shown. The inferred age in this model is not necessarily consistent with the timing of collisional onset as discussed in above sections. Modified after Royden et al. (2008)",
+        "alt": "",
+        "description": "Modified after Royden, Burchfiel & van der Hilst, 2008.",
+        "date": "2019-11-23 15:41:25",
+        "section": "Common consensus",
+        "position": 9,
+        "provenance": {
+          "credit": "Hkgeo4869",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:TibetEvolutionMap.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Paleogeography_of_the_India%E2%80%93Asia_collision_system",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381711714",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:BurbankRiverModel.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a0/BurbankRiverModel.jpg/960px-BurbankRiverModel.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:BurbankRiverModel.jpg",
+        "caption": "Image illustrating how tectonic driven and erosional driven uplift results in different drainage patterns dominating the area. Modified after Burbank, 1992.",
+        "alt": "",
+        "description": "Rivers configuration and uplifting style. Modified after Burbank, 1999.",
+        "date": "2019-11-24 06:03:55",
+        "section": "Drainage pattern responding to tectonic processes",
+        "position": 10,
+        "provenance": {
+          "credit": "Hkgeo4869",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:BurbankRiverModel.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Paleogeography_of_the_India%E2%80%93Asia_collision_system",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381711714",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:BurbankRiverMap.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ab/BurbankRiverMap.jpg/960px-BurbankRiverMap.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:BurbankRiverMap.jpg",
+        "caption": "Evolution of major drainage systems of the Indian-Asian collision zone, modified after Brookfield (1998). Base map modified after Royden et al. (2008), showing the change in continental block configuration through time.",
+        "alt": "",
+        "description": "Modified after Brookfield 1998 and Royden, Burchfiel & van der Hilst, 2008.",
+        "date": "2019-11-23 15:41:25",
+        "section": "Evolution of major river systems and their implications",
+        "position": 11,
+        "provenance": {
+          "credit": "Hkgeo4869",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:BurbankRiverMap.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Paleogeography_of_the_India%E2%80%93Asia_collision_system",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381711714",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:MonsoonHeatSource.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bd/MonsoonHeatSource.jpg/960px-MonsoonHeatSource.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:MonsoonHeatSource.jpg",
+        "caption": "Climatic heat sources and heat sinks for the South Asian summer and winter monsoons.",
+        "alt": "",
+        "description": "Map of climatic heat sources and heat sinks for Asian summer and winter monsoons.",
+        "date": "2019-12-19 16:10:00",
+        "section": "South Asian monsoon system and the debate",
+        "position": 12,
+        "provenance": {
+          "credit": "Encyclopædia Britannica, Inc.",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:MonsoonHeatSource.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Paleogeography_of_the_India%E2%80%93Asia_collision_system",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381711714",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:The South Asian Monsoon.gif"
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Kinematic models.png"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:Slab detachment.png",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d9/Slab_detachment.png/960px-Slab_detachment.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Slab detachment.png",
+        "caption": "Schematic diagram illustrating the process of slab break-off.",
+        "alt": "",
+        "description": "Schematic diagram of the process of w:slab detachment (break-off) derived from many published diagrams. Abbreviations: OC=oceanic crust, OLM=oceanic lithospheric mantle, CC=continental crust, CLM=continental lithospheric mantle.",
+        "date": "2018-03-10",
+        "section": "Slab dynamics",
+        "position": 15,
+        "provenance": {
+          "credit": "Mikenorton",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Slab_detachment.png",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Paleogeography_of_the_India%E2%80%93Asia_collision_system",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381711714",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:Duplex1.png",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cc/Duplex1.png/960px-Duplex1.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Duplex1.png",
+        "caption": "Schematic explanation of duplexing.",
+        "alt": "",
+        "description": "Diagram showing progressive formation of a thrust duplex",
+        "date": "2009-04-09",
+        "section": "Slab dynamics",
+        "position": 16,
+        "provenance": {
+          "credit": "Mikenorton",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Duplex1.png",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Paleogeography_of_the_India%E2%80%93Asia_collision_system",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381711714",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:Misc pollen.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a4/Misc_pollen.jpg/960px-Misc_pollen.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Misc pollen.jpg",
+        "caption": "Scanning electron microscope image (500× magnification) of pollen grains from a variety of common plants.",
+        "alt": "",
+        "description": "Pollen from a variety of common plants: sunflower (Helianthus annuus, small spiky sphericals, colorized pink), morning glory (Ipomoea purpurea, big sphericals with hexagonal cavities, colorized mint green), hollyhock (Sildalcea malviflora, big spiky sphericals, colorized yellow), lily (Lilium auratum, bean shaped, colorized dark green), primrose (Oenothera fruticosa, tripod shaped, colorized red) and castor bean (Ricinus communis, small smooth sphericals, colorized light green). The image is magnified some x500, so the bean shaped grain in the ",
+        "date": "2004-12-09 02:46:10",
+        "section": "Climatic proxies",
+        "position": 17,
+        "provenance": {
+          "credit": "Dartmouth College Electron Microscope Facility",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Misc_pollen.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Paleogeography_of_the_India%E2%80%93Asia_collision_system",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381711714",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:Cross section of maize, a C4 plant..jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4c/Cross_section_of_maize%2C_a_C4_plant..jpg/960px-Cross_section_of_maize%2C_a_C4_plant..jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Cross section of maize, a C4 plant..jpg",
+        "caption": "Cross section of a maize leaf, a C4 plant. Kranz anatomy (rings of cells) shown. Drawing based on microscopic images courtesy of Cambridge University Plant Sciences Department.",
+        "alt": "",
+        "description": "Cross section of a C4 plant. Specifically of a maize leaf. Vascular bundles shown. Drawing based on microscopic images courtesy of Cambridge University Plant Sciences Department.",
+        "date": "2013-09-13 12:14:29",
+        "section": "Climatic proxies",
+        "position": 18,
+        "provenance": {
+          "credit": "Ninghui Shi",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Cross_section_of_maize,_a_C4_plant..jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Paleogeography_of_the_India%E2%80%93Asia_collision_system",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381711714",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Benthic foraminifera.jpg"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "749e16962ece9bc6e900afe73c077415c799248b7a62b6ee5a89ffe8a37c1bdc",
+      "heading": "Lead",
+      "excerpt": "The paleogeography of the India–Asia collision system is the reconstructed geological and geomorphological evolution within the collision zo",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381711714"
+    },
+    {
+      "id": "P2",
+      "hash": "e5c2ead9ca760b5852bee741b2b979156a4a5c67d62f5c0d5173eeeecde175d0",
+      "heading": "Definition",
+      "excerpt": "The onset of continental collision is determined by any point along the plate boundary where the oceanic lithosphere is completely subducted",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381711714"
+    },
+    {
+      "id": "P3",
+      "hash": "d349f266259ca482de696d5f90d385953197d272098d779279725059a2ba2c9c",
+      "heading": "Definition",
+      "excerpt": "The onset of the India–Asia collision has been poorly constrained from Late Cretaceous to Oligo-Miocene due to different interpretations of ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381711714"
+    },
+    {
+      "id": "P4",
+      "hash": "7352ed1cbbbd651d9bf270b28e2902f6b0a3c693cd2ad0d1dac0d3da000b20d0",
+      "heading": "Paleogene arc-continent collision hypothesis",
+      "excerpt": "The Paleogene arc-continent collision suggests that the Indian continent experienced a two-stage collision. The first stage involves the col",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381711714"
+    },
+    {
+      "id": "P5",
+      "hash": "a7a3d541f104b3d1a966476ad4597bd899f526559788d737adc7a1b9500cd432",
+      "heading": "Paleogene arc-continent collision hypothesis",
+      "excerpt": "This hypothesis is mainly based on the observation of lithostratigraphic patterns within and around the Yarlung-Zangbo suture zone (YZSZ). T",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381711714"
+    },
+    {
+      "id": "P6",
+      "hash": "3f7a7be980c2a598441009b6577fd0a99e11169e9b26b0a12a1503a1d8618d16",
+      "heading": "Greater India Basin hypothesis",
+      "excerpt": "The Greater India Basin hypothesis suggests that there was a two-stage collision between India and Asia continent. The first stage occurred ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381711714"
+    },
+    {
+      "id": "P7",
+      "hash": "f50dcd6e209e79027ac97033b987719e1b3a0537bc22e458600a60d426389fd0",
+      "heading": "Synchronous collision hypothesis",
+      "excerpt": "The synchronous collision hypothesis limits the age of collision onset at 59 Ma by dating the oldest turbidites formed on the passive margin",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381711714"
+    },
+    {
+      "id": "P8",
+      "hash": "a9305bb176bc12bae6af89948c26a2f9a1bae65070c82866679f33c793c7d8dd",
+      "heading": "Kshiroda Plate",
+      "excerpt": "As per geological research conducted in 2015, there possibly existed two subduction zones between the Indian and Eurasian plates. A hypothet",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381711714"
+    },
+    {
+      "id": "P9",
+      "hash": "e21ff51daccfa20a29d655f55c5c0a5dd8863ae86290700da0b9806703f48072",
+      "heading": "Evolution of Tibet's geomorphology",
+      "excerpt": "When and how did the Tibetan Plateau reach its present-day elevation has long been widely debated. Tibet has an average elevation of 5 km, w",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381711714"
+    },
+    {
+      "id": "P10",
+      "hash": "7a34f46f025faf67a31795b48b70d3f56603b07d96b3459e152e599179ad08ee",
+      "heading": "Miocene uplift model",
+      "excerpt": "The Miocene model suggested that the Indian-Asian collision is the major cause for Tibet's uplift, which is likely to be wrong due to reason",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381711714"
+    },
+    {
+      "id": "P11",
+      "hash": "4629a7d5c52933dca02fdfdbc298cb88692fcaf7f4f1f5a394027aaa497341b7",
+      "heading": "Mesozoic uplift model",
+      "excerpt": "The Mesozoic model suggested that southern Tibet experienced intense crustal shortening and thickening as early as in Jurassic to Cretaceous",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381711714"
+    },
+    {
+      "id": "P12",
+      "hash": "c89d7c0172879467c002ce46492d532d3e0099c6533eb8039b8d7a0c0e809c98",
+      "heading": "Common consensus",
+      "excerpt": "Although the actual timing of occurrence of various geological events involving the Tibetan Plateau remains widely debated, there is a commo",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381711714"
+    },
+    {
+      "id": "P13",
+      "hash": "9b55b804aa45f12315db69cea5a6a276fc531de1124b3d6c9de9d032e2c66d2d",
+      "heading": "Drainage pattern responding to tectonic processes",
+      "excerpt": "Rivers are features formed by water eroding into the land surface. Drainage patterns provide clues not only to hydrological conditions, but ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381711714"
+    },
+    {
+      "id": "P14",
+      "hash": "0ec64cf7cf6828e090e4e09316d743022a950c80fe1883bddef30f1ec563d0b3",
+      "heading": "Evolution of major river systems and their implications",
+      "excerpt": "Brookfield (1998) reconstructed the evolution of major river systems of the Indian-Asian collision zone based on tectonic history of the are",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381711714"
+    },
+    {
+      "id": "P15",
+      "hash": "dfbf8d09e69ebfaa289b2c2022db0bb3de2e6c1a06ea0b6bbad6a3bcc80e20ca",
+      "heading": "South Asian monsoon system and the debate",
+      "excerpt": "The South Asian monsoon system primarily affects the continents of South Asia and their surrounding water bodies. In this particular system,",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381711714"
+    },
+    {
+      "id": "P16",
+      "hash": "7dd367686e2a2231a21c11840438ddab424f09d458fa4892fd1bc98ba3de43ce",
+      "heading": "The channel flow model",
+      "excerpt": "As mentioned above, a lot has been done on examining how the uplift of the Himalayas and Tibetan Plateau has triggered the onset of the Sout",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381711714"
+    }
+  ],
+  "updatedAt": "2026-10-24T10:18:07.412Z"
 }
