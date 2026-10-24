@@ -2,10 +2,10 @@
   "pageId": 37600900,
   "title": "Anti-abortion movements",
   "topic": "Society",
-  "status": "DRAFTED",
+  "status": "VALIDATED",
   "revisionId": 1379750089,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379750089",
-  "reason": "draft durably saved before validation",
+  "reason": "local factual, style, length, structure and source audit passed",
   "rights": [
     {
       "status": "REVIEW",
@@ -260,7 +260,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379750089"
     }
   ],
-  "updatedAt": "2026-10-24T08:59:43.218Z",
+  "updatedAt": "2026-10-24T09:00:01.334Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -395,5 +395,8 @@
     "output": 442,
     "total": 3287
   },
-  "validation": null
+  "validation": {
+    "accepted": true,
+    "errors": []
+  }
 }
