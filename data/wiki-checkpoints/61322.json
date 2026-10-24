@@ -256,27 +256,27 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1370887710"
     }
   ],
-  "updatedAt": "2026-10-24T06:01:24.848Z",
+  "updatedAt": "2026-10-24T06:01:42.880Z",
   "draft": {
     "variants": {
       "A1-A2": {
         "headline": "The Life of Alcibiades",
         "pages": [
           {
-            "text": "Alcibiades was an Athenian statesman and general. He lived during the Peloponnesian War. During the war, he changed his political allegiance several times between different nations.",
+            "text": "Alcibiades was an important Athenian statesman and general. He lived during the Peloponnesian War. Throughout the long war, he changed his political allegiance several times between different nations. He served as a military commander, politician, and strategic advisor before falling from his high position.",
             "evidenceIds": [
               "P1",
               "P2"
             ]
           },
           {
-            "text": "He was born in Athens. His father died when he was young, and Pericles became his guardian. His mother came from a very powerful and well-known family.",
+            "text": "He was born in the city of Athens. His father died when he was a young child. After his father died, the famous leader Pericles became his guardian. His mother came from a very powerful, rich, and well-known Athenian family.",
             "evidenceIds": [
               "P6"
             ]
           },
           {
-            "text": "Alcibiades supported the Sicilian Expedition. After his enemies brought charges of sacrilege against him, he fled to Sparta. There, he served as a strategic advisor against Athens.",
+            "text": "Alcibiades strongly supported the Sicilian Expedition to expand the empire. After his political enemies brought charges of sacrilege against him, he fled to Sparta. There, he served as a strategic advisor against Athens and helped plan campaigns.",
             "evidenceIds": [
               "P2",
               "P8",
@@ -292,7 +292,7 @@
             ]
           },
           {
-            "text": "Enemies eventually succeeded in exiling him a second time. He took refuge in Persian territory and was eventually assassinated, reportedly at the instigation of Lysander of Sparta.",
+            "text": "Enemies eventually succeeded in exiling him a second time from Athens. He took safe refuge in Persian territory. He was finally assassinated, reportedly at the direct instigation of Lysander of the Spartans.",
             "evidenceIds": [
               "P1",
               "P2",
@@ -305,13 +305,14 @@
         "headline": "The Changing Loyalties of Alcibiades",
         "pages": [
           {
-            "text": "Alcibiades was an Athenian statesman and general who played a major role in the second half of the Peloponnesian War as a strategic advisor and military commander.",
+            "text": "Alcibiades was an Athenian statesman and general who played a major role in the second half of the Peloponnesian War as a strategic advisor, military commander, and politician, although he eventually fell from his prominent position.",
             "evidenceIds": [
-              "P1"
+              "P1",
+              "P2"
             ]
           },
           {
-            "text": "Born in Athens, he came from a family with old connections to the Spartan aristocracy. After the death of his father, Pericles and Ariphron became his guardians.",
+            "text": "Born in Athens, he came from a family with old connections to the Spartan aristocracy. His mother belonged to the powerful Alcmaeonid family. After the death of his father Cleinias, Pericles and Ariphron became his official guardians.",
             "evidenceIds": [
               "P6"
             ]
@@ -325,7 +326,7 @@
             ]
           },
           {
-            "text": "When he made powerful enemies in Sparta, he defected to Persia. He advised the satrap Tissaphernes to weaken both Athens and Sparta by prolonging the conflict.",
+            "text": "When he made powerful enemies in Sparta, he defected to the Persian Empire. He advised the satrap Tissaphernes to weaken both Athens and Sparta by prolonging the conflict so Persia could conquer the region later.",
             "evidenceIds": [
               "P2",
               "P10"
@@ -340,7 +341,7 @@
             ]
           },
           {
-            "text": "He took refuge in Persian territory and was eventually assassinated, reportedly at the instigation of Lysander of Sparta, amidst conflicting accounts regarding the circumstances.",
+            "text": "He took refuge in Persian territory and was eventually assassinated. Much about his death is uncertain because there are conflicting accounts, but Plutarch notes that Spartans and specifically Lysander were responsible.",
             "evidenceIds": [
               "P2",
               "P5"
@@ -352,20 +353,20 @@
         "headline": "The Political Career of Alcibiades",
         "pages": [
           {
-            "text": "Alcibiades operated as an influential Athenian statesman and general during the latter half of the Peloponnesian War, serving in multiple strategic roles before falling from prominence.",
+            "text": "Alcibiades operated as an influential Athenian statesman and general during the latter half of the Peloponnesian War, serving in multiple strategic roles before ultimately falling from prominence.",
             "evidenceIds": [
               "P1",
               "P2"
             ]
           },
           {
-            "text": "Born to Cleinias and Deinomache, he belonged to the powerful Alcmaeonid family and retained historical ties to the Spartan aristocracy through a relationship of xenia.",
+            "text": "Born to Cleinias and Deinomache, he belonged to the powerful Alcmaeonid family and retained historical ties to the Spartan aristocracy through a traditional relationship of xenia.",
             "evidenceIds": [
               "P6"
             ]
           },
           {
-            "text": "After championing the Sicilian Expedition, he evaded charges of sacrilege by fleeing to Sparta, where he actively proposed or supervised several major campaigns against his native city.",
+            "text": "After championing the Sicilian Expedition, he evaded charges of sacrilege by fleeing to Sparta, where he actively proposed or supervised several major military campaigns against his native city.",
             "evidenceIds": [
               "P2",
               "P8",
@@ -380,7 +381,7 @@
             ]
           },
           {
-            "text": "Through political maneuvering and negotiations involving Athenian leaders, he secured his recall and contributed to a string of crucial victories before facing a second exile.",
+            "text": "Through political maneuvering and negotiations involving Athenian leaders, he secured his recall from exile and contributed to a string of crucial victories before facing a second exile.",
             "evidenceIds": [
               "P2",
               "P3",
@@ -399,11 +400,11 @@
       }
     }
   },
-  "repairAttempts": 1,
+  "repairAttempts": 2,
   "lastUsage": {
-    "input": 3707,
-    "output": 1314,
-    "total": 5021
+    "input": 3536,
+    "output": 1108,
+    "total": 4644
   },
   "validation": null
 }
