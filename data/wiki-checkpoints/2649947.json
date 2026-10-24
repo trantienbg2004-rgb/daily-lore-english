@@ -2,10 +2,10 @@
   "pageId": 2649947,
   "title": "Economic analysis of climate change",
   "topic": "Environment",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1369336527,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369336527",
-  "reason": "10 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -431,5 +431,146 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369336527"
     }
   ],
-  "updatedAt": "2026-10-24T06:06:32.123Z"
+  "updatedAt": "2026-10-24T06:06:48.332Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "Economic Analysis of Climate Change",
+        "pages": [
+          {
+            "text": "Economic analysis of climate change uses special tools and models to calculate damages. It helps people understand the costs and scale of changes happening around the world. These models also give guidance on the best policies for stopping or slowing down climate change.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "When global temperatures go up, climate damages also increase. Many effects are linked to normal market buying and selling. For example, heat and droughts can drive up the cost of food and push up overall inflation across the entire economy every day.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "Some impacts are harder to measure because they are not traded on markets. These non-market impacts include harm to human health, natural biomes, and important ecosystem services. They are much harder to translate directly into standard economic costs.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "Economists study the costs of cutting emissions and adapting to new conditions. Early action helps keep overall costs low. Keeping warming under two degrees brings total benefits that exceed the costs. Developing countries face high yearly adaptation costs.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "Different models help experts study weather and economic activity. Some statistical models look at historical weather data. Other structural models examine whole markets, while process models simulate physical and biological changes under future climate scenarios.",
+            "evidenceIds": [
+              "P6",
+              "P10"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "Evaluating Climate Economics",
+        "pages": [
+          {
+            "text": "Economic analysis of climate change applies diverse models to evaluate the scale and distribution of environmental damages. These frameworks provide essential guidance for designing effective policies regarding climate mitigation and adaptation. Integrated assessment models link societal and economic features directly with the atmosphere and biosphere.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "As global surface temperatures rise, climate-related damages generally escalate. Many impacts connect directly to market transactions, influencing key metrics like GDP and inflation. For instance, heatwaves and droughts frequently drive up food prices and contribute to broader inflationary pressures across national economies.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "Certain consequences remain difficult to translate into monetary terms. These non-market impacts encompass damage to human health, natural biomes, and delicate ecosystem services. Analysts also study potential benefits in specific sectors or low-warming regions, such as lower energy demand or improved crop yields.",
+            "evidenceIds": [
+              "P2",
+              "P5"
+            ]
+          },
+          {
+            "text": "Mitigation costs vary depending on the timing and methods of emission cuts, though early action minimizes expenses. Globally, the benefits of keeping warming under two degrees exceed the costs. Developing countries face substantial adaptation costs estimated in the billions annually up to two thousand thirty.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "Researchers employ various modelling approaches, including econometric, structural, and process-based models. Computable general equilibrium models use actual economic data to estimate how economies react to policy changes. Meanwhile, standard cost-benefit analyses convert negative and positive impacts into monetary estimates to guide decision-makers.",
+            "evidenceIds": [
+              "P6",
+              "P8",
+              "P11"
+            ]
+          },
+          {
+            "text": "Total economic impacts escalate significantly under higher temperature scenarios. Studies suggest that previous economic damages may have been underestimated, carrying severe tail-risk probabilities. Furthermore, developing nations face disproportionate risks of extreme poverty and severe GDP losses comparable to historical recessions.",
+            "evidenceIds": [
+              "P19",
+              "P20",
+              "P21"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "Economic Analysis of Climate Change",
+        "pages": [
+          {
+            "text": "Economic analysis of climate change leverages specialized tools and models to quantify the scale and distribution of climate-induced damages. By linking societal and economic structures with the atmosphere and biosphere, integrated assessment models facilitate cost-benefit evaluations that make explicit trade-offs between mitigation, adaptation, and residual climate impacts.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Empirical observations indicate that climate damages escalate alongside global surface temperature increments. While market-mediated effects transmit directly into macroeconomic metrics like GDP and inflation—exemplified by heat-driven food inflation—non-market damages involving human health and ecosystem services present substantial valuation challenges.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "Mitigation expenditure remains contingent upon the temporal trajectory and stringency of emission reductions. Global analyses indicate that the aggregate benefits of restricting warming below two degrees outweigh mitigation costs. Nevertheless, developing regions face substantial projected adaptation expenditures.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "Methodological frameworks span econometric models evaluating empirical weather sensitivities, process-based integrated assessment models simulating physical pathways, and computable general equilibrium models reflecting neoclassical optimization. Standard cost-benefit frameworks and cost-effectiveness analyses provide complementary evaluative structures for policy selection.",
+            "evidenceIds": [
+              "P6",
+              "P8",
+              "P11",
+              "P13"
+            ]
+          },
+          {
+            "text": "In the presence of deep uncertainty, analysts utilize portfolio theory, sequential decision-making, and iterative risk management frameworks to diversify strategic options across divergent emission scenarios. Damage functions mathematically formalize the complex relationships between hazard intensity, system vulnerability, and economic loss.",
+            "evidenceIds": [
+              "P12",
+              "P16",
+              "P17"
+            ]
+          },
+          {
+            "text": "Macroeconomic projections demonstrate that severe temperature trajectories substantially depress global GDP. Recent literature highlights potential underestimations of tail-risk damages, with developing economies bearing disproportionate structural losses that exacerbate global and domestic income inequality.",
+            "evidenceIds": [
+              "P19",
+              "P20",
+              "P21"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2674,
+    "output": 1376,
+    "total": 4050
+  },
+  "validation": null
 }
