@@ -9770,10 +9770,10 @@
       "checkedAt": "2026-10-21T13:31:24.862Z"
     },
     "24854765": {
-      "status": "EVIDENCE_READY",
-      "reason": "1 rights-verified embedded images",
+      "status": "RETRY_LATER",
+      "reason": "Gemini token usage unavailable",
       "revisionId": 1375818800,
-      "checkedAt": "2026-10-24T10:18:25.450Z"
+      "checkedAt": "2026-10-24T10:18:31.129Z"
     },
     "24872654": {
       "status": "RETRY_LATER",
@@ -11930,7 +11930,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-24T10:18:25.451Z",
+  "updatedAt": "2026-10-24T10:18:31.130Z",
   "dailyUsage": {
     "day": "2026-10-24",
     "calls": 117,
