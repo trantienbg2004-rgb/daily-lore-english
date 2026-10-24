@@ -2,10 +2,10 @@
   "pageId": 13831,
   "title": "Human rights",
   "topic": "Society",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1379988533,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379988533",
-  "reason": "6 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -304,5 +304,129 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379988533"
     }
   ],
-  "updatedAt": "2026-10-24T03:35:47.308Z"
+  "updatedAt": "2026-10-24T03:36:03.861Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "Understanding Human Rights",
+        "pages": [
+          {
+            "text": "Human rights are moral rules that guide how people should act. They belong to every person simply for being human. These rights include freedom of speech, the right to life, and protection from being made a slave. They are often protected by laws.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "The modern idea of human rights grew very strong after World War Two. In 1948, the United Nations adopted the Universal Declaration of Human Rights. This important paper set a global standard for human dignity, freedom, and justice everywhere.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "Even though many people accept these universal rights, debates still happen. Some critics ask how they should be used in different cultures. Cultural relativism suggests that individual rights might conflict with traditional practices in some societies.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "Human rights remain very important in international relations today. Organizations like the United Nations and independent groups work hard to monitor and enforce these standards. They collect evidence of abuses and try to apply pressure.",
+            "evidenceIds": [
+              "P4",
+              "P13"
+            ]
+          },
+          {
+            "text": "In 1966, the United Nations adopted two major covenants to make rights binding on states. Later, in 2005, the UN Human Rights Council was created to investigate alleged violations. Independent experts help report on these difficult situations.",
+            "evidenceIds": [
+              "P9",
+              "P16"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "The Evolution of Global Human Rights",
+        "pages": [
+          {
+            "text": "Human rights are foundational moral principles establishing standards of human behavior that are frequently protected by national and international laws. Considered inherent and inalienable, they belong to every individual inherently, encompassing vital freedoms like speech, education, and protection against enslavement.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Although early ideas preceded modernity, the contemporary human rights framework gained immense prominence following the atrocities of World War II. In 1948, the United Nations General Assembly adopted the Universal Declaration of Human Rights, establishing a global standard for human dignity and justice that inspired numerous subsequent treaties.",
+            "evidenceIds": [
+              "P2",
+              "P5"
+            ]
+          },
+          {
+            "text": "Despite widespread acceptance, ongoing debates question how these rights should be implemented across various cultural contexts. Critics often draw upon cultural relativism, arguing that individual rights may conflict with traditional practices in societies that prioritize a collective identity.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "International relations continue to place human rights at their core, backed by bodies such as the United Nations and independent non-governmental organizations like Amnesty International. These groups actively monitor abuses, document evidence, and apply pressure to uphold international standards.",
+            "evidenceIds": [
+              "P4",
+              "P13"
+            ]
+          },
+          {
+            "text": "In 1966, two major covenants were adopted to render the Universal Declaration legally binding on ratifying states. Furthermore, the UN Human Rights Council, established in 2005, retains a mandate to investigate violations and utilize independent experts to report on urgent situations globally.",
+            "evidenceIds": [
+              "P9",
+              "P16"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "Global Human Rights Frameworks",
+        "pages": [
+          {
+            "text": "Human rights constitute inherent moral principles establishing universal standards of behavior, frequently safeguarded by domestic and international jurisprudence. These inalienable entitlements pertain to every individual by virtue of their humanity, encompassing civil, political, economic, social, and cultural domains.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "While antecedent concepts existed historically, the contemporary human rights paradigm crystallized in the aftermath of World War II and the Holocaust. This culminated in the 1948 adoption of the Universal Declaration of Human Rights by the United Nations General Assembly, instituting an enduring global benchmark.",
+            "evidenceIds": [
+              "P2",
+              "P5"
+            ]
+          },
+          {
+            "text": "Notwithstanding broad acceptance, persistent debates interrogate the prioritization, implementation, and cross-cultural applicability of these norms. Perspectives such as cultural relativism contend that individual rights paradigms may conflict with communal societal structures and traditional practices.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "Human rights remain central to international relations, supported by multilateral institutions and non-governmental organizations. Entities such as Human Rights Watch and Amnesty International systematically document abuses and exert pressure to ensure adherence to established norms.",
+            "evidenceIds": [
+              "P4",
+              "P13"
+            ]
+          },
+          {
+            "text": "The normative framework expanded significantly with the 1966 adoption of the International Covenants, which rendered UDHR provisions legally binding upon ratifying states. Institutional enforcement is further mediated by bodies like the UN Human Rights Council, which utilizes independent experts to investigate violations.",
+            "evidenceIds": [
+              "P9",
+              "P16"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2745,
+    "output": 1305,
+    "total": 4050
+  },
+  "validation": null
 }
