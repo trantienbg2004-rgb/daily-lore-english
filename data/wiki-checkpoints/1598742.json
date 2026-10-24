@@ -2,10 +2,10 @@
   "pageId": 1598742,
   "title": "All England Lawn Tennis and Croquet Club",
   "topic": "Sports",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1371448397,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371448397",
-  "reason": "5 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REJECTED",
@@ -254,5 +254,144 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371448397"
     }
   ],
-  "updatedAt": "2026-10-24T08:55:38.818Z"
+  "updatedAt": "2026-10-24T08:55:53.739Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "The Wimbledon Tennis Club",
+        "pages": [
+          {
+            "text": "The All England Lawn Tennis and Croquet Club is a private club in London. It is famous for the Wimbledon Championships. This is a very old tennis tournament played on grass. It started in the year 1877 and takes place every summer.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "The club was started in 1868 by six men. At first, they only played a game called croquet. A few years later, lawn tennis became popular. The club added tennis courts, and tennis soon became the main sport played there.",
+            "evidenceIds": [
+              "P4",
+              "P5"
+            ]
+          },
+          {
+            "text": "The club has many courts for players. There are grass courts, clay courts, and indoor courts. The grass courts are very important for the tournament. Workers take special care of the grass so it is always ready for the players.",
+            "evidenceIds": [
+              "P7"
+            ]
+          },
+          {
+            "text": "Over the years, the club had to close sometimes. It did not hold the tournament during the First and Second World Wars. It also had to cancel the event in 2020 because of the COVID-19 pandemic.",
+            "evidenceIds": [
+              "P1",
+              "P16"
+            ]
+          },
+          {
+            "text": "Today, the club is known all around the world. It is run by members and a committee. People love to watch the famous grass court matches every year during the summer months in London.",
+            "evidenceIds": [
+              "P1",
+              "P2"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "History of the All England Club",
+        "pages": [
+          {
+            "text": "Based in Wimbledon, London, the All England Lawn Tennis and Croquet Club is a private members club. It is best known for hosting the Wimbledon Championships, which is the only Grand Slam tennis tournament still played on grass courts today.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "The club was founded in July 1868 during a popular croquet craze. Originally called the All England Croquet Club, it was set up by six gentlemen. Lawn tennis was introduced to the grounds a few years later in 1875.",
+            "evidenceIds": [
+              "P4"
+            ]
+          },
+          {
+            "text": "Tennis quickly grew in popularity and soon became the main activity of the club. The first gentlemen's singles championship took place in July 1877. Croquet was dropped from the name for a period before being restored for sentimental reasons.",
+            "evidenceIds": [
+              "P5"
+            ]
+          },
+          {
+            "text": "The club moved to its current site in Church Road in 1922 because of the growing popularity of tennis. Centre Court was built that same year and has since been improved with new facilities, including a sliding roof added in 2009.",
+            "evidenceIds": [
+              "P10",
+              "P11"
+            ]
+          },
+          {
+            "text": "Throughout its history, the championships have faced several suspensions. The event was not held during World War I and World War II. In June 2020, the tournament was also cancelled for the first time since the war due to the COVID-19 pandemic.",
+            "evidenceIds": [
+              "P1",
+              "P16"
+            ]
+          },
+          {
+            "text": "Today, the club maintains numerous courts, including eighteen tournament grass courts and practice areas at Aorangi Park. It continues to manage the historic grounds while keeping up with the modern demands of professional international tennis tournaments.",
+            "evidenceIds": [
+              "P7",
+              "P12"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "Evolution of the All England Club",
+        "pages": [
+          {
+            "text": "Situated in the Wimbledon district of London, the All England Lawn Tennis and Croquet Club operates as a private institution. Its primary renown stems from hosting the Wimbledon Championships, distinguished as the sole remaining Grand Slam event contested on natural grass.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Established in July 1868 amid a regional croquet surge, the organization initially functioned under the name of the All England Croquet Club. Following the introduction of lawn tennis in 1875, the institutional focus shifted rapidly toward the emerging racket sport.",
+            "evidenceIds": [
+              "P4",
+              "P5"
+            ]
+          },
+          {
+            "text": "By 1882, croquet was removed from the official title as tennis established dominance, though the older moniker was later reinstated for sentimental reasons. The inaugural gentlemen's singles championship was successfully conducted in July 1877.",
+            "evidenceIds": [
+              "P5"
+            ]
+          },
+          {
+            "text": "Growing public interest eventually necessitated a relocation in 1922 to the current Church Road facility. This new site accommodated the newly constructed Centre Court, which has subsequently undergone substantial architectural modifications, such as the 2009 installation of a retractable roof.",
+            "evidenceIds": [
+              "P10",
+              "P11"
+            ]
+          },
+          {
+            "text": "Operational continuity has occasionally been disrupted by external crises. The championships experienced total suspensions throughout the durations of both World Wars, and more recently, the 2020 tournament was cancelled due to the global COVID-19 pandemic.",
+            "evidenceIds": [
+              "P1",
+              "P16"
+            ]
+          },
+          {
+            "text": "Contemporary facilities encompass numerous specialized surfaces, featuring multiple tournament grass courts alongside practice areas at Aorangi Park. The administration separates club membership management from the commercial operations of the annual championships.",
+            "evidenceIds": [
+              "P7",
+              "P12",
+              "P15"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2859,
+    "output": 1480,
+    "total": 4339
+  },
+  "validation": null
 }
