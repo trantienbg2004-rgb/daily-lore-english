@@ -2,10 +2,10 @@
   "pageId": 230539,
   "title": "Camel train",
   "topic": "Economy",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1378743903,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378743903",
-  "reason": "5 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -241,5 +241,127 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378743903"
     }
   ],
-  "updatedAt": "2026-10-24T07:41:38.466Z"
+  "updatedAt": "2026-10-24T07:41:56.225Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "Camel Trains and Desert Trade",
+        "pages": [
+          {
+            "text": "A camel train is a group of camels carrying passengers and goods across deserts. For centuries, camels could walk through harsh places where other travel was very hard. They were used for trade and communication in parts of Africa, Asia, and the Middle East.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "The greatest use of camel trains happens in North and West Africa. Groups like the Tuareg and Toubou travel around the Sahara Desert and the Sahel. These caravans go as far south as Nigeria and Cameroon, and north to Kenya.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "Camel trains were also very important in Asia, including the Silk Road. In China, camel caravans connected eastern regions with Mongolia and Xinjiang. Owen Lattimore travelled with a camel caravan in China in 1926 to study the trade routes.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "In Australia, a famous camel train service connected a railhead in South Australia to Alice Springs. The service ended in 1929 when a new railway line was built. The route was originally made by Afghan cameleers.",
+            "evidenceIds": [
+              "P4"
+            ]
+          },
+          {
+            "text": "The United States Army tried using camels in Texas in 1856. The experiment failed because the animals were stubborn and frightened horses. Many camels were sold or escaped into the desert, where people saw them for many years.",
+            "evidenceIds": [
+              "P5"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "History and Life of Camel Caravans",
+        "pages": [
+          {
+            "text": "A camel train, also known as a caravan, is a series of camels that carry passengers and goods on regular routes. Because camels could withstand harsh desert conditions, they were ideal for communication and trade in North Africa and the Arabian Peninsula for centuries.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Today, the greatest use of camel trains takes place between North and West Africa. Groups such as the Tuareg, Shuwa, and Hassaniyya conduct trade in and around the Sahara Desert and Sahel, traveling as far south as Nigeria and Cameroon.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "Camel trains were also used extensively in trans-Asian trade, including the Silk Road. As late as the early twentieth century, caravans connected eastern China with Mongolian centers and Xinjiang. Owen Lattimore documented these northern routes in 1926.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "In the United States, the Army attempted a camel transport experiment in Texas in 1856. The project ultimately failed because the animals were aggressive and frightened horses. Some camels were sold, while others escaped to live as feral animals.",
+            "evidenceIds": [
+              "P5"
+            ]
+          },
+          {
+            "text": "Caravans were organized into files of camels led by camel-pullers who were experts in animal health and care. The journey required careful logistical planning, including food, fodder, and shelter, as trips through harsh regions could take many months.",
+            "evidenceIds": [
+              "P7",
+              "P8",
+              "P9",
+              "P11"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "The Organization and Routes of Camel Trains",
+        "pages": [
+          {
+            "text": "A camel train or caravan functions as a systematic series of camels transporting goods and passengers across challenging terrains. Historically valued for their resilience in harsh environments, camel trains facilitated vital communication and trade networks primarily across North Africa and the Arabian Peninsula before being largely supplanted by motorized transport.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Extensive contemporary and historical documentation highlights the concentration of camel trains in North and West Africa, operated by groups including the Tuareg, Shuwa, and Toubou. These caravans traverse the Sahara and Sahel, reaching deep into central Nigeria, northern Cameroon, and northern Kenya.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "Trans-Asian trade routes, most notably the Silk Road, heavily relied on camel caravans. Into the early twentieth century, these networks connected eastern Chinese regions with Mongolian trade hubs and Xinjiang, a dynamic closely observed and recorded by researcher Owen Lattimore during his 1926 expedition.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "Operations in the United States were largely limited to a mid-nineteenth-century United States Army experiment initiated in Texas. Due to behavioral challenges such as stubbornness and aggressiveness toward horses, the initiative dissolved, leading to sales and escapes that established feral camel populations in the region.",
+            "evidenceIds": [
+              "P5"
+            ]
+          },
+          {
+            "text": "Caravan structures were complex, often managed by a definitive captain alongside experienced camel-pullers who maintained animal health and navigation. Journeys required substantial provisions, including specific camel fodder and careful management of loads, speeds, and rest periods across vast desert expanses.",
+            "evidenceIds": [
+              "P7",
+              "P8",
+              "P9",
+              "P11"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2775,
+    "output": 1235,
+    "total": 4010
+  },
+  "validation": null
 }
