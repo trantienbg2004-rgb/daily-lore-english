@@ -35,7 +35,7 @@ test('preserves dictionary order when examples have no context overlap', () => {
   assert.deepEqual(rankMeaningOptions(options, 'Scientists observed distant planets.', 'observed').map(item => item.definition), ['First sense.', 'Second sense.'])
 })
 
-test('returns only a meaning supported by words in the selected sentence', () => {
+test('returns one best contextual meaning based on the selected sentence', () => {
   const ranked = rankMeaningOptions([
     { definition: 'A financial institution.', example: 'She deposited money at the bank.' },
     { definition: 'The land beside a river.', example: 'They sat on the river bank.' },
@@ -43,10 +43,18 @@ test('returns only a meaning supported by words in the selected sentence', () =>
   assert.equal(selectContextualMeaning(ranked).definition, 'The land beside a river.')
 })
 
-test('does not guess a meaning when no dictionary sense matches the sentence', () => {
+test('matches plural story words to singular dictionary wording', () => {
+  const ranked = rankMeaningOptions([
+    { definition: 'A fungus that may cause infections.', example: 'Mould can grow on food.' },
+    { definition: 'A hollow form used to shape material.', example: 'Pour the mixture into the mould.' },
+  ], 'Ancient societies used moulds to treat infections.', 'mould')
+  assert.equal(selectContextualMeaning(ranked).definition, 'A fungus that may cause infections.')
+})
+
+test('uses the dictionary primary sense if its wording does not overlap the sentence', () => {
   const ranked = rankMeaningOptions([
     { definition: 'To form letters on a surface.', example: 'Write your name.' },
     { definition: 'A financial institution.', example: 'Deposit money.' },
   ], 'Scientists observed distant planets.', 'observed')
-  assert.equal(selectContextualMeaning(ranked), null)
+  assert.equal(selectContextualMeaning(ranked).definition, 'To form letters on a surface.')
 })
