@@ -2,10 +2,10 @@
   "pageId": 4607152,
   "title": "Climate change adaptation",
   "topic": "Environment",
-  "status": "DRAFTED",
+  "status": "VALIDATED",
   "revisionId": 1377821690,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377821690",
-  "reason": "draft durably saved before validation",
+  "reason": "local factual, style, length, structure and source audit passed",
   "rights": [
     {
       "status": "REVIEW",
@@ -419,7 +419,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377821690"
     }
   ],
-  "updatedAt": "2026-10-24T03:33:21.875Z",
+  "updatedAt": "2026-10-24T03:33:39.727Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -546,5 +546,8 @@
     "output": 1047,
     "total": 3601
   },
-  "validation": null
+  "validation": {
+    "accepted": true,
+    "errors": []
+  }
 }
