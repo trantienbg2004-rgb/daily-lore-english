@@ -2,10 +2,10 @@
   "pageId": 275454,
   "title": "BBC Radio 3",
   "topic": "Culture",
-  "status": "DRAFTED",
+  "status": "NEEDS_REVIEW",
   "revisionId": 1374224876,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374224876",
-  "reason": "draft durably saved before validation",
+  "reason": "editorial: C1-C2:page-3:unsupported-number-context-3",
   "rights": [
     {
       "status": "REVIEW",
@@ -447,7 +447,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374224876"
     }
   ],
-  "updatedAt": "2026-10-24T06:05:09.725Z",
+  "updatedAt": "2026-10-24T06:05:15.706Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -579,5 +579,10 @@
     "output": 143,
     "total": 2887
   },
-  "validation": null
+  "validation": {
+    "accepted": false,
+    "errors": [
+      "C1-C2:page-3:unsupported-number-context-3"
+    ]
+  }
 }

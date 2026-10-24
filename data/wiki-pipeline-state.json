@@ -7366,10 +7366,10 @@
       "checkedAt": "2026-10-24T04:07:54.695Z"
     },
     "275454": {
-      "status": "DRAFTED",
-      "reason": "draft durably saved before validation",
+      "status": "NEEDS_REVIEW",
+      "reason": "editorial: C1-C2:page-3:unsupported-number-context-3",
       "revisionId": 1374224876,
-      "checkedAt": "2026-10-24T06:05:09.724Z"
+      "checkedAt": "2026-10-24T06:05:15.706Z"
     },
     "276005": {
       "status": "EVIDENCE_READY",
@@ -11290,7 +11290,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-24T06:05:09.726Z",
+  "updatedAt": "2026-10-24T06:05:15.707Z",
   "dailyUsage": {
     "day": "2026-10-23",
     "calls": 255,
