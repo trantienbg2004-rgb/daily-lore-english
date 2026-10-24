@@ -102,18 +102,26 @@ export async function topUpWikiQueue({base,minPerTopic=8,maxTopics=3,now=new Dat
   !Number.isSafeInteger(maxTopics)||maxTopics<1||maxTopics>WIKI_TOPICS.length)throw Error('Unsafe Wiki discovery limits')
  const state=await readState(base),beforeLength=state.queue.length
  const cooldownMs=6*60*60*1000
+ const discoveryVersion=2
  const available=Object.fromEntries(WIKI_TOPICS.map(topic=>[topic,state.queue.filter(row=>
   row.topic===topic&&ACTIVE_QUEUE_STATUSES.has(state.outcomes[row.pageId]?.status||'PENDING')).length]))
  const low=WIKI_TOPICS.filter(topic=>available[topic]<minPerTopic)
  if(!low.length)return {status:'supply-ready',added:0,available}
  const topics=low.filter(topic=>{
-  const last=Date.parse(state.lastAutoDiscoveryAtByTopic?.[topic]||'')
+  const last=state.autoDiscoveryVersion===discoveryVersion?
+   Date.parse(state.lastAutoDiscoveryAtByTopic?.[topic]||''):NaN
   return !Number.isFinite(last)||now.getTime()-last>=cooldownMs
  }).slice(0,maxTopics)
  if(!topics.length)return {status:'cooldown',added:0,available}
  try{
   await discoverQueue({base,topics,excludeQueued:true,maxPerTopic:20,seedLimit:2,subcategoryLimit:1,maxCategoryPages:2})
+  const afterNarrow=await readState(base)
+  const stillLow=topics.filter(topic=>afterNarrow.queue.filter(row=>row.topic===topic&&
+   ACTIVE_QUEUE_STATUSES.has(afterNarrow.outcomes[row.pageId]?.status||'PENDING')).length<minPerTopic)
+  if(stillLow.length)await discoverQueue({base,topics:stillLow,excludeQueued:true,
+   maxPerTopic:30,seedLimit:3,subcategoryLimit:2,maxCategoryPages:3})
   const updated=await readState(base)
+  updated.autoDiscoveryVersion=discoveryVersion
   updated.lastAutoDiscoveryAtByTopic={...updated.lastAutoDiscoveryAtByTopic,
    ...Object.fromEntries(topics.map(topic=>[topic,now.toISOString()]))}
   await writeState(base,updated)
