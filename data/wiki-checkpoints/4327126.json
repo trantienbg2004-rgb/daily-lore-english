@@ -2,10 +2,10 @@
   "pageId": 4327126,
   "title": "Repatriation (cultural property)",
   "topic": "Culture",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1375683054,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375683054",
-  "reason": "16 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -516,5 +516,146 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375683054"
     }
   ],
-  "updatedAt": "2026-10-24T03:32:15.184Z"
+  "updatedAt": "2026-10-24T03:32:33.294Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "Returning Lost Art",
+        "pages": [
+          {
+            "text": "Repatriation is the return of cultural items to their home countries or former owners. These objects are often ancient or looted art. They can be sculptures, paintings, monuments, or human remains taken during wars or imperial conquests. People have taken such valuable items from defeated groups since ancient times across the world.",
+            "evidenceIds": [
+              "P1",
+              "P2",
+              "P3"
+            ]
+          },
+          {
+            "text": "Napoleon's army took many artworks from countries like Italy and Spain. After Napoleon lost, the Duke of Wellington returned some of these items to Italy. This was a new idea because victors usually kept their spoils. However, about half of the plundered art remained in France because museum directors had hidden many important works away.",
+            "evidenceIds": [
+              "P6",
+              "P7"
+            ]
+          },
+          {
+            "text": "In later years, laws and rules tried to protect cultural property during wars. Abraham Lincoln asked for a legal code to protect cultural sites from attacks. Later, international meetings like the Hague Convention created rules against pillaging. The 1970 UNESCO Convention also helped member states seize stolen objects with proper documentation in museums.",
+            "evidenceIds": [
+              "P12",
+              "P14",
+              "P15"
+            ]
+          },
+          {
+            "text": "In the twenty-first century, debates about colonial acquisitions grew internationally. A French report in 2018 led to new discussions about returning African cultural heritage. These debates focus on moral reasons rather than only legal ones. Countries like France and the UK face ongoing discussions about how to handle the return of contested objects.",
+            "evidenceIds": [
+              "P4",
+              "P13"
+            ]
+          },
+          {
+            "text": "Today, repatriation is an important topic for museums worldwide. Some nations have created new laws or guidelines to help return looted artifacts. While challenges remain, people continue to discuss the fair treatment of cultural property taken during past conflicts, colonial rules, and wars around the globe.",
+            "evidenceIds": [
+              "P4",
+              "P11",
+              "P13"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "The History and Debates of Cultural Property Repatriation",
+        "pages": [
+          {
+            "text": "Repatriation refers to returning cultural property, such as ancient or looted art, to its country of origin or former owners. Disputed items include physical artifacts taken during imperialism, colonialism, or war. Contested objects vary widely from sculptures and paintings to human remains and tools. The looting of cultural heritage by victorious forces has been a common practice since ancient times.",
+            "evidenceIds": [
+              "P1",
+              "P2",
+              "P3"
+            ]
+          },
+          {
+            "text": "During the Napoleonic Wars, French forces systematically confiscated artworks across Europe on an unprecedented scale. After Napoleon's defeat at Waterloo, the Duke of Wellington decided to return plundered art to Italy and other nations, departing from the traditional view that victors keep their spoils. Despite public outcry in France and efforts to hide works, an estimated fifty-five percent of the seized art was repatriated.",
+            "evidenceIds": [
+              "P6",
+              "P7"
+            ]
+          },
+          {
+            "text": "Various international conventions attempted to curb wartime plundering. In 1863, President Abraham Lincoln commissioned the Lieber Code, which legally recognized cultural property as a protected category during war and influenced later Hague Conventions. Subsequent international agreements, such as the 1970 UNESCO Convention, aided member states in recovering illicitly exported and stolen objects through proper institutional documentation.",
+            "evidenceIds": [
+              "P12",
+              "P14",
+              "P15"
+            ]
+          },
+          {
+            "text": "In the early twenty-first century, acquisitions by Western collections faced heightened scrutiny regarding their colonial contexts. Following a 2018 French report on African cultural heritage, international debates sparked changes in museum roles and prompted restitutions based on moral rather than strictly legal grounds. Meanwhile, nations like the United Kingdom rely on museum guidelines rather than formal national legislation to manage repatriation claims.",
+            "evidenceIds": [
+              "P4",
+              "P13"
+            ]
+          },
+          {
+            "text": "Legislative frameworks continue to evolve across different countries. For instance, a French law adopted in 2026 simplified the restitution process for items acquired during the colonial era through specific decrees and expert commissions. These developments reflect ongoing international efforts to address historical grievances and restore cultural heritage to its places of origin.",
+            "evidenceIds": [
+              "P4",
+              "P11"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "Dynamics of Cultural Property Repatriation and Restitution",
+        "pages": [
+          {
+            "text": "Repatriation entails the restitution of cultural property, predominantly ancient or looted art, to its country of origin or rightful heirs. These contested artifacts—ranging from monuments and sculptures to human remains and anthropological tools—were typically appropriated by dominant groups through imperialism, colonialism, or armed conflict, a practice with precedents stretching back to antiquity.",
+            "evidenceIds": [
+              "P1",
+              "P2",
+              "P3"
+            ]
+          },
+          {
+            "text": "The Napoleonic era witnessed systematic, large-scale confiscations of artistic and precious objects across Europe, justified by French revolutionaries claiming ideological succession to Rome. Following the coalition victory at Waterloo, the Duke of Wellington orchestrated an unprecedented repatriation effort, returning a significant portion of the plundered artifacts to their countries of origin despite domestic French resistance and the strategic concealment of numerous works by museum officials.",
+            "evidenceIds": [
+              "P6",
+              "P7"
+            ]
+          },
+          {
+            "text": "Concurrently, legal frameworks emerged to mitigate wartime pillaging. The 1863 Lieber Code established cultural property as a protected category in conflict, subsequently shaping the Hague Conventions of 1907 and 1954. Multilateral instruments like the 1970 UNESCO Convention and the 1995 UNIDROIT Convention further reinforced international mechanisms for identifying, seizing, and returning illicitly exported cultural objects.",
+            "evidenceIds": [
+              "P12",
+              "P14",
+              "P15",
+              "P16"
+            ]
+          },
+          {
+            "text": "In the twenty-first century, provenance research regarding colonial-era acquisitions has intensified, catalyzed by the 2018 French report on African cultural heritage. This shift has redefined museum responsibilities, prompting restitutions predicated on moral imperatives rather than strictly legal obligations. Jurisdictions exhibit diverse procedural approaches; for example, the United Kingdom relies on decentralized institutional guidelines, whereas France enacted legislation in 2026 to streamline restitution via executive decrees and expert commissions.",
+            "evidenceIds": [
+              "P4",
+              "P11",
+              "P13"
+            ]
+          },
+          {
+            "text": "Ultimately, the trajectory of cultural property repatriation reflects a complex interplay between historical accountability, evolving legal standards, and changing institutional ethics. While early milestones like the Bolshevik repatriation of the Samarkand Codex demonstrated rare instances of decolonization-driven returns, contemporary debates continue to test the diplomatic and administrative frameworks governing global heritage.",
+            "evidenceIds": [
+              "P3",
+              "P4",
+              "P8"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2679,
+    "output": 1346,
+    "total": 4025
+  },
+  "validation": null
 }
