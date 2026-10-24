@@ -2,10 +2,10 @@
   "pageId": 1859848,
   "title": "American cockroach",
   "topic": "Economy",
-  "status": "EVIDENCE_READY",
+  "status": "RETRY_LATER",
   "revisionId": 1378466586,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378466586",
-  "reason": "4 rights-verified embedded images",
+  "reason": "Gemini token usage unavailable",
   "rights": [
     {
       "status": "REJECTED",
@@ -251,5 +251,5 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378466586"
     }
   ],
-  "updatedAt": "2026-10-24T11:08:05.200Z"
+  "updatedAt": "2026-10-24T11:08:11.049Z"
 }
