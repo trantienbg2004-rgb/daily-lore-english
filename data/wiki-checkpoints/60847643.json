@@ -2,10 +2,10 @@
   "pageId": 60847643,
   "title": "Gomphotherium land bridge",
   "topic": "History & Geography",
-  "status": "DRAFTED",
+  "status": "VALIDATED",
   "revisionId": 1380178048,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380178048",
-  "reason": "draft durably saved before validation",
+  "reason": "local factual, style, length, structure and source audit passed",
   "rights": [
     {
       "status": "REVIEW",
@@ -295,7 +295,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380178048"
     }
   ],
-  "updatedAt": "2026-10-24T05:11:55.132Z",
+  "updatedAt": "2026-10-24T05:12:13.275Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -421,5 +421,8 @@
     "output": 1495,
     "total": 4664
   },
-  "validation": null
+  "validation": {
+    "accepted": true,
+    "errors": []
+  }
 }
