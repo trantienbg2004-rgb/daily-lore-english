@@ -2,10 +2,10 @@
   "pageId": 31660596,
   "title": "Iberian cartography, 1400–1600",
   "topic": "History & Geography",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1372322855,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1372322855",
-  "reason": "5 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REJECTED",
@@ -203,5 +203,138 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1372322855"
     }
   ],
-  "updatedAt": "2026-10-24T06:28:55.529Z"
+  "updatedAt": "2026-10-24T06:29:13.434Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "Maps of the Iberian Peninsula",
+        "pages": [
+          {
+            "text": "Maps played a big part in the expansion of kingdoms in the Iberian Peninsula during the fourteenth to sixteenth centuries. They helped sailors, explorers, and navigators find their way across the seas. The Crown of Aragon controlled important trade routes in the Mediterranean Sea.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Maps made travel easier by saving resources and time. Cartographers added wind patterns, latitude, and longitude to sea charts. Surveyors also used maps to plan out landmasses in places that were not yet fully explored, such as the Americas.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "Before maps were common for travel, people used them as decorative gifts for kings and popes. The Catalan Atlas from 1375 is a famous example of a decorated map. It was given as a gift to the King of France.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "Map makers used different styles over time. Early maps included drawings of paradise, angels, and mythical creatures. Later, maps began to show real regions and provinces with more accurate details as trade and geographical knowledge grew.",
+            "evidenceIds": [
+              "P5",
+              "P9"
+            ]
+          },
+          {
+            "text": "Portolan charts appeared before the fourteenth century and were oriented to the north. They used compass bearings and scaled distances. These charts helped sailors travel farther onto open water without getting lost.",
+            "evidenceIds": [
+              "P6"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "Cartography and Exploration in Iberia",
+        "pages": [
+          {
+            "text": "During the fourteenth to sixteenth centuries, cartography played a vital role in the expansion of Iberian kingdoms. These maps served primarily as navigational tools for sailors and explorers. The Crown of Aragon controlled significant trade routes across the Mediterranean Sea as part of the Silk Road.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Maps reduced wasted resources by helping travelers find efficient routes. The inclusion of wind patterns, latitude, and longitude made maritime travel more efficient. Surveyors also utilized maps to plan out landmasses in the Americas where little documented evidence initially existed.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "Before maps became widely available for navigation, they often functioned as decorative luxury items for high-status individuals like kings and popes. The heavily decorated Catalan Atlas, produced in 1375, was famously presented as a gift to the King of France.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "Spanish and Portuguese cartography influenced each other over time. Portuguese nautical charts began using scales of latitude, and Spanish charts adopted the same lines once Portuguese cosmographers were recruited by the Crown of Castile. Unlike Portugal, Spain kept its maps strictly guarded and prohibited printing to protect its geographical secrets.",
+            "evidenceIds": [
+              "P4",
+              "P7"
+            ]
+          },
+          {
+            "text": "Portolan charts emerged around the fourteenth century with a northern orientation, utilizing compass bearings and scaled distances. These charts allowed sailors to venture further into open water using rhumb lines. Meanwhile, map-making evolved from theological concepts to more mathematical measurements of latitude and longitude.",
+            "evidenceIds": [
+              "P5",
+              "P6"
+            ]
+          },
+          {
+            "text": "Portuguese trade routes in Africa and the East drove significant mapping efforts. Early expeditions produced the Cantino map and gathered vital geographical information about the Indian Ocean. A smuggled Portuguese map from 1502 provided detailed evidence of eastern Africa and western India.",
+            "evidenceIds": [
+              "P8"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "Evolution of Iberian Cartography",
+        "pages": [
+          {
+            "text": "Between the fourteenth and sixteenth centuries, cartography proved instrumental in the territorial expansion of Iberian kingdoms. Maps functioned primarily as maritime navigational instruments for explorers and sailors. Notably, the Crown of Aragon leveraged its control over Mediterranean commercial networks linking the Kingdom of Jerusalem to Europe along the Silk Road.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Maps minimized resource expenditure by optimizing travel routes following the integration of latitude, longitude, and wind patterns. Surveyors also deployed maps to chart newly encountered territories in the Americas where baseline empirical data was scarce.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "Prior to widespread practical distribution, maps frequently served as diplomatic gifts for high-status dignitaries such as monarchs and pontiffs. The richly illustrated Catalan Atlas of 1375 exemplifies this tradition, having been gifted to the King of France by the Crown of Aragon.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "Cartographic practices exhibited mutual influence between Spain and Portugal. Portuguese latitude scales were eventually adopted in Spanish charts after Castilian authorities recruited Portuguese cosmographers. Conversely, Spanish Habsburg rulers strictly prohibited map printing to preserve geographic secrecy and preempt rivals.",
+            "evidenceIds": [
+              "P4",
+              "P7"
+            ]
+          },
+          {
+            "text": "Portolan charts revolutionized navigation before the fourteenth century by adopting a northern orientation and employing compass bearings alongside scaled distances. Utilizing rhumb lines, navigators could translate desired courses into compass headings, mitigating the risks of open-ocean travel. Concurrently, map-making transitioned from cosmological frameworks toward mathematical precision with the adoption of latitude and longitude.",
+            "evidenceIds": [
+              "P5",
+              "P6"
+            ]
+          },
+          {
+            "text": "Portuguese maritime expansion spurred reciprocal advancements in cartography. Expeditions to Africa and the East yielded the Cantino map and detailed geographical intelligence regarding the Indian Ocean. The veracity of these navigational efforts was corroborated by a Portuguese map smuggled into Italy in 1502, illustrating the East African and West Indian coastlines.",
+            "evidenceIds": [
+              "P8"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2500,
+    "output": 1484,
+    "total": 3984
+  },
+  "validation": null
 }
