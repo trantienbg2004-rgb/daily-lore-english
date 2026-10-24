@@ -2,10 +2,10 @@
   "pageId": 37600900,
   "title": "Anti-abortion movements",
   "topic": "Society",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1379750089,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379750089",
-  "reason": "4 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -260,5 +260,140 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379750089"
     }
   ],
-  "updatedAt": "2026-10-24T08:59:06.430Z"
+  "updatedAt": "2026-10-24T08:59:24.864Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "Anti-Abortion Movements Around the World",
+        "pages": [
+          {
+            "text": "Anti-abortion groups are part of the abortion debate. They want to stop abortion and make it illegal. Many of these groups started after countries began to make elective abortions legal. Today, people in many nations still work to change laws and cultural views about this practice.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "In France, the first anti-abortion group began in 1971. France has strict laws about when a woman can get an abortion. Later, the government allowed abortions in cases of distress up to ten weeks. After twelve weeks, it is usually a crime.",
+            "evidenceIds": [
+              "P3",
+              "P4"
+            ]
+          },
+          {
+            "text": "In Ireland, several anti-abortion groups exist. The Irish constitution allowed for legal abortion in 2018. Even after this change, some anti-abortion political parties still campaign. Catholics and other groups also hold rallies and try to stop clinics.",
+            "evidenceIds": [
+              "P6",
+              "P20"
+            ]
+          },
+          {
+            "text": "Russia has legal abortion up to the twelfth week of pregnancy. In 2011, the government passed new restrictions to help raise the birthrate. These rules include telling women about the dangers of abortion. Leaders and organizations also support national anti-abortion campaigns.",
+            "evidenceIds": [
+              "P8"
+            ]
+          },
+          {
+            "text": "In the United States, modern anti-abortion groups grew after a major court decision in 1973. Some organizations focus on banning abortions at the state level. Activists also stand outside clinics to try to stop women from entering.",
+            "evidenceIds": [
+              "P16",
+              "P19",
+              "P20"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "The Global History of Anti-Abortion Movements",
+        "pages": [
+          {
+            "text": "Anti-abortion movements, which are also known as pro-life movements, participate in the ongoing debate against the practice and legality of abortion. Many of these organizations began as countermovements in direct response to the legalization of elective abortions in various countries around the world.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "In France, the first specifically anti-abortion organization formed in 1971 during debates leading to the 1975 Veil Law. French law permits abortions up to ten weeks in cases of distress. After twelve weeks, unauthorized procedures are treated as serious crimes punishable by imprisonment and fines.",
+            "evidenceIds": [
+              "P3",
+              "P4"
+            ]
+          },
+          {
+            "text": "Across Europe, laws vary significantly by country. In the United Kingdom, the Society for the Protection of Unborn Children formed when the 1967 Abortion Act passed. Activists in the UK still stand outside clinics to discourage women through prayer vigils and pavement counseling.",
+            "evidenceIds": [
+              "P2",
+              "P10",
+              "P15"
+            ]
+          },
+          {
+            "text": "In the Republic of Ireland, several groups campaign against abortion despite a 2018 constitutional amendment providing for legal access. Meanwhile, Russian authorities enacted restrictions in 2011 to combat a falling population, requiring providers to advertise health dangers and banning descriptions of procedures as safe.",
+            "evidenceIds": [
+              "P6",
+              "P8"
+            ]
+          },
+          {
+            "text": "United States anti-abortion movements expanded significantly following the 1973 Supreme Court decisions. Organizations associated with conservatism and the Christian right continue to advocate for bans at state and local levels, while similar debates and protests occur in Canada and Australia.",
+            "evidenceIds": [
+              "P14",
+              "P16",
+              "P19",
+              "P20"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "International Anti-Abortion Advocacy and Legislation",
+        "pages": [
+          {
+            "text": "Anti-abortion movements operate globally as active participants in legislative and cultural debates regarding the legality of abortion. Frequently self-styled as pro-life, these organizations often originated as direct countermovements following the legislative or judicial legalization of elective termination procedures in various jurisdictions.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "European legal frameworks exhibit substantial variation, ranging from parliamentary authorization to constitutional prohibition. In France, early organizational efforts accompanied the 1975 Veil Law, establishing strict gestational limits and severe criminal penalties for unauthorized procedures. British legislation similarly regulates access through practitioner approval while maintaining potential criminal liabilities.",
+            "evidenceIds": [
+              "P2",
+              "P3",
+              "P4",
+              "P10"
+            ]
+          },
+          {
+            "text": "National contexts demonstrate diverse strategic approaches among anti-abortion entities. Irish organizations continue political campaigns despite a 2018 constitutional amendment legalizing abortion. In Russia, demographic concerns prompted legislative restrictions in 2011, obligroving providers to disseminate health warnings and prohibiting descriptions of the procedure as safe.",
+            "evidenceIds": [
+              "P6",
+              "P8"
+            ]
+          },
+          {
+            "text": "In North America, Canadian discourse increasingly emphasizes cultural persuasion and fetal personhood arguments, while private member bills attempt legislative restrictions. United States movements, galvanized by landmark judicial rulings, have intensified efforts at state and local levels following subsequent high court decisions regarding constitutional interpretations.",
+            "evidenceIds": [
+              "P13",
+              "P16",
+              "P19"
+            ]
+          },
+          {
+            "text": "Activist tactics frequently extend beyond conventional lobbying to direct engagement outside medical facilities. In nations such as the United Kingdom and Australia, campaigners utilize practices like prayer vigils and pavement counseling to dissuade patients, prompting various legislative responses including the implementation of clinic exclusion zones.",
+            "evidenceIds": [
+              "P10",
+              "P15",
+              "P22"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2693,
+    "output": 1084,
+    "total": 3777
+  },
+  "validation": null
 }
