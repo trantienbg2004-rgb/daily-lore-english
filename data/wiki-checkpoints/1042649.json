@@ -479,7 +479,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381005522"
     }
   ],
-  "updatedAt": "2026-10-24T06:05:42.325Z",
+  "updatedAt": "2026-10-24T06:06:00.370Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -526,7 +526,7 @@
         "headline": "The Evolution of the Bicycle",
         "pages": [
           {
-            "text": "The history of the bicycle began with the invention of the dandy horse, also known as the draisienne or running machine. Created by German Baron Karl von Drais, it was the first human transport to use two wheels in tandem without pedals. Riders sat astride a wooden frame and pushed themselves along with their feet while steering the front wheel, introducing a new era of personal mobility.",
+            "text": "The history of the bicycle began with the invention of the dandy horse, also known as the draisienne or running machine. Created by German Baron Karl von Drais, it was the first human transport to use two wheels in tandem without pedals. Riders sat astride a wooden frame and pushed themselves along with their feet while steering the front wheel.",
             "evidenceIds": [
               "P1"
             ]
@@ -566,7 +566,7 @@
         "headline": "Historical Development of the Bicycle",
         "pages": [
           {
-            "text": "The foundational predecessor of the modern bicycle was the dandy horse, or draisienne, engineered by German Baron Karl von Drais. Established as the earliest human-powered transport utilizing two in-line wheels, it lacked any pedal mechanism. Propulsion relied entirely on the rider straddling a wooden frame and pushing against the ground with their feet while manually directing the front steering assembly, an innovation initially presented in Mannheim and Paris.",
+            "text": "The foundational predecessor of the modern bicycle was the dandy horse, or draisienne, engineered by German Baron Karl von Drais. Established as the earliest human-powered transport utilizing two in-line wheels, it lacked any pedal mechanism. Propulsion relied entirely on the rider straddling a wooden frame and pushing against the ground with their feet while manually directing the front steering assembly.",
             "evidenceIds": [
               "P1"
             ]
@@ -604,11 +604,11 @@
       }
     }
   },
-  "repairAttempts": 0,
+  "repairAttempts": 1,
   "lastUsage": {
-    "input": 3028,
-    "output": 1346,
-    "total": 4374
+    "input": 2997,
+    "output": 263,
+    "total": 3260
   },
   "validation": null
 }
