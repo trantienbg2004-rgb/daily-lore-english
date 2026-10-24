@@ -9274,10 +9274,10 @@
       "checkedAt": "2026-10-21T07:32:05.265Z"
     },
     "46840722": {
-      "status": "EVIDENCE_READY",
-      "reason": "10 rights-verified embedded images",
+      "status": "DRAFTED",
+      "reason": "draft durably saved before validation",
       "revisionId": 1366308012,
-      "checkedAt": "2026-10-24T04:50:26.410Z"
+      "checkedAt": "2026-10-24T04:50:43.545Z"
     },
     "47276677": {
       "status": "NEEDS_REVIEW",
@@ -10666,7 +10666,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-24T04:50:41.959Z",
+  "updatedAt": "2026-10-24T04:50:43.546Z",
   "dailyUsage": {
     "day": "2026-10-23",
     "calls": 199,

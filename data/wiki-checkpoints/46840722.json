@@ -2,10 +2,10 @@
   "pageId": 46840722,
   "title": "Air pollution measurement",
   "topic": "Health",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1366308012,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1366308012",
-  "reason": "10 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -421,5 +421,128 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1366308012"
     }
   ],
-  "updatedAt": "2026-10-24T04:50:26.412Z"
+  "updatedAt": "2026-10-24T04:50:43.546Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "Measuring Air Pollution",
+        "pages": [
+          {
+            "text": "Air pollution measurement is the process of collecting and measuring air pollution. The earliest devices used to measure pollution include rain gauges and simple soot and dust collectors. Today, people use many different tools to understand the quality of the air we breathe.",
+            "evidenceIds": [
+              "P1",
+              "P2"
+            ]
+          },
+          {
+            "text": "Air pollution comes from many different sources, especially in cities. It includes solid particles like soot and fly ash, as well as various gases from fuel combustion. These pollutants can harm people's health, nature, and buildings. Monitoring air quality helps us find the causes and reduce them.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "Passive devices are simple and low-cost tools for measuring air. A common example is the diffusion tube. It is hung up to absorb specific gases and is later sent to a laboratory for analysis. Deposit gauges are large funnels that collect soot and dust for testing.",
+            "evidenceIds": [
+              "P4"
+            ]
+          },
+          {
+            "text": "Active measurement devices are more complex. They use fans to pull in air and either analyze it automatically or store it for later testing. Active sensors can use physical methods, such as measuring light absorption, or chemical methods that change the sample through reactions.",
+            "evidenceIds": [
+              "P5"
+            ]
+          },
+          {
+            "text": "Today, small and portable sensors let people monitor air quality constantly. Devices like PurpleAir provide quick measurements that connect to smartphone apps. These tools help create maps of pollution and let individuals see the quality of the air around them.",
+            "evidenceIds": [
+              "P7"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "Methods of Tracking Air Quality",
+        "pages": [
+          {
+            "text": "Air pollution measurement involves collecting and analyzing components of polluted air, notably gases and particulates. Early methods relied on basic tools like rain gauges, soot collectors, and Ringelmann charts. Modern techniques now combine direct measurements, computer models, and remote sensing platforms.",
+            "evidenceIds": [
+              "P1",
+              "P2"
+            ]
+          },
+          {
+            "text": "Urban air pollution stems from fuel combustion, producing particulates like engine soot and various gases such as sulfur dioxide and carbon monoxide. These pollutants negatively impact human health, ecosystems, and infrastructure. Measuring air quality allows authorities to identify causes and enforce legal limits or WHO guidelines.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "Passive measurement tools like diffusion tubes and deposit gauges offer low-cost ways to sample ambient air. These devices passively collect gases and particulates over time before technicians send them to laboratories for detailed chemical analysis.",
+            "evidenceIds": [
+              "P4"
+            ]
+          },
+          {
+            "text": "Active measurement systems use fans to draw in air samples for automated or semi-automated analysis. These sophisticated devices employ physical methods, such as measuring light absorption, or chemical reactions to assess pollutant concentrations.",
+            "evidenceIds": [
+              "P5"
+            ]
+          },
+          {
+            "text": "In addition to static stations, portable and wearable sensors allow individuals to monitor local air quality continuously. These low-cost devices provide near real-time data for smartphone apps and help map pollution across wide areas, empowering communities to understand their exposure risks.",
+            "evidenceIds": [
+              "P7",
+              "P21",
+              "P22"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "Advances in Air Pollution Measurement",
+        "pages": [
+          {
+            "text": "The systematic quantification of atmospheric pollution encompasses the collection and analysis of gaseous and particulate components. Historical approaches relied on rudimentary instruments such as deposit gauges and visual smoke charts, whereas contemporary characterization integrates direct on-site sampling, numerical modeling, and satellite remote sensing platforms.",
+            "evidenceIds": [
+              "P1",
+              "P2"
+            ]
+          },
+          {
+            "text": "Urban pollution comprises combustion-derived particulate matter and reactive trace gases that adversely affect human health and the environment. Systematic monitoring serves as the foundational mechanism for source apportionment, regulatory compliance with Environmental Protection Agency standards, and adherence to World Health Organization guidelines across thousands of municipalities globally.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "Passive sampling technologies provide economical methodologies for atmospheric data collection. Diffusion tubes and deposit funnels sequester ambient gases and particulates over extended durations, subsequent to which laboratory analyses quantify the accumulated pollutant mass.",
+            "evidenceIds": [
+              "P4"
+            ]
+          },
+          {
+            "text": "Active monitoring apparatuses utilize mechanical ventilation to entrain air samples for immediate or deferred analytical evaluation. These systems differentiate themselves by employing physical principles, such as optical absorption spectrophotometry, or chemical reactions that alter the sample matrix for detection.",
+            "evidenceIds": [
+              "P5"
+            ]
+          },
+          {
+            "text": "The proliferation of portable Internet-connected sensors facilitates high-resolution, crowdsourced spatial mapping of urban air quality. These devices record concentrations of criteria pollutants and volatile compounds, offering real-time analytical feedback that enhances exposure assessment and elucidates microenvironmental pollution gradients.",
+            "evidenceIds": [
+              "P7",
+              "P22",
+              "P23"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2741,
+    "output": 1298,
+    "total": 4039
+  },
+  "validation": null
 }
