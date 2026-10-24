@@ -2,9 +2,215 @@
   "pageId": 52321,
   "title": "Freedom House",
   "topic": "Society",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1380491879,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380491879",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-24T10:44:00.044Z"
+  "reason": "2 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:Freedom in the World 2026.svg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9d/Freedom_in_the_World_2026.svg/960px-Freedom_in_the_World_2026.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Freedom in the World 2026.svg",
+        "caption": "Classification of countries according to the Freedom House's Freedom in the World 2026 survey, concerning the state of world freedom in 2026: Free Partially Free Not Free",
+        "alt": "",
+        "description": "Created map for Freedom in the world 2026 based on freedomhouse data, updating Bolivia and Malawi after their promotion to Free",
+        "date": "2026-03-23",
+        "section": "Freedom in the World",
+        "position": 0,
+        "provenance": {
+          "credit": "VidanaliK",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Freedom_in_the_World_2026.svg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Freedom_House",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380491879",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:FreedomHouse-FreedomOfThePress-WorldMap.svg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/58/FreedomHouse-FreedomOfThePress-WorldMap.svg/960px-FreedomHouse-FreedomOfThePress-WorldMap.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:FreedomHouse-FreedomOfThePress-WorldMap.svg",
+        "caption": "2015 Freedom of the Press Classifications Not Free Partly Free Free No Data",
+        "alt": "",
+        "description": "A world map showing the country classifications from the 2015 Freedom of the Press Report from Freedom House.",
+        "date": "2013-08-22 23:38:28",
+        "section": "Freedom of the Press",
+        "position": 1,
+        "provenance": {
+          "credit": "Jeff Ogden (W163)",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:FreedomHouse-FreedomOfThePress-WorldMap.svg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Freedom_House",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380491879",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "134e2f2fdbe6572e03840595c254de47be16013fa19ce16a9d9b8c2eb964fb5d",
+      "heading": "Lead",
+      "excerpt": "Freedom House is a nonprofit organization based in Washington, D.C. It is best known for political advocacy surrounding issues of democracy,",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380491879"
+    },
+    {
+      "id": "P2",
+      "hash": "2471f8b2acd1794ef1f5f35d62320735b66b17db5a1df37120b794eab7dc2531",
+      "heading": "Lead",
+      "excerpt": "The organization's annual Freedom in the World report assesses each country's degree of political freedoms and civil liberties. Another key ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380491879"
+    },
+    {
+      "id": "P3",
+      "hash": "54c7409275fa9e8585c5d4b496fcf689fad07a8ed8c062e8b35bc093853fcd71",
+      "heading": "Lead",
+      "excerpt": "Critics have alleged that the organization is biased towards American interests, particularly due to government funding. Earlier, until the ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380491879"
+    },
+    {
+      "id": "P4",
+      "hash": "ee80543b15ba254c1d1c4a62f5ee72f723f1862516591f153999981a4e1095fd",
+      "heading": "History",
+      "excerpt": "Freedom House was incorporated October 31, 1941. Among its founders were Eleanor Roosevelt, Wendell Willkie, Mayor Fiorello La Guardia, Eliz",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380491879"
+    },
+    {
+      "id": "P5",
+      "hash": "501c1da8b0d49800e876051e7346309c798d4268fa2ec5b1461718b0a3caee0a",
+      "heading": "Freedom in the World",
+      "excerpt": "Freedom House's methods (around 1990) and other democracy-researchers were mentioned as examples of an expert-based evaluation by sociologis",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380491879"
+    },
+    {
+      "id": "P6",
+      "hash": "90e0967bcbbb5d6b45af86da7fc389ef18b0c9890e3fb9d953a36d2ebaa336a4",
+      "heading": "History",
+      "excerpt": "According to its website, Freedom House was founded in 1941. Several groups were aggressively supporting U.S. entry into World War II and in",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380491879"
+    },
+    {
+      "id": "P7",
+      "hash": "8c49768e874645cd487581136d8bc012a0a212fb90d94be3cd611972f95228d9",
+      "heading": "Organization",
+      "excerpt": "Freedom House is a nonprofit organization with approximately 300 staff members worldwide. Headquartered in Washington, D.C., it has field of",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380491879"
+    },
+    {
+      "id": "P8",
+      "hash": "e02690077c82de87fff319842d4abb5f96141864ee5037779f4aaad7888bc542",
+      "heading": "Freedom in the World",
+      "excerpt": "Since 1973, Freedom House publishes an annual report, Freedom in the World, which it seeks to assess the current state of civil liberties an",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380491879"
+    },
+    {
+      "id": "P9",
+      "hash": "e2b628765d64f0fe94d1a9b13631bde63d2fe0648947c69e03412a725350a3e1",
+      "heading": "Freedom of the Press",
+      "excerpt": "The Freedom of the Press index was an annual survey of media independence, published between 1980 and 2017. It assessed the degree of print,",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380491879"
+    },
+    {
+      "id": "P10",
+      "hash": "b0ed0a734bcf7ae0174960eac126049df5876040296aa4c0a8907c8517236c43",
+      "heading": "Freedom on the Net",
+      "excerpt": "Freedom on the Net's report covers a range of concepts that the other datasets do not, such as new legislation passed, but lacks the country",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380491879"
+    },
+    {
+      "id": "P11",
+      "hash": "df328fe34d4a9a005b59b65250b9d786389d4790ae841d1b9c9015bfaedcb3f5",
+      "heading": "Academic commentary",
+      "excerpt": "From the 1970s until 1990, Raymond Gastil practically produced the reports on his own, though sometimes with help from his wife. Gastil hims",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380491879"
+    },
+    {
+      "id": "P12",
+      "hash": "a8bbfb1b55a44527e670a6d2c0842df04dc311c58595cb8ffee15b6aca99a9df",
+      "heading": "Relationship with the U.S. government",
+      "excerpt": "In 2006, the Financial Times reported that Freedom House had received funding by the State Department for \"clandestine activities\" inside Ir",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380491879"
+    },
+    {
+      "id": "P13",
+      "hash": "071409442df7b2fdd9e799ade813af80aa8e4842001001f5655f1961e41a52dc",
+      "heading": "Cuban, Sudanese, and Chinese criticism",
+      "excerpt": "In May 2001, the Committee on Non-Governmental Organizations of the United Nations heard arguments for and against Freedom House. Representa",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380491879"
+    },
+    {
+      "id": "P14",
+      "hash": "e06cde17d3a73775940014a4232b7f9c65163aa5da6c3e142659842fdc57f9ac",
+      "heading": "Russia",
+      "excerpt": "Russia, identified by Freedom House as \"Not Free\", called Freedom House biased and accused the group of serving U.S. interests. Sergei Marko",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380491879"
+    },
+    {
+      "id": "P15",
+      "hash": "fe1223a01178b1615306b68567616ca09b66fe9aa464393ca620c50ad4956fd3",
+      "heading": "Uzbekistan",
+      "excerpt": "Craig Murray, the British ambassador to Uzbekistan from 2002 to 2004, wrote that the executive director of Freedom House told him in 2003 th",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380491879"
+    },
+    {
+      "id": "P16",
+      "hash": "db5dfaea72ce3c8da0d57772514477eaa1ab642f8f1bc32bc9b91a21672d971a",
+      "heading": "American conservatives",
+      "excerpt": "In the 2010s, a number of American conservatives and conservative institutions have accused Freedom House of anti-conservative shift in the ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380491879"
+    },
+    {
+      "id": "P17",
+      "hash": "2970fdb401a8110922ac00e75e4dc6694542ffd01c6a9656467fb757c1f5495b",
+      "heading": "Vietnam",
+      "excerpt": "As Vietnam is a one-party socialist state, it is a frequent target for criticism and accusations from Freedom House, resulting in strong res",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380491879"
+    },
+    {
+      "id": "P18",
+      "hash": "2b417d734820ce1aabeef313affecddc5565d48c46eaf8e1453c13d823c6424e",
+      "heading": "History",
+      "excerpt": "Freedom House had physical form in a New York City building that represented the organization's goals. A converted residence at 32 East 51st",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380491879"
+    },
+    {
+      "id": "P19",
+      "hash": "081a5ac7012817b590c59ed011852151c6ccedb0d1ce4ae2a8e4550d17f0b79a",
+      "heading": "History",
+      "excerpt": "Freedom House sponsored influential radio programs including 'The Voice of Freedom' (1942–43) and Our Secret Weapon (1942–43), a CBS radio s",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380491879"
+    },
+    {
+      "id": "P20",
+      "hash": "7169b81d98ba2a8f20ada6bb7f442fe3d4c7957b58183143b6c97087f880d3f1",
+      "heading": "History",
+      "excerpt": "By November 1944, Freedom House was planning to raise money to acquire a building to be named after the recently deceased Wendell L. Willkie",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380491879"
+    },
+    {
+      "id": "P21",
+      "hash": "ae610e9aebf08db9b1138c63fbb5fa2c0284ae302b96d0eaea83ffec9ea34683",
+      "heading": "History",
+      "excerpt": "After the war, as its website states, \"Freedom House took up the struggle against the other twentieth century totalitarian threat, Communism",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380491879"
+    },
+    {
+      "id": "P22",
+      "hash": "e746e868ba5dffa6a93ac1b5bc83e6acf782624ef67fde509796789783f068a7",
+      "heading": "History",
+      "excerpt": "Freedom House was highly critical of McCarthyism. During the 1950s and 1960s, it supported the Civil Rights Movement in the United States an",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380491879"
+    }
+  ],
+  "updatedAt": "2026-10-24T10:44:05.384Z"
 }
