@@ -901,3 +901,39 @@
   .lore-editorial-v5 .saga-toolbar-actions{gap:5px}
   .lore-editorial-v5 .saga-toolbar-audio{width:29px;flex-basis:29px}
 }
+
+/* Keep complete headings and a useful, uncropped photograph on narrow screens.
+   Viewport pagination makes room for the image instead of shrinking it to a thumbnail. */
+.lore-editorial-v5 .reader-gesture .article-heading h1.lore-headline-long {
+  font-size:clamp(22px,3dvh,27px);
+  line-height:1.07;
+}
+.lore-editorial-v5 .reader-gesture .article-heading.article-heading-continued h1,
+.lore-editorial-v5 .reader-gesture .article-heading.article-heading-continued h1.lore-headline-long {
+  white-space:normal;
+  overflow:visible;
+  text-overflow:clip;
+  text-transform:none;
+  font-size:clamp(15px,2dvh,18px);
+  line-height:1.16;
+}
+@media(max-width:600px) {
+  .lore-editorial-v5 .reader-gesture .article-media {
+    --dn-photo-height:clamp(145px,26dvh,220px);
+  }
+}
+@media(max-height:620px) {
+  .lore-editorial-v5 .reader-gesture .article-media {
+    --dn-photo-height:clamp(120px,25dvh,150px);
+  }
+  .lore-editorial-v5 .reader-gesture .article-media .lore-photo-figure img {
+    max-height:calc(var(--dn-photo-height) - 10px);
+  }
+}
+.lore-lightbox {flex-direction:column; gap:12px;}
+.lore-lightbox img {min-height:0; flex:1 1 auto;}
+.lore-lightbox-caption {
+  flex:0 1 auto; width:min(100%,520px); max-height:24dvh; overflow:auto;
+  margin:0; color:#f5f0e8; font:400 13px/1.45 'Inter',system-ui,sans-serif;
+  text-align:center; cursor:text;
+}

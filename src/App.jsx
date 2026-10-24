@@ -37,27 +37,16 @@ function fitPhoto(img) {
   const maxHeight = parseFloat(getComputedStyle(img).maxHeight) || 148
   const ratio = img.naturalWidth / img.naturalHeight
   if (!Number.isFinite(ratio) || ratio <= 0) return
-  let {imageWidth,frameWidth}=photoFrameSize(media.clientWidth,maxHeight,ratio)
+  const {imageWidth,frameWidth}=photoFrameSize(media.clientWidth,maxHeight,ratio)
   frame.style.width = `${Math.ceil(frameWidth)}px`
   img.style.width = `${Math.ceil(imageWidth)}px`
   img.style.height = 'auto'
-  const text = img.closest('.page-surface')?.querySelector('.article-text')
-  const pager = img.closest('.reader-gesture')?.querySelector('.page-control')
-  if (text && pager) {
-    const excess = text.getBoundingClientRect().bottom - pager.getBoundingClientRect().top + 12
-    if (excess > 0) {
-      imageWidth = Math.max(1, imageWidth - excess * ratio)
-      frameWidth = Math.min(media.clientWidth, imageWidth + 10)
-      frame.style.width = `${Math.ceil(frameWidth)}px`
-      img.style.width = `${Math.ceil(imageWidth)}px`
-    }
-  }
 }
 
 // V20: NEVER mount an <img> until pixels have loaded. A broken thumbnail
 // cannot leave a native broken-image icon or steal reading space.
 // DAILY LORE READ V5: original-photo fit + accessible full-screen preview.
-function ArticlePhoto({ image, label, onBroken, onReady }) {
+function ArticlePhoto({ image, label, fullCaption, onBroken, onReady }) {
   const [asset, setAsset] = useState(() => photoResult(image))
   const [zoomed, setZoomed] = useState(false)
   useEffect(() => {
@@ -89,10 +78,11 @@ function ArticlePhoto({ image, label, onBroken, onReady }) {
       onKeyDown={event => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); setZoomed(true) } }}
       onLoad={event => { fitPhoto(event.currentTarget); onReady() }}
       onError={() => onBroken(image)} />
-    <button type="button" className="lore-photo-zoom-trigger" aria-label="Enlarge photo" onClick={() => setZoomed(true)}><span aria-hidden="true">⛶</span></button>
+    <button type="button" className="lore-photo-zoom-trigger" aria-label="Enlarge photo" title="Read full image caption" onClick={() => setZoomed(true)}><span aria-hidden="true">⛶</span></button>
     {zoomed && createPortal(<div className="lore-lightbox" role="dialog" aria-modal="true" aria-label="Enlarged article photograph" onClick={event => { event.stopPropagation(); setZoomed(false) }}>
       <button type="button" className="lore-lightbox-close" aria-label="Close enlarged photograph" onClick={event => { event.stopPropagation(); setZoomed(false) }}>×</button>
       <img src={asset.url} alt={label} onClick={event => event.stopPropagation()} />
+      {fullCaption && <p className="lore-lightbox-caption" onClick={event => event.stopPropagation()}>{fullCaption}</p>}
     </div>, document.body)}
   </figure>{label && label !== 'Article photograph' && <p className="lore-photo-caption">{label}</p>}</>
 }
@@ -114,10 +104,10 @@ function safeStoryUrl(url) {
   } catch { return '' }
 }
 
-// Older archive items retain viewport pagination; published news uses its
-// explicitly abridged four-to-six-page reading version.
+// Wiki and older archive items use viewport pagination; published news uses
+// its explicitly abridged four-to-six-page reading version.
 function layoutPages(item, reader, badImages = new Set()) {
-  if (item?.contentType === 'news' || item?.contentType === 'wiki') return item.pages
+  if (item?.contentType === 'news') return item.pages
   // Editorial pages are source units, not guaranteed screen-sized. Measure
   // every level against the actual phone viewport and the anchored pager.
   const bounds = reader.getBoundingClientRect()
@@ -927,12 +917,12 @@ function App() {
         </div><div className="story-end-next">↑ Swipe up for the next story</div>
       </section> : <>
       <div className={'article-heading lore-article-heading ' + (pageNumber > 0 && item.contentType !== 'news' ? 'article-heading-continued' : '')}>
-        <h1 title={displayHeadline(item)} aria-live={item.contentType === 'news' ? 'polite' : undefined}>{displayHeadline(item)}</h1>
+        <h1 className={displayHeadline(item).length > 45 ? 'lore-headline-long' : ''} title={displayHeadline(item)} aria-live={item.contentType === 'news' ? 'polite' : undefined}>{displayHeadline(item)}</h1>
         {pageNumber === 0 && editorialDeck(item) && <p className="deck lore-deck">{editorialDeck(item)}</p>}
       </div>
       <div className={"article-media " + (!itemPage.image || brokenImages.has(itemPage.image) ? "article-media-empty" : "")}>
         <ArticlePhoto key={itemPage.image || 'no-photo'} image={brokenImages.has(itemPage.image) ? '' : itemPage.image}
-          label={photoLabel(itemPage)} onBroken={markBrokenImage}
+          label={photoLabel(itemPage)} fullCaption={itemPage.caption} onBroken={markBrokenImage}
           onReady={() => setPhotoVersion(n => n + 1)} />
       </div>
       <section className={'reading-card ' + (!itemPage.image || brokenImages.has(itemPage.image) ? 'reading-card-no-photo' : 'reading-card-with-photo')}><div className="reading-topline" aria-hidden="true" />
