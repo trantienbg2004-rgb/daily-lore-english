@@ -2,10 +2,10 @@
   "pageId": 5794935,
   "title": "Vetera",
   "topic": "Culture",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1373940870,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373940870",
-  "reason": "16 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -513,5 +513,152 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373940870"
     }
   ],
-  "updatedAt": "2026-10-24T04:00:04.413Z"
+  "updatedAt": "2026-10-24T04:00:22.439Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "Roman Camps at Vetera",
+        "pages": [
+          {
+            "text": "Vetera was the name of two Roman military camps. They were built in the province of Germania Inferior near Xanten. These camps were part of the Lower Germanic Limes. In 2021, they became a UNESCO World Heritage Site.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Experts divide the location into two sites. The older site is Vetera I. It was used from 12 BCE to 70 CE. The younger site is Vetera II. It was used from 71 CE to at least the third century.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "Vetera I stood on the southern slope of the Fürstenberg. This was a high area surrounded by swamp and moorland. It sat opposite the mouth of the river Lippe. This let soldiers watch the river valleys easily.",
+            "evidenceIds": [
+              "P3",
+              "P4"
+            ]
+          },
+          {
+            "text": "The name Vetera may come from a nearby pre-Roman settlement. Tacitus first wrote about these camps in his historical works. Later, the old ruins were used as stone quarries to build other nearby structures and a monastery.",
+            "evidenceIds": [
+              "P5",
+              "P8",
+              "P9"
+            ]
+          },
+          {
+            "text": "Vetera II was built in 71 CE after a major rebellion. It was placed about one and a half kilometres east of the first camp. Today, the remains of Vetera II lie deep under a quarry pond.",
+            "evidenceIds": [
+              "P2",
+              "P7",
+              "P16"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "The History of Vetera Roman Camps",
+        "pages": [
+          {
+            "text": "Vetera refers to two successive Roman legionary camps situated in the province of Germania Inferior near modern-day Xanten on the Lower Rhine. As an essential part of the Lower Germanic Limes, these significant military garrisons were recognized as a UNESCO World Heritage Site in 2021.",
+            "evidenceIds": [
+              "P1",
+              "P2"
+            ]
+          },
+          {
+            "text": "Scholarly research distinguishes between Vetera I, active from 13/12 BCE to 70 CE, and Vetera II, which lasted from 71 CE to at least the third century. These sites were positioned about one Roman mile apart. Vetera I occupies undeveloped land on the Fürstenberg, while Vetera II lies submerged beneath a quarry pond.",
+            "evidenceIds": [
+              "P2",
+              "P3",
+              "P9"
+            ]
+          },
+          {
+            "text": "The name Vetera is believed to originate from a local pre-Roman settlement of the Cugerni. The historian Tacitus first mentioned the location as Vetera or Vetera castra. Over the centuries, Philipp Houben popularized the phrase Castra Vetera in 1839, though this specific combination never existed in ancient times.",
+            "evidenceIds": [
+              "P5",
+              "P8"
+            ]
+          },
+          {
+            "text": "Following Gaius Julius Caesar's campaigns, the Lower Rhine had a dangerous population vacuum. Agrippa helped stabilize the region by building roads and resettling Germanic groups. Vetera I was established around 13/12 BCE as a wood and soil deployment base for further Roman expansion.",
+            "evidenceIds": [
+              "P10",
+              "P11"
+            ]
+          },
+          {
+            "text": "During the Revolt of the Batavi in 69/70 CE, the original camp was destroyed. Following this conflict and subsequent military reorganization, Vetera II was established in 71 CE about one and a half kilometres further east, housing the Legio XXII Primigenia.",
+            "evidenceIds": [
+              "P7",
+              "P13",
+              "P16"
+            ]
+          },
+          {
+            "text": "After their abandonment, both camps served as quarries for neighboring settlements and medieval monasteries. While Vetera I remains accessible on land, Vetera II was heavily altered by shifting river branches and now rests five to ten metres below water and gravel.",
+            "evidenceIds": [
+              "P7",
+              "P9"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "Archaeological Evolution of Vetera",
+        "pages": [
+          {
+            "text": "Vetera encompasses the archaeological remains of two sequential Roman legionary encampments situated within Germania Inferior near contemporary Xanten. Designated as part of the Lower Germanic Limes, the complex attained UNESCO World Heritage status in 2021 due to its profound historical significance on the northern imperial frontier.",
+            "evidenceIds": [
+              "P1",
+              "P2"
+            ]
+          },
+          {
+            "text": "Historiographical and archaeological consensus divides the complex into Vetera I, operating from 13/12 BCE until 70 CE, and Vetera II, spanning from 71 CE through at least the third century. Separated by approximately one Roman mile, Vetera I occupies the southern slope of the Fürstenberg, whereas Vetera II is situated beneath a modern quarry pond.",
+            "evidenceIds": [
+              "P2",
+              "P3"
+            ]
+          },
+          {
+            "text": "The etymology of Vetera remains uncertain, though scholarly consensus links it to an adjacent pre-Roman Cugerni settlement. Tacitus references the installation in his Historiae. The frequently encountered term Castra Vetera originated from an 1839 publication by Philipp Houben, reflecting a reversal of historical nomenclature rather than an attested ancient designation.",
+            "evidenceIds": [
+              "P5",
+              "P8"
+            ]
+          },
+          {
+            "text": "Foundation dates for Vetera I align with the expansive Augustan policies following the Clades Lolliana, with archaeological indicators pointing to 13/12 BCE. Constructed initially as wood and soil fortifications featuring multiple ditch systems, the garrison functioned as a critical deployment base before its destruction during the Batavi Revolt.",
+            "evidenceIds": [
+              "P11",
+              "P13"
+            ]
+          },
+          {
+            "text": "In the wake of the 69/70 CE uprisings and subsequent military restructuring, Vetera II was founded in 71 CE approximately one and a half kilometres east on a low Rhine terrace. Stationing a single legion, Legio XXII Primigenia, the younger fort superseded the double-legion arrangement of its predecessor.",
+            "evidenceIds": [
+              "P7",
+              "P16"
+            ]
+          },
+          {
+            "text": "Post-abandonment utilization transformed the camps into utilitarian stone quarries for nearby urban centers and medieval monastic construction. Subsequent hydrological shifts, including medieval river loop migrations and the 1788/89 artificial diversion of the Rhine, submerged the remains of Vetera II beneath several meters of gravel and water.",
+            "evidenceIds": [
+              "P7",
+              "P9"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2843,
+    "output": 1728,
+    "total": 4571
+  },
+  "validation": null
 }
