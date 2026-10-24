@@ -2,9 +2,175 @@
   "pageId": 48936024,
   "title": "Natural hair movement",
   "topic": "Society",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1380709306,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380709306",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-24T11:01:59.530Z"
+  "reason": "1 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Comb Ashanti Ceramic AMR 1974 02.JPG"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:Natural Afro - hair type 4c- model Gwyneth Ellis.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3c/Natural_Afro_-_hair_type_4c-_model_Gwyneth_Ellis.jpg/960px-Natural_Afro_-_hair_type_4c-_model_Gwyneth_Ellis.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Natural Afro - hair type 4c- model Gwyneth Ellis.jpg",
+        "caption": "Kinky hair is hair with tight curls, tight coils, or no defined curls.",
+        "alt": "A woman with kinky hair: her hair has tight coils.",
+        "description": "Natural Afro - hair type 4c- model Gwyneth Ellis",
+        "date": "2019-12-02 21:44:47",
+        "section": "Terminology",
+        "position": 1,
+        "provenance": {
+          "credit": "Stephencdickson",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Natural_Afro_-_hair_type_4c-_model_Gwyneth_Ellis.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Natural_hair_movement",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380709306",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "c875eb03b7dc638acf11983c8d8546ec82381df6bc8756914e77647717603dde",
+      "heading": "Lead",
+      "excerpt": "The natural hair movement is a social and cultural movement advocating for the embrace and unmanipulated presentation of textured hair. With",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380709306"
+    },
+    {
+      "id": "P2",
+      "hash": "7393c0ed99b12c9c6e3a72d8a7bf0e96a73b036948d33c4101b0e89aeec88bfd",
+      "heading": "Lead",
+      "excerpt": "While particularly prominent in the United States, the movement is not restricted to any single geographic area, resonating globally across ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380709306"
+    },
+    {
+      "id": "P3",
+      "hash": "a08271bac8f62e8a2c4f2c407557e90a75bdc24aa573eab7925ec58b9f6e4ccf",
+      "heading": "Lead",
+      "excerpt": "Although the cultural terminology is primarily associated with kinky hair, scholars and participants emphasize that the movement's principle",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380709306"
+    },
+    {
+      "id": "P4",
+      "hash": "cda20907e0bf99cc8d5dedbb7ef30cbd2ac2529e727ce6780307210a77bb01bf",
+      "heading": "Definition and features",
+      "excerpt": "While rooted historically in the African diaspora, the natural hair movement encompasses individuals of diverse backgrounds who choose to we",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380709306"
+    },
+    {
+      "id": "P5",
+      "hash": "ccc17b30b8493865ad15cb3382feca6fe5272725009048f73d2618d7f3bc7a49",
+      "heading": "Definition and features",
+      "excerpt": "Styling practices within the movement are varied and may include hair twists, braids, or locs. Furthermore, participation in the movement do",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380709306"
+    },
+    {
+      "id": "P6",
+      "hash": "3176be1adc1c34c9d389180917100d217d7f7578d0725b1b3d76d8f2ab743d98",
+      "heading": "History",
+      "excerpt": "In many early African societies, hairdressing historically served as a core cultural practice that extended beyond aesthetics. Hairstyles fu",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380709306"
+    },
+    {
+      "id": "P7",
+      "hash": "0398bb49db53b1e49c769e6796bbfa251f27a10128ede383583a7c2f3ab56dc6",
+      "heading": "Events and festivals",
+      "excerpt": "In 2014 The Curly Girl Collective held their first CurlFest, a festival now held annually in Brooklyn, New York, that celebrates natural hai",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380709306"
+    },
+    {
+      "id": "P8",
+      "hash": "25d1972d9defa017d4db31b6a17e64ab8dc4ea9eba279c6a23e0973832ba1864",
+      "heading": "Presence in feminist culture",
+      "excerpt": "Each woman has her own reason to retrieve her authenticity; some want to preserve their hair against aggressive hair styling methods such as",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380709306"
+    },
+    {
+      "id": "P9",
+      "hash": "3de8a06e3cc89771d161137422c68c0aa12469d73cef58e75b6c7890b44c3e2e",
+      "heading": "Legal issues",
+      "excerpt": "On 3 July 2019, California became the first US state to prohibit discrimination over natural hair. Governor Gavin Newsom signed the CROWN Ac",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380709306"
+    },
+    {
+      "id": "P10",
+      "hash": "a59469129dac424704563bba3fb6c2722cc8fdb25c9b2876c85610792ccbd464",
+      "heading": "\"Ethnic\" hair care industry",
+      "excerpt": "With the popularity of \"going natural\", hair care suppliers have seen a rapid decrease in the purchase of relaxers, the harsh chemical hair ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380709306"
+    },
+    {
+      "id": "P11",
+      "hash": "038a6f688a78cd10555ed547705e9e46249acbbd0055e90415ed9167aa121843",
+      "heading": "Objections and opposition",
+      "excerpt": "Many women have found that they are treated unjustly based on having naturally afro-textured hair. Natural hair can be deemed \"unprofessiona",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380709306"
+    },
+    {
+      "id": "P12",
+      "hash": "9b178c434525d89ebd0a926648eea328a27f9a88cae102e519777c83993f85d1",
+      "heading": "Definition and features",
+      "excerpt": "A significant aspect of the movement involves the cultural reclamation of language. The term \"nappy,\" historically weaponized as a derogator",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380709306"
+    },
+    {
+      "id": "P13",
+      "hash": "bc7381cb8db241aff184443cc42cb8b526d82fe54a382cd6f2a78f2f5f60d152",
+      "heading": "History",
+      "excerpt": "However, during the Atlantic slave trade, the conditions of servitude did not allow black people to take care of their hair. Enslaved Africa",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380709306"
+    },
+    {
+      "id": "P14",
+      "hash": "dd4e79bf6ead275ce3ee65e1472a5fcf3c015a31320ac929f652eed8de5f9925",
+      "heading": "History",
+      "excerpt": "In the 1960s, as racial segregation between blacks and whites reigned in the United States, there was a significant shift in the cultural an",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380709306"
+    },
+    {
+      "id": "P15",
+      "hash": "fe2ed03b37e1b8c9f64c2f865ef06b7af642ce8a3905ba03f22383f705b867be",
+      "heading": "History",
+      "excerpt": "During the 1970s–1980s, popularized especially by some celebrities, the \"Jheri curl,\" a newer technique to loosen tightly curled hair, becam",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380709306"
+    },
+    {
+      "id": "P16",
+      "hash": "be76375a647fe4147d1ac9bea935985a182d65714cadf5e488fdc7a21f75da0b",
+      "heading": "History",
+      "excerpt": "Hair straightening was considered mainstream and performed frequently throughout the 1980s and 1990s, often with relaxers containing harsh c",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380709306"
+    },
+    {
+      "id": "P17",
+      "hash": "8c36a6dfa7f09e7f7dfcffb379ca41316e97e46a7400eaeeadb7a62bf0ae632a",
+      "heading": "Presence in feminist culture",
+      "excerpt": "The natural hair movement has been encouraged by some female stars who have abandoned straightening, allowing their natural hair to make a c",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380709306"
+    },
+    {
+      "id": "P18",
+      "hash": "1725d8db8b02de3d613eb7d4a2b112d3f07e058e57ad3e2e596c667045d5d976",
+      "heading": "\"Ethnic\" hair care industry",
+      "excerpt": "Women who wear their hair natural are now spending more money on chemical-free products that highlight the best results for their natural te",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380709306"
+    },
+    {
+      "id": "P19",
+      "hash": "156d2a6efdbe9cc20835ca43b5b06f380ae18fc86d9640c8921e3a3ef796d3a5",
+      "heading": "\"Ethnic\" hair care industry",
+      "excerpt": "As relaxer production declines in favor of more natural-friendly products, Black consumers increasingly rely on social media—particularly Yo",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380709306"
+    }
+  ],
+  "updatedAt": "2026-10-24T11:02:05.045Z"
 }
