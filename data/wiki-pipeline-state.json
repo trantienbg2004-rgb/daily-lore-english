@@ -7392,10 +7392,10 @@
       "checkedAt": "2026-10-24T07:45:50.682Z"
     },
     "57768": {
-      "status": "VALIDATED",
-      "reason": "local factual, style, length, structure and source audit passed",
+      "status": "PUBLISHED",
+      "reason": "4 verified embedded images",
       "revisionId": 1378762495,
-      "checkedAt": "2026-10-24T08:06:26.504Z"
+      "checkedAt": "2026-10-24T08:06:32.581Z"
     },
     "61322": {
       "status": "NEEDS_REVIEW",
@@ -11610,7 +11610,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-24T08:06:26.506Z",
+  "updatedAt": "2026-10-24T08:06:32.582Z",
   "dailyUsage": {
     "day": "2026-10-24",
     "calls": 42,
