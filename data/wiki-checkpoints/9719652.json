@@ -2,10 +2,10 @@
   "pageId": 9719652,
   "title": "History of tennis",
   "topic": "Sports",
-  "status": "DRAFTED",
+  "status": "VALIDATED",
   "revisionId": 1379228653,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379228653",
-  "reason": "draft durably saved before validation",
+  "reason": "local factual, style, length, structure and source audit passed",
   "rights": [
     {
       "status": "REVIEW",
@@ -340,7 +340,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379228653"
     }
   ],
-  "updatedAt": "2026-10-24T04:22:09.708Z",
+  "updatedAt": "2026-10-24T04:22:27.841Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -471,5 +471,8 @@
     "output": 249,
     "total": 3326
   },
-  "validation": null
+  "validation": {
+    "accepted": true,
+    "errors": []
+  }
 }
