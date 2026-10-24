@@ -407,7 +407,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380358718"
     }
   ],
-  "updatedAt": "2026-10-24T05:12:43.086Z",
+  "updatedAt": "2026-10-24T05:13:13.117Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -477,7 +477,7 @@
             ]
           },
           {
-            "text": "In 1925, the party declared the fascist state would be totalitarian, aiming to forge an authoritarian national state and create politically active citizens. The official formulation was published in 1932 as The Doctrine of Philosophy.",
+            "text": "In 1925, the party declared the fascist state would be totalitarian, aiming to forge an authoritarian national state and create politically active citizens. The official formulation was published in 1932 as The Doctrine of Fascism.",
             "evidenceIds": [
               "P10"
             ]
@@ -539,11 +539,11 @@
       }
     }
   },
-  "repairAttempts": 1,
+  "repairAttempts": 2,
   "lastUsage": {
-    "input": 2629,
-    "output": 90,
-    "total": 2719
+    "input": 2636,
+    "output": 73,
+    "total": 2709
   },
   "validation": null
 }
