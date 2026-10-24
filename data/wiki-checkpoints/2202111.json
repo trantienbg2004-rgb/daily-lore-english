@@ -2,10 +2,10 @@
   "pageId": 2202111,
   "title": "Incense trade route",
   "topic": "Economy",
-  "status": "EVIDENCE_READY",
+  "status": "RETRY_LATER",
   "revisionId": 1380948281,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380948281",
-  "reason": "9 rights-verified embedded images",
+  "reason": "Gemini token usage unavailable",
   "rights": [
     {
       "status": "REJECTED",
@@ -369,5 +369,5 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380948281"
     }
   ],
-  "updatedAt": "2026-10-24T10:17:49.294Z"
+  "updatedAt": "2026-10-24T10:17:55.217Z"
 }
