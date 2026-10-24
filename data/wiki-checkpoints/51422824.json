@@ -2,10 +2,10 @@
   "pageId": 51422824,
   "title": "Colombian peace process",
   "topic": "Conflict & Security",
-  "status": "DRAFTED",
+  "status": "VALIDATED",
   "revisionId": 1377419400,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377419400",
-  "reason": "draft durably saved before validation",
+  "reason": "local factual, style, length, structure and source audit passed",
   "rights": [
     {
       "status": "REVIEW",
@@ -194,7 +194,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377419400"
     }
   ],
-  "updatedAt": "2026-10-24T08:07:33.334Z",
+  "updatedAt": "2026-10-24T08:07:51.407Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -316,5 +316,8 @@
     "output": 132,
     "total": 2761
   },
-  "validation": null
+  "validation": {
+    "accepted": true,
+    "errors": []
+  }
 }
