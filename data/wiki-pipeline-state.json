@@ -11346,10 +11346,10 @@
       "checkedAt": "2026-10-21T03:11:33.315Z"
     },
     "79549232": {
-      "status": "DRAFTED",
-      "reason": "draft durably saved before validation",
+      "status": "VALIDATED",
+      "reason": "local factual, style, length, structure and source audit passed",
       "revisionId": 1380999323,
-      "checkedAt": "2026-10-24T06:55:04.755Z"
+      "checkedAt": "2026-10-24T06:55:22.661Z"
     },
     "79652447": {
       "status": "NEEDS_REVIEW",
@@ -11610,7 +11610,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-24T06:55:17.544Z",
+  "updatedAt": "2026-10-24T06:55:22.663Z",
   "dailyUsage": {
     "day": "2026-10-23",
     "calls": 293,

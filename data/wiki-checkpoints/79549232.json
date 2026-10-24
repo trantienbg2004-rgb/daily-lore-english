@@ -2,10 +2,10 @@
   "pageId": 79549232,
   "title": "Noirlac Abbey",
   "topic": "Culture",
-  "status": "DRAFTED",
+  "status": "VALIDATED",
   "revisionId": 1380999323,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380999323",
-  "reason": "draft durably saved before validation",
+  "reason": "local factual, style, length, structure and source audit passed",
   "rights": [
     {
       "status": "REVIEW",
@@ -468,7 +468,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380999323"
     }
   ],
-  "updatedAt": "2026-10-24T06:55:04.755Z",
+  "updatedAt": "2026-10-24T06:55:22.662Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -600,5 +600,8 @@
     "output": 1024,
     "total": 4201
   },
-  "validation": null
+  "validation": {
+    "accepted": true,
+    "errors": []
+  }
 }
