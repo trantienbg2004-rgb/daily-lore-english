@@ -279,14 +279,14 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373665813"
     }
   ],
-  "updatedAt": "2026-10-24T05:42:16.941Z",
+  "updatedAt": "2026-10-24T05:42:34.933Z",
   "draft": {
     "variants": {
       "A1-A2": {
         "headline": "What is Uti Possidetis?",
         "pages": [
           {
-            "text": "Uti possidetis is an old term from Roman law. It started as a rule for land disputes. Later, people used it in international law for borders and territory.",
+            "text": "Uti possidetis is an expression that originated in Roman private law as a procedure about land possession. Later, by a misleading analogy, it was transferred to international law, where it has had more than one meaning concerning sovereign rights to territory.",
             "evidenceIds": [
               "P1"
             ]
@@ -304,13 +304,13 @@
             ]
           },
           {
-            "text": "Today, uti possidetis means a rule for drawing borders. When colonies become independent, they often keep their old administrative boundaries as new national borders.",
+            "text": "In recent times, uti possidetis refers to a doctrine for drawing international boundaries. When colonial territories achieve independence or a polity breaks up, the old administrative boundaries between the new states ought to be followed.",
             "evidenceIds": [
               "P4"
             ]
           },
           {
-            "text": "This doctrine helps new states avoid big fights over land. However, it still has many critics who question how well it works in modern times.",
+            "text": "When colonial territories achieve independence, or when a polity breaks up, the old administrative boundaries between the new states ought to be followed in default of a better rule. This doctrine has its critics.",
             "evidenceIds": [
               "P4"
             ]
@@ -357,7 +357,7 @@
         "headline": "The Evolution of Uti Possidetis",
         "pages": [
           {
-            "text": "Uti possidetis emerged within Roman private law as a procedural mechanism addressing land possession before being analogously transposed into international law to govern territorial sovereignty.",
+            "text": "Uti possidetis originated in Roman private law as a procedure concerning land possession before being transferred by a misleading analogy to international law, where all its meanings concern sovereign rights to territory.",
             "evidenceIds": [
               "P1",
               "P12"
@@ -371,14 +371,14 @@
             ]
           },
           {
-            "text": "During the early modern period, European polities adapted the concept to justify territorial acquisition and interpret peace settlements, presuming belligerents retained occupied lands unless stipulated otherwise.",
+            "text": "In the early modern era, some European states used the phrase to justify acquiring territory by occupation and interpreting peace treaties, presuming each party gained a permanent right to the territory it occupied at the conclusion of hostilities unless stipulated otherwise.",
             "evidenceIds": [
               "P3",
               "P15"
             ]
           },
           {
-            "text": "In contemporary international law, uti possidetis juris dictates that newly independent states emerging from decolonization presumptively inherit established administrative boundaries.",
+            "text": "In recent times, uti possidetis refers to a doctrine for drawing international boundaries. When colonial territories achieve independence or a polity breaks up, the old administrative boundaries between the new states ought to be followed in default of a better rule.",
             "evidenceIds": [
               "P4",
               "P17"
@@ -395,11 +395,11 @@
       }
     }
   },
-  "repairAttempts": 0,
+  "repairAttempts": 1,
   "lastUsage": {
-    "input": 2810,
-    "output": 1090,
-    "total": 3900
+    "input": 2934,
+    "output": 522,
+    "total": 3456
   },
   "validation": null
 }
