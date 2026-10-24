@@ -411,7 +411,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380980056"
     }
   ],
-  "updatedAt": "2026-10-24T05:37:33.922Z",
+  "updatedAt": "2026-10-24T05:37:51.894Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -500,7 +500,7 @@
             ]
           },
           {
-            "text": "Projections indicate the Arctic Ocean will likely experience ice-free conditions before 2050—an event unprecedented in the past 700,000 years. This transition jeopardizes ice-dependent apex fauna such as polar bears, while destabilizing billions of dollars of infrastructure anchored in thawing permafrost and challenging the cultural continuity of indigenous populations.",
+            "text": "Projections indicate the Arctic Ocean will likely experience ice-free conditions before 2050, an event without precedent in the last 700,000 years. This transition jeopardizes ice-dependent wildlife such as polar bears, while destabilizing billions of dollars of infrastructure anchored in thawing permafrost and challenging the heritage of indigenous populations.",
             "evidenceIds": [
               "P3"
             ]
@@ -521,11 +521,11 @@
       }
     }
   },
-  "repairAttempts": 0,
+  "repairAttempts": 1,
   "lastUsage": {
-    "input": 2911,
-    "output": 1078,
-    "total": 3989
+    "input": 2755,
+    "output": 137,
+    "total": 2892
   },
   "validation": null
 }
