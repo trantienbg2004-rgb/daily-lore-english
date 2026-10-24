@@ -2,10 +2,10 @@
   "pageId": 407233,
   "title": "Global dimming",
   "topic": "Environment",
-  "status": "DRAFTED",
+  "status": "VALIDATED",
   "revisionId": 1380990938,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380990938",
-  "reason": "draft durably saved before validation",
+  "reason": "local factual, style, length, structure and source audit passed",
   "rights": [
     {
       "status": "REVIEW",
@@ -299,7 +299,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380990938"
     }
   ],
-  "updatedAt": "2026-10-24T09:02:18.879Z",
+  "updatedAt": "2026-10-24T09:02:36.876Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -418,5 +418,8 @@
     "output": 123,
     "total": 2696
   },
-  "validation": null
+  "validation": {
+    "accepted": true,
+    "errors": []
+  }
 }
