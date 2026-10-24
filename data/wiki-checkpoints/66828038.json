@@ -2,10 +2,10 @@
   "pageId": 66828038,
   "title": "Tigrayan peace process",
   "topic": "Conflict & Security",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1357904180,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1357904180",
-  "reason": "2 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -198,5 +198,145 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1357904180"
     }
   ],
-  "updatedAt": "2026-10-24T06:32:00.959Z"
+  "updatedAt": "2026-10-24T06:32:19.646Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "The Long Path to Peace in Tigray",
+        "pages": [
+          {
+            "text": "A major conflict began in Ethiopia in November 2020 between the federal government and leaders in the Tigray Region. Many people suffered greatly during the fighting. Soon, groups and leaders started to suggest ideas and talks to bring peace to the troubled area.",
+            "evidenceIds": [
+              "P1",
+              "P3",
+              "P4"
+            ]
+          },
+          {
+            "text": "In December 2020, African leaders held a special meeting to discuss the crisis. Later, in February 2021, local Tigrayan political parties shared a list of conditions for peace. Other African nations and international groups also tried to help start peaceful talks.",
+            "evidenceIds": [
+              "P1",
+              "P6",
+              "P7"
+            ]
+          },
+          {
+            "text": "As fighting continued, regional forces and international mediators kept pushing for dialogue. In March 2022, the Ethiopian government declared a humanitarian truce. This pause helped allow much-needed aid to travel into the Tigray Region for several months.",
+            "evidenceIds": [
+              "P1",
+              "P11",
+              "P16"
+            ]
+          },
+          {
+            "text": "Even during the truce, tensions remained high over borders and basic services. However, leaders continued looking for ways to talk. African Union envoy Olusegun Obasanjo met with both sides to help them find a political solution through dialogue.",
+            "evidenceIds": [
+              "P13",
+              "P19",
+              "P20"
+            ]
+          },
+          {
+            "text": "Finally, on 2 November 2022, the Ethiopian government and Tigrayan leaders signed a historic peace agreement in South Africa with the African Union. They agreed on disarmament, and a second agreement in Kenya helped put the deal into action.",
+            "evidenceIds": [
+              "P2"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "Efforts and Agreements in the Tigray War",
+        "pages": [
+          {
+            "text": "Armed conflict erupted in Ethiopia in November 2020 following severe political disagreements between the federal government, led by Prime Minister Abiy Ahmed, and the Tigray People's Liberation Front. The war resulted in massive casualties and widespread suffering, prompting early calls for mediation and peace negotiations.",
+            "evidenceIds": [
+              "P1",
+              "P3",
+              "P4"
+            ]
+          },
+          {
+            "text": "Various international actors attempted to mediate the crisis. In December 2020, East African leaders held an emergency summit, and regional Tigrayan parties later published pre-conditions for peace. In mid-2021, a unique mediation group known as A3+1 was formed by African and international countries to support local solutions.",
+            "evidenceIds": [
+              "P1",
+              "P6",
+              "P7",
+              "P11"
+            ]
+          },
+          {
+            "text": "Diplomatic efforts gained momentum when the Ethiopian government declared an indefinite humanitarian truce in March 2022, lasting for five months. Despite this pause, deep disagreements persisted regarding the restoration of public services and control over disputed territories like the Western Zone.",
+            "evidenceIds": [
+              "P1",
+              "P16",
+              "P19",
+              "P20"
+            ]
+          },
+          {
+            "text": "African Union envoy Olusegun Obasanjo engaged separately with both sides, concluding that their differences required a political solution. Leaders from both factions gradually shifted toward formal discussions, facilitated by the African Union and supported by regional diplomats.",
+            "evidenceIds": [
+              "P13"
+            ]
+          },
+          {
+            "text": "On 2 November 2022, the Ethiopian government and Tigrayan leaders officially signed a peace accord in Pretoria, South Africa, mediated by the African Union. The agreement established coordinated disarmament, which was further reinforced by a subsequent implementation meeting in Nairobi, Kenya.",
+            "evidenceIds": [
+              "P2"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "Diplomatic Milestones in the Tigray Peace Process",
+        "pages": [
+          {
+            "text": "The conflict originating in November 2020 between Ethiopia's federal administration and the Tigray People's Liberation Front triggered a severe humanitarian crisis. Immediate international and regional responses sought to establish mediation frameworks, reflecting deep-seated polarization over federalism and central governance.",
+            "evidenceIds": [
+              "P1",
+              "P3",
+              "P4"
+            ]
+          },
+          {
+            "text": "Initial diplomatic interventions included an Intergovernmental Authority on Development summit in December 2020 and structured pre-conditions published by Tigrayan political entities in early 2021. Concurrently, broader multilateral initiatives, notably the A3+1 coalition, emphasized indigenous conflict resolution mechanisms and urged the removal of terrorist designations to facilitate direct dialogue.",
+            "evidenceIds": [
+              "P1",
+              "P6",
+              "P7",
+              "P11"
+            ]
+          },
+          {
+            "text": "The cessation of hostilities advanced significantly with a five-month humanitarian truce declared in March 2022, intended to facilitate aid delivery. Nevertheless, structural impediments persisted, including contentious debates over territorial control in the Western Zone and the restoration of essential public utilities.",
+            "evidenceIds": [
+              "P1",
+              "P16",
+              "P19",
+              "P20"
+            ]
+          },
+          {
+            "text": "African Union envoy Olusegun Obasanjo played a pivotal role by consulting principal stakeholders and reaffirming that the underlying disputes were fundamentally political, necessitating negotiated settlements rather than military solutions.",
+            "evidenceIds": [
+              "P13"
+            ]
+          },
+          {
+            "text": "These cumulative diplomatic efforts culminated on 2 November 2022, when the federal government and Tigrayan leadership executed a formal peace accord in Pretoria under African Union auspices. This agreement mandated structured disarmament and was subsequently consolidated by an implementation pact in Nairobi.",
+            "evidenceIds": [
+              "P2"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 3029,
+    "output": 1502,
+    "total": 4531
+  },
+  "validation": null
 }
