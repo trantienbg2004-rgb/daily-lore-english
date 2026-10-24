@@ -2,10 +2,10 @@
   "pageId": 38497714,
   "title": "Longleaf pine ecosystem",
   "topic": "History & Geography",
-  "status": "DRAFTED",
+  "status": "VALIDATED",
   "revisionId": 1379099622,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379099622",
-  "reason": "draft durably saved before validation",
+  "reason": "local factual, style, length, structure and source audit passed",
   "rights": [
     {
       "status": "REVIEW",
@@ -268,7 +268,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379099622"
     }
   ],
-  "updatedAt": "2026-10-24T08:36:34.809Z",
+  "updatedAt": "2026-10-24T08:36:52.909Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -399,5 +399,8 @@
     "output": 1361,
     "total": 4131
   },
-  "validation": null
+  "validation": {
+    "accepted": true,
+    "errors": []
+  }
 }
