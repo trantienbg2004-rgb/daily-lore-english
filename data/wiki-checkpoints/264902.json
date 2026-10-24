@@ -2,10 +2,10 @@
   "pageId": 264902,
   "title": "Pentathlon",
   "topic": "Sports",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1325352652,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1325352652",
-  "reason": "5 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -282,5 +282,145 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1325352652"
     }
   ],
-  "updatedAt": "2026-10-24T07:15:38.049Z"
+  "updatedAt": "2026-10-24T07:15:56.275Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "The Story of the Pentathlon",
+        "pages": [
+          {
+            "text": "A pentathlon is a sports contest with five events. The name comes from Greek words meaning five and competition. The first pentathlon was held in Ancient Greece as part of the Ancient Olympic Games. Five events took place over one day. These were the long jump, javelin, discus, a short foot race, and wrestling.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "In the ancient games, athletes threw the discus from a raised platform. They used stone weights called halteres to jump further. The foot race was about 190 metres long. Pentathletes trained hard because their skills were useful in war. People thought these athletes were very skilled and beautiful.",
+            "evidenceIds": [
+              "P1",
+              "P3",
+              "P6"
+            ]
+          },
+          {
+            "text": "The modern pentathlon was invented by Pierre de Coubertin. He wanted a sport for a late nineteenth-century soldier. The events included shooting, swimming, fencing, riding horses, and cross country running. Competitors earned points in each event. The winner had the highest total points at the end.",
+            "evidenceIds": [
+              "P2",
+              "P15"
+            ]
+          },
+          {
+            "text": "The modern pentathlon returned at the Olympic Games. The men's individual event took place at every Olympics since 1912. A women's competition started in the year 2000. Over time, some race lengths became shorter. In 2009, the running and shooting events were combined into a single final event.",
+            "evidenceIds": [
+              "P15",
+              "P17",
+              "P19"
+            ]
+          },
+          {
+            "text": "Other types of pentathlons also exist. The classic athletics pentathlon was held in the Olympics from 1906 through 1924. Jim Thorpe won titles in 1912, but lost them for professionalism before getting them back years later. Today, high schools and other meetings still use pentathlons for time constraints.",
+            "evidenceIds": [
+              "P9",
+              "P21"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "The History and Evolution of the Pentathlon",
+        "pages": [
+          {
+            "text": "A pentathlon is a contest featuring five distinct events. The name derives from Greek words combining five and competition. The first documented pentathlon took place in 708 BC at the Ancient Olympic Games in Ancient Greece. Five events were contested over a single day, beginning with the long jump, javelin throwing, and discus throwing, followed by a short foot race and wrestling.",
+            "evidenceIds": [
+              "P1",
+              "P3"
+            ]
+          },
+          {
+            "text": "Ancient pentathletes were considered highly skilled, and their training often served as military preparation because the five events were thought useful in battle. Historical variations included throwing the discus from a raised platform and using stone weights called halteres to extend the long jump. Aristotle praised pentathletes in Rhetoric for their exceptional physical endurance and beauty.",
+            "evidenceIds": [
+              "P1",
+              "P3",
+              "P6"
+            ]
+          },
+          {
+            "text": "With the revival of the modern Olympic Games, the pentathlon returned in new formats. Pierre de Coubertin invented the modern pentathlon to reflect the skills of a late-nineteenth-century soldier. This version featured shooting, swimming, fencing, equestrianism, and cross country running. Competitors received points based on their performance, with the overall winner determined by the highest total points.",
+            "evidenceIds": [
+              "P2",
+              "P15"
+            ]
+          },
+          {
+            "text": "The modern pentathlon debuted at the 1912 Olympics and has remained on the program ever since, with a women's competition introduced in 2000. Although the sport remained largely unchanged for decades, organizers reduced the swimming and cross-country distances in 2000. In 2009, the UIPM proposed combining the running and shooting disciplines into a continuous chase event using laser shooting later introduced in 2011.",
+            "evidenceIds": [
+              "P15",
+              "P17",
+              "P19"
+            ]
+          },
+          {
+            "text": "Other variations emerged over time. The classic athletics pentathlon featured in the Olympic Games from 1906 through 1924, during which Jim Thorpe won titles that were later restored by the International Olympic Committee. Additionally, military and high school formats adapted the multi-event concept to fit modern training needs and time constraints.",
+            "evidenceIds": [
+              "P9",
+              "P12",
+              "P21"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "Origins and Transformations of the Pentathlon",
+        "pages": [
+          {
+            "text": "Originating from the Greek terms for five and competition, a pentathlon is an athletic contest comprising five distinct events. The earliest documented instance occurred in 708 BC at the Ancient Olympic Games. Conducted over a single day, the competition proceeded from the long jump, javelin throw, and discus throw to a short foot race and concluding with wrestling.",
+            "evidenceIds": [
+              "P1",
+              "P3"
+            ]
+          },
+          {
+            "text": "Ancient Greek pentathletes enjoyed high prestige. Their training formed an integral component of military service, as the disciplines were deemed directly applicable to warfare. Historical records indicate specific techniques, such as throwing the discus from a raised platform and employing stone weights known as halteres to augment jump distances. Aristotle famously commended pentathletes in Rhetoric for possessing bodies capable of enduring exhaustive efforts.",
+            "evidenceIds": [
+              "P1",
+              "P3",
+              "P6"
+            ]
+          },
+          {
+            "text": "During the revival of the Olympic Games, the pentathlon reappeared in distinct formats. Pierre de Coubertin conceived the modern pentathlon to emulate the competencies required by a nineteenth-century soldier behind enemy lines. This discipline comprises fencing, pistol shooting, freestyle swimming, show jumping with unfamiliar horses, and cross-country running. Competitors accumulate points across all five events, culminating in an overall winner determined by the highest aggregate score.",
+            "evidenceIds": [
+              "P2",
+              "P15"
+            ]
+          },
+          {
+            "text": "The modern pentathlon has persisted as a staple of the Olympic program since 1912, eventually incorporating a women's individual competition in 2000. Substantive format modifications occurred in 2000 with shortened swimming and running distances. Furthermore, the 2009 introduction of a combined running and shooting event transformed the concluding phase into a cumulative pursuit race, supplemented by the adoption of laser shooting in 2011.",
+            "evidenceIds": [
+              "P15",
+              "P17",
+              "P19"
+            ]
+          },
+          {
+            "text": "Alternative historical iterations included the classic athletics pentathlon, contested at the Olympic Games from 1906 through 1924. This variant notably featured Jim Thorpe's 1912 victories, which faced temporary revocation due to professionalism before subsequent restoration. Over time, specialized adaptations emerged, including military, naval, and high school formats designed to accommodate specific training objectives and scheduling constraints.",
+            "evidenceIds": [
+              "P9",
+              "P12",
+              "P14",
+              "P20",
+              "P21"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2933,
+    "output": 1403,
+    "total": 4336
+  },
+  "validation": null
 }
