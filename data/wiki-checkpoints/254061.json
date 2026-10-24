@@ -2,10 +2,10 @@
   "pageId": 254061,
   "title": "Timbuktu",
   "topic": "History & Geography",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1380708474,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380708474",
-  "reason": "12 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -434,5 +434,130 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380708474"
     }
   ],
-  "updatedAt": "2026-10-24T03:31:13.089Z"
+  "updatedAt": "2026-10-24T03:31:26.292Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "The Ancient City of Timbuktu",
+        "pages": [
+          {
+            "text": "Timbuktu is an ancient city in Mali. It is located north of the Niger River. The city has a population of around eighty-four thousand people in the 2023 census.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "The city started as a seasonal settlement and became permanent early in the 12th century. Later, it became part of the Mali Empire early in the 14th century.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "Timbuktu became a famous center of learning and trade. Scholars studied many subjects here, including Islamic studies, history, law, and medicine.",
+            "evidenceIds": [
+              "P3",
+              "P7"
+            ]
+          },
+          {
+            "text": "The city is surrounded by sand dunes, and the streets are covered in sand. The weather is very hot and dry throughout most of the year.",
+            "evidenceIds": [
+              "P9",
+              "P10"
+            ]
+          },
+          {
+            "text": "In recent history, the city has faced threats from extremist groups. Local and international communities have made efforts to preserve its important heritage.",
+            "evidenceIds": [
+              "P4"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "Exploring the History and Geography of Timbuktu",
+        "pages": [
+          {
+            "text": "Timbuktu is an ancient city situated in Mali, located twenty kilometers north of the Niger River. According to the 2023 census, the city serves as the capital of the Tombouctou Region and has a population of around eighty-four thousand people.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Archaeological evidence shows prehistoric settlements in the region before the city grew in medieval times. It began as a seasonal settlement and became permanent in the twelfth century, later flourishing from trade in salt, gold, and ivory after a visit by Mansa Musa.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "During its golden age under the Mali Empire, Timbuktu became a major scholarly center in Africa. Scholars gathered at the campuses of the Sankoré Madrasah to study subjects like history, law, science, and medicine.",
+            "evidenceIds": [
+              "P3",
+              "P7"
+            ]
+          },
+          {
+            "text": "Geographically, Timbuktu is located on the southern edge of the Sahara, surrounded by sand dunes and dust. The local climate is classified as a hot desert climate, featuring extremely hot and dry weather throughout most of the year.",
+            "evidenceIds": [
+              "P9",
+              "P10"
+            ]
+          },
+          {
+            "text": "In recent history, Timbuktu has faced serious security threats and a total blockade by armed groups. Despite these challenges, local and international communities have continued their efforts to preserve its historic cultural sites.",
+            "evidenceIds": [
+              "P4",
+              "P8"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "The Legacy and Evolution of Timbuktu",
+        "pages": [
+          {
+            "text": "Timbuktu is an ancient urban center situated in Mali, positioned twenty kilometers north of the Niger River. It functions as the administrative capital of the Tombouctou Region, accommodating a population of approximately eighty-four thousand residents based on the 2023 census data.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "While archaeological surveys indicate prehistoric settlements predating the medieval era, the settlement transitioned from a seasonal site to a permanent one early in the twelfth century. Following strategic shifts in trade routes and Mansa Musa's engagement, the city flourished through commerce in salt, gold, and ivory.",
+            "evidenceIds": [
+              "P2",
+              "P6"
+            ]
+          },
+          {
+            "text": "Under the aegis of the Mali Empire, Timbuktu evolved into a preeminent academic and cultural focal point in Africa. The institutional framework of the Sankoré Madrasah and extensive scholarly networks fostered advanced studies spanning jurisprudence, history, natural sciences, and medicine.",
+            "evidenceIds": [
+              "P3",
+              "P7"
+            ]
+          },
+          {
+            "text": "The surrounding environment is characterized by a hot desert climate under the Köppen classification, featuring extreme thermal variations and significant desertification pressures. Persistent seasonal winds generate the Harmattan Haze, which limits visibility as dust settles across the urban landscape.",
+            "evidenceIds": [
+              "P9",
+              "P10"
+            ]
+          },
+          {
+            "text": "Contemporary developments include severe socio-economic disruptions and security threats stemming from extremist faction activities and blockades. These ongoing challenges have prompted concerted local and international preservation initiatives aimed at safeguarding the city's vulnerable cultural heritage.",
+            "evidenceIds": [
+              "P4",
+              "P8"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2950,
+    "output": 1259,
+    "total": 4209
+  },
+  "validation": null
 }
