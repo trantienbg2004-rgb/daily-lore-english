@@ -9182,10 +9182,10 @@
       "checkedAt": "2026-10-21T13:02:50.599Z"
     },
     "60086340": {
-      "status": "FETCHED",
-      "reason": "pinned-source-ready",
+      "status": "REJECTED",
+      "reason": "insufficient-source-text-or-embedded-images",
       "revisionId": 1375136460,
-      "checkedAt": "2026-10-24T04:04:43.287Z"
+      "checkedAt": "2026-10-24T04:04:48.513Z"
     },
     "60284169": {
       "status": "RETRY_LATER",
@@ -10202,7 +10202,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-24T04:04:43.297Z",
+  "updatedAt": "2026-10-24T04:04:48.514Z",
   "dailyUsage": {
     "day": "2026-10-23",
     "calls": 166,
