@@ -2,9 +2,225 @@
   "pageId": 221863,
   "title": "Inter-Parliamentary Union",
   "topic": "Politics",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1381082093,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381082093",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-24T10:44:30.090Z"
+  "reason": "3 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:Inter-Parliamentary Union Members.png",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/81/Inter-Parliamentary_Union_Members.png/960px-Inter-Parliamentary_Union_Members.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Inter-Parliamentary Union Members.png",
+        "caption": "Map of IPU member states",
+        "alt": "",
+        "description": "Members of the Inter-Parliamentary Union",
+        "date": "2009-07-06",
+        "section": "Members",
+        "position": 0,
+        "provenance": {
+          "credit": "Joowwww",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Inter-Parliamentary_Union_Members.png",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Inter-Parliamentary_Union",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381082093",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:IPU Building2010.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/03/IPU_Building2010.jpg/960px-IPU_Building2010.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:IPU Building2010.jpg",
+        "caption": "Headquarters of the IPU in Geneva (2010)",
+        "alt": "",
+        "description": "Interparlamentary Union (IPU), Secretariat in Geneva (Switzerland)",
+        "date": "2010-10-19",
+        "section": "Organs",
+        "position": 1,
+        "provenance": {
+          "credit": "Hadi",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:IPU_Building2010.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Inter-Parliamentary_Union",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381082093",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:Berlin Plaque Medal 1908 Inter-Parliamentary Union.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0e/Berlin_Plaque_Medal_1908_Inter-Parliamentary_Union.jpg/960px-Berlin_Plaque_Medal_1908_Inter-Parliamentary_Union.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Berlin Plaque Medal 1908 Inter-Parliamentary Union.jpg",
+        "caption": "Art Nouveau plaque-medallion for the 15th Inter-Parliamentary Conference 1908 in Berlin",
+        "alt": "",
+        "description": "Art Nouveau bronze medallion 47 x 68 mm Wilhelm II, Deutscher Kaiser, 1888 - 1918 Unformed portrait l., 3 lines in exergue: \"WILHELM II. DEUTSCHER KAISER KÖNIG V. PREUSSEN\"/ 2 lines divided by a Peace Angel facing, and standing on 2 globes showing different views. A palm branch in his r., and a scroll inscribed \"PEACE\" in his l. hand: \"\"BERLIN 1908 REICHS-TAG\". L., and r., and curved above: \"+ 15. KONFERENZ DER INTERPARLAMENTARISCHEN UNION +\". Wurzbach 9696. Medallist: R. (Rudolf) Otto, 1938 Dresden - 1913 Berlin Condition : EXTREMELY FINE+.",
+        "date": "1908-12-31",
+        "section": "Assemblies",
+        "position": 2,
+        "provenance": {
+          "credit": "Berlin-George",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Berlin_Plaque_Medal_1908_Inter-Parliamentary_Union.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Inter-Parliamentary_Union",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381082093",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "5dbd131ba5a9590ee2ffc2783405f3e824178c51bf268c94a3effcabd103474f",
+      "heading": "Lead",
+      "excerpt": "The Inter-Parliamentary Union (IPU; French: Union Interparlementaire, UIP) is an international organization of national parliaments. Its pri",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381082093"
+    },
+    {
+      "id": "P2",
+      "hash": "86bd3426eee16d0d0867eb9b4e7783067f9da13776152418a3b9f80a1178fc42",
+      "heading": "Lead",
+      "excerpt": "The organization was established in 1889 as the Inter-Parliamentary Conference. Its founders were statesmen Frédéric Passy of France and Wil",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381082093"
+    },
+    {
+      "id": "P3",
+      "hash": "f1da0c95aa61b61e3bfdb95b2603feda57d9aa212b8fbfcfc8c746a4ee809dde",
+      "heading": "Lead",
+      "excerpt": "The IPU facilitates the development of international law and institutions, strengthening the foundations and enhancing the vision for peace ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381082093"
+    },
+    {
+      "id": "P4",
+      "hash": "8a3c536a51ac2ea735170d616506c7c66d3b56806e4b9830f56c03c86615fce3",
+      "heading": "History",
+      "excerpt": "The organisation's initial objective was the arbitration of conflicts. The IPU played an important part in setting up the Permanent Court of",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381082093"
+    },
+    {
+      "id": "P5",
+      "hash": "1cfcfbf19794a16af53d1356499f327e96b5c8547ff4541b397250bc30a2c454",
+      "heading": "Members",
+      "excerpt": "At its founding on 30 June 1889, the Inter-Parliamentary Conference had eight members: Austria-Hungary, Belgium, Denmark, France, Italy, Lib",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381082093"
+    },
+    {
+      "id": "P6",
+      "hash": "1f706f8a77642d2a557e207e6d2fadbb474369be06f66aa000f62c4455ada0f6",
+      "heading": "Assemblies",
+      "excerpt": "The Assembly is the IPU's main political body through which the IPU's Member Parliaments adopt parliamentary resolutions on global issues. I",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381082093"
+    },
+    {
+      "id": "P7",
+      "hash": "2a332625b595235108aeee88f4a6098b286953ad92a4e9c87aaf717aaafd356a",
+      "heading": "Amendments to the Statutes",
+      "excerpt": "Any proposal to amend the Statutes shall be submitted in writing to the Secretariat of the Union at least three months before the meeting of",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381082093"
+    },
+    {
+      "id": "P8",
+      "hash": "961a344e9942f4cdbe66deb19b81c0ba20dc855dd8182b6eabb7473768c4859b",
+      "heading": "The IPU and the United Nations",
+      "excerpt": "The IPU marked the 50th anniversary of the United Nations, in 1995, by holding a special session in the General Assembly Hall before the sta",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381082093"
+    },
+    {
+      "id": "P9",
+      "hash": "d74baab1bf310d0c190e5b9c81db00f98914b8a7164c6035f196142d8b9df1fd",
+      "heading": "Fourth World Conference of Speakers of Parliament",
+      "excerpt": "The fourth world conference on UN 70th anniversary marked by Ban Ki-Moon as \"UN70\" was organised in September 2015 where Speakers of all IPU",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381082093"
+    },
+    {
+      "id": "P10",
+      "hash": "492f8231b4a51ce3d2c2287f8c1889ab2e4377645ef873e57b19c219b83d52df",
+      "heading": "Members",
+      "excerpt": "It is the duty of the Members of the IPU to submit the resolutions of the IPU within their respective Parliament, in the most appropriate fo",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381082093"
+    },
+    {
+      "id": "P11",
+      "hash": "af19374d1a9092ac42eaedbaae01ecb856edbf420bf7e0bdd2af618bdcb1f1ee",
+      "heading": "Members",
+      "excerpt": "Almost all countries have a parliament member of IPU, with the notable exception of the United States, although the 12th (1904), the 23rd (1",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381082093"
+    },
+    {
+      "id": "P12",
+      "hash": "4cf7c35614d99d0fe08fa6e848180527ed94c6411438bcfc56b97ae861b37d85",
+      "heading": "Amendments to the Statutes",
+      "excerpt": "Any sub-amendments shall be submitted in writing to the Secretariat of the Union at least six weeks before the meeting of the Assembly. The ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381082093"
+    },
+    {
+      "id": "P13",
+      "hash": "bbcbed0ea6e677bfb6cea2f84ec9ed3ea331bfaf10b0c8302c912c7e3d9e67f7",
+      "heading": "Amendments to the Statutes",
+      "excerpt": "After hearing the opinion of the Governing Council, expressed through a simple majority vote, the Assembly shall decide on such proposals by",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381082093"
+    },
+    {
+      "id": "P14",
+      "hash": "642e437604e308fa1a883670f85081e8327336edd224258337e633a7801a99d9",
+      "heading": "The IPU and the United Nations",
+      "excerpt": "The following year (1999) the Secretary-General reported on an increased number of areas of cooperation, the issue was debated for an entire",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381082093"
+    },
+    {
+      "id": "P15",
+      "hash": "5b8f90103ee3ffe326f6a8a74678831ef1c9ac989a6eabe77313491d09ba5d4f",
+      "heading": "The IPU and the United Nations",
+      "excerpt": "Following another report, and another half-day debate, the General Assembly welcomed the IPU declaration entitled \"The Parliamentary vision ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381082093"
+    },
+    {
+      "id": "P16",
+      "hash": "fe6c67fbd0c6cfbb5bdba91558b1ea338a68acf426c0f03f460f2927c072def8",
+      "heading": "The IPU and the United Nations",
+      "excerpt": "In the Resolution 59/19, Cooperation between the United Nations and the Inter-Parliamentary Union, the UN General Assembly takes note of the",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381082093"
+    },
+    {
+      "id": "P17",
+      "hash": "6e26d80846388aa0d6cca3a9bf78709308e8ba10e2261734b9fcf30fce443648",
+      "heading": "The IPU and the United Nations",
+      "excerpt": "The final declaration of the Second World Conference of Speakers of Parliament, hosted at United Nations headquarters, took place in Septemb",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381082093"
+    },
+    {
+      "id": "P18",
+      "hash": "62a7be39a9fd56415ba69ef761b158ebbf8c5efb252f36eb3956ac3e62d681f6",
+      "heading": "The IPU and the United Nations",
+      "excerpt": "In the Resolution adopted by the UN General Assembly, 61/6, Cooperation between the United Nations and the Inter-Parliamentary Union, on 27 ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381082093"
+    },
+    {
+      "id": "P19",
+      "hash": "9221b6c526302c3fc196674f8323791cc68a37a824bab58bbf5daf6a120b81bd",
+      "heading": "The IPU and the United Nations",
+      "excerpt": "Every year during the fall session of the General Assembly the IPU organises a Parliamentary Hearing. A resolution on cooperation between th",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381082093"
+    },
+    {
+      "id": "P20",
+      "hash": "b21c4a27f5e476b8f18143f9256f7179dd0952779e5c01b0c610998bd0131b08",
+      "heading": "The IPU and the United Nations",
+      "excerpt": "UN and the IPU cooperate closely in various fields, in particular peace and security, economic and social development, international law, hu",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381082093"
+    }
+  ],
+  "updatedAt": "2026-10-24T10:44:35.346Z"
 }
