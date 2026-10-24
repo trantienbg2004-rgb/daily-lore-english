@@ -346,7 +346,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375258429"
     }
   ],
-  "updatedAt": "2026-10-24T08:12:13.559Z",
+  "updatedAt": "2026-10-24T08:12:31.679Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -397,7 +397,7 @@
             ]
           },
           {
-            "text": "Legal frameworks have been established to protect these sites. In British law, an ancient monument is an early structure worthy of preservation due to its archaeological interest. Over time, legislation like the 1882 and 1979 acts granted governments the power to legally safeguard monuments under threat.",
+            "text": "Legal frameworks have been established to protect these sites. In British law, an ancient monument is an early historical structure worthy of preservation due to its archaeological interest. Over time, legislation like the Ancient Monuments Protection Act 1882 and the Ancient Monuments and Archaeological Areas Act granted governments the power to legally safeguard monuments under threat.",
             "evidenceIds": [
               "P2",
               "P5"
@@ -468,11 +468,11 @@
       }
     }
   },
-  "repairAttempts": 0,
+  "repairAttempts": 1,
   "lastUsage": {
-    "input": 2330,
-    "output": 949,
-    "total": 3279
+    "input": 2196,
+    "output": 164,
+    "total": 2360
   },
   "validation": null
 }
