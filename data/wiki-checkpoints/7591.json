@@ -2,10 +2,10 @@
   "pageId": 7591,
   "title": "Cholera",
   "topic": "Health",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1379078675,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379078675",
-  "reason": "12 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -444,5 +444,135 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379078675"
     }
   ],
-  "updatedAt": "2026-10-24T03:37:27.486Z"
+  "updatedAt": "2026-10-24T03:37:40.825Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "What is Cholera?",
+        "pages": [
+          {
+            "text": "Cholera is a serious infection in the small intestine. It comes from some types of bacteria found in water and food. People can get very sick with watery diarrhea. This can lead to fast and dangerous loss of water in the body.",
+            "evidenceIds": [
+              "P1",
+              "P2"
+            ]
+          },
+          {
+            "text": "The illness spreads mostly through unsafe water and food with bacteria. Bad sanitation and poverty are big risk factors. Humans are the only known host for these bacteria. Undercooked shellfish can also be a common source of the disease.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "Doctors treat cholera mainly with special oral rehydration salts. Patients must replace lost fluids and body salts quickly. In very bad cases, people might need fluids through a vein and helpful medicines called antibiotics to get better.",
+            "evidenceIds": [
+              "P4"
+            ]
+          },
+          {
+            "text": "We can stop cholera with better sanitation and clean drinking water. Oral vaccines give good protection for about six months. People who survive an episode of the illness usually have long lasting immunity for at least three years.",
+            "evidenceIds": [
+              "P3",
+              "P5"
+            ]
+          },
+          {
+            "text": "Cholera still affects millions of people around the world every year. It causes many deaths, especially in places without clean water. Seven major pandemics have happened in history. Today, the disease remains a risk in parts of Africa and Asia.",
+            "evidenceIds": [
+              "P5"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "Understanding Cholera and Prevention",
+        "pages": [
+          {
+            "text": "Cholera is an intestinal infection caused by specific strains of Vibrio cholerae bacteria. While many infected individuals experience mild symptoms, severe cases involve massive amounts of watery diarrhea and vomiting. Without prompt medical care, rapid dehydration and electrolyte imbalances can quickly become fatal.",
+            "evidenceIds": [
+              "P1",
+              "P6"
+            ]
+          },
+          {
+            "text": "The bacteria spread primarily through water and food contaminated with human waste. Poor sanitation, crowded conditions, and a lack of clean drinking water create high risk environments. Consumption of undercooked shellfish is another frequent transmission route in various coastal regions.",
+            "evidenceIds": [
+              "P2",
+              "P7"
+            ]
+          },
+          {
+            "text": "Medical treatment focuses on quick rehydration using oral rehydration salts to replace lost fluids and essential minerals. Rice based solutions are preferred by health experts. In severe situations, patients require intravenous fluids and targeted antibiotics based on sensitivity testing.",
+            "evidenceIds": [
+              "P4"
+            ]
+          },
+          {
+            "text": "Prevention relies heavily on improving water, sanitation, and hygiene infrastructure. Oral vaccines offer temporary protection, and survivors often retain immunity for several years. Simple local methods, such as folding used sari cloth to filter drinking water, have also successfully reduced transmission rates in developing regions.",
+            "evidenceIds": [
+              "P3",
+              "P5",
+              "P17"
+            ]
+          },
+          {
+            "text": "Globally, cholera continues to cause millions of infections and tens of thousands of deaths annually. Seven pandemics have occurred since historical records began, with the latest ongoing since 1961. Outbreaks frequently strike vulnerable areas in Africa and Asia, especially during rainy seasons when water supplies face contamination risks.",
+            "evidenceIds": [
+              "P5",
+              "P15"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "Epidemiology and Clinical Dynamics of Cholera",
+        "pages": [
+          {
+            "text": "Cholera is an acute diarrheal infection caused by ingestion of water or food contaminated with the bacterium Vibrio cholerae. Clinical manifestations range from asymptomatic carriage to profuse, watery diarrhea characterized by a distinctive rice water appearance. The elaboration of toxins leads to rapid fluid and electrolyte depletion, precipitating severe dehydration and potential circulatory collapse if untreated.",
+            "evidenceIds": [
+              "P1",
+              "P2",
+              "P6"
+            ]
+          },
+          {
+            "text": "Transmission dynamics are heavily influenced by environmental and socioeconomic factors, with inadequate sanitation and compromised water infrastructure serving as primary drivers. The pathogen frequently persists in aquatic reservoirs, associating with zooplankton and shellfish. Furthermore, climate change has been implicated in the increasing frequency and intensity of modern global outbreaks.",
+            "evidenceIds": [
+              "P2",
+              "P7"
+            ]
+          },
+          {
+            "text": "Host susceptibility is modulated by various physiological parameters, including gastric acidity levels, blood type O predisposition, and baseline immune status. Upon ingestion, surviving bacteria traverse the acidic gastric environment, downregulating metabolic processes before penetrating the intestinal mucus layer to colonize the epithelial walls of the small intestine.",
+            "evidenceIds": [
+              "P8",
+              "P9"
+            ]
+          },
+          {
+            "text": "Therapeutic intervention prioritizes prompt oral rehydration therapy to restore electrolyte balance, supplemented by nutritional continuity and targeted antimicrobial therapy in severe clinical presentations. Surveillance systems and robust water, sanitation, and hygiene protocols remain paramount for containing seasonal outbreaks and monitoring emerging antibiotic resistance patterns globally.",
+            "evidenceIds": [
+              "P4",
+              "P11",
+              "P15",
+              "P18"
+            ]
+          },
+          {
+            "text": "Historically, cholera has manifested in seven distinct global pandemics, continuing to burden developing nations across Africa and Southeast Asia with substantial morbidity and mortality. Despite historical milestones in epidemiological mapping pioneered by John Snow, the disease persists as a significant public health challenge in impoverished regions lacking advanced water treatment facilities.",
+            "evidenceIds": [
+              "P5"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2652,
+    "output": 1009,
+    "total": 3661
+  },
+  "validation": null
 }
