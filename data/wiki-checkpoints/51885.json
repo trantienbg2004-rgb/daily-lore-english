@@ -2,10 +2,10 @@
   "pageId": 51885,
   "title": "Multiculturalism",
   "topic": "Society",
-  "status": "DRAFTED",
+  "status": "VALIDATED",
   "revisionId": 1381353217,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381353217",
-  "reason": "draft durably saved before validation",
+  "reason": "local factual, style, length, structure and source audit passed",
   "rights": [
     {
       "status": "REVIEW",
@@ -664,7 +664,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381353217"
     }
   ],
-  "updatedAt": "2026-10-24T05:15:56.472Z",
+  "updatedAt": "2026-10-24T05:16:14.589Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -791,5 +791,8 @@
     "output": 1211,
     "total": 4009
   },
-  "validation": null
+  "validation": {
+    "accepted": true,
+    "errors": []
+  }
 }
