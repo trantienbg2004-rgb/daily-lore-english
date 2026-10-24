@@ -2,9 +2,177 @@
   "pageId": 3241251,
   "title": "Social threefolding",
   "topic": "Society",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1380005981,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380005981",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-24T11:04:59.496Z"
+  "reason": "1 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:Vortragsplakat.jpg",
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/7/76/Vortragsplakat.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "fileTitle": "File:Vortragsplakat.jpg",
+        "caption": "Threefolding poster. 30 June 1919",
+        "alt": "",
+        "description": "flyer of the Association for Social Threefolding, 1919",
+        "date": "5 January 2007 (original upload date)",
+        "section": "Historical origins",
+        "position": 0,
+        "provenance": {
+          "credit": "The original uploader was GS at German Wikipedia.",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Vortragsplakat.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Social_threefolding",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380005981",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "148bbf5bb92ad694f3a62f6106f0dfa9ed017497ecc5c549a712c05104e2eb1a",
+      "heading": "Lead",
+      "excerpt": "Social threefolding is a social theory which originated in the early 20th century from the work of Rudolf Steiner. Of central importance is ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380005981"
+    },
+    {
+      "id": "P2",
+      "hash": "63379c8aaa81c696f4069f072fa2438edd03c76d1f5bbac9f51a299c71891952",
+      "heading": "Historical origins",
+      "excerpt": "In 1917, during the First World War, Steiner first proposed what he often called the \"threefoldment of the social organism.\" Then in 1919, d",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380005981"
+    },
+    {
+      "id": "P3",
+      "hash": "2ffebe2c817a0f1f3629542011ab52e2f8b7dd1b8408902fc83cc3c471c6e97a",
+      "heading": "Historical origins",
+      "excerpt": "Steiner suggested the cooperative independence of these three societal realms could be achieved both through relatively gradual, small-scale",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380005981"
+    },
+    {
+      "id": "P4",
+      "hash": "7277bd9f0b44eceae1483d797cc360cc89aef97b3528f9da90265fc5029f595e",
+      "heading": "Historical origins",
+      "excerpt": "Steiner rejected all ideology, characterizing it as a restriction and imposition on what lives in people. Anthroposophy has its own politica",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380005981"
+    },
+    {
+      "id": "P5",
+      "hash": "611d787b417a934c75fd04986e345aca5e93087ea8c419e6c06c3d7a8cd1513a",
+      "heading": "Historical origins",
+      "excerpt": "Instead, Steiner sought to create conditions whereby people themselves could act creatively within the economy (through what he called assoc",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380005981"
+    },
+    {
+      "id": "P6",
+      "hash": "135aa531c8a2415dcd2183b0f418b8d3697d4bfdbb089e521c820d1330799ff6",
+      "heading": "Reception",
+      "excerpt": "According to Cees Leijenhorst, \"Steiner outlined his vision of a new political and social philosophy that avoids the two extremes of capital",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380005981"
+    },
+    {
+      "id": "P7",
+      "hash": "8ffd50de81aa3c6e880ff7bbf6c7822a6aa73dbeb810c85378cca79d3ac0ed8c",
+      "heading": "Three realms of society",
+      "excerpt": "Steiner suggested the three would only become mutually corrective and function together in a healthy way when each was granted sufficient in",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380005981"
+    },
+    {
+      "id": "P8",
+      "hash": "d6af16341cbedbc2ea55f15e88133d793d9c4307839ae9ed611a311b8b054a10",
+      "heading": "Separation between the state and cultural life",
+      "excerpt": "Examples: A government should not be able to control culture; i.e., how people think, learn, or worship. A particular religion or ideology s",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380005981"
+    },
+    {
+      "id": "P9",
+      "hash": "c975df7e8336af22b411f0578a2322ba8ffeec7a7bf7d2969408380a42dfff0f",
+      "heading": "Separation between the economy and cultural life",
+      "excerpt": "Examples: The fact that places of worship do not make the ability to enter and participate depend on the ability to pay, and that libraries ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380005981"
+    },
+    {
+      "id": "P10",
+      "hash": "bffbffbfe2514c1efc6212d6c37f8be592f39b2c5ca74802ad0705300736031c",
+      "heading": "Separation between the state and the economy",
+      "excerpt": "Examples: People and businesses should be prevented from buying politicians and laws. A politician shouldn't be able to parlay his political",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380005981"
+    },
+    {
+      "id": "P11",
+      "hash": "0658257670f7d011fa37c41a22d0018a685ea59536b0d58ae708c00c80c58acf",
+      "heading": "Cooperative economic life",
+      "excerpt": "Steiner advocated cooperative forms of capitalism, or what today is sometimes called steward ownership and stakeholder capitalism, because h",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380005981"
+    },
+    {
+      "id": "P12",
+      "hash": "faffd864ff862d15f0da4504fef0ed18c9c9d1a826601485e1d98d321a1eddbf",
+      "heading": "Economic support for culture",
+      "excerpt": "A central idea in social threefolding is that the economic sphere should donate funds to support cultural and educational institutions that ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380005981"
+    },
+    {
+      "id": "P13",
+      "hash": "b4dd59369742537a02a3aacc67c5309caadff523b553d929541b4121c1ee5d65",
+      "heading": "Education's relation to the state and the economy",
+      "excerpt": "For Steiner, separation of the cultural sphere from the political and economic spheres meant education should be available to all children r",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380005981"
+    },
+    {
+      "id": "P14",
+      "hash": "528674554a40f1b5d82d049b830c60f5d35ffbe52507becc2b61d0e7b7966c47",
+      "heading": "Politicians working out of a threefold social vision",
+      "excerpt": "Nicanor Perlas, winner of the Right Livelihood Award, in 2009 announced candidacy for the presidency of the Philippines. Perlas has written ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380005981"
+    },
+    {
+      "id": "P15",
+      "hash": "5307e3f7bba86bd81cc6bf771961129ddf9e258ac6e8fc7df33ed033c7827f71",
+      "heading": "Historical origins",
+      "excerpt": "Steiner described how the three spheres had been growing independent over thousands of years, evolving from ancient theocracies which govern",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380005981"
+    },
+    {
+      "id": "P16",
+      "hash": "ea41eb778fbda970746521fbdcae1afb7fa6f8ab60f2cc49381b4f5fa809f0e7",
+      "heading": "Historical origins",
+      "excerpt": "Steiner saw this trend as evolving towards greater independence of the three spheres in modern times. However now this evolution must be tak",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380005981"
+    },
+    {
+      "id": "P17",
+      "hash": "42f853b31c6c06d85e6d8ce8e8e7cffbc4c0fb9427ce19ab2863dc21ad200e3c",
+      "heading": "Historical origins",
+      "excerpt": "A more specific example: Arthur Salter, 1st Baron Salter suggests governments frequently fail when they begin to give \"discretionary, partic",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380005981"
+    },
+    {
+      "id": "P18",
+      "hash": "83db7cb334162cfd687dafe7cb1de746156daecd76c0367316357fe5a5963c7c",
+      "heading": "Historical origins",
+      "excerpt": "Many concrete reform proposals to advance a \"threefold social order\" at various scales have been advanced since 1919. Some intentionally coo",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380005981"
+    },
+    {
+      "id": "P19",
+      "hash": "45570c6dbcce97bdbc9de647603f87145fdacbb3d3ab56ad772c45cea6c3a8b2",
+      "heading": "Historical origins",
+      "excerpt": "Prior to the end of World War I, Steiner spoke increasingly often of the dangerous tensions inherent in the contemporary societal structures",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380005981"
+    },
+    {
+      "id": "P20",
+      "hash": "70cbc8b5b985775034bb8d1dfd2c3b26153d349ff783ac308bcefb0b40981a31",
+      "heading": "Historical origins",
+      "excerpt": "After the failure of this political initiative, Steiner ceased lecturing on the subject, except for a series of economics lectures given in ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380005981"
+    }
+  ],
+  "updatedAt": "2026-10-24T11:05:05.073Z"
 }
