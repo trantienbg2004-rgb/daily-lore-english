@@ -2,10 +2,10 @@
   "pageId": 25426162,
   "title": "International North–South Transport Corridor",
   "topic": "Economy",
-  "status": "DRAFTED",
+  "status": "VALIDATED",
   "revisionId": 1379505082,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379505082",
-  "reason": "draft durably saved before validation",
+  "reason": "local factual, style, length, structure and source audit passed",
   "rights": [
     {
       "status": "REVIEW",
@@ -244,7 +244,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379505082"
     }
   ],
-  "updatedAt": "2026-10-24T08:38:01.229Z",
+  "updatedAt": "2026-10-24T08:38:19.257Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -366,5 +366,8 @@
     "output": 330,
     "total": 3386
   },
-  "validation": null
+  "validation": {
+    "accepted": true,
+    "errors": []
+  }
 }
