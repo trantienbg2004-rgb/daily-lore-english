@@ -2,10 +2,10 @@
   "pageId": 254206,
   "title": "Chimney sweep",
   "topic": "Health",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1380793173,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380793173",
-  "reason": "6 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -279,5 +279,146 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380793173"
     }
   ],
-  "updatedAt": "2026-10-24T06:56:41.709Z"
+  "updatedAt": "2026-10-24T06:57:02.582Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "The History of Chimney Sweeps",
+        "pages": [
+          {
+            "text": "A chimney sweep is a person who cleans soot and creosote from chimneys. This stops dangerous fires from starting in the house. Long ago in Great Britain, master sweeps used young boys to climb inside narrow chimneys and clean them.",
+            "evidenceIds": [
+              "P1",
+              "P2"
+            ]
+          },
+          {
+            "text": "The work was very hard and dangerous for the children. Chimneys were often very narrow and sometimes hot. The boys could get stuck, burn, or have trouble breathing inside the dark flues.",
+            "evidenceIds": [
+              "P5",
+              "P6"
+            ]
+          },
+          {
+            "text": "Many of these children were orphans or came from workhouses. A master sweep would train them and keep them for many years. The boys had hard lives and lived in dirty conditions with little care.",
+            "evidenceIds": [
+              "P2",
+              "P6",
+              "P7"
+            ]
+          },
+          {
+            "text": "Over time, people started to care about the welfare of these young boys. New laws were passed to protect them and stop children from climbing chimneys. Inventors also made new brushes and machines to clean chimneys safely.",
+            "evidenceIds": [
+              "P6",
+              "P9",
+              "P13"
+            ]
+          },
+          {
+            "text": "Today, chimney sweeps still work to keep our homes safe. They use modern tools like vacuum cleaners and special brushes to clean flues. People now understand the dangers of soot and gas, keeping homes safe.",
+            "evidenceIds": [
+              "P12"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "Understanding the Role of the Chimney Sweep",
+        "pages": [
+          {
+            "text": "A chimney sweep inspects and clears soot and creosote from chimneys to prevent dangerous fires. During the Industrial Revolution, growing cities meant more houses with chimneys. Flues became narrower and more complex, making the work harder.",
+            "evidenceIds": [
+              "P1",
+              "P4",
+              "P5"
+            ]
+          },
+          {
+            "text": "In Great Britain, master sweeps trained young apprentices, often workhouse boys or orphans, to climb inside the narrow flues. Adults were too large to fit, so these children were sent up the chimneys to dislodge the built-up soot.",
+            "evidenceIds": [
+              "P2",
+              "P7",
+              "P14"
+            ]
+          },
+          {
+            "text": "The job was hazardous and difficult. The children climbed hot flues, sometimes getting stuck, burned, or suffocating. Because they were rarely washed and slept under soot sacks, they also suffered from a rare occupational cancer known as chimney sweeps' carcinoma.",
+            "evidenceIds": [
+              "P5",
+              "P6"
+            ]
+          },
+          {
+            "text": "Public concern grew steadily from the late eighteenth century onward. Reformers campaigned for the welfare of the climbing boys, leading to several Acts of Parliament. Laws were passed to restrict and eventually stop the practice by 1875.",
+            "evidenceIds": [
+              "P6",
+              "P9",
+              "P14"
+            ]
+          },
+          {
+            "text": "Mechanical sweepers were invented in the nineteenth century, but they faced initial resistance from sweeps and clients. Eventually, regulation took hold and the occupation changed. Today, sweeps use modern tools like vacuums and standard brushes from the bottom of chimneys.",
+            "evidenceIds": [
+              "P12",
+              "P13",
+              "P14"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "The Evolution and Regulation of Chimney Sweeping",
+        "pages": [
+          {
+            "text": "Chimney sweeps maintain residential and commercial ventilation systems by removing flammable creosote and soot deposits. As urbanization accelerated during the Industrial Revolution, building designs incorporated increasingly complex, narrow flues to maximize draught, creating a high demand for sweeping services.",
+            "evidenceIds": [
+              "P1",
+              "P4",
+              "P5"
+            ]
+          },
+          {
+            "text": "To navigate these restrictive structures in Great Britain, master sweeps utilized child apprentices, predominantly sourced from parishes or workhouses. Bound by indenture agreements, these young boys performed the hazardous labor of ascending narrow, sometimes active flues.",
+            "evidenceIds": [
+              "P2",
+              "P7",
+              "P14"
+            ]
+          },
+          {
+            "text": "The occupation exposed children to severe physical dangers, including asphyxiation, thermal burns, and structural entrapment. Furthermore, chronic exposure to carcinogenic soot resulted in high rates of chimney sweeps' carcinoma, recognized as the earliest documented industrial cancer.",
+            "evidenceIds": [
+              "P5",
+              "P6",
+              "P15"
+            ]
+          },
+          {
+            "text": "Growing humanitarian concern prompted sustained legislative intervention. Beginning with the Chimney Sweepers Act 1788 and culminating in the definitive prohibition of climbing boys in 1875, successive Acts of Parliament gradually restricted and ultimately abolished the practice.",
+            "evidenceIds": [
+              "P6",
+              "P9",
+              "P14"
+            ]
+          },
+          {
+            "text": "Although mechanical sweepers were introduced early in the nineteenth century, adoption was initially resisted. Over time, technological advancements prevailed, shifting operations safely to ground level. Contemporary sweeps utilize specialized brushes, vacuums, and inspection cameras to maintain combustion appliances.",
+            "evidenceIds": [
+              "P12",
+              "P13",
+              "P14"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2655,
+    "output": 1387,
+    "total": 4042
+  },
+  "validation": null
 }
