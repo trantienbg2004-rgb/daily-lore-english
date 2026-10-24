@@ -241,7 +241,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378743903"
     }
   ],
-  "updatedAt": "2026-10-24T07:41:56.225Z",
+  "updatedAt": "2026-10-24T07:42:14.209Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -301,7 +301,7 @@
             ]
           },
           {
-            "text": "In the United States, the Army attempted a camel transport experiment in Texas in 1856. The project ultimately failed because the animals were aggressive and frightened horses. Some camels were sold, while others escaped to live as feral animals.",
+            "text": "In the United States, the Army attempted a camel transport experiment in Texas. On April 29, 1856, thirty-three camels and five drivers arrived at Indianola. The project ultimately failed because the animals were aggressive and frightened horses. Some camels were sold, while others escaped to live as feral animals.",
             "evidenceIds": [
               "P5"
             ]
@@ -357,11 +357,11 @@
       }
     }
   },
-  "repairAttempts": 0,
+  "repairAttempts": 1,
   "lastUsage": {
-    "input": 2775,
-    "output": 1235,
-    "total": 4010
+    "input": 2594,
+    "output": 131,
+    "total": 2725
   },
   "validation": null
 }
