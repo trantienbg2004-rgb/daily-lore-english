@@ -295,7 +295,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378691409"
     }
   ],
-  "updatedAt": "2026-10-24T06:25:53.078Z",
+  "updatedAt": "2026-10-24T06:26:11.133Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -308,7 +308,7 @@
             ]
           },
           {
-            "text": "Philip was born around 382 BC. When he was young, he spent time in Thebes as a hostage. While there, he learned a lot about military strategies and politics from important local leaders.",
+            "text": "Philip was born in 382 BC. When he was young, he spent time in Thebes as a hostage. While there, he learned a lot about military strategies and politics from important local leaders.",
             "evidenceIds": [
               "P3",
               "P4"
@@ -353,7 +353,7 @@
             ]
           },
           {
-            "text": "Born around 382 BC as the youngest son of King Amyntas III, Philip experienced captivity in his youth. Held in Thebes from 368 to 365 BC, he received valuable military and diplomatic education before returning to Macedon and eventually seizing the throne after his brother died in battle.",
+            "text": "Born as the youngest son of King Amyntas III, Philip experienced captivity in his youth. Held in Thebes, he received valuable military and diplomatic education before returning to Macedon and eventually seizing the throne after his brother died in battle.",
             "evidenceIds": [
               "P3",
               "P4",
@@ -402,7 +402,7 @@
             ]
           },
           {
-            "text": "Philip's formative years included a period as a political hostage in Thebes between 368 and 365 BC. There, he absorbed sophisticated military and diplomatic doctrines from prominent local statesmen. Upon returning to Macedon, he capitalized on a dynastic crisis following the death of his brother Perdiccas III in battle to bypass an infant heir and secure the throne.",
+            "text": "Philip's formative years included a period as a political hostage in Thebes. There, he absorbed sophisticated military and diplomatic doctrines from prominent local statesmen. Upon returning to Macedon, he capitalized on a dynastic crisis following the death of his brother Perdiccas III in battle to bypass an infant heir and secure the throne.",
             "evidenceIds": [
               "P4",
               "P5"
@@ -442,11 +442,11 @@
       }
     }
   },
-  "repairAttempts": 0,
+  "repairAttempts": 1,
   "lastUsage": {
-    "input": 2969,
-    "output": 1780,
-    "total": 4749
+    "input": 3077,
+    "output": 350,
+    "total": 3427
   },
   "validation": null
 }
