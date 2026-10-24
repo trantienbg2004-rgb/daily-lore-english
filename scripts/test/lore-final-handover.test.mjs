@@ -27,6 +27,8 @@ test('Original article action has a compact Source control above it; full attrib
  const original=app.indexOf('className="story-end-cta"')
  assert.ok(attribution>0 && original>attribution,'Source control must be above original-article link')
  assert.match(app,/>Source<\/button>/)
+ assert.match(app,/<a className="story-end-cta"[^>]*>Read the full article<\/a>/)
+ assert.doesNotMatch(app,/className="story-end-cta"[^\n]*[↗→]/)
  assert.doesNotMatch(app,/>Sources &amp; credits<\/button>/)
  assert.match(app,/setShowCredits\(true\)/)
  assert.match(app,/<strong>Text license:<\/strong>/)

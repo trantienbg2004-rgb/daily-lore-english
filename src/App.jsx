@@ -916,7 +916,7 @@ function App() {
         <div className="story-end-center"><Icon name="book" size={56}/><h2>That's the short version.</h2>
           
           <button className="story-end-credits story-end-attribution" type="button" disabled={!interactive} onClick={() => setShowCredits(true)} aria-label="View article author, text license and individual image credits">Source</button>
-          {safeStoryUrl(item.sourceUrl) && <a className="story-end-cta" href={safeStoryUrl(item.sourceUrl)} target="_blank" rel="noopener noreferrer">{item.contentType==='wiki'?'Explore the Wikipedia source':'Read the original article'} <span aria-hidden="true">↗</span></a>}
+          {safeStoryUrl(item.sourceUrl) && <a className="story-end-cta" href={safeStoryUrl(item.sourceUrl)} target="_blank" rel="noopener noreferrer">Read the full article</a>}
         </div><div className="story-end-next">Swipe up for the next story</div>
       </section> : <>
       <div className={'article-heading lore-article-heading ' + (pageNumber > 0 && item.contentType !== 'news' ? 'article-heading-continued' : '')}>
