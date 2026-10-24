@@ -167,7 +167,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375684065"
     }
   ],
-  "updatedAt": "2026-10-24T09:22:02.316Z",
+  "updatedAt": "2026-10-24T09:22:20.410Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -277,7 +277,7 @@
             ]
           },
           {
-            "text": "Archival findings and parliamentary investigations revealed that numerous arms deliveries to Kigali between 1990 and 1994 bypassed standard regulatory oversight. Concurrently, French personnel provided tactical training to elite units intended to counter RPF advances, though subsequent French reports maintained that these officers were not directly complicit in the ensuing atrocities.",
+            "text": "Investigative findings and parliamentary records show that many weapons deliveries to Kigali bypassed standard regulatory controls. Furthermore, French personnel provided training to elite units meant to counter the RPF, though subsequent reports emphasized that these officers had no direct involvement in the atrocities.",
             "evidenceIds": [
               "P5",
               "P16",
@@ -306,7 +306,7 @@
             ]
           },
           {
-            "text": "Subsequent accountability mechanisms, most notably the 2021 report commissioned by President Emmanuel Macron, scrutinized state archives to assess institutional culpability. The commission concluded that France bore serious responsibility for failing to distance itself from the regime earlier, while finding no direct evidence of complicity in the genocide.",
+            "text": "In March 2021, the commission finished its report, concluding that France bore responsibility for failing to break with the regime sooner. However, the report found no evidence of French complicity in the genocide itself, as investigators examined state archives to assess institutional accountability during that turbulent period.",
             "evidenceIds": [
               "P6",
               "P11"
@@ -316,11 +316,11 @@
       }
     }
   },
-  "repairAttempts": 0,
+  "repairAttempts": 1,
   "lastUsage": {
-    "input": 2846,
-    "output": 1191,
-    "total": 4037
+    "input": 2808,
+    "output": 225,
+    "total": 3033
   },
   "validation": null
 }
