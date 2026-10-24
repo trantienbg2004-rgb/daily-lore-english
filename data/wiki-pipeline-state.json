@@ -8750,10 +8750,10 @@
       "checkedAt": "2026-10-21T13:52:00.985Z"
     },
     "42431493": {
-      "status": "FETCHED",
-      "reason": "pinned-source-ready",
+      "status": "EVIDENCE_READY",
+      "reason": "1 rights-verified embedded images",
       "revisionId": 1362160892,
-      "checkedAt": "2026-10-24T04:07:31.066Z"
+      "checkedAt": "2026-10-24T04:07:36.765Z"
     },
     "42431723": {
       "status": "NEEDS_REVIEW",
@@ -10202,7 +10202,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-24T04:07:31.067Z",
+  "updatedAt": "2026-10-24T04:07:36.766Z",
   "dailyUsage": {
     "day": "2026-10-23",
     "calls": 166,
