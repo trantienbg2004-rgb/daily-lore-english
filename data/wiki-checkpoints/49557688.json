@@ -2,10 +2,10 @@
   "pageId": 49557688,
   "title": "Effects of climate change on small island countries",
   "topic": "Environment",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1378395460,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378395460",
-  "reason": "11 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -435,5 +435,134 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378395460"
     }
   ],
-  "updatedAt": "2026-10-24T04:49:20.387Z"
+  "updatedAt": "2026-10-24T04:49:37.572Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "Climate Change on Small Islands",
+        "pages": [
+          {
+            "text": "Small island countries face big threats from climate change. Rising seas, heavy rain, and strong storms put their lands, homes, and cultures in danger. Many people in these island states know that human actions cause these changes.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "These small islands often lack enough data and money to fight climate hazards. It is hard to study them because internet access can be low. Places like the Maldives and Pacific Islands already feel these strong effects now.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "Sea levels rise and water goes over limited land. Salty water ruins the soil, making it very hard to grow food crops. This hurts farming in places like Kiribati and the Marshall Islands very much.",
+            "evidenceIds": [
+              "P8"
+            ]
+          },
+          {
+            "text": "Climate change also brings warmer temperatures and heavy rain. These changes can spread diseases from mosquitoes and damage fresh water supplies. Public health and safety are at risk on many islands.",
+            "evidenceIds": [
+              "P10"
+            ]
+          },
+          {
+            "text": "Many island nations work together on foreign policy to ask for global help. Some places also use solar power to save money and become more sustainable. Barbados has used many solar water heaters.",
+            "evidenceIds": [
+              "P4",
+              "P13"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "Small Island Nations Facing Climate Change",
+        "pages": [
+          {
+            "text": "Small island developing states are diverse nations located across the Caribbean, the Pacific, and other regions. They share common challenges such as narrow resource bases, physical remoteness, and heavy reliance on the natural environment. Climate change threatens their existence through sea level rise, tropical cyclones, and severe storms.",
+            "evidenceIds": [
+              "P1",
+              "P5"
+            ]
+          },
+          {
+            "text": "Gathering empirical data on these communities is difficult due to geographic obstacles and low internet access. Despite this, surveys show overwhelming acceptance of human-caused climate change among island populations. Nations such as the Maldives and various Caribbean and Pacific islands are already experiencing severe impacts and urgent adaptation needs.",
+            "evidenceIds": [
+              "P1",
+              "P2"
+            ]
+          },
+          {
+            "text": "Rising sea levels encroach upon limited habitable land, threatening coastal arable soil with salination. Once soil becomes salinated, producing subsistence crops like breadfruit becomes extremely difficult, impacting agriculture in nations like Kiribati and the Marshall Islands. Furthermore, higher temperatures and altered rainfall patterns increase health risks, including mosquito-borne diseases and contaminated drinking water.",
+            "evidenceIds": [
+              "P8",
+              "P10"
+            ]
+          },
+          {
+            "text": "Economic projections indicate substantial GDP losses for these regions by 2030, driven by extreme weather events that damage tourism and infrastructure. Many small island developing states contribute very little to global greenhouse gas emissions yet face high vulnerability. Consequently, they make advocacy for international climate cooperation a central pillar of their foreign policy.",
+            "evidenceIds": [
+              "P4",
+              "P9"
+            ]
+          },
+          {
+            "text": "To build resilience, islands are exploring various adaptation measures, from disaster risk management to renewable energy adoption. For instance, Barbados successfully adopted solar water heaters, saving consumers millions since the 1970s and offering a model that other sun-abundant island nations could replicate.",
+            "evidenceIds": [
+              "P11",
+              "P13"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "Climate Vulnerability in Small Island States",
+        "pages": [
+          {
+            "text": "Small island developing states comprise dozens of member states and associate members across the Caribbean, Pacific, and AIMS regions, supporting millions of residents. Characterized by narrow resource bases, economic reliance on natural environments, and physical remoteness, these nations confront acute existential threats from anthropogenic climate change, including accelerated sea level rise and intensified meteorological hazards.",
+            "evidenceIds": [
+              "P1",
+              "P5"
+            ]
+          },
+          {
+            "text": "Empirical assessment of these communities remains constrained by geographic isolation and data deficiencies, yet cross-national surveys demonstrate near-consensus regarding anthropogenic climate drivers. While low-lying archipelagos like the Maldives and various Pacific and Caribbean nations grapple with immediate environmental degradation, resource constraints often impede both local protection efforts and population mobility.",
+            "evidenceIds": [
+              "P1",
+              "P2",
+              "P3"
+            ]
+          },
+          {
+            "text": "Encroaching seas induce severe coastal erosion and saltwater intrusion, compromising arable land and threatening staple crop production in vulnerable economies such as Kiribati and the Marshall Islands. Concomitantly, elevated temperatures and extreme precipitation amplify public health vulnerabilities by expanding vector-borne disease vectors and compromising freshwater reservoirs.",
+            "evidenceIds": [
+              "P7",
+              "P8",
+              "P10"
+            ]
+          },
+          {
+            "text": "Macroeconomic projections forecast disproportionate annual GDP contractions for small island developing states by 2030, exacerbating fiscal dependencies on international disaster aid. Although their cumulative contribution to global greenhouse gas emissions is negligible, their disproportionate vulnerability has catalyzed active foreign policy advocacy centered on global mitigation and adaptation cooperation.",
+            "evidenceIds": [
+              "P4",
+              "P9"
+            ]
+          },
+          {
+            "text": "Adaptation paradigms incorporate hybrid infrastructure strategies, disaster risk management, and the transition toward low-carbon economies. Several jurisdictions have leveraged renewable technologies to reduce expensive fossil fuel imports; notably, widespread adoption of solar water heaters in Barbados demonstrates how localized sustainable initiatives can yield substantial cumulative economic savings.",
+            "evidenceIds": [
+              "P11",
+              "P13"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2824,
+    "output": 1044,
+    "total": 3868
+  },
+  "validation": null
 }
