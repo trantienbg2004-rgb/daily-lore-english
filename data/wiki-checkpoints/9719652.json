@@ -2,10 +2,10 @@
   "pageId": 9719652,
   "title": "History of tennis",
   "topic": "Sports",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1379228653,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379228653",
-  "reason": "7 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -340,5 +340,136 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379228653"
     }
   ],
-  "updatedAt": "2026-10-24T04:21:20.466Z"
+  "updatedAt": "2026-10-24T04:21:33.732Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "The History of Tennis",
+        "pages": [
+          {
+            "text": "Tennis is a very old racket sport. Most historians think the game started in northern France in the 12th century. At first, people hit the ball with their hand. This early game was called jeu de paume, which means game of the palm.",
+            "evidenceIds": [
+              "P2",
+              "P8"
+            ]
+          },
+          {
+            "text": "Later, players started to use a glove instead of a bare hand. By the 16th century, rackets came into use. The game then moved to enclosed areas and began to be called tennis. This older version of the sport is known today as real tennis.",
+            "evidenceIds": [
+              "P2",
+              "P8",
+              "P9"
+            ]
+          },
+          {
+            "text": "The word tennis came into English in the mid-14th century from French. It comes from the term Tenez, which can be translated as hold, receive, or take. A server would call this to his opponent to show he was about to serve.",
+            "evidenceIds": [
+              "P6"
+            ]
+          },
+          {
+            "text": "In the late 19th century, a new version called lawn tennis spread quickly. Different groups had different rules, which caused confusion. An open meeting in London helped create standard rules in 1875. These rules laid the foundation for the first Wimbledon tournament in 1877.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "Over time, major international competitions began. The Davis Cup for men started in 1900. Later, the Federation Cup for women began in 1963. In 1968, the Open Era started, allowing professional players and amateurs to compete together in the major tournaments.",
+            "evidenceIds": [
+              "P4",
+              "P18"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "How Tennis Evolved Over the Centuries",
+        "pages": [
+          {
+            "text": "Tennis has a long and fascinating history that stretches back many centuries. Most historians believe the sport originated in northern France during the 12th century. Initially, players struck the ball with the palm of the hand rather than a racket, leading to the name jeu de paume, meaning game of the palm.",
+            "evidenceIds": [
+              "P2",
+              "P8"
+            ]
+          },
+          {
+            "text": "As the sport developed, players used bare hands or gloves before rackets finally came into use during the 16th century. The game moved into enclosed playing areas, and rules began to stabilize. This earlier form of the sport is referred to today as real tennis.",
+            "evidenceIds": [
+              "P2",
+              "P8",
+              "P9"
+            ]
+          },
+          {
+            "text": "The English word tennis entered the language in the mid-14th century from French. It derived from the Anglo-Norman term Tenez, meaning hold, receive, or take. Servers would shout this call to indicate they were about to hit the ball. The English poet John Gower used the word in a poem written in 1400.",
+            "evidenceIds": [
+              "P6"
+            ]
+          },
+          {
+            "text": "While real tennis developed an authoritative set of rules by the 1870s, lawn tennis faced confusion as competing rulebooks emerged. An open meeting in London in 1875 established standard laws of lawn tennis. These guidelines provided the foundation for the very first Wimbledon Championships held in 1877.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "International team competitions soon followed. Dwight F. Davis created a men's tournament in 1900 that became the Davis Cup, while a women's team competition started in 1963. For decades, professionals and amateurs remained strictly separated until the Open Era began in 1968, allowing all players to compete together in major tournaments.",
+            "evidenceIds": [
+              "P4",
+              "P12",
+              "P18"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "The Origins and Evolution of Tennis",
+        "pages": [
+          {
+            "text": "Traditionally named lawn tennis and invented in Edgbaston, Birmingham, the sport known simply as tennis is the direct descendant of real or royal tennis. Most historians suggest the precursor originated in northern France during the 12th century, initially played by striking the ball with the palm of the hand under the designation jeu de paume.",
+            "evidenceIds": [
+              "P1",
+              "P2",
+              "P8"
+            ]
+          },
+          {
+            "text": "The game transitioned through the use of bare hands and gloves before racquets were introduced in the 16th century. Enclosed playing areas and stabilized rules characterized this era, which is now distinguished as real tennis. Historical accounts note that monarchs like Henry VIII were notable enthusiasts of this royal variant.",
+            "evidenceIds": [
+              "P2",
+              "P8",
+              "P9"
+            ]
+          },
+          {
+            "text": "Etymologically, the term tennis entered the English lexicon in the mid-14th century from the Anglo-Norman Tenez, signifying a server's call to receive or hold. The earliest known literary appearance in English occurs in John Gower's 1400 poem dedicated to King Henry IV, illustrating the early currency of the terminology.",
+            "evidenceIds": [
+              "P6"
+            ]
+          },
+          {
+            "text": "By the late 19th century, real tennis possessed a codified history, whereas lawn tennis suffered from a proliferation of competing rulebooks that generated considerable confusion. An open meeting held at Lord's in March 1875 successfully promulgated a unifying code of laws that directly enabled the inaugural Wimbledon Championships in 1877.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "Institutional structures expanded internationally with the establishment of the Davis Cup in 1900 and the precursor to the Fed Cup in 1963. Promoter C.C. Pyle initiated the first professional tour in 1926, establishing a rigid divide between professionals and amateurs. This division persisted until April 1968, when the advent of the Open Era permitted professionals to contest major tournaments alongside amateurs.",
+            "evidenceIds": [
+              "P4",
+              "P15",
+              "P18"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 3017,
+    "output": 1590,
+    "total": 4607
+  },
+  "validation": null
 }

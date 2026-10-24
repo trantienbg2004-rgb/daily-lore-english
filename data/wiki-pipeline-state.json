@@ -8224,10 +8224,10 @@
       "checkedAt": "2026-10-21T08:12:02.450Z"
     },
     "9719652": {
-      "status": "EVIDENCE_READY",
-      "reason": "7 rights-verified embedded images",
+      "status": "DRAFTED",
+      "reason": "draft durably saved before validation",
       "revisionId": 1379228653,
-      "checkedAt": "2026-10-24T04:21:20.465Z"
+      "checkedAt": "2026-10-24T04:21:33.732Z"
     },
     "9721593": {
       "status": "REJECTED",
@@ -10666,7 +10666,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-24T04:21:32.529Z",
+  "updatedAt": "2026-10-24T04:21:33.733Z",
   "dailyUsage": {
     "day": "2026-10-23",
     "calls": 167,
