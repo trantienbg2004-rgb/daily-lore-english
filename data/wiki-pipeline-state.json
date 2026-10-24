@@ -10462,10 +10462,10 @@
       "checkedAt": "2026-10-21T03:13:14.112Z"
     },
     "66828038": {
-      "status": "DRAFTED",
-      "reason": "draft durably saved before validation",
+      "status": "NEEDS_REPAIR",
+      "reason": "editorial: C1-C2:page-2:unsupported-number-context-1",
       "revisionId": 1357904180,
-      "checkedAt": "2026-10-24T06:32:37.599Z"
+      "checkedAt": "2026-10-24T06:32:43.573Z"
     },
     "67029508": {
       "status": "EVIDENCE_READY",
@@ -11290,7 +11290,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-24T06:32:37.600Z",
+  "updatedAt": "2026-10-24T06:32:43.574Z",
   "dailyUsage": {
     "day": "2026-10-23",
     "calls": 281,
