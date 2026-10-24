@@ -2,10 +2,10 @@
   "pageId": 74366520,
   "title": "Interoceanic Corridor of the Isthmus of Tehuantepec",
   "topic": "Economy",
-  "status": "DRAFTED",
+  "status": "VALIDATED",
   "revisionId": 1375250160,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375250160",
-  "reason": "draft durably saved before validation",
+  "reason": "local factual, style, length, structure and source audit passed",
   "rights": [
     {
       "status": "REVIEW",
@@ -301,7 +301,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375250160"
     }
   ],
-  "updatedAt": "2026-10-24T05:41:28.106Z",
+  "updatedAt": "2026-10-24T05:41:46.235Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -420,5 +420,8 @@
     "output": 133,
     "total": 2873
   },
-  "validation": null
+  "validation": {
+    "accepted": true,
+    "errors": []
+  }
 }
