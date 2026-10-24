@@ -2,10 +2,10 @@
   "pageId": 42431723,
   "title": "History of the T20 World Cup",
   "topic": "Sports",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1375665314,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375665314",
-  "reason": "9 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -350,5 +350,141 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375665314"
     }
   ],
-  "updatedAt": "2026-10-24T02:01:02.135Z"
+  "updatedAt": "2026-10-24T02:01:15.354Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "History of T20 World Cup",
+        "pages": [
+          {
+            "text": "Cricket is a popular sport around the world. The International Cricket Council organizes a special tournament called the T20 World Cup. This event uses a short format of the game with only twenty overs per innings. It brings together national teams to compete for a major international title.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "The story of this short format began in England. In 2001, a cricket board manager proposed the twenty-over game to help attract younger fans and fill empty stadiums. The very first official matches were played by English county teams in June 2003. Fans liked the fast-paced action.",
+            "evidenceIds": [
+              "P5",
+              "P6"
+            ]
+          },
+          {
+            "text": "International matches soon followed the domestic success. The first full men international twenty-over match took place in February 2005 between Australia and New Zealand. Teams played in a fun and light-hearted manner. Soon, organizers wanted a global world cup event for this new style of cricket.",
+            "evidenceIds": [
+              "P7",
+              "P8"
+            ]
+          },
+          {
+            "text": "The first men world championship happened in South Africa in 2007. Twelve national teams played in the opening tournament. India won this very first title by defeating their opponents. A women tournament was added in 2009 in England, where teams began playing alongside the men.",
+            "evidenceIds": [
+              "P1",
+              "P8",
+              "P9"
+            ]
+          },
+          {
+            "text": "Over the years, the tournament grew larger and visited many different countries. Teams from all around the world tried to qualify. Both men and women events were rebranded to use the name T20 World Cup, and they continue to create exciting moments for fans everywhere.",
+            "evidenceIds": [
+              "P1",
+              "P13",
+              "P17"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "The Evolution of the T20 World Cup",
+        "pages": [
+          {
+            "text": "The ICC T20 World Cup is a major international cricket tournament organized by the International Cricket Council. Played in the fast-paced twenty-over format, the event features both men and women competitions. Over the years, it has grown into one of the most popular global sports competitions.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "The origin of this format dates back to English county cricket. Facing dwindling crowds and reduced sponsorship in 2002, the England and Wales Cricket Board sought a quicker game to attract younger generations. Stuart Robertson proposed the twenty-over innings, and county chairmen voted to adopt the new style.",
+            "evidenceIds": [
+              "P5"
+            ]
+          },
+          {
+            "text": "The first official matches took place in 2003, proving to be an instant success with large crowds. International matches quickly followed, leading the ICC to organize the inaugural men world championship in South Africa in 2007. A women tournament was successfully introduced in England in 2009.",
+            "evidenceIds": [
+              "P6",
+              "P7",
+              "P8",
+              "P9"
+            ]
+          },
+          {
+            "text": "As the sport gained global popularity, the tournaments expanded significantly. The number of participating teams increased, and qualification pathways were created for associate nations. In 2018, the events were officially rebranded from the World Twenty20 to the T20 World Cup to heighten their global profile.",
+            "evidenceIds": [
+              "P13",
+              "P16",
+              "P17"
+            ]
+          },
+          {
+            "text": "Various global challenges have impacted the schedule over time. Tournaments were occasionally brought forward, and the COVID-19 pandemic forced the 2020 men event to be postponed to 2021 and moved to the United Arab Emirates and Oman. Despite changes, the competition remains a premier event in international cricket.",
+            "evidenceIds": [
+              "P2",
+              "P17"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "Origins and Evolution of the T20 World Cup",
+        "pages": [
+          {
+            "text": "Organized by the International Cricket Council, the ICC T20 World Cup is a biennial international cricket championship contested in the Twenty20 International format. Encompassing separate tournaments for men and women, the competition has undergone significant structural evolution and global expansion since its inception in the mid-2000s.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "The genesis of the format traces back to English domestic cricket. Following the conclusion of the Benson and Hedges Cup in 2002, the England and Wales Cricket Board sought an innovative competition to counteract declining attendance and sponsorship. Stuart Robertson proposed a twenty-over per innings structure, which county chairmen formally adopted in 2001.",
+            "evidenceIds": [
+              "P5"
+            ]
+          },
+          {
+            "text": "Following successful domestic fixtures in 2003 and subsequent international fixtures in 2004 and 2005, the ICC inaugurated the men tournament in South Africa in 2007. A companion women tournament was subsequently approved and integrated alongside the men competition beginning with the 2009 edition hosted in England.",
+            "evidenceIds": [
+              "P6",
+              "P7",
+              "P8",
+              "P9"
+            ]
+          },
+          {
+            "text": "Throughout subsequent cycles, qualification pathways broadened to incorporate associate member nations through regional and global qualifiers. Tournaments progressively expanded in team capacity, while administrative adjustments relocated events due to logistical challenges, security concerns, and pandemic disruptions, such as the relocation of the 2021 men edition to the United Arab Emirates and Oman.",
+            "evidenceIds": [
+              "P2",
+              "P12",
+              "P13",
+              "P17"
+            ]
+          },
+          {
+            "text": "In 2018, the ICC implemented a comprehensive rebranding initiative, transitioning the tournament nomenclature from the World Twenty20 to the T20 World Cup. Concurrently, international status was extended to all member teams, cementing the competition status as a cornerstone of modern international cricket governance and global athletic competition.",
+            "evidenceIds": [
+              "P1",
+              "P16",
+              "P17"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 3317,
+    "output": 1192,
+    "total": 4509
+  },
+  "validation": null
 }
