@@ -267,14 +267,14 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376929654"
     }
   ],
-  "updatedAt": "2026-10-24T05:10:48.687Z",
+  "updatedAt": "2026-10-24T05:11:06.647Z",
   "draft": {
     "variants": {
       "A1-A2": {
         "headline": "The History of the Winter Olympic Games",
         "pages": [
           {
-            "text": "The Winter Olympic Games are a major international multi-sport event held once every four years for sports practiced on snow and ice. They usually happen in February. Milan and Cortina d'Ampezzo hosted the games in Italy in 2026.",
+            "text": "The Winter Olympic Games are a major international multi-sport event held once every four years for sports practiced on snow and ice. They usually happen in February. Milan and Cortina d'Ampezzo of Italy hosted in 2026. The next games are scheduled for the French Alps in 2030.",
             "evidenceIds": [
               "P1"
             ]
@@ -378,11 +378,11 @@
       }
     }
   },
-  "repairAttempts": 0,
+  "repairAttempts": 1,
   "lastUsage": {
-    "input": 2934,
-    "output": 1316,
-    "total": 4250
+    "input": 2752,
+    "output": 131,
+    "total": 2883
   },
   "validation": null
 }
