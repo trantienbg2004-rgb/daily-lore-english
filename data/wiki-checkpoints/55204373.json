@@ -2,10 +2,10 @@
   "pageId": 55204373,
   "title": "Maritime Silk Road",
   "topic": "Economy",
-  "status": "EVIDENCE_READY",
+  "status": "RETRY_LATER",
   "revisionId": 1376337008,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376337008",
-  "reason": "8 rights-verified embedded images",
+  "reason": "Gemini token usage unavailable",
   "rights": [
     {
       "status": "REVIEW",
@@ -336,5 +336,5 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376337008"
     }
   ],
-  "updatedAt": "2026-10-24T10:37:29.271Z"
+  "updatedAt": "2026-10-24T10:37:35.113Z"
 }
