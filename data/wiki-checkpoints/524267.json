@@ -335,7 +335,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380753731"
     }
   ],
-  "updatedAt": "2026-10-24T04:51:50.184Z",
+  "updatedAt": "2026-10-24T04:52:08.524Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -370,7 +370,7 @@
             ]
           },
           {
-            "text": "In 350 AD, Meroe was destroyed by Axum. Before that, the city had conflicts with Rome over borders. Later, a French mineralogist named Frederic Cailliaud brought the ruins of Meroe to the knowledge of Europeans in 1821.",
+            "text": "Meroe had conflicts with Rome over borders. In 350 AD, Meroe was destroyed by Axum. Later, a French mineralogist named Frederic Cailliaud brought the ruins of Meroe to the knowledge of Europeans in 1821.",
             "evidenceIds": [
               "P10",
               "P11",
@@ -411,7 +411,7 @@
             ]
           },
           {
-            "text": "The kingdom engaged in conflicts with Roman Egypt, leading to border skirmishes, an expedition by the Roman governor Publius Petronius, and a subsequent peace treaty in 22 BC. Centuries later, in 350 AD, Meroe was destroyed by Axum.",
+            "text": "The kingdom engaged in conflicts with Roman Egypt, leading to border skirmishes, an expedition by the Roman governor Publius Petronius, and a subsequent peace treaty in 22 BC. In 350 AD, Meroe was destroyed by Axum.",
             "evidenceIds": [
               "P10",
               "P11"
@@ -460,7 +460,7 @@
             ]
           },
           {
-            "text": "Geopolitical friction characterized Meroe's frontier relations with Roman Egypt. Following incursions and retaliatory Roman expeditions under Publius Petronius, a formal peace treaty was ratified in 22 BC. Despite subsequent periods of abundant trade, the kingdom gradually weakened, culminating in its destruction by Axum in 350 AD.",
+            "text": "Geopolitical friction characterized Meroe's frontier relations with Roman Egypt. Following incursions and retaliatory Roman expeditions under Publius Petronius, a formal peace treaty was ratified in 22 BC. The kingdom gradually weakened, culminating in its destruction by Axum in 350 AD.",
             "evidenceIds": [
               "P10",
               "P21"
@@ -477,11 +477,11 @@
       }
     }
   },
-  "repairAttempts": 1,
+  "repairAttempts": 2,
   "lastUsage": {
-    "input": 3099,
-    "output": 385,
-    "total": 3484
+    "input": 3082,
+    "output": 373,
+    "total": 3455
   },
   "validation": null
 }
