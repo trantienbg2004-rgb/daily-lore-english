@@ -2,10 +2,10 @@
   "pageId": 3032314,
   "title": "History of the camera",
   "topic": "Science & Technology",
-  "status": "DRAFTED",
+  "status": "NEEDS_REVIEW",
   "revisionId": 1380463233,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380463233",
-  "reason": "draft durably saved before validation",
+  "reason": "editorial: A1-A2:page-6:unsupported-number-context-35,B1-B2:page-6:unsupported-number-context-35,C1-C2:page-6:unsupported-number-context-35",
   "rights": [
     {
       "status": "REJECTED",
@@ -397,7 +397,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380463233"
     }
   ],
-  "updatedAt": "2026-10-24T09:01:12.940Z",
+  "updatedAt": "2026-10-24T09:01:18.911Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -551,5 +551,12 @@
     "output": 407,
     "total": 3297
   },
-  "validation": null
+  "validation": {
+    "accepted": false,
+    "errors": [
+      "A1-A2:page-6:unsupported-number-context-35",
+      "B1-B2:page-6:unsupported-number-context-35",
+      "C1-C2:page-6:unsupported-number-context-35"
+    ]
+  }
 }
