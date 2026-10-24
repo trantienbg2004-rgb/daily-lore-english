@@ -2,10 +2,10 @@
   "pageId": 264902,
   "title": "Pentathlon",
   "topic": "Sports",
-  "status": "DRAFTED",
+  "status": "NEEDS_REVIEW",
   "revisionId": 1325352652,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1325352652",
-  "reason": "draft durably saved before validation",
+  "reason": "editorial: C1-C2:page-4:unsupported-number-context-2000",
   "rights": [
     {
       "status": "REVIEW",
@@ -282,7 +282,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1325352652"
     }
   ],
-  "updatedAt": "2026-10-24T07:16:32.685Z",
+  "updatedAt": "2026-10-24T07:16:38.747Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -422,5 +422,10 @@
     "output": 301,
     "total": 3223
   },
-  "validation": null
+  "validation": {
+    "accepted": false,
+    "errors": [
+      "C1-C2:page-4:unsupported-number-context-2000"
+    ]
+  }
 }
