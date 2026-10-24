@@ -2,10 +2,10 @@
   "pageId": 77751416,
   "title": "Decolonization of public space",
   "topic": "Society",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1380052184,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380052184",
-  "reason": "11 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -405,5 +405,138 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380052184"
     }
   ],
-  "updatedAt": "2026-10-24T06:53:59.737Z"
+  "updatedAt": "2026-10-24T06:54:16.556Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "Changing Public Spaces",
+        "pages": [
+          {
+            "text": "Around the world, people are working to change public spaces. They want to remove old statues and names that honor European colonialism. This movement started in the late twentieth century. It grew bigger in many different countries over time.",
+            "evidenceIds": [
+              "P1",
+              "P3"
+            ]
+          },
+          {
+            "text": "The process began in places that became independent during the second half of the twentieth century. Later, it spread to Western countries. Many protests happened in 2020 after the murder of George Floyd in the United States, helping the movement grow.",
+            "evidenceIds": [
+              "P2",
+              "P4"
+            ]
+          },
+          {
+            "text": "Activists took down statues of people linked to the slave trade and colonial history. Some statues were pulled down during street protests. Other changes happened after long negotiations between groups and local governments or leaders.",
+            "evidenceIds": [
+              "P4",
+              "P5"
+            ]
+          },
+          {
+            "text": "Public spaces contain many different colonial references. These include monuments, road names, national flags, and commercial signs. Communities around the world continue to discuss how to handle these historical symbols today.",
+            "evidenceIds": [
+              "P6"
+            ]
+          },
+          {
+            "text": "When Zimbabwe became independent in 1980, the country changed its name and removed portraits and statues of Cecil Rhodes. Governments and local groups keep working to rethink history and public monuments across many nations.",
+            "evidenceIds": [
+              "P10",
+              "P11"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "The Decolonization of Public Space",
+        "pages": [
+          {
+            "text": "The decolonization of public space is a social movement that emerged in the late twentieth and early twenty-first centuries. Anti-racist associations, indigenous communities, and descendants of colonized peoples have led actions against the persistence of colonialist symbols, such as statues and street names, in nations around the world.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "The movement initially began in former colonies after they gained independence. It later spread to the Western world, gaining significant momentum in 2020 following the protests against racism and police brutality that erupted after the murder of George Floyd in the United States.",
+            "evidenceIds": [
+              "P2",
+              "P4"
+            ]
+          },
+          {
+            "text": "Protesters have targeted numerous monuments honoring historical figures connected to slavery, imperialism, and racism. These actions include the spontaneous removal of statues during demonstrations, as well as long negotiations and awareness campaigns conducted by community groups and students.",
+            "evidenceIds": [
+              "P4",
+              "P5",
+              "P7"
+            ]
+          },
+          {
+            "text": "Colonial references in public spaces take many forms, ranging from monuments and road names to national symbols and commercial signs. For instance, countries like Zimbabwe undertook major campaigns after independence to rename cities and remove statues celebrating colonial figures like Cecil Rhodes.",
+            "evidenceIds": [
+              "P6",
+              "P10",
+              "P11",
+              "P12"
+            ]
+          },
+          {
+            "text": "Similar debates and actions have occurred regarding holidays such as Columbus Day, which commemorates the beginning of European colonization. Numerous countries have renamed these dates to honor indigenous resistance and cultural diversity in response to widespread public reluctance and protests.",
+            "evidenceIds": [
+              "P13"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "Challenging Colonial Legacies in Public Spaces",
+        "pages": [
+          {
+            "text": "The decolonization of public space constitutes a transnational social movement originating in the late twentieth century. Driven by anti-racist associations, indigenous groups, and diasporic communities, the movement addresses the enduring presence of colonialist symbols, memorials, and place names within the public sphere.",
+            "evidenceIds": [
+              "P1",
+              "P3"
+            ]
+          },
+          {
+            "text": "While the process originated in post-independence territories during the mid-twentieth century, it subsequently expanded to Western nations. The movement reached a critical juncture in 2020, catalyzed by widespread global demonstrations against racism and police brutality following the murder of George Floyd.",
+            "evidenceIds": [
+              "P2",
+              "P4"
+            ]
+          },
+          {
+            "text": "Activists have employed diverse modes of action, ranging from spontaneous removals during popular protests to protracted institutional negotiations and educational campaigns. Target monuments frequently commemorate figures associated with imperial administration, racial supremacy, and the historical slave trade.",
+            "evidenceIds": [
+              "P4",
+              "P5",
+              "P7"
+            ]
+          },
+          {
+            "text": "Public manifestations of colonial memory encompass multifaceted elements, including architectural monuments, odonyms, toponyms, national symbols, and commercial signage. Comprehensive decolonization campaigns have frequently involved state-led restructuring of national toponymy, monument relocation, and administrative renaming, as observed in post-independence Zimbabwe.",
+            "evidenceIds": [
+              "P6",
+              "P10",
+              "P11",
+              "P12"
+            ]
+          },
+          {
+            "text": "Furthermore, commemorative dates centered on European expansion have generated substantial controversy. In response to perceptions of historical genocide and subjugation, multiple nations have officially redesignated holidays associated with Christopher Columbus to emphasize pluriculturalism and indigenous resistance.",
+            "evidenceIds": [
+              "P13"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2835,
+    "output": 1364,
+    "total": 4199
+  },
+  "validation": null
 }
