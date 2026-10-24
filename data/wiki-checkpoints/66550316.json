@@ -190,7 +190,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1370579297"
     }
   ],
-  "updatedAt": "2026-10-24T06:02:14.526Z",
+  "updatedAt": "2026-10-24T06:02:32.440Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -211,7 +211,7 @@
             ]
           },
           {
-            "text": "However, the region faced many challenges and ceasefire violations. In December 2020, clashes happened near some villages in the Hadrut Province. These villages became a holdout during the fighting. The Russian peacekeeping contingent briefly took control of one village before it came under Azerbaijani control. Both sides accused each other of restarting the conflict.",
+            "text": "However, the region faced many challenges and ceasefire violations. Clashes happened near some villages in the Hadrut Province. These villages became a holdout during the fighting. The Russian peacekeeping contingent briefly took control of one village before it came under Azerbaijani control. Both sides accused each other of restarting the conflict.",
             "evidenceIds": [
               "P4"
             ]
@@ -250,7 +250,7 @@
             ]
           },
           {
-            "text": "Despite the presence of peacekeepers, significant violations occurred. In December 2020, clashes erupted near Hadrut around an Artsakh holdout pocket comprising specific villages and a monastery. After initial confusion and brief Russian control, the villages ultimately came under Azerbaijani control, with both sides trading blame for the renewed violence.",
+            "text": "Despite the presence of peacekeepers, significant violations occurred. Clashes erupted near Hadrut around an Artsakh holdout pocket comprising specific villages and a monastery. After initial confusion and brief Russian control, the villages ultimately came under Azerbaijani control, with both sides trading blame for the renewed violence.",
             "evidenceIds": [
               "P4"
             ]
@@ -274,7 +274,7 @@
         "headline": "Operational Realities of Post-War Nagorno-Karabakh",
         "pages": [
           {
-            "text": "In the wake of the Second Nagorno-Karabakh War, a November 2020 ceasefire agreement precipitated the deployment of a Russian peacekeeping contingent comprising 1,960 servicemen under the command of Lieutenant General Rustam Muradov. Headquartered near Stepanakert, the contingent established observation posts along the contact line and the Lachin corridor. Concurrently, a separate Russian-Turkish Joint Monitoring Centre was initiated to provide remote monitoring capabilities through unmanned aerial vehicles and bilateral personnel stationed in Azerbaijan.",
+            "text": "In the wake of the Second Nagorno-Karabakh War, a ceasefire agreement precipitated the deployment of a Russian peacekeeping contingent comprising 1,960 servicemen under the command of Lieutenant General Rustam Muradov. Headquartered near Stepanakert, the contingent established observation posts along the contact line and the Lachin corridor. Concurrently, a separate Russian-Turkish Joint Monitoring Centre was initiated to provide remote monitoring capabilities through unmanned aerial vehicles and bilateral personnel stationed in Azerbaijan.",
             "evidenceIds": [
               "P1",
               "P2",
@@ -290,7 +290,7 @@
             ]
           },
           {
-            "text": "The fragility of the cessation of hostilities was underscored by localized military engagements. In December 2020, armed clashes materialized around an Artsakh holdout pocket in the Hadrut Province. Despite initial Russian intervention, disputed territorial demarcations resulted in specific villages falling under Azerbaijani control amid reciprocal accusations of ceasefire violations.",
+            "text": "The fragility of the cessation of hostilities was underscored by localized military engagements. Armed clashes materialized around an Artsakh holdout pocket in the Hadrut Province. Despite initial Russian intervention, disputed territorial demarcations resulted in specific villages falling under Azerbaijani control amid reciprocal accusations of ceasefire violations.",
             "evidenceIds": [
               "P4"
             ]
@@ -313,11 +313,11 @@
       }
     }
   },
-  "repairAttempts": 0,
+  "repairAttempts": 1,
   "lastUsage": {
-    "input": 2906,
-    "output": 1374,
-    "total": 4280
+    "input": 3105,
+    "output": 490,
+    "total": 3595
   },
   "validation": null
 }
