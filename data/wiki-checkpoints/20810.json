@@ -2,10 +2,10 @@
   "pageId": 20810,
   "title": "Merchant",
   "topic": "Economy",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1380547605,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380547605",
-  "reason": "13 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -430,5 +430,129 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380547605"
     }
   ],
-  "updatedAt": "2026-10-24T02:07:50.883Z"
+  "updatedAt": "2026-10-24T02:08:08.322Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "History of Merchants",
+        "pages": [
+          {
+            "text": "A merchant is a person or company that sells goods. They can work in stores or online. Many merchants do import and export work between countries.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Merchants have existed for a very long time. They traded in ancient places like Egypt, Greece, Rome, and China. Public markets were built in the town centers.",
+            "evidenceIds": [
+              "P2",
+              "P5"
+            ]
+          },
+          {
+            "text": "In ancient Rome, trading was not seen as a very respectable job. Landowners had higher status than merchants. Even so, some merchants became very rich.",
+            "evidenceIds": [
+              "P12",
+              "P13"
+            ]
+          },
+          {
+            "text": "During the medieval period in Europe, trade grew very fast. A powerful merchant class appeared. Markets and trade routes expanded across many new regions.",
+            "evidenceIds": [
+              "P2",
+              "P6"
+            ]
+          },
+          {
+            "text": "In modern times, consumer culture grew in Europe. People started to buy more than just basic needs. Shopping became a popular form of entertainment.",
+            "evidenceIds": [
+              "P7"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "The Evolution of Trade and Merchants",
+        "pages": [
+          {
+            "text": "A merchant is an individual or company engaged in trade, conducting sales through physical stores or online platforms, with a particular focus on international import and export activities.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Merchants have operated for as long as humans have engaged in commerce. Ancient networks existed in Babylonia, Assyria, China, Egypt, Greece, India, Persia, Phoenicia, and Rome. Open-air public markets formed the centre of town life, where merchants congregated alongside skilled artisans.",
+            "evidenceIds": [
+              "P2",
+              "P5"
+            ]
+          },
+          {
+            "text": "The social status of merchants varied widely across different cultures. In Greco-Roman societies, trade was often viewed with disdain compared to agriculture, meaning merchants frequently lacked high social standing despite accumulating substantial personal wealth.",
+            "evidenceIds": [
+              "P12",
+              "P13"
+            ]
+          },
+          {
+            "text": "During the European medieval period, trade experienced a rapid expansion, giving rise to a wealthy and powerful merchant class. Market towns multiplied, and itinerant peddlers filled the gaps in distribution while explorers opened up new international routes.",
+            "evidenceIds": [
+              "P2",
+              "P6"
+            ]
+          },
+          {
+            "text": "The modern era brought new consumer cultures in seventeenth- and eighteenth-century Europe. As living standards improved, a growing middle class stimulated demand for luxury goods, transforming the act of shopping into a pleasurable pastime.",
+            "evidenceIds": [
+              "P7"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "Historical Analysis of Merchants",
+        "pages": [
+          {
+            "text": "A merchant represents any entity or individual involved in commercial exchange, executing transactions via traditional retail locations or digital platforms, frequently specializing in international import and export operations.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Commercial activity and merchant networks are coextensive with human civilization, having operated across ancient empires including Babylonia, Assyria, China, Egypt, Greece, India, Persia, Phoenicia, and Rome. Urban topography centered around public marketplaces surrounded by specialized artisan premises.",
+            "evidenceIds": [
+              "P2",
+              "P5"
+            ]
+          },
+          {
+            "text": "Attitudes toward the merchant class demonstrated considerable sociological variance. While Middle Eastern bazaar merchants enjoyed elite status, Greco-Roman and medieval European structures often stigmatized commerce as unrespectable or sinful, contrasting sharply with the elevated status of agrarian landownership.",
+            "evidenceIds": [
+              "P12"
+            ]
+          },
+          {
+            "text": "Medieval European expansion catalyzed the consolidation of a wealthy mercantile class. Researchers note an upsurge in market towns, the formalization of merchant circuits, and the integration of exotic luxury goods into distribution networks facilitated by exploratory voyages.",
+            "evidenceIds": [
+              "P2",
+              "P6"
+            ]
+          },
+          {
+            "text": "The dawn of the modern era witnessed the genesis of European consumer culture. Rising living standards among an emergent bourgeoisie propelled demand beyond basic subsistence, recontextualizing shopping as a culturally significant form of recreation.",
+            "evidenceIds": [
+              "P7"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2693,
+    "output": 1168,
+    "total": 3861
+  },
+  "validation": null
 }
