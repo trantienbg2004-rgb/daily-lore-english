@@ -349,7 +349,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1318293204"
     }
   ],
-  "updatedAt": "2026-10-24T04:25:12.860Z",
+  "updatedAt": "2026-10-24T04:25:30.841Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -434,11 +434,10 @@
         "headline": "Waterways of Empire: Canadian Canoe Routes",
         "pages": [
           {
-            "text": "The penetration of the Canadian interior by Europeans was fundamentally contingent upon fluvial networks. Devoid of major geographic impediments east of the Rockies, the landscape offered interconnected river systems bridged by brief portages. This geographic continuity facilitated a commercial imperative: the European demand for beaver pelts catalyzed both the initial exploration and the subsequent colonization of the territory through direct exchanges of European merchandise for native-trapped furs.",
+            "text": "The penetration of the Canadian interior by Europeans was fundamentally contingent upon fluvial networks. Devoid of major geographic impediments east of the Rockies, the landscape offered interconnected river systems bridged by brief portages. This geographic continuity facilitated a commercial imperative: the European demand for beaver pelts catalyzed both the initial exploration and subsequent settlement.",
             "evidenceIds": [
               "P1",
-              "P2",
-              "P3"
+              "P2"
             ]
           },
           {
@@ -472,11 +471,11 @@
       }
     }
   },
-  "repairAttempts": 0,
+  "repairAttempts": 1,
   "lastUsage": {
-    "input": 2721,
-    "output": 1634,
-    "total": 4355
+    "input": 2568,
+    "output": 133,
+    "total": 2701
   },
   "validation": null
 }
