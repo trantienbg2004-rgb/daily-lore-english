@@ -295,7 +295,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378691409"
     }
   ],
-  "updatedAt": "2026-10-24T06:26:11.133Z",
+  "updatedAt": "2026-10-24T06:26:29.040Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -308,7 +308,7 @@
             ]
           },
           {
-            "text": "Philip was born in 382 BC. When he was young, he spent time in Thebes as a hostage. While there, he learned a lot about military strategies and politics from important local leaders.",
+            "text": "Philip was born in either 383 or 382 BC. When he was young, he was held as a hostage in Thebes, which was then the leading city of Greece. While there, he received a military and diplomatic education from Epaminondas and lived with Pammenes.",
             "evidenceIds": [
               "P3",
               "P4"
@@ -442,11 +442,11 @@
       }
     }
   },
-  "repairAttempts": 1,
+  "repairAttempts": 2,
   "lastUsage": {
-    "input": 3077,
-    "output": 350,
-    "total": 3427
+    "input": 2785,
+    "output": 131,
+    "total": 2916
   },
   "validation": null
 }
