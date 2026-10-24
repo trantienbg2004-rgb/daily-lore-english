@@ -200,6 +200,8 @@ export async function runWikiBatch({base,maxCalls=0,maxCandidates=5,pageId=null,
   })
   const cachedValidation=checkpoint.validation?.accepted&&validNewLengths&&
    (checkpoint.status==='VALIDATED'||retryableTechnicalReview(prior))
+  if(!cachedValidation&&maxCalls>0&&budget.usedCalls>0&&
+   (budget.circuitOpen||budget.tokenAccountingUnavailable||budget.maxCalls-budget.usedCalls<2))continue
   if(!cachedValidation&&(maxCalls===0||budget.circuitOpen||budget.tokenAccountingUnavailable||budget.maxCalls-budget.usedCalls<2)&&checkpoint.evidence&&checkpoint.rights)continue
   stats.attempted++
   const persist=async()=>{await writeCheckpoint(base,checkpoint);await writeState(base,state);await persistDurably()}

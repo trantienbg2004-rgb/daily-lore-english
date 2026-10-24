@@ -214,6 +214,22 @@ test('valid candidate publishes once within a two-call editorial budget',async()
  assert.equal(result.usage.total,300);assert.equal(stored.outcomes[42].status,'PUBLISHED')
 })
 
+test('after the editorial budget is exhausted, fresh sources wait without network preparation',async()=>{
+ const stored={version:1,queue:[candidate,{pageId:43,title:'World trade',topic:'Economy',score:20}],outcomes:{43:{status:'PENDING'}}}
+ const visited=[]
+ const result=await runWikiBatch({base:'unused',maxCalls:2,maxCandidates:2,apiKey:'placeholder',freeTierConfirmed:true,
+  ...noDisk,readState:async()=>stored,writeState:async()=>{},readCatalog:async()=>({stories:[]}),
+  fetchPage:async title=>{visited.push(title);return {...source,pageId:title==='World trade'?43:42}},
+  verifyFigures:async()=>[{status:'REVIEW',photo:{url:'https://thumb.wikimedia.org/map'}}],
+  generate:async({budget})=>{budget.usedCalls++;return {validation:{accepted:true},result:{variants:{}},evidence:[],usage:null}},
+  assign:()=>({status:'VERIFIED',levelVariants:{},photos:[{url:'https://thumb.wikimedia.org/map'}]}),
+  makeStory:()=>({sourcePageId:42,pages:[{image:'https://thumb.wikimedia.org/map'}]}),append:async()=>{}})
+ assert.deepEqual(visited,['Silk Road'])
+ assert.equal(result.attempted,1)
+ assert.equal(result.published,1)
+ assert.equal(stored.outcomes[43].status,'PENDING')
+})
+
 test('a listed free model can fail with 404 or 503 and the next model uses the same bounded budget',async()=>{
  for(const status of [404,503]){
   const stored=state(),models=[]
