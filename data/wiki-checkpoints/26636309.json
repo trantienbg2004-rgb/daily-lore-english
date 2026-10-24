@@ -2,9 +2,395 @@
   "pageId": 26636309,
   "title": "Progressivism",
   "topic": "Society",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1379778823,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379778823",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-24T11:03:12.746Z"
+  "reason": "11 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:Immanuel Kant - Gemaelde 1.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/79/Immanuel_Kant_-_Gemaelde_1.jpg/960px-Immanuel_Kant_-_Gemaelde_1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Immanuel Kant - Gemaelde 1.jpg",
+        "caption": "Immanuel Kant, German philosopher",
+        "alt": "",
+        "description": "",
+        "date": "1768date QS:P571,+1768-00-00T00:00:00Z/9date QS:P571,+1768-00-00T00:00:00Z/9",
+        "section": "From the Enlightenment to the Industrial Revolution",
+        "position": 0,
+        "provenance": {
+          "credit": "Johann Gottlieb Becker (1720-1782) Johann Gottlieb Becker (1720-1782)",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Immanuel_Kant_-_Gemaelde_1.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Progressivism",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379778823",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:John Stuart Mill by London Stereoscopic Company, c1870.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/99/John_Stuart_Mill_by_London_Stereoscopic_Company%2C_c1870.jpg/960px-John_Stuart_Mill_by_London_Stereoscopic_Company%2C_c1870.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:John Stuart Mill by London Stereoscopic Company, c1870.jpg",
+        "caption": "John Stuart Mill, English philosopher",
+        "alt": "",
+        "description": "John Stuart Mill",
+        "date": "circa 1870date QS:P,+1870-00-00T00:00:00Z/9,P1480,Q5727902date QS:P,+1870-00-00T00:00:00Z/9,P1480,Q5",
+        "section": "From the Enlightenment to the Industrial Revolution",
+        "position": 1,
+        "provenance": {
+          "credit": "London Stereoscopic Company",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:John_Stuart_Mill_by_London_Stereoscopic_Company,_c1870.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Progressivism",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379778823",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Einar Gerhardsen (131919).jpg"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:Progressive Alliance.svg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/74/Progressive_Alliance.svg/960px-Progressive_Alliance.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Progressive Alliance.svg",
+        "caption": "Progressive Alliance",
+        "alt": "",
+        "description": "Logo of the Progressive Alliance",
+        "date": "2017-03",
+        "section": "International organizing",
+        "position": 3,
+        "provenance": {
+          "credit": "Progressive Alliance",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Progressive_Alliance.svg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Progressivism",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379778823",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:PI-Logo-Stack.svg"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:Green Party protestors 2011.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1d/Green_Party_protestors_2011.jpg/960px-Green_Party_protestors_2011.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Green Party protestors 2011.jpg",
+        "caption": "Greens taking part in the 2011 London anti-cuts protest in the United Kingdom",
+        "alt": "",
+        "description": "Members of the Green Party taking part in the March for the Alternative against government cuts to public spending in the UK.",
+        "date": "2011-03-26",
+        "section": "United Kingdom",
+        "position": 5,
+        "provenance": {
+          "credit": "Midnightblueowl",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Green_Party_protestors_2011.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Progressivism",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379778823",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:Launching the 2019 General Election campaign (49013243026).jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8b/Launching_the_2019_General_Election_campaign_%2849013243026%29.jpg/960px-Launching_the_2019_General_Election_campaign_%2849013243026%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Launching the 2019 General Election campaign (49013243026).jpg",
+        "caption": "Jeremy Corbyn (right), U.K. Labour leader from 2015 to 2020, and Keir Starmer (left), U.K. Prime Minister from July 5, 2024 to July 22, 2026",
+        "alt": "",
+        "description": "I was in Battersea to launch the most ambitious and radical General Election campaign this country has ever seen, to bring real change to all parts of this country. (31st October, 2019) We put our faith in the British people’s spirit and commitment to community. It’s your country. That’s why we stand with you. Friends, the future is ours to make, together. It’s time for real change.",
+        "date": "2019-10-31 14:09",
+        "section": "United Kingdom",
+        "position": 6,
+        "provenance": {
+          "credit": "Jeremy Corbyn",
+          "license": "CC0",
+          "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Launching_the_2019_General_Election_campaign_(49013243026).jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Progressivism",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379778823",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Prime Minister Andy Burnham portrait (cropped).jpg"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:Nestor y Cristina at Luna Park 2010.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1c/Nestor_y_Cristina_at_Luna_Park_2010.jpg/960px-Nestor_y_Cristina_at_Luna_Park_2010.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Nestor y Cristina at Luna Park 2010.jpg",
+        "caption": "Néstor Kirchner, 55th President of Argentina, and Cristina Fernández de Kirchner, 56th President, in September of 2010–one of their last public appearances before Néstor's death",
+        "alt": "",
+        "description": "Nestor Kirchner and Cristina Fernandez de Kirchner waving at the public in Luna Park Stadium, Buenos Aires, Argentina. Taken on september, 14, 2010, one of their last public appearences before Nestor Kirchner Death later that year.",
+        "date": "2010-09-14",
+        "section": "Argentina",
+        "position": 8,
+        "provenance": {
+          "credit": "Ariel Perissinotti",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Nestor_y_Cristina_at_Luna_Park_2010.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Progressivism",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379778823",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:02.06.2023 - Cerimônia de inauguração do Bloco Zeta da UFABC (52946826457).jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1f/02.06.2023_-_Cerim%C3%B4nia_de_inaugura%C3%A7%C3%A3o_do_Bloco_Zeta_da_UFABC_%2852946826457%29.jpg/960px-02.06.2023_-_Cerim%C3%B4nia_de_inaugura%C3%A7%C3%A3o_do_Bloco_Zeta_da_UFABC_%2852946826457%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:02.06.2023 - Cerimônia de inauguração do Bloco Zeta da UFABC (52946826457).jpg",
+        "caption": "Luiz Inácio Lula da Silva, 35th and 39th President of Brazil, taking pictures with supporters at São Bernardo do Campo",
+        "alt": "",
+        "description": "02.06.2023 - Presidente da República, Luiz Inácio Lula da Silva, durante cerimônia de inauguração do Bloco Zeta da UFABC. Auditório do Bloco Beta - Campus de São Bernardo do Campo - SP. Foto: Ricardo Stuckert/PR",
+        "date": "2023-06-03 11:30",
+        "section": "Brazil",
+        "position": 9,
+        "provenance": {
+          "credit": "Palácio do Planalto from Brasilia, Brasil",
+          "license": "CC BY 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:02.06.2023_-_Cerim%C3%B4nia_de_inaugura%C3%A7%C3%A3o_do_Bloco_Zeta_da_UFABC_(52946826457).jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Progressivism",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379778823",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:Ciudad segura CSP 03.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a6/Ciudad_segura_CSP_03.jpg/960px-Ciudad_segura_CSP_03.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Ciudad segura CSP 03.jpg",
+        "caption": "Andrés Manuel López Obrador (right), 65th President of Mexico, and Claudia Sheinbaum (left), then Head of Government of Mexico City and eventual 66th Mexican president, in June 2019",
+        "alt": "",
+        "description": "Al anunciar que la Ciudad de México tendrá más patrullas y mandos policiacos con mejor capacitación, la Jefa de Gobierno refrendó su compromiso de entregar una ciudad segura a los capitalinos.",
+        "date": "2019-06-11",
+        "section": "Mexico",
+        "position": 10,
+        "provenance": {
+          "credit": "Gobierno de la Ciudad de México",
+          "license": "CC BY 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Ciudad_segura_CSP_03.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Progressivism",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379778823",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:Justin Trudeau (52463741473).jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fb/Justin_Trudeau_%2852463741473%29.jpg/960px-Justin_Trudeau_%2852463741473%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Justin Trudeau (52463741473).jpg",
+        "caption": "Justin Trudeau, 23rd Prime Minister of Canada, at a 2022 protest in Ottawa",
+        "alt": "",
+        "description": "Iran Protests Ottawa",
+        "date": "2022-10-29 14:49",
+        "section": "Canada",
+        "position": 11,
+        "provenance": {
+          "credit": "Taymaz Valley from Ottawa, Canada",
+          "license": "CC BY 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Justin_Trudeau_(52463741473).jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Progressivism",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379778823",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:Nomination of Richard Cordray.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/84/Nomination_of_Richard_Cordray.jpg/960px-Nomination_of_Richard_Cordray.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Nomination of Richard Cordray.jpg",
+        "caption": "President Obama (center) nominating Richard Cordray (right) as the first director of the CFPB. Elizabeth Warren (left) conceived of the CFPB and was both its inaugural interim director and special advisor",
+        "alt": "",
+        "description": "President Barack Obama announces the nomination of former Ohio Attorney General Richard Cordray, right, as the first director of the Consumer Financial Protection Bureau (CFPB) during a statement in the Rose Garden of the White House, July 18, 2011. At left is Elizabeth Warren, interim director of the CFPB. (Official White House Photo by Lawrence Jackson)",
+        "date": "Taken on 18 July 2011",
+        "section": "United States",
+        "position": 12,
+        "provenance": {
+          "credit": "Lawrence Jackson",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Nomination_of_Richard_Cordray.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Progressivism",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379778823",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:Alexandria Ocasio-Cortez & Bernie Sanders (54401274152).jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1f/Alexandria_Ocasio-Cortez_%26_Bernie_Sanders_%2854401274152%29.jpg/960px-Alexandria_Ocasio-Cortez_%26_Bernie_Sanders_%2854401274152%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Alexandria Ocasio-Cortez & Bernie Sanders (54401274152).jpg",
+        "caption": "Senator Sanders and Representative Alexandria Ocasio-Cortez, democratic progressive socialists in the U.S.",
+        "alt": "",
+        "description": "U.S. Congresswoman Alexandria Ocasio-Cortez and U.S. Senator Bernie Sanders speaking with attendees at a \"Fight Oligarchy\" rally at Mullett Arena in Tempe, Arizona. Please attribute to Gage Skidmore if used elsewhere.",
+        "date": "2025-03-20 19:07",
+        "section": "United States",
+        "position": 13,
+        "provenance": {
+          "credit": "Gage Skidmore from Surprise, AZ, United States of America",
+          "license": "CC BY-SA 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Alexandria_Ocasio-Cortez_%26_Bernie_Sanders_(54401274152).jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Progressivism",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379778823",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Congressional Progressive Caucus Logo.svg"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "e00604644c906960788a92a734bb653a30e9d2e300dfaa7ed6bcb0ce8087ada3",
+      "heading": "Lead",
+      "excerpt": "Progressivism is a political philosophy that seeks to make progress in the human condition through reforms aimed at increasing positive libe",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379778823"
+    },
+    {
+      "id": "P2",
+      "hash": "8dcfb526517d52a5c14db6bdba60cf94cff5a27d1d114f54634911e22b367421",
+      "heading": "Lead",
+      "excerpt": "Within economic progressivism, there is some ideological variation. Illustrative examples of this include some Christian democracy and conse",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379778823"
+    },
+    {
+      "id": "P3",
+      "hash": "0702e52e5ea9116c1e24aacaf3e774aa09fe869c2e1132eb2461705b0bd9e734",
+      "heading": "From the Enlightenment to the Industrial Revolution",
+      "excerpt": "Immanuel Kant identified progress as being a movement away from barbarism toward civilization. 18th-century philosopher and political scient",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379778823"
+    },
+    {
+      "id": "P4",
+      "hash": "44d16b28d1501a0613e4065697f487858fb78d9f07b726b990234ad7d9c5538e",
+      "heading": "From the Enlightenment to the Industrial Revolution",
+      "excerpt": "Modernity or modernisation was a key form of the idea of progress as promoted by classical liberals in the 19th and 20th centuries, who call",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379778823"
+    },
+    {
+      "id": "P5",
+      "hash": "c68897dcb18b10e25b889686f7de9d387535aaab3d641a8091413e4c06413a8c",
+      "heading": "From the Enlightenment to the Industrial Revolution",
+      "excerpt": "In the late 19th century, a political view rose in popularity in the Western world that progress was being stifled by vast economic inequali",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379778823"
+    },
+    {
+      "id": "P6",
+      "hash": "b7fb38f137bc0865007e57d223b9c1c8a26c7e634c56bac447c6bf749bfdf1e5",
+      "heading": "20th century: U.S. Progressive Era, New Deal and post-war consensus",
+      "excerpt": "Early 20th-century progressivism included support for American engagement in World War I and the creation of and participation in the League",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379778823"
+    },
+    {
+      "id": "P7",
+      "hash": "9395c12f034fb3de190a3c3d90e377deabd3c51927f6502a4e33d08c697703f1",
+      "heading": "Influence of the Nordic Model",
+      "excerpt": "Many analysts have noted that 21st-century progressivism has focused on tax-funded social benefits inspired by the Nordic model, noting Bern",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379778823"
+    },
+    {
+      "id": "P8",
+      "hash": "400573900cc8327e821e13c3402639c3e6aa1497820c3baa5d62c94d4a8ff84b",
+      "heading": "International organizing",
+      "excerpt": "Founded in Leipzig, Germany, on May 22, 2013, the Progressive Alliance is an international political organization made up primarily of socia",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379778823"
+    },
+    {
+      "id": "P9",
+      "hash": "33a955b54bf89eb60f973b26bd2188b6b711de729a1b705194c8256016e74282",
+      "heading": "Norway",
+      "excerpt": "Rather than viewing economic growth and social welfare as competing goals, Norwegian governments have generally attempted to combine a produ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379778823"
+    },
+    {
+      "id": "P10",
+      "hash": "f0864f747501795918a253a98f8938e93a28ef1180f5030a4550f7ac6fcdbc96",
+      "heading": "United Kingdom",
+      "excerpt": "20th century progressivism in the United Kingdom highlights enduring tension and factionalism between more avowedly left-wing progressives a",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379778823"
+    },
+    {
+      "id": "P11",
+      "hash": "e2f1f3cdc9eabc11912a94017fd33a34ad6453ab34299935094ab4dbbaf69644",
+      "heading": "Argentina",
+      "excerpt": "Kirchnerism in Argentina refers to the political strategies of Néstor Kirchner and Cristina Fernández de Kirchner, who were successive Presi",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379778823"
+    },
+    {
+      "id": "P12",
+      "hash": "f0bfee6a9117817f99c152dd8870a29ab001e027eb03895ed79e63e2e4e0fd55",
+      "heading": "Brazil",
+      "excerpt": "Lulism in Brazil demonstrates the broad coalitional and reformist nature of contemporary progressivism. Luiz Inácio Lula da Silva's 2022 pre",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379778823"
+    },
+    {
+      "id": "P13",
+      "hash": "7fcb4ab2a8af1c09a7200d7556e400ad612850b0e5c78771b622b16d2173b3e6",
+      "heading": "Mexico",
+      "excerpt": "Described as a social democratic progressive and left-wing populist, Andrés Manuel López Obrador, or AMLO, was a national politician for ove",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379778823"
+    },
+    {
+      "id": "P14",
+      "hash": "fa7b370253eec11fd7bc332b39d951757adb67aa9c2a0181aa693df6789fd391",
+      "heading": "Canada",
+      "excerpt": "While not a member of the Progressive Alliance like the further-left New Democratic Party, Canada's Liberal Party experienced progressive in",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379778823"
+    }
+  ],
+  "updatedAt": "2026-10-24T11:03:17.236Z"
 }
