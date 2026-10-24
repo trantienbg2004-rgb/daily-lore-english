@@ -7370,10 +7370,10 @@
       "checkedAt": "2026-10-24T04:49:13.555Z"
     },
     "18138": {
-      "status": "FETCHED",
-      "reason": "pinned-source-ready",
+      "status": "EVIDENCE_READY",
+      "reason": "4 rights-verified embedded images",
       "revisionId": 1375980126,
-      "checkedAt": "2026-10-24T10:15:49.963Z"
+      "checkedAt": "2026-10-24T10:15:55.333Z"
     },
     "19568": {
       "status": "EVIDENCE_READY",
@@ -11930,7 +11930,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-24T10:15:49.971Z",
+  "updatedAt": "2026-10-24T10:15:55.334Z",
   "dailyUsage": {
     "day": "2026-10-24",
     "calls": 117,
