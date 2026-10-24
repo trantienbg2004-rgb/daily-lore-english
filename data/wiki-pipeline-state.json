@@ -10678,10 +10678,10 @@
       "checkedAt": "2026-10-21T13:53:31.029Z"
     },
     "71852937": {
-      "status": "VALIDATED",
-      "reason": "local factual, style, length, structure and source audit passed",
+      "status": "PUBLISHED",
+      "reason": "4 verified embedded images",
       "revisionId": 1348771002,
-      "checkedAt": "2026-10-24T06:31:48.491Z"
+      "checkedAt": "2026-10-24T06:31:54.574Z"
     },
     "71983491": {
       "status": "PUBLISHED",
@@ -11290,7 +11290,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-24T06:31:48.493Z",
+  "updatedAt": "2026-10-24T06:31:54.575Z",
   "dailyUsage": {
     "day": "2026-10-23",
     "calls": 279,
