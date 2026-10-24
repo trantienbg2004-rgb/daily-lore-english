@@ -24,6 +24,32 @@ export function sentenceUnits(text) {
   return units
 }
 
+// Move complete sentences between neighboring text-only pages when the
+// viewport allows it. Leave page count and any photo placement untouched.
+export function rebalanceTextPages(pages, fits) {
+  const balanced = pages.map(page => ({...page}))
+  const countWords = text => trim(text).split(/\s+/u).filter(Boolean).length
+  for (let i = 0; i < balanced.length - 1; i++) {
+    if (balanced[i].image || balanced[i + 1].image) continue
+    const units = sentenceUnits(`${balanced[i].text} ${balanced[i + 1].text}`)
+    if (units.length < 2) continue
+    const originalDifference = Math.abs(countWords(balanced[i].text) - countWords(balanced[i + 1].text))
+    let best = null
+    for (let cut = 1; cut < units.length; cut++) {
+      const left = units.slice(0, cut).join(' ')
+      const right = units.slice(cut).join(' ')
+      if (!fits({text:left, cover:i === 0, image:null}) || !fits({text:right, cover:false, image:null})) continue
+      const difference = Math.abs(countWords(left) - countWords(right))
+      if (difference < originalDifference && (!best || difference < best.difference)) best = {left, right, difference}
+    }
+    if (best) {
+      balanced[i] = {...balanced[i], text:best.left}
+      balanced[i + 1] = {...balanced[i + 1], text:best.right}
+    }
+  }
+  return balanced
+}
+
 function splitOversizedSentence(text, fits) {
   // First calculate how many words really fit, then prefer a nearby clause
   // break. The old algorithm would choose a 6-word semicolon fragment even

@@ -1,7 +1,7 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
 import fs from 'node:fs'
-import { planReadingPages } from '../../src/lib/readerPagination.js'
+import { planReadingPages, rebalanceTextPages } from '../../src/lib/readerPagination.js'
 const app = fs.readFileSync('src/App.jsx','utf8')
 const css = fs.readFileSync('src/App.css','utf8')
 const html = fs.readFileSync('index.html','utf8')
@@ -48,4 +48,18 @@ test('No more than viewport text and all tokens remain intact across page bounda
   const pages=planReadingPages({pages:[{image:'licensed',caption:'A caption',text:source}]},({text,image})=>words(text)<=(image?21:38))
   assert.equal(normalized(pages.map(p=>p.text).join(' ')),normalized(source))
   assert.ok(pages.every(p=>!p.text || words(p.text)<=38))
+})
+
+test('Adjacent text-only pages rebalance at sentence boundaries without moving photos',()=>{
+  const pages=[
+    {image:'verified-cover',caption:'Licensed cover',text:'The opening photo remains attached to its original page.'},
+    {text:'One two three four five six seven eight nine ten. Eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen twenty. Twenty one twenty two twenty three twenty four twenty five twenty six twenty seven twenty eight twenty nine thirty.'},
+    {text:'Thirty one two three four five six seven eight nine ten.'},
+  ]
+  const before=pages.map(page=>page.text).join(' ')
+  const balanced=rebalanceTextPages(pages,({text})=>words(text)<=30)
+  assert.equal(balanced.length,pages.length)
+  assert.deepEqual(balanced.map(page=>page.image||''),['verified-cover','',''])
+  assert.equal(normalized(balanced.map(page=>page.text).join(' ')),normalized(before))
+  assert.ok(Math.abs(words(balanced[1].text)-words(balanced[2].text)) < Math.abs(words(pages[1].text)-words(pages[2].text)))
 })

@@ -3,7 +3,7 @@ import { createPortal } from 'react-dom'
 import './App.css'
 import { initializeSeenHistory, persistReadMarker, readLegacyHistory } from './lib/seenHistory.js'
 import { storyId } from './lib/feedQueue.js'
-import { planReadingPages, sentenceUnits } from './lib/readerPagination.js'
+import { planReadingPages, rebalanceTextPages } from './lib/readerPagination.js'
 import { shortNewsPages } from './lib/shortNewsPages.js'
 import { sanitizeReadingArticle } from './lib/articleCleanup.js'
 import { refreshCatalog, refillCatalog, REFRESH_INTERVAL_MS } from './lib/continuousReader.js'
@@ -107,9 +107,8 @@ function safeStoryUrl(url) {
 // Wiki and older archive items use viewport pagination; published news uses
 // its explicitly abridged four-to-six-page reading version.
 function layoutPages(item, reader, badImages = new Set()) {
-  if (item?.contentType === 'news') return item.pages
-  // Editorial pages are source units, not guaranteed screen-sized. Measure
-  // every level against the actual phone viewport and the anchored pager.
+  // Measure and balance against the actual viewport. Published news already
+  // has its editorial page count; only move complete sentences within it.
   const bounds = reader.getBoundingClientRect()
   if (bounds.width < 100 || bounds.height < 220) return item.pages
   const fixture = reader.cloneNode(true)
@@ -176,31 +175,14 @@ function layoutPages(item, reader, badImages = new Set()) {
     }
     // Failed/corrupt thumbnails may not reserve visual space. Reflow their
     // article text immediately, without altering the original source pages.
-    const cleanSources = (item._sourcePages || item.pages).map(p =>
+    const sourcePages = item?.contentType === 'news' ? item.pages : (item._sourcePages || item.pages)
+    const cleanSources = sourcePages.map(p =>
       badImages.has(p.image) ? {...p,image:'',caption:''} : p)
-    const next = planReadingPages({...item,_sourcePages:cleanSources}, fits)
+    const next = item?.contentType === 'news'
+      ? cleanSources
+      : planReadingPages({...item,_sourcePages:cleanSources}, fits)
     if (!next.length) return item.pages
-    const countWords = text => String(text || '').trim().split(/\s+/u).filter(Boolean).length
-    // Greedy pagination can strand a short final sentence after a nearly full
-    // text-only page. Rebalance adjacent text-only pages at sentence edges.
-    for (let i=0;i<next.length-1;i++) {
-      if (next[i].image || next[i+1].image) continue
-      const units = sentenceUnits(`${next[i].text} ${next[i+1].text}`)
-      if (units.length < 2) continue
-      const originalDifference = Math.abs(countWords(next[i].text)-countWords(next[i+1].text))
-      let best = null
-      for (let cut=1;cut<units.length;cut++) {
-        const left=units.slice(0,cut).join(' '), right=units.slice(cut).join(' ')
-        if (!fits({text:left,cover:i===0,image:null}) || !fits({text:right,cover:false,image:null})) continue
-        const difference=Math.abs(countWords(left)-countWords(right))
-        if (difference < originalDifference && (!best || difference < best.difference)) best={left,right,difference}
-      }
-      if (best) {
-        next[i]={...next[i],text:best.left}
-        next[i+1]={...next[i+1],text:best.right}
-      }
-    }
-    return next
+    return rebalanceTextPages(next, fits)
   } catch (error) {
     console.warn('Screen pagination deferred:', error?.message || error)
     return item.pages
@@ -482,7 +464,7 @@ function App() {
     window.visualViewport?.addEventListener('resize', recalculate)
     document.fonts?.ready.then(recalculate).catch(() => {})
     return () => { cancelled = true; cancelAnimationFrame(frame); observer?.disconnect(); window.removeEventListener('resize', recalculate); window.visualViewport?.removeEventListener('resize', recalculate) }
-  }, [tab, storyIndex, stories.length, story?._sourcePages, brokenImages, photoVersion])
+  }, [tab, storyIndex, stories.length, story?._sourcePages, story?.pages, brokenImages, photoVersion])
 
 
   // D12: search BOTH verified reader pools rather than selecting a single
