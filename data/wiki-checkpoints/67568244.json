@@ -2,9 +2,142 @@
   "pageId": 67568244,
   "title": "Digital self-determination",
   "topic": "Society",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1376919413,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376919413",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-24T10:40:47.874Z"
+  "reason": "1 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:Face Recognition 3252983.png",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2c/Face_Recognition_3252983.png/960px-Face_Recognition_3252983.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Face Recognition 3252983.png",
+        "caption": "An illustration depicting the use of facial recognition technology on a woman",
+        "alt": "",
+        "description": "Flat Recognition Facial Face Woman System",
+        "date": "2017-08-15",
+        "section": "Digital self-determination for individuals",
+        "position": 0,
+        "provenance": {
+          "credit": "teguhjatipras",
+          "license": "CC0",
+          "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Face_Recognition_3252983.png",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Digital_self-determination",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376919413",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "1eb094220140a318b4afad1e54538e70b3629185ff13f0fb10fbbf709146ae1e",
+      "heading": "Lead",
+      "excerpt": "Digital self-determination is a multidisciplinary concept derived from the legal concept of self-determination and applied to the digital sp",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376919413"
+    },
+    {
+      "id": "P2",
+      "hash": "19731b4cfd2b47f43ac5375aed39d3b25086a89d71cee48e8bf931941f68274e",
+      "heading": "Origins",
+      "excerpt": "There is no philosophically or legally agreed-upon concept of digital self-determination yet. Broadly speaking, the term describes the attem",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376919413"
+    },
+    {
+      "id": "P3",
+      "hash": "f35486af3f6d90f7ad5c6b1f6d9bf73685391416473514badb3a8df44ba988ad",
+      "heading": "Origins",
+      "excerpt": "The concept has been included in an official document for the first time by ARCEP, the French Telecoms Regulator, in a section of its 2021 R",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376919413"
+    },
+    {
+      "id": "P4",
+      "hash": "50aaec6d88eb275ce47ad937b8b8bac9a90ca42858339fb780e0a7337e10f4bd",
+      "heading": "Philosophy",
+      "excerpt": "The concept of self-determination relates to concepts of subjectivity, dignity, and autonomy in classic central-European philosophy and deri",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376919413"
+    },
+    {
+      "id": "P5",
+      "hash": "c84e1788031b7f87551a50fc791bb364adc125a67b52254168013ca71dbe860b",
+      "heading": "Psychology",
+      "excerpt": "In psychology, the concept of self-determination is closely related to self-regulation and intrinsic motivation, i.e., engaging in a behavio",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376919413"
+    },
+    {
+      "id": "P6",
+      "hash": "155560d5ca0f8a8d83bc1fcfddab0e7b297f2e9ec765b82364a36a4c16a535a3",
+      "heading": "Lead",
+      "excerpt": "In international law, the right of a people to self-determination is commonly recognized as a ius cogens rule. Here, self-determination deno",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376919413"
+    },
+    {
+      "id": "P7",
+      "hash": "985e5e4c0cb6ade963d9d338e82f88019a51a1e9a929254de78ca5d8c9fff2f5",
+      "heading": "Self-determination in the digital sphere",
+      "excerpt": "The increasing digitization of most aspects of society poses new challenges for the concept and realization of self-determination. While the",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376919413"
+    },
+    {
+      "id": "P8",
+      "hash": "8cab3e7177995afefaf6ee4714b5769a4b872b67159b51d08ec50f1465242dc4",
+      "heading": "Practical elements",
+      "excerpt": "Different sectors of society, ranging from legislators and policy-makers, to public organizations and scholars, to activists and members of ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376919413"
+    },
+    {
+      "id": "P9",
+      "hash": "03b7c76fcb55a6cdfbf41cd1855ad305252b4131cb3479d047be460757ecbc56",
+      "heading": "Access to digital infrastructure and tools",
+      "excerpt": "Bridging the various forms of existing digital divides and providing equitable and fair access to digital technologies and the internet has ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376919413"
+    },
+    {
+      "id": "P10",
+      "hash": "a31f21f21a19e1c0babebc6098d494166613318a2649729d80f403876c715642",
+      "heading": "Digital literacy",
+      "excerpt": "Digital literacy and media literacy have been proposed as necessary for individuals to acquire the knowledge and skills to use digital tools",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376919413"
+    },
+    {
+      "id": "P11",
+      "hash": "da8e470e212f3805a8b38fffd8528046c8cb4db70faad067f914fecd982b563e",
+      "heading": "Representation of diverse realities and viewpoints",
+      "excerpt": "Internet activist Eli Pariser coined the term filter bubble to refer to the reduced availability of divergent opinions and realities that we",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376919413"
+    },
+    {
+      "id": "P12",
+      "hash": "115ad51a6a819bb0f6636b6eb203af9eddf6c093f53e3f717db06f8823968860",
+      "heading": "Human-centered design of user interfaces and experiences",
+      "excerpt": "Scholars have coined the term attention economy to refer to the treatment of human attention as a scarce commodity in the context of ever-in",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376919413"
+    },
+    {
+      "id": "P13",
+      "hash": "820395f639983bb13a38f41a3e86bc31f1f4bd4517186d7726b51df6b5a32e9a",
+      "heading": "Data governance",
+      "excerpt": "Scholar Shoshana Zuboff popularized the term surveillance capitalism to refer to the private sector's commodification of users' personal dat",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376919413"
+    },
+    {
+      "id": "P14",
+      "hash": "1a8e51fc3935f1debbf44ce7379cc60aa3ec4e9e3df44239a3d04ba1f888c695",
+      "heading": "Digital self-determination for individuals",
+      "excerpt": "An individual's exercising of self-agency can be intimately connected to the digital environments one is embedded in, which can shape one's ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376919413"
+    },
+    {
+      "id": "P15",
+      "hash": "6355e06e97215c2ef4df68660799b5ee3775461a1ef70e65aad40a6a012f0b81",
+      "heading": "Digital self-determination for children",
+      "excerpt": "Digital media and technology afford children the opportunity to engage in various activities that support their development, learning, and p",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376919413"
+    }
+  ],
+  "updatedAt": "2026-10-24T10:40:53.316Z"
 }

@@ -11114,10 +11114,10 @@
       "checkedAt": "2026-10-21T18:10:13.288Z"
     },
     "67568244": {
-      "status": "FETCHED",
-      "reason": "pinned-source-ready",
+      "status": "EVIDENCE_READY",
+      "reason": "1 rights-verified embedded images",
       "revisionId": 1376919413,
-      "checkedAt": "2026-10-24T10:40:47.873Z"
+      "checkedAt": "2026-10-24T10:40:53.316Z"
     },
     "67568559": {
       "status": "REJECTED",
@@ -11930,7 +11930,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-24T10:40:47.874Z",
+  "updatedAt": "2026-10-24T10:40:53.317Z",
   "dailyUsage": {
     "day": "2026-10-24",
     "calls": 117,
