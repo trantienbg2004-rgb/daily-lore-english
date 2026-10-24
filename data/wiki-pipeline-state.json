@@ -8606,10 +8606,10 @@
       "checkedAt": null
     },
     "1870896": {
-      "status": "EVIDENCE_READY",
-      "reason": "4 rights-verified embedded images",
+      "status": "RETRY_LATER",
+      "reason": "Gemini token usage unavailable",
       "revisionId": 1381110068,
-      "checkedAt": "2026-10-24T10:12:55.140Z"
+      "checkedAt": "2026-10-24T10:13:01.128Z"
     },
     "1878007": {
       "status": "REJECTED",
@@ -11930,7 +11930,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-24T10:12:55.141Z",
+  "updatedAt": "2026-10-24T10:13:01.129Z",
   "dailyUsage": {
     "day": "2026-10-24",
     "calls": 117,
