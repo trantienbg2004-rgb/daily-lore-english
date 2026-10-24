@@ -2,10 +2,10 @@
   "pageId": 5142662,
   "title": "Italian fascism",
   "topic": "Politics",
-  "status": "DRAFTED",
+  "status": "NEEDS_REPAIR",
   "revisionId": 1380358718,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380358718",
-  "reason": "draft durably saved before validation",
+  "reason": "editorial: C1-C2:page-3:evidence-id",
   "rights": [
     {
       "status": "REJECTED",
@@ -407,7 +407,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380358718"
     }
   ],
-  "updatedAt": "2026-10-24T04:52:41.660Z",
+  "updatedAt": "2026-10-24T04:52:47.638Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -545,5 +545,10 @@
     "output": 1463,
     "total": 4271
   },
-  "validation": null
+  "validation": {
+    "accepted": false,
+    "errors": [
+      "C1-C2:page-3:evidence-id"
+    ]
+  }
 }
