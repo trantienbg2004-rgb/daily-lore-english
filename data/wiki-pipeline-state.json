@@ -10046,10 +10046,10 @@
       "checkedAt": "2026-10-21T03:12:41.518Z"
     },
     "34298881": {
-      "status": "FETCHED",
-      "reason": "pinned-source-ready",
+      "status": "REJECTED",
+      "reason": "insufficient-source-text-or-embedded-images",
       "revisionId": 1356591752,
-      "checkedAt": "2026-10-24T10:12:25.334Z"
+      "checkedAt": "2026-10-24T10:12:31.059Z"
     },
     "34345090": {
       "status": "PUBLISHED",
@@ -11930,7 +11930,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-24T10:12:25.335Z",
+  "updatedAt": "2026-10-24T10:12:31.060Z",
   "dailyUsage": {
     "day": "2026-10-24",
     "calls": 117,
