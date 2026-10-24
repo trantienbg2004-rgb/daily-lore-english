@@ -10322,10 +10322,10 @@
       "checkedAt": "2026-10-21T22:32:17.422Z"
     },
     "43151308": {
-      "status": "EVIDENCE_READY",
-      "reason": "6 rights-verified embedded images",
+      "status": "RETRY_LATER",
+      "reason": "Gemini token usage unavailable",
       "revisionId": 1369639654,
-      "checkedAt": "2026-10-24T11:02:41.065Z"
+      "checkedAt": "2026-10-24T11:02:46.953Z"
     },
     "43349616": {
       "status": "REJECTED",
@@ -11930,7 +11930,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-24T11:02:41.066Z",
+  "updatedAt": "2026-10-24T11:02:46.954Z",
   "dailyUsage": {
     "day": "2026-10-24",
     "calls": 117,

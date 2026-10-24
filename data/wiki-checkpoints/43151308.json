@@ -2,10 +2,10 @@
   "pageId": 43151308,
   "title": "Online social movement",
   "topic": "Society",
-  "status": "EVIDENCE_READY",
+  "status": "RETRY_LATER",
   "revisionId": 1369639654,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369639654",
-  "reason": "6 rights-verified embedded images",
+  "reason": "Gemini token usage unavailable",
   "rights": [
     {
       "status": "REJECTED",
@@ -283,5 +283,5 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369639654"
     }
   ],
-  "updatedAt": "2026-10-24T11:02:41.065Z"
+  "updatedAt": "2026-10-24T11:02:46.953Z"
 }
