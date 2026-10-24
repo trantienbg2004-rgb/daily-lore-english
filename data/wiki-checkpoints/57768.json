@@ -2,10 +2,10 @@
   "pageId": 57768,
   "title": "Women's Tennis Association",
   "topic": "Sports",
-  "status": "DRAFTED",
+  "status": "VALIDATED",
   "revisionId": 1378762495,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378762495",
-  "reason": "draft durably saved before validation",
+  "reason": "local factual, style, length, structure and source audit passed",
   "rights": [
     {
       "status": "REVIEW",
@@ -260,7 +260,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378762495"
     }
   ],
-  "updatedAt": "2026-10-24T08:06:08.483Z",
+  "updatedAt": "2026-10-24T08:06:26.504Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -395,5 +395,8 @@
     "output": 351,
     "total": 3385
   },
-  "validation": null
+  "validation": {
+    "accepted": true,
+    "errors": []
+  }
 }
