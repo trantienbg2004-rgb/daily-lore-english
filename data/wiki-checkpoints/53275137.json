@@ -2,9 +2,167 @@
   "pageId": 53275137,
   "title": "Steppe Route",
   "topic": "Economy",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1352260328,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1352260328",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-24T10:15:31.415Z"
+  "reason": "3 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Grave of princess of ukok.jpg"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:Reclining female figure, probably from Hacilar, southwestern Turkey, Neolithic-Hacilar VI, c. 5600 BC, terracotta - Matsuoka Museum of Art - Tokyo, Japan - DSC06994.JPG",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/29/Reclining_female_figure%2C_probably_from_Hacilar%2C_southwestern_Turkey%2C_Neolithic-Hacilar_VI%2C_c._5600_BC%2C_terracotta_-_Matsuoka_Museum_of_Art_-_Tokyo%2C_Japan_-_DSC06994.JPG/960px-thumbnail.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Reclining female figure, probably from Hacilar, southwestern Turkey, Neolithic-Hacilar VI, c. 5600 BC, terracotta - Matsuoka Museum of Art - Tokyo, Japan - DSC06994.JPG",
+        "caption": "Reclining female : Neolithic terracotta, c. 5600 BCE (Turkey)",
+        "alt": "",
+        "description": "Exhibit in the Matsuoka Museum of Art - 5 Chome-12-6 Shirokanedai, Minato, Tokyo 108-0071, Japan.",
+        "date": "2015-02-19 23:45:17",
+        "section": "Neolithic",
+        "position": 1,
+        "provenance": {
+          "credit": "Daderot",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Reclining_female_figure,_probably_from_Hacilar,_southwestern_Turkey,_Neolithic-Hacilar_VI,_c._5600_BC,_terracotta_-_Matsuoka_Museum_of_Art_-_Tokyo,_Japan_-_DSC06994.JPG",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Steppe_Route",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1352260328",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:Complex hunting scene in a bronze age petroglyph at Tamgaly, Kazakhstan.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/18/Complex_hunting_scene_in_a_bronze_age_petroglyph_at_Tamgaly%2C_Kazakhstan.jpg/960px-Complex_hunting_scene_in_a_bronze_age_petroglyph_at_Tamgaly%2C_Kazakhstan.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Complex hunting scene in a bronze age petroglyph at Tamgaly, Kazakhstan.jpg",
+        "caption": "Hunting scene, Bronze Age (Kazakhstan)",
+        "alt": "",
+        "description": "Complex hunting scene in a bronze age petroglyph at Tamgaly, Kazakhstan.",
+        "date": "2013-05-26 12:00:09",
+        "section": "Bronze Age",
+        "position": 2,
+        "provenance": {
+          "credit": "Ken and Nyetta",
+          "license": "CC BY 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Complex_hunting_scene_in_a_bronze_age_petroglyph_at_Tamgaly,_Kazakhstan.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Steppe_Route",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1352260328",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:Korean dagger early iron age.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/16/Korean_dagger_early_iron_age.jpg/960px-Korean_dagger_early_iron_age.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Korean dagger early iron age.jpg",
+        "caption": "Daggers, Early Iron Age (Korea)",
+        "alt": "",
+        "description": "Korean daggers dated to the early Iron Age.",
+        "date": "2006-07-15",
+        "section": "Dynastic ages",
+        "position": 3,
+        "provenance": {
+          "credit": "The user's homepage",
+          "license": "CC BY 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Korean_dagger_early_iron_age.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Steppe_Route",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1352260328",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "36650f9a614e0db1f8f94a31ab9492c08b08afa8391457f6c968daff1fe0a2bd",
+      "heading": "Lead",
+      "excerpt": "The Steppe Route was an ancient overland route through the Eurasian Steppe that was an active precursor of the Silk Road. Silk and horses we",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1352260328"
+    },
+    {
+      "id": "P2",
+      "hash": "09f9681c046966cc7ac7145d91a3352dec514f2f0f02af29bfb5f4ae1ce9f87e",
+      "heading": "Geography",
+      "excerpt": "The Steppe Route centered on the North Asian steppes and connected eastern Europe to northeastern China. The Eurasian Steppe has a wide and ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1352260328"
+    },
+    {
+      "id": "P3",
+      "hash": "dbf4097694720d52534d88f891b4ef01a14fa2fe07adaff2d38005f00e4941fd",
+      "heading": "Geography",
+      "excerpt": "The vast territory stretching alongside the Steppe Route is diversified and includes dry steppe, desert, mountains, oases, lakes, rivers and",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1352260328"
+    },
+    {
+      "id": "P4",
+      "hash": "6d46093828332e2c04110ecc01dbbd92f2fddf42e21c36986ab6b7588028cf05",
+      "heading": "Communities",
+      "excerpt": "In the absence of discovered written language records from early Eurasian nomads, it is difficult to determine how they referred to themselv",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1352260328"
+    },
+    {
+      "id": "P5",
+      "hash": "e012c2094f175bd8b4b18396aff99749a2da2d4f0de527d9e693795fe4dccd67",
+      "heading": "Communities",
+      "excerpt": "A common view is that the early communities of the Eurasian steppe were clustered but not necessarily closely related ethnically. On the one",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1352260328"
+    },
+    {
+      "id": "P6",
+      "hash": "64c466b512dc0dec7d1fee76e62c58156a5351752ee7309ed9969da2d1972b9f",
+      "heading": "Upper paleolithic",
+      "excerpt": "By the end of the Pliocene, tectonic activity had created the major mountain ranges and lowlands, including the Aral and Caspian Sea basins ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1352260328"
+    },
+    {
+      "id": "P7",
+      "hash": "0ef943ff5e1a070ce22a239041d0025b0375265af500168418fab789f3b6543e",
+      "heading": "Neolithic",
+      "excerpt": "The early acquaintance with a food-producing economy in the Pontic-Caspian Steppe is assigned to this period. The transition from a food-gat",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1352260328"
+    },
+    {
+      "id": "P8",
+      "hash": "3aa71bd8d2efad004cce1cfb1cd3011caa77694e2af950f5a52227eefd138126",
+      "heading": "Bronze Age",
+      "excerpt": "The transition period to the Bronze Age shows varying patterns in the different geographical regions of the Steppe Route. However, numerous ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1352260328"
+    },
+    {
+      "id": "P9",
+      "hash": "3075227476ad3c15480d40009c142d912883693c46fbe64b376d96c6849db060",
+      "heading": "Dynastic ages",
+      "excerpt": "By 2000 BCE the network of Steppe Routes exchanges started to transition to the Silk Road. By the middle of this millennium, the “steppe rou",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1352260328"
+    },
+    {
+      "id": "P10",
+      "hash": "c34e6fa6b787d4950b33349a6c132fe5e46673190b8c5197abf03da71e2f4257",
+      "heading": "Communities",
+      "excerpt": "Newly studied archaeological sites such as Berel in Kazakhstan, an elite burial ground of the Pazyryk culture located near the borders with ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1352260328"
+    },
+    {
+      "id": "P11",
+      "hash": "90a1f39a652990d6d4c9afe6c14f0434f3d1ba523a84b12845b5b2a5e2f85c6e",
+      "heading": "Upper paleolithic",
+      "excerpt": "The dominant position occupied by nomadic communities in the steppe ecological niche was a result of their nomadic military and technical su",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1352260328"
+    }
+  ],
+  "updatedAt": "2026-10-24T10:15:37.367Z"
 }
