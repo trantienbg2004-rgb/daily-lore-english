@@ -340,7 +340,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379228653"
     }
   ],
-  "updatedAt": "2026-10-24T04:21:51.752Z",
+  "updatedAt": "2026-10-24T04:22:09.708Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -368,13 +368,13 @@
             ]
           },
           {
-            "text": "In the late nineteenth century, a new version called lawn tennis spread quickly. Different groups had different rules, which caused confusion. An open meeting helped create standard rules in 1875. These rules laid the foundation for the first Wimbledon tournament in 1877.",
+            "text": "In the late nineteenth century, a new version called lawn tennis spread quickly. Different groups had different rules, which caused confusion. An open meeting helped create standard rules in March 1875. These rules laid the foundation for the first Wimbledon tournament in 1877.",
             "evidenceIds": [
               "P3"
             ]
           },
           {
-            "text": "Over time, major international competitions began. The Davis Cup for men started in 1900. Later, the Federation Cup for women began. In 1968, the Open Era started, allowing professional players and amateurs to compete together in the major tournaments.",
+            "text": "Over time, major international competitions began. The Davis Cup for men started. Later, the Federation Cup for women began. In 1968, the Open Era started, allowing professional players and amateurs to compete together in the major tournaments.",
             "evidenceIds": [
               "P4",
               "P18"
@@ -454,7 +454,7 @@
             ]
           },
           {
-            "text": "Institutional structures expanded internationally with the establishment of the Davis Cup in 1900 and the precursor to the Fed Cup. Promoter C.C. Pyle initiated the first professional tour in 1926, establishing a rigid divide between professionals and amateurs. This division persisted until April 1968, when the advent of the Open Era permitted professionals to contest major tournaments alongside amateurs.",
+            "text": "Institutional structures expanded internationally with the establishment of the Davis Cup and the precursor to the Fed Cup. Promoter C.C. Pyle initiated the first professional tour in 1926, establishing a rigid divide between professionals and amateurs. This division persisted until April 1968, when the advent of the Open Era permitted professionals to contest major tournaments alongside amateurs.",
             "evidenceIds": [
               "P4",
               "P15",
@@ -465,11 +465,11 @@
       }
     }
   },
-  "repairAttempts": 1,
+  "repairAttempts": 2,
   "lastUsage": {
-    "input": 3116,
-    "output": 361,
-    "total": 3477
+    "input": 3077,
+    "output": 249,
+    "total": 3326
   },
   "validation": null
 }
