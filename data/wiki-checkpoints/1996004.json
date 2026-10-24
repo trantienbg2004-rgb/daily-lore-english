@@ -2,10 +2,10 @@
   "pageId": 1996004,
   "title": "Uti possidetis",
   "topic": "Conflict & Security",
-  "status": "DRAFTED",
+  "status": "NEEDS_REVIEW",
   "revisionId": 1373665813,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373665813",
-  "reason": "draft durably saved before validation",
+  "reason": "editorial: A1-A2:page-1:copied-source-passage,A1-A2:page-4:copied-source-passage,C1-C2:page-4:copied-source-passage",
   "rights": [
     {
       "status": "REVIEW",
@@ -279,7 +279,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373665813"
     }
   ],
-  "updatedAt": "2026-10-24T05:42:53.108Z",
+  "updatedAt": "2026-10-24T05:42:59.075Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -401,5 +401,12 @@
     "output": 231,
     "total": 3021
   },
-  "validation": null
+  "validation": {
+    "accepted": false,
+    "errors": [
+      "A1-A2:page-1:copied-source-passage",
+      "A1-A2:page-4:copied-source-passage",
+      "C1-C2:page-4:copied-source-passage"
+    ]
+  }
 }
