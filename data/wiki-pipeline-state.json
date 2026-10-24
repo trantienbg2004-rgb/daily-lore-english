@@ -8912,10 +8912,10 @@
       "checkedAt": "2026-10-21T03:12:55.440Z"
     },
     "3745308": {
-      "status": "PENDING",
-      "reason": "queued",
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
       "revisionId": 1379238551,
-      "checkedAt": null
+      "checkedAt": "2026-10-24T10:44:17.671Z"
     },
     "3995387": {
       "status": "REJECTED",
@@ -11930,7 +11930,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-24T10:44:11.187Z",
+  "updatedAt": "2026-10-24T10:44:17.681Z",
   "dailyUsage": {
     "day": "2026-10-24",
     "calls": 117,
