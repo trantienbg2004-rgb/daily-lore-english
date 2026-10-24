@@ -10184,10 +10184,10 @@
       "checkedAt": "2026-10-21T03:09:05.564Z"
     },
     "84139069": {
-      "status": "FETCHED",
-      "reason": "pinned-source-ready",
+      "status": "EVIDENCE_READY",
+      "reason": "10 rights-verified embedded images",
       "revisionId": 1381661374,
-      "checkedAt": "2026-10-24T04:03:18.316Z"
+      "checkedAt": "2026-10-24T04:03:23.560Z"
     },
     "84311223": {
       "status": "rejected",
@@ -10202,7 +10202,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-24T04:03:18.316Z",
+  "updatedAt": "2026-10-24T04:03:23.561Z",
   "dailyUsage": {
     "day": "2026-10-23",
     "calls": 166,
