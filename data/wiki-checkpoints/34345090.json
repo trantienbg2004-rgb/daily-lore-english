@@ -335,7 +335,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380485622"
     }
   ],
-  "updatedAt": "2026-10-24T06:07:18.338Z",
+  "updatedAt": "2026-10-24T06:07:36.383Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -382,7 +382,7 @@
         "headline": "Tracing the History of Diabetes",
         "pages": [
           {
-            "text": "The history of diabetes spans thousands of years across multiple ancient civilizations. The earliest possible reference appears in the Ebers Papyrus from Ancient Egypt around 1550 BC, which mentions eliminating plentiful urine. However, historians note it remains unclear if this specifically described diabetes or urinary infections.",
+            "text": "The history of diabetes spans thousands of years across multiple ancient civilizations. The earliest possible reference appears in the Ebers Papyrus from Ancient Egypt, which mentions eliminating plentiful urine. However, historians note it remains unclear if this specifically described diabetes or urinary infections.",
             "evidenceIds": [
               "P1",
               "P5"
@@ -462,11 +462,11 @@
       }
     }
   },
-  "repairAttempts": 0,
+  "repairAttempts": 1,
   "lastUsage": {
-    "input": 3033,
-    "output": 1081,
-    "total": 4114
+    "input": 2862,
+    "output": 121,
+    "total": 2983
   },
   "validation": null
 }
