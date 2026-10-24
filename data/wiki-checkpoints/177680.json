@@ -2,10 +2,10 @@
   "pageId": 177680,
   "title": "History of aviation",
   "topic": "Science & Technology",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1379430717,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379430717",
-  "reason": "14 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -543,5 +543,137 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379430717"
     }
   ],
-  "updatedAt": "2026-10-24T03:36:34.995Z"
+  "updatedAt": "2026-10-24T03:36:51.801Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "Early Flight History",
+        "pages": [
+          {
+            "text": "The history of human flight started a long time ago. People made kites in China many years before the common era. These kites used light bamboo and silk. Later, inventors tried to jump from towers with fake wings, but this was very dangerous.",
+            "evidenceIds": [
+              "P1",
+              "P7",
+              "P8"
+            ]
+          },
+          {
+            "text": "In the eighteenth century, the Montgolfier brothers made the first hot-air balloon. People also invented hydrogen balloons around the same time. These balloons let humans fly into the sky and helped scientists learn more about the air and altitude.",
+            "evidenceIds": [
+              "P2",
+              "P14"
+            ]
+          },
+          {
+            "text": "Inventors also tested gliders in the nineteenth century to understand how wings work. George Cayley studied the physics of flight carefully. His work helped create the basic ideas of modern aerodynamics and influenced later aircraft designers.",
+            "evidenceIds": [
+              "P3",
+              "P18"
+            ]
+          },
+          {
+            "text": "In nineteen hundred and three, the Wright brothers built and flew the first real airplane. They used their research on wing design and control to make powered flight possible. Soon, engines became stronger and airplanes improved very fast.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "Airships became popular for long trips for many years. After the Second World War, land airplanes with jet engines replaced them. Today, digital tools and pilotless drones are common in modern aviation around the world.",
+            "evidenceIds": [
+              "P4",
+              "P5"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "The Evolution of Flight",
+        "pages": [
+          {
+            "text": "The history of aviation spans over two thousand years, beginning with ancient innovations like kites in China and early attempts at tower jumping. While kite flying dates back several hundred years BC, tower jumping experiments generally resulted in serious injuries because lift and control were poorly understood.",
+            "evidenceIds": [
+              "P1",
+              "P7",
+              "P8"
+            ]
+          },
+          {
+            "text": "During the late eighteenth century, the invention of hot-air and hydrogen balloons enabled piloted ascents. France even established balloon companies for military use. These early flights provided the first detailed understanding of the relationship between altitude and the atmosphere.",
+            "evidenceIds": [
+              "P2",
+              "P14"
+            ]
+          },
+          {
+            "text": "In the nineteenth century, glider experiments provided a vital basis for winged aircraft. Researchers like George Cayley studied aerodynamics rigorously, earning him the title of father of the aeroplane. His foundational work paved the way for future powered flight.",
+            "evidenceIds": [
+              "P3",
+              "P18"
+            ]
+          },
+          {
+            "text": "The milestone of powered flight was finally achieved in 1903 by the Wright brothers, who successfully combined wing design and aircraft control. By 1909, the basic aircraft configuration with a cruciform tail was established, followed by rapid performance improvements and powerful engines.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "Rigid steerable balloons dominated long-distance travel until large flying boats and land-based airplanes took over after World War II. Jet engines subsequently reshaped civilian and military aviation. In the twenty-first century, digital controls and pilotless drones have transformed the industry.",
+            "evidenceIds": [
+              "P4",
+              "P5"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "Milestones in Aviation",
+        "pages": [
+          {
+            "text": "Aviation history encompasses more than two millennia of technological evolution. Earliest precedents include ancient Chinese kites crafted from resilient bamboo and silk, alongside recurring historical accounts of tower jumping. These early attempts characteristically failed due to a fundamental lack of understanding regarding lift, stability, and control.",
+            "evidenceIds": [
+              "P1",
+              "P7",
+              "P8"
+            ]
+          },
+          {
+            "text": "The late eighteenth century marked a pivotal shift with the invention of the Montgolfier hot-air balloon and hydrogen balloons. These crafts facilitated piloted flights and granted researchers initial insights into atmospheric conditions relative to altitude, while also prompting early military applications.",
+            "evidenceIds": [
+              "P2",
+              "P14"
+            ]
+          },
+          {
+            "text": "Nineteenth-century glider experiments laid essential groundwork for heavier-than-air flight. George Cayley initiated rigorous aerodynamic studies, establishing principles that guided subsequent engineers. Concurrently, researchers like Otto Lilienthal focused heavily on gliding stability and control in the absence of suitable engines.",
+            "evidenceIds": [
+              "P3",
+              "P18",
+              "P20"
+            ]
+          },
+          {
+            "text": "The convergence of refined wing design and aircraft control culminated in 1903 when the Wright brothers achieved the first powered aeroplane flight. Rapid architectural standardization followed by 1909, propelled by advancements in engine technology that vastly enhanced aircraft performance.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "Airships dominated long-distance transit until mid-twentieth-century innovations introduced flying boats and land-based propeller planes, which were soon superseded by jet propulsion. In contemporary aviation, digital fly-by-wire instrumentation and autonomous drones enable the practical operation of inherently unstable aircraft designs.",
+            "evidenceIds": [
+              "P4",
+              "P5"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 3014,
+    "output": 983,
+    "total": 3997
+  },
+  "validation": null
 }
