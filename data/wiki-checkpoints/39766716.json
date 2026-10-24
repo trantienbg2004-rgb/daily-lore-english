@@ -388,7 +388,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378302705"
     }
   ],
-  "updatedAt": "2026-10-24T06:30:05.517Z",
+  "updatedAt": "2026-10-24T06:30:23.461Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -459,7 +459,7 @@
             ]
           },
           {
-            "text": "Global anti-war activism continued through later conflicts. Millions staged mass protests leading up to the 2003 invasion of Iraq. Demonstrations also emerged during the 2014 Russian intervention in Ukraine and following the 2021 Israel-Palestine crisis, where large crowds gathered in cities like London and Oakland.",
+            "text": "Global anti-war activism continued through later conflicts. Millions staged mass protests leading up to the invasion of Iraq. Demonstrations also emerged during the 2014 Russian intervention in Ukraine and following the 2021 crisis, where large crowds gathered in cities like London and Oakland.",
             "evidenceIds": [
               "P13",
               "P14",
@@ -509,11 +509,11 @@
       }
     }
   },
-  "repairAttempts": 0,
+  "repairAttempts": 1,
   "lastUsage": {
-    "input": 2816,
-    "output": 1088,
-    "total": 3904
+    "input": 2661,
+    "output": 138,
+    "total": 2799
   },
   "validation": null
 }
