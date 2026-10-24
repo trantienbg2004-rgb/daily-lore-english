@@ -2,10 +2,10 @@
   "pageId": 69635423,
   "title": "COVID-19 lockdowns by country",
   "topic": "Health",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1377111623,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377111623",
-  "reason": "16 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -539,5 +539,135 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377111623"
     }
   ],
-  "updatedAt": "2026-10-24T02:05:57.106Z"
+  "updatedAt": "2026-10-24T02:06:13.571Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "How the World Locked Down",
+        "pages": [
+          {
+            "text": "During the COVID-19 pandemic, many countries around the world used lockdowns. Governments closed schools, universities, and colleges in 63 countries. These rules affected nearly half of all students on Earth. Some places stopped all movement, while other places gave specific times for people to go outside.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "China started the first lockdowns in Hubei province in January 2020. Soon, Italy went into a full nationwide lockdown in March 2020. India ordered its entire population of 1.3 billion people to stay home. This made the Indian lockdown the largest one during the entire global health crisis.",
+            "evidenceIds": [
+              "P2",
+              "P11"
+            ]
+          },
+          {
+            "text": "In Argentina, the government used special health decrees to create rules against the pandemic. Australia also put a general lockdown in place in March 2020. Meanwhile, a few countries and territories did not use this strategy at all. These places included Japan, Sweden, and Belarus.",
+            "evidenceIds": [
+              "P3",
+              "P5",
+              "P6"
+            ]
+          },
+          {
+            "text": "France required people to carry special paper forms when leaving their homes. People could face fines if they made trips that were not essential. Essential trips included buying food or getting medical help. Police set up road blocks across the country to check citizens.",
+            "evidenceIds": [
+              "P14"
+            ]
+          },
+          {
+            "text": "In Ireland, the government closed all schools and colleges. Officials also cancelled St. Patrick's Day celebrations to keep people safe. Later, Ireland ordered everyone to stay at home under strict rules. The police received special powers to make sure people followed these laws.",
+            "evidenceIds": [
+              "P19"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "Global Lockdown Measures During COVID-19",
+        "pages": [
+          {
+            "text": "As the COVID-19 pandemic spread globally, governments implemented various restriction strategies. Schools, universities, and colleges closed in 63 countries, impacting approximately 47 percent of the world's student population. While some nations enforced total movement control, others limited activities based on specific times, often allowing only essential businesses to remain open.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "China became the first country to quarantine cities and provinces in late January 2020. In March 2020, Italy instituted a national quarantine. India followed with a massive nationwide order requiring its 1.3 billion residents to stay at home, creating the largest lockdown of the pandemic. Argentina and Australia also introduced significant public health restrictions during this period.",
+            "evidenceIds": [
+              "P2",
+              "P5",
+              "P6",
+              "P11"
+            ]
+          },
+          {
+            "text": "Despite widespread adoption, several countries and territories did not use lockdowns. This group included Japan, Belarus, Sweden, South Korea, and Taiwan, along with certain states in Brazil and the United States. In contrast, European nations like France required citizens to carry exemption forms for essential journeys, backed by police roadblocks and potential fines.",
+            "evidenceIds": [
+              "P3",
+              "P14"
+            ]
+          },
+          {
+            "text": "Ireland took strict actions, including the cancellation of St. Patrick's Day and the closure of all educational facilities. The Irish government eventually announced a national stay-at-home order, banning all public and private gatherings. Police were granted enforcement powers over these measures, which were repeatedly extended.",
+            "evidenceIds": [
+              "P19"
+            ]
+          },
+          {
+            "text": "By late 2021, evolving conditions prompted further policy adjustments. Austria introduced targeted restrictions for unvaccinated individuals before ordering a nationwide lockdown for all citizens, becoming the first European country to do so that winter. Meanwhile, countries like Indonesia used structured frameworks like large-scale social restrictions to manage transmission.",
+            "evidenceIds": [
+              "P7",
+              "P17"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "The Implementation and Scale of COVID-19 Lockdowns",
+        "pages": [
+          {
+            "text": "The global response to the COVID-19 outbreak involved unprecedented non-pharmacological interventions. Educational institutions closed on national or local bases across 63 countries, affecting roughly 47 percent of the global student demographic. Governments deployed diverse containment protocols, ranging from absolute curbs on mobility to time-bound restrictions that permitted solely essential commercial operations.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "China initiated the earliest city and provincial quarantines in late January 2020, drawing debate from public health experts regarding the novelty, ethics, and psychological toll of such large-scale containment. By March 2020, Italy imposed national quarantine measures. India subsequently ordered its entire population into a 21-day lockdown, generating the largest movement restriction of the pandemic.",
+            "evidenceIds": [
+              "P2",
+              "P11",
+              "P16"
+            ]
+          },
+          {
+            "text": "Geographic participation in lockdowns was heterogeneous. Jurisdictions such as Japan, Sweden, Belarus, and Taiwan avoided the strategy entirely. Conversely, nations like France instituted rigorous administrative compliance protocols, mandating physical exemption certificates and establishing police checkpoints to verify the necessity of civilian transit.",
+            "evidenceIds": [
+              "P3",
+              "P14"
+            ]
+          },
+          {
+            "text": "Ireland's response included the cancellation of major cultural events and the shuttering of educational infrastructure. The government mandated a comprehensive stay-at-home order, empowering police forces to enforce compliance across recurring extensions. Similarly, nations such as Fiji enforced targeted urban lockdowns following initial case confirmations.",
+            "evidenceIds": [
+              "P13",
+              "P19"
+            ]
+          },
+          {
+            "text": "As the epidemiological landscape shifted through 2021, intervention strategies adapted. Austria instituted a stratified lockdown targeting unvaccinated individuals before expanding restrictions to the general citizenry in response to rising case numbers and low immunization coverage. In Indonesia, authorities systematically transitioned from regional social restrictions to standardized community enforcement policies.",
+            "evidenceIds": [
+              "P7",
+              "P17",
+              "P18"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2913,
+    "output": 1176,
+    "total": 4089
+  },
+  "validation": null
 }
