@@ -2,9 +2,200 @@
   "pageId": 7569422,
   "title": "Volga trade route",
   "topic": "Economy",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1374169717,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374169717",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-24T10:16:37.511Z"
+  "reason": "3 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Volok by Roerich.jpg"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:Varangian routes.png",
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/d/dd/Varangian_routes.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "fileTitle": "File:Varangian routes.png",
+        "caption": "Map showing the major Varangian trade routes: the Volga trade route (in red) and the route from the Varangians to the Greeks (in purple). Other trade routes of the eighth-eleventh centuries shown in orange.",
+        "alt": "",
+        "description": "Map showing the major Varangian trade routes, the Volga trade route (in red) and the Trade Route from the Varangians to the Greeks (in blue). Other trade routes of the 8th–11th centuries shown in orange. There are two versions of the source map: one corresponds to Hungarian historiography, which believes that speakers of the Eastern Romance languages (the Vlachs) disappeared for a thousand-year period between 275 and 1300; the other corresponds to Romanian historiography, which does not accept this.",
+        "date": "2023-10-03 11:29:08",
+        "section": "Functioning",
+        "position": 1,
+        "provenance": {
+          "credit": "Briangotts",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Varangian_routes.png",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Volga_trade_route",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374169717",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:Coins Spilling Silver Hoard 2 closeup.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/ca/Coins_Spilling_Silver_Hoard_2_closeup.jpg/960px-Coins_Spilling_Silver_Hoard_2_closeup.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Coins Spilling Silver Hoard 2 closeup.jpg",
+        "caption": "Samanid coins found in the Spillings Hoard.",
+        "alt": "",
+        "description": "Closeup of silver coins from hoard No 2 of the Spillings Hoard at Gotland Museum, Visby, Gotland, Sweden.",
+        "date": "2015-04-19 12:02:06",
+        "section": "Connection to the slave trade",
+        "position": 2,
+        "provenance": {
+          "credit": "W.carter",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Coins_Spilling_Silver_Hoard_2_closeup.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Volga_trade_route",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374169717",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Evariste-Vital Luminais - Pirates normands au IXe siècle.jpg"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:S. V. Ivanov. Trade negotiations in the country of Eastern Slavs. Pictures of Russian history. (1909).jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/36/S._V._Ivanov._Trade_negotiations_in_the_country_of_Eastern_Slavs._Pictures_of_Russian_history._%281909%29.jpg/960px-S._V._Ivanov._Trade_negotiations_in_the_country_of_Eastern_Slavs._Pictures_of_Russian_history._%281909%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:S. V. Ivanov. Trade negotiations in the country of Eastern Slavs. Pictures of Russian history. (1909).jpg",
+        "caption": "The Rus trading slaves with the Khazars: Trade in the East Slavic Camp by Sergei Ivanov (1909)",
+        "alt": "",
+        "description": "",
+        "date": "1909date QS:P571,+1909-00-00T00:00:00Z/9date QS:P571,+1909-00-00T00:00:00Z/9",
+        "section": "Connection to the slave trade",
+        "position": 4,
+        "provenance": {
+          "credit": "Sergey Ivanov",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:S._V._Ivanov._Trade_negotiations_in_the_country_of_Eastern_Slavs._Pictures_of_Russian_history._(1909).jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Volga_trade_route",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374169717",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "99e93b327cee2e188b4c734a8d7885400b1f5183167a8949cc74520ede4fc574",
+      "heading": "Lead",
+      "excerpt": "In the Middle Ages, the Volga trade route connected Northern Europe and Northwestern Russia with the Caspian Sea and the Sasanian Empire, vi",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374169717"
+    },
+    {
+      "id": "P2",
+      "hash": "1ce7be135bf730819e78c4c560b967a842dca7db3ed273d5c6b832a667fec5f0",
+      "heading": "Lead",
+      "excerpt": "There was a second route from the Baltic Sea to the Dnieper, which ran along the Western Dvina (Daugava) between Lovat and Dnieper in the Sm",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374169717"
+    },
+    {
+      "id": "P3",
+      "hash": "59b800c1a6776cd7a583c1ab3aa5a7209ff4df47feddc5fd1353088544e46cae",
+      "heading": "Establishment",
+      "excerpt": "The Volga trade route was established by the Varangians who settled in Northwestern Russia in the early 9th century. About 10 km (6 mi) sout",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374169717"
+    },
+    {
+      "id": "P4",
+      "hash": "bf708081a3f4cb90f51fc5e019c7030b5502d22848d856f16f66b2c7212edc4f",
+      "heading": "Functioning",
+      "excerpt": "From Aldeigjuborg, the Rus could travel up the Volkhov River to Novgorod, then to Lake Ilmen and further along the Lovat River. Taking their",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374169717"
+    },
+    {
+      "id": "P5",
+      "hash": "08aea2de6acf228c32a594287ebf27b8fd77fd657e87d5abdedcbcd4b776d911",
+      "heading": "Functioning",
+      "excerpt": "[They] transport beaver hides, the pelts of the black fox and swords from the farthest reaches of the Saqaliba to the Sea of Rum [i.e., the ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374169717"
+    },
+    {
+      "id": "P6",
+      "hash": "defd864e09bd1a21cb9d25752cb58fe5e4bcec0ba1245fbc1b363e15d8ec3c15",
+      "heading": "Connection to the slave trade",
+      "excerpt": "During the raids, the Vikings often captured and enslaved militarily weaker peoples they encountered through raids or conquests across Europ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374169717"
+    },
+    {
+      "id": "P7",
+      "hash": "6d93d7747196ee19679a5ae0849bfe121d3e77aab285e1b4daa2c10a373bd710",
+      "heading": "Background",
+      "excerpt": "Slavery was common in the Viking age period, and one of the main reasons for the Viking expansion was the search for slaves in other countri",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374169717"
+    },
+    {
+      "id": "P8",
+      "hash": "8b73ea4b7cfc27129419c77c325a63512425162d7351a683e7cb444ecbfd06c5",
+      "heading": "The Viking slave trade",
+      "excerpt": "The Vikings trafficked European slaves captured in Viking raids in Eastern Europe in two destinations from present day Russia via the Volga ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374169717"
+    },
+    {
+      "id": "P9",
+      "hash": "32859b1dd61d8c313c7e039f4a7c37fecb4c021111912253643ff969124b2a4c",
+      "heading": "Decline",
+      "excerpt": "The Volga trade route lost its importance by the 11th century due to the decline of silver output in the Abbasid caliphate, and thus, the tr",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374169717"
+    },
+    {
+      "id": "P10",
+      "hash": "a27f8b19b560f04d2abfcde6f512e928bd49b852fd16c6153c8414048e67f12b",
+      "heading": "Functioning",
+      "excerpt": "In ibn Khordadbeh's account, the Rus are described as \"a kind of the Saqaliba\", a term usually used to refer to Slavs, and anti-Normanist sc",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374169717"
+    },
+    {
+      "id": "P11",
+      "hash": "c7e59d745e6eeeca04f73705780d269207060188c04e95f802cc7a1683122bff",
+      "heading": "Functioning",
+      "excerpt": "Modern scholars have also clashed over the interpretation of ibn Khordadbeh's report that the Rus used Saqlab interpreters. Anti-Normanists ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374169717"
+    },
+    {
+      "id": "P12",
+      "hash": "04d062f13daf920dfe9cf29b6002e50482adba14a4c422aecbcd1b36df95e4da",
+      "heading": "Functioning",
+      "excerpt": "They sail their ships to ravage as-Saqaliba [the surrounding Slavs], and bring back captives whom they sell at Khazaran and Bolghar... They ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374169717"
+    },
+    {
+      "id": "P13",
+      "hash": "92668d8e273f062413c430dcded120e0531b6f880714a671ea158728db7704d0",
+      "heading": "Functioning",
+      "excerpt": "In 921–922, ibn Fadlan was a member of a diplomatic delegation sent from Baghdad to Volga Bulgars, and he left an account of his personal ob",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374169717"
+    },
+    {
+      "id": "P14",
+      "hash": "01a696a09fa3379cfca978ff381126bf81e4fc2439cf118aff279c8684df7841",
+      "heading": "Functioning",
+      "excerpt": "On the other hand, the Rus came under foreign influence in such matters as dead chief's costume and in the habit of overloading of their wom",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374169717"
+    },
+    {
+      "id": "P15",
+      "hash": "12d473ca33da55707efe3a8ef6bd4f9657822d3c25145499ec9a976d43860114",
+      "heading": "Functioning",
+      "excerpt": "Each woman carries on her bosom a container made of iron, silver, copper, or gold -its size and substance depending on her man's wealth. Att",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374169717"
+    }
+  ],
+  "updatedAt": "2026-10-24T10:16:43.365Z"
 }
