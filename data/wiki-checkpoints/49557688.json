@@ -2,10 +2,10 @@
   "pageId": 49557688,
   "title": "Effects of climate change on small island countries",
   "topic": "Environment",
-  "status": "DRAFTED",
+  "status": "VALIDATED",
   "revisionId": 1378395460,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378395460",
-  "reason": "draft durably saved before validation",
+  "reason": "local factual, style, length, structure and source audit passed",
   "rights": [
     {
       "status": "REVIEW",
@@ -435,7 +435,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378395460"
     }
   ],
-  "updatedAt": "2026-10-24T04:49:55.570Z",
+  "updatedAt": "2026-10-24T04:50:13.572Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -564,5 +564,8 @@
     "output": 240,
     "total": 3012
   },
-  "validation": null
+  "validation": {
+    "accepted": true,
+    "errors": []
+  }
 }
