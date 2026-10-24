@@ -105,14 +105,33 @@ function splitOversizedSentence(text, fits) {
 export function balancePhotoCoverPage(pages, fits, {minWords = 12, minTransferWords = 8} = {}) {
   const balanced = pages.map(page => ({...page}))
   const cover = balanced[0], following = balanced[1]
-  if (!cover?.image || !following?.text || following.image || wordCount(cover.text) >= minWords) return balanced
-  const join = part => cover.text ? `${cover.text} ${part}` : part
-  const [moved, remainder] = splitOversizedSentence(following.text, part => fits({text:join(part),cover:true,image:cover}))
-  if (wordCount(moved) < minTransferWords || wordCount(remainder) < minTransferWords) return balanced
-  const nextCover = join(moved)
-  if (!fits({text:nextCover,cover:true,image:cover})) return balanced
-  balanced[0] = {...cover,text:nextCover}
-  balanced[1] = {...following,text:remainder}
+  if (!cover?.image || !following?.text || following.image) return balanced
+  const fitCover = text => fits({text,cover:true,image:cover})
+  let coverText = trim(cover.text)
+  let followingText = trim(following.text)
+
+  // A complete photo description can take more vertical room than the short
+  // label it replaced. Move the cover's trailing text forward until it fits.
+  if (!fitCover(coverText)) {
+    const [fitted, remainder] = splitOversizedSentence(coverText, fitCover)
+    if (!remainder || !wordCount(fitted)) return balanced
+    coverText = fitted
+    followingText = `${remainder} ${followingText}`.trim()
+  }
+
+  // Conversely, don't leave a tiny text fragment below a photo if the next
+  // text page has room. Splits are lossless and keep article page count fixed.
+  if (wordCount(coverText) < minWords && followingText) {
+    const join = part => coverText ? `${coverText} ${part}` : part
+    const [moved, remainder] = splitOversizedSentence(followingText, part => fitCover(join(part)))
+    const hasUsefulRemainder = !remainder || wordCount(remainder) >= minTransferWords
+    if (wordCount(moved) >= minTransferWords && hasUsefulRemainder && fitCover(join(moved))) {
+      coverText = join(moved)
+      followingText = remainder
+    }
+  }
+  balanced[0] = {...cover,text:coverText}
+  balanced[1] = {...following,text:followingText}
   return balanced
 }
 

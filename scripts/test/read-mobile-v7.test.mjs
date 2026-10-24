@@ -62,6 +62,21 @@ test('Published news photo covers borrow enough text without changing the page c
   assert.equal(balanced.map(page=>page.text).join(' '),source)
 })
 
+test('Full photo captions can shift cover text forward instead of hiding it',()=>{
+  const pages=[
+    {image:'news-cover',caption:'A complete image description wraps across several lines.',text:'The summit opened Monday as delegates arrived from across the region to discuss trade, security, and climate.'},
+    {text:'Further meetings will continue through the week while representatives review the proposed agreement.'},
+    {text:'The final decision will be announced after the review.'},
+    {text:'Officials will publish the full report.'},
+  ]
+  const source=pages.map(page=>page.text).join(' ')
+  const balanced=balancePhotoCoverPage(pages,({text,image})=>words(text)<= (image?12:24))
+  assert.ok(words(balanced[0].text)<=12)
+  assert.ok(balanced[1].text.startsWith('discuss trade, security'))
+  assert.equal(balanced.length,pages.length)
+  assert.equal(balanced.map(page=>page.text).join(' '),source)
+})
+
 test('In an extremely small viewport image can be separate, never an orphan word',()=>{
   const source='A remarkable series of social changes occurred throughout many regions of the continent.'
   const pages=planReadingPages({pages:[{image:'history-photo',text:source}]},({text,image})=>words(text)<= (image?3:6))

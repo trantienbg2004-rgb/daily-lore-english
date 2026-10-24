@@ -87,11 +87,11 @@ test('toolbar keeps the section label while every news page shows its complete h
  assert.ok(!app.includes('<div className="eyebrow">{readerSection(item)}</div>'))
 })
 
-test('visible photo descriptions stay concise while the full caption and credits remain available',()=>{
+test('visible photo descriptions remain complete while irrelevant credits are removed',()=>{
  const page={image:'https://upload.wikimedia.org/wikipedia/commons/a/a.jpg',caption:'Illustrative image: Secretary of State Andrew Mitchell speaking to Bangladeshi migrant workers in Tunisia while visiting a refugee support center in the southern region of the country 5499005871',imageProvenance:{credit:'Original photographer',license:'CC BY 4.0'}}
  assert.ok(photoLabel(page).startsWith('Secretary of State'))
- assert.ok(photoLabel(page).length<=44)
- assert.ok(photoLabel(page).endsWith('…'))
+ assert.ok(photoLabel(page).length>120)
+ assert.equal(photoLabel(page),'Secretary of State Andrew Mitchell speaking to Bangladeshi migrant workers in Tunisia while visiting a refugee support center in the southern region of the country')
  assert.ok(!/illustrat/i.test(photoLabel(page)))
  assert.ok(!photoLabel(page).includes('5499005871'))
  assert.match(page.caption,/Bangladeshi migrant workers/)
@@ -100,10 +100,10 @@ test('visible photo descriptions stay concise while the full caption and credits
  assert.equal(photoLabel({image:page.image,caption:'Location of Cambodia and Bangladesh. Image via Wikipedia by TUBS.'}),
   'Location of Cambodia and Bangladesh.')
  assert.equal(photoLabel({image:page.image,caption:'Illustrative image: From the documentary Public Affairs Today. Secretary of State Andrew Mitchell speaks to workers in Tunisia.'}),
-  'Secretary of State Andrew Mitchell speaks…')
+  'Secretary of State Andrew Mitchell speaks to workers in Tunisia.')
  const css=fs.readFileSync('src/App.css','utf8')
  const app=fs.readFileSync('src/App.jsx','utf8')
- assert.match(css,/lore-photo-caption\s*\{[^}]*max-height:1\.35em;\s*overflow:hidden;/s)
+ assert.match(css,/lore-photo-caption\s*\{[^}]*max-height:none;\s*overflow:visible;/s)
  assert.match(css,/\.lore-lightbox-close\s*\{[^}]*border:0; border-radius:0;[^}]*background:transparent/s)
  assert.match(app,/mediaBounds\.bottom <= pagerBounds\.top - 8/)
 })

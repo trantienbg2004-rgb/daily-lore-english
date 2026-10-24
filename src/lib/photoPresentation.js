@@ -37,11 +37,7 @@ export function photoLabel(page) {
     .replace(/\s+/g, ' ').trim()
   const concise = description.replace(/^(?:a|an|the)\s+(?=[a-z])/iu, '')
   if (!concise) return 'Article photograph'
-  const capitalized = concise[0].toUpperCase() + concise.slice(1)
-  const limit = 44
-  if (capitalized.length <= limit) return capitalized
-  const shortened = capitalized.slice(0, limit - 1).replace(/\s+\S*$/u, '').trim()
-  return `${shortened}…`
+  return concise[0].toUpperCase() + concise.slice(1)
 }
 
 export function photoSourceLink(page) {

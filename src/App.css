@@ -783,11 +783,8 @@
   overflow-wrap:anywhere;
   word-break:normal;
   white-space:normal;
-  max-height:1.35em;
-  overflow:hidden;
-  display:-webkit-box;
-  -webkit-box-orient:vertical;
-  -webkit-line-clamp:1;
+  max-height:none;
+  overflow:visible;
   border:0;
   box-shadow:none;
   background:transparent;
@@ -897,7 +894,8 @@
   border-radius:3px;
 }
 .lore-editorial-v5 .reader-gesture .article-media .lore-photo-caption {
-  display:block; max-width:min(100%,420px); margin:8px 0 0;
+  display:block; max-width:min(100%,420px); max-height:none; overflow:visible;
+  -webkit-line-clamp:unset; white-space:normal; margin:8px 0 0;
   color:#4d4741; font-style:italic;
 }
 .lore-editorial-v5 .reader-gesture .article-media {
