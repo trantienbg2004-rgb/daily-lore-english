@@ -90,7 +90,7 @@ test('toolbar keeps the section label while every news page shows its complete h
 test('visible photo descriptions stay concise while the full caption and credits remain available',()=>{
  const page={image:'https://upload.wikimedia.org/wikipedia/commons/a/a.jpg',caption:'Illustrative image: Secretary of State Andrew Mitchell speaking to Bangladeshi migrant workers in Tunisia while visiting a refugee support center in the southern region of the country 5499005871',imageProvenance:{credit:'Original photographer',license:'CC BY 4.0'}}
  assert.ok(photoLabel(page).startsWith('Secretary of State'))
- assert.ok(photoLabel(page).length<=88)
+ assert.ok(photoLabel(page).length<=68)
  assert.ok(photoLabel(page).endsWith('…'))
  assert.ok(!/illustrat/i.test(photoLabel(page)))
  assert.ok(!photoLabel(page).includes('5499005871'))

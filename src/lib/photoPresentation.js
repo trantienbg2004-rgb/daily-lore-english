@@ -31,11 +31,12 @@ export function photoLabel(page) {
     .replace(/\s+\d{5,}\b.*$/u, '')
     .replace(/\s*[-–]\s*\d{1,3}$/u, '')
     .replace(/\s+during the\s+([A-Za-z]+\s+(?:19|20)\d{2})\b/iu, ', $1')
+    .replace(/\s+\[[a-z-]{2,12}\]$/iu, '')
     .replace(/\s+/g, ' ').trim()
   const concise = description.replace(/^(?:a|an|the)\s+(?=[a-z])/iu, '')
   if (!concise) return 'Article photograph'
   const capitalized = concise[0].toUpperCase() + concise.slice(1)
-  const limit = 88
+  const limit = 68
   if (capitalized.length <= limit) return capitalized
   const shortened = capitalized.slice(0, limit - 1).replace(/\s+\S*$/u, '').trim()
   return `${shortened}…`
