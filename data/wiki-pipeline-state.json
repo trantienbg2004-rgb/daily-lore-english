@@ -9186,10 +9186,10 @@
       "checkedAt": "2026-10-24T05:38:15.921Z"
     },
     "13468724": {
-      "status": "EVIDENCE_READY",
-      "reason": "5 rights-verified embedded images",
+      "status": "DRAFTED",
+      "reason": "draft durably saved before validation",
       "revisionId": 1373226145,
-      "checkedAt": "2026-10-24T08:08:03.713Z"
+      "checkedAt": "2026-10-24T08:08:24.373Z"
     },
     "13551707": {
       "status": "RETRY_LATER",
@@ -11610,7 +11610,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-24T08:08:23.242Z",
+  "updatedAt": "2026-10-24T08:08:24.374Z",
   "dailyUsage": {
     "day": "2026-10-24",
     "calls": 47,
