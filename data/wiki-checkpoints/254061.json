@@ -434,14 +434,14 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380708474"
     }
   ],
-  "updatedAt": "2026-10-24T03:31:26.292Z",
+  "updatedAt": "2026-10-24T03:31:44.290Z",
   "draft": {
     "variants": {
       "A1-A2": {
         "headline": "The Ancient City of Timbuktu",
         "pages": [
           {
-            "text": "Timbuktu is an ancient city in Mali. It is located north of the Niger River. The city has a population of around eighty-four thousand people in the 2023 census.",
+            "text": "Timbuktu is an ancient city in Mali. It is situated twenty kilometres north of the Niger River. It serves as the capital of the Tombouctou Region. The population of the city was around eighty-four thousand people according to the 2023 census.",
             "evidenceIds": [
               "P1"
             ]
@@ -453,21 +453,21 @@
             ]
           },
           {
-            "text": "Timbuktu became a famous center of learning and trade. Scholars studied many subjects here, including Islamic studies, history, law, and medicine.",
+            "text": "During its golden age, Timbuktu became an important centre of learning and trade in Africa. Its scholars studied Islamic studies, history, law, science, and medicine. Tales of the city created a mysterious reputation in Europe, and different groups governed until France took control in 1893.",
             "evidenceIds": [
               "P3",
               "P7"
             ]
           },
           {
-            "text": "The city is surrounded by sand dunes, and the streets are covered in sand. The weather is very hot and dry throughout most of the year.",
+            "text": "Timbuktu is located on the southern edge of the Sahara desert, north of the Niger River. The town is surrounded by sand dunes, and the streets are covered in sand. The local climate is extremely hot and dry throughout most of the year.",
             "evidenceIds": [
               "P9",
               "P10"
             ]
           },
           {
-            "text": "In recent history, the city has faced threats from extremist groups. Local and international communities have made efforts to preserve its important heritage.",
+            "text": "In recent history, Timbuktu has faced threats from extremist groups that led to the destruction of cultural sites. Local and international communities have made ongoing efforts to preserve its important heritage. The population has declined as a result of these recent issues.",
             "evidenceIds": [
               "P4"
             ]
@@ -553,11 +553,11 @@
       }
     }
   },
-  "repairAttempts": 0,
+  "repairAttempts": 1,
   "lastUsage": {
-    "input": 2950,
-    "output": 1259,
-    "total": 4209
+    "input": 2936,
+    "output": 389,
+    "total": 3325
   },
   "validation": null
 }
