@@ -2,10 +2,10 @@
   "pageId": 407233,
   "title": "Global dimming",
   "topic": "Environment",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1380990938,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380990938",
-  "reason": "4 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -299,5 +299,124 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380990938"
     }
   ],
-  "updatedAt": "2026-10-24T09:01:25.833Z"
+  "updatedAt": "2026-10-24T09:01:42.940Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "Less Sunlight on Earth",
+        "pages": [
+          {
+            "text": "Global dimming is a decline in the amount of sunlight reaching the Earth's surface. It is caused by tiny particles in the air, mainly sulfate aerosols from air pollution. This weakening of sunlight was observed soon after measurements began in the 1950s.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "The sunlight dropped by four to five percent every ten years until the 1980s. Air pollution increased during these years because of post-war industrial growth. Solar activity did not change much during this period.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Aerosols have a cooling effect on the atmosphere. Global dimming has hidden the true extent of global warming. In the 1970s, heavily polluted regions even experienced cooling while the rest of the world warmed.",
+            "evidenceIds": [
+              "P2",
+              "P12"
+            ]
+          },
+          {
+            "text": "Since the 1980s, cleaner air has led to a partial reversal of global dimming. This is sometimes called global brightening. This brightening has helped speed up global warming since the 1990s.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "Climate models show that aerosols offset about zero point five degrees Celsius of warming as of 2021. As nations reduce air pollution to protect health, this cooling mask is expected to decline further.",
+            "evidenceIds": [
+              "P3"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "Understanding Global Dimming",
+        "pages": [
+          {
+            "text": "Global dimming refers to a measured reduction in sunlight reaching the Earth's surface. First noticed when systematic solar measurements began in the 1950s, this phenomenon is driven by atmospheric particulate matter, predominantly sulfate aerosols originating from industrial air pollution.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Between the 1950s and the 1980s, visible sunlight weakened at a rate of four to five percent per decade. This decline coincided with rising air pollution from post-war industrialization, while solar activity remained relatively stable.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Because aerosols exert a cooling influence on the atmosphere, global dimming has effectively masked the full severity of global warming. During the 1970s, highly polluted areas such as the eastern United States actually experienced regional surface cooling.",
+            "evidenceIds": [
+              "P2",
+              "P12"
+            ]
+          },
+          {
+            "text": "Since the 1980s, reductions in air pollution have caused a partial reversal known as global brightening. This trend has contributed to the acceleration of global warming observed since the 1990s.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "Climate models suggest that aerosol dimming offsets roughly zero point five degrees Celsius of warming as of 2021. As countries continue to clean up their air for public health reasons, this masking effect is projected to diminish further.",
+            "evidenceIds": [
+              "P3"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "Aerosols and Global Dimming",
+        "pages": [
+          {
+            "text": "Global dimming is characterized by a sustained reduction in surface solar irradiance driven by atmospheric particulate matter. Predominantly composed of sulfate aerosols from anthropogenic air pollution, this attenuation of sunlight was documented shortly after systematic measurement programs commenced in the 1950s.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Throughout the post-war industrialization era leading up to the 1980s, visible sunlight declined by four to five percent per decade. Natural solar output exhibited no comparable variation during this timeframe, isolating anthropogenic particulate emissions as the primary driver.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Aerosols exert a notable cooling influence on the climate system, effectively masking the true magnitude of global warming. Heavily polluted regions, such as parts of the eastern United States, even registered surface cooling during the peak dimming era of the 1970s.",
+            "evidenceIds": [
+              "P2",
+              "P12"
+            ]
+          },
+          {
+            "text": "Subsequent declines in atmospheric pollution since the 1980s have initiated a partial reversal termed global brightening. This abatement of particulate shielding has concurrently contributed to the acceleration of global warming observed since the 1990s.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "Climate models indicate that aerosol cooling offsets approximately zero point five degrees Celsius of global warming as of 2021. As emission controls tighten for public health benefits, the mitigating effect of these aerosols is anticipated to decline accordingly.",
+            "evidenceIds": [
+              "P3"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2747,
+    "output": 1273,
+    "total": 4020
+  },
+  "validation": null
 }
