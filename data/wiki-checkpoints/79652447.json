@@ -2,10 +2,10 @@
   "pageId": 79652447,
   "title": "Phytoplankton microbiome",
   "topic": "Environment",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1376065279,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376065279",
-  "reason": "8 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -389,5 +389,121 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376065279"
     }
   ],
-  "updatedAt": "2026-10-24T06:27:49.897Z"
+  "updatedAt": "2026-10-24T06:28:07.332Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "Tiny Ocean Partners",
+        "pages": [
+          {
+            "text": "Tiny organisms live with phytoplankton in the ocean. These tiny groups include bacteria, fungi, and viruses. They help support ocean life and keep water ecosystems healthy by sharing nutrients and energy.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Microbes break down dead material and recycle important nutrients like carbon and nitrogen. Some special bacteria pull nitrogen from the air. Meanwhile, phytoplankton take in carbon dioxide through photosynthesis to help drive global cycles.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "Temperature and ocean chemistry change how these microbial groups grow and act. Chemical signals help guide their behaviors and manage interactions. Viruses also infect populations to alter nutrient turnover and carbon flow.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "Symbiotic ties between phytoplankton and microbes help organisms grow and resist stress. Microbes supply useful nutrients like phosphorus, while algae offer a stable surface and organic compounds where these tiny partners can attach.",
+            "evidenceIds": [
+              "P5"
+            ]
+          },
+          {
+            "text": "Stressful conditions like warming water can change how microbial communities behave. These environmental shifts often reduce diversity and abundance within marine populations, altering overall ecosystem health.",
+            "evidenceIds": [
+              "P6"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "The Phytoplankton Microbiome",
+        "pages": [
+          {
+            "text": "A phytoplankton microbiome consists of diverse microorganisms like bacteria, fungi, and viruses that live alongside phytoplankton. These communities are vital for marine ecosystems, supporting host health, driving nutrient cycles, and regulating global climate processes.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Microbial partners break down organic matter and recycle essential nutrients. Diazotrophic cyanobacteria fix atmospheric nitrogen to boost productivity in nutrient-poor waters, while phytoplankton absorb carbon dioxide through photosynthesis to fuel the biological carbon pump.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "Environmental factors such as ocean chemistry and temperature shape the composition of these microbial communities. Chemical signaling regulates behavior, while viruses influence population dynamics and drive nutrient turnover across marine environments.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "Symbiotic relationships promote growth and stress resilience. Microorganisms supply key nutrients like nitrogen and phosphorus, while phytoplankton provide habitats and organic compounds that support microbial attachment and survival.",
+            "evidenceIds": [
+              "P5"
+            ]
+          },
+          {
+            "text": "Stressful conditions like rising water temperatures can amplify the impact of diversity on community structure, often reducing abundance and diversity. Environmental pressures thus directly shape how these ecosystems function over time.",
+            "evidenceIds": [
+              "P6"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "Phytoplankton Microbiome Dynamics",
+        "pages": [
+          {
+            "text": "A phytoplankton microbiome comprises associated microorganisms including bacteria, fungi, and viruses that inhabit the phycosphere. These communities sustain marine ecosystem stability by facilitating nutrient cycling, supporting primary production, and contributing to climate regulation.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Microbial partners facilitate organic matter decomposition and nutrient recycling. Diazotrophic cyanobacteria fix atmospheric nitrogen to enhance productivity in oligotrophic waters, whereas phytoplankton sequester carbon via photosynthetic carbon dioxide uptake.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "Environmental drivers such as temperature and ocean chemistry dictate microbiome structure and function. Quorum sensing and infochemical signaling modulate microbial behaviors, while viral infections mediate carbon flow and nutrient turnover.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "Symbiotic associations enhance phytoplankton growth and stress resilience. Microorganisms supply essential nitrogen and phosphorus through fixation and recycling, while hosts provide stable habitats and excrete organic compounds that facilitate microbial attachment.",
+            "evidenceIds": [
+              "P5"
+            ]
+          },
+          {
+            "text": "Anthropogenic and environmental stressors, including elevated water temperatures, alter microbiome composition and function. Such shifts can disrupt community diversity and abundance, subsequently impacting broader marine biogeochemical cycles.",
+            "evidenceIds": [
+              "P6"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2848,
+    "output": 737,
+    "total": 3585
+  },
+  "validation": null
 }
