@@ -2,10 +2,10 @@
   "pageId": 14914,
   "title": "Industrial Revolution",
   "topic": "Science & Technology",
-  "status": "DRAFTED",
+  "status": "NEEDS_REPAIR",
   "revisionId": 1381202308,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381202308",
-  "reason": "draft durably saved before validation",
+  "reason": "editorial: A1-A2:page-3:unsupported-number-context-1850,A1-A2:page-5:unsupported-number-context-1800",
   "rights": [
     {
       "status": "REVIEW",
@@ -543,7 +543,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381202308"
     }
   ],
-  "updatedAt": "2026-10-24T04:28:13.475Z",
+  "updatedAt": "2026-10-24T04:28:19.510Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -691,5 +691,11 @@
     "output": 1623,
     "total": 4466
   },
-  "validation": null
+  "validation": {
+    "accepted": false,
+    "errors": [
+      "A1-A2:page-3:unsupported-number-context-1850",
+      "A1-A2:page-5:unsupported-number-context-1800"
+    ]
+  }
 }
