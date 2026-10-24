@@ -2,10 +2,10 @@
   "pageId": 763947,
   "title": "Polling station",
   "topic": "Politics",
-  "status": "EVIDENCE_READY",
+  "status": "RETRY_LATER",
   "revisionId": 1381580503,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381580503",
-  "reason": "1 rights-verified embedded images",
+  "reason": "Gemini token usage unavailable",
   "rights": [
     {
       "status": "REJECTED",
@@ -156,5 +156,5 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381580503"
     }
   ],
-  "updatedAt": "2026-10-24T10:20:55.247Z"
+  "updatedAt": "2026-10-24T10:21:01.206Z"
 }
