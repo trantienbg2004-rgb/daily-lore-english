@@ -2,10 +2,10 @@
   "pageId": 25426162,
   "title": "International North–South Transport Corridor",
   "topic": "Economy",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1379505082,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379505082",
-  "reason": "4 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -244,5 +244,130 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379505082"
     }
   ],
-  "updatedAt": "2026-10-24T08:37:05.243Z"
+  "updatedAt": "2026-10-24T08:37:25.277Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "The North-South Transport Corridor",
+        "pages": [
+          {
+            "text": "The International North-South Transport Corridor is a large network of ship, rail, and road routes. It helps move freight between countries like India, Iran, Azerbaijan, and Russia. The main goal of this corridor is to make trade and travel much faster and easier between these major regions.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "In 2002, leaders from Russia, Iran, and India signed an agreement to start this important project. Other countries like Azerbaijan, Armenia, and Kazakhstan also joined the network. These nations work together to build missing roads and train lines to connect everything properly.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "Special test runs were done in 2014 to check the routes and find any problems. The tests showed that transport costs went down by a lot for the cargo. Studies also found that this path is much cheaper and shorter than older, traditional shipping routes.",
+            "evidenceIds": [
+              "P1",
+              "P5"
+            ]
+          },
+          {
+            "text": "Azerbaijan is very active in building new train tracks and roads for the project. Iran is also working on new railway lines and ports to improve travel. These updates help cargo move smoothly from the Caspian Sea down toward the Persian Gulf.",
+            "evidenceIds": [
+              "P3",
+              "P7",
+              "P9"
+            ]
+          },
+          {
+            "text": "This transport corridor gives countries an alternative to the usual sea routes. It saves time and money for everyone involved in moving goods. Nations continue to build connections to make international trade stronger and more reliable for the future.",
+            "evidenceIds": [
+              "P6"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "Building the International North-South Corridor",
+        "pages": [
+          {
+            "text": "The International North-South Transport Corridor is a multi-mode network spanning thousands of kilometers. It combines ship, rail, and road routes to transport freight between Europe, Central Asia, India, Iran, Azerbaijan, and Russia. The initiative seeks to connect major urban and trade hubs like Mumbai, Moscow, and Tehran.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Founding representatives from Russia, Iran, and India signed the formal agreement for the project in May 2002. Other nations, including Azerbaijan, Armenia, and Kazakhstan, joined as member states with varying levels of involvement. Azerbaijan has actively constructed new rail lines and roads to bridge missing geographic gaps.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "Test shipments conducted in 2014 helped identify and address key logistical bottlenecks along the network. According to a study by the Federation of Freight Forwarders Associations in India, the corridor routes can be significantly cheaper and shorter than traditional maritime paths.",
+            "evidenceIds": [
+              "P1",
+              "P5"
+            ]
+          },
+          {
+            "text": "Member countries have continued developing vital infrastructure to complete the network. Iran has invested in port upgrades at Astara and worked on connecting missing railway links. Meanwhile, planners have proposed and evaluated additional routes through Central Asian nations like Kazakhstan and Turkmenistan.",
+            "evidenceIds": [
+              "P1",
+              "P7",
+              "P9"
+            ]
+          },
+          {
+            "text": "By serving as an alternative to the conventional Suez Canal route, the corridor offers strategic and economic advantages. This connectivity is particularly valuable for nations seeking efficient travel times and cost-effective trade alternatives in the region.",
+            "evidenceIds": [
+              "P6"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "The International North-South Transport Corridor",
+        "pages": [
+          {
+            "text": "The International North-South Transport Corridor constitutes a multimodal network integrating maritime, rail, and highway routes designed to facilitate freight movement across Eurasia, connecting nations such as India, Iran, Azerbaijan, Russia, and Central Asian states. Its primary objective is to enhance trade connectivity among major commercial centers.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "The foundational agreement was executed by Russian, Iranian, and Indian representatives in May 2002. Subsequent expansion incorporated states like Azerbaijan, Armenia, and Kazakhstan, with member countries undertaking extensive infrastructure projects to eliminate critical network gaps and establish seamless regional integration.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "Empirical assessments, including dry runs executed in 2014, identified operational bottlenecks and demonstrated substantial reductions in transport expenditures. Industry associations subsequently reported that the corridor provides significantly shorter and more cost-effective transit compared to conventional maritime alternatives.",
+            "evidenceIds": [
+              "P1",
+              "P5"
+            ]
+          },
+          {
+            "text": "Infrastructure development remains ongoing, highlighted by Iranian investments in Caspian port expansions and railway construction, alongside Azerbaijani road and rail integration efforts. Concurrently, auxiliary routes involving Kazakhstan and Turkmenistan continue to be evaluated to optimize regional connectivity.",
+            "evidenceIds": [
+              "P1",
+              "P7",
+              "P9"
+            ]
+          },
+          {
+            "text": "Positioned strategically as a viable alternative to the traditional Suez Canal route, the corridor yields considerable geostrategic and economic advantages. By mitigating transit times and lowering operational costs, it fosters bilateral trade expansion and diplomatic resilience among participating states.",
+            "evidenceIds": [
+              "P6"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2985,
+    "output": 1353,
+    "total": 4338
+  },
+  "validation": null
 }
