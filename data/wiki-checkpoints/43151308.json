@@ -2,9 +2,286 @@
   "pageId": 43151308,
   "title": "Online social movement",
   "topic": "Society",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1369639654,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369639654",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-24T11:02:35.260Z"
+  "reason": "6 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Equifax.svg"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:Burning bus, Iranian presidential election 2009.jpg",
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/9/9e/Burning_bus%2C_Iranian_presidential_election_2009.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "fileTitle": "File:Burning bus, Iranian presidential election 2009.jpg",
+        "caption": "Burning bus, Iranian presidential election 2009",
+        "alt": "",
+        "description": "Burning bus in Tehran, Iranian presidential election 2009.",
+        "date": "2009-06-13 19:04",
+        "section": "Political",
+        "position": 1,
+        "provenance": {
+          "credit": "shahram sharif from Tehran, IRAN",
+          "license": "CC BY 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Burning_bus,_Iranian_presidential_election_2009.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Online_social_movement",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369639654",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:Crowd of protesters holding signs during the 2011 Egyptian Revolution (2).jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9f/Crowd_of_protesters_holding_signs_during_the_2011_Egyptian_Revolution_%282%29.jpg/960px-Crowd_of_protesters_holding_signs_during_the_2011_Egyptian_Revolution_%282%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Crowd of protesters holding signs during the 2011 Egyptian Revolution (2).jpg",
+        "caption": "Crowd of protestors holding signs during the 2011 Egyptian Revolution",
+        "alt": "",
+        "description": "Egyptian Revolution (Day 16) - Not giving up.",
+        "date": "2011-02-09 16:49",
+        "section": "Political",
+        "position": 2,
+        "provenance": {
+          "credit": "Mariam Soliman from Cairo, Egypt",
+          "license": "CC BY-SA 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Crowd_of_protesters_holding_signs_during_the_2011_Egyptian_Revolution_(2).jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Online_social_movement",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369639654",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:Black Lives Matter protest.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/83/Black_Lives_Matter_protest.jpg/960px-Black_Lives_Matter_protest.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Black Lives Matter protest.jpg",
+        "caption": "Black Lives Matter Protest in New York City",
+        "alt": "",
+        "description": "Protestors carrying placards at a Black Lives Matter demonstration in New York City",
+        "date": "2014-11-28 12:50:28",
+        "section": "Gender, race, and sexuality",
+        "position": 3,
+        "provenance": {
+          "credit": "The All-Nite Images",
+          "license": "CC BY-SA 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Black_Lives_Matter_protest.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Online_social_movement",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369639654",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:Alyssa Milano 2, 2011.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/ca/Alyssa_Milano_2%2C_2011.jpg/960px-Alyssa_Milano_2%2C_2011.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Alyssa Milano 2, 2011.jpg",
+        "caption": "In 2017, actress Alyssa Milano encouraged the use of the hashtag",
+        "alt": "",
+        "description": "Actress Alyssa Milano arrives at the Premiere of Warner Bros. Pictures' 'New Year's Eve' at Grauman's Chinese Theatre in 2011.",
+        "date": "2011-12-05 19:20:00",
+        "section": "Gender, race, and sexuality",
+        "position": 4,
+        "provenance": {
+          "credit": "Tom Sorensen",
+          "license": "CC BY-SA 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Alyssa_Milano_2,_2011.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Online_social_movement",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369639654",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Time's Up logo.svg"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:Ethan Zuckerman (1).jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/34/Ethan_Zuckerman_%281%29.jpg/960px-Ethan_Zuckerman_%281%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Ethan Zuckerman (1).jpg",
+        "caption": "Ethan Zuckerman, the creator of the Cute Cat Theory of Digital Activism",
+        "alt": "",
+        "description": "Ethan Zuckerman",
+        "date": "2012-11-26 14:01:53",
+        "section": "Benefits",
+        "position": 6,
+        "provenance": {
+          "credit": "Joi",
+          "license": "CC BY 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Ethan_Zuckerman_(1).jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Online_social_movement",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369639654",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:Zeynek Tufekci 01.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/01/Zeynek_Tufekci_01.jpg/960px-Zeynek_Tufekci_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Zeynek Tufekci 01.jpg",
+        "caption": "Zeynep Tufekci is known for her theories about social media, technology, politics and culture, in particular her \"Mount Everest\" metaphor",
+        "alt": "",
+        "description": "Zeynek Tufekci",
+        "date": "2017-12-09 14:01:25",
+        "section": "Detriments",
+        "position": 7,
+        "provenance": {
+          "credit": "Bengt Oberger",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Zeynek_Tufekci_01.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Online_social_movement",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369639654",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "3eb9446df2319b015a1819dbb28af7a9207a0b0a6167d7d44a3dc597a57f1c8b",
+      "heading": "Lead",
+      "excerpt": "Online social movements are organized efforts to push for a particular goal through the use of new communications and information technologi",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369639654"
+    },
+    {
+      "id": "P2",
+      "hash": "c18b74fd77ad8823b86a8df3a1f538cfafdd7a4af74e6b442afebbe7c3a9453d",
+      "heading": "Lead",
+      "excerpt": "Since then, online social movements gained momentum into the early 21st century and are now one of the most prevalent forms of social moveme",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369639654"
+    },
+    {
+      "id": "P3",
+      "hash": "837c6c297266b4c3a2ca80c89bfb823531126c9a76513fd448ab734a1070ca36",
+      "heading": "Lead",
+      "excerpt": "The ubiquity of online social movements has resulted in varying attitudes. Both proponents and critics have raised valid points about the po",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369639654"
+    },
+    {
+      "id": "P4",
+      "hash": "c6364bbb9c5541defa0f2e27b8773031887acc97d3760c82ef4d9732128727ad",
+      "heading": "History",
+      "excerpt": "The earliest social movements were minimally related to the internet. For instance, Charles Tilly recognizes the first social movements in B",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369639654"
+    },
+    {
+      "id": "P5",
+      "hash": "5da4aec0ef9332cf00f741a046f30f3e64c0356b17c8b8514de483d2412c96ed",
+      "heading": "Future",
+      "excerpt": "The traditional role of actors, such as social media organizations and governments, have also changed with online social movements. In these",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369639654"
+    },
+    {
+      "id": "P6",
+      "hash": "948ba4b992a88994effe198e51eb0fe6fdaf08e698c0e89104fe22c18d72afa9",
+      "heading": "History",
+      "excerpt": "The mentality behind these was spurred on by sovereignty within British politics through the Reformation and informed John Wilkes and his fo",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369639654"
+    },
+    {
+      "id": "P7",
+      "hash": "3071002e9af5046eb74437b723b1a5ed43bd27483d17a70fd70c4a6a9b40a9c2",
+      "heading": "Uses of the Internet",
+      "excerpt": "The use of the Internet in attempts to change society can be understood through different mechanisms, which have redefined traditional socia",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369639654"
+    },
+    {
+      "id": "P8",
+      "hash": "627a9795f0104d1e147bbd09af18f6e5734456fb4cbbbcfc721881a78df77ac1",
+      "heading": "Improved communication and increased public awareness",
+      "excerpt": "The Internet has supported the spread of information about movements through rapid dissemination so that there is greater traction and more ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369639654"
+    },
+    {
+      "id": "P9",
+      "hash": "ee4164c2e239ac089bab6d487a59a5ab265444f677ad06bf845d6701d7252a22",
+      "heading": "Quicker and larger-scale mobilization of people",
+      "excerpt": "With better communication, the Internet facilitates the development of collective understandings that encourages wider participation in move",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369639654"
+    },
+    {
+      "id": "P10",
+      "hash": "7a3011b1b30159a1b5da5597aad212fe2e30d7948c55c69fd0821e2df582877f",
+      "heading": "Effective coordination",
+      "excerpt": "The presence of the Internet supports the coordination of movements and the recruitment of resources. Grievances and public awareness alone ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369639654"
+    },
+    {
+      "id": "P11",
+      "hash": "8516a83368747265adab2b4874807f6fff5034ec6d3383e15e06e60190fa61a3",
+      "heading": "Efficient resource mobilization",
+      "excerpt": "The Internet provides a means to raise funds for campaigns. The Tibet Fund was one of the more prominent online funding raising platforms in",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369639654"
+    },
+    {
+      "id": "P12",
+      "hash": "0d8c489ac650fa2f177eb46495d868f97134c219f854d5fac764c7ef26549733",
+      "heading": "Examples",
+      "excerpt": "Online social movements advance their work primarily through media, traditional or digital. It is easier, less costly as well as less time-c",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369639654"
+    },
+    {
+      "id": "P13",
+      "hash": "5165b744d286e4e0ba34b2e27ef7583f55a342800b7d0718baedbe7aa8b13db6",
+      "heading": "Political",
+      "excerpt": "2009 Iranian presidential election protests: Protests against the highly controversial 2009 Iranian presidential election results in support",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369639654"
+    },
+    {
+      "id": "P14",
+      "hash": "92b687ee5a6115eb75fa34a8836b492ba4e12492208fd3b4c53265dbaaa202ab",
+      "heading": "Gender, race, and sexuality",
+      "excerpt": "#BlackLivesMatter: Black Lives Matter (BLM) is an international activist movement, originating in the African-American community, that campa",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369639654"
+    },
+    {
+      "id": "P15",
+      "hash": "e18b453e64733a9fc32d78d0a8ae254f0f0e248038021b0f3c31872dd9745f69",
+      "heading": "Other movements",
+      "excerpt": "#MarchForOurLives: The March for Our Lives (MFOL) was a student-led demonstration in support of legislation to prevent gun violence in the U",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369639654"
+    },
+    {
+      "id": "P16",
+      "hash": "43a8e08d779ee9cbf1d4616a82f6ca2dc10ec762b7759b3abbb0fc0db62bf6ed",
+      "heading": "Impacts",
+      "excerpt": "The impact of online movements has seen a lot of growth since the introduction of the internet. With the accessible medium of social media, ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369639654"
+    },
+    {
+      "id": "P17",
+      "hash": "deb5f3fc34bea0f41e23a052867107d4267d52ea1c8f4bc22c4a10a2d8bfd984",
+      "heading": "Benefits",
+      "excerpt": "Online social movements have been celebrated for their ability to amass large amounts of success. The online world provides the power to org",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369639654"
+    }
+  ],
+  "updatedAt": "2026-10-24T11:02:41.065Z"
 }
