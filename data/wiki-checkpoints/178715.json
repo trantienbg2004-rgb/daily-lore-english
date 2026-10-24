@@ -2,10 +2,10 @@
   "pageId": 178715,
   "title": "Najd",
   "topic": "History & Geography",
-  "status": "EVIDENCE_READY",
+  "status": "RETRY_LATER",
   "revisionId": 1380991282,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380991282",
-  "reason": "8 rights-verified embedded images",
+  "reason": "Gemini token usage unavailable",
   "rights": [
     {
       "status": "REVIEW",
@@ -354,5 +354,5 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380991282"
     }
   ],
-  "updatedAt": "2026-10-24T10:17:01.248Z"
+  "updatedAt": "2026-10-24T10:17:07.139Z"
 }
