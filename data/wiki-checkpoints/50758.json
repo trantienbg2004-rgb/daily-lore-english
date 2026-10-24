@@ -2,10 +2,10 @@
   "pageId": 50758,
   "title": "Carmen Miranda",
   "topic": "Culture",
-  "status": "DRAFTED",
+  "status": "NEEDS_REVIEW",
   "revisionId": 1378364331,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378364331",
-  "reason": "draft durably saved before validation",
+  "reason": "editorial: A1-A2:page-5:unsupported-number-context-1955,C1-C2:page-4:unsupported-number-context-1939",
   "rights": [
     {
       "status": "REVIEW",
@@ -521,7 +521,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378364331"
     }
   ],
-  "updatedAt": "2026-10-24T02:04:55.399Z",
+  "updatedAt": "2026-10-24T02:05:01.391Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -671,5 +671,11 @@
     "output": 244,
     "total": 3153
   },
-  "validation": null
+  "validation": {
+    "accepted": false,
+    "errors": [
+      "A1-A2:page-5:unsupported-number-context-1955",
+      "C1-C2:page-4:unsupported-number-context-1939"
+    ]
+  }
 }
