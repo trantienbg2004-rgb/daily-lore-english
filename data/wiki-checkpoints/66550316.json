@@ -190,7 +190,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1370579297"
     }
   ],
-  "updatedAt": "2026-10-24T06:02:32.440Z",
+  "updatedAt": "2026-10-24T06:02:52.161Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -274,12 +274,11 @@
         "headline": "Operational Realities of Post-War Nagorno-Karabakh",
         "pages": [
           {
-            "text": "In the wake of the Second Nagorno-Karabakh War, a ceasefire agreement precipitated the deployment of a Russian peacekeeping contingent comprising 1,960 servicemen under the command of Lieutenant General Rustam Muradov. Headquartered near Stepanakert, the contingent established observation posts along the contact line and the Lachin corridor. Concurrently, a separate Russian-Turkish Joint Monitoring Centre was initiated to provide remote monitoring capabilities through unmanned aerial vehicles and bilateral personnel stationed in Azerbaijan.",
+            "text": "In the aftermath of the Second Nagorno-Karabakh War, peacekeeping operations were initiated by Russia in the region to monitor the ceasefire between Armenian and Azerbaijani forces. Russia sent a peacekeeping contingent of 1,960 servicemen led by Lieutenant General Rustam Muradov. Additionally, Turkey and Russia established a joint monitoring centre in Azerbaijan.",
             "evidenceIds": [
               "P1",
               "P2",
-              "P3",
-              "P8"
+              "P3"
             ]
           },
           {
@@ -313,11 +312,11 @@
       }
     }
   },
-  "repairAttempts": 1,
+  "repairAttempts": 2,
   "lastUsage": {
-    "input": 3105,
-    "output": 490,
-    "total": 3595
+    "input": 2771,
+    "output": 145,
+    "total": 2916
   },
   "validation": null
 }
