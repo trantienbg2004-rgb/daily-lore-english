@@ -2,10 +2,10 @@
   "pageId": 65835041,
   "title": "History of physical training and fitness",
   "topic": "Sports",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1346501240,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1346501240",
-  "reason": "7 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REJECTED",
@@ -302,5 +302,123 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1346501240"
     }
   ],
-  "updatedAt": "2026-10-24T03:55:57.805Z"
+  "updatedAt": "2026-10-24T03:56:11.135Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "History of Physical Training",
+        "pages": [
+          {
+            "text": "Physical training has been present in human societies for a long time. People trained to prepare for competition, to improve health, and to look attractive. Quick exercises like running, jumping, wrestling, and throwing heavy stones were very popular and used often.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "In Ancient Greece, athletes widely practiced physical training. After the Olympic Games were banned in 394, they did not happen again until 1896. During that long gap, training became more closely connected with military training across Europe.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "Good general health and fitness were main goals across all historical periods. A key visual sign of this fitness was looking in shape with correct muscular proportions, good posture, and not carrying too much or too little fat.",
+            "evidenceIds": [
+              "P8"
+            ]
+          },
+          {
+            "text": "Women also took part in physical training, but it was tailored to their needs. Their training emphasized agility more than power and endurance. It was also less intense than men's training due to health and cultural reasons.",
+            "evidenceIds": [
+              "P9"
+            ]
+          },
+          {
+            "text": "Common exercises for women included running, jumping, archery, swimming, ball games, and gymnastics. The Heraean Games were women's athletic competitions that took place before the men's Olympic competitions in ancient times.",
+            "evidenceIds": [
+              "P15"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "Training Methods and History",
+        "pages": [
+          {
+            "text": "Physical training has appeared in human societies throughout history, usually pursued to prepare for competition, improve health, and enhance appearance. Quick and dynamic exercises like running, jumping, wrestling, gymnastics, and throwing heavy stones were heavily favored because they were effective and accessible.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Ancient Greek athletes practiced physical training extensively, but the original Olympic Games were banned by the Romans in 394. They did not return until 1896. In the intervening centuries, formalized training became closely aligned with military preparation across Europe, sharing many recurring methods.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "Achieving good general health through physical fitness remained a primary focus across all periods. The visible sign of this achievement was looking in shape, meaning proper muscular proportions, good posture, and a balanced amount of body fat.",
+            "evidenceIds": [
+              "P8"
+            ]
+          },
+          {
+            "text": "Women's training shared similarities with men's workouts but was tailored to female physical requirements, placing greater emphasis on agility while reducing power and endurance work. Training intensity was generally lower due to inter-related cultural and physiological reasons concerning fertility and health.",
+            "evidenceIds": [
+              "P9"
+            ]
+          },
+          {
+            "text": "Common exercises for women included sprinting, jumping, light shot put, archery, fencing, swimming, ball games, and gymnastics. Additionally, the Heraean Games served as an ancient women's equivalent to the Olympic Games, featuring footraces for maidens of various ages.",
+            "evidenceIds": [
+              "P15",
+              "P16"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "Evolution of Physical Fitness",
+        "pages": [
+          {
+            "text": "Physical training persisted across various historical societies, driven by motivations such as competitive preparation, health enhancement, and aesthetic appeal. Dynamic movements like running, jumping, wrestling, gymnastics, and stone throwing predominated over static exercises due to their efficacy and universal accessibility.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Following the Roman ban on the ancient Olympic Games in 394, culturally significant athletic competitions lapsed until their 1896 revival. During the intervening centuries, formal training systems increasingly aligned with military preparation, establishing recurring methodological patterns throughout European history.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "Physical fitness focused primarily on achieving optimal general health, visually manifested as being in shape. This condition comprised proportionate muscular development, good posture, and a balanced proportion of body fat.",
+            "evidenceIds": [
+              "P8"
+            ]
+          },
+          {
+            "text": "Women's physical training was systematically tailored to female physiological and cultural requirements, prioritizing agility over power and endurance. Consequently, training intensity remained notably lower than male regimens, influenced significantly by prevailing health concerns regarding fertility and menstruation.",
+            "evidenceIds": [
+              "P9"
+            ]
+          },
+          {
+            "text": "Historical female training encompassed sprinting, jumping, light throwing events, archery, fencing, swimming, ball games, and gymnastics. The Heraean Games functioned as a female counterpart to the Olympics, featuring structured footraces and distinctive ceremonial awards for victors.",
+            "evidenceIds": [
+              "P15",
+              "P16"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2483,
+    "output": 912,
+    "total": 3395
+  },
+  "validation": null
 }
