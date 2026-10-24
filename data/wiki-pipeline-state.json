@@ -9164,10 +9164,10 @@
       "checkedAt": "2026-10-24T03:59:55.443Z"
     },
     "58967421": {
-      "status": "PENDING",
-      "reason": "queued",
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
       "revisionId": 1379214435,
-      "checkedAt": null
+      "checkedAt": "2026-10-24T04:03:55.220Z"
     },
     "59358771": {
       "status": "REJECTED",
@@ -10202,7 +10202,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-24T04:03:48.632Z",
+  "updatedAt": "2026-10-24T04:03:55.229Z",
   "dailyUsage": {
     "day": "2026-10-23",
     "calls": 166,
