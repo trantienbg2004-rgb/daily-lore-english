@@ -2,10 +2,10 @@
   "pageId": 51522180,
   "title": "Coalition for Epidemic Preparedness Innovations",
   "topic": "Health",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1381006440,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381006440",
-  "reason": "6 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -301,5 +301,148 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381006440"
     }
   ],
-  "updatedAt": "2026-10-24T07:45:57.727Z"
+  "updatedAt": "2026-10-24T07:46:14.602Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "CEPI Helps Make Vaccines",
+        "pages": [
+          {
+            "text": "The Coalition for Epidemic Preparedness Innovations is a foundation. It takes money from many groups. It uses this money to pay for research to make new vaccines against dangerous and emerging infectious diseases.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "CEPI was thought of in 2015. It started in 2017 in Davos, Switzerland. It began with money from the Bill and Melinda Gates Foundation, the Wellcome Trust, and the governments of India and Norway.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "The group focuses on big diseases and unknown threats called Disease X. Its goal is to help the world make a new vaccine very fast when a new pandemic threat happens.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "At its start, founders promised four hundred sixty million dollars. Later, other governments and groups gave more money. This made it a very large vaccine development project for potential epidemics.",
+            "evidenceIds": [
+              "P6"
+            ]
+          },
+          {
+            "text": "In 2020, people saw the group as very important in the work to develop vaccines for coronavirus disease. Officials and staff run the organisation from its office in Oslo, Norway.",
+            "evidenceIds": [
+              "P9",
+              "P14"
+            ]
+          },
+          {
+            "text": "The group has rules about making vaccines affordable. Over time, some rules changed because some companies felt the old rules were too hard for normal business realities.",
+            "evidenceIds": [
+              "P7",
+              "P21"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "Financing Global Vaccine Research",
+        "pages": [
+          {
+            "text": "The Coalition for Epidemic Preparedness Innovations, known as CEPI, is a foundation that accepts donations from public, private, and philanthropic organizations. It uses these funds to finance independent research projects aimed at developing vaccines against emerging infectious diseases.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "CEPI focuses on priority diseases identified by the World Health Organization. These include MERS, SARS-CoV-2, Nipah virus, Lassa fever, Rift Valley fever, Chikungunya, and the hypothetical unknown pathogen known as Disease X. In 2022, CEPI adopted a vision enabling the world to respond to a pandemic threat with a new vaccine within one hundred days.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "Conceived in 2015, CEPI was formally launched in 2017 at the World Economic Forum in Davos, Switzerland. It was co-founded with four hundred sixty million dollars from sources including the Bill and Melinda Gates Foundation, the Wellcome Trust, and the governments of India and Norway.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "The idea for CEPI was outlined in a 2015 medical journal paper. Founders and industry leaders noted that the vaccine market faces severe capacity shortages during health emergencies because epidemics do not occur often enough to maintain spare commercial production lines.",
+            "evidenceIds": [
+              "P4",
+              "P5"
+            ]
+          },
+          {
+            "text": "At its launch, funders pledged four hundred sixty million dollars, aiming for a one billion dollar target for its first five years. Nature described it as by far the largest vaccine development initiative ever created against potential epidemic threats.",
+            "evidenceIds": [
+              "P6"
+            ]
+          },
+          {
+            "text": "CEPI has experienced policy evolution. Its original contracts included strict rules on intellectual property and pricing transparency, but pharmaceutical companies objected, leading to policy adjustments in late 2018 that removed certain provisions while retaining step-in rights.",
+            "evidenceIds": [
+              "P8",
+              "P20",
+              "P21"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "CEPI and Pandemic Preparedness",
+        "pages": [
+          {
+            "text": "The Coalition for Epidemic Preparedness Innovations operates as a foundation financing independent research initiatives to formulate vaccines against emerging infectious diseases. It relies on financial contributions originating from public, private, philanthropic, and civil society sectors.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "CEPI prioritizes pathogens designated by the World Health Organization, encompassing MERS-CoV, SARS-CoV-2, Nipah, Lassa, Rift Valley fever, Chikungunya, and the hypothetical threat designated as Disease X. The organization established a strategic vision enabling global response to pandemic threats via novel vaccine generation within a one-hundred-day window.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "Conceived in 2015, CEPI was inaugurated in 2017 at the World Economic Forum in Davos. Initial capitalization totaled four hundred sixty million dollars, contributed by entities including the Bill and Melinda Gates Foundation, the Wellcome Trust, and the national governments of India and Norway.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "The foundational framework was articulated in a 2015 medical journal publication co-authored by prominent researchers. Stakeholders emphasized that commercial vaccine markets lack sufficient surplus production capacity to manage unpredictable public health emergencies without coordinated intervention.",
+            "evidenceIds": [
+              "P4",
+              "P5"
+            ]
+          },
+          {
+            "text": "Initial five-year pledges reached four hundred sixty million dollars, subsequently scaling upward through additional sovereign and philanthropic donations. Publications characterized the enterprise as the largest historical vaccine development initiative directed against viral epidemic threats.",
+            "evidenceIds": [
+              "P6",
+              "P17"
+            ]
+          },
+          {
+            "text": "CEPI encountered governance and policy tensions regarding intellectual property and pricing transparency. Although original mandates imposed strict controls on participating manufacturers, subsequent policy revisions modified these requirements following objections from commercial pharmaceutical developers concerning operational realities.",
+            "evidenceIds": [
+              "P8",
+              "P20",
+              "P21"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2966,
+    "output": 1103,
+    "total": 4069
+  },
+  "validation": null
 }
