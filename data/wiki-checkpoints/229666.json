@@ -373,42 +373,43 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380585492"
     }
   ],
-  "updatedAt": "2026-10-24T04:24:05.944Z",
+  "updatedAt": "2026-10-24T04:24:23.979Z",
   "draft": {
     "variants": {
       "A1-A2": {
         "headline": "The Ancient City of Taxila",
         "pages": [
           {
-            "text": "Taxila is an old city in Pakistan. It is a special place with a long history. Many people visit this famous site every year.",
+            "text": "Taxila is a historic city and World Heritage Site in the Punjab province of Pakistan. Founded around 1000 BC, it is one of the oldest cities in South Asia. Today, it is a popular tourist spot that attracts up to one million visitors every year.",
             "evidenceIds": [
               "P1",
               "P4"
             ]
           },
           {
-            "text": "Long ago, the city had different names like Takshashila. People started to live in this area thousands of years ago in early times.",
+            "text": "The city was historically known as Takṣaśilā in Sanskrit. The region around Taxila was settled by the Neolithic era, with ruins dating to 1000 BCE. Early Harappan period ruins from around 1300 BCE have also been discovered in the area.",
             "evidenceIds": [
+              "P1",
               "P5",
               "P6"
             ]
           },
           {
-            "text": "Famous leaders like Alexander the Great came to the city. Later, other rulers made Taxila their capital city.",
+            "text": "During his invasion of the Indus Valley, Alexander the Great gained control of Taxila in 326 BCE after its ruler surrendered without a battle. In the following centuries, the Indo-Greeks, Indo-Scythians, Indo-Parthians, and Kushans successively made Taxila their capital city.",
             "evidenceIds": [
               "P3",
               "P9"
             ]
           },
           {
-            "text": "Some writers think Taxila was an early place of learning. Important scholars and students studied in the area long ago.",
+            "text": "Some scholars consider ancient Taxila to be one of the earliest education centres in South Asia. It had great influence on Hindu culture and the Sanskrit language. The strategist Chanakya and the grammarian Pāṇini were both part of the community at Taxila.",
             "evidenceIds": [
               "P2",
               "P20"
             ]
           },
           {
-            "text": "Today, visitors can see old ruins at the site. UNESCO named Taxila a World Heritage Site to protect its history.",
+            "text": "In the fifth century, the invading Hunas devastated the city, and it eventually fell into decline. In the mid-nineteenth century, ruins of ancient Taxila were rediscovered by British archaeologist Alexander Cunningham. In 1980, UNESCO designated Taxila as a World Heritage Site.",
             "evidenceIds": [
               "P3",
               "P16"
@@ -513,11 +514,11 @@
       }
     }
   },
-  "repairAttempts": 0,
+  "repairAttempts": 1,
   "lastUsage": {
-    "input": 3032,
-    "output": 1346,
-    "total": 4378
+    "input": 3072,
+    "output": 518,
+    "total": 3590
   },
   "validation": null
 }
