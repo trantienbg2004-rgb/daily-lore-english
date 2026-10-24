@@ -8068,10 +8068,10 @@
       "checkedAt": "2026-10-22T09:13:38.104Z"
     },
     "2262519": {
-      "status": "VALIDATED",
-      "reason": "local factual, style, length, structure and source audit passed",
+      "status": "PUBLISHED",
+      "reason": "4 verified embedded images",
       "revisionId": 1373119799,
-      "checkedAt": "2026-10-24T05:39:52.010Z"
+      "checkedAt": "2026-10-24T05:39:58.096Z"
     },
     "2344907": {
       "status": "EVIDENCE_READY",
@@ -11146,7 +11146,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-24T05:39:52.011Z",
+  "updatedAt": "2026-10-24T05:39:58.097Z",
   "dailyUsage": {
     "day": "2026-10-23",
     "calls": 234,
