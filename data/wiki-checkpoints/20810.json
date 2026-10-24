@@ -2,10 +2,10 @@
   "pageId": 20810,
   "title": "Merchant",
   "topic": "Economy",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1380547605,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380547605",
-  "reason": "13 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -430,7 +430,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380547605"
     }
   ],
-  "updatedAt": "2026-10-24T03:33:52.369Z",
+  "updatedAt": "2026-10-24T03:34:09.908Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -548,22 +548,11 @@
       }
     }
   },
-  "repairAttempts": 0,
+  "repairAttempts": 1,
   "lastUsage": {
-    "input": 2693,
-    "output": 1168,
-    "total": 3861
+    "input": 2892,
+    "output": 527,
+    "total": 3419
   },
-  "validation": {
-    "accepted": false,
-    "errors": [
-      "A1-A2:page-1:length-or-sentence",
-      "A1-A2:page-2:length-or-sentence",
-      "A1-A2:page-3:length-or-sentence",
-      "A1-A2:page-4:length-or-sentence",
-      "A1-A2:page-5:length-or-sentence",
-      "B1-B2:page-1:length-or-sentence",
-      "C1-C2:page-1:length-or-sentence"
-    ]
-  }
+  "validation": null
 }
