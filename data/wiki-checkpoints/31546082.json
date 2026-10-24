@@ -324,7 +324,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368837774"
     }
   ],
-  "updatedAt": "2026-10-24T07:18:13.416Z",
+  "updatedAt": "2026-10-24T07:18:31.303Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -436,7 +436,7 @@
             ]
           },
           {
-            "text": "Tsunami propagation, triggered by submarine seismic activity, landslides, or volcanic eruptions, delivers catastrophic coastal inundation driven by high wave velocities and destructive entrained debris. Historical catastrophes, including the 2004 Indian Ocean and 2011 Tohoku tsunamis, underscore the severe hazard posed by displacement-induced marine waves.",
+            "text": "Tsunami propagation, triggered by submarine seismic activity, landslides, or volcanic eruptions, delivers catastrophic coastal inundation driven by high wave velocities and destructive entrained debris. Historical catastrophes, including the 2004 Indian Ocean earthquake and tsunami, underscore the severe hazard posed by displacement-induced marine waves.",
             "evidenceIds": [
               "P9",
               "P18"
@@ -455,11 +455,11 @@
       }
     }
   },
-  "repairAttempts": 0,
+  "repairAttempts": 1,
   "lastUsage": {
-    "input": 2682,
-    "output": 1150,
-    "total": 3832
+    "input": 2522,
+    "output": 132,
+    "total": 2654
   },
   "validation": null
 }
