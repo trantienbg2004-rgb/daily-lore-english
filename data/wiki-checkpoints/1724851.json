@@ -2,10 +2,10 @@
   "pageId": 1724851,
   "title": "Contact tracing",
   "topic": "Health",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1374229365,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374229365",
-  "reason": "6 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -234,5 +234,137 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374229365"
     }
   ],
-  "updatedAt": "2026-10-24T08:35:25.807Z"
+  "updatedAt": "2026-10-24T08:35:44.354Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "What is Contact Tracing",
+        "pages": [
+          {
+            "text": "Contact tracing is a public health tool. It helps find people who may have met an infected person. Officials test these contacts and help them get medical care. This process aims to stop the spread of diseases in towns and cities.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "This method started in the 1930s for syphilis. Early work was very hard because people felt afraid and ashamed. Many individuals did not want to share private details about their sexual partners. Stigma made it difficult for health workers to collect information.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "Later, contact tracing was used for other diseases. The United Kingdom used contact tracers during smallpox outbreaks. The United States also created programs for tuberculosis, HIV, and SARS. Dedicated teams worked hard to curb the spread of infections everywhere.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "Different diseases need different tracing methods. For sexual infections, workers look at sexual partners and newborn babies. For blood infections, they check people who shared needles. For tuberculosis, they look at family members living in the same home.",
+            "evidenceIds": [
+              "P4"
+            ]
+          },
+          {
+            "text": "During the COVID-19 pandemic, contact tracing faced huge tests. Governments needed many workers and volunteers. Some countries used digital apps on phones to track health status and travel. Technology helped automate steps when human workers were hard to find.",
+            "evidenceIds": [
+              "P7",
+              "P8"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "Tracking Diseases and History",
+        "pages": [
+          {
+            "text": "Contact tracing is a fundamental public health process used to identify individuals who may have been exposed to an infected person. By testing these contacts and isolating or treating the infected, public health officials work to reduce population infections, conduct disease surveillance, and prevent outbreaks.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Historically, contact tracing programs were first implemented to track syphilis in the 1930s. These early efforts faced significant challenges due to social stigmatization and privacy concerns. People were reluctant to report infections because revealing partner history caused fear, shame, and damaged community relationships.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "The official title of contact tracers originated in the United Kingdom during smallpox outbreaks. Dedicated surveillance teams successfully curbed the spread of the disease, serving as a blueprint for other nations. The United States soon adopted similar formalized programs for diseases like tuberculosis and HIV.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "Because transmission modes vary, the relevant types of contacts depend entirely on the specific disease. For instance, contact investigation for pulmonary tuberculosis focuses on household members and people spending time in the same room. For blood-borne pathogens, tracers look for shared needles and blood transfusion recipients.",
+            "evidenceIds": [
+              "P4"
+            ]
+          },
+          {
+            "text": "During the COVID-19 pandemic, global health systems faced unprecedented demands. Many countries utilized existing call centers and non-health volunteers to meet workforce shortages. Technology and digital tools were also widely introduced to automate manual notification steps and bridge gaps during widespread transmission.",
+            "evidenceIds": [
+              "P7",
+              "P8"
+            ]
+          },
+          {
+            "text": "Despite technological advances, digital tools presented notable limitations. Bluetooth technology sometimes generated incorrect notifications because signals can pass through walls. Smartphone applications also required internet access, widespread device availability, and high public compliance, which proved difficult to achieve consistently.",
+            "evidenceIds": [
+              "P10"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "The Evolution and Mechanics of Contact Tracing",
+        "pages": [
+          {
+            "text": "Contact tracing is a vital public health intervention designed to identify individuals exposed to infectious agents, assess transmission risks, and facilitate timely medical care. By isolating infected individuals and monitoring their contacts, health authorities execute disease surveillance and mitigate community outbreaks.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Inaugurated during the 1930s to address syphilis, early contact tracing initiatives encountered substantial sociological hurdles. Public apprehension regarding privacy and the profound stigmatization of sexually transmitted infections severely impeded accurate reporting and partner notification efforts, complicating epidemiological surveillance.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "Formalized institutional frameworks emerged when dedicated surveillance teams were deployed in the United Kingdom during smallpox outbreaks. This operational model established a precedent subsequently adopted by agencies in the United States for managing diverse pathogens, including tuberculosis, SARS, and SARS-CoV-2.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "Effective tracing strategies are fundamentally dictated by the transmission characteristics of specific pathogens. While investigations of pulmonary tuberculosis concentrate on household contacts and shared environments, blood-borne infection protocols necessitate identifying needle-sharing networks and transfusion recipients.",
+            "evidenceIds": [
+              "P4"
+            ]
+          },
+          {
+            "text": "The COVID-19 pandemic necessitated unprecedented resource mobilization, prompting reliance on alternative personnel, existing helpline infrastructure, and rapid technological deployment. While nations like South Korea successfully leveraged GPS systems and dedicated applications to curtail transmission, other regions encountered severe logistical bottlenecks and suboptimal case reach rates.",
+            "evidenceIds": [
+              "P6",
+              "P7",
+              "P9"
+            ]
+          },
+          {
+            "text": "Digital implementations introduced distinct technical and behavioral constraints. Hardware limitations, such as Bluetooth signal penetration through physical barriers, caused erroneous exposure alerts. Furthermore, reliance on voluntary application adoption, smartphone accessibility, and variable proximity parameters frequently compromised the sensitivity and overall efficacy of digital exposure notification systems.",
+            "evidenceIds": [
+              "P10"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2543,
+    "output": 1459,
+    "total": 4002
+  },
+  "validation": null
 }
