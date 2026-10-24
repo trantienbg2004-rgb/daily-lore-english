@@ -2,10 +2,10 @@
   "pageId": 23278339,
   "title": "Black Panther Party",
   "topic": "Politics",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1379638474,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379638474",
-  "reason": "8 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REJECTED",
@@ -310,5 +310,151 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379638474"
     }
   ],
-  "updatedAt": "2026-10-24T08:08:59.323Z"
+  "updatedAt": "2026-10-24T08:09:12.525Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "The Black Panther Party Story",
+        "pages": [
+          {
+            "text": "The Black Panther Party was a political and militant group. It began in 1966 in Oakland, California. Two men named Huey P. Newton and Bobby Seale started the group. They wanted to help the African American community.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Many black people had moved to northern and western cities during World War II. They hoped for better jobs and lives. Instead, they faced high poverty and racism. Police departments in these cities were almost entirely white.",
+            "evidenceIds": [
+              "P5"
+            ]
+          },
+          {
+            "text": "To protect their neighborhoods, party members carried guns openly. They followed police cars to watch for police brutality. They also started programs to help children get free breakfast and fought for better housing.",
+            "evidenceIds": [
+              "P1",
+              "P7"
+            ]
+          },
+          {
+            "text": "In May 1967, armed members went to the California State Capitol to protest a new gun law. This protest made the group famous across the country. Soon, more people joined chapters in other major cities.",
+            "evidenceIds": [
+              "P1",
+              "P9"
+            ]
+          },
+          {
+            "text": "However, the government worked against the party. The FBI used secret programs to spy on and weaken the group. Internal conflicts and arrests also hurt the party, and it dissolved by 1982.",
+            "evidenceIds": [
+              "P1",
+              "P2"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "Rise and Fall of the Black Panthers",
+        "pages": [
+          {
+            "text": "Founded in October 1966 by Huey P. Newton and Bobby Seale, the Black Panther Party was an American political and militant organization. It originally formed in Oakland, California, to challenge excessive force and misconduct by the local police department.",
+            "evidenceIds": [
+              "P1",
+              "P6"
+            ]
+          },
+          {
+            "text": "The organization emerged from the migration of black families who had moved north and west during World War II. Despite leaving the South, these communities encountered severe urban poverty, substandard housing, and nearly all-white police forces.",
+            "evidenceIds": [
+              "P5"
+            ]
+          },
+          {
+            "text": "Early tactics included carrying firearms openly while monitoring police activity in Oakland. Members also organized community survival programs, such as free breakfast for children, and advocated for decent housing and community control.",
+            "evidenceIds": [
+              "P1",
+              "P6",
+              "P7"
+            ]
+          },
+          {
+            "text": "National attention grew rapidly after an armed protest at the California State Capitol in May 1967 against a proposed gun control bill. By 1968, the party expanded into a nationwide organization with chapters in numerous major cities.",
+            "evidenceIds": [
+              "P1",
+              "P9"
+            ]
+          },
+          {
+            "text": "As the party grew, it became a primary target for the FBI's covert counterintelligence program, known as COINTELPRO. The FBI utilized surveillance, infiltration, and harassment to undermine leadership and disrupt the organization.",
+            "evidenceIds": [
+              "P2",
+              "P11"
+            ]
+          },
+          {
+            "text": "Combined with internal conflicts, government persecution severely weakened the group. Membership peaked around 1970 and steadily declined over the decade until the party ultimately dissolved in 1982.",
+            "evidenceIds": [
+              "P1",
+              "P2",
+              "P3"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "The Black Panther Party: History and Legacy",
+        "pages": [
+          {
+            "text": "Established in 1966 by Huey P. Newton and Bobby Seale as the Black Panther Party for Self-Defense, the organization operated as a prominent American Marxist-Leninist and black power entity until 1982. Its initial impetus was confronting police brutality within Oakland's African American community.",
+            "evidenceIds": [
+              "P1",
+              "P6"
+            ]
+          },
+          {
+            "text": "The party's social base was rooted in the Second Great Migration, which relocated tens of thousands of African Americans to Western and Northern urban centers. Confronted with persistent segregation, high unemployment, and predominantly white police forces, these migrants sought novel political frameworks.",
+            "evidenceIds": [
+              "P5"
+            ]
+          },
+          {
+            "text": "Initial tactics leveraged open-carry laws to monitor police patrols and deter misconduct. Concurrently, the party instituted community survival programs, addressing local needs through initiatives such as free breakfast for children and advocacy for community control.",
+            "evidenceIds": [
+              "P1",
+              "P6",
+              "P7"
+            ]
+          },
+          {
+            "text": "Visibility escalated significantly following the May 1967 protest at the California State Capitol against the Mulford Act. By the late 1960s, the party had evolved into a nationwide coalition with international chapters and extensive prison engagement.",
+            "evidenceIds": [
+              "P1",
+              "P9"
+            ]
+          },
+          {
+            "text": "This expansion elicited intense governmental opposition. The FBI deployed COINTELPRO to neutralize the organization through systematic surveillance, infiltration, and disruption strategies, exacerbating internal factionalism and leadership conflicts.",
+            "evidenceIds": [
+              "P2",
+              "P3",
+              "P11"
+            ]
+          },
+          {
+            "text": "Following its peak membership in 1970, the party experienced a protracted decline driven by state suppression, negative mainstream media portrayal, and internal strife. Its ultimate dissolution left behind a complex and debated historical legacy.",
+            "evidenceIds": [
+              "P1",
+              "P3",
+              "P4"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2701,
+    "output": 1462,
+    "total": 4163
+  },
+  "validation": null
 }
