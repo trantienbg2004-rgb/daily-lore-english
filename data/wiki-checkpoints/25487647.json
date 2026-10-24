@@ -2,10 +2,10 @@
   "pageId": 25487647,
   "title": "International Conference on Afghanistan, London (2010)",
   "topic": "Conflict & Security",
-  "status": "DRAFTED",
+  "status": "VALIDATED",
   "revisionId": 1364112866,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1364112866",
-  "reason": "draft durably saved before validation",
+  "reason": "local factual, style, length, structure and source audit passed",
   "rights": [
     {
       "status": "REVIEW",
@@ -139,7 +139,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1364112866"
     }
   ],
-  "updatedAt": "2026-10-24T08:56:59.608Z",
+  "updatedAt": "2026-10-24T08:57:17.625Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -282,5 +282,8 @@
     "output": 1424,
     "total": 3947
   },
-  "validation": null
+  "validation": {
+    "accepted": true,
+    "errors": []
+  }
 }
