@@ -2,10 +2,10 @@
   "pageId": 435800,
   "title": "Tournament (medieval)",
   "topic": "Sports",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1380558025,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380558025",
-  "reason": "8 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -328,5 +328,157 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380558025"
     }
   ],
-  "updatedAt": "2026-10-24T03:30:23.600Z"
+  "updatedAt": "2026-10-24T03:30:37.478Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "Knights and Tournaments in the Middle Ages",
+        "pages": [
+          {
+            "text": "In the Middle Ages, knights practiced for war by joining tournaments. These were big and popular shows where knights could fight in groups and show their strength. People held them for weddings, birthdays, or just for fun.",
+            "evidenceIds": [
+              "P1",
+              "P2",
+              "P6"
+            ]
+          },
+          {
+            "text": "The main part of a tournament was the melee. This was a large fight where two teams of knights rode at each other in an open field. They wore full armor and used swords, maces, and shields.",
+            "evidenceIds": [
+              "P6",
+              "P7",
+              "P8"
+            ]
+          },
+          {
+            "text": "Before the main fight, knights often did single combats called jousts. Two knights rode horses toward each other with long lances. Jousts were also held on the evening before the big day.",
+            "evidenceIds": [
+              "P7",
+              "P9"
+            ]
+          },
+          {
+            "text": "Hundreds of knights traveled from many places to join these famous events. They came from England, Germany, France, and other regions. Large crowds watched the battles from special wooden stands near the field.",
+            "evidenceIds": [
+              "P10",
+              "P16"
+            ]
+          },
+          {
+            "text": "After the fighting ended, the host gave out big meals and prizes to the best knights. Most tournaments lasted until everyone was very tired or until the sun went down.",
+            "evidenceIds": [
+              "P18"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "The History of Medieval Tournaments",
+        "pages": [
+          {
+            "text": "During the Middle Ages and the Renaissance, tournaments served as popular chivalrous competitions. Communities organized these mock fights for coronations, weddings, or simply as entertainment, though some critics viewed them as frivolous and a threat to public order.",
+            "evidenceIds": [
+              "P1",
+              "P2"
+            ]
+          },
+          {
+            "text": "The word tournament comes from Old French and Latin terms meaning to turn. While early military games traced back through history, the structured medieval tournament developed during the High Middle Ages as a vital way for knights to train for war.",
+            "evidenceIds": [
+              "P3",
+              "P6",
+              "P13"
+            ]
+          },
+          {
+            "text": "The main event of any tournament was the melee, a mass combat where two teams of armored knights charged at each other in an open arena. Their objective was to break enemy ranks using blunted weapons like swords, maces, and shields.",
+            "evidenceIds": [
+              "P6",
+              "P7",
+              "P8"
+            ]
+          },
+          {
+            "text": "Jousting, where two single knights rode at each other with lances, also formed part of the event. It served as an evening prelude or a preliminary showcase, although some leaders occasionally banned jousts because they distracted from the melee.",
+            "evidenceIds": [
+              "P7",
+              "P9"
+            ]
+          },
+          {
+            "text": "Major tournaments in northern France and England drew hundreds of foreign knights from across Europe. Spectators watched from stands while participants stayed in designated lodgings before gathering on the field for the opening review and charge.",
+            "evidenceIds": [
+              "P10",
+              "P16",
+              "P17"
+            ]
+          },
+          {
+            "text": "Battles usually continued across several square miles until both sides grew completely exhausted or fading light ended the day. Afterward, patrons hosted lavish banquets to award prizes to the best fighters on each side.",
+            "evidenceIds": [
+              "P18"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "Evolution and Practice of the Medieval Tourney",
+        "pages": [
+          {
+            "text": "Emerging during the twelfth century, medieval tournaments functioned as structured martial displays and chivalrous competitions. While frequently staged to honor royal births, marriages, or peace treatises, these events balanced public spectacle with military utility, despite facing contemporary criticism regarding public order.",
+            "evidenceIds": [
+              "P1",
+              "P2",
+              "P5"
+            ]
+          },
+          {
+            "text": "Etymologically rooted in the Latin tornare, the terminology evolved from Old French definitions of tilting and turning into a generic descriptor for knightly hastiludes. Historical sources attribute the development of these exercises to the High Middle Ages, formalizing practices that had distant precedents in earlier cavalry training.",
+            "evidenceIds": [
+              "P3",
+              "P4",
+              "P5",
+              "P13"
+            ]
+          },
+          {
+            "text": "The centerpiece of the tournament was the melee, a massed formation combat where opposing teams of mounted or foot knights clashed to disrupt enemy lines. Chroniclers noted that participants employed weapons designed primarily for practice and the display of martial prowess rather than genuine hostility.",
+            "evidenceIds": [
+              "P5",
+              "P7",
+              "P8"
+            ]
+          },
+          {
+            "text": "Jousting constituted a secondary yet persistent component, operating as a preliminary test of individual skill. Documentary evidence indicates that specific rulers occasionally restricted jousts to prevent tactical distractions and the premature exhaustion of participants before the main melee.",
+            "evidenceIds": [
+              "P7",
+              "P9"
+            ]
+          },
+          {
+            "text": "Regional circuits across northern France and England attracted vast contingents of foreign participants. Contemporary records detail complex logistical arrangements, including designated lodgings, spectator stands, and formal reviews where combatants paraded before the charge.",
+            "evidenceIds": [
+              "P10",
+              "P16",
+              "P17"
+            ]
+          },
+          {
+            "text": "Engagements typically persisted across extensive open terrain until general exhaustion or failing daylight intervened. Concluding festivities featured patron-sponsored banquets where formal prizes were awarded to distinguished combatants from each competing faction.",
+            "evidenceIds": [
+              "P18"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2918,
+    "output": 1503,
+    "total": 4421
+  },
+  "validation": null
 }
