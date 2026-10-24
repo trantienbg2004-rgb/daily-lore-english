@@ -389,7 +389,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376065279"
     }
   ],
-  "updatedAt": "2026-10-24T06:28:07.332Z",
+  "updatedAt": "2026-10-24T06:28:25.349Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -420,7 +420,7 @@
             ]
           },
           {
-            "text": "Stressful conditions like warming water can change how microbial communities behave. These environmental shifts often reduce diversity and abundance within marine populations, altering overall ecosystem health.",
+            "text": "Under stressful conditions, such as rising water temperatures, the impact of microbiome diversity on phytoplankton community structure is amplified, decreasing community diversity and abundance.",
             "evidenceIds": [
               "P6"
             ]
@@ -490,7 +490,7 @@
             ]
           },
           {
-            "text": "Anthropogenic and environmental stressors, including elevated water temperatures, alter microbiome composition and function. Such shifts can disrupt community diversity and abundance, subsequently impacting broader marine biogeochemical cycles.",
+            "text": "Under stressful conditions, such as rising water temperatures, the impact of microbiome diversity on phytoplankton community structure is amplified, decreasing community diversity and abundance.",
             "evidenceIds": [
               "P6"
             ]
@@ -499,11 +499,11 @@
       }
     }
   },
-  "repairAttempts": 0,
+  "repairAttempts": 1,
   "lastUsage": {
-    "input": 2848,
-    "output": 737,
-    "total": 3585
+    "input": 2720,
+    "output": 174,
+    "total": 2894
   },
   "validation": null
 }
