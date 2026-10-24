@@ -2,9 +2,124 @@
   "pageId": 11271075,
   "title": "Marine Isotope Stage 11",
   "topic": "History & Geography",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1368845713,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368845713",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-24T10:38:53.501Z"
+  "reason": "2 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:Five Myr Climate Change.svg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f7/Five_Myr_Climate_Change.svg/960px-Five_Myr_Climate_Change.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Five Myr Climate Change.svg",
+        "caption": "5 million year history, representing the Lisiecki and Raymo (2005) LR04 Benthic Stack",
+        "alt": "",
+        "description": "Reconstrucció dels darrers cinc milions d'anys de la història del clima, basada en el fraccionament d'isòtops d'oxigen (que serveix com a proxy de la massa global total de les capes de gel glacials).",
+        "date": "2005",
+        "section": "",
+        "position": 0,
+        "provenance": {
+          "credit": "Dragons flight (Robert A. Rohde), svg by Jo",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Five_Myr_Climate_Change.svg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Marine_Isotope_Stage_11",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368845713",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:Ocean core sediments on the Polarstern.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b9/Ocean_core_sediments_on_the_Polarstern.jpg/960px-Ocean_core_sediments_on_the_Polarstern.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Ocean core sediments on the Polarstern.jpg",
+        "caption": "Marine core sections from the South Atlantic, about a million years old",
+        "alt": "",
+        "description": "Sediment core, taken with a gravity corer by the research vessel POLARSTERN in the South Atlantic; light/dark-coloured changes are due to climate cycles of the Quaternary; basis age of the core is about 1 Million years (length of each segment is 1 m). For a more detailed description and detail photographs of the core see Gersonde (2003).[1]",
+        "date": "2008-03-03",
+        "section": "Sea level & marine transgression",
+        "position": 1,
+        "provenance": {
+          "credit": "Hannes Grobe, AWI",
+          "license": "CC BY 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Ocean_core_sediments_on_the_Polarstern.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Marine_Isotope_Stage_11",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368845713",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "03de90b97e459ce45c095011a79112f1c0f44d74448091f0a996187c47a7b958",
+      "heading": "Lead",
+      "excerpt": "Marine Isotope Stage 11 or MIS 11 is a Marine Isotope Stage in the geologic temperature record, covering the interglacial period between 424",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368845713"
+    },
+    {
+      "id": "P2",
+      "hash": "0ec25be575b0589b62a70436a71f081ee3c5e2c84f2703ff7c3bea3aaf3f6d71",
+      "heading": "Lead",
+      "excerpt": "Interglacial periods which occurred during the Pleistocene are investigated to better understand present and future climate. Thus, the prese",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368845713"
+    },
+    {
+      "id": "P3",
+      "hash": "037630c2446108ea12bc097348d5114d11a2f17accb0db9a187e87152b0c2b66",
+      "heading": "Characteristics",
+      "excerpt": "MIS 11 represents the longest and warmest interglacial interval of the last 500 kyr. In fact, it shows the highest-amplitude deglacial warmi",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368845713"
+    },
+    {
+      "id": "P4",
+      "hash": "156431a66a56834da04edfdefde55756a73424ee8abbd17b1fb98fc25b5f1f72",
+      "heading": "Concentration of CO2",
+      "excerpt": "Carbon dioxide concentration during MIS 11 was possibly similar to that documented in the pre-industrial period, but not especially high whe",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368845713"
+    },
+    {
+      "id": "P5",
+      "hash": "554808459455c9d2a24ff608652c4789e915100505c0605078e8f1a4a6f27cae",
+      "heading": "Concentration of CO2",
+      "excerpt": "Seemingly, the long-lasting interglacial conditions that are documented during MIS 11 depend on the peculiar interplay between CO2 concentra",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368845713"
+    },
+    {
+      "id": "P6",
+      "hash": "e45d1399795c7474fe5f88a231057543908eefdc1b5ded1edda1c44c942aacd9",
+      "heading": "Carbonate productivity",
+      "excerpt": "In shallow-water environments, the development of several major reef systems (such as the Great Barrier Reef) accompanied increased reef car",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368845713"
+    },
+    {
+      "id": "P7",
+      "hash": "40be6c84968b1f43064261ead1f781f567b9338e610f1d723fea79ea4bb03944",
+      "heading": "Sea level & marine transgression",
+      "excerpt": "Beach deposits in Alaska, Bermuda and the Bahamas, as well as uplifted reef terraces in Indonesia, suggest that global sea level reached as ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368845713"
+    },
+    {
+      "id": "P8",
+      "hash": "a3219c76a7aaaaf3ea807880449a433f0a8a5a64824bd6bd4afa20f06ee25b69",
+      "heading": "Astronomical features",
+      "excerpt": "In contrast to most other interglacials of the late Quaternary, MIS 11 cannot be straightforwardly explained and modelled solely within the ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368845713"
+    },
+    {
+      "id": "P9",
+      "hash": "578e59c5091d9701c670e3cb6115f852d2e5b86997c6696370e333800c8cfbe9",
+      "heading": "Sea level & marine transgression",
+      "excerpt": "The increased sea level requires reduction in modern polar ice sheets and is consistent with the interpretation that both the West Antarctic",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368845713"
+    }
+  ],
+  "updatedAt": "2026-10-24T10:38:59.310Z"
 }
