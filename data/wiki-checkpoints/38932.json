@@ -2,9 +2,239 @@
   "pageId": 38932,
   "title": "Phillis Wheatley",
   "topic": "Economy",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1380246008,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380246008",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-24T10:40:30.021Z"
+  "reason": "3 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:Old South Meetinghouse BW.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/01/Old_South_Meetinghouse_BW.jpg/960px-Old_South_Meetinghouse_BW.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Old South Meetinghouse BW.jpg",
+        "caption": "Phillis Wheatley's church, Old South Meeting House",
+        "alt": "",
+        "description": "Old South Meetinghouse, Washington & Milk Streets, Boston, Suffolk County, MA",
+        "date": "Summer 1968date QS:P,+1968-00-00T00:00:00Z/9,P4241,Q40720564date QS:P,+1968-00-00T00:00:00Z/9,P4241,",
+        "section": "Early life",
+        "position": 0,
+        "provenance": {
+          "credit": "Cortlandt V.D. Hubbard",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Old_South_Meetinghouse_BW.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Phillis_Wheatley",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380246008",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:Houghton AC85.Aℓ245.Zy773w - Wheatley, title page.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/be/Houghton_AC85.A%E2%84%93245.Zy773w_-_Wheatley%2C_title_page.jpg/960px-Houghton_AC85.A%E2%84%93245.Zy773w_-_Wheatley%2C_title_page.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Houghton AC85.Aℓ245.Zy773w - Wheatley, title page.jpg",
+        "caption": "Poems on Various Subjects, Religious and Moral, 1773",
+        "alt": "",
+        "description": "Title page: Poems on various subjects, religious and moral, London: 1773, by Phillis Wheatley (d. 1784). *AC85.Aℓ245.Zy773w, Houghton Library, Harvard University",
+        "date": "1773",
+        "section": "Poetry",
+        "position": 1,
+        "provenance": {
+          "credit": "Phillis Wheatley",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Houghton_AC85.A%E2%84%93245.Zy773w_-_Wheatley,_title_page.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Phillis_Wheatley",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380246008",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:Phyllis Wheatley YWCA - Washington, D.C..jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/16/Phyllis_Wheatley_YWCA_-_Washington%2C_D.C..jpg/960px-Phyllis_Wheatley_YWCA_-_Washington%2C_D.C..jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Phyllis Wheatley YWCA - Washington, D.C..jpg",
+        "caption": "Phyllis Wheatley YWCA in the Shaw neighborhood of Washington, D.C.",
+        "alt": "",
+        "description": "Phyllis Wheatley YWCA in Washington, D.C.",
+        "date": "2008-10-20",
+        "section": "Legacy and honors",
+        "position": 2,
+        "provenance": {
+          "credit": "APK",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Phyllis_Wheatley_YWCA_-_Washington,_D.C..jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Phillis_Wheatley",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380246008",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "15c3273f619d7c51a7849584b0f9f016e544997f24c97efa07781cee126f13d3",
+      "heading": "Lead",
+      "excerpt": "Phillis Wheatley Peters, also spelled Phyllis and Wheatly (c. 1753 – December 5, 1784), was an American writer who is considered the first A",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380246008"
+    },
+    {
+      "id": "P2",
+      "hash": "937d9de1578491623e52c2f4b317be13756147ee0e35235f26f9560b827696bd",
+      "heading": "Lead",
+      "excerpt": "On a 1773 trip to London with the Wheatleys' son, seeking publication of her work, Wheatley met prominent people who became her patrons. The",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380246008"
+    },
+    {
+      "id": "P3",
+      "hash": "168f7ce917cb5926510ff6e75f47b5deddc0b74d25dbfbfed7b010a5719433e4",
+      "heading": "Lead",
+      "excerpt": "Wheatley was emancipated by the Wheatleys shortly after the publication of her book of poems. The Wheatleys died soon thereafter, and Philli",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380246008"
+    },
+    {
+      "id": "P4",
+      "hash": "4e4da92c5da8dd2ef5cfb7e299f744b92dd245abb43cb1aafa3481a5981ca8ef",
+      "heading": "Early life",
+      "excerpt": "Although the date and place of her birth are not documented, scholars believe that Wheatley was born in 1753 in West Africa, most likely in ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380246008"
+    },
+    {
+      "id": "P5",
+      "hash": "06f0609d60cf44874b88ffc4563339d33178ddc79e717b9c114ad5cfd7d0b1da",
+      "heading": "Early life",
+      "excerpt": "On arrival in Boston, Wheatley was bought by the wealthy Boston merchant and tailor John Wheatley as a slave for his wife Susanna. The Wheat",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380246008"
+    },
+    {
+      "id": "P6",
+      "hash": "3fd1e62e291a1389cfa56758cf30ab53463681f62014cb66ef4188107767c981",
+      "heading": "Later life",
+      "excerpt": "In 1773, at the age of 20, Phillis accompanied Nathaniel Wheatley to London in part for her health (she suffered from chronic asthma), but p",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380246008"
+    },
+    {
+      "id": "P7",
+      "hash": "68bd8d62ffd36cb7cd23003a0df1c4e0d78df502ede825d2e5074ac2bb5f944e",
+      "heading": "Other writings",
+      "excerpt": "Wheatley wrote a letter to Reverend Samson Occom, commending him on his ideas and beliefs stating that enslaved people should be given their",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380246008"
+    },
+    {
+      "id": "P8",
+      "hash": "4344bd0ca2bf1291b602c632e51e60faebb5fb101eb36bce94588d9efdbd39fb",
+      "heading": "Poetry",
+      "excerpt": "In 1768, Wheatley wrote \"To the King's Most Excellent Majesty\", in which she praised King George III for repealing the Stamp Act. But while ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380246008"
+    },
+    {
+      "id": "P9",
+      "hash": "53bf702145e291da11ac897f4c4bbc78f376e47d696b27dd927368c97115a0f3",
+      "heading": "Style, structure, and influences on poetry",
+      "excerpt": "Wheatley believed that the power of poetry was immeasurable. John C. Shields, noting that her poetry did not simply reflect the literature s",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380246008"
+    },
+    {
+      "id": "P10",
+      "hash": "4418fb21aef5719da2bd8ea17bccb155583fa9ebd170677f2cf19f961b82664e",
+      "heading": "Scholarly critique",
+      "excerpt": "Black literary scholars from the 1960s to the present in critiquing Wheatley's writing have noted the absence in it of her sense of identity",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380246008"
+    },
+    {
+      "id": "P11",
+      "hash": "b87c89d2950da0c32d66457209b7038f35c7396135ae3ab41ba00801496ee7eb",
+      "heading": "Legacy and honors",
+      "excerpt": "With the 1773 publication of Wheatley's book Poems on Various Subjects, she \"became the most famous African on the face of the earth.\" Volta",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380246008"
+    },
+    {
+      "id": "P12",
+      "hash": "4bae11ab99e8b13c363266d3bac91bb9f0489968b899a3c3a859c4509b62d06d",
+      "heading": "Early life",
+      "excerpt": "The Wheatleys' 18-year-old daughter, Mary, was Phillis's first tutor in reading and writing. Their son, Nathaniel, also tutored her. John Wh",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380246008"
+    },
+    {
+      "id": "P13",
+      "hash": "8797848159dec4aaf2918f662bf46bd2b9786c13d5dca78be63c8a99b68a0867",
+      "heading": "Early life",
+      "excerpt": "Recognizing her literary ability, the Wheatley family supported Phillis's education and left household labor to their other domestic enslave",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380246008"
+    },
+    {
+      "id": "P14",
+      "hash": "df4d16378032a96aa11aefefc673412cd300bc31218c9e33946474e120ea7ba7",
+      "heading": "Later life",
+      "excerpt": "After Phillis's book was published, by November 1773, the Wheatleys manumitted Phillis. Susanna Wheatley died in the spring of 1774, and Joh",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380246008"
+    },
+    {
+      "id": "P15",
+      "hash": "369dd3059dbee461aa175761392ff0b61d0f0b00ef0fb7cc7dd4307537a8a8a6",
+      "heading": "Later life",
+      "excerpt": "John was improvident and was imprisoned for debt in 1784. With a sickly infant son to provide for, Phillis became a scullery maid at a board",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380246008"
+    },
+    {
+      "id": "P16",
+      "hash": "effed678694a5b816d1056545c70e733d597412d14b4a12fec8445aa376a5583",
+      "heading": "Other writings",
+      "excerpt": "In 1775, she sent a copy of a poem entitled \"To His Excellency, George Washington\" to the then-military general. The following year, Washing",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380246008"
+    },
+    {
+      "id": "P17",
+      "hash": "83519cf59203d818e199528c26e6b9fb0a5f7f6c7ed46fc4757909658d62f220",
+      "heading": "Other writings",
+      "excerpt": "In 1779, Wheatley issued a proposal for a second volume of poems but was unable to publish it because she had lost her patrons after her ema",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380246008"
+    },
+    {
+      "id": "P18",
+      "hash": "4477cb79eacd8e5bff54c93049dcd39a5bea458311b64c5195e699f1d01423b1",
+      "heading": "Poetry",
+      "excerpt": "May George, beloved by all the nations round, Live with heav’ns choicest constant blessings crown'd! Great God, direct, and guard him from o",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380246008"
+    },
+    {
+      "id": "P19",
+      "hash": "c38210279d727f61cb4e984bdd74aca335ad8e61f861b2173fd0a3311260e778",
+      "heading": "Poetry",
+      "excerpt": "In 1770, she wrote a poetic tribute to the evangelist George Whitefield. Her poetry expressed Christian themes, and many poems were dedicate",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380246008"
+    },
+    {
+      "id": "P20",
+      "hash": "d178ae34558d46e79575f6bdfe132cf0bb84843909da09d490b2d68695ca9e77",
+      "heading": "Poetry",
+      "excerpt": "Twas mercy brought me from my Pagan land, Taught my benighted soul to understand That there's a God, that there's a Saviour too: Once I rede",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380246008"
+    },
+    {
+      "id": "P21",
+      "hash": "55bb974fe5a5b18dbf31bdc64840e590152801ada6d4876221b532ebf386c165",
+      "heading": "Poetry",
+      "excerpt": "Many colonists found it difficult to believe that an African slave was writing \"excellent\" poetry. Wheatley had to defend her authorship of ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380246008"
+    },
+    {
+      "id": "P22",
+      "hash": "780a1739c3d4db2f315d6fde15b05fba4928690c3a36bc2047ef7255fdd9089b",
+      "heading": "Poetry",
+      "excerpt": "There, Selina, Countess of Huntingdon and the Earl of Dartmouth acted as patrons to help Wheatley gain publication. Her poetry received comm",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380246008"
+    }
+  ],
+  "updatedAt": "2026-10-24T10:40:35.314Z"
 }
