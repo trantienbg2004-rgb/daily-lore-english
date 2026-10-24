@@ -2,9 +2,147 @@
   "pageId": 1176080,
   "title": "Blockade of Africa",
   "topic": "Economy",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1381345823,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381345823",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-24T11:05:47.382Z"
+  "reason": "1 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:African woman slave trade.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3b/African_woman_slave_trade.jpg/960px-African_woman_slave_trade.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:African woman slave trade.jpg",
+        "caption": "\"The Abolition of the Slave Trade or the inhumanity of dealers in human flesh exemplified in Captn. Kimber's treatment of a young Negro girl of 15 for her virjen (sic) modesty.\" by Isaac Cruikshank, 1792. Shows an incident of an enslaved African girl whipped to death for refusing to dance naked on the deck of the slave ship Recovery; John Kimber, its captain, was tried for murder but acquitted, and denounced before the House of Commons by William Wilberforce over the alleged incident.",
+        "alt": "",
+        "description": "Print shows sailor on a slave ship suspending an African girl by her ankle from a rope over a pulley. Captain John Kimber stands on the left with a whip in his hand.Title: \"The abolition of the slave trade Or the inhumanity of dealers in human flesh exemplified in Captn. Kimber's treatment of a young Negro girl of 15 for her virjen (sic) modesty.\"",
+        "date": "Published by S.W Fores, London, April 10, 1792",
+        "section": "United Kingdom involvement",
+        "position": 0,
+        "provenance": {
+          "credit": "Attributed to Isaac Cruikshank, 1756?-1811?",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:African_woman_slave_trade.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Blockade_of_Africa",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381345823",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:HMS Black Joke (1827) and prizes.jpg"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "2b1d00105639c7b242b8fae75a65ea690db4e76c6c4addec2c9865f64ea9de37",
+      "heading": "Lead",
+      "excerpt": "The Blockade of Africa began in 1808 after the United Kingdom outlawed the Atlantic slave trade, making it illegal for British ships to tran",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381345823"
+    },
+    {
+      "id": "P2",
+      "hash": "08feaa25bd44f08a33577cbf499dc9b51d37774a0c9f27f2aaa96554a1107045",
+      "heading": "Lead",
+      "excerpt": "The 1807 Act Prohibiting Importation of Slaves abolished the intercontinental slave trade in the United States but was not widely enforced. ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381345823"
+    },
+    {
+      "id": "P3",
+      "hash": "a72a3c05be7c82ecbb3aaca58652236bab6a983a4d6965a7b6b8be43a54c308d",
+      "heading": "Background",
+      "excerpt": "The African Slave Trade, and all manner of dealing and trading in the Purchase, Sale, Barter, or Transfer of Slaves, or of Persons intended ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381345823"
+    },
+    {
+      "id": "P4",
+      "hash": "84fdd2cf465ac5c6b9d4be85a7b03c31df02b0904e604e0cc1968bf48d632713",
+      "heading": "Background",
+      "excerpt": "Under this act, if a ship was caught with slaves, there was a fine of £100 per enslaved person. This fine was usually paid by the ship's cap",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381345823"
+    },
+    {
+      "id": "P5",
+      "hash": "03400129ed925be76eea34197df91bbe0becd4039f8c5cbe62bddd12b13eccae",
+      "heading": "Background",
+      "excerpt": "In order to enforce this, two ships were dispatched to the African coast, their primary mission being to prevent British subjects from slave",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381345823"
+    },
+    {
+      "id": "P6",
+      "hash": "f9e5320d5720536898358d874a2e57c4bc1e2c51d6db78621cf015ac04fe75e6",
+      "heading": "Diplomacy",
+      "excerpt": "The original 1807 Act only allowed for British ships to be searched and applied only to British subjects. The slave trade on the African coa",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381345823"
+    },
+    {
+      "id": "P7",
+      "hash": "fa474eb606d31ef4c6e3b50a32299517a709c821a562380c8f23c2e0ade347af",
+      "heading": "West Africa Squadron",
+      "excerpt": "The British Royal Navy commissioned the West Africa Squadron in 1807, and the United States Navy did so as well in 1842. The squadron had th",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381345823"
+    },
+    {
+      "id": "P8",
+      "hash": "dd24ed040abb27ddef70c1010686e88b3ccd7815e7044718a5cc620eccad1443",
+      "heading": "End of the trade",
+      "excerpt": "In spite of Britain's best efforts to pursue suppression through diplomatic means, the trade persisted. Public opinion was beginning to turn",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381345823"
+    },
+    {
+      "id": "P9",
+      "hash": "42d9da34878ae3c52c9d73dd800a3b8b0ccb8563ea2c2a07d5d0640a00b36b6a",
+      "heading": "United States involvement",
+      "excerpt": "The United States Constitution of 1787 had protected the importation of slaves for twenty years. The Pennsylvania Abolition Society held its",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381345823"
+    },
+    {
+      "id": "P10",
+      "hash": "12baf88052aaafdebc8a3e6f84155326eb08374ece247bb6eefe33be7e4283ed",
+      "heading": "Africa Squadron operations",
+      "excerpt": "American naval officer Matthew Calbraith Perry was the executive officer aboard HMS Cyane in 1819, which had escorted the Elizabeth, whose p",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381345823"
+    },
+    {
+      "id": "P11",
+      "hash": "447b4fa6b857bedda3129490bece92cfad859970f2a96b0a6b5e29fa97a33dc1",
+      "heading": "Black Ivory",
+      "excerpt": "The Louisiana Purchase in 1803 created great demand for more slaves to work in the vast new area. Jean Lafitte was a pirate who brought many",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381345823"
+    },
+    {
+      "id": "P12",
+      "hash": "6f89c75045faa645d3c60da4176210a07d304a70f3aa59c8ed252c320e5c52f1",
+      "heading": "Diplomacy",
+      "excerpt": "The UK's slave trade suppression efforts attempted to remain within the primitive international laws of the time: slavers had to be tried in",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381345823"
+    },
+    {
+      "id": "P13",
+      "hash": "894579dff5bc0800f6ef3bd03f33b515ba2a57583da05b200282ce784419cd3b",
+      "heading": "Diplomacy",
+      "excerpt": "In addition to the issues with Mixed Commission Courts, the Navy's mandate to police the trade was also found to be lacking and built on a s",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381345823"
+    },
+    {
+      "id": "P14",
+      "hash": "44b3c9804a0fd7f41f91b35a6a54ba197e67f7cf6aba1598f47858bef123736a",
+      "heading": "Diplomacy",
+      "excerpt": "However, some nations, such as the United States, resisted British coercion. The US believed strongly in freedom of the seas and on several ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381345823"
+    },
+    {
+      "id": "P15",
+      "hash": "df67885b9c1c63fc3c06a1ce0a73c461a30d628d38ee7b4adc3f5f1cdf18d726",
+      "heading": "Diplomacy",
+      "excerpt": "With the beginning of the 1850s, Portugal had completely ceased slave trading (1836) and Spain had all but ceased, but Cuba was still an act",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381345823"
+    }
+  ],
+  "updatedAt": "2026-10-24T11:05:53.069Z"
 }
