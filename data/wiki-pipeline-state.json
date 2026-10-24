@@ -10322,10 +10322,10 @@
       "checkedAt": "2026-10-21T22:32:17.422Z"
     },
     "43151308": {
-      "status": "PENDING",
-      "reason": "queued",
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
       "revisionId": 1369639654,
-      "checkedAt": null
+      "checkedAt": "2026-10-24T11:02:35.259Z"
     },
     "43349616": {
       "status": "REJECTED",
@@ -11930,7 +11930,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-24T11:02:28.831Z",
+  "updatedAt": "2026-10-24T11:02:35.265Z",
   "dailyUsage": {
     "day": "2026-10-24",
     "calls": 117,
