@@ -2,9 +2,173 @@
   "pageId": 557913,
   "title": "Freedom of thought",
   "topic": "Society",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1354453951,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1354453951",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-24T10:37:41.577Z"
+  "reason": "2 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:Freedom of Thought Ben Franklin.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/25/Freedom_of_Thought_Ben_Franklin.jpg/960px-Freedom_of_Thought_Ben_Franklin.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Freedom of Thought Ben Franklin.jpg",
+        "caption": "\"Without freedom of thought there can be no such thing as wisdom & no such thing as public liberty without freedom of speech\", Benjamin Franklin, 1722",
+        "alt": "",
+        "description": "Without freedom of thought there can be no such think as wisdom & no such thing as puclick liberty without freedom of speech, Benjamin Franklin",
+        "date": "2006-06-28 01:10",
+        "section": "",
+        "position": 0,
+        "provenance": {
+          "credit": "k_donovan11",
+          "license": "CC BY 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Freedom_of_Thought_Ben_Franklin.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Freedom_of_thought",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1354453951",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:GiordanoBrunoCampodeiFiori cropped.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f4/GiordanoBrunoCampodeiFiori_cropped.jpg/960px-GiordanoBrunoCampodeiFiori_cropped.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:GiordanoBrunoCampodeiFiori cropped.jpg",
+        "caption": "Bronze statue of Giordano Bruno in Rome",
+        "alt": "",
+        "description": "Cropped version of Giordano Bruno Campo dei Fiori.jpg",
+        "date": "2014-02-24 14:42:03",
+        "section": "History of development and suppression",
+        "position": 1,
+        "provenance": {
+          "credit": "Jastrow",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:GiordanoBrunoCampodeiFiori_cropped.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Freedom_of_thought",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1354453951",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "a75cf38fa57d35c4dae2d72f4ade7e44718e728be0d2fea2f2f79708217a4d70",
+      "heading": "Lead",
+      "excerpt": "Freedom of thought is the freedom of an individual to hold or consider a fact, viewpoint, or thought, independent of others' viewpoints.",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1354453951"
+    },
+    {
+      "id": "P2",
+      "hash": "014f0d7595cc8085e892f942307db38137b8a1d605403dca13fba8e5f308b15b",
+      "heading": "Overview",
+      "excerpt": "Every person attempts to have a cognitive proficiency by developing knowledge, concepts, theories and assessing them in the given environmen",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1354453951"
+    },
+    {
+      "id": "P3",
+      "hash": "bc6a37085c1690d7e20c7905b5c0d75e42e55f6e631fed9ae6284d46f2c1d587",
+      "heading": "Overview",
+      "excerpt": "Freedom of thought is the precursor and progenitor of—and thus is closely linked to—other liberties, including freedom of religion, freedom ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1354453951"
+    },
+    {
+      "id": "P4",
+      "hash": "04d8fc6fc2cc7d8d71f4c2f9843242588abc8b12f01e60d4f9a8189e680dbc7f",
+      "heading": "Overview",
+      "excerpt": "For instance, the United States Bill of Rights contains the famous guarantee in the First Amendment that laws may not be made that interfere",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1354453951"
+    },
+    {
+      "id": "P5",
+      "hash": "2a274bca29a3510f1da9446265f8f9bbce697f28f7c01799f0babd9a38cee0cd",
+      "heading": "Overview",
+      "excerpt": "Freedom of thought... is the matrix, the indispensable condition, of nearly every other form of freedom. With rare aberrations a pervasive r",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1354453951"
+    },
+    {
+      "id": "P6",
+      "hash": "df65342d86afec51bc6d3d8d5d30b4f4c7edad787ef0bd5157d8d314e78e5282",
+      "heading": "History of development and suppression",
+      "excerpt": "It is impossible to know with certainty what another person is thinking, making suppression difficult. The concept is developed throughout t",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1354453951"
+    },
+    {
+      "id": "P7",
+      "hash": "83baff2020cf2fc3329782ba62011122f4582a10ca5316fd8502c3a64ee4e18b",
+      "heading": "Overview",
+      "excerpt": "Such ideas are also a vital part of international human rights law. In the Universal Declaration of Human Rights (UDHR), which is legally bi",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1354453951"
+    },
+    {
+      "id": "P8",
+      "hash": "c6cfd7b571165fb40ef505d4af400657e18df88cac034a911c18091433d2bca8",
+      "heading": "Overview",
+      "excerpt": "Everyone has the right to freedom of thought, conscience and religion; this right includes freedom to change his religion or belief, and fre",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1354453951"
+    },
+    {
+      "id": "P9",
+      "hash": "fccdaa48beca2157a03bf37531ee7f193292fa08c4e2c49e76306a56fde1ff74",
+      "heading": "Overview",
+      "excerpt": "The United Nations' Human Rights Committee states that this \"distinguishes the freedom of thought, conscience, religion or belief from the f",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1354453951"
+    },
+    {
+      "id": "P10",
+      "hash": "c3368937ab90cfbaa3166e769304e7b6d4f455bd00109e506410c55df3df520d",
+      "heading": "History of development and suppression",
+      "excerpt": "Although Greek philosophers Plato and Socrates had discussed freedom of thought minimally, the edicts of King Ashoka (3rd century BC) have b",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1354453951"
+    },
+    {
+      "id": "P11",
+      "hash": "0c1469753222d7da998fb54854bca8991f32152b0a1c03b2a84a2e11455b4699",
+      "heading": "History of development and suppression",
+      "excerpt": "Queen Elizabeth I revoked a thought censorship law in the late sixteenth century, because, according to Sir Francis Bacon, she did \"not [lik",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1354453951"
+    },
+    {
+      "id": "P12",
+      "hash": "c049638602dd17487e76045129c9fa80200d1a7fe54f2c38e97941a4cad211aa",
+      "heading": "History of development and suppression",
+      "excerpt": "Oliver Cromwell is described by Ignaz von Döllinger as \"the first among the mighty men of the world to set up one special religious principl",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1354453951"
+    },
+    {
+      "id": "P13",
+      "hash": "1b5b19bda4ee75b2ed2c7f31c83339155988f61326588beb781d226d91a798f1",
+      "heading": "History of development and suppression",
+      "excerpt": "However, freedom of expression can be limited through censorship, arrests, book burning, or propaganda, and this tends to discourage freedom",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1354453951"
+    },
+    {
+      "id": "P14",
+      "hash": "826b2289b15469ac1f27a32ceaeabcaede7f491e2da30af100f763f9520af187",
+      "heading": "History of development and suppression",
+      "excerpt": "The Sapir–Whorf hypothesis, which states that thought can be embedded in language, would support the claim that an effort to limit the use o",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1354453951"
+    },
+    {
+      "id": "P15",
+      "hash": "bfb24f14c83397806076855e7aa0fe57b29ddb924f695bb68a72a581d4f3a7aa",
+      "heading": "History of development and suppression",
+      "excerpt": "More recently, neuroimaging technology has raised concerns about entities possibly reading and subsequently suppressing thought. These conce",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1354453951"
+    },
+    {
+      "id": "P16",
+      "hash": "536240892cd92c2ac8dea9820bb83cf886386f85d4cf0fe991921e5fe1764b32",
+      "heading": "History of development and suppression",
+      "excerpt": "Humanists International publishes the annual Freedom of Thought Report, which compiles country-by-country material on the treatment of non-r",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1354453951"
+    }
+  ],
+  "updatedAt": "2026-10-24T10:37:47.242Z"
 }
