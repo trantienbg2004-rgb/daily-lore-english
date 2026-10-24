@@ -2,10 +2,10 @@
   "pageId": 655350,
   "title": "Cynisca",
   "topic": "Sports",
-  "status": "DRAFTED",
+  "status": "VALIDATED",
   "revisionId": 1355870897,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1355870897",
-  "reason": "draft durably saved before validation",
+  "reason": "local factual, style, length, structure and source audit passed",
   "rights": [
     {
       "status": "REVIEW",
@@ -202,7 +202,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1355870897"
     }
   ],
-  "updatedAt": "2026-10-24T08:30:54.246Z",
+  "updatedAt": "2026-10-24T08:31:12.333Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -331,5 +331,8 @@
     "output": 1211,
     "total": 3695
   },
-  "validation": null
+  "validation": {
+    "accepted": true,
+    "errors": []
+  }
 }
