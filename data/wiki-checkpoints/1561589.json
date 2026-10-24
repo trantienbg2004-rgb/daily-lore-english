@@ -2,10 +2,10 @@
   "pageId": 1561589,
   "title": "Bunce Island",
   "topic": "Economy",
-  "status": "EVIDENCE_READY",
+  "status": "RETRY_LATER",
   "revisionId": 1365984687,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1365984687",
-  "reason": "6 rights-verified embedded images",
+  "reason": "Gemini token usage unavailable",
   "rights": [
     {
       "status": "REVIEW",
@@ -299,5 +299,5 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1365984687"
     }
   ],
-  "updatedAt": "2026-10-24T10:21:13.274Z"
+  "updatedAt": "2026-10-24T10:21:19.173Z"
 }
