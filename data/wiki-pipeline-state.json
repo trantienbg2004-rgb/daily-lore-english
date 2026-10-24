@@ -8132,10 +8132,10 @@
       "checkedAt": "2026-10-22T08:20:56.391Z"
     },
     "645451": {
-      "status": "PENDING",
-      "reason": "queued",
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
       "revisionId": 1381580443,
-      "checkedAt": null
+      "checkedAt": "2026-10-24T11:01:05.330Z"
     },
     "645686": {
       "status": "EVIDENCE_READY",
@@ -11930,7 +11930,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-24T11:00:58.902Z",
+  "updatedAt": "2026-10-24T11:01:05.331Z",
   "dailyUsage": {
     "day": "2026-10-24",
     "calls": 117,
