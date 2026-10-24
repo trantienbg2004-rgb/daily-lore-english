@@ -2,10 +2,10 @@
   "pageId": 2393552,
   "title": "New World",
   "topic": "History & Geography",
-  "status": "DRAFTED",
+  "status": "NEEDS_REPAIR",
   "revisionId": 1376689536,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376689536",
-  "reason": "draft durably saved before validation",
+  "reason": "editorial: A1-A2:page-2:length-or-sentence,A1-A2:page-3:unsupported-number-context-1503",
   "rights": [
     {
       "status": "REVIEW",
@@ -289,7 +289,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376689536"
     }
   ],
-  "updatedAt": "2026-10-24T06:58:08.590Z",
+  "updatedAt": "2026-10-24T06:58:14.555Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -427,5 +427,11 @@
     "output": 1364,
     "total": 4347
   },
-  "validation": null
+  "validation": {
+    "accepted": false,
+    "errors": [
+      "A1-A2:page-2:length-or-sentence",
+      "A1-A2:page-3:unsupported-number-context-1503"
+    ]
+  }
 }
