@@ -87,10 +87,12 @@ test('toolbar keeps the section label while every news page shows its complete h
  assert.ok(!app.includes('<div className="eyebrow">{readerSection(item)}</div>'))
 })
 
-test('visible photo descriptions stay short while full credits remain in article data',()=>{
+test('visible photo descriptions are complete while full credits remain in article data',()=>{
  const page={image:'https://upload.wikimedia.org/wikipedia/commons/a/a.jpg',caption:'Illustrative image: Secretary of State Andrew Mitchell speaking to Bangladeshi migrant workers in Tunisia 5499005871',imageProvenance:{credit:'Original photographer',license:'CC BY 4.0'}}
  assert.ok(photoLabel(page).startsWith('Secretary of State'))
- assert.ok(photoLabel(page).length<=53)
+ assert.ok(photoLabel(page).length>53)
+ assert.ok(photoLabel(page).includes('Bangladeshi migrant workers in Tunisia'))
+ assert.ok(!photoLabel(page).endsWith('…'))
  assert.ok(!/illustrat/i.test(photoLabel(page)))
  assert.ok(!photoLabel(page).includes('5499005871'))
  assert.match(page.caption,/Bangladeshi migrant workers/)
@@ -98,4 +100,8 @@ test('visible photo descriptions stay short while full credits remain in article
  assert.equal(photoLabel({image:page.image,caption:'Illustrative image: Damage in Gaza Strip during the October 2023 - 29'}),'Damage in Gaza Strip, October 2023')
  assert.equal(photoLabel({image:page.image,caption:'Location of Cambodia and Bangladesh. Image via Wikipedia by TUBS.'}),
   'Location of Cambodia and Bangladesh.')
+ const css=fs.readFileSync('src/App.css','utf8')
+ const app=fs.readFileSync('src/App.jsx','utf8')
+ assert.match(css,/lore-photo-caption\s*\{[^}]*max-height:none;\s*overflow:visible;/s)
+ assert.match(app,/mediaBounds\.bottom <= pagerBounds\.top - 8/)
 })

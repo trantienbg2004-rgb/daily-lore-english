@@ -1,5 +1,5 @@
-// DAILY NEWS V19: the compact visible caption is a photo NAME, never a license
-// URL. Retain the original caption in full for the accessible credit disclosure.
+// Keep the full descriptive caption visible. Remove appended credit/license
+// details from the short reader label; those remain available in source credits.
 const GENERIC = /^(wikipedia\s*\/\s*wikimedia commons|image from|photo (by|credit)|credits?|wikimedia commons|see original)/i
 
 function decodedFileName(source) {
@@ -33,11 +33,7 @@ export function photoLabel(page) {
     .replace(/\s+during the\s+([A-Za-z]+\s+(?:19|20)\d{2})\b/iu, ', $1')
     .replace(/\s+/g, ' ').trim()
   const concise = description.replace(/^(?:a|an|the)\s+(?=[a-z])/iu, '')
-  const limit = 38
-  const short = concise.length > limit
-    ? concise.slice(0, limit + 1).replace(/\s+\S*$/u, '').replace(/(?:\s+(?:a|an|and|at|by|for|from|in|of|on|the|to|with))+$/iu, '').trim()
-    : concise
-  return short ? short[0].toUpperCase() + short.slice(1) + (concise.length > limit ? '…' : '') : 'Article photograph'
+  return concise ? concise[0].toUpperCase() + concise.slice(1) : 'Article photograph'
 }
 
 export function photoSourceLink(page) {

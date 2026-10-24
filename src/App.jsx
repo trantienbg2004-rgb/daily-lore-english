@@ -15,6 +15,7 @@ import { displayHeadline, readerSection } from './lib/editorial.js'
 import { loadRecommendationProfile, rememberReading, rankRecommendations } from './lib/recommendationEngine.js'
 import { handleReaderArrowKey } from './lib/readerKeyboard.js'
 import {NEWS_LEVELS, NEWS_LEVEL_KEY, isNewsLevel, loadNewsLevel, applyNewsLevel} from './lib/newsLevels.js'
+import { parseFreeDictionaryEntries, rankMeaningOptions } from './lib/contextualDictionary.js'
 
 
 // Keep the complete adaptation for attribution while Read shows short pages.
@@ -166,11 +167,13 @@ function layoutPages(item, reader, badImages = new Set()) {
       // against its TOP edge, not the pager's bottom (which no longer moves).
       // Reject overflow instead of silently hiding words behind navigation.
       const textBounds = paragraph.getBoundingClientRect()
+      const mediaBounds = media.getBoundingClientRect()
       const pagerBounds = pager.getBoundingClientRect()
       const viewportBottom = fixture.getBoundingClientRect().bottom
       // The flex pager ends exactly at the reader's bottom; allow subpixel
       // rounding while keeping the entire paragraph above the pager.
       return textBounds.height > 0 && textBounds.bottom <= pagerBounds.top - 8
+        && (!image || mediaBounds.bottom <= pagerBounds.top - 8)
         && pagerBounds.bottom <= viewportBottom + 1
     }
     // Failed/corrupt thumbnails may not reserve visual space. Reflow their
@@ -274,8 +277,8 @@ const offlineMeaning = word => {
   return ''
 }
 
-// Datamuse is the primary service (confirmed accessible in the user's browser).
-// Free Dictionary is a secondary fallback, never a blocking prerequisite.
+// Prefer the already-integrated Free Dictionary API because its definitions
+// include example sentences. Datamuse remains the fallback.
 const dictionaryCache = new Map()
 const fetchJSON = async (url, signal, timeoutMs = 4500) => {
   const controller = new AbortController()
@@ -303,9 +306,25 @@ const parseDatamuse = (data, candidate) => {
     return { definition: (separator < 0 ? raw : raw.slice(separator + 1)).trim(), partOfSpeech: labels[tag] || tag, phonetic: '', source: 'Datamuse' }
   }).filter(item => item.definition).slice(0, 5)
 }
-const lookupWord = async (word, signal) => {
-  if (dictionaryCache.has(word)) return dictionaryCache.get(word)
+const withContextRanking = (result, word, context) => ({
+  ...result,
+  options: rankMeaningOptions(result.options, context, word).slice(0, 8),
+})
+const lookupWord = async (word, context, signal) => {
+  if (dictionaryCache.has(word)) return withContextRanking(dictionaryCache.get(word), word, context)
   const candidates = wordCandidates(word)
+  for (const candidate of candidates) {
+    if (signal.aborted) throw new DOMException('Cancelled', 'AbortError')
+    try {
+      const entries = await fetchJSON(`https://api.dictionaryapi.dev/api/v2/entries/en/${encodeURIComponent(candidate)}`, signal, 2200)
+      const options = parseFreeDictionaryEntries(entries)
+      if (options.length) {
+        const result = { options, source: 'Free Dictionary' }
+        dictionaryCache.set(word, result)
+        return withContextRanking(result, word, context)
+      }
+    } catch (error) { if (signal.aborted) throw error }
+  }
   for (const candidate of candidates) {
     if (signal.aborted) throw new DOMException('Cancelled', 'AbortError')
     try {
@@ -314,23 +333,7 @@ const lookupWord = async (word, signal) => {
       if (options.length) {
         const result = { options, source: 'Datamuse' }
         dictionaryCache.set(word, result)
-        return result
-      }
-    } catch (error) { if (signal.aborted) throw error }
-  }
-  for (const candidate of candidates.slice(0, 2)) {
-    if (signal.aborted) throw new DOMException('Cancelled', 'AbortError')
-    try {
-      const entries = await fetchJSON(`https://api.dictionaryapi.dev/api/v2/entries/en/${encodeURIComponent(candidate)}`, signal, 2200)
-      const entry = entries?.[0]
-      const options = (entry?.meanings || []).flatMap(item => (item.definitions || []).slice(0, 2).map(d => ({
-        definition: d.definition, partOfSpeech: item.partOfSpeech || '',
-        phonetic: entry.phonetic || entry.phonetics?.find(p => p.text)?.text || '', source: 'Free Dictionary'
-      }))).filter(item => item.definition).slice(0, 5)
-      if (options.length) {
-        const result = { options, source: 'Free Dictionary' }
-        dictionaryCache.set(word, result)
-        return result
+        return withContextRanking(result, word, context)
       }
     } catch (error) { if (signal.aborted) throw error }
   }
@@ -687,9 +690,9 @@ function App() {
   const activeMeaning = lookup.options?.[meaningIndex] || null
   // Avoid lookbehind regex: Safari on iOS 15 cannot parse it and may show a blank screen.
   const sentenceParts = (currentPage?.text || '').match(/[^.!?]+[.!?]*|[^.!?]+$/g) || [currentPage?.text || '']
-  const selectedSentence = selectedSaved?.sentence || sentenceParts.find(sentence =>
+  const selectedSentence = (tab === 'words' && selectedSaved?.sentence) || sentenceParts.find(sentence =>
     sentence.toLowerCase().split(/[^a-z]+/).includes(selected)
-  )?.trim() || currentPage?.text || ''
+  )?.trim() || (tab !== 'read' && selectedSaved?.sentence) || currentPage?.text || ''
 
   useEffect(() => {
     if (!selected) return
@@ -701,12 +704,12 @@ function App() {
       controller.abort()
       if (active) setLookup({ status: 'error', options: [] })
     }, 11000)
-    lookupWord(selected, controller.signal)
+    lookupWord(selected, selectedSentence, controller.signal)
       .then(result => { if (active && !controller.signal.aborted) setLookup({ status: 'success', ...result }) })
       .catch(() => { if (active && !controller.signal.aborted) setLookup({ status: 'error', options: [] }) })
       .finally(() => clearTimeout(timeout))
     return () => { active = false; clearTimeout(timeout); controller.abort() }
-  }, [selected, retryCount])
+  }, [selected, selectedSentence, retryCount])
 
   const saveWord = () => {
     if (!selected || isSaved) return
@@ -716,6 +719,7 @@ function App() {
       definition: meaning?.definition || offlineMeaning(selected) || '',
       phonetic: meaning?.phonetic || '',
       partOfSpeech: meaning?.partOfSpeech || '',
+      example: meaning?.example || '',
       sentence: selectedSentence,
       added: Date.now(),
     }
@@ -729,7 +733,7 @@ function App() {
     setWords(current => {
       if (!current.some(item => item.word === selected && !item.definition)) return current
       return current.map(item => item.word === selected && !item.definition
-        ? { ...item, definition: lookup.options[0].definition, phonetic: lookup.options[0].phonetic, partOfSpeech: lookup.options[0].partOfSpeech }
+        ? { ...item, definition: lookup.options[0].definition, phonetic: lookup.options[0].phonetic, partOfSpeech: lookup.options[0].partOfSpeech, example: lookup.options[0].example || '' }
         : item)
     })
   }, [selected, lookup])
@@ -988,7 +992,7 @@ function App() {
               <div className="meaning-options" role="radiogroup" aria-label="Choose a definition">
                 {lookup.options.slice(0, 3).map((item, i) => <button type="button" key={i} role="radio" aria-checked={meaningIndex === i} className={'meaning-option ' + (meaningIndex === i ? 'chosen' : '')} onClick={() => setMeaningIndex(i)}>
                   <span className="meaning-radio" aria-hidden="true"/>
-                  <span><small>{item.partOfSpeech || 'definition'} · {item.source}</small><span>{item.definition}</span></span>
+                  <span><small>{i === 0 && item.contextScore > 0 ? 'Closest match to this sentence · ' : ''}{item.partOfSpeech || 'definition'} · {item.source}</small><span>{item.definition}</span>{item.example && <em className="meaning-example">Example: “{item.example}”</em>}</span>
                 </button>)}
               </div>
             </>}
