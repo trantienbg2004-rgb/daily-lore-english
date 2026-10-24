@@ -2,10 +2,10 @@
   "pageId": 38497714,
   "title": "Longleaf pine ecosystem",
   "topic": "History & Geography",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1379099622,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379099622",
-  "reason": "5 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -268,5 +268,136 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379099622"
     }
   ],
-  "updatedAt": "2026-10-24T08:36:14.431Z"
+  "updatedAt": "2026-10-24T08:36:34.809Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "The Longleaf Pine Forest",
+        "pages": [
+          {
+            "text": "The longleaf pine ecosystem is a special forest in the Southern United States. It is home to many rare plants and animals. Long ago, this forest covered a very large area from Florida to Virginia and Texas. Today, much of the original range is gone.",
+            "evidenceIds": [
+              "P1",
+              "P2"
+            ]
+          },
+          {
+            "text": "This forest floor is very rich and diverse. Famous plants include the tall longleaf pine tree, wiregrass, and the red-cockaded woodpecker. The pine tree can grow very tall and has thick bark that helps it stay safe from fires.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "Wiregrass is another main plant in this habitat. It grows in small clumps and plays an important part in the forest. The dry grass helps carry natural fires across the land, which helps the pine trees to spread and grow.",
+            "evidenceIds": [
+              "P4"
+            ]
+          },
+          {
+            "text": "Many years ago, Native Americans and natural lightning storms started fires that kept the forest open. Later, European settlers arrived and built homes, roads, and farms. Logging and stopping natural fires caused the big forest to shrink a lot.",
+            "evidenceIds": [
+              "P7",
+              "P17",
+              "P18"
+            ]
+          },
+          {
+            "text": "Today, people work hard to protect and restore this important ecosystem. They plant new longleaf pine seedlings, use controlled fires, and try to control invasive species so that rare plants and animals can live there safely again.",
+            "evidenceIds": [
+              "P2"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "Ecology and History of Longleaf Pines",
+        "pages": [
+          {
+            "text": "The longleaf pine ecosystem is a temperate coniferous forest native to the Southern United States. Recognized as one of North America's most biodiverse habitats, it once spanned from Florida north to Virginia and west to Texas, though it now occupies a fraction of that historical range.",
+            "evidenceIds": [
+              "P1",
+              "P2"
+            ]
+          },
+          {
+            "text": "The forest floor supports immense biological richness, featuring notable species like the longleaf pine, wiregrass, and the red-cockaded woodpecker. The longleaf pine features long needles, large cones, and thick bark that provides natural resistance to severe fires and beetle outbreaks.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "Wiregrass species grow in distinct clumps across the landscape and play a critical ecological role. By carrying fires across the ground, the grass assists significantly in the reproduction and natural spread of the longleaf pine trees.",
+            "evidenceIds": [
+              "P4"
+            ]
+          },
+          {
+            "text": "Historically, lightning and regular fires set by Native Americans maintained the ecosystem. However, European settlement brought widespread changes. Logging, agricultural expansion, road construction, and decades of fire suppression led to severe habitat fragmentation and a major decline in the forest.",
+            "evidenceIds": [
+              "P7",
+              "P17",
+              "P18"
+            ]
+          },
+          {
+            "text": "Concerns regarding forest loss prompted early twentieth-century conservation efforts. Modern preservation and restoration techniques now include planting pine seedlings, introducing prescribed fire regimens, managing native ground cover, and controlling invasive species to protect the remaining habitats.",
+            "evidenceIds": [
+              "P2",
+              "P9"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "Dynamics of the Longleaf Pine Ecosystem",
+        "pages": [
+          {
+            "text": "The longleaf pine ecosystem represents a temperate coniferous forest formation native to the coastal plain of the Southern United States. Historically encompassing vast territories from Florida to Virginia and westward to Texas, the ecosystem has experienced severe reduction, currently occupying less than a quarter of its original spatial extent due to anthropogenic pressures.",
+            "evidenceIds": [
+              "P1",
+              "P2"
+            ]
+          },
+          {
+            "text": "Characterized by exceptional biodiversity, the habitat hosts numerous endemic and endangered species. Structurally, the dominant Pinus palustris exhibits adaptations such as thick bark that confers resilience against localized fires and southern pine beetle outbreaks, alongside associated understory flora like wiregrass.",
+            "evidenceIds": [
+              "P1",
+              "P3",
+              "P4"
+            ]
+          },
+          {
+            "text": "As a recognized fire climax community, the ecosystem depends heavily on frequent fire disturbances to suppress competing hardwoods and facilitate ecological succession. Historically, these fires were ignited by lightning and intentional burning practices executed by Native Americans to enhance resource management and mobility.",
+            "evidenceIds": [
+              "P7",
+              "P13"
+            ]
+          },
+          {
+            "text": "Subsequent European colonization initiated progressive environmental degradation. Intensive timber harvesting for naval stores, post-Civil War agricultural booms, infrastructure expansion including roads and railroads, and twentieth-century wartime demands drove extensive habitat fragmentation and large-scale canopy removal.",
+            "evidenceIds": [
+              "P16",
+              "P17",
+              "P18",
+              "P19"
+            ]
+          },
+          {
+            "text": "Early twentieth-century conservation pioneers recognized the critical necessity of artificial regeneration and controlled burning. Contemporary restoration strategies involve planting pine seedlings, executing prescribed fire regimes, managing ground cover, and mitigating invasive species to rehabilitate fragmented landscapes.",
+            "evidenceIds": [
+              "P2",
+              "P9"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2770,
+    "output": 1361,
+    "total": 4131
+  },
+  "validation": null
 }
