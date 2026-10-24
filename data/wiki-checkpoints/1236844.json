@@ -2,10 +2,10 @@
   "pageId": 1236844,
   "title": "Early voting",
   "topic": "Politics",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1380943196,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380943196",
-  "reason": "7 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REJECTED",
@@ -323,5 +323,121 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380943196"
     }
   ],
-  "updatedAt": "2026-10-24T09:27:20.363Z"
+  "updatedAt": "2026-10-24T09:27:38.066Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "Voting Before Election Day",
+        "pages": [
+          {
+            "text": "Early voting lets people vote before the official election day. It can happen in person at special stations or remotely by mail. The main goals are to help more people vote, stop long lines on election day, and make voting easier for those with busy schedules.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Some countries let all voters use early voting or mail-in ballots. Other countries only allow certain people to use these methods, such as voters who will be out of the country or in the hospital on the big election day.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "Early voting also helps elections run smoothly. Spreading votes over several days gives officials more time to find and fix problems like machine breakdowns, cyberattacks, or false information before election day arrives.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "In countries like Australia, advance voting is very popular. At the 2019 Australian federal election, millions of people cast their votes early, which made up over forty percent of all the total votes cast that year.",
+            "evidenceIds": [
+              "P5"
+            ]
+          },
+          {
+            "text": "Many other places around the world offer early voting options too. For example, Canada holds advance polls days before the election, and millions of Canadians use these days to cast their ballots early.",
+            "evidenceIds": [
+              "P17"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "Global Trends and Rules in Early Voting",
+        "pages": [
+          {
+            "text": "Early voting, also known as advance polling or pre-poll voting, allows citizens to cast their ballots before the scheduled election day. This process can take place remotely through postal voting or in person at designated polling stations.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "The primary goals of early voting are to increase voter participation, reduce crowding at polling stations on election day, and accommodate individuals whose work or travel schedules would otherwise prevent them from participating.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "In some nations, early in-person or postal voting is available to everyone. In other countries, eligibility is restricted to specific groups, such as hospitalized patients or citizens who will be traveling away from home on election day.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "Spreading the voting period over several days also strengthens the security and stability of elections. When issues such as machine failures, human errors, or disinformation arise, officials have more time to detect and address them.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "Countries around the world have experienced a dramatic rise in advance voting. In Canada, about 4.9 million citizens cast advance votes in 2019, and nearly 5.8 million people voted during the advance-poll dates in 2021, setting a record.",
+            "evidenceIds": [
+              "P17"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "Mechanisms and Impacts of Advance Voting",
+        "pages": [
+          {
+            "text": "Early voting encompasses various convenience voting processes, including advance polling and postal voting, designed to facilitate ballot casting prior to the official election day. The availability of these methods differs significantly across jurisdictions.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "While certain countries provide universal access to postal or in-person early voting, others restrict eligibility to demographic subsets, such as hospitalized individuals or citizens stationed outside the country on election day.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "Beyond enhancing civic participation and accommodating complex personal schedules, extended voting periods contribute to electoral resilience. Spreading the process allows officials to identify and mitigate technical failures, human errors, and disinformation campaigns proactively.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "Adoption rates have grown substantially in numerous regions. In Germany, mail-in voting evolved from a restricted option into a widespread practice, with 47.3 percent of voters casting postal ballots during the 2021 federal election.",
+            "evidenceIds": [
+              "P9"
+            ]
+          },
+          {
+            "text": "Similarly, Canadian federal elections have observed a steady surge in advance polling participation, culminating in record-breaking turnout across designated advance-poll dates in recent election cycles.",
+            "evidenceIds": [
+              "P17"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2744,
+    "output": 830,
+    "total": 3574
+  },
+  "validation": null
 }
