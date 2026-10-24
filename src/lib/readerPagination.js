@@ -28,24 +28,48 @@ export function sentenceUnits(text) {
 // viewport allows it. Leave page count and any photo placement untouched.
 export function rebalanceTextPages(pages, fits) {
   const balanced = pages.map(page => ({...page}))
-  const countWords = text => trim(text).split(/\s+/u).filter(Boolean).length
-  for (let i = 0; i < balanced.length - 1; i++) {
-    if (balanced[i].image || balanced[i + 1].image) continue
-    const units = sentenceUnits(`${balanced[i].text} ${balanced[i + 1].text}`)
-    if (units.length < 2) continue
-    const originalDifference = Math.abs(countWords(balanced[i].text) - countWords(balanced[i + 1].text))
-    let best = null
-    for (let cut = 1; cut < units.length; cut++) {
-      const left = units.slice(0, cut).join(' ')
-      const right = units.slice(cut).join(' ')
-      if (!fits({text:left, cover:i === 0, image:null}) || !fits({text:right, cover:false, image:null})) continue
-      const difference = Math.abs(countWords(left) - countWords(right))
-      if (difference < originalDifference && (!best || difference < best.difference)) best = {left, right, difference}
+  const countWords = wordCount
+  let start = 0
+  while (start < balanced.length) {
+    if (balanced[start].image) { start++; continue }
+    let end = start
+    while (end < balanced.length && !balanced[end].image) end++
+    const pageCount = end - start
+    if (pageCount < 2) { start = end; continue }
+
+    const units = sentenceUnits(balanced.slice(start,end).map(page=>page.text).join(' '))
+    if (units.length < pageCount) { start = end; continue }
+    const prefixWords = [0]
+    for (const unit of units) prefixWords.push(prefixWords.at(-1) + countWords(unit))
+    const target = prefixWords.at(-1) / pageCount
+    const dp = Array.from({length:pageCount+1},()=>Array(units.length+1).fill(null))
+    dp[0][0] = {cost:0, cuts:[]}
+
+    for (let used = 0; used < pageCount; used++) {
+      for (let from = used; from <= units.length - (pageCount - used); from++) {
+        const previous = dp[used][from]
+        if (!previous) continue
+        for (let to = from + 1; to <= units.length - (pageCount - used - 1); to++) {
+          const text = units.slice(from,to).join(' ')
+          if (!fits({text,cover:start + used === 0,image:null})) break
+          const words = prefixWords[to] - prefixWords[from]
+          const cost = previous.cost + (words - target) ** 2
+          const current = dp[used+1][to]
+          if (!current || cost < current.cost) dp[used+1][to] = {cost,cuts:[...previous.cuts,to]}
+        }
+      }
     }
-    if (best) {
-      balanced[i] = {...balanced[i], text:best.left}
-      balanced[i + 1] = {...balanced[i + 1], text:best.right}
+
+    const plan = dp[pageCount][units.length]
+    if (plan) {
+      let from = 0
+      for (let page = 0; page < pageCount; page++) {
+        const to = plan.cuts[page]
+        balanced[start+page] = {...balanced[start+page],text:units.slice(from,to).join(' ')}
+        from = to
+      }
     }
+    start = end
   }
   return balanced
 }

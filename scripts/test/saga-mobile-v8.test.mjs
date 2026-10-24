@@ -63,3 +63,19 @@ test('Adjacent text-only pages rebalance at sentence boundaries without moving p
   assert.equal(normalized(balanced.map(page=>page.text).join(' ')),normalized(before))
   assert.ok(Math.abs(words(balanced[1].text)-words(balanced[2].text)) < Math.abs(words(pages[1].text)-words(pages[2].text)))
 })
+
+test('A run of text-only pages balances as a group instead of leaving a short tail',()=>{
+  const sentence = n => Array.from({length:n},(_,i)=>`word${i}`).join(' ')+'.'
+  const pages = [
+    {text:Array.from({length:7},()=>sentence(10)).join(' ')},
+    {text:Array.from({length:8},()=>sentence(10)).join(' ')},
+    {text:Array.from({length:4},()=>sentence(10)).join(' ')},
+    {text:Array.from({length:4},()=>sentence(10)).join(' ')},
+  ]
+  const before=pages.map(page=>page.text).join(' ')
+  const balanced=rebalanceTextPages(pages,({text})=>words(text)<=85)
+  const counts=balanced.map(page=>words(page.text))
+  assert.equal(balanced.length,4)
+  assert.equal(normalized(balanced.map(page=>page.text).join(' ')),normalized(before))
+  assert.ok(Math.max(...counts)-Math.min(...counts)<=10,`Unbalanced group: ${counts.join('/')}`)
+})
