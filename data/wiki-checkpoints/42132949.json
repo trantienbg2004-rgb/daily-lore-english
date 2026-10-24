@@ -2,10 +2,10 @@
   "pageId": 42132949,
   "title": "Industrial Revolution in Scotland",
   "topic": "Science & Technology",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1379616230,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379616230",
-  "reason": "15 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -450,5 +450,121 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379616230"
     }
   ],
-  "updatedAt": "2026-10-24T02:05:08.425Z"
+  "updatedAt": "2026-10-24T02:05:25.570Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "The Industrial Revolution in Scotland",
+        "pages": [
+          {
+            "text": "Between the mid-eighteenth century and the late nineteenth century, Scotland changed a lot. New manufacturing processes and economic growth started during this time. A political union between Scotland and England in 1707 helped open up larger markets for Scottish goods.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Linen was the most important industry in Scotland in the eighteenth century. Merchant entrepreneurs helped build a big market share for Scottish linens, especially in America. Later, cotton spinning and weaving became very popular in the west of the country.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "In eastern Scotland, particularly in Dundee, factories made many jute goods. This created a huge textile center. Thousands of workers had jobs in these mills. The city became a major producer of jute within the British Empire.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "Scotland became very urbanized by 1800. Glasgow grew into one of the largest cities in the world. However, towns and cities grew so fast that housing and public health conditions were often very bad for workers.",
+            "evidenceIds": [
+              "P4"
+            ]
+          },
+          {
+            "text": "Many people left Scotland because there were not enough good jobs. Between 1841 and 1931, millions of Scots moved to North America, Australia, and England. By the twenty-first century, many people abroad had Scottish heritage.",
+            "evidenceIds": [
+              "P4"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "Industry and Growth in Scotland",
+        "pages": [
+          {
+            "text": "The Industrial Revolution in Scotland marked a major transition to new manufacturing processes between the mid-eighteenth and late nineteenth centuries. The 1707 Treaty of Union with England opened up larger markets in England and the growing British Empire for Scottish traders and nobility.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "During the eighteenth century, linen manufacturing served as Scotland's premier industry. Subsidized by the Board of Trustees, merchants expanded sales in the American colonial market. Historians emphasize that a flexible banking system helped support rapid economic development.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "In the east, Dundee developed a massive mechanised jute industry from the 1830s onward. The city turned into the principal center of jute production in the British Empire. Large complexes like Camperdown Works employed tens of thousands of workers.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "Rapid industrial growth made Scotland one of the most urbanized societies in Europe by 1800. Glasgow expanded significantly, earning the nickname the Second City of the Empire. Yet housing and public health struggled to keep pace with the huge population influx.",
+            "evidenceIds": [
+              "P4"
+            ]
+          },
+          {
+            "text": "Because industrial growth did not provide enough good jobs for everyone, massive emigration followed. Between 1841 and 1931, about two million Scots moved to North America and Australia, while hundreds of thousands more relocated to England.",
+            "evidenceIds": [
+              "P4"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "Scotland's Industrial Transformation",
+        "pages": [
+          {
+            "text": "The Industrial Revolution in Scotland encompassed a profound transition toward novel manufacturing processes and economic expansion from the mid-eighteenth century through the late nineteenth century. The Treaty of Union of 1707 facilitated access to English and British Empire markets.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Linen constituted Scotland's premier eighteenth-century industry, establishing the structural basis for subsequent cotton, jute, and woolen sectors. Scholars frequently highlight the flexibility and dynamism of the Scottish financial system as crucial catalysts for nineteenth-century economic development.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "In eastern Scotland, Dundee drove mechanization in the jute sector starting in the 1830s, creating one of the largest global textile concentrations. Massive complexes such as Camperdown Works employed tens of thousands, bolstering Scotland's industrial export economy.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "By 1800, Scotland functioned as one of the most urbanized European societies. Glasgow emerged as a major global metropolis, though unprecedented urbanization outpaced municipal infrastructure, precipitating severe public health challenges and overcrowding.",
+            "evidenceIds": [
+              "P4"
+            ]
+          },
+          {
+            "text": "Persistent employment deficits relative to demographic shifts prompted substantial emigration. Between 1841 and 1931, approximately two million individuals emigrated to North America and Australia, alongside hundreds of thousands who relocated southward to England.",
+            "evidenceIds": [
+              "P4"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2654,
+    "output": 1255,
+    "total": 3909
+  },
+  "validation": null
 }
