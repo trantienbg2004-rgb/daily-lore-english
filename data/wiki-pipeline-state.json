@@ -6032,10 +6032,10 @@
       "checkedAt": "2026-10-21T07:31:05.504Z"
     },
     "13831": {
-      "status": "DRAFTED",
-      "reason": "draft durably saved before validation",
+      "status": "VALIDATED",
+      "reason": "local factual, style, length, structure and source audit passed",
       "revisionId": 1379988533,
-      "checkedAt": "2026-10-24T03:36:03.861Z"
+      "checkedAt": "2026-10-24T03:36:21.803Z"
     },
     "14194": {
       "status": "PUBLISHED",
@@ -9866,7 +9866,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-24T03:36:16.933Z",
+  "updatedAt": "2026-10-24T03:36:21.805Z",
   "dailyUsage": {
     "day": "2026-10-23",
     "calls": 143,

@@ -2,10 +2,10 @@
   "pageId": 13831,
   "title": "Human rights",
   "topic": "Society",
-  "status": "DRAFTED",
+  "status": "VALIDATED",
   "revisionId": 1379988533,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379988533",
-  "reason": "draft durably saved before validation",
+  "reason": "local factual, style, length, structure and source audit passed",
   "rights": [
     {
       "status": "REVIEW",
@@ -304,7 +304,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379988533"
     }
   ],
-  "updatedAt": "2026-10-24T03:36:03.861Z",
+  "updatedAt": "2026-10-24T03:36:21.804Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -428,5 +428,8 @@
     "output": 1305,
     "total": 4050
   },
-  "validation": null
+  "validation": {
+    "accepted": true,
+    "errors": []
+  }
 }
