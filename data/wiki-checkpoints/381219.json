@@ -2,10 +2,10 @@
   "pageId": 381219,
   "title": "Open access",
   "topic": "Society",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1374181374,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374181374",
-  "reason": "9 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -395,5 +395,144 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374181374"
     }
   ],
-  "updatedAt": "2026-10-24T08:11:08.513Z"
+  "updatedAt": "2026-10-24T08:11:25.522Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "What Is Open Access?",
+        "pages": [
+          {
+            "text": "Open access lets people read published research without paying money or hitting walls. It helps share science and ideas with everyone around the world. The main focus is on research papers from academic journals.",
+            "evidenceIds": [
+              "P1",
+              "P2"
+            ]
+          },
+          {
+            "text": "Traditional journals charge fees for subscriptions. Open access journals use different ways to pay for publishing costs. They might rely on author fees or public money, subsidies, and sponsorships to stay open.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "People use different colors to name different types of open access. The most common names are green, gold, and hybrid. Each color shows a different way to share research with the public.",
+            "evidenceIds": [
+              "P4"
+            ]
+          },
+          {
+            "text": "In the gold model, publishers make articles free right away on their websites. Authors can also use green open access by posting their work on their own websites or in special digital repositories.",
+            "evidenceIds": [
+              "P6",
+              "P7"
+            ]
+          },
+          {
+            "text": "Hybrid journals mix open access with closed access. They charge subscription fees, but authors can pay extra to make their specific articles free. Some journals also use other models to share research safely.",
+            "evidenceIds": [
+              "P8",
+              "P16"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "Understanding Open Access Publishing",
+        "pages": [
+          {
+            "text": "Open access is a set of principles and practices that delivers publications to readers free of access charges or other barriers. While strict open access also reduces barriers to copying and reuse, the primary focus of the movement has always been peer-reviewed academic journal literature.",
+            "evidenceIds": [
+              "P1",
+              "P2"
+            ]
+          },
+          {
+            "text": "Unlike traditional journals that rely on subscriptions or pay-per-view charges, open-access journals use funding models that do not require readers to pay. Instead, they often rely on author fees, public funding, subsidies, and sponsorships to cover costs across many formats like articles and reports.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "Different open access types are commonly described using a color system. The most widely recognized names are green, gold, and hybrid open access, though several alternative models are also used across the scholarly publishing landscape.",
+            "evidenceIds": [
+              "P4"
+            ]
+          },
+          {
+            "text": "In the gold model, publishers make all content available for free immediately with Creative Commons licenses for reuse. Green open access involves self-archiving, where authors post their work on independent repositories or institutional websites so people can download it for free.",
+            "evidenceIds": [
+              "P6",
+              "P7"
+            ]
+          },
+          {
+            "text": "Hybrid journals contain a mixture of open and closed access articles. They are partially funded by subscriptions, providing free access only for individual articles where authors pay an extra publication fee. This specific model can be more expensive and sometimes controversial.",
+            "evidenceIds": [
+              "P8"
+            ]
+          },
+          {
+            "text": "Other variations include bronze articles, which are free to read without clear reuse licenses, and diamond journals that charge no fees to readers or authors. Publishing models continue to evolve as institutions and researchers navigate the complex transition toward open science.",
+            "evidenceIds": [
+              "P9",
+              "P10",
+              "P14"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "The Structure and Evolution of Open Access",
+        "pages": [
+          {
+            "text": "Open access encompasses principles and practices designed to deliver nominally copyrightable publications without access charges or traditional barriers. Strict or libre open access further reduces reuse restrictions through open copyright licenses, focusing predominantly on peer-reviewed academic research literature.",
+            "evidenceIds": [
+              "P1",
+              "P2"
+            ]
+          },
+          {
+            "text": "Conventional journals sustain operations through access tolls such as subscriptions and pay-per-view charges. Conversely, open-access publications utilize alternative financial frameworks relying on author fees, public funding, and institutional subsidies, extending across diverse outputs including monographs, conference papers, and reports.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "The scholarly community commonly categorizes open access modalities through a descriptive color taxonomy. While green, gold, and hybrid represent the most prevalent designations, numerous alternative structures and specific naming conventions persist within the broader publishing ecosystem.",
+            "evidenceIds": [
+              "P4"
+            ]
+          },
+          {
+            "text": "Gold open access entails immediate dissemination via publisher websites under permissive sharing licenses. Alternatively, green open access facilitates author self-archiving, permitting researchers to deposit their manuscripts in institutional or independent central repositories to ensure barrier-free public access.",
+            "evidenceIds": [
+              "P6",
+              "P7"
+            ]
+          },
+          {
+            "text": "Hybrid journals present a dual framework containing both open and closed articles, operating partially through subscriptions while levying additional publication fees for specific open content. Critics note that hybrid approaches frequently incur higher costs and can introduce controversial pricing dynamics.",
+            "evidenceIds": [
+              "P8"
+            ]
+          },
+          {
+            "text": "Alternative models address different operational demands, such as diamond journals that eliminate fees for both readers and authors through external grants, or bronze articles that lack explicit reuse licenses. This ongoing structural transition continues to generate substantial debate among academic stakeholders globally.",
+            "evidenceIds": [
+              "P9",
+              "P10",
+              "P14"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2801,
+    "output": 993,
+    "total": 3794
+  },
+  "validation": null
 }
