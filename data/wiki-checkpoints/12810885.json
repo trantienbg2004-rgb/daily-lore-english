@@ -2,10 +2,10 @@
   "pageId": 12810885,
   "title": "Cudjoe Lewis",
   "topic": "Economy",
-  "status": "EVIDENCE_READY",
+  "status": "RETRY_LATER",
   "revisionId": 1380243869,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380243869",
-  "reason": "3 rights-verified embedded images",
+  "reason": "Gemini token usage unavailable",
   "rights": [
     {
       "status": "REVIEW",
@@ -243,5 +243,5 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380243869"
     }
   ],
-  "updatedAt": "2026-10-24T11:06:11.138Z"
+  "updatedAt": "2026-10-24T11:06:16.881Z"
 }
