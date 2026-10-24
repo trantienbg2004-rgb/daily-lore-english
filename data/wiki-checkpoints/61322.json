@@ -2,10 +2,10 @@
   "pageId": 61322,
   "title": "Alcibiades",
   "topic": "Sports",
-  "status": "DRAFTED",
+  "status": "NEEDS_REVIEW",
   "revisionId": 1370887710,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1370887710",
-  "reason": "draft durably saved before validation",
+  "reason": "editorial: B1-B2:page-1:copied-source-passage,C1-C2:page-1:length-or-sentence,C1-C2:page-2:length-or-sentence,C1-C2:page-5:length-or-sentenc",
   "rights": [
     {
       "status": "REJECTED",
@@ -256,7 +256,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1370887710"
     }
   ],
-  "updatedAt": "2026-10-24T06:01:42.880Z",
+  "updatedAt": "2026-10-24T06:01:48.888Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -406,5 +406,14 @@
     "output": 1108,
     "total": 4644
   },
-  "validation": null
+  "validation": {
+    "accepted": false,
+    "errors": [
+      "B1-B2:page-1:copied-source-passage",
+      "C1-C2:page-1:length-or-sentence",
+      "C1-C2:page-2:length-or-sentence",
+      "C1-C2:page-5:length-or-sentence",
+      "C1-C2:page-6:length-or-sentence"
+    ]
+  }
 }
