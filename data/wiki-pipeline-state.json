@@ -7318,10 +7318,10 @@
       "checkedAt": "2026-10-22T09:00:16.524Z"
     },
     "803661": {
-      "status": "DRAFTED",
-      "reason": "draft durably saved before validation",
+      "status": "VALIDATED",
+      "reason": "local factual, style, length, structure and source audit passed",
       "revisionId": 1381229880,
-      "checkedAt": "2026-10-24T05:17:34.265Z"
+      "checkedAt": "2026-10-24T05:17:52.325Z"
     },
     "804218": {
       "status": "EVIDENCE_READY",
@@ -10666,7 +10666,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-24T05:17:49.427Z",
+  "updatedAt": "2026-10-24T05:17:52.329Z",
   "dailyUsage": {
     "day": "2026-10-23",
     "calls": 224,
