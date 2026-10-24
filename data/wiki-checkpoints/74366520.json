@@ -2,10 +2,10 @@
   "pageId": 74366520,
   "title": "Interoceanic Corridor of the Isthmus of Tehuantepec",
   "topic": "Economy",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1375250160,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375250160",
-  "reason": "8 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -301,5 +301,124 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375250160"
     }
   ],
-  "updatedAt": "2026-10-24T05:40:53.958Z"
+  "updatedAt": "2026-10-24T05:41:10.122Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "New Trade Route in Mexico",
+        "pages": [
+          {
+            "text": "The Interoceanic Corridor of the Isthmus of Tehuantepec is a trade and transit route in Southern Mexico. It connects the Pacific and Atlantic Oceans through a railway system. This project is under the control of the Mexican Secretariat of the Navy. It helps move both cargo and passengers across the isthmus.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "The project includes the modernization and expansion of local seaports. The main ports are Salina Cruz in Oaxaca and Coatzacoalcos in Veracruz. It also modernizes local oil refineries. The plan creates ten industrial parks in the isthmus area and two more parks in Chiapas to attract private investors.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "President Andrés Manuel López Obrador initiated this important project. Analysts view it as his most crucial work because it can boost the Mexican economy. It aims to develop the industry and economy of the south. This region has been one of the poorest areas in the country for many decades.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "Experts associated with the project reported that it had the potential to be an alternative cheaper and faster than the Panama Canal. The project consists of the rehabilitation of the old Tehuantepec Railway. Porfirio Díaz originally completed that railway during his presidency in the year 1907.",
+            "evidenceIds": [
+              "P2",
+              "P3"
+            ]
+          },
+          {
+            "text": "In September 2023, the director of the corridor announced that freight services on Line Z officially began. Line Z runs between Coatzacoalcos and Salina Cruz. The Line FA from Coatzacoalcos to Palenque also began that same month. Line Z officially opened for passengers in December, but cargo operations were delayed.",
+            "evidenceIds": [
+              "P4"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "The Interoceanic Corridor of Mexico",
+        "pages": [
+          {
+            "text": "The Interoceanic Corridor of the Isthmus of Tehuantepec is a vital trade and transit route located in Southern Mexico. Controlled by the Mexican Secretariat of the Navy, this modern project connects the Pacific Ocean and the Atlantic Ocean through a railway system designed to carry both cargo and passengers safely across the isthmus.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "The initiative involves significant modernization and expansion of local seaports, notably Salina Cruz in Oaxaca and Coatzacoalcos in Veracruz, alongside local oil refineries. Furthermore, the project plans to attract private investors by establishing ten industrial parks in the isthmus area and two additional parks in the state of Chiapas.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Initiated during the presidency of Andrés Manuel López Obrador, analysts widely regard the corridor as his most important undertaking. It holds the potential to provide a long-term boost to the national economy while developing industry in the south, which has remained one of the poorest regions in the country for decades.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "Experts associated with the project reported that it had the potential to serve as an alternative that is cheaper and faster than the Panama Canal. The work involves rehabilitating the historic Tehuantepec Railway, which was originally completed in 1907 during the presidency of Porfirio Díaz with similar overarching goals.",
+            "evidenceIds": [
+              "P2",
+              "P3"
+            ]
+          },
+          {
+            "text": "In September 2023, the director of the corridor announced that freight services on the Coatzacoalcos-Salina Cruz line had officially begun, alongside the start of the Coatzacoalcos-Palenque line. While Line Z later opened for passengers in December, cargo operations experienced delays.",
+            "evidenceIds": [
+              "P4"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "Revitalizing the Tehuantepec Corridor",
+        "pages": [
+          {
+            "text": "The Interoceanic Corridor of the Isthmus of Tehuantepec functions as a primary trade and transit route in Southern Mexico. Operating under the direct control of the Mexican Secretariat of the Navy, the route links the Pacific and Atlantic Oceans via an integrated railway system designated for both passenger and cargo transport across the narrow isthmus.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "The overarching initiative encompasses the comprehensive modernization of regional seaports, specifically Salina Cruz and Coatzacoalcos, alongside local oil refineries. Additionally, the strategy seeks to stimulate private investment through the establishment of ten industrial parks across the isthmus and two supplementary parks in Chiapas to foster industrial development in the Mexican South.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Launched under the administration of Andrés Manuel López Obrador, analysts frequently characterize the enterprise as his preeminent policy initiative. The project possesses the capacity to deliver sustained economic stimulus to the nation while systematically developing the industrial base of the southern region, historically identified as one of the country's most impoverished areas.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "Project-associated experts indicated that the corridor possessed the potential to function as an alternative that is both cheaper and faster than the Panama Canal. The undertaking fundamentally entails the rehabilitation of the original Tehuantepec Railway, completed in 1907 under Porfirio Díaz, which ultimately declined in utility following the 1914 opening of the Panama Canal.",
+            "evidenceIds": [
+              "P2",
+              "P3"
+            ]
+          },
+          {
+            "text": "Operational milestones advanced when the corridor's director announced the official commencement of freight services on Line Z and Line FA in September 2023. Although Line Z subsequently opened for passenger transit in December, related cargo operations encountered operational delays.",
+            "evidenceIds": [
+              "P4"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2916,
+    "output": 1495,
+    "total": 4411
+  },
+  "validation": null
 }
