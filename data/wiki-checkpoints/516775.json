@@ -2,10 +2,10 @@
   "pageId": 516775,
   "title": "Student activism",
   "topic": "Society",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1374612787,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374612787",
-  "reason": "17 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -619,5 +619,134 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374612787"
     }
   ],
-  "updatedAt": "2026-10-24T05:43:06.112Z"
+  "updatedAt": "2026-10-24T05:43:25.021Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "Student Activism Around the World",
+        "pages": [
+          {
+            "text": "Student activism is work by young people to cause political, environmental, economic, or social change. Student groups often play big roles in democratization and winning civil rights. Modern movements span all ages, races, and political views.",
+            "evidenceIds": [
+              "P1",
+              "P2"
+            ]
+          },
+          {
+            "text": "In Argentina, student protests grew into a major political force after 1900. In 1918, students started the University Revolution in Córdoba. This movement wanted to make education institutions much more democratic.",
+            "evidenceIds": [
+              "P4"
+            ]
+          },
+          {
+            "text": "In Chile, students led nationwide protests from 2011 to 2013. They demanded a new framework for education, including more state participation and an end to profit in higher education.",
+            "evidenceIds": [
+              "P9"
+            ]
+          },
+          {
+            "text": "During communist rule, students in Eastern Europe were behind several famous protests. Peaceful student demonstrations in Budapest started the events that led to the 1956 Hungarian Revolution.",
+            "evidenceIds": [
+              "P12"
+            ]
+          },
+          {
+            "text": "In Ireland, pro-Palestinian protesters set up tents in Fellows Square in May 2024. These protests were led by the student union from Trinity College Dublin to call for divestment.",
+            "evidenceIds": [
+              "P21"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "History and Impact of Student Activism",
+        "pages": [
+          {
+            "text": "Student activism involves efforts by students to drive political, environmental, economic, or social change. Beyond education, student groups frequently help secure civil rights and advance democratization across diverse global contexts.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Student movements span varied backgrounds and political perspectives. While some protests focus on internal institutional affairs like disinvestment, others target broader global issues, wars, or authoritarian regimes.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "In Argentina, student activism became a major political force after 1900. The 1918 University Revolution in Córdoba triggered a general modernization of universities to increase democratic participation.",
+            "evidenceIds": [
+              "P4"
+            ]
+          },
+          {
+            "text": "Between 2011 and 2013, Chile experienced massive student-led protests demanding a new educational framework, greater state participation, and the elimination of profit from higher education.",
+            "evidenceIds": [
+              "P9"
+            ]
+          },
+          {
+            "text": "In Eastern Europe, students challenged communist rule through prominent protests. Peaceful student demonstrations in Budapest famously sparked the chain of events leading to the 1956 Hungarian Revolution.",
+            "evidenceIds": [
+              "P12"
+            ]
+          },
+          {
+            "text": "In May 2024, Trinity College Dublin student union led a pro-Palestinian encampment in Fellows Square. After a five-day protest, the college pledged to divest from Israeli companies.",
+            "evidenceIds": [
+              "P21"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "Global Dynamics of Student Movements",
+        "pages": [
+          {
+            "text": "Campus activism encompasses concerted efforts by student constituencies to instigate political, environmental, economic, or social transformation. Historically, these groups have frequently catalyzed democratization and the securing of civil rights.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Contemporary student movements reflect broad demographic intersections and ideological perspectives. While certain demonstrations address internal institutional policies, others confront broader geopolitical conflicts and authoritarian governance.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "In Argentina, student activism evolved into a prominent political force by the early twentieth century. The 1918 University Revolution originating in Córdoba spearheaded structural modernization and institutional democratization.",
+            "evidenceIds": [
+              "P4"
+            ]
+          },
+          {
+            "text": "Chile witnessed extensive nationwide student mobilizations between 2011 and 2013. Protesters challenged prevailing educational frameworks by demanding increased state involvement and the abolition of for-profit higher education.",
+            "evidenceIds": [
+              "P9"
+            ]
+          },
+          {
+            "text": "Under communist regimes in Eastern Europe, student populations frequently served as the primary catalyst for significant anti-establishment demonstrations, notably initiating the 1956 Hungarian Revolution through peaceful street protests.",
+            "evidenceIds": [
+              "P12"
+            ]
+          },
+          {
+            "text": "In May 2024, the student union at Trinity College Dublin orchestrated an encampment in Fellows Square. Following this five-day demonstration against Israel's war in Gaza, the institution pledged to divest from Israeli companies.",
+            "evidenceIds": [
+              "P21"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2838,
+    "output": 1251,
+    "total": 4089
+  },
+  "validation": null
 }
