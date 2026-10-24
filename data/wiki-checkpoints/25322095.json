@@ -2,10 +2,10 @@
   "pageId": 25322095,
   "title": "Indian Ocean trade",
   "topic": "Economy",
-  "status": "DRAFTED",
+  "status": "NEEDS_REVIEW",
   "revisionId": 1378397211,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378397211",
-  "reason": "draft durably saved before validation",
+  "reason": "editorial: A1-A2:page-2:copied-source-passage,A1-A2:page-4:copied-source-passage,A1-A2:page-5:copied-source-passage",
   "rights": [
     {
       "status": "REVIEW",
@@ -360,7 +360,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378397211"
     }
   ],
-  "updatedAt": "2026-10-24T07:21:31.559Z",
+  "updatedAt": "2026-10-24T07:21:37.636Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -503,5 +503,12 @@
     "output": 411,
     "total": 3328
   },
-  "validation": null
+  "validation": {
+    "accepted": false,
+    "errors": [
+      "A1-A2:page-2:copied-source-passage",
+      "A1-A2:page-4:copied-source-passage",
+      "A1-A2:page-5:copied-source-passage"
+    ]
+  }
 }
