@@ -3,7 +3,7 @@ import { createPortal } from 'react-dom'
 import './App.css'
 import { initializeSeenHistory, persistReadMarker, readLegacyHistory } from './lib/seenHistory.js'
 import { storyId } from './lib/feedQueue.js'
-import { planReadingPages, rebalanceTextPages } from './lib/readerPagination.js'
+import { balancePhotoCoverPage, planReadingPages, rebalanceTextPages } from './lib/readerPagination.js'
 import { shortNewsPages } from './lib/shortNewsPages.js'
 import { sanitizeReadingArticle } from './lib/articleCleanup.js'
 import { refreshCatalog, refillCatalog, REFRESH_INTERVAL_MS } from './lib/continuousReader.js'
@@ -105,10 +105,9 @@ function safeStoryUrl(url) {
   } catch { return '' }
 }
 
-// Wiki and older archive items use viewport pagination; published news uses
-// its explicitly abridged four-to-six-page reading version.
+// Measure every story against the actual viewport. News keeps its edited
+// four-to-six-page structure while short photo covers can borrow text below.
 function layoutPages(item, reader, badImages = new Set()) {
-  if (item?.contentType === 'news') return item.pages
   // Editorial pages are source units, not guaranteed screen-sized. Measure
   // every level against the actual phone viewport and the anchored pager.
   const bounds = reader.getBoundingClientRect()
@@ -183,7 +182,7 @@ function layoutPages(item, reader, badImages = new Set()) {
     const cleanSources = sourcePages.map(p =>
       badImages.has(p.image) ? {...p,image:'',caption:''} : p)
     const next = item?.contentType === 'news'
-      ? cleanSources
+      ? balancePhotoCoverPage(cleanSources, fits)
       : planReadingPages({...item,_sourcePages:cleanSources}, fits)
     if (!next.length) return item.pages
     return rebalanceTextPages(next, fits)

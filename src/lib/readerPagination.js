@@ -99,6 +99,23 @@ function splitOversizedSentence(text, fits) {
   return [words.slice(0, take).join(' '), words.slice(take).join(' ')]
 }
 
+// News arrives pre-edited into four to six pages. Preserve that structure,
+// but fill an underused photo cover from the following text page when the
+// real viewport has room. This applies equally to existing and future news.
+export function balancePhotoCoverPage(pages, fits, {minWords = 12, minTransferWords = 8} = {}) {
+  const balanced = pages.map(page => ({...page}))
+  const cover = balanced[0], following = balanced[1]
+  if (!cover?.image || !following?.text || following.image || wordCount(cover.text) >= minWords) return balanced
+  const join = part => cover.text ? `${cover.text} ${part}` : part
+  const [moved, remainder] = splitOversizedSentence(following.text, part => fits({text:join(part),cover:true,image:cover}))
+  if (wordCount(moved) < minTransferWords || wordCount(remainder) < minTransferWords) return balanced
+  const nextCover = join(moved)
+  if (!fits({text:nextCover,cover:true,image:cover})) return balanced
+  balanced[0] = {...cover,text:nextCover}
+  balanced[1] = {...following,text:remainder}
+  return balanced
+}
+
 export function planReadingPages(item, fits, {maxPages = 250} = {}) {
   const originals = item?._sourcePages || item?.pages || []
   const raw = originals.map(p => p?.text || '').join(' ')

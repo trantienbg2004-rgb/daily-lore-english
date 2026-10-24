@@ -16,12 +16,14 @@ export function photoLabel(page) {
   const original = String(page.caption || '').trim()
   const first = original.split(/\s[·|]\s/)[0]
     .replace(/\s+(?:Photo by|Image via|Image by|Photo credit|Credit:|Licensed under)\b.*$/i, '')
+    .replace(/^from (?:the )?(?:documentary|film|video) [^.]+[.!?]\s*/iu, '')
     .replace(/^File:/i, '').trim()
   const usable = first && !GENERIC.test(first) && !/^https?:\/\//.test(first)
   const filename = decodedFileName(page.image)
   const candidate = (usable ? first.replace(/\.(jpe?g|png|webp|gif|svg)$/i, '') : filename) || 'Article photograph'
   const description = candidate
     .replace(/^(?:Illustrative image|Illustrative photo|Illustration):\s*/i, '')
+    .replace(/^from (?:the )?(?:documentary|film|video) [^.]+[.!?]\s*/iu, '')
     .replace(/_/g, ' ')
     .replace(/\bInternational Monetary Fund\b(?:\s*\(IMF\)|\s+IMF)?/gi, 'IMF')
     .replace(/\bWorld Bank Group\b/gi, 'World Bank')
@@ -36,7 +38,7 @@ export function photoLabel(page) {
   const concise = description.replace(/^(?:a|an|the)\s+(?=[a-z])/iu, '')
   if (!concise) return 'Article photograph'
   const capitalized = concise[0].toUpperCase() + concise.slice(1)
-  const limit = 68
+  const limit = 44
   if (capitalized.length <= limit) return capitalized
   const shortened = capitalized.slice(0, limit - 1).replace(/\s+\S*$/u, '').trim()
   return `${shortened}…`

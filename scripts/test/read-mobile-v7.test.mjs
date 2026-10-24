@@ -1,7 +1,7 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
 import fs from 'node:fs'
-import {planReadingPages} from '../../src/lib/readerPagination.js'
+import {balancePhotoCoverPage,planReadingPages} from '../../src/lib/readerPagination.js'
 
 test('licensed photographs continue onto the second and third reading pages without losing text',()=>{
  const source='A verified report explains the international event in clear terms. '.repeat(15).trim()
@@ -17,6 +17,11 @@ test('licensed photographs continue onto the second and third reading pages with
 const css=fs.readFileSync('src/App.css','utf8')
 const app=fs.readFileSync('src/App.jsx','utf8')
 const words=s=>String(s).trim().split(/\s+/u).filter(Boolean).length
+
+test('All article types use viewport measurement and news photo covers can rebalance',()=>{
+  assert.match(app,/balancePhotoCoverPage\(cleanSources, fits\)/)
+  assert.doesNotMatch(app,/if \(item\?\.contentType === 'news'\) return item\.pages/)
+})
 
 test('Long first sentence on a photo cover starts with a useful text passage',()=>{
   const source='During the eighteenth century European philosophers questioned inherited ideas about monarchy, government, science, religion, education, individual liberty, economic exchange, and the relationship between rulers and ordinary citizens. Their essays influenced later public debates and political changes.'
@@ -39,6 +44,22 @@ test('A short opening does not leave the photo cover with only a few words',()=>
   assert.equal(pages[0].image,'summit-photo')
   assert.ok(words(pages[0].text)>=10)
   assert.equal(pages.map(page=>page.text).join(' '),source)
+})
+
+test('Published news photo covers borrow enough text without changing the page count',()=>{
+  const pages=[
+    {image:'news-cover',caption:'Minister at the summit',text:'The summit opened on Monday.'},
+    {text:'Delegates from across the region gathered to negotiate a detailed agreement on trade, security, environmental protection, and shared infrastructure. Further meetings are planned next month.'},
+    {text:'The final decision will be announced after the review.'},
+    {text:'Officials will publish the full report.'},
+  ]
+  const source=pages.map(page=>page.text).join(' ')
+  const balanced=balancePhotoCoverPage(pages,({text,image})=>words(text)<= (image?16:24))
+  assert.equal(balanced.length,pages.length)
+  assert.equal(balanced[0].image,'news-cover')
+  assert.ok(words(balanced[0].text)>=12)
+  assert.ok(words(balanced[1].text)>=8)
+  assert.equal(balanced.map(page=>page.text).join(' '),source)
 })
 
 test('In an extremely small viewport image can be separate, never an orphan word',()=>{
