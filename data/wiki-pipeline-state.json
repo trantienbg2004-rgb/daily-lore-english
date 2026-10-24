@@ -6640,10 +6640,10 @@
       "checkedAt": "2026-10-22T13:23:05.672Z"
     },
     "34069": {
-      "status": "EVIDENCE_READY",
-      "reason": "6 rights-verified embedded images",
+      "status": "DRAFTED",
+      "reason": "draft durably saved before validation",
       "revisionId": 1376929654,
-      "checkedAt": "2026-10-24T05:10:32.531Z"
+      "checkedAt": "2026-10-24T05:10:48.687Z"
     },
     "34254": {
       "status": "RETRY_LATER",
@@ -10666,7 +10666,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-24T05:10:46.840Z",
+  "updatedAt": "2026-10-24T05:10:48.689Z",
   "dailyUsage": {
     "day": "2026-10-23",
     "calls": 205,

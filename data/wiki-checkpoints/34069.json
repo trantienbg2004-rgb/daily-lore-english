@@ -2,10 +2,10 @@
   "pageId": 34069,
   "title": "Winter Olympic Games",
   "topic": "Sports",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1376929654,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376929654",
-  "reason": "6 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -267,5 +267,122 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376929654"
     }
   ],
-  "updatedAt": "2026-10-24T05:10:32.531Z"
+  "updatedAt": "2026-10-24T05:10:48.687Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "The History of the Winter Olympic Games",
+        "pages": [
+          {
+            "text": "The Winter Olympic Games are a major international multi-sport event held once every four years for sports practiced on snow and ice. They usually happen in February. Milan and Cortina d'Ampezzo hosted the games in Italy in 2026.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "The first Winter Olympics took place in 1924 in Chamonix, France. Baron Pierre de Coubertin founded the International Olympic Committee in 1894. The games were held every four years until World War II interrupted them in 1940 and 1944.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "St. Moritz in Switzerland hosted the first post-war games in 1948. Twenty-eight countries competed. Switzerland stayed neutral during the war, and its venues remained in place, making it a logical choice to host the games.",
+            "evidenceIds": [
+              "P8"
+            ]
+          },
+          {
+            "text": "Twelve countries have participated in every Winter Olympic Games. These nations are Austria, Canada, Finland, France, Great Britain, Hungary, Italy, Norway, Poland, Sweden, Switzerland, and the United States. Six of them have won medals every time.",
+            "evidenceIds": [
+              "P5"
+            ]
+          },
+          {
+            "text": "Hosting the Winter Olympics is very expensive. Most host cities never make a profit on their investment. For example, the 2006 Winter Olympics in Turin cost billions of dollars to host for participating athletes and fans.",
+            "evidenceIds": [
+              "P14"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "Evolution and History of the Winter Olympics",
+        "pages": [
+          {
+            "text": "The Winter Olympic Games represent a major international multi-sport event held every four years for snow and ice sports. Usually scheduled in February during the Northern Hemisphere winter, recent events were hosted by Milan and Cortina d'Ampezzo in 2026.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "The original five sports consisted of bobsleigh, curling, ice hockey, Nordic skiing, and skating. Over the decades, sports have evolved. Disciplines like alpine skiing, luge, and snowboarding earned permanent spots, while others were discontinued or later reintroduced.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "Chamonix, France, hosted the first Winter Olympics in 1924. Originally held in the same year as the Summer Games, the IOC decided in 1986 to alternate the summer and winter events on separate four-year cycles starting after 1992.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "Twelve countries have participated in every Winter Olympic Games, including Austria, Canada, and the United States. Furthermore, the United States remains the only country to have won at least one gold medal at every single Winter Olympics.",
+            "evidenceIds": [
+              "P5"
+            ]
+          },
+          {
+            "text": "Because of the immense costs involved in organizing the event, most host cities never realize a financial profit. For instance, the 2006 Turin Games cost $3.6 billion, while the 1998 Nagano Games reached a massive $12.5 billion price tag.",
+            "evidenceIds": [
+              "P14"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "Origins, Evolution, and Legacy of the Winter Games",
+        "pages": [
+          {
+            "text": "The Winter Olympic Games constitute a premier international multi-sport competition dedicated to disciplines practiced on snow and ice. Typically convened in February within the Northern Hemisphere winter season, the governance falls under the International Olympic Committee.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Inaugurated in 1924 in Chamonix, France, the event followed earlier traditions like the Nordic Games in Sweden. Initially synchronized with the Summer Games, the schedule shifted following a 1986 IOC decision to establish alternating even-numbered four-year cycles.",
+            "evidenceIds": [
+              "P3",
+              "P6"
+            ]
+          },
+          {
+            "text": "The initial program featured five core sports encompassing nine disciplines. Programmatic evolution subsequently witnessed the permanent integration of events such as alpine skiing and snowboarding, alongside the discontinuation and eventual reintroduction of disciplines like curling.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "Participation continuity characterizes a select group of twelve nations that have competed in every edition. Among them, only Austria, Canada, Finland, Norway, Sweden, and the United States have secured medals consistently, with the United States remaining uniquely distinguished by winning a gold medal at every games.",
+            "evidenceIds": [
+              "P5"
+            ]
+          },
+          {
+            "text": "The logistical and financial burdens of hosting are substantial. Due to high operational expenditures, host cities rarely achieve profitability. Financial analyses reveal stark contrasts in expenditure, exemplified by the multi-billion-dollar investments required in Turin and Nagano.",
+            "evidenceIds": [
+              "P14"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2934,
+    "output": 1316,
+    "total": 4250
+  },
+  "validation": null
 }
