@@ -2,7 +2,8 @@ name: SAGA Wikipedia - collect and publish
 
 on:
   schedule:
-    - cron: '17,47 * * * *'
+    # Recovery trigger if a relayed run is lost before it can schedule its successor.
+    - cron: '23 1,7,13,19 * * *'
   workflow_dispatch:
     inputs:
       max_calls:
@@ -14,9 +15,17 @@ on:
           - '20'
           - 'probe'
         default: '0'
+      relay:
+        description: Continue bounded collection every 25 minutes after this run
+        type: choice
+        options:
+          - 'off'
+          - 'on'
+        default: 'off'
 
 permissions:
   contents: write
+  actions: write
 
 concurrency:
   group: saga-wiki-collection
@@ -107,3 +116,21 @@ jobs:
           path: staging/reports/saga-wiki-local/
           if-no-files-found: ignore
           retention-days: 7
+  relay:
+    if: ${{ always() && (github.event_name == 'schedule' || github.event.inputs.relay == 'on') }}
+    needs: collect
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    permissions:
+      actions: write
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Dispatch the next bounded run unless another run has taken over
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          GITHUB_RUN_ID: ${{ github.run_id }}
+        run: node scripts/wiki/relay.mjs
