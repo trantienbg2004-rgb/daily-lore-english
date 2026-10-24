@@ -9144,10 +9144,10 @@
       "checkedAt": "2026-10-22T13:01:11.382Z"
     },
     "12686484": {
-      "status": "VALIDATED",
-      "reason": "local factual, style, length, structure and source audit passed",
+      "status": "PUBLISHED",
+      "reason": "4 verified embedded images",
       "revisionId": 1360650813,
-      "checkedAt": "2026-10-24T09:25:43.936Z"
+      "checkedAt": "2026-10-24T09:25:50.075Z"
     },
     "12810607": {
       "status": "RETRY_LATER",
@@ -11610,7 +11610,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-24T09:25:43.938Z",
+  "updatedAt": "2026-10-24T09:25:50.076Z",
   "dailyUsage": {
     "day": "2026-10-24",
     "calls": 111,
