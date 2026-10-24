@@ -2,10 +2,10 @@
   "pageId": 1271927,
   "title": "Gender equality",
   "topic": "Society",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1375206145,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375206145",
-  "reason": "20 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REJECTED",
@@ -622,5 +622,140 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375206145"
     }
   ],
-  "updatedAt": "2026-10-24T04:46:33.222Z"
+  "updatedAt": "2026-10-24T04:46:49.538Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "What is Gender Equality?",
+        "pages": [
+          {
+            "text": "Gender equality means that women and men, and girls and boys, have the same rights, resources, and opportunities. They do not have to be the exact same, but they are valued equally and can access resources fairly.",
+            "evidenceIds": [
+              "P1",
+              "P2"
+            ]
+          },
+          {
+            "text": "The United Nations made gender equality the fifth sustainable development goal in 2017. It focuses on women and men within the gender binary. This goal is strongly tied to women's rights and often requires new policies.",
+            "evidenceIds": [
+              "P3",
+              "P4"
+            ]
+          },
+          {
+            "text": "Around the world, achieving equality requires stopping harmful practices against women and girls. Women are still more likely to be poor and illiterate. They often have less access to property ownership, credit, and employment.",
+            "evidenceIds": [
+              "P5"
+            ]
+          },
+          {
+            "text": "History shows early advocates for these rights. In 1405, Christine de Pizan wrote that the oppression of women is based on irrational prejudice. Later, the suffrage movement in the late-19th century fought for women to vote.",
+            "evidenceIds": [
+              "P6",
+              "P8"
+            ]
+          },
+          {
+            "text": "Today, international groups and countries work to promote these rights. The United Nations and the European Union create plans and goals to empower women and girls, helping to build a better and more sustainable society.",
+            "evidenceIds": [
+              "P9",
+              "P10",
+              "P11"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "The Global Path to Gender Equality",
+        "pages": [
+          {
+            "text": "Gender equality is the state where all genders have equal access to resources and opportunities. UNICEF defines it as women, men, boys, and girls enjoying the same rights and protections, without needing to be treated in the exact same way.",
+            "evidenceIds": [
+              "P1",
+              "P2"
+            ]
+          },
+          {
+            "text": "As of 2017, gender equality became the fifth sustainable development goal of the United Nations. While it is strongly linked to women's rights and policy changes, global statistics show that women are still more likely to experience poverty, illiteracy, and domestic violence.",
+            "evidenceIds": [
+              "P3",
+              "P5"
+            ]
+          },
+          {
+            "text": "Historically, advocates like Christine de Pizan argued in 1405 that women's oppression rests on irrational prejudice. By the late nineteenth century, the suffrage movement emerged in Western cultures to secure voting rights and improve property laws for women.",
+            "evidenceIds": [
+              "P6",
+              "P8"
+            ]
+          },
+          {
+            "text": "Following World War II, the United Nations and various international agencies adopted conventions promoting women's rights. Institutional efforts expanded further when the European Union opened the European Institute for Gender Equality in 2010 and adopted comprehensive action plans.",
+            "evidenceIds": [
+              "P9",
+              "P11"
+            ]
+          },
+          {
+            "text": "Research demonstrates that gender inequality hinders social and economic development. Consequently, global initiatives like the 2021 Generation Equality Forum have mobilized billions of dollars in pledged investments to tackle economic disparities, violence, and recovery following the COVID-19 pandemic.",
+            "evidenceIds": [
+              "P14",
+              "P16"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "Advancing Gender Equality Worldwide",
+        "pages": [
+          {
+            "text": "Gender equality entails equal access to resources and opportunities alongside the equal valuation of diverse behaviors and needs. Defined by agencies like UNICEF as the parity of rights and protections rather than forced uniformity, the concept is central to modern developmental frameworks.",
+            "evidenceIds": [
+              "P1",
+              "P2"
+            ]
+          },
+          {
+            "text": "Incorporated as Sustainable Development Goal 5 in 2017, the framework currently focuses strictly on the gender binary of women and men. Attaining substantive equality requires addressing deep-seated structural disparities, as women globally face higher rates of poverty, illiteracy, and restricted access to property and credit.",
+            "evidenceIds": [
+              "P3",
+              "P4",
+              "P5"
+            ]
+          },
+          {
+            "text": "Early critiques of societal prejudice date back to historical figures such as Christine de Pizan in 1405. Institutional progress accelerated during the late-nineteenth-century suffrage movements and post-WWII international conventions that sought to dismantle systemic discrimination against women.",
+            "evidenceIds": [
+              "P6",
+              "P8",
+              "P9"
+            ]
+          },
+          {
+            "text": "Contemporary governance incorporates gender equality into legal and educational frameworks. Initiatives range from Great Britain's national curriculum and the Philippines' Magna Carta of Women to the European Union's specialized institute and multi-year gender action plans.",
+            "evidenceIds": [
+              "P11",
+              "P12",
+              "P13"
+            ]
+          },
+          {
+            "text": "Empirical research links inequality directly to hindered development and compromised health outcomes. To counter these systemic issues, international interventions—such as the FAO's policy evaluations and the Generation Equality Forum's multi-billion dollar funding commitments—strive to accelerate global progress through targeted economic and social policy reforms.",
+            "evidenceIds": [
+              "P14",
+              "P15",
+              "P16"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2686,
+    "output": 1258,
+    "total": 3944
+  },
+  "validation": null
 }
