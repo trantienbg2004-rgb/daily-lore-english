@@ -32,13 +32,12 @@ export function photoLabel(page) {
     .replace(/\s*[-–]\s*\d{1,3}$/u, '')
     .replace(/\s+during the\s+([A-Za-z]+\s+(?:19|20)\d{2})\b/iu, ', $1')
     .replace(/\s+/g, ' ').trim()
-  const limit = 52
-  const year = description.match(/\b(?:19|20)\d{2}\b/u)?.[0]
-  const suffix = year && !description.slice(0, limit).includes(year) ? `, ${year}` : '…'
-  const short = description.length > limit
-    ? `${description.slice(0, limit - suffix.length + 1).replace(/\s+\S*$/u, '').trim()}${suffix}`
-    : description
-  return short || 'Article photograph'
+  const concise = description.replace(/^(?:a|an|the)\s+(?=[a-z])/iu, '')
+  const limit = 38
+  const short = concise.length > limit
+    ? concise.slice(0, limit + 1).replace(/\s+\S*$/u, '').replace(/(?:\s+(?:a|an|and|at|by|for|from|in|of|on|the|to|with))+$/iu, '').trim()
+    : concise
+  return short ? short[0].toUpperCase() + short.slice(1) + (concise.length > limit ? '…' : '') : 'Article photograph'
 }
 
 export function photoSourceLink(page) {
