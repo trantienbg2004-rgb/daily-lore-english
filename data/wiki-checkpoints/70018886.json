@@ -2,10 +2,10 @@
   "pageId": 70018886,
   "title": "Critique of work",
   "topic": "Society",
-  "status": "DRAFTED",
+  "status": "NEEDS_REVIEW",
   "revisionId": 1379701242,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379701242",
-  "reason": "draft durably saved before validation",
+  "reason": "editorial: A1-A2:page-1:evidence-context",
   "rights": [
     {
       "status": "REVIEW",
@@ -298,7 +298,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379701242"
     }
   ],
-  "updatedAt": "2026-10-24T04:27:42.911Z",
+  "updatedAt": "2026-10-24T04:27:48.956Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -435,5 +435,10 @@
     "output": 74,
     "total": 2697
   },
-  "validation": null
+  "validation": {
+    "accepted": false,
+    "errors": [
+      "A1-A2:page-1:evidence-context"
+    ]
+  }
 }
