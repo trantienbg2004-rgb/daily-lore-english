@@ -2,9 +2,185 @@
   "pageId": 1912722,
   "title": "LGBTQ student movement",
   "topic": "Society",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1381572518,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381572518",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-24T11:01:29.871Z"
+  "reason": "2 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:GSAboard.JPG"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:Minnesota Queer Student Conference 1994 button.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/87/Minnesota_Queer_Student_Conference_1994_button.jpg/960px-Minnesota_Queer_Student_Conference_1994_button.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Minnesota Queer Student Conference 1994 button.jpg",
+        "caption": "Pin button for the Minnesota Queer Student Conference",
+        "alt": "Vertical rectangle Pin Back Button with an illustration of a pink triangle and two purple triangles overlaying the capital of an Ionic column.",
+        "description": "Pin Back Button with an illustration of a pink triangle and two purple triangles overlaying the capital of an Ionic column Minnesota Queer Student Conference 1994 Conference held at the University of Minnesota, Twin Cities Campus. While the button says First Annual, there never was another one. I am also the artist of the button design.",
+        "date": "2024-08-17 11:16:55",
+        "section": "Minnesota",
+        "position": 1,
+        "provenance": {
+          "credit": "Myotus",
+          "license": "CC BY 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Minnesota_Queer_Student_Conference_1994_button.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/LGBTQ_student_movement",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381572518",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:Penn state lgbta student activists bryce jordan center.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0e/Penn_state_lgbta_student_activists_bryce_jordan_center.jpg/960px-Penn_state_lgbta_student_activists_bryce_jordan_center.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Penn state lgbta student activists bryce jordan center.jpg",
+        "caption": "Penn State LGBT Student Activists",
+        "alt": "",
+        "description": "Nine LGBTA student activists at the ticket booth of the Bryce Jordan Center, The Pennsylvania State University, University Park, PA. The rainbow pins contain the phrase \"I support student athletes,\" and the tickets were purchased for an in-progress Lady Lions home basketball game.",
+        "date": "25-Feberuary-2006",
+        "section": "Pennsylvania",
+        "position": 2,
+        "provenance": {
+          "credit": "George Chriss",
+          "license": "CC BY 2.5",
+          "licenseUrl": "https://creativecommons.org/licenses/by/2.5",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Penn_state_lgbta_student_activists_bryce_jordan_center.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/LGBTQ_student_movement",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381572518",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "06e9dacd4ebb8752be9ab395b038054d5d2ba0fc43adc3f08b46cdfab672eefa",
+      "heading": "Lead",
+      "excerpt": "The origin of the LGBTQ student movement can be linked to other activist movements from the mid-20th century in the United States. The civil",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381572518"
+    },
+    {
+      "id": "P2",
+      "hash": "9ee3f80523b84e362a4f32b7fd8b81030119c9e836549b642e43b7336539e8c5",
+      "heading": "Lead",
+      "excerpt": "Though the times and places of the student movement vary, the goals are often similar, including: abolishing sodomy laws, equality on campus",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381572518"
+    },
+    {
+      "id": "P3",
+      "hash": "bec354424e12a32a5f6c3df7788a2564563d3298cfdf15f44450b35ad766606f",
+      "heading": "Australia",
+      "excerpt": "Many colleges in Australia have a Students' union that helps support LGBTQ student activism financially and otherwise. Often the right to ha",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381572518"
+    },
+    {
+      "id": "P4",
+      "hash": "83e187109a50601ce599058c4f24c769fc28f7ba38da784b5bbe9deb40c17614",
+      "heading": "Australia",
+      "excerpt": "The topic of same-sex marriage being legalized in Australia was brought to the forefront of LGBTQ students when it became legal in Canada. T",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381572518"
+    },
+    {
+      "id": "P5",
+      "hash": "9b72e0dfa983c1beef1f6d88d4cd4badfb95a44da65cb658b720c970507b8186",
+      "heading": "India",
+      "excerpt": "Many schools and colleges in India have LGBTQ+ support groups that help LGBTQ+ Youth by providing every kind of support required. The LGBTQ+",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381572518"
+    },
+    {
+      "id": "P6",
+      "hash": "953fa20e2bdc3588ba28af1e68b0063cc9fd0949a09b1ba9ea92d058269603a2",
+      "heading": "China",
+      "excerpt": "Groups of student activists are attempting to change teaching material in Chinese schools they believe may cause discrimination towards LGBT",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381572518"
+    },
+    {
+      "id": "P7",
+      "hash": "6027fd25b7dab1f5a48bf3d84506dc8efce70be6fb165c0366c19cdbdc8c7b65",
+      "heading": "Mexico",
+      "excerpt": "The GSA has succeeded in bringing attention to issues of discrimination towards the LGBT students and opened up a school-wide discussion abo",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381572518"
+    },
+    {
+      "id": "P8",
+      "hash": "ba9e875621bc4dc91861f21577f1ceccb027b3954c4927f34811ac4a52b1e3a2",
+      "heading": "Canada",
+      "excerpt": "The country's first gay liberation movement was started at the University of Toronto in 1969 and was originally called the University of Tor",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381572518"
+    },
+    {
+      "id": "P9",
+      "hash": "1922dd33a9734be2da53bf4c1b7a86dcf35aa70dedf5d2cd398619069341aa27",
+      "heading": "Student Homophile League",
+      "excerpt": "In the US the student movement began in secret in the 1950s and 1960s. In 1966, Stephen Donaldson and a few other students at Columbia Unive",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381572518"
+    },
+    {
+      "id": "P10",
+      "hash": "d335fd2cf1a7884c6c91a2fc43b677435ce0ec6eb6302df6fc84ad2df58b8c55",
+      "heading": "FREE (Fight Repression of Erotic Expression)",
+      "excerpt": "FREE (Fight Repression of Erotic Expression), founded on May 18, 1969, in Minneapolis's West Bank neighborhood, marks an early effort in the",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381572518"
+    },
+    {
+      "id": "P11",
+      "hash": "e9494188f073ca34459a854d42da8c133df45893dad0f455786765fbd9ab1e12",
+      "heading": "K-12",
+      "excerpt": "In 1989 there were no known GSAs in any high school or junior high within the United States even though 97% of high school students admitted",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381572518"
+    },
+    {
+      "id": "P12",
+      "hash": "fcd8d64099d6ac8c08ea2dbd8098983a38172d72133d1e0d7fdfecb5535f1eb1",
+      "heading": "Arizona",
+      "excerpt": "The University of Arizona's LGBT student group, \"Pride Alliance,\" has been active since the 1990s in providing visibility to LGBT students a",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381572518"
+    },
+    {
+      "id": "P13",
+      "hash": "8e5945e9fcc512b889f2b8857b4fc9f7be8a31e7335db420bd2cb132cb84ac9a",
+      "heading": "California",
+      "excerpt": "In 1972, the Gay Student Union (LGSU) formed at the Claremont Colleges, with meeting space provided at the Monsour Counseling Center. The un",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381572518"
+    },
+    {
+      "id": "P14",
+      "hash": "446e851640322b7151f71fd14f5f8dbbb0bc5ad1e38920c015724c0d4db5f775",
+      "heading": "Florida",
+      "excerpt": "A renewed interest in LGBT rights brought about the formation of the Florida Collegiate Pride Coalition in 2003 with chapter from Florida Gu",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381572518"
+    },
+    {
+      "id": "P15",
+      "hash": "b758c925d5c65035ac8812721d62f5438eda11b909d995383c01cf5b413cd2ae",
+      "heading": "Louisiana",
+      "excerpt": "Louisiana State University, the flagship University of Louisiana, has progressively increased the awareness of LGBT organizations throughout",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381572518"
+    },
+    {
+      "id": "P16",
+      "hash": "4fab5271086cef26e9c74ba3114242faeee4c5709e530c5a7d02ac051beea8da",
+      "heading": "Indiana",
+      "excerpt": "In 2012, the students at University of Notre Dame were able to get an official LGBT organization after requesting the addition of one 15 tim",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381572518"
+    },
+    {
+      "id": "P17",
+      "hash": "ebb3731c0b98b0420b2c132ac92b2a26f59ec042d36236a6b3e9222e2a0994bf",
+      "heading": "Minnesota",
+      "excerpt": "In May of 1994, LGBTQ student organizations located on and off Minnesota college campuses held a conference on the campus of the University ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381572518"
+    }
+  ],
+  "updatedAt": "2026-10-24T11:01:35.478Z"
 }
