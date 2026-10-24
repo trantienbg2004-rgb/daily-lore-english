@@ -2,10 +2,10 @@
   "pageId": 34254,
   "title": "Yellow fever",
   "topic": "Health",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1380935170,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380935170",
-  "reason": "9 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -357,5 +357,121 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380935170"
     }
   ],
-  "updatedAt": "2026-10-24T05:38:23.460Z"
+  "updatedAt": "2026-10-24T05:38:46.029Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "Yellow Fever and Mosquitoes",
+        "pages": [
+          {
+            "text": "Yellow fever is a viral disease. Most people have fever, chills, loss of appetite, nausea, and headaches. These symptoms usually get better within five days. In some cases, the illness comes back, causing liver damage and yellow skin.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "The disease is caused by a virus. It spreads through the bite of an infected mosquito. In cities, it spreads mainly through a type of mosquito called Aedes aegypti. This mosquito lives in tropical and subtropical parts of the world.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "A safe and effective vaccine exists to prevent yellow fever. Many countries require travelers to get vaccinated. Other ways to prevent the disease include reducing mosquito populations and diagnosing cases early to stop outbreaks.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "Yellow fever is common in the tropical areas of South America and Africa, but it does not occur in Asia. Most cases happen in Africa. Since the 1980s, the number of cases has increased because more people live in cities and climates are changing.",
+            "evidenceIds": [
+              "P4"
+            ]
+          },
+          {
+            "text": "The disease originated in Africa. It spread to the Americas during the European trafficking of enslaved people. During the eighteenth and nineteenth centuries, yellow fever caused major epidemics in many large cities around the world.",
+            "evidenceIds": [
+              "P5"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "Understanding Yellow Fever",
+        "pages": [
+          {
+            "text": "Yellow fever is a short viral illness with common early symptoms such as fever, chills, headaches, and muscle pains. While many people improve within five days, about fifteen percent experience a second phase. This severe stage brings abdominal pain, liver damage, and yellow skin.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Caused by the yellow fever virus, the disease is transmitted primarily by the bite of the Aedes aegypti mosquito in urban environments. This mosquito is common throughout tropical and subtropical regions. Blood tests are required to confirm suspected cases.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "Safe and effective vaccines are available to prevent infection, and some nations require proof of vaccination for travelers. Additional prevention methods involve controlling mosquito populations and managing symptoms, as there are no specific antiviral treatments once a person is infected.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "The vast majority of yellow fever cases occur in Africa, while the disease is also found in tropical areas of South America. Since the 1980s, global cases have increased. Experts believe this rise is linked to urban growth, frequent travel, and changing climates that expand mosquito habitats.",
+            "evidenceIds": [
+              "P4"
+            ]
+          },
+          {
+            "text": "Originally from Africa, the disease spread to the Americas beginning in the seventeenth century through the trafficking of enslaved people. Throughout the eighteenth and nineteenth centuries, yellow fever was recognized as a major infectious threat, causing severe epidemics in cities around the world.",
+            "evidenceIds": [
+              "P5"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "Epidemiology and Biology of Yellow Fever",
+        "pages": [
+          {
+            "text": "Yellow fever is an acute viral infection characterized initially by transient symptoms including pyrexia, myalgia, cephalalgia, and emesis. Although a majority of patients experience clinical improvement within five days, approximately fifteen percent progress to a more severe systemic phase marked by hepatocyte damage, jaundice, and elevated hemorrhagic risk.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "The causative agent is an RNA virus belonging to the genus Orthoflavivirus. Transmission occurs primarily via the vector Aedes aegypti in urban centers across tropical and subtropical zones. Due to clinical similarities with other pathologies, laboratory confirmation via polymerase chain reaction is necessary.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "Immunization provides robust prophylaxis, leading many jurisdictions to mandate vaccination for incoming travelers. Vector reduction and early case identification remain critical control measures. Management for infected individuals is exclusively supportive, as specific antiviral interventions are ineffective.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "Endemic primarily in tropical regions of Africa and South America, the disease accounts for tens of thousands of severe infections annually. Epidemiological tracking indicates an upward trend in incidence since the 1980s, attributed to demographic shifts toward urbanization, heightened human mobility, and environmental alterations favoring vector propagation.",
+            "evidenceIds": [
+              "P4"
+            ]
+          },
+          {
+            "text": "Historical records indicate that the disease originated in the African continent, subsequently disseminating to the Americas during the transatlantic trafficking of enslaved populations in the seventeenth century. Throughout the eighteenth and nineteenth centuries, yellow fever persisted as a formidable epidemiological hazard, precipitating widespread urban epidemics.",
+            "evidenceIds": [
+              "P5"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2747,
+    "output": 1279,
+    "total": 4026
+  },
+  "validation": null
 }
