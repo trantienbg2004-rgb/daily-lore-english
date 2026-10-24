@@ -7132,10 +7132,10 @@
       "checkedAt": "2026-10-24T04:06:37.122Z"
     },
     "524267": {
-      "status": "DRAFTED",
-      "reason": "draft durably saved before validation",
+      "status": "NEEDS_REVIEW",
+      "reason": "editorial: A1-A2:page-5:unsupported-number-context-350,B1-B2:page-5:unsupported-number-context-350,C1-C2:page-5:unsupported-number-350",
       "revisionId": 1380753731,
-      "checkedAt": "2026-10-24T04:52:08.523Z"
+      "checkedAt": "2026-10-24T04:52:14.216Z"
     },
     "532503": {
       "status": "RETRY_LATER",
@@ -10666,7 +10666,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-24T04:52:08.525Z",
+  "updatedAt": "2026-10-24T04:52:14.217Z",
   "dailyUsage": {
     "day": "2026-10-23",
     "calls": 203,

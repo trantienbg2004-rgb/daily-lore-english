@@ -2,10 +2,10 @@
   "pageId": 524267,
   "title": "Meroë",
   "topic": "History & Geography",
-  "status": "DRAFTED",
+  "status": "NEEDS_REVIEW",
   "revisionId": 1380753731,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380753731",
-  "reason": "draft durably saved before validation",
+  "reason": "editorial: A1-A2:page-5:unsupported-number-context-350,B1-B2:page-5:unsupported-number-context-350,C1-C2:page-5:unsupported-number-350",
   "rights": [
     {
       "status": "REVIEW",
@@ -335,7 +335,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380753731"
     }
   ],
-  "updatedAt": "2026-10-24T04:52:08.524Z",
+  "updatedAt": "2026-10-24T04:52:14.216Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -483,5 +483,12 @@
     "output": 373,
     "total": 3455
   },
-  "validation": null
+  "validation": {
+    "accepted": false,
+    "errors": [
+      "A1-A2:page-5:unsupported-number-context-350",
+      "B1-B2:page-5:unsupported-number-context-350",
+      "C1-C2:page-5:unsupported-number-350"
+    ]
+  }
 }
