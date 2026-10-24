@@ -9396,10 +9396,10 @@
       "checkedAt": "2026-10-21T13:51:43.087Z"
     },
     "21401843": {
-      "status": "VALIDATED",
-      "reason": "local factual, style, length, structure and source audit passed",
+      "status": "PUBLISHED",
+      "reason": "4 verified embedded images",
       "revisionId": 1380704056,
-      "checkedAt": "2026-10-24T07:22:20.040Z"
+      "checkedAt": "2026-10-24T07:22:26.091Z"
     },
     "21431793": {
       "status": "EVIDENCE_READY",
@@ -11610,7 +11610,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-24T07:22:20.041Z",
+  "updatedAt": "2026-10-24T07:22:26.091Z",
   "dailyUsage": {
     "day": "2026-10-24",
     "calls": 18,
