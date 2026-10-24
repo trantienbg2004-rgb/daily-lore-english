@@ -8030,10 +8030,10 @@
       "checkedAt": "2026-10-24T04:52:14.216Z"
     },
     "532101": {
-      "status": "PENDING",
-      "reason": "queued",
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
       "revisionId": 1364737071,
-      "checkedAt": null
+      "checkedAt": "2026-10-24T10:43:00.074Z"
     },
     "532503": {
       "status": "RETRY_LATER",
@@ -11930,7 +11930,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-24T10:42:53.105Z",
+  "updatedAt": "2026-10-24T10:43:00.081Z",
   "dailyUsage": {
     "day": "2026-10-24",
     "calls": 117,
