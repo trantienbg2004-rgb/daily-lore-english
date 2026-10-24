@@ -9194,10 +9194,10 @@
       "checkedAt": "2026-10-21T18:16:25.606Z"
     },
     "7848092": {
-      "status": "EVIDENCE_READY",
-      "reason": "5 rights-verified embedded images",
+      "status": "RETRY_LATER",
+      "reason": "Gemini token usage unavailable",
       "revisionId": 1378095182,
-      "checkedAt": "2026-10-24T10:13:13.202Z"
+      "checkedAt": "2026-10-24T10:13:19.049Z"
     },
     "8147257": {
       "status": "REJECTED",
@@ -11930,7 +11930,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-24T10:13:13.203Z",
+  "updatedAt": "2026-10-24T10:13:19.050Z",
   "dailyUsage": {
     "day": "2026-10-24",
     "calls": 117,
