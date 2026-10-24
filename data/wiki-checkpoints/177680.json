@@ -2,10 +2,10 @@
   "pageId": 177680,
   "title": "History of aviation",
   "topic": "Science & Technology",
-  "status": "DRAFTED",
+  "status": "VALIDATED",
   "revisionId": 1379430717,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379430717",
-  "reason": "draft durably saved before validation",
+  "reason": "local factual, style, length, structure and source audit passed",
   "rights": [
     {
       "status": "REVIEW",
@@ -543,7 +543,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379430717"
     }
   ],
-  "updatedAt": "2026-10-24T03:36:51.801Z",
+  "updatedAt": "2026-10-24T03:37:09.805Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -675,5 +675,8 @@
     "output": 983,
     "total": 3997
   },
-  "validation": null
+  "validation": {
+    "accepted": true,
+    "errors": []
+  }
 }
