@@ -2,10 +2,10 @@
   "pageId": 230539,
   "title": "Camel train",
   "topic": "Economy",
-  "status": "DRAFTED",
+  "status": "VALIDATED",
   "revisionId": 1378743903,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378743903",
-  "reason": "draft durably saved before validation",
+  "reason": "local factual, style, length, structure and source audit passed",
   "rights": [
     {
       "status": "REVIEW",
@@ -241,7 +241,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378743903"
     }
   ],
-  "updatedAt": "2026-10-24T07:42:44.169Z",
+  "updatedAt": "2026-10-24T07:43:02.202Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -364,5 +364,8 @@
     "output": 179,
     "total": 2931
   },
-  "validation": null
+  "validation": {
+    "accepted": true,
+    "errors": []
+  }
 }
