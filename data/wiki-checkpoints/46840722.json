@@ -2,10 +2,10 @@
   "pageId": 46840722,
   "title": "Air pollution measurement",
   "topic": "Health",
-  "status": "DRAFTED",
+  "status": "VALIDATED",
   "revisionId": 1366308012,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1366308012",
-  "reason": "draft durably saved before validation",
+  "reason": "local factual, style, length, structure and source audit passed",
   "rights": [
     {
       "status": "REVIEW",
@@ -421,7 +421,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1366308012"
     }
   ],
-  "updatedAt": "2026-10-24T04:50:43.546Z",
+  "updatedAt": "2026-10-24T04:51:01.577Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -544,5 +544,8 @@
     "output": 1298,
     "total": 4039
   },
-  "validation": null
+  "validation": {
+    "accepted": true,
+    "errors": []
+  }
 }
