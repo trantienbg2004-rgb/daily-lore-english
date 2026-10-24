@@ -11804,10 +11804,10 @@
       "checkedAt": "2026-10-22T09:15:26.040Z"
     },
     "82314439": {
-      "status": "PENDING",
-      "reason": "queued",
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
       "revisionId": 1380228832,
-      "checkedAt": null
+      "checkedAt": "2026-10-24T11:06:23.355Z"
     },
     "82411497": {
       "status": "REJECTED",
@@ -11930,7 +11930,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-24T11:06:16.882Z",
+  "updatedAt": "2026-10-24T11:06:23.355Z",
   "dailyUsage": {
     "day": "2026-10-24",
     "calls": 117,
