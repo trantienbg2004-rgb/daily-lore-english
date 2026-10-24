@@ -2,10 +2,10 @@
   "pageId": 655350,
   "title": "Cynisca",
   "topic": "Sports",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1355870897,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1355870897",
-  "reason": "4 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -202,5 +202,134 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1355870897"
     }
   ],
-  "updatedAt": "2026-10-24T08:30:38.209Z"
+  "updatedAt": "2026-10-24T08:30:54.246Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "Cynisca Wins at the Olympics",
+        "pages": [
+          {
+            "text": "Cynisca was a wealthy Spartan princess born around 440 BC. She became famous as the first woman to win at the Olympic Games. She entered her own team of horses and won first prize in 396 BC.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "In 392 BC, Cynisca entered her horses in the Olympics again. She won a second victory in the same chariot racing event. Her name means female puppy or little hound in Ancient Greek.",
+            "evidenceIds": [
+              "P1",
+              "P2"
+            ]
+          },
+          {
+            "text": "Spartan women trained in sports because strong women were thought to produce strong children for the army. Unlike other Greek women, they had free time because enslaved people did household work.",
+            "evidenceIds": [
+              "P6"
+            ]
+          },
+          {
+            "text": "To celebrate her wins, Cynisca put up bronze statues and a monument with an inscription. She stated that she was the only woman to win the wreath in Olympic chariot events.",
+            "evidenceIds": [
+              "P8"
+            ]
+          },
+          {
+            "text": "After her death, Cynisca received a hero shrine in Sparta where people held religious ceremonies. Today, modern sports teams and organizations are named after this famous ancient Spartan princess.",
+            "evidenceIds": [
+              "P10",
+              "P13"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "The Spartan Princess Who Won the Olympics",
+        "pages": [
+          {
+            "text": "Born around 440 BC, Cynisca was a wealthy Spartan princess and a member of the Eurypontid dynasty. She achieved historical fame as the first woman to win an event at the ancient Olympic Games, entering a team of horses she trained herself in 396 BC.",
+            "evidenceIds": [
+              "P1",
+              "P3"
+            ]
+          },
+          {
+            "text": "In 392 BC, Cynisca entered her horses for a second time and secured another victory in the four-horse chariot race. Ancient sources mention that her brother, King Agesilaus II, encouraged her to compete in the games.",
+            "evidenceIds": [
+              "P1",
+              "P4",
+              "P5"
+            ]
+          },
+          {
+            "text": "Spartan elite women enjoyed greater athletic freedom than most other Greek women. Because the helot system relieved them of typical household duties, they could dedicate significant time to training since strong women were believed to produce strong soldiers.",
+            "evidenceIds": [
+              "P6"
+            ]
+          },
+          {
+            "text": "To commemorate her achievements, Cynisca dedicated a set of bronze statues and an inscription at the Temple of Zeus in Olympia. She also received a hero shrine in Sparta, becoming the first woman to receive this honor.",
+            "evidenceIds": [
+              "P8",
+              "P10"
+            ]
+          },
+          {
+            "text": "Cynisca's success inspired other Greek women to achieve victories in chariot racing. In modern times, her legacy lives on through poems, feminist art exhibits, and contemporary women's sports and advocacy organizations bearing her name.",
+            "evidenceIds": [
+              "P7",
+              "P13"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "Cynisca and Ancient Spartan Equestrian Success",
+        "pages": [
+          {
+            "text": "Cynisca, a wealthy Spartan princess of the Eurypontid dynasty born circa 440 BC, secured her place in history by becoming the first female victor at the Olympic Games. She achieved her first triumph in 396 BC by entering a team of horses she trained herself in the tethrippon.",
+            "evidenceIds": [
+              "P1",
+              "P3",
+              "P5"
+            ]
+          },
+          {
+            "text": "She replicated this success in 392 BC, capturing a second victory in the same equestrian event. While ancient writers suggested her brother Agesilaus II encouraged her participation to expose chariot racing as an unmanly display of wealth, modern scholars theorize he sought political advantage from her fame.",
+            "evidenceIds": [
+              "P1",
+              "P4",
+              "P5"
+            ]
+          },
+          {
+            "text": "The athletic prowess of Spartan women was facilitated by the helot system, which emancipated elite women from domestic labor. This societal structure allowed dedicated physical training under the belief that robust mothers would supply the Spartan army with powerful soldiers.",
+            "evidenceIds": [
+              "P6"
+            ]
+          },
+          {
+            "text": "Commemorating her triumphs, Cynisca erected bronze statues and inscribed monuments at Olympia and Sparta, explicitly recording her unique status among women. Posthumously, she was honored with a hero-cult at a shrine in Sparta, a distinction previously reserved for kings.",
+            "evidenceIds": [
+              "P8",
+              "P10"
+            ]
+          },
+          {
+            "text": "Her victories catalyzed subsequent female participation in chariot racing, influencing later victors such as Berenike of Egypt. Today, Cynisca's historical footprint endures through modern cultural tributes, artistic exhibits, and contemporary women's athletic organizations.",
+            "evidenceIds": [
+              "P7",
+              "P13"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2484,
+    "output": 1211,
+    "total": 3695
+  },
+  "validation": null
 }
