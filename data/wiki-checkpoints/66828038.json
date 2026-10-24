@@ -198,7 +198,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1357904180"
     }
   ],
-  "updatedAt": "2026-10-24T06:32:19.646Z",
+  "updatedAt": "2026-10-24T06:32:37.600Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -299,7 +299,7 @@
             ]
           },
           {
-            "text": "Initial diplomatic interventions included an Intergovernmental Authority on Development summit in December 2020 and structured pre-conditions published by Tigrayan political entities in early 2021. Concurrently, broader multilateral initiatives, notably the A3+1 coalition, emphasized indigenous conflict resolution mechanisms and urged the removal of terrorist designations to facilitate direct dialogue.",
+            "text": "Initial diplomatic interventions included an Intergovernmental Authority on Development summit and structured pre-conditions published by Tigrayan political entities. Concurrently, broader multilateral initiatives, notably the A3+1 coalition, emphasized indigenous conflict resolution mechanisms and urged the removal of terrorist designations to facilitate direct dialogue.",
             "evidenceIds": [
               "P1",
               "P6",
@@ -308,7 +308,7 @@
             ]
           },
           {
-            "text": "The cessation of hostilities advanced significantly with a five-month humanitarian truce declared in March 2022, intended to facilitate aid delivery. Nevertheless, structural impediments persisted, including contentious debates over territorial control in the Western Zone and the restoration of essential public utilities.",
+            "text": "The cessation of hostilities advanced significantly with a humanitarian truce declared, intended to facilitate aid delivery. Nevertheless, structural impediments persisted, including contentious debates over territorial control in the Western Zone and the restoration of essential public utilities during the conflict.",
             "evidenceIds": [
               "P1",
               "P16",
@@ -332,11 +332,11 @@
       }
     }
   },
-  "repairAttempts": 0,
+  "repairAttempts": 1,
   "lastUsage": {
-    "input": 3029,
-    "output": 1502,
-    "total": 4531
+    "input": 2973,
+    "output": 238,
+    "total": 3211
   },
   "validation": null
 }
