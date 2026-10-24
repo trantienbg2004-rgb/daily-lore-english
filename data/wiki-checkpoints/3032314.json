@@ -2,10 +2,10 @@
   "pageId": 3032314,
   "title": "History of the camera",
   "topic": "Science & Technology",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1380463233,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380463233",
-  "reason": "10 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REJECTED",
@@ -397,5 +397,159 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380463233"
     }
   ],
-  "updatedAt": "2026-10-24T09:00:14.545Z"
+  "updatedAt": "2026-10-24T09:00:34.405Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "The History of Cameras",
+        "pages": [
+          {
+            "text": "The history of the camera started long before photography. Cameras grew from a natural optical phenomenon called the camera obscura. Over many years, technology changed from early boxes and plates to film and modern digital cameras.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "The camera obscura is a dark room or box with a small hole. It projects an upside-down image onto a surface. In ancient times, the philosopher Mozi explained that this happens because light travels in straight lines.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "Later, people put lenses in the openings to make clearer images for drawing. Early cameras were very large. Inventors wanted a smaller box for practical photography, but it took a long time to make this possible.",
+            "evidenceIds": [
+              "P3",
+              "P4"
+            ]
+          },
+          {
+            "text": "Scientists also learned that some substances darken when they touch sunlight. Inventors tried to use silver salts to make pictures. Nicéphore Niépce made early photographic images using light-sensitive materials in a small wooden box.",
+            "evidenceIds": [
+              "P7",
+              "P8"
+            ]
+          },
+          {
+            "text": "Louis Daguerre created a practical photographic process using silver-plated copper sheets. Henry Fox Talbot made another process called the calotype. These simple cameras used nested boxes and ground glass screens to adjust the focus.",
+            "evidenceIds": [
+              "P9"
+            ]
+          },
+          {
+            "text": "George Eastman introduced photographic film and simple box cameras like the Kodak. Later, people used 35 mm film, instant cameras, and automatic exposure. Today, digital cameras and camera phones are used everywhere.",
+            "evidenceIds": [
+              "P11",
+              "P12",
+              "P14",
+              "P15",
+              "P16"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "From Dark Rooms to Digital Cameras",
+        "pages": [
+          {
+            "text": "Long before the invention of photography, the history of the camera began with natural optical principles. Over generations, camera technology evolved from the camera obscura through daguerreotypes, calotypes, dry plates, and film, eventually leading to today's digital cameras and mobile phones.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "The camera obscura projects an inverted image of a scene through a small opening onto an opposite surface. The Chinese philosopher Mozi provided the earliest documented explanation of this principle, noting that the image inversion results from light traveling in straight lines.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "During the 16th and 17th centuries, lenses and portable box designs were introduced to aid in drawing. Although Johann Zahn envisioned a portable camera for photography in 1685, practical photographic applications took nearly 150 years to develop.",
+            "evidenceIds": [
+              "P3",
+              "P4"
+            ]
+          },
+          {
+            "text": "Early researchers discovered that silver salts darken when exposed to sunlight. In the early 19th century, Nicéphore Niépce used a small camera and coated paper to create partially successful photographs, though they were not yet permanent. He later experimented with bitumen on wooden box cameras.",
+            "evidenceIds": [
+              "P7",
+              "P8"
+            ]
+          },
+          {
+            "text": "Louis Daguerre and Henry Fox Talbot developed practical photographic processes in the 19th century. Their cameras used simple nested boxes with ground glass screens for focusing. Later, gelatin dry plates made instantaneous snapshots practical, leading to a huge variety of portable camera designs.",
+            "evidenceIds": [
+              "P9",
+              "P10"
+            ]
+          },
+          {
+            "text": "George Eastman revolutionized the field by introducing photographic film and the easy-to-use Kodak camera. Subsequent decades brought 35 mm film, instant cameras, and automatic exposure systems. In the modern era, digital memory cards and wireless technology have largely replaced chemical film.",
+            "evidenceIds": [
+              "P11",
+              "P12",
+              "P14",
+              "P15",
+              "P16"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "Evolution of Camera Technology",
+        "pages": [
+          {
+            "text": "The developmental trajectory of the camera predates formal photography, originating from natural optical phenomena and progressing through successive generations of photographic mediums, including daguerreotypes, calotypes, dry plates, film, and contemporary digital and mobile devices.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "The camera obscura functions as a natural optical phenomenon wherein an aperture projects an inverted scene onto an opposing surface. Mozi, an ancient Chinese philosopher, first documented that this inversion stems from the rectilinear propagation of light.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "By the late 16th century, optical lenses were integrated into the apparatus to enhance drawing projections. Portable box configurations gradually emerged, and while Johann Zahn conceptualized a portable photographic camera in 1685, practical realization required approximately a century and a half.",
+            "evidenceIds": [
+              "P3",
+              "P4"
+            ]
+          },
+          {
+            "text": "Foundational chemical investigations demonstrated that silver salts darken upon sunlight exposure. Leveraging these sensitivities, Niépce produced early non-permanent photographic impressions using coated paper and subsequently utilized bitumen-coated surfaces within wooden box cameras.",
+            "evidenceIds": [
+              "P7",
+              "P8"
+            ]
+          },
+          {
+            "text": "Daguerre and Talbot established practical photographic processes relying on mechanical simplicity, utilizing nested boxes with adjustable ground glass screens. Subsequent advancements in gelatin dry plates enabled rapid snapshot exposures, diversifying camera forms from reflex models to specialized detective cameras.",
+            "evidenceIds": [
+              "P9",
+              "P10"
+            ]
+          },
+          {
+            "text": "The commercialization of celluloid film by George Eastman broadened consumer accessibility. Further industrial milestones included the adoption of 35 mm film, instant photography, and automated exposure mechanisms. Ultimately, digital capture devices supplanted chemical film due to reduced operating costs and integrated wireless connectivity.",
+            "evidenceIds": [
+              "P11",
+              "P12",
+              "P14",
+              "P15",
+              "P16"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2826,
+    "output": 1606,
+    "total": 4432
+  },
+  "validation": null
 }
