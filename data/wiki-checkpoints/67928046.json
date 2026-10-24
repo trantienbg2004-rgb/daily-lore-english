@@ -2,10 +2,10 @@
   "pageId": 67928046,
   "title": "United States–Taliban deal",
   "topic": "Conflict & Security",
-  "status": "DRAFTED",
+  "status": "NEEDS_REVIEW",
   "revisionId": 1379593501,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379593501",
-  "reason": "draft durably saved before validation",
+  "reason": "editorial: A1-A2:page-5:unsupported-number-context-2021,B1-B2:page-5:unsupported-number-context-2021",
   "rights": [
     {
       "status": "REVIEW",
@@ -132,7 +132,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379593501"
     }
   ],
-  "updatedAt": "2026-10-24T08:33:06.343Z",
+  "updatedAt": "2026-10-24T08:33:12.318Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -258,5 +258,11 @@
     "output": 236,
     "total": 3077
   },
-  "validation": null
+  "validation": {
+    "accepted": false,
+    "errors": [
+      "A1-A2:page-5:unsupported-number-context-2021",
+      "B1-B2:page-5:unsupported-number-context-2021"
+    ]
+  }
 }
