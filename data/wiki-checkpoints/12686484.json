@@ -254,7 +254,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1360650813"
     }
   ],
-  "updatedAt": "2026-10-24T09:25:07.931Z",
+  "updatedAt": "2026-10-24T09:25:25.996Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -286,7 +286,7 @@
             ]
           },
           {
-            "text": "Portugal kept personal drug use illegal, but changed the punishment in 2001. Instead of going to prison, people caught with small amounts are directed to therapy or community service. Drug dealers still face criminal penalties.",
+            "text": "Portugal kept personal drug use illegal, but changed the punishment. Instead of going to prison, people caught with small amounts are directed to therapy or community service. Drug dealers still face criminal penalties.",
             "evidenceIds": [
               "P14"
             ]
@@ -316,7 +316,7 @@
             ]
           },
           {
-            "text": "During the late 1980s and 1990s, the United States declared a war on drugs targeting Colombian cartels. Colombia implemented Plan Colombia in 1999 to fight drug trafficking and eradicate coca crops. Although coca cultivation dropped significantly, traditional farmers who chewed coca leaves faced severe poverty.",
+            "text": "During the late 1980s and 1990s, the United States declared a war on drugs targeting Colombian cartels. Colombia implemented Plan Colombia to fight drug trafficking and eradicate coca crops. Although coca cultivation dropped significantly, traditional farmers who chewed coca leaves faced severe poverty.",
             "evidenceIds": [
               "P9"
             ]
@@ -328,7 +328,7 @@
             ]
           },
           {
-            "text": "In 2001, Portugal reformed its legal framework. While using or possessing drugs remained illegal, personal possession of up to a ten-day supply was reclassified from a criminal offense to an administrative one. Addicts were targeted with therapy rather than prison, though dealers still face criminal penalties.",
+            "text": "Portugal reformed its legal framework. While using or possessing drugs remained illegal, personal possession of up to a ten-day supply was reclassified from a criminal offense to an administrative one. Addicts were targeted with therapy rather than prison, though dealers still face criminal penalties.",
             "evidenceIds": [
               "P14"
             ]
@@ -359,7 +359,7 @@
             ]
           },
           {
-            "text": "Amidst the United States' declared war on drugs, Colombia instituted Plan Colombia in 1999 to dismantle major cartels and eradicate coca cultivation. Although this prohibitionist strategy drastically reduced coca acreage over a decade, it concurrently impoverished traditional agricultural communities dependent on legal subsistence uses.",
+            "text": "Amidst the United States' declared war on drugs, Colombia instituted Plan Colombia to dismantle major cartels and eradicate coca cultivation. Although this prohibitionist strategy drastically reduced coca acreage over a decade, it concurrently impoverished traditional agricultural communities dependent on legal subsistence uses.",
             "evidenceIds": [
               "P9"
             ]
@@ -377,7 +377,7 @@
             ]
           },
           {
-            "text": "Sweden transitioned from a permissive 1960s framework to a strict zero-tolerance paradigm directed toward a drug-free society. Criminalizing personal use in 1988, the state enforces penalties ranging from fines to extended imprisonment, supplemented by universally accessible public healthcare and mandated rehabilitation.",
+            "text": "Sweden transitioned from a permissive 1960s framework to a strict zero-tolerance paradigm directed toward a drug-free society. Criminalizing personal use, the state enforces penalties ranging from fines to extended imprisonment, supplemented by universally accessible public healthcare and mandated rehabilitation.",
             "evidenceIds": [
               "P16"
             ]
@@ -386,11 +386,11 @@
       }
     }
   },
-  "repairAttempts": 0,
+  "repairAttempts": 1,
   "lastUsage": {
-    "input": 2721,
-    "output": 1580,
-    "total": 4301
+    "input": 2951,
+    "output": 346,
+    "total": 3297
   },
   "validation": null
 }
