@@ -2,10 +2,10 @@
   "pageId": 79652447,
   "title": "Phytoplankton microbiome",
   "topic": "Environment",
-  "status": "DRAFTED",
+  "status": "NEEDS_REVIEW",
   "revisionId": 1376065279,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376065279",
-  "reason": "draft durably saved before validation",
+  "reason": "editorial: C1-C2:page-5:copied-source-passage",
   "rights": [
     {
       "status": "REVIEW",
@@ -389,7 +389,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376065279"
     }
   ],
-  "updatedAt": "2026-10-24T06:28:43.273Z",
+  "updatedAt": "2026-10-24T06:28:49.334Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -506,5 +506,10 @@
     "output": 252,
     "total": 2996
   },
-  "validation": null
+  "validation": {
+    "accepted": false,
+    "errors": [
+      "C1-C2:page-5:copied-source-passage"
+    ]
+  }
 }
