@@ -7346,10 +7346,10 @@
       "checkedAt": "2026-10-24T03:36:27.795Z"
     },
     "14091": {
-      "status": "PENDING",
-      "reason": "queued",
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
       "revisionId": 1379888046,
-      "checkedAt": null
+      "checkedAt": "2026-10-24T10:45:05.668Z"
     },
     "14194": {
       "status": "PUBLISHED",
@@ -11930,7 +11930,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-24T10:44:59.175Z",
+  "updatedAt": "2026-10-24T10:45:05.674Z",
   "dailyUsage": {
     "day": "2026-10-24",
     "calls": 117,
