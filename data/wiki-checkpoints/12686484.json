@@ -2,10 +2,10 @@
   "pageId": 12686484,
   "title": "Drug policy",
   "topic": "Health",
-  "status": "DRAFTED",
+  "status": "VALIDATED",
   "revisionId": 1360650813,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1360650813",
-  "reason": "draft durably saved before validation",
+  "reason": "local factual, style, length, structure and source audit passed",
   "rights": [
     {
       "status": "REVIEW",
@@ -254,7 +254,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1360650813"
     }
   ],
-  "updatedAt": "2026-10-24T09:25:25.996Z",
+  "updatedAt": "2026-10-24T09:25:43.936Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -392,5 +392,8 @@
     "output": 346,
     "total": 3297
   },
-  "validation": null
+  "validation": {
+    "accepted": true,
+    "errors": []
+  }
 }
