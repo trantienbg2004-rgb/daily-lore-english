@@ -2,9 +2,237 @@
   "pageId": 66419577,
   "title": "Red Sea slave trade",
   "topic": "Economy",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1380259431,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380259431",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-24T10:42:41.758Z"
+  "reason": "2 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:African slave trade.png",
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/8/83/African_slave_trade.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "fileTitle": "File:African slave trade.png",
+        "caption": "African slave trade",
+        "alt": "",
+        "description": "Slave trade in medieval Africa",
+        "date": "2012-06-12",
+        "section": "",
+        "position": 0,
+        "provenance": {
+          "credit": "Runehelmet derived from Aliesin",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:African_slave_trade.png",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Red_Sea_slave_trade",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380259431",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Slave routes of the Ethiopian Empire.jpg"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:Map Slave Routes Ethiopia.jpg",
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/6/61/Map_Slave_Routes_Ethiopia.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "fileTitle": "File:Map Slave Routes Ethiopia.jpg",
+        "caption": "Slave trade routes through Ethiopia",
+        "alt": "",
+        "description": "Slave trade routes of historical Ethiopia. Slaves from the Gumuz, Oromia and Sidama regions were brought to the Christian Highlands controlled by the Solomonic Dynasty and exported through Massawa and Tajoura natural ports.",
+        "date": "2013-12-28",
+        "section": "",
+        "position": 2,
+        "provenance": {
+          "credit": "26oo",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Map_Slave_Routes_Ethiopia.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Red_Sea_slave_trade",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380259431",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Boutre indien.jpg"
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Slaves captured from a dhow RMG E9091 (cropped).tiff"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "97c6e8f9634f6aef55044de493c5f0f4ba6813abcbf0e4e1e4ef0e7d4d99d91d",
+      "heading": "Lead",
+      "excerpt": "The Red Sea slave trade was a Muslim slave trade across the Red Sea trafficking Black Africans from Sub-Saharan Africa to the Arabian Penins",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380259431"
+    },
+    {
+      "id": "P2",
+      "hash": "baa55840ec0b685893ebffb10a2ebf092440025528c2f8f661301dd76cfa1d95",
+      "heading": "Lead",
+      "excerpt": "The Red Sea slave trade is one of the Arab slave trades and is one of the longest enduring slave trades in the world, as it is known to have",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380259431"
+    },
+    {
+      "id": "P3",
+      "hash": "7bfd8a99738431e2f3a68c80fd9a17c540a5f8c696fb10fa6f553374528eeeab",
+      "heading": "Lead",
+      "excerpt": "The Red Sea, the Sahara, and the Indian Ocean were the three main routes by which East African slaves were transported to the Muslim world.",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380259431"
+    },
+    {
+      "id": "P4",
+      "hash": "57d42680f4d7422de99263a18644d9e0bcef0f308417c83a85ee62a2aaa7096c",
+      "heading": "Overview history",
+      "excerpt": "The slave trade from Africa to Arabia via the Red Sea had ancient roots. While in Pre-Islamic Arabia, Arab war captives were common targets ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380259431"
+    },
+    {
+      "id": "P5",
+      "hash": "32cdb3ef377a7bb3c7931f2e256873a87ee1fa1936019d9b13ec71eec3f97470",
+      "heading": "Overview history",
+      "excerpt": "In the 9th century, slaves were transported from the Red Sea slave trade to Jeddah, Mecca, and Medina, and by caravan over the desert to Bag",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380259431"
+    },
+    {
+      "id": "P6",
+      "hash": "24ce99c0336a13bea9a467c069bc659671007b8cf18e1eef635e8d706e37de6e",
+      "heading": "Supply sources and routes",
+      "excerpt": "The sources that supplied the slave trade across the Red Sea was mainly situated in Africa. They included routes directly across the Red Sea",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380259431"
+    },
+    {
+      "id": "P7",
+      "hash": "60ac1896652ed4be0083135646ff8fd3ee8bf67de59f6a862a4b87fdae3f99d1",
+      "heading": "East Africa",
+      "excerpt": "Early East Africa ended up being a source for slaves to the Arabian Peninsula via the Indian Ocean slave trade since at least the Middle Age",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380259431"
+    },
+    {
+      "id": "P8",
+      "hash": "48f00bb6fe5278f35461d88c8685a2dd7e4ca3a8266322226aeab28e3d25b546",
+      "heading": "India",
+      "excerpt": "India was supply source of slaves to the Arabian Peninsula since Ancient times, although it was to a lesser extent than slaves from Africa.",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380259431"
+    },
+    {
+      "id": "P9",
+      "hash": "89357a074063d11c4fc28ce5d8d0d026f3f6c70e8a5233a4fef73f6794f529f5",
+      "heading": "Madagascar and the Indian Ocean islands",
+      "excerpt": "Slaves were also trafficked to Red Sea ports from Madagascar and adjacent Indian Ocean islands, such as the Comorian Archipelago, after Arab",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380259431"
+    },
+    {
+      "id": "P10",
+      "hash": "4567f90f5caa82229fc507039747a11e1a0d05232c2ce49a560e3cb78b19afc0",
+      "heading": "Pilgrimage route",
+      "excerpt": "A major slave route were connected to the Hajj pilgrimage. Already in the Middle Ages, the Hajj played a role in the slave trade. In 1416, a",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380259431"
+    },
+    {
+      "id": "P11",
+      "hash": "cc9e841961c2431b5557aa691d513885f98e3dc2a380478d0f20fc1f8284d88d",
+      "heading": "Before World War II",
+      "excerpt": "Ottoman anti slavery laws where not enforced in the late 19th-century, particularly not in Hejaz; the first attempt to ban the Red Sea slave",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380259431"
+    },
+    {
+      "id": "P12",
+      "hash": "16446d03dfd152f890cdc84c44463e66fe8b112d5e1ba5e71d195fbeeb13ff94",
+      "heading": "After World War II",
+      "excerpt": "After World War II, there was growing international pressure from the United Nations to end the slave trade. In 1948, the United Nations dec",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380259431"
+    },
+    {
+      "id": "P13",
+      "hash": "401201b5d17ccddd2b5d8e96cd6a57074f30cb235be3dfeb2af96b3e0b2261a6",
+      "heading": "Abolition",
+      "excerpt": "When President John F. Kennedy took office, the issue of slavery within the US ally Saudi Arabia had caused growing domestic and internation",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380259431"
+    },
+    {
+      "id": "P14",
+      "hash": "da10062ef15fec59d575d38f7be07f9e8ab1e04e148ffccc010fc7c2dd9d8315",
+      "heading": "Legacy",
+      "excerpt": "Research has indicated links between the Red Sea slave trade and female genital mutilation. An investigation combining contemporary from dat",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380259431"
+    },
+    {
+      "id": "P15",
+      "hash": "796645c841c42ce20408712c6f0cdf2e13c4381d2a6379e509ad331c32b30d25",
+      "heading": "Overview history",
+      "excerpt": "Slaves were marched in shackles from the West Lakes to the coasts of Sudan, Ethiopia and Somalia, placed upon dhows and trafficked across th",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380259431"
+    },
+    {
+      "id": "P16",
+      "hash": "65d9911f7a4e53d93eecaa65e13d9c1fdf4eaf64a5ab7548c31f601d77893595",
+      "heading": "Overview history",
+      "excerpt": "After World War I, the East coast of the Red Sea formed an independent nation as the Kingdom of Hejaz (1916–1925). Hejaz did not consider it",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380259431"
+    },
+    {
+      "id": "P17",
+      "hash": "25fec5440f7c082810b4ae42945164399f3b7b7c3b388bfc26778871a2fcfeab",
+      "heading": "East Africa",
+      "excerpt": "The slave trade had two major routes to Hejaz. African slaves were trafficked from primarily South Sudan and Ethiopia. Primarily children an",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380259431"
+    },
+    {
+      "id": "P18",
+      "hash": "deb21d10bd5f682fe60af38896a399feda11534cd45d1aad22ff8ab87345974f",
+      "heading": "East Africa",
+      "excerpt": "Eunuchs, female concubines and male laborers were the occupations of slaves sent from Ethiopia to Jidda and other parts of Hejaz. The southw",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380259431"
+    },
+    {
+      "id": "P19",
+      "hash": "08fedf193ac472d00d2dd822c28069fa0abb53bae713e90e31117eff2bed1aab",
+      "heading": "East Africa",
+      "excerpt": "Since Britain banned the slave trade in its colonies, 19th century British ruled Aden was no longer a recipient of slaves and the slaves sen",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380259431"
+    },
+    {
+      "id": "P20",
+      "hash": "a9e93668ef0c621fbf4559316a6e9759e5ecfabc3907b4fc5e166e53c1b52d8e",
+      "heading": "India",
+      "excerpt": "During the 13th century, Indian boys, women and girls intended for sexual slavery, were trafficked from India to Arabia and to Egypt across ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380259431"
+    },
+    {
+      "id": "P21",
+      "hash": "f0dcae367748b2cc37fe653f95438ec989b2dee7ba1c697bc752837012b343b7",
+      "heading": "Madagascar and the Indian Ocean islands",
+      "excerpt": "Some historians estimate that during the 17th century as many as 150,000 Malagasy slaves were exported from Boeny in northwest Madagascar to",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380259431"
+    },
+    {
+      "id": "P22",
+      "hash": "b00151be27eac0e97268eaaf5fd01d3da1887bd8d561acce54e2cfaba700bcf8",
+      "heading": "Madagascar and the Indian Ocean islands",
+      "excerpt": "European traders also took part in the lucrative slave trade between Madagascar and the Red Sea. In 1694, a Dutch East India Company (VOC) s",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380259431"
+    },
+    {
+      "id": "P23",
+      "hash": "58b9d9b996d124164f276cbf016bc89af62d4dbf1a605e0d6d2a795591bb8bf9",
+      "heading": "Pilgrimage route",
+      "excerpt": "The annual pilgrimage to Mecca, the Hajj, was biggest vehicle for enslavement. When the open Trans-Saharan slave trade died out, Muslim-Afri",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380259431"
+    }
+  ],
+  "updatedAt": "2026-10-24T10:42:47.346Z"
 }
