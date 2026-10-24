@@ -301,7 +301,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381006440"
     }
   ],
-  "updatedAt": "2026-10-24T07:46:32.718Z",
+  "updatedAt": "2026-10-24T07:46:50.695Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -314,7 +314,7 @@
             ]
           },
           {
-            "text": "CEPI was conceived in 2015 and formally launched in 2017 at the World Economic Forum in Davos, Switzerland. It was co-founded with US$460 million from the Bill and Melinda Gates Foundation, the Wellcome Trust, and the governments of India and Norway.",
+            "text": "CEPI was conceived in 2015 and launched in 2017 at the World Economic Forum in Davos, Switzerland. It was co-founded with funding from the Bill and Melinda Gates Foundation, the Wellcome Trust, and the governments of India and Norway.",
             "evidenceIds": [
               "P3"
             ]
@@ -339,7 +339,7 @@
             ]
           },
           {
-            "text": "The founding mission of CEPI was equitable access in pandemics, selling vaccines to developing nations at affordable prices. Later, some rules changed because companies felt the old rules did not reflect business realities. CEPI stated its vaccines would still be affordable and available.",
+            "text": "The founding goal of CEPI was equitable access during pandemics, aiming to provide vaccines to developing nations at affordable prices. Later, some rules changed because companies felt the old rules did not fit business realities. CEPI stated its vaccines would still be affordable and available.",
             "evidenceIds": [
               "P7",
               "P21"
@@ -438,11 +438,11 @@
       }
     }
   },
-  "repairAttempts": 1,
+  "repairAttempts": 2,
   "lastUsage": {
-    "input": 2849,
-    "output": 215,
-    "total": 3064
+    "input": 2875,
+    "output": 211,
+    "total": 3086
   },
   "validation": null
 }
