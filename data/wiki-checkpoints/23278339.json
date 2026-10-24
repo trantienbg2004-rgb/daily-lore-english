@@ -310,14 +310,14 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379638474"
     }
   ],
-  "updatedAt": "2026-10-24T08:09:12.525Z",
+  "updatedAt": "2026-10-24T08:09:30.602Z",
   "draft": {
     "variants": {
       "A1-A2": {
         "headline": "The Black Panther Party Story",
         "pages": [
           {
-            "text": "The Black Panther Party was a political and militant group. It began in 1966 in Oakland, California. Two men named Huey P. Newton and Bobby Seale started the group. They wanted to help the African American community.",
+            "text": "The Black Panther Party was a political and militant group. It began in Oakland, California. Two men named Huey P. Newton and Bobby Seale started the group. They wanted to help the African American community and protect people.",
             "evidenceIds": [
               "P1"
             ]
@@ -343,7 +343,7 @@
             ]
           },
           {
-            "text": "However, the government worked against the party. The FBI used secret programs to spy on and weaken the group. Internal conflicts and arrests also hurt the party, and it dissolved by 1982.",
+            "text": "However, the government worked against the party. The FBI used secret programs to spy on and weaken the group. Internal conflicts and arrests also hurt the party. The organization eventually stopped operating.",
             "evidenceIds": [
               "P1",
               "P2"
@@ -355,7 +355,7 @@
         "headline": "Rise and Fall of the Black Panthers",
         "pages": [
           {
-            "text": "Founded in October 1966 by Huey P. Newton and Bobby Seale, the Black Panther Party was an American political and militant organization. It originally formed in Oakland, California, to challenge excessive force and misconduct by the local police department.",
+            "text": "Founded by Huey P. Newton and Bobby Seale, the Black Panther Party was an American political and militant organization. It originally formed in Oakland, California, to challenge excessive force and misconduct by the local police department.",
             "evidenceIds": [
               "P1",
               "P6"
@@ -390,7 +390,7 @@
             ]
           },
           {
-            "text": "Combined with internal conflicts, government persecution severely weakened the group. Membership peaked around 1970 and steadily declined over the decade until the party ultimately dissolved in 1982.",
+            "text": "Combined with internal conflicts, government persecution severely weakened the group. Membership peaked around 1970 and steadily declined over the decade until the party ultimately dissolved.",
             "evidenceIds": [
               "P1",
               "P2",
@@ -403,7 +403,7 @@
         "headline": "The Black Panther Party: History and Legacy",
         "pages": [
           {
-            "text": "Established in 1966 by Huey P. Newton and Bobby Seale as the Black Panther Party for Self-Defense, the organization operated as a prominent American Marxist-Leninist and black power entity until 1982. Its initial impetus was confronting police brutality within Oakland's African American community.",
+            "text": "Established by Huey P. Newton and Bobby Seale as the Black Panther Party for Self-Defense, the organization operated as a prominent American Marxist-Leninist and black power entity. Its initial impetus was confronting police brutality within Oakland's African American community.",
             "evidenceIds": [
               "P1",
               "P6"
@@ -431,7 +431,7 @@
             ]
           },
           {
-            "text": "This expansion elicited intense governmental opposition. The FBI deployed COINTELPRO to neutralize the organization through systematic surveillance, infiltration, and disruption strategies, exacerbating internal factionalism and leadership conflicts.",
+            "text": "This expansion elicited intense governmental opposition. The FBI deployed COINTELPRO to neutralize the organization through systematic surveillance, infiltration, and disruption strategies, exacerbating internal factionalism and leadership conflicts. Support declined significantly over time.",
             "evidenceIds": [
               "P2",
               "P3",
@@ -450,11 +450,11 @@
       }
     }
   },
-  "repairAttempts": 0,
+  "repairAttempts": 1,
   "lastUsage": {
-    "input": 2701,
-    "output": 1462,
-    "total": 4163
+    "input": 2990,
+    "output": 376,
+    "total": 3366
   },
   "validation": null
 }
