@@ -194,14 +194,14 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377419400"
     }
   ],
-  "updatedAt": "2026-10-24T08:06:56.937Z",
+  "updatedAt": "2026-10-24T08:07:15.317Z",
   "draft": {
     "variants": {
       "A1-A2": {
         "headline": "The Colombia Peace Talks",
         "pages": [
           {
-            "text": "Colombia had a very long war. The government and the FARC rebel group wanted to stop fighting. They started peace talks in the city of Havana, Cuba in the year 2012 to find a good way to end the conflict.",
+            "text": "Colombia had a very long war. The government and the FARC rebel group wanted to stop fighting. They started peace talks in the city of Havana, Cuba to find a good way to end the conflict.",
             "evidenceIds": [
               "P1"
             ]
@@ -219,7 +219,7 @@
             ]
           },
           {
-            "text": "Both houses of the Colombian Congress looked at the new agreement. They voted to approve it at the end of November 2016. This official vote finally brought the long armed conflict to an end.",
+            "text": "Both houses of the Colombian Congress looked at the new agreement. They voted to approve it at the end of November. This official vote finally brought the long armed conflict to an end.",
             "evidenceIds": [
               "P3"
             ]
@@ -273,10 +273,9 @@
         "headline": "The Architecture of the Colombian Peace Accord",
         "pages": [
           {
-            "text": "The Colombian peace process encompasses the protracted negotiations executed between the administration of President Juan Manuel Santos and the FARC-EP insurgency. Commencing formally in September 2012 primarily within Havana, Cuba, these diplomatic efforts sought to terminate an internal armed conflict that originated decades prior in 1964.",
+            "text": "The Colombian peace process encompasses the protracted negotiations executed between the administration of President Juan Manuel Santos and the FARC-EP insurgency. Commencing formally in September 2012 primarily within Havana, Cuba, these diplomatic efforts sought to terminate an internal armed conflict.",
             "evidenceIds": [
-              "P1",
-              "P4"
+              "P1"
             ]
           },
           {
@@ -311,11 +310,11 @@
       }
     }
   },
-  "repairAttempts": 0,
+  "repairAttempts": 1,
   "lastUsage": {
-    "input": 2794,
-    "output": 1412,
-    "total": 4206
+    "input": 2907,
+    "output": 386,
+    "total": 3293
   },
   "validation": null
 }
