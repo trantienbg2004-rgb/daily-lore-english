@@ -2,10 +2,10 @@
   "pageId": 2846545,
   "title": "Ancient monument",
   "topic": "Culture",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1375258429,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375258429",
-  "reason": "10 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -346,5 +346,133 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375258429"
     }
   ],
-  "updatedAt": "2026-10-24T08:11:56.034Z"
+  "updatedAt": "2026-10-24T08:12:13.559Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "Ancient monuments and their history",
+        "pages": [
+          {
+            "text": "An ancient monument is a very old manmade structure. These buildings are important for cultures. Some countries put pictures of ancient ruins on money and coats of arms. People use them as symbols to show their national identity and heritage.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "In British law, an ancient monument is an old structure that is worthy of protection and study. Laws like the Ancient Monuments Protection Act helped governments legally preserve these historic places so they would not be damaged or lost.",
+            "evidenceIds": [
+              "P2",
+              "P5"
+            ]
+          },
+          {
+            "text": "Since the eighteenth and nineteenth centuries, nations began to build a shared national past using legends and traditions. Ruins and old relics became very important symbols for growing nations. This sparked new movements to protect and preserve them.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "Archaeology is the study of past societies through their remaining physical remains and landscapes. Experts use archaeology to learn about history and to protect ancient monuments and heritage sites that are in dangerous or delicate conditions today.",
+            "evidenceIds": [
+              "P4"
+            ]
+          },
+          {
+            "text": "Today, global tourism is very popular, and many people visit ancient monuments. These heritage tours can be religious or patriotic. Tourists travel to see important historical sites, which helps connect people to past cultures and national identities.",
+            "evidenceIds": [
+              "P7",
+              "P8",
+              "P9"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "Understanding and preserving ancient monuments",
+        "pages": [
+          {
+            "text": "Ancient monuments are historical manmade structures that hold deep cultural importance. Across the world, famous ruins appear on national currencies and coats of arms. They often serve as powerful symbols of international recognition and help citizens connect with their country's heritage.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Legal frameworks have been established to protect these sites. In British law, an ancient monument is an early structure worthy of preservation due to its archaeological interest. Over time, legislation like the 1882 and 1979 acts granted governments the power to legally safeguard monuments under threat.",
+            "evidenceIds": [
+              "P2",
+              "P5"
+            ]
+          },
+          {
+            "text": "The rise of nationalism in Europe sparked a growing interest in constructing a national past using relics and ruins. These historical sites became central to group consciousness, motivating the creation of preservation movements. Experts assert that this connection between heritage and national identity remains vital globally.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "Archaeology emerged alongside nationalism to study and preserve the remains of past societies. Preservation is especially crucial for monuments facing delicate conditions. Furthermore, modern conservation techniques include physical planning and zoning to direct traffic away from sensitive areas and manage visitor services.",
+            "evidenceIds": [
+              "P4",
+              "P6"
+            ]
+          },
+          {
+            "text": "In the twenty-first century, ancient monuments are closely tied to heritage tourism, including religious and patriotic journeys. While tourism can pose challenges, archaeological efforts and heritage management help conserve these sites, balancing visitor access with the ongoing need to protect fragile historical structures.",
+            "evidenceIds": [
+              "P7",
+              "P8",
+              "P10"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "The preservation and cultural significance of ancient monuments",
+        "pages": [
+          {
+            "text": "An ancient monument denotes any early or historical architectural structure of cultural resonance. Nations frequently co-opt these remnants for iconography, displaying ruins on currency and coats of arms to affirm national identity and foster a collective sense of belonging among citizens.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Legal systems formalize this value. Under British jurisdiction, ancient monuments encompass structures worthy of preservation due to historical or artistic merit. Successive legislation, from the late nineteenth century onward, introduced statutory protection, guardianship, and scheduling to safeguard vulnerable sites from neglect and physical damage.",
+            "evidenceIds": [
+              "P2",
+              "P5"
+            ]
+          },
+          {
+            "text": "The ascendance of nationalism catalyzed a concerted effort to construct a national past through relics and ruins. These monumental landscapes transitioned into potent symbols of emerging nationhood, cementing a durable nexus between historical heritage and contemporary civic identity that persists worldwide.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "Parallel to nationalism, archaeology developed as a culture-historical discipline dedicated to studying and preserving the physical remains of past societies. Because many archaeological areas occupy delicate conditions, management strategies incorporate physical planning and zoning to mitigate environmental pressures and direct visitor traffic appropriately.",
+            "evidenceIds": [
+              "P4",
+              "P6"
+            ]
+          },
+          {
+            "text": "In the modern era, globalization has propelled heritage tourism, encompassing religious, patriotic, and archaeological travel. Although heavy visitation introduces preservation challenges, professional heritage management utilizes targeted conservation techniques—ranging from environmental monitoring to structural maintenance—to protect these vital historical resources for the future.",
+            "evidenceIds": [
+              "P7",
+              "P8",
+              "P10",
+              "P12"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2330,
+    "output": 949,
+    "total": 3279
+  },
+  "validation": null
 }
