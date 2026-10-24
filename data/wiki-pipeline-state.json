@@ -8764,10 +8764,10 @@
       "checkedAt": "2026-10-21T22:32:35.294Z"
     },
     "13294262": {
-      "status": "VALIDATED",
-      "reason": "local factual, style, length, structure and source audit passed",
+      "status": "PUBLISHED",
+      "reason": "4 verified embedded images",
       "revisionId": 1380980056,
-      "checkedAt": "2026-10-24T05:38:09.814Z"
+      "checkedAt": "2026-10-24T05:38:15.921Z"
     },
     "13468724": {
       "status": "RETRY_LATER",
@@ -11146,7 +11146,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-24T05:38:09.816Z",
+  "updatedAt": "2026-10-24T05:38:15.921Z",
   "dailyUsage": {
     "day": "2026-10-23",
     "calls": 230,
