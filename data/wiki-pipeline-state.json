@@ -7948,10 +7948,10 @@
       "checkedAt": "2026-10-21T03:10:36.078Z"
     },
     "5142662": {
-      "status": "NEEDS_REPAIR",
-      "reason": "editorial: C1-C2:page-3:evidence-id",
+      "status": "EVIDENCE_READY",
+      "reason": "11 rights-verified embedded images",
       "revisionId": 1380358718,
-      "checkedAt": "2026-10-24T04:52:47.638Z"
+      "checkedAt": "2026-10-24T05:12:26.945Z"
     },
     "5213868": {
       "status": "NEEDS_REVIEW",
@@ -10666,7 +10666,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-24T05:12:18.949Z",
+  "updatedAt": "2026-10-24T05:12:26.956Z",
   "dailyUsage": {
     "day": "2026-10-23",
     "calls": 209,
