@@ -7976,10 +7976,10 @@
       "checkedAt": "2026-10-21T07:33:31.084Z"
     },
     "23423379": {
-      "status": "DRAFTED",
-      "reason": "draft durably saved before validation",
+      "status": "VALIDATED",
+      "reason": "local factual, style, length, structure and source audit passed",
       "revisionId": 1366154475,
-      "checkedAt": "2026-10-24T02:02:21.993Z"
+      "checkedAt": "2026-10-24T02:02:40.098Z"
     },
     "23773961": {
       "status": "EVIDENCE_READY",
@@ -9866,7 +9866,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-24T02:02:35.542Z",
+  "updatedAt": "2026-10-24T02:02:40.100Z",
   "dailyUsage": {
     "day": "2026-10-23",
     "calls": 113,
