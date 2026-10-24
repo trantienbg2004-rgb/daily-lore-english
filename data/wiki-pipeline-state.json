@@ -7386,10 +7386,10 @@
       "checkedAt": null
     },
     "56738": {
-      "status": "VALIDATED",
-      "reason": "local factual, style, length, structure and source audit passed",
+      "status": "PUBLISHED",
+      "reason": "4 verified embedded images",
       "revisionId": 1366488374,
-      "checkedAt": "2026-10-24T07:45:44.648Z"
+      "checkedAt": "2026-10-24T07:45:50.682Z"
     },
     "57768": {
       "status": "EVIDENCE_READY",
@@ -11610,7 +11610,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-24T07:45:44.650Z",
+  "updatedAt": "2026-10-24T07:45:50.683Z",
   "dailyUsage": {
     "day": "2026-10-24",
     "calls": 35,
