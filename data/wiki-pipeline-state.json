@@ -9362,10 +9362,10 @@
       "checkedAt": "2026-10-21T07:31:42.085Z"
     },
     "11271075": {
-      "status": "PENDING",
-      "reason": "queued",
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
       "revisionId": 1368845713,
-      "checkedAt": null
+      "checkedAt": "2026-10-24T10:38:53.500Z"
     },
     "11373849": {
       "status": "RETRY_LATER",
@@ -11930,7 +11930,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-24T10:38:47.134Z",
+  "updatedAt": "2026-10-24T10:38:53.501Z",
   "dailyUsage": {
     "day": "2026-10-24",
     "calls": 117,
