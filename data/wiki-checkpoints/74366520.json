@@ -301,7 +301,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375250160"
     }
   ],
-  "updatedAt": "2026-10-24T05:41:10.122Z",
+  "updatedAt": "2026-10-24T05:41:28.106Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -326,7 +326,7 @@
             ]
           },
           {
-            "text": "Experts associated with the project reported that it had the potential to be an alternative cheaper and faster than the Panama Canal. The project consists of the rehabilitation of the old Tehuantepec Railway. Porfirio Díaz originally completed that railway during his presidency in the year 1907.",
+            "text": "Experts associated with the project reported that it could be an alternative cheaper and faster than the Panama Canal. The project includes fixing the old Tehuantepec Railway. Porfirio Diaz originally finished that railway during his presidency in the year 1907. It will also modernize the local seaports.",
             "evidenceIds": [
               "P2",
               "P3"
@@ -414,11 +414,11 @@
       }
     }
   },
-  "repairAttempts": 0,
+  "repairAttempts": 1,
   "lastUsage": {
-    "input": 2916,
-    "output": 1495,
-    "total": 4411
+    "input": 2740,
+    "output": 133,
+    "total": 2873
   },
   "validation": null
 }
