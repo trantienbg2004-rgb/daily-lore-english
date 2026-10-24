@@ -7578,10 +7578,10 @@
       "checkedAt": "2026-10-22T13:13:24.702Z"
     },
     "264902": {
-      "status": "RETRY_LATER",
-      "reason": "editorial call budget exhausted",
+      "status": "EVIDENCE_READY",
+      "reason": "5 rights-verified embedded images",
       "revisionId": 1325352652,
-      "checkedAt": "2026-10-21T13:50:18.930Z"
+      "checkedAt": "2026-10-24T07:15:38.048Z"
     },
     "274119": {
       "status": "NEEDS_REVIEW",
@@ -11610,18 +11610,15 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-24T06:58:20.569Z",
+  "updatedAt": "2026-10-24T07:15:38.050Z",
   "dailyUsage": {
-    "day": "2026-10-23",
-    "calls": 300,
-    "tokens": 1043962,
-    "usageUnknown": true,
+    "day": "2026-10-24",
+    "calls": 0,
+    "tokens": 0,
+    "usageUnknown": false,
     "tokenAccountingUnavailable": false,
-    "modelCalls": {
-      "gemini-3.5-flash-lite": 271,
-      "gemini-3.1-flash-lite": 7
-    },
-    "legacyUnattributedCalls": 22
+    "modelCalls": {},
+    "legacyUnattributedCalls": 0
   },
   "lastAutoDiscoveryAtByTopic": {
     "Conflict & Security": "2026-10-24T04:20:27.056Z",
