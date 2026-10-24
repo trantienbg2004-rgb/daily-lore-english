@@ -8212,10 +8212,10 @@
       "checkedAt": "2026-10-21T22:33:59.538Z"
     },
     "2649947": {
-      "status": "DRAFTED",
-      "reason": "draft durably saved before validation",
+      "status": "NEEDS_REVIEW",
+      "reason": "editorial: headlines-not-level-specific",
       "revisionId": 1369336527,
-      "checkedAt": "2026-10-24T06:06:48.331Z"
+      "checkedAt": "2026-10-24T06:06:54.347Z"
     },
     "2666861": {
       "status": "RETRY_LATER",
@@ -11290,7 +11290,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-24T06:06:48.333Z",
+  "updatedAt": "2026-10-24T06:06:54.348Z",
   "dailyUsage": {
     "day": "2026-10-23",
     "calls": 259,

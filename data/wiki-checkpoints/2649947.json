@@ -2,10 +2,10 @@
   "pageId": 2649947,
   "title": "Economic analysis of climate change",
   "topic": "Environment",
-  "status": "DRAFTED",
+  "status": "NEEDS_REVIEW",
   "revisionId": 1369336527,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369336527",
-  "reason": "draft durably saved before validation",
+  "reason": "editorial: headlines-not-level-specific",
   "rights": [
     {
       "status": "REVIEW",
@@ -431,7 +431,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1369336527"
     }
   ],
-  "updatedAt": "2026-10-24T06:06:48.332Z",
+  "updatedAt": "2026-10-24T06:06:54.347Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -572,5 +572,10 @@
     "output": 1376,
     "total": 4050
   },
-  "validation": null
+  "validation": {
+    "accepted": false,
+    "errors": [
+      "headlines-not-level-specific"
+    ]
+  }
 }
