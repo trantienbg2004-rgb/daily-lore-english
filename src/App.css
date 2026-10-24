@@ -18,6 +18,7 @@
 /* Saved words remain tappable for a fresh lookup. */
 .saved-word-open{border:0;background:transparent;padding:0;color:inherit;font:inherit;text-align:left;cursor:pointer}
 .saved-word-open:hover{color:#a65f50}
+.saved-item h2.saved-word-title{font:600 clamp(23px,3.4dvh,30px)/1.08 'Bodoni Moda',Georgia,serif;letter-spacing:-.025em;text-transform:uppercase;color:#24211e;margin:0}
 
 /* Select the intended dictionary meaning without changing the editorial design. */
 .meaning-label{font-family:'DM Sans',sans-serif;font-size:10px!important;font-weight:700;letter-spacing:1.6px;color:#999!important;min-height:0!important;margin:14px 0 12px!important}
