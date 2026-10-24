@@ -2,10 +2,10 @@
   "pageId": 34069,
   "title": "Winter Olympic Games",
   "topic": "Sports",
-  "status": "DRAFTED",
+  "status": "NEEDS_REVIEW",
   "revisionId": 1376929654,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376929654",
-  "reason": "draft durably saved before validation",
+  "reason": "editorial: A1-A2:page-1:copied-source-passage",
   "rights": [
     {
       "status": "REVIEW",
@@ -267,7 +267,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376929654"
     }
   ],
-  "updatedAt": "2026-10-24T05:11:24.715Z",
+  "updatedAt": "2026-10-24T05:11:30.534Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -384,5 +384,10 @@
     "output": 131,
     "total": 2897
   },
-  "validation": null
+  "validation": {
+    "accepted": false,
+    "errors": [
+      "A1-A2:page-1:copied-source-passage"
+    ]
+  }
 }
