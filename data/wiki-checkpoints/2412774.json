@@ -467,7 +467,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368430332"
     }
   ],
-  "updatedAt": "2026-10-24T04:22:59.894Z",
+  "updatedAt": "2026-10-24T04:23:17.853Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -540,7 +540,7 @@
             ]
           },
           {
-            "text": "In the United Kingdom, London's blue plaque scheme is widely recognized and dates back over 140 years. Meanwhile, the Philippines utilizes thousands of cast-iron markers managed by the National Historical Commission to document national and local history.",
+            "text": "In the United Kingdom, London features a notable historical plaque scheme that is thought to be the oldest system of its kind. Meanwhile, the Philippines utilizes cast-iron markers installed by the National Historical Commission to commemorate people, places, and events across the country.",
             "evidenceIds": [
               "P9",
               "P10",
@@ -603,11 +603,11 @@
       }
     }
   },
-  "repairAttempts": 0,
+  "repairAttempts": 1,
   "lastUsage": {
-    "input": 2688,
-    "output": 1435,
-    "total": 4123
+    "input": 2513,
+    "output": 130,
+    "total": 2643
   },
   "validation": null
 }
