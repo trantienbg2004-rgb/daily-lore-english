@@ -2,10 +2,10 @@
   "pageId": 30686169,
   "title": "Canadian canoe routes",
   "topic": "Economy",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1318293204,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1318293204",
-  "reason": "9 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REJECTED",
@@ -349,5 +349,134 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1318293204"
     }
   ],
-  "updatedAt": "2026-10-24T04:24:54.337Z"
+  "updatedAt": "2026-10-24T04:25:12.860Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "Canoe Routes and the Fur Trade in Canada",
+        "pages": [
+          {
+            "text": "Long ago, people used rivers and lakes to explore the Canadian land. Water travel was very important because the country has many rivers and short paths between them. The main business driving this exploration was the fur trade. Traders wanted beaver fur to sell in Europe.",
+            "evidenceIds": [
+              "P1",
+              "P2"
+            ]
+          },
+          {
+            "text": "The St. Lawrence River was a great way to enter the continent. French fishermen started trading for furs in the sixteenth century. When Quebec was founded, traders went through many rivers and lakes to meet native people. Montreal became the main base for storing furs.",
+            "evidenceIds": [
+              "P5",
+              "P6"
+            ]
+          },
+          {
+            "text": "Instead of staying on the main river, travelers used a special route west from Montreal. They went up the Ottawa River and crossed over short land paths to reach Georgian Bay. This path was called the first trans Canada highway.",
+            "evidenceIds": [
+              "P7"
+            ]
+          },
+          {
+            "text": "Voyageurs also traveled near the United States border. They used long land paths like the Grand Portage to avoid waterfalls and rivers. Their boats went through many lakes and rivers to reach Lake Winnipeg and areas further west.",
+            "evidenceIds": [
+              "P8"
+            ]
+          },
+          {
+            "text": "Later, explorers reached the far north and the Pacific coast. They crossed difficult land paths to find rivers flowing into the Arctic Ocean. British and Canadian traders also built routes to the west coast, where they competed with American fur companies.",
+            "evidenceIds": [
+              "P9",
+              "P10"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "Early Canadian Canoe Routes and the Fur Trade",
+        "pages": [
+          {
+            "text": "European exploration of the Canadian interior relied primarily on river travel. Because the land features numerous navigable rivers connected by short portages, water-borne travel faced no serious barriers east of the Rocky Mountains. The fur trade, driven mainly by the demand for beaver pelts, financed and motivated both early exploration and initial settlement as European traders exchanged merchandise with native populations.",
+            "evidenceIds": [
+              "P1",
+              "P2",
+              "P3"
+            ]
+          },
+          {
+            "text": "While several entry points existed, the St. Lawrence River served as the primary gateway to the continent. During the French Era, cod fishermen traded for furs at Tadoussac, and the foundation of Quebec allowed coureurs des bois to spread through inland waterways. Montreal developed into the central base where furs were stored before shipment to Europe, while tribes acted as middlemen bringing pelts from further inland.",
+            "evidenceIds": [
+              "P5",
+              "P6"
+            ]
+          },
+          {
+            "text": "Travelers bypassed the upper St. Lawrence rapids by taking a western route from Montreal that utilized the Ottawa and Mattawa rivers, crossed the La Vase portage, and descended the French River to Georgian Bay. Known as the first Trans-Canada Highway, this path was first used by Étienne Brûlé and Samuel de Champlain, with alternative routes available when Iroquois hostility made the Ottawa River dangerous.",
+            "evidenceIds": [
+              "P7"
+            ]
+          },
+          {
+            "text": "Further west near Lake Superior, voyageurs navigated a complex network of rivers and lakes. They utilized the nine-mile Grand Portage to bypass the Pigeon River's canyon and waterfalls, eventually reaching Lake Winnipeg via the Winnipeg River. Meanwhile, the British maintained posts on Hudson Bay, initially waiting for indigenous hunters to bring furs directly to the coast before eventually moving inland.",
+            "evidenceIds": [
+              "P8",
+              "P14"
+            ]
+          },
+          {
+            "text": "Explorers eventually pushed toward the Arctic and Pacific watersheds. The route from Cumberland House led through the Churchill River basin and across the challenging Methye Portage to the Clearwater River. By the early nineteenth century, explorers like David Thompson reached the mouth of the Columbia River, linking inland canoe routes to a growing maritime fur trade on the Pacific coast.",
+            "evidenceIds": [
+              "P9",
+              "P10"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "Waterways of Empire: Canadian Canoe Routes",
+        "pages": [
+          {
+            "text": "The penetration of the Canadian interior by Europeans was fundamentally contingent upon fluvial networks. Devoid of major geographic impediments east of the Rockies, the landscape offered interconnected river systems bridged by brief portages. This geographic continuity facilitated a commercial imperative: the European demand for beaver pelts catalyzed both the initial exploration and the subsequent colonization of the territory through direct exchanges of European merchandise for native-trapped furs.",
+            "evidenceIds": [
+              "P1",
+              "P2",
+              "P3"
+            ]
+          },
+          {
+            "text": "Geographic constraints eliminated several potential entry points, rendering the St. Lawrence River the premier access route to the continent. Following sixteenth-century cod fisheries and the establishment of Quebec, coureurs des bois utilized extensive riverine networks to trade with indigenous groups. Montreal functioned as the indispensable entrepôt for accumulating pelts prior to transatlantic shipment, while localized tribes operated as intermediaries drawing pelts from increasingly remote interior zones.",
+            "evidenceIds": [
+              "P5",
+              "P6"
+            ]
+          },
+          {
+            "text": "Navigational hazards on the upper St. Lawrence necessitated an alternative westward trajectory originating near Montreal. This passage ascended the Ottawa and Mattawa rivers, traversed the La Vase portage to Lake Nipissing, and descended via the French River into Georgian Bay. Frequently designated the initial Trans-Canada Highway, this route was pioneered by Étienne Brûlé and Samuel de Champlain, with alternate diversions established to circumvent hostile indigenous territories.",
+            "evidenceIds": [
+              "P7"
+            ]
+          },
+          {
+            "text": "Operations expanded westward into the Nelson River basin, where voyageurs traversed the protracted Grand Portage to circumvent the Pigeon River canyon. Navigating a succession of boundary lakes and the Winnipeg River, expeditions unlocked access to Lake Winnipeg and the broader interior. Concurrently, British trading ventures initially adhered to coastal posts on Hudson Bay before aggressive French inland expansion compelled them to establish interior supply lines.",
+            "evidenceIds": [
+              "P8",
+              "P14"
+            ]
+          },
+          {
+            "text": "Continental exploration ultimately breached northern and western boundaries. The axis extending from Cumberland House utilized the Sturgeon-Weir and Churchill river systems, culminating in the arduous transit of the Methye Portage to reach Arctic-drainage waters. Concurrently, southern and western expansions linked interior canoe pathways to the Pacific littoral, highlighted by David Thompson reaching the Columbia River and establishing a competitive presence in the Pacific fur trade.",
+            "evidenceIds": [
+              "P9",
+              "P10"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2721,
+    "output": 1634,
+    "total": 4355
+  },
+  "validation": null
 }
