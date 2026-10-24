@@ -2,10 +2,10 @@
   "pageId": 1471981,
   "title": "Election monitoring",
   "topic": "Politics",
-  "status": "EVIDENCE_READY",
+  "status": "RETRY_LATER",
   "revisionId": 1380062981,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380062981",
-  "reason": "4 rights-verified embedded images",
+  "reason": "Gemini token usage unavailable",
   "rights": [
     {
       "status": "REVIEW",
@@ -209,5 +209,5 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380062981"
     }
   ],
-  "updatedAt": "2026-10-24T10:36:29.338Z"
+  "updatedAt": "2026-10-24T10:36:34.990Z"
 }
