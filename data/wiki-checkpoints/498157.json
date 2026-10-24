@@ -2,9 +2,176 @@
   "pageId": 498157,
   "title": "Slave Trade Act 1807",
   "topic": "Economy",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1377941859,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377941859",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-24T11:07:41.630Z"
+  "reason": "3 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:William wilberforce.jpg",
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/e/eb/William_wilberforce.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "fileTitle": "File:William wilberforce.jpg",
+        "caption": "William Wilberforce, the leader of the British campaign to abolish the slave trade.",
+        "alt": "",
+        "description": "William Wilberforce (1759-1833)",
+        "date": "1794date QS:P571,+1794-00-00T00:00:00Z/9date QS:P571,+1794-00-00T00:00:00Z/9",
+        "section": "",
+        "position": 0,
+        "provenance": {
+          "credit": "Anton Hickel",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:William_wilberforce.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Slave_Trade_Act_1807",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377941859",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:Henry Dundas, 1st Viscount Melville by Sir Thomas Lawrence.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2d/Henry_Dundas%2C_1st_Viscount_Melville_by_Sir_Thomas_Lawrence.jpg/960px-Henry_Dundas%2C_1st_Viscount_Melville_by_Sir_Thomas_Lawrence.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Henry Dundas, 1st Viscount Melville by Sir Thomas Lawrence.jpg",
+        "caption": "Henry Dundas, 1st Viscount Melville by Sir Thomas Lawrence",
+        "alt": "",
+        "description": "Henry Dundas, 1st Viscount Melville, by Sir Thomas Lawrence (died 1830). See source website for additional information. This set of images was gathered by User:Dcoetzee from the National Portrait Gallery, London website using a special tool. All images in this batch have been confirmed as author died before 1939 according to the official death date listed by the NPG. Henry Dundas, 1st Viscount Melville, by Sir Thomas Lawrence (died 1830). See source website for additional information. This set of images was gathered by User:Dcoetzee from the Na",
+        "date": "Unknown date, but author died in 1830",
+        "section": "",
+        "position": 1,
+        "provenance": {
+          "credit": "Thomas Lawrence",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Henry_Dundas,_1st_Viscount_Melville_by_Sir_Thomas_Lawrence.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Slave_Trade_Act_1807",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377941859",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:Official medallion of the British Anti-Slavery Society (1795).jpg",
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/8/80/Official_medallion_of_the_British_Anti-Slavery_Society_%281795%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "fileTitle": "File:Official medallion of the British Anti-Slavery Society (1795).jpg",
+        "caption": "Wedgwood anti-slavery medallion created as part of anti-slavery campaign by Josiah Wedgwood, 1787.",
+        "alt": "",
+        "description": "The Official Medallion of the British Anti-Slavery Society",
+        "date": "1795",
+        "section": "",
+        "position": 2,
+        "provenance": {
+          "credit": "Josiah Wedgwood (1730-1795) and either William Hackwood or Henry Webber; \"Josiah Wedgewood...produced the emblem as a jasper-ware cameo at his pottery factory. Although the artist who designed and engraved the seal is unknown, the design for the came",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Official_medallion_of_the_British_Anti-Slavery_Society_(1795).jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Slave_Trade_Act_1807",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377941859",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "8564dc56874502b29c49a674edeb04c8a60d567009e24afffc4e48003e0768dc",
+      "heading": "Lead",
+      "excerpt": "The Slave Trade Act 1807 (47 Geo. 3 Sess. 1. c. 36), or the Abolition of Slave Trade Act 1807, was an act of the Parliament of the United Ki",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377941859"
+    },
+    {
+      "id": "P2",
+      "hash": "a77a4b45d290b40e7ff76ae1e6c85892ba707d87b499f8613d434c16a5473f74",
+      "heading": "Lead",
+      "excerpt": "Many of the supporters thought the act would lead to the end of slavery. Slavery on English soil was unsupported in English law and that pos",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377941859"
+    },
+    {
+      "id": "P3",
+      "hash": "c70cdbec1dcaa3f7c34f34eb76e530147e005f310d5464cc49f9fe6887f90400",
+      "heading": "Background",
+      "excerpt": "As British historian Martin Meredith writes, \"In the decade between 1791 and 1800, British ships made about 1,340 voyages across the Atlanti",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377941859"
+    },
+    {
+      "id": "P4",
+      "hash": "801d751962b55cb789fc8f5d6d210f5eb7a934cbfb46cec96708ae88380f1282",
+      "heading": "Background",
+      "excerpt": "The Committee for the Abolition of the Slave Trade was formed in 1787 by a group of Evangelical English Protestants allied with the Quakers,",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377941859"
+    },
+    {
+      "id": "P5",
+      "hash": "d7bce4074705672b2363a39787aa381ff573f0b2643f317d4b51af914fd58f9c",
+      "heading": "Background",
+      "excerpt": "On 2 April 1792, William Wilberforce sponsored a motion in the House of Commons \"that the trade carried on by British subjects, for the purp",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377941859"
+    },
+    {
+      "id": "P6",
+      "hash": "c873a2363dc07f54323b265f397e2d9e401cfb0d23343725f13474c7c92fe825",
+      "heading": "Other nations",
+      "excerpt": "By its Act Against Slavery of 1793, the Parliament of Upper Canada in British North America (modern-day Canada) abolished the slave trade, f",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377941859"
+    },
+    {
+      "id": "P7",
+      "hash": "319b87ee4bbfef4e1fe5fc0ec5391c40950807e2f1122ae0f41523b3090a5482",
+      "heading": "Enforcement",
+      "excerpt": "The act created fines for ship captains who continued with the trade. These fines could be up to £100 per enslaved person found on a ship. T",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377941859"
+    },
+    {
+      "id": "P8",
+      "hash": "d0f121609d72021ba1a0a38433e03b67dcb367ed5ee155222cee3e1b3e0a9906",
+      "heading": "Subsequent developments",
+      "excerpt": "The whole act was repealed by section 1 of, and the schedule to, the Statute Law Revision Act 1861 (24 & 25 Vict. c. 101), which came into f",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377941859"
+    },
+    {
+      "id": "P9",
+      "hash": "50af798e5b80d5c5cca9826f387145d85929f5fa38a41425072328d3e3b7704d",
+      "heading": "Background",
+      "excerpt": "Three weeks after the vote, Dundas tabled resolutions setting out a plan to implement gradual abolition by the end of 1799. At that time he ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377941859"
+    },
+    {
+      "id": "P10",
+      "hash": "29d00c6412a51e55da0840b16c62a592575d2210b55236a11bb2cb74c5107fd5",
+      "heading": "Background",
+      "excerpt": "Thus the 1792 Slave Trade Bill was passed by the House of Commons; but mangled and mutilated by the modifications and amendments of Pitt, Ea",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377941859"
+    },
+    {
+      "id": "P11",
+      "hash": "0d6487ec866be5d695a22c6ad46c2a852ad33226a7964d5c751fd3e5bf5a62d1",
+      "heading": "Background",
+      "excerpt": "Abolitionists’ numbers were magnified by the precarious position of the government under Lord Grenville, whose short term as prime minister ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377941859"
+    },
+    {
+      "id": "P12",
+      "hash": "34aeaf1a13d3c5be6c83197248e837810cac9f94354042756c77102a8b5a3074",
+      "heading": "Background",
+      "excerpt": "All that took place against the background of the ongoing War of the Fourth Coalition. In the last months of 1806, Napoleon had won a major ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377941859"
+    },
+    {
+      "id": "P13",
+      "hash": "fd3103df283bc3830c14aa674b2ab72e91b39298ea13e126bcdc5e5b8a11577f",
+      "heading": "Other nations",
+      "excerpt": "The United States adopted its Act Prohibiting Importation of Slaves on 2 March 1807, the same month and year as the British action. It provi",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377941859"
+    }
+  ],
+  "updatedAt": "2026-10-24T11:07:47.422Z"
 }
