@@ -2,9 +2,166 @@
   "pageId": 39122258,
   "title": "Elie Wiesel Foundation for Humanity",
   "topic": "Society",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1344884585,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1344884585",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-24T10:36:41.462Z"
+  "reason": "2 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:Elie Wiesel and wife Marion 2012 Shankbone.JPG",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a9/Elie_Wiesel_and_wife_Marion_2012_Shankbone.JPG/960px-Elie_Wiesel_and_wife_Marion_2012_Shankbone.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Elie Wiesel and wife Marion 2012 Shankbone.JPG",
+        "caption": "Founders Elie Wiesel and Marion Wiesel (2012).",
+        "alt": "",
+        "description": "Elie Wiesel and his wife Marion at the 2012 Time 100 gala.",
+        "date": "2012-04-24",
+        "section": "",
+        "position": 0,
+        "provenance": {
+          "credit": "David Shankbone",
+          "license": "CC BY 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Elie_Wiesel_and_wife_Marion_2012_Shankbone.JPG",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Elie_Wiesel_Foundation_for_Humanity",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1344884585",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:Buchenwald Slave Laborers Liberation.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/dc/Buchenwald_Slave_Laborers_Liberation.jpg/960px-Buchenwald_Slave_Laborers_Liberation.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Buchenwald Slave Laborers Liberation.jpg",
+        "caption": "Buchenwald concentration camp, April 16, 1945. Wiesel is in the 2nd row from the bottom, 7th from the left, next to the bunk post.",
+        "alt": "",
+        "description": "These are slave laborers in the Buchenwald concentration camp near Weimar; many had died from malnutrition when U.S. troops of the 80th Division entered the camp. The very ill man lying at the back on the lower bunk was thought to be Max Hamburger, but this is probably not true. Second row, seventh from left is Elie Wiesel. Photograph taken 5 days after rescue.",
+        "date": "Taken on 16 April 1945",
+        "section": "History",
+        "position": 1,
+        "provenance": {
+          "credit": "Private H. Miller. (Army)",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Buchenwald_Slave_Laborers_Liberation.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Elie_Wiesel_Foundation_for_Humanity",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1344884585",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "6499a8dc2ce8855d6f669d2f066b4de6f5489c5c298d1a7a6053c1d933481eab",
+      "heading": "Lead",
+      "excerpt": "Elie Wiesel and his wife Marion Wiesel founded the Elie Wiesel Foundation in 1986, the same year he received the Nobel Peace Prize, using th",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1344884585"
+    },
+    {
+      "id": "P2",
+      "hash": "47fe606c224346b36e5951d06a94ee69a067cdc1ed377e22048e6b780b5ec96d",
+      "heading": "Lead",
+      "excerpt": "The Foundation's mission statement, created in remembrance of the Holocaust, is \"to combat indifference, intolerance and injustice through i",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1344884585"
+    },
+    {
+      "id": "P3",
+      "hash": "9c8ae9c5da06ac25c8e31d73357a879f628f55a9aaeab953221a66531c298dc4",
+      "heading": "History",
+      "excerpt": "He shared his experiences in the Holocaust in his memoir, Night, and his name can be seen in the U.S. Holocaust Memorial Museum in Washingto",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1344884585"
+    },
+    {
+      "id": "P4",
+      "hash": "2a67a687d31499d1c272d077daa450081d2959ff0b7c98e081565991adea7cb3",
+      "heading": "History",
+      "excerpt": "The foundation had approximately $15 million in investments managed by Bernard Madoff Investment Securities, which was lost when Madoff's co",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1344884585"
+    },
+    {
+      "id": "P5",
+      "hash": "58a487cc9bce7e19044c2e84c16ff874154806f7a5be7611b6252faad4adc2ad",
+      "heading": "The Beit Tzipora Centers",
+      "excerpt": "The foundation opened up two \"Beit Tzipora Centers\" in Israel for Ethiopian Jews fleeing violence in Africa. The centers are named after Eli",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1344884585"
+    },
+    {
+      "id": "P6",
+      "hash": "6f2c9ae376cd742d11f90f8c508d0f6b1851d3525535c94047c385b192b10584",
+      "heading": "Darfurian refugee program",
+      "excerpt": "In the fall of 2007 the foundation recognized a need in Israel for a similar center to the Beit Tzipora centers for refugees fleeing the gen",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1344884585"
+    },
+    {
+      "id": "P7",
+      "hash": "b43a41156d20d799c2361021f2cbd1612faaafa499eab94d4ae84cf312c8a9c3",
+      "heading": "Prize in Ethics essay contest",
+      "excerpt": "The foundation established the award in 1989, as an essay contest for juniors and seniors in 4-year accredited colleges in the United States",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1344884585"
+    },
+    {
+      "id": "P8",
+      "hash": "788cc8520ef82fd4cdc02ec9b2c5b59ec6ed4dffd1b2a7cd1ea3bec8fdb89ed8",
+      "heading": "Political positions",
+      "excerpt": "The Elie Wiesel Foundation stated Israel's actions in the Gaza war were \"legitimate acts of self-defense against an organization that seeks ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1344884585"
+    },
+    {
+      "id": "P9",
+      "hash": "c1c28fafd587d980fc28709e4fc5c8c1f0cb416ca5ad5eccb2e94bee7f533224",
+      "heading": "Foundation awards",
+      "excerpt": "The Humanitarian Award was created by to recognize people that fight injustice, intolerance and share the beliefs and goals of the foundatio",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1344884585"
+    },
+    {
+      "id": "P10",
+      "hash": "63e667e6c4364b6dc5b889f1d406bfbe848ace9416290fce920b5657307246db",
+      "heading": "Arts for Humanity Award",
+      "excerpt": "The inaugural Arts for Humanity Award was given to Academy Award winning actor Tom Hanks in October 2012. The award is given to not only rec",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1344884585"
+    },
+    {
+      "id": "P11",
+      "hash": "a29e9e3764552696e6b6d5ff51b7c69ad8ac7581eb9580130f25d1ba1c7b5ada",
+      "heading": "The Beit Tzipora Centers",
+      "excerpt": "Formally inaugurated on July 25, 2007, the former Ashkelon center was made-over with new classrooms, technology and an auditorium. The Ashke",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1344884585"
+    },
+    {
+      "id": "P12",
+      "hash": "141e31659f274fe38bfe1c63c643b1fa2d43ae2d16624f62487a11567a82b13e",
+      "heading": "The Beit Tzipora Centers",
+      "excerpt": "Israeli school and government officials have seen and commented on the positive, dramatic impact the Beit Tzipora study and enrichment progr",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1344884585"
+    },
+    {
+      "id": "P13",
+      "hash": "e4ddb4facbb81dea188b408dc9490e885901ebdd3f6368d3213d1dbfff43a088",
+      "heading": "Foundation awards",
+      "excerpt": "President George H. W. Bush in 1991 for his role in bringing peace and democracy to the Middle East during and after the Gulf War.",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1344884585"
+    },
+    {
+      "id": "P14",
+      "hash": "7047aaee3265e90f04fbbec7602d27108f2d7f50c33a1504a54c8fd630d48223",
+      "heading": "Foundation awards",
+      "excerpt": "Nicolas Sarkozy, former French President, won the award in 2008 for renewing ties with WW2 allies and his commitment to peace for Israel and",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1344884585"
+    },
+    {
+      "id": "P15",
+      "hash": "3170da10f3450efbd074c3f3ed00a46c1abfd67426659ef9fdedb602bcb767b6",
+      "heading": "Foundation awards",
+      "excerpt": "The awards are modeled after Jewish tzedakah, or collection boxes. These boxes are used to collect donations for the poor anonymously. The H",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1344884585"
+    }
+  ],
+  "updatedAt": "2026-10-24T10:36:47.359Z"
 }
