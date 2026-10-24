@@ -2,10 +2,10 @@
   "pageId": 57768,
   "title": "Women's Tennis Association",
   "topic": "Sports",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1378762495,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378762495",
-  "reason": "4 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -260,5 +260,140 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378762495"
     }
   ],
-  "updatedAt": "2026-10-24T08:05:37.254Z"
+  "updatedAt": "2026-10-24T08:05:50.570Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "The Story of Women's Tennis",
+        "pages": [
+          {
+            "text": "Women play professional tennis all over the world today. The main group that runs this sport is the Womens Tennis Association. They govern the tour and work to help female athletes. Their main office is in Florida, with other offices in London and Beijing.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "In the past, women faced big money problems in tennis. Male leaders ran most tournaments and gave most of the cash to men. In 1970, a big tournament had a huge pay gap between men and women. Nine brave players decided to fight for equal pay.",
+            "evidenceIds": [
+              "P4",
+              "P5",
+              "P13"
+            ]
+          },
+          {
+            "text": "These nine players became known as the Original 9. They made their own tournament in Houston with help from a magazine publisher and a tobacco company. This successful event led to more matches sponsored by Virginia Slims and other big brands.",
+            "evidenceIds": [
+              "P2",
+              "P3",
+              "P14"
+            ]
+          },
+          {
+            "text": "In June 1973, tennis star Billie Jean King helped found the Womens Tennis Association at a meeting in London. She became the first president of the new organization. Two years later, the group signed its very first television broadcast contract with CBS.",
+            "evidenceIds": [
+              "P2",
+              "P6"
+            ]
+          },
+          {
+            "text": "Over time, the association grew very large and gained huge sponsorships. After a long campaign, all four major tennis tournaments finally offered equal prize money to both women and men. Today, thousands of players from nearly one hundred countries compete for millions.",
+            "evidenceIds": [
+              "P3",
+              "P10",
+              "P19"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "Rise of the Womens Tennis Association",
+        "pages": [
+          {
+            "text": "The Womens Tennis Association stands as the principal organizing body for professional women's tennis worldwide. Headquartered in St. Petersburg, Florida, with regional hubs in London and Beijing, the association governs the professional tour to create a better future for female athletes globally.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "During the late 1960s and early 1970s, female tennis players encountered severe financial inequality within a male-dominated sport. Promoters and tournament directors routinely allocated the vast majority of prize money to male competitors, leading to extreme pay disparities at major sporting events.",
+            "evidenceIds": [
+              "P4",
+              "P5",
+              "P12"
+            ]
+          },
+          {
+            "text": "Refusing to accept unfair treatment, nine top female athletes staged a historic protest in 1970 by boycotting a tournament with a twelve-to-one pay gap. Backed by supporters, they organized their own successful competition in Houston, laying the vital groundwork for a separate women's professional circuit.",
+            "evidenceIds": [
+              "P13",
+              "P14"
+            ]
+          },
+          {
+            "text": "Led by Billie Jean King, seventy female players officially established the Womens Tennis Association in London just before the 1973 Wimbledon Championships. King assumed the role of first president, and shortly afterward, the organization secured its milestone television broadcast agreement with CBS.",
+            "evidenceIds": [
+              "P2",
+              "P6"
+            ]
+          },
+          {
+            "text": "As the decades progressed, leadership figures negotiated major corporate sponsorships and expanded global reach. Following a determined campaign for financial parity, all four major tennis tournaments eventually achieved equal prize money for women and men, transforming the professional landscape.",
+            "evidenceIds": [
+              "P8",
+              "P10",
+              "P19"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "Evolution and Impact of the WTA",
+        "pages": [
+          {
+            "text": "Operating as the principal governing body of professional women's tennis, the Womens Tennis Association administers the worldwide tour from its headquarters in St. Petersburg, Florida, complemented by European and Asia-Pacific offices in London and Beijing respectively.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "In the nascent years of tennis's Open Era, female athletes navigated systemic financial marginalization within a male-dominated ecosystem. Because tournament directors and proprietors were predominantly former male players, revenue distribution heavily favored men, culminating in severe prize disparities.",
+            "evidenceIds": [
+              "P4",
+              "P5",
+              "P12"
+            ]
+          },
+          {
+            "text": "Catalyzed by an egregious pay disparity at the 1970 Pacific Southwest Championships, nine prominent female competitors initiated a watershed boycott. Spearheading an independent alternative in Houston, they established the commercial viability necessary for autonomous women's competition.",
+            "evidenceIds": [
+              "P13",
+              "P14"
+            ]
+          },
+          {
+            "text": "Under the stewardship of Billie Jean King, the collective formalized into the Womens Tennis Association during a London assembly in June 1973. King inaugurated her tenure as founding president, and the organization swiftly augmented its financial standing through foundational media contracts.",
+            "evidenceIds": [
+              "P2",
+              "P6"
+            ]
+          },
+          {
+            "text": "Subsequent administrative leadership orchestrated lucrative multinational sponsorships and expanded global broadcasting agreements. Through sustained advocacy, the association ultimately secured historic prize money parity across all four major Grand Slam tournaments, cementing professional equality.",
+            "evidenceIds": [
+              "P8",
+              "P10",
+              "P19"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2976,
+    "output": 1014,
+    "total": 3990
+  },
+  "validation": null
 }
