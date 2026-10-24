@@ -7712,10 +7712,10 @@
       "checkedAt": "2026-10-24T03:37:16.075Z"
     },
     "178715": {
-      "status": "FETCHED",
-      "reason": "pinned-source-ready",
+      "status": "EVIDENCE_READY",
+      "reason": "8 rights-verified embedded images",
       "revisionId": 1380991282,
-      "checkedAt": "2026-10-24T10:16:55.654Z"
+      "checkedAt": "2026-10-24T10:17:01.247Z"
     },
     "184235": {
       "status": "RETRY_LATER",
@@ -11930,7 +11930,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-24T10:16:55.655Z",
+  "updatedAt": "2026-10-24T10:17:01.248Z",
   "dailyUsage": {
     "day": "2026-10-24",
     "calls": 117,
