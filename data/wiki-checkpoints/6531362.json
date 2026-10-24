@@ -251,7 +251,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379214914"
     }
   ],
-  "updatedAt": "2026-10-24T07:40:50.190Z",
+  "updatedAt": "2026-10-24T07:41:08.349Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -391,11 +391,11 @@
       }
     }
   },
-  "repairAttempts": 0,
+  "repairAttempts": 1,
   "lastUsage": {
-    "input": 3184,
-    "output": 1818,
-    "total": 5002
+    "input": 3027,
+    "output": 139,
+    "total": 3166
   },
   "validation": null
 }
