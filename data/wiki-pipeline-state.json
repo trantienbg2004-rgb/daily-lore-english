@@ -6800,10 +6800,10 @@
       "checkedAt": "2026-10-23T23:37:54.531Z"
     },
     "516775": {
-      "status": "PENDING",
-      "reason": "queued",
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
       "revisionId": 1374612787,
-      "checkedAt": null
+      "checkedAt": "2026-10-24T04:06:26.195Z"
     },
     "524267": {
       "status": "EVIDENCE_READY",
@@ -10202,7 +10202,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-24T04:06:18.612Z",
+  "updatedAt": "2026-10-24T04:06:26.212Z",
   "dailyUsage": {
     "day": "2026-10-23",
     "calls": 166,
