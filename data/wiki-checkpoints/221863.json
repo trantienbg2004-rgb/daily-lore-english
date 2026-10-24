@@ -2,10 +2,10 @@
   "pageId": 221863,
   "title": "Inter-Parliamentary Union",
   "topic": "Politics",
-  "status": "EVIDENCE_READY",
+  "status": "RETRY_LATER",
   "revisionId": 1381082093,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381082093",
-  "reason": "3 rights-verified embedded images",
+  "reason": "Gemini token usage unavailable",
   "rights": [
     {
       "status": "REVIEW",
@@ -222,5 +222,5 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381082093"
     }
   ],
-  "updatedAt": "2026-10-24T10:44:35.346Z"
+  "updatedAt": "2026-10-24T10:44:41.174Z"
 }
