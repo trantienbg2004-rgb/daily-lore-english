@@ -9170,10 +9170,10 @@
       "checkedAt": null
     },
     "7569422": {
-      "status": "PENDING",
-      "reason": "queued",
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
       "revisionId": 1374169717,
-      "checkedAt": null
+      "checkedAt": "2026-10-24T10:16:37.508Z"
     },
     "7597459": {
       "status": "PENDING",
@@ -11930,7 +11930,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-24T10:16:31.101Z",
+  "updatedAt": "2026-10-24T10:16:37.518Z",
   "dailyUsage": {
     "day": "2026-10-24",
     "calls": 117,
