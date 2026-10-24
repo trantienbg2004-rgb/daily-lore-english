@@ -34,7 +34,8 @@ test('automatic refill skips Wikipedia while every topic has enough pending sour
 })
 
 test('automatic refill appends fresh IDs without rebuilding the existing queue',async()=>{
- let stored={version:1,queue:[candidate],outcomes:{42:{status:'PENDING'}}},persisted=0
+ let stored={version:1,queue:[candidate,...WIKI_TOPICS.filter(topic=>topic!=='Politics').flatMap((topic,index)=>
+  [0,1,2].map(offset=>({pageId:1000+index*3+offset,topic})))],outcomes:{42:{status:'PENDING'}}},persisted=0
  const result=await topUpWikiQueue({base:'unused',minPerTopic:2,maxTopics:1,now:new Date('2026-10-21T00:00:00Z'),
   readState:async()=>structuredClone(stored),writeState:async(_base,next)=>{stored=next},onPersist:async()=>{persisted++},
   discoverQueue:async({topics,excludeQueued})=>{
@@ -44,11 +45,16 @@ test('automatic refill appends fresh IDs without rebuilding the existing queue',
  assert.equal(result.status,'refilled')
  assert.equal(result.added,1)
  assert.equal(stored.queue[0].pageId,42)
- assert.equal(stored.lastAutoDiscoveryDay,'2026-10-21')
+ assert.equal(stored.lastAutoDiscoveryAtByTopic.Politics,'2026-10-21T00:00:00.000Z')
  assert.equal(persisted,1)
- const again=await topUpWikiQueue({base:'unused',now:new Date('2026-10-21T12:00:00Z'),
+ const again=await topUpWikiQueue({base:'unused',minPerTopic:2,maxTopics:1,now:new Date('2026-10-21T01:00:00Z'),
   readState:async()=>stored,discoverQueue:async()=>{throw Error('should not rediscover')}})
- assert.equal(again.status,'already-checked')
+ assert.equal(again.status,'cooldown')
+ const next=await topUpWikiQueue({base:'unused',minPerTopic:3,maxTopics:1,now:new Date('2026-10-21T07:00:00Z'),
+  readState:async()=>structuredClone(stored),writeState:async(_base,updated)=>{stored=updated},
+  discoverQueue:async()=>{stored.queue.push({pageId:44,title:'Another Parliament',topic:'Politics'})}})
+ assert.equal(next.status,'refilled')
+ assert.equal(next.added,1)
 })
 
 test('refill discovery excludes already queued pages from candidate ranking',async()=>{
