@@ -2,10 +2,10 @@
   "pageId": 48691882,
   "title": "Buddhist rock carving in Manglawar",
   "topic": "Culture",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1359652646,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1359652646",
-  "reason": "10 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -411,5 +411,134 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1359652646"
     }
   ],
-  "updatedAt": "2026-10-24T08:57:29.874Z"
+  "updatedAt": "2026-10-24T08:57:47.869Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "Buddhist Rock Art in Manglawar",
+        "pages": [
+          {
+            "text": "The Manglawar valley is a place in Pakistan. It is near the town of Mingora. This valley has many old Buddhist sculptures and rock carvings. People can see statues carved into big stones. The most famous one is the Shakhorai Buddha.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Aurel Stein wrote about the valley long ago. He saw many Buddhist rock reliefs. The biggest one is a seated Buddha. It is about thirteen feet tall. It is carved high up on a reddish rock wall above the narrow ground below.",
+            "evidenceIds": [
+              "P3",
+              "P4"
+            ]
+          },
+          {
+            "text": "The large Buddha statue is very high up on the cliff. Because of this high place, it was saved from people who might have harmed it. But this same high place makes it very hard to take a good photograph of the statue today.",
+            "evidenceIds": [
+              "P4"
+            ]
+          },
+          {
+            "text": "Researchers found many other rock carvings in the area. They are in places like Shaldara, Kalkata, and Banjot. Some stones show figures sitting or standing. Many of these old carvings are covered by thick plants, trees, and heavy natural patina.",
+            "evidenceIds": [
+              "P18",
+              "P20",
+              "P21",
+              "P22"
+            ]
+          },
+          {
+            "text": "At Banjot, a round boulder shows different figures on its sides. One side shows standing and seated figures holding lotus flowers and water flasks. Water flowing over the rock has faded some of the artistic details over time.",
+            "evidenceIds": [
+              "P23"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "Ancient Buddhist Rock Carvings of Manglawar",
+        "pages": [
+          {
+            "text": "Situated in Pakistan about nine kilometers northeast of Mingora, the Manglawar valley features numerous Buddhist reliefs and sculptures. Among these ancient works, the best known is the colossal Shakhorai Buddha, located where several side valleys descend from the eastern watershed range.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "According to the accounts of Aurel Stein, the most striking carving is a seated Buddha about thirteen feet in height. It is carved on the vertical face of a reddish rock high above a narrow terrace. While this elevated position protected the relief from vandals, it makes photography difficult.",
+            "evidenceIds": [
+              "P3",
+              "P4"
+            ]
+          },
+          {
+            "text": "Some scholars believe the Swat Valley is the site of Oddiyana, a medieval kingdom important to Vajrayana Buddhism. The valley contains many sacred areas, rock reliefs, and inscriptions that once welcomed ancient pilgrims entering the region.",
+            "evidenceIds": [
+              "P2",
+              "P5"
+            ]
+          },
+          {
+            "text": "Recent discoveries have revealed further rock carvings in locations such as Shaldara, Kalkata, and Banjot. Many of these stones feature figures like Bodhisattvas in pensive attitudes. However, thick layers of patina, vegetation, and water channels have obscured several details.",
+            "evidenceIds": [
+              "P18",
+              "P20",
+              "P21",
+              "P22"
+            ]
+          },
+          {
+            "text": "In Banjot, a round boulder displays multiple carved scenes across its exposed sides. These reliefs include figures holding water flasks and lotus flowers. Constant water flow across the rock surface has faded many of the intricate artistic details.",
+            "evidenceIds": [
+              "P23"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "Buddhist Sculptures and Carvings in Manglawar",
+        "pages": [
+          {
+            "text": "The Manglawar valley in Pakistan lies approximately nine kilometers northeast of Mingora at the convergence of side valleys descending from the eastern watershed. This geographic area preserves a dense concentration of Buddhist reliefs, sculptures, and inscriptions, anchored most famously by the Shakhorai Buddha.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Historical accounts by Aurel Stein emphasize the archaeological significance of the valley, highlighting a colossal thirteen-foot seated Buddha carved onto a vertical reddish cliff face. Although this elevated location preserved the sculpture from pious vandals, it simultaneously impedes photographic documentation.",
+            "evidenceIds": [
+              "P3",
+              "P4"
+            ]
+          },
+          {
+            "text": "The broader Swat Valley functioned as a sacred landscape containing numerous monasteries. Certain scholars propose it as the historical site of Oddiyana, a medieval kingdom associated with the dissemination of Vajrayana Buddhism and the homeland of notable sages.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "Beyond the principal site, archaeological surveys have documented new rock carvings across locations including Shaldara, Kalkata, and Banjot. These panels typically depict Bodhisattvas and other figures, though many surfaces suffer from severe weathering, obscuring patina layers, and vegetative overgrowth.",
+            "evidenceIds": [
+              "P18",
+              "P20",
+              "P21",
+              "P22"
+            ]
+          },
+          {
+            "text": "At the Banjot site, a prominent boulder exhibits diverse engraved scenes featuring deities and Bodhisattvas holding attributes such as water flasks and lotus stems. Continuous water movement across the stone has progressively eroded these artistic details.",
+            "evidenceIds": [
+              "P23"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 3104,
+    "output": 1381,
+    "total": 4485
+  },
+  "validation": null
 }
