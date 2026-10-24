@@ -2,10 +2,10 @@
   "pageId": 2872472,
   "title": "Costumbrismo",
   "topic": "Culture",
-  "status": "DRAFTED",
+  "status": "VALIDATED",
   "revisionId": 1372267609,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1372267609",
-  "reason": "draft durably saved before validation",
+  "reason": "local factual, style, length, structure and source audit passed",
   "rights": [
     {
       "status": "REVIEW",
@@ -405,7 +405,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1372267609"
     }
   ],
-  "updatedAt": "2026-10-24T05:16:44.958Z",
+  "updatedAt": "2026-10-24T05:17:02.874Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -536,5 +536,8 @@
     "output": 1540,
     "total": 4715
   },
-  "validation": null
+  "validation": {
+    "accepted": true,
+    "errors": []
+  }
 }
