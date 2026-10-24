@@ -2,10 +2,10 @@
   "pageId": 54204,
   "title": "Philip II of Macedon",
   "topic": "Sports",
-  "status": "DRAFTED",
+  "status": "VALIDATED",
   "revisionId": 1378691409,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378691409",
-  "reason": "draft durably saved before validation",
+  "reason": "local factual, style, length, structure and source audit passed",
   "rights": [
     {
       "status": "REJECTED",
@@ -295,7 +295,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378691409"
     }
   ],
-  "updatedAt": "2026-10-24T06:26:29.040Z",
+  "updatedAt": "2026-10-24T06:26:47.056Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -448,5 +448,8 @@
     "output": 131,
     "total": 2916
   },
-  "validation": null
+  "validation": {
+    "accepted": true,
+    "errors": []
+  }
 }
