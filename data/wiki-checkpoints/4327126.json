@@ -2,10 +2,10 @@
   "pageId": 4327126,
   "title": "Repatriation (cultural property)",
   "topic": "Culture",
-  "status": "DRAFTED",
+  "status": "VALIDATED",
   "revisionId": 1375683054,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375683054",
-  "reason": "draft durably saved before validation",
+  "reason": "local factual, style, length, structure and source audit passed",
   "rights": [
     {
       "status": "REVIEW",
@@ -516,7 +516,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375683054"
     }
   ],
-  "updatedAt": "2026-10-24T03:32:33.294Z",
+  "updatedAt": "2026-10-24T03:32:51.284Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -657,5 +657,8 @@
     "output": 1346,
     "total": 4025
   },
-  "validation": null
+  "validation": {
+    "accepted": true,
+    "errors": []
+  }
 }
