@@ -513,7 +513,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373940870"
     }
   ],
-  "updatedAt": "2026-10-24T04:00:22.439Z",
+  "updatedAt": "2026-10-24T04:00:40.444Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -526,7 +526,7 @@
             ]
           },
           {
-            "text": "Experts divide the location into two sites. The older site is Vetera I. It was used from 12 BCE to 70 CE. The younger site is Vetera II. It was used from 71 CE to at least the third century.",
+            "text": "Experts divide the location into two sites. The older site is Vetera I. It was used from 13/12 BCE to 70 CE. The younger site is Vetera II. It was used from 71 to at least the third century.",
             "evidenceIds": [
               "P2"
             ]
@@ -582,14 +582,14 @@
             ]
           },
           {
-            "text": "Following Gaius Julius Caesar's campaigns, the Lower Rhine had a dangerous population vacuum. Agrippa helped stabilize the region by building roads and resettling Germanic groups. Vetera I was established around 13/12 BCE as a wood and soil deployment base for further Roman expansion.",
+            "text": "Following Gaius Julius Caesar's campaigns, the Lower Rhine had a population vacuum. Agrippa helped stabilize the region by building roads and resettling Germanic groups. Vetera I was established around 13/12 BCE as a wood and soil deployment base for further Roman expansion.",
             "evidenceIds": [
               "P10",
               "P11"
             ]
           },
           {
-            "text": "During the Revolt of the Batavi in 69/70 CE, the original camp was destroyed. Following this conflict and subsequent military reorganization, Vetera II was established in 71 CE about one and a half kilometres further east, housing the Legio XXII Primigenia.",
+            "text": "During the Revolt of the Batavi in 69/70, the original camp was destroyed. Following this conflict and subsequent military reorganization, Vetera II was established in 71 CE about one and a half kilometres further east, housing the Legio XXII Primigenia.",
             "evidenceIds": [
               "P7",
               "P13",
@@ -644,7 +644,7 @@
             ]
           },
           {
-            "text": "Post-abandonment utilization transformed the camps into utilitarian stone quarries for nearby urban centers and medieval monastic construction. Subsequent hydrological shifts, including medieval river loop migrations and the 1788/89 artificial diversion of the Rhine, submerged the remains of Vetera II beneath several meters of gravel and water.",
+            "text": "Post-abandonment utilization transformed the camps into utilitarian stone quarries for nearby urban centers and medieval monastic construction. Subsequent hydrological shifts, including medieval river loop migrations and the artificial diversion of the Rhine, submerged the remains of Vetera II beneath several meters of gravel and water.",
             "evidenceIds": [
               "P7",
               "P9"
@@ -654,11 +654,11 @@
       }
     }
   },
-  "repairAttempts": 0,
+  "repairAttempts": 1,
   "lastUsage": {
-    "input": 2843,
-    "output": 1728,
-    "total": 4571
+    "input": 3173,
+    "output": 396,
+    "total": 3569
   },
   "validation": null
 }
