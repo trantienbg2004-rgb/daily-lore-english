@@ -2,10 +2,10 @@
   "pageId": 18617142,
   "title": "Mercury (element)",
   "topic": "Science & Technology",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1380113040,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380113040",
-  "reason": "8 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -326,5 +326,127 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380113040"
     }
   ],
-  "updatedAt": "2026-10-24T09:24:06.774Z"
+  "updatedAt": "2026-10-24T09:24:19.922Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "The Liquid Metal",
+        "pages": [
+          {
+            "text": "Mercury is a special chemical element with the symbol Hg and atomic number 80. It is also known as quicksilver. It is a heavy and silvery metal. Most metals are solid, but mercury is the only metallic element known to be liquid at standard temperature and pressure conditions.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Mercury occurs in natural deposits around the world. It is mostly found as a mineral called cinnabar. People can grind cinnabar to make a bright red pigment. Exposure to mercury and its compounds is toxic. It can harm the nervous system, immune system, and kidneys of humans and animals.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "For a long time, mercury was used in many everyday devices. People put it in thermometers, barometers, and old light bulbs. Because it is toxic, manufacturers now use much less mercury or avoid it completely. However, it is still used in some scientific research and dental fillings.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "Mercury has very low melting and boiling points compared to other metals. Solid mercury can be cut with a knife because it is soft and malleable. It does not conduct heat very well, but it is a fair conductor of electricity. Iron containers are traditionally used to transport it.",
+            "evidenceIds": [
+              "P6",
+              "P8"
+            ]
+          },
+          {
+            "text": "People have known about mercury for a very long time. Ancient people found it in Egyptian tombs dating back to 1500 BC. Cinnabar has been used by humans since the Neolithic Age. Today, scientists understand its risks better, so its use in medicine and daily life has greatly decreased.",
+            "evidenceIds": [
+              "P11",
+              "P17"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "Facts About Mercury",
+        "pages": [
+          {
+            "text": "Mercury is a chemical element with the symbol Hg and atomic number 80. Commonly referred to as quicksilver, it is a heavy, silvery d-block element. Notably, mercury is the only metallic element known to be liquid at standard temperature and pressure, possessing the lowest freezing and boiling points of any metal.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Found in deposits worldwide primarily as cinnabar or mercuric sulfide, mercury is the source of the red pigment vermilion. Exposure to the element and its water-soluble compounds is toxic to human and animal health, specifically threatening the nervous system, kidneys, and immune system through direct contact or biomagnification.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "Historically, mercury was widely utilized in thermometers, barometers, switches, and fluorescent lighting. Due to growing toxicity concerns, manufacturers have significantly reduced its usage or eliminated it entirely. Nevertheless, it remains useful in specific scientific applications and dental amalgam restorations.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "Solid mercury possesses unique physical characteristics, including being malleable and ductile enough to be cut with a knife. It dissolves many metals like gold and silver to form amalgams, though iron is a notable exception, making iron flasks traditional containers for transporting the liquid metal safely.",
+            "evidenceIds": [
+              "P6",
+              "P8"
+            ]
+          },
+          {
+            "text": "Archaeological evidence shows mercury was present in Egyptian tombs dating back to 1500 BC, while cinnabar use dates back to the Neolithic Age. Although historical medicines frequently incorporated mercury compounds, understanding of its toxicity has led to a major decline in its medical and industrial applications today.",
+            "evidenceIds": [
+              "P11",
+              "P17"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "Properties and Uses of Mercury",
+        "pages": [
+          {
+            "text": "Mercury is a d-block chemical element designated by the symbol Hg and atomic number 80. Widely recognized as quicksilver, it represents the sole metallic element documented to remain liquid under standard temperature and pressure conditions, exhibiting the narrowest liquid state range, alongside the lowest freezing and boiling points among all metals.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Natural deposits of mercury occur globally, predominantly in the form of cinnabar. Grinding this mercuric sulfide yields the red pigment vermilion. Direct exposure or biomagnification of water-soluble forms results in severe toxicity affecting the nervous and immune systems, as well as human and animal renal functions.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "Although traditionally incorporated into various measuring instruments, electrical switches, and lighting systems, mounting toxicity concerns have prompted manufacturers to curtail or eliminate mercury usage. Despite these reductions, it continues to serve specific functions in scientific research and certain dental restorations.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "The electronic structure of mercury weakens its metallic bonding, contributing to its low melting and boiling points. While it dissolves numerous metals to create amalgams, iron resists this process, allowing iron flasks to serve as traditional transport vessels. Solid mercury also exhibits malleability and ductility.",
+            "evidenceIds": [
+              "P6",
+              "P8"
+            ]
+          },
+          {
+            "text": "Historical records indicate mercury presence in Egyptian tombs from 1500 BC, with cinnabar utilization extending back to the Neolithic Age. Awareness of its toxicological profile has subsequently driven a substantial contemporary decline in its pharmaceutical and commercial applications worldwide.",
+            "evidenceIds": [
+              "P11",
+              "P17"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2940,
+    "output": 1051,
+    "total": 3991
+  },
+  "validation": null
 }
