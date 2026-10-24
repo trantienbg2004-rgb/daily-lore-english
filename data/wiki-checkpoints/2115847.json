@@ -336,14 +336,14 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379837199"
     }
   ],
-  "updatedAt": "2026-10-24T04:45:43.487Z",
+  "updatedAt": "2026-10-24T04:46:01.663Z",
   "draft": {
     "variants": {
       "A1-A2": {
         "headline": "Aratus of Sicyon",
         "pages": [
           {
-            "text": "Aratus of Sicyon was a political leader and military commander in ancient Greece. He was born in the city of Sicyon in 271 BC. When he was a young boy, his father was killed in a coup. Aratus had to escape from his home city to stay safe.",
+            "text": "Aratus of Sicyon was a political leader and military commander in ancient Greece. When he was a young boy, his father was killed in a coup. Aratus had to escape from his home city to stay safe.",
             "evidenceIds": [
               "P1",
               "P4"
@@ -432,7 +432,7 @@
         "headline": "Aratus and the Achaean League",
         "pages": [
           {
-            "text": "Aratus of Sicyon was a pivotal Hellenistic statesman and military commander whose career shaped the political landscape of Greece. Born in 271 BC, his early life was disrupted by a coup in Sicyon that resulted in his father's assassination and his own clandestine exile to Argos at age seven.",
+            "text": "Aratus of Sicyon was a pivotal Hellenistic statesman and military commander whose career shaped the political landscape of Greece. His early life was disrupted by a coup in Sicyon that resulted in his father's assassination and his own clandestine exile to Argos at age seven.",
             "evidenceIds": [
               "P1",
               "P4"
@@ -474,11 +474,11 @@
       }
     }
   },
-  "repairAttempts": 0,
+  "repairAttempts": 1,
   "lastUsage": {
-    "input": 3066,
-    "output": 1579,
-    "total": 4645
+    "input": 3108,
+    "output": 324,
+    "total": 3432
   },
   "validation": null
 }
