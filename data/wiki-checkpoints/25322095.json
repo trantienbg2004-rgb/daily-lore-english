@@ -2,10 +2,10 @@
   "pageId": 25322095,
   "title": "Indian Ocean trade",
   "topic": "Economy",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1378397211,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378397211",
-  "reason": "7 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -360,5 +360,149 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378397211"
     }
   ],
-  "updatedAt": "2026-10-24T07:20:38.044Z"
+  "updatedAt": "2026-10-24T07:20:55.579Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "Trading across the Indian Ocean",
+        "pages": [
+          {
+            "text": "The Indian Ocean is very important for world trade today. It connects the western world to the eastern world. People have traded across this big sea since ancient times using many ships.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Long ago, sea-faring people sailed across the ocean. Austronesian people traveled to coastal lands. Later, South Asian, East Asian, and European merchants used these same sea routes.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "In the east, Austronesian sailors built early trade networks. They connected East Asia and coastal South Asia. They shared items like outrigger boats, coconuts, and spices.",
+            "evidenceIds": [
+              "P4"
+            ]
+          },
+          {
+            "text": "In the west, ancient civilizations traded by sea. Harappan and Mesopotamian groups used ships with sails. Middlemen merchants from Dilmun helped handle much of this early commerce.",
+            "evidenceIds": [
+              "P8"
+            ]
+          },
+          {
+            "text": "Later, the Roman Empire traded with India through special ports. Merchants sailed across the water to buy goods like clothing, spices, and precious stones.",
+            "evidenceIds": [
+              "P9",
+              "P12"
+            ]
+          },
+          {
+            "text": "Trade routes changed over many centuries. Muslim traders, Portuguese explorers, and other nations later took control of the ports and continued sailing across the Indian Ocean.",
+            "evidenceIds": [
+              "P17",
+              "P18"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "History of Indian Ocean Trade",
+        "pages": [
+          {
+            "text": "The Indian Ocean has long served as a vital highway for global commerce, connecting the East and West since antiquity. Ships from South Asia, Southeast Asia, and the Middle East have interacted across its waters for centuries, making the region a dynamic zone of cultural exchange and trade.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "The earliest long-distance maritime trade was conducted by Austronesian peoples who settled across a vast coastal region. Their routes were later utilized by various merchants, including South Asian and East Asian traders, as well as European companies like the Dutch East India Company.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "In the eastern Indian Ocean, Austronesian networks established routes between East Asia and South Asia by at least 3000 BCE. This exchange brought together different material cultures and shared useful cultigens like coconuts, bananas, and spices across the region.",
+            "evidenceIds": [
+              "P4"
+            ]
+          },
+          {
+            "text": "Meanwhile, the western regions saw extensive trade between the Harappan and Mesopotamian civilizations. Merchants from Dilmun handled much of this early commerce, which became possible thanks to the development of plank-built watercraft equipped with sails.",
+            "evidenceIds": [
+              "P8"
+            ]
+          },
+          {
+            "text": "During the Hellenistic and Roman periods, trade expanded significantly with improved knowledge of seasonal monsoons and Red Sea ports. Roman merchants visited ports like Barygaza and Muziris to buy valuable goods such as spices, textiles, and precious stones.",
+            "evidenceIds": [
+              "P9",
+              "P12"
+            ]
+          },
+          {
+            "text": "As empires shifted, control over the maritime routes changed hands. Following periods of Islamic conquests, Muslim traders dominated the ocean network. Later, European powers like the Portuguese, Dutch, and English established naval routes and bases to control the lucrative trade.",
+            "evidenceIds": [
+              "P16",
+              "P17",
+              "P18",
+              "P19"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "The Maritime Evolution of Indian Ocean Trade",
+        "pages": [
+          {
+            "text": "Characterized as a foundational cradle for global interaction, the Indian Ocean has historically bridged western and eastern civilizations. Spanning prehistoric to early historic periods, maritime networks involving South Asian, Southeast Asian, and Middle Eastern vessels transformed the ocean rim into a vibrant nexus of commerce and cultural diffusion.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Initial long-distance maritime expansion was driven by seafaring Austronesian populations originating from regions surrounding southern China and Taiwan. These trajectories were subsequently sustained by diverse mercantile networks, eventually culminating in the chartered colonial enterprises of the early modern era.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "In the eastern sector, Austronesian communities established extensive connectivity by at least 3000 BCE. This infrastructure facilitated the reciprocal exchange of material culture, including distinctive watercraft technologies, alongside various agricultural cultigens connecting East Asia with South Asia.",
+            "evidenceIds": [
+              "P4"
+            ]
+          },
+          {
+            "text": "Concurrently, the western basin sustained robust maritime exchange networks between Harappan and Mesopotamian civilizations. Facilitated by the advent of plank-built watercraft with woven sails, intermediaries based in Dilmun orchestrated much of this early commercial enterprise.",
+            "evidenceIds": [
+              "P8"
+            ]
+          },
+          {
+            "text": "Subsequent Hellenistic and Roman integration catalyzed profound commercial intensification. Bolstered by the exploitation of Red Sea ports and sophisticated comprehension of seasonal monsoons, Roman commerce flourished across regional emporia such as Barygaza and Muziris, exchanging currency and manufactured goods for precious commodities.",
+            "evidenceIds": [
+              "P9",
+              "P12"
+            ]
+          },
+          {
+            "text": "Geopolitical configurations evolved continuously through subsequent epochs. Islamic conquests disrupted traditional Mediterranean linkages, paving the way for Muslim mercantile dominance across the basin. Eventually, European maritime expansion disrupted these established patterns, instigating protracted competition for geopolitical and commercial hegemony.",
+            "evidenceIds": [
+              "P16",
+              "P17",
+              "P18",
+              "P19"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2830,
+    "output": 1500,
+    "total": 4330
+  },
+  "validation": null
 }
