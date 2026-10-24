@@ -2,10 +2,10 @@
   "pageId": 69635423,
   "title": "COVID-19 lockdowns by country",
   "topic": "Health",
-  "status": "DRAFTED",
+  "status": "VALIDATED",
   "revisionId": 1377111623,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377111623",
-  "reason": "draft durably saved before validation",
+  "reason": "local factual, style, length, structure and source audit passed",
   "rights": [
     {
       "status": "REVIEW",
@@ -546,7 +546,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377111623"
     }
   ],
-  "updatedAt": "2026-10-24T02:06:31.457Z",
+  "updatedAt": "2026-10-24T02:06:49.355Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -676,5 +676,8 @@
     "output": 545,
     "total": 3893
   },
-  "validation": null
+  "validation": {
+    "accepted": true,
+    "errors": []
+  }
 }
