@@ -2,10 +2,10 @@
   "pageId": 1869747,
   "title": "Tea Horse Road",
   "topic": "Economy",
-  "status": "EVIDENCE_READY",
+  "status": "RETRY_LATER",
   "revisionId": 1381568955,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381568955",
-  "reason": "2 rights-verified embedded images",
+  "reason": "Gemini token usage unavailable",
   "rights": [
     {
       "status": "REVIEW",
@@ -177,5 +177,5 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381568955"
     }
   ],
-  "updatedAt": "2026-10-24T11:02:23.055Z"
+  "updatedAt": "2026-10-24T11:02:28.831Z"
 }
