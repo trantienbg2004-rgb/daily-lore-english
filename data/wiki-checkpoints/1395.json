@@ -2,9 +2,200 @@
   "pageId": 1395,
   "title": "Amazing Grace",
   "topic": "Economy",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1380390857,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380390857",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-24T10:20:07.677Z"
+  "reason": "3 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Newton j.jpg"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:Olney vicarage.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1c/Olney_vicarage.jpg/960px-Olney_vicarage.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Olney vicarage.jpg",
+        "caption": "The vicarage in Olney, where Newton wrote the hymn that would become \"Amazing Grace\"",
+        "alt": "Engraving of a two-storey building, eight windows across, partially obscured by trees and shrubs",
+        "description": "Engraving of the vicarage at Olney where John Newton spent his first years as a minister.",
+        "date": "1879",
+        "section": "Olney curate",
+        "position": 2,
+        "provenance": {
+          "credit": "T. Sulman",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Olney_vicarage.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Amazing_Grace",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380390857",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:New Britain Southern Harmony Amazing Grace.jpg",
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/4/47/New_Britain_Southern_Harmony_Amazing_Grace.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "fileTitle": "File:New Britain Southern Harmony Amazing Grace.jpg",
+        "caption": "An 1847 publication of Southern Harmony, showing the title \"New Britain\" and shape note music.",
+        "alt": "Original long hymnal with shape note music notation of a tune titled \"New Britain\" set to Newton's first verse, with four subsequent verses printed below. Underneath is another hymn titled \"Cookham\".",
+        "description": "Under the title \"New Britain\", \"Amazing Grace\" appears in a 1847 publication of Southern Harmony in shape notes",
+        "date": "Southern Harmony was published in 1847",
+        "section": "Dissemination",
+        "position": 3,
+        "provenance": {
+          "credit": "Southern Harmony was published by William Walker; the image is hosted at the U.S. Library of Congress",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:New_Britain_Southern_Harmony_Amazing_Grace.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Amazing_Grace",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380390857",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:William Walker, American composer.jpg"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:Afghanistan bagpiper.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/60/Afghanistan_bagpiper.jpg/960px-Afghanistan_bagpiper.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Afghanistan bagpiper.jpg",
+        "caption": "A Canadian bagpiper playing \"Amazing Grace\" during a memorial service, 29 October 2009, at Forward Operating Base Wilson, Afghanistan",
+        "alt": "",
+        "description": "A Canadian bagpiper plays \"Amazing Grace\"; on the bagpipe during a memorial service, Oct. 29, at Forward Operating Base Wilson, Afghanistan. Pfc. Devin J. Michel, of Stockton, Ill., died, Oct. 24, when enemy forces attacked his platoon with an improvised explosive device. Michel joined the Army in 2008 and deployed to Afghanistan, May 24. He leaves behind his wife, Anika. 1st Battalion, 12th Infantry Regiment Photo by Staff Sgt. Justin Weaver",
+        "date": "Taken on 29 October 2009, 08:25",
+        "section": "Modern interpretations",
+        "position": 10,
+        "provenance": {
+          "credit": "ISAF Headquarters Public Affairs Office from Kabul, Afghanistan",
+          "license": "CC BY 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Afghanistan_bagpiper.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Amazing_Grace",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380390857",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "37ad7089992843cafcaf9e89093b1aff542c44cb70ab3d846ebe0a578d692939",
+      "heading": "Lead",
+      "excerpt": "\"Amazing Grace\" is a Christian hymn published in 1779 by the English clergyman John Newton. With a message that forgiveness and redemption a",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380390857"
+    },
+    {
+      "id": "P2",
+      "hash": "353b772f482cd06318a30769e524275d87a030be517040b796866f409f69001c",
+      "heading": "Lead",
+      "excerpt": "Newton wrote the words from personal experience; he grew up without any particular religious conviction, but his life was formed by a variet",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380390857"
+    },
+    {
+      "id": "P3",
+      "hash": "d0dda6446ebc9d20c751e6ce359cadf51002d2ceb4a50188be75ea3282423732",
+      "heading": "Lead",
+      "excerpt": "Ordained in the Church of England in 1764, Newton became curate of Olney, Buckinghamshire, where he began to write hymns with poet William C",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380390857"
+    },
+    {
+      "id": "P4",
+      "hash": "0bcdb935ac71db5422b63d9b6f8a110bd16bdb504476aca2cbd891bf33203312",
+      "heading": "Lead",
+      "excerpt": "American historian Gilbert Chase writes that it is \"without a doubt the most famous of all the folk hymns\" and Jonathan Aitken, a Newton bio",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380390857"
+    },
+    {
+      "id": "P5",
+      "hash": "ae3de15c3e86ff27ee1d0a023fcec1dde1c7601ab933cd9c4dbdb7a7c1eb2ee3",
+      "heading": "Critical analysis",
+      "excerpt": "William Phipps in the Anglican Theological Review and author James Basker have interpreted the first stanza of \"Amazing Grace\" as evidence o",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380390857"
+    },
+    {
+      "id": "P6",
+      "hash": "32bbfb7efedd0bfb6c47863842d6e7d622ef616fe2db8ce04891625a2e253109",
+      "heading": "John Newton's conversion",
+      "excerpt": "How industrious is Satan served. I was formerly one of his active undertemptors and had my influence been equal to my wishes I would have ca",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380390857"
+    },
+    {
+      "id": "P7",
+      "hash": "d9b6d29a70d2d19fc716922f9bc151dc74a6fa934b43a1d63b4bddcf3a887b34",
+      "heading": "Olney curate",
+      "excerpt": "Working as a customs agent in Liverpool starting in 1756, Newton began to teach himself Latin, Greek, and theology. He and Polly immersed th",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380390857"
+    },
+    {
+      "id": "P8",
+      "hash": "f2e7c44d5435b181da4c3f3a18b6322699c09d5f7dba07d1dfa7d04d4f9c075f",
+      "heading": "Olney Hymns",
+      "excerpt": "Amazing grace! (how sweet the sound) That sav'd a wretch like me! I once was lost, but now am found, Was blind, but now I see. 'Twas grace t",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380390857"
+    },
+    {
+      "id": "P9",
+      "hash": "7be99a6c5dfed1bc7185e3645b3fe22810f5387c8f91cc6c904451dc1570f266",
+      "heading": "Critical analysis",
+      "excerpt": "The general impact of Olney Hymns was immediate and it became a widely popular tool for evangelicals in Britain for many years. Scholars app",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380390857"
+    },
+    {
+      "id": "P10",
+      "hash": "eebfd6f3e87f96d9efb8bfd8065ff0b52025bed2f7b7427e3c8d403bc44162d4",
+      "heading": "Dissemination",
+      "excerpt": "More than 60 of Newton and Cowper's hymns were republished in other British hymnals and magazines, but \"Amazing Grace\" was not, appearing on",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380390857"
+    },
+    {
+      "id": "P11",
+      "hash": "0e72212da730ea2d22c384505430ba3518db7b53282f51d834b959662404a7f0",
+      "heading": "\"New Britain\" tune",
+      "excerpt": "When originally used in Olney, it is unknown what music, if any, accompanied the verses written by John Newton. Contemporary hymnbooks did n",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380390857"
+    },
+    {
+      "id": "P12",
+      "hash": "4ebb0c4ac73a62a906adde9d8709c209a3d75b65a39a2fcaff5e748c8bee1cee",
+      "heading": "Urban revival",
+      "excerpt": "Although \"Amazing Grace\" set to \"New Britain\" was popular, other versions existed regionally. Primitive Baptists in the Appalachian region o",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380390857"
+    },
+    {
+      "id": "P13",
+      "hash": "dce2e6eb536c3962277b5cace02ca2e8857a4a12acf29b902b2ee313496f38bf",
+      "heading": "Recorded versions",
+      "excerpt": "With the advent of recorded music and radio, \"Amazing Grace\" began to cross over from primarily a gospel standard to secular audiences. The ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380390857"
+    },
+    {
+      "id": "P14",
+      "hash": "0f86e40593ae6cb2550a9d4844661cb15335e6cd94dbef61b4b69fb5fedad31b",
+      "heading": "In American popular culture",
+      "excerpt": "Somehow, \"Amazing Grace\" [embraced] core American values without ever sounding triumphant or jingoistic. It was a song that could be sung by",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380390857"
+    },
+    {
+      "id": "P15",
+      "hash": "5adbd3dcbf2b6fc4d51383675056873e6b5ed9d4315bc1c097960ba1a46e6da2",
+      "heading": "John Newton's conversion",
+      "excerpt": "In 1725, Newton was born in Wapping, a district in London near the Thames. His father was a shipping merchant who was brought up as a Cathol",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380390857"
+    }
+  ],
+  "updatedAt": "2026-10-24T10:20:13.269Z"
 }
