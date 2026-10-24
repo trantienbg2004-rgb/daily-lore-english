@@ -2,10 +2,10 @@
   "pageId": 68169189,
   "title": "History of social democracy",
   "topic": "Politics",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1371334782,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371334782",
-  "reason": "13 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REJECTED",
@@ -459,5 +459,131 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371334782"
     }
   ],
-  "updatedAt": "2026-10-24T02:07:07.101Z"
+  "updatedAt": "2026-10-24T02:07:20.403Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "The History of Social Democracy",
+        "pages": [
+          {
+            "text": "Social democracy started in the 1860s. It was a part of the labour movement. Its early goal was a social revolution to promote socialism. Over time, people wanted to use democratic processes to help workers. Some leaders wanted a peaceful change.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "In the 1890s, a big debate began. Rosa Luxemburg wanted a revolution. Eduard Bernstein wanted a slow and gradual approach. He supported working inside a liberal democracy. Karl Kautsky had a centrist position between these two main ideas.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "By the 1920s, social democracy became a major political force. After World War II, social democrats in Western Europe rejected the Soviet model. They chose a mixed economy with private property and public utilities, along with the welfare state.",
+            "evidenceIds": [
+              "P1",
+              "P2"
+            ]
+          },
+          {
+            "text": "In the twentieth century, parties in places like Britain, Sweden, and Germany won power. They passed important social reforms. Later, in the 1980s, neoliberalism grew. Many social democratic parties tried to combine free markets with welfare policies.",
+            "evidenceIds": [
+              "P2",
+              "P3"
+            ]
+          },
+          {
+            "text": "By the 2010s, many social democratic parties faced a sharp decline. Scholars linked this drop to fewer industrial workers and richer voters. Critics from the left said they abandoned socialism, while critics from the right disliked welfare systems.",
+            "evidenceIds": [
+              "P2",
+              "P3"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "The Evolution of Social Democracy",
+        "pages": [
+          {
+            "text": "Social democracy originated in the 1860s within the European labour movement as a form of revolutionary socialism linked to orthodox Marxism. Its primary goals centered on promoting socialism through democratic processes or through evolutionary socialism, aiming eventually to establish a welfare state.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "During the 1890s, a major dispute arose between revolutionary figures like Rosa Luxemburg and reformists such as Eduard Bernstein. Bernstein advocated for a gradual approach grounded in liberal democracy and cross-class cooperation, while Karl Kautsky maintained a centrist position in the debate.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "After World War II, Western European social democrats firmly rejected the Stalinist model of the Soviet Union. They embraced a mixed economy based largely on private property alongside a minority of public utilities, utilizing Keynesian economics and state interventionism to prevent severe economic crises.",
+            "evidenceIds": [
+              "P1",
+              "P2"
+            ]
+          },
+          {
+            "text": "During the middle of the twentieth century, social democratic parties gained power in countries like Britain, Sweden, and Germany, where they successfully implemented influential social reforms. By the 1980s, however, the rising popularity of neoliberalism prompted many parties to adopt Third Way ideologies.",
+            "evidenceIds": [
+              "P2",
+              "P3"
+            ]
+          },
+          {
+            "text": "By the 2010s, many social democratic parties experienced a drastic decline as voters grew more prosperous and industrial worker populations shrank. Critics on the left accused these parties of abandoning socialism, whereas critics on the right targeted their support for the welfare state.",
+            "evidenceIds": [
+              "P2",
+              "P3"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "Origins and Transformations of Social Democracy",
+        "pages": [
+          {
+            "text": "Emerging in the 1860s as a strand of revolutionary socialism rooted in orthodox Marxism, social democracy initially sought a social revolution through democratic mechanisms or evolutionary reform. Early working-class foundations included Ferdinand Lassalle's General German Workers' Association, which contrasted with liberal democracy.",
+            "evidenceIds": [
+              "P1",
+              "P4"
+            ]
+          },
+          {
+            "text": "By the 1890s, internal ideological rifts crystallized between revolutionary proponents like Rosa Luxemburg and revisionists like Eduard Bernstein, who championed gradualism via liberal democracy. Concurrently, Karl Kautsky occupied a centrist stance, while the broader socialist movement later fragmented further following the Bolshevik revolution.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "In the post-war era, Western European social democrats repudiated the Soviet model, committing instead to a mixed economy characterized by private property predominance, selective public utilities, and Keynesian macroeconomic intervention designed to avert market crises without abolishing factor markets.",
+            "evidenceIds": [
+              "P1",
+              "P2"
+            ]
+          },
+          {
+            "text": "The mid-twentieth century witnessed significant electoral success for social democratic parties in nations such as Britain, Sweden, and Germany, where proto-Keynesian reforms were enacted. However, the subsequent ascent of neoliberalism in the 1980s induced many parties to incorporate Third Way strategies fusing economic liberalism with welfare programs.",
+            "evidenceIds": [
+              "P2",
+              "P3"
+            ]
+          },
+          {
+            "text": "By the 2010s, acceptance of neoliberal policies such as deregulation and austerity precipitated a drastic decline among social democratic parties. Scholars attribute this contraction to shrinking industrial electorates and economic embourgeoisement, while persistent critiques from the left allege abandonment of socialism and right-wing critiques challenge welfare expenditures.",
+            "evidenceIds": [
+              "P2",
+              "P3"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2784,
+    "output": 1415,
+    "total": 4199
+  },
+  "validation": null
 }
