@@ -8874,10 +8874,10 @@
       "checkedAt": "2026-10-24T06:53:22.647Z"
     },
     "7116046": {
-      "status": "VALIDATED",
-      "reason": "local factual, style, length, structure and source audit passed",
+      "status": "PUBLISHED",
+      "reason": "4 verified embedded images",
       "revisionId": 1380544609,
-      "checkedAt": "2026-10-24T07:20:25.536Z"
+      "checkedAt": "2026-10-24T07:20:31.542Z"
     },
     "7208744": {
       "status": "EVIDENCE_READY",
@@ -11610,7 +11610,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-24T07:20:25.537Z",
+  "updatedAt": "2026-10-24T07:20:31.543Z",
   "dailyUsage": {
     "day": "2026-10-24",
     "calls": 13,
