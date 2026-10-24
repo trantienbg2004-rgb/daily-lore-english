@@ -2,10 +2,10 @@
   "pageId": 5142662,
   "title": "Italian fascism",
   "topic": "Politics",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1380358718,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380358718",
-  "reason": "11 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REJECTED",
@@ -407,7 +407,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380358718"
     }
   ],
-  "updatedAt": "2026-10-24T05:12:26.951Z",
+  "updatedAt": "2026-10-24T05:12:43.086Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -507,11 +507,11 @@
             ]
           },
           {
-            "text": "Ideologically rooted in ultra-nationalism, national syndicalism, and irredentism, the movement sought to finalize the incomplete Risorgimento project. Proponents asserted an imperial continuity with Ancient Rome to justify territorial expansion and secure vital space within the Mediterranean basin.",
+            "text": "Ideologically rooted in ultra-nationalism, national syndicalism, and irredentism, the movement sought to finalize the incomplete Risorgimento project by incorporating unredeemed territories. Proponents asserted an imperial continuity with Ancient Rome to justify territorial expansion and secure vital space within the Mediterranean basin.",
             "evidenceIds": [
               "P2",
               "P7",
-              "8"
+              "P8"
             ]
           },
           {
@@ -539,16 +539,11 @@
       }
     }
   },
-  "repairAttempts": 0,
+  "repairAttempts": 1,
   "lastUsage": {
-    "input": 2808,
-    "output": 1463,
-    "total": 4271
+    "input": 2629,
+    "output": 90,
+    "total": 2719
   },
-  "validation": {
-    "accepted": false,
-    "errors": [
-      "C1-C2:page-3:evidence-id"
-    ]
-  }
+  "validation": null
 }
