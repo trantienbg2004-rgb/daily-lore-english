@@ -2,10 +2,10 @@
   "pageId": 55760582,
   "title": "History of aluminium",
   "topic": "Science & Technology",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1376134381,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376134381",
-  "reason": "12 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REJECTED",
@@ -432,5 +432,129 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376134381"
     }
   ],
-  "updatedAt": "2026-10-24T08:33:49.216Z"
+  "updatedAt": "2026-10-24T08:34:06.786Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "The History of Aluminium",
+        "pages": [
+          {
+            "text": "Aluminium is a very rare metal in nature. For most of history, people did not know about it. However, they knew a chemical compound called alum. The ancients used alum for dyeing cloth. During the Middle Ages, this made alum a very important item for international trade and commerce.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "For a long time, scientists studied alum. They learned it was made from an oxide of a new metal. In 1825, a Danish physicist announced the discovery of this metal. Soon after, a German chemist did more work on it. But the metal was still very hard to make.",
+            "evidenceIds": [
+              "P1",
+              "P2"
+            ]
+          },
+          {
+            "text": "Because it was difficult to make, aluminium was very expensive. Its price was even higher than gold. This changed in 1856 when a French chemist started the first industrial production. Later, new chemical processes made it much easier to produce in large amounts for everyone.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "As production grew, people found many uses for this light and strong metal. Industry and everyday life changed quickly. Aluminium became important for engineering and construction. During world wars, it was a crucial resource for building airplanes and other military equipment.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "In the later years of the twentieth century, aluminium was used more for packaging and transport. Factories produced millions of metric tons every year. Today, the world produces more aluminium than all other non-ferrous metals combined, making it a major part of modern life.",
+            "evidenceIds": [
+              "P3",
+              "P4"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "From Rare Metal to Mass Production",
+        "pages": [
+          {
+            "text": "Because aluminium metal rarely occurs in its native form and requires complex refining processes, it remained unknown throughout most of human history. Yet, its compound alum has been recognized since the fifth century BCE. Ancient civilizations used alum extensively for dyeing fabrics, turning it into a major global commodity by the Middle Ages.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "During the Enlightenment, scientists established that alum contained an oxide of a new metal. Danish physicist Hans Christian Ørsted announced the discovery of the metal itself in 1825, and German chemist Friedrich Wöhler subsequently extended his work. Despite these breakthroughs, the metal remained uncommon because it was exceptionally difficult to refine.",
+            "evidenceIds": [
+              "P1",
+              "P2"
+            ]
+          },
+          {
+            "text": "In the early days following its discovery, the price of aluminium surpassed that of gold. Costs decreased only after French chemist Henri Étienne Sainte-Claire Deville initiated the first industrial production in 1856. Availability increased dramatically after independent developments by Paul Héroult, Charles Martin Hall, and Carl Josef Bayer in the late 1880s.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "These mass-production methods allowed industry to adopt the light, corrosion-resistant metal for construction and engineering. Aluminium proved vital for aviation during the World Wars. World production expanded rapidly, and by 1954, aluminium surpassed copper to become the most produced non-ferrous metal worldwide.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "Later in the twentieth century, transport and packaging became major sectors for the metal, while recycling programs grew to address environmental concerns. Production shifted increasingly toward developing nations, with China taking a massive share by 2010. Today, global production continues to rise, surpassing all other non-ferrous metals combined.",
+            "evidenceIds": [
+              "P4"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "Tracing the Evolution of Aluminium",
+        "pages": [
+          {
+            "text": "Aluminium metal rarely occurs in a native state, and its extraction from ores involves considerable complexity, leaving the metal unknown for the majority of human history. Conversely, the compound alum has been documented since the fifth century BCE, serving primarily as a dyeing mordant in antiquity and evolving into a cornerstone of international commerce during the medieval period.",
+            "evidenceIds": [
+              "P1",
+              "P13"
+            ]
+          },
+          {
+            "text": "Renaissance scholars initially theorized that alum was a salt derived from an unspecified earth. Over the Enlightenment, investigators progressively isolated the components, culminating in the 1825 announcement of the metal's discovery by Danish physicist Hans Christian Ørsted, whose findings were subsequently expanded by Friedrich Wöhler.",
+            "evidenceIds": [
+              "P1",
+              "P15",
+              "P16",
+              "P17"
+            ]
+          },
+          {
+            "text": "Initial refinement difficulties caused aluminium to command a market price exceeding that of gold. This economic barrier persisted until the initiation of industrial production by Henri Étienne Sainte-Claire Deville in 1856. Commercial availability expanded exponentially following the late-nineteenth-century introduction of the Hall–Héroult and Bayer processes.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "The advent of scalable metallurgical techniques facilitated widespread industrial adoption of the corrosion-resistant material. Structural engineering and aviation integrated the metal extensively, cementing its status as a strategic resource during global conflicts. By 1954, production volumes eclipsed those of copper, establishing aluminium as the predominant non-ferrous metal.",
+            "evidenceIds": [
+              "P3",
+              "P10"
+            ]
+          },
+          {
+            "text": "In the latter half of the twentieth century, packaging and transportation drove consumption patterns, while environmental considerations spurred widespread recycling initiatives. Geographic shifts in manufacturing gradually transferred production capacities to developing economies, with China achieving a dominant market share by 2010. Global output currently surpasses all other non-ferrous metals combined.",
+            "evidenceIds": [
+              "P4"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2766,
+    "output": 1499,
+    "total": 4265
+  },
+  "validation": null
 }
