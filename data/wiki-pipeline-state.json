@@ -6752,10 +6752,10 @@
       "checkedAt": "2026-10-21T08:11:30.888Z"
     },
     "381219": {
-      "status": "FETCHED",
-      "reason": "pinned-source-ready",
+      "status": "EVIDENCE_READY",
+      "reason": "9 rights-verified embedded images",
       "revisionId": 1374181374,
-      "checkedAt": "2026-10-24T04:05:51.046Z"
+      "checkedAt": "2026-10-24T04:05:54.988Z"
     },
     "398318": {
       "status": "NEEDS_REVIEW",
@@ -10202,7 +10202,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-24T04:05:51.063Z",
+  "updatedAt": "2026-10-24T04:05:54.989Z",
   "dailyUsage": {
     "day": "2026-10-23",
     "calls": 166,
