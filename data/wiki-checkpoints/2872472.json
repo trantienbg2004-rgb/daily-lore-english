@@ -2,10 +2,10 @@
   "pageId": 2872472,
   "title": "Costumbrismo",
   "topic": "Culture",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1372267609,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1372267609",
-  "reason": "11 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -405,5 +405,136 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1372267609"
     }
   ],
-  "updatedAt": "2026-10-24T05:16:27.073Z"
+  "updatedAt": "2026-10-24T05:16:44.958Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "What is Costumbrismo?",
+        "pages": [
+          {
+            "text": "Costumbrismo is a style of art and writing about everyday life and local customs. It was very popular in the nineteenth century. This style shows specific places and times. It is connected to artistic realism and Romanticism. Sometimes it is funny or moralizing, but it does not analyze society deeply.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "You can find costumbrismo in pictures, stories, and novels. It is also found in musical plays called zarzuelas. Museums and festivals celebrate these local customs and folklore. The style started in Spain. Later, it expanded to the Spanish-speaking parts of the Americas with local elements.",
+            "evidenceIds": [
+              "P2",
+              "P3"
+            ]
+          },
+          {
+            "text": "Writers from earlier centuries had some similar ideas. However, the genre grew clearly in the nineteenth century. Stories and pictures often appeared in cheap magazines for the general public. Writers wanted to capture a particular place, both rural and urban, at a specific time.",
+            "evidenceIds": [
+              "P4"
+            ]
+          },
+          {
+            "text": "Important literary writers include Serafín Estébanez Calderón, Ramón de Mesonero Romanos, and Mariano José de Larra. They wrote about genuine Spain, the middle classes of Madrid, and political ideas. Similar projects happened in England and France before Spain published its own popular collection of types.",
+            "evidenceIds": [
+              "P5",
+              "P6"
+            ]
+          },
+          {
+            "text": "Visual costumbrismo developed among painters in Spain. Madrid and Andalusia were the two great centers. Andalusian paintings were romantic and folkloric for foreign buyers. The painters in Madrid were more critical and focused on lower-class life. Other artists brought these traditions to Mexico and Bolivia.",
+            "evidenceIds": [
+              "P10",
+              "P11",
+              "P12"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "The Art of Costumbrismo",
+        "pages": [
+          {
+            "text": "Costumbrismo is the literary or pictorial interpretation of local everyday life, mannerisms, and customs, particularly within the Hispanic scene during the nineteenth century. Related to both artistic realism and Romanticism, it focuses on the precise representation of particular times and places. While often satiric or moralizing, it generally avoids deep societal analysis.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "This artistic approach appears across visual arts and literature, extending to the collection of folkloric objects and nineteenth-century zarzuelas. Although initially associated with Spain, costumbrismo expanded to the Spanish-speaking Americas, incorporating indigenous elements. Writers sought refuge in minute details because they were overwhelmed by the tumult of the modern world.",
+            "evidenceIds": [
+              "P2",
+              "P3"
+            ]
+          },
+          {
+            "text": "While early antecedents existed in previous centuries, costumbrismo emerged as a distinct genre in the nineteenth century, largely appearing in cheap periodicals for the general public. Scholars note the extraordinary elasticity of the genre, which encompasses reportorial, documentary, and folkloric works focused on capturing specific places.",
+            "evidenceIds": [
+              "P4"
+            ]
+          },
+          {
+            "text": "Key literary figures like Serafín Estébanez Calderón, Ramón de Mesonero Romanos, and Mariano José de Larra shaped the movement. Following English and French inspirations, Spanish writers and artists produced serialized illustrated volumes capturing national types. Later realist writers, such as Fernán Caballero, also worked within this mode.",
+            "evidenceIds": [
+              "P5",
+              "P6",
+              "P8"
+            ]
+          },
+          {
+            "text": "In the visual arts, nationalistic fervor drove Spanish painters to focus on local customs. Madrid and Andalusia served as the primary centers, with Andalusian works remaining serene and folkloric for foreign buyers, while Madrid paintings were more acerbic and domestic. The tradition also found fertile ground in Latin America.",
+            "evidenceIds": [
+              "P10",
+              "P11",
+              "P13"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "The Tradition of Costumbrismo",
+        "pages": [
+          {
+            "text": "Costumbrismo constitutes the literary and pictorial interpretation of local everyday life and customs, functioning as a localized branch of genre painting primarily situated in nineteenth-century Hispanic contexts. Sharing Romanticism's expressive drive and a mutual emphasis on precise temporal and spatial representation, it frequently employs satire and moralism without offering structural societal critiques.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Manifesting across visual and literary arts, the movement extends to folkloric collecting and the género chico of zarzuelas. Although originating in Spain, it diffused throughout Spanish America, incorporating indigenous elements. Commentators observe that this minute attention to local color often served as a psychological refuge from the bewildering complexities of modernity.",
+            "evidenceIds": [
+              "P2",
+              "P3"
+            ]
+          },
+          {
+            "text": "Antecedents trace back to earlier centuries, but costumbrismo crystallized during the nineteenth century through cheap periodicals. Characterized by remarkable elasticity, the genre bridged reportorial documentation and folkloric illustration in its persistent endeavor to capture specific rural and urban environments.",
+            "evidenceIds": [
+              "P4"
+            ]
+          },
+          {
+            "text": "Influential figures such as Estébanez Calderón, Mesonero Romanos, and Larra expanded the literary boundaries, occasionally leveraging the form for political critique. Following English and French precedents like serialized physiognomic studies, Spain produced equivalent volumes celebrating national types, while major realist novelists periodically adopted the mode.",
+            "evidenceIds": [
+              "P5",
+              "P6",
+              "P8"
+            ]
+          },
+          {
+            "text": "Visual costumbrismo flourished via regional divergence in Spain. Seville's output catered largely to foreign tourists seeking romanticized folklore, whereas Madrid's school adopted a more acerbic, domestic focus on lower-class urban life. The tradition subsequently resonated across nineteenth-century Latin American visual and literary cultures.",
+            "evidenceIds": [
+              "P10",
+              "P11",
+              "P12",
+              "P13"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 3175,
+    "output": 1540,
+    "total": 4715
+  },
+  "validation": null
 }
