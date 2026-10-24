@@ -2,10 +2,10 @@
   "pageId": 31546082,
   "title": "Coastal flooding",
   "topic": "Environment",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1368837774,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368837774",
-  "reason": "7 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REJECTED",
@@ -324,5 +324,142 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368837774"
     }
   ],
-  "updatedAt": "2026-10-24T07:17:56.021Z"
+  "updatedAt": "2026-10-24T07:18:13.416Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "Water on the Coast",
+        "pages": [
+          {
+            "text": "Coastal flooding happens when dry land near the sea goes underwater. Seawater covers the low land. This can happen through direct water, overtopping, or breaking barriers. Nature causes most of these floods. Climate change and more people living near coasts make the damage worse.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Storms and high tides can push water onto the land. Unusually high tides bring water over the shores. Strong winds and storms make this even worse. Sometimes, people change the environment and make flooding more likely. Taking water from the ground can make land sink down.",
+            "evidenceIds": [
+              "P2",
+              "P3"
+            ]
+          },
+          {
+            "text": "People use different ways to stop floods. They build walls and barriers to keep water back. Natural things like sand dunes, salt marshes, and mangrove forests also help. These natural places slow down big waves. Protecting them is very important for the coast.",
+            "evidenceIds": [
+              "P4"
+            ]
+          },
+          {
+            "text": "Sea levels are going up because of climate change. Ice sheets and glaciers melt and add more water to the ocean. Storms create huge waves called storm surges. When these big waves hit during high tides, they cause a lot of flooding on the land.",
+            "evidenceIds": [
+              "P5",
+              "P6",
+              "P7"
+            ]
+          },
+          {
+            "text": "Many people live near the coast around the world. Coastal flooding can destroy important habitats like wetlands. This causes a loss of animal and plant life. People use walls and natural defenses to protect towns and cities from the rising seawater.",
+            "evidenceIds": [
+              "P10",
+              "P11",
+              "P14",
+              "P15"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "Understanding Coastal Flooding",
+        "pages": [
+          {
+            "text": "Coastal flooding occurs when dry and low-lying land is submerged by seawater. The range of the flood depends on the elevation of the floodwater and coastal topography. Seawater can flood the land via direct paths, overtopping, or barrier breaches. While largely natural, these events have intensified due to climate change and growing coastal populations.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Human modifications can worsen coastal environments. Extracting water from underground reservoirs causes land subsidence, increasing flood risks. Furthermore, engineered structures like sea walls alter natural beach processes, leading to erosion on adjacent coasts. To manage these risks, societies use both structural and non-structural methods.",
+            "evidenceIds": [
+              "P3",
+              "P4"
+            ]
+          },
+          {
+            "text": "Various factors trigger coastal flooding, including storm surges, tsunamis, and rising sea levels. Global sea levels have persistently risen due to human-induced climate change, with melting ice and thermal expansion serving as primary drivers. Additionally, exceptional high tides cause temporary inundation in low-lying areas, stressing local infrastructure.",
+            "evidenceIds": [
+              "P5",
+              "P7",
+              "P8"
+            ]
+          },
+          {
+            "text": "Tsunami waves also cause significant flooding after earthquakes, landslides, or volcanic eruptions displace ocean water. Their high velocity and destructive debris make them extremely hazardous. Historical events, such as the 2004 Indian Ocean tsunami and the 2011 Tohoku tsunami, demonstrate this immense destructive power.",
+            "evidenceIds": [
+              "P9",
+              "P18"
+            ]
+          },
+          {
+            "text": "A large proportion of the global population and major cities reside within the coastal zone, producing substantial economic output. However, frequent flooding threatens these areas and destroys vital habitats like wetlands and estuaries, resulting in biodiversity loss. To protect coastal zones, communities rely on hard engineering alongside natural defenses like mangroves and salt marshes.",
+            "evidenceIds": [
+              "P10",
+              "P11",
+              "P14",
+              "P15"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "Dynamics and Mitigation of Coastal Flooding",
+        "pages": [
+          {
+            "text": "Coastal flooding transpires when low-lying terrestrial areas are inundated by seawater, dictated primarily by floodwater elevation and local topography. Inundation pathways include direct flooding, overtopping, and structural breaching. Although predominantly natural phenomena, coastal flood impacts have escalated globally due to anthropogenic climate change and demographic expansion in vulnerable coastal regions.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Anthropogenic modifications frequently exacerbate vulnerability. Groundwater extraction instigates land subsidence, while rigid coastal protection structures disrupt sediment dynamics and induce adjacent erosion. Mitigation strategies therefore encompass structural interventions designed to arrest or redirect water, alongside non-structural institutional adaptations and the preservation of natural buffering ecosystems.",
+            "evidenceIds": [
+              "P3",
+              "P4"
+            ]
+          },
+          {
+            "text": "Diverse hydrodynamic drivers instigate coastal flooding, prominently featuring storm surges, tsunamis, and secular sea level rise. Global mean sea level has accelerated significantly since the mid-twentieth century, predominantly driven by thermal water expansion and the ablation of glaciers and ice sheets. Concurrently, meteorological phenomena like astronomical high tides and storm surges compound inundation risks.",
+            "evidenceIds": [
+              "P5",
+              "P6",
+              "P7",
+              "P8"
+            ]
+          },
+          {
+            "text": "Tsunami propagation, triggered by submarine seismic activity, landslides, or volcanic eruptions, delivers catastrophic coastal inundation driven by high wave velocities and destructive entrained debris. Historical catastrophes, including the 2004 Indian Ocean and 2011 Tohoku tsunamis, underscore the severe hazard posed by displacement-induced marine waves.",
+            "evidenceIds": [
+              "P9",
+              "P18"
+            ]
+          },
+          {
+            "text": "A disproportionate share of the global population and economic productivity concentrates within low-elevation coastal zones. Persistent flooding threatens these urban centers while degrading critical ecological buffers such as wetlands and mangroves, accelerating biodiversity loss and exacerbating inland wave penetration. Consequently, sustainable coastal management advocates for the integration of hard engineering with the conservation of natural defenses.",
+            "evidenceIds": [
+              "P10",
+              "P11",
+              "P14",
+              "P15"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2682,
+    "output": 1150,
+    "total": 3832
+  },
+  "validation": null
 }
