@@ -9374,10 +9374,10 @@
       "checkedAt": "2026-10-22T08:49:23.863Z"
     },
     "11976737": {
-      "status": "FETCHED",
-      "reason": "pinned-source-ready",
+      "status": "REJECTED",
+      "reason": "insufficient-source-text-or-embedded-images",
       "revisionId": 1255999177,
-      "checkedAt": "2026-10-24T10:20:37.410Z"
+      "checkedAt": "2026-10-24T10:20:43.150Z"
     },
     "12015467": {
       "status": "RETRY_LATER",
@@ -11930,7 +11930,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-24T10:20:37.410Z",
+  "updatedAt": "2026-10-24T10:20:43.150Z",
   "dailyUsage": {
     "day": "2026-10-24",
     "calls": 117,
