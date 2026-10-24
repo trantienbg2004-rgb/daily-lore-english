@@ -9634,10 +9634,10 @@
       "checkedAt": "2026-10-21T08:12:26.536Z"
     },
     "60847643": {
-      "status": "VALIDATED",
-      "reason": "local factual, style, length, structure and source audit passed",
+      "status": "PUBLISHED",
+      "reason": "4 verified embedded images",
       "revisionId": 1380178048,
-      "checkedAt": "2026-10-24T05:12:13.274Z"
+      "checkedAt": "2026-10-24T05:12:18.949Z"
     },
     "61126352": {
       "status": "EVIDENCE_READY",
@@ -10666,7 +10666,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-24T05:12:13.276Z",
+  "updatedAt": "2026-10-24T05:12:18.949Z",
   "dailyUsage": {
     "day": "2026-10-23",
     "calls": 209,
