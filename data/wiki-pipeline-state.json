@@ -9690,10 +9690,10 @@
       "checkedAt": "2026-10-22T09:14:44.093Z"
     },
     "31546082": {
-      "status": "VALIDATED",
-      "reason": "local factual, style, length, structure and source audit passed",
+      "status": "PUBLISHED",
+      "reason": "4 verified embedded images",
       "revisionId": 1368837774,
-      "checkedAt": "2026-10-24T07:18:49.328Z"
+      "checkedAt": "2026-10-24T07:18:55.625Z"
     },
     "31614367": {
       "status": "REJECTED",
@@ -11610,7 +11610,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-24T07:18:49.330Z",
+  "updatedAt": "2026-10-24T07:18:55.626Z",
   "dailyUsage": {
     "day": "2026-10-24",
     "calls": 9,
