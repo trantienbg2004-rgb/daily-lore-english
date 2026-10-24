@@ -2,10 +2,10 @@
   "pageId": 10612527,
   "title": "1877 Wimbledon Championship",
   "topic": "Sports",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1364588051,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1364588051",
-  "reason": "2 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -169,5 +169,134 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1364588051"
     }
   ],
-  "updatedAt": "2026-10-24T09:20:40.786Z"
+  "updatedAt": "2026-10-24T09:20:56.268Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "The First Wimbledon Tennis Tournament in 1877",
+        "pages": [
+          {
+            "text": "In July 1877, the world's very first official lawn tennis tournament took place in London. It was held at the All England Croquet and Lawn Tennis Club in Wimbledon. The club organized this special sports event to pay for fixing its broken pony roller.",
+            "evidenceIds": [
+              "P1",
+              "P7"
+            ]
+          },
+          {
+            "text": "The club was first started in 1868 as a croquet club. Later, croquet became less popular, so the club added lawn tennis in 1875 to make more money. More members joined the club because lawn tennis was growing very popular.",
+            "evidenceIds": [
+              "P1",
+              "P5"
+            ]
+          },
+          {
+            "text": "Twenty-two players paid one guinea each to enter the Gentlemen's Singles tournament. The matches were played on grass courts. A crowd of about two hundred people paid a shilling each to watch the exciting tennis games.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "The final match was delayed for three days because of rain. Spencer Gore played against William Marshall in the final. Spencer Gore won the match in three straight sets and became the very first Wimbledon champion.",
+            "evidenceIds": [
+              "P2",
+              "P11"
+            ]
+          },
+          {
+            "text": "The winner received twelve guineas in prize money and a silver challenge cup. The tournament made a small profit of ten pounds. After the event ended, people analyzed the games and made some changes to the court rules.",
+            "evidenceIds": [
+              "P1",
+              "P2"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "The Origins and History of the 1877 Wimbledon Championship",
+        "pages": [
+          {
+            "text": "The 1877 Wimbledon Championship was a men's tennis tournament held at the All England Croquet and Lawn Tennis Club in Wimbledon, London. It marked the world's first official lawn tennis tournament and the start of the Grand Slam.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Originally founded as a croquet club in 1868, the organization experienced financial difficulties as interest in croquet waned. To generate extra revenue, the club introduced lawn tennis in 1875. The new sport quickly grew in popularity among new members.",
+            "evidenceIds": [
+              "P1",
+              "P5"
+            ]
+          },
+          {
+            "text": "The club decided to organize a tennis tournament specifically to raise funds to repair a broken pony roller used for maintaining the lawns. Twenty-two players entered the Gentlemen's Singles competition, paying one guinea each to participate.",
+            "evidenceIds": [
+              "P1",
+              "P2",
+              "P7"
+            ]
+          },
+          {
+            "text": "The tournament began on July 9, 1877. After rain delayed the final match for three days, it was played on July 19 before a crowd of about 200 spectators. Spencer Gore defeated William Marshall in three straight sets to claim victory.",
+            "evidenceIds": [
+              "P2",
+              "P11"
+            ]
+          },
+          {
+            "text": "As the first Wimbledon champion, Gore received twelve guineas and a silver challenge cup donated by The Field magazine. The successful tournament generated a profit of ten pounds, and subsequent analysis led to modifications in court dimension rules.",
+            "evidenceIds": [
+              "P1",
+              "P2"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "Establishing the World's First Tennis Major in 1877",
+        "pages": [
+          {
+            "text": "The inaugural 1877 Wimbledon Championship took place at the All England Croquet and Lawn Tennis Club in London. Recognized subsequently as the world's first official lawn tennis tournament and Major, the event stemmed from an urgent financial necessity.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Established initially as a croquet club in July 1868, the organization encountered financial strain due to declining interest in croquet. Consequently, the club introduced lawn tennis in February 1875 to attract new participants and generate supplementary revenue streams.",
+            "evidenceIds": [
+              "P1",
+              "P5"
+            ]
+          },
+          {
+            "text": "The club committee resolved to stage an amateur lawn tennis championship expressly to finance the repair of a broken pony roller required for lawn maintenance. Twenty-two competitors registered for the Gentlemen's Singles event, each paying a one-guinea entry fee.",
+            "evidenceIds": [
+              "P2",
+              "P7"
+            ]
+          },
+          {
+            "text": "Commencing on July 9, 1877, the competition culminated in a final delayed by three days due to inclement weather. Watched by approximately 200 spectators, Spencer Gore defeated William Marshall in three consecutive sets during a 48-minute match.",
+            "evidenceIds": [
+              "P2",
+              "P11"
+            ]
+          },
+          {
+            "text": "Gore secured twelve guineas in prize money alongside a silver challenge cup valued at 25 guineas, donated by the magazine The Field. The tournament ultimately yielded a ten-pound profit, prompting subsequent analytical adjustments to official court dimension regulations.",
+            "evidenceIds": [
+              "P1",
+              "P2"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2779,
+    "output": 989,
+    "total": 3768
+  },
+  "validation": null
 }
