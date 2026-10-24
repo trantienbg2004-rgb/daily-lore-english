@@ -156,7 +156,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376860586"
     }
   ],
-  "updatedAt": "2026-10-24T07:43:50.470Z",
+  "updatedAt": "2026-10-24T07:44:08.347Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -212,10 +212,11 @@
         "headline": "The International Stabilization Force",
         "pages": [
           {
-            "text": "The International Stabilization Force is a multinational peacekeeping force outlined in the peace plan agreed by Hamas and Israel. The UN-mandated force aims to provide security, train a new Palestinian police force, and oversee the demilitarization and redevelopment of the Gaza Strip following the war.",
+            "text": "The International Stabilization Force is a multinational peacekeeping force outlined in the peace plan agreed by Hamas and Israel in October 2025. The United Nations-mandated force aims to provide security, train a new Palestinian police force, and oversee the demilitarization and redevelopment of the Gaza Strip following the war.",
             "evidenceIds": [
               "P1",
-              "P2"
+              "P2",
+              "P3"
             ]
           },
           {
@@ -306,11 +307,11 @@
       }
     }
   },
-  "repairAttempts": 1,
+  "repairAttempts": 2,
   "lastUsage": {
-    "input": 1456,
-    "output": 238,
-    "total": 1694
+    "input": 1294,
+    "output": 93,
+    "total": 1387
   },
   "validation": null
 }
