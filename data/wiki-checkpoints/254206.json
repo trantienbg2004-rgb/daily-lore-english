@@ -2,10 +2,10 @@
   "pageId": 254206,
   "title": "Chimney sweep",
   "topic": "Health",
-  "status": "DRAFTED",
+  "status": "VALIDATED",
   "revisionId": 1380793173,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380793173",
-  "reason": "draft durably saved before validation",
+  "reason": "local factual, style, length, structure and source audit passed",
   "rights": [
     {
       "status": "REVIEW",
@@ -279,7 +279,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380793173"
     }
   ],
-  "updatedAt": "2026-10-24T06:57:20.450Z",
+  "updatedAt": "2026-10-24T06:57:38.496Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -420,5 +420,8 @@
     "output": 121,
     "total": 2603
   },
-  "validation": null
+  "validation": {
+    "accepted": true,
+    "errors": []
+  }
 }
