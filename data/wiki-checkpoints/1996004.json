@@ -2,10 +2,10 @@
   "pageId": 1996004,
   "title": "Uti possidetis",
   "topic": "Conflict & Security",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1373665813,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373665813",
-  "reason": "4 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -279,5 +279,127 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373665813"
     }
   ],
-  "updatedAt": "2026-10-24T05:41:58.739Z"
+  "updatedAt": "2026-10-24T05:42:16.941Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "What is Uti Possidetis?",
+        "pages": [
+          {
+            "text": "Uti possidetis is an old term from Roman law. It started as a rule for land disputes. Later, people used it in international law for borders and territory.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "In ancient Rome, people argued over houses and land. The Roman praetor looked at who was living there. The person in actual occupation usually won the first step.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "Later in history, European states used the idea to claim new lands. Peace treaties also used it. A treaty gave nations the land they held when fighting ended.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "Today, uti possidetis means a rule for drawing borders. When colonies become independent, they often keep their old administrative boundaries as new national borders.",
+            "evidenceIds": [
+              "P4"
+            ]
+          },
+          {
+            "text": "This doctrine helps new states avoid big fights over land. However, it still has many critics who question how well it works in modern times.",
+            "evidenceIds": [
+              "P4"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "From Roman Law to International Borders",
+        "pages": [
+          {
+            "text": "Uti possidetis originated as a legal procedure in Roman private law concerning land possession. Over time, it was transferred through a misleading analogy into international law to determine sovereign rights over territory.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Roman magistrates favored parties already in actual occupation during land disputes, provided they had not acquired the property by force, stealth, or temporary favor. This interdict confirmed temporary possession without proving actual ownership.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "In the early modern era, European states used similar concepts to justify territorial acquisitions and interpret peace treaties. A treaty typically gave each party permanent rights to the territory it occupied when hostilities concluded.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "In recent times, the doctrine known as uti possidetis juris guides the drawing of international boundaries. When colonial territories gain independence, they generally inherit their old administrative borders.",
+            "evidenceIds": [
+              "P4"
+            ]
+          },
+          {
+            "text": "Although this doctrine provides a default rule for newly formed states, it continues to attract criticism. Furthermore, its survival in the modern international regime following the creation of the United Nations remains doubtful.",
+            "evidenceIds": [
+              "P3",
+              "P4"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "The Evolution of Uti Possidetis",
+        "pages": [
+          {
+            "text": "Uti possidetis emerged within Roman private law as a procedural mechanism addressing land possession before being analogously transposed into international law to govern territorial sovereignty.",
+            "evidenceIds": [
+              "P1",
+              "P12"
+            ]
+          },
+          {
+            "text": "Roman praetors issued interdicts protecting current occupants against forcible displacement, provided their possession was not obtained by force, stealth, or precarious favor. This determination established procedural advantages regarding the burden of proof rather than definitive ownership.",
+            "evidenceIds": [
+              "P2",
+              "P10"
+            ]
+          },
+          {
+            "text": "During the early modern period, European polities adapted the concept to justify territorial acquisition and interpret peace settlements, presuming belligerents retained occupied lands unless stipulated otherwise.",
+            "evidenceIds": [
+              "P3",
+              "P15"
+            ]
+          },
+          {
+            "text": "In contemporary international law, uti possidetis juris dictates that newly independent states emerging from decolonization presumptively inherit established administrative boundaries.",
+            "evidenceIds": [
+              "P4",
+              "P17"
+            ]
+          },
+          {
+            "text": "While critics debate its application and its status following the establishment of the United Nations, the doctrine remains a central framework for preventing border conflicts during state creation.",
+            "evidenceIds": [
+              "P3",
+              "P4"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2810,
+    "output": 1090,
+    "total": 3900
+  },
+  "validation": null
 }

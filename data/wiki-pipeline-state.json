@@ -8026,10 +8026,10 @@
       "checkedAt": "2026-10-23T15:26:45.082Z"
     },
     "1996004": {
-      "status": "EVIDENCE_READY",
-      "reason": "4 rights-verified embedded images",
+      "status": "DRAFTED",
+      "reason": "draft durably saved before validation",
       "revisionId": 1373665813,
-      "checkedAt": "2026-10-24T05:41:58.736Z"
+      "checkedAt": "2026-10-24T05:42:16.941Z"
     },
     "1998027": {
       "status": "RETRY_LATER",
@@ -11146,7 +11146,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-24T05:42:15.633Z",
+  "updatedAt": "2026-10-24T05:42:16.942Z",
   "dailyUsage": {
     "day": "2026-10-23",
     "calls": 240,
