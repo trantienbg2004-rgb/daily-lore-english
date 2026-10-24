@@ -2,10 +2,10 @@
   "pageId": 13294262,
   "title": "Climate change in the Arctic",
   "topic": "Environment",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1380980056,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380980056",
-  "reason": "10 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -411,5 +411,121 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380980056"
     }
   ],
-  "updatedAt": "2026-10-24T05:37:17.658Z"
+  "updatedAt": "2026-10-24T05:37:33.922Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "Changes in the Arctic",
+        "pages": [
+          {
+            "text": "The Arctic is changing very fast. The region is warming three to four times faster than the rest of the world. Because of this, sea ice is melting quickly, the Greenland ice sheet is getting smaller, and frozen ground is starting to thaw out completely.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "These big changes affect animals and plants in nature. Tundra soil is getting warmer, so more plants and earthworms can grow there. Also, beavers are moving into northern rivers, and phytoplankton in the ocean are getting more sunlight and growing much more.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "Scientists think the Arctic Ocean will likely have its first ice-free summer days before the year 2050. This loss of sea ice makes life very hard for polar bears. Meanwhile, thawing permafrost is threatening buildings and valuable human infrastructure.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "The loss of ice also causes problems far beyond the Arctic. Less ice means the whole planet absorbs more heat. Furthermore, melting ice sheets in Greenland add water to global seas, and thawing ground releases more carbon dioxide and methane gases.",
+            "evidenceIds": [
+              "P4"
+            ]
+          },
+          {
+            "text": "Sea ice in the region has been getting smaller and thinner for decades. It melts more in the summer than it grows back in winter. Because of global warming and greenhouse gases, this ice decline has grown much faster recently.",
+            "evidenceIds": [
+              "P8"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "The Rapid Transformation of the Arctic",
+        "pages": [
+          {
+            "text": "Climate change is transforming the Arctic at a speed among the highest on Earth, with temperatures rising three to four times faster than the global average. This rapid warming has driven a profound decline in Arctic sea ice, accelerated the melting of the Greenland ice sheet, and triggered widespread permafrost thaw that is expected to remain irreversible for centuries.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Natural life across the region is responding strongly. Warmer tundra soils encourage the spread of boreal forests and make the land more hospitable to earthworms, while beavers colonize northern rivers. In the ocean, phytoplankton benefit from warmer waters and less shade, increasing marine primary production. However, ocean acidification threatens vulnerable zooplankton such as pteropods.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "The Arctic Ocean is expected to experience its first ice-free events before 2050, a situation with no precedent in the last 700,000 years. This shift threatens ice-dependent fauna like polar bears. At the same time, thawing permafrost endangers billions of dollars worth of northern infrastructure, and indigenous communities face the loss of their traditional way of life.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "The consequences of these changes extend far beyond the polar region. Sea ice loss accelerates regional and global warming through the ice-albedo feedback loop, while permafrost thaw releases substantial greenhouse gases. Furthermore, the melting Greenland ice sheet contributes significantly to global sea level rise.",
+            "evidenceIds": [
+              "P4"
+            ]
+          },
+          {
+            "text": "Arctic sea ice has steadily declined in both area and volume over recent decades as summer melting outpaces winter refreezing. Driven by anthropogenic greenhouse gas forcing, this decline has accelerated during the early twenty-first century, with summertime sea ice likely disappearing at some point during the twenty-first century.",
+            "evidenceIds": [
+              "P8"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "Climatic and Ecological Shifts in the Arctic",
+        "pages": [
+          {
+            "text": "Arctic climate change is driving transformations expected to be irreversible for centuries or millennia, with regional warming occurring at three to four times the global average. This unprecedented velocity has precipitated profound sea-ice decline, accelerated mass loss from the Greenland ice sheet, and initiated widespread permafrost degradation across the northern landscape.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Terrestrial and marine ecosystems are responding dynamically to these thermal shifts. Tundra soils are increasingly hospitable to boreal advancement and earthworm colonization, while beavers expand into northern watersheds, contributing to methane emissions. Concurrently, diminished ice cover has elevated marine primary production through enhanced phytoplankton proliferation, though concurrent ocean acidification severely threatens vulnerable calcifying zooplankton.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "Projections indicate the Arctic Ocean will likely experience ice-free conditions before 2050—an event unprecedented in the past 700,000 years. This transition jeopardizes ice-dependent apex fauna such as polar bears, while destabilizing billions of dollars of infrastructure anchored in thawing permafrost and challenging the cultural continuity of indigenous populations.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "The ramifications of Arctic transformation transcend regional boundaries. Ice-albedo feedback exacerbates global thermal increases, and permafrost degradation releases greenhouse gas emissions comparable to major industrial nations. Additionally, sustained mass loss from Greenland constitutes a principal driver of global eustatic sea-level rise.",
+            "evidenceIds": [
+              "P4"
+            ]
+          },
+          {
+            "text": "Driven predominantly by anthropogenic greenhouse gas forcing, Arctic sea ice has experienced a severe, accelerating decline in both spatial extent and volumetric thickness over recent decades. Summer ablation consistently outpaces winter accretion, rendering the eventual disappearance of summertime sea ice probable during the twenty-first century.",
+            "evidenceIds": [
+              "P8"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2911,
+    "output": 1078,
+    "total": 3989
+  },
+  "validation": null
 }
