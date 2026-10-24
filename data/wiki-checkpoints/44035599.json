@@ -2,10 +2,10 @@
   "pageId": 44035599,
   "title": "Deforestation and climate change",
   "topic": "Environment",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1380983925,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380983925",
-  "reason": "8 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -368,5 +368,148 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380983925"
     }
   ],
-  "updatedAt": "2026-10-24T06:51:56.574Z"
+  "updatedAt": "2026-10-24T06:52:10.549Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "Forests and Climate",
+        "pages": [
+          {
+            "text": "Forests cover a large part of the Earth. They help our planet by taking in carbon dioxide from the air. When people cut down trees, this is called deforestation. This action releases gases into the air and adds to climate change.",
+            "evidenceIds": [
+              "P1",
+              "P3",
+              "P8"
+            ]
+          },
+          {
+            "text": "When we lose many trees, the Earth gets warmer. Warm weather and less rain make it easier for forest fires to start. These fires can destroy large areas of land and harm many plants and animals.",
+            "evidenceIds": [
+              "P7",
+              "P10",
+              "P20"
+            ]
+          },
+          {
+            "text": "Climate change also causes more problems for nature. Extreme weather, bad storms, and insects can hurt trees. Because of this, some forests are getting weaker and cannot recover as fast as before.",
+            "evidenceIds": [
+              "P4",
+              "P5"
+            ]
+          },
+          {
+            "text": "The Amazon rainforest is very important for our world. It absorbs a lot of carbon dioxide. However, people have clear cut nearly twenty percent of this forest, and it absorbs less carbon today than it did in the past.",
+            "evidenceIds": [
+              "P18"
+            ]
+          },
+          {
+            "text": "To help fix these problems, groups and countries start programs to plant new trees. Planting trees can put carbon back into the earth. People hope these efforts will protect nature and slow down climate change.",
+            "evidenceIds": [
+              "P8",
+              "P12",
+              "P14",
+              "P23"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "How Deforestation Drives Climate Change",
+        "pages": [
+          {
+            "text": "Forests cover nearly a third of the land on Earth and act as vital carbon sinks. Trees absorb carbon dioxide through photosynthesis, storing carbon in their biomass. However, deforestation releases these stored greenhouse gases back into the atmosphere through burning and decomposition.",
+            "evidenceIds": [
+              "P1",
+              "P3",
+              "P8"
+            ]
+          },
+          {
+            "text": "The relationship between deforestation and climate change forms a positive feedback loop. Removing trees increases global warming, which then causes more wildfires, extreme weather, and severe droughts that lead to further forest loss. Reduced evapotranspiration also results in drier climates.",
+            "evidenceIds": [
+              "P2",
+              "P4",
+              "P10"
+            ]
+          },
+          {
+            "text": "Studies suggest that tropical, arid, and temperate forests are experiencing a significant decline in resilience due to water limitations. In the Amazon rainforest, where nearly twenty percent of the trees have been clear cut, absorption of carbon dioxide has decreased significantly since the 1990s.",
+            "evidenceIds": [
+              "P5",
+              "P18"
+            ]
+          },
+          {
+            "text": "Furthermore, high deforestation rates are directly linked to frequent fires and air pollution. Unmitigated climate change leaves parts of the Amazon vulnerable to grass invasion and irreversible degradation into a grassy state.",
+            "evidenceIds": [
+              "P7",
+              "P21"
+            ]
+          },
+          {
+            "text": "Global initiatives attempt to address these challenges. Programs like REDD+ and international tree-planting campaigns encourage developing countries to reduce emissions and protect forest carbon stocks, though some offset projects face criticism over their actual integrity.",
+            "evidenceIds": [
+              "P9",
+              "P12",
+              "P14",
+              "P15"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "Deforestation Feedbacks and Climate Impacts",
+        "pages": [
+          {
+            "text": "Covering approximately thirty-one percent of global land area, forests function as critical terrestrial carbon sinks by sequestering carbon dioxide via photosynthesis. Conversely, land-use change and deforestation constitute the second largest anthropogenic source of carbon emissions, discharging greenhouse gases through biomass combustion and soil carbon decomposition.",
+            "evidenceIds": [
+              "P1",
+              "P3",
+              "P8"
+            ]
+          },
+          {
+            "text": "The dynamic between deforestation and climate change operates as an amplifying feedback loop. Tree loss intensifies global temperature increases, while concurrent climate variability, extreme weather, and insect outbreaks precipitate further forest decline. Reduced evapotranspiration simultaneously drives regional aridification and increases fire frequency.",
+            "evidenceIds": [
+              "P2",
+              "P4",
+              "P10",
+              "P11"
+            ]
+          },
+          {
+            "text": "Empirical and modeling assessments indicate declining ecological resilience across tropical, arid, and temperate forests due to heightened water limitations, whereas boreal systems exhibit divergent patterns. In the Amazon basin, where nearly twenty percent of the rainforest has been cleared, carbon absorption capacity has diminished by thirty percent compared to historical levels recorded in the 1990s.",
+            "evidenceIds": [
+              "P5",
+              "P18"
+            ]
+          },
+          {
+            "text": "Statistics demonstrate a direct correlation between high deforestation rates and frequent anthropogenic fires. Unmitigated trajectories risk driving substantial portions of the Amazon toward critical tipping points, post-fire grass invasion, and irreversible degradation into degraded vegetative states.",
+            "evidenceIds": [
+              "P7",
+              "P21"
+            ]
+          },
+          {
+            "text": "International mitigation frameworks, including REDD+ and large-scale afforestation campaigns, attempt to bolster carbon stocks and incentivize conservation. However, forestry offset programs have encountered significant scrutiny regarding the methodological integrity and accuracy of carbon credit generation.",
+            "evidenceIds": [
+              "P9",
+              "P12",
+              "P14",
+              "P15"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2887,
+    "output": 1420,
+    "total": 4307
+  },
+  "validation": null
 }
