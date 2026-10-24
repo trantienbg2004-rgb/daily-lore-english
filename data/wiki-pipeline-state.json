@@ -7934,10 +7934,10 @@
       "checkedAt": "2026-10-24T06:56:35.083Z"
     },
     "371301": {
-      "status": "PENDING",
-      "reason": "queued",
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
       "revisionId": 1375762623,
-      "checkedAt": null
+      "checkedAt": "2026-10-24T10:41:18.364Z"
     },
     "381219": {
       "status": "PUBLISHED",
@@ -11930,7 +11930,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-24T10:41:11.155Z",
+  "updatedAt": "2026-10-24T10:41:18.365Z",
   "dailyUsage": {
     "day": "2026-10-24",
     "calls": 117,
