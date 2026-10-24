@@ -2,10 +2,10 @@
   "pageId": 283810,
   "title": "Mass spectrometry",
   "topic": "Science & Technology",
-  "status": "DRAFTED",
+  "status": "VALIDATED",
   "revisionId": 1378449939,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378449939",
-  "reason": "draft durably saved before validation",
+  "reason": "local factual, style, length, structure and source audit passed",
   "rights": [
     {
       "status": "REVIEW",
@@ -492,7 +492,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378449939"
     }
   ],
-  "updatedAt": "2026-10-24T07:44:38.373Z",
+  "updatedAt": "2026-10-24T07:44:56.336Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -619,5 +619,8 @@
     "output": 1382,
     "total": 4193
   },
-  "validation": null
+  "validation": {
+    "accepted": true,
+    "errors": []
+  }
 }
