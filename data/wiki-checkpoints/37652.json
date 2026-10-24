@@ -498,7 +498,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380900853"
     }
   ],
-  "updatedAt": "2026-10-24T02:03:30.318Z",
+  "updatedAt": "2026-10-24T02:03:48.215Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -562,7 +562,7 @@
             ]
           },
           {
-            "text": "Throughout its long history, Kyoto experienced severe conflicts, most notably the destructive Ōnin War of 1467 to 1477, which left large parts of the city in ruins. Later, the Hamaguri rebellion of 1864 also destroyed 28,000 houses in the city.",
+            "text": "Throughout its long history, Kyoto experienced severe conflicts, most notably the destructive Ōnin War. Later, the Hamaguri rebellion of 1864 also destroyed 28,000 houses in the city.",
             "evidenceIds": [
               "P6",
               "P7"
@@ -635,11 +635,11 @@
       }
     }
   },
-  "repairAttempts": 1,
+  "repairAttempts": 2,
   "lastUsage": {
-    "input": 2948,
-    "output": 231,
-    "total": 3179
+    "input": 2894,
+    "output": 116,
+    "total": 3010
   },
   "validation": null
 }
