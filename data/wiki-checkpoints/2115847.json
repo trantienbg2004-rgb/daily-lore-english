@@ -2,10 +2,10 @@
   "pageId": 2115847,
   "title": "Aratus of Sicyon",
   "topic": "Sports",
-  "status": "DRAFTED",
+  "status": "NEEDS_REVIEW",
   "revisionId": 1379837199,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379837199",
-  "reason": "draft durably saved before validation",
+  "reason": "editorial: C1-C2:page-5:unsupported-number-context-213",
   "rights": [
     {
       "status": "REVIEW",
@@ -336,7 +336,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379837199"
     }
   ],
-  "updatedAt": "2026-10-24T04:46:19.497Z",
+  "updatedAt": "2026-10-24T04:46:25.518Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -480,5 +480,10 @@
     "output": 82,
     "total": 2974
   },
-  "validation": null
+  "validation": {
+    "accepted": false,
+    "errors": [
+      "C1-C2:page-5:unsupported-number-context-213"
+    ]
+  }
 }
