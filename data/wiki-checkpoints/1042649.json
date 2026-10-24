@@ -2,10 +2,10 @@
   "pageId": 1042649,
   "title": "History of the bicycle",
   "topic": "Science & Technology",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1381005522,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381005522",
-  "reason": "13 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -479,5 +479,136 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381005522"
     }
   ],
-  "updatedAt": "2026-10-24T06:05:24.968Z"
+  "updatedAt": "2026-10-24T06:05:42.325Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "History of the bicycle",
+        "pages": [
+          {
+            "text": "Long ago, people invented a new way to travel on two wheels. The first vehicle of this kind did not have pedals. A German inventor named Karl von Drais made it. People called it the dandy horse or draisienne. The rider sat on a wooden frame and pushed the machine with their feet while steering the front wheel.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "In the early years, inventors tried different ideas. Some claims about early two-wheeled vehicles are disputed. Later in France, inventors added a mechanical crank drive with pedals on a larger front wheel. This machine was mass-produced. People also called it a boneshaker because it had a rigid frame and iron-banded wheels that caused a rough ride.",
+            "evidenceIds": [
+              "P3",
+              "P12"
+            ]
+          },
+          {
+            "text": "To go faster, makers built high-wheel bicycles with a very large front wheel and a smaller rear wheel. These bicycles were difficult to mount and brake. Because they were dangerous, riding them was mostly for adventurous young men. Victorian fashion and high seats made these machines hard for many people to use safely.",
+            "evidenceIds": [
+              "P3",
+              "P5",
+              "P13"
+            ]
+          },
+          {
+            "text": "Later, inventors created the safety bicycle. It used a chain drive connected to the rear wheel instead of pedals on the front wheel. This design had a lower seat and a double-triangle diamond frame. These changes made riding much safer and easier for both men and women of different ages.",
+            "evidenceIds": [
+              "P4",
+              "P14"
+            ]
+          },
+          {
+            "text": "More improvements followed to make riding comfortable. Inventors introduced the practical pneumatic tire, which soon became very popular. Other new parts included the rear freewheel, derailleur gears, and hand-operated brakes. Cycling remained very important in Europe, while use in the United States dropped as automobiles became the preferred choice.",
+            "evidenceIds": [
+              "P6",
+              "P16"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "The Evolution of the Bicycle",
+        "pages": [
+          {
+            "text": "The history of the bicycle began with the invention of the dandy horse, also known as the draisienne or running machine. Created by German Baron Karl von Drais, it was the first human transport to use two wheels in tandem without pedals. Riders sat astride a wooden frame and pushed themselves along with their feet while steering the front wheel, introducing a new era of personal mobility.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "During the 1860s in France, bicycle design advanced significantly when inventors added pedals and a mechanical crank drive to an enlarged front wheel. This machine entered mass production and became widely known as the boneshaker due to its rigid iron-banded wheels and frame. Although it allowed riders to travel faster than before, its fixed design and high front wheel created noticeable stability and comfort issues.",
+            "evidenceIds": [
+              "P3",
+              "P12"
+            ]
+          },
+          {
+            "text": "To achieve greater speeds, manufacturers developed the high-wheel bicycle featuring a massive front wheel and a tiny rear wheel. However, these machines were dangerous, difficult to mount, and hard to brake. Because falls were common and high seats posed risks, cycling with these ordinary bicycles remained largely restricted to adventurous young men rather than risk-averse individuals or women constrained by contemporary fashion.",
+            "evidenceIds": [
+              "P3",
+              "P5",
+              "P13"
+            ]
+          },
+          {
+            "text": "The introduction of the safety bicycle transformed the industry. By utilizing a chain drive that connected frame-mounted cranks to the rear wheel, inventors solved the problem of simultaneous pedaling and steering. Lower seat heights and the eventual adoption of the double-triangle diamond frame made cycling accessible to a much broader public, shifting public perception from a dangerous sport to everyday transport.",
+            "evidenceIds": [
+              "P4",
+              "P14"
+            ]
+          },
+          {
+            "text": "Further technological progress sparked a second bicycle craze during the 1890s. The invention of the practical pneumatic tire greatly improved comfort, while rear freewheels, coaster brakes, and derailleur gears added new levels of control. While cycling continued to flourish throughout Europe for commuting and racing, its popularity declined dramatically in the United States during the early twentieth century as automobiles gained dominance.",
+            "evidenceIds": [
+              "P6",
+              "P16"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "Historical Development of the Bicycle",
+        "pages": [
+          {
+            "text": "The foundational predecessor of the modern bicycle was the dandy horse, or draisienne, engineered by German Baron Karl von Drais. Established as the earliest human-powered transport utilizing two in-line wheels, it lacked any pedal mechanism. Propulsion relied entirely on the rider straddling a wooden frame and pushing against the ground with their feet while manually directing the front steering assembly, an innovation initially presented in Mannheim and Paris.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Subsequent developmental phases during the 1860s witnessed French inventors integrating rotary cranks and pedals directly onto the hub of an enlarged front wheel. This commercially successful mass-produced vehicle, colloquially termed the boneshaker, utilized metal and wood construction to reduce weight. Nevertheless, the inherent rotational speed limitations and rigid frame geometry generated severe ride discomfort and stability challenges for operators.",
+            "evidenceIds": [
+              "P3",
+              "P12"
+            ]
+          },
+          {
+            "text": "The logical progression of the boneshaker manifested in the high-wheel bicycle, where front wheel enlargement permitted enhanced velocity constrained primarily by the rider's leg length. Despite innovations such as wire-spoke tension wheels, these vehicles remained hazardous and difficult to mount, braking efficiently was problematic, and their operational risks largely restricted their use to adventurous demographics rather than cautious riders or women bound by contemporary attire.",
+            "evidenceIds": [
+              "P3",
+              "P5",
+              "P13"
+            ]
+          },
+          {
+            "text": "A pivotal paradigm shift occurred with the advent of the safety bicycle. By employing a chain drive that linked frame-mounted cranks to the rear wheel, designers successfully decoupled propulsion from steering. Subsequent incorporation of lower seating configurations and the double-triangle diamond frame redefined bicycles as practical utility transport for men and women across diverse age groups.",
+            "evidenceIds": [
+              "P4",
+              "P14"
+            ]
+          },
+          {
+            "text": "The 1890s Golden Age of Bicycles was catalyzed by technological refinements that elevated comfort and mechanical efficiency. The introduction of practical pneumatic tires eliminated much of the traditional roughness, while auxiliary developments like rear freewheels, hand-operated cable brakes, and early derailleur mechanisms expanded operational control. Geographically, while European cycling maintained cultural and economic prominence through commuting and racing, American adoption suffered a dramatic decline as motorized automobiles ascended to transport dominance.",
+            "evidenceIds": [
+              "P6",
+              "P16"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 3028,
+    "output": 1346,
+    "total": 4374
+  },
+  "validation": null
 }
