@@ -389,7 +389,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376065279"
     }
   ],
-  "updatedAt": "2026-10-24T06:28:25.349Z",
+  "updatedAt": "2026-10-24T06:28:43.273Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -420,8 +420,9 @@
             ]
           },
           {
-            "text": "Under stressful conditions, such as rising water temperatures, the impact of microbiome diversity on phytoplankton community structure is amplified, decreasing community diversity and abundance.",
+            "text": "Under stressful conditions like rising water temperatures, microbiome diversity affects phytoplankton communities. This lowers community diversity and abundance. Microorganisms help provide essential nutrients through nitrogen fixation and recycling. Phytoplankton offer habitats and organic compounds for these microbes, creating important symbiotic relationships that promote ecological stability in marine environments.",
             "evidenceIds": [
+              "P5",
               "P6"
             ]
           }
@@ -490,7 +491,7 @@
             ]
           },
           {
-            "text": "Under stressful conditions, such as rising water temperatures, the impact of microbiome diversity on phytoplankton community structure is amplified, decreasing community diversity and abundance.",
+            "text": "Under stressful conditions, such as rising water temperatures, the impact of microbiome diversity on phytoplankton community structure is amplified, which decreases community diversity and abundance. Concurrently, microbial diversity within eukaryotes influences host physiology and marine nutrient cycling. Higher diversity correlates with increased bacterial taxonomic variation, while elevated microbial diversity can also lead to increased levels of dissolved nitrogen and phosphorus in the water.",
             "evidenceIds": [
               "P6"
             ]
@@ -499,11 +500,11 @@
       }
     }
   },
-  "repairAttempts": 1,
+  "repairAttempts": 2,
   "lastUsage": {
-    "input": 2720,
-    "output": 174,
-    "total": 2894
+    "input": 2744,
+    "output": 252,
+    "total": 2996
   },
   "validation": null
 }
