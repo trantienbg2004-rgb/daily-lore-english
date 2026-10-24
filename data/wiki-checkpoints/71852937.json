@@ -321,7 +321,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1348771002"
     }
   ],
-  "updatedAt": "2026-10-24T06:31:12.408Z",
+  "updatedAt": "2026-10-24T06:31:30.397Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -334,7 +334,7 @@
             ]
           },
           {
-            "text": "The long journey goes from North Darfur in Sudan to Asyut in Egypt. The distance is about 1,800 kilometers. It usually took closer to sixty days because people needed to rest and water their herds of animals along the way.",
+            "text": "The journey from North Darfur, Sudan, to Asyut, Egypt, is approximately 1,800 km and usually took closer to 60 days. This time was needed to rest and water the herd along the desert route. Traveling this way was more direct, less expensive, and safer than taking the Nile route.",
             "evidenceIds": [
               "P2"
             ]
@@ -437,11 +437,11 @@
       }
     }
   },
-  "repairAttempts": 0,
+  "repairAttempts": 1,
   "lastUsage": {
-    "input": 2069,
-    "output": 1375,
-    "total": 3444
+    "input": 1889,
+    "output": 133,
+    "total": 2022
   },
   "validation": null
 }
