@@ -2,9 +2,215 @@
   "pageId": 6331094,
   "title": "Atlantic World",
   "topic": "Economy",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1375911896,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375911896",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-24T11:05:17.275Z"
+  "reason": "5 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Atlantic Ocean.png"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:Olfert Dapper, Naukeurige Beschrijvinge.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8c/Olfert_Dapper%2C_Naukeurige_Beschrijvinge.jpg/960px-Olfert_Dapper%2C_Naukeurige_Beschrijvinge.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Olfert Dapper, Naukeurige Beschrijvinge.jpg",
+        "caption": "Dutch ambassadors received by Garcia II, monarch of Kongo in West Central Africa in 1642",
+        "alt": "",
+        "description": "Olfert Dapper (Dutch, 1635–1689). Dutch Ambassadors at the Court of Garcia II, King of Kongo. Engraving from Naukeurige Beschrijvinge der Afrikaensche gewesten, 1668",
+        "date": "1668",
+        "section": "Emergence",
+        "position": 1,
+        "provenance": {
+          "credit": "Olfert Dapper",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Olfert_Dapper,_Naukeurige_Beschrijvinge.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Atlantic_World",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375911896",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:1670 virginia tobacco slaves.jpg",
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/a/a5/1670_virginia_tobacco_slaves.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "fileTitle": "File:1670 virginia tobacco slaves.jpg",
+        "caption": "Slaves working at a plantation in Virginia, depicted in 1670",
+        "alt": "",
+        "description": "\"Enslaved people working in 17th-century Virginia,\" by an unknown artist, 1670.",
+        "date": "1670",
+        "section": "Slavery and labor",
+        "position": 2,
+        "provenance": {
+          "credit": "Unknown authorUnknown author",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:1670_virginia_tobacco_slaves.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Atlantic_World",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375911896",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:Emigrants Leave Ireland by Henry Doyle 1868.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a7/Emigrants_Leave_Ireland_by_Henry_Doyle_1868.jpg/960px-Emigrants_Leave_Ireland_by_Henry_Doyle_1868.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Emigrants Leave Ireland by Henry Doyle 1868.jpg",
+        "caption": "Emigrants Leave Ireland depicting the emigration to America following the Great Famine in Ireland",
+        "alt": "",
+        "description": "Engraving of Emigrants leaving Ireland by Mary Frances Cusack",
+        "date": "1868",
+        "section": "Slavery and labor",
+        "position": 3,
+        "provenance": {
+          "credit": "Henry Edward Doyle",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Emigrants_Leave_Ireland_by_Henry_Doyle_1868.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Atlantic_World",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375911896",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:Philip II's realms in 1598.png",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ad/Philip_II%27s_realms_in_1598.png/960px-Philip_II%27s_realms_in_1598.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Philip II's realms in 1598.png",
+        "caption": "The Iberian Union in 1598, under Philip II, King of Spain and Portugal",
+        "alt": "",
+        "description": "Map of the territories of Philip II, King of Spain in 1598 Territories appointed to the Council of Castile. Territories appointed to the Council of Aragon. Territories appointed to the Council of Portugal. Territories appointed to the Council of Italy. Territories appointed to the Council of the Indies. Territories appointed to the Council of Flanders comprising the disputed territories of the United Provinces. Territories appointed to the Council of Castile. Territories appointed to the Council of Aragon. Territories appointed to the Council o",
+        "date": "2008-11-16",
+        "section": "Governance",
+        "position": 4,
+        "provenance": {
+          "credit": "Trasamundo.",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Philip_II%27s_realms_in_1598.png",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Atlantic_World",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375911896",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:Carnavalet - Le serment de La Fayette 01.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/93/Carnavalet_-_Le_serment_de_La_Fayette_01.jpg/960px-Carnavalet_-_Le_serment_de_La_Fayette_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Carnavalet - Le serment de La Fayette 01.jpg",
+        "caption": "The Marquis de Lafayette, pictured in 1790, played a prominent role in both the American Revolution (1775–83) and French Revolution (1789–99)",
+        "alt": "",
+        "description": "",
+        "date": "1791",
+        "section": "\"Atlantic Revolutions\"",
+        "position": 5,
+        "provenance": {
+          "credit": "Anonymous (France)Unknown author Anonymous (France)Unknown author",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Carnavalet_-_Le_serment_de_La_Fayette_01.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Atlantic_World",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375911896",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "f6c168d35150425df0ad5b5f4c567b97a65fd3683f149af7c6b3b8e830668005",
+      "heading": "Lead",
+      "excerpt": "The Atlantic World comprises the interactions among the peoples and empires bordering the Atlantic Ocean rim from the beginning of the Age o",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375911896"
+    },
+    {
+      "id": "P2",
+      "hash": "cab4f20d0c9efe64fe2a5202d7ce25a5d36b241b2a58194da0abe6b8b008905b",
+      "heading": "Geography",
+      "excerpt": "The Atlantic World comprises the histories of Europe, Africa, and the Americas. Travel over land was difficult and expensive, so settlements",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375911896"
+    },
+    {
+      "id": "P3",
+      "hash": "3b795e88d10c14ca75976e7628e4cef4f48374abb6511deb34c6ee53e7331fdb",
+      "heading": "Emergence",
+      "excerpt": "Given the scope of Atlantic history it has tended to downplay the singular influence of the voyages of Columbus and to focus more on growing",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375911896"
+    },
+    {
+      "id": "P4",
+      "hash": "fbd2b6022d9a8d01bf6c429265c186da4ffc5dc5973351387e0063038493f787",
+      "heading": "Emergence",
+      "excerpt": "The main empires that built the Atlantic World were the British, French, Spanish , Portuguese and Dutch; entrepreneurs from the United State",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375911896"
+    },
+    {
+      "id": "P5",
+      "hash": "39a26d562c13d08fa85f9ea6f0038c698477a0b2962252cf1a2d36df06c28ce1",
+      "heading": "Historical usage",
+      "excerpt": "American historian Bernard Bailyn traces the concept of the Atlantic World to an editorial published by journalist Walter Lippmann in 1917. ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375911896"
+    },
+    {
+      "id": "P6",
+      "hash": "a591839fadc6e3d84a34901a872569986a2e1d5f5fca98745d19f86106f1b539",
+      "heading": "Environment",
+      "excerpt": "The beginning of extensive contact between Europe, Africa, and the Americas had sweeping implications for the environmental and demographic ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375911896"
+    },
+    {
+      "id": "P7",
+      "hash": "4155be880270e8f2fbd6b5096a02415ae635d0fe469dc0f635ed80f3950a9a74",
+      "heading": "Slavery and labor",
+      "excerpt": "The slave trade played a role in the history of the Atlantic World almost from the beginning. As European powers began to conquer and claim ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375911896"
+    },
+    {
+      "id": "P8",
+      "hash": "65b8200afcd255bd7262c72ff9523f31a7587e2d9cd2b3a8715dadeec8a0f249",
+      "heading": "Governance",
+      "excerpt": "The Spanish conquistadores conquered the Aztec Empire, more accurately now referred to by scholars as the Mexica empire, in present-day Mexi",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375911896"
+    },
+    {
+      "id": "P9",
+      "hash": "a34488e2da16a5483b1429bd86906dbd878eb80a1f1b8dc4a3ca96b2867468fb",
+      "heading": "\"Atlantic Revolutions\"",
+      "excerpt": "A wave of revolutions shook the Atlantic World from the 1770s to the 1820s, including in the United States (1775–1783), France and French-co",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375911896"
+    },
+    {
+      "id": "P10",
+      "hash": "79c6dbdee0e9d7c275e04817ee256a12feed27e3ebef0e6bca6cbf66469e6952",
+      "heading": "Historical usage",
+      "excerpt": "In American and British universities, Atlantic World history is supplementing (and possibly supplanting) the study of specific European colo",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375911896"
+    },
+    {
+      "id": "P11",
+      "hash": "fe32329cfa2cbe718aab621d20b90e18c09fbdc9d084b76a2f2a7458ac17dd83",
+      "heading": "Slavery and labor",
+      "excerpt": "The Trans-Atlantic Slave trade played a massive role in shaping the demographics of the Americas, especially in areas where huge plantations",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375911896"
+    }
+  ],
+  "updatedAt": "2026-10-24T11:05:23.048Z"
 }
