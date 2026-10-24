@@ -2,10 +2,10 @@
   "pageId": 48691882,
   "title": "Buddhist rock carving in Manglawar",
   "topic": "Culture",
-  "status": "DRAFTED",
+  "status": "VALIDATED",
   "revisionId": 1359652646,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1359652646",
-  "reason": "draft durably saved before validation",
+  "reason": "local factual, style, length, structure and source audit passed",
   "rights": [
     {
       "status": "REVIEW",
@@ -411,7 +411,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1359652646"
     }
   ],
-  "updatedAt": "2026-10-24T08:57:47.869Z",
+  "updatedAt": "2026-10-24T08:58:05.928Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -540,5 +540,8 @@
     "output": 1381,
     "total": 4485
   },
-  "validation": null
+  "validation": {
+    "accepted": true,
+    "errors": []
+  }
 }
