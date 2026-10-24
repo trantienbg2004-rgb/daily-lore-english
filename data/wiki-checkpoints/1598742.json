@@ -254,20 +254,20 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371448397"
     }
   ],
-  "updatedAt": "2026-10-24T08:55:53.739Z",
+  "updatedAt": "2026-10-24T08:56:11.607Z",
   "draft": {
     "variants": {
       "A1-A2": {
         "headline": "The Wimbledon Tennis Club",
         "pages": [
           {
-            "text": "The All England Lawn Tennis and Croquet Club is a private club in London. It is famous for the Wimbledon Championships. This is a very old tennis tournament played on grass. It started in the year 1877 and takes place every summer.",
+            "text": "The All England Lawn Tennis and Croquet Club is a private club in London. It is famous for the Wimbledon Championships. This is a tennis tournament played on grass. It takes place every summer.",
             "evidenceIds": [
               "P1"
             ]
           },
           {
-            "text": "The club was started in 1868 by six men. At first, they only played a game called croquet. A few years later, lawn tennis became popular. The club added tennis courts, and tennis soon became the main sport played there.",
+            "text": "The club was started by six men. At first, they only played a game called croquet. Later, lawn tennis became popular. The club added tennis courts, and tennis soon became the main sport played there.",
             "evidenceIds": [
               "P4",
               "P5"
@@ -362,7 +362,7 @@
             ]
           },
           {
-            "text": "Growing public interest eventually necessitated a relocation in 1922 to the current Church Road facility. This new site accommodated the newly constructed Centre Court, which has subsequently undergone substantial architectural modifications, such as the 2009 installation of a retractable roof.",
+            "text": "Growing public interest eventually necessitated a relocation to the current Church Road facility. This new site accommodated the newly constructed Centre Court, which has subsequently undergone substantial architectural modifications, such as the installation of a retractable roof.",
             "evidenceIds": [
               "P10",
               "P11"
@@ -387,11 +387,11 @@
       }
     }
   },
-  "repairAttempts": 0,
+  "repairAttempts": 1,
   "lastUsage": {
-    "input": 2859,
-    "output": 1480,
-    "total": 4339
+    "input": 2901,
+    "output": 286,
+    "total": 3187
   },
   "validation": null
 }
