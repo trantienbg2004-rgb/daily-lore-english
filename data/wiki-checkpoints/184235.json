@@ -2,10 +2,10 @@
   "pageId": 184235,
   "title": "Hejaz",
   "topic": "History & Geography",
-  "status": "EVIDENCE_READY",
+  "status": "RETRY_LATER",
   "revisionId": 1381567671,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381567671",
-  "reason": "6 rights-verified embedded images",
+  "reason": "Gemini token usage unavailable",
   "rights": [
     {
       "status": "REVIEW",
@@ -297,5 +297,5 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381567671"
     }
   ],
-  "updatedAt": "2026-10-24T10:14:25.167Z"
+  "updatedAt": "2026-10-24T10:14:31.095Z"
 }
