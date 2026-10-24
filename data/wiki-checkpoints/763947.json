@@ -2,9 +2,159 @@
   "pageId": 763947,
   "title": "Polling station",
   "topic": "Politics",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1381580503,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381580503",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-24T10:20:49.503Z"
+  "reason": "1 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:PollingStation UK 2005.jpg"
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Women voters in a long queue, waiting for their turn to exercise franchise rights during assembly election-2006, at a polling booth in Kanyakumari, Tamil Nadu on May 08, 2006.jpg"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:Lower Weston, Bath, church as polling station, 2015.JPG",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/98/Lower_Weston%2C_Bath%2C_church_as_polling_station%2C_2015.JPG/960px-Lower_Weston%2C_Bath%2C_church_as_polling_station%2C_2015.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Lower Weston, Bath, church as polling station, 2015.JPG",
+        "caption": "A church being used as a polling station in the 2015 United Kingdom general election",
+        "alt": "",
+        "description": "Parish church of St John the Evangelist, Upper Bristol Road, Lower Weston, Bath, Somerset, seen from the south on 7 May 2015. It was General Election Day and the church was a polling station for the 2015 General Election and unitary council election.",
+        "date": "2015-05-07 18:46:40",
+        "section": "Building usage",
+        "position": 2,
+        "provenance": {
+          "credit": "Rwendland",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Lower_Weston,_Bath,_church_as_polling_station,_2015.JPG",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Polling_station",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381580503",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "79894a53a7a42e6385a3f8382868fd00e57464edf155fdefb401f133aa20b32d",
+      "heading": "Lead",
+      "excerpt": "A polling place is where voters cast their ballots in elections. The phrase polling station is also used in American English, British Englis",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381580503"
+    },
+    {
+      "id": "P2",
+      "hash": "a581acc95abe1c0e51af824334148239f1a1f4f3d2f0eab735d61b0b62065975",
+      "heading": "Lead",
+      "excerpt": "Since elections generally take place over a one- or two-day span on a periodic basis, often annual or longer, polling places are usually loc",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381580503"
+    },
+    {
+      "id": "P3",
+      "hash": "1e5d2aed1484c37dff51ad1e6b23e9fb3223535af003ea601fc69be96b91177f",
+      "heading": "Lead",
+      "excerpt": "The facility will be open between specified hours depending on the type of election, and political activity by or on behalf of those standin",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381580503"
+    },
+    {
+      "id": "P4",
+      "hash": "8be01b49b4bf75211aae8260e7605171bc0e2f31c7d47466c0197c3f14c027c7",
+      "heading": "Lead",
+      "excerpt": "Inside the polling place will be an area (usually a voting booth) where the voter may select the candidate or party of their choice in secre",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381580503"
+    },
+    {
+      "id": "P5",
+      "hash": "e7f49a0727cacdd9a13b9e0aec767ed3bdc41b80727ee9aa89c35d64fc6f197c",
+      "heading": "Lead",
+      "excerpt": "There are five types of voting technologies that are currently being used in the United States polling locations. These comprise hand-counte",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381580503"
+    },
+    {
+      "id": "P6",
+      "hash": "d915ce9114932186129be166b72bec0b34f7b6c83ad5e643964d00262d94727e",
+      "heading": "Voting booth",
+      "excerpt": "A voting booth or polling booth (in British English) is a room or cabin in a polling station where voters are able to cast their vote in pri",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381580503"
+    },
+    {
+      "id": "P7",
+      "hash": "01b71592f851449eb1b48233a2fcde4877766ff0910f8c4935ddbf8455edd09c",
+      "heading": "History",
+      "excerpt": "The word \"poll\" means \"scalp\" or \"head\". When votes were taken by gathering people together and counting heads, the place where this was don",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381580503"
+    },
+    {
+      "id": "P8",
+      "hash": "4b2827fcc187306d9f2ca142c4112222720212550abb4d6b70a5bb66b095a055",
+      "heading": "Polling location effects",
+      "excerpt": "The building where the polling location is sited can have a significant effect on the results of the poll. Research shows that polling locat",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381580503"
+    },
+    {
+      "id": "P9",
+      "hash": "00e1cd3bc1bdd19be230dca746e941529b0999e200d98f6fb3e7c4204efee650",
+      "heading": "Building usage",
+      "excerpt": "The building used as the polling place has a significant effect on how an individual votes. For example, voting inside a school building, a ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381580503"
+    },
+    {
+      "id": "P10",
+      "hash": "82fa7bcd8077df68546e41c7500c69497ac3dfcb6fdb1c79fb138a1cdc8c4af4",
+      "heading": "Distance to voting location",
+      "excerpt": "The cost of voting influences whether or not a person will vote. Research shows that the more expensive voting gets, the less likely a perso",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381580503"
+    },
+    {
+      "id": "P11",
+      "hash": "43ced11a5e209441fe63273e5ac70cdc965cdae8689188275900d0febafccde0",
+      "heading": "Redistricting",
+      "excerpt": "If a voter changes precincts due to redistricting, then the chances of their continuing to vote in future elections decreases. The confusion",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381580503"
+    },
+    {
+      "id": "P12",
+      "hash": "3fb673998e53dded3f85d2e84af525349480af4710e5dc6d2d86f9bb430d145e",
+      "heading": "Openness and centralisation",
+      "excerpt": "If voters are allowed to vote at any of a number of different locations in the county or district etc., this will increase voter turnout. So",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381580503"
+    },
+    {
+      "id": "P13",
+      "hash": "f97e47918b6352135bd7868a622b2b4ecae12943b63acb3a82deb200b08b7874",
+      "heading": "Australia",
+      "excerpt": "In Australia, many voters in remote locations (such as many Indigenous communities) have their votes collected by \"remote mobile voting team",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381580503"
+    },
+    {
+      "id": "P14",
+      "hash": "b860d92f3d3a12be45f7743c9d7673d95c0f0a153c2fba6980117f38e85cecbe",
+      "heading": "Voting booth",
+      "excerpt": "Voting machines generally use either a voting booth or some other form of privacy cover to obscure voters from the view of others.",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381580503"
+    },
+    {
+      "id": "P15",
+      "hash": "ed7281edca851bdd74c645636879a2fa6fb8ac03880312d7ba550b162a20eb2c",
+      "heading": "History",
+      "excerpt": "Polling places used to gather and count ballots in elections have changed significantly over the past 250 years. Advances in technology have",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381580503"
+    },
+    {
+      "id": "P16",
+      "hash": "ff2c8cb5c4bef4977918c436152a3de71c49f411608384d966a62bd21d59690b",
+      "heading": "History",
+      "excerpt": "Before there were paper ballots, people would simply call out their selection at the polling place. This polling place was typically the cou",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381580503"
+    }
+  ],
+  "updatedAt": "2026-10-24T10:20:55.247Z"
 }
