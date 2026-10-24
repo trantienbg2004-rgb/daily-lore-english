@@ -8538,10 +8538,10 @@
       "checkedAt": "2026-10-22T08:59:52.356Z"
     },
     "2846545": {
-      "status": "EVIDENCE_READY",
-      "reason": "10 rights-verified embedded images",
+      "status": "DRAFTED",
+      "reason": "draft durably saved before validation",
       "revisionId": 1375258429,
-      "checkedAt": "2026-10-24T08:33:18.718Z"
+      "checkedAt": "2026-10-24T08:33:36.374Z"
     },
     "2872472": {
       "status": "PUBLISHED",
@@ -11610,7 +11610,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-24T08:33:31.294Z",
+  "updatedAt": "2026-10-24T08:33:36.375Z",
   "dailyUsage": {
     "day": "2026-10-24",
     "calls": 66,
