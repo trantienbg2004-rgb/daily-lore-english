@@ -9994,10 +9994,10 @@
       "checkedAt": "2026-10-22T08:21:45.052Z"
     },
     "70018886": {
-      "status": "NEEDS_REPAIR",
-      "reason": "editorial: A1-A2:page-1:evidence-context,B1-B2:page-2:unsupported-number-context-1770",
+      "status": "EVIDENCE_READY",
+      "reason": "4 rights-verified embedded images",
       "revisionId": 1379701242,
-      "checkedAt": "2026-10-24T04:03:11.089Z"
+      "checkedAt": "2026-10-24T04:27:07.627Z"
     },
     "70105459": {
       "status": "RETRY_LATER",
@@ -10666,7 +10666,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-24T04:27:01.239Z",
+  "updatedAt": "2026-10-24T04:27:07.639Z",
   "dailyUsage": {
     "day": "2026-10-23",
     "calls": 182,
