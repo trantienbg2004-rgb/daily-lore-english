@@ -2,9 +2,224 @@
   "pageId": 397870,
   "title": "Triangular trade",
   "topic": "Economy",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1377048019,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377048019",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-24T11:04:06.881Z"
+  "reason": "4 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Triangle trade2.png"
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Triangular trade.jpg"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:Slaves embarked to America from 1450 until 1800 by country.jpg",
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/d/d6/Slaves_embarked_to_America_from_1450_until_1800_by_country.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "fileTitle": "File:Slaves embarked to America from 1450 until 1800 by country.jpg",
+        "caption": "The number of slaves embarked to America from 1450 until 1800 by country",
+        "alt": "",
+        "description": "Slaves embarked to America from 1450 until 1800 by country",
+        "date": "2023-06-11",
+        "section": "The Atlantic triangular slave trade",
+        "position": 2,
+        "provenance": {
+          "credit": "https://www.slavevoyages.org/",
+          "license": "CC BY 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Slaves_embarked_to_America_from_1450_until_1800_by_country.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Triangular_trade",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377048019",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:Luxborough galley burnt nearly to the water, 25 June 1727.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/63/Luxborough_galley_burnt_nearly_to_the_water%2C_25_June_1727.jpg/960px-Luxborough_galley_burnt_nearly_to_the_water%2C_25_June_1727.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Luxborough galley burnt nearly to the water, 25 June 1727.jpg",
+        "caption": "The loss of the slave ship Luxborough Galley in 1727 (\"I.C. 1760\"), lost in the last leg of the triangular trade, between the Caribbean and Britain.",
+        "alt": "",
+        "description": "The 'Luxborough Galley' burnt nearly to the water, 25 June 1727 The 'Luxborough Galley' burnt nearly to the water, 25 June 1727The 'Luxborough Galley' burnt nearly to the water, 25 June 1727",
+        "date": "circa 1727date QS:P571,+1727-00-00T00:00:00Z/9,P1480,Q5727902date QS:P571,+1727-00-00T00:00:00Z/9,P1",
+        "section": "The Atlantic triangular slave trade",
+        "position": 3,
+        "provenance": {
+          "credit": "John Cleveley the Elder",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Luxborough_galley_burnt_nearly_to_the_water,_25_June_1727.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Triangular_trade",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377048019",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:North Atlantic Gyre.png",
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/b/b4/North_Atlantic_Gyre.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "fileTitle": "File:North Atlantic Gyre.png",
+        "caption": "The North Atlantic Gyre",
+        "alt": "",
+        "description": "The North Atlantic Gyre, a clockwise-swirling vortex of ocean currents in the Northern Atlantic Ocean",
+        "date": "2008-04-07 03:10",
+        "section": "The Atlantic triangular slave trade",
+        "position": 4,
+        "provenance": {
+          "credit": "Jack · talk ·",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:North_Atlantic_Gyre.png",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Triangular_trade",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377048019",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:Graph of the Number of Slaves Imported From Africa.png",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/26/Graph_of_the_Number_of_Slaves_Imported_From_Africa.png/960px-Graph_of_the_Number_of_Slaves_Imported_From_Africa.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Graph of the Number of Slaves Imported From Africa.png",
+        "caption": "The number of slaves imported from Africa from 1501 to 1866",
+        "alt": "",
+        "description": "A graph depicting the number of enslaved persons trafficked from Africa",
+        "date": "2018-05-16",
+        "section": "New England",
+        "position": 5,
+        "provenance": {
+          "credit": "LawrenceScafuri",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Graph_of_the_Number_of_Slaves_Imported_From_Africa.png",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Triangular_trade",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377048019",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "22e7d898546d6e3eae65db0c6d86c83cb29827506ecc384f194c1dd1056ac27a",
+      "heading": "Lead",
+      "excerpt": "Triangular trade or triangle trade is trade between three ports or regions. Triangular trade usually evolves when a region has export commod",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377048019"
+    },
+    {
+      "id": "P2",
+      "hash": "79cb63a37b374c31c8d42d446444fc653378d7dd1783eeb0005806aec17b4cc9",
+      "heading": "Lead",
+      "excerpt": "The most commonly cited example of a triangular trade is the Atlantic slave trade, but other examples existed. These include the seventeenth",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377048019"
+    },
+    {
+      "id": "P3",
+      "hash": "3a878f8fd9588760bba501a71fd0e7e692be45c07d5cde7c474f99c4414fc3a1",
+      "heading": "Lead",
+      "excerpt": "The Atlantic slave trade used a system of three-way transatlantic exchanges – known historically as the triangular trade – which operated be",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377048019"
+    },
+    {
+      "id": "P4",
+      "hash": "57b45a1191e84952e64e7bacc67f800990111876a0b9fda2c9ecfd2be791ed64",
+      "heading": "Lead",
+      "excerpt": "This trade, in trade volume, was primarily with South America, where most slaves were sold, but a classic example taught in 20th-century stu",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377048019"
+    },
+    {
+      "id": "P5",
+      "hash": "cffc94bfd8e5ecf40079a886db3ae2f0b93b7e5befc96dc666382d33d2a8d0a7",
+      "heading": "New England",
+      "excerpt": "Wartime embargoes that reduced overseas trade precipitated speculative ventures, as well as land and estuary auctions of Narragansett tribal",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377048019"
+    },
+    {
+      "id": "P6",
+      "hash": "07048fad9a39e27dfe0a32abe6e19fbb52b995150784a7135329ba0d4bcfc899",
+      "heading": "Lead",
+      "excerpt": "During the Age of Sail, the particular routes were also shaped by the powerful influence of winds and currents. For example, from the main t",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377048019"
+    },
+    {
+      "id": "P7",
+      "hash": "37c44ad0c7faeefac5955ac94ea6c40c0c8bde57a00b525f98171c3ee2b3cbab",
+      "heading": "The Atlantic sack trade",
+      "excerpt": "From 1620 to 1709, ships and additional maritime vessels embarked from Newfoundland and New England docks in a \"sack trade.\" Sailors from bo",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377048019"
+    },
+    {
+      "id": "P8",
+      "hash": "a335be3121520e615fe14f810b02b87ab01884eee3d2150942cf79761210fee1",
+      "heading": "The Atlantic triangular slave trade",
+      "excerpt": "The most historically significant triangular trade was the transatlantic slave trade which operated among Europe, Africa, and the Americas f",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377048019"
+    },
+    {
+      "id": "P9",
+      "hash": "be27b74e4bb006d63d2d29cf2c465d341298b4297314ebce74f7a01d4d433908",
+      "heading": "New England",
+      "excerpt": "New England also made rum from Caribbean sugar and molasses, which it shipped to Africa as well as within the New World. Yet, the \"triangle ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377048019"
+    },
+    {
+      "id": "P10",
+      "hash": "ad8c397c43913408c04e6dee06e89f2dc3d194a5ab91542c3daf6b38601a1e74",
+      "heading": "Statistics",
+      "excerpt": "According to research provided by Emory University as well as Henry Louis Gates Jr., an estimated 12.5 million slaves were transported from ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377048019"
+    },
+    {
+      "id": "P11",
+      "hash": "63e666c9a86b0d57f5c204a9007af201b27b199db582215698ba3027dc38c372",
+      "heading": "Lead",
+      "excerpt": "The countries that controlled the transatlantic slave-market until the 18th century in terms of the number of enslaved people shipped were G",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377048019"
+    },
+    {
+      "id": "P12",
+      "hash": "616f37f86e92cc2bbf7153625cf0b83f326ce1f6316e4ae959dab1c38abbcf1f",
+      "heading": "The Atlantic sack trade",
+      "excerpt": "The \"sack trade\" dissolved after 1709 because of changes in cod curing processes and provincial demand for sugar as well as molasses. Atlant",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377048019"
+    },
+    {
+      "id": "P13",
+      "hash": "de4eda0089fed415feba09cb3269000e75ef010db4ceeb36d3e9c5102a4d31ee",
+      "heading": "The Atlantic sack trade",
+      "excerpt": "In order to sustain catches within schooner holds during these protracted trips, fishermen began to \"lightly salt\" cod and stored the wet fi",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377048019"
+    },
+    {
+      "id": "P14",
+      "hash": "c16ef7169ec2faa2f14549d8a414165256692e51daad6839d6b56b5e8c5cd2bf",
+      "heading": "The Atlantic triangular slave trade",
+      "excerpt": "A classic example is the colonial molasses trade. Merchants purchased raw sugar (often in its liquid form, molasses) from plantations in the",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377048019"
+    },
+    {
+      "id": "P15",
+      "hash": "1fe2b74b90ae54a0c7d83af27382c713da64a849538d96d51aab8490f6790e57",
+      "heading": "The Atlantic triangular slave trade",
+      "excerpt": "With the profits from the European sales, merchants purchased Europe's manufactured goods, including tools and weapons and on the next leg, ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377048019"
+    }
+  ],
+  "updatedAt": "2026-10-24T11:04:11.023Z"
 }
