@@ -2,10 +2,10 @@
   "pageId": 2262519,
   "title": "Dieppe maps",
   "topic": "History & Geography",
-  "status": "DRAFTED",
+  "status": "VALIDATED",
   "revisionId": 1373119799,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373119799",
-  "reason": "draft durably saved before validation",
+  "reason": "local factual, style, length, structure and source audit passed",
   "rights": [
     {
       "status": "REVIEW",
@@ -229,7 +229,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373119799"
     }
   ],
-  "updatedAt": "2026-10-24T05:39:34.003Z",
+  "updatedAt": "2026-10-24T05:39:52.010Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -352,5 +352,8 @@
     "output": 1315,
     "total": 4202
   },
-  "validation": null
+  "validation": {
+    "accepted": true,
+    "errors": []
+  }
 }
