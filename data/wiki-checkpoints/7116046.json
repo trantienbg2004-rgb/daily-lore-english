@@ -2,10 +2,10 @@
   "pageId": 7116046,
   "title": "Animal rights",
   "topic": "Politics",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1380544609,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380544609",
-  "reason": "8 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REJECTED",
@@ -344,5 +344,130 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380544609"
     }
   ],
-  "updatedAt": "2026-10-24T07:19:50.625Z"
+  "updatedAt": "2026-10-24T07:20:07.544Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "What Is Animal Rights?",
+        "pages": [
+          {
+            "text": "Animal rights is a philosophy. It says that many animals have moral worth. They have this worth on their own. They do not need to be useful to humans. Their most basic interests, like avoiding suffering, deserve the same care as human interests.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Some people use the term animal rights to mean animal protection. Others use it to mean animal liberation. In a narrower way, it means animals have fundamental rights. They should be treated with respect as individuals. They should have freedom from torture.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "Many advocates oppose speciesism. This is a prejudice based on species membership. They believe animals should not be property. They should not be used as food, clothing, or entertainment just because they are not human.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "Philosophers have different ideas about this topic. Peter Singer uses the ideas of utilitarianism. Tom Regan argues that animals are subjects-of-a-life. Gary Francione is an abolitionist who says animals should not be owned by anyone.",
+            "evidenceIds": [
+              "P8",
+              "P9",
+              "P10",
+              "P11"
+            ]
+          },
+          {
+            "text": "Critics argue that animals cannot enter into a social contract. Because of this, critics say animals cannot have rights. Other critics say animals can be used as resources if there is no unnecessary suffering.",
+            "evidenceIds": [
+              "P5"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "Understanding Animal Rights and Ethics",
+        "pages": [
+          {
+            "text": "Animal rights is the philosophy that sentient animals possess moral worth independent of human utility. Their basic interests, such as avoiding suffering, should receive the same consideration as similar human interests. Proponents often use the argument from marginal cases to support this view.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "While popular discourse often uses animal rights interchangeably with animal protection or liberation, a narrower definition asserts that animals have fundamental rights. These include rights to life, liberty, and freedom from torture, which should not be overridden by aggregate welfare.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "Many advocates oppose speciesism, viewing it as an irrational prejudice based solely on species membership. They argue that animals should not be treated as property or used for food, clothing, and entertainment. Several cultural traditions also espouse forms of animal rights.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "The two main philosophical approaches are utilitarian and rights-based. Peter Singer uses utilitarian ideas to discuss how we should treat individuals, while Tom Regan argues that animals are subjects-of-a-life and bearers of rights. Gary Francione advocates for abolition, stating that animals should not be owned.",
+            "evidenceIds": [
+              "P8",
+              "P9",
+              "P10",
+              "P11"
+            ]
+          },
+          {
+            "text": "Critics of animal rights argue that animals cannot enter into a social contract and therefore lack duties and rights. Others contend from a utilitarian perspective that animals may be used as resources provided there is no unnecessary suffering, though opinions on what constitutes unnecessary suffering vary considerably.",
+            "evidenceIds": [
+              "P5"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "Philosophical Perspectives on Animal Rights",
+        "pages": [
+          {
+            "text": "Animal rights is the philosophical position positing that sentient animals possess moral worth independent of human utility. Consequently, their fundamental interests, notably the avoidance of suffering, warrant consideration comparable to analogous human interests. This conclusion is frequently derived through the argument from marginal cases.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "In broader popular discourse, animal rights is frequently conflated with animal protection or liberation. Conversely, a stricter definition posits that numerous animals possess inherent rights to life, liberty, and freedom from torture, which resist supersession by considerations of aggregate societal welfare.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "Advocates vehemently oppose speciesism, characterizing it as an irrational prejudice rooted exclusively in species membership. They contend that animals ought neither to be classified as property nor exploited for food, attire, entertainment, or labor. Various cultural traditions similarly incorporate tenets of animal rights.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "Discourse in animal ethics primarily bifurcates into utilitarian and rights-based frameworks. Theorists like Peter Singer evaluate acts based on preferences and consequences, whereas deontological proponents such as Tom Regan classify animals as subjects-of-a-life possessing inherent moral rights. Concurrently, legal scholars like Gary Francione pursue abolitionist paradigms centered on eliminating animal property status.",
+            "evidenceIds": [
+              "P8",
+              "P9",
+              "P10",
+              "P11"
+            ]
+          },
+          {
+            "text": "Opponents of animal rights contend that nonhuman animals lack the capacity for social contracts and thus cannot hold duties or rights. Alternative utilitarian critiques suggest that animals may serve as resources under conditions precluding unnecessary suffering, although the precise threshold defining permissible sacrifice remains a subject of ongoing debate.",
+            "evidenceIds": [
+              "P5"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2720,
+    "output": 989,
+    "total": 3709
+  },
+  "validation": null
 }
