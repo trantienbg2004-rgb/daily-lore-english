@@ -8228,10 +8228,10 @@
       "checkedAt": "2026-10-22T13:08:34.130Z"
     },
     "724212": {
-      "status": "FETCHED",
-      "reason": "pinned-source-ready",
+      "status": "EVIDENCE_READY",
+      "reason": "4 rights-verified embedded images",
       "revisionId": 1379035874,
-      "checkedAt": "2026-10-24T11:07:11.410Z"
+      "checkedAt": "2026-10-24T11:07:17.192Z"
     },
     "735092": {
       "status": "PUBLISHED",
@@ -11930,7 +11930,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-24T11:07:11.416Z",
+  "updatedAt": "2026-10-24T11:07:17.193Z",
   "dailyUsage": {
     "day": "2026-10-24",
     "calls": 117,
