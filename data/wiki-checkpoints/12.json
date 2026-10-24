@@ -2,10 +2,10 @@
   "pageId": 12,
   "title": "Anarchism",
   "topic": "Politics",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1381080958,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381080958",
-  "reason": "12 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -427,5 +427,142 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381080958"
     }
   ],
-  "updatedAt": "2026-10-24T05:40:05.459Z"
+  "updatedAt": "2026-10-24T05:40:22.125Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "What Is Anarchism?",
+        "pages": [
+          {
+            "text": "Anarchism is a political movement. It wants to end the state and capitalism. It tries to stop all rules and powers that hurt people. Anarchists want free groups to work together in peace.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Long ago, ancient China and Greece had early ideas like this. Later, modern anarchism grew during the Enlightenment. The word comes from an old Greek term meaning without a leader.",
+            "evidenceIds": [
+              "P4",
+              "P6",
+              "P7"
+            ]
+          },
+          {
+            "text": "Pierre-Joseph Proudhon was the first person to call himself an anarchist. He gave the word a good meaning. During the nineteenth century, different schools of anarchist thought began to form.",
+            "evidenceIds": [
+              "P5",
+              "P7"
+            ]
+          },
+          {
+            "text": "Anarchists use many ways to change society. Some use slow and peaceful steps. Others want to destroy bad states quickly. They take part in workers' struggles and big historical revolutions.",
+            "evidenceIds": [
+              "P2",
+              "P3"
+            ]
+          },
+          {
+            "text": "After World War II, the movement became small. But in the nineteen-sixties, anarchism grew again. Today, people in anti-war and anti-globalization groups help make the movement popular around the world.",
+            "evidenceIds": [
+              "P2",
+              "P8"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "The History and Ideas of Anarchism",
+        "pages": [
+          {
+            "text": "Anarchism is a far-left political philosophy. It seeks to abolish institutions that perpetuate authority, coercion, or hierarchy, primarily targeting the state and capitalism. Anarchists advocate replacing these structures with stateless societies operating on free association and reciprocity.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "The term comes from the Ancient Greek word anarkhia, meaning without a ruler. While ancient precursors existed in China and Greece, modern anarchism emerged from the Enlightenment. Pierre-Joseph Proudhon later became the first political philosopher to proudly call himself an anarchist.",
+            "evidenceIds": [
+              "P4",
+              "P5",
+              "P6",
+              "P7"
+            ]
+          },
+          {
+            "text": "During the late nineteenth and early twentieth centuries, the movement flourished worldwide. Anarchists participated in several major revolutions, including the Paris Commune and the Spanish Civil War. This classical era ended with the conclusion of the Spanish Civil War.",
+            "evidenceIds": [
+              "P2",
+              "P7"
+            ]
+          },
+          {
+            "text": "Anarchists employ both evolutionary and revolutionary approaches to social change. Evolutionary methods favour gradual, often nonviolent reform, while revolutionary approaches seek to destroy oppressive states. Tactics have ranged from mass activism and strikes to militant resistance.",
+            "evidenceIds": [
+              "P3",
+              "P12",
+              "P15"
+            ]
+          },
+          {
+            "text": "By the end of World War II, the movement had weakened significantly. However, the 1960s witnessed a major revival tied to peace, environmental, and counterculture movements. In recent decades, anarchism has grown in influence within anti-capitalist and anti-globalisation campaigns.",
+            "evidenceIds": [
+              "P2",
+              "P8"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "Anarchist Philosophy and Movement",
+        "pages": [
+          {
+            "text": "Anarchism constitutes a predominantly far-left political current dedicated to dismantling hierarchical institutions that sustain coercion and authority, specifically focusing on the state and capitalist economics. Its adherents propose substituting these vertical systems with horizontal networks of voluntary associations grounded in reciprocity.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Etymologically derived from the Greek anarkhia, denoting the absence of a ruler, the tradition found early philosophical precursors in Taoism and Stoicism. Although historical traces appear throughout history, modern anarchism crystallized during the Enlightenment, with Pierre-Joseph Proudhon pioneering the explicit self-identification.",
+            "evidenceIds": [
+              "P4",
+              "P5",
+              "P6",
+              "P7"
+            ]
+          },
+          {
+            "text": "The classical era spanned from the formation of distinct nineteenth-century schools until the Spanish Civil War. During this period, anarchists exerted substantial influence over labor movements and engaged in major historical uprisings, balancing theoretical diversity with militant direct action.",
+            "evidenceIds": [
+              "P2",
+              "P7",
+              "P13"
+            ]
+          },
+          {
+            "text": "Strategic methodologies within the movement diverge into evolutionary and revolutionary categories. While evolutionary practitioners emphasize gradual, nonviolent transformation and counter-institutions, revolutionary factions historically and presently contemplate or execute direct confrontation against state apparatuses.",
+            "evidenceIds": [
+              "P3",
+              "P12",
+              "P14",
+              "P15"
+            ]
+          },
+          {
+            "text": "Following post-World War II contraction, the movement underwent a substantial resurgence during the 1960s amid disillusionment with Marxism-Leninism. Integrating with environmental, anti-nuclear, and New Left currents, contemporary anarchism continues to evolve through decentralized networks and anti-globalization activism.",
+            "evidenceIds": [
+              "P2",
+              "P8"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2855,
+    "output": 1374,
+    "total": 4229
+  },
+  "validation": null
 }
