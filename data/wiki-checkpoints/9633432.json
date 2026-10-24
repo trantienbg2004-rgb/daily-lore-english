@@ -245,7 +245,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381021044"
     }
   ],
-  "updatedAt": "2026-10-24T05:36:27.511Z",
+  "updatedAt": "2026-10-24T05:36:45.526Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -294,7 +294,7 @@
         "headline": "Pisistratus and the Rise of Athenian Tyranny",
         "pages": [
           {
-            "text": "Pisistratus was a prominent politician in ancient Athens who ruled as a tyrant during the sixth century BC. His political career unfolded across three separate periods before his final reign from 546 to 527 BC. His actions laid essential groundwork for the future pre-eminence of Athens.",
+            "text": "Pisistratus was a prominent politician in ancient Athens who ruled as a tyrant during the sixth century BC. His political career unfolded across three separate periods before his final reign from 546 to his death. His actions laid essential groundwork for the future pre-eminence of Athens.",
             "evidenceIds": [
               "P1",
               "P8"
@@ -390,11 +390,11 @@
       }
     }
   },
-  "repairAttempts": 0,
+  "repairAttempts": 1,
   "lastUsage": {
-    "input": 2966,
-    "output": 1606,
-    "total": 4572
+    "input": 2917,
+    "output": 256,
+    "total": 3173
   },
   "validation": null
 }
