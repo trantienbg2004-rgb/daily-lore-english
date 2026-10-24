@@ -2,10 +2,10 @@
   "pageId": 2412774,
   "title": "Commemorative plaque",
   "topic": "Culture",
-  "status": "DRAFTED",
+  "status": "VALIDATED",
   "revisionId": 1368430332,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368430332",
-  "reason": "draft durably saved before validation",
+  "reason": "local factual, style, length, structure and source audit passed",
   "rights": [
     {
       "status": "REVIEW",
@@ -467,7 +467,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368430332"
     }
   ],
-  "updatedAt": "2026-10-24T04:23:17.853Z",
+  "updatedAt": "2026-10-24T04:23:35.890Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -609,5 +609,8 @@
     "output": 130,
     "total": 2643
   },
-  "validation": null
+  "validation": {
+    "accepted": true,
+    "errors": []
+  }
 }
