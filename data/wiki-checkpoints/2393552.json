@@ -2,10 +2,10 @@
   "pageId": 2393552,
   "title": "New World",
   "topic": "History & Geography",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1376689536,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376689536",
-  "reason": "5 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -289,5 +289,143 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376689536"
     }
   ],
-  "updatedAt": "2026-10-24T06:57:51.189Z"
+  "updatedAt": "2026-10-24T06:58:08.590Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "What is the New World?",
+        "pages": [
+          {
+            "text": "The New World is an early modern term. It describes lands in the Western Hemisphere. These lands include the Americas and sometimes Oceania. The term started in the early 16th century during the Age of Discovery.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Before this time, European geographers thought the world only had three parts. They knew Africa, Asia, and Europe. People later called these three parts the Old World.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "An Italian explorer named Amerigo Vespucci is usually credited for the term. He wrote a letter in 1503 about lands west of the Atlantic Ocean. He concluded that these lands were new continents.",
+            "evidenceIds": [
+              "P1",
+              "P3"
+            ]
+          },
+          {
+            "text": "Vespucci published his ideas in a pamphlet called Mundus Novus. Other writers like Peter Martyr also used new terms. Christopher Columbus thought the lands were part of Asia.",
+            "evidenceIds": [
+              "P5",
+              "P6"
+            ]
+          },
+          {
+            "text": "Over time, people accepted that these discoveries were a New World and not Asia. Today, people still use the term when talking about historic voyages and early European colonization.",
+            "evidenceIds": [
+              "P8",
+              "P9"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "The History of the Term New World",
+        "pages": [
+          {
+            "text": "The New World is an early modern term that describes the majority of lands in the Western Hemisphere, particularly the Americas, and sometimes Oceania. It was introduced during Europe's Age of Discovery by Italian explorer Amerigo Vespucci.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "This discovery expanded the geographical horizon of earlier European geographers. Previously, they believed the world included only Africa, Asia, and Europe, which became known collectively as the Old World.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "Vespucci is usually credited with creating the term in his 1503 letter, though similar terms had been used before him. For instance, Peter Martyr used alternative names like the western antipodes shortly after Columbus returned from his first voyage.",
+            "evidenceIds": [
+              "P3",
+              "P5"
+            ]
+          },
+          {
+            "text": "In his published pamphlet Mundus Novus, Vespucci presented his conclusion that the lands discovered west of the Atlantic Ocean were an entirely different continent rather than the edges of Asia, as Christopher Columbus had asserted.",
+            "evidenceIds": [
+              "P1",
+              "P6"
+            ]
+          },
+          {
+            "text": "Although the geographic relationship between Europe and the Americas remained unclear at first, the concept eventually gained general acceptance. Early maps showed various interpretations, with some connecting Asia to North America while others depicted an open ocean.",
+            "evidenceIds": [
+              "P8",
+              "P20",
+              "P21"
+            ]
+          },
+          {
+            "text": "Today, the term is still commonly employed when discussing historic spaces and early European colonization, although it has faced criticism for applying a colonial perspective that overlooks the complexity of the world.",
+            "evidenceIds": [
+              "P9"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "Origins and Evolution of the New World Concept",
+        "pages": [
+          {
+            "text": "Originating during the European Age of Discovery in the early sixteenth century, the term New World denotes the majority of Western Hemisphere lands, specifically the Americas and occasionally Oceania. Italian explorer Amerigo Vespucci introduced the designation through his published writings.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "This conceptual breakthrough fundamentally reconfigured the spatial paradigms of European geographers, who had previously maintained that the terrestrial world comprised solely Africa, Asia, and Europe—regions subsequently retrofitted with the designation Old World.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "While Vespucci is conventionally credited with popularizing the term via his 1503 letter, antecedents existed. Chronicler Peter Martyr d'Anghiera formulated alternative designations such as the western antipodes following Columbus's initial voyage, reflecting contemporary interpretive friction.",
+            "evidenceIds": [
+              "P3",
+              "P5"
+            ]
+          },
+          {
+            "text": "Vespucci's Latin publication articulated the explicit hypothesis that western discoveries constituted an entirely distinct continental landmass rather than the eastern periphery of Asia, a proposition that directly contested Christopher Columbus's geographical assertions.",
+            "evidenceIds": [
+              "P6"
+            ]
+          },
+          {
+            "text": "Early sixteenth-century cartography mirrored this evolving understanding while retaining elements of classical authority. While some cartographers depicted open oceanic expanses between Asia and the Americas, others persisted in merging northern Asian landmasses with North America.",
+            "evidenceIds": [
+              "P20",
+              "P21",
+              "P22"
+            ]
+          },
+          {
+            "text": "Contemporary usage of the term remains prevalent in historiography concerning European colonization, notwithstanding scholarly critiques that argue the terminology imposes a problematic colonial framework which obscures historical and geographic complexity.",
+            "evidenceIds": [
+              "P9"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2983,
+    "output": 1364,
+    "total": 4347
+  },
+  "validation": null
 }
