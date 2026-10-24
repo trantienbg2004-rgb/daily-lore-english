@@ -2,9 +2,159 @@
   "pageId": 60573096,
   "title": "Social thinking of Arthur de Gobineau",
   "topic": "Society",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1367515425,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1367515425",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-24T11:04:23.780Z"
+  "reason": "1 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Wagner Paris 1867 1.jpg"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:Voelker Europas.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fa/Voelker_Europas.jpg/960px-Voelker_Europas.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Voelker Europas.jpg",
+        "caption": "Völker Europas, wahrt eure heiligsten Güter (\"Peoples of Europe, guard your dearest goods,\" 1895) The Yellow Peril painting. Much of the imagery appears drawn from Gobineau's anti-Asian writings, via his friend Prince Philip von Eulenburg who helped with turning Wilhelm II's sketch into the painting.",
+        "alt": "A reproduction of the print entitled Völker Europas, wahrt eure heiligsten Güter (\"Peoples of Europe, guard your dearest goods,\" 1895) or The Yellow Peril painting with an armed angel showing armed women a fiery battle.",
+        "description": "",
+        "date": "1895",
+        "section": "\"Yellow Peril\"",
+        "position": 1,
+        "provenance": {
+          "credit": "Hermann Knackfuß",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Voelker_Europas.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Social_thinking_of_Arthur_de_Gobineau",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1367515425",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Oliveria Viana, Fundo Correio da Manhã.tif"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "ec097e512bbff63e5283e6940e8bebb5771aecc99676d867729c101b4741c147",
+      "heading": "Lead",
+      "excerpt": "The French aristocrat Arthur de Gobineau developed a set of ideas that were influential during his life and some of them that impacted later",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1367515425"
+    },
+    {
+      "id": "P2",
+      "hash": "3ae0bf53e8cdc18cac553fef1b4763af39359bc77210c6ff5dc0ef1afa31d492",
+      "heading": "Racial theories",
+      "excerpt": "Shocked by the Revolution of 1848, Gobineau first expressed his racial theories in his 1848 epic poem Manfredine. In it he revealed his fear",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1367515425"
+    },
+    {
+      "id": "P3",
+      "hash": "89452a100eb87ba2b10002a11054605ee259d2d56a871060bc5f6fb13050d90a",
+      "heading": "Racial theories",
+      "excerpt": "Et les Germains, montrant leur chevelure blonde, Que portaient leurs aïeux, dans tous les coins du monde, Paraissent pour régner. Neptune et",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1367515425"
+    },
+    {
+      "id": "P4",
+      "hash": "a74919c128721295531814805e389a54c7c08486213f24dde0feb16c162f15bf",
+      "heading": "Racial theories",
+      "excerpt": "And the Germanic People, displaying the blond hair of their ancestors, emerged to rule in every corner of the world. Neptune and his trident",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1367515425"
+    },
+    {
+      "id": "P5",
+      "hash": "7eb8ad9190d88b0c3a31955c4e294af9c3871c3015bc97ff5240fb5077ceb9a5",
+      "heading": "Racial theories",
+      "excerpt": "Gobineau came to believe race created culture. He argued that distinctions among the three races—\"black\" (Negroid race), \"white\" (Caucasian ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1367515425"
+    },
+    {
+      "id": "P6",
+      "hash": "9d218968d9056337c129a02c17314704cbd64c4f04605f3811782da1eb347920",
+      "heading": "Focus on Aryans as a superior race",
+      "excerpt": "Gobineau asserted that the Aryans had founded the ten great civilizations of the world, writing: \"In the ten civilizations no Negro race is ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1367515425"
+    },
+    {
+      "id": "P7",
+      "hash": "baa3c4e3c3eba4e946fc60f094bf2ecb2566cd70b022a81f065b39e2c56dc2ac",
+      "heading": "Novels and essays",
+      "excerpt": "Besides promoting racism, Gobineau also wrote several well received novels. Writers such as Marcel Proust, Jean Cocteau and André Gide have ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1367515425"
+    },
+    {
+      "id": "P8",
+      "hash": "074124fb37bab78061501905ec324a860bc2d4967f91ea3365bf15cd97d8d151",
+      "heading": "Friendship with Richard Wagner",
+      "excerpt": "Though a proud Frenchman, Gobineau was cosmopolitan and regarded himself as part of a cultured European elite that transcended national loya",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1367515425"
+    },
+    {
+      "id": "P9",
+      "hash": "4b03f7330851e441fdc275bf60c9cdadca5e27d1c14d9fed2411761f8e947330",
+      "heading": "Gobineau and war",
+      "excerpt": "Despite having failed the entrance exams to St. Cyr, Gobineau had an intensely militaristic view of the world, believing different races wer",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1367515425"
+    },
+    {
+      "id": "P10",
+      "hash": "f7728b9ca0599b8ec432d899a30086f695826a21c281698ec0a67c4ff3a5add0",
+      "heading": "Empires",
+      "excerpt": "Paradoxically, although Gobineau saw hope in the expansion of European power, he did not support the creation of commercial empires with the",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1367515425"
+    },
+    {
+      "id": "P11",
+      "hash": "1604d03ceb82de3403444560e8a2b7b75b46aacf2a87d28174911a4b05a160a0",
+      "heading": "Chinese civilization",
+      "excerpt": "Gobineau argued Chinese civilization had been created by a group of Aryan conquerors from India who had brought the indigenous Malay people ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1367515425"
+    },
+    {
+      "id": "P12",
+      "hash": "cd23cd664a574a740a768d91543eb912ddf9572cfb3876a34adfa682d830783c",
+      "heading": "\"Yellow Peril\"",
+      "excerpt": "In the last years of his life Gobineau was consumed with the fear of what was later to be known as the \"Yellow Peril\". He believed European ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1367515425"
+    },
+    {
+      "id": "P13",
+      "hash": "9c06c6b8b89ee3b9c6b1fbed229bdd44ecc39dd36dd2180b7dc33910a8ab86ba",
+      "heading": "Romania",
+      "excerpt": "Gobineau's theories were a major influence on the Romanian radical anti-Semitic politician Professor A. C. Cuza, who embraced his biological",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1367515425"
+    },
+    {
+      "id": "P14",
+      "hash": "afc489f18554d933d203cd344087ad7514d189a63cf1ffd5ad39a24337cc5a9d",
+      "heading": "Ottoman Empire",
+      "excerpt": "Gobineau's theories had a profound influence on the Committee of Union and Progress (CUP). The Turks had originated from the land north of t",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1367515425"
+    },
+    {
+      "id": "P15",
+      "hash": "47a48355e71d3b35859b5f44d1ee233146e8379a8859ec027cdb1fa49e371c95",
+      "heading": "Germany",
+      "excerpt": "Historians have described Gobinism as becoming cult-like by the end of the nineteenth century, with powerful and influential followers, spec",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1367515425"
+    },
+    {
+      "id": "P16",
+      "hash": "d1b7c91fe33b6b9c338e37fe04f2bf5b089fdcac88d50cedaca4564b4a3ec49f",
+      "heading": "Influence on Nazism",
+      "excerpt": "Adolf Hitler and Nazism borrowed much of Gobineau's ideology. However, although a central figure in the development of degeneration theory, ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1367515425"
+    }
+  ],
+  "updatedAt": "2026-10-24T11:04:29.063Z"
 }
