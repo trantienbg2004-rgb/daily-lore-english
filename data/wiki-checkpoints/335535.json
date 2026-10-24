@@ -2,10 +2,10 @@
   "pageId": 335535,
   "title": "Romantic literature",
   "topic": "Culture",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1348594744,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1348594744",
-  "reason": "12 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REJECTED",
@@ -385,5 +385,145 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1348594744"
     }
   ],
-  "updatedAt": "2026-10-24T04:47:20.228Z"
+  "updatedAt": "2026-10-24T04:47:38.388Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "The History and Stories of Romantic Literature",
+        "pages": [
+          {
+            "text": "Romantic literature is a famous style of writing. It often talks about nature, the past, and lonely people. Some authors also wrote about the supernatural and human feelings. This special literary movement happened after the Enlightenment and before Realism.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "In England, early poetry grew in the eighteenth century. Writers like Joseph Warton said imagination was very important. James Macpherson wrote popular poems about an ancient bard named Ossian. Horace Walpole wrote an early Gothic novel that brought horror and threat to readers.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "In Germany, Johann Wolfgang von Goethe wrote a famous novel about a sensitive young man. Later, writers collected many traditional folk tales and fairy tales. The Brothers Grimm published their famous collection of German stories in eighteen twelve.",
+            "evidenceIds": [
+              "P4",
+              "P5"
+            ]
+          },
+          {
+            "text": "Great Britain had many key writers in this movement. William Wordsworth and Samuel Taylor Coleridge published important poems in seventeen ninety-eight. Their works described the lives of poor people and showed the Gothic side of English writing.",
+            "evidenceIds": [
+              "P6"
+            ]
+          },
+          {
+            "text": "Many other countries developed their own styles. Poland focused heavily on national history and traditions. Russia had great poets like Alexander Pushkin. Spain and other regions saw a big growth of writers using local languages.",
+            "evidenceIds": [
+              "P9",
+              "P10",
+              "P11"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "The Development of Romantic Literature Worldwide",
+        "pages": [
+          {
+            "text": "Romantic literature found recurrent themes in the criticism of the past, the cult of sensibility, the isolation of authors, and a deep respect for nature. Certain authors based their works on the occult and human psychology. The movement typically viewed satire as unworthy of serious attention, following the Enlightenment and preceding Realism.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Precursors in England emerged by the middle of the eighteenth century with figures like Joseph and Thomas Warton. James Macpherson achieved international success with his Ossian poetry cycle, though it involved elements of fraud. Meanwhile, Horace Walpole launched the Gothic novel genre with a delight in horror, threat, and exotic settings.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "Johann Wolfgang von Goethe heavily influenced early German Romanticism through his novel about a passionate young artist. Later German writers focused on motifs like travelling, Germanic myths, and folklore. The Brothers Grimm published their collected folk tales, maintaining the traditional style of telling.",
+            "evidenceIds": [
+              "P4",
+              "P5"
+            ]
+          },
+          {
+            "text": "In Great Britain, key poets included William Wordsworth, Samuel Taylor Coleridge, and John Keats. The publication of Lyrical Ballads marked the start of the movement, featuring poems about rural life and Gothic elements. Although regarded as marginal radicals at first, the Lake Poets gained lasting fame.",
+            "evidenceIds": [
+              "P6"
+            ]
+          },
+          {
+            "text": "Scotland developed a distinct national identity through figures like Allan Ramsay and James Macpherson. In France, François-René de Chateaubriand introduced alienated heroes in prose. Polish Romanticism closely connected with national history and the nobility's traditions during periods of intense political upheaval.",
+            "evidenceIds": [
+              "P7",
+              "P8",
+              "P9"
+            ]
+          },
+          {
+            "text": "Russia produced major Romantic exponents such as Alexander Pushkin, whose works heavily influenced nineteenth-century literature. Spanish literature also flourished with poets like José de Espronceda and dramatists whose plays inspired famous operas. Regional languages experienced a national revival in areas like Catalonia and Galicia.",
+            "evidenceIds": [
+              "P10",
+              "P11"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "Global Perspectives on the Romantic Movement",
+        "pages": [
+          {
+            "text": "Literary Romanticism was characterized by recurrent thematic elements, including the evaluation of the past, sensibility, narrative isolation, and reverence for the natural world. Authors frequently engaged with the supernatural and psychological depth while dismissing satire. Chronologically, the movement bridged the gap between the Enlightenment and Realism.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "While sixteenth-century poet Isabella di Morra served as an early precursor, English poetry saw mid-eighteenth-century developments through figures emphasizing imagination. Works by Macpherson and Chatterton incorporated fabrications presented as historical discoveries. Concurrently, Walpole pioneered the Gothic novel, integrating architectural revivalism with themes of horror and exoticism.",
+            "evidenceIds": [
+              "P2",
+              "P3"
+            ]
+          },
+          {
+            "text": "German Romanticism was catalyzed by Goethe's sentimental novel and advanced by idealist philosophers. The movement prioritized folklore, childhood innocence, and non-classical mythology, culminating in seminal collections by the Brothers Grimm and Brentano alongside darker gothic motifs by later authors.",
+            "evidenceIds": [
+              "P4",
+              "P5"
+            ]
+          },
+          {
+            "text": "British literature pivoted on the contributions of the Lake Poets and contemporaries whose 1798 publication of Lyrical Ballads inaugurated the movement. Despite initial perceptions of political radicalism, these writers explored marginalized rural lives and supernatural elements that defined domestic Romanticism.",
+            "evidenceIds": [
+              "P6"
+            ]
+          },
+          {
+            "text": "Scottish literature fostered an international reputation through pastoral revivals and Macpherson's pseudonymous Ossianic poetry, which profoundly impacted European aesthetics. Meanwhile, French Romanticism emerged relatively late due to political associations, with Chateaubriand pioneering alienated prose narratives.",
+            "evidenceIds": [
+              "P7",
+              "P8"
+            ]
+          },
+          {
+            "text": "Polish Romanticism developed largely in emigration during the Great Emigration, intertwining deeply with messianic nationalism and historical revivals. Concurrently, Russian literature found its primary exponent in Pushkin, and Spanish writers stimulated significant regional revivals across Catalan and Galician literary spheres.",
+            "evidenceIds": [
+              "P9",
+              "P10",
+              "P11"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2944,
+    "output": 1575,
+    "total": 4519
+  },
+  "validation": null
 }
