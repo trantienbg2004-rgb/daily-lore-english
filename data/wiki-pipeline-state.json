@@ -6704,10 +6704,10 @@
       "checkedAt": "2026-10-21T18:12:37.504Z"
     },
     "329948": {
-      "status": "PENDING",
-      "reason": "queued",
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
       "revisionId": 1376683758,
-      "checkedAt": null
+      "checkedAt": "2026-10-24T04:07:19.497Z"
     },
     "332902": {
       "status": "EVIDENCE_READY",
@@ -10202,7 +10202,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-24T04:07:12.911Z",
+  "updatedAt": "2026-10-24T04:07:19.507Z",
   "dailyUsage": {
     "day": "2026-10-23",
     "calls": 166,
