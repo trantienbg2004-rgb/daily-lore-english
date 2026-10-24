@@ -9170,10 +9170,10 @@
       "checkedAt": null
     },
     "7569422": {
-      "status": "EVIDENCE_READY",
-      "reason": "3 rights-verified embedded images",
+      "status": "RETRY_LATER",
+      "reason": "Gemini token usage unavailable",
       "revisionId": 1374169717,
-      "checkedAt": "2026-10-24T10:16:43.365Z"
+      "checkedAt": "2026-10-24T10:16:49.151Z"
     },
     "7597459": {
       "status": "PENDING",
@@ -11930,7 +11930,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-24T10:16:43.366Z",
+  "updatedAt": "2026-10-24T10:16:49.152Z",
   "dailyUsage": {
     "day": "2026-10-24",
     "calls": 117,
