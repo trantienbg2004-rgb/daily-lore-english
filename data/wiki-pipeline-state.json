@@ -7610,10 +7610,10 @@
       "checkedAt": "2026-10-22T09:14:26.251Z"
     },
     "5250937": {
-      "status": "PENDING",
-      "reason": "queued",
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
       "revisionId": 1376219758,
-      "checkedAt": null
+      "checkedAt": "2026-10-24T04:04:25.206Z"
     },
     "5286332": {
       "status": "PUBLISHED",
@@ -10202,7 +10202,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-24T04:04:18.792Z",
+  "updatedAt": "2026-10-24T04:04:25.217Z",
   "dailyUsage": {
     "day": "2026-10-23",
     "calls": 166,
