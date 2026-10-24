@@ -2,10 +2,10 @@
   "pageId": 56738,
   "title": "Geography of Rwanda",
   "topic": "Environment",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1366488374,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1366488374",
-  "reason": "6 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -313,5 +313,175 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1366488374"
     }
   ],
-  "updatedAt": "2026-10-24T07:45:09.131Z"
+  "updatedAt": "2026-10-24T07:45:26.578Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "Rwanda Land and Nature",
+        "pages": [
+          {
+            "text": "Rwanda is a small country in East Africa. It is near the Equator, but its high mountains give it a cool, nice climate. The land has no ocean coast. It shares borders with Uganda, Tanzania, Burundi, and the Democratic Republic of the Congo.",
+            "evidenceIds": [
+              "P1",
+              "P3",
+              "P14",
+              "P20"
+            ]
+          },
+          {
+            "text": "People call Rwanda the land of a thousand hills. From west to east, the land goes from high mountains to a central plateau and then to eastern lowlands. Mount Karisimbi is the highest peak in the country. The lowest point is the Rusizi River.",
+            "evidenceIds": [
+              "P2",
+              "P9"
+            ]
+          },
+          {
+            "text": "Rain and rivers shape the land. Most water flows east to the Nile basin through rivers like the Kagera. Some water flows west to the Congo basin. Lake Kivu sits on the western border. Smaller lakes are found across the interior.",
+            "evidenceIds": [
+              "P3",
+              "P13"
+            ]
+          },
+          {
+            "text": "The country has rich plant and animal life. Its nature areas include mountain forests, savannas, and wetlands. Akagera National Park protects eastern wildlife. Conservation challenges include wetland loss, poaching, and land erosion from heavy rains.",
+            "evidenceIds": [
+              "P8",
+              "P16",
+              "P17"
+            ]
+          },
+          {
+            "text": "Rwanda has a very large population for its size. A recent census recorded over thirteen million residents. Most people live in rural areas, while the capital city, Kigali, holds many urban residents. Life expectancy at birth reached nearly seventy years.",
+            "evidenceIds": [
+              "P4",
+              "P19",
+              "P21"
+            ]
+          },
+          {
+            "text": "Because it is landlocked, Rwanda relies on trade routes through neighboring countries to reach the sea. The Central Corridor connects the nation to Tanzania and the port of Dar es Salaam, while the Northern Corridor links it to Kenya.",
+            "evidenceIds": [
+              "P7",
+              "P22"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "Geography of Rwanda",
+        "pages": [
+          {
+            "text": "Rwanda is a landlocked nation located in the Eastern African highlands, just south of the Equator. Bounded by Uganda, Tanzania, Burundi, and the Democratic Republic of the Congo, the country covers a compact territory with no coastline. Its high elevation tempers its equatorial location, creating a mild tropical highland climate across its diverse landscape.",
+            "evidenceIds": [
+              "P1",
+              "P3",
+              "P14",
+              "P20"
+            ]
+          },
+          {
+            "text": "The national topography transitions from west to east across three main divisions. Western Rwanda features the steep Albertine Rift mountains and the Virunga volcanoes, including Mount Karisimbi, the highest point at 4,507 metres. A central plateau of rolling hills follows, earning the nation its famous nickname, while the eastern edge descends into drier savannas and lowlands.",
+            "evidenceIds": [
+              "P2",
+              "P8",
+              "P9"
+            ]
+          },
+          {
+            "text": "A major north-south watershed divides the country into two distinct drainage basins. Approximately eighty percent of Rwanda drains eastward into the Nile basin through systems like the Nyabarongo and Kagera rivers, while twenty percent drains westward toward the Congo basin, primarily through Lake Kivu and the Rusizi River. Numerous lakes dot the interior landscape.",
+            "evidenceIds": [
+              "P3",
+              "P13"
+            ]
+          },
+          {
+            "text": "Ecosystems range from mountain forests in the west to wetlands and savannas in the east, supporting notable biodiversity. However, dense human settlement and highland farming put intense pressure on natural resources. Challenges such as soil erosion on steep slopes, deforestation, wetland degradation, and poaching threaten these delicate environments.",
+            "evidenceIds": [
+              "P8",
+              "P16",
+              "P17"
+            ]
+          },
+          {
+            "text": "The population is large and fast-growing, with a high density recorded in recent census data. While the vast majority of residents live in rural areas, urban populations concentrate heavily in Kigali, the national capital. Administrative governance is divided into four provinces and the capital city, which are further subdivided into local districts.",
+            "evidenceIds": [
+              "P4",
+              "P19",
+              "P20",
+              "P21"
+            ]
+          },
+          {
+            "text": "Without maritime access, external trade depends heavily on regional transport corridors. The Central Corridor connects Rwanda through Tanzania to the port of Dar es Salaam, while the Northern Corridor links the country via Uganda and Kenya to the port of Mombasa, securing vital economic ties.",
+            "evidenceIds": [
+              "P7",
+              "P22"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "Landscape and Environment of Rwanda",
+        "pages": [
+          {
+            "text": "Positioned within the Eastern African highlands just south of the Equator, Rwanda occupies a landlocked territory spanning over twenty-six thousand square kilometres. Bordered by four nations without any direct maritime access, the country's physical character is fundamentally shaped by its positioning along the western branch of the East African Rift and its considerable average elevation, which modifies its equatorial climate into a temperate tropical highland regime.",
+            "evidenceIds": [
+              "P1",
+              "P3",
+              "P14",
+              "P20"
+            ]
+          },
+          {
+            "text": "Geomorphologically, the terrain traverses distinct longitudinal zones from west to east. The western border hosts the Albertine Rift mountains and the volcanic Virunga chain, culminating in Mount Karisimbi at 4,507 metres. Moving eastward, the topography yields to a dissected central plateau of rolling hills and steep ridges—inspiring the sobriquet 'Land of a Thousand Hills'—before terminating in the low-lying savannas and wetlands of the Akagera basin.",
+            "evidenceIds": [
+              "P2",
+              "P8",
+              "P9",
+              "P10"
+            ]
+          },
+          {
+            "text": "Hydrologically, a prominent north-south watershed along the western highlands bifurcates the national territory. Eighty percent of runoff directs eastward into the Nile watershed via the Nyabarongo-Kagera river systems, whereas twenty percent discharges westward into the Congo basin through Lake Kivu and the Rusizi River. This intricate drainage network includes multiple interior lakes and notable altitudinal extremes down to the Rusizi River valley.",
+            "evidenceIds": [
+              "P2",
+              "P3",
+              "P13"
+            ]
+          },
+          {
+            "text": "Despite its modest geographic extent, Rwanda sustains diverse ecological zones, encompassing montane forests in the west and savanna habitats in the east. Nevertheless, intensive subsistence agriculture on vulnerable volcanic soils, coupled with dense demographic pressures, drives severe environmental degradation. Principal ecological concerns include soil exhaustion, deforestation, wetland impairment, and widespread poaching.",
+            "evidenceIds": [
+              "P8",
+              "P16",
+              "P17"
+            ]
+          },
+          {
+            "text": "Demographic indicators underscore significant societal dynamics, evidenced by a high population density accompanying the 2022 census results. Administrationally structured into four provinces alongside the capital city of Kigali and further partitioned into local districts, the nation remains predominantly rural, with urbanization largely localized within the capital.",
+            "evidenceIds": [
+              "P4",
+              "P19",
+              "P20",
+              "P21"
+            ]
+          },
+          {
+            "text": "Deprived of a coastline, Rwanda's external commerce relies entirely on overland transit routes. Economic integration within the East African Community relies fundamentally on the Central Corridor, linking the country to the Tanzanian port of Dar es Salaam, and the Northern Corridor, providing access to the Kenyan port of Mombasa through Uganda.",
+            "evidenceIds": [
+              "P7",
+              "P22"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 3032,
+    "output": 1464,
+    "total": 4496
+  },
+  "validation": null
 }
