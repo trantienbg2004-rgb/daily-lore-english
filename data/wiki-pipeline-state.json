@@ -9470,10 +9470,10 @@
       "checkedAt": "2026-10-21T07:31:22.130Z"
     },
     "67979764": {
-      "status": "PENDING",
-      "reason": "queued",
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
       "revisionId": 1357890499,
-      "checkedAt": null
+      "checkedAt": "2026-10-24T04:07:07.403Z"
     },
     "68043187": {
       "status": "REJECTED",
@@ -10202,7 +10202,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-24T04:07:00.929Z",
+  "updatedAt": "2026-10-24T04:07:07.404Z",
   "dailyUsage": {
     "day": "2026-10-23",
     "calls": 166,
