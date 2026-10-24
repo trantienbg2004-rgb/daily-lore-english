@@ -2,10 +2,10 @@
   "pageId": 22615,
   "title": "Ostracism",
   "topic": "Politics",
-  "status": "EVIDENCE_READY",
+  "status": "RETRY_LATER",
   "revisionId": 1362809108,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1362809108",
-  "reason": "3 rights-verified embedded images",
+  "reason": "Gemini token usage unavailable",
   "rights": [
     {
       "status": "REVIEW",
@@ -222,5 +222,5 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1362809108"
     }
   ],
-  "updatedAt": "2026-10-24T10:17:31.253Z"
+  "updatedAt": "2026-10-24T10:17:37.167Z"
 }
