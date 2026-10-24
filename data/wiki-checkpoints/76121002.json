@@ -2,10 +2,10 @@
   "pageId": 76121002,
   "title": "Peace efforts during World War I",
   "topic": "Conflict & Security",
-  "status": "DRAFTED",
+  "status": "NEEDS_REVIEW",
   "revisionId": 1372074698,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1372074698",
-  "reason": "draft durably saved before validation",
+  "reason": "editorial: A1-A2:page-3:unsupported-number-context-1916",
   "rights": [
     {
       "status": "REVIEW",
@@ -302,7 +302,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1372074698"
     }
   ],
-  "updatedAt": "2026-10-24T03:35:33.831Z",
+  "updatedAt": "2026-10-24T03:35:39.828Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -427,5 +427,10 @@
     "output": 113,
     "total": 2849
   },
-  "validation": null
+  "validation": {
+    "accepted": false,
+    "errors": [
+      "A1-A2:page-3:unsupported-number-context-1916"
+    ]
+  }
 }

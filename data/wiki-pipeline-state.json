@@ -9470,10 +9470,10 @@
       "checkedAt": "2026-10-22T09:16:26.242Z"
     },
     "76121002": {
-      "status": "DRAFTED",
-      "reason": "draft durably saved before validation",
+      "status": "NEEDS_REVIEW",
+      "reason": "editorial: A1-A2:page-3:unsupported-number-context-1916",
       "revisionId": 1372074698,
-      "checkedAt": "2026-10-24T03:35:33.830Z"
+      "checkedAt": "2026-10-24T03:35:39.828Z"
     },
     "76509216": {
       "status": "NEEDS_REVIEW",
@@ -9866,7 +9866,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-24T03:35:33.832Z",
+  "updatedAt": "2026-10-24T03:35:39.829Z",
   "dailyUsage": {
     "day": "2026-10-23",
     "calls": 141,
