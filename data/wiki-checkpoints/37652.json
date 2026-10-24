@@ -2,10 +2,10 @@
   "pageId": 37652,
   "title": "Kyoto",
   "topic": "History & Geography",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1380900853,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380900853",
-  "reason": "13 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -498,5 +498,148 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380900853"
     }
   ],
-  "updatedAt": "2026-10-24T02:02:53.090Z"
+  "updatedAt": "2026-10-24T02:03:12.171Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "Kyoto, a Historic City in Japan",
+        "pages": [
+          {
+            "text": "Kyoto is a major city in Japan. It is located on the island of Honshu. Today, millions of people live in the city and visit it as tourists. Many people know Kyoto for its long history and culture.",
+            "evidenceIds": [
+              "P1",
+              "P3"
+            ]
+          },
+          {
+            "text": "Long ago, in the year 794, Emperor Kanmu chose this place as the new home for the imperial court. The original city was named Heian-kyō. Japanese emperors ruled from Kyoto for eleven centuries until 1869.",
+            "evidenceIds": [
+              "P2",
+              "P4"
+            ]
+          },
+          {
+            "text": "In the fifteenth century, a big war called the Ōnin War caused heavy damage to the city. Samurai fought in the streets, and many buildings burned down. Despite this, Kyoto survived and grew again in later centuries.",
+            "evidenceIds": [
+              "P2",
+              "P6"
+            ]
+          },
+          {
+            "text": "During World War II, leaders considered bombing Kyoto. In the end, the city was removed from the target list. Because of this, many old temples, shrines, and houses were saved from large destruction.",
+            "evidenceIds": [
+              "P2",
+              "P10"
+            ]
+          },
+          {
+            "text": "Today, Kyoto is famous for its beautiful temples and shrines. It is also an important center for education and companies like Nintendo. Trains, buses, and bikes help people travel around the busy modern city easily.",
+            "evidenceIds": [
+              "P3",
+              "P18",
+              "P19",
+              "P22",
+              "P23"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "Kyoto: The Thousand-Year Capital",
+        "pages": [
+          {
+            "text": "Kyoto is a vibrant cultural hub and major tourist destination located on Honshu, Japan's largest island. As the capital of Kyoto Prefecture, the city is home to roughly 1.46 million residents and serves as the heart of a much larger metropolitan area.",
+            "evidenceIds": [
+              "P1",
+              "P3"
+            ]
+          },
+          {
+            "text": "The city's history as a capital began in 794 when Emperor Kanmu established Heian-kyō. For over a thousand years, until the imperial court moved in 1869, Kyoto remained the political and cultural center of Japan, earning it the title of the thousand-year capital.",
+            "evidenceIds": [
+              "P2",
+              "P4"
+            ]
+          },
+          {
+            "text": "Throughout its long history, Kyoto experienced severe conflicts, most notably the destructive Ōnin War in the fifteenth century, which left large parts of the city in ruins. Later, a major rebellion in 1864 also destroyed tens of thousands of homes.",
+            "evidenceIds": [
+              "P6",
+              "P7"
+            ]
+          },
+          {
+            "text": "Fortunately, Kyoto was spared from large-scale bombing during World War II after being removed from the United States target list. As a result, much of its invaluable prewar cultural heritage, including thousands of temples and shrines, remains remarkably well-preserved.",
+            "evidenceIds": [
+              "P2",
+              "P3",
+              "P10",
+              "P13"
+            ]
+          },
+          {
+            "text": "Modern Kyoto balances its ancient heritage with a thriving economy. It features advanced rail networks, bustling shopping streets, and global technology companies like Nintendo, while continuing to attract visitors from all over the world to its historic landmarks.",
+            "evidenceIds": [
+              "P3",
+              "P13",
+              "P18",
+              "P19",
+              "P22"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "History and Geography of Kyoto",
+        "pages": [
+          {
+            "text": "Situated within the Yamashiro Basin and surrounded by three mountain ranges, Kyoto functions as the cultural anchor of the Greater Kyoto region. The municipality accommodates a significant portion of Kyoto Prefecture's total population and maintains its status as a prominent urban center in Japan.",
+            "evidenceIds": [
+              "P1",
+              "P3",
+              "P11"
+            ]
+          },
+          {
+            "text": "In 794, Emperor Kanmu selected the site for Heian-kyō, designed according to traditional Chinese feng shui principles modeled after Chang'an. The city served as the imperial capital for eleven centuries until the relocation of the court to Tokyo following the Meiji Restoration in 1869.",
+            "evidenceIds": [
+              "P2",
+              "P4"
+            ]
+          },
+          {
+            "text": "The city's historical trajectory includes periods of severe devastation, such as the Ōnin War of the late fifteenth century, during which samurai battles and fortified noble residences caused widespread destruction across the urban landscape.",
+            "evidenceIds": [
+              "P2",
+              "P6"
+            ]
+          },
+          {
+            "text": "At the conclusion of World War II, deliberation regarding potential atomic bombing targets initially included Kyoto due to its strategic significance. Ultimately, intervention by Secretary of War Henry L. Stimson resulted in its removal, sparing the municipality from extensive conventional and atomic destruction.",
+            "evidenceIds": [
+              "P2",
+              "P10"
+            ]
+          },
+          {
+            "text": "Contemporary Kyoto integrates historical preservation with economic vitality. Alongside thousands of protected shrines and temples, the city hosts major high-tech enterprises, prominent institutions of higher education, and comprehensive transportation infrastructure connecting high-speed rail and municipal transit networks.",
+            "evidenceIds": [
+              "P3",
+              "P18",
+              "P19",
+              "P20",
+              "P21"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 3032,
+    "output": 1034,
+    "total": 4066
+  },
+  "validation": null
 }
