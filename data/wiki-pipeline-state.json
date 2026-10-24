@@ -8390,10 +8390,10 @@
       "checkedAt": "2026-10-22T08:21:32.373Z"
     },
     "30611458": {
-      "status": "EVIDENCE_READY",
-      "reason": "1 rights-verified embedded images",
+      "status": "RETRY_LATER",
+      "reason": "editorial call budget exhausted",
       "revisionId": 1365898398,
-      "checkedAt": "2026-10-24T04:08:36.785Z"
+      "checkedAt": "2026-10-24T04:08:42.805Z"
     },
     "30686169": {
       "status": "EVIDENCE_READY",
@@ -10202,7 +10202,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-24T04:08:36.786Z",
+  "updatedAt": "2026-10-24T04:08:42.806Z",
   "dailyUsage": {
     "day": "2026-10-23",
     "calls": 166,
