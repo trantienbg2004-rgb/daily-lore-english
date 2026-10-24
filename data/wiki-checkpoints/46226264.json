@@ -2,9 +2,236 @@
   "pageId": 46226264,
   "title": "History of the South Africa national rugby union team",
   "topic": "Sports",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1319486358,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1319486358",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-24T10:16:07.751Z"
+  "reason": "2 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:South africa v british isles.jpg"
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Paul-Roos,-Springbok-.jpg"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:Southafrica rugby team 1906.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1d/Southafrica_rugby_team_1906.jpg/960px-Southafrica_rugby_team_1906.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Southafrica rugby team 1906.jpg",
+        "caption": "The 1906 Springboks team.",
+        "alt": "",
+        "description": "The 1906 South Africa rugby union team.",
+        "date": "1906",
+        "section": "Springboks",
+        "position": 2,
+        "provenance": {
+          "credit": "Scott & Co. Studio, Manchester",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Southafrica_rugby_team_1906.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/History_of_the_South_Africa_national_rugby_union_team",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1319486358",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:South Africa rugby union team against New Zealand, 1921.jpg"
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:1937 span 011.jpg"
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Bob Skinstad.jpg"
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Percy Montgomery against Samoa.jpg"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:09-09-07 058.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8e/09-09-07_058.jpg/960px-09-09-07_058.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:09-09-07 058.jpg",
+        "caption": "The Springboks",
+        "alt": "",
+        "description": "Match Afrique du Sud vs Samoa- Coupe du Monde de Rugby 2007",
+        "date": "2007",
+        "section": "Rugby World Cup 2007",
+        "position": 7,
+        "provenance": {
+          "credit": "Jamin",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:09-09-07_058.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/History_of_the_South_Africa_national_rugby_union_team",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1319486358",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:IRB world rankings - South Africa 2010.jpg"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "664f70220a7629d4ca2039fe7ef0ca252928ea785dcd5ddf2dbf06f180d2a895",
+      "heading": "Lead",
+      "excerpt": "The history of the South Africa national rugby union team dates back to 1891, when the British Lions first toured South Africa where they pl",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1319486358"
+    },
+    {
+      "id": "P2",
+      "hash": "e0e6853982276e2a497fa8ddb4b87b27aba81a43d2d22fba53feb1d5adc5a854",
+      "heading": "Lead",
+      "excerpt": "The most iconic moment in South Africa rugby history is when South Africa hosted and won the 1995 Rugby World Cup, with Nelson Mandela prese",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1319486358"
+    },
+    {
+      "id": "P3",
+      "hash": "2e84a38859c0a21bf88b13e66f5de673d6005de6300a9a65361f6a7b4df3c87b",
+      "heading": "First internationals",
+      "excerpt": "The first British Isles tour took place in 1891, with the trip financially underwritten by Cape Colony Prime Minister Cecil Rhodes. These we",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1319486358"
+    },
+    {
+      "id": "P4",
+      "hash": "ce2ef0c0b8f996bb7e2d44d11f64b701084115f645cbd95f5e19fff954f57da8",
+      "heading": "First internationals",
+      "excerpt": "The British Isles' success continued on their 21-game tour of 1896. The British Isles won three out of the four Tests against South Africa. ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1319486358"
+    },
+    {
+      "id": "P5",
+      "hash": "08dcb0bb2204db9711baa9df281fb7255364d88c62b5de3cef36728080335703",
+      "heading": "First internationals",
+      "excerpt": "Rugby was so popular that in 1902 there was a temporary ceasefire in the Second Boer War so that a game could be played between British and ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1319486358"
+    },
+    {
+      "id": "P6",
+      "hash": "e211b1ff2c054e3df6d8bb348f36410d35be34aa455249cec62eb469a11085a4",
+      "heading": "Springboks",
+      "excerpt": "Paul Roos was the captain of the first South African team to tour the British Isles and France. The team was largely dominated by players fr",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1319486358"
+    },
+    {
+      "id": "P7",
+      "hash": "36c1b84512f1b3dbea9ce76b9ca00a02e608721c3694fe1cbf29e74cef373977",
+      "heading": "Inter war",
+      "excerpt": "By the first World War New Zealand and South Africa had established themselves as rugby's two greatest powers. A New Zealand Army match tour",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1319486358"
+    },
+    {
+      "id": "P8",
+      "hash": "bfa80e132ec5e06d6ff051aaa22a1b08c682323dabb9a865e15ccf015b0fd947",
+      "heading": "Post-war era",
+      "excerpt": "Danie Craven was appointed coach in 1949, and started his coaching career with a bang. The Springboks won ten matches in a row, including a ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1319486358"
+    },
+    {
+      "id": "P9",
+      "hash": "83ec1232b4a4f5945eeda48214783a33d1011bc27e3b87430ec93f5b01caee0d",
+      "heading": "1960s",
+      "excerpt": "Even before the apartheid laws were passed after 1948, sporting teams going to South Africa had felt it necessary to exclude non-white playe",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1319486358"
+    },
+    {
+      "id": "P10",
+      "hash": "a9e3fa4ca534c1dc45144aeb34bfa7e53c638b3b38d57dd47c6e0bdae127c4d7",
+      "heading": "1970s",
+      "excerpt": "In 1970 the All Blacks toured South Africa once again—after the 1967 stand-off, the South African government now agreed to treat Maoris in t",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1319486358"
+    },
+    {
+      "id": "P11",
+      "hash": "cf3c490c1f6eeca894ee474075a3c20da0e9a18bbeed19ba75d790dc71fcbeb3",
+      "heading": "1980s",
+      "excerpt": "The Lions toured South Africa in 1980. The team completed a flawless non-Test record, winning 14 out of 14 non-Test matches on the tour. But",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1319486358"
+    },
+    {
+      "id": "P12",
+      "hash": "52dfe00ab7ee40439006dda26306d48774ca6d9013f355d46b7fda2bae2b3a3a",
+      "heading": "1990s",
+      "excerpt": "From 1990 to 1991 the legal apparatus of apartheid was abolished, and the Springboks were readmitted to international rugby in 1992. They st",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1319486358"
+    },
+    {
+      "id": "P13",
+      "hash": "95659d1d32399a347683b0106b8d87aaeb3417766a253dddb4443b669c521eb1",
+      "heading": "2000–2009",
+      "excerpt": "During the 2002 tour, at Twickenham in November 2002 England defeated South Africa 53–3, which was their worst ever loss, after Springbok Ja",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1319486358"
+    },
+    {
+      "id": "P14",
+      "hash": "f0aa710ebed4942732a1cee5d6dd4bb4a9f8e3858f71b844f6656b8b941b9ce4",
+      "heading": "Rugby World Cup 2007",
+      "excerpt": "Grouped in Pool A at the 2007 Rugby World Cup in France, they opened their campaign in Paris with a 59–7 victory over Samoa. Next up was Eng",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1319486358"
+    },
+    {
+      "id": "P15",
+      "hash": "0e89ee912e50355a7054c1714b12eb87332420d4208d2a71f92849ff9dbc3eb1",
+      "heading": "After the World Cup",
+      "excerpt": "2008 was a mixed year for the Springboks. Going into the year as world champions, they were under pressure to perform. In January 2008, Pete",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1319486358"
+    },
+    {
+      "id": "P16",
+      "hash": "ec14e716c268973f56ac163c00ef6c11a75d09661d8ee9a25d0c8cbe22f40c4d",
+      "heading": "2010–present",
+      "excerpt": "The Boks began their 2010 Test campaign on 5 June, defeating Wales 34–31 in Cardiff. After defeating Wales, the Springboks headed back to Ca",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1319486358"
+    },
+    {
+      "id": "P17",
+      "hash": "57114bfcea8e1c94c98ab64943722aab65d73e270fda26ba3819aa96d024e112",
+      "heading": "2011 and the Rugby World Cup",
+      "excerpt": "The Springboks kicked off their 2011 test season with controversy, with 21 high-profile players omitted from the away leg of the 2011 Tri Na",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1319486358"
+    },
+    {
+      "id": "P18",
+      "hash": "23a69a3cc9bc828edc050411f3fbbb46fa14aef0002c6772a425969c4457faca",
+      "heading": "First internationals",
+      "excerpt": "In 1903 the British Isles lost a series for the first time in South Africa, drawing the opening two Tests before losing the last 8–0. In all",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1319486358"
+    },
+    {
+      "id": "P19",
+      "hash": "8a086b3d1c1cb973db30ed06d496998c0a4ddc6486124bf962253999c97218d8",
+      "heading": "Springboks",
+      "excerpt": "During this tour the nickname Springboks was first used. There is often confusion as to the springbok symbol being worn before the name was ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1319486358"
+    },
+    {
+      "id": "P20",
+      "hash": "5bc9aa34a03f1ced2ccdbbadb75f5704271dd527d1171331d391589386d1d59d",
+      "heading": "Springboks",
+      "excerpt": "...No uniforms or blazers had been provided... That night I spoke to Roos and Carolin and pointed out that the witty London Press would inve",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1319486358"
+    }
+  ],
+  "updatedAt": "2026-10-24T10:16:13.608Z"
 }
