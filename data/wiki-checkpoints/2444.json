@@ -2,10 +2,10 @@
   "pageId": 2444,
   "title": "Conservation and restoration of cultural property",
   "topic": "Culture",
-  "status": "DRAFTED",
+  "status": "VALIDATED",
   "revisionId": 1375682556,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375682556",
-  "reason": "draft durably saved before validation",
+  "reason": "local factual, style, length, structure and source audit passed",
   "rights": [
     {
       "status": "REJECTED",
@@ -416,7 +416,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375682556"
     }
   ],
-  "updatedAt": "2026-10-24T06:27:19.287Z",
+  "updatedAt": "2026-10-24T06:27:37.404Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -540,5 +540,8 @@
     "output": 1337,
     "total": 3994
   },
-  "validation": null
+  "validation": {
+    "accepted": true,
+    "errors": []
+  }
 }
