@@ -8048,10 +8048,10 @@
       "checkedAt": "2026-10-22T08:27:49.116Z"
     },
     "557913": {
-      "status": "EVIDENCE_READY",
-      "reason": "2 rights-verified embedded images",
+      "status": "RETRY_LATER",
+      "reason": "Gemini token usage unavailable",
       "revisionId": 1354453951,
-      "checkedAt": "2026-10-24T10:37:47.242Z"
+      "checkedAt": "2026-10-24T10:37:53.052Z"
     },
     "569415": {
       "status": "REJECTED",
@@ -11930,7 +11930,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-24T10:37:47.243Z",
+  "updatedAt": "2026-10-24T10:37:53.052Z",
   "dailyUsage": {
     "day": "2026-10-24",
     "calls": 117,
