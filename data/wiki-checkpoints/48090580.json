@@ -322,38 +322,38 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1361016872"
     }
   ],
-  "updatedAt": "2026-10-24T09:23:08.457Z",
+  "updatedAt": "2026-10-24T09:23:27.065Z",
   "draft": {
     "variants": {
       "A1-A2": {
         "headline": "Saving Cultural Objects",
         "pages": [
           {
-            "text": "Cultural heritage institutions and people take care of cultural property. Proper storage helps objects live longer with less damage. Keepers of these items know best practices to preserve them.",
+            "text": "Cultural heritage institutions and individuals take care of cultural property. Proper storage helps objects live longer with less damage and degradation. Keepers of these items know best practices to preserve them in their original state.",
             "evidenceIds": [
               "P1"
             ]
           },
           {
-            "text": "Creating a storage space involves looking at resources and the collection needs. Good storage is away from other activities to stop damage from theft, dirt, and light.",
+            "text": "Creating a storage space involves looking at available resources and collection needs. Good storage is separate from other activities to stop potential damage from theft, tracked in soil, and excessive light exposure.",
             "evidenceIds": [
               "P2"
             ]
           },
           {
-            "text": "Climate control systems help keep temperature and humidity steady. This stops materials from expanding and shrinking, which causes serious damage.",
+            "text": "Climate control systems help keep temperature and relative humidity at a steady rate. This stops materials from expanding and shrinking, which can cause serious damage to the objects.",
             "evidenceIds": [
               "P5"
             ]
           },
           {
-            "text": "Storage spaces try to have few windows and lights. LED or UV-filtered bulbs are recommended because they save energy and protect objects from heat.",
+            "text": "Storage spaces tend to have few windows and lights to protect items. LED or UV-filtered fluorescent bulbs are recommended because they save energy and protect objects from heat and radiation.",
             "evidenceIds": [
               "P9"
             ]
           },
           {
-            "text": "Institutions use integrated pest management to watch for insects and rodents. They use traps to monitor pests and avoid using harmful chemical treatments.",
+            "text": "Institutions use integrated pest management to monitor for insects and rodents that may harm collections. They use traps to check for pests and eliminate entrances, using chemical treatments only as a last resort.",
             "evidenceIds": [
               "P10"
             ]
@@ -382,7 +382,7 @@
             ]
           },
           {
-            "text": "Monitoring systems are essential for preventive care. Tools like hygrothermographs and data loggers constantly record temperature and humidity, allowing institutions to evaluate conditions and document extraordinary events.",
+            "text": "An ongoing monitoring system is essential for the preventive care of objects in storage. Tools like hygrothermographs and data loggers constantly record temperature and relative humidity. These devices allow institutions to evaluate conditions, document extraordinary events like water leaks, and easily transfer data to a computer for assessment.",
             "evidenceIds": [
               "P8"
             ]
@@ -417,7 +417,7 @@
             ]
           },
           {
-            "text": "Climate control mechanisms regulate temperature, relative humidity, and atmospheric pollutants via ventilation and filtration. Maintaining constant environmental parameters prevents material expansion and contraction, averting structural damage.",
+            "text": "Climate control mechanisms regulate temperature, relative humidity, and atmospheric pollutants via ventilation and filtration systems. Maintaining constant environmental parameters prevents material expansion and contraction, thereby averting structural damage to sensitive collections.",
             "evidenceIds": [
               "P5"
             ]
@@ -444,11 +444,11 @@
       }
     }
   },
-  "repairAttempts": 0,
+  "repairAttempts": 1,
   "lastUsage": {
-    "input": 2499,
-    "output": 1158,
-    "total": 3657
+    "input": 2680,
+    "output": 525,
+    "total": 3205
   },
   "validation": null
 }
