@@ -2,10 +2,10 @@
   "pageId": 42431723,
   "title": "History of the T20 World Cup",
   "topic": "Sports",
-  "status": "DRAFTED",
+  "status": "NEEDS_REVIEW",
   "revisionId": 1375665314,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375665314",
-  "reason": "draft durably saved before validation",
+  "reason": "editorial: C1-C2:page-3:unsupported-number-context-2003",
   "rights": [
     {
       "status": "REVIEW",
@@ -350,7 +350,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375665314"
     }
   ],
-  "updatedAt": "2026-10-24T02:01:51.436Z",
+  "updatedAt": "2026-10-24T02:01:57.483Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -486,5 +486,10 @@
     "output": 139,
     "total": 3289
   },
-  "validation": null
+  "validation": {
+    "accepted": false,
+    "errors": [
+      "C1-C2:page-3:unsupported-number-context-2003"
+    ]
+  }
 }
