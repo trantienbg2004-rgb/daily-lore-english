@@ -447,7 +447,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374224876"
     }
   ],
-  "updatedAt": "2026-10-24T06:04:33.742Z",
+  "updatedAt": "2026-10-24T06:04:51.771Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -573,11 +573,11 @@
       }
     }
   },
-  "repairAttempts": 0,
+  "repairAttempts": 1,
   "lastUsage": {
-    "input": 2904,
-    "output": 1449,
-    "total": 4353
+    "input": 2744,
+    "output": 97,
+    "total": 2841
   },
   "validation": null
 }
