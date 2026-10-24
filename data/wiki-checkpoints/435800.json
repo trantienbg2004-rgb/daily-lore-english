@@ -2,10 +2,10 @@
   "pageId": 435800,
   "title": "Tournament (medieval)",
   "topic": "Sports",
-  "status": "DRAFTED",
+  "status": "VALIDATED",
   "revisionId": 1380558025,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380558025",
-  "reason": "draft durably saved before validation",
+  "reason": "local factual, style, length, structure and source audit passed",
   "rights": [
     {
       "status": "REVIEW",
@@ -328,7 +328,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380558025"
     }
   ],
-  "updatedAt": "2026-10-24T03:30:37.478Z",
+  "updatedAt": "2026-10-24T03:30:55.486Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -480,5 +480,8 @@
     "output": 1503,
     "total": 4421
   },
-  "validation": null
+  "validation": {
+    "accepted": true,
+    "errors": []
+  }
 }
