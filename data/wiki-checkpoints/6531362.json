@@ -2,10 +2,10 @@
   "pageId": 6531362,
   "title": "Battle of the Sexes (tennis)",
   "topic": "Sports",
-  "status": "DRAFTED",
+  "status": "NEEDS_REVIEW",
   "revisionId": 1379214914,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379214914",
-  "reason": "draft durably saved before validation",
+  "reason": "editorial: A1-A2:page-1:unsupported-number-context-1973",
   "rights": [
     {
       "status": "REVIEW",
@@ -251,7 +251,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379214914"
     }
   ],
-  "updatedAt": "2026-10-24T07:41:26.155Z",
+  "updatedAt": "2026-10-24T07:41:32.271Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -397,5 +397,10 @@
     "output": 139,
     "total": 3166
   },
-  "validation": null
+  "validation": {
+    "accepted": false,
+    "errors": [
+      "A1-A2:page-1:unsupported-number-context-1973"
+    ]
+  }
 }
