@@ -8638,10 +8638,10 @@
       "checkedAt": "2026-10-23T17:11:22.228Z"
     },
     "9633432": {
-      "status": "DRAFTED",
-      "reason": "draft durably saved before validation",
+      "status": "NEEDS_REVIEW",
+      "reason": "editorial: C1-C2:page-6:unsupported-number-context-510",
       "revisionId": 1381021044,
-      "checkedAt": "2026-10-24T05:37:03.505Z"
+      "checkedAt": "2026-10-24T05:37:09.458Z"
     },
     "9719652": {
       "status": "PUBLISHED",
@@ -11146,7 +11146,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-24T05:37:03.506Z",
+  "updatedAt": "2026-10-24T05:37:09.459Z",
   "dailyUsage": {
     "day": "2026-10-23",
     "calls": 227,

@@ -2,10 +2,10 @@
   "pageId": 9633432,
   "title": "Pisistratus",
   "topic": "Sports",
-  "status": "DRAFTED",
+  "status": "NEEDS_REVIEW",
   "revisionId": 1381021044,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381021044",
-  "reason": "draft durably saved before validation",
+  "reason": "editorial: C1-C2:page-6:unsupported-number-context-510",
   "rights": [
     {
       "status": "REVIEW",
@@ -245,7 +245,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381021044"
     }
   ],
-  "updatedAt": "2026-10-24T05:37:03.505Z",
+  "updatedAt": "2026-10-24T05:37:09.459Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -396,5 +396,10 @@
     "output": 92,
     "total": 2895
   },
-  "validation": null
+  "validation": {
+    "accepted": false,
+    "errors": [
+      "C1-C2:page-6:unsupported-number-context-510"
+    ]
+  }
 }
