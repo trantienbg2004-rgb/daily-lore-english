@@ -2,10 +2,10 @@
   "pageId": 2777609,
   "title": "History of capitalism",
   "topic": "Economy",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1380700197,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380700197",
-  "reason": "9 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -384,5 +384,156 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380700197"
     }
   ],
-  "updatedAt": "2026-10-24T05:13:44.137Z"
+  "updatedAt": "2026-10-24T05:14:01.842Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "The History of Capitalism",
+        "pages": [
+          {
+            "text": "Capitalism is an economic system based on private ownership and profit. It includes private property, competitive markets, and wage labor. Modern capitalism evolved from agrarianism in England and mercantilist practices in Europe between the sixteenth and eighteenth centuries. Its exact emergence remains a subject of extensive research and debate.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Some historians argue that the roots of modern capitalism begin in the crisis of the Late Middle Ages. This period involved conflicts between the land-owning aristocracy and agricultural serfs. Manorial arrangements stopped early capitalist development because serfs had forced obligations to lords who relied on military power.",
+            "evidenceIds": [
+              "P3",
+              "P4"
+            ]
+          },
+          {
+            "text": "During the fourteenth century, demographic crises upset this feudal arrangement. Agricultural productivity reached limits, bad weather caused a famine, and the Black Death caused a population crash. In England, many serfs rebelled, moved to towns, bought land, or entered into rental contracts.",
+            "evidenceIds": [
+              "P5"
+            ]
+          },
+          {
+            "text": "By the sixteenth century, England was a centralized state with a large internal market centered on London. The old manorial system broke down as land concentrated into larger estates. Landlords and tenants faced new pressures to increase agricultural productivity for profit within a competitive labor market.",
+            "evidenceIds": [
+              "P6"
+            ]
+          },
+          {
+            "text": "Trade has existed for thousands of years, but early trade was not capitalism. Capitalism took shape in Europe during the late Middle Ages and Renaissance. Later, the eighteenth-century Industrial Revolution cemented capitalism as the primary method of production through factories and the use of steam power.",
+            "evidenceIds": [
+              "P1",
+              "P7",
+              "P12"
+            ]
+          },
+          {
+            "text": "In the twentieth century, capitalism faced major challenges including the Russian Revolution and the Great Depression. Different responses included state capitalism, communism, and socialism. Later, post-war economic recovery brought renewed growth, and states began playing a prominent role to regulate the capitalist system.",
+            "evidenceIds": [
+              "P15",
+              "P16"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "Origins and Evolution of Capitalism",
+        "pages": [
+          {
+            "text": "Capitalism is an economic system defined by the private ownership of the means of production used to obtain profit. Key features include private property, capital accumulation, competitive markets, and wage labor. Modern capitalism gradually evolved from English agrarianism and European mercantilism between the sixteenth and eighteenth centuries, becoming the primary mode of production during the Industrial Revolution.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "While long-distance trade has existed since ancient times, historians debate the exact origins of capitalism. Some trace its roots to the crisis of the Late Middle Ages, highlighting conflicts between the land-owning aristocracy and agricultural producers. Traditional manorial systems relied on force and military obligations, which inhibited the development of flexible economic markets.",
+            "evidenceIds": [
+              "P3",
+              "P4",
+              "P7"
+            ]
+          },
+          {
+            "text": "A severe demographic crisis in the fourteenth century disrupted feudal structures. Agricultural productivity limits, the Great Famine, and the devastating Black Death combined to cause a major population crash. In response to lords demanding higher tribute, English serfs rebelled, migrated to towns, purchased land, or secured favorable rental contracts.",
+            "evidenceIds": [
+              "P5"
+            ]
+          },
+          {
+            "text": "By the sixteenth century, England developed a centralized state with London acting as a massive internal market. The breakdown of the manorial system concentrated land into fewer large estates. Economic incentives shifted as land rents became subject to market forces rather than custom, pushing both landlords and tenants to increase agricultural productivity.",
+            "evidenceIds": [
+              "P6"
+            ]
+          },
+          {
+            "text": "During the early modern period, mercantilist practices spread across Europe, supported by state controls, monopolies, and chartered trading companies like the Muscovy Company. Eventually, eighteenth-century theorists like Adam Smith challenged mercantilism. Concurrently, the Industrial Revolution introduced machine production, steam power, and advanced banking systems.",
+            "evidenceIds": [
+              "P10",
+              "P11",
+              "P12",
+              "P13"
+            ]
+          },
+          {
+            "text": "The twentieth century tested capitalist economies through the 1917 Russian Revolution and the Great Depression, which sparked alternative systems like fascism and communism. Following the Second World War, rapid economic growth and increased state regulation stabilized capitalism. Today, ongoing debates examine whether globalization has transformed capitalism into a true world system.",
+            "evidenceIds": [
+              "P15",
+              "P16",
+              "P17"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "Historical Trajectory of Capitalism",
+        "pages": [
+          {
+            "text": "Capitalism constitutes an economic system grounded in private ownership of production means directed toward profit generation. Its foundational components encompass commodification, wage labor, competitive markets, and capital accumulation. Historical scholarship extensively debates its emergence from sixteenth to eighteenth-century European mercantilism and English agrarianism, solidified subsequently by the Industrial Revolution.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Scholarly discourse regarding capitalist origins remains divided between commercial and agrarian hypotheses. Certain historians locate its genesis in the crisis of the Late Middle Ages, emphasizing structural conflicts between aristocratic landowners and serfs. Traditional manorial arrangements relied on coercive extractions, which structurally impeded market-driven economic development.",
+            "evidenceIds": [
+              "P3",
+              "P4"
+            ]
+          },
+          {
+            "text": "Fourteenth-century demographic shocks severely destabilized feudal relations. The convergence of agricultural stagnation, the Great Famine, and the mortality rates of the Black Death precipitated a profound population contraction. Consequently, English serfs utilized various strategies of resistance, including rebellion, urban migration, land acquisition, and advantageous rental agreements.",
+            "evidenceIds": [
+              "P5"
+            ]
+          },
+          {
+            "text": "Sixteenth-century England exhibited advanced state centralization, wherein London functioned as an integrated national market. The dissolution of traditional manorial structures facilitated land consolidation among fewer landlords. Market forces progressively superseded custom in determining land rents, thereby compelling landlords and tenants alike to elevate productivity within competitive labor markets.",
+            "evidenceIds": [
+              "P6"
+            ]
+          },
+          {
+            "text": "Early modern mercantilism utilized state monopolies, subsidies, and chartered entities such as the Muscovy Company to regulate commerce. This framework was later contested by classical economic theorists like Adam Smith, aligning with the onset of the Industrial Revolution. The ensuing industrial expansion catalyzed sophisticated credit systems, including centralized banking clearing houses.",
+            "evidenceIds": [
+              "P10",
+              "P11",
+              "P12",
+              "P13"
+            ]
+          },
+          {
+            "text": "The twentieth century introduced systemic challenges to capitalism via the Russian Revolution and the Great Depression, provoking alternative models including state capitalism and communism. Post-war recovery ushered in an era of robust growth accompanied by heightened state intervention. Contemporary debates persist regarding whether modern globalization constitutes a novel world system.",
+            "evidenceIds": [
+              "P15",
+              "P16",
+              "P17"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2643,
+    "output": 1790,
+    "total": 4433
+  },
+  "validation": null
 }
