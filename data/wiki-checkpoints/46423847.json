@@ -2,9 +2,267 @@
   "pageId": 46423847,
   "title": "Regional communications in ancient Mesoamerica",
   "topic": "Economy",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1372308626,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1372308626",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-24T10:43:41.739Z"
+  "reason": "2 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Formative Era sites.svg"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:Early Mesoamerican Ballgame sites 1.svg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e3/Early_Mesoamerican_Ballgame_sites_1.svg/960px-Early_Mesoamerican_Ballgame_sites_1.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Early Mesoamerican Ballgame sites 1.svg",
+        "caption": "Early Mesoamerican Ballgame sites",
+        "alt": "",
+        "description": "Mesoamerican sites (with a red dot) where ballcourts, balls, or figurines dated earlier than 1000 BCE have been recovered.",
+        "date": "28 September 2007 (original upload date)",
+        "section": "Regional communication",
+        "position": 1,
+        "provenance": {
+          "credit": "No machine-readable author provided. Madman2001 assumed (based on copyright claims).",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Early_Mesoamerican_Ballgame_sites_1.svg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Regional_communications_in_ancient_Mesoamerica",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1372308626",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Mesoamerican obsidian sourc.png"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:Formative Period southern Mesoamerica 2.svg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ab/Formative_Period_southern_Mesoamerica_2.svg/960px-Formative_Period_southern_Mesoamerica_2.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Formative Period southern Mesoamerica 2.svg",
+        "caption": "Formative Period in southern Mesoamerica",
+        "alt": "",
+        "description": "A map of the southern-most area of Mesoamerica, showing important Formative Period sites.",
+        "date": "2008-02",
+        "section": "Regional relations and commerce",
+        "position": 3,
+        "provenance": {
+          "credit": "Madman2001",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Formative_Period_southern_Mesoamerica_2.svg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Regional_communications_in_ancient_Mesoamerica",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1372308626",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "f6f699fdd840c119a1bb3fc00ce954698bf80fc51f82c6bb9789467d25b33133",
+      "heading": "Lead",
+      "excerpt": "Regional communications in ancient Mesoamerica are believed to have been extensive. There were various trade routes attested since prehistor",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1372308626"
+    },
+    {
+      "id": "P2",
+      "hash": "4300de60cda141aa7811f5a3e3d8a9a7e7d636c7efd28c3dcc2eb19fbb4d928d",
+      "heading": "Regional communication",
+      "excerpt": "Scholars have long identified a number of similarities between the ancient Guatemalan and Mexican art styles and cultures. These similaritie",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1372308626"
+    },
+    {
+      "id": "P3",
+      "hash": "9904a11bd576d9acb2f0f5877bd954089d391445a490e666e1109692169c4c02",
+      "heading": "Regional communication",
+      "excerpt": "Based on archaeological and ethno historical study in eastern Guerrero since 1998, an important network of roads through the Sierra Madres o",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1372308626"
+    },
+    {
+      "id": "P4",
+      "hash": "d52e7cd7e24a6208338100fd63ad171a4f7475cbbc29d9419d066f8560b42989",
+      "heading": "Regional communication",
+      "excerpt": "It is certain this route played a critical role in the political and economic development of southern Mesoamerica, although its importance v",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1372308626"
+    },
+    {
+      "id": "P5",
+      "hash": "714970c03ec0aa5e7059a1c8623c4f0f5046d4876fd08d5bb530baaa98c090cb",
+      "heading": "Regional communication",
+      "excerpt": "There was material and information trade between the Mexico Central Plateau, the Gulf of Mexico and the Pacific Ocean, it is not certain whe",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1372308626"
+    },
+    {
+      "id": "P6",
+      "hash": "cb17e8171f1e75509465033b8f21b9e5ecfb6ecf50c0e38724be1efc89247765",
+      "heading": "Roads",
+      "excerpt": "Routes from the Gulf of Mexico Mountains and the center of Oaxaca seem to have been constantly open to circulation, since at least the early",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1372308626"
+    },
+    {
+      "id": "P7",
+      "hash": "6f152f4ae1de9fe558d569efdc386f6d8c5e83c9c7c76701f7e778dd59014f4f",
+      "heading": "Historical Routes",
+      "excerpt": "Without taking into consideration branches and secondary deviations, there are several routes identified, that connected the center of Mexic",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1372308626"
+    },
+    {
+      "id": "P8",
+      "hash": "39d140fbeb6cf4336f70f648bcc30ab14b00beffb2b005fc1ffd57e00304c398",
+      "heading": "North Route Tenochtitlan – Juchitán",
+      "excerpt": "This route left Tenochtitlan to Puebla, Cholula (Tlaxcala Plateau), Orizaba and down to the \"Eastern Sierra Madre\" range to Tuxtepec, Matias",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1372308626"
+    },
+    {
+      "id": "P9",
+      "hash": "f2772cef42d11281e0c921f164d9d6cae80480f31c10e6f18ea067964e6f3985",
+      "heading": "South Route Tenochtitlan – Juchitán",
+      "excerpt": "This route started at Tenochtitlan, south to Morelos, Chalcatzingo and headed east towards the state of Guerrero, passing through Chiautla, ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1372308626"
+    },
+    {
+      "id": "P10",
+      "hash": "74a2a053a32afe43d15f835eaa3e5cbfa8c14676cfc9c830ee2a6d1b0c33e692",
+      "heading": "Route Juchitán to Guatemala",
+      "excerpt": "In spite of the importance of these routes, passage through these routes was blocked by the Mixtec Kingdom of Tututepec, that monopolized it",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1372308626"
+    },
+    {
+      "id": "P11",
+      "hash": "853487f7f744235790e6c13fbf0c323e321ba287b24140773cbd6a9f09a872d9",
+      "heading": "Regional relations and commerce",
+      "excerpt": "There are numerous evidences of regional trade from northwestern mesoamerican civilizations, the Mexican highlands and Centro America with s",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1372308626"
+    },
+    {
+      "id": "P12",
+      "hash": "7f9fb1586672460ff11588cea12419214ba63e4310193ba25610a13e80306173",
+      "heading": "Early Preclassical Period (1200–900 BCE)",
+      "excerpt": "Based on the presence of a ceramic style pottery shaped as pots (Tecomates), found in the Tlapa and Huamuxtitlán, it is known that the regio",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1372308626"
+    },
+    {
+      "id": "P13",
+      "hash": "ebb9658d46cc4db8349b131bc72519f3cf6b148f2ace3399bb6171e62e5ad11b",
+      "heading": "Mid-Preclassical Period (900-500 BCE)",
+      "excerpt": "Stratigraphic wells and radiocarbon dating at the Contlalco and Cerro Quemado-La Coquera sites in the Tlapa Valley, Guerrero, confirm massiv",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1372308626"
+    },
+    {
+      "id": "P14",
+      "hash": "4859fe1555fdfeef7b26b8dfbb3b082490455316d981bf3d3ee7cea19d8398c7",
+      "heading": "Late Preclassical Period (500 BCE – 200 CE)",
+      "excerpt": "According to Parsons, during this time an iconographical transition between the Olmec and Izapa communication codes takes place, as would be",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1372308626"
+    },
+    {
+      "id": "P15",
+      "hash": "a0ee8b8e061614fef86ee3a85d05b0012182fa76b4d9cab3dc3e6a67ac63ded9",
+      "heading": "Late Classical Period (600–900 CE)",
+      "excerpt": "During the early classical and even up to 600 CE, the iconographic codes seem to be silenced. The Petén and Usumacinta Mayan style dominate ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1372308626"
+    },
+    {
+      "id": "P16",
+      "hash": "491413b52ddb2a9b20783ae367f2f75dda77304bc940f53240dc5d495a279a6d",
+      "heading": "Roads",
+      "excerpt": "According to Fray Bernardino de Sahagún (1989:267) Mesoamerica prehispanic roads were simple compacted dirt paths, full of stone and limited",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1372308626"
+    },
+    {
+      "id": "P17",
+      "hash": "5abc5ba830836afea3b83c9d015be4b7ce65f85b917551c0a5f52af6fa99254b",
+      "heading": "Roads",
+      "excerpt": "Systematic archaeological and ethnic-historical studies in eastern Guerrero from 1998, have demonstrated the existence of an important road ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1372308626"
+    },
+    {
+      "id": "P18",
+      "hash": "fc9752bebd24376f6bd0ca31c752529a367b0b8afdced2996e0242c994c515d9",
+      "heading": "Regional relations and commerce",
+      "excerpt": "As early as 1881, Carl Bovallius Swedish archaeologist and investigator exploring Central America (Ometepe and Zapatera), noted: \"Los Orotin",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1372308626"
+    },
+    {
+      "id": "P19",
+      "hash": "5d6a4e0d55483c6e2328749eb6358424ee4175414361eca1fe2bd7842c3d2397",
+      "heading": "Regional relations and commerce",
+      "excerpt": "According to Bovallius, other writers are disposed to ascribe a Mexican origin to the Orotiñas and lastly Dr. Berendt suggests that the whol",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1372308626"
+    },
+    {
+      "id": "P20",
+      "hash": "ccc3b005881f93fe7a2bc8cebbbb20b91f1b293781753942a8be72c929eb2743",
+      "heading": "Regional relations and commerce",
+      "excerpt": "An elemental piece of this discussion was provided by Bernal Diaz del Castillo, who mentioned that once they took over Tenochtitlan (1521 CE",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1372308626"
+    },
+    {
+      "id": "P21",
+      "hash": "78271a090c015de59ff36100fb1d666fe995bb7bdbb541d0702eb7f4fd726352",
+      "heading": "Regional relations and commerce",
+      "excerpt": "There are many debates related to the definition of specific sculptures styles, in general terms the Parsons proposal is accepted, in the se",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1372308626"
+    },
+    {
+      "id": "P22",
+      "hash": "40ad84baf38d1c2e17970c8bb0edced642112fb9693766e5ca03552ed30c8d98",
+      "heading": "Regional relations and commerce",
+      "excerpt": "This process has an effect in the chronology, makes an exact dating of pieces troublesome, the problem is compounded because the majority of",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1372308626"
+    },
+    {
+      "id": "P23",
+      "hash": "0fc9281aefb4e1f7ec8ded4dfcabd6a52e45f51bb33eb37216587c5199220d8e",
+      "heading": "Early Preclassical Period (1200–900 BCE)",
+      "excerpt": "A female ceramic figurine from the Huamuxtitlán valley indicates an archaeological occupation of eastern Guerrero, contemporary to the Chiap",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1372308626"
+    },
+    {
+      "id": "P24",
+      "hash": "4190d6ba32e9cd677ad690e1de941959641bda1a1331ad5dd262ee6d3300a738",
+      "heading": "Mid-Preclassical Period (900-500 BCE)",
+      "excerpt": "Olmec-style murals in the Oxotitlán, Juxtlahuaca and Cauadzidziqui caves and sculpture from the Teopantecuanitlan site, confirm a strong con",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1372308626"
+    },
+    {
+      "id": "P25",
+      "hash": "3ac00047a8bf2226c4e0d76b8746c4d84e6630620fbb65a654299aa70fa39d4b",
+      "heading": "Mid-Preclassical Period (900-500 BCE)",
+      "excerpt": "Should also note the similarity between the relief of Chalchuapa (El Salvador) with the main character of Cauadzidziqui, Guerrero. Other cas",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1372308626"
+    },
+    {
+      "id": "P26",
+      "hash": "d54f4c0ade80380468c5c61b31b8b77e52e1da43531395a913611308f93d446b",
+      "heading": "Late Preclassical Period (500 BCE – 200 CE)",
+      "excerpt": "However, for the case of Guerrero and Morelos this phase lends itself to controversy, since chronologically speaking the mixture of time per",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1372308626"
+    },
+    {
+      "id": "P27",
+      "hash": "e93152cec6a904fc9538ba1d2ae3b352c1e969f342142f9bcfc0099f134f5d12",
+      "heading": "Late Preclassical Period (500 BCE – 200 CE)",
+      "excerpt": "The S-inverted glyph complex would be represented by Chalcatzingo petroglyph 1-A- : a seated individual inside a cavity, accompanied by two ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1372308626"
+    },
+    {
+      "id": "P28",
+      "hash": "540868560d6876a8ec5c6dd4db265d4e3bc52647997170e2a218f38af493f046",
+      "heading": "Late Preclassical Period (500 BCE – 200 CE)",
+      "excerpt": "Parsons noticed that this S-inverted glyph appears also at the chest of the post-Olmec sculpture of Palo Gordo, Suchitepéquez, known as the ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1372308626"
+    }
+  ],
+  "updatedAt": "2026-10-24T10:43:47.375Z"
 }
