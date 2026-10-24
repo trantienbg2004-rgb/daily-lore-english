@@ -2,10 +2,10 @@
   "pageId": 21401843,
   "title": "Freedom of speech",
   "topic": "Society",
-  "status": "DRAFTED",
+  "status": "VALIDATED",
   "revisionId": 1380704056,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380704056",
-  "reason": "draft durably saved before validation",
+  "reason": "local factual, style, length, structure and source audit passed",
   "rights": [
     {
       "status": "REVIEW",
@@ -401,7 +401,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380704056"
     }
   ],
-  "updatedAt": "2026-10-24T07:22:02.151Z",
+  "updatedAt": "2026-10-24T07:22:20.040Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -546,5 +546,8 @@
     "output": 1570,
     "total": 4193
   },
-  "validation": null
+  "validation": {
+    "accepted": true,
+    "errors": []
+  }
 }
