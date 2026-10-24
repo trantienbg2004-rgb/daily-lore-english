@@ -2,10 +2,10 @@
   "pageId": 52321,
   "title": "Freedom House",
   "topic": "Society",
-  "status": "EVIDENCE_READY",
+  "status": "RETRY_LATER",
   "revisionId": 1380491879,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380491879",
-  "reason": "2 rights-verified embedded images",
+  "reason": "Gemini token usage unavailable",
   "rights": [
     {
       "status": "REVIEW",
@@ -212,5 +212,5 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380491879"
     }
   ],
-  "updatedAt": "2026-10-24T10:44:05.384Z"
+  "updatedAt": "2026-10-24T10:44:11.187Z"
 }
