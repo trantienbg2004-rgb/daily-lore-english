@@ -2,10 +2,10 @@
   "pageId": 325752,
   "title": "Hadhramaut",
   "topic": "History & Geography",
-  "status": "EVIDENCE_READY",
+  "status": "RETRY_LATER",
   "revisionId": 1378336413,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378336413",
-  "reason": "12 rights-verified embedded images",
+  "reason": "Gemini token usage unavailable",
   "rights": [
     {
       "status": "REVIEW",
@@ -424,5 +424,5 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378336413"
     }
   ],
-  "updatedAt": "2026-10-24T10:13:49.215Z"
+  "updatedAt": "2026-10-24T10:13:55.109Z"
 }
