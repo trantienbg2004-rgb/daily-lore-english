@@ -7334,10 +7334,10 @@
       "checkedAt": "2026-10-21T07:31:05.504Z"
     },
     "12451": {
-      "status": "PENDING",
-      "reason": "queued",
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
       "revisionId": 1381104742,
-      "checkedAt": null
+      "checkedAt": "2026-10-24T10:20:25.522Z"
     },
     "13831": {
       "status": "PUBLISHED",
@@ -11930,7 +11930,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-24T10:20:19.144Z",
+  "updatedAt": "2026-10-24T10:20:25.523Z",
   "dailyUsage": {
     "day": "2026-10-24",
     "calls": 117,
