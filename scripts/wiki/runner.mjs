@@ -100,16 +100,22 @@ export async function topUpWikiQueue({base,minPerTopic=8,maxTopics=3,now=new Dat
  readState=readWikiState,writeState=writeWikiState,discoverQueue=discoverWikiQueue,onPersist=async()=>{}}={}){
  if(!base||!Number.isSafeInteger(minPerTopic)||minPerTopic<1||minPerTopic>30||
   !Number.isSafeInteger(maxTopics)||maxTopics<1||maxTopics>WIKI_TOPICS.length)throw Error('Unsafe Wiki discovery limits')
- const state=await readState(base),day=now.toISOString().slice(0,10),beforeLength=state.queue.length
- if(state.lastAutoDiscoveryDay===day)return {status:'already-checked',added:0}
+ const state=await readState(base),beforeLength=state.queue.length
+ const cooldownMs=6*60*60*1000
  const available=Object.fromEntries(WIKI_TOPICS.map(topic=>[topic,state.queue.filter(row=>
   row.topic===topic&&ACTIVE_QUEUE_STATUSES.has(state.outcomes[row.pageId]?.status||'PENDING')).length]))
- const topics=WIKI_TOPICS.filter(topic=>available[topic]<minPerTopic).slice(0,maxTopics)
- if(!topics.length)return {status:'supply-ready',added:0,available}
+ const low=WIKI_TOPICS.filter(topic=>available[topic]<minPerTopic)
+ if(!low.length)return {status:'supply-ready',added:0,available}
+ const topics=low.filter(topic=>{
+  const last=Date.parse(state.lastAutoDiscoveryAtByTopic?.[topic]||'')
+  return !Number.isFinite(last)||now.getTime()-last>=cooldownMs
+ }).slice(0,maxTopics)
+ if(!topics.length)return {status:'cooldown',added:0,available}
  try{
   await discoverQueue({base,topics,excludeQueued:true,maxPerTopic:20,seedLimit:2,subcategoryLimit:1,maxCategoryPages:2})
   const updated=await readState(base)
-  updated.lastAutoDiscoveryDay=day
+  updated.lastAutoDiscoveryAtByTopic={...updated.lastAutoDiscoveryAtByTopic,
+   ...Object.fromEntries(topics.map(topic=>[topic,now.toISOString()]))}
   await writeState(base,updated)
   await onPersist()
   return {status:'refilled',topics,added:updated.queue.length-beforeLength}
