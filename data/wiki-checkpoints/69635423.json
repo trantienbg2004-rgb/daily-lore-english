@@ -537,16 +537,23 @@
       "heading": "Italy",
       "excerpt": "On 9 March 2020, the government of Italy under Prime Minister Giuseppe Conte imposed a national quarantine, restricting the movement of the ",
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377111623"
+    },
+    {
+      "id": "P21",
+      "hash": "6723525246a66a38e5c508896e25c02e8484be4800ce9334301f629e981a5d11",
+      "heading": "United Kingdom",
+      "excerpt": "A series of stay-at-home orders was introduced by the UK and devolved governments in response to the COVID-19 pandemic. On 23 March 2020, Pr",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377111623"
     }
   ],
-  "updatedAt": "2026-10-24T02:06:13.571Z",
+  "updatedAt": "2026-10-24T02:06:31.457Z",
   "draft": {
     "variants": {
       "A1-A2": {
         "headline": "How the World Locked Down",
         "pages": [
           {
-            "text": "During the COVID-19 pandemic, many countries around the world used lockdowns. Governments closed schools, universities, and colleges in 63 countries. These rules affected nearly half of all students on Earth. Some places stopped all movement, while other places gave specific times for people to go outside.",
+            "text": "During the coronavirus pandemic, many countries around the world used lockdowns. Governments closed schools, universities, and colleges in 63 countries. These rules affected nearly half of all students on Earth. Some places stopped all movement, while other places gave specific times for people to go outside.",
             "evidenceIds": [
               "P1"
             ]
@@ -584,7 +591,7 @@
         "headline": "Global Lockdown Measures During COVID-19",
         "pages": [
           {
-            "text": "As the COVID-19 pandemic spread globally, governments implemented various restriction strategies. Schools, universities, and colleges closed in 63 countries, impacting approximately 47 percent of the world's student population. While some nations enforced total movement control, others limited activities based on specific times, often allowing only essential businesses to remain open.",
+            "text": "As the coronavirus pandemic spread globally, governments implemented various restriction strategies. Schools, universities, and colleges closed in 63 countries, impacting approximately 47 percent of the world's student population. While some nations enforced total movement control, others limited activities based on specific times, often allowing only essential businesses to remain open.",
             "evidenceIds": [
               "P1"
             ]
@@ -612,7 +619,7 @@
             ]
           },
           {
-            "text": "By late 2021, evolving conditions prompted further policy adjustments. Austria introduced targeted restrictions for unvaccinated individuals before ordering a nationwide lockdown for all citizens, becoming the first European country to do so that winter. Meanwhile, countries like Indonesia used structured frameworks like large-scale social restrictions to manage transmission.",
+            "text": "Evolving conditions prompted further policy adjustments. Austria introduced targeted restrictions for unvaccinated individuals before ordering a nationwide lockdown for all citizens, becoming the first European country to do so that winter. Meanwhile, countries like Indonesia used structured frameworks like large-scale social restrictions to manage transmission.",
             "evidenceIds": [
               "P7",
               "P17"
@@ -624,7 +631,7 @@
         "headline": "The Implementation and Scale of COVID-19 Lockdowns",
         "pages": [
           {
-            "text": "The global response to the COVID-19 outbreak involved unprecedented non-pharmacological interventions. Educational institutions closed on national or local bases across 63 countries, affecting roughly 47 percent of the global student demographic. Governments deployed diverse containment protocols, ranging from absolute curbs on mobility to time-bound restrictions that permitted solely essential commercial operations.",
+            "text": "The global response to the coronavirus outbreak involved unprecedented non-pharmacological interventions. Educational institutions closed on national or local bases across 63 countries, affecting roughly 47 percent of the global student demographic. Governments deployed diverse containment protocols, ranging from absolute curbs on mobility to time-bound restrictions that permitted solely essential commercial operations.",
             "evidenceIds": [
               "P1"
             ]
@@ -652,7 +659,7 @@
             ]
           },
           {
-            "text": "As the epidemiological landscape shifted through 2021, intervention strategies adapted. Austria instituted a stratified lockdown targeting unvaccinated individuals before expanding restrictions to the general citizenry in response to rising case numbers and low immunization coverage. In Indonesia, authorities systematically transitioned from regional social restrictions to standardized community enforcement policies.",
+            "text": "As the epidemiological landscape shifted, intervention strategies adapted. Austria instituted a stratified lockdown targeting unvaccinated individuals before expanding restrictions to the general citizenry in response to rising case numbers and low immunization coverage. In Indonesia, authorities systematically transitioned from regional social restrictions to standardized community enforcement policies.",
             "evidenceIds": [
               "P7",
               "P17",
@@ -663,11 +670,11 @@
       }
     }
   },
-  "repairAttempts": 0,
+  "repairAttempts": 1,
   "lastUsage": {
-    "input": 2913,
-    "output": 1176,
-    "total": 4089
+    "input": 3348,
+    "output": 545,
+    "total": 3893
   },
   "validation": null
 }
