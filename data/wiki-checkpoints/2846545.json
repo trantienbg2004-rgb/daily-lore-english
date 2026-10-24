@@ -2,10 +2,10 @@
   "pageId": 2846545,
   "title": "Ancient monument",
   "topic": "Culture",
-  "status": "DRAFTED",
+  "status": "NEEDS_REVIEW",
   "revisionId": 1375258429,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375258429",
-  "reason": "draft durably saved before validation",
+  "reason": "editorial: C1-C2:headline",
   "rights": [
     {
       "status": "REVIEW",
@@ -346,7 +346,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375258429"
     }
   ],
-  "updatedAt": "2026-10-24T08:33:36.374Z",
+  "updatedAt": "2026-10-24T08:33:42.395Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -474,5 +474,10 @@
     "output": 40,
     "total": 2123
   },
-  "validation": null
+  "validation": {
+    "accepted": false,
+    "errors": [
+      "C1-C2:headline"
+    ]
+  }
 }
