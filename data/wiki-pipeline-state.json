@@ -8148,10 +8148,10 @@
       "checkedAt": "2026-10-22T08:51:11.810Z"
     },
     "1236844": {
-      "status": "RETRY_LATER",
-      "reason": "editorial call budget exhausted",
+      "status": "EVIDENCE_READY",
+      "reason": "7 rights-verified embedded images",
       "revisionId": 1380943196,
-      "checkedAt": "2026-10-22T06:18:15.113Z"
+      "checkedAt": "2026-10-24T09:27:20.363Z"
     },
     "1244718": {
       "status": "PENDING",
@@ -11610,7 +11610,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-24T09:27:14.107Z",
+  "updatedAt": "2026-10-24T09:27:20.364Z",
   "dailyUsage": {
     "day": "2026-10-24",
     "calls": 115,
