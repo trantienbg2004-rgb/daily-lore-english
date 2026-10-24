@@ -2,10 +2,10 @@
   "pageId": 18617142,
   "title": "Mercury (element)",
   "topic": "Science & Technology",
-  "status": "DRAFTED",
+  "status": "VALIDATED",
   "revisionId": 1380113040,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380113040",
-  "reason": "draft durably saved before validation",
+  "reason": "local factual, style, length, structure and source audit passed",
   "rights": [
     {
       "status": "REVIEW",
@@ -326,7 +326,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380113040"
     }
   ],
-  "updatedAt": "2026-10-24T09:24:19.922Z",
+  "updatedAt": "2026-10-24T09:24:37.979Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -448,5 +448,8 @@
     "output": 1051,
     "total": 3991
   },
-  "validation": null
+  "validation": {
+    "accepted": true,
+    "errors": []
+  }
 }
