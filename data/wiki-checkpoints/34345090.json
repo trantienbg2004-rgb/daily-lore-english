@@ -2,10 +2,10 @@
   "pageId": 34345090,
   "title": "History of diabetes",
   "topic": "Health",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1380485622,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380485622",
-  "reason": "7 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -335,5 +335,138 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380485622"
     }
   ],
-  "updatedAt": "2026-10-24T06:07:01.039Z"
+  "updatedAt": "2026-10-24T06:07:18.338Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "The Long History of Diabetes",
+        "pages": [
+          {
+            "text": "The medical condition known today as diabetes has a very long history. People talked about it in Ancient Egypt and ancient India. Long ago, doctors noticed that patients produced a lot of urine. Later, physicians in India also found that the urine tasted sweet and named it honey urine.",
+            "evidenceIds": [
+              "P1",
+              "P5"
+            ]
+          },
+          {
+            "text": "In ancient China, the condition was called wasting-thirst. Traditional doctors described symptoms and treatments in old books. Later, people began using a modern term that means sugar urine disease. This new term may have come from ancient exchanges with Ayurvedic doctors in India.",
+            "evidenceIds": [
+              "P1",
+              "P7"
+            ]
+          },
+          {
+            "text": "Greco-Roman accounts mostly talked about passing too much water. Roman writers described how the amount of urine was greater than the fluid a person drank. Some early medical texts also mentioned that patients felt very thirsty and tired all the time.",
+            "evidenceIds": [
+              "P12",
+              "P13",
+              "P14"
+            ]
+          },
+          {
+            "text": "During the Islamic Golden Age, physicians preserved and studied ancient medical knowledge. Over many centuries, European doctors also shared new ideas. Thomas Willis suggested in 1674 that diabetes could be a disease of the blood rather than just the kidneys.",
+            "evidenceIds": [
+              "P1",
+              "P16"
+            ]
+          },
+          {
+            "text": "In the late nineteenth century, researchers discovered the role of the pancreas. Scientists later found insulin and used it to help patients. In the early 1920s, a team in Toronto purified insulin for medical use, changing treatments forever.",
+            "evidenceIds": [
+              "P2"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "Tracing the History of Diabetes",
+        "pages": [
+          {
+            "text": "The history of diabetes spans thousands of years across multiple ancient civilizations. The earliest possible reference appears in the Ebers Papyrus from Ancient Egypt around 1550 BC, which mentions eliminating plentiful urine. However, historians note it remains unclear if this specifically described diabetes or urinary infections.",
+            "evidenceIds": [
+              "P1",
+              "P5"
+            ]
+          },
+          {
+            "text": "In the fifth and sixth centuries BC, Ayurvedic physicians in India observed the sweet taste of diabetic urine, naming the condition madhumeha or honey urine. Meanwhile, traditional Chinese medicine described and treated the illness as wasting-thirst, a term documented in classical medical literature over many centuries.",
+            "evidenceIds": [
+              "P1",
+              "P7",
+              "P10"
+            ]
+          },
+          {
+            "text": "Greco-Roman writers primarily focused on excessive urination without noting any sweetness. Authors like Aulus Cornelius Celsus described an imbalance where excreted fluid exceeded fluid intake. Islamic physicians later synthesized these global medical traditions during the Islamic Golden Age, laying crucial foundations for later European advances.",
+            "evidenceIds": [
+              "P12",
+              "P14",
+              "P16"
+            ]
+          },
+          {
+            "text": "Understanding shifted gradually as anatomical knowledge improved. In 1674, Thomas Willis proposed that diabetes might originate in the blood rather than just the kidneys. Later, Johann Peter Frank distinguished diabetes mellitus from diabetes insipidus in 1794, separating conditions that share excessive urination symptoms.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "The formal discovery of the pancreas in diabetes occurred in 1889 through Joseph von Mering and Oskar Minkowski. Following early twentieth-century hypotheses about an internal secretion called insulin, researchers including Frederick Banting and Charles Best successfully purified insulin in Toronto, transforming patient care.",
+            "evidenceIds": [
+              "P2"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "Evolution of Diabetology",
+        "pages": [
+          {
+            "text": "The conceptual evolution of diabetes involves a complex interplay of ancient medical traditions. The Ebers Papyrus from Ancient Egypt contains a potential early reference to polyuria, though scholars debate whether the terminology denotes diabetic symptoms or urinary tract infections. In ancient India, Ayurvedic physicians identified sweet urine, introducing the designation madhumeha.",
+            "evidenceIds": [
+              "P1",
+              "P5"
+            ]
+          },
+          {
+            "text": "Parallel developments occurred in traditional Chinese medicine, where the condition was characterized as wasting-thirst. Historical monographs from the Sui and Tang dynasties expanded these diagnoses, with Zeng Liyan noting glycosuria and Wang Tao compiling detailed case reports containing descriptions of sweet urine.",
+            "evidenceIds": [
+              "P1",
+              "P10"
+            ]
+          },
+          {
+            "text": "Classical Greco-Roman literature emphasized excessive fluid excretion without recording urinary sweetness. Celsus documented an imbalance between ingested and excreted volumes, while Byzantine compilers like Oribasius categorized the condition as a renal disorder. These fragmented insights were later synthesized by scholars in the medieval Islamic world.",
+            "evidenceIds": [
+              "P12",
+              "P14",
+              "P15",
+              "P16"
+            ]
+          },
+          {
+            "text": "Pathophysiological understanding advanced as anatomical investigation progressed through autopsy. Thomas Willis hypothesized a hematological origin in 1674, challenging renal assumptions. By 1794, Johann Peter Frank formally delineated diabetes mellitus from diabetes insipidus, while nineteenth-century French clinicians distinguished clinical phenotypes comparable to ancient Ayurvedic classifications.",
+            "evidenceIds": [
+              "P1",
+              "P18",
+              "P21"
+            ]
+          },
+          {
+            "text": "The twentieth century marked a therapeutic turning point. Following the identification of the islets of Langerhans and hypotheses regarding carbohydrate-regulating secretions, researchers isolated and purified insulin. The subsequent assignment of the insulin patent to the University of Toronto for a symbolic dollar ensured widespread clinical accessibility.",
+            "evidenceIds": [
+              "P2"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 3033,
+    "output": 1081,
+    "total": 4114
+  },
+  "validation": null
 }
