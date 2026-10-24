@@ -2,10 +2,10 @@
   "pageId": 12686484,
   "title": "Drug policy",
   "topic": "Health",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1360650813,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1360650813",
-  "reason": "5 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -254,5 +254,143 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1360650813"
     }
   ],
-  "updatedAt": "2026-10-24T09:24:51.022Z"
+  "updatedAt": "2026-10-24T09:25:07.931Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "What is drug policy around the world",
+        "pages": [
+          {
+            "text": "A drug policy is the way governments and other groups control and regulate drugs. These are substances that can cause addiction or dependence. Policies try to stop addiction, help people get medical treatment, and reduce harm.",
+            "evidenceIds": [
+              "P1",
+              "P2"
+            ]
+          },
+          {
+            "text": "Different places have different rules about what a drug is. Heroin is controlled almost everywhere. Other substances like alcohol or codeine are regulated in some places but not in others. International treaties also help set global drug control standards.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "In the 1990s, the United States and countries like Colombia fought against drug cartels. Plan Colombia helped fund this fight to destroy coca crops. While coca cultivation decreased, some farmers who used it for traditional chewing became very poor.",
+            "evidenceIds": [
+              "P9"
+            ]
+          },
+          {
+            "text": "Germany has a progressive drug policy compared to other European countries. In 1994, the court ruled that having small amounts of drugs for personal use is not a crime. Germany later introduced supervised injection rooms and heroin treatment.",
+            "evidenceIds": [
+              "P11"
+            ]
+          },
+          {
+            "text": "Portugal kept personal drug use illegal, but changed the punishment in 2001. Instead of going to prison, people caught with small amounts are directed to therapy or community service. Drug dealers still face criminal penalties.",
+            "evidenceIds": [
+              "P14"
+            ]
+          },
+          {
+            "text": "Sweden has a strict zero-tolerance policy against all illicit drug use. Its official goal is a drug-free society. Drug use became a crime in 1988, and penalties can include fines or prison. The healthcare system also provides free treatment.",
+            "evidenceIds": [
+              "P16"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "Understanding global drug policies and laws",
+        "pages": [
+          {
+            "text": "Drug policy refers to the control and regulation of psychoactive substances, particularly addictive drugs. Generally implemented by governments, these policies aim to combat drug addiction, address both demand and supply, provide medical assistance, and mitigate the harm caused by drug use.",
+            "evidenceIds": [
+              "P1",
+              "P2"
+            ]
+          },
+          {
+            "text": "The definition of a controlled drug varies between jurisdictions. While heroin is restricted almost everywhere, substances like alcohol and codeine are regulated in some regions but not others. International drug control conventions also establish certain global standards.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "During the late 1980s and 1990s, the United States declared a war on drugs targeting Colombian cartels. Colombia implemented Plan Colombia in 1999 to fight drug trafficking and eradicate coca crops. Although coca cultivation dropped significantly, traditional farmers who chewed coca leaves faced severe poverty.",
+            "evidenceIds": [
+              "P9"
+            ]
+          },
+          {
+            "text": "Germany developed a progressive approach, ruling in 1994 that drug addiction and personal possession of small amounts are not crimes. By 2000, Germany permitted supervised injection rooms and later integrated heroin-assisted treatment into mandatory health insurance following successful pilot studies.",
+            "evidenceIds": [
+              "P11"
+            ]
+          },
+          {
+            "text": "In 2001, Portugal reformed its legal framework. While using or possessing drugs remained illegal, personal possession of up to a ten-day supply was reclassified from a criminal offense to an administrative one. Addicts were targeted with therapy rather than prison, though dealers still face criminal penalties.",
+            "evidenceIds": [
+              "P14"
+            ]
+          },
+          {
+            "text": "Sweden shifted from a lenient policy in the 1960s to a zero-tolerance approach aiming for a drug-free society. Personal drug use became punishable in 1988. While minor offenses bring fines, penalties can reach ten years in prison, alongside free treatment through the healthcare system.",
+            "evidenceIds": [
+              "P16"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "The evolution and variation of international drug policies",
+        "pages": [
+          {
+            "text": "Drug policy encompasses the regulatory frameworks governing psychoactive substances with addictive or dependence-forming potential. Typically enacted by state authorities or international bodies, these policies balance demand reduction, supply suppression, harm mitigation, and medical treatment provision.",
+            "evidenceIds": [
+              "P1",
+              "P2"
+            ]
+          },
+          {
+            "text": "Jurisdictional definitions of controlled substances exhibit considerable variance. Heroin remains broadly prohibited, whereas substances such as codeine, khat, or alcohol face disparate regulatory statuses globally. International drug control conventions provide overarching standards, complemented by human rights and indigenous rights treaties.",
+            "evidenceIds": [
+              "P3",
+              "P6"
+            ]
+          },
+          {
+            "text": "Amidst the United States' declared war on drugs, Colombia instituted Plan Colombia in 1999 to dismantle major cartels and eradicate coca cultivation. Although this prohibitionist strategy drastically reduced coca acreage over a decade, it concurrently impoverished traditional agricultural communities dependent on legal subsistence uses.",
+            "evidenceIds": [
+              "P9"
+            ]
+          },
+          {
+            "text": "Germany established a progressive regulatory trajectory when its Federal Constitutional Court ruled in 1994 that addiction and small-scale personal possession do not constitute criminal acts. Subsequent reforms authorized supervised injection sites and incorporated heroin-assisted treatment into mandatory health insurance schemes.",
+            "evidenceIds": [
+              "P11"
+            ]
+          },
+          {
+            "text": "Portugal maintained the formal illegality of drug use while recategorizing minor personal possession from a criminal offense to an administrative infraction in 2001. This reform redirected minor offenders toward therapeutic interventions instead of incarceration, while preserving stringent criminal penalties for cultivators and traffickers.",
+            "evidenceIds": [
+              "P14"
+            ]
+          },
+          {
+            "text": "Sweden transitioned from a permissive 1960s framework to a strict zero-tolerance paradigm directed toward a drug-free society. Criminalizing personal use in 1988, the state enforces penalties ranging from fines to extended imprisonment, supplemented by universally accessible public healthcare and mandated rehabilitation.",
+            "evidenceIds": [
+              "P16"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2721,
+    "output": 1580,
+    "total": 4301
+  },
+  "validation": null
 }
