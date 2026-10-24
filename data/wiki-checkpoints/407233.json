@@ -299,14 +299,14 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380990938"
     }
   ],
-  "updatedAt": "2026-10-24T09:01:42.940Z",
+  "updatedAt": "2026-10-24T09:02:00.765Z",
   "draft": {
     "variants": {
       "A1-A2": {
         "headline": "Less Sunlight on Earth",
         "pages": [
           {
-            "text": "Global dimming is a decline in the amount of sunlight reaching the Earth's surface. It is caused by tiny particles in the air, mainly sulfate aerosols from air pollution. This weakening of sunlight was observed soon after measurements began in the 1950s.",
+            "text": "Global dimming is a decline in the amount of sunlight reaching the Earth's surface. It is caused by atmospheric particulate matter, predominantly sulfate aerosols, which are components of air pollution. Global dimming was observed soon after the first systematic measurements of solar irradiance began in the 1950s.",
             "evidenceIds": [
               "P1"
             ]
@@ -412,11 +412,11 @@
       }
     }
   },
-  "repairAttempts": 0,
+  "repairAttempts": 1,
   "lastUsage": {
-    "input": 2747,
-    "output": 1273,
-    "total": 4020
+    "input": 2566,
+    "output": 126,
+    "total": 2692
   },
   "validation": null
 }
