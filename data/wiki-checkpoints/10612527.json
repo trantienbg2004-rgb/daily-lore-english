@@ -169,7 +169,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1364588051"
     }
   ],
-  "updatedAt": "2026-10-24T09:21:14.216Z",
+  "updatedAt": "2026-10-24T09:21:32.403Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -215,7 +215,7 @@
         "headline": "The Origins and History of the 1877 Wimbledon Championship",
         "pages": [
           {
-            "text": "The 1877 Wimbledon Championship was a men's tennis tournament held at the All England Croquet and Lawn Tennis Club in Wimbledon, London. It marked the world's first official lawn tennis tournament and the start of the Grand Slam.",
+            "text": "The 1877 Wimbledon Championship was a men's tennis tournament held at the All England Croquet and Lawn Tennis Club in Wimbledon, London. It was the world's first official lawn tennis tournament and was later recognised as the first Grand Slam tournament.",
             "evidenceIds": [
               "P1"
             ]
@@ -236,7 +236,7 @@
             ]
           },
           {
-            "text": "The tournament began on July 9. After rain delayed the final match for three days, it was played on July 19 before a crowd of about 200 spectators. Spencer Gore defeated William Marshall in three straight sets to claim victory.",
+            "text": "The tournament started on July 9, 1877. The final was delayed by three days because of rain and was played in front of a crowd. Spencer Gore defeated William Marshall in three straight sets to become the first champion.",
             "evidenceIds": [
               "P2",
               "P11"
@@ -275,7 +275,7 @@
             ]
           },
           {
-            "text": "Commencing on July 9, the competition culminated in a final delayed by three days due to inclement weather. Watched by approximately 200 spectators, Spencer Gore defeated William Marshall in three consecutive sets during a 48-minute match.",
+            "text": "The tournament commenced on July 9, 1877, and the final was delayed for three days by rain. Played in front of a crowd of about 200 people, Spencer Gore defeated William Marshall in three straight sets in a final lasting 48 minutes.",
             "evidenceIds": [
               "P2",
               "P11"
@@ -292,11 +292,11 @@
       }
     }
   },
-  "repairAttempts": 1,
+  "repairAttempts": 2,
   "lastUsage": {
-    "input": 3017,
-    "output": 505,
-    "total": 3522
+    "input": 2783,
+    "output": 321,
+    "total": 3104
   },
   "validation": null
 }
