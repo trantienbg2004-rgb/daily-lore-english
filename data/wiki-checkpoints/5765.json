@@ -2,10 +2,10 @@
   "pageId": 5765,
   "title": "Çatalhöyük",
   "topic": "History & Geography",
-  "status": "DRAFTED",
+  "status": "VALIDATED",
   "revisionId": 1379818880,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379818880",
-  "reason": "draft durably saved before validation",
+  "reason": "local factual, style, length, structure and source audit passed",
   "rights": [
     {
       "status": "REVIEW",
@@ -338,7 +338,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379818880"
     }
   ],
-  "updatedAt": "2026-10-24T03:57:17.476Z",
+  "updatedAt": "2026-10-24T03:57:35.475Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -482,5 +482,8 @@
     "output": 1565,
     "total": 4349
   },
-  "validation": null
+  "validation": {
+    "accepted": true,
+    "errors": []
+  }
 }
