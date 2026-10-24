@@ -2,10 +2,10 @@
   "pageId": 60637169,
   "title": "Black Sea slave trade",
   "topic": "Economy",
-  "status": "DRAFTED",
+  "status": "VALIDATED",
   "revisionId": 1378783817,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378783817",
-  "reason": "draft durably saved before validation",
+  "reason": "local factual, style, length, structure and source audit passed",
   "rights": [
     {
       "status": "REVIEW",
@@ -560,7 +560,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378783817"
     }
   ],
-  "updatedAt": "2026-10-24T03:58:06.878Z",
+  "updatedAt": "2026-10-24T03:58:24.933Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -700,5 +700,8 @@
     "output": 1643,
     "total": 4483
   },
-  "validation": null
+  "validation": {
+    "accepted": true,
+    "errors": []
+  }
 }
