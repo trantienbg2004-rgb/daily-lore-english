@@ -2,10 +2,10 @@
   "pageId": 51885,
   "title": "Multiculturalism",
   "topic": "Society",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1381353217,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381353217",
-  "reason": "19 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -664,5 +664,132 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381353217"
     }
   ],
-  "updatedAt": "2026-10-24T05:15:40.208Z"
+  "updatedAt": "2026-10-24T05:15:56.472Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "What is Multiculturalism?",
+        "pages": [
+          {
+            "text": "Multiculturalism is the coexistence of multiple cultures. In sociology and everyday life, it is a word for cultural pluralism. It can describe a single country or a mixed community area where various groups live together.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Some scholars suggest that states with multicultural ideas have existed since ancient times. The Achaemenid Empire under Cyrus the Great followed a policy of tolerating various cultures and incorporating them.",
+            "evidenceIds": [
+              "P5"
+            ]
+          },
+          {
+            "text": "Supporters see multiculturalism as a fairer system that helps people express who they are. Critics, however, debate whether co-existing cultures can remain distinct and whether the ideal is sustainable or desirable.",
+            "evidenceIds": [
+              "P8",
+              "P9"
+            ]
+          },
+          {
+            "text": "Studies show that factors like economic inequality and trust in government are very important for social cohesion. Research indicates that diversity itself does not hurt social cohesion, but hate speech from politicians can.",
+            "evidenceIds": [
+              "P7"
+            ]
+          },
+          {
+            "text": "In South America, countries like Argentina and Bolivia have high levels of cultural diversity. Bolivia has many indigenous groups and recognizes multiple official languages in its constitution alongside Spanish.",
+            "evidenceIds": [
+              "P10",
+              "P11"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "Understanding Multiculturalism Across Societies",
+        "pages": [
+          {
+            "text": "Multiculturalism refers to the coexistence of multiple cultures within a society. Used in sociology and political philosophy, it often describes a cultural mosaic or salad bowl where different ethnic and cultural groups exist together in a single country or community area.",
+            "evidenceIds": [
+              "P1",
+              "P3"
+            ]
+          },
+          {
+            "text": "While some view modern society as uniquely diverse, migration researcher Hein de Haas notes that historical waves of migration created great diversity in the past as well. Ancient states like the Achaemenid Empire also incorporated and tolerated various cultures.",
+            "evidenceIds": [
+              "P4",
+              "P5"
+            ]
+          },
+          {
+            "text": "In political science, multiculturalism is a state's capacity to handle cultural plurality. Supporters argue it creates a fairer, more tolerant society, while critics question whether co-existing cultures can remain distinct without eroding the host nation's culture.",
+            "evidenceIds": [
+              "P3",
+              "P8",
+              "P9"
+            ]
+          },
+          {
+            "text": "Research suggests there is no direct negative link between immigration and social cohesion. Instead, economic inequality and trust in government matter more, though hate speech from politicians can reduce social trust.",
+            "evidenceIds": [
+              "P7"
+            ]
+          },
+          {
+            "text": "In Latin America, countries feature diverse populations. Bolivia's constitution recognizes numerous indigenous groups and languages. Similarly, Argentina promotes immigration and maintains a rich multicultural presence in its culture and media.",
+            "evidenceIds": [
+              "P10",
+              "P11"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "The Dynamics of Multiculturalism in Global Contexts",
+        "pages": [
+          {
+            "text": "Multiculturalism denotes the coexistence of multiple cultural traditions within a society, functioning as a descriptor for cultural pluralism in sociology or as a framework for managing cultural plurality in political science, often contrasted with cultural assimilation.",
+            "evidenceIds": [
+              "P1",
+              "P3"
+            ]
+          },
+          {
+            "text": "The perception that contemporary society is exceptionally diverse has been challenged by researchers who point to historical migration waves. Furthermore, historical analysis indicates that empires such as the Achaemenid Empire incorporated and tolerated diverse cultures.",
+            "evidenceIds": [
+              "P4",
+              "P5"
+            ]
+          },
+          {
+            "text": "Proponents argue that multiculturalism fosters a tolerant system that accommodates social changes, whereas critics debate the sustainability of distinct, interacting cultures and express concern over the potential erosion of a host nation's distinct cultural identity.",
+            "evidenceIds": [
+              "P8",
+              "P9"
+            ]
+          },
+          {
+            "text": "Empirical research indicates that ethnic diversity does not inherently undermine social cohesion; rather, variables such as economic inequality and governmental trust are decisive, though political hate speech remains detrimental to social trust.",
+            "evidenceIds": [
+              "P7"
+            ]
+          },
+          {
+            "text": "National implementations vary significantly across the globe. For instance, Bolivia formally incorporated multicultural principles into its constitution, recognizing numerous indigenous groups and languages, while Argentina maintains a high level of cultural pluralism alongside legislative support for diverse expressions.",
+            "evidenceIds": [
+              "P10",
+              "P11"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2798,
+    "output": 1211,
+    "total": 4009
+  },
+  "validation": null
 }
