@@ -302,7 +302,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1346501240"
     }
   ],
-  "updatedAt": "2026-10-24T03:56:11.135Z",
+  "updatedAt": "2026-10-24T03:56:29.224Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -350,7 +350,7 @@
             ]
           },
           {
-            "text": "Ancient Greek athletes practiced physical training extensively, but the original Olympic Games were banned by the Romans in 394. They did not return until 1896. In the intervening centuries, formalized training became closely aligned with military preparation across Europe, sharing many recurring methods.",
+            "text": "Athletes of Ancient Greece widely practiced physical training. However, after the original Olympic Games were banned by the Romans in 394, such culturally significant athletic competitions were not held again until the 19th Century. In the years in between, formalised systems of physical training had become more closely aligned with military training.",
             "evidenceIds": [
               "P2"
             ]
@@ -414,11 +414,11 @@
       }
     }
   },
-  "repairAttempts": 0,
+  "repairAttempts": 1,
   "lastUsage": {
-    "input": 2483,
-    "output": 912,
-    "total": 3395
+    "input": 2308,
+    "output": 131,
+    "total": 2439
   },
   "validation": null
 }
