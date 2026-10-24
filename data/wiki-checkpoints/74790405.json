@@ -268,7 +268,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375906372"
     }
   ],
-  "updatedAt": "2026-10-24T08:10:19.179Z",
+  "updatedAt": "2026-10-24T08:10:37.055Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -318,7 +318,7 @@
             ]
           },
           {
-            "text": "Diplomatic ties grew over many years through policies and new agreements like the Abraham Accords and the I2U2 group. The project was officially announced during the 2023 G20 Summit in New Delhi. Representatives from India, the United States, the United Arab Emirates, Saudi Arabia, France, Germany, Italy, and the European Union signed a Memorandum of Understanding.",
+            "text": "Diplomatic ties grew over many years through policies and new agreements like the Abraham Accords and the I2U2 group. The project was officially announced during the 2023 G20 Summit in New Delhi when leaders signed a Memorandum of Understanding.",
             "evidenceIds": [
               "P2",
               "P3"
@@ -364,7 +364,7 @@
             ]
           },
           {
-            "text": "The institutional groundwork emerged from decades of geopolitical shifts, including India's Look West policy, the Abraham Accords, and the formation of the I2U2 grouping. These diplomatic precursors culminated in the 2023 G20 Summit in New Delhi, where representatives from India, the United States, the United Arab Emirates, Saudi Arabia, France, Germany, Italy, and the European Union signed a foundational Memorandum of Understanding.",
+            "text": "The institutional groundwork emerged from decades of geopolitical shifts, including India's Look West policy, the Abraham Accords, and the formation of the I2U2 grouping. These diplomatic precursors culminated in the 2023 G20 Summit in New Delhi, where representatives signed a foundational Memorandum of Understanding.",
             "evidenceIds": [
               "P2",
               "P3"
@@ -402,11 +402,11 @@
       }
     }
   },
-  "repairAttempts": 0,
+  "repairAttempts": 1,
   "lastUsage": {
-    "input": 2809,
-    "output": 1667,
-    "total": 4476
+    "input": 2787,
+    "output": 244,
+    "total": 3031
   },
   "validation": null
 }
