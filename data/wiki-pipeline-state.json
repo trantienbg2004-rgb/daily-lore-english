@@ -9896,10 +9896,10 @@
       "checkedAt": "2026-10-22T09:06:16.693Z"
     },
     "28831147": {
-      "status": "FETCHED",
-      "reason": "pinned-source-ready",
+      "status": "REJECTED",
+      "reason": "insufficient-source-text-or-embedded-images",
       "revisionId": 1373684821,
-      "checkedAt": "2026-10-24T10:41:05.456Z"
+      "checkedAt": "2026-10-24T10:41:11.155Z"
     },
     "29213543": {
       "status": "EVIDENCE_READY",
@@ -11930,7 +11930,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-24T10:41:05.456Z",
+  "updatedAt": "2026-10-24T10:41:11.155Z",
   "dailyUsage": {
     "day": "2026-10-24",
     "calls": 117,
