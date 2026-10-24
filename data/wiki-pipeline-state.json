@@ -9158,10 +9158,10 @@
       "checkedAt": "2026-10-21T03:11:25.020Z"
     },
     "58613604": {
-      "status": "EVIDENCE_READY",
-      "reason": "7 rights-verified embedded images",
+      "status": "DRAFTED",
+      "reason": "draft durably saved before validation",
       "revisionId": 1360540655,
-      "checkedAt": "2026-10-24T03:58:38.154Z"
+      "checkedAt": "2026-10-24T03:58:55.535Z"
     },
     "58967421": {
       "status": "PENDING",
@@ -10202,7 +10202,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-24T03:58:54.280Z",
+  "updatedAt": "2026-10-24T03:58:55.537Z",
   "dailyUsage": {
     "day": "2026-10-23",
     "calls": 155,
