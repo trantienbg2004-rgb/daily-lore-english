@@ -15,7 +15,7 @@ import { displayHeadline, readerSection } from './lib/editorial.js'
 import { loadRecommendationProfile, rememberReading, rankRecommendations } from './lib/recommendationEngine.js'
 import { handleReaderArrowKey } from './lib/readerKeyboard.js'
 import {NEWS_LEVELS, NEWS_LEVEL_KEY, isNewsLevel, loadNewsLevel, applyNewsLevel} from './lib/newsLevels.js'
-import { parseFreeDictionaryEntries, rankMeaningOptions } from './lib/contextualDictionary.js'
+import { parseFreeDictionaryEntries, rankMeaningOptions, selectContextualMeaning } from './lib/contextualDictionary.js'
 
 
 // Keep the complete adaptation for attribution while Read shows short pages.
@@ -411,7 +411,6 @@ function App() {
   }
   const [selected, setSelected] = useState('')
   const [lookup, setLookup] = useState({ status: 'idle', options: [] })
-  const [meaningIndex, setMeaningIndex] = useState(0)
   const [retryCount, setRetryCount] = useState(0)
   const [words, setWords] = useState(initialWords)
   const [reviewIndex, setReviewIndex] = useState(0)
@@ -688,18 +687,18 @@ function App() {
   const clean = value => value.toLowerCase().replace(/^[^a-z]+|[^a-z]+$/g, '')
   const selectedSaved = words.find(w => w.word === selected)
   const isSaved = Boolean(selectedSaved)
-  const activeMeaning = lookup.options?.[meaningIndex] || null
+  const activeMeaning = selectContextualMeaning(lookup.options || [])
   // Avoid lookbehind regex: Safari on iOS 15 cannot parse it and may show a blank screen.
   const sentenceParts = (currentPage?.text || '').match(/[^.!?]+[.!?]*|[^.!?]+$/g) || [currentPage?.text || '']
   const selectedSentence = (tab === 'words' && selectedSaved?.sentence) || sentenceParts.find(sentence =>
     sentence.toLowerCase().split(/[^a-z]+/).includes(selected)
   )?.trim() || (tab !== 'read' && selectedSaved?.sentence) || currentPage?.text || ''
+  const contextParts = selectedSentence.split(new RegExp(`(${selected.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'ig'))
 
   useEffect(() => {
     if (!selected) return
     const controller = new AbortController()
     let active = true
-    setMeaningIndex(0)
     setLookup({ status: 'loading', options: [] })
     const timeout = setTimeout(() => {
       controller.abort()
@@ -730,11 +729,11 @@ function App() {
   // A user's chosen meaning must never be overwritten by later API responses.
   // Only fill a previously blank definition, preserving existing vocabulary.
   useEffect(() => {
-    if (!selected || lookup.status !== 'success' || !lookup.options?.length) return
+    if (!selected || lookup.status !== 'success' || !activeMeaning) return
     setWords(current => {
       if (!current.some(item => item.word === selected && !item.definition)) return current
       return current.map(item => item.word === selected && !item.definition
-        ? { ...item, definition: lookup.options[0].definition, phonetic: lookup.options[0].phonetic, partOfSpeech: lookup.options[0].partOfSpeech, example: lookup.options[0].example || '' }
+        ? { ...item, definition: activeMeaning.definition, phonetic: activeMeaning.phonetic, partOfSpeech: activeMeaning.partOfSpeech, example: activeMeaning.example || '' }
         : item)
     })
   }, [selected, lookup])
@@ -982,25 +981,18 @@ function App() {
           <button className="primary" onClick={() => setShowCredits(false)}>Back to reading</button>
         </section>
       </div>}
-      {selected && <div className="overlay" onClick={() => setSelected('')}>
-        <div className="definition-sheet" onClick={e => e.stopPropagation()}>
-          <div className="sheet-header"><span>WORD NOTES</span><button onClick={() => setSelected('')} aria-label="Close"><Icon name="close" size={22}/></button></div>
+      {selected && <div className="overlay dictionary-overlay" onClick={() => setSelected('')}>
+        <div className="definition-sheet dictionary-sheet" role="dialog" aria-modal="true" aria-label={`Meaning of ${selected} in context`} onClick={e => e.stopPropagation()}>
+          <div className="sheet-header"><span>IN THIS SENTENCE</span><button onClick={() => setSelected('')} aria-label="Close"><Icon name="close" size={22}/></button></div>
           <h2>{selected}</h2>
+          <p className="word-context">{contextParts.map((part, index) => part.toLowerCase() === selected.toLowerCase() ? <strong key={index}>{part}</strong> : part)}</p>
           <div className="lookup-details">
             {lookup.status === 'loading' && <p>Looking up the word...</p>}
             {lookup.status === 'success' && <>
-              <p className="meaning-label">CHOOSE A MEANING</p>
-              <div className="meaning-options" role="radiogroup" aria-label="Choose a definition">
-                {lookup.options.slice(0, 3).map((item, i) => <button type="button" key={i} role="radio" aria-checked={meaningIndex === i} className={'meaning-option ' + (meaningIndex === i ? 'chosen' : '')} onClick={() => setMeaningIndex(i)}>
-                  <span className="meaning-radio" aria-hidden="true"/>
-                  <span><small>{i === 0 && item.contextScore > 0 ? 'Closest match to this sentence · ' : ''}{item.partOfSpeech || 'definition'} · {item.source}</small><span>{item.definition}</span>{item.example && <em className="meaning-example">Example: “{item.example}”</em>}</span>
-                </button>)}
-              </div>
+              {activeMeaning ? <p className="contextual-meaning">{activeMeaning.definition}</p> : <p className="no-contextual-meaning">No meaning could be matched to this sentence yet.</p>}
             </>}
-            {lookup.status === 'error' && <><p>{offlineMeaning(selected) || 'Dictionary unavailable. You can save this word and retry later.'}</p><button className="retry-link" onClick={() => setRetryCount(n => n + 1)}>Try again</button></>}
-            {isSaved && <p className="saved-definition-note">Saved meaning: {selectedSaved.definition || 'Not available yet'}</p>}
+            {lookup.status === 'error' && <><p>Dictionary unavailable. No meaning is shown until it can be matched to this sentence.</p><button className="retry-link" onClick={() => setRetryCount(n => n + 1)}>Try again</button></>}
           </div>
-          <p className="word-context">“{selectedSentence}”</p>
           <div className="sheet-actions"><button className="outline" onClick={() => speak(selected)}><Icon name="volume" size={18}/> Listen</button><button className="primary" onClick={saveWord} disabled={isSaved}>{isSaved ? '✓ Saved' : '+ Save word'}</button></div>
         </div>
       </div>}

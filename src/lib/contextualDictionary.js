@@ -16,6 +16,11 @@ export function rankMeaningOptions(options, context = '', selectedWord = '') {
   }).sort((a, b) => b.contextScore - a.contextScore || a.originalIndex - b.originalIndex)
 }
 
+export function selectContextualMeaning(options = []) {
+  const bestMatch = options[0]
+  return bestMatch?.contextScore > 0 ? bestMatch : null
+}
+
 export function parseFreeDictionaryEntries(entries) {
   return (entries || []).flatMap(entry => (entry.meanings || []).flatMap(meaning => (meaning.definitions || []).map(definition => ({
     definition: definition.definition || '',

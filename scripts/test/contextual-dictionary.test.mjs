@@ -1,6 +1,6 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
-import { parseFreeDictionaryEntries, rankMeaningOptions } from '../../src/lib/contextualDictionary.js'
+import { parseFreeDictionaryEntries, rankMeaningOptions, selectContextualMeaning } from '../../src/lib/contextualDictionary.js'
 
 test('keeps dictionary examples and part of speech for the reader', () => {
   const options = parseFreeDictionaryEntries([{
@@ -33,4 +33,20 @@ test('preserves dictionary order when examples have no context overlap', () => {
     { definition: 'Second sense.', example: 'Another unrelated sentence.' },
   ]
   assert.deepEqual(rankMeaningOptions(options, 'Scientists observed distant planets.', 'observed').map(item => item.definition), ['First sense.', 'Second sense.'])
+})
+
+test('returns only a meaning supported by words in the selected sentence', () => {
+  const ranked = rankMeaningOptions([
+    { definition: 'A financial institution.', example: 'She deposited money at the bank.' },
+    { definition: 'The land beside a river.', example: 'They sat on the river bank.' },
+  ], 'Flood water rose over the river bank after heavy rain.', 'bank')
+  assert.equal(selectContextualMeaning(ranked).definition, 'The land beside a river.')
+})
+
+test('does not guess a meaning when no dictionary sense matches the sentence', () => {
+  const ranked = rankMeaningOptions([
+    { definition: 'To form letters on a surface.', example: 'Write your name.' },
+    { definition: 'A financial institution.', example: 'Deposit money.' },
+  ], 'Scientists observed distant planets.', 'observed')
+  assert.equal(selectContextualMeaning(ranked), null)
 })

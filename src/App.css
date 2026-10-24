@@ -40,6 +40,22 @@
 .meaning-option{gap:0}
 .meaning-option.chosen{background:transparent;border-color:#a65f50;border-width:1.5px}
 
+/* A single in-sentence meaning in the same restrained editorial language as SAGA. */
+.dictionary-overlay{background:rgba(0,0,0,.62);align-items:center;padding:20px;box-sizing:border-box}
+.dictionary-sheet{width:min(464px,100%);max-height:min(82dvh,680px);overflow-y:auto;box-sizing:border-box;padding:25px 28px 28px;border:1px solid #171715;border-radius:0;background:#fff;color:#171715;box-shadow:0 18px 55px #0003}
+.dictionary-sheet .sheet-header{padding-bottom:13px;border-bottom:1px solid #171715;color:#171715}
+.dictionary-sheet .sheet-header button{color:#171715;padding:4px;display:grid;place-items:center}
+.dictionary-sheet h2{font:600 clamp(24px,3.4dvh,30px)/1.08 'Bodoni Moda',Georgia,serif;letter-spacing:-.025em;text-transform:uppercase;margin:22px 0 18px;color:#171715}
+.dictionary-sheet .word-context{font:400 16px/1.55 Georgia,'Times New Roman',serif!important;font-style:normal;color:#171715!important;margin:0 0 16px!important;min-height:0}
+.dictionary-sheet .contextual-meaning{border-top:1px solid #171715;border-bottom:1px solid #171715;padding:15px 0;margin:0 0 16px;color:#171715;font:400 20px/1.45 Georgia,'Times New Roman',serif;min-height:0}
+.dictionary-sheet .no-contextual-meaning,.dictionary-sheet .lookup-details>p{margin:0 0 14px;color:#171715;font:400 14px/1.55 'Inter',system-ui,sans-serif;min-height:0}
+.dictionary-sheet .saved-definition-note{border-top:1px solid #aaa;padding-top:10px;color:#444!important}
+.dictionary-sheet .sheet-actions{margin-top:19px;gap:10px}
+.dictionary-sheet .sheet-actions .primary{background:#171715;color:#fff;border:1px solid #171715;border-radius:0}
+.dictionary-sheet .sheet-actions .outline{background:transparent;color:#171715;border:1px solid #171715;border-radius:0}
+.dictionary-sheet .retry-link{color:#171715}
+@media(max-width:600px){.dictionary-overlay{align-items:flex-end;padding:0}.dictionary-sheet{width:min(520px,100%);max-height:82dvh;padding:24px 22px calc(26px + env(safe-area-inset-bottom,0px));border-width:1px 0 0}}
+
 
 
 /* DAILY NEWS — single viewport, reliable iPhone safe areas, responsive pages. */
