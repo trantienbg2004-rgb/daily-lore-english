@@ -2,10 +2,10 @@
   "pageId": 63074081,
   "title": "Climate change in the Middle East and North Africa",
   "topic": "Environment",
-  "status": "EVIDENCE_READY",
+  "status": "PUBLISHED",
   "revisionId": 1381055215,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381055215",
-  "reason": "11 rights-verified embedded images",
+  "reason": "4 verified embedded images",
   "rights": [
     {
       "status": "REVIEW",
@@ -382,5 +382,148 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381055215"
     }
   ],
-  "updatedAt": "2026-10-21T08:11:52.293Z"
+  "updatedAt": "2026-10-24T04:01:52.611Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "Climate Change in Middle East and North Africa",
+        "pages": [
+          {
+            "text": "The Middle East and North Africa region faces big challenges from climate change. The area is very dry and hot. It has low rainfall and dry soil. This makes it one of the most vulnerable places in the world.",
+            "evidenceIds": [
+              "P1",
+              "P2"
+            ]
+          },
+          {
+            "text": "Greenhouse gas emissions in the region have grown a lot over the past thirty years. Most of these emissions come from the energy sector. Many countries in the region rely heavily on oil and natural gas.",
+            "evidenceIds": [
+              "P1",
+              "P5"
+            ]
+          },
+          {
+            "text": "Climate change causes more droughts, heatwaves, and rising sea levels. High temperatures are expected to get even worse during the summer months. This puts a huge strain on the environment and on people living there.",
+            "evidenceIds": [
+              "P1",
+              "P6"
+            ]
+          },
+          {
+            "text": "Water is already very scarce in the region. Most fresh water is used for farming and crops. Changing rain patterns and severe droughts make it even harder to find enough water for everyone.",
+            "evidenceIds": [
+              "P7"
+            ]
+          },
+          {
+            "text": "Many countries are now working to use more renewable energy like solar and wind power. Morocco built a huge solar power station. Nations are also joining international agreements to protect the environment and reduce emissions.",
+            "evidenceIds": [
+              "P3",
+              "P10",
+              "P11",
+              "P12"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "Climate Change Challenges in the MENA Region",
+        "pages": [
+          {
+            "text": "The Middle East and North Africa region is exceptionally vulnerable to climate change due to its arid and semi-arid environment. Low rainfall, high temperatures, and dry soil create severe climatic challenges. These conditions are projected to worsen throughout the twenty-first century. Without significant emission reductions, parts of the region risk becoming uninhabitable before the year 2100.",
+            "evidenceIds": [
+              "P1",
+              "P2"
+            ]
+          },
+          {
+            "text": "Human-produced greenhouse gas emissions are the primary driver of these changes. Over the past three decades, the region has more than tripled its emissions. It currently emits above the global average per person. This is largely driven by fossil fuel extraction and reliance on oil and natural gas for electricity generation.",
+            "evidenceIds": [
+              "P1",
+              "P5"
+            ]
+          },
+          {
+            "text": "Climate change is expected to bring frequent heatwaves, severe droughts, and rising sea levels. Summer temperatures are projected to increase significantly. Studies indicate that very hot days have already doubled in number since the 1970s. Rising sea levels also threaten coastal wetlands, which provide essential natural buffers against storms.",
+            "evidenceIds": [
+              "P1",
+              "P6",
+              "P8"
+            ]
+          },
+          {
+            "text": "Water scarcity is a critical issue across the region, where twelve of the seventeen most water-stressed countries are located. Eighty-five percent of fresh water is used for agricultural irrigation. Shifting rainfall patterns and rising drought frequencies place immense pressure on these already scarce water and agricultural resources.",
+            "evidenceIds": [
+              "P3",
+              "P7"
+            ]
+          },
+          {
+            "text": "In response, many countries are establishing national laws and engaging in international accords like the Paris Agreement. Nations are increasingly investing in renewable energy sources such as solar and wind power. For example, Morocco has developed massive concentrated solar power infrastructure to provide clean energy and reduce carbon emissions.",
+            "evidenceIds": [
+              "P3",
+              "P10",
+              "P11",
+              "P12"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "Climate Vulnerability and Mitigation in MENA",
+        "pages": [
+          {
+            "text": "The Middle East and North Africa region constitutes one of the global hotspots most vulnerable to climate change. Characterized predominantly by arid and semi-arid conditions, the region suffers from low precipitation, elevated temperatures, and depleted soil moisture. According to IPCC projections, these climatic challenges will intensify throughout the twenty-first century, raising the risk that parts of the region could become uninhabitable prior to 2100.",
+            "evidenceIds": [
+              "P1",
+              "P2",
+              "P6"
+            ]
+          },
+          {
+            "text": "Anthropogenic greenhouse gas emissions remain the primary driver of these regional vulnerabilities. Over the preceding three decades, emissions have more than tripled, placing per capita output above the global average. This trend is sustained by heavy economic reliance on fossil fuels, with the energy sector generating the vast majority of regional emissions while possessing substantial global oil and natural gas reserves.",
+            "evidenceIds": [
+              "P1",
+              "P5"
+            ]
+          },
+          {
+            "text": "Climatic disruptions manifest as amplified summer heat extremes, protracted droughts, and rising sea levels. Empirical studies demonstrate that the frequency of exceptionally hot days has doubled between the 1970s and 2016. Furthermore, projected sea-level rise threatens to inundate over ninety percent of coastal and freshwater wetlands, degrading vital ecosystem services including storm buffering and carbon sequestration.",
+            "evidenceIds": [
+              "P1",
+              "P6",
+              "P8"
+            ]
+          },
+          {
+            "text": "Severe water stress characterizes the region, encompassing twelve of the seventeen most water-stressed nations globally. Approximately eighty-five percent of freshwater resources are dedicated to agricultural irrigation. Shifting precipitation patterns, driven by elevated greenhouse gas emissions, exacerbate these deficits, threatening national security and political stability across multiple jurisdictions.",
+            "evidenceIds": [
+              "P3",
+              "P7"
+            ]
+          },
+          {
+            "text": "Mitigation and adaptation strategies increasingly focus on renewable energy integration and international policy frameworks. Leveraging high solar and wind potential, countries like Morocco have expanded renewable infrastructure, such as the Ouarzazate Solar Power Station. Concurrently, participation in international treaties like the Paris Agreement and institutional funding plans seek to redirect financial resources toward climate resilience and sustainable development.",
+            "evidenceIds": [
+              "P3",
+              "P10",
+              "P11",
+              "P12",
+              "P13"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2685,
+    "output": 1141,
+    "total": 3826
+  },
+  "validation": {
+    "accepted": true,
+    "errors": []
+  }
 }

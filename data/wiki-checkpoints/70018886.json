@@ -2,10 +2,10 @@
   "pageId": 70018886,
   "title": "Critique of work",
   "topic": "Society",
-  "status": "EVIDENCE_READY",
+  "status": "NEEDS_REPAIR",
   "revisionId": 1379701242,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379701242",
-  "reason": "4 rights-verified embedded images",
+  "reason": "editorial: A1-A2:page-1:evidence-context,B1-B2:page-2:unsupported-number-context-1770",
   "rights": [
     {
       "status": "REVIEW",
@@ -298,5 +298,148 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379701242"
     }
   ],
-  "updatedAt": "2026-10-21T07:34:10.192Z"
+  "updatedAt": "2026-10-24T04:03:11.089Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "What is the critique of work?",
+        "pages": [
+          {
+            "text": "The critique of work is an idea that questions if work is good for people. Some critics want to change jobs or end work as people know it today. They think that many jobs feel very empty and stop people from living happy lives.",
+            "evidenceIds": [
+              "P1",
+              "P2"
+            ]
+          },
+          {
+            "text": "In the past, thinkers wrote about work in Ancient Greece. Later, in 1770, a writer said that poor people should work fourteen hours a day in harsh houses. Over time, people fought to make work hours shorter and wanted more free time.",
+            "evidenceIds": [
+              "P3",
+              "P5"
+            ]
+          },
+          {
+            "text": "Writers like Paul Lafargue said that people should fight for leisure and joy instead of long hours. He believed that machines could help people work much less. Bertrand Russell also wrote that sharing work would remove unemployment and help people enjoy life.",
+            "evidenceIds": [
+              "P6",
+              "P7",
+              "P17"
+            ]
+          },
+          {
+            "text": "Other writers talk about bad jobs today. David Graeber wrote about jobs that do not help society at all. Frédéric Lordon wrote about why workers accept jobs that use goals which are not their own.",
+            "evidenceIds": [
+              "P8",
+              "P9"
+            ]
+          },
+          {
+            "text": "Today, some groups still talk about changing work. People suggest ideas like a shorter workweek or basic money for everyone. Magazines and art projects also share ideas about idleness and new ways of living.",
+            "evidenceIds": [
+              "P13",
+              "P14",
+              "P15"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "Understanding the Critique of Work",
+        "pages": [
+          {
+            "text": "The critique of work examines whether traditional labor benefits humanity or functions as a form of wage slavery. Critics argue that labor can feel meaningless and prevent personal fulfillment, while excessive work may harm both society and the natural environment.",
+            "evidenceIds": [
+              "P1",
+              "P2"
+            ]
+          },
+          {
+            "text": "Critiques of labor date back to Ancient Greece, though opposing views historically supported harsh conditions. A 1770 text advocated for workhouses where the poor would labor fourteen hours daily. By the nineteenth and twentieth centuries, social movements successfully campaigned to shorten working hours.",
+            "evidenceIds": [
+              "P3",
+              "P5"
+            ]
+          },
+          {
+            "text": "Thinkers such as Paul Lafargue criticized the fight for shorter working hours, arguing that people should demand leisure instead of servitude. Bertrand Russell similarly suggested that sharing the labor burden equally would eliminate unemployment and increase human happiness through science and art.",
+            "evidenceIds": [
+              "P6",
+              "P7"
+            ]
+          },
+          {
+            "text": "Modern analysts continue these arguments. Anthropologist David Graeber described meaningless roles as bullshit jobs, while philosopher Frédéric Lordon examined why workers adopt organizational goals that replace their own personal desires.",
+            "evidenceIds": [
+              "P8",
+              "P9"
+            ]
+          },
+          {
+            "text": "Philosophers like Franco Berardi suggest that capitalism has absorbed modern desires for autonomy. Meanwhile, anarchist circles and contemporary writers call for alternatives like unconditional basic income, a four-day workweek, and alternative ways of living centered on idleness.",
+            "evidenceIds": [
+              "P10",
+              "P13",
+              "P14"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "Philosophical and Historical Critiques of Labor",
+        "pages": [
+          {
+            "text": "The critique of labor constitutes an intellectual tradition questioning the societal centrality of work, frequently characterizing wage labor as a form of servitude. Critics contend that existential meaning is thwarted by unfulfilling employment, while utilitarian perspectives emphasize how excessive labor undermines human health, happiness, and ecological stability.",
+            "evidenceIds": [
+              "P1",
+              "P2"
+            ]
+          },
+          {
+            "text": "Historical opposition to the work ethic extends from antiquity, contrasted by eighteenth-century tracts advocating for punitive workhouses designed to instill industriousness among the poor. Subsequent industrialization increased busyness despite rising productivity, prompting nineteenth-century reformers and thinkers to challenge relentless labor standards.",
+            "evidenceIds": [
+              "P3",
+              "P5",
+              "P16"
+            ]
+          },
+          {
+            "text": "Figures like Paul Lafargue argued that technological automation should have drastically reduced working hours, freeing humanity for leisure. Bertrand Russell posited that an equitable distribution of necessary labor would eradicate unemployment and expand intellectual and artistic pursuits.",
+            "evidenceIds": [
+              "P7",
+              "P17"
+            ]
+          },
+          {
+            "text": "Contemporary theorists examine psychological and structural compliance within modern enterprise. Frédéric Lordon analyzed how organizations capture the basal desire for survival to align workers with corporate objectives, while Franco Berardi argued that contemporary capitalism co-opts libertarian drives for autonomy.",
+            "evidenceIds": [
+              "P9",
+              "P10",
+              "P20"
+            ]
+          },
+          {
+            "text": "Diverse modern movements challenge prevailing labor norms through conceptual art, publications, and political proposals. Advocates and theorists propose structural reforms including unconditional basic incomes and reduced workweeks, aligning with historical manifestos calling for the complete abolition of traditional work structures.",
+            "evidenceIds": [
+              "P13",
+              "P14",
+              "P15"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2812,
+    "output": 1377,
+    "total": 4189
+  },
+  "validation": {
+    "accepted": false,
+    "errors": [
+      "A1-A2:page-1:evidence-context",
+      "B1-B2:page-2:unsupported-number-context-1770"
+    ]
+  }
 }
