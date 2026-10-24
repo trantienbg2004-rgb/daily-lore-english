@@ -2,10 +2,10 @@
   "pageId": 735092,
   "title": "Wrestling",
   "topic": "Sports",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1379981309,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379981309",
-  "reason": "5 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REJECTED",
@@ -281,5 +281,158 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379981309"
     }
   ],
-  "updatedAt": "2026-10-24T06:50:50.279Z"
+  "updatedAt": "2026-10-24T06:51:03.731Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "The Story of Wrestling",
+        "pages": [
+          {
+            "text": "Wrestling is a very old sport and form of art. It involves holding an opponent and trying to win by using different throws or techniques. People have practiced wrestling for thousands of years all around the world.",
+            "evidenceIds": [
+              "P1",
+              "P3"
+            ]
+          },
+          {
+            "text": "Wrestling has many different styles today. Some styles are sports in the Olympic Games, while others are traditional styles from different countries. Professional wrestling is a very popular form of athletic theatre.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "Long ago, wrestling was a very important sport in Ancient Greece. It was a main event in the ancient Olympic Games. Many ancient leaders and philosophers practiced wrestling or wrote about it in their works.",
+            "evidenceIds": [
+              "P4"
+            ]
+          },
+          {
+            "text": "During the Middle Ages, wrestling stayed very popular. Many royal families in countries like England, France, and Japan gave their support to the sport. It continued to grow in many different regions.",
+            "evidenceIds": [
+              "P5"
+            ]
+          },
+          {
+            "text": "Today, there are international wrestling disciplines that appear in the Olympic Games. These include Greco-Roman wrestling and freestyle wrestling for men and women. Other styles include beach wrestling and submission wrestling.",
+            "evidenceIds": [
+              "P6",
+              "P7",
+              "P8",
+              "P13"
+            ]
+          },
+          {
+            "text": "Professional wrestling is a popular form of entertainment. Although it is advertised as a contest, the winners are pre-determined to make it exciting. Major companies run touring events around the world.",
+            "evidenceIds": [
+              "P17",
+              "P18"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "History and Styles of Wrestling",
+        "pages": [
+          {
+            "text": "Wrestling is a martial art, combat sport, and form of entertainment built on grappling. Competitors strive to gain an advantage through throws, clinches, and pins within a specific ruleset. Its history dates back thousands of years.",
+            "evidenceIds": [
+              "P1",
+              "P3"
+            ]
+          },
+          {
+            "text": "The sport includes legitimate competitive forms as well as theatrical performances. While archaeological evidence shows early roots in global prehistory, distinct styles developed independently across various ancient civilizations worldwide.",
+            "evidenceIds": [
+              "P2",
+              "P3"
+            ]
+          },
+          {
+            "text": "In Ancient Greece, wrestling held a prominent place in philosophy and literature. It served as a focal sport of the ancient Olympic Games, and many notable leaders and philosophers frequently referenced the sport.",
+            "evidenceIds": [
+              "P4"
+            ]
+          },
+          {
+            "text": "Throughout the Middle Ages, wrestling maintained its popularity and enjoyed patronage from various royal families in England, France, and Japan. Different folk styles also developed independently across many different cultures and geographic regions.",
+            "evidenceIds": [
+              "P5",
+              "P14"
+            ]
+          },
+          {
+            "text": "International governing bodies define multiple disciplines, including Olympic styles like Greco-Roman and freestyle wrestling. Other recognized styles range from beach wrestling to submission grappling and traditional folk disciplines.",
+            "evidenceIds": [
+              "P6",
+              "P7",
+              "P8",
+              "P9",
+              "P13"
+            ]
+          },
+          {
+            "text": "Professional wrestling functions primarily as sports entertainment. Bouts are theatrical exhibitions with pre-determined outcomes designed for entertainment, contrasting with legitimate competitive styles overseen by international sports organizations.",
+            "evidenceIds": [
+              "P17",
+              "P18"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "Evolution and Diversity of Wrestling",
+        "pages": [
+          {
+            "text": "Wrestling constitutes a multifaceted combat sport, martial art, and form of entertainment grounded in grappling mechanics. Practitioners employ techniques such as clinch fighting, joint locks, and throws to establish positional dominance within established parameters.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Prehistoric representations, including French cave drawings, suggest origins dating back thousands of years. Distinct styles subsequently emerged independently across diverse civilizations, with early references appearing in ancient texts, epics, and religious literature.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "In classical antiquity, particularly within Ancient Greece, wrestling occupied a central role in literature, philosophy, and athletic competition. It served as a premier event in the ancient Olympic Games, engaging numerous philosophers and statesmen.",
+            "evidenceIds": [
+              "P4"
+            ]
+          },
+          {
+            "text": "During the medieval period, wrestling retained widespread cultural relevance, supported by royal households in nations such as England, France, and Japan, while numerous localized folk traditions persisted independently across different geographic regions.",
+            "evidenceIds": [
+              "P5",
+              "P14"
+            ]
+          },
+          {
+            "text": "Modern international governance categorizes disciplines into distinct competitive frameworks. Olympic formats include Greco-Roman and freestyle wrestling, complemented by associated styles like beach wrestling, submission grappling, and various regional traditions.",
+            "evidenceIds": [
+              "P6",
+              "P7",
+              "P8",
+              "P9",
+              "P13"
+            ]
+          },
+          {
+            "text": "Professional wrestling operates as theatrical sports entertainment featuring pre-determined outcomes and dramatic narratives. Although primarily exhibitionary in modern contexts, legitimate grappling competencies historically influenced the industry's developmental era.",
+            "evidenceIds": [
+              "P17",
+              "P18"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2776,
+    "output": 970,
+    "total": 3746
+  },
+  "validation": null
 }
