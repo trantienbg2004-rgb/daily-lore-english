@@ -2,9 +2,163 @@
   "pageId": 1516039,
   "title": "Electoral roll",
   "topic": "Politics",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1368307477,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368307477",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-24T10:39:11.804Z"
+  "reason": "1 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:REPUBLIQUE FRANCAISE LIBERTE.- EGALITE.- FRATERNITE. MAIRIE DU 2me ARRONDISSEMENT LISTE ELECTORALE REVISION ANNUELLE, AFF3634.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/50/REPUBLIQUE_FRANCAISE_LIBERTE.-_EGALITE.-_FRATERNITE._MAIRIE_DU_2me_ARRONDISSEMENT_LISTE_ELECTORALE_REVISION_ANNUELLE%2C_AFF3634.jpg/960px-REPUBLIQUE_FRANCAISE_LIBERTE.-_EGALITE.-_FRATERNITE._MAIRIE_DU_2me_ARRONDISSEMENT_LISTE_ELECTORALE_REVISION_ANNUELLE%2C_AFF3634.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:REPUBLIQUE FRANCAISE LIBERTE.- EGALITE.- FRATERNITE. MAIRIE DU 2me ARRONDISSEMENT LISTE ELECTORALE REVISION ANNUELLE, AFF3634.jpg",
+        "caption": "Announcement of the annual revision of the electoral list of the 2nd arrondissement of Paris (1871)",
+        "alt": "",
+        "description": "Auteur(s): Prissette, Jacques Alfred (en 1827), imprimeur Date de production: En 1871 Datation en siècle: 19e siècle Type(s) d'objet(s): Arts graphiques, Manuscrits, imprimés, reliure Dénomination(s): Affiche Matériaux et techniques: Typographie = impression typographique Dimensions - Oeuvre: Hauteur : 44.8 cm Largeur : 56 cm Description: Affiche Marques, inscriptions, poinçons: Lettre - \" REPUBLIQUE FRANCAISE/ LIBERTE.- EGALITE.- FRATERNITE./ MAIRIE DU 2me ARRONDISSEMENT/ LISTE ELECTORALE/ REVISION ANNUELLE/ Le Maire du 2me Arrondissement a l'",
+        "date": "En 1871",
+        "section": "France",
+        "position": 0,
+        "provenance": {
+          "credit": "Prissette, Jacques Alfred (en 1827), imprimeur",
+          "license": "CC0",
+          "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:REPUBLIQUE_FRANCAISE_LIBERTE.-_EGALITE.-_FRATERNITE._MAIRIE_DU_2me_ARRONDISSEMENT_LISTE_ELECTORALE_REVISION_ANNUELLE,_AFF3634.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Electoral_roll",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368307477",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "8037307084d047ac546d8506dbf964124b661781dbb36fc86030d49efc4e690d",
+      "heading": "Lead",
+      "excerpt": "An electoral roll (variously called an electoral register, voters roll, voters list, poll book or other description) is a compilation that l",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368307477"
+    },
+    {
+      "id": "P2",
+      "hash": "d29e85bf5f05c1b787f003d95b25183eebf291801d5d05ad5f641908736e35df",
+      "heading": "Lead",
+      "excerpt": "Electoral rolls and voter registration serve a number of functions, especially to streamline voting on election day. Voter registration can ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368307477"
+    },
+    {
+      "id": "P3",
+      "hash": "32cb2ea48a0974dc9de4fb710b61a310bc590bb11114cb0ccfe2f16feb8c4674",
+      "heading": "Lead",
+      "excerpt": "Most jurisdictions close updating of electoral rolls some period, commonly 14 or 28 days, before an election, but some jurisdictions may all",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368307477"
+    },
+    {
+      "id": "P4",
+      "hash": "c7a58d1162ea6e9ef3f8d923db9635d5dd6d8f345ac6c53ebffb4bc24ab3c0cd",
+      "heading": "Lead",
+      "excerpt": "Traditionally, electoral rolls were maintained in paper form, either as loose-leaf folders or in printed pages, but nowadays electronic elec",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368307477"
+    },
+    {
+      "id": "P5",
+      "hash": "167fd41a2542f5b1a8a6735675aa8dfeffb2f3f5f385aff6bd87407998355f86",
+      "heading": "Australia",
+      "excerpt": "Australia maintains a permanent electoral roll, which is used for federal elections, by-elections and referendums. It also forms the basis o",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368307477"
+    },
+    {
+      "id": "P6",
+      "hash": "f673258d7b57d71cd7d5232142b80521047f78813271663f259096bb08440dad",
+      "heading": "Belgium",
+      "excerpt": "Belgian citizens over the age of 18 who are registered in the population registers of each municipality are included on a voters' list.",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368307477"
+    },
+    {
+      "id": "P7",
+      "hash": "01c1a83cba4894c051163d72345a02f4268cceace00c5096dc725763eb77bfc4",
+      "heading": "France",
+      "excerpt": "Each municipality maintains a permanent electoral list which is updated annually. Only registered voters can vote. A complementary list is p",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368307477"
+    },
+    {
+      "id": "P8",
+      "hash": "84172e60c9c597bca55e368bce0ecab60a0a797a64dd0a609d0217d8482ed4d5",
+      "heading": "Hong Kong",
+      "excerpt": "The electoral roll in Hong Kong is maintained by the Registration and Electoral Office (REO). The final register is available every year on ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368307477"
+    },
+    {
+      "id": "P9",
+      "hash": "11fb498b32acacccc2efc87e0a9b1c82b369bc4f3c2f9d2beba2280e6cfc494a",
+      "heading": "India",
+      "excerpt": "In India, publishing and updating of the electoral roll is the responsibility of the Election Commission of India, each state's chief electo",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368307477"
+    },
+    {
+      "id": "P10",
+      "hash": "015482f6d07445418d2155b55bc8a7270250194729c11a7ced4e9c5cb819bfad",
+      "heading": "Ireland",
+      "excerpt": "The electoral register in Ireland is maintained by the local authorities and all residents that have reached 18 years of age in the state ma",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368307477"
+    },
+    {
+      "id": "P11",
+      "hash": "759fe493cd12ed8aef15ce3b55e16c7305a9b506c25c3288448910b78cfb6061",
+      "heading": "New Zealand",
+      "excerpt": "Electoral rolls have been used in New Zealand since the late nineteenth century, and some are available in public libraries for genealogical",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368307477"
+    },
+    {
+      "id": "P12",
+      "hash": "0ebffb4557d0b96ace3bff338555d046179c5233ad490d778a5d42aa923da3e4",
+      "heading": "Russia",
+      "excerpt": "Electoral roll is formed from the population register and distributed to individual polling stations ten days before the voting. Corrections",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368307477"
+    },
+    {
+      "id": "P13",
+      "hash": "cb1d711e3ec876cb81819736f50d1292ee7441529251f630471393c1379c9460",
+      "heading": "Singapore",
+      "excerpt": "The electoral roll, or \"Registers Of Electors\" is managed by the Elections Department Singapore, which was often published or updated months",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368307477"
+    },
+    {
+      "id": "P14",
+      "hash": "2c10d5d7a0d5be93d71f034070fbb96a48bf8f253a9f5c02b11d06ef65e9f2e9",
+      "heading": "United Kingdom",
+      "excerpt": "Within the jurisdiction of the United Kingdom, the right to register for voting extends to all British, Irish, and Commonwealth citizens. Br",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368307477"
+    },
+    {
+      "id": "P15",
+      "hash": "6f1041b672f4b1a9a3b1ba9094357ab0405431a4b89d05dc818bbd46025054e5",
+      "heading": "United States",
+      "excerpt": "In the United States electoral rolls are commonly referred to as poll books. They have been used since the founding to determine voting elig",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368307477"
+    },
+    {
+      "id": "P16",
+      "hash": "62c0dd17ac1170074b8b52c7ba0da804ab14cb88705a7d059e9cf7d09bd0b716",
+      "heading": "Australia",
+      "excerpt": "Enrolment is compulsory for all Australian citizens over the age of 18 years (with the exception of Norfolk Island, where enrolment is volun",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368307477"
+    },
+    {
+      "id": "P17",
+      "hash": "4cbf5eb7ccae6c88032744506128e193268e07795e6f8df6e859cbd814518f3f",
+      "heading": "Australia",
+      "excerpt": "When an election is called, a date for the \"close of roll\" is also announced, on which date processing of enrolments and changes of details ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368307477"
+    },
+    {
+      "id": "P18",
+      "hash": "a984ca8a8f8553de6595b2aa2fb0773fd98362a2a3e1cae469162cd58d3a7f45",
+      "heading": "Australia",
+      "excerpt": "Currently, the electoral roll records just the name and address of the voter, although in previous years occupation was also recorded. Since",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368307477"
+    }
+  ],
+  "updatedAt": "2026-10-24T10:39:17.375Z"
 }
