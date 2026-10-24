@@ -10496,10 +10496,10 @@
       "checkedAt": "2026-10-24T08:58:12.116Z"
     },
     "48936024": {
-      "status": "EVIDENCE_READY",
-      "reason": "1 rights-verified embedded images",
+      "status": "RETRY_LATER",
+      "reason": "Gemini token usage unavailable",
       "revisionId": 1380709306,
-      "checkedAt": "2026-10-24T11:02:05.045Z"
+      "checkedAt": "2026-10-24T11:02:10.823Z"
     },
     "49213501": {
       "status": "EVIDENCE_READY",
@@ -11930,7 +11930,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-24T11:02:05.046Z",
+  "updatedAt": "2026-10-24T11:02:10.824Z",
   "dailyUsage": {
     "day": "2026-10-24",
     "calls": 117,
