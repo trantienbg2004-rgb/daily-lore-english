@@ -10422,10 +10422,10 @@
       "checkedAt": "2026-10-22T08:29:00.885Z"
     },
     "55760582": {
-      "status": "RETRY_LATER",
-      "reason": "editorial call budget exhausted",
+      "status": "EVIDENCE_READY",
+      "reason": "12 rights-verified embedded images",
       "revisionId": 1376134381,
-      "checkedAt": "2026-10-22T08:27:30.922Z"
+      "checkedAt": "2026-10-24T08:33:49.215Z"
     },
     "55893053": {
       "status": "REJECTED",
@@ -11610,7 +11610,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-24T08:33:42.413Z",
+  "updatedAt": "2026-10-24T08:33:49.216Z",
   "dailyUsage": {
     "day": "2026-10-24",
     "calls": 66,
