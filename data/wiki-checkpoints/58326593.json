@@ -231,9 +231,16 @@
       "heading": "Past attempts at, and steps towards, peace",
       "excerpt": "The Second Panglong Peace Conference followed this on 6 February, and was attended by the government and delegates from the Shan and Kachin ",
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1362962701"
+    },
+    {
+      "id": "P26",
+      "hash": "a979c3fb8c03c5c107079e1dd434c7b19f26819b88b010c640a12a32ea9ad3c1",
+      "heading": "Past attempts at, and steps towards, peace",
+      "excerpt": "A significant step towards achieving peace between the different parties of the conflict is the Nationwide Ceasefire Agreement (NCA), that w",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1362962701"
     }
   ],
-  "updatedAt": "2026-10-24T07:17:06.505Z",
+  "updatedAt": "2026-10-24T07:17:25.224Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -296,7 +303,7 @@
             ]
           },
           {
-            "text": "Efforts toward a lasting peace expanded after 2011 under President U Thein Sein. Authorities engaged citizens, halted certain military offensives, and worked toward bilateral ceasefires. By 2014, stakeholders combined drafts into a single Nationwide Ceasefire Agreement text to outline implementation methods and future roadmaps.",
+            "text": "Efforts toward a lasting peace expanded after 2011 under President U Thein Sein. Authorities engaged citizens, halted certain military offensives, and worked toward bilateral ceasefires. Stakeholders subsequently combined drafts into a single Nationwide Ceasefire Agreement text to outline implementation methods and future roadmaps.",
             "evidenceIds": [
               "P14",
               "P15"
@@ -334,7 +341,7 @@
             ]
           },
           {
-            "text": "Substantial structured interventions recommenced in 2011 under President U Thein Sein, yielding bilateral ceasefires and culminating in the drafting of a comprehensive Nationwide Ceasefire Agreement in 2014. This framework sought to establish formal monitoring protocols and procedural roadmaps for long-term negotiations.",
+            "text": "Substantial structured interventions recommenced in 2011 under President U Thein Sein, yielding bilateral ceasefires and culminating in the drafting of a comprehensive Nationwide Ceasefire Agreement. This framework sought to establish formal monitoring protocols and procedural roadmaps for long-term negotiations.",
             "evidenceIds": [
               "P14",
               "P15"
@@ -352,11 +359,11 @@
       }
     }
   },
-  "repairAttempts": 0,
+  "repairAttempts": 1,
   "lastUsage": {
-    "input": 2930,
-    "output": 1017,
-    "total": 3947
+    "input": 3029,
+    "output": 249,
+    "total": 3278
   },
   "validation": null
 }
