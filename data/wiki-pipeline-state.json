@@ -8810,10 +8810,10 @@
       "checkedAt": "2026-10-21T18:13:13.412Z"
     },
     "44895973": {
-      "status": "VALIDATED",
-      "reason": "local factual, style, length, structure and source audit passed",
+      "status": "PUBLISHED",
+      "reason": "4 verified embedded images",
       "revisionId": 1378960590,
-      "checkedAt": "2026-10-24T04:02:35.129Z"
+      "checkedAt": "2026-10-24T04:02:41.042Z"
     },
     "45508601": {
       "status": "RETRY_LATER",
@@ -10202,7 +10202,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-24T04:02:35.130Z",
+  "updatedAt": "2026-10-24T04:02:41.043Z",
   "dailyUsage": {
     "day": "2026-10-23",
     "calls": 165,
