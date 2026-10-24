@@ -8228,10 +8228,10 @@
       "checkedAt": "2026-10-22T13:08:34.130Z"
     },
     "724212": {
-      "status": "PENDING",
-      "reason": "queued",
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
       "revisionId": 1379035874,
-      "checkedAt": null
+      "checkedAt": "2026-10-24T11:07:11.410Z"
     },
     "735092": {
       "status": "PUBLISHED",
@@ -11930,7 +11930,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-24T11:07:05.074Z",
+  "updatedAt": "2026-10-24T11:07:11.416Z",
   "dailyUsage": {
     "day": "2026-10-24",
     "calls": 117,
