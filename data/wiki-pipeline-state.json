@@ -10868,10 +10868,10 @@
       "checkedAt": "2026-10-23T17:13:26.812Z"
     },
     "61748831": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": 1374718735,
-      "checkedAt": null
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
+      "revisionId": 1381711714,
+      "checkedAt": "2026-10-24T10:18:01.818Z"
     },
     "61864508": {
       "status": "EVIDENCE_READY",
@@ -11930,7 +11930,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-24T10:17:55.217Z",
+  "updatedAt": "2026-10-24T10:18:01.826Z",
   "dailyUsage": {
     "day": "2026-10-24",
     "calls": 117,
