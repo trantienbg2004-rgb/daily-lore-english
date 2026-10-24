@@ -244,7 +244,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379505082"
     }
   ],
-  "updatedAt": "2026-10-24T08:37:25.277Z",
+  "updatedAt": "2026-10-24T08:37:43.267Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -263,7 +263,7 @@
             ]
           },
           {
-            "text": "Special test runs were done in 2014 to check the routes and find any problems. The tests showed that transport costs went down by a lot for the cargo. Studies also found that this path is much cheaper and shorter than older, traditional shipping routes.",
+            "text": "Special test runs were done in 2014 to check the routes and find any problems. The tests showed that transport costs went down by 2500 dollars for 15 tons of cargo. Studies also found that this path is much cheaper and shorter than older shipping routes.",
             "evidenceIds": [
               "P1",
               "P5"
@@ -301,7 +301,7 @@
             ]
           },
           {
-            "text": "Test shipments conducted in 2014 helped identify and address key logistical bottlenecks along the network. According to a study by the Federation of Freight Forwarders Associations in India, the corridor routes can be significantly cheaper and shorter than traditional maritime paths.",
+            "text": "Test shipments conducted in 2014 helped identify and address key logistical bottlenecks along the network. Results showed that transport costs were reduced by 2500 dollars per 15 tons of cargo. According to a study by the Federation of Freight Forwarders Associations in India, the corridor routes are significantly cheaper and shorter than traditional maritime paths.",
             "evidenceIds": [
               "P1",
               "P5"
@@ -339,7 +339,7 @@
             ]
           },
           {
-            "text": "Empirical assessments, including dry runs executed in 2014, identified operational bottlenecks and demonstrated substantial reductions in transport expenditures. Industry associations subsequently reported that the corridor provides significantly shorter and more cost-effective transit compared to conventional maritime alternatives.",
+            "text": "Empirical assessments, including dry runs executed in 2014, identified operational bottlenecks and demonstrated that transport costs were reduced by 2500 dollars per 15 tons of cargo. Industry associations subsequently reported that the corridor provides significantly shorter and more cost-effective transit compared to conventional maritime alternatives.",
             "evidenceIds": [
               "P1",
               "P5"
@@ -363,11 +363,11 @@
       }
     }
   },
-  "repairAttempts": 0,
+  "repairAttempts": 1,
   "lastUsage": {
-    "input": 2985,
-    "output": 1353,
-    "total": 4338
+    "input": 3015,
+    "output": 380,
+    "total": 3395
   },
   "validation": null
 }
