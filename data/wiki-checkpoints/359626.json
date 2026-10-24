@@ -2,10 +2,10 @@
   "pageId": 359626,
   "title": "Second Industrial Revolution",
   "topic": "Science & Technology",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1380595942,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380595942",
-  "reason": "12 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -463,5 +463,140 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380595942"
     }
   ],
-  "updatedAt": "2026-10-24T06:55:39.712Z"
+  "updatedAt": "2026-10-24T06:55:52.981Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "The New Age of Industry",
+        "pages": [
+          {
+            "text": "The Second Industrial Revolution was a time of fast scientific discovery and mass production. It started around 1870 and lasted until World War I began in 1914. This period brought huge changes to many countries.",
+            "evidenceIds": [
+              "P1",
+              "P3"
+            ]
+          },
+          {
+            "text": "New train tracks and telegraph lines were built everywhere. People and ideas could move faster than ever before. Electricity and telephones were introduced as major new systems that changed daily life.",
+            "evidenceIds": [
+              "P2",
+              "P3"
+            ]
+          },
+          {
+            "text": "Factories began to make much more steel because of new methods. Steel was stronger than iron, so workers used it to build longer and safer railway tracks for heavy locomotives.",
+            "evidenceIds": [
+              "P8",
+              "P9"
+            ]
+          },
+          {
+            "text": "Scientists and inventors created many useful products during this era. William Henry Perkin accidentally discovered the first synthetic dye, which started a new chemical industry.",
+            "evidenceIds": [
+              "P14",
+              "P19"
+            ]
+          },
+          {
+            "text": "Karl Benz patented the first true automobile in 1886. It used a special engine and was designed entirely to generate its own power instead of using horses.",
+            "evidenceIds": [
+              "P18"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "Synergy and Innovation",
+        "pages": [
+          {
+            "text": "Following the first industrial wave, the Second Industrial Revolution emerged as a period of rapid industrial development and technological discovery. Generally dated from 1870 to the start of World War I in 1914, it transformed nations like the United States, Germany, and the United Kingdom.",
+            "evidenceIds": [
+              "P1",
+              "P3"
+            ]
+          },
+          {
+            "text": "Advancements in production technology allowed for the widespread adoption of telegraph networks, water supply systems, and expanding railroads. The ability to move people and goods freely led to globalization and a new wave of colonialism. Alongside these systems, electrical power and telephones began to emerge.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "A strong synergy developed between coal, iron, and railroads. Cheap coal powered steam locomotives, while cheap transportation allowed companies to lay thousands of miles of new track. As steel production increased through processes like Henry Bessemer's oxidation method, durable steel rails began to replace weaker iron ones.",
+            "evidenceIds": [
+              "P6",
+              "P8",
+              "P9"
+            ]
+          },
+          {
+            "text": "Scientific understanding grew rapidly during this era, which one author called 'The Age of Synergy.' Chemistry and thermodynamics reached near-modern forms. In 1856, William Henry Perkin accidentally created the world's first synthetic dye from aniline, establishing the foundation of the modern chemical industry.",
+            "evidenceIds": [
+              "P5",
+              "P14",
+              "P19"
+            ]
+          },
+          {
+            "text": "Transportation also saw radical changes beyond the railway. In 1886, Karl Benz patented the world's first automobile, featuring an internal four-stroke engine and wire wheels. Meanwhile, inventors like Harry John Lawson and John Kemp Starley helped spark a massive bicycle boom.",
+            "evidenceIds": [
+              "P17",
+              "P18"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "The Technological Revolution",
+        "pages": [
+          {
+            "text": "Characterized by standardization, mass production, and intense scientific discovery, the Second Industrial Revolution spans the period from approximately 1870 until the outbreak of World War I in 1914. Scholarly definitions were largely standardized by historians such as David Landes and Alfred Chandler, who emphasized the integration of novel materials, energy sources, and communication technologies.",
+            "evidenceIds": [
+              "P1",
+              "P4"
+            ]
+          },
+          {
+            "text": "The era was underpinned by a powerful economic and industrial synergy involving coal, iron, and railroads. The capability to produce inexpensive steel through techniques like the Bessemer process facilitated the replacement of flawed wrought iron with durable steel rails, capable of supporting heavier locomotives over extended distances.",
+            "evidenceIds": [
+              "P6",
+              "P8",
+              "P9"
+            ]
+          },
+          {
+            "text": "Dubbed 'The Age of Synergy' by observers due to its heavy reliance on applied science, the period witnessed the maturation of thermodynamics and chemistry. Michael Faraday laid the foundational electromagnetic principles for practical electrical power utilization, while James Young pioneered petroleum refining methods to produce early lubricants and paraffin.",
+            "evidenceIds": [
+              "P5",
+              "P10",
+              "P13",
+              "P19"
+            ]
+          },
+          {
+            "text": "Scientific applications extended directly into manufacturing and agriculture. William Henry Perkin's serendipitous discovery of mauveine initiated the synthetic dye industry. Simultaneously, pioneers like Justus von Liebig advanced agricultural science by establishing the importance of ammonia and inorganic mineral treatments as fertilizers.",
+            "evidenceIds": [
+              "P14",
+              "P19",
+              "P20"
+            ]
+          },
+          {
+            "text": "Advanced mechanical engineering culminated in significant transit innovations. In 1886, Karl Benz patented the first automobile engineered specifically for internal power generation rather than adaptation from horse-drawn carriages. Concurrently, the proliferation of machine tools enabled precise manufacturing standards that supported emerging industries worldwide.",
+            "evidenceIds": [
+              "P11",
+              "P18"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2785,
+    "output": 1401,
+    "total": 4186
+  },
+  "validation": null
 }
