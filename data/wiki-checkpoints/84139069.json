@@ -313,14 +313,14 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381661374"
     }
   ],
-  "updatedAt": "2026-10-24T04:26:18.845Z",
+  "updatedAt": "2026-10-24T04:26:36.785Z",
   "draft": {
     "variants": {
       "A1-A2": {
         "headline": "Justinian and His Wars",
         "pages": [
           {
-            "text": "Emperor Justinian ruled from 527 to 565. He wanted to bring back the old borders of the Roman Empire. His reign had many wars in the west and the east. Historians study these wars because of old writers like Procopius.",
+            "text": "Emperor Justinian ruled the Roman Empire. His reign was marked by numerous wars to recover lost western territories and continue conflicts in the east. Historians know about these military campaigns thanks to the works of Procopius and other Byzantine writers who recorded the history of that era.",
             "evidenceIds": [
               "P1"
             ]
@@ -338,7 +338,7 @@
             ]
           },
           {
-            "text": "The Byzantine army had about 150,000 men. It included field troops and frontier troops. Barbarians played a significant role in the army. However, researchers still debate the exact details of their involvement and troop sizes.",
+            "text": "The Byzantine army resembled the earlier Roman army, with its field army and frontier troops. The military numbered around 150,000 men. Barbarians played a significant role in the armed forces, although modern researchers still debate the exact details and nature of their involvement.",
             "evidenceIds": [
               "P1"
             ]
@@ -425,11 +425,11 @@
       }
     }
   },
-  "repairAttempts": 0,
+  "repairAttempts": 1,
   "lastUsage": {
-    "input": 2848,
-    "output": 1069,
-    "total": 3917
+    "input": 2776,
+    "output": 207,
+    "total": 2983
   },
   "validation": null
 }
