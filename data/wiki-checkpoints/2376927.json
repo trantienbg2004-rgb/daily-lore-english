@@ -2,9 +2,142 @@
   "pageId": 2376927,
   "title": "West Africa Squadron",
   "topic": "Economy",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1376835694,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376835694",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-24T11:04:41.498Z"
+  "reason": "1 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:HMS Black Joke firing on the Spanish Slaver El Almirante.webp",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/60/HMS_Black_Joke_firing_on_the_Spanish_Slaver_El_Almirante.webp/960px-HMS_Black_Joke_firing_on_the_Spanish_Slaver_El_Almirante.webp?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:HMS Black Joke firing on the Spanish Slaver El Almirante.webp",
+        "caption": "HMS Black Joke (left) firing on the Spanish slave ship El Almirante in 1829",
+        "alt": "",
+        "description": "HMS Black Joke firing on the Spanish Slaver El Almirante",
+        "date": "1829-01-01",
+        "section": "History",
+        "position": 0,
+        "provenance": {
+          "credit": "Nicholas Matthews Condy",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:HMS_Black_Joke_firing_on_the_Spanish_Slaver_El_Almirante.webp",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/West_Africa_Squadron",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376835694",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "9f69e60c79c9cdb35d851e2dca77fb027eff2d51df877563b0e42e26013a48ad",
+      "heading": "Lead",
+      "excerpt": "The West Africa Squadron, also known as the Preventive Squadron, was a squadron of the Royal Navy whose goal was to suppress the Atlantic sl",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376835694"
+    },
+    {
+      "id": "P2",
+      "hash": "628d0ee36b0eb4387662e83c443d36a613cdf926e94abbd42b476952cc5bf2e4",
+      "heading": "Lead",
+      "excerpt": "The impact of the Squadron has been debated, with some arguing it played a significant or even decisive role in the extermination of the tra",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376835694"
+    },
+    {
+      "id": "P3",
+      "hash": "10427def1359a48aa2af80eeccc198120e4e769862e3916e7d33368d78446ea0",
+      "heading": "History",
+      "excerpt": "On 25 March 1807 the British Parliament passed the Slave Trade Act 1807, which prohibited British subjects from engaging in the Atlantic sla",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376835694"
+    },
+    {
+      "id": "P4",
+      "hash": "3aa607cb1011c8cdab54b69bb99144c865070e06c7f61d361f7fe95816c4a3e5",
+      "heading": "History",
+      "excerpt": "The privateer (a private vessel operating under a letter of marque) Dart, chasing slavers to profit from the bounties set by the British gov",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376835694"
+    },
+    {
+      "id": "P5",
+      "hash": "31d59eb3cdccb1215590ce29497086a91f07f6b1039350586793101918dd609a",
+      "heading": "History",
+      "excerpt": "With the Napoleonic Wars now over and with victorious Britain in a strong position to shape the post-war settlement, Viscount Castlereagh wo",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376835694"
+    },
+    {
+      "id": "P6",
+      "hash": "8ec05ddad31f54339b2d37df4e3d1a954b2e424e7d433991049921b83f234430",
+      "heading": "Impact",
+      "excerpt": "The West Africa Squadron seized approximately 1,600 ships involved in the slave trade and freed 150,000 slaves who were on board between 180",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376835694"
+    },
+    {
+      "id": "P7",
+      "hash": "a5c6e86ba4982189a0732d63a57c14104541e87075f32b3889fc6261569de51e",
+      "heading": "Liberated slaves",
+      "excerpt": "Slaves rescued by the Squadron were returned to the African mainland, but those who came from more inland regions were usually left to find ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376835694"
+    },
+    {
+      "id": "P8",
+      "hash": "f9174362ab883257d749331b0af4bb90910588f9fadb886dfb910d427b83d5f5",
+      "heading": "Criticism",
+      "excerpt": "Journalist Howard W. French has argued that the impact of the Squadron has been overstated, calling it a \"central prop\" in encouraging a pos",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376835694"
+    },
+    {
+      "id": "P9",
+      "hash": "3f7b29a823d342b566e0ba5ecd810fbdee5d0879f821bd817127e2ac2dff67c4",
+      "heading": "Working conditions",
+      "excerpt": "James Watt has written that crews of the Squadron \"were exhausted by heavy rowing under extreme tropical conditions and exposed to fevers wi",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376835694"
+    },
+    {
+      "id": "P10",
+      "hash": "2725f58a7ec47bb62da244b1d589a3fc1392d080aa72816c17e91bb4ad9fbd10",
+      "heading": "Commodore/Senior Officer, on the West Coast of Africa Station (1841–1867)",
+      "excerpt": "From 1867, the commodore's post on the West Coast of Africa was abolished, and its functions absorbed by the senior officer at the Cape of G",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376835694"
+    },
+    {
+      "id": "P11",
+      "hash": "66e148f6b29a61c29981037bb79e8ae2565b458a1f26cdef4ab711b792b7c841",
+      "heading": "In popular culture",
+      "excerpt": "Patrick O'Brian centres the plot of his 1994 novel The Commodore, the seventeenth instalment in his Aubrey–Maturin series, on his Royal Navy",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376835694"
+    },
+    {
+      "id": "P12",
+      "hash": "c4b15430892f80a73c5bbf24a5f26736a74bc57b660da7a1d48a5c6d248be1ef",
+      "heading": "History",
+      "excerpt": "In order to prosecute captured vessels and thereby allow the Navy to claim its prizes, a series of courts were established along the African",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376835694"
+    },
+    {
+      "id": "P13",
+      "hash": "a0944da6e60c1cc64fde3b27d8646d0150155927ea10dacf885a61ce467e15c7",
+      "heading": "History",
+      "excerpt": "Unlike the Pax Britannica form of policing that would come into force in the 1840s and 1850s, these earlier efforts to suppress the slave tr",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376835694"
+    },
+    {
+      "id": "P14",
+      "hash": "171a00890d9fe5a426536b732af12eaa4b9b64d39e145aff8ca8117ceed0eb80",
+      "heading": "History",
+      "excerpt": "Sometimes orders to officers to step up enforcement vastly overestimated the resources provided to the Squadron to carry them out, especiall",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376835694"
+    },
+    {
+      "id": "P15",
+      "hash": "2f550115daabb702ebe6aa8f6de5bf778bd0fa9e4aa1ac8e62d97676eb7ee7c3",
+      "heading": "History",
+      "excerpt": "In the early years, determined traders often responded to the Squadron's slowly expanding activities by switching to faster and stealthier s",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376835694"
+    }
+  ],
+  "updatedAt": "2026-10-24T11:04:47.079Z"
 }
