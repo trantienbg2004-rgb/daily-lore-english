@@ -2,10 +2,10 @@
   "pageId": 5794935,
   "title": "Vetera",
   "topic": "Culture",
-  "status": "DRAFTED",
+  "status": "NEEDS_REVIEW",
   "revisionId": 1373940870,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373940870",
-  "reason": "draft durably saved before validation",
+  "reason": "editorial: B1-B2:page-4:unsupported-number-context-13,B1-B2:page-4:unsupported-number-context-12,C1-C2:page-4:unsupported-number-context-13",
   "rights": [
     {
       "status": "REVIEW",
@@ -513,7 +513,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373940870"
     }
   ],
-  "updatedAt": "2026-10-24T04:00:58.441Z",
+  "updatedAt": "2026-10-24T04:01:04.515Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -660,5 +660,12 @@
     "output": 434,
     "total": 3507
   },
-  "validation": null
+  "validation": {
+    "accepted": false,
+    "errors": [
+      "B1-B2:page-4:unsupported-number-context-13",
+      "B1-B2:page-4:unsupported-number-context-12",
+      "C1-C2:page-4:unsupported-number-context-13"
+    ]
+  }
 }
