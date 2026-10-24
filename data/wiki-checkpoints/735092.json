@@ -281,7 +281,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379981309"
     }
   ],
-  "updatedAt": "2026-10-24T06:51:03.731Z",
+  "updatedAt": "2026-10-24T06:51:21.569Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -371,10 +371,9 @@
             ]
           },
           {
-            "text": "Professional wrestling functions primarily as sports entertainment. Bouts are theatrical exhibitions with pre-determined outcomes designed for entertainment, contrasting with legitimate competitive styles overseen by international sports organizations.",
+            "text": "Wrestling disciplines defined by UWW are separated into international and folk categories. Three are Olympic disciplines: Greco-Roman, men's freestyle, and women's freestyle wrestling. UWW also sanctions associated styles including grappling, amateur pankration, belt wrestling alysh, pahlavani, beach wrestling, and African wrestling. Sambo was recognized as an international style in 1966 by FILA.",
             "evidenceIds": [
-              "P17",
-              "P18"
+              "P6"
             ]
           }
         ]
@@ -428,11 +427,11 @@
       }
     }
   },
-  "repairAttempts": 0,
+  "repairAttempts": 1,
   "lastUsage": {
-    "input": 2776,
-    "output": 970,
-    "total": 3746
+    "input": 2579,
+    "output": 149,
+    "total": 2728
   },
   "validation": null
 }
