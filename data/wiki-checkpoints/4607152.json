@@ -2,10 +2,10 @@
   "pageId": 4607152,
   "title": "Climate change adaptation",
   "topic": "Environment",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1377821690,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377821690",
-  "reason": "11 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -419,5 +419,132 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377821690"
     }
   ],
-  "updatedAt": "2026-10-24T03:33:05.043Z"
+  "updatedAt": "2026-10-24T03:33:21.875Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "Adapting to a Changing Climate",
+        "pages": [
+          {
+            "text": "Climate change adaptation is the process of adjusting to current and expected effects. It helps people and nature avoid harm and find new opportunities. Adaptation is usually done alongside work to reduce climate change itself. It can involve steps to help natural systems cope with changes and manage risks.",
+            "evidenceIds": [
+              "P1",
+              "P2"
+            ]
+          },
+          {
+            "text": "There are four main types of adaptation actions. These are built structures, institutions, behaviors, and nature-based options. Examples include building seawalls, giving new insurance options, changing how crops are planted, and adding green spaces. Actions can be reactive as things happen or proactive to plan for the future.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "Needs vary a lot from place to place. People in rural areas often face food insecurity because they lack money and food access. Coastal regions might focus on sea defenses, while dry areas work on water shortages and heat management. Developing countries have high needs because they are very vulnerable.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "Plans and strategies are in place in more than seventy percent of countries. Global awareness has grown, but doing the actual work remains uneven. Agreements like the Paris Agreement encourage nations to make plans. Cities and economic sectors also use planning. Effective adaptation requires careful coordination, foresight, and money.",
+            "evidenceIds": [
+              "P4"
+            ]
+          },
+          {
+            "text": "Adaptation can be incremental or transformative. Incremental actions aim to keep a system largely the same. Transformative actions change fundamental parts of a system in response to climate impacts. Both approaches help manage risks from hazards, vulnerability, and exposure.",
+            "evidenceIds": [
+              "P5",
+              "P11"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "Strategies for Climate Change Adaptation",
+        "pages": [
+          {
+            "text": "Climate change adaptation involves adjusting to current and anticipated climatic effects to avoid harm and seize opportunities. It is typically pursued alongside mitigation efforts. Adaptation actions manage risks for human and natural systems through four categories: infrastructural, institutional, behavioural, and nature-based options. Specific measures range from seawalls and insurance schemes to adjusted crop times and green roofs.",
+            "evidenceIds": [
+              "P1",
+              "P2"
+            ]
+          },
+          {
+            "text": "Adaptation needs vary widely across regions and communities. Rural populations worldwide often face high food insecurity due to limited resources. Coastal areas frequently prioritize sea-level defenses, whereas arid regions address water scarcity and heat management. Developing countries face the greatest vulnerability, requiring significant support for food and water sectors.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "While over seventy percent of countries have established adaptation plans, actual implementation remains limited and uneven. International agreements encourage strategic planning, yet challenges such as knowledge gaps and behavioral resistance slow down progress. Effective adaptation requires substantial coordination and funding, especially for urban infrastructure.",
+            "evidenceIds": [
+              "P4"
+            ]
+          },
+          {
+            "text": "Adaptation actions can be incremental, maintaining a system's core integrity, or transformative, altering its fundamental attributes. These measures reduce climate risk by addressing exposure and vulnerability, since hazards themselves cannot be directly reduced. Communities can lower exposure by retreating from floodplains and improving early warning systems.",
+            "evidenceIds": [
+              "P5",
+              "P11"
+            ]
+          },
+          {
+            "text": "Additional tools like building codes, land use zoning, and climate information services help societies manage weather extremes. Furthermore, adaptation offers valuable co-benefits with mitigation. For instance, robust public transport networks lower emissions while simultaneously improving disaster evacuation and emergency access.",
+            "evidenceIds": [
+              "P14",
+              "P18",
+              "P20"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "Understanding Global Climate Adaptation",
+        "pages": [
+          {
+            "text": "Climate adaptation encompasses the adjustment processes addressing current and anticipated climatic impacts, aiming to moderate harm, exploit opportunities, and assist natural systems. Classified into infrastructural, institutional, behavioural, and nature-based interventions, adaptation manifests reactively or proactively to manage environmental risks alongside ongoing mitigation strategies.",
+            "evidenceIds": [
+              "P1",
+              "P2"
+            ]
+          },
+          {
+            "text": "Geographic and socioeconomic contexts dictate disparate adaptation priorities. Rural communities frequently contend with severe food insecurity, whereas coastal municipalities prioritize sea-level defenses and arid zones focus on water scarcity. Developing nations exhibit acute vulnerability, necessitating prioritized resource allocation across critical economic sectors.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "Although over seventy percent of nations possess institutional adaptation frameworks, empirical implementation remains fragmented and uneven. Structural impediments, including knowledge deficits and market failures, obstruct progress. Consequently, successful adaptation demands rigorous foresight, strategic policy intervention, and financial coordination across municipal and national levels.",
+            "evidenceIds": [
+              "P4"
+            ]
+          },
+          {
+            "text": "Adaptation typologies range from incremental measures preserving system integrity to transformative actions fundamentally altering system attributes. By operating on vulnerability and exposure rather than uncontrollable hazards, adaptation strategies deploy diverse instruments, including ecosystem-based management, early warning systems, and resilient urban planning.",
+            "evidenceIds": [
+              "P5",
+              "P11",
+              "P17"
+            ]
+          },
+          {
+            "text": "Institutional instruments such as building codes, zoning regulations, and climate information services further optimize societal resilience. Moreover, strategic synergies emerge between adaptation and mitigation policies, where initiatives like sustainable public transport simultaneously curtail greenhouse gas emissions and enhance emergency evacuation capacity.",
+            "evidenceIds": [
+              "P14",
+              "P18",
+              "P20"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2554,
+    "output": 1047,
+    "total": 3601
+  },
+  "validation": null
 }
