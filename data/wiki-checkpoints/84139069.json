@@ -2,10 +2,10 @@
   "pageId": 84139069,
   "title": "Justinian's wars",
   "topic": "Conflict & Security",
-  "status": "DRAFTED",
+  "status": "VALIDATED",
   "revisionId": 1381661374,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381661374",
-  "reason": "draft durably saved before validation",
+  "reason": "local factual, style, length, structure and source audit passed",
   "rights": [
     {
       "status": "REVIEW",
@@ -313,7 +313,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381661374"
     }
   ],
-  "updatedAt": "2026-10-24T04:26:36.785Z",
+  "updatedAt": "2026-10-24T04:26:54.929Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -431,5 +431,8 @@
     "output": 207,
     "total": 2983
   },
-  "validation": null
+  "validation": {
+    "accepted": true,
+    "errors": []
+  }
 }
