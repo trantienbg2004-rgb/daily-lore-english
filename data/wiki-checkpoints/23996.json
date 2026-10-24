@@ -2,9 +2,289 @@
   "pageId": 23996,
   "title": "Political party",
   "topic": "Politics",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1381549522,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381549522",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-24T10:18:38.264Z"
+  "reason": "6 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Supporter of Bharatiya Janata Party at an election rally in Amethi.jpg"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:A-Block-for-the-Wigs-Gillray.jpeg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d7/A-Block-for-the-Wigs-Gillray.jpeg/960px-A-Block-for-the-Wigs-Gillray.jpeg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:A-Block-for-the-Wigs-Gillray.jpeg",
+        "caption": "In A Block for the Wigs (1783), James Gillray caricatured Fox's return to power in a coalition with North. George III is the blockhead in the centre.",
+        "alt": "",
+        "description": "A Block for the Wigs—or, the new State Whirligig Js. Gy. d. & ft. SUMMARY: Cartoon shows a carousel on which sit government ministers Charles Fox, Lord North, Edmund Burke and Admiral Keppel. Beam in the center of the carousel platform is a pillar topped by a bust of King George III, a wig and Union Jack suspended over the bust. In the background two robbers lower a large bundle from the window of a building. An inscription above the cartoon reads \"Poor John Bull's house plunder'd at noon day.\" MEDIUM: 1 print : etching. CREATED/PUBLISHED: [Lon",
+        "date": "1783-05-05",
+        "section": "18th century",
+        "position": 1,
+        "provenance": {
+          "credit": "James Gillray",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:A-Block-for-the-Wigs-Gillray.jpeg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Political_party",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381549522",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:IICCR G005 May 1st rally in Bucharest.jpg"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:The Ideals of United Australia (cropped).jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c4/The_Ideals_of_United_Australia_%28cropped%29.jpg/960px-The_Ideals_of_United_Australia_%28cropped%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:The Ideals of United Australia (cropped).jpg",
+        "caption": "It is easier for voters to evaluate one simple list of policies for each party, like this platform for the United Australia Party, than to individually judge every single candidate.",
+        "alt": "",
+        "description": "Australian election advertisement for the United Australia Party at the 1931 Australian federal election. The advertisement outlines the party's platform.",
+        "date": "9 December 1931 (published)",
+        "section": "Individual and group incentives",
+        "position": 3,
+        "provenance": {
+          "credit": "United Australia Party (authorised by Malcolm Henry Ellis)",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:The_Ideals_of_United_Australia_(cropped).jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Political_party",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381549522",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:18th National Congress of the Communist Party of China.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/98/18th_National_Congress_of_the_Communist_Party_of_China.jpg/960px-18th_National_Congress_of_the_Communist_Party_of_China.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:18th National Congress of the Communist Party of China.jpg",
+        "caption": "A National Congress of the Chinese Communist Party, where policies may be set and changes can be made to party leadership",
+        "alt": "",
+        "description": "​中国共产党第十八次全国代表大会会场。",
+        "date": "2012-11-11",
+        "section": "Party leaders",
+        "position": 4,
+        "provenance": {
+          "credit": "Dong Fang",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:18th_National_Congress_of_the_Communist_Party_of_China.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Political_party",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381549522",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:National Woman's Party Members Lafayette Park August 6, 1918.jpg"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:Bundesarchiv B 145 Bild-F079282-0030, Münster, SPD-Parteitag, Willy Brandt.jpg",
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/6/65/Bundesarchiv_B_145_Bild-F079282-0030%2C_M%C3%BCnster%2C_SPD-Parteitag%2C_Willy_Brandt.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "fileTitle": "File:Bundesarchiv B 145 Bild-F079282-0030, Münster, SPD-Parteitag, Willy Brandt.jpg",
+        "caption": "Parties can arise from existing cleavages in society, like the Social Democratic Party of Germany which was formed to represent German workers.",
+        "alt": "",
+        "description": "For documentary purposes the German Federal Archive often retained the original image captions, which may be erroneous, biased, obsolete or politically extreme. 30.8.-2.9.1988 SPD-Parteitag in Münster, Halle Münsterland For documentary purposes the German Federal Archive often retained the original image captions, which may be erroneous, biased, obsolete or politically extreme. 30.8.-2.9.1988 SPD-Parteitag in Münster, Halle MünsterlandFor documentary purposes the German Federal Archive often retained the original image captions, which may be er",
+        "date": "1 September 1988date QS:P571,+1988-09-01T00:00:00Z/11date QS:P571,+1988-09-01T00:00:00Z/11",
+        "section": "Mass parties",
+        "position": 6,
+        "provenance": {
+          "credit": "Engelbert Reineke",
+          "license": "CC BY-SA 3.0 de",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/de/deed.en",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Bundesarchiv_B_145_Bild-F079282-0030,_M%C3%BCnster,_SPD-Parteitag,_Willy_Brandt.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Political_party",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381549522",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:NorthWest Territories Legislature Plan 2014 19 Members.svg"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:Boleta electoral marcada, de las elecciones federales de México de 2012.JPG",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e8/Boleta_electoral_marcada%2C_de_las_elecciones_federales_de_M%C3%A9xico_de_2012.JPG/960px-Boleta_electoral_marcada%2C_de_las_elecciones_federales_de_M%C3%A9xico_de_2012.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Boleta electoral marcada, de las elecciones federales de México de 2012.JPG",
+        "caption": "On this 2012 Mexican ballot, voters have more than two parties to choose from.",
+        "alt": "",
+        "description": "Elementos del paquete electoral postal para voto desde el extranjero de las elecciones federales de México de 2012. Izquierda: sobre para la boleta; centro: boleta electoral marcada; derecha: libreto con las propuestas de cada persona candidata, instrucciones y encuesta",
+        "date": "2012-05-27",
+        "section": "Multi-party systems",
+        "position": 8,
+        "provenance": {
+          "credit": "Lguweqaakljgh",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Boleta_electoral_marcada,_de_las_elecciones_federales_de_M%C3%A9xico_de_2012.JPG",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Political_party",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381549522",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:The Bosses of the Senate by Joseph Keppler.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e5/The_Bosses_of_the_Senate_by_Joseph_Keppler.jpg/960px-The_Bosses_of_the_Senate_by_Joseph_Keppler.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:The Bosses of the Senate by Joseph Keppler.jpg",
+        "caption": "Campaign finance restrictions may be motivated by the perception that excessive or secretive contributions to political parties will make them beholden to people other than the voters.",
+        "alt": "",
+        "description": "The Bosses of the Senate, a cartoon by Joseph Keppler. First published in Puck 1889. (This version published by the J. Ottmann Lith. Co. and held by the The Bosses of the Senate, a cartoon by Joseph Keppler. First published in Puck 1889. (This version published by the J. Ottmann Lith. Co. and held by the",
+        "date": "23 January 1889date QS:P571,+1889-01-23T00:00:00Z/11date QS:P571,+1889-01-23T00:00:00Z/11",
+        "section": "Sources of party funds",
+        "position": 9,
+        "provenance": {
+          "credit": "Joseph Keppler",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:The_Bosses_of_the_Senate_by_Joseph_Keppler.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Political_party",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381549522",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "e2bce8ce9435fbc44a818cbff817cf112320760387116c4f66623fa0a7336969",
+      "heading": "Lead",
+      "excerpt": "A political party is an organization that coordinates candidates to compete in elections and participate in governance. It is common for the",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381549522"
+    },
+    {
+      "id": "P2",
+      "hash": "a0086ae61f8141195bec54f04e5e57bc6176b77b4161e59653403187877a9ec6",
+      "heading": "Lead",
+      "excerpt": "Political parties have become a major part of the politics of almost every country, as modern party organizations developed and spread aroun",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381549522"
+    },
+    {
+      "id": "P3",
+      "hash": "fff36f9e8fba30525693d8520d0270aec314fce1813726769dec31ed0c547277",
+      "heading": "Lead",
+      "excerpt": "Parties can develop from existing divisions in society, like the divisions between lower and upper classes, and they streamline the process ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381549522"
+    },
+    {
+      "id": "P4",
+      "hash": "e039c43fd577e5e7f752b88387fe006b887e2b4e185e3f2b30190bc4632ebf10",
+      "heading": "Lead",
+      "excerpt": "Many political parties are motivated by ideological goals. It is common for democratic elections to feature liberal, conservative, and socia",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381549522"
+    },
+    {
+      "id": "P5",
+      "hash": "299b2d9714993e25332c680d06f5922c41ecd634410c1bfa8a876169580ffbbd",
+      "heading": "Social cleavages",
+      "excerpt": "The theory that parties are produced by social cleavages has drawn several criticisms. Some authors have challenged it on empirical grounds,",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381549522"
+    },
+    {
+      "id": "P6",
+      "hash": "c7c4ca1d0654e05f797fe1f6346ff3f41b2777fafe51f4e3f4a120ced8fd11d9",
+      "heading": "Definition",
+      "excerpt": "Political parties are collective entities and activities that organize competitions for political offices. The members of a political party ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381549522"
+    },
+    {
+      "id": "P7",
+      "hash": "4a2ef82f85a2e5ff95f978e58394c107ba99389b956256a3e35e5efe6d79e92f",
+      "heading": "History",
+      "excerpt": "The idea of people forming large groups or factions to advocate for their shared interests is ancient. Plato mentions the political factions",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381549522"
+    },
+    {
+      "id": "P8",
+      "hash": "726def007aae290d01523f698dfe5f1baf1ecceb42a3194e286eba152c39aea5",
+      "heading": "18th century",
+      "excerpt": "Some scholars argue that the first modern political parties developed in early modern Britain in the 17th century, after the Exclusion Crisi",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381549522"
+    },
+    {
+      "id": "P9",
+      "hash": "4e6dd63bcb971409a5d2eea1c266f39e24d6ee13c500f20b0e35eb3fb0034d87",
+      "heading": "19th century",
+      "excerpt": "By the early 19th century, a number of countries had developed stable modern party systems. The party system that developed in Sweden has be",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381549522"
+    },
+    {
+      "id": "P10",
+      "hash": "575ed774e1c2b970cfe7c9601aae00babc2238f35abdb3ee9877b786e57a470f",
+      "heading": "20th century",
+      "excerpt": "At the beginning of the 20th century in Europe, the liberal–conservative divide that characterized most party systems was disrupted by the e",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381549522"
+    },
+    {
+      "id": "P11",
+      "hash": "88a28e2ba7144444e978386998ca6c19480c303e76e26b386a7184fd6459898f",
+      "heading": "Causes of political parties",
+      "excerpt": "Political parties are a nearly ubiquitous feature of modern countries. Nearly all democratic countries have strong political parties, and ma",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381549522"
+    },
+    {
+      "id": "P12",
+      "hash": "4b1d7c2e2aea0a68d4d0492b09725bfa9474cbe609bc138ce1212910b87d3c05",
+      "heading": "Social cleavages",
+      "excerpt": "One of the core explanations for the existence of political parties is that they arise from pre-existing divisions among people: society is ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381549522"
+    },
+    {
+      "id": "P13",
+      "hash": "15a97de3abb46a43c5725c9314ab272fdff906da085de740167ced34e33fbbb2",
+      "heading": "Individual and group incentives",
+      "excerpt": "An alternative explanation for why parties are ubiquitous across the world is that the formation of parties provides compatible incentives f",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381549522"
+    },
+    {
+      "id": "P14",
+      "hash": "32bd10ad9d14d588c9a45e8a6c725e997ffff5285c5763400ce67ee68e6c536a",
+      "heading": "Parties as heuristics",
+      "excerpt": "Another prominent explanation for why political parties exist is psychological: parties may be necessary for many individuals to participate",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381549522"
+    },
+    {
+      "id": "P15",
+      "hash": "af9227e7364c3bcb1cd89c6671981ab2ab546b70bc059e7d568df729166cfe31",
+      "heading": "Structure of political parties",
+      "excerpt": "Political parties are often structured in similar ways across countries. They typically feature a single party leader, a group of party exec",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381549522"
+    },
+    {
+      "id": "P16",
+      "hash": "24ceaaba80fe39cd979e2cb5f43a943936fefaeaa3ec52e79af82ba1e5af3dc9",
+      "heading": "Party executives",
+      "excerpt": "In both democratic and non-democratic countries, the party leader is often the foremost member of a larger party leadership. A party executi",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381549522"
+    }
+  ],
+  "updatedAt": "2026-10-24T10:18:43.371Z"
 }
