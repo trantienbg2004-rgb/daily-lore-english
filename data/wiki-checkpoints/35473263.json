@@ -2,9 +2,256 @@
   "pageId": 35473263,
   "title": "Human rights movement",
   "topic": "Society",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1311232765,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1311232765",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-24T10:45:59.746Z"
+  "reason": "4 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:MutilatedChildrenFromCongo.jpg",
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/5/52/MutilatedChildrenFromCongo.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "fileTitle": "File:MutilatedChildrenFromCongo.jpg",
+        "caption": "Human rights activists circulated images of mutilated Congolese children among concerned Europeans and Americans, pressuring the Belgium government to make political reforms",
+        "alt": "",
+        "description": "Mutilated Congolese children and adults (c. 1900-1905) — in Congo Free State (present-day Democratic Republic of the Congo) Privately owned territory of Belgian King Leopold II, with numerous enslaved rubber collection/production areas in the rainforest and on plantations. Rubber production used human rights abuses against the Congolese people, including amputations for unmet quotas and other colonial offenses.",
+        "date": "before 1905date QS:P,+1905-00-00T00:00:00Z/7,P1326,+1905-00-00T00:00:00Z/9date QS:P,+1905-00-00T00:0",
+        "section": "Anti-colonialism",
+        "position": 0,
+        "provenance": {
+          "credit": "unknown, please edit with correct data.",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:MutilatedChildrenFromCongo.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Human_rights_movement",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1311232765",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:Poor People's March at Lafayette Park ppmsca.04302.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c7/Poor_People%27s_March_at_Lafayette_Park_ppmsca.04302.jpg/960px-Poor_People%27s_March_at_Lafayette_Park_ppmsca.04302.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Poor People's March at Lafayette Park ppmsca.04302.jpg",
+        "caption": "Poor People's Campaign March at Lafayette Park, 1968",
+        "alt": "",
+        "description": "Demonstrators participating in the Poor People's March at Lafayette Park and on Connecticut Avenue, Washington, D.C.",
+        "date": "1968-06-18",
+        "section": "Global human rights struggles",
+        "position": 1,
+        "provenance": {
+          "credit": "Warren K. Leffler, U.S. News & World Report",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Poor_People%27s_March_at_Lafayette_Park_ppmsca.04302.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Human_rights_movement",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1311232765",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:Charta77 Memorial (5082).jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b2/Charta77_Memorial_%285082%29.jpg/960px-Charta77_Memorial_%285082%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Charta77 Memorial (5082).jpg",
+        "caption": "Charter 77 Memorial in Prague",
+        "alt": "",
+        "description": "Martin Brůha: Charta 77 Memorial in Prague",
+        "date": "2017-01-06 11:46:21",
+        "section": "Changes in the 1970s",
+        "position": 2,
+        "provenance": {
+          "credit": "Gampe",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Charta77_Memorial_(5082).jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Human_rights_movement",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1311232765",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:United Workers picketers.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9b/United_Workers_picketers.jpg/960px-United_Workers_picketers.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:United Workers picketers.jpg",
+        "caption": "United Workers demonstrating for human rights and fair development in Baltimore's Inner Harbor.",
+        "alt": "",
+        "description": "United Workers picketers.",
+        "date": "2009-03-06 10:32",
+        "section": "Issues and activities",
+        "position": 3,
+        "provenance": {
+          "credit": "United Workers",
+          "license": "CC BY 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:United_Workers_picketers.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Human_rights_movement",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1311232765",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "cb2df3f2f58ca0135e5557368bc26086c04f704cd4fc9adbf3b7e2af3cc880bb",
+      "heading": "Lead",
+      "excerpt": "Human rights movement refers to a nongovernmental social movement engaged in activism related to the issues of human rights. The foundations",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1311232765"
+    },
+    {
+      "id": "P2",
+      "hash": "a0f928dd2f1cc0b16817586aaac7c5d559b2d40080267edd22fa66c50a7b7820",
+      "heading": "Lead",
+      "excerpt": "A key principle of the human rights movement is its appeal to universality: the idea that all human beings should struggle in solidarity for",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1311232765"
+    },
+    {
+      "id": "P3",
+      "hash": "c346d1549a6d8ccaa9ce46857a9d5be9202f8e42288a4f2af7a5153ea71e6f39",
+      "heading": "History",
+      "excerpt": "Human rights activism predates the 20th century, that includes the anti-slavery movement. Historical movements were usually concerned with a",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1311232765"
+    },
+    {
+      "id": "P4",
+      "hash": "07d31d30f509f70ce8f3ab12adddbe68b574a2296c6438108776f5a3541f385d",
+      "heading": "History",
+      "excerpt": "The activities of the International Federation for Human Rights (originally the International Labor Organization)—founded in France by the i",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1311232765"
+    },
+    {
+      "id": "P5",
+      "hash": "ece55849460109c3434ee5702a21a16676b8a93ea03dd0f3bec8db04173dd63d",
+      "heading": "Anti-colonialism",
+      "excerpt": "Another major global human rights movement grew out of resistance to colonialism. The Congo Reform Association, founded in 1904, has also be",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1311232765"
+    },
+    {
+      "id": "P6",
+      "hash": "1da27836ffadfe99bad4196f145af10d27b0b4a23777693fd1c8e8a603099fc3",
+      "heading": "World War II and the United Nations",
+      "excerpt": "In the aftermath of World War II, the Pan-Africanist contingent played a major role in causing the United Nations to explicitly protect \"hum",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1311232765"
+    },
+    {
+      "id": "P7",
+      "hash": "127f14a90533c761f0f3f82241ddc7c8b217ee54392e6f4dac35d2b223743ef4",
+      "heading": "Global human rights struggles",
+      "excerpt": "Within the United States, participants in the civil rights movement called for human rights in addition to civil rights. Du Bois, the Nation",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1311232765"
+    },
+    {
+      "id": "P8",
+      "hash": "453934164e712e75c57773573870dc748b3234bda001d7f561eac8294b61373f",
+      "heading": "Changes in the 1970s",
+      "excerpt": "Since the 1970s the human rights movement has played an increasingly important role on the international scene. Although government support ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1311232765"
+    },
+    {
+      "id": "P9",
+      "hash": "e081897928cced33b5106b5f4aee33d7818fbceac39089492fb0c0eaabec9610",
+      "heading": "Since the 1990s",
+      "excerpt": "The global human rights movement has become more expansive since the 1990s, including greater representation of women's rights and economic ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1311232765"
+    },
+    {
+      "id": "P10",
+      "hash": "b04b9f71ab4be7f6e0e1b3899b096852b73b76dcbd6e829dd750ba03f4355c8b",
+      "heading": "Issues and activities",
+      "excerpt": "The international human rights movement is concerned with issues such as deprivation of life and liberty, deprivation of the right of free a",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1311232765"
+    },
+    {
+      "id": "P11",
+      "hash": "bce9a5f806304aaf8a4b5678ab37e46e44cae696a258e5d88a3b7049cc3ac884",
+      "heading": "Limitations and criticism",
+      "excerpt": "One major schism within the international human rights movement has been between NGOs and activists from the First and Third Worlds. Critics",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1311232765"
+    },
+    {
+      "id": "P12",
+      "hash": "ca541f30982263d08dbfdce6dd086699ce153fb725366f48c5cc248ddfaa2bd1",
+      "heading": "Organizations",
+      "excerpt": "Major international human rights organizations include Amnesty International and Human Rights Watch. The International Human Rights Arts Mov",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1311232765"
+    },
+    {
+      "id": "P13",
+      "hash": "e40670a95020e6adc82e31e357804c669ac538625a91784d075bde78423b4946",
+      "heading": "Anti-colonialism",
+      "excerpt": "...oh well, the pictures get sneaked around everywhere, in spite of all we can do to ferret them out and suppress them. Ten thousand pulpits",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1311232765"
+    },
+    {
+      "id": "P14",
+      "hash": "a0d931ac98871a45158dd53b8be85cbf08ff281d410ddd5f40f294f289148bb4",
+      "heading": "Anti-colonialism",
+      "excerpt": "As the century went on, African Americans including W. E. B. Du Bois, Walter White, and Paul Robeson joined with leaders of the African dias",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1311232765"
+    },
+    {
+      "id": "P15",
+      "hash": "cfa4368f0f6e9ef1e9deddcc2d5ab0e9b28a00bc0325129f94cc278dc5982e1c",
+      "heading": "World War II and the United Nations",
+      "excerpt": "Representatives of small countries (particularly from Latin America), as well as Du Bois and other activists, were unhappy with the version ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1311232765"
+    },
+    {
+      "id": "P16",
+      "hash": "aa28171d0d6302b358dc8f4aee0355b9b486bf5e91b7c76c97e135a3f920b386",
+      "heading": "World War II and the United Nations",
+      "excerpt": "The concept of human rights was indeed built into United Nations with institutions such as the United Nations Commission on Human Rights and",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1311232765"
+    },
+    {
+      "id": "P17",
+      "hash": "9dde745495c54d63c9caf241d993ce2562b0bca1f876a8a6fb4a5f94b6067838",
+      "heading": "World War II and the United Nations",
+      "excerpt": "Early in the Cold War, the \"human rights\" concept was used to promote the ideological agendas of the superpowers. The Soviet Union argued th",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1311232765"
+    },
+    {
+      "id": "P18",
+      "hash": "3f018a06f3bcb1d891c6d621c3d79649945a4a327e235010c1323ad7926e8e9c",
+      "heading": "Global human rights struggles",
+      "excerpt": "An Appeal for Human Rights, published by Atlanta students in 1960, is cited as a key moment in beginning the wave of nonviolent direct actio",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1311232765"
+    },
+    {
+      "id": "P19",
+      "hash": "5052c32ede70979acdd6fcbb885e677e5117171626cc44359842a219d665cec2",
+      "heading": "Global human rights struggles",
+      "excerpt": "After the decolonization of Africa and of Asia, former colonies gained majority status in the UN's Commission on Human Rights, and focused t",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1311232765"
+    },
+    {
+      "id": "P20",
+      "hash": "56d812e66afddd37fe6d62d8225dd600c509fcfce18e80edb72a3a4a479441aa",
+      "heading": "Changes in the 1970s",
+      "excerpt": "Pressure from the international human rights movement brought human rights increasingly to the political agendas of numerous countries and d",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1311232765"
+    },
+    {
+      "id": "P21",
+      "hash": "fc8e93bceb4b2899d89abce9004b4ee2bc10589fffe295ad530453e6253b3877",
+      "heading": "Changes in the 1970s",
+      "excerpt": "Originally, most international human rights organizations came from France and the UK; since the 1970s American organizations moved beyond r",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1311232765"
+    }
+  ],
+  "updatedAt": "2026-10-24T10:46:05.432Z"
 }
