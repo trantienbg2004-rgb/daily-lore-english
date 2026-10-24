@@ -2,9 +2,180 @@
   "pageId": 1869747,
   "title": "Tea Horse Road",
   "topic": "Economy",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1381568955,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381568955",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-24T11:02:17.966Z"
+  "reason": "2 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:Map of the Tea-Horse road.png",
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/0/06/Map_of_the_Tea-Horse_road.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "fileTitle": "File:Map of the Tea-Horse road.png",
+        "caption": "Map of the Tea-Horse route",
+        "alt": "",
+        "description": "Map of the Tea-Horse road",
+        "date": "2017-07-17",
+        "section": "",
+        "position": 0,
+        "provenance": {
+          "credit": "Redgeographics",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Map_of_the_Tea-Horse_road.png",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Tea_Horse_Road",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381568955",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:Men Laden With Tea, Sichuan Sheng, China 1908 Ernest H. Wilson RESTORED.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cc/Men_Laden_With_Tea%2C_Sichuan_Sheng%2C_China_1908_Ernest_H._Wilson_RESTORED.jpg/960px-Men_Laden_With_Tea%2C_Sichuan_Sheng%2C_China_1908_Ernest_H._Wilson_RESTORED.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Men Laden With Tea, Sichuan Sheng, China 1908 Ernest H. Wilson RESTORED.jpg",
+        "caption": "Men laden with tea, Sichuan Province, China, 1908, Ernest Henry Wilson",
+        "alt": "",
+        "description": "Entitled: Two Men Laden With Tea, Sichuan Sheng China, 30 JUL [1908] EH Wilson [RESTORED] Very little retouching except for a few scratches and spots. Minor contrast and sepia tone added. The original resides in Harvard University Library's permanent collection, and can be found using their Visual Information Access (VIA) Search System by using the title. Ernest Henry \"Chinese\" Wilson was an explorer botanist who traveled extensively to the far east between 1899 and 1918, collecting seed specimens and recording with both journals and camera. Ab",
+        "date": "2009-11-06 00:03:43",
+        "section": "History",
+        "position": 1,
+        "provenance": {
+          "credit": "ralph repo",
+          "license": "CC BY 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Men_Laden_With_Tea,_Sichuan_Sheng,_China_1908_Ernest_H._Wilson_RESTORED.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Tea_Horse_Road",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381568955",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "dced9a58a36f3cc0f1714318c7d8e2f1d259666d23de9fc35f4896f6c03418b3",
+      "heading": "Lead",
+      "excerpt": "The Tea Horse Road or Chamadao (simplified Chinese: 茶马道; traditional Chinese: 茶馬道), now generally referred to as the Ancient Tea Horse Road ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381568955"
+    },
+    {
+      "id": "P2",
+      "hash": "976b7595b0c7955670370c226b0f511b65d39860c0026ed379e0ee27275be2f6",
+      "heading": "Lead",
+      "excerpt": "There are numerous surviving archaeological and monumental elements, including trails, bridges, way stations, market towns, palaces, staging",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381568955"
+    },
+    {
+      "id": "P3",
+      "hash": "1982b100b28ab10246da11bece39107ef2e6145068bc6469a3974db2528fbb9f",
+      "heading": "Lead",
+      "excerpt": "\"Ancient Tea Horse Road\" is a historical concept with a specific meaning. It refers to a major traffic road formed by the exchange of tea an",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381568955"
+    },
+    {
+      "id": "P4",
+      "hash": "27704edc99675cdb1ad979d1f09e020cc24caeba6b7410294f2b21fbf8efbc48",
+      "heading": "Shaanxi-Gansu Tea Horse Road",
+      "excerpt": "Shaanxi-Gansu Tea Horse Road (陕甘茶马古道) is the main road for tea in mainland China to travel west and exchange for horses. It is one of the ma",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381568955"
+    },
+    {
+      "id": "P5",
+      "hash": "36a58d04c00398bd250dbc2c9bbdf26b8cb640afa1f934f0251feff7c346acae",
+      "heading": "Tanggu Road",
+      "excerpt": "Beginning in the Han dynasty, the Tanggu Road (蹚古道) was formed by Shaanxi merchants and the ancient tea-horse market in the southwest fronti",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381568955"
+    },
+    {
+      "id": "P6",
+      "hash": "9558fee1b9443103a25f2b0ca14cfaa48150720085bc7dd96c7ad980cf83d40f",
+      "heading": "Yunnan-Tibet Tea Horse Road",
+      "excerpt": "The Yunnan-Tibet Tea Horse Road (滇藏茶马古道) was formed in the late sixth century AD. It started from Yiwu and Pu'er in Xishuangbanna, the main ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381568955"
+    },
+    {
+      "id": "P7",
+      "hash": "cbf833e10e0d67ce58be4c7c25d901dcbd6b83dc05d37f71cf0ad59d0029fb24",
+      "heading": "Sichuan–Tibet Tea Horse Road",
+      "excerpt": "The Ancient Sichuan–Tibet Tea-Horse Road (川藏茶马古道) is a part of the Shaanxi–Kangding–Tibet Tea-Horse Road. It starts from Ya'an, the tea prod",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381568955"
+    },
+    {
+      "id": "P8",
+      "hash": "4946f635370d01fe98c59203c8b704045ce67d86a4b4fa98bb305f23b076bf78",
+      "heading": "History",
+      "excerpt": "Sichuan and Yunnan are believed to be the first tea-producing regions in the world. The first records of tea cultivation suggest that tea wa",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381568955"
+    },
+    {
+      "id": "P9",
+      "hash": "05b69a66cf2b554f1b37f77aa8a64bd2dbde04008f866ee5ecf4520d21ad7965",
+      "heading": "Historic Site",
+      "excerpt": "The Ancient Tea Horse Road is a complex network of roads, of which some of the ancient tea horse roads and related historical sites in Sichu",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381568955"
+    },
+    {
+      "id": "P10",
+      "hash": "624561f9b5a45b34b3bec7d7ba7dbe460bbcf5c69f547d391fe949621db17134",
+      "heading": "The ruins of Guangen Bridge",
+      "excerpt": "The site of Guangen Bridge is located in Minjiang Village, Zhen Yuan County and Enle Old Street river bank, built in the early Qing dynasty,",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381568955"
+    },
+    {
+      "id": "P11",
+      "hash": "04c821561ff47dde7476e8d9f6750333d6ffefc7796874df5c0747247040b9ed",
+      "heading": "Bunakuo",
+      "excerpt": "\"Bunakuo\" is the translation of the Naxi language, Chinese means \"artemisia plain\", because of the wild artemisia growing everywhere and the",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381568955"
+    },
+    {
+      "id": "P12",
+      "hash": "0aa2edf876b42e81516cb8e85f0cfab4632b4b003a3f367d191a370807239309",
+      "heading": "Safeguard procedures",
+      "excerpt": "On March 5, 2013, the Tea Horse Ancient Road was announced by The State Council of the People's Republic of China as the seventh batch of na",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381568955"
+    },
+    {
+      "id": "P13",
+      "hash": "437ac64a23d79b452ab70d29677d0f7dd7d8785639b4db9c417c92758771da46",
+      "heading": "Future",
+      "excerpt": "In the 21st century, the legacy of the Tea-Horse Road has been used to promote a railway that will connect Chengdu to Lhasa. This planned ra",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381568955"
+    },
+    {
+      "id": "P14",
+      "hash": "627810d2cf1385f2a08051c08821f5027742176d1f624ac53086af1644f4ce4c",
+      "heading": "History",
+      "excerpt": "From around a thousand years ago, the Tea Horse Road become a trade link from Yunnan to Tibet; and to Central China via Sichuan Province. It",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381568955"
+    },
+    {
+      "id": "P15",
+      "hash": "4cacd4c56740f9196aa7b9a3101e3cc39636bff3c43c19b863eb60d50f105e98",
+      "heading": "History",
+      "excerpt": "Both people and horses carried heavy loads. Tea porters sometimes carried over 60–90 kg (132-198 lb.), which was often more than their own b",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381568955"
+    },
+    {
+      "id": "P16",
+      "hash": "802559a6a2a7b49eb9869359c8e9b534c7cc5055fbd4c1a00ea21f2b54da428c",
+      "heading": "The ruins of Guangen Bridge",
+      "excerpt": "Qing dynasty Daoguang six years (1826), the county Zhang Zhao additional repaired the Guangen Bridge. Qing dynasty Tongzhi's first year (186",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381568955"
+    },
+    {
+      "id": "P17",
+      "hash": "99d615d49381d98a83d2d11163eee83119b237bff6c36694f3bca3a990083565",
+      "heading": "The ruins of Guangen Bridge",
+      "excerpt": "In the middle of the Republic of China, repaired into a stone pier wooden surface bridge. Early liberation of China, the bridge was washed a",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381568955"
+    }
+  ],
+  "updatedAt": "2026-10-24T11:02:23.055Z"
 }
