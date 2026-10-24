@@ -2,10 +2,10 @@
   "pageId": 1724851,
   "title": "Contact tracing",
   "topic": "Health",
-  "status": "DRAFTED",
+  "status": "VALIDATED",
   "revisionId": 1374229365,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374229365",
-  "reason": "draft durably saved before validation",
+  "reason": "local factual, style, length, structure and source audit passed",
   "rights": [
     {
       "status": "REVIEW",
@@ -234,7 +234,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374229365"
     }
   ],
-  "updatedAt": "2026-10-24T08:35:44.354Z",
+  "updatedAt": "2026-10-24T08:36:02.122Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -366,5 +366,8 @@
     "output": 1459,
     "total": 4002
   },
-  "validation": null
+  "validation": {
+    "accepted": true,
+    "errors": []
+  }
 }

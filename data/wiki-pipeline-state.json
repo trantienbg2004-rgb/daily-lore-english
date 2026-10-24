@@ -8316,10 +8316,10 @@
       "checkedAt": null
     },
     "1724851": {
-      "status": "DRAFTED",
-      "reason": "draft durably saved before validation",
+      "status": "VALIDATED",
+      "reason": "local factual, style, length, structure and source audit passed",
       "revisionId": 1374229365,
-      "checkedAt": "2026-10-24T08:35:44.354Z"
+      "checkedAt": "2026-10-24T08:36:02.122Z"
     },
     "1758866": {
       "status": "NEEDS_REVIEW",
@@ -11610,7 +11610,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-24T08:35:58.763Z",
+  "updatedAt": "2026-10-24T08:36:02.123Z",
   "dailyUsage": {
     "day": "2026-10-24",
     "calls": 72,
