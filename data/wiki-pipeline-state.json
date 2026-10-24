@@ -8006,10 +8006,10 @@
       "checkedAt": "2026-10-23T23:37:54.531Z"
     },
     "498157": {
-      "status": "EVIDENCE_READY",
-      "reason": "3 rights-verified embedded images",
+      "status": "RETRY_LATER",
+      "reason": "Gemini token usage unavailable",
       "revisionId": 1377941859,
-      "checkedAt": "2026-10-24T11:07:47.422Z"
+      "checkedAt": "2026-10-24T11:07:53.199Z"
     },
     "506548": {
       "status": "RETRY_LATER",
@@ -11930,7 +11930,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-24T11:07:47.423Z",
+  "updatedAt": "2026-10-24T11:07:53.201Z",
   "dailyUsage": {
     "day": "2026-10-24",
     "calls": 117,
