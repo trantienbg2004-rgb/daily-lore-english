@@ -2,10 +2,10 @@
   "pageId": 1262999,
   "title": "Postal voting",
   "topic": "Politics",
-  "status": "EVIDENCE_READY",
+  "status": "RETRY_LATER",
   "revisionId": 1371716592,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371716592",
-  "reason": "6 rights-verified embedded images",
+  "reason": "Gemini token usage unavailable",
   "rights": [
     {
       "status": "REVIEW",
@@ -327,5 +327,5 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371716592"
     }
   ],
-  "updatedAt": "2026-10-24T10:19:55.242Z"
+  "updatedAt": "2026-10-24T10:20:01.293Z"
 }
