@@ -2,10 +2,10 @@
   "pageId": 48090580,
   "title": "Storage of cultural property",
   "topic": "Culture",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1361016872,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1361016872",
-  "reason": "9 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -322,5 +322,133 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1361016872"
     }
   ],
-  "updatedAt": "2026-10-24T09:22:50.794Z"
+  "updatedAt": "2026-10-24T09:23:08.457Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "Saving Cultural Objects",
+        "pages": [
+          {
+            "text": "Cultural heritage institutions and people take care of cultural property. Proper storage helps objects live longer with less damage. Keepers of these items know best practices to preserve them.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Creating a storage space involves looking at resources and the collection needs. Good storage is away from other activities to stop damage from theft, dirt, and light.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "Climate control systems help keep temperature and humidity steady. This stops materials from expanding and shrinking, which causes serious damage.",
+            "evidenceIds": [
+              "P5"
+            ]
+          },
+          {
+            "text": "Storage spaces try to have few windows and lights. LED or UV-filtered bulbs are recommended because they save energy and protect objects from heat.",
+            "evidenceIds": [
+              "P9"
+            ]
+          },
+          {
+            "text": "Institutions use integrated pest management to watch for insects and rodents. They use traps to monitor pests and avoid using harmful chemical treatments.",
+            "evidenceIds": [
+              "P10"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "Protecting Heritage Collections",
+        "pages": [
+          {
+            "text": "Cultural heritage institutions and individuals are responsible for storing cultural property properly. Good storage ensures a longer lifespan for objects with minimal damage, relying on the keepers' knowledge of preservation practices.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Designing a collections storage area requires evaluating available resources, collection needs, and accessibility. These spaces are typically separate from daily activities to reduce risks like theft, tracked soil, and excessive light exposure.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "Climate control maintains steady temperature and relative humidity rates using HVAC systems. Keeping steady conditions avoids the expansion and contraction of materials that leads to serious physical damage.",
+            "evidenceIds": [
+              "P5"
+            ]
+          },
+          {
+            "text": "Monitoring systems are essential for preventive care. Tools like hygrothermographs and data loggers constantly record temperature and humidity, allowing institutions to evaluate conditions and document extraordinary events.",
+            "evidenceIds": [
+              "P8"
+            ]
+          },
+          {
+            "text": "Because light damage is cumulative and irreversible, storage areas limit ambient light and use multi-zone switches. LED and UV-filtered fluorescent bulbs are recommended to save energy and avoid harmful heat.",
+            "evidenceIds": [
+              "P9"
+            ]
+          },
+          {
+            "text": "Integrated pest management programs monitor for insects and rodents using traps. Chemical treatments are kept as a last resort, and institutions avoid exterior lighting that might attract pests to doors and windows.",
+            "evidenceIds": [
+              "P10"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "Storage of Cultural Property",
+        "pages": [
+          {
+            "text": "The preservation of cultural property falls primarily to heritage institutions and individuals. Proper storage mitigates degradation and extends object lifespans, guided by keepers' expertise in best practices for diverse artifacts and materials.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Establishing a collections storage area involves assessing resources, collection requirements, and retrieval needs. Storage spaces are generally isolated from other activities to minimize vulnerabilities such as theft, particulate contamination, and photodegradation.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "Climate control mechanisms regulate temperature, relative humidity, and atmospheric pollutants via ventilation and filtration. Maintaining constant environmental parameters prevents material expansion and contraction, averting structural damage.",
+            "evidenceIds": [
+              "P5"
+            ]
+          },
+          {
+            "text": "Continuous environmental monitoring is vital for preventive conservation. Devices such as hygrothermographs and data loggers record hygrothermal data, enabling the evaluation of corrective interventions and the documentation of anomalous events.",
+            "evidenceIds": [
+              "P8"
+            ]
+          },
+          {
+            "text": "Given that radiation damage is cumulative and irreversible, storage facilities minimize ambient light and utilize zoned illumination. LED and UV-filtered fluorescent lamps are favored to curtail energy consumption and thermal degradation.",
+            "evidenceIds": [
+              "P9"
+            ]
+          },
+          {
+            "text": "Integrated pest management relies on traps to monitor biological agents while avoiding toxic chemical treatments except as a last resort. Exterior lighting configurations are strategically managed to minimize the attraction of pests.",
+            "evidenceIds": [
+              "P10"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2499,
+    "output": 1158,
+    "total": 3657
+  },
+  "validation": null
 }
