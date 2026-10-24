@@ -2,9 +2,300 @@
   "pageId": 184235,
   "title": "Hejaz",
   "topic": "History & Geography",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1381567671,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381567671",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-24T10:14:19.727Z"
+  "reason": "6 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:Last call for Hajis - Flickr - Al Jazeera English.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/81/Last_call_for_Hajis_-_Flickr_-_Al_Jazeera_English.jpg/960px-Last_call_for_Hajis_-_Flickr_-_Al_Jazeera_English.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Last call for Hajis - Flickr - Al Jazeera English.jpg",
+        "caption": "The Hateem (the empty section near Kaaba) where it is believed that Isma'il (Ishmael) and Hajar (Hagar) dwelt",
+        "alt": "",
+        "description": "The scene in Mecca.",
+        "date": "2009-11-24 12:28",
+        "section": "Prehistoric and ancient times",
+        "position": 0,
+        "provenance": {
+          "credit": "Al Jazeera English",
+          "license": "CC BY-SA 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Last_call_for_Hajis_-_Flickr_-_Al_Jazeera_English.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Hejaz",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381567671",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Lihyan Map.svg"
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Nabatean Kingdom.svg"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:Codice Casanatense Arabian Merchants.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/37/Codice_Casanatense_Arabian_Merchants.jpg/960px-Codice_Casanatense_Arabian_Merchants.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Codice Casanatense Arabian Merchants.jpg",
+        "caption": "Hejazi Arabian merchant and wife (Códice Casanatense, c. 1540)",
+        "alt": "",
+        "description": "Anonymous 16th century Portuguese illustration from the Códice Casanatense, depicting a merchant from Arabia and his wife. The inscription reads: \"Arabian merchants who inhabit the strait of Mecca on the side of Arabia\".",
+        "date": "circa 1540date QS:P,+1540-00-00T00:00:00Z/9,P1480,Q5727902date QS:P,+1540-00-00T00:00:00Z/9,P1480,Q5",
+        "section": "Subsequent history",
+        "position": 3,
+        "provenance": {
+          "credit": "Unknown authorUnknown author",
+          "license": "CC0",
+          "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Codice_Casanatense_Arabian_Merchants.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Hejaz",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381567671",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:Madinah Museum.JPG",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3c/Madinah_Museum.JPG/960px-Madinah_Museum.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Madinah Museum.JPG",
+        "caption": "Hejaz railway station (museum) in Medina, was the last station in the Hejaz Railway that ran from Damascus to Medina",
+        "alt": "",
+        "description": "Bekas stasiun kereta api Madinah (jalur kereta api Hijaz, dari Madinah ke Damaskus) yang saat ini dijadikan sebagai Museum Madinah",
+        "date": "2015-10-29 17:49:47",
+        "section": "Subsequent history",
+        "position": 4,
+        "provenance": {
+          "credit": "Imam Khairul Annas",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Madinah_Museum.JPG",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Hejaz",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381567671",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:Hejaz-English.jpg",
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/f/f5/Hejaz-English.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "fileTitle": "File:Hejaz-English.jpg",
+        "caption": "Kingdom of Hejaz (green) with the modern-day region of Hejaz",
+        "alt": "",
+        "description": "English-language version of existing Wikimedia map in Spanish",
+        "date": "2013-04-03 14:23:20",
+        "section": "Brief independence",
+        "position": 5,
+        "provenance": {
+          "credit": "MartinCollin",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Hejaz-English.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Hejaz",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381567671",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:Mina 2.JPG",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/98/Mina_2.JPG/960px-Mina_2.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Mina 2.JPG",
+        "caption": "The camp of Mina on the outskirts of Mecca, where Muslim pilgrims gather for the Hajj (Greater Pilgrimage). Masjid Al-Khayf is visible to the right.",
+        "alt": "",
+        "description": "Mina area",
+        "date": "2011-11-14 11:43:18",
+        "section": "Religion",
+        "position": 6,
+        "provenance": {
+          "credit": "Aiman titi",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Mina_2.JPG",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Hejaz",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381567671",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:Al Wajh Beach.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7c/Al_Wajh_Beach.jpg/960px-Al_Wajh_Beach.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Al Wajh Beach.jpg",
+        "caption": "Beach promenade in Al-Wajh",
+        "alt": "",
+        "description": "شاطئ الوجه",
+        "date": "2019-01-23 13:33:01",
+        "section": "Tourism",
+        "position": 7,
+        "provenance": {
+          "credit": "Yasser.Bakhsh",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Al_Wajh_Beach.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Hejaz",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381567671",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "6b3c0fa3fd8f4465419c2f55c23a11b42fc97f209af27f4cde3ba4537e8fb15b",
+      "heading": "Lead",
+      "excerpt": "The Hejaz or Hijaz is a historical region of the Arabian Peninsula that includes the majority of the western region of Saudi Arabia, coverin",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381567671"
+    },
+    {
+      "id": "P2",
+      "hash": "96d6c79b1d08f33f85e485aa3b4456200290814036f5733d7f44a3cfc9b0160c",
+      "heading": "Lead",
+      "excerpt": "As the location of the holy cities of Mecca and Medina, respectively the first and second holiest sites in Islam, the Hejaz is significant i",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381567671"
+    },
+    {
+      "id": "P3",
+      "hash": "3105d29f5bc2e5ee3d3a35daa606864866d3f432e3d8f7640bee3a300ee2f178",
+      "heading": "Etymology",
+      "excerpt": "The name of the region is derived from a verb ḥajaza (حَجَز), from the Arabic root ḥ-j-z (ح-ج-ز), meaning \"to separate\", and it is so called",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381567671"
+    },
+    {
+      "id": "P4",
+      "hash": "0a10cfbb87190ddb723d5f624bfba5cdd44f706dbced5e2b390ffdb7a4e19a0b",
+      "heading": "History",
+      "excerpt": "According to Islamic tradition, this region is the birthplace of the Islamic prophet Muhammad, who was born in Mecca, which is held to be fo",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381567671"
+    },
+    {
+      "id": "P5",
+      "hash": "3e134e1d6fb2e5d806f9acedd02cb41e7d1dcb9ff09b1fbecd84239ef5526b3a",
+      "heading": "The rise of local kingdoms (5th century BCE — 2nd century CE)",
+      "excerpt": "Lihyan ultimately fell, but it is not known whether this was due to direct conquest by the Nabataean Kingdom. Either way, the Nabataeans wen",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381567671"
+    },
+    {
+      "id": "P6",
+      "hash": "6de817bf77b52d2d3150f7bf5af4c9565db27c0b8ac9ca6d07c5af98f1ae5eea",
+      "heading": "Prehistoric and ancient times",
+      "excerpt": "The Hejaz includes both the Mahd adh-Dhahab (\"Cradle of the Gold\") (23°30′13″N 40°51′35″E / 23.50361°N 40.85972°E / 23.50361; 40.85972) and ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381567671"
+    },
+    {
+      "id": "P7",
+      "hash": "a47bfed2dd35c3cda69483f160a615f8ae89d7e44952a8542e981bfd9e2256a7",
+      "heading": "Thamud confederation (8th century BC — 5th century CE)",
+      "excerpt": "The Thamud are among the most notable of the Hejazi tribal confederations. They were based in the northwestern Hejaz with their center at He",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381567671"
+    },
+    {
+      "id": "P8",
+      "hash": "b4f5311f47b6732028365e7723a6d83706ced142ab81dd5c888709f6445e602d",
+      "heading": "The rise of local kingdoms (5th century BCE — 2nd century CE)",
+      "excerpt": "The history of the Hejaz has often centred around its major oasis cities, especially Yathrib (Medina), Fadak, Khaybar, Taymah, and Al-Ula. T",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381567671"
+    },
+    {
+      "id": "P9",
+      "hash": "ec2323ea725576ef347ab95040b12582c84c1088cb685744699b20efb9eab75e",
+      "heading": "Ghassanid and Mudar confederations (3rd century CE — 6th century CE)",
+      "excerpt": "Christian J. Robin's study of pre-Islamic epigraphy has suggested that between the third and fourth centuries CE, the Ghassanids were the ma",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381567671"
+    },
+    {
+      "id": "P10",
+      "hash": "972ff4848b5af15c304fa216acd642547001f35df2480c444f19ea19265f20b9",
+      "heading": "Early Islamic History (7th century CE)",
+      "excerpt": "As the land of Mecca and Medina, the Hejaz was where Muhammad was born, and where he founded a Monotheistic Ummah of followers, bore patienc",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381567671"
+    },
+    {
+      "id": "P11",
+      "hash": "934b7a571252f836e79007c49417cd22c82f5bbe9f2394f05a38a390641bdc74",
+      "heading": "Subsequent history",
+      "excerpt": "Due to the presence of the two holy cities in the Hejaz, the region was ruled by numerous empires. The Hejaz was at the center of the First ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381567671"
+    },
+    {
+      "id": "P12",
+      "hash": "d2e5001d77da46f706e54d8271acb194225809fa188696f537794bf346024216",
+      "heading": "Brief independence",
+      "excerpt": "After the end of the Ottoman suzerainty and control in Arabia, in 1916, Hussein bin Ali became the leader of an independent State of Hejaz. ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381567671"
+    },
+    {
+      "id": "P13",
+      "hash": "b14e0ad76e66d10dbdbec9adae301b5473f607bb8479bbc61c3cf6e5f8dbc26a",
+      "heading": "In modern Saudi Arabia",
+      "excerpt": "On 23 December 1925, after a series of wars between the Hashimites and Al Saud, Sharif Hussein surrendered to the Saudis, bringing both the ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381567671"
+    },
+    {
+      "id": "P14",
+      "hash": "87ac09074ef527a4ef556acafa1e5273d011338368b52ed3d55af6c60fb36215",
+      "heading": "Religion",
+      "excerpt": "The cultural setting of Hejaz is greatly influenced by that of Islam, especially as it contains its 2 holiest cities, Mecca and Medina. More",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381567671"
+    },
+    {
+      "id": "P15",
+      "hash": "290de9f083fef87151d89e78adbc9e8e713fa59f531914bde5323e2af39f65fb",
+      "heading": "Cuisine",
+      "excerpt": "Hejazi cuisine has mostly Arabian dishes like the rest of Saudi Arabia, Some dishes are native to the Hejaz, like Saleeg. Other Dishes were ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381567671"
+    },
+    {
+      "id": "P16",
+      "hash": "e11b913ca9aff6480412642c443839d99f03fc18c2ed6a2b13763dd77aee74a1",
+      "heading": "Geography",
+      "excerpt": "The region is located along the Red Sea Rift. It is also known for its darker, more volcanic sand. Depending on the previous definition, the",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381567671"
+    },
+    {
+      "id": "P17",
+      "hash": "31e8d80aba07397f2f26fee1c829b36c2dd994f116ea89e40a85776fbf8e5600",
+      "heading": "Tourism",
+      "excerpt": "As a component of Saudi Vision 2030, a tourist destination with an area of 28,000 square kilometres (11,000 square miles) is under developme",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381567671"
+    },
+    {
+      "id": "P18",
+      "hash": "0781865f39f6aa8fc092285ec7bb1d5ee0989fcca528e0e1b5346b257f2d1e90",
+      "heading": "Demographics",
+      "excerpt": "The Hejaz is the most populated region in Saudi Arabia, containing 35% of the population of Saudi Arabia. Most people of Hejaz are Sunnis wi",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381567671"
+    },
+    {
+      "id": "P19",
+      "hash": "6113a13928149647a72db3b5287e144d623eff0288a7421a067ca5576f3bd31b",
+      "heading": "Prehistoric and ancient times",
+      "excerpt": "According to Arab and Islamic sources, the civilization of Mecca started after Ibrāhīm (Abraham) brought his son Ismāʿīl (Ishmael) and wife ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381567671"
+    }
+  ],
+  "updatedAt": "2026-10-24T10:14:25.167Z"
 }
