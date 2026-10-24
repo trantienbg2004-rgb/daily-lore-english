@@ -9400,10 +9400,10 @@
       "checkedAt": "2026-10-22T14:51:42.525Z"
     },
     "31660596": {
-      "status": "VALIDATED",
-      "reason": "local factual, style, length, structure and source audit passed",
+      "status": "PUBLISHED",
+      "reason": "4 verified embedded images",
       "revisionId": 1372322855,
-      "checkedAt": "2026-10-24T06:29:31.502Z"
+      "checkedAt": "2026-10-24T06:29:37.567Z"
     },
     "32036020": {
       "status": "NEEDS_REVIEW",
@@ -11290,7 +11290,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-24T06:29:31.503Z",
+  "updatedAt": "2026-10-24T06:29:37.568Z",
   "dailyUsage": {
     "day": "2026-10-23",
     "calls": 273,
