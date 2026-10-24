@@ -2,10 +2,10 @@
   "pageId": 21401843,
   "title": "Freedom of speech",
   "topic": "Society",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1380704056,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380704056",
-  "reason": "10 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -401,5 +401,150 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380704056"
     }
   ],
-  "updatedAt": "2026-10-24T07:21:44.868Z"
+  "updatedAt": "2026-10-24T07:22:02.151Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "What Is Free Speech?",
+        "pages": [
+          {
+            "text": "Freedom of speech lets people share opinions and ideas. They can do this without fear of punishment, censorship, or legal trouble. Many countries protect this important right in their laws. People often use different words to talk about this idea.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "This principle has a very long history. It goes back to ancient times before modern human rights laws existed. Long ago, the printing press allowed people to share ideas faster. After that, the Roman Catholic Church and governments started to control printed books.",
+            "evidenceIds": [
+              "P7",
+              "P8"
+            ]
+          },
+          {
+            "text": "Free speech is usually seen as a negative right. This means the government cannot punish speakers for their views. However, nobody is forced to help speakers or listen to them. This idea comes from older traditions of natural law and common law.",
+            "evidenceIds": [
+              "P10"
+            ]
+          },
+          {
+            "text": "Most legal systems agree that free speech is not absolute. Laws often set limits to protect other important things. Common limits include rules against libel, slander, obscenity, and copyright violations. Speech can also be restricted to protect national security or privacy.",
+            "evidenceIds": [
+              "P3",
+              "P15"
+            ]
+          },
+          {
+            "text": "Today, the digital age brings new ways to communicate. The internet lets people share information easily across the world. However, new tools also bring new rules. Countries use internet censorship to block illegal material, and websites use content moderation to filter posts.",
+            "evidenceIds": [
+              "P6",
+              "P13"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "The Limits and History of Free Speech",
+        "pages": [
+          {
+            "text": "Freedom of speech supports the right of individuals or communities to articulate opinions without fear of retaliation, censorship, or legal sanction. While terms like free speech and freedom of expression are often used interchangeably, legal contexts treat freedom of expression more broadly to include seeking and receiving information through any medium.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "This principle has deep historical roots. The ancient Athenian democratic principle of free speech may have emerged in the late sixth or early fifth century BC. Before the printing press, written works were copied manually by scribes. Once printing allowed rapid circulation of ideas, the Roman Catholic Church and governments moved to impose censorship.",
+            "evidenceIds": [
+              "P7",
+              "P8"
+            ]
+          },
+          {
+            "text": "Speech is usually viewed as a negative right. The government is legally obliged to take no action against speakers based on their views, but no one is required to listen or help publish those views. Furthermore, free speech is not absolute and faces many common boundaries.",
+            "evidenceIds": [
+              "P3",
+              "P10"
+            ]
+          },
+          {
+            "text": "Common limitations relate to libel, slander, obscenity, hate speech, and copyright violations. Justifications include John Stuart Mill's harm principle, which suggests power can be exercised to prevent harm to others. The offense principle also justifies restricting expression deemed offensive to society.",
+            "evidenceIds": [
+              "P3",
+              "P4"
+            ]
+          },
+          {
+            "text": "In a democracy, freedom of speech is considered fundamental. Proponents like Alexander Meiklejohn argue that an informed electorate is necessary for self-government. Even in emergencies, public debate may not be completely suppressed, and greater latitude is generally given when criticizing public figures.",
+            "evidenceIds": [
+              "P9",
+              "P11"
+            ]
+          },
+          {
+            "text": "The digital age introduced new communication channels alongside new restrictions. Freedom of information acts as an extension of free speech on the internet. While the internet revolutionized communication, it also enabled internet censorship by governments and content moderation by social media platforms.",
+            "evidenceIds": [
+              "P6",
+              "P13",
+              "P17"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "Balancing Expression and Regulation",
+        "pages": [
+          {
+            "text": "Freedom of speech protects individuals and communities in articulating opinions without retaliation or censorship. In international law, instruments such as the Universal Declaration of Human Rights and the ICCPR enshrine these principles, while noting that certain rights carry special duties and may be restricted for national security or public order.",
+            "evidenceIds": [
+              "P1",
+              "P2"
+            ]
+          },
+          {
+            "text": "Historically, the concept traces back to ancient Athenian democracy. The advent of the printing press transformed information dissemination by replacing laborious manual copying with widespread print culture, which subsequently prompted religious and governmental authorities to institute regulatory mechanisms and early copyright controls.",
+            "evidenceIds": [
+              "P7",
+              "P8"
+            ]
+          },
+          {
+            "text": "Conceived primarily as a negative right, freedom of speech obligates governments to refrain from punitive actions against speakers, without compelling private citizens to listen, agree, or facilitate publication. Philosophically, boundaries are often justified by frameworks such as John Stuart Mill's harm principle or the offense principle.",
+            "evidenceIds": [
+              "P3",
+              "P4",
+              "P10"
+            ]
+          },
+          {
+            "text": "Legal systems delineate multiple exceptions to absolute expression, encompassing libel, slander, classified information, and intellectual property violations. Limitations may also be enforced through time, place, and manner restrictions intended to balance competing rights and legitimate governmental interests without targeting specific viewpoints.",
+            "evidenceIds": [
+              "P3",
+              "P15",
+              "P16"
+            ]
+          },
+          {
+            "text": "Democratic theory emphasizes the indispensability of free expression. Scholars like Alexander Meiklejohn posit that self-government requires an unconstrained flow of information to prevent the manipulation of the electorate, establishing that public debate must persist even amid societal emergencies.",
+            "evidenceIds": [
+              "P11"
+            ]
+          },
+          {
+            "text": "The proliferation of digital media has expanded informational access while simultaneously generating novel regulatory paradigms. Freedom of information extends traditional speech rights into the digital sphere, where state-level internet censorship and private platform content moderation continually reshape the boundaries of modern communication.",
+            "evidenceIds": [
+              "P6",
+              "P13",
+              "P17"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2623,
+    "output": 1570,
+    "total": 4193
+  },
+  "validation": null
 }
