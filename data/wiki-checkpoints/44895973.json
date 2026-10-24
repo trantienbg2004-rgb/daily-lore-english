@@ -2,10 +2,10 @@
   "pageId": 44895973,
   "title": "Climate movement",
   "topic": "Politics",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1378960590,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378960590",
-  "reason": "12 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -436,5 +436,139 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378960590"
     }
   ],
-  "updatedAt": "2026-10-24T04:02:01.938Z"
+  "updatedAt": "2026-10-24T04:02:17.292Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "The Global Climate Movement",
+        "pages": [
+          {
+            "text": "The climate movement is a global group. People work together to ask governments and industries to act on climate change. Citizens and organizations have done activism since the late 1980s and early 1990s. They wanted to influence the United Nations. Activism grew a lot during the 2009 Copenhagen Summit and the Paris Agreement.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Environmental groups take many actions. A big event was the global climate strike in September 2019. Young people joined after Greta Thunberg started Fridays For Future. In 2019, Extinction Rebellion also organized large protests. They blocked roads and asked governments to reduce carbon emissions to zero by 2025.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "In the past, people thought nature could not be changed by humans. Writers started to change this idea. George Perkins Marsh wrote a book in 1864 about human impact. Later, books by Aldo Leopold and Rachel Carson showed how humans harm ecosystems, wildlife, and public health through pollution and pesticides.",
+            "evidenceIds": [
+              "P3",
+              "P4"
+            ]
+          },
+          {
+            "text": "Activists use different methods to create change. Some use civil disobedience. In 2008, Tim DeChristopher bid on land leases in Utah to protest. Others use legal action. In May 2021, a court in The Hague ordered Royal Dutch Shell to cut its global carbon emissions by 45 percent by 2030.",
+            "evidenceIds": [
+              "P7",
+              "P12"
+            ]
+          },
+          {
+            "text": "Public activism faces many challenges today. Some countries monitor activists closely or place them on watchlists. Activists also face arrests, fines, and new laws against blocking roads. Despite these obstacles, citizen groups continue to demand policies that protect the environment and fight for systematic change.",
+            "evidenceIds": [
+              "P18",
+              "P19"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "The Evolution of Climate Activism",
+        "pages": [
+          {
+            "text": "The climate movement is a worldwide social effort aimed at pressuring governments and industries to address climate change. Since the late 1980s and early 1990s, citizens, environmental groups, and companies have engaged in activism to influence the United Nations Framework Convention on Climate Change. This movement gained significant momentum following the 2009 Copenhagen Summit and the 2016 Paris Agreement.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Organizations use actions like marches and strikes. A major global climate strike occurred in September 2019, organized by groups like Fridays For Future and Earth Strike. Youth involvement grew rapidly after Greta Thunberg began her strikes. Concurrently, Extinction Rebellion organized large protests, blocking roads and demanding zero carbon emissions by 2025 along with a citizens assembly.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "Historically, Western thought viewed nature as unchanging and immune to human influence. Nineteenth-century writers like George Perkins Marsh began challenging this notion. By 1962, Rachel Carson published Silent Spring, exposing how pesticide use harmed wildlife and the food chain. This critique advanced the global environmental movement, while early Earth Day events in 1970 called for broad ecological protection.",
+            "evidenceIds": [
+              "P3",
+              "P4",
+              "P5"
+            ]
+          },
+          {
+            "text": "Activists employ diverse strategies, ranging from civil disobedience to legal challenges. In 2008, an activist disrupted a Utah land lease auction, while others have used hunger strikes and fossil fuel divestment campaigns. In legal actions, courts have intervened; notably, a Dutch court ordered Royal Dutch Shell to reduce its global carbon emissions by 45 percent by 2030.",
+            "evidenceIds": [
+              "P7",
+              "P12",
+              "P13",
+              "P14"
+            ]
+          },
+          {
+            "text": "Public activism remains essential for driving systemic environmental change, but it faces notable obstacles. Activists encounter counter-movements, censorship in certain countries, and economic barriers. Furthermore, governments and corporations have sometimes targeted activists through surveillance, legal penalties, arrests, and strategic lawsuits designed to deter public participation.",
+            "evidenceIds": [
+              "P16",
+              "P18",
+              "P19"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "Dynamics and Strategies of the Climate Movement",
+        "pages": [
+          {
+            "text": "The climate movement operates as a global social phenomenon focused on compelling state and industrial actors to mitigate the drivers and consequences of climate change. Tracing its origins to efforts surrounding the United Nations Framework Convention on Climate Change in the late 1980s and early 1990s, the movement expanded significantly in prominence, notably accelerating during the 2009 Copenhagen Summit and the 2016 Paris Agreement.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Tactical repertoires vary widely among environmental organizations, encompassing mass mobilizations such as the September 2019 global climate strikes and disruptive demonstrations by groups like Extinction Rebellion. Youth-led activism, catalyzed by figures such as Greta Thunberg, has profoundly shaped contemporary mobilization, pushing demands that range from aggressive decarbonization targets to the establishment of participatory citizens assemblies.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "Intellectual foundations evolved from the nineteenth-century rejection of human-induced environmental change, as articulated by George Perkins Marsh. Subsequent milestones, including Rachel Carson's critique of indiscriminate pesticide use in Silent Spring and the institutionalization of Earth Day in 1970, expanded public consciousness regarding ecological vulnerability and systemic government failures in environmental protection.",
+            "evidenceIds": [
+              "P3",
+              "P4",
+              "P5"
+            ]
+          },
+          {
+            "text": "Modern climate advocacy integrates a complex spectrum of approaches, categorized by sociologists into transformational strategies such as interstitial, ruptural, and symbiotic actions. Activists utilize civil disobedience, hunger strikes, financial divestment campaigns, and targeted climate litigation. Judicial mechanisms have yielded significant rulings, such as the district court of The Hague mandating substantial carbon reductions from Royal Dutch Shell.",
+            "evidenceIds": [
+              "P7",
+              "P12",
+              "P13",
+              "P14",
+              "P17"
+            ]
+          },
+          {
+            "text": "Despite its role in fostering reform, public activism confronts substantial structural impediments. These include ideological divergence, counter-movement opposition, and severe political barriers in nations characterized by state surveillance and censorship. Furthermore, activists frequently navigate state and corporate countermeasures, including domestic intelligence watchlists, strategic lawsuits against public participation, and increased legal penalties for infrastructure interference.",
+            "evidenceIds": [
+              "P16",
+              "P18",
+              "P19"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2805,
+    "output": 1729,
+    "total": 4534
+  },
+  "validation": null
 }
