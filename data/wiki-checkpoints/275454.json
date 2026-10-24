@@ -2,10 +2,10 @@
   "pageId": 275454,
   "title": "BBC Radio 3",
   "topic": "Culture",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1374224876,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374224876",
-  "reason": "10 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -447,5 +447,137 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374224876"
     }
   ],
-  "updatedAt": "2026-10-24T06:04:14.033Z"
+  "updatedAt": "2026-10-24T06:04:33.742Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "BBC Radio 3 and Its Music",
+        "pages": [
+          {
+            "text": "BBC Radio 3 is a national radio station in Britain. It is owned and run by the BBC. The station plays classical music and opera. It also broadcasts jazz, world music, drama, and culture for many listeners every week across the country.",
+            "evidenceIds": [
+              "P1",
+              "P3"
+            ]
+          },
+          {
+            "text": "The station started on September 30, 1967. It followed an older service called the Third Programme. Radio 3 became known for broadcasting live summer concerts called the BBC Proms. It also plays performances by BBC orchestras and singers.",
+            "evidenceIds": [
+              "P1",
+              "P2",
+              "P4"
+            ]
+          },
+          {
+            "text": "Radio 3 broadcasts from the 1930s wing of Broadcasting House in central London. Some programs also come from other BBC bases, such as Cardiff and Salford. The station uses recording spaces at famous London venues like the Royal Albert Hall.",
+            "evidenceIds": [
+              "P9"
+            ]
+          },
+          {
+            "text": "Many shows air during the week and at weekends. A program called Breakfast plays every morning. Another show, Choral Evensong, is the BBC's longest-running outside broadcast program. It began in 1926 from Westminster Abbey and continues today.",
+            "evidenceIds": [
+              "P10",
+              "P11"
+            ]
+          },
+          {
+            "text": "The station also broadcasts special music shows and opera. Opera on 3 features live performances from the Metropolitan Opera in New York. Radio 3 faces a constant debate about highbrow culture, popular appeal, and the cost per listener.",
+            "evidenceIds": [
+              "P17",
+              "P26"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "The History and Programs of BBC Radio 3",
+        "pages": [
+          {
+            "text": "BBC Radio 3 is a British national radio station owned and operated by the BBC. It replaced the older Third Programme in September 1967. The station primarily broadcasts classical music and opera, while also featuring jazz, world music, drama, and culture.",
+            "evidenceIds": [
+              "P1",
+              "P4"
+            ]
+          },
+          {
+            "text": "Through its New Generation Artists scheme, the station promotes young musicians of all nationalities. It broadcasts the BBC Proms concerts live each summer. Regular productions of classic plays and newly commissioned drama are also included in the schedule.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "Radio 3 broadcasts mainly from the 1930s wing of Broadcasting House in central London. However, certain programs and performances come from other BBC bases, including Cardiff and Salford. The station also utilizes recording facilities at major London venues like the Royal Albert Hall.",
+            "evidenceIds": [
+              "P9"
+            ]
+          },
+          {
+            "text": "The station features long-running programs such as Choral Evensong, which first aired from Westminster Abbey in 1926. Other regular features include the Breakfast show, Composer of the Week, and Opera on 3, which broadcasts live performances from the Metropolitan Opera House in New York.",
+            "evidenceIds": [
+              "P10",
+              "P11",
+              "P12",
+              "P17"
+            ]
+          },
+          {
+            "text": "Over the years, the station has experienced various structural changes and controversies. A policy document published in 1969 outlined audience targets and content guidelines, which sparked debate at the time. Controllers have often balanced tension between highbrow culture and popular appeal.",
+            "evidenceIds": [
+              "P6",
+              "P26"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "Broadcasting Culture: The Evolution of BBC Radio 3",
+        "pages": [
+          {
+            "text": "BBC Radio 3 is a national British radio station operated by the BBC, succeeding the Third Programme in September 1967. Its core programming centres on classical music and opera, supplemented by jazz, world music, cultural discussions, and drama, with the station describing itself as a significant commissioner of new music.",
+            "evidenceIds": [
+              "P1",
+              "P4"
+            ]
+          },
+          {
+            "text": "The station actively promotes emerging international talent via initiatives such as the New Generation Artists scheme and broadcasts comprehensive summer performances of the BBC Proms. Its operational footprint extends beyond central London's Broadcasting House to regional bases in Cardiff and Salford, alongside dedicated recording facilities at major concert halls.",
+            "evidenceIds": [
+              "P2",
+              "P9",
+              "P18"
+            ]
+          },
+          {
+            "text": "Radio 3 maintains historical broadcasting traditions, notably Choral Evensong, which originated in 1926 and remains the BBC's longest-running outside broadcast. The schedule incorporates specialized recurring segments like Composer of the Week, live Metropolitan Opera relays through Opera on 3, and dedicated early music presentations.",
+            "evidenceIds": [
+              "P11",
+              "P12",
+              "P17"
+            ]
+          },
+          {
+            "text": "Throughout its institutional history, programming strategies have evolved through various administrative periods. The 1969 policy document Broadcasting in set out structured audience targets that departed from earlier Reithian methods, generating considerable controversy. Subsequent controllers adjusted presentation styles to reduce formal rigidity and engage broader audiences.",
+            "evidenceIds": [
+              "P6",
+              "P8"
+            ]
+          },
+          {
+            "text": "The station continuously navigates structural debates concerning elitism versus populism. Controllers have frequently addressed the perennial tension between highbrow cultural programming, public expenditure, and audience share, reflecting ongoing discussions regarding public service broadcasting obligations.",
+            "evidenceIds": [
+              "P26"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2904,
+    "output": 1449,
+    "total": 4353
+  },
+  "validation": null
 }
