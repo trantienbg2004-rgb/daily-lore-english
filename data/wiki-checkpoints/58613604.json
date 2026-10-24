@@ -314,7 +314,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1360540655"
     }
   ],
-  "updatedAt": "2026-10-24T03:59:13.530Z",
+  "updatedAt": "2026-10-24T03:59:31.387Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -404,10 +404,10 @@
         ]
       },
       "C1-C2": {
-        "headline": "Diplomatic Breakthroughs and Impasses on the Korean Peninsula",
+        "headline": "Korean Peace Process: Diplomatic Breakthroughs and Impasses",
         "pages": [
           {
-            "text": "Initiated to address the protracted Korean conflict and achieve denuclearization, the peace process emerged amid heightened international anxiety over North Korea's nuclear capabilities. The structural division of the peninsula originated in 1945, precipitating the war and the subsequent 1953 armistice, which established a persistent military standoff in the absence of a formal peace treaty.",
+            "text": "Initiated to address the protracted Korean conflict and achieve denuclearization, the peace process emerged amid heightened international anxiety over North Korea's nuclear capabilities. The structural division of the peninsula originated at the end of World War II, precipitating the war and the subsequent 1953 armistice, which established a persistent military standoff in the absence of a formal peace treaty.",
             "evidenceIds": [
               "P1",
               "P4"
@@ -449,11 +449,11 @@
       }
     }
   },
-  "repairAttempts": 1,
+  "repairAttempts": 2,
   "lastUsage": {
-    "input": 3509,
-    "output": 705,
-    "total": 4214
+    "input": 2837,
+    "output": 116,
+    "total": 2953
   },
   "validation": null
 }
