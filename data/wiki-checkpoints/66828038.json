@@ -2,10 +2,10 @@
   "pageId": 66828038,
   "title": "Tigrayan peace process",
   "topic": "Conflict & Security",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1357904180,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1357904180",
-  "reason": "2 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -198,7 +198,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1357904180"
     }
   ],
-  "updatedAt": "2026-10-24T06:53:29.624Z",
+  "updatedAt": "2026-10-24T06:53:46.775Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -332,16 +332,11 @@
       }
     }
   },
-  "repairAttempts": 1,
+  "repairAttempts": 2,
   "lastUsage": {
-    "input": 2973,
-    "output": 238,
-    "total": 3211
+    "input": 2859,
+    "output": 140,
+    "total": 2999
   },
-  "validation": {
-    "accepted": false,
-    "errors": [
-      "C1-C2:page-2:unsupported-number-context-1"
-    ]
-  }
+  "validation": null
 }
