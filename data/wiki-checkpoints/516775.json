@@ -2,10 +2,10 @@
   "pageId": 516775,
   "title": "Student activism",
   "topic": "Society",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1374612787,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374612787",
-  "reason": "17 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -619,7 +619,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374612787"
     }
   ],
-  "updatedAt": "2026-10-24T06:03:23.464Z",
+  "updatedAt": "2026-10-24T06:03:41.925Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -645,7 +645,7 @@
             ]
           },
           {
-            "text": "During communist rule, students in Eastern Europe were behind several famous protests. Peaceful student demonstrations in Budapest started the events that led to the 1956 Hungarian Revolution.",
+            "text": "During communist rule, students in Eastern Europe were behind several famous protests. Peaceful student demonstrations in Budapest started the events that led to the 1956 Hungarian Revolution. In Czechoslovakia, Jan Palach set fire to himself in 1969 to protest against the Soviet-led occupation.",
             "evidenceIds": [
               "P12"
             ]
@@ -668,31 +668,31 @@
             ]
           },
           {
-            "text": "Student movements span varied backgrounds and political perspectives. While some protests focus on internal institutional affairs like disinvestment, others target broader global issues, wars, or authoritarian regimes.",
+            "text": "Student movements span varied backgrounds and political perspectives. While some protests focus on internal institutional affairs like disinvestment, others target broader global issues, wars, or authoritarian regimes. Modern student activism is most often associated with left-wing politics across many countries.",
             "evidenceIds": [
               "P2"
             ]
           },
           {
-            "text": "In Argentina, student activism became a major political force after 1900. The 1918 University Revolution in Córdoba triggered a general modernization of universities to increase democratic participation.",
+            "text": "In Argentina, student activism became a major political force after 1900. The 1918 University Revolution in Córdoba triggered a general modernization of universities to increase democratic participation. The Córdoba Manifesto encapsulates the interests of students during this time to make their institutions more democratic.",
             "evidenceIds": [
               "P4"
             ]
           },
           {
-            "text": "Between 2011 and 2013, Chile experienced massive student-led protests demanding a new educational framework, greater state participation, and the elimination of profit from higher education.",
+            "text": "Between 2011 and 2013, Chile experienced massive student-led protests demanding a new educational framework, greater state participation, and the elimination of profit from higher education. These demonstrations reflected a deep discontent with Chile's high level of inequality, involving both peaceful marches and violent clashes.",
             "evidenceIds": [
               "P9"
             ]
           },
           {
-            "text": "In Eastern Europe, students challenged communist rule through prominent protests. Peaceful student demonstrations in Budapest famously sparked the chain of events leading to the 1956 Hungarian Revolution.",
+            "text": "In Eastern Europe, students challenged communist rule through prominent protests. Peaceful student demonstrations in Budapest famously sparked the chain of events leading to the 1956 Hungarian Revolution. In Czechoslovakia, student Jan Palach committed suicide by setting fire to himself to protest the Soviet-led occupation.",
             "evidenceIds": [
               "P12"
             ]
           },
           {
-            "text": "In May 2024, Trinity College Dublin student union led a pro-Palestinian encampment in Fellows Square. After a five-day protest, the college pledged to divest from Israeli companies.",
+            "text": "In May 2024, Trinity College Dublin student union led a pro-Palestinian encampment in Fellows Square. After a five-day protest, during which the Book of Kells exhibition was blocked, the college pledged to divest from Israeli companies following similar actions elsewhere.",
             "evidenceIds": [
               "P21"
             ]
@@ -703,13 +703,13 @@
         "headline": "Global Dynamics of Student Movements",
         "pages": [
           {
-            "text": "Campus activism encompasses concerted efforts by student constituencies to instigate political, environmental, economic, or social transformation. Historically, these groups have frequently catalyzed democratization and the securing of civil rights.",
+            "text": "Campus activism encompasses concerted efforts by student constituencies to instigate political, environmental, economic, or social transformation. Historically, these groups have frequently catalyzed democratization and the securing of civil rights alongside their standard educational pursuits.",
             "evidenceIds": [
               "P1"
             ]
           },
           {
-            "text": "Contemporary student movements reflect broad demographic intersections and ideological perspectives. While certain demonstrations address internal institutional policies, others confront broader geopolitical conflicts and authoritarian governance.",
+            "text": "Contemporary student movements reflect broad demographic intersections and ideological perspectives. While certain demonstrations address internal institutional policies, others confront broader geopolitical conflicts, wars, and authoritarian governance, remaining most frequently associated with left-wing politics.",
             "evidenceIds": [
               "P2"
             ]
@@ -721,7 +721,7 @@
             ]
           },
           {
-            "text": "Chile witnessed extensive nationwide student mobilizations between 2011 and 2013. Protesters challenged prevailing educational frameworks by demanding increased state involvement and the abolition of for-profit higher education.",
+            "text": "Chile witnessed extensive nationwide student mobilizations between 2011 and 2013. Protesters challenged prevailing educational frameworks by demanding increased state involvement and the abolition of for-profit higher education, while also reflecting a deep societal discontent with high levels of economic inequality.",
             "evidenceIds": [
               "P9"
             ]
@@ -742,24 +742,11 @@
       }
     }
   },
-  "repairAttempts": 0,
+  "repairAttempts": 1,
   "lastUsage": {
-    "input": 2838,
-    "output": 1251,
-    "total": 4089
+    "input": 3199,
+    "output": 834,
+    "total": 4033
   },
-  "validation": {
-    "accepted": false,
-    "errors": [
-      "A1-A2:page-4:length-or-sentence",
-      "B1-B2:page-2:length-or-sentence",
-      "B1-B2:page-3:length-or-sentence",
-      "B1-B2:page-4:length-or-sentence",
-      "B1-B2:page-5:length-or-sentence",
-      "B1-B2:page-6:length-or-sentence",
-      "C1-C2:page-1:length-or-sentence",
-      "C1-C2:page-2:length-or-sentence",
-      "C1-C2:page-4:length-or-sentence"
-    ]
-  }
+  "validation": null
 }
