@@ -260,7 +260,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379750089"
     }
   ],
-  "updatedAt": "2026-10-24T08:59:24.864Z",
+  "updatedAt": "2026-10-24T08:59:43.218Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -287,7 +287,7 @@
             ]
           },
           {
-            "text": "Russia has legal abortion up to the twelfth week of pregnancy. In 2011, the government passed new restrictions to help raise the birthrate. These rules include telling women about the dangers of abortion. Leaders and organizations also support national anti-abortion campaigns.",
+            "text": "Russia has legal abortion up to the twelfth week of pregnancy. The government passed new restrictions to help raise the birthrate. These rules include telling women about the dangers of abortion. Leaders and organizations also support national anti-abortion campaigns to raise awareness.",
             "evidenceIds": [
               "P8"
             ]
@@ -327,7 +327,7 @@
             ]
           },
           {
-            "text": "In the Republic of Ireland, several groups campaign against abortion despite a 2018 constitutional amendment providing for legal access. Meanwhile, Russian authorities enacted restrictions in 2011 to combat a falling population, requiring providers to advertise health dangers and banning descriptions of procedures as safe.",
+            "text": "In the Republic of Ireland, several groups campaign against abortion despite a 2018 constitutional amendment providing for legal access. Meanwhile, Russian authorities enacted restrictions to combat a falling population, requiring providers to advertise health dangers and banning descriptions of procedures as safe.",
             "evidenceIds": [
               "P6",
               "P8"
@@ -354,7 +354,7 @@
             ]
           },
           {
-            "text": "European legal frameworks exhibit substantial variation, ranging from parliamentary authorization to constitutional prohibition. In France, early organizational efforts accompanied the 1975 Veil Law, establishing strict gestational limits and severe criminal penalties for unauthorized procedures. British legislation similarly regulates access through practitioner approval while maintaining potential criminal liabilities.",
+            "text": "European legal frameworks exhibit substantial variation, ranging from parliamentary authorization to constitutional prohibition. In France, early organizational efforts accompanied legislation introduced by Simone Veil, establishing strict gestational limits and severe criminal penalties for unauthorized procedures. British legislation similarly regulates access through practitioner approval while maintaining potential criminal liabilities.",
             "evidenceIds": [
               "P2",
               "P3",
@@ -363,7 +363,7 @@
             ]
           },
           {
-            "text": "National contexts demonstrate diverse strategic approaches among anti-abortion entities. Irish organizations continue political campaigns despite a 2018 constitutional amendment legalizing abortion. In Russia, demographic concerns prompted legislative restrictions in 2011, obligroving providers to disseminate health warnings and prohibiting descriptions of the procedure as safe.",
+            "text": "National contexts demonstrate diverse strategic approaches among anti-abortion entities. Irish organizations continue political campaigns despite a 2018 constitutional amendment legalizing abortion. In Russia, demographic concerns prompted legislative restrictions, obligating providers to disseminate health warnings and prohibiting descriptions of the procedure as safe.",
             "evidenceIds": [
               "P6",
               "P8"
@@ -389,11 +389,11 @@
       }
     }
   },
-  "repairAttempts": 0,
+  "repairAttempts": 1,
   "lastUsage": {
-    "input": 2693,
-    "output": 1084,
-    "total": 3777
+    "input": 2845,
+    "output": 442,
+    "total": 3287
   },
   "validation": null
 }
