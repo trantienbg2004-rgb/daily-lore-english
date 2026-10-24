@@ -8336,10 +8336,10 @@
       "checkedAt": "2026-10-22T06:19:15.268Z"
     },
     "26880731": {
-      "status": "FETCHED",
-      "reason": "pinned-source-ready",
+      "status": "REJECTED",
+      "reason": "insufficient-source-text-or-embedded-images",
       "revisionId": 1379918652,
-      "checkedAt": "2026-10-24T04:08:19.171Z"
+      "checkedAt": "2026-10-24T04:08:24.647Z"
     },
     "27301862": {
       "status": "REJECTED",
@@ -10202,7 +10202,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-24T04:08:19.172Z",
+  "updatedAt": "2026-10-24T04:08:24.648Z",
   "dailyUsage": {
     "day": "2026-10-23",
     "calls": 166,
