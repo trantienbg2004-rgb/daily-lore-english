@@ -2,10 +2,10 @@
   "pageId": 39766716,
   "title": "Anti-war movement",
   "topic": "Politics",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1378302705,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378302705",
-  "reason": "9 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -388,5 +388,132 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378302705"
     }
   ],
-  "updatedAt": "2026-10-24T06:29:46.791Z"
+  "updatedAt": "2026-10-24T06:30:05.517Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "The History of Anti-War Movements",
+        "pages": [
+          {
+            "text": "An anti-war movement is a social group. It works against a nation starting or fighting a war. Activists use protests to pressure governments to stop or prevent conflicts. They want to protect people from harm and violence.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "In the United States and England, big anti-war feelings grew between the War of 1812 and the Civil War. Writers like Ralph Waldo Emerson and Henry David Thoreau made literary works against war. Many peace societies and books were also produced.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "During the American Civil War, opposition grew. George B. McClellan ran for US president as a Peace Democrat against Abraham Lincoln. In New York, violent draft riots happened because only wealthy men could buy their way out of the army.",
+            "evidenceIds": [
+              "P4",
+              "P5"
+            ]
+          },
+          {
+            "text": "Opposition happened during many other wars too. In the Vietnam War, college students protested in large numbers starting in 1964. Songs and literary works encouraged peace and nonconformism. Many veterans also spoke out against the war.",
+            "evidenceIds": [
+              "P9"
+            ]
+          },
+          {
+            "text": "In recent years, protests happened during the Iraq War, conflicts in Ukraine, and the 2021 Israel-Palestine crisis. Millions of people joined mass demonstrations across the world. They displayed banners and chanted to stop the war.",
+            "evidenceIds": [
+              "P13",
+              "P14",
+              "P15"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "A History of Anti-War Movements",
+        "pages": [
+          {
+            "text": "An anti-war movement is a social campaign opposing a government's decision to start or carry on an armed conflict. Activists use protests and grassroots methods to pressure leaders to end or prevent wars. Pacifism, which rejects all military force, is also part of this tradition.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Substantial anti-war sentiment developed in the United States and England between the War of 1812 and the Civil War. Intellectuals like Ralph Waldo Emerson and Henry David Thoreau contributed literary works against war. Peace societies and periodicals were formed to advocate for international courts and moral reform.",
+            "evidenceIds": [
+              "P2",
+              "P3"
+            ]
+          },
+          {
+            "text": "The American Civil War marked a key event when George B. McClellan ran for president as a Peace Democrat against Abraham Lincoln, arguing that the conflict's costs outweighed its gains. Meanwhile, the violent New York Draft Riots erupted in protest against conscription laws that allowed wealthy men to buy their way out.",
+            "evidenceIds": [
+              "P4",
+              "P5"
+            ]
+          },
+          {
+            "text": "In 1964, organized opposition to U.S. involvement in the Vietnam War began on college campuses. A coalition of activists formed the National Mobilization Committee, organizing massive demonstrations. Counter-cultural works encouraged peace, while returning veterans like John Kerry and Ron Kovic publicly spoke out against the conflict.",
+            "evidenceIds": [
+              "P9"
+            ]
+          },
+          {
+            "text": "Global anti-war activism continued through later conflicts. Millions staged mass protests leading up to the 2003 invasion of Iraq. Demonstrations also emerged during the 2014 Russian intervention in Ukraine and following the 2021 Israel-Palestine crisis, where large crowds gathered in cities like London and Oakland.",
+            "evidenceIds": [
+              "P13",
+              "P14",
+              "P15"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "Global Anti-War Movements",
+        "pages": [
+          {
+            "text": "An anti-war movement constitutes a social coalition dedicated to resisting a nation's initiation or continuation of armed conflict. Distinguished from broader peace movements or absolute pacifism, anti-war activists deploy grassroots protests and advocacy to compel governments to halt or forestall specific hostilities.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "During the antebellum era in the United States and England, early antiwar sentiment flourished through the contributions of prominent intellectuals such as Ralph Waldo Emerson and Henry David Thoreau. These groups established peace societies and literature emphasizing the societal brutalization and moral decline caused by warfare, while frequently advocating for international courts.",
+            "evidenceIds": [
+              "P2",
+              "P3"
+            ]
+          },
+          {
+            "text": "The American Civil War catalyzed modern anti-war discourse, culminating in George B. McClellan's presidential candidacy on a Peace Democrat platform opposing Abraham Lincoln. Discontent peaked during the New York Draft Riots, where violent opposition targeted conscription laws that disproportionately burdened non-wealthy citizens unable to purchase exemptions.",
+            "evidenceIds": [
+              "P4",
+              "P5"
+            ]
+          },
+          {
+            "text": "Opposition to the Vietnam War burgeoned in 1964 across U.S. campuses, eventually unifying into extensive coalitions like the National Mobilization Committee. Fueled by baby boomer demographics and counter-cultural sentiments, the movement gained significant momentum and credibility when returning veterans, including John Kerry and Ron Kovic, actively denounced the conflict.",
+            "evidenceIds": [
+              "P9"
+            ]
+          },
+          {
+            "text": "Subsequent geopolitical conflicts continually galvanized international opposition. The 2003 Iraq invasion provoked unprecedented global demonstrations, eventually eroding public support. Similarly, major protests emerged against the 2014 Russian intervention in Ukraine and the 2021 Israel-Palestine crisis, demonstrating enduring grassroots mobilization across diverse societies.",
+            "evidenceIds": [
+              "P13",
+              "P14",
+              "P15"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2816,
+    "output": 1088,
+    "total": 3904
+  },
+  "validation": null
 }

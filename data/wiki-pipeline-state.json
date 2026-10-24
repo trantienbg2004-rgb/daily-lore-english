@@ -9622,10 +9622,10 @@
       "checkedAt": "2026-10-21T07:35:40.108Z"
     },
     "39766716": {
-      "status": "EVIDENCE_READY",
-      "reason": "9 rights-verified embedded images",
+      "status": "DRAFTED",
+      "reason": "draft durably saved before validation",
       "revisionId": 1378302705,
-      "checkedAt": "2026-10-24T06:29:46.788Z"
+      "checkedAt": "2026-10-24T06:30:05.517Z"
     },
     "39958236": {
       "status": "RETRY_LATER",
@@ -11290,7 +11290,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-24T06:30:04.350Z",
+  "updatedAt": "2026-10-24T06:30:05.518Z",
   "dailyUsage": {
     "day": "2026-10-23",
     "calls": 274,
