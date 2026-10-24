@@ -9836,10 +9836,10 @@
       "checkedAt": null
     },
     "26651464": {
-      "status": "PENDING",
-      "reason": "queued",
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
       "revisionId": 1352636013,
-      "checkedAt": null
+      "checkedAt": "2026-10-24T10:11:07.362Z"
     },
     "26740386": {
       "status": "RETRY_LATER",
@@ -11930,7 +11930,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-24T10:11:01.071Z",
+  "updatedAt": "2026-10-24T10:11:07.364Z",
   "dailyUsage": {
     "day": "2026-10-24",
     "calls": 117,
