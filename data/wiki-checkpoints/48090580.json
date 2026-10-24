@@ -2,10 +2,10 @@
   "pageId": 48090580,
   "title": "Storage of cultural property",
   "topic": "Culture",
-  "status": "DRAFTED",
+  "status": "VALIDATED",
   "revisionId": 1361016872,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1361016872",
-  "reason": "draft durably saved before validation",
+  "reason": "local factual, style, length, structure and source audit passed",
   "rights": [
     {
       "status": "REVIEW",
@@ -322,7 +322,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1361016872"
     }
   ],
-  "updatedAt": "2026-10-24T09:23:27.065Z",
+  "updatedAt": "2026-10-24T09:23:45.126Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -450,5 +450,8 @@
     "output": 525,
     "total": 3205
   },
-  "validation": null
+  "validation": {
+    "accepted": true,
+    "errors": []
+  }
 }
