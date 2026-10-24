@@ -8324,10 +8324,10 @@
       "checkedAt": "2026-10-21T13:32:40.074Z"
     },
     "1132045": {
-      "status": "PENDING",
-      "reason": "queued",
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
       "revisionId": 1378075869,
-      "checkedAt": null
+      "checkedAt": "2026-10-24T11:01:47.332Z"
     },
     "1141372": {
       "status": "RETRY_LATER",
@@ -11930,7 +11930,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-24T11:01:40.962Z",
+  "updatedAt": "2026-10-24T11:01:47.332Z",
   "dailyUsage": {
     "day": "2026-10-24",
     "calls": 117,
