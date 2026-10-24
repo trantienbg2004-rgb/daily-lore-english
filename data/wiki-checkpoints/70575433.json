@@ -2,9 +2,170 @@
   "pageId": 70575433,
   "title": "Settlement and community houses in the United States",
   "topic": "Society",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1296841503,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1296841503",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-24T10:39:47.522Z"
+  "reason": "3 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:Hull House 2.JPG",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/26/Hull_House_2.JPG/960px-Hull_House_2.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Hull House 2.JPG",
+        "caption": "Hull House, Chicago",
+        "alt": "",
+        "description": "Hull House at the University of Illinois at Chicago",
+        "date": "2010-03-23",
+        "section": "",
+        "position": 0,
+        "provenance": {
+          "credit": "Zagalejo",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Hull_House_2.JPG",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Settlement_and_community_houses_in_the_United_States",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1296841503",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:WSTM Three Blind Mice 0076.JPG",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ed/WSTM_Three_Blind_Mice_0076.JPG/960px-WSTM_Three_Blind_Mice_0076.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:WSTM Three Blind Mice 0076.JPG",
+        "caption": "University Settlement House, Manhattan",
+        "alt": "",
+        "description": "This photo is of Wikis Take Manhattan goal code F5, University Settlement House.",
+        "date": "2008-10-04",
+        "section": "History",
+        "position": 1,
+        "provenance": {
+          "credit": "This photo was taken by participant/team Three_Blind_Mice as part of the Commons:Wikis Take Manhattan project on October 4, 2008. This file is licensed under the Creative Commons Attribution-Share Alike 3.0 Unported license. You are free: to share – ",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:WSTM_Three_Blind_Mice_0076.JPG",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Settlement_and_community_houses_in_the_United_States",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1296841503",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:Denison House, Boston.jpg",
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/5/52/Denison_House%2C_Boston.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "fileTitle": "File:Denison House, Boston.jpg",
+        "caption": "Denison House, Boston",
+        "alt": "",
+        "description": "Illustration from Annual Report for the Year Ending October 1st, 1913, by Denison House, a Boston settlement house.",
+        "date": "1913",
+        "section": "History",
+        "position": 2,
+        "provenance": {
+          "credit": "Unknown authorUnknown author",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Denison_House,_Boston.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Settlement_and_community_houses_in_the_United_States",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1296841503",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Irene Kaufmann Settlement.png"
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Lawrence House (Baltimore, 1905).png"
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Neighborhood House, Louisville, Kentucky (Child Welfare Work in Louisville, 1919).png"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "90ba380f11ebd11b5ffae7f2197390c0de45a6367eefe2a31a6ee7897a71084c",
+      "heading": "Lead",
+      "excerpt": "Settlement and community houses in the United States were a vital part of the settlement movement, a progressive social movement that began ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1296841503"
+    },
+    {
+      "id": "P2",
+      "hash": "653793b0f960a49b9f4221eab38b8fc1258119cbc4289ea2fa92da318e7ce25b",
+      "heading": "History",
+      "excerpt": "The movement spread to the United States in the late 1880s, with the opening of the Neighborhood Guild in New York City's Lower East Side in",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1296841503"
+    },
+    {
+      "id": "P3",
+      "hash": "384dbf4ee97e3110f1611eb640519ea172477abeefa679f4b487ab3918179e23",
+      "heading": "History",
+      "excerpt": "Settlement workers often lived in the settlement house, believing that only residents of the area could truly understand the needs of the pe",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1296841503"
+    },
+    {
+      "id": "P4",
+      "hash": "f6a561c79573debe4e0b3ebaae6e88c65e59be4fa7c24dc0959e4ca2d53a562e",
+      "heading": "History",
+      "excerpt": "Organizations such as the College Settlements Association, established in 1890, provided support and control of college settlement houses fo",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1296841503"
+    },
+    {
+      "id": "P5",
+      "hash": "8402091e07ca0129f588902ce77cb48df54d87f409b6b20d33494d466ed576f7",
+      "heading": "History",
+      "excerpt": "The need for trained professionals highlighted the shift towards formal, organized settlement houses, often with their own set of ethics, id",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1296841503"
+    },
+    {
+      "id": "P6",
+      "hash": "59a274fa3de122b4f0e4b8d36abd9d77c292765060c8499398ded1b77498772d",
+      "heading": "National conferences",
+      "excerpt": "A succession of more or less informal national gatherings of settlement workers were held from time to time between 1892 and 1910.",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1296841503"
+    },
+    {
+      "id": "P7",
+      "hash": "74ac85d916bcd346c4b0a16d052ba771623ee20fc22283eb80563d85c3a77ad3",
+      "heading": "Later years",
+      "excerpt": "In the 1920s, settlement house usage began to decline with the reduction of recently arrived immigrants under quotas of the Immigration Act ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1296841503"
+    },
+    {
+      "id": "P8",
+      "hash": "1a5a99e1d6bc515600dc28a35b6782c58be4dcb6043f3464b0c828e317a7abc7",
+      "heading": "History",
+      "excerpt": "Although the work of settlement houses aimed at welcoming the immigrants to the new country while encouraging the maintenance of certain asp",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1296841503"
+    },
+    {
+      "id": "P9",
+      "hash": "0d61082da0f5271359dec9917c5aa7273447d0ebb29d56a42236a7f99c47c36a",
+      "heading": "National conferences",
+      "excerpt": "No continuous or really comprehensive organization was provided for until 1908. In May, 1908, a group of twenty settlement residents from Ne",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1296841503"
+    },
+    {
+      "id": "P10",
+      "hash": "e860e9b6e7f0a511bf7daf8801315c239faa05ef9045d7d36511fdda74135ab7",
+      "heading": "National conferences",
+      "excerpt": "The next year, settlement work filled the program of several regular sessions of the National Conference, but one largely attended special g",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1296841503"
+    }
+  ],
+  "updatedAt": "2026-10-24T10:39:53.408Z"
 }
