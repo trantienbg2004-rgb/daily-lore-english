@@ -10386,10 +10386,10 @@
       "checkedAt": "2026-10-21T13:51:24.941Z"
     },
     "54030514": {
-      "status": "DRAFTED",
-      "reason": "draft durably saved before validation",
+      "status": "VALIDATED",
+      "reason": "local factual, style, length, structure and source audit passed",
       "revisionId": 1373314851,
-      "checkedAt": "2026-10-24T08:58:36.045Z"
+      "checkedAt": "2026-10-24T08:58:53.950Z"
     },
     "54137111": {
       "status": "REJECTED",
@@ -11610,7 +11610,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-24T08:58:48.993Z",
+  "updatedAt": "2026-10-24T08:58:53.952Z",
   "dailyUsage": {
     "day": "2026-10-24",
     "calls": 87,
