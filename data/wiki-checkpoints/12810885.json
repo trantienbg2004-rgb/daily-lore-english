@@ -2,9 +2,246 @@
   "pageId": 12810885,
   "title": "Cudjoe Lewis",
   "topic": "Economy",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1380243869,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380243869",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-24T11:06:05.524Z"
+  "reason": "3 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:Map of Cudjo Lewis' Capture in Africa.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/88/Map_of_Cudjo_Lewis%27_Capture_in_Africa.jpg/960px-Map_of_Cudjo_Lewis%27_Capture_in_Africa.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Map of Cudjo Lewis' Capture in Africa.jpg",
+        "caption": "A map drawn by Lewis to illustrate his capture",
+        "alt": "",
+        "description": "Map drawn by Cudjo Kossola Lewis, last surviving victim of the Atlantic slave trade between Africa and the United States, showing the path of his capture and enslavement in West Africa.",
+        "date": "1914",
+        "section": "Early life and enslavement",
+        "position": 0,
+        "provenance": {
+          "credit": "Cudjoe Lewis (Kazoola)",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Map_of_Cudjo_Lewis%27_Capture_in_Africa.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Cudjoe_Lewis",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380243869",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:Cudjoe Abache.jpg",
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/0/09/Cudjoe_Abache.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "fileTitle": "File:Cudjoe Abache.jpg",
+        "caption": "Lewis and fellow Clotilda survivor Abaché (Clara Turner) c. 1914. By then there were eight surviving members of the Clotilda group.",
+        "alt": "",
+        "description": "Abaché and Kazoola. Cudjoe Kazoola Lewis and Abache were among the last group of Africans forcibly transported to the United States aboard the slave ship Clotilde.",
+        "date": "1914",
+        "section": "Establishment of Africatown",
+        "position": 1,
+        "provenance": {
+          "credit": "Emma Langdon Roche",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Cudjoe_Abache.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Cudjoe_Lewis",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380243869",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:Detail of Cudjoe Lewis marker.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8b/Detail_of_Cudjoe_Lewis_marker.jpg/960px-Detail_of_Cudjoe_Lewis_marker.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Detail of Cudjoe Lewis marker.jpg",
+        "caption": "Lewis' commemorative marker in Plateau Cemetery, Africatown",
+        "alt": "",
+        "description": "Text from marker erected to commemorate Cudjo Kossula Lewis, considered to be the last surviving victim of the Atlantic slave trade between Africa and the United States. Plateau Cemetery, Africatown, Mobile, AL.",
+        "date": "2016-05-27",
+        "section": "Role as storyteller and historian",
+        "position": 2,
+        "provenance": {
+          "credit": "Womump",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Detail_of_Cudjoe_Lewis_marker.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Cudjoe_Lewis",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380243869",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "ee52f5df8c77ae877447e60863acef0e868a18d65d62a481ed9aaa9b286fde25",
+      "heading": "Lead",
+      "excerpt": "Cudjoe Kazoola Lewis (c. 1841 – July 17, 1935), born Oluale Kossola, and also known as Cudjo Lewis, was the third-to-last adult survivor of ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380243869"
+    },
+    {
+      "id": "P2",
+      "hash": "26fc9d72fc2f5942c6c8f693b85bc74118f97fb58fbb6b7abfbc95084b2ae68a",
+      "heading": "Lead",
+      "excerpt": "After the Civil War and emancipation, Lewis and other members of the Clotilda group became free. A number of them founded a community at Mag",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380243869"
+    },
+    {
+      "id": "P3",
+      "hash": "f9b933aaeefed618a75bb254ecadcf6d57a86b7cf2eae644c075ae26b145d847",
+      "heading": "Lead",
+      "excerpt": "In old age Kossola preserved the experiences of the Clotilda captives by providing accounts of the history of the group to visitors, includi",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380243869"
+    },
+    {
+      "id": "P4",
+      "hash": "250ad7eb4d8e2d621c24d01182855dbb80ed454aae3e63ecdddd4352c7585864",
+      "heading": "Early life and enslavement",
+      "excerpt": "He was born as Kossola or Oluale Kossola (Americans would later transcribe his given name as \"Kazoola\"), around 1841 in West Africa. Analyzi",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380243869"
+    },
+    {
+      "id": "P5",
+      "hash": "8e1dcb4b4e6546f1049e8f6dea01cd8d5cac0f41b9825f8de1d9b684e26ec4da",
+      "heading": "Early life and enslavement",
+      "excerpt": "Interviewers Emma Langdon Roche and Zora Neale Hurston, and those who used their work, referred to Lewis and his fellow-captives as \"Tarkars",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380243869"
+    },
+    {
+      "id": "P6",
+      "hash": "ef9aa1e37d91e77c5b73bfcb349d24d656f9c810224d74683ca9a8fed1ca9d3e",
+      "heading": "Establishment of Africatown",
+      "excerpt": "During their time in slavery, Lewis and many of the other Clotilda captives were located at an area north of Mobile known as Magazine Point,",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380243869"
+    },
+    {
+      "id": "P7",
+      "hash": "fcf65bc4687c5698745bbbd0d8d84b0276185ddb557e485b39450570b3c50d0f",
+      "heading": "Marriage and family life",
+      "excerpt": "During the mid-1860s Lewis established a common-law relationship with another Clotilda survivor, Abile (Americanized as \"Celia\"). They forma",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380243869"
+    },
+    {
+      "id": "P8",
+      "hash": "986733ea51ac1ad3f7368ed91f7e8c2fe990155dd8642c64a75a53d7b76b1734",
+      "heading": "Participation in American institutions",
+      "excerpt": "Although native-born American former slaves became citizens upon the passage of the Fourteenth Amendment to the United States Constitution i",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380243869"
+    },
+    {
+      "id": "P9",
+      "hash": "a793ea6ec39137d5353ff00937eeb1b986b6dc649934b6c674fb0bc9e1df618d",
+      "heading": "Role as storyteller and historian",
+      "excerpt": "In the first quarter of the 20th century, Lewis began to serve as an informant for scholars and other writers, sharing the history of the Cl",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380243869"
+    },
+    {
+      "id": "P10",
+      "hash": "f4ffadd9b9316e86f0d5db70e6c6cc7f3ca183d89acbb72ade7df21fc97fa646",
+      "heading": "Legacy",
+      "excerpt": "Cudjo Lewis died on July 17, 1935, and was buried at the Plateau Cemetery in Africatown. Since his death, his status as one of the last surv",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380243869"
+    },
+    {
+      "id": "P11",
+      "hash": "e1c28bea3a120b5ddcee6ae75f3b62a60fc3efc5784a6dcf70fa2af974f1d473",
+      "heading": "Early life and enslavement",
+      "excerpt": "In April or May 1860, his village was attacked and Lewis was taken prisoner by female warriors led by King Glele of Dahomey, during an annua",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380243869"
+    },
+    {
+      "id": "P12",
+      "hash": "0b02b164943a76cb8fd5fd5db322edee6265ba71fb022119b6e20e25ff9b9dbe",
+      "heading": "Early life and enslavement",
+      "excerpt": "Some reports allege that Meaher fully intended to break the law, and that he had bet a businessman $1,000 that he could successfully evade t",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380243869"
+    },
+    {
+      "id": "P13",
+      "hash": "7c199c7180878492926804e2ae2590e4994a3743cfd8f92b74cb5069ede88af4",
+      "heading": "Early life and enslavement",
+      "excerpt": "By the time the Clotilda reached the Mississippi coast in July 1860, the United States Federal Government had been alerted to its activities",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380243869"
+    },
+    {
+      "id": "P14",
+      "hash": "13a1c288fe2f5f7460d1f59b6ad1ec488c5529d3f5231886fcbc308a47dc0f23",
+      "heading": "Early life and enslavement",
+      "excerpt": "Until the end of the Civil War (1861–65), Lewis and his fellows lived as de facto slaves of Meaher, his brothers, or their associates. Lewis",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380243869"
+    },
+    {
+      "id": "P15",
+      "hash": "ebe5164030d280f348f6825efda2cb81a3be1ef4724fc3985409bd047f1083b6",
+      "heading": "Early life and enslavement",
+      "excerpt": "The name \"Cudjo\" sounds similar to \"Kodjoe\", a popular name in Ghana, where it is also given to those born on Monday. Cudjoe or Kudzo is the",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380243869"
+    },
+    {
+      "id": "P16",
+      "hash": "6cd2fa40ffeeb15f7c69f901a74b9132f085548f362934d12dd511fd4bc54f5a",
+      "heading": "Establishment of Africatown",
+      "excerpt": "After the abolition of slavery and the end of the Civil War, the Clotilda captives tried to raise money to return to their homeland. The men",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380243869"
+    },
+    {
+      "id": "P17",
+      "hash": "e784310d0c1a86343f43283f2699ecb3cbed010b91f72cd25cee10d04e705744",
+      "heading": "Establishment of Africatown",
+      "excerpt": "They developed Africatown as a self-contained, independent black community. The group appointed leaders to enforce communal norms derived fr",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380243869"
+    },
+    {
+      "id": "P18",
+      "hash": "95664fe6982f68c8823137ca5c668a0894128ea8e2d98a02f96fa6ec876642bf",
+      "heading": "Establishment of Africatown",
+      "excerpt": "Writing in 1914, Emma Langdon Roche noted that the surviving founders of Africatown preferred to speak in their own language among themselve",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380243869"
+    },
+    {
+      "id": "P19",
+      "hash": "bd2f2a495e9dfccdb40692f9d73464d66b2ff5bb296f360b30a084652d14191d",
+      "heading": "Marriage and family life",
+      "excerpt": "They had six children, five sons and a daughter, to each of whom they gave both an African name and an American name. Their eldest son, Alec",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380243869"
+    },
+    {
+      "id": "P20",
+      "hash": "8bfa1235d423a42433a1ae6247bed1d35679bf771564c65384d6caa407c0da92",
+      "heading": "Marriage and family life",
+      "excerpt": "Lewis worked as a farmer and laborer until 1902, when his buggy was damaged and he was injured in a collision with a train in Mobile. As he ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380243869"
+    },
+    {
+      "id": "P21",
+      "hash": "48f24561e2204c15533162ab82d80989838fd3711ef1750fa5aaf8eae67da8fb",
+      "heading": "Participation in American institutions",
+      "excerpt": "Lewis used the American legal system in 1902 after being injured in the buggy-train collision. When the Louisville and Nashville Railroad re",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380243869"
+    },
+    {
+      "id": "P22",
+      "hash": "3509490c14c19e2e0fe8ec485d598d41a3f394311e8a4bd5c9c360756ac22e7e",
+      "heading": "Role as storyteller and historian",
+      "excerpt": "By 1925, Lewis was thought to be the last African survivor of the Clotilda; he was interviewed by educator and folklorist Arthur Huff Fauset",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380243869"
+    },
+    {
+      "id": "P23",
+      "hash": "b5126d79eadd53c6463ce8310e47c425a6cbc9eafc18a687f050591c48008da0",
+      "heading": "Role as storyteller and historian",
+      "excerpt": "In 1927 Lewis was interviewed by Zora Neale Hurston, then a graduate student in anthropology who became a folklorist. The next year she publ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380243869"
+    }
+  ],
+  "updatedAt": "2026-10-24T11:06:11.138Z"
 }
