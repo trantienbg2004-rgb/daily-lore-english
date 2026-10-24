@@ -2,10 +2,10 @@
   "pageId": 60847643,
   "title": "Gomphotherium land bridge",
   "topic": "History & Geography",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1380178048,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380178048",
-  "reason": "7 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -295,5 +295,131 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380178048"
     }
   ],
-  "updatedAt": "2026-10-24T05:11:37.324Z"
+  "updatedAt": "2026-10-24T05:11:55.132Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "The Gomphotherium Land Bridge",
+        "pages": [
+          {
+            "text": "Millions of years ago, a special path of land formed. It connected Eurasia and Afro-Arabia. This land bridge changed the history of animals on Earth. It let many creatures walk between these big land areas for the very first time in a very long while.",
+            "evidenceIds": [
+              "P1",
+              "P9"
+            ]
+          },
+          {
+            "text": "Before this land bridge appeared, Africa was cut off from other places. It spent a very long time as a large island continent. Because of this, unique animals lived there. These included early proboscideans, which are related to modern elephants.",
+            "evidenceIds": [
+              "P3",
+              "P4"
+            ]
+          },
+          {
+            "text": "Then, during the Early Miocene, tectonic plates crashed together. They created a new land connection between the two massive regions. This big event is known as the Great Old World Biotic Interchange. Animals started to cross over in both directions.",
+            "evidenceIds": [
+              "P1",
+              "P9"
+            ]
+          },
+          {
+            "text": "With the new bridge open, animals began to travel far. Elephant ancestors called gomphotheres walked out of Africa and into Eurasia. At the same time, new predators and ungulates crossed over from Eurasia to make their homes in Afro-Arabia.",
+            "evidenceIds": [
+              "P16"
+            ]
+          },
+          {
+            "text": "Not all animals could cross the bridge easily. Open habitats and environmental changes created strong barriers for certain species. Even so, this major event forever changed the wildlife found across the continents.",
+            "evidenceIds": [
+              "P11"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "Africa's Ancient Land Connection",
+        "pages": [
+          {
+            "text": "The Gomphotherium land bridge was a significant terrestrial connection linking Eurasia to Afro-Arabia. While originally dated between approximately 19 and 15 million years ago during the Early Miocene, more recent analysis suggests it may have formed slightly earlier, around 20 million years ago. This formation ended a long period of biogeographic isolation for Africa.",
+            "evidenceIds": [
+              "P1",
+              "P9"
+            ]
+          },
+          {
+            "text": "For much of the Cenozoic, Africa remained an island continent. Its endemic mammalian fauna largely consisted of groups like Afrotheria, including early proboscideans which first evolved in Africa around 60 million years ago. Over time, some of these early elephant relatives grew significantly in size and developed diverse forms.",
+            "evidenceIds": [
+              "P3",
+              "P4"
+            ]
+          },
+          {
+            "text": "The collision of the Afro-Arabian and Eurasian tectonic plates created a terrestrial isthmus that bridged the two landmasses. This monumental event triggered the Great Old World Biotic Interchange, also referred to as the Proboscidean Datum Event. Fauna from Eurasia migrated into Afro-Arabia, and vice versa.",
+            "evidenceIds": [
+              "P1",
+              "P9"
+            ]
+          },
+          {
+            "text": "The newly formed bridge enabled elephantine gomphotheres and other proboscideans to migrate out of Africa and into Eurasia. Simultaneously, Eurasian ungulates and various mammalian predators were able to disperse into Africa. This exchange transformed the ecological makeup of both regions.",
+            "evidenceIds": [
+              "P16"
+            ]
+          },
+          {
+            "text": "However, the faunal exchange displayed notable asymmetry. Environmental shifts, such as the spread of open and arid habitats, created strong barriers that limited certain migrations. Furthermore, differences in diversity and locomotor abilities influenced how various native and immigrant species adapted to the changing landscapes.",
+            "evidenceIds": [
+              "P11"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "The Great Old World Biotic Interchange",
+        "pages": [
+          {
+            "text": "The Gomphotherium land bridge constituted a pivotal tectonic connection uniting Eurasia with Afro-Arabia during the Burdigalian stage of the Early Miocene. Although classical estimates place its emergence between 19 and 15 million years ago, subsequent analyses propose an earlier formation around 20 million years ago. This geological milestone terminated Africa's 75-million-year biogeographic isolation.",
+            "evidenceIds": [
+              "P1",
+              "P9"
+            ]
+          },
+          {
+            "text": "Functioning largely as an insular landmass throughout the Cretaceous and much of the Cenozoic, Africa fostered an endemic mammalian assemblage dominated by afrotherians, including primitive proboscideans originating in the Paleocene. Subsequent evolutionary diversification yielded increasingly large taxa, transitioning from small forms to substantial semi-aquatic and terrestrial herbivores by the Eocene and Oligocene epochs.",
+            "evidenceIds": [
+              "P3",
+              "P4"
+            ]
+          },
+          {
+            "text": "The mid-Burdigalian tectonic collision between Afro-Arabia and Eurasia generated a terrestrial isthmus that facilitated bidirectional faunal migration. This extensive biotic transference is formally recognized as the Proboscidean Datum Event or the Great Old World Biotic Interchange. It allowed taxa previously separated by the open Tethyan seaway to traverse continental boundaries.",
+            "evidenceIds": [
+              "P1",
+              "P9"
+            ]
+          },
+          {
+            "text": "Consequent to this structural linkage, gomphotheres and assorted proboscideans successfully emigrated from Africa into Eurasia. Reciprocally, Eurasian carnivorans and ungulates colonized Afro-Arabia. These dispersive pulses restructured regional predator guilds, instigating direct pressures on native apex predators such as hyaenodonts.",
+            "evidenceIds": [
+              "P10",
+              "P16"
+            ]
+          },
+          {
+            "text": "Despite extensive migration, the resulting interchange exhibited pronounced compositional asymmetry. Disparities in ancestral taxonomic diversity, combined with progressive aridification and the expansion of open savanna and steppe environments, constrained dispersals. These shifting ecological barriers ultimately precipitated the localized decline of lineages poorly adapted to open, seasonal habitats.",
+            "evidenceIds": [
+              "P11"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 3169,
+    "output": 1495,
+    "total": 4664
+  },
+  "validation": null
 }
