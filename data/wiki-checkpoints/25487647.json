@@ -2,10 +2,10 @@
   "pageId": 25487647,
   "title": "International Conference on Afghanistan, London (2010)",
   "topic": "Conflict & Security",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1364112866,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1364112866",
-  "reason": "1 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -139,5 +139,148 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1364112866"
     }
   ],
-  "updatedAt": "2026-10-24T08:56:42.203Z"
+  "updatedAt": "2026-10-24T08:56:59.608Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "London Conference on Afghanistan",
+        "pages": [
+          {
+            "text": "On 28 January 2010, leaders from many countries met in London. They came together at Lancaster House to talk about the future of Afghanistan. The meeting was hosted by the United Kingdom, the United Nations, and the Afghan government.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "The meeting brought together many important people. These included the Afghan president Hamid Karzai and the US Secretary of State Hillary Clinton. They wanted to plan a new course for the country after years of conflict.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Before this meeting, the conference was planned for Kabul. Later, the location was changed to London. The United Nations and leaders expressed worries about security threats and rising attacks in Afghanistan.",
+            "evidenceIds": [
+              "P3",
+              "P4"
+            ]
+          },
+          {
+            "text": "At the conference, officials discussed important goals. Afghanistan agreed to timetables to take control of military and police functions. They also launched a program to help bring Taliban insurgents back to normal life.",
+            "evidenceIds": [
+              "P1",
+              "P6"
+            ]
+          },
+          {
+            "text": "President Karzai said foreign troops might still be needed to train Afghan forces for years. The international community might also need to give financial support to the army. A follow-up meeting was planned for Kabul.",
+            "evidenceIds": [
+              "P9",
+              "P13"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "The 2010 London Afghanistan Conference",
+        "pages": [
+          {
+            "text": "On 28 January 2010, an international conference on Afghanistan took place at Lancaster House in London. The one-day event was hosted by the United Kingdom, the United Nations, and the Afghan government to chart a new course for the country.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "The meeting gathered foreign ministers and senior representatives from more than 70 countries. Attendees included Afghan President Hamid Karzai, US Secretary of State Hillary Clinton, and British Prime Minister Gordon Brown.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Although a summit was initially announced for Kabul, officials decided in late November 2009 to hold the meeting in London instead. Prior to the event, UN Secretary-General Ban Ki-moon and the Security Council raised concerns over severe security threats.",
+            "evidenceIds": [
+              "P2",
+              "P3",
+              "P4"
+            ]
+          },
+          {
+            "text": "During the conference, participants discussed transferring security responsibilities from international forces to Afghan forces. Officials planned to increase Afghan security forces to more than 300,000 by late 2010 or early 2011.",
+            "evidenceIds": [
+              "P6",
+              "P7"
+            ]
+          },
+          {
+            "text": "The government also launched a program with financial incentives to lure Taliban insurgents away from the conflict. President Karzai noted that foreign troops and financial backing might still be needed for several years.",
+            "evidenceIds": [
+              "P1",
+              "P9"
+            ]
+          },
+          {
+            "text": "Meanwhile, Iran criticized the conference as paternalistic and stayed away from the meetings. A follow-up conference was scheduled to take place later in Kabul to evaluate the progress made.",
+            "evidenceIds": [
+              "P11",
+              "P13"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "Charting Afghanistan's Future in London",
+        "pages": [
+          {
+            "text": "On 28 January 2010, Lancaster House in London hosted the International Conference on Afghanistan. Convened by the United Kingdom, the United Nations, and the Afghan administration, the gathering aimed to establish a new strategic trajectory for the nation.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "High-level delegates from over 70 countries and international organizations participated. Attendees included prominent figures such as Afghan President Hamid Karzai, US Secretary of State Hillary Clinton, and UN Secretary-General Ban Ki-moon.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Initially proposed as a summit in Kabul, the venue was shifted to London in late November 2009. The conference convened against a backdrop of heightened security concerns, marked by a sharp rise in conflict-related incidents and civilian casualties.",
+            "evidenceIds": [
+              "P2",
+              "P3",
+              "P4",
+              "P5"
+            ]
+          },
+          {
+            "text": "Core objectives included drafting frameworks to transition security responsibilities from international forces to Afghan authorities. Plans were laid for Afghan security personnel to exceed 300,000 and for the government to assume territorial control incrementally.",
+            "evidenceIds": [
+              "P6",
+              "P7",
+              "P14"
+            ]
+          },
+          {
+            "text": "Furthermore, the conference established mechanisms for reintegration and reconciliation, featuring an international fund to provide alternative livelihoods for insurgent fighters. Concurrently, debates arose regarding foreign aid disbursement and local governance performance.",
+            "evidenceIds": [
+              "P8",
+              "P15"
+            ]
+          },
+          {
+            "text": "President Karzai projected a prolonged requirement for foreign military training and financial assistance. Meanwhile, regional dynamics shifted as Iran boycotted the summit, criticizing the proceedings as an infringement upon national sovereignty.",
+            "evidenceIds": [
+              "P9",
+              "P11"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2523,
+    "output": 1424,
+    "total": 3947
+  },
+  "validation": null
 }
