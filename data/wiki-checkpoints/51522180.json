@@ -2,10 +2,10 @@
   "pageId": 51522180,
   "title": "Coalition for Epidemic Preparedness Innovations",
   "topic": "Health",
-  "status": "DRAFTED",
+  "status": "VALIDATED",
   "revisionId": 1381006440,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381006440",
-  "reason": "draft durably saved before validation",
+  "reason": "local factual, style, length, structure and source audit passed",
   "rights": [
     {
       "status": "REVIEW",
@@ -301,7 +301,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381006440"
     }
   ],
-  "updatedAt": "2026-10-24T07:46:50.695Z",
+  "updatedAt": "2026-10-24T07:47:08.643Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -444,5 +444,8 @@
     "output": 211,
     "total": 3086
   },
-  "validation": null
+  "validation": {
+    "accepted": true,
+    "errors": []
+  }
 }
