@@ -2,10 +2,10 @@
   "pageId": 2262519,
   "title": "Dieppe maps",
   "topic": "History & Geography",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1373119799,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373119799",
-  "reason": "5 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -229,5 +229,128 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373119799"
     }
   ],
-  "updatedAt": "2026-10-24T05:39:16.847Z"
+  "updatedAt": "2026-10-24T05:39:34.003Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "The Dieppe Maps of France",
+        "pages": [
+          {
+            "text": "The Dieppe maps are a group of large world maps and atlases. They were made in Dieppe, France, during the sixteenth century. Wealthy people and royal patrons, including kings, paid for these works.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Many words on these maps are in French and Portuguese. Because of this, some people assumed the makers used old Portuguese sources. However, the maps are also known as great works of art.",
+            "evidenceIds": [
+              "P3",
+              "P4"
+            ]
+          },
+          {
+            "text": "The maps show navigational lines and new discoveries, like Canada and Peru. They also show legends and mythical creatures, such as king Prester John and the Amazons in Russia.",
+            "evidenceIds": [
+              "P4"
+            ]
+          },
+          {
+            "text": "Most Dieppe maps show a big southern land called Jave la Grande. In modern times, many people in Australia have studied this feature to look for clues about early explorers.",
+            "evidenceIds": [
+              "P5"
+            ]
+          },
+          {
+            "text": "Experts say the maps mixed new geographical knowledge with very old ideas. They show how French mapmakers imagined the world during a time of big maritime trade and rivalry.",
+            "evidenceIds": [
+              "P6"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "The Renaissance Dieppe Maps",
+        "pages": [
+          {
+            "text": "Produced in France during the 1540s, 1550s, and 1560s, the Dieppe maps are a series of large, hand-crafted world maps and atlases commissioned by wealthy patrons and royalty, including King Henry II of France and King Henry VIII of England.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Because many inscriptions appear in French or Gallicised Portuguese, observers have often assumed that the Dieppe cartographers relied on secret Portuguese sources. The maps feature compass roses and rhumb lines, resembling sea charts, but they were primarily created as artistic display pieces meant to be spread out on tables.",
+            "evidenceIds": [
+              "P3",
+              "P4"
+            ]
+          },
+          {
+            "text": "These works combined recent geographical discoveries—such as French attempts to colonize Canada, Spanish conquests in Peru, and Portuguese trade in the Spice Islands—with legendary elements like Cathay, Prester John, and Amazonian tribes. They also lacked any knowledge of longitude, which was common for maps made before the seventeenth century.",
+            "evidenceIds": [
+              "P4"
+            ]
+          },
+          {
+            "text": "A prominent feature on most Dieppe world maps is a large southern landmass known as Jave la Grande or Terra Australis. In the English-speaking world, public and academic interest over the past century and a half has focused heavily on whether this landmass indicates early Portuguese exploration of Australia.",
+            "evidenceIds": [
+              "P5",
+              "P7"
+            ]
+          },
+          {
+            "text": "Recent scholarship suggests the maps reflect French territorial ambitions and geographic propaganda during a peak era of overseas trade. Rather than acting strictly as navigational records, they blended cutting-edge nautical information with medieval ideas and older global concepts derived from Ptolemy and Marco Polo.",
+            "evidenceIds": [
+              "P6"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "Cartography and Ambition in Dieppe",
+        "pages": [
+          {
+            "text": "The Dieppe school of cartography generated a substantial corpus of ornate world maps and atlases throughout the mid-sixteenth century. Commissioned by elite patrons, including monarchs like Henry II of France and Henry VIII of England, these hand-produced artifacts represented a pinnacle of contemporary European mapmaking.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Scholars have long debated the genesis of the Dieppe corpus. Linguistic analysis of French and Gallicised Portuguese inscriptions has frequently prompted the hypothesis that mapmakers utilized clandestine Portuguese cartographic intelligence, despite official state secrecy policies.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "While incorporating rhumb lines and navigational motifs characteristic of portolan charts, the maps functioned primarily as luxurious table atlases. They juxtaposed empirical data regarding contemporary territorial expansion with fantastical elements, medieval legends, and pre-modern geographical frameworks.",
+            "evidenceIds": [
+              "P4",
+              "P6"
+            ]
+          },
+          {
+            "text": "A defining characteristic across the corpus is the depiction of the hypothetical southern continent, Terra Australis, incorporating the expansive promontory designated as Jave la Grande. Within modern Australian discourse, intense fascination has surrounded this specific feature as a potential indicator of early sixteenth-century Portuguese maritime contact.",
+            "evidenceIds": [
+              "P5",
+              "P7",
+              "P10"
+            ]
+          },
+          {
+            "text": "Historians emphasize that these cartographic works served as vehicles for geopolitical propaganda. They articulated French territorial aspirations and colonial rivalries while synthesizing disparate intellectual traditions, seamlessly merging cutting-edge navigational insights with enduring mythological conceptions of global space.",
+            "evidenceIds": [
+              "P6",
+              "P7"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2887,
+    "output": 1315,
+    "total": 4202
+  },
+  "validation": null
 }
