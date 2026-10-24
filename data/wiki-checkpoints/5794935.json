@@ -513,7 +513,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373940870"
     }
   ],
-  "updatedAt": "2026-10-24T04:00:40.444Z",
+  "updatedAt": "2026-10-24T04:00:58.441Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -526,7 +526,7 @@
             ]
           },
           {
-            "text": "Experts divide the location into two sites. The older site is Vetera I. It was used from 13/12 BCE to 70 CE. The younger site is Vetera II. It was used from 71 to at least the third century.",
+            "text": "Experts divide the location into two sites. The older site is Vetera I. The younger site is Vetera II. These sites were located approximately one Roman mile apart from each other.",
             "evidenceIds": [
               "P2"
             ]
@@ -589,7 +589,7 @@
             ]
           },
           {
-            "text": "During the Revolt of the Batavi in 69/70, the original camp was destroyed. Following this conflict and subsequent military reorganization, Vetera II was established in 71 CE about one and a half kilometres further east, housing the Legio XXII Primigenia.",
+            "text": "During the Revolt of the Batavi, the original camp was destroyed. Following this conflict and subsequent military reorganization, Vetera II was established in 71 CE about one and a half kilometres further east, housing the Legio XXII Primigenia.",
             "evidenceIds": [
               "P7",
               "P13",
@@ -630,7 +630,7 @@
             ]
           },
           {
-            "text": "Foundation dates for Vetera I align with the expansive Augustan policies following the Clades Lolliana, with archaeological indicators pointing to 13/12 BCE. Constructed initially as wood and soil fortifications featuring multiple ditch systems, the garrison functioned as a critical deployment base before its destruction during the Batavi Revolt.",
+            "text": "Foundation dates for Vetera I align with the expansive Augustan policies following the Clades Lolliana, with archaeological indicators pointing to 13/12 BCE. Constructed initially as wood and soil fortifications featuring multiple ditch systems, the garrison functioned as a critical deployment base before its destruction.",
             "evidenceIds": [
               "P11",
               "P13"
@@ -654,11 +654,11 @@
       }
     }
   },
-  "repairAttempts": 1,
+  "repairAttempts": 2,
   "lastUsage": {
-    "input": 3173,
-    "output": 396,
-    "total": 3569
+    "input": 3073,
+    "output": 434,
+    "total": 3507
   },
   "validation": null
 }
