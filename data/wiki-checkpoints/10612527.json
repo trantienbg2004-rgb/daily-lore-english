@@ -169,7 +169,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1364588051"
     }
   ],
-  "updatedAt": "2026-10-24T09:20:56.268Z",
+  "updatedAt": "2026-10-24T09:21:14.216Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -183,7 +183,7 @@
             ]
           },
           {
-            "text": "The club was first started in 1868 as a croquet club. Later, croquet became less popular, so the club added lawn tennis in 1875 to make more money. More members joined the club because lawn tennis was growing very popular.",
+            "text": "The club was first started as a croquet club. Later, croquet became less popular, so the club added lawn tennis in 1875 to make more money. More members joined the club because lawn tennis was growing very popular.",
             "evidenceIds": [
               "P1",
               "P5"
@@ -236,7 +236,7 @@
             ]
           },
           {
-            "text": "The tournament began on July 9, 1877. After rain delayed the final match for three days, it was played on July 19 before a crowd of about 200 spectators. Spencer Gore defeated William Marshall in three straight sets to claim victory.",
+            "text": "The tournament began on July 9. After rain delayed the final match for three days, it was played on July 19 before a crowd of about 200 spectators. Spencer Gore defeated William Marshall in three straight sets to claim victory.",
             "evidenceIds": [
               "P2",
               "P11"
@@ -261,7 +261,7 @@
             ]
           },
           {
-            "text": "Established initially as a croquet club in July 1868, the organization encountered financial strain due to declining interest in croquet. Consequently, the club introduced lawn tennis in February 1875 to attract new participants and generate supplementary revenue streams.",
+            "text": "Established initially as a croquet club in July, the organization encountered financial strain due to declining interest in croquet. Consequently, the club introduced lawn tennis in February 1875 to attract new participants and generate supplementary revenue streams.",
             "evidenceIds": [
               "P1",
               "P5"
@@ -275,7 +275,7 @@
             ]
           },
           {
-            "text": "Commencing on July 9, 1877, the competition culminated in a final delayed by three days due to inclement weather. Watched by approximately 200 spectators, Spencer Gore defeated William Marshall in three consecutive sets during a 48-minute match.",
+            "text": "Commencing on July 9, the competition culminated in a final delayed by three days due to inclement weather. Watched by approximately 200 spectators, Spencer Gore defeated William Marshall in three consecutive sets during a 48-minute match.",
             "evidenceIds": [
               "P2",
               "P11"
@@ -292,11 +292,11 @@
       }
     }
   },
-  "repairAttempts": 0,
+  "repairAttempts": 1,
   "lastUsage": {
-    "input": 2779,
-    "output": 989,
-    "total": 3768
+    "input": 3017,
+    "output": 505,
+    "total": 3522
   },
   "validation": null
 }
