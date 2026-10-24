@@ -2,10 +2,10 @@
   "pageId": 95157,
   "title": "Symbolism (movement)",
   "topic": "Culture",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1381255721,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381255721",
-  "reason": "10 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -397,5 +397,142 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381255721"
     }
   ],
-  "updatedAt": "2026-10-24T07:22:33.293Z"
+  "updatedAt": "2026-10-24T07:22:52.683Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "Symbolism in Art and Poetry",
+        "pages": [
+          {
+            "text": "Symbolism was an art and poetry movement that started in France and Belgium in the late 19th century. Writers and artists wanted to show deep, absolute truths using special language, symbols, and metaphors. This movement began as a strong reaction against naturalism and realism, which focused on everyday and gritty reality.",
+            "evidenceIds": [
+              "P1",
+              "P5"
+            ]
+          },
+          {
+            "text": "In literature, the new style started with a book of poems by Charles Baudelaire published in 1857. Other writers like Stéphane Mallarmé and Paul Verlaine helped develop the aesthetic during the 1860s and 1870s. By the 1880s, the movement grew through several manifestos and attracted a whole new generation of creative writers.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "Jean Moréas published the official Symbolist Manifesto in a newspaper in September 1886. He wanted to make art that was very different from plain meanings and false sentimentality. The main goal was to express the Ideal in a perceptible form and evoke feelings rather than simply describe ordinary things.",
+            "evidenceIds": [
+              "P6",
+              "P7"
+            ]
+          },
+          {
+            "text": "Symbolist poets loved dreams, spirituality, and imagination instead of ordinary facts. They also explored themes of mysticism, mortality, and the inner life of fantasies. Because of this focus on dreams and inner feelings, symbolist ideas eventually spread to painting, music, and theatre across the Western world.",
+            "evidenceIds": [
+              "P3",
+              "P5",
+              "P9",
+              "P15"
+            ]
+          },
+          {
+            "text": "The style was sometimes confused with the Decadent movement because both focused on similar taboo subjects and dark themes. However, symbolists mainly emphasized dreams and ideals, while Decadents used highly ornamented styles and morbid topics. Together, these writers created new magazines and left a lasting mark on literature.",
+            "evidenceIds": [
+              "P10",
+              "P11"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "The Rise of Symbolism",
+        "pages": [
+          {
+            "text": "Symbolism emerged in the late nineteenth century as an artistic and literary movement originating in France and Belgium. Practitioners sought to represent absolute truths through metaphorical images and symbolic language. The movement developed primarily as a reaction against naturalism and realism, which attempted to portray everyday reality in gritty detail.",
+            "evidenceIds": [
+              "P1",
+              "P5"
+            ]
+          },
+          {
+            "text": "Literary roots trace back to Charles Baudelaire's 1857 publication of Les Fleurs du mal, alongside significant influences from the works of Edgar Allan Poe. Writers such as Stéphane Mallarmé and Paul Verlaine further shaped the aesthetic throughout the 1860s and 1870s. By the 1880s, a series of manifestos helped articulate the movement for a new generation.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "In September 1886, Jean Moréas published the Symbolist Manifesto, naming Baudelaire, Mallarmé, and Verlaine as leading poets. Moréas declared that symbolism opposed plain meanings and matter-of-fact descriptions, aiming instead to clothe the Ideal in a perceptible form. Poets used symbolic imagery to evoke inner emotional states rather than merely describe external objects.",
+            "evidenceIds": [
+              "P6",
+              "P7"
+            ]
+          },
+          {
+            "text": "The symbolist worldview favored spirituality, dreams, and imagination. Influenced by Schopenhauer, writers viewed art as a contemplative refuge from worldly strife, incorporating themes of mysticism, mortality, and the complex power of sexuality. These ideals soon expanded beyond poetry into painting, music, and theatre across the Western world.",
+            "evidenceIds": [
+              "P3",
+              "P5",
+              "P9",
+              "P13",
+              "P15"
+            ]
+          },
+          {
+            "text": "Although frequently confused with the contemporary Decadent movement due to shared interests in taboo subjects, symbolism remained distinct by focusing on ideals and dreams rather than morbid ornamentation. Symbolist writers established influential literary periodicals like Mercure de France, ensuring the movement's lasting impact on European arts and culture.",
+            "evidenceIds": [
+              "P10",
+              "P11",
+              "P12"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "Symbolist Aesthetics and Origins",
+        "pages": [
+          {
+            "text": "Rooted in late 19th-century France and Belgium, Symbolism materialized as a decisive reaction against the anti-idealistic paradigms of naturalism and realism. Rather than prioritizing gritty particularity and ordinary observation, symbolist artists and poets endeavored to articulate absolute truths through metaphorical language and evocative imagery.",
+            "evidenceIds": [
+              "P1",
+              "P5"
+            ]
+          },
+          {
+            "text": "The literary trajectory commenced with Charles Baudelaire's 1857 publication, supported by the foundational influence of Edgar Allan Poe. Stéphane Mallarmé and Paul Verlaine advanced the aesthetic framework during the subsequent decades. By the 1880s, programmatic manifestos consolidated a burgeoning generation of practitioners around these core tenets.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "Jean Moréas formalized the movement with his 1886 manifesto in Le Figaro, identifying Baudelaire, Mallarmé, and Verlaine as its primary figures. Moréas articulated an explicit hostility toward literalism and false sentimentality, asserting that the movement's sole objective was to clothe the Ideal in perceptible form and evoke psychological interiority.",
+            "evidenceIds": [
+              "P6",
+              "P7"
+            ]
+          },
+          {
+            "text": "Drawing conceptual parallels with Schopenhauer's aesthetics, symbolists regarded art as a contemplative sanctuary from worldly strife. This philosophical orientation fostered themes of mysticism, mortality, and otherworldliness. Consequently, the aesthetic transcended poetry, manifesting in diverse iterations of Western painting, music, and theatre.",
+            "evidenceIds": [
+              "P3",
+              "P9",
+              "P13",
+              "P15"
+            ]
+          },
+          {
+            "text": "Despite frequent conflation with the contemporaneous Decadent movement owing to overlapping explorations of taboo subjects, symbolism maintained a distinct focus on dreams and transcendent ideals. Through specialized periodicals such as Mercure de France, the movement cultivated an enduring intellectual infrastructure across European literary culture.",
+            "evidenceIds": [
+              "P10",
+              "P11",
+              "P12"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 3042,
+    "output": 1653,
+    "total": 4695
+  },
+  "validation": null
 }
