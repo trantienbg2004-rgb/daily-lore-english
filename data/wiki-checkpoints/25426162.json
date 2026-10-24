@@ -244,7 +244,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379505082"
     }
   ],
-  "updatedAt": "2026-10-24T08:37:43.267Z",
+  "updatedAt": "2026-10-24T08:38:01.229Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -263,10 +263,9 @@
             ]
           },
           {
-            "text": "Special test runs were done in 2014 to check the routes and find any problems. The tests showed that transport costs went down by 2500 dollars for 15 tons of cargo. Studies also found that this path is much cheaper and shorter than older shipping routes.",
+            "text": "Special test runs were done on two routes to check them and find any problems. The tests showed that transport costs went down by 2500 dollars for 15 tons of cargo. Other routes are also being considered through places like Kazakhstan and Turkmenistan.",
             "evidenceIds": [
-              "P1",
-              "P5"
+              "P1"
             ]
           },
           {
@@ -301,10 +300,9 @@
             ]
           },
           {
-            "text": "Test shipments conducted in 2014 helped identify and address key logistical bottlenecks along the network. Results showed that transport costs were reduced by 2500 dollars per 15 tons of cargo. According to a study by the Federation of Freight Forwarders Associations in India, the corridor routes are significantly cheaper and shorter than traditional maritime paths.",
+            "text": "Dry runs of two routes were conducted to identify and address key bottlenecks. The results showed that transport costs were reduced by 2500 dollars per 15 tons of cargo. Other routes under consideration include pathways through Kazakhstan and Turkmenistan as part of the broader network.",
             "evidenceIds": [
-              "P1",
-              "P5"
+              "P1"
             ]
           },
           {
@@ -339,10 +337,9 @@
             ]
           },
           {
-            "text": "Empirical assessments, including dry runs executed in 2014, identified operational bottlenecks and demonstrated that transport costs were reduced by 2500 dollars per 15 tons of cargo. Industry associations subsequently reported that the corridor provides significantly shorter and more cost-effective transit compared to conventional maritime alternatives.",
+            "text": "Dry runs of two specific routes were executed to identify and address key operational bottlenecks. The empirical results demonstrated that transport costs were reduced by 2500 dollars per 15 tons of cargo. Additional alternative routes under active consideration include pathways traversing Kazakhstan and Turkmenistan.",
             "evidenceIds": [
-              "P1",
-              "P5"
+              "P1"
             ]
           },
           {
@@ -363,11 +360,11 @@
       }
     }
   },
-  "repairAttempts": 1,
+  "repairAttempts": 2,
   "lastUsage": {
-    "input": 3015,
-    "output": 380,
-    "total": 3395
+    "input": 3056,
+    "output": 330,
+    "total": 3386
   },
   "validation": null
 }
