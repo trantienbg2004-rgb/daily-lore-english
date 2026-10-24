@@ -11150,10 +11150,10 @@
       "checkedAt": null
     },
     "67879281": {
-      "status": "PENDING",
-      "reason": "queued",
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
       "revisionId": 1336203905,
-      "checkedAt": null
+      "checkedAt": "2026-10-24T10:11:25.406Z"
     },
     "67928046": {
       "status": "NEEDS_REVIEW",
@@ -11930,7 +11930,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-24T10:11:19.009Z",
+  "updatedAt": "2026-10-24T10:11:25.408Z",
   "dailyUsage": {
     "day": "2026-10-24",
     "calls": 117,
