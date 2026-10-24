@@ -2,10 +2,10 @@
   "pageId": 392278,
   "title": "Middle Passage",
   "topic": "Economy",
-  "status": "EVIDENCE_READY",
+  "status": "RETRY_LATER",
   "revisionId": 1375908990,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375908990",
-  "reason": "9 rights-verified embedded images",
+  "reason": "Gemini token usage unavailable",
   "rights": [
     {
       "status": "REVIEW",
@@ -359,5 +359,5 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375908990"
     }
   ],
-  "updatedAt": "2026-10-24T10:38:29.610Z"
+  "updatedAt": "2026-10-24T10:38:35.154Z"
 }
