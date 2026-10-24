@@ -2,10 +2,10 @@
   "pageId": 1042649,
   "title": "History of the bicycle",
   "topic": "Science & Technology",
-  "status": "DRAFTED",
+  "status": "VALIDATED",
   "revisionId": 1381005522,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381005522",
-  "reason": "draft durably saved before validation",
+  "reason": "local factual, style, length, structure and source audit passed",
   "rights": [
     {
       "status": "REVIEW",
@@ -479,7 +479,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381005522"
     }
   ],
-  "updatedAt": "2026-10-24T06:06:00.370Z",
+  "updatedAt": "2026-10-24T06:06:18.282Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -610,5 +610,8 @@
     "output": 263,
     "total": 3260
   },
-  "validation": null
+  "validation": {
+    "accepted": true,
+    "errors": []
+  }
 }
