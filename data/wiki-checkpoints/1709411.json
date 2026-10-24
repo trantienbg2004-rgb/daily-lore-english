@@ -2,9 +2,164 @@
   "pageId": 1709411,
   "title": "Route from the Varangians to the Greeks",
   "topic": "Economy",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1374171516,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374171516",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-24T10:18:55.542Z"
+  "reason": "2 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:Varangian routes.png",
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/d/dd/Varangian_routes.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "fileTitle": "File:Varangian routes.png",
+        "caption": "Map showing the major Varangian trade routes: the Volga trade route (in red) and the trade route from the Varangians to the Greeks (in purple). Other trade routes of the 8th to the 11th centuries are shown in orange.",
+        "alt": "",
+        "description": "Map showing the major Varangian trade routes, the Volga trade route (in red) and the Trade Route from the Varangians to the Greeks (in blue). Other trade routes of the 8th–11th centuries shown in orange. There are two versions of the source map: one corresponds to Hungarian historiography, which believes that speakers of the Eastern Romance languages (the Vlachs) disappeared for a thousand-year period between 275 and 1300; the other corresponds to Romanian historiography, which does not accept this.",
+        "date": "2023-10-03 11:29:08",
+        "section": "",
+        "position": 0,
+        "provenance": {
+          "credit": "Briangotts",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Varangian_routes.png",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Route_from_the_Varangians_to_the_Greeks",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374171516",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Kaubateed varjaagide juurest kreeklasteni.gif"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:G 280, Pilgårds (copy).JPG",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/61/G_280%2C_Pilg%C3%A5rds_%28copy%29.JPG/960px-G_280%2C_Pilg%C3%A5rds_%28copy%29.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:G 280, Pilgårds (copy).JPG",
+        "caption": "A coloured copy of runestone G 280 which talks of death in the Dnieper Rapids.",
+        "alt": "",
+        "description": "stone",
+        "date": "2008-06-25",
+        "section": "Dnieper route",
+        "position": 2,
+        "provenance": {
+          "credit": "Berig",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:G_280,_Pilg%C3%A5rds_(copy).JPG",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Route_from_the_Varangians_to_the_Greeks",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374171516",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "b49d1b69a2350162f4e761dc321bae92a8ba6328dfce1b128a3e35993135ce19",
+      "heading": "Lead",
+      "excerpt": "The trade route from the Varangians to the Greeks was a medieval trade route that connected Scandinavia, Kievan Rus' and the Eastern Roman E",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374171516"
+    },
+    {
+      "id": "P2",
+      "hash": "5334ad0d658964e8fa1f2d13cecfe24ab8e23bcd3842a8a4f3ea22d87258ba86",
+      "heading": "Lead",
+      "excerpt": "The route began in Scandinavian trading centers such as Birka, Hedeby, and Gotland, the eastern route crossed the Baltic Sea, entered the Gu",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374171516"
+    },
+    {
+      "id": "P3",
+      "hash": "7177ec91503fe5b123209b5b92bb8e55dced1a2e435eb7ad62d3e65c8db2aab9",
+      "heading": "History",
+      "excerpt": "The route from the Varangians to the Greeks was first mentioned in the early 12th-century Primary Chronicle (on page 7, line 2), although it",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374171516"
+    },
+    {
+      "id": "P4",
+      "hash": "bb7aee0ce5c072e7c4749bd730838d393c2a1178fa7ca5f1f2e24fdbf085be1c",
+      "heading": "History",
+      "excerpt": "But its effects were reported much earlier, in the ninth chapter of Byzantine emperor Constantine VII Porphyrogenitus's book De Administrand",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374171516"
+    },
+    {
+      "id": "P5",
+      "hash": "e09872a2b5dca328fc920fad79d013dbad913fdf95e6313cb0477125ecd5cb09",
+      "heading": "History",
+      "excerpt": "The route was probably established in the late 8th and early 9th centuries, when Varangian explorers searched for plunder but also for slave",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374171516"
+    },
+    {
+      "id": "P6",
+      "hash": "be89055674005b0bf2296ea363b810c0e509a4590ad3c33d219178387445d6b4",
+      "heading": "Routes and places",
+      "excerpt": "Places named include Smolensk (Μιλινισκα), Liubech (Τελιουτζα), Chernihiv (Τζερνιγωγα), Vyshhorod (Βουσεγραδε), Vitichev [pl] (Βιτετζεβη), a",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374171516"
+    },
+    {
+      "id": "P7",
+      "hash": "4852b19bf31df11fd3ddb81e4e7947c895c9f1e55072b2952bfb2d15b89833f9",
+      "heading": "Dnieper route",
+      "excerpt": "On the Dnieper, the Varangians had to portage their ships around seven rapids, where they had to be on guard from Pecheneg nomads. The rapid",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374171516"
+    },
+    {
+      "id": "P8",
+      "hash": "0fd2e193d02461643c1a003d941393f2fdabb48a6b51616accf8dedec241cf34",
+      "heading": "Western Black Sea shores",
+      "excerpt": "The Varangian boats were used along the rivers and along the Black Sea shores. According to Constantine VII, the navigation near the western",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374171516"
+    },
+    {
+      "id": "P9",
+      "hash": "e98540d6b5673a61a1c34225266a320c6f1dbae4bf1db3d8acd7d4bc552530c0",
+      "heading": "Trade activities",
+      "excerpt": "The Trade Route from the Varangians to the Greeks was connected to other waterways of Eastern Europe, such as the Pripyat-Bug waterway leadi",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374171516"
+    },
+    {
+      "id": "P10",
+      "hash": "8fb3549d2b02f0bd47bd4afdd0100a22b872545d6ee33242a1a4f2c8d9400686",
+      "heading": "History",
+      "excerpt": "According to Constantine VII, the Krivichs and other tribes dependent on Kiev transported hollowed-out sailboats, or monoxyla, which could a",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374171516"
+    },
+    {
+      "id": "P11",
+      "hash": "d01d864d39f8ae32be960febf30452bf146e234f17828cc59e0e1795f0a99f8a",
+      "heading": "Dnieper route",
+      "excerpt": "Below the rapids, they had to pass a narrow rocky spot called the Ford of Vrar (Russian: Krariyskaya crossing), where the Varangians were of",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374171516"
+    },
+    {
+      "id": "P12",
+      "hash": "ebe3528046516f921079e47c6e9cc1b96056d96340bcdfbbb19ed6be432fe2c7",
+      "heading": "Dnieper route",
+      "excerpt": "An alternative route named Zalozny [ru; uk] avoided the Dnieper rapids altogether, instead passing through rivers Samara, Vovcha, and Kalmiu",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374171516"
+    },
+    {
+      "id": "P13",
+      "hash": "6168b998d48538c3a6275ac9c32f98ad2eab756d34bf592296ac3fc3bbac0cc1",
+      "heading": "Trade activities",
+      "excerpt": "The Trade Route from the Varangians to the Greeks was used to transport different kinds of merchandise. Wine, spices, jewelry, glass, expens",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374171516"
+    },
+    {
+      "id": "P14",
+      "hash": "4db16c06121e30885f1f416b5e85c4d05f4871ed845ef0035377730977bc3721",
+      "heading": "Trade activities",
+      "excerpt": "In the second half of the eleventh century, the Crusades opened more lucrative routes from Europe to the Orient through the Crusader states ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374171516"
+    }
+  ],
+  "updatedAt": "2026-10-24T10:19:01.274Z"
 }
