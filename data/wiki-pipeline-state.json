@@ -6778,10 +6778,10 @@
   ],
   "outcomes": {
     "12": {
-      "status": "DRAFTED",
-      "reason": "draft durably saved before validation",
+      "status": "VALIDATED",
+      "reason": "local factual, style, length, structure and source audit passed",
       "revisionId": 1381080958,
-      "checkedAt": "2026-10-24T05:40:22.124Z"
+      "checkedAt": "2026-10-24T05:40:40.126Z"
     },
     "1395": {
       "status": "PENDING",
@@ -11146,7 +11146,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-24T05:40:34.811Z",
+  "updatedAt": "2026-10-24T05:40:40.127Z",
   "dailyUsage": {
     "day": "2026-10-23",
     "calls": 236,

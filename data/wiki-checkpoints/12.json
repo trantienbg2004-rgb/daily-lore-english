@@ -2,10 +2,10 @@
   "pageId": 12,
   "title": "Anarchism",
   "topic": "Politics",
-  "status": "DRAFTED",
+  "status": "VALIDATED",
   "revisionId": 1381080958,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381080958",
-  "reason": "draft durably saved before validation",
+  "reason": "local factual, style, length, structure and source audit passed",
   "rights": [
     {
       "status": "REVIEW",
@@ -427,7 +427,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381080958"
     }
   ],
-  "updatedAt": "2026-10-24T05:40:22.125Z",
+  "updatedAt": "2026-10-24T05:40:40.126Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -564,5 +564,8 @@
     "output": 1374,
     "total": 4229
   },
-  "validation": null
+  "validation": {
+    "accepted": true,
+    "errors": []
+  }
 }
