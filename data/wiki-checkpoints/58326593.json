@@ -2,10 +2,10 @@
   "pageId": 58326593,
   "title": "Myanmar peace process",
   "topic": "Conflict & Security",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1362962701,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1362962701",
-  "reason": "2 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -233,5 +233,130 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1362962701"
     }
   ],
-  "updatedAt": "2026-10-24T07:16:44.973Z"
+  "updatedAt": "2026-10-24T07:17:06.505Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "The Myanmar Peace Process Story",
+        "pages": [
+          {
+            "text": "The Myanmar peace process is an effort to stop a long internal war. This conflict started before the country became independent from Britain in 1948. It involves the government, the military, and sixteen armed ethnic groups.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "In 2015, the National League for Democracy came to power under Aung San Suu Kyi. The government made the peace process a major priority. Talks and conferences were held to try to end the fighting.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "Many issues started around the time of independence. Different ethnic groups have fought for equal treatment and rights. These groups have faced poverty, forced relocation, and underdevelopment in their regions.",
+            "evidenceIds": [
+              "P4"
+            ]
+          },
+          {
+            "text": "In 2011, President U Thein Sein started a new peace process with international support. Ceasefire agreements were signed with some rebel groups. A draft of a Nationwide Ceasefire Agreement was later created.",
+            "evidenceIds": [
+              "P14",
+              "P15"
+            ]
+          },
+          {
+            "text": "In recent years, peace efforts have continued with various meetings and forums. However, experts note that the road to peace will not be smooth. Important issues about rights and federalism still need to be solved.",
+            "evidenceIds": [
+              "P2",
+              "P21",
+              "P22"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "Understanding the Myanmar Peace Process",
+        "pages": [
+          {
+            "text": "The Myanmar peace process comprises nation-led discussions designed to relieve an internal armed conflict. This conflict has persisted since before the nation gained independence from Britain in 1948. Tensions heavily involve the treatment of numerous ethnic minorities, the government, the military known as the Tatmadaw, and sixteen armed ethnic groups.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Following the 2015 election victory of the National League for Democracy under Aung San Suu Kyi, the peace process became a primary government objective. This transition toward democracy involved negotiations, Panglong Peace Conferences, and ceasefire agreements among armed groups, the military, and state officials.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "Since independence, minority groups have fought for equal treatment, social rights, and political stability. These communities have experienced severe poverty, forced relocation, and underdevelopment. The resulting conflict has caused high levels of internal displacement, casualties, and socio-economic distress across the country.",
+            "evidenceIds": [
+              "P4"
+            ]
+          },
+          {
+            "text": "Efforts toward a lasting peace expanded after 2011 under President U Thein Sein. Authorities engaged citizens, halted certain military offensives, and worked toward bilateral ceasefires. By 2014, stakeholders combined drafts into a single Nationwide Ceasefire Agreement text to outline implementation methods and future roadmaps.",
+            "evidenceIds": [
+              "P14",
+              "P15"
+            ]
+          },
+          {
+            "text": "Despite ongoing discussions and various peace forums involving remaining signatories and officials, observers caution that achieving stability remains difficult. Fundamental challenges regarding gender rights, ethnic representation, and federal structures continue to complicate the path toward a democratic state.",
+            "evidenceIds": [
+              "P2",
+              "P21",
+              "P22"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "The Evolution of Peace Efforts in Myanmar",
+        "pages": [
+          {
+            "text": "The Myanmar peace process encompasses nation-led initiatives aimed at mitigating an entrenched internal conflict that predates the country's independence from Britain in 1948. Centered largely on grievances regarding the treatment of diverse ethnic minorities, the conflict involves the government, the military or Tatmadaw, and sixteen armed ethnic organizations.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "After the National League for Democracy assumed power in 2015 under Aung San Suu Kyi, the peace process was positioned as a central mechanism for democratic transition. Negotiations have periodically involved armed ethnic factions, military leadership, and civilian authorities through structured platforms such as the Panglong Peace Conferences and ceasefire pacts.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "Historical grievances trace back to foundational debates over ethnic autonomy, equality, and political rights following independence. Ethnic minorities have disproportionately borne the brunt of underdevelopment, forced relocation, poverty, and displacement, compounding broader issues of government accountability and democratic representation.",
+            "evidenceIds": [
+              "P4"
+            ]
+          },
+          {
+            "text": "Substantial structured interventions recommenced in 2011 under President U Thein Sein, yielding bilateral ceasefires and culminating in the drafting of a comprehensive Nationwide Ceasefire Agreement in 2014. This framework sought to establish formal monitoring protocols and procedural roadmaps for long-term negotiations.",
+            "evidenceIds": [
+              "P14",
+              "P15"
+            ]
+          },
+          {
+            "text": "Notwithstanding repeated diplomatic engagements, peace forums, and high-level overtures, attaining a comprehensive resolution remains fraught with structural impediments. Analysts and participants emphasize that unresolved ethnic rights, federal representation, and military primacy continue to obstruct the realization of a stable democratic federation.",
+            "evidenceIds": [
+              "P2",
+              "P21",
+              "P22"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2930,
+    "output": 1017,
+    "total": 3947
+  },
+  "validation": null
 }
