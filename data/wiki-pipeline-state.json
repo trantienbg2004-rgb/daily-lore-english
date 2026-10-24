@@ -6626,10 +6626,10 @@
       "checkedAt": "2026-10-21T13:50:18.930Z"
     },
     "274119": {
-      "status": "PENDING",
-      "reason": "queued",
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
       "revisionId": 1377305024,
-      "checkedAt": null
+      "checkedAt": "2026-10-24T04:07:49.092Z"
     },
     "275454": {
       "status": "EVIDENCE_READY",
@@ -10202,7 +10202,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-24T04:07:42.616Z",
+  "updatedAt": "2026-10-24T04:07:49.098Z",
   "dailyUsage": {
     "day": "2026-10-23",
     "calls": 166,
