@@ -2,10 +2,10 @@
   "pageId": 66550316,
   "title": "Peacekeeping operations in Nagorno-Karabakh",
   "topic": "Conflict & Security",
-  "status": "DRAFTED",
+  "status": "VALIDATED",
   "revisionId": 1370579297,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1370579297",
-  "reason": "draft durably saved before validation",
+  "reason": "local factual, style, length, structure and source audit passed",
   "rights": [
     {
       "status": "REJECTED",
@@ -190,7 +190,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1370579297"
     }
   ],
-  "updatedAt": "2026-10-24T06:02:52.161Z",
+  "updatedAt": "2026-10-24T06:03:10.227Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -318,5 +318,8 @@
     "output": 145,
     "total": 2916
   },
-  "validation": null
+  "validation": {
+    "accepted": true,
+    "errors": []
+  }
 }
