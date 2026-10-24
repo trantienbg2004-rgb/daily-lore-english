@@ -435,7 +435,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378395460"
     }
   ],
-  "updatedAt": "2026-10-24T04:49:37.572Z",
+  "updatedAt": "2026-10-24T04:49:55.570Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -499,7 +499,7 @@
             ]
           },
           {
-            "text": "Economic projections indicate substantial GDP losses for these regions by 2030, driven by extreme weather events that damage tourism and infrastructure. Many small island developing states contribute very little to global greenhouse gas emissions yet face high vulnerability. Consequently, they make advocacy for international climate cooperation a central pillar of their foreign policy.",
+            "text": "Economic projections indicate substantial GDP losses for these regions, driven by extreme weather events that damage tourism and infrastructure. Many small island developing states contribute very little to global greenhouse gas emissions yet face high vulnerability. Consequently, they make advocacy for international climate cooperation a central pillar of their foreign policy.",
             "evidenceIds": [
               "P4",
               "P9"
@@ -541,7 +541,7 @@
             ]
           },
           {
-            "text": "Macroeconomic projections forecast disproportionate annual GDP contractions for small island developing states by 2030, exacerbating fiscal dependencies on international disaster aid. Although their cumulative contribution to global greenhouse gas emissions is negligible, their disproportionate vulnerability has catalyzed active foreign policy advocacy centered on global mitigation and adaptation cooperation.",
+            "text": "Macroeconomic projections forecast disproportionate annual GDP contractions for small island developing states, exacerbating fiscal dependencies on international disaster aid. Although their cumulative contribution to global greenhouse gas emissions is negligible, their disproportionate vulnerability has catalyzed active foreign policy advocacy centered on global mitigation and adaptation cooperation.",
             "evidenceIds": [
               "P4",
               "P9"
@@ -558,11 +558,11 @@
       }
     }
   },
-  "repairAttempts": 0,
+  "repairAttempts": 1,
   "lastUsage": {
-    "input": 2824,
-    "output": 1044,
-    "total": 3868
+    "input": 2772,
+    "output": 240,
+    "total": 3012
   },
   "validation": null
 }
