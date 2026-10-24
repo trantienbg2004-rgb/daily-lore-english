@@ -9878,10 +9878,10 @@
       "checkedAt": "2026-10-22T09:00:04.414Z"
     },
     "77751416": {
-      "status": "EVIDENCE_READY",
-      "reason": "11 rights-verified embedded images",
+      "status": "RETRY_LATER",
+      "reason": "editorial call budget exhausted",
       "revisionId": 1380052184,
-      "checkedAt": "2026-10-24T04:03:45.191Z"
+      "checkedAt": "2026-10-24T04:03:48.631Z"
     },
     "77842374": {
       "status": "NEEDS_REVIEW",
@@ -10202,7 +10202,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-24T04:03:45.192Z",
+  "updatedAt": "2026-10-24T04:03:48.632Z",
   "dailyUsage": {
     "day": "2026-10-23",
     "calls": 166,
