@@ -397,7 +397,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380463233"
     }
   ],
-  "updatedAt": "2026-10-24T09:00:34.405Z",
+  "updatedAt": "2026-10-24T09:00:53.761Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -436,7 +436,7 @@
             ]
           },
           {
-            "text": "George Eastman introduced photographic film and simple box cameras like the Kodak. Later, people used 35 mm film, instant cameras, and automatic exposure. Today, digital cameras and camera phones are used everywhere.",
+            "text": "George Eastman introduced photographic film and simple box cameras like the Kodak. Later, people used 35 mm film, instant cameras, and automatic exposure systems. Today, digital cameras and camera phones are used everywhere.",
             "evidenceIds": [
               "P11",
               "P12",
@@ -545,11 +545,11 @@
       }
     }
   },
-  "repairAttempts": 0,
+  "repairAttempts": 1,
   "lastUsage": {
-    "input": 2826,
-    "output": 1606,
-    "total": 4432
+    "input": 2889,
+    "output": 267,
+    "total": 3156
   },
   "validation": null
 }
