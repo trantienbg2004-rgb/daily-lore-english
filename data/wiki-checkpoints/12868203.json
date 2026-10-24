@@ -2,10 +2,10 @@
   "pageId": 12868203,
   "title": "Geography and cartography in the medieval Islamic world",
   "topic": "History & Geography",
-  "status": "DRAFTED",
+  "status": "VALIDATED",
   "revisionId": 1355326990,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1355326990",
-  "reason": "draft durably saved before validation",
+  "reason": "local factual, style, length, structure and source audit passed",
   "rights": [
     {
       "status": "REVIEW",
@@ -218,7 +218,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1355326990"
     }
   ],
-  "updatedAt": "2026-10-24T09:26:50.111Z",
+  "updatedAt": "2026-10-24T09:27:08.023Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -342,5 +342,8 @@
     "output": 142,
     "total": 2999
   },
-  "validation": null
+  "validation": {
+    "accepted": true,
+    "errors": []
+  }
 }
