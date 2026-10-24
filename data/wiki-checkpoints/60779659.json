@@ -2,10 +2,10 @@
   "pageId": 60779659,
   "title": "Climate emergency declaration",
   "topic": "Environment",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1366493795,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1366493795",
-  "reason": "5 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -298,5 +298,147 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1366493795"
     }
   ],
-  "updatedAt": "2026-10-24T08:34:37.930Z"
+  "updatedAt": "2026-10-24T08:34:55.507Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "What Is a Climate Emergency?",
+        "pages": [
+          {
+            "text": "A climate emergency is a special decision made by governments. It shows that leaders agree climate change is real and dangerous. They use this term to show that fast action is needed to stop global warming.",
+            "evidenceIds": [
+              "P3",
+              "P4"
+            ]
+          },
+          {
+            "text": "The first official government declaration was made in December 2016. A local council in Darebin, Melbourne, took this important step. Since then, thousands of other local governments have also made declarations around the world.",
+            "evidenceIds": [
+              "P1",
+              "P7"
+            ]
+          },
+          {
+            "text": "Activists and politicians promote these declarations to create a sense of urgency. A large survey found that many people around the world also believe that climate change is a global emergency.",
+            "evidenceIds": [
+              "P5"
+            ]
+          },
+          {
+            "text": "Governments make these declarations at different levels, from local cities to whole nations. Once they declare an emergency, they plan new ways to reduce greenhouse gas emissions and protect the environment.",
+            "evidenceIds": [
+              "P3",
+              "P4"
+            ]
+          },
+          {
+            "text": "Oxford Dictionary named climate emergency as the word of the year in 2019. More and more people and groups continue to use this term to ask for urgent action to protect our planet.",
+            "evidenceIds": [
+              "P13"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "Understanding Climate Emergency Declarations",
+        "pages": [
+          {
+            "text": "A climate emergency declaration is a formal step taken by a governing body to acknowledge that human-caused global warming poses an immediate threat. By adopting this terminology, officials admit that previous environmental measures have been insufficient and commit to prioritizing urgent climate action.",
+            "evidenceIds": [
+              "P3",
+              "P4"
+            ]
+          },
+          {
+            "text": "The movement began in December 2016 when the city council of Darebin in Melbourne, Australia, adopted a local climate emergency plan. This action inspired communities worldwide, leading over two thousand local governments across dozens of countries to follow suit.",
+            "evidenceIds": [
+              "P1",
+              "P6",
+              "P7"
+            ]
+          },
+          {
+            "text": "Proponents argue that labeling the situation an emergency creates a vital sense of urgency for a long-term problem. Surveys conducted in multiple countries indicate that a majority of the public shares this view, recognizing the severity of the climate crisis.",
+            "evidenceIds": [
+              "P5",
+              "P19"
+            ]
+          },
+          {
+            "text": "Declarations vary in depth and occur at various levels of government, including cities, regions, and nations. For instance, national parliaments and the European Parliament have also issued formal declarations to emphasize the need for rapid greenhouse gas reductions.",
+            "evidenceIds": [
+              "P4",
+              "P9"
+            ]
+          },
+          {
+            "text": "However, the framework has faced criticism. Some scholars warn that framing environmental issues as emergencies could concentrate power within executive branches and potentially bypass democratic checks and balances.",
+            "evidenceIds": [
+              "P11"
+            ]
+          },
+          {
+            "text": "Public interest in the terminology surged dramatically, leading the Oxford Dictionary to name climate emergency the word of the year in 2019 as usage multiplied across global media and political discourse.",
+            "evidenceIds": [
+              "P13"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "The Global Rise of Climate Emergency Declarations",
+        "pages": [
+          {
+            "text": "The invocation of a climate emergency represents a deliberate rhetorical and administrative strategy designed to prioritize anthropogenic global warming. By issuing such declarations, governing bodies formally concede that conventional mitigation policies are inadequate to avert severe environmental alterations.",
+            "evidenceIds": [
+              "P3",
+              "P4"
+            ]
+          },
+          {
+            "text": "Originating at the municipal level with the City of Darebin in December 2016, the practice rapidly diffused across international jurisdictions. Thousands of local and regional governments have subsequently adopted similar resolutions, supported by advocacy networks tracking these developments.",
+            "evidenceIds": [
+              "P1",
+              "P7",
+              "P10"
+            ]
+          },
+          {
+            "text": "The terminology is deliberately utilized by activists and sympathetic politicians to cultivate temporal urgency around an incremental crisis. International public opinion surveys corroborate widespread societal recognition of the phenomenon as an acute global emergency.",
+            "evidenceIds": [
+              "P5",
+              "P19"
+            ]
+          },
+          {
+            "text": "While national legislatures, regional authorities, and international bodies such as the European Parliament have embraced these declarations, implementation details remain heterogeneous. The initiatives are intended to catalyze structural transformations in energy consumption and emissions reduction.",
+            "evidenceIds": [
+              "P4",
+              "P9",
+              "P12"
+            ]
+          },
+          {
+            "text": "Despite broad political adoption, legal and political scholars have critiqued the emergency framing. Observers caution that militaristic or crisis-driven lexicons risk centralizing executive authority and marginalizing democratic checks and balances essential for sustained policy success.",
+            "evidenceIds": [
+              "P11"
+            ]
+          },
+          {
+            "text": "The extraordinary proliferation of the term culminated in its selection as the Oxford Dictionary word of the year for 2019, reflecting an unprecedented escalation in public and institutional discourse surrounding environmental degradation.",
+            "evidenceIds": [
+              "P13"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2881,
+    "output": 1387,
+    "total": 4268
+  },
+  "validation": null
 }
