@@ -8390,10 +8390,10 @@
       "checkedAt": "2026-10-24T09:27:44.062Z"
     },
     "1244718": {
-      "status": "FETCHED",
-      "reason": "pinned-source-ready",
+      "status": "REJECTED",
+      "reason": "insufficient-source-text-or-embedded-images",
       "revisionId": 1381712853,
-      "checkedAt": "2026-10-24T10:46:18.104Z"
+      "checkedAt": "2026-10-24T10:46:23.201Z"
     },
     "1262999": {
       "status": "RETRY_LATER",
@@ -11930,7 +11930,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-24T10:46:18.110Z",
+  "updatedAt": "2026-10-24T10:46:23.203Z",
   "dailyUsage": {
     "day": "2026-10-24",
     "calls": 117,
