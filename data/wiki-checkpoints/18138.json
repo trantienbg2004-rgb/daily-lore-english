@@ -2,10 +2,10 @@
   "pageId": 18138,
   "title": "Levant",
   "topic": "History & Geography",
-  "status": "EVIDENCE_READY",
+  "status": "RETRY_LATER",
   "revisionId": 1375980126,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375980126",
-  "reason": "4 rights-verified embedded images",
+  "reason": "Gemini token usage unavailable",
   "rights": [
     {
       "status": "REJECTED",
@@ -261,5 +261,5 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375980126"
     }
   ],
-  "updatedAt": "2026-10-24T10:15:55.333Z"
+  "updatedAt": "2026-10-24T10:16:01.173Z"
 }
