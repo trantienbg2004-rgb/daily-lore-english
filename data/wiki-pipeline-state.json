@@ -9162,10 +9162,10 @@
       "checkedAt": null
     },
     "12868203": {
-      "status": "EVIDENCE_READY",
-      "reason": "4 rights-verified embedded images",
+      "status": "DRAFTED",
+      "reason": "draft durably saved before validation",
       "revisionId": 1355326990,
-      "checkedAt": "2026-10-24T09:25:56.532Z"
+      "checkedAt": "2026-10-24T09:26:14.031Z"
     },
     "12999450": {
       "status": "NEEDS_REVIEW",
@@ -11610,7 +11610,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-24T09:26:12.514Z",
+  "updatedAt": "2026-10-24T09:26:14.033Z",
   "dailyUsage": {
     "day": "2026-10-24",
     "calls": 112,

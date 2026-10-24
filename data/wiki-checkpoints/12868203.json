@@ -2,10 +2,10 @@
   "pageId": 12868203,
   "title": "Geography and cartography in the medieval Islamic world",
   "topic": "History & Geography",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1355326990,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1355326990",
-  "reason": "4 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -218,5 +218,129 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1355326990"
     }
   ],
-  "updatedAt": "2026-10-24T09:25:56.538Z"
+  "updatedAt": "2026-10-24T09:26:14.032Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "Geography in the Islamic World",
+        "pages": [
+          {
+            "text": "During the Islamic Golden Age, Muslim scholars studied geography and map-making. They learned from earlier cultures, explorers, and merchants across Afro-Eurasia. Islamic geography included exploration, physical geography, and mathematical cartography, reaching its apex in the twelfth century.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Geography began in the eighth century with Hellenistic influence. Later, Muslim scholars explored the Muslim world, China, Southeast Asia, and Southern Africa. Important scholars included Al-Khwarizmi, Al-Masudi, and Muhammad al-Idrisi.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "Abbasid caliphs in Baghdad supported this work. Caliph al-Ma'mun commissioned geographers to measure the Earth and create a large world map. Scholars also inherited works from Ptolemy and adapted them.",
+            "evidenceIds": [
+              "P3",
+              "P4"
+            ]
+          },
+          {
+            "text": "In the twelfth century, Muhammad al-Idrisi created an important atlas known as the Tabula Rogeriana. Funded by Roger II of Sicily, he combined old knowledge with new reports from merchants to map the world.",
+            "evidenceIds": [
+              "P11"
+            ]
+          },
+          {
+            "text": "Muslim scholars also invented and improved scientific instruments. These included astrolabes, quadrants, and compasses. They used these tools for navigation and to find the direction of Mecca.",
+            "evidenceIds": [
+              "P14",
+              "P15"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "Medieval Islamic Geography",
+        "pages": [
+          {
+            "text": "Medieval Islamic geography and cartography flourished during the Islamic Golden Age between the eighth and sixteenth centuries. Building on earlier traditions, Muslim scholars advanced map-making through extensive travel and trade across Afro-Eurasia. Their work focused on navigation, physical geography, and mathematical cartography, reaching its peak with Muhammad al-Idrisi.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Influenced by Hellenistic ideas, Islamic geography started in the eighth century. Between the ninth and twelfth centuries, scholars traveled widely across the Muslim world, China, Southeast Asia, and Southern Africa. Notable figures such as Al-Khwarizmi, Al-Masudi, and Abu Rayhan Biruni contributed significantly to these developments.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "The Abbasid caliphs of Baghdad heavily patronized these scientific efforts. Caliph al-Ma'mun commissioned an arc measurement to determine degrees of latitude and calculate the Earth's circumference. While his large world map did not survive, cartographers also adopted Ptolemy's works while introducing their own rectangular projections and adjusted coordinates.",
+            "evidenceIds": [
+              "P3",
+              "P4"
+            ]
+          },
+          {
+            "text": "In 1154, the Arab geographer Muhammad al-Idrisi produced the Tabula Rogeriana atlas. Funded by Roger II of Sicily, al-Idrisi combined classical geographical data with new information gathered by merchants and explorers, mapping the world in seventy rectangular sections based on climate zones.",
+            "evidenceIds": [
+              "P11"
+            ]
+          },
+          {
+            "text": "Scholars also created and refined various scientific instruments for geography and cartography. Devices such as astrolabes, quadrants, and compasses became essential. Astrolabes helped with navigation and locating the Qibla, while early compasses using magnetic needles or iron fish were recorded in the thirteenth century.",
+            "evidenceIds": [
+              "P14",
+              "P15",
+              "P16"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "Cartography in the Islamic Golden Age",
+        "pages": [
+          {
+            "text": "Islamic geography and cartography developed extensively during the Islamic Golden Age, traditionally dated from the eighth to the sixteenth century. Scholars synthesized and advanced the map-making traditions of preceding cultures, drawing upon merchant and explorer accounts across Afro-Eurasia. The discipline comprised three major domains: exploration, physical geography, and mathematical cartography.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Beginning in the eighth century under Hellenistic influence, the field expanded as scholars undertook extensive journeys across the Muslim world, China, Southeast Asia, and Southern Africa. Prominent contributors included Al-Khwarizmi, Abū Zayd al-Balkhī, Al-Masudi, Abu Rayhan Biruni, and Muhammad al-Idrisi, who marked the apex of Islamic geographical studies.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "Patronage from Abbasid caliphs, particularly al-Ma'mun, was instrumental. Al-Ma'mun commissioned an arc measurement to refine the Arabic mile and calculate the Earth's circumference, alongside a lost world map based on Marinus of Tyre. Simultaneously, cartographers engaged with Ptolemy's Almagest and Geography, adopting rectangular projections and modifying prime meridians.",
+            "evidenceIds": [
+              "P3",
+              "P4"
+            ]
+          },
+          {
+            "text": "In 1154, Muhammad al-Idrisi compiled the Tabula Rogeriana under the patronage of Roger II of Sicily. Integrating classical data with contemporary merchant accounts, the atlas described a spherical Earth mapped across seventy rectangular sections, utilizing climate zones as a primary organizational principle.",
+            "evidenceIds": [
+              "P11"
+            ]
+          },
+          {
+            "text": "Mathematical geography and cartography were further supported by the invention and refinement of scientific instruments. Astrolabes, quadrants, and compasses were developed or adopted. Astrolabes incorporated angular scales and azimuth circles for navigation and Qibla determination, while historical accounts document the transmission and use of early magnetic compasses.",
+            "evidenceIds": [
+              "P14",
+              "P15",
+              "P16"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 3028,
+    "output": 1481,
+    "total": 4509
+  },
+  "validation": null
 }
