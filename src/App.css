@@ -856,7 +856,7 @@
 .lore-editorial-v5 .reader-gesture .article-heading.article-heading-continued h1 {
   display:block; -webkit-line-clamp:unset;
   overflow:visible; margin:0; color:#24211e; text-transform:uppercase;
-  font:400 clamp(23px,3.4dvh,30px)/1.08 'Bodoni Moda',Georgia,serif;
+  font:600 clamp(23px,3.4dvh,30px)/1.08 'Bodoni Moda',Georgia,serif;
   letter-spacing:-.025em;
 }
 .lore-editorial-v5 .reader-gesture .article-media .photo-figure.lore-photo-figure {
