@@ -7434,10 +7434,10 @@
       "checkedAt": "2026-10-23T23:34:54.261Z"
     },
     "82813": {
-      "status": "EVIDENCE_READY",
-      "reason": "2 rights-verified embedded images",
+      "status": "RETRY_LATER",
+      "reason": "Gemini returned invalid JSON (finish=unknown, chars=0); preserve candidate",
       "revisionId": 1377986531,
-      "checkedAt": "2026-10-24T09:45:46.147Z"
+      "checkedAt": "2026-10-24T09:45:53.749Z"
     },
     "89732": {
       "status": "PUBLISHED",
@@ -11610,13 +11610,13 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-24T09:45:47.604Z",
+  "updatedAt": "2026-10-24T09:45:53.750Z",
   "dailyUsage": {
     "day": "2026-10-24",
     "calls": 117,
     "tokens": 413147,
-    "usageUnknown": false,
-    "tokenAccountingUnavailable": false,
+    "usageUnknown": true,
+    "tokenAccountingUnavailable": true,
     "modelCalls": {
       "gemini-3.5-flash-lite": 117
     },
