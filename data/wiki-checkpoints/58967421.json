@@ -2,9 +2,259 @@
   "pageId": 58967421,
   "title": "Diamond open access",
   "topic": "Society",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1379214435,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379214435",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-24T04:03:55.222Z"
+  "reason": "4 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:Open Access colours Venn.svg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3d/Open_Access_colours_Venn.svg/960px-Open_Access_colours_Venn.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Open Access colours Venn.svg",
+        "caption": "Diamond among the different open access models",
+        "alt": "",
+        "description": "Venn diagram highlighting the different levels of open access in scholarly publishing, as a function of cost to the readers and authors, copyright retention, and peer review. Adapted from (in English) Farquharson, Jamie Ian (2018-07-31). \"Introducing Volcanica: The first diamond open-access journal for volcanology\". Volcanica 1 (1): i–ix. DOI:10.30909/vol.01.01.i-ix. ISSN 2610-3540.",
+        "date": "2022-11-21",
+        "section": "",
+        "position": 0,
+        "provenance": {
+          "credit": "Jamie-farquharson",
+          "license": "CC BY 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Open_Access_colours_Venn.svg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Diamond_open_access",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379214435",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:Philosophical Transactions Volume 1 frontispiece.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/42/Philosophical_Transactions_Volume_1_frontispiece.jpg/960px-Philosophical_Transactions_Volume_1_frontispiece.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Philosophical Transactions Volume 1 frontispiece.jpg",
+        "caption": "An early example of community-run journal, The Philosophical Transactions of the Royal Society",
+        "alt": "",
+        "description": "Title page to volume 1 of Philosophical Transactions",
+        "date": "1666-11-28",
+        "section": "Historical roots of diamond models: knowledge clubs and commons",
+        "position": 1,
+        "provenance": {
+          "credit": "Henry Oldenburg",
+          "license": "CC BY 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Philosophical_Transactions_Volume_1_frontispiece.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Diamond_open_access",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379214435",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Cover OA Diamond Study.jpg"
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Creation date of diamond journals.jpg"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:World distribution of diamond journals.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/72/World_distribution_of_diamond_journals.jpg/960px-World_distribution_of_diamond_journals.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:World distribution of diamond journals.jpg",
+        "caption": "World distribution of diamond journals in the OA Diamond Study",
+        "alt": "",
+        "description": "World distribution of diamond journals in the OA Diamond Study",
+        "date": "2021-03-09",
+        "section": "Geographic distribution",
+        "position": 4,
+        "provenance": {
+          "credit": "Bianca Kramer & Jeroen Bosman",
+          "license": "CC BY 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:World_distribution_of_diamond_journals.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Diamond_open_access",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379214435",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:Cost distribution of diamond journals.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d3/Cost_distribution_of_diamond_journals.jpg/960px-Cost_distribution_of_diamond_journals.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Cost distribution of diamond journals.jpg",
+        "caption": "Share of journals surveyed by the OA Diamond Study that fall in a specific range of annual costs (i.e. 26% of the respondents have an annual costs between $1–$1000)",
+        "alt": "",
+        "description": "Cost distribution of diamond journals in percents from the survey of the OA Diamond Study.",
+        "date": "2021-03-09",
+        "section": "Organization and economics",
+        "position": 5,
+        "provenance": {
+          "credit": "Vanessa Proudman",
+          "license": "CC BY 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Cost_distribution_of_diamond_journals.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Diamond_open_access",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379214435",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "d76f7f12b2dbe530e2f339658d20f3de00e449f42f5f2f42c936e9e761f84a50",
+      "heading": "Lead",
+      "excerpt": "Diamond open access refers to academic texts (such as monographs, edited collections, and journal articles) published, distributed, and pres",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379214435"
+    },
+    {
+      "id": "P2",
+      "hash": "7e075f18a442d3e2dc72b995ddb21d9c06d06cb90e7d45e412bb8b2ffee3ca23",
+      "heading": "Lead",
+      "excerpt": "In 2021, it is estimated that between 17,000 and 29,000 scientific journals rely on a diamond open access model. They make up 73% of the jou",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379214435"
+    },
+    {
+      "id": "P3",
+      "hash": "81161593552c77b17c649f1acebb45d7955cc08ef05e9586f1ac28f939a11a76",
+      "heading": "Lead",
+      "excerpt": "In 2022, new national and international policies, such as the UNESCO recommendation on open science, and the Action Plan for Diamond Open Ac",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379214435"
+    },
+    {
+      "id": "P4",
+      "hash": "39b37fcd812c80f8e62a5d80b824cf96e45f1f64954b6597e80045b54ec0e715",
+      "heading": "Historical roots of diamond models: knowledge clubs and commons",
+      "excerpt": "Until the Second World War, academic publishing was mostly characterized by a wide range of community-driven scholarly structures with littl",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379214435"
+    },
+    {
+      "id": "P5",
+      "hash": "6f34f2171817ee55b85c00e9f022bca849dc44331e5a8c03f2560be34d4ce90c",
+      "heading": "Historical roots of diamond models: knowledge clubs and commons",
+      "excerpt": "In Western Europe and North America, direct ownership of journals by academic communities and institutions started to wane in the 1950s. The",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379214435"
+    },
+    {
+      "id": "P6",
+      "hash": "72e45c9904efe902d58dd35c04ff6671708ff2d4fb9e5ebaa18e8e4762446a05",
+      "heading": "Development of \"grassroots\" open access (1990–2010)",
+      "excerpt": "The open access movement emerged both as a consequence of the unprecedented access afforded by online publishing and as a reaction against t",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379214435"
+    },
+    {
+      "id": "P7",
+      "hash": "83472b47f904180bf4d7f47e99ba54677de430510fb9bd429198e804c2498eb9",
+      "heading": "Debates over the identity of the open access commons (2003–2012)",
+      "excerpt": "In the early debates over open access, the distinctions between commercial and non-commercial forms of scientific publishing and community-d",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379214435"
+    },
+    {
+      "id": "P8",
+      "hash": "05ecd2c1f49e40d6aacc7b9825f1531244b1b1f79a25156b789404aadf2bd742",
+      "heading": "Defining the diamond model (2012–present)",
+      "excerpt": "In 2013, Fuchs and Sandoval published one of the first systematic definitions of diamond open access: \"Diamond open access Model, not-for-pr",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379214435"
+    },
+    {
+      "id": "P9",
+      "hash": "3fa8639143e3da1b37202ff8f3a8ee6c69f2a94da9997e9639ece0561436a853",
+      "heading": "Distribution",
+      "excerpt": "The OA Diamond Study gives an estimation of >29,000 diamond open access journals in 2021, which represent a significant share of the total n",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379214435"
+    },
+    {
+      "id": "P10",
+      "hash": "7a673f123feb0e59154f548cc233693f2d1437ba22f032732d000dda9abdc922",
+      "heading": "Geographic distribution",
+      "excerpt": "The majority of diamond open access journals are published in Europe (around 45%) and Latin America (around 25%). In relative terms, the dia",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379214435"
+    },
+    {
+      "id": "P11",
+      "hash": "f935f0dd444c29865485ab9013d5d40b82489135e6639dfb066021a6efa54b1f",
+      "heading": "Disciplines",
+      "excerpt": "While diamond OA journals are available for most disciplines, they are more prevalent in the humanities and social science. The OA Diamond S",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379214435"
+    },
+    {
+      "id": "P12",
+      "hash": "2038130ece62ae81864ab5f15ee6d105e130643e8f3e5653f921e85a67c47558",
+      "heading": "Organization and economics",
+      "excerpt": "The OA Diamond Study introduced a taxonomy of 6 types of diamond OA journals based largely on their ownership status: institutional journals",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379214435"
+    },
+    {
+      "id": "P13",
+      "hash": "0d1925db17395d18cd39acb8a71ba9b3567fb96e0915ddefb1cdced7b3fe2ca1",
+      "heading": "Apparent limitations of focus",
+      "excerpt": "Recent discussions of diamond open access have taken an increasingly narrow focus, limiting the definition to mostly refer to journals, inst",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379214435"
+    },
+    {
+      "id": "P14",
+      "hash": "935087e41c626e50ada8d85cb9d1030d35af69c3be4d75119e3fb873a416df9e",
+      "heading": "Preservation",
+      "excerpt": "Long-term preservation is essential for all scholarly publications, and this is being studied for diamond open access journals. Results from",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379214435"
+    },
+    {
+      "id": "P15",
+      "hash": "977f0d7f9fc0043b5654c3713456ef530a90ce319059fea2b51f0f8e745b2249",
+      "heading": "Recognition",
+      "excerpt": "While diamond open access journals make up a large share of all open access publications, they have long been overlooked by scientific fundi",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379214435"
+    },
+    {
+      "id": "P16",
+      "hash": "c73cb0ba7cd6c41ceb3c064692627e9cc81a59f6986533a03a7d2c1758e4f094",
+      "heading": "Historical roots of diamond models: knowledge clubs and commons",
+      "excerpt": "The small society presses, struggling to cope with growing scale, were supported and then largely supplanted by the 'Big 5' commercial press",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379214435"
+    },
+    {
+      "id": "P17",
+      "hash": "786e2fa672423469c565af5da7353585e68ce86d7b4f2341516ca02b8474f32d",
+      "heading": "Historical roots of diamond models: knowledge clubs and commons",
+      "excerpt": "This transformation had wide-ranging consequences over the way scientific journals were managed, not only at the economic but also at the ed",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379214435"
+    },
+    {
+      "id": "P18",
+      "hash": "a8978f7e7ea087e37804f1941b9e06f22cf92eb294f320f195c7a986a0474730",
+      "heading": "Development of \"grassroots\" open access (1990–2010)",
+      "excerpt": "In the late '80s and early '90s, a host of new journal titles launched on listservs and (later) the Web. Journals such as Postmodern Culture",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379214435"
+    },
+    {
+      "id": "P19",
+      "hash": "66a43f478f58b86988a9be5307126a3999898d4f09a423af2d32c3e92a73a545",
+      "heading": "Development of \"grassroots\" open access (1990–2010)",
+      "excerpt": "Specialized free software for scientific publishing like Open Journal Systems became available after 2000. This development entailed a signi",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379214435"
+    },
+    {
+      "id": "P20",
+      "hash": "56e5f7aed27e462998786115a50069013c913b412dcaa00ff8b3156e68c42b99",
+      "heading": "Debates over the identity of the open access commons (2003–2012)",
+      "excerpt": "Tom Wilson introduced the expression \"Platinum Open Access\" in 2007 following a heated debate with Stevan Harnad and other open access activ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379214435"
+    }
+  ],
+  "updatedAt": "2026-10-24T04:04:00.811Z"
 }
