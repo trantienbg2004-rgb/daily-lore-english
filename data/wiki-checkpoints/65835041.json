@@ -2,10 +2,10 @@
   "pageId": 65835041,
   "title": "History of physical training and fitness",
   "topic": "Sports",
-  "status": "DRAFTED",
+  "status": "NEEDS_REVIEW",
   "revisionId": 1346501240,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1346501240",
-  "reason": "draft durably saved before validation",
+  "reason": "editorial: B1-B2:page-2:copied-source-passage",
   "rights": [
     {
       "status": "REJECTED",
@@ -302,7 +302,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1346501240"
     }
   ],
-  "updatedAt": "2026-10-24T03:56:47.182Z",
+  "updatedAt": "2026-10-24T03:56:53.146Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -420,5 +420,10 @@
     "output": 131,
     "total": 2443
   },
-  "validation": null
+  "validation": {
+    "accepted": false,
+    "errors": [
+      "B1-B2:page-2:copied-source-passage"
+    ]
+  }
 }
