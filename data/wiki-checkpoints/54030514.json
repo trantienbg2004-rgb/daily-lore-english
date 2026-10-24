@@ -2,10 +2,10 @@
   "pageId": 54030514,
   "title": "Election audit",
   "topic": "Politics",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1373314851,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373314851",
-  "reason": "6 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -308,5 +308,128 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373314851"
     }
   ],
-  "updatedAt": "2026-10-24T08:58:19.086Z"
+  "updatedAt": "2026-10-24T08:58:36.046Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "Checking election votes",
+        "pages": [
+          {
+            "text": "After an election ends, people do a check called an election audit. This check helps to see if votes were counted correctly. It also shows if people followed the right rules. Election checks can look at the results or the process.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Doing checks after an election is important. They help stop fraud and errors. But officials must finish these checks before they declare the final winner. If they only count votes by hand, redundancy helps make sure the work is accurate and safe.",
+            "evidenceIds": [
+              "P2",
+              "P3"
+            ]
+          },
+          {
+            "text": "Using computers for elections can bring risks. Mistakes can happen if humans set up machines wrong. Machines can also break down or overheat. Sometimes hackers try to change computer software. This can happen on or before Election Day.",
+            "evidenceIds": [
+              "P4"
+            ]
+          },
+          {
+            "text": "Voting machines often get updates from flash drives. These drives can bring risks from the internet. Machines are sometimes left alone in public buildings at night. This makes it easier for people to access them.",
+            "evidenceIds": [
+              "P5"
+            ]
+          },
+          {
+            "text": "Checking votes has unique challenges. Banks can match money deposits to specific accounts easily. But election rules keep ballot choices private. Because of this, officials cannot link individual voters to their specific ballots.",
+            "evidenceIds": [
+              "P8"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "How election audits verify voting accuracy",
+        "pages": [
+          {
+            "text": "An election audit is a review conducted after polls close. Its main purpose is to determine whether votes were counted accurately or if proper procedures were followed. While quality management audits happen between elections, results audits must finish before declaring winners to protect against fraud.",
+            "evidenceIds": [
+              "P1",
+              "P2"
+            ]
+          },
+          {
+            "text": "Jurisdictions that use manual hand counts build redundancy into their methods. This means multiple people view and confirm each vote, which can make separate audits unnecessary. However, computers introduce complex risks, such as software hacking, overheating, and unintentional human setup errors during elections.",
+            "evidenceIds": [
+              "P3",
+              "P4"
+            ]
+          },
+          {
+            "text": "Voting machines are usually air-gapped from the internet, but they still receive updates through flash drives. Because these machines are sometimes left unattended in public buildings overnight, physical security becomes a major concern for election officials.",
+            "evidenceIds": [
+              "P5"
+            ]
+          },
+          {
+            "text": "Unlike banking systems that track individual accounts, election managers face strict ballot privacy rules. This privacy prevents officials from linking individual voters to their specific ballots, making standard financial audit practices impossible to use.",
+            "evidenceIds": [
+              "P8"
+            ]
+          },
+          {
+            "text": "Different states use various methods to check results. Some states require risk-limiting audits, which use independent computers and random hand checks of paper ballots to confirm totals. Recounts are also distinct, usually happening only when margins of victory are very close.",
+            "evidenceIds": [
+              "P14",
+              "P16"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "The mechanics and challenges of election audits",
+        "pages": [
+          {
+            "text": "Post-election audits evaluate whether votes were tallied accurately or if established procedures were followed. While process and results audits serve quality management functions between cycles, results audits intended to deter fraud must conclude before official outcomes are declared.",
+            "evidenceIds": [
+              "P1",
+              "P2"
+            ]
+          },
+          {
+            "text": "Manual tabulation methods inherently incorporate redundancy by involving multiple independent observers to interpret and verify votes. Conversely, computerized systems introduce vulnerabilities, including software manipulation by malicious actors, configuration errors, and hardware malfunctions like calibration loss or overheating.",
+            "evidenceIds": [
+              "P3",
+              "P4"
+            ]
+          },
+          {
+            "text": "Although voting machines are frequently air-gapped, they remain susceptible to compromise via flash drives used for software updates. Furthermore, leaving machines unattended in public facilities prior to an election creates significant physical security vulnerabilities that outsiders can exploit.",
+            "evidenceIds": [
+              "P5"
+            ]
+          },
+          {
+            "text": "A fundamental challenge distinguishing elections from other IT applications is ballot privacy. Because anonymity prevents officials from associating specific voters with individual ballots, standard verification procedures utilized in financial institutions cannot be implemented.",
+            "evidenceIds": [
+              "P8"
+            ]
+          },
+          {
+            "text": "States employ diverse verification frameworks, ranging from routine sample hand counts to statistically rigorous risk-limiting audits. These risk-limiting procedures evaluate cast vote records against randomly sampled paper ballots to bound the probability of undetected outcome errors.",
+            "evidenceIds": [
+              "P14",
+              "P16"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2678,
+    "output": 874,
+    "total": 3552
+  },
+  "validation": null
 }
