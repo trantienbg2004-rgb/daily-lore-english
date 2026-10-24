@@ -2,10 +2,10 @@
   "pageId": 5121186,
   "title": "Negotiations to end apartheid in South Africa",
   "topic": "Conflict & Security",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1374981704,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374981704",
-  "reason": "4 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -202,5 +202,136 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374981704"
     }
   ],
-  "updatedAt": "2026-10-24T05:14:32.615Z"
+  "updatedAt": "2026-10-24T05:14:50.473Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "Ending apartheid in South Africa",
+        "pages": [
+          {
+            "text": "For many years, South Africa had a system called apartheid. It separated people by race and gave power only to white people. From 1990 to 1993, leaders worked hard to end apartheid through talks and meetings.",
+            "evidenceIds": [
+              "P1",
+              "P5"
+            ]
+          },
+          {
+            "text": "In 1990, President F. W. de Klerk made big changes. He let Nelson Mandela out of prison after many years. He also made political groups legal again so they could talk about the future.",
+            "evidenceIds": [
+              "P2",
+              "P8"
+            ]
+          },
+          {
+            "text": "The government and the African National Congress met to talk. They made rules and promises together. They wanted to stop violence and find a peaceful way to make a new country.",
+            "evidenceIds": [
+              "P9",
+              "P10"
+            ]
+          },
+          {
+            "text": "Many different groups joined together in late 1991 for big peace meetings. But there were still many problems. Violence continued in some towns, and some groups did not want to join.",
+            "evidenceIds": [
+              "P2",
+              "P3",
+              "P12"
+            ]
+          },
+          {
+            "text": "After more talks and hard work, the leaders reached a final agreement. In 1993, they passed a new interim constitution. Then, in 1994, South Africa held its very first non-racial elections.",
+            "evidenceIds": [
+              "P1",
+              "P3"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "Negotiating the End of Apartheid",
+        "pages": [
+          {
+            "text": "Under the system of apartheid, the South African government enforced strict racial segregation from 1948 onward. This framework ensured political and economic dominance for the white minority while restricting the rights of the black majority.",
+            "evidenceIds": [
+              "P5"
+            ]
+          },
+          {
+            "text": "The path to change accelerated in 1990 when President F. W. de Klerk unbanned political organizations and released Nelson Mandela from prison. Bilateral talks between the government and the African National Congress established important pre-conditions for future peace.",
+            "evidenceIds": [
+              "P2",
+              "P8"
+            ]
+          },
+          {
+            "text": "Initial agreements like the Groote Schuur Minute and the Pretoria Minute helped build trust. The ANC agreed to suspend its armed activities, while the government promised to review security laws and release political prisoners.",
+            "evidenceIds": [
+              "P9",
+              "P10"
+            ]
+          },
+          {
+            "text": "Despite these efforts, political violence remained a serious challenge. Disagreements over regional autonomy caused a deadlock during the second plenary session of CODESA in 1992, leading the ANC to briefly withdraw after a tragic massacre.",
+            "evidenceIds": [
+              "P2",
+              "P3"
+            ]
+          },
+          {
+            "text": "Intensive bilateral talks soon resumed, paving the way for the successful Multi-Party Negotiating Forum in 1993. These efforts culminated in a new interim constitution and South Africa's historic first non-racial elections in 1994.",
+            "evidenceIds": [
+              "P1",
+              "P3"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "South Africa Transition Talks",
+        "pages": [
+          {
+            "text": "Institutionalized in 1948, South Africa's apartheid system established an entrenched framework of racial discrimination and segregation designed to secure political and economic hegemony for the white minority while systematically disenfranchising the black majority.",
+            "evidenceIds": [
+              "P5"
+            ]
+          },
+          {
+            "text": "The trajectory of reform shifted dramatically in 1990 under President F. W. de Klerk, who unbanned key political organizations and liberated Nelson Mandela. Subsequent preliminary talks established the necessary framework for substantive negotiations.",
+            "evidenceIds": [
+              "P1",
+              "P2",
+              "P8"
+            ]
+          },
+          {
+            "text": "Foundational communiqués, including the Groote Schuur and Pretoria Minutes, codified mutual commitments to curtail political violence, review security legislation, and release political prisoners, while securing the suspension of the ANC's armed wing.",
+            "evidenceIds": [
+              "P9",
+              "P10"
+            ]
+          },
+          {
+            "text": "The negotiation process faced severe friction, including persistent political violence and a deadlock at CODESA over regional autonomy and constitutional frameworks. Such friction prompted temporary withdrawals and renewed mass action by the ANC.",
+            "evidenceIds": [
+              "P2",
+              "P3"
+            ]
+          },
+          {
+            "text": "Following intensive mediation and the Multi-Party Negotiating Forum of 1993, stakeholders finalized an interim constitution. This legislative milestone directly preceded South Africa's first non-racial democratic elections in 1994.",
+            "evidenceIds": [
+              "P1",
+              "P3"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2861,
+    "output": 1175,
+    "total": 4036
+  },
+  "validation": null
 }
