@@ -2,10 +2,10 @@
   "pageId": 3241251,
   "title": "Social threefolding",
   "topic": "Society",
-  "status": "EVIDENCE_READY",
+  "status": "RETRY_LATER",
   "revisionId": 1380005981,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380005981",
-  "reason": "1 rights-verified embedded images",
+  "reason": "Gemini token usage unavailable",
   "rights": [
     {
       "status": "REVIEW",
@@ -174,5 +174,5 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380005981"
     }
   ],
-  "updatedAt": "2026-10-24T11:05:05.073Z"
+  "updatedAt": "2026-10-24T11:05:10.993Z"
 }
