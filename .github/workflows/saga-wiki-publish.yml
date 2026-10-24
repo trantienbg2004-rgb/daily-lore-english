@@ -59,7 +59,7 @@ jobs:
         working-directory: staging
         env:
           SAGA_WIKI_CHECKPOINT_BRANCH: feat/saga-wikipedia-first-20261020
-        run: node scripts/wiki-pipeline.mjs topup --min-per-topic=8 --max-topics=3
+        run: node scripts/wiki-pipeline.mjs topup --min-per-topic=30 --max-topics=3
       - name: Check free Gemini model access without generating text
         if: github.event_name == 'schedule' || github.event.inputs.max_calls == '8' || github.event.inputs.max_calls == '20' || github.event.inputs.max_calls == 'probe'
         id: free_model
