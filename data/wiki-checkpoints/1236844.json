@@ -2,10 +2,10 @@
   "pageId": 1236844,
   "title": "Early voting",
   "topic": "Politics",
-  "status": "DRAFTED",
+  "status": "NEEDS_REPAIR",
   "revisionId": 1380943196,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380943196",
-  "reason": "draft durably saved before validation",
+  "reason": "editorial: C1-C2:page-5:length-or-sentence",
   "rights": [
     {
       "status": "REJECTED",
@@ -323,7 +323,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380943196"
     }
   ],
-  "updatedAt": "2026-10-24T09:27:38.066Z",
+  "updatedAt": "2026-10-24T09:27:44.062Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -439,5 +439,10 @@
     "output": 830,
     "total": 3574
   },
-  "validation": null
+  "validation": {
+    "accepted": false,
+    "errors": [
+      "C1-C2:page-5:length-or-sentence"
+    ]
+  }
 }
