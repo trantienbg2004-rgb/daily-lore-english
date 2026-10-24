@@ -123,6 +123,23 @@ export function planReadingPages(item, fits, {maxPages = 250} = {}) {
       text = next; count++
     }
     if (count) {
+      // If a short opening sentence leaves a large blank area beneath the
+      // cover photo, use the remaining room for a meaningful start of the
+      // next sentence instead of leaving the cover with just a few words.
+      if (cover && image && count < queue.length && wordCount(text) < 12) {
+        const following = queue[count]
+        const join = part => text ? `${text} ${part}` : part
+        const [first, rest] = splitOversizedSentence(following, part => canFit(join(part)))
+        if (wordCount(first) >= 8 && rest && canFit(join(first))) {
+          text = join(first)
+          // Keep the source index on the sentence whose remainder is now
+          // held in `fragment`; the normal fragment path advances it once.
+          index += count
+          fragment = rest
+          pages.push({image:image?.image || '',caption:image?.caption || '',...(image?.imageProvenance ? {imageProvenance:image.imageProvenance} : {}),text})
+          continue
+        }
+      }
       if (fragment) {fragment = ''; index += count}
       else index += count
     } else if (image) {

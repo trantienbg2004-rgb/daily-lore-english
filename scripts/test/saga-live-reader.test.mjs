@@ -87,12 +87,11 @@ test('toolbar keeps the section label while every news page shows its complete h
  assert.ok(!app.includes('<div className="eyebrow">{readerSection(item)}</div>'))
 })
 
-test('visible photo descriptions are complete while full credits remain in article data',()=>{
- const page={image:'https://upload.wikimedia.org/wikipedia/commons/a/a.jpg',caption:'Illustrative image: Secretary of State Andrew Mitchell speaking to Bangladeshi migrant workers in Tunisia 5499005871',imageProvenance:{credit:'Original photographer',license:'CC BY 4.0'}}
+test('visible photo descriptions stay concise while the full caption and credits remain available',()=>{
+ const page={image:'https://upload.wikimedia.org/wikipedia/commons/a/a.jpg',caption:'Illustrative image: Secretary of State Andrew Mitchell speaking to Bangladeshi migrant workers in Tunisia while visiting a refugee support center in the southern region of the country 5499005871',imageProvenance:{credit:'Original photographer',license:'CC BY 4.0'}}
  assert.ok(photoLabel(page).startsWith('Secretary of State'))
- assert.ok(photoLabel(page).length>53)
- assert.ok(photoLabel(page).includes('Bangladeshi migrant workers in Tunisia'))
- assert.ok(!photoLabel(page).endsWith('…'))
+ assert.ok(photoLabel(page).length<=88)
+ assert.ok(photoLabel(page).endsWith('…'))
  assert.ok(!/illustrat/i.test(photoLabel(page)))
  assert.ok(!photoLabel(page).includes('5499005871'))
  assert.match(page.caption,/Bangladeshi migrant workers/)
@@ -102,6 +101,6 @@ test('visible photo descriptions are complete while full credits remain in artic
   'Location of Cambodia and Bangladesh.')
  const css=fs.readFileSync('src/App.css','utf8')
  const app=fs.readFileSync('src/App.jsx','utf8')
- assert.match(css,/lore-photo-caption\s*\{[^}]*max-height:none;\s*overflow:visible;/s)
+ assert.match(css,/lore-photo-caption\s*\{[^}]*max-height:2\.65em;\s*overflow:hidden;/s)
  assert.match(app,/mediaBounds\.bottom <= pagerBounds\.top - 8/)
 })

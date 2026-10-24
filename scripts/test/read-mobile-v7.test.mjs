@@ -33,6 +33,14 @@ test('A short and complete sentence remains intact under the image',()=>{
   assert.equal(pages.map(p=>p.text).join(' '),source)
 })
 
+test('A short opening does not leave the photo cover with only a few words',()=>{
+  const source='The summit opened on Monday. Delegates from across the region gathered to negotiate a detailed agreement on trade, security, environmental protection, and shared infrastructure. Further meetings are planned next month.'
+  const pages=planReadingPages({pages:[{image:'summit-photo',caption:'Delegates at the summit',text:source}]},({text,image})=>words(text)<= (image?16:20))
+  assert.equal(pages[0].image,'summit-photo')
+  assert.ok(words(pages[0].text)>=10)
+  assert.equal(pages.map(page=>page.text).join(' '),source)
+})
+
 test('In an extremely small viewport image can be separate, never an orphan word',()=>{
   const source='A remarkable series of social changes occurred throughout many regions of the continent.'
   const pages=planReadingPages({pages:[{image:'history-photo',text:source}]},({text,image})=>words(text)<= (image?3:6))

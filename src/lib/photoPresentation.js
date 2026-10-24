@@ -1,5 +1,5 @@
-// Keep the full descriptive caption visible. Remove appended credit/license
-// details from the short reader label; those remain available in source credits.
+// Keep the in-reader label focused on the image. The full caption remains
+// available in the photo lightbox and source credits.
 const GENERIC = /^(wikipedia\s*\/\s*wikimedia commons|image from|photo (by|credit)|credits?|wikimedia commons|see original)/i
 
 function decodedFileName(source) {
@@ -33,7 +33,12 @@ export function photoLabel(page) {
     .replace(/\s+during the\s+([A-Za-z]+\s+(?:19|20)\d{2})\b/iu, ', $1')
     .replace(/\s+/g, ' ').trim()
   const concise = description.replace(/^(?:a|an|the)\s+(?=[a-z])/iu, '')
-  return concise ? concise[0].toUpperCase() + concise.slice(1) : 'Article photograph'
+  if (!concise) return 'Article photograph'
+  const capitalized = concise[0].toUpperCase() + concise.slice(1)
+  const limit = 88
+  if (capitalized.length <= limit) return capitalized
+  const shortened = capitalized.slice(0, limit - 1).replace(/\s+\S*$/u, '').trim()
+  return `${shortened}…`
 }
 
 export function photoSourceLink(page) {

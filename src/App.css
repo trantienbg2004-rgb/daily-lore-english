@@ -782,8 +782,11 @@
   overflow-wrap:anywhere;
   word-break:normal;
   white-space:normal;
-  max-height:none;
-  overflow:visible;
+  max-height:2.65em;
+  overflow:hidden;
+  display:-webkit-box;
+  -webkit-box-orient:vertical;
+  -webkit-line-clamp:2;
   border:0;
   box-shadow:none;
   background:transparent;
