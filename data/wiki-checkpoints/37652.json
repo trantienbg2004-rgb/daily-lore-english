@@ -498,7 +498,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380900853"
     }
   ],
-  "updatedAt": "2026-10-24T02:03:12.171Z",
+  "updatedAt": "2026-10-24T02:03:30.318Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -548,7 +548,7 @@
         "headline": "Kyoto: The Thousand-Year Capital",
         "pages": [
           {
-            "text": "Kyoto is a vibrant cultural hub and major tourist destination located on Honshu, Japan's largest island. As the capital of Kyoto Prefecture, the city is home to roughly 1.46 million residents and serves as the heart of a much larger metropolitan area.",
+            "text": "Kyoto is a vibrant cultural hub and major tourist destination located on Honshu, Japan's largest island. As the capital of Kyoto Prefecture, the city is home to a population of 1.46 million residents and serves as the heart of a much larger metropolitan area.",
             "evidenceIds": [
               "P1",
               "P3"
@@ -562,7 +562,7 @@
             ]
           },
           {
-            "text": "Throughout its long history, Kyoto experienced severe conflicts, most notably the destructive Ōnin War in the fifteenth century, which left large parts of the city in ruins. Later, a major rebellion in 1864 also destroyed tens of thousands of homes.",
+            "text": "Throughout its long history, Kyoto experienced severe conflicts, most notably the destructive Ōnin War of 1467 to 1477, which left large parts of the city in ruins. Later, the Hamaguri rebellion of 1864 also destroyed 28,000 houses in the city.",
             "evidenceIds": [
               "P6",
               "P7"
@@ -635,11 +635,11 @@
       }
     }
   },
-  "repairAttempts": 0,
+  "repairAttempts": 1,
   "lastUsage": {
-    "input": 3032,
-    "output": 1034,
-    "total": 4066
+    "input": 2948,
+    "output": 231,
+    "total": 3179
   },
   "validation": null
 }
