@@ -241,7 +241,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378743903"
     }
   ],
-  "updatedAt": "2026-10-24T07:42:14.209Z",
+  "updatedAt": "2026-10-24T07:42:44.169Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -254,7 +254,7 @@
             ]
           },
           {
-            "text": "The greatest use of camel trains happens in North and West Africa. Groups like the Tuareg and Toubou travel around the Sahara Desert and the Sahel. These caravans go as far south as Nigeria and Cameroon, and north to Kenya.",
+            "text": "The greatest use of camel trains happens in North and West Africa. Groups like the Tuareg and Toubou travel around the Sahara Desert and the Sahel. These caravans go as far south as Nigeria and Cameroon, and to Kenya in the east of the continent.",
             "evidenceIds": [
               "P2"
             ]
@@ -289,8 +289,9 @@
             ]
           },
           {
-            "text": "Today, the greatest use of camel trains takes place between North and West Africa. Groups such as the Tuareg, Shuwa, and Hassaniyya conduct trade in and around the Sahara Desert and Sahel, traveling as far south as Nigeria and Cameroon.",
+            "text": "By far, the greatest use of camel trains occurs between North and West Africa. Groups such as the Tuareg, Shuwa, and Hassaniyya conduct trade in and around the Sahara Desert and Sahel, traveling as far south as Nigeria and Cameroon in the west, and northern Kenya in the east. Since the early twentieth century, they have been largely replaced by motorized vehicles or air traffic.",
             "evidenceIds": [
+              "P1",
               "P2"
             ]
           },
@@ -357,11 +358,11 @@
       }
     }
   },
-  "repairAttempts": 1,
+  "repairAttempts": 2,
   "lastUsage": {
-    "input": 2594,
-    "output": 131,
-    "total": 2725
+    "input": 2752,
+    "output": 179,
+    "total": 2931
   },
   "validation": null
 }
