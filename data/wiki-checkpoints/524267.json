@@ -2,10 +2,10 @@
   "pageId": 524267,
   "title": "Meroë",
   "topic": "History & Geography",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1380753731,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380753731",
-  "reason": "7 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -335,5 +335,153 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380753731"
     }
   ],
-  "updatedAt": "2026-10-24T04:51:14.344Z"
+  "updatedAt": "2026-10-24T04:51:32.187Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "The Ancient City of Meroe in Sudan",
+        "pages": [
+          {
+            "text": "Meroe was an old city on the east side of the Nile river in Sudan. It was the capital city of the Kingdom of Kush for many centuries. The city started as a capital around 590 BC and fell in the 4th century AD.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "The site of Meroe is known for many pyramids. There are more than two hundred pyramids in three groups near the old city. Many of these pyramids are now in ruins, but they still have their special size and shape.",
+            "evidenceIds": [
+              "P4"
+            ]
+          },
+          {
+            "text": "King Aspelta moved the main capital of Kush south to Meroe. This happened possibly around 591 BC after the destruction of Napata by an Egyptian pharaoh. Kings and queens were buried in different cemeteries around Meroe.",
+            "evidenceIds": [
+              "P6",
+              "P7",
+              "P8",
+              "P9"
+            ]
+          },
+          {
+            "text": "Meroe had a strong iron industry and metalworking took place there. The city was part of a rich kingdom with good natural resources like iron ore and wood. These resources helped the kingdom grow strong and powerful.",
+            "evidenceIds": [
+              "P13",
+              "P17"
+            ]
+          },
+          {
+            "text": "In 350 AD, Meroe was destroyed by Axum. Before that, the city had a famous conflict with Rome over borders and trade. Later, a French mineralogist named Cailliaud brought the ruins of Meroe to the knowledge of Europeans in 1821.",
+            "evidenceIds": [
+              "P10",
+              "P11",
+              "P15"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "Meroe: Capital of the Kingdom of Kush",
+        "pages": [
+          {
+            "text": "Meroe was an ancient city located on the east bank of the Nile in Sudan, situated north of Khartoum. It served as the capital of the Kingdom of Kush for several centuries, beginning around 590 BC until its eventual collapse during the fourth century AD. The city gave its name to the surrounding region of Butana.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "The archaeological site of Meroe is marked by more than two hundred pyramids arranged in three groups. Many of these structures are currently in ruins, but they retain the distinctive size and proportions characteristic of Nubian pyramids. Rulers and royals were buried in these specific cemeteries over many centuries.",
+            "evidenceIds": [
+              "P4",
+              "P7",
+              "P8",
+              "P9"
+            ]
+          },
+          {
+            "text": "Initially, the primary capital of Kush was located farther north at Napata. King Aspelta moved the capital south to Meroe around 591 BC, shortly after Napata was sacked by the Egyptian Pharaoh Psamtik II. The location was chosen because it lay on the fringe of the summer rainfall belt and was rich in iron ore and hardwood.",
+            "evidenceIds": [
+              "P6",
+              "P17"
+            ]
+          },
+          {
+            "text": "Meroe formed the base of a flourishing kingdom whose wealth centered on a strong iron industry. Metalworking took place through bloomeries and blast furnaces, leading some scholars to compare its production to industrial centers, though the exact extent of this iron trade remains a matter of debate in modern scholarship.",
+            "evidenceIds": [
+              "P13"
+            ]
+          },
+          {
+            "text": "The kingdom engaged in conflicts with Roman Egypt, leading to border skirmishes, a punitive expedition by the Roman governor Publius Petronius, and a subsequent peace treaty in 22 BC. Centuries later, in 350 AD, Meroe was finally destroyed by the Kingdom of Axum.",
+            "evidenceIds": [
+              "P10",
+              "P11"
+            ]
+          },
+          {
+            "text": "European knowledge of the site was renewed in 1821 when the French mineralogist Frédéric Cailliaud published an illustrated book describing the ruins. Additionally, scholars continue to study the extinct Meroitic language, which was written in both cursive and hieroglyphic scripts but remains poorly understood due to a scarcity of bilingual texts.",
+            "evidenceIds": [
+              "P14",
+              "P15"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "Rise and Fall of Meroe in the Nile Valley",
+        "pages": [
+          {
+            "text": "Positioned on the east bank of the Nile in modern-day Sudan, Meroe functioned as the political center of the Kingdom of Kush for centuries. Emerging as the preeminent capital around 590 BC, the city endured until its collapse in the fourth century AD and lent its designation to the broader geographical region of Butana.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "The urban site is distinguished by an extensive necropolis comprising over two hundred pyramids distributed across three distinct groups. Exhibiting the characteristic proportions of Nubian architecture, these structures accommodated the burials of Kushite monarchs, with royal interment practices shifting across different cemeteries throughout the city's chronological periods.",
+            "evidenceIds": [
+              "P4",
+              "P7",
+              "P8",
+              "P9",
+              "P19"
+            ]
+          },
+          {
+            "text": "The relocation of the capital southward from Napata to Meroe by King Aspelta followed the sack of Napata by Egyptian forces under Pharaoh Psamtik II. Strategic geographical factors informed this transition; the site sat on the perimeter of the summer rainfall belt, possessed ample iron ore and timber resources, and maintained access to crucial trade routes.",
+            "evidenceIds": [
+              "P6",
+              "P17"
+            ]
+          },
+          {
+            "text": "Economic vitality in Meroe was anchored by a robust metallurgical sector centered on iron production. Although historical interpretations regarding the sheer volume of output remain debated among modern scholars, the presence of advanced production techniques supported the rise in power and economic autonomy of the Meroitic state.",
+            "evidenceIds": [
+              "P13",
+              "P17"
+            ]
+          },
+          {
+            "text": "Geopolitical friction characterized Meroe's southern frontier relations with Roman Egypt. Following incursions and retaliatory Roman expeditions under Publius Petronius, a formal peace treaty was ratified in 22 BC. Despite subsequent periods of abundant trade, the kingdom gradually weakened due to sustained military pressures and industrial decline, culminating in its destruction by Axum in 350 AD.",
+            "evidenceIds": [
+              "P10",
+              "P21"
+            ]
+          },
+          {
+            "text": "Linguistic analysis indicates that the extinct Meroitic language utilized two distinct script forms: a cursive variant for administrative records and hieroglyphs for monumental inscriptions. Because bilingual epigraphic evidence is scarce, decipherment remains incomplete, while scholarly debates persist regarding its ultimate linguistic affiliation within the Afro-Asiatic or Nilo-Saharan families.",
+            "evidenceIds": [
+              "P5",
+              "P14"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 3014,
+    "output": 1772,
+    "total": 4786
+  },
+  "validation": null
 }
