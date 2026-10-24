@@ -9266,10 +9266,10 @@
       "checkedAt": "2026-10-22T09:07:04.784Z"
     },
     "63074081": {
-      "status": "VALIDATED",
-      "reason": "local factual, style, length, structure and source audit passed",
+      "status": "PUBLISHED",
+      "reason": "4 verified embedded images",
       "revisionId": 1381055215,
-      "checkedAt": "2026-10-24T04:01:46.531Z"
+      "checkedAt": "2026-10-24T04:01:52.610Z"
     },
     "63406512": {
       "status": "RETRY_LATER",
@@ -10202,7 +10202,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-24T04:01:46.533Z",
+  "updatedAt": "2026-10-24T04:01:52.611Z",
   "dailyUsage": {
     "day": "2026-10-23",
     "calls": 163,
