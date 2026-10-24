@@ -2,9 +2,212 @@
   "pageId": 1471981,
   "title": "Election monitoring",
   "topic": "Politics",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1380062981,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380062981",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-24T10:36:23.556Z"
+  "reason": "4 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:Internationally observed elections (%), OWID.svg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3e/Internationally_observed_elections_%28%25%29%2C_OWID.svg/960px-Internationally_observed_elections_%28%25%29%2C_OWID.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Internationally observed elections (%), OWID.svg",
+        "caption": "Internationally observed elections",
+        "alt": "",
+        "description": ":Internationally observed elections (%) Percentage of internationally observed elections and whether they were criticized by international observers. Figures cover 1,754 election events in 157 independent states, excluding those with population less than 250,000.",
+        "date": "2020",
+        "section": "",
+        "position": 0,
+        "provenance": {
+          "credit": "Our World In Data",
+          "license": "CC BY 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Internationally_observed_elections_(%25),_OWID.svg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Election_monitoring",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380062981",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:Internationally observed elections by Western monitors, OWID.svg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5e/Internationally_observed_elections_by_Western_monitors%2C_OWID.svg/960px-Internationally_observed_elections_by_Western_monitors%2C_OWID.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Internationally observed elections by Western monitors, OWID.svg",
+        "caption": "Internationally observed elections by Western monitors",
+        "alt": "",
+        "description": ":Internationally observed elections by Western monitors Estimates correspond to the number of international elections that were either observed and criticized by Western monitors, observed and not criticized by Western monitors, or elections that were not observed by Western monitors. Criticism refers to allegations of significant vote-fraud.",
+        "date": "2020",
+        "section": "",
+        "position": 1,
+        "provenance": {
+          "credit": "Our World In Data",
+          "license": "CC BY 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Internationally_observed_elections_by_Western_monitors,_OWID.svg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Election_monitoring",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380062981",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:OSCE Special Co-ordinator Kristian Vigenin observes a polling station on 28 November 2018 in Tbilisi, Georgia (32234401798).jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8d/OSCE_Special_Co-ordinator_Kristian_Vigenin_observes_a_polling_station_on_28_November_2018_in_Tbilisi%2C_Georgia_%2832234401798%29.jpg/960px-OSCE_Special_Co-ordinator_Kristian_Vigenin_observes_a_polling_station_on_28_November_2018_in_Tbilisi%2C_Georgia_%2832234401798%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:OSCE Special Co-ordinator Kristian Vigenin observes a polling station on 28 November 2018 in Tbilisi, Georgia (32234401798).jpg",
+        "caption": "OSCE observers monitoring a polling station in Georgia in 2018.",
+        "alt": "",
+        "description": "OSCE PA EOM to Georgia (2nd Round Presidential Election) November 2018",
+        "date": "2018-11-28 15:13",
+        "section": "Organizations",
+        "position": 2,
+        "provenance": {
+          "credit": "OSCE Parliamentary Assembly from Copenhagen, Denmark",
+          "license": "CC BY-SA 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:OSCE_Special_Co-ordinator_Kristian_Vigenin_observes_a_polling_station_on_28_November_2018_in_Tbilisi,_Georgia_(32234401798).jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Election_monitoring",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380062981",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Foreign Observer identification badge in the 1989 Namibian election.jpg"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:Election observers.png",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/14/Election_observers.png/960px-Election_observers.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Election observers.png",
+        "caption": "Election observers",
+        "alt": "",
+        "description": "Source: state laws and https://www.ncsl.org/elections-and-campaigns/policies-for-election-observers",
+        "date": "2023-09-16",
+        "section": "Domestic election monitoring",
+        "position": 4,
+        "provenance": {
+          "credit": "Numbersinstitute",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Election_observers.png",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Election_monitoring",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380062981",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "98d3202352817856e555107e881227b59dba751126ca636082e162e8d4d985f7",
+      "heading": "Lead",
+      "excerpt": "Election monitoring involves the observation of an election by one or more independent parties, typically from another country or from a non",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380062981"
+    },
+    {
+      "id": "P2",
+      "hash": "47c98c0786659cd19a1901cab2cc6ca1fd442e3e32d2faa9b4c582ad63f6e6b5",
+      "heading": "Lead",
+      "excerpt": "Monitors do not directly prevent electoral fraud, but rather record and report instances of suspicious practices. The monitoring may serve t",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380062981"
+    },
+    {
+      "id": "P3",
+      "hash": "aa139d237f26685ef4bd9b9ecdfbe21970a39923a931d0007d1abdec645084e9",
+      "heading": "Lead",
+      "excerpt": "Scholars distinguish between election monitoring organizations in terms of quality. Some election monitors, often those with ties to authori",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380062981"
+    },
+    {
+      "id": "P4",
+      "hash": "c72d4c516d570f881464e964f196882a4709626f7210658b5d8997a4de7bc96c",
+      "heading": "History",
+      "excerpt": "The first monitored election was that of an 1857 plebiscite in Moldavia and Wallachia (current Romania) that was monitored by most of the ma",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380062981"
+    },
+    {
+      "id": "P5",
+      "hash": "16178e86f8c120ce7450fd2b3b164bcecb414a862cb044ee6af28c2c7d7e1170",
+      "heading": "History",
+      "excerpt": "During the 2010s and early 2020s, there was an increased prevalence of low-quality election monitors who validated flawed elections. These e",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380062981"
+    },
+    {
+      "id": "P6",
+      "hash": "529c226890535c6c4bfcc600d8dfc0918bddab2ba23e0c4a5ced4354e6621ee7",
+      "heading": "Organizations",
+      "excerpt": "International organizations such as the Organization of American States, the Organization for Security and Co-operation in Europe (OSCE), th",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380062981"
+    },
+    {
+      "id": "P7",
+      "hash": "7af0431631c480138611c010483dac95df9fdd362253b4cbcb2f5463fb83a968",
+      "heading": "International election monitoring",
+      "excerpt": "Standard international election observation missions, as deployed by, for example, the European Commission or the OSCE Office for Democratic",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380062981"
+    },
+    {
+      "id": "P8",
+      "hash": "11c7accb7da68866b97cf6cf32b9a2a982795774c539f96d99f9650f986635b9",
+      "heading": "Long-term observers",
+      "excerpt": "Most observation missions send a small number of long-term monitors (known as LTOs) for a period of six to eight weeks. A larger number of s",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380062981"
+    },
+    {
+      "id": "P9",
+      "hash": "dfc1b3aab2ce22f36a66a0865f5a429ddc7b3e0640fe69c5a7c9a9b50995fb00",
+      "heading": "Domestic election monitoring",
+      "excerpt": "In addition to international organizations monitoring elections, citizen organizations—or coalitions of organizations—also monitor elections",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380062981"
+    },
+    {
+      "id": "P10",
+      "hash": "6d506698a35216c10e30a778d51ceefe0dd47e19541cbce31843fcb05d092602",
+      "heading": "Local and regional election monitoring",
+      "excerpt": "Most international observer organizations have a mandate to observe parliamentary elections and some organizations, such as the Organization",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380062981"
+    },
+    {
+      "id": "P11",
+      "hash": "9c4395c1cac6adbb537532f07f634b1586c095ddda20e6742e03bbb3778b30ac",
+      "heading": "Organizations",
+      "excerpt": "A 2024 study categorized election monitoring organizations in terms of their quality. Of the 20 most frequent election monitoring organizati",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380062981"
+    },
+    {
+      "id": "P12",
+      "hash": "635b254bf92a55d557cea30f8e356beeb94d59945fc1c4f968db77e11a11252c",
+      "heading": "International election monitoring",
+      "excerpt": "A 2026 study found that the presence of election monitors lead to greater reporting of electoral violence, showing that election monitors un",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380062981"
+    },
+    {
+      "id": "P13",
+      "hash": "b5456a00a942a0aad6ee698c8c7d834620454a568a3b941473329c3209ef98ff",
+      "heading": "Domestic election monitoring",
+      "excerpt": "The most common type of domestic election monitoring comes by way of party poll-watchers, who are partisan individuals that are looking out ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380062981"
+    },
+    {
+      "id": "P14",
+      "hash": "d5448287cbd26e4df82f6a486d9b6c736cb5efae500d3ce8e6e017640e7c821d",
+      "heading": "Domestic election monitoring",
+      "excerpt": "Free and Fair Election Network (FAFEN) in Pakistan is a coalition of 42 national civil society organizations working together to promote fai",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380062981"
+    }
+  ],
+  "updatedAt": "2026-10-24T10:36:29.338Z"
 }

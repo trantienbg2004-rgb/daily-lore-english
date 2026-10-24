@@ -8462,10 +8462,10 @@
       "checkedAt": "2026-10-22T14:38:54.855Z"
     },
     "1471981": {
-      "status": "FETCHED",
-      "reason": "pinned-source-ready",
+      "status": "EVIDENCE_READY",
+      "reason": "4 rights-verified embedded images",
       "revisionId": 1380062981,
-      "checkedAt": "2026-10-24T10:36:23.555Z"
+      "checkedAt": "2026-10-24T10:36:29.338Z"
     },
     "1502929": {
       "status": "RETRY_LATER",
@@ -11930,7 +11930,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-24T10:36:23.556Z",
+  "updatedAt": "2026-10-24T10:36:29.339Z",
   "dailyUsage": {
     "day": "2026-10-24",
     "calls": 117,
