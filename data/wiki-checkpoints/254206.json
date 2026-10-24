@@ -279,7 +279,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380793173"
     }
   ],
-  "updatedAt": "2026-10-24T06:57:02.582Z",
+  "updatedAt": "2026-10-24T06:57:20.450Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -395,7 +395,7 @@
             ]
           },
           {
-            "text": "Growing humanitarian concern prompted sustained legislative intervention. Beginning with the Chimney Sweepers Act 1788 and culminating in the definitive prohibition of climbing boys in 1875, successive Acts of Parliament gradually restricted and ultimately abolished the practice.",
+            "text": "Growing humanitarian concern prompted sustained legislative intervention. Beginning with the Chimney Sweepers Act 1788 and culminating in the definitive prohibition of climbing boys, successive Acts of Parliament gradually restricted and ultimately abolished the practice.",
             "evidenceIds": [
               "P6",
               "P9",
@@ -414,11 +414,11 @@
       }
     }
   },
-  "repairAttempts": 0,
+  "repairAttempts": 1,
   "lastUsage": {
-    "input": 2655,
-    "output": 1387,
-    "total": 4042
+    "input": 2482,
+    "output": 121,
+    "total": 2603
   },
   "validation": null
 }
