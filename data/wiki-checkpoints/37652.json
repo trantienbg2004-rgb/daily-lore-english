@@ -2,10 +2,10 @@
   "pageId": 37652,
   "title": "Kyoto",
   "topic": "History & Geography",
-  "status": "DRAFTED",
+  "status": "NEEDS_REVIEW",
   "revisionId": 1380900853,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380900853",
-  "reason": "draft durably saved before validation",
+  "reason": "editorial: B1-B2:page-3:length-or-sentence",
   "rights": [
     {
       "status": "REVIEW",
@@ -498,7 +498,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380900853"
     }
   ],
-  "updatedAt": "2026-10-24T02:03:48.215Z",
+  "updatedAt": "2026-10-24T02:03:54.464Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -641,5 +641,10 @@
     "output": 116,
     "total": 3010
   },
-  "validation": null
+  "validation": {
+    "accepted": false,
+    "errors": [
+      "B1-B2:page-3:length-or-sentence"
+    ]
+  }
 }
