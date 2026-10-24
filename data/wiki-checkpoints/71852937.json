@@ -2,10 +2,10 @@
   "pageId": 71852937,
   "title": "Darb El Arba'īn",
   "topic": "Economy",
-  "status": "DRAFTED",
+  "status": "VALIDATED",
   "revisionId": 1348771002,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1348771002",
-  "reason": "draft durably saved before validation",
+  "reason": "local factual, style, length, structure and source audit passed",
   "rights": [
     {
       "status": "REVIEW",
@@ -321,7 +321,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1348771002"
     }
   ],
-  "updatedAt": "2026-10-24T06:31:30.397Z",
+  "updatedAt": "2026-10-24T06:31:48.492Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -443,5 +443,8 @@
     "output": 133,
     "total": 2022
   },
-  "validation": null
+  "validation": {
+    "accepted": true,
+    "errors": []
+  }
 }
