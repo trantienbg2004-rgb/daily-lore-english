@@ -2,10 +2,10 @@
   "pageId": 67928046,
   "title": "United States–Taliban deal",
   "topic": "Conflict & Security",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1379593501,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379593501",
-  "reason": "1 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -132,5 +132,131 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379593501"
     }
   ],
-  "updatedAt": "2026-10-24T08:32:13.184Z"
+  "updatedAt": "2026-10-24T08:32:30.295Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "The US and Taliban Deal",
+        "pages": [
+          {
+            "text": "On February 29, 2020, the United States and the Taliban signed a peace agreement in Doha, Qatar. The goal was to end the long war in Afghanistan. The Afghan government was not part of these talks. This deal changed the war and led to many new problems.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "The agreement stated that all NATO forces would leave Afghanistan. In return, the Taliban promised to stop terrorist groups from using the country. The US also agreed to reduce its troops and close five military bases. Other countries welcomed this plan.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "Even with the peace deal, fighting did not stop. Insurgent attacks against Afghan security forces increased quickly. Many people were killed in these new clashes. Still, the US and NATO continued to pull their troops out of the country as planned.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "The deal also required a prisoner exchange between the Afghan government and the Taliban. However, the Afghan leaders did not agree to free 5,000 prisoners right away. This caused arguments and made the peace process very difficult to manage.",
+            "evidenceIds": [
+              "P5",
+              "P6"
+            ]
+          },
+          {
+            "text": "By August 2021, all foreign troops finished leaving Afghanistan. Without international support, the Afghan security forces could not hold back the fighters. The Taliban took control of Kabul by force, bringing a major end to the conflict.",
+            "evidenceIds": [
+              "P1",
+              "P3"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "The Doha Agreement and Afghanistan",
+        "pages": [
+          {
+            "text": "On February 29, 2020, the United States and the Taliban signed a peace agreement known as the Doha Accords in Qatar. Negotiated by Zalmay Khalilzad, the deal aimed to end the conflict in Afghanistan. Crucially, the Afghan government was excluded from these talks, which later caused deep political fractures.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "The accord provided for the withdrawal of all NATO forces in exchange for Taliban counter-terrorism commitments. The US agreed to lower its troop numbers and close five military bases. International bodies and several countries unanimously endorsed the agreement, hoping for regional stability.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "Despite the agreement, insurgent attacks against Afghan security forces surged, resulting in thousands of casualties. Meanwhile, the US dramatically reduced its air raids. This left local security forces without a critical advantage, creating a strong sense of abandonment among the troops and the public.",
+            "evidenceIds": [
+              "P1",
+              "P3"
+            ]
+          },
+          {
+            "text": "The accord also called for intra-Afghan negotiations and a prisoner exchange involving thousands of captives. However, Afghan President Ashraf Ghani initially rejected the prisoner release as a prerequisite for talks. Disagreements over prisoner lists and team compositions continuously hindered the dialogue process.",
+            "evidenceIds": [
+              "P5",
+              "P6",
+              "P11"
+            ]
+          },
+          {
+            "text": "Despite political disputes and rising violence, foreign troop reductions continued according to schedule. By the summer of 2021, the US and NATO completed their full evacuations. Without foreign military backing, the Afghan forces collapsed, leading to the Taliban takeover of Kabul in August 2021.",
+            "evidenceIds": [
+              "P1",
+              "P3"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "Anatomy of the US-Taliban Doha Accords",
+        "pages": [
+          {
+            "text": "On February 29, 2020, the United States and the Taliban concluded the Doha Accords in Qatar, formally titled the Agreement for Bringing Peace to Afghanistan. Negotiated by Zalmay Khalilzad without the participation of the recognized Afghan government, the pact sought to terminate the protracted conflict spanning from 2001 to 2021.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "The framework stipulated a phased withdrawal of all NATO and US forces, conditioned upon Taliban counter-terrorism assurances. Washington committed to reducing troop levels, shuttering five military bases, and exploring the cessation of economic sanctions. The pact garnered unanimous UN Security Council endorsement alongside regional diplomatic support.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "In the wake of the agreement, insurgent violence escalated significantly. Concurrently, the unilateral reduction of U.S. air support deprived the Afghan National Defense and Security Forces of a vital tactical advantage. According to official oversight reports, this generated widespread demoralization and a profound sense of abandonment.",
+            "evidenceIds": [
+              "P1",
+              "P3"
+            ]
+          },
+          {
+            "text": "The accord mandated intra-Afghan dialogue and a controversial prisoner swap involving thousands of detainees. President Ashraf Ghani initially contested the prerequisite release of 5,000 Taliban prisoners, asserting domestic authority. Subsequent negotiations in Kabul suffered from procedural disputes, walkouts, and mutual distrust regarding verification.",
+            "evidenceIds": [
+              "P5",
+              "P6",
+              "P13"
+            ]
+          },
+          {
+            "text": "Despite persistent implementation hurdles and surging casualties, foreign military drawdowns proceeded. By August 2021, the complete evacuation of international forces was finalized. The resultant vulnerability of local security forces culminated in the rapid collapse of the state and the subsequent Taliban takeover of Kabul.",
+            "evidenceIds": [
+              "P1",
+              "P3"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2911,
+    "output": 1319,
+    "total": 4230
+  },
+  "validation": null
 }
