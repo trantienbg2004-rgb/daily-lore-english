@@ -132,7 +132,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379593501"
     }
   ],
-  "updatedAt": "2026-10-24T08:32:30.295Z",
+  "updatedAt": "2026-10-24T08:32:48.428Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -164,7 +164,7 @@
             ]
           },
           {
-            "text": "By August 2021, all foreign troops finished leaving Afghanistan. Without international support, the Afghan security forces could not hold back the fighters. The Taliban took control of Kabul by force, bringing a major end to the conflict.",
+            "text": "By August 2021, all foreign troops finished leaving Afghanistan. Without international support, the Afghan security forces could not hold back the fighters. The Taliban took control of Kabul by force, bringing an end to the conflict.",
             "evidenceIds": [
               "P1",
               "P3"
@@ -215,7 +215,7 @@
         "headline": "Anatomy of the US-Taliban Doha Accords",
         "pages": [
           {
-            "text": "On February 29, 2020, the United States and the Taliban concluded the Doha Accords in Qatar, formally titled the Agreement for Bringing Peace to Afghanistan. Negotiated by Zalmay Khalilzad without the participation of the recognized Afghan government, the pact sought to terminate the protracted conflict spanning from 2001 to 2021.",
+            "text": "On February 29, 2020, the United States and the Taliban concluded the Doha Accords in Qatar, formally titled the Agreement for Bringing Peace to Afghanistan. Negotiated by Zalmay Khalilzad without the participation of the recognized Afghan government, the pact sought to terminate the war in Afghanistan.",
             "evidenceIds": [
               "P1"
             ]
@@ -252,11 +252,11 @@
       }
     }
   },
-  "repairAttempts": 0,
+  "repairAttempts": 1,
   "lastUsage": {
-    "input": 2911,
-    "output": 1319,
-    "total": 4230
+    "input": 2989,
+    "output": 351,
+    "total": 3340
   },
   "validation": null
 }
