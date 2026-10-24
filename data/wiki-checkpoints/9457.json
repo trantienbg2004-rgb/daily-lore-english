@@ -2,10 +2,10 @@
   "pageId": 9457,
   "title": "Election",
   "topic": "Politics",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1380210078,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380210078",
-  "reason": "7 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -354,5 +354,148 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380210078"
     }
   ],
-  "updatedAt": "2026-10-24T08:31:27.631Z"
+  "updatedAt": "2026-10-24T08:31:42.245Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "What Is An Election",
+        "pages": [
+          {
+            "text": "An election is a way for a group of people to choose someone for a public job. People vote to pick leaders for towns, cities, and countries. This helps choose who will hold responsibility.",
+            "evidenceIds": [
+              "P1",
+              "P2"
+            ]
+          },
+          {
+            "text": "Elections have a long history. Long ago, people used them in ancient Greece and ancient Rome. They also used them in the medieval period to pick rulers like the pope.",
+            "evidenceIds": [
+              "P6"
+            ]
+          },
+          {
+            "text": "Not everyone can vote in an election. Most places have a minimum age. People under the age of majority are often not allowed to vote in these public choices.",
+            "evidenceIds": [
+              "P8"
+            ]
+          },
+          {
+            "text": "Countries use many different systems for voting. Some countries elect one president. Other countries elect a parliament or a group of members to make laws for the people.",
+            "evidenceIds": [
+              "P11",
+              "P12"
+            ]
+          },
+          {
+            "text": "When an election starts, politicians run campaigns to win votes. They try to influence people. Sometimes, leaders return to voters at regular times to seek their mandate again.",
+            "evidenceIds": [
+              "P13",
+              "P14"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "Understanding Elections",
+        "pages": [
+          {
+            "text": "An election is a decision-making process where a population votes to choose individuals for public office. Since the seventeenth century, elections have served as the usual mechanism for representative democracy, filling roles in legislatures, executives, and local governments.",
+            "evidenceIds": [
+              "P1",
+              "P2"
+            ]
+          },
+          {
+            "text": "Historically, elections date back to ancient Greece and Rome. They were also used during the medieval period to choose leaders such as the pope and the Holy Roman Emperor. In early medieval Bengal, feudal chieftains elected the Pala King Gopala.",
+            "evidenceIds": [
+              "P6",
+              "P21"
+            ]
+          },
+          {
+            "text": "A central issue in any election is who has the right to vote. The electorate does not typically include the entire population, as all jurisdictions enforce a minimum voting age and prohibit those who are under the age of majority.",
+            "evidenceIds": [
+              "P8"
+            ]
+          },
+          {
+            "text": "Countries use various electoral systems to choose a single person, such as a president, or a larger group, such as a parliament. When elections are called, politicians and their supporters compete directly for votes through campaigns and advertising.",
+            "evidenceIds": [
+              "P12",
+              "P13"
+            ]
+          },
+          {
+            "text": "Because elected officials must remain accountable to the people, democratic constitutions usually require elections at fixed regular intervals. However, in countries with weak rule of law, incumbent governments sometimes interfere to remain in power.",
+            "evidenceIds": [
+              "P14",
+              "P15"
+            ]
+          },
+          {
+            "text": "Electoral interference can include suppressing the opposition, tampering with voting machines, or spreading false information. Some scholars argue that modern elections can act as aristocratic selection mechanisms rather than fully equal opportunities.",
+            "evidenceIds": [
+              "P17",
+              "P18",
+              "P20"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "The Mechanics And History Of Elections",
+        "pages": [
+          {
+            "text": "An election constitutes a collective decision-making mechanism through which a populace selects individuals for public office or positions of responsibility. Functioning as the cornerstone of representative democracy since the seventeenth century, elections allocate seats within legislative, executive, and judicial bodies.",
+            "evidenceIds": [
+              "P1",
+              "P2"
+            ]
+          },
+          {
+            "text": "Historical precedents trace elections to antiquity, including ancient Greece and Rome, as well as medieval practices for selecting popes and emperors. In contrast to modern representative democracies, ancient Athens relied predominantly on sortition, viewing traditional voting as an oligarchic institution.",
+            "evidenceIds": [
+              "P3",
+              "P6"
+            ]
+          },
+          {
+            "text": "The composition of the electorate remains a central structural issue. Jurisdictions universally mandate minimum age thresholds, systematically excluding populations under the age of majority. Historically, restricted electorates favored small, privileged groups of citizens and aristocrats.",
+            "evidenceIds": [
+              "P8",
+              "P9"
+            ]
+          },
+          {
+            "text": "Electoral methods exhibit substantial global diversity, ranging from single-member constituencies to nationwide at-large districts designed to elect executives or parliamentary bodies. Campaigns emerge as competitive arenas where candidates attempt to influence public policy and secure constituent mandates.",
+            "evidenceIds": [
+              "P12",
+              "P13"
+            ]
+          },
+          {
+            "text": "Democratic frameworks mandate periodic returns to the electorate to ensure political accountability. Nevertheless, vulnerabilities persist, particularly in regions with weak rule of law, where incumbent regimes may manipulate electoral mechanisms, restrict free speech, and suppress opposition.",
+            "evidenceIds": [
+              "P14",
+              "P15",
+              "P16"
+            ]
+          },
+          {
+            "text": "Scholarly critiques suggest that liberal democratic elections can function as inegalitarian, aristocratic selection tools. Factors such as information costs, voter biases, and unequal candidate treatment frequently generate self-selection barriers that differentiate representatives from the broader populace.",
+            "evidenceIds": [
+              "P20"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2673,
+    "output": 1398,
+    "total": 4071
+  },
+  "validation": null
 }
