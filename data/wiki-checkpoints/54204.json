@@ -2,10 +2,10 @@
   "pageId": 54204,
   "title": "Philip II of Macedon",
   "topic": "Sports",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1378691409,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378691409",
-  "reason": "5 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REJECTED",
@@ -295,5 +295,158 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378691409"
     }
   ],
-  "updatedAt": "2026-10-24T06:25:39.115Z"
+  "updatedAt": "2026-10-24T06:25:53.078Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "Philip II of Macedon",
+        "pages": [
+          {
+            "text": "Philip II was the king of Macedon from 359 BC until his death in 336 BC. He changed Macedon from a small kingdom into a powerful nation that ruled Ancient Greece. He was also the father of Alexander the Great.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Philip was born around 382 BC. When he was young, he spent time in Thebes as a hostage. While there, he learned a lot about military strategies and politics from important local leaders.",
+            "evidenceIds": [
+              "P3",
+              "P4"
+            ]
+          },
+          {
+            "text": "After his brother died in battle, Philip took control of Macedon. He worked very hard to improve his army. He created the Macedonian phalanx and gave his soldiers long spears called sarissas.",
+            "evidenceIds": [
+              "P5",
+              "P6"
+            ]
+          },
+          {
+            "text": "With his strong new army, Philip defeated neighboring tribes and Greek city-states. After winning a big battle in 338 BC, he united the Greek states into a federation to plan an invasion.",
+            "evidenceIds": [
+              "P2",
+              "P7",
+              "P8"
+            ]
+          },
+          {
+            "text": "In October 336 BC, Philip went to a wedding celebration at Aigai. While walking into a theatre without bodyguards to look friendly, one of his own bodyguards stabbed and killed him.",
+            "evidenceIds": [
+              "P12"
+            ]
+          },
+          {
+            "text": "After Philip died, his son Alexander became king immediately. Alexander went on to lead the planned invasion of the Persian Empire just as his father had wanted to do.",
+            "evidenceIds": [
+              "P2"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "The Rise and Fall of Philip II",
+        "pages": [
+          {
+            "text": "Philip II of Macedon ruled as king from 359 BC until his assassination in 336 BC. Through clever policies and military reforms, he transformed Macedon from a peripheral kingdom into the dominant power of Ancient Greece in less than twenty-five years. He was the father of Alexander the Great.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Born around 382 BC as the youngest son of King Amyntas III, Philip experienced captivity in his youth. Held in Thebes from 368 to 365 BC, he received valuable military and diplomatic education before returning to Macedon and eventually seizing the throne after his brother died in battle.",
+            "evidenceIds": [
+              "P3",
+              "P4",
+              "P5"
+            ]
+          },
+          {
+            "text": "Philip radically reformed the Macedonian military. He vastly increased the cavalry, improved soldier discipline, and introduced the Macedonian phalanx armed with long sarissa spears. These innovations, combined with siege engines and diplomacy, enabled him to defeat rivals like the Illyrians and Paeonians.",
+            "evidenceIds": [
+              "P2",
+              "P6",
+              "P7"
+            ]
+          },
+          {
+            "text": "After defeating Athens and Thebes at the Battle of Chaeronea in 338 BC, Philip established the Hellenic League. As its elected hegemon and commander-in-chief, he prepared for a major invasion of the Achaemenid Empire.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "In October 336 BC, Philip attended a marriage celebration at Aigai. While entering the town theatre unprotected to appear approachable to diplomats, he was stabbed by Pausanias of Orestis, one of his own bodyguards. The assassin was chased and killed during his escape attempt.",
+            "evidenceIds": [
+              "P12"
+            ]
+          },
+          {
+            "text": "Philip's sudden death led to the immediate succession of his son Alexander. Ancient writers like Cleitarchus and Justin debated potential motives involving personal feuds or royal family intrigue, while modern historians view some of these accounts with skepticism, noting that Alexander immediately took his father's place.",
+            "evidenceIds": [
+              "P2",
+              "P13",
+              "P14",
+              "P15"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "Macedonian Hegemony under Philip II",
+        "pages": [
+          {
+            "text": "Reigning from 359 BC until his assassination in 336 BC, Philip II of Macedon orchestrated the rapid ascent of his kingdom from a marginal regional state to the dominant geopolitical power of the Greek world. As a member of the Argead dynasty, he laid the administrative and military foundations that enabled his son, Alexander the Great, to subsequently launch an invasion of the Achaemenid Empire.",
+            "evidenceIds": [
+              "P1",
+              "P2"
+            ]
+          },
+          {
+            "text": "Philip's formative years included a period as a political hostage in Thebes between 368 and 365 BC. There, he absorbed sophisticated military and diplomatic doctrines from prominent local statesmen. Upon returning to Macedon, he capitalized on a dynastic crisis following the death of his brother Perdiccas III in battle to bypass an infant heir and secure the throne.",
+            "evidenceIds": [
+              "P4",
+              "P5"
+            ]
+          },
+          {
+            "text": "His military restructuring altered ancient warfare. Philip expanded the royal cavalry exponentially, instituted professional discipline with promotion pathways, and pioneered combined arms tactics alongside siege artillery. Crucially, he instituted the Macedonian phalanx, equipping infantrymen with the long sarissa polearm that became the tactical bedrock of his campaigns.",
+            "evidenceIds": [
+              "P2",
+              "P6"
+            ]
+          },
+          {
+            "text": "Through strategic marriages, aggressive territorial expansion against Illyrians and Thracians, and diplomatic maneuvers during conflicts such as the Third Sacred War, Philip subdued key Greek rivals. The decisive victory at Chaeronea in 338 BC culminated in the establishment of the Hellenic League, positioning Philip as commander-in-chief for an impending pan-Hellenic expedition against Persia.",
+            "evidenceIds": [
+              "P2",
+              "P7",
+              "P8",
+              "P20"
+            ]
+          },
+          {
+            "text": "Philip's ambitions were abruptly curtailed in October 336 BC at Aigai. While attending a dynastic wedding celebration and deliberately walking unprotected to cultivate rapport with foreign dignitaries, he was assassinated by Pausanias of Orestis, a royal bodyguard who was killed by pursuers during his attempted escape.",
+            "evidenceIds": [
+              "P12"
+            ]
+          },
+          {
+            "text": "The assassination generated considerable historical speculation. Later accounts by writers like Cleitarchus and Justin alleged complex personal motives or royal complicity involving Olympias and Alexander. However, modern historical analysis often treats these dramatic narratives with caution, noting that while suspicion naturally fell on the primary beneficiaries, the alleged plots remain debated and difficult to substantiate conclusively.",
+            "evidenceIds": [
+              "P13",
+              "P14",
+              "P15"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2969,
+    "output": 1780,
+    "total": 4749
+  },
+  "validation": null
 }
