@@ -10656,10 +10656,10 @@
       "checkedAt": "2026-10-25T08:50:56.071Z"
     },
     "35958818": {
-      "status": "PENDING",
-      "reason": "queued",
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
       "revisionId": 1328010969,
-      "checkedAt": null
+      "checkedAt": "2026-10-25T08:54:38.448Z"
     },
     "36032909": {
       "status": "NEEDS_REVIEW",
@@ -12618,7 +12618,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-25T08:54:32.087Z",
+  "updatedAt": "2026-10-25T08:54:38.448Z",
   "dailyUsage": {
     "day": "2026-10-25",
     "calls": 60,
