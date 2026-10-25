@@ -9222,10 +9222,10 @@
       "checkedAt": "2026-10-24T04:23:41.906Z"
     },
     "2419633": {
-      "status": "PENDING",
-      "reason": "queued",
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
       "revisionId": 1337924227,
-      "checkedAt": null
+      "checkedAt": "2026-10-25T08:56:02.630Z"
     },
     "2508128": {
       "status": "RETRY_LATER",
@@ -12618,7 +12618,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-25T08:55:56.182Z",
+  "updatedAt": "2026-10-25T08:56:02.641Z",
   "dailyUsage": {
     "day": "2026-10-25",
     "calls": 60,
