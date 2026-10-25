@@ -2,9 +2,93 @@
   "pageId": 41316536,
   "title": "End of history",
   "topic": "Politics",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1375541103,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375541103",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-25T08:57:20.318Z"
+  "reason": "1 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:BerlinWall-BrandenburgGate.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/25/BerlinWall-BrandenburgGate.jpg/960px-BerlinWall-BrandenburgGate.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:BerlinWall-BrandenburgGate.jpg",
+        "caption": "Demolition of the Berlin Wall in November 1989.",
+        "alt": "",
+        "description": "People atop the Berlin Wall near the Brandenburg Gate on 9 November 1989. The text on the sign \"Achtung! Sie verlassen jetzt West-Berlin\" (\"Notice! You are now leaving West Berlin\") has been modified with an additional text \"Wie denn?\" (\"How?\"). Also in blue is the logo for ONCE, whose cycling team was started in 1989",
+        "date": "photo taken 09 November 1989, which is obviously wrong as the Wall came down in the night between 19",
+        "section": "Francis Fukuyama",
+        "position": 0,
+        "provenance": {
+          "credit": "Sue Ream, photographer (San Francisco, California)",
+          "license": "CC BY 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:BerlinWall-BrandenburgGate.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/End_of_history",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375541103",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "8a9c19e68bd149c4cf1b8c5e89005cb9f417b99bd165f4ef84ae8aa8664516b2",
+      "heading": "Lead",
+      "excerpt": "The end of history is a political and philosophical concept that supposes that a particular political, economic, or social system may develo",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375541103"
+    },
+    {
+      "id": "P2",
+      "hash": "bc97b41adfd425786f33250ea1edf18f1b9c7940ef3bf74b8549fe518eca10e0",
+      "heading": "History",
+      "excerpt": "The phrase the end of history was first used by the French philosopher and mathematician Antoine Augustin Cournot in 1861 \"to refer to the e",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375541103"
+    },
+    {
+      "id": "P3",
+      "hash": "a1f5e6f1c423a393e84e89c4c64cc424041fdb64e2f8baff8bf240e33c9db34a",
+      "heading": "History",
+      "excerpt": "The formal development of an idea of an \"end of history\" is most closely associated with Georg Wilhelm Friedrich Hegel, although Hegel discu",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375541103"
+    },
+    {
+      "id": "P4",
+      "hash": "a5088a23d7389b5cdba440b280bd30bb5ed0cceb2d191b9ff0ade90b60be0fdf",
+      "heading": "In postmodernism",
+      "excerpt": "The idea of an \"end of history\" does not imply that nothing more will ever happen. Rather, what the postmodern sense of an end of history te",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375541103"
+    },
+    {
+      "id": "P5",
+      "hash": "62f3318478be5bd15fa221662bb3c77091c899616f8c092d76e702ff90839c54",
+      "heading": "Francis Fukuyama",
+      "excerpt": "A name that is commonly linked to the concept of the end of history in contemporary discourse is Francis Fukuyama. Fukuyama brought the term",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375541103"
+    },
+    {
+      "id": "P6",
+      "hash": "883fdf0531aaae39ecd10823753788c5a90998ee1eddbf70e46e2dfd821c4a48",
+      "heading": "Francis Fukuyama",
+      "excerpt": "In his theory, Fukuyama distinguishes between the material or real world and the world of ideas or consciousness. He believes that in the re",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375541103"
+    },
+    {
+      "id": "P7",
+      "hash": "46fa4d1efc722bb7c084b4216912da600b3e76ac24f0357b479805fc0cf0475d",
+      "heading": "Francis Fukuyama",
+      "excerpt": "Fukuyama concludes that the end of history will be a sad time, because the potential of ideological struggles that people were prepared to r",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375541103"
+    },
+    {
+      "id": "P8",
+      "hash": "dfa48dcb1acb956d507becfde0b32217a258479b24f06ccc089cd9171bffea05",
+      "heading": "Francis Fukuyama",
+      "excerpt": "Following the end of the Cold War, as liberal democracy and free market economy began to dominate even outside the traditional Western World",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375541103"
+    }
+  ],
+  "updatedAt": "2026-10-25T08:57:26.210Z"
 }
