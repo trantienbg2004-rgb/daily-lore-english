@@ -2,10 +2,10 @@
   "pageId": 19568,
   "title": "Microscope",
   "topic": "Science & Technology",
-  "status": "DRAFTED",
+  "status": "VALIDATED",
   "revisionId": 1377490635,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377490635",
-  "reason": "draft durably saved before validation",
+  "reason": "local factual, style, length, structure and source audit passed",
   "rights": [
     {
       "status": "REVIEW",
@@ -301,7 +301,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377490635"
     }
   ],
-  "updatedAt": "2026-10-25T08:06:54.861Z",
+  "updatedAt": "2026-10-25T08:07:12.859Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -439,5 +439,8 @@
     "output": 139,
     "total": 2797
   },
-  "validation": null
+  "validation": {
+    "accepted": true,
+    "errors": []
+  }
 }
