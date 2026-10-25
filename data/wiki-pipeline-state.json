@@ -9150,10 +9150,10 @@
       "checkedAt": "2026-10-22T08:59:28.462Z"
     },
     "1999877": {
-      "status": "PENDING",
-      "reason": "queued",
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
       "revisionId": 1379435458,
-      "checkedAt": null
+      "checkedAt": "2026-10-25T08:52:26.345Z"
     },
     "2062612": {
       "status": "EVIDENCE_READY",
@@ -12618,7 +12618,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-25T08:52:20.212Z",
+  "updatedAt": "2026-10-25T08:52:26.346Z",
   "dailyUsage": {
     "day": "2026-10-25",
     "calls": 60,
