@@ -2,10 +2,10 @@
   "pageId": 71397452,
   "title": "Helios Dust Instrumentation",
   "topic": "Science & Technology",
-  "status": "DRAFTED",
+  "status": "VALIDATED",
   "revisionId": 1379838220,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379838220",
-  "reason": "draft durably saved before validation",
+  "reason": "local factual, style, length, structure and source audit passed",
   "rights": [
     {
       "status": "REJECTED",
@@ -333,7 +333,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379838220"
     }
   ],
-  "updatedAt": "2026-10-25T07:16:04.585Z",
+  "updatedAt": "2026-10-25T07:16:22.486Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -486,5 +486,8 @@
     "output": 233,
     "total": 3011
   },
-  "validation": null
+  "validation": {
+    "accepted": true,
+    "errors": []
+  }
 }
