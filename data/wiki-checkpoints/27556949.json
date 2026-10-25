@@ -2,10 +2,10 @@
   "pageId": 27556949,
   "title": "Portuguese India Armadas",
   "topic": "Economy",
-  "status": "DRAFTED",
+  "status": "VALIDATED",
   "revisionId": 1379583141,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379583141",
-  "reason": "draft durably saved before validation",
+  "reason": "local factual, style, length, structure and source audit passed",
   "rights": [
     {
       "status": "REVIEW",
@@ -619,7 +619,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379583141"
     }
   ],
-  "updatedAt": "2026-10-25T07:11:09.162Z",
+  "updatedAt": "2026-10-25T07:11:27.090Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -744,5 +744,8 @@
     "output": 228,
     "total": 3134
   },
-  "validation": null
+  "validation": {
+    "accepted": true,
+    "errors": []
+  }
 }
