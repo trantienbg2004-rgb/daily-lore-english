@@ -2,10 +2,10 @@
   "pageId": 13165796,
   "title": "Ocean heat content",
   "topic": "Environment",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1381104812,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381104812",
-  "reason": "5 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -270,5 +270,142 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381104812"
     }
   ],
-  "updatedAt": "2026-10-25T07:36:13.465Z"
+  "updatedAt": "2026-10-25T07:36:30.589Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "How Oceans Store Heat",
+        "pages": [
+          {
+            "text": "Oceans cover most of the Earth and store a lot of energy. This energy is called ocean heat content. It is an important sign of global warming.",
+            "evidenceIds": [
+              "P1",
+              "P5"
+            ]
+          },
+          {
+            "text": "Between 1971 and 2018, oceans took in over ninety percent of the extra energy from global warming. Human greenhouse gas emissions are the main reason for this change.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "Scientists measure ocean temperatures at different places and depths. Since 2000, thousands of robotic floats have helped measure changes in ocean heat around the world.",
+            "evidenceIds": [
+              "P1",
+              "P3"
+            ]
+          },
+          {
+            "text": "Warming water affects marine life and causes sea levels to rise. It also changes sea ice and weather patterns all over the world.",
+            "evidenceIds": [
+              "P4",
+              "P11"
+            ]
+          },
+          {
+            "text": "Increased ocean heat is very hard to reverse on human time scales. Measuring this heat helps scientists understand our changing climate.",
+            "evidenceIds": [
+              "P5",
+              "P10"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "Tracking Global Ocean Heat",
+        "pages": [
+          {
+            "text": "Ocean heat content measures the energy absorbed and stored by the world's oceans. Because oceans cover seventy percent of the Earth and have a high heat capacity, they play a critical role in climate stability.",
+            "evidenceIds": [
+              "P1",
+              "P5"
+            ]
+          },
+          {
+            "text": "Since 1971, a steady upward trend in ocean heat has accounted for over ninety percent of Earth's excess energy from global warming. This trend is driven primarily by human-caused greenhouse gas emissions that trap planetary heat.",
+            "evidenceIds": [
+              "P2",
+              "P9"
+            ]
+          },
+          {
+            "text": "Researchers track these changes using temperature data gathered from ships, stations, and an expanding network of nearly four thousand robotic Argo floats deployed globally since 2000.",
+            "evidenceIds": [
+              "P3",
+              "P19"
+            ]
+          },
+          {
+            "text": "While the upper ocean has warmed significantly, heat has also begun to penetrate deeper regions. The Southern Ocean has taken up a disproportionately large amount of this excess heat.",
+            "evidenceIds": [
+              "P3",
+              "P10",
+              "P11"
+            ]
+          },
+          {
+            "text": "Warming oceans drive sea level rise, coral bleaching, and the migration of marine species. Monitoring ocean heat content remains essential for accurate climate models and understanding long-term trends.",
+            "evidenceIds": [
+              "P4",
+              "P5",
+              "P12",
+              "P20"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "The Dynamics of Ocean Heat Uptake",
+        "pages": [
+          {
+            "text": "Ocean heat content quantifies the thermodynamic potential energy stored within seawater basins. Because oceans possess a high heat capacity and cover seventy percent of the planetary surface, they absorb the vast majority of excess anthropogenic heat.",
+            "evidenceIds": [
+              "P1",
+              "P5",
+              "P6",
+              "P9"
+            ]
+          },
+          {
+            "text": "Observational data reveals a robust multi-decadal upward trajectory, with ocean heat uptake accounting for over ninety percent of Earth's net energy imbalance since 1971. This persistent warming is fundamentally driven by rising atmospheric greenhouse gases.",
+            "evidenceIds": [
+              "P2",
+              "P10"
+            ]
+          },
+          {
+            "text": "Historical assessments relied on research vessels, whereas contemporary monitoring utilizes approximately four thousand robotic profiling floats deployed through the international Argo program to measure subsurface temperature anomalies.",
+            "evidenceIds": [
+              "P3",
+              "P19"
+            ]
+          },
+          {
+            "text": "Regional variations in heat uptake are pronounced. The extratropical Southern Ocean has absorbed a disproportionate share of thermal energy, contributing to regional sea ice reduction and influencing global overturning circulation.",
+            "evidenceIds": [
+              "P3",
+              "P11"
+            ]
+          },
+          {
+            "text": "The resulting thermal expansion drives ongoing sea level rise and triggers ecological disruptions such as coral bleaching. Due to the immense thermal inertia of the oceans, these increases remain virtually irreversible on human time scales.",
+            "evidenceIds": [
+              "P10",
+              "P11",
+              "P12",
+              "P20"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2819,
+    "output": 799,
+    "total": 3618
+  },
+  "validation": null
 }
