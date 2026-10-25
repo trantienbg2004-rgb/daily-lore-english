@@ -270,14 +270,14 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381104812"
     }
   ],
-  "updatedAt": "2026-10-25T07:36:30.589Z",
+  "updatedAt": "2026-10-25T07:36:48.558Z",
   "draft": {
     "variants": {
       "A1-A2": {
         "headline": "How Oceans Store Heat",
         "pages": [
           {
-            "text": "Oceans cover most of the Earth and store a lot of energy. This energy is called ocean heat content. It is an important sign of global warming.",
+            "text": "Oceans cover seventy percent of the Earth and store vast amounts of energy. This stored energy is known as ocean heat content. It serves as an important indicator of global warming and helps scientists understand our changing climate and environmental stability over time.",
             "evidenceIds": [
               "P1",
               "P5"
@@ -290,23 +290,24 @@
             ]
           },
           {
-            "text": "Scientists measure ocean temperatures at different places and depths. Since 2000, thousands of robotic floats have helped measure changes in ocean heat around the world.",
+            "text": "Scientists measure ocean temperatures at many different locations and depths. Since the year 2000, an expanding network of nearly four thousand robotic Argo floats has helped measure temperature anomalies and changes in ocean heat all around the world.",
             "evidenceIds": [
               "P1",
-              "P3"
+              "P3",
+              "P19"
             ]
           },
           {
-            "text": "Warming water affects marine life and causes sea levels to rise. It also changes sea ice and weather patterns all over the world.",
+            "text": "Changes in ocean temperature greatly affect ecosystems in oceans and on land. Warming water affects marine life and causes variations in sea level and sea ice. It also changes the intensity of the water cycle and the migration of marine species.",
             "evidenceIds": [
               "P4",
               "P11"
             ]
           },
           {
-            "text": "Increased ocean heat is very hard to reverse on human time scales. Measuring this heat helps scientists understand our changing climate.",
+            "text": "Between 1971 and 2018, a steady upward trend in ocean heat content accounted for over ninety percent of Earth's excess energy from global warming. Increased ocean heat in response to anthropogenic carbon dioxide emissions is essentially irreversible on human time scales.",
             "evidenceIds": [
-              "P5",
+              "P2",
               "P10"
             ]
           }
@@ -330,7 +331,7 @@
             ]
           },
           {
-            "text": "Researchers track these changes using temperature data gathered from ships, stations, and an expanding network of nearly four thousand robotic Argo floats deployed globally since 2000.",
+            "text": "Researchers track these changes using temperature data gathered from research vessels, stations, and an expanding network of nearly four thousand robotic Argo floats deployed globally since 2000 to measure subsurface temperature anomalies and ocean heat content.",
             "evidenceIds": [
               "P3",
               "P19"
@@ -375,7 +376,7 @@
             ]
           },
           {
-            "text": "Historical assessments relied on research vessels, whereas contemporary monitoring utilizes approximately four thousand robotic profiling floats deployed through the international Argo program to measure subsurface temperature anomalies.",
+            "text": "Historical assessments relied on research vessels and stations, whereas contemporary monitoring utilizes approximately four thousand robotic profiling floats deployed through the international Argo program to measure subsurface temperature anomalies and track regional variations in heat uptake.",
             "evidenceIds": [
               "P3",
               "P19"
@@ -401,11 +402,11 @@
       }
     }
   },
-  "repairAttempts": 0,
+  "repairAttempts": 1,
   "lastUsage": {
-    "input": 2819,
-    "output": 799,
-    "total": 3618
+    "input": 2958,
+    "output": 400,
+    "total": 3358
   },
   "validation": null
 }
