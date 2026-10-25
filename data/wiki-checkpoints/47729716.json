@@ -364,7 +364,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1324515691"
     }
   ],
-  "updatedAt": "2026-10-25T07:34:18.413Z",
+  "updatedAt": "2026-10-25T07:34:36.471Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -377,7 +377,7 @@
             ]
           },
           {
-            "text": "Dublin University was the first rugby club in Ireland. It was founded in 1854 by students. Soon, many other rugby clubs started to form all across Ireland. These clubs included Wanderers, Lansdowne, and Queen's University. Rugby became very popular among the people.",
+            "text": "Dublin University was the first rugby club in Ireland. It was founded by students. Soon, many other rugby clubs started to form all across Ireland. These clubs included Wanderers, Lansdowne, and Queen's University. Rugby became very popular among the people.",
             "evidenceIds": [
               "P2"
             ]
@@ -396,7 +396,7 @@
             ]
           },
           {
-            "text": "In 1948, Ireland won all their games to claim their first Grand Slam. They beat France, England, Scotland, and Wales. Later, in 2006, Ireland played very well. They finished second in the championship and won the Triple Crown.",
+            "text": "In 1948, Ireland won all their games to claim their first Grand Slam. They beat France, England, Scotland, and Wales. Later, Ireland played very well. They finished second in the championship and won the Triple Crown.",
             "evidenceIds": [
               "P5",
               "P8"
@@ -434,7 +434,7 @@
             ]
           },
           {
-            "text": "Led by fly-half Jack Kyle in 1948, Ireland won matches against France, England, and Scotland. They then clinched their first Grand Slam by defeating Wales in Belfast. Decades later in 2006, strong performances earned them a second Triple Crown in three years and a high world ranking.",
+            "text": "Led by fly-half Jack Kyle in 1948, Ireland won matches against France, England, and Scotland. They then clinched their first Grand Slam by defeating Wales in Belfast. Later, strong performances earned them a Triple Crown and a high world ranking.",
             "evidenceIds": [
               "P5",
               "P8"
@@ -499,11 +499,11 @@
       }
     }
   },
-  "repairAttempts": 0,
+  "repairAttempts": 1,
   "lastUsage": {
-    "input": 3221,
-    "output": 1702,
-    "total": 4923
+    "input": 3393,
+    "output": 429,
+    "total": 3822
   },
   "validation": null
 }
