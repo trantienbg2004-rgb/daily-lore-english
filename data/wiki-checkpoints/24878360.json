@@ -2,10 +2,10 @@
   "pageId": 24878360,
   "title": "German question",
   "topic": "Politics",
-  "status": "DRAFTED",
+  "status": "NEEDS_REVIEW",
   "revisionId": 1362093523,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1362093523",
-  "reason": "draft durably saved before validation",
+  "reason": "editorial: C1-C2:page-5:copied-source-passage",
   "rights": [
     {
       "status": "REVIEW",
@@ -255,7 +255,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1362093523"
     }
   ],
-  "updatedAt": "2026-10-25T07:40:06.627Z",
+  "updatedAt": "2026-10-25T07:40:12.597Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -398,5 +398,10 @@
     "output": 136,
     "total": 2693
   },
-  "validation": null
+  "validation": {
+    "accepted": false,
+    "errors": [
+      "C1-C2:page-5:copied-source-passage"
+    ]
+  }
 }
