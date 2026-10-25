@@ -11010,10 +11010,10 @@
       "checkedAt": "2026-10-21T07:35:08.001Z"
     },
     "46418619": {
-      "status": "PENDING",
-      "reason": "queued",
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
       "revisionId": 1377327430,
-      "checkedAt": null
+      "checkedAt": "2026-10-25T08:50:08.920Z"
     },
     "46423847": {
       "status": "RETRY_LATER",
@@ -12618,7 +12618,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-25T08:50:02.155Z",
+  "updatedAt": "2026-10-25T08:50:08.934Z",
   "dailyUsage": {
     "day": "2026-10-25",
     "calls": 60,
