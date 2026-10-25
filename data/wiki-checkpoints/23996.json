@@ -286,7 +286,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381549522"
     }
   ],
-  "updatedAt": "2026-10-25T08:03:06.252Z",
+  "updatedAt": "2026-10-25T08:03:26.072Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -386,19 +386,19 @@
             ]
           },
           {
-            "text": "Beyond social divisions, institutional explanations emphasize how party structures generate compatible incentives, preventing politicians from acting to each other's detriment and ensuring long-term electoral competitiveness.",
+            "text": "Beyond social divisions, institutional explanations emphasize how party structures generate compatible incentives. These arrangements prevent politicians from acting to each other's detriment during campaigns or governance, which ensures long-term electoral competitiveness against unaffiliated politicians.",
             "evidenceIds": [
               "P13"
             ]
           },
           {
-            "text": "Psychologically, parties function as simplifying heuristics, mitigating the cognitive burden on electors by allowing them to evaluate overarching platforms rather than numerous independent candidates individually.",
+            "text": "Psychologically, political parties function as simplifying heuristics. They mitigate the cognitive burden on electors by allowing them to evaluate overarching platforms and party slates rather than numerous independent candidates individually, although some evidence indicates that the strength of party identification has been weakening over recent decades.",
             "evidenceIds": [
               "P14"
             ]
           },
           {
-            "text": "Structurally, parties typically comprise a leader, administrative executives who manage organizational tasks, and members. Leadership selection methods and regulatory frameworks vary substantially between democratic and autocratic contexts.",
+            "text": "Structurally, political parties typically comprise a party leader, administrative executives who manage organizational and administrative tasks, and party members. While democratic parties usually select leadership through open and competitive methods, autocratic parties exercise tight control. Furthermore, many countries legally define requirements for an organization to qualify as a political party.",
             "evidenceIds": [
               "P3",
               "P6",
@@ -410,11 +410,11 @@
       }
     }
   },
-  "repairAttempts": 0,
+  "repairAttempts": 1,
   "lastUsage": {
-    "input": 2585,
-    "output": 1077,
-    "total": 3662
+    "input": 2518,
+    "output": 216,
+    "total": 2734
   },
   "validation": null
 }
