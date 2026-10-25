@@ -9222,10 +9222,10 @@
       "checkedAt": "2026-10-24T04:23:41.906Z"
     },
     "2419633": {
-      "status": "EVIDENCE_READY",
-      "reason": "1 rights-verified embedded images",
+      "status": "RETRY_LATER",
+      "reason": "Gemini token usage unavailable",
       "revisionId": 1337924227,
-      "checkedAt": "2026-10-25T08:56:08.272Z"
+      "checkedAt": "2026-10-25T08:56:14.128Z"
     },
     "2508128": {
       "status": "RETRY_LATER",
@@ -12618,7 +12618,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-25T08:56:08.273Z",
+  "updatedAt": "2026-10-25T08:56:14.129Z",
   "dailyUsage": {
     "day": "2026-10-25",
     "calls": 60,

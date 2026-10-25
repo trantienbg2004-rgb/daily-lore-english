@@ -2,10 +2,10 @@
   "pageId": 2419633,
   "title": "Iatrochemistry",
   "topic": "Health",
-  "status": "EVIDENCE_READY",
+  "status": "RETRY_LATER",
   "revisionId": 1337924227,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1337924227",
-  "reason": "1 rights-verified embedded images",
+  "reason": "Gemini token usage unavailable",
   "rights": [
     {
       "status": "REJECTED",
@@ -137,5 +137,5 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1337924227"
     }
   ],
-  "updatedAt": "2026-10-25T08:56:08.272Z"
+  "updatedAt": "2026-10-25T08:56:14.129Z"
 }
