@@ -8070,10 +8070,10 @@
       "checkedAt": "2026-10-23T12:52:18.027Z"
     },
     "79771": {
-      "status": "FETCHED",
-      "reason": "pinned-source-ready",
+      "status": "REJECTED",
+      "reason": "insufficient-source-text-or-embedded-images",
       "revisionId": 1377181832,
-      "checkedAt": "2026-10-25T08:51:32.257Z"
+      "checkedAt": "2026-10-25T08:51:38.128Z"
     },
     "81553": {
       "status": "PUBLISHED",
@@ -12618,7 +12618,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-25T08:51:32.258Z",
+  "updatedAt": "2026-10-25T08:51:38.129Z",
   "dailyUsage": {
     "day": "2026-10-25",
     "calls": 60,
