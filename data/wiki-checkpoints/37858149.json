@@ -2,10 +2,10 @@
   "pageId": 37858149,
   "title": "History of hospitals",
   "topic": "Health",
-  "status": "EVIDENCE_READY",
+  "status": "RETRY_LATER",
   "revisionId": 1359591114,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1359591114",
-  "reason": "13 rights-verified embedded images",
+  "reason": "Gemini token usage unavailable",
   "rights": [
     {
       "status": "REVIEW",
@@ -461,5 +461,5 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1359591114"
     }
   ],
-  "updatedAt": "2026-10-25T08:58:44.349Z"
+  "updatedAt": "2026-10-25T08:58:50.153Z"
 }
