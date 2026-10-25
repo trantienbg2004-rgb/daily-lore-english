@@ -2,10 +2,10 @@
   "pageId": 10700479,
   "title": "Industrial heritage",
   "topic": "Culture",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1377704995,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377704995",
-  "reason": "8 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -371,5 +371,150 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377704995"
     }
   ],
-  "updatedAt": "2026-10-25T07:35:07.096Z"
+  "updatedAt": "2026-10-25T07:35:24.455Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "Industrial Heritage",
+        "pages": [
+          {
+            "text": "Industrial heritage includes old buildings, machines, and places from the past. People study these things to learn about history and how work changed the world.",
+            "evidenceIds": [
+              "P1",
+              "P3"
+            ]
+          },
+          {
+            "text": "In the past, people often saw old factories as ugly ruins. Later, people began to see them as important parts of history and culture.",
+            "evidenceIds": [
+              "P5",
+              "P6"
+            ]
+          },
+          {
+            "text": "Saving old industrial sites helps communities remember their workers. Many local groups work hard to take care of these historic places.",
+            "evidenceIds": [
+              "P6",
+              "P7"
+            ]
+          },
+          {
+            "text": "Some old factories are cleaned up and used again for new things. This helps cities look better and gives people new spaces to visit.",
+            "evidenceIds": [
+              "P9",
+              "P14"
+            ]
+          },
+          {
+            "text": "Taking care of large old buildings can cost a lot of money. Sometimes, private owners make it hard for public groups to protect the sites.",
+            "evidenceIds": [
+              "P10",
+              "P11"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "Preserving Industrial Heritage",
+        "pages": [
+          {
+            "text": "Industrial heritage encompasses the physical and intangible legacy of industrialisation, ranging from historic buildings and machinery to broader cultural landscapes. Scholars note that these sites reflect significant socio-economic transformations.",
+            "evidenceIds": [
+              "P1",
+              "P2"
+            ]
+          },
+          {
+            "text": "During the mid-20th century, public attitudes towards industrial remains began to shift. Instead of viewing abandoned factories merely as derelict structures, communities started recognising their historical and technological value.",
+            "evidenceIds": [
+              "P5",
+              "P6"
+            ]
+          },
+          {
+            "text": "International organisations like UNESCO and TICCIH now provide frameworks for identifying and protecting key industrial sites. Many locations serve as cultural symbols linked to collective memory and local identity.",
+            "evidenceIds": [
+              "P3",
+              "P6"
+            ]
+          },
+          {
+            "text": "Preserving these sites often involves adaptive reuse, transforming former industrial spaces for contemporary public use. Former polluted areas are sometimes remediated to support ecological restoration and community activities.",
+            "evidenceIds": [
+              "P9",
+              "P14"
+            ]
+          },
+          {
+            "text": "Despite these efforts, conservation presents challenges such as high maintenance costs and environmental contamination. Furthermore, private ownership can sometimes limit public authority over site preservation.",
+            "evidenceIds": [
+              "P10",
+              "P11"
+            ]
+          },
+          {
+            "text": "Balancing economic development with heritage preservation remains a central concern. Excessive commercialisation can sometimes cause irreversible harm to the physical and cultural integrity of these historic locations.",
+            "evidenceIds": [
+              "P12"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "The Evolution of Industrial Heritage",
+        "pages": [
+          {
+            "text": "Industrial heritage comprises both the tangible remains and intangible legacy of industrialisation, reflecting profound technological and socio-economic developments. The academic study of these remains is known as industrial archaeology.",
+            "evidenceIds": [
+              "P1",
+              "P3"
+            ]
+          },
+          {
+            "text": "Historically, industrial ruins were frequently dismissed as derelict and neglected spaces. However, post-World War II deindustrialization prompted a gradual reassessment, leading to institutional frameworks and international organisations dedicated to conservation.",
+            "evidenceIds": [
+              "P3",
+              "P5",
+              "P19"
+            ]
+          },
+          {
+            "text": "Preserved industrial landscapes function as cultural narratives that mirror past production systems and social organisation. By maintaining connections to former work environments, these sites reinforce community identity and collective memory.",
+            "evidenceIds": [
+              "P6",
+              "P7"
+            ]
+          },
+          {
+            "text": "Contemporary strategies often incorporate adaptive reuse and holistic planning, allowing historic structures to remain functional. Additionally, environmental remediation has transformed contaminated industrial zones into spaces supporting ecological restoration.",
+            "evidenceIds": [
+              "P9",
+              "P14",
+              "P15"
+            ]
+          },
+          {
+            "text": "Nevertheless, conservation efforts frequently encounter substantial financial hurdles, including specialised maintenance expenses and the remediation of industrial waste. Private ownership structures can also restrict public oversight and coordination.",
+            "evidenceIds": [
+              "P10",
+              "P11"
+            ]
+          },
+          {
+            "text": "Mitigating the tension between heritage conservation and excessive commercial development remains critical, as unregulated commercialisation risks compromising the historical and environmental integrity of these significant cultural assets.",
+            "evidenceIds": [
+              "P12"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2661,
+    "output": 1239,
+    "total": 3900
+  },
+  "validation": null
 }
