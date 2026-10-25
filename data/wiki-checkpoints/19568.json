@@ -2,10 +2,10 @@
   "pageId": 19568,
   "title": "Microscope",
   "topic": "Science & Technology",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1377490635,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377490635",
-  "reason": "7 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -301,5 +301,143 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377490635"
     }
   ],
-  "updatedAt": "2026-10-25T08:05:49.234Z"
+  "updatedAt": "2026-10-25T08:06:06.843Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "The Story of the Microscope",
+        "pages": [
+          {
+            "text": "A microscope is a tool used to see very small things. These objects are too small for human eyes to see. People use microscopes to study tiny things in science and medicine.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "The first simple microscopes were magnifying glasses. People started using them in the thirteenth century with eyeglasses. Later, compound microscopes appeared in Europe around sixteen twenty. The true inventor remains unknown today.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "In the seventeenth century, naturalists began studying biology with microscopes. Robert Hooke and Antonie van Leeuwenhoek made famous discoveries. Leeuwenhoek achieved high magnification using a single small glass ball lens.",
+            "evidenceIds": [
+              "P5"
+            ]
+          },
+          {
+            "text": "New types of microscopes arrived later. In the twentieth century, scientists built electron microscopes. These instruments use a beam of electrons instead of light to generate high resolution images.",
+            "evidenceIds": [
+              "P6"
+            ]
+          },
+          {
+            "text": "Scientists continue to develop advanced technology. Researchers created scanning probe microscopes and fluorescence microscopes. Today, specialized instruments help experts analyze cell structures at a very close level.",
+            "evidenceIds": [
+              "P7",
+              "P8"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "How the Microscope Revealed the Invisible",
+        "pages": [
+          {
+            "text": "A microscope is a laboratory instrument designed to examine objects that are too small for the naked eye. Microscopy is the science of investigating these tiny structures, which remain invisible without optical or scientific aid.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Although early magnifying glasses date back centuries, compound microscopes first appeared in Europe around 1620. The exact inventor is still unknown despite various historical claims involving Dutch spectacle makers and Cornelius Drebbel. Galileo Galilei also built an improved version after experimenting with his telescope.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "During the 1660s and 1770s, naturalists began using these instruments for serious biological study. Robert Hooke published impressive illustrations in his 1665 book Micrographia. Meanwhile, Antonie van Leeuwenhoek used single-lens microscopes to achieve high magnification, eventually discovering micro-organisms and red blood cells.",
+            "evidenceIds": [
+              "P5"
+            ]
+          },
+          {
+            "text": "A significant technological shift occurred in the early twentieth century with the invention of the electron microscope. Developed by Ernst Ruska and Max Knoll, this device uses a beam of electrons and electromagnets instead of light and glass lenses, allowing for a much higher resolution.",
+            "evidenceIds": [
+              "P6"
+            ]
+          },
+          {
+            "text": "Modern research has continued to push the boundaries of imaging technology. Scientists developed scanning probe microscopes based on quantum tunneling, as well as fluorescence microscopes that analyze cellular structures with targeted chemical stains.",
+            "evidenceIds": [
+              "P7",
+              "P8"
+            ]
+          },
+          {
+            "text": "Contemporary developments include super-resolution optical techniques and X-ray instruments used in tomography. These diverse tools allow researchers to examine biological materials and material defects with unprecedented precision across various scientific fields.",
+            "evidenceIds": [
+              "P9",
+              "P10",
+              "P14"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "Evolution of Microscopy and Imaging",
+        "pages": [
+          {
+            "text": "Microscopy encompasses the scientific investigation of structures and objects imperceptible to the unaided human eye. Instruments utilized for this purpose interact with samples via light, electrons, photon emissions, or scanning probes to produce observable analytical images.",
+            "evidenceIds": [
+              "P1",
+              "P2"
+            ]
+          },
+          {
+            "text": "While ancient optical precedents exist, compound microscopes emerged in Europe around 1620. Authorship remains debated, with historical attributions implicating Dutch spectacle makers such as Zacharias Janssen, Hans Lippershey, and Cornelius Drebbel, alongside modifications introduced by Galileo Galilei.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "The instrument transitioned from a novelty into a vital scientific tool during the seventeenth century. Robert Hooke published influential illustrations in Micrographia, while Antonie van Leeuwenhoek utilized single-lens configurations to achieve substantial magnification, facilitating the observation of microorganisms and cellular components.",
+            "evidenceIds": [
+              "P4",
+              "P5"
+            ]
+          },
+          {
+            "text": "The twentieth century yielded major alternatives to conventional light optics. Ernst Ruska and Max Knoll developed the transmission electron microscope, substituting electromagnetic lenses and electron beams for glass and light to surmount traditional optical resolution limitations.",
+            "evidenceIds": [
+              "P6",
+              "P13"
+            ]
+          },
+          {
+            "text": "Subsequent innovations expanded analytical capabilities further. Gerd Binnig and Heinrich Rohrer engineered scanning probe microscopes based on quantum tunneling phenomena, while late-twentieth-century advancements in fluorescence microscopy enabled molecular-level cellular analysis through targeted fluorophores.",
+            "evidenceIds": [
+              "P7",
+              "P8"
+            ]
+          },
+          {
+            "text": "Current research focuses on super-resolution techniques, such as stimulated emission depletion microscopy, which approach electron microscope resolution thresholds. Concurrently, X-ray instruments and acoustic microscopes provide specialized three-dimensional tomographic and subsurface imaging across diverse scientific disciplines.",
+            "evidenceIds": [
+              "P9",
+              "P10",
+              "P14"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2782,
+    "output": 1432,
+    "total": 4214
+  },
+  "validation": null
 }
