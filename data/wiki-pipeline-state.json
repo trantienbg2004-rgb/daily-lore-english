@@ -12378,10 +12378,10 @@
       "checkedAt": "2026-10-21T03:08:38.823Z"
     },
     "80058684": {
-      "status": "PENDING",
-      "reason": "queued",
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
       "revisionId": 1371790387,
-      "checkedAt": null
+      "checkedAt": "2026-10-25T08:53:56.398Z"
     },
     "80275802": {
       "status": "EVIDENCE_READY",
@@ -12618,7 +12618,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-25T08:53:50.357Z",
+  "updatedAt": "2026-10-25T08:53:56.399Z",
   "dailyUsage": {
     "day": "2026-10-25",
     "calls": 60,
