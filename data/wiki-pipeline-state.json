@@ -10580,10 +10580,10 @@
       "checkedAt": "2026-10-21T03:13:36.811Z"
     },
     "52112872": {
-      "status": "VALIDATED",
-      "reason": "local factual, style, length, structure and source audit passed",
+      "status": "PUBLISHED",
+      "reason": "4 verified embedded images",
       "revisionId": 1308205831,
-      "checkedAt": "2026-10-25T07:09:33.066Z"
+      "checkedAt": "2026-10-25T07:09:39.137Z"
     },
     "52456641": {
       "status": "REJECTED",
@@ -11930,7 +11930,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-25T07:09:33.069Z",
+  "updatedAt": "2026-10-25T07:09:39.138Z",
   "dailyUsage": {
     "day": "2026-10-25",
     "calls": 2,
