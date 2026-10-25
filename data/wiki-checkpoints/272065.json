@@ -2,10 +2,10 @@
   "pageId": 272065,
   "title": "Al-Kindi",
   "topic": "Health",
-  "status": "EVIDENCE_READY",
+  "status": "RETRY_LATER",
   "revisionId": 1374736876,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374736876",
-  "reason": "3 rights-verified embedded images",
+  "reason": "Gemini token usage unavailable",
   "rights": [
     {
       "status": "REVIEW",
@@ -213,5 +213,5 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374736876"
     }
   ],
-  "updatedAt": "2026-10-25T08:52:14.229Z"
+  "updatedAt": "2026-10-25T08:52:20.212Z"
 }
