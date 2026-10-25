@@ -9468,10 +9468,10 @@
       "checkedAt": "2026-10-24T03:32:57.318Z"
     },
     "4578722": {
-      "status": "FETCHED",
-      "reason": "pinned-source-ready",
+      "status": "EVIDENCE_READY",
+      "reason": "17 rights-verified embedded images",
       "revisionId": 1376463778,
-      "checkedAt": "2026-10-25T08:50:27.020Z"
+      "checkedAt": "2026-10-25T08:50:32.218Z"
     },
     "4603334": {
       "status": "RETRY_LATER",
@@ -12618,7 +12618,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-25T08:50:27.035Z",
+  "updatedAt": "2026-10-25T08:50:32.219Z",
   "dailyUsage": {
     "day": "2026-10-25",
     "calls": 60,
