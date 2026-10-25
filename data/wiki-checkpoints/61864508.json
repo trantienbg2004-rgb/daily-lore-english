@@ -2,10 +2,10 @@
   "pageId": 61864508,
   "title": "Major National Dialogue",
   "topic": "Conflict & Security",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1352877739,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1352877739",
-  "reason": "1 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -139,5 +139,150 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1352877739"
     }
   ],
-  "updatedAt": "2026-10-25T08:03:54.689Z"
+  "updatedAt": "2026-10-25T08:04:12.771Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "Cameroon Holds Major National Dialogue",
+        "pages": [
+          {
+            "text": "The Major National Dialogue was a meeting between the Government of Cameroon and different opposition parties. The goal was to find a way to solve the Anglophone Crisis. The event took place from September 30 to October 4, 2019.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "For many years, English-speaking people in the former Southern Cameroons felt ignored by the central government. Protests started in October 2016. Soldiers were sent to stop the protests. Soon, people were killed and arrested.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "By September 2017, separatists began to fight the government with weapons. They declared the independence of a new region. This conflict became known as the Anglophone Crisis, which involved serious human rights violations.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "In September 2019, President Paul Biya announced that a big national dialogue would happen. The talks had to follow the constitution, meaning independence was not allowed. People could also send proposals on a website.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "The meeting started with an opening ceremony where former fighters sang the national anthem. Prime Minister Joseph Ngute told the attendants to make history and find solutions to the problems that divided them.",
+            "evidenceIds": [
+              "P4"
+            ]
+          },
+          {
+            "text": "On the final day, the commissions shared their recommendations. They proposed a special status and more local autonomy for the English-speaking regions. However, the conflict continued to grow after the event ended.",
+            "evidenceIds": [
+              "P8",
+              "P15"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "Seeking Peace Through Cameroon's Dialogue",
+        "pages": [
+          {
+            "text": "The Major National Dialogue was an official meeting held between the Government of Cameroon and various opposition parties. Its main aim was to resolve the ongoing Anglophone Crisis, taking place from September 30 to October 4, 2019.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Decades of resentment over perceived marginalization by the central government led to major protests in the Anglophone regions in October 2016. The government deployed soldiers to quell the demonstrations, resulting in deaths and numerous arrests. Separatists took up arms by September 2017 and declared independence, turning the situation into a violent conflict.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "President Paul Biya announced the upcoming dialogue in a televised speech, stating it would remain within the constitutional framework, thereby ruling out independence. Citizens submitted proposals via a newly launched government website ahead of the event.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "The event opened with former separatist fighters singing the national anthem, followed by Prime Minister Joseph Ngute challenging attendants to find solutions to the divisions of recent years. Eight different commissions were established to focus on specific issues like bilingualism, the judicial system, and decentralization.",
+            "evidenceIds": [
+              "P4",
+              "P5"
+            ]
+          },
+          {
+            "text": "On the final day, the commissions submitted their recommendations. Proposals included a special status and local autonomy for the Anglophone regions, anti-corruption measures, and the rehabilitation of former fighters. President Biya also dropped court cases against hundreds of activists.",
+            "evidenceIds": [
+              "P7",
+              "P8"
+            ]
+          },
+          {
+            "text": "Reactions to the dialogue were mixed. While the ruling party welcomed the outcome, critics and separatists dismissed the event, promising to escalate the war. Despite subsequent legislation granting special status, the conflict in the regions intensified.",
+            "evidenceIds": [
+              "P9",
+              "P10",
+              "P15"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "The 2019 Major National Dialogue in Cameroon",
+        "pages": [
+          {
+            "text": "The Major National Dialogue convened between September 30 and October 4, 2019, representing an official initiative between the Government of Cameroon and diverse opposition factions to address the multifaceted Anglophone Crisis.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Historical grievances regarding the marginalization of Anglophone Cameroonians escalated into widespread protests in October 2016. The subsequent deployment of state security forces and subsequent casualties catalyzed an armed separatist movement in September 2017, culminating in a declaration of independence and sustained conflict characterized by human rights violations.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "President Paul Biya announced the summit in September 2019, explicitly stipulating that proceedings would adhere strictly to the constitution, thereby excluding secessionist aspirations. A dedicated portal was established to harvest citizen proposals.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "Deliberations commenced with an inaugural ceremony featuring former combatants, followed by Prime Minister Joseph Ngute urging delegates to bridge institutional divides. Eight specialized commissions were subsequently constituted to evaluate domains ranging from decentralization to the educational framework.",
+            "evidenceIds": [
+              "P4",
+              "P5"
+            ]
+          },
+          {
+            "text": "As the dialogue drew to a close, commissions delivered extensive recommendations, including special administrative status and augmented autonomy for the Northwest and Southwest regions. Concurrently, President Biya discontinued legal proceedings against numerous activists.",
+            "evidenceIds": [
+              "P7",
+              "P8"
+            ]
+          },
+          {
+            "text": "While legislative bodies subsequently codified special status provisions through the General Code of Regional and Local Authorities, outcomes remained contentious. Separatist factions repudiated the dialogue entirely, and regional hostilities intensified despite international appeals for continued engagement.",
+            "evidenceIds": [
+              "P9",
+              "P10",
+              "P11",
+              "P14",
+              "P15"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 1769,
+    "output": 1550,
+    "total": 3319
+  },
+  "validation": null
 }

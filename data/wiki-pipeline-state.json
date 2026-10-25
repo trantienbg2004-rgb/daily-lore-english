@@ -11212,10 +11212,10 @@
       "checkedAt": "2026-10-24T10:18:13.816Z"
     },
     "61864508": {
-      "status": "EVIDENCE_READY",
-      "reason": "1 rights-verified embedded images",
+      "status": "DRAFTED",
+      "reason": "draft durably saved before validation",
       "revisionId": 1352877739,
-      "checkedAt": "2026-10-25T08:03:54.687Z"
+      "checkedAt": "2026-10-25T08:04:12.771Z"
     },
     "61951697": {
       "status": "PENDING",
@@ -12298,7 +12298,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-25T08:04:11.428Z",
+  "updatedAt": "2026-10-25T08:04:12.772Z",
   "dailyUsage": {
     "day": "2026-10-25",
     "calls": 50,
