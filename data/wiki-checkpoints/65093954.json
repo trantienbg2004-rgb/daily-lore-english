@@ -2,10 +2,10 @@
   "pageId": 65093954,
   "title": "Somaliland Peace Process",
   "topic": "Conflict & Security",
-  "status": "DRAFTED",
+  "status": "VALIDATED",
   "revisionId": 1366819259,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1366819259",
-  "reason": "draft durably saved before validation",
+  "reason": "local factual, style, length, structure and source audit passed",
   "rights": [
     {
       "status": "REVIEW",
@@ -163,7 +163,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1366819259"
     }
   ],
-  "updatedAt": "2026-10-25T07:12:17.143Z",
+  "updatedAt": "2026-10-25T07:12:44.428Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -295,5 +295,8 @@
     "output": 76,
     "total": 1649
   },
-  "validation": null
+  "validation": {
+    "accepted": true,
+    "errors": []
+  }
 }
