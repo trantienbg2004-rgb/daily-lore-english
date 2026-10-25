@@ -2,10 +2,10 @@
   "pageId": 23996,
   "title": "Political party",
   "topic": "Politics",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1381549522,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381549522",
-  "reason": "6 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REJECTED",
@@ -286,5 +286,135 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381549522"
     }
   ],
-  "updatedAt": "2026-10-25T08:02:49.159Z"
+  "updatedAt": "2026-10-25T08:03:06.252Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "What Are Political Parties?",
+        "pages": [
+          {
+            "text": "A political party is a group that helps candidates run in elections and take part in government. Most countries have political parties. They are a big part of politics in both democracies and autocracies today.",
+            "evidenceIds": [
+              "P1",
+              "P2"
+            ]
+          },
+          {
+            "text": "Parties can grow out of existing divisions in society, such as differences between lower and upper classes. They help make political decisions easier by encouraging members to cooperate and work together toward common goals.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "Many political parties are motivated by specific ideas. Democratic elections often feature liberal, conservative, and socialist parties. Other parties focus on different goals, or they may be formed mainly to help a specific leader.",
+            "evidenceIds": [
+              "P4"
+            ]
+          },
+          {
+            "text": "The idea of people forming large groups to share their interests is very ancient. However, modern political parties are considered to have first appeared around the end of the eighteenth century in Europe and America.",
+            "evidenceIds": [
+              "P7"
+            ]
+          },
+          {
+            "text": "Political parties usually have a single leader, a group of executives who perform administrative tasks, and everyday members. Citizens can volunteer, give money, and vote for the candidates who represent their party.",
+            "evidenceIds": [
+              "P3",
+              "P15"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "The History and Structure of Parties",
+        "pages": [
+          {
+            "text": "A political party is an organization that coordinates candidates to compete in elections and participate in governance. Party members often hold similar ideas about politics and promote specific ideological or policy goals in many countries around the world.",
+            "evidenceIds": [
+              "P1",
+              "P2"
+            ]
+          },
+          {
+            "text": "Political parties can develop from existing social divisions, streamlining the process of decision-making. They typically include a party leader, administrative executives, and regular members who volunteer, donate money, and vote for the candidates.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "While many parties are motivated by ideologies like liberalism, conservatism, socialism, or nationalism, others have no ideological affiliation. Some focus primarily on patronage or act as big tent organizations to attract a wide variety of voters.",
+            "evidenceIds": [
+              "P4"
+            ]
+          },
+          {
+            "text": "Although ancient factions existed in Classical Athens and the Roman Republic, modern political parties emerged around the end of the eighteenth century in Europe and the United States, with several early British groups setting important precedents.",
+            "evidenceIds": [
+              "P7",
+              "P8"
+            ]
+          },
+          {
+            "text": "Political scientists have proposed several explanations for why parties are ubiquitous. Parties arise from social cleavages, provide compatible incentives for candidates to cooperate, and serve as cognitive heuristics that reduce the burden of voting.",
+            "evidenceIds": [
+              "P11",
+              "P12",
+              "P13",
+              "P14"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "Origins and Functions of Political Parties",
+        "pages": [
+          {
+            "text": "Political parties are collective entities that organize competitions for political offices and participate in governance. They represent a nearly ubiquitous feature of modern states, operating across both democratic systems and single-party autocracies alike.",
+            "evidenceIds": [
+              "P1",
+              "P2",
+              "P6",
+              "P11"
+            ]
+          },
+          {
+            "text": "The genesis of parties is frequently attributed to pre-existing social cleavages, though critics argue this theory obscures the reciprocal effect wherein parties actively reshape those underlying social divisions.",
+            "evidenceIds": [
+              "P5",
+              "P12"
+            ]
+          },
+          {
+            "text": "Beyond social divisions, institutional explanations emphasize how party structures generate compatible incentives, preventing politicians from acting to each other's detriment and ensuring long-term electoral competitiveness.",
+            "evidenceIds": [
+              "P13"
+            ]
+          },
+          {
+            "text": "Psychologically, parties function as simplifying heuristics, mitigating the cognitive burden on electors by allowing them to evaluate overarching platforms rather than numerous independent candidates individually.",
+            "evidenceIds": [
+              "P14"
+            ]
+          },
+          {
+            "text": "Structurally, parties typically comprise a leader, administrative executives who manage organizational tasks, and members. Leadership selection methods and regulatory frameworks vary substantially between democratic and autocratic contexts.",
+            "evidenceIds": [
+              "P3",
+              "P6",
+              "P15",
+              "P16"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2585,
+    "output": 1077,
+    "total": 3662
+  },
+  "validation": null
 }
