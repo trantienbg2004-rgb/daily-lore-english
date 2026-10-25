@@ -301,7 +301,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377490635"
     }
   ],
-  "updatedAt": "2026-10-25T08:06:06.843Z",
+  "updatedAt": "2026-10-25T08:06:24.881Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -332,7 +332,7 @@
             ]
           },
           {
-            "text": "Scientists continue to develop advanced technology. Researchers created scanning probe microscopes and fluorescence microscopes. Today, specialized instruments help experts analyze cell structures at a very close level.",
+            "text": "During the 1980s, scientists built scanning probe microscopes. Later, fluorescence microscopy became very popular in biology. These new tools and techniques help researchers study cell structures at a very close level in both live and fixed samples.",
             "evidenceIds": [
               "P7",
               "P8"
@@ -433,11 +433,11 @@
       }
     }
   },
-  "repairAttempts": 0,
+  "repairAttempts": 1,
   "lastUsage": {
-    "input": 2782,
-    "output": 1432,
-    "total": 4214
+    "input": 2582,
+    "output": 119,
+    "total": 2701
   },
   "validation": null
 }
