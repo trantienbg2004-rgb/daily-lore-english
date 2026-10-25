@@ -2,10 +2,10 @@
   "pageId": 26636309,
   "title": "Progressivism",
   "topic": "Society",
-  "status": "DRAFTED",
+  "status": "VALIDATED",
   "revisionId": 1379778823,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379778823",
-  "reason": "draft durably saved before validation",
+  "reason": "local factual, style, length, structure and source audit passed",
   "rights": [
     {
       "status": "REVIEW",
@@ -392,7 +392,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379778823"
     }
   ],
-  "updatedAt": "2026-10-25T07:13:50.945Z",
+  "updatedAt": "2026-10-25T07:14:09.650Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -527,5 +527,8 @@
     "output": 92,
     "total": 2893
   },
-  "validation": null
+  "validation": {
+    "accepted": true,
+    "errors": []
+  }
 }
