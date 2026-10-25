@@ -2,9 +2,135 @@
   "pageId": 41560174,
   "title": "Electoral integrity",
   "topic": "Politics",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1377879031,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377879031",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-25T08:55:44.380Z"
+  "reason": "1 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:An Election III, The Polling, by William Hogarth.jpg",
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/3/35/An_Election_III%2C_The_Polling%2C_by_William_Hogarth.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "fileTitle": "File:An Election III, The Polling, by William Hogarth.jpg",
+        "caption": "William Hogarth: The Polling (1774–1775)",
+        "alt": "",
+        "description": "",
+        "date": "1754–55",
+        "section": "In practice",
+        "position": 0,
+        "provenance": {
+          "credit": "William Hogarth",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:An_Election_III,_The_Polling,_by_William_Hogarth.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Electoral_integrity",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377879031",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "597cb9a9c640f80c337ff88cb04fa7ab7815b94769d387c82ddaa850c47a6fc0",
+      "heading": "Lead",
+      "excerpt": "Electoral integrity refers to the fairness of the entire voting process and how well the process protects against electoral fraud, voter sup",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377879031"
+    },
+    {
+      "id": "P2",
+      "hash": "00e060e6efc846c80f1b16dedfd1089f12e98034969f0870ae2e8e7f9ae4047d",
+      "heading": "Lead",
+      "excerpt": "International standards and global norms outline best-practices for conducting elections. These standards have been endorsed in a series of ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377879031"
+    },
+    {
+      "id": "P3",
+      "hash": "7fd14e13e86e29bacda2fc4f73b4372a653f0d104f2562f45ca2cf229fefa406",
+      "heading": "Definitions",
+      "excerpt": "The ACE Electoral Knowledge Network acknowledged the debate around a single definition before recommending the 2012 definition of the Kofi A",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377879031"
+    },
+    {
+      "id": "P4",
+      "hash": "04aa646f8e31c02bca3e82f903053e629ec1babf1d2096b25edb728a30ffd65b",
+      "heading": "Definitions",
+      "excerpt": "In 2021, the Office of the United Nations High Commissioner for Human Rights published a revised edition of Human Rights and Elections: A Ha",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377879031"
+    },
+    {
+      "id": "P5",
+      "hash": "3c8b5125e83f9866b43878942a094e140875e139e4f1330ca6b67fb7a3516d3c",
+      "heading": "International principles",
+      "excerpt": "Article 21(3) of the Universal Declaration of Human Rights (1948) states that \"[t]he will of the people shall be the basis of the authority ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377879031"
+    },
+    {
+      "id": "P6",
+      "hash": "d037f68ac93155ce697b51619888c39a09fe48264a5f8ea7e605ec47890933b8",
+      "heading": "In practice",
+      "excerpt": "The contrary notion of 'electoral malpractice' such as an unfair election refers to contests violating international standards and global no",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377879031"
+    },
+    {
+      "id": "P7",
+      "hash": "80cdb10b1b6ef34b346f0bea6cbaa710d3ef98b9424ec8d7069bacf362e597d5",
+      "heading": "Indicators",
+      "excerpt": "The Electoral Integrity Project has presented an annual survey of select academic opinions on electoral integrity since 2012. Kaila White of",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377879031"
+    },
+    {
+      "id": "P8",
+      "hash": "ed7e5727133f2c9cedf0537ec87f239b11c2cb4b5a0989f1d98fad4e75f8cf0b",
+      "heading": "International principles",
+      "excerpt": "These commitments were further developed in Article 25 of the UN International Covenant on Civil and Political Rights (ICCPR of 1966), namel",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377879031"
+    },
+    {
+      "id": "P9",
+      "hash": "6c3ecc2f042477260ac6a92ea95c896afca387cf2f39a07872063d361044cdb6",
+      "heading": "International principles",
+      "excerpt": "The 2002 Venice Commission’s Code of Good Practice in Electoral Matters spells out in detail what is meant by principles such as the univers",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377879031"
+    },
+    {
+      "id": "P10",
+      "hash": "930052c95cee0375f0b35dbab6384b2501cd4fb0c34ca216b24444d96a64e2f3",
+      "heading": "International principles",
+      "excerpt": "The 1990 Copenhagen Document of the Conference on Security and Cooperation in Europe (CSCE) made commitments that included free elections at",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377879031"
+    },
+    {
+      "id": "P11",
+      "hash": "07aaf346ce6f9d388fd13c9d126f5da9b507902148907a1007b5fb1eb69e1083",
+      "heading": "International principles",
+      "excerpt": "UN General Assembly resolution 63/163 (April 12, 2012) states, \"Strengthening the role of the United Nations in enhancing periodic and genui",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377879031"
+    },
+    {
+      "id": "P12",
+      "hash": "35692b8097f8b83c52e1d98530a4f709fd692cdf69a30c754f97b316806ee7e8",
+      "heading": "International principles",
+      "excerpt": "The United Nations or the international community does not endorse any specific institutional design or constitutional mechanisms that can b",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377879031"
+    },
+    {
+      "id": "P13",
+      "hash": "8c63266cb4f4cf22505d4463bb053d56f2011532df78a21a574191d41e9bb7d5",
+      "heading": "In practice",
+      "excerpt": "Flawed or failed elections which suffer from fraud, corruption, or vote-rigging were common in countries holding popular contests in the 18t",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377879031"
+    },
+    {
+      "id": "P14",
+      "hash": "7daf5d017e530631c2700c9a8b14145881dae3ca66cb3de67031460105c1589d",
+      "heading": "In practice",
+      "excerpt": "Examples of contemporary campaigns attracting considerable international concern are: allegations of irregularities occurring during the 201",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377879031"
+    }
+  ],
+  "updatedAt": "2026-10-25T08:55:50.248Z"
 }
