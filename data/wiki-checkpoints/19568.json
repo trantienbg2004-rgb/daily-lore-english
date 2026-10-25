@@ -301,7 +301,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377490635"
     }
   ],
-  "updatedAt": "2026-10-25T08:06:24.881Z",
+  "updatedAt": "2026-10-25T08:06:54.861Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -356,7 +356,7 @@
             ]
           },
           {
-            "text": "During the 1660s and 1770s, naturalists began using these instruments for serious biological study. Robert Hooke published impressive illustrations in his 1665 book Micrographia. Meanwhile, Antonie van Leeuwenhoek used single-lens microscopes to achieve high magnification, eventually discovering micro-organisms and red blood cells.",
+            "text": "During the 1660s and 1670s, naturalists began using these instruments for serious biological study. Robert Hooke published impressive illustrations in his 1665 book Micrographia. Meanwhile, Antonie van Leeuwenhoek used single-lens microscopes to achieve high magnification, eventually discovering micro-organisms and red blood cells.",
             "evidenceIds": [
               "P5"
             ]
@@ -433,11 +433,11 @@
       }
     }
   },
-  "repairAttempts": 1,
+  "repairAttempts": 2,
   "lastUsage": {
-    "input": 2582,
-    "output": 119,
-    "total": 2701
+    "input": 2658,
+    "output": 139,
+    "total": 2797
   },
   "validation": null
 }
