@@ -12306,10 +12306,10 @@
       "checkedAt": "2026-10-21T03:12:01.068Z"
     },
     "78408403": {
-      "status": "FETCHED",
-      "reason": "pinned-source-ready",
+      "status": "REJECTED",
+      "reason": "insufficient-source-text-or-embedded-images",
       "revisionId": 1360543919,
-      "checkedAt": "2026-10-25T08:49:56.378Z"
+      "checkedAt": "2026-10-25T08:50:02.154Z"
     },
     "78554064": {
       "status": "EVIDENCE_READY",
@@ -12618,7 +12618,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-25T08:49:56.379Z",
+  "updatedAt": "2026-10-25T08:50:02.155Z",
   "dailyUsage": {
     "day": "2026-10-25",
     "calls": 60,
