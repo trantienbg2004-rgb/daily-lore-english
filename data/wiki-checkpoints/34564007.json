@@ -2,10 +2,10 @@
   "pageId": 34564007,
   "title": "Deathcare",
   "topic": "Health",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1368955509,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368955509",
-  "reason": "5 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -298,5 +298,132 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1368955509"
     }
   ],
-  "updatedAt": "2026-10-25T08:02:00.941Z"
+  "updatedAt": "2026-10-25T08:02:18.219Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "What is Deathcare?",
+        "pages": [
+          {
+            "text": "Deathcare is the planning and work that happens after someone dies. It includes services, products, and rules. Many people help with this care. Families, doctors, and religious workers all take part in different ways.",
+            "evidenceIds": [
+              "P1",
+              "P2"
+            ]
+          },
+          {
+            "text": "Long ago, families took care of their dead relatives at home. Women in the family usually cleaned and dressed bodies. Later, the American Civil War changed things. Soldiers died far from home, so people started using embalming to save bodies.",
+            "evidenceIds": [
+              "P5"
+            ]
+          },
+          {
+            "text": "After the war, morticians began preparing bodies for families. Funeral homes became common places for services. Today, the deathcare industry has three main parts. These parts are ceremonies, disposition of remains, and memorial art or monuments.",
+            "evidenceIds": [
+              "P8",
+              "P10"
+            ]
+          },
+          {
+            "text": "Traditional burials and cremations can harm the environment. Metal caskets can pollute soil and water. Cremation uses a lot of fuel and creates air pollution. Because of this, new methods like human composting are growing.",
+            "evidenceIds": [
+              "P6",
+              "P9"
+            ]
+          },
+          {
+            "text": "Governments make laws for deathcare. They decide what practices and organizations are allowed. Private companies, religious groups, and non-government organizations also help shape deathcare policies around the world today.",
+            "evidenceIds": [
+              "P7"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "Understanding Deathcare Practices",
+        "pages": [
+          {
+            "text": "Deathcare encompasses the planning, provision, and governance of post-death services. The timeline following clinical death involves immediate medical professionals, followed by a diverse course shaped by cultural, religious, and personal traditions involving numerous types of workers.",
+            "evidenceIds": [
+              "P1",
+              "P2"
+            ]
+          },
+          {
+            "text": "Historically, deathcare was decentralized and largely managed by families. Women typically oversaw the preparation and burial of relatives at home. However, the high mortality of the American Civil War popularized embalming to preserve fallen soldiers for transport back home.",
+            "evidenceIds": [
+              "P5"
+            ]
+          },
+          {
+            "text": "Following the war, professional morticians and funeral homes became the norm for caring for the deceased. Analysts divide the modern deathcare industry into three parts: ceremonies, disposition through burial or cremation, and memorialization.",
+            "evidenceIds": [
+              "P8",
+              "P10"
+            ]
+          },
+          {
+            "text": "Traditional practices carry environmental costs. Conventional burials using metal caskets can contaminate soil and groundwater, while cremation consumes significant fuel and generates greenhouse gas emissions. These concerns have driven interest in sustainable alternatives like human composting.",
+            "evidenceIds": [
+              "P6",
+              "P9"
+            ]
+          },
+          {
+            "text": "Governments establish the legal frameworks governing deathcare, though religious, private, and third-sector organizations also shape these policies. Meanwhile, the global deathcare market has shown substantial fiscal growth, driven by an expanding demand for services and products.",
+            "evidenceIds": [
+              "P7",
+              "P19"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "The Evolution of Modern Deathcare",
+        "pages": [
+          {
+            "text": "Deathcare functions simultaneously as an industry of practitioners, a domain of public policy, and an interdisciplinary academic field. From the moment of clinical death, a diverse timeline unfolds, engaging immediate medical personnel alongside cultural, religious, and community figures.",
+            "evidenceIds": [
+              "P1",
+              "P2"
+            ]
+          },
+          {
+            "text": "Historically decentralized, deathcare was predominantly managed domestically, with family members—particularly women—handling preparation and burial. The American Civil War catalyzed a shift toward preservation, as widespread fatalities necessitated embalming to facilitate the long-distance transport of soldiers.",
+            "evidenceIds": [
+              "P5"
+            ]
+          },
+          {
+            "text": "Subsequent decades witnessed the professionalization of the sector, establishing morticians and funeral directors as standard providers. Industry analysts categorize the contemporary deathcare sector into three core components: ceremonies, the disposition of remains, and memorialization.",
+            "evidenceIds": [
+              "P8",
+              "P10"
+            ]
+          },
+          {
+            "text": "Conventional methodologies present notable ecological detriments. Metal caskets risk contaminating soil and groundwater, whereas cremation expends substantial fuel and emits pollutants. Consequently, ecological concerns and technological innovations have propelled sustainable alternatives, including human composting and natural burials.",
+            "evidenceIds": [
+              "P6",
+              "P9"
+            ]
+          },
+          {
+            "text": "State actors typically provide the overarching legal framework for deathcare, though private enterprises, religious institutions, and non-governmental organizations actively shape policy and practice. Concurrently, the global marketplace for deathcare products and services exhibits continuous fiscal expansion.",
+            "evidenceIds": [
+              "P7",
+              "P19"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2663,
+    "output": 907,
+    "total": 3570
+  },
+  "validation": null
 }
