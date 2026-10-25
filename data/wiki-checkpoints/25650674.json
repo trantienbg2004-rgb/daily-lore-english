@@ -2,10 +2,10 @@
   "pageId": 25650674,
   "title": "Cultural Property (Japan)",
   "topic": "Culture",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1373246443,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373246443",
-  "reason": "7 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -362,5 +362,141 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1373246443"
     }
   ],
-  "updatedAt": "2026-10-25T08:01:12.926Z"
+  "updatedAt": "2026-10-25T08:01:30.304Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "Japan Cultural Heritage",
+        "pages": [
+          {
+            "text": "Japan protects many old and special things. The government has rules to keep these important items safe. They include old buildings, art, crafts, and nature. People call them Cultural Properties. The main goal is to save them for everyone to see and learn.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "There is a special system to name these important things. Items can be chosen at national, regional, or local levels. When an item gets chosen, there are strict rules. People cannot easily change, fix, or send these objects out of the country.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "Tangible Cultural Properties are real objects made by people. They include old shrines, temples, paintings, sculptures, and ancient documents. Many of these things are made of wood and can easily catch fire. Owners get help to stop fires.",
+            "evidenceIds": [
+              "P3",
+              "P6"
+            ]
+          },
+          {
+            "text": "Japan also protects intangible things like music, dance, and special craft skills. Folk items, traditional ways of life, beautiful nature, and old group buildings are part of this big system. Everything helps people understand history and daily life traditions.",
+            "evidenceIds": [
+              "P7",
+              "P8",
+              "P10",
+              "P11"
+            ]
+          },
+          {
+            "text": "Long ago, many temples and old buildings were lost during big political changes and modern times. Later, the government started making laws to save historic art and architecture. Today, thousands of sites and objects are carefully protected across the country.",
+            "evidenceIds": [
+              "P18",
+              "P20"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "Protecting Japan's Cultural Properties",
+        "pages": [
+          {
+            "text": "Japan administers its rich cultural heritage through the Agency for Cultural Affairs. This diverse collection includes tangible structures, artworks, intangible performing arts, folk traditions, historic monuments, and cultural landscapes. These properties are preserved and utilized as the collective heritage of the Japanese people.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "To safeguard these assets, the Law for the Protection of Cultural Properties establishes a designation system operating at national, prefectural, and municipal levels. Designated objects face strict restrictions regarding alteration, repair, and export. A separate registration system also provides a more modest level of protection and support.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "Tangible cultural properties encompass physical items of high historical or artistic value, ranging from ancient architecture to fine arts and crafts. Because many of these traditional structures consist of flammable materials like wood and bark, owners receive government subsidies to install essential fire and disaster prevention systems.",
+            "evidenceIds": [
+              "P3",
+              "P6"
+            ]
+          },
+          {
+            "text": "Beyond tangible objects, the protective framework covers intangible craft techniques, folk customs, scenic monuments, cultural landscapes, and groups of traditional buildings. Together, these categories preserve the physical and traditional lifestyle elements that define Japan's historical environment.",
+            "evidenceIds": [
+              "P7",
+              "P8",
+              "P10",
+              "P11"
+            ]
+          },
+          {
+            "text": "The modern preservation system evolved from historical challenges. Following the Meiji Restoration and the separation of Shinto and Buddhism, numerous temples and artworks suffered destruction or neglect. In response, late 19th-century legislation and subsequent laws began systematically funding restoration and safeguarding historic architecture across the country.",
+            "evidenceIds": [
+              "P18",
+              "P20",
+              "P21"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "The Framework of Cultural Property Preservation in Japan",
+        "pages": [
+          {
+            "text": "Administered by the Agency for Cultural Affairs, Japan's cultural property framework encompasses a broad spectrum of tangible assets, intangible practices, folk traditions, historic monuments, cultural landscapes, and traditional building groups. These diverse elements are legally mandated to be preserved and utilized as the heritage of the populace.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "The statutory foundation relies primarily on a designation system across national, prefectural, and municipal tiers, imposing stringent regulatory controls over alteration, repair, and exportation. A supplementary registration system offers lower-tier protection, relying on notification and guidance to encourage voluntary stewardship by property owners.",
+            "evidenceIds": [
+              "P2",
+              "P15"
+            ]
+          },
+          {
+            "text": "Tangible cultural properties comprise physical artifacts of exceptional historical and artistic significance. Given that many of these structures utilize flammable organic materials such as wood and bark, the government provides financial subsidies specifically dedicated to the installation of comprehensive fire and disaster prevention infrastructure.",
+            "evidenceIds": [
+              "P3",
+              "P6"
+            ]
+          },
+          {
+            "text": "The administrative scope extends beyond physical artifacts to encompass intangible performance traditions, folk customs integral to daily life, scientific monuments, and traditional architectural ensembles. These varied categories collectively ensure the preservation of geocultural features and historical continuity.",
+            "evidenceIds": [
+              "P7",
+              "P8",
+              "P9",
+              "P10",
+              "P11"
+            ]
+          },
+          {
+            "text": "This institutionalized conservation emerged largely in reaction to the rapid modernization and ideological shifts of the Meiji Restoration, which had inadvertently precipitated widespread destruction and neglect of religious structures and antiquities. Subsequent late-nineteenth and early-twentieth-century legislation systematically established governmental oversight, inventories, and financial subsidies for architectural restoration.",
+            "evidenceIds": [
+              "P18",
+              "P19",
+              "P20",
+              "P21"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2978,
+    "output": 1042,
+    "total": 4020
+  },
+  "validation": null
 }
