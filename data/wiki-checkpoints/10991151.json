@@ -2,10 +2,10 @@
   "pageId": 10991151,
   "title": "History of the France national rugby union team",
   "topic": "Sports",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1310374257,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1310374257",
-  "reason": "6 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -257,5 +257,132 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1310374257"
     }
   ],
-  "updatedAt": "2026-10-25T08:00:10.738Z"
+  "updatedAt": "2026-10-25T08:00:24.353Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "France Rugby History",
+        "pages": [
+          {
+            "text": "Rugby came to France in the 1870s. British merchants and students brought the sport. Schools and clubs started to play. The first national team played at the 1900 Paris Olympics. They won the gold medal. However, this team is not a main Test team today.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "France played its first official Test match in 1906. They lost to the All Blacks. Later that year, they played England and lost again. In 1910, a new Five Nations tournament began. France got their first win in 1911 against Scotland in Paris.",
+            "evidenceIds": [
+              "P2",
+              "P5"
+            ]
+          },
+          {
+            "text": "The team faced hard times in the 1930s. France was expelled from the Five Nations in 1932. They had to play weaker teams. Even so, they won ten games in a row. They were later invited back to the tournament before war stopped games.",
+            "evidenceIds": [
+              "P6"
+            ]
+          },
+          {
+            "text": "After the Second World War, French rugby grew strong. They shared the Five Nations title for the first time in 1954. They also beat New Zealand for the first time. In 1961, France won the championship all by themselves.",
+            "evidenceIds": [
+              "P7",
+              "P8"
+            ]
+          },
+          {
+            "text": "In later years, France won more titles. They won their second Grand Slam in 1977. In 2000, Italy joined the tournament. It became the Six Nations. France continued to play hard against top teams from around the world.",
+            "evidenceIds": [
+              "P9",
+              "P12"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "The Journey of French Rugby",
+        "pages": [
+          {
+            "text": "Rugby union was introduced to France in the 1870s by British merchants and students. The sport quickly spread through schools and clubs. The national side made its early appearance at the 1900 Paris Olympics, where a French team won the gold medal by defeating Britain and Germany, though these games are not considered official Test matches.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "On January 1, 1906, France played its first official Test match, losing against the All Blacks. Matches against England and other nations soon followed. By 1910, the foundation of the Five Nations competition was laid when Scotland played France, leading to France's first tournament win against Scotland in 1911.",
+            "evidenceIds": [
+              "P2",
+              "P5"
+            ]
+          },
+          {
+            "text": "Despite periods of improvement, France faced a major setback in 1932 when they were expelled from the Five Nations amid accusations of professionalism and on-field violence. Forced to play weaker opposition, they surprisingly won ten consecutive games. International rugby was eventually suspended due to the Second World War.",
+            "evidenceIds": [
+              "P6"
+            ]
+          },
+          {
+            "text": "The Five Nations resumed after the war in 1947, marking a new era for French rugby. Lucien Mias introduced innovative line-out tactics. France claimed a share of the Five Nations title in 1954 and secured their first victory over New Zealand. By 1961, they won the championship outright.",
+            "evidenceIds": [
+              "P7",
+              "P8"
+            ]
+          },
+          {
+            "text": "The success continued into the 1970s and 1980s under figures like coach Jacques Fouroux, securing Grand Slams and memorable victories against Southern Hemisphere teams. In 2000, Italy joined the competition, transforming the Five Nations into the Six Nations, where France remained a major competitor.",
+            "evidenceIds": [
+              "P9",
+              "P10",
+              "P12"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "Evolution of the France National Rugby Union Team",
+        "pages": [
+          {
+            "text": "Introduced by British merchants and students in the 1870s, rugby union permeated French schools and colleges. The nascent national side participated in the 1900 Paris Olympics, securing victories over Britain and Germany to claim the gold medal, although these fixtures lack official Test status.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "France contested its inaugural Test match on January 1, 1906, against New Zealand. Subsequent fixtures against England and other Home Nations preceded the establishment of the Five Nations tournament in 1910, where France registered its maiden victory against Scotland in 1911.",
+            "evidenceIds": [
+              "P2",
+              "P5"
+            ]
+          },
+          {
+            "text": "Political and administrative turmoil culminated in France's expulsion from the Five Nations in 1932 due to allegations of professionalism, violence, and poor organisation. Relegated to competing against alternative opposition, the squad assembled a ten-game winning streak before international competition was suspended upon the outbreak of the Second World War.",
+            "evidenceIds": [
+              "P6"
+            ]
+          },
+          {
+            "text": "The resumption of the Five Nations in 1947 catalyzed a renaissance in French rugby. Tactical innovations spearheaded by captain Lucien Mias revolutionized forward play. France achieved a shared championship title in 1954 alongside historic victories against New Zealand, eventually capturing the tournament outright in 1961.",
+            "evidenceIds": [
+              "P7",
+              "P8"
+            ]
+          },
+          {
+            "text": "Subsequent decades cemented France's status as an elite rugby nation, punctuated by multiple Grand Slams under coach Jacques Fouroux and notable victories against southern hemisphere powerhouses. The inclusion of Italy in 2000 expanded the tournament into the Six Nations, marking a new chapter in the team's storied history.",
+            "evidenceIds": [
+              "P9",
+              "P10",
+              "P12"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2925,
+    "output": 1540,
+    "total": 4465
+  },
+  "validation": null
 }
