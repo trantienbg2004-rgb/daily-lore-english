@@ -8382,10 +8382,10 @@
       "checkedAt": "2026-10-22T08:28:42.893Z"
     },
     "354628": {
-      "status": "FETCHED",
-      "reason": "pinned-source-ready",
+      "status": "EVIDENCE_READY",
+      "reason": "2 rights-verified embedded images",
       "revisionId": 1371399030,
-      "checkedAt": "2026-10-25T09:14:31.589Z"
+      "checkedAt": "2026-10-25T09:14:37.389Z"
     },
     "356024": {
       "status": "REJECTED",
@@ -12618,7 +12618,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-25T09:14:31.591Z",
+  "updatedAt": "2026-10-25T09:14:37.390Z",
   "dailyUsage": {
     "day": "2026-10-25",
     "calls": 60,

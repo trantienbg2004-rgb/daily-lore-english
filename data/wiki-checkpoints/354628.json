@@ -2,9 +2,152 @@
   "pageId": 354628,
   "title": "History of mental disorders",
   "topic": "Health",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1371399030,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371399030",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-25T09:14:31.590Z"
+  "reason": "2 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:Madness Lycurgus BM VaseF271.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ab/Madness_Lycurgus_BM_VaseF271.jpg/960px-Madness_Lycurgus_BM_VaseF271.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Madness Lycurgus BM VaseF271.jpg",
+        "caption": "Lycurgus, driven mad by Dionysus, attacks his wife.",
+        "alt": "",
+        "description": "Lycurgus, driven mad by Dionysos, attacks his wife. Detail from an Apulian red-figure calyx-krater, ca. 350-340 BC. From Ruvo.",
+        "date": "2007-08-20 18:00:43",
+        "section": "Greece and Rome",
+        "position": 0,
+        "provenance": {
+          "credit": "Lycurgus Painter",
+          "license": "CC BY 2.5",
+          "licenseUrl": "https://creativecommons.org/licenses/by/2.5",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Madness_Lycurgus_BM_VaseF271.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/History_of_mental_disorders",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371399030",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:Syphilis may cause heart trouble, blindness, deafness, mental disorders LCCN98514733.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/76/Syphilis_may_cause_heart_trouble%2C_blindness%2C_deafness%2C_mental_disorders_LCCN98514733.jpg/960px-Syphilis_may_cause_heart_trouble%2C_blindness%2C_deafness%2C_mental_disorders_LCCN98514733.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Syphilis may cause heart trouble, blindness, deafness, mental disorders LCCN98514733.jpg",
+        "caption": "Poster promoting blood tests for syphilis.",
+        "alt": "",
+        "description": "Title: Syphilis may cause heart trouble, blindness, deafness, mental disorders Abstract: Poster promoting blood tests for syphilis. Physical description: 1 print on board (poster) : silkscreen, color. Notes: Work Projects Administration Poster Collection (Library of Congress).; Date stamped on verso: May 14 1941.",
+        "date": "between 1936 and 1941date QS:P,+1950-00-00T00:00:00Z/7,P1319,+1936-00-00T00:00:00Z/9,P1326,+1941-00-",
+        "section": "20th century",
+        "position": 1,
+        "provenance": {
+          "credit": "Work Projects Administration Poster Collection",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Syphilis_may_cause_heart_trouble,_blindness,_deafness,_mental_disorders_LCCN98514733.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/History_of_mental_disorders",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371399030",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "732d4bcc5c5ea12624ab42dc12d1ef9b7fd3d52eab476f991c9a97a91d2091ed",
+      "heading": "Lead",
+      "excerpt": "Historically, mental disorders have had three major explanations, namely, the supernatural, biological and psychological models. For much of",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371399030"
+    },
+    {
+      "id": "P2",
+      "hash": "5b05d1abfc7db26a5d8ed36f5a487db62c3bd30de8b8a122ee57fabe25f6fc58",
+      "heading": "Ancient period",
+      "excerpt": "There is archaeological evidence for the use of trepanation in around 6500 BC, though it is unknown if this was done as a response to mental",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371399030"
+    },
+    {
+      "id": "P3",
+      "hash": "0d1d64c88180c5d52d92474d616ceb9649bb720ce0dd0b3bff4cb48f8983db1c",
+      "heading": "Mesopotamia",
+      "excerpt": "Mental illnesses were well known in ancient Mesopotamia, where diseases and mental disorders were believed to be caused by specific deities.",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371399030"
+    },
+    {
+      "id": "P4",
+      "hash": "f4e36622e3eaa88dc81fa891eb5d5e41a60656aeb549b3f4187966395b694d36",
+      "heading": "Egypt",
+      "excerpt": "Limited notes in an ancient Egyptian document known as the Ebers papyrus appear to describe the affected states of concentration, attention,",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371399030"
+    },
+    {
+      "id": "P5",
+      "hash": "07f61934a57489463da2aacb45987f0ff473dfbfa11f328173ff79b6b8c8b1a0",
+      "heading": "India",
+      "excerpt": "Ancient Hindu scriptures-Ramayana and Mahabharata-contain fictional descriptions of depression and anxiety. Mental disorders were generally ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371399030"
+    },
+    {
+      "id": "P6",
+      "hash": "81b692e46c3603bad0671ebbcd8b2deec34f5a4df22050e3ca4ad2eb2fe25631",
+      "heading": "China",
+      "excerpt": "The earliest known record of mental illness in ancient China dates back to 1100 B.C. Mental disorders were treated mainly under Traditional ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371399030"
+    },
+    {
+      "id": "P7",
+      "hash": "f6e5066e55a62ebf8db62bf04ed30be7468a9fb6dc2137f6a9d9238565cd5e08",
+      "heading": "Greece and Rome",
+      "excerpt": "In ancient Greece and Rome, madness was associated stereotypically with aimless wandering and violence. However, Socrates considered positiv",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371399030"
+    },
+    {
+      "id": "P8",
+      "hash": "f90894ad262ed70719cb3897a1e52d4b760f9224463809a97aea7b459423f8d1",
+      "heading": "Israel and the Hebrew diaspora",
+      "excerpt": "Passages of the Hebrew Bible/Old Testament have been interpreted as describing mood disorders in figures such as Job, King Saul and in the P",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371399030"
+    },
+    {
+      "id": "P9",
+      "hash": "a6303225d6aa34d3ac5d3e2651d7c9219248610b309877c0eff095c00f546522",
+      "heading": "Middle East",
+      "excerpt": "Persian and Arabic scholars were heavily involved in translating, analyzing and synthesizing Greek texts and concepts. As the Muslim world e",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371399030"
+    },
+    {
+      "id": "P10",
+      "hash": "7bd77ba1eca8d041ad55778ebbbd41c0d8ec934dc29fc211d82508747a7af310",
+      "heading": "Europe",
+      "excerpt": "Conceptions of madness in the Middle Ages in Europe were a mixture of the divine, diabolical, magical and transcendental. Theories of the fo",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371399030"
+    },
+    {
+      "id": "P11",
+      "hash": "b94d7a0f955abcf1f38e56624093760ad6df739bfdeb210e1f7f5518a37c9d6d",
+      "heading": "16th to 18th centuries",
+      "excerpt": "Some mentally ill people may have been victims of the witch-hunts that spread in waves in early modern Europe. However, those judged insane ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371399030"
+    },
+    {
+      "id": "P12",
+      "hash": "9bd3b356661af3106cc258900d02d1b0654e095a849497e3103412d7dcf02eba",
+      "heading": "19th century",
+      "excerpt": "The 19th century, in the context of industrialization and population growth, saw a massive expansion of the number and size of insane asylum",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371399030"
+    },
+    {
+      "id": "P13",
+      "hash": "ec9053b864bde3d696901752db7dda442d76b18ab89531ae48f7086b5d50f069",
+      "heading": "20th century",
+      "excerpt": "The turn of the 20th century saw the development of psychoanalysis, which came to the fore later. Kraepelin's classification gained populari",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1371399030"
+    }
+  ],
+  "updatedAt": "2026-10-25T09:14:37.389Z"
 }
