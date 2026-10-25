@@ -2,10 +2,10 @@
   "pageId": 52112872,
   "title": "History of the Argentina national rugby union team",
   "topic": "Sports",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1308205831,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1308205831",
-  "reason": "13 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -550,5 +550,142 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1308205831"
     }
   ],
-  "updatedAt": "2026-10-25T07:09:01.677Z"
+  "updatedAt": "2026-10-25T07:09:15.055Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "History of Argentine Rugby",
+        "pages": [
+          {
+            "text": "Rugby in Argentina began long ago. In the middle of the nineteenth century, immigrants brought sports to the country. The very first rugby match was played in the year eighteen seventy-three in Buenos Aires. Later, in nineteen ten, the Argentina national team played its first international match against a visiting team.",
+            "evidenceIds": [
+              "P1",
+              "P3",
+              "P4"
+            ]
+          },
+          {
+            "text": "During a famous tour of South Africa in nineteen sixty-five, the Argentine team earned the special nickname Los Pumas. This name became a proud identity mark for the country and remains used to this very day. The team also won several early South American tournaments during those decades.",
+            "evidenceIds": [
+              "P1",
+              "P25",
+              "P27"
+            ]
+          },
+          {
+            "text": "In nineteen eighty, important teams toured South America. This allowed Los Pumas to face major rugby nations from around the world. Through the nineteen seventies and nineteen eighties, the team improved greatly with help from star player Hugo Porta, who showed world-class skills on the field.",
+            "evidenceIds": [
+              "P9",
+              "P10"
+            ]
+          },
+          {
+            "text": "Argentina has played in every single Rugby World Cup since the very first tournament in nineteen eighty-seven. Their best performance in the competition happened in two thousand seven, when they achieved an amazing third place finish after defeating strong opponents during the tournament matches.",
+            "evidenceIds": [
+              "P2",
+              "P13"
+            ]
+          },
+          {
+            "text": "A major breakthrough came in twenty twelve when Argentina finally joined The Rugby Championship. In this annual competition, they play against powerhouse teams like New Zealand, Australia, and South Africa. This step proved their high status in international rugby union sports.",
+            "evidenceIds": [
+              "P16"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "The Rise of Argentina Rugby",
+        "pages": [
+          {
+            "text": "Rugby union was introduced to Argentina by immigrants during the middle of the nineteenth century, leading to the first recorded match in Buenos Aires in eighteen seventy-three. Decades later, on June twelfth, nineteen ten, the River Plate Rugby Football Union played its first international game against a touring team managed by Oxford University.",
+            "evidenceIds": [
+              "P1",
+              "P3",
+              "P4",
+              "P6"
+            ]
+          },
+          {
+            "text": "A defining moment for the sport in Argentina occurred in nineteen sixty-five during a tour of South Africa. The national team earned the famous nickname Los Pumas during these matches, establishing an identity that persists today. Throughout the nineteen fifties and sixties, Argentina also dominated several South American regional tournaments.",
+            "evidenceIds": [
+              "P1",
+              "P25",
+              "P27"
+            ]
+          },
+          {
+            "text": "During the nineteen seventies, the team's steady rise toward top-tier status was heavily influenced by fly-half Hugo Porta, widely regarded as their first truly world-class player. By the nineteen eighties, regular tours allowed the Pumas to test themselves against major international sides from England, France, New Zealand, and Australia.",
+            "evidenceIds": [
+              "P9",
+              "P10"
+            ]
+          },
+          {
+            "text": "Argentina has participated in every Rugby World Cup since the inaugural tournament in nineteen eighty-seven. Their historic campaign in two thousand seven culminated in a remarkable third-place finish, following a series of impressive warm-up victories and strong performances on the world stage.",
+            "evidenceIds": [
+              "P2",
+              "P13"
+            ]
+          },
+          {
+            "text": "Following their continued development, a major breakthrough occurred in twenty twelve when Argentina joined The Rugby Championship. Playing against New Zealand, Australia, and South Africa, the Pumas secured their place in an annual Tier One competition alongside the Southern Hemisphere's finest teams.",
+            "evidenceIds": [
+              "P16"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "Evolution of Los Pumas",
+        "pages": [
+          {
+            "text": "The foundational era of Argentine rugby began in the mid-nineteenth century with the arrival of immigrants who established early clubs. The inaugural match took place in eighteen seventy--three at the Buenos Aires Cricket Club Ground. Decades later, on June twelfth, nineteen ten, the national team made its official international debut against a touring British side.",
+            "evidenceIds": [
+              "P1",
+              "P3",
+              "P4",
+              "P6"
+            ]
+          },
+          {
+            "text": "Continental dominance marked the mid-twentieth century as Argentina secured multiple South American titles. The pivotal juncture arrived in nineteen sixty-five during a tour of South Africa, where the national squad acquired the enduring moniker Los Pumas, cementing a permanent identity for Argentine rugby on the international stage.",
+            "evidenceIds": [
+              "P1",
+              "P25",
+              "P27",
+              "P29"
+            ]
+          },
+          {
+            "text": "Throughout the nineteen seventies, the program's systematic ascent toward elite status was catalyzed by fly-half Hugo Porta. Subsequent international fixtures in the nineteen eighties ensured competitive exposure against premier global unions, anchoring a formidable home record in Buenos Aires throughout that era.",
+            "evidenceIds": [
+              "P9",
+              "P10"
+            ]
+          },
+          {
+            "text": "Argentina maintained an unbroken presence across all editions of the Rugby World Cup following its inception in nineteen eighty-seven. The apex of this trajectory materialized during the two thousand seven tournament, where Los Pumas captured a historic third-place finish after a rigorous preparation cycle.",
+            "evidenceIds": [
+              "P2",
+              "P13"
+            ]
+          },
+          {
+            "text": "The structural integration of Argentine rugby culminated in twenty twelve with admission into The Rugby Championship. By competing annually against New Zealand, Australia, and South Africa, the national team cemented its status within the upper echelon of international rugby union competition.",
+            "evidenceIds": [
+              "P16"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 3399,
+    "output": 1372,
+    "total": 4771
+  },
+  "validation": null
 }
