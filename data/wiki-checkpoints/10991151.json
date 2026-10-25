@@ -2,10 +2,10 @@
   "pageId": 10991151,
   "title": "History of the France national rugby union team",
   "topic": "Sports",
-  "status": "DRAFTED",
+  "status": "VALIDATED",
   "revisionId": 1310374257,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1310374257",
-  "reason": "draft durably saved before validation",
+  "reason": "local factual, style, length, structure and source audit passed",
   "rights": [
     {
       "status": "REVIEW",
@@ -257,7 +257,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1310374257"
     }
   ],
-  "updatedAt": "2026-10-25T08:00:42.284Z",
+  "updatedAt": "2026-10-25T08:01:00.223Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -384,5 +384,8 @@
     "output": 238,
     "total": 3089
   },
-  "validation": null
+  "validation": {
+    "accepted": true,
+    "errors": []
+  }
 }
