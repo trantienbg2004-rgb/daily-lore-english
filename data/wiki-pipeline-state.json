@@ -8178,10 +8178,10 @@
       "checkedAt": "2026-10-22T13:14:00.524Z"
     },
     "216313": {
-      "status": "FETCHED",
-      "reason": "pinned-source-ready",
+      "status": "REJECTED",
+      "reason": "insufficient-source-text-or-embedded-images",
       "revisionId": 1381068269,
-      "checkedAt": "2026-10-25T08:54:56.412Z"
+      "checkedAt": "2026-10-25T08:55:02.161Z"
     },
     "221737": {
       "status": "REJECTED",
@@ -12618,7 +12618,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-25T08:54:56.423Z",
+  "updatedAt": "2026-10-25T08:55:02.162Z",
   "dailyUsage": {
     "day": "2026-10-25",
     "calls": 60,
