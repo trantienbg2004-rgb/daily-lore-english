@@ -10782,10 +10782,10 @@
       "checkedAt": "2026-10-22T08:58:34.212Z"
     },
     "39388569": {
-      "status": "FETCHED",
-      "reason": "pinned-source-ready",
+      "status": "EVIDENCE_READY",
+      "reason": "2 rights-verified embedded images",
       "revisionId": 1348771563,
-      "checkedAt": "2026-10-25T08:49:06.829Z"
+      "checkedAt": "2026-10-25T08:49:08.116Z"
     },
     "39699737": {
       "status": "EVIDENCE_READY",
@@ -12618,7 +12618,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-25T08:49:06.830Z",
+  "updatedAt": "2026-10-25T08:49:08.135Z",
   "dailyUsage": {
     "day": "2026-10-25",
     "calls": 60,

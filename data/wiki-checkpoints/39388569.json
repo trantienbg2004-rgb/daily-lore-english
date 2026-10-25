@@ -2,9 +2,195 @@
   "pageId": 39388569,
   "title": "History of leprosy",
   "topic": "Health",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1348771563,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1348771563",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-25T08:49:06.830Z"
+  "reason": "2 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Gerhard Armauer Hansen.jpg"
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Leprosy victims taught by bishop.jpg"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:Leprosy bell.a.JPG",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/54/Leprosy_bell.a.JPG/960px-Leprosy_bell.a.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Leprosy bell.a.JPG",
+        "caption": "Medieval leper bell",
+        "alt": "",
+        "description": "Medieval leper bell at the museum Ribes Vikinger, Ribe, Denmark",
+        "date": "2009-01-23",
+        "section": "Asylums",
+        "position": 2,
+        "provenance": {
+          "credit": "Gianreali",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Leprosy_bell.a.JPG",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/History_of_leprosy",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1348771563",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:Leprosy; a patient uncured and a patient cured Wellcome L0077163.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ae/Leprosy%3B_a_patient_uncured_and_a_patient_cured_Wellcome_L0077163.jpg/960px-Leprosy%3B_a_patient_uncured_and_a_patient_cured_Wellcome_L0077163.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Leprosy; a patient uncured and a patient cured Wellcome L0077163.jpg",
+        "caption": "Poster encouraging leprosy treatment",
+        "alt": "",
+        "description": "Leprosy: a patient uncured and a patient cured, the latter pointing to an allegory of early treatment. Colour lithograph. Hind Kusht Nivaran Sangh (Indian Leprosy Association) was founded in 1925 with the name of Indian Council of British Empire Leprosy Relief Association (BELRA). After the independence of India, the Indian Council of BELRA was renamed the Hind Kusht Nivaran Sangh (Indian Leprosy Association), which came into being on 19 August 1949. Iconographic Collections Keywords: Advertising as Topic; Poster; Public Health; Men; India; Lep",
+        "date": "2015-01-06 20:23:39",
+        "section": "Modern treatments",
+        "position": 3,
+        "provenance": {
+          "credit": "https://wellcomeimages.org/indexplus/obf_images/21/e9/a060b19055fed41142718f46cb7f.jpg Gallery: https://wellcomeimages.org/indexplus/image/L0077163.html Wellcome Collection gallery (2018-03-30): https://wellcomecollection.org/works/vqsygcq4 CC-BY-4.0",
+          "license": "CC BY 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Leprosy;_a_patient_uncured_and_a_patient_cured_Wellcome_L0077163.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/History_of_leprosy",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1348771563",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Multidrug therapy (MDT) for the treatment of leprosy.jpg"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "228c5c9f6b7274ecc61b693960eed689dc4842f9aa90bfa315eed1634073b3dd",
+      "heading": "Lead",
+      "excerpt": "The history of leprosy was traced to its origins by an international team of 22 geneticists using comparative genomics of the worldwide dist",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1348771563"
+    },
+    {
+      "id": "P2",
+      "hash": "b5b3a47688ce818c824bb0557c323a7afe854983d515efce82c0d839e22b1e41",
+      "heading": "Lead",
+      "excerpt": "They created a map of the dissemination of leprosy in the world. This confirmed the spread of the disease along the migration, colonisation,",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1348771563"
+    },
+    {
+      "id": "P3",
+      "hash": "cb84ea17845da83211a342a1ab109128b7f32a927b8f1399bc443c8374a54c6e",
+      "heading": "Lead",
+      "excerpt": "In 1873 G.H. Armauer Hansen in Norway discovered the causative agent of leprosy, Mycobacterium leprae. This was the first bacterium to be id",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1348771563"
+    },
+    {
+      "id": "P4",
+      "hash": "cecff34b6b37a840b10aa3c950679d7d229ee0750feae2a5319d1a6017ccfdd5",
+      "heading": "Etymology",
+      "excerpt": "The word leprosy comes from ancient Greek Λέπρα [léprā], \"a disease that makes the skin scaly\", in turn, a nominal derivation of the verb Λέ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1348771563"
+    },
+    {
+      "id": "P5",
+      "hash": "10f435d4668de0d7b845f2571bd48b679ad85f705928a70e6316fac790342930",
+      "heading": "Etymology",
+      "excerpt": "Throughout history, individuals with leprosy have been known as lepers. In the 21st century, this term is falling into disuse as a result of",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1348771563"
+    },
+    {
+      "id": "P6",
+      "hash": "4b202b35d05ec2edd91a18586943e116f28932bf48b62522cdb80ef78a0ddd2f",
+      "heading": "Ancient",
+      "excerpt": "The ability to use historical records to trace the spread and treatment of leprosy in antiquity is greatly limited by confusion over which s",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1348771563"
+    },
+    {
+      "id": "P7",
+      "hash": "aa622177d06662abe63b5451c7639b5fb2ad94423a21b137a39d7e357e00c03f",
+      "heading": "Modern",
+      "excerpt": "Medical texts from the medieval period have loose and seemingly incorrect depictions of leprosy, leading some historians to suspect that doc",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1348771563"
+    },
+    {
+      "id": "P8",
+      "hash": "c3dc8e8b1d19d25eeefc5986a9cf01aa8d5d3f6268f330520bcdb9064298f16e",
+      "heading": "Genetic analysis",
+      "excerpt": "DNA analysis has been applied to the origins and history of leprosy. Geneticists in 2005 used comparative genomics to study these aspects, i",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1348771563"
+    },
+    {
+      "id": "P9",
+      "hash": "f85ba909eda165bd3ed44e1c41b624874522e28da36b592b93d3809895f84042",
+      "heading": "Discovery of bacterium",
+      "excerpt": "After the end of the 17th century, Norway, Iceland, and England were the countries in Western Europe where leprosy was a significant problem",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1348771563"
+    },
+    {
+      "id": "P10",
+      "hash": "7c36858521b8ba5b2a9833c8764cff3bb5663a0c2753223344d656d5b5bb3925",
+      "heading": "Historical treatments",
+      "excerpt": "The disease was known in Ancient Greece as elephantiasis (elephantiasis graecorum). At various times blood was considered to be a treatment ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1348771563"
+    },
+    {
+      "id": "P11",
+      "hash": "f76cb52a0e68123ca1ba4ffb54298f569f05bf1b9ea960106f85791ad4d382ff",
+      "heading": "Asylums",
+      "excerpt": "Contrary to popular opinion, people were not universally isolated in leprosy asylums in the Middle Ages. In Europe, asylums offered shelter ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1348771563"
+    },
+    {
+      "id": "P12",
+      "hash": "d98228b577c54baf3a8d38c649115519ac1f637203bb3d1a35147f3f10c1f2da",
+      "heading": "Modern treatments",
+      "excerpt": "Promin was synthesised in 1940 by Feldman of Parke-Davis and company. Although Parke-Davis synthesised the compound, it seems certain that t",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1348771563"
+    },
+    {
+      "id": "P13",
+      "hash": "ae9bf1073a454a740eea577d021a00877638a5e5e1b4a0fa944bd8b0ac760e68",
+      "heading": "India",
+      "excerpt": "The Oxford Illustrated Companion to Medicine says that leprosy, as well as cures for it, were described in the Hindu religious book Atharva-",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1348771563"
+    },
+    {
+      "id": "P14",
+      "hash": "333ba2405e5f2d6a7ed7d40a7bd2f306c4b985e5f90b3b859aee692d79ff1f7e",
+      "heading": "China",
+      "excerpt": "Regarding ancient China, Katrina C.D. McLeod and Robin D. S. Yates identify the State of Qin's Feng zhen shi 封診式 (Models for sealing and inv",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1348771563"
+    },
+    {
+      "id": "P15",
+      "hash": "d96e70843f174f2d6e5590614646e59fc5855fc93ce3a016a1421f99ff12ab97",
+      "heading": "Indonesia",
+      "excerpt": "In the 21st century, the rate of prevalence across Indonesia is slightly under one new case per 10,000 people, with approximately 20,000 new",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1348771563"
+    },
+    {
+      "id": "P16",
+      "hash": "4676058d7621617edca1f741687c3ed0ac990671bf7f7fbcfdcb6264d2fa3086",
+      "heading": "Iran",
+      "excerpt": "The Persian polymath Avicenna (c. 980–1037) was the first outside of China to describe the destruction of the nasal septum in those with lep",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1348771563"
+    },
+    {
+      "id": "P17",
+      "hash": "6e57de623bb8f2a69fbe18f86126d8a7a89dfc11c5d9ea99925b6b5a4eaa865f",
+      "heading": "Ancient",
+      "excerpt": "Debatably, the oldest known records of genuine Hansen's disease are the Indian vedas, whose kuṣṭha (कुष्ठ, \"eating away\") is clearly focused",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1348771563"
+    }
+  ],
+  "updatedAt": "2026-10-25T08:49:08.117Z"
 }
