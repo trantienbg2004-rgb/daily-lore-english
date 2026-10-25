@@ -9810,10 +9810,10 @@
       "checkedAt": "2026-10-23T17:11:22.228Z"
     },
     "9543863": {
-      "status": "PENDING",
-      "reason": "queued",
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
       "revisionId": 1379831504,
-      "checkedAt": null
+      "checkedAt": "2026-10-25T08:57:38.625Z"
     },
     "9633432": {
       "status": "NEEDS_REVIEW",
@@ -12618,7 +12618,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-25T08:57:32.117Z",
+  "updatedAt": "2026-10-25T08:57:38.626Z",
   "dailyUsage": {
     "day": "2026-10-25",
     "calls": 60,
