@@ -2,10 +2,10 @@
   "pageId": 23996,
   "title": "Political party",
   "topic": "Politics",
-  "status": "DRAFTED",
+  "status": "VALIDATED",
   "revisionId": 1381549522,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381549522",
-  "reason": "draft durably saved before validation",
+  "reason": "local factual, style, length, structure and source audit passed",
   "rights": [
     {
       "status": "REJECTED",
@@ -286,7 +286,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1381549522"
     }
   ],
-  "updatedAt": "2026-10-25T08:03:26.072Z",
+  "updatedAt": "2026-10-25T08:03:42.343Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -416,5 +416,8 @@
     "output": 216,
     "total": 2734
   },
-  "validation": null
+  "validation": {
+    "accepted": true,
+    "errors": []
+  }
 }
