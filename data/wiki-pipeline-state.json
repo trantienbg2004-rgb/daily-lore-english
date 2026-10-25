@@ -8694,10 +8694,10 @@
       "checkedAt": "2026-10-22T13:08:34.130Z"
     },
     "722667": {
-      "status": "PENDING",
-      "reason": "queued",
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
       "revisionId": 1352431644,
-      "checkedAt": null
+      "checkedAt": "2026-10-25T08:56:20.439Z"
     },
     "724212": {
       "status": "RETRY_LATER",
@@ -12618,7 +12618,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-25T08:56:14.129Z",
+  "updatedAt": "2026-10-25T08:56:20.439Z",
   "dailyUsage": {
     "day": "2026-10-25",
     "calls": 60,
