@@ -2,9 +2,163 @@
   "pageId": 35536466,
   "title": "Issue voting",
   "topic": "Politics",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1360088831,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1360088831",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-25T08:50:44.344Z"
+  "reason": "1 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:Linear Model of Issue Voting, April 2012.jpg",
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/3/33/Linear_Model_of_Issue_Voting%2C_April_2012.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "fileTitle": "File:Linear Model of Issue Voting, April 2012.jpg",
+        "caption": "Linear Model of Issue Voting",
+        "alt": "",
+        "description": "Shows the relationship between the consistency of voters' issue positions versus the proportion voting for the party in the linear model of issue voting.",
+        "date": "2012-04-17",
+        "section": "Models of issue voting",
+        "position": 0,
+        "provenance": {
+          "credit": "R.a.dodson",
+          "license": "CC0",
+          "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Linear_Model_of_Issue_Voting,_April_2012.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Issue_voting",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1360088831",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "d824b1949263ea28a7d3258be91e08b5e003022b5867197fa2af0b0ce0fbf7ea",
+      "heading": "Lead",
+      "excerpt": "The term issue voting describes when voters cast their vote in elections based on political issues. In the context of an election, issues in",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1360088831"
+    },
+    {
+      "id": "P2",
+      "hash": "5458e18959854410b0557ffd9c3256ab637c3e8cd3554149646aae3fcbde32b3",
+      "heading": "Causes",
+      "excerpt": "A voter does not need to have an in-depth understanding of every issue and knowledge of how a candidate stands on every issue, but rather a ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1360088831"
+    },
+    {
+      "id": "P3",
+      "hash": "9375f60592454e510ac97505ce2348a10d6b48adfaaeaaf8d9c04186fd75a516",
+      "heading": "Causes",
+      "excerpt": "Issue voting is often contrasted with party voting. A 2010 University of California, Davis study found that voters switch between issue voti",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1360088831"
+    },
+    {
+      "id": "P4",
+      "hash": "7fc2acc84b727754afc413fef064b84f9cfa5138c55b01b0dee18d596b86bcd7",
+      "heading": "Causes",
+      "excerpt": "Voters typically choose a political party to affiliate with in one of two ways. The voter will create an opinion of an issue without consult",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1360088831"
+    },
+    {
+      "id": "P5",
+      "hash": "30e2689ad7760e8f016783e63a6caa54371fb52252682747f1ac3b903cb82c62",
+      "heading": "Causes",
+      "excerpt": "A voter's understanding of parties' principles is strengthened and developed over time as a person gains experience with more political even",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1360088831"
+    },
+    {
+      "id": "P6",
+      "hash": "e846d3b00c41dca45e2cc1ea4bfa67c532800bdfeaf0b1724fe0f47839349056",
+      "heading": "History of issue voting",
+      "excerpt": "Prior to The People's Choice study in 1944, it was assumed by political scientists that voting was based solely on issues. However, this stu",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1360088831"
+    },
+    {
+      "id": "P7",
+      "hash": "6eee2fb35eb6a64d5cef8d181d72787d013dfdc7409ce9aba89d9cdcc8032d98",
+      "heading": "Rise in issue voting",
+      "excerpt": "In recent years, the United States has seen a rise in issue voting. This can be attributed to the increased polarization in the last century",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1360088831"
+    },
+    {
+      "id": "P8",
+      "hash": "fe0758e65a59c8fbdae4bc2d4dc28676664830954ee797cdc32ca0877b7bd37a",
+      "heading": "Complications regarding issue voting",
+      "excerpt": "Many factors can complicate issue voting. First, issues are not always dichotomous; there are often many stances one could take. Voters ofte",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1360088831"
+    },
+    {
+      "id": "P9",
+      "hash": "b3eea1be6db3a2f1a130f8fb316111928c8b4bd23254d8f331d4a14cb6879ab8",
+      "heading": "Models of issue voting",
+      "excerpt": "While scholars employ many models to study voting habits, there are three primary models used in statistical studies of issue voting: the li",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1360088831"
+    },
+    {
+      "id": "P10",
+      "hash": "e8395534f071a0ad2e53b328594044843cfca9729bb853d1fbc101a4400249f5",
+      "heading": "Causes",
+      "excerpt": "In order for a person to be an issue voter, they must be able to recognize that there is more than one opinion about a particular issue, hav",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1360088831"
+    },
+    {
+      "id": "P11",
+      "hash": "32a07dfe22d3a06bc3d7a5d5bee79a2f9e7ae1be4e64ed9d0dcaa016591956c4",
+      "heading": "History of issue voting",
+      "excerpt": "Some of the earliest research on issue voting done in 1960 found that voters often did not have enough information to link specific issues t",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1360088831"
+    },
+    {
+      "id": "P12",
+      "hash": "97cdd56eb6b7f951e4559c1feb979caa67c09abc7e415e949e023f595fa59ae8",
+      "heading": "Rise in issue voting",
+      "excerpt": "Catholics face the \"issue voting vs. party voting\" dilemma. Many Catholics support the pro-life stance which is backed by Republicans, but s",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1360088831"
+    },
+    {
+      "id": "P13",
+      "hash": "aa839e47b00dff964d6a843cef06a3aa52c40bc5684f40b0c88ded6744f26346",
+      "heading": "Rise in issue voting",
+      "excerpt": "Members of labor unions strongly identify with the Democratic Party's advocacy for workers' rights, but unions also tend to not support gay ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1360088831"
+    },
+    {
+      "id": "P14",
+      "hash": "f89f554f4f9a2c36d438b697674ea1faf1ebcb9512ba3e0967948efc146eb118",
+      "heading": "Rise in issue voting",
+      "excerpt": "In Europe, issue voting has been used to explain the growth in electoral support for radical right, radical left, and green parties.",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1360088831"
+    },
+    {
+      "id": "P15",
+      "hash": "e78d1de98a97b0d36dad56054fda08574a90c4cc4c8d7f0836da6cf34ba63bbf",
+      "heading": "Complications regarding issue voting",
+      "excerpt": "A second complexity is that, oftentimes, problems do not line up on linear bases. That is, some issues may make it hard to even determine th",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1360088831"
+    },
+    {
+      "id": "P16",
+      "hash": "a32d600dd8b83003797aa6a93aa4375a9f63f481facec902537a8fe89db0c9bd",
+      "heading": "Complications regarding issue voting",
+      "excerpt": "A third problem that can complicate issue voting is if there are multiple issues that are equally salient to the voter. A candidate may have",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1360088831"
+    },
+    {
+      "id": "P17",
+      "hash": "739a220ef49163a23da3817285026989a4fafa0a8f68644ccc4c44424a60b0f2",
+      "heading": "Complications regarding issue voting",
+      "excerpt": "A fourth problem is that voters may be unsophisticated and lack the knowledge necessary to vote based on issues. Political scientist Larry B",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1360088831"
+    },
+    {
+      "id": "P18",
+      "hash": "b395a83443fd46e9420b1d1cbe3b41d2c195a07e735815346a2d6752ace5ce05",
+      "heading": "Models of issue voting",
+      "excerpt": "where \"a\"=Party 1, and \"b\"=Party 2. The more important the issue becomes, the more a voter favors a particular candidate or party on the iss",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1360088831"
+    }
+  ],
+  "updatedAt": "2026-10-25T08:50:50.080Z"
 }
