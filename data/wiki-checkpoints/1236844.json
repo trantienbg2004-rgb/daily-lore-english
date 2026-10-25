@@ -2,10 +2,10 @@
   "pageId": 1236844,
   "title": "Early voting",
   "topic": "Politics",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1380943196,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380943196",
-  "reason": "7 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REJECTED",
@@ -323,7 +323,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1380943196"
     }
   ],
-  "updatedAt": "2026-10-25T07:09:45.447Z",
+  "updatedAt": "2026-10-25T07:10:03.107Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -424,7 +424,7 @@
             ]
           },
           {
-            "text": "Similarly, Canadian federal elections have observed a steady surge in advance polling participation, culminating in record-breaking turnout across designated advance-poll dates in recent election cycles.",
+            "text": "In Canada, elections are administered by Elections Canada. Early in-person voting is called advance polls, held on the 10th, 9th, 8th and 7th days before election day. About 4.9 million Canadians cast advance votes in the 2019 election, and almost 5.8 million cast ballots during the 2021 election, setting a record.",
             "evidenceIds": [
               "P17"
             ]
@@ -433,16 +433,11 @@
       }
     }
   },
-  "repairAttempts": 0,
+  "repairAttempts": 1,
   "lastUsage": {
-    "input": 2744,
-    "output": 830,
-    "total": 3574
+    "input": 2541,
+    "output": 151,
+    "total": 2692
   },
-  "validation": {
-    "accepted": false,
-    "errors": [
-      "C1-C2:page-5:length-or-sentence"
-    ]
-  }
+  "validation": null
 }
