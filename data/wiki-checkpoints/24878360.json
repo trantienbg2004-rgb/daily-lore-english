@@ -2,10 +2,10 @@
   "pageId": 24878360,
   "title": "German question",
   "topic": "Politics",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1362093523,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1362093523",
-  "reason": "5 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -255,5 +255,149 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1362093523"
     }
   ],
-  "updatedAt": "2026-10-25T07:39:13.234Z"
+  "updatedAt": "2026-10-25T07:39:30.773Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "The German Question and Unification",
+        "pages": [
+          {
+            "text": "In the nineteenth century, many lands were inhabited by German speakers. People debated how to unite these lands into one nation. This important discussion was known as the German question.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "For many years, there was no single country called Germany. Instead, dozens of independent states existed. Leaders wanted to bring these German people together into a single great nation.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "Two main ideas developed to solve this problem. The Greater German solution wanted to include all lands with German speakers. The Austrian Empire strongly supported this plan.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "The Lesser German solution wanted to unite only the northern states without Austria. The Kingdom of Prussia favored this plan because it would give them strong leadership.",
+            "evidenceIds": [
+              "P1",
+              "P12"
+            ]
+          },
+          {
+            "text": "Religion was also an important part of the debate. Catholic regions usually favored Austria, while Protestant northern states preferred Prussia and the House of Hohenzollern.",
+            "evidenceIds": [
+              "P10"
+            ]
+          },
+          {
+            "text": "In eighteen sixty-six, a war changed everything. Prussia defeated Austria, and the lesser German solution won. In eighteen seventy-one, a unified German Empire was finally proclaimed.",
+            "evidenceIds": [
+              "P7",
+              "P13"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "Debating German Unification in the 19th Century",
+        "pages": [
+          {
+            "text": "During the nineteenth century, particularly during the Revolutions of eighteen forty-eight, Europeans debated the German question. This political debate focused on how to achieve the unification of lands inhabited by German speakers.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Political geography showed no single Germany proper. Instead, independent kingdoms, grand duchies, and principalities were ruled by separate sovereigns, though a natural undercurrent pushed toward a national union under one common head.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "Two main proposals emerged from this nationalist movement. The Greater German solution favored unifying all German-speaking peoples under Austria, while the Lesser German solution sought to unite northern states under Prussia without Austria.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Religion heavily influenced these allegiances. Catholic regions supported Austria for a dominant Catholic state, whereas Protestant northern states preferred Prussian leadership under the Protestant House of Hohenzollern.",
+            "evidenceIds": [
+              "P10"
+            ]
+          },
+          {
+            "text": "Austria also included many non-German populations, such as Hungarians and Czechs, and was reluctant to abandon those territories. Meanwhile, the Frankfurt Parliament offered the crown to Prussia, but the king rejected it.",
+            "evidenceIds": [
+              "P10",
+              "P11",
+              "P12"
+            ]
+          },
+          {
+            "text": "The debate ended after Austria suffered a defeat in the eighteen sixty-six Austro-Prussian War. Otto von Bismarck subsequently united the remaining German states under Prussian leadership, successfully establishing the German Empire.",
+            "evidenceIds": [
+              "P7",
+              "P13"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "The Geopolitical Evolution of the German Question",
+        "pages": [
+          {
+            "text": "The nineteenth-century German question encapsulated the complex geopolitical debate regarding the unification of German-inhabited territories. Operating within a confederation of numerous independent states, nationalists sought to resolve the absence of a unified German nation-state.",
+            "evidenceIds": [
+              "P1",
+              "P3"
+            ]
+          },
+          {
+            "text": "Centuries of fragmented authority following the decline of the Holy Roman Empire fostered a lasting rivalry between the Austrian Habsburg monarchy and Brandenburg-Prussia, shaping the polarization of nineteenth-century German nationalism.",
+            "evidenceIds": [
+              "P4",
+              "P5"
+            ]
+          },
+          {
+            "text": "Proponents of the Großdeutsche Lösung advocated for a Greater Germany incorporating all German-speaking populations under Austrian auspices. Conversely, the Kleindeutsche Lösung promoted a Lesser Germany led exclusively by Prussia, omitting Austrian lands.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Conflicting religious demographics and ethnic diversity complicated these visions. Catholic factions favored Austrian dominance, while Protestant states preferred the Hohenzollern dynasty. Furthermore, Austria's inclusion of substantial non-German populations created significant political friction.",
+            "evidenceIds": [
+              "P10",
+              "P11"
+            ]
+          },
+          {
+            "text": "The Revolutions of eighteen forty-eight galvanized these debates through the Frankfurt Parliament, though initial unification attempts faltered when the Prussian monarch rejected the offered imperial crown.",
+            "evidenceIds": [
+              "P6",
+              "P12"
+            ]
+          },
+          {
+            "text": "The definitive resolution occurred following Austria's defeat in the eighteen sixty-six Austro-Prussian War. Chancellor Otto von Bismarck leveraged this military outcome to consolidate northern and southern states under Prussian hegemony, culminating in the establishment of the German Empire.",
+            "evidenceIds": [
+              "P7",
+              "P13"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2727,
+    "output": 1380,
+    "total": 4107
+  },
+  "validation": null
 }
