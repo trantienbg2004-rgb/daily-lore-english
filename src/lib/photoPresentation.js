@@ -21,7 +21,14 @@ export function photoLabel(page) {
   const usable = first && !GENERIC.test(first) && !/^https?:\/\//.test(first)
   const filename = decodedFileName(page.image)
   const candidate = (usable ? first.replace(/\.(jpe?g|png|webp|gif|svg)$/i, '') : filename) || 'Article photograph'
-  const description = candidate
+  const imageSource = candidate
+    .replace(/^(?:Illustrative image|Illustrative photo|Illustration):\s*/i, '')
+    .replace(/^from (?:the )?(?:documentary|film|video) [^.]+[.!?]\s*/iu, '')
+    .replace(/^(?:hypothetical\s+)?reconstruction of (?:the )?/iu, '')
+    .replace(/^(?:a photograph|a photo|photograph|photo|image) of\s+/iu, '')
+  const pictured = imageSource.match(/\b(?:pictured|shown|depicted)\s+(?:are|is|here are|here is)\s+(.+?)(?=[.!?](?:\s|$))/i)
+  const imageSentence = pictured?.[1] || imageSource.match(/^[^.!?]+[.!?]?/u)?.[0] || imageSource
+  const description = imageSentence
     .replace(/^(?:Illustrative image|Illustrative photo|Illustration):\s*/i, '')
     .replace(/^from (?:the )?(?:documentary|film|video) [^.]+[.!?]\s*/iu, '')
     .replace(/_/g, ' ')
@@ -31,13 +38,21 @@ export function photoLabel(page) {
     .replace(/\s*[-–]\s*(?:Creative Commons|panoramio).*$/i, '')
     .replace(/\s+(?:IMG|DSC|DSCN)\s*\d+\b.*$/i, '')
     .replace(/\s+\d{5,}\b.*$/u, '')
+    .replace(/^mechanism of Antikythera\b/iu, 'Antikythera mechanism')
     .replace(/\s*[-–]\s*\d{1,3}$/u, '')
     .replace(/\s+during the\s+([A-Za-z]+\s+(?:19|20)\d{2})\b/iu, ', $1')
     .replace(/\s+\[[a-z-]{2,12}\]$/iu, '')
     .replace(/\s+/g, ' ').trim()
-  const concise = description.replace(/^(?:a|an|the)\s+(?=[a-z])/iu, '')
+  const concise = description
+    .replace(/\s+(?:The|This|These|It)\s+[^.!?]*$/u, '')
+    .replace(/\s*\([^)]*\)/gu, '')
+    .replace(/^(?:a|an|the)\s+(?=[a-z])/iu, '')
+    .replace(/[.!?]+$/u, '')
   if (!concise) return 'Article photograph'
-  return concise[0].toUpperCase() + concise.slice(1)
+  const words = concise[0].toUpperCase() + concise.slice(1)
+  if (words.length <= 72) return words
+  const boundary = words.lastIndexOf(' ', 69)
+  return `${words.slice(0, boundary > 42 ? boundary : 69).trimEnd()}…`
 }
 
 export function photoSourceLink(page) {
