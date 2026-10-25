@@ -2,10 +2,10 @@
   "pageId": 26636309,
   "title": "Progressivism",
   "topic": "Society",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1379778823,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379778823",
-  "reason": "11 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -392,5 +392,140 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379778823"
     }
   ],
-  "updatedAt": "2026-10-25T07:12:58.444Z"
+  "updatedAt": "2026-10-25T07:13:14.808Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "What is Progressivism?",
+        "pages": [
+          {
+            "text": "Progressivism is a political idea. It tries to make human life better through reforms. These reforms aim to give people more positive liberty. The movement started during the Age of Enlightenment. People believed that society in Europe was improving because of new empirical knowledge and ideas.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "In history, thinkers talked about progress. Immanuel Kant said progress moves away from barbarism. Condorcet predicted that political progress would remove slavery, help literacy, and reduce poverty. Later, classical liberals wanted fast modernization of the economy. They wanted to remove traditional limits on free markets and trade.",
+            "evidenceIds": [
+              "P3",
+              "P4"
+            ]
+          },
+          {
+            "text": "In the late nineteenth century, many people felt progress was stopped by huge economic inequality. Unregulated capitalism and monopolies caused problems. There were also violent conflicts between workers and business owners. Progressivism grew to address these issues and protect human rights against corporate power.",
+            "evidenceIds": [
+              "P2",
+              "P5"
+            ]
+          },
+          {
+            "text": "Different countries have progressive traditions. In Norway, groups worked for women's rights and equality in education and voting. In recent decades, many progressive policies have focused on tax-funded social benefits and strong social safety nets to help working people and reduce poverty across society.",
+            "evidenceIds": [
+              "P7",
+              "P9"
+            ]
+          },
+          {
+            "text": "Today, progressive movements exist around the world. International groups like the Progressive Alliance bring together social democratic parties. Political leaders in various nations continue to debate economic reforms, social welfare programs, and ways to protect the environment while supporting democratic government and human rights.",
+            "evidenceIds": [
+              "P8",
+              "P10",
+              "P13"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "The History and Global Reach of Progressivism",
+        "pages": [
+          {
+            "text": "Progressivism is a political philosophy that seeks to improve the human condition through reforms aimed at increasing positive liberty. Originating during the Enlightenment, the movement grew from the belief that European civility was advancing through new empirical knowledge. Philosophers like Immanuel Kant and the Marquis de Condorcet envisioned progress as a transition from barbarism toward greater literacy, reduced poverty, and the end of slavery.",
+            "evidenceIds": [
+              "P1",
+              "P3"
+            ]
+          },
+          {
+            "text": "During the industrial era, progressivism took on new urgency. Observers argued that progress was being stifled by extreme economic inequality, unregulated laissez-faire capitalism, and powerful monopolies. To counter these challenges, progressives called for an active democratic government to protect human rights, regulate corporations, and serve as a check on economic power while addressing violent conflicts between workers and capitalists.",
+            "evidenceIds": [
+              "P2",
+              "P5"
+            ]
+          },
+          {
+            "text": "Across different regions, progressive movements adapted to local contexts. In Norway, early efforts focused heavily on women's rights, voting access, and gender equality, eventually building a comprehensive social safety net that combined a productive economy with extensive public benefits. In the United Kingdom, progressive politics ranged from the Fabian Society to New Labour, reflecting ongoing internal debates between center-left policies and market-oriented reforms.",
+            "evidenceIds": [
+              "P7",
+              "P9",
+              "P10"
+            ]
+          },
+          {
+            "text": "International organizing has also shaped the movement. In 2013, the Progressive Alliance was founded as an international network for social democratic and labour parties, replacing older organizations over disagreements regarding democratic standards. Meanwhile, Latin American leaders pursued distinct progressive policies, such as Kirchnerism in Argentina and the administration of Andrés Manuel López Obrador in Mexico, focusing on social spending and labor rights.",
+            "evidenceIds": [
+              "P8",
+              "P11",
+              "P13"
+            ]
+          },
+          {
+            "text": "Contemporary progressivism continues to evolve through diverse political landscapes. In Canada, the Liberal government under Justin Trudeau advanced progressive cultural and environmental policies, including carbon pricing and legal reforms, while facing criticism over fossil fuel projects. Across all eras and regions, progressivism remains anchored by its core critique of unregulated markets and its advocacy for democratic governance and social welfare.",
+            "evidenceIds": [
+              "P10",
+              "P14"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "Evolution and Ideological Scope of Progressivism",
+        "pages": [
+          {
+            "text": "Progressivism operates as a overarching political philosophy dedicated to enhancing the human condition via institutional reforms designed to expand positive liberty. Tracing its intellectual origins to the Enlightenment, the movement coalesced around the premise that human civility was progressing through empirical inquiry. Early theorists such as Kant conceptualized progress as a departure from barbarism, while Condorcet anticipated the institutional abolition of slavery, educational expansion, and prison reform.",
+            "evidenceIds": [
+              "P1",
+              "P3"
+            ]
+          },
+          {
+            "text": "By the late nineteenth and early twentieth centuries, industrialization catalyzed a distinct ideological shift. Proponents argued that unfettered laissez-faire capitalism, monopolistic consolidation, and stark economic inequality severely impeded societal advancement. Consequently, progressivism championed an assertive democratic state capable of regulating corporate power, mitigating labor strife, and safeguarding fundamental human rights against market excesses.",
+            "evidenceIds": [
+              "P2",
+              "P5"
+            ]
+          },
+          {
+            "text": "Globally, progressivism manifests through varied institutional frameworks and national traditions. The Nordic model exemplifies a long-term commitment to tax-funded social benefits and gender equality, roots extending back to nineteenth-century reform associations in Norway. Conversely, British progressivism has experienced perpetual tension between left-wing factions and centrist reform strategies, such as New Labour's Third Way market accommodations.",
+            "evidenceIds": [
+              "P7",
+              "P9",
+              "P10"
+            ]
+          },
+          {
+            "text": "Transnational cooperation underscores the movement's structural ambitions. The 2013 establishment of the Progressive Alliance reflected a deliberate pivot away from traditional socialist international bodies toward a democratic network committed to labour and social democratic principles. In Latin America, administrations such as Kirchnerism in Argentina and López Obrador's government in Mexico pursued redistributive social programs and anti-neoliberal reforms, albeit amid ongoing debates concerning governance and institutional integrity.",
+            "evidenceIds": [
+              "P8",
+              "P11",
+              "P13"
+            ]
+          },
+          {
+            "text": "Contemporary iterations integrate diverse priorities, ranging from environmentalism and carbon pricing to social liberalism. While Canadian leadership under Justin Trudeau pursued reconciliation, climate targets, and progressive cultural legislation, it simultaneously balanced resource extraction interests. Ultimately, progressivism endures as a flexible yet coherent critique of unregulated markets paired with an enduring demand for democratic oversight and egalitarian reform.",
+            "evidenceIds": [
+              "P10",
+              "P14"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2953,
+    "output": 1289,
+    "total": 4242
+  },
+  "validation": null
 }
