@@ -2,10 +2,10 @@
   "pageId": 1219810,
   "title": "Historic preservation",
   "topic": "Culture",
-  "status": "DRAFTED",
+  "status": "NEEDS_REVIEW",
   "revisionId": 1359881177,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1359881177",
-  "reason": "draft durably saved before validation",
+  "reason": "editorial: C1-C2:page-3:unsupported-number-context-1887",
   "rights": [
     {
       "status": "REVIEW",
@@ -348,7 +348,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1359881177"
     }
   ],
-  "updatedAt": "2026-10-25T07:15:16.567Z",
+  "updatedAt": "2026-10-25T07:15:22.575Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -488,5 +488,10 @@
     "output": 152,
     "total": 2754
   },
-  "validation": null
+  "validation": {
+    "accepted": false,
+    "errors": [
+      "C1-C2:page-3:unsupported-number-context-1887"
+    ]
+  }
 }
