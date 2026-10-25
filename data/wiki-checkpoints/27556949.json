@@ -619,14 +619,14 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379583141"
     }
   ],
-  "updatedAt": "2026-10-25T07:10:51.056Z",
+  "updatedAt": "2026-10-25T07:11:09.162Z",
   "draft": {
     "variants": {
       "A1-A2": {
         "headline": "The Portuguese India Fleets",
         "pages": [
           {
-            "text": "The Portuguese India armadas were fleets funded by the Crown of Portugal. They went from Portugal to India every year. Their main destination was Goa. These fleets made the India Run after Vasco da Gama found the sea route in 1497 and 1499.",
+            "text": "The Portuguese India armadas were fleets funded by the Crown of Portugal. They went from Portugal to India every year. Their main destination was Goa. These fleets made the India Run after Vasco da Gama found the sea route in 1497-99.",
             "evidenceIds": [
               "P1"
             ]
@@ -701,7 +701,7 @@
         "headline": "Mechanics of the Carreira da India",
         "pages": [
           {
-            "text": "Funded by the Portuguese Crown, the India armadas constituted annual fleets dispatched from Lisbon along the Carreira da India. This maritime network was established following Vasco da Gama pioneering the Cape Route to the Indian subcontinent between 1497 and 1499.",
+            "text": "Funded by the Portuguese Crown, the India armadas constituted annual fleets dispatched from Lisbon along the Carreira da India. This maritime network was established following Vasco da Gama pioneering the Cape Route to the Indian subcontinent between 1497-99.",
             "evidenceIds": [
               "P1",
               "P3"
@@ -738,11 +738,11 @@
       }
     }
   },
-  "repairAttempts": 0,
+  "repairAttempts": 1,
   "lastUsage": {
-    "input": 2977,
-    "output": 1348,
-    "total": 4325
+    "input": 2906,
+    "output": 228,
+    "total": 3134
   },
   "validation": null
 }
