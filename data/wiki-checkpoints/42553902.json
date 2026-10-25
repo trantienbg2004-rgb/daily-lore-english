@@ -2,9 +2,197 @@
   "pageId": 42553902,
   "title": "Mosquito-malaria theory",
   "topic": "Health",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1378174447,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378174447",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-25T08:54:08.691Z"
+  "reason": "3 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:Life Cycle of the Malaria Parasite.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9a/Life_Cycle_of_the_Malaria_Parasite.jpg/960px-Life_Cycle_of_the_Malaria_Parasite.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Life Cycle of the Malaria Parasite.jpg",
+        "caption": "Transmission of malaria parasites between mosquito and human.",
+        "alt": "",
+        "description": "Title: Life Cycle of the Malaria Parasite Description: Life Cycle of the Malaria Parasite See also http://www.niaid.nih.gov/topics/malaria/pages/lifecycle.aspx. Categories: Research in NIH Labs and Clinics Type: Color, Medical Illustration Source: National Institute of Allergy and Infectious Diseases (NIAID) Date Created: 2007 Date Added: 8/20/2013 Reuse Restrictions: None - This image is in the public domain and can be freely reused. Please credit the source and/or author listed above.",
+        "date": "2009-05-20 11:08:13",
+        "section": "",
+        "position": 0,
+        "provenance": {
+          "credit": "National Institutes of Health (NIH)",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Life_Cycle_of_the_Malaria_Parasite.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Mosquito-malaria_theory",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378174447",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:Laveran malaria drawings.png",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/70/Laveran_malaria_drawings.png/960px-Laveran_malaria_drawings.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Laveran malaria drawings.png",
+        "caption": "Laveran's drawing of pigmented parasites and the exflagellation of male gametocytes",
+        "alt": "",
+        "description": "Drawings of malaria parasites by the discoverer of plasmodia Charles Alphonse Laveran",
+        "date": "1880",
+        "section": "Disproof of miasma theory of malaria",
+        "position": 1,
+        "provenance": {
+          "credit": "Charles Alphonse Laveran",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Laveran_malaria_drawings.png",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Mosquito-malaria_theory",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378174447",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:Ross, 20.Aug.1897.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4e/Ross%2C_20.Aug.1897.jpg/960px-Ross%2C_20.Aug.1897.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Ross, 20.Aug.1897.jpg",
+        "caption": "The page in Ross' notebook where he recorded the \"pigmented bodies\" in mosquitoes that he later identified as malaria parasites",
+        "alt": "",
+        "description": "The page in Ross' notebook where he recorded the \"pigmented bodies\" in mosquitoes that he later identified as malaria parasites.",
+        "date": "1897-08-20",
+        "section": "Proof",
+        "position": 2,
+        "provenance": {
+          "credit": "Ronald Ross",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Ross,_20.Aug.1897.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Mosquito-malaria_theory",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378174447",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "f858c29b5b8b5d9de6df7bc8863c7c8b79a1816185f392127841bd2d02289245",
+      "heading": "Lead",
+      "excerpt": "The mosquito-malaria theory (or sometimes mosquito theory) was a scientific theory developed in the later half of the 19th century that solv",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378174447"
+    },
+    {
+      "id": "P2",
+      "hash": "20b3c73b858c4ba9fdaab0bf2ad366df73402547ffb34975c0b0d6036a10fb40",
+      "heading": "Lead",
+      "excerpt": "An important discovery was made by Patrick Manson in 1877 that mosquitos could transmit human filarial parasite. Inferring from such novel d",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378174447"
+    },
+    {
+      "id": "P3",
+      "hash": "87e908b91d3250a68ff26eac2b681930e460ab7eff9ac1442e1f83d0ed5ace78",
+      "heading": "Early concepts",
+      "excerpt": "Malaria was prevalent in the Roman Empire, and the Roman scholars associated the disease with the marshy or swampy lands where the disease w",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378174447"
+    },
+    {
+      "id": "P4",
+      "hash": "fafb7c72368271ee7156747c21bebd98d2f76787c3c54c9307ddd13650141d5a",
+      "heading": "Early concepts",
+      "excerpt": "The first record of argument against the miasmatic nature of malaria was from Irish-American surgeon John Crawford, who wrote an article \"Mo",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378174447"
+    },
+    {
+      "id": "P5",
+      "hash": "91fcee07597bd7b0d0243815a234284f3eabeca9850c0d5d2df6b6cc7d2df747",
+      "heading": "Disproof of miasma theory of malaria",
+      "excerpt": "The notion that malaria was due to miasma was negated by the discovery of malarial parasite. A German physician Johann Heinrich Meckel was t",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378174447"
+    },
+    {
+      "id": "P6",
+      "hash": "149cbf40c26f10c027a3f1773dad21bbddfbc6e6c33cf45b045c8a4483f93e86",
+      "heading": "Discovery of mosquito as disease vector",
+      "excerpt": "In the early 1880s, Laveran's germ theory of malaria was generally accepted by the science community. However pivotal problems still remaine",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378174447"
+    },
+    {
+      "id": "P7",
+      "hash": "52d10c7b782812aec45691403fc15cd8ccafab68269b95119ab8816f965f892e",
+      "heading": "King's theory",
+      "excerpt": "Based on the report of Manson's discovery, an American physician Albert Freeman Africanus King developed a proposition that malaria is trans",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378174447"
+    },
+    {
+      "id": "P8",
+      "hash": "3cfc022bc3f29af816b4a3d43f664c44d1b20d4b3d1f9640144318eb7c81e909",
+      "heading": "Manson's theory",
+      "excerpt": "In 1889 Patrick Manson returned to England and worked at the Seamen's Hospital Society and also as lecturer on tropical diseases in St Georg",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378174447"
+    },
+    {
+      "id": "P9",
+      "hash": "272a7feba4829d568350f46a575d2c301af3109c489f8f7dd6f83e6fac03c091",
+      "heading": "Proof",
+      "excerpt": "In 1894 Patrick Manson devised an ingenious procedure for detecting malarial parasites at different developmental stages from blood samples.",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378174447"
+    },
+    {
+      "id": "P10",
+      "hash": "f2fc52fa67b787b7a6b8847f6a64acb42e92e76cfc716ee035a69d64eb7e7f0b",
+      "heading": "Disproof of miasma theory of malaria",
+      "excerpt": "A major discovery was made by a French Army physician Charles Louis Alphonse Laveran working in Algeria, North Africa. At the hospital in Bô",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378174447"
+    },
+    {
+      "id": "P11",
+      "hash": "0ac5ca0533a6f5aeb392bbb99e9a25e36b4782ac674c7e76836e81db39c724d7",
+      "heading": "King's theory",
+      "excerpt": "I now propose to present a series of facts... with regard to the so-called “malarial poison,” and to show how they may be explicable by the ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378174447"
+    },
+    {
+      "id": "P12",
+      "hash": "48da03a0b6c34fbc1df424be4e1ce36ec9ac6172fb92948bbb1b1bcb78fa294d",
+      "heading": "King's theory",
+      "excerpt": "King carefully selected his view in 19 points. To paraphrase his lengthy arguments: occurrence of malaria always coincided with conditions t",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378174447"
+    },
+    {
+      "id": "P13",
+      "hash": "660fbe3df0b94ccb4a2d9676e69327eb1f8f287668f8fe5dced0f5aa4429afd7",
+      "heading": "Manson's theory",
+      "excerpt": "Manson was unfortunate that he could not investigate his theory as he was not in malaria endemic country such as India, where it could be ex",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378174447"
+    },
+    {
+      "id": "P14",
+      "hash": "6072c23092efbd8e299bc0be382bcb162dae9dea96bf6edb622b1d5c3060b77a",
+      "heading": "Manson's theory",
+      "excerpt": "Manson formally published his theory in the 8 December 1894 issue of the British Medical Journal. Under the title \"On the Nature and Signifi",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378174447"
+    },
+    {
+      "id": "P15",
+      "hash": "2f86437843177f2308a204d2bf8dde8645a078bef07b6c27e68454f7c9a514f5",
+      "heading": "Manson's theory",
+      "excerpt": "[The] mosquito, having been shown to be the agent by which the filaria is removed from the human blood vessels, this or similar suctorial ag",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378174447"
+    },
+    {
+      "id": "P16",
+      "hash": "4bfed46712caa3b8a23e5d2e11a6afeae9b6f75e9f868dbde4505e6d49285bac",
+      "heading": "Proof",
+      "excerpt": "After one and half years he made no significant progress. On 20 August 1897 he made a momentous discovery that some mosquitoes had malarial ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378174447"
+    }
+  ],
+  "updatedAt": "2026-10-25T08:54:14.244Z"
 }
