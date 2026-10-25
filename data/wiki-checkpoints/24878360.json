@@ -255,7 +255,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1362093523"
     }
   ],
-  "updatedAt": "2026-10-25T07:39:30.773Z",
+  "updatedAt": "2026-10-25T07:39:48.711Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -274,26 +274,25 @@
             ]
           },
           {
-            "text": "Two main ideas developed to solve this problem. The Greater German solution wanted to include all lands with German speakers. The Austrian Empire strongly supported this plan.",
+            "text": "The German question was a major debate in the nineteenth century. People wanted to find the best way to unite lands with German speakers. From eighteen fifteen to eighteen sixty-six, about thirty-seven independent German-speaking states existed within the German Confederation.",
             "evidenceIds": [
               "P1"
             ]
           },
           {
-            "text": "The Lesser German solution wanted to unite only the northern states without Austria. The Kingdom of Prussia favored this plan because it would give them strong leadership.",
+            "text": "Two main ideas developed to solve this problem. The Greater German solution wanted to include all lands with German speakers. The Austrian Empire strongly supported this plan. The Lesser German solution wanted to unite only the northern states without Austria.",
             "evidenceIds": [
-              "P1",
-              "P12"
+              "P1"
             ]
           },
           {
-            "text": "Religion was also an important part of the debate. Catholic regions usually favored Austria, while Protestant northern states preferred Prussia and the House of Hohenzollern.",
+            "text": "Religion was also an important part of the debate. Catholic regions usually favored Austria, while Protestant northern states preferred Prussia and the House of Hohenzollern. Another complication was that the Austrian Empire included many non-German populations.",
             "evidenceIds": [
               "P10"
             ]
           },
           {
-            "text": "In eighteen sixty-six, a war changed everything. Prussia defeated Austria, and the lesser German solution won. In eighteen seventy-one, a unified German Empire was finally proclaimed.",
+            "text": "In eighteen sixty-six, a war changed everything. Prussia defeated Austria, and the lesser German solution won. In eighteen seventy-one, a unified German Empire was finally proclaimed under Prussian leadership, while Austria remained a separate polity.",
             "evidenceIds": [
               "P7",
               "P13"
@@ -323,7 +322,7 @@
             ]
           },
           {
-            "text": "Religion heavily influenced these allegiances. Catholic regions supported Austria for a dominant Catholic state, whereas Protestant northern states preferred Prussian leadership under the Protestant House of Hohenzollern.",
+            "text": "Religion heavily influenced these allegiances during the debate. The Greater German solution implied a dominant position for Catholic Austria, so Catholics and southern states favored it. Conversely, a unification led by Prussia meant domination by the Protestant House of Hohenzollern, which appealed to northern states.",
             "evidenceIds": [
               "P10"
             ]
@@ -376,7 +375,7 @@
             ]
           },
           {
-            "text": "The Revolutions of eighteen forty-eight galvanized these debates through the Frankfurt Parliament, though initial unification attempts faltered when the Prussian monarch rejected the offered imperial crown.",
+            "text": "The Revolutions of eighteen forty-eight galvanized these debates as German liberals and nationalists formed the Frankfurt Parliament. The Greater German movement demanded the unification of all German-populated lands. However, initial unification attempts faltered when the Frankfurt parliament offered the German Imperial crown to King Frederick William IV of Prussia, who rejected it.",
             "evidenceIds": [
               "P6",
               "P12"
@@ -393,11 +392,11 @@
       }
     }
   },
-  "repairAttempts": 0,
+  "repairAttempts": 1,
   "lastUsage": {
-    "input": 2727,
-    "output": 1380,
-    "total": 4107
+    "input": 2876,
+    "output": 583,
+    "total": 3459
   },
   "validation": null
 }
