@@ -12378,10 +12378,10 @@
       "checkedAt": "2026-10-21T03:08:38.823Z"
     },
     "80058684": {
-      "status": "FETCHED",
-      "reason": "pinned-source-ready",
+      "status": "NEEDS_REVIEW",
+      "reason": "no-rights-verified-embedded-image",
       "revisionId": 1371790387,
-      "checkedAt": "2026-10-25T08:53:56.398Z"
+      "checkedAt": "2026-10-25T08:54:02.191Z"
     },
     "80275802": {
       "status": "EVIDENCE_READY",
@@ -12618,7 +12618,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-25T08:53:56.399Z",
+  "updatedAt": "2026-10-25T08:54:02.191Z",
   "dailyUsage": {
     "day": "2026-10-25",
     "calls": 60,
