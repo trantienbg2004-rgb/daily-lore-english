@@ -8070,10 +8070,10 @@
       "checkedAt": "2026-10-23T12:52:18.027Z"
     },
     "79771": {
-      "status": "PENDING",
-      "reason": "queued",
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
       "revisionId": 1377181832,
-      "checkedAt": null
+      "checkedAt": "2026-10-25T08:51:32.257Z"
     },
     "81553": {
       "status": "PUBLISHED",
@@ -12618,7 +12618,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-25T08:51:26.096Z",
+  "updatedAt": "2026-10-25T08:51:32.258Z",
   "dailyUsage": {
     "day": "2026-10-25",
     "calls": 60,
