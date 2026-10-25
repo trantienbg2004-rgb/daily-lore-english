@@ -296,7 +296,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1365091067"
     }
   ],
-  "updatedAt": "2026-10-25T07:37:36.744Z",
+  "updatedAt": "2026-10-25T07:37:54.524Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -331,7 +331,7 @@
             ]
           },
           {
-            "text": "Good preparation is important. Countries need surveillance systems to track diseases, emergency workers to help out, and early safety rules like staying at home to protect people.",
+            "text": "Good preparation is important. Countries need disease surveillance systems, emergency workers to help, and ways to protect health workers. Mitigation efforts like social distancing, contact tracing, and stay-at-home orders are also needed.",
             "evidenceIds": [
               "P16",
               "P21"
@@ -393,7 +393,7 @@
             ]
           },
           {
-            "text": "Etiological drivers include alterations in host population ecology, pathogen genetic variations, or novel pathogen introductions. Antigenic evolution occurs via gradual drift through mutational accumulation or abrupt shift through genetic reassortment, exemplified significantly by influenza viruses and observed in SARS-CoV-2.",
+            "text": "Epidemics of infectious disease are generally caused by factors including a change in the ecology of the host population, a genetic change in the pathogen reservoir, or the introduction of an emerging pathogen. Antigenic evolution occurs via gradual drift through mutational accumulation or abrupt shift through genetic reassortment, exemplified significantly by influenza viruses and observed in SARS-CoV-2.",
             "evidenceIds": [
               "P2",
               "P7"
@@ -428,11 +428,11 @@
       }
     }
   },
-  "repairAttempts": 0,
+  "repairAttempts": 1,
   "lastUsage": {
-    "input": 2579,
-    "output": 935,
-    "total": 3514
+    "input": 2484,
+    "output": 167,
+    "total": 2651
   },
   "validation": null
 }
