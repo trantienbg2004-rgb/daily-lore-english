@@ -2,10 +2,10 @@
   "pageId": 325752,
   "title": "Hadhramaut",
   "topic": "History & Geography",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1378336413,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378336413",
-  "reason": "12 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -424,5 +424,151 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378336413"
     }
   ],
-  "updatedAt": "2026-10-25T07:38:25.687Z"
+  "updatedAt": "2026-10-25T07:38:42.606Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "The Story of Hadhramaut",
+        "pages": [
+          {
+            "text": "Hadhramaut is a large region in the southern part of the Arabian Peninsula. Its lands stretch from a big desert in the north down to the sea. The people who live there are known as the Hadharem. They speak their own dialect of Arabic today.",
+            "evidenceIds": [
+              "P1",
+              "P3"
+            ]
+          },
+          {
+            "text": "People have different ideas about where the name Hadhramaut comes from. One popular story says it means death has come. Another idea connects it to an old biblical name. Long ago, people in the area made things from stone and lived in caves.",
+            "evidenceIds": [
+              "P2",
+              "P4",
+              "P6"
+            ]
+          },
+          {
+            "text": "In ancient times, a kingdom was built here with its capital at Shabwa. The early wealth of this region came from the trade of valuable incense. Caravans traveled along desert routes, and rulers taxed them for protection along the way.",
+            "evidenceIds": [
+              "P7",
+              "P8"
+            ]
+          },
+          {
+            "text": "Islam reached the region in the seventh century after a messenger was sent by the prophet Muhammad. Later, different groups and sultanates controlled the land. In the sixteenth century, the Portuguese arrived on the coast but were driven out.",
+            "evidenceIds": [
+              "P9",
+              "P10",
+              "P11"
+            ]
+          },
+          {
+            "text": "Today, the region includes major cities like Mukalla and Tarim. People farm dates and grains in the green river valleys. Fishing along the long coast also provides food and jobs for many local families living near the sea.",
+            "evidenceIds": [
+              "P14",
+              "P15",
+              "P18"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "Exploring the History and Geography of Hadhramaut",
+        "pages": [
+          {
+            "text": "Hadhramaut is a geographic region in the southern part of the Arabian Peninsula, encompassing parts of modern Yemen, Oman, and Saudi Arabia. Its physical landscape divides clearly into Inner Hadhramaut around the main wadi, a coastal plain, and a high plateau sloping northward into the desert.",
+            "evidenceIds": [
+              "P1",
+              "P3",
+              "P15"
+            ]
+          },
+          {
+            "text": "The exact origins of the name remain disputed, with several debated hypotheses. Traditional folk explanations connect the word to a legendary settler whose nickname meant death has come, while other traditions link the name to ancient biblical references and early prophets of the region.",
+            "evidenceIds": [
+              "P2",
+              "P4",
+              "P5"
+            ]
+          },
+          {
+            "text": "Human activity in the area dates back to the Middle Palaeolithic, followed by prehistoric megalithic structures and stone circles. By the early first millennium BCE, the organized Kingdom of Hadhramaut emerged, gaining independence and growing prosperous through its vital role in the ancient incense trade.",
+            "evidenceIds": [
+              "P6",
+              "P7",
+              "P8"
+            ]
+          },
+          {
+            "text": "Islam arrived in the region around 630 following a message from the prophet Muhammad, though local tribes initially resisted. Over the following centuries, various sultanates and foreign powers, including Portuguese traders and Ottoman administrators, exerted control over different parts of the territory.",
+            "evidenceIds": [
+              "P9",
+              "P10",
+              "P11"
+            ]
+          },
+          {
+            "text": "By the twentieth century, returning emigrants funded modernization projects like motor roads, though these plans faced resistance from local camel owners. Following periods of political transition and communist rule, Hadhramaut is now known for port cities like Mukalla, traditional farming, and coastal fishing.",
+            "evidenceIds": [
+              "P12",
+              "P13",
+              "P14",
+              "P18"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "The Historical Evolution of Hadhramaut",
+        "pages": [
+          {
+            "text": "Hadhramaut constitutes a distinct geographic expanse within the southern Arabian Peninsula, traditionally incorporating territories across modern Yemen, Oman, and Saudi Arabia. Topographically, the region transitions from the hyper-arid expanse of the Empty Quarter through the fertile Wadi Hadhramaut down to a narrow coastal plain bounded by a steep escarpment.",
+            "evidenceIds": [
+              "P1",
+              "P3",
+              "P15"
+            ]
+          },
+          {
+            "text": "Etymological derivations for the toponym remain contested, with multiple competing hypotheses persisting. Popular folk etymologies attribute the name to a legendary progenitor signifying death has come, whereas alternative scholarly and traditional perspectives align the terminology with ancient Semitic roots and biblical nomenclature.",
+            "evidenceIds": [
+              "P2",
+              "P4",
+              "P5"
+            ]
+          },
+          {
+            "text": "Archaeological evidence indicates human habitation extending from the Middle Palaeolithic, succeeded by megalithic monuments. By the early first millennium BCE, the centralized Kingdom of Hadhramaut consolidated power, capitalizing strategically on the lucrative overland incense trade routes until maritime route shifts redirected economic dynamics.",
+            "evidenceIds": [
+              "P6",
+              "P7",
+              "P8"
+            ]
+          },
+          {
+            "text": "Islamic integration commenced circa 630 CE through emissaries dispatched by Muhammad, encountering substantial resistance from indigenous populations and traditional aristocracies. Subsequent centuries witnessed fluctuating governance under regional sultanates, alongside temporary incursions by Portuguese naval forces and long-term Ottoman administrative influence.",
+            "evidenceIds": [
+              "P9",
+              "P10",
+              "P11"
+            ]
+          },
+          {
+            "text": "Twentieth-century modernization efforts, financed largely by affluent expatriate families, frequently engendered socioeconomic friction with traditional transport guilds. Following complex mid-century political realignments and integration into the People's Democratic Republic of Yemen, the region currently sustains its economy through localized agriculture, maritime fisheries, and urban trade centers like Mukalla.",
+            "evidenceIds": [
+              "P12",
+              "P13",
+              "P14",
+              "P18"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 3132,
+    "output": 1119,
+    "total": 4251
+  },
+  "validation": null
 }
