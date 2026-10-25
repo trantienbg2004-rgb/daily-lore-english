@@ -2,10 +2,10 @@
   "pageId": 54253,
   "title": "Silk Road",
   "topic": "Economy",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1379074984,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379074984",
-  "reason": "16 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -544,5 +544,126 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379074984"
     }
   ],
-  "updatedAt": "2026-10-25T07:40:20.221Z"
+  "updatedAt": "2026-10-25T07:40:36.587Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "The Silk Road Trade Network",
+        "pages": [
+          {
+            "text": "The Silk Road was not a single path. It was a big network of trade routes connecting Asia, Africa, and Europe. People used these routes for a very long time, from the second century BCE until the mid-fifteenth century.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "The name came from the trade in silk, which was made in China. The Han dynasty helped start this network when they moved into Central Asia. China built parts of the Great Wall to keep the trade routes safe.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "Many things traveled along these roads. China sent silk, tea, and porcelain. The West sent horses, gold, and camels. People also shared religious and scientific ideas as they traveled from place to place along the paths.",
+            "evidenceIds": [
+              "P2",
+              "P3"
+            ]
+          },
+          {
+            "text": "Traveling was hard and dangerous because there were bandits and very difficult land. Most people did not travel the whole way. Instead, local middlemen helped move goods from one stopping point to the next.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "Later, the Ottoman Empire competed for control over these land routes. This made European countries look for new ways to trade, which started the Age of Discovery and changed world history.",
+            "evidenceIds": [
+              "P4"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "History of the Silk Road",
+        "pages": [
+          {
+            "text": "The Silk Road was an extensive network of trade routes active from the second century BCE until the mid-15th century. Spanning thousands of kilometers on land and sea, it connected the Eastern and Western worlds, facilitating economic, cultural, and religious interactions between diverse civilizations.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "The name derives from the lucrative trade of silk textiles produced primarily in China. The network expanded when the Han dynasty moved into Central Asia. To protect these valuable trade products, the Chinese extended the Great Wall and relied on partners like the Parthian Empire as a bridge to the Mediterranean.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "By the first century CE, Chinese silk was highly sought after in Rome, Egypt, and Greece. Other major Eastern exports included tea, dyes, perfumes, and porcelain, while Western traders provided horses, camels, honey, wine, and gold, generating substantial wealth for mercantile classes.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "The network was highly decentralized and lacked heavy security, exposing travelers to constant threats of banditry, nomadic raiders, and harsh terrain. Few individuals traversed the entire length, choosing instead to rely on a succession of middlemen at various stopping points.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "Beyond commercial goods, the routes enabled an unprecedented exchange of religious, philosophical, and scientific thought, alongside the spread of diseases. In the 15th century, Ottoman competition over the routes encouraged European nations to seek alternative paths, leading to the Age of Discovery.",
+            "evidenceIds": [
+              "P3",
+              "P4"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "The Transcontinental Silk Road Network",
+        "pages": [
+          {
+            "text": "The Silk Road comprised an intricate transcontinental web of land and sea routes operating from the second century BCE through the mid-15th century. Rather than a singular east-west corridor, it connected Central, East, South, Southeast, and West Asia, alongside East Africa and Southern Europe, fundamentally shaping interregional relations.",
+            "evidenceIds": [
+              "P1",
+              "P5"
+            ]
+          },
+          {
+            "text": "Etymologically linked to the lucrative commerce in Chinese silk textiles, the network formalized with the Han dynasty's 2nd-century BCE expansion into Central Asia under Emperor Wu and envoy Zhang Qian. Strategic security measures, including extensions of the Great Wall and diplomatic bridges provided by the Parthian Empire, integrated the system toward the Mediterranean.",
+            "evidenceIds": [
+              "P2",
+              "P13"
+            ]
+          },
+          {
+            "text": "By the first century CE, demand for Chinese silk flourished across Rome, Greece, and Egypt. Alongside commodities like tea, porcelain, and spices, Western exports such as gold, horses, and camels traversed the system, empowering emerging mercantile classes and disseminating transformative technologies like paper and gunpowder.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "Characterized by decentralization and sparse security, the routes exposed travelers to severe terrain, banditry, and nomadic raiders. Consequently, traversal of the entire network was rare; merchants instead relied on decentralized networks of middlemen stationed at successive regional hubs along the way.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "Crucially, the infrastructure functioned as a conduit for intellectual, scientific, and religious transmission—particularly Buddhism—while inadvertently facilitating epidemiological vectors such as plague. The subsequent rise of the Ottoman Empire disrupted overland transit, compelling European polities to pioneer maritime alternatives during the Age of Discovery.",
+            "evidenceIds": [
+              "P3",
+              "P4"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2785,
+    "output": 982,
+    "total": 3767
+  },
+  "validation": null
 }
