@@ -8384,10 +8384,10 @@
       "checkedAt": "2026-10-22T08:51:11.810Z"
     },
     "1236844": {
-      "status": "VALIDATED",
-      "reason": "local factual, style, length, structure and source audit passed",
+      "status": "PUBLISHED",
+      "reason": "4 verified embedded images",
       "revisionId": 1380943196,
-      "checkedAt": "2026-10-25T07:10:20.986Z"
+      "checkedAt": "2026-10-25T07:10:27.157Z"
     },
     "1244718": {
       "status": "REJECTED",
@@ -11930,7 +11930,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-25T07:10:20.988Z",
+  "updatedAt": "2026-10-25T07:10:27.158Z",
   "dailyUsage": {
     "day": "2026-10-25",
     "calls": 4,
