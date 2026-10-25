@@ -9192,10 +9192,10 @@
       "checkedAt": "2026-10-24T05:39:58.096Z"
     },
     "2330074": {
-      "status": "FETCHED",
-      "reason": "pinned-source-ready",
+      "status": "REJECTED",
+      "reason": "insufficient-source-text-or-embedded-images",
       "revisionId": 1379603110,
-      "checkedAt": "2026-10-25T08:53:26.392Z"
+      "checkedAt": "2026-10-25T08:53:32.130Z"
     },
     "2344907": {
       "status": "EVIDENCE_READY",
@@ -12618,7 +12618,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-25T08:53:26.393Z",
+  "updatedAt": "2026-10-25T08:53:32.131Z",
   "dailyUsage": {
     "day": "2026-10-25",
     "calls": 60,
