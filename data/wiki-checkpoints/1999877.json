@@ -2,10 +2,10 @@
   "pageId": 1999877,
   "title": "Co-option",
   "topic": "Politics",
-  "status": "EVIDENCE_READY",
+  "status": "RETRY_LATER",
   "revisionId": 1379435458,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379435458",
-  "reason": "1 rights-verified embedded images",
+  "reason": "Gemini token usage unavailable",
   "rights": [
     {
       "status": "REVIEW",
@@ -125,5 +125,5 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379435458"
     }
   ],
-  "updatedAt": "2026-10-25T08:52:32.214Z"
+  "updatedAt": "2026-10-25T08:52:38.214Z"
 }
