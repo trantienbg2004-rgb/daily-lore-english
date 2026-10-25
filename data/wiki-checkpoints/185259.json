@@ -2,9 +2,194 @@
   "pageId": 185259,
   "title": "Germ theory of disease",
   "topic": "Health",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1363463071,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1363463071",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-25T08:53:38.600Z"
+  "reason": "1 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Cholera bacteria SEM.jpg"
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Cholera art.jpg"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:Experiment Pasteur English.jpg",
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/2/27/Experiment_Pasteur_English.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "fileTitle": "File:Experiment Pasteur English.jpg",
+        "caption": "Louis Pasteur's spontaneous generation experiment illustrates that liquid nutrients are spoiled by particles in the air rather than the air itself. These results of these experiments supported the germ theory of disease.",
+        "alt": "",
+        "description": "Illustration of swan-necked flask experiment used by Louis Pasteur to test the hypothesis of spontaneous generation.",
+        "date": "2010-02-25",
+        "section": "Louis Pasteur, France",
+        "position": 2,
+        "provenance": {
+          "credit": "Carmel830",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Experiment_Pasteur_English.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Germ_theory_of_disease",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1363463071",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "5fd65904c0170a5f8251d15a1a2d5feb183b443135680dcc0b957e1e3136a70b",
+      "heading": "Lead",
+      "excerpt": "The germ theory of disease is the currently accepted scientific theory explaining the cause of infectious diseases. It states that microorga",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1363463071"
+    },
+    {
+      "id": "P2",
+      "hash": "51eab1f115966e2a54d2ca6850bbfba16be6d2a03d7ec564105fdaa830fb40cb",
+      "heading": "Lead",
+      "excerpt": "Basic forms of germ theory were proposed by Girolamo Fracastoro in 1546, and expanded upon by Marcus von Plenciz in 1762. However, such view",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1363463071"
+    },
+    {
+      "id": "P3",
+      "hash": "afe36244b6332519309f7865a494530c208ff423fcbd2aa15ab7e72fceb92f86",
+      "heading": "Lead",
+      "excerpt": "By the early 19th century, the first vaccine, smallpox vaccination, was commonplace in Europe, though doctors were unaware of how it worked ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1363463071"
+    },
+    {
+      "id": "P4",
+      "hash": "e27b8fded56f9db0ac27d1ada718b920bb0c0754d5f6c9b187ac41f7ccb40eaa",
+      "heading": "Miasma theory",
+      "excerpt": "The miasma theory was the predominant theory of disease transmission before the germ theory took hold towards the end of the 19th century; i",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1363463071"
+    },
+    {
+      "id": "P5",
+      "hash": "f857ee09d2dadc80f1cbe7ea20305fa887e06f6773b3d119f843d585a1c8dee5",
+      "heading": "Greece and Rome",
+      "excerpt": "In Antiquity, the Greek historian Thucydides (c. 460 – c. 400 BC) was the first known person to write, in his account of the plague of Athen",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1363463071"
+    },
+    {
+      "id": "P6",
+      "hash": "0dc1a586ac7b9668e48e9cbf5e63f6fb990968b3a9fa28828e4df0fff9fad426",
+      "heading": "The Middle Ages",
+      "excerpt": "A hybrid form of miasma and contagion theory was proposed by Persian physician Ibn Sina (known as Avicenna in Europe) in The Canon of Medici",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1363463071"
+    },
+    {
+      "id": "P7",
+      "hash": "7e45624d6fe33196f478f55cb1dcb62c095f5cace775fe10a288393169c156e9",
+      "heading": "The Early Modern Period",
+      "excerpt": "In 1668, Italian physician Francesco Redi published experimental evidence rejecting spontaneous generation, the theory that living creatures",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1363463071"
+    },
+    {
+      "id": "P8",
+      "hash": "b84bac63ca863df695eeaede1d837bb5d19450ef9e1cbe92c9de913e50d0703e",
+      "heading": "Agostino Bassi, Italy",
+      "excerpt": "During the early 19th century, driven by economic concerns over collapsing silk production, Italian entomologist Agostino Bassi researched a",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1363463071"
+    },
+    {
+      "id": "P9",
+      "hash": "ddebb528c09b214ec090746fe515478b241385c9c25b859f8f9974a037d274cf",
+      "heading": "Louis-Daniel Beauperthuy, France",
+      "excerpt": "In 1838 French specialist in tropical medicine Louis-Daniel Beauperthuy pioneered using microscopy in relation to diseases and independently",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1363463071"
+    },
+    {
+      "id": "P10",
+      "hash": "c4a617e907e638454498ed0b0e03b6e82da57eeb7481fcc91cd03b428819c8d3",
+      "heading": "Ignaz Semmelweis, Austria",
+      "excerpt": "Ignaz Semmelweis, a Hungarian obstetrician working at the Vienna General Hospital (Allgemeines Krankenhaus) in 1847, noticed the dramaticall",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1363463071"
+    },
+    {
+      "id": "P11",
+      "hash": "8cdc07fe05ff117049338f6931039cd5965e3965e1550c53b8ab6fa2fead0b48",
+      "heading": "Gideon Mantell, UK",
+      "excerpt": "Gideon Mantell, the Sussex doctor more famous for discovering dinosaur fossils, spent time with his microscope, and speculated in his Though",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1363463071"
+    },
+    {
+      "id": "P12",
+      "hash": "6f6eaed47f350076820dbfe535de6a2a46ce42c54176df94305e7d3cfca6e063",
+      "heading": "John Snow, UK",
+      "excerpt": "British physician John Snow is credited as a founder of modern epidemiology for studying the 1854 Broad Street cholera outbreak. Snow critic",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1363463071"
+    },
+    {
+      "id": "P13",
+      "hash": "a557970195d99be1f2a78df9d2ccd7dd7d626a31404cbf025e9be30ee91064f9",
+      "heading": "Louis Pasteur, France",
+      "excerpt": "During the mid-19th century, French microbiologist Louis Pasteur showed that treating the female genital tract with boric acid killed the mi",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1363463071"
+    },
+    {
+      "id": "P14",
+      "hash": "27ef74fda693e1ebf3eae7e1448681537eadfc2d9522ac1a228b30906c02a895",
+      "heading": "Robert Koch, Germany",
+      "excerpt": "In 1884, German bacteriologist Robert Koch published four criteria for establishing causality between specific microorganisms and diseases, ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1363463071"
+    },
+    {
+      "id": "P15",
+      "hash": "1ea068a56f7a3d1b7c0caba3112f6bce9c04f9da447a03f5ee4884a50e25c059",
+      "heading": "Joseph Lister, UK",
+      "excerpt": "After reading Pasteur's papers on bacterial fermentation, British surgeon Joseph Lister recognized that compound fractures, involving bones ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1363463071"
+    },
+    {
+      "id": "P16",
+      "hash": "fd9136b71cf7f311fd4939086376270eadcd93298249dd326630df7acfeb92f3",
+      "heading": "Greece and Rome",
+      "excerpt": "One theory of the spread of contagious diseases that were not spread by direct contact was that they were spread by spore-like \"seeds\" (Lati",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1363463071"
+    },
+    {
+      "id": "P17",
+      "hash": "3042b7af490b9271db9db5c0006f023062dcc27d05c95d8ba6072563aa2165f0",
+      "heading": "Greece and Rome",
+      "excerpt": "The Roman statesman Marcus Terentius Varro (116–27 BC) wrote, in his Rerum rusticarum libri III (Three Books on Agriculture, 36 BC): \"Precau",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1363463071"
+    },
+    {
+      "id": "P18",
+      "hash": "94c16cf6ad86bb100cfd66fcbbb774f6b53a5c7e57643020f31e6589770f9c7a",
+      "heading": "Greece and Rome",
+      "excerpt": "The Greek physician Galen (AD 129 – c. 200/216) speculated in his On Initial Causes (c. 175 AD) that some patients might have \"seeds of feve",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1363463071"
+    },
+    {
+      "id": "P19",
+      "hash": "f29dadcbe43d3557198ae8dc3ad24c97efc5539df3b3f72fdddf41ac00933508",
+      "heading": "The Middle Ages",
+      "excerpt": "During the early Middle Ages, Isidore of Seville (c. 560–636) mentioned \"plague-bearing seeds\" (pestifera semina) in his On the Nature of Th",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1363463071"
+    },
+    {
+      "id": "P20",
+      "hash": "ff7351ed30150456117e48e5baf9341384bcb66f7017a29b203ea9d0cb9f728a",
+      "heading": "The Middle Ages",
+      "excerpt": "The 16th century Reformer Martin Luther appears to have had some idea of the contagion theory, commenting, \"I have survived three plagues an",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1363463071"
+    },
+    {
+      "id": "P21",
+      "hash": "94c0b9cfb673a71424b11eb23ccdfe40858a6d586fbea1219362fc276294cbf6",
+      "heading": "The Early Modern Period",
+      "excerpt": "Microorganisms are said to have been first directly observed in the 1670s by Anton van Leeuwenhoek, an early pioneer in microbiology, consid",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1363463071"
+    }
+  ],
+  "updatedAt": "2026-10-25T08:53:44.141Z"
 }
