@@ -2,9 +2,79 @@
   "pageId": 35958818,
   "title": "History of hypertension",
   "topic": "Health",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1328010969,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1328010969",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-25T08:54:38.448Z"
+  "reason": "1 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:One of general treatment rooms in clinic. U.S. Coal & Coke Company, U.S. ^30 & 31 Mines, Lynch, Harlan County, Kentucky. - NARA - 541410.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e0/One_of_general_treatment_rooms_in_clinic._U.S._Coal_%26_Coke_Company%2C_U.S._%5E30_%26_31_Mines%2C_Lynch%2C_Harlan_County%2C_Kentucky._-_NARA_-_541410.jpg/960px-One_of_general_treatment_rooms_in_clinic._U.S._Coal_%26_Coke_Company%2C_U.S._%5E30_%26_31_Mines%2C_Lynch%2C_Harlan_County%2C_Kentucky._-_NARA_-_541410.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:One of general treatment rooms in clinic. U.S. Coal & Coke Company, U.S. ^30 & 31 Mines, Lynch, Harlan County, Kentucky. - NARA - 541410.jpg",
+        "caption": "Lynch, Kentucky, 1946. Photo by Russell Lee.",
+        "alt": "",
+        "description": "",
+        "date": "19 September 1946date QS:P571,+1946-09-19T00:00:00Z/11date QS:P571,+1946-09-19T00:00:00Z/11",
+        "section": "",
+        "position": 0,
+        "provenance": {
+          "credit": "Russell Lee",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:One_of_general_treatment_rooms_in_clinic._U.S._Coal_%26_Coke_Company,_U.S._%5E30_%26_31_Mines,_Lynch,_Harlan_County,_Kentucky._-_NARA_-_541410.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/History_of_hypertension",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1328010969",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "60d8ee757bdae197b15e448589dc77524fc6a6afb5ec07f03a8539c7ca0d95ad",
+      "heading": "Lead",
+      "excerpt": "The modern history of hypertension begins with the understanding of the cardiovascular system based on the work of physician William Harvey ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1328010969"
+    },
+    {
+      "id": "P2",
+      "hash": "641820be7eef52580475c5f99a86fd0742c192d5e1398a1d21ea05a2c3693e7c",
+      "heading": "Lead",
+      "excerpt": "The term essential hypertension ('Essentielle Hypertonie') was coined by Eberhard Frank in 1911 to describe elevated blood pressure for whic",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1328010969"
+    },
+    {
+      "id": "P3",
+      "hash": "96c6546164b9766f11133799f391b1adb7653e8da53a661af5b24f557c76c400",
+      "heading": "Treatment and medications",
+      "excerpt": "Historically the treatment for what was called the \"hard pulse disease\" consisted in reducing the quantity of blood by blood letting or the ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1328010969"
+    },
+    {
+      "id": "P4",
+      "hash": "f62943b44a66a7bb8921f1e039ca14615253e247ed77495e1d374e9bbcfe54e4",
+      "heading": "Treatment and medications",
+      "excerpt": "In the late 19th and early to mid 20th centuries, many therapies were used to treat hypertension, but few were effective, and these were poo",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1328010969"
+    },
+    {
+      "id": "P5",
+      "hash": "7efe9ab112137d2f3a33b236a0cdb0d223f5407afb3fb457553b51bbf15b02b0",
+      "heading": "Treatment and medications",
+      "excerpt": "A major breakthrough was achieved in the 1950s with the discovery of well-tolerated oral diuretics, the first of which was chlorothiazide (D",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1328010969"
+    },
+    {
+      "id": "P6",
+      "hash": "0da4f89252540c7cf7a9241cdd10cc5e6754bfbbf4dd5022948b39f9f00754f0",
+      "heading": "Treatment and medications",
+      "excerpt": "Soon more drugs became available to treat hypertension. The British physician James W. Black developed beta blockers in the early 1960s; the",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1328010969"
+    }
+  ],
+  "updatedAt": "2026-10-25T08:54:44.217Z"
 }
