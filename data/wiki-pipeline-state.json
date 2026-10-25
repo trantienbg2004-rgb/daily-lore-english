@@ -12396,10 +12396,10 @@
       "checkedAt": "2026-10-22T14:51:54.553Z"
     },
     "80367044": {
-      "status": "PENDING",
-      "reason": "queued",
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
       "revisionId": 1378026748,
-      "checkedAt": null
+      "checkedAt": "2026-10-25T08:58:56.504Z"
     },
     "80384831": {
       "status": "REJECTED",
@@ -12618,7 +12618,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-25T08:58:50.154Z",
+  "updatedAt": "2026-10-25T08:58:56.505Z",
   "dailyUsage": {
     "day": "2026-10-25",
     "calls": 60,
