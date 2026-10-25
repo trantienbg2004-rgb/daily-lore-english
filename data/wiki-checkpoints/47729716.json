@@ -364,7 +364,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1324515691"
     }
   ],
-  "updatedAt": "2026-10-25T07:34:36.471Z",
+  "updatedAt": "2026-10-25T07:34:54.375Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -396,7 +396,7 @@
             ]
           },
           {
-            "text": "In 1948, Ireland won all their games to claim their first Grand Slam. They beat France, England, Scotland, and Wales. Later, Ireland played very well. They finished second in the championship and won the Triple Crown.",
+            "text": "In 1948, Ireland won all their games to claim their first Grand Slam. They beat France, England, Scotland, and Wales. Later, Ireland finished second and won the Triple Crown. They played well against other teams.",
             "evidenceIds": [
               "P5",
               "P8"
@@ -499,11 +499,11 @@
       }
     }
   },
-  "repairAttempts": 1,
+  "repairAttempts": 2,
   "lastUsage": {
-    "input": 3393,
-    "output": 429,
-    "total": 3822
+    "input": 3151,
+    "output": 233,
+    "total": 3384
   },
   "validation": null
 }
