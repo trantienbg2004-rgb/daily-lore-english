@@ -12270,10 +12270,10 @@
       "checkedAt": "2026-10-21T18:14:01.502Z"
     },
     "77921107": {
-      "status": "PENDING",
-      "reason": "queued",
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
       "revisionId": 1362438704,
-      "checkedAt": null
+      "checkedAt": "2026-10-25T08:56:32.419Z"
     },
     "78052299": {
       "status": "EVIDENCE_READY",
@@ -12618,7 +12618,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-25T08:56:26.145Z",
+  "updatedAt": "2026-10-25T08:56:32.420Z",
   "dailyUsage": {
     "day": "2026-10-25",
     "calls": 60,
