@@ -9540,10 +9540,10 @@
       "checkedAt": "2026-10-23T00:55:27.308Z"
     },
     "5571214": {
-      "status": "PENDING",
-      "reason": "queued",
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
       "revisionId": 1343436074,
-      "checkedAt": null
+      "checkedAt": "2026-10-25T08:51:56.439Z"
     },
     "5645470": {
       "status": "NEEDS_REVIEW",
@@ -12618,7 +12618,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-25T08:51:50.218Z",
+  "updatedAt": "2026-10-25T08:51:56.449Z",
   "dailyUsage": {
     "day": "2026-10-25",
     "calls": 60,
