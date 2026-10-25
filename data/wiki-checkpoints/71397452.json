@@ -2,10 +2,10 @@
   "pageId": 71397452,
   "title": "Helios Dust Instrumentation",
   "topic": "Science & Technology",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1379838220,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379838220",
-  "reason": "8 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REJECTED",
@@ -333,5 +333,159 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379838220"
     }
   ],
-  "updatedAt": "2026-10-25T07:15:28.861Z"
+  "updatedAt": "2026-10-25T07:15:46.513Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "Helios Spacecraft Dust Instruments",
+        "pages": [
+          {
+            "text": "Two Helios spacecraft travelled close to the Sun. They carried special tools to study space dust. West Germany and NASA worked together on this mission. Helios 1 launched in 1974. Helios 2 launched in 1976. Both probes flew on big oval paths.",
+            "evidenceIds": [
+              "P1",
+              "P2"
+            ]
+          },
+          {
+            "text": "One main tool was the zodiacal light instrument. It measured light from dust in space. Three small photometers looked at different parts of the sky. They repeated their work in cycles. This helped scientists learn about dust around the Sun.",
+            "evidenceIds": [
+              "P1",
+              "P3",
+              "P5"
+            ]
+          },
+          {
+            "text": "The spacecraft also carried a micrometeoroid analyzer. This tool recorded dust hits. It checked the composition of tiny space rocks. Helios 1 recorded many dust impacts over ten years. Helios 2 recorded fewer impacts because its sensor was noisy.",
+            "evidenceIds": [
+              "P1",
+              "P2",
+              "P7"
+            ]
+          },
+          {
+            "text": "The instruments showed that space dust increases near the Sun. Dust brightness was much higher close to the Sun than near Earth. This meant a dust source exists inside Earth's orbit. Scientists suggested that bigger meteoroids break apart to make this dust.",
+            "evidenceIds": [
+              "P1",
+              "P9"
+            ]
+          },
+          {
+            "text": "The data also revealed dust streams from comets. Scientists detected dust along the orbit of Venus and near meteor showers. The Helios mission provided important information about the space dust cloud in our solar system.",
+            "evidenceIds": [
+              "P1",
+              "P13",
+              "P18"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "Studying Space Dust with Helios Probes",
+        "pages": [
+          {
+            "text": "Launched in the 1970s through a joint venture between West Germany's DLR and NASA, the Helios 1 and 2 spacecraft carried specialized dust instruments. Their goal was to characterize the zodiacal dust cloud inside Earth's orbit, reaching distances as close as 0.3 AU from the Sun.",
+            "evidenceIds": [
+              "P1",
+              "P2"
+            ]
+          },
+          {
+            "text": "The zodiacal light instrument measured the brightness of scattered interplanetary sunlight across partial sky maps. Utilizing three small photometers with a stepping motor for wavelength and polarization changes, the instrument completed repetitive cycles to map the spatial distribution of dust.",
+            "evidenceIds": [
+              "P1",
+              "P3",
+              "P5"
+            ]
+          },
+          {
+            "text": "Concurrently, the in situ micrometeoroid analyzer recorded impacts and characterized dust composition. Over ten orbits, the Helios 1 analyzer transmitted data on 235 dust impacts. Due to noise and data storage limits, Helios 2 recorded only a handful of useful impacts.",
+            "evidenceIds": [
+              "P1",
+              "P6",
+              "P7"
+            ]
+          },
+          {
+            "text": "Data analysis revealed that zodiacal light brightness increased significantly closer to the Sun. This brightness increase indicated a higher dust density inward from Earth's orbit, suggesting that collisional fragmentation of larger meteoroids generates the observed dust.",
+            "evidenceIds": [
+              "P1",
+              "P8",
+              "P9"
+            ]
+          },
+          {
+            "text": "In addition to general spatial distribution, the instruments detected local brightness excesses from comet tails, meteor showers, and even the dust ring along the orbit of Venus, demonstrating the long-term stability and reliability of the spacecraft measurements.",
+            "evidenceIds": [
+              "P1",
+              "P13"
+            ]
+          },
+          {
+            "text": "The combined findings from both the zodiacal light and micrometeoroid instruments allowed researchers to construct the first dynamical models of the interplanetary dust cloud, defining core, inclined, and eccentric dust populations in the inner solar system.",
+            "evidenceIds": [
+              "P1",
+              "P18"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "Helios Spacecraft Dust Instrumentation Analysis",
+        "pages": [
+          {
+            "text": "The Helios 1 and 2 missions, realized through a partnership between West Germany's DLR and NASA, deployed specialized instrumentation to characterize the zodiacal dust cloud down to heliocentric distances of 0.3 AU. Each probe incorporated a zodiacal light photometer system and an impact ionization micrometeoroid analyzer.",
+            "evidenceIds": [
+              "P1",
+              "P2"
+            ]
+          },
+          {
+            "text": "The zodiacal light instrument utilized three small photometers operating in photon pulse counting mode to measure scattered sunlight across specific ecliptic latitudes. By systematically varying observing wavelengths and polarization states, the instrument mapped the three-dimensional spatial distribution of interplanetary dust.",
+            "evidenceIds": [
+              "P1",
+              "P3",
+              "P5"
+            ]
+          },
+          {
+            "text": "Operating via impact ionization time-of-flight mass spectrometry, the micrometeoroid analyzer recorded impact parameters and generated mass spectra. Helios 1 transmitted data for 235 validated dust impacts over ten solar orbits, whereas the noisier Helios 2 sensor yielded limited additional impact data.",
+            "evidenceIds": [
+              "P1",
+              "P6",
+              "P7"
+            ]
+          },
+          {
+            "text": "Radial profile measurements demonstrated a pronounced inward increase in zodiacal light brightness and micrometeoroid flux. This gradient implies a localized source of interplanetary dust within Earth's orbit, potentially sustained by the collisional fragmentation of larger meteoroids.",
+            "evidenceIds": [
+              "P1",
+              "P9",
+              "P18"
+            ]
+          },
+          {
+            "text": "Instrument stability permitted the resolution of local brightness anomalies, successfully identifying dust contributions from specific cometary trails, meteor showers, and the orbital dust ring of Venus.",
+            "evidenceIds": [
+              "P1",
+              "P13"
+            ]
+          },
+          {
+            "text": "Ultimately, the integration of photometric brightness data and impact mass spectra provided empirical constraints for the foundational dynamical models of the interplanetary dust cloud, delineating core, inclined, and eccentric dust populations.",
+            "evidenceIds": [
+              "P1",
+              "P18"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2851,
+    "output": 1121,
+    "total": 3972
+  },
+  "validation": null
 }
