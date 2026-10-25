@@ -163,7 +163,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1366819259"
     }
   ],
-  "updatedAt": "2026-10-25T07:11:59.161Z",
+  "updatedAt": "2026-10-25T07:12:17.143Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -196,7 +196,7 @@
             ]
           },
           {
-            "text": "In 1993, the Borama Conference helped elect a new president and establish a bicameral parliament. This important meeting brought lasting stability and democratic rule to the region.",
+            "text": "In 1993, the Borama Conference helped elect a new president and establish a bicameral parliament. This important meeting allowed the transfer of rule to a new civilian administration and brought stability to the region.",
             "evidenceIds": [
               "P2",
               "P13",
@@ -289,11 +289,11 @@
       }
     }
   },
-  "repairAttempts": 0,
+  "repairAttempts": 1,
   "lastUsage": {
-    "input": 1767,
-    "output": 1320,
-    "total": 3087
+    "input": 1573,
+    "output": 76,
+    "total": 1649
   },
   "validation": null
 }
