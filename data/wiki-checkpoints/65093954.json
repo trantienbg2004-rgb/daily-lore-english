@@ -2,10 +2,10 @@
   "pageId": 65093954,
   "title": "Somaliland Peace Process",
   "topic": "Conflict & Security",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1366819259,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1366819259",
-  "reason": "2 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -163,5 +163,137 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1366819259"
     }
   ],
-  "updatedAt": "2026-10-25T07:11:39.318Z"
+  "updatedAt": "2026-10-25T07:11:59.161Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "How Somaliland Found Peace",
+        "pages": [
+          {
+            "text": "After the central government of the Somali Democratic Republic collapsed, local groups in Somaliland started grassroot initiatives to bring peace. These communities worked together to negotiate truces and end old hostilities.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Traditional leaders contacted the Somali National Movement to call for a ceasefire. Parties met in Ethiopia and agreed to hold a peace conference in the port town of Berbera to stop the fighting.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "The Berbera meeting brought together many different clans to call for peace, trade, and an end to hostilities. A key policy promised safety and non-reprisal to communities that had fought against the Isaaq.",
+            "evidenceIds": [
+              "P4",
+              "P5"
+            ]
+          },
+          {
+            "text": "Later, northern clan leaders met in Burao to discuss the future of the region. Representatives agreed to revoke the voluntary union with Somalia and form the Republic of Somaliland.",
+            "evidenceIds": [
+              "P6",
+              "P11"
+            ]
+          },
+          {
+            "text": "In 1993, the Borama Conference helped elect a new president and establish a bicameral parliament. This important meeting brought lasting stability and democratic rule to the region.",
+            "evidenceIds": [
+              "P2",
+              "P13",
+              "P15"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "The Somaliland Peace Process",
+        "pages": [
+          {
+            "text": "Following the collapse of the central government of the Somali Democratic Republic, communities in Somaliland launched a series of grassroots initiatives. These efforts aimed to end hostilities and address deep grievances between groups that had previously fought on opposing sides.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "As the regime neared its end, traditional Dhulbahante leaders reached out to the Somali National Movement to propose a ceasefire. Subsequent talks in Ethiopia led to an agreement for a formal peace conference in Berbera, chosen because it had avoided wartime destruction.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "The Berbera conference united multiple clans to promote peace and resume trade. Crucially, the SNM established a policy of non-reprisal toward non-Isaaq communities who had fought alongside the former regime, fostering peaceful coexistence across the region.",
+            "evidenceIds": [
+              "P4",
+              "P5"
+            ]
+          },
+          {
+            "text": "Building on these talks, northern clan leaders convened in Burao in 1991. Influenced by the trauma of past violence, delegates agreed to revoke their voluntary union with the rest of Somalia and declare the independence of the Republic of Somaliland.",
+            "evidenceIds": [
+              "P6",
+              "P7",
+              "P11"
+            ]
+          },
+          {
+            "text": "The 1993 Borama Conference marked another turning point by establishing a bicameral parliament and electing a new president. This grand reconciliation conference transferred rule to a civilian administration and ensured broad local legitimacy.",
+            "evidenceIds": [
+              "P2",
+              "P8",
+              "P13",
+              "P15"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "Rebuilding Somaliland",
+        "pages": [
+          {
+            "text": "In the wake of the collapse of the central government of the Somali Democratic Republic, Somaliland witnessed a complex sequence of grassroots peace initiatives. These negotiations sought to mend fractures between communities that had stood on opposing sides during the regime's tenure.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Anticipating the downfall of the Siad Barre administration, traditional leaders initiated diplomatic contact with the Somali National Movement. Subsequent deliberations in the Haud region culminated in an accord to convene in Berbera, utilizing a town largely spared from physical destruction.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "Delegates from diverse clans assembled to halt hostilities and restore socio-economic exchanges. A cornerstone of this dialogue was the implementation of a non-reprisal policy by the SNM toward non-Isaaq groups, which laid foundational conditions for peaceful coexistence.",
+            "evidenceIds": [
+              "P4",
+              "P5"
+            ]
+          },
+          {
+            "text": "The trajectory of the peace process shifted decisively at the Burao conference in 1991. Shaped by the experience of state-sponsored violence, northern clan representatives collectively revoked the territory's voluntary union with Somalia, establishing the Republic of Somaliland.",
+            "evidenceIds": [
+              "P6",
+              "P7",
+              "P11"
+            ]
+          },
+          {
+            "text": "Institutional consolidation advanced significantly during the 1993 Borama Conference. Elders and delegates negotiated a national constitutional structure, instituted a bicameral legislature, and transferred authority to a civilian administration, thereby cementing stability and local governance.",
+            "evidenceIds": [
+              "P2",
+              "P8",
+              "P13",
+              "P15"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 1767,
+    "output": 1320,
+    "total": 3087
+  },
+  "validation": null
 }
