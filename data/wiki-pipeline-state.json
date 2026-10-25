@@ -8280,10 +8280,10 @@
       "checkedAt": "2026-10-24T07:45:02.480Z"
     },
     "284941": {
-      "status": "FETCHED",
-      "reason": "pinned-source-ready",
+      "status": "REJECTED",
+      "reason": "insufficient-source-text-or-embedded-images",
       "revisionId": 1367761473,
-      "checkedAt": "2026-10-25T09:14:11.173Z"
+      "checkedAt": "2026-10-25T09:14:12.639Z"
     },
     "292617": {
       "status": "EVIDENCE_READY",
@@ -12618,7 +12618,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-25T09:14:11.175Z",
+  "updatedAt": "2026-10-25T09:14:12.643Z",
   "dailyUsage": {
     "day": "2026-10-25",
     "calls": 60,
