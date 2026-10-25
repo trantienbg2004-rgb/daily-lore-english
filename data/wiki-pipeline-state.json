@@ -9810,10 +9810,10 @@
       "checkedAt": "2026-10-23T17:11:22.228Z"
     },
     "9543863": {
-      "status": "EVIDENCE_READY",
-      "reason": "4 rights-verified embedded images",
+      "status": "RETRY_LATER",
+      "reason": "Gemini token usage unavailable",
       "revisionId": 1379831504,
-      "checkedAt": "2026-10-25T08:57:44.305Z"
+      "checkedAt": "2026-10-25T08:57:50.197Z"
     },
     "9633432": {
       "status": "NEEDS_REVIEW",
@@ -12618,7 +12618,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-25T08:57:44.307Z",
+  "updatedAt": "2026-10-25T08:57:50.199Z",
   "dailyUsage": {
     "day": "2026-10-25",
     "calls": 60,
