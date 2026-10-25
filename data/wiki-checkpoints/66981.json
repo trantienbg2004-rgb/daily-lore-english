@@ -2,10 +2,10 @@
   "pageId": 66981,
   "title": "Epidemic",
   "topic": "Health",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1365091067,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1365091067",
-  "reason": "5 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -296,5 +296,143 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1365091067"
     }
   ],
-  "updatedAt": "2026-10-25T07:37:19.757Z"
+  "updatedAt": "2026-10-25T07:37:36.744Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "What is an Epidemic?",
+        "pages": [
+          {
+            "text": "An epidemic is the fast spread of a disease to many people in a short time. A small rise in a rare disease can be an epidemic, but many cases of a common cold are not.",
+            "evidenceIds": [
+              "P1",
+              "P3"
+            ]
+          },
+          {
+            "text": "Epidemics can happen when a pathogen changes, or when more people get sick because they lose their immunity. Sometimes a new disease comes to a new group of people.",
+            "evidenceIds": [
+              "P2",
+              "P19"
+            ]
+          },
+          {
+            "text": "Diseases can spread in different ways. Some spread person to person, while others come from water, food, or vectors like insects. Weather and seasons can also change how diseases spread.",
+            "evidenceIds": [
+              "P5",
+              "P9",
+              "P10"
+            ]
+          },
+          {
+            "text": "Human behavior changes how epidemics grow. Crowded places and poor water supplies can cause outbreaks. Changing habits, such as safe burials or washing hands, helps stop the spread.",
+            "evidenceIds": [
+              "P11"
+            ]
+          },
+          {
+            "text": "Good preparation is important. Countries need surveillance systems to track diseases, emergency workers to help out, and early safety rules like staying at home to protect people.",
+            "evidenceIds": [
+              "P16",
+              "P21"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "Understanding and Managing Epidemics",
+        "pages": [
+          {
+            "text": "An epidemic describes a sudden increase in disease cases above what is normally expected in a specific population and area. If the spread crosses countries and affects many continents, it can become a pandemic. Beyond health damage, epidemics cause massive economic losses.",
+            "evidenceIds": [
+              "P3",
+              "P4"
+            ]
+          },
+          {
+            "text": "Several factors trigger epidemics, including pathogen changes, environmental shifts, or lower host immunity. Viruses can change through antigenic drift, which is a slow accumulation of mutations, or antigenic shift, where two strains combine into a new subtype.",
+            "evidenceIds": [
+              "P2",
+              "P6",
+              "P7"
+            ]
+          },
+          {
+            "text": "Transmission modes vary widely, involving contagious, vector-borne, water-borne, or non-communicable health issues. Seasonal conditions like temperature and humidity heavily influence disease prevalence, while human behaviors such as urbanisation and crowding elevate outbreak risks.",
+            "evidenceIds": [
+              "P5",
+              "P10",
+              "P11"
+            ]
+          },
+          {
+            "text": "Populations lose immunity over time following outbreaks or vaccination campaigns, leading to future resurgences. Additionally, zoonotic diseases can jump from animals to humans, sometimes combining with human strains to cause severe global events.",
+            "evidenceIds": [
+              "P12",
+              "P13"
+            ]
+          },
+          {
+            "text": "Effective preparation requires robust disease surveillance systems, emergency response capabilities, and multi-layered mitigation plans. When outbreaks occur, early non-pharmacological interventions like physical distancing and contact tracing help flatten the epidemic curve.",
+            "evidenceIds": [
+              "P16",
+              "P21"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "Epidemic Dynamics and Preparedness",
+        "pages": [
+          {
+            "text": "An epidemic represents a rapid dissemination of disease within a population during a constrained timeframe, characterized statistically by an incidence rate exceeding the established baseline expectation. While local spikes satisfy epidemic criteria, global propagation affecting substantial populations constitutes a pandemic, yielding severe socioeconomic damage alongside clinical morbidity.",
+            "evidenceIds": [
+              "P1",
+              "P3",
+              "P4"
+            ]
+          },
+          {
+            "text": "Etiological drivers include alterations in host population ecology, pathogen genetic variations, or novel pathogen introductions. Antigenic evolution occurs via gradual drift through mutational accumulation or abrupt shift through genetic reassortment, exemplified significantly by influenza viruses and observed in SARS-CoV-2.",
+            "evidenceIds": [
+              "P2",
+              "P7"
+            ]
+          },
+          {
+            "text": "Transmission dynamics encompass diverse vectors, water-borne agents, and zoonotic jumps where pathogens cross the species barrier. Furthermore, environmental seasonality driven by humidity and temperature fluctuations dictates transmission potential, compounded by behavioral factors such as urbanization and funeral rites.",
+            "evidenceIds": [
+              "P5",
+              "P9",
+              "P10",
+              "P11",
+              "P13"
+            ]
+          },
+          {
+            "text": "Population-level vulnerability fluctuates inversely with herd immunity, which wanes post-outbreak or post-vaccination as demographics shift. Concurrently, antimicrobial resistance driven by selective pressures complicates treatment protocols, particularly evident in drug-resistant tuberculosis strains.",
+            "evidenceIds": [
+              "P8",
+              "P12"
+            ]
+          },
+          {
+            "text": "Strategic preparedness mandates integrated surveillance architectures, rapid response logistics, and multisectoral frameworks like the WHO's PRET initiative. During active emergencies, proactive non-pharmacological interventions—such as contact tracing, movement restrictions, and physical barriers—remain critical for mitigating transmission curves when healthcare resources face overload.",
+            "evidenceIds": [
+              "P16",
+              "P21",
+              "P23"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2579,
+    "output": 935,
+    "total": 3514
+  },
+  "validation": null
 }
