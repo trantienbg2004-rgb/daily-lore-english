@@ -333,14 +333,14 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1379838220"
     }
   ],
-  "updatedAt": "2026-10-25T07:15:46.513Z",
+  "updatedAt": "2026-10-25T07:16:04.585Z",
   "draft": {
     "variants": {
       "A1-A2": {
         "headline": "Helios Spacecraft Dust Instruments",
         "pages": [
           {
-            "text": "Two Helios spacecraft travelled close to the Sun. They carried special tools to study space dust. West Germany and NASA worked together on this mission. Helios 1 launched in 1974. Helios 2 launched in 1976. Both probes flew on big oval paths.",
+            "text": "Two Helios spacecraft travelled close to the Sun. They carried special tools to study space dust. West Germany and NASA worked together on this mission. Helios 1 launched in December 1974. Helios 2 followed in January 1976. Both probes flew on big oval paths.",
             "evidenceIds": [
               "P1",
               "P2"
@@ -464,9 +464,8 @@
             ]
           },
           {
-            "text": "Instrument stability permitted the resolution of local brightness anomalies, successfully identifying dust contributions from specific cometary trails, meteor showers, and the orbital dust ring of Venus.",
+            "text": "The zodiacal light measurements exhibited excellent stability, which allowed researchers to detect local brightness excesses when crossing specific features. This capability successfully identified dust signatures associated with comet West, the Quadrantid meteor shower, and the orbital dust ring of Venus.",
             "evidenceIds": [
-              "P1",
               "P13"
             ]
           },
@@ -481,11 +480,11 @@
       }
     }
   },
-  "repairAttempts": 0,
+  "repairAttempts": 1,
   "lastUsage": {
-    "input": 2851,
-    "output": 1121,
-    "total": 3972
+    "input": 2778,
+    "output": 233,
+    "total": 3011
   },
   "validation": null
 }
