@@ -9858,10 +9858,10 @@
       "checkedAt": "2026-10-22T13:21:53.536Z"
     },
     "10512779": {
-      "status": "FETCHED",
-      "reason": "pinned-source-ready",
+      "status": "NEEDS_REVIEW",
+      "reason": "no-rights-verified-embedded-image",
       "revisionId": 1374747920,
-      "checkedAt": "2026-10-25T08:55:32.299Z"
+      "checkedAt": "2026-10-25T08:55:38.226Z"
     },
     "10612527": {
       "status": "NEEDS_REVIEW",
@@ -12618,7 +12618,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-25T08:55:32.300Z",
+  "updatedAt": "2026-10-25T08:55:38.227Z",
   "dailyUsage": {
     "day": "2026-10-25",
     "calls": 60,
