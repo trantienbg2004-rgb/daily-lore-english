@@ -2,9 +2,147 @@
   "pageId": 73488529,
   "title": "History of phagocytosis",
   "topic": "Health",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1374819495,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374819495",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-25T08:51:14.368Z"
+  "reason": "1 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:Neutrophil with anthrax copy.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f2/Neutrophil_with_anthrax_copy.jpg/960px-Neutrophil_with_anthrax_copy.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Neutrophil with anthrax copy.jpg",
+        "caption": "Scanning electron micrograph of a phagocyte (yellow, right) phagocytosing anthrax bacilli (orange, left)",
+        "alt": "",
+        "description": "Neutrophil engulfing anthrax bacteria, taken with a Leo 1550 scanning electron microscope. Scale bar is 5 micrometers.",
+        "date": "2005-11",
+        "section": "",
+        "position": 0,
+        "provenance": {
+          "credit": "Volker Brinkmann",
+          "license": "CC BY 2.5",
+          "licenseUrl": "https://creativecommons.org/licenses/by/2.5",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Neutrophil_with_anthrax_copy.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/History_of_phagocytosis",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374819495",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Die Radiolarien (Rhizopoda radiaria) - eine Monographie (IA dieradiolarienrh03haec).pdf"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "ff6fadb93baa1627d6156e1efe210bc3b82ac8a580ccbb337e03670d91db7cc9",
+      "heading": "Lead",
+      "excerpt": "The history of phagocytosis is an account of the discoveries of cells, known as phagocytes, that are capable of eating other cells or partic",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374819495"
+    },
+    {
+      "id": "P2",
+      "hash": "a7802fff1089e991f2fb6df8ea7e7f3021c650cd8d01c41c3df574ef63e4298d",
+      "heading": "Lead",
+      "excerpt": "The biological theory and concept, experimental observations, and the name, phagocyte (from Ancient Greek φαγεῖν (phagein) 'to eat' and κύτο",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374819495"
+    },
+    {
+      "id": "P3",
+      "hash": "74dc06e9821dfd985a46b8a494216c02084054c17125ff034749af3e1335de57",
+      "heading": "Lead",
+      "excerpt": "However, the cellular process was known before Metchnikoff's works, but with inconclusive descriptions. The first scientific description was",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374819495"
+    },
+    {
+      "id": "P4",
+      "hash": "769881297f1294a60e98f5a8b247e740cbcc8ef0ae8eea3545d02253c4855805",
+      "heading": "Discovery of cell feeding",
+      "excerpt": "Phagocytosis was first observed as a process by which unicellular organisms eat their food, usually smaller organisms like protists and bact",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374819495"
+    },
+    {
+      "id": "P5",
+      "hash": "1033e465bc86048095832da26a74159dd3cfa38817ef3fdf484869c9e22e76b3",
+      "heading": "Discovery of cell feeding",
+      "excerpt": "The creature [infusoria] which is destined for food [i.e., trapped by the spines], gradually reaches the surface of the animal [i.e., Actino",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374819495"
+    },
+    {
+      "id": "P6",
+      "hash": "06f3a404b3e9a24a6730a0c3101126173b978de8af4be5aef37139186b6cf00a",
+      "heading": "Eosinophils",
+      "excerpt": "The first demonstration of phagocytosis as a property of leukocytes, the immune cells, was from the German zoologist Ernst Haeckel. In 1846,",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374819495"
+    },
+    {
+      "id": "P7",
+      "hash": "2008f01d74165e367a60f00dc3bbb3d77a3e261b2426403d4d984ccb44fc49c2",
+      "heading": "Epithelial cells",
+      "excerpt": "In 1869, Russian physician Kranid Slavjansky published his research on injection of guinea pigs and rabbits with indigo and cinnabar in Arch",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374819495"
+    },
+    {
+      "id": "P8",
+      "hash": "255453d965a11b12781f87a4aab0962049199af95187b72f94254f88efae7b9d",
+      "heading": "Groundwork",
+      "excerpt": "The phagocytic property of macrophage, a specialised leukocyte, and its role in immunity was discovered by Ukrainian zoologist Élie Metchnik",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374819495"
+    },
+    {
+      "id": "P9",
+      "hash": "2e75285a644690c9ee27ef1bf16bd648a0897de78189862d61b8fc36124f12a3",
+      "heading": "Experimental discovery",
+      "excerpt": "To strengthen his parenchymella theory, Metchnikoff thought about several ways to look for cell eating as a fundamental process in metazoans",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374819495"
+    },
+    {
+      "id": "P10",
+      "hash": "f80b61646cd71f980bff4218f5609b8db9c6411cc3f898a3cfd9b00ab6565f4a",
+      "heading": "Discovery of cell feeding",
+      "excerpt": "The general process given by Kölliker correlates with modern understanding of phagocytosis as a feeding method. The thread and thread space ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374819495"
+    },
+    {
+      "id": "P11",
+      "hash": "2288375f7b07e44834dd610a2f48e926db4ee175fe3421af447f6d8446fe63e7",
+      "heading": "Eosinophils",
+      "excerpt": "Disproving Lieberkühn's conclusion, Haeckel discovered that such cells could indeed ingest particles, even experimentally introduced ones. I",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374819495"
+    },
+    {
+      "id": "P12",
+      "hash": "cfb72d0e924c2bc53421b9ee365dec3519c5d4326b36cc3bfa55c621bbcd5e81",
+      "heading": "Eosinophils",
+      "excerpt": "In 1869, Joseph Gibbon Richardson at the Pennsylvania Hospital observed amoeboid leukocytes from his own salivary cells, urine of an individ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374819495"
+    },
+    {
+      "id": "P13",
+      "hash": "e057b703c918ed2c96a2fa69a3bd418df34d6f97245edc6466be45a9e3f00327",
+      "heading": "Epithelial cells",
+      "excerpt": "Da jene Zellen zinnoberhaltig sind, so liegt es auf der Hand, sie als weisse Blutzellen anzunehmen, welche aus den Gefӓssen herauswandernd u",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374819495"
+    },
+    {
+      "id": "P14",
+      "hash": "4f4d6f68d90bc0dc219d759f6476c61e3190fbdc0a7f33c9f30522f072a799c1",
+      "heading": "Epithelial cells",
+      "excerpt": "A Canadian physician William Osler at McGill College reported \"On the pathology of miner's lung\" in Canada Medical and Surgical Journal in 1",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374819495"
+    },
+    {
+      "id": "P15",
+      "hash": "01fb42fe7fb892bafb378de395efa737d4f377f96f91c026a71f76fdf6dfe41f",
+      "heading": "Epithelial cells",
+      "excerpt": "Inside all of these [lung cells] the carbon particles exist in extraordinary numbers, filling the cells in different degrees. Some are so de",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374819495"
+    }
+  ],
+  "updatedAt": "2026-10-25T08:51:20.034Z"
 }
