@@ -2,9 +2,216 @@
   "pageId": 272065,
   "title": "Al-Kindi",
   "topic": "Health",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1374736876,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374736876",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-25T08:52:08.316Z"
+  "reason": "3 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:Al-Kindi, Abu Yusuf Ya Qub ibn Ishaq – Liber novem iudicum in iudiciis astrorum, 1509 – BEIC 1289632.jpg",
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/d/df/Al-Kindi%2C_Abu_Yusuf_Ya_Qub_ibn_Ishaq_%E2%80%93_Liber_novem_iudicum_in_iudiciis_astrorum%2C_1509_%E2%80%93_BEIC_1289632.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "fileTitle": "File:Al-Kindi, Abu Yusuf Ya Qub ibn Ishaq – Liber novem iudicum in iudiciis astrorum, 1509 – BEIC 1289632.jpg",
+        "caption": "Liber novem iudicum in iudiciis astrorum, 1509",
+        "alt": "",
+        "description": "Frontespizio",
+        "date": "2020-11-19 14:04:52",
+        "section": "Astronomy",
+        "position": 0,
+        "provenance": {
+          "credit": "Al-Kindi",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Al-Kindi,_Abu_Yusuf_Ya_Qub_ibn_Ishaq_%E2%80%93_Liber_novem_iudicum_in_iudiciis_astrorum,_1509_%E2%80%93_BEIC_1289632.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Al-Kindi",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374736876",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:Al-Kindi – Cambridge, Trinity College Library, Medieval manuscripts, MS R.15.17 (937), secolo XVII – BEIC 11521297.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/83/Al-Kindi_%E2%80%93_Cambridge%2C_Trinity_College_Library%2C_Medieval_manuscripts%2C_MS_R.15.17_%28937%29%2C_secolo_XVII_%E2%80%93_BEIC_11521297.jpg/960px-Al-Kindi_%E2%80%93_Cambridge%2C_Trinity_College_Library%2C_Medieval_manuscripts%2C_MS_R.15.17_%28937%29%2C_secolo_XVII_%E2%80%93_BEIC_11521297.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Al-Kindi – Cambridge, Trinity College Library, Medieval manuscripts, MS R.15.17 (937), secolo XVII – BEIC 11521297.jpg",
+        "caption": "De radiis, manuscript, 17th century. Cambridge, Trinity College Library, Medieval manuscripts, MS R.15.17 (937).",
+        "alt": "",
+        "description": "Fotogramma 2",
+        "date": "2019-04-03 11:46:03",
+        "section": "Optics",
+        "position": 1,
+        "provenance": {
+          "credit": "Al-Kindi",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Al-Kindi_%E2%80%93_Cambridge,_Trinity_College_Library,_Medieval_manuscripts,_MS_R.15.17_(937),_secolo_XVII_%E2%80%93_BEIC_11521297.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Al-Kindi",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374736876",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Al-kindi cryptographic.png"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:Arabic aristotle.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e7/Arabic_aristotle.jpg/960px-Arabic_aristotle.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Arabic aristotle.jpg",
+        "caption": "Ancient Greek philosophers such as Plato and Aristotle were highly respected in the medieval Islamic world.",
+        "alt": "",
+        "description": "Aristotle teaching, from London, British Library MS or. 2784, f. 96r. This part of the manuscript contains the earliest illustrated text of the Kitāb naʿt al-hayawān, a bestiary attributed to Jabril ibn Bukhtishu. From c. 1220, possibly a monastery in North Jazira (in Mesopotamia). (Anna Contadini, 'A Bestiary Tale: Text and Image of the Unicorn in the Kitāb naʿt al-hayawān (British Library, or. 2784, f.96)', Muqarnas, 20 (2003), 17-33; https://www.jstor.org/stable/1523325.)",
+        "date": "13th centurydate QS:P571,+1250-00-00T00:00:00Z/7date QS:P571,+1250-00-00T00:00:00Z/7",
+        "section": "Epistemology",
+        "position": 3,
+        "provenance": {
+          "credit": "Unknown artistUnknown artist Unknown artistUnknown artist",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Arabic_aristotle.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Al-Kindi",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374736876",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "f6e7f8a82a0c9b42746f496436f9208aabaa96bba82ee14ceda070d6c33cadc5",
+      "heading": "Lead",
+      "excerpt": "Abū Yūsuf Yaʻqūb ibn ʼIsḥāq aṣ-Ṣabbāḥ al-Kindī (/ælˈkɪndi/; Arabic: أبو يوسف يعقوب بن إسحاق الصبّاح الكندي; Latin: Alkindus; c. 801–873 AD) ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374736876"
+    },
+    {
+      "id": "P2",
+      "hash": "d56eddeafac814ca164b5e4bbe8a8faa1b6de2a09ca32637b6509694ce59dc5b",
+      "heading": "Lead",
+      "excerpt": "Al-Kindi was born in Kufa and educated in Baghdad. He became a prominent figure in the House of Wisdom (Bayt al-Hikma), an institute of tran",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374736876"
+    },
+    {
+      "id": "P3",
+      "hash": "7e914dc8a9e1285abe9c6cc8dac67ada30593af4be23f0bcce5579d0ad6e6172",
+      "heading": "Lead",
+      "excerpt": "In the field of mathematics, al-Kindi played an important role in introducing Hindu-Arabic numerals to the Islamic world, and their further ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374736876"
+    },
+    {
+      "id": "P4",
+      "hash": "3fba33f1eeb9eca528ebfb6b984c8d5456081f7bb96aaac49c452f3dd1d8c4bd",
+      "heading": "Lead",
+      "excerpt": "The central theme underpinning al-Kindi's philosophical writings is the compatibility between philosophy and other \"orthodox\" Islamic scienc",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374736876"
+    },
+    {
+      "id": "P5",
+      "hash": "5f9e89737c743cf2ab8109c596709f833c49f8533110c4bef425c1973eb8454e",
+      "heading": "Philosophy",
+      "excerpt": "In his writings, one of al-Kindi's central concerns was to demonstrate the compatibility between philosophy and natural theology on the one ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374736876"
+    },
+    {
+      "id": "P6",
+      "hash": "373938973eecf320ffc003676515a5544493fcd9ffdc5d41c3997d2f5ee3b3ea",
+      "heading": "Early life",
+      "excerpt": "Al-Kindi was born in Kufa to an aristocratic family of the Arabian tribe of the Kinda, descended from the chieftain al-Ash'ath ibn Qays, a c",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374736876"
+    },
+    {
+      "id": "P7",
+      "hash": "07e20e0f85f580a97072c420bcdd50327fc4f407a1d1a2a08a26c08fad79c3a8",
+      "heading": "Accomplishments",
+      "excerpt": "According to Arab bibliographer Ibn al-Nadim, al-Kindi wrote at least two hundred and sixty books, contributing heavily to geometry (thirty-",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374736876"
+    },
+    {
+      "id": "P8",
+      "hash": "d740f14995b38b8b3b5960865f335dd9da2a21dc0e5a4b5c07918d24947b4b28",
+      "heading": "Philosophy",
+      "excerpt": "His greatest contribution to the development of Islamic philosophy was his efforts to make Greek thought both accessible and acceptable to a",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374736876"
+    },
+    {
+      "id": "P9",
+      "hash": "75efb71519995c97ac819b19a498786ea88810ce31d6babb00bb1a797489328d",
+      "heading": "Astronomy",
+      "excerpt": "Al-Kindi took his view of the Solar System from Ptolemy, who placed the Earth at the centre of a series of concentric spheres, in which the ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374736876"
+    },
+    {
+      "id": "P10",
+      "hash": "1a84020f32c4c88dfc01184a4c1cba9a5f3bc5a715b15e4eed0f9e15d54329fc",
+      "heading": "Optics",
+      "excerpt": "Al-Kindi was the first major writer on optics since antiquity. Roger Bacon placed him in the first rank after Ptolemy as a writer on the top",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374736876"
+    },
+    {
+      "id": "P11",
+      "hash": "26b16bf24f591a49bc0199ace1b435285f5b797794a227e8b64c02910151e509",
+      "heading": "Medicine",
+      "excerpt": "There are more than thirty treatises attributed to al-Kindi in the field of medicine, in which he was chiefly influenced by the ideas of Gal",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374736876"
+    },
+    {
+      "id": "P12",
+      "hash": "3561b988414a80be82c7ae641958ba83198ee3500cb50ee11b2c61ddc956c32f",
+      "heading": "Chemistry",
+      "excerpt": "Al-Kindi denied the possibility of transmuting base metals into precious metals such as gold and silver, a position that was later attacked ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374736876"
+    },
+    {
+      "id": "P13",
+      "hash": "b86c2923565f61e068c8c2592b8edb1a47da11bd09ac93c7ebccb9ae7d193eb6",
+      "heading": "Mathematics",
+      "excerpt": "Al-Kindi authored works on a number of important mathematical subjects, including arithmetic, geometry, the Hindu numbers, the harmony of nu",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374736876"
+    },
+    {
+      "id": "P14",
+      "hash": "6537a4de06866f074965a9a6edac9428b1cf77aaaa297365eccc25d643d3ce05",
+      "heading": "Cryptography",
+      "excerpt": "Al-Kindi is credited with developing a method whereby variations in the frequency of the occurrence of letters could be analyzed and exploit",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374736876"
+    },
+    {
+      "id": "P15",
+      "hash": "6f742dbb1d76477ae39dcd4f7de3153328008f4d4b3c5271fa822f6c3114dbb4",
+      "heading": "Meteorology",
+      "excerpt": "In a treatise entitled as Risala fi l-Illa al-Failali l-Madd wa l-Fazr (Treatise on the Efficient Cause of the Flow and Ebb), al-Kindi prese",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374736876"
+    },
+    {
+      "id": "P16",
+      "hash": "4831aac09e001dd40ff064c6c193d3ce6891317da434db1660e0e9370d568309",
+      "heading": "Music theory",
+      "excerpt": "Al-Kindi was the first theoretician of music in the Arab-Islamic world whose works have come down to us. He transferred the Greek tonal syst",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374736876"
+    },
+    {
+      "id": "P17",
+      "hash": "98a099b588dd5a2d5279c690d63a254c627c9f15bf750c0bad1c978777888feb",
+      "heading": "Influences",
+      "excerpt": "While Muslim intellectuals were already acquainted with Greek philosophy (especially logic), al-Kindi is credited with being the first real ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374736876"
+    },
+    {
+      "id": "P18",
+      "hash": "9943cfc2a1ea2fa8f16a79aafb136fdf199d681c1813a46299bb4c51b88e91c7",
+      "heading": "Metaphysics",
+      "excerpt": "According to al-Kindi, the goal of metaphysics is knowledge of God. For this reason, he does not make a clear distinction between philosophy",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374736876"
+    }
+  ],
+  "updatedAt": "2026-10-25T08:52:14.229Z"
 }
