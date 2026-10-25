@@ -9540,10 +9540,10 @@
       "checkedAt": "2026-10-23T00:55:27.308Z"
     },
     "5571214": {
-      "status": "FETCHED",
-      "reason": "pinned-source-ready",
+      "status": "REJECTED",
+      "reason": "insufficient-source-text-or-embedded-images",
       "revisionId": 1343436074,
-      "checkedAt": "2026-10-25T08:51:56.439Z"
+      "checkedAt": "2026-10-25T08:52:02.085Z"
     },
     "5645470": {
       "status": "NEEDS_REVIEW",
@@ -12618,7 +12618,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-25T08:51:56.449Z",
+  "updatedAt": "2026-10-25T08:52:02.086Z",
   "dailyUsage": {
     "day": "2026-10-25",
     "calls": 60,
