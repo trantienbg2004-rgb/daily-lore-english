@@ -11514,10 +11514,10 @@
       "checkedAt": "2026-10-25T08:04:36.763Z"
     },
     "61951697": {
-      "status": "PENDING",
-      "reason": "queued",
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
       "revisionId": 1368861762,
-      "checkedAt": null
+      "checkedAt": "2026-10-25T08:49:20.386Z"
     },
     "62018441": {
       "status": "RETRY_LATER",
@@ -12618,7 +12618,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-25T08:49:14.233Z",
+  "updatedAt": "2026-10-25T08:49:20.387Z",
   "dailyUsage": {
     "day": "2026-10-25",
     "calls": 60,
