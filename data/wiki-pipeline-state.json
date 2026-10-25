@@ -12414,10 +12414,10 @@
       "checkedAt": "2026-10-22T12:48:00.394Z"
     },
     "80707165": {
-      "status": "FETCHED",
-      "reason": "pinned-source-ready",
+      "status": "REJECTED",
+      "reason": "insufficient-source-text-or-embedded-images",
       "revisionId": 1363933552,
-      "checkedAt": "2026-10-25T08:55:08.440Z"
+      "checkedAt": "2026-10-25T08:55:14.110Z"
     },
     "80758313": {
       "status": "NEEDS_REVIEW",
@@ -12618,7 +12618,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-25T08:55:08.441Z",
+  "updatedAt": "2026-10-25T08:55:14.111Z",
   "dailyUsage": {
     "day": "2026-10-25",
     "calls": 60,
