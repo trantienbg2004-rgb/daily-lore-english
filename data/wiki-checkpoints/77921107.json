@@ -2,9 +2,192 @@
   "pageId": 77921107,
   "title": "Historia de la medicina y la farmacia en Chile",
   "topic": "Health",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1362438704,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1362438704",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-25T08:56:32.420Z"
+  "reason": "2 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:Drogueria alemana - exterior.JPG",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4c/Drogueria_alemana_-_exterior.JPG/960px-Drogueria_alemana_-_exterior.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Drogueria alemana - exterior.JPG",
+        "caption": "Exterior of the Alemana drugstore in 2012.",
+        "alt": "",
+        "description": "Exterior de la Droguería Alemana, antigua Farmacia Maluje, Concepción, Chile. Septiembre de 2012.",
+        "date": "2012-09-10 10:09:38",
+        "section": "Maluje pharmacy",
+        "position": 0,
+        "provenance": {
+          "credit": "Farisori",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Drogueria_alemana_-_exterior.JPG",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Historia_de_la_medicina_y_la_farmacia_en_Chile",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1362438704",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:Drogueria alemana - interior.JPG",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/79/Drogueria_alemana_-_interior.JPG/960px-Drogueria_alemana_-_interior.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Drogueria alemana - interior.JPG",
+        "caption": "Interior of the Alemana drugstore in 2012, with part of the right side of the mural.",
+        "alt": "",
+        "description": "Interior de la antigua Droguería Alemana, antigua Farmacia Maluje, Concepción, Chile. Septiembre de 2012.",
+        "date": "2012-09-10 10:08:01",
+        "section": "Characteristics",
+        "position": 1,
+        "provenance": {
+          "credit": "Farisori",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Drogueria_alemana_-_interior.JPG",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Historia_de_la_medicina_y_la_farmacia_en_Chile",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1362438704",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Alexander Lipschütz.jpg"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "f695f47992206a8a45d9042fe5d498f74171e327fdeaf6a8e96a10a267da636e",
+      "heading": "Lead",
+      "excerpt": "Historia de la medicina y la farmacia en Chile (History of Medicine and Pharmacy in Chile) is a mural created in 1957 by the artist Julio Es",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1362438704"
+    },
+    {
+      "id": "P2",
+      "hash": "feeb23528dd3407e9994592d1049713e09e53adfc9ba65fa534f685a52db8bbf",
+      "heading": "Lead",
+      "excerpt": "A photographic reproduction of the entire work is located in the Prof. César Leyton Caravagno Pharmacy Museum, housed in the College of Phar",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1362438704"
+    },
+    {
+      "id": "P3",
+      "hash": "394ed5e99abc8c6ee35c9f64ea58bc97e1dc0772d871b210b6927f8decf120a3",
+      "heading": "Maluje pharmacy",
+      "excerpt": "The Maluje pharmacy was founded in the city of Concepción in 1951 by Chilean pharmacist María Maluje David, a descendant of Syrian immigrant",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1362438704"
+    },
+    {
+      "id": "P4",
+      "hash": "ec97a9e9e4470a3280920ea3b95df3e7e605ede6a25d547ee469d01c8901ab1e",
+      "heading": "Maluje pharmacy",
+      "excerpt": "Designed by architect Javier “Maco” Gutiérrez, the new premises were designed from the start to include a mural that could be seen from the ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1362438704"
+    },
+    {
+      "id": "P5",
+      "hash": "80d49bf016c9ccaf23b1174a10b0cc48ae71955db645b31c2b104247c5248e80",
+      "heading": "Maluje pharmacy",
+      "excerpt": "For more than fifty years, María Maluje herself prepared the medications, consulted with, and prescribed to the patients who came directly t",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1362438704"
+    },
+    {
+      "id": "P6",
+      "hash": "8633d06c60705547aa3a32211c2c67ded1acf93f30892415b985f3bf59ebc98e",
+      "heading": "Creation of the mural",
+      "excerpt": "After the relocation of Maluje pharmacy in 1957 to its current location, María Maluje and her husband commissioned artist Julio Escámez to c",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1362438704"
+    },
+    {
+      "id": "P7",
+      "hash": "cf0b5c94d202b4ec063ca7e5afb95048defd4c96a2cf5ad8fde4e4639ac93a62",
+      "heading": "Characteristics",
+      "excerpt": "The mural continues the tradition of social realism initiated in the region by Chilean painter and muralist Gregorio de la Fuente. However, ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1362438704"
+    },
+    {
+      "id": "P8",
+      "hash": "2905d264b38b320396d305d00102ada6fca477457f5ce2a125d37314de7c2d2a",
+      "heading": "Meaning",
+      "excerpt": "“The mural expresses a view of the time the artist is living in. The mural cannot be entirely decorative; it must reflect ideas.” —Julio Esc",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1362438704"
+    },
+    {
+      "id": "P9",
+      "hash": "507a4bd7ce6e8ae7574cc88a779269f7ece88dca45f274b57e0942019eca3131",
+      "heading": "Maluje pharmacy",
+      "excerpt": "The pharmacy finally closed in February 2007, after fifty-six years of uninterrupted activity, after which it was replaced by the Alemana dr",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1362438704"
+    },
+    {
+      "id": "P10",
+      "hash": "11dd7d1e3ccefd86a473db28bb69589e57766cf401ef72e8fa13ca9563f6e929",
+      "heading": "Maluje pharmacy",
+      "excerpt": "On September 7, 2012, Chilean singer-songwriter Manuel García held a private performance in the pharmacy’s premises for the launch of the bo",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1362438704"
+    },
+    {
+      "id": "P11",
+      "hash": "4e5722520b3f533e1023c418ffd4fe4fc779571830c88a907312c28b1156196e",
+      "heading": "Creation of the mural",
+      "excerpt": "Escámez, then a renowned painter in the area and since 1953 a professor of Mural Painting at the Institute of Art at the University of Conce",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1362438704"
+    },
+    {
+      "id": "P12",
+      "hash": "fb0a6c229e1928e7af6ac81b7edaf3da87030b4a2e2bf385a512350fe6c09215",
+      "heading": "Creation of the mural",
+      "excerpt": "At the time of accepting the commission for the mural, the artist had just completed a scholarship at the Academy of Fine Arts in Florence. ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1362438704"
+    },
+    {
+      "id": "P13",
+      "hash": "b810c22cf61d2b3113f9507539ce25bbb1a974b4bd9f35bfe2d0b01516f148db",
+      "heading": "Creation of the mural",
+      "excerpt": "For the creation of the mural, Escámez worked for a month with the help of artist and carpenter Albino Echeverría, who would later become on",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1362438704"
+    },
+    {
+      "id": "P14",
+      "hash": "46e4b3d98f1842a17a0c67874c47b3a341cddb2d1b2fac8f4bd66dddfdfb7f60",
+      "heading": "Characteristics",
+      "excerpt": "The mural is composed of three large sections, corresponding to the left side, central panel, and right side of the pharmacy, as seen from t",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1362438704"
+    },
+    {
+      "id": "P15",
+      "hash": "fd60bb4b9ae00aba06e77bc43a8b3bc14d3714b7493c4802d5d662c62c4dc795",
+      "heading": "Meaning",
+      "excerpt": "The panel on the left side represents an idealization and synthesis of the relationship between man and nature, from which he extracts what ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1362438704"
+    },
+    {
+      "id": "P16",
+      "hash": "c5d1e3ed62622cfad1e1b99ec25bd9b0c2dc09c2bad6a6b4815a7fdcf8cda267",
+      "heading": "Meaning",
+      "excerpt": "The central panel serves as a transition from rural to urban life, where human architecture is connected with the natural landscape. The tal",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1362438704"
+    },
+    {
+      "id": "P17",
+      "hash": "330953b09acefc895a318bc04c0ea6a5aa9505c288a6d292aec9687dc74d8a27",
+      "heading": "Meaning",
+      "excerpt": "Finally, the panel on the right is dedicated to contemporary medicine, a result of the relationship between education, university research, ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1362438704"
+    },
+    {
+      "id": "P18",
+      "hash": "1805a3c7a13acb0c7cb9f3647693aa5c773730de187d65a41b0de77ca7054b81",
+      "heading": "Meaning",
+      "excerpt": "The entire mural illustrates a transition between traditional medicine and the contemporary methods of allopathic pharmacy. Moreover, it off",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1362438704"
+    }
+  ],
+  "updatedAt": "2026-10-25T08:56:38.403Z"
 }
