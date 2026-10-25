@@ -2,10 +2,10 @@
   "pageId": 54751,
   "title": "Central Tibetan Administration",
   "topic": "Society",
-  "status": "DRAFTED",
+  "status": "NEEDS_REVIEW",
   "revisionId": 1376222781,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376222781",
-  "reason": "draft durably saved before validation",
+  "reason": "editorial: A1-A2:page-4:copied-source-passage",
   "rights": [
     {
       "status": "REJECTED",
@@ -248,7 +248,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376222781"
     }
   ],
-  "updatedAt": "2026-10-25T08:05:36.704Z",
+  "updatedAt": "2026-10-25T08:05:42.653Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -379,5 +379,10 @@
     "output": 139,
     "total": 2779
   },
-  "validation": null
+  "validation": {
+    "accepted": false,
+    "errors": [
+      "A1-A2:page-4:copied-source-passage"
+    ]
+  }
 }

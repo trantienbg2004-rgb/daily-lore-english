@@ -7816,10 +7816,10 @@
       "checkedAt": "2026-10-25T07:41:00.750Z"
     },
     "54751": {
-      "status": "DRAFTED",
-      "reason": "draft durably saved before validation",
+      "status": "NEEDS_REVIEW",
+      "reason": "editorial: A1-A2:page-4:copied-source-passage",
       "revisionId": 1376222781,
-      "checkedAt": "2026-10-25T08:05:36.703Z"
+      "checkedAt": "2026-10-25T08:05:42.652Z"
     },
     "55565": {
       "status": "RETRY_LATER",
@@ -12298,7 +12298,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-25T08:05:36.705Z",
+  "updatedAt": "2026-10-25T08:05:42.653Z",
   "dailyUsage": {
     "day": "2026-10-25",
     "calls": 54,
