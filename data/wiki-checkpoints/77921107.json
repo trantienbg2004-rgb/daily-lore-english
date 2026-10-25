@@ -2,10 +2,10 @@
   "pageId": 77921107,
   "title": "Historia de la medicina y la farmacia en Chile",
   "topic": "Health",
-  "status": "EVIDENCE_READY",
+  "status": "RETRY_LATER",
   "revisionId": 1362438704,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1362438704",
-  "reason": "2 rights-verified embedded images",
+  "reason": "Gemini token usage unavailable",
   "rights": [
     {
       "status": "REVIEW",
@@ -189,5 +189,5 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1362438704"
     }
   ],
-  "updatedAt": "2026-10-25T08:56:38.403Z"
+  "updatedAt": "2026-10-25T08:56:44.217Z"
 }
