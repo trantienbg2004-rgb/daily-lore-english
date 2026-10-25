@@ -2,10 +2,10 @@
   "pageId": 47729716,
   "title": "History of the Ireland national rugby union team",
   "topic": "Sports",
-  "status": "DRAFTED",
+  "status": "NEEDS_REVIEW",
   "revisionId": 1324515691,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1324515691",
-  "reason": "draft durably saved before validation",
+  "reason": "editorial: A1-A2:page-5:unsupported-number-context-1948,C1-C2:page-5:unsupported-number-context-1948",
   "rights": [
     {
       "status": "REVIEW",
@@ -364,7 +364,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1324515691"
     }
   ],
-  "updatedAt": "2026-10-25T07:34:54.375Z",
+  "updatedAt": "2026-10-25T07:35:00.480Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -505,5 +505,11 @@
     "output": 233,
     "total": 3384
   },
-  "validation": null
+  "validation": {
+    "accepted": false,
+    "errors": [
+      "A1-A2:page-5:unsupported-number-context-1948",
+      "C1-C2:page-5:unsupported-number-context-1948"
+    ]
+  }
 }
