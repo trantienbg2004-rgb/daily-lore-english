@@ -2,9 +2,140 @@
   "pageId": 2419633,
   "title": "Iatrochemistry",
   "topic": "Health",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1337924227,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1337924227",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-25T08:56:02.634Z"
+  "reason": "1 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Thomas Willis - Diatribae duae medico-philosophicae - quarum prior agit de fermentatione 4430011502 0cec24863c o.jpg"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:Celum philosophorum 1527 Title page AQ8 (3).jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4c/Celum_philosophorum_1527_Title_page_AQ8_%283%29.jpg/960px-Celum_philosophorum_1527_Title_page_AQ8_%283%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Celum philosophorum 1527 Title page AQ8 (3).jpg",
+        "caption": "An image representing water distillation by means of the sun for creating aqua vitae, from Coelum philosophorum by Philippus Ulstadius, 1527",
+        "alt": "",
+        "description": "Title page from Celum philosophorum : heimliheit der naturen genant dis buchlin ... Darin herfür bracht, wie man die rechten kunst, und Quinta Essentia, distillieren. Und den schatz Aurum potabili. Gold in ein trinklich wesen bring, zum und artznei, menschlichem leben hilfflich ir leib in gesuntheit zumbehalten Auchzum teil dienend Alchamei. Auch angehenkt, etliche usszüg und leren von Marsilio vicino, die er dan selber gebraucht, und rüwigs alters. 120. iar alt worden / ... neulich in latein coligiert von dem wohlgelehrtem Ulstadius von Nierei",
+        "date": "1527date QS:P571,+1527-00-00T00:00:00Z/9date QS:P571,+1527-00-00T00:00:00Z/9",
+        "section": "History in Europe",
+        "position": 1,
+        "provenance": {
+          "credit": "Ulstadius, Philippus Ulstadius, Philippus",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Celum_philosophorum_1527_Title_page_AQ8_(3).jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Iatrochemistry",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1337924227",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "f4d6d63374f788b2428c8490ed02134831ea514494210611f8ef76736572b9cc",
+      "heading": "Lead",
+      "excerpt": "Iatrochemistry (from Ancient Greek ἰατρός (iatrós) 'physician, medicine'; also known as chemiatria or chemical medicine) is an archaic pre-s",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1337924227"
+    },
+    {
+      "id": "P2",
+      "hash": "52cc98072855135ae3fa2b0545875e91b17bc99e424324a9590cb5a65ea4ee1f",
+      "heading": "Lead",
+      "excerpt": "This area of science fell out of use in Europe since the rise of modern establishment medicine. Iatrochemistry was popular between 1525 and ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1337924227"
+    },
+    {
+      "id": "P3",
+      "hash": "abcf7fcde904c4e81650ee1a92b5d19abbcf14a3e89ab8ce8f9519c2b98bece4",
+      "heading": "History in Europe",
+      "excerpt": "The preparation of medicines had become a part of alchemy by the early modern period. Around 1350, John of Rupescissa advocated the extracti",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1337924227"
+    },
+    {
+      "id": "P4",
+      "hash": "96ee74b4a76ba62ab1db9c471beb263f8408404399521e1dbe4ca8799ceafde5",
+      "heading": "History in Europe",
+      "excerpt": "The most effective and vocal proponent of iatrochemistry was Theophrastus von Hohenheim, also known as Paracelsus (1493–1541). He put his ef",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1337924227"
+    },
+    {
+      "id": "P5",
+      "hash": "af7be013799d30e35a156b5160b2ade018543c8de6c1aac3327b1af0e9de67f8",
+      "heading": "History in Europe",
+      "excerpt": "Philipp Ulstad, who wrote some of the first books on chemical medicine, paved the way for a closer link between alchemy and medicine. His lu",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1337924227"
+    },
+    {
+      "id": "P6",
+      "hash": "5e8c8f702da99a47b9d9d6039f286c11a941173415ba6f10c7c1d6d92db26968",
+      "heading": "Challenge to Galenic physiology",
+      "excerpt": "Iatrochemistry was a new practice in the 17th century, a time when traditional medicines were based on a legacy from the 4th and 5th centuri",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1337924227"
+    },
+    {
+      "id": "P7",
+      "hash": "f147d1f3b0308ddec8f3ef8ebd2f3323286035cd9d87fc279a8e897ab5764808",
+      "heading": "History in South Asia",
+      "excerpt": "Iatrochemical principles form a major part of the Indian alchemical tradition (Sanskrit rasaśāstra, रसशास्त्र). Alchemical texts start to be",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1337924227"
+    },
+    {
+      "id": "P8",
+      "hash": "cc0a8c8036a23cf33ba60bb229d4fcf7a525924304a50db03b27c8b505c8787d",
+      "heading": "History in Europe",
+      "excerpt": "In 1609, Flemish chemist Jan Baptista van Helmont began a seven-year period of individual research, hoping to explore nature through chemist",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1337924227"
+    },
+    {
+      "id": "P9",
+      "hash": "d8fae895000639dd2d09203390e75416493beb9a65e1f8db3a568d242cb34f8c",
+      "heading": "History in Europe",
+      "excerpt": "Much of van Helmont's medical philosophy was concerned with the activity of vital spirit in nature, which he believed originated from spirit",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1337924227"
+    },
+    {
+      "id": "P10",
+      "hash": "b718bd25d61261c149290b913537af7d92f0783c3210ad311610e1f963a0e0bd",
+      "heading": "History in Europe",
+      "excerpt": "Van Helmont had a bias towards the unity of things. In examining body fluids, he postulated the notion of \"latex\", attempting to relate late",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1337924227"
+    },
+    {
+      "id": "P11",
+      "hash": "dd049d38906eac57b9bdca507f77d879400cde7ca97ed79aedf907cd016bb1fc",
+      "heading": "History in Europe",
+      "excerpt": "Van Helmont's writings had a widespread influence on 17th-century European medical theory, and by 1709, twelve editions of Ortus medicinae h",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1337924227"
+    },
+    {
+      "id": "P12",
+      "hash": "7ffb42985b408db67095c2d006e2c976273bdc4ac3792a747484b08549d73fde",
+      "heading": "History in Europe",
+      "excerpt": "In Germany, van Helmont's philosophy was already a matter of dispute by 1649, and despite censures, Helmontianism gained a large number of f",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1337924227"
+    },
+    {
+      "id": "P13",
+      "hash": "fe3df9fe193d2d25fccd3c98ea2ca4902853702b345faa42375df3886d150748",
+      "heading": "History in Europe",
+      "excerpt": "Possibly being one of the most famous physicians of the 17th and 18th centuries, Herman Boerhaave (1668–1738) approached phenomena in medici",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1337924227"
+    },
+    {
+      "id": "P14",
+      "hash": "0d20e7167b079180885aaad9eac64fb8ce2aef8141a5cddbc7439ad3fc792f07",
+      "heading": "History in Europe",
+      "excerpt": "A German-born physician, Franciscus Sylvius (1614–1672), is best known in 18th-century European medicine for his contributions to the unders",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1337924227"
+    }
+  ],
+  "updatedAt": "2026-10-25T08:56:08.272Z"
 }
