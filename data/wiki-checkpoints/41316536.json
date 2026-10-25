@@ -2,10 +2,10 @@
   "pageId": 41316536,
   "title": "End of history",
   "topic": "Politics",
-  "status": "EVIDENCE_READY",
+  "status": "RETRY_LATER",
   "revisionId": 1375541103,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375541103",
-  "reason": "1 rights-verified embedded images",
+  "reason": "Gemini token usage unavailable",
   "rights": [
     {
       "status": "REVIEW",
@@ -90,5 +90,5 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375541103"
     }
   ],
-  "updatedAt": "2026-10-25T08:57:26.210Z"
+  "updatedAt": "2026-10-25T08:57:32.116Z"
 }
