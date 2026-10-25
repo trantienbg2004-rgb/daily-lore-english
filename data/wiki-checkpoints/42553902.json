@@ -2,10 +2,10 @@
   "pageId": 42553902,
   "title": "Mosquito-malaria theory",
   "topic": "Health",
-  "status": "EVIDENCE_READY",
+  "status": "RETRY_LATER",
   "revisionId": 1378174447,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378174447",
-  "reason": "3 rights-verified embedded images",
+  "reason": "Gemini token usage unavailable",
   "rights": [
     {
       "status": "REVIEW",
@@ -194,5 +194,5 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378174447"
     }
   ],
-  "updatedAt": "2026-10-25T08:54:14.244Z"
+  "updatedAt": "2026-10-25T08:54:20.155Z"
 }
