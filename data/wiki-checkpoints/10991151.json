@@ -257,7 +257,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1310374257"
     }
   ],
-  "updatedAt": "2026-10-25T08:00:24.353Z",
+  "updatedAt": "2026-10-25T08:00:42.284Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -270,7 +270,7 @@
             ]
           },
           {
-            "text": "France played its first official Test match in 1906. They lost to the All Blacks. Later that year, they played England and lost again. In 1910, a new Five Nations tournament began. France got their first win in 1911 against Scotland in Paris.",
+            "text": "France played its first ever Test match in 1906. They lost to the All Blacks. Later that year, they played England and lost again. In 1910, international matches laid the foundation for a Five Nations competition. France got their first win in 1911 against Scotland in Paris.",
             "evidenceIds": [
               "P2",
               "P5"
@@ -283,7 +283,7 @@
             ]
           },
           {
-            "text": "After the Second World War, French rugby grew strong. They shared the Five Nations title for the first time in 1954. They also beat New Zealand for the first time. In 1961, France won the championship all by themselves.",
+            "text": "After the Second World War, French rugby grew strong. They shared the Five Nations title for the first time in 1954 alongside England and Wales. They also recorded their first win over New Zealand. In 1961, the French won the five nations championship outright, becoming a major success.",
             "evidenceIds": [
               "P7",
               "P8"
@@ -378,11 +378,11 @@
       }
     }
   },
-  "repairAttempts": 0,
+  "repairAttempts": 1,
   "lastUsage": {
-    "input": 2925,
-    "output": 1540,
-    "total": 4465
+    "input": 2851,
+    "output": 238,
+    "total": 3089
   },
   "validation": null
 }
