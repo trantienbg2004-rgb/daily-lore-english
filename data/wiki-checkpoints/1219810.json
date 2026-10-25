@@ -2,10 +2,10 @@
   "pageId": 1219810,
   "title": "Historic preservation",
   "topic": "Culture",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1359881177,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1359881177",
-  "reason": "8 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REVIEW",
@@ -348,5 +348,145 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1359881177"
     }
   ],
-  "updatedAt": "2026-10-25T07:14:22.826Z"
+  "updatedAt": "2026-10-25T07:14:40.498Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "Saving Historic Places",
+        "pages": [
+          {
+            "text": "Historic preservation is an effort to protect old buildings and important things from the past. This idea became popular in the twentieth century. It means that cities should protect their history. This work is about buildings and towns, not wild forests.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "In France, people wanted to save old places after the French Revolution. In 1795, a museum opened to show saved art and building pieces. Later, leaders created a special commission to study monuments and give money for fixing them.",
+            "evidenceIds": [
+              "P2",
+              "P4"
+            ]
+          },
+          {
+            "text": "France passed a new law in 1887 to protect historic monuments. Later, another law let the government protect private property without asking the owner. This helped save more old buildings and churches across the country.",
+            "evidenceIds": [
+              "P5"
+            ]
+          },
+          {
+            "text": "In England, the National Trust started in 1894 to help protect special places. Later, in 1983, English Heritage began to care for many historic sites, including Stonehenge and old castles.",
+            "evidenceIds": [
+              "P7",
+              "P8"
+            ]
+          },
+          {
+            "text": "In the United States, preservation work began early. A house in New York became a state historic site in 1850. Today, many laws and rules help protect old buildings, historic districts, and parks all across the country.",
+            "evidenceIds": [
+              "P10",
+              "P11",
+              "P12",
+              "P13"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "The History and Growth of Historic Preservation",
+        "pages": [
+          {
+            "text": "Historic preservation seeks to protect buildings, landscapes, and artifacts of historical significance. Becoming popular in the twentieth century, this philosophical concept maintains that cities should protect their legacy. The term focuses strictly on the built environment rather than wilderness areas.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "The widespread destruction of the French Revolution inspired early protective responses. In 1795, an inventory of castles was completed, and a museum opened to exhibit saved architectural fragments. By the nineteenth century, the French government began providing allowances and appointed inspectors to classify buildings and distribute restoration funds.",
+            "evidenceIds": [
+              "P2",
+              "P3",
+              "P4"
+            ]
+          },
+          {
+            "text": "France passed a key law in 1887 to establish classification procedures and upkeep provisions. A subsequent 1913 law widened protection by allowing the classification of private property without owner consent. Meanwhile, England saw the formation of the National Trust in 1894 and English Heritage in 1983 to manage historic sites.",
+            "evidenceIds": [
+              "P5",
+              "P7",
+              "P8"
+            ]
+          },
+          {
+            "text": "In the United States, early preservation included Washington's Headquarters in New York, designated as a state historic site in 1850. Modern preservation involves historic districts, national parks, and extensive regulatory compliance driven by laws like the National Historic Preservation Act of 1966.",
+            "evidenceIds": [
+              "P10",
+              "P11",
+              "P12",
+              "P13"
+            ]
+          },
+          {
+            "text": "Other nations developed unique approaches. Australia experienced a preservation movement alongside post-war modernization debates, while Israel adapted preservation laws from the British Mandate. Furthermore, a 2026 study revealed that people generally prefer the visual aesthetics of older, registered historic buildings.",
+            "evidenceIds": [
+              "P14",
+              "P16",
+              "P18"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "Global Evolution of Built Heritage Conservation",
+        "pages": [
+          {
+            "text": "Historic preservation, or built heritage conservation, is an endeavor dedicated to safeguarding buildings, objects, and landscapes of historical significance. Emerging as a prominent philosophical concept during the twentieth century, it posits that urban centers bear an obligation to protect their patrimonial legacy, strictly distinguishing the built environment from natural wilderness.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Catalyzed by the turbulence of the French Revolution, institutional preservation efforts emerged in France. Following early artifact salvaging and castle inventories, the Ministry of the Interior instituted funding and appointed inspectors general to classify monuments. By 1837, the official Commission des monuments historiques was established to manage inventories, distribute funds, and train restoration architects.",
+            "evidenceIds": [
+              "P2",
+              "P3",
+              "P4"
+            ]
+          },
+          {
+            "text": "Legislative frameworks in France expanded significantly with the 1887 and 1913 laws, the latter of which permitted the classification of private property without owner consent and broadened criteria from national to public interest. Concurrently, voluntary organizations flourished internationally, such as the National Trust founded in England in 1894 and foundational conservation departments established in the Netherlands.",
+            "evidenceIds": [
+              "P5",
+              "P7",
+              "P9"
+            ]
+          },
+          {
+            "text": "In the United States, early state-level designations eventually matured into comprehensive federal, state, and local regulatory frameworks. By 2018, the vast majority of professional practice focused on regulatory compliance governed by statutes such as the National Historic Preservation Act, local preservation ordinances, and distinct certification requirements for modifying listed properties.",
+            "evidenceIds": [
+              "P10",
+              "P11",
+              "P12",
+              "P13"
+            ]
+          },
+          {
+            "text": "International adoption varied, with nations like Australia balancing post-war modernization with heritage protection, and others incorporating colonial legal frameworks or enacting specific cultural heritage legislation. Complementing these institutional frameworks, recent empirical research indicates a strong public aesthetic preference for registered historic architectural designs.",
+            "evidenceIds": [
+              "P14",
+              "P16",
+              "P17",
+              "P18"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2751,
+    "output": 1530,
+    "total": 4281
+  },
+  "validation": null
 }

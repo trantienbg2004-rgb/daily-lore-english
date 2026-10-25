@@ -8366,10 +8366,10 @@
       "checkedAt": "2026-10-22T09:14:02.054Z"
     },
     "1219810": {
-      "status": "EVIDENCE_READY",
-      "reason": "8 rights-verified embedded images",
+      "status": "DRAFTED",
+      "reason": "draft durably saved before validation",
       "revisionId": 1359881177,
-      "checkedAt": "2026-10-25T07:14:22.825Z"
+      "checkedAt": "2026-10-25T07:14:40.497Z"
     },
     "1223546": {
       "status": "EVIDENCE_READY",
@@ -11930,7 +11930,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-25T07:14:39.287Z",
+  "updatedAt": "2026-10-25T07:14:40.499Z",
   "dailyUsage": {
     "day": "2026-10-25",
     "calls": 15,
