@@ -10704,10 +10704,10 @@
       "checkedAt": "2026-10-23T23:37:06.553Z"
     },
     "37858149": {
-      "status": "FETCHED",
-      "reason": "pinned-source-ready",
+      "status": "EVIDENCE_READY",
+      "reason": "13 rights-verified embedded images",
       "revisionId": 1359591114,
-      "checkedAt": "2026-10-25T08:58:39.417Z"
+      "checkedAt": "2026-10-25T08:58:44.349Z"
     },
     "37872528": {
       "status": "REJECTED",
@@ -12618,7 +12618,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-25T08:58:39.429Z",
+  "updatedAt": "2026-10-25T08:58:44.350Z",
   "dailyUsage": {
     "day": "2026-10-25",
     "calls": 60,

@@ -2,9 +2,464 @@
   "pageId": 37858149,
   "title": "History of hospitals",
   "topic": "Health",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1359591114,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1359591114",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-25T08:58:39.423Z"
+  "reason": "13 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:Patients sleeping in the temple of Aesculapius at Epidaurus. Wellcome V0018154.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/84/Patients_sleeping_in_the_temple_of_Aesculapius_at_Epidaurus._Wellcome_V0018154.jpg/960px-Patients_sleeping_in_the_temple_of_Aesculapius_at_Epidaurus._Wellcome_V0018154.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Patients sleeping in the temple of Aesculapius at Epidaurus. Wellcome V0018154.jpg",
+        "caption": "Painting depicting patients in an Asclepeion in Ancient Greece",
+        "alt": "",
+        "description": "Patients sleeping in the temple of Aesculapius at Epidaurus. Oil painting by Ernest Board. Iconographic Collections Keywords: Ernest Board Patients sleeping in the temple of Aesculapius at Epidaurus. Oil painting by Ernest Board. Iconographic Collections Keywords: Ernest Board",
+        "date": "2016-06-19 15:30:27",
+        "section": "Greece",
+        "position": 0,
+        "provenance": {
+          "credit": "https://wellcomeimages.org/indexplus/obf_images/93/de/b5563e78041cf9b3c8f91517b1ec.jpg Gallery: https://wellcomeimages.org/indexplus/image/V0018154.html Wellcome Collection gallery (2018-04-01): https://wellcomecollection.org/works/pnw2bxdq CC-BY-4.0",
+          "license": "CC BY 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Patients_sleeping_in_the_temple_of_Aesculapius_at_Epidaurus._Wellcome_V0018154.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/History_of_hospitals",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1359591114",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Kos Asklepeion.jpg"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:Nlm nlmuid-101435987-img.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/70/Nlm_nlmuid-101435987-img.jpg/960px-Nlm_nlmuid-101435987-img.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Nlm nlmuid-101435987-img.jpg",
+        "caption": "Reconstruction of Roman military hospital at Windisch, Switzerland",
+        "alt": "",
+        "description": "Image of a woodcut of a Roman military hospital at Windisch, Switzerland",
+        "date": "0500-01-01",
+        "section": "Roman Empire",
+        "position": 2,
+        "provenance": {
+          "credit": "Open source, public image of original woodcut. Hospitals - Military: Reconstruction of Roman military hospital at Windisch, Switzerland",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Nlm_nlmuid-101435987-img.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/History_of_hospitals",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1359591114",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:Sri Lankan Traditional Medicine.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d5/Sri_Lankan_Traditional_Medicine.jpg/960px-Sri_Lankan_Traditional_Medicine.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Sri Lankan Traditional Medicine.jpg",
+        "caption": "Ruins of a two thousand year old hospital were discovered in the historical city of Anuradhapura Mihintale Sri Lanka",
+        "alt": "",
+        "description": "Ruins of a two thousand years old hospital were discovered in the historical city of Anuradhapura Mihintale.",
+        "date": "2013-07-17 05:29:21",
+        "section": "South & East Asia",
+        "position": 3,
+        "provenance": {
+          "credit": "Sanjeewa Padmal Punchihewa",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Sri_Lankan_Traditional_Medicine.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/History_of_hospitals",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1359591114",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:Door of the Moristan of Kala'oon (1878) - TIMEA.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0a/Door_of_the_Moristan_of_Kala%27oon_%281878%29_-_TIMEA.jpg/960px-Door_of_the_Moristan_of_Kala%27oon_%281878%29_-_TIMEA.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Door of the Moristan of Kala'oon (1878) - TIMEA.jpg",
+        "caption": "Entrance to the Qalawun complex in Cairo, Egypt which housed the notable Mansuri hospital.",
+        "alt": "",
+        "description": "Door of the Moristan in Kala'oon, with many people selling things, or sitting nearby.",
+        "date": "1878date QS:P571,+1878-00-00T00:00:00Z/9date QS:P571,+1878-00-00T00:00:00Z/9",
+        "section": "Medieval Islamic hospitals",
+        "position": 4,
+        "provenance": {
+          "credit": "Carl Werner",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Door_of_the_Moristan_of_Kala%27oon_(1878)_-_TIMEA.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/History_of_hospitals",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1359591114",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:LesInvalidesFull.JPG",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b3/LesInvalidesFull.JPG/960px-LesInvalidesFull.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:LesInvalidesFull.JPG",
+        "caption": "The church at Les Invalides in Paris, showing the typically close connection between hospitals and the Catholic church",
+        "alt": "",
+        "description": "The Les Invalides church.",
+        "date": "28 July 2006 (original upload date)",
+        "section": "Medieval European hospitals",
+        "position": 5,
+        "provenance": {
+          "credit": "The creator of this image, Alex Buirds, allows Wikipedia to use it freely.",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:LesInvalidesFull.JPG",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/History_of_hospitals",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1359591114",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:Charles Marville, L’Hôtel-Dieu, du quai Saint Michel. Paris IVe. Vers 1867 - Vergue.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6e/Charles_Marville%2C_L%E2%80%99H%C3%B4tel-Dieu%2C_du_quai_Saint_Michel._Paris_IVe._Vers_1867_-_Vergue.jpg/960px-Charles_Marville%2C_L%E2%80%99H%C3%B4tel-Dieu%2C_du_quai_Saint_Michel._Paris_IVe._Vers_1867_-_Vergue.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Charles Marville, L’Hôtel-Dieu, du quai Saint Michel. Paris IVe. Vers 1867 - Vergue.jpg",
+        "caption": "Hôtel-Dieu of Paris.",
+        "alt": "",
+        "description": "Ancien Hôtel-Dieu de Paris.",
+        "date": "between 1865 and 1868date QS:P,+1865-00-00T00:00:00Z/8,P1319,+1865-00-00T00:00:00Z/9,P1326,+1868-00-",
+        "section": "Medieval European hospitals",
+        "position": 6,
+        "provenance": {
+          "credit": "Charles Marville",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Charles_Marville,_L%E2%80%99H%C3%B4tel-Dieu,_du_quai_Saint_Michel._Paris_IVe._Vers_1867_-_Vergue.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/History_of_hospitals",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1359591114",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Hotel Dieu in Paris about 1500.gif"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:The ruins of St. Giles Leper Hospital - geograph.org.uk - 834044.jpg",
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/3/34/The_ruins_of_St._Giles_Leper_Hospital_-_geograph.org.uk_-_834044.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "fileTitle": "File:The ruins of St. Giles Leper Hospital - geograph.org.uk - 834044.jpg",
+        "caption": "Ruins of St. Giles Hospital (Great Hospital)",
+        "alt": "",
+        "description": "The ruins of St. Giles Leper Hospital It is said that the hospital was founded by Henry II. All that survives is part of the transepts and chancel of a chapel that date from the end of the 12th century. Although the gates were padlocked, it is open to the public at certain times of the year. This is the view from Spital Road.",
+        "date": "2008-06-04",
+        "section": "Late medieval European hospitals",
+        "position": 8,
+        "provenance": {
+          "credit": "Robert Edwards",
+          "license": "CC BY-SA 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:The_ruins_of_St._Giles_Leper_Hospital_-_geograph.org.uk_-_834044.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/History_of_hospitals",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1359591114",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:Remains of St Leonards Hospital, York - panoramio.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/93/Remains_of_St_Leonards_Hospital%2C_York_-_panoramio.jpg/960px-Remains_of_St_Leonards_Hospital%2C_York_-_panoramio.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Remains of St Leonards Hospital, York - panoramio.jpg",
+        "caption": "Ruins of St Leonard's Hospital.",
+        "alt": "",
+        "description": "Remains of St Leonards Hospital, York",
+        "date": "Taken on 24 August 2012",
+        "section": "Late medieval European hospitals",
+        "position": 9,
+        "provenance": {
+          "credit": "Paul Lakin",
+          "license": "CC BY 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Remains_of_St_Leonards_Hospital,_York_-_panoramio.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/History_of_hospitals",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1359591114",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Physician in hospital sickroom printed 1682.jpg"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:Hospicio Cabañas.JPG",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cb/Hospicio_Caba%C3%B1as.JPG/960px-Hospicio_Caba%C3%B1as.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Hospicio Cabañas.JPG",
+        "caption": "Hospicio Cabañas was the largest hospital in colonial America, in Guadalajara, Mexico",
+        "alt": "",
+        "description": "Hospicio Cabañas, Guadalajara, Jalisco, Mexico autor: patrick.denizet",
+        "date": "13 June 2006 (original upload date)",
+        "section": "Colonial Americas",
+        "position": 11,
+        "provenance": {
+          "credit": "No machine-readable author provided. Patrick.denizet~commonswiki assumed (based on copyright claims).",
+          "license": "CC BY-SA 2.5",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.5",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Hospicio_Caba%C3%B1as.JPG",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/History_of_hospitals",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1359591114",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:Guy's Hospital00.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2f/Guy%27s_Hospital00.jpg/960px-Guy%27s_Hospital00.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Guy's Hospital00.jpg",
+        "caption": "1820 Engraving of Guy's Hospital in London one of the first voluntary hospitals to be established in 1724.",
+        "alt": "",
+        "description": "Engraving of Guy's Hospital Entrance",
+        "date": "circa 1820date QS:P,+1820-00-00T00:00:00Z/9,P1480,Q5727902date QS:P,+1820-00-00T00:00:00Z/9,P1480,Q5",
+        "section": "18th century",
+        "position": 12,
+        "provenance": {
+          "credit": "Architectural draughtsman James Elmes (1782-1862), Engraver William Woolnoth (1785-c1836)",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Guy%27s_Hospital00.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/History_of_hospitals",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1359591114",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:'One of the wards in the hospital at Scutari'. Wellcome M0007724 - restoration, cropped.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/97/%27One_of_the_wards_in_the_hospital_at_Scutari%27._Wellcome_M0007724_-_restoration%2C_cropped.jpg/960px-%27One_of_the_wards_in_the_hospital_at_Scutari%27._Wellcome_M0007724_-_restoration%2C_cropped.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:'One of the wards in the hospital at Scutari'. Wellcome M0007724 - restoration, cropped.jpg",
+        "caption": "A ward of the hospital at Scutari where Florence Nightingale worked and helped to restructure the modern hospital.",
+        "alt": "",
+        "description": "Iconographic Collections. Keywords: E. Walker; Florence Nightingale; W.J. Simpson",
+        "date": "\"Published April 21st 1856\"",
+        "section": "United Kingdom",
+        "position": 13,
+        "provenance": {
+          "credit": "William Simpson (artist, 1823–1899) E. Walker (lithographer, lifespan unknown, working for Day & Son) Publishers: Paul and Dominic Colnaghi, London; Goupil & Cie, Paris; Otto Wiegel, Leipzig. Restoration by Adam Cuerden William Simpson (artist, 1823–",
+          "license": "CC BY 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:%27One_of_the_wards_in_the_hospital_at_Scutari%27._Wellcome_M0007724_-_restoration,_cropped.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/History_of_hospitals",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1359591114",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Diacones Kerk Engeland.jpg"
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:Masque d'anesthésie d'Ombredanne 01.JPG",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6d/Masque_d%27anesth%C3%A9sie_d%27Ombredanne_01.JPG/960px-Masque_d%27anesth%C3%A9sie_d%27Ombredanne_01.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:Masque d'anesthésie d'Ombredanne 01.JPG",
+        "caption": "Device used to administer anesthetics through the mouth using an air pump system.",
+        "alt": "",
+        "description": "masque d'anesthésie d'Ombredanne",
+        "date": "2014-02-20 11:56:59",
+        "section": "Anesthetics",
+        "position": 15,
+        "provenance": {
+          "credit": "Coline Bidault & Léa Silvers Chabrier",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Masque_d%27anesth%C3%A9sie_d%27Ombredanne_01.JPG",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/History_of_hospitals",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1359591114",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:ER room after a trauma.jpg",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fe/ER_room_after_a_trauma.jpg/960px-ER_room_after_a_trauma.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:ER room after a trauma.jpg",
+        "caption": "Resuscitation room bed after a trauma intervention, showing the highly technical equipment of modern hospitals",
+        "alt": "",
+        "description": "Emergency room after the treatement of a trauma",
+        "date": "2005-01-06 03:12:28",
+        "section": "20th century",
+        "position": 16,
+        "provenance": {
+          "credit": "Jacob Windham from Mobile, USA",
+          "license": "CC BY 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:ER_room_after_a_trauma.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/History_of_hospitals",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1359591114",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "b09e69b1658fa7e88670379c20d711935d07a5fc54ac62472f3e7cf156c1dc16",
+      "heading": "Lead",
+      "excerpt": "The history of hospitals began in antiquity with hospitals in Greece, the Roman Empire, Sasanian Iran and on the Indian subcontinent as well",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1359591114"
+    },
+    {
+      "id": "P2",
+      "hash": "938f22deed0f317cfc91737946ed444074300646af1c1c14755502a84ee18ecc",
+      "heading": "Lead",
+      "excerpt": "The first Western-style hospital in Japan was established in 1556 by Jesuit missionary Luis de Almeida. Early Chinese and Korean hospitals w",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1359591114"
+    },
+    {
+      "id": "P3",
+      "hash": "de7cf4712e7147cf24fab029a578a47ae585072521d4013bcabde98e77a009fc",
+      "heading": "Antiquity",
+      "excerpt": "In ancient history, hospitals have been documented in Greece, Rome, the Indian subcontinent, and Iran. In ancient cultures, religion and med",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1359591114"
+    },
+    {
+      "id": "P4",
+      "hash": "d18f37fef46b8aa984bf560ba3bb3a543141d8d293974a8ab8f6a3b599c95498",
+      "heading": "Greece",
+      "excerpt": "In ancient Greece, temples dedicated to the healer-god Asclepius, known as Asclepieia (Ancient Greek: Ἀσκληπιεῖα, sing. Asclepieion, Ἀσκληπι",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1359591114"
+    },
+    {
+      "id": "P5",
+      "hash": "99a13b495528f03c34755da8361d9afb0207b6a6d48331746e90768a4460fd73",
+      "heading": "Greece",
+      "excerpt": "At these shrines, patients would enter a dream-like state of induced sleep known as enkoimesis (ἐγκοίμησις) not unlike anesthesia, in which ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1359591114"
+    },
+    {
+      "id": "P6",
+      "hash": "0f97cbab38e0339b220cc369742ddf3e110b4a11327a37d3f45324093cf61e42",
+      "heading": "Roman Empire",
+      "excerpt": "The Romans constructed buildings called valetudinaria for the care of sick slaves, gladiators, and soldiers around 100 BCE, and many were id",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1359591114"
+    },
+    {
+      "id": "P7",
+      "hash": "c4f7b57842a9580860db04c99dae42388370099291eaf9c1fe20cf985b37e415",
+      "heading": "South & East Asia",
+      "excerpt": "During the 4th century BCE in ancient Sri Lanka, according to the Mahāvaṃsa chronicle from the 6th century CE, King Pandukabhaya constructed",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1359591114"
+    },
+    {
+      "id": "P8",
+      "hash": "21162182c1ba35e96cd9f4392746e87576e4fb1b77dd0658a2c13f0dbae252b3",
+      "heading": "5th to the 15th century",
+      "excerpt": "In the Medieval period the term hospital encompassed hostels for travellers, dispensaries for poor relief, clinics and surgeries for the inj",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1359591114"
+    },
+    {
+      "id": "P9",
+      "hash": "4d797a9286b6978845ad161af51ffa50647acf4232c0deed8716d27a1be92362",
+      "heading": "India",
+      "excerpt": "During the Chola Empire (9th to 13th centuries CE), health care was institutionalized via state-supported village dispensaries and hospitals",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1359591114"
+    },
+    {
+      "id": "P10",
+      "hash": "ace0240d7564c146ecec62d5008a1218279a16745f77995178a067feb03bae56",
+      "heading": "Persia",
+      "excerpt": "The Academy of Gondishapur was a hospital and medical training center at Gundeshapur in Persia. The city of Gundeshapur was founded in 271 C",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1359591114"
+    },
+    {
+      "id": "P11",
+      "hash": "819beda3b302339f13b7112b730434046066f6f3c12c4ae487b0aa6b55066fc9",
+      "heading": "Medieval Islamic hospitals",
+      "excerpt": "The first Muslim hospital was an asylum to contain leprosy, built in the early eighth century, where patients were confined but, like the bl",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1359591114"
+    },
+    {
+      "id": "P12",
+      "hash": "e64da9258fb10fd9fc644174fcb58aff81f8dc192be68189b8b5f273a93b6458",
+      "heading": "Medieval European hospitals",
+      "excerpt": "Medieval hospitals in Europe followed a similar pattern to the Byzantine. They were religious communities, with care provided by monks and n",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1359591114"
+    },
+    {
+      "id": "P13",
+      "hash": "5fb4ef7e99bcca5c85556f0f3e7c40e65846ade1cb3e3f0562dc21079ade56aa",
+      "heading": "Late medieval European hospitals",
+      "excerpt": "The Hospitaller Order of St. John of Jerusalem, founded in 1099 (The Knights of Malta) itself has – as its raison d'être – the founding of a",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1359591114"
+    },
+    {
+      "id": "P14",
+      "hash": "9ad86a75f0323bbfed156199da460aaddfaa129234172e893a658d104071afa6",
+      "heading": "Early modern Europe",
+      "excerpt": "In Europe the medieval concept of Christian care evolved during the sixteenth and seventeenth centuries into a secular one. Theology was the",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1359591114"
+    },
+    {
+      "id": "P15",
+      "hash": "7090b12857d7f6779ce00abea9ef5be9913c67e36a2bf4a4bd0be4ce791f2acb",
+      "heading": "Colonial Americas",
+      "excerpt": "The first hospital founded in the Americas was the Hospital San Nicolás de Bari in Santo Domingo, Distrito Nacional Dominican Republic. Fray",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1359591114"
+    },
+    {
+      "id": "P16",
+      "hash": "63629c4aea49e5bb5d7a02114e426c5a060a69751553a859934820151557eeb1",
+      "heading": "18th century",
+      "excerpt": "In the 18th century, under the influence of the Age of Enlightenment, the modern hospital began to appear, serving only medical needs and st",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1359591114"
+    },
+    {
+      "id": "P17",
+      "hash": "6fb2c5db4f5e48e5fe1322b338fa22b99f74b397da72ea27bacc24605eff0b2a",
+      "heading": "United Kingdom",
+      "excerpt": "English physician Thomas Percival (1740–1804) wrote a comprehensive system of medical conduct, Medical Ethics; or, a Code of Institutes and ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1359591114"
+    }
+  ],
+  "updatedAt": "2026-10-25T08:58:44.349Z"
 }
