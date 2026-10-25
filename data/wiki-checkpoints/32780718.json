@@ -2,9 +2,138 @@
   "pageId": 32780718,
   "title": "Gender bias in medical diagnosis",
   "topic": "Health",
-  "status": "FETCHED",
+  "status": "EVIDENCE_READY",
   "revisionId": 1375831311,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375831311",
-  "reason": "pinned-source-ready",
-  "updatedAt": "2026-10-25T08:52:44.896Z"
+  "reason": "2 rights-verified embedded images",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:NIHR-infographic-women-in-healthcare.png",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/18/NIHR-infographic-women-in-healthcare.png/960px-NIHR-infographic-women-in-healthcare.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:NIHR-infographic-women-in-healthcare.png",
+        "caption": "Not being listened to is a common experience of women in healthcare.",
+        "alt": "",
+        "description": "Not being listened to is a common experience of women in healthcare.",
+        "date": "2022-11-23",
+        "section": "",
+        "position": 0,
+        "provenance": {
+          "credit": "National Institute for Health and Care Research",
+          "license": "CC BY 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:NIHR-infographic-women-in-healthcare.png",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Gender_bias_in_medical_diagnosis",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375831311",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-embedded-image",
+      "fileTitle": "File:Signs and Symptoms of Anxiety, Wikiversity Motivation and emotion, Slide 3.jpg",
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/7/7e/Signs_and_Symptoms_of_Anxiety%2C_Wikiversity_Motivation_and_emotion%2C_Slide_3.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "fileTitle": "File:Signs and Symptoms of Anxiety, Wikiversity Motivation and emotion, Slide 3.jpg",
+        "caption": "The signs and symptoms of PTSD",
+        "alt": "",
+        "description": "signs and symptoms ptsd",
+        "date": "2010-11-05",
+        "section": "Psychological diagnosis",
+        "position": 1,
+        "provenance": {
+          "credit": "Gajah",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Signs_and_Symptoms_of_Anxiety,_Wikiversity_Motivation_and_emotion,_Slide_3.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Gender_bias_in_medical_diagnosis",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375831311",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "19ed972be1a0dede86cb2cb6b02d99064f3d417fa712ce3860bf72140c29ab33",
+      "heading": "Lead",
+      "excerpt": "Gender-biased diagnosing is the idea that medical and psychological diagnosis are influenced by the patient's gender. Several studies have f",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375831311"
+    },
+    {
+      "id": "P2",
+      "hash": "f7b0907546e8475868f9de1edba2ae18d08c70215be91865f0178ecd7bb11e8f",
+      "heading": "Medical bias",
+      "excerpt": "The possibility of gender differences in experiences of pain has led to a discrepancy in treating female patients' pain over that of male pa",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375831311"
+    },
+    {
+      "id": "P3",
+      "hash": "99f300af9656b99d092b16928fd3d3b0b82dda78d46e0d62dcfc815097da8ca2",
+      "heading": "Medical bias",
+      "excerpt": "Clinical offices that rely on healthcare routines become less distinct due to biased medical knowledge of gender. There is a distinct differ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375831311"
+    },
+    {
+      "id": "P4",
+      "hash": "74d080e91129d908f6e362d59ea675440354bc2da583fc2282fed16cb0b7c723",
+      "heading": "Medical bias",
+      "excerpt": "An example of a specific condition from which an extreme gender bias and differential medical attention and treatment can be noted is that o",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375831311"
+    },
+    {
+      "id": "P5",
+      "hash": "7ccf49fffbcc01cf3d604098a4c88a69e02e55bbb544813ccd84d33334bc6b66",
+      "heading": "Sex Differences and Clinical Trials",
+      "excerpt": "Men and women are biologically different. They differ in the mechanical workings of their hearts and in their lung capacities, resulting in ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375831311"
+    },
+    {
+      "id": "P6",
+      "hash": "1c49f7ddf82d5926f496325a811240e101ee42bc82c81e113abc400f6dc2512f",
+      "heading": "Pain bias",
+      "excerpt": "In recent decades, there has been increasing attention given to the disparity between the treatment of pain in females compared to males. Ch",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375831311"
+    },
+    {
+      "id": "P7",
+      "hash": "cd7cb09c47ff9a19fa04c42fde4bbd716c8ec9f6c31cce1f19ff78a41d379da4",
+      "heading": "Western cultural recognition of pain bias",
+      "excerpt": "As the issue of pain bias becomes more popular, media coverage of the topic has also increased. In 2014, the National Pain Report conducted ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375831311"
+    },
+    {
+      "id": "P8",
+      "hash": "dfbb681f1ef0e00a03883fdc7721e17c88ba8ccb98b9780e926a1c45f5758682",
+      "heading": "Consequences of bias",
+      "excerpt": "A study from NIH regarding aversion to medical attention shows 33.3% of participants receiving \"unfavorable evaluations\", largely deriving f",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375831311"
+    },
+    {
+      "id": "P9",
+      "hash": "b6dab7f27b46ac7927722550d8977e8f25ef3ce2e7832010cc48cade46c1c06d",
+      "heading": "Psychological diagnosis",
+      "excerpt": "Studies have shown that gender bias exists in many psychological areas. Primarily, it can appear within the caregiver assigning the diagnosi",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375831311"
+    },
+    {
+      "id": "P10",
+      "hash": "126f607c65aa2a704b7e5b2f17eeda6389fb8ccb2b62d469103f5adbe13814d2",
+      "heading": "Female patients",
+      "excerpt": "Women have been described in studies and in narratives as hysterical and neurotic, and many feel that physicians take their pain less seriou",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375831311"
+    },
+    {
+      "id": "P11",
+      "hash": "1b3095e54807cf18294767ea998cc122d9209ce9e95488668bfdec02b83fbb24",
+      "heading": "Intersection of gender and racial bias",
+      "excerpt": "Specifically, Black women and women of color (WoC) are faced with significant bias surrounding their medical experiences, due to the interse",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1375831311"
+    }
+  ],
+  "updatedAt": "2026-10-25T08:52:50.237Z"
 }
