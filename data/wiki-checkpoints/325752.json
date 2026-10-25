@@ -2,10 +2,10 @@
   "pageId": 325752,
   "title": "Hadhramaut",
   "topic": "History & Geography",
-  "status": "DRAFTED",
+  "status": "VALIDATED",
   "revisionId": 1378336413,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378336413",
-  "reason": "draft durably saved before validation",
+  "reason": "local factual, style, length, structure and source audit passed",
   "rights": [
     {
       "status": "REVIEW",
@@ -424,7 +424,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378336413"
     }
   ],
-  "updatedAt": "2026-10-25T07:38:42.606Z",
+  "updatedAt": "2026-10-25T07:39:00.620Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -570,5 +570,8 @@
     "output": 1119,
     "total": 4251
   },
-  "validation": null
+  "validation": {
+    "accepted": true,
+    "errors": []
+  }
 }
