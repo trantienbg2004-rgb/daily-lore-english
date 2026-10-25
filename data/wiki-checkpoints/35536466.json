@@ -2,10 +2,10 @@
   "pageId": 35536466,
   "title": "Issue voting",
   "topic": "Politics",
-  "status": "EVIDENCE_READY",
+  "status": "RETRY_LATER",
   "revisionId": 1360088831,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1360088831",
-  "reason": "1 rights-verified embedded images",
+  "reason": "Gemini token usage unavailable",
   "rights": [
     {
       "status": "REVIEW",
@@ -160,5 +160,5 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1360088831"
     }
   ],
-  "updatedAt": "2026-10-25T08:50:50.080Z"
+  "updatedAt": "2026-10-25T08:50:56.072Z"
 }
