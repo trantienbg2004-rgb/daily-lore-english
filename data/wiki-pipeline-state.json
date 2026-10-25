@@ -8250,10 +8250,10 @@
       "checkedAt": "2026-10-24T07:16:38.747Z"
     },
     "272065": {
-      "status": "PENDING",
-      "reason": "queued",
+      "status": "FETCHED",
+      "reason": "pinned-source-ready",
       "revisionId": 1374736876,
-      "checkedAt": null
+      "checkedAt": "2026-10-25T08:52:08.307Z"
     },
     "274119": {
       "status": "NEEDS_REVIEW",
@@ -12618,7 +12618,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-25T08:52:02.086Z",
+  "updatedAt": "2026-10-25T08:52:08.322Z",
   "dailyUsage": {
     "day": "2026-10-25",
     "calls": 60,
