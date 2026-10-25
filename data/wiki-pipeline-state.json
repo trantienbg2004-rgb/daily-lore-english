@@ -8082,10 +8082,10 @@
       "checkedAt": "2026-10-23T23:34:54.261Z"
     },
     "82813": {
-      "status": "RETRY_LATER",
-      "reason": "Gemini returned invalid JSON (finish=unknown, chars=0); preserve candidate",
+      "status": "EVIDENCE_READY",
+      "reason": "2 rights-verified embedded images",
       "revisionId": 1377986531,
-      "checkedAt": "2026-10-24T09:45:53.749Z"
+      "checkedAt": "2026-10-25T08:24:20.175Z"
     },
     "89732": {
       "status": "PUBLISHED",
@@ -12618,7 +12618,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-25T08:24:17.686Z",
+  "updatedAt": "2026-10-25T08:24:20.177Z",
   "dailyUsage": {
     "day": "2026-10-25",
     "calls": 59,
