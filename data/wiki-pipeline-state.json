@@ -9830,10 +9830,10 @@
       "checkedAt": "2026-10-24T10:42:23.029Z"
     },
     "26636309": {
-      "status": "VALIDATED",
-      "reason": "local factual, style, length, structure and source audit passed",
+      "status": "PUBLISHED",
+      "reason": "4 verified embedded images",
       "revisionId": 1379778823,
-      "checkedAt": "2026-10-25T07:14:09.650Z"
+      "checkedAt": "2026-10-25T07:14:15.719Z"
     },
     "26651464": {
       "status": "RETRY_LATER",
@@ -11930,7 +11930,7 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-25T07:14:09.652Z",
+  "updatedAt": "2026-10-25T07:14:15.720Z",
   "dailyUsage": {
     "day": "2026-10-25",
     "calls": 14,
