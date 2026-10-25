@@ -2,10 +2,10 @@
   "pageId": 54751,
   "title": "Central Tibetan Administration",
   "topic": "Society",
-  "status": "EVIDENCE_READY",
+  "status": "DRAFTED",
   "revisionId": 1376222781,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376222781",
-  "reason": "3 rights-verified embedded images",
+  "reason": "draft durably saved before validation",
   "rights": [
     {
       "status": "REJECTED",
@@ -248,5 +248,136 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1376222781"
     }
   ],
-  "updatedAt": "2026-10-25T08:04:43.119Z"
+  "updatedAt": "2026-10-25T08:05:00.600Z",
+  "draft": {
+    "variants": {
+      "A1-A2": {
+        "headline": "The Central Tibetan Administration",
+        "pages": [
+          {
+            "text": "The Central Tibetan Administration is the government-in-exile of Tibet. It is based in Dharamshala, India. It has a judiciary branch, a legislative branch, and an executive branch. The organization offers support and services to the Tibetan exile community.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "The 14th Dalai Lama escaped Tibet for India in early March 1959. In April 1959, he re-established the Kashag. Later, he became the permanent head of the Tibetan Administration. He also led executive functions for Tibetans living in exile.",
+            "evidenceIds": [
+              "P2"
+            ]
+          },
+          {
+            "text": "Tibetan refugees and diaspora support the administration. They vote for members of parliament and the Sikyong. They also make annual financial contributions by using the Green Book. Other organizations and individuals around the world also give support.",
+            "evidenceIds": [
+              "P3"
+            ]
+          },
+          {
+            "text": "The administration attends to the welfare of the Tibetan exile community in India. There are about 100,000 refugees living there. The group runs schools, health services, and cultural activities. More refugees continue to arrive from China each year.",
+            "evidenceIds": [
+              "P6"
+            ]
+          },
+          {
+            "text": "Funding for the organization comes from private donations and governments. The Tibet Fund helps collect these donations. The Green Book and aid from countries like the United States also provide revenue. It helps pay for many community projects.",
+            "evidenceIds": [
+              "P5"
+            ]
+          }
+        ]
+      },
+      "B1-B2": {
+        "headline": "Inside the Tibetan Government-in-Exile",
+        "pages": [
+          {
+            "text": "The Central Tibetan Administration serves as the government-in-exile for Tibetans, operating from its headquarters in Dharamshala, India. Structured similarly to a formal government, it includes a judiciary branch, a legislative branch, and an executive branch to provide essential services to the Tibetan exile community.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "Following his escape from Tibet to India in 1959, the 14th Dalai Lama re-established the Kashag cabinet. Over the decades, his role evolved as he promulgated a constitution in 1963 and became the permanent head of the administration. By 2011, the Charter of Tibetans in Exile was updated to remove his political duties.",
+            "evidenceIds": [
+              "P2",
+              "P4"
+            ]
+          },
+          {
+            "text": "The Tibetan diaspora actively participates by voting for members of parliament and the Sikyong. Supporters contribute financially using the Green Book or the Blue Book. The administration relies on these contributions, along with international aid from governments and organizations, to fund its operations.",
+            "evidenceIds": [
+              "P3",
+              "P5",
+              "P8"
+            ]
+          },
+          {
+            "text": "In India, the administration looks after an exile community numbering around 100,000 people. Working alongside the Indian government, it has established numerous settlements. It also runs local schools, health services, economic development projects, and cultural programs.",
+            "evidenceIds": [
+              "P6",
+              "P11"
+            ]
+          },
+          {
+            "text": "Although not recognized as a sovereign government by any country, the administration receives substantial international support. The United States has provided significant grants over the years, though funding levels have sometimes faced political debate and temporary halts before being restored.",
+            "evidenceIds": [
+              "P13",
+              "P17",
+              "P18"
+            ]
+          }
+        ]
+      },
+      "C1-C2": {
+        "headline": "Evolution of the Central Tibetan Administration",
+        "pages": [
+          {
+            "text": "Headquartered in Dharamshala, India, the Central Tibetan Administration functions as the government-in-exile for the Tibetan populace. Its institutional framework comprises distinct judicial, legislative, and executive branches designed to administer governance and deliver comprehensive support services to the global Tibetan diaspora.",
+            "evidenceIds": [
+              "P1"
+            ]
+          },
+          {
+            "text": "The institutional genesis traces back to early 1959 when the 14th Dalai Lama fled Tibet and subsequently re-established the Kashag cabinet. Subsequent constitutional developments, including the 1963 promulgation of the Constitution of Tibet, formalized governance structures. In 2011, amendments to the Charter of Tibetans in Exile formally divested the Dalai Lama of political authority, transferring executive leadership to the elected Sikyong.",
+            "evidenceIds": [
+              "P2",
+              "P4",
+              "P9",
+              "P21"
+            ]
+          },
+          {
+            "text": "Financial sustainability relies upon a multifaceted revenue model. This mechanism incorporates private donations facilitated by organizations such as the Tibet Fund, voluntary contributions recorded via the Green Book system, and international state aid. The administration also issues Blue Books to global supporters to fund educational and humanitarian initiatives.",
+            "evidenceIds": [
+              "P5",
+              "P7",
+              "P8"
+            ]
+          },
+          {
+            "text": "Operating within India, the administration coordinates welfare initiatives for an exile demographic numbering approximately 100,000. Collaborating with the host government, it has overseen the construction of numerous protected settlements since the 1960s, while concurrently administering educational, healthcare, and economic development projects.",
+            "evidenceIds": [
+              "P6",
+              "P11"
+            ]
+          },
+          {
+            "text": "While lacking official recognition as a sovereign state by any foreign government, the administration engages in extensive international diplomacy and receives foreign financial assistance. Historical disclosures revealed past intelligence-linked funding during the Cold War, while contemporary operations navigate shifting foreign policies, including periodic funding adjustments by the United States government.",
+            "evidenceIds": [
+              "P13",
+              "P16",
+              "P18",
+              "P22"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "repairAttempts": 0,
+  "lastUsage": {
+    "input": 2803,
+    "output": 1488,
+    "total": 4291
+  },
+  "validation": null
 }
