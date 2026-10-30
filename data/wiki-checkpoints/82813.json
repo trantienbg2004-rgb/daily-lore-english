@@ -2,10 +2,10 @@
   "pageId": 82813,
   "title": "Pelops",
   "topic": "Sports",
-  "status": "EVIDENCE_READY",
+  "status": "RETRY_LATER",
   "revisionId": 1377986531,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377986531",
-  "reason": "2 rights-verified embedded images",
+  "reason": "Gemini returned invalid JSON (finish=unknown, chars=0); preserve candidate",
   "rights": [
     {
       "status": "REVIEW",
@@ -215,5 +215,5 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1377986531"
     }
   ],
-  "updatedAt": "2026-10-30T07:20:29.827Z"
+  "updatedAt": "2026-10-30T07:20:37.325Z"
 }
