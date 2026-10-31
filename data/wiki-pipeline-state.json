@@ -8082,10 +8082,10 @@
       "checkedAt": "2026-10-23T23:34:54.261Z"
     },
     "82813": {
-      "status": "RETRY_LATER",
-      "reason": "Gemini returned invalid JSON (finish=unknown, chars=0); preserve candidate",
+      "status": "EVIDENCE_READY",
+      "reason": "2 rights-verified embedded images",
       "revisionId": 1377986531,
-      "checkedAt": "2026-10-30T07:20:37.325Z"
+      "checkedAt": "2026-10-31T07:24:05.532Z"
     },
     "89732": {
       "status": "PUBLISHED",
@@ -12618,16 +12618,14 @@
       "checkedAt": "2026-10-22T08:31:43.075Z"
     }
   },
-  "updatedAt": "2026-10-31T06:59:02.955Z",
+  "updatedAt": "2026-10-31T07:24:05.534Z",
   "dailyUsage": {
-    "day": "2026-10-30",
-    "calls": 1,
+    "day": "2026-10-31",
+    "calls": 0,
     "tokens": 0,
-    "usageUnknown": true,
-    "tokenAccountingUnavailable": true,
-    "modelCalls": {
-      "gemini-3.5-flash-lite": 1
-    },
+    "usageUnknown": false,
+    "tokenAccountingUnavailable": false,
+    "modelCalls": {},
     "legacyUnattributedCalls": 0
   },
   "lastAutoDiscoveryAtByTopic": {
