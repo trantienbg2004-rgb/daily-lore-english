@@ -106,7 +106,8 @@ const approvedLicense=value=>{
 export function verifyEmbeddedImage(figure,page){
  const info=page?.imageinfo?.[0],meta=info?.extmetadata||{}
  const license=markupText(meta.LicenseShortName?.value||meta.License?.value)
- const licenseUrl=String(meta.LicenseUrl?.value||'')
+ const rawLicenseUrl=String(meta.LicenseUrl?.value||'').trim()
+ const licenseUrl=rawLicenseUrl.replace(/^http:\/\/(creativecommons\.org\/)/i,'https://$1')
  const artist=markupText(meta.Artist?.value||meta.Credit?.value)
  const restrictions=markupText(meta.Restrictions?.value)
  const pd=/^(?:public domain|cc0|pd-)/i.test(license)

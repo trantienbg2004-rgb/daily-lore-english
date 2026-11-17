@@ -228,4 +228,80 @@ export function planReadingPages(item, fits, {maxPages = 250} = {}) {
   return pages
 }
 
+export function planAnchoredWikiPages(item, fits, {maxPages = 250} = {}) {
+  const originals = item?._sourcePages || item?.pages || []
+  const raw = trim(originals.map(p => p?.text || '').join(' '))
+  if (!raw) return []
+  const pages = []
+  for (let s = 0; s < originals.length && pages.length < maxPages; s++) {
+    const sourcePage = originals[s] || {}
+    const pageRaw = trim(sourcePage.text)
+    const image = sourcePage.image ? sourcePage : null
+    if (!pageRaw) {
+      if (image) {
+        pages.push({image: image.image, caption: image.caption || '', ...(image.imageProvenance ? {imageProvenance: image.imageProvenance} : {}), text: ''})
+      }
+      continue
+    }
+    const isCover = s === 0 && pages.length === 0
+    if (fits({text: pageRaw, cover: isCover, image})) {
+      pages.push({image: image?.image || '', caption: image?.caption || '', ...(image?.imageProvenance ? {imageProvenance: image.imageProvenance} : {}), text: pageRaw})
+      continue
+    }
+    const units = sentenceUnits(pageRaw)
+    let index = 0, fragment = '', sliceIndex = 0
+    while ((index < units.length || fragment) && pages.length < maxPages) {
+      const sliceImage = sliceIndex === 0 ? image : null
+      const sliceCover = s === 0 && pages.length === 0
+      const canFit = text => fits({text, cover: sliceCover, image: sliceImage})
+      let text = ''
+      const queue = fragment ? [fragment, ...units.slice(index + 1)] : units.slice(index)
+      let count = 0
+      for (const candidate of queue) {
+        const next = text ? `${text} ${candidate}` : candidate
+        if (!canFit(next)) break
+        text = next; count++
+      }
+      if (count) {
+        if (sliceCover && sliceImage && count < queue.length && wordCount(text) < 12) {
+          const following = queue[count]
+          const join = part => text ? `${text} ${part}` : part
+          const [first, rest] = splitOversizedSentence(following, part => canFit(join(part)))
+          if (wordCount(first) >= 8 && rest && canFit(join(first))) {
+            text = join(first)
+            index += count
+            fragment = rest
+            pages.push({image: sliceImage?.image || '', caption: sliceImage?.caption || '', ...(sliceImage?.imageProvenance ? {imageProvenance: sliceImage.imageProvenance} : {}), text})
+            sliceIndex++
+            continue
+          }
+        }
+        if (fragment) { fragment = ''; index += count }
+        else index += count
+      } else if (sliceImage) {
+        const current = fragment || units[index]
+        const [first, rest] = splitOversizedSentence(current, canFit)
+        if (wordCount(first) >= 6 && canFit(first)) {
+          text = first
+          if (rest) fragment = rest
+          else { fragment = ''; index++ }
+        } else {
+          text = ''
+        }
+      } else {
+        const current = fragment || units[index]
+        const [first, rest] = splitOversizedSentence(current, canFit)
+        text = first
+        if (rest) fragment = rest
+        else { fragment = ''; index++ }
+      }
+      pages.push({image: sliceImage?.image || '', caption: sliceImage?.caption || '', ...(sliceImage?.imageProvenance ? {imageProvenance: sliceImage.imageProvenance} : {}), text})
+      sliceIndex++
+    }
+    if (index < units.length || fragment) throw Error('Reading article exceeds page safety limit; source preserved')
+  }
+  if (trim(pages.map(p => p.text).join(' ')) !== raw) throw Error('Paginator text-integrity check failed')
+  return pages
+}
+
 export {wordCount}

@@ -1,0 +1,2130 @@
+{
+  "checkedAt": "2026-11-17T16:04:15.947Z",
+  "liveWikipediaVerified": false,
+  "liveSourcesChecked": 0,
+  "total": 151,
+  "targetStories": 200,
+  "meetsQuantity": false,
+  "withCover": 147,
+  "passed": 27,
+  "failed": 124,
+  "byTopic": {
+    "Science & Technology": 16,
+    "Environment": 15,
+    "Culture": 15,
+    "Health": 15,
+    "History & Geography": 15,
+    "Sports": 12,
+    "Politics": 16,
+    "Economy": 16,
+    "Society": 15,
+    "Conflict & Security": 16
+  },
+  "failures": [
+    {
+      "id": "saga-wiki:174410",
+      "sourceTitle": "Armillary sphere",
+      "category": "Science & Technology",
+      "revisionId": 1380728957,
+      "passed": false,
+      "errors": [
+        "A1-A2:page-3:image-subject-mismatch",
+        "A1-A2:page-4:image-subject-mismatch",
+        "B1-B2:page-4:image-subject-mismatch",
+        "C1-C2:page-4:image-subject-mismatch"
+      ],
+      "warnings": []
+    },
+    {
+      "id": "saga-wiki:41241080",
+      "sourceTitle": "History of advertising",
+      "category": "Economy",
+      "revisionId": 1379614259,
+      "passed": false,
+      "errors": [
+        "A1-A2:page-5:image-subject-mismatch",
+        "B1-B2:page-5:image-subject-mismatch",
+        "C1-C2:page-5:image-subject-mismatch"
+      ],
+      "warnings": []
+    },
+    {
+      "id": "saga-wiki:79425227",
+      "sourceTitle": "1878 Kanak revolt",
+      "category": "Society",
+      "revisionId": 1380582529,
+      "passed": false,
+      "errors": [
+        "A1-A2:page-6:image-subject-mismatch",
+        "B1-B2:page-6:image-subject-mismatch",
+        "C1-C2:page-6:image-subject-mismatch"
+      ],
+      "warnings": []
+    },
+    {
+      "id": "saga-wiki:62270764",
+      "sourceTitle": "History of climate change policy and politics",
+      "category": "Politics",
+      "revisionId": 1365696671,
+      "passed": false,
+      "errors": [
+        "A1-A2:page-3:image-subject-mismatch",
+        "C1-C2:page-3:image-subject-mismatch"
+      ],
+      "warnings": []
+    },
+    {
+      "id": "saga-wiki:31376228",
+      "sourceTitle": "Economic history of the Arab world",
+      "category": "Economy",
+      "revisionId": 1274814693,
+      "passed": false,
+      "errors": [
+        "image:missing-cover-page-1"
+      ],
+      "warnings": []
+    },
+    {
+      "id": "saga-wiki:13774191",
+      "sourceTitle": "Expansionism",
+      "category": "Politics",
+      "revisionId": 1369577066,
+      "passed": false,
+      "errors": [
+        "image:missing-cover-page-1"
+      ],
+      "warnings": []
+    },
+    {
+      "id": "saga-wiki:627246",
+      "sourceTitle": "History of alternative medicine",
+      "category": "Health",
+      "revisionId": 1374127706,
+      "passed": false,
+      "errors": [
+        "image:missing-cover-page-1",
+        "A1-A2:page-3:image-subject-mismatch",
+        "C1-C2:page-5:image-subject-mismatch"
+      ],
+      "warnings": []
+    },
+    {
+      "id": "saga-wiki:45633",
+      "sourceTitle": "Economic history",
+      "category": "Economy",
+      "revisionId": 1377126508,
+      "passed": false,
+      "errors": [
+        "image:missing-cover-page-1",
+        "A1-A2:page-6:image-era-conflict:1867/1867 vs 2000",
+        "B1-B2:page-6:image-subject-mismatch",
+        "C1-C2:page-6:image-subject-mismatch"
+      ],
+      "warnings": []
+    },
+    {
+      "id": "saga-wiki:27566",
+      "sourceTitle": "Summer Olympic Games",
+      "category": "Sports",
+      "revisionId": 1381114289,
+      "passed": false,
+      "errors": [
+        "A1-A2:page-1:image-era-conflict:2000/2000 vs 1896",
+        "C1-C2:page-1:image-era-conflict:2000/2000 vs 1894/1896"
+      ],
+      "warnings": []
+    },
+    {
+      "id": "saga-wiki:3487647",
+      "sourceTitle": "International Force East Timor",
+      "category": "Conflict & Security",
+      "revisionId": 1371793899,
+      "passed": false,
+      "errors": [
+        "A1-A2:page-5:image-subject-mismatch",
+        "B1-B2:page-5:image-subject-mismatch",
+        "C1-C2:page-5:image-subject-mismatch"
+      ],
+      "warnings": []
+    },
+    {
+      "id": "saga-wiki:63925372",
+      "sourceTitle": "Hebraization of Palestinian place names",
+      "category": "History & Geography",
+      "revisionId": 1378076101,
+      "passed": false,
+      "errors": [
+        "A1-A2:page-3:image-subject-mismatch",
+        "B1-B2:page-2:image-subject-mismatch",
+        "B1-B2:page-3:image-subject-mismatch",
+        "C1-C2:page-2:image-subject-mismatch",
+        "C1-C2:page-3:image-subject-mismatch"
+      ],
+      "warnings": [
+        "C1-C2:page-1:cover-caption-indirect"
+      ]
+    },
+    {
+      "id": "saga-wiki:9528025",
+      "sourceTitle": "Greenhouse gas emissions",
+      "category": "Environment",
+      "revisionId": 1378994389,
+      "passed": false,
+      "errors": [
+        "A1-A2:page-2:image-subject-mismatch",
+        "B1-B2:page-3:image-era-conflict:1800 vs 1750/1950",
+        "C1-C2:page-3:image-era-conflict:1800 vs 1750/1950"
+      ],
+      "warnings": []
+    },
+    {
+      "id": "saga-wiki:676659",
+      "sourceTitle": "Rwandan genocide",
+      "category": "Conflict & Security",
+      "revisionId": 1381063357,
+      "passed": false,
+      "errors": [
+        "A1-A2:page-4:image-subject-mismatch",
+        "B1-B2:page-4:image-subject-mismatch",
+        "C1-C2:page-3:image-subject-mismatch",
+        "C1-C2:page-4:image-subject-mismatch"
+      ],
+      "warnings": []
+    },
+    {
+      "id": "saga-wiki:69713049",
+      "sourceTitle": "Criminalization of homosexuality",
+      "category": "Society",
+      "revisionId": 1381055731,
+      "passed": false,
+      "errors": [
+        "A1-A2:page-2:image-subject-mismatch",
+        "A1-A2:page-3:image-subject-mismatch",
+        "A1-A2:page-4:image-subject-mismatch",
+        "B1-B2:page-2:image-subject-mismatch",
+        "B1-B2:page-3:image-subject-mismatch",
+        "B1-B2:page-4:image-subject-mismatch",
+        "C1-C2:page-2:image-subject-mismatch",
+        "C1-C2:page-3:image-subject-mismatch",
+        "C1-C2:page-4:image-subject-mismatch"
+      ],
+      "warnings": [
+        "B1-B2:page-1:cover-caption-indirect",
+        "C1-C2:page-1:cover-caption-indirect"
+      ]
+    },
+    {
+      "id": "saga-wiki:5951576",
+      "sourceTitle": "History of electromagnetic theory",
+      "category": "Science & Technology",
+      "revisionId": 1378298061,
+      "passed": false,
+      "errors": [
+        "A1-A2:page-2:image-subject-mismatch",
+        "A1-A2:page-3:image-subject-mismatch",
+        "A1-A2:page-4:image-subject-mismatch",
+        "B1-B2:page-2:image-subject-mismatch",
+        "B1-B2:page-3:image-subject-mismatch",
+        "B1-B2:page-4:image-subject-mismatch",
+        "C1-C2:page-2:image-subject-mismatch",
+        "C1-C2:page-3:image-subject-mismatch",
+        "C1-C2:page-4:image-subject-mismatch"
+      ],
+      "warnings": []
+    },
+    {
+      "id": "saga-wiki:3201",
+      "sourceTitle": "Causes of climate change",
+      "category": "Environment",
+      "revisionId": 1370321979,
+      "passed": false,
+      "errors": [
+        "B1-B2:page-3:image-subject-mismatch"
+      ],
+      "warnings": []
+    },
+    {
+      "id": "saga-wiki:308634",
+      "sourceTitle": "Olympia, Greece",
+      "category": "Sports",
+      "revisionId": 1375868976,
+      "passed": false,
+      "errors": [
+        "A1-A2:page-2:image-subject-mismatch",
+        "A1-A2:page-4:image-subject-mismatch",
+        "B1-B2:page-2:image-subject-mismatch",
+        "C1-C2:page-2:image-subject-mismatch",
+        "C1-C2:page-4:image-subject-mismatch"
+      ],
+      "warnings": []
+    },
+    {
+      "id": "saga-wiki:38894",
+      "sourceTitle": "Abolitionism",
+      "category": "Politics",
+      "revisionId": 1381215194,
+      "passed": false,
+      "errors": [
+        "A1-A2:page-2:image-era-conflict:1754/1793/1788/1754/1793 vs 1542/1590",
+        "A1-A2:page-2:image-subject-mismatch",
+        "B1-B2:page-2:image-era-conflict:1754/1793/1788/1754/1793 vs 1542/1590",
+        "B1-B2:page-2:image-subject-mismatch",
+        "C1-C2:page-2:image-era-conflict:1754/1793/1788/1754/1793 vs 1542/1590",
+        "C1-C2:page-2:image-subject-mismatch",
+        "C1-C2:page-4:image-subject-mismatch"
+      ],
+      "warnings": [
+        "A1-A2:page-1:cover-caption-indirect",
+        "B1-B2:page-1:cover-caption-indirect",
+        "C1-C2:page-1:cover-caption-indirect"
+      ]
+    },
+    {
+      "id": "saga-wiki:49005",
+      "sourceTitle": "Atlantic slave trade",
+      "category": "Economy",
+      "revisionId": 1381276519,
+      "passed": false,
+      "errors": [
+        "A1-A2:page-2:image-subject-mismatch",
+        "A1-A2:page-3:image-subject-mismatch",
+        "C1-C2:page-3:image-subject-mismatch",
+        "C1-C2:page-4:image-subject-mismatch"
+      ],
+      "warnings": []
+    },
+    {
+      "id": "saga-wiki:5286332",
+      "sourceTitle": "Operation Astute",
+      "category": "Conflict & Security",
+      "revisionId": 1370630734,
+      "passed": false,
+      "errors": [
+        "B1-B2:page-4:image-subject-mismatch"
+      ],
+      "warnings": [
+        "A1-A2:page-1:cover-caption-indirect",
+        "B1-B2:page-1:cover-caption-indirect",
+        "C1-C2:page-1:cover-caption-indirect"
+      ]
+    },
+    {
+      "id": "saga-wiki:49147",
+      "sourceTitle": "Fair trade",
+      "category": "Society",
+      "revisionId": 1369370864,
+      "passed": false,
+      "errors": [
+        "A1-A2:page-2:image-subject-mismatch",
+        "A1-A2:page-3:image-subject-mismatch",
+        "A1-A2:page-4:image-subject-mismatch",
+        "B1-B2:page-2:image-subject-mismatch",
+        "B1-B2:page-3:image-subject-mismatch",
+        "B1-B2:page-4:image-subject-mismatch",
+        "C1-C2:page-2:image-subject-mismatch",
+        "C1-C2:page-3:image-subject-mismatch",
+        "C1-C2:page-4:image-subject-mismatch"
+      ],
+      "warnings": []
+    },
+    {
+      "id": "saga-wiki:26094",
+      "sourceTitle": "Romanticism",
+      "category": "Culture",
+      "revisionId": 1379902165,
+      "passed": false,
+      "errors": [
+        "A1-A2:page-2:image-subject-mismatch",
+        "A1-A2:page-3:image-subject-mismatch",
+        "A1-A2:page-4:image-subject-mismatch",
+        "B1-B2:page-2:image-subject-mismatch",
+        "B1-B2:page-3:image-subject-mismatch",
+        "B1-B2:page-4:image-subject-mismatch",
+        "C1-C2:page-2:image-subject-mismatch",
+        "C1-C2:page-3:image-subject-mismatch",
+        "C1-C2:page-4:image-subject-mismatch"
+      ],
+      "warnings": [
+        "A1-A2:page-1:cover-caption-indirect",
+        "B1-B2:page-1:cover-caption-indirect",
+        "C1-C2:page-1:cover-caption-indirect"
+      ]
+    },
+    {
+      "id": "saga-wiki:9282401",
+      "sourceTitle": "Science and inventions of Leonardo da Vinci",
+      "category": "Science & Technology",
+      "revisionId": 1379158458,
+      "passed": false,
+      "errors": [
+        "A1-A2:page-2:image-subject-mismatch",
+        "A1-A2:page-3:image-subject-mismatch",
+        "A1-A2:page-4:image-subject-mismatch",
+        "B1-B2:page-2:image-subject-mismatch",
+        "B1-B2:page-3:image-subject-mismatch",
+        "C1-C2:page-2:image-subject-mismatch",
+        "C1-C2:page-3:image-subject-mismatch"
+      ],
+      "warnings": [
+        "A1-A2:page-1:cover-caption-indirect",
+        "B1-B2:page-1:cover-caption-indirect",
+        "C1-C2:page-1:cover-caption-indirect"
+      ]
+    },
+    {
+      "id": "saga-wiki:81553",
+      "sourceTitle": "Teotihuacan",
+      "category": "History & Geography",
+      "revisionId": 1380618636,
+      "passed": false,
+      "errors": [
+        "A1-A2:page-2:image-subject-mismatch",
+        "A1-A2:page-3:image-subject-mismatch",
+        "A1-A2:page-4:image-subject-mismatch",
+        "B1-B2:page-2:image-subject-mismatch",
+        "B1-B2:page-3:image-subject-mismatch",
+        "B1-B2:page-4:image-subject-mismatch",
+        "C1-C2:page-2:image-subject-mismatch",
+        "C1-C2:page-3:image-subject-mismatch",
+        "C1-C2:page-4:image-subject-mismatch"
+      ],
+      "warnings": []
+    },
+    {
+      "id": "saga-wiki:463734",
+      "sourceTitle": "Public health",
+      "category": "Health",
+      "revisionId": 1376316409,
+      "passed": false,
+      "errors": [
+        "A1-A2:page-2:image-subject-mismatch",
+        "A1-A2:page-3:image-subject-mismatch",
+        "A1-A2:page-4:image-subject-mismatch",
+        "B1-B2:page-2:image-subject-mismatch",
+        "B1-B2:page-3:image-subject-mismatch",
+        "B1-B2:page-4:image-subject-mismatch",
+        "C1-C2:page-2:image-subject-mismatch",
+        "C1-C2:page-3:image-subject-mismatch",
+        "C1-C2:page-4:image-subject-mismatch"
+      ],
+      "warnings": []
+    },
+    {
+      "id": "saga-wiki:41612950",
+      "sourceTitle": "Anti-fascism",
+      "category": "Politics",
+      "revisionId": 1380020724,
+      "passed": false,
+      "errors": [
+        "A1-A2:page-2:image-subject-mismatch",
+        "A1-A2:page-3:image-subject-mismatch",
+        "A1-A2:page-4:image-subject-mismatch",
+        "B1-B2:page-2:image-subject-mismatch",
+        "B1-B2:page-3:image-subject-mismatch",
+        "B1-B2:page-4:image-subject-mismatch",
+        "C1-C2:page-2:image-subject-mismatch",
+        "C1-C2:page-3:image-subject-mismatch",
+        "C1-C2:page-4:image-subject-mismatch"
+      ],
+      "warnings": [
+        "A1-A2:page-1:cover-caption-indirect",
+        "B1-B2:page-1:cover-caption-indirect",
+        "C1-C2:page-1:cover-caption-indirect"
+      ]
+    },
+    {
+      "id": "saga-wiki:583117",
+      "sourceTitle": "Trade route",
+      "category": "Economy",
+      "revisionId": 1373272826,
+      "passed": false,
+      "errors": [
+        "A1-A2:page-2:image-subject-mismatch",
+        "A1-A2:page-4:image-subject-mismatch",
+        "B1-B2:page-3:image-subject-mismatch",
+        "C1-C2:page-2:image-subject-mismatch",
+        "C1-C2:page-3:image-subject-mismatch"
+      ],
+      "warnings": []
+    },
+    {
+      "id": "saga-wiki:3279967",
+      "sourceTitle": "Multinational Force in Lebanon",
+      "category": "Conflict & Security",
+      "revisionId": 1376916933,
+      "passed": false,
+      "errors": [
+        "A1-A2:page-4:image-subject-mismatch",
+        "B1-B2:page-4:image-subject-mismatch"
+      ],
+      "warnings": [
+        "A1-A2:page-1:cover-caption-indirect",
+        "C1-C2:page-1:cover-caption-indirect"
+      ]
+    },
+    {
+      "id": "saga-wiki:234984",
+      "sourceTitle": "Social movement",
+      "category": "Society",
+      "revisionId": 1377822212,
+      "passed": false,
+      "errors": [
+        "A1-A2:page-2:image-subject-mismatch",
+        "A1-A2:page-4:image-subject-mismatch",
+        "B1-B2:page-2:image-subject-mismatch",
+        "B1-B2:page-3:image-subject-mismatch",
+        "B1-B2:page-4:image-subject-mismatch",
+        "C1-C2:page-2:image-subject-mismatch",
+        "C1-C2:page-3:image-subject-mismatch",
+        "C1-C2:page-4:image-subject-mismatch"
+      ],
+      "warnings": [
+        "A1-A2:page-1:cover-caption-indirect",
+        "B1-B2:page-1:cover-caption-indirect",
+        "C1-C2:page-1:cover-caption-indirect"
+      ]
+    },
+    {
+      "id": "saga-wiki:23423379",
+      "sourceTitle": "History of climate change science",
+      "category": "Environment",
+      "revisionId": 1366154475,
+      "passed": false,
+      "errors": [
+        "A1-A2:page-2:image-subject-mismatch",
+        "A1-A2:page-3:image-subject-mismatch",
+        "B1-B2:page-2:image-subject-mismatch",
+        "B1-B2:page-3:image-subject-mismatch",
+        "B1-B2:page-4:image-subject-mismatch",
+        "C1-C2:page-2:image-subject-mismatch",
+        "C1-C2:page-3:image-subject-mismatch"
+      ],
+      "warnings": []
+    },
+    {
+      "id": "saga-wiki:42132949",
+      "sourceTitle": "Industrial Revolution in Scotland",
+      "category": "Science & Technology",
+      "revisionId": 1379616230,
+      "passed": false,
+      "errors": [
+        "A1-A2:page-1:image-era-conflict:1881/1881 vs 1707",
+        "A1-A2:page-2:image-subject-mismatch",
+        "A1-A2:page-3:image-subject-mismatch",
+        "A1-A2:page-4:image-subject-mismatch",
+        "B1-B2:page-1:image-era-conflict:1881/1881 vs 1707",
+        "B1-B2:page-4:image-subject-mismatch",
+        "C1-C2:page-1:image-era-conflict:1881/1881 vs 1707",
+        "C1-C2:page-3:image-subject-mismatch",
+        "C1-C2:page-4:image-subject-mismatch"
+      ],
+      "warnings": [
+        "A1-A2:page-1:cover-caption-indirect",
+        "B1-B2:page-1:cover-caption-indirect",
+        "C1-C2:page-1:cover-caption-indirect"
+      ]
+    },
+    {
+      "id": "saga-wiki:69635423",
+      "sourceTitle": "COVID-19 lockdowns by country",
+      "category": "Health",
+      "revisionId": 1377111623,
+      "passed": false,
+      "errors": [
+        "A1-A2:page-4:image-subject-mismatch",
+        "B1-B2:page-4:image-subject-mismatch",
+        "C1-C2:page-4:image-subject-mismatch"
+      ],
+      "warnings": [
+        "C1-C2:page-1:cover-caption-indirect"
+      ]
+    },
+    {
+      "id": "saga-wiki:68169189",
+      "sourceTitle": "History of social democracy",
+      "category": "Politics",
+      "revisionId": 1371334782,
+      "passed": false,
+      "errors": [
+        "A1-A2:page-2:image-subject-mismatch",
+        "A1-A2:page-3:image-subject-mismatch",
+        "A1-A2:page-4:image-subject-mismatch",
+        "B1-B2:page-2:image-subject-mismatch",
+        "B1-B2:page-3:image-subject-mismatch",
+        "B1-B2:page-4:image-subject-mismatch",
+        "C1-C2:page-3:image-subject-mismatch",
+        "C1-C2:page-4:image-subject-mismatch"
+      ],
+      "warnings": [
+        "A1-A2:page-1:cover-caption-indirect"
+      ]
+    },
+    {
+      "id": "saga-wiki:435800",
+      "sourceTitle": "Tournament (medieval)",
+      "category": "Sports",
+      "revisionId": 1380558025,
+      "passed": false,
+      "errors": [
+        "A1-A2:page-4:image-subject-mismatch",
+        "C1-C2:page-2:image-subject-mismatch"
+      ],
+      "warnings": []
+    },
+    {
+      "id": "saga-wiki:254061",
+      "sourceTitle": "Timbuktu",
+      "category": "History & Geography",
+      "revisionId": 1380708474,
+      "passed": false,
+      "errors": [
+        "A1-A2:page-1:image-era-conflict:1830/1830 vs 2023",
+        "A1-A2:page-2:image-subject-mismatch",
+        "A1-A2:page-3:image-subject-mismatch",
+        "A1-A2:page-4:image-subject-mismatch",
+        "B1-B2:page-1:image-era-conflict:1830/1830 vs 2023",
+        "B1-B2:page-2:image-subject-mismatch",
+        "B1-B2:page-3:image-subject-mismatch",
+        "B1-B2:page-4:image-subject-mismatch",
+        "C1-C2:page-1:image-era-conflict:1830/1830 vs 2023",
+        "C1-C2:page-2:image-subject-mismatch",
+        "C1-C2:page-3:image-subject-mismatch",
+        "C1-C2:page-4:image-subject-mismatch"
+      ],
+      "warnings": []
+    },
+    {
+      "id": "saga-wiki:4327126",
+      "sourceTitle": "Repatriation (cultural property)",
+      "category": "Culture",
+      "revisionId": 1375683054,
+      "passed": false,
+      "errors": [
+        "A1-A2:page-2:image-subject-mismatch",
+        "A1-A2:page-3:image-subject-mismatch",
+        "A1-A2:page-4:image-era-conflict:1797/1815 vs 2018",
+        "B1-B2:page-2:image-subject-mismatch",
+        "B1-B2:page-3:image-subject-mismatch",
+        "B1-B2:page-4:image-era-conflict:1797/1815 vs 2018",
+        "C1-C2:page-3:image-subject-mismatch",
+        "C1-C2:page-4:image-era-conflict:1797/1815 vs 2018/2026",
+        "C1-C2:page-4:image-subject-mismatch"
+      ],
+      "warnings": []
+    },
+    {
+      "id": "saga-wiki:4607152",
+      "sourceTitle": "Climate change adaptation",
+      "category": "Environment",
+      "revisionId": 1377821690,
+      "passed": false,
+      "errors": [
+        "A1-A2:page-2:image-subject-mismatch",
+        "A1-A2:page-4:image-subject-mismatch",
+        "B1-B2:page-2:image-subject-mismatch",
+        "B1-B2:page-3:image-subject-mismatch",
+        "B1-B2:page-4:image-subject-mismatch",
+        "C1-C2:page-2:image-subject-mismatch",
+        "C1-C2:page-3:image-subject-mismatch",
+        "C1-C2:page-4:image-subject-mismatch"
+      ],
+      "warnings": [
+        "A1-A2:page-1:cover-caption-indirect",
+        "B1-B2:page-1:cover-caption-indirect",
+        "C1-C2:page-1:cover-caption-indirect"
+      ]
+    },
+    {
+      "id": "saga-wiki:13831",
+      "sourceTitle": "Human rights",
+      "category": "Society",
+      "revisionId": 1379988533,
+      "passed": false,
+      "errors": [
+        "A1-A2:page-2:image-era-conflict:1776 vs 1948",
+        "A1-A2:page-3:image-subject-mismatch",
+        "B1-B2:page-2:image-era-conflict:1776 vs 1948",
+        "B1-B2:page-3:image-subject-mismatch",
+        "C1-C2:page-2:image-era-conflict:1776 vs 1948",
+        "C1-C2:page-3:image-subject-mismatch"
+      ],
+      "warnings": []
+    },
+    {
+      "id": "saga-wiki:177680",
+      "sourceTitle": "History of aviation",
+      "category": "Science & Technology",
+      "revisionId": 1379430717,
+      "passed": false,
+      "errors": [
+        "A1-A2:page-2:image-subject-mismatch",
+        "A1-A2:page-3:image-subject-mismatch",
+        "B1-B2:page-3:image-subject-mismatch",
+        "C1-C2:page-3:image-subject-mismatch"
+      ],
+      "warnings": [
+        "A1-A2:page-1:cover-caption-indirect",
+        "C1-C2:page-1:cover-caption-indirect"
+      ]
+    },
+    {
+      "id": "saga-wiki:7591",
+      "sourceTitle": "Cholera",
+      "category": "Health",
+      "revisionId": 1379078675,
+      "passed": false,
+      "errors": [
+        "A1-A2:page-2:image-subject-mismatch",
+        "A1-A2:page-3:image-subject-mismatch",
+        "A1-A2:page-4:image-subject-mismatch",
+        "B1-B2:page-2:image-subject-mismatch",
+        "B1-B2:page-3:image-subject-mismatch",
+        "B1-B2:page-4:image-subject-mismatch",
+        "C1-C2:page-2:image-subject-mismatch",
+        "C1-C2:page-4:image-subject-mismatch"
+      ],
+      "warnings": []
+    },
+    {
+      "id": "saga-wiki:5765",
+      "sourceTitle": "Çatalhöyük",
+      "category": "History & Geography",
+      "revisionId": 1379818880,
+      "passed": false,
+      "errors": [
+        "A1-A2:page-2:image-subject-mismatch",
+        "A1-A2:page-3:image-subject-mismatch",
+        "A1-A2:page-4:image-subject-mismatch",
+        "B1-B2:page-2:image-subject-mismatch",
+        "B1-B2:page-3:image-subject-mismatch",
+        "B1-B2:page-4:image-subject-mismatch",
+        "C1-C2:page-2:image-subject-mismatch",
+        "C1-C2:page-3:image-subject-mismatch",
+        "C1-C2:page-4:image-subject-mismatch"
+      ],
+      "warnings": [
+        "A1-A2:page-1:cover-caption-indirect",
+        "B1-B2:page-1:cover-caption-indirect",
+        "C1-C2:page-1:cover-caption-indirect"
+      ]
+    },
+    {
+      "id": "saga-wiki:60637169",
+      "sourceTitle": "Black Sea slave trade",
+      "category": "Economy",
+      "revisionId": 1378783817,
+      "passed": false,
+      "errors": [
+        "A1-A2:page-2:image-subject-mismatch",
+        "A1-A2:page-4:image-subject-mismatch",
+        "B1-B2:page-2:image-subject-mismatch",
+        "B1-B2:page-4:image-subject-mismatch",
+        "C1-C2:page-2:image-subject-mismatch",
+        "C1-C2:page-4:image-subject-mismatch"
+      ],
+      "warnings": []
+    },
+    {
+      "id": "saga-wiki:58613604",
+      "sourceTitle": "2018–19 Korean peace process",
+      "category": "Conflict & Security",
+      "revisionId": 1360540655,
+      "passed": false,
+      "errors": [
+        "C1-C2:page-4:image-subject-mismatch"
+      ],
+      "warnings": [
+        "A1-A2:page-1:cover-caption-indirect",
+        "B1-B2:page-1:cover-caption-indirect",
+        "C1-C2:page-1:cover-caption-indirect"
+      ]
+    },
+    {
+      "id": "saga-wiki:63074081",
+      "sourceTitle": "Climate change in the Middle East and North Africa",
+      "category": "Environment",
+      "revisionId": 1381055215,
+      "passed": false,
+      "errors": [
+        "A1-A2:page-2:image-subject-mismatch",
+        "A1-A2:page-3:image-subject-mismatch",
+        "A1-A2:page-4:image-subject-mismatch",
+        "B1-B2:page-2:image-subject-mismatch",
+        "B1-B2:page-3:image-subject-mismatch",
+        "B1-B2:page-4:image-subject-mismatch",
+        "C1-C2:page-2:image-subject-mismatch",
+        "C1-C2:page-3:image-subject-mismatch",
+        "C1-C2:page-4:image-subject-mismatch"
+      ],
+      "warnings": [
+        "A1-A2:page-1:cover-caption-indirect",
+        "B1-B2:page-1:cover-caption-indirect",
+        "C1-C2:page-1:cover-caption-indirect"
+      ]
+    },
+    {
+      "id": "saga-wiki:44895973",
+      "sourceTitle": "Climate movement",
+      "category": "Politics",
+      "revisionId": 1378960590,
+      "passed": false,
+      "errors": [
+        "A1-A2:page-2:image-subject-mismatch",
+        "A1-A2:page-3:image-subject-mismatch",
+        "B1-B2:page-2:image-subject-mismatch",
+        "B1-B2:page-3:image-subject-mismatch",
+        "C1-C2:page-2:image-subject-mismatch",
+        "C1-C2:page-3:image-subject-mismatch"
+      ],
+      "warnings": []
+    },
+    {
+      "id": "saga-wiki:9719652",
+      "sourceTitle": "History of tennis",
+      "category": "Sports",
+      "revisionId": 1379228653,
+      "passed": false,
+      "errors": [
+        "A1-A2:page-2:image-subject-mismatch",
+        "A1-A2:page-3:image-subject-mismatch",
+        "B1-B2:page-2:image-subject-mismatch",
+        "B1-B2:page-3:image-subject-mismatch",
+        "C1-C2:page-2:image-subject-mismatch",
+        "C1-C2:page-3:image-subject-mismatch"
+      ],
+      "warnings": [
+        "A1-A2:page-1:cover-caption-indirect",
+        "C1-C2:page-1:cover-caption-indirect"
+      ]
+    },
+    {
+      "id": "saga-wiki:2412774",
+      "sourceTitle": "Commemorative plaque",
+      "category": "Culture",
+      "revisionId": 1368430332,
+      "passed": false,
+      "errors": [
+        "A1-A2:page-2:image-subject-mismatch",
+        "A1-A2:page-4:image-subject-mismatch",
+        "B1-B2:page-2:image-subject-mismatch",
+        "B1-B2:page-3:image-subject-mismatch",
+        "B1-B2:page-4:image-subject-mismatch",
+        "C1-C2:page-2:image-subject-mismatch",
+        "C1-C2:page-3:image-subject-mismatch",
+        "C1-C2:page-4:image-subject-mismatch"
+      ],
+      "warnings": []
+    },
+    {
+      "id": "saga-wiki:229666",
+      "sourceTitle": "Taxila",
+      "category": "History & Geography",
+      "revisionId": 1380585492,
+      "passed": false,
+      "errors": [
+        "A1-A2:page-2:image-subject-mismatch",
+        "A1-A2:page-3:image-subject-mismatch",
+        "A1-A2:page-4:image-subject-mismatch",
+        "B1-B2:page-3:image-subject-mismatch",
+        "B1-B2:page-4:image-subject-mismatch",
+        "C1-C2:page-2:image-subject-mismatch",
+        "C1-C2:page-3:image-subject-mismatch",
+        "C1-C2:page-4:image-subject-mismatch"
+      ],
+      "warnings": [
+        "A1-A2:page-1:cover-caption-indirect",
+        "B1-B2:page-1:cover-caption-indirect"
+      ]
+    },
+    {
+      "id": "saga-wiki:30686169",
+      "sourceTitle": "Canadian canoe routes",
+      "category": "Economy",
+      "revisionId": 1318293204,
+      "passed": false,
+      "errors": [
+        "A1-A2:page-2:image-subject-mismatch",
+        "A1-A2:page-3:image-subject-mismatch",
+        "B1-B2:page-2:image-subject-mismatch",
+        "B1-B2:page-3:image-subject-mismatch",
+        "C1-C2:page-2:image-subject-mismatch"
+      ],
+      "warnings": [
+        "A1-A2:page-1:cover-caption-indirect",
+        "B1-B2:page-1:cover-caption-indirect",
+        "C1-C2:page-1:cover-caption-indirect"
+      ]
+    },
+    {
+      "id": "saga-wiki:84139069",
+      "sourceTitle": "Justinian's wars",
+      "category": "Conflict & Security",
+      "revisionId": 1381661374,
+      "passed": false,
+      "errors": [
+        "A1-A2:page-4:image-subject-mismatch",
+        "B1-B2:page-4:image-subject-mismatch",
+        "C1-C2:page-4:image-subject-mismatch"
+      ],
+      "warnings": []
+    },
+    {
+      "id": "saga-wiki:1271927",
+      "sourceTitle": "Gender equality",
+      "category": "Society",
+      "revisionId": 1375206145,
+      "passed": false,
+      "errors": [
+        "A1-A2:page-3:image-subject-mismatch",
+        "A1-A2:page-4:image-era-conflict:2019/2019 vs 1405",
+        "B1-B2:page-3:image-era-conflict:1985/2023 vs 1405",
+        "B1-B2:page-3:image-subject-mismatch",
+        "C1-C2:page-3:image-era-conflict:1985/2023 vs 1405",
+        "C1-C2:page-3:image-subject-mismatch"
+      ],
+      "warnings": [
+        "A1-A2:page-1:cover-caption-indirect",
+        "B1-B2:page-1:cover-caption-indirect",
+        "C1-C2:page-1:cover-caption-indirect"
+      ]
+    },
+    {
+      "id": "saga-wiki:335535",
+      "sourceTitle": "Romantic literature",
+      "category": "Culture",
+      "revisionId": 1348594744,
+      "passed": false,
+      "errors": [
+        "A1-A2:page-3:image-subject-mismatch",
+        "A1-A2:page-4:image-subject-mismatch",
+        "B1-B2:page-3:image-subject-mismatch",
+        "B1-B2:page-4:image-subject-mismatch",
+        "C1-C2:page-2:image-subject-mismatch",
+        "C1-C2:page-3:image-subject-mismatch",
+        "C1-C2:page-4:image-subject-mismatch"
+      ],
+      "warnings": [
+        "C1-C2:page-1:cover-caption-indirect"
+      ]
+    },
+    {
+      "id": "saga-wiki:14914",
+      "sourceTitle": "Industrial Revolution",
+      "category": "Science & Technology",
+      "revisionId": 1381202308,
+      "passed": false,
+      "errors": [
+        "A1-A2:page-2:image-subject-mismatch",
+        "A1-A2:page-3:image-era-conflict:1524 vs 1750",
+        "A1-A2:page-4:image-subject-mismatch",
+        "B1-B2:page-2:image-subject-mismatch",
+        "B1-B2:page-3:image-era-conflict:1524 vs 1850",
+        "B1-B2:page-3:image-subject-mismatch",
+        "B1-B2:page-4:image-subject-mismatch",
+        "C1-C2:page-2:image-subject-mismatch",
+        "C1-C2:page-3:image-era-conflict:1524 vs 1750/1850",
+        "C1-C2:page-3:image-subject-mismatch",
+        "C1-C2:page-4:image-subject-mismatch"
+      ],
+      "warnings": [
+        "B1-B2:page-1:cover-caption-indirect",
+        "C1-C2:page-1:cover-caption-indirect"
+      ]
+    },
+    {
+      "id": "saga-wiki:49557688",
+      "sourceTitle": "Effects of climate change on small island countries",
+      "category": "Environment",
+      "revisionId": 1378395460,
+      "passed": false,
+      "errors": [
+        "A1-A2:page-2:image-subject-mismatch",
+        "A1-A2:page-3:image-subject-mismatch",
+        "A1-A2:page-4:image-subject-mismatch",
+        "B1-B2:page-2:image-subject-mismatch",
+        "B1-B2:page-3:image-subject-mismatch",
+        "C1-C2:page-2:image-subject-mismatch",
+        "C1-C2:page-3:image-subject-mismatch"
+      ],
+      "warnings": []
+    },
+    {
+      "id": "saga-wiki:46840722",
+      "sourceTitle": "Air pollution measurement",
+      "category": "Health",
+      "revisionId": 1366308012,
+      "passed": false,
+      "errors": [
+        "C1-C2:page-2:image-subject-mismatch",
+        "C1-C2:page-4:image-subject-mismatch"
+      ],
+      "warnings": [
+        "B1-B2:page-1:cover-caption-indirect",
+        "C1-C2:page-1:cover-caption-indirect"
+      ]
+    },
+    {
+      "id": "saga-wiki:60847643",
+      "sourceTitle": "Gomphotherium land bridge",
+      "category": "History & Geography",
+      "revisionId": 1380178048,
+      "passed": false,
+      "errors": [
+        "A1-A2:page-3:image-subject-mismatch",
+        "A1-A2:page-4:image-subject-mismatch",
+        "B1-B2:page-3:image-subject-mismatch",
+        "B1-B2:page-4:image-subject-mismatch",
+        "C1-C2:page-3:image-subject-mismatch",
+        "C1-C2:page-4:image-subject-mismatch"
+      ],
+      "warnings": [
+        "A1-A2:page-1:cover-caption-indirect",
+        "B1-B2:page-1:cover-caption-indirect",
+        "C1-C2:page-1:cover-caption-indirect"
+      ]
+    },
+    {
+      "id": "saga-wiki:5142662",
+      "sourceTitle": "Italian fascism",
+      "category": "Politics",
+      "revisionId": 1380358718,
+      "passed": false,
+      "errors": [
+        "A1-A2:page-2:image-subject-mismatch",
+        "A1-A2:page-4:image-subject-mismatch",
+        "B1-B2:page-4:image-subject-mismatch",
+        "C1-C2:page-4:image-subject-mismatch"
+      ],
+      "warnings": []
+    },
+    {
+      "id": "saga-wiki:2777609",
+      "sourceTitle": "History of capitalism",
+      "category": "Economy",
+      "revisionId": 1380700197,
+      "passed": false,
+      "errors": [
+        "A1-A2:page-2:image-subject-mismatch",
+        "A1-A2:page-3:image-subject-mismatch",
+        "A1-A2:page-4:image-subject-mismatch",
+        "B1-B2:page-2:image-subject-mismatch",
+        "B1-B2:page-3:image-subject-mismatch",
+        "B1-B2:page-4:image-subject-mismatch",
+        "C1-C2:page-2:image-subject-mismatch",
+        "C1-C2:page-3:image-subject-mismatch",
+        "C1-C2:page-4:image-subject-mismatch"
+      ],
+      "warnings": [
+        "A1-A2:page-1:cover-caption-indirect",
+        "B1-B2:page-1:cover-caption-indirect"
+      ]
+    },
+    {
+      "id": "saga-wiki:5121186",
+      "sourceTitle": "Negotiations to end apartheid in South Africa",
+      "category": "Conflict & Security",
+      "revisionId": 1374981704,
+      "passed": false,
+      "errors": [
+        "A1-A2:page-3:image-subject-mismatch",
+        "A1-A2:page-4:image-subject-mismatch"
+      ],
+      "warnings": []
+    },
+    {
+      "id": "saga-wiki:51885",
+      "sourceTitle": "Multiculturalism",
+      "category": "Society",
+      "revisionId": 1381353217,
+      "passed": false,
+      "errors": [
+        "A1-A2:page-3:image-subject-mismatch",
+        "A1-A2:page-4:image-subject-mismatch",
+        "B1-B2:page-3:image-subject-mismatch",
+        "B1-B2:page-4:image-subject-mismatch",
+        "C1-C2:page-3:image-subject-mismatch",
+        "C1-C2:page-4:image-subject-mismatch"
+      ],
+      "warnings": []
+    },
+    {
+      "id": "saga-wiki:2872472",
+      "sourceTitle": "Costumbrismo",
+      "category": "Culture",
+      "revisionId": 1372267609,
+      "passed": false,
+      "errors": [
+        "A1-A2:page-2:image-subject-mismatch",
+        "A1-A2:page-3:image-subject-mismatch",
+        "B1-B2:page-2:image-subject-mismatch",
+        "B1-B2:page-3:image-subject-mismatch",
+        "B1-B2:page-4:image-subject-mismatch",
+        "C1-C2:page-2:image-subject-mismatch",
+        "C1-C2:page-3:image-subject-mismatch",
+        "C1-C2:page-4:image-subject-mismatch"
+      ],
+      "warnings": [
+        "A1-A2:page-1:cover-caption-indirect",
+        "B1-B2:page-1:cover-caption-indirect",
+        "C1-C2:page-1:cover-caption-indirect"
+      ]
+    },
+    {
+      "id": "saga-wiki:803661",
+      "sourceTitle": "History of technology",
+      "category": "Science & Technology",
+      "revisionId": 1381229880,
+      "passed": false,
+      "errors": [
+        "A1-A2:page-3:image-subject-mismatch",
+        "A1-A2:page-4:image-subject-mismatch",
+        "B1-B2:page-3:image-subject-mismatch",
+        "B1-B2:page-4:image-subject-mismatch",
+        "C1-C2:page-3:image-subject-mismatch",
+        "C1-C2:page-4:image-subject-mismatch"
+      ],
+      "warnings": [
+        "A1-A2:page-1:cover-caption-indirect",
+        "C1-C2:page-1:cover-caption-indirect"
+      ]
+    },
+    {
+      "id": "saga-wiki:13294262",
+      "sourceTitle": "Climate change in the Arctic",
+      "category": "Environment",
+      "revisionId": 1380980056,
+      "passed": false,
+      "errors": [
+        "A1-A2:page-4:image-subject-mismatch",
+        "B1-B2:page-4:image-subject-mismatch",
+        "C1-C2:page-3:image-subject-mismatch",
+        "C1-C2:page-4:image-subject-mismatch"
+      ],
+      "warnings": [
+        "A1-A2:page-1:cover-caption-indirect"
+      ]
+    },
+    {
+      "id": "saga-wiki:34254",
+      "sourceTitle": "Yellow fever",
+      "category": "Health",
+      "revisionId": 1380935170,
+      "passed": false,
+      "errors": [
+        "A1-A2:page-4:image-subject-mismatch",
+        "B1-B2:page-3:image-subject-mismatch",
+        "C1-C2:page-3:image-subject-mismatch",
+        "C1-C2:page-4:image-subject-mismatch"
+      ],
+      "warnings": [
+        "A1-A2:page-1:cover-caption-indirect",
+        "B1-B2:page-1:cover-caption-indirect",
+        "C1-C2:page-1:cover-caption-indirect"
+      ]
+    },
+    {
+      "id": "saga-wiki:2262519",
+      "sourceTitle": "Dieppe maps",
+      "category": "History & Geography",
+      "revisionId": 1373119799,
+      "passed": false,
+      "errors": [
+        "A1-A2:page-2:image-subject-mismatch",
+        "A1-A2:page-3:image-subject-mismatch",
+        "A1-A2:page-4:image-subject-mismatch",
+        "B1-B2:page-2:image-subject-mismatch",
+        "B1-B2:page-3:image-subject-mismatch",
+        "B1-B2:page-4:image-subject-mismatch",
+        "C1-C2:page-2:image-subject-mismatch",
+        "C1-C2:page-3:image-subject-mismatch",
+        "C1-C2:page-4:image-subject-mismatch"
+      ],
+      "warnings": []
+    },
+    {
+      "id": "saga-wiki:12",
+      "sourceTitle": "Anarchism",
+      "category": "Politics",
+      "revisionId": 1381080958,
+      "passed": false,
+      "errors": [
+        "A1-A2:page-2:image-subject-mismatch",
+        "A1-A2:page-3:image-subject-mismatch",
+        "A1-A2:page-4:image-subject-mismatch",
+        "B1-B2:page-2:image-subject-mismatch",
+        "B1-B2:page-4:image-subject-mismatch",
+        "C1-C2:page-2:image-subject-mismatch",
+        "C1-C2:page-3:image-subject-mismatch",
+        "C1-C2:page-4:image-subject-mismatch"
+      ],
+      "warnings": []
+    },
+    {
+      "id": "saga-wiki:74366520",
+      "sourceTitle": "Interoceanic Corridor of the Isthmus of Tehuantepec",
+      "category": "Economy",
+      "revisionId": 1375250160,
+      "passed": false,
+      "errors": [
+        "A1-A2:page-2:image-subject-mismatch",
+        "A1-A2:page-4:image-subject-mismatch",
+        "B1-B2:page-2:image-subject-mismatch",
+        "B1-B2:page-3:image-subject-mismatch",
+        "B1-B2:page-4:image-subject-mismatch",
+        "C1-C2:page-2:image-subject-mismatch",
+        "C1-C2:page-3:image-subject-mismatch",
+        "C1-C2:page-4:image-subject-mismatch"
+      ],
+      "warnings": []
+    },
+    {
+      "id": "saga-wiki:66550316",
+      "sourceTitle": "Peacekeeping operations in Nagorno-Karabakh",
+      "category": "Conflict & Security",
+      "revisionId": 1370579297,
+      "passed": false,
+      "errors": [
+        "A1-A2:page-2:image-subject-mismatch",
+        "B1-B2:page-2:image-subject-mismatch",
+        "C1-C2:page-2:image-subject-mismatch"
+      ],
+      "warnings": [
+        "A1-A2:page-1:cover-caption-indirect"
+      ]
+    },
+    {
+      "id": "saga-wiki:516775",
+      "sourceTitle": "Student activism",
+      "category": "Society",
+      "revisionId": 1374612787,
+      "passed": false,
+      "errors": [
+        "A1-A2:page-2:image-era-conflict:2010/2010 vs 1900/1918",
+        "A1-A2:page-3:image-era-conflict:1918 vs 2011/2013",
+        "A1-A2:page-3:image-subject-mismatch",
+        "C1-C2:page-4:image-subject-mismatch"
+      ],
+      "warnings": []
+    },
+    {
+      "id": "saga-wiki:1042649",
+      "sourceTitle": "History of the bicycle",
+      "category": "Science & Technology",
+      "revisionId": 1381005522,
+      "passed": false,
+      "errors": [
+        "A1-A2:page-2:image-subject-mismatch",
+        "A1-A2:page-3:image-subject-mismatch",
+        "B1-B2:page-2:image-subject-mismatch",
+        "B1-B2:page-3:image-subject-mismatch",
+        "C1-C2:page-2:image-subject-mismatch",
+        "C1-C2:page-3:image-subject-mismatch"
+      ],
+      "warnings": [
+        "A1-A2:page-1:cover-caption-indirect"
+      ]
+    },
+    {
+      "id": "saga-wiki:34345090",
+      "sourceTitle": "History of diabetes",
+      "category": "Health",
+      "revisionId": 1380485622,
+      "passed": false,
+      "errors": [
+        "A1-A2:page-2:image-subject-mismatch",
+        "A1-A2:page-4:image-era-conflict:1574 vs 1674",
+        "A1-A2:page-4:image-subject-mismatch",
+        "B1-B2:page-4:image-era-conflict:1574 vs 1674/1794",
+        "B1-B2:page-4:image-subject-mismatch",
+        "C1-C2:page-3:image-subject-mismatch",
+        "C1-C2:page-4:image-era-conflict:1574 vs 1674/1794",
+        "C1-C2:page-4:image-subject-mismatch"
+      ],
+      "warnings": [
+        "A1-A2:page-1:cover-caption-indirect",
+        "B1-B2:page-1:cover-caption-indirect",
+        "C1-C2:page-1:cover-caption-indirect"
+      ]
+    },
+    {
+      "id": "saga-wiki:54204",
+      "sourceTitle": "Philip II of Macedon",
+      "category": "Sports",
+      "revisionId": 1378691409,
+      "passed": false,
+      "errors": [
+        "A1-A2:page-2:image-subject-mismatch",
+        "A1-A2:page-3:image-subject-mismatch",
+        "B1-B2:page-2:image-subject-mismatch",
+        "B1-B2:page-3:image-subject-mismatch",
+        "C1-C2:page-2:image-subject-mismatch",
+        "C1-C2:page-3:image-subject-mismatch"
+      ],
+      "warnings": []
+    },
+    {
+      "id": "saga-wiki:2444",
+      "sourceTitle": "Conservation and restoration of cultural property",
+      "category": "Culture",
+      "revisionId": 1375682556,
+      "passed": false,
+      "errors": [
+        "A1-A2:page-2:image-subject-mismatch",
+        "A1-A2:page-3:image-subject-mismatch",
+        "B1-B2:page-2:image-subject-mismatch",
+        "B1-B2:page-4:image-subject-mismatch",
+        "C1-C2:page-2:image-subject-mismatch",
+        "C1-C2:page-3:image-subject-mismatch",
+        "C1-C2:page-4:image-subject-mismatch"
+      ],
+      "warnings": []
+    },
+    {
+      "id": "saga-wiki:31660596",
+      "sourceTitle": "Iberian cartography, 1400–1600",
+      "category": "History & Geography",
+      "revisionId": 1372322855,
+      "passed": false,
+      "errors": [
+        "A1-A2:page-3:image-subject-mismatch",
+        "A1-A2:page-4:image-subject-mismatch",
+        "B1-B2:page-3:image-subject-mismatch",
+        "B1-B2:page-4:image-subject-mismatch",
+        "C1-C2:page-3:image-subject-mismatch",
+        "C1-C2:page-4:image-subject-mismatch"
+      ],
+      "warnings": []
+    },
+    {
+      "id": "saga-wiki:71852937",
+      "sourceTitle": "Darb El Arba'īn",
+      "category": "Economy",
+      "revisionId": 1348771002,
+      "passed": false,
+      "errors": [
+        "A1-A2:page-3:image-subject-mismatch",
+        "A1-A2:page-4:image-subject-mismatch",
+        "B1-B2:page-3:image-subject-mismatch",
+        "B1-B2:page-4:image-subject-mismatch",
+        "C1-C2:page-3:image-subject-mismatch",
+        "C1-C2:page-4:image-subject-mismatch"
+      ],
+      "warnings": [
+        "A1-A2:page-1:cover-caption-indirect",
+        "B1-B2:page-1:cover-caption-indirect",
+        "C1-C2:page-1:cover-caption-indirect"
+      ]
+    },
+    {
+      "id": "saga-wiki:735092",
+      "sourceTitle": "Wrestling",
+      "category": "Sports",
+      "revisionId": 1379981309,
+      "passed": false,
+      "errors": [
+        "A1-A2:page-2:image-subject-mismatch",
+        "A1-A2:page-3:image-subject-mismatch",
+        "A1-A2:page-4:image-subject-mismatch",
+        "B1-B2:page-2:image-subject-mismatch",
+        "B1-B2:page-3:image-subject-mismatch",
+        "B1-B2:page-4:image-subject-mismatch",
+        "C1-C2:page-2:image-subject-mismatch",
+        "C1-C2:page-3:image-subject-mismatch",
+        "C1-C2:page-4:image-subject-mismatch"
+      ],
+      "warnings": [
+        "A1-A2:page-1:cover-caption-indirect",
+        "B1-B2:page-1:cover-caption-indirect",
+        "C1-C2:page-1:cover-caption-indirect"
+      ]
+    },
+    {
+      "id": "saga-wiki:44035599",
+      "sourceTitle": "Deforestation and climate change",
+      "category": "Environment",
+      "revisionId": 1380983925,
+      "passed": false,
+      "errors": [
+        "C1-C2:page-3:image-subject-mismatch"
+      ],
+      "warnings": []
+    },
+    {
+      "id": "saga-wiki:6999780",
+      "sourceTitle": "History of terrorism",
+      "category": "Politics",
+      "revisionId": 1379530340,
+      "passed": false,
+      "errors": [
+        "A1-A2:page-2:image-subject-mismatch",
+        "A1-A2:page-3:image-subject-mismatch",
+        "A1-A2:page-4:image-subject-mismatch",
+        "B1-B2:page-2:image-subject-mismatch",
+        "B1-B2:page-3:image-subject-mismatch",
+        "B1-B2:page-4:image-subject-mismatch",
+        "C1-C2:page-2:image-subject-mismatch",
+        "C1-C2:page-3:image-subject-mismatch",
+        "C1-C2:page-4:image-subject-mismatch"
+      ],
+      "warnings": [
+        "A1-A2:page-1:cover-caption-indirect",
+        "B1-B2:page-1:cover-caption-indirect",
+        "C1-C2:page-1:cover-caption-indirect"
+      ]
+    },
+    {
+      "id": "saga-wiki:77751416",
+      "sourceTitle": "Decolonization of public space",
+      "category": "Society",
+      "revisionId": 1380052184,
+      "passed": false,
+      "errors": [
+        "A1-A2:page-3:image-subject-mismatch",
+        "A1-A2:page-4:image-subject-mismatch",
+        "B1-B2:page-3:image-subject-mismatch",
+        "C1-C2:page-3:image-subject-mismatch",
+        "C1-C2:page-4:image-subject-mismatch"
+      ],
+      "warnings": [
+        "C1-C2:page-1:cover-caption-indirect"
+      ]
+    },
+    {
+      "id": "saga-wiki:79549232",
+      "sourceTitle": "Noirlac Abbey",
+      "category": "Culture",
+      "revisionId": 1380999323,
+      "passed": false,
+      "errors": [
+        "A1-A2:page-2:image-subject-mismatch",
+        "A1-A2:page-3:image-subject-mismatch",
+        "A1-A2:page-4:image-subject-mismatch",
+        "B1-B2:page-2:image-subject-mismatch",
+        "B1-B2:page-3:image-subject-mismatch",
+        "B1-B2:page-4:image-subject-mismatch",
+        "C1-C2:page-2:image-subject-mismatch",
+        "C1-C2:page-3:image-subject-mismatch",
+        "C1-C2:page-4:image-subject-mismatch"
+      ],
+      "warnings": []
+    },
+    {
+      "id": "saga-wiki:359626",
+      "sourceTitle": "Second Industrial Revolution",
+      "category": "Science & Technology",
+      "revisionId": 1380595942,
+      "passed": false,
+      "errors": [
+        "A1-A2:page-2:image-subject-mismatch",
+        "A1-A2:page-4:image-subject-mismatch",
+        "B1-B2:page-2:image-subject-mismatch",
+        "B1-B2:page-4:image-subject-mismatch",
+        "C1-C2:page-2:image-subject-mismatch",
+        "C1-C2:page-3:image-subject-mismatch",
+        "C1-C2:page-4:image-subject-mismatch"
+      ],
+      "warnings": [
+        "A1-A2:page-1:cover-caption-indirect",
+        "B1-B2:page-1:cover-caption-indirect",
+        "C1-C2:page-1:cover-caption-indirect"
+      ]
+    },
+    {
+      "id": "saga-wiki:254206",
+      "sourceTitle": "Chimney sweep",
+      "category": "Health",
+      "revisionId": 1380793173,
+      "passed": false,
+      "errors": [
+        "A1-A2:page-4:image-subject-mismatch",
+        "B1-B2:page-2:image-subject-mismatch",
+        "C1-C2:page-2:image-subject-mismatch",
+        "C1-C2:page-3:image-subject-mismatch"
+      ],
+      "warnings": []
+    },
+    {
+      "id": "saga-wiki:31546082",
+      "sourceTitle": "Coastal flooding",
+      "category": "Environment",
+      "revisionId": 1368837774,
+      "passed": false,
+      "errors": [
+        "A1-A2:page-3:image-subject-mismatch",
+        "B1-B2:page-2:image-subject-mismatch",
+        "B1-B2:page-4:image-subject-mismatch",
+        "C1-C2:page-2:image-subject-mismatch",
+        "C1-C2:page-4:image-subject-mismatch"
+      ],
+      "warnings": []
+    },
+    {
+      "id": "saga-wiki:2393552",
+      "sourceTitle": "New World",
+      "category": "History & Geography",
+      "revisionId": 1376689536,
+      "passed": false,
+      "errors": [
+        "A1-A2:page-2:image-subject-mismatch",
+        "A1-A2:page-3:image-subject-mismatch",
+        "B1-B2:page-2:image-subject-mismatch",
+        "B1-B2:page-3:image-subject-mismatch",
+        "C1-C2:page-2:image-subject-mismatch",
+        "C1-C2:page-3:image-subject-mismatch",
+        "C1-C2:page-4:image-subject-mismatch"
+      ],
+      "warnings": []
+    },
+    {
+      "id": "saga-wiki:7116046",
+      "sourceTitle": "Animal rights",
+      "category": "Politics",
+      "revisionId": 1380544609,
+      "passed": false,
+      "errors": [
+        "A1-A2:page-2:image-subject-mismatch",
+        "A1-A2:page-3:image-subject-mismatch",
+        "B1-B2:page-3:image-subject-mismatch",
+        "C1-C2:page-3:image-subject-mismatch"
+      ],
+      "warnings": []
+    },
+    {
+      "id": "saga-wiki:21401843",
+      "sourceTitle": "Freedom of speech",
+      "category": "Society",
+      "revisionId": 1380704056,
+      "passed": false,
+      "errors": [
+        "A1-A2:page-4:image-subject-mismatch",
+        "B1-B2:page-2:image-subject-mismatch",
+        "B1-B2:page-4:image-subject-mismatch",
+        "C1-C2:page-2:image-subject-mismatch",
+        "C1-C2:page-4:image-subject-mismatch"
+      ],
+      "warnings": []
+    },
+    {
+      "id": "saga-wiki:95157",
+      "sourceTitle": "Symbolism (movement)",
+      "category": "Culture",
+      "revisionId": 1381255721,
+      "passed": false,
+      "errors": [
+        "A1-A2:page-3:image-subject-mismatch",
+        "A1-A2:page-4:image-subject-mismatch",
+        "B1-B2:page-3:image-subject-mismatch",
+        "B1-B2:page-4:image-subject-mismatch",
+        "C1-C2:page-3:image-subject-mismatch",
+        "C1-C2:page-4:image-subject-mismatch"
+      ],
+      "warnings": [
+        "A1-A2:page-1:cover-caption-indirect",
+        "B1-B2:page-1:cover-caption-indirect",
+        "C1-C2:page-1:cover-caption-indirect"
+      ]
+    },
+    {
+      "id": "saga-wiki:230539",
+      "sourceTitle": "Camel train",
+      "category": "Economy",
+      "revisionId": 1378743903,
+      "passed": false,
+      "errors": [
+        "A1-A2:page-2:image-subject-mismatch",
+        "A1-A2:page-3:image-subject-mismatch",
+        "A1-A2:page-4:image-era-conflict:2010 vs 1929",
+        "A1-A2:page-4:image-subject-mismatch",
+        "B1-B2:page-2:image-subject-mismatch",
+        "B1-B2:page-3:image-subject-mismatch",
+        "B1-B2:page-4:image-era-conflict:2010 vs 1856",
+        "B1-B2:page-4:image-subject-mismatch",
+        "C1-C2:page-2:image-subject-mismatch",
+        "C1-C2:page-3:image-subject-mismatch",
+        "C1-C2:page-4:image-subject-mismatch"
+      ],
+      "warnings": []
+    },
+    {
+      "id": "saga-wiki:283810",
+      "sourceTitle": "Mass spectrometry",
+      "category": "Science & Technology",
+      "revisionId": 1378449939,
+      "passed": false,
+      "errors": [
+        "A1-A2:page-2:image-subject-mismatch",
+        "A1-A2:page-3:image-subject-mismatch",
+        "B1-B2:page-2:image-subject-mismatch",
+        "B1-B2:page-3:image-subject-mismatch",
+        "C1-C2:page-2:image-subject-mismatch",
+        "C1-C2:page-3:image-subject-mismatch"
+      ],
+      "warnings": [
+        "A1-A2:page-1:cover-caption-indirect",
+        "B1-B2:page-1:cover-caption-indirect",
+        "C1-C2:page-1:cover-caption-indirect"
+      ]
+    },
+    {
+      "id": "saga-wiki:56738",
+      "sourceTitle": "Geography of Rwanda",
+      "category": "Environment",
+      "revisionId": 1366488374,
+      "passed": false,
+      "errors": [
+        "A1-A2:page-2:image-subject-mismatch",
+        "A1-A2:page-3:image-subject-mismatch",
+        "B1-B2:page-2:image-subject-mismatch",
+        "B1-B2:page-3:image-subject-mismatch",
+        "B1-B2:page-4:image-subject-mismatch",
+        "C1-C2:page-2:image-subject-mismatch",
+        "C1-C2:page-3:image-subject-mismatch",
+        "C1-C2:page-4:image-subject-mismatch"
+      ],
+      "warnings": []
+    },
+    {
+      "id": "saga-wiki:51522180",
+      "sourceTitle": "Coalition for Epidemic Preparedness Innovations",
+      "category": "Health",
+      "revisionId": 1381006440,
+      "passed": false,
+      "errors": [
+        "A1-A2:page-4:image-subject-mismatch",
+        "C1-C2:page-4:image-subject-mismatch"
+      ],
+      "warnings": []
+    },
+    {
+      "id": "saga-wiki:57768",
+      "sourceTitle": "Women's Tennis Association",
+      "category": "Sports",
+      "revisionId": 1378762495,
+      "passed": false,
+      "errors": [
+        "A1-A2:page-2:image-subject-mismatch",
+        "A1-A2:page-3:image-subject-mismatch",
+        "B1-B2:page-3:image-subject-mismatch",
+        "B1-B2:page-4:image-subject-mismatch",
+        "C1-C2:page-3:image-subject-mismatch",
+        "C1-C2:page-4:image-subject-mismatch"
+      ],
+      "warnings": [
+        "A1-A2:page-1:cover-caption-indirect",
+        "B1-B2:page-1:cover-caption-indirect",
+        "C1-C2:page-1:cover-caption-indirect"
+      ]
+    },
+    {
+      "id": "saga-wiki:13468724",
+      "sourceTitle": "Trowulan",
+      "category": "History & Geography",
+      "revisionId": 1373226145,
+      "passed": false,
+      "errors": [
+        "A1-A2:page-2:image-subject-mismatch",
+        "A1-A2:page-3:image-subject-mismatch",
+        "B1-B2:page-2:image-subject-mismatch",
+        "C1-C2:page-2:image-subject-mismatch",
+        "C1-C2:page-3:image-subject-mismatch",
+        "C1-C2:page-4:image-subject-mismatch"
+      ],
+      "warnings": []
+    },
+    {
+      "id": "saga-wiki:74790405",
+      "sourceTitle": "India–Middle East–Europe Economic Corridor",
+      "category": "Economy",
+      "revisionId": 1375906372,
+      "passed": false,
+      "errors": [
+        "A1-A2:page-2:image-subject-mismatch",
+        "A1-A2:page-3:image-subject-mismatch",
+        "A1-A2:page-4:image-subject-mismatch",
+        "B1-B2:page-2:image-subject-mismatch",
+        "B1-B2:page-3:image-subject-mismatch",
+        "B1-B2:page-4:image-subject-mismatch",
+        "C1-C2:page-2:image-subject-mismatch",
+        "C1-C2:page-3:image-subject-mismatch",
+        "C1-C2:page-4:image-subject-mismatch"
+      ],
+      "warnings": [
+        "A1-A2:page-1:cover-caption-indirect",
+        "B1-B2:page-1:cover-caption-indirect"
+      ]
+    },
+    {
+      "id": "saga-wiki:381219",
+      "sourceTitle": "Open access",
+      "category": "Society",
+      "revisionId": 1374181374,
+      "passed": false,
+      "errors": [
+        "A1-A2:page-2:image-subject-mismatch",
+        "C1-C2:page-2:image-subject-mismatch"
+      ],
+      "warnings": []
+    },
+    {
+      "id": "saga-wiki:655350",
+      "sourceTitle": "Cynisca",
+      "category": "Sports",
+      "revisionId": 1355870897,
+      "passed": false,
+      "errors": [
+        "B1-B2:page-4:image-subject-mismatch",
+        "C1-C2:page-3:image-subject-mismatch",
+        "C1-C2:page-4:image-subject-mismatch"
+      ],
+      "warnings": []
+    },
+    {
+      "id": "saga-wiki:9457",
+      "sourceTitle": "Election",
+      "category": "Politics",
+      "revisionId": 1380210078,
+      "passed": false,
+      "errors": [
+        "A1-A2:page-2:image-subject-mismatch",
+        "B1-B2:page-2:image-subject-mismatch",
+        "C1-C2:page-2:image-subject-mismatch",
+        "C1-C2:page-3:image-subject-mismatch"
+      ],
+      "warnings": []
+    },
+    {
+      "id": "saga-wiki:55760582",
+      "sourceTitle": "History of aluminium",
+      "category": "Science & Technology",
+      "revisionId": 1376134381,
+      "passed": false,
+      "errors": [
+        "A1-A2:page-2:image-subject-mismatch",
+        "A1-A2:page-3:image-subject-mismatch",
+        "B1-B2:page-4:image-era-conflict:1857/1857 vs 1954",
+        "C1-C2:page-4:image-era-conflict:1857/1857 vs 1954"
+      ],
+      "warnings": []
+    },
+    {
+      "id": "saga-wiki:60779659",
+      "sourceTitle": "Climate emergency declaration",
+      "category": "Environment",
+      "revisionId": 1366493795,
+      "passed": false,
+      "errors": [
+        "A1-A2:page-3:image-subject-mismatch",
+        "A1-A2:page-4:image-subject-mismatch",
+        "B1-B2:page-3:image-subject-mismatch",
+        "B1-B2:page-4:image-subject-mismatch",
+        "C1-C2:page-2:image-subject-mismatch",
+        "C1-C2:page-3:image-subject-mismatch",
+        "C1-C2:page-4:image-subject-mismatch"
+      ],
+      "warnings": []
+    },
+    {
+      "id": "saga-wiki:1724851",
+      "sourceTitle": "Contact tracing",
+      "category": "Health",
+      "revisionId": 1374229365,
+      "passed": false,
+      "errors": [
+        "A1-A2:page-2:image-subject-mismatch",
+        "A1-A2:page-4:image-subject-mismatch",
+        "B1-B2:page-2:image-subject-mismatch",
+        "B1-B2:page-4:image-subject-mismatch",
+        "C1-C2:page-2:image-subject-mismatch",
+        "C1-C2:page-4:image-subject-mismatch"
+      ],
+      "warnings": []
+    },
+    {
+      "id": "saga-wiki:38497714",
+      "sourceTitle": "Longleaf pine ecosystem",
+      "category": "History & Geography",
+      "revisionId": 1379099622,
+      "passed": false,
+      "errors": [
+        "B1-B2:page-3:image-subject-mismatch",
+        "B1-B2:page-4:image-subject-mismatch",
+        "C1-C2:page-3:image-subject-mismatch",
+        "C1-C2:page-4:image-subject-mismatch"
+      ],
+      "warnings": []
+    },
+    {
+      "id": "saga-wiki:25426162",
+      "sourceTitle": "International North–South Transport Corridor",
+      "category": "Economy",
+      "revisionId": 1379505082,
+      "passed": false,
+      "errors": [
+        "A1-A2:page-2:image-subject-mismatch",
+        "A1-A2:page-3:image-subject-mismatch",
+        "B1-B2:page-2:image-subject-mismatch",
+        "B1-B2:page-3:image-subject-mismatch",
+        "C1-C2:page-2:image-subject-mismatch",
+        "C1-C2:page-3:image-subject-mismatch"
+      ],
+      "warnings": []
+    },
+    {
+      "id": "saga-wiki:1598742",
+      "sourceTitle": "All England Lawn Tennis and Croquet Club",
+      "category": "Sports",
+      "revisionId": 1371448397,
+      "passed": false,
+      "errors": [
+        "A1-A2:page-2:image-subject-mismatch",
+        "A1-A2:page-3:image-subject-mismatch",
+        "A1-A2:page-4:image-subject-mismatch",
+        "B1-B2:page-2:image-era-conflict:2006 vs 1868/1875",
+        "B1-B2:page-2:image-subject-mismatch",
+        "B1-B2:page-3:image-era-conflict:2022 vs 1877",
+        "C1-C2:page-2:image-era-conflict:2006 vs 1868/1875",
+        "C1-C2:page-2:image-subject-mismatch",
+        "C1-C2:page-3:image-era-conflict:2022 vs 1882/1877"
+      ],
+      "warnings": []
+    },
+    {
+      "id": "saga-wiki:48691882",
+      "sourceTitle": "Buddhist rock carving in Manglawar",
+      "category": "Culture",
+      "revisionId": 1359652646,
+      "passed": false,
+      "errors": [
+        "A1-A2:page-2:image-subject-mismatch",
+        "A1-A2:page-3:image-subject-mismatch",
+        "B1-B2:page-2:image-subject-mismatch",
+        "B1-B2:page-3:image-subject-mismatch",
+        "C1-C2:page-2:image-subject-mismatch",
+        "C1-C2:page-3:image-subject-mismatch"
+      ],
+      "warnings": []
+    },
+    {
+      "id": "saga-wiki:54030514",
+      "sourceTitle": "Election audit",
+      "category": "Politics",
+      "revisionId": 1373314851,
+      "passed": false,
+      "errors": [
+        "B1-B2:page-3:image-subject-mismatch",
+        "C1-C2:page-2:image-subject-mismatch",
+        "C1-C2:page-3:image-subject-mismatch"
+      ],
+      "warnings": []
+    },
+    {
+      "id": "saga-wiki:37600900",
+      "sourceTitle": "Anti-abortion movements",
+      "category": "Society",
+      "revisionId": 1379750089,
+      "passed": false,
+      "errors": [
+        "A1-A2:page-2:image-subject-mismatch",
+        "A1-A2:page-4:image-subject-mismatch",
+        "B1-B2:page-2:image-subject-mismatch",
+        "B1-B2:page-4:image-subject-mismatch",
+        "C1-C2:page-2:image-subject-mismatch",
+        "C1-C2:page-3:image-subject-mismatch",
+        "C1-C2:page-4:image-subject-mismatch"
+      ],
+      "warnings": []
+    },
+    {
+      "id": "saga-wiki:407233",
+      "sourceTitle": "Global dimming",
+      "category": "Environment",
+      "revisionId": 1380990938,
+      "passed": false,
+      "errors": [
+        "A1-A2:page-2:image-subject-mismatch",
+        "A1-A2:page-3:image-subject-mismatch",
+        "B1-B2:page-2:image-subject-mismatch",
+        "B1-B2:page-3:image-subject-mismatch",
+        "C1-C2:page-2:image-subject-mismatch"
+      ],
+      "warnings": []
+    },
+    {
+      "id": "saga-wiki:48090580",
+      "sourceTitle": "Storage of cultural property",
+      "category": "Culture",
+      "revisionId": 1361016872,
+      "passed": false,
+      "errors": [
+        "A1-A2:page-3:image-subject-mismatch",
+        "A1-A2:page-4:image-subject-mismatch",
+        "B1-B2:page-3:image-subject-mismatch",
+        "B1-B2:page-4:image-subject-mismatch",
+        "C1-C2:page-3:image-subject-mismatch",
+        "C1-C2:page-4:image-subject-mismatch"
+      ],
+      "warnings": []
+    },
+    {
+      "id": "saga-wiki:18617142",
+      "sourceTitle": "Mercury (element)",
+      "category": "Science & Technology",
+      "revisionId": 1380113040,
+      "passed": false,
+      "errors": [
+        "A1-A2:page-2:image-subject-mismatch",
+        "A1-A2:page-3:image-subject-mismatch",
+        "A1-A2:page-4:image-subject-mismatch",
+        "B1-B2:page-2:image-subject-mismatch",
+        "B1-B2:page-3:image-subject-mismatch",
+        "B1-B2:page-4:image-subject-mismatch",
+        "C1-C2:page-2:image-subject-mismatch",
+        "C1-C2:page-3:image-subject-mismatch",
+        "C1-C2:page-4:image-subject-mismatch"
+      ],
+      "warnings": [
+        "A1-A2:page-1:cover-caption-indirect",
+        "B1-B2:page-1:cover-caption-indirect"
+      ]
+    },
+    {
+      "id": "saga-wiki:12686484",
+      "sourceTitle": "Drug policy",
+      "category": "Health",
+      "revisionId": 1360650813,
+      "passed": false,
+      "errors": [
+        "A1-A2:page-4:image-subject-mismatch",
+        "B1-B2:page-4:image-subject-mismatch",
+        "C1-C2:page-4:image-subject-mismatch"
+      ],
+      "warnings": [
+        "A1-A2:page-1:cover-caption-indirect",
+        "B1-B2:page-1:cover-caption-indirect",
+        "C1-C2:page-1:cover-caption-indirect"
+      ]
+    },
+    {
+      "id": "saga-wiki:12868203",
+      "sourceTitle": "Geography and cartography in the medieval Islamic world",
+      "category": "History & Geography",
+      "revisionId": 1355326990,
+      "passed": false,
+      "errors": [
+        "A1-A2:page-3:image-subject-mismatch",
+        "A1-A2:page-4:image-subject-mismatch",
+        "B1-B2:page-3:image-subject-mismatch",
+        "B1-B2:page-4:image-subject-mismatch",
+        "C1-C2:page-3:image-subject-mismatch",
+        "C1-C2:page-4:image-subject-mismatch"
+      ],
+      "warnings": []
+    },
+    {
+      "id": "saga-wiki:52112872",
+      "sourceTitle": "History of the Argentina national rugby union team",
+      "category": "Sports",
+      "revisionId": 1308205831,
+      "passed": false,
+      "errors": [
+        "A1-A2:page-2:image-subject-mismatch",
+        "A1-A2:page-3:image-subject-mismatch",
+        "A1-A2:page-4:image-subject-mismatch",
+        "B1-B2:page-2:image-subject-mismatch",
+        "B1-B2:page-4:image-subject-mismatch",
+        "C1-C2:page-3:image-subject-mismatch",
+        "C1-C2:page-4:image-subject-mismatch"
+      ],
+      "warnings": []
+    },
+    {
+      "id": "saga-wiki:1236844",
+      "sourceTitle": "Early voting",
+      "category": "Politics",
+      "revisionId": 1380943196,
+      "passed": false,
+      "errors": [
+        "B1-B2:page-3:image-subject-mismatch",
+        "C1-C2:page-3:image-subject-mismatch"
+      ],
+      "warnings": []
+    },
+    {
+      "id": "saga-wiki:27556949",
+      "sourceTitle": "Portuguese India Armadas",
+      "category": "Economy",
+      "revisionId": 1379583141,
+      "passed": false,
+      "errors": [
+        "A1-A2:page-4:image-subject-mismatch",
+        "B1-B2:page-3:image-subject-mismatch",
+        "B1-B2:page-4:image-subject-mismatch",
+        "C1-C2:page-4:image-subject-mismatch"
+      ],
+      "warnings": []
+    },
+    {
+      "id": "saga-wiki:26636309",
+      "sourceTitle": "Progressivism",
+      "category": "Society",
+      "revisionId": 1379778823,
+      "passed": false,
+      "errors": [
+        "A1-A2:page-2:image-subject-mismatch",
+        "A1-A2:page-3:image-subject-mismatch",
+        "A1-A2:page-4:image-subject-mismatch",
+        "B1-B2:page-2:image-subject-mismatch",
+        "B1-B2:page-4:image-subject-mismatch",
+        "C1-C2:page-2:image-subject-mismatch",
+        "C1-C2:page-3:image-subject-mismatch"
+      ],
+      "warnings": [
+        "A1-A2:page-1:cover-caption-indirect"
+      ]
+    },
+    {
+      "id": "saga-wiki:71397452",
+      "sourceTitle": "Helios Dust Instrumentation",
+      "category": "Science & Technology",
+      "revisionId": 1379838220,
+      "passed": false,
+      "errors": [
+        "A1-A2:page-4:image-subject-mismatch",
+        "B1-B2:page-4:image-subject-mismatch"
+      ],
+      "warnings": []
+    },
+    {
+      "id": "saga-wiki:13165796",
+      "sourceTitle": "Ocean heat content",
+      "category": "Environment",
+      "revisionId": 1381104812,
+      "passed": false,
+      "errors": [
+        "A1-A2:page-2:image-subject-mismatch",
+        "A1-A2:page-4:image-subject-mismatch",
+        "B1-B2:page-2:image-subject-mismatch",
+        "C1-C2:page-2:image-subject-mismatch"
+      ],
+      "warnings": []
+    },
+    {
+      "id": "saga-wiki:325752",
+      "sourceTitle": "Hadhramaut",
+      "category": "History & Geography",
+      "revisionId": 1378336413,
+      "passed": false,
+      "errors": [
+        "A1-A2:page-2:image-subject-mismatch",
+        "A1-A2:page-3:image-subject-mismatch",
+        "A1-A2:page-4:image-subject-mismatch",
+        "B1-B2:page-2:image-subject-mismatch",
+        "B1-B2:page-3:image-subject-mismatch",
+        "C1-C2:page-2:image-subject-mismatch",
+        "C1-C2:page-3:image-subject-mismatch"
+      ],
+      "warnings": []
+    },
+    {
+      "id": "saga-wiki:54253",
+      "sourceTitle": "Silk Road",
+      "category": "Economy",
+      "revisionId": 1379074984,
+      "passed": false,
+      "errors": [
+        "A1-A2:page-4:image-subject-mismatch",
+        "B1-B2:page-4:image-subject-mismatch",
+        "C1-C2:page-2:image-subject-mismatch",
+        "C1-C2:page-4:image-subject-mismatch"
+      ],
+      "warnings": []
+    },
+    {
+      "id": "saga-wiki:10991151",
+      "sourceTitle": "History of the France national rugby union team",
+      "category": "Sports",
+      "revisionId": 1310374257,
+      "passed": false,
+      "errors": [
+        "A1-A2:page-4:image-subject-mismatch",
+        "B1-B2:page-4:image-subject-mismatch",
+        "C1-C2:page-3:image-subject-mismatch"
+      ],
+      "warnings": []
+    },
+    {
+      "id": "saga-wiki:25650674",
+      "sourceTitle": "Cultural Property (Japan)",
+      "category": "Culture",
+      "revisionId": 1373246443,
+      "passed": false,
+      "errors": [
+        "A1-A2:page-3:image-subject-mismatch",
+        "A1-A2:page-4:image-subject-mismatch",
+        "B1-B2:page-3:image-subject-mismatch",
+        "B1-B2:page-4:image-subject-mismatch",
+        "C1-C2:page-2:image-subject-mismatch",
+        "C1-C2:page-3:image-subject-mismatch",
+        "C1-C2:page-4:image-subject-mismatch"
+      ],
+      "warnings": []
+    },
+    {
+      "id": "saga-wiki:34564007",
+      "sourceTitle": "Deathcare",
+      "category": "Health",
+      "revisionId": 1368955509,
+      "passed": false,
+      "errors": [
+        "A1-A2:page-2:image-subject-mismatch",
+        "A1-A2:page-4:image-subject-mismatch",
+        "B1-B2:page-2:image-subject-mismatch",
+        "B1-B2:page-4:image-subject-mismatch",
+        "C1-C2:page-2:image-subject-mismatch",
+        "C1-C2:page-4:image-subject-mismatch"
+      ],
+      "warnings": [
+        "A1-A2:page-1:cover-caption-indirect",
+        "B1-B2:page-1:cover-caption-indirect",
+        "C1-C2:page-1:cover-caption-indirect"
+      ]
+    },
+    {
+      "id": "saga-wiki:23996",
+      "sourceTitle": "Political party",
+      "category": "Politics",
+      "revisionId": 1381549522,
+      "passed": false,
+      "errors": [
+        "A1-A2:page-3:image-subject-mismatch",
+        "B1-B2:page-3:image-subject-mismatch",
+        "C1-C2:page-2:image-subject-mismatch",
+        "C1-C2:page-3:image-subject-mismatch"
+      ],
+      "warnings": [
+        "A1-A2:page-1:cover-caption-indirect",
+        "B1-B2:page-1:cover-caption-indirect",
+        "C1-C2:page-1:cover-caption-indirect"
+      ]
+    },
+    {
+      "id": "saga-wiki:19568",
+      "sourceTitle": "Microscope",
+      "category": "Science & Technology",
+      "revisionId": 1377490635,
+      "passed": false,
+      "errors": [
+        "A1-A2:page-2:image-subject-mismatch",
+        "A1-A2:page-3:image-subject-mismatch",
+        "B1-B2:page-2:image-subject-mismatch",
+        "B1-B2:page-3:image-era-conflict:1914/1914 vs 1665",
+        "B1-B2:page-3:image-subject-mismatch",
+        "C1-C2:page-2:image-subject-mismatch",
+        "C1-C2:page-3:image-subject-mismatch"
+      ],
+      "warnings": [
+        "C1-C2:page-1:cover-caption-indirect"
+      ]
+    }
+  ]
+}

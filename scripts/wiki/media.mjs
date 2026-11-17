@@ -1,14 +1,29 @@
 /** Context decisions for files already embedded in one pinned Wikipedia article. */
 const filler=new Set('about above after again also among article being between caption century commons during first from history image images into large main many other people photo picture shown shows some source their these this those through under which while with world years'.split(' '))
-const terms=value=>new Set(String(value||'').toLowerCase().normalize('NFKD').replace(/[^a-z0-9]+/g,' ').split(/\s+/)
+const terms=value=>new Set(String(value||'').toLowerCase().normalize('NFKD').replace(/[^a-z]+/g,' ').split(/\s+/)
  .filter(word=>word.length>=4&&!filler.has(word)).map(word=>word.endsWith('ing')&&word.length>6?word.slice(0,-3):
   word.endsWith('s')&&word.length>4?word.slice(0,-1):word))
 const hits=(a,b)=>[...terms(a)].filter(word=>terms(b).has(word)).length
-const year=value=>String(value||'').match(/\b(?:1[5-9]|20)\d{2}\b/g)||[]
+const year=value=>String(value||'').match(/\b(?:1[4-9]|20)\d{2}\b/g)||[]
 const imageTopic=photo=>`${photo.caption} ${photo.alt} ${photo.description} ${photo.fileTitle.replace(/^File:/,'')}`
 const chart=/\b(?:chart|graph|plot|statistics|dataset|data|rate|index|trend)\b/i
+const modernObjectNote=/\b(?:today|modern|present|museum|ruins|remains|memorial|monument|statue|site|aerial|view of|preserved|archive|collection|exhibit|sculpture|painting|bust|coins?)\b/i
 const captionNames=caption=>(String(caption||'').match(/\b[A-Z][a-z]{3,}\b/g)||[])
  .filter(word=>!new Set(['The','This','Map','Regions','Historical','Expansion','Empire','Comparison','Territorial']).has(word))
+
+export function eraCompatible(photo,texts){
+ const capText=`${photo.caption||''} ${photo.fileTitle||''}`
+ const capYears=year(capText).map(Number)
+ const allYears=year(`${capText} ${photo.description||''} ${photo.date||''}`)
+ const isChart=chart.test(`${photo.fileTitle||''} ${photo.caption||''}`)
+ if(isChart&&allYears.length){
+  return texts.every(text=>allYears.some(value=>text.includes(value)))
+ }
+ if(!capYears.length||modernObjectNote.test(`${capText} ${photo.description||''}`))return true
+ const textYears=texts.flatMap(t=>year(t).map(Number))
+ if(!textYears.length)return true
+ return capYears.some(cy=>textYears.some(ty=>Math.abs(cy-ty)<=65))
+}
 
 /** Rights proof alone leaves a candidate in REVIEW. This function requires
  * source-article placement plus a concrete subject match with a target page. */
@@ -28,7 +43,7 @@ export function decideWikipediaPhoto(candidate,{source,levelVariants,usedUrls=ne
  for(let pageIndex=0;pageIndex<length;pageIndex++){
   const texts=variants.map(pages=>pages[pageIndex].text)
   const overlaps=texts.map(text=>hits(photo.caption+' '+photo.alt,text))
-  const periodOk=!isChart||!explicitYears.length||texts.every(text=>explicitYears.some(value=>text.includes(value)))
+  const periodOk=eraCompatible(photo,texts)
   if(!periodOk)continue
   const titleHits=hits(photo.caption+' '+photo.alt+' '+photo.fileTitle,source.sourceTitle)
   const contextOk=overlaps.every(count=>count>=1)

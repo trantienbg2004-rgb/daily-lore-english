@@ -3,7 +3,7 @@ import { createPortal } from 'react-dom'
 import './App.css'
 import { initializeSeenHistory, persistReadMarker, readLegacyHistory } from './lib/seenHistory.js'
 import { storyId } from './lib/feedQueue.js'
-import { balancePhotoCoverPage, planReadingPages, rebalanceTextPages } from './lib/readerPagination.js'
+import { balancePhotoCoverPage, planAnchoredWikiPages, planReadingPages, rebalanceTextPages } from './lib/readerPagination.js'
 import { shortNewsPages } from './lib/shortNewsPages.js'
 import { sanitizeReadingArticle } from './lib/articleCleanup.js'
 import { refreshCatalog, refillCatalog, REFRESH_INTERVAL_MS } from './lib/continuousReader.js'
@@ -183,7 +183,9 @@ function layoutPages(item, reader, badImages = new Set()) {
       badImages.has(p.image) ? {...p,image:'',caption:''} : p)
     const next = item?.contentType === 'news'
       ? balancePhotoCoverPage(cleanSources, fits)
-      : planReadingPages({...item,_sourcePages:cleanSources}, fits)
+      : item?.contentType === 'wiki'
+        ? planAnchoredWikiPages({...item,_sourcePages:cleanSources}, fits)
+        : planReadingPages({...item,_sourcePages:cleanSources}, fits)
     if (!next.length) return item.pages
     return rebalanceTextPages(next, fits)
   } catch (error) {
