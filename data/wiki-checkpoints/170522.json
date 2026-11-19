@@ -2,10 +2,10 @@
   "pageId": 170522,
   "title": "Consumerism",
   "topic": "Society",
-  "status": "EVIDENCE_READY",
+  "status": "RETRY_LATER",
   "revisionId": 1378616216,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378616216",
-  "reason": "5 rights-verified embedded images",
+  "reason": "Gemini HTTP 429; circuit open",
   "rights": [
     {
       "status": "REVIEW",
@@ -289,5 +289,5 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378616216"
     }
   ],
-  "updatedAt": "2026-10-21T03:08:01.912Z"
+  "updatedAt": "2026-11-19T06:40:51.966Z"
 }
