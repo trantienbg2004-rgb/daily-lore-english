@@ -6655,7 +6655,7 @@
       "status": "RETRY_LATER",
       "reason": "Gemini network unavailable; circuit open",
       "revisionId": 1378616216,
-      "checkedAt": "2026-11-19T18:32:28.436Z"
+      "checkedAt": "2026-11-19T18:57:43.316Z"
     },
     "174410": {
       "status": "RETRY_LATER",
@@ -6982,10 +6982,10 @@
       "checkedAt": null
     },
     "627107": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "RETRY_LATER",
+      "reason": "Gemini circuit open",
+      "revisionId": 1383482618,
+      "checkedAt": "2026-11-19T18:57:47.921Z"
     },
     "627246": {
       "status": "RETRY_LATER",
@@ -7366,10 +7366,10 @@
       "checkedAt": "2026-10-21T01:40:09.043Z"
     },
     "1858051": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "RETRY_LATER",
+      "reason": "Gemini circuit open",
+      "revisionId": 1386640221,
+      "checkedAt": "2026-11-19T18:58:01.464Z"
     },
     "1878007": {
       "status": "REJECTED",
@@ -7510,10 +7510,10 @@
       "checkedAt": "2026-11-19T09:47:36.895Z"
     },
     "2649947": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": 1369336527,
-      "checkedAt": null
+      "status": "RETRY_LATER",
+      "reason": "Gemini circuit open",
+      "revisionId": 1383212171,
+      "checkedAt": "2026-11-19T18:57:45.021Z"
     },
     "2666861": {
       "status": "RETRY_LATER",
@@ -7960,10 +7960,10 @@
       "checkedAt": null
     },
     "9002676": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "REJECTED",
+      "reason": "insufficient-source-text-or-embedded-images",
+      "revisionId": 1378443256,
+      "checkedAt": "2026-11-19T18:57:55.897Z"
     },
     "9167123": {
       "status": "PENDING",
@@ -8212,10 +8212,10 @@
       "checkedAt": "2026-10-21T01:40:19.717Z"
     },
     "17363244": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "RETRY_LATER",
+      "reason": "Gemini circuit open",
+      "revisionId": 1385984795,
+      "checkedAt": "2026-11-19T18:57:58.529Z"
     },
     "17987598": {
       "status": "PUBLISHED",
@@ -8362,10 +8362,10 @@
       "checkedAt": null
     },
     "22311897": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "RETRY_LATER",
+      "reason": "Gemini circuit open",
+      "revisionId": 1367759750,
+      "checkedAt": "2026-11-19T18:57:51.007Z"
     },
     "22332885": {
       "status": "NEEDS_REVIEW",
@@ -8932,10 +8932,10 @@
       "checkedAt": "2026-11-19T12:17:31.346Z"
     },
     "43656538": {
-      "status": "PENDING",
-      "reason": "queued",
+      "status": "RETRY_LATER",
+      "reason": "Gemini circuit open",
       "revisionId": 1349497936,
-      "checkedAt": null
+      "checkedAt": "2026-11-19T18:57:53.948Z"
     },
     "43956140": {
       "status": "REJECTED",
@@ -9346,10 +9346,10 @@
       "checkedAt": null
     },
     "59512503": {
-      "status": "PENDING",
-      "reason": "queued",
+      "status": "REJECTED",
+      "reason": "insufficient-source-text-or-embedded-images",
       "revisionId": 1327022465,
-      "checkedAt": null
+      "checkedAt": "2026-11-19T18:58:06.202Z"
     },
     "59774066": {
       "status": "PUBLISHED",
@@ -9952,10 +9952,10 @@
       "checkedAt": "2026-11-19T07:06:53.380Z"
     },
     "75778478": {
-      "status": "PENDING",
-      "reason": "queued",
+      "status": "NEEDS_REVIEW",
+      "reason": "no-rights-verified-embedded-image",
       "revisionId": 1376699310,
-      "checkedAt": null
+      "checkedAt": "2026-11-19T18:58:04.453Z"
     },
     "75904154": {
       "status": "PUBLISHED",
@@ -10378,10 +10378,10 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-11-19T18:32:51.160Z",
+  "updatedAt": "2026-11-19T18:58:06.205Z",
   "dailyUsage": {
     "day": "2026-11-19",
-    "calls": 93,
+    "calls": 97,
     "tokens": 121485,
     "usageUnknown": true,
     "tokenAccountingUnavailable": false
