@@ -5,7 +5,7 @@
   "status": "RETRY_LATER",
   "revisionId": 1378616216,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378616216",
-  "reason": "Gemini HTTP 429; circuit open",
+  "reason": "Gemini network unavailable; circuit open",
   "rights": [
     {
       "status": "REVIEW",
@@ -506,7 +506,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378616216"
     }
   ],
-  "updatedAt": "2026-11-19T14:45:55.936Z",
+  "updatedAt": "2026-11-19T15:12:20.744Z",
   "draft": {
     "variants": {
       "A1-A2": {
