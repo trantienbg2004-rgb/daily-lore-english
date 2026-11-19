@@ -6400,10 +6400,10 @@
       "checkedAt": "2026-10-21T01:40:03.146Z"
     },
     "24903": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "REJECTED",
+      "reason": "insufficient-source-text-or-embedded-images",
+      "revisionId": 1349367115,
+      "checkedAt": "2026-11-19T14:45:57.805Z"
     },
     "26094": {
       "status": "RETRY_LATER",
@@ -6454,10 +6454,10 @@
       "checkedAt": null
     },
     "36546": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "REJECTED",
+      "reason": "insufficient-source-text-or-embedded-images",
+      "revisionId": 1382569194,
+      "checkedAt": "2026-11-19T14:46:09.752Z"
     },
     "37476": {
       "status": "PUBLISHED",
@@ -6653,9 +6653,9 @@
     },
     "170522": {
       "status": "RETRY_LATER",
-      "reason": "Gemini network unavailable; circuit open",
+      "reason": "Gemini HTTP 429; circuit open",
       "revisionId": 1378616216,
-      "checkedAt": "2026-11-19T14:22:13.718Z"
+      "checkedAt": "2026-11-19T14:45:55.936Z"
     },
     "174410": {
       "status": "RETRY_LATER",
@@ -7168,10 +7168,10 @@
       "checkedAt": "2026-11-19T11:05:43.983Z"
     },
     "1141372": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "RETRY_LATER",
+      "reason": "Gemini circuit open",
+      "revisionId": 1380742239,
+      "checkedAt": "2026-11-19T14:46:15.604Z"
     },
     "1159092": {
       "status": "RETRY_LATER",
@@ -7294,10 +7294,10 @@
       "checkedAt": null
     },
     "1638070": {
-      "status": "PENDING",
-      "reason": "queued",
+      "status": "NEEDS_REVIEW",
+      "reason": "no-rights-verified-embedded-image",
       "revisionId": 1349611079,
-      "checkedAt": null
+      "checkedAt": "2026-11-19T14:46:08.063Z"
     },
     "1657023": {
       "status": "REJECTED",
@@ -7750,10 +7750,10 @@
       "checkedAt": "2026-11-19T07:31:12.995Z"
     },
     "5213868": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "NEEDS_REVIEW",
+      "reason": "no-rights-verified-embedded-image",
+      "revisionId": 1381144409,
+      "checkedAt": "2026-11-19T14:46:01.351Z"
     },
     "5286332": {
       "status": "EVIDENCE_READY",
@@ -8086,10 +8086,10 @@
       "checkedAt": "2026-11-19T13:31:07.082Z"
     },
     "12810607": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "RETRY_LATER",
+      "reason": "Gemini circuit open",
+      "revisionId": 1386029719,
+      "checkedAt": "2026-11-19T14:46:12.608Z"
     },
     "12868203": {
       "status": "RETRY_LATER",
@@ -8500,10 +8500,10 @@
       "checkedAt": null
     },
     "27301862": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "REJECTED",
+      "reason": "insufficient-source-text-or-embedded-images",
+      "revisionId": 1378739224,
+      "checkedAt": "2026-11-19T14:45:56.365Z"
     },
     "27355965": {
       "status": "PUBLISHED",
@@ -10234,10 +10234,10 @@
       "checkedAt": "2026-11-19T10:13:01.530Z"
     },
     "81429670": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "REJECTED",
+      "reason": "insufficient-source-text-or-embedded-images",
+      "revisionId": 1384512004,
+      "checkedAt": "2026-11-19T14:46:02.063Z"
     },
     "81474052": {
       "status": "PENDING",
@@ -10360,10 +10360,10 @@
       "checkedAt": "2026-10-21T03:09:05.564Z"
     },
     "84139069": {
-      "status": "PENDING",
-      "reason": "queued",
+      "status": "RETRY_LATER",
+      "reason": "Gemini circuit open",
       "revisionId": 1384903773,
-      "checkedAt": null
+      "checkedAt": "2026-11-19T14:46:06.002Z"
     },
     "84311223": {
       "status": "rejected",
@@ -10378,10 +10378,10 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-11-19T14:22:33.087Z",
+  "updatedAt": "2026-11-19T14:46:15.608Z",
   "dailyUsage": {
     "day": "2026-11-19",
-    "calls": 80,
+    "calls": 83,
     "tokens": 121485,
     "usageUnknown": true,
     "tokenAccountingUnavailable": false
