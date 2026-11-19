@@ -6334,16 +6334,16 @@
       "checkedAt": null
     },
     "7591": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "RETRY_LATER",
+      "reason": "Gemini circuit open",
+      "revisionId": 1385636211,
+      "checkedAt": "2026-11-19T06:15:36.282Z"
     },
     "9457": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "RETRY_LATER",
+      "reason": "Gemini circuit open",
+      "revisionId": 1383638494,
+      "checkedAt": "2026-11-19T06:15:21.564Z"
     },
     "11672": {
       "status": "REJECTED",
@@ -6460,10 +6460,10 @@
       "checkedAt": null
     },
     "37476": {
-      "status": "PENDING",
-      "reason": "queued",
+      "status": "PUBLISHED",
+      "reason": "catalog already contains article",
       "revisionId": null,
-      "checkedAt": null
+      "checkedAt": "2026-11-19T06:15:38.954Z"
     },
     "37652": {
       "status": "PENDING",
@@ -6515,9 +6515,9 @@
     },
     "45633": {
       "status": "RETRY_LATER",
-      "reason": "Gemini network unavailable; circuit open",
+      "reason": "Gemini HTTP 429; circuit open",
       "revisionId": 1377126508,
-      "checkedAt": "2026-11-19T04:37:12.873Z"
+      "checkedAt": "2026-11-19T06:15:19.260Z"
     },
     "49005": {
       "status": "RETRY_LATER",
@@ -6694,10 +6694,10 @@
       "checkedAt": null
     },
     "230539": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "RETRY_LATER",
+      "reason": "Gemini circuit open",
+      "revisionId": 1386453358,
+      "checkedAt": "2026-11-19T06:15:41.926Z"
     },
     "234984": {
       "status": "EVIDENCE_READY",
@@ -6748,10 +6748,10 @@
       "checkedAt": "2026-11-19T03:21:15.725Z"
     },
     "276005": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "RETRY_LATER",
+      "reason": "Gemini circuit open",
+      "revisionId": 1385881370,
+      "checkedAt": "2026-11-19T06:15:23.855Z"
     },
     "283810": {
       "status": "EVIDENCE_READY",
@@ -6778,10 +6778,10 @@
       "checkedAt": null
     },
     "295888": {
-      "status": "PENDING",
-      "reason": "queued",
+      "status": "PUBLISHED",
+      "reason": "catalog already contains article",
       "revisionId": null,
-      "checkedAt": null
+      "checkedAt": "2026-11-19T06:15:32.886Z"
     },
     "300264": {
       "status": "PENDING",
@@ -7432,10 +7432,10 @@
       "checkedAt": null
     },
     "2062612": {
-      "status": "PENDING",
-      "reason": "queued",
+      "status": "RETRY_LATER",
+      "reason": "Gemini circuit open",
       "revisionId": 1351471301,
-      "checkedAt": null
+      "checkedAt": "2026-11-19T06:15:38.951Z"
     },
     "2112546": {
       "status": "PENDING",
@@ -7564,10 +7564,10 @@
       "checkedAt": null
     },
     "2996055": {
-      "status": "RETRY_LATER",
-      "reason": "Gemini HTTP 429; circuit open",
+      "status": "NEEDS_REVIEW",
+      "reason": "editorial: B1-B2:page-5:audit-The text makes an unsupported causal claim stating nuclear power is controversial because it has low life-cycl",
       "revisionId": 1374442712,
-      "checkedAt": "2026-11-19T05:49:41.468Z"
+      "checkedAt": "2026-11-19T06:15:00.848Z"
     },
     "3032314": {
       "status": "PENDING",
@@ -7612,10 +7612,10 @@
       "checkedAt": "2026-10-21T03:10:00.954Z"
     },
     "3354802": {
-      "status": "PENDING",
-      "reason": "queued",
+      "status": "PUBLISHED",
+      "reason": "catalog already contains article",
       "revisionId": null,
-      "checkedAt": null
+      "checkedAt": "2026-11-19T06:15:19.285Z"
     },
     "3449959": {
       "status": "PENDING",
@@ -7714,10 +7714,10 @@
       "checkedAt": null
     },
     "4603334": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "RETRY_LATER",
+      "reason": "Gemini circuit open",
+      "revisionId": 1384648395,
+      "checkedAt": "2026-11-19T06:15:30.057Z"
     },
     "4607152": {
       "status": "EVIDENCE_READY",
@@ -7822,10 +7822,10 @@
       "checkedAt": null
     },
     "6384129": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "RETRY_LATER",
+      "reason": "Gemini circuit open",
+      "revisionId": 1375289459,
+      "checkedAt": "2026-11-19T06:15:26.906Z"
     },
     "6518682": {
       "status": "EVIDENCE_READY",
@@ -9232,10 +9232,10 @@
       "checkedAt": null
     },
     "54030514": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "RETRY_LATER",
+      "reason": "Gemini circuit open",
+      "revisionId": 1384589216,
+      "checkedAt": "2026-11-19T06:15:32.884Z"
     },
     "54137111": {
       "status": "PENDING",
@@ -10378,11 +10378,11 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-11-19T05:50:05.814Z",
+  "updatedAt": "2026-11-19T06:15:41.929Z",
   "dailyUsage": {
     "day": "2026-11-19",
-    "calls": 29,
-    "tokens": 78007,
+    "calls": 33,
+    "tokens": 89609,
     "usageUnknown": true,
     "tokenAccountingUnavailable": false
   }

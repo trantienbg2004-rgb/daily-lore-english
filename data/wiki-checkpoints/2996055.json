@@ -2,10 +2,10 @@
   "pageId": 2996055,
   "title": "Anti-nuclear movement",
   "topic": "Society",
-  "status": "RETRY_LATER",
+  "status": "NEEDS_REVIEW",
   "revisionId": 1374442712,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374442712",
-  "reason": "Gemini HTTP 429; circuit open",
+  "reason": "editorial: B1-B2:page-5:audit-The text makes an unsupported causal claim stating nuclear power is controversial because it has low life-cycl",
   "rights": [
     {
       "status": "REVIEW",
@@ -761,7 +761,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374442712"
     }
   ],
-  "updatedAt": "2026-11-19T05:49:41.468Z",
+  "updatedAt": "2026-11-19T06:15:00.848Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -918,5 +918,10 @@
     "output": 141,
     "total": 8485
   },
-  "validation": null
+  "validation": {
+    "accepted": false,
+    "errors": [
+      "B1-B2:page-5:audit-The text makes an unsupported causal claim stating nuclear power is controversial because it has low life-cycle greenhouse-gas emissions."
+    ]
+  }
 }
