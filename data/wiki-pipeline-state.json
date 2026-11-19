@@ -6496,10 +6496,10 @@
       "checkedAt": "2026-11-19T09:47:36.890Z"
     },
     "44312": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "RETRY_LATER",
+      "reason": "Gemini circuit open",
+      "revisionId": 1377805792,
+      "checkedAt": "2026-11-19T11:05:35.905Z"
     },
     "44443": {
       "status": "PUBLISHED",
@@ -6622,10 +6622,10 @@
       "checkedAt": "2026-10-21T01:40:04.346Z"
     },
     "95157": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "RETRY_LATER",
+      "reason": "Gemini circuit open",
+      "revisionId": 1381255721,
+      "checkedAt": "2026-11-19T11:05:48.271Z"
     },
     "99232": {
       "status": "REJECTED",
@@ -6653,9 +6653,9 @@
     },
     "170522": {
       "status": "RETRY_LATER",
-      "reason": "Gemini HTTP 429; circuit open",
+      "reason": "Gemini network unavailable; circuit open",
       "revisionId": 1378616216,
-      "checkedAt": "2026-11-19T10:35:51.293Z"
+      "checkedAt": "2026-11-19T11:05:29.509Z"
     },
     "174410": {
       "status": "RETRY_LATER",
@@ -6910,16 +6910,16 @@
       "checkedAt": "2026-11-19T09:22:47.409Z"
     },
     "524267": {
-      "status": "PENDING",
-      "reason": "queued",
+      "status": "RETRY_LATER",
+      "reason": "Gemini circuit open",
       "revisionId": 1380753731,
-      "checkedAt": null
+      "checkedAt": "2026-11-19T11:05:42.145Z"
     },
     "532503": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "RETRY_LATER",
+      "reason": "Gemini circuit open",
+      "revisionId": 1372807133,
+      "checkedAt": "2026-11-19T11:05:51.107Z"
     },
     "534060": {
       "status": "PENDING",
@@ -7042,10 +7042,10 @@
       "checkedAt": "2026-11-19T03:21:15.755Z"
     },
     "667057": {
-      "status": "PENDING",
-      "reason": "queued",
+      "status": "PUBLISHED",
+      "reason": "catalog already contains article",
       "revisionId": null,
-      "checkedAt": null
+      "checkedAt": "2026-11-19T11:05:32.887Z"
     },
     "667598": {
       "status": "PENDING",
@@ -7162,10 +7162,10 @@
       "checkedAt": "2026-11-19T09:11:23.382Z"
     },
     "1132045": {
-      "status": "PENDING",
-      "reason": "queued",
+      "status": "REJECTED",
+      "reason": "insufficient-source-text-or-embedded-images",
       "revisionId": 1378075869,
-      "checkedAt": null
+      "checkedAt": "2026-11-19T11:05:43.983Z"
     },
     "1141372": {
       "status": "PENDING",
@@ -8458,10 +8458,10 @@
       "checkedAt": "2026-11-19T08:21:59.417Z"
     },
     "25322095": {
-      "status": "PENDING",
-      "reason": "queued",
+      "status": "PUBLISHED",
+      "reason": "catalog already contains article",
       "revisionId": null,
-      "checkedAt": null
+      "checkedAt": "2026-11-19T11:05:43.986Z"
     },
     "25426162": {
       "status": "RETRY_LATER",
@@ -8716,10 +8716,10 @@
       "checkedAt": null
     },
     "36367550": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "REJECTED",
+      "reason": "insufficient-source-text-or-embedded-images",
+      "revisionId": 1293799198,
+      "checkedAt": "2026-11-19T11:05:32.884Z"
     },
     "36815432": {
       "status": "PENDING",
@@ -9226,10 +9226,10 @@
       "checkedAt": "2026-11-19T09:11:21.851Z"
     },
     "53755234": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "REJECTED",
+      "reason": "insufficient-source-text-or-embedded-images",
+      "revisionId": 1358445547,
+      "checkedAt": "2026-11-19T11:05:45.106Z"
     },
     "54030514": {
       "status": "RETRY_LATER",
@@ -9562,10 +9562,10 @@
       "checkedAt": "2026-11-19T04:37:31.051Z"
     },
     "66069494": {
-      "status": "PENDING",
-      "reason": "queued",
+      "status": "PUBLISHED",
+      "reason": "catalog already contains article",
       "revisionId": null,
-      "checkedAt": null
+      "checkedAt": "2026-11-19T11:05:29.560Z"
     },
     "66222507": {
       "status": "PENDING",
@@ -9682,10 +9682,10 @@
       "checkedAt": null
     },
     "69635423": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "RETRY_LATER",
+      "reason": "Gemini circuit open",
+      "revisionId": 1386454529,
+      "checkedAt": "2026-11-19T11:05:39.345Z"
     },
     "69713049": {
       "status": "RETRY_LATER",
@@ -10126,10 +10126,10 @@
       "checkedAt": "2026-11-19T06:40:59.980Z"
     },
     "79652447": {
-      "status": "PENDING",
-      "reason": "queued",
+      "status": "PUBLISHED",
+      "reason": "catalog already contains article",
       "revisionId": 1376065279,
-      "checkedAt": null
+      "checkedAt": "2026-11-19T11:05:48.275Z"
     },
     "79761972": {
       "status": "REJECTED",
@@ -10186,10 +10186,10 @@
       "checkedAt": null
     },
     "80758313": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "NEEDS_REVIEW",
+      "reason": "no-rights-verified-embedded-image",
+      "revisionId": 1383604821,
+      "checkedAt": "2026-11-19T11:05:31.155Z"
     },
     "80852116": {
       "status": "PENDING",
@@ -10378,11 +10378,11 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-11-19T10:36:18.934Z",
+  "updatedAt": "2026-11-19T11:05:51.111Z",
   "dailyUsage": {
     "day": "2026-11-19",
-    "calls": 66,
-    "tokens": 89609,
+    "calls": 70,
+    "tokens": 121485,
     "usageUnknown": true,
     "tokenAccountingUnavailable": false
   }
