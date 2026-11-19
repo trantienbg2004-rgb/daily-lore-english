@@ -30,7 +30,8 @@ test('production accepts the approved 200-story target when a staged catalog is 
   const dir=path.join(root,'public','wiki-reader')
   await fs.cp(new URL('../../public/wiki-reader/',import.meta.url),dir,{recursive:true})
   const file=path.join(dir,'manifest.json'),manifest=JSON.parse(await fs.readFile(file,'utf8'))
-  manifest.targetStories=200;manifest.targetPerTopic=15;manifest.targetMet=false
+  manifest.targetStories=200;manifest.targetPerTopic=15
+  manifest.targetMet=manifest.total>=200&&Object.values(manifest.byTopic||{}).length>=10&&Object.values(manifest.byTopic||{}).every(n=>n>=15)
   await fs.writeFile(file,JSON.stringify(manifest))
   assert.equal((await verifyWikiRelease(root)).total,manifest.total)
   manifest.targetStories=999

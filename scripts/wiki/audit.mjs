@@ -15,6 +15,7 @@ const terms=value=>new Set(String(value||'').toLowerCase().normalize('NFKD').rep
   word.endsWith('s')&&word.length>4?word.slice(0,-1):word))
 const hits=(a,b)=>[...terms(a)].filter(word=>terms(b).has(word)).length
 const chartRe=/\b(?:chart|graph|plot|statistics|dataset|data|rate|index|trend)\b/i
+const normSection=value=>String(value||'').trim().toLowerCase()||'lead'
 
 export function auditWikiStory(story,{source=null}={}){
  const errors=[]
@@ -24,6 +25,7 @@ export function auditWikiStory(story,{source=null}={}){
  const evMap=new Map((story?.sourceEvidence||[]).map(row=>[row.id,row]))
  let sourceByHash=null
  let sourceFigures=null
+ let figSectionByTitle=new Map()
  let fullSourceText=''
  if(source){
   if(source.pageId!==story?.sourcePageId||source.sourceRevisionId!==story?.sourceRevisionId){
@@ -32,14 +34,15 @@ export function auditWikiStory(story,{source=null}={}){
   const paragraphs=source.paragraphDetails?.length
    ?source.paragraphDetails
    :(source.paragraphs||[]).map(text=>({heading:'',text}))
-  sourceByHash=new Map(paragraphs.map(row=>[digest(row.text),row.text]))
+  sourceByHash=new Map(paragraphs.map(row=>[digest(row.text),row]))
   fullSourceText=paragraphs.map(row=>row.text).join(' ')+' '+source.sourceTitle
   for(const row of story?.sourceEvidence||[]){
-   const fullText=sourceByHash.get(row.hash)
-   if(!fullText)errors.push(`source-evidence-hash-missing:${row.id}`)
-   else evMap.set(row.id,{...row,fullText})
+   const matched=sourceByHash.get(row.hash)
+   if(!matched)errors.push(`source-evidence-hash-missing:${row.id}`)
+   else evMap.set(row.id,{...row,heading:row.heading||matched.heading||'Lead',fullText:matched.text})
   }
   sourceFigures=new Set((source.figures||[]).map(f=>f.fileTitle))
+  figSectionByTitle=new Map((source.figures||[]).map(f=>[f.fileTitle,normSection(f.heading)]))
  }
 
  const headlines=[]
@@ -84,6 +87,16 @@ export function auditWikiStory(story,{source=null}={}){
     if(ev.pageIndex!==pageIndex)errors.push(`${label}:image-page-index-drift`)
     if(sourceFigures&&!sourceFigures.has(ev.fileTitle))errors.push(`${label}:image-missing-in-source`)
     const articleCaption=String(ev.articleCaption||page.caption||'')
+    const rawSection=ev.articleSection||(figSectionByTitle.size?figSectionByTitle.get(ev.fileTitle):'')
+    if(rawSection&&evMap.size>0){
+     const articleSection=normSection(rawSection)
+     if(articleSection!=='lead'){
+      const citedSections=(page.evidenceIds||[]).map(id=>normSection(evMap.get(id)?.heading))
+      if(!citedSections.includes(articleSection)){
+       errors.push(`${label}:image-section-mismatch:${articleSection}`)
+      }
+     }
+    }
     const captionOverlap=hits(articleCaption+' '+(ev.fileTitle||'').replace(/^File:/,''),page.text)
     const titleOverlap=hits(articleCaption+' '+(ev.fileTitle||'').replace(/^File:/,''),story.sourceTitle||'')
     if(captionOverlap<1&&(pageIndex>0||titleOverlap<1)){

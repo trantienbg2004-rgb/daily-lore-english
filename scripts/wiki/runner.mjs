@@ -7,6 +7,7 @@ import {fetchWikipediaPage,fetchWikipediaRevision,verifyPageFigures,WikiApiPause
 import {generateWikiDraft,GeminiWikiPause,selectWikiEvidence,repairTargets} from './editor.mjs'
 import {assignWikipediaPhotos} from './media.mjs'
 import {appendWikiStories,makeWikiStory,readWikiCatalog} from './catalog.mjs'
+import {auditWikiStory} from './audit.mjs'
 
 const fileFor=base=>path.join(base,'data','wiki-pipeline-state.json')
 const checkpointFile=(base,pageId)=>path.join(base,'data','wiki-checkpoints',`${pageId}.json`)
@@ -117,7 +118,8 @@ export async function runWikiBatch({base,maxCalls=0,maxCandidates=5,pageId=null,
  readCatalog=readWikiCatalog,readState=readWikiState,writeState=writeWikiState,
  readCheckpoint=readWikiCheckpoint,writeCheckpoint=writeWikiCheckpoint,onPersist=async()=>{},
  fetchPage=fetchWikipediaPage,fetchRevision=fetchWikipediaRevision,verifyFigures=verifyPageFigures,generate=generateWikiDraft,
- assign=assignWikipediaPhotos,makeStory=makeWikiStory,append=appendWikiStories}={}){
+ assign=assignWikipediaPhotos,makeStory=makeWikiStory,append=appendWikiStories,audit=null}={}){
+ const runAudit=audit||(makeStory===makeWikiStory?auditWikiStory:()=>({accepted:true,errors:[]}))
  if(!base||!Number.isSafeInteger(maxCalls)||maxCalls<0||maxCalls>20||
   !Number.isSafeInteger(maxCandidates)||maxCandidates<1||maxCandidates>100)throw Error('Unsafe Wiki batch limits')
  if(maxCalls>0&&(!freeTierConfirmed||!apiKey))throw Error('Free-tier confirmation and key required before Gemini calls')
@@ -217,9 +219,11 @@ export async function runWikiBatch({base,maxCalls=0,maxCandidates=5,pageId=null,
    }
    checkpoint.validation=response.validation
    await mark('VALIDATED','local factual, style, length, structure and source audit passed')
-   const selected=assign(rights,source,response.result.variants,{usedUrls})
+   const selected=assign(rights,source,response.result.variants,{usedUrls,evidence:response.evidence})
    if(selected.status!=='VERIFIED'){await mark('NEEDS_REVIEW',selected.reason);stats.review++;continue}
    const story=makeStory({source,topic:candidate.topic,draft:{variants:selected.levelVariants},photos:selected.photos,evidence:response.evidence})
+   const audited=runAudit(story,{source})
+   if(!audited?.accepted){await mark('NEEDS_REVIEW','audit: '+(audited?.errors||['failed-story-audit']).join(','));stats.review++;continue}
    await append(base,[story]);existingIds.add(source.pageId)
    for(const page of story.pages)if(page.image)usedUrls.add(page.image)
    await mark('PUBLISHED',`${selected.photos.length} verified embedded images`);stats.published++

@@ -28,10 +28,10 @@ async function main(){
   const {source,evidence,rights,topic}=cand
   const val=validateWikiDraft(draft,{source,topic,evidence})
   if(!val.accepted){skipped.push({pageId:draft.pageId,stage:'validateWikiDraft',errors:val.errors});continue}
-  const assigned=assignWikipediaPhotos(rights,source,draft.variants,{usedUrls})
+  const storyEvidence=evidence.map(({id,heading,hash,text,excerpt})=>({id,heading,hash,excerpt:excerpt||String(text||'').slice(0,140)}))
+  const assigned=assignWikipediaPhotos(rights,source,draft.variants,{usedUrls,evidence:storyEvidence})
   if(assigned.status!=='VERIFIED'){skipped.push({pageId:draft.pageId,stage:'assignWikipediaPhotos',reason:assigned.reason});continue}
   for(const p of assigned.photos){usedUrls.add(p.url);if(p.provenance?.imagePageUrl)usedUrls.add(p.provenance.imagePageUrl)}
-  const storyEvidence=evidence.map(({id,heading,hash,text,excerpt})=>({id,heading,hash,excerpt:excerpt||String(text||'').slice(0,140)}))
   const story=makeWikiStory({source,topic,draft:{variants:assigned.levelVariants},photos:assigned.photos,evidence:storyEvidence})
   stories.push(story)
   sourcesByPageId.set(source.pageId,source)

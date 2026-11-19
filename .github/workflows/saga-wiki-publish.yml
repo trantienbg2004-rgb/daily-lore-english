@@ -2,7 +2,7 @@ name: SAGA Wikipedia - collect and publish
 
 on:
   schedule:
-    # Recovery trigger if a relayed run is lost before it can schedule its successor.
+    # Automatic daily collection cycles on main (4 times/day, bounded free-tier budget).
     - cron: '23 1,7,13,19 * * *'
   workflow_dispatch:
     inputs:
@@ -10,11 +10,11 @@ on:
         description: Gemini calls for this run, or probe model access without generation
         type: choice
         options:
-          - '0'
-          - '8'
           - '20'
+          - '8'
+          - '0'
           - 'probe'
-        default: '0'
+        default: '20'
       relay:
         description: Continue bounded collection every 25 minutes after this run
         type: choice
@@ -36,73 +36,45 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 35
     steps:
-      - name: Check out durable staging branch
-        uses: actions/checkout@v4
-        with:
-          ref: feat/saga-wikipedia-first-20261020
-          path: staging
-          persist-credentials: true
-      - name: Check out current production branch
+      - name: Check out main branch
         uses: actions/checkout@v4
         with:
           ref: main
-          path: production
           persist-credentials: true
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
           cache: npm
-          cache-dependency-path: staging/package-lock.json
       - run: npm ci
-        working-directory: staging
-      - name: Refill Wikipedia queue only when a topic runs low
-        working-directory: staging
-        env:
-          SAGA_WIKI_CHECKPOINT_BRANCH: feat/saga-wikipedia-first-20261020
-        run: node scripts/wiki-pipeline.mjs topup --min-per-topic=30 --max-topics=3
       - name: Check free Gemini model access without generating text
         if: github.event_name == 'schedule' || github.event.inputs.max_calls == '8' || github.event.inputs.max_calls == '20' || github.event.inputs.max_calls == 'probe'
         id: free_model
-        working-directory: staging
         env:
-          SAGA_WIKI_GEMINI_KEY: ${{ secrets.SAGA_IMAGE_TEST_API_KEY }}
+          SAGA_WIKI_GEMINI_KEY: ${{ secrets.SAGA_IMAGE_TEST_API_KEY || secrets.GEMINI_API_KEY }}
         run: node scripts/wiki/model-availability.mjs
-      - name: Prepare and edit a bounded free-tier batch
-        working-directory: staging
+      - name: Run automated full-article Wikipedia sync and self-audit
+        if: github.event.inputs.max_calls != 'probe'
         env:
-          SAGA_WIKI_GEMINI_KEY: ${{ secrets.SAGA_IMAGE_TEST_API_KEY }}
+          SAGA_WIKI_GEMINI_KEY: ${{ secrets.SAGA_IMAGE_TEST_API_KEY || secrets.GEMINI_API_KEY }}
           SAGA_WIKI_FREE_TIER_CONFIRMED: '1'
-          SAGA_WIKI_CHECKPOINT_BRANCH: feat/saga-wikipedia-first-20261020
-          SAGA_WIKI_MODEL: ${{ steps.free_model.outputs.model || 'gemini-3.5-flash-lite' }}
+          SAGA_WIKI_MODEL: ${{ steps.free_model.outputs.model || 'gemini-2.5-flash' }}
           SAGA_WIKI_MODELS: ${{ steps.free_model.outputs.models || '' }}
           SAGA_WIKI_MAX_CALLS: ${{ steps.free_model.outputs.available == 'true' && (github.event_name == 'schedule' && '20' || github.event.inputs.max_calls == '20' && '20' || github.event.inputs.max_calls == '8' && '8') || '0' }}
-        run: node scripts/wiki-pipeline.mjs batch --max-calls="$SAGA_WIKI_MAX_CALLS" --max-candidates=40
-      - name: Verify staged stories and Reader
-        working-directory: staging
+        run: node scripts/wiki-auto.mjs --mode=sync --count=5 --max-calls="$SAGA_WIKI_MAX_CALLS"
+      - name: Verify stories, section-locked images, tests, and build
         run: |
           npm test
+          node scripts/wiki-audit.mjs
           node scripts/lore-verify.mjs
           npm run build
           git diff --check
-      - run: npm ci
-        working-directory: production
-      - name: Promote only new verified Wiki stories
-        working-directory: staging
-        run: node scripts/wiki-promote.mjs ../production
-      - name: Verify production catalog before commit
-        working-directory: production
-        run: |
-          node scripts/lore-verify.mjs
-          npm run build
-          git diff --check
-      - name: Publish catalog to production branch
-        working-directory: production
+      - name: Commit and publish newly verified Wikipedia stories to main
         run: |
           git config user.name saga-wiki-publisher
           git config user.email saga-wiki-publisher@users.noreply.github.com
-          git add public/wiki-reader/
+          git add public/wiki-reader/ data/wiki-pipeline-state.json data/wiki-checkpoints/ 2>/dev/null || git add public/wiki-reader/
           if git diff --cached --quiet; then
-            echo 'No new approved Wiki stories'
+            echo 'No new approved Wiki stories or queue updates'
           else
             git diff --cached --check
             git commit -m 'SAGA: publish verified Wikipedia stories'
@@ -113,7 +85,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: saga-wiki-collection-${{ github.run_id }}
-          path: staging/reports/saga-wiki-local/
+          path: reports/saga-wiki-local/
           if-no-files-found: ignore
           retention-days: 7
   relay:

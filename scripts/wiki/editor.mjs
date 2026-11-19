@@ -4,7 +4,17 @@ import {createHash} from 'node:crypto'
 import {WIKI_TOPICS} from './discovery.mjs'
 
 const MODEL='gemini-3.5-flash-lite'
-const FREE_MODELS=new Set([MODEL,'gemini-3.1-flash-lite','gemini-3.6-flash','gemini-3.8-flash'])
+const FREE_MODELS=new Set([
+ MODEL,
+ 'gemini-3.1-flash-lite',
+ 'gemini-3.6-flash',
+ 'gemini-3.8-flash',
+ 'gemini-3-flash-preview',
+ 'gemini-3.1-flash-lite-preview',
+ 'gemini-2.5-flash',
+ 'gemini-2.0-flash',
+ 'gemini-2.0-flash-lite',
+])
 const MIN_REQUEST_SPACING_MS=5000
 const LEVELS=['A1-A2','B1-B2','C1-C2']
 const PAGE_SCHEMA={type:'object',properties:{text:{type:'string'},evidenceIds:{type:'array',items:{type:'string'},minItems:1}},
@@ -30,13 +40,25 @@ const copiedRun=(text,source)=>{
  return false
 }
 
-export function selectWikiEvidence(source,{maxWords=1750}={}){
+export function selectWikiEvidence(source,{maxWords=4200}={}){
  const rows=source.paragraphDetails?.length?source.paragraphDetails:source.paragraphs.map(text=>({heading:'',text}))
  const chosen=[],seenHeadings=new Set(),first=rows.slice(0,4)
  // Keep explicit limitations near the lead. Otherwise a short evidence budget
  // can omit the caveat while retaining an earlier, less certain claim.
  const caveats=rows.slice(4).filter(row=>/\b(?:there is debate as to whether|remains debated|no evidence|not known|uncertain|speculative|hypothetical reconstruction)\b/i.test(row.text)).slice(0,2)
- const sequence=[...first,...caveats,...rows.slice(4).filter(row=>{
+ // Guarantee full-article coverage across every illustrated section so photos
+ // never come from an unread section of the Wikipedia article.
+ const figureSections=new Set((source.figures||[]).map(fig=>String(fig?.articleSection||'').trim().toLowerCase()).filter(Boolean))
+ const illustratedFirst=[]
+ const seenIllustrated=new Set()
+ for(const row of rows.slice(4)){
+  const headingKey=String(row.heading||'Lead').trim().toLowerCase()
+  if(!figureSections.has(headingKey)||seenIllustrated.has(headingKey))continue
+  if(count(row.text)<20)continue
+  seenIllustrated.add(headingKey)
+  illustratedFirst.push(row)
+ }
+ const sequence=[...first,...caveats,...illustratedFirst,...rows.slice(4).filter(row=>{
   const heading=row.heading||'Lead'
   if(seenHeadings.has(heading))return false
   seenHeadings.add(heading);return true
@@ -56,7 +78,7 @@ export function selectWikiEvidence(source,{maxWords=1750}={}){
 
 export function wikiStoryPrompt(source,topic,evidence){
  const sourceText=evidence.map(row=>`${row.id} [${row.heading}] ${row.text}`).join('\n\n')
- return `Write one engaging, factual English world-knowledge story from this EXACT English Wikipedia revision. Return JSON only.\n\nTitle: ${source.sourceTitle}\nWikipedia page ID: ${source.pageId}\nRevision ID: ${source.sourceRevisionId}\nSAGA topic: ${topic}\n\nRules:\n- This is narrative nonfiction for English learners, neither a news brief nor a copied encyclopedia entry. Open with a grounded hook, explain context, develop concrete details, close naturally. Do not invent dialogue, inner thoughts, motives, scenes, quotations, people, dates or numbers.\n- Preserve uncertainty precisely: a proposed or debated feature must remain proposed or debated in EVERY level. "Could" alone does not turn a debated capability into an established one. Do not transfer limitations of a modern reconstruction or simulation to the historical original. If a claim lacks direct support in the cited passages, omit it.\n- Produce independent A1-A2, B1-B2 and C1-C2 versions of the SAME core facts. A1-A2 uses everyday words and mostly simple sentences; B1-B2 uses clear journalistic prose and some compound/relative clauses; C1-C2 adds analytic precision without rare words for their own sake. Distinct accurate headlines, each at most 60 characters.\n- Exactly 5 to 7 complete pages PER level. Keep each opening page at 40-58 words so a lead image fits a phone; subsequent pages 48-88 words. Do not repeat a point merely to reach a page count. Every page must cite one or more evidence IDs whose exact source passages support its substantive claims.\n- Cite only the numbered source passages below. If the evidence cannot support a complete, interesting story, return {"rejectReason":"insufficient source evidence"} instead.\n- JSON shape: {"variants":{"A1-A2":{"headline":"...","pages":[{"text":"...","evidenceIds":["P1"]}]},"B1-B2":{...},"C1-C2":{...}}}. Do not include an outline, image URLs, invented citations, or HTML. Count words on every page before returning; complete short pages using only cited facts.\n\nSOURCE PASSAGES:\n${sourceText}`
+ return `Write one engaging, factual English world-knowledge story from this EXACT English Wikipedia revision. Return JSON only.\n\nTitle: ${source.sourceTitle}\nWikipedia page ID: ${source.pageId}\nRevision ID: ${source.sourceRevisionId}\nSAGA topic: ${topic}\n\nRules:\n- Read ALL provided sections of the Wikipedia article before drafting so the story covers the full arc across multiple sections rather than summarizing only the lead. Every page should stay tightly anchored to its cited section's facts so any embedded Wikipedia photograph from that section matches the page text across all three levels.\n- This is narrative nonfiction for English learners, neither a news brief nor a copied encyclopedia entry. Open with a grounded hook, explain context, develop concrete details across the article's major sections, close naturally. Do not invent dialogue, inner thoughts, motives, scenes, quotations, people, dates or numbers.\n- Preserve uncertainty precisely: a proposed or debated feature must remain proposed or debated in EVERY level. "Could" alone does not turn a debated capability into an established one. Do not transfer limitations of a modern reconstruction or simulation to the historical original. If a claim lacks direct support in the cited passages, omit it.\n- Produce independent A1-A2, B1-B2 and C1-C2 versions of the SAME core facts. A1-A2 uses everyday words and mostly simple sentences; B1-B2 uses clear journalistic prose and some compound/relative clauses; C1-C2 adds analytic precision without rare words for their own sake. Distinct accurate headlines in Title Case, each at most 60 characters.\n- Exactly 5 to 7 complete pages PER level. Keep each opening page at 40-58 words so a lead image fits a phone; subsequent pages 48-88 words. Do not repeat a point merely to reach a page count. Every page must cite one or more evidence IDs whose exact source passages support its substantive claims.\n- Cite only the numbered source passages below. If the evidence cannot support a complete, interesting story, return {"rejectReason":"insufficient source evidence"} instead.\n- JSON shape: {"variants":{"A1-A2":{"headline":"...","pages":[{"text":"...","evidenceIds":["P1"]}]},"B1-B2":{...},"C1-C2":{...}}}. Do not include an outline, image URLs, invented citations, or HTML. Count words on every page before returning; complete short pages using only cited facts.\n\nSOURCE PASSAGES:\n${sourceText}`
 }
 
 export class GeminiWikiPause extends Error{

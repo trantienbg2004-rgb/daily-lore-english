@@ -972,3 +972,74 @@
   margin:0; color:#f5f0e8; font:400 13px/1.45 'Inter',system-ui,sans-serif;
   text-align:center; cursor:text;
 }
+
+/* NYT EDITORIAL HEADLINE TYPOGRAPHY — Cheltenham-inspired refined optical serif */
+.lore-editorial-v5 .reader-gesture .article-heading h1 {
+  font-family:'Newsreader','Libre Baskerville',Georgia,'Times New Roman',serif;
+  font-optical-sizing:auto;
+  font-variation-settings:'opsz' 48;
+  font-weight:550;
+  font-synthesis:none;
+  -webkit-font-smoothing:antialiased;
+  font-size:clamp(26px,3.85dvh,35px);
+  line-height:1.13;
+  letter-spacing:-0.02em;
+  text-transform:none;
+  color:#121212;
+}
+.lore-editorial-v5 .reader-gesture .article-heading h1.lore-headline-long {
+  font-size:clamp(24px,3.35dvh,31px);
+  line-height:1.13;
+  letter-spacing:-0.02em;
+}
+.lore-editorial-v5 .reader-gesture .article-heading.article-heading-continued h1,
+.lore-editorial-v5 .reader-gesture .article-heading.article-heading-continued h1.lore-headline-long {
+  font-family:'Newsreader','Libre Baskerville',Georgia,'Times New Roman',serif;
+  font-optical-sizing:auto;
+  font-variation-settings:'opsz' 24;
+  font-weight:500;
+  font-synthesis:none;
+  -webkit-font-smoothing:antialiased;
+  font-size:clamp(16px,2.2dvh,19px);
+  line-height:1.18;
+  letter-spacing:-0.012em;
+  text-transform:none;
+  color:#2b2926;
+}
+.section-header h1,
+.reading-mode .story-end h2 {
+  font-family:'Newsreader','Libre Baskerville',Georgia,'Times New Roman',serif;
+  font-optical-sizing:auto;
+  font-variation-settings:'opsz' 48;
+  font-weight:550;
+  font-synthesis:none;
+  -webkit-font-smoothing:antialiased;
+  letter-spacing:-0.02em;
+  color:#121212;
+}
+@media(max-width:600px) {
+  .lore-editorial-v5 .reader-gesture .article-heading h1 {
+    font-size:clamp(25px,7vw,31px);
+    line-height:1.13;
+  }
+  .lore-editorial-v5 .reader-gesture .article-heading h1.lore-headline-long {
+    font-size:clamp(22px,6.2vw,28px);
+    line-height:1.13;
+  }
+  .lore-editorial-v5 .reader-gesture .article-heading.article-heading-continued h1,
+  .lore-editorial-v5 .reader-gesture .article-heading.article-heading-continued h1.lore-headline-long {
+    font-size:clamp(15px,4.2vw,18px);
+    line-height:1.18;
+  }
+}
+@media(max-height:620px) {
+  .lore-editorial-v5 .reader-gesture .article-heading h1 {
+    font-size:clamp(21px,3.3dvh,26px);
+    line-height:1.11;
+  }
+  .lore-editorial-v5 .reader-gesture .article-heading.article-heading-continued h1,
+  .lore-editorial-v5 .reader-gesture .article-heading.article-heading-continued h1.lore-headline-long {
+    font-size:15px;
+    line-height:1.15;
+  }
+}

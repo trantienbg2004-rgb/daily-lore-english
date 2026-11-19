@@ -28,7 +28,7 @@ export function makeWikiStory({source,topic,draft,photos,evidence=[],now=new Dat
   category:topic,publishedAt:now.toISOString(),license:'CC BY-SA 4.0',licenseUrl:'https://creativecommons.org/licenses/by-sa/4.0/',
   attribution:'Adapted from English Wikipedia contributors; see pinned revision and history. SAGA AI-assisted adaptation under CC BY-SA 4.0. Wikipedia does not endorse SAGA.',
   levelVariants:variants,pages:variants['B1-B2'].pages.map(page=>({...page})),
-  sourceEvidence:evidence.map(row=>({id:row.id,hash:row.hash,excerpt:row.excerpt})),
+  sourceEvidence:evidence.map(row=>({id:row.id,hash:row.hash,excerpt:row.excerpt,...(row.heading?{heading:row.heading}:{})})),
   editorialState:'Source-grounded automated checks; not a guarantee of semantic accuracy'}
  const gate=validateWikiStory(story)
  if(!gate.accepted)throw Error('Wiki story gate: '+gate.errors.join(','))

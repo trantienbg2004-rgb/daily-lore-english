@@ -25,9 +25,11 @@ export function eraCompatible(photo,texts){
  return capYears.some(cy=>textYears.some(ty=>Math.abs(cy-ty)<=65))
 }
 
+const normSection=value=>String(value||'').trim().toLowerCase()||'lead'
+
 /** Rights proof alone leaves a candidate in REVIEW. This function requires
  * source-article placement plus a concrete subject match with a target page. */
-export function decideWikipediaPhoto(candidate,{source,levelVariants,usedUrls=new Set(),preferLater=false}={}){
+export function decideWikipediaPhoto(candidate,{source,levelVariants,usedUrls=new Set(),preferLater=false,evidence=null}={}){
  if(candidate.status==='REJECTED'||!candidate.photo)return candidate
  const photo=candidate.photo,subject=imageTopic(photo)
  if(!source?.figures?.some(f=>f.fileTitle===photo.fileTitle))return {...candidate,status:'REJECTED',reason:'not-embedded-in-source-revision'}
@@ -35,6 +37,8 @@ export function decideWikipediaPhoto(candidate,{source,levelVariants,usedUrls=ne
  const levels=['A1-A2','B1-B2','C1-C2']
  const variants=levels.map(level=>levelVariants?.[level]?.pages)
  if(variants.some(pages=>!Array.isArray(pages)||!pages.length))return {...candidate,status:'REVIEW',reason:'reading-pages-unavailable'}
+ const headingById=Array.isArray(evidence)&&evidence.length?new Map(evidence.map(row=>[row.id,normSection(row.heading)])):null
+ const imgSection=normSection(photo.section)
  const explicitYears=year(photo.caption+' '+photo.description+' '+photo.date)
  const isChart=chart.test(photo.fileTitle+' '+photo.caption)
  const specific=[...terms(subject)].filter(word=>!terms(source.sourceTitle).has(word))
@@ -42,6 +46,10 @@ export function decideWikipediaPhoto(candidate,{source,levelVariants,usedUrls=ne
  const length=Math.min(...variants.map(pages=>pages.length))
  for(let pageIndex=0;pageIndex<length;pageIndex++){
   const texts=variants.map(pages=>pages[pageIndex].text)
+  if(headingById&&imgSection!=='lead'){
+   const sectionCited=variants.every(pages=>(pages[pageIndex].evidenceIds||[]).some(id=>headingById.get(id)===imgSection))
+   if(!sectionCited)continue
+  }
   const overlaps=texts.map(text=>hits(photo.caption+' '+photo.alt,text))
   const periodOk=eraCompatible(photo,texts)
   if(!periodOk)continue
@@ -70,23 +78,24 @@ export function decideWikipediaPhoto(candidate,{source,levelVariants,usedUrls=ne
   photo:{...photo,caption,archive:!!archived,
    provenance:{...photo.provenance,sourceImageUrl:source.sourceUrl,sourceRevisionUrl:source.sourceRevisionUrl,
     evidence:{sourcePageId:source.pageId,sourceRevisionId:source.sourceRevisionId,fileTitle:photo.fileTitle,
-     articleCaption:photo.caption,pageIndex:choice.pageIndex}}}}
+     articleCaption:photo.caption,articleSection:photo.section||'Lead',pageIndex:choice.pageIndex}}}}
 }
 
-export function assignWikipediaPhotos(decisions,source,levelVariants,{usedUrls=new Set()}={}){
- const approved=decisions.map(row=>decideWikipediaPhoto(row,{source,levelVariants,usedUrls})).filter(row=>row.status==='VERIFIED')
+export function assignWikipediaPhotos(decisions,source,levelVariants,{usedUrls=new Set(),evidence=null}={}){
+ const strictSection=Array.isArray(evidence)&&evidence.length>0
+ const approved=decisions.map(row=>decideWikipediaPhoto(row,{source,levelVariants,usedUrls,evidence})).filter(row=>row.status==='VERIFIED')
  const coverScore=row=>row.matchScore+(/\.(?:jpe?g|webp)$/i.test(row.photo.fileTitle)?2:0)
  const directLead=approved.filter(row=>row.pageIndex===0).sort((a,b)=>coverScore(b)-coverScore(a)||a.photo.position-b.photo.position)[0]
- // A source article's own first photo can introduce a detail explained later in the story.
- // Keep its full caption on the cover, and only use it after a later page has proved the subject match.
- const sourceLead=approved.filter(row=>row.photo.position===0&&!chart.test(row.photo.fileTitle+' '+row.photo.caption))
+ // Without section metadata (legacy unit tests), a source lead image can introduce a detail explained later.
+ // When section evidence is active, never patch a non-Lead or non-matching photo onto Page 1.
+ const sourceLead=strictSection?null:approved.filter(row=>row.photo.position===0&&!chart.test(row.photo.fileTitle+' '+row.photo.caption))
   .sort((a,b)=>coverScore(b)-coverScore(a))[0]
  const lead=directLead||(!sourceLead?null:{...sourceLead,pageIndex:0,photo:{...sourceLead.photo,
   provenance:{...sourceLead.photo.provenance,evidence:{...sourceLead.photo.provenance.evidence,pageIndex:0}}}})
  if(!lead&&!approved.length)return {status:'REVIEW',reason:'no-verified-photo-placement',decisions:approved}
  const byPage=lead?new Map([[0,lead]]):new Map()
  const chosen=lead?new Set([lead.photo.url]):new Set()
- const later=decisions.map(row=>decideWikipediaPhoto(row,{source,levelVariants,usedUrls,preferLater:true}))
+ const later=decisions.map(row=>decideWikipediaPhoto(row,{source,levelVariants,usedUrls,preferLater:true,evidence}))
   .filter(row=>row.status==='VERIFIED')
  // A verified later-page match still works when no cover image qualifies for the stricter secondary-photo rule.
  if(!lead)later.push(...approved.filter(row=>row.pageIndex>0))

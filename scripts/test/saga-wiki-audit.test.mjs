@@ -108,6 +108,14 @@ test('auditWikiStory passes grounded content & aligned photos and catches drift 
  }
  anachronism.pages=structuredClone(anachronism.levelVariants['B1-B2'].pages)
  assert.ok(auditWikiStory(anachronism).errors.some(e=>e.includes('image-chart-era-mismatch')))
+
+ const crossSection=structuredClone(story)
+ crossSection.sourceEvidence[1].heading='Routes'
+ for(const lvl of ['A1-A2','B1-B2','C1-C2']){
+  crossSection.levelVariants[lvl].pages[1].imageProvenance.evidence.articleSection='Sea lanes'
+ }
+ crossSection.pages=structuredClone(crossSection.levelVariants['B1-B2'].pages)
+ assert.ok(auditWikiStory(crossSection).errors.some(e=>e.includes('image-section-mismatch:sea lanes')))
 })
 
 test('auditWikiCatalog enforces >=200 target, topic minimums, and unique photos across stories',()=>{
@@ -127,4 +135,20 @@ test('auditWikiCatalog enforces >=200 target, topic minimums, and unique photos 
  const small=auditWikiCatalog(stories.slice(0,50),{sourcesByPageId:sources})
  assert.equal(small.passed,false)
  assert.equal(small.targetMet,false)
+})
+
+test('published public/wiki-reader catalog meets >=200 target with zero audit errors',async()=>{
+ const {readWikiCatalog}=await import('../wiki/catalog.mjs')
+ const {default:path}=await import('node:path')
+ const {fileURLToPath}=await import('node:url')
+ const base=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../..')
+ const catalog=await readWikiCatalog(base)
+ const res=auditWikiCatalog(catalog.stories)
+ assert.equal(res.passed,true,JSON.stringify(res.failures.slice(0,5)))
+ assert.ok(res.total>=200,`Expected >=200 stories, got ${res.total}`)
+ assert.equal(res.targetMet,true)
+ assert.equal(res.failed,0)
+ for(const topic of WIKI_TOPICS){
+  assert.ok((res.byTopic[topic]||0)>=15,`Topic ${topic} has only ${res.byTopic[topic]||0} stories`)
+ }
 })

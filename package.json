@@ -9,7 +9,9 @@
     "build:index": "node scripts/build-reader-index.mjs",
     "lint": "oxlint",
     "preview": "vite preview",
-    "test": "node --test scripts/test/*.test.mjs"
+    "test": "node --test scripts/test/*.test.mjs",
+    "wiki:auto": "node scripts/wiki-auto.mjs",
+    "wiki:audit": "node scripts/wiki-audit.mjs"
   },
   "dependencies": {
     "cheerio": "^1.2.0",
