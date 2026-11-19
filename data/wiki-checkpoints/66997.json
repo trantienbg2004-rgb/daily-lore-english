@@ -1,0 +1,375 @@
+{
+  "pageId": 66997,
+  "title": "Epidemiology",
+  "topic": "Health",
+  "status": "RETRY_LATER",
+  "revisionId": 1385979718,
+  "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1385979718",
+  "reason": "Gemini circuit open",
+  "rights": [
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:XBio illustration – Epidemiology.png",
+      "photo": {
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b1/XBio_illustration_%E2%80%93_Epidemiology.png/960px-XBio_illustration_%E2%80%93_Epidemiology.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "fileTitle": "File:XBio illustration – Epidemiology.png",
+        "caption": "Epidemiology is the study of health outcomes and diseases in specific populations.",
+        "alt": "",
+        "description": "The study of health outcomes and diseases in specific populations.",
+        "date": "2026-06-26 15:22:41",
+        "section": "",
+        "position": 0,
+        "provenance": {
+          "credit": "explorebiology",
+          "license": "CC BY 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:XBio_illustration_%E2%80%93_Epidemiology.png",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Epidemiology",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1385979718",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REVIEW",
+      "reason": "rights-verified-context-pending",
+      "fileTitle": "File:Snow-cholera-map.jpg",
+      "photo": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/c/c7/Snow-cholera-map.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "fileTitle": "File:Snow-cholera-map.jpg",
+        "caption": "Original map by John Snow showing the clusters of cholera cases in the London epidemic of 1854",
+        "alt": "",
+        "description": "A variant of the original map drawn by Dr. John Snow (1813-1858), a British physician who is one of the founders of medical epidemiology, showing cases of cholera in the London epidemics of 1854, clustered around the locations of water pumps.",
+        "date": "2005-11-06 11:10:39",
+        "section": "Modern era",
+        "position": 1,
+        "provenance": {
+          "credit": "after John Snow after John Snow",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "imagePageUrl": "https://commons.wikimedia.org/wiki/File:Snow-cholera-map.jpg",
+          "sourceImageUrl": "https://en.wikipedia.org/wiki/Epidemiology",
+          "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1385979718",
+          "originType": "wikipedia-embedded"
+        }
+      }
+    },
+    {
+      "status": "REJECTED",
+      "reason": "file-rights-or-source-unverified",
+      "fileTitle": "File:Epidemiologic study hierarchy.png"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "P1",
+      "hash": "4ceadb7501a8858f4d5fac225f85ac1e6cab9ae89d763c3767b5ec3001359c1b",
+      "heading": "Lead",
+      "excerpt": "It is a cornerstone of public health, and shapes policy decisions and evidence-based practice by identifying risk factors for disease and ta",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1385979718"
+    },
+    {
+      "id": "P2",
+      "hash": "e4ed5f276a33459f61940f85d1ed75151cf5a99cacfa3290b56e0dbb93ee7361",
+      "heading": "Lead",
+      "excerpt": "Major areas of epidemiological study include disease causation, transmission, outbreak investigation, disease surveillance, environmental ep",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1385979718"
+    },
+    {
+      "id": "P3",
+      "hash": "8ece9967b749c4baed9ca7217c5f567e2a51cd5d45e2d3bc0e3ec4b00a05e4a3",
+      "heading": "Lead",
+      "excerpt": "Epidemiology, literally meaning 'the study of what is upon the people', is derived from Greek epi 'upon, among', demos 'people' and logos 's",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1385979718"
+    },
+    {
+      "id": "P4",
+      "hash": "f8f26cd2a959a70158e5af4e96c712b68d895c7953a4b940482eb2bb8eb44580",
+      "heading": "Lead",
+      "excerpt": "The distinction between \"epidemic\" and \"endemic\" was first drawn by Hippocrates, The term \"epidemiology\" appears to have first been used to ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1385979718"
+    },
+    {
+      "id": "P5",
+      "hash": "04c37687d947cb2f7b0972cd812ab1399b7577b1a0ff2985c8415298b86f0089",
+      "heading": "Lead",
+      "excerpt": "The term epidemiology is now widely applied to cover the description and causation of not only epidemic, infectious disease, but of disease ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1385979718"
+    },
+    {
+      "id": "P6",
+      "hash": "848b479084c3411c7c5a618fd1751045da913b2ec52937ad44c762192eeefc70",
+      "heading": "History",
+      "excerpt": "The Greek physician Hippocrates, taught by Democritus, was known as the father of medicine, sought a logic to sickness; he is the first pers",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1385979718"
+    },
+    {
+      "id": "P7",
+      "hash": "a8309b0a18be19a75fcb1b3d223d9e7b28069d47af62cfa721bdfd49513d649d",
+      "heading": "Colonialism",
+      "excerpt": "The British Empire developed Epidemiological tracking strategies through colonialism. In the West Indies, the British statistician and gener",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1385979718"
+    },
+    {
+      "id": "P8",
+      "hash": "9b4108c6d31f61fce0a7fbf65e50bd89c03a0093eea100cf6bb02b7418f25770",
+      "heading": "Slavery",
+      "excerpt": "Western physicians knew of air's central role to human life before the eighteenth century, but they failed to understand how it could become",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1385979718"
+    },
+    {
+      "id": "P9",
+      "hash": "e7e8dc7d4d6f6aca055101b33e479c9266c4ae1cf9f068a8ae2a5ac13d7417e4",
+      "heading": "Terminology",
+      "excerpt": "Colonial powers developed new epidemiological terminology to understand the spread of disease among their soldiers and captive slaves. Befor",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1385979718"
+    },
+    {
+      "id": "P10",
+      "hash": "0cd551525aac508ee324122a407b59ba4c0d3edaf19f5a91b35b1a1799249a22",
+      "heading": "Modern era",
+      "excerpt": "In the middle of the 16th century, a doctor from Verona named Girolamo Fracastoro was the first to propose a theory that the very small, uns",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1385979718"
+    },
+    {
+      "id": "P11",
+      "hash": "805c30dbd503dd60c9f4b2d01243ebe0bdaab3ea96eb576e1f6fac0663ff8f96",
+      "heading": "21st century",
+      "excerpt": "Since the 2000s, genome-wide association studies (GWAS) have been commonly performed to identify genetic risk factors for many diseases and ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1385979718"
+    },
+    {
+      "id": "P12",
+      "hash": "4045d4c9ccc0b92a84d21330c3de315cda1b45bbab6ae67a972f1e882a993ee3",
+      "heading": "Types of studies",
+      "excerpt": "Epidemiologists employ a range of study designs from the observational to experimental and generally categorized as descriptive (involving t",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1385979718"
+    },
+    {
+      "id": "P13",
+      "hash": "3612b02fe852d4e4a4b3049b616867df5c0f81e2741fe13b0e6738bd726e1b93",
+      "heading": "Case series",
+      "excerpt": "Case-series may refer to the qualitative study of the experience of a single patient, or small group of patients with a similar diagnosis, o",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1385979718"
+    },
+    {
+      "id": "P14",
+      "hash": "7f1c887879f0414f3bb95aa58ab097b6c4bde4206630874ef0797a232f2a25cd",
+      "heading": "Case-control studies",
+      "excerpt": "Case-control studies select subjects based on their disease status. It is a retrospective study. A group of individuals that are disease pos",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1385979718"
+    },
+    {
+      "id": "P15",
+      "hash": "a566363bf8e33eec5cff69cc0b133be6af95edb3e7c2d54f00f821df875bbb40",
+      "heading": "Cohort studies",
+      "excerpt": "Cohort studies select subjects based on their exposure status. The study subjects should be at risk of the outcome under investigation at th",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1385979718"
+    },
+    {
+      "id": "P16",
+      "hash": "c64765f94d84ef182857b118c74b16eed847ea07215b47c1248e88df7fb5344d",
+      "heading": "Causal inference",
+      "excerpt": "Although epidemiology is sometimes viewed as a collection of statistical tools used to elucidate the associations of exposures to health out",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1385979718"
+    },
+    {
+      "id": "P17",
+      "hash": "8cd5514de6616d7273bae01ba2a7e25738933c8b59f7a2cf213e138749be2c1f",
+      "heading": "Bradford Hill criteria",
+      "excerpt": "In 1965, Austin Bradford Hill proposed a series of considerations to help assess evidence of causation, which have come to be commonly known",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1385979718"
+    },
+    {
+      "id": "P18",
+      "hash": "2d5a9b99522e29f372b7a6bc6ba5cf36c9e3feb5485222ff166e4ef1e13bdfba",
+      "heading": "Legal interpretation",
+      "excerpt": "Epidemiological studies can only go to prove that an agent could have caused, but not that it did cause, an effect in any particular case:",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1385979718"
+    },
+    {
+      "id": "P19",
+      "hash": "1ba0c57b4100855cee40c38184f37ef7e2006912230ee6709eb74afc043ff086",
+      "heading": "Population-based health management",
+      "excerpt": "Modern population-based health management is complex, requiring a multiple set of skills (medical, political, technological, mathematical, e",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1385979718"
+    },
+    {
+      "id": "P20",
+      "hash": "6080619275c47eee3919431eab7688834c7ce559159f582545f785913402ab54",
+      "heading": "Applied field epidemiology",
+      "excerpt": "Applied epidemiology is the practice of using epidemiological methods to protect or improve the health of a population. Applied field epidem",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1385979718"
+    },
+    {
+      "id": "P21",
+      "hash": "70ca1554bafa5f33596c7e779c1f50767f98df46e532510729b7c8c61dfc2ab0",
+      "heading": "Humanitarian context",
+      "excerpt": "As the surveillance and reporting of diseases and other health factors become increasingly difficult in humanitarian crisis situations, the ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1385979718"
+    },
+    {
+      "id": "P22",
+      "hash": "ed55cc8fc7fc464158808e45e44565080b142993b75a67ad41274000e5e7b439",
+      "heading": "Epidemic wave",
+      "excerpt": "The concept of waves in epidemics has implications especially for communicable diseases. A working definition for the term \"epidemic wave\" i",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1385979718"
+    },
+    {
+      "id": "P23",
+      "hash": "ee343cf38b09fc0ef13bad86e4f74369171b05aa006184a0808e49edb8e36433",
+      "heading": "Validities",
+      "excerpt": "Different fields in epidemiology have different levels of validity. One way to assess the validity of findings is the ratio of false-positiv",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1385979718"
+    },
+    {
+      "id": "P24",
+      "hash": "27838a8f2d661f7b561685071bffa43e3b1a6988696e1d10b152add7a9e0f1a2",
+      "heading": "Random error",
+      "excerpt": "Random error is the result of fluctuations around a true value because of sampling variability. Random error is just that: random. It can oc",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1385979718"
+    },
+    {
+      "id": "P25",
+      "hash": "dc219b8cfab5988e3e1a98c5d20fe5c442e2da622cef43482bdaec2aba02e5ba",
+      "heading": "Systematic error",
+      "excerpt": "A systematic error or bias occurs when there is a difference between the true value (in the population) and the observed value (in the study",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1385979718"
+    },
+    {
+      "id": "P26",
+      "hash": "50052e0ccce4b4458ca01d3007a679cc2e32ca117282f3f97fde9d3be0a4ce89",
+      "heading": "Selection bias",
+      "excerpt": "Selection bias occurs when study subjects are selected or become part of the study as a result of a third, unmeasured variable which is asso",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1385979718"
+    },
+    {
+      "id": "P27",
+      "hash": "2036e636c097e482679c50665677ad1fa4ce5e9ddf420eddd4a880d809e61465",
+      "heading": "Information bias",
+      "excerpt": "Information bias is bias arising from systematic error in the assessment of a variable. An example of this is recall bias. A typical example",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1385979718"
+    },
+    {
+      "id": "P28",
+      "hash": "91a34704a834134017e0819f7234dd32d42acb75e6aaadac0e58bc1116f48462",
+      "heading": "Design-related bias",
+      "excerpt": "Next to sample- and variable-related bias, bias can also arise from an imperfect study design. One example is immortal time bias, where duri",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1385979718"
+    },
+    {
+      "id": "P29",
+      "hash": "a6f2429b0bd6c9da8e4dbf9cb285f5c31eddf968b581753ec50988297a131395",
+      "heading": "Confounding",
+      "excerpt": "Confounding has traditionally been defined as bias arising from the co-occurrence or mixing of effects of extraneous factors, referred to as",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1385979718"
+    },
+    {
+      "id": "P30",
+      "hash": "0c524da6a80d2226c211b80eadf24258bd8e3e5bb1c305fad2059d1fdce88f09",
+      "heading": "The profession",
+      "excerpt": "Few universities have offered epidemiology as a course of study at the undergraduate level. An undergraduate program exists at Johns Hopkins",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1385979718"
+    },
+    {
+      "id": "P31",
+      "hash": "78c4198734e8a4588f69f400ad7c38087c24e428b0bb788b3efe2f01b966403f",
+      "heading": "COVID-19",
+      "excerpt": "An April 2020 University of Southern California article noted that, \"The coronavirus epidemic... thrust epidemiology – the study of the inci",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1385979718"
+    },
+    {
+      "id": "P32",
+      "hash": "1ae1db31aacbb8dab4d57cb597ae00d41b3edb8c3bc46cd21a15dd8c10a1a4d0",
+      "heading": "Colonialism",
+      "excerpt": "In the seventeenth century, the Iberians, while colonizing America, tracked diseases among slave populations. In Cartagena, Colombia, Crown ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1385979718"
+    },
+    {
+      "id": "P33",
+      "hash": "f5b8bb97c772e6fdd6c39b30ece8e779808fa31fd8abc5c171ccc5baa4623b09",
+      "heading": "Colonialism",
+      "excerpt": "Following the Philippine-American war, the United States government instituted steep smallpox mandates. Due to the high number of smallpox d",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1385979718"
+    },
+    {
+      "id": "P34",
+      "hash": "76e0b8e67767864e5109884228f1469f0587bbad56148a2fff827c1292ccbc33",
+      "heading": "Slavery",
+      "excerpt": "Similar to Thornton, Thomas Trotter (1760-1832), described the lack of air on slave ships. In \"Observations on the scurvy,\" Trotter observes",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1385979718"
+    },
+    {
+      "id": "P35",
+      "hash": "20edad37ca94590dba91cbda6ea8b5fa247db46e031d8cdd9298cb2aa83973d5",
+      "heading": "Slavery",
+      "excerpt": "Vaccination processes have also been affected by colonialism. In the early nineteenth century, after the creation of the smallpox vaccine, B",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1385979718"
+    },
+    {
+      "id": "P36",
+      "hash": "cfe1402d3093266c27445ad30b657dfeaada3af4b389ec026f004bbdb7a84bf5",
+      "heading": "Modern era",
+      "excerpt": "During the Ming dynasty, Wu Youke (1582–1652) developed the idea that some diseases were caused by transmissible agents, which he called Li ",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1385979718"
+    },
+    {
+      "id": "P37",
+      "hash": "80672649977b6d8a61bacc7f3efd6c7e44f7da154b63ca5ea62fa56cc85a9bd0",
+      "heading": "Modern era",
+      "excerpt": "Another pioneer, Thomas Sydenham (1624–1689), was the first to distinguish the fevers of Londoners in the later 1600s. His theories on cures",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1385979718"
+    },
+    {
+      "id": "P38",
+      "hash": "127ec1ee67327bb469f9ca923918af6b3ba984d367fa126312f62cd8702ecb3e",
+      "heading": "Modern era",
+      "excerpt": "John Graunt, a haberdasher and amateur statistician, published Natural and Political Observations ... upon the Bills of Mortality in 1662. I",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1385979718"
+    },
+    {
+      "id": "P39",
+      "hash": "2680bba47418c78c737e0d353ea336a74379826bf1663ecf910dd382bad6d81f",
+      "heading": "Modern era",
+      "excerpt": "John Snow is famous for his investigations into the causes of the 19th-century cholera epidemics, and is also known as the father of (modern",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1385979718"
+    },
+    {
+      "id": "P40",
+      "hash": "49cc01fa28d1e8e359d25fd8b64d2fdb106ba4ef6ffa7505cfc70edca62e9461",
+      "heading": "Modern era",
+      "excerpt": "Other pioneers include Danish physician Peter Anton Schleisner, who in 1849 related his work on the prevention of the epidemic of neonatal t",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1385979718"
+    },
+    {
+      "id": "P41",
+      "hash": "f91b1484e50fb4dc42455c17693e4fd6d8af4335d8c34ccbed068c383450b5b8",
+      "heading": "Modern era",
+      "excerpt": "In the early 20th century, mathematical methods were introduced into epidemiology by Ronald Ross, Janet Lane-Claypon, Anderson Gray McKendri",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1385979718"
+    },
+    {
+      "id": "P42",
+      "hash": "817b96f00c7d42b753996238ff22701ff0baa784658c39d844b15cac8c24932d",
+      "heading": "Modern era",
+      "excerpt": "Another breakthrough was the 1954 publication of the results of the British Doctors Study, led by Richard Doll and Austin Bradford Hill, whi",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1385979718"
+    },
+    {
+      "id": "P43",
+      "hash": "8fbc780b86e2c1f004881232c4903879bc78a262adaffb9dad02e1f2a958936c",
+      "heading": "Modern era",
+      "excerpt": "In the late 20th century, with the advancement of biomedical sciences, a number of molecular markers in blood, other biospecimens and enviro",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1385979718"
+    },
+    {
+      "id": "P44",
+      "hash": "bd24c5875eed044ccfd35fd1c0e5222301b3b21d7c8b0d4056a9e0612fef6480",
+      "heading": "21st century",
+      "excerpt": "While most molecular epidemiology studies are still using conventional disease diagnosis and classification systems, it is increasingly reco",
+      "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1385979718"
+    }
+  ],
+  "updatedAt": "2026-11-19T16:28:27.649Z"
+}
