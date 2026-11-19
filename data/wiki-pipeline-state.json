@@ -6814,10 +6814,10 @@
       "checkedAt": null
     },
     "332902": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "RETRY_LATER",
+      "reason": "Gemini circuit open",
+      "revisionId": 1371958101,
+      "checkedAt": "2026-11-19T05:02:15.765Z"
     },
     "334322": {
       "status": "PENDING",
@@ -6832,10 +6832,10 @@
       "checkedAt": null
     },
     "351186": {
-      "status": "PENDING",
-      "reason": "queued",
+      "status": "NEEDS_REVIEW",
+      "reason": "no-rights-verified-embedded-image",
       "revisionId": 1371663658,
-      "checkedAt": null
+      "checkedAt": "2026-11-19T05:02:24.698Z"
     },
     "353831": {
       "status": "PENDING",
@@ -7498,10 +7498,10 @@
       "checkedAt": null
     },
     "2518076": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "RETRY_LATER",
+      "reason": "Gemini circuit open",
+      "revisionId": 1383339391,
+      "checkedAt": "2026-11-19T05:02:21.775Z"
     },
     "2538448": {
       "status": "PENDING",
@@ -7565,9 +7565,9 @@
     },
     "2996055": {
       "status": "RETRY_LATER",
-      "reason": "Gemini circuit open",
+      "reason": "Gemini network unavailable; circuit open",
       "revisionId": 1374442712,
-      "checkedAt": "2026-10-21T01:40:26.058Z"
+      "checkedAt": "2026-11-19T05:02:05.121Z"
     },
     "3032314": {
       "status": "PENDING",
@@ -7696,10 +7696,10 @@
       "checkedAt": null
     },
     "4186421": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "REJECTED",
+      "reason": "insufficient-source-text-or-embedded-images",
+      "revisionId": 1358392800,
+      "checkedAt": "2026-11-19T05:02:17.771Z"
     },
     "4282781": {
       "status": "PENDING",
@@ -8050,10 +8050,10 @@
       "checkedAt": "2026-11-19T04:11:12.214Z"
     },
     "10700479": {
-      "status": "PENDING",
-      "reason": "queued",
+      "status": "PUBLISHED",
+      "reason": "catalog already contains article",
       "revisionId": null,
-      "checkedAt": null
+      "checkedAt": "2026-11-19T05:02:17.773Z"
     },
     "11119616": {
       "status": "RETRY_LATER",
@@ -8410,10 +8410,10 @@
       "checkedAt": "2026-10-21T03:08:40.825Z"
     },
     "23278339": {
-      "status": "PENDING",
-      "reason": "queued",
+      "status": "PUBLISHED",
+      "reason": "catalog already contains article",
       "revisionId": null,
-      "checkedAt": null
+      "checkedAt": "2026-11-19T05:02:15.767Z"
     },
     "23423379": {
       "status": "PENDING",
@@ -8734,10 +8734,10 @@
       "checkedAt": null
     },
     "37600900": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "RETRY_LATER",
+      "reason": "Gemini circuit open",
+      "revisionId": 1379750089,
+      "checkedAt": "2026-11-19T05:02:06.857Z"
     },
     "37719142": {
       "status": "PENDING",
@@ -9166,10 +9166,10 @@
       "checkedAt": null
     },
     "52759037": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "RETRY_LATER",
+      "reason": "Gemini circuit open",
+      "revisionId": 1365039123,
+      "checkedAt": "2026-11-19T05:02:11.255Z"
     },
     "53033394": {
       "status": "PENDING",
@@ -9472,10 +9472,10 @@
       "checkedAt": "2026-10-21T03:11:28.450Z"
     },
     "63662981": {
-      "status": "PENDING",
-      "reason": "queued",
+      "status": "PUBLISHED",
+      "reason": "catalog already contains article",
       "revisionId": 1364435740,
-      "checkedAt": null
+      "checkedAt": "2026-11-19T05:02:06.860Z"
     },
     "63842993": {
       "status": "PENDING",
@@ -9838,10 +9838,10 @@
       "checkedAt": null
     },
     "73361785": {
-      "status": "PENDING",
-      "reason": "queued",
+      "status": "REJECTED",
+      "reason": "insufficient-source-text-or-embedded-images",
       "revisionId": 1359315796,
-      "checkedAt": null
+      "checkedAt": "2026-11-19T05:02:18.958Z"
     },
     "73539481": {
       "status": "PENDING",
@@ -9868,10 +9868,10 @@
       "checkedAt": null
     },
     "74692541": {
-      "status": "PENDING",
-      "reason": "queued",
+      "status": "PUBLISHED",
+      "reason": "catalog already contains article",
       "revisionId": null,
-      "checkedAt": null
+      "checkedAt": "2026-11-19T05:02:21.777Z"
     },
     "74786445": {
       "status": "PENDING",
@@ -9940,10 +9940,10 @@
       "checkedAt": null
     },
     "75746300": {
-      "status": "PENDING",
-      "reason": "queued",
+      "status": "REJECTED",
+      "reason": "insufficient-source-text-or-embedded-images",
       "revisionId": 1339767114,
-      "checkedAt": null
+      "checkedAt": "2026-11-19T05:02:13.010Z"
     },
     "75750141": {
       "status": "PENDING",
@@ -10072,10 +10072,10 @@
       "checkedAt": null
     },
     "78057836": {
-      "status": "PENDING",
-      "reason": "queued",
+      "status": "PUBLISHED",
+      "reason": "catalog already contains article",
       "revisionId": null,
-      "checkedAt": null
+      "checkedAt": "2026-11-19T05:02:21.779Z"
     },
     "78088507": {
       "status": "PENDING",
@@ -10174,10 +10174,10 @@
       "checkedAt": null
     },
     "80384831": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "REJECTED",
+      "reason": "insufficient-source-text-or-embedded-images",
+      "revisionId": 1378184341,
+      "checkedAt": "2026-11-19T05:02:08.495Z"
     },
     "80598110": {
       "status": "PENDING",
@@ -10378,11 +10378,11 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-11-19T04:37:34.108Z",
+  "updatedAt": "2026-11-19T05:02:24.700Z",
   "dailyUsage": {
     "day": "2026-11-19",
-    "calls": 15,
-    "tokens": 32995,
+    "calls": 20,
+    "tokens": 49904,
     "usageUnknown": true,
     "tokenAccountingUnavailable": false
   }
