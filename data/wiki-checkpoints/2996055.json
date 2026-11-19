@@ -5,7 +5,7 @@
   "status": "RETRY_LATER",
   "revisionId": 1374442712,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374442712",
-  "reason": "Gemini network unavailable; circuit open",
+  "reason": "Gemini HTTP 429; circuit open",
   "rights": [
     {
       "status": "REVIEW",
@@ -761,7 +761,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1374442712"
     }
   ],
-  "updatedAt": "2026-11-19T05:02:05.122Z",
+  "updatedAt": "2026-11-19T05:25:28.974Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -776,12 +776,11 @@
             ]
           },
           {
-            "text": "In the late 1960s, opposition grew to include nuclear power plants. In 1975, protests led to the cancellation of a proposed nuclear plant in Wyhl, Germany. This success encouraged activists in Europe and North America. Massive protests followed in the late 1970s and 1980s. In 1982, one million people marched against nuclear weapons in New York City.",
+            "text": "Since the late 1960s, opposition grew to include nuclear power. In the early 1970s, large protests occurred over a proposed nuclear power plant in Wyhl, Germany. The project was cancelled in 1975. Success at Wyhl inspired opposition to nuclear power in other parts of Europe and North America. In June 1982, one million people demonstrated in New York City against nuclear weapons.",
             "evidenceIds": [
               "P1",
               "P3",
               "P4",
-              "P13",
               "P21"
             ]
           },
@@ -850,10 +849,10 @@
             ]
           },
           {
-            "text": "To replace nuclear energy, environmental organizations promote energy efficiency alongside renewable sources such as solar, wind, and geothermal power. However, debates persist because nuclear power offers extremely low operational carbon emissions of 12 gCO2eq/kWh. While pro-nuclear advocates stress these climate advantages, opponents cite remaining challenges with radioactive waste disposal, safety risks, and high financial costs.",
+            "text": "To reduce reliance on nuclear energy, anti-nuclear groups promote energy efficiency alongside renewable sources like solar, wind, and geothermal power. However, nuclear power remains controversial because it has total life-cycle greenhouse-gas emissions of 12 gCO2eq/kWh, making it one of the lowest-emitting energy sources available. While pro-nuclear advocates emphasize these low emissions to combat climate change, opponents continue to raise major concerns regarding radioactive waste disposal, serious safety risks, and high financial costs.",
             "evidenceIds": [
               "P11",
-              "P19",
+              "P26",
               "P27",
               "P31",
               "P35"
@@ -913,11 +912,11 @@
       }
     }
   },
-  "repairAttempts": 0,
+  "repairAttempts": 2,
   "lastUsage": {
-    "input": 6440,
-    "output": 1550,
-    "total": 16909
+    "input": 6259,
+    "output": 141,
+    "total": 8485
   },
   "validation": null
 }
