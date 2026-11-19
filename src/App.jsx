@@ -15,7 +15,9 @@ import { displayHeadline, readerSection } from './lib/editorial.js'
 import { loadRecommendationProfile, rememberReading, rankRecommendations } from './lib/recommendationEngine.js'
 import { handleReaderArrowKey } from './lib/readerKeyboard.js'
 import {NEWS_LEVELS, NEWS_LEVEL_KEY, isNewsLevel, loadNewsLevel, applyNewsLevel} from './lib/newsLevels.js'
-import { parseFreeDictionaryEntries, rankMeaningOptions, selectContextualMeaning } from './lib/contextualDictionary.js'
+import { selectContextualMeaning } from './lib/contextualDictionary.js'
+import { tokenizeWithGlossary } from './utils/dictionaryTokenizer.js'
+import { lookupDictionaryTerm, resolveTier1Glossary } from './services/dictionaryService.js'
 
 
 // Keep the complete adaptation for attribution while Read shows short pages.
@@ -299,69 +301,6 @@ const offlineMeaning = word => {
   return ''
 }
 
-// Prefer the already-integrated Free Dictionary API because its definitions
-// include example sentences. Datamuse remains the fallback.
-const dictionaryCache = new Map()
-const fetchJSON = async (url, signal, timeoutMs = 4500) => {
-  const controller = new AbortController()
-  const abort = () => controller.abort()
-  signal?.addEventListener('abort', abort, { once: true })
-  const timer = setTimeout(abort, timeoutMs)
-  try {
-    if (signal?.aborted) throw new DOMException('Cancelled', 'AbortError')
-    const response = await fetch(url, { signal: controller.signal, headers: { Accept: 'application/json' } })
-    if (!response.ok) throw new Error(`HTTP ${response.status}`)
-    return await response.json()
-  } finally {
-    clearTimeout(timer)
-    signal?.removeEventListener('abort', abort)
-  }
-}
-const parseDatamuse = (data, candidate) => {
-  if (!Array.isArray(data)) return []
-  const exact = data.find(item => item.word?.toLowerCase() === candidate && item.defs?.length)
-  if (!exact) return []
-  const labels = { n: 'noun', v: 'verb', adj: 'adjective', adv: 'adverb', det: 'determiner', prep: 'preposition', pron: 'pronoun', conj: 'conjunction', interj: 'interjection' }
-  return exact.defs.map(raw => {
-    const separator = raw.indexOf('\t')
-    const tag = separator < 0 ? '' : raw.slice(0, separator)
-    return { definition: (separator < 0 ? raw : raw.slice(separator + 1)).trim(), partOfSpeech: labels[tag] || tag, phonetic: '', source: 'Datamuse' }
-  }).filter(item => item.definition).slice(0, 5)
-}
-const withContextRanking = (result, word, context) => ({
-  ...result,
-  options: rankMeaningOptions(result.options, context, word).slice(0, 8),
-})
-const lookupWord = async (word, context, signal) => {
-  if (dictionaryCache.has(word)) return withContextRanking(dictionaryCache.get(word), word, context)
-  const candidates = wordCandidates(word)
-  for (const candidate of candidates) {
-    if (signal.aborted) throw new DOMException('Cancelled', 'AbortError')
-    try {
-      const entries = await fetchJSON(`https://api.dictionaryapi.dev/api/v2/entries/en/${encodeURIComponent(candidate)}`, signal, 2200)
-      const options = parseFreeDictionaryEntries(entries)
-      if (options.length) {
-        const result = { options, source: 'Free Dictionary' }
-        dictionaryCache.set(word, result)
-        return withContextRanking(result, word, context)
-      }
-    } catch (error) { if (signal.aborted) throw error }
-  }
-  for (const candidate of candidates) {
-    if (signal.aborted) throw new DOMException('Cancelled', 'AbortError')
-    try {
-      const data = await fetchJSON(`https://api.datamuse.com/words?sp=${encodeURIComponent(candidate)}&md=d&max=10`, signal, 3500)
-      const options = parseDatamuse(data, candidate)
-      if (options.length) {
-        const result = { options, source: 'Datamuse' }
-        dictionaryCache.set(word, result)
-        return withContextRanking(result, word, context)
-      }
-    } catch (error) { if (signal.aborted) throw error }
-  }
-  throw new Error('No definition available')
-}
-
 const initialWords = () => {
   try {
     const saved = JSON.parse(localStorage.getItem('dailyLoreWords') || '[]')
@@ -431,6 +370,8 @@ function App() {
     })
   }
   const [selected, setSelected] = useState('')
+  const [selectedSurface, setSelectedSurface] = useState('')
+  const [selectedGlossaryEntry, setSelectedGlossaryEntry] = useState(null)
   const [lookup, setLookup] = useState({ status: 'idle', options: [] })
   const [retryCount, setRetryCount] = useState(0)
   const [words, setWords] = useState(initialWords)
@@ -710,32 +651,53 @@ function App() {
     catch (error) { console.warn('Saved words could not be stored on this device:', error) }
   }, [words])
   useEffect(() => { setWords(current => current.map(item => !item.definition && offlineMeaning(item.word) ? { ...item, definition: offlineMeaning(item.word) } : item)) }, [])
-  const clean = value => value.toLowerCase().replace(/^[^a-z]+|[^a-z]+$/g, '')
   const selectedSaved = words.find(w => w.word === selected)
   const isSaved = Boolean(selectedSaved)
   const activeMeaning = selectContextualMeaning(lookup.options || [])
+  const activeGlossary = Array.isArray(story?.glossary) ? story.glossary : null
+  const highlightTarget = selectedSurface || selected
   // Avoid lookbehind regex: Safari on iOS 15 cannot parse it and may show a blank screen.
   const sentenceParts = (currentPage?.text || '').match(/[^.!?]+[.!?]*|[^.!?]+$/g) || [currentPage?.text || '']
-  const selectedSentence = (tab === 'words' && selectedSaved?.sentence) || sentenceParts.find(sentence =>
-    sentence.toLowerCase().split(/[^a-z]+/).includes(selected)
-  )?.trim() || (tab !== 'read' && selectedSaved?.sentence) || currentPage?.text || ''
-  const contextParts = selectedSentence.split(new RegExp(`(${selected.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'ig'))
+  const selectedSentence = (tab === 'words' && selectedSaved?.sentence) || sentenceParts.find(sentence => {
+    const low = sentence.toLowerCase()
+    const targetLow = (highlightTarget || '').toLowerCase()
+    if (targetLow && targetLow.includes(' ')) return low.includes(targetLow)
+    return low.split(/[^a-z]+/).includes(targetLow || selected)
+  })?.trim() || (tab !== 'read' && selectedSaved?.sentence) || currentPage?.text || ''
+
+  const stopSpeech = () => {
+    if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
+      window.speechSynthesis.cancel()
+    }
+  }
+
+  const closeDictionary = () => {
+    stopSpeech()
+    setSelected('')
+    setSelectedSurface('')
+    setSelectedGlossaryEntry(null)
+  }
 
   useEffect(() => {
     if (!selected) return
-    const controller = new AbortController()
+    // Tier 1 (0ms synchronous): resolve immediately without loading state
+    const tier1 = resolveTier1Glossary(selectedSurface || selected, activeGlossary, selectedGlossaryEntry)
+    if (tier1) {
+      setLookup({ status: 'success', ...tier1 })
+      return
+    }
     let active = true
     setLookup({ status: 'loading', options: [] })
-    const timeout = setTimeout(() => {
-      controller.abort()
-      if (active) setLookup({ status: 'error', options: [] })
-    }, 11000)
-    lookupWord(selected, selectedSentence, controller.signal)
-      .then(result => { if (active && !controller.signal.aborted) setLookup({ status: 'success', ...result }) })
-      .catch(() => { if (active && !controller.signal.aborted) setLookup({ status: 'error', options: [] }) })
-      .finally(() => clearTimeout(timeout))
-    return () => { active = false; clearTimeout(timeout); controller.abort() }
-  }, [selected, selectedSentence, retryCount])
+    lookupDictionaryTerm(selectedSurface || selected, {
+      sentence: selectedSentence,
+      glossary: activeGlossary,
+      glossaryEntry: selectedGlossaryEntry,
+      offlineFallback: offlineMeaning,
+    })
+      .then(result => { if (active) setLookup({ status: 'success', ...result }) })
+      .catch(() => { if (active) setLookup({ status: 'error', options: [] }) })
+    return () => { active = false }
+  }, [selected, selectedSurface, selectedGlossaryEntry, selectedSentence, activeGlossary, retryCount])
 
   const saveWord = () => {
     if (!selected || isSaved) return
@@ -878,12 +840,15 @@ function App() {
     handleNavigationGesture(dx, dy)
   }
   const cancelGesture = () => { gesture.current = null; releasePageSurface(); suppressWordClick.current = false }
-  const onWordClick = (event, word) => {
+  const onWordClick = (event, word, glossaryEntry = null, surfaceText = '') => {
     if (suppressWordClick.current) {
       event.preventDefault()
       suppressWordClick.current = false
       return
     }
+    stopSpeech()
+    setSelectedGlossaryEntry(glossaryEntry || null)
+    setSelectedSurface(surfaceText || word)
     setSelected(word)
   }
   // Warm up just the next page and the next article, without downloading the whole library.
@@ -931,7 +896,7 @@ function App() {
   const renderStory = (item, index, pageNumber, interactive) => {
     const closing = pageNumber === item.pages.length
     const itemPage = closing ? null : (item.pages[pageNumber] || item.pages[0])
-    const tokens = closing ? [] : itemPage.text.split(/(\s+)/)
+    const tokens = closing ? [] : tokenizeWithGlossary(itemPage.text, item.glossary)
     const total = item.pages.length + 1 // always a distinct source / next-story page
     return <div className="reader-gesture" aria-hidden={!interactive} onTouchStart={interactive ? startGesture : undefined} onTouchMove={interactive ? moveGesture : undefined} onTouchEnd={interactive ? endGesture : undefined} onTouchCancel={interactive ? cancelGesture : undefined} onPointerDown={interactive ? startPointer : undefined} onPointerMove={interactive ? movePointer : undefined} onPointerUp={interactive ? endPointer : undefined} onPointerCancel={interactive ? () => {pointerGesture.current = null; releasePageSurface()} : undefined}>
       <header className="topbar lore-reader-topbar">
@@ -959,7 +924,7 @@ function App() {
           onReady={() => setPhotoVersion(n => n + 1)} />
       </div>
       <section className={'reading-card ' + (!itemPage.image || brokenImages.has(itemPage.image) || photoResult(itemPage.image)?.failed ? 'reading-card-no-photo' : 'reading-card-with-photo')}><div className="reading-topline" aria-hidden="true" />
-        <p className="article-text">{tokens.map((token, i) => { const word = clean(token); return /^\s+$/.test(token) || !word ? token : <button key={i} type="button" disabled={!interactive} className={'word-token ' + (words.some(w => w.word === word) ? 'known' : '')} onClick={event => onWordClick(event, word)}>{token}</button> })}</p>
+        <p className="article-text">{tokens.map((token, i) => token.kind === 'text' ? token.text : <button key={i} type="button" disabled={!interactive} className={'word-token ' + (token.kind === 'glossary' ? 'glossary-token ' : '') + (words.some(w => w.word === token.lookupKey) ? 'known' : '')} onClick={event => onWordClick(event, token.lookupKey, token.entry, token.text)}>{token.text}</button>)}</p>
       </section>
       </>}
       </div>
@@ -986,10 +951,10 @@ function App() {
           {story && <div key={'active-'+storyIndex} className={'story-layer '+(slide?(slide.direction>0?'enter-from-bottom':'enter-from-top'):'')}>{renderStory(story, storyIndex, page, true)}</div>}
           {!story && <div className="feed-empty"><h2>{feedLoading ? 'Preparing your next discovery…' : feedDone ? 'You’re all caught up.' : 'Stories are temporarily unavailable.'}</h2><p>{feedDone ? 'You have read every available discovery today. More stories will appear as the shared collection grows.' : 'The new Wikipedia collection is being prepared. Please try again later.'}</p><button className="primary" onClick={refreshFeed} disabled={feedLoading}>{feedLoading ? 'Loading…' : 'Check for new stories'}</button></div>}
         </div>}
-        {tab === 'words' && <><header className="section-header"><h1>Saved words<span className="period">.</span></h1></header>{words.length === 0 ? <div className="empty"><Icon name="bookmark" size={40}/><h2>Your collection begins here.</h2><p>Read a story, tap a word, and save it to keep learning.</p><button className="primary" onClick={() => setTab('read')}>Start reading →</button></div> : <div className="saved-list">{words.map(item => <div className="saved-item" key={item.word}><div><h2 className="saved-word-title"><button className="saved-word-open" onClick={() => setSelected(item.word)}>{item.word}</button></h2></div><button onClick={() => { setWords(current => current.filter(w => w.word !== item.word)); setReviewIndex(0); setFinished(false) }} aria-label={`Remove ${item.word}`}><Icon name="close" size={19}/></button></div>)}</div>}</>}
+        {tab === 'words' && <><header className="section-header"><h1>Saved words<span className="period">.</span></h1></header>{words.length === 0 ? <div className="empty"><Icon name="bookmark" size={40}/><h2>Your collection begins here.</h2><p>Read a story, tap a word, and save it to keep learning.</p><button className="primary" onClick={() => setTab('read')}>Start reading →</button></div> : <div className="saved-list">{words.map(item => <div className="saved-item" key={item.word}><div><h2 className="saved-word-title"><button className="saved-word-open" onClick={() => { stopSpeech(); setSelectedGlossaryEntry(null); setSelectedSurface(''); setSelected(item.word) }}>{item.word}</button></h2></div><button onClick={() => { setWords(current => current.filter(w => w.word !== item.word)); setReviewIndex(0); setFinished(false) }} aria-label={`Remove ${item.word}`}><Icon name="close" size={19}/></button></div>)}</div>}</>}
         {tab === 'review' && <><header className="section-header"><h1>Daily review<span className="period">.</span></h1></header>{words.length === 0 ? <div className="empty"><Icon name="layers" size={42}/><h2>Nothing to review yet.</h2><button className="primary" onClick={() => setTab('read')}>Start reading →</button></div> : finished ? <div className="empty"><Icon name="check" size={44}/><h2>Beautiful work.</h2><button className="primary" onClick={() => { setFinished(false); setReviewIndex(0); setRevealed(false) }}>Review again →</button></div> : <><button className="flashcard review-card" aria-label={revealed ? 'Show word' : 'Show meaning'} onClick={() => setRevealed(r => !r)}><strong className={revealed ? 'review-meaning' : 'review-word'}>{revealed ? (words[Math.min(reviewIndex, words.length - 1)].definition || offlineMeaning(words[Math.min(reviewIndex, words.length - 1)].word) || 'No definition yet. Open this word in Words to retry.') : words[Math.min(reviewIndex, words.length - 1)].word}</strong></button><button className="primary review-next" onClick={nextReview}>{reviewIndex + 1 >= words.length ? 'Finish review' : 'Next word'} →</button></>}</>}
       </main>
-      <nav className="bottom-nav" aria-label="Main navigation">{[['read', 'book', 'Read'], ['words', 'bookmark', 'Words'], ['review', 'layers', 'Review']].map(([key, icon, label]) => <button key={key} className={tab === key ? 'current' : ''} onClick={() => { if (key === 'read' && tab === 'read' && story && storyIndex === stories.length - 1) changeStory(1); else { setTab(key); setSelected('') } }}><Icon name={icon} size={25}/><span>{key === 'read' && tab === 'read' && story && storyIndex === stories.length - 1 ? waitingForNext ? 'Finding…' : feedDone ? 'Check again' : 'Next ↓' : label}</span></button>)}</nav>
+      <nav className="bottom-nav" aria-label="Main navigation">{[['read', 'book', 'Read'], ['words', 'bookmark', 'Words'], ['review', 'layers', 'Review']].map(([key, icon, label]) => <button key={key} className={tab === key ? 'current' : ''} onClick={() => { if (key === 'read' && tab === 'read' && story && storyIndex === stories.length - 1) changeStory(1); else { setTab(key); closeDictionary() } }}><Icon name={icon} size={25}/><span>{key === 'read' && tab === 'read' && story && storyIndex === stories.length - 1 ? waitingForNext ? 'Finding…' : feedDone ? 'Check again' : 'Next ↓' : label}</span></button>)}</nav>
       {showCredits && story && <div className="overlay" onClick={() => setShowCredits(false)}>
         <section className="definition-sheet sources-sheet" role="dialog" aria-label="Sources and licenses" onClick={event => event.stopPropagation()}>
           <div className="sheet-header"><span>ABOUT THIS ARTICLE</span><button aria-label="Close sources" onClick={() => setShowCredits(false)}>×</button></div>
@@ -1007,19 +972,76 @@ function App() {
           <button className="primary" onClick={() => setShowCredits(false)}>Back to reading</button>
         </section>
       </div>}
-      {selected && <div className="overlay dictionary-overlay" onClick={() => setSelected('')}>
+      {selected && <div className="overlay dictionary-overlay" onClick={closeDictionary}>
         <div className="definition-sheet dictionary-sheet" role="dialog" aria-modal="true" aria-label={`Meaning of ${selected} in context`} onClick={e => e.stopPropagation()}>
-          <div className="sheet-header"><span>IN THIS SENTENCE</span><button onClick={() => setSelected('')} aria-label="Close"><Icon name="close" size={22}/></button></div>
-          <h2>{selected}</h2>
-          <p className="word-context">{contextParts.map((part, index) => part.toLowerCase() === selected.toLowerCase() ? <strong key={index}>{part}</strong> : part)}</p>
-          <div className="lookup-details">
-            {lookup.status === 'loading' && <p>Looking up the word...</p>}
-            {lookup.status === 'success' && <>
-              {activeMeaning ? <p className="contextual-meaning">{activeMeaning.definition}</p> : <p className="no-contextual-meaning">No meaning could be matched to this sentence yet.</p>}
-            </>}
-            {lookup.status === 'error' && <><p>Dictionary unavailable. No meaning is shown until it can be matched to this sentence.</p><button className="retry-link" onClick={() => setRetryCount(n => n + 1)}>Try again</button></>}
-          </div>
-          <div className="sheet-actions"><button className="outline" onClick={() => speak(selected)}><Icon name="volume" size={18}/> Listen</button><button className="primary" onClick={saveWord} disabled={isSaved}>{isSaved ? '✓ Saved' : '+ Save word'}</button></div>
+          {(() => {
+            const isPhrase = lookup.type && lookup.type !== 'word'
+            const headingWord = (isPhrase ? (lookup.surface || lookup.lemma) : (lookup.lemma || selected)) || selected
+            const displayWord = headingWord ? headingWord.charAt(0).toUpperCase() + headingWord.slice(1) : ''
+            const posBadge = lookup.pos || activeMeaning?.partOfSpeech || ''
+            const cefrBadge = lookup.cefr || activeMeaning?.cefr || ''
+            const ipaText = lookup.ipa || activeMeaning?.phonetic || ''
+            const showFromNote = Boolean(selectedSurface && selectedSurface.toLowerCase() !== headingWord.toLowerCase())
+            const metaParts = [
+              posBadge && { key: 'pos', cls: 'dict-meta-pos', text: posBadge.toLowerCase() },
+              cefrBadge && { key: 'cefr', cls: 'dict-meta-cefr', text: cefrBadge.toUpperCase() },
+              ipaText && { key: 'ipa', cls: 'dict-ipa', text: ipaText },
+              showFromNote && { key: 'from', cls: 'dict-surface-note', text: `from “${selectedSurface}”` },
+            ].filter(Boolean)
+            const allOptions = lookup.options || []
+            const showNumbers = allOptions.length > 1
+            return <>
+              <div className="dict-head-row">
+                <h2>{displayWord}</h2>
+                <button type="button" className="dict-close-btn" onClick={closeDictionary} aria-label="Close">
+                  <Icon name="close" size={20}/>
+                </button>
+              </div>
+              <div className="dict-meta-row">
+                {metaParts.map((part, idx) => (
+                  <span key={part.key} className="dict-meta-item">
+                    {idx > 0 && <span className="dict-meta-sep" aria-hidden="true">·</span>}
+                    <span className={part.cls}>{part.text}</span>
+                  </span>
+                ))}
+                <button type="button" className="dict-speak-btn" onClick={() => speak(headingWord)} aria-label={`Listen to ${headingWord}`} title="Listen">
+                  <Icon name="volume" size={16}/>
+                </button>
+              </div>
+              <div className="lookup-details">
+                {lookup.status === 'loading' && <p className="dict-status-note">Looking up the word...</p>}
+                {lookup.status === 'success' && <>
+                  {lookup.tier === 1 ? (
+                    <div className="contextual-meaning dict-tier1-meaning">
+                      {lookup.vi_context && <p className="dict-vi-meaning">{lookup.vi_context}</p>}
+                      {lookup.en_def && <p className="dict-en-meaning">{lookup.en_def}</p>}
+                    </div>
+                  ) : allOptions.length > 0 ? (
+                    <div className="contextual-meaning dict-tier2-meanings">
+                      {allOptions.map((opt, idx) => (
+                        <div key={idx} className={'dict-sense-row' + (showNumbers ? ' dict-sense-numbered' : '')}>
+                          {showNumbers && <span className="dict-sense-num">{idx + 1}</span>}
+                          <div className="dict-sense-body">
+                            <div className="dict-sense-line">
+                              <span className="dict-sense-def">{opt.en_def || opt.definition}</span>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  ) : (
+                    <div className="no-contextual-meaning">
+                      <p>No local definition found for “{selectedSurface || selected}”.</p>
+                    </div>
+                  )}
+                </>}
+                {lookup.status === 'error' && <><p className="dict-status-note">Dictionary temporarily unavailable.</p><button className="retry-link" onClick={() => setRetryCount(n => n + 1)}>Try again</button></>}
+              </div>
+              <div className="sheet-actions dict-actions">
+                <button type="button" className="primary dict-save-btn" onClick={saveWord} disabled={isSaved}>{isSaved ? '✓ Saved' : '+ Save word'}</button>
+              </div>
+            </>
+          })()}
         </div>
       </div>}
     </div>

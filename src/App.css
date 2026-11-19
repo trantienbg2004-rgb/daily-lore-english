@@ -1455,3 +1455,271 @@
   font-family: var(--font-ui);
 }
 
+/* Minimalist, divider-free dictionary popup styling (scoped strictly to .dictionary-sheet) */
+.dictionary-sheet {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  height: auto;
+  max-height: 74dvh;
+  overflow: hidden;
+  padding-top: 24px;
+  padding-bottom: calc(24px + env(safe-area-inset-bottom, 0px));
+  border: 0;
+  border-radius: 20px 20px 0 0;
+  background: #fbfaf6;
+  color: #171715;
+  box-shadow: 0 -14px 44px rgba(23, 23, 21, 0.14);
+}
+@media (max-width: 600px) {
+  .dictionary-sheet {
+    height: auto;
+    max-height: 74dvh;
+    overflow: hidden;
+    padding-top: 22px;
+    padding-bottom: calc(24px + env(safe-area-inset-bottom, 0px));
+    border: 0;
+  }
+}
+.dictionary-sheet .dict-head-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+.dictionary-sheet h2 {
+  margin: 0;
+  font-family: var(--font-head);
+  font-size: clamp(26px, 3.6dvh, 32px);
+  font-weight: 600;
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  text-transform: none;
+  color: #171715;
+}
+.dictionary-sheet .dict-close-btn {
+  flex: 0 0 auto;
+  border: 0;
+  background: transparent;
+  color: #6b6760;
+  padding: 4px;
+  margin: -2px -4px 0 0;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: color 140ms ease, background-color 140ms ease;
+}
+.dictionary-sheet .dict-close-btn:hover {
+  color: #171715;
+  background: rgba(23, 23, 21, 0.06);
+}
+.dictionary-sheet .dict-meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  margin: -6px 0 0;
+  font-family: var(--font-ui);
+  font-size: 13px;
+  line-height: 1.4;
+  color: #6b6760;
+}
+.dictionary-sheet .dict-meta-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.dictionary-sheet .dict-meta-sep {
+  color: #b5b0a6;
+}
+.dictionary-sheet .dict-meta-pos {
+  font-style: italic;
+  color: #545049;
+}
+.dictionary-sheet .dict-meta-cefr {
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: #8f4f40;
+}
+.dictionary-sheet .dict-ipa {
+  font-family: var(--font-ui);
+  color: #6b6760;
+}
+.dictionary-sheet .dict-surface-note {
+  font-style: italic;
+  color: #817d76;
+}
+.dictionary-sheet .dict-speak-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  background: transparent;
+  color: #545049;
+  padding: 4px 6px;
+  margin-left: 2px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: color 140ms ease, background-color 140ms ease;
+}
+.dictionary-sheet .dict-speak-btn:hover {
+  color: #171715;
+  background: rgba(23, 23, 21, 0.06);
+}
+.dictionary-sheet .word-context {
+  margin: 2px 0 0 !important;
+  padding: 0;
+  border: 0;
+  min-height: 0;
+  font-family: var(--font-body) !important;
+  font-size: 15.5px !important;
+  font-weight: 400 !important;
+  line-height: 1.55 !important;
+  color: #4f4b45 !important;
+}
+.dictionary-sheet .word-context strong {
+  color: #171715;
+  font-weight: 700;
+}
+.dictionary-sheet .dict-head-row,
+.dictionary-sheet .dict-meta-row,
+.dictionary-sheet .sheet-actions.dict-actions {
+  flex: 0 0 auto;
+}
+.dictionary-sheet .lookup-details {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  margin: 0;
+  padding: 2px 2px 4px 0;
+}
+.dictionary-sheet .contextual-meaning {
+  border: 0;
+  padding: 2px 0 0;
+  margin: 0;
+  min-height: 0;
+  color: #171715;
+}
+.dictionary-sheet .dict-vi-meaning {
+  margin: 0 0 6px;
+  min-height: 0;
+  font-family: var(--font-body);
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.45;
+  color: #171715;
+}
+.dictionary-sheet .dict-en-meaning {
+  margin: 0;
+  min-height: 0;
+  font-family: var(--font-body);
+  font-size: 15.5px;
+  line-height: 1.5;
+  color: #3f3c37;
+}
+.dictionary-sheet .dict-tier2-meanings {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.dictionary-sheet .dict-sense-row {
+  margin: 0;
+}
+.dictionary-sheet .dict-sense-row.dict-sense-numbered {
+  display: grid;
+  grid-template-columns: 18px minmax(0, 1fr);
+  column-gap: 8px;
+  align-items: baseline;
+}
+.dictionary-sheet .dict-sense-num {
+  font-family: var(--font-ui);
+  font-size: 13px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: #8c877e;
+  line-height: 1.48;
+}
+.dictionary-sheet .dict-sense-body {
+  min-width: 0;
+}
+.dictionary-sheet .dict-sense-line {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 16.5px;
+  line-height: 1.48;
+  color: #171715;
+}
+.dictionary-sheet .dict-sense-pos {
+  display: inline;
+  margin-right: 7px;
+  font-family: var(--font-ui);
+  font-size: 11px;
+  font-weight: 600;
+  font-style: italic;
+  color: #7c776f;
+}
+.dictionary-sheet .dict-sense-example {
+  margin: 5px 0 0;
+  min-height: 0;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-style: italic;
+  line-height: 1.48;
+  color: #6b6760;
+}
+.dictionary-sheet .no-contextual-meaning,
+.dictionary-sheet .dict-status-note {
+  margin: 0;
+  min-height: 0;
+  font-family: var(--font-ui);
+  font-size: 14px;
+  line-height: 1.5;
+  color: #5c5851;
+}
+.dictionary-sheet .no-contextual-meaning p {
+  margin: 0;
+  min-height: 0;
+}
+.dictionary-sheet .dict-cambridge-link {
+  display: inline-block;
+  margin-top: 8px;
+  font-family: var(--font-ui);
+  font-size: 13px;
+  font-weight: 600;
+  color: #171715;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.dictionary-sheet .sheet-actions.dict-actions {
+  margin-top: 6px;
+  padding: 0;
+  border: 0;
+  display: flex;
+  justify-content: flex-start;
+}
+.dictionary-sheet .sheet-actions .primary.dict-save-btn {
+  flex: 0 1 auto;
+  min-width: 148px;
+  padding: 11px 22px;
+  border: 0;
+  border-radius: 999px;
+  background: #171715;
+  color: #fbfaf6;
+  font-family: var(--font-ui);
+  font-size: 13.5px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  transition: opacity 140ms ease, background-color 140ms ease;
+}
+.dictionary-sheet .sheet-actions .primary.dict-save-btn:hover:not(:disabled) {
+  background: #2c2b28;
+}
+.dictionary-sheet .sheet-actions .primary.dict-save-btn:disabled {
+  background: #8a867f;
+  opacity: 1;
+}
+

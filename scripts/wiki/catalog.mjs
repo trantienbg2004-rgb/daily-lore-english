@@ -20,7 +20,8 @@ export function makeWikiStory({source,topic,draft,photos,evidence=[],now=new Dat
  if(!WIKI_TOPICS.includes(topic)||!source?.pageId||!draft?.variants||!photos?.length)throw Error('Incomplete Wiki story')
  const variants=Object.fromEntries(levels.map(level=>[level,{headline:draft.variants[level]?.headline,
   pages:draft.variants[level]?.pages?.map(page=>({text:page.text,image:page.image||'',caption:page.caption||'',
-   ...(page.imageProvenance?{imageProvenance:page.imageProvenance}:{}),evidenceIds:page.evidenceIds}))}]))
+   ...(page.imageProvenance?{imageProvenance:page.imageProvenance}:{}),evidenceIds:page.evidenceIds})),
+  ...(Array.isArray(draft.variants[level]?.glossary)&&draft.variants[level].glossary.length?{glossary:draft.variants[level].glossary.map(item=>({...item}))}:{})}]))
  const story={id:`saga-wiki:${source.pageId}`,title:variants['B1-B2'].headline,sourceTitle:source.sourceTitle,
   sourceUrl:source.sourceUrl,sourceName:'English Wikipedia',publisher:'Wikipedia contributors',
   sourcePageId:source.pageId,sourceRevisionId:source.sourceRevisionId,sourceRevisionUrl:source.sourceRevisionUrl,
@@ -28,6 +29,7 @@ export function makeWikiStory({source,topic,draft,photos,evidence=[],now=new Dat
   category:topic,publishedAt:now.toISOString(),license:'CC BY-SA 4.0',licenseUrl:'https://creativecommons.org/licenses/by-sa/4.0/',
   attribution:'Adapted from English Wikipedia contributors; see pinned revision and history. SAGA AI-assisted adaptation under CC BY-SA 4.0. Wikipedia does not endorse SAGA.',
   levelVariants:variants,pages:variants['B1-B2'].pages.map(page=>({...page})),
+  ...(variants['B1-B2'].glossary?{glossary:variants['B1-B2'].glossary.map(item=>({...item}))}:{}),
   sourceEvidence:evidence.map(row=>({id:row.id,hash:row.hash,excerpt:row.excerpt,...(row.heading?{heading:row.heading}:{})})),
   editorialState:'Source-grounded automated checks; not a guarantee of semantic accuracy'}
  const gate=validateWikiStory(story)
