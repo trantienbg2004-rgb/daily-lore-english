@@ -31,17 +31,11 @@ function photoFrameSize(mediaWidth,maxHeight,ratio) {
   return {imageWidth,frameWidth:Math.min(mediaWidth,imageWidth+10)}
 }
 function fitPhoto(img) {
-  if (!img?.naturalWidth || !img?.naturalHeight) return
+  if (!img) return
   const frame = img.closest('.lore-photo-figure')
-  const media = img.closest('.article-media')
-  if (!frame || !media || !media.clientWidth) return
-  const maxHeight = parseFloat(getComputedStyle(img).maxHeight) || 148
-  const ratio = img.naturalWidth / img.naturalHeight
-  if (!Number.isFinite(ratio) || ratio <= 0) return
-  const {imageWidth,frameWidth}=photoFrameSize(media.clientWidth,maxHeight,ratio)
-  frame.style.width = `${Math.ceil(frameWidth)}px`
-  img.style.width = `${Math.ceil(imageWidth)}px`
-  img.style.height = 'auto'
+  if (frame) frame.style.width = ''
+  img.style.width = ''
+  img.style.height = ''
 }
 
 // V20: NEVER mount an <img> until pixels have loaded. A broken thumbnail
@@ -70,12 +64,16 @@ function ArticlePhoto({ image, label, fullCaption, onBroken, onReady }) {
     window.addEventListener('keydown', closeOnEscape)
     return () => window.removeEventListener('keydown', closeOnEscape)
   }, [zoomed])
-  if (!asset?.url) return null
+  if (!image) return null
+  if (!asset) return <figure className="photo-figure lore-photo-figure hero-media hero-media-loading" aria-hidden="true"><div className="hero-photo-skeleton" /></figure>
+  if (!asset.url) return null
   const aspectStyle = asset.width && asset.height ? { '--photo-aspect': `${asset.width} / ${asset.height}` } : undefined
+  const heroWidth = asset.width || 1600
+  const heroHeight = asset.height || 900
   const srcSet = photoSrcSet(asset.url, asset.width)
-  return <><figure className="photo-figure lore-photo-figure" style={aspectStyle}>
-    <img src={asset.url} srcSet={srcSet} sizes="(max-width: 600px) calc(100vw - 2rem), 420px" alt={label} decoding="async" loading="lazy"
-      width={asset.width} height={asset.height} role="button" tabIndex={0}
+  return <><figure className="photo-figure lore-photo-figure hero-media" style={aspectStyle}>
+    <img className="hero-photo" src={asset.url} srcSet={srcSet} sizes="(max-width: 760px) calc(100vw - 2rem), 664px" alt={label} decoding="async" loading="lazy"
+      width={heroWidth} height={heroHeight} role="button" tabIndex={0}
       aria-label={`Enlarge image: ${label || 'article photo'}`}
       onClick={() => setZoomed(true)}
       onKeyDown={event => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); setZoomed(true) } }}
@@ -84,7 +82,7 @@ function ArticlePhoto({ image, label, fullCaption, onBroken, onReady }) {
     <button type="button" className="lore-photo-zoom-trigger" aria-label="Enlarge photo" title="Read full image caption" onClick={() => setZoomed(true)}><span aria-hidden="true">⛶</span></button>
     {zoomed && createPortal(<div className="lore-lightbox" role="dialog" aria-modal="true" aria-label="Enlarged article photograph" onClick={event => { event.stopPropagation(); setZoomed(false) }}>
       <button type="button" className="lore-lightbox-close" aria-label="Close enlarged photograph" onClick={event => { event.stopPropagation(); setZoomed(false) }}>×</button>
-      <img src={asset.url} srcSet={srcSet} sizes="(max-width: 768px) 96vw, 90vw" alt={label} decoding="async" loading="lazy" width={asset.width} height={asset.height} style={aspectStyle} onClick={event => event.stopPropagation()} />
+      <img src={asset.url} srcSet={srcSet} sizes="(max-width: 768px) 96vw, 90vw" alt={label} decoding="async" loading="lazy" width={heroWidth} height={heroHeight} style={aspectStyle} onClick={event => event.stopPropagation()} />
       {fullCaption && <p className="lore-lightbox-caption" onClick={event => event.stopPropagation()}>{fullCaption}</p>}
     </div>, document.body)}
   </figure>{label && label !== 'Article photograph' && <p className="lore-photo-caption">{label}</p>}</>
@@ -129,8 +127,9 @@ function layoutPages(item, reader, badImages = new Set()) {
   const card = fixture.querySelector('.reading-card')
   const pager = fixture.querySelector('.page-control')
   const figure = document.createElement('figure')
-  figure.className = 'photo-figure lore-photo-figure'
+  figure.className = 'photo-figure lore-photo-figure hero-media'
   const photo = document.createElement('img')
+  photo.className = 'hero-photo'
   const measuredCaption = document.createElement('p')
   measuredCaption.className = 'lore-photo-caption'
   figure.append(photo)
@@ -140,7 +139,17 @@ function layoutPages(item, reader, badImages = new Set()) {
   if (!heading || !media || !paragraph || !card || !pager) return item.pages
   reader.parentElement.appendChild(fixture)
   try {
+    const sourcePages = item?.contentType === 'news' ? item.pages : (item._sourcePages || item.pages)
+    const cleanSources = sourcePages.map(p =>
+      badImages.has(p.image) ? {...p,image:'',caption:''} : p)
+    const coverHasNoImage = item?.contentType === 'wiki'
+      ? !cleanSources.some(p => p.image)
+      : !cleanSources[0]?.image
     const fits = ({text, cover:isCover, image, density = ''}) => {
+      heading.classList.add('post-head')
+      heading.classList.toggle('post-head--no-image', !image)
+      heading.classList.toggle('post-head--cover-no-image', coverHasNoImage)
+      heading.classList.toggle('post-head--continued', !isCover)
       heading.classList.toggle('article-heading-continued', !isCover)
       card.classList.toggle('reading-card-no-photo', !image)
       card.classList.toggle('reading-card-with-photo', !!image)
@@ -150,17 +159,25 @@ function layoutPages(item, reader, badImages = new Set()) {
       measuredCaption.textContent = image ? photoLabel(image) : ''
       measuredCaption.style.display = measuredCaption.textContent && measuredCaption.textContent !== 'Article photograph' ? 'block' : 'none'
       if (image) {
-        // Use the verified intrinsic image geometry whenever available.
-        // Match the live photo width during pagination.
         const asset = photoResult(image.image)
-        const maxHeight = parseFloat(getComputedStyle(photo).maxHeight) || 140
-        const ratio = asset?.width && asset?.height ? asset.width / asset.height : 1.3
-        const {imageWidth,frameWidth}=photoFrameSize(media.clientWidth,maxHeight,ratio)
+        const computedMax = parseFloat(getComputedStyle(photo).maxHeight)
+        const maxHeight = Number.isFinite(computedMax) && computedMax > 0
+          ? computedMax
+          : (window.innerHeight * (density === 'compact' ? (window.innerWidth <= 600 ? 0.22 : 0.3) : 0.4))
+        const ratio = 16 / 9
+        const { frameWidth } = photoFrameSize(media.clientWidth, maxHeight, ratio)
         figure.style.width = `${Math.ceil(frameWidth)}px`
-        photo.style.width = `${Math.ceil(imageWidth)}px`
-        photo.style.height = `${imageWidth / ratio}px`
+        figure.style.width = '100%'
+        const measuredHeight = Math.min(maxHeight, media.clientWidth / ratio)
+        const measuredWidth = Math.min(media.clientWidth, measuredHeight * ratio)
+        photo.width = asset?.width || 1600
+        photo.height = asset?.height || 900
+        photo.style.width = `${Math.round(measuredWidth)}px`
+        photo.style.height = `${Math.round(measuredHeight)}px`
       } else {
         figure.style.width = ''
+        photo.style.width = ''
+        photo.style.height = ''
       }
       const fragment = document.createDocumentFragment()
       const tokens = String(text || '').split(/(\s+)/u)
@@ -184,13 +201,10 @@ function layoutPages(item, reader, badImages = new Set()) {
     }
     // Failed/corrupt thumbnails may not reserve visual space. Reflow their
     // article text immediately, without altering the original source pages.
-    const sourcePages = item?.contentType === 'news' ? item.pages : (item._sourcePages || item.pages)
-    const cleanSources = sourcePages.map(p =>
-      badImages.has(p.image) ? {...p,image:'',caption:''} : p)
     const next = item?.contentType === 'news'
       ? balancePhotoCoverPage(cleanSources, fits)
       : item?.contentType === 'wiki'
-        ? planAnchoredWikiPages({...item,_sourcePages:cleanSources}, fits)
+        ? planAnchoredWikiPages({...item,_sourcePages:cleanSources}, fits, {uniformRhythm: true})
         : planReadingPages({...item,_sourcePages:cleanSources}, fits)
     if (!next.length) return item.pages
     return rebalanceTextPages(next, fits)
@@ -935,16 +949,16 @@ function App() {
           {safeStoryUrl(item.sourceUrl) && <a className="story-end-cta" href={safeStoryUrl(item.sourceUrl)} target="_blank" rel="noopener noreferrer">Read the full article</a>}
         </div><div className="story-end-next">Swipe up for the next story</div>
       </section> : <>
-      <div className={'article-heading lore-article-heading ' + (pageNumber > 0 && item.contentType !== 'news' ? 'article-heading-continued' : '')}>
+      <div className={'post-head article-heading lore-article-heading ' + (!itemPage.image || brokenImages.has(itemPage.image) || photoResult(itemPage.image)?.failed ? 'post-head--no-image ' : '') + (!item.pages[0]?.image || brokenImages.has(item.pages[0].image) || photoResult(item.pages[0].image)?.failed ? 'post-head--cover-no-image ' : '') + (pageNumber > 0 ? 'post-head--continued ' : '') + (pageNumber > 0 && item.contentType !== 'news' ? 'article-heading-continued' : '')}>
         <h1 className={displayHeadline(item).length > 45 ? 'lore-headline-long' : ''} title={displayHeadline(item)} aria-live={item.contentType === 'news' ? 'polite' : undefined}>{displayHeadline(item)}</h1>
         {pageNumber === 0 && editorialDeck(item) && <p className="deck lore-deck">{editorialDeck(item)}</p>}
       </div>
-      <div className={"article-media " + (!itemPage.image || brokenImages.has(itemPage.image) ? "article-media-empty" : "")}>
-        <ArticlePhoto key={itemPage.image || 'no-photo'} image={brokenImages.has(itemPage.image) ? '' : itemPage.image}
+      <div className={"article-media " + (!itemPage.image || brokenImages.has(itemPage.image) || photoResult(itemPage.image)?.failed ? "article-media-empty" : "")}>
+        <ArticlePhoto key={itemPage.image || 'no-photo'} image={brokenImages.has(itemPage.image) || photoResult(itemPage.image)?.failed ? '' : itemPage.image}
           label={photoLabel(itemPage)} fullCaption={itemPage.caption} onBroken={markBrokenImage}
           onReady={() => setPhotoVersion(n => n + 1)} />
       </div>
-      <section className={'reading-card ' + (!itemPage.image || brokenImages.has(itemPage.image) ? 'reading-card-no-photo' : 'reading-card-with-photo')}><div className="reading-topline" aria-hidden="true" />
+      <section className={'reading-card ' + (!itemPage.image || brokenImages.has(itemPage.image) || photoResult(itemPage.image)?.failed ? 'reading-card-no-photo' : 'reading-card-with-photo')}><div className="reading-topline" aria-hidden="true" />
         <p className="article-text">{tokens.map((token, i) => { const word = clean(token); return /^\s+$/.test(token) || !word ? token : <button key={i} type="button" disabled={!interactive} className={'word-token ' + (words.some(w => w.word === word) ? 'known' : '')} onClick={event => onWordClick(event, word)}>{token}</button> })}</p>
       </section>
       </>}

@@ -1054,14 +1054,23 @@
 /* UNIFIED RESPONSIVE LAYER — shared tokens from index.css across all pages (Read, Words, Review, sheets, lightbox) */
 #root {
   min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
   overflow-x: clip;
 }
 
 .app-shell {
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
   min-height: 100dvh;
   background: var(--saga-bg-paper);
   color: var(--saga-ink);
   padding-bottom: calc(var(--saga-nav-h) + var(--saga-safe-bottom) + var(--saga-space-md));
+}
+
+.app-shell > main.app-content {
+  flex: 1 1 auto;
 }
 
 .app-shell.reading-mode {
@@ -1134,14 +1143,16 @@
 .lore-editorial-v5 .reader-gesture .article-heading h1,
 .lore-editorial-v5 .reader-gesture .article-heading.article-heading-continued h1 {
   font-size: var(--saga-text-h1);
-  line-height: 1.13;
+  line-height: 1.18;
+  padding-bottom: 0.08em;
   color: var(--saga-ink-heading);
 }
 
 .lore-editorial-v5 .reader-gesture .article-heading h1.lore-headline-long,
 .lore-editorial-v5 .reader-gesture .article-heading.article-heading-continued h1.lore-headline-long {
   font-size: var(--saga-text-h1-long);
-  line-height: 1.13;
+  line-height: 1.18;
+  padding-bottom: 0.08em;
 }
 
 .empty h2,
@@ -1211,16 +1222,149 @@
   background: var(--saga-bg-surface);
 }
 
-/* Responsive photography: max-width 100%, height auto, intrinsic aspect-ratio + object-fit contain */
-.lore-editorial-v5 .reader-gesture .article-media .photo-figure.lore-photo-figure {
-  max-width: 100%;
+/* UNIFIED ARTICLE FRAME — shared 720px column for with-image and no-image pages */
+.lore-editorial-v5 .reader-gesture .page-surface {
+  width: 100%;
+  max-width: 720px;
+  margin-inline: auto;
 }
 
-.lore-editorial-v5 .reader-gesture .article-media .lore-photo-figure img {
+.lore-editorial-v5 .reader-gesture .post-head,
+.lore-editorial-v5 .reader-gesture .post-head.article-heading,
+.lore-editorial-v5 .reader-gesture .post-head.article-heading.article-heading-continued {
+  width: 100%;
+  max-width: 720px;
+  margin-inline: auto;
+  padding: var(--saga-space-sm) 0 var(--saga-space-xs);
+  border-bottom: 0;
+}
+
+.lore-editorial-v5 .reader-gesture .post-head.post-head--no-image:not(.post-head--continued),
+.lore-editorial-v5 .reader-gesture .post-head.post-head--no-image.article-heading:not(.post-head--continued) {
+  padding-top: var(--saga-space-lg);
+  padding-bottom: var(--saga-space-sm);
+  margin-bottom: var(--saga-space-xs);
+  border-bottom: 1px solid var(--saga-border);
+}
+
+.lore-editorial-v5 .reader-gesture .post-head.post-head--no-image.post-head--continued,
+.lore-editorial-v5 .reader-gesture .post-head.post-head--no-image.article-heading-continued,
+.lore-editorial-v5 .reader-gesture .post-head.post-head--no-image.article-heading.article-heading-continued {
+  padding-top: var(--saga-space-sm);
+  padding-bottom: var(--saga-space-xs);
+  margin-bottom: 0;
+  border-bottom: 0;
+}
+
+.lore-editorial-v5 .reader-gesture .post-head.post-head--cover-no-image.post-head--continued,
+.lore-editorial-v5 .reader-gesture .post-head.post-head--cover-no-image.article-heading.article-heading-continued {
+  padding-top: var(--saga-space-lg);
+}
+
+.lore-editorial-v5 .reader-gesture .post-head.post-head--no-image:not(.post-head--continued) h1,
+.lore-editorial-v5 .reader-gesture .post-head.post-head--cover-no-image h1,
+.lore-editorial-v5 .reader-gesture .post-head.post-head--cover-no-image.article-heading.article-heading-continued h1 {
+  font-size: var(--saga-text-h1-no-image);
+  line-height: 1.18;
+  padding-bottom: 0.08em;
+}
+
+.lore-editorial-v5 .reader-gesture .post-head.post-head--no-image:not(.post-head--continued) h1.lore-headline-long,
+.lore-editorial-v5 .reader-gesture .post-head.post-head--cover-no-image h1.lore-headline-long,
+.lore-editorial-v5 .reader-gesture .post-head.post-head--cover-no-image.article-heading.article-heading-continued h1.lore-headline-long {
+  font-size: var(--saga-text-h1-no-image-long);
+  line-height: 1.18;
+  padding-bottom: 0.08em;
+}
+
+/* Hero image: unified 16/9 aspect ratio, cover crop, within 60dvh (capped at 40dvh on short landscape screens) */
+.lore-editorial-v5 .reader-gesture .article-media {
+  width: 100%;
+  max-width: 720px;
+  margin: var(--saga-space-xs) auto var(--saga-space-sm);
+  align-items: stretch;
+}
+
+.lore-editorial-v5 .reader-gesture .article-media .photo-figure.lore-photo-figure,
+.lore-editorial-v5 .reader-gesture .article-media .photo-figure.lore-photo-figure.hero-media {
+  width: fit-content;
+  max-width: 100%;
+  margin-inline: auto;
+  padding: 0;
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+  box-shadow: none;
+  overflow: hidden;
+  align-self: center;
+}
+
+.lore-editorial-v5 .reader-gesture .article-media .lore-photo-figure img,
+.lore-editorial-v5 .reader-gesture .article-media .lore-photo-figure img.hero-photo {
+  display: block;
+  width: auto;
   max-width: 100%;
   height: auto;
-  aspect-ratio: var(--photo-aspect, auto);
-  object-fit: contain;
+  aspect-ratio: 16 / 9;
+  max-height: 40dvh;
+  margin-inline: auto;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 4px;
+}
+
+.lore-editorial-v5 .reader-gesture .page-surface.page-density-compact .article-media .lore-photo-figure img,
+.lore-editorial-v5 .reader-gesture .page-surface.page-density-compact .article-media .lore-photo-figure img.hero-photo {
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  max-height: 30dvh;
+  margin-inline: auto;
+}
+
+@media (max-width: 600px) {
+  .lore-editorial-v5 .reader-gesture .page-surface.page-density-compact .article-media .lore-photo-figure img,
+  .lore-editorial-v5 .reader-gesture .page-surface.page-density-compact .article-media .lore-photo-figure img.hero-photo {
+    max-height: 22dvh;
+  }
+}
+
+.lore-editorial-v5 .reader-gesture .article-media .lore-photo-figure.hero-media-loading .hero-photo-skeleton {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  max-height: 40dvh;
+  margin-inline: auto;
+  border-radius: 4px;
+  background: rgba(120, 113, 108, 0.08);
+}
+
+/* Identical column width, font size, and spacing on every page regardless of image presence */
+.lore-editorial-v5 .reader-gesture .reading-card,
+.lore-editorial-v5 .reader-gesture .reading-card.reading-card-with-photo,
+.lore-editorial-v5 .reader-gesture .reading-card.reading-card-no-photo {
+  width: 100%;
+  max-width: 720px;
+  margin-inline: auto;
+  flex: 0 0 auto;
+  justify-content: flex-start;
+  padding-top: var(--saga-space-sm);
+  padding-bottom: 0;
+  border-top: 0;
+  box-shadow: none;
+}
+
+.lore-editorial-v5 .reader-gesture .reading-card .article-text,
+.lore-editorial-v5 .reader-gesture .reading-card.reading-card-with-photo .article-text,
+.lore-editorial-v5 .reader-gesture .reading-card.reading-card-no-photo .article-text {
+  width: 100%;
+  max-width: var(--saga-measure);
+  font-size: var(--saga-text-article);
+  line-height: 1.46;
+  margin: 0 0 var(--saga-space-xs);
 }
 
 .lore-lightbox img {

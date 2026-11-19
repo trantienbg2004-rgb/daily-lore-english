@@ -164,6 +164,72 @@ test('photoSrcSet builds valid responsive srcset for Wikimedia thumbnails, redir
  assert.equal(photoSrcSet(direct,800),`${direct} 800w`)
 })
 
+test('planAnchoredWikiPages promotes the first available image to Page 1 by default and flows continuously without sparse gaps',()=>{
+ const makeSentence=(label,n)=>`${label} `+Array.from({length:n-1},(_,i)=>`word${i}`).join(' ')+'.'
+ const item={
+  contentType:'wiki',
+  pages:[
+   {image:'',caption:'',text:`${makeSentence('IntroA',20)} ${makeSentence('IntroB',20)}`},
+   {image:'lead.jpg',caption:'Lead image',imageProvenance:{credit:'A'},text:`${makeSentence('SecOne',20)} ${makeSentence('SecTwo',20)}`},
+   {image:'',caption:'',text:`${makeSentence('MidA',20)} ${makeSentence('MidB',20)}`},
+   {image:'second.jpg',caption:'Second image',imageProvenance:{credit:'B'},text:`${makeSentence('LateA',20)} ${makeSentence('LateB',20)}`},
+   {image:'',caption:'',text:`${makeSentence('EndA',20)} ${makeSentence('EndB',20)}`},
+  ],
+ }
+ const out=planAnchoredWikiPages(item,({text,image})=>words(text)<=(image?60:120))
+ assert.equal(out[0].image,'lead.jpg','Page 1 gets an image by default')
+ assert.equal(out.filter(p=>p.image==='lead.jpg').length,1,'Promoted lead image is not duplicated')
+ const secondIdx=out.findIndex(p=>p.image==='second.jpg')
+ assert.ok(secondIdx>=1,'Second image is placed on a later matching page')
+ assert.ok(out[secondIdx].text.includes('LateA'),'Second image stays aligned with its matching content')
+ for(const p of out){
+  assert.ok(words(p.text)>=40,`No sparse short page created (got ${words(p.text)} words)`)
+ }
+})
+
+test('planAnchoredWikiPages with uniformRhythm keeps short uniform pages across both photo and text pages on wide viewports',()=>{
+ const makeSentence=(label,n)=>`${label} `+Array.from({length:n-1},(_,i)=>`word${i}`).join(' ')+'.'
+ const item={
+  contentType:'wiki',
+  pages:[
+   {image:'cover.jpg',caption:'Cover photo',imageProvenance:{credit:'A'},text:`${makeSentence('LeadA',20)} ${makeSentence('LeadB',20)}`},
+   {image:'',caption:'',text:`${makeSentence('MidA',20)} ${makeSentence('MidB',19)}`},
+   {image:'',caption:'',text:`${makeSentence('MidC',19)} ${makeSentence('MidD',20)}`},
+   {image:'',caption:'',text:`${makeSentence('LateA',20)} ${makeSentence('LateB',20)}`},
+   {image:'',caption:'',text:`${makeSentence('EndA',19)} ${makeSentence('EndB',20)}`},
+  ],
+ }
+ const out=planAnchoredWikiPages(item,({text,image})=>words(text)<=(image?58:165),{uniformRhythm:true})
+ assert.ok(out.length>=4 && out.length<=5,`Expected 4-5 pages, got ${out.length}`)
+ assert.equal(out[0].image,'cover.jpg')
+ const counts=out.map(p=>words(p.text))
+ const spread=Math.max(...counts)-Math.min(...counts)
+ assert.ok(spread<=16,`Expected tight word spread <= 16, got ${spread} (${counts.join(',')})`)
+ for(const c of counts){
+  assert.ok(c>=34 && c<=56,`Expected uniform 34-56 words/page, got ${c}`)
+ }
+})
+
+test('planAnchoredWikiPages with uniformRhythm preserves content-aligned secondary images and lossless text across catalog',async()=>{
+ const {readWikiCatalog}=await import('../wiki/catalog.mjs')
+ const {default:path}=await import('node:path')
+ const {fileURLToPath}=await import('node:url')
+ const base=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../..')
+ const catalog=await readWikiCatalog(base)
+ const desktopFits=({text,image,density})=>words(text)<=(image?(density==='compact'?75:58):165)
+ for(const story of catalog.stories){
+  const out=planAnchoredWikiPages({...story,_sourcePages:story.pages},desktopFits,{uniformRhythm:true})
+  assert.ok(out.length>=4 && out.length<=5,`${story.title}: expected 4-5 pages, got ${out.length}`)
+  const hasAnyImg=story.pages.some(p=>p.image)
+  if(hasAnyImg) assert.ok(out[0].image,`${story.title}: Page 1 must have cover image`)
+  const seenImgs=out.map(p=>p.image).filter(Boolean)
+  assert.equal(new Set(seenImgs).size,seenImgs.length,`${story.title}: duplicate image`)
+  const counts=out.map(p=>words(p.text))
+  assert.ok(Math.max(...counts)<=58,`${story.title}: page exceeded 58w (${counts.join(',')})`)
+  assert.ok(Math.min(...counts)>=28,`${story.title}: page below 28w (${counts.join(',')})`)
+ }
+})
+
 test('auditWikiStory passes grounded content & aligned photos and catches drift or mismatches',()=>{
  const {story,source}=buildValidFixture(42,'Economy')
  const ok=auditWikiStory(story,{source})

@@ -31,6 +31,8 @@
   --saga-text-body: clamp(1rem, 0.96rem + 0.2vw, 1.0625rem);
   --saga-text-h1: clamp(1.5625rem, 1.25rem + 1.4vw, 2.1875rem);
   --saga-text-h1-long: clamp(1.375rem, 1.12rem + 1.05vw, 1.9375rem);
+  --saga-text-h1-no-image: clamp(1.875rem, 1.45rem + 1.8vw, 2.625rem);
+  --saga-text-h1-no-image-long: clamp(1.625rem, 1.28rem + 1.35vw, 2.25rem);
   --saga-text-h1-section: clamp(2.125rem, 1.7rem + 2vw, 3.0625rem);
   --saga-text-h2: clamp(1.375rem, 1.15rem + 0.9vw, 1.875rem);
   --saga-text-h3: clamp(1.125rem, 1rem + 0.5vw, 1.375rem);
@@ -45,7 +47,7 @@
   --saga-space-lg: clamp(1.5rem, 3vw, 2.25rem);
   --saga-space-xl: clamp(2.25rem, 4.5vw, 3.5rem);
   --saga-container-w: min(100% - 2rem, 1100px);
-  --saga-reader-w: min(100%, 32.5rem);
+  --saga-reader-w: min(100%, 720px);
   --saga-nav-h: 4.375rem;
 
   /* Safe-area insets for notched devices */
@@ -76,6 +78,17 @@ body {
   font-family: var(--font-ui);
   font-size: var(--saga-text-body);
   overflow-x: clip;
+}
+
+#root {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: clip;
+}
+
+main {
+  flex: 1 1 auto;
 }
 
 h1,
