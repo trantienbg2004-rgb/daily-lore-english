@@ -9,7 +9,7 @@ import { sanitizeReadingArticle } from './lib/articleCleanup.js'
 import { refreshCatalog, refillCatalog, REFRESH_INTERVAL_MS } from './lib/continuousReader.js'
 import { QUEUE_TARGET, queuedUnread, lowOnStories, refreshDue } from './lib/loreStockPolicy.js'
 import { createEdgeNavigation } from './lib/edgeNavigation.js'
-import { photoLabel, photoSourceLink } from './lib/photoPresentation.js'
+import { photoLabel, photoSourceLink, photoSrcSet } from './lib/photoPresentation.js'
 import { resolvePhoto, photoResult } from './lib/photoLoad.js'
 import { displayHeadline, readerSection } from './lib/editorial.js'
 import { loadRecommendationProfile, rememberReading, rankRecommendations } from './lib/recommendationEngine.js'
@@ -71,8 +71,10 @@ function ArticlePhoto({ image, label, fullCaption, onBroken, onReady }) {
     return () => window.removeEventListener('keydown', closeOnEscape)
   }, [zoomed])
   if (!asset?.url) return null
-  return <><figure className="photo-figure lore-photo-figure">
-    <img src={asset.url} alt={label} decoding="async" loading="eager"
+  const aspectStyle = asset.width && asset.height ? { '--photo-aspect': `${asset.width} / ${asset.height}` } : undefined
+  const srcSet = photoSrcSet(asset.url, asset.width)
+  return <><figure className="photo-figure lore-photo-figure" style={aspectStyle}>
+    <img src={asset.url} srcSet={srcSet} sizes="(max-width: 600px) calc(100vw - 2rem), 420px" alt={label} decoding="async" loading="lazy"
       width={asset.width} height={asset.height} role="button" tabIndex={0}
       aria-label={`Enlarge image: ${label || 'article photo'}`}
       onClick={() => setZoomed(true)}
@@ -82,7 +84,7 @@ function ArticlePhoto({ image, label, fullCaption, onBroken, onReady }) {
     <button type="button" className="lore-photo-zoom-trigger" aria-label="Enlarge photo" title="Read full image caption" onClick={() => setZoomed(true)}><span aria-hidden="true">⛶</span></button>
     {zoomed && createPortal(<div className="lore-lightbox" role="dialog" aria-modal="true" aria-label="Enlarged article photograph" onClick={event => { event.stopPropagation(); setZoomed(false) }}>
       <button type="button" className="lore-lightbox-close" aria-label="Close enlarged photograph" onClick={event => { event.stopPropagation(); setZoomed(false) }}>×</button>
-      <img src={asset.url} alt={label} onClick={event => event.stopPropagation()} />
+      <img src={asset.url} srcSet={srcSet} sizes="(max-width: 768px) 96vw, 90vw" alt={label} decoding="async" loading="lazy" width={asset.width} height={asset.height} style={aspectStyle} onClick={event => event.stopPropagation()} />
       {fullCaption && <p className="lore-lightbox-caption" onClick={event => event.stopPropagation()}>{fullCaption}</p>}
     </div>, document.body)}
   </figure>{label && label !== 'Article photograph' && <p className="lore-photo-caption">{label}</p>}</>
@@ -120,6 +122,7 @@ function layoutPages(item, reader, badImages = new Set()) {
     height:`${bounds.height}px`, minHeight:'0', visibility:'hidden',
     pointerEvents:'none', zIndex:'-1', transform:'none',
   })
+  const surface = fixture.querySelector('.page-surface')
   const heading = fixture.querySelector('.article-heading')
   const media = fixture.querySelector('.article-media')
   const paragraph = fixture.querySelector('.article-text')
@@ -137,9 +140,12 @@ function layoutPages(item, reader, badImages = new Set()) {
   if (!heading || !media || !paragraph || !card || !pager) return item.pages
   reader.parentElement.appendChild(fixture)
   try {
-    const fits = ({text, cover:isCover, image}) => {
+    const fits = ({text, cover:isCover, image, density = ''}) => {
       heading.classList.toggle('article-heading-continued', !isCover)
+      card.classList.toggle('reading-card-no-photo', !image)
+      card.classList.toggle('reading-card-with-photo', !!image)
       media.classList.toggle('article-media-empty', !image)
+      surface?.classList.toggle('page-density-compact', density === 'compact')
       media.style.display = image ? 'flex' : 'none'
       measuredCaption.textContent = image ? photoLabel(image) : ''
       measuredCaption.style.display = measuredCaption.textContent && measuredCaption.textContent !== 'Article photograph' ? 'block' : 'none'
@@ -450,8 +456,8 @@ function App() {
         if (!reader) return
         fitPhoto(reader.querySelector('.article-media img'))
         const next = layoutPages(story, reader, brokenImages)
-        const before = story.pages.map(p => `${p.image}|${p.text}`).join('\u0000')
-        const after = next.map(p => `${p.image}|${p.text}`).join('\u0000')
+        const before = story.pages.map(p => `${p.image}|${p.density || ''}|${p.text}`).join('\u0000')
+        const after = next.map(p => `${p.image}|${p.density || ''}|${p.text}`).join('\u0000')
         if (before !== after) {
           setStories(old => old.map((item, i) => i === storyIndex ? { ...item, pages: next } : item))
           setPage(p => Math.min(p, next.length))
@@ -469,6 +475,11 @@ function App() {
     document.fonts?.ready.then(recalculate).catch(() => {})
     return () => { cancelled = true; cancelAnimationFrame(frame); observer?.disconnect(); window.removeEventListener('resize', recalculate); window.visualViewport?.removeEventListener('resize', recalculate) }
   }, [tab, storyIndex, stories.length, story?._sourcePages, story?.pages, brokenImages, photoVersion])
+  useLayoutEffect(() => {
+    if (tab !== 'read' || !story) return
+    const img = document.querySelector('.story-layer:not(.outgoing) .reader-gesture .article-media img')
+    if (img) fitPhoto(img)
+  }, [tab, storyIndex, page, story?.pages])
 
 
   // D12: search BOTH verified reader pools rather than selecting a single
@@ -916,7 +927,7 @@ function App() {
           {interactive && !closing && <button type="button" className="icon-button saga-toolbar-audio" onClick={() => speak(itemPage.text)} aria-label="Read aloud"><Icon name="volume" size={20}/></button>}
         </div>
       </header>
-      <div key={`${index}:${pageNumber}`} className={'page-surface ' + (interactive && pageMotion ? (pageMotion > 0 ? 'page-enter-left' : 'page-enter-right') : '')}>
+      <div key={`${index}:${pageNumber}`} className={'page-surface ' + (itemPage?.density ? `page-density-${itemPage.density} ` : '') + (interactive && pageMotion ? (pageMotion > 0 ? 'page-enter-left' : 'page-enter-right') : '')}>
       {closing ? <section className="story-end" aria-label="Article completed">
         <div className="story-end-center"><Icon name="book" size={56}/><h2>That's the short version.</h2>
           

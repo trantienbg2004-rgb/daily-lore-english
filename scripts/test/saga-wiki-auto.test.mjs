@@ -102,14 +102,19 @@ test('wiki-auto status mode audits the live catalog cleanly at zero API cost',as
  assert.equal(report.priorityTopics.length,3)
 })
 
-test('NYT-inspired Newsreader headline font is loaded and active with refined medium-semibold weight',async()=>{
+test('NYT-inspired Playfair Display, Source Serif 4, and Libre Franklin fonts are loaded and stay identical across page 1 and continued pages',async()=>{
  const html=await fs.readFile(path.join(base,'index.html'),'utf8')
+ const indexCss=await fs.readFile(path.join(base,'src','index.css'),'utf8')
  const css=await fs.readFile(path.join(base,'src','App.css'),'utf8')
- assert.match(html,/fonts\.googleapis\.com\/css2\?[^"]*Newsreader:ital,opsz,wght@0,6\.\.72,400\.\.700/)
- assert.match(css,/\/\* NYT EDITORIAL HEADLINE TYPOGRAPHY[\s\S]*font-family:'Newsreader','Libre Baskerville',Georgia,'Times New Roman',serif;/)
+ assert.match(html,/fonts\.googleapis\.com\/css2\?[^"]*Playfair\+Display[^"]*display=swap/)
+ assert.match(html,/fonts\.googleapis\.com\/css2\?[^"]*Source\+Serif\+4[^"]*display=swap/)
+ assert.match(html,/fonts\.googleapis\.com\/css2\?[^"]*Libre\+Franklin[^"]*display=swap/)
+ assert.match(indexCss,/--font-head:\s*'Playfair Display'/)
+ assert.match(indexCss,/--font-body:\s*'Source Serif 4'/)
+ assert.match(indexCss,/--font-ui:\s*'Libre Franklin'/)
+ assert.match(css,/\/\* NYT-INSPIRED SITE-WIDE FONT LAYER[\s\S]*\.lore-editorial-v5 \.reader-gesture \.article-heading h1,\s*\.lore-editorial-v5 \.reader-gesture \.article-heading\.article-heading-continued h1[\s\S]*font-family:\s*var\(--font-head\);[\s\S]*font-weight:\s*700;/)
  assert.match(css,/\/\* NYT EDITORIAL HEADLINE TYPOGRAPHY[\s\S]*text-transform:none;/)
- assert.match(css,/\/\* NYT EDITORIAL HEADLINE TYPOGRAPHY[\s\S]*font-weight:550;/)
- assert.match(css,/\/\* NYT EDITORIAL HEADLINE TYPOGRAPHY[\s\S]*font-weight:500;/)
+ assert.match(css,/\/\* NYT EDITORIAL HEADLINE TYPOGRAPHY[\s\S]*opacity:1;/)
 })
 
 test('GitHub Actions workflow runs directly on main without old staging branch dependency and accepts both API key secrets',async()=>{

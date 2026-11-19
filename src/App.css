@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500;6..96,600&family=Inter:wght@400;500;600;700&family=Lora:wght@400;500;600&display=swap');
-#root{min-height:100vh}.app-shell{max-width:520px;min-height:100vh;margin:0 auto;background:#f8f8f2;box-shadow:0 0 60px #00000010;position:relative;padding-bottom:95px}.app-content{padding:0 28px 38px}.topbar{padding:30px 0 34px;display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid #d8d8d0}.brand{font-family:'Libre Baskerville',Georgia,serif;font-size:17px;letter-spacing:-.8px;font-weight:700}.brand em{font-family:'DM Sans',sans-serif;font-size:9px;font-style:normal;letter-spacing:1.5px;display:block;margin-top:5px;font-weight:500}.edition{font-size:9px;letter-spacing:1.3px;color:#777}.article-heading{padding:30px 0 22px}.eyebrow{font-size:10px;font-weight:700;letter-spacing:2px;color:#9e6052}.article-heading h1,.section-header h1{font-family:'Libre Baskerville',Georgia,serif;font-weight:400;line-height:1.26;letter-spacing:-1.8px}.article-heading h1{font-size:clamp(29px,7vw,40px);margin:14px 0 16px}.deck{font-size:13px;line-height:1.7;color:#777;max-width:340px}.article-media img{width:100%;height:230px;object-fit:cover;border-radius:4px;display:block;background:#d9d9d2}.photo-caption{font-size:11px;color:#81817d;font-style:italic;margin-top:10px}.reading-card{padding-top:34px;min-height:225px}.reading-topline{display:flex;justify-content:space-between;align-items:center;color:#8b8b86;letter-spacing:1.7px;font-size:10px;font-weight:700}.icon-button,.sheet-header button,.saved-item button{border:0;background:transparent;color:#171715}.article-text{font-family:Georgia,'Times New Roman',serif;font-size:clamp(22px,5.1vw,27px);line-height:1.65;letter-spacing:-.35px;margin:18px 0 10px}.word-token{display:inline;background:none;border:0;padding:0;color:inherit;font-family:inherit;font-size:inherit;line-height:inherit;text-align:left}.word-token:active,.word-token:hover{color:#a65f50}.word-token.known{color:#a65f50}.page-control{display:flex;align-items:center;justify-content:space-between;margin:25px 0 4px}.page-control>button{border:1px solid #e4e3dc;background:transparent;border-radius:50%;height:42px;width:42px;display:grid;place-items:center}.page-control>button:disabled{opacity:.2}.dots{display:flex;gap:9px}.dots button{width:7px;height:7px;border:0;border-radius:50%;background:#c9c9c3;padding:0}.dots button.active{background:#171715;transform:scale(1.35)}.hint{text-align:center;color:#9b9b96;font-size:11px;margin-top:20px}.bottom-nav{height:76px;position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:min(520px,100%);display:flex;background:#f8f8f2;border-top:1px solid #e4e3dd;z-index:5}.bottom-nav button{flex:1;border:0;background:transparent;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;color:#a2a29d;font-size:11px}.bottom-nav button.current{color:#171715;font-weight:700}.section-header{padding:58px 0 34px}.section-header h1{font-size:clamp(36px,8vw,49px);margin:16px 0}.section-header p{color:#777;font-size:14px}.period{color:#a65f50}.count-line,.review-count{border-top:1px solid #deded6;padding-top:17px;font-size:10px;font-weight:700;letter-spacing:1.7px;color:#85857f}.empty{padding:70px 12px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:15px}.empty h2{font-family:Georgia,serif;font-weight:400;font-size:27px;margin:10px 0 0}.empty p{font-size:14px;line-height:1.7;color:#777;max-width:275px;margin:0}.primary{border:0;border-radius:30px;padding:14px 22px;background:#171715;color:white;font-weight:700;font-size:13px;margin-top:12px}.primary:disabled{opacity:.5}.saved-list{margin-top:20px}.saved-item{display:flex;justify-content:space-between;align-items:flex-start;border-bottom:1px solid #deded6;padding:20px 0}.saved-item h2{font-family:Georgia,serif;font-size:25px;font-weight:400;margin:0 0 8px}.saved-item p{font-size:13px;line-height:1.6;color:#777;margin:0}.saved-item button{padding:8px}.flashcard{display:flex;flex-direction:column;justify-content:space-between;align-items:center;text-align:center;width:100%;height:330px;margin-top:22px;background:#eae9e1;border:1px solid #dfded5;border-radius:8px;padding:32px 20px;color:#171715}.flashcard span{font-size:10px;letter-spacing:2px;color:#777}.flashcard strong{font-family:Georgia,serif;font-weight:400;font-size:clamp(27px,7vw,39px);line-height:1.4}.flashcard small{font-size:12px;color:#999}.review-next{width:100%;margin-top:22px}.overlay{position:fixed;inset:0;background:#0005;z-index:10;display:flex;align-items:flex-end;justify-content:center}.definition-sheet{width:min(520px,100%);background:#f8f8f2;border-radius:20px 20px 0 0;padding:24px 28px 34px;box-shadow:0 -15px 60px #0002}.sheet-header{display:flex;align-items:center;justify-content:space-between;font-size:10px;letter-spacing:1.7px;color:#999}.definition-sheet h2{font-family:Georgia,serif;font-size:38px;font-weight:400;margin:25px 0 10px}.definition-sheet p{font-size:15px;line-height:1.7;color:#666;min-height:50px}.sheet-actions{display:flex;gap:12px;margin-top:20px}.sheet-actions button{flex:1;margin:0;display:flex;align-items:center;justify-content:center;gap:8px}.outline{border:1px solid #d8d8d0;border-radius:30px;background:transparent;padding:13px;font-weight:600}@media(max-width:400px){.app-content{padding-left:21px;padding-right:21px}.article-media img{height:200px}.article-heading h1{font-size:29px}}
+#root{min-height:100dvh}.app-shell{max-width:520px;min-height:100dvh;margin:0 auto;background:#f8f8f2;box-shadow:0 0 60px #00000010;position:relative;padding-bottom:95px}.app-content{padding:0 28px 38px}.topbar{padding:30px 0 34px;display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid #d8d8d0}.brand{font-family:'Libre Baskerville',Georgia,serif;font-size:17px;letter-spacing:-.8px;font-weight:700}.brand em{font-family:'DM Sans',sans-serif;font-size:9px;font-style:normal;letter-spacing:1.5px;display:block;margin-top:5px;font-weight:500}.edition{font-size:9px;letter-spacing:1.3px;color:#777}.article-heading{padding:30px 0 22px}.eyebrow{font-size:10px;font-weight:700;letter-spacing:2px;color:#9e6052}.article-heading h1,.section-header h1{font-family:'Libre Baskerville',Georgia,serif;font-weight:400;line-height:1.26;letter-spacing:-1.8px}.article-heading h1{font-size:clamp(29px,7vw,40px);margin:14px 0 16px}.deck{font-size:13px;line-height:1.7;color:#777;max-width:340px}.article-media img{width:100%;height:230px;object-fit:cover;border-radius:4px;display:block;background:#d9d9d2}.photo-caption{font-size:11px;color:#81817d;font-style:italic;margin-top:10px}.reading-card{padding-top:34px;min-height:225px}.reading-topline{display:flex;justify-content:space-between;align-items:center;color:#8b8b86;letter-spacing:1.7px;font-size:10px;font-weight:700}.icon-button,.sheet-header button,.saved-item button{border:0;background:transparent;color:#171715}.article-text{font-family:Georgia,'Times New Roman',serif;font-size:clamp(22px,5.1vw,27px);line-height:1.65;letter-spacing:-.35px;margin:18px 0 10px}.word-token{display:inline;background:none;border:0;padding:0;color:inherit;font-family:inherit;font-size:inherit;line-height:inherit;text-align:left}.word-token:active,.word-token:hover{color:#a65f50}.word-token.known{color:#a65f50}.page-control{display:flex;align-items:center;justify-content:space-between;margin:25px 0 4px}.page-control>button{border:1px solid #e4e3dc;background:transparent;border-radius:50%;height:42px;width:42px;display:grid;place-items:center}.page-control>button:disabled{opacity:.2}.dots{display:flex;gap:9px}.dots button{width:7px;height:7px;border:0;border-radius:50%;background:#c9c9c3;padding:0}.dots button.active{background:#171715;transform:scale(1.35)}.hint{text-align:center;color:#9b9b96;font-size:11px;margin-top:20px}.bottom-nav{height:76px;position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:min(520px,100%);display:flex;background:#f8f8f2;border-top:1px solid #e4e3dd;z-index:5}.bottom-nav button{flex:1;border:0;background:transparent;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;color:#a2a29d;font-size:11px}.bottom-nav button.current{color:#171715;font-weight:700}.section-header{padding:58px 0 34px}.section-header h1{font-size:clamp(36px,8vw,49px);margin:16px 0}.section-header p{color:#777;font-size:14px}.period{color:#a65f50}.count-line,.review-count{border-top:1px solid #deded6;padding-top:17px;font-size:10px;font-weight:700;letter-spacing:1.7px;color:#85857f}.empty{padding:70px 12px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:15px}.empty h2{font-family:Georgia,serif;font-weight:400;font-size:27px;margin:10px 0 0}.empty p{font-size:14px;line-height:1.7;color:#777;max-width:275px;margin:0}.primary{border:0;border-radius:30px;padding:14px 22px;background:#171715;color:white;font-weight:700;font-size:13px;margin-top:12px}.primary:disabled{opacity:.5}.saved-list{margin-top:20px}.saved-item{display:flex;justify-content:space-between;align-items:flex-start;border-bottom:1px solid #deded6;padding:20px 0}.saved-item h2{font-family:Georgia,serif;font-size:25px;font-weight:400;margin:0 0 8px}.saved-item p{font-size:13px;line-height:1.6;color:#777;margin:0}.saved-item button{padding:8px}.flashcard{display:flex;flex-direction:column;justify-content:space-between;align-items:center;text-align:center;width:100%;height:330px;margin-top:22px;background:#eae9e1;border:1px solid #dfded5;border-radius:8px;padding:32px 20px;color:#171715}.flashcard span{font-size:10px;letter-spacing:2px;color:#777}.flashcard strong{font-family:Georgia,serif;font-weight:400;font-size:clamp(27px,7vw,39px);line-height:1.4}.flashcard small{font-size:12px;color:#999}.review-next{width:100%;margin-top:22px}.overlay{position:fixed;inset:0;background:#0005;z-index:10;display:flex;align-items:flex-end;justify-content:center}.definition-sheet{width:min(520px,100%);background:#f8f8f2;border-radius:20px 20px 0 0;padding:24px 28px 34px;box-shadow:0 -15px 60px #0002}.sheet-header{display:flex;align-items:center;justify-content:space-between;font-size:10px;letter-spacing:1.7px;color:#999}.definition-sheet h2{font-family:Georgia,serif;font-size:38px;font-weight:400;margin:25px 0 10px}.definition-sheet p{font-size:15px;line-height:1.7;color:#666;min-height:50px}.sheet-actions{display:flex;gap:12px;margin-top:20px}.sheet-actions button{flex:1;margin:0;display:flex;align-items:center;justify-content:center;gap:8px}.outline{border:1px solid #d8d8d0;border-radius:30px;background:transparent;padding:13px;font-weight:600}@media(max-width:400px){.app-content{padding-left:21px;padding-right:21px}.article-media img{height:200px}.article-heading h1{font-size:29px}}
 
 /* Two-direction story navigation */
 .reader-gesture{touch-action:pan-y;user-select:none;-webkit-user-select:none}
@@ -14,7 +14,7 @@
 .meaning-example{display:block;margin-top:6px;color:#81756d;font-family:Georgia,serif;font-size:13px;font-style:italic;line-height:1.45}
 .lookup-details{min-height:90px}
 .retry-link{border:0;background:transparent;text-decoration:underline;color:#9e6052;padding:0 0 12px;font-size:12px;cursor:pointer}
-.definition-sheet{max-height:82vh;overflow-y:auto}
+.definition-sheet{max-height:82dvh;overflow-y:auto}
 
 /* Saved words remain tappable for a fresh lookup. */
 .saved-word-open{border:0;background:transparent;padding:0;color:inherit;font:inherit;text-align:left;cursor:pointer}
@@ -62,8 +62,8 @@
 
 /* DAILY NEWS — single viewport, reliable iPhone safe areas, responsive pages. */
 .app-shell.reading-mode {
-  width:100%; height:100vh; height:100dvh; min-height:0; overflow:hidden;
-  padding-bottom:calc(70px + env(safe-area-inset-bottom, 0px)); box-sizing:border-box;
+  width:100%; height:100dvh; min-height:0; overflow:hidden;
+  padding-bottom:calc(var(--saga-nav-h) + var(--saga-safe-bottom)); box-sizing:border-box;
 }
 .reading-mode .app-content {height:100%; min-height:0; box-sizing:border-box; padding-bottom:0}
 .reading-mode .story-viewport {height:100%; position:relative; overflow:hidden; overscroll-behavior:contain}
@@ -974,7 +974,8 @@
 }
 
 /* NYT EDITORIAL HEADLINE TYPOGRAPHY — Cheltenham-inspired refined optical serif */
-.lore-editorial-v5 .reader-gesture .article-heading h1 {
+.lore-editorial-v5 .reader-gesture .article-heading h1,
+.lore-editorial-v5 .reader-gesture .article-heading.article-heading-continued h1 {
   font-family:'Newsreader','Libre Baskerville',Georgia,'Times New Roman',serif;
   font-optical-sizing:auto;
   font-variation-settings:'opsz' 48;
@@ -986,25 +987,14 @@
   letter-spacing:-0.02em;
   text-transform:none;
   color:#121212;
+  opacity:1;
 }
-.lore-editorial-v5 .reader-gesture .article-heading h1.lore-headline-long {
+.lore-editorial-v5 .reader-gesture .article-heading h1.lore-headline-long,
+.lore-editorial-v5 .reader-gesture .article-heading.article-heading-continued h1.lore-headline-long {
   font-size:clamp(24px,3.35dvh,31px);
   line-height:1.13;
   letter-spacing:-0.02em;
-}
-.lore-editorial-v5 .reader-gesture .article-heading.article-heading-continued h1,
-.lore-editorial-v5 .reader-gesture .article-heading.article-heading-continued h1.lore-headline-long {
-  font-family:'Newsreader','Libre Baskerville',Georgia,'Times New Roman',serif;
-  font-optical-sizing:auto;
-  font-variation-settings:'opsz' 24;
-  font-weight:500;
-  font-synthesis:none;
-  -webkit-font-smoothing:antialiased;
-  font-size:clamp(16px,2.2dvh,19px);
-  line-height:1.18;
-  letter-spacing:-0.012em;
-  text-transform:none;
-  color:#2b2926;
+  opacity:1;
 }
 .section-header h1,
 .reading-mode .story-end h2 {
@@ -1018,28 +1008,306 @@
   color:#121212;
 }
 @media(max-width:600px) {
-  .lore-editorial-v5 .reader-gesture .article-heading h1 {
+  .lore-editorial-v5 .reader-gesture .article-heading h1,
+  .lore-editorial-v5 .reader-gesture .article-heading.article-heading-continued h1 {
     font-size:clamp(25px,7vw,31px);
     line-height:1.13;
   }
-  .lore-editorial-v5 .reader-gesture .article-heading h1.lore-headline-long {
+  .lore-editorial-v5 .reader-gesture .article-heading h1.lore-headline-long,
+  .lore-editorial-v5 .reader-gesture .article-heading.article-heading-continued h1.lore-headline-long {
     font-size:clamp(22px,6.2vw,28px);
     line-height:1.13;
   }
-  .lore-editorial-v5 .reader-gesture .article-heading.article-heading-continued h1,
-  .lore-editorial-v5 .reader-gesture .article-heading.article-heading-continued h1.lore-headline-long {
-    font-size:clamp(15px,4.2vw,18px);
-    line-height:1.18;
-  }
 }
 @media(max-height:620px) {
-  .lore-editorial-v5 .reader-gesture .article-heading h1 {
+  .lore-editorial-v5 .reader-gesture .article-heading h1,
+  .lore-editorial-v5 .reader-gesture .article-heading.article-heading-continued h1 {
     font-size:clamp(21px,3.3dvh,26px);
     line-height:1.11;
   }
-  .lore-editorial-v5 .reader-gesture .article-heading.article-heading-continued h1,
-  .lore-editorial-v5 .reader-gesture .article-heading.article-heading-continued h1.lore-headline-long {
-    font-size:15px;
-    line-height:1.15;
+}
+
+/* BALANCED PAGE DENSITY — preserve original uniform body text size; balance via layout & photo height only */
+.lore-editorial-v5 .reader-gesture .reading-card.reading-card-no-photo {
+  flex:1 1 auto;
+  justify-content:flex-start;
+  padding-top:clamp(12px,1.8dvh,20px);
+}
+.lore-editorial-v5 .reader-gesture .reading-card.reading-card-no-photo .article-text {
+  margin:0 0 8px;
+}
+@media(max-width:600px) {
+  .lore-editorial-v5 .reader-gesture .article-media {
+    --dn-photo-height:clamp(130px,22dvh,186px);
   }
 }
+/* Compact photo height only (unchanged body text size): absorbs short stranded beats or tiny spillovers */
+.lore-editorial-v5 .reader-gesture .page-surface.page-density-compact .article-media {
+  --dn-photo-height:clamp(118px,18.5dvh,168px);
+}
+@media(max-width:600px) {
+  .lore-editorial-v5 .reader-gesture .page-surface.page-density-compact .article-media {
+    --dn-photo-height:clamp(108px,17.5dvh,148px);
+  }
+}
+
+/* UNIFIED RESPONSIVE LAYER — shared tokens from index.css across all pages (Read, Words, Review, sheets, lightbox) */
+#root {
+  min-height: 100dvh;
+  overflow-x: clip;
+}
+
+.app-shell {
+  min-height: 100dvh;
+  background: var(--saga-bg-paper);
+  color: var(--saga-ink);
+  padding-bottom: calc(var(--saga-nav-h) + var(--saga-safe-bottom) + var(--saga-space-md));
+}
+
+.app-shell.reading-mode {
+  width: var(--saga-reader-w);
+  max-width: 100%;
+  height: 100dvh;
+  padding-bottom: calc(var(--saga-nav-h) + var(--saga-safe-bottom));
+}
+
+.app-shell.reading-mode .app-content {
+  padding-inline: max(clamp(1rem, 4vw, 1.75rem), var(--saga-safe-left)) max(clamp(1rem, 4vw, 1.75rem), var(--saga-safe-right));
+}
+
+/* Words & Review pages share the fluid container width min(100% - 2rem, 1100px) */
+.app-shell:not(.reading-mode) {
+  max-width: calc(1100px + 2rem);
+  width: 100%;
+}
+
+.app-shell:not(.reading-mode) .app-content {
+  width: var(--saga-container-w);
+  margin-inline: auto;
+  padding: 0 0 var(--saga-space-lg);
+}
+
+/* Header & footer safe-area insets across every view */
+.section-header {
+  padding-top: calc(var(--saga-space-xl) + var(--saga-safe-top));
+  padding-bottom: var(--saga-space-lg);
+}
+
+.lore-editorial-v5 .reader-gesture .topbar.lore-reader-topbar {
+  padding-top: calc(0.5rem + var(--saga-safe-top))!important;
+}
+
+.bottom-nav {
+  width: min(100%, calc(1100px + 2rem));
+  height: calc(var(--saga-nav-h) + var(--saga-safe-bottom));
+  padding: 0 var(--saga-safe-right) var(--saga-safe-bottom) var(--saga-safe-left);
+  background: var(--saga-bg-paper);
+  border-top: 1px solid var(--saga-border);
+}
+
+.app-shell.reading-mode .bottom-nav {
+  width: var(--saga-reader-w);
+}
+
+.reading-mode .source-footer {
+  padding-bottom: calc(0.375rem + var(--saga-safe-bottom));
+}
+
+.definition-sheet,
+.dictionary-sheet {
+  width: min(100%, 32.5rem);
+  padding-inline: max(clamp(1.25rem, 4vw, 1.75rem), var(--saga-safe-left)) max(clamp(1.25rem, 4vw, 1.75rem), var(--saga-safe-right));
+  padding-bottom: calc(var(--saga-space-lg) + var(--saga-safe-bottom));
+}
+
+.lore-lightbox {
+  padding: calc(4rem + var(--saga-safe-top)) max(0.875rem, var(--saga-safe-right)) calc(3.5rem + var(--saga-safe-bottom)) max(0.875rem, var(--saga-safe-left));
+}
+
+/* Fluid rem + clamp typography & 65ch reading measure (preserves original uniform body size) */
+.section-header h1 {
+  font-size: var(--saga-text-h1-section);
+  line-height: 1.15;
+  overflow-wrap: break-word;
+}
+
+.lore-editorial-v5 .reader-gesture .article-heading h1,
+.lore-editorial-v5 .reader-gesture .article-heading.article-heading-continued h1 {
+  font-size: var(--saga-text-h1);
+  line-height: 1.13;
+  color: var(--saga-ink-heading);
+}
+
+.lore-editorial-v5 .reader-gesture .article-heading h1.lore-headline-long,
+.lore-editorial-v5 .reader-gesture .article-heading.article-heading-continued h1.lore-headline-long {
+  font-size: var(--saga-text-h1-long);
+  line-height: 1.13;
+}
+
+.empty h2,
+.feed-empty h2,
+.reading-mode .story-end h2,
+.sources-sheet h2,
+.definition-sheet h2,
+.dictionary-sheet h2 {
+  font-size: var(--saga-text-h2);
+  overflow-wrap: break-word;
+}
+
+.lore-editorial-v5 .reader-gesture .article-text {
+  font-size: var(--saga-text-article);
+  line-height: 1.46;
+  max-width: var(--saga-measure);
+  color: var(--saga-ink-body);
+}
+
+.empty p,
+.feed-empty p,
+.section-header p,
+.definition-sheet p,
+.sources-sheet p {
+  font-size: var(--saga-text-body);
+  max-width: var(--saga-measure);
+}
+
+/* Responsive auto-fit grid on Words & centered layout on Review */
+.saved-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  gap: var(--saga-space-md);
+  margin-top: var(--saga-space-md);
+}
+
+.saved-item {
+  min-width: 0;
+  gap: var(--saga-space-sm);
+  padding: var(--saga-space-md) 0;
+  border-bottom: 1px solid var(--saga-border);
+}
+
+.saved-item > div {
+  min-width: 0;
+}
+
+.saved-item h2.saved-word-title {
+  font-size: var(--saga-text-h2);
+  overflow-wrap: anywhere;
+}
+
+.flashcard,
+.review-next {
+  max-width: min(100%, 32.5rem);
+  margin-inline: auto;
+  display: flex;
+}
+
+.review-next {
+  justify-content: center;
+}
+
+.flashcard {
+  height: auto;
+  min-height: clamp(16rem, 38dvh, 21rem);
+  background: var(--saga-bg-surface);
+}
+
+/* Responsive photography: max-width 100%, height auto, intrinsic aspect-ratio + object-fit contain */
+.lore-editorial-v5 .reader-gesture .article-media .photo-figure.lore-photo-figure {
+  max-width: 100%;
+}
+
+.lore-editorial-v5 .reader-gesture .article-media .lore-photo-figure img {
+  max-width: 100%;
+  height: auto;
+  aspect-ratio: var(--photo-aspect, auto);
+  object-fit: contain;
+}
+
+.lore-lightbox img {
+  flex: 0 1 auto;
+  max-width: 100%;
+  max-height: 76dvh;
+  width: auto;
+  height: auto;
+  aspect-ratio: var(--photo-aspect, auto);
+  object-fit: contain;
+}
+
+/* NYT-INSPIRED SITE-WIDE FONT LAYER — font-only overrides using --font-head, --font-body, --font-ui */
+.section-header h1,
+.lore-editorial-v5 .reader-gesture .article-heading h1,
+.lore-editorial-v5 .reader-gesture .article-heading.article-heading-continued h1,
+.lore-editorial-v5 .reader-gesture .article-heading h1.lore-headline-long,
+.lore-editorial-v5 .reader-gesture .article-heading.article-heading-continued h1.lore-headline-long,
+.empty h2,
+.feed-empty h2,
+.reading-mode .story-end h2,
+.saved-item h2,
+.saved-item h2.saved-word-title,
+.definition-sheet h2,
+.dictionary-sheet h2,
+.sources-sheet h2,
+.reading-mode .reader-gesture .brand,
+.flashcard strong.review-word {
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-variation-settings: normal;
+}
+
+.lore-editorial-v5 .reader-gesture .article-text,
+.dictionary-sheet .word-context,
+.dictionary-sheet .contextual-meaning,
+.word-context,
+.meaning-example,
+.flashcard strong.review-meaning,
+.empty p,
+.feed-empty p,
+.section-header p,
+.definition-sheet p,
+.sources-sheet p {
+  font-family: var(--font-body);
+}
+
+.lore-editorial-v5 .reader-gesture .article-text .word-token,
+.saved-item h2.saved-word-title .saved-word-open {
+  font-family: inherit;
+}
+
+.bottom-nav,
+.bottom-nav button,
+.primary,
+.outline,
+.story-end-credits,
+.story-end-cta,
+.story-end-next,
+.lore-editorial-v5 .reader-gesture .topbar.lore-reader-topbar,
+.lore-editorial-v5 .saga-toolbar-story,
+.lore-editorial-v5 .saga-news-level,
+.lore-editorial-v5 .saga-news-level select,
+.lore-editorial-v5 .saga-toolbar-audio,
+.lore-editorial-v5 .lore-article-heading .eyebrow,
+.lore-editorial-v5 .lore-deck,
+.lore-editorial-v5 .page-control,
+.lore-editorial-v5 .lore-page-count,
+.page-arrow,
+.hint,
+.count-line,
+.review-count,
+.sheet-header,
+.meaning-label,
+.meaning-option > span:last-child,
+.dictionary-sheet .no-contextual-meaning,
+.dictionary-sheet .lookup-details > p,
+.lore-editorial-v5 .reader-gesture .article-media .lore-photo-caption,
+.reading-mode .reader-gesture .photo-caption,
+.lore-lightbox-caption,
+.lore-lightbox-close,
+.lore-editorial-v5 .source-footer,
+.reading-mode .source-footer,
+.sources-sheet .source-credit-list,
+.sources-sheet .source-credit-list p,
+.flashcard span,
+.flashcard small {
+  font-family: var(--font-ui);
+}
+

@@ -5,6 +5,7 @@ import {planAnchoredWikiPages} from '../../src/lib/readerPagination.js'
 import {makeWikiStory} from '../wiki/catalog.mjs'
 import {WIKI_TOPICS} from '../wiki/discovery.mjs'
 import {auditWikiStory,auditWikiCatalog} from '../wiki/audit.mjs'
+import {photoSrcSet} from '../../src/lib/photoPresentation.js'
 
 const hash=text=>createHash('sha256').update(text).digest('hex')
 const words=s=>String(s||'').trim().split(/\s+/u).filter(Boolean).length
@@ -81,6 +82,86 @@ test('planAnchoredWikiPages keeps embedded photos anchored to their matching edi
  assert.ok(midIdx>=2)
  assert.ok(out[midIdx].text.startsWith('Third beat matches middle photo.'))
  assert.equal(out.filter(p=>p.image==='mid.jpg').length,1)
+})
+
+test('planAnchoredWikiPages packs consecutive text-only pages tightly and absorbs photo spillover without sparse orphan pages',()=>{
+ const makeSentence=(label,n)=>`${label} `+Array.from({length:n-1},(_,i)=>`word${i}`).join(' ')+'.'
+ const item={
+  contentType:'wiki',
+  pages:[
+   {image:'p1.jpg',caption:'Lead photo',imageProvenance:{credit:'A'},text:`${makeSentence('LeadOne',24)} ${makeSentence('LeadTwo',24)}`},
+   {image:'',caption:'',text:`${makeSentence('MidA',25)} ${makeSentence('MidB',25)}`},
+   {image:'',caption:'',text:`${makeSentence('MidC',25)} ${makeSentence('MidD',25)}`},
+   {image:'p2.jpg',caption:'Second photo',imageProvenance:{credit:'B'},text:`${makeSentence('SecOne',16)} ${makeSentence('SecTwo',16)}`},
+   {image:'',caption:'',text:`${makeSentence('TailA',20)} ${makeSentence('TailB',20)} ${makeSentence('TailC',20)}`},
+  ],
+ }
+ const out=planAnchoredWikiPages(item,({text,image})=>words(text)<=(image?44:130))
+ assert.equal(out[0].image,'p1.jpg')
+ assert.equal(words(out[0].text),24)
+ assert.equal(out[1].image,'')
+ assert.equal(words(out[1].text),124)
+ assert.equal(out[2].image,'p2.jpg')
+ assert.ok(out[2].text.startsWith('SecOne'))
+ assert.equal(out.length,4)
+ assert.ok(words(out[3].text)>=36)
+})
+
+test('planAnchoredWikiPages uses compact photo density to prevent sparse spillover orphan pages',()=>{
+ const makeSentence=(label,n)=>`${label} `+Array.from({length:n-1},(_,i)=>`word${i}`).join(' ')+'.'
+ const item={
+  contentType:'wiki',
+  pages:[
+   {image:'a.jpg',caption:'First photo',imageProvenance:{credit:'A'},text:`${makeSentence('Alpha',29)} ${makeSentence('Beta',13)}`},
+   {image:'b.jpg',caption:'Second photo',imageProvenance:{credit:'B'},text:`${makeSentence('Gamma',30)}`},
+  ],
+ }
+ const out=planAnchoredWikiPages(item,({text,image,density})=>{
+  if(!image) return words(text)<=100
+  return words(text)<=(density==='compact'?46:34)
+ })
+ assert.equal(out.length,2)
+ assert.equal(out[0].density,'compact')
+ assert.equal(words(out[0].text),42)
+ assert.equal(out[1].image,'b.jpg')
+ assert.equal(out[1].density,undefined)
+})
+
+test('planAnchoredWikiPages absorbs a short stranded text-only beat beneath the preceding photo via compact photo height',()=>{
+ const makeSentence=(label,n)=>`${label} `+Array.from({length:n-1},(_,i)=>`word${i}`).join(' ')+'.'
+ const item={
+  contentType:'wiki',
+  pages:[
+   {image:'a.jpg',caption:'First photo',imageProvenance:{credit:'A'},text:`${makeSentence('Alpha',40)}`},
+   {image:'',caption:'',text:`${makeSentence('Bridge',38)}`},
+   {image:'b.jpg',caption:'Second photo',imageProvenance:{credit:'B'},text:`${makeSentence('Gamma',40)}`},
+  ],
+ }
+ const out=planAnchoredWikiPages(item,({text,image,density})=>{
+  if(!image) return words(text)<=120
+  return words(text)<=(density==='compact'?82:50)
+ })
+ assert.equal(out.length,2)
+ assert.equal(out[0].image,'a.jpg')
+ assert.equal(out[0].density,'compact')
+ assert.equal(words(out[0].text),78)
+ assert.equal(out[1].image,'b.jpg')
+ assert.equal(out[1].density,undefined)
+})
+
+test('photoSrcSet builds valid responsive srcset for Wikimedia thumbnails, redirects, and direct URLs',()=>{
+ const thumb='https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f0/Wombat.jpg/960px-Wombat.jpg'
+ assert.equal(
+  photoSrcSet(thumb,960),
+  'https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f0/Wombat.jpg/500px-Wombat.jpg 500w, https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f0/Wombat.jpg/960px-Wombat.jpg 960w'
+ )
+ const redir='https://commons.wikimedia.org/wiki/Special:Redirect/file/Wombat.jpg?width=960'
+ assert.equal(
+  photoSrcSet(redir,960),
+  'https://commons.wikimedia.org/wiki/Special:Redirect/file/Wombat.jpg?width=500 500w, https://commons.wikimedia.org/wiki/Special:Redirect/file/Wombat.jpg?width=960 960w'
+ )
+ const direct='https://upload.wikimedia.org/wikipedia/commons/0/0d/Lawn_Tennis_Court_1874.jpg'
+ assert.equal(photoSrcSet(direct,800),`${direct} 800w`)
 })
 
 test('auditWikiStory passes grounded content & aligned photos and catches drift or mismatches',()=>{

@@ -112,3 +112,35 @@ export function photoCandidates(image) {
     })
   } catch { return [] }
 }
+
+// Build a valid responsive srcset for Wikimedia thumbnails/redirects and direct images
+// without inventing unverified thumbnail paths.
+export function photoSrcSet(url, intrinsicWidth) {
+  if (!url) return undefined
+  const width = Math.max(Math.round(Number(intrinsicWidth) || 0), 0)
+  try {
+    const parsed = new URL(url)
+    if (['upload.wikimedia.org', 'thumb.wikimedia.org'].includes(parsed.hostname)) {
+      const thumbMatch = parsed.pathname.match(/\/thumb\/.+\/(\d+)px-([^/]+)$/i)
+      if (thumbMatch) {
+        const origW = Number(thumbMatch[1]) || width || 960
+        const steps = [...new Set([500, origW].filter(w => w >= 320 && w <= origW))].sort((a, b) => a - b)
+        return steps.map(step => {
+          const next = new URL(parsed.href)
+          next.pathname = parsed.pathname.replace(/\/(\d+)px-([^/]+)$/i, `/${step}px-$2`)
+          return `${next.href} ${step}w`
+        }).join(', ')
+      }
+    }
+    if (parsed.hostname === 'commons.wikimedia.org' && /\/wiki\/Special:Redirect\/file\//i.test(parsed.pathname)) {
+      const origW = Number(parsed.searchParams.get('width')) || width || 960
+      const steps = [...new Set([500, origW].filter(w => w >= 320 && w <= origW))].sort((a, b) => a - b)
+      return steps.map(step => {
+        const next = new URL(parsed.href)
+        next.searchParams.set('width', String(step))
+        return `${next.href} ${step}w`
+      }).join(', ')
+    }
+  } catch { /* relative asset or non-URL */ }
+  return width ? `${url} ${width}w` : undefined
+}

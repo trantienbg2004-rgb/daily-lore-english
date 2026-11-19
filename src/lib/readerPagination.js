@@ -232,74 +232,184 @@ export function planAnchoredWikiPages(item, fits, {maxPages = 250} = {}) {
   const originals = item?._sourcePages || item?.pages || []
   const raw = trim(originals.map(p => p?.text || '').join(' '))
   if (!raw) return []
-  const pages = []
-  for (let s = 0; s < originals.length && pages.length < maxPages; s++) {
-    const sourcePage = originals[s] || {}
-    const pageRaw = trim(sourcePage.text)
+
+  // Group source pages into photo-anchored segments: every source page carrying
+  // an embedded photo starts a fresh segment so the photo stays locked to its
+  // exact editorial section, while consecutive text-only beats merge cleanly
+  // into full, balanced reading pages without leaving large blank gaps.
+  const segments = []
+  for (const rawPage of originals) {
+    const sourcePage = rawPage || {}
+    const text = trim(sourcePage.text)
     const image = sourcePage.image ? sourcePage : null
-    if (!pageRaw) {
-      if (image) {
-        pages.push({image: image.image, caption: image.caption || '', ...(image.imageProvenance ? {imageProvenance: image.imageProvenance} : {}), text: ''})
+    if (image || !segments.length) {
+      segments.push({image, anchorText: text, trailingTexts: []})
+    } else if (text) {
+      segments[segments.length - 1].trailingTexts.push(text)
+    }
+  }
+
+  const pages = []
+  const pushPage = (img, text, density = '') => {
+    pages.push({
+      image: img?.image || '',
+      caption: img?.caption || '',
+      ...(img?.imageProvenance ? {imageProvenance: img.imageProvenance} : {}),
+      ...(density ? {density} : {}),
+      text,
+    })
+  }
+
+  for (let segIdx = 0; segIdx < segments.length && pages.length < maxPages; segIdx++) {
+    const seg = segments[segIdx]
+    const anchorUnits = sentenceUnits(seg.anchorText)
+    const trailingUnits = sentenceUnits(seg.trailingTexts.join(' '))
+
+    if (!anchorUnits.length && !trailingUnits.length) {
+      if (seg.image) pushPage(seg.image, '')
+      continue
+    }
+
+    let textQueue = []
+    if (seg.image) {
+      const isCover = segIdx === 0 && pages.length === 0
+      const canFitPhoto = (text, density = '') => fits({text, cover: isCover, image: seg.image, density})
+      let photoText = ''
+      let photoDensity = ''
+      let usedAnchor = 0
+      let spilloverFragment = ''
+
+      for (const unit of anchorUnits) {
+        const next = photoText ? `${photoText} ${unit}` : unit
+        if (!canFitPhoto(next)) break
+        photoText = next
+        usedAnchor++
       }
-      continue
+
+      if (usedAnchor === 0 && anchorUnits.length) {
+        const [first, rest] = splitOversizedSentence(anchorUnits[0], text => canFitPhoto(text))
+        if (wordCount(first) >= 6 && canFitPhoto(first)) {
+          photoText = first
+          if (rest) spilloverFragment = rest
+          usedAnchor = 1
+        } else {
+          photoText = ''
+        }
+      } else if (usedAnchor < anchorUnits.length && wordCount(photoText) < 12) {
+        const following = anchorUnits[usedAnchor]
+        const join = part => photoText ? `${photoText} ${part}` : part
+        const [first, rest] = splitOversizedSentence(following, part => canFitPhoto(join(part)))
+        if (wordCount(first) >= 8 && rest && canFitPhoto(join(first))) {
+          photoText = join(first)
+          spilloverFragment = rest
+          usedAnchor++
+        }
+      }
+
+      let remainingAnchor = anchorUnits.slice(usedAnchor)
+      let remainingTrailing = trailingUnits
+
+      // If a photo section overflows by only a small tail (< 28 words) and there are
+      // no trailing text-only beats to absorb it, try compact photo density so the
+      // entire section stays cleanly beneath its photo instead of stranding an orphan page.
+      if ((spilloverFragment || remainingAnchor.length) && !remainingTrailing.length) {
+        const spilloverText = [spilloverFragment, ...remainingAnchor].filter(Boolean).join(' ')
+        if (wordCount(spilloverText) < 28 && canFitPhoto(seg.anchorText, 'compact')) {
+          photoText = seg.anchorText
+          photoDensity = 'compact'
+          spilloverFragment = ''
+          remainingAnchor = []
+        }
+      }
+
+      // If the photo page fits all of its own section AND still has room beneath the
+      // photo, absorb trailing text-only sentences without changing font size:
+      //  (a) all trailing sentences fit under standard photo height,
+      //  (b) a short stranded trailing run (<= 48 words) fits with slightly trimmer
+      //      photo height ('compact') to avoid a half-empty text-only page, or
+      //  (c) pull trailing sentences beneath the photo while keeping the remaining
+      //      trailing stream substantial (>= 42 words) or collapsing it into fewer pages.
+      if (!spilloverFragment && !remainingAnchor.length && remainingTrailing.length) {
+        const totalTrailingWords = wordCount(remainingTrailing.join(' '))
+        const allCombined = photoText
+          ? `${photoText} ${remainingTrailing.join(' ')}`
+          : remainingTrailing.join(' ')
+        if (canFitPhoto(allCombined)) {
+          photoText = allCombined
+          remainingTrailing = []
+        } else if (totalTrailingWords <= 48 && canFitPhoto(allCombined, 'compact')) {
+          photoText = allCombined
+          photoDensity = 'compact'
+          remainingTrailing = []
+        } else {
+          let pulled = 0
+          let candidateText = photoText
+          let pulledWords = 0
+          const canFitTextRun = text => fits({text, cover: false, image: null})
+          const fitsOneTextPage = units => units.length > 0 && canFitTextRun(units.join(' '))
+          const alreadySinglePage = fitsOneTextPage(remainingTrailing)
+          while (pulled < remainingTrailing.length) {
+            const unit = remainingTrailing[pulled]
+            const next = candidateText ? `${candidateText} ${unit}` : unit
+            const unitWords = wordCount(unit)
+            const leftAfter = totalTrailingWords - (pulledWords + unitWords)
+            if (!canFitPhoto(next)) break
+            if (leftAfter > 0 && leftAfter < 42) break
+            candidateText = next
+            pulledWords += unitWords
+            pulled++
+            const restUnits = remainingTrailing.slice(pulled)
+            if (!alreadySinglePage && fitsOneTextPage(restUnits)) break
+            if (alreadySinglePage && wordCount(candidateText) >= 58 && leftAfter >= 48) break
+          }
+          if (pulled > 0) {
+            photoText = candidateText
+            remainingTrailing = remainingTrailing.slice(pulled)
+          }
+        }
+      }
+
+      pushPage(seg.image, photoText, photoDensity)
+      textQueue = [
+        ...(spilloverFragment ? [spilloverFragment] : []),
+        ...remainingAnchor,
+        ...remainingTrailing,
+      ]
+    } else {
+      textQueue = [...anchorUnits, ...trailingUnits]
     }
-    const isCover = s === 0 && pages.length === 0
-    if (fits({text: pageRaw, cover: isCover, image})) {
-      pages.push({image: image?.image || '', caption: image?.caption || '', ...(image?.imageProvenance ? {imageProvenance: image.imageProvenance} : {}), text: pageRaw})
-      continue
-    }
-    const units = sentenceUnits(pageRaw)
-    let index = 0, fragment = '', sliceIndex = 0
-    while ((index < units.length || fragment) && pages.length < maxPages) {
-      const sliceImage = sliceIndex === 0 ? image : null
-      const sliceCover = s === 0 && pages.length === 0
-      const canFit = text => fits({text, cover: sliceCover, image: sliceImage})
+
+    // Pack the entire text-only queue tightly into the minimum number of pages
+    // that genuinely fit the viewport (rebalanceTextPages then evens them out).
+    let index = 0
+    let fragment = ''
+    while ((index < textQueue.length || fragment) && pages.length < maxPages) {
+      const isCover = segIdx === 0 && pages.length === 0
+      const canFitText = text => fits({text, cover: isCover, image: null})
       let text = ''
-      const queue = fragment ? [fragment, ...units.slice(index + 1)] : units.slice(index)
+      const queue = fragment ? [fragment, ...textQueue.slice(index + 1)] : textQueue.slice(index)
       let count = 0
       for (const candidate of queue) {
         const next = text ? `${text} ${candidate}` : candidate
-        if (!canFit(next)) break
-        text = next; count++
+        if (!canFitText(next)) break
+        text = next
+        count++
       }
       if (count) {
-        if (sliceCover && sliceImage && count < queue.length && wordCount(text) < 12) {
-          const following = queue[count]
-          const join = part => text ? `${text} ${part}` : part
-          const [first, rest] = splitOversizedSentence(following, part => canFit(join(part)))
-          if (wordCount(first) >= 8 && rest && canFit(join(first))) {
-            text = join(first)
-            index += count
-            fragment = rest
-            pages.push({image: sliceImage?.image || '', caption: sliceImage?.caption || '', ...(sliceImage?.imageProvenance ? {imageProvenance: sliceImage.imageProvenance} : {}), text})
-            sliceIndex++
-            continue
-          }
-        }
         if (fragment) { fragment = ''; index += count }
         else index += count
-      } else if (sliceImage) {
-        const current = fragment || units[index]
-        const [first, rest] = splitOversizedSentence(current, canFit)
-        if (wordCount(first) >= 6 && canFit(first)) {
-          text = first
-          if (rest) fragment = rest
-          else { fragment = ''; index++ }
-        } else {
-          text = ''
-        }
       } else {
-        const current = fragment || units[index]
-        const [first, rest] = splitOversizedSentence(current, canFit)
+        const current = fragment || textQueue[index]
+        const [first, rest] = splitOversizedSentence(current, canFitText)
         text = first
         if (rest) fragment = rest
         else { fragment = ''; index++ }
       }
-      pages.push({image: sliceImage?.image || '', caption: sliceImage?.caption || '', ...(sliceImage?.imageProvenance ? {imageProvenance: sliceImage.imageProvenance} : {}), text})
-      sliceIndex++
+      pushPage(null, text)
     }
-    if (index < units.length || fragment) throw Error('Reading article exceeds page safety limit; source preserved')
+    if (index < textQueue.length || fragment) throw Error('Reading article exceeds page safety limit; source preserved')
   }
+
   if (trim(pages.map(p => p.text).join(' ')) !== raw) throw Error('Paginator text-integrity check failed')
   return pages
 }
