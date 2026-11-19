@@ -5,7 +5,7 @@
   "status": "RETRY_LATER",
   "revisionId": 1378616216,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378616216",
-  "reason": "Gemini network unavailable; circuit open",
+  "reason": "Free API call, daily or token budget exhausted",
   "rights": [
     {
       "status": "REVIEW",
@@ -506,7 +506,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378616216"
     }
   ],
-  "updatedAt": "2026-11-19T18:57:43.317Z",
+  "updatedAt": "2026-11-19T21:02:04.014Z",
   "draft": {
     "variants": {
       "A1-A2": {
