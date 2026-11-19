@@ -6655,7 +6655,7 @@
       "status": "RETRY_LATER",
       "reason": "Free API call, daily or token budget exhausted",
       "revisionId": 1378616216,
-      "checkedAt": "2026-11-19T21:26:05.072Z"
+      "checkedAt": "2026-11-19T21:51:04.098Z"
     },
     "174410": {
       "status": "RETRY_LATER",
@@ -6706,10 +6706,10 @@
       "checkedAt": "2026-10-21T03:11:54.175Z"
     },
     "247849": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "RETRY_LATER",
+      "reason": "Gemini circuit open",
+      "revisionId": 1360644706,
+      "checkedAt": "2026-11-19T21:51:06.117Z"
     },
     "254061": {
       "status": "RETRY_LATER",
@@ -7024,10 +7024,10 @@
       "checkedAt": "2026-11-19T07:06:45.739Z"
     },
     "663810": {
-      "status": "PENDING",
-      "reason": "queued",
+      "status": "REJECTED",
+      "reason": "insufficient-source-text-or-embedded-images",
       "revisionId": 1384833664,
-      "checkedAt": null
+      "checkedAt": "2026-11-19T21:51:13.707Z"
     },
     "666100": {
       "status": "RETRY_LATER",
@@ -7252,10 +7252,10 @@
       "checkedAt": null
     },
     "1436168": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "REJECTED",
+      "reason": "insufficient-source-text-or-embedded-images",
+      "revisionId": 1332565919,
+      "checkedAt": "2026-11-19T21:51:12.396Z"
     },
     "1442078": {
       "status": "PENDING",
@@ -7732,10 +7732,10 @@
       "checkedAt": "2026-11-19T10:12:46.727Z"
     },
     "5021176": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "REJECTED",
+      "reason": "insufficient-source-text-or-embedded-images",
+      "revisionId": 1380069602,
+      "checkedAt": "2026-11-19T21:51:21.170Z"
     },
     "5121186": {
       "status": "EVIDENCE_READY",
@@ -8182,10 +8182,10 @@
       "checkedAt": "2026-11-19T18:32:31.833Z"
     },
     "16658440": {
-      "status": "PENDING",
-      "reason": "queued",
+      "status": "RETRY_LATER",
+      "reason": "Gemini circuit open",
       "revisionId": 1360713474,
-      "checkedAt": null
+      "checkedAt": "2026-11-19T21:51:09.034Z"
     },
     "16768875": {
       "status": "RETRY_LATER",
@@ -8494,10 +8494,10 @@
       "checkedAt": "2026-11-19T14:22:33.084Z"
     },
     "26740386": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "RETRY_LATER",
+      "reason": "Gemini circuit open",
+      "revisionId": 1358677755,
+      "checkedAt": "2026-11-19T21:51:16.610Z"
     },
     "27301862": {
       "status": "REJECTED",
@@ -9754,10 +9754,10 @@
       "checkedAt": null
     },
     "71204259": {
-      "status": "PENDING",
-      "reason": "queued",
+      "status": "REJECTED",
+      "reason": "insufficient-source-text-or-embedded-images",
       "revisionId": 1378984097,
-      "checkedAt": null
+      "checkedAt": "2026-11-19T21:51:10.925Z"
     },
     "71397452": {
       "status": "PENDING",
@@ -9766,10 +9766,10 @@
       "checkedAt": null
     },
     "71498816": {
-      "status": "PENDING",
-      "reason": "queued",
-      "revisionId": null,
-      "checkedAt": null
+      "status": "RETRY_LATER",
+      "reason": "Gemini circuit open",
+      "revisionId": 1385267258,
+      "checkedAt": "2026-11-19T21:51:24.043Z"
     },
     "71852937": {
       "status": "RETRY_LATER",
@@ -10204,10 +10204,10 @@
       "checkedAt": "2026-11-19T13:56:09.114Z"
     },
     "81094637": {
-      "status": "PENDING",
-      "reason": "queued",
+      "status": "RETRY_LATER",
+      "reason": "Gemini circuit open",
       "revisionId": 1359335016,
-      "checkedAt": null
+      "checkedAt": "2026-11-19T21:51:19.577Z"
     },
     "81117122": {
       "status": "NEEDS_REVIEW",
@@ -10378,7 +10378,7 @@
       "checkedAt": null
     }
   },
-  "updatedAt": "2026-11-19T21:26:19.561Z",
+  "updatedAt": "2026-11-19T21:51:24.047Z",
   "dailyUsage": {
     "day": "2026-11-19",
     "calls": 100,
