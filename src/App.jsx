@@ -9,7 +9,7 @@ import { sanitizeReadingArticle } from './lib/articleCleanup.js'
 import { refreshCatalog, refillCatalog, REFRESH_INTERVAL_MS } from './lib/continuousReader.js'
 import { QUEUE_TARGET, queuedUnread, lowOnStories, refreshDue } from './lib/loreStockPolicy.js'
 import { createEdgeNavigation } from './lib/edgeNavigation.js'
-import { photoLabel, photoSourceLink, photoSrcSet } from './lib/photoPresentation.js'
+import { photoCaption, photoLabel, photoSourceLink, photoSrcSet } from './lib/photoPresentation.js'
 import { resolvePhoto, photoResult } from './lib/photoLoad.js'
 import { displayHeadline, readerSection } from './lib/editorial.js'
 import { loadRecommendationProfile, rememberReading, rankRecommendations } from './lib/recommendationEngine.js'
@@ -43,9 +43,10 @@ function fitPhoto(img) {
 // V20: NEVER mount an <img> until pixels have loaded. A broken thumbnail
 // cannot leave a native broken-image icon or steal reading space.
 // DAILY LORE READ V5: original-photo fit + accessible full-screen preview.
-function ArticlePhoto({ image, label, fullCaption, onBroken, onReady }) {
+function ArticlePhoto({ image, label: shortLabel, fullCaption, onBroken, onReady }) {
   const [asset, setAsset] = useState(() => photoResult(image))
   const [zoomed, setZoomed] = useState(false)
+  const label = photoCaption({ image, caption: fullCaption }) || shortLabel
   useEffect(() => {
     let active = true
     const known = photoResult(image)
@@ -976,7 +977,7 @@ function App() {
           onReady={() => setPhotoVersion(n => n + 1)} />
       </div>
       <section className={'reading-card ' + (!itemPage.image || brokenImages.has(itemPage.image) || photoResult(itemPage.image)?.failed ? 'reading-card-no-photo' : 'reading-card-with-photo')}><div className="reading-topline" aria-hidden="true" />
-        <p className="article-text">{tokens.map((token, i) => token.kind === 'text' ? token.text : <button key={i} type="button" disabled={!interactive} className={'word-token ' + (token.kind === 'glossary' ? 'glossary-token ' : '') + (words.some(w => w.word === token.lookupKey) ? 'known' : '')} onClick={event => onWordClick(event, token.lookupKey, token.entry, token.text)}>{token.text}</button>)}</p>
+        <p className="article-text">{tokens.map((token, i) => token.kind === 'text' ? token.text : <button key={i} type="button" disabled={!interactive} className={'word-token ' + (token.kind === 'glossary' ? 'glossary-token ' : token.kind === 'phrase' ? 'phrase-token ' : '') + (words.some(w => w.word === token.lookupKey) ? 'known' : '')} onClick={event => onWordClick(event, token.lookupKey, token.entry, token.text)}>{token.text}</button>)}</p>
       </section>
       </>}
       </div>
@@ -992,6 +993,7 @@ function App() {
         })()}</div>
         <button type="button" className="page-arrow page-arrow-next" aria-label="Next page" title="Next page (→)" disabled={!interactive || closing} onClick={() => changePage(1)}><Icon name="right" size={17}/></button>
         </div>
+        {!closing && pageNumber === item.pages.length - 1 && <div className="saga-final-page-hint">Swipe up for next story</div>}
       </div>
     </div>
   }

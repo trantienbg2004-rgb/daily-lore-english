@@ -11,7 +11,23 @@ function decodedFileName(source) {
   } catch { return '' }
 }
 
-export function photoLabel(page) {
+const ABBREVIATION_END = /(?:^|[\s(])(?:St|Ste|Dr|Mr|Mrs|Ms|Prof|Rev|Gen|Col|Maj|Capt|Sgt|Lt|Jr|Sr|Mt|No|Fig|Vol|Eq|Dept|Gov|Pres|Sen|Rep|ca?|e\.g|i\.e|vs|etc|al|pp?|U\.S|U\.K|A\.D|B\.C|[A-Z])$/i
+
+function firstCaptionSentence(text) {
+  const input = String(text || '').trim()
+  if (!input) return ''
+  for (let i = 0; i < input.length; i++) {
+    const ch = input[i]
+    if (ch !== '.' && ch !== '!' && ch !== '?') continue
+    const next = input[i + 1]
+    if (next && !/\s/.test(next)) continue
+    if (ch === '.' && ABBREVIATION_END.test(input.slice(0, i))) continue
+    return input.slice(0, i + 1)
+  }
+  return input
+}
+
+function cleanPhotoCaption(page) {
   if (!page?.image) return ''
   const original = String(page.caption || '').trim()
   const first = original.split(/\s[·|]\s/)[0]
@@ -27,7 +43,7 @@ export function photoLabel(page) {
     .replace(/^(?:hypothetical\s+)?reconstruction of (?:the )?/iu, '')
     .replace(/^(?:a photograph|a photo|photograph|photo|image) of\s+/iu, '')
   const pictured = imageSource.match(/\b(?:pictured|shown|depicted)\s+(?:are|is|here are|here is)\s+(.+?)(?=[.!?](?:\s|$))/i)
-  const imageSentence = pictured?.[1] || imageSource.match(/^[^.!?]+[.!?]?/u)?.[0] || imageSource
+  const imageSentence = pictured?.[1] || firstCaptionSentence(imageSource)
   const description = imageSentence
     .replace(/^(?:Illustrative image|Illustrative photo|Illustration):\s*/i, '')
     .replace(/^from (?:the )?(?:documentary|film|video) [^.]+[.!?]\s*/iu, '')
@@ -49,7 +65,16 @@ export function photoLabel(page) {
     .replace(/^(?:a|an|the)\s+(?=[a-z])/iu, '')
     .replace(/[.!?]+$/u, '')
   if (!concise) return 'Article photograph'
-  const words = concise[0].toUpperCase() + concise.slice(1)
+  return concise[0].toUpperCase() + concise.slice(1)
+}
+
+export function photoCaption(page) {
+  return cleanPhotoCaption(page)
+}
+
+export function photoLabel(page) {
+  const words = cleanPhotoCaption(page)
+  if (!words || words === 'Article photograph') return words
   if (words.length <= 72) return words
   const boundary = words.lastIndexOf(' ', 69)
   return `${words.slice(0, boundary > 42 ? boundary : 69).trimEnd()}…`

@@ -51,6 +51,7 @@ const PAGE_SCHEMA={
  type:'object',
  properties:{
   text:{type:'string'},
+  caption:{type:'string'},
   evidenceIds:{type:'array',items:{type:'string'},minItems:1}
  },
  required:['text','evidenceIds']
@@ -371,13 +372,15 @@ STRICT EDITORIAL & QUALITY RULES:
    - A1-A2: Simple everyday vocabulary and short clear sentences averaging 8-14 words per sentence.
    - B1-B2: Smooth journalistic storytelling with compound and relative clauses averaging 14-20 words per sentence.
    - C1-C2: Analytical, nuanced editorial tone with sophisticated academic/journalistic vocabulary averaging 18-26 words per sentence.
-4. FACTUAL GROUNDING:
+4. IMAGE CAPTIONS (ULTRA-CONCISE SINGLE LINE):
+   - Every page "caption" MUST be ultra-concise: 5 to 8 words (max ~45 characters) describing the page's visual subject so it fits cleanly on 1 single line even on 360px mobile screens without needing ellipsis.
+5. FACTUAL GROUNDING:
    - Cite one or more valid passage IDs in "evidenceIds" (e.g. ["P1","P2"]) on every page.
    - Never invent people, dates, numbers, quotes, or facts absent from the passages. Preserve uncertainty when the source notes debate.
-5. GLOSSARY:
+6. GLOSSARY:
    - Include a concise "glossary" array (12-18 items per level) of helpful words, phrasal verbs, or collocations appearing in that level's text, with fields: surface, lemma, type ("word"|"phrasal_verb"|"collocation"|"idiom"), pos ("noun"|"verb"|"adj"|"adv"|"prep"|"phrase"), ipa, vi_context (short natural Vietnamese meaning for that sentence), en_def (simple Cambridge-style English definition <= 15 words), cefr ("A1"|"A2"|"B1"|"B2"|"C1"|"C2").
-6. Return pure JSON matching:
-{"variants":{"A1-A2":{"headline":"...","pages":[{"text":"...","evidenceIds":["P1"]}],"glossary":[...]},"B1-B2":{...},"C1-C2":{...}}}
+7. Return pure JSON matching:
+{"variants":{"A1-A2":{"headline":"...","pages":[{"text":"...","caption":"...","evidenceIds":["P1"]}],"glossary":[...]},"B1-B2":{...},"C1-C2":{...}}}
 
 SOURCE PASSAGES:
 ${passages}`
@@ -394,6 +397,7 @@ ${issues}
 REMINDERS:
 - Magazine-style headline of 5-11 words per level (distinct across levels, NEVER identical to "${source.sourceTitle}").
 - 5 to 6 swipeable pages per level (strictly within 4-7 pages): Page 1 = vivid hook (42-60 words, NO dry "${source.sourceTitle} is a..." opening), middle pages = 1 clear idea each (55-105 words), final page = memorable takeaway (55-100 words).
+- Every page "caption" must be ultra-concise (5-8 words, max ~45 characters) so it fits cleanly on 1 single line on 360px mobile screens without ellipsis.
 - Clear CEFR progression: A1-A2 (8-14 words/sentence, simple words) < B1-B2 (14-20 words/sentence) < C1-C2 (18-26 words/sentence, analytical tone).
 - Keep valid evidenceIds from the source passages on every page.
 
@@ -503,9 +507,11 @@ export function normalizeDraftForCatalog(rawDraft,{source,evidence}){
 
   const pages=srcVar.pages.slice(0,7).map(page=>{
    const text=String(page?.text||'').replace(/\s+/g,' ').trim()
+   const caption=String(page?.caption||'').replace(/\s+/g,' ').trim()
    const cleanedIds=(Array.isArray(page?.evidenceIds)?page.evidenceIds:[]).filter(id=>validIds.has(id))
    return {
     text:text&&!/[.!?]["”']?$/.test(text)?`${text}.`:text,
+    ...(caption?{caption}:{}),
     evidenceIds:cleanedIds.length?cleanedIds:bestEvidenceFor(text)
    }
   })
