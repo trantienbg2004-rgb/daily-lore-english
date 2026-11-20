@@ -5,7 +5,7 @@
   "status": "RETRY_LATER",
   "revisionId": 1378616216,
   "sourceRevisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378616216",
-  "reason": "Free API call, daily or token budget exhausted",
+  "reason": "Gemini HTTP 429; circuit open",
   "rights": [
     {
       "status": "REVIEW",
@@ -506,7 +506,7 @@
       "revisionUrl": "https://en.wikipedia.org/w/index.php?oldid=1378616216"
     }
   ],
-  "updatedAt": "2026-11-19T23:47:13.379Z",
+  "updatedAt": "2026-11-20T00:38:33.472Z",
   "draft": {
     "variants": {
       "A1-A2": {
@@ -622,15 +622,14 @@
             ]
           },
           {
-            "text": "The integration of scientific management and assembly-line manufacturing dramatically expanded production capacities, yielding vast supplies of affordable consumer items and establishing department stores as epicenters of urban leisure. Following World War II, broadcast television accelerated commercial culture by delivering lifelike advertisements to household audiences. In 1955, Ford executive John Bugas popularized the term \"consumerism\" to frame consumer sovereignty as the governing principle of the American economy, countering Marxist critiques of capitalist exploitation.",
+            "text": "During the industrial era, department stores emerged, offering unprecedented varieties of goods in one place and turning shopping into a popular leisure activity. Later, scientific management and assembly-line manufacturing dramatically increased productivity and lowered commodity costs. By the late 1940s, television allowed advertisers to reach consumers at home with lifelike images and sound, accelerating commercial sales. In 1955, Ford executive John Bugas coined the term \"consumerism\" to describe consumer sovereignty in the American economy, opposing Marxist critiques of capitalism.",
             "evidenceIds": [
               "P3",
               "P4",
               "P6",
               "P8",
               "P9",
-              "P23",
-              "P28"
+              "P23"
             ]
           },
           {
@@ -658,11 +657,11 @@
       }
     }
   },
-  "repairAttempts": 1,
+  "repairAttempts": 2,
   "lastUsage": {
-    "input": 5905,
-    "output": 133,
-    "total": 8616
+    "input": 5939,
+    "output": 146,
+    "total": 8720
   },
   "validation": null
 }
