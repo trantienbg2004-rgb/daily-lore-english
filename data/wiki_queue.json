@@ -1,71 +1,82 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-20T08:49:35.085Z",
+  "updatedAt": "2026-11-20T11:20:20.691Z",
   "total": 1600,
   "counts": {
-    "pending": 1600,
-    "published": 0,
-    "skipped_no_image": 0
+    "pending": 1584,
+    "published": 15,
+    "skipped_no_image": 0,
+    "skipped_quality": 1
   },
   "byTopic": {
     "Politics": {
-      "pending": 160,
-      "published": 0,
+      "pending": 158,
+      "published": 2,
       "skipped_no_image": 0,
+      "skipped_quality": 0,
       "total": 160
     },
     "Economy": {
-      "pending": 160,
-      "published": 0,
+      "pending": 158,
+      "published": 1,
       "skipped_no_image": 0,
+      "skipped_quality": 1,
       "total": 160
     },
     "Conflict & Security": {
-      "pending": 160,
-      "published": 0,
+      "pending": 158,
+      "published": 2,
       "skipped_no_image": 0,
+      "skipped_quality": 0,
       "total": 160
     },
     "Society": {
-      "pending": 160,
-      "published": 0,
+      "pending": 158,
+      "published": 2,
       "skipped_no_image": 0,
+      "skipped_quality": 0,
       "total": 160
     },
     "Culture": {
-      "pending": 160,
-      "published": 0,
+      "pending": 159,
+      "published": 1,
       "skipped_no_image": 0,
+      "skipped_quality": 0,
       "total": 160
     },
     "Science & Technology": {
-      "pending": 160,
-      "published": 0,
+      "pending": 159,
+      "published": 1,
       "skipped_no_image": 0,
+      "skipped_quality": 0,
       "total": 160
     },
     "Environment": {
-      "pending": 160,
-      "published": 0,
+      "pending": 158,
+      "published": 2,
       "skipped_no_image": 0,
+      "skipped_quality": 0,
       "total": 160
     },
     "Health": {
-      "pending": 160,
-      "published": 0,
+      "pending": 159,
+      "published": 1,
       "skipped_no_image": 0,
+      "skipped_quality": 0,
       "total": 160
     },
     "History & Geography": {
-      "pending": 160,
-      "published": 0,
+      "pending": 159,
+      "published": 1,
       "skipped_no_image": 0,
+      "skipped_quality": 0,
       "total": 160
     },
     "Sports": {
-      "pending": 160,
-      "published": 0,
+      "pending": 158,
+      "published": 2,
       "skipped_no_image": 0,
+      "skipped_quality": 0,
       "total": 160
     }
   },
@@ -126,8 +137,9 @@
       "priority": 1,
       "sourceUrl": "https://en.wikipedia.org/wiki/Magna_Carta",
       "hasLeadImage": true,
-      "status": "pending",
-      "addedAt": "2026-11-20T08:49:35.085Z"
+      "status": "published",
+      "addedAt": "2026-11-20T08:49:35.085Z",
+      "publishedAt": "2026-11-20T11:12:57.127Z"
     },
     {
       "title": "United States Declaration of Independence",
@@ -137,8 +149,9 @@
       "priority": 1,
       "sourceUrl": "https://en.wikipedia.org/wiki/United_States_Declaration_of_Independence",
       "hasLeadImage": true,
-      "status": "pending",
-      "addedAt": "2026-11-20T08:49:35.085Z"
+      "status": "published",
+      "addedAt": "2026-11-20T08:49:35.085Z",
+      "publishedAt": "2026-11-20T11:20:20.601Z"
     },
     {
       "title": "Political party",
@@ -1890,8 +1903,13 @@
       "priority": 1,
       "sourceUrl": "https://en.wikipedia.org/wiki/Welding",
       "hasLeadImage": true,
-      "status": "pending",
-      "addedAt": "2026-11-20T08:49:35.085Z"
+      "status": "skipped_quality",
+      "addedAt": "2026-11-20T08:49:35.085Z",
+      "qualityErrors": [
+        "A1-A2 page 4: word count 44 outside mobile swipe bounds (45-120 words)",
+        "A1-A2 page 5: word count 44 outside mobile swipe bounds (45-120 words)"
+      ],
+      "checkedAt": "2026-11-20T11:11:14.719Z"
     },
     {
       "title": "Nuclear power",
@@ -1901,8 +1919,9 @@
       "priority": 1,
       "sourceUrl": "https://en.wikipedia.org/wiki/Nuclear_power",
       "hasLeadImage": true,
-      "status": "pending",
-      "addedAt": "2026-11-20T08:49:35.085Z"
+      "status": "published",
+      "addedAt": "2026-11-20T08:49:35.085Z",
+      "publishedAt": "2026-11-20T11:18:23.019Z"
     },
     {
       "title": "Agriculture",
@@ -3666,8 +3685,9 @@
       "priority": 1,
       "sourceUrl": "https://en.wikipedia.org/wiki/Balfour_Declaration",
       "hasLeadImage": true,
-      "status": "pending",
-      "addedAt": "2026-11-20T08:49:35.085Z"
+      "status": "published",
+      "addedAt": "2026-11-20T08:49:35.085Z",
+      "publishedAt": "2026-11-20T11:09:47.247Z"
     },
     {
       "title": "Castle",
@@ -3677,8 +3697,9 @@
       "priority": 1,
       "sourceUrl": "https://en.wikipedia.org/wiki/Castle",
       "hasLeadImage": true,
-      "status": "pending",
-      "addedAt": "2026-11-20T08:49:35.085Z"
+      "status": "published",
+      "addedAt": "2026-11-20T08:49:35.085Z",
+      "publishedAt": "2026-11-20T11:17:06.438Z"
     },
     {
       "title": "Battleship",
@@ -5407,8 +5428,9 @@
       "priority": 1,
       "sourceUrl": "https://en.wikipedia.org/wiki/Mind",
       "hasLeadImage": true,
-      "status": "pending",
-      "addedAt": "2026-11-20T08:49:35.085Z"
+      "status": "published",
+      "addedAt": "2026-11-20T08:49:35.085Z",
+      "publishedAt": "2026-11-20T11:09:04.613Z"
     },
     {
       "title": "Communication",
@@ -5418,8 +5440,9 @@
       "priority": 1,
       "sourceUrl": "https://en.wikipedia.org/wiki/Communication",
       "hasLeadImage": true,
-      "status": "pending",
-      "addedAt": "2026-11-20T08:49:35.085Z"
+      "status": "published",
+      "addedAt": "2026-11-20T08:49:35.085Z",
+      "publishedAt": "2026-11-20T11:16:23.187Z"
     },
     {
       "title": "Well-being",
@@ -7217,8 +7240,9 @@
       "priority": 1,
       "sourceUrl": "https://en.wikipedia.org/wiki/The_Simpsons",
       "hasLeadImage": true,
-      "status": "pending",
-      "addedAt": "2026-11-20T08:49:35.085Z"
+      "status": "published",
+      "addedAt": "2026-11-20T08:49:35.085Z",
+      "publishedAt": "2026-11-20T11:17:29.682Z"
     },
     {
       "title": "Philosophy",
@@ -8936,8 +8960,9 @@
       "priority": 1,
       "sourceUrl": "https://en.wikipedia.org/wiki/Moon",
       "hasLeadImage": true,
-      "status": "pending",
-      "addedAt": "2026-11-20T08:49:35.085Z"
+      "status": "published",
+      "addedAt": "2026-11-20T08:49:35.085Z",
+      "publishedAt": "2026-11-20T11:13:22.239Z"
     },
     {
       "title": "Periodic table",
@@ -10663,8 +10688,9 @@
       "priority": 1,
       "sourceUrl": "https://en.wikipedia.org/wiki/Climate_change",
       "hasLeadImage": true,
-      "status": "pending",
-      "addedAt": "2026-11-20T08:49:35.085Z"
+      "status": "published",
+      "addedAt": "2026-11-20T08:49:35.085Z",
+      "publishedAt": "2026-11-20T11:11:59.082Z"
     },
     {
       "title": "Dinosaur",
@@ -10674,8 +10700,9 @@
       "priority": 1,
       "sourceUrl": "https://en.wikipedia.org/wiki/Dinosaur",
       "hasLeadImage": true,
-      "status": "pending",
-      "addedAt": "2026-11-20T08:49:35.085Z"
+      "status": "published",
+      "addedAt": "2026-11-20T08:49:35.085Z",
+      "publishedAt": "2026-11-20T11:18:59.988Z"
     },
     {
       "title": "Tyrannosaurus",
@@ -12435,8 +12462,9 @@
       "priority": 1,
       "sourceUrl": "https://en.wikipedia.org/wiki/Amphetamine",
       "hasLeadImage": true,
-      "status": "pending",
-      "addedAt": "2026-11-20T08:49:35.085Z"
+      "status": "published",
+      "addedAt": "2026-11-20T08:49:35.085Z",
+      "publishedAt": "2026-11-20T11:15:19.855Z"
     },
     {
       "title": "Evolution",
@@ -14208,8 +14236,9 @@
       "priority": 1,
       "sourceUrl": "https://en.wikipedia.org/wiki/India",
       "hasLeadImage": true,
-      "status": "pending",
-      "addedAt": "2026-11-20T08:49:35.085Z"
+      "status": "published",
+      "addedAt": "2026-11-20T08:49:35.085Z",
+      "publishedAt": "2026-11-20T11:16:04.264Z"
     },
     {
       "title": "Minneapolis",
@@ -16138,8 +16167,9 @@
       "priority": 1,
       "sourceUrl": "https://en.wikipedia.org/wiki/Underwater_diving",
       "hasLeadImage": true,
-      "status": "pending",
-      "addedAt": "2026-11-20T08:49:35.085Z"
+      "status": "published",
+      "addedAt": "2026-11-20T08:49:35.085Z",
+      "publishedAt": "2026-11-20T11:12:35.542Z"
     },
     {
       "title": "Baseball",
@@ -16149,8 +16179,9 @@
       "priority": 1,
       "sourceUrl": "https://en.wikipedia.org/wiki/Baseball",
       "hasLeadImage": true,
-      "status": "pending",
-      "addedAt": "2026-11-20T08:49:35.085Z"
+      "status": "published",
+      "addedAt": "2026-11-20T08:49:35.085Z",
+      "publishedAt": "2026-11-20T11:19:38.678Z"
     },
     {
       "title": "Snooker",
