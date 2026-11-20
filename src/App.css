@@ -1230,11 +1230,109 @@
 }
 
 .lore-editorial-v5 .saga-toolbar-story {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   font-size: 11px;
   font-weight: 600;
-  letter-spacing: 0.09em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: #6e6963;
+}
+
+.lore-editorial-v5 .saga-level-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+  flex-shrink: 0;
+}
+
+.lore-editorial-v5 .saga-level-label {
+  font-family: var(--font-ui);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  line-height: 1;
+  color: #8a847d;
+  margin-right: 6px;
+  white-space: nowrap;
+  user-select: none;
+}
+
+.lore-editorial-v5 .saga-level-segmented {
+  --seg-w: 24px;
+  position: relative;
+  display: inline-grid;
+  grid-template-columns: repeat(3, var(--seg-w));
+  align-items: center;
+  height: 32px;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  flex-shrink: 0;
+  touch-action: manipulation;
+}
+
+.lore-editorial-v5 .saga-level-slider {
+  position: absolute;
+  bottom: 7px;
+  left: calc((var(--seg-w) - 14px) / 2);
+  width: 14px;
+  height: 1.5px;
+  border-radius: 1px;
+  background: #a65f50;
+  box-shadow: none;
+  transform: translate3d(calc(var(--level-index, 0) * var(--seg-w)), 0, 0);
+  transition: transform 240ms cubic-bezier(0.32, 0.72, 0, 1);
+  pointer-events: none;
+  will-change: transform;
+}
+
+.lore-editorial-v5 .saga-level-seg {
+  position: relative;
+  z-index: 1;
+  width: var(--seg-w);
+  height: 32px;
+  padding: 8px 0;
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  box-sizing: border-box;
+  display: grid;
+  place-items: center;
+  font-family: var(--font-ui);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1;
+  color: #8a847d;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  transition: color 180ms ease;
+}
+
+.lore-editorial-v5 .saga-level-seg.is-active {
+  color: #171715;
+  font-weight: 700;
+}
+
+.lore-editorial-v5 .saga-level-seg:focus-visible {
+  outline: 2px solid #a65f50;
+  outline-offset: -2px;
+  border-radius: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lore-editorial-v5 .saga-level-slider {
+    transition-duration: 0.01ms;
+  }
 }
 
 .lore-editorial-v5 .saga-news-level select {
@@ -1365,11 +1463,12 @@
   padding-bottom: 0.08em;
 }
 
-/* Left-aligned tactile photo frame: zero cropping, warm 4-sided color-matched print depth */
+/* Left-aligned tactile photo frame: zero cropping, locked height across CEFR levels, warm 4-sided print depth */
 .lore-editorial-v5 .reader-gesture .article-media {
-  flex: 0 1 auto;
+  --saga-photo-max-h: clamp(190px, 28dvh, 240px);
+  flex: 0 0 auto;
   min-height: 0;
-  max-height: clamp(195px, 34dvh, 290px);
+  max-height: none;
   width: 100%;
   max-width: 720px;
   min-width: 0;
@@ -1379,7 +1478,7 @@
   justify-content: flex-start;
   align-self: flex-start;
   overflow: visible;
-  margin: 6px 0 12px;
+  margin: 6px 0 10px;
 }
 
 .lore-editorial-v5 .reader-gesture .article-media.article-media-empty {
@@ -1390,8 +1489,10 @@
 }
 
 .lore-editorial-v5 .reader-gesture .page-surface.page-density-compact .article-media {
+  --saga-photo-max-h: clamp(190px, 28dvh, 240px);
+  flex: 0 0 auto;
   min-height: 0;
-  max-height: clamp(175px, 30dvh, 255px);
+  max-height: none;
 }
 
 .lore-editorial-v5 .reader-gesture .article-media .photo-figure.lore-photo-figure,
@@ -1402,12 +1503,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  flex: 0 1 auto;
+  flex: 0 0 auto;
   min-width: 0;
   min-height: 0;
   width: fit-content;
   max-width: 100%;
-  max-height: calc(100% - 30px);
+  max-height: var(--saga-photo-max-h);
   aspect-ratio: var(--photo-aspect, auto);
   align-self: flex-start;
   margin: 0;
@@ -1439,7 +1540,7 @@
   width: auto;
   height: auto;
   max-width: 100%;
-  max-height: 100%;
+  max-height: var(--saga-photo-max-h);
   aspect-ratio: auto;
   margin: 0;
   object-fit: contain;
@@ -1452,7 +1553,7 @@
   width: auto;
   height: auto;
   max-width: 100%;
-  max-height: 100%;
+  max-height: var(--saga-photo-max-h);
   aspect-ratio: auto;
   object-fit: contain;
   margin: 0;
@@ -1464,17 +1565,25 @@
   top: 6px;
   right: 6px;
   z-index: 2;
+  display: grid;
+  place-items: center;
   width: 28px;
   height: 28px;
+  padding: 0;
   border-radius: 50%;
   background: rgba(20, 20, 18, 0.48);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
   box-shadow: 0 1px 4px rgba(20, 20, 18, 0.18);
-  font-size: 14px;
   line-height: 1;
   color: #ffffff;
   transition: background-color 140ms ease;
+}
+
+.lore-editorial-v5 .reader-gesture .article-media .lore-photo-zoom-trigger svg {
+  display: block;
+  width: 14px;
+  height: 14px;
 }
 
 .lore-editorial-v5 .reader-gesture .article-media .lore-photo-zoom-trigger:hover {
@@ -1483,20 +1592,22 @@
 
 .lore-editorial-v5 .reader-gesture .article-media .lore-photo-caption {
   flex: 0 0 auto;
-  display: block;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
   width: 100%;
   max-width: 100%;
   max-height: none;
-  margin: 12px 0 0;
+  margin: 10px 0 0;
   text-align: left;
   font-style: italic;
   font-weight: 400;
-  white-space: nowrap;
+  white-space: normal;
   overflow: hidden;
   text-overflow: ellipsis;
   color: #6e6963;
-  font-size: clamp(11.5px, 2.9vw, 13px);
-  line-height: 1.35;
+  font-size: clamp(11.5px, 2.9vw, 12.5px);
+  line-height: 1.32;
 }
 
 .lore-editorial-v5 .reader-gesture .article-media .photo-figure.lore-photo-figure.hero-media-loading,
@@ -1566,12 +1677,41 @@
   border: 0;
 }
 
-/* Crisp pagination dots & subtle final-page story-end cue */
-.lore-editorial-v5 .reader-gesture > .page-control {
-  flex-wrap: wrap;
-  row-gap: 4px;
+/* Strictly centered pagination block & subtle final-page story-end cue */
+.app-shell.lore-editorial-v5 .reader-gesture > .page-control {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+  gap: 2px;
+  width: 100%;
   padding-top: 6px;
   padding-bottom: clamp(8px, 1.3dvh, 13px);
+}
+
+.lore-editorial-v5 .reader-gesture .lore-page-row {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1px;
+  margin-inline: auto;
+}
+
+.lore-editorial-v5 .reader-gesture .lore-page-count {
+  margin: 0;
+  text-align: center;
+  line-height: 1.2;
+}
+
+.lore-editorial-v5 .reader-gesture .lore-page-nav {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 0;
 }
 
 .lore-editorial-v5 .reader-gesture .dots span {
@@ -1587,7 +1727,7 @@
 }
 
 .lore-editorial-v5 .saga-final-page-hint {
-  flex: 0 0 100%;
+  flex: 0 0 auto;
   width: 100%;
   font-family: var(--font-ui);
   font-size: 11px;
@@ -1597,6 +1737,65 @@
   text-align: center;
   margin-top: 1px;
   line-height: 1.3;
+}
+
+/* 60fps iOS-grade GPU page & story transitions (transform only, cubic-bezier(0.32, 0.72, 0, 1)) */
+.reading-mode.lore-editorial-v5 .reader-gesture .page-surface {
+  will-change: transform;
+}
+
+.reading-mode.lore-editorial-v5 .reader-gesture .page-surface.page-enter-left {
+  animation: saga-page-enter-left 320ms cubic-bezier(0.32, 0.72, 0, 1) both;
+}
+
+.reading-mode.lore-editorial-v5 .reader-gesture .page-surface.page-enter-right {
+  animation: saga-page-enter-right 320ms cubic-bezier(0.32, 0.72, 0, 1) both;
+}
+
+@keyframes saga-page-enter-left {
+  from { transform: translate3d(26%, 0, 0); opacity: 0.72; }
+  to { transform: translate3d(0, 0, 0); opacity: 1; }
+}
+
+@keyframes saga-page-enter-right {
+  from { transform: translate3d(-26%, 0, 0); opacity: 0.72; }
+  to { transform: translate3d(0, 0, 0); opacity: 1; }
+}
+
+.reading-mode.lore-editorial-v5 .story-layer.slide-up {
+  animation: saga-story-up 320ms cubic-bezier(0.32, 0.72, 0, 1) both;
+}
+
+.reading-mode.lore-editorial-v5 .story-layer.slide-down {
+  animation: saga-story-down 320ms cubic-bezier(0.32, 0.72, 0, 1) both;
+}
+
+.reading-mode.lore-editorial-v5 .story-layer.enter-from-bottom {
+  animation: saga-story-from-bottom 320ms cubic-bezier(0.32, 0.72, 0, 1) both;
+}
+
+.reading-mode.lore-editorial-v5 .story-layer.enter-from-top {
+  animation: saga-story-from-top 320ms cubic-bezier(0.32, 0.72, 0, 1) both;
+}
+
+@keyframes saga-story-up {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(0, -100%, 0); }
+}
+
+@keyframes saga-story-down {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(0, 100%, 0); }
+}
+
+@keyframes saga-story-from-bottom {
+  from { transform: translate3d(0, 100%, 0); }
+  to { transform: translate3d(0, 0, 0); }
+}
+
+@keyframes saga-story-from-top {
+  from { transform: translate3d(0, -100%, 0); }
+  to { transform: translate3d(0, 0, 0); }
 }
 
 @media (max-height: 640px) {
@@ -1700,38 +1899,87 @@
   font-family: var(--font-ui);
 }
 
-/* Minimalist, divider-free dictionary popup styling (scoped strictly to .dictionary-sheet) */
+/* Minimalist, divider-free dictionary bottom sheet with Vaul/iOS physics & tap-any-meaning save */
+.dictionary-overlay {
+  background: rgba(18, 17, 15, 0.44);
+  will-change: opacity;
+  animation: saga-backdrop-in 340ms cubic-bezier(0.32, 0.72, 0, 1) both;
+}
+
+.dictionary-overlay.is-closing {
+  pointer-events: none;
+  animation: saga-backdrop-out 220ms cubic-bezier(0.32, 0.72, 0, 1) both;
+}
+
+@keyframes saga-backdrop-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes saga-backdrop-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes saga-sheet-in {
+  from { transform: translate3d(0, 100%, 0); }
+  to { transform: translate3d(0, 0, 0); }
+}
+
+@keyframes saga-sheet-out {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(0, 100%, 0); }
+}
+
 .dictionary-sheet {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 12px;
   height: auto;
   max-height: 74dvh;
   overflow: hidden;
-  padding-top: 24px;
-  padding-bottom: calc(24px + env(safe-area-inset-bottom, 0px));
+  padding-top: 12px;
+  padding-bottom: calc(22px + env(safe-area-inset-bottom, 0px));
   border: 0;
   border-radius: 20px 20px 0 0;
   background: #fbfaf6;
   color: #171715;
   box-shadow: 0 -14px 44px rgba(23, 23, 21, 0.14);
+  will-change: transform;
+  animation: saga-sheet-in 340ms cubic-bezier(0.32, 0.72, 0, 1) both;
 }
+
+.dictionary-sheet.is-closing {
+  animation: saga-sheet-out 220ms cubic-bezier(0.32, 0.72, 0, 1) both;
+}
+
 @media (max-width: 600px) {
   .dictionary-sheet {
     height: auto;
     max-height: 74dvh;
     overflow: hidden;
-    padding-top: 22px;
-    padding-bottom: calc(24px + env(safe-area-inset-bottom, 0px));
+    padding-top: 10px;
+    padding-bottom: calc(22px + env(safe-area-inset-bottom, 0px));
     border: 0;
   }
 }
+
+.dictionary-sheet .dict-drag-handle {
+  width: 36px;
+  height: 4px;
+  border-radius: 999px;
+  background: #d8d8d0;
+  margin: 0 auto 2px;
+  flex: 0 0 auto;
+}
+
 .dictionary-sheet .dict-head-row {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
   gap: 12px;
 }
+
 .dictionary-sheet h2 {
   margin: 0;
   font-family: var(--font-head);
@@ -1742,6 +1990,7 @@
   text-transform: none;
   color: #171715;
 }
+
 .dictionary-sheet .dict-close-btn {
   flex: 0 0 auto;
   border: 0;
@@ -1755,47 +2004,56 @@
   cursor: pointer;
   transition: color 140ms ease, background-color 140ms ease;
 }
+
 .dictionary-sheet .dict-close-btn:hover {
   color: #171715;
   background: rgba(23, 23, 21, 0.06);
 }
+
 .dictionary-sheet .dict-meta-row {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   gap: 6px;
-  margin: -6px 0 0;
+  margin: -4px 0 0;
   font-family: var(--font-ui);
   font-size: 13px;
   line-height: 1.4;
   color: #6b6760;
 }
+
 .dictionary-sheet .dict-meta-item {
   display: inline-flex;
   align-items: center;
   gap: 6px;
 }
+
 .dictionary-sheet .dict-meta-sep {
   color: #b5b0a6;
 }
+
 .dictionary-sheet .dict-meta-pos {
   font-style: italic;
   color: #545049;
 }
+
 .dictionary-sheet .dict-meta-cefr {
   font-size: 11.5px;
   font-weight: 600;
   letter-spacing: 0.04em;
   color: #8f4f40;
 }
+
 .dictionary-sheet .dict-ipa {
   font-family: var(--font-ui);
   color: #6b6760;
 }
+
 .dictionary-sheet .dict-surface-note {
   font-style: italic;
   color: #817d76;
 }
+
 .dictionary-sheet .dict-speak-btn {
   display: inline-flex;
   align-items: center;
@@ -1809,10 +2067,23 @@
   cursor: pointer;
   transition: color 140ms ease, background-color 140ms ease;
 }
+
 .dictionary-sheet .dict-speak-btn:hover {
   color: #171715;
   background: rgba(23, 23, 21, 0.06);
 }
+
+.dictionary-sheet .dict-tap-hint {
+  margin: -4px 0 0;
+  min-height: 0;
+  font-family: var(--font-ui);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.35;
+  color: #6e6963;
+  flex: 0 0 auto;
+}
+
 .dictionary-sheet .word-context {
   margin: 2px 0 0 !important;
   padding: 0;
@@ -1824,30 +2095,91 @@
   line-height: 1.55 !important;
   color: #4f4b45 !important;
 }
+
 .dictionary-sheet .word-context strong {
   color: #171715;
   font-weight: 700;
 }
+
 .dictionary-sheet .dict-head-row,
-.dictionary-sheet .dict-meta-row,
-.dictionary-sheet .sheet-actions.dict-actions {
+.dictionary-sheet .dict-meta-row {
   flex: 0 0 auto;
 }
+
 .dictionary-sheet .lookup-details {
   flex: 1 1 auto;
   min-height: 0;
   overflow-y: auto;
   overscroll-behavior: contain;
-  margin: 0;
-  padding: 2px 2px 4px 0;
+  margin: 0 -12px;
+  padding: 2px 12px 6px;
 }
+
 .dictionary-sheet .contextual-meaning {
   border: 0;
-  padding: 2px 0 0;
+  padding: 0;
   margin: 0;
   min-height: 0;
   color: #171715;
 }
+
+.dictionary-sheet .dict-sense-tappable {
+  padding: 10px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: background-color 150ms ease, transform 120ms cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+.dictionary-sheet .dict-sense-tappable:hover {
+  background: rgba(23, 23, 21, 0.045);
+}
+
+.dictionary-sheet .dict-sense-tappable:active {
+  transform: scale(0.992);
+  background: rgba(23, 23, 21, 0.075);
+}
+
+.dictionary-sheet .dict-sense-tappable:focus-visible {
+  outline: none;
+  box-shadow: inset 0 0 0 1.5px #a65f50;
+}
+
+.dictionary-sheet .dict-sense-tappable.is-saved {
+  background: rgba(166, 95, 80, 0.1);
+}
+
+.dictionary-sheet .dict-sense-tappable.is-saved:hover {
+  background: rgba(166, 95, 80, 0.14);
+}
+
+.dictionary-sheet .dict-sense-row-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+}
+
+.dictionary-sheet .dict-tier1-copy {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.dictionary-sheet .dict-saved-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  flex: 0 0 auto;
+  font-family: var(--font-ui);
+  font-size: 11.5px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: #a65f50;
+  padding-top: 3px;
+}
+
 .dictionary-sheet .dict-vi-meaning {
   margin: 0 0 6px;
   min-height: 0;
@@ -1857,6 +2189,7 @@
   line-height: 1.45;
   color: #171715;
 }
+
 .dictionary-sheet .dict-en-meaning {
   margin: 0;
   min-height: 0;
@@ -1865,20 +2198,28 @@
   line-height: 1.5;
   color: #3f3c37;
 }
+
 .dictionary-sheet .dict-tier2-meanings {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 4px;
 }
+
 .dictionary-sheet .dict-sense-row {
   margin: 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
 }
+
 .dictionary-sheet .dict-sense-row.dict-sense-numbered {
   display: grid;
-  grid-template-columns: 18px minmax(0, 1fr);
+  grid-template-columns: 18px minmax(0, 1fr) auto;
   column-gap: 8px;
   align-items: baseline;
 }
+
 .dictionary-sheet .dict-sense-num {
   font-family: var(--font-ui);
   font-size: 13px;
@@ -1887,9 +2228,16 @@
   color: #8c877e;
   line-height: 1.48;
 }
+
+.dictionary-sheet .dict-sense-row.is-saved .dict-sense-num {
+  color: #a65f50;
+}
+
 .dictionary-sheet .dict-sense-body {
+  flex: 1 1 auto;
   min-width: 0;
 }
+
 .dictionary-sheet .dict-sense-line {
   display: block;
   font-family: var(--font-body);
@@ -1897,6 +2245,7 @@
   line-height: 1.48;
   color: #171715;
 }
+
 .dictionary-sheet .dict-sense-pos {
   display: inline;
   margin-right: 7px;
@@ -1906,6 +2255,7 @@
   font-style: italic;
   color: #7c776f;
 }
+
 .dictionary-sheet .dict-sense-example {
   margin: 5px 0 0;
   min-height: 0;
@@ -1915,19 +2265,23 @@
   line-height: 1.48;
   color: #6b6760;
 }
+
 .dictionary-sheet .no-contextual-meaning,
 .dictionary-sheet .dict-status-note {
   margin: 0;
   min-height: 0;
+  padding: 6px 12px;
   font-family: var(--font-ui);
   font-size: 14px;
   line-height: 1.5;
   color: #5c5851;
 }
+
 .dictionary-sheet .no-contextual-meaning p {
   margin: 0;
   min-height: 0;
 }
+
 .dictionary-sheet .dict-cambridge-link {
   display: inline-block;
   margin-top: 8px;
@@ -1938,33 +2292,133 @@
   text-decoration: underline;
   text-underline-offset: 3px;
 }
-.dictionary-sheet .sheet-actions.dict-actions {
-  margin-top: 6px;
-  padding: 0;
-  border: 0;
+
+@media (prefers-reduced-motion: reduce) {
+  .dictionary-overlay,
+  .dictionary-overlay.is-closing,
+  .dictionary-sheet,
+  .dictionary-sheet.is-closing,
+  .reading-mode.lore-editorial-v5 .reader-gesture .page-surface.page-enter-left,
+  .reading-mode.lore-editorial-v5 .reader-gesture .page-surface.page-enter-right,
+  .reading-mode.lore-editorial-v5 .story-layer.slide-up,
+  .reading-mode.lore-editorial-v5 .story-layer.slide-down,
+  .reading-mode.lore-editorial-v5 .story-layer.enter-from-bottom,
+  .reading-mode.lore-editorial-v5 .story-layer.enter-from-top,
+  .feed-skeleton-bar,
+  .feed-skeleton-photo {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* Editorial vertical balance for text-only pages (photo pages stay strictly top-aligned) */
+.lore-editorial-v5 .reader-gesture .page-surface.saga-page--text-only .reading-card.reading-card-no-photo {
+  flex: 1 1 auto;
+  min-height: 0;
   display: flex;
+  flex-direction: column;
   justify-content: flex-start;
+  padding-top: 8px;
+  padding-bottom: clamp(12px, 3dvh, 26px);
 }
-.dictionary-sheet .sheet-actions .primary.dict-save-btn {
-  flex: 0 1 auto;
-  min-width: 148px;
-  padding: 11px 22px;
-  border: 0;
+
+.lore-editorial-v5 .reader-gesture .page-surface.saga-page--text-only .reading-card.reading-card-no-photo .article-text {
+  margin-block: auto;
+}
+
+/* Calm editorial skeleton loader on SAGA #f8f8f2 cream paper */
+@keyframes saga-skeleton-pulse {
+  0%, 100% { opacity: 0.92; }
+  50% { opacity: 0.48; }
+}
+
+.feed-skeleton {
+  height: 100%;
+  width: 100%;
+  max-width: 720px;
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: calc(0.75rem + var(--saga-safe-top)) 0 18px;
+  background: #f8f8f2;
+}
+
+.feed-skeleton-bar,
+.feed-skeleton-photo {
+  background: #eae9e1;
+  animation: saga-skeleton-pulse 1.8s ease-in-out infinite;
+}
+
+.feed-skeleton-eyebrow {
+  width: 132px;
+  height: 11px;
   border-radius: 999px;
-  background: #171715;
-  color: #fbfaf6;
+  margin-bottom: 18px;
+  background: #efede6;
+}
+
+.feed-skeleton-head {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  margin-bottom: 18px;
+}
+
+.feed-skeleton-title {
+  width: 88%;
+  height: 24px;
+  border-radius: 4px;
+}
+
+.feed-skeleton-title-short {
+  width: 62%;
+  height: 24px;
+  border-radius: 4px;
+}
+
+.feed-skeleton-photo {
+  width: 100%;
+  max-width: 360px;
+  height: clamp(190px, 28dvh, 240px);
+  border-radius: 4px;
+  margin-bottom: 22px;
+  background: #efede6;
+}
+
+.feed-skeleton-lines {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.feed-skeleton-line {
+  width: 100%;
+  height: 15px;
+  border-radius: 3px;
+}
+
+.feed-skeleton-line-95 {
+  width: 95%;
+}
+
+.feed-skeleton-line-90 {
+  width: 90%;
+}
+
+.feed-skeleton-line-68 {
+  width: 68%;
+}
+
+.feed-skeleton-label {
+  margin: auto 0 6px;
+  text-align: center;
   font-family: var(--font-ui);
-  font-size: 13.5px;
-  font-weight: 600;
-  letter-spacing: 0.01em;
-  cursor: pointer;
-  transition: opacity 140ms ease, background-color 140ms ease;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  color: #6e6963;
 }
-.dictionary-sheet .sheet-actions .primary.dict-save-btn:hover:not(:disabled) {
-  background: #2c2b28;
-}
-.dictionary-sheet .sheet-actions .primary.dict-save-btn:disabled {
-  background: #8a867f;
-  opacity: 1;
-}
+
+
 

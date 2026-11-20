@@ -18,7 +18,25 @@ import {NEWS_LEVELS, NEWS_LEVEL_KEY, isNewsLevel, loadNewsLevel, applyNewsLevel}
 import { selectContextualMeaning } from './lib/contextualDictionary.js'
 import { tokenizeWithGlossary } from './utils/dictionaryTokenizer.js'
 import { loadLemmaMap, loadPhraseMap, lookupDictionaryTerm, resolveStaticPhrase, resolveTier1Glossary } from './services/dictionaryService.js'
+import {
+  IOS_SHEET_EASING,
+  SHEET_OPEN_MS,
+  SHEET_CLOSE_MS,
+  SWIPE_SETTLE_MS,
+  applyRubberBand,
+  lockGestureAxis,
+  shouldCompleteSwipe,
+  shouldDismissSheet,
+  sheetBackdropOpacity,
+  prefersReducedMotion,
+} from './lib/gesturePhysics.js'
 
+
+const LEVEL_SEGMENTS = NEWS_LEVELS.map(level => {
+  if (level === 'A1-A2') return { level, code: 'A', ariaLabel: 'Level A (A1-A2 Beginner)' }
+  if (level === 'B1-B2') return { level, code: 'B', ariaLabel: 'Level B (B1-B2 Intermediate)' }
+  return { level, code: 'C', ariaLabel: 'Level C (C1-C2 Advanced)' }
+})
 
 // Keep the complete adaptation for attribution while Read shows short pages.
 const paginateStory = original => {
@@ -82,7 +100,14 @@ function ArticlePhoto({ image, label: shortLabel, fullCaption, onBroken, onReady
       onKeyDown={event => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); setZoomed(true) } }}
       onLoad={event => { fitPhoto(event.currentTarget); onReady() }}
       onError={() => onBroken(image)} />
-    <button type="button" className="lore-photo-zoom-trigger" aria-label="Enlarge photo" title="Read full image caption" onClick={() => setZoomed(true)}><span aria-hidden="true">⛶</span></button>
+    <button type="button" className="lore-photo-zoom-trigger" aria-label="Enlarge photo" title="Read full image caption" onClick={() => setZoomed(true)}>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.1" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M8 3H5a2 2 0 0 0-2 2v3"/>
+        <path d="M21 8V5a2 2 0 0 0-2-2h-3"/>
+        <path d="M3 16v3a2 2 0 0 0 2 2h3"/>
+        <path d="M16 21h3a2 2 0 0 0 2-2v-3"/>
+      </svg>
+    </button>
     {zoomed && createPortal(<div className="lore-lightbox" role="dialog" aria-modal="true" aria-label="Enlarged article photograph" onClick={event => { event.stopPropagation(); setZoomed(false) }}>
       <button type="button" className="lore-lightbox-close" aria-label="Close enlarged photograph" onClick={event => { event.stopPropagation(); setZoomed(false) }}>×</button>
       <img src={asset.url} srcSet={srcSet} sizes="(max-width: 768px) 96vw, 90vw" alt={label} decoding="async" loading="lazy" width={heroWidth} height={heroHeight} style={aspectStyle} onClick={event => event.stopPropagation()} />
@@ -158,16 +183,17 @@ function layoutPages(item, reader, badImages = new Set()) {
       card.classList.toggle('reading-card-with-photo', !!image)
       media.classList.toggle('article-media-empty', !image)
       surface?.classList.toggle('page-density-compact', density === 'compact')
+      surface?.classList.toggle('saga-page--text-only', !image)
       media.style.display = image ? 'flex' : 'none'
       measuredCaption.textContent = image ? photoLabel(image) : ''
-      measuredCaption.style.display = measuredCaption.textContent && measuredCaption.textContent !== 'Article photograph' ? 'block' : 'none'
+      measuredCaption.style.display = measuredCaption.textContent && measuredCaption.textContent !== 'Article photograph' ? '' : 'none'
       if (image) {
         const asset = photoResult(image.image)
         const computedMax = parseFloat(getComputedStyle(photo).maxHeight)
         const maxHeight = Number.isFinite(computedMax) && computedMax > 0
           ? computedMax
           : (window.innerHeight * (density === 'compact' ? (window.innerWidth <= 600 ? 0.22 : 0.3) : 0.4))
-        const ratio = 16 / 9
+        const ratio = asset?.width && asset?.height ? asset.width / asset.height : 4 / 3
         const { frameWidth } = photoFrameSize(media.clientWidth, maxHeight, ratio)
         figure.style.width = `${Math.ceil(frameWidth)}px`
         figure.style.width = '100%'
@@ -207,7 +233,7 @@ function layoutPages(item, reader, badImages = new Set()) {
     const next = item?.contentType === 'news'
       ? balancePhotoCoverPage(cleanSources, fits)
       : item?.contentType === 'wiki'
-        ? planAnchoredWikiPages({...item,_sourcePages:cleanSources}, fits, {uniformRhythm: true})
+        ? planAnchoredWikiPages({...item,_sourcePages:cleanSources}, fits, {balanced: true})
         : planReadingPages({...item,_sourcePages:cleanSources}, fits)
     if (!next.length) return item.pages
     return rebalanceTextPages(next, fits)
@@ -373,6 +399,12 @@ function App() {
   const [selected, setSelected] = useState('')
   const [selectedSurface, setSelectedSurface] = useState('')
   const [selectedGlossaryEntry, setSelectedGlossaryEntry] = useState(null)
+  const [sheetClosing, setSheetClosing] = useState(false)
+  const sheetOverlayRef = useRef(null)
+  const sheetRef = useRef(null)
+  const sheetScrollRef = useRef(null)
+  const sheetDragRef = useRef(null)
+  const sheetCloseTimerRef = useRef(null)
   const [staticPhrases, setStaticPhrases] = useState(null)
   const [lemmaMap, setLemmaMap] = useState(null)
   const [lookup, setLookup] = useState({ status: 'idle', options: [] })
@@ -699,12 +731,37 @@ function App() {
     }
   }
 
-  const closeDictionary = () => {
-    stopSpeech()
+  const clearDictionaryNow = () => {
+    clearTimeout(sheetCloseTimerRef.current)
+    sheetCloseTimerRef.current = null
+    sheetDragRef.current = null
+    setSheetClosing(false)
     setSelected('')
     setSelectedSurface('')
     setSelectedGlossaryEntry(null)
   }
+
+  const closeDictionary = ({ immediate = false } = {}) => {
+    stopSpeech()
+    if (!selected) return
+    if (immediate || prefersReducedMotion()) {
+      clearDictionaryNow()
+      return
+    }
+    if (sheetClosing) return
+    setSheetClosing(true)
+    clearTimeout(sheetCloseTimerRef.current)
+    sheetCloseTimerRef.current = setTimeout(clearDictionaryNow, SHEET_CLOSE_MS)
+  }
+
+  useEffect(() => () => { clearTimeout(sheetCloseTimerRef.current) }, [])
+
+  useEffect(() => {
+    if (!selected) return
+    const onEscape = event => { if (event.key === 'Escape') closeDictionary() }
+    window.addEventListener('keydown', onEscape)
+    return () => window.removeEventListener('keydown', onEscape)
+  }, [selected, sheetClosing])
 
   useEffect(() => {
     let active = true
@@ -752,19 +809,133 @@ function App() {
     return () => { active = false }
   }, [selected, selectedSurface, selectedGlossaryEntry, selectedSentence, activeGlossary, staticPhrases, lemmaMap, retryCount])
 
-  const saveWord = () => {
-    if (!selected || isSaved) return
-    const meaning = activeMeaning
-    const item = {
-      word: selected,
-      definition: meaning?.definition || offlineMeaning(selected) || '',
-      phonetic: meaning?.phonetic || '',
-      partOfSpeech: meaning?.partOfSpeech || '',
-      example: meaning?.example || '',
-      sentence: selectedSentence,
-      added: Date.now(),
+  const toggleSaveMeaning = meaning => {
+    if (!selected) return
+    const def = String(meaning?.definition || offlineMeaning(selected) || '').trim()
+    if (!def) return
+    setWords(current => {
+      const existing = current.find(w => w.word === selected)
+      if (existing && String(existing.definition || '').trim() === def) {
+        return current.filter(w => w.word !== selected)
+      }
+      const nextItem = {
+        word: selected,
+        definition: def,
+        phonetic: meaning?.phonetic || lookup.ipa || '',
+        partOfSpeech: meaning?.partOfSpeech || lookup.pos || '',
+        example: meaning?.example || '',
+        sentence: selectedSentence,
+        added: existing?.added || Date.now(),
+      }
+      if (existing) {
+        return current.map(w => w.word === selected ? nextItem : w)
+      }
+      return [...current, nextItem]
+    })
+  }
+
+  const onSheetTouchStart = event => {
+    if (event.touches.length !== 1 || sheetClosing) { sheetDragRef.current = null; return }
+    const scrollEl = sheetScrollRef.current
+    const startedInScroll = Boolean(scrollEl && scrollEl.contains(event.target))
+    const canDrag = !startedInScroll || scrollEl.scrollTop <= 0
+    const y = event.touches[0].clientY
+    const now = performance.now()
+    sheetDragRef.current = {
+      startY: y,
+      lastY: y,
+      lastTime: now,
+      velocity: 0,
+      dy: 0,
+      dragging: false,
+      canDrag,
+      startedInScroll,
     }
-    setWords(current => current.some(w => w.word === selected) ? current : [...current, item])
+  }
+
+  const onSheetTouchMove = event => {
+    const drag = sheetDragRef.current
+    if (!drag || event.touches.length !== 1 || sheetClosing) return
+    const y = event.touches[0].clientY
+    const rawDy = y - drag.startY
+    if (!drag.dragging) {
+      if (rawDy <= 6) {
+        if (rawDy < -4) drag.canDrag = false
+        return
+      }
+      if (!drag.canDrag) {
+        const scrollEl = sheetScrollRef.current
+        if (drag.startedInScroll && scrollEl && scrollEl.scrollTop > 0) return
+      }
+      drag.dragging = true
+    }
+    const clampedDy = Math.max(0, rawDy)
+    const now = performance.now()
+    const dt = Math.max(1, now - drag.lastTime)
+    const instantV = (y - drag.lastY) / dt
+    drag.velocity = drag.velocity * 0.4 + instantV * 0.6
+    drag.lastY = y
+    drag.lastTime = now
+    drag.dy = clampedDy
+    if (event.cancelable) event.preventDefault()
+    const sheetEl = sheetRef.current
+    const overlayEl = sheetOverlayRef.current
+    const sheetHeight = sheetEl?.getBoundingClientRect().height || 360
+    if (sheetEl) {
+      sheetEl.style.transition = 'none'
+      sheetEl.style.transform = `translate3d(0, ${clampedDy}px, 0)`
+    }
+    if (overlayEl) {
+      overlayEl.style.transition = 'none'
+      overlayEl.style.opacity = String(sheetBackdropOpacity(clampedDy, sheetHeight))
+    }
+  }
+
+  const onSheetTouchEnd = () => {
+    const drag = sheetDragRef.current
+    sheetDragRef.current = null
+    if (!drag || !drag.dragging) return
+    const sheetEl = sheetRef.current
+    const overlayEl = sheetOverlayRef.current
+    const sheetHeight = sheetEl?.getBoundingClientRect().height || 360
+    if (shouldDismissSheet(drag.dy, sheetHeight, drag.velocity)) {
+      stopSpeech()
+      if (prefersReducedMotion()) {
+        clearDictionaryNow()
+        return
+      }
+      if (sheetEl) {
+        sheetEl.style.transition = `transform ${SHEET_CLOSE_MS}ms ${IOS_SHEET_EASING}`
+        sheetEl.style.transform = 'translate3d(0, 100%, 0)'
+      }
+      if (overlayEl) {
+        overlayEl.style.transition = `opacity ${SHEET_CLOSE_MS}ms ${IOS_SHEET_EASING}`
+        overlayEl.style.opacity = '0'
+      }
+      setSheetClosing(true)
+      clearTimeout(sheetCloseTimerRef.current)
+      sheetCloseTimerRef.current = setTimeout(clearDictionaryNow, SHEET_CLOSE_MS)
+    } else {
+      const springMs = prefersReducedMotion() ? 0 : SHEET_OPEN_MS
+      if (sheetEl) {
+        sheetEl.style.transition = springMs ? `transform ${springMs}ms ${IOS_SHEET_EASING}` : 'none'
+        sheetEl.style.transform = 'translate3d(0, 0, 0)'
+      }
+      if (overlayEl) {
+        overlayEl.style.transition = springMs ? `opacity ${springMs}ms ${IOS_SHEET_EASING}` : 'none'
+        overlayEl.style.opacity = '1'
+      }
+      setTimeout(() => {
+        if (sheetRef.current && !sheetDragRef.current) {
+          sheetRef.current.style.transition = ''
+          sheetRef.current.style.transform = ''
+        }
+        if (sheetOverlayRef.current && !sheetDragRef.current) {
+          sheetOverlayRef.current.style.transition = ''
+          sheetOverlayRef.current.style.opacity = ''
+        }
+      }, springMs + 20)
+    }
   }
 
   // A user's chosen meaning must never be overwritten by later API responses.
@@ -804,7 +975,7 @@ function App() {
     setStoryIndex(next)
     setPage(0)
     setPageMotion(null)
-    slideTimer.current = setTimeout(() => setSlide(null), 560)
+    slideTimer.current = setTimeout(() => setSlide(null), prefersReducedMotion() ? 20 : SWIPE_SETTLE_MS + 20)
   }
   edgeActionsRef.current = {
     advance: navigateStory,
@@ -814,52 +985,109 @@ function App() {
     if (direction > 0) edgeControllerRef.current.forward(storyIndexRef.current, storiesRef.current.length)
     else if (direction < 0) edgeControllerRef.current.backward(storyIndexRef.current)
   }
-  // Horizontal reading is finger-driven. Only the page surface moves;
-  // the masthead and bottom navigation remain anchored like a newspaper.
-  const movePageSurface = (dx, dy) => {
-    if (typeof document === 'undefined') return
-    if (Math.abs(dx) < 8 || Math.abs(dx) < Math.abs(dy) * 1.2) return
-    const surface = document.querySelector('.story-layer:not(.outgoing) .page-surface')
-    if (!surface) return
-    const distance = Math.max(-72, Math.min(72, dx * 0.4))
-    surface.style.transition = 'none'
-    surface.style.transform = `translate3d(${distance}px, 0, 0)`
-    surface.style.opacity = String(1 - Math.abs(distance) / 450)
+  // 2-phase 60fps iOS-grade touch tracking: GPU translate3d only, 0.25x boundary rubber-banding.
+  const applySwipeTransform = (axis, dx, dy) => {
+    if (typeof document === 'undefined' || !axis) return
+    if (axis === 'x') {
+      const surface = document.querySelector('.story-layer:not(.outgoing) .page-surface')
+      if (!surface) return
+      const atBoundary = (dx > 0 && page === 0) || (dx < 0 && page >= (story?.pages?.length ?? 0))
+      const tx = applyRubberBand(dx, atBoundary)
+      surface.style.transition = 'none'
+      surface.style.transform = `translate3d(${tx}px, 0, 0)`
+    } else if (axis === 'y') {
+      const layer = document.querySelector('.story-layer:not(.outgoing)')
+      if (!layer) return
+      const atBoundary = (dy > 0 && storyIndex === 0) || (dy < 0 && storyIndex >= stories.length - 1 && feedDone)
+      const ty = applyRubberBand(dy, atBoundary)
+      layer.style.transition = 'none'
+      layer.style.transform = `translate3d(0, ${ty}px, 0)`
+    }
   }
-  const releasePageSurface = () => {
+  const releaseSwipeTransform = ({ spring = true } = {}) => {
     if (typeof document === 'undefined') return
+    const reduced = prefersReducedMotion()
+    const transitionVal = spring && !reduced ? `transform ${SWIPE_SETTLE_MS}ms ${IOS_SHEET_EASING}` : 'none'
     const surface = document.querySelector('.story-layer:not(.outgoing) .page-surface')
-    if (!surface) return
-    surface.style.transition = 'transform 220ms cubic-bezier(.2,.75,.25,1), opacity 220ms ease'
-    surface.style.transform = 'translate3d(0,0,0)'
-    surface.style.opacity = '1'
+    if (surface && surface.style.transform) {
+      surface.style.transition = transitionVal
+      surface.style.transform = spring ? 'translate3d(0, 0, 0)' : ''
+      if (!spring) surface.style.transition = ''
+    }
+    const layer = document.querySelector('.story-layer:not(.outgoing)')
+    if (layer && layer.style.transform) {
+      layer.style.transition = transitionVal
+      layer.style.transform = spring ? 'translate3d(0, 0, 0)' : ''
+      if (!spring) layer.style.transition = ''
+    }
   }
-  const handleNavigationGesture = (dx, dy) => {
-    if (Math.max(Math.abs(dx), Math.abs(dy)) < 48) return
-    // iOS can emit both pointerup and touchend. One gesture = one article.
+  const finishNavigationGesture = (state, endX, endY) => {
+    const dx = endX - state.x
+    const dy = endY - state.y
+    const axis = state.axis || lockGestureAxis(dx, dy, 10)
     const now = Date.now()
-    if (now - lastNavigationGesture.current < 280) return
-    if (Math.abs(dx) > Math.abs(dy) * 1.15) changePage(dx < 0 ? 1 : -1)
-    else if (Math.abs(dy) > Math.abs(dx) * 1.15) changeStory(dy < 0 ? 1 : -1)
-    else return
-    lastNavigationGesture.current = now
+    const viewportW = typeof window !== 'undefined' ? window.innerWidth : 390
+    const viewportH = typeof window !== 'undefined' ? window.innerHeight : 844
+    if (now - lastNavigationGesture.current < 280) {
+      releaseSwipeTransform({ spring: true })
+      return
+    }
+    if (axis === 'x' && shouldCompleteSwipe(dx, viewportW, state.vx)) {
+      const dir = dx < 0 ? 1 : -1
+      const canMove = (dir > 0 && page < (story?.pages?.length ?? 0)) || (dir < 0 && page > 0)
+      if (canMove) {
+        releaseSwipeTransform({ spring: false })
+        lastNavigationGesture.current = now
+        changePage(dir)
+        return
+      }
+    } else if (axis === 'y' && shouldCompleteSwipe(dy, viewportH, state.vy)) {
+      const dir = dy < 0 ? 1 : -1
+      const canMove = dir > 0 || storyIndex > 0
+      if (canMove) {
+        releaseSwipeTransform({ spring: false })
+        lastNavigationGesture.current = now
+        changeStory(dir)
+        return
+      }
+    }
+    releaseSwipeTransform({ spring: true })
+  }
+  const trackGestureMove = (state, clientX, clientY) => {
+    const dx = clientX - state.x
+    const dy = clientY - state.y
+    const now = performance.now()
+    const dt = Math.max(1, now - state.lastTime)
+    state.vx = state.vx * 0.4 + ((clientX - state.lastX) / dt) * 0.6
+    state.vy = state.vy * 0.4 + ((clientY - state.lastY) / dt) * 0.6
+    state.lastX = clientX
+    state.lastY = clientY
+    state.lastTime = now
+    if (!state.axis) state.axis = lockGestureAxis(dx, dy, 10)
+    if (state.axis) applySwipeTransform(state.axis, dx, dy)
+    return { dx, dy }
   }
   // Pointer events catch edge gestures missed by touchend after late image
   // loads or a mobile browser cancel. The touch fallback is deduplicated.
   const startPointer = event => {
     if (event.pointerType !== 'touch' || selected || event.target.closest('button, a, summary, select, label')) return
-    pointerGesture.current = {id: event.pointerId, x: event.clientX, y: event.clientY}
+    const now = performance.now()
+    pointerGesture.current = {
+      id: event.pointerId, x: event.clientX, y: event.clientY,
+      lastX: event.clientX, lastY: event.clientY, lastTime: now,
+      vx: 0, vy: 0, axis: null,
+    }
   }
   const movePointer = event => {
     if (!pointerGesture.current || pointerGesture.current.id !== event.pointerId) return
-    movePageSurface(event.clientX - pointerGesture.current.x, event.clientY - pointerGesture.current.y)
+    if (gesture.current) return // touch handlers already tracking this finger
+    trackGestureMove(pointerGesture.current, event.clientX, event.clientY)
   }
   const endPointer = event => {
     if (!pointerGesture.current || pointerGesture.current.id !== event.pointerId) return
-    const {x, y} = pointerGesture.current
+    const state = pointerGesture.current
     pointerGesture.current = null
-    releasePageSurface()
-    handleNavigationGesture(event.clientX - x, event.clientY - y)
+    finishNavigationGesture(state, event.clientX, event.clientY)
   }
   const nextReview = () => {
     if (reviewIndex + 1 >= words.length) setFinished(true)
@@ -872,13 +1100,17 @@ function App() {
     const control = event.target.closest('button')
     if ((control && !control.classList.contains('word-token')) || event.target.closest('a, summary, select, label')) { gesture.current = null; return }
     suppressWordClick.current = false
-    gesture.current = { x: event.touches[0].clientX, y: event.touches[0].clientY, moved: false }
+    const t = event.touches[0]
+    const now = performance.now()
+    gesture.current = {
+      x: t.clientX, y: t.clientY, lastX: t.clientX, lastY: t.clientY,
+      lastTime: now, vx: 0, vy: 0, axis: null, moved: false,
+    }
   }
   const moveGesture = event => {
     if (!gesture.current || event.touches.length !== 1) return
-    const dx = event.touches[0].clientX - gesture.current.x
-    const dy = event.touches[0].clientY - gesture.current.y
-    movePageSurface(dx, dy)
+    const t = event.touches[0]
+    const { dx, dy } = trackGestureMove(gesture.current, t.clientX, t.clientY)
     if (Math.max(Math.abs(dx), Math.abs(dy)) > 12) {
       gesture.current.moved = true
       suppressWordClick.current = true
@@ -886,13 +1118,12 @@ function App() {
   }
   const endGesture = event => {
     if (!gesture.current || selected) return
-    const dx = event.changedTouches[0].clientX - gesture.current.x
-    const dy = event.changedTouches[0].clientY - gesture.current.y
+    const state = gesture.current
     gesture.current = null
-    releasePageSurface()
-    handleNavigationGesture(dx, dy)
+    const t = event.changedTouches[0]
+    finishNavigationGesture(state, t.clientX, t.clientY)
   }
-  const cancelGesture = () => { gesture.current = null; releasePageSurface(); suppressWordClick.current = false }
+  const cancelGesture = () => { gesture.current = null; releaseSwipeTransform({ spring: true }); suppressWordClick.current = false }
   const onWordClick = (event, word, glossaryEntry = null, surfaceText = '') => {
     if (suppressWordClick.current) {
       event.preventDefault()
@@ -900,6 +1131,9 @@ function App() {
       return
     }
     stopSpeech()
+    clearTimeout(sheetCloseTimerRef.current)
+    sheetCloseTimerRef.current = null
+    setSheetClosing(false)
     setSelectedGlossaryEntry(glossaryEntry || null)
     setSelectedSurface(surfaceText || word)
     setSelected(word)
@@ -950,16 +1184,60 @@ function App() {
     const closing = pageNumber === item.pages.length
     const itemPage = closing ? null : (item.pages[pageNumber] || item.pages[0])
     const tokens = closing ? [] : tokenizeWithGlossary(itemPage.text, item.glossary, staticPhrases, lemmaMap)
-    const total = item.pages.length + 1 // always a distinct source / next-story page
-    return <div className="reader-gesture" aria-hidden={!interactive} onTouchStart={interactive ? startGesture : undefined} onTouchMove={interactive ? moveGesture : undefined} onTouchEnd={interactive ? endGesture : undefined} onTouchCancel={interactive ? cancelGesture : undefined} onPointerDown={interactive ? startPointer : undefined} onPointerMove={interactive ? movePointer : undefined} onPointerUp={interactive ? endPointer : undefined} onPointerCancel={interactive ? () => {pointerGesture.current = null; releasePageSurface()} : undefined}>
+    const pageHasPhoto = Boolean(!closing && itemPage?.image && !brokenImages.has(itemPage.image) && !photoResult(itemPage.image)?.failed)
+    const dotTotal = item.pages.length
+    const topicLabel = readerSection(item).replace(/^DISCOVER\s*·\s*/i, '').trim()
+    const activeLevelIndex = Math.max(0, LEVEL_SEGMENTS.findIndex(seg => seg.level === readingLevel))
+    const onLevelKeyDown = event => {
+      event.stopPropagation()
+      if (event.key === 'ArrowRight' || event.key === 'ArrowDown') {
+        event.preventDefault()
+        changeReadingLevel(LEVEL_SEGMENTS[(activeLevelIndex + 1) % LEVEL_SEGMENTS.length].level)
+      } else if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') {
+        event.preventDefault()
+        changeReadingLevel(LEVEL_SEGMENTS[(activeLevelIndex - 1 + LEVEL_SEGMENTS.length) % LEVEL_SEGMENTS.length].level)
+      }
+    }
+    return <div className="reader-gesture" aria-hidden={!interactive} onTouchStart={interactive ? startGesture : undefined} onTouchMove={interactive ? moveGesture : undefined} onTouchEnd={interactive ? endGesture : undefined} onTouchCancel={interactive ? cancelGesture : undefined} onPointerDown={interactive ? startPointer : undefined} onPointerMove={interactive ? movePointer : undefined} onPointerUp={interactive ? endPointer : undefined} onPointerCancel={interactive ? () => {pointerGesture.current = null; releaseSwipeTransform({ spring: true })} : undefined}>
       <header className="topbar lore-reader-topbar">
-        <span className="saga-toolbar-story" title={readerSection(item)}>{readerSection(item)}</span>
+        <span className="saga-toolbar-story" title={topicLabel}>{topicLabel}</span>
         <div className="saga-toolbar-actions">
-          {interactive && item.levelVariants && <label className="saga-news-level"><span className="saga-level-sr">Reading level</span><select aria-label="English reading level" value={readingLevel} onChange={event => changeReadingLevel(event.target.value)} onKeyDown={event => event.stopPropagation()}>{NEWS_LEVELS.map(level => <option key={level} value={level}>{level}</option>)}</select></label>}
+          {interactive && item.levelVariants && (
+            <div className="saga-news-level saga-level-group">
+              <span className="saga-level-label" id={`saga-level-label-${index}`}>Level</span>
+              <div
+                className="saga-level-segmented"
+                role="radiogroup"
+                aria-labelledby={`saga-level-label-${index}`}
+                style={{ '--level-index': activeLevelIndex }}
+                onKeyDown={onLevelKeyDown}
+              >
+                <span className="saga-level-slider" aria-hidden="true" />
+                {LEVEL_SEGMENTS.map(seg => {
+                  const active = readingLevel === seg.level
+                  return (
+                    <button
+                      key={seg.level}
+                      type="button"
+                      role="radio"
+                      aria-checked={active}
+                      aria-label={seg.ariaLabel}
+                      title={seg.level}
+                      tabIndex={active ? 0 : -1}
+                      className={'saga-level-seg' + (active ? ' is-active' : '')}
+                      onClick={() => changeReadingLevel(seg.level)}
+                    >
+                      {seg.code}
+                    </button>
+                  )
+                })}
+              </div>
+            </div>
+          )}
           {interactive && !closing && <button type="button" className="icon-button saga-toolbar-audio" onClick={() => speak(itemPage.text)} aria-label="Read aloud"><Icon name="volume" size={20}/></button>}
         </div>
       </header>
-      <div key={`${index}:${pageNumber}`} className={'page-surface ' + (itemPage?.density ? `page-density-${itemPage.density} ` : '') + (interactive && pageMotion ? (pageMotion > 0 ? 'page-enter-left' : 'page-enter-right') : '')}>
+      <div key={`${index}:${pageNumber}`} className={'page-surface ' + (!closing && !pageHasPhoto ? 'saga-page--text-only ' : '') + (itemPage?.density ? `page-density-${itemPage.density} ` : '') + (interactive && pageMotion ? (pageMotion > 0 ? 'page-enter-left' : 'page-enter-right') : '')}>
       {closing ? <section className="story-end" aria-label="Article completed">
         <div className="story-end-center"><Icon name="book" size={56}/><h2>That's the short version.</h2>
           
@@ -982,16 +1260,19 @@ function App() {
       </>}
       </div>
       <div className="page-control" aria-label={closing ? "Article completed" : `Page ${pageNumber + 1} of ${item.pages.length}`}>
-        {!closing && <div className="lore-page-count" aria-label={`Page ${pageNumber + 1} of ${item.pages.length}`}>{pageNumber + 1}/{item.pages.length}</div>}
-        <div className="lore-page-nav">
-        <button type="button" className="page-arrow page-arrow-prev" aria-label="Previous page" title="Previous page (←)" disabled={!interactive || pageNumber === 0} onClick={() => changePage(-1)}><Icon name="left" size={17}/></button>
-        <div className="dots" aria-hidden="true">{(() => {
-          const visible = Math.min(total, 11)
-          const first = Math.max(0, Math.min(pageNumber - Math.floor(visible / 2), total - visible))
-          return Array.from({ length: visible }, (_, i) => first + i).map(i =>
-            <span key={i} className={pageNumber === first + i ? 'active' : ''}/>)
-        })()}</div>
-        <button type="button" className="page-arrow page-arrow-next" aria-label="Next page" title="Next page (→)" disabled={!interactive || closing} onClick={() => changePage(1)}><Icon name="right" size={17}/></button>
+        <div className="lore-page-row">
+          {!closing && <div className="lore-page-count" aria-label={`Page ${pageNumber + 1} of ${item.pages.length}`}>{pageNumber + 1}/{item.pages.length}</div>}
+          <div className="lore-page-nav">
+            <button type="button" className="page-arrow page-arrow-prev" aria-label="Previous page" title="Previous page (←)" disabled={!interactive || pageNumber === 0} onClick={() => changePage(-1)}><Icon name="left" size={17}/></button>
+            <div className="dots" aria-hidden="true">{(() => {
+              const visible = Math.min(dotTotal, 11)
+              const activeDot = closing ? dotTotal - 1 : pageNumber
+              const first = Math.max(0, Math.min(activeDot - Math.floor(visible / 2), dotTotal - visible))
+              return Array.from({ length: visible }, (_, i) => first + i).map(i =>
+                <span key={i} className={!closing && pageNumber === i ? 'active' : ''}/>)
+            })()}</div>
+            <button type="button" className="page-arrow page-arrow-next" aria-label="Next page" title="Next page (→)" disabled={!interactive || closing} onClick={() => changePage(1)}><Icon name="right" size={17}/></button>
+          </div>
         </div>
         {!closing && pageNumber === item.pages.length - 1 && <div className="saga-final-page-hint">Swipe up for next story</div>}
       </div>
@@ -1003,12 +1284,34 @@ function App() {
         {tab === 'read' && <div className="story-viewport" onWheel={onReaderWheel}>
           {slide && stories[slide.from] && <div key={'old-'+slide.stamp} className={'story-layer outgoing '+(slide.direction>0?'slide-up':'slide-down')}>{renderStory(stories[slide.from], slide.from, slide.fromPage, false)}</div>}
           {story && <div key={'active-'+storyIndex} className={'story-layer '+(slide?(slide.direction>0?'enter-from-bottom':'enter-from-top'):'')}>{renderStory(story, storyIndex, page, true)}</div>}
-          {!story && <div className="feed-empty"><h2>{feedLoading ? 'Preparing your next discovery…' : feedDone ? 'You’re all caught up.' : 'Stories are temporarily unavailable.'}</h2><p>{feedDone ? 'You have read every available discovery today. More stories will appear as the shared collection grows.' : 'The new Wikipedia collection is being prepared. Please try again later.'}</p><button className="primary" onClick={refreshFeed} disabled={feedLoading}>{feedLoading ? 'Loading…' : 'Check for new stories'}</button></div>}
+          {!story && (feedLoading ? (
+            <div className="feed-skeleton" role="status" aria-live="polite" aria-label="Loading stories">
+              <div className="feed-skeleton-bar feed-skeleton-eyebrow" aria-hidden="true" />
+              <div className="feed-skeleton-head" aria-hidden="true">
+                <div className="feed-skeleton-bar feed-skeleton-title" />
+                <div className="feed-skeleton-bar feed-skeleton-title-short" />
+              </div>
+              <div className="feed-skeleton-photo" aria-hidden="true" />
+              <div className="feed-skeleton-lines" aria-hidden="true">
+                <div className="feed-skeleton-bar feed-skeleton-line" />
+                <div className="feed-skeleton-bar feed-skeleton-line feed-skeleton-line-95" />
+                <div className="feed-skeleton-bar feed-skeleton-line feed-skeleton-line-90" />
+                <div className="feed-skeleton-bar feed-skeleton-line feed-skeleton-line-68" />
+              </div>
+              <p className="feed-skeleton-label">Loading stories...</p>
+            </div>
+          ) : (
+            <div className="feed-empty">
+              <h2>{feedDone ? 'You’re all caught up.' : 'Unable to load stories right now.'}</h2>
+              <p>{feedDone ? 'You have read every available story for now. Check back soon for new editions.' : 'Please check your connection and try again.'}</p>
+              <button className="primary" onClick={refreshFeed}>{feedDone ? 'Check for new stories' : 'Try again'}</button>
+            </div>
+          ))}
         </div>}
-        {tab === 'words' && <><header className="section-header"><h1>Saved words<span className="period">.</span></h1></header>{words.length === 0 ? <div className="empty"><Icon name="bookmark" size={40}/><h2>Your collection begins here.</h2><p>Read a story, tap a word, and save it to keep learning.</p><button className="primary" onClick={() => setTab('read')}>Start reading →</button></div> : <div className="saved-list">{words.map(item => <div className="saved-item" key={item.word}><div><h2 className="saved-word-title"><button className="saved-word-open" onClick={() => { stopSpeech(); setSelectedGlossaryEntry(null); setSelectedSurface(''); setSelected(item.word) }}>{item.word}</button></h2></div><button onClick={() => { setWords(current => current.filter(w => w.word !== item.word)); setReviewIndex(0); setFinished(false) }} aria-label={`Remove ${item.word}`}><Icon name="close" size={19}/></button></div>)}</div>}</>}
+        {tab === 'words' && <><header className="section-header"><h1>Saved words<span className="period">.</span></h1></header>{words.length === 0 ? <div className="empty"><Icon name="bookmark" size={40}/><h2>Your collection begins here.</h2><p>Read a story, tap a word, and save it to keep learning.</p><button className="primary" onClick={() => setTab('read')}>Start reading →</button></div> : <div className="saved-list">{words.map(item => <div className="saved-item" key={item.word}><div><h2 className="saved-word-title"><button className="saved-word-open" onClick={() => { stopSpeech(); clearTimeout(sheetCloseTimerRef.current); setSheetClosing(false); setSelectedGlossaryEntry(null); setSelectedSurface(''); setSelected(item.word) }}>{item.word}</button></h2></div><button onClick={() => { setWords(current => current.filter(w => w.word !== item.word)); setReviewIndex(0); setFinished(false) }} aria-label={`Remove ${item.word}`}><Icon name="close" size={19}/></button></div>)}</div>}</>}
         {tab === 'review' && <><header className="section-header"><h1>Daily review<span className="period">.</span></h1></header>{words.length === 0 ? <div className="empty"><Icon name="layers" size={42}/><h2>Nothing to review yet.</h2><button className="primary" onClick={() => setTab('read')}>Start reading →</button></div> : finished ? <div className="empty"><Icon name="check" size={44}/><h2>Beautiful work.</h2><button className="primary" onClick={() => { setFinished(false); setReviewIndex(0); setRevealed(false) }}>Review again →</button></div> : <><button className="flashcard review-card" aria-label={revealed ? 'Show word' : 'Show meaning'} onClick={() => setRevealed(r => !r)}><strong className={revealed ? 'review-meaning' : 'review-word'}>{revealed ? (words[Math.min(reviewIndex, words.length - 1)].definition || offlineMeaning(words[Math.min(reviewIndex, words.length - 1)].word) || 'No definition yet. Open this word in Words to retry.') : words[Math.min(reviewIndex, words.length - 1)].word}</strong></button><button className="primary review-next" onClick={nextReview}>{reviewIndex + 1 >= words.length ? 'Finish review' : 'Next word'} →</button></>}</>}
       </main>
-      <nav className="bottom-nav" aria-label="Main navigation">{[['read', 'book', 'Read'], ['words', 'bookmark', 'Words'], ['review', 'layers', 'Review']].map(([key, icon, label]) => <button key={key} className={tab === key ? 'current' : ''} onClick={() => { if (key === 'read' && tab === 'read' && story && storyIndex === stories.length - 1) changeStory(1); else { setTab(key); closeDictionary() } }}><Icon name={icon} size={25}/><span>{key === 'read' && tab === 'read' && story && storyIndex === stories.length - 1 ? waitingForNext ? 'Finding…' : feedDone ? 'Check again' : 'Next ↓' : label}</span></button>)}</nav>
+      <nav className="bottom-nav" aria-label="Main navigation">{[['read', 'book', 'Read'], ['words', 'bookmark', 'Words'], ['review', 'layers', 'Review']].map(([key, icon, label]) => <button key={key} className={tab === key ? 'current' : ''} onClick={() => { if (key === 'read' && tab === 'read' && story && storyIndex === stories.length - 1) changeStory(1); else { setTab(key); closeDictionary({ immediate: true }) } }}><Icon name={icon} size={25}/><span>{key === 'read' && tab === 'read' && story && storyIndex === stories.length - 1 ? waitingForNext ? 'Finding…' : feedDone ? 'Check again' : 'Next ↓' : label}</span></button>)}</nav>
       {showCredits && story && <div className="overlay" onClick={() => setShowCredits(false)}>
         <section className="definition-sheet sources-sheet" role="dialog" aria-label="Sources and licenses" onClick={event => event.stopPropagation()}>
           <div className="sheet-header"><span>ABOUT THIS ARTICLE</span><button aria-label="Close sources" onClick={() => setShowCredits(false)}>×</button></div>
@@ -1026,8 +1329,20 @@ function App() {
           <button className="primary" onClick={() => setShowCredits(false)}>Back to reading</button>
         </section>
       </div>}
-      {selected && <div className="overlay dictionary-overlay" onClick={closeDictionary}>
-        <div className="definition-sheet dictionary-sheet" role="dialog" aria-modal="true" aria-label={`Meaning of ${selected} in context`} onClick={e => e.stopPropagation()}>
+      {selected && <div ref={sheetOverlayRef} className={'overlay dictionary-overlay' + (sheetClosing ? ' is-closing' : '')} onClick={() => closeDictionary()}>
+        <div
+          ref={sheetRef}
+          className={'definition-sheet dictionary-sheet' + (sheetClosing ? ' is-closing' : '')}
+          role="dialog"
+          aria-modal="true"
+          aria-label={`Meaning of ${selected} in context`}
+          onClick={e => e.stopPropagation()}
+          onTouchStart={onSheetTouchStart}
+          onTouchMove={onSheetTouchMove}
+          onTouchEnd={onSheetTouchEnd}
+          onTouchCancel={onSheetTouchEnd}
+        >
+          <div className="dict-drag-handle" aria-hidden="true" />
           {(() => {
             const headingWord = (lookup.lemma || lookup.surface || selected) || selected
             const displayWord = headingWord ? headingWord.charAt(0).toUpperCase() + headingWord.slice(1) : ''
@@ -1043,10 +1358,20 @@ function App() {
             ].filter(Boolean)
             const allOptions = lookup.options || []
             const showNumbers = allOptions.length > 1
+            const savedDef = String(selectedSaved?.definition || '').trim()
+            const tier1Def = String(lookup.vi_context || lookup.en_def || activeMeaning?.definition || '').trim()
+            const tier1Saved = Boolean(isSaved && tier1Def && (savedDef === tier1Def || savedDef === String(lookup.en_def || '').trim()))
+            const hasMeanings = lookup.status === 'success' && (lookup.tier === 1 || allOptions.length > 0)
+            const handleRowKeyDown = (event, meaningObj) => {
+              if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault()
+                toggleSaveMeaning(meaningObj)
+              }
+            }
             return <>
               <div className="dict-head-row">
                 <h2>{displayWord}</h2>
-                <button type="button" className="dict-close-btn" onClick={closeDictionary} aria-label="Close">
+                <button type="button" className="dict-close-btn" onClick={() => closeDictionary()} aria-label="Close">
                   <Icon name="close" size={20}/>
                 </button>
               </div>
@@ -1061,26 +1386,68 @@ function App() {
                   <Icon name="volume" size={16}/>
                 </button>
               </div>
-              <div className="lookup-details">
+              {hasMeanings && <p className="dict-tap-hint">Tap a meaning to save</p>}
+              <div ref={sheetScrollRef} className="lookup-details">
                 {lookup.status === 'loading' && <p className="dict-status-note">Looking up the word...</p>}
                 {lookup.status === 'success' && <>
                   {lookup.tier === 1 ? (
-                    <div className="contextual-meaning dict-tier1-meaning">
-                      {lookup.vi_context && <p className="dict-vi-meaning">{lookup.vi_context}</p>}
-                      {lookup.en_def && <p className="dict-en-meaning">{lookup.en_def}</p>}
+                    <div
+                      className={'contextual-meaning dict-tier1-meaning dict-sense-tappable' + (tier1Saved ? ' is-saved' : '')}
+                      role="button"
+                      tabIndex={0}
+                      aria-pressed={tier1Saved}
+                      onClick={() => toggleSaveMeaning({
+                        definition: tier1Def,
+                        phonetic: ipaText,
+                        partOfSpeech: posBadge,
+                        example: activeMeaning?.example || '',
+                      })}
+                      onKeyDown={event => handleRowKeyDown(event, {
+                        definition: tier1Def,
+                        phonetic: ipaText,
+                        partOfSpeech: posBadge,
+                        example: activeMeaning?.example || '',
+                      })}
+                    >
+                      <div className="dict-sense-row-head">
+                        <div className="dict-tier1-copy">
+                          {lookup.vi_context && <p className="dict-vi-meaning">{lookup.vi_context}</p>}
+                          {lookup.en_def && <p className="dict-en-meaning">{lookup.en_def}</p>}
+                        </div>
+                        {tier1Saved && <span className="dict-saved-badge"><Icon name="check" size={13}/>Saved</span>}
+                      </div>
                     </div>
                   ) : allOptions.length > 0 ? (
                     <div className="contextual-meaning dict-tier2-meanings">
-                      {allOptions.map((opt, idx) => (
-                        <div key={idx} className={'dict-sense-row' + (showNumbers ? ' dict-sense-numbered' : '')}>
-                          {showNumbers && <span className="dict-sense-num">{idx + 1}</span>}
-                          <div className="dict-sense-body">
-                            <div className="dict-sense-line">
-                              <span className="dict-sense-def">{opt.en_def || opt.definition}</span>
+                      {allOptions.map((opt, idx) => {
+                        const optDef = String(opt.en_def || opt.definition || '').trim()
+                        const rowSaved = Boolean(isSaved && savedDef === optDef)
+                        const payload = {
+                          definition: optDef,
+                          phonetic: opt.phonetic || ipaText,
+                          partOfSpeech: opt.partOfSpeech || posBadge,
+                          example: opt.example || '',
+                        }
+                        return (
+                          <div
+                            key={idx}
+                            role="button"
+                            tabIndex={0}
+                            aria-pressed={rowSaved}
+                            className={'dict-sense-row dict-sense-tappable' + (showNumbers ? ' dict-sense-numbered' : '') + (rowSaved ? ' is-saved' : '')}
+                            onClick={() => toggleSaveMeaning(payload)}
+                            onKeyDown={event => handleRowKeyDown(event, payload)}
+                          >
+                            {showNumbers && <span className="dict-sense-num">{idx + 1}</span>}
+                            <div className="dict-sense-body">
+                              <div className="dict-sense-line">
+                                <span className="dict-sense-def">{optDef}</span>
+                              </div>
                             </div>
+                            {rowSaved && <span className="dict-saved-badge"><Icon name="check" size={13}/>Saved</span>}
                           </div>
-                        </div>
-                      ))}
+                        )
+                      })}
                     </div>
                   ) : (
                     <div className="no-contextual-meaning">
@@ -1089,9 +1456,6 @@ function App() {
                   )}
                 </>}
                 {lookup.status === 'error' && <><p className="dict-status-note">Dictionary temporarily unavailable.</p><button className="retry-link" onClick={() => setRetryCount(n => n + 1)}>Try again</button></>}
-              </div>
-              <div className="sheet-actions dict-actions">
-                <button type="button" className="primary dict-save-btn" onClick={saveWord} disabled={isSaved}>{isSaved ? '✓ Saved' : '+ Save word'}</button>
               </div>
             </>
           })()}

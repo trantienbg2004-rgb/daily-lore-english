@@ -453,7 +453,380 @@ function planUniformWikiPages(item, fits, {
   return pages
 }
 
-export function planAnchoredWikiPages(item, fits, {maxPages = 250, uniformRhythm = false} = {}) {
+// Balanced mobile pagination: separate photo (~40-65w) vs text-only (~80-120w)
+// capacity budgets, consecutive sparse text-only merging, and anti-orphan final-page
+// rebalancing while keeping every image anchored and every token 100% lossless.
+function planBalancedWikiPages(item, fits, {
+  maxPages = 250,
+  photoTargetMax = 65,
+  photoHardMax = 72,
+  textTargetMax = 112,
+  textHardMax = 120,
+  orphanMinWords = 40,
+} = {}) {
+  const originals = item?._sourcePages || item?.pages || []
+  const raw = trim(originals.map(p => p?.text || '').join(' '))
+  if (!raw) return null
+
+  const units = []
+  const seenImages = new Set()
+  const rawAnchors = []
+  for (const rawPage of originals) {
+    const sourcePage = rawPage || {}
+    const start = units.length
+    const pageUnits = sentenceUnits(sourcePage.text)
+    for (const u of pageUnits) units.push(u)
+    const end = units.length
+    if (sourcePage.image && !seenImages.has(sourcePage.image)) {
+      seenImages.add(sourcePage.image)
+      rawAnchors.push({page: sourcePage, start, end: Math.max(end, start + 1)})
+    }
+  }
+  if (!units.length) return null
+
+  const coverIdx = selectCoverAnchorIndex(item, rawAnchors, originals[0]?.text || '')
+  const coverImage = coverIdx >= 0 ? rawAnchors[coverIdx].page : null
+  const secondaryAnchors = rawAnchors.filter((_, idx) => idx !== coverIdx)
+
+  const pages = []
+  const pushPage = (img, text, density = '') => {
+    pages.push({
+      image: img?.image || '',
+      caption: img?.caption || '',
+      ...(img?.imageProvenance ? {imageProvenance: img.imageProvenance} : {}),
+      ...(density ? {density} : {}),
+      text,
+    })
+  }
+
+  const fitsPhotoBudget = (text, cover, image, hard = false) =>
+    wordCount(text) <= (hard ? photoHardMax : photoTargetMax) && Boolean(fits({text, cover, image, density: ''}))
+
+  const fitsTextBudget = (text, cover, hard = false) =>
+    wordCount(text) <= (hard ? textHardMax : textTargetMax) && Boolean(fits({text, cover, image: null, density: ''}))
+
+  const packSentences = (startCursor, startFragment, maxEnd, canFit) => {
+    let text = ''
+    let count = 0
+    const queue = startFragment
+      ? [startFragment, ...units.slice(startCursor + 1, maxEnd)]
+      : units.slice(startCursor, maxEnd)
+    for (const candidate of queue) {
+      const next = text ? `${text} ${candidate}` : candidate
+      if (!canFit(next)) break
+      text = next
+      count++
+    }
+    return {text, count, nextCursor: startCursor + count}
+  }
+
+  let cursor = 0
+  let fragment = ''
+  let nextAnchorIdx = 0
+
+  while ((cursor < units.length || fragment) && pages.length < maxPages) {
+    const isCover = pages.length === 0
+    let pageImage = null
+    let limitEnd = units.length
+
+    if (isCover) {
+      pageImage = coverImage
+    } else if (nextAnchorIdx < secondaryAnchors.length) {
+      const anchor = secondaryAnchors[nextAnchorIdx]
+      if (!fragment && cursor >= anchor.start) {
+        pageImage = anchor.page
+        nextAnchorIdx++
+      } else if (!fragment && cursor < anchor.start) {
+        const textOnlyPack = packSentences(cursor, '', units.length, t => fitsTextBudget(t, false, false))
+        if (textOnlyPack.nextCursor > anchor.start) {
+          const gapText = units.slice(cursor, anchor.start).join(' ')
+          const gapWords = wordCount(gapText)
+          const photoPack = packSentences(cursor, '', units.length, t => fitsPhotoBudget(t, false, anchor.page, false))
+          if (gapWords <= 36 && photoPack.nextCursor > anchor.start) {
+            pageImage = anchor.page
+            nextAnchorIdx++
+          } else {
+            limitEnd = anchor.start
+          }
+        }
+      }
+    }
+
+    const upcomingAnchor = nextAnchorIdx < secondaryAnchors.length ? secondaryAnchors[nextAnchorIdx] : null
+    if (pageImage && upcomingAnchor && limitEnd > upcomingAnchor.start) {
+      limitEnd = upcomingAnchor.start
+    }
+
+    const canFitCurrent = pageImage
+      ? (t, hard = false) => fitsPhotoBudget(t, isCover, pageImage, hard)
+      : (t, hard = false) => fitsTextBudget(t, isCover, hard)
+
+    const packed = packSentences(cursor, fragment, limitEnd, t => canFitCurrent(t, false))
+    let text = packed.text
+    let count = packed.count
+
+    if (count > 0) {
+      if (isCover && pageImage && (cursor + count < limitEnd) && wordCount(text) < 12) {
+        const following = units[cursor + count]
+        const join = part => text ? `${text} ${part}` : part
+        const [first, rest] = splitOversizedSentence(following, part => canFitCurrent(join(part), true))
+        if (wordCount(first) >= 8 && rest && canFitCurrent(join(first), true)) {
+          text = join(first)
+          cursor += count
+          fragment = rest
+          pushPage(pageImage, text)
+          continue
+        }
+      }
+      cursor += count
+      fragment = ''
+    } else if (pageImage) {
+      const current = fragment || units[cursor]
+      if (fits({text: current, cover: isCover, image: pageImage, density: ''})) {
+        text = current
+        fragment = ''
+        cursor++
+      } else {
+        const [first, rest] = splitOversizedSentence(current, t => fits({text: t, cover: isCover, image: pageImage, density: ''}))
+        if (wordCount(first) >= 6 && fits({text: first, cover: isCover, image: pageImage, density: ''})) {
+          text = first
+          if (rest) fragment = rest
+          else { fragment = ''; cursor++ }
+        } else {
+          text = ''
+        }
+      }
+    } else {
+      const current = fragment || units[cursor]
+      if (fits({text: current, cover: isCover, image: null, density: ''})) {
+        text = current
+        fragment = ''
+        cursor++
+      } else {
+        const [first, rest] = splitOversizedSentence(current, t => fits({text: t, cover: isCover, image: null, density: ''}))
+        text = first
+        if (rest) fragment = rest
+        else { fragment = ''; cursor++ }
+      }
+    }
+
+    // Absorb a short bridge before the next image when it fits cleanly on this photo page.
+    if (pageImage && upcomingAnchor && (fragment || cursor < upcomingAnchor.start)) {
+      const gapParts = fragment
+        ? [fragment, ...units.slice(cursor + 1, upcomingAnchor.start)]
+        : units.slice(cursor, upcomingAnchor.start)
+      const gapText = gapParts.join(' ')
+      const gapWords = wordCount(gapText)
+      if (gapWords > 0 && gapWords <= 48) {
+        const combined = text ? `${text} ${gapText}` : gapText
+        if (canFitCurrent(combined, true)) {
+          text = combined
+          cursor = upcomingAnchor.start
+          fragment = ''
+        }
+      }
+    }
+
+    // Absorb a tiny trailing tail after the last photo if it fits cleanly.
+    if (pageImage && !upcomingAnchor && (fragment || cursor < units.length)) {
+      const tailParts = fragment
+        ? [fragment, ...units.slice(cursor + 1)]
+        : units.slice(cursor)
+      const tailText = tailParts.join(' ')
+      const tailWords = wordCount(tailText)
+      if (tailWords > 0 && tailWords <= 36) {
+        const combined = text ? `${text} ${tailText}` : tailText
+        if (canFitCurrent(combined, true)) {
+          text = combined
+          cursor = units.length
+          fragment = ''
+        }
+      }
+    }
+
+    pushPage(pageImage, text)
+  }
+
+  if (cursor < units.length || fragment) return null
+
+  // Stage B: Merge consecutive sparse text-only pages (or absorb a short text-only
+  // bridge into a preceding photo page) whenever the combined text fits cleanly.
+  let merged = true
+  while (merged && pages.length >= 2) {
+    merged = false
+    for (let i = 0; i < pages.length - 1; i++) {
+      if (!pages[i].image && !pages[i + 1].image) {
+        const combined = trim(`${pages[i].text} ${pages[i + 1].text}`)
+        const eitherSparse = wordCount(pages[i].text) < orphanMinWords || wordCount(pages[i + 1].text) < orphanMinWords
+        if (pages.length <= 3 && !eitherSparse) continue
+        if (fitsTextBudget(combined, i === 0, true)) {
+          pages.splice(i, 2, {image: '', caption: '', text: combined})
+          merged = true
+          break
+        }
+      } else if (pages[i].image && !pages[i + 1].image) {
+        const nextWords = wordCount(pages[i + 1].text)
+        const combined = trim(`${pages[i].text} ${pages[i + 1].text}`)
+        if (nextWords <= 48 && (pages.length > 4 || nextWords < orphanMinWords) && fitsPhotoBudget(combined, i === 0, pages[i], true)) {
+          pages.splice(i, 2, {...pages[i], text: combined})
+          merged = true
+          break
+        }
+      }
+    }
+  }
+
+  // Stage C1: Compact & evenly balance every contiguous run of 2+ text-only pages.
+  // First try reducing the run's page count when greedy sentence packing left
+  // slack across 3+ consecutive text-only pages, minimizing variance at the
+  // smallest feasible page count (100% lossless).
+  const compacted = []
+  let runIdx = 0
+  while (runIdx < pages.length) {
+    if (pages[runIdx].image) {
+      compacted.push(pages[runIdx])
+      runIdx++
+      continue
+    }
+    let endIdx = runIdx
+    while (endIdx < pages.length && !pages[endIdx].image) endIdx++
+    const runLen = endIdx - runIdx
+    const runUnits = pages.slice(runIdx, endIdx).flatMap(p => sentenceUnits(p.text))
+    if (runLen >= 2 && runUnits.length >= 2) {
+      const totalW = runUnits.reduce((sum, u) => sum + wordCount(u), 0)
+      const isRunCover = runIdx === 0
+      const fitCache = new Map()
+      const segText = (a, b) => runUnits.slice(a, b).join(' ')
+      const segFits = (a, b, isFirst) => {
+        const key = `${a}:${b}:${isFirst ? 1 : 0}`
+        if (fitCache.has(key)) return fitCache.get(key)
+        const ok = fitsTextBudget(segText(a, b), isFirst, true)
+        fitCache.set(key, ok)
+        return ok
+      }
+      let bestParts = null
+      const minTarget = runLen <= 2 ? runLen : Math.max(2, Math.ceil(totalW / textHardMax))
+      for (let targetP = minTarget; targetP <= runLen; targetP++) {
+        if (targetP > runUnits.length) continue
+        const ideal = totalW / targetP
+        const n = runUnits.length
+        const dp = Array.from({length: targetP + 1}, () => Array(n + 1).fill(Infinity))
+        const prevCut = Array.from({length: targetP + 1}, () => Array(n + 1).fill(-1))
+        dp[0][0] = 0
+        for (let k = 1; k <= targetP; k++) {
+          const isFirst = k === 1 && isRunCover
+          for (let end = k; end <= n - (targetP - k); end++) {
+            for (let start = k - 1; start < end; start++) {
+              if (!Number.isFinite(dp[k - 1][start])) continue
+              if (!segFits(start, end, isFirst)) continue
+              const w = wordCount(segText(start, end))
+              const cost = dp[k - 1][start] + (w - ideal) ** 2 + (w < orphanMinWords ? (orphanMinWords - w) ** 2 * 4 : 0)
+              if (cost < dp[k][end]) {
+                dp[k][end] = cost
+                prevCut[k][end] = start
+              }
+            }
+          }
+        }
+        if (Number.isFinite(dp[targetP][n])) {
+          const parts = []
+          let cur = n
+          for (let k = targetP; k >= 1; k--) {
+            const start = prevCut[k][cur]
+            parts.unshift({image: '', caption: '', text: segText(start, cur)})
+            cur = start
+          }
+          bestParts = parts
+          break
+        }
+      }
+      if (bestParts && trim(bestParts.map(p => p.text).join(' ')) === trim(runUnits.join(' '))) {
+        compacted.push(...bestParts)
+      } else {
+        compacted.push(...pages.slice(runIdx, endIdx))
+      }
+    } else {
+      compacted.push(...pages.slice(runIdx, endIdx))
+    }
+    runIdx = endIdx
+  }
+
+  const balanced = rebalanceTextPages(compacted, ({text, cover}) => fitsTextBudget(text, cover, true))
+
+  // Stage C2: Anti-orphan final-page & post-photo sparse-page rebalancing.
+  // Avoid leaving a tiny text-only page (< ~35% of text capacity) when we can
+  // merge it or borrow 1-2 sentences from its preceding page cleanly.
+  for (let i = balanced.length - 1; i >= 1; i--) {
+    const curr = balanced[i]
+    const prev = balanced[i - 1]
+    if (curr.image) continue
+    const currWords = wordCount(curr.text)
+    if (currWords >= orphanMinWords) continue
+
+    // If preceded by a text-only page, try merging first, else rebalance 1-2 sentences.
+    if (!prev.image) {
+      const combined = trim(`${prev.text} ${curr.text}`)
+      if (fitsTextBudget(combined, i - 1 === 0, true)) {
+        balanced.splice(i - 1, 2, {image: '', caption: '', text: combined})
+        continue
+      }
+      const prevUnits = sentenceUnits(prev.text)
+      if (prevUnits.length >= 2) {
+        const moved = prevUnits.slice()
+        let tail = curr.text
+        while (moved.length >= 2 && wordCount(tail) < orphanMinWords) {
+          const sent = moved[moved.length - 1]
+          const nextPrev = moved.slice(0, -1).join(' ')
+          const nextTail = `${sent} ${tail}`.trim()
+          if (wordCount(nextPrev) < orphanMinWords) break
+          if (!fitsTextBudget(nextTail, false, true)) break
+          moved.pop()
+          tail = nextTail
+        }
+        if (moved.length < prevUnits.length) {
+          prev.text = moved.join(' ')
+          curr.text = tail
+        }
+      }
+      continue
+    }
+
+    // Preceded by a photo page: absorb tiny tail if photo page fits, otherwise borrow 1-2 sentences.
+    const combinedOnPhoto = trim(`${prev.text} ${curr.text}`)
+    if (currWords <= 32 && fitsPhotoBudget(combinedOnPhoto, i - 1 === 0, prev, true)) {
+      balanced.splice(i - 1, 2, {...prev, text: combinedOnPhoto})
+      continue
+    }
+    const prevUnits = sentenceUnits(prev.text)
+    if (prevUnits.length >= 2) {
+      const moved = prevUnits.slice()
+      let tail = curr.text
+      const minPhotoKeep = 18
+      while (moved.length >= 2 && wordCount(tail) < orphanMinWords) {
+        const sent = moved[moved.length - 1]
+        const nextPrev = moved.slice(0, -1).join(' ')
+        const nextTail = `${sent} ${tail}`.trim()
+        if (wordCount(nextPrev) < minPhotoKeep) break
+        if (!fitsTextBudget(nextTail, false, true)) break
+        moved.pop()
+        tail = nextTail
+      }
+      if (moved.length < prevUnits.length) {
+        prev.text = moved.join(' ')
+        curr.text = tail
+      }
+    }
+  }
+
+  if (trim(balanced.map(p => p.text).join(' ')) !== raw) return null
+  return balanced
+}
+
+export function planAnchoredWikiPages(item, fits, {maxPages = 250, uniformRhythm = false, balanced = false} = {}) {
+  if (balanced) {
+    const mobileBalanced = planBalancedWikiPages(item, fits, {maxPages})
+    if (mobileBalanced && mobileBalanced.length) return mobileBalanced
+  }
   if (uniformRhythm) {
     const uniform = planUniformWikiPages(item, fits, {maxPages})
     if (uniform && uniform.length) return uniform
