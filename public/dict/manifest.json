@@ -1,11 +1,19 @@
 {
-  "source": "Kaikki.org Simple English Wiktionary (CC BY-SA 4.0)",
-  "sourceUrl": "https://kaikki.org/dictionary/downloads/simple/simple-extract.jsonl.gz",
-  "frequencySource": "https://raw.githubusercontent.com/hermitdave/FrequencyWords/master/content/2018/en/en_50k.txt",
-  "linesRead": 62247,
-  "words": 12552,
-  "senses": 23268,
-  "lemmas": 16551,
-  "shards": 273,
-  "totalBytes": 3510795
+  "source": "Kaikki.org Simple English Wiktionary + English Wiktionary (CC BY-SA 4.0)",
+  "simpleSourceUrl": "https://kaikki.org/dictionary/downloads/simple/simple-extract.jsonl.gz",
+  "englishSourceUrl": "https://kaikki.org/dictionary/English/kaikki.org-dictionary-English.jsonl.gz",
+  "frequencySource": "https://raw.githubusercontent.com/hermitdave/FrequencyWords/master/content/2018/en/en_full.txt",
+  "simpleLinesRead": 62247,
+  "englishLinesRead": 1499161,
+  "words": 60000,
+  "simpleWordsIncluded": 19546,
+  "properNounsIncluded": 15204,
+  "phrases": 2600,
+  "senses": 126110,
+  "lemmas": 78240,
+  "shards": 506,
+  "shardBytes": 11790364,
+  "lemmasBytes": 1654699,
+  "phrasesBytes": 434178,
+  "totalBytes": 13879241
 }

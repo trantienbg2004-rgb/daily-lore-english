@@ -17,7 +17,7 @@ import { handleReaderArrowKey } from './lib/readerKeyboard.js'
 import {NEWS_LEVELS, NEWS_LEVEL_KEY, isNewsLevel, loadNewsLevel, applyNewsLevel} from './lib/newsLevels.js'
 import { selectContextualMeaning } from './lib/contextualDictionary.js'
 import { tokenizeWithGlossary } from './utils/dictionaryTokenizer.js'
-import { lookupDictionaryTerm, resolveTier1Glossary } from './services/dictionaryService.js'
+import { loadLemmaMap, loadPhraseMap, lookupDictionaryTerm, resolveStaticPhrase, resolveTier1Glossary } from './services/dictionaryService.js'
 
 
 // Keep the complete adaptation for attribution while Read shows short pages.
@@ -372,6 +372,8 @@ function App() {
   const [selected, setSelected] = useState('')
   const [selectedSurface, setSelectedSurface] = useState('')
   const [selectedGlossaryEntry, setSelectedGlossaryEntry] = useState(null)
+  const [staticPhrases, setStaticPhrases] = useState(null)
+  const [lemmaMap, setLemmaMap] = useState(null)
   const [lookup, setLookup] = useState({ status: 'idle', options: [] })
   const [retryCount, setRetryCount] = useState(0)
   const [words, setWords] = useState(initialWords)
@@ -450,6 +452,7 @@ function App() {
   const wasCriticalOnStoriesRef = useRef(false)
   const retryAttemptRef = useRef(0)
   const retryTimerRef = useRef(null)
+  const feedFailedRef = useRef(false)
   const afterBusyRef = useRef(false)
   const checkAfterBusyRef = useRef(false)
   const boundaryProbeRef = useRef({key:'',time:0})
@@ -460,12 +463,20 @@ function App() {
 
   const scheduleRetry = () => {
     clearTimeout(retryTimerRef.current)
+    // Only auto-retry in the background when the reader already has stories on screen.
+    // When empty, stop cleanly so the screen never flickers between loading and error states.
+    if (!storiesRef.current.length) return
     const delay = Math.min(60000, 4000 * 2 ** Math.min(retryAttemptRef.current++, 4))
     retryTimerRef.current = setTimeout(() => loadFeed({forceCheck:true}), delay)
   }
 
-  const loadFeed = async ({forceCheck=false, forceScan=false, urgent=false}={}) => {
+  const loadFeed = async ({forceCheck=false, forceScan=false, urgent=false, manual=false}={}) => {
     if (!historyReadyRef.current) return
+    if (manual) {
+      feedFailedRef.current = false
+      retryAttemptRef.current = 0
+      clearTimeout(retryTimerRef.current)
+    }
     if (feedBusy.current) {
       if (urgent) afterBusyRef.current = true
       if (forceCheck) checkAfterBusyRef.current = true
@@ -518,11 +529,20 @@ function App() {
             const next = Math.min(storyIndexRef.current+1,old.length)
             return [...old.slice(0,next),...immediate,...old.slice(next),...later]
           })
+          feedFailedRef.current = false
         }
         if (result.errors.length) {
           console.warn('Some reader sources temporarily unavailable:',result.errors)
-          if (!appended) {setFeedRetrying(true);scheduleRetry()}
+          if (!appended) {
+            feedFailedRef.current = true
+            setFeedRetrying(true)
+            scheduleRetry()
+          }
+        } else if (!appended && !storiesRef.current.length) {
+          // Stop cleanly if the catalog returned zero readable items rather than looping.
+          feedFailedRef.current = true
         } else {
+          feedFailedRef.current = false
           retryAttemptRef.current = 0
           clearTimeout(retryTimerRef.current)
         }
@@ -532,25 +552,29 @@ function App() {
       }
     } catch (error) {
       console.warn('Feed temporarily unavailable:',error?.message||error)
+      feedFailedRef.current = true
       setFeedRetrying(true)
       scheduleRetry()
     } finally {
       feedBusy.current = false
       setFeedLoading(false)
-      if (checkAfterBusyRef.current) {
+      if (checkAfterBusyRef.current && !feedFailedRef.current) {
         checkAfterBusyRef.current = false
         afterBusyRef.current = false
         queueMicrotask(()=>loadFeed({forceCheck:true,urgent:edgeControllerRef.current.isWaiting()}))
-      } else if (afterBusyRef.current) {
+      } else if (afterBusyRef.current && !feedFailedRef.current) {
         afterBusyRef.current = false
         if (edgeControllerRef.current.isWaiting()) {
           if (doneRef.current) edgeControllerRef.current.noMore()
           else queueMicrotask(()=>loadFeed({forceCheck:false,urgent:true}))
         }
+      } else {
+        checkAfterBusyRef.current = false
+        afterBusyRef.current = false
       }
     }
   }
-  const refreshFeed = () => loadFeed({forceCheck:true,forceScan:true})
+  const refreshFeed = () => loadFeed({forceCheck:true,forceScan:true,manual:true})
   useEffect(() => {
     let stopped = false
     initializeSeenHistory().then(({seen, db, seenAt}) => {
@@ -577,7 +601,7 @@ function App() {
     recommendationProfileRef.current = rememberReading(recommendationProfileRef.current, story, localStorage)
   }, [storyIndex, story])
   useEffect(() => {
-    if (tab !== 'read' || !historyReadyRef.current) return
+    if (tab !== 'read' || !historyReadyRef.current || !stories.length || feedFailedRef.current || feedRetrying) return
     const remaining = queuedUnread(stories.length,storyIndex)
     const low = lowOnStories(remaining)
     const enteredLow = low && !wasLowOnStoriesRef.current
@@ -595,9 +619,9 @@ function App() {
     } else if (!feedLoading && !feedBusy.current && !feedDone && remaining < BUFFER_TARGET) {
       loadFeed()
     }
-  }, [tab, storyIndex, stories.length, feedCursor, feedDone, feedLoading])
+  }, [tab, storyIndex, stories.length, feedCursor, feedDone, feedLoading, feedRetrying])
   useEffect(() => {
-    if (tab !== 'read' || !historyReadyRef.current || !stories.length) return
+    if (tab !== 'read' || !historyReadyRef.current || !stories.length || feedFailedRef.current) return
     // Reaching the last ready story starts an urgent scan immediately — NOT
     // only after navigating backward and forward or repeating the swipe.
     // The key and cooldown prevent tight request loops on a finished archive.
@@ -632,17 +656,20 @@ function App() {
   // Browser readers do not contain GitHub credentials or run a scraper.
   useEffect(() => {
     const check = () => {
-      if (document.visibilityState === 'visible') loadFeed({forceCheck:true})
+      if (document.visibilityState === 'visible' && !feedFailedRef.current) loadFeed({forceCheck:true})
+    }
+    const onOnline = () => {
+      if (document.visibilityState === 'visible') loadFeed({forceCheck:true,manual:true})
     }
     const timer = setInterval(check, REFRESH_INTERVAL_MS)
     document.addEventListener('visibilitychange', check)
     window.addEventListener('focus', check)
-    window.addEventListener('online', check)
+    window.addEventListener('online', onOnline)
     return () => {
       clearInterval(timer)
       document.removeEventListener('visibilitychange', check)
       window.removeEventListener('focus', check)
-      window.removeEventListener('online', check)
+      window.removeEventListener('online', onOnline)
     }
   }, [])
 
@@ -662,7 +689,7 @@ function App() {
     const low = sentence.toLowerCase()
     const targetLow = (highlightTarget || '').toLowerCase()
     if (targetLow && targetLow.includes(' ')) return low.includes(targetLow)
-    return low.split(/[^a-z]+/).includes(targetLow || selected)
+    return low.split(/[^a-z'’-]+/).includes(targetLow || selected) || low.split(/[^a-z]+/).includes(targetLow || selected)
   })?.trim() || (tab !== 'read' && selectedSaved?.sentence) || currentPage?.text || ''
 
   const stopSpeech = () => {
@@ -679,11 +706,35 @@ function App() {
   }
 
   useEffect(() => {
+    let active = true
+    Promise.all([loadPhraseMap(), loadLemmaMap()])
+      .then(([phrases, lemmas]) => {
+        if (!active) return
+        if (phrases && Object.keys(phrases).length) setStaticPhrases(phrases)
+        if (lemmas && Object.keys(lemmas).length) setLemmaMap(lemmas)
+      })
+      .catch(() => {})
+    return () => { active = false }
+  }, [])
+
+  useEffect(() => {
     if (!selected) return
-    // Tier 1 (0ms synchronous): resolve immediately without loading state
+    // Tier 1 (0ms synchronous): article glossary match
     const tier1 = resolveTier1Glossary(selectedSurface || selected, activeGlossary, selectedGlossaryEntry)
     if (tier1) {
       setLookup({ status: 'success', ...tier1 })
+      return
+    }
+    // Tier 1.5 (0ms synchronous): static multi-word phrase match
+    const tier15 = resolveStaticPhrase(
+      selectedSurface || selected,
+      staticPhrases,
+      lemmaMap,
+      selectedGlossaryEntry,
+      selectedSentence
+    )
+    if (tier15) {
+      setLookup({ status: 'success', ...tier15 })
       return
     }
     let active = true
@@ -692,12 +743,13 @@ function App() {
       sentence: selectedSentence,
       glossary: activeGlossary,
       glossaryEntry: selectedGlossaryEntry,
+      phraseMap: staticPhrases,
       offlineFallback: offlineMeaning,
     })
       .then(result => { if (active) setLookup({ status: 'success', ...result }) })
       .catch(() => { if (active) setLookup({ status: 'error', options: [] }) })
     return () => { active = false }
-  }, [selected, selectedSurface, selectedGlossaryEntry, selectedSentence, activeGlossary, retryCount])
+  }, [selected, selectedSurface, selectedGlossaryEntry, selectedSentence, activeGlossary, staticPhrases, lemmaMap, retryCount])
 
   const saveWord = () => {
     if (!selected || isSaved) return
@@ -896,7 +948,7 @@ function App() {
   const renderStory = (item, index, pageNumber, interactive) => {
     const closing = pageNumber === item.pages.length
     const itemPage = closing ? null : (item.pages[pageNumber] || item.pages[0])
-    const tokens = closing ? [] : tokenizeWithGlossary(itemPage.text, item.glossary)
+    const tokens = closing ? [] : tokenizeWithGlossary(itemPage.text, item.glossary, staticPhrases, lemmaMap)
     const total = item.pages.length + 1 // always a distinct source / next-story page
     return <div className="reader-gesture" aria-hidden={!interactive} onTouchStart={interactive ? startGesture : undefined} onTouchMove={interactive ? moveGesture : undefined} onTouchEnd={interactive ? endGesture : undefined} onTouchCancel={interactive ? cancelGesture : undefined} onPointerDown={interactive ? startPointer : undefined} onPointerMove={interactive ? movePointer : undefined} onPointerUp={interactive ? endPointer : undefined} onPointerCancel={interactive ? () => {pointerGesture.current = null; releasePageSurface()} : undefined}>
       <header className="topbar lore-reader-topbar">
@@ -975,8 +1027,7 @@ function App() {
       {selected && <div className="overlay dictionary-overlay" onClick={closeDictionary}>
         <div className="definition-sheet dictionary-sheet" role="dialog" aria-modal="true" aria-label={`Meaning of ${selected} in context`} onClick={e => e.stopPropagation()}>
           {(() => {
-            const isPhrase = lookup.type && lookup.type !== 'word'
-            const headingWord = (isPhrase ? (lookup.surface || lookup.lemma) : (lookup.lemma || selected)) || selected
+            const headingWord = (lookup.lemma || lookup.surface || selected) || selected
             const displayWord = headingWord ? headingWord.charAt(0).toUpperCase() + headingWord.slice(1) : ''
             const posBadge = lookup.pos || activeMeaning?.partOfSpeech || ''
             const cefrBadge = lookup.cefr || activeMeaning?.cefr || ''

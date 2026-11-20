@@ -1,0 +1,88 @@
+name: Auto Wiki Publish
+
+on:
+  schedule:
+    # Run once daily at 03:00 UTC (10:00 Vietnam time)
+    - cron: '0 3 * * *'
+  workflow_dispatch:
+    inputs:
+      max_articles:
+        description: 'Number of articles to publish in this batch (default: 15)'
+        required: false
+        default: '15'
+        type: string
+      rebuild_queue:
+        description: 'Force refresh Wikipedia candidate queue before publishing'
+        required: false
+        default: false
+        type: boolean
+
+permissions:
+  contents: write
+
+concurrency:
+  group: auto-wiki-publish
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Setup Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Top up Wikipedia candidate queue if low
+        env:
+          FORCE_REBUILD: ${{ github.event.inputs.rebuild_queue || 'false' }}
+        run: |
+          if [ "$FORCE_REBUILD" = "true" ] || [ ! -f data/wiki_queue.json ]; then
+            node scripts/build_wiki_queue.mjs --target-per-topic=160
+          else
+            node scripts/build_wiki_queue.mjs --target-per-topic=160 --min-pending=200
+          fi
+
+      - name: Publish Wikipedia batch with Gemini Flash-Lite
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_API_KEY_2: ${{ secrets.GEMINI_API_KEY_2 }}
+          GEMINI_API_KEY_3: ${{ secrets.GEMINI_API_KEY_3 }}
+          SAGA_IMAGE_TEST_API_KEY: ${{ secrets.SAGA_IMAGE_TEST_API_KEY }}
+          GEMINI_MODEL: gemini-3.1-flash-lite
+          MAX_ARTICLES: ${{ github.event.inputs.max_articles || '15' }}
+          GEMINI_DELAY_MS: '8000'
+        run: |
+          if [ -z "$GEMINI_API_KEY" ] && [ -z "$GEMINI_API_KEY_2" ] && [ -z "$GEMINI_API_KEY_3" ] && [ -z "$SAGA_IMAGE_TEST_API_KEY" ]; then
+            echo "ERROR: No Gemini API key secret is configured. Add GEMINI_API_KEY (and optional GEMINI_API_KEY_2 / GEMINI_API_KEY_3) in Settings -> Secrets and variables -> Actions."
+            exit 1
+          fi
+          node scripts/publish_wiki_batch.mjs
+
+      - name: Verify Wiki catalog integrity
+        run: node scripts/build-reader-index.mjs
+
+      - name: Commit and push published articles
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/wiki-reader data/wiki_queue.json
+          if git diff --cached --quiet; then
+            echo "No new catalog or queue changes to commit."
+            exit 0
+          fi
+          TOTAL=$(node -e "const m=JSON.parse(require('fs').readFileSync('public/wiki-reader/manifest.json','utf8')); console.log(m.total)")
+          git commit -m "chore(wiki): auto-publish batch (${TOTAL} total articles)"
+          git pull --rebase origin main
+          git push origin HEAD:main

@@ -9,11 +9,11 @@ export const readableStory = item => {
   // Publisher RSS previews are deliberately short. Never fabricate additional text.
   if (item.contentType === 'news-preview') return false // V22-C rejects RSS snippets
   if (item.contentType === 'wiki') return item.editorialVersion === 2 && item.readingKind === 'full' &&
-    item.pages.length >= 5 && item.pages.length <= 7 && words >= 175 &&
-    item.pages[0]?.image && ['A1-A2','B1-B2','C1-C2'].every(level =>
+    item.pages.length >= 4 && item.pages.length <= 7 && words >= 120 &&
+    item.pages.some(p => Boolean(p?.image)) && ['A1-A2','B1-B2','C1-C2'].every(level =>
       Array.isArray(item.levelVariants?.[level]?.pages) &&
-      item.levelVariants[level].pages.length >= 5 && item.levelVariants[level].pages.length <= 7 &&
-      item.levelVariants[level].pages[0]?.image)
+      item.levelVariants[level].pages.length >= 4 && item.levelVariants[level].pages.length <= 7 &&
+      item.levelVariants[level].pages.some(p => Boolean(p?.image)))
   if (item.contentType === 'lore') return item.editorialVersion === 1 && item.readingKind === 'full' && item.pages.length >= 3 && words >= 400 && words <= 800 && item.pages.some(p => p.image && p.imageProvenance?.license)
   return item.contentType === 'news' && item.readingKind === 'full' && item.pages.length >= 1 && words >= 10
 }

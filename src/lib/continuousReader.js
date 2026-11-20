@@ -30,7 +30,7 @@ export async function refreshCatalog({fetchImpl,baseUrl,pools=[],now=Date.now(),
   if(eligibleManifest(m,WIKI_POOL)){
    const index=await getIndex(fetchImpl,baseUrl,WIKI_POOL,m,now)
    const p=old.get(WIKI_POOL),known=new Set(p?.index?.map(entry=>entry.id)||[])
-   for(const entry of index)if(entry.contentType==='wiki'&&!known.has(entry.id))newIds.push(entry.id)
+   if(p?.index)for(const entry of index)if(entry.contentType==='wiki'&&!known.has(entry.id))newIds.push(entry.id)
    next.push(p?.version===m.version?p:{path:WIKI_POOL,manifest:m,version:m.version,index,
     order:newsChunkOrder(m.count),cursor:0,done:false,cache:new Map()})
    wikiReady=true
