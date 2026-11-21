@@ -12,6 +12,7 @@
     "test": "node --test scripts/test/*.test.mjs",
     "wiki:auto": "node scripts/wiki-auto.mjs",
     "wiki:audit": "node scripts/wiki-audit.mjs",
+    "wiki:audit-images": "node scripts/audit_wiki_images.mjs",
     "wiki:queue": "node scripts/build_wiki_queue.mjs",
     "wiki:batch": "node scripts/publish_wiki_batch.mjs",
     "audit:dict": "node scripts/audit_missing_words.mjs"

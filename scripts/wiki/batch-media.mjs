@@ -1,11 +1,18 @@
-/** Strict real-photo filter and optional linked Commons-category matcher for SAGA Wiki batch publishing. */
+/** Strict section-bound real-photo verification & alignment guard for SAGA Wiki batch publishing.
+ *
+ * ZERO external fallbacks:
+ * - Commons Category / Wikidata P373 photo lookups are DISABLED.
+ * - Wikipedia prop=pageimages heuristic promotion is DISABLED.
+ * - 100% of images MUST be wikipedia-embedded photos present in the source Wikipedia article's HTML.
+ * - Page 1 strictly requires a Section 0 (Lead/Infobox) photo.
+ * - Pages 2..N attach a photo ONLY when explicitly bound & aligned with that page's text/section.
+ */
 import {load} from 'cheerio'
 import {wikiJson} from './source.mjs'
 import {eraCompatible} from './media.mjs'
 
-const WIKI_API='https://en.wikipedia.org/w/api.php'
 const COMMONS_API='https://commons.wikimedia.org/w/api.php'
-const WIKIDATA_API='https://www.wikidata.org/w/api.php'
+const LEVELS=['A1-A2','B1-B2','C1-C2']
 
 export const ALLOWED_PHOTO_MIMES=Object.freeze(['image/jpeg','image/png','image/webp'])
 export const MIN_PHOTO_WIDTH=640
@@ -35,6 +42,14 @@ function canonicalLicenseUrl(license,rawUrl){
  const ccMatch=lower.match(/^cc\s+by(-sa)?\s+(2\.0|2\.5|3\.0|4\.0)\b/)
  if(ccMatch)return `https://creativecommons.org/licenses/by${ccMatch[1]||''}/${ccMatch[2]}/`
  return ''
+}
+
+function resolveSectionIndex(figure){
+ if(Number.isInteger(figure?.sectionIndex)&&figure.sectionIndex>=0)return figure.sectionIndex
+ if(figure?.isLeadImage===true||figure?.isInfobox===true)return 0
+ const sec=String(figure?.sectionHeading||figure?.heading||figure?.section||'').trim()
+ if(!sec||/^(?:lead|infobox)$/i.test(sec))return 0
+ return 1
 }
 
 /**
@@ -80,7 +95,7 @@ export function verifyRealPhoto(figure,infoPage,{sourceUrl='',sourceRevisionUrl=
 
  if(/^true$/i.test(nonFreeFlag))return {ok:false,reason:'non-free-flag',fileTitle}
  if(BLOCKED_META.test(`${license} ${usageTerms} ${restrictions} ${categories}`))return {ok:false,reason:'blocked-rights-terms',fileTitle}
- if(BLOCKED_GRAPHIC_DESC.test(`${description} ${figure?.caption||''} ${categories}`))return {ok:false,reason:'blocked-graphic-description',fileTitle}
+ if(BLOCKED_GRAPHIC_DESC.test(`${description} ${figure?.caption||''} ${figure?.wikiCaption||''} ${categories}`))return {ok:false,reason:'blocked-graphic-description',fileTitle}
  if(mime==='image/png'&&/\b(?:map|chart|graph|diagram|logo|flag|icon|screenshot|interface)\b/i.test(`${fileTitle} ${description} ${categories}`))
   return {ok:false,reason:'blocked-png-graphic',fileTitle}
 
@@ -94,9 +109,12 @@ export function verifyRealPhoto(figure,infoPage,{sourceUrl='',sourceRevisionUrl=
  const credit=(artist||(isPd?'Wikimedia Commons contributor (Public Domain)':'')).slice(0,250)
  if(!credit)return {ok:false,reason:'missing-attribution',fileTitle}
 
- const caption=String(figure?.caption||figure?.alt||description||fileTitle.replace(/^File:/i,'').replace(/\.[^.]+$/,'').replace(/_/g,' '))
+ const wikiCaption=String(figure?.wikiCaption||figure?.caption||figure?.alt||description||fileTitle.replace(/^File:/i,'').replace(/\.[^.]+$/,'').replace(/_/g,' '))
   .replace(/\s+/g,' ').trim().slice(0,320)
- if(!caption)return {ok:false,reason:'missing-caption',fileTitle}
+ if(!wikiCaption)return {ok:false,reason:'missing-caption',fileTitle}
+
+ const sectionIndex=resolveSectionIndex(figure)
+ const sectionHeading=sectionIndex===0?'Lead':(String(figure?.sectionHeading||figure?.heading||figure?.section||'Body').trim()||'Body')
 
  return {
   ok:true,
@@ -108,11 +126,16 @@ export function verifyRealPhoto(figure,infoPage,{sourceUrl='',sourceRevisionUrl=
    mime,
    width,
    height,
-   caption,
+   caption:wikiCaption,
+   wikiCaption,
    alt:String(figure?.alt||'').trim(),
    description,
    date,
-   section:String(figure?.heading||figure?.section||'Lead').trim()||'Lead',
+   section:sectionHeading,
+   sectionIndex,
+   sectionHeading,
+   isLeadImage:sectionIndex===0,
+   isInfobox:Boolean(figure?.isInfobox),
    position:Number.isFinite(figure?.position)?figure.position:999,
    originType,
    provenance:{
@@ -153,227 +176,320 @@ export async function fetchCommonsImageInfo(fileTitles,{fetchImpl=fetch,spacingM
  return byTitle
 }
 
-/** Fetch the article's lead pageimage (infobox hero photo) and Wikidata Q-ID via MediaWiki API. */
-export async function fetchArticleMediaMeta(source,{fetchImpl=fetch,spacingMs=250}={}){
- const u=new URL(WIKI_API)
- for(const [k,v] of Object.entries({
-  action:'query',format:'json',formatversion:'2',
-  pageids:String(source.pageId),
-  prop:'pageimages|pageprops',
-  piprop:'name',
-  ppprop:'wikibase_item'
- }))u.searchParams.set(k,v)
- const data=await wikiJson(u.href,{fetchImpl,spacingMs})
- const page=data?.query?.pages?.[0]||{}
- const leadFile=page.pageimage?`File:${String(page.pageimage).replace(/_/g,' ')}`:''
- const wikibaseItem=String(page.pageprops?.wikibase_item||'').trim()
- return {leadFile,wikibaseItem}
-}
-
 /**
- * Collect and strictly verify all real, free-licensed photos embedded in a Wikipedia article.
- * Includes both body <figure> items and the article's lead/infobox pageimage.
+ * Collect and strictly verify ONLY real, commercial-safe photos embedded directly in the
+ * source Wikipedia article's HTML sections.
+ *
+ * NEVER calls prop=pageimages (which pulls Section 2/3 photos onto Lead when Lead has none)
+ * and NEVER queries external Commons categories or Wikidata P373.
  */
 export async function collectVerifiedArticlePhotos(source,{usedImages=new Set(),fetchImpl=fetch,spacingMs=250,limit=24}={}){
  const candidates=[]
  const seen=new Set()
- let wikibaseItem=''
- try{
-  const meta=await fetchArticleMediaMeta(source,{fetchImpl,spacingMs})
-  wikibaseItem=meta.wikibaseItem
-  if(meta.leadFile&&!BLOCKED_EXT.test(meta.leadFile)&&!BLOCKED_FILE_NAME.test(meta.leadFile.replace(/^File:/i,''))){
-   seen.add(meta.leadFile.toLowerCase())
-   candidates.push({
-    fileTitle:meta.leadFile,
-    caption:source.sourceTitle,
-    alt:source.sourceTitle,
-    heading:'Lead',
-    position:-1,
-    isLeadImage:true
-   })
-  }
- }catch{
-  // Continue using parsed figures if metadata lookup fails
- }
 
- for(const fig of source.figures||[]){
-  const key=String(fig.fileTitle||'').toLowerCase()
-  if(!key||seen.has(key))continue
+ const rawFigures=Array.isArray(source?.sections)&&source.sections.length
+  ?source.sections.flatMap(sec=>(sec.embeddedImages||[]).map(img=>({
+    ...img,
+    sectionIndex:sec.sectionIndex,
+    sectionHeading:sec.heading,
+    heading:sec.heading
+   })))
+  :(source?.figures||[])
+
+ for(const fig of rawFigures){
+  const title=String(fig?.fileTitle||'').trim()
+  const key=title.toLowerCase()
+  if(!title||!/^File:/i.test(title)||seen.has(key))continue
   seen.add(key)
-  candidates.push({...fig,isLeadImage:false})
+  candidates.push(fig)
   if(candidates.length>=limit)break
  }
 
- if(!candidates.length)return {photos:[],rejected:[],wikibaseItem}
+ if(!candidates.length){
+  return {photos:[],leadPhotos:[],bodyPhotos:[],hasLeadPhoto:false,rejected:[]}
+ }
+
  const infoMap=await fetchCommonsImageInfo(candidates.map(c=>c.fileTitle),{fetchImpl,spacingMs})
- const photos=[],rejected=[]
+ const photos=[]
+ const rejected=[]
+
  for(const fig of candidates){
   const check=verifyRealPhoto(fig,infoMap.get(fig.fileTitle),{
    sourceUrl:source.sourceUrl,
    sourceRevisionUrl:source.sourceRevisionUrl,
    originType:'wikipedia-embedded'
   })
-  if(!check.ok){rejected.push({fileTitle:fig.fileTitle,reason:check.reason});continue}
-  if(usedImages.has(check.photo.url)||usedImages.has(check.photo.provenance.imagePageUrl)){
-   rejected.push({fileTitle:fig.fileTitle,reason:'image-already-used'})
+  if(!check.ok){
+   rejected.push({fileTitle:fig.fileTitle,sectionIndex:resolveSectionIndex(fig),reason:check.reason})
    continue
   }
-  // Prefer richer caption if lead image also appears in body figures
-  const matchingBody=(source.figures||[]).find(f=>f.fileTitle.toLowerCase()===fig.fileTitle.toLowerCase())
-  if(matchingBody?.caption&&fig.isLeadImage){
-   check.photo.caption=matchingBody.caption
+  if(usedImages.has(check.photo.url)||usedImages.has(check.photo.provenance.imagePageUrl)){
+   rejected.push({fileTitle:fig.fileTitle,sectionIndex:check.photo.sectionIndex,reason:'image-already-used'})
+   continue
   }
-  photos.push({...check.photo,isLeadImage:!!fig.isLeadImage})
+  photos.push(check.photo)
  }
 
- // Sort: lead/infobox JPEG/WebP first, then body photos by position
+ // Sort: Section 0 (Lead/Infobox) first, then body sections in exact article order
  photos.sort((a,b)=>{
-  const aLead=a.isLeadImage?1:0,bLead=b.isLeadImage?1:0
-  if(aLead!==bLead)return bLead-aLead
+  if(a.sectionIndex!==b.sectionIndex)return a.sectionIndex-b.sectionIndex
+  const aInfo=a.isInfobox?1:0,bInfo=b.isInfobox?1:0
+  if(aInfo!==bInfo)return bInfo-aInfo
   const aJpg=/image\/(?:jpeg|webp)/i.test(a.mime)?1:0,bJpg=/image\/(?:jpeg|webp)/i.test(b.mime)?1:0
   if(aJpg!==bJpg)return bJpg-aJpg
   return a.position-b.position
  })
 
- return {photos,rejected,wikibaseItem}
+ // Assign stable numbered image IDs (IMG_0, IMG_1, ...) for prompt binding
+ const numbered=photos.map((photo,idx)=>({...photo,imageId:`IMG_${idx}`}))
+ const leadPhotos=numbered.filter(p=>p.sectionIndex===0)
+ const bodyPhotos=numbered.filter(p=>p.sectionIndex>0)
+
+ return {
+  photos:numbered,
+  leadPhotos,
+  bodyPhotos,
+  hasLeadPhoto:leadPhotos.length>0,
+  rejected
+ }
 }
 
 /**
- * Optional secondary photo lookup: checks ONLY the article's own linked Wikimedia Commons category
- * (via Wikidata P373). Never searches arbitrary Commons queries.
+ * DISABLED by SAGA data-integrity policy.
+ * External Commons Category / Wikidata P373 fallbacks are permanently disabled so 100% of
+ * article images come exclusively from wikipedia-embedded HTML photos of the source article.
  */
-export async function fetchLinkedCommonsCategoryPhotos(source,wikibaseItem,{usedImages=new Set(),excludeFiles=new Set(),fetchImpl=fetch,spacingMs=250,limit=18}={}){
- if(!wikibaseItem||!/^Q\d+$/.test(wikibaseItem))return {category:'',photos:[]}
- let categoryName=''
- try{
-  const wdUrl=new URL(WIKIDATA_API)
-  for(const [k,v] of Object.entries({action:'wbgetclaims',entity:wikibaseItem,property:'P373',format:'json'}))wdUrl.searchParams.set(k,v)
-  const wdData=await wikiJson(wdUrl.href,{fetchImpl,spacingMs})
-  categoryName=String(wdData?.claims?.P373?.[0]?.mainsnak?.datavalue?.value||'').trim()
- }catch{
-  return {category:'',photos:[]}
- }
- if(!categoryName)return {category:'',photos:[]}
+export async function fetchLinkedCommonsCategoryPhotos(){
+ return {category:'',photos:[],disabled:true}
+}
 
- let files=[]
- try{
-  const cmUrl=new URL(COMMONS_API)
-  for(const [k,v] of Object.entries({
-   action:'query',format:'json',formatversion:'2',
-   list:'categorymembers',cmtitle:`Category:${categoryName}`,cmtype:'file',cmlimit:String(limit)
-  }))cmUrl.searchParams.set(k,v)
-  const cmData=await wikiJson(cmUrl.href,{fetchImpl,spacingMs})
-  files=(cmData?.query?.categorymembers||[]).map(m=>m.title).filter(title=>
-   /^File:/i.test(title)&&!BLOCKED_EXT.test(title)&&!BLOCKED_FILE_NAME.test(title.replace(/^File:/i,''))&&
-   !excludeFiles.has(title.toLowerCase())
-  )
- }catch{
-  return {category:categoryName,photos:[]}
- }
- if(!files.length)return {category:categoryName,photos:[]}
+function buildPhotoSubject(photo){
+ const cleanFile=String(photo?.fileTitle||'').replace(/^File:/i,'').replace(/\.[^.]+$/,'').replace(/_/g,' ')
+ return `${photo?.wikiCaption||''} ${photo?.caption||''} ${photo?.description||''} ${photo?.sectionHeading||photo?.section||''} ${cleanFile}`.trim()
+}
 
- const infoMap=await fetchCommonsImageInfo(files,{fetchImpl,spacingMs})
- const photos=[]
- for(const fileTitle of files){
-  const check=verifyRealPhoto({fileTitle,heading:'Commons',position:500},infoMap.get(fileTitle),{
-   sourceUrl:source.sourceUrl,
-   sourceRevisionUrl:source.sourceRevisionUrl,
-   originType:'wikimedia-commons'
+function checkBodyPhotoAlignment(photo,pageIndex,variants,{source,evidence=[]}={}){
+ const texts=LEVELS.map(l=>String(variants[l]?.pages?.[pageIndex]?.text||''))
+ if(!eraCompatible(photo,texts))return {ok:false,reason:'era-mismatch'}
+
+ const photoSectionIdx=resolveSectionIndex(photo)
+ const photoSectionHeading=String(photo.sectionHeading||photo.section||'').trim().toLowerCase()
+ const evidenceById=new Map((evidence||[]).map(row=>[row.id,{
+  sectionIndex:Number.isInteger(row.sectionIndex)?row.sectionIndex:(/^(?:lead|infobox)$/i.test(String(row.heading||''))?0:1),
+  heading:String(row.heading||'Lead').trim().toLowerCase()
+ }]))
+
+ const subject=buildPhotoSubject(photo)
+ const titleTerms=normalizeTerms(source?.sourceTitle||'')
+ const subjectTerms=normalizeTerms(subject)
+ const specificTerms=[...subjectTerms].filter(t=>!titleTerms.has(t))
+ const overlaps=texts.map(t=>overlapCount(subject,t))
+ const specificHits=texts.map(t=>specificTerms.filter(word=>normalizeTerms(t).has(word)).length)
+
+ // Check whether this page cites evidence from the exact Wikipedia section where this photo is embedded
+ const sectionHitCount=LEVELS.filter(l=>{
+  const ids=variants[l]?.pages?.[pageIndex]?.evidenceIds||[]
+  return ids.some(id=>{
+   const meta=evidenceById.get(id)
+   if(!meta)return false
+   if(photoSectionIdx>0&&meta.sectionIndex===photoSectionIdx)return true
+   if(photoSectionHeading&&photoSectionHeading!=='lead'&&meta.heading===photoSectionHeading)return true
+   return false
   })
-  if(!check.ok)continue
-  if(usedImages.has(check.photo.url)||usedImages.has(check.photo.provenance.imagePageUrl))continue
-  photos.push(check.photo)
+ }).length
+ const sectionMatched=photoSectionIdx>0&&sectionHitCount>=2
+
+ // Case 1: Photo is bound to this page's exact Wikipedia section AND shares topic/entity vocabulary
+ if(sectionMatched&&(Math.max(...overlaps)>=1||Math.max(...specificHits)>=1)){
+  return {ok:true,reason:'section-and-topic-match',score:8+overlaps.reduce((a,b)=>a+b,0)+Math.min(...specificHits)*2}
  }
- return {category:categoryName,photos}
+
+ // Case 2: Clear specific entity/topic overlap across all 3 CEFR levels
+ if(Math.min(...specificHits)>=1&&Math.min(...overlaps)>=1){
+  return {ok:true,reason:'entity-overlap-match',score:overlaps.reduce((a,b)=>a+b,0)+Math.min(...specificHits)*3}
+ }
+ if(Math.min(...overlaps)>=2){
+  return {ok:true,reason:'strong-topic-overlap',score:overlaps.reduce((a,b)=>a+b,0)}
+ }
+
+ return {ok:false,reason:'low-entity-and-section-alignment'}
 }
 
 /**
- * Assigns Page 1 real photo (hard requirement, identical across all 3 levels) and optional
- * matching extra photos for Pages 2-6 (article photos first, then linked Commons category only on clear match).
+ * Programmatic alignment guard executed before saving any article.
+ * Verifies:
+ * (a) Every image is wikipedia-embedded from this exact article's verified photo set.
+ * (b) pages[0] strictly uses a Section 0 (Lead/Infobox) image.
+ * (c) Every image on pages[1..N] shares real entity/topic overlap or bound section alignment;
+ *     any failing Page 2-7 image is cleanly stripped to image: "" (text-only) rather than
+ *     showing a mismatched photo.
  */
-export function assignBatchPhotos(levelVariants,{source,articlePhotos=[],commonsPhotos=[],evidence=[],usedImages=new Set()}={}){
- const levels=['A1-A2','B1-B2','C1-C2']
- if(!articlePhotos.length)return {ok:false,reason:'no-page1-real-photo'}
-
+export function validateImageAlignment(levelVariants,{source,verifiedPhotos=[],evidence=[]}={}){
  const variants=structuredClone(levelVariants)
- const pageCount=Math.min(...levels.map(l=>variants[l]?.pages?.length||0))
- if(pageCount<5)return {ok:false,reason:'insufficient-pages'}
+ const pageCount=Math.min(...LEVELS.map(l=>variants[l]?.pages?.length||0))
+ const strippedImages=[]
 
- const chosenUrls=new Set(usedImages)
+ if(pageCount<1)return {ok:false,reason:'insufficient-pages',levelVariants:variants,strippedImages}
+
+ const embeddedByUrl=new Map()
+ for(const p of verifiedPhotos){
+  const origin=p?.provenance?.originType||p?.originType
+  if(origin!=='wikipedia-embedded')continue
+  if(p?.url)embeddedByUrl.set(p.url,p)
+ }
+
+ // (a) & (b): Hard verify Page 1 uses a Section 0 wikipedia-embedded photo identically across all 3 levels
+ const p0Urls=LEVELS.map(l=>String(variants[l]?.pages?.[0]?.image||'').trim())
+ const p0Url=p0Urls[0]
+ if(!p0Url||!p0Urls.every(u=>u===p0Url)){
+  return {ok:false,reason:'page1-missing-lead-image',levelVariants:variants,strippedImages}
+ }
+ const p0Photo=embeddedByUrl.get(p0Url)
+ if(!p0Photo||resolveSectionIndex(p0Photo)!==0){
+  return {ok:false,reason:'page1-not-section0-lead-image',levelVariants:variants,strippedImages}
+ }
+
+ const usedUrls=new Set([p0Url])
+
+ // (c): Validate Pages 2..N; strip any misaligned, duplicate, or non-embedded image cleanly
+ const stripPageImage=(pageIndex,fileTitle,reason)=>{
+  for(const level of LEVELS){
+   const page=variants[level].pages[pageIndex]
+   page.image=''
+   page.caption=''
+   delete page.imageProvenance
+   delete page.imageId
+  }
+  strippedImages.push({pageIndex,fileTitle:fileTitle||'',reason})
+ }
+
+ for(let pageIndex=1;pageIndex<pageCount;pageIndex++){
+  const urls=LEVELS.map(l=>String(variants[l]?.pages?.[pageIndex]?.image||'').trim())
+  const primaryUrl=urls.find(Boolean)||''
+  if(!primaryUrl)continue
+
+  if(!urls.every(u=>u===primaryUrl)){
+   stripPageImage(pageIndex,primaryUrl,'level-image-mismatch')
+   continue
+  }
+  const photo=embeddedByUrl.get(primaryUrl)
+  if(!photo){
+   stripPageImage(pageIndex,primaryUrl,'non-embedded-or-unverified-image')
+   continue
+  }
+  if(usedUrls.has(primaryUrl)){
+   stripPageImage(pageIndex,photo.fileTitle,'duplicate-image-across-pages')
+   continue
+  }
+  const check=checkBodyPhotoAlignment(photo,pageIndex,variants,{source,evidence})
+  if(!check.ok){
+   stripPageImage(pageIndex,photo.fileTitle,check.reason)
+   continue
+  }
+  usedUrls.add(primaryUrl)
+ }
+
+ return {ok:true,levelVariants:variants,strippedImages}
+}
+
+function normalizeImageId(value){
+ if(value===null||value===undefined)return null
+ const str=String(value).trim().toUpperCase()
+ if(!str||str==='NULL'||str==='NONE')return null
+ return /^IMG_\d+$/.test(str)?str:null
+}
+
+function chooseConciseCaption(pageCaption,photo){
+ const raw=String(pageCaption||'').replace(/\s+/g,' ').trim()
+ if(raw&&raw.length<=65&&raw.split(/\s+/).length>=3)return raw
+ return String(photo.caption||photo.wikiCaption||'').replace(/\s+/g,' ').trim()
+}
+
+/**
+ * Section-bound photo assignment for SAGA Wiki batch articles.
+ * - Rejects ALL non-wikipedia-embedded photos (external commonsPhotos are ignored).
+ * - Strictly requires a Section 0 (Lead/Infobox) photo for Page 1.
+ * - Respects Gemini's explicit page.imageId choices (never force-assigning leftover images).
+ * - Runs validateImageAlignment() to guarantee every surviving image is grounded & aligned.
+ */
+export function assignBatchPhotos(levelVariants,{source,articlePhotos=[],evidence=[],usedImages=new Set()}={}){
+ const variants=structuredClone(levelVariants)
+ const pageCount=Math.min(...LEVELS.map(l=>variants[l]?.pages?.length||0))
+ if(pageCount<4)return {ok:false,reason:'insufficient-pages'}
+
+ // Strictly enforce 100% wikipedia-embedded photos from this exact article
+ const embeddedPhotos=(articlePhotos||[])
+  .filter(p=>(p?.provenance?.originType||p?.originType)==='wikipedia-embedded')
+  .filter(p=>p?.url&&!usedImages.has(p.url)&&!usedImages.has(p?.provenance?.imagePageUrl))
+  .map((p,idx)=>({
+   ...p,
+   sectionIndex:resolveSectionIndex(p),
+   sectionHeading:resolveSectionIndex(p)===0?'Lead':(p.sectionHeading||p.section||'Body'),
+   imageId:p.imageId||`IMG_${idx}`
+  }))
+
+ const leadPhotos=embeddedPhotos.filter(p=>p.sectionIndex===0)
+ if(!leadPhotos.length)return {ok:false,reason:'no-lead-image'}
+
+ const photoById=new Map(embeddedPhotos.map(p=>[p.imageId.toUpperCase(),p]))
+ const hasExplicitImageIds=LEVELS.some(l=>variants[l].pages.some(p=>Object.prototype.hasOwnProperty.call(p,'imageId')))
+
  const chosenPages=new Map()
+ const chosenUrls=new Set(usedImages)
 
- // Score Page 1 cover photo from verified article photos (prefer lead image + title match + JPEG/WebP)
- const page1Texts=levels.map(l=>variants[l].pages[0].text)
- const rankedCover=[...articlePhotos]
-  .filter(p=>!chosenUrls.has(p.url)&&!chosenUrls.has(p.provenance.imagePageUrl))
-  .map(p=>{
-   const subject=`${p.caption} ${p.description} ${p.fileTitle.replace(/^File:/i,'')}`
-   const titleMatch=overlapCount(subject,source.sourceTitle)
-   const textMatch=page1Texts.reduce((sum,t)=>sum+overlapCount(subject,t),0)
-   const score=(p.isLeadImage?12:0)+(/image\/(?:jpeg|webp)/i.test(p.mime)?3:0)+titleMatch*4+textMatch
-   return {photo:p,score}
-  })
-  .sort((a,b)=>b.score-a.score||a.photo.position-b.photo.position)
+ // Helper to pick Gemini's consensus imageId for a given pageIndex (preferring B1-B2)
+ const requestedIdFor=pageIndex=>{
+  for(const level of ['B1-B2','A1-A2','C1-C2']){
+   const id=normalizeImageId(variants[level]?.pages?.[pageIndex]?.imageId)
+   if(id)return id
+  }
+  return null
+ }
 
- if(!rankedCover.length)return {ok:false,reason:'no-unused-page1-photo'}
- const cover=rankedCover[0].photo
+ // 1. Page 1: MUST use a Section 0 (Lead/Infobox) photo
+ let cover=null
+ const requestedCoverId=requestedIdFor(0)
+ if(requestedCoverId){
+  const requested=photoById.get(requestedCoverId)
+  if(requested&&requested.sectionIndex===0)cover=requested
+ }
+ if(!cover){
+  const page1Texts=LEVELS.map(l=>variants[l].pages[0].text)
+  const rankedLead=[...leadPhotos]
+   .map(p=>{
+    const subject=buildPhotoSubject(p)
+    const titleMatch=overlapCount(subject,source?.sourceTitle||'')
+    const textMatch=page1Texts.reduce((sum,t)=>sum+overlapCount(subject,t),0)
+    const score=(p.isInfobox?10:0)+(/image\/(?:jpeg|webp)/i.test(p.mime)?3:0)+titleMatch*4+textMatch
+    return {photo:p,score}
+   })
+   .sort((a,b)=>b.score-a.score||a.photo.position-b.photo.position)
+  cover=rankedLead[0].photo
+ }
  chosenPages.set(0,cover)
  chosenUrls.add(cover.url)
  chosenUrls.add(cover.provenance.imagePageUrl)
 
- const headingById=new Map((evidence||[]).map(row=>[row.id,String(row.heading||'Lead').trim().toLowerCase()]))
- const titleTerms=normalizeTerms(source.sourceTitle)
-
- // Helper to score whether a photo clearly matches a later page (pageIndex >= 1)
- const scoreLaterPage=(photo,pageIndex,{strictCommons=false}={})=>{
-  const texts=levels.map(l=>variants[l].pages[pageIndex].text)
-  if(!eraCompatible(photo,texts))return -1
-  const subject=`${photo.caption} ${photo.description} ${photo.fileTitle.replace(/^File:/i,'').replace(/\.[^.]+$/,'')}`
-  const subjectTerms=normalizeTerms(subject)
-  const specificTerms=[...subjectTerms].filter(t=>!titleTerms.has(t))
-  const overlaps=texts.map(t=>overlapCount(subject,t))
-  const specificHits=texts.map(t=>specificTerms.filter(word=>normalizeTerms(t).has(word)).length)
-
-  if(strictCommons){
-   // Linked Commons category photo MUST clearly match the specific page's content across all levels
-   if(Math.min(...specificHits)<2&&Math.min(...overlaps)<2)return -1
-   if(Math.min(...specificHits)<1)return -1
-   return overlaps.reduce((a,b)=>a+b,0)+Math.min(...specificHits)*3
-  }
-
-  // Same-article photo: allow match if section aligns OR caption/text overlap >= 1 across all levels
-  const imgSec=String(photo.section||'Lead').trim().toLowerCase()
-  const sectionMatch=imgSec!=='lead'&&levels.every(l=>(variants[l].pages[pageIndex].evidenceIds||[]).some(id=>headingById.get(id)===imgSec))
-  if(!sectionMatch&&Math.min(...overlaps)<1)return -1
-  if(Math.min(...specificHits)<1&&!sectionMatch&&Math.min(...overlaps)<2)return -1
-  return (sectionMatch?6:0)+overlaps.reduce((a,b)=>a+b,0)+Math.min(...specificHits)*2
- }
-
- // Match extra same-article photos to Pages 2..N
- const remainingArticle=articlePhotos.filter(p=>!chosenUrls.has(p.url)&&!chosenUrls.has(p.provenance.imagePageUrl))
- for(let pageIndex=1;pageIndex<pageCount;pageIndex++){
-  let best=null
-  for(const photo of remainingArticle){
-   if(chosenUrls.has(photo.url)||chosenUrls.has(photo.provenance.imagePageUrl))continue
-   const score=scoreLaterPage(photo,pageIndex,{strictCommons:false})
-   if(score>0&&(!best||score>best.score))best={photo,score}
-  }
-  if(best){
-   chosenPages.set(pageIndex,best.photo)
-   chosenUrls.add(best.photo.url)
-   chosenUrls.add(best.photo.provenance.imagePageUrl)
-  }
- }
-
- // Optional: fill remaining text-only pages ONLY if linked Commons category has a clearly matching photo
- if(commonsPhotos.length){
+ // 2. Pages 2..N: bind explicit Gemini imageIds (or aligned section photos if legacy caller omitted imageId)
+ if(hasExplicitImageIds){
   for(let pageIndex=1;pageIndex<pageCount;pageIndex++){
-   if(chosenPages.has(pageIndex))continue
+   const reqId=requestedIdFor(pageIndex)
+   if(!reqId)continue // Gemini intentionally left this page text-only; NEVER force-assign leftovers
+   const candidate=photoById.get(reqId)
+   if(!candidate)continue
+   if(chosenUrls.has(candidate.url)||chosenUrls.has(candidate.provenance.imagePageUrl))continue
+   chosenPages.set(pageIndex,candidate)
+   chosenUrls.add(candidate.url)
+   chosenUrls.add(candidate.provenance.imagePageUrl)
+  }
+ }else{
+  const remaining=embeddedPhotos.filter(p=>!chosenUrls.has(p.url)&&!chosenUrls.has(p.provenance.imagePageUrl))
+  for(let pageIndex=1;pageIndex<pageCount;pageIndex++){
    let best=null
-   for(const photo of commonsPhotos){
+   for(const photo of remaining){
     if(chosenUrls.has(photo.url)||chosenUrls.has(photo.provenance.imagePageUrl))continue
-    const score=scoreLaterPage(photo,pageIndex,{strictCommons:true})
-    if(score>0&&(!best||score>best.score))best={photo,score}
+    const alignment=checkBodyPhotoAlignment(photo,pageIndex,variants,{source,evidence})
+    if(alignment.ok&&(!best||alignment.score>best.score))best={photo,score:alignment.score}
    }
    if(best){
     chosenPages.set(pageIndex,best.photo)
@@ -383,31 +499,73 @@ export function assignBatchPhotos(levelVariants,{source,articlePhotos=[],commons
   }
  }
 
- // Apply verified images & required provenance evidence identically across all 3 CEFR levels
- const attached=[]
+ // Clear any pre-existing image fields before applying verified assignments
+ for(const level of LEVELS){
+  for(const page of variants[level].pages){
+   page.image=''
+   if(!chosenPages.size)page.caption=''
+   delete page.imageProvenance
+  }
+ }
+
+ // Apply verified images & provenance identically across all 3 CEFR levels
  for(const [pageIndex,photo] of [...chosenPages.entries()].sort((a,b)=>a[0]-b[0])){
   const provenance={
    ...photo.provenance,
+   originType:'wikipedia-embedded',
    sourceImageUrl:source.sourceUrl,
    sourceRevisionUrl:source.sourceRevisionUrl,
    evidence:{
     sourcePageId:source.pageId,
     sourceRevisionId:source.sourceRevisionId,
     fileTitle:photo.fileTitle,
-    articleCaption:photo.caption,
-    articleSection:photo.section||'Lead',
+    imageId:photo.imageId,
+    sectionIndex:photo.sectionIndex,
+    articleCaption:photo.wikiCaption||photo.caption,
+    articleSection:photo.sectionIndex===0?'Lead':(photo.sectionHeading||photo.section||'Body'),
     pageIndex
    }
   }
-  for(const level of levels){
-   Object.assign(variants[level].pages[pageIndex],{
+  for(const level of LEVELS){
+   const page=variants[level].pages[pageIndex]
+   Object.assign(page,{
     image:photo.url,
-    caption:photo.caption,
+    caption:chooseConciseCaption(page.caption,photo),
     imageProvenance:provenance
    })
   }
-  attached.push({pageIndex,...photo,provenance})
  }
 
- return {ok:true,levelVariants:variants,photos:attached}
+ // Clear captions on text-only pages so text-only pages never carry stale captions
+ for(let pageIndex=0;pageIndex<pageCount;pageIndex++){
+  if(chosenPages.has(pageIndex))continue
+  for(const level of LEVELS){
+   variants[level].pages[pageIndex].caption=''
+  }
+ }
+
+ // Programmatic Guard: verify Lead photo on Page 1 & strip any misaligned Page 2..N image cleanly
+ const validation=validateImageAlignment(variants,{source,verifiedPhotos:embeddedPhotos,evidence})
+ if(!validation.ok)return {ok:false,reason:validation.reason,strippedImages:validation.strippedImages}
+
+ // Clean temporary imageId field and collect final surviving photos
+ const finalVariants=validation.levelVariants
+ for(const level of LEVELS){
+  for(const page of finalVariants[level].pages)delete page.imageId
+ }
+
+ const attached=[]
+ for(let pageIndex=0;pageIndex<pageCount;pageIndex++){
+  const p=finalVariants['B1-B2'].pages[pageIndex]
+  if(!p?.image)continue
+  const photo=chosenPages.get(pageIndex)
+  if(photo)attached.push({pageIndex,...photo,provenance:p.imageProvenance})
+ }
+
+ return {
+  ok:true,
+  levelVariants:finalVariants,
+  photos:attached,
+  strippedImages:validation.strippedImages
+ }
 }

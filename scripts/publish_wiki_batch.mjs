@@ -3,21 +3,21 @@
  * Free-tier-safe Gemini Flash-Lite batch publisher for SAGA Wiki.
  *
  * - Picks MAX_ARTICLES (default 15) pending items from data/wiki_queue.json balanced round-robin across 10 topics.
- * - Strictly enforces Page 1 real commercial-safe photo hard gate BEFORE calling Gemini (skips & marks skipped_no_image if 0).
- * - Trims Wikipedia text cleanly (~1,200-1,500 words: lead + main sections, stripping References/External links/tables).
- * - Calls Gemini Flash-Lite to generate all 3 CEFR levels (A1-A2, B1-B2, C1-C2) with strict editorial & 4-7 page quality control.
- * - Validates every generated article with validateArticleQuality(); retries ONCE with exact failed checks; marks skipped_quality if still failing.
+ * - Parses Wikipedia rendered HTML (action=parse&prop=text via cheerio) into structured sections binding every image to its exact sectionIndex.
+ * - Strictly enforces Section 0 (Lead/Infobox) real commercial-safe photo hard gate BEFORE calling Gemini (marks skipped_no_lead_image if 0).
+ * - External Commons Category / Wikidata P373 image fallbacks are PERMANENTLY DISABLED (100% wikipedia-embedded only).
+ * - Passes structured sections + numbered embedded image catalog (IMG_0, IMG_1, ...) to Gemini; requires explicit imageId (or null) per page.
+ * - Runs validateArticleQuality() (Page 1: 35-65w) and programmatic validateImageAlignment() before saving any article.
  * - Supports multi-key failover (GEMINI_API_KEY, GEMINI_API_KEY_2, GEMINI_API_KEY_3, plus SAGA_IMAGE_TEST_API_KEY fallback) on 429 RESOURCE_EXHAUSTED.
- * - Stops gracefully only after all configured keys hit quota, saving all generated articles so far and exiting 0.
  */
 import fs from 'node:fs/promises'
 import path from 'node:path'
 import {createHash} from 'node:crypto'
 import {fileURLToPath} from 'node:url'
 import {WIKI_TOPICS} from './wiki/discovery.mjs'
-import {fetchWikipediaPage,WikiApiPause} from './wiki/source.mjs'
+import {fetchWikipediaParsePage,WikiApiPause} from './wiki/source.mjs'
 import {appendWikiStories,makeWikiStory,readWikiCatalog,validateWikiStory} from './wiki/catalog.mjs'
-import {assignBatchPhotos,collectVerifiedArticlePhotos,fetchLinkedCommonsCategoryPhotos} from './wiki/batch-media.mjs'
+import {assignBatchPhotos,collectVerifiedArticlePhotos} from './wiki/batch-media.mjs'
 
 const ROOT=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..')
 const DEFAULT_QUEUE_FILE=path.join(ROOT,'data','wiki_queue.json')
@@ -51,10 +51,11 @@ const PAGE_SCHEMA={
  type:'object',
  properties:{
   text:{type:'string'},
+  imageId:{anyOf:[{type:'string'},{type:'null'}]},
   caption:{type:'string'},
   evidenceIds:{type:'array',items:{type:'string'},minItems:1}
  },
- required:['text','evidenceIds']
+ required:['text','imageId','evidenceIds']
 }
 
 const LEVEL_SCHEMA={
@@ -120,13 +121,17 @@ export function resolveGeminiApiKeys({apiKey='',apiKeys=null,env=process.env}={}
 }
 
 /**
- * Cleanly trim Wikipedia narrative paragraphs to ~1,200-1,500 words:
- * Lead first, then balanced main sections (References, External links, See also, tables already stripped).
+ * Cleanly trim Wikipedia narrative paragraphs to ~1,200-1,500 words while preserving
+ * each paragraph's exact sectionIndex and heading for strict section-to-page image binding.
  */
 export function trimWikipediaEvidence(source,{targetMinWords=1200,targetMaxWords=1500}={}){
- const rows=(source?.paragraphDetails?.length
+ const rawRows=source?.paragraphDetails?.length
   ?source.paragraphDetails
-  :(source?.paragraphs||[]).map(text=>({heading:'Lead',text})))
+  :Array.isArray(source?.sections)&&source.sections.length
+   ?source.sections.flatMap(sec=>(sec.paragraphs||[]).map(text=>({sectionIndex:sec.sectionIndex,heading:sec.heading,text})))
+   :(source?.paragraphs||[]).map(text=>({sectionIndex:0,heading:'Lead',text}))
+
+ const rows=rawRows
   .filter(row=>!/^(?:references|notes|further reading|external links|bibliography|see also|citations|sources|gallery)$/i.test(String(row.heading||'').trim()))
   .filter(row=>wordCount(row.text)>=20&&row.text.length<=2800)
 
@@ -139,9 +144,9 @@ export function trimWikipediaEvidence(source,{targetMinWords=1200,targetMaxWords
  const sectionHeads=[]
  const remainder=[]
  for(const row of body){
-  const sec=String(row.heading||'Lead').trim().toLowerCase()
-  if(!seenSection.has(sec)){
-   seenSection.add(sec)
+  const secKey=Number.isInteger(row.sectionIndex)?`#${row.sectionIndex}`:String(row.heading||'Lead').trim().toLowerCase()
+  if(!seenSection.has(secKey)){
+   seenSection.add(secKey)
    sectionHeads.push(row)
   }else{
    remainder.push(row)
@@ -162,9 +167,14 @@ export function trimWikipediaEvidence(source,{targetMinWords=1200,targetMaxWords
   }
   seenText.add(row.text)
   totalWords+=wc
+  const heading=String(row.heading||'Lead').trim()||'Lead'
+  const sectionIndex=Number.isInteger(row.sectionIndex)
+   ?row.sectionIndex
+   :(/^(?:lead|infobox)$/i.test(heading)?0:1)
   chosen.push({
    id:`P${chosen.length+1}`,
-   heading:String(row.heading||'Lead').trim()||'Lead',
+   sectionIndex,
+   heading,
    text:row.text,
    hash:sha256(row.text),
    excerpt:row.text.slice(0,140)
@@ -254,14 +264,14 @@ function hasDryEncyclopediaOpening(page1Text,sourceTitle){
  * Verifies:
  * 1. 4 <= pages.length <= 7 for all 3 CEFR levels (A1-A2, B1-B2, C1-C2).
  * 2. Magazine-style headline (5-11 words, NEVER identical to raw Wikipedia title, distinct across levels).
- * 3. Per-page word counts within mobile swipe bounds (Page 1: 35-80w with vivid non-dry hook; Pages 2-N: 45-120w).
+ * 3. Per-page word counts within mobile swipe bounds (Page 1: 35-65w with vivid non-dry hook; Pages 2-N: 45-120w).
  * 4. Measurable CEFR difficulty progression: A1-A2 < B1-B2 < C1-C2 (sentence length + lexical complexity).
  */
 export function validateArticleQuality(draft,sourceTitle,{
  minPages=4,
  maxPages=7,
  page1MinWords=35,
- page1MaxWords=80,
+ page1MaxWords=65,
  bodyMinWords=45,
  bodyMaxWords=120
 }={}){
@@ -350,8 +360,18 @@ export function validateArticleQuality(draft,sourceTitle,{
  return {ok:errors.length===0,errors,metrics}
 }
 
-export function buildBatchPrompt(source,topic,evidence){
- const passages=evidence.map(row=>`${row.id} [${row.heading}] ${row.text}`).join('\n\n')
+function formatEmbeddedImageCatalog(verifiedPhotos=[]){
+ if(!verifiedPhotos.length)return 'None.'
+ return verifiedPhotos
+  .map(p=>`- ${p.imageId} | Section ${p.sectionIndex} (${p.sectionHeading||p.section||'Lead'}) | ${p.fileTitle} | Wiki caption: "${String(p.wikiCaption||p.caption||'').slice(0,220)}"`)
+  .join('\n')
+}
+
+export function buildBatchPrompt(source,topic,evidence,verifiedPhotos=[]){
+ const passages=evidence.map(row=>`${row.id} [Section ${row.sectionIndex ?? 0}: ${row.heading}] ${row.text}`).join('\n\n')
+ const imageCatalog=formatEmbeddedImageCatalog(verifiedPhotos)
+ const leadIds=verifiedPhotos.filter(p=>p.sectionIndex===0).map(p=>p.imageId)
+ const leadHint=leadIds.length?leadIds.join(' or '):'IMG_0'
  return `Write ONE engaging, magazine-style English-learner feature article adapted strictly from the English Wikipedia passages below. Return JSON only.
 
 Raw Wikipedia Title: ${source.sourceTitle}
@@ -365,29 +385,40 @@ STRICT EDITORIAL & QUALITY RULES:
    - NEVER use the raw Wikipedia title ("${source.sourceTitle}") as the headline, and make all 3 level headlines distinct.
 2. COMPLETE 4 TO 7 PAGE STORY ARC (PREFER 5 OR 6 PAGES SO IT FITS MOBILE SWIPE & CATALOG STANDARDS):
    - All 3 levels must have the same number of pages (between 4 and 7; aim for 5 or 6 pages).
-   - Page 1 (Vivid Hook / Intro, 42-60 words): Open with a compelling scene, concrete fact, turning point, or intriguing question grounded in the source. NEVER start with a dry encyclopedia definition like "${source.sourceTitle} is a..." or "${source.sourceTitle} was an...".
+   - Page 1 (Vivid Hook / Intro, STRICTLY 42-60 words; hard bounds 35-65 words): Open with a compelling scene, concrete fact, turning point, or intriguing question grounded in the source. NEVER start with a dry encyclopedia definition like "${source.sourceTitle} is a..." or "${source.sourceTitle} was an...".
    - Middle Pages (Smooth Narrative Body, 55-105 words per page): Dedicate each page to ONE clear idea that flows naturally into the next page.
    - Final Page (Memorable Conclusion / Takeaway, 55-100 words): Close with lasting significance, legacy, or modern relevance grounded in the source.
 3. CLEAR CEFR DIFFERENTIATION (MEASURABLE PROGRESSION A1-A2 < B1-B2 < C1-C2):
    - A1-A2: Simple everyday vocabulary and short clear sentences averaging 8-14 words per sentence.
    - B1-B2: Smooth journalistic storytelling with compound and relative clauses averaging 14-20 words per sentence.
    - C1-C2: Analytical, nuanced editorial tone with sophisticated academic/journalistic vocabulary averaging 18-26 words per sentence.
-4. IMAGE CAPTIONS (ULTRA-CONCISE SINGLE LINE):
-   - Every page "caption" MUST be ultra-concise: 5 to 8 words (max ~45 characters) describing the page's visual subject so it fits cleanly on 1 single line even on 360px mobile screens without needing ellipsis.
-5. FACTUAL GROUNDING:
+4. STRICT SECTION-TO-PAGE IMAGE BINDING (ZERO MISALIGNED PHOTOS):
+   - Every page MUST include "imageId" set to either an exact ID from AVAILABLE EMBEDDED IMAGES below (e.g. "IMG_0") or null.
+   - Use the SAME "imageId" on the same page index across A1-A2, B1-B2, and C1-C2.
+   - Page 1 (pages[0]) MUST use a Section 0 Lead/Infobox image (${leadHint}).
+   - Pages 2..N (pages[1..N]): attach an "imageId" ONLY when that page's text directly discusses the exact person, place, object, or event described in that image's Section heading and Wiki caption. Otherwise set "imageId": null (text-only page).
+   - NEVER reuse the same "imageId" on two pages, NEVER invent an imageId, and NEVER force-assign leftover images onto unrelated pages.
+5. IMAGE CAPTIONS (ULTRA-CONCISE SINGLE LINE):
+   - On every page with a non-null "imageId", write an ultra-concise "caption": 5 to 8 words (max ~45 characters) describing that exact image so it fits cleanly on 1 single line even on 360px mobile screens without ellipsis.
+   - On pages with "imageId": null, set "caption": "".
+6. FACTUAL GROUNDING:
    - Cite one or more valid passage IDs in "evidenceIds" (e.g. ["P1","P2"]) on every page.
    - Never invent people, dates, numbers, quotes, or facts absent from the passages. Preserve uncertainty when the source notes debate.
-6. GLOSSARY:
+7. GLOSSARY:
    - Include a concise "glossary" array (12-18 items per level) of helpful words, phrasal verbs, or collocations appearing in that level's text, with fields: surface, lemma, type ("word"|"phrasal_verb"|"collocation"|"idiom"), pos ("noun"|"verb"|"adj"|"adv"|"prep"|"phrase"), ipa, vi_context (short natural Vietnamese meaning for that sentence), en_def (simple Cambridge-style English definition <= 15 words), cefr ("A1"|"A2"|"B1"|"B2"|"C1"|"C2").
-7. Return pure JSON matching:
-{"variants":{"A1-A2":{"headline":"...","pages":[{"text":"...","caption":"...","evidenceIds":["P1"]}],"glossary":[...]},"B1-B2":{...},"C1-C2":{...}}}
+8. Return pure JSON matching:
+{"variants":{"A1-A2":{"headline":"...","pages":[{"text":"...","imageId":"IMG_0","caption":"...","evidenceIds":["P1"]}],"glossary":[...]},"B1-B2":{...},"C1-C2":{...}}}
+
+AVAILABLE EMBEDDED IMAGES (ONLY FROM THIS ARTICLE):
+${imageCatalog}
 
 SOURCE PASSAGES:
 ${passages}`
 }
 
-export function buildQualityRetryPrompt(source,topic,evidence,previousDraft,failedChecks){
- const passages=evidence.map(row=>`${row.id} [${row.heading}] ${row.text}`).join('\n\n')
+export function buildQualityRetryPrompt(source,topic,evidence,previousDraft,failedChecks,verifiedPhotos=[]){
+ const passages=evidence.map(row=>`${row.id} [Section ${row.sectionIndex ?? 0}: ${row.heading}] ${row.text}`).join('\n\n')
+ const imageCatalog=formatEmbeddedImageCatalog(verifiedPhotos)
  const issues=failedChecks.map((err,i)=>`${i+1}. ${err}`).join('\n')
  return `Your previous draft for "${source.sourceTitle}" (${topic}) failed editorial quality checks. Fix EVERY issue listed below while staying 100% faithful to the source passages. Return the complete corrected JSON object only.
 
@@ -396,10 +427,14 @@ ${issues}
 
 REMINDERS:
 - Magazine-style headline of 5-11 words per level (distinct across levels, NEVER identical to "${source.sourceTitle}").
-- 5 to 6 swipeable pages per level (strictly within 4-7 pages): Page 1 = vivid hook (42-60 words, NO dry "${source.sourceTitle} is a..." opening), middle pages = 1 clear idea each (55-105 words), final page = memorable takeaway (55-100 words).
-- Every page "caption" must be ultra-concise (5-8 words, max ~45 characters) so it fits cleanly on 1 single line on 360px mobile screens without ellipsis.
+- 5 to 6 swipeable pages per level (strictly within 4-7 pages): Page 1 = vivid hook (STRICTLY 35-65 words, aim 42-60 words, NO dry "${source.sourceTitle} is a..." opening), middle pages = 1 clear idea each (55-105 words), final page = memorable takeaway (55-100 words).
+- Keep strict section-to-page "imageId" binding: Page 1 MUST use a Section 0 image; Pages 2..N use an imageId ONLY when directly discussing that image's subject/section, else null.
+- On every page with a non-null "imageId", write an ultra-concise "caption" (5-8 words, max ~45 characters) for 1-line mobile display; otherwise "".
 - Clear CEFR progression: A1-A2 (8-14 words/sentence, simple words) < B1-B2 (14-20 words/sentence) < C1-C2 (18-26 words/sentence, analytical tone).
 - Keep valid evidenceIds from the source passages on every page.
+
+AVAILABLE EMBEDDED IMAGES (ONLY FROM THIS ARTICLE):
+${imageCatalog}
 
 PREVIOUS DRAFT:
 ${JSON.stringify(previousDraft)}
@@ -483,9 +518,19 @@ export async function callGeminiWithFailover(prompt,keyState,{model=DEFAULT_GEMI
  throw new GeminiQuotaExhausted(`All ${keys.length} configured Gemini API key(s) exhausted quota`,429)
 }
 
+function normalizeOptionalImageId(value,validImageIds=null){
+ if(value===null||value===undefined)return null
+ const str=String(value).trim().toUpperCase()
+ if(!str||str==='NULL'||str==='NONE')return null
+ if(!/^IMG_\d+$/.test(str))return null
+ if(validImageIds&&validImageIds.size&&!validImageIds.has(str))return null
+ return str
+}
+
 /** Deterministic normalization so minor formatting quirks never waste a Gemini call. */
-export function normalizeDraftForCatalog(rawDraft,{source,evidence}){
+export function normalizeDraftForCatalog(rawDraft,{source,evidence,verifiedPhotos=[]}){
  const validIds=new Set(evidence.map(e=>e.id))
+ const validImageIds=new Set((verifiedPhotos||[]).map(p=>String(p.imageId||'').toUpperCase()).filter(Boolean))
  const fallbackId=evidence[0].id
  const bestEvidenceFor=text=>{
   const textWords=normalizeWords(text)
@@ -509,8 +554,11 @@ export function normalizeDraftForCatalog(rawDraft,{source,evidence}){
    const text=String(page?.text||'').replace(/\s+/g,' ').trim()
    const caption=String(page?.caption||'').replace(/\s+/g,' ').trim()
    const cleanedIds=(Array.isArray(page?.evidenceIds)?page.evidenceIds:[]).filter(id=>validIds.has(id))
+   const hasImageIdProp=Object.prototype.hasOwnProperty.call(page||{},'imageId')
+   const normalizedImageId=hasImageIdProp?normalizeOptionalImageId(page.imageId,validImageIds):undefined
    return {
     text:text&&!/[.!?]["”']?$/.test(text)?`${text}.`:text,
+    ...(hasImageIdProp?{imageId:normalizedImageId}:{}),
     ...(caption?{caption}:{}),
     evidenceIds:cleanedIds.length?cleanedIds:bestEvidenceFor(text)
    }
@@ -544,41 +592,59 @@ export function normalizeDraftForCatalog(rawDraft,{source,evidence}){
 }
 
 /** Build a schema-valid & quality-gate-valid synthetic draft for --dry-run testing without spending any Gemini quota. */
-function makeDryRunDraft(source,evidence){
+function makeDryRunDraft(source,evidence,verifiedPhotos=[]){
  const topicWord=source.sourceTitle.split(/\s+/).slice(0,3).join(' ')
  const eId=idx=>evidence[idx%evidence.length].id
+ const leadPhoto=verifiedPhotos.find(p=>p.sectionIndex===0)||null
+ const bodyPhoto=verifiedPhotos.find(p=>p.sectionIndex>0)||null
+
+ // Bind bodyPhoto (if any) to Page 3 (index 2) alongside a matching evidence passage from its exact section
+ const bodyEvidence=bodyPhoto
+  ?(evidence.find(e=>e.sectionIndex===bodyPhoto.sectionIndex)||evidence.find(e=>String(e.heading||'').toLowerCase()===String(bodyPhoto.sectionHeading||'').toLowerCase())||evidence[2%evidence.length])
+  :evidence[2%evidence.length]
+ const bodyFocus=bodyPhoto
+  ?String(bodyPhoto.sectionHeading||bodyPhoto.wikiCaption||topicWord).replace(/[^\w\s-]/g,' ').replace(/\s+/g,' ').trim().split(/\s+/).slice(0,4).join(' ')
+  :'early craft methods'
+ const shortCaption=photo=>{
+  if(!photo)return ''
+  return String(photo.wikiCaption||photo.caption||source.sourceTitle).replace(/\s+/g,' ').trim().split(/\s+/).slice(0,7).join(' ').slice(0,45)
+ }
+
+ const p0ImgId=leadPhoto?.imageId||null
+ const p2ImgId=bodyPhoto?.imageId||null
+
  return {
   variants:{
    'A1-A2':{
     headline:`How ${topicWord} Changed Daily Life Forever`,
     pages:[
-     {text:`Long ago, people looked closely at ${topicWord} and asked new questions. Their early ideas spread fast across towns and schools. Soon, many curious thinkers wanted to learn more. This simple start opened a big door for later work.`,evidenceIds:[eId(0)]},
-     {text:`In the first years, small teams tested new methods step by step. They kept clear notes in plain books. Each new test taught them one useful lesson. Sometimes an idea failed, so they tried again the next day. Over time, steady work built strong trust among local leaders and readers everywhere.`,evidenceIds:[eId(1)]},
-     {text:`Later, better tools made the work faster and much safer. Cities shared fresh findings by road and sea. Young learners read short guides and practiced new skills at home. Even distant regions felt the quiet change in daily habits, trade, and public talks across each season.`,evidenceIds:[eId(2)]},
-     {text:`Challenges appeared when opinions clashed over new rules and cost. Some groups urged caution while others pushed for quick change. Careful debates helped local communities find a balanced path forward together. People soon learned that lasting progress needs both bold ideas and patient listening from every side.`,evidenceIds:[eId(3)]},
-     {text:`Today, the story of ${topicWord} still guides how we study the past and plan ahead. Simple questions can grow into lasting change when people share knowledge openly. Every generation adds a new chapter, proving that careful curiosity never loses its quiet power in our modern world.`,evidenceIds:[eId(0),eId(3)]}
+     {text:`Long ago, people looked closely at ${topicWord} and asked new questions. Their early ideas spread fast across towns and schools. Soon, many curious thinkers wanted to learn more. This simple start opened a big door for later work.`,imageId:p0ImgId,caption:shortCaption(leadPhoto),evidenceIds:[eId(0)]},
+     {text:`In the first years, small teams tested new methods step by step. They kept clear notes in plain books. Each new test taught them one useful lesson. Sometimes an idea failed, so they tried again the next day. Over time, steady work built strong trust among local leaders and readers everywhere.`,imageId:null,caption:'',evidenceIds:[eId(1)]},
+     {text:`Later, specialists studied ${bodyFocus} closely and shared clear records across cities. Better tools made the work faster and much safer. Young learners read short guides about ${bodyFocus} and practiced new skills at home. Even distant regions felt the quiet change in daily habits, trade, and public talks across each season.`,imageId:p2ImgId,caption:shortCaption(bodyPhoto),evidenceIds:[bodyEvidence.id]},
+     {text:`Challenges appeared when opinions clashed over new rules and cost. Some groups urged caution while others pushed for quick change. Careful debates helped local communities find a balanced path forward together. People soon learned that lasting progress needs both bold ideas and patient listening from every side.`,imageId:null,caption:'',evidenceIds:[eId(3)]},
+     {text:`Today, the story of ${topicWord} still guides how we study the past and plan ahead. Simple questions can grow into lasting change when people share knowledge openly. Every generation adds a new chapter, proving that careful curiosity never loses its quiet power in our modern world.`,imageId:null,caption:'',evidenceIds:[eId(0),eId(3)]}
     ],
     glossary:[]
    },
    'B1-B2':{
     headline:`Inside the Remarkable Evolution of ${topicWord} Today`,
     pages:[
-     {text:`Long before modern institutions studied ${topicWord}, early pioneers noticed surprising patterns that challenged accepted wisdom across their communities. As those observations circulated through letters and public debates, a quiet curiosity turned into a lasting movement that reshaped how societies approached the subject.`,evidenceIds:[eId(0)]},
-     {text:`During its formative decades, dedicated researchers and practitioners compared evidence from multiple regions while refining practical techniques through repeated observation. Rather than relying on isolated theories, they documented concrete successes and unexpected setbacks in accessible records. Those clear accounts allowed future generations to build steadily upon verified results without repeating costly earlier mistakes.`,evidenceIds:[eId(1)]},
-     {text:`As global exchange accelerated, improved tools and wider communication networks carried these methods far beyond their original centers of influence. Universities, workshops, and civic groups adapted core principles to fit local conditions. Together, they created a richer body of shared knowledge that connected specialists with everyday citizens across national borders.`,evidenceIds:[eId(2)]},
-     {text:`Yet rapid progress rarely unfolded without friction, because competing priorities often sparked vigorous public debate over standards, funding, and long-term responsibility. Critics warned against moving faster than reliable evidence allowed. Supporters replied that careful reform could solve stubborn problems that older approaches had quietly left unresolved for generations.`,evidenceIds:[eId(3)]},
-     {text:`Looking back across centuries of trial and adaptation, the enduring legacy of ${topicWord} reminds readers how collaborative inquiry steadily transforms human understanding. Even as technologies and social priorities continue shifting rapidly, the habit of testing assumptions against real-world evidence remains just as vital today as it was at the beginning.`,evidenceIds:[eId(0),eId(3)]}
+     {text:`Long before modern institutions studied ${topicWord}, early pioneers noticed surprising patterns across their communities. Those observations soon spread through letters and debates. Quiet curiosity gradually grew into a lasting movement that reshaped public understanding.`,imageId:p0ImgId,caption:shortCaption(leadPhoto),evidenceIds:[eId(0)]},
+     {text:`During its formative decades, dedicated researchers compared evidence from multiple regions while refining practical methods. They documented clear successes alongside unexpected setbacks in accessible written records. Those practical accounts helped future generations build steadily upon verified results without repeating costly earlier mistakes across local workshops.`,imageId:null,caption:'',evidenceIds:[eId(1)]},
+     {text:`As global exchange accelerated, historians and artisans closely examined ${bodyFocus} while spreading these methods beyond their original centers. Universities and civic groups adapted core details from ${bodyFocus} to fit local conditions. Together, they built a wider body of shared knowledge connecting specialists with ordinary citizens across borders.`,imageId:p2ImgId,caption:shortCaption(bodyPhoto),evidenceIds:[bodyEvidence.id]},
+     {text:`Yet rapid progress rarely unfolded without friction, because competing priorities often sparked vigorous public debate over standards, accountability, and long-term funding. Critics warned against moving faster than reliable evidence allowed. Supporters replied that careful reform could resolve stubborn problems that older systems had left unanswered for generations.`,imageId:null,caption:'',evidenceIds:[eId(3)]},
+     {text:`Looking back across centuries of trial and adaptation, the enduring legacy of ${topicWord} shows how collaborative inquiry reshapes human knowledge. Even as technologies and social priorities shift rapidly, testing assumptions against real-world evidence remains vital. Readers still draw practical lessons from this evolving history today.`,imageId:null,caption:'',evidenceIds:[eId(0),eId(3)]}
     ],
     glossary:[]
    },
    'C1-C2':{
     headline:`Why ${topicWord} Continues to Reshape Modern Perspective`,
     pages:[
-     {text:`Long before contemporary scholarship systematically categorized ${topicWord}, observant practitioners recognized subtle anomalies that quietly undermined conventional assumptions across established intellectual traditions. Over subsequent decades, those recurring questions catalyzed an enduring re-evaluation of both formal theory and everyday institutional practice.`,evidenceIds:[eId(0)]},
-     {text:`Throughout its foundational period, methodical investigators synthesized comparative documentation from disparate regions while rigorously interrogating prevailing frameworks through iterative empirical scrutiny. By publishing transparent records of both methodological breakthroughs and persistent uncertainties, they established durable analytical benchmarks. Subsequent thinkers could therefore separate verifiable causal mechanisms from speculative consensus with far greater intellectual precision.`,evidenceIds:[eId(1)]},
-     {text:`As transnational communication networks expanded and specialized instrumentation grew increasingly sophisticated, these evolving methodologies gradually transcended their original regional boundaries. Academic institutions, municipal planners, and policy bodies alike recalibrated inherited conventions in response to newly documented realities. Consequently, specialist debates became closely intertwined with broader civic decisions affecting millions of ordinary lives.`,evidenceIds:[eId(2)]},
-     {text:`Nevertheless, institutional transformation invariably generated substantive intellectual tension whenever competing constituencies negotiated unfamiliar standards of accountability and governance. Cautious observers insisted that rigorous evidentiary verification must precede sweeping structural reform. Advocates countered that delaying necessary modernization carried equally severe long-term consequences for societies confronting rapidly changing economic and technological complexities.`,evidenceIds:[eId(3)]},
-     {text:`Viewed in broader historical perspective, the trajectory of ${topicWord} illustrates how cumulative critical inquiry continually renegotiates the boundaries between established orthodoxy and empirical discovery. Rather than settling into a static historical footnote, the subject offers contemporary observers an indispensable analytical framework for evaluating complex institutional adaptation across an interconnected global landscape.`,evidenceIds:[eId(0),eId(3)]}
+     {text:`Long before contemporary scholarship systematically categorized ${topicWord}, observant practitioners recognized subtle historical anomalies that quietly undermined conventional assumptions across established intellectual traditions. Over subsequent decades, those recurring methodological questions catalyzed an enduring re-evaluation of both formal theoretical frameworks and everyday institutional practice.`,imageId:p0ImgId,caption:shortCaption(leadPhoto),evidenceIds:[eId(0)]},
+     {text:`Throughout its foundational period, methodical investigators synthesized comparative archival documentation from disparate regions while rigorously interrogating prevailing frameworks through sustained empirical scrutiny. By publishing transparent analytical records of both structural breakthroughs and persistent uncertainties, they established durable intellectual benchmarks that allowed subsequent thinkers to separate verifiable causal mechanisms from speculative consensus.`,imageId:null,caption:'',evidenceIds:[eId(1)]},
+     {text:`As transnational communication networks expanded alongside increasingly sophisticated instrumentation, scholars analyzing ${bodyFocus} observed how evolving methodologies gradually transcended their original geographic and cultural boundaries. Academic institutions, municipal planners, and policy bodies continually recalibrated inherited conventions surrounding ${bodyFocus} in direct response to newly documented historical realities affecting millions of ordinary lives.`,imageId:p2ImgId,caption:shortCaption(bodyPhoto),evidenceIds:[bodyEvidence.id]},
+     {text:`Nevertheless, institutional transformation invariably generated substantive intellectual tension whenever competing constituencies negotiated unfamiliar standards of public accountability, long-term governance, and evidentiary rigor. While cautious observers insisted that comprehensive verification must precede sweeping structural reform, persistent advocates countered that delaying necessary modernization carried equally severe consequences amid rapid economic change.`,imageId:null,caption:'',evidenceIds:[eId(3)]},
+     {text:`Viewed within a broader comparative historical perspective, the long trajectory of ${topicWord} vividly illustrates how cumulative critical inquiry continually renegotiates the boundaries between established orthodoxy and empirical discovery. Rather than settling into a static historical footnote, the subject still provides contemporary analysts an indispensable framework for evaluating complex institutional adaptation.`,imageId:null,caption:'',evidenceIds:[eId(0),eId(3)]}
     ],
     glossary:[]
    }
@@ -587,8 +653,8 @@ function makeDryRunDraft(source,evidence){
 }
 
 function summarizeQueue(queue,now=new Date()){
- const counts={pending:0,published:0,skipped_no_image:0,skipped_quality:0}
- const byTopic=Object.fromEntries(WIKI_TOPICS.map(t=>[t,{pending:0,published:0,skipped_no_image:0,skipped_quality:0,total:0}]))
+ const counts={pending:0,published:0,skipped_no_image:0,skipped_no_lead_image:0,skipped_quality:0}
+ const byTopic=Object.fromEntries(WIKI_TOPICS.map(t=>[t,{pending:0,published:0,skipped_no_image:0,skipped_no_lead_image:0,skipped_quality:0,total:0}]))
  for(const item of queue.items||[]){
   const st=item.status||'pending'
   counts[st]=(counts[st]||0)+1
@@ -612,6 +678,7 @@ export async function runPublishWikiBatch({
  root=ROOT,
  queueFile=DEFAULT_QUEUE_FILE,
  maxArticles=DEFAULT_MAX_ARTICLES,
+ titles=[],
  apiKey=process.env.GEMINI_API_KEY||'',
  apiKeys=null,
  model=process.env.GEMINI_MODEL||DEFAULT_GEMINI_MODEL,
@@ -619,9 +686,8 @@ export async function runPublishWikiBatch({
  dryRun=false,
  fetchImpl=fetch,
  waitImpl=sleep,
- fetchPageImpl=fetchWikipediaPage,
+ fetchPageImpl=fetchWikipediaParsePage,
  collectPhotosImpl=collectVerifiedArticlePhotos,
- fetchCommonsPhotosImpl=fetchLinkedCommonsCategoryPhotos,
  callGeminiImpl=callGeminiFlashLite
 }={}){
  const resolvedKeys=resolveGeminiApiKeys({apiKey,apiKeys})
@@ -636,17 +702,23 @@ export async function runPublishWikiBatch({
  const usedImages=new Set(catalog.stories.flatMap(s=>s.pages.flatMap(p=>[p.image,p.imageProvenance?.imagePageUrl]).filter(Boolean)))
  const byTopic=catalog.manifest?.byTopic||Object.fromEntries(WIKI_TOPICS.map(t=>[t,0]))
 
- const schedule=buildRoundRobinOrder(queue.items,{byTopic,usedPageIds})
+ const explicitTitles=Array.isArray(titles)?titles.map(t=>String(t||'').trim()).filter(Boolean):[]
+ const schedule=explicitTitles.length
+  ?explicitTitles.map(title=>({title,topic:'History & Geography',status:'pending',_explicit:true}))
+  :buildRoundRobinOrder(queue.items,{byTopic,usedPageIds})
  console.log(`[batch] Starting ${dryRun?'DRY-RUN ':''}publish: target=${maxArticles}, model=${model}, keys=${resolvedKeys.length}, pending=${schedule.length}, published=${catalog.stories.length}`)
 
  const generatedStories=[]
  const publishedItems=[]
  const skippedNoImage=[]
+ const skippedNoLeadImage=[]
  const skippedQuality=[]
  const transientErrors=[]
  let quotaStopped=false
  let geminiCalls=0
- const maxCandidatesToScan=Math.min(schedule.length,Math.max(maxArticles*4,maxArticles+20))
+ const maxCandidatesToScan=explicitTitles.length
+  ?schedule.length
+  :Math.min(schedule.length,Math.max(maxArticles*4,maxArticles+20))
 
  const invokeGeminiWithDelay=async prompt=>{
   if(geminiCalls>0&&delayMs>0){
@@ -663,43 +735,50 @@ export async function runPublishWikiBatch({
    console.log(`[batch] (${generatedStories.length+1}/${maxArticles}) Checking [${item.topic}] "${item.title}"...`)
    const source=await fetchPageImpl(item.title,{fetchImpl,spacingMs:250})
 
-   if(usedPageIds.has(source.pageId)){
+   if(!item._explicit&&usedPageIds.has(source.pageId)){
     item.status='published'
     item.pageId=source.pageId
     continue
    }
 
-   // Hard Gate: verify real, commercial-safe Page 1 photo BEFORE spending any Gemini call
-   const mediaCheck=await collectPhotosImpl(source,{usedImages,fetchImpl,spacingMs:250})
-   if(!mediaCheck.photos.length){
-    console.log(`[batch]   -> SKIPPED (no valid real free-license Page 1 photo; rejected=${mediaCheck.rejected.length}).`)
-    item.status='skipped_no_image'
+   // Hard Gate for Page 1: Section 0 (Lead/Infobox) MUST contain >= 1 valid commercial-safe photo BEFORE calling Gemini
+   const mediaCheck=await collectPhotosImpl(source,{usedImages:item._explicit?new Set():usedImages,fetchImpl,spacingMs:250})
+   const verifiedPhotos=mediaCheck.photos||[]
+   const leadPhotos=Array.isArray(mediaCheck.leadPhotos)
+    ?mediaCheck.leadPhotos
+    :verifiedPhotos.filter(p=>p.sectionIndex===0||p.isLeadImage)
+   const hasLeadPhoto=mediaCheck.hasLeadPhoto!==undefined?Boolean(mediaCheck.hasLeadPhoto):leadPhotos.length>0
+
+   if(!hasLeadPhoto){
+    console.log(`[batch]   -> SKIPPED_NO_LEAD_IMAGE (Section 0 Lead/Infobox has 0 valid commercial-safe photos; bodyPhotos=${verifiedPhotos.length}, rejected=${(mediaCheck.rejected||[]).length}).`)
+    item.status='skipped_no_lead_image'
     item.pageId=source.pageId
     item.checkedAt=new Date().toISOString()
+    skippedNoLeadImage.push(item.title)
     skippedNoImage.push(item.title)
     continue
    }
 
-   // Trim Wikipedia text cleanly (~1,200-1,500 words)
+   // Trim Wikipedia text cleanly (~1,200-1,500 words) preserving sectionIndex
    const trimmed=trimWikipediaEvidence(source,{targetMinWords:1200,targetMaxWords:1500})
 
    let normalizedDraft
    let quality
    if(dryRun){
-    normalizedDraft=normalizeDraftForCatalog(makeDryRunDraft(source,trimmed.evidence),{source,evidence:trimmed.evidence})
+    normalizedDraft=normalizeDraftForCatalog(makeDryRunDraft(source,trimmed.evidence,verifiedPhotos),{source,evidence:trimmed.evidence,verifiedPhotos})
     quality=validateArticleQuality(normalizedDraft,source.sourceTitle)
    }else{
-    const prompt=buildBatchPrompt(source,item.topic,trimmed.evidence)
+    const prompt=buildBatchPrompt(source,item.topic,trimmed.evidence,verifiedPhotos)
     const firstRes=await invokeGeminiWithDelay(prompt)
-    normalizedDraft=normalizeDraftForCatalog(firstRes.draft,{source,evidence:trimmed.evidence})
+    normalizedDraft=normalizeDraftForCatalog(firstRes.draft,{source,evidence:trimmed.evidence,verifiedPhotos})
     quality=validateArticleQuality(normalizedDraft,source.sourceTitle)
 
     // Retry ONCE with exact failed checks if quality gate fails
     if(!quality.ok){
      console.warn(`[batch]   -> Quality gate failed (${quality.errors.length} issue(s)); retrying ONCE with feedback...`)
-     const retryPrompt=buildQualityRetryPrompt(source,item.topic,trimmed.evidence,normalizedDraft,quality.errors)
+     const retryPrompt=buildQualityRetryPrompt(source,item.topic,trimmed.evidence,normalizedDraft,quality.errors,verifiedPhotos)
      const retryRes=await invokeGeminiWithDelay(retryPrompt)
-     normalizedDraft=normalizeDraftForCatalog(retryRes.draft,{source,evidence:trimmed.evidence})
+     normalizedDraft=normalizeDraftForCatalog(retryRes.draft,{source,evidence:trimmed.evidence,verifiedPhotos})
      quality=validateArticleQuality(normalizedDraft,source.sourceTitle)
     }
    }
@@ -714,30 +793,23 @@ export async function runPublishWikiBatch({
     continue
    }
 
-   // Optional: if fewer article photos than pages, check ONLY the article's linked Commons category
-   let commonsPhotos=[]
-   const pageCount=normalizedDraft.variants['B1-B2'].pages.length
-   if(mediaCheck.photos.length<pageCount&&mediaCheck.wikibaseItem){
-    const excludeFiles=new Set(mediaCheck.photos.map(p=>p.fileTitle.toLowerCase()))
-    const commonsRes=await fetchCommonsPhotosImpl(source,mediaCheck.wikibaseItem,{
-     usedImages,excludeFiles,fetchImpl,spacingMs:250
-    })
-    commonsPhotos=commonsRes.photos||[]
-   }
-
+   // Strictly section-bound wikipedia-embedded image binding & programmatic alignment guard (NO Commons fallback!)
    const assigned=assignBatchPhotos(normalizedDraft.variants,{
     source,
-    articlePhotos:mediaCheck.photos,
-    commonsPhotos,
+    articlePhotos:verifiedPhotos,
     evidence:trimmed.evidence,
-    usedImages
+    usedImages:item._explicit?new Set():usedImages
    })
    if(!assigned.ok){
-    console.log(`[batch]   -> SKIPPED (${assigned.reason}).`)
-    item.status='skipped_no_image'
+    console.log(`[batch]   -> SKIPPED_NO_LEAD_IMAGE (${assigned.reason}).`)
+    item.status='skipped_no_lead_image'
     item.pageId=source.pageId
+    skippedNoLeadImage.push(item.title)
     skippedNoImage.push(item.title)
     continue
+   }
+   if(assigned.strippedImages?.length){
+    console.log(`[batch]   -> Guard stripped ${assigned.strippedImages.length} misaligned body image(s): ${assigned.strippedImages.map(s=>`P${s.pageIndex+1}:${s.reason}`).join(', ')}`)
    }
 
    const story=makeWikiStory({
@@ -751,10 +823,12 @@ export async function runPublishWikiBatch({
    if(!gate.accepted)throw Error(`Story failed catalog gate: ${gate.errors.join(', ')}`)
 
    // Track used IDs/images across this batch
-   usedPageIds.add(source.pageId)
-   for(const p of assigned.photos){
-    usedImages.add(p.url)
-    usedImages.add(p.provenance.imagePageUrl)
+   if(!item._explicit){
+    usedPageIds.add(source.pageId)
+    for(const p of assigned.photos){
+     usedImages.add(p.url)
+     usedImages.add(p.provenance.imagePageUrl)
+    }
    }
 
    generatedStories.push(story)
@@ -763,7 +837,8 @@ export async function runPublishWikiBatch({
    item.sourceUrl=source.sourceUrl
    item.status='published'
    item.publishedAt=story.publishedAt
-   console.log(`[batch]   -> OK: "${story.title}" (${trimmed.wordCount}w src, ${assigned.photos.length} real photo(s), ${story.pages.length} pages, CEFR avg ${quality.metrics['A1-A2'].avgSentenceWords}/${quality.metrics['B1-B2'].avgSentenceWords}/${quality.metrics['C1-C2'].avgSentenceWords}w/sent).`)
+   const imgBindingSummary=assigned.photos.map(p=>`P${p.pageIndex+1}:${p.imageId}(sec${p.sectionIndex}:${p.sectionHeading})`).join(', ')
+   console.log(`[batch]   -> OK: "${story.title}" (${trimmed.wordCount}w src, ${assigned.photos.length} embedded photo(s) [${imgBindingSummary}], ${story.pages.length} pages, CEFR avg ${quality.metrics['A1-A2'].avgSentenceWords}/${quality.metrics['B1-B2'].avgSentenceWords}/${quality.metrics['C1-C2'].avgSentenceWords}w/sent).`)
   }catch(err){
    if(err instanceof GeminiQuotaExhausted||err?.isQuota||err?.status===429){
     console.warn(`[batch] All Gemini API keys hit quota (${err.message}). Saving ${generatedStories.length} generated article(s) and stopping gracefully.`)
@@ -787,9 +862,9 @@ export async function runPublishWikiBatch({
    console.log(`[batch] Appended ${catalogResult.added} new articles to public/wiki-reader/ (catalog total: ${catalogResult.total}).`)
   }
   await saveQueueAtomic(queueFile,queue)
-  console.log(`[batch] Updated ${path.relative(root,queueFile)} (published +${publishedItems.length}, skipped_no_image +${skippedNoImage.length}, skipped_quality +${skippedQuality.length}).`)
+  console.log(`[batch] Updated ${path.relative(root,queueFile)} (published +${publishedItems.length}, skipped_no_lead_image +${skippedNoLeadImage.length}, skipped_quality +${skippedQuality.length}).`)
  }else{
-  console.log(`[batch] DRY-RUN complete: validated ${generatedStories.length} article(s), skipped_no_image=${skippedNoImage.length}, skipped_quality=${skippedQuality.length}, errors=${transientErrors.length}. No files modified.`)
+  console.log(`[batch] DRY-RUN complete: validated ${generatedStories.length} article(s), skipped_no_lead_image=${skippedNoLeadImage.length}, skipped_quality=${skippedQuality.length}, errors=${transientErrors.length}. No files modified.`)
  }
 
  return {
@@ -798,6 +873,7 @@ export async function runPublishWikiBatch({
   addedToCatalog:catalogResult.added,
   catalogTotal:catalogResult.total,
   skippedNoImageCount:skippedNoImage.length,
+  skippedNoLeadImageCount:skippedNoLeadImage.length,
   skippedQualityCount:skippedQuality.length,
   exhaustedKeys:[...keyState.exhaustedKeys],
   quotaStopped,
@@ -812,6 +888,7 @@ function parseArgs(argv){
   delayMs:process.env.GEMINI_DELAY_MS!==undefined?Number(process.env.GEMINI_DELAY_MS):DEFAULT_DELAY_MS,
   model:process.env.GEMINI_MODEL||DEFAULT_GEMINI_MODEL,
   queueFile:DEFAULT_QUEUE_FILE,
+  titles:[],
   dryRun:false
  }
  for(const arg of argv){
@@ -820,6 +897,7 @@ function parseArgs(argv){
   else if(arg.startsWith('--delay-ms='))opts.delayMs=Math.max(0,Number(arg.split('=')[1])||0)
   else if(arg.startsWith('--model='))opts.model=arg.split('=')[1].trim()||DEFAULT_GEMINI_MODEL
   else if(arg.startsWith('--queue-file='))opts.queueFile=path.resolve(arg.split('=')[1])
+  else if(arg.startsWith('--title='))opts.titles.push(arg.slice('--title='.length).trim())
  }
  return opts
 }
@@ -828,7 +906,7 @@ if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.ur
  const opts=parseArgs(process.argv.slice(2))
  runPublishWikiBatch(opts)
   .then(summary=>{
-   console.log(`[batch] Done: published=${summary.generatedCount}, skipped_no_image=${summary.skippedNoImageCount}, skipped_quality=${summary.skippedQualityCount}, quotaStopped=${summary.quotaStopped}.`)
+   console.log(`[batch] Done: published=${summary.generatedCount}, skipped_no_lead_image=${summary.skippedNoLeadImageCount}, skipped_quality=${summary.skippedQualityCount}, quotaStopped=${summary.quotaStopped}.`)
    process.exit(0)
   })
   .catch(err=>{

@@ -463,6 +463,7 @@ function planBalancedWikiPages(item, fits, {
   textTargetMax = 112,
   textHardMax = 120,
   orphanMinWords = 40,
+  page1MinWords = 28,
 } = {}) {
   const originals = item?._sourcePages || item?.pages || []
   const raw = trim(originals.map(p => p?.text || '').join(' '))
@@ -801,7 +802,7 @@ function planBalancedWikiPages(item, fits, {
     if (prevUnits.length >= 2) {
       const moved = prevUnits.slice()
       let tail = curr.text
-      const minPhotoKeep = 18
+      const minPhotoKeep = i - 1 === 0 ? page1MinWords : 18
       while (moved.length >= 2 && wordCount(tail) < orphanMinWords) {
         const sent = moved[moved.length - 1]
         const nextPrev = moved.slice(0, -1).join(' ')
@@ -814,6 +815,71 @@ function planBalancedWikiPages(item, fits, {
       if (moved.length < prevUnits.length) {
         prev.text = moved.join(' ')
         curr.text = tail
+      }
+    }
+  }
+
+  // Stage C3: Anti-sparse Page 1 borrowing.
+  // If Page 1 has an image and fewer than 28 words (e.g. a 1-sentence 16w opener),
+  // borrow 1-2 sentences from Page 2 when Page 2 is text-only (or has excess sentences),
+  // verifying via real DOM fits() so there is strictly zero vertical overflow.
+  if (balanced.length >= 2 && balanced[0].image && wordCount(balanced[0].text) < page1MinWords) {
+    const p0 = balanced[0]
+    const p1 = balanced[1]
+    const p1Units = sentenceUnits(p1.text)
+    const canBorrow = !p1.image ? p1Units.length >= 1 : p1Units.length >= 2
+    if (canBorrow) {
+      let p0Text = trim(p0.text)
+      const remaining = p1Units.slice()
+      let borrowed = 0
+      const minP1Keep = p1.image ? 18 : 0
+      const snapshots = [{p0Text, remaining: remaining.slice()}]
+
+      while (remaining.length > 0 && borrowed < 2 && wordCount(p0Text) < page1MinWords) {
+        if (p1.image && remaining.length <= 1) break
+        const nextSentence = remaining[0]
+        const candidateP0 = p0Text ? `${p0Text} ${nextSentence}` : nextSentence
+        const afterP1 = remaining.slice(1).join(' ')
+        if (p1.image && wordCount(afterP1) < minP1Keep) break
+        if (!fitsPhotoBudget(candidateP0, true, p0, true)) break
+        p0Text = candidateP0
+        remaining.shift()
+        borrowed++
+        snapshots.push({p0Text, remaining: remaining.slice()})
+      }
+
+      if (borrowed > 0) {
+        let finalState = snapshots[snapshots.length - 1]
+        let afterP1Text = finalState.remaining.join(' ')
+
+        // Avoid stranding a tiny (< 18w) text-only Page 2 unless it merges cleanly into Page 3.
+        if (!p1.image && afterP1Text && wordCount(afterP1Text) < 18) {
+          const canMergeIntoP2 =
+            balanced.length >= 3 &&
+            !balanced[2].image &&
+            fitsTextBudget(trim(`${afterP1Text} ${balanced[2].text}`), false, true)
+          if (!canMergeIntoP2 && wordCount(snapshots[0].p0Text) >= 18) {
+            // Try rolling back to 1 borrowed sentence if that leaves Page 2 healthy, else skip borrow.
+            const prevState = snapshots.length > 2 ? snapshots[1] : snapshots[0]
+            finalState = prevState
+            afterP1Text = finalState.remaining.join(' ')
+          }
+        }
+
+        if (finalState !== snapshots[0]) {
+          p0.text = finalState.p0Text
+          if (!afterP1Text && !p1.image) {
+            balanced.splice(1, 1)
+          } else {
+            p1.text = afterP1Text
+            if (!p1.image && wordCount(p1.text) < orphanMinWords && balanced.length >= 3 && !balanced[2].image) {
+              const mergedP12 = trim(`${p1.text} ${balanced[2].text}`)
+              if (fitsTextBudget(mergedP12, false, true)) {
+                balanced.splice(1, 2, {image: '', caption: '', text: mergedP12})
+              }
+            }
+          }
+        }
       }
     }
   }
