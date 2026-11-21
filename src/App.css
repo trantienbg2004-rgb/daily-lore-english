@@ -1060,9 +1060,13 @@
 }
 
 .app-shell {
+  --saga-shell-w: var(--saga-reader-w, min(100%, 720px));
   flex: 1 0 auto;
   display: flex;
   flex-direction: column;
+  width: 100%;
+  max-width: var(--saga-shell-w);
+  margin-inline: auto;
   min-height: 100dvh;
   background: var(--saga-bg-paper);
   color: var(--saga-ink);
@@ -1074,8 +1078,8 @@
 }
 
 .app-shell.reading-mode {
-  width: var(--saga-reader-w);
-  max-width: 100%;
+  width: 100%;
+  max-width: var(--saga-shell-w);
   height: 100dvh;
   padding-bottom: calc(var(--saga-nav-h) + var(--saga-safe-bottom));
 }
@@ -1084,16 +1088,16 @@
   padding-inline: max(clamp(1rem, 4vw, 1.75rem), var(--saga-safe-left)) max(clamp(1rem, 4vw, 1.75rem), var(--saga-safe-right));
 }
 
-/* Words & Review pages share the fluid container width min(100% - 2rem, 1100px) */
+/* Read, Words, and Review share the exact same shell width (0px jump across tabs) */
 .app-shell:not(.reading-mode) {
-  max-width: calc(1100px + 2rem);
   width: 100%;
+  max-width: var(--saga-shell-w);
 }
 
 .app-shell:not(.reading-mode) .app-content {
-  width: var(--saga-container-w);
+  width: 100%;
   margin-inline: auto;
-  padding: 0 0 var(--saga-space-lg);
+  padding: 0 max(clamp(1rem, 4vw, 1.75rem), var(--saga-safe-right)) var(--saga-space-lg) max(clamp(1rem, 4vw, 1.75rem), var(--saga-safe-left));
 }
 
 /* Header & footer safe-area insets across every view */
@@ -1107,7 +1111,8 @@
 }
 
 .bottom-nav {
-  width: min(100%, calc(1100px + 2rem));
+  width: 100%;
+  max-width: var(--saga-shell-w, var(--saga-reader-w, 720px));
   height: calc(var(--saga-nav-h) + var(--saga-safe-bottom));
   padding: 0 var(--saga-safe-right) var(--saga-safe-bottom) var(--saga-safe-left);
   background: var(--saga-bg-paper);
@@ -1115,7 +1120,8 @@
 }
 
 .app-shell.reading-mode .bottom-nav {
-  width: var(--saga-reader-w);
+  width: 100%;
+  max-width: var(--saga-shell-w, var(--saga-reader-w, 720px));
 }
 
 .reading-mode .source-footer {
@@ -1659,7 +1665,7 @@
 
 .lore-editorial-v5 .reader-gesture .article-text .word-token.glossary-token,
 .lore-editorial-v5 .reader-gesture .article-text .word-token.phrase-token {
-  color: #a65f50;
+  color: inherit;
   text-decoration: none;
   border: 0;
   background: transparent;
@@ -1667,11 +1673,13 @@
 
 .lore-editorial-v5 .reader-gesture .article-text .word-token.glossary-token:hover,
 .lore-editorial-v5 .reader-gesture .article-text .word-token.phrase-token:hover {
-  color: #9e6052;
-  background: rgba(166, 95, 80, 0.08);
+  color: #a65f50;
+  background: transparent;
 }
 
-.lore-editorial-v5 .reader-gesture .article-text .word-token.known {
+.lore-editorial-v5 .reader-gesture .article-text .word-token.known,
+.lore-editorial-v5 .reader-gesture .article-text .word-token.glossary-token.known,
+.lore-editorial-v5 .reader-gesture .article-text .word-token.phrase-token.known {
   color: #a65f50;
   text-decoration: none;
   border: 0;

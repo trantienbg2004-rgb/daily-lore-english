@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useRef, useState } from 'react'
+import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import './App.css'
 import { initializeSeenHistory, persistReadMarker, readLegacyHistory } from './lib/seenHistory.js'
@@ -17,6 +17,7 @@ import { handleReaderArrowKey } from './lib/readerKeyboard.js'
 import {NEWS_LEVELS, NEWS_LEVEL_KEY, isNewsLevel, loadNewsLevel, applyNewsLevel} from './lib/newsLevels.js'
 import { selectContextualMeaning } from './lib/contextualDictionary.js'
 import { tokenizeWithGlossary } from './utils/dictionaryTokenizer.js'
+import { buildSavedTokenSet, isTokenSaved } from './lib/savedWordsMatch.js'
 import { loadLemmaMap, loadPhraseMap, lookupDictionaryTerm, resolveStaticPhrase, resolveTier1Glossary } from './services/dictionaryService.js'
 import {
   IOS_SHEET_EASING,
@@ -410,6 +411,7 @@ function App() {
   const [lookup, setLookup] = useState({ status: 'idle', options: [] })
   const [retryCount, setRetryCount] = useState(0)
   const [words, setWords] = useState(initialWords)
+  const savedTokenSet = useMemo(() => buildSavedTokenSet(words, lemmaMap), [words, lemmaMap])
   const [reviewIndex, setReviewIndex] = useState(0)
   const [revealed, setRevealed] = useState(false)
   const [finished, setFinished] = useState(false)
@@ -1255,7 +1257,7 @@ function App() {
           onReady={() => setPhotoVersion(n => n + 1)} />
       </div>
       <section className={'reading-card ' + (!itemPage.image || brokenImages.has(itemPage.image) || photoResult(itemPage.image)?.failed ? 'reading-card-no-photo' : 'reading-card-with-photo')}><div className="reading-topline" aria-hidden="true" />
-        <p className="article-text">{tokens.map((token, i) => token.kind === 'text' ? token.text : <button key={i} type="button" disabled={!interactive} className={'word-token ' + (token.kind === 'glossary' ? 'glossary-token ' : token.kind === 'phrase' ? 'phrase-token ' : '') + (words.some(w => w.word === token.lookupKey) ? 'known' : '')} onClick={event => onWordClick(event, token.lookupKey, token.entry, token.text)}>{token.text}</button>)}</p>
+        <p className="article-text">{tokens.map((token, i) => token.kind === 'text' ? token.text : <button key={i} type="button" disabled={!interactive} className={'word-token ' + (token.kind === 'glossary' ? 'glossary-token ' : token.kind === 'phrase' ? 'phrase-token ' : '') + (isTokenSaved(token, savedTokenSet, lemmaMap) ? 'known' : '')} onClick={event => onWordClick(event, token.lookupKey, token.entry, token.text)}>{token.text}</button>)}</p>
       </section>
       </>}
       </div>

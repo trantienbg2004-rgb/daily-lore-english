@@ -32,6 +32,9 @@ import {
  validateArticleQuality
 } from '../publish_wiki_batch.mjs'
 import {planAnchoredWikiPages,rebalanceTextPages,wordCount} from '../../src/lib/readerPagination.js'
+import {auditWikiStories} from '../audit_wiki_images.mjs'
+import {tokenizeWithGlossary} from '../../src/utils/dictionaryTokenizer.js'
+import {buildSavedTokenSet,isTokenSaved} from '../../src/lib/savedWordsMatch.js'
 
 function makeInfoPage({
  title='File:Example_Photo.jpg',
@@ -907,5 +910,89 @@ test('runPublishWikiBatch counts published articles (not skipped candidates) and
 
  await fs.rm(tmpDir,{recursive:true,force:true})
 })
+
+test('auditWikiStories catches missing or mismatched Page-1 photo across top-level and all 3 CEFR levels',()=>{
+ const goodImg='https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Example.jpg/960px-Example.jpg'
+ const goodProv={originType:'wikipedia-embedded',evidence:{articleSection:'Lead',fileTitle:'File:Example.jpg'}}
+ const makePages=(withImg=true)=>[
+  {
+   text:'Long ago, regional engineers built interlocking limestone walls and drainage channels that protected neighboring valleys through severe winter storms across generations.',
+   ...(withImg?{image:goodImg,imageProvenance:goodProv}:{})
+  }
+ ]
+
+ const cleanStory={
+  id:'clean-1',sourceTitle:'Clean Landmark',title:'Clean Landmark',category:'History',
+  pages:makePages(true),
+  levelVariants:{
+   'A1-A2':{pages:makePages(true)},
+   'B1-B2':{pages:makePages(true)},
+   'C1-C2':{pages:makePages(true)}
+  }
+ }
+ // B1-B2 has Lead photo, but C1-C2 is missing Page 1 photo
+ const brokenC1Story={
+  id:'broken-c1',sourceTitle:'Broken C1 Story',title:'Broken C1 Story',category:'Culture',
+  pages:makePages(true),
+  levelVariants:{
+   'A1-A2':{pages:makePages(true)},
+   'B1-B2':{pages:makePages(true)},
+   'C1-C2':{pages:makePages(false)}
+  }
+ }
+
+ const report=auditWikiStories([cleanStory,brokenC1Story])
+ assert.equal(report.totalArticles,2)
+ assert.equal(report.missingPage1PhotoArticles.length,1)
+ assert.equal(report.missingPage1PhotoArticles[0].id,'broken-c1')
+ assert.deepEqual(report.missingPage1PhotoArticles[0].missingLevels,['C1-C2'])
+ assert.equal(report.page1ParityIssues.length,1)
+ assert.equal(report.page1ParityIssues[0].id,'broken-c1')
+})
+
+test('savedWordsMatch highlights ONLY saved words/phrases with case-insensitive lemma and surface matching',()=>{
+ const phrases={
+  'over time':{p:'phrase',m:['gradually']},
+  'such as':{p:'phrase',m:['for example']},
+  'rely on':{p:'phrasal verb',m:['to depend on']}
+ }
+ const lemmaMap={built:'build',cities:'city',relied:'rely'}
+ const glossary=[
+  {surface:'limestone',lemma:'limestone',pos:'noun',en_def:'sedimentary rock'}
+ ]
+ const tokens=tokenizeWithGlossary(
+  'Over time, builders relied on limestone in cities such as Rome and built arches.',
+  glossary,
+  phrases,
+  lemmaMap
+ )
+
+ // Phrase & glossary detection remains intact for tap lookup
+ assert.ok(tokens.some(t=>t.kind==='phrase'&&t.lookupKey==='over time'))
+ assert.ok(tokens.some(t=>t.kind==='phrase'&&t.lookupKey==='such as'))
+ assert.ok(tokens.some(t=>t.kind==='phrase'&&t.lookupKey==='rely on'&&t.text==='relied on'))
+ assert.ok(tokens.some(t=>t.kind==='glossary'&&t.lookupKey==='limestone'))
+
+ // With no saved words, NOTHING is highlighted (even phrases and glossary tokens)
+ const emptySet=buildSavedTokenSet([],lemmaMap)
+ assert.equal(tokens.filter(t=>isTokenSaved(t,emptySet,lemmaMap)).length,0)
+
+ // Save case-varied phrase + base lemma + inflected form
+ const savedSet=buildSavedTokenSet([
+  {word:'Over Time',definition:'gradually'},
+  {word:'rely on',definition:'to depend on'},
+  {word:'build',definition:'to construct'}
+ ],lemmaMap)
+
+ const matchedTexts=tokens.filter(t=>isTokenSaved(t,savedSet,lemmaMap)).map(t=>t.text)
+ assert.deepEqual(matchedTexts,['Over time','relied on','built'])
+
+ // Unsaved phrase ("such as") and unsaved glossary word ("limestone") remain unhighlighted
+ const suchAs=tokens.find(t=>t.lookupKey==='such as')
+ const limestone=tokens.find(t=>t.lookupKey==='limestone')
+ assert.equal(isTokenSaved(suchAs,savedSet,lemmaMap),false)
+ assert.equal(isTokenSaved(limestone,savedSet,lemmaMap),false)
+})
+
 
 

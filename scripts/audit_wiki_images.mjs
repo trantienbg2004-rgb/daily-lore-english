@@ -14,41 +14,55 @@ import {readWikiCatalog} from './wiki/catalog.mjs'
 const ROOT=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..')
 const LEVELS=['A1-A2','B1-B2','C1-C2']
 const LEAD_SECTION_RE=/^(?:lead|infobox)$/i
+const VALID_IMAGE_URL_RE=/^https?:\/\/\S+/i
 const wordCount=text=>String(text||'').trim().split(/\s+/).filter(Boolean).length
 
-export async function auditExistingWikiImages({root=ROOT,sparseThreshold=28}={}){
- const catalog=await readWikiCatalog(root)
- const stories=catalog.stories||[]
-
+export function auditWikiStories(stories,{sparseThreshold=28}={}){
+ const list=Array.isArray(stories)?stories:[]
  const nonEmbeddedArticles=[]
  const nonLeadPage1Articles=[]
  const missingPage1PhotoArticles=[]
+ const page1ParityIssues=[]
  const sparsePage1Articles=[]
  const sparsePhotoPageArticles=[]
 
  let totalImages=0
  let totalNonEmbeddedImages=0
 
- for(const story of stories){
+ for(const story of list){
   const b1Pages=story.levelVariants?.['B1-B2']?.pages||story.pages||[]
+  const scopes=[
+   {scope:'top',pages:Array.isArray(story.pages)?story.pages:[]},
+   ...LEVELS.map(level=>({scope:level,pages:Array.isArray(story.levelVariants?.[level]?.pages)?story.levelVariants[level].pages:[]}))
+  ]
 
-  // 1. Check all images for originType !== 'wikipedia-embedded'
+  // 1. Check all images across top-level pages and all 3 CEFR levels for originType !== 'wikipedia-embedded'
   const badOriginPages=[]
-  b1Pages.forEach((page,idx)=>{
-   if(!page?.image)return
-   totalImages++
-   const origin=String(page.imageProvenance?.originType||'').trim()
-   if(origin!=='wikipedia-embedded'){
-    totalNonEmbeddedImages++
-    badOriginPages.push({
-     pageNumber:idx+1,
-     originType:origin||'missing',
-     section:String(page.imageProvenance?.evidence?.articleSection||'unknown'),
-     fileTitle:String(page.imageProvenance?.evidence?.fileTitle||page.image)
-    })
-   }
-  })
+  const seenBadOrigin=new Set()
+  b1Pages.forEach(page=>{if(page?.image)totalImages++})
+
+  for(const {scope,pages} of scopes){
+   pages.forEach((page,idx)=>{
+    if(!page?.image)return
+    const origin=String(page.imageProvenance?.originType||'').trim()
+    if(origin!=='wikipedia-embedded'){
+     const dedupKey=`${scope}:${idx}:${page.image}`
+     if(!seenBadOrigin.has(dedupKey)){
+      seenBadOrigin.add(dedupKey)
+      if(scope==='B1-B2')totalNonEmbeddedImages++
+      badOriginPages.push({
+       level:scope,
+       pageNumber:idx+1,
+       originType:origin||'missing',
+       section:String(page.imageProvenance?.evidence?.articleSection||'unknown'),
+       fileTitle:String(page.imageProvenance?.evidence?.fileTitle||page.image)
+      })
+     }
+    }
+   })
+  }
   if(badOriginPages.length){
+   if(totalNonEmbeddedImages===0)totalNonEmbeddedImages=badOriginPages.length
    nonEmbeddedArticles.push({
     id:story.id,
     sourceTitle:story.sourceTitle,
@@ -58,19 +72,58 @@ export async function auditExistingWikiImages({root=ROOT,sparseThreshold=28}={})
    })
   }
 
-  // 2. Check Page 1 image section (Lead/Infobox vs non-Lead or missing Page 1 image)
-  const p0=b1Pages[0]
-  if(!p0?.image){
-   const firstImgIdx=b1Pages.findIndex(p=>Boolean(p?.image))
-   const firstImgPage=firstImgIdx>=0?b1Pages[firstImgIdx]:null
-   const promotedSection=String(firstImgPage?.imageProvenance?.evidence?.articleSection||'none')
+  // 2. Check Page 1 image presence, valid URL, Lead/Infobox section, and cross-level parity across top + ALL 3 CEFR levels
+  const missingScopes=[]
+  const nonLeadScopes=[]
+  const p0UrlsByScope={}
+
+  for(const {scope,pages} of scopes){
+   const p0=pages[0]
+   const imgUrl=String(p0?.image||'').trim()
+   p0UrlsByScope[scope]=imgUrl
+   if(!imgUrl||!VALID_IMAGE_URL_RE.test(imgUrl)){
+    const firstImgIdx=pages.findIndex(p=>Boolean(String(p?.image||'').trim()))
+    const firstImgPage=firstImgIdx>=0?pages[firstImgIdx]:null
+    missingScopes.push({
+     level:scope,
+     firstImagePage:firstImgIdx>=0?firstImgIdx+1:null,
+     firstImageSection:String(firstImgPage?.imageProvenance?.evidence?.articleSection||'none')
+    })
+   }else{
+    const sec=String(p0.imageProvenance?.evidence?.articleSection||'').trim()
+    if(!LEAD_SECTION_RE.test(sec)){
+     nonLeadScopes.push({
+      level:scope,
+      articleSection:sec||'missing',
+      fileTitle:String(p0.imageProvenance?.evidence?.fileTitle||'')
+     })
+    }
+   }
+  }
+
+  const distinctP0Urls=new Set(Object.values(p0UrlsByScope).filter(Boolean))
+  const hasParityMismatch=missingScopes.length>0&&distinctP0Urls.size>0||distinctP0Urls.size>1
+
+  if(hasParityMismatch){
+   page1ParityIssues.push({
+    id:story.id,
+    sourceTitle:story.sourceTitle,
+    title:story.title,
+    category:story.category,
+    urlsByScope:p0UrlsByScope
+   })
+  }
+
+  if(missingScopes.length){
+   const primary=missingScopes.find(s=>s.level==='B1-B2')||missingScopes[0]
    missingPage1PhotoArticles.push({
     id:story.id,
     sourceTitle:story.sourceTitle,
     title:story.title,
     category:story.category,
-    firstImagePage:firstImgIdx>=0?firstImgIdx+1:null,
-    firstImageSection:promotedSection
+    missingLevels:missingScopes.map(s=>s.level),
+    firstImagePage:primary.firstImagePage,
+    firstImageSection:primary.firstImageSection
    })
    nonLeadPage1Articles.push({
     id:story.id,
@@ -78,22 +131,22 @@ export async function auditExistingWikiImages({root=ROOT,sparseThreshold=28}={})
     title:story.title,
     category:story.category,
     reason:'missing-page1-image',
-    articleSection:promotedSection,
-    firstImagePage:firstImgIdx>=0?firstImgIdx+1:null
+    missingLevels:missingScopes.map(s=>s.level),
+    articleSection:primary.firstImageSection,
+    firstImagePage:primary.firstImagePage
    })
-  }else{
-   const sec=String(p0.imageProvenance?.evidence?.articleSection||'').trim()
-   if(!LEAD_SECTION_RE.test(sec)){
-    nonLeadPage1Articles.push({
-     id:story.id,
-     sourceTitle:story.sourceTitle,
-     title:story.title,
-     category:story.category,
-     reason:'non-lead-section',
-     articleSection:sec||'missing',
-     fileTitle:String(p0.imageProvenance?.evidence?.fileTitle||'')
-    })
-   }
+  }else if(nonLeadScopes.length){
+   const primary=nonLeadScopes.find(s=>s.level==='B1-B2')||nonLeadScopes[0]
+   nonLeadPage1Articles.push({
+    id:story.id,
+    sourceTitle:story.sourceTitle,
+    title:story.title,
+    category:story.category,
+    reason:'non-lead-section',
+    nonLeadLevels:nonLeadScopes.map(s=>s.level),
+    articleSection:primary.articleSection,
+    fileTitle:primary.fileTitle
+   })
   }
 
   // 3. Check sparse photo pages (< sparseThreshold words) across ALL pages & all 3 CEFR levels
@@ -134,15 +187,21 @@ export async function auditExistingWikiImages({root=ROOT,sparseThreshold=28}={})
  }
 
  return {
-  totalArticles:stories.length,
+  totalArticles:list.length,
   totalImages,
   totalNonEmbeddedImages,
   nonEmbeddedArticles,
   nonLeadPage1Articles,
   missingPage1PhotoArticles,
+  page1ParityIssues,
   sparsePage1Articles,
   sparsePhotoPageArticles
  }
+}
+
+export async function auditExistingWikiImages({root=ROOT,sparseThreshold=28}={}){
+ const catalog=await readWikiCatalog(root)
+ return auditWikiStories(catalog.stories||[],{sparseThreshold})
 }
 
 function printReport(report){
@@ -152,17 +211,18 @@ function printReport(report){
  console.log(`Total articles scanned:                    ${report.totalArticles}`)
  console.log(`Total attached images (B1-B2):             ${report.totalImages}`)
  console.log('-----------------------------------------------------------------')
- console.log(`1. Articles with non-embedded images:      ${report.nonEmbeddedArticles.length} (${report.totalNonEmbeddedImages} image(s) with originType !== "wikipedia-embedded")`)
- console.log(`2. Articles with non-Lead Page 1 images:   ${report.nonLeadPage1Articles.length}`)
- console.log(`   - Missing Page 1 image (later section): ${report.missingPage1PhotoArticles.length}`)
+ console.log(`1. Articles with non-embedded images:      ${report.nonEmbeddedArticles.length} (checked top + A1-A2/B1-B2/C1-C2)`)
+ console.log(`2. Articles with non-Lead Page 1 images:   ${report.nonLeadPage1Articles.length} (checked top + A1-A2/B1-B2/C1-C2)`)
+ console.log(`   - Missing Page 1 image (any level):     ${report.missingPage1PhotoArticles.length}`)
  console.log(`   - Page 1 image from non-Lead section:   ${report.nonLeadPage1Articles.length-report.missingPage1PhotoArticles.length}`)
+ console.log(`   - Page 1 cross-level parity mismatches: ${report.page1ParityIssues.length}`)
  console.log(`3. Articles with sparse photo pages (<28w): ${report.sparsePhotoPageArticles.length}`)
  console.log('=================================================================')
 
  if(report.nonEmbeddedArticles.length){
   console.log('\n[1] Non-embedded images (originType !== "wikipedia-embedded"):')
   for(const a of report.nonEmbeddedArticles){
-   const detail=a.pages.map(p=>`P${p.pageNumber}:${p.originType}(${p.section})`).join(', ')
+   const detail=a.pages.map(p=>`${p.level}:P${p.pageNumber}:${p.originType}(${p.section})`).join(', ')
    console.log(`  - ${a.id} | [${a.category}] ${a.sourceTitle} -> ${detail}`)
   }
  }
@@ -171,13 +231,20 @@ function printReport(report){
   console.log('\n[2] Page 1 images from non-Lead sections (or missing Lead photo):')
   for(const a of report.nonLeadPage1Articles.slice(0,50)){
    if(a.reason==='missing-page1-image'){
-    console.log(`  - ${a.id} | [${a.category}] ${a.sourceTitle} -> no P1 image (first image on P${a.firstImagePage}: "${a.articleSection}")`)
+    console.log(`  - ${a.id} | [${a.category}] ${a.sourceTitle} -> missing P1 image in [${(a.missingLevels||[]).join(', ')}] (first image on P${a.firstImagePage}: "${a.articleSection}")`)
    }else{
-    console.log(`  - ${a.id} | [${a.category}] ${a.sourceTitle} -> P1 image section="${a.articleSection}" (${a.fileTitle})`)
+    console.log(`  - ${a.id} | [${a.category}] ${a.sourceTitle} -> P1 image section="${a.articleSection}" in [${(a.nonLeadLevels||[]).join(', ')}] (${a.fileTitle})`)
    }
   }
   if(report.nonLeadPage1Articles.length>50){
    console.log(`  ... and ${report.nonLeadPage1Articles.length-50} more (pass --json for complete list)`)
+  }
+ }
+
+ if(report.page1ParityIssues.length){
+  console.log('\n[2b] Page 1 cross-level parity mismatches:')
+  for(const a of report.page1ParityIssues){
+   console.log(`  - ${a.id} | [${a.category}] ${a.sourceTitle} -> ${JSON.stringify(a.urlsByScope)}`)
   }
  }
 
