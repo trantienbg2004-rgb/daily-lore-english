@@ -24,6 +24,7 @@ export async function auditExistingWikiImages({root=ROOT,sparseThreshold=28}={})
  const nonLeadPage1Articles=[]
  const missingPage1PhotoArticles=[]
  const sparsePage1Articles=[]
+ const sparsePhotoPageArticles=[]
 
  let totalImages=0
  let totalNonEmbeddedImages=0
@@ -95,14 +96,22 @@ export async function auditExistingWikiImages({root=ROOT,sparseThreshold=28}={})
    }
   }
 
-  // 3. Check sparse Page 1 (< sparseThreshold words) across all 3 CEFR levels
+  // 3. Check sparse photo pages (< sparseThreshold words) across ALL pages & all 3 CEFR levels
   const sparseLevels=[]
+  const sparsePhotoPages=[]
   for(const level of LEVELS){
-   const lvlPage0=story.levelVariants?.[level]?.pages?.[0]
-   const wc=wordCount(lvlPage0?.text)
-   if(wc<sparseThreshold){
-    sparseLevels.push({level,words:wc,hasImage:Boolean(lvlPage0?.image)})
+   const lvlPages=story.levelVariants?.[level]?.pages||[]
+   const p0Words=wordCount(lvlPages[0]?.text)
+   if(p0Words<sparseThreshold){
+    sparseLevels.push({level,words:p0Words,hasImage:Boolean(lvlPages[0]?.image)})
    }
+   lvlPages.forEach((pg,pIdx)=>{
+    if(!pg?.image)return
+    const wc=wordCount(pg.text)
+    if(wc<sparseThreshold){
+     sparsePhotoPages.push({level,pageNumber:pIdx+1,words:wc})
+    }
+   })
   }
   if(sparseLevels.length){
    sparsePage1Articles.push({
@@ -111,6 +120,15 @@ export async function auditExistingWikiImages({root=ROOT,sparseThreshold=28}={})
     title:story.title,
     category:story.category,
     sparseLevels
+   })
+  }
+  if(sparsePhotoPages.length){
+   sparsePhotoPageArticles.push({
+    id:story.id,
+    sourceTitle:story.sourceTitle,
+    title:story.title,
+    category:story.category,
+    sparsePhotoPages
    })
   }
  }
@@ -122,13 +140,14 @@ export async function auditExistingWikiImages({root=ROOT,sparseThreshold=28}={})
   nonEmbeddedArticles,
   nonLeadPage1Articles,
   missingPage1PhotoArticles,
-  sparsePage1Articles
+  sparsePage1Articles,
+  sparsePhotoPageArticles
  }
 }
 
 function printReport(report){
  console.log('=================================================================')
- console.log('SAGA WIKI IMAGE & PAGE 1 AUDIT REPORT (READ-ONLY)')
+ console.log('SAGA WIKI IMAGE & PHOTO-PAGE AUDIT REPORT (READ-ONLY)')
  console.log('=================================================================')
  console.log(`Total articles scanned:                    ${report.totalArticles}`)
  console.log(`Total attached images (B1-B2):             ${report.totalImages}`)
@@ -137,7 +156,7 @@ function printReport(report){
  console.log(`2. Articles with non-Lead Page 1 images:   ${report.nonLeadPage1Articles.length}`)
  console.log(`   - Missing Page 1 image (later section): ${report.missingPage1PhotoArticles.length}`)
  console.log(`   - Page 1 image from non-Lead section:   ${report.nonLeadPage1Articles.length-report.missingPage1PhotoArticles.length}`)
- console.log(`3. Articles with sparse Page 1 (< 28w):    ${report.sparsePage1Articles.length}`)
+ console.log(`3. Articles with sparse photo pages (<28w): ${report.sparsePhotoPageArticles.length}`)
  console.log('=================================================================')
 
  if(report.nonEmbeddedArticles.length){
@@ -162,10 +181,10 @@ function printReport(report){
   }
  }
 
- if(report.sparsePage1Articles.length){
-  console.log('\n[3] Sparse Page 1 (< 28 words):')
-  for(const a of report.sparsePage1Articles){
-   const lvls=a.sparseLevels.map(s=>`${s.level}:${s.words}w`).join(', ')
+ if(report.sparsePhotoPageArticles.length){
+  console.log('\n[3] Sparse photo pages (< 28 words):')
+  for(const a of report.sparsePhotoPageArticles){
+   const lvls=a.sparsePhotoPages.map(s=>`${s.level}:P${s.pageNumber}=${s.words}w`).join(', ')
    console.log(`  - ${a.id} | [${a.category}] ${a.sourceTitle} (${a.title}) -> ${lvls}`)
   }
  }

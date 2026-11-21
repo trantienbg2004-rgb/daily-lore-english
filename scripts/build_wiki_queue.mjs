@@ -356,8 +356,8 @@ export function buildBalancedQueue({
  }
 
  const items=[...preserved,...added]
- const counts={pending:0,published:0,skipped_no_image:0}
- const byTopic=Object.fromEntries(WIKI_TOPICS.map(t=>[t,{pending:0,published:0,skipped_no_image:0,total:0}]))
+ const counts={pending:0,published:0,skipped_no_image:0,skipped_no_lead_image:0,skipped_quality:0}
+ const byTopic=Object.fromEntries(WIKI_TOPICS.map(t=>[t,{pending:0,published:0,skipped_no_image:0,skipped_no_lead_image:0,skipped_quality:0,total:0}]))
  for(const item of items){
   const st=item.status||'pending'
   counts[st]=(counts[st]||0)+1

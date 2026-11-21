@@ -2420,5 +2420,35 @@
   color: #6e6963;
 }
 
+/* Pure Fixed-Card dense-text fallback (never splits a page; steps down 1-2px gently) */
+.lore-editorial-v5 .reader-gesture:not(.layout-measure-fixture) .page-surface.saga-page--dense .reading-card,
+.lore-editorial-v5 .reader-gesture:not(.layout-measure-fixture) .page-surface.page-density-dense .reading-card,
+.lore-editorial-v5 .reader-gesture:not(.layout-measure-fixture) .page-surface.page-density-dense-tight .reading-card {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior-y: contain;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.lore-editorial-v5 .reader-gesture:not(.layout-measure-fixture) .page-surface.saga-page--dense .reading-card::-webkit-scrollbar,
+.lore-editorial-v5 .reader-gesture:not(.layout-measure-fixture) .page-surface.page-density-dense .reading-card::-webkit-scrollbar,
+.lore-editorial-v5 .reader-gesture:not(.layout-measure-fixture) .page-surface.page-density-dense-tight .reading-card::-webkit-scrollbar {
+  display: none;
+}
+
+.lore-editorial-v5 .reader-gesture:not(.layout-measure-fixture) .page-surface.saga-page--dense .reading-card .article-text,
+.lore-editorial-v5 .reader-gesture:not(.layout-measure-fixture) .page-surface.page-density-dense .reading-card .article-text {
+  font-size: clamp(15.2px, 3.95vw, 17.6px);
+  line-height: 1.40;
+}
+
+.lore-editorial-v5 .reader-gesture:not(.layout-measure-fixture) .page-surface.page-density-dense-tight .reading-card .article-text {
+  font-size: clamp(14.2px, 3.65vw, 16.4px);
+  line-height: 1.35;
+}
+
+
 
 

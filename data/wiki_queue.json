@@ -1,11 +1,12 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-20T11:20:20.691Z",
-  "total": 1600,
+  "updatedAt": "2026-11-21T08:21:10.129Z",
+  "total": 1726,
   "counts": {
     "pending": 1584,
-    "published": 15,
+    "published": 9,
     "skipped_no_image": 0,
+    "skipped_no_lead_image": 132,
     "skipped_quality": 1
   },
   "byTopic": {
@@ -13,71 +14,81 @@
       "pending": 158,
       "published": 2,
       "skipped_no_image": 0,
+      "skipped_no_lead_image": 14,
       "skipped_quality": 0,
-      "total": 160
+      "total": 174
     },
     "Economy": {
       "pending": 158,
       "published": 1,
       "skipped_no_image": 0,
+      "skipped_no_lead_image": 11,
       "skipped_quality": 1,
-      "total": 160
+      "total": 171
     },
     "Conflict & Security": {
       "pending": 158,
-      "published": 2,
+      "published": 1,
       "skipped_no_image": 0,
+      "skipped_no_lead_image": 17,
       "skipped_quality": 0,
-      "total": 160
+      "total": 176
     },
     "Society": {
       "pending": 158,
-      "published": 2,
+      "published": 0,
       "skipped_no_image": 0,
+      "skipped_no_lead_image": 14,
       "skipped_quality": 0,
-      "total": 160
+      "total": 172
     },
     "Culture": {
       "pending": 159,
-      "published": 1,
+      "published": 0,
       "skipped_no_image": 0,
+      "skipped_no_lead_image": 16,
       "skipped_quality": 0,
-      "total": 160
+      "total": 175
     },
     "Science & Technology": {
       "pending": 159,
       "published": 1,
       "skipped_no_image": 0,
+      "skipped_no_lead_image": 11,
       "skipped_quality": 0,
-      "total": 160
+      "total": 171
     },
     "Environment": {
       "pending": 158,
-      "published": 2,
+      "published": 1,
       "skipped_no_image": 0,
+      "skipped_no_lead_image": 12,
       "skipped_quality": 0,
-      "total": 160
+      "total": 171
     },
     "Health": {
       "pending": 159,
       "published": 1,
       "skipped_no_image": 0,
+      "skipped_no_lead_image": 5,
       "skipped_quality": 0,
-      "total": 160
+      "total": 165
     },
     "History & Geography": {
       "pending": 159,
-      "published": 1,
+      "published": 0,
       "skipped_no_image": 0,
+      "skipped_no_lead_image": 18,
       "skipped_quality": 0,
-      "total": 160
+      "total": 177
     },
     "Sports": {
       "pending": 158,
       "published": 2,
       "skipped_no_image": 0,
+      "skipped_no_lead_image": 14,
       "skipped_quality": 0,
-      "total": 160
+      "total": 174
     }
   },
   "items": [
@@ -3684,10 +3695,11 @@
       "source": "vital4_fa",
       "priority": 1,
       "sourceUrl": "https://en.wikipedia.org/wiki/Balfour_Declaration",
-      "hasLeadImage": true,
-      "status": "published",
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
       "addedAt": "2026-11-20T08:49:35.085Z",
-      "publishedAt": "2026-11-20T11:09:47.247Z"
+      "publishedAt": "2026-11-20T11:09:47.247Z",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
     },
     {
       "title": "Castle",
@@ -5427,10 +5439,11 @@
       "source": "vital4_fa",
       "priority": 1,
       "sourceUrl": "https://en.wikipedia.org/wiki/Mind",
-      "hasLeadImage": true,
-      "status": "published",
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
       "addedAt": "2026-11-20T08:49:35.085Z",
-      "publishedAt": "2026-11-20T11:09:04.613Z"
+      "publishedAt": "2026-11-20T11:09:04.613Z",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
     },
     {
       "title": "Communication",
@@ -5439,10 +5452,11 @@
       "source": "vital4_fa",
       "priority": 1,
       "sourceUrl": "https://en.wikipedia.org/wiki/Communication",
-      "hasLeadImage": true,
-      "status": "published",
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
       "addedAt": "2026-11-20T08:49:35.085Z",
-      "publishedAt": "2026-11-20T11:16:23.187Z"
+      "publishedAt": "2026-11-20T11:16:23.187Z",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
     },
     {
       "title": "Well-being",
@@ -7239,10 +7253,11 @@
       "source": "vital4_fa",
       "priority": 1,
       "sourceUrl": "https://en.wikipedia.org/wiki/The_Simpsons",
-      "hasLeadImage": true,
-      "status": "published",
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
       "addedAt": "2026-11-20T08:49:35.085Z",
-      "publishedAt": "2026-11-20T11:17:29.682Z"
+      "publishedAt": "2026-11-20T11:17:29.682Z",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
     },
     {
       "title": "Philosophy",
@@ -10687,10 +10702,11 @@
       "source": "vital4_fa",
       "priority": 1,
       "sourceUrl": "https://en.wikipedia.org/wiki/Climate_change",
-      "hasLeadImage": true,
-      "status": "published",
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
       "addedAt": "2026-11-20T08:49:35.085Z",
-      "publishedAt": "2026-11-20T11:11:59.082Z"
+      "publishedAt": "2026-11-20T11:11:59.082Z",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
     },
     {
       "title": "Dinosaur",
@@ -14235,10 +14251,11 @@
       "source": "vital4_fa",
       "priority": 1,
       "sourceUrl": "https://en.wikipedia.org/wiki/India",
-      "hasLeadImage": true,
-      "status": "published",
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
       "addedAt": "2026-11-20T08:49:35.085Z",
-      "publishedAt": "2026-11-20T11:16:04.264Z"
+      "publishedAt": "2026-11-20T11:16:04.264Z",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
     },
     {
       "title": "Minneapolis",
@@ -17744,6 +17761,1266 @@
       "hasLeadImage": true,
       "status": "pending",
       "addedAt": "2026-11-20T08:49:35.085Z"
+    },
+    {
+      "title": "1877 Wimbledon Championship",
+      "pageId": 10612527,
+      "topic": "Sports",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "Industrial heritage",
+      "pageId": 10700479,
+      "topic": "Culture",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "Wilsons Promontory",
+      "pageId": 1089237,
+      "topic": "Environment",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "History of polio",
+      "pageId": 11110672,
+      "topic": "Health",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "Absentee ballot",
+      "pageId": 1127534,
+      "topic": "Politics",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "Historic preservation",
+      "pageId": 1219810,
+      "topic": "Culture",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "Liquidity crisis",
+      "pageId": 13551707,
+      "topic": "Economy",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "FISU World University Games",
+      "pageId": 1377362,
+      "topic": "Sports",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "Arab Agricultural Revolution",
+      "pageId": 13837507,
+      "topic": "Science & Technology",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "Polar amplification",
+      "pageId": 14414065,
+      "topic": "Environment",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "Jacques Necker",
+      "pageId": 156005,
+      "topic": "Culture",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "General circulation model",
+      "pageId": 164600,
+      "topic": "Environment",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "History of manufactured fuel gases",
+      "pageId": 16593931,
+      "topic": "Science & Technology",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "Korean War",
+      "pageId": 16772,
+      "topic": "Conflict & Security",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "Benjamin Constant",
+      "pageId": 168473,
+      "topic": "Culture",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "British Agricultural Revolution",
+      "pageId": 174791,
+      "topic": "Science & Technology",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "Lord Byron",
+      "pageId": 17566665,
+      "topic": "Culture",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "Greenland ice core project",
+      "pageId": 1770354,
+      "topic": "Environment",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "Climate crisis",
+      "pageId": 17987598,
+      "topic": "Environment",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "Seven Years' War",
+      "pageId": 19039354,
+      "topic": "Conflict & Security",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "Ethical movement",
+      "pageId": 1923228,
+      "topic": "Society",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "History of the diesel car",
+      "pageId": 20016887,
+      "topic": "Science & Technology",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "Economic history of the world",
+      "pageId": 20867787,
+      "topic": "Economy",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "Germaine de Staël",
+      "pageId": 210684,
+      "topic": "Culture",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "Aratus of Sicyon",
+      "pageId": 2115847,
+      "topic": "Sports",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "History of paper",
+      "pageId": 21182020,
+      "topic": "Science & Technology",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "History of rail transport",
+      "pageId": 211919,
+      "topic": "Science & Technology",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "The arts and politics",
+      "pageId": 21342679,
+      "topic": "Society",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "Political history of the world",
+      "pageId": 21431793,
+      "topic": "Politics",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "Black Panther Party",
+      "pageId": 23278339,
+      "topic": "Politics",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "Common heritage of humanity",
+      "pageId": 23773961,
+      "topic": "Culture",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "Peace of Westphalia",
+      "pageId": 23850,
+      "topic": "Conflict & Security",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "Peloponnesian War",
+      "pageId": 24121,
+      "topic": "Conflict & Security",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "Punic Wars",
+      "pageId": 24417,
+      "topic": "Conflict & Security",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "Changchun",
+      "pageId": 250126,
+      "topic": "History & Geography",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "Dvārakā–Kamboja route",
+      "pageId": 2508128,
+      "topic": "Economy",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "Indian Ocean trade",
+      "pageId": 25322095,
+      "topic": "Economy",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "Concession (politics)",
+      "pageId": 2538448,
+      "topic": "Politics",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "Al-Kindi",
+      "pageId": 272065,
+      "topic": "Health",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "Caduceus as a symbol of medicine",
+      "pageId": 27355965,
+      "topic": "Health",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "BBC Radio 3",
+      "pageId": 275454,
+      "topic": "Culture",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "Global cooling",
+      "pageId": 295445,
+      "topic": "Environment",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "Social history of viruses",
+      "pageId": 29802394,
+      "topic": "Health",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "History of the camera",
+      "pageId": 3032314,
+      "topic": "Science & Technology",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "Thirty Years' War",
+      "pageId": 30583,
+      "topic": "Conflict & Security",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "Axum",
+      "pageId": 310208,
+      "topic": "History & Geography",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "Antifeminism",
+      "pageId": 3354802,
+      "topic": "Society",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "Winter Olympic Games",
+      "pageId": 34069,
+      "topic": "Sports",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "Gwadar Port",
+      "pageId": 3517212,
+      "topic": "Economy",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "Darłowo",
+      "pageId": 353249,
+      "topic": "History & Geography",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "Corfu (city)",
+      "pageId": 3558276,
+      "topic": "History & Geography",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "Bangsamoro peace process",
+      "pageId": 36032909,
+      "topic": "Conflict & Security",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "History of television",
+      "pageId": 3636075,
+      "topic": "Science & Technology",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "Civil liberties",
+      "pageId": 37476,
+      "topic": "Society",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "Global surface temperature",
+      "pageId": 37719142,
+      "topic": "Environment",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "Economic depression",
+      "pageId": 38289,
+      "topic": "Economy",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "Brzeg",
+      "pageId": 386825,
+      "topic": "History & Geography",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "Internationalism (politics)",
+      "pageId": 38777061,
+      "topic": "Politics",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "Battle of Trafalgar",
+      "pageId": 38855,
+      "topic": "Conflict & Security",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "History of leprosy",
+      "pageId": 39388569,
+      "topic": "Health",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "Eco-socialism",
+      "pageId": 39699737,
+      "topic": "Politics",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "History of sport",
+      "pageId": 398318,
+      "topic": "Sports",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "Efficiency movement",
+      "pageId": 4008035,
+      "topic": "Society",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "Country life movement",
+      "pageId": 41397305,
+      "topic": "Society",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "History of the T20 World Cup",
+      "pageId": 42431723,
+      "topic": "Sports",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "Battle of Stalingrad",
+      "pageId": 4284,
+      "topic": "Conflict & Security",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "Friendship Games",
+      "pageId": 4330579,
+      "topic": "Sports",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "Battle of Waterloo",
+      "pageId": 4356,
+      "topic": "Conflict & Security",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "Kyakhta trade",
+      "pageId": 44581660,
+      "topic": "Economy",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "Anti-Stalinist left",
+      "pageId": 44589765,
+      "topic": "Politics",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "Cagliari",
+      "pageId": 44950,
+      "topic": "History & Geography",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "Bastia",
+      "pageId": 45433,
+      "topic": "History & Geography",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "History of sound recording",
+      "pageId": 4556078,
+      "topic": "Science & Technology",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "Conservation and restoration of archaeological sites",
+      "pageId": 46590527,
+      "topic": "Culture",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "Carmen Miranda",
+      "pageId": 50758,
+      "topic": "Culture",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "Braunschweig",
+      "pageId": 51032,
+      "topic": "History & Geography",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "FairTax",
+      "pageId": 534060,
+      "topic": "Politics",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "Córdoba, Spain",
+      "pageId": 53669,
+      "topic": "History & Geography",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "Central Tibetan Administration",
+      "pageId": 54751,
+      "topic": "Society",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "Dubrovnik",
+      "pageId": 55116,
+      "topic": "History & Geography",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "Decadent movement",
+      "pageId": 5678514,
+      "topic": "Culture",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "Chania",
+      "pageId": 59739,
+      "topic": "History & Geography",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "February 2019 Warsaw Conference",
+      "pageId": 59774066,
+      "topic": "Politics",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "Cosmopolitanism",
+      "pageId": 599178,
+      "topic": "Society",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "Alcibiades",
+      "pageId": 61322,
+      "topic": "Sports",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "Democracy in Mexico",
+      "pageId": 61650441,
+      "topic": "Politics",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "Climate psychology",
+      "pageId": 63662981,
+      "topic": "Environment",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "Olympic sports",
+      "pageId": 650360,
+      "topic": "Sports",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "2020s in environmental history",
+      "pageId": 65872280,
+      "topic": "Environment",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "Climate envoy",
+      "pageId": 65936627,
+      "topic": "Environment",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "Indian Ocean slave trade",
+      "pageId": 66069494,
+      "topic": "Economy",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "Compulsory figures",
+      "pageId": 666280,
+      "topic": "Sports",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "The New Peace Process",
+      "pageId": 66672242,
+      "topic": "Conflict & Security",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "Electoral district",
+      "pageId": 667057,
+      "topic": "Politics",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "Palace economy",
+      "pageId": 667598,
+      "topic": "Economy",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "Tigrayan peace process",
+      "pageId": 66828038,
+      "topic": "Conflict & Security",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "United States–Taliban deal",
+      "pageId": 67928046,
+      "topic": "Conflict & Security",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "Cuban Missile Crisis",
+      "pageId": 6827,
+      "topic": "Conflict & Security",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "Children's rights movement",
+      "pageId": 694630,
+      "topic": "Society",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "Lauren B. Buckley",
+      "pageId": 70601084,
+      "topic": "Environment",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "Looted art",
+      "pageId": 7208744,
+      "topic": "Culture",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "Cusco",
+      "pageId": 72735,
+      "topic": "History & Geography",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "History of lead",
+      "pageId": 73289328,
+      "topic": "Science & Technology",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "Abolitionism in Brazil",
+      "pageId": 73329192,
+      "topic": "Politics",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "Free Hugs Campaign",
+      "pageId": 7425590,
+      "topic": "Society",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "Enhanced Games",
+      "pageId": 74293091,
+      "topic": "Sports",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "Louroux Priory",
+      "pageId": 74417901,
+      "topic": "Culture",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "Bydgoszcz",
+      "pageId": 74593,
+      "topic": "History & Geography",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "Bytom",
+      "pageId": 74601,
+      "topic": "History & Geography",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "Cost-of-living crisis",
+      "pageId": 74683957,
+      "topic": "Economy",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "Gang Suppression Force",
+      "pageId": 74972533,
+      "topic": "Conflict & Security",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "Demise and revival of compulsory figures",
+      "pageId": 75904154,
+      "topic": "Sports",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "Bliesbruck Baths",
+      "pageId": 76906082,
+      "topic": "Culture",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "Toronto General Trusts",
+      "pageId": 77221081,
+      "topic": "Economy",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "Drag and the Olympic Games",
+      "pageId": 77519023,
+      "topic": "Sports",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "History of the LED",
+      "pageId": 78554064,
+      "topic": "Science & Technology",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "Fondation du patrimoine",
+      "pageId": 78909628,
+      "topic": "Culture",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "Alligator Alcatraz",
+      "pageId": 80275802,
+      "topic": "Society",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "Anthropology of human rights",
+      "pageId": 81143155,
+      "topic": "Society",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "International Stabilization Force",
+      "pageId": 81225292,
+      "topic": "Conflict & Security",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "Decree of the Abolition of Slavery of April 27, 1848",
+      "pageId": 81481334,
+      "topic": "Politics",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "History of assassination",
+      "pageId": 8455760,
+      "topic": "Politics",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "Aethiopia",
+      "pageId": 8681060,
+      "topic": "History & Geography",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "Danville, Virginia",
+      "pageId": 91333,
+      "topic": "History & Geography",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "East Berlin",
+      "pageId": 9483,
+      "topic": "History & Geography",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
+    },
+    {
+      "title": "Pisistratus",
+      "pageId": 9633432,
+      "topic": "Sports",
+      "source": "pruned_catalog",
+      "priority": 3,
+      "hasLeadImage": false,
+      "status": "skipped_no_lead_image",
+      "updatedAt": "2026-11-21T08:21:10.129Z"
     }
   ]
 }

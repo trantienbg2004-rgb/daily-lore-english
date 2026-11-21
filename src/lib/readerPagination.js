@@ -26,7 +26,11 @@ export function sentenceUnits(text) {
 
 // Move complete sentences between neighboring text-only pages when the
 // viewport allows it. Leave page count and any photo placement untouched.
+// Pure Fixed-Card pages (tagged non-enumerable _fixedCard) stay strictly intact.
 export function rebalanceTextPages(pages, fits) {
+  if (Array.isArray(pages) && pages.some(p => p?._fixedCard)) {
+    return pages.map(page => ({...page}))
+  }
   const balanced = pages.map(page => ({...page}))
   const countWords = wordCount
   let start = 0
@@ -453,445 +457,126 @@ function planUniformWikiPages(item, fits, {
   return pages
 }
 
-// Balanced mobile pagination: separate photo (~40-65w) vs text-only (~80-120w)
-// capacity budgets, consecutive sparse text-only merging, and anti-orphan final-page
-// rebalancing while keeping every image anchored and every token 100% lossless.
+/**
+ * Pure Fixed-Card Mode (Lore-Style) for mobile SAGA Wiki reading:
+ * - Strict 1:1 mapping: 1 JSON page (pages[i]) ALWAYS renders as 1 single screen.
+ * - ZERO mid-thought sentence splitting onto extra spillover/orphan pages, ensuring
+ *   exact page-count and photo parity across A1-A2, B1-B2, and C1-C2.
+ * - Anti-sparse protection: if any legacy photo page has < 25 words and an adjacent
+ *   text-only page has surplus text (keeping >= 25 words), borrow 1-2 sentences
+ *   losslessly without changing page count or creating sparse neighbors.
+ * - Overflow safety: if a tall legacy page exceeds default viewport height in fits(),
+ *   NEVER split it — apply a subtle `.saga-page--dense` density modifier instead
+ *   (stepping font-size down gently by 1-2px, with smooth internal scroll only as
+ *   an extreme fallback).
+ */
 function planBalancedWikiPages(item, fits, {
-  maxPages = 250,
-  photoTargetMax = 65,
-  photoHardMax = 72,
-  textTargetMax = 112,
-  textHardMax = 120,
-  orphanMinWords = 40,
-  page1MinWords = 28,
+  minPhotoWords = 25,
 } = {}) {
   const originals = item?._sourcePages || item?.pages || []
+  if (!originals.length) return null
   const raw = trim(originals.map(p => p?.text || '').join(' '))
   if (!raw) return null
 
-  const units = []
-  const seenImages = new Set()
-  const rawAnchors = []
-  for (const rawPage of originals) {
-    const sourcePage = rawPage || {}
-    const start = units.length
-    const pageUnits = sentenceUnits(sourcePage.text)
-    for (const u of pageUnits) units.push(u)
-    const end = units.length
-    if (sourcePage.image && !seenImages.has(sourcePage.image)) {
-      seenImages.add(sourcePage.image)
-      rawAnchors.push({page: sourcePage, start, end: Math.max(end, start + 1)})
+  const fixed = originals.map(rawPage => {
+    const src = rawPage || {}
+    return {
+      image: src.image || '',
+      caption: src.caption || '',
+      ...(src.imageProvenance ? {imageProvenance: src.imageProvenance} : {}),
+      text: trim(src.text || ''),
     }
-  }
-  if (!units.length) return null
+  })
 
-  const coverIdx = selectCoverAnchorIndex(item, rawAnchors, originals[0]?.text || '')
-  const coverImage = coverIdx >= 0 ? rawAnchors[coverIdx].page : null
-  const secondaryAnchors = rawAnchors.filter((_, idx) => idx !== coverIdx)
+  const fitsNormal = (text, isCover, pageObj) =>
+    Boolean(fits({text, cover: isCover, image: pageObj?.image ? pageObj : null, density: ''}))
 
-  const pages = []
-  const pushPage = (img, text, density = '') => {
-    pages.push({
-      image: img?.image || '',
-      caption: img?.caption || '',
-      ...(img?.imageProvenance ? {imageProvenance: img.imageProvenance} : {}),
-      ...(density ? {density} : {}),
-      text,
-    })
-  }
+  // 1. Anti-sparse protection for legacy photo pages (< 25 words) without changing page count.
+  for (let i = 0; i < fixed.length; i++) {
+    const curr = fixed[i]
+    if (!curr.image) continue
+    if (wordCount(curr.text) >= minPhotoWords) continue
+    const isCover = i === 0
 
-  const fitsPhotoBudget = (text, cover, image, hard = false) =>
-    wordCount(text) <= (hard ? photoHardMax : photoTargetMax) && Boolean(fits({text, cover, image, density: ''}))
-
-  const fitsTextBudget = (text, cover, hard = false) =>
-    wordCount(text) <= (hard ? textHardMax : textTargetMax) && Boolean(fits({text, cover, image: null, density: ''}))
-
-  const packSentences = (startCursor, startFragment, maxEnd, canFit) => {
-    let text = ''
-    let count = 0
-    const queue = startFragment
-      ? [startFragment, ...units.slice(startCursor + 1, maxEnd)]
-      : units.slice(startCursor, maxEnd)
-    for (const candidate of queue) {
-      const next = text ? `${text} ${candidate}` : candidate
-      if (!canFit(next)) break
-      text = next
-      count++
-    }
-    return {text, count, nextCursor: startCursor + count}
-  }
-
-  let cursor = 0
-  let fragment = ''
-  let nextAnchorIdx = 0
-
-  while ((cursor < units.length || fragment) && pages.length < maxPages) {
-    const isCover = pages.length === 0
-    let pageImage = null
-    let limitEnd = units.length
-
-    if (isCover) {
-      pageImage = coverImage
-    } else if (nextAnchorIdx < secondaryAnchors.length) {
-      const anchor = secondaryAnchors[nextAnchorIdx]
-      if (!fragment && cursor >= anchor.start) {
-        pageImage = anchor.page
-        nextAnchorIdx++
-      } else if (!fragment && cursor < anchor.start) {
-        const textOnlyPack = packSentences(cursor, '', units.length, t => fitsTextBudget(t, false, false))
-        if (textOnlyPack.nextCursor > anchor.start) {
-          const gapText = units.slice(cursor, anchor.start).join(' ')
-          const gapWords = wordCount(gapText)
-          const photoPack = packSentences(cursor, '', units.length, t => fitsPhotoBudget(t, false, anchor.page, false))
-          if (gapWords <= 36 && photoPack.nextCursor > anchor.start) {
-            pageImage = anchor.page
-            nextAnchorIdx++
-          } else {
-            limitEnd = anchor.start
-          }
+    // Prefer borrowing 1-2 leading sentences from the NEXT text-only page (leaving >= 25w).
+    if (i + 1 < fixed.length && !fixed[i + 1].image) {
+      const next = fixed[i + 1]
+      const nextUnits = sentenceUnits(next.text)
+      if (nextUnits.length >= 2) {
+        let currText = curr.text
+        const remaining = nextUnits.slice()
+        let borrowed = 0
+        while (remaining.length >= 2 && borrowed < 2 && wordCount(currText) < minPhotoWords) {
+          const sent = remaining[0]
+          const afterNext = remaining.slice(1).join(' ')
+          if (wordCount(afterNext) < minPhotoWords) break
+          const candidateCurr = currText ? `${currText} ${sent}` : sent
+          if (!fitsNormal(candidateCurr, isCover, curr)) break
+          currText = candidateCurr
+          remaining.shift()
+          borrowed++
+        }
+        if (borrowed > 0) {
+          curr.text = currText
+          next.text = remaining.join(' ')
         }
       }
     }
 
-    const upcomingAnchor = nextAnchorIdx < secondaryAnchors.length ? secondaryAnchors[nextAnchorIdx] : null
-    if (pageImage && upcomingAnchor && limitEnd > upcomingAnchor.start) {
-      limitEnd = upcomingAnchor.start
-    }
-
-    const canFitCurrent = pageImage
-      ? (t, hard = false) => fitsPhotoBudget(t, isCover, pageImage, hard)
-      : (t, hard = false) => fitsTextBudget(t, isCover, hard)
-
-    const packed = packSentences(cursor, fragment, limitEnd, t => canFitCurrent(t, false))
-    let text = packed.text
-    let count = packed.count
-
-    if (count > 0) {
-      if (isCover && pageImage && (cursor + count < limitEnd) && wordCount(text) < 12) {
-        const following = units[cursor + count]
-        const join = part => text ? `${text} ${part}` : part
-        const [first, rest] = splitOversizedSentence(following, part => canFitCurrent(join(part), true))
-        if (wordCount(first) >= 8 && rest && canFitCurrent(join(first), true)) {
-          text = join(first)
-          cursor += count
-          fragment = rest
-          pushPage(pageImage, text)
-          continue
-        }
-      }
-      cursor += count
-      fragment = ''
-    } else if (pageImage) {
-      const current = fragment || units[cursor]
-      if (fits({text: current, cover: isCover, image: pageImage, density: ''})) {
-        text = current
-        fragment = ''
-        cursor++
-      } else {
-        const [first, rest] = splitOversizedSentence(current, t => fits({text: t, cover: isCover, image: pageImage, density: ''}))
-        if (wordCount(first) >= 6 && fits({text: first, cover: isCover, image: pageImage, density: ''})) {
-          text = first
-          if (rest) fragment = rest
-          else { fragment = ''; cursor++ }
-        } else {
-          text = ''
-        }
-      }
-    } else {
-      const current = fragment || units[cursor]
-      if (fits({text: current, cover: isCover, image: null, density: ''})) {
-        text = current
-        fragment = ''
-        cursor++
-      } else {
-        const [first, rest] = splitOversizedSentence(current, t => fits({text: t, cover: isCover, image: null, density: ''}))
-        text = first
-        if (rest) fragment = rest
-        else { fragment = ''; cursor++ }
-      }
-    }
-
-    // Absorb a short bridge before the next image when it fits cleanly on this photo page.
-    if (pageImage && upcomingAnchor && (fragment || cursor < upcomingAnchor.start)) {
-      const gapParts = fragment
-        ? [fragment, ...units.slice(cursor + 1, upcomingAnchor.start)]
-        : units.slice(cursor, upcomingAnchor.start)
-      const gapText = gapParts.join(' ')
-      const gapWords = wordCount(gapText)
-      if (gapWords > 0 && gapWords <= 48) {
-        const combined = text ? `${text} ${gapText}` : gapText
-        if (canFitCurrent(combined, true)) {
-          text = combined
-          cursor = upcomingAnchor.start
-          fragment = ''
-        }
-      }
-    }
-
-    // Absorb a tiny trailing tail after the last photo if it fits cleanly.
-    if (pageImage && !upcomingAnchor && (fragment || cursor < units.length)) {
-      const tailParts = fragment
-        ? [fragment, ...units.slice(cursor + 1)]
-        : units.slice(cursor)
-      const tailText = tailParts.join(' ')
-      const tailWords = wordCount(tailText)
-      if (tailWords > 0 && tailWords <= 36) {
-        const combined = text ? `${text} ${tailText}` : tailText
-        if (canFitCurrent(combined, true)) {
-          text = combined
-          cursor = units.length
-          fragment = ''
-        }
-      }
-    }
-
-    pushPage(pageImage, text)
-  }
-
-  if (cursor < units.length || fragment) return null
-
-  // Stage B: Merge consecutive sparse text-only pages (or absorb a short text-only
-  // bridge into a preceding photo page) whenever the combined text fits cleanly.
-  let merged = true
-  while (merged && pages.length >= 2) {
-    merged = false
-    for (let i = 0; i < pages.length - 1; i++) {
-      if (!pages[i].image && !pages[i + 1].image) {
-        const combined = trim(`${pages[i].text} ${pages[i + 1].text}`)
-        const eitherSparse = wordCount(pages[i].text) < orphanMinWords || wordCount(pages[i + 1].text) < orphanMinWords
-        if (pages.length <= 3 && !eitherSparse) continue
-        if (fitsTextBudget(combined, i === 0, true)) {
-          pages.splice(i, 2, {image: '', caption: '', text: combined})
-          merged = true
-          break
-        }
-      } else if (pages[i].image && !pages[i + 1].image) {
-        const nextWords = wordCount(pages[i + 1].text)
-        const combined = trim(`${pages[i].text} ${pages[i + 1].text}`)
-        if (nextWords <= 48 && (pages.length > 4 || nextWords < orphanMinWords) && fitsPhotoBudget(combined, i === 0, pages[i], true)) {
-          pages.splice(i, 2, {...pages[i], text: combined})
-          merged = true
-          break
-        }
-      }
-    }
-  }
-
-  // Stage C1: Compact & evenly balance every contiguous run of 2+ text-only pages.
-  // First try reducing the run's page count when greedy sentence packing left
-  // slack across 3+ consecutive text-only pages, minimizing variance at the
-  // smallest feasible page count (100% lossless).
-  const compacted = []
-  let runIdx = 0
-  while (runIdx < pages.length) {
-    if (pages[runIdx].image) {
-      compacted.push(pages[runIdx])
-      runIdx++
-      continue
-    }
-    let endIdx = runIdx
-    while (endIdx < pages.length && !pages[endIdx].image) endIdx++
-    const runLen = endIdx - runIdx
-    const runUnits = pages.slice(runIdx, endIdx).flatMap(p => sentenceUnits(p.text))
-    if (runLen >= 2 && runUnits.length >= 2) {
-      const totalW = runUnits.reduce((sum, u) => sum + wordCount(u), 0)
-      const isRunCover = runIdx === 0
-      const fitCache = new Map()
-      const segText = (a, b) => runUnits.slice(a, b).join(' ')
-      const segFits = (a, b, isFirst) => {
-        const key = `${a}:${b}:${isFirst ? 1 : 0}`
-        if (fitCache.has(key)) return fitCache.get(key)
-        const ok = fitsTextBudget(segText(a, b), isFirst, true)
-        fitCache.set(key, ok)
-        return ok
-      }
-      let bestParts = null
-      const minTarget = runLen <= 2 ? runLen : Math.max(2, Math.ceil(totalW / textHardMax))
-      for (let targetP = minTarget; targetP <= runLen; targetP++) {
-        if (targetP > runUnits.length) continue
-        const ideal = totalW / targetP
-        const n = runUnits.length
-        const dp = Array.from({length: targetP + 1}, () => Array(n + 1).fill(Infinity))
-        const prevCut = Array.from({length: targetP + 1}, () => Array(n + 1).fill(-1))
-        dp[0][0] = 0
-        for (let k = 1; k <= targetP; k++) {
-          const isFirst = k === 1 && isRunCover
-          for (let end = k; end <= n - (targetP - k); end++) {
-            for (let start = k - 1; start < end; start++) {
-              if (!Number.isFinite(dp[k - 1][start])) continue
-              if (!segFits(start, end, isFirst)) continue
-              const w = wordCount(segText(start, end))
-              const cost = dp[k - 1][start] + (w - ideal) ** 2 + (w < orphanMinWords ? (orphanMinWords - w) ** 2 * 4 : 0)
-              if (cost < dp[k][end]) {
-                dp[k][end] = cost
-                prevCut[k][end] = start
-              }
-            }
-          }
-        }
-        if (Number.isFinite(dp[targetP][n])) {
-          const parts = []
-          let cur = n
-          for (let k = targetP; k >= 1; k--) {
-            const start = prevCut[k][cur]
-            parts.unshift({image: '', caption: '', text: segText(start, cur)})
-            cur = start
-          }
-          bestParts = parts
-          break
-        }
-      }
-      if (bestParts && trim(bestParts.map(p => p.text).join(' ')) === trim(runUnits.join(' '))) {
-        compacted.push(...bestParts)
-      } else {
-        compacted.push(...pages.slice(runIdx, endIdx))
-      }
-    } else {
-      compacted.push(...pages.slice(runIdx, endIdx))
-    }
-    runIdx = endIdx
-  }
-
-  const balanced = rebalanceTextPages(compacted, ({text, cover}) => fitsTextBudget(text, cover, true))
-
-  // Stage C2: Anti-orphan final-page & post-photo sparse-page rebalancing.
-  // Avoid leaving a tiny text-only page (< ~35% of text capacity) when we can
-  // merge it or borrow 1-2 sentences from its preceding page cleanly.
-  for (let i = balanced.length - 1; i >= 1; i--) {
-    const curr = balanced[i]
-    const prev = balanced[i - 1]
-    if (curr.image) continue
-    const currWords = wordCount(curr.text)
-    if (currWords >= orphanMinWords) continue
-
-    // If preceded by a text-only page, try merging first, else rebalance 1-2 sentences.
-    if (!prev.image) {
-      const combined = trim(`${prev.text} ${curr.text}`)
-      if (fitsTextBudget(combined, i - 1 === 0, true)) {
-        balanced.splice(i - 1, 2, {image: '', caption: '', text: combined})
-        continue
-      }
+    // Fallback: if still < 25 words, borrow 1-2 trailing sentences from preceding text-only page.
+    if (wordCount(curr.text) < minPhotoWords && i > 0 && !fixed[i - 1].image) {
+      const prev = fixed[i - 1]
       const prevUnits = sentenceUnits(prev.text)
       if (prevUnits.length >= 2) {
-        const moved = prevUnits.slice()
-        let tail = curr.text
-        while (moved.length >= 2 && wordCount(tail) < orphanMinWords) {
-          const sent = moved[moved.length - 1]
-          const nextPrev = moved.slice(0, -1).join(' ')
-          const nextTail = `${sent} ${tail}`.trim()
-          if (wordCount(nextPrev) < orphanMinWords) break
-          if (!fitsTextBudget(nextTail, false, true)) break
-          moved.pop()
-          tail = nextTail
+        let currText = curr.text
+        const remaining = prevUnits.slice()
+        let borrowed = 0
+        while (remaining.length >= 2 && borrowed < 2 && wordCount(currText) < minPhotoWords) {
+          const sent = remaining[remaining.length - 1]
+          const afterPrev = remaining.slice(0, -1).join(' ')
+          if (wordCount(afterPrev) < minPhotoWords) break
+          const candidateCurr = currText ? `${sent} ${currText}` : sent
+          if (!fitsNormal(candidateCurr, isCover, curr)) break
+          currText = candidateCurr
+          remaining.pop()
+          borrowed++
         }
-        if (moved.length < prevUnits.length) {
-          prev.text = moved.join(' ')
-          curr.text = tail
-        }
-      }
-      continue
-    }
-
-    // Preceded by a photo page: absorb tiny tail if photo page fits, otherwise borrow 1-2 sentences.
-    const combinedOnPhoto = trim(`${prev.text} ${curr.text}`)
-    if (currWords <= 32 && fitsPhotoBudget(combinedOnPhoto, i - 1 === 0, prev, true)) {
-      balanced.splice(i - 1, 2, {...prev, text: combinedOnPhoto})
-      continue
-    }
-    const prevUnits = sentenceUnits(prev.text)
-    if (prevUnits.length >= 2) {
-      const moved = prevUnits.slice()
-      let tail = curr.text
-      const minPhotoKeep = i - 1 === 0 ? page1MinWords : 18
-      while (moved.length >= 2 && wordCount(tail) < orphanMinWords) {
-        const sent = moved[moved.length - 1]
-        const nextPrev = moved.slice(0, -1).join(' ')
-        const nextTail = `${sent} ${tail}`.trim()
-        if (wordCount(nextPrev) < minPhotoKeep) break
-        if (!fitsTextBudget(nextTail, false, true)) break
-        moved.pop()
-        tail = nextTail
-      }
-      if (moved.length < prevUnits.length) {
-        prev.text = moved.join(' ')
-        curr.text = tail
-      }
-    }
-  }
-
-  // Stage C3: Anti-sparse Page 1 borrowing.
-  // If Page 1 has an image and fewer than 28 words (e.g. a 1-sentence 16w opener),
-  // borrow 1-2 sentences from Page 2 when Page 2 is text-only (or has excess sentences),
-  // verifying via real DOM fits() so there is strictly zero vertical overflow.
-  if (balanced.length >= 2 && balanced[0].image && wordCount(balanced[0].text) < page1MinWords) {
-    const p0 = balanced[0]
-    const p1 = balanced[1]
-    const p1Units = sentenceUnits(p1.text)
-    const canBorrow = !p1.image ? p1Units.length >= 1 : p1Units.length >= 2
-    if (canBorrow) {
-      let p0Text = trim(p0.text)
-      const remaining = p1Units.slice()
-      let borrowed = 0
-      const minP1Keep = p1.image ? 18 : 0
-      const snapshots = [{p0Text, remaining: remaining.slice()}]
-
-      while (remaining.length > 0 && borrowed < 2 && wordCount(p0Text) < page1MinWords) {
-        if (p1.image && remaining.length <= 1) break
-        const nextSentence = remaining[0]
-        const candidateP0 = p0Text ? `${p0Text} ${nextSentence}` : nextSentence
-        const afterP1 = remaining.slice(1).join(' ')
-        if (p1.image && wordCount(afterP1) < minP1Keep) break
-        if (!fitsPhotoBudget(candidateP0, true, p0, true)) break
-        p0Text = candidateP0
-        remaining.shift()
-        borrowed++
-        snapshots.push({p0Text, remaining: remaining.slice()})
-      }
-
-      if (borrowed > 0) {
-        let finalState = snapshots[snapshots.length - 1]
-        let afterP1Text = finalState.remaining.join(' ')
-
-        // Avoid stranding a tiny (< 18w) text-only Page 2 unless it merges cleanly into Page 3.
-        if (!p1.image && afterP1Text && wordCount(afterP1Text) < 18) {
-          const canMergeIntoP2 =
-            balanced.length >= 3 &&
-            !balanced[2].image &&
-            fitsTextBudget(trim(`${afterP1Text} ${balanced[2].text}`), false, true)
-          if (!canMergeIntoP2 && wordCount(snapshots[0].p0Text) >= 18) {
-            // Try rolling back to 1 borrowed sentence if that leaves Page 2 healthy, else skip borrow.
-            const prevState = snapshots.length > 2 ? snapshots[1] : snapshots[0]
-            finalState = prevState
-            afterP1Text = finalState.remaining.join(' ')
-          }
-        }
-
-        if (finalState !== snapshots[0]) {
-          p0.text = finalState.p0Text
-          if (!afterP1Text && !p1.image) {
-            balanced.splice(1, 1)
-          } else {
-            p1.text = afterP1Text
-            if (!p1.image && wordCount(p1.text) < orphanMinWords && balanced.length >= 3 && !balanced[2].image) {
-              const mergedP12 = trim(`${p1.text} ${balanced[2].text}`)
-              if (fitsTextBudget(mergedP12, false, true)) {
-                balanced.splice(1, 2, {image: '', caption: '', text: mergedP12})
-              }
-            }
-          }
+        if (borrowed > 0) {
+          prev.text = remaining.join(' ')
+          curr.text = currText
         }
       }
     }
   }
 
-  if (trim(balanced.map(p => p.text).join(' ')) !== raw) return null
-  return balanced
+  // 2. Apply subtle .saga-page--dense modifier ONLY when a fixed card is slightly too tall
+  // for default typography on a compact viewport (never splitting sentences onto new pages).
+  const finalMarginProbe = 'Swipe up for the next story right now.'
+  const photoBorderlineProbe = 'Safety margin line for compact screens.'
+  for (let i = 0; i < fixed.length; i++) {
+    const page = fixed[i]
+    const isCover = i === 0
+    const isFinal = i === fixed.length - 1
+    const wc = wordCount(page.text)
+    const fitsDefault = fitsNormal(page.text, isCover, page)
+    const fitsFinalBreathingRoom = !isFinal || fitsNormal(trim(`${page.text} ${finalMarginProbe}`), isCover, page)
+    const fitsPhotoMargin = !page.image || fitsNormal(trim(`${page.text} ${photoBorderlineProbe}`), isCover, page)
+    if (!fitsDefault || !fitsFinalBreathingRoom || !fitsPhotoMargin) {
+      const isVeryDense = page.image ? wc > 58 : wc > 95
+      page.density = isVeryDense ? 'dense-tight saga-page--dense' : 'dense saga-page--dense'
+    }
+    // Mark non-enumerably so rebalanceTextPages leaves fixed-card boundaries 100% intact.
+    Object.defineProperty(page, '_fixedCard', {value: true, enumerable: false})
+  }
+
+  if (trim(fixed.map(p => p.text).join(' ')) !== raw) return null
+  return fixed
 }
 
 export function planAnchoredWikiPages(item, fits, {maxPages = 250, uniformRhythm = false, balanced = false} = {}) {
   if (balanced) {
-    const mobileBalanced = planBalancedWikiPages(item, fits, {maxPages})
-    if (mobileBalanced && mobileBalanced.length) return mobileBalanced
+    const fixedCards = planBalancedWikiPages(item, fits)
+    if (fixedCards && fixedCards.length) return fixedCards
   }
   if (uniformRhythm) {
     const uniform = planUniformWikiPages(item, fits, {maxPages})

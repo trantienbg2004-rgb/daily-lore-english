@@ -24,12 +24,14 @@ import {
  buildRoundRobinOrder,
  callGeminiWithFailover,
  GeminiQuotaExhausted,
+ LEVEL_WORD_BOUNDS,
+ resolveAutoSchedulePlan,
  resolveGeminiApiKeys,
  runPublishWikiBatch,
  trimWikipediaEvidence,
  validateArticleQuality
 } from '../publish_wiki_batch.mjs'
-import {planAnchoredWikiPages,wordCount} from '../../src/lib/readerPagination.js'
+import {planAnchoredWikiPages,rebalanceTextPages,wordCount} from '../../src/lib/readerPagination.js'
 
 function makeInfoPage({
  title='File:Example_Photo.jpg',
@@ -87,47 +89,90 @@ function makeFakeSource(pageId,title,sectionHeading='Architecture'){
 
 function makeHighQualityDraft(title,{pageCount=5,pageImageIds=null}={}){
  const imgId=idx=>Array.isArray(pageImageIds)?pageImageIds[idx]??null:undefined
- const withImg=(obj,idx)=>imgId(idx)!==undefined?{...obj,imageId:imgId(idx)}:obj
- const a1Pages=[
-  withImg({text:`Long ago, builders carved ${title} out of pale local limestone. They added strong timber frames and deep water channels. Soon, neighbors gathered near the quiet stone walls. This bold project changed life across the whole valley.`,evidenceIds:['P1']},0),
-  withImg({text:`In the nineteenth century, written town records told a vivid story. Merchants walked along wide trade routes to reach ${title} every spring. They set up busy stalls on the central terrace. Families met there to trade goods, share news, and plan local events together. Every season brought new faces to the square.`,evidenceIds:['P2']},1),
-  withImg({text:`Later, skilled architects planned a major expansion for the growing site. They built tall stone arches, heavy bronze gates, and cool shaded walkways. Workers also carved fine reliefs along the northern wall. Visitors still admire those careful stone patterns today. Each corner shows patient craft from skilled hands long ago.`,evidenceIds:['P3']},2),
-  withImg({text:`Over time, rain and steady crowds wore down the older stone blocks. Modern teams stepped in to check moisture levels every week. Museums scanned old drawings and field notes into clear digital files. That steady care keeps the stonework safe. Local guides also teach guests how to protect the delicate walls.`,evidenceIds:['P4']},3),
-  withImg({text:`Today, ${title} stands as a living lesson in smart design and teamwork. Simple local materials can last for centuries when communities protect them. Each new visitor sees how past skill still shapes our shared public spaces every day. Careful work from yesterday continues to inspire people around the world.`,evidenceIds:['P1','P4']},4)
+ const isPhoto=idx=>idx===0||Boolean(imgId(idx))
+ const withImg=(text,evidenceIds,idx)=>({
+  text,
+  evidenceIds,
+  ...(imgId(idx)!==undefined?{imageId:imgId(idx)}:{})
+ })
+
+ // Photo-page copy per level (A1: 32-45w, B1: 40-52w, C1: 45-58w)
+ const a1Photo=[
+  `Long ago, builders carved ${title} out of pale local limestone. They added strong timber frames and deep water channels. Soon, neighbors gathered near the quiet stone walls. This bold project changed life across the whole valley.`,
+  `Each spring, busy merchants walked along wide roads to reach ${title}. They set up bright stalls across the open square. Families traded fresh goods and shared news under the warm sun. Every year brought new friends together.`,
+  `Later, skilled builders added tall arches and strong bronze gates to ${title}. Workers carved fine stone patterns into the northern wall. Visitors still stop each morning to admire that patient craft from skilled hands long ago.`,
+  `Over time, heavy rain and steady crowds wore down the older stones. Modern teams check the damp walls every single week. Local museums also scan old drawings and notebooks to keep every historic detail safe today.`,
+  `Today, ${title} stands as a proud lesson in smart care and teamwork. Simple local stone can last for centuries when towns protect it. Past skill still shapes our shared public spaces and guides young builders everywhere.`
  ]
- const b1Pages=[
-  withImg({text:`Long before modern conservationists arrived at ${title}, early builders shaped local limestone, timber framing, and carefully angled drainage channels to withstand seasonal storms. What began as a practical regional project soon became a defining anchor for civic life across the surrounding settlements.`,evidenceIds:['P1']},0),
-  withImg({text:`Public records from the nineteenth century reveal how ${title} steadily reshaped regional trade routes and brought distant merchants together each spring. Along the broad central terrace, traders exchanged goods while civic assemblies debated local policies that influenced neighboring towns. Those yearly gatherings strengthened economic ties across the wider valley for decades.`,evidenceIds:['P2']},1),
-  withImg({text:`During its ambitious architectural expansion, master builders introduced tall stone arches, durable bronze gates, and shaded colonnades that protected visitors from harsh midday heat. Restoration teams later documented intricate carved reliefs along the northern facade that reflected evolving regional tastes. Together, these additions transformed a functional crossing into an unforgettable civic landmark.`,evidenceIds:['P3']},2),
-  withImg({text:`In recent decades, conservation specialists established continuous monitoring programs around ${title} to track humidity shifts, seasonal rainfall, and gradual visitor wear. Meanwhile, regional museums digitized thousands of fragile blueprints and historical field notes so modern engineers could plan accurate repairs. This quiet scientific partnership has slowed decay across the oldest walls.`,evidenceIds:['P4']},3),
-  withImg({text:`Taken together, these surviving arches and digitized archives show why ${title} remains far more than a scenic monument for passing travelers. It offers enduring proof that thoughtful urban engineering and steady public stewardship can preserve cultural heritage across changing generations. Few landmarks capture that balance between utility and beauty so clearly.`,evidenceIds:['P1','P4']},4)
+ const b1Photo=[
+  `Long before modern conservationists arrived at ${title}, early builders shaped local limestone, timber framing, and angled drainage channels to withstand seasonal storms. What began as a practical regional project soon became a defining anchor for civic life across surrounding settlements.`,
+  `Nineteenth-century town records reveal how ${title} reshaped regional trade routes and brought distant merchants together each spring. Along its broad central terrace, traders exchanged goods while civic assemblies debated local policies that guided neighboring communities for decades.`,
+  `During its ambitious architectural expansion, master builders introduced tall stone arches, durable bronze gates, and shaded colonnades that protected visitors from harsh afternoon heat. Restoration teams later documented intricate carved reliefs along the northern facade reflecting enduring regional craft traditions.`,
+  `In recent decades, conservation specialists launched continuous monitoring programs around ${title} to track humidity shifts, rainfall, and gradual visitor wear. Regional museums also digitized thousands of fragile blueprints and field notes so engineers could plan accurate repairs.`,
+  `Taken together, these surviving arches and digital archives show why ${title} remains far more than a scenic monument for passing travelers. It proves that thoughtful urban engineering and steady public stewardship can preserve cultural heritage across generations.`
  ]
- const c1Pages=[
-  withImg({text:`Long before contemporary heritage agencies systematically cataloged ${title}, resourceful regional builders engineered interlocking limestone blocks, resilient timber framing, and concealed drainage channels. Over subsequent decades, that calculated blend of local materials and hydraulic planning transformed an exposed hillside into an enduring architectural landmark.`,evidenceIds:['P1']},0),
-  withImg({text:`Nineteenth-century municipal archives demonstrate how ${title} catalyzed commercial integration by anchoring seasonal trade routes and convening travelling merchants alongside civic assemblies on its central terrace. Within those recurring public forums, commercial negotiation routinely intersected with regional governance and fiscal policy. Historians therefore treat the site as an indispensable lens into pre-industrial urban coordination.`,evidenceIds:['P2']},1),
-  withImg({text:`Throughout its subsequent architectural expansion, prominent designers incorporated vaulted stone arches, cast bronze gates, and deeply shaded colonnades to moderate extreme seasonal climates. Simultaneously, artisans executed intricate carved reliefs along the northern facade that conservationists continue examining for evidence of historic craft networks. Every structural layer records shifting aesthetic ambitions alongside practical engineering constraints.`,evidenceIds:['P3']},2),
-  withImg({text:`Faced with accelerating environmental stress, multidisciplinary conservation teams instituted quantitative monitoring regimes around ${title} to evaluate microclimatic humidity, precipitation patterns, and cumulative structural wear. Working alongside regional museums, specialists simultaneously digitized thousands of fragile architectural blueprints and nineteenth-century field notebooks. Such high-resolution archival baselines enable targeted interventions without compromising historic stone surfaces.`,evidenceIds:['P4']},3),
-  withImg({text:`Viewed within a broader institutional perspective, the remarkable survival of ${title} illustrates how enduring civic infrastructure depends equally upon original technical ingenuity and sustained scientific stewardship. Rather than remaining a passive relic of distant commerce, the monument offers contemporary planners an instructive analytical framework. Protecting fragile historical landmarks ultimately demands continuous collaboration between engineers, historians, and local communities.`,evidenceIds:['P1','P4']},4)
+ const c1Photo=[
+  `Long before contemporary heritage agencies systematically cataloged ${title}, resourceful regional builders engineered interlocking limestone blocks, resilient timber framing, and concealed drainage channels. Over subsequent decades, that calculated synthesis of local stone and hydraulic planning transformed an exposed hillside into an enduring architectural landmark across the wider valley.`,
+  `Nineteenth-century municipal archives demonstrate how ${title} catalyzed commercial integration by anchoring seasonal trade corridors and convening travelling merchants alongside civic assemblies on its central terrace. Within those recurring public forums, commercial negotiation routinely intersected with regional governance, fiscal administration, and long-term diplomatic coordination.`,
+  `Throughout its subsequent architectural expansion, prominent designers incorporated vaulted stone arches, cast bronze gates, and deeply shaded colonnades to moderate extreme seasonal climates. Simultaneously, master artisans executed intricate carved reliefs along the northern facade that conservationists still examine for evidence of historic regional craft networks.`,
+  `Faced with accelerating environmental stress, multidisciplinary conservation teams instituted quantitative monitoring regimes around ${title} to evaluate microclimatic humidity, seasonal precipitation patterns, and cumulative structural wear. Working alongside regional museums, specialists digitized thousands of fragile blueprints and historical notebooks to guide targeted, non-invasive preservation.`,
+  `Viewed within a broader institutional perspective, the remarkable survival of ${title} illustrates how enduring civic infrastructure depends equally upon original technical ingenuity and sustained scientific stewardship. Protecting fragile historical landmarks ultimately demands continuous collaboration among structural engineers, archival historians, and engaged local communities.`
  ]
+
+ // Text-only-page copy per level (A1: 55-70w, B1: 65-82w, C1: 75-92w)
+ const a1Text=[
+  `Long ago, builders carved ${title} out of pale local limestone on a wide ridge. They fitted strong timber frames and dug deep water channels around the base. Soon, neighbors came from small farms to see the bright stone walls. Families met there in every season to share food and trade simple tools. That bold project changed daily life across the whole valley.`,
+  `In the nineteenth century, old town records told a lively story about trade. Merchants walked down dusty roads to reach ${title} every spring. They built busy stalls along the wide central terrace. Parents brought children to buy cloth, grain, and fresh fruit. Town leaders also stood on the steps to share local news. Every season brought friendly faces and steady work to the square.`,
+  `Later, skilled architects drew plans for a big new wing at ${title}. Workers lifted tall stone arches and hung heavy bronze gates at the main entry. They added long shaded walkways to block the hot afternoon sun. Careful artists also carved clear flowers and patterns along the northern wall. Today, guests still walk under those cool arches and admire the patient work of hands long ago.`,
+  `Over many years, heavy winter rain and steady foot traffic slowly wore down the old limestone blocks. Modern care teams stepped in to check moisture levels and tiny cracks every week. Local museums scanned old maps, drawings, and field notes into clear digital files. That patient work keeps the delicate stonework safe from storms. Guides also teach young guests how to respect the walls.`,
+  `Today, ${title} stands as a living lesson in smart planning and patient care. Simple local stone and wood can last for centuries when towns work together to guard them. Each new visitor sees how past craft still shapes shared public spaces every day. Schools bring students here to study history up close. Careful work from long ago continues to inspire people around the world.`,
+  `Even in quiet winter months, ${title} stays active as a shared neighborhood landmark. Local groups host small music nights and open walking tours along the sheltered stone terrace. Older residents tell stories about fairs their grandparents attended near the bronze gates. Young builders study the smart drainage channels to learn lasting design habits. In every season, the historic site connects past skill with daily life.`
+ ]
+ const b1Text=[
+  `Long before modern conservationists studied ${title}, early builders carefully shaped local limestone, heavy timber framing, and angled drainage channels to withstand fierce seasonal storms. Workers quarried pale stone from nearby hills and hauled each block into place before winter rains arrived. What began as a practical engineering project soon evolved into a lively anchor for civic life, guiding how surrounding towns organized markets and public gatherings for generations.`,
+  `Public records from the nineteenth century reveal how ${title} steadily reshaped regional trade routes and brought distant merchants together each spring. Along the broad central terrace, travelling traders exchanged spices, woven cloth, and farm tools while civic assemblies debated local policies that guided neighboring towns. Those recurring gatherings strengthened commercial trust across the wider valley, turning a modest seasonal crossing into a thriving hub of shared economic opportunity.`,
+  `During its ambitious architectural expansion, master builders introduced soaring stone arches, durable cast-bronze gates, and deeply shaded colonnades that sheltered visitors from harsh midday heat. Restoration teams later documented intricate carved reliefs along the northern facade that reflected evolving regional tastes and skilled masonry workshops. Together, these carefully proportioned additions transformed a purely functional marketplace into an unforgettable civic landmark admired by travelers from across the region.`,
+  `In recent decades, conservation specialists established continuous monitoring programs around ${title} to track subtle humidity shifts, heavy seasonal rainfall, and gradual surface wear from thousands of annual visitors. Meanwhile, regional museums digitized thousands of fragile architectural blueprints and handwritten field notes so modern structural engineers could plan historically accurate repairs. This quiet scientific partnership has significantly slowed stone decay while keeping the landmark safely open to the public.`,
+  `Taken together, these surviving limestone arches and newly digitized archives show why ${title} remains far more than a scenic monument for passing travelers. It offers enduring proof that thoughtful urban engineering and consistent public stewardship can preserve shared cultural heritage across shifting generations. Few historic landmarks capture that practical balance between everyday civic utility and lasting architectural beauty so clearly in the modern world.`,
+  `Even during quieter winter seasons, ${title} continues serving as an active classroom for visiting architects, historians, and neighborhood families alike. Guided tours highlight how traditional lime mortar and buried water channels still handle heavy downpours without damaging the surrounding stone terrace. By combining historic craft lessons with open community programs, local stewards ensure the landmark remains relevant rather than fading into an untouched museum piece.`
+ ]
+ const c1Text=[
+  `Long before contemporary heritage agencies systematically cataloged ${title}, resourceful regional builders engineered interlocking limestone masonry, resilient timber trusses, and concealed hydraulic drainage channels designed to endure severe seasonal storms across the exposed ridge. Quarried from adjacent limestone escarpments and assembled through coordinated municipal labor, the structure rapidly outgrew its original utilitarian mandate. Within a single generation, that calculated synthesis of local geology and structural engineering anchored regional commerce while establishing a durable architectural vocabulary shared across neighboring settlements.`,
+  `Nineteenth-century municipal archives demonstrate how ${title} catalyzed sustained commercial integration by anchoring vital seasonal trade corridors and convening travelling merchants alongside formal civic assemblies upon its broad central stone terrace. Within those recurring public forums, commercial negotiation routinely intersected with regional governance, customs administration, and collective civic infrastructure planning. Contemporary economic historians therefore examine the surviving ledger books and terrace architecture together as an indispensable analytical lens into pre-industrial urban coordination and diplomatic exchange across the wider valley.`,
+  `Throughout its subsequent architectural expansion, prominent regional designers incorporated vaulted limestone arches, cast bronze entry gates, and deeply shaded perimeter colonnades engineered specifically to moderate extreme seasonal microclimates during peak summer gatherings. Simultaneously, specialized artisanal guilds executed intricate carved reliefs along the northern stone facade that modern art historians continue analyzing for evidence of cross-regional craft networks and shifting municipal patronage. Every surviving structural layer quietly records how evolving civic ambitions negotiated practical material constraints over successive decades.`,
+  `Faced with accelerating climatic volatility and sustained visitor pressure, multidisciplinary conservation teams instituted quantitative environmental monitoring regimes around ${title} to evaluate microclimatic humidity fluctuations, seasonal precipitation acidity, and cumulative masonry abrasion. Working closely alongside regional research museums, archival specialists simultaneously digitized thousands of fragile nineteenth-century blueprints, detailed structural surveys, and handwritten restoration notebooks. Establishing these comprehensive high-resolution documentary baselines enables contemporary engineers to execute reversible, minimally invasive interventions without compromising authentic historic stonework across the complex.`,
+  `Viewed within a broader institutional perspective, the remarkable preservation of ${title} illustrates how enduring civic infrastructure depends equally upon original technical ingenuity and sustained, evidence-driven scientific stewardship across changing eras. Rather than surviving merely as a passive architectural relic of distant mercantile prosperity, the monument provides contemporary urban planners with an instructive analytical framework for resilient public space. Protecting fragile historical landmarks ultimately requires uninterrupted, long-term collaboration linking structural engineers, archival historians, and deeply engaged local communities.`,
+  `Even well beyond peak exhibition months, ${title} functions as a dynamic field laboratory where structural conservationists, university researchers, and municipal administrators systematically test low-impact preservation strategies under authentic environmental conditions. Comparative measurements of traditional lime-based mortars against modern synthetic sealants have already informed updated restoration standards at comparable masonry monuments throughout the surrounding region. In this way, disciplined ongoing stewardship transforms collective historical memory into rigorous, practical engineering knowledge capable of serving future generations.`
+ ]
+
+ const buildLevelPages=(photoArr,textArr)=>{
+  const out=[]
+  for(let idx=0;idx<pageCount;idx++){
+   const srcText=isPhoto(idx)?photoArr[idx%photoArr.length]:textArr[idx%textArr.length]
+   out.push(withImg(srcText,[`P${(idx%4)+1}`],idx))
+  }
+  return out
+ }
+
  return {
   variants:{
    'A1-A2':{
     headline:`How ${title} Shaped Daily Trade and Craft`,
-    pages:a1Pages.slice(0,pageCount),
+    pages:buildLevelPages(a1Photo,a1Text),
     glossary:[
      {surface:'limestone',lemma:'limestone',type:'word',pos:'noun',ipa:'/ˈlaɪm.stəʊn/',vi_context:'đá vôi',en_def:'a light-colored rock used for building',cefr:'B2'}
     ]
    },
    'B1-B2':{
     headline:`Inside the Lasting Engineering Legacy of ${title}`,
-    pages:b1Pages.slice(0,pageCount),
+    pages:buildLevelPages(b1Photo,b1Text),
     glossary:[
      {surface:'limestone',lemma:'limestone',type:'word',pos:'noun',ipa:'/ˈlaɪm.stəʊn/',vi_context:'đá vôi',en_def:'a light-colored rock used for building',cefr:'B2'}
     ]
    },
    'C1-C2':{
     headline:`Why ${title} Remains a Blueprint for Civic Heritage`,
-    pages:c1Pages.slice(0,pageCount),
+    pages:buildLevelPages(c1Photo,c1Text),
     glossary:[
      {surface:'limestone',lemma:'limestone',type:'word',pos:'noun',ipa:'/ˈlaɪm.stəʊn/',vi_context:'đá vôi',en_def:'a light-colored rock used for building',cefr:'B2'}
     ]
@@ -247,24 +292,62 @@ test('trimWikipediaEvidence strips References, preserves sectionIndex, and stays
  assert.ok(trimmed.wordCount<=1500)
 })
 
-test('validateArticleQuality enforces 4-7 pages, Page 1 35-65w bounds, magazine headlines, non-dry hook, and CEFR progression',()=>{
- const good5=validateArticleQuality(makeHighQualityDraft('Stone Citadel',{pageCount:5}),'Stone Citadel')
- assert.equal(good5.ok,true,good5.errors.join('; '))
- assert.ok(good5.metrics['A1-A2'].avgSentenceWords<good5.metrics['B1-B2'].avgSentenceWords)
- assert.ok(good5.metrics['B1-B2'].avgSentenceWords<good5.metrics['C1-C2'].avgSentenceWords)
+test('validateArticleQuality enforces 4-6 pages, 3-level page/imageId parity, level-specific word bounds, magazine headlines, non-dry hook, and CEFR progression',()=>{
+ assert.deepEqual(LEVEL_WORD_BOUNDS['A1-A2'],{photo:[32,45],text:[55,70]})
+ assert.deepEqual(LEVEL_WORD_BOUNDS['B1-B2'],{photo:[40,52],text:[65,82]})
+ assert.deepEqual(LEVEL_WORD_BOUNDS['C1-C2'],{photo:[45,58],text:[75,92]})
 
- const good4=validateArticleQuality(makeHighQualityDraft('Stone Citadel',{pageCount:4}),'Stone Citadel')
- assert.equal(good4.ok,true,good4.errors.join('; '))
+ for(const count of [4,5,6]){
+  const ids=Array.from({length:count},(_,i)=>i===0?'IMG_0':null)
+  const good=validateArticleQuality(makeHighQualityDraft('Stone Citadel',{pageCount:count,pageImageIds:ids}),'Stone Citadel')
+  assert.equal(good.ok,true,`Expected ${count}-page draft to pass: ${good.errors.join('; ')}`)
+  assert.ok(good.metrics['A1-A2'].avgSentenceWords<good.metrics['B1-B2'].avgSentenceWords)
+  assert.ok(good.metrics['B1-B2'].avgSentenceWords<good.metrics['C1-C2'].avgSentenceWords)
+ }
 
- // Rejects Page 1 > 65 words (tightened from 80 to 65)
- const longP1=structuredClone(makeHighQualityDraft('Stone Citadel',{pageCount:5}))
- longP1.variants['B1-B2'].pages[0].text+=' Additional historical travelers also admired the surrounding river valley and described its bustling seasonal markets, tall timber watchtowers, and sunlit stone courtyards in remarkably vivid letters sent back home across Europe.'
- const longP1Check=validateArticleQuality(longP1,'Stone Citadel')
- assert.equal(longP1Check.ok,false)
- assert.ok(longP1Check.errors.some(e=>/35-65 words/i.test(e)))
+ // Rejects 7-page drafts (hard max is 6)
+ const sevenPages=structuredClone(makeHighQualityDraft('Stone Citadel',{pageCount:6,pageImageIds:['IMG_0',null,null,null,null,null]}))
+ for(const lvl of ['A1-A2','B1-B2','C1-C2'])sevenPages.variants[lvl].pages.push({...sevenPages.variants[lvl].pages[5]})
+ const sevenCheck=validateArticleQuality(sevenPages,'Stone Citadel')
+ assert.equal(sevenCheck.ok,false)
+ assert.ok(sevenCheck.errors.some(e=>/page count must be between 4 and 6/i.test(e)))
+
+ // Rejects cross-level page-count mismatch (e.g. A1-A2 5 pages vs C1-C2 4 pages)
+ const mismatchCount=structuredClone(makeHighQualityDraft('Stone Citadel',{pageCount:5,pageImageIds:['IMG_0',null,null,null,null]}))
+ mismatchCount.variants['C1-C2'].pages=mismatchCount.variants['C1-C2'].pages.slice(0,4)
+ const mismatchCountCheck=validateArticleQuality(mismatchCount,'Stone Citadel')
+ assert.equal(mismatchCountCheck.ok,false)
+ assert.ok(mismatchCountCheck.errors.some(e=>/Cross-level page count mismatch/i.test(e)))
+
+ // Rejects cross-level imageId parity mismatch on matching page index
+ const mismatchImg=structuredClone(makeHighQualityDraft('Stone Citadel',{pageCount:5,pageImageIds:['IMG_0',null,'IMG_1',null,null]}))
+ mismatchImg.variants['B1-B2'].pages[2].imageId=null
+ const mismatchImgCheck=validateArticleQuality(mismatchImg,'Stone Citadel')
+ assert.equal(mismatchImgCheck.ok,false)
+ assert.ok(mismatchImgCheck.errors.some(e=>/Cross-level image parity mismatch on page 3/i.test(e)))
+
+ // Rejects level-specific word-bound violations (A1 photo > 45w, B1 photo > 52w, C1 text < 75w)
+ const longA1Photo=structuredClone(makeHighQualityDraft('Stone Citadel',{pageCount:5,pageImageIds:['IMG_0',null,null,null,null]}))
+ longA1Photo.variants['A1-A2'].pages[0].text+=' Travelers walked along the bright stone road every summer and traded baskets of ripe fruit near the old market fountain.'
+ const longA1Check=validateArticleQuality(longA1Photo,'Stone Citadel')
+ assert.equal(longA1Check.ok,false)
+ assert.ok(longA1Check.errors.some(e=>/A1-A2 page 1 \(photo page\).*32-45 words/i.test(e)))
+
+ const shortC1Text=structuredClone(makeHighQualityDraft('Stone Citadel',{pageCount:5,pageImageIds:['IMG_0',null,null,null,null]}))
+ shortC1Text.variants['C1-C2'].pages[1].text='Nineteenth-century municipal archives demonstrate how Stone Citadel catalyzed commercial integration by anchoring seasonal trade corridors and convening travelling merchants on its central terrace.'
+ const shortC1Check=validateArticleQuality(shortC1Text,'Stone Citadel')
+ assert.equal(shortC1Check.ok,false)
+ assert.ok(shortC1Check.errors.some(e=>/C1-C2 page 2 \(text-only page\).*75-92 words/i.test(e)))
+
+ // Rejects overly long photo caption
+ const longCap=structuredClone(makeHighQualityDraft('Stone Citadel',{pageCount:5,pageImageIds:['IMG_0',null,null,null,null]}))
+ longCap.variants['B1-B2'].pages[0].caption='This extremely long caption describes every single limestone block and medieval arch visible across the entire historic valley in way too much detail.'
+ const longCapCheck=validateArticleQuality(longCap,'Stone Citadel')
+ assert.equal(longCapCheck.ok,false)
+ assert.ok(longCapCheck.errors.some(e=>/caption too long/i.test(e)))
 
  // Rejects raw Wiki title as headline, dry "X is a..." opening, <4 pages, and flat CEFR progression
- const bad=structuredClone(makeHighQualityDraft('Stone Citadel',{pageCount:5}))
+ const bad=structuredClone(makeHighQualityDraft('Stone Citadel',{pageCount:5,pageImageIds:['IMG_0',null,null,null,null]}))
  bad.variants['A1-A2'].headline='Stone Citadel'
  bad.variants['B1-B2'].pages=bad.variants['B1-B2'].pages.slice(0,3)
  bad.variants['C1-C2'].pages=bad.variants['A1-A2'].pages.map(p=>({...p}))
@@ -273,7 +356,7 @@ test('validateArticleQuality enforces 4-7 pages, Page 1 35-65w bounds, magazine 
  const badCheck=validateArticleQuality(bad,'Stone Citadel')
  assert.equal(badCheck.ok,false)
  assert.ok(badCheck.errors.some(e=>/headline must not match raw Wikipedia title|5-11 words/i.test(e)))
- assert.ok(badCheck.errors.some(e=>/page count must be between 4 and 7/i.test(e)))
+ assert.ok(badCheck.errors.some(e=>/page count must be between 4 and 6/i.test(e)))
  assert.ok(badCheck.errors.some(e=>/dry encyclopedia opening/i.test(e)))
 })
 
@@ -509,8 +592,66 @@ test('runPublishWikiBatch skips no-Lead-photo articles as skipped_no_lead_image 
  await fs.rm(tmpDir,{recursive:true,force:true})
 })
 
-test('planAnchoredWikiPages (balanced) borrows 1-2 sentences from Page 2 onto a sparse (<28w) Page 1 without overflow or text loss',()=>{
+test('Pure Fixed-Card Mode (balanced) keeps strict 1:1 page count with ZERO spillover splitting, applies .saga-page--dense fallback, and preserves boundaries in rebalanceTextPages',()=>{
  const story={
+  title:'Inside the Tall Legacy Article',
+  pages:[
+   {
+    image:'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Tall_lead.jpg/960px-Tall_lead.jpg',
+    caption:'Overview of the historic terrace.',
+    text:'Long before modern conservationists arrived, early builders shaped local limestone, timber framing, and carefully angled drainage channels to withstand fierce seasonal storms across the valley. What began as a practical regional project soon became a defining anchor for civic life, guiding how neighboring towns organized markets and assemblies across successive generations.'
+   },
+   {
+    image:'',
+    caption:'',
+    text:'Nineteenth-century municipal archives demonstrate how the landmark catalyzed sustained commercial integration by anchoring seasonal trade corridors and convening travelling merchants alongside formal civic assemblies upon its broad central terrace. Within those recurring public forums, commercial negotiation routinely intersected with regional governance, customs administration, and collective infrastructure planning. Contemporary economic historians therefore examine the surviving ledger books and terrace architecture together as an indispensable lens into pre-industrial urban coordination across the wider valley.'
+   },
+   {
+    image:'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Tall_arch.jpg/960px-Tall_arch.jpg',
+    caption:'Vaulted stone arches along the northern facade.',
+    text:'Throughout its subsequent architectural expansion, prominent designers incorporated vaulted stone arches, cast bronze entry gates, and shaded perimeter colonnades engineered to moderate harsh summer heat.'
+   },
+   {
+    image:'',
+    caption:'',
+    text:'Multidisciplinary conservation teams later instituted continuous humidity monitoring and digitized thousands of fragile nineteenth-century blueprints so modern engineers could execute minimally invasive repairs.'
+   },
+   {
+    image:'',
+    caption:'',
+    text:'Viewed within a broader institutional perspective, the landmark endures because thoughtful engineering met steady public stewardship across generations.'
+   }
+  ]
+ }
+
+ const raw=story.pages.map(p=>p.text).join(' ').replace(/\s+/g,' ').trim()
+ // Simulate a compact 360x740 viewport where Page 1 (53w photo) and Page 2 (70w text) exceed normal fit threshold
+ const fitsCompact=({text,image})=>wordCount(text)<=(image?45:60)
+ const fixed=planAnchoredWikiPages(story,fitsCompact,{balanced:true})
+
+ // 1. Strict 1:1 mapping — NEVER splits overflow onto extra 6th/7th orphan pages
+ assert.equal(fixed.length,story.pages.length)
+ assert.equal(fixed.map(p=>p.text).join(' ').replace(/\s+/g,' ').trim(),raw)
+
+ // 2. Tall pages receive .saga-page--dense modifier instead of splitting
+ assert.match(String(fixed[0].density||''),/saga-page--dense/)
+ assert.match(String(fixed[1].density||''),/saga-page--dense/)
+ assert.equal(fixed[2].density,undefined)
+ assert.equal(fixed[3].density,undefined)
+
+ // 3. rebalanceTextPages leaves Pure Fixed-Card arrays 100% untouched (zero cross-page reshuffling)
+ const afterRebalance=rebalanceTextPages(fixed,fitsCompact)
+ assert.equal(afterRebalance.length,story.pages.length)
+ for(let i=0;i<story.pages.length;i++){
+  assert.equal(afterRebalance[i].text,fixed[i].text)
+  assert.equal(afterRebalance[i].image,fixed[i].image)
+  assert.equal(afterRebalance[i].density,fixed[i].density)
+ }
+})
+
+test('Pure Fixed-Card Mode (balanced) retains anti-sparse borrowing (<25w photo page) on Page 1, Page 2, and trailing Page 3 without changing page count',()=>{
+ // Case 1: Sparse Page 1 (<25w) borrows 1-2 sentences from text-only Page 2 keeping Page 2 >= 25w and exact page count
+ const storyP1={
   title:'Inside the Warsaw Middle East Summit',
   pages:[
    {
@@ -530,28 +671,241 @@ test('planAnchoredWikiPages (balanced) borrows 1-2 sentences from Page 2 onto a 
    }
   ]
  }
+ const rawP1=storyP1.pages.map(p=>p.text).join(' ').replace(/\s+/g,' ').trim()
+ const fitsRoomy=({text,cover,image})=>wordCount(text)<=(cover&&image?48:95)
+ const pagesA=planAnchoredWikiPages(storyP1,fitsRoomy,{balanced:true})
+ assert.equal(pagesA.length,3)
+ assert.ok(wordCount(pagesA[0].text)>=25,`Expected Page 1 >= 25 words, got ${wordCount(pagesA[0].text)}`)
+ assert.ok(wordCount(pagesA[1].text)>=25,`Expected Page 2 to stay >= 25 words, got ${wordCount(pagesA[1].text)}`)
+ assert.equal(pagesA.map(p=>p.text).join(' ').replace(/\s+/g,' ').trim(),rawP1)
 
- // Scenario A: Viewport fits up to 48 words on Page 1 with image -> Stage C3 borrows sentence from Page 2 so Page 1 >= 28 words
- const raw=story.pages.map(p=>p.text).join(' ').replace(/\s+/g,' ').trim()
- // Simulate Stage A capping Page 1 at 20w via tight initial budget, or Page 1 starting sparse (<28w) while photoHardMax fits 48w
- const fitsRoomy=({text,cover,image})=>{
-  const wc=wordCount(text)
-  if(cover&&image)return wc<=48
-  return wc<=95
- }
- const pagesA=planAnchoredWikiPages(story,fitsRoomy,{balanced:true})
- assert.ok(pagesA.length>=2)
- assert.ok(wordCount(pagesA[0].text)>=28,`Expected Page 1 >= 28 words, got ${wordCount(pagesA[0].text)}`)
- assert.equal(pagesA.map(p=>p.text).join(' ').replace(/\s+/g,' ').trim(),raw)
+ // Tight viewport refuses to overflow Page 1 while keeping exact page count and lossless text
+ const fitsTight=({text,cover,image})=>wordCount(text)<=(cover&&image?24:95)
+ const pagesB=planAnchoredWikiPages(storyP1,fitsTight,{balanced:true})
+ assert.equal(pagesB.length,3)
+ assert.ok(wordCount(pagesB[0].text)<=24)
+ assert.equal(pagesB.map(p=>p.text).join(' ').replace(/\s+/g,' ').trim(),rawP1)
 
- // Scenario B: Tight viewport (fits <= 24w on Page 1) -> refuses to overflow, preserves all tokens losslessly
- const fitsTight=({text,cover,image})=>{
-  const wc=wordCount(text)
-  if(cover&&image)return wc<=24
-  return wc<=95
+ // Case 2: Page 2 photo page with 0 words borrows from generous text-only Page 3 without changing page count
+ const storyMidSparse={
+  title:'Restoration of the Stone Viaduct',
+  pages:[
+   {
+    image:'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Viaduct_lead.jpg/960px-Viaduct_lead.jpg',
+    caption:'Overview of the limestone viaduct.',
+    text:'For more than two centuries, the limestone viaduct carried grain wagons and travelers across the steep river gorge in southern France. Engineers built its sweeping central span from local quarry stone to survive winter floods.'
+   },
+   {
+    image:'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Viaduct_arch.jpg/960px-Viaduct_arch.jpg',
+    caption:'Carved arches along the lower deck.',
+    text:''
+   },
+   {
+    image:'',
+    caption:'',
+    text:'Surveyors inspected every masonry arch after heavy spring storms weakened the eastern embankment. Workers replaced cracked mortar with traditional lime paste so rainwater could drain safely through the stone piers. Historians praised the repairs for preserving the original nineteenth-century profile across the river valley. Regional trains still rely on the historic bridge every morning while local schools bring engineering students to study its arches.'
+   }
+  ]
  }
- const pagesB=planAnchoredWikiPages(story,fitsTight,{balanced:true})
- assert.ok(wordCount(pagesB[0].text)<=24,`Expected Page 1 <= 24 words under tight viewport, got ${wordCount(pagesB[0].text)}`)
- assert.equal(pagesB.map(p=>p.text).join(' ').replace(/\s+/g,' ').trim(),raw)
+ const rawMid=storyMidSparse.pages.map(p=>p.text).join(' ').replace(/\s+/g,' ').trim()
+ const fitsMid=({text,image})=>wordCount(text)<=(image?52:95)
+ const midPages=planAnchoredWikiPages(storyMidSparse,fitsMid,{balanced:true})
+ assert.equal(midPages.length,3)
+ assert.ok(midPages[1].image.includes('Viaduct_arch'))
+ assert.ok(wordCount(midPages[1].text)>=25,`Expected Page 2 photo page to borrow >=25 words, got ${wordCount(midPages[1].text)}`)
+ assert.ok(wordCount(midPages[2].text)>=25,`Expected Page 3 to stay >=25 words, got ${wordCount(midPages[2].text)}`)
+ assert.equal(midPages.map(p=>p.text).join(' ').replace(/\s+/g,' ').trim(),rawMid)
+
+ // Case 3: Last page (Page 3) is a sparse photo page (<25w) -> borrows trailing sentence(s) from preceding text-only Page 2
+ const storyEndSparse={
+  title:'Inside the Coastal Lighthouse',
+  pages:[
+   {
+    image:'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Lighthouse_lead.jpg/960px-Lighthouse_lead.jpg',
+    caption:'Granite tower overlooking the rocky bay.',
+    text:'Standing on a windswept granite headland, the coastal lighthouse guided fishing vessels through dense Atlantic fog for generations. Its curved stone walls were carefully locked together to resist winter gales and towering ocean swells.'
+   },
+   {
+    image:'',
+    caption:'',
+    text:'Keepers climbed narrow spiral stairs each evening to trim brass wicks and polish the heavy glass lenses. Supply boats delivered oil drums, timber crates, and fresh drinking water whenever calm seas returned to the cove. Automated electric beacons eventually replaced the oil lamps during the late twentieth century. Local maritime museums carefully preserved the brass clockwork gears and hand-written weather logs.'
+   },
+   {
+    image:'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Lighthouse_lens.jpg/960px-Lighthouse_lens.jpg',
+    caption:'Restored Fresnel lens inside the lantern room.',
+    text:'Today visitors still admire the gleaming Fresnel glass lens.'
+   }
+  ]
+ }
+ const rawEnd=storyEndSparse.pages.map(p=>p.text).join(' ').replace(/\s+/g,' ').trim()
+ const fitsEnd=({text,image})=>wordCount(text)<=(image?50:95)
+ const endPages=planAnchoredWikiPages(storyEndSparse,fitsEnd,{balanced:true})
+ assert.equal(endPages.length,3)
+ assert.ok(endPages[2].image.includes('Lighthouse_lens'))
+ assert.ok(wordCount(endPages[2].text)>=25,`Expected last photo page to borrow >=25 words, got ${wordCount(endPages[2].text)}`)
+ assert.ok(wordCount(endPages[1].text)>=25,`Expected Page 2 to stay >=25 words, got ${wordCount(endPages[1].text)}`)
+ assert.equal(endPages.map(p=>p.text).join(' ').replace(/\s+/g,' ').trim(),rawEnd)
 })
+
+test('validateArticleQuality enforces level-specific photo bounds on secondary photo pages (Page 2/3)',()=>{
+ const draftWithP3Photo=makeHighQualityDraft('Stone Citadel',{pageCount:5,pageImageIds:['IMG_0',null,'IMG_1',null,null]})
+ const okRes=validateArticleQuality(draftWithP3Photo,'Stone Citadel')
+ assert.equal(okRes.ok,true,okRes.errors.join('; '))
+
+ // Make B1-B2 Page 3 (IMG_1) exceed 52 words -> MUST fail
+ const tooLongP3=structuredClone(draftWithP3Photo)
+ tooLongP3.variants['B1-B2'].pages[2].text+=' Visiting engineers also drafted comprehensive structural elevations showing how rainwater drained away from the foundations.'
+ const tooLongRes=validateArticleQuality(tooLongP3,'Stone Citadel')
+ assert.equal(tooLongRes.ok,false)
+ assert.ok(tooLongRes.errors.some(e=>/B1-B2 page 3 \(photo page\).*40-52 words/i.test(e)))
+
+ // Make A1-A2 Page 3 (IMG_1) sparse (< 32 words) -> MUST fail
+ const tooShortP3=structuredClone(draftWithP3Photo)
+ tooShortP3.variants['A1-A2'].pages[2].text='Later architects added tall stone arches and bronze gates along the north wall.'
+ const tooShortRes=validateArticleQuality(tooShortP3,'Stone Citadel')
+ assert.equal(tooShortRes.ok,false)
+ assert.ok(tooShortRes.errors.some(e=>/A1-A2 page 3 \(photo page\).*32-45 words/i.test(e)))
+})
+
+test('resolveAutoSchedulePlan switches cleanly between Stage 1 (Bootstrap <1000) and Stage 2 (Steady-State >=1000)',()=>{
+ // Stage 1: catalogTotal < 1000 -> runs ALL 4 UTC slots with maxArticles = 20
+ for(const utcHour of [0,6,12,18]){
+  const plan=resolveAutoSchedulePlan({
+   catalogTotal:89,
+   eventName:'schedule',
+   explicitMaxArticles:null,
+   now:new Date(Date.UTC(2026,10,21,utcHour,15,0))
+  })
+  assert.equal(plan.shouldRun,true,`Expected Stage 1 slot ${utcHour}:00 UTC to run`)
+  assert.equal(plan.stage,'bootstrap')
+  assert.equal(plan.maxArticles,20)
+ }
+
+ // Stage 2: catalogTotal >= 1000 -> skips 06:00 and 18:00 UTC (even with 40-min GitHub Actions cron delay)
+ for(const [h,m] of [[6,0],[6,42],[18,5],[18,50]]){
+  const plan=resolveAutoSchedulePlan({
+   catalogTotal:1000,
+   eventName:'schedule',
+   explicitMaxArticles:null,
+   now:new Date(Date.UTC(2026,10,21,h,m,0))
+  })
+  assert.equal(plan.shouldRun,false,`Expected Stage 2 off-peak ${h}:${m} UTC to skip`)
+  assert.equal(plan.stage,'steady_state')
+  assert.equal(plan.maxArticles,0)
+ }
+
+ // Stage 2 primary slots: 00:00 and 12:00 UTC -> runs with maxArticles = 14
+ for(const [h,m] of [[0,0],[0,35],[12,0],[12,25]]){
+  const plan=resolveAutoSchedulePlan({
+   catalogTotal:1250,
+   eventName:'schedule',
+   explicitMaxArticles:null,
+   now:new Date(Date.UTC(2026,10,21,h,m,0))
+  })
+  assert.equal(plan.shouldRun,true,`Expected Stage 2 primary ${h}:${m} UTC to run`)
+  assert.equal(plan.stage,'steady_state')
+  assert.equal(plan.maxArticles,14)
+ }
+
+ // Manual workflow_dispatch override always runs even on an off-peak Stage 2 slot
+ const manual=resolveAutoSchedulePlan({
+  catalogTotal:1500,
+  eventName:'workflow_dispatch',
+  explicitMaxArticles:7,
+  now:new Date(Date.UTC(2026,10,21,6,0,0))
+ })
+ assert.equal(manual.shouldRun,true)
+ assert.equal(manual.stage,'manual')
+ assert.equal(manual.maxArticles,7)
+})
+
+test('runPublishWikiBatch counts published articles (not skipped candidates) and exits cleanly without calling Gemini on Stage 2 off-peak slot',async()=>{
+ const tmpDir=await fs.mkdtemp(path.join(os.tmpdir(),'saga-wiki-quota-'))
+ const queueFile=path.join(tmpDir,'data','wiki_queue.json')
+ await fs.mkdir(path.dirname(queueFile),{recursive:true})
+
+ const initialQueue={
+  version:1,
+  items:[
+   {title:'Skip Lead One',pageId:3001,topic:'Politics',priority:1,hasLeadImage:true,status:'pending'},
+   {title:'Skip Lead Two',pageId:3002,topic:'Politics',priority:1,hasLeadImage:true,status:'pending'},
+   {title:'Valid Story Alpha',pageId:3003,topic:'Politics',priority:1,hasLeadImage:true,status:'pending'},
+   {title:'Bad Quality Story',pageId:3004,topic:'Politics',priority:1,hasLeadImage:true,status:'pending'},
+   {title:'Valid Story Beta',pageId:3005,topic:'Politics',priority:1,hasLeadImage:true,status:'pending'},
+   {title:'Extra Pending Story',pageId:3006,topic:'Politics',priority:2,hasLeadImage:true,status:'pending'}
+  ]
+ }
+ await fs.writeFile(queueFile,JSON.stringify(initialQueue,null,2))
+
+ const idMap={
+  'Skip Lead One':3001,
+  'Skip Lead Two':3002,
+  'Valid Story Alpha':3003,
+  'Bad Quality Story':3004,
+  'Valid Story Beta':3005,
+  'Extra Pending Story':3006
+ }
+
+ // Part 1: maxArticles=2 must publish BOTH Valid Story Alpha and Valid Story Beta even after 3 skipped candidates
+ const summary=await runPublishWikiBatch({
+  root:tmpDir,
+  queueFile,
+  maxArticles:2,
+  apiKeys:[{label:'GEMINI_API_KEY',key:'k1'}],
+  delayMs:0,
+  waitImpl:async()=>{},
+  fetchPageImpl:async title=>makeFakeSource(idMap[title],title),
+  collectPhotosImpl:async source=>{
+   if(source.sourceTitle.startsWith('Skip Lead')){
+    return {photos:[],leadPhotos:[],bodyPhotos:[],hasLeadPhoto:false,rejected:[]}
+   }
+   const photo={
+    ...verifyRealPhoto(
+     {fileTitle:`File:${source.sourceTitle.replace(/ /g,'_')}.jpg`,caption:`View of ${source.sourceTitle}`,sectionIndex:0,sectionHeading:'Lead',position:0,isInfobox:true},
+     makeInfoPage({title:`File:${source.sourceTitle.replace(/ /g,'_')}.jpg`,description:`Historic view of ${source.sourceTitle}`}),
+     {sourceUrl:source.sourceUrl,sourceRevisionUrl:source.sourceRevisionUrl,originType:'wikipedia-embedded'}
+    ).photo,
+    imageId:'IMG_0'
+   }
+   return {photos:[photo],leadPhotos:[photo],bodyPhotos:[],hasLeadPhoto:true,rejected:[]}
+  },
+  callGeminiImpl:async prompt=>{
+   if(prompt.includes('Bad Quality Story')){
+    const bad=structuredClone(makeHighQualityDraft('Bad Quality Story',{pageImageIds:['IMG_0',null,null,null,null]}))
+    bad.variants['A1-A2'].headline='Bad Quality Story'
+    return {draft:bad,usage:null}
+   }
+   const matchedTitle=prompt.includes('Valid Story Alpha')?'Valid Story Alpha':'Valid Story Beta'
+   return {draft:makeHighQualityDraft(matchedTitle,{pageImageIds:['IMG_0',null,null,null,null]}),usage:null}
+  }
+ })
+
+ assert.equal(summary.generatedCount,2)
+ assert.equal(summary.addedToCatalog,2)
+ assert.equal(summary.skippedNoLeadImageCount,2)
+ assert.equal(summary.skippedQualityCount,1)
+
+ // Part 2: Stage 2 off-peak slot (catalogTotal=2 >= bootstrapThreshold=2, schedule at 06:00 UTC) exits cleanly with ZERO Gemini calls
+ let geminiCalledOnOffPeak=false
+ const offPeakSummary=await runPublishWikiBatch({
+  root:tmpDir,
+  queueFile,
+  maxArticles:null,
+  eventName:'schedule',
+  now:new Date(Date.UTC(2026,10,21,6,10,0)),
+  bootstrapThreshold:2,
+  apiKeys:[{label:'GEMINI_API_KEY',key:'k1'}],
+  delayMs:0,
+  callGeminiImpl:async()=>{
+   geminiCalledOnOffPeak=true
+   throw Error('Should never call Gemini on Stage 2 off-peak slot')
+  }
+ })
+ assert.equal(offPeakSummary.skippedBySchedule,true)
+ assert.equal(offPeakSummary.generatedCount,0)
+ assert.equal(geminiCalledOnOffPeak,false)
+
+ await fs.rm(tmpDir,{recursive:true,force:true})
+})
+
 

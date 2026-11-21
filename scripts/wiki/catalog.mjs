@@ -52,7 +52,7 @@ export function validateWikiStory(story){
  const covers=[]
  for(const level of levels){
   const variant=story?.levelVariants?.[level],pages=variant?.pages
-  if(!nonempty(variant?.headline)||!Array.isArray(pages)||pages.length<5||pages.length>7){errors.push(level+':structure');continue}
+  if(!nonempty(variant?.headline)||!Array.isArray(pages)||pages.length<4||pages.length>7){errors.push(level+':structure');continue}
   for(const [pageIndex,page] of pages.entries()){
    if(!nonempty(page?.text)||!Array.isArray(page.evidenceIds)||!page.evidenceIds.length||
     page.evidenceIds.some(id=>!evidenceIds.has(id)))errors.push(level+':page-evidence')
@@ -188,4 +188,81 @@ export async function promoteWikiCatalog(sourceRoot,targetRoot){
   additions.push(story)
  }
  return appendWikiStories(targetRoot,additions)
+}
+
+/** Repack the static Wiki catalog from an exact verified story list, removing stale shards/indexes. */
+export async function rewriteWikiCatalog(base,cleanStories,{now=new Date()}={}){
+ const dir=path.join(base,'public','wiki-reader')
+ const usedIds=new Set()
+ const usedImages=new Set()
+ const verified=[]
+ for(const story of cleanStories||[]){
+  const gate=validateWikiStory(story)
+  if(!gate.accepted)throw Error(`Clean Wiki story invalid (${story?.id}): ${gate.errors.join(',')}`)
+  if(usedIds.has(story.sourcePageId))throw Error(`Duplicate Wiki story pageId: ${story.sourcePageId}`)
+  for(const image of story.pages.map(page=>page.image).filter(Boolean)){
+   if(usedImages.has(image))throw Error(`Repeated Wiki image across stories: ${image}`)
+   usedImages.add(image)
+  }
+  usedIds.add(story.sourcePageId)
+  verified.push(story)
+ }
+
+ await fs.mkdir(dir,{recursive:true})
+ const existingFiles=await fs.readdir(dir)
+ for(const file of existingFiles){
+  if(/^\d{4}\.json$/.test(file)||/^catalog-index-[0-9a-f]{12}\.json$/.test(file)){
+   await fs.unlink(path.join(dir,file))
+  }
+ }
+
+ const entries=[]
+ let nextShard=0
+ for(let i=0;i<verified.length;i+=10){
+  const shard=String(nextShard++).padStart(4,'0')
+  const slice=verified.slice(i,i+10)
+  await fs.writeFile(path.join(dir,shard+'.json'),JSON.stringify(slice)+'\n')
+  entries.push(...slice.map(story=>({
+   id:story.sourceUrl,
+   sourcePageId:story.sourcePageId,
+   shard,
+   category:story.category,
+   publisher:story.publisher,
+   publishedAt:story.publishedAt,
+   contentType:'wiki',
+   title:story.title
+  })))
+ }
+
+ const counts=Object.fromEntries(WIKI_TOPICS.map(topic=>[topic,0]))
+ for(const entry of entries)counts[entry.category]++
+ const ready=entries.length>0
+ const targetMet=wikiTargetMet(entries.length,counts)
+ const verifiedImageCount=usedImages.size
+ const contentHash=catalogHash(entries,verified)
+ const indexName=`catalog-index-${contentHash.slice(0,12)}.json`
+
+ await fs.writeFile(path.join(dir,indexName),JSON.stringify({version:3,contentHash,total:entries.length,entries})+'\n')
+ const manifest={
+  feedType:'wiki',
+  editorialVersion:2,
+  ready,
+  targetStories:WIKI_TARGET_STORIES,
+  targetPerTopic:WIKI_TARGET_PER_TOPIC,
+  targetMet,
+  total:entries.length,
+  chunks:nextShard,
+  withVerifiedPhoto:entries.length,
+  verifiedImageCount,
+  byTopic:counts,
+  contentHash,
+  catalogIndex:indexName,
+  catalogIndexVersion:3,
+  updatedAt:now.toISOString(),
+  licenseNotice:'Wikipedia text adaptations: CC BY-SA 4.0; each embedded image has separate credit and rights.'
+ }
+ const stage=path.join(dir,'manifest.json.tmp-'+process.pid)
+ await fs.writeFile(stage,JSON.stringify(manifest,null,2)+'\n')
+ await fs.rename(stage,path.join(dir,'manifest.json'))
+ return {total:entries.length,chunks:nextShard,verifiedImageCount,byTopic:counts,contentHash,catalogIndex:indexName}
 }

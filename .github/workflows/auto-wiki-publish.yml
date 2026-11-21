@@ -2,14 +2,17 @@ name: Auto Wiki Publish
 
 on:
   schedule:
-    # Run once daily at 03:00 UTC (10:00 Vietnam time)
-    - cron: '0 3 * * *'
+    # Run 4 daily UTC slots: 00:00, 06:00, 12:00, 18:00 UTC (07:00, 13:00, 19:00, 01:00 Vietnam time)
+    # Automatic 2-stage throttling inside scripts/publish_wiki_batch.mjs:
+    # - Stage 1 (Bootstrap, total < 1000): all 4 slots, 20 published articles/run (~60-80/day)
+    # - Stage 2 (Steady-State, total >= 1000): skips 06:00 & 18:00 UTC, runs 00:00 & 12:00 UTC, 14 published/run (~25-30/day)
+    - cron: '0 0,6,12,18 * * *'
   workflow_dispatch:
     inputs:
       max_articles:
-        description: 'Number of articles to publish in this batch (default: 15)'
+        description: 'Optional manual override for published articles (leave blank for automatic 2-stage throttle)'
         required: false
-        default: '15'
+        default: ''
         type: string
       rebuild_queue:
         description: 'Force refresh Wikipedia candidate queue before publishing'
@@ -27,7 +30,7 @@ concurrency:
 jobs:
   publish:
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    timeout-minutes: 35
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -61,7 +64,8 @@ jobs:
           GEMINI_API_KEY_3: ${{ secrets.GEMINI_API_KEY_3 }}
           SAGA_IMAGE_TEST_API_KEY: ${{ secrets.SAGA_IMAGE_TEST_API_KEY }}
           GEMINI_MODEL: gemini-3.1-flash-lite
-          MAX_ARTICLES: ${{ github.event.inputs.max_articles || '15' }}
+          GITHUB_EVENT_NAME: ${{ github.event_name }}
+          MAX_ARTICLES: ${{ github.event.inputs.max_articles || '' }}
           GEMINI_DELAY_MS: '8000'
         run: |
           if [ -z "$GEMINI_API_KEY" ] && [ -z "$GEMINI_API_KEY_2" ] && [ -z "$GEMINI_API_KEY_3" ] && [ -z "$SAGA_IMAGE_TEST_API_KEY" ]; then
