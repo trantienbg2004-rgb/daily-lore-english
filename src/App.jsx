@@ -21,6 +21,13 @@ import { buildSavedTokenSet, isTokenSaved } from './lib/savedWordsMatch.js'
 import { loadLemmaMap, loadPhraseMap, lookupDictionaryTerm, resolveStaticPhrase, resolveTier1Glossary } from './services/dictionaryService.js'
 import { createArticleReaderController, splitPageIntoSentences } from './lib/readerAudio.js'
 import {
+  normalizeSavedWord,
+  countWordStates,
+  splitHighlightedContext,
+  buildReviewDeckKeys,
+  shuffleDeckKeys,
+} from './lib/vocabStudy.js'
+import {
   IOS_SHEET_EASING,
   SILK_EASING,
   SPRING_EASING,
@@ -459,8 +466,19 @@ const offlineMeaning = word => {
 const initialWords = () => {
   try {
     const saved = JSON.parse(localStorage.getItem('dailyLoreWords') || '[]')
-    return Array.isArray(saved) ? saved.map(item => ({ ...item, definition: item.definition && !/^(Definition not available|Look up this word|Definition unavailable)/i.test(item.definition) ? (item.sentence && item.definition.trim() === item.sentence.trim() ? offlineMeaning(item.word) : item.definition) : offlineMeaning(item.word) })) : []
+    return Array.isArray(saved)
+      ? saved.map(item => normalizeSavedWord(item, offlineMeaning(item?.word))).filter(Boolean)
+      : []
   } catch { return [] }
+}
+
+function HighlightedContext({ sentence, word }) {
+  const segments = splitHighlightedContext(sentence, word)
+  return segments.map((seg, idx) =>
+    seg.match
+      ? <mark key={idx} className="saga-context-highlight">{seg.text}</mark>
+      : <Fragment key={idx}>{seg.text}</Fragment>
+  )
 }
 
 function Icon({ name, size = 24 }) {
@@ -471,6 +489,8 @@ function Icon({ name, size = 24 }) {
     left: <path d="m14 5-7 7 7 7"/>, right: <path d="m10 5 7 7-7 7"/>,
     close: <path d="M5 5l14 14M19 5 5 19"/>, check: <path d="m5 12 4 4L19 6"/>,
     volume: <><path d="M4 9v6h4l5 4V5L8 9H4Z"/><path d="M17 9a5 5 0 0 1 0 6"/></>,
+    shuffle: <><path d="M16 3h5v5"/><path d="M4 20 21 3"/><path d="M21 16v5h-5"/><path d="M15 15l6 6"/><path d="M4 4l5 5"/></>,
+    search: <><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></>,
     up: <path d="m5 14 7-7 7 7"/>, down: <path d="m5 10 7 7 7-7"/>,
   }
   return <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{paths[name]}</svg>
@@ -572,11 +592,19 @@ function App() {
   const [removingWords, setRemovingWords] = useState(() => new Set())
   const removeTimersRef = useRef(new Map())
   const savedTokenSet = useMemo(() => buildSavedTokenSet(words, lemmaMap), [words, lemmaMap])
+  const [reviewMode, setReviewMode] = useState('learning')
+  const [reviewDeck, setReviewDeck] = useState(() => buildReviewDeckKeys(words, 'learning'))
   const [reviewIndex, setReviewIndex] = useState(0)
   const [revealed, setRevealed] = useState(false)
   const [finished, setFinished] = useState(false)
   const [reviewMotion, setReviewMotion] = useState('idle')
+  const [reviewExitDir, setReviewExitDir] = useState('left')
+  const [reviewSwipe, setReviewSwipe] = useState({ dx: 0, phase: 'idle' })
   const reviewTimerRef = useRef(null)
+  const reviewReturnTimerRef = useRef(null)
+  const reviewDragRef = useRef(null)
+  const suppressReviewClickRef = useRef(false)
+  const suppressReviewTimerRef = useRef(null)
   const gesture = useRef(null)
   const suppressWordClick = useRef(false)
   const wheelLock = useRef(0)
@@ -595,6 +623,14 @@ function App() {
     setPageMotion(null)
     setLevelSettleKey(k => k + 1)
   }
+  const toggleWordMastered = word => {
+    if (!word) return
+    setWords(current =>
+      current.map(item =>
+        item.word === word ? { ...item, mastered: !item.mastered } : item
+      )
+    )
+  }
   const removeSavedWord = word => {
     if (!word || removingWords.has(word)) return
     const finalize = () => {
@@ -606,6 +642,7 @@ function App() {
         return next
       })
       setWords(current => current.filter(w => w.word !== word))
+      setReviewDeck(prev => prev.filter(key => key !== word))
       setReviewIndex(0)
       setFinished(false)
       setRevealed(false)
@@ -626,6 +663,8 @@ function App() {
     articleReaderRef.current?.stop()
     clearTimeout(justSavedTimerRef.current)
     clearTimeout(reviewTimerRef.current)
+    clearTimeout(reviewReturnTimerRef.current)
+    clearTimeout(suppressReviewTimerRef.current)
     clearTimeout(slideTimer.current)
     removeTimersRef.current.forEach(timer => clearTimeout(timer))
     removeTimersRef.current.clear()
@@ -1031,6 +1070,8 @@ function App() {
         partOfSpeech: meaning?.partOfSpeech || lookup.pos || '',
         example: meaning?.example || '',
         sentence: selectedSentence,
+        storyTitle: existing?.storyTitle || (tab === 'read' && story ? displayHeadline(story) : ''),
+        mastered: existing?.mastered ?? false,
         added: existing?.added || Date.now(),
       }
       if (existing) {
@@ -1337,10 +1378,70 @@ function App() {
     pointerGesture.current = null
     finishNavigationGesture(state, event.clientX, event.clientY)
   }
-  const nextReview = () => {
-    if (reviewMotion === 'leaving') return
+  const wordsByKey = useMemo(() => new Map(words.map(w => [w.word, w])), [words])
+  const wordCounts = useMemo(() => countWordStates(words), [words])
+  const effectiveReviewDeck = useMemo(
+    () => reviewDeck.filter(key => wordsByKey.has(key)),
+    [reviewDeck, wordsByKey]
+  )
+  const activeReviewKey = effectiveReviewDeck.length
+    ? effectiveReviewDeck[Math.min(reviewIndex, effectiveReviewDeck.length - 1)]
+    : null
+  const activeReviewWord = activeReviewKey ? (wordsByKey.get(activeReviewKey) || null) : null
+  const activeReviewMeaning = activeReviewWord
+    ? (activeReviewWord.definition || offlineMeaning(activeReviewWord.word) || 'No definition yet. Open this word in Words to retry.')
+    : ''
+
+  const resetReviewSwipe = () => {
+    clearTimeout(reviewReturnTimerRef.current)
+    reviewDragRef.current = null
+    setReviewSwipe({ dx: 0, phase: 'idle' })
+  }
+
+  const startReviewSession = (mode = 'learning', { shuffle = false, sourceWords = words } = {}) => {
+    clearTimeout(reviewTimerRef.current)
+    resetReviewSwipe()
+    const keys = buildReviewDeckKeys(sourceWords, mode)
+    const nextDeck = shuffle ? shuffleDeckKeys(keys) : keys
+    setReviewMode(mode)
+    setReviewDeck(nextDeck)
+    setReviewIndex(0)
+    setRevealed(false)
+    setFinished(false)
+    setReviewMotion(nextDeck.length ? 'entering' : 'idle')
+    if (nextDeck.length && !prefersReducedMotion()) {
+      reviewTimerRef.current = setTimeout(() => setReviewMotion('idle'), SWIPE_SETTLE_MS)
+    }
+  }
+
+  const shuffleCurrentReview = () => {
+    if (effectiveReviewDeck.length < 2) return
+    clearTimeout(reviewTimerRef.current)
+    resetReviewSwipe()
+    setReviewDeck(shuffleDeckKeys(effectiveReviewDeck))
+    setReviewIndex(0)
+    setRevealed(false)
+    setFinished(false)
+    setReviewMotion('entering')
+    if (!prefersReducedMotion()) {
+      reviewTimerRef.current = setTimeout(() => setReviewMotion('idle'), SWIPE_SETTLE_MS)
+    }
+  }
+
+  const handleReviewOutcome = (markMastered, { direction } = {}) => {
+    if (reviewMotion === 'leaving' || !activeReviewWord) return
+    const targetKey = activeReviewWord.word
+    const exitDirection = direction || (markMastered ? 'right' : 'left')
+    resetReviewSwipe()
+    setReviewExitDir(exitDirection)
+    setWords(current =>
+      current.map(item =>
+        item.word === targetKey ? { ...item, mastered: Boolean(markMastered) } : item
+      )
+    )
+    const deckLen = effectiveReviewDeck.length
     const advanceNow = () => {
-      if (reviewIndex + 1 >= words.length) {
+      if (reviewIndex + 1 >= deckLen) {
         setFinished(true)
         setReviewMotion('idle')
       } else {
@@ -1352,12 +1453,101 @@ function App() {
       }
     }
     if (prefersReducedMotion()) {
-      advanceNow()
+      setReviewMotion('leaving')
+      clearTimeout(reviewTimerRef.current)
+      reviewTimerRef.current = setTimeout(advanceNow, 110)
       return
     }
     setReviewMotion('leaving')
     clearTimeout(reviewTimerRef.current)
     reviewTimerRef.current = setTimeout(advanceNow, REVIEW_GLIDE_MS)
+  }
+
+  const onReviewPointerDown = event => {
+    if (reviewMotion === 'leaving' || !activeReviewWord) return
+    if (event.pointerType === 'mouse' && event.button !== 0) return
+    if (event.target?.closest?.('.review-card-speak')) return
+    clearTimeout(reviewReturnTimerRef.current)
+    clearTimeout(suppressReviewTimerRef.current)
+    suppressReviewClickRef.current = false
+    const now = performance.now()
+    reviewDragRef.current = {
+      pointerId: event.pointerId,
+      startX: event.clientX,
+      startY: event.clientY,
+      lastX: event.clientX,
+      lastTime: now,
+      vx: 0,
+      axis: null,
+      moved: false,
+    }
+  }
+
+  const onReviewPointerMove = event => {
+    const state = reviewDragRef.current
+    if (!state || state.pointerId !== event.pointerId) return
+    const dx = event.clientX - state.startX
+    const dy = event.clientY - state.startY
+    const now = performance.now()
+    const dt = Math.max(1, now - state.lastTime)
+    state.vx = state.vx * 0.35 + ((event.clientX - state.lastX) / dt) * 0.65
+    state.lastX = event.clientX
+    state.lastTime = now
+    if (!state.axis) {
+      if (Math.abs(dx) >= 10 && Math.abs(dx) >= Math.abs(dy)) {
+        state.axis = 'x'
+        state.moved = true
+        try { event.currentTarget.setPointerCapture?.(event.pointerId) } catch { /* synthetic event */ }
+      } else if (Math.abs(dy) >= 12 && Math.abs(dy) > Math.abs(dx)) {
+        state.axis = 'y'
+        return
+      }
+    }
+    if (state.axis === 'x') {
+      setReviewSwipe({ dx, phase: 'dragging' })
+    }
+  }
+
+  const finishReviewPointer = (event, cancelled = false) => {
+    const state = reviewDragRef.current
+    if (!state || state.pointerId !== event.pointerId) return
+    reviewDragRef.current = null
+    try {
+      if (event.currentTarget.hasPointerCapture?.(event.pointerId)) {
+        event.currentTarget.releasePointerCapture(event.pointerId)
+      }
+    } catch { /* synthetic event */ }
+    if (state.axis !== 'x') return
+    suppressReviewClickRef.current = true
+    clearTimeout(suppressReviewTimerRef.current)
+    suppressReviewTimerRef.current = setTimeout(() => {
+      suppressReviewClickRef.current = false
+    }, 90)
+    const dx = event.clientX - state.startX
+    const vx = state.vx
+    if (!cancelled && (dx >= 80 || (dx > 28 && vx >= 0.45))) {
+      handleReviewOutcome(true, { direction: 'right' })
+      return
+    }
+    if (!cancelled && (dx <= -80 || (dx < -28 && vx <= -0.45))) {
+      handleReviewOutcome(false, { direction: 'left' })
+      return
+    }
+    setReviewSwipe({ dx: 0, phase: 'returning' })
+    clearTimeout(reviewReturnTimerRef.current)
+    reviewReturnTimerRef.current = setTimeout(() => {
+      setReviewSwipe({ dx: 0, phase: 'idle' })
+    }, prefersReducedMotion() ? 20 : 460)
+  }
+
+  const onReviewCardClick = event => {
+    if (event.target?.closest?.('.review-card-speak')) return
+    if (suppressReviewClickRef.current) {
+      suppressReviewClickRef.current = false
+      return
+    }
+    if (reviewMotion === 'leaving') return
+    setRevealed(r => !r)
   }
   // Treat word buttons as part of the reading surface, not as navigation controls.
   // This makes swiping across the paragraph work on touch screens.
@@ -1430,6 +1620,28 @@ function App() {
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
   }, [tab, selected, showCredits, page, storyIndex, story?.pages?.length, stories.length])
+
+  useEffect(() => {
+    if (tab !== 'review' || selected || showCredits || finished || !activeReviewWord) return
+    const onReviewKey = event => {
+      if (event.metaKey || event.ctrlKey || event.altKey) return
+      const tag = event.target?.tagName
+      if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') return
+      if (event.key === ' ' || event.key === 'Enter') {
+        if (event.target?.closest?.('.review-card-speak, .review-shuffle-btn, .review-hint-trigger')) return
+        event.preventDefault()
+        setRevealed(r => !r)
+      } else if (event.key === 'ArrowLeft') {
+        event.preventDefault()
+        handleReviewOutcome(false, { direction: 'left' })
+      } else if (event.key === 'ArrowRight') {
+        event.preventDefault()
+        handleReviewOutcome(true, { direction: 'right' })
+      }
+    }
+    window.addEventListener('keydown', onReviewKey)
+    return () => window.removeEventListener('keydown', onReviewKey)
+  }, [tab, selected, showCredits, finished, activeReviewWord, reviewIndex, effectiveReviewDeck.length, reviewMotion])
 
   // Desktop: wheel navigates stories instead of scrolling the reading screen.
   const onReaderWheel = event => {
@@ -1526,11 +1738,19 @@ function App() {
       </div>
     </div>
   }
-  const activeReviewWord = words.length ? words[Math.min(reviewIndex, words.length - 1)] : null
-  const activeReviewMeaning = activeReviewWord
-    ? (activeReviewWord.definition || offlineMeaning(activeReviewWord.word) || 'No definition yet. Open this word in Words to retry.')
-    : ''
   const sheetDepthActive = Boolean(tab === 'read' && selected && !sheetClosing)
+  const openTab = key => {
+    if (key === 'read' && tab === 'read' && story && storyIndex === stories.length - 1) {
+      changeStory(1)
+      return
+    }
+    setTabSwitchedToRead(key === 'read' && tab !== 'read')
+    if (key === 'review' && tab !== 'review') {
+      startReviewSession('learning', { sourceWords: words })
+    }
+    setTab(key)
+    closeDictionary({ immediate: true })
+  }
   return (
     <div className={"app-shell " + (tab === "read" ? "reading-mode lore-editorial-v5" : "")}>
       <main className="app-content">
@@ -1561,10 +1781,296 @@ function App() {
             </div>
           ))}
         </div>}
-        {tab === 'words' && <div key="tab-words" className="saga-tab-panel saga-tab-panel--words"><header className="section-header"><h1>Saved words<span className="period">.</span></h1>{words.length > 0 && <p className="saga-tab-meta">{words.length} {words.length === 1 ? 'word' : 'words'} saved</p>}</header>{words.length === 0 ? <div className="empty"><Icon name="bookmark" size={40}/><h2>Your collection begins here.</h2><p>Read a story, tap a word, and save it to keep learning.</p><button className="primary" onClick={() => { setTabSwitchedToRead(true); setTab('read') }}>Start reading →</button></div> : <div className="saved-list">{words.map((item, idx) => <div className={'saved-item' + (removingWords.has(item.word) ? ' is-removing' : '')} style={{ '--stagger-idx': Math.min(idx, 7) }} key={item.word}><div><h2 className="saved-word-title"><button type="button" className="saved-word-open" onClick={() => { stopSpeech(); clearTimeout(sheetCloseTimerRef.current); setSheetClosing(false); setSelectedGlossaryEntry(null); setSelectedSurface(''); setSelected(item.word) }}>{item.word}</button></h2></div><button type="button" className="saved-item-remove" onClick={() => removeSavedWord(item.word)} aria-label={`Remove ${item.word}`}><Icon name="close" size={19}/></button></div>)}</div>}</div>}
-        {tab === 'review' && <div key="tab-review" className="saga-tab-panel saga-tab-panel--review"><header className="section-header"><h1>Daily review<span className="period">.</span></h1></header>{words.length === 0 ? <div className="empty"><Icon name="layers" size={42}/><h2>Nothing to review yet.</h2><p>Save a few words while reading to start your daily deck.</p><button className="primary" onClick={() => { setTabSwitchedToRead(true); setTab('read') }}>Start reading →</button></div> : finished ? <div className="empty"><Icon name="check" size={44}/><h2>Beautiful work.</h2><p>You reviewed every word in your collection.</p><button className="primary" onClick={() => { setFinished(false); setReviewIndex(0); setRevealed(false); setReviewMotion('entering') }}>Review again →</button></div> : <div className="review-stage"><div className="review-progress" aria-label={`Card ${Math.min(reviewIndex + 1, words.length)} of ${words.length}`}><div className="review-progress-meta"><span>{Math.min(reviewIndex + 1, words.length)} / {words.length}</span></div><div className="review-progress-track" aria-hidden="true"><span className="review-progress-fill" style={{ transform: `scaleX(${Math.min(reviewIndex + 1, words.length) / words.length})` }} /></div></div><button type="button" className={'flashcard review-card' + (revealed ? ' is-flipped' : '') + (reviewMotion === 'leaving' ? ' is-gliding-out' : '') + (reviewMotion === 'entering' ? ' is-gliding-in' : '')} aria-label={revealed ? 'Show word' : 'Show meaning'} aria-pressed={revealed} onClick={() => setRevealed(r => !r)}><span className="review-card-inner"><span className="review-card-face review-card-front" aria-hidden={revealed}>{!revealed ? <strong className={revealed ? 'review-meaning' : 'review-word'}>{activeReviewWord.word}</strong> : <strong className="review-word-inert">{activeReviewWord.word}</strong>}</span><span className="review-card-face review-card-back" aria-hidden={!revealed}>{revealed ? <strong className={revealed ? 'review-meaning' : 'review-word'}>{activeReviewMeaning}</strong> : <strong className="review-meaning-inert">{activeReviewMeaning}</strong>}</span></span></button><button type="button" className="primary review-next" onClick={nextReview}>{reviewIndex + 1 >= words.length ? 'Finish review' : 'Next word'} →</button></div>}</div>}
+        {tab === 'words' && (
+          <div key="tab-words" className="saga-tab-panel saga-tab-panel--words">
+            <header className="section-header words-header">
+              <h1>Saved words<span className="period">.</span></h1>
+              {words.length > 0 && (
+                <p className="saga-tab-meta">
+                  {words.length} {words.length === 1 ? 'word' : 'words'} saved
+                </p>
+              )}
+            </header>
+            {words.length === 0 ? (
+              <div className="empty">
+                <Icon name="bookmark" size={40}/>
+                <h2>Your collection begins here.</h2>
+                <p>Read a story, tap a word, and save it to keep learning.</p>
+                <button className="primary" onClick={() => { setTabSwitchedToRead(true); setTab('read') }}>Start reading →</button>
+              </div>
+            ) : (
+              <div className="saved-list">
+                {words.map((item, idx) => {
+                  const defText = item.definition || offlineMeaning(item.word)
+                  const metaBits = [item.partOfSpeech, item.phonetic].filter(Boolean)
+                  return (
+                    <article
+                      className={'saved-item' + (item.mastered ? ' is-mastered' : '') + (removingWords.has(item.word) ? ' is-removing' : '')}
+                      style={{ '--stagger-idx': Math.min(idx, 7) }}
+                      key={item.word}
+                    >
+                      <div className="saved-item-top">
+                        <div className="saved-item-head">
+                          <h2 className="saved-word-title">
+                            <button
+                              type="button"
+                              className="saved-word-open"
+                              onClick={() => {
+                                stopSpeech()
+                                clearTimeout(sheetCloseTimerRef.current)
+                                setSheetClosing(false)
+                                setSelectedGlossaryEntry(null)
+                                setSelectedSurface('')
+                                setSelected(item.word)
+                              }}
+                            >
+                              {item.word}
+                            </button>
+                          </h2>
+                          {metaBits.length > 0 && (
+                            <span className="saved-item-meta">
+                              {item.partOfSpeech && <span className="saved-item-pos">{item.partOfSpeech}</span>}
+                              {item.partOfSpeech && item.phonetic && <span className="saved-item-sep" aria-hidden="true">·</span>}
+                              {item.phonetic && <span className="saved-item-ipa">{item.phonetic}</span>}
+                            </span>
+                          )}
+                        </div>
+                        <div className="saved-item-actions">
+                          <button
+                            type="button"
+                            className="saved-item-icon-btn saved-item-speak"
+                            onClick={() => speak(item.word)}
+                            aria-label={`Listen to ${item.word}`}
+                            title="Listen"
+                          >
+                            <Icon name="volume" size={16}/>
+                          </button>
+                          <button
+                            type="button"
+                            className={'saved-item-icon-btn saved-item-master' + (item.mastered ? ' is-mastered' : '')}
+                            aria-pressed={Boolean(item.mastered)}
+                            aria-label={item.mastered ? `Mark ${item.word} as learning` : `Mark ${item.word} as mastered`}
+                            title={item.mastered ? 'Mastered' : 'Mark as mastered'}
+                            onClick={() => toggleWordMastered(item.word)}
+                          >
+                            <Icon name="check" size={16}/>
+                          </button>
+                          <button
+                            type="button"
+                            className="saved-item-icon-btn saved-item-remove"
+                            onClick={() => removeSavedWord(item.word)}
+                            aria-label={`Remove ${item.word}`}
+                            title="Remove"
+                          >
+                            <Icon name="close" size={16}/>
+                          </button>
+                        </div>
+                      </div>
+                      {defText && <p className="saved-item-def">{defText}</p>}
+                      {item.sentence && (
+                        <blockquote className="saved-item-quote">
+                          <HighlightedContext sentence={item.sentence} word={item.word} />
+                        </blockquote>
+                      )}
+                    </article>
+                  )
+                })}
+              </div>
+            )}
+          </div>
+        )}
+        {tab === 'review' && (
+          <div key="tab-review" className="saga-tab-panel saga-tab-panel--review">
+            <header className="section-header">
+              <h1>Daily review<span className="period">.</span></h1>
+            </header>
+            {words.length === 0 ? (
+              <div className="empty">
+                <Icon name="layers" size={42}/>
+                <h2>Nothing to review yet.</h2>
+                <p>Save a few words while reading to start your daily deck.</p>
+                <button className="primary" onClick={() => { setTabSwitchedToRead(true); setTab('read') }}>Start reading →</button>
+              </div>
+            ) : (!activeReviewWord || finished) ? (
+              wordCounts.learning === 0 ? (
+                <div className="empty">
+                  <Icon name="check" size={44}/>
+                  <h2>All words mastered.</h2>
+                  <p>Every saved word is marked mastered. Practice your mastered collection anytime.</p>
+                  <button
+                    type="button"
+                    className="primary"
+                    onClick={() => startReviewSession('mastered')}
+                  >
+                    Review mastered words →
+                  </button>
+                </div>
+              ) : (
+                <div className="empty">
+                  <Icon name="check" size={44}/>
+                  <h2>Beautiful work.</h2>
+                  <p>
+                    {reviewMode === 'mastered'
+                      ? 'You reviewed your mastered words.'
+                      : `${wordCounts.learning} ${wordCounts.learning === 1 ? 'word' : 'words'} still learning · ${wordCounts.mastered} mastered.`}
+                  </p>
+                  <button
+                    type="button"
+                    className="primary"
+                    onClick={() => startReviewSession('learning')}
+                  >
+                    Review again →
+                  </button>
+                </div>
+              )
+            ) : (
+              <div className="review-stage">
+                <div
+                  className="review-progress"
+                  aria-label={`Card ${Math.min(reviewIndex + 1, effectiveReviewDeck.length)} of ${effectiveReviewDeck.length}`}
+                >
+                  <div className="review-progress-meta">
+                    <span className="review-progress-count">
+                      {Math.min(reviewIndex + 1, effectiveReviewDeck.length)} / {effectiveReviewDeck.length}
+                      {reviewMode === 'mastered' && <span className="review-mode-tag"> · Mastered</span>}
+                    </span>
+                    <button
+                      type="button"
+                      className="review-shuffle-btn"
+                      disabled={effectiveReviewDeck.length < 2}
+                      onClick={shuffleCurrentReview}
+                      aria-label="Shuffle cards"
+                    >
+                      <Icon name="shuffle" size={13}/>
+                      <span>Shuffle</span>
+                    </button>
+                  </div>
+                  <div className="review-progress-track" aria-hidden="true">
+                    <span
+                      className="review-progress-fill"
+                      style={{ transform: `scaleX(${Math.min(reviewIndex + 1, effectiveReviewDeck.length) / effectiveReviewDeck.length})` }}
+                    />
+                  </div>
+                </div>
+                {(() => {
+                  const swipeDx = reviewSwipe.phase === 'dragging' ? reviewSwipe.dx : 0
+                  const absDx = Math.abs(swipeDx)
+                  const cueDir = swipeDx > 18 ? 'right' : swipeDx < -18 ? 'left' : null
+                  const cueOpacity = cueDir ? Math.min(1, absDx / 80) : 0
+                  const reduced = prefersReducedMotion()
+                  const dragStyle = reviewSwipe.phase === 'dragging' && !reduced
+                    ? { transform: `translate3d(${swipeDx}px, 0, 0) rotate(${(swipeDx * 0.032).toFixed(2)}deg)` }
+                    : undefined
+                  return (
+                    <div
+                      role="button"
+                      tabIndex={0}
+                      className={
+                        'flashcard review-card' +
+                        (revealed ? ' is-flipped' : '') +
+                        (reviewSwipe.phase === 'dragging' ? ' is-dragging' : '') +
+                        (reviewSwipe.phase === 'returning' ? ' is-returning' : '') +
+                        (cueDir ? ' has-swipe-cue' : '') +
+                        (reviewMotion === 'leaving' ? ` is-gliding-out is-gliding-out-${reviewExitDir}` : '') +
+                        (reviewMotion === 'entering' ? ' is-gliding-in' : '')
+                      }
+                      style={dragStyle}
+                      aria-label={revealed ? 'Show word' : 'Show meaning'}
+                      aria-pressed={revealed}
+                      onPointerDown={onReviewPointerDown}
+                      onPointerMove={onReviewPointerMove}
+                      onPointerUp={event => finishReviewPointer(event, false)}
+                      onPointerCancel={event => finishReviewPointer(event, true)}
+                      onClick={onReviewCardClick}
+                    >
+                      {cueDir && (
+                        <span
+                          className={'review-swipe-cue ' + (cueDir === 'right' ? 'is-gotit' : 'is-learning')}
+                          style={{ opacity: cueOpacity }}
+                          aria-live="polite"
+                        >
+                          {cueDir === 'right' ? 'Got it' : 'Still learning'}
+                        </span>
+                      )}
+                      <span className="review-card-inner">
+                        <span className="review-card-face review-card-front" aria-hidden={revealed}>
+                          <div className="review-card-front-top">
+                            <span className="review-card-meta">
+                              {activeReviewWord.partOfSpeech && <span>{activeReviewWord.partOfSpeech}</span>}
+                              {activeReviewWord.partOfSpeech && activeReviewWord.phonetic && <span aria-hidden="true">·</span>}
+                              {activeReviewWord.phonetic && <span className="review-card-ipa">{activeReviewWord.phonetic}</span>}
+                            </span>
+                            <button
+                              type="button"
+                              className="review-card-speak"
+                              aria-label={`Listen to ${activeReviewWord.word}`}
+                              title="Listen"
+                              onPointerDown={event => event.stopPropagation()}
+                              onClick={event => {
+                                event.stopPropagation()
+                                speak(activeReviewWord.word)
+                              }}
+                              onKeyDown={event => event.stopPropagation()}
+                            >
+                              <Icon name="volume" size={17}/>
+                            </button>
+                          </div>
+                          <div className="review-card-center">
+                            {!revealed ? (
+                              <strong className="review-word">{activeReviewWord.word}</strong>
+                            ) : (
+                              <strong className="review-word-inert">{activeReviewWord.word}</strong>
+                            )}
+                            {activeReviewWord.sentence && (
+                              <p className="review-card-context">
+                                <HighlightedContext sentence={activeReviewWord.sentence} word={activeReviewWord.word} />
+                              </p>
+                            )}
+                          </div>
+                          <span className="review-card-hint">Tap to reveal meaning</span>
+                        </span>
+                        <span className="review-card-face review-card-back" aria-hidden={!revealed}>
+                          <span className="review-card-back-label">{activeReviewWord.word}</span>
+                          <div className="review-card-center">
+                            {revealed ? (
+                              <strong className="review-meaning">{activeReviewMeaning}</strong>
+                            ) : (
+                              <strong className="review-meaning-inert">{activeReviewMeaning}</strong>
+                            )}
+                          </div>
+                          {activeReviewWord.storyTitle ? (
+                            <span className="review-card-source">From: {activeReviewWord.storyTitle}</span>
+                          ) : (
+                            <span className="review-card-hint">Tap to return</span>
+                          )}
+                        </span>
+                      </span>
+                    </div>
+                  )
+                })()}
+                <div className="review-swipe-hint">
+                  <button
+                    type="button"
+                    className="review-hint-trigger review-hint-learning"
+                    onClick={() => handleReviewOutcome(false, { direction: 'left' })}
+                  >
+                    ← Still learning
+                  </button>
+                  <span className="review-hint-sep" aria-hidden="true">·</span>
+                  <button
+                    type="button"
+                    className="review-hint-trigger review-hint-gotit"
+                    onClick={() => handleReviewOutcome(true, { direction: 'right' })}
+                  >
+                    Got it →
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
+        )}
       </main>
-      <nav className="bottom-nav" aria-label="Main navigation">{[['read', 'book', 'Read'], ['words', 'bookmark', 'Words'], ['review', 'layers', 'Review']].map(([key, icon, label]) => <button key={key} className={tab === key ? 'current' : ''} onClick={() => { if (key === 'read' && tab === 'read' && story && storyIndex === stories.length - 1) changeStory(1); else { setTabSwitchedToRead(key === 'read' && tab !== 'read'); setTab(key); closeDictionary({ immediate: true }) } }}><Icon name={icon} size={25}/><span>{key === 'read' && tab === 'read' && story && storyIndex === stories.length - 1 ? waitingForNext ? 'Finding…' : feedDone ? 'Check again' : 'Next ↓' : label}</span></button>)}</nav>
+      <nav className="bottom-nav" aria-label="Main navigation">{[['read', 'book', 'Read'], ['words', 'bookmark', 'Words'], ['review', 'layers', 'Review']].map(([key, icon, label]) => <button key={key} className={tab === key ? 'current' : ''} onClick={() => openTab(key)}><Icon name={icon} size={25}/><span>{key === 'read' && tab === 'read' && story && storyIndex === stories.length - 1 ? waitingForNext ? 'Finding…' : feedDone ? 'Check again' : 'Next ↓' : label}</span></button>)}</nav>
       {showCredits && story && <div className="overlay" onClick={() => setShowCredits(false)}>
         <section className="definition-sheet sources-sheet" role="dialog" aria-label="Sources and licenses" onClick={event => event.stopPropagation()}>
           <div className="sheet-header"><span>ABOUT THIS ARTICLE</span><button aria-label="Close sources" onClick={() => setShowCredits(false)}>×</button></div>
