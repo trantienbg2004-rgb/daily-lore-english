@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react'
+import { Fragment, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import './App.css'
 import { initializeSeenHistory, persistReadMarker, readLegacyHistory } from './lib/seenHistory.js'
@@ -19,6 +19,7 @@ import { selectContextualMeaning } from './lib/contextualDictionary.js'
 import { tokenizeWithGlossary } from './utils/dictionaryTokenizer.js'
 import { buildSavedTokenSet, isTokenSaved } from './lib/savedWordsMatch.js'
 import { loadLemmaMap, loadPhraseMap, lookupDictionaryTerm, resolveStaticPhrase, resolveTier1Glossary } from './services/dictionaryService.js'
+import { createArticleReaderController, splitPageIntoSentences } from './lib/readerAudio.js'
 import {
   IOS_SHEET_EASING,
   SILK_EASING,
@@ -47,7 +48,7 @@ const LEVEL_SEGMENTS = NEWS_LEVELS.map(level => {
   return { level, code: 'C', ariaLabel: 'Level C (C1-C2 Advanced)' }
 })
 
-function LevelSegmentedControl({ index, readingLevel, onChange }) {
+function LevelSegmentedControl({ readingLevel, onChange }) {
   const trackRef = useRef(null)
   const btnRefs = useRef([])
   const activeLevelIndex = Math.max(0, LEVEL_SEGMENTS.findIndex(seg => seg.level === readingLevel))
@@ -87,12 +88,11 @@ function LevelSegmentedControl({ index, readingLevel, onChange }) {
 
   return (
     <div className="saga-news-level saga-level-group">
-      <span className="saga-level-label" id={`saga-level-label-${index}`}>Level</span>
       <div
         ref={trackRef}
         className="saga-level-segmented"
         role="radiogroup"
-        aria-labelledby={`saga-level-label-${index}`}
+        aria-label="Reading level"
         style={{ '--level-index': activeLevelIndex }}
         onKeyDown={onLevelKeyDown}
       >
@@ -487,6 +487,19 @@ function App() {
   const historyReadyRef = useRef(false)
   const [page, setPage] = useState(0)
   const [pageMotion, setPageMotion] = useState(null)
+  const [articlePlaying, setArticlePlaying] = useState(false)
+  const [activeSentenceIndex, setActiveSentenceIndex] = useState(null)
+  const articleReaderRef = useRef(null)
+  if (!articleReaderRef.current) {
+    articleReaderRef.current = createArticleReaderController({
+      onStateChange: ({ playing }) => setArticlePlaying(playing),
+      onSentenceChange: nextIdx => setActiveSentenceIndex(nextIdx),
+      onAdvancePage: nextIdx => {
+        setPageMotion(1)
+        setPage(nextIdx)
+      },
+    })
+  }
   const [levelSettleKey, setLevelSettleKey] = useState(0)
   const [tabSwitchedToRead, setTabSwitchedToRead] = useState(false)
   const [initialStoryReveal, setInitialStoryReveal] = useState(false)
@@ -556,6 +569,7 @@ function App() {
   const slideTimer = useRef(null)
   const changeReadingLevel = level => {
     if (!isNewsLevel(level) || level === readingLevel) return
+    stopSpeech()
     setReadingLevel(level)
     try { localStorage.setItem(NEWS_LEVEL_KEY, level) } catch { /* private mode */ }
     setStories(items => items.map(item => item.levelVariants ? paginateStory(applyNewsLevel(item, level)) : item))
@@ -591,12 +605,16 @@ function App() {
     removeTimersRef.current.set(word, timer)
   }
   useEffect(() => () => {
+    articleReaderRef.current?.stop()
     clearTimeout(justSavedTimerRef.current)
     clearTimeout(reviewTimerRef.current)
     clearTimeout(slideTimer.current)
     removeTimersRef.current.forEach(timer => clearTimeout(timer))
     removeTimersRef.current.clear()
   }, [])
+  useEffect(() => {
+    if (tab !== 'read') articleReaderRef.current?.stop()
+  }, [tab])
   const story = stories[storyIndex] || null
   const currentPage = story?.pages?.[page] || null
 
@@ -894,6 +912,7 @@ function App() {
   })?.trim() || (tab !== 'read' && selectedSaved?.sentence) || currentPage?.text || ''
 
   const stopSpeech = () => {
+    articleReaderRef.current?.stop()
     if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
       window.speechSynthesis.cancel()
     }
@@ -1130,17 +1149,25 @@ function App() {
   }, [selected, lookup])
 
   const speak = value => {
-    if (!('speechSynthesis' in window)) return
-    window.speechSynthesis.cancel()
-    const utterance = new SpeechSynthesisUtterance(value)
-    utterance.lang = 'en-US'
-    utterance.rate = 0.85
-    window.speechSynthesis.speak(utterance)
+    articleReaderRef.current?.playWordPronunciation(value)
+  }
+  const toggleArticleAudio = () => {
+    if (articlePlaying) {
+      stopSpeech()
+      return
+    }
+    if (!story || !Array.isArray(story.pages) || page >= story.pages.length) return
+    articleReaderRef.current?.start({
+      pages: story.pages,
+      startPage: page,
+      readingLevel: readingLevelRef.current,
+    })
   }
   const changePage = direction => {
     if (!story) return
     const next = Math.max(0, Math.min(story.pages.length, page + direction))
     if (next === page) return
+    stopSpeech()
     setPageMotion(direction)
     setPage(next)
   }
@@ -1148,6 +1175,7 @@ function App() {
     const from = storyIndexRef.current
     const next = from + direction
     if (next < 0 || next >= storiesRef.current.length) return
+    stopSpeech()
     clearTimeout(slideTimer.current)
     setSlide({ from, fromPage: page, direction, stamp: Date.now() })
     storyIndexRef.current = next
@@ -1302,7 +1330,7 @@ function App() {
         setRevealed(false)
         setReviewMotion('entering')
         clearTimeout(reviewTimerRef.current)
-        reviewTimerRef.current = setTimeout(() => setReviewMotion('idle'), SHEET_OPEN_MS)
+        reviewTimerRef.current = setTimeout(() => setReviewMotion('idle'), SWIPE_SETTLE_MS)
       }
     }
     if (prefersReducedMotion()) {
@@ -1404,18 +1432,21 @@ function App() {
   const renderStory = (item, index, pageNumber, interactive) => {
     const closing = pageNumber === item.pages.length
     const itemPage = closing ? null : (item.pages[pageNumber] || item.pages[0])
-    const tokens = closing ? [] : tokenizeWithGlossary(itemPage.text, item.glossary, staticPhrases, lemmaMap)
+    const sentences = closing ? [] : splitPageIntoSentences(itemPage.text)
+    const highlightActive = Boolean(interactive && articlePlaying && activeSentenceIndex !== null)
     const pageHasPhoto = Boolean(!closing && itemPage?.image && !brokenImages.has(itemPage.image) && !photoResult(itemPage.image)?.failed)
     const dotTotal = item.pages.length
     const topicLabel = readerSection(item).replace(/^DISCOVER\s*·\s*/i, '').trim()
     return <div className="reader-gesture" aria-hidden={!interactive} onTouchStart={interactive ? startGesture : undefined} onTouchMove={interactive ? moveGesture : undefined} onTouchEnd={interactive ? endGesture : undefined} onTouchCancel={interactive ? cancelGesture : undefined} onPointerDown={interactive ? startPointer : undefined} onPointerMove={interactive ? movePointer : undefined} onPointerUp={interactive ? endPointer : undefined} onPointerCancel={interactive ? () => {pointerGesture.current = null; releaseSwipeTransform({ spring: true })} : undefined}>
       <header className="topbar lore-reader-topbar">
-        <span className="saga-toolbar-story" title={topicLabel}>{topicLabel}</span>
-        <div className="saga-toolbar-actions">
+        <div className="saga-topbar-slot saga-topbar-left">
           {interactive && item.levelVariants && (
-            <LevelSegmentedControl index={index} readingLevel={readingLevel} onChange={changeReadingLevel} />
+            <LevelSegmentedControl readingLevel={readingLevel} onChange={changeReadingLevel} />
           )}
-          {interactive && !closing && <button type="button" className="icon-button saga-toolbar-audio" onClick={() => speak(itemPage.text)} aria-label="Read aloud"><Icon name="volume" size={20}/></button>}
+        </div>
+        <span className="saga-toolbar-story" title={topicLabel}>{topicLabel}</span>
+        <div className="saga-topbar-slot saga-topbar-right">
+          {interactive && !closing && <button type="button" className={'icon-button saga-toolbar-audio' + (articlePlaying ? ' is-speaking' : '')} onClick={toggleArticleAudio} aria-pressed={articlePlaying} aria-label={articlePlaying ? 'Stop reading aloud' : 'Read aloud'} title={articlePlaying ? 'Stop reading aloud' : 'Read aloud'}><Icon name="volume" size={20}/></button>}
         </div>
       </header>
       <div key={`${index}:${pageNumber}`} className={'page-surface ' + (!closing && !pageHasPhoto ? 'saga-page--text-only ' : '') + (itemPage?.density ? `page-density-${itemPage.density} ` : '') + (interactive && pageMotion ? (pageMotion > 0 ? 'page-enter-left' : 'page-enter-right') : '')}>
@@ -1436,11 +1467,18 @@ function App() {
           onReady={() => setPhotoVersion(n => n + 1)} />
       </div>
       <section className={'reading-card ' + (!itemPage.image || brokenImages.has(itemPage.image) || photoResult(itemPage.image)?.failed ? 'reading-card-no-photo' : 'reading-card-with-photo')}><div className="reading-topline" aria-hidden="true" />
-        <p key={levelSettleKey ? `lvl-${levelSettleKey}` : 'lvl-0'} className={'article-text' + (levelSettleKey > 0 ? ' saga-level-settle' : '')}>{tokens.map((token, i) => {
-          if (token.kind === 'text') return token.text
-          const saved = isTokenSaved(token, savedTokenSet, lemmaMap)
-          const newlySaved = Boolean(saved && justSavedWord && (String(token.lookupKey || '').toLowerCase() === justSavedWord || String(token.text || '').toLowerCase() === justSavedWord))
-          return <button key={i} type="button" disabled={!interactive} className={'word-token ' + (token.kind === 'glossary' ? 'glossary-token ' : token.kind === 'phrase' ? 'phrase-token ' : '') + (saved ? 'known ' : '') + (newlySaved ? 'just-saved' : '')} onClick={event => onWordClick(event, token.lookupKey, token.entry, token.text)}>{token.text}</button>
+        <p key={levelSettleKey ? `lvl-${levelSettleKey}` : 'lvl-0'} className={'article-text' + (levelSettleKey > 0 ? ' saga-level-settle' : '')}>{sentences.map((seg, sIdx) => {
+          const [, leading, core, trailing] = seg.match(/^(\s*)([\s\S]*?)(\s*)$/) || ['', '', seg, '']
+          const tokens = core ? tokenizeWithGlossary(core, item.glossary, staticPhrases, lemmaMap) : []
+          const isCurrentSentence = highlightActive && activeSentenceIndex === sIdx
+          const isDimmedSentence = highlightActive && activeSentenceIndex !== sIdx
+          const sentenceClass = 'saga-sentence' + (isCurrentSentence ? ' saga-sentence--active' : '') + (isDimmedSentence ? ' saga-sentence--dimmed' : '')
+          return <Fragment key={sIdx}>{leading}{core && <span className={sentenceClass} data-sentence-index={sIdx}>{tokens.map((token, i) => {
+            if (token.kind === 'text') return token.text
+            const saved = isTokenSaved(token, savedTokenSet, lemmaMap)
+            const newlySaved = Boolean(saved && justSavedWord && (String(token.lookupKey || '').toLowerCase() === justSavedWord || String(token.text || '').toLowerCase() === justSavedWord))
+            return <button key={i} type="button" disabled={!interactive} className={'word-token ' + (token.kind === 'glossary' ? 'glossary-token ' : token.kind === 'phrase' ? 'phrase-token ' : '') + (saved ? 'known ' : '') + (newlySaved ? 'just-saved' : '')} onClick={event => onWordClick(event, token.lookupKey, token.entry, token.text)}>{token.text}</button>
+          })}</span>}{trailing}</Fragment>
         })}</p>
       </section>
       </>}
@@ -1499,8 +1537,8 @@ function App() {
             </div>
           ))}
         </div>}
-        {tab === 'words' && <div key="tab-words" className="saga-tab-panel"><header className="section-header"><h1>Saved words<span className="period">.</span></h1></header>{words.length === 0 ? <div className="empty"><Icon name="bookmark" size={40}/><h2>Your collection begins here.</h2><p>Read a story, tap a word, and save it to keep learning.</p><button className="primary" onClick={() => { setTabSwitchedToRead(true); setTab('read') }}>Start reading →</button></div> : <div className="saved-list">{words.map((item, idx) => <div className={'saved-item' + (removingWords.has(item.word) ? ' is-removing' : '')} style={{ '--stagger-idx': Math.min(idx, 7) }} key={item.word}><div><h2 className="saved-word-title"><button className="saved-word-open" onClick={() => { stopSpeech(); clearTimeout(sheetCloseTimerRef.current); setSheetClosing(false); setSelectedGlossaryEntry(null); setSelectedSurface(''); setSelected(item.word) }}>{item.word}</button></h2></div><button type="button" onClick={() => removeSavedWord(item.word)} aria-label={`Remove ${item.word}`}><Icon name="close" size={19}/></button></div>)}</div>}</div>}
-        {tab === 'review' && <div key="tab-review" className="saga-tab-panel"><header className="section-header"><h1>Daily review<span className="period">.</span></h1></header>{words.length === 0 ? <div className="empty"><Icon name="layers" size={42}/><h2>Nothing to review yet.</h2><button className="primary" onClick={() => { setTabSwitchedToRead(true); setTab('read') }}>Start reading →</button></div> : finished ? <div className="empty"><Icon name="check" size={44}/><h2>Beautiful work.</h2><button className="primary" onClick={() => { setFinished(false); setReviewIndex(0); setRevealed(false); setReviewMotion('entering') }}>Review again →</button></div> : <div className="review-stage"><button type="button" className={'flashcard review-card' + (revealed ? ' is-flipped' : '') + (reviewMotion === 'leaving' ? ' is-gliding-out' : '') + (reviewMotion === 'entering' ? ' is-gliding-in' : '')} aria-label={revealed ? 'Show word' : 'Show meaning'} aria-pressed={revealed} onClick={() => setRevealed(r => !r)}><span className="review-card-inner"><span className="review-card-face review-card-front" aria-hidden={revealed}>{!revealed ? <strong className={revealed ? 'review-meaning' : 'review-word'}>{activeReviewWord.word}</strong> : <strong className="review-word-inert">{activeReviewWord.word}</strong>}</span><span className="review-card-face review-card-back" aria-hidden={!revealed}>{revealed ? <strong className={revealed ? 'review-meaning' : 'review-word'}>{activeReviewMeaning}</strong> : <strong className="review-meaning-inert">{activeReviewMeaning}</strong>}</span></span></button><button type="button" className="primary review-next" onClick={nextReview}>{reviewIndex + 1 >= words.length ? 'Finish review' : 'Next word'} →</button></div>}</div>}
+        {tab === 'words' && <div key="tab-words" className="saga-tab-panel saga-tab-panel--words"><header className="section-header"><h1>Saved words<span className="period">.</span></h1>{words.length > 0 && <p className="saga-tab-meta">{words.length} {words.length === 1 ? 'word' : 'words'} saved</p>}</header>{words.length === 0 ? <div className="empty"><Icon name="bookmark" size={40}/><h2>Your collection begins here.</h2><p>Read a story, tap a word, and save it to keep learning.</p><button className="primary" onClick={() => { setTabSwitchedToRead(true); setTab('read') }}>Start reading →</button></div> : <div className="saved-list">{words.map((item, idx) => <div className={'saved-item' + (removingWords.has(item.word) ? ' is-removing' : '')} style={{ '--stagger-idx': Math.min(idx, 7) }} key={item.word}><div><h2 className="saved-word-title"><button type="button" className="saved-word-open" onClick={() => { stopSpeech(); clearTimeout(sheetCloseTimerRef.current); setSheetClosing(false); setSelectedGlossaryEntry(null); setSelectedSurface(''); setSelected(item.word) }}>{item.word}</button></h2></div><button type="button" className="saved-item-remove" onClick={() => removeSavedWord(item.word)} aria-label={`Remove ${item.word}`}><Icon name="close" size={19}/></button></div>)}</div>}</div>}
+        {tab === 'review' && <div key="tab-review" className="saga-tab-panel saga-tab-panel--review"><header className="section-header"><h1>Daily review<span className="period">.</span></h1></header>{words.length === 0 ? <div className="empty"><Icon name="layers" size={42}/><h2>Nothing to review yet.</h2><p>Save a few words while reading to start your daily deck.</p><button className="primary" onClick={() => { setTabSwitchedToRead(true); setTab('read') }}>Start reading →</button></div> : finished ? <div className="empty"><Icon name="check" size={44}/><h2>Beautiful work.</h2><p>You reviewed every word in your collection.</p><button className="primary" onClick={() => { setFinished(false); setReviewIndex(0); setRevealed(false); setReviewMotion('entering') }}>Review again →</button></div> : <div className="review-stage"><div className="review-progress" aria-label={`Card ${Math.min(reviewIndex + 1, words.length)} of ${words.length}`}><div className="review-progress-meta"><span>{Math.min(reviewIndex + 1, words.length)} / {words.length}</span></div><div className="review-progress-track" aria-hidden="true"><span className="review-progress-fill" style={{ transform: `scaleX(${Math.min(reviewIndex + 1, words.length) / words.length})` }} /></div></div><button type="button" className={'flashcard review-card' + (revealed ? ' is-flipped' : '') + (reviewMotion === 'leaving' ? ' is-gliding-out' : '') + (reviewMotion === 'entering' ? ' is-gliding-in' : '')} aria-label={revealed ? 'Show word' : 'Show meaning'} aria-pressed={revealed} onClick={() => setRevealed(r => !r)}><span className="review-card-inner"><span className="review-card-face review-card-front" aria-hidden={revealed}>{!revealed ? <strong className={revealed ? 'review-meaning' : 'review-word'}>{activeReviewWord.word}</strong> : <strong className="review-word-inert">{activeReviewWord.word}</strong>}</span><span className="review-card-face review-card-back" aria-hidden={!revealed}>{revealed ? <strong className={revealed ? 'review-meaning' : 'review-word'}>{activeReviewMeaning}</strong> : <strong className="review-meaning-inert">{activeReviewMeaning}</strong>}</span></span></button><button type="button" className="primary review-next" onClick={nextReview}>{reviewIndex + 1 >= words.length ? 'Finish review' : 'Next word'} →</button></div>}</div>}
       </main>
       <nav className="bottom-nav" aria-label="Main navigation">{[['read', 'book', 'Read'], ['words', 'bookmark', 'Words'], ['review', 'layers', 'Review']].map(([key, icon, label]) => <button key={key} className={tab === key ? 'current' : ''} onClick={() => { if (key === 'read' && tab === 'read' && story && storyIndex === stories.length - 1) changeStory(1); else { setTabSwitchedToRead(key === 'read' && tab !== 'read'); setTab(key); closeDictionary({ immediate: true }) } }}><Icon name={icon} size={25}/><span>{key === 'read' && tab === 'read' && story && storyIndex === stories.length - 1 ? waitingForNext ? 'Finding…' : feedDone ? 'Check again' : 'Next ↓' : label}</span></button>)}</nav>
       {showCredits && story && <div className="overlay" onClick={() => setShowCredits(false)}>
