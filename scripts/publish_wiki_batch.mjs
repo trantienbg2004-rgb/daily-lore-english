@@ -30,9 +30,9 @@ export const STEADY_STATE_MAX_ARTICLES=14
 export const DEFAULT_DELAY_MS=8000
 const LEVELS=['A1-A2','B1-B2','C1-C2']
 export const LEVEL_WORD_BOUNDS={
- 'A1-A2':{photo:[32,45],text:[55,70]},
- 'B1-B2':{photo:[40,52],text:[65,82]},
- 'C1-C2':{photo:[45,58],text:[75,92]}
+ 'A1-A2':{photo:[34,46],text:[55,72]},
+ 'B1-B2':{photo:[32,44],text:[52,68]},
+ 'C1-C2':{photo:[28,42],text:[46,64]}
 }
 
 /**
@@ -350,8 +350,8 @@ function pageImageToken(page){
  *    parity at every matching page index i across A1-A2, B1-B2, and C1-C2.
  * 3. Magazine-style headline (5-11 words, NEVER identical to raw Wikipedia title, distinct across levels).
  * 4. Strict level-specific per-page word bounds for consistent fixed-card visual density:
- *    - Photo pages:     A1-A2 32-45w | B1-B2 40-52w | C1-C2 45-58w
- *    - Text-only pages: A1-A2 55-70w | B1-B2 65-82w | C1-C2 75-92w
+ *    - Photo pages:     A1-A2 34-46w | B1-B2 32-44w | C1-C2 28-42w
+ *    - Text-only pages: A1-A2 55-72w | B1-B2 52-68w | C1-C2 46-64w
  * 5. Concise image captions (when supplied), complete sentences, non-dry Page 1 hook,
  *    and measurable CEFR progression: A1-A2 < B1-B2 < C1-C2.
  */
@@ -513,18 +513,18 @@ STRICT EDITORIAL & FIXED-CARD QUALITY RULES:
    - Write an engaging magazine-style headline of 5 to 11 words in Title Case for EACH level.
    - NEVER use the raw Wikipedia title ("${source.sourceTitle}") as the headline, and make all 3 level headlines distinct.
 2. SYNCHRONIZED 4 TO 6 PAGE FIXED-CARD ARC (EXACT 3-LEVEL PARITY):
-   - Every article MUST have between 4 and 6 pages (prefer 5 pages; NEVER 7, 8, or 9 pages).
+   - Every article MUST have between 4 and 6 pages — choose 4, 5, or 6 pages naturally based on article depth (NEVER 7, 8, or 9 pages).
    - ALL 3 levels (A1-A2, B1-B2, C1-C2) MUST have the EXACT SAME page count N AND the EXACT SAME "imageId" on every matching page index i (A.pages[i].imageId === B.pages[i].imageId === C.pages[i].imageId) so switching Level A <-> B <-> C keeps the reader on the exact same page, photo, and story beat.
    - Story arc: Page 1 = Vivid Magazine Hook (NEVER start with a dry encyclopedia definition like "${source.sourceTitle} is a..." or "${source.sourceTitle} was an..."); Middle pages = Focused Body Beats; Final page = Memorable Takeaway / Lasting Significance grounded in the source.
-   - STRICT LEVEL-SPECIFIC WORD-COUNT BOUNDS (1 JSON page = 1 fixed mobile screen, ZERO overflow):
+   - STRICT LEVEL-SPECIFIC WORD-COUNT BOUNDS (character-equivalent across CEFR levels for crisp mobile cards):
      * Photo pages (Page 1 and any page with non-null "imageId"):
-       - A1-A2: STRICTLY 32-45 words
-       - B1-B2: STRICTLY 40-52 words
-       - C1-C2: STRICTLY 45-58 words
+       - A1-A2: STRICTLY 34-46 words
+       - B1-B2: STRICTLY 32-44 words
+       - C1-C2: STRICTLY 28-42 words
      * Text-only pages ("imageId": null):
-       - A1-A2: STRICTLY 55-70 words
-       - B1-B2: STRICTLY 65-82 words
-       - C1-C2: STRICTLY 75-92 words
+       - A1-A2: STRICTLY 55-72 words
+       - B1-B2: STRICTLY 52-68 words
+       - C1-C2: STRICTLY 46-64 words
 3. OBJECTIVE CEFR GRADING & DIFFERENTIATION (STRICTLY VERIFIED BY FKGL + LEXICAL PROFILER):
    - A1-A2: Simple, concrete everyday vocabulary (>=78% A1-A2 words, <=7% C1-C2/unlisted words) and short clear sentences (8-12 words/sentence, target Flesch-Kincaid Grade Level <= ${CEFR_THRESHOLDS['A1-A2'].maxFkgl}). NEVER use academic, technical, or C1-C2 jargon in A1-A2 — explain ideas in plain everyday English.
    - B1-B2: Clear, readable journalistic prose (>=85% A1-B2 words, 13-17 words/sentence, target FKGL ${CEFR_THRESHOLDS['B1-B2'].minFkgl}-${CEFR_THRESHOLDS['B1-B2'].maxFkgl}, at least +${CEFR_THRESHOLDS['B1-B2'].minFkglGapAboveA1} FKGL higher than A1-A2). Avoid overly dense academic jargon in B1-B2.
@@ -591,10 +591,10 @@ ${issues}${cefrBlock}
 
 REMINDERS:
 - Magazine-style headline of 5-11 words per level (distinct across levels, NEVER identical to "${source.sourceTitle}").
-- Synchronized 4 to 6 fixed-card pages (EXACT SAME page count N and EXACT SAME imageId at every page index i across A1-A2, B1-B2, and C1-C2).
+- Synchronized 4 to 6 fixed-card pages — choose 4, 5, or 6 pages naturally based on article depth (EXACT SAME page count N and EXACT SAME imageId at every page index i across A1-A2, B1-B2, and C1-C2).
 - Exact level-specific word counts:
-  * Photo pages (Page 1 & any non-null imageId): A1-A2 32-45w | B1-B2 40-52w | C1-C2 45-58w (NO dry "${source.sourceTitle} is a..." opening on Page 1).
-  * Text-only pages (imageId: null): A1-A2 55-70w | B1-B2 65-82w | C1-C2 75-92w.
+  * Photo pages (Page 1 & any non-null imageId): A1-A2 34-46w | B1-B2 32-44w | C1-C2 28-42w (NO dry "${source.sourceTitle} is a..." opening on Page 1).
+  * Text-only pages (imageId: null): A1-A2 55-72w | B1-B2 52-68w | C1-C2 46-64w.
 - Keep strict section-to-page "imageId" binding: Page 1 MUST use a Section 0 image; Pages 2..N use an imageId ONLY when directly discussing that image's subject/section, else null.
 - On every page with a non-null "imageId", write an ultra-concise "caption" (5-8 words, max ~45 characters) for 1-line mobile display; otherwise "".
 - Objective CEFR targets: A1-A2 (FKGL <= ${CEFR_THRESHOLDS['A1-A2'].maxFkgl}, >=78% A1-A2 words, <=7% C1-C2/unlisted) < B1-B2 (FKGL ${CEFR_THRESHOLDS['B1-B2'].minFkgl}-${CEFR_THRESHOLDS['B1-B2'].maxFkgl}, >=85% A1-B2 words, +1.5 FKGL above A1-A2) < C1-C2 (FKGL >= ${CEFR_THRESHOLDS['C1-C2'].minFkgl}, +1.5 FKGL above B1-B2, higher B2+C1-C2 ratio than B1-B2).

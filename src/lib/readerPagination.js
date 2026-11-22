@@ -3,7 +3,10 @@
  * just to fill the narrow remaining space below a photograph.
  */
 const ABBREVIATIONS = /^(?:Mr|Mrs|Ms|Dr|Prof|Sr|Jr|St|vs|etc|c|ca|circa|approx|e\.g|i\.e|U\.S|U\.K|No|Fig|Sept|Oct|Nov|Dec|Jan|Feb|Mar|Apr|Jun|Jul)\.$/i
-const trim = text => String(text || '').replace(/\s+/gu, ' ').trim()
+const trim = text => String(text || '')
+  .replace(/\s+/gu, ' ')
+  .replace(/\s+([.,!?;:])/gu, '$1')
+  .trim()
 const wordCount = text => trim(text).split(/\s+/u).filter(Boolean).length
 
 export function sentenceUnits(text) {
@@ -458,20 +461,63 @@ function planUniformWikiPages(item, fits, {
 }
 
 /**
- * Pure Fixed-Card Mode (Lore-Style) for mobile SAGA Wiki reading:
- * - Strict 1:1 mapping: 1 JSON page (pages[i]) ALWAYS renders as 1 single screen.
- * - ZERO mid-thought sentence splitting onto extra spillover/orphan pages, ensuring
- *   exact page-count and photo parity across A1-A2, B1-B2, and C1-C2.
- * - Anti-sparse protection: if any legacy photo page has < 25 words and an adjacent
- *   text-only page has surplus text (keeping >= 25 words), borrow 1-2 sentences
- *   losslessly without changing page count or creating sparse neighbors.
- * - Overflow safety: if a tall legacy page exceeds default viewport height in fits(),
- *   NEVER split it — apply a subtle `.saga-page--dense` density modifier instead
- *   (stepping font-size down gently by 1-2px, with smooth internal scroll only as
- *   an extreme fallback).
+ * Groups interactive word tokens with immediately following clinging punctuation
+ * (e.g. `.`, `,`, `!`, `?`, `;`, `:`, `”`, `’`, `)`) so browsers never break a
+ * line between `</button>` and trailing punctuation, while keeping trailing
+ * whitespace outside the nowrap cluster.
  */
-function planBalancedWikiPages(item, fits, {
+const CLINGING_PUNCT_RE = /^([.,!?;:…'"”’)\]]+)([\s\S]*)$/u
+
+export function groupTokenClusters(tokens) {
+  if (!Array.isArray(tokens) || !tokens.length) return []
+  const items = []
+  for (let i = 0; i < tokens.length; i++) {
+    const token = tokens[i]
+    if (!token) continue
+    if (token.kind === 'text') {
+      if (token.text) items.push({kind: 'text', text: token.text})
+      continue
+    }
+    const next = tokens[i + 1]
+    if (next && next.kind === 'text' && typeof next.text === 'string') {
+      const match = next.text.match(CLINGING_PUNCT_RE)
+      if (match) {
+        const [, clinging, rest] = match
+        items.push({kind: 'cluster', token, clinging})
+        if (rest) items.push({kind: 'text', text: rest})
+        i++
+        continue
+      }
+    }
+    items.push({kind: 'token', token})
+  }
+  return items
+}
+
+/**
+ * Flexible Character-Balanced Pagination for SAGA Wiki reading (4–7 pages):
+ * - Step 1 (Anti-sparse protection): if any photo page has < 25 words and an
+ *   adjacent text-only page has surplus text (keeping >= 25 words), borrow 1-2
+ *   sentences losslessly.
+ * - Step 2 (Cascading anti-overflow photo handoff): if any page overflows
+ *   fitsNormal at the locked uniform font size and has >= 2 sentences, hand off
+ *   trailing complete sentence(s) forward until fitsNormal passes.
+ * - Step 3 (Flexible character-balanced DP across contiguous text-only runs):
+ *   weights sentences by character length (`text.length`), flexes each
+ *   contiguous text-only run's page count `K` within global `[4, 7]` page
+ *   bounds (`runChars / K > 400` -> `K + 1`, `runChars / K < 175` -> `K - 1`),
+ *   and runs DP minimizing `(chars - targetChars)^2` while enforcing fitsNormal
+ *   and penalizing sparse pages (`< 160` chars).
+ * - Step 4 (Genuine overflow fallback only): apply `.saga-page--dense` ONLY when
+ *   `!fitsNormal(page.text, isCover, page)` is genuinely true at uniform font size.
+ */
+export function planBalancedWikiPages(item, fits, {
   minPhotoWords = 25,
+  minTotalPages = 4,
+  maxTotalPages = 7,
+  maxRunPageChars = 400,
+  minRunPageChars = 175,
+  sparsePageChars = 160,
 } = {}) {
   const originals = item?._sourcePages || item?.pages || []
   if (!originals.length) return null
@@ -491,7 +537,7 @@ function planBalancedWikiPages(item, fits, {
   const fitsNormal = (text, isCover, pageObj) =>
     Boolean(fits({text, cover: isCover, image: pageObj?.image ? pageObj : null, density: ''}))
 
-  // 1. Anti-sparse protection for legacy photo pages (< 25 words) without changing page count.
+  // Step 1: Anti-sparse protection for legacy photo pages (< 25 words).
   for (let i = 0; i < fixed.length; i++) {
     const curr = fixed[i]
     if (!curr.image) continue
@@ -549,21 +595,134 @@ function planBalancedWikiPages(item, fits, {
     }
   }
 
-  // 2. Apply subtle .saga-page--dense modifier ONLY when a fixed card is slightly too tall
-  // for default typography on a compact viewport (never splitting sentences onto new pages).
-  const finalMarginProbe = 'Swipe up for the next story right now.'
-  const photoBorderlineProbe = 'Safety margin line for compact screens.'
+  // Step 2: Cascading anti-overflow forward handoff (Pages 0 .. fixed.length - 2).
+  // Shift trailing complete sentence(s) from any overflowing page to the START of
+  // fixed[i + 1] (even when fixed[i + 1] also has a photo — it cascades forward on
+  // iteration i + 1 until reaching a text-only page or the final page), stopping
+  // only when fitsNormal passes or the page is down to 1 complete sentence.
+  for (let i = 0; i < fixed.length - 1; i++) {
+    const curr = fixed[i]
+    const isCover = i === 0
+    if (fitsNormal(curr.text, isCover, curr)) continue
+
+    const units = sentenceUnits(curr.text)
+    if (units.length < 2) continue
+
+    const moved = []
+    while (units.length >= 2 && !fitsNormal(units.join(' '), isCover, curr)) {
+      moved.unshift(units.pop())
+    }
+
+    if (moved.length > 0) {
+      curr.text = trim(units.join(' '))
+      const next = fixed[i + 1]
+      next.text = trim([...moved, next.text].filter(Boolean).join(' '))
+    }
+  }
+
+  // Step 3: Flexible character-balanced DP redistribution across every contiguous
+  // text-only run within global [minTotalPages, maxTotalPages] (4–7 pages).
+  let runStart = 0
+  while (runStart < fixed.length) {
+    if (fixed[runStart].image) { runStart++; continue }
+    let runEnd = runStart
+    while (runEnd < fixed.length && !fixed[runEnd].image) runEnd++
+    const runLen = runEnd - runStart
+    const units = sentenceUnits(fixed.slice(runStart, runEnd).map(p => p.text).join(' '))
+
+    if (units.length > 0) {
+      const prefixChars = [0]
+      for (const unit of units) prefixChars.push(prefixChars.at(-1) + unit.length)
+      const runChars = prefixChars.at(-1)
+
+      let targetK = Math.min(runLen, units.length)
+      // Expand overcrowded text-only runs (> 400 chars/page) up to global maxTotalPages (7)
+      while (
+        runChars / targetK > maxRunPageChars &&
+        targetK < units.length &&
+        fixed.length + (targetK - runLen) < maxTotalPages
+      ) {
+        targetK++
+      }
+      // Compress overly sparse text-only runs (< 175 chars/page) down to global minTotalPages (4)
+      while (
+        targetK >= 2 &&
+        runChars / targetK < minRunPageChars &&
+        fixed.length + (targetK - runLen) > minTotalPages
+      ) {
+        targetK--
+      }
+
+      const solveRunDp = (pageCount, requireFits) => {
+        if (pageCount < 1 || units.length < pageCount) return null
+        const targetChars = runChars / pageCount
+        const dp = Array.from({length: pageCount + 1}, () => Array(units.length + 1).fill(null))
+        dp[0][0] = {cost: 0, cuts: []}
+        for (let used = 0; used < pageCount; used++) {
+          for (let from = used; from <= units.length - (pageCount - used); from++) {
+            const previous = dp[used][from]
+            if (!previous) continue
+            for (let to = from + 1; to <= units.length - (pageCount - used - 1); to++) {
+              const text = units.slice(from, to).join(' ')
+              if (requireFits && !fitsNormal(text, runStart + used === 0, null)) break
+              const chars = prefixChars[to] - prefixChars[from]
+              const sparsePenalty = chars < sparsePageChars ? (sparsePageChars - chars) ** 2 * 4 : 0
+              const cost = previous.cost + (chars - targetChars) ** 2 + sparsePenalty
+              const current = dp[used + 1][to]
+              if (!current || cost < current.cost) {
+                dp[used + 1][to] = {cost, cuts: [...previous.cuts, to]}
+              }
+            }
+          }
+        }
+        return dp[pageCount][units.length]
+      }
+
+      // Try fitting at targetK first; if fitsNormal cannot pack targetK cleanly and
+      // global budget allows, try expanding K up to maxTotalPages before falling back.
+      let chosenK = targetK
+      let plan = solveRunDp(chosenK, true)
+      while (
+        !plan &&
+        chosenK < units.length &&
+        fixed.length + (chosenK - runLen) < maxTotalPages
+      ) {
+        chosenK++
+        plan = solveRunDp(chosenK, true)
+      }
+      if (!plan) {
+        chosenK = targetK
+        plan = solveRunDp(chosenK, false)
+      }
+
+      if (plan && (chosenK >= 2 || chosenK !== runLen)) {
+        const nextRunPages = []
+        let from = 0
+        for (let p = 0; p < chosenK; p++) {
+          const to = plan.cuts[p]
+          nextRunPages.push({
+            image: '',
+            caption: '',
+            text: units.slice(from, to).join(' '),
+          })
+          from = to
+        }
+        fixed.splice(runStart, runLen, ...nextRunPages)
+        runStart += chosenK
+        continue
+      }
+    }
+    runStart = runEnd
+  }
+
+  // Step 4: Mark `.saga-page--dense` ONLY when a page genuinely overflows fitsNormal
+  // at the locked uniform font size (enabling smooth hidden-scrollbar scroll without
+  // shrinking typography).
   for (let i = 0; i < fixed.length; i++) {
     const page = fixed[i]
     const isCover = i === 0
-    const isFinal = i === fixed.length - 1
-    const wc = wordCount(page.text)
-    const fitsDefault = fitsNormal(page.text, isCover, page)
-    const fitsFinalBreathingRoom = !isFinal || fitsNormal(trim(`${page.text} ${finalMarginProbe}`), isCover, page)
-    const fitsPhotoMargin = !page.image || fitsNormal(trim(`${page.text} ${photoBorderlineProbe}`), isCover, page)
-    if (!fitsDefault || !fitsFinalBreathingRoom || !fitsPhotoMargin) {
-      const isVeryDense = page.image ? wc > 58 : wc > 95
-      page.density = isVeryDense ? 'dense-tight saga-page--dense' : 'dense saga-page--dense'
+    if (!fitsNormal(page.text, isCover, page)) {
+      page.density = 'dense saga-page--dense'
     }
     // Mark non-enumerably so rebalanceTextPages leaves fixed-card boundaries 100% intact.
     Object.defineProperty(page, '_fixedCard', {value: true, enumerable: false})

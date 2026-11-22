@@ -12,13 +12,14 @@ test('Photo caption sits below the image frame; zoom and credits stay',()=>{
   assert.match(app,/aria-label="Enlarge photo"/)
   assert.match(app,/setShowCredits\(true\)/)
 })
-test('Photo frame tracks image width during live rendering and pagination',()=>{
-  assert.match(app,/frameWidth:Math\.min\(mediaWidth,imageWidth\+10\)/)
+test('Photo frame shrink-wraps flush-left to natural aspect ratio during live rendering and pagination',()=>{
+  assert.match(app,/className="photo-figure lore-photo-figure hero-media"/)
+  assert.match(app,/figure\.style\.width = `\$\{Math\.round\(measuredWidth\)\}px`/)
   assert.match(app,/figure\.append\(photo\)/)
   assert.match(app,/media\?\.replaceChildren\(figure, measuredCaption\)/)
   assert.match(app,/measuredCaption\.textContent = image \? photoLabel\(image\) : ''/)
-  assert.match(app,/figure\.style\.width = `\$\{Math\.ceil\(frameWidth\)\}px`/)
-  assert.match(css,/\.lore-editorial-v5 \.reader-gesture \.article-media \.photo-figure\.lore-photo-figure \{\s*width:max-content/)
+  assert.match(css,/width:\s*fit-content;/)
+  assert.doesNotMatch(css,/lore-photo-figure--matted/)
 })
 test('Every news page uses the same complete headline layout',()=>{
   assert.match(app,/pageNumber > 0 && item\.contentType !== 'news' \? 'article-heading-continued' : ''/)

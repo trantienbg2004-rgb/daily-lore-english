@@ -3,7 +3,7 @@ import { createPortal } from 'react-dom'
 import './App.css'
 import { initializeSeenHistory, persistReadMarker, readLegacyHistory } from './lib/seenHistory.js'
 import { storyId } from './lib/feedQueue.js'
-import { balancePhotoCoverPage, planAnchoredWikiPages, planReadingPages, rebalanceTextPages } from './lib/readerPagination.js'
+import { balancePhotoCoverPage, groupTokenClusters, planAnchoredWikiPages, planReadingPages, rebalanceTextPages } from './lib/readerPagination.js'
 import { shortNewsPages } from './lib/shortNewsPages.js'
 import { sanitizeReadingArticle } from './lib/articleCleanup.js'
 import { refreshCatalog, refillCatalog, REFRESH_INTERVAL_MS } from './lib/continuousReader.js'
@@ -198,12 +198,11 @@ function ArticlePhoto({ image, label: shortLabel, fullCaption, onBroken, onReady
   if (!image) return null
   if (!asset) return <figure className="photo-figure lore-photo-figure hero-media hero-media-loading" aria-hidden="true"><div className="hero-photo-skeleton" /></figure>
   if (!asset.url) return null
-  const aspectStyle = asset.width && asset.height ? { '--photo-aspect': `${asset.width} / ${asset.height}` } : undefined
   const heroWidth = asset.width || 1600
   const heroHeight = asset.height || 900
   const srcSet = photoSrcSet(asset.url, asset.width)
-  return <><figure className="photo-figure lore-photo-figure hero-media" style={aspectStyle}>
-    <img className="hero-photo" src={asset.url} srcSet={srcSet} sizes="(max-width: 760px) calc(100vw - 2rem), 664px" alt={label} decoding="async" loading="lazy"
+  return <><figure className="photo-figure lore-photo-figure hero-media">
+    <img className="hero-photo" src={asset.url} srcSet={srcSet} sizes="(max-width: 760px) calc(100vw - 2rem), 430px" alt={label} decoding="async" loading="lazy"
       width={heroWidth} height={heroHeight} role="button" tabIndex={0}
       aria-label={`Enlarge image: ${label || 'article photo'}`}
       onClick={openLightbox}
@@ -220,7 +219,7 @@ function ArticlePhoto({ image, label: shortLabel, fullCaption, onBroken, onReady
     </button>
     {zoomed && createPortal(<div className={'lore-lightbox' + (lightboxClosing ? ' is-closing' : '')} role="dialog" aria-modal="true" aria-label="Enlarged article photograph" onClick={event => { event.stopPropagation(); closeLightbox() }}>
       <button type="button" className="lore-lightbox-close" aria-label="Close enlarged photograph" onClick={event => { event.stopPropagation(); closeLightbox() }}>×</button>
-      <img src={asset.url} srcSet={srcSet} sizes="(max-width: 768px) 96vw, 90vw" alt={label} decoding="async" loading="lazy" width={heroWidth} height={heroHeight} style={aspectStyle} onClick={event => event.stopPropagation()} />
+      <img src={asset.url} srcSet={srcSet} sizes="(max-width: 768px) 96vw, 90vw" alt={label} decoding="async" loading="lazy" width={heroWidth} height={heroHeight} onClick={event => event.stopPropagation()} />
       {fullCaption && <p className="lore-lightbox-caption" onClick={event => event.stopPropagation()}>{fullCaption}</p>}
     </div>, document.body)}
   </figure>{label && label !== 'Article photograph' && <p className="lore-photo-caption">{label}</p>}</>
@@ -299,30 +298,49 @@ function layoutPages(item, reader, badImages = new Set()) {
       measuredCaption.style.display = measuredCaption.textContent && measuredCaption.textContent !== 'Article photograph' ? '' : 'none'
       if (image) {
         const asset = photoResult(image.image)
-        const computedMax = parseFloat(getComputedStyle(photo).maxHeight)
+        const figMaxStr = getComputedStyle(figure).maxHeight || ''
+        const computedMax = figMaxStr.endsWith('px') ? parseFloat(figMaxStr) : NaN
         const maxHeight = Number.isFinite(computedMax) && computedMax > 0
           ? computedMax
-          : (window.innerHeight * (density === 'compact' ? (window.innerWidth <= 600 ? 0.22 : 0.3) : 0.4))
+          : Math.min(195, Math.max(138, window.innerHeight * 0.21))
         const ratio = asset?.width && asset?.height ? asset.width / asset.height : 4 / 3
-        const { frameWidth } = photoFrameSize(media.clientWidth, maxHeight, ratio)
-        figure.style.width = `${Math.ceil(frameWidth)}px`
-        figure.style.width = '100%'
         const measuredHeight = Math.min(maxHeight, media.clientWidth / ratio)
         const measuredWidth = Math.min(media.clientWidth, measuredHeight * ratio)
+        figure.style.width = `${Math.round(measuredWidth)}px`
+        figure.style.height = `${Math.round(measuredHeight)}px`
         photo.width = asset?.width || 1600
         photo.height = asset?.height || 900
         photo.style.width = `${Math.round(measuredWidth)}px`
         photo.style.height = `${Math.round(measuredHeight)}px`
       } else {
         figure.style.width = ''
+        figure.style.height = ''
         photo.style.width = ''
         photo.style.height = ''
       }
       const fragment = document.createDocumentFragment()
-      const tokens = String(text || '').split(/(\s+)/u)
-      for (const token of tokens) {
-        if (!token || /^\s+$/u.test(token) || !/[a-z]/i.test(token)) fragment.appendChild(document.createTextNode(token))
-        else { const span = document.createElement('button'); span.type = 'button'; span.className = 'word-token'; span.textContent = token; fragment.appendChild(span) }
+      const rawTokens = tokenizeWithGlossary(String(text || ''), item.glossary, [], null)
+      const clustered = groupTokenClusters(rawTokens)
+      for (const piece of clustered) {
+        if (piece.kind === 'text') {
+          fragment.appendChild(document.createTextNode(piece.text))
+        } else if (piece.kind === 'cluster') {
+          const cluster = document.createElement('span')
+          cluster.className = 'saga-word-cluster'
+          const btn = document.createElement('button')
+          btn.type = 'button'
+          btn.className = 'word-token' + (piece.token.kind === 'phrase' ? ' phrase-token' : '')
+          btn.textContent = piece.token.text
+          cluster.appendChild(btn)
+          cluster.appendChild(document.createTextNode(piece.clinging))
+          fragment.appendChild(cluster)
+        } else {
+          const btn = document.createElement('button')
+          btn.type = 'button'
+          btn.className = 'word-token' + (piece.token.kind === 'phrase' ? ' phrase-token' : '')
+          btn.textContent = piece.token.text
+          fragment.appendChild(btn)
+        }
       }
       paragraph.replaceChildren(fragment)
       // Read V8: the pager has a fixed bottom position. Measure the text
@@ -1470,14 +1488,21 @@ function App() {
         <p key={levelSettleKey ? `lvl-${levelSettleKey}` : 'lvl-0'} className={'article-text' + (levelSettleKey > 0 ? ' saga-level-settle' : '')}>{sentences.map((seg, sIdx) => {
           const [, leading, core, trailing] = seg.match(/^(\s*)([\s\S]*?)(\s*)$/) || ['', '', seg, '']
           const tokens = core ? tokenizeWithGlossary(core, item.glossary, staticPhrases, lemmaMap) : []
+          const clustered = groupTokenClusters(tokens)
           const isCurrentSentence = highlightActive && activeSentenceIndex === sIdx
           const isDimmedSentence = highlightActive && activeSentenceIndex !== sIdx
           const sentenceClass = 'saga-sentence' + (isCurrentSentence ? ' saga-sentence--active' : '') + (isDimmedSentence ? ' saga-sentence--dimmed' : '')
-          return <Fragment key={sIdx}>{leading}{core && <span className={sentenceClass} data-sentence-index={sIdx}>{tokens.map((token, i) => {
-            if (token.kind === 'text') return token.text
+          const renderWordButton = (token, key) => {
             const saved = isTokenSaved(token, savedTokenSet, lemmaMap)
             const newlySaved = Boolean(saved && justSavedWord && (String(token.lookupKey || '').toLowerCase() === justSavedWord || String(token.text || '').toLowerCase() === justSavedWord))
-            return <button key={i} type="button" disabled={!interactive} className={'word-token ' + (token.kind === 'glossary' ? 'glossary-token ' : token.kind === 'phrase' ? 'phrase-token ' : '') + (saved ? 'known ' : '') + (newlySaved ? 'just-saved' : '')} onClick={event => onWordClick(event, token.lookupKey, token.entry, token.text)}>{token.text}</button>
+            return <button key={key} type="button" disabled={!interactive} className={'word-token ' + (token.kind === 'glossary' ? 'glossary-token ' : token.kind === 'phrase' ? 'phrase-token ' : '') + (saved ? 'known ' : '') + (newlySaved ? 'just-saved' : '')} onClick={event => onWordClick(event, token.lookupKey, token.entry, token.text)}>{token.text}</button>
+          }
+          return <Fragment key={sIdx}>{leading}{core && <span className={sentenceClass} data-sentence-index={sIdx}>{clustered.map((piece, i) => {
+            if (piece.kind === 'text') return piece.text
+            if (piece.kind === 'cluster') {
+              return <span key={i} className="saga-word-cluster">{renderWordButton(piece.token)}{piece.clinging}</span>
+            }
+            return renderWordButton(piece.token, i)
           })}</span>}{trailing}</Fragment>
         })}</p>
       </section>
@@ -1498,7 +1523,6 @@ function App() {
             <button type="button" className="page-arrow page-arrow-next" aria-label="Next page" title="Next page (→)" disabled={!interactive || closing} onClick={() => changePage(1)}><Icon name="right" size={17}/></button>
           </div>
         </div>
-        {!closing && pageNumber === item.pages.length - 1 && <div className="saga-final-page-hint">Swipe up for next story</div>}
       </div>
     </div>
   }
