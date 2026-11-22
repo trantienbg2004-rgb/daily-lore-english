@@ -18,6 +18,7 @@ import {WIKI_TOPICS} from './wiki/discovery.mjs'
 import {fetchWikipediaParsePage,WikiApiPause} from './wiki/source.mjs'
 import {appendWikiStories,makeWikiStory,readWikiCatalog,validateWikiStory} from './wiki/catalog.mjs'
 import {assignBatchPhotos,collectVerifiedArticlePhotos} from './wiki/batch-media.mjs'
+import {CEFR_THRESHOLDS,evaluateArticleCEFR} from './wiki/cefrProfiler.mjs'
 
 const ROOT=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..')
 const DEFAULT_QUEUE_FILE=path.join(ROOT,'data','wiki_queue.json')
@@ -271,7 +272,7 @@ export function buildRoundRobinOrder(queueItems,{byTopic={},usedPageIds=new Set(
  for(const list of buckets.values()){
   list.sort((a,b)=>
    (Number(!!b.hasLeadImage)-Number(!!a.hasLeadImage))||
-   ((a.priority||1)-(b.priority||1))||
+   ((a.priority??1)-(b.priority??1))||
    ((b.views||0)-(a.views||0))
   )
  }
@@ -457,8 +458,9 @@ export function validateArticleQuality(draft,sourceTitle,{
   }
  }
 
- // Measurable CEFR progression: A1-A2 < B1-B2 < C1-C2
+ // Measurable CEFR progression & objective Lexical + FKGL gates across A1-A2, B1-B2, C1-C2
  const a=metrics['A1-A2'],b=metrics['B1-B2'],c=metrics['C1-C2']
+ let cefr=null
  if(a&&b&&c){
   if(!(a.avgSentenceWords<b.avgSentenceWords&&b.avgSentenceWords<c.avgSentenceWords)){
    errors.push(`CEFR sentence-length progression failed: A1-A2 (${a.avgSentenceWords}w) < B1-B2 (${b.avgSentenceWords}w) < C1-C2 (${c.avgSentenceWords}w) required`)
@@ -466,9 +468,25 @@ export function validateArticleQuality(draft,sourceTitle,{
   if(!(a.complexityScore<b.complexityScore&&b.complexityScore<c.complexityScore)){
    errors.push(`CEFR difficulty progression failed: A1-A2 (${a.complexityScore}) < B1-B2 (${b.complexityScore}) < C1-C2 (${c.complexityScore}) required`)
   }
+  cefr=evaluateArticleCEFR(draft.variants,{sourceTitle})
+  for(const level of LEVELS){
+   const prof=cefr.profiles[level]
+   if(prof&&metrics[level]){
+    metrics[level]={
+     ...metrics[level],
+     fkgl:prof.fkgl,
+     lexicalProfile:prof.lexicalProfile,
+     overLevelWords:prof.overLevelWords,
+     b2Words:prof.b2Words
+    }
+   }
+  }
+  if(!cefr.ok){
+   errors.push(...cefr.errors)
+  }
  }
 
- return {ok:errors.length===0,errors,metrics}
+ return {ok:errors.length===0,errors,metrics,cefr}
 }
 
 function formatEmbeddedImageCatalog(verifiedPhotos=[]){
@@ -507,10 +525,10 @@ STRICT EDITORIAL & FIXED-CARD QUALITY RULES:
        - A1-A2: STRICTLY 55-70 words
        - B1-B2: STRICTLY 65-82 words
        - C1-C2: STRICTLY 75-92 words
-3. CLEAR CEFR DIFFERENTIATION (MEASURABLE PROGRESSION A1-A2 < B1-B2 < C1-C2):
-   - A1-A2: Simple everyday vocabulary and short clear sentences averaging 8-14 words per sentence.
-   - B1-B2: Smooth journalistic storytelling with compound and relative clauses averaging 14-20 words per sentence.
-   - C1-C2: Analytical, nuanced editorial tone with sophisticated academic/journalistic vocabulary averaging 18-26 words per sentence.
+3. OBJECTIVE CEFR GRADING & DIFFERENTIATION (STRICTLY VERIFIED BY FKGL + LEXICAL PROFILER):
+   - A1-A2: Simple, concrete everyday vocabulary (>=78% A1-A2 words, <=7% C1-C2/unlisted words) and short clear sentences (8-12 words/sentence, target Flesch-Kincaid Grade Level <= ${CEFR_THRESHOLDS['A1-A2'].maxFkgl}). NEVER use academic, technical, or C1-C2 jargon in A1-A2 — explain ideas in plain everyday English.
+   - B1-B2: Clear, readable journalistic prose (>=85% A1-B2 words, 13-17 words/sentence, target FKGL ${CEFR_THRESHOLDS['B1-B2'].minFkgl}-${CEFR_THRESHOLDS['B1-B2'].maxFkgl}, at least +${CEFR_THRESHOLDS['B1-B2'].minFkglGapAboveA1} FKGL higher than A1-A2). Avoid overly dense academic jargon in B1-B2.
+   - C1-C2: Analytical, nuanced editorial tone with sophisticated academic/journalistic vocabulary and richer sentence structure (18-26 words/sentence, target FKGL >= ${CEFR_THRESHOLDS['C1-C2'].minFkgl}, at least +${CEFR_THRESHOLDS['C1-C2'].minFkglGapAboveB1} FKGL higher than B1-B2, and higher B2/C1-C2 lexical density than B1-B2).
 4. STRICT SECTION-TO-PAGE IMAGE BINDING (ZERO MISALIGNED PHOTOS):
    - Every page MUST include "imageId" set to either an exact ID from AVAILABLE EMBEDDED IMAGES below (e.g. "IMG_0") or null.
    - Use the EXACT SAME "imageId" on the same page index across A1-A2, B1-B2, and C1-C2.
@@ -535,14 +553,41 @@ SOURCE PASSAGES:
 ${passages}`
 }
 
-export function buildQualityRetryPrompt(source,topic,evidence,previousDraft,failedChecks,verifiedPhotos=[]){
+function formatCEFRRetryBlock(qualityResult){
+ const cefr=qualityResult?.cefr||qualityResult
+ const profiles=cefr?.profiles
+ if(!profiles?.['A1-A2']||!profiles?.['B1-B2']||!profiles?.['C1-C2'])return ''
+ const a=profiles['A1-A2']
+ const b=profiles['B1-B2']
+ const c=profiles['C1-C2']
+ const lines=[
+  'OBJECTIVE CEFR PROFILER DIAGNOSTICS (TARGETED WORD-SWAP & READABILITY FIXES):',
+  `- A1-A2 measured: FKGL=${a.fkgl} (target <= ${CEFR_THRESHOLDS['A1-A2'].maxFkgl}), avgSentence=${a.avgSentenceLength}w, A1-A2 words=${a.lexicalProfile.a1a2Pct}% (min ${CEFR_THRESHOLDS['A1-A2'].minA1A2Pct}%), C1-C2/unlisted=${a.lexicalProfile.c1c2OrUnlistedPct}% (max ${CEFR_THRESHOLDS['A1-A2'].maxC1C2OrUnlistedPct}%)`,
+  `- B1-B2 measured: FKGL=${b.fkgl} (target ${CEFR_THRESHOLDS['B1-B2'].minFkgl}-${CEFR_THRESHOLDS['B1-B2'].maxFkgl}, gap above A1-A2=${cefr.gaps?.bMinusA ?? Number((b.fkgl-a.fkgl).toFixed(2))} >= ${CEFR_THRESHOLDS['B1-B2'].minFkglGapAboveA1}), avgSentence=${b.avgSentenceLength}w, A1-B2 words=${b.lexicalProfile.a1ToB2Pct}% (min ${CEFR_THRESHOLDS['B1-B2'].minA1ToB2Pct}%), B2+C1-C2=${b.lexicalProfile.b2PlusC1C2OrUnlistedPct}%`,
+  `- C1-C2 measured: FKGL=${c.fkgl} (target >= ${CEFR_THRESHOLDS['C1-C2'].minFkgl}, gap above B1-B2=${cefr.gaps?.cMinusB ?? Number((c.fkgl-b.fkgl).toFixed(2))} >= ${CEFR_THRESHOLDS['C1-C2'].minFkglGapAboveB1}), avgSentence=${c.avgSentenceLength}w, B2+C1-C2=${c.lexicalProfile.b2PlusC1C2OrUnlistedPct}% (must exceed B1-B2 ${b.lexicalProfile.b2PlusC1C2OrUnlistedPct}%)`
+ ]
+ if(a.overLevelWords?.length){
+  lines.push(`- MANDATORY A1-A2 WORD SWAPS: Replace these exact hard/over-level words in A1-A2 with simple everyday A1-A2 equivalents: [${a.overLevelWords.slice(0,20).join(', ')}]`)
+ }
+ if(a.lexicalProfile.a1a2Pct<CEFR_THRESHOLDS['A1-A2'].minA1A2Pct&&a.b2Words?.length){
+  lines.push(`- SIMPLIFY B2 WORDS IN A1-A2: Also swap harder B2 words like [${a.b2Words.slice(0,12).join(', ')}] for plain A1-A2 words and split long sentences.`)
+ }
+ if(b.overLevelWords?.length&&(b.lexicalProfile.a1ToB2Pct<CEFR_THRESHOLDS['B1-B2'].minA1ToB2Pct||b.fkgl>CEFR_THRESHOLDS['B1-B2'].maxFkgl)){
+  lines.push(`- SIMPLIFY OVER-LEVEL WORDS IN B1-B2: Replace rare/academic words [${b.overLevelWords.slice(0,15).join(', ')}] with clear B1-B2 journalistic terms and slightly shorter sentences.`)
+ }
+ lines.push('- PRESERVE STRUCTURE: Keep the EXACT same 4-6 page count N and EXACT same "imageId" binding on every page index across A1-A2, B1-B2, and C1-C2 while fixing CEFR scores.')
+ return `\n\n${lines.join('\n')}`
+}
+
+export function buildQualityRetryPrompt(source,topic,evidence,previousDraft,failedChecks,verifiedPhotos=[],qualityResult=null){
  const passages=evidence.map(row=>`${row.id} [Section ${row.sectionIndex ?? 0}: ${row.heading}] ${row.text}`).join('\n\n')
  const imageCatalog=formatEmbeddedImageCatalog(verifiedPhotos)
  const issues=failedChecks.map((err,i)=>`${i+1}. ${err}`).join('\n')
+ const cefrBlock=formatCEFRRetryBlock(qualityResult)
  return `Your previous draft for "${source.sourceTitle}" (${topic}) failed editorial quality checks. Fix EVERY issue listed below while staying 100% faithful to the source passages. Return the complete corrected JSON object only.
 
 FAILED CHECKS TO FIX:
-${issues}
+${issues}${cefrBlock}
 
 REMINDERS:
 - Magazine-style headline of 5-11 words per level (distinct across levels, NEVER identical to "${source.sourceTitle}").
@@ -552,7 +597,7 @@ REMINDERS:
   * Text-only pages (imageId: null): A1-A2 55-70w | B1-B2 65-82w | C1-C2 75-92w.
 - Keep strict section-to-page "imageId" binding: Page 1 MUST use a Section 0 image; Pages 2..N use an imageId ONLY when directly discussing that image's subject/section, else null.
 - On every page with a non-null "imageId", write an ultra-concise "caption" (5-8 words, max ~45 characters) for 1-line mobile display; otherwise "".
-- Clear CEFR progression: A1-A2 (8-14 words/sentence, simple words) < B1-B2 (14-20 words/sentence) < C1-C2 (18-26 words/sentence, analytical tone).
+- Objective CEFR targets: A1-A2 (FKGL <= ${CEFR_THRESHOLDS['A1-A2'].maxFkgl}, >=78% A1-A2 words, <=7% C1-C2/unlisted) < B1-B2 (FKGL ${CEFR_THRESHOLDS['B1-B2'].minFkgl}-${CEFR_THRESHOLDS['B1-B2'].maxFkgl}, >=85% A1-B2 words, +1.5 FKGL above A1-A2) < C1-C2 (FKGL >= ${CEFR_THRESHOLDS['C1-C2'].minFkgl}, +1.5 FKGL above B1-B2, higher B2+C1-C2 ratio than B1-B2).
 - Keep valid evidenceIds from the source passages on every page.
 
 AVAILABLE EMBEDDED IMAGES (ONLY FROM THIS ARTICLE):
@@ -733,12 +778,12 @@ function makeDryRunDraft(source,evidence,verifiedPhotos=[]){
  const p2ImgId=bodyPhoto?.imageId||null
 
  const a1P3Text=p2ImgId
-  ?`Later, skilled teams studied ${bodyFocus} closely and shared clear records across towns. Better tools made daily work faster and safer. Young learners read short guides about ${bodyFocus} and practiced new habits at home.`
-  :`Later, skilled teams studied ${bodyFocus} closely and shared clear records across neighboring towns. Better tools made their daily work much faster and safer for everyone involved. Young learners read short guides about ${bodyFocus} and practiced new habits at home with family members. Even distant villages felt the quiet change in daily life, school lessons, and busy local trade markets.`
+  ?`Later, small teams looked at ${bodyFocus} and wrote clear notes. Better tools made their work fast and safe. Young students read short books about ${bodyFocus}. They tried new ways at home and shared what worked.`
+  :`Later, small teams looked at ${bodyFocus} and wrote clear notes for nearby towns. Better tools made their work much faster and safer each day. Young students read short books about ${bodyFocus} at school. They tried new ways at home with their family. Even small farms saw a big change in daily life, school work, and local shops.`
 
  const b1P3Text=p2ImgId
-  ?`As regional exchange accelerated, historians and artisans closely examined ${bodyFocus} while spreading practical techniques beyond their original centers. Universities and civic groups adapted key details from ${bodyFocus} to suit local needs, connecting dedicated specialists with curious readers across borders.`
-  :`As regional exchange accelerated, historians and artisans closely examined ${bodyFocus} while spreading practical techniques far beyond their original centers. Universities, workshops, and civic groups adapted key details from ${bodyFocus} to suit changing local conditions across growing cities. Through translated manuals and traveling instructors, this collaborative effort linked dedicated specialists with curious everyday readers across national borders, creating a durable foundation for further innovation.`
+  ?`As trade grew across the region, local writers and builders studied ${bodyFocus} closely and shared useful methods far from home. Schools and town groups changed parts of ${bodyFocus} to fit local needs, helping trained teams reach new readers in other lands.`
+  :`As trade grew across the region, local writers and builders studied ${bodyFocus} closely and shared useful methods far from home. Schools, workshops, and town groups changed parts of ${bodyFocus} to fit local needs in growing cities. Through shared guides and visiting teachers, this joint effort helped trained teams reach curious readers across borders, building a steady base for future work.`
 
  const c1P3Text=p2ImgId
   ?`As transnational communication networks expanded alongside increasingly precise instrumentation, scholars analyzing ${bodyFocus} observed how evolving methodologies transcended their original geographic boundaries. Academic institutions and policy bodies continually recalibrated inherited conventions surrounding ${bodyFocus} in direct response to newly documented empirical and historical realities across continents.`
@@ -749,22 +794,22 @@ function makeDryRunDraft(source,evidence,verifiedPhotos=[]){
    'A1-A2':{
     headline:`How ${topicWord} Changed Daily Life Forever`,
     pages:[
-     {text:`Long ago, people looked closely at ${topicWord} and asked fresh questions. Early ideas spread fast across small towns and busy schools. Soon, many curious thinkers wanted to learn more. That simple start opened a wide door for later work.`,imageId:p0ImgId,caption:shortCaption(leadPhoto),evidenceIds:[eId(0)]},
-     {text:`In the first years, small teams tested new methods step by step. They kept clear notes in plain wooden notebooks. Each small test taught them one useful lesson. Sometimes an idea failed, so they tried again the next morning. Friends shared tools across village roads every week. Over time, steady care built strong trust among local leaders and everyday readers across the region.`,imageId:null,caption:'',evidenceIds:[eId(1)]},
+     {text:`Long ago, people looked at ${topicWord} and asked fresh questions. Early ideas spread fast across small towns and busy schools. Soon, many learners wanted to know more. That simple start opened a wide door for later work.`,imageId:p0ImgId,caption:shortCaption(leadPhoto),evidenceIds:[eId(0)]},
+     {text:`In the first years, small teams tried new plans step by step. They kept clear notes in plain wood books. Each test taught them one useful thing. When a plan failed, they tried again the next day. Friends shared tools on town roads every week. Over time, good work built strong trust among local people and readers.`,imageId:null,caption:'',evidenceIds:[eId(1)]},
      {text:a1P3Text,imageId:p2ImgId,caption:shortCaption(bodyPhoto),evidenceIds:[bodyEvidence.id]},
-     {text:`Hard challenges appeared when people argued over new rules and rising costs. Some groups asked for slow steps while others wanted fast action. Open meetings helped local towns find a fair and balanced path together. Leaders listened closely to workers, teachers, and families before making choices. Everyone soon saw that lasting progress needs both bold ideas and patient care from each side.`,imageId:null,caption:'',evidenceIds:[eId(3)]},
-     {text:`Today, the story of ${topicWord} still shapes how we read history and plan ahead. Small questions can spark lasting change when people share clear facts openly. Students and builders still draw useful lessons from those early efforts. Every new generation adds another careful chapter, showing that honest curiosity never loses its quiet power in our fast modern world today.`,imageId:null,caption:'',evidenceIds:[eId(0),eId(3)]}
+     {text:`Hard problems came when people did not agree on new rules or high costs. Some groups asked for slow steps. Other groups wanted fast change. Open talks helped small towns find a fair path together. Leaders heard workers, teachers, and homes before they chose. Soon, people saw that real gain needs both strong plans and kind care.`,imageId:null,caption:'',evidenceIds:[eId(3)]},
+     {text:`Today, the story of ${topicWord} still shapes how we read and plan. Small questions can bring real change when people share clear facts. Students and workers still learn from those first steps. Each new group adds one more short part. It shows that simple care keeps its quiet power in our fast world today.`,imageId:null,caption:'',evidenceIds:[eId(0),eId(3)]}
     ],
     glossary:[]
    },
    'B1-B2':{
     headline:`Inside the Remarkable Evolution of ${topicWord} Today`,
     pages:[
-     {text:`Long before modern institutions studied ${topicWord}, early pioneers noticed surprising patterns across their local communities. Those careful observations soon traveled through letters, journals, and public debates. What started as quiet curiosity gradually grew into an influential movement that reshaped everyday public understanding.`,imageId:p0ImgId,caption:shortCaption(leadPhoto),evidenceIds:[eId(0)]},
-     {text:`During its formative decades, dedicated researchers compared written evidence from multiple regions while refining practical working methods. They documented clear successes alongside unexpected setbacks in accessible accounts that ordinary readers could follow easily. Those transparent records helped younger specialists build steadily upon verified results rather than repeating costly earlier mistakes. Across workshops and libraries, careful comparison gradually replaced guesswork with dependable shared standards that endured for generations.`,imageId:null,caption:'',evidenceIds:[eId(1)]},
+     {text:`Long before modern schools studied ${topicWord}, early thinkers saw clear patterns in their own towns. Their notes soon spread through letters, books, and public talks. What began as a small question slowly grew into a strong movement that changed how people viewed the world.`,imageId:p0ImgId,caption:shortCaption(leadPhoto),evidenceIds:[eId(0)]},
+     {text:`During its early years, careful teams compared written records from several regions while testing better ways to work. They wrote down clear wins and hard setbacks in plain reports that everyday readers could follow. Those honest notes helped younger builders learn from proven facts instead of making costly old mistakes again. Across workshops and libraries, close study slowly replaced guesswork with steady standards that lasted for many decades.`,imageId:null,caption:'',evidenceIds:[eId(1)]},
      {text:b1P3Text,imageId:p2ImgId,caption:shortCaption(bodyPhoto),evidenceIds:[bodyEvidence.id]},
-     {text:`Yet rapid transformation rarely unfolded without friction, because competing social priorities often sparked vigorous public debate over standards, accountability, and long-term funding. Cautious critics warned against moving faster than reliable field evidence could justify. Determined supporters replied that thoughtful reform could finally resolve stubborn practical problems that older systems had ignored for decades. Navigating those disagreements required patient negotiation among scientists, municipal leaders, and skeptical citizens alike.`,imageId:null,caption:'',evidenceIds:[eId(3)]},
-     {text:`Looking back across generations of careful trial and steady adaptation, the enduring legacy of ${topicWord} reveals how collaborative public inquiry gradually reshapes shared human knowledge. Even as modern technologies and social priorities evolve rapidly, testing ambitious assumptions against verifiable historical evidence remains essential for sound judgment. Curious readers and dedicated practitioners alike still draw practical guidance from this rich history whenever unfamiliar challenges test familiar institutions around the world today.`,imageId:null,caption:'',evidenceIds:[eId(0),eId(3)]}
+     {text:`Still, fast change rarely came without tension, because different groups often argued about rules, fairness, and long-term costs. Careful critics warned leaders not to move faster than real field tests could support. Strong backers answered that smart reform could finally solve tough daily problems that older systems had ignored for years. Settling those debates took patient talks among writers, town leaders, and watchful citizens.`,imageId:null,caption:'',evidenceIds:[eId(3)]},
+     {text:`Looking back across decades of steady trial and careful change, the lasting story of ${topicWord} shows how shared public study slowly builds stronger human knowledge. Even as modern tools and social goals shift quickly, checking bold claims against clear written records remains vital for wise choices. Curious readers and trained workers still draw real guidance from this rich record whenever new tests challenge old habits around the world.`,imageId:null,caption:'',evidenceIds:[eId(0),eId(3)]}
     ],
     glossary:[]
    },
@@ -939,10 +984,10 @@ export async function runPublishWikiBatch({
     normalizedDraft=normalizeDraftForCatalog(firstRes.draft,{source,evidence:trimmed.evidence,verifiedPhotos})
     quality=validateArticleQuality(normalizedDraft,source.sourceTitle)
 
-    // Retry ONCE with exact failed checks if quality gate fails
+    // Retry ONCE with exact failed checks + objective CEFR diagnostics/overLevelWords if quality gate fails
     if(!quality.ok){
      console.warn(`[batch]   -> Quality gate failed (${quality.errors.length} issue(s)); retrying ONCE with feedback...`)
-     const retryPrompt=buildQualityRetryPrompt(source,item.topic,trimmed.evidence,normalizedDraft,quality.errors,verifiedPhotos)
+     const retryPrompt=buildQualityRetryPrompt(source,item.topic,trimmed.evidence,normalizedDraft,quality.errors,verifiedPhotos,quality)
      const retryRes=await invokeGeminiWithDelay(retryPrompt)
      normalizedDraft=normalizeDraftForCatalog(retryRes.draft,{source,evidence:trimmed.evidence,verifiedPhotos})
      quality=validateArticleQuality(normalizedDraft,source.sourceTitle)
@@ -1004,7 +1049,7 @@ export async function runPublishWikiBatch({
    item.status='published'
    item.publishedAt=story.publishedAt
    const imgBindingSummary=assigned.photos.map(p=>`P${p.pageIndex+1}:${p.imageId}(sec${p.sectionIndex}:${p.sectionHeading})`).join(', ')
-   console.log(`[batch]   -> OK: "${story.title}" (${trimmed.wordCount}w src, ${assigned.photos.length} embedded photo(s) [${imgBindingSummary}], ${story.pages.length} pages, CEFR avg ${quality.metrics['A1-A2'].avgSentenceWords}/${quality.metrics['B1-B2'].avgSentenceWords}/${quality.metrics['C1-C2'].avgSentenceWords}w/sent).`)
+   console.log(`[batch]   -> OK: "${story.title}" (${trimmed.wordCount}w src, ${assigned.photos.length} embedded photo(s) [${imgBindingSummary}], ${story.pages.length} pages, CEFR FKGL ${quality.metrics['A1-A2'].fkgl}/${quality.metrics['B1-B2'].fkgl}/${quality.metrics['C1-C2'].fkgl}, avg ${quality.metrics['A1-A2'].avgSentenceWords}/${quality.metrics['B1-B2'].avgSentenceWords}/${quality.metrics['C1-C2'].avgSentenceWords}w/sent).`)
   }catch(err){
    if(err instanceof GeminiQuotaExhausted||err?.isQuota||err?.status===429){
     console.warn(`[batch] All Gemini API keys hit quota (${err.message}). Saving ${generatedStories.length} generated article(s) and stopping gracefully.`)

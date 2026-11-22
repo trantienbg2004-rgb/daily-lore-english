@@ -21,10 +21,18 @@ import { buildSavedTokenSet, isTokenSaved } from './lib/savedWordsMatch.js'
 import { loadLemmaMap, loadPhraseMap, lookupDictionaryTerm, resolveStaticPhrase, resolveTier1Glossary } from './services/dictionaryService.js'
 import {
   IOS_SHEET_EASING,
+  SILK_EASING,
+  SPRING_EASING,
   SHEET_OPEN_MS,
   SHEET_CLOSE_MS,
   SWIPE_SETTLE_MS,
+  SNAPPY_MS,
+  LIGHTBOX_CLOSE_MS,
+  WORDS_REMOVE_MS,
+  REVIEW_GLIDE_MS,
   applyRubberBand,
+  applySheetUpwardRubberBand,
+  measureUnderlineTransform,
   lockGestureAxis,
   shouldCompleteSwipe,
   shouldDismissSheet,
@@ -38,6 +46,80 @@ const LEVEL_SEGMENTS = NEWS_LEVELS.map(level => {
   if (level === 'B1-B2') return { level, code: 'B', ariaLabel: 'Level B (B1-B2 Intermediate)' }
   return { level, code: 'C', ariaLabel: 'Level C (C1-C2 Advanced)' }
 })
+
+function LevelSegmentedControl({ index, readingLevel, onChange }) {
+  const trackRef = useRef(null)
+  const btnRefs = useRef([])
+  const activeLevelIndex = Math.max(0, LEVEL_SEGMENTS.findIndex(seg => seg.level === readingLevel))
+  const [underline, setUnderline] = useState(null)
+
+  useLayoutEffect(() => {
+    const measure = () => {
+      const track = trackRef.current
+      const btn = btnRefs.current[activeLevelIndex]
+      if (!track || !btn) return
+      const next = measureUnderlineTransform(btn.getBoundingClientRect(), track.getBoundingClientRect())
+      if (next) {
+        setUnderline(prev => (prev && prev.x === next.x && prev.scaleX === next.scaleX ? prev : next))
+      }
+    }
+    measure()
+    if (typeof ResizeObserver === 'undefined' || !trackRef.current) return undefined
+    const observer = new ResizeObserver(measure)
+    observer.observe(trackRef.current)
+    return () => observer.disconnect()
+  }, [activeLevelIndex])
+
+  const onLevelKeyDown = event => {
+    event.stopPropagation()
+    if (event.key === 'ArrowRight' || event.key === 'ArrowDown') {
+      event.preventDefault()
+      onChange(LEVEL_SEGMENTS[(activeLevelIndex + 1) % LEVEL_SEGMENTS.length].level)
+    } else if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') {
+      event.preventDefault()
+      onChange(LEVEL_SEGMENTS[(activeLevelIndex - 1 + LEVEL_SEGMENTS.length) % LEVEL_SEGMENTS.length].level)
+    }
+  }
+
+  const sliderStyle = underline
+    ? { transform: `translate3d(${underline.x}px, 0, 0) scaleX(${underline.scaleX})` }
+    : undefined
+
+  return (
+    <div className="saga-news-level saga-level-group">
+      <span className="saga-level-label" id={`saga-level-label-${index}`}>Level</span>
+      <div
+        ref={trackRef}
+        className="saga-level-segmented"
+        role="radiogroup"
+        aria-labelledby={`saga-level-label-${index}`}
+        style={{ '--level-index': activeLevelIndex }}
+        onKeyDown={onLevelKeyDown}
+      >
+        <span className={'saga-level-slider' + (underline ? ' is-measured' : '')} style={sliderStyle} aria-hidden="true" />
+        {LEVEL_SEGMENTS.map((seg, segIdx) => {
+          const active = readingLevel === seg.level
+          return (
+            <button
+              key={seg.level}
+              ref={el => { btnRefs.current[segIdx] = el }}
+              type="button"
+              role="radio"
+              aria-checked={active}
+              aria-label={seg.ariaLabel}
+              title={seg.level}
+              tabIndex={active ? 0 : -1}
+              className={'saga-level-seg' + (active ? ' is-active' : '')}
+              onClick={() => onChange(seg.level)}
+            >
+              {seg.code}
+            </button>
+          )
+        })}
+      </div>
+    </div>
+  )
+}
 
 // Keep the complete adaptation for attribution while Read shows short pages.
 const paginateStory = original => {
@@ -65,7 +147,34 @@ function fitPhoto(img) {
 function ArticlePhoto({ image, label: shortLabel, fullCaption, onBroken, onReady }) {
   const [asset, setAsset] = useState(() => photoResult(image))
   const [zoomed, setZoomed] = useState(false)
+  const [lightboxClosing, setLightboxClosing] = useState(false)
+  const lightboxTimerRef = useRef(null)
   const label = photoCaption({ image, caption: fullCaption }) || shortLabel
+  const openLightbox = () => {
+    clearTimeout(lightboxTimerRef.current)
+    lightboxTimerRef.current = null
+    setLightboxClosing(false)
+    setZoomed(true)
+  }
+  const closeLightbox = () => {
+    if (!zoomed) return
+    if (prefersReducedMotion()) {
+      clearTimeout(lightboxTimerRef.current)
+      lightboxTimerRef.current = null
+      setLightboxClosing(false)
+      setZoomed(false)
+      return
+    }
+    if (lightboxClosing) return
+    setLightboxClosing(true)
+    clearTimeout(lightboxTimerRef.current)
+    lightboxTimerRef.current = setTimeout(() => {
+      lightboxTimerRef.current = null
+      setLightboxClosing(false)
+      setZoomed(false)
+    }, LIGHTBOX_CLOSE_MS)
+  }
+  useEffect(() => () => { clearTimeout(lightboxTimerRef.current) }, [])
   useEffect(() => {
     let active = true
     const known = photoResult(image)
@@ -82,10 +191,10 @@ function ArticlePhoto({ image, label: shortLabel, fullCaption, onBroken, onReady
   }, [image])
   useEffect(() => {
     if (!zoomed) return
-    const closeOnEscape = event => { if (event.key === 'Escape') setZoomed(false) }
+    const closeOnEscape = event => { if (event.key === 'Escape') closeLightbox() }
     window.addEventListener('keydown', closeOnEscape)
     return () => window.removeEventListener('keydown', closeOnEscape)
-  }, [zoomed])
+  }, [zoomed, lightboxClosing])
   if (!image) return null
   if (!asset) return <figure className="photo-figure lore-photo-figure hero-media hero-media-loading" aria-hidden="true"><div className="hero-photo-skeleton" /></figure>
   if (!asset.url) return null
@@ -97,11 +206,11 @@ function ArticlePhoto({ image, label: shortLabel, fullCaption, onBroken, onReady
     <img className="hero-photo" src={asset.url} srcSet={srcSet} sizes="(max-width: 760px) calc(100vw - 2rem), 664px" alt={label} decoding="async" loading="lazy"
       width={heroWidth} height={heroHeight} role="button" tabIndex={0}
       aria-label={`Enlarge image: ${label || 'article photo'}`}
-      onClick={() => setZoomed(true)}
-      onKeyDown={event => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); setZoomed(true) } }}
+      onClick={openLightbox}
+      onKeyDown={event => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); openLightbox() } }}
       onLoad={event => { fitPhoto(event.currentTarget); onReady() }}
       onError={() => onBroken(image)} />
-    <button type="button" className="lore-photo-zoom-trigger" aria-label="Enlarge photo" title="Read full image caption" onClick={() => setZoomed(true)}>
+    <button type="button" className="lore-photo-zoom-trigger" aria-label="Enlarge photo" title="Read full image caption" onClick={openLightbox}>
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.1" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M8 3H5a2 2 0 0 0-2 2v3"/>
         <path d="M21 8V5a2 2 0 0 0-2-2h-3"/>
@@ -109,8 +218,8 @@ function ArticlePhoto({ image, label: shortLabel, fullCaption, onBroken, onReady
         <path d="M16 21h3a2 2 0 0 0 2-2v-3"/>
       </svg>
     </button>
-    {zoomed && createPortal(<div className="lore-lightbox" role="dialog" aria-modal="true" aria-label="Enlarged article photograph" onClick={event => { event.stopPropagation(); setZoomed(false) }}>
-      <button type="button" className="lore-lightbox-close" aria-label="Close enlarged photograph" onClick={event => { event.stopPropagation(); setZoomed(false) }}>×</button>
+    {zoomed && createPortal(<div className={'lore-lightbox' + (lightboxClosing ? ' is-closing' : '')} role="dialog" aria-modal="true" aria-label="Enlarged article photograph" onClick={event => { event.stopPropagation(); closeLightbox() }}>
+      <button type="button" className="lore-lightbox-close" aria-label="Close enlarged photograph" onClick={event => { event.stopPropagation(); closeLightbox() }}>×</button>
       <img src={asset.url} srcSet={srcSet} sizes="(max-width: 768px) 96vw, 90vw" alt={label} decoding="async" loading="lazy" width={heroWidth} height={heroHeight} style={aspectStyle} onClick={event => event.stopPropagation()} />
       {fullCaption && <p className="lore-lightbox-caption" onClick={event => event.stopPropagation()}>{fullCaption}</p>}
     </div>, document.body)}
@@ -378,13 +487,29 @@ function App() {
   const historyReadyRef = useRef(false)
   const [page, setPage] = useState(0)
   const [pageMotion, setPageMotion] = useState(null)
+  const [levelSettleKey, setLevelSettleKey] = useState(0)
+  const [tabSwitchedToRead, setTabSwitchedToRead] = useState(false)
+  const [initialStoryReveal, setInitialStoryReveal] = useState(false)
+  const hasRevealedStoryRef = useRef(false)
   useEffect(() => {
     if (pageMotion === null) return
     // Image measurements can rerender a page during its entrance animation.
     // Always clear the motion class so later pages cannot remain shifted.
-    const timer = setTimeout(() => setPageMotion(null), 320)
+    const timer = setTimeout(() => setPageMotion(null), SWIPE_SETTLE_MS + 20)
     return () => clearTimeout(timer)
   }, [page, pageMotion, storyIndex])
+  useEffect(() => {
+    if (!stories.length || hasRevealedStoryRef.current) return
+    hasRevealedStoryRef.current = true
+    setInitialStoryReveal(true)
+    const timer = setTimeout(() => setInitialStoryReveal(false), SWIPE_SETTLE_MS + 40)
+    return () => clearTimeout(timer)
+  }, [stories.length])
+  useEffect(() => {
+    if (!tabSwitchedToRead) return
+    const timer = setTimeout(() => setTabSwitchedToRead(false), prefersReducedMotion() ? 20 : SNAPPY_MS + 40)
+    return () => clearTimeout(timer)
+  }, [tabSwitchedToRead])
   const [brokenImages, setBrokenImages] = useState(() => new Set())
   const [photoVersion, setPhotoVersion] = useState(0)
   const [showCredits, setShowCredits] = useState(false)
@@ -401,6 +526,8 @@ function App() {
   const [selectedSurface, setSelectedSurface] = useState('')
   const [selectedGlossaryEntry, setSelectedGlossaryEntry] = useState(null)
   const [sheetClosing, setSheetClosing] = useState(false)
+  const [justSavedWord, setJustSavedWord] = useState('')
+  const justSavedTimerRef = useRef(null)
   const sheetOverlayRef = useRef(null)
   const sheetRef = useRef(null)
   const sheetScrollRef = useRef(null)
@@ -411,10 +538,14 @@ function App() {
   const [lookup, setLookup] = useState({ status: 'idle', options: [] })
   const [retryCount, setRetryCount] = useState(0)
   const [words, setWords] = useState(initialWords)
+  const [removingWords, setRemovingWords] = useState(() => new Set())
+  const removeTimersRef = useRef(new Map())
   const savedTokenSet = useMemo(() => buildSavedTokenSet(words, lemmaMap), [words, lemmaMap])
   const [reviewIndex, setReviewIndex] = useState(0)
   const [revealed, setRevealed] = useState(false)
   const [finished, setFinished] = useState(false)
+  const [reviewMotion, setReviewMotion] = useState('idle')
+  const reviewTimerRef = useRef(null)
   const gesture = useRef(null)
   const suppressWordClick = useRef(false)
   const wheelLock = useRef(0)
@@ -430,7 +561,42 @@ function App() {
     setStories(items => items.map(item => item.levelVariants ? paginateStory(applyNewsLevel(item, level)) : item))
     setPage(0)
     setPageMotion(null)
+    setLevelSettleKey(k => k + 1)
   }
+  const removeSavedWord = word => {
+    if (!word || removingWords.has(word)) return
+    const finalize = () => {
+      removeTimersRef.current.delete(word)
+      setRemovingWords(prev => {
+        if (!prev.has(word)) return prev
+        const next = new Set(prev)
+        next.delete(word)
+        return next
+      })
+      setWords(current => current.filter(w => w.word !== word))
+      setReviewIndex(0)
+      setFinished(false)
+      setRevealed(false)
+    }
+    if (prefersReducedMotion()) {
+      finalize()
+      return
+    }
+    setRemovingWords(prev => {
+      const next = new Set(prev)
+      next.add(word)
+      return next
+    })
+    const timer = setTimeout(finalize, WORDS_REMOVE_MS)
+    removeTimersRef.current.set(word, timer)
+  }
+  useEffect(() => () => {
+    clearTimeout(justSavedTimerRef.current)
+    clearTimeout(reviewTimerRef.current)
+    clearTimeout(slideTimer.current)
+    removeTimersRef.current.forEach(timer => clearTimeout(timer))
+    removeTimersRef.current.clear()
+  }, [])
   const story = stories[storyIndex] || null
   const currentPage = story?.pages?.[page] || null
 
@@ -815,6 +981,7 @@ function App() {
     if (!selected) return
     const def = String(meaning?.definition || offlineMeaning(selected) || '').trim()
     if (!def) return
+    const willSave = !(selectedSaved && String(selectedSaved.definition || '').trim() === def)
     setWords(current => {
       const existing = current.find(w => w.word === selected)
       if (existing && String(existing.definition || '').trim() === def) {
@@ -834,13 +1001,19 @@ function App() {
       }
       return [...current, nextItem]
     })
+    if (willSave) {
+      setJustSavedWord(selected.toLowerCase())
+      clearTimeout(justSavedTimerRef.current)
+      justSavedTimerRef.current = setTimeout(() => setJustSavedWord(''), 420)
+    }
   }
 
   const onSheetTouchStart = event => {
     if (event.touches.length !== 1 || sheetClosing) { sheetDragRef.current = null; return }
     const scrollEl = sheetScrollRef.current
     const startedInScroll = Boolean(scrollEl && scrollEl.contains(event.target))
-    const canDrag = !startedInScroll || scrollEl.scrollTop <= 0
+    const canDragDown = !startedInScroll || scrollEl.scrollTop <= 0
+    const canRubberUp = !startedInScroll
     const y = event.touches[0].clientY
     const now = performance.now()
     sheetDragRef.current = {
@@ -850,7 +1023,8 @@ function App() {
       velocity: 0,
       dy: 0,
       dragging: false,
-      canDrag,
+      canDragDown,
+      canRubberUp,
       startedInScroll,
     }
   }
@@ -861,35 +1035,38 @@ function App() {
     const y = event.touches[0].clientY
     const rawDy = y - drag.startY
     if (!drag.dragging) {
-      if (rawDy <= 6) {
-        if (rawDy < -4) drag.canDrag = false
+      if (rawDy > 6) {
+        if (!drag.canDragDown) {
+          const scrollEl = sheetScrollRef.current
+          if (drag.startedInScroll && scrollEl && scrollEl.scrollTop > 0) return
+        }
+        drag.dragging = true
+      } else if (rawDy < -6 && drag.canRubberUp) {
+        drag.dragging = true
+      } else {
+        if (rawDy < -4 && !drag.canRubberUp) drag.canDragDown = false
         return
       }
-      if (!drag.canDrag) {
-        const scrollEl = sheetScrollRef.current
-        if (drag.startedInScroll && scrollEl && scrollEl.scrollTop > 0) return
-      }
-      drag.dragging = true
     }
-    const clampedDy = Math.max(0, rawDy)
+    const visualDy = rawDy < 0 ? applySheetUpwardRubberBand(rawDy) : rawDy
     const now = performance.now()
     const dt = Math.max(1, now - drag.lastTime)
     const instantV = (y - drag.lastY) / dt
     drag.velocity = drag.velocity * 0.4 + instantV * 0.6
     drag.lastY = y
     drag.lastTime = now
-    drag.dy = clampedDy
+    drag.dy = rawDy
     if (event.cancelable) event.preventDefault()
     const sheetEl = sheetRef.current
     const overlayEl = sheetOverlayRef.current
     const sheetHeight = sheetEl?.getBoundingClientRect().height || 360
     if (sheetEl) {
       sheetEl.style.transition = 'none'
-      sheetEl.style.transform = `translate3d(0, ${clampedDy}px, 0)`
+      sheetEl.style.transform = `translate3d(0, ${visualDy}px, 0)`
     }
     if (overlayEl) {
       overlayEl.style.transition = 'none'
-      overlayEl.style.opacity = String(sheetBackdropOpacity(clampedDy, sheetHeight))
+      overlayEl.style.opacity = String(sheetBackdropOpacity(Math.max(0, rawDy), sheetHeight))
     }
   }
 
@@ -920,11 +1097,11 @@ function App() {
     } else {
       const springMs = prefersReducedMotion() ? 0 : SHEET_OPEN_MS
       if (sheetEl) {
-        sheetEl.style.transition = springMs ? `transform ${springMs}ms ${IOS_SHEET_EASING}` : 'none'
+        sheetEl.style.transition = springMs ? `transform ${springMs}ms ${SPRING_EASING}` : 'none'
         sheetEl.style.transform = 'translate3d(0, 0, 0)'
       }
       if (overlayEl) {
-        overlayEl.style.transition = springMs ? `opacity ${springMs}ms ${IOS_SHEET_EASING}` : 'none'
+        overlayEl.style.transition = springMs ? `opacity ${springMs}ms ${SILK_EASING}` : 'none'
         overlayEl.style.opacity = '1'
       }
       setTimeout(() => {
@@ -987,7 +1164,21 @@ function App() {
     if (direction > 0) edgeControllerRef.current.forward(storyIndexRef.current, storiesRef.current.length)
     else if (direction < 0) edgeControllerRef.current.backward(storyIndexRef.current)
   }
-  // 2-phase 60fps iOS-grade touch tracking: GPU translate3d only, 0.25x boundary rubber-banding.
+  // Interruptible 60fps iOS-grade touch tracking: GPU translate3d only, 0.25x boundary rubber-banding.
+  const interruptActiveMotion = () => {
+    if (typeof document === 'undefined') return
+    setPageMotion(null)
+    const surface = document.querySelector('.story-layer:not(.outgoing) .page-surface')
+    if (surface) {
+      surface.style.transition = 'none'
+      surface.classList.remove('is-dragging')
+    }
+    const layer = document.querySelector('.story-layer:not(.outgoing)')
+    if (layer) {
+      layer.style.transition = 'none'
+      layer.classList.remove('is-dragging')
+    }
+  }
   const applySwipeTransform = (axis, dx, dy) => {
     if (typeof document === 'undefined' || !axis) return
     if (axis === 'x') {
@@ -995,6 +1186,7 @@ function App() {
       if (!surface) return
       const atBoundary = (dx > 0 && page === 0) || (dx < 0 && page >= (story?.pages?.length ?? 0))
       const tx = applyRubberBand(dx, atBoundary)
+      surface.classList.add('is-dragging')
       surface.style.transition = 'none'
       surface.style.transform = `translate3d(${tx}px, 0, 0)`
     } else if (axis === 'y') {
@@ -1002,6 +1194,7 @@ function App() {
       if (!layer) return
       const atBoundary = (dy > 0 && storyIndex === 0) || (dy < 0 && storyIndex >= stories.length - 1 && feedDone)
       const ty = applyRubberBand(dy, atBoundary)
+      layer.classList.add('is-dragging')
       layer.style.transition = 'none'
       layer.style.transform = `translate3d(0, ${ty}px, 0)`
     }
@@ -1009,18 +1202,24 @@ function App() {
   const releaseSwipeTransform = ({ spring = true } = {}) => {
     if (typeof document === 'undefined') return
     const reduced = prefersReducedMotion()
-    const transitionVal = spring && !reduced ? `transform ${SWIPE_SETTLE_MS}ms ${IOS_SHEET_EASING}` : 'none'
+    const transitionVal = spring && !reduced ? `transform ${SWIPE_SETTLE_MS}ms ${SILK_EASING}` : 'none'
     const surface = document.querySelector('.story-layer:not(.outgoing) .page-surface')
-    if (surface && surface.style.transform) {
-      surface.style.transition = transitionVal
-      surface.style.transform = spring ? 'translate3d(0, 0, 0)' : ''
-      if (!spring) surface.style.transition = ''
+    if (surface) {
+      surface.classList.remove('is-dragging')
+      if (surface.style.transform) {
+        surface.style.transition = transitionVal
+        surface.style.transform = spring ? 'translate3d(0, 0, 0)' : ''
+        if (!spring) surface.style.transition = ''
+      }
     }
     const layer = document.querySelector('.story-layer:not(.outgoing)')
-    if (layer && layer.style.transform) {
-      layer.style.transition = transitionVal
-      layer.style.transform = spring ? 'translate3d(0, 0, 0)' : ''
-      if (!spring) layer.style.transition = ''
+    if (layer) {
+      layer.classList.remove('is-dragging')
+      if (layer.style.transform) {
+        layer.style.transition = transitionVal
+        layer.style.transform = spring ? 'translate3d(0, 0, 0)' : ''
+        if (!spring) layer.style.transition = ''
+      }
     }
   }
   const finishNavigationGesture = (state, endX, endY) => {
@@ -1030,7 +1229,7 @@ function App() {
     const now = Date.now()
     const viewportW = typeof window !== 'undefined' ? window.innerWidth : 390
     const viewportH = typeof window !== 'undefined' ? window.innerHeight : 844
-    if (now - lastNavigationGesture.current < 280) {
+    if (now - lastNavigationGesture.current < 140) {
       releaseSwipeTransform({ spring: true })
       return
     }
@@ -1073,6 +1272,7 @@ function App() {
   // loads or a mobile browser cancel. The touch fallback is deduplicated.
   const startPointer = event => {
     if (event.pointerType !== 'touch' || selected || event.target.closest('button, a, summary, select, label')) return
+    interruptActiveMotion()
     const now = performance.now()
     pointerGesture.current = {
       id: event.pointerId, x: event.clientX, y: event.clientY,
@@ -1092,8 +1292,26 @@ function App() {
     finishNavigationGesture(state, event.clientX, event.clientY)
   }
   const nextReview = () => {
-    if (reviewIndex + 1 >= words.length) setFinished(true)
-    else { setReviewIndex(i => i + 1); setRevealed(false) }
+    if (reviewMotion === 'leaving') return
+    const advanceNow = () => {
+      if (reviewIndex + 1 >= words.length) {
+        setFinished(true)
+        setReviewMotion('idle')
+      } else {
+        setReviewIndex(i => i + 1)
+        setRevealed(false)
+        setReviewMotion('entering')
+        clearTimeout(reviewTimerRef.current)
+        reviewTimerRef.current = setTimeout(() => setReviewMotion('idle'), SHEET_OPEN_MS)
+      }
+    }
+    if (prefersReducedMotion()) {
+      advanceNow()
+      return
+    }
+    setReviewMotion('leaving')
+    clearTimeout(reviewTimerRef.current)
+    reviewTimerRef.current = setTimeout(advanceNow, REVIEW_GLIDE_MS)
   }
   // Treat word buttons as part of the reading surface, not as navigation controls.
   // This makes swiping across the paragraph work on touch screens.
@@ -1101,6 +1319,7 @@ function App() {
     if (event.touches.length !== 1 || selected) { gesture.current = null; return }
     const control = event.target.closest('button')
     if ((control && !control.classList.contains('word-token')) || event.target.closest('a, summary, select, label')) { gesture.current = null; return }
+    interruptActiveMotion()
     suppressWordClick.current = false
     const t = event.touches[0]
     const now = performance.now()
@@ -1189,52 +1408,12 @@ function App() {
     const pageHasPhoto = Boolean(!closing && itemPage?.image && !brokenImages.has(itemPage.image) && !photoResult(itemPage.image)?.failed)
     const dotTotal = item.pages.length
     const topicLabel = readerSection(item).replace(/^DISCOVER\s*·\s*/i, '').trim()
-    const activeLevelIndex = Math.max(0, LEVEL_SEGMENTS.findIndex(seg => seg.level === readingLevel))
-    const onLevelKeyDown = event => {
-      event.stopPropagation()
-      if (event.key === 'ArrowRight' || event.key === 'ArrowDown') {
-        event.preventDefault()
-        changeReadingLevel(LEVEL_SEGMENTS[(activeLevelIndex + 1) % LEVEL_SEGMENTS.length].level)
-      } else if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') {
-        event.preventDefault()
-        changeReadingLevel(LEVEL_SEGMENTS[(activeLevelIndex - 1 + LEVEL_SEGMENTS.length) % LEVEL_SEGMENTS.length].level)
-      }
-    }
     return <div className="reader-gesture" aria-hidden={!interactive} onTouchStart={interactive ? startGesture : undefined} onTouchMove={interactive ? moveGesture : undefined} onTouchEnd={interactive ? endGesture : undefined} onTouchCancel={interactive ? cancelGesture : undefined} onPointerDown={interactive ? startPointer : undefined} onPointerMove={interactive ? movePointer : undefined} onPointerUp={interactive ? endPointer : undefined} onPointerCancel={interactive ? () => {pointerGesture.current = null; releaseSwipeTransform({ spring: true })} : undefined}>
       <header className="topbar lore-reader-topbar">
         <span className="saga-toolbar-story" title={topicLabel}>{topicLabel}</span>
         <div className="saga-toolbar-actions">
           {interactive && item.levelVariants && (
-            <div className="saga-news-level saga-level-group">
-              <span className="saga-level-label" id={`saga-level-label-${index}`}>Level</span>
-              <div
-                className="saga-level-segmented"
-                role="radiogroup"
-                aria-labelledby={`saga-level-label-${index}`}
-                style={{ '--level-index': activeLevelIndex }}
-                onKeyDown={onLevelKeyDown}
-              >
-                <span className="saga-level-slider" aria-hidden="true" />
-                {LEVEL_SEGMENTS.map(seg => {
-                  const active = readingLevel === seg.level
-                  return (
-                    <button
-                      key={seg.level}
-                      type="button"
-                      role="radio"
-                      aria-checked={active}
-                      aria-label={seg.ariaLabel}
-                      title={seg.level}
-                      tabIndex={active ? 0 : -1}
-                      className={'saga-level-seg' + (active ? ' is-active' : '')}
-                      onClick={() => changeReadingLevel(seg.level)}
-                    >
-                      {seg.code}
-                    </button>
-                  )
-                })}
-              </div>
-            </div>
+            <LevelSegmentedControl index={index} readingLevel={readingLevel} onChange={changeReadingLevel} />
           )}
           {interactive && !closing && <button type="button" className="icon-button saga-toolbar-audio" onClick={() => speak(itemPage.text)} aria-label="Read aloud"><Icon name="volume" size={20}/></button>}
         </div>
@@ -1257,7 +1436,12 @@ function App() {
           onReady={() => setPhotoVersion(n => n + 1)} />
       </div>
       <section className={'reading-card ' + (!itemPage.image || brokenImages.has(itemPage.image) || photoResult(itemPage.image)?.failed ? 'reading-card-no-photo' : 'reading-card-with-photo')}><div className="reading-topline" aria-hidden="true" />
-        <p className="article-text">{tokens.map((token, i) => token.kind === 'text' ? token.text : <button key={i} type="button" disabled={!interactive} className={'word-token ' + (token.kind === 'glossary' ? 'glossary-token ' : token.kind === 'phrase' ? 'phrase-token ' : '') + (isTokenSaved(token, savedTokenSet, lemmaMap) ? 'known' : '')} onClick={event => onWordClick(event, token.lookupKey, token.entry, token.text)}>{token.text}</button>)}</p>
+        <p key={levelSettleKey ? `lvl-${levelSettleKey}` : 'lvl-0'} className={'article-text' + (levelSettleKey > 0 ? ' saga-level-settle' : '')}>{tokens.map((token, i) => {
+          if (token.kind === 'text') return token.text
+          const saved = isTokenSaved(token, savedTokenSet, lemmaMap)
+          const newlySaved = Boolean(saved && justSavedWord && (String(token.lookupKey || '').toLowerCase() === justSavedWord || String(token.text || '').toLowerCase() === justSavedWord))
+          return <button key={i} type="button" disabled={!interactive} className={'word-token ' + (token.kind === 'glossary' ? 'glossary-token ' : token.kind === 'phrase' ? 'phrase-token ' : '') + (saved ? 'known ' : '') + (newlySaved ? 'just-saved' : '')} onClick={event => onWordClick(event, token.lookupKey, token.entry, token.text)}>{token.text}</button>
+        })}</p>
       </section>
       </>}
       </div>
@@ -1280,12 +1464,17 @@ function App() {
       </div>
     </div>
   }
+  const activeReviewWord = words.length ? words[Math.min(reviewIndex, words.length - 1)] : null
+  const activeReviewMeaning = activeReviewWord
+    ? (activeReviewWord.definition || offlineMeaning(activeReviewWord.word) || 'No definition yet. Open this word in Words to retry.')
+    : ''
+  const sheetDepthActive = Boolean(tab === 'read' && selected && !sheetClosing)
   return (
     <div className={"app-shell " + (tab === "read" ? "reading-mode lore-editorial-v5" : "")}>
       <main className="app-content">
-        {tab === 'read' && <div className="story-viewport" onWheel={onReaderWheel}>
+        {tab === 'read' && <div className={'story-viewport' + (sheetDepthActive ? ' is-depth-scaled' : '') + (tabSwitchedToRead ? ' saga-tab-enter' : '')} onWheel={onReaderWheel}>
           {slide && stories[slide.from] && <div key={'old-'+slide.stamp} className={'story-layer outgoing '+(slide.direction>0?'slide-up':'slide-down')}>{renderStory(stories[slide.from], slide.from, slide.fromPage, false)}</div>}
-          {story && <div key={'active-'+storyIndex} className={'story-layer '+(slide?(slide.direction>0?'enter-from-bottom':'enter-from-top'):'')}>{renderStory(story, storyIndex, page, true)}</div>}
+          {story && <div key={'active-'+storyIndex} className={'story-layer '+(slide?(slide.direction>0?'enter-from-bottom':'enter-from-top'):(initialStoryReveal?'story-layer--reveal':''))}>{renderStory(story, storyIndex, page, true)}</div>}
           {!story && (feedLoading ? (
             <div className="feed-skeleton" role="status" aria-live="polite" aria-label="Loading stories">
               <div className="feed-skeleton-bar feed-skeleton-eyebrow" aria-hidden="true" />
@@ -1310,10 +1499,10 @@ function App() {
             </div>
           ))}
         </div>}
-        {tab === 'words' && <><header className="section-header"><h1>Saved words<span className="period">.</span></h1></header>{words.length === 0 ? <div className="empty"><Icon name="bookmark" size={40}/><h2>Your collection begins here.</h2><p>Read a story, tap a word, and save it to keep learning.</p><button className="primary" onClick={() => setTab('read')}>Start reading →</button></div> : <div className="saved-list">{words.map(item => <div className="saved-item" key={item.word}><div><h2 className="saved-word-title"><button className="saved-word-open" onClick={() => { stopSpeech(); clearTimeout(sheetCloseTimerRef.current); setSheetClosing(false); setSelectedGlossaryEntry(null); setSelectedSurface(''); setSelected(item.word) }}>{item.word}</button></h2></div><button onClick={() => { setWords(current => current.filter(w => w.word !== item.word)); setReviewIndex(0); setFinished(false) }} aria-label={`Remove ${item.word}`}><Icon name="close" size={19}/></button></div>)}</div>}</>}
-        {tab === 'review' && <><header className="section-header"><h1>Daily review<span className="period">.</span></h1></header>{words.length === 0 ? <div className="empty"><Icon name="layers" size={42}/><h2>Nothing to review yet.</h2><button className="primary" onClick={() => setTab('read')}>Start reading →</button></div> : finished ? <div className="empty"><Icon name="check" size={44}/><h2>Beautiful work.</h2><button className="primary" onClick={() => { setFinished(false); setReviewIndex(0); setRevealed(false) }}>Review again →</button></div> : <><button className="flashcard review-card" aria-label={revealed ? 'Show word' : 'Show meaning'} onClick={() => setRevealed(r => !r)}><strong className={revealed ? 'review-meaning' : 'review-word'}>{revealed ? (words[Math.min(reviewIndex, words.length - 1)].definition || offlineMeaning(words[Math.min(reviewIndex, words.length - 1)].word) || 'No definition yet. Open this word in Words to retry.') : words[Math.min(reviewIndex, words.length - 1)].word}</strong></button><button className="primary review-next" onClick={nextReview}>{reviewIndex + 1 >= words.length ? 'Finish review' : 'Next word'} →</button></>}</>}
+        {tab === 'words' && <div key="tab-words" className="saga-tab-panel"><header className="section-header"><h1>Saved words<span className="period">.</span></h1></header>{words.length === 0 ? <div className="empty"><Icon name="bookmark" size={40}/><h2>Your collection begins here.</h2><p>Read a story, tap a word, and save it to keep learning.</p><button className="primary" onClick={() => { setTabSwitchedToRead(true); setTab('read') }}>Start reading →</button></div> : <div className="saved-list">{words.map((item, idx) => <div className={'saved-item' + (removingWords.has(item.word) ? ' is-removing' : '')} style={{ '--stagger-idx': Math.min(idx, 7) }} key={item.word}><div><h2 className="saved-word-title"><button className="saved-word-open" onClick={() => { stopSpeech(); clearTimeout(sheetCloseTimerRef.current); setSheetClosing(false); setSelectedGlossaryEntry(null); setSelectedSurface(''); setSelected(item.word) }}>{item.word}</button></h2></div><button type="button" onClick={() => removeSavedWord(item.word)} aria-label={`Remove ${item.word}`}><Icon name="close" size={19}/></button></div>)}</div>}</div>}
+        {tab === 'review' && <div key="tab-review" className="saga-tab-panel"><header className="section-header"><h1>Daily review<span className="period">.</span></h1></header>{words.length === 0 ? <div className="empty"><Icon name="layers" size={42}/><h2>Nothing to review yet.</h2><button className="primary" onClick={() => { setTabSwitchedToRead(true); setTab('read') }}>Start reading →</button></div> : finished ? <div className="empty"><Icon name="check" size={44}/><h2>Beautiful work.</h2><button className="primary" onClick={() => { setFinished(false); setReviewIndex(0); setRevealed(false); setReviewMotion('entering') }}>Review again →</button></div> : <div className="review-stage"><button type="button" className={'flashcard review-card' + (revealed ? ' is-flipped' : '') + (reviewMotion === 'leaving' ? ' is-gliding-out' : '') + (reviewMotion === 'entering' ? ' is-gliding-in' : '')} aria-label={revealed ? 'Show word' : 'Show meaning'} aria-pressed={revealed} onClick={() => setRevealed(r => !r)}><span className="review-card-inner"><span className="review-card-face review-card-front" aria-hidden={revealed}>{!revealed ? <strong className={revealed ? 'review-meaning' : 'review-word'}>{activeReviewWord.word}</strong> : <strong className="review-word-inert">{activeReviewWord.word}</strong>}</span><span className="review-card-face review-card-back" aria-hidden={!revealed}>{revealed ? <strong className={revealed ? 'review-meaning' : 'review-word'}>{activeReviewMeaning}</strong> : <strong className="review-meaning-inert">{activeReviewMeaning}</strong>}</span></span></button><button type="button" className="primary review-next" onClick={nextReview}>{reviewIndex + 1 >= words.length ? 'Finish review' : 'Next word'} →</button></div>}</div>}
       </main>
-      <nav className="bottom-nav" aria-label="Main navigation">{[['read', 'book', 'Read'], ['words', 'bookmark', 'Words'], ['review', 'layers', 'Review']].map(([key, icon, label]) => <button key={key} className={tab === key ? 'current' : ''} onClick={() => { if (key === 'read' && tab === 'read' && story && storyIndex === stories.length - 1) changeStory(1); else { setTab(key); closeDictionary({ immediate: true }) } }}><Icon name={icon} size={25}/><span>{key === 'read' && tab === 'read' && story && storyIndex === stories.length - 1 ? waitingForNext ? 'Finding…' : feedDone ? 'Check again' : 'Next ↓' : label}</span></button>)}</nav>
+      <nav className="bottom-nav" aria-label="Main navigation">{[['read', 'book', 'Read'], ['words', 'bookmark', 'Words'], ['review', 'layers', 'Review']].map(([key, icon, label]) => <button key={key} className={tab === key ? 'current' : ''} onClick={() => { if (key === 'read' && tab === 'read' && story && storyIndex === stories.length - 1) changeStory(1); else { setTabSwitchedToRead(key === 'read' && tab !== 'read'); setTab(key); closeDictionary({ immediate: true }) } }}><Icon name={icon} size={25}/><span>{key === 'read' && tab === 'read' && story && storyIndex === stories.length - 1 ? waitingForNext ? 'Finding…' : feedDone ? 'Check again' : 'Next ↓' : label}</span></button>)}</nav>
       {showCredits && story && <div className="overlay" onClick={() => setShowCredits(false)}>
         <section className="definition-sheet sources-sheet" role="dialog" aria-label="Sources and licenses" onClick={event => event.stopPropagation()}>
           <div className="sheet-header"><span>ABOUT THIS ARTICLE</span><button aria-label="Close sources" onClick={() => setShowCredits(false)}>×</button></div>

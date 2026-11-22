@@ -56,6 +56,16 @@
   --saga-safe-bottom: env(safe-area-inset-bottom, 0px);
   --saga-safe-left: env(safe-area-inset-left, 0px);
 
+  /* Centralized Motion Token System (GPU-composited, calibrated by interaction frequency) */
+  --ease-silk: cubic-bezier(0.32, 0.72, 0, 1);
+  --ease-spring: cubic-bezier(0.22, 1.18, 0.36, 1);
+  --ease-snappy: cubic-bezier(0.2, 0, 0, 1);
+  --ease-tactile: cubic-bezier(0.25, 0.9, 0.3, 1);
+  --motion-silk: 380ms cubic-bezier(0.32, 0.72, 0, 1);
+  --motion-spring: 460ms cubic-bezier(0.22, 1.18, 0.36, 1);
+  --motion-snappy: 170ms cubic-bezier(0.2, 0, 0, 1);
+  --motion-tactile: 240ms cubic-bezier(0.25, 0.9, 0.3, 1);
+
   font-family: var(--font-ui);
   font-size: 16px;
   color: var(--saga-ink);

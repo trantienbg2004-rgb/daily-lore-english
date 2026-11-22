@@ -10,9 +10,11 @@
     "lint": "oxlint",
     "preview": "vite preview",
     "test": "node --test scripts/test/*.test.mjs",
+    "test:e2e": "playwright test",
     "wiki:auto": "node scripts/wiki-auto.mjs",
     "wiki:audit": "node scripts/wiki-audit.mjs",
     "wiki:audit-images": "node scripts/audit_wiki_images.mjs",
+    "wiki:audit-cefr": "node scripts/audit_wiki_cefr.mjs",
     "wiki:queue": "node scripts/build_wiki_queue.mjs",
     "wiki:batch": "node scripts/publish_wiki_batch.mjs",
     "audit:dict": "node scripts/audit_missing_words.mjs"
@@ -23,6 +25,7 @@
     "react-dom": "^19.2.8"
   },
   "devDependencies": {
+    "@playwright/test": "^1.65.1",
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.7",
     "@vitejs/plugin-react": "^6.1.1",

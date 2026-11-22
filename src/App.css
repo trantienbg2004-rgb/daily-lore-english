@@ -1287,14 +1287,15 @@
 .lore-editorial-v5 .saga-level-slider {
   position: absolute;
   bottom: 7px;
-  left: calc((var(--seg-w) - 14px) / 2);
-  width: 14px;
+  left: 0;
+  width: 1px;
   height: 1.5px;
   border-radius: 1px;
   background: #a65f50;
   box-shadow: none;
-  transform: translate3d(calc(var(--level-index, 0) * var(--seg-w)), 0, 0);
-  transition: transform 240ms cubic-bezier(0.32, 0.72, 0, 1);
+  transform-origin: 0 50%;
+  transform: translate3d(calc(var(--level-index, 0) * var(--seg-w) + (var(--seg-w) - 14px) / 2), 0, 0) scaleX(14);
+  transition: transform var(--motion-snappy);
   pointer-events: none;
   will-change: transform;
 }
@@ -1321,7 +1322,11 @@
   cursor: pointer;
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
-  transition: color 180ms ease;
+  transition: color var(--motion-snappy), transform var(--motion-tactile);
+}
+
+.lore-editorial-v5 .saga-level-seg:active {
+  transform: scale(0.95);
 }
 
 .lore-editorial-v5 .saga-level-seg.is-active {
@@ -1333,12 +1338,6 @@
   outline: 2px solid #a65f50;
   outline-offset: -2px;
   border-radius: 2px;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .lore-editorial-v5 .saga-level-slider {
-    transition-duration: 0.01ms;
-  }
 }
 
 .lore-editorial-v5 .saga-news-level select {
@@ -1722,16 +1721,22 @@
   margin: 0;
 }
 
+.lore-editorial-v5 .reader-gesture .page-control .dots {
+  gap: 9px;
+}
+
 .lore-editorial-v5 .reader-gesture .dots span {
   width: 5px;
   height: 5px;
+  border-radius: 999px;
   background: rgba(40, 37, 34, 0.22);
-  transition: transform 160ms ease, background-color 160ms ease;
+  transform: scaleX(1) scaleY(1);
+  transition: transform var(--motion-snappy), background-color var(--motion-snappy), opacity var(--motion-snappy);
 }
 
 .lore-editorial-v5 .reader-gesture .dots span.active {
   background: #171715;
-  transform: scale(1.22);
+  transform: scaleX(2.3) scaleY(1.05);
 }
 
 .lore-editorial-v5 .saga-final-page-hint {
@@ -1747,63 +1752,90 @@
   line-height: 1.3;
 }
 
-/* 60fps iOS-grade GPU page & story transitions (transform only, cubic-bezier(0.32, 0.72, 0, 1)) */
+/* 60fps Editorial Silk GPU page & story transitions (scoped will-change only while moving) */
 .reading-mode.lore-editorial-v5 .reader-gesture .page-surface {
-  will-change: transform;
+  will-change: auto;
+}
+
+.reading-mode.lore-editorial-v5 .reader-gesture .page-surface.is-dragging,
+.reading-mode.lore-editorial-v5 .reader-gesture .page-surface.page-enter-left,
+.reading-mode.lore-editorial-v5 .reader-gesture .page-surface.page-enter-right {
+  will-change: transform, opacity;
+}
+
+.reading-mode.lore-editorial-v5 .story-layer {
+  will-change: auto;
+}
+
+.reading-mode.lore-editorial-v5 .story-layer.is-dragging,
+.reading-mode.lore-editorial-v5 .story-layer.slide-up,
+.reading-mode.lore-editorial-v5 .story-layer.slide-down,
+.reading-mode.lore-editorial-v5 .story-layer.enter-from-bottom,
+.reading-mode.lore-editorial-v5 .story-layer.enter-from-top {
+  will-change: transform, opacity;
+}
+
+.reading-mode.lore-editorial-v5 .story-layer.story-layer--reveal {
+  animation: saga-story-reveal var(--motion-silk) both;
+}
+
+@keyframes saga-story-reveal {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 .reading-mode.lore-editorial-v5 .reader-gesture .page-surface.page-enter-left {
-  animation: saga-page-enter-left 320ms cubic-bezier(0.32, 0.72, 0, 1) both;
+  animation: saga-page-enter-left var(--motion-silk) both;
 }
 
 .reading-mode.lore-editorial-v5 .reader-gesture .page-surface.page-enter-right {
-  animation: saga-page-enter-right 320ms cubic-bezier(0.32, 0.72, 0, 1) both;
+  animation: saga-page-enter-right var(--motion-silk) both;
 }
 
 @keyframes saga-page-enter-left {
-  from { transform: translate3d(26%, 0, 0); opacity: 0.72; }
+  from { transform: translate3d(18px, 0, 0); opacity: 0.45; }
   to { transform: translate3d(0, 0, 0); opacity: 1; }
 }
 
 @keyframes saga-page-enter-right {
-  from { transform: translate3d(-26%, 0, 0); opacity: 0.72; }
+  from { transform: translate3d(-18px, 0, 0); opacity: 0.45; }
   to { transform: translate3d(0, 0, 0); opacity: 1; }
 }
 
 .reading-mode.lore-editorial-v5 .story-layer.slide-up {
-  animation: saga-story-up 320ms cubic-bezier(0.32, 0.72, 0, 1) both;
+  animation: saga-story-up var(--motion-silk) both;
 }
 
 .reading-mode.lore-editorial-v5 .story-layer.slide-down {
-  animation: saga-story-down 320ms cubic-bezier(0.32, 0.72, 0, 1) both;
+  animation: saga-story-down var(--motion-silk) both;
 }
 
 .reading-mode.lore-editorial-v5 .story-layer.enter-from-bottom {
-  animation: saga-story-from-bottom 320ms cubic-bezier(0.32, 0.72, 0, 1) both;
+  animation: saga-story-from-bottom var(--motion-silk) both;
 }
 
 .reading-mode.lore-editorial-v5 .story-layer.enter-from-top {
-  animation: saga-story-from-top 320ms cubic-bezier(0.32, 0.72, 0, 1) both;
+  animation: saga-story-from-top var(--motion-silk) both;
 }
 
 @keyframes saga-story-up {
-  from { transform: translate3d(0, 0, 0); }
-  to { transform: translate3d(0, -100%, 0); }
+  from { transform: translate3d(0, 0, 0); opacity: 1; }
+  to { transform: translate3d(0, -100%, 0); opacity: 0.82; }
 }
 
 @keyframes saga-story-down {
-  from { transform: translate3d(0, 0, 0); }
-  to { transform: translate3d(0, 100%, 0); }
+  from { transform: translate3d(0, 0, 0); opacity: 1; }
+  to { transform: translate3d(0, 100%, 0); opacity: 0.82; }
 }
 
 @keyframes saga-story-from-bottom {
-  from { transform: translate3d(0, 100%, 0); }
-  to { transform: translate3d(0, 0, 0); }
+  from { transform: translate3d(0, 100%, 0); opacity: 0.85; }
+  to { transform: translate3d(0, 0, 0); opacity: 1; }
 }
 
 @keyframes saga-story-from-top {
-  from { transform: translate3d(0, -100%, 0); }
-  to { transform: translate3d(0, 0, 0); }
+  from { transform: translate3d(0, -100%, 0); opacity: 0.85; }
+  to { transform: translate3d(0, 0, 0); opacity: 1; }
 }
 
 @media (max-height: 640px) {
@@ -1907,16 +1939,16 @@
   font-family: var(--font-ui);
 }
 
-/* Minimalist, divider-free dictionary bottom sheet with Vaul/iOS physics & tap-any-meaning save */
+/* Minimalist, divider-free dictionary bottom sheet with Fluid Spring physics & tap-any-meaning save */
 .dictionary-overlay {
   background: rgba(18, 17, 15, 0.44);
   will-change: opacity;
-  animation: saga-backdrop-in 340ms cubic-bezier(0.32, 0.72, 0, 1) both;
+  animation: saga-backdrop-in var(--motion-silk) both;
 }
 
 .dictionary-overlay.is-closing {
   pointer-events: none;
-  animation: saga-backdrop-out 220ms cubic-bezier(0.32, 0.72, 0, 1) both;
+  animation: saga-backdrop-out 220ms var(--ease-silk) both;
 }
 
 @keyframes saga-backdrop-in {
@@ -1954,11 +1986,11 @@
   color: #171715;
   box-shadow: 0 -14px 44px rgba(23, 23, 21, 0.14);
   will-change: transform;
-  animation: saga-sheet-in 340ms cubic-bezier(0.32, 0.72, 0, 1) both;
+  animation: saga-sheet-in var(--motion-spring) both;
 }
 
 .dictionary-sheet.is-closing {
-  animation: saga-sheet-out 220ms cubic-bezier(0.32, 0.72, 0, 1) both;
+  animation: saga-sheet-out 220ms var(--ease-silk) both;
 }
 
 @media (max-width: 600px) {
@@ -2457,6 +2489,355 @@
   line-height: 1.35;
 }
 
+/* ============================================================================
+ * SAGA UNIFIED MOTION LAYER (Editorial Silk · Fluid Spring · Snappy Craft · Tactile Paper)
+ * GPU-composited transforms & opacity only; zero layout animation on hot paths.
+ * ============================================================================ */
 
+/* Zone B: Level switch text-only settle (Page 1 photo frame stays strictly locked) */
+@keyframes saga-level-text-settle {
+  from { opacity: 0.25; transform: translate3d(0, 4px, 0); }
+  to { opacity: 1; transform: translate3d(0, 0, 0); }
+}
 
+.lore-editorial-v5 .reader-gesture:not(.layout-measure-fixture) .article-text.saga-level-settle {
+  animation: saga-level-text-settle var(--motion-snappy) both;
+}
 
+/* Zone B: Fast tab switch fade-in (Read / Words / Review, 0px shell width shift) */
+@keyframes saga-tab-enter {
+  from { opacity: 0; transform: translate3d(0, 6px, 0); }
+  to { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+
+.saga-tab-panel {
+  animation: saga-tab-enter var(--motion-snappy) both;
+}
+
+.reading-mode .story-viewport.saga-tab-enter {
+  animation: saga-tab-enter var(--motion-snappy) backwards;
+}
+
+/* Zone C: Mobile spatial depth scale while dictionary bottom sheet is open */
+.reading-mode .story-viewport {
+  transform: scale(1);
+  transform-origin: center top;
+  transition: transform var(--motion-silk);
+}
+
+@media (max-width: 760px) {
+  .reading-mode .story-viewport.is-depth-scaled {
+    transform: scale(0.985);
+    will-change: transform;
+  }
+}
+
+/* Zone C: Fullscreen photo lightbox spring zoom/fade in & out */
+@keyframes saga-lightbox-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes saga-lightbox-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes saga-lightbox-img-in {
+  from { opacity: 0; transform: scale(0.94); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes saga-lightbox-img-out {
+  from { opacity: 1; transform: scale(1); }
+  to { opacity: 0; transform: scale(0.94); }
+}
+
+.lore-lightbox {
+  will-change: opacity;
+  animation: saga-lightbox-in var(--motion-silk) both;
+}
+
+.lore-lightbox.is-closing {
+  pointer-events: none;
+  animation: saga-lightbox-out 220ms var(--ease-silk) both;
+}
+
+.lore-lightbox img {
+  will-change: transform, opacity;
+  animation: saga-lightbox-img-in var(--motion-spring) both;
+}
+
+.lore-lightbox.is-closing img {
+  animation: saga-lightbox-img-out 220ms var(--ease-silk) both;
+}
+
+/* Zone D: Tactile Paper press feedback (scale 0.97 on :active) */
+.primary,
+.bottom-nav button,
+.lore-editorial-v5 .lore-page-nav .page-arrow,
+.lore-editorial-v5 .saga-toolbar-audio,
+.lore-editorial-v5 .reader-gesture .article-media .lore-photo-zoom-trigger {
+  transition: transform var(--motion-tactile), background-color var(--motion-snappy), color var(--motion-snappy), opacity var(--motion-snappy);
+}
+
+.primary:active:not(:disabled),
+.bottom-nav button:active:not(:disabled),
+.lore-editorial-v5 .lore-page-nav .page-arrow:active:not(:disabled),
+.lore-editorial-v5 .saga-toolbar-audio:active:not(:disabled),
+.lore-editorial-v5 .reader-gesture .article-media .lore-photo-zoom-trigger:active:not(:disabled) {
+  transform: scale(0.97);
+}
+
+/* Zone D: Dictionary meaning row press + terracotta underline & badge reveal */
+.dictionary-sheet .dict-sense-tappable {
+  position: relative;
+  overflow: hidden;
+  transition: background-color var(--motion-tactile), transform var(--motion-tactile);
+}
+
+.dictionary-sheet .dict-sense-tappable:active {
+  transform: scale(0.97);
+  background: rgba(23, 23, 21, 0.075);
+}
+
+.dictionary-sheet .dict-sense-tappable::after {
+  content: '';
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 0;
+  height: 1.5px;
+  border-radius: 1px;
+  background: rgba(166, 95, 80, 0.55);
+  transform-origin: left center;
+  transform: scaleX(0);
+  opacity: 0;
+  transition: transform var(--motion-tactile), opacity var(--motion-tactile);
+  pointer-events: none;
+}
+
+.dictionary-sheet .dict-sense-tappable.is-saved::after {
+  transform: scaleX(1);
+  opacity: 1;
+}
+
+@keyframes saga-saved-badge-in {
+  from { opacity: 0; transform: translate3d(4px, 0, 0) scale(0.92); }
+  to { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
+}
+
+.dictionary-sheet .dict-saved-badge {
+  animation: saga-saved-badge-in var(--motion-tactile) both;
+}
+
+/* Zone D: Quiet terracotta ink reveal on saved reader words */
+.lore-editorial-v5 .reader-gesture .article-text .word-token {
+  transition: color var(--motion-tactile);
+}
+
+@keyframes saga-ink-reveal {
+  0% { text-decoration: underline; text-decoration-color: rgba(166, 95, 80, 0); text-underline-offset: 3px; }
+  45% { text-decoration: underline; text-decoration-color: rgba(166, 95, 80, 0.65); text-underline-offset: 3px; }
+  100% { text-decoration: underline; text-decoration-color: rgba(166, 95, 80, 0); text-underline-offset: 3px; }
+}
+
+.lore-editorial-v5 .reader-gesture .article-text .word-token.known.just-saved {
+  animation: saga-ink-reveal 420ms var(--ease-tactile) both;
+}
+
+/* Zone E: Words staggered entrance (20ms cap at 8 cards) & smooth GPU removal */
+@keyframes saga-word-enter {
+  from { opacity: 0; transform: translate3d(0, 6px, 0); }
+  to { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+
+.saved-list .saved-item {
+  animation: saga-word-enter var(--motion-tactile) both;
+  animation-delay: calc(var(--stagger-idx, 0) * 20ms);
+  transition: opacity 200ms var(--ease-tactile), transform 200ms var(--ease-tactile);
+}
+
+.saved-list .saved-item.is-removing {
+  opacity: 0;
+  transform: translate3d(16px, 0, 0) scale(0.97);
+  pointer-events: none;
+}
+
+/* Zone E: Review 3D perspective card flip & directional horizontal glide */
+.review-stage {
+  perspective: 1000px;
+  overflow: hidden;
+  padding: 4px 2px 8px;
+}
+
+.flashcard.review-card {
+  position: relative;
+  display: block;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  perspective: 1000px;
+  transition: transform var(--motion-tactile), opacity var(--motion-tactile);
+}
+
+.flashcard.review-card:active:not(:disabled) {
+  transform: scale(0.985);
+}
+
+.review-card-inner {
+  position: relative;
+  display: grid;
+  width: 100%;
+  min-height: clamp(16rem, 38dvh, 21rem);
+  transform-style: preserve-3d;
+  transition: transform var(--motion-tactile);
+}
+
+.flashcard.review-card.is-flipped .review-card-inner {
+  transform: rotateY(180deg);
+}
+
+.review-card-face {
+  grid-area: 1 / 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  width: 100%;
+  min-height: clamp(16rem, 38dvh, 21rem);
+  padding: 32px 24px;
+  background: var(--saga-bg-surface);
+  border: 1px solid #dfded5;
+  border-radius: 8px;
+  color: #171715;
+  text-align: center;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.review-card-back {
+  transform: rotateY(180deg);
+}
+
+.flashcard strong.review-word-inert {
+  font: 700 clamp(23px, 3.4dvh, 30px)/1.08 var(--font-head);
+  letter-spacing: -0.025em;
+  text-transform: uppercase;
+  overflow-wrap: anywhere;
+}
+
+.flashcard strong.review-meaning-inert {
+  font: 400 clamp(20px, 5vw, 24px)/1.4 var(--font-body);
+  overflow-wrap: anywhere;
+}
+
+.flashcard.review-card.is-gliding-out {
+  opacity: 0;
+  transform: translate3d(-28px, 0, 0);
+  pointer-events: none;
+}
+
+@keyframes saga-review-glide-in {
+  from { opacity: 0; transform: translate3d(20px, 0, 0); }
+  to { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+
+.flashcard.review-card.is-gliding-in {
+  animation: saga-review-glide-in var(--motion-spring) both;
+}
+
+/* Complete prefers-reduced-motion: reduce fallback (zero spatial transforms, gentle <=120ms opacity) */
+@media (prefers-reduced-motion: reduce) {
+  .lore-editorial-v5 .saga-level-slider,
+  .lore-editorial-v5 .saga-level-seg,
+  .lore-editorial-v5 .reader-gesture .dots span,
+  .reading-mode .story-viewport,
+  .primary,
+  .bottom-nav button,
+  .lore-editorial-v5 .lore-page-nav .page-arrow,
+  .lore-editorial-v5 .saga-toolbar-audio,
+  .lore-editorial-v5 .reader-gesture .article-media .lore-photo-zoom-trigger,
+  .dictionary-sheet .dict-sense-tappable,
+  .dictionary-sheet .dict-sense-tappable::after,
+  .lore-editorial-v5 .reader-gesture .article-text .word-token,
+  .saved-list .saved-item,
+  .flashcard.review-card,
+  .review-card-inner {
+    transition-duration: 0.01ms !important;
+  }
+
+  .reading-mode .story-viewport.is-depth-scaled,
+  .primary:active:not(:disabled),
+  .bottom-nav button:active:not(:disabled),
+  .lore-editorial-v5 .lore-page-nav .page-arrow:active:not(:disabled),
+  .lore-editorial-v5 .saga-toolbar-audio:active:not(:disabled),
+  .lore-editorial-v5 .reader-gesture .article-media .lore-photo-zoom-trigger:active:not(:disabled),
+  .lore-editorial-v5 .saga-level-seg:active,
+  .dictionary-sheet .dict-sense-tappable:active,
+  .flashcard.review-card:active:not(:disabled) {
+    transform: none !important;
+  }
+
+  .lore-editorial-v5 .reader-gesture:not(.layout-measure-fixture) .article-text.saga-level-settle,
+  .saga-tab-panel,
+  .reading-mode .story-viewport.saga-tab-enter,
+  .reading-mode.lore-editorial-v5 .story-layer.story-layer--reveal,
+  .reading-mode.lore-editorial-v5 .reader-gesture .page-surface.page-enter-left,
+  .reading-mode.lore-editorial-v5 .reader-gesture .page-surface.page-enter-right,
+  .reading-mode.lore-editorial-v5 .story-layer.slide-up,
+  .reading-mode.lore-editorial-v5 .story-layer.slide-down,
+  .reading-mode.lore-editorial-v5 .story-layer.enter-from-bottom,
+  .reading-mode.lore-editorial-v5 .story-layer.enter-from-top,
+  .dictionary-overlay,
+  .dictionary-overlay.is-closing,
+  .dictionary-sheet,
+  .dictionary-sheet.is-closing,
+  .lore-lightbox,
+  .lore-lightbox.is-closing,
+  .lore-lightbox img,
+  .lore-lightbox.is-closing img,
+  .dictionary-sheet .dict-saved-badge,
+  .lore-editorial-v5 .reader-gesture .article-text .word-token.known.just-saved,
+  .saved-list .saved-item,
+  .flashcard.review-card.is-gliding-in {
+    animation: saga-reduced-fade 100ms ease both !important;
+    animation-delay: 0ms !important;
+  }
+
+  .saved-list .saved-item.is-removing,
+  .flashcard.review-card.is-gliding-out {
+    transform: none !important;
+  }
+
+  /* Swap 3D card flip for crisp opacity crossfade under reduced motion */
+  .flashcard.review-card.is-flipped .review-card-inner {
+    transform: none !important;
+  }
+
+  .review-card-face {
+    transition: opacity 100ms ease !important;
+  }
+
+  .review-card-back {
+    transform: none !important;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .flashcard.review-card.is-flipped .review-card-front {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .flashcard.review-card.is-flipped .review-card-back {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+@keyframes saga-reduced-fade {
+  from { opacity: 0.72; }
+  to { opacity: 1; }
+}
