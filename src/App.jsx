@@ -95,6 +95,7 @@ function LevelSegmentedControl({ readingLevel, onChange }) {
 
   return (
     <div className="saga-news-level saga-level-group">
+      <span className="level-label" aria-hidden="true">LEVEL</span>
       <div
         ref={trackRef}
         className="saga-level-segmented"
@@ -1676,7 +1677,7 @@ function App() {
         </div>
         <span className="saga-toolbar-story" title={topicLabel}>{topicLabel}</span>
         <div className="saga-topbar-slot saga-topbar-right">
-          {interactive && !closing && <button type="button" className={'icon-button saga-toolbar-audio' + (articlePlaying ? ' is-speaking' : '')} onClick={toggleArticleAudio} aria-pressed={articlePlaying} aria-label={articlePlaying ? 'Stop reading aloud' : 'Read aloud'} title={articlePlaying ? 'Stop reading aloud' : 'Read aloud'}><Icon name="volume" size={20}/></button>}
+          {interactive && !closing && <button type="button" className={'icon-button saga-toolbar-audio' + (articlePlaying ? ' is-speaking' : '')} onClick={toggleArticleAudio} aria-pressed={articlePlaying} aria-label={articlePlaying ? 'Stop reading aloud' : 'Read aloud'} title={articlePlaying ? 'Stop reading aloud' : 'Read aloud'}><span className="audio-label" aria-hidden="true">{articlePlaying ? 'STOP' : 'LISTEN'}</span><Icon name="volume" size={18}/></button>}
         </div>
       </header>
       <div key={`${index}:${pageNumber}`} className={'page-surface ' + (!closing && !pageHasPhoto ? 'saga-page--text-only ' : '') + (itemPage?.density ? `page-density-${itemPage.density} ` : '') + (interactive && pageMotion ? (pageMotion > 0 ? 'page-enter-left' : 'page-enter-right') : '')}>

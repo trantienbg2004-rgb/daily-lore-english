@@ -1274,15 +1274,16 @@
   background: var(--saga-bg-surface);
 }
 
-/* UNIFIED ARTICLE FRAME — Fixed symmetric 3-column Read top bar (A B C left · TOPIC center · Speaker right) */
+/* UNIFIED ARTICLE FRAME — Style 2B symmetric 3-column Read top bar (LEVEL A B C left · dead-center TOPIC · LISTEN + icon right) */
 .lore-editorial-v5 .reader-gesture .topbar.lore-reader-topbar {
   display: grid;
-  grid-template-columns: 68px minmax(0, 1fr) 68px;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
   align-items: center;
-  gap: 8px;
+  column-gap: 6px;
+  row-gap: 0;
   border-bottom: 1px solid rgba(44, 40, 34, 0.08);
-  padding: calc(0.45rem + var(--saga-safe-top)) 0 0.5rem !important;
-  min-height: 44px;
+  padding: calc(0.45rem + var(--saga-safe-top)) 0 0.45rem !important;
+  min-height: 46px;
 }
 
 .lore-editorial-v5 .saga-topbar-slot {
@@ -1309,28 +1310,45 @@
   text-overflow: clip;
   white-space: nowrap;
   font-family: var(--font-ui);
-  font-size: clamp(10.5px, 2.75vw, 11.5px);
+  font-size: clamp(10px, 2.7vw, 11.5px);
   font-weight: 600;
   letter-spacing: 0.06em;
-  line-height: 1.2;
+  line-height: 1;
   text-transform: uppercase;
   color: #6e6963;
 }
 
 .lore-editorial-v5 .saga-level-group {
   display: inline-flex;
+  flex-direction: row;
   align-items: center;
-  gap: 0;
+  gap: 5px;
+  white-space: nowrap;
   flex-shrink: 0;
 }
 
-.lore-editorial-v5 .saga-level-segmented {
-  --seg-w: 22px;
-  position: relative;
-  display: inline-grid;
-  grid-template-columns: repeat(3, var(--seg-w));
+.lore-editorial-v5 .level-label {
+  display: inline-flex;
   align-items: center;
-  height: 36px;
+  font-family: var(--font-ui);
+  font-size: 9.5px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  line-height: 1;
+  text-transform: uppercase;
+  color: #8a867e;
+  user-select: none;
+  -webkit-user-select: none;
+  pointer-events: none;
+}
+
+.lore-editorial-v5 .saga-level-segmented {
+  --seg-w: 17px;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  height: 30px;
   padding: 0;
   margin: 0;
   box-sizing: border-box;
@@ -1344,7 +1362,7 @@
 
 .lore-editorial-v5 .saga-level-slider {
   position: absolute;
-  bottom: 8px;
+  bottom: 4px;
   left: 0;
   width: 1px;
   height: 1.5px;
@@ -1352,7 +1370,7 @@
   background: #a65f50;
   box-shadow: none;
   transform-origin: 0 50%;
-  transform: translate3d(calc(var(--level-index, 0) * var(--seg-w) + (var(--seg-w) - 14px) / 2), 0, 0) scaleX(14);
+  transform: translate3d(calc(var(--level-index, 0) * var(--seg-w) + (var(--seg-w) - 12px) / 2), 0, 0) scaleX(12);
   transition: transform var(--motion-snappy);
   pointer-events: none;
   will-change: transform;
@@ -1361,16 +1379,17 @@
 .lore-editorial-v5 .saga-level-seg {
   position: relative;
   z-index: 1;
-  width: var(--seg-w);
-  height: 36px;
-  padding: 8px 0;
+  width: auto;
+  min-width: 11px;
+  height: 30px;
+  padding: 0 1px;
   margin: 0;
   border: 0;
   border-radius: 0;
   background: transparent;
   box-shadow: none;
   box-sizing: border-box;
-  display: grid;
+  display: inline-grid;
   place-items: center;
   font-family: var(--font-ui);
   font-size: 12px;
@@ -1410,11 +1429,41 @@
 
 .lore-editorial-v5 .saga-toolbar-audio {
   position: relative;
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 5px;
+  width: auto;
+  height: 30px;
+  padding: 0 4px;
+  margin: 0 -4px 0 0;
   border: 0;
   background: transparent;
   color: #3a3631;
-  border-radius: 999px;
+  border-radius: 6px;
+  white-space: nowrap;
+  cursor: pointer;
   transition: background-color 140ms ease, color 140ms ease;
+}
+
+.lore-editorial-v5 .saga-toolbar-audio svg {
+  flex-shrink: 0;
+}
+
+.lore-editorial-v5 .audio-label {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-ui);
+  font-size: 9.5px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  line-height: 1;
+  text-transform: uppercase;
+  color: #8a867e;
+  user-select: none;
+  -webkit-user-select: none;
+  transition: color 140ms ease;
 }
 
 .lore-editorial-v5 .saga-toolbar-audio:hover {
@@ -1422,9 +1471,17 @@
   color: #121212;
 }
 
+.lore-editorial-v5 .saga-toolbar-audio:hover .audio-label {
+  color: #171715;
+}
+
 .lore-editorial-v5 .saga-toolbar-audio.is-speaking {
   color: #a65f50;
   background: rgba(166, 95, 80, 0.1);
+}
+
+.lore-editorial-v5 .saga-toolbar-audio.is-speaking .audio-label {
+  color: #a65f50;
 }
 
 .lore-editorial-v5 .saga-toolbar-audio.is-speaking:hover {
@@ -1436,11 +1493,24 @@
   content: '';
   position: absolute;
   inset: 0;
-  border-radius: 999px;
+  border-radius: 6px;
   border: 1.5px solid rgba(166, 95, 80, 0.45);
   pointer-events: none;
   will-change: transform, opacity;
   animation: saga-audio-pulse 1.6s var(--ease-silk) infinite;
+}
+
+@media (max-width: 380px) {
+  .lore-editorial-v5 .saga-toolbar-story {
+    font-size: 9.5px;
+    letter-spacing: 0.06em;
+  }
+}
+
+@media (max-width: 359px) {
+  .lore-editorial-v5 .audio-label {
+    display: none;
+  }
 }
 
 @keyframes saga-audio-pulse {
