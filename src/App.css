@@ -2309,6 +2309,25 @@
   overscroll-behavior: contain;
   margin: 0 -12px;
   padding: 2px 12px 6px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(28, 26, 23, 0.18) transparent;
+}
+
+.dictionary-sheet .lookup-details::-webkit-scrollbar {
+  width: 4px;
+}
+
+.dictionary-sheet .lookup-details::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.dictionary-sheet .lookup-details::-webkit-scrollbar-thumb {
+  background: rgba(28, 26, 23, 0.18);
+  border-radius: 999px;
+}
+
+.dictionary-sheet .lookup-details::-webkit-scrollbar-thumb:hover {
+  background: rgba(28, 26, 23, 0.3);
 }
 
 .dictionary-sheet .contextual-meaning {
@@ -2316,11 +2335,13 @@
   padding: 0;
   margin: 0;
   min-height: 0;
+  font: inherit;
+  line-height: normal;
   color: #171715;
 }
 
 .dictionary-sheet .dict-sense-tappable {
-  padding: 10px 12px;
+  padding: 7px 10px;
   border-radius: 10px;
   cursor: pointer;
   user-select: none;
@@ -2376,29 +2397,19 @@
   padding-top: 3px;
 }
 
-.dictionary-sheet .dict-vi-meaning {
-  margin: 0 0 6px;
-  min-height: 0;
-  font-family: var(--font-body);
-  font-size: 18px;
-  font-weight: 600;
-  line-height: 1.45;
-  color: #171715;
-}
-
 .dictionary-sheet .dict-en-meaning {
   margin: 0;
   min-height: 0;
   font-family: var(--font-body);
-  font-size: 15.5px;
-  line-height: 1.5;
-  color: #3f3c37;
+  font-size: 16.5px;
+  line-height: 1.45;
+  color: #171715;
 }
 
 .dictionary-sheet .dict-tier2-meanings {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 2px;
 }
 
 .dictionary-sheet .dict-sense-row {
@@ -2412,6 +2423,7 @@
 .dictionary-sheet .dict-sense-row.dict-sense-numbered {
   display: grid;
   grid-template-columns: 18px minmax(0, 1fr) auto;
+  row-gap: 0;
   column-gap: 8px;
   align-items: baseline;
 }
@@ -2422,7 +2434,7 @@
   font-weight: 600;
   font-variant-numeric: tabular-nums;
   color: #8c877e;
-  line-height: 1.48;
+  line-height: 1.45;
 }
 
 .dictionary-sheet .dict-sense-row.is-saved .dict-sense-num {
@@ -2438,7 +2450,7 @@
   display: block;
   font-family: var(--font-body);
   font-size: 16.5px;
-  line-height: 1.48;
+  line-height: 1.45;
   color: #171715;
 }
 
@@ -2747,8 +2759,8 @@
 .dictionary-sheet .dict-sense-tappable::after {
   content: '';
   position: absolute;
-  left: 12px;
-  right: 12px;
+  left: 10px;
+  right: 10px;
   bottom: 0;
   height: 1.5px;
   border-radius: 1px;

@@ -83,7 +83,7 @@ test('tokenizeWithGlossary is 100% backward compatible when glossary is missing 
   }
 })
 
-test('resolveTier1Glossary returns instant 0ms contextual payload with vi_context, en_def, IPA and CEFR', () => {
+test('resolveTier1Glossary returns instant 0ms English-only payload and ignores vi_context', () => {
   const glossary = [
     {
       surface: 'carried out',
@@ -95,15 +95,28 @@ test('resolveTier1Glossary returns instant 0ms contextual payload with vi_contex
       en_def: 'to do and finish a planned activity',
       cefr: 'B1',
     },
+    {
+      surface: 'legacy only',
+      lemma: 'legacy only',
+      type: 'phrase',
+      pos: 'noun',
+      ipa: '',
+      vi_context: 'chỉ có tiếng Việt',
+      en_def: '',
+      cefr: 'B2',
+    },
   ]
   const res = resolveTier1Glossary('Carried Out', glossary)
   assert.equal(res.tier, 1)
   assert.equal(res.found, true)
   assert.equal(res.lemma, 'carry out')
-  assert.equal(res.vi_context, 'thực hiện')
+  assert.equal(res.vi_context, '')
   assert.equal(res.en_def, 'to do and finish a planned activity')
+  assert.equal(res.options[0].definition, 'to do and finish a planned activity')
+  assert.equal(res.options[0].vi_context, '')
   assert.equal(res.cefr, 'B1')
   assert.equal(res.ipa, '/ˈkæri aʊt/')
+  assert.equal(resolveTier1Glossary('legacy only', glossary), null)
 })
 
 test('Tier-2 dictionaryService lemmatizes inflections, caches each shard once, and provides Cambridge fallback', async () => {

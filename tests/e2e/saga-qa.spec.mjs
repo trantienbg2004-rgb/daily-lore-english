@@ -424,12 +424,10 @@ test.describe('SAGA End-to-End QA Suite', () => {
           const rowText = (await targetRow.innerText()).trim()
           expect(rowText.length).toBeGreaterThan(2)
 
-          // Extract exact definition text from either Tier 1 or Tier 2 row
+          // Extract exact English definition text from either Tier 1 or Tier 2 row
           chosenDefinition = await targetRow.evaluate(el => {
             const tier2Def = el.querySelector('.dict-sense-def')
             if (tier2Def) return tier2Def.textContent.trim()
-            const vi = el.querySelector('.dict-vi-meaning')
-            if (vi) return vi.textContent.trim()
             const en = el.querySelector('.dict-en-meaning')
             if (en) return en.textContent.trim()
             return el.textContent.trim()

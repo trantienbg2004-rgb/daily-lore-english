@@ -540,13 +540,12 @@ export function resolveTier1Glossary(term, glossary = null, directEntry = null) 
 
   const surface = String(entry.surface || term || '').trim()
   const lemma = String(entry.lemma || surface).trim()
-  const viContext = String(entry.vi_context || '').trim()
   const enDef = String(entry.en_def || '').trim()
+  if (!enDef) return null
   const pos = String(entry.pos || '').trim()
   const ipa = String(entry.ipa || '').trim()
   const cefr = String(entry.cefr || '').trim()
   const type = String(entry.type || 'word').trim()
-  const primaryDefinition = viContext && enDef ? `${viContext} — ${enDef}` : (viContext || enDef)
 
   return {
     tier: 1,
@@ -557,13 +556,13 @@ export function resolveTier1Glossary(term, glossary = null, directEntry = null) 
     pos,
     ipa,
     cefr,
-    vi_context: viContext,
+    vi_context: '',
     en_def: enDef,
     options: [
       {
-        definition: primaryDefinition,
+        definition: enDef,
         en_def: enDef,
-        vi_context: viContext,
+        vi_context: '',
         example: '',
         partOfSpeech: pos,
         phonetic: ipa,

@@ -2119,8 +2119,8 @@ function App() {
             const allOptions = lookup.options || []
             const showNumbers = allOptions.length > 1
             const savedDef = String(selectedSaved?.definition || '').trim()
-            const tier1Def = String(lookup.vi_context || lookup.en_def || activeMeaning?.definition || '').trim()
-            const tier1Saved = Boolean(isSaved && tier1Def && (savedDef === tier1Def || savedDef === String(lookup.en_def || '').trim()))
+            const tier1Def = String(lookup.en_def || activeMeaning?.definition || '').trim()
+            const tier1Saved = Boolean(isSaved && tier1Def && savedDef === tier1Def)
             const hasMeanings = lookup.status === 'success' && (lookup.tier === 1 || allOptions.length > 0)
             const handleRowKeyDown = (event, meaningObj) => {
               if (event.key === 'Enter' || event.key === ' ') {
@@ -2171,8 +2171,7 @@ function App() {
                     >
                       <div className="dict-sense-row-head">
                         <div className="dict-tier1-copy">
-                          {lookup.vi_context && <p className="dict-vi-meaning">{lookup.vi_context}</p>}
-                          {lookup.en_def && <p className="dict-en-meaning">{lookup.en_def}</p>}
+                          {tier1Def && <p className="dict-en-meaning">{tier1Def}</p>}
                         </div>
                         {tier1Saved && <span className="dict-saved-badge"><Icon name="check" size={13}/>Saved</span>}
                       </div>
