@@ -461,36 +461,69 @@ function planUniformWikiPages(item, fits, {
 }
 
 /**
- * Groups interactive word tokens with immediately following clinging punctuation
- * (e.g. `.`, `,`, `!`, `?`, `;`, `:`, `”`, `’`, `)`) so browsers never break a
- * line between `</button>` and trailing punctuation, while keeping trailing
- * whitespace outside the nowrap cluster.
+ * Groups interactive word tokens with immediately preceding opening punctuation
+ * (e.g. `(`, `[`, `“`, `‘`) and immediately following clinging punctuation
+ * (e.g. `.`, `,`, `!`, `?`, `;`, `:`, `”`, `’`, `)`) so browsers never orphan
+ * opening punctuation at a line end or break between `</button>` and trailing
+ * punctuation, while keeping whitespace outside the nowrap cluster.
  */
+const OPENING_PUNCT_RE = /^([\s\S]*?)([([“‘]+)$/u
 const CLINGING_PUNCT_RE = /^([.,!?;:…'"”’)\]]+)([\s\S]*)$/u
 
 export function groupTokenClusters(tokens) {
   if (!Array.isArray(tokens) || !tokens.length) return []
   const items = []
+  let pendingLeading = ''
   for (let i = 0; i < tokens.length; i++) {
     const token = tokens[i]
     if (!token) continue
     if (token.kind === 'text') {
-      if (token.text) items.push({kind: 'text', text: token.text})
+      const rawText = typeof token.text === 'string' ? token.text : ''
+      const next = tokens[i + 1]
+      if (rawText && next && next.kind !== 'text') {
+        const openMatch = rawText.match(OPENING_PUNCT_RE)
+        if (openMatch) {
+          const [, before, opening] = openMatch
+          if (before) {
+            if (pendingLeading) {
+              items.push({kind: 'text', text: pendingLeading})
+              pendingLeading = ''
+            }
+            items.push({kind: 'text', text: before})
+          }
+          pendingLeading += opening
+          continue
+        }
+      }
+      if (pendingLeading) {
+        items.push({kind: 'text', text: pendingLeading})
+        pendingLeading = ''
+      }
+      if (rawText) items.push({kind: 'text', text: rawText})
       continue
     }
     const next = tokens[i + 1]
+    let clinging = ''
+    let rest = ''
     if (next && next.kind === 'text' && typeof next.text === 'string') {
       const match = next.text.match(CLINGING_PUNCT_RE)
       if (match) {
-        const [, clinging, rest] = match
-        items.push({kind: 'cluster', token, clinging})
-        if (rest) items.push({kind: 'text', text: rest})
+        ;[, clinging, rest] = match
         i++
-        continue
       }
     }
-    items.push({kind: 'token', token})
+    if (pendingLeading || clinging) {
+      const cluster = pendingLeading
+        ? {kind: 'cluster', token, leading: pendingLeading, clinging}
+        : {kind: 'cluster', token, clinging}
+      items.push(cluster)
+      pendingLeading = ''
+      if (rest) items.push({kind: 'text', text: rest})
+    } else {
+      items.push({kind: 'token', token})
+    }
   }
+  if (pendingLeading) items.push({kind: 'text', text: pendingLeading})
   return items
 }
 

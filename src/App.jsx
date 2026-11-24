@@ -20,6 +20,7 @@ import { tokenizeWithGlossary } from './utils/dictionaryTokenizer.js'
 import { buildSavedTokenSet, isTokenSaved } from './lib/savedWordsMatch.js'
 import { loadLemmaMap, loadPhraseMap, lookupDictionaryTerm, resolveStaticPhrase, resolveTier1Glossary } from './services/dictionaryService.js'
 import { createArticleReaderController, splitPageIntoSentences } from './lib/readerAudio.js'
+import FullArticleModal from './components/FullArticleModal.jsx'
 import {
   normalizeSavedWord,
   countWordStates,
@@ -335,12 +336,13 @@ function layoutPages(item, reader, badImages = new Set()) {
         } else if (piece.kind === 'cluster') {
           const cluster = document.createElement('span')
           cluster.className = 'saga-word-cluster'
+          if (piece.leading) cluster.appendChild(document.createTextNode(piece.leading))
           const btn = document.createElement('button')
           btn.type = 'button'
           btn.className = 'word-token' + (piece.token.kind === 'phrase' ? ' phrase-token' : '')
           btn.textContent = piece.token.text
           cluster.appendChild(btn)
-          cluster.appendChild(document.createTextNode(piece.clinging))
+          if (piece.clinging) cluster.appendChild(document.createTextNode(piece.clinging))
           fragment.appendChild(cluster)
         } else {
           const btn = document.createElement('button')
@@ -565,6 +567,8 @@ function App() {
   const [brokenImages, setBrokenImages] = useState(() => new Set())
   const [photoVersion, setPhotoVersion] = useState(0)
   const [showCredits, setShowCredits] = useState(false)
+  const [fullArticleStory, setFullArticleStory] = useState(null)
+  const fullArticleOpen = Boolean(fullArticleStory)
   const markBrokenImage = image => {
     if (!image) return
     setBrokenImages(previous => {
@@ -577,6 +581,7 @@ function App() {
   const [selected, setSelected] = useState('')
   const [selectedSurface, setSelectedSurface] = useState('')
   const [selectedGlossaryEntry, setSelectedGlossaryEntry] = useState(null)
+  const [selectedSentenceOverride, setSelectedSentenceOverride] = useState('')
   const [sheetClosing, setSheetClosing] = useState(false)
   const [justSavedWord, setJustSavedWord] = useState('')
   const justSavedTimerRef = useRef(null)
@@ -962,7 +967,7 @@ function App() {
   const highlightTarget = selectedSurface || selected
   // Avoid lookbehind regex: Safari on iOS 15 cannot parse it and may show a blank screen.
   const sentenceParts = (currentPage?.text || '').match(/[^.!?]+[.!?]*|[^.!?]+$/g) || [currentPage?.text || '']
-  const selectedSentence = (tab === 'words' && selectedSaved?.sentence) || sentenceParts.find(sentence => {
+  const selectedSentence = selectedSentenceOverride || (tab === 'words' && selectedSaved?.sentence) || sentenceParts.find(sentence => {
     const low = sentence.toLowerCase()
     const targetLow = (highlightTarget || '').toLowerCase()
     if (targetLow && targetLow.includes(' ')) return low.includes(targetLow)
@@ -984,6 +989,7 @@ function App() {
     setSelected('')
     setSelectedSurface('')
     setSelectedGlossaryEntry(null)
+    setSelectedSentenceOverride('')
   }
 
   const closeDictionary = ({ immediate = false } = {}) => {
@@ -1071,7 +1077,7 @@ function App() {
         partOfSpeech: meaning?.partOfSpeech || lookup.pos || '',
         example: meaning?.example || '',
         sentence: selectedSentence,
-        storyTitle: existing?.storyTitle || (tab === 'read' && story ? displayHeadline(story) : ''),
+        storyTitle: existing?.storyTitle || (fullArticleStory ? displayHeadline(fullArticleStory) : tab === 'read' && story ? displayHeadline(story) : ''),
         mastered: existing?.mastered ?? false,
         added: existing?.added || Date.now(),
       }
@@ -1216,10 +1222,15 @@ function App() {
       stopSpeech()
       return
     }
-    if (!story || !Array.isArray(story.pages) || page >= story.pages.length) return
+    if (!story || !Array.isArray(story.pages) || story.pages.length === 0) return
+    const startPage = page >= story.pages.length ? 0 : page
+    if (startPage !== page) {
+      setPageMotion(null)
+      setPage(startPage)
+    }
     articleReaderRef.current?.start({
       pages: story.pages,
-      startPage: page,
+      startPage,
       readingLevel: readingLevelRef.current,
     })
   }
@@ -1359,7 +1370,7 @@ function App() {
   // Pointer events catch edge gestures missed by touchend after late image
   // loads or a mobile browser cancel. The touch fallback is deduplicated.
   const startPointer = event => {
-    if (event.pointerType !== 'touch' || selected || event.target.closest('button, a, summary, select, label')) return
+    if (event.pointerType !== 'touch' || selected || fullArticleOpen || event.target.closest('button, a, summary, select, label')) return
     interruptActiveMotion()
     const now = performance.now()
     pointerGesture.current = {
@@ -1553,7 +1564,7 @@ function App() {
   // Treat word buttons as part of the reading surface, not as navigation controls.
   // This makes swiping across the paragraph work on touch screens.
   const startGesture = event => {
-    if (event.touches.length !== 1 || selected) { gesture.current = null; return }
+    if (event.touches.length !== 1 || selected || fullArticleOpen) { gesture.current = null; return }
     const control = event.target.closest('button')
     if ((control && !control.classList.contains('word-token')) || event.target.closest('a, summary, select, label')) { gesture.current = null; return }
     interruptActiveMotion()
@@ -1575,14 +1586,14 @@ function App() {
     }
   }
   const endGesture = event => {
-    if (!gesture.current || selected) return
+    if (!gesture.current || selected || fullArticleOpen) return
     const state = gesture.current
     gesture.current = null
     const t = event.changedTouches[0]
     finishNavigationGesture(state, t.clientX, t.clientY)
   }
   const cancelGesture = () => { gesture.current = null; releaseSwipeTransform({ spring: true }); suppressWordClick.current = false }
-  const onWordClick = (event, word, glossaryEntry = null, surfaceText = '') => {
+  const onWordClick = (event, word, glossaryEntry = null, surfaceText = '', sentenceText = '') => {
     if (suppressWordClick.current) {
       event.preventDefault()
       suppressWordClick.current = false
@@ -1594,6 +1605,7 @@ function App() {
     setSheetClosing(false)
     setSelectedGlossaryEntry(glossaryEntry || null)
     setSelectedSurface(surfaceText || word)
+    setSelectedSentenceOverride(String(sentenceText || '').trim())
     setSelected(word)
   }
   // Warm up just the next page and the next article, without downloading the whole library.
@@ -1612,7 +1624,7 @@ function App() {
   // page index (often page 0) and could not progress beyond page 2.
   useEffect(() => {
     const onKey = event => handleReaderArrowKey(event, {
-      enabled: tab === 'read' && !selected && !showCredits && !!story,
+      enabled: tab === 'read' && !selected && !showCredits && !fullArticleOpen && !!story,
       onNextPage: () => changePage(1),
       onPrevPage: () => changePage(-1),
       onNextStory: () => changeStory(1),
@@ -1620,7 +1632,7 @@ function App() {
     })
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
-  }, [tab, selected, showCredits, page, storyIndex, story?.pages?.length, stories.length])
+  }, [tab, selected, showCredits, fullArticleOpen, page, storyIndex, story?.pages?.length, stories.length])
 
   useEffect(() => {
     if (tab !== 'review' || selected || showCredits || finished || !activeReviewWord) return
@@ -1646,7 +1658,7 @@ function App() {
 
   // Desktop: wheel navigates stories instead of scrolling the reading screen.
   const onReaderWheel = event => {
-    if (selected || event.ctrlKey) return
+    if (selected || fullArticleOpen || event.ctrlKey) return
     if (event.cancelable) event.preventDefault()
     const now = Date.now()
     if (now < wheelLock.current) return
@@ -1668,6 +1680,12 @@ function App() {
     const pageHasPhoto = Boolean(!closing && itemPage?.image && !brokenImages.has(itemPage.image) && !photoResult(itemPage.image)?.failed)
     const dotTotal = item.pages.length
     const topicLabel = readerSection(item).replace(/^DISCOVER\s*·\s*/i, '').trim()
+    const handleReadFullArticleClick = event => {
+      if (!interactive || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button !== 0) return
+      event.preventDefault()
+      stopSpeech()
+      setFullArticleStory(item)
+    }
     return <div className="reader-gesture" aria-hidden={!interactive} onTouchStart={interactive ? startGesture : undefined} onTouchMove={interactive ? moveGesture : undefined} onTouchEnd={interactive ? endGesture : undefined} onTouchCancel={interactive ? cancelGesture : undefined} onPointerDown={interactive ? startPointer : undefined} onPointerMove={interactive ? movePointer : undefined} onPointerUp={interactive ? endPointer : undefined} onPointerCancel={interactive ? () => {pointerGesture.current = null; releaseSwipeTransform({ spring: true })} : undefined}>
       <header className="topbar lore-reader-topbar">
         <div className="saga-topbar-slot saga-topbar-left">
@@ -1677,15 +1695,13 @@ function App() {
         </div>
         <span className="saga-toolbar-story" title={topicLabel}>{topicLabel}</span>
         <div className="saga-topbar-slot saga-topbar-right">
-          {interactive && !closing && <button type="button" className={'icon-button saga-toolbar-audio' + (articlePlaying ? ' is-speaking' : '')} onClick={toggleArticleAudio} aria-pressed={articlePlaying} aria-label={articlePlaying ? 'Stop reading aloud' : 'Read aloud'} title={articlePlaying ? 'Stop reading aloud' : 'Read aloud'}><span className="audio-label" aria-hidden="true">{articlePlaying ? 'STOP' : 'LISTEN'}</span><Icon name="volume" size={18}/></button>}
+          {interactive && <button type="button" className={'icon-button saga-toolbar-audio' + (articlePlaying ? ' is-speaking' : '')} onClick={toggleArticleAudio} aria-pressed={articlePlaying} aria-label={articlePlaying ? 'Stop reading aloud' : 'Read aloud'} title={articlePlaying ? 'Stop reading aloud' : 'Read aloud'}><span className="audio-label" aria-hidden="true">{articlePlaying ? 'STOP' : 'LISTEN'}</span><Icon name="volume" size={18}/></button>}
         </div>
       </header>
       <div key={`${index}:${pageNumber}`} className={'page-surface ' + (!closing && !pageHasPhoto ? 'saga-page--text-only ' : '') + (itemPage?.density ? `page-density-${itemPage.density} ` : '') + (interactive && pageMotion ? (pageMotion > 0 ? 'page-enter-left' : 'page-enter-right') : '')}>
       {closing ? <section className="story-end" aria-label="Article completed">
         <div className="story-end-center"><Icon name="book" size={56}/><h2>That's the short version.</h2>
-          
-          <button className="story-end-credits story-end-attribution" type="button" disabled={!interactive} onClick={() => setShowCredits(true)} aria-label="View article author, text license and individual image credits">Source</button>
-          {safeStoryUrl(item.sourceUrl) && <a className="story-end-cta" href={safeStoryUrl(item.sourceUrl)} target="_blank" rel="noopener noreferrer">Read the full article</a>}
+          {safeStoryUrl(item.sourceUrl) && <a className="story-end-cta" href={safeStoryUrl(item.sourceUrl)} target="_blank" rel="noopener noreferrer" onClick={handleReadFullArticleClick}>Read the full article</a>}
         </div><div className="story-end-next">Swipe up for the next story</div>
       </section> : <>
       <div className={'post-head article-heading lore-article-heading ' + (!itemPage.image || brokenImages.has(itemPage.image) || photoResult(itemPage.image)?.failed ? 'post-head--no-image ' : '') + (!item.pages[0]?.image || brokenImages.has(item.pages[0].image) || photoResult(item.pages[0].image)?.failed ? 'post-head--cover-no-image ' : '') + (pageNumber > 0 ? 'post-head--continued ' : '') + (pageNumber > 0 && item.contentType !== 'news' ? 'article-heading-continued' : '')}>
@@ -1713,7 +1729,7 @@ function App() {
           return <Fragment key={sIdx}>{leading}{core && <span className={sentenceClass} data-sentence-index={sIdx}>{clustered.map((piece, i) => {
             if (piece.kind === 'text') return piece.text
             if (piece.kind === 'cluster') {
-              return <span key={i} className="saga-word-cluster">{renderWordButton(piece.token)}{piece.clinging}</span>
+              return <span key={i} className="saga-word-cluster">{piece.leading || ''}{renderWordButton(piece.token)}{piece.clinging || ''}</span>
             }
             return renderWordButton(piece.token, i)
           })}</span>}{trailing}</Fragment>
@@ -2089,6 +2105,26 @@ function App() {
           <button className="primary" onClick={() => setShowCredits(false)}>Back to reading</button>
         </section>
       </div>}
+      {fullArticleStory && (
+        <FullArticleModal
+          story={fullArticleStory}
+          headline={displayHeadline(fullArticleStory)}
+          safeStoryUrl={safeStoryUrl}
+          brokenImages={brokenImages}
+          onBrokenImage={markBrokenImage}
+          staticPhrases={staticPhrases}
+          lemmaMap={lemmaMap}
+          savedTokenSet={savedTokenSet}
+          justSavedWord={justSavedWord}
+          readingLevel={readingLevel}
+          onWordClick={onWordClick}
+          onClose={() => setFullArticleStory(null)}
+          stopParentSpeech={stopSpeech}
+          dictionaryOpen={Boolean(selected)}
+          creditsOpen={showCredits}
+          onOpenCredits={() => setShowCredits(true)}
+        />
+      )}
       {selected && <div ref={sheetOverlayRef} className={'overlay dictionary-overlay' + (sheetClosing ? ' is-closing' : '')} onClick={() => closeDictionary()}>
         <div
           ref={sheetRef}
