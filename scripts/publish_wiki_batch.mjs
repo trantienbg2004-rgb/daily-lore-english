@@ -22,9 +22,15 @@ import {CEFR_THRESHOLDS,evaluateArticleCEFR} from './wiki/cefrProfiler.mjs'
 
 const ROOT=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..')
 const DEFAULT_QUEUE_FILE=path.join(ROOT,'data','wiki_queue.json')
-export const DEFAULT_GEMINI_MODEL='gemini-3.1-flash-lite'
-export const DEFAULT_GEMINI_FALLBACK_MODELS=['gemini-3.5-flash-lite','gemini-2.5-flash-lite']
-export const DEFAULT_UNAVAILABLE_RETRY_MS=4000
+export const DEFAULT_GEMINI_MODEL='gemini-3.5-flash-lite'
+export const DEFAULT_GEMINI_FALLBACK_MODELS=[
+ 'gemini-3.5-flash-lite',
+ 'gemini-3.1-flash-lite',
+ 'gemini-3.6-flash',
+ 'gemini-3.8-flash',
+ 'gemini-4-hydrogen'
+]
+export const DEFAULT_UNAVAILABLE_RETRY_MS=5000
 export const DEFAULT_MAX_ARTICLES=15
 export const BOOTSTRAP_THRESHOLD=1000
 export const BOOTSTRAP_MAX_ARTICLES=20
@@ -171,8 +177,8 @@ export class GeminiUnavailableError extends Error{
 }
 
 /**
- * Resolve primary + ordered fallback Gemini Flash-Lite models.
- * Defaults to: gemini-3.1-flash-lite -> gemini-3.5-flash-lite -> gemini-2.5-flash-lite.
+ * Resolve primary + ordered fallback Gemini models.
+ * Defaults to: gemini-3.5-flash-lite -> gemini-3.1-flash-lite -> gemini-3.6-flash -> gemini-3.8-flash -> gemini-4-hydrogen.
  * Configurable via optional GEMINI_FALLBACK_MODELS env var (comma-separated).
  */
 export function resolveGeminiModelChain({
@@ -700,12 +706,12 @@ export async function callGeminiFlashLite(prompt,{apiKey,model=DEFAULT_GEMINI_MO
 
 const isQuotaError=err=>err instanceof GeminiQuotaExhausted||Boolean(err?.isQuota)||err?.status===429
 const isUnavailableError=err=>err instanceof GeminiUnavailableError||Boolean(err?.isUnavailable)||err?.status===503||err?.status===502||err?.status===504||/\b503\b|\bUNAVAILABLE\b|high demand|overloaded/i.test(String(err?.message||''))
-const isModelNotFoundError=err=>err?.status===404||/Gemini HTTP 404/i.test(String(err?.message||''))
+const isModelNotFoundError=err=>err?.status===404||/Gemini HTTP 404|\bNOT_FOUND\b|no longer available/i.test(String(err?.message||''))
 
 /**
- * Execute a Gemini call with automatic multi-key failover (429) and transient
- * 503 UNAVAILABLE retry + ordered model fallback (e.g. gemini-3.1-flash-lite ->
- * gemini-3.5-flash-lite -> gemini-2.5-flash-lite).
+ * Execute a Gemini call with automatic multi-key failover (429), immediate
+ * model fallback on 404/retired models, and retry-once backoff on transient
+ * 503 UNAVAILABLE / 429 before moving to the next active model.
  */
 export async function callGeminiWithFailover(
  prompt,
@@ -726,6 +732,7 @@ export async function callGeminiWithFailover(
  const primaryModel=modelChain[0]
  let lastQuotaError=null
  let lastUnavailableError=null
+ let lastModelNotFoundError=null
 
  for(let modelIdx=0;modelIdx<modelChain.length;modelIdx++){
   const activeModel=modelChain[modelIdx]
@@ -759,7 +766,8 @@ export async function callGeminiWithFailover(
      }
      keyState.activeIndex=keys.length
      if(nextModel){
-      console.warn(`[batch]   -> All ${keys.length} key(s) hit 429/quota on ${activeModel}. Falling back to model ${nextModel}...`)
+      console.warn(`[batch]   -> All ${keys.length} key(s) hit 429/quota on ${activeModel}. Waiting ${(unavailableRetryMs/1000).toFixed(1)}s then falling back to model ${nextModel}...`)
+      if(unavailableRetryMs>0)await waitImpl(unavailableRetryMs)
       break
      }
      throw new GeminiQuotaExhausted(`All ${keys.length} configured Gemini API key(s) exhausted quota across models [${modelChain.join(', ')}] (${[...keyState.exhaustedKeys].join(', ')})`,429)
@@ -780,9 +788,13 @@ export async function callGeminiWithFailover(
      throw lastUnavailableError
     }
 
-    if(isModelNotFoundError(err)&&nextModel){
-     console.warn(`[batch]   -> Model ${activeModel} returned 404 (${err.message}). Falling back to ${nextModel}...`)
-     break
+    if(isModelNotFoundError(err)){
+     lastModelNotFoundError=err
+     if(nextModel){
+      console.warn(`[batch]   -> Model ${activeModel} returned 404/unavailable (${err.message}). Immediately falling back to ${nextModel}...`)
+      break
+     }
+     throw err
     }
 
     throw err
@@ -791,6 +803,7 @@ export async function callGeminiWithFailover(
  }
 
  if(lastUnavailableError&&!lastQuotaError)throw lastUnavailableError
+ if(lastModelNotFoundError&&!lastQuotaError)throw lastModelNotFoundError
  throw new GeminiQuotaExhausted(`All ${keys.length} configured Gemini API key(s) exhausted quota across models [${modelChain.join(', ')}]`,429)
 }
 

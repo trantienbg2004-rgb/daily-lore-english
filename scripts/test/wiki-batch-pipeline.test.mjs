@@ -392,6 +392,7 @@ test('resolveGeminiApiKeys and callGeminiWithFailover rotate through primary + 2
 
  await assert.rejects(
   ()=>callGeminiWithFailover('next',state,{
+   waitImpl:async()=>{},
    callGeminiImpl:async()=>{throw new GeminiQuotaExhausted('429 RESOURCE_EXHAUSTED',429)}
   }),
   err=>err instanceof GeminiQuotaExhausted
@@ -399,11 +400,18 @@ test('resolveGeminiApiKeys and callGeminiWithFailover rotate through primary + 2
  assert.deepEqual([...state.exhaustedKeys],['GEMINI_API_KEY','GEMINI_API_KEY_2','GEMINI_API_KEY_3'])
 })
 
-test('resolveGeminiModelChain and callGeminiWithFailover retry 503 UNAVAILABLE once then fall back through Flash-Lite chain',async()=>{
- assert.deepEqual(resolveGeminiModelChain({env:{}}),['gemini-3.1-flash-lite','gemini-3.5-flash-lite','gemini-2.5-flash-lite'])
+test('resolveGeminiModelChain and callGeminiWithFailover handle 404 immediately and retry 503/429 before falling back',async()=>{
  assert.deepEqual(
-  resolveGeminiModelChain({model:'gemini-3.1-flash-lite',env:{GEMINI_FALLBACK_MODELS:'gemini-2.5-flash-lite, gemini-3.5-flash-lite'}}),
-  ['gemini-3.1-flash-lite','gemini-2.5-flash-lite','gemini-3.5-flash-lite']
+  resolveGeminiModelChain({env:{}}),
+  ['gemini-3.5-flash-lite','gemini-3.1-flash-lite','gemini-3.6-flash','gemini-3.8-flash','gemini-4-hydrogen']
+ )
+ assert.deepEqual(
+  resolveGeminiModelChain({model:'gemini-3.1-flash-lite',env:{}}),
+  ['gemini-3.1-flash-lite','gemini-3.5-flash-lite','gemini-3.6-flash','gemini-3.8-flash','gemini-4-hydrogen']
+ )
+ assert.deepEqual(
+  resolveGeminiModelChain({model:'gemini-3.5-flash-lite',env:{GEMINI_FALLBACK_MODELS:'gemini-3.6-flash, gemini-3.8-flash'}}),
+  ['gemini-3.5-flash-lite','gemini-3.6-flash','gemini-3.8-flash']
  )
 
  const keys=[{label:'GEMINI_API_KEY',key:'key-1'}]
@@ -411,40 +419,48 @@ test('resolveGeminiModelChain and callGeminiWithFailover retry 503 UNAVAILABLE o
  const attempts=[]
  const waits=[]
 
- // 503 twice on 3.1-flash-lite, 503 twice on 3.5-flash-lite, succeeds on 2.5-flash-lite
+ // 503 twice on 3.5-flash-lite (retried once after backoff), 404 immediately on 3.1-flash-lite (no wait), succeeds on 3.6-flash
  const res=await callGeminiWithFailover('prompt',state,{
-  unavailableRetryMs:4000,
+  unavailableRetryMs:5000,
   waitImpl:async ms=>{waits.push(ms)},
   callGeminiImpl:async(_prompt,{model})=>{
    attempts.push(model)
-   if(model==='gemini-3.1-flash-lite'||model==='gemini-3.5-flash-lite'){
+   if(model==='gemini-3.5-flash-lite'){
     throw new GeminiUnavailableError('Gemini HTTP 503 UNAVAILABLE: This model is currently experiencing high demand',503)
+   }
+   if(model==='gemini-3.1-flash-lite'){
+    const err=Error('Gemini HTTP 404: models/gemini-3.1-flash-lite is no longer available to new users')
+    err.status=404
+    throw err
    }
    return {draft:{ok:true},usage:null}
   }
  })
  assert.deepEqual(attempts,[
-  'gemini-3.1-flash-lite','gemini-3.1-flash-lite',
   'gemini-3.5-flash-lite','gemini-3.5-flash-lite',
-  'gemini-2.5-flash-lite'
+  'gemini-3.1-flash-lite',
+  'gemini-3.6-flash'
  ])
- assert.deepEqual(waits,[4000,4000])
- assert.equal(res.model,'gemini-2.5-flash-lite')
+ assert.deepEqual(waits,[5000])
+ assert.equal(res.model,'gemini-3.6-flash')
  assert.equal(res.fallbackUsed,true)
 
- // 429 on primary model falls back to next model when all keys hit quota on primary
+ // 429 on primary model waits once then falls back to next active model when all keys hit quota
  const quotaState={keys:[{label:'GEMINI_API_KEY',key:'key-1'}],activeIndex:0,exhaustedKeys:new Set()}
  const quotaAttempts=[]
+ const quotaWaits=[]
  const quotaRes=await callGeminiWithFailover('prompt',quotaState,{
-  waitImpl:async()=>{},
+  unavailableRetryMs:5000,
+  waitImpl:async ms=>{quotaWaits.push(ms)},
   callGeminiImpl:async(_prompt,{model})=>{
    quotaAttempts.push(model)
-   if(model==='gemini-3.1-flash-lite')throw new GeminiQuotaExhausted('429 RESOURCE_EXHAUSTED',429)
+   if(model==='gemini-3.5-flash-lite')throw new GeminiQuotaExhausted('429 RESOURCE_EXHAUSTED',429)
    return {draft:{ok:true},usage:null}
   }
  })
- assert.deepEqual(quotaAttempts,['gemini-3.1-flash-lite','gemini-3.5-flash-lite'])
- assert.equal(quotaRes.model,'gemini-3.5-flash-lite')
+ assert.deepEqual(quotaAttempts,['gemini-3.5-flash-lite','gemini-3.1-flash-lite'])
+ assert.deepEqual(quotaWaits,[5000])
+ assert.equal(quotaRes.model,'gemini-3.1-flash-lite')
  assert.equal(quotaRes.fallbackUsed,true)
 })
 
