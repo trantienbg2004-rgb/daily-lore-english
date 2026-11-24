@@ -1,13 +1,13 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-24T13:57:19.434Z",
+  "updatedAt": "2026-11-24T16:56:10.502Z",
   "total": 1795,
   "counts": {
-    "pending": 1653,
+    "pending": 1652,
     "published": 9,
     "skipped_no_image": 0,
     "skipped_no_lead_image": 132,
-    "skipped_quality": 1
+    "skipped_quality": 2
   },
   "byTopic": {
     "Politics": {
@@ -35,11 +35,11 @@
       "total": 180
     },
     "Society": {
-      "pending": 165,
+      "pending": 164,
       "published": 0,
       "skipped_no_image": 0,
       "skipped_no_lead_image": 14,
-      "skipped_quality": 0,
+      "skipped_quality": 1,
       "total": 179
     },
     "Culture": {
@@ -113,10 +113,17 @@
       "priority": 0,
       "sourceUrl": "https://en.wikipedia.org/wiki/Central_Monitoring_System",
       "hasLeadImage": true,
-      "status": "pending",
+      "status": "skipped_quality",
       "addedAt": "2026-11-22T02:47:22.530Z",
       "requeuedAt": "2026-11-22T02:47:22.530Z",
-      "requeuedReason": "cefr_upgrade"
+      "requeuedReason": "cefr_upgrade",
+      "qualityErrors": [
+        "A1-A2 page 1 (photo page): word count 66 outside A1-A2 fixed-card bounds (34-46 words)",
+        "B1-B2 page 1 (photo page): word count 55 outside B1-B2 fixed-card bounds (32-44 words)",
+        "B1-B2 page 1: dry encyclopedia opening detected (\"X is a...\"); rewrite with a vivid magazine hook",
+        "C1-C2 page 1 (photo page): word count 52 outside C1-C2 fixed-card bounds (28-42 words)"
+      ],
+      "checkedAt": "2026-11-24T16:44:30.686Z"
     },
     {
       "title": "Anti-capitalism",
