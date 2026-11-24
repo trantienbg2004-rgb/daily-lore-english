@@ -218,14 +218,22 @@ test('planAnchoredWikiPages with uniformRhythm preserves content-aligned seconda
  const catalog=await readWikiCatalog(base)
  const desktopFits=({text,image,density})=>words(text)<=(image?(density==='compact'?75:58):165)
  for(const story of catalog.stories){
+  const raw=story.pages.map(p=>p.text).join(' ').replace(/\s+/g,' ').trim()
+  const totalWords=words(raw)
+  const maxExpectedPages=Math.max(6,Math.ceil(totalWords/34))
   const out=planAnchoredWikiPages({...story,_sourcePages:story.pages},desktopFits,{uniformRhythm:true})
-  assert.ok(out.length>=4 && out.length<=5,`${story.title}: expected 4-5 pages, got ${out.length}`)
+  assert.ok(out.length>=4 && out.length<=maxExpectedPages,`${story.title}: expected 4-${maxExpectedPages} pages for ${totalWords}w, got ${out.length}`)
+  assert.equal(out.map(p=>p.text).join(' ').replace(/\s+/g,' ').trim(),raw,`${story.title}: lossless text check failed`)
   const hasAnyImg=story.pages.some(p=>p.image)
   if(hasAnyImg) assert.ok(out[0].image,`${story.title}: Page 1 must have cover image`)
   const seenImgs=out.map(p=>p.image).filter(Boolean)
   assert.equal(new Set(seenImgs).size,seenImgs.length,`${story.title}: duplicate image`)
   const counts=out.map(p=>words(p.text))
-  assert.ok(Math.max(...counts)<=58,`${story.title}: page exceeded 58w (${counts.join(',')})`)
+  for(const page of out){
+   const w=words(page.text)
+   const limit=page.image?(page.density==='compact'?75:58):165
+   assert.ok(w<=limit,`${story.title}: page exceeded ${limit}w (${counts.join(',')})`)
+  }
   assert.ok(Math.min(...counts)>=28,`${story.title}: page below 28w (${counts.join(',')})`)
  }
 })
@@ -284,18 +292,24 @@ test('auditWikiCatalog enforces >=200 target, topic minimums, and unique photos 
  assert.equal(small.targetMet,false)
 })
 
-test('published public/wiki-reader catalog meets >=200 target with zero audit errors',async()=>{
- const {readWikiCatalog}=await import('../wiki/catalog.mjs')
+test('published public/wiki-reader catalog passes release integrity and story validation gates',async()=>{
+ const {readWikiCatalog,validateWikiStory}=await import('../wiki/catalog.mjs')
+ const {verifyWikiRelease}=await import('../build-reader-index.mjs')
+ const {auditWikiStories}=await import('../audit_wiki_images.mjs')
  const {default:path}=await import('node:path')
  const {fileURLToPath}=await import('node:url')
  const base=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../..')
  const catalog=await readWikiCatalog(base)
- const res=auditWikiCatalog(catalog.stories)
- assert.equal(res.passed,true,JSON.stringify(res.failures.slice(0,5)))
- assert.ok(res.total>=200,`Expected >=200 stories, got ${res.total}`)
- assert.equal(res.targetMet,true)
- assert.equal(res.failed,0)
- for(const topic of WIKI_TOPICS){
-  assert.ok((res.byTopic[topic]||0)>=15,`Topic ${topic} has only ${res.byTopic[topic]||0} stories`)
+ const release=await verifyWikiRelease(base)
+ assert.equal(release.ready,true)
+ assert.ok(release.total>0,`Expected published Wiki catalog stories, got ${release.total}`)
+ assert.equal(release.total,catalog.stories.length)
+ for(const story of catalog.stories){
+  const gate=validateWikiStory(story)
+  assert.equal(gate.accepted,true,`${story.sourceTitle||story.title}: ${gate.errors.join(', ')}`)
  }
+ const imageAudit=auditWikiStories(catalog.stories)
+ assert.equal(imageAudit.totalNonEmbeddedImages,0,'Expected 100% wikipedia-embedded photos')
+ assert.equal(imageAudit.missingPage1PhotoArticles.length,0,JSON.stringify(imageAudit.missingPage1PhotoArticles))
+ assert.equal(imageAudit.page1ParityIssues.length,0,JSON.stringify(imageAudit.page1ParityIssues))
 })

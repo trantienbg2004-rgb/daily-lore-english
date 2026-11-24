@@ -23,6 +23,8 @@ import {CEFR_THRESHOLDS,evaluateArticleCEFR} from './wiki/cefrProfiler.mjs'
 const ROOT=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..')
 const DEFAULT_QUEUE_FILE=path.join(ROOT,'data','wiki_queue.json')
 export const DEFAULT_GEMINI_MODEL='gemini-3.1-flash-lite'
+export const DEFAULT_GEMINI_FALLBACK_MODELS=['gemini-3.5-flash-lite','gemini-2.5-flash-lite']
+export const DEFAULT_UNAVAILABLE_RETRY_MS=4000
 export const DEFAULT_MAX_ARTICLES=15
 export const BOOTSTRAP_THRESHOLD=1000
 export const BOOTSTRAP_MAX_ARTICLES=20
@@ -157,6 +159,45 @@ export class GeminiQuotaExhausted extends Error{
   this.status=status
   this.isQuota=true
  }
+}
+
+export class GeminiUnavailableError extends Error{
+ constructor(message,status=503){
+  super(message)
+  this.name='GeminiUnavailableError'
+  this.status=status
+  this.isUnavailable=true
+ }
+}
+
+/**
+ * Resolve primary + ordered fallback Gemini Flash-Lite models.
+ * Defaults to: gemini-3.1-flash-lite -> gemini-3.5-flash-lite -> gemini-2.5-flash-lite.
+ * Configurable via optional GEMINI_FALLBACK_MODELS env var (comma-separated).
+ */
+export function resolveGeminiModelChain({
+ model=DEFAULT_GEMINI_MODEL,
+ fallbackModels=null,
+ env=process.env
+}={}){
+ const primary=String(model||DEFAULT_GEMINI_MODEL).trim()||DEFAULT_GEMINI_MODEL
+ let extras
+ if(Array.isArray(fallbackModels)){
+  extras=fallbackModels
+ }else if(typeof fallbackModels==='string'){
+  extras=fallbackModels.split(',')
+ }else if(env&&typeof env.GEMINI_FALLBACK_MODELS==='string'&&env.GEMINI_FALLBACK_MODELS.trim()!==''){
+  const raw=env.GEMINI_FALLBACK_MODELS.trim()
+  extras=/^(?:none|off|false)$/i.test(raw)?[]:raw.split(',')
+ }else{
+  extras=DEFAULT_GEMINI_FALLBACK_MODELS
+ }
+ const chain=[]
+ for(const entry of [primary,...extras]){
+  const name=String(entry||'').trim()
+  if(name&&!chain.includes(name))chain.push(name)
+ }
+ return chain
 }
 
 /**
@@ -633,8 +674,13 @@ export async function callGeminiFlashLite(prompt,{apiKey,model=DEFAULT_GEMINI_MO
  if(response.status===429||/RESOURCE_EXHAUSTED|quota exceeded|rate limit/i.test(rawText)){
   throw new GeminiQuotaExhausted(`Gemini HTTP ${response.status} rate limit / quota exhausted`,response.status)
  }
+ if(response.status===503||response.status===502||response.status===504||/\bUNAVAILABLE\b|high demand|overloaded/i.test(rawText)){
+  throw new GeminiUnavailableError(`Gemini HTTP ${response.status}: ${rawText.slice(0,220)}`,response.status)
+ }
  if(!response.ok){
-  throw Error(`Gemini HTTP ${response.status}: ${rawText.slice(0,220)}`)
+  const err=Error(`Gemini HTTP ${response.status}: ${rawText.slice(0,220)}`)
+  err.status=response.status
+  throw err
  }
 
  let payload
@@ -652,37 +698,100 @@ export async function callGeminiFlashLite(prompt,{apiKey,model=DEFAULT_GEMINI_MO
  }
 }
 
+const isQuotaError=err=>err instanceof GeminiQuotaExhausted||Boolean(err?.isQuota)||err?.status===429
+const isUnavailableError=err=>err instanceof GeminiUnavailableError||Boolean(err?.isUnavailable)||err?.status===503||err?.status===502||err?.status===504||/\b503\b|\bUNAVAILABLE\b|high demand|overloaded/i.test(String(err?.message||''))
+const isModelNotFoundError=err=>err?.status===404||/Gemini HTTP 404/i.test(String(err?.message||''))
+
 /**
- * Execute a Gemini call with automatic multi-key failover.
- * If the active key hits 429 / RESOURCE_EXHAUSTED, rotates to the next backup key
- * and retries immediately; only throws GeminiQuotaExhausted after ALL keys hit quota.
+ * Execute a Gemini call with automatic multi-key failover (429) and transient
+ * 503 UNAVAILABLE retry + ordered model fallback (e.g. gemini-3.1-flash-lite ->
+ * gemini-3.5-flash-lite -> gemini-2.5-flash-lite).
  */
-export async function callGeminiWithFailover(prompt,keyState,{model=DEFAULT_GEMINI_MODEL,fetchImpl=fetch,callGeminiImpl=callGeminiFlashLite}={}){
+export async function callGeminiWithFailover(
+ prompt,
+ keyState,
+ {
+  model=DEFAULT_GEMINI_MODEL,
+  fallbackModels=null,
+  unavailableRetryMs=DEFAULT_UNAVAILABLE_RETRY_MS,
+  waitImpl=sleep,
+  fetchImpl=fetch,
+  callGeminiImpl=callGeminiFlashLite
+ }={}
+){
  const keys=keyState?.keys||[]
  if(!keys.length)throw Error('No Gemini API keys configured')
 
- while(keyState.activeIndex<keys.length){
-  const current=keys[keyState.activeIndex]
-  try{
-   const result=await callGeminiImpl(prompt,{apiKey:current.key,model,fetchImpl})
-   return {...result,keyLabel:current.label}
-  }catch(err){
-   if(err instanceof GeminiQuotaExhausted||err?.isQuota||err?.status===429){
-    keyState.exhaustedKeys.add(current.label)
-    const nextIndex=keyState.activeIndex+1
-    if(nextIndex<keys.length){
-     console.warn(`[batch]   -> Key ${current.label} hit 429/quota. Failing over to backup key ${keys[nextIndex].label}...`)
-     keyState.activeIndex=nextIndex
-     continue
+ const modelChain=resolveGeminiModelChain({model,fallbackModels})
+ const primaryModel=modelChain[0]
+ let lastQuotaError=null
+ let lastUnavailableError=null
+
+ for(let modelIdx=0;modelIdx<modelChain.length;modelIdx++){
+  const activeModel=modelChain[modelIdx]
+  const nextModel=modelChain[modelIdx+1]||null
+  // When trying a fallback model after an earlier model hit per-model 429 across all keys,
+  // start from key 0 again because free-tier quotas are tracked per model.
+  if(modelIdx>0&&keyState.activeIndex>=keys.length){
+   keyState.activeIndex=0
+  }
+
+  let retriedUnavailable=false
+  while(keyState.activeIndex<keys.length){
+   const current=keys[keyState.activeIndex]
+   try{
+    const result=await callGeminiImpl(prompt,{apiKey:current.key,model:activeModel,fetchImpl})
+    if(modelIdx>0){
+     console.log(`[batch]   -> Gemini succeeded with fallback model ${activeModel} (key=${current.label}, primary=${primaryModel}).`)
+    }else if(retriedUnavailable){
+     console.log(`[batch]   -> Gemini succeeded on retry with model ${activeModel} (key=${current.label}).`)
     }
-    keyState.activeIndex=keys.length
-    throw new GeminiQuotaExhausted(`All ${keys.length} configured Gemini API key(s) exhausted quota (${[...keyState.exhaustedKeys].join(', ')})`,429)
+    return {...result,keyLabel:current.label,model:activeModel,fallbackUsed:modelIdx>0}
+   }catch(err){
+    if(isQuotaError(err)){
+     lastQuotaError=err
+     keyState.exhaustedKeys.add(current.label)
+     const nextIndex=keyState.activeIndex+1
+     if(nextIndex<keys.length){
+      console.warn(`[batch]   -> Key ${current.label} hit 429/quota on ${activeModel}. Failing over to backup key ${keys[nextIndex].label}...`)
+      keyState.activeIndex=nextIndex
+      continue
+     }
+     keyState.activeIndex=keys.length
+     if(nextModel){
+      console.warn(`[batch]   -> All ${keys.length} key(s) hit 429/quota on ${activeModel}. Falling back to model ${nextModel}...`)
+      break
+     }
+     throw new GeminiQuotaExhausted(`All ${keys.length} configured Gemini API key(s) exhausted quota across models [${modelChain.join(', ')}] (${[...keyState.exhaustedKeys].join(', ')})`,429)
+    }
+
+    if(isUnavailableError(err)){
+     lastUnavailableError=err instanceof GeminiUnavailableError?err:new GeminiUnavailableError(err.message,err?.status||503)
+     if(!retriedUnavailable){
+      retriedUnavailable=true
+      console.warn(`[batch]   -> Model ${activeModel} returned 503/UNAVAILABLE (${err.message}). Retrying once in ${(unavailableRetryMs/1000).toFixed(1)}s...`)
+      if(unavailableRetryMs>0)await waitImpl(unavailableRetryMs)
+      continue
+     }
+     if(nextModel){
+      console.warn(`[batch]   -> Model ${activeModel} still unavailable after retry (${err.message}). Falling back to ${nextModel}...`)
+      break
+     }
+     throw lastUnavailableError
+    }
+
+    if(isModelNotFoundError(err)&&nextModel){
+     console.warn(`[batch]   -> Model ${activeModel} returned 404 (${err.message}). Falling back to ${nextModel}...`)
+     break
+    }
+
+    throw err
    }
-   throw err
   }
  }
 
- throw new GeminiQuotaExhausted(`All ${keys.length} configured Gemini API key(s) exhausted quota`,429)
+ if(lastUnavailableError&&!lastQuotaError)throw lastUnavailableError
+ throw new GeminiQuotaExhausted(`All ${keys.length} configured Gemini API key(s) exhausted quota across models [${modelChain.join(', ')}]`,429)
 }
 
 function normalizeOptionalImageId(value,validImageIds=null){
@@ -861,6 +970,8 @@ export async function runPublishWikiBatch({
  apiKey=process.env.GEMINI_API_KEY||'',
  apiKeys=null,
  model=process.env.GEMINI_MODEL||DEFAULT_GEMINI_MODEL,
+ fallbackModels=null,
+ unavailableRetryMs=DEFAULT_UNAVAILABLE_RETRY_MS,
  delayMs=DEFAULT_DELAY_MS,
  dryRun=false,
  fetchImpl=fetch,
@@ -915,7 +1026,8 @@ export async function runPublishWikiBatch({
  const schedule=explicitTitles.length
   ?explicitTitles.map(title=>({title,topic:'History & Geography',status:'pending',_explicit:true}))
   :buildRoundRobinOrder(queue.items,{byTopic,usedPageIds})
- console.log(`[batch] Starting ${dryRun?'DRY-RUN ':''}publish [stage=${schedulePlan.stage}]: targetPublished=${targetPublished}, model=${model}, keys=${resolvedKeys.length}, pending=${schedule.length}, published=${catalogTotal}`)
+ const modelChain=resolveGeminiModelChain({model,fallbackModels})
+ console.log(`[batch] Starting ${dryRun?'DRY-RUN ':''}publish [stage=${schedulePlan.stage}]: targetPublished=${targetPublished}, model=${modelChain[0]}, fallbacks=[${modelChain.slice(1).join(', ')}], keys=${resolvedKeys.length}, pending=${schedule.length}, published=${catalogTotal}`)
 
  const generatedStories=[]
  const publishedItems=[]
@@ -937,7 +1049,7 @@ export async function runPublishWikiBatch({
    await waitImpl(delayMs)
   }
   geminiCalls++
-  return callGeminiWithFailover(prompt,keyState,{model,fetchImpl,callGeminiImpl})
+  return callGeminiWithFailover(prompt,keyState,{model:modelChain[0],fallbackModels:modelChain.slice(1),unavailableRetryMs,waitImpl,fetchImpl,callGeminiImpl})
  }
 
  for(let idx=0;idx<maxCandidatesToScan&&generatedStories.length<targetPublished;idx++){
@@ -975,12 +1087,14 @@ export async function runPublishWikiBatch({
 
    let normalizedDraft
    let quality
+   let usedModel=dryRun?'dry-run':modelChain[0]
    if(dryRun){
     normalizedDraft=normalizeDraftForCatalog(makeDryRunDraft(source,trimmed.evidence,verifiedPhotos),{source,evidence:trimmed.evidence,verifiedPhotos})
     quality=validateArticleQuality(normalizedDraft,source.sourceTitle)
    }else{
     const prompt=buildBatchPrompt(source,item.topic,trimmed.evidence,verifiedPhotos)
     const firstRes=await invokeGeminiWithDelay(prompt)
+    usedModel=firstRes.model||usedModel
     normalizedDraft=normalizeDraftForCatalog(firstRes.draft,{source,evidence:trimmed.evidence,verifiedPhotos})
     quality=validateArticleQuality(normalizedDraft,source.sourceTitle)
 
@@ -989,6 +1103,7 @@ export async function runPublishWikiBatch({
      console.warn(`[batch]   -> Quality gate failed (${quality.errors.length} issue(s)); retrying ONCE with feedback...`)
      const retryPrompt=buildQualityRetryPrompt(source,item.topic,trimmed.evidence,normalizedDraft,quality.errors,verifiedPhotos,quality)
      const retryRes=await invokeGeminiWithDelay(retryPrompt)
+     usedModel=retryRes.model||usedModel
      normalizedDraft=normalizeDraftForCatalog(retryRes.draft,{source,evidence:trimmed.evidence,verifiedPhotos})
      quality=validateArticleQuality(normalizedDraft,source.sourceTitle)
     }
@@ -1049,7 +1164,7 @@ export async function runPublishWikiBatch({
    item.status='published'
    item.publishedAt=story.publishedAt
    const imgBindingSummary=assigned.photos.map(p=>`P${p.pageIndex+1}:${p.imageId}(sec${p.sectionIndex}:${p.sectionHeading})`).join(', ')
-   console.log(`[batch]   -> OK: "${story.title}" (${trimmed.wordCount}w src, ${assigned.photos.length} embedded photo(s) [${imgBindingSummary}], ${story.pages.length} pages, CEFR FKGL ${quality.metrics['A1-A2'].fkgl}/${quality.metrics['B1-B2'].fkgl}/${quality.metrics['C1-C2'].fkgl}, avg ${quality.metrics['A1-A2'].avgSentenceWords}/${quality.metrics['B1-B2'].avgSentenceWords}/${quality.metrics['C1-C2'].avgSentenceWords}w/sent).`)
+   console.log(`[batch]   -> OK: "${story.title}" [model=${usedModel}] (${trimmed.wordCount}w src, ${assigned.photos.length} embedded photo(s) [${imgBindingSummary}], ${story.pages.length} pages, CEFR FKGL ${quality.metrics['A1-A2'].fkgl}/${quality.metrics['B1-B2'].fkgl}/${quality.metrics['C1-C2'].fkgl}, avg ${quality.metrics['A1-A2'].avgSentenceWords}/${quality.metrics['B1-B2'].avgSentenceWords}/${quality.metrics['C1-C2'].avgSentenceWords}w/sent).`)
   }catch(err){
    if(err instanceof GeminiQuotaExhausted||err?.isQuota||err?.status===429){
     console.warn(`[batch] All Gemini API keys hit quota (${err.message}). Saving ${generatedStories.length} generated article(s) and stopping gracefully.`)
@@ -1102,25 +1217,27 @@ function parseArgs(argv){
   maxArticles:envMax,
   eventName:process.env.GITHUB_EVENT_NAME||'',
   delayMs:process.env.GEMINI_DELAY_MS!==undefined?Number(process.env.GEMINI_DELAY_MS):DEFAULT_DELAY_MS,
-  model:process.env.GEMINI_MODEL||DEFAULT_GEMINI_MODEL,
-  queueFile:DEFAULT_QUEUE_FILE,
-  titles:[],
-  dryRun:false
- }
- for(const arg of argv){
-  if(arg==='--dry-run')opts.dryRun=true
-  else if(arg.startsWith('--max-articles=')){
-   const val=Number(arg.split('=')[1])
-   if(Number.isFinite(val)&&val>0)opts.maxArticles=Math.floor(val)
+   model:process.env.GEMINI_MODEL||DEFAULT_GEMINI_MODEL,
+   fallbackModels:process.env.GEMINI_FALLBACK_MODELS||null,
+   queueFile:DEFAULT_QUEUE_FILE,
+   titles:[],
+   dryRun:false
   }
-  else if(arg.startsWith('--event-name='))opts.eventName=arg.split('=')[1].trim()
-  else if(arg.startsWith('--delay-ms='))opts.delayMs=Math.max(0,Number(arg.split('=')[1])||0)
-  else if(arg.startsWith('--model='))opts.model=arg.split('=')[1].trim()||DEFAULT_GEMINI_MODEL
-  else if(arg.startsWith('--queue-file='))opts.queueFile=path.resolve(arg.split('=')[1])
-  else if(arg.startsWith('--title='))opts.titles.push(arg.slice('--title='.length).trim())
+  for(const arg of argv){
+   if(arg==='--dry-run')opts.dryRun=true
+   else if(arg.startsWith('--max-articles=')){
+    const val=Number(arg.split('=')[1])
+    if(Number.isFinite(val)&&val>0)opts.maxArticles=Math.floor(val)
+   }
+   else if(arg.startsWith('--event-name='))opts.eventName=arg.split('=')[1].trim()
+   else if(arg.startsWith('--delay-ms='))opts.delayMs=Math.max(0,Number(arg.split('=')[1])||0)
+   else if(arg.startsWith('--model='))opts.model=arg.split('=')[1].trim()||DEFAULT_GEMINI_MODEL
+   else if(arg.startsWith('--fallback-models='))opts.fallbackModels=arg.split('=')[1].trim()
+   else if(arg.startsWith('--queue-file='))opts.queueFile=path.resolve(arg.split('=')[1])
+   else if(arg.startsWith('--title='))opts.titles.push(arg.slice('--title='.length).trim())
+  }
+  return opts
  }
- return opts
-}
 
 if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.url)){
  const opts=parseArgs(process.argv.slice(2))

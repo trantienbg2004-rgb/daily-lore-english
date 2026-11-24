@@ -24,9 +24,11 @@ import {
  buildRoundRobinOrder,
  callGeminiWithFailover,
  GeminiQuotaExhausted,
+ GeminiUnavailableError,
  LEVEL_WORD_BOUNDS,
  resolveAutoSchedulePlan,
  resolveGeminiApiKeys,
+ resolveGeminiModelChain,
  runPublishWikiBatch,
  trimWikipediaEvidence,
  validateArticleQuality
@@ -395,6 +397,55 @@ test('resolveGeminiApiKeys and callGeminiWithFailover rotate through primary + 2
   err=>err instanceof GeminiQuotaExhausted
  )
  assert.deepEqual([...state.exhaustedKeys],['GEMINI_API_KEY','GEMINI_API_KEY_2','GEMINI_API_KEY_3'])
+})
+
+test('resolveGeminiModelChain and callGeminiWithFailover retry 503 UNAVAILABLE once then fall back through Flash-Lite chain',async()=>{
+ assert.deepEqual(resolveGeminiModelChain({env:{}}),['gemini-3.1-flash-lite','gemini-3.5-flash-lite','gemini-2.5-flash-lite'])
+ assert.deepEqual(
+  resolveGeminiModelChain({model:'gemini-3.1-flash-lite',env:{GEMINI_FALLBACK_MODELS:'gemini-2.5-flash-lite, gemini-3.5-flash-lite'}}),
+  ['gemini-3.1-flash-lite','gemini-2.5-flash-lite','gemini-3.5-flash-lite']
+ )
+
+ const keys=[{label:'GEMINI_API_KEY',key:'key-1'}]
+ const state={keys,activeIndex:0,exhaustedKeys:new Set()}
+ const attempts=[]
+ const waits=[]
+
+ // 503 twice on 3.1-flash-lite, 503 twice on 3.5-flash-lite, succeeds on 2.5-flash-lite
+ const res=await callGeminiWithFailover('prompt',state,{
+  unavailableRetryMs:4000,
+  waitImpl:async ms=>{waits.push(ms)},
+  callGeminiImpl:async(_prompt,{model})=>{
+   attempts.push(model)
+   if(model==='gemini-3.1-flash-lite'||model==='gemini-3.5-flash-lite'){
+    throw new GeminiUnavailableError('Gemini HTTP 503 UNAVAILABLE: This model is currently experiencing high demand',503)
+   }
+   return {draft:{ok:true},usage:null}
+  }
+ })
+ assert.deepEqual(attempts,[
+  'gemini-3.1-flash-lite','gemini-3.1-flash-lite',
+  'gemini-3.5-flash-lite','gemini-3.5-flash-lite',
+  'gemini-2.5-flash-lite'
+ ])
+ assert.deepEqual(waits,[4000,4000])
+ assert.equal(res.model,'gemini-2.5-flash-lite')
+ assert.equal(res.fallbackUsed,true)
+
+ // 429 on primary model falls back to next model when all keys hit quota on primary
+ const quotaState={keys:[{label:'GEMINI_API_KEY',key:'key-1'}],activeIndex:0,exhaustedKeys:new Set()}
+ const quotaAttempts=[]
+ const quotaRes=await callGeminiWithFailover('prompt',quotaState,{
+  waitImpl:async()=>{},
+  callGeminiImpl:async(_prompt,{model})=>{
+   quotaAttempts.push(model)
+   if(model==='gemini-3.1-flash-lite')throw new GeminiQuotaExhausted('429 RESOURCE_EXHAUSTED',429)
+   return {draft:{ok:true},usage:null}
+  }
+ })
+ assert.deepEqual(quotaAttempts,['gemini-3.1-flash-lite','gemini-3.5-flash-lite'])
+ assert.equal(quotaRes.model,'gemini-3.5-flash-lite')
+ assert.equal(quotaRes.fallbackUsed,true)
 })
 
 test('Commons fallback is disabled, Page 1 requires Section 0 Lead photo, and validateImageAlignment strips misaligned body photos',async()=>{

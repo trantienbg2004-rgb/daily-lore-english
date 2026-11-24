@@ -264,7 +264,8 @@ test('QA edge cases: punctuation separation, word boundaries, irregular/regular 
 
   const cases = [
     ['went', 'go', 'She went home early.'],
-    ['better', 'good', 'This is a better plan.'],
+    ['brought', 'bring', 'She brought the report.'],
+    ['better', 'better', 'This is a better plan.'],
     ['companies', 'company', 'Several companies joined.'],
     ['boxes', 'box', 'They packed the boxes.'],
     ['stopped', 'stop', 'The train stopped suddenly.'],
@@ -277,6 +278,9 @@ test('QA edge cases: punctuation separation, word boundaries, irregular/regular 
     const res = await lookupDictionaryTerm(surface, { sentence, baseUrl: '/', fetchImpl: localFetch })
     assert.equal(res.found, true, `Expected ${surface} to resolve`)
     assert.equal(res.lemma, expectedLemma, `Expected ${surface} -> ${expectedLemma}, got ${res.lemma}`)
+    if (surface === 'better') {
+      assert.ok(res.options.some(o => o.fromLemma === 'good'), 'Expected better lookup to retain base lemma good senses')
+    }
   }
 
   // Non-alphabetic / numeric tokens must NOT trigger any shard fetch

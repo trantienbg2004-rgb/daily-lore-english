@@ -22,14 +22,14 @@ test('Low-watermark crossing makes one immediate manifest probe, then 60s pollin
  assert.equal(refreshDue({remaining:31,checkedAt:at-NORMAL_POLL_MS,now:at}),true)
 })
 
-test('old news workflow is absent and the isolated Wiki pilot cannot publish to main',async()=>{
+test('old news and pilot workflows are absent while Auto Wiki Publish stays server-side without exposing secrets in client code',async()=>{
  await assert.rejects(fs.access(new URL('../../.github/workflows/saga-discover-publish.yml',import.meta.url)))
- const wiki=await fs.readFile(new URL('../../.github/workflows/saga-wiki-pilot.yml',import.meta.url),'utf8')
+ await assert.rejects(fs.access(new URL('../../.github/workflows/saga-wiki-pilot.yml',import.meta.url)))
+ const wiki=await fs.readFile(new URL('../../.github/workflows/auto-wiki-publish.yml',import.meta.url),'utf8')
  const app=await fs.readFile(new URL('../../src/App.jsx',import.meta.url),'utf8')
+ assert.match(wiki,/GEMINI_API_KEY/)
  assert.match(wiki,/SAGA_IMAGE_TEST_API_KEY/)
- assert.match(wiki,/--max-calls=8/)
- assert.match(wiki,/--max-calls=2/)
- assert.match(wiki,/branches: \[feat\/saga-wikipedia-first-20261020\]/)
- assert.doesNotMatch(wiki,/schedule:|cron:|push origin .*main/)
- assert.ok(!/GITHUB_TOKEN|GH_PAT|SAGA_IMAGE_TEST_API_KEY/.test(app))
+ assert.match(wiki,/node scripts\/publish_wiki_batch\.mjs/)
+ assert.match(wiki,/ref:\s*main/)
+ assert.ok(!/GITHUB_TOKEN|GH_PAT|SAGA_IMAGE_TEST_API_KEY|GEMINI_API_KEY/.test(app))
 })
