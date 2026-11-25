@@ -16,8 +16,8 @@ import {createHash} from 'node:crypto'
 import {fileURLToPath} from 'node:url'
 import {WIKI_TOPICS} from './wiki/discovery.mjs'
 import {fetchWikipediaParsePage,WikiApiPause} from './wiki/source.mjs'
-import {appendWikiStories,makeWikiStory,readWikiCatalog,validateWikiStory} from './wiki/catalog.mjs'
-import {assignBatchPhotos,collectVerifiedArticlePhotos} from './wiki/batch-media.mjs'
+import {appendWikiStories,makeWikiStory,readWikiCatalog,replaceWikiStory,validateWikiStory} from './wiki/catalog.mjs'
+import {assignBatchPhotos,collectVerifiedArticlePhotos,findMainSubjectFallbackPhoto,formatCompleteCaption} from './wiki/batch-media.mjs'
 import {CEFR_THRESHOLDS,evaluateArticleCEFR} from './wiki/cefrProfiler.mjs'
 
 const ROOT=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..')
@@ -31,6 +31,7 @@ export const DEFAULT_GEMINI_FALLBACK_MODELS=[
 ]
 export const DEFAULT_UNAVAILABLE_RETRY_MS=5000
 export const DEFAULT_MAX_ARTICLES=15
+export const DEFAULT_REGENERATE_MAX_ARTICLES=3
 export const BOOTSTRAP_THRESHOLD=1000
 export const BOOTSTRAP_MAX_ARTICLES=8
 export const BOOTSTRAP_MAX_CANDIDATES=24
@@ -42,11 +43,20 @@ export const MIN_CANDIDATE_BUDGET_MS=45_000
 export const MIN_RETRY_BUDGET_MS=20_000
 export const MAX_COOLDOWN_MS=15_000
 const LEVELS=['A1-A2','B1-B2','C1-C2']
-export const LEVEL_WORD_BOUNDS={
+export const PAGE_COUNT_BOUNDS=Object.freeze({min:4,max:6})
+export const HEADLINE_WORD_BOUNDS=Object.freeze({min:5,max:11})
+export const CAPTION_LIMITS=Object.freeze({minWords:3,maxWords:10,maxChars:65,targetMinWords:5,targetMaxWords:8,targetMaxChars:48})
+export const LEVEL_WORD_BOUNDS=Object.freeze({
  'A1-A2':{photo:[34,46],text:[55,72]},
  'B1-B2':{photo:[32,44],text:[52,68]},
  'C1-C2':{photo:[28,42],text:[46,64]}
-}
+})
+export const LEVEL_SENTENCE_BOUNDS=Object.freeze({
+ 'A1-A2':{min:6,max:15.5,targetMin:8,targetMax:13},
+ 'B1-B2':{min:11,max:23,targetMin:14,targetMax:19},
+ 'C1-C2':{min:15,max:32,targetMin:19,targetMax:25}
+})
+export const wordRangeMidpoint=([min,max])=>Math.round((min+max)/2)
 
 /**
  * Automatic 2-stage Free-Tier publishing schedule planner ($0, zero manual maintenance).
@@ -136,6 +146,42 @@ const GLOSSARY_ITEM_SCHEMA={
  required:['surface','lemma','type','pos','ipa','vi_context','en_def','cefr']
 }
 
+const FACT_ITEM_SCHEMA={
+ type:'object',
+ properties:{
+  id:{type:'string'},
+  fact:{type:'string'},
+  evidenceIds:{type:'array',items:{type:'string'},minItems:1},
+  hasUncertainty:{type:'boolean'}
+ },
+ required:['id','fact','evidenceIds']
+}
+
+const FACT_SHEET_SCHEMA={
+ type:'object',
+ properties:{
+  mainSubject:{type:'string'},
+  coreFacts:{type:'array',items:FACT_ITEM_SCHEMA,minItems:4,maxItems:12},
+  keyEntities:{type:'array',items:{type:'string'}},
+  keyNumbersDates:{type:'array',items:{type:'string'}},
+  caveatsOrUncertainty:{type:'array',items:{type:'string'}}
+ },
+ required:['mainSubject','coreFacts']
+}
+
+const OUTLINE_PAGE_SCHEMA={
+ type:'object',
+ properties:{
+  pageIndex:{type:'integer'},
+  focus:{type:'string'},
+  factIds:{type:'array',items:{type:'string'},minItems:1},
+  evidenceIds:{type:'array',items:{type:'string'},minItems:1},
+  imageId:{anyOf:[{type:'string'},{type:'null'}]},
+  imageReason:{type:'string'}
+ },
+ required:['pageIndex','focus','factIds','evidenceIds','imageId']
+}
+
 const PAGE_SCHEMA={
  type:'object',
  properties:{
@@ -151,7 +197,7 @@ const LEVEL_SCHEMA={
  type:'object',
  properties:{
   headline:{type:'string'},
-  pages:{type:'array',items:PAGE_SCHEMA,minItems:4,maxItems:6},
+  pages:{type:'array',items:PAGE_SCHEMA,minItems:PAGE_COUNT_BOUNDS.min,maxItems:PAGE_COUNT_BOUNDS.max},
   glossary:{type:'array',items:GLOSSARY_ITEM_SCHEMA}
  },
  required:['headline','pages']
@@ -160,13 +206,45 @@ const LEVEL_SCHEMA={
 const BATCH_STORY_SCHEMA={
  type:'object',
  properties:{
+  factSheet:FACT_SHEET_SCHEMA,
+  outline:{type:'array',items:OUTLINE_PAGE_SCHEMA,minItems:PAGE_COUNT_BOUNDS.min,maxItems:PAGE_COUNT_BOUNDS.max},
   variants:{
    type:'object',
    properties:Object.fromEntries(LEVELS.map(level=>[level,LEVEL_SCHEMA])),
    required:LEVELS
   }
  },
- required:['variants']
+ required:['factSheet','outline','variants']
+}
+
+const REPAIR_PAGE_SCHEMA={
+ type:'object',
+ properties:{
+  pageIndex:{type:'integer'},
+  text:{type:'string'},
+  caption:{type:'string'},
+  evidenceIds:{type:'array',items:{type:'string'},minItems:1}
+ },
+ required:['pageIndex','text']
+}
+
+const REPAIR_LEVEL_SCHEMA={
+ type:'object',
+ properties:{
+  headline:{type:'string'},
+  pages:{type:'array',items:REPAIR_PAGE_SCHEMA}
+ }
+}
+
+const TARGETED_REPAIR_SCHEMA={
+ type:'object',
+ properties:{
+  repairs:{
+   type:'object',
+   properties:Object.fromEntries(LEVELS.map(level=>[level,REPAIR_LEVEL_SCHEMA]))
+  }
+ },
+ required:['repairs']
 }
 
 export class GeminiQuotaExhausted extends Error{
@@ -263,11 +341,11 @@ export function parseRetryAfterMs(headerValue,nowMs=Date.now()){
 }
 
 /** Build model-safe Gemini generationConfig (omits deprecated sampling params like temperature on Gemini 4 models). */
-export function buildGeminiGenerationConfig(model=DEFAULT_GEMINI_MODEL){
+export function buildGeminiGenerationConfig(model=DEFAULT_GEMINI_MODEL,{schema=BATCH_STORY_SCHEMA}={}){
  const name=String(model||'').trim().toLowerCase()
  const config={
   responseMimeType:'application/json',
-  responseJsonSchema:BATCH_STORY_SCHEMA,
+  responseJsonSchema:schema,
   maxOutputTokens:9500
  }
  // Gemini 4 models restrict deprecated sampling parameters like temperature
@@ -408,17 +486,21 @@ export function trimWikipediaEvidence(source,{targetMinWords=1200,targetMaxWords
  * Build a balanced round-robin candidate schedule across the 10 topics,
  * prioritizing topics with the fewest published articles in public/wiki-reader/.
  */
-export function buildRoundRobinOrder(queueItems,{byTopic={},usedPageIds=new Set()}={}){
+export function buildRoundRobinOrder(queueItems,{byTopic={},usedPageIds=new Set(),includeSkippedQuality=false}={}){
  const orderedTopics=[...WIKI_TOPICS].sort((a,b)=>(byTopic[a]||0)-(byTopic[b]||0)||a.localeCompare(b))
  const buckets=new Map(orderedTopics.map(topic=>[topic,[]]))
  for(const item of queueItems||[]){
-  if(item?.status!=='pending')continue
+  const eligible=includeSkippedQuality
+   ?(item?.status==='pending'||item?.status==='skipped_quality')
+   :item?.status==='pending'
+  if(!eligible)continue
   if(!WIKI_TOPICS.includes(item.topic))continue
   if(Number.isSafeInteger(item.pageId)&&usedPageIds.has(item.pageId))continue
   buckets.get(item.topic).push(item)
  }
  for(const list of buckets.values()){
   list.sort((a,b)=>
+   (includeSkippedQuality?(Number(b.status==='skipped_quality')-Number(a.status==='skipped_quality')):0)||
    (Number(!!b.hasLeadImage)-Number(!!a.hasLeadImage))||
    ((a.priority??1)-(b.priority??1))||
    ((b.views||0)-(a.views||0))
@@ -503,10 +585,170 @@ function pageImageToken(page){
  * 5. Concise image captions (when supplied), complete sentences, non-dry Page 1 hook,
  *    and measurable CEFR progression: A1-A2 < B1-B2 < C1-C2.
  */
+const FACT_STOPWORDS=new Set('about after again also among another because before being between could every first from great have into just later long made make many more most much must never often only other over people same should since some still such than that their them then there these they this those through time today under very well were what when where which while with would years'.split(' '))
+const UNCERTAINTY_SOURCE_RE=/\b(?:disputed|debated|uncertain|unclear|estimated|approximately|roughly|allegedly|possibly|probably|may cause|can cause|could cause|side effects?|risk of|adverse effects?|safety concerns?|overdose|toxic|fatal|warning|caution|contraindicated|not proven|unproven|scholars disagree|historians disagree|experts disagree|controversial|some (?:scholars|historians|scientists|researchers|critics|experts)|except (?:for|when)|under certain conditions)\b/i
+const ABSOLUTE_OVERCLAIM_RE=/\b(?:always safe|100%\s*safe|completely safe|entirely harmless|without any risk|zero risk|guaranteed to|definitely proved|proven beyond doubt|all scientists agree|all historians agree|never fails|always works|certainly true for everyone)\b/i
+const HEDGE_OR_CAUTION_RE=/\b(?:about|around|roughly|nearly|estimated|some|many|most|often|usually|sometimes|may|might|can|could|possible|possibly|likely|risk|risky|danger|dangerous|harm|harmful|careful|caution|warning|safe|safety|side effect|debate|debated|dispute|disputed|uncertain|unclear|not sure|not certain|believe|believed|suggest|suggested|appear|appears|except|however|although|still|limit|limits|doctor|medical|strict|unless|depending)\b/i
+
+function extractSpecificYears(text){
+ return [...new Set((String(text||'').match(/\b(?:1[0-9]{3}|20[0-9]{2})\b/g)||[]))]
+}
+
+function extractMeasuredQuantities(text){
+ const matches=String(text||'').match(/\b\d+(?:[.,]\d+)?\s*(?:%|percent|million|billion|thousand|km|kilometers|kilometres|miles|meters|metres|mg|kg|tons|tonnes|degrees)\b/gi)||[]
+ return [...new Set(matches.map(m=>m.toLowerCase().replace(/\s+/g,' ').replace(/kilometres/g,'kilometers').replace(/metres/g,'meters').replace(/percent/g,'%')))]
+}
+
+function contentTerms(text){
+ return new Set(
+  String(text||'').toLowerCase().normalize('NFKD').replace(/[^a-z0-9]+/g,' ').split(/\s+/)
+   .filter(w=>w.length>=4&&!FACT_STOPWORDS.has(w))
+   .map(w=>w.endsWith('s')&&w.length>5?w.slice(0,-1):w)
+ )
+}
+
+/**
+ * Deterministic source-grounding, cross-level factual consistency, and uncertainty/safety preservation validator.
+ */
+export function validateFactualConsistency(draft,{source=null,evidence=[]}={}){
+ const errors=[]
+ if(!draft?.variants)return {ok:false,errors:['Missing variants for factual validation']}
+
+ const levelPages=LEVELS.map(l=>draft.variants?.[l]?.pages||[])
+ const sharedLen=Math.min(...levelPages.map(p=>p.length))
+ const evidenceRows=Array.isArray(evidence)?evidence:[]
+ const evidenceMap=new Map(evidenceRows.map(r=>[r.id,r]))
+ const fullSourceText=[
+  source?.sourceTitle||'',
+  source?.description||'',
+  ...evidenceRows.map(r=>r.text||'')
+ ].join(' ')
+ const sourceYears=new Set(extractSpecificYears(fullSourceText))
+ const sourceQuantities=new Set(extractMeasuredQuantities(fullSourceText))
+
+ // 1. Validate shared outline alignment when outline is present
+ if(Array.isArray(draft.outline)&&draft.outline.length){
+  if(draft.outline.length!==sharedLen){
+   errors.push(`Outline page count mismatch: outline has ${draft.outline.length} page(s), variants have ${sharedLen}`)
+  }
+  for(let i=0;i<Math.min(draft.outline.length,sharedLen);i++){
+   const op=draft.outline[i]
+   if(!String(op?.focus||'').trim()){
+    errors.push(`Outline page ${i+1}: missing focus summary`)
+   }
+   const oImg=pageImageToken(op)
+   for(const level of LEVELS){
+    const pImg=pageImageToken(draft.variants[level]?.pages?.[i])
+    if(Object.prototype.hasOwnProperty.call(op||{},'imageId')&&pImg!==oImg){
+     errors.push(`Outline image mismatch on page ${i+1}: outline (${oImg||'null'}) vs ${level} (${pImg||'null'})`)
+    }
+   }
+  }
+ }
+
+ // 2. Cross-level correspondence, grounded dates/quantities, and uncertainty preservation per page
+ const uncertainFactIds=new Set(
+  (draft.factSheet?.coreFacts||[]).filter(f=>f?.hasUncertainty).map(f=>f.id)
+ )
+ const hasGlobalCaveats=Array.isArray(draft.factSheet?.caveatsOrUncertainty)&&draft.factSheet.caveatsOrUncertainty.some(c=>String(c||'').trim())
+
+ for(let idx=0;idx<sharedLen;idx++){
+  const textsByLevel=Object.fromEntries(LEVELS.map(l=>[l,String(draft.variants[l]?.pages?.[idx]?.text||'')]))
+  const evIdsByLevel=Object.fromEntries(LEVELS.map(l=>[l,Array.isArray(draft.variants[l]?.pages?.[idx]?.evidenceIds)?draft.variants[l].pages[idx].evidenceIds:[]]))
+
+  // Cross-level evidence or topic overlap check on matching page index
+  const termSets=LEVELS.map(l=>contentTerms(textsByLevel[l]))
+  const sharedEvAB=evIdsByLevel['A1-A2'].some(id=>evIdsByLevel['B1-B2'].includes(id))
+  const sharedEvBC=evIdsByLevel['B1-B2'].some(id=>evIdsByLevel['C1-C2'].includes(id))
+  const overlapAB=[...termSets[0]].filter(w=>termSets[1].has(w)).length
+  const overlapBC=[...termSets[1]].filter(w=>termSets[2].has(w)).length
+  if(!sharedEvAB&&overlapAB===0){
+   errors.push(`Cross-level factual drift on page ${idx+1}: A1-A2 and B1-B2 share neither evidence passages nor core topic terms`)
+  }
+  if(!sharedEvBC&&overlapBC===0){
+   errors.push(`Cross-level factual drift on page ${idx+1}: B1-B2 and C1-C2 share neither evidence passages nor core topic terms`)
+  }
+
+  // Year consistency across A/B/C on the same page + source grounding
+  const yearsByLevel=Object.fromEntries(LEVELS.map(l=>[l,extractSpecificYears(textsByLevel[l])]))
+  const levelsWithYears=LEVELS.filter(l=>yearsByLevel[l].length>0)
+  if(levelsWithYears.length>=2){
+   const union=new Set(levelsWithYears.flatMap(l=>yearsByLevel[l]))
+   for(let a=0;a<levelsWithYears.length;a++){
+    for(let b=a+1;b<levelsWithYears.length;b++){
+     const yA=yearsByLevel[levelsWithYears[a]]
+     const yB=yearsByLevel[levelsWithYears[b]]
+     const intersects=yA.some(y=>yB.includes(y))
+     if(!intersects&&union.size>=2&&yA.length===1&&yB.length===1){
+      errors.push(`Cross-level date mismatch on page ${idx+1}: ${levelsWithYears[a]} cites ${yA[0]} while ${levelsWithYears[b]} cites ${yB[0]}`)
+     }
+    }
+   }
+  }
+
+  if(evidenceRows.length){
+   for(const level of LEVELS){
+    const pageText=textsByLevel[level]
+    for(const year of yearsByLevel[level]){
+     if(!sourceYears.has(year)){
+      errors.push(`${level} page ${idx+1}: ungrounded year "${year}" not found in source evidence`)
+     }
+    }
+    for(const qty of extractMeasuredQuantities(pageText)){
+     const numPart=qty.split(' ')[0]
+     if(!sourceQuantities.has(qty)&&!new RegExp(`\\b${numPart.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')}\\b`).test(fullSourceText)){
+      errors.push(`${level} page ${idx+1}: ungrounded quantity "${qty}" not found in source evidence`)
+     }
+    }
+   }
+  }
+
+  // Uncertainty / safety condition preservation check
+  const citedEvidenceText=[...new Set(LEVELS.flatMap(l=>evIdsByLevel[l]))]
+   .map(id=>evidenceMap.get(id)?.text||'')
+   .join(' ')
+  const outlinePage=Array.isArray(draft.outline)?draft.outline[idx]:null
+  const pageHasUncertainFact=Boolean(outlinePage?.factIds?.some(fid=>uncertainFactIds.has(fid)))
+  const sourceHasUncertainty=UNCERTAINTY_SOURCE_RE.test(citedEvidenceText)||pageHasUncertainFact
+
+  if(sourceHasUncertainty){
+   for(const level of LEVELS){
+    const pageText=textsByLevel[level]
+    if(ABSOLUTE_OVERCLAIM_RE.test(pageText)){
+     errors.push(`${level} page ${idx+1}: absolute overclaim contradicts source uncertainty or safety conditions`)
+    }
+    if(pageHasUncertainFact&&!HEDGE_OR_CAUTION_RE.test(pageText)){
+     errors.push(`${level} page ${idx+1}: omits source uncertainty/safety qualification flagged in fact sheet`)
+    }
+   }
+  }
+ }
+
+ if(hasGlobalCaveats){
+  for(const level of LEVELS){
+   const fullLevelText=(draft.variants[level]?.pages||[]).map(p=>p.text||'').join(' ')
+   if(ABSOLUTE_OVERCLAIM_RE.test(fullLevelText)){
+    errors.push(`${level}: article-wide absolute overclaim conflicts with source caveats/uncertainty`)
+   }
+   if(!HEDGE_OR_CAUTION_RE.test(fullLevelText)){
+    errors.push(`${level}: omits nuance/caveat language for source uncertainty`)
+   }
+  }
+ }
+
+ return {ok:errors.length===0,errors}
+}
+
+/**
+ * Strict editorial & 4-6 page Fixed-Card quality gate run BEFORE saving any generated article.
+ * Uses the exact same exported bounds constants as the generation & repair prompts.
+ */
 export function validateArticleQuality(draft,sourceTitle,{
- minPages=4,
- maxPages=6,
- levelBounds=LEVEL_WORD_BOUNDS
+ minPages=PAGE_COUNT_BOUNDS.min,
+ maxPages=PAGE_COUNT_BOUNDS.max,
+ levelBounds=LEVEL_WORD_BOUNDS,
+ source=null,
+ evidence=null
 }={}){
  const errors=[]
  const metrics={}
@@ -548,8 +790,8 @@ export function validateArticleQuality(draft,sourceTitle,{
   if(!headline){
    errors.push(`${level}: headline is empty`)
   }else{
-   if(hlWords<5||hlWords>11){
-    errors.push(`${level}: headline must be 5-11 words (got ${hlWords}: "${headline}")`)
+   if(hlWords<HEADLINE_WORD_BOUNDS.min||hlWords>HEADLINE_WORD_BOUNDS.max){
+    errors.push(`${level}: headline must be ${HEADLINE_WORD_BOUNDS.min}-${HEADLINE_WORD_BOUNDS.max} words (got ${hlWords}: "${headline}")`)
    }
    if(rawNorm&&(hlNorm===rawNorm||hlNorm===`${rawNorm} overview`||hlNorm===`${rawNorm} full story`||hlNorm===`${rawNorm} analysis`)){
     errors.push(`${level}: headline must not match raw Wikipedia title "${sourceTitle}"`)
@@ -579,8 +821,8 @@ export function validateArticleQuality(draft,sourceTitle,{
    if(isPhotoPage&&typeof page?.caption==='string'&&page.caption.trim()){
     const cap=page.caption.replace(/\s+/g,' ').trim()
     const capWords=wordCount(cap)
-    if(capWords>10||cap.length>65){
-     errors.push(`${level} page ${idx+1}: caption too long (${capWords} words, ${cap.length} chars; aim 5-8 words, max ~45 chars)`)
+    if(capWords>CAPTION_LIMITS.maxWords||cap.length>CAPTION_LIMITS.maxChars){
+     errors.push(`${level} page ${idx+1}: caption too long (${capWords} words, ${cap.length} chars; aim ${CAPTION_LIMITS.targetMinWords}-${CAPTION_LIMITS.targetMaxWords} words, max ${CAPTION_LIMITS.maxChars} chars)`)
     }
    }
    if(!/[.!?]["”']?$/.test(text)){
@@ -594,15 +836,9 @@ export function validateArticleQuality(draft,sourceTitle,{
   const stats=measureLevelDifficulty(pages)
   metrics[level]=stats
 
-  // Level-appropriate sentence-length bands (with practical tolerances around 8-14 / 14-20 / 18-26)
-  if(level==='A1-A2'&&(stats.avgSentenceWords<6||stats.avgSentenceWords>15.5)){
-   errors.push(`A1-A2: average sentence length ${stats.avgSentenceWords}w outside target band (aim 8-14 words/sentence)`)
-  }
-  if(level==='B1-B2'&&(stats.avgSentenceWords<11||stats.avgSentenceWords>23)){
-   errors.push(`B1-B2: average sentence length ${stats.avgSentenceWords}w outside target band (aim 14-20 words/sentence)`)
-  }
-  if(level==='C1-C2'&&(stats.avgSentenceWords<15||stats.avgSentenceWords>32)){
-   errors.push(`C1-C2: average sentence length ${stats.avgSentenceWords}w outside target band (aim 18-26 words/sentence)`)
+  const sentBand=LEVEL_SENTENCE_BOUNDS[level]
+  if(sentBand&&(stats.avgSentenceWords<sentBand.min||stats.avgSentenceWords>sentBand.max)){
+   errors.push(`${level}: average sentence length ${stats.avgSentenceWords}w outside target band (aim ${sentBand.targetMin}-${sentBand.targetMax} words/sentence)`)
   }
  }
 
@@ -634,65 +870,83 @@ export function validateArticleQuality(draft,sourceTitle,{
   }
  }
 
+ // Source-grounding, cross-level factual consistency, and uncertainty preservation checks
+ if((Array.isArray(evidence)&&evidence.length)||draft.factSheet||draft.outline){
+  const factual=validateFactualConsistency(draft,{source,evidence:evidence||[]})
+  if(!factual.ok){
+   errors.push(...factual.errors)
+  }
+ }
+
  return {ok:errors.length===0,errors,metrics,cefr}
 }
 
 function formatEmbeddedImageCatalog(verifiedPhotos=[]){
  if(!verifiedPhotos.length)return 'None.'
  return verifiedPhotos
-  .map(p=>`- ${p.imageId} | Section ${p.sectionIndex} (${p.sectionHeading||p.section||'Lead'}) | ${p.fileTitle} | Wiki caption: "${String(p.wikiCaption||p.caption||'').slice(0,220)}"`)
+  .map(p=>`- ${p.imageId} | Section ${p.sectionIndex} (${p.sectionHeading||p.section||'Lead'}${p.isMainSubjectFallback?', main-subject fallback cover':''}) | ${p.fileTitle} | Wiki caption: "${String(p.wikiCaption||p.caption||'').slice(0,220)}"`)
   .join('\n')
+}
+
+function formatWordBoundsSummary(){
+ const photoParts=LEVELS.map(l=>{
+  const [min,max]=LEVEL_WORD_BOUNDS[l].photo
+  return `${l}: ${min}-${max} words (target ~${wordRangeMidpoint([min,max])}w)`
+ })
+ const textParts=LEVELS.map(l=>{
+  const [min,max]=LEVEL_WORD_BOUNDS[l].text
+  return `${l}: ${min}-${max} words (target ~${wordRangeMidpoint([min,max])}w)`
+ })
+ return {photoLine:photoParts.join(' | '),textLine:textParts.join(' | ')}
 }
 
 export function buildBatchPrompt(source,topic,evidence,verifiedPhotos=[]){
  const passages=evidence.map(row=>`${row.id} [Section ${row.sectionIndex ?? 0}: ${row.heading}] ${row.text}`).join('\n\n')
  const imageCatalog=formatEmbeddedImageCatalog(verifiedPhotos)
  const leadIds=verifiedPhotos.filter(p=>p.sectionIndex===0).map(p=>p.imageId)
- const leadHint=leadIds.length?leadIds.join(' or '):'IMG_0'
- return `Write ONE engaging, magazine-style English-learner feature article adapted strictly from the English Wikipedia passages below. Return JSON only.
+ const fallbackCover=leadIds.length?null:findMainSubjectFallbackPhoto(verifiedPhotos.filter(p=>p.sectionIndex>0),source)
+ const coverHint=leadIds.length?leadIds.join(' or '):(fallbackCover?.imageId||'IMG_0')
+ const {photoLine,textLine}=formatWordBoundsSummary()
+ const aSent=LEVEL_SENTENCE_BOUNDS['A1-A2'],bSent=LEVEL_SENTENCE_BOUNDS['B1-B2'],cSent=LEVEL_SENTENCE_BOUNDS['C1-C2']
+ return `Write ONE engaging, source-grounded English-learner feature article adapted strictly from the English Wikipedia passages below. Return pure JSON only.
 
 Raw Wikipedia Title: ${source.sourceTitle}
 Topic: ${topic}
 Wikipedia Page ID: ${source.pageId}
 Revision ID: ${source.sourceRevisionId}
 
-STRICT EDITORIAL & FIXED-CARD QUALITY RULES:
+WORKFLOW (ALL IN ONE COMPACT STRUCTURED JSON RESPONSE):
+STEP 1 — COMPACT FACT SHEET ("factSheet"):
+- Extract 6-10 short, strictly source-grounded core facts ("F1", "F2", ...) with "evidenceIds", preserving exact dates, numbers, names, exceptions, scientific/historical uncertainty, safety conditions, and neutrality.
+- Set "hasUncertainty": true on any fact involving debate, estimates, limits, or safety risks, and list key caveats in "caveatsOrUncertainty".
+
+STEP 2 — SHARED ${PAGE_COUNT_BOUNDS.min}-${PAGE_COUNT_BOUNDS.max} PAGE OUTLINE ("outline"):
+- Plan ONE shared ${PAGE_COUNT_BOUNDS.min} to ${PAGE_COUNT_BOUNDS.max} page story arc ("pageIndex": 0..N-1) before writing variants.
+- Each outline page specifies "focus", "factIds", "evidenceIds", "imageId" (exact ID or null), and brief "imageReason".
+- Every corresponding page index i across A1-A2, B1-B2, and C1-C2 MUST cover the EXACT SAME core facts, subject focus, and "imageId".
+
+STEP 3 — SYNCHRONIZED A/B/C VARIANTS ("variants"):
 1. MAGAZINE HEADLINE (PER LEVEL):
-   - Write an engaging magazine-style headline of 5 to 11 words in Title Case for EACH level.
-   - NEVER use the raw Wikipedia title ("${source.sourceTitle}") as the headline, and make all 3 level headlines distinct.
-2. SYNCHRONIZED 4 TO 6 PAGE FIXED-CARD ARC (EXACT 3-LEVEL PARITY):
-   - Every article MUST have between 4 and 6 pages — choose 4, 5, or 6 pages naturally based on article depth (NEVER 7, 8, or 9 pages).
-   - ALL 3 levels (A1-A2, B1-B2, C1-C2) MUST have the EXACT SAME page count N AND the EXACT SAME "imageId" on every matching page index i (A.pages[i].imageId === B.pages[i].imageId === C.pages[i].imageId) so switching Level A <-> B <-> C keeps the reader on the exact same page, photo, and story beat.
-   - Story arc: Page 1 = Vivid Magazine Hook (NEVER start with a dry encyclopedia definition like "${source.sourceTitle} is a..." or "${source.sourceTitle} was an..."); Middle pages = Focused Body Beats; Final page = Memorable Takeaway / Lasting Significance grounded in the source.
-   - STRICT LEVEL-SPECIFIC WORD-COUNT BOUNDS (character-equivalent across CEFR levels for crisp mobile cards):
-     * Photo pages (Page 1 and any page with non-null "imageId"):
-       - A1-A2: STRICTLY 34-46 words
-       - B1-B2: STRICTLY 32-44 words
-       - C1-C2: STRICTLY 28-42 words
-     * Text-only pages ("imageId": null):
-       - A1-A2: STRICTLY 55-72 words
-       - B1-B2: STRICTLY 52-68 words
-       - C1-C2: STRICTLY 46-64 words
-3. OBJECTIVE CEFR GRADING & DIFFERENTIATION (STRICTLY VERIFIED BY FKGL + LEXICAL PROFILER):
-   - A1-A2: Simple, concrete everyday vocabulary (>=78% A1-A2 words, <=7% C1-C2/unlisted words) and short clear sentences (8-12 words/sentence, target Flesch-Kincaid Grade Level <= ${CEFR_THRESHOLDS['A1-A2'].maxFkgl}). NEVER use academic, technical, or C1-C2 jargon in A1-A2 — explain ideas in plain everyday English.
-   - B1-B2: Clear, readable journalistic prose (>=85% A1-B2 words, 13-17 words/sentence, target FKGL ${CEFR_THRESHOLDS['B1-B2'].minFkgl}-${CEFR_THRESHOLDS['B1-B2'].maxFkgl}, at least +${CEFR_THRESHOLDS['B1-B2'].minFkglGapAboveA1} FKGL higher than A1-A2). Avoid overly dense academic jargon in B1-B2.
-   - C1-C2: Analytical, nuanced editorial tone with sophisticated academic/journalistic vocabulary and richer sentence structure (18-26 words/sentence, target FKGL >= ${CEFR_THRESHOLDS['C1-C2'].minFkgl}, at least +${CEFR_THRESHOLDS['C1-C2'].minFkglGapAboveB1} FKGL higher than B1-B2, and higher B2/C1-C2 lexical density than B1-B2).
-4. STRICT SECTION-TO-PAGE IMAGE BINDING (ZERO MISALIGNED PHOTOS):
-   - Every page MUST include "imageId" set to either an exact ID from AVAILABLE EMBEDDED IMAGES below (e.g. "IMG_0") or null.
-   - Use the EXACT SAME "imageId" on the same page index across A1-A2, B1-B2, and C1-C2.
-   - Page 1 (pages[0]) MUST use a Section 0 Lead/Infobox image (${leadHint}).
-   - Pages 2..N (pages[1..N]): attach an "imageId" ONLY when that page's text directly discusses the exact person, place, object, or event described in that image's Section heading and Wiki caption. Otherwise set "imageId": null (text-only page).
-   - NEVER reuse the same "imageId" on two pages, NEVER invent an imageId, and NEVER force-assign leftover images onto unrelated pages.
-5. IMAGE CAPTIONS (ULTRA-CONCISE SINGLE LINE):
-   - On every page with a non-null "imageId", write an ultra-concise "caption": 5 to 8 words (max ~45 characters) describing that exact image so it fits cleanly on 1 single line even on 360px mobile screens without ellipsis.
-   - On pages with "imageId": null, set "caption": "".
-6. FACTUAL GROUNDING:
-   - Cite one or more valid passage IDs in "evidenceIds" (e.g. ["P1","P2"]) on every page.
-   - Never invent people, dates, numbers, quotes, or facts absent from the passages. Preserve uncertainty when the source notes debate.
-7. GLOSSARY:
-   - Include a concise "glossary" array (12-18 items per level) of helpful words, phrasal verbs, or collocations appearing in that level's text, with fields: surface, lemma, type ("word"|"phrasal_verb"|"collocation"|"idiom"), pos ("noun"|"verb"|"adj"|"adv"|"prep"|"phrase"), ipa, vi_context (short natural Vietnamese meaning for that sentence), en_def (simple Cambridge-style English definition <= 15 words), cefr ("A1"|"A2"|"B1"|"B2"|"C1"|"C2").
-8. Return pure JSON matching:
-{"variants":{"A1-A2":{"headline":"...","pages":[{"text":"...","imageId":"IMG_0","caption":"...","evidenceIds":["P1"]}],"glossary":[...]},"B1-B2":{...},"C1-C2":{...}}}
+   - ${HEADLINE_WORD_BOUNDS.min} to ${HEADLINE_WORD_BOUNDS.max} words in Title Case per level; distinct across levels; NEVER identical to raw title "${source.sourceTitle}".
+2. SHARED PAGE ARC & EXACT WORD COUNTS (TARGET THE MIDDLE OF EACH RANGE):
+   - Page 1 = Vivid magazine hook (NEVER start with "${source.sourceTitle} is a..." or "${source.sourceTitle} was an..."). Middle pages = Focused body beats from the outline. Final page = Lasting takeaway grounded in the source.
+   - Photo pages (Page 1 and any non-null "imageId"):
+     * ${photoLine}
+   - Text-only pages ("imageId": null):
+     * ${textLine}
+   - Every page must end with a complete sentence.
+3. VOICE, ACCURACY & OBJECTIVE CEFR TARGETS:
+   - A1-A2: Simple, concrete everyday English WITHOUT factual oversimplification (keep dates, exceptions, safety cautions, and uncertainty in plain words like "about", "some experts say", "can be risky"). >=${CEFR_THRESHOLDS['A1-A2'].minA1A2Pct}% A1-A2 words, <=${CEFR_THRESHOLDS['A1-A2'].maxC1C2OrUnlistedPct}% C1-C2/unlisted, ${aSent.targetMin}-${aSent.targetMax} words/sentence, FKGL <= ${CEFR_THRESHOLDS['A1-A2'].maxFkgl}.
+   - B1-B2: Natural, accessible magazine-style English. >=${CEFR_THRESHOLDS['B1-B2'].minA1ToB2Pct}% A1-B2 words, ${bSent.targetMin}-${bSent.targetMax} words/sentence, FKGL ${CEFR_THRESHOLDS['B1-B2'].minFkgl}-${CEFR_THRESHOLDS['B1-B2'].maxFkgl} (at least +${CEFR_THRESHOLDS['B1-B2'].minFkglGapAboveA1} FKGL above A1-A2).
+   - C1-C2: Nuanced, sophisticated, natural editorial English — NOT artificial academic jargon or thesaurus stuffing. ${cSent.targetMin}-${cSent.targetMax} words/sentence, FKGL >= ${CEFR_THRESHOLDS['C1-C2'].minFkgl} (at least +${CEFR_THRESHOLDS['C1-C2'].minFkglGapAboveB1} FKGL above B1-B2, higher B2+C1-C2 lexical density than B1-B2).
+4. STRICT IMAGE & CAPTION BINDING:
+   - Page 1 (pages[0]) MUST use ${leadIds.length?'a Section 0 Lead/Infobox photo':'the verified main-subject cover photo'} (${coverHint}).
+   - Pages 2..N: bind an "imageId" ONLY when the outline focus AND page text directly depict that exact photo's subject/section (never merely overlapping keywords). Otherwise set "imageId": null. Never reuse an imageId.
+   - Captions on photo pages: complete, natural phrase of ${CAPTION_LIMITS.targetMinWords}-${CAPTION_LIMITS.targetMaxWords} words (max ${CAPTION_LIMITS.maxWords} words / ${CAPTION_LIMITS.maxChars} chars) describing the photo accurately without cutting words or altering meaning. On text-only pages set "caption": "".
+5. FACTUAL GROUNDING & NEUTRALITY:
+   - Cite valid passage IDs in "evidenceIds" on every page. Never invent dates, numbers, people, quotes, or claims absent from the passages. Preserve uncertainty, exceptions, and safety conditions neutrally across all 3 levels.
+6. GLOSSARY:
+   - Include 12-18 useful "glossary" entries per level (surface, lemma, type, pos, ipa, vi_context, en_def <= 15 words, cefr).
 
 AVAILABLE EMBEDDED IMAGES (ONLY FROM THIS ARTICLE):
 ${imageCatalog}
@@ -715,40 +969,116 @@ function formatCEFRRetryBlock(qualityResult){
   `- C1-C2 measured: FKGL=${c.fkgl} (target >= ${CEFR_THRESHOLDS['C1-C2'].minFkgl}, gap above B1-B2=${cefr.gaps?.cMinusB ?? Number((c.fkgl-b.fkgl).toFixed(2))} >= ${CEFR_THRESHOLDS['C1-C2'].minFkglGapAboveB1}), avgSentence=${c.avgSentenceLength}w, B2+C1-C2=${c.lexicalProfile.b2PlusC1C2OrUnlistedPct}% (must exceed B1-B2 ${b.lexicalProfile.b2PlusC1C2OrUnlistedPct}%)`
  ]
  if(a.overLevelWords?.length){
-  lines.push(`- MANDATORY A1-A2 WORD SWAPS: Replace these exact hard/over-level words in A1-A2 with simple everyday A1-A2 equivalents: [${a.overLevelWords.slice(0,20).join(', ')}]`)
+  lines.push(`- MANDATORY A1-A2 WORD SWAPS: Replace these over-level words in A1-A2 with simple everyday A1-A2 equivalents: [${a.overLevelWords.slice(0,20).join(', ')}]`)
  }
  if(a.lexicalProfile.a1a2Pct<CEFR_THRESHOLDS['A1-A2'].minA1A2Pct&&a.b2Words?.length){
-  lines.push(`- SIMPLIFY B2 WORDS IN A1-A2: Also swap harder B2 words like [${a.b2Words.slice(0,12).join(', ')}] for plain A1-A2 words and split long sentences.`)
+  lines.push(`- SIMPLIFY B2 WORDS IN A1-A2: Swap harder B2 words like [${a.b2Words.slice(0,12).join(', ')}] for plain A1-A2 words and split long sentences.`)
  }
  if(b.overLevelWords?.length&&(b.lexicalProfile.a1ToB2Pct<CEFR_THRESHOLDS['B1-B2'].minA1ToB2Pct||b.fkgl>CEFR_THRESHOLDS['B1-B2'].maxFkgl)){
-  lines.push(`- SIMPLIFY OVER-LEVEL WORDS IN B1-B2: Replace rare/academic words [${b.overLevelWords.slice(0,15).join(', ')}] with clear B1-B2 journalistic terms and slightly shorter sentences.`)
+  lines.push(`- SIMPLIFY OVER-LEVEL WORDS IN B1-B2: Replace rare/academic words [${b.overLevelWords.slice(0,15).join(', ')}] with clear B1-B2 magazine terms.`)
  }
- lines.push('- PRESERVE STRUCTURE: Keep the EXACT same 4-6 page count N and EXACT same "imageId" binding on every page index across A1-A2, B1-B2, and C1-C2 while fixing CEFR scores.')
+ lines.push('- KEEP C1-C2 NATURAL: Do NOT stuff artificial academic jargon; use clear, sophisticated natural editorial prose.')
  return `\n\n${lines.join('\n')}`
 }
 
-export function buildQualityRetryPrompt(source,topic,evidence,previousDraft,failedChecks,verifiedPhotos=[],qualityResult=null){
+/** Identify exact failing headlines, pages, and levels so repair preserves all already-valid content. */
+export function identifyRepairTargets(draft,qualityResult){
+ const errors=Array.isArray(qualityResult?.errors)?qualityResult.errors:[]
+ const pageCount=Math.min(...LEVELS.map(l=>draft?.variants?.[l]?.pages?.length||0))
+ const failingHeadlines=new Set()
+ const failingPages=Object.fromEntries(LEVELS.map(l=>[l,new Set()]))
+ const cefrLevels=new Set()
+ let structuralParityFailed=false
+
+ for(const err of errors){
+  const msg=String(err||'')
+  if(/Cross-level page count|Cross-level image parity|page count must be between|Outline page count|Outline image mismatch/i.test(msg)){
+   structuralParityFailed=true
+   continue
+  }
+  const pageMatch=msg.match(/^(A1-A2|B1-B2|C1-C2)\s+page\s+(\d+)\b/i)
+  if(pageMatch){
+   const lvl=pageMatch[1].toUpperCase()
+   const idx=Number(pageMatch[2])-1
+   if(failingPages[lvl]&&idx>=0&&idx<pageCount)failingPages[lvl].add(idx)
+   continue
+  }
+  const crossPageMatch=msg.match(/^Cross-level (?:factual drift|date mismatch) on page (\d+)/i)
+  if(crossPageMatch){
+   const idx=Number(crossPageMatch[1])-1
+   if(idx>=0&&idx<pageCount){
+    for(const lvl of LEVELS)failingPages[lvl].add(idx)
+   }
+   continue
+  }
+  const hlMatch=msg.match(/^(A1-A2|B1-B2|C1-C2):\s*headline/i)
+  if(hlMatch){
+   failingHeadlines.add(hlMatch[1].toUpperCase())
+   continue
+  }
+  if(/Duplicate headlines across levels/i.test(msg)){
+   for(const lvl of LEVELS)failingHeadlines.add(lvl)
+   continue
+  }
+  const lvlCefrMatch=msg.match(/^(A1-A2|B1-B2|C1-C2)(?::|\s+CEFR\b)/i)
+  if(lvlCefrMatch){
+   cefrLevels.add(lvlCefrMatch[1].toUpperCase())
+   continue
+  }
+  if(/CEFR FKGL separation failed:\s*B1-B2/i.test(msg)){
+   cefrLevels.add('B1-B2')
+   cefrLevels.add('A1-A2')
+  }else if(/CEFR FKGL separation failed:\s*C1-C2/i.test(msg)||/C1-C2 B2\+C1-C2/i.test(msg)){
+   cefrLevels.add('C1-C2')
+  }else if(/CEFR (?:sentence-length|difficulty) progression/i.test(msg)){
+   for(const lvl of LEVELS)cefrLevels.add(lvl)
+  }
+ }
+
+ // For level-wide CEFR failures, include that level's pages as repairable while leaving passing levels untouched
+ for(const lvl of cefrLevels){
+  for(let i=0;i<pageCount;i++)failingPages[lvl].add(i)
+ }
+
+ const targetSummary=LEVELS.map(lvl=>({
+  level:lvl,
+  headline:failingHeadlines.has(lvl),
+  pageIndexes:[...failingPages[lvl]].sort((a,b)=>a-b)
+ })).filter(item=>item.headline||item.pageIndexes.length>0)
+
+ return {
+  structuralParityFailed,
+  failingHeadlines:[...failingHeadlines],
+  failingPages:Object.fromEntries(LEVELS.map(l=>[l,[...failingPages[l]].sort((a,b)=>a-b)])),
+  cefrLevels:[...cefrLevels],
+  targetSummary,
+  useTargetedPatch:!structuralParityFailed&&targetSummary.length>0
+ }
+}
+
+/** Build a compact targeted repair prompt that rewrites ONLY failing headlines/pages/levels while preserving valid content. */
+export function buildTargetedRepairPrompt(source,topic,evidence,previousDraft,qualityResult,verifiedPhotos=[],repairTargets=null){
+ const targets=repairTargets||identifyRepairTargets(previousDraft,qualityResult)
+ const failedChecks=Array.isArray(qualityResult?.errors)?qualityResult.errors:(Array.isArray(qualityResult)?qualityResult:[])
  const passages=evidence.map(row=>`${row.id} [Section ${row.sectionIndex ?? 0}: ${row.heading}] ${row.text}`).join('\n\n')
- const imageCatalog=formatEmbeddedImageCatalog(verifiedPhotos)
  const issues=failedChecks.map((err,i)=>`${i+1}. ${err}`).join('\n')
  const cefrBlock=formatCEFRRetryBlock(qualityResult)
- return `Your previous draft for "${source.sourceTitle}" (${topic}) failed editorial quality checks. Fix EVERY issue listed below while staying 100% faithful to the source passages. Return the complete corrected JSON object only.
+ const {photoLine,textLine}=formatWordBoundsSummary()
+
+ if(!targets.useTargetedPatch){
+  const imageCatalog=formatEmbeddedImageCatalog(verifiedPhotos)
+  return `Your previous draft for "${source.sourceTitle}" (${topic}) failed structural parity checks. Fix EVERY issue below while preserving grounded facts from the source passages. Return pure JSON matching the full story schema.
 
 FAILED CHECKS TO FIX:
 ${issues}${cefrBlock}
 
 REMINDERS:
-- Magazine-style headline of 5-11 words per level (distinct across levels, NEVER identical to "${source.sourceTitle}").
-- Synchronized 4 to 6 fixed-card pages — choose 4, 5, or 6 pages naturally based on article depth (EXACT SAME page count N and EXACT SAME imageId at every page index i across A1-A2, B1-B2, and C1-C2).
-- Exact level-specific word counts:
-  * Photo pages (Page 1 & any non-null imageId): A1-A2 34-46w | B1-B2 32-44w | C1-C2 28-42w (NO dry "${source.sourceTitle} is a..." opening on Page 1).
-  * Text-only pages (imageId: null): A1-A2 55-72w | B1-B2 52-68w | C1-C2 46-64w.
-- Keep strict section-to-page "imageId" binding: Page 1 MUST use a Section 0 image; Pages 2..N use an imageId ONLY when directly discussing that image's subject/section, else null.
-- On every page with a non-null "imageId", write an ultra-concise "caption" (5-8 words, max ~45 characters) for 1-line mobile display; otherwise "".
-- Objective CEFR targets: A1-A2 (FKGL <= ${CEFR_THRESHOLDS['A1-A2'].maxFkgl}, >=78% A1-A2 words, <=7% C1-C2/unlisted) < B1-B2 (FKGL ${CEFR_THRESHOLDS['B1-B2'].minFkgl}-${CEFR_THRESHOLDS['B1-B2'].maxFkgl}, >=85% A1-B2 words, +1.5 FKGL above A1-A2) < C1-C2 (FKGL >= ${CEFR_THRESHOLDS['C1-C2'].minFkgl}, +1.5 FKGL above B1-B2, higher B2+C1-C2 ratio than B1-B2).
-- Keep valid evidenceIds from the source passages on every page.
+- Synchronized ${PAGE_COUNT_BOUNDS.min}-${PAGE_COUNT_BOUNDS.max} pages with identical page count and imageId at each pageIndex across A1-A2, B1-B2, C1-C2.
+- Photo pages: ${photoLine}
+- Text-only pages: ${textLine}
+- Keep C1-C2 nuanced and natural (no artificial academic jargon), and preserve all dates, quantities, exceptions, and uncertainty.
 
-AVAILABLE EMBEDDED IMAGES (ONLY FROM THIS ARTICLE):
+AVAILABLE EMBEDDED IMAGES:
 ${imageCatalog}
 
 PREVIOUS DRAFT:
@@ -756,14 +1086,134 @@ ${JSON.stringify(previousDraft)}
 
 SOURCE PASSAGES:
 ${passages}`
+ }
+
+ const failingSnapshot={}
+ for(const item of targets.targetSummary){
+  const v=previousDraft.variants[item.level]
+  failingSnapshot[item.level]={
+   ...(item.headline?{headline:v.headline}:{}),
+   ...(item.pageIndexes.length?{
+    pages:item.pageIndexes.map(idx=>{
+     const p=v.pages[idx]
+     const isPhoto=idx===0||Boolean(pageImageToken(p))
+     const [minW,maxW]=isPhoto?LEVEL_WORD_BOUNDS[item.level].photo:LEVEL_WORD_BOUNDS[item.level].text
+     return {
+      pageIndex:idx,
+      pageType:isPhoto?'photo':'text-only',
+      requiredWords:`${minW}-${maxW} (target ~${wordRangeMidpoint([minW,maxW])})`,
+      imageId:pageImageToken(p),
+      text:p.text,
+      ...(isPhoto?{caption:p.caption||''}:{}),
+      evidenceIds:p.evidenceIds
+     }
+    })
+   }:{})
+  }
+ }
+
+ return `Perform a TARGETED REPAIR on ONLY the failing items below for "${source.sourceTitle}" (${topic}). Do NOT rewrite passing levels or passing pages. Stay 100% faithful to the source passages and shared fact sheet/outline.
+
+FAILED CHECKS TO FIX:
+${issues}${cefrBlock}
+
+TARGETED RULES:
+- Return pure JSON matching: {"repairs":{"A1-A2":{"headline?":"...","pages":[{"pageIndex":0,"text":"...","caption?":"...","evidenceIds":["P1"]}]},"B1-B2":{...},"C1-C2":{...}}}
+- Include ONLY the levels, headlines, and pageIndexes listed in ITEMS TO REPAIR below.
+- Preserve each page's exact topic beat, dates, numbers, uncertainty/safety conditions, and image binding (do NOT add or remove images).
+- Photo pages: ${photoLine}
+- Text-only pages: ${textLine}
+- Headlines: ${HEADLINE_WORD_BOUNDS.min}-${HEADLINE_WORD_BOUNDS.max} words, distinct across all 3 levels, never matching "${source.sourceTitle}".
+- Captions on photo pages: complete natural phrase (${CAPTION_LIMITS.targetMinWords}-${CAPTION_LIMITS.targetMaxWords} words, max ${CAPTION_LIMITS.maxChars} chars, never truncated mid-word).
+
+EXISTING HEADLINES (for uniqueness):
+- A1-A2: "${previousDraft.variants['A1-A2']?.headline||''}"
+- B1-B2: "${previousDraft.variants['B1-B2']?.headline||''}"
+- C1-C2: "${previousDraft.variants['C1-C2']?.headline||''}"
+
+ITEMS TO REPAIR:
+${JSON.stringify(failingSnapshot)}
+
+SOURCE PASSAGES:
+${passages}`
 }
 
-/** Single Gemini Flash-Lite API call with free-tier quota/rate-limit, timeout, auth, and model-param handling. */
+/** Backward-compatible alias used by legacy callers/tests. */
+export function buildQualityRetryPrompt(source,topic,evidence,previousDraft,failedChecks,verifiedPhotos=[],qualityResult=null){
+ const q=qualityResult&&Array.isArray(qualityResult.errors)?qualityResult:{errors:Array.isArray(failedChecks)?failedChecks:[],cefr:qualityResult?.cefr||null}
+ return buildTargetedRepairPrompt(source,topic,evidence,previousDraft,q,verifiedPhotos)
+}
+
+/** Merge a targeted repair patch into previousDraft while strictly preserving all untouched levels, pages, imageIds, factSheet, outline, and glossaries. */
+export function mergeTargetedRepairs(previousDraft,repairPayload,repairTargets){
+ if(!repairPayload||typeof repairPayload!=='object'){
+  throw Error('Invalid targeted repair payload: expected JSON object')
+ }
+ if(!repairTargets?.useTargetedPatch){
+  if(!repairPayload.variants||typeof repairPayload.variants!=='object'){
+   throw Error('Structural repair payload missing variants object')
+  }
+  return {
+   ...(repairPayload.factSheet?{factSheet:repairPayload.factSheet}:(previousDraft.factSheet?{factSheet:previousDraft.factSheet}:{})),
+   ...(Array.isArray(repairPayload.outline)?{outline:repairPayload.outline}:(Array.isArray(previousDraft.outline)?{outline:previousDraft.outline}:{})),
+   variants:repairPayload.variants
+  }
+ }
+
+ // Allow full-variants fallback only if mock/legacy responder returned {variants} instead of {repairs}
+ const sourceMap=repairPayload.repairs&&typeof repairPayload.repairs==='object'
+  ?repairPayload.repairs
+  :(repairPayload.variants&&typeof repairPayload.variants==='object'?repairPayload.variants:null)
+ if(!sourceMap){
+  throw Error('Targeted repair payload missing repairs object')
+ }
+
+ const merged=structuredClone(previousDraft)
+ let appliedChanges=0
+
+ for(const item of repairTargets.targetSummary){
+  const patch=sourceMap[item.level]
+  if(!patch||typeof patch!=='object')continue
+  const targetVariant=merged.variants[item.level]
+  if(!targetVariant)continue
+
+  if(item.headline&&typeof patch.headline==='string'&&patch.headline.trim()){
+   targetVariant.headline=patch.headline.trim()
+   appliedChanges++
+  }
+
+  if(item.pageIndexes.length&&Array.isArray(patch.pages)){
+   const allowed=new Set(item.pageIndexes)
+   for(const [arrPos,patchedPage] of patch.pages.entries()){
+    if(!patchedPage||typeof patchedPage!=='object')continue
+    const idx=Number.isInteger(patchedPage.pageIndex)?patchedPage.pageIndex:arrPos
+    if(!allowed.has(idx)||idx<0||idx>=targetVariant.pages.length)continue
+    if(typeof patchedPage.text!=='string'||!patchedPage.text.trim())continue
+    const prev=targetVariant.pages[idx]
+    targetVariant.pages[idx]={
+     ...prev,
+     text:patchedPage.text.trim(),
+     ...(typeof patchedPage.caption==='string'&&pageImageToken(prev)?{caption:patchedPage.caption.trim()}:{}),
+     ...(Array.isArray(patchedPage.evidenceIds)&&patchedPage.evidenceIds.length?{evidenceIds:patchedPage.evidenceIds}:{})
+    }
+    appliedChanges++
+   }
+  }
+ }
+
+ if(appliedChanges===0){
+  throw Error('Targeted repair payload applied 0 valid changes')
+ }
+ return merged
+}
+
+/** Single Gemini Flash-Lite API call with strict response-envelope error classification (never inspects valid 200 article text). */
 export async function callGeminiFlashLite(prompt,{
  apiKey,
  model=DEFAULT_GEMINI_MODEL,
  fetchImpl=fetch,
- timeoutMs=DEFAULT_GEMINI_TIMEOUT_MS
+ timeoutMs=DEFAULT_GEMINI_TIMEOUT_MS,
+ schema=BATCH_STORY_SCHEMA
 }={}){
  if(!apiKey)throw Error('GEMINI_API_KEY is required (set env GEMINI_API_KEY or pass --dry-run)')
  const url=`https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(model)}:generateContent`
@@ -776,7 +1226,7 @@ export async function callGeminiFlashLite(prompt,{
    signal:AbortSignal.timeout(effectiveTimeoutMs),
    body:JSON.stringify({
     contents:[{role:'user',parts:[{text:prompt}]}],
-    generationConfig:buildGeminiGenerationConfig(model)
+    generationConfig:buildGeminiGenerationConfig(model,{schema})
    })
   })
  }catch(err){
@@ -789,42 +1239,54 @@ export async function callGeminiFlashLite(prompt,{
  const rawText=await response.text()
  const retryAfterMs=parseRetryAfterMs(response.headers?.get?.('retry-after'))
 
- if(response.status===401||response.status===403||/API_KEY_INVALID|PERMISSION_DENIED|UNAUTHENTICATED/i.test(rawText)){
-  throw new GeminiAuthError(`Gemini HTTP ${response.status}: ${rawText.slice(0,220)}`,response.status||403)
- }
- if(response.status===404||/\bNOT_FOUND\b|no longer available/i.test(rawText)){
-  throw new GeminiModelNotFoundError(`Gemini HTTP ${response.status}: ${rawText.slice(0,220)}`,response.status||404)
- }
- if(response.status===429||/RESOURCE_EXHAUSTED|quota exceeded|rate limit/i.test(rawText)){
-  const looksHardQuota=/quota exceeded|per.?day|daily|limit:\s*0|free.?tier.*limit|billing/i.test(rawText)
-  const looksTempRateLimit=/rate.?limit|too many requests|per.?minute|\bRPM\b|\bTPM\b|try again shortly/i.test(rawText)
-  if(looksTempRateLimit&&!looksHardQuota){
-   throw new GeminiRateLimitError(`Gemini HTTP ${response.status} temporary rate limit: ${rawText.slice(0,220)}`,response.status||429,{retryAfterMs})
+ let parsedEnvelope=null
+ try{parsedEnvelope=JSON.parse(rawText)}catch{parsedEnvelope=null}
+
+ // Classify API errors ONLY from unsuccessful HTTP responses or explicit error envelopes (never from valid 200 article content)
+ const explicitErrorObj=parsedEnvelope&&typeof parsedEnvelope.error==='object'&&parsedEnvelope.error!==null&&!Array.isArray(parsedEnvelope.candidates)
+  ?parsedEnvelope.error
+  :null
+
+ if(!response.ok||explicitErrorObj){
+  const effectiveStatus=Number(explicitErrorObj?.code||response.status||0)
+  const errStatusStr=String(explicitErrorObj?.status||'')
+  const errMsg=String(explicitErrorObj?.message||rawText||'').slice(0,260)
+  const errBlob=`${errStatusStr} ${errMsg}`.trim()
+
+  if(effectiveStatus===401||effectiveStatus===403||/API_KEY_INVALID|PERMISSION_DENIED|UNAUTHENTICATED/i.test(errBlob)){
+   throw new GeminiAuthError(`Gemini HTTP ${effectiveStatus||403}: ${errMsg.slice(0,220)}`,effectiveStatus||403)
   }
-  throw new GeminiQuotaExhausted(`Gemini HTTP ${response.status} quota exhausted: ${rawText.slice(0,220)}`,response.status||429,{retryAfterMs})
- }
- if(response.status===503||response.status===502||response.status===504||/\bUNAVAILABLE\b|high demand|overloaded/i.test(rawText)){
-  throw new GeminiUnavailableError(`Gemini HTTP ${response.status}: ${rawText.slice(0,220)}`,response.status||503,{retryAfterMs})
- }
- if(response.status===400||/\bINVALID_ARGUMENT\b/i.test(rawText)){
-  const modelUnsupported=/temperature|top_p|top_k|generation_?config|response_?json_?schema|unsupported.*model|not supported for/i.test(rawText)
-  throw new GeminiInvalidRequestError(`Gemini HTTP ${response.status}: ${rawText.slice(0,220)}`,response.status||400,{modelUnsupported})
- }
- if(!response.ok){
-  const err=Error(`Gemini HTTP ${response.status}: ${rawText.slice(0,220)}`)
-  err.status=response.status
+  if(effectiveStatus===404||/\bNOT_FOUND\b|no longer available/i.test(errBlob)){
+   throw new GeminiModelNotFoundError(`Gemini HTTP ${effectiveStatus||404}: ${errMsg.slice(0,220)}`,effectiveStatus||404)
+  }
+  if(effectiveStatus===429||/\bRESOURCE_EXHAUSTED\b|quota exceeded|rate limit/i.test(errBlob)){
+   const looksHardQuota=/quota exceeded|per.?day|daily|limit:\s*0|free.?tier.*limit|billing/i.test(errBlob)
+   const looksTempRateLimit=/rate.?limit|too many requests|per.?minute|\bRPM\b|\bTPM\b|try again shortly/i.test(errBlob)
+   if(looksTempRateLimit&&!looksHardQuota){
+    throw new GeminiRateLimitError(`Gemini HTTP ${effectiveStatus||429} temporary rate limit: ${errMsg.slice(0,220)}`,effectiveStatus||429,{retryAfterMs})
+   }
+   throw new GeminiQuotaExhausted(`Gemini HTTP ${effectiveStatus||429} quota exhausted: ${errMsg.slice(0,220)}`,effectiveStatus||429,{retryAfterMs})
+  }
+  if(effectiveStatus===503||effectiveStatus===502||effectiveStatus===504||/\bUNAVAILABLE\b|high demand|overloaded/i.test(errBlob)){
+   throw new GeminiUnavailableError(`Gemini HTTP ${effectiveStatus||503}: ${errMsg.slice(0,220)}`,effectiveStatus||503,{retryAfterMs})
+  }
+  if(effectiveStatus===400||/\bINVALID_ARGUMENT\b/i.test(errBlob)){
+   const modelUnsupported=/temperature|top_p|top_k|generation_?config|response_?json_?schema|unsupported.*model|not supported for/i.test(errBlob)
+   throw new GeminiInvalidRequestError(`Gemini HTTP ${effectiveStatus||400}: ${errMsg.slice(0,220)}`,effectiveStatus||400,{modelUnsupported})
+  }
+  const err=Error(`Gemini HTTP ${effectiveStatus||response.status}: ${errMsg.slice(0,220)}`)
+  err.status=effectiveStatus||response.status
   throw err
  }
 
- let payload
- try{payload=JSON.parse(rawText)}catch{throw Error('Gemini returned malformed envelope JSON')}
- const text=payload?.candidates?.[0]?.content?.parts?.map(p=>p.text||'').join('')||''
- if(!text)throw Error(`Gemini returned empty text (finishReason=${payload?.candidates?.[0]?.finishReason||'unknown'})`)
+ if(!parsedEnvelope)throw Error('Gemini returned malformed envelope JSON')
+ const text=parsedEnvelope?.candidates?.[0]?.content?.parts?.map(p=>p.text||'').join('')||''
+ if(!text)throw Error(`Gemini returned empty text (finishReason=${parsedEnvelope?.candidates?.[0]?.finishReason||'unknown'})`)
 
  try{
   return {
    draft:JSON.parse(text),
-   usage:payload.usageMetadata||null
+   usage:parsedEnvelope.usageMetadata||null
   }
  }catch{
   throw Error(`Gemini returned invalid story JSON (chars=${text.length})`)
@@ -908,6 +1370,7 @@ export async function callGeminiWithFailover(
   requestTimeoutMs=DEFAULT_GEMINI_TIMEOUT_MS,
   deadlineMs=Infinity,
   minCallBudgetMs=12_000,
+  schema=BATCH_STORY_SCHEMA,
   nowFn=()=>Date.now(),
   waitImpl=sleep,
   fetchImpl=fetch,
@@ -948,6 +1411,7 @@ export async function callGeminiWithFailover(
  }
 
  let lastQuotaError=null
+ let lastRateLimitError=null
  let lastUnavailableError=null
  let lastTimeoutError=null
  let lastAuthError=null
@@ -987,7 +1451,7 @@ export async function callGeminiWithFailover(
     :requestTimeoutMs
 
    try{
-    const result=await callGeminiImpl(prompt,{apiKey:current.key,model:activeModel,fetchImpl,timeoutMs:clampedTimeoutMs})
+    const result=await callGeminiImpl(prompt,{apiKey:current.key,model:activeModel,fetchImpl,timeoutMs:clampedTimeoutMs,schema})
     state.preferredModel=activeModel
     state.modelCooldownUntil.delete(activeModel)
     const fallbackUsed=activeModel!==primaryModel
@@ -1002,6 +1466,7 @@ export async function callGeminiWithFailover(
 
     if(isTemporaryRateLimitError(err)){
      recordApiError(state,'rate_limit')
+     lastRateLimitError=err instanceof GeminiRateLimitError?err:new GeminiRateLimitError(err.message,429,{retryAfterMs:err?.retryAfterMs})
      if(!retriedRateLimitKeys.has(current.label)){
       retriedRateLimitKeys.add(current.label)
       const waitMs=computeBoundedCooldownMs(err.retryAfterMs??unavailableRetryMs,{maxCooldownMs,remainingMs:remainingBudget(),reserveMs:minCallBudgetMs})
@@ -1012,11 +1477,10 @@ export async function callGeminiWithFailover(
       if(waitMs>0)await waitImpl(waitMs)
       continue
      }
-     // Escalate repeated 429 on this (model, key) route to route-level quota exhaustion
-     lastQuotaError=new GeminiQuotaExhausted(err.message,429,{retryAfterMs:err.retryAfterMs})
-     state.unavailableRoutes.add(rKey)
-     state.routeFailureReasons.set(rKey,'quota_exhausted')
-     state.exhaustedKeys.add(current.label)
+     // Repeated temporary 429 is NOT confirmed hard quota exhaustion: apply cooldown and try next key/model
+     state.modelCooldownUntil.set(activeModel,nowFn()+60_000)
+     if(state.preferredModel===activeModel)state.preferredModel=null
+     console.warn(`[batch]   -> Repeated temporary 429 rate limit on ${activeModel} (${current.label}); cooling down and trying next key/model without marking hard quota exhausted.`)
      state.activeIndex++
      continue
     }
@@ -1138,20 +1602,23 @@ export async function callGeminiWithFailover(
   }
  }
 
- if(!hasUsableGeminiRoute(state,baseChain)){
-  if(allRoutesFailedByQuotaOnly(state,baseChain)){
-   throw new GeminiQuotaExhausted(`All ${keys.length} configured Gemini API key(s) exhausted quota across models [${baseChain.join(', ')}] (${[...state.exhaustedKeys].join(', ')})`,429)
-  }
-  if(lastAuthError&&!lastQuotaError)throw lastAuthError
-  if(lastModelNotFoundError&&!lastQuotaError)throw lastModelNotFoundError
-  if(lastInvalidError&&!lastQuotaError)throw lastInvalidError
+ // Only report confirmed hard quota exhaustion when EVERY non-404 route is confirmed quota_exhausted and no mixed non-quota failure occurred
+ const confirmedAllQuota=!hasUsableGeminiRoute(state,baseChain)&&
+  allRoutesFailedByQuotaOnly(state,baseChain)&&
+  !lastRateLimitError&&!lastUnavailableError&&!lastTimeoutError&&!lastAuthError&&!lastInvalidError
+ if(confirmedAllQuota){
+  throw new GeminiQuotaExhausted(`All ${keys.length} configured Gemini API key(s) exhausted quota across models [${baseChain.join(', ')}] (${[...state.exhaustedKeys].join(', ')})`,429)
  }
- if(lastUnavailableError&&!lastQuotaError)throw lastUnavailableError
- if(lastTimeoutError&&!lastQuotaError)throw lastTimeoutError
- if(lastAuthError&&!lastQuotaError)throw lastAuthError
- if(lastModelNotFoundError&&!lastQuotaError)throw lastModelNotFoundError
- if(lastInvalidError&&!lastQuotaError)throw lastInvalidError
- throw new GeminiQuotaExhausted(`All ${keys.length} configured Gemini API key(s) exhausted quota across models [${baseChain.join(', ')}]`,429)
+ if(lastAuthError)throw lastAuthError
+ if(lastUnavailableError)throw lastUnavailableError
+ if(lastTimeoutError)throw lastTimeoutError
+ if(lastRateLimitError)throw lastRateLimitError
+ if(lastInvalidError)throw lastInvalidError
+ if(lastModelNotFoundError)throw lastModelNotFoundError
+ if(lastQuotaError&&!hasUsableGeminiRoute(state,baseChain)&&allRoutesFailedByQuotaOnly(state,baseChain))throw lastQuotaError
+ const mixedErr=Error(`Gemini failover failed across models [${baseChain.join(', ')}] without confirmed full quota exhaustion`)
+ mixedErr.kind='mixed_failover_failure'
+ throw mixedErr
 }
 
 function normalizeOptionalImageId(value,validImageIds=null){
@@ -1181,7 +1648,7 @@ export function normalizeDraftForCatalog(rawDraft,{source,evidence,verifiedPhoto
  const variants={}
  for(const level of LEVELS){
   const srcVar=rawDraft?.variants?.[level]
-  if(!srcVar||!Array.isArray(srcVar.pages)||srcVar.pages.length<4){
+  if(!srcVar||!Array.isArray(srcVar.pages)||srcVar.pages.length<PAGE_COUNT_BOUNDS.min){
    throw Error(`Missing or incomplete ${level} variant in Gemini output`)
   }
   const headline=String(srcVar.headline||'').replace(/\s+/g,' ').trim()
@@ -1219,17 +1686,68 @@ export function normalizeDraftForCatalog(rawDraft,{source,evidence,verifiedPhoto
   variants[level]={headline,pages,...(glossary.length?{glossary}:{})}
  }
 
+ let factSheet=null
+ if(rawDraft?.factSheet&&typeof rawDraft.factSheet==='object'){
+  const fsRaw=rawDraft.factSheet
+  const coreFacts=Array.isArray(fsRaw.coreFacts)
+   ?fsRaw.coreFacts
+     .filter(f=>f&&typeof f.fact==='string'&&f.fact.trim())
+     .slice(0,12)
+     .map((f,idx)=>{
+      const ids=(Array.isArray(f.evidenceIds)?f.evidenceIds:[]).filter(id=>validIds.has(id))
+      return {
+       id:String(f.id||`F${idx+1}`).trim()||`F${idx+1}`,
+       fact:f.fact.replace(/\s+/g,' ').trim(),
+       evidenceIds:ids.length?ids:bestEvidenceFor(f.fact),
+       hasUncertainty:Boolean(f.hasUncertainty)
+      }
+     })
+   :[]
+  factSheet={
+   mainSubject:String(fsRaw.mainSubject||source?.sourceTitle||'').replace(/\s+/g,' ').trim(),
+   coreFacts,
+   keyEntities:Array.isArray(fsRaw.keyEntities)?fsRaw.keyEntities.map(v=>String(v||'').trim()).filter(Boolean).slice(0,15):[],
+   keyNumbersDates:Array.isArray(fsRaw.keyNumbersDates)?fsRaw.keyNumbersDates.map(v=>String(v||'').trim()).filter(Boolean).slice(0,15):[],
+   caveatsOrUncertainty:Array.isArray(fsRaw.caveatsOrUncertainty)?fsRaw.caveatsOrUncertainty.map(v=>String(v||'').trim()).filter(Boolean).slice(0,8):[]
+  }
+ }
+
+ let outline=null
+ if(Array.isArray(rawDraft?.outline)&&rawDraft.outline.length){
+  outline=rawDraft.outline.map((op,idx)=>{
+   const ids=(Array.isArray(op?.evidenceIds)?op.evidenceIds:[]).filter(id=>validIds.has(id))
+   const hasImg=Object.prototype.hasOwnProperty.call(op||{},'imageId')
+   const normImg=hasImg?normalizeOptionalImageId(op.imageId,validImageIds):undefined
+   const focus=String(op?.focus||'').replace(/\s+/g,' ').trim()
+   const imageReason=String(op?.imageReason||'').replace(/\s+/g,' ').trim()
+   return {
+    pageIndex:Number.isInteger(op?.pageIndex)?op.pageIndex:idx,
+    focus,
+    factIds:Array.isArray(op?.factIds)?op.factIds.map(v=>String(v||'').trim()).filter(Boolean):[],
+    evidenceIds:ids.length?ids:bestEvidenceFor(focus),
+    ...(hasImg?{imageId:normImg}:{}),
+    ...(imageReason?{imageReason}:{})
+   }
+  })
+ }
+
  // Preserve each level's actual page count so validateArticleQuality() catches any
- // cross-level page-count mismatch or >6-page overflow and triggers the self-healing retry.
- return {variants}
+ // cross-level page-count mismatch or >6-page overflow and triggers targeted repair.
+ return {
+  ...(factSheet?{factSheet}:{}),
+  ...(outline?{outline}:{}),
+  variants
+ }
 }
 
 /** Build a schema-valid & quality-gate-valid synthetic draft for --dry-run testing without spending any Gemini quota. */
 function makeDryRunDraft(source,evidence,verifiedPhotos=[]){
  const topicWord=source.sourceTitle.split(/\s+/).slice(0,2).join(' ')
  const eId=idx=>evidence[idx%evidence.length].id
- const leadPhoto=verifiedPhotos.find(p=>p.sectionIndex===0)||null
- const bodyPhoto=verifiedPhotos.find(p=>p.sectionIndex>0)||null
+ const leadPhotos=verifiedPhotos.filter(p=>p.sectionIndex===0)
+ const bodyPhotos=verifiedPhotos.filter(p=>p.sectionIndex>0)
+ const coverPhoto=leadPhotos[0]||findMainSubjectFallbackPhoto(bodyPhotos,source)||null
+ const bodyPhoto=bodyPhotos.find(p=>!coverPhoto||p.imageId!==coverPhoto.imageId)||null
 
  // Bind bodyPhoto (if any) to Page 3 (index 2) alongside a matching evidence passage from its exact section
  const bodyEvidence=bodyPhoto
@@ -1240,10 +1758,10 @@ function makeDryRunDraft(source,evidence,verifiedPhotos=[]){
   :'early craft'
  const shortCaption=photo=>{
   if(!photo)return ''
-  return String(photo.wikiCaption||photo.caption||source.sourceTitle).replace(/\s+/g,' ').trim().split(/\s+/).slice(0,7).join(' ').slice(0,45)
+  return formatCompleteCaption(photo.wikiCaption||photo.caption||source.sourceTitle,{maxChars:48,maxWords:8})
  }
 
- const p0ImgId=leadPhoto?.imageId||null
+ const p0ImgId=coverPhoto?.imageId||null
  const p2ImgId=bodyPhoto?.imageId||null
 
  const a1P3Text=p2ImgId
@@ -1259,11 +1777,30 @@ function makeDryRunDraft(source,evidence,verifiedPhotos=[]){
   :`As transnational communication networks expanded alongside increasingly precise scientific instrumentation, scholars analyzing ${bodyFocus} observed how evolving methodologies systematically transcended their original geographic and disciplinary boundaries. Academic institutions, archival repositories, and regional policy bodies continually recalibrated inherited conventions surrounding ${bodyFocus} in direct response to newly documented empirical and historical realities. Through sustained cross-border correspondence, collaborative fieldwork, and comparative translation, specialists integrated diverse regional evidence into broader analytical frameworks that reshaped institutional planning across multiple continents.`
 
  return {
+  factSheet:{
+   mainSubject:source.sourceTitle,
+   coreFacts:[
+    {id:'F1',fact:`Early interest in ${topicWord} grew across local towns and schools.`,evidenceIds:[eId(0)],hasUncertainty:false},
+    {id:'F2',fact:`Teams tested plans and kept written notes to guide later work.`,evidenceIds:[eId(1)],hasUncertainty:false},
+    {id:'F3',fact:`Specialists studied ${bodyFocus} and adapted practices across regions.`,evidenceIds:[bodyEvidence.id],hasUncertainty:false},
+    {id:'F4',fact:`Debates over rules and costs required open talks and careful review.`,evidenceIds:[eId(3)],hasUncertainty:false}
+   ],
+   keyEntities:[source.sourceTitle],
+   keyNumbersDates:[],
+   caveatsOrUncertainty:[]
+  },
+  outline:[
+   {pageIndex:0,focus:`Opening view of ${topicWord} and early questions`,factIds:['F1'],evidenceIds:[eId(0)],imageId:p0ImgId},
+   {pageIndex:1,focus:`Early trials, written notes, and shared tools`,factIds:['F2'],evidenceIds:[eId(1)],imageId:null},
+   {pageIndex:2,focus:`Regional study and expansion of ${bodyFocus}`,factIds:['F3'],evidenceIds:[bodyEvidence.id],imageId:p2ImgId},
+   {pageIndex:3,focus:`Debates over rules, fairness, and long-term costs`,factIds:['F4'],evidenceIds:[eId(3)],imageId:null},
+   {pageIndex:4,focus:`Lasting lessons of ${topicWord} in modern life`,factIds:['F1','F4'],evidenceIds:[eId(0),eId(3)],imageId:null}
+  ],
   variants:{
    'A1-A2':{
     headline:`How ${topicWord} Changed Daily Life Forever`,
     pages:[
-     {text:`Long ago, people looked at ${topicWord} and asked fresh questions. Early ideas spread fast across small towns and busy schools. Soon, many learners wanted to know more. That simple start opened a wide door for later work.`,imageId:p0ImgId,caption:shortCaption(leadPhoto),evidenceIds:[eId(0)]},
+     {text:`Long ago, people looked at ${topicWord} and asked fresh questions. Early ideas spread fast across small towns and busy schools. Soon, many learners wanted to know more. That simple start opened a wide door for later work.`,imageId:p0ImgId,caption:shortCaption(coverPhoto),evidenceIds:[eId(0)]},
      {text:`In the first years, small teams tried new plans step by step. They kept clear notes in plain wood books. Each test taught them one useful thing. When a plan failed, they tried again the next day. Friends shared tools on town roads every week. Over time, good work built strong trust among local people and readers.`,imageId:null,caption:'',evidenceIds:[eId(1)]},
      {text:a1P3Text,imageId:p2ImgId,caption:shortCaption(bodyPhoto),evidenceIds:[bodyEvidence.id]},
      {text:`Hard problems came when people did not agree on new rules or high costs. Some groups asked for slow steps. Other groups wanted fast change. Open talks helped small towns find a fair path together. Leaders heard workers, teachers, and homes before they chose. Soon, people saw that real gain needs both strong plans and kind care.`,imageId:null,caption:'',evidenceIds:[eId(3)]},
@@ -1274,7 +1811,7 @@ function makeDryRunDraft(source,evidence,verifiedPhotos=[]){
    'B1-B2':{
     headline:`Inside the Remarkable Evolution of ${topicWord} Today`,
     pages:[
-     {text:`Long before modern schools studied ${topicWord}, early thinkers saw clear patterns in their own towns. Their notes soon spread through letters, books, and public talks. What began as a small question slowly grew into a strong movement that changed how people viewed the world.`,imageId:p0ImgId,caption:shortCaption(leadPhoto),evidenceIds:[eId(0)]},
+     {text:`Long before modern schools studied ${topicWord}, early thinkers saw clear patterns in their own towns. Their notes soon spread through letters, books, and public talks. What began as a small question slowly grew into a strong movement that changed how people viewed the world.`,imageId:p0ImgId,caption:shortCaption(coverPhoto),evidenceIds:[eId(0)]},
      {text:`During its early years, careful teams compared written records from several regions while testing better ways to work. They wrote down clear wins and hard setbacks in plain reports that everyday readers could follow. Those honest notes helped younger builders learn from proven facts instead of making costly old mistakes again. Across workshops and libraries, close study slowly replaced guesswork with steady standards that lasted for many decades.`,imageId:null,caption:'',evidenceIds:[eId(1)]},
      {text:b1P3Text,imageId:p2ImgId,caption:shortCaption(bodyPhoto),evidenceIds:[bodyEvidence.id]},
      {text:`Still, fast change rarely came without tension, because different groups often argued about rules, fairness, and long-term costs. Careful critics warned leaders not to move faster than real field tests could support. Strong backers answered that smart reform could finally solve tough daily problems that older systems had ignored for years. Settling those debates took patient talks among writers, town leaders, and watchful citizens.`,imageId:null,caption:'',evidenceIds:[eId(3)]},
@@ -1285,7 +1822,7 @@ function makeDryRunDraft(source,evidence,verifiedPhotos=[]){
    'C1-C2':{
     headline:`Why ${topicWord} Continues to Reshape Modern Perspective`,
     pages:[
-     {text:`Long before contemporary scholarship systematically categorized ${topicWord}, observant practitioners recognized subtle historical anomalies that quietly undermined conventional assumptions across established intellectual traditions. Over subsequent decades, those recurring methodological questions catalyzed an enduring re-evaluation of both formal theoretical frameworks and everyday institutional practice across diverse regions.`,imageId:p0ImgId,caption:shortCaption(leadPhoto),evidenceIds:[eId(0)]},
+     {text:`Long before contemporary scholarship systematically categorized ${topicWord}, observant practitioners recognized subtle historical anomalies that quietly undermined conventional assumptions across established intellectual traditions. Over subsequent decades, those recurring methodological questions catalyzed an enduring re-evaluation of both formal theoretical frameworks and everyday institutional practice across diverse regions.`,imageId:p0ImgId,caption:shortCaption(coverPhoto),evidenceIds:[eId(0)]},
      {text:`Throughout its foundational period, methodical investigators synthesized comparative archival documentation from disparate regions while rigorously interrogating prevailing frameworks through sustained empirical scrutiny. By publishing transparent analytical records detailing both structural breakthroughs and persistent methodological uncertainties, they established durable intellectual benchmarks that enabled subsequent scholars to distinguish verifiable causal mechanisms from speculative consensus. Within emerging scholarly networks, disciplined peer verification gradually transformed scattered regional observations into a coherent, self-correcting body of comparative historical and technical knowledge.`,imageId:null,caption:'',evidenceIds:[eId(1)]},
      {text:c1P3Text,imageId:p2ImgId,caption:shortCaption(bodyPhoto),evidenceIds:[bodyEvidence.id]},
      {text:`Nevertheless, rapid institutional transformation invariably generated substantive intellectual tension whenever competing constituencies negotiated unfamiliar standards of public accountability, long-term civic governance, and rigorous evidentiary transparency. While cautious observers insisted that comprehensive empirical verification must necessarily precede sweeping structural reform, persistent advocates countered that delaying essential modernization carried equally severe economic and administrative consequences. Resolving those competing imperatives demanded sustained public deliberation across legislative forums, professional associations, and independent research committees committed to balancing institutional stability with measured adaptation.`,imageId:null,caption:'',evidenceIds:[eId(3)]},
@@ -1345,6 +1882,9 @@ export function classifyQualityErrorBucket(errMsg){
  if(/caption too long/i.test(msg))return 'caption length'
  if(/dry encyclopedia opening/i.test(msg))return 'dry Page 1 opening'
  if(/headline/i.test(msg))return 'headline'
+ if(/uncertainty|overclaim|safety caveat|hedge/i.test(msg))return 'uncertainty/safety'
+ if(/Outline /i.test(msg))return 'outline parity'
+ if(/Factual|contradiction|unverified year|unverified quantity|topic alignment/i.test(msg))return 'factual/consistency'
  if(/Cross-level/i.test(msg))return 'cross-level parity'
  if(/complete sentence/i.test(msg))return 'incomplete sentence'
  if(/page count/i.test(msg))return 'page count'
@@ -1406,6 +1946,7 @@ export async function writeGithubStepSummary(summary,summaryPath=process.env.GIT
 
 export async function runPublishWikiBatch({
  root=ROOT,
+ outputRoot=null,
  queueFile=DEFAULT_QUEUE_FILE,
  maxArticles=null,
  maxCandidates=null,
@@ -1418,6 +1959,9 @@ export async function runPublishWikiBatch({
  nowFn=()=>Date.now(),
  bootstrapThreshold=BOOTSTRAP_THRESHOLD,
  titles=[],
+ pageIds=[],
+ regenerateExisting=false,
+ retrySkippedQuality=false,
  apiKey=process.env.GEMINI_API_KEY||'',
  apiKeys=null,
  model=process.env.GEMINI_MODEL||DEFAULT_GEMINI_MODEL,
@@ -1439,20 +1983,29 @@ export async function runPublishWikiBatch({
  const remainingBudget=()=>deadlineMs-nowFn()
  const elapsedSeconds=()=>Math.max(0,Math.round((nowFn()-startedAtMs)/1000))
 
+ const resolvedRoot=path.resolve(root)
+ const writeRoot=outputRoot?path.resolve(outputRoot):resolvedRoot
+ const isIsolatedPilot=writeRoot!==resolvedRoot
+
  const finalizeAndReport=async summary=>{
   await writeGithubOutputs(summary,githubOutputFile).catch(()=>{})
   await writeGithubStepSummary(summary,githubStepSummaryFile).catch(()=>{})
   return summary
  }
 
- const queue=JSON.parse(await fs.readFile(queueFile,'utf8'))
- const catalog=await readWikiCatalog(root)
- let catalogTotal=catalog.manifest?.total??catalog.stories.length
+ const queue=regenerateExisting
+  ?await fs.readFile(queueFile,'utf8').then(raw=>JSON.parse(raw)).catch(()=>({version:1,items:[]}))
+  :JSON.parse(await fs.readFile(queueFile,'utf8'))
+ const sourceCatalog=await readWikiCatalog(resolvedRoot)
+ const targetCatalog=isIsolatedPilot?await readWikiCatalog(writeRoot):sourceCatalog
+ let catalogTotal=targetCatalog.manifest?.total??targetCatalog.stories.length
+ const targetStoryIds=new Set(targetCatalog.stories.map(s=>s.id))
 
+ const effectiveExplicitMax=maxArticles??(regenerateExisting?DEFAULT_REGENERATE_MAX_ARTICLES:null)
  const schedulePlan=resolveAutoSchedulePlan({
-  catalogTotal,
-  eventName,
-  explicitMaxArticles:maxArticles,
+  catalogTotal:sourceCatalog.manifest?.total??sourceCatalog.stories.length,
+  eventName:regenerateExisting||isIsolatedPilot?'workflow_dispatch':eventName,
+  explicitMaxArticles:effectiveExplicitMax,
   now,
   bootstrapThreshold
  })
@@ -1461,6 +2014,8 @@ export async function runPublishWikiBatch({
   console.log(`[batch] Stage 2 Steady-State Mode (total=${catalogTotal} >= ${bootstrapThreshold}): skipping off-peak ${String(schedulePlan.slotUtcHour).padStart(2,'0')}:00 UTC slot without calling Gemini.`)
   return finalizeAndReport({
    dryRun,
+   isolatedPilot:isIsolatedPilot,
+   regenerateExisting,
    skippedBySchedule:true,
    schedulePlan,
    stopReason:'schedule_skipped',
@@ -1470,6 +2025,7 @@ export async function runPublishWikiBatch({
    quotaStopped:false,
    generatedCount:0,
    addedToCatalog:0,
+   regeneratedCount:0,
    catalogTotal,
    scannedCount:0,
    skippedNoImageCount:0,
@@ -1491,34 +2047,72 @@ export async function runPublishWikiBatch({
  }
 
  const keyState=ensureKeyState({keys:resolvedKeys,activeIndex:0,exhaustedKeys:new Set()})
- const usedPageIds=new Set(catalog.stories.map(s=>s.sourcePageId))
- const usedImages=new Set(catalog.stories.flatMap(s=>s.pages.flatMap(p=>[p.image,p.imageProvenance?.imagePageUrl]).filter(Boolean)))
- const byTopic=catalog.manifest?.byTopic||Object.fromEntries(WIKI_TOPICS.map(t=>[t,0]))
+ const sourceUsedPageIds=new Set(sourceCatalog.stories.map(s=>s.sourcePageId))
+ const targetUsedPageIds=new Set(targetCatalog.stories.map(s=>s.sourcePageId))
+ const usedPageIds=new Set([...sourceUsedPageIds,...targetUsedPageIds])
+ const usedImages=new Set(
+  (isIsolatedPilot?targetCatalog.stories:sourceCatalog.stories).flatMap(s=>s.pages.flatMap(p=>[p.image,p.imageProvenance?.imagePageUrl]).filter(Boolean))
+ )
+ const byTopic=sourceCatalog.manifest?.byTopic||Object.fromEntries(WIKI_TOPICS.map(t=>[t,0]))
 
- // Idempotent crash recovery: reconcile any queue item already committed to the catalog
+ // Idempotent crash recovery: reconcile any queue item already committed to the catalog (normal production mode only)
  let queueDirty=false
  let queuePersisted=false
- for(const qItem of queue.items||[]){
-  if(qItem.status!=='published'&&Number.isSafeInteger(qItem.pageId)&&usedPageIds.has(qItem.pageId)){
-   qItem.status='published'
-   queueDirty=true
+ if(!regenerateExisting&&!isIsolatedPilot){
+  for(const qItem of queue.items||[]){
+   if(qItem.status!=='published'&&Number.isSafeInteger(qItem.pageId)&&sourceUsedPageIds.has(qItem.pageId)){
+    qItem.status='published'
+    queueDirty=true
+   }
   }
  }
 
  const explicitTitles=Array.isArray(titles)?titles.map(t=>String(t||'').trim()).filter(Boolean):[]
- const schedule=explicitTitles.length
-  ?explicitTitles.map(title=>({title,topic:'History & Geography',status:'pending',_explicit:true}))
-  :buildRoundRobinOrder(queue.items,{byTopic,usedPageIds})
+ const explicitPageIds=Array.isArray(pageIds)
+  ?pageIds.map(id=>Number(id)).filter(id=>Number.isSafeInteger(id)&&id>0)
+  :[]
+ const explicitTitleSet=new Set(explicitTitles.map(t=>t.toLowerCase()))
+ const explicitPageIdSet=new Set(explicitPageIds)
+
+ let schedule
+ if(regenerateExisting){
+  const candidates=sourceCatalog.stories.filter(story=>{
+   if(explicitPageIdSet.size&&!explicitPageIdSet.has(story.sourcePageId))return false
+   if(explicitTitleSet.size){
+    const sTitle=String(story.sourceTitle||'').toLowerCase()
+    const dTitle=String(story.title||'').toLowerCase()
+    if(!explicitTitleSet.has(sTitle)&&!explicitTitleSet.has(dTitle))return false
+   }
+   return true
+  })
+  schedule=candidates.map(story=>({
+   title:story.sourceTitle,
+   topic:story.category||story.topic,
+   pageId:story.sourcePageId,
+   status:'published',
+   _regenerate:true,
+   _existingStory:story
+  }))
+ }else if(explicitTitles.length){
+  schedule=explicitTitles.map(title=>({title,topic:'History & Geography',status:'pending',_explicit:true}))
+ }else if(explicitPageIdSet.size){
+  schedule=(queue.items||[])
+   .filter(item=>Number.isSafeInteger(item?.pageId)&&explicitPageIdSet.has(item.pageId)&&!targetUsedPageIds.has(item.pageId))
+   .map(item=>({...item,_explicit:true}))
+ }else{
+  schedule=buildRoundRobinOrder(queue.items,{byTopic,usedPageIds,includeSkippedQuality:retrySkippedQuality})
+ }
+
  const modelChain=resolveGeminiModelChain({model,fallbackModels})
 
  const configuredScanCap=Number.isFinite(Number(maxCandidates))&&Number(maxCandidates)>0
   ?Math.floor(Number(maxCandidates))
   :(schedulePlan.maxCandidates||targetPublished*3)
- const maxCandidatesToScan=explicitTitles.length
+ const maxCandidatesToScan=(explicitTitles.length||explicitPageIdSet.size)
   ?schedule.length
   :Math.min(schedule.length,configuredScanCap)
 
- console.log(`[batch] Starting ${dryRun?'DRY-RUN ':''}publish [stage=${schedulePlan.stage}]: targetPublished=${targetPublished}, maxCandidates=${maxCandidatesToScan}, budget=${Number.isFinite(maxRuntimeMs)?Math.round(maxRuntimeMs/1000)+'s':'unbounded'}, model=${modelChain[0]}, fallbacks=[${modelChain.slice(1).join(', ')}], keys=${resolvedKeys.length}, pending=${schedule.length}, published=${catalogTotal}`)
+ console.log(`[batch] Starting ${dryRun?'DRY-RUN ':''}${regenerateExisting?'REGENERATE ':''}${isIsolatedPilot?'ISOLATED-PILOT ':''}publish [stage=${schedulePlan.stage}]: targetPublished=${targetPublished}, maxCandidates=${maxCandidatesToScan}, budget=${Number.isFinite(maxRuntimeMs)?Math.round(maxRuntimeMs/1000)+'s':'unbounded'}, model=${modelChain[0]}, fallbacks=[${modelChain.slice(1).join(', ')}], keys=${resolvedKeys.length}, candidates=${schedule.length}, catalogTotal=${catalogTotal}`)
 
  const generatedStories=[]
  const publishedItems=[]
@@ -1528,6 +2122,7 @@ export async function runPublishWikiBatch({
  const transientErrors=[]
  const qualityErrorHistogram={}
  let addedToCatalog=0
+ let replacedInCatalog=0
  let scannedCount=0
  let quotaStopped=false
  let budgetStopped=false
@@ -1543,18 +2138,19 @@ export async function runPublishWikiBatch({
   }
  }
 
+ const canMutateQueue=!dryRun&&!isIsolatedPilot&&!regenerateExisting
  const checkpointQueue=async()=>{
-  if(dryRun)return
+  if(!canMutateQueue)return
   await saveQueueAtomic(queueFile,queue)
   queueDirty=false
   queuePersisted=true
  }
 
- if(queueDirty&&!dryRun){
+ if(queueDirty&&canMutateQueue){
   await checkpointQueue()
  }
 
- const invokeGeminiWithDelay=async(prompt,{reserveMs=minRetryBudgetMs}={})=>{
+ const invokeGeminiWithDelay=async(prompt,{reserveMs=minRetryBudgetMs,schema=BATCH_STORY_SCHEMA}={})=>{
   if(geminiCalls>0&&delayMs>0){
    const rem=remainingBudget()
    if(Number.isFinite(deadlineMs)&&rem<delayMs+reserveMs){
@@ -1567,6 +2163,7 @@ export async function runPublishWikiBatch({
   return callGeminiWithFailover(prompt,keyState,{
    model:modelChain[0],
    fallbackModels:modelChain.slice(1),
+   schema,
    unavailableRetryMs,
    maxCooldownMs,
    requestTimeoutMs,
@@ -1577,6 +2174,41 @@ export async function runPublishWikiBatch({
    fetchImpl,
    callGeminiImpl
   })
+ }
+
+ const runOneTargetedRepair=async({source,item,trimmed,verifiedPhotos,normalizedDraft,quality})=>{
+  recordQualityHistogram(quality.errors)
+  const remBeforeRetry=remainingBudget()
+  if(Number.isFinite(deadlineMs)&&remBeforeRetry<minRetryBudgetMs){
+   return {budgetHit:true}
+  }
+  const repairTargets=identifyRepairTargets(normalizedDraft,quality)
+  const repairSchema=repairTargets.useTargetedPatch?TARGETED_REPAIR_SCHEMA:BATCH_STORY_SCHEMA
+  const modeLabel=repairTargets.useTargetedPatch
+   ?`targeted patch (${repairTargets.targetSummary.map(t=>`${t.level}${t.headline?'[H]':''}${t.pageIndexes.length?`[P${t.pageIndexes.map(i=>i+1).join(',')}]`:''}`).join(', ')})`
+   :'structural rebuild'
+  console.warn(`[batch]   -> Quality gate failed (${quality.errors.length} issue(s)); running ONE ${modeLabel}...`)
+  const repairPrompt=buildTargetedRepairPrompt(source,item.topic,trimmed.evidence,normalizedDraft,quality,verifiedPhotos)
+  const retryRes=await invokeGeminiWithDelay(repairPrompt,{reserveMs:minRetryBudgetMs,schema:repairSchema})
+  consecutiveInfraFailures=0
+  try{
+   const mergedRaw=mergeTargetedRepairs(normalizedDraft,retryRes.draft,repairTargets)
+   const repairedDraft=normalizeDraftForCatalog(mergedRaw,{source,evidence:trimmed.evidence,verifiedPhotos})
+   const repairedQuality=validateArticleQuality(repairedDraft,source.sourceTitle,{source,evidence:trimmed.evidence})
+   return {
+    budgetHit:false,
+    model:retryRes.model,
+    normalizedDraft:repairedDraft,
+    quality:repairedQuality
+   }
+  }catch(repairErr){
+   return {
+    budgetHit:false,
+    model:retryRes.model,
+    normalizedDraft,
+    quality:{...quality,ok:false,errors:[...quality.errors,`Targeted repair rejected invalid output: ${repairErr.message}`]}
+   }
+  }
  }
 
  for(let idx=0;idx<maxCandidatesToScan&&generatedStories.length<targetPublished;idx++){
@@ -1599,11 +2231,12 @@ export async function runPublishWikiBatch({
 
   const item=schedule[idx]
   scannedCount++
+  const prevQueueStatus=item.status
   try{
    console.log(`[batch] (${generatedStories.length+1}/${targetPublished}) Checking [${item.topic}] "${item.title}"...`)
    const source=await fetchPageImpl(item.title,{fetchImpl,spacingMs:250})
 
-   if(!item._explicit&&usedPageIds.has(source.pageId)){
+   if(!item._explicit&&!item._regenerate&&usedPageIds.has(source.pageId)){
     item.status='published'
     item.pageId=source.pageId
     queueDirty=true
@@ -1611,23 +2244,40 @@ export async function runPublishWikiBatch({
     continue
    }
 
-   // Hard Gate for Page 1: Section 0 (Lead/Infobox) MUST contain >= 1 valid commercial-safe photo BEFORE calling Gemini
-   const mediaCheck=await collectPhotosImpl(source,{usedImages:item._explicit?new Set():usedImages,fetchImpl,spacingMs:250})
+   // Exclude existing story's own images during opt-in regeneration so it can reuse its own verified Wikipedia images
+   let candidateUsedImages=item._explicit?new Set():usedImages
+   if(item._regenerate&&item._existingStory){
+    const ownImages=new Set(item._existingStory.pages.flatMap(p=>[p.image,p.imageProvenance?.imagePageUrl]).filter(Boolean))
+    candidateUsedImages=new Set([...usedImages].filter(u=>!ownImages.has(u)))
+   }
+
+   // Cover Photo Gate: prefer Section 0 Lead/Infobox photo; if unavailable, allow a verified wikipedia-embedded main-subject body photo
+   const mediaCheck=await collectPhotosImpl(source,{usedImages:candidateUsedImages,fetchImpl,spacingMs:250})
    const verifiedPhotos=mediaCheck.photos||[]
    const leadPhotos=Array.isArray(mediaCheck.leadPhotos)
     ?mediaCheck.leadPhotos
     :verifiedPhotos.filter(p=>p.sectionIndex===0||p.isLeadImage)
-   const hasLeadPhoto=mediaCheck.hasLeadPhoto!==undefined?Boolean(mediaCheck.hasLeadPhoto):leadPhotos.length>0
+   const bodyPhotos=Array.isArray(mediaCheck.bodyPhotos)
+    ?mediaCheck.bodyPhotos
+    :verifiedPhotos.filter(p=>p.sectionIndex>0&&!p.isLeadImage)
+   const mainSubjectFallbackPhoto=mediaCheck.mainSubjectFallbackPhoto!==undefined
+    ?mediaCheck.mainSubjectFallbackPhoto
+    :(leadPhotos.length===0?findMainSubjectFallbackPhoto(bodyPhotos,source):null)
+   const hasCoverPhoto=mediaCheck.hasCoverPhoto!==undefined
+    ?Boolean(mediaCheck.hasCoverPhoto)
+    :(leadPhotos.length>0||Boolean(mainSubjectFallbackPhoto))
 
-   if(!hasLeadPhoto){
-    console.log(`[batch]   -> SKIPPED_NO_LEAD_IMAGE (Section 0 Lead/Infobox has 0 valid commercial-safe photos; bodyPhotos=${verifiedPhotos.length}, rejected=${(mediaCheck.rejected||[]).length}).`)
-    item.status='skipped_no_lead_image'
-    item.pageId=source.pageId
-    item.checkedAt=new Date().toISOString()
+   if(!hasCoverPhoto){
+    console.log(`[batch]   -> SKIPPED_NO_LEAD_IMAGE (0 valid commercial-safe lead or main-subject cover photos; bodyPhotos=${verifiedPhotos.length}, rejected=${(mediaCheck.rejected||[]).length}).`)
+    if(!item._regenerate){
+     item.status='skipped_no_lead_image'
+     item.pageId=source.pageId
+     item.checkedAt=new Date().toISOString()
+     queueDirty=true
+     await checkpointQueue()
+    }
     skippedNoLeadImage.push(item.title)
     skippedNoImage.push(item.title)
-    queueDirty=true
-    await checkpointQueue()
     continue
    }
 
@@ -1636,87 +2286,175 @@ export async function runPublishWikiBatch({
 
    let normalizedDraft
    let quality
+   let repairUsed=false
    let usedModel=dryRun?'dry-run':(keyState.preferredModel||modelChain[0])
    if(dryRun){
     normalizedDraft=normalizeDraftForCatalog(makeDryRunDraft(source,trimmed.evidence,verifiedPhotos),{source,evidence:trimmed.evidence,verifiedPhotos})
-    quality=validateArticleQuality(normalizedDraft,source.sourceTitle)
+    quality=validateArticleQuality(normalizedDraft,source.sourceTitle,{source,evidence:trimmed.evidence})
    }else{
     const prompt=buildBatchPrompt(source,item.topic,trimmed.evidence,verifiedPhotos)
-    const firstRes=await invokeGeminiWithDelay(prompt,{reserveMs:minRetryBudgetMs})
+    const firstRes=await invokeGeminiWithDelay(prompt,{reserveMs:minRetryBudgetMs,schema:BATCH_STORY_SCHEMA})
     consecutiveInfraFailures=0
     usedModel=firstRes.model||usedModel
     normalizedDraft=normalizeDraftForCatalog(firstRes.draft,{source,evidence:trimmed.evidence,verifiedPhotos})
-    quality=validateArticleQuality(normalizedDraft,source.sourceTitle)
+    quality=validateArticleQuality(normalizedDraft,source.sourceTitle,{source,evidence:trimmed.evidence})
 
-    // Retry ONCE with exact failed checks + objective CEFR diagnostics/overLevelWords if quality gate fails
+    // Perform at most ONE targeted repair of failing pages/levels while preserving valid content
     if(!quality.ok){
-     recordQualityHistogram(quality.errors)
-     const remBeforeRetry=remainingBudget()
-     if(Number.isFinite(deadlineMs)&&remBeforeRetry<minRetryBudgetMs){
-      console.warn(`[batch]   -> Runtime budget reached before quality retry (${Math.max(0,Math.round(remBeforeRetry/1000))}s left). Leaving "${item.title}" pending and stopping gracefully.`)
+     const repairOutcome=await runOneTargetedRepair({source,item,trimmed,verifiedPhotos,normalizedDraft,quality})
+     if(repairOutcome.budgetHit){
+      console.warn(`[batch]   -> Runtime budget reached before targeted repair (${Math.max(0,Math.round(remainingBudget()/1000))}s left). Leaving "${item.title}" ${prevQueueStatus||'pending'} and stopping gracefully.`)
       budgetStopped=true
       break
      }
-     console.warn(`[batch]   -> Quality gate failed (${quality.errors.length} issue(s)); retrying ONCE with feedback...`)
-     const retryPrompt=buildQualityRetryPrompt(source,item.topic,trimmed.evidence,normalizedDraft,quality.errors,verifiedPhotos,quality)
-     const retryRes=await invokeGeminiWithDelay(retryPrompt,{reserveMs:minRetryBudgetMs})
-     consecutiveInfraFailures=0
-     usedModel=retryRes.model||usedModel
-     normalizedDraft=normalizeDraftForCatalog(retryRes.draft,{source,evidence:trimmed.evidence,verifiedPhotos})
-     quality=validateArticleQuality(normalizedDraft,source.sourceTitle)
+     repairUsed=true
+     usedModel=repairOutcome.model||usedModel
+     normalizedDraft=repairOutcome.normalizedDraft
+     quality=repairOutcome.quality
     }
    }
 
    if(!quality.ok){
     recordQualityHistogram(quality.errors)
-    console.warn(`[batch]   -> SKIPPED_QUALITY after retry: ${quality.errors.slice(0,3).join(' | ')}`)
-    item.status='skipped_quality'
-    item.pageId=source.pageId
-    item.qualityErrors=quality.errors.slice(0,5)
-    item.checkedAt=new Date().toISOString()
+    console.warn(`[batch]   -> SKIPPED_QUALITY after repair: ${quality.errors.slice(0,3).join(' | ')}`)
+    if(!item._regenerate){
+     item.status='skipped_quality'
+     item.pageId=source.pageId
+     item.qualityErrors=quality.errors.slice(0,5)
+     item.checkedAt=new Date().toISOString()
+     queueDirty=true
+     await checkpointQueue()
+    }
     skippedQuality.push(item.title)
-    queueDirty=true
-    await checkpointQueue()
     continue
    }
 
-   // Strictly section-bound wikipedia-embedded image binding & programmatic alignment guard (NO Commons fallback!)
-   const assigned=assignBatchPhotos(normalizedDraft.variants,{
+   // Strictly outline/section-bound wikipedia-embedded image binding & alignment guard (NO Commons fallback!)
+   let assigned=assignBatchPhotos(normalizedDraft.variants,{
     source,
     articlePhotos:verifiedPhotos,
     evidence:trimmed.evidence,
-    usedImages:item._explicit?new Set():usedImages
+    usedImages:candidateUsedImages,
+    outline:normalizedDraft.outline
    })
    if(!assigned.ok){
     console.log(`[batch]   -> SKIPPED_NO_LEAD_IMAGE (${assigned.reason}).`)
-    item.status='skipped_no_lead_image'
-    item.pageId=source.pageId
-    item.checkedAt=new Date().toISOString()
+    if(!item._regenerate){
+     item.status='skipped_no_lead_image'
+     item.pageId=source.pageId
+     item.checkedAt=new Date().toISOString()
+     queueDirty=true
+     await checkpointQueue()
+    }
     skippedNoLeadImage.push(item.title)
     skippedNoImage.push(item.title)
-    queueDirty=true
-    await checkpointQueue()
     continue
    }
+
+   // If misaligned body images were stripped across A/B/C, ALWAYS revalidate the post-strip draft!
    if(assigned.strippedImages?.length){
     console.log(`[batch]   -> Guard stripped ${assigned.strippedImages.length} misaligned body image(s): ${assigned.strippedImages.map(s=>`P${s.pageIndex+1}:${s.reason}`).join(', ')}`)
+    const strippedSet=new Set(assigned.strippedImages.map(s=>s.pageIndex))
+    const postStripVariants=Object.fromEntries(LEVELS.map(level=>[
+     level,
+     {
+      ...normalizedDraft.variants[level],
+      pages:normalizedDraft.variants[level].pages.map((p,i)=>strippedSet.has(i)?{...p,imageId:null,caption:''}:p)
+     }
+    ]))
+    const postStripOutline=Array.isArray(normalizedDraft.outline)
+     ?normalizedDraft.outline.map((op,i)=>strippedSet.has(i)?{...op,imageId:null}:op)
+     :undefined
+    normalizedDraft={
+     ...normalizedDraft,
+     ...(postStripOutline?{outline:postStripOutline}:{}),
+     variants:postStripVariants
+    }
+    quality=validateArticleQuality(normalizedDraft,source.sourceTitle,{source,evidence:trimmed.evidence})
+
+    if(!quality.ok&&!dryRun&&!repairUsed){
+     const repairOutcome=await runOneTargetedRepair({source,item,trimmed,verifiedPhotos,normalizedDraft,quality})
+     if(repairOutcome.budgetHit){
+      console.warn(`[batch]   -> Runtime budget reached before post-strip repair (${Math.max(0,Math.round(remainingBudget()/1000))}s left). Leaving "${item.title}" ${prevQueueStatus||'pending'} and stopping gracefully.`)
+      budgetStopped=true
+      break
+     }
+     repairUsed=true
+     usedModel=repairOutcome.model||usedModel
+     normalizedDraft=repairOutcome.normalizedDraft
+     assigned=assignBatchPhotos(normalizedDraft.variants,{
+      source,
+      articlePhotos:verifiedPhotos,
+      evidence:trimmed.evidence,
+      usedImages:candidateUsedImages,
+      outline:normalizedDraft.outline
+     })
+     if(!assigned.ok){
+      console.log(`[batch]   -> SKIPPED_NO_LEAD_IMAGE after post-strip repair (${assigned.reason}).`)
+      if(!item._regenerate){
+       item.status='skipped_no_lead_image'
+       item.pageId=source.pageId
+       item.checkedAt=new Date().toISOString()
+       queueDirty=true
+       await checkpointQueue()
+      }
+      skippedNoLeadImage.push(item.title)
+      skippedNoImage.push(item.title)
+      continue
+     }
+     quality=validateArticleQuality(normalizedDraft,source.sourceTitle,{source,evidence:trimmed.evidence})
+    }
+
+    if(!quality.ok){
+     recordQualityHistogram(quality.errors)
+     console.warn(`[batch]   -> SKIPPED_QUALITY after stripping misaligned body image(s): ${quality.errors.slice(0,3).join(' | ')}`)
+     if(!item._regenerate){
+      item.status='skipped_quality'
+      item.pageId=source.pageId
+      item.qualityErrors=quality.errors.slice(0,5)
+      item.checkedAt=new Date().toISOString()
+      queueDirty=true
+      await checkpointQueue()
+     }
+     skippedQuality.push(item.title)
+     continue
+    }
    }
 
-   const story=makeWikiStory({
+   const builtStory=makeWikiStory({
     source,
     topic:item.topic,
     draft:{variants:assigned.levelVariants},
     photos:assigned.photos,
     evidence:trimmed.evidence
    })
+   const story=item._regenerate&&item._existingStory
+    ?{
+     ...builtStory,
+     id:item._existingStory.id,
+     sourcePageId:item._existingStory.sourcePageId,
+     category:item._existingStory.category||builtStory.category,
+     topic:item._existingStory.topic||builtStory.topic,
+     publishedAt:item._existingStory.publishedAt||builtStory.publishedAt,
+     license:item._existingStory.license||builtStory.license,
+     licenseUrl:item._existingStory.licenseUrl||builtStory.licenseUrl
+    }
+    :builtStory
    const gate=validateWikiStory(story)
    if(!gate.accepted)throw Error(`Story failed catalog gate: ${gate.errors.join(', ')}`)
 
-   // Atomic per-article checkpointing: write catalog first, then update queue atomically
+   // Atomic per-article checkpointing: write catalog first, then update queue atomically (production only)
    if(!dryRun){
-    const stepCatalog=await appendWikiStories(root,[story])
-    addedToCatalog+=stepCatalog.added
-    catalogTotal=stepCatalog.total
+    if(item._regenerate&&targetStoryIds.has(story.id)){
+     const stepCatalog=await replaceWikiStory(writeRoot,story)
+     replacedInCatalog+=stepCatalog.replaced?1:0
+     catalogTotal=stepCatalog.total
+    }else{
+     const stepCatalog=await appendWikiStories(writeRoot,[story])
+     addedToCatalog+=stepCatalog.added
+     catalogTotal=stepCatalog.total
+     targetStoryIds.add(story.id)
+    }
    }
 
    // Track used IDs/images across this batch
@@ -1730,27 +2468,27 @@ export async function runPublishWikiBatch({
 
    generatedStories.push(story)
    publishedItems.push(item)
-   item.pageId=source.pageId
-   item.sourceUrl=source.sourceUrl
-   item.status='published'
-   item.publishedAt=story.publishedAt
-   queueDirty=true
-   if(!dryRun){
+   if(!item._regenerate){
+    item.pageId=source.pageId
+    item.sourceUrl=source.sourceUrl
+    item.status='published'
+    item.publishedAt=story.publishedAt
+    queueDirty=true
     await checkpointQueue()
    }
    const imgBindingSummary=assigned.photos.map(p=>`P${p.pageIndex+1}:${p.imageId}(sec${p.sectionIndex}:${p.sectionHeading})`).join(', ')
-   console.log(`[batch]   -> OK (checkpointed): "${story.title}" [model=${usedModel}] (${trimmed.wordCount}w src, ${assigned.photos.length} embedded photo(s) [${imgBindingSummary}], ${story.pages.length} pages, CEFR FKGL ${quality.metrics['A1-A2'].fkgl}/${quality.metrics['B1-B2'].fkgl}/${quality.metrics['C1-C2'].fkgl}, avg ${quality.metrics['A1-A2'].avgSentenceWords}/${quality.metrics['B1-B2'].avgSentenceWords}/${quality.metrics['C1-C2'].avgSentenceWords}w/sent).`)
+   console.log(`[batch]   -> OK (${item._regenerate?'regenerated':'checkpointed'}): "${story.title}" [model=${usedModel}] (${trimmed.wordCount}w src, ${assigned.photos.length} embedded photo(s) [${imgBindingSummary}], ${story.pages.length} pages, CEFR FKGL ${quality.metrics['A1-A2'].fkgl}/${quality.metrics['B1-B2'].fkgl}/${quality.metrics['C1-C2'].fkgl}, avg ${quality.metrics['A1-A2'].avgSentenceWords}/${quality.metrics['B1-B2'].avgSentenceWords}/${quality.metrics['C1-C2'].avgSentenceWords}w/sent).`)
   }catch(err){
    if(err instanceof PublishingBudgetExceeded||err?.isBudget){
     console.warn(`[batch] Runtime budget exhausted (${err.message}). Preserving ${generatedStories.length} checkpointed article(s) and stopping gracefully.`)
     budgetStopped=true
-    item.status='pending'
+    if(!item._regenerate)item.status=prevQueueStatus||'pending'
     break
    }
-   if(isQuotaError(err)){
-    console.warn(`[batch] All Gemini API routes hit quota (${err.message}). Preserving ${generatedStories.length} checkpointed article(s) and stopping gracefully.`)
+   if(err instanceof GeminiQuotaExhausted){
+    console.warn(`[batch] All Gemini API routes hit confirmed hard quota (${err.message}). Preserving ${generatedStories.length} checkpointed article(s) and stopping gracefully.`)
     quotaStopped=true
-    item.status='pending'
+    if(!item._regenerate)item.status=prevQueueStatus||'pending'
     break
    }
    if(err instanceof WikiApiPause){
@@ -1761,7 +2499,7 @@ export async function runPublishWikiBatch({
    console.warn(`[batch]   -> Candidate "${item.title}" failed: ${err.message}`)
    transientErrors.push({title:item.title,error:err.message,kind:err?.kind||'error'})
 
-   const isInfraErr=isAuthError(err)||isModelNotFoundError(err)||isUnavailableError(err)||isTimeoutError(err)||Boolean(err?.noUsableRoute)||(isInvalidRequestError(err)&&err?.modelUnsupported)
+   const isInfraErr=isAuthError(err)||isModelNotFoundError(err)||isUnavailableError(err)||isTimeoutError(err)||isTemporaryRateLimitError(err)||err?.kind==='mixed_failover_failure'||Boolean(err?.noUsableRoute)||(isInvalidRequestError(err)&&err?.modelUnsupported)
    if(isInfraErr){
     consecutiveInfraFailures++
    }
@@ -1782,12 +2520,12 @@ export async function runPublishWikiBatch({
   }
  }
 
- if(!dryRun&&queueDirty){
+ if(canMutateQueue&&queueDirty){
   await checkpointQueue()
  }
 
  if(!dryRun){
-  console.log(`[batch] Summary saved: added=${addedToCatalog} (catalog total: ${catalogTotal}), queue updated (published +${publishedItems.length}, skipped_no_lead_image +${skippedNoLeadImage.length}, skipped_quality +${skippedQuality.length}).`)
+  console.log(`[batch] Summary saved (${isIsolatedPilot?`isolated -> ${writeRoot}`:'production'}): added=${addedToCatalog}, regenerated=${replacedInCatalog} (catalog total: ${catalogTotal}), skipped_no_lead_image=${skippedNoLeadImage.length}, skipped_quality=${skippedQuality.length}.`)
  }else{
   console.log(`[batch] DRY-RUN complete: validated ${generatedStories.length} article(s), skipped_no_lead_image=${skippedNoLeadImage.length}, skipped_quality=${skippedQuality.length}, errors=${transientErrors.length}. No files modified.`)
  }
@@ -1812,10 +2550,13 @@ export async function runPublishWikiBatch({
   stopReason='no_eligible_candidates'
  }
 
- const hasValidChanges=!dryRun&&(addedToCatalog>0||queuePersisted)
+ const hasValidChanges=!dryRun&&(addedToCatalog>0||replacedInCatalog>0||queuePersisted)
 
  return finalizeAndReport({
   dryRun,
+  isolatedPilot:isIsolatedPilot,
+  outputRoot:writeRoot,
+  regenerateExisting,
   skippedBySchedule:false,
   schedulePlan,
   stopReason,
@@ -1825,6 +2566,7 @@ export async function runPublishWikiBatch({
   quotaStopped,
   generatedCount:generatedStories.length,
   addedToCatalog,
+  regeneratedCount:replacedInCatalog,
   catalogTotal,
   scannedCount,
   skippedNoImageCount:skippedNoImage.length,
@@ -1839,7 +2581,7 @@ export async function runPublishWikiBatch({
  })
 }
 
-function parseArgs(argv){
+export function parseArgs(argv){
  const envMaxRaw=String(process.env.MAX_ARTICLES||'').trim()
  const envMax=envMaxRaw&&Number.isFinite(Number(envMaxRaw))&&Number(envMaxRaw)>0?Math.floor(Number(envMaxRaw)):null
  const envRuntimeRaw=String(process.env.MAX_RUNTIME_MS||'').trim()
@@ -1853,11 +2595,17 @@ function parseArgs(argv){
   model:process.env.GEMINI_MODEL||DEFAULT_GEMINI_MODEL,
   fallbackModels:process.env.GEMINI_FALLBACK_MODELS||null,
   queueFile:DEFAULT_QUEUE_FILE,
+  outputRoot:null,
   titles:[],
+  pageIds:[],
+  regenerateExisting:false,
+  retrySkippedQuality:false,
   dryRun:false
  }
  for(const arg of argv){
   if(arg==='--dry-run')opts.dryRun=true
+  else if(arg==='--regenerate-existing')opts.regenerateExisting=true
+  else if(arg==='--retry-skipped-quality')opts.retrySkippedQuality=true
   else if(arg.startsWith('--max-articles=')){
    const val=Number(arg.split('=')[1])
    if(Number.isFinite(val)&&val>0)opts.maxArticles=Math.floor(val)
@@ -1875,7 +2623,14 @@ function parseArgs(argv){
   else if(arg.startsWith('--model='))opts.model=arg.split('=')[1].trim()||DEFAULT_GEMINI_MODEL
   else if(arg.startsWith('--fallback-models='))opts.fallbackModels=arg.split('=')[1].trim()
   else if(arg.startsWith('--queue-file='))opts.queueFile=path.resolve(arg.split('=')[1])
+  else if(arg.startsWith('--target-root='))opts.outputRoot=path.resolve(arg.slice('--target-root='.length))
   else if(arg.startsWith('--title='))opts.titles.push(arg.slice('--title='.length).trim())
+  else if(arg.startsWith('--page-id=')){
+   for(const part of arg.slice('--page-id='.length).split(',')){
+    const num=Number(part.trim())
+    if(Number.isSafeInteger(num)&&num>0)opts.pageIds.push(num)
+   }
+  }
  }
  return opts
 }

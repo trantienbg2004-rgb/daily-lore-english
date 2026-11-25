@@ -57,9 +57,9 @@ jobs:
           fi
 
       - name: Top up Wikipedia candidate queue if low
-        if: ${{ github.event.inputs.dry_run != true }}
+        if: ${{ inputs.dry_run != true && github.event.inputs.dry_run != 'true' }}
         env:
-          FORCE_REBUILD: ${{ github.event.inputs.rebuild_queue || 'false' }}
+          FORCE_REBUILD: ${{ (inputs.rebuild_queue == true || github.event.inputs.rebuild_queue == 'true') && 'true' || 'false' }}
         run: |
           if [ "$FORCE_REBUILD" = "true" ] || [ ! -f data/wiki_queue.json ]; then
             node scripts/build_wiki_queue.mjs --target-per-topic=160
@@ -77,10 +77,10 @@ jobs:
           SAGA_IMAGE_TEST_API_KEY: ${{ secrets.SAGA_IMAGE_TEST_API_KEY }}
           GEMINI_MODEL: gemini-3.5-flash-lite
           GITHUB_EVENT_NAME: ${{ github.event_name }}
-          MAX_ARTICLES: ${{ github.event.inputs.max_articles || '' }}
+          MAX_ARTICLES: ${{ inputs.max_articles || github.event.inputs.max_articles || '' }}
           GEMINI_DELAY_MS: '8000'
           MAX_RUNTIME_MS: '1440000'
-          DRY_RUN: ${{ github.event.inputs.dry_run || 'false' }}
+          DRY_RUN: ${{ (inputs.dry_run == true || github.event.inputs.dry_run == 'true') && 'true' || 'false' }}
         run: |
           if [ "$DRY_RUN" != "true" ] && [ -z "$GEMINI_API_KEY" ] && [ -z "$GEMINI_API_KEY_2" ] && [ -z "$GEMINI_API_KEY_3" ] && [ -z "$SAGA_IMAGE_TEST_API_KEY" ]; then
             echo "ERROR: No Gemini API key secret is configured."
@@ -102,7 +102,7 @@ jobs:
         if: ${{ !cancelled() }}
         continue-on-error: true
         env:
-          DRY_RUN: ${{ github.event.inputs.dry_run || 'false' }}
+          DRY_RUN: ${{ (inputs.dry_run == true || github.event.inputs.dry_run == 'true') && 'true' || 'false' }}
         run: |
           set -euo pipefail
           node scripts/build-reader-index.mjs
@@ -120,7 +120,7 @@ jobs:
 
       - name: Commit and push verified Wiki catalog and queue updates
         id: push
-        if: ${{ !cancelled() && github.event.inputs.dry_run != true && steps.verify.outcome == 'success' && steps.verify.outputs.has_git_changes == 'true' && steps.publish.outputs.has_valid_changes == 'true' }}
+        if: ${{ !cancelled() && inputs.dry_run != true && github.event.inputs.dry_run != 'true' && steps.verify.outcome == 'success' && steps.verify.outputs.has_git_changes == 'true' && steps.publish.outputs.has_valid_changes == 'true' }}
         continue-on-error: true
         env:
           PUBLISHED_COUNT: ${{ steps.publish.outputs.published_count || '0' }}
@@ -159,7 +159,7 @@ jobs:
           STOP_REASON: ${{ steps.publish.outputs.stop_reason }}
           HAS_VALID_CHANGES: ${{ steps.publish.outputs.has_valid_changes }}
           HAS_GIT_CHANGES: ${{ steps.verify.outputs.has_git_changes }}
-          DRY_RUN: ${{ github.event.inputs.dry_run || 'false' }}
+          DRY_RUN: ${{ (inputs.dry_run == true || github.event.inputs.dry_run == 'true') && 'true' || 'false' }}
         run: |
           set -euo pipefail
           echo "Workflow status: publish=${PUBLISH_OUTCOME}, verify=${VERIFY_OUTCOME}, push=${PUSH_OUTCOME}, published_count=${PUBLISHED_COUNT:-<missing>}, stop_reason=${STOP_REASON:-<missing>}, has_valid_changes=${HAS_VALID_CHANGES:-<missing>}, has_git_changes=${HAS_GIT_CHANGES:-<missing>}, dry_run=${DRY_RUN}"

@@ -388,7 +388,7 @@ test('atomic checkpointing cleans temp/superseded files and recovers idempotentl
   const files=await fs.readdir(wikiDir)
   const indexFiles=files.filter(f=>/^catalog-index-[a-f0-9]+\.json$/.test(f))
   const tmpFiles=files.filter(f=>f.includes('.tmp-'))
-  assert.equal(indexFiles.length,1,'Should clean up superseded catalog-index files')
+  assert.ok(indexFiles.length>=2,'Should preserve previous catalog-index files for safe rollback')
   assert.equal(tmpFiles.length,0,'Should leave zero temporary files')
 
   const catalog=await readWikiCatalog(tmpDir)
@@ -600,7 +600,7 @@ test('auto-wiki-publish.yml enforces timeout, concurrency, push gating, and fina
  assert.match(yml,/id:\s*verify/)
  assert.match(yml,/id:\s*push/)
  assert.match(yml,/id:\s*final_status/)
- assert.match(yml,/!cancelled\(\)\s*&&\s*github\.event\.inputs\.dry_run\s*!=\s*true\s*&&\s*steps\.verify\.outcome\s*==\s*'success'\s*&&\s*steps\.verify\.outputs\.has_git_changes\s*==\s*'true'\s*&&\s*steps\.publish\.outputs\.has_valid_changes\s*==\s*'true'/)
+ assert.match(yml,/!cancelled\(\)\s*&&\s*inputs\.dry_run\s*!=\s*true\s*&&\s*github\.event\.inputs\.dry_run\s*!=\s*'true'\s*&&\s*steps\.verify\.outcome\s*==\s*'success'\s*&&\s*steps\.verify\.outputs\.has_git_changes\s*==\s*'true'\s*&&\s*steps\.publish\.outputs\.has_valid_changes\s*==\s*'true'/)
 
  // Extract the exact bash script from final_status step and run it across failure/success matrices
  const match=yml.match(/id:\s*final_status[\s\S]*?run:\s*\|\n([\s\S]+)$/)

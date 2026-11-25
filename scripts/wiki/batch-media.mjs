@@ -244,12 +244,15 @@ export async function collectVerifiedArticlePhotos(source,{usedImages=new Set(),
  const numbered=photos.map((photo,idx)=>({...photo,imageId:`IMG_${idx}`}))
  const leadPhotos=numbered.filter(p=>p.sectionIndex===0)
  const bodyPhotos=numbered.filter(p=>p.sectionIndex>0)
+ const mainSubjectFallbackPhoto=leadPhotos.length===0?findMainSubjectFallbackPhoto(bodyPhotos,source):null
 
  return {
   photos:numbered,
   leadPhotos,
   bodyPhotos,
   hasLeadPhoto:leadPhotos.length>0,
+  mainSubjectFallbackPhoto,
+  hasCoverPhoto:leadPhotos.length>0||Boolean(mainSubjectFallbackPhoto),
   rejected
  }
 }
@@ -263,12 +266,105 @@ export async function fetchLinkedCommonsCategoryPhotos(){
  return {category:'',photos:[],disabled:true}
 }
 
+const DANGLING_CAPTION_END=new Set(['a','an','the','of','in','on','at','to','for','by','with','from','as','and','or','but','near','into','over','under','between','during','through','about'])
+
+/**
+ * Produce a concise, complete caption without cutting words mid-word, leaving dangling
+ * prepositions/articles, or changing the caption's meaning.
+ */
+export function formatCompleteCaption(rawCaption,{maxChars=65,maxWords=10}={}){
+ const cleaned=String(rawCaption||'')
+  .replace(/\[\d+\]/g,'')
+  .replace(/\s+/g,' ')
+  .replace(/\s*\([^)]{24,}\)/g,'')
+  .trim()
+  .replace(/^[—–:\-;\s]+|[,;:\-–—\s]+$/g,'')
+ if(!cleaned)return ''
+ const words=cleaned.split(/\s+/).filter(Boolean)
+ if(cleaned.length<=maxChars&&words.length<=maxWords)return cleaned
+
+ // Prefer the first complete sentence/clause if it fits cleanly
+ const clauses=cleaned.split(/(?<=[.!?])\s+|;\s+|\s+[—–-]\s+/)
+ for(const clause of clauses){
+  const c=clause.trim().replace(/[,;:\-–—\s]+$/g,'')
+  const cw=c.split(/\s+/).filter(Boolean)
+  if(cw.length>=3&&cw.length<=maxWords&&c.length<=maxChars)return c
+ }
+
+ // Next try before the first comma if that yields a complete phrase
+ const beforeComma=cleaned.split(/,\s+/)[0].trim().replace(/[,;:\-–—\s]+$/g,'')
+ const bcWords=beforeComma.split(/\s+/).filter(Boolean)
+ if(bcWords.length>=3&&bcWords.length<=maxWords&&beforeComma.length<=maxChars)return beforeComma
+
+ // Last resort: accumulate whole words within limits, trimming dangling function words
+ const chosen=[]
+ for(const w of words){
+  if(chosen.length>=maxWords)break
+  const candidate=[...chosen,w].join(' ')
+  if(candidate.length>maxChars)break
+  chosen.push(w)
+ }
+ while(chosen.length>3&&DANGLING_CAPTION_END.has(chosen[chosen.length-1].toLowerCase().replace(/[^a-z]/g,''))){
+  chosen.pop()
+ }
+ const out=chosen.join(' ').replace(/[,;:\-–—\s]+$/g,'')
+ return out||words.slice(0,Math.min(words.length,maxWords)).join(' ')
+}
+
+function normalizePhrase(value){
+ return String(value||'').toLowerCase().normalize('NFKD').replace(/\([^)]*\)/g,' ').replace(/[^a-z0-9]+/g,' ').replace(/\s+/g,' ').trim()
+}
+
 function buildPhotoSubject(photo){
  const cleanFile=String(photo?.fileTitle||'').replace(/^File:/i,'').replace(/\.[^.]+$/,'').replace(/_/g,' ')
  return `${photo?.wikiCaption||''} ${photo?.caption||''} ${photo?.description||''} ${photo?.sectionHeading||photo?.section||''} ${cleanFile}`.trim()
 }
 
-function checkBodyPhotoAlignment(photo,pageIndex,variants,{source,evidence=[]}={}){
+/**
+ * When zero Section 0 Lead photos are available, locate a directly relevant verified
+ * Wikipedia-embedded body photo that depicts the article's main subject (NOT a tangential detail).
+ * All commercial-safe license, attribution, resolution, and provenance checks remain strictly enforced.
+ */
+export function findMainSubjectFallbackPhoto(bodyPhotos,source){
+ const rawTitle=String(source?.sourceTitle||'').replace(/\s*\([^)]*\)\s*/g,' ').trim()
+ const titlePhrase=normalizePhrase(rawTitle)
+ if(!titlePhrase||!Array.isArray(bodyPhotos)||!bodyPhotos.length)return null
+ const titleTerms=[...normalizeTerms(rawTitle)]
+ const leadRef=[source?.leadText||'',...(source?.paragraphs||[]).slice(0,2)].filter(Boolean)
+
+ const ranked=[]
+ for(const photo of bodyPhotos){
+  const origin=photo?.provenance?.originType||photo?.originType
+  if(origin!=='wikipedia-embedded')continue
+  if(leadRef.length&&!eraCompatible(photo,leadRef))continue
+
+  const captionNorm=normalizePhrase(photo.wikiCaption||photo.caption||'')
+  const descNorm=normalizePhrase(photo.description||'')
+  const fileNorm=normalizePhrase(String(photo.fileTitle||'').replace(/^File:/i,'').replace(/\.[^.]+$/,''))
+  const combinedNorm=`${captionNorm} ${descNorm} ${fileNorm}`.trim()
+  if(!combinedNorm)continue
+
+  // Require direct depiction of the main subject: exact main-title phrase in caption/description/filename
+  // (or for 1-word distinctive titles, exact word match in caption or description)
+  const exactInCaption=captionNorm.includes(titlePhrase)
+  const exactInDesc=descNorm.includes(titlePhrase)
+  const exactInFile=fileNorm.includes(titlePhrase)
+  const isMultiWord=titlePhrase.includes(' ')
+  const matchedAllTerms=titleTerms.length>=2&&titleTerms.every(t=>normalizeTerms(captionNorm).has(t)||normalizeTerms(descNorm).has(t))
+  const directlyDepictsSubject=isMultiWord
+   ?(exactInCaption||exactInDesc||exactInFile||matchedAllTerms)
+   :(titlePhrase.length>=4&&(exactInCaption||exactInDesc))
+  if(!directlyDepictsSubject)continue
+
+  const score=(exactInCaption?12:0)+(exactInDesc?8:0)+(exactInFile?6:0)+(matchedAllTerms?4:0)+(/image\/(?:jpeg|webp)/i.test(photo.mime)?2:0)
+  ranked.push({photo:{...photo,isMainSubjectFallback:true},score})
+ }
+
+ ranked.sort((a,b)=>b.score-a.score||a.photo.sectionIndex-b.photo.sectionIndex||a.photo.position-b.photo.position)
+ return ranked[0]?.photo||null
+}
+
+function checkBodyPhotoAlignment(photo,pageIndex,variants,{source,evidence=[],outline=null}={}){
  const texts=LEVELS.map(l=>String(variants[l]?.pages?.[pageIndex]?.text||''))
  if(!eraCompatible(photo,texts))return {ok:false,reason:'era-mismatch'}
 
@@ -286,6 +382,22 @@ function checkBodyPhotoAlignment(photo,pageIndex,variants,{source,evidence=[]}={
  const overlaps=texts.map(t=>overlapCount(subject,t))
  const specificHits=texts.map(t=>specificTerms.filter(word=>normalizeTerms(t).has(word)).length)
 
+ // Optional shared outline binding: if outline binds this page, verify outline focus/reason aligns with the photo's subject/section
+ const outlinePage=Array.isArray(outline)?outline[pageIndex]:null
+ let outlineAligned=false
+ if(outlinePage&&typeof outlinePage==='object'){
+  const outlineText=`${outlinePage.focus||''} ${outlinePage.imageReason||''}`.trim()
+  if(outlineText){
+   const outlineSpecificHits=specificTerms.filter(word=>normalizeTerms(outlineText).has(word)).length
+   const outlineOverlap=overlapCount(subject,outlineText)
+   outlineAligned=outlineSpecificHits>=1||outlineOverlap>=2
+   // If outline explicitly specifies a focus completely unrelated to the photo's specific subject AND section doesn't match, reject
+   if(!outlineAligned&&specificTerms.length>=2&&outlineOverlap===0&&Math.min(...specificHits)===0){
+    return {ok:false,reason:'outline-subject-mismatch'}
+   }
+  }
+ }
+
  // Check whether this page cites evidence from the exact Wikipedia section where this photo is embedded
  const sectionHitCount=LEVELS.filter(l=>{
   const ids=variants[l]?.pages?.[pageIndex]?.evidenceIds||[]
@@ -299,16 +411,19 @@ function checkBodyPhotoAlignment(photo,pageIndex,variants,{source,evidence=[]}={
  }).length
  const sectionMatched=photoSectionIdx>0&&sectionHitCount>=2
 
- // Case 1: Photo is bound to this page's exact Wikipedia section AND shares topic/entity vocabulary
- if(sectionMatched&&(Math.max(...overlaps)>=1||Math.max(...specificHits)>=1)){
-  return {ok:true,reason:'section-and-topic-match',score:8+overlaps.reduce((a,b)=>a+b,0)+Math.min(...specificHits)*2}
+ // Case 1: Photo is bound to this page's exact Wikipedia section AND shares specific subject terms (not merely generic title words)
+ if(sectionMatched&&(Math.max(...specificHits)>=1||(specificTerms.length===0&&Math.max(...overlaps)>=1))){
+  return {ok:true,reason:'section-and-subject-match',score:8+(outlineAligned?4:0)+overlaps.reduce((a,b)=>a+b,0)+Math.min(...specificHits)*2}
  }
 
- // Case 2: Clear specific entity/topic overlap across all 3 CEFR levels
+ // Case 2: Clear specific entity/subject overlap across all 3 CEFR levels (not merely generic article-title keywords)
  if(Math.min(...specificHits)>=1&&Math.min(...overlaps)>=1){
-  return {ok:true,reason:'entity-overlap-match',score:overlaps.reduce((a,b)=>a+b,0)+Math.min(...specificHits)*3}
+  if(specificTerms.length>=3&&Math.max(...specificHits)<2&&!outlineAligned&&!sectionMatched){
+   return {ok:false,reason:'weak-keyword-only-overlap'}
+  }
+  return {ok:true,reason:'entity-overlap-match',score:(outlineAligned?4:0)+overlaps.reduce((a,b)=>a+b,0)+Math.min(...specificHits)*3}
  }
- if(Math.min(...overlaps)>=2){
+ if(specificTerms.length===0&&Math.min(...overlaps)>=2){
   return {ok:true,reason:'strong-topic-overlap',score:overlaps.reduce((a,b)=>a+b,0)}
  }
 
@@ -319,12 +434,12 @@ function checkBodyPhotoAlignment(photo,pageIndex,variants,{source,evidence=[]}={
  * Programmatic alignment guard executed before saving any article.
  * Verifies:
  * (a) Every image is wikipedia-embedded from this exact article's verified photo set.
- * (b) pages[0] strictly uses a Section 0 (Lead/Infobox) image.
- * (c) Every image on pages[1..N] shares real entity/topic overlap or bound section alignment;
- *     any failing Page 2-7 image is cleanly stripped to image: "" (text-only) rather than
- *     showing a mismatched photo.
+ * (b) pages[0] uses a Section 0 (Lead/Infobox) photo whenever available, or a directly relevant
+ *     verified Wikipedia-embedded main-subject body photo only when zero Section 0 photos exist.
+ * (c) Every image on pages[1..N] shares real subject/section/outline alignment;
+ *     any failing Page 2-7 image is cleanly stripped to image: "" (text-only) consistently across A/B/C.
  */
-export function validateImageAlignment(levelVariants,{source,verifiedPhotos=[],evidence=[]}={}){
+export function validateImageAlignment(levelVariants,{source,verifiedPhotos=[],evidence=[],outline=null}={}){
  const variants=structuredClone(levelVariants)
  const pageCount=Math.min(...LEVELS.map(l=>variants[l]?.pages?.length||0))
  const strippedImages=[]
@@ -332,26 +447,37 @@ export function validateImageAlignment(levelVariants,{source,verifiedPhotos=[],e
  if(pageCount<1)return {ok:false,reason:'insufficient-pages',levelVariants:variants,strippedImages}
 
  const embeddedByUrl=new Map()
+ const embeddedList=[]
  for(const p of verifiedPhotos){
   const origin=p?.provenance?.originType||p?.originType
   if(origin!=='wikipedia-embedded')continue
-  if(p?.url)embeddedByUrl.set(p.url,p)
+  if(p?.url){
+   embeddedByUrl.set(p.url,p)
+   embeddedList.push(p)
+  }
  }
+ const hasLeadPhotos=embeddedList.some(p=>resolveSectionIndex(p)===0)
+ const allowedFallbackCover=!hasLeadPhotos?findMainSubjectFallbackPhoto(embeddedList.filter(p=>resolveSectionIndex(p)>0),source):null
 
- // (a) & (b): Hard verify Page 1 uses a Section 0 wikipedia-embedded photo identically across all 3 levels
+ // (a) & (b): Hard verify Page 1 uses a Section 0 photo (or verified main-subject fallback when zero lead photos exist)
  const p0Urls=LEVELS.map(l=>String(variants[l]?.pages?.[0]?.image||'').trim())
  const p0Url=p0Urls[0]
  if(!p0Url||!p0Urls.every(u=>u===p0Url)){
   return {ok:false,reason:'page1-missing-lead-image',levelVariants:variants,strippedImages}
  }
  const p0Photo=embeddedByUrl.get(p0Url)
- if(!p0Photo||resolveSectionIndex(p0Photo)!==0){
+ if(!p0Photo){
+  return {ok:false,reason:'page1-not-section0-lead-image',levelVariants:variants,strippedImages}
+ }
+ const p0IsSection0=resolveSectionIndex(p0Photo)===0
+ const p0IsValidFallback=!hasLeadPhotos&&allowedFallbackCover&&allowedFallbackCover.url===p0Url
+ if(!p0IsSection0&&!p0IsValidFallback){
   return {ok:false,reason:'page1-not-section0-lead-image',levelVariants:variants,strippedImages}
  }
 
  const usedUrls=new Set([p0Url])
 
- // (c): Validate Pages 2..N; strip any misaligned, duplicate, or non-embedded image cleanly
+ // (c): Validate Pages 2..N; strip any misaligned, duplicate, or non-embedded image cleanly across A/B/C
  const stripPageImage=(pageIndex,fileTitle,reason)=>{
   for(const level of LEVELS){
    const page=variants[level].pages[pageIndex]
@@ -381,7 +507,7 @@ export function validateImageAlignment(levelVariants,{source,verifiedPhotos=[],e
    stripPageImage(pageIndex,photo.fileTitle,'duplicate-image-across-pages')
    continue
   }
-  const check=checkBodyPhotoAlignment(photo,pageIndex,variants,{source,evidence})
+  const check=checkBodyPhotoAlignment(photo,pageIndex,variants,{source,evidence,outline})
   if(!check.ok){
    stripPageImage(pageIndex,photo.fileTitle,check.reason)
    continue
@@ -401,18 +527,30 @@ function normalizeImageId(value){
 
 function chooseConciseCaption(pageCaption,photo){
  const raw=String(pageCaption||'').replace(/\s+/g,' ').trim()
- if(raw&&raw.length<=65&&raw.split(/\s+/).length>=3)return raw
- return String(photo.caption||photo.wikiCaption||'').replace(/\s+/g,' ').trim()
+ if(raw){
+  const formatted=formatCompleteCaption(raw,{maxChars:65,maxWords:10})
+  if(formatted&&formatted.split(/\s+/).length>=3){
+   // Ensure the generated caption does not alter meaning away from the photo's subject when photo metadata has specific terms
+   const photoSubject=buildPhotoSubject(photo)
+   const photoTerms=normalizeTerms(photoSubject)
+   if(!photoTerms.size||overlapCount(formatted,photoSubject)>=1){
+    return formatted
+   }
+  }
+ }
+ return formatCompleteCaption(photo.caption||photo.wikiCaption||'',{maxChars:65,maxWords:10})||
+  String(photo.caption||photo.wikiCaption||'').replace(/\s+/g,' ').trim()
 }
 
 /**
  * Section-bound photo assignment for SAGA Wiki batch articles.
  * - Rejects ALL non-wikipedia-embedded photos (external commonsPhotos are ignored).
- * - Strictly requires a Section 0 (Lead/Infobox) photo for Page 1.
- * - Respects Gemini's explicit page.imageId choices (never force-assigning leftover images).
+ * - Prefers a Section 0 (Lead/Infobox) photo for Page 1; allows a directly relevant verified
+ *   Wikipedia-embedded main-subject body photo ONLY when zero Section 0 photos exist.
+ * - Respects shared outline / explicit page.imageId choices (never force-assigning leftover images).
  * - Runs validateImageAlignment() to guarantee every surviving image is grounded & aligned.
  */
-export function assignBatchPhotos(levelVariants,{source,articlePhotos=[],evidence=[],usedImages=new Set()}={}){
+export function assignBatchPhotos(levelVariants,{source,articlePhotos=[],evidence=[],outline=null,usedImages=new Set()}={}){
  const variants=structuredClone(levelVariants)
  const pageCount=Math.min(...LEVELS.map(l=>variants[l]?.pages?.length||0))
  if(pageCount<4)return {ok:false,reason:'insufficient-pages'}
@@ -429,16 +567,23 @@ export function assignBatchPhotos(levelVariants,{source,articlePhotos=[],evidenc
   }))
 
  const leadPhotos=embeddedPhotos.filter(p=>p.sectionIndex===0)
- if(!leadPhotos.length)return {ok:false,reason:'no-lead-image'}
+ const bodyPhotos=embeddedPhotos.filter(p=>p.sectionIndex>0)
+ const mainSubjectFallback=!leadPhotos.length?findMainSubjectFallbackPhoto(bodyPhotos,source):null
+ if(!leadPhotos.length&&!mainSubjectFallback)return {ok:false,reason:'no-lead-image'}
 
  const photoById=new Map(embeddedPhotos.map(p=>[p.imageId.toUpperCase(),p]))
- const hasExplicitImageIds=LEVELS.some(l=>variants[l].pages.some(p=>Object.prototype.hasOwnProperty.call(p,'imageId')))
+ const hasExplicitImageIds=LEVELS.some(l=>variants[l].pages.some(p=>Object.prototype.hasOwnProperty.call(p,'imageId')))||
+  (Array.isArray(outline)&&outline.some(o=>o&&Object.prototype.hasOwnProperty.call(o,'imageId')))
 
  const chosenPages=new Map()
  const chosenUrls=new Set(usedImages)
 
- // Helper to pick Gemini's consensus imageId for a given pageIndex (preferring B1-B2)
+ // Helper to pick consensus imageId for a given pageIndex (preferring shared outline, then B1-B2)
  const requestedIdFor=pageIndex=>{
+  if(Array.isArray(outline)&&outline[pageIndex]){
+   const oid=normalizeImageId(outline[pageIndex].imageId)
+   if(oid)return oid
+  }
   for(const level of ['B1-B2','A1-A2','C1-C2']){
    const id=normalizeImageId(variants[level]?.pages?.[pageIndex]?.imageId)
    if(id)return id
@@ -446,14 +591,15 @@ export function assignBatchPhotos(levelVariants,{source,articlePhotos=[],evidenc
   return null
  }
 
- // 1. Page 1: MUST use a Section 0 (Lead/Infobox) photo
+ // 1. Page 1: Prefer Section 0 (Lead/Infobox) photo; allow main-subject fallback ONLY when zero lead photos exist
  let cover=null
  const requestedCoverId=requestedIdFor(0)
  if(requestedCoverId){
   const requested=photoById.get(requestedCoverId)
   if(requested&&requested.sectionIndex===0)cover=requested
+  else if(!leadPhotos.length&&requested&&mainSubjectFallback&&requested.url===mainSubjectFallback.url)cover=mainSubjectFallback
  }
- if(!cover){
+ if(!cover&&leadPhotos.length){
   const page1Texts=LEVELS.map(l=>variants[l].pages[0].text)
   const rankedLead=[...leadPhotos]
    .map(p=>{
@@ -466,15 +612,18 @@ export function assignBatchPhotos(levelVariants,{source,articlePhotos=[],evidenc
    .sort((a,b)=>b.score-a.score||a.photo.position-b.photo.position)
   cover=rankedLead[0].photo
  }
+ if(!cover&&mainSubjectFallback){
+  cover=mainSubjectFallback
+ }
  chosenPages.set(0,cover)
  chosenUrls.add(cover.url)
  chosenUrls.add(cover.provenance.imagePageUrl)
 
- // 2. Pages 2..N: bind explicit Gemini imageIds (or aligned section photos if legacy caller omitted imageId)
+ // 2. Pages 2..N: bind explicit outline/Gemini imageIds (or aligned section photos if legacy caller omitted imageId)
  if(hasExplicitImageIds){
   for(let pageIndex=1;pageIndex<pageCount;pageIndex++){
    const reqId=requestedIdFor(pageIndex)
-   if(!reqId)continue // Gemini intentionally left this page text-only; NEVER force-assign leftovers
+   if(!reqId)continue // Intentionally text-only; NEVER force-assign leftovers
    const candidate=photoById.get(reqId)
    if(!candidate)continue
    if(chosenUrls.has(candidate.url)||chosenUrls.has(candidate.provenance.imagePageUrl))continue
@@ -488,7 +637,7 @@ export function assignBatchPhotos(levelVariants,{source,articlePhotos=[],evidenc
    let best=null
    for(const photo of remaining){
     if(chosenUrls.has(photo.url)||chosenUrls.has(photo.provenance.imagePageUrl))continue
-    const alignment=checkBodyPhotoAlignment(photo,pageIndex,variants,{source,evidence})
+    const alignment=checkBodyPhotoAlignment(photo,pageIndex,variants,{source,evidence,outline})
     if(alignment.ok&&(!best||alignment.score>best.score))best={photo,score:alignment.score}
    }
    if(best){
@@ -523,6 +672,7 @@ export function assignBatchPhotos(levelVariants,{source,articlePhotos=[],evidenc
     sectionIndex:photo.sectionIndex,
     articleCaption:photo.wikiCaption||photo.caption,
     articleSection:photo.sectionIndex===0?'Lead':(photo.sectionHeading||photo.section||'Body'),
+    ...(photo.isMainSubjectFallback?{coverRole:'main-subject-body-fallback'}:{}),
     pageIndex
    }
   }
@@ -544,8 +694,8 @@ export function assignBatchPhotos(levelVariants,{source,articlePhotos=[],evidenc
   }
  }
 
- // Programmatic Guard: verify Lead photo on Page 1 & strip any misaligned Page 2..N image cleanly
- const validation=validateImageAlignment(variants,{source,verifiedPhotos:embeddedPhotos,evidence})
+ // Programmatic Guard: verify cover & strip any misaligned Page 2..N image cleanly across A/B/C
+ const validation=validateImageAlignment(variants,{source,verifiedPhotos:embeddedPhotos,evidence,outline})
  if(!validation.ok)return {ok:false,reason:validation.reason,strippedImages:validation.strippedImages}
 
  // Clean temporary imageId field and collect final surviving photos
@@ -566,6 +716,7 @@ export function assignBatchPhotos(levelVariants,{source,articlePhotos=[],evidenc
   ok:true,
   levelVariants:finalVariants,
   photos:attached,
-  strippedImages:validation.strippedImages
+  strippedImages:validation.strippedImages,
+  usedMainSubjectFallback:Boolean(cover?.isMainSubjectFallback)
  }
 }
