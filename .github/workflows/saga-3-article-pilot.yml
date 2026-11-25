@@ -1,0 +1,99 @@
+name: SAGA - 3 Article Pilot
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: saga-wiki-3-article-pilot
+  cancel-in-progress: false
+
+jobs:
+  pilot:
+    name: Generate up to 3 isolated Wiki articles
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Setup Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - name: Install dependencies
+        run: |
+          if [ -f package-lock.json ]; then
+            npm ci || npm install --no-audit --no-fund
+          else
+            npm install --no-audit --no-fund
+          fi
+
+      - name: Generate isolated three-article pilot
+        id: pilot
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_API_KEY_2: ${{ secrets.GEMINI_API_KEY_2 }}
+          GEMINI_API_KEY_3: ${{ secrets.GEMINI_API_KEY_3 }}
+          SAGA_IMAGE_TEST_API_KEY: ${{ secrets.SAGA_IMAGE_TEST_API_KEY }}
+          GEMINI_MODEL: gemini-3.5-flash-lite
+          GEMINI_DELAY_MS: '8000'
+          MAX_RUNTIME_MS: '1440000'
+        run: |
+          mkdir -p /tmp/saga-pilot
+          node scripts/publish_wiki_batch.mjs \
+            --target-root=/tmp/saga-pilot \
+            --max-articles=3 \
+            --max-candidates=9
+
+      - name: Upload isolated pilot catalog
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: saga-wiki-3-article-pilot
+          path: /tmp/saga-pilot/public/wiki-reader/
+          if-no-files-found: warn
+          retention-days: 7
+
+      - name: Report pilot result
+        if: always()
+        env:
+          PILOT_OUTCOME: ${{ steps.pilot.outcome }}
+          PUBLISHED_COUNT: ${{ steps.pilot.outputs.published_count }}
+          STOP_REASON: ${{ steps.pilot.outputs.stop_reason }}
+          SCANNED_COUNT: ${{ steps.pilot.outputs.scanned_count }}
+          QUALITY_SKIPS: ${{ steps.pilot.outputs.skipped_quality_count }}
+          IMAGE_SKIPS: ${{ steps.pilot.outputs.skipped_no_lead_count }}
+        run: |
+          {
+            echo "## SAGA three-article pilot"
+            echo "- Workflow step: ${PILOT_OUTCOME}"
+            echo "- Articles generated: ${PUBLISHED_COUNT:-unknown}/3"
+            echo "- Candidates scanned: ${SCANNED_COUNT:-unknown}"
+            echo "- Stop reason: ${STOP_REASON:-unknown}"
+            echo "- Quality rejections: ${QUALITY_SKIPS:-unknown}"
+            echo "- Missing suitable image: ${IMAGE_SKIPS:-unknown}"
+            echo "- Output: isolated artifact only; production Wiki and queue were not changed."
+          } >> "$GITHUB_STEP_SUMMARY"
+
+          if [ -z "${PUBLISHED_COUNT:-}" ] || [ -z "${STOP_REASON:-}" ]; then
+            echo "Pilot did not return its required result outputs."
+            exit 1
+          fi
+          if [ "$PILOT_OUTCOME" != "success" ] || [ "$STOP_REASON" = "infrastructure_failure" ]; then
+            echo "Pilot stopped because of an infrastructure failure."
+            exit 1
+          fi
+          if [ "$PUBLISHED_COUNT" -eq 0 ]; then
+            echo "No article passed generation and validation. Check the step summary."
+            exit 1
+          fi
+          if [ "$PUBLISHED_COUNT" -lt 3 ]; then
+            echo "Pilot produced fewer than 3 articles; inspect the partial result and stop reason."
+          fi
