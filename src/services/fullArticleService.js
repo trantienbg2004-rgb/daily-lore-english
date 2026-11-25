@@ -1,4 +1,5 @@
 const MEMORY_CACHE = new Map()
+const IN_FLIGHT = new Map()
 const SESSION_PREFIX = 'saga_full_article_v2:'
 
 export const FULL_ARTICLE_MAX_WORDS = 2200
@@ -281,6 +282,7 @@ function writeSessionCache(cacheKey, value) {
 
 export function clearFullArticleCache() {
   MEMORY_CACHE.clear()
+  IN_FLIGHT.clear()
   if (typeof sessionStorage !== 'undefined') {
     try {
       const keysToRemove = []
@@ -295,6 +297,33 @@ export function clearFullArticleCache() {
   }
 }
 
+function withAbortSignal(promise, signal) {
+  if (!signal) return promise
+  if (signal.aborted) {
+    const err = new Error('Aborted')
+    err.name = 'AbortError'
+    return Promise.reject(err)
+  }
+  return new Promise((resolve, reject) => {
+    const onAbort = () => {
+      const err = new Error('Aborted')
+      err.name = 'AbortError'
+      reject(err)
+    }
+    signal.addEventListener('abort', onAbort, { once: true })
+    promise.then(
+      val => {
+        signal.removeEventListener('abort', onAbort)
+        resolve(val)
+      },
+      err => {
+        signal.removeEventListener('abort', onAbort)
+        reject(err)
+      }
+    )
+  })
+}
+
 export async function fetchFullArticle({ sourceTitle, sourcePageId, title = '', signal } = {}) {
   const cacheKey = makeCacheKey({ sourceTitle, sourcePageId })
   if (cacheKey && MEMORY_CACHE.has(cacheKey)) {
@@ -305,38 +334,61 @@ export async function fetchFullArticle({ sourceTitle, sourcePageId, title = '', 
     MEMORY_CACHE.set(cacheKey, sessionHit)
     return sessionHit
   }
+  if (cacheKey && IN_FLIGHT.has(cacheKey)) {
+    return withAbortSignal(IN_FLIGHT.get(cacheKey), signal)
+  }
 
   const url = buildWikipediaApiUrl({ sourceTitle, sourcePageId })
   if (!url) {
     throw new Error('Missing Wikipedia source identifier')
   }
 
-  // IMPORTANT: Do NOT set custom headers (no User-Agent / Api-User-Agent)
-  // so browsers perform a simple CORS request without preflight failure.
-  const response = await fetch(url, { signal })
-  if (!response.ok) {
-    throw new Error(`Wikipedia request failed (${response.status})`)
-  }
+  const work = (async () => {
+    // IMPORTANT: Do NOT set custom headers (no User-Agent / Api-User-Agent)
+    // so browsers perform a simple CORS request without preflight failure.
+    const response = await fetch(url)
+    if (!response.ok) {
+      throw new Error(`Wikipedia request failed (${response.status})`)
+    }
 
-  const data = await response.json()
-  const page = data?.query?.pages?.[0]
-  if (!page || page.missing || !String(page.extract || '').trim()) {
-    throw new Error('Full Wikipedia article text unavailable')
-  }
+    const data = await response.json()
+    const page = data?.query?.pages?.[0]
+    if (!page || page.missing || !String(page.extract || '').trim()) {
+      throw new Error('Full Wikipedia article text unavailable')
+    }
 
-  const parsed = parseWikipediaExtract(page.extract, {
-    title: page.title || title || sourceTitle || '',
-    description: page.description || '',
+    const parsed = parseWikipediaExtract(page.extract, {
+      title: page.title || title || sourceTitle || '',
+      description: page.description || '',
+    })
+
+    if (!parsed.sections.length) {
+      throw new Error('Parsed article has no readable sections')
+    }
+
+    if (cacheKey) {
+      MEMORY_CACHE.set(cacheKey, parsed)
+      writeSessionCache(cacheKey, parsed)
+    }
+
+    return parsed
+  })().finally(() => {
+    if (cacheKey) IN_FLIGHT.delete(cacheKey)
   })
 
-  if (!parsed.sections.length) {
-    throw new Error('Parsed article has no readable sections')
-  }
-
   if (cacheKey) {
-    MEMORY_CACHE.set(cacheKey, parsed)
-    writeSessionCache(cacheKey, parsed)
+    IN_FLIGHT.set(cacheKey, work)
   }
 
-  return parsed
+  return withAbortSignal(work, signal)
+}
+
+/**
+ * Silently warm the full Wikipedia article cache in the background (e.g. on
+ * the closing card) without surfacing network errors.
+ */
+export function prefetchFullArticle({ sourceTitle, sourcePageId, title = '' } = {}) {
+  const url = buildWikipediaApiUrl({ sourceTitle, sourcePageId })
+  if (!url) return Promise.resolve(null)
+  return fetchFullArticle({ sourceTitle, sourcePageId, title }).catch(() => null)
 }

@@ -6,11 +6,14 @@ import { storyId } from './lib/feedQueue.js'
 import { balancePhotoCoverPage, groupTokenClusters, planAnchoredWikiPages, planReadingPages, rebalanceTextPages } from './lib/readerPagination.js'
 import { shortNewsPages } from './lib/shortNewsPages.js'
 import { sanitizeReadingArticle } from './lib/articleCleanup.js'
-import { refreshCatalog, refillCatalog, REFRESH_INTERVAL_MS } from './lib/continuousReader.js'
+import { refreshCatalog, refillCatalog, hasUnfetchedShards, REFRESH_INTERVAL_MS } from './lib/continuousReader.js'
 import { QUEUE_TARGET, queuedUnread, lowOnStories, refreshDue } from './lib/loreStockPolicy.js'
 import { createEdgeNavigation } from './lib/edgeNavigation.js'
-import { photoCaption, photoLabel, photoSourceLink, photoSrcSet } from './lib/photoPresentation.js'
-import { resolvePhoto, photoResult } from './lib/photoLoad.js'
+import { photoCaption, photoLabel, photoSourceLink } from './lib/photoPresentation.js'
+import { evictPhoto, resolvePhoto, photoResult } from './lib/photoLoad.js'
+import { buildPreloadQueue, collectPreloadPlan, isDataSaverEnabled, startSequentialPreload } from './lib/imagePreload.js'
+import { createPaginationCache, makePaginationCacheKey } from './lib/paginationCache.js'
+import { prefetchFullArticle } from './services/fullArticleService.js'
 import { displayHeadline, readerSection } from './lib/editorial.js'
 import { loadRecommendationProfile, rememberReading, rankRecommendations } from './lib/recommendationEngine.js'
 import { handleReaderArrowKey } from './lib/readerKeyboard.js'
@@ -153,11 +156,18 @@ function fitPhoto(img) {
 // V20: NEVER mount an <img> until pixels have loaded. A broken thumbnail
 // cannot leave a native broken-image icon or steal reading space.
 // DAILY LORE READ V5: original-photo fit + accessible full-screen preview.
-function ArticlePhoto({ image, label: shortLabel, fullCaption, onBroken, onReady }) {
-  const [asset, setAsset] = useState(() => photoResult(image))
+function ArticlePhoto({ image, label: shortLabel, fullCaption, onBroken, onReady = () => {}, priority = 'high', background = false, photoVersion = 0 }) {
+  const [asset, setAsset] = useState(() => {
+    const known = photoResult(image)
+    return known?.url ? known : null
+  })
   const [zoomed, setZoomed] = useState(false)
   const [lightboxClosing, setLightboxClosing] = useState(false)
   const lightboxTimerRef = useRef(null)
+  const retryTimerRef = useRef(null)
+  const retryCountRef = useRef(0)
+  const failedUrlsRef = useRef([])
+  const mountedRef = useRef(true)
   const label = photoCaption({ image, caption: fullCaption }) || shortLabel
   const openLightbox = () => {
     clearTimeout(lightboxTimerRef.current)
@@ -183,41 +193,132 @@ function ArticlePhoto({ image, label: shortLabel, fullCaption, onBroken, onReady
       setZoomed(false)
     }, LIGHTBOX_CLOSE_MS)
   }
-  useEffect(() => () => { clearTimeout(lightboxTimerRef.current) }, [])
+  useEffect(() => {
+    mountedRef.current = true
+    return () => {
+      mountedRef.current = false
+      clearTimeout(lightboxTimerRef.current)
+      clearTimeout(retryTimerRef.current)
+    }
+  }, [])
+  useEffect(() => {
+    retryCountRef.current = 0
+    failedUrlsRef.current = []
+    clearTimeout(retryTimerRef.current)
+    retryTimerRef.current = null
+  }, [image])
   useEffect(() => {
     let active = true
     const known = photoResult(image)
-    setAsset(known)
-    if (!image) return () => { active = false }
-    if (known?.failed) { onBroken(image); return () => { active = false } }
-    if (!known) resolvePhoto(image).then(result => {
-      if (!active) return
-      setAsset(result)
-      if (!result?.url) onBroken(image)
-      else onReady()
-    })
-    return () => { active = false }
-  }, [image])
+    if (known?.url) {
+      setAsset(known)
+      return () => { active = false }
+    }
+    if (!image) {
+      setAsset(null)
+      return () => { active = false }
+    }
+    if (background) {
+      // Hidden adjacent (-1/+1) cards wait for the prioritized sequential preload
+      // queue instead of firing competing parallel Wikimedia fetches or marking
+      // images broken; promoting a card to active (background=false) loads
+      // immediately at high priority if not yet ready.
+      setAsset(null)
+      return () => { active = false }
+    }
+    setAsset(null)
+    const runAttempt = (attempt, skipUrls = []) => {
+      if (attempt > 0) evictPhoto(image)
+      resolvePhoto(image, {
+        fetchPriority: priority,
+        decode: true,
+        cacheFailure: attempt > 0,
+        skipUrls,
+      }).then(result => {
+        if (!active) return
+        if (result?.url) {
+          setAsset(result)
+          onReady()
+          return
+        }
+        if (attempt < 1) {
+          retryCountRef.current = attempt + 1
+          clearTimeout(retryTimerRef.current)
+          retryTimerRef.current = setTimeout(() => {
+            retryTimerRef.current = null
+            if (!active) return
+            runAttempt(attempt + 1, failedUrlsRef.current)
+          }, 1500)
+        } else {
+          setAsset(result || { failed: true })
+          onBroken?.(image)
+        }
+      })
+    }
+    // If a stale failed cache entry exists on a fresh foreground mount, evict
+    // it so the initial attempt runs cleanly before giving up.
+    if (known?.failed) evictPhoto(image)
+    runAttempt(retryCountRef.current, failedUrlsRef.current)
+    return () => {
+      active = false
+      clearTimeout(retryTimerRef.current)
+      retryTimerRef.current = null
+    }
+  }, [image, background, photoVersion])
   useEffect(() => {
     if (!zoomed) return
     const closeOnEscape = event => { if (event.key === 'Escape') closeLightbox() }
     window.addEventListener('keydown', closeOnEscape)
     return () => window.removeEventListener('keydown', closeOnEscape)
   }, [zoomed, lightboxClosing])
+  const handleImgError = () => {
+    if (background || !image) return
+    const badUrl = asset?.url || ''
+    if (badUrl && !failedUrlsRef.current.includes(badUrl)) {
+      failedUrlsRef.current = [...failedUrlsRef.current, badUrl]
+    }
+    evictPhoto(image)
+    if (retryCountRef.current < 1) {
+      retryCountRef.current += 1
+      setAsset(null)
+      clearTimeout(retryTimerRef.current)
+      retryTimerRef.current = setTimeout(() => {
+        retryTimerRef.current = null
+        if (!mountedRef.current) return
+        resolvePhoto(image, {
+          fetchPriority: 'high',
+          decode: true,
+          cacheFailure: true,
+          skipUrls: failedUrlsRef.current,
+        }).then(result => {
+          if (!mountedRef.current) return
+          if (result?.url) {
+            setAsset(result)
+            onReady()
+          } else {
+            setAsset({ failed: true })
+            onBroken?.(image)
+          }
+        })
+      }, 1500)
+    } else {
+      setAsset({ failed: true })
+      onBroken?.(image)
+    }
+  }
   if (!image) return null
   if (!asset) return <figure className="photo-figure lore-photo-figure hero-media hero-media-loading" aria-hidden="true"><div className="hero-photo-skeleton" /></figure>
   if (!asset.url) return null
   const heroWidth = asset.width || 1600
   const heroHeight = asset.height || 900
-  const srcSet = photoSrcSet(asset.url, asset.width)
   return <><figure className="photo-figure lore-photo-figure hero-media">
-    <img className="hero-photo" src={asset.url} srcSet={srcSet} sizes="(max-width: 760px) calc(100vw - 2rem), 430px" alt={label} decoding="async" loading="lazy"
+    <img className="hero-photo" src={asset.url} alt={label} decoding="async" loading="eager" fetchPriority={priority}
       width={heroWidth} height={heroHeight} role="button" tabIndex={0}
       aria-label={`Enlarge image: ${label || 'article photo'}`}
       onClick={openLightbox}
       onKeyDown={event => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); openLightbox() } }}
       onLoad={event => { fitPhoto(event.currentTarget); onReady() }}
-      onError={() => onBroken(image)} />
+      onError={handleImgError} />
     <button type="button" className="lore-photo-zoom-trigger" aria-label="Enlarge photo" title="Read full image caption" onClick={openLightbox}>
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.1" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M8 3H5a2 2 0 0 0-2 2v3"/>
@@ -228,7 +329,7 @@ function ArticlePhoto({ image, label: shortLabel, fullCaption, onBroken, onReady
     </button>
     {zoomed && createPortal(<div className={'lore-lightbox' + (lightboxClosing ? ' is-closing' : '')} role="dialog" aria-modal="true" aria-label="Enlarged article photograph" onClick={event => { event.stopPropagation(); closeLightbox() }}>
       <button type="button" className="lore-lightbox-close" aria-label="Close enlarged photograph" onClick={event => { event.stopPropagation(); closeLightbox() }}>×</button>
-      <img src={asset.url} srcSet={srcSet} sizes="(max-width: 768px) 96vw, 90vw" alt={label} decoding="async" loading="lazy" width={heroWidth} height={heroHeight} onClick={event => event.stopPropagation()} />
+      <img src={asset.url} alt={label} decoding="async" loading="eager" width={heroWidth} height={heroHeight} onClick={event => event.stopPropagation()} />
       {fullCaption && <p className="lore-lightbox-caption" onClick={event => event.stopPropagation()}>{fullCaption}</p>}
     </div>, document.body)}
   </figure>{label && label !== 'Article photograph' && <p className="lore-photo-caption">{label}</p>}</>
@@ -283,6 +384,22 @@ function layoutPages(item, reader, badImages = new Set()) {
   const footer = fixture.querySelector('.source-footer')
   if (footer) footer.style.display = 'none'
   if (!heading || !media || !paragraph || !card || !pager) return item.pages
+  const h1 = heading.querySelector('h1')
+  const titleText = displayHeadline(item)
+  if (h1) {
+    h1.textContent = titleText
+    h1.classList.toggle('lore-headline-long', titleText.length > 45)
+  }
+  const deckText = editorialDeck(item)
+  let deckEl = heading.querySelector('.deck')
+  if (deckText) {
+    if (!deckEl) {
+      deckEl = document.createElement('p')
+      deckEl.className = 'deck lore-deck'
+      heading.appendChild(deckEl)
+    }
+    deckEl.textContent = deckText
+  }
   reader.parentElement.appendChild(fixture)
   try {
     const sourcePages = item?.contentType === 'news' ? item.pages : (item._sourcePages || item.pages)
@@ -297,6 +414,7 @@ function layoutPages(item, reader, badImages = new Set()) {
       heading.classList.toggle('post-head--cover-no-image', coverHasNoImage)
       heading.classList.toggle('post-head--continued', !isCover)
       heading.classList.toggle('article-heading-continued', !isCover)
+      if (deckEl) deckEl.style.display = isCover && deckText ? '' : 'none'
       card.classList.toggle('reading-card-no-photo', !image)
       card.classList.toggle('reading-card-with-photo', !!image)
       media.classList.toggle('article-media-empty', !image)
@@ -578,6 +696,9 @@ function App() {
       return next
     })
   }
+  useEffect(() => {
+    setBrokenImages(previous => (previous.size ? new Set() : previous))
+  }, [storyIndex, readingLevel])
   const [selected, setSelected] = useState('')
   const [selectedSurface, setSelectedSurface] = useState('')
   const [selectedGlossaryEntry, setSelectedGlossaryEntry] = useState(null)
@@ -680,30 +801,73 @@ function App() {
   }, [tab])
   const story = stories[storyIndex] || null
   const currentPage = story?.pages?.[page] || null
+  const paginationCacheRef = useRef(null)
+  if (!paginationCacheRef.current) {
+    paginationCacheRef.current = createPaginationCache(120)
+  }
 
-  // Recalculate before paint when dimensions change; avoid flashing truncated text.
+  const getStoryMediaSig = (item, badImages) => {
+    const src = item?.contentType === 'news' ? item.pages : (item?._sourcePages || item?.pages || [])
+    return src
+      .map(p => {
+        if (!p?.image) return ''
+        if (badImages?.has?.(p.image)) return 'X'
+        const asset = photoResult(p.image)
+        if (!asset) return 'P'
+        if (asset.failed) return 'X'
+        return `${asset.width || 0}x${asset.height || 0}`
+      })
+      .filter(Boolean)
+      .join(',')
+  }
+
+  const getCachedOrLayoutPages = (item, reader, badImages) => {
+    if (!item || !reader) return item?.pages || []
+    const bounds = reader.getBoundingClientRect()
+    if (bounds.width < 100 || bounds.height < 220) return item.pages
+    const key = makePaginationCacheKey({
+      storyId: storyId(item),
+      readingLevel: readingLevelRef.current,
+      colWidth: bounds.width,
+      colHeight: bounds.height,
+      mediaSig: getStoryMediaSig(item, badImages),
+    })
+    const cached = paginationCacheRef.current.get(key)
+    if (cached) return cached
+    const measured = layoutPages(item, reader, badImages)
+    if (Array.isArray(measured) && measured.length) {
+      paginationCacheRef.current.set(key, measured)
+    }
+    return measured
+  }
+
+  const pagesSignature = pages =>
+    (Array.isArray(pages) ? pages : []).map(p => `${p.image}|${p.density || ''}|${p.text}`).join('\u0000')
+
+  // Recalculate before paint when dimensions change; hit pagination cache in O(1)
+  // when already warmed for (storyId, readingLevel, rounded viewport size).
   useLayoutEffect(() => {
     if (tab !== 'read' || !story) return
     let frame = 0
     let observer
     let cancelled = false
+    const applyLayout = () => {
+      if (cancelled) return
+      const reader = document.querySelector('.story-layer:not(.outgoing) .reader-gesture')
+      if (!reader) return
+      fitPhoto(reader.querySelector('.article-media img'))
+      const next = getCachedOrLayoutPages(story, reader, brokenImages)
+      if (pagesSignature(story.pages) !== pagesSignature(next)) {
+        setStories(old => old.map((item, i) => i === storyIndex ? { ...item, pages: next } : item))
+        setPage(p => Math.min(p, next.length))
+      }
+    }
     const recalculate = () => {
       cancelAnimationFrame(frame)
-      frame = requestAnimationFrame(() => {
-        if (cancelled) return
-        const reader = document.querySelector('.story-layer:not(.outgoing) .reader-gesture')
-        if (!reader) return
-        fitPhoto(reader.querySelector('.article-media img'))
-        const next = layoutPages(story, reader, brokenImages)
-        const before = story.pages.map(p => `${p.image}|${p.density || ''}|${p.text}`).join('\u0000')
-        const after = next.map(p => `${p.image}|${p.density || ''}|${p.text}`).join('\u0000')
-        if (before !== after) {
-          setStories(old => old.map((item, i) => i === storyIndex ? { ...item, pages: next } : item))
-          setPage(p => Math.min(p, next.length))
-        }
-      })
+      frame = requestAnimationFrame(applyLayout)
     }
-    recalculate()
+    // Check synchronously before paint so cached/warmed stories never flash or reflow.
+    applyLayout()
     const viewport = document.querySelector('.story-viewport')
     if (viewport && typeof ResizeObserver !== 'undefined') {
       observer = new ResizeObserver(recalculate)
@@ -713,7 +877,60 @@ function App() {
     window.visualViewport?.addEventListener('resize', recalculate)
     document.fonts?.ready.then(recalculate).catch(() => {})
     return () => { cancelled = true; cancelAnimationFrame(frame); observer?.disconnect(); window.removeEventListener('resize', recalculate); window.visualViewport?.removeEventListener('resize', recalculate) }
-  }, [tab, storyIndex, stories.length, story?._sourcePages, story?.pages, brokenImages, photoVersion])
+  }, [tab, storyIndex, stories.length, readingLevel, story?._sourcePages, story?.pages, brokenImages, photoVersion])
+
+  // Layer 3 idle warming: pre-compute exact balanced pagination for storyIndex + 1
+  // (and storyIndex - 1 if uncached) during idle time so vertical swipes never reflow.
+  useEffect(() => {
+    if (tab !== 'read' || !stories.length) return undefined
+    let cancelled = false
+    const warmAdjacent = () => {
+      if (cancelled) return
+      const reader =
+        document.querySelector('.story-layer:not(.outgoing) .reader-gesture:has(.article-heading)') ||
+        document.querySelector('.story-layer-adjacent.story-layer-next .reader-gesture') ||
+        document.querySelector('.story-layer:not(.outgoing) .reader-gesture')
+      if (!reader) return
+      const targets = [storyIndex + 1, storyIndex - 1].filter(
+        idx => idx >= 0 && idx < storiesRef.current.length
+      )
+      const updates = new Map()
+      for (const idx of targets) {
+        const targetStory = storiesRef.current[idx]
+        if (!targetStory) continue
+        const measured = getCachedOrLayoutPages(targetStory, reader, brokenImages)
+        if (measured && pagesSignature(targetStory.pages) !== pagesSignature(measured)) {
+          updates.set(idx, measured)
+        }
+      }
+      if (!cancelled && updates.size) {
+        setStories(old => {
+          let changed = false
+          const nextList = old.map((item, idx) => {
+            const warmed = updates.get(idx)
+            if (!warmed || pagesSignature(item.pages) === pagesSignature(warmed)) return item
+            changed = true
+            return { ...item, pages: warmed }
+          })
+          return changed ? nextList : old
+        })
+      }
+    }
+    let handle = null
+    if (typeof window !== 'undefined' && typeof window.requestIdleCallback === 'function') {
+      handle = window.requestIdleCallback(warmAdjacent, { timeout: 600 })
+      return () => {
+        cancelled = true
+        window.cancelIdleCallback?.(handle)
+      }
+    }
+    handle = setTimeout(warmAdjacent, 120)
+    return () => {
+      cancelled = true
+      clearTimeout(handle)
+    }
+  }, [tab, storyIndex, stories.length, readingLevel, brokenImages, photoVersion])
+
   useLayoutEffect(() => {
     if (tab !== 'read' || !story) return
     const img = document.querySelector('.story-layer:not(.outgoing) .reader-gesture .article-media img')
@@ -884,18 +1101,20 @@ function App() {
   }, [storyIndex, story])
   useEffect(() => {
     if (tab !== 'read' || !historyReadyRef.current || !stories.length || feedFailedRef.current || feedRetrying) return
-    const remaining = queuedUnread(stories.length,storyIndex)
+    const remaining = queuedUnread(stories.length, storyIndex)
     const low = lowOnStories(remaining)
     const enteredLow = low && !wasLowOnStoriesRef.current
-    const critical = remaining < 3
-    const enteredCritical = critical && !wasCriticalOnStoriesRef.current
+    // Layer 1: early JSON shard prefetch whenever within 4 stories of the end
+    const nearShardEdge = remaining <= 4
+    const enteredCritical = nearShardEdge && !wasCriticalOnStoriesRef.current
     wasLowOnStoriesRef.current = low
-    wasCriticalOnStoriesRef.current = critical
+    wasCriticalOnStoriesRef.current = nearShardEdge
     if (feedBusy.current && (enteredLow || enteredCritical)) checkAfterBusyRef.current = true
-    // At exactly 30 queued unread stories, check for a NEW publication now,
-    // not only when the archive is exhausted. When no new publication exists,
-    // the separate timer keeps checking without a request storm.
-    if (!feedLoading && !feedBusy.current && low &&
+    // Silently prefetch and append the next shard when within 4 stories of the end
+    // and more shards remain in manifest.json.
+    if (!feedLoading && !feedBusy.current && nearShardEdge && (!feedDone || hasUnfetchedShards(poolsRef.current))) {
+      loadFeed({ forceCheck: false })
+    } else if (!feedLoading && !feedBusy.current && low &&
         (enteredLow || enteredCritical || refreshDue({remaining,checkedAt:lastManifestCheckRef.current}))) {
       loadFeed({forceCheck:true})
     } else if (!feedLoading && !feedBusy.current && !feedDone && remaining < BUFFER_TARGET) {
@@ -1248,6 +1467,12 @@ function App() {
     if (next < 0 || next >= storiesRef.current.length) return
     stopSpeech()
     clearTimeout(slideTimer.current)
+    if (typeof document !== 'undefined') {
+      document.querySelectorAll('.story-layer-adjacent').forEach(node => {
+        node.style.transition = ''
+        node.style.transform = ''
+      })
+    }
     setSlide({ from, fromPage: page, direction, stamp: Date.now() })
     storyIndexRef.current = next
     setStoryIndex(next)
@@ -1277,6 +1502,9 @@ function App() {
       layer.style.transition = 'none'
       layer.classList.remove('is-dragging')
     }
+    document.querySelectorAll('.story-layer-adjacent').forEach(node => {
+      node.style.transition = 'none'
+    })
   }
   const applySwipeTransform = (axis, dx, dy) => {
     if (typeof document === 'undefined' || !axis) return
@@ -1296,6 +1524,23 @@ function App() {
       layer.classList.add('is-dragging')
       layer.style.transition = 'none'
       layer.style.transform = `translate3d(0, ${ty}px, 0)`
+      const nextLayer = document.querySelector('.story-layer-adjacent.story-layer-next')
+      const prevLayer = document.querySelector('.story-layer-adjacent.story-layer-prev')
+      if (ty < 0 && nextLayer) {
+        nextLayer.style.transition = 'none'
+        nextLayer.style.transform = `translate3d(0, calc(100% + ${ty}px), 0)`
+        if (prevLayer) {
+          prevLayer.style.transition = 'none'
+          prevLayer.style.transform = 'translate3d(0, -100%, 0)'
+        }
+      } else if (ty > 0 && prevLayer) {
+        prevLayer.style.transition = 'none'
+        prevLayer.style.transform = `translate3d(0, calc(-100% + ${ty}px), 0)`
+        if (nextLayer) {
+          nextLayer.style.transition = 'none'
+          nextLayer.style.transform = 'translate3d(0, 100%, 0)'
+        }
+      }
     }
   }
   const releaseSwipeTransform = ({ spring = true } = {}) => {
@@ -1319,6 +1564,18 @@ function App() {
         layer.style.transform = spring ? 'translate3d(0, 0, 0)' : ''
         if (!spring) layer.style.transition = ''
       }
+    }
+    const nextLayer = document.querySelector('.story-layer-adjacent.story-layer-next')
+    if (nextLayer && nextLayer.style.transform) {
+      nextLayer.style.transition = transitionVal
+      nextLayer.style.transform = spring ? 'translate3d(0, 100%, 0)' : ''
+      if (!spring) nextLayer.style.transition = ''
+    }
+    const prevLayer = document.querySelector('.story-layer-adjacent.story-layer-prev')
+    if (prevLayer && prevLayer.style.transform) {
+      prevLayer.style.transition = transitionVal
+      prevLayer.style.transform = spring ? 'translate3d(0, -100%, 0)' : ''
+      if (!spring) prevLayer.style.transition = ''
     }
   }
   const finishNavigationGesture = (state, endX, endY) => {
@@ -1608,17 +1865,44 @@ function App() {
     setSelectedSentenceOverride(String(sentenceText || '').trim())
     setSelected(word)
   }
-  // Warm up just the next page and the next article, without downloading the whole library.
+  // Layer 2: Polite sequential image preload + decode (concurrency = 1, 250ms pause)
+  // prioritized as: +1 next lead -> current remaining pages -> +2 lead -> -1 lead.
+  // Cancels any queued items immediately when storyIndex changes, and never
+  // poisons photoLoad/brokenImages cache on background preload failure.
+  useEffect(() => {
+    if (tab !== 'read' || !story) return undefined
+    let active = true
+    const plan = collectPreloadPlan(stories, storyIndex, { brokenImages })
+    const queue = buildPreloadQueue(plan)
+    if (!queue.length) return undefined
+    const nextLead = plan.upcomingLeads[0] || ''
+    const controller = startSequentialPreload(queue, {
+      pauseMs: 250,
+      onItemDone: (url, result, meta) => {
+        if (!active || meta?.alreadyReady || !result?.url) return
+        if (url === nextLead || url === plan.previousLead || plan.currentRemaining.includes(url)) {
+          setPhotoVersion(n => n + 1)
+        }
+      },
+    })
+    return () => {
+      active = false
+      controller.cancel()
+    }
+  }, [tab, storyIndex, stories, brokenImages])
+
+  // Bonus: Silently prefetch the Wikipedia full article when the user reaches
+  // the closing card (skipped when Data Saver / slow-2g is active).
   useEffect(() => {
     if (tab !== 'read' || !story) return
-    const urls = [story?.pages?.[page + 1]?.image, stories[storyIndex + 1]?.pages?.[0]?.image, stories[storyIndex + 2]?.pages?.[0]?.image]
-    const images = urls.filter(url => url && !brokenImages.has(url)).map(url => {
-      const img = new Image()
-      img.src = url
-      return img
+    if (page !== story.pages.length) return
+    if (isDataSaverEnabled()) return
+    prefetchFullArticle({
+      sourceTitle: story.sourceTitle,
+      sourcePageId: story.sourcePageId,
+      title: displayHeadline(story),
     })
-    return () => { images.forEach(img => { img.onload = null; img.onerror = null }) }
-  }, [tab, storyIndex, page, stories, brokenImages])
+  }, [tab, story, page])
   // V20.1: refresh the keyboard handler whenever the page changes. V20
   // omitted `page` from the dependencies, so ArrowRight kept reading a stale
   // page index (often page 0) and could not progress beyond page 2.
@@ -1672,12 +1956,14 @@ function App() {
   }
 
   // Each story has its own vertical screen; horizontal pages are independent.
-  const renderStory = (item, index, pageNumber, interactive) => {
+  const renderStory = (item, index, pageNumber, interactive, { imagePriority = interactive ? 'high' : 'low' } = {}) => {
     const closing = pageNumber === item.pages.length
     const itemPage = closing ? null : (item.pages[pageNumber] || item.pages[0])
     const sentences = closing ? [] : splitPageIntoSentences(itemPage.text)
     const highlightActive = Boolean(interactive && articlePlaying && activeSentenceIndex !== null)
-    const pageHasPhoto = Boolean(!closing && itemPage?.image && !brokenImages.has(itemPage.image) && !photoResult(itemPage.image)?.failed)
+    const pagePhotoMissing = !itemPage?.image || brokenImages.has(itemPage.image)
+    const coverPhotoMissing = !item.pages[0]?.image || brokenImages.has(item.pages[0].image)
+    const pageHasPhoto = Boolean(!closing && !pagePhotoMissing)
     const dotTotal = item.pages.length
     const topicLabel = readerSection(item).replace(/^DISCOVER\s*·\s*/i, '').trim()
     const handleReadFullArticleClick = event => {
@@ -1704,16 +1990,17 @@ function App() {
           {safeStoryUrl(item.sourceUrl) && <a className="story-end-cta" href={safeStoryUrl(item.sourceUrl)} target="_blank" rel="noopener noreferrer" onClick={handleReadFullArticleClick}>Read the full article</a>}
         </div><div className="story-end-next">Swipe up for the next story</div>
       </section> : <>
-      <div className={'post-head article-heading lore-article-heading ' + (!itemPage.image || brokenImages.has(itemPage.image) || photoResult(itemPage.image)?.failed ? 'post-head--no-image ' : '') + (!item.pages[0]?.image || brokenImages.has(item.pages[0].image) || photoResult(item.pages[0].image)?.failed ? 'post-head--cover-no-image ' : '') + (pageNumber > 0 ? 'post-head--continued ' : '') + (pageNumber > 0 && item.contentType !== 'news' ? 'article-heading-continued' : '')}>
+      <div className={'post-head article-heading lore-article-heading ' + (pagePhotoMissing ? 'post-head--no-image ' : '') + (coverPhotoMissing ? 'post-head--cover-no-image ' : '') + (pageNumber > 0 ? 'post-head--continued ' : '') + (pageNumber > 0 && item.contentType !== 'news' ? 'article-heading-continued' : '')}>
         <h1 className={displayHeadline(item).length > 45 ? 'lore-headline-long' : ''} title={displayHeadline(item)} aria-live={item.contentType === 'news' ? 'polite' : undefined}>{displayHeadline(item)}</h1>
         {pageNumber === 0 && editorialDeck(item) && <p className="deck lore-deck">{editorialDeck(item)}</p>}
       </div>
-      <div className={"article-media " + (!itemPage.image || brokenImages.has(itemPage.image) || photoResult(itemPage.image)?.failed ? "article-media-empty" : "")}>
-        <ArticlePhoto key={itemPage.image || 'no-photo'} image={brokenImages.has(itemPage.image) || photoResult(itemPage.image)?.failed ? '' : itemPage.image}
-          label={photoLabel(itemPage)} fullCaption={itemPage.caption} onBroken={markBrokenImage}
-          onReady={() => setPhotoVersion(n => n + 1)} />
+      <div className={"article-media " + (pagePhotoMissing ? "article-media-empty" : "")}>
+        <ArticlePhoto key={itemPage.image || 'no-photo'} image={pagePhotoMissing ? '' : itemPage.image}
+          label={photoLabel(itemPage)} fullCaption={itemPage.caption} priority={imagePriority} background={!interactive} photoVersion={photoVersion}
+          onBroken={interactive ? markBrokenImage : undefined}
+          onReady={interactive ? () => setPhotoVersion(n => n + 1) : undefined} />
       </div>
-      <section className={'reading-card ' + (!itemPage.image || brokenImages.has(itemPage.image) || photoResult(itemPage.image)?.failed ? 'reading-card-no-photo' : 'reading-card-with-photo')}><div className="reading-topline" aria-hidden="true" />
+      <section className={'reading-card ' + (pagePhotoMissing ? 'reading-card-no-photo' : 'reading-card-with-photo')}><div className="reading-topline" aria-hidden="true" />
         <p key={levelSettleKey ? `lvl-${levelSettleKey}` : 'lvl-0'} className={'article-text' + (levelSettleKey > 0 ? ' saga-level-settle' : '')}>{sentences.map((seg, sIdx) => {
           const [, leading, core, trailing] = seg.match(/^(\s*)([\s\S]*?)(\s*)$/) || ['', '', seg, '']
           const tokens = core ? tokenizeWithGlossary(core, item.glossary, staticPhrases, lemmaMap) : []
@@ -1772,8 +2059,42 @@ function App() {
     <div className={"app-shell " + (tab === "read" ? "reading-mode lore-editorial-v5" : "")}>
       <main className="app-content">
         {tab === 'read' && <div className={'story-viewport' + (sheetDepthActive ? ' is-depth-scaled' : '') + (tabSwitchedToRead ? ' saga-tab-enter' : '')} onWheel={onReaderWheel}>
-          {slide && stories[slide.from] && <div key={'old-'+slide.stamp} className={'story-layer outgoing '+(slide.direction>0?'slide-up':'slide-down')}>{renderStory(stories[slide.from], slide.from, slide.fromPage, false)}</div>}
-          {story && <div key={'active-'+storyIndex} className={'story-layer '+(slide?(slide.direction>0?'enter-from-bottom':'enter-from-top'):(initialStoryReveal?'story-layer--reveal':''))}>{renderStory(story, storyIndex, page, true)}</div>}
+          {(() => {
+            const windowIndices = []
+            if (storyIndex > 0 && stories[storyIndex - 1]) windowIndices.push(storyIndex - 1)
+            if (stories[storyIndex]) windowIndices.push(storyIndex)
+            if (storyIndex + 1 < stories.length && stories[storyIndex + 1]) windowIndices.push(storyIndex + 1)
+            if (slide && stories[slide.from] && !windowIndices.includes(slide.from)) {
+              windowIndices.unshift(slide.from)
+            }
+            return windowIndices.map(idx => {
+              const item = stories[idx]
+              const isActive = idx === storyIndex
+              const isOutgoing = Boolean(slide && slide.from === idx && !isActive)
+              const isPrev = !isActive && !isOutgoing && idx < storyIndex
+              const cardKey = `story-card-${idx}-${storyId(item)}`
+              let className = 'story-layer'
+              if (isActive) {
+                className += ' ' + (slide ? (slide.direction > 0 ? 'enter-from-bottom' : 'enter-from-top') : (initialStoryReveal ? 'story-layer--reveal' : ''))
+              } else if (isOutgoing) {
+                className += ' outgoing ' + (slide.direction > 0 ? 'slide-up' : 'slide-down')
+              } else {
+                className = 'story-layer-adjacent ' + (isPrev ? 'story-layer-prev' : 'story-layer-next')
+              }
+              const pageNum = isActive ? page : (isOutgoing ? slide.fromPage : 0)
+              return (
+                <div
+                  key={cardKey}
+                  className={className.trim()}
+                  data-story-slot={isActive ? '0' : isOutgoing ? 'outgoing' : (isPrev ? '-1' : '+1')}
+                  data-story-index={idx}
+                  aria-hidden={!isActive || undefined}
+                >
+                  {renderStory(item, idx, pageNum, isActive, { imagePriority: isActive ? 'high' : 'low' })}
+                </div>
+              )
+            })
+          })()}
           {!story && (feedLoading ? (
             <div className="feed-skeleton" role="status" aria-live="polite" aria-label="Loading stories">
               <div className="feed-skeleton-bar feed-skeleton-eyebrow" aria-hidden="true" />

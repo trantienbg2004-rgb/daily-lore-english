@@ -27,15 +27,20 @@ export const DEFAULT_GEMINI_FALLBACK_MODELS=[
  'gemini-3.5-flash-lite',
  'gemini-3.1-flash-lite',
  'gemini-3.6-flash',
- 'gemini-3.8-flash',
- 'gemini-4-hydrogen'
+ 'gemini-3.8-flash'
 ]
 export const DEFAULT_UNAVAILABLE_RETRY_MS=5000
 export const DEFAULT_MAX_ARTICLES=15
 export const BOOTSTRAP_THRESHOLD=1000
-export const BOOTSTRAP_MAX_ARTICLES=20
+export const BOOTSTRAP_MAX_ARTICLES=8
+export const BOOTSTRAP_MAX_CANDIDATES=24
 export const STEADY_STATE_MAX_ARTICLES=14
 export const DEFAULT_DELAY_MS=8000
+export const DEFAULT_MAX_RUNTIME_MS=24*60*1000
+export const DEFAULT_GEMINI_TIMEOUT_MS=60_000
+export const MIN_CANDIDATE_BUDGET_MS=45_000
+export const MIN_RETRY_BUDGET_MS=20_000
+export const MAX_COOLDOWN_MS=15_000
 const LEVELS=['A1-A2','B1-B2','C1-C2']
 export const LEVEL_WORD_BOUNDS={
  'A1-A2':{photo:[34,46],text:[55,72]},
@@ -45,7 +50,8 @@ export const LEVEL_WORD_BOUNDS={
 
 /**
  * Automatic 2-stage Free-Tier publishing schedule planner ($0, zero manual maintenance).
- * - Stage 1 (Bootstrap Mode, catalogTotal < 1000): runs all 4 daily UTC slots (00, 06, 12, 18), 20 published/run.
+ * - Stage 1 (Bootstrap Mode, catalogTotal < 1000): runs all 4 daily UTC slots (00, 06, 12, 18),
+ *   targeting 8 published/run and scanning at most 24 candidates within the 24-minute budget.
  * - Stage 2 (Steady-State Mode, catalogTotal >= 1000): skips off-peak UTC slots (06:00 & 18:00),
  *   runs primary slots (00:00 & 12:00) targeting 14 published/run.
  * - Any explicit manual maxArticles override always runs with that exact count.
@@ -65,10 +71,12 @@ export function resolveAutoSchedulePlan({
   :NaN
 
  if(Number.isFinite(parsedOverride)&&parsedOverride>0){
+  const maxArticles=Math.floor(parsedOverride)
   return {
    shouldRun:true,
    stage:'manual',
-   maxArticles:Math.floor(parsedOverride),
+   maxArticles,
+   maxCandidates:maxArticles*4,
    slotUtcHour,
    reason:'manual-override'
   }
@@ -80,6 +88,7 @@ export function resolveAutoSchedulePlan({
    shouldRun:true,
    stage:'bootstrap',
    maxArticles:BOOTSTRAP_MAX_ARTICLES,
+   maxCandidates:BOOTSTRAP_MAX_CANDIDATES,
    slotUtcHour,
    reason:'stage1-bootstrap'
   }
@@ -90,6 +99,7 @@ export function resolveAutoSchedulePlan({
    shouldRun:false,
    stage:'steady_state',
    maxArticles:0,
+   maxCandidates:0,
    slotUtcHour,
    reason:'stage2-offpeak-slot-skipped'
   }
@@ -99,6 +109,7 @@ export function resolveAutoSchedulePlan({
   shouldRun:true,
   stage:'steady_state',
   maxArticles:STEADY_STATE_MAX_ARTICLES,
+  maxCandidates:STEADY_STATE_MAX_ARTICLES*3,
   slotUtcHour,
   reason:'stage2-primary-slot'
  }
@@ -159,26 +170,116 @@ const BATCH_STORY_SCHEMA={
 }
 
 export class GeminiQuotaExhausted extends Error{
- constructor(message,status=429){
+ constructor(message,status=429,{retryAfterMs=null}={}){
   super(message)
   this.name='GeminiQuotaExhausted'
   this.status=status
   this.isQuota=true
+  this.kind='quota_exhausted'
+  this.retryAfterMs=retryAfterMs
+ }
+}
+
+export class GeminiRateLimitError extends Error{
+ constructor(message,status=429,{retryAfterMs=null}={}){
+  super(message)
+  this.name='GeminiRateLimitError'
+  this.status=status
+  this.isTemporaryRateLimit=true
+  this.kind='rate_limit'
+  this.retryAfterMs=retryAfterMs
  }
 }
 
 export class GeminiUnavailableError extends Error{
- constructor(message,status=503){
+ constructor(message,status=503,{retryAfterMs=null}={}){
   super(message)
   this.name='GeminiUnavailableError'
   this.status=status
   this.isUnavailable=true
+  this.kind='unavailable'
+  this.retryAfterMs=retryAfterMs
  }
 }
 
+export class GeminiTimeoutError extends Error{
+ constructor(message='Gemini request timed out'){
+  super(message)
+  this.name='GeminiTimeoutError'
+  this.isTimeout=true
+  this.kind='timeout'
+ }
+}
+
+export class GeminiAuthError extends Error{
+ constructor(message,status=401){
+  super(message)
+  this.name='GeminiAuthError'
+  this.status=status
+  this.isAuthError=true
+  this.kind='auth'
+ }
+}
+
+export class GeminiModelNotFoundError extends Error{
+ constructor(message,status=404){
+  super(message)
+  this.name='GeminiModelNotFoundError'
+  this.status=status
+  this.isModelNotFound=true
+  this.kind='not_found'
+ }
+}
+
+export class GeminiInvalidRequestError extends Error{
+ constructor(message,status=400,{modelUnsupported=false}={}){
+  super(message)
+  this.name='GeminiInvalidRequestError'
+  this.status=status
+  this.isInvalidRequest=true
+  this.modelUnsupported=modelUnsupported
+  this.kind='invalid_request'
+ }
+}
+
+export class PublishingBudgetExceeded extends Error{
+ constructor(message='Publishing runtime budget exhausted'){
+  super(message)
+  this.name='PublishingBudgetExceeded'
+  this.isBudget=true
+  this.kind='budget_exhausted'
+ }
+}
+
+export function parseRetryAfterMs(headerValue,nowMs=Date.now()){
+ if(headerValue===null||headerValue===undefined)return null
+ const raw=String(headerValue).trim()
+ if(!raw)return null
+ const secs=Number(raw)
+ if(Number.isFinite(secs)&&secs>=0)return Math.round(secs*1000)
+ const ts=Date.parse(raw)
+ if(Number.isFinite(ts))return Math.max(0,ts-nowMs)
+ return null
+}
+
+/** Build model-safe Gemini generationConfig (omits deprecated sampling params like temperature on Gemini 4 models). */
+export function buildGeminiGenerationConfig(model=DEFAULT_GEMINI_MODEL){
+ const name=String(model||'').trim().toLowerCase()
+ const config={
+  responseMimeType:'application/json',
+  responseJsonSchema:BATCH_STORY_SCHEMA,
+  maxOutputTokens:9500
+ }
+ // Gemini 4 models restrict deprecated sampling parameters like temperature
+ if(!/^gemini-4(?:\b|-)/.test(name)){
+  config.temperature=0.35
+ }
+ return config
+}
+
 /**
- * Resolve primary + ordered fallback Gemini models.
- * Defaults to: gemini-3.5-flash-lite -> gemini-3.1-flash-lite -> gemini-3.6-flash -> gemini-3.8-flash -> gemini-4-hydrogen.
+ * Resolve primary + ordered fallback free-tier Gemini Flash models.
+ * Defaults to: gemini-3.5-flash-lite -> gemini-3.1-flash-lite -> gemini-3.6-flash -> gemini-3.8-flash.
  * Configurable via optional GEMINI_FALLBACK_MODELS env var (comma-separated).
  */
 export function resolveGeminiModelChain({
@@ -657,31 +758,57 @@ SOURCE PASSAGES:
 ${passages}`
 }
 
-/** Single Gemini Flash-Lite API call with free-tier quota/rate-limit detection. */
-export async function callGeminiFlashLite(prompt,{apiKey,model=DEFAULT_GEMINI_MODEL,fetchImpl=fetch}={}){
+/** Single Gemini Flash-Lite API call with free-tier quota/rate-limit, timeout, auth, and model-param handling. */
+export async function callGeminiFlashLite(prompt,{
+ apiKey,
+ model=DEFAULT_GEMINI_MODEL,
+ fetchImpl=fetch,
+ timeoutMs=DEFAULT_GEMINI_TIMEOUT_MS
+}={}){
  if(!apiKey)throw Error('GEMINI_API_KEY is required (set env GEMINI_API_KEY or pass --dry-run)')
  const url=`https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(model)}:generateContent`
- const response=await fetchImpl(url,{
-  method:'POST',
-  headers:{'content-type':'application/json','x-goog-api-key':apiKey},
-  signal:AbortSignal.timeout(95_000),
-  body:JSON.stringify({
-   contents:[{role:'user',parts:[{text:prompt}]}],
-   generationConfig:{
-    responseMimeType:'application/json',
-    responseJsonSchema:BATCH_STORY_SCHEMA,
-    temperature:0.35,
-    maxOutputTokens:9500
-   }
+ const effectiveTimeoutMs=Math.max(5_000,Math.floor(Number(timeoutMs)||DEFAULT_GEMINI_TIMEOUT_MS))
+ let response
+ try{
+  response=await fetchImpl(url,{
+   method:'POST',
+   headers:{'content-type':'application/json','x-goog-api-key':apiKey},
+   signal:AbortSignal.timeout(effectiveTimeoutMs),
+   body:JSON.stringify({
+    contents:[{role:'user',parts:[{text:prompt}]}],
+    generationConfig:buildGeminiGenerationConfig(model)
+   })
   })
- })
+ }catch(err){
+  if(err?.name==='TimeoutError'||err?.name==='AbortError'||/timeout|timed out|aborted/i.test(String(err?.message||''))){
+   throw new GeminiTimeoutError(`Gemini request timed out after ${Math.round(effectiveTimeoutMs/1000)}s on ${model}`)
+  }
+  throw err
+ }
 
  const rawText=await response.text()
+ const retryAfterMs=parseRetryAfterMs(response.headers?.get?.('retry-after'))
+
+ if(response.status===401||response.status===403||/API_KEY_INVALID|PERMISSION_DENIED|UNAUTHENTICATED/i.test(rawText)){
+  throw new GeminiAuthError(`Gemini HTTP ${response.status}: ${rawText.slice(0,220)}`,response.status||403)
+ }
+ if(response.status===404||/\bNOT_FOUND\b|no longer available/i.test(rawText)){
+  throw new GeminiModelNotFoundError(`Gemini HTTP ${response.status}: ${rawText.slice(0,220)}`,response.status||404)
+ }
  if(response.status===429||/RESOURCE_EXHAUSTED|quota exceeded|rate limit/i.test(rawText)){
-  throw new GeminiQuotaExhausted(`Gemini HTTP ${response.status} rate limit / quota exhausted`,response.status)
+  const looksHardQuota=/quota exceeded|per.?day|daily|limit:\s*0|free.?tier.*limit|billing/i.test(rawText)
+  const looksTempRateLimit=/rate.?limit|too many requests|per.?minute|\bRPM\b|\bTPM\b|try again shortly/i.test(rawText)
+  if(looksTempRateLimit&&!looksHardQuota){
+   throw new GeminiRateLimitError(`Gemini HTTP ${response.status} temporary rate limit: ${rawText.slice(0,220)}`,response.status||429,{retryAfterMs})
+  }
+  throw new GeminiQuotaExhausted(`Gemini HTTP ${response.status} quota exhausted: ${rawText.slice(0,220)}`,response.status||429,{retryAfterMs})
  }
  if(response.status===503||response.status===502||response.status===504||/\bUNAVAILABLE\b|high demand|overloaded/i.test(rawText)){
-  throw new GeminiUnavailableError(`Gemini HTTP ${response.status}: ${rawText.slice(0,220)}`,response.status)
+  throw new GeminiUnavailableError(`Gemini HTTP ${response.status}: ${rawText.slice(0,220)}`,response.status||503,{retryAfterMs})
+ }
+ if(response.status===400||/\bINVALID_ARGUMENT\b/i.test(rawText)){
+  const modelUnsupported=/temperature|top_p|top_k|generation_?config|response_?json_?schema|unsupported.*model|not supported for/i.test(rawText)
+  throw new GeminiInvalidRequestError(`Gemini HTTP ${response.status}: ${rawText.slice(0,220)}`,response.status||400,{modelUnsupported})
  }
  if(!response.ok){
   const err=Error(`Gemini HTTP ${response.status}: ${rawText.slice(0,220)}`)
@@ -704,14 +831,71 @@ export async function callGeminiFlashLite(prompt,{apiKey,model=DEFAULT_GEMINI_MO
  }
 }
 
-const isQuotaError=err=>err instanceof GeminiQuotaExhausted||Boolean(err?.isQuota)||err?.status===429
+const isQuotaError=err=>err instanceof GeminiQuotaExhausted||Boolean(err?.isQuota)||(err?.status===429&&!err?.isTemporaryRateLimit)
+const isTemporaryRateLimitError=err=>err instanceof GeminiRateLimitError||Boolean(err?.isTemporaryRateLimit)
 const isUnavailableError=err=>err instanceof GeminiUnavailableError||Boolean(err?.isUnavailable)||err?.status===503||err?.status===502||err?.status===504||/\b503\b|\bUNAVAILABLE\b|high demand|overloaded/i.test(String(err?.message||''))
-const isModelNotFoundError=err=>err?.status===404||/Gemini HTTP 404|\bNOT_FOUND\b|no longer available/i.test(String(err?.message||''))
+const isTimeoutError=err=>err instanceof GeminiTimeoutError||Boolean(err?.isTimeout)||err?.name==='TimeoutError'||err?.name==='AbortError'||/timed out/i.test(String(err?.message||''))
+const isAuthError=err=>err instanceof GeminiAuthError||Boolean(err?.isAuthError)||err?.status===401||err?.status===403
+const isModelNotFoundError=err=>err instanceof GeminiModelNotFoundError||Boolean(err?.isModelNotFound)||err?.status===404||/Gemini HTTP 404|\bNOT_FOUND\b|no longer available/i.test(String(err?.message||''))
+const isInvalidRequestError=err=>err instanceof GeminiInvalidRequestError||Boolean(err?.isInvalidRequest)||err?.status===400
+
+function ensureKeyState(keyState){
+ if(!keyState.exhaustedKeys)keyState.exhaustedKeys=new Set()
+ if(!keyState.unavailableModels)keyState.unavailableModels=new Set()
+ if(!keyState.unavailableRoutes)keyState.unavailableRoutes=new Set()
+ if(!keyState.routeFailureReasons)keyState.routeFailureReasons=new Map()
+ if(!keyState.modelCooldownUntil)keyState.modelCooldownUntil=new Map()
+ if(!keyState.apiErrors)keyState.apiErrors={}
+ if(keyState.preferredModel===undefined)keyState.preferredModel=null
+ return keyState
+}
+
+const routeKey=(model,keyLabel)=>`${model}::${keyLabel}`
+
+function recordApiError(keyState,kind){
+ const bucket=String(kind||'other')
+ keyState.apiErrors[bucket]=(keyState.apiErrors[bucket]||0)+1
+}
+
+export function hasUsableGeminiRoute(keyState,modelChain){
+ const state=ensureKeyState(keyState)
+ const keys=state.keys||[]
+ for(const model of modelChain){
+  if(state.unavailableModels.has(model))continue
+  for(const k of keys){
+   if(!state.unavailableRoutes.has(routeKey(model,k.label)))return true
+  }
+ }
+ return false
+}
+
+function allRoutesFailedByQuotaOnly(keyState,modelChain){
+ const state=ensureKeyState(keyState)
+ const keys=state.keys||[]
+ let quotaRoutes=0
+ for(const model of modelChain){
+  if(state.unavailableModels.has(model))continue
+  for(const k of keys){
+   const r=state.routeFailureReasons.get(routeKey(model,k.label))
+   if(!r)return false
+   if(r!=='quota_exhausted')return false
+   quotaRoutes++
+  }
+ }
+ return quotaRoutes>0
+}
+
+function computeBoundedCooldownMs(requestedMs,{maxCooldownMs=MAX_COOLDOWN_MS,remainingMs=Infinity,reserveMs=10_000}={}){
+ const base=Math.max(0,Math.min(maxCooldownMs,Number(requestedMs)||0))
+ if(!Number.isFinite(remainingMs))return base
+ if(remainingMs-base<reserveMs)return null
+ return base
+}
 
 /**
- * Execute a Gemini call with automatic multi-key failover (429), immediate
- * model fallback on 404/retired models, and retry-once backoff on transient
- * 503 UNAVAILABLE / 429 before moving to the next active model.
+ * Execute a Gemini call with sticky model preference, confirmed route skipping,
+ * full key traversal reset on model switches, bounded Retry-After/cooldowns,
+ * deadline enforcement, and explicit error classification.
  */
 export async function callGeminiWithFailover(
  prompt,
@@ -720,91 +904,254 @@ export async function callGeminiWithFailover(
   model=DEFAULT_GEMINI_MODEL,
   fallbackModels=null,
   unavailableRetryMs=DEFAULT_UNAVAILABLE_RETRY_MS,
+  maxCooldownMs=MAX_COOLDOWN_MS,
+  requestTimeoutMs=DEFAULT_GEMINI_TIMEOUT_MS,
+  deadlineMs=Infinity,
+  minCallBudgetMs=12_000,
+  nowFn=()=>Date.now(),
   waitImpl=sleep,
   fetchImpl=fetch,
   callGeminiImpl=callGeminiFlashLite
  }={}
 ){
- const keys=keyState?.keys||[]
+ const state=ensureKeyState(keyState)
+ const keys=state.keys||[]
  if(!keys.length)throw Error('No Gemini API keys configured')
 
- const modelChain=resolveGeminiModelChain({model,fallbackModels})
- const primaryModel=modelChain[0]
+ const baseChain=resolveGeminiModelChain({model,fallbackModels})
+ const primaryModel=baseChain[0]
+
+ // Sticky model preference: try last successful model first, skipping permanently unavailable models
+ const nowMs=nowFn()
+ const orderedBase=state.preferredModel&&baseChain.includes(state.preferredModel)
+  ?[state.preferredModel,...baseChain.filter(m=>m!==state.preferredModel)]
+  :baseChain
+ const activeReady=[]
+ const cooledDown=[]
+ for(const m of orderedBase){
+  if(state.unavailableModels.has(m))continue
+  const hasKey=keys.some(k=>!state.unavailableRoutes.has(routeKey(m,k.label)))
+  if(!hasKey)continue
+  const until=state.modelCooldownUntil.get(m)||0
+  if(until>nowMs)cooledDown.push(m)
+  else activeReady.push(m)
+ }
+ const modelChain=[...activeReady,...cooledDown]
+
+ if(!modelChain.length){
+  if(allRoutesFailedByQuotaOnly(state,baseChain)){
+   throw new GeminiQuotaExhausted(`All ${keys.length} configured Gemini API key(s) exhausted quota across models [${baseChain.join(', ')}] (${[...state.exhaustedKeys].join(', ')})`,429)
+  }
+  const err=Error(`No usable Gemini API routes remain across models [${baseChain.join(', ')}]`)
+  err.noUsableRoute=true
+  throw err
+ }
+
  let lastQuotaError=null
  let lastUnavailableError=null
+ let lastTimeoutError=null
+ let lastAuthError=null
  let lastModelNotFoundError=null
+ let lastInvalidError=null
+
+ const remainingBudget=()=>deadlineMs-nowFn()
 
  for(let modelIdx=0;modelIdx<modelChain.length;modelIdx++){
   const activeModel=modelChain[modelIdx]
   const nextModel=modelChain[modelIdx+1]||null
-  // When trying a fallback model after an earlier model hit per-model 429 across all keys,
-  // start from key 0 again because free-tier quotas are tracked per model.
-  if(modelIdx>0&&keyState.activeIndex>=keys.length){
-   keyState.activeIndex=0
+
+  // Always reset key traversal when switching to another model; preserve activeIndex only when staying on preferredModel
+  if(modelIdx>0||(state.lastModelTried&&state.lastModelTried!==activeModel)){
+   state.activeIndex=0
   }
+  state.lastModelTried=activeModel
 
   let retriedUnavailable=false
-  while(keyState.activeIndex<keys.length){
-   const current=keys[keyState.activeIndex]
+  let retriedTimeout=false
+  const retriedRateLimitKeys=new Set()
+
+  while(state.activeIndex<keys.length){
+   const current=keys[state.activeIndex]
+   const rKey=routeKey(activeModel,current.label)
+   if(state.unavailableRoutes.has(rKey)){
+    state.activeIndex++
+    continue
+   }
+
+   const rem=remainingBudget()
+   if(Number.isFinite(deadlineMs)&&rem<minCallBudgetMs){
+    throw new PublishingBudgetExceeded(`Insufficient runtime budget (${Math.max(0,Math.round(rem/1000))}s remaining) before calling ${activeModel}`)
+   }
+   const clampedTimeoutMs=Number.isFinite(deadlineMs)
+    ?Math.max(5_000,Math.min(requestTimeoutMs,Math.floor(rem-2_000)))
+    :requestTimeoutMs
+
    try{
-    const result=await callGeminiImpl(prompt,{apiKey:current.key,model:activeModel,fetchImpl})
-    if(modelIdx>0){
+    const result=await callGeminiImpl(prompt,{apiKey:current.key,model:activeModel,fetchImpl,timeoutMs:clampedTimeoutMs})
+    state.preferredModel=activeModel
+    state.modelCooldownUntil.delete(activeModel)
+    const fallbackUsed=activeModel!==primaryModel
+    if(fallbackUsed){
      console.log(`[batch]   -> Gemini succeeded with fallback model ${activeModel} (key=${current.label}, primary=${primaryModel}).`)
-    }else if(retriedUnavailable){
+    }else if(retriedUnavailable||retriedTimeout){
      console.log(`[batch]   -> Gemini succeeded on retry with model ${activeModel} (key=${current.label}).`)
     }
-    return {...result,keyLabel:current.label,model:activeModel,fallbackUsed:modelIdx>0}
+    return {...result,keyLabel:current.label,model:activeModel,fallbackUsed}
    }catch(err){
-    if(isQuotaError(err)){
-     lastQuotaError=err
-     keyState.exhaustedKeys.add(current.label)
-     const nextIndex=keyState.activeIndex+1
-     if(nextIndex<keys.length){
-      console.warn(`[batch]   -> Key ${current.label} hit 429/quota on ${activeModel}. Failing over to backup key ${keys[nextIndex].label}...`)
-      keyState.activeIndex=nextIndex
+    if(err instanceof PublishingBudgetExceeded||err?.isBudget)throw err
+
+    if(isTemporaryRateLimitError(err)){
+     recordApiError(state,'rate_limit')
+     if(!retriedRateLimitKeys.has(current.label)){
+      retriedRateLimitKeys.add(current.label)
+      const waitMs=computeBoundedCooldownMs(err.retryAfterMs??unavailableRetryMs,{maxCooldownMs,remainingMs:remainingBudget(),reserveMs:minCallBudgetMs})
+      if(waitMs===null){
+       throw new PublishingBudgetExceeded(`Insufficient runtime budget for rate-limit cooldown on ${activeModel}`)
+      }
+      console.warn(`[batch]   -> Temporary 429 rate limit on ${activeModel} (${current.label}). Waiting ${(waitMs/1000).toFixed(1)}s before single retry...`)
+      if(waitMs>0)await waitImpl(waitMs)
       continue
      }
-     keyState.activeIndex=keys.length
-     if(nextModel){
-      console.warn(`[batch]   -> All ${keys.length} key(s) hit 429/quota on ${activeModel}. Waiting ${(unavailableRetryMs/1000).toFixed(1)}s then falling back to model ${nextModel}...`)
-      if(unavailableRetryMs>0)await waitImpl(unavailableRetryMs)
-      break
-     }
-     throw new GeminiQuotaExhausted(`All ${keys.length} configured Gemini API key(s) exhausted quota across models [${modelChain.join(', ')}] (${[...keyState.exhaustedKeys].join(', ')})`,429)
+     // Escalate repeated 429 on this (model, key) route to route-level quota exhaustion
+     lastQuotaError=new GeminiQuotaExhausted(err.message,429,{retryAfterMs:err.retryAfterMs})
+     state.unavailableRoutes.add(rKey)
+     state.routeFailureReasons.set(rKey,'quota_exhausted')
+     state.exhaustedKeys.add(current.label)
+     state.activeIndex++
+     continue
     }
 
-    if(isUnavailableError(err)){
-     lastUnavailableError=err instanceof GeminiUnavailableError?err:new GeminiUnavailableError(err.message,err?.status||503)
-     if(!retriedUnavailable){
-      retriedUnavailable=true
-      console.warn(`[batch]   -> Model ${activeModel} returned 503/UNAVAILABLE (${err.message}). Retrying once in ${(unavailableRetryMs/1000).toFixed(1)}s...`)
-      if(unavailableRetryMs>0)await waitImpl(unavailableRetryMs)
+    if(isQuotaError(err)){
+     recordApiError(state,'quota_exhausted')
+     lastQuotaError=err
+     state.unavailableRoutes.add(rKey)
+     state.routeFailureReasons.set(rKey,'quota_exhausted')
+     state.exhaustedKeys.add(current.label)
+     const nextIndex=state.activeIndex+1
+     if(nextIndex<keys.length){
+      console.warn(`[batch]   -> Key ${current.label} hit 429/quota on ${activeModel}. Failing over to backup key ${keys[nextIndex].label}...`)
+      state.activeIndex=nextIndex
       continue
      }
+     state.activeIndex=keys.length
      if(nextModel){
-      console.warn(`[batch]   -> Model ${activeModel} still unavailable after retry (${err.message}). Falling back to ${nextModel}...`)
+      const waitMs=computeBoundedCooldownMs(err.retryAfterMs??unavailableRetryMs,{maxCooldownMs,remainingMs:remainingBudget(),reserveMs:minCallBudgetMs})
+      if(waitMs===null){
+       throw new PublishingBudgetExceeded(`Insufficient runtime budget before switching to fallback model ${nextModel}`)
+      }
+      console.warn(`[batch]   -> All ${keys.length} key(s) hit 429/quota on ${activeModel}. Waiting ${(waitMs/1000).toFixed(1)}s then falling back to model ${nextModel}...`)
+      if(waitMs>0)await waitImpl(waitMs)
       break
      }
-     throw lastUnavailableError
+     break
+    }
+
+    if(isAuthError(err)){
+     recordApiError(state,'auth')
+     lastAuthError=err
+     if(err.status===401){
+      // Invalid API key: disable this key across all models
+      for(const m of baseChain){
+       const mk=routeKey(m,current.label)
+       state.unavailableRoutes.add(mk)
+       state.routeFailureReasons.set(mk,'auth')
+      }
+     }else{
+      state.unavailableRoutes.add(rKey)
+      state.routeFailureReasons.set(rKey,'auth')
+     }
+     console.warn(`[batch]   -> Auth error (${err.status||'403'}) on ${activeModel} (${current.label}); skipping route.`)
+     state.activeIndex++
+     continue
     }
 
     if(isModelNotFoundError(err)){
+     recordApiError(state,'not_found')
      lastModelNotFoundError=err
+     state.unavailableModels.add(activeModel)
+     if(state.preferredModel===activeModel)state.preferredModel=null
      if(nextModel){
-      console.warn(`[batch]   -> Model ${activeModel} returned 404/unavailable (${err.message}). Immediately falling back to ${nextModel}...`)
+      console.warn(`[batch]   -> Model ${activeModel} returned 404/unavailable (${err.message}). Marking unavailable and falling back to ${nextModel}...`)
+      break
+     }
+     break
+    }
+
+    if(isUnavailableError(err)){
+     recordApiError(state,'unavailable')
+     lastUnavailableError=err instanceof GeminiUnavailableError?err:new GeminiUnavailableError(err.message,err?.status||503,{retryAfterMs:err?.retryAfterMs})
+     if(!retriedUnavailable){
+      retriedUnavailable=true
+      const waitMs=computeBoundedCooldownMs(err.retryAfterMs??unavailableRetryMs,{maxCooldownMs,remainingMs:remainingBudget(),reserveMs:minCallBudgetMs})
+      if(waitMs===null){
+       throw new PublishingBudgetExceeded(`Insufficient runtime budget for 503 retry on ${activeModel}`)
+      }
+      console.warn(`[batch]   -> Model ${activeModel} returned 503/UNAVAILABLE (${err.message}). Retrying once in ${(waitMs/1000).toFixed(1)}s...`)
+      if(waitMs>0)await waitImpl(waitMs)
+      continue
+     }
+     state.modelCooldownUntil.set(activeModel,nowFn()+120_000)
+     if(state.preferredModel===activeModel)state.preferredModel=null
+     if(nextModel){
+      console.warn(`[batch]   -> Model ${activeModel} still unavailable after retry (${err.message}). Cooling down and falling back to ${nextModel}...`)
+      break
+     }
+     break
+    }
+
+    if(isTimeoutError(err)){
+     recordApiError(state,'timeout')
+     lastTimeoutError=err instanceof GeminiTimeoutError?err:new GeminiTimeoutError(err.message)
+     if(!retriedTimeout&&remainingBudget()>=minCallBudgetMs*2){
+      retriedTimeout=true
+      console.warn(`[batch]   -> Timeout on ${activeModel} (${current.label}). Retrying once...`)
+      continue
+     }
+     state.modelCooldownUntil.set(activeModel,nowFn()+60_000)
+     if(state.preferredModel===activeModel)state.preferredModel=null
+     if(nextModel){
+      console.warn(`[batch]   -> Timeout persisted on ${activeModel}. Falling back to ${nextModel}...`)
+      break
+     }
+     break
+    }
+
+    if(isInvalidRequestError(err)){
+     recordApiError(state,'invalid_request')
+     lastInvalidError=err
+     if(err.modelUnsupported){
+      state.unavailableRoutes.add(rKey)
+      state.routeFailureReasons.set(rKey,'invalid_request')
+      if(state.preferredModel===activeModel)state.preferredModel=null
+      if(nextModel){
+       console.warn(`[batch]   -> Model ${activeModel} rejected parameters (${err.message}). Skipping route and falling back to ${nextModel}...`)
+       break
+      }
       break
      }
      throw err
     }
 
+    recordApiError(state,'other')
     throw err
    }
   }
  }
 
+ if(!hasUsableGeminiRoute(state,baseChain)){
+  if(allRoutesFailedByQuotaOnly(state,baseChain)){
+   throw new GeminiQuotaExhausted(`All ${keys.length} configured Gemini API key(s) exhausted quota across models [${baseChain.join(', ')}] (${[...state.exhaustedKeys].join(', ')})`,429)
+  }
+  if(lastAuthError&&!lastQuotaError)throw lastAuthError
+  if(lastModelNotFoundError&&!lastQuotaError)throw lastModelNotFoundError
+  if(lastInvalidError&&!lastQuotaError)throw lastInvalidError
+ }
  if(lastUnavailableError&&!lastQuotaError)throw lastUnavailableError
+ if(lastTimeoutError&&!lastQuotaError)throw lastTimeoutError
+ if(lastAuthError&&!lastQuotaError)throw lastAuthError
  if(lastModelNotFoundError&&!lastQuotaError)throw lastModelNotFoundError
- throw new GeminiQuotaExhausted(`All ${keys.length} configured Gemini API key(s) exhausted quota across models [${modelChain.join(', ')}]`,429)
+ if(lastInvalidError&&!lastQuotaError)throw lastInvalidError
+ throw new GeminiQuotaExhausted(`All ${keys.length} configured Gemini API key(s) exhausted quota across models [${baseChain.join(', ')}]`,429)
 }
 
 function normalizeOptionalImageId(value,validImageIds=null){
@@ -966,18 +1313,109 @@ function summarizeQueue(queue,now=new Date()){
 
 async function saveQueueAtomic(queueFile,queue){
  const updated=summarizeQueue(queue)
- const tmp=`${queueFile}.tmp-${process.pid}`
- await fs.writeFile(tmp,JSON.stringify(updated,null,2)+'\n','utf8')
- await fs.rename(tmp,queueFile)
+ const tmp=`${queueFile}.tmp-${process.pid}-${Date.now()}-${Math.random().toString(16).slice(2,8)}`
+ try{
+  await fs.writeFile(tmp,JSON.stringify(updated,null,2)+'\n','utf8')
+  await fs.rename(tmp,queueFile)
+ }catch(err){
+  await fs.unlink(tmp).catch(()=>{})
+  throw err
+ }
  return updated
+}
+
+export function classifyQualityErrorBucket(errMsg){
+ const msg=String(errMsg||'')
+ if(/fixed-card bounds|word count/i.test(msg)){
+  const lvl=msg.match(/^(A1-A2|B1-B2|C1-C2)/)?.[1]||'level'
+  const kind=/photo page/i.test(msg)?'photo':'text'
+  return `${lvl} ${kind} word bounds`
+ }
+ if(/CEFR gate failed: FKGL/i.test(msg)){
+  const lvl=msg.match(/^(A1-A2|B1-B2|C1-C2)/)?.[1]||'level'
+  return `${lvl} CEFR FKGL`
+ }
+ if(/CEFR lexical|over-level vocabulary/i.test(msg)){
+  const lvl=msg.match(/^(A1-A2|B1-B2|C1-C2)/)?.[1]||'level'
+  return `${lvl} CEFR lexical`
+ }
+ if(/CEFR FKGL separation/i.test(msg))return 'CEFR FKGL separation'
+ if(/CEFR (?:sentence-length|difficulty) progression/i.test(msg))return 'CEFR progression'
+ if(/average sentence length/i.test(msg))return 'avg sentence length'
+ if(/caption too long/i.test(msg))return 'caption length'
+ if(/dry encyclopedia opening/i.test(msg))return 'dry Page 1 opening'
+ if(/headline/i.test(msg))return 'headline'
+ if(/Cross-level/i.test(msg))return 'cross-level parity'
+ if(/complete sentence/i.test(msg))return 'incomplete sentence'
+ if(/page count/i.test(msg))return 'page count'
+ return 'other'
+}
+
+export function formatPublishStepSummary(summary){
+ const lines=[
+  '### Auto Wiki Publish Summary',
+  '',
+  '| Metric | Value |',
+  '| --- | --- |',
+  `| Mode / Stage | \`${summary.dryRun?'dry-run':'live'}\` / \`${summary.schedulePlan?.stage||'unknown'}\` |`,
+  `| Stop Reason | \`${summary.stopReason}\` |`,
+  `| Published Articles | **${summary.generatedCount}** (catalog total: **${summary.catalogTotal}**) |`,
+  `| Candidates Scanned | ${summary.scannedCount??0} |`,
+  `| Skipped (No Lead Image) | ${summary.skippedNoLeadImageCount} |`,
+  `| Skipped (Quality Gate) | ${summary.skippedQualityCount} |`,
+  `| Valid Repo Changes | \`${Boolean(summary.hasValidChanges)}\` |`,
+  `| Elapsed Time | ${summary.elapsedSeconds??0}s |`
+ ]
+ const apiEntries=Object.entries(summary.apiErrorCounts||{}).filter(([,c])=>c>0).sort((a,b)=>b[1]-a[1])
+ if(apiEntries.length){
+  lines.push('', '**API Errors:** '+apiEntries.map(([k,v])=>`\`${k}\`: ${v}`).join(', '))
+ }
+ const histEntries=Object.entries(summary.qualityErrorHistogram||{}).filter(([,c])=>c>0).sort((a,b)=>b[1]-a[1]).slice(0,8)
+ if(histEntries.length){
+  lines.push('', '**Quality Gate Error Histogram:**')
+  for(const [bucket,count] of histEntries)lines.push(`- ${bucket}: ${count}`)
+ }
+ if(Array.isArray(summary.errors)&&summary.errors.length){
+  lines.push('', `**Candidate Errors (${summary.errors.length}):** `+summary.errors.slice(0,3).map(e=>`${e.title}: ${String(e.error||'').slice(0,120)}`).join(' | '))
+ }
+ return lines.join('\n')+'\n'
+}
+
+export async function writeGithubOutputs(summary,outputPath=process.env.GITHUB_OUTPUT||''){
+ if(!outputPath)return false
+ const apiErrorCount=Object.values(summary.apiErrorCounts||{}).reduce((sum,v)=>sum+Number(v||0),0)
+ const payload=[
+  `published_count=${Number(summary.generatedCount||0)}`,
+  `stop_reason=${String(summary.stopReason||'infrastructure_failure')}`,
+  `has_valid_changes=${summary.hasValidChanges?'true':'false'}`,
+  `scanned_count=${Number(summary.scannedCount||0)}`,
+  `skipped_no_lead_count=${Number(summary.skippedNoLeadImageCount||0)}`,
+  `skipped_quality_count=${Number(summary.skippedQualityCount||0)}`,
+  `api_error_count=${apiErrorCount}`,
+  `elapsed_seconds=${Number(summary.elapsedSeconds||0)}`
+ ].join('\n')+'\n'
+ await fs.appendFile(outputPath,payload,'utf8')
+ return true
+}
+
+export async function writeGithubStepSummary(summary,summaryPath=process.env.GITHUB_STEP_SUMMARY||''){
+ if(!summaryPath)return false
+ await fs.appendFile(summaryPath,formatPublishStepSummary(summary),'utf8')
+ return true
 }
 
 export async function runPublishWikiBatch({
  root=ROOT,
  queueFile=DEFAULT_QUEUE_FILE,
  maxArticles=null,
+ maxCandidates=null,
+ maxRuntimeMs=DEFAULT_MAX_RUNTIME_MS,
+ minCandidateBudgetMs=MIN_CANDIDATE_BUDGET_MS,
+ minRetryBudgetMs=MIN_RETRY_BUDGET_MS,
+ requestTimeoutMs=DEFAULT_GEMINI_TIMEOUT_MS,
  eventName=process.env.GITHUB_EVENT_NAME||'',
  now=new Date(),
+ nowFn=()=>Date.now(),
  bootstrapThreshold=BOOTSTRAP_THRESHOLD,
  titles=[],
  apiKey=process.env.GEMINI_API_KEY||'',
@@ -985,17 +1423,31 @@ export async function runPublishWikiBatch({
  model=process.env.GEMINI_MODEL||DEFAULT_GEMINI_MODEL,
  fallbackModels=null,
  unavailableRetryMs=DEFAULT_UNAVAILABLE_RETRY_MS,
+ maxCooldownMs=MAX_COOLDOWN_MS,
  delayMs=DEFAULT_DELAY_MS,
  dryRun=false,
+ githubOutputFile=process.env.GITHUB_OUTPUT||'',
+ githubStepSummaryFile=process.env.GITHUB_STEP_SUMMARY||'',
  fetchImpl=fetch,
  waitImpl=sleep,
  fetchPageImpl=fetchWikipediaParsePage,
  collectPhotosImpl=collectVerifiedArticlePhotos,
  callGeminiImpl=callGeminiFlashLite
 }={}){
+ const startedAtMs=nowFn()
+ const deadlineMs=Number.isFinite(maxRuntimeMs)&&maxRuntimeMs>0?startedAtMs+maxRuntimeMs:Infinity
+ const remainingBudget=()=>deadlineMs-nowFn()
+ const elapsedSeconds=()=>Math.max(0,Math.round((nowFn()-startedAtMs)/1000))
+
+ const finalizeAndReport=async summary=>{
+  await writeGithubOutputs(summary,githubOutputFile).catch(()=>{})
+  await writeGithubStepSummary(summary,githubStepSummaryFile).catch(()=>{})
+  return summary
+ }
+
  const queue=JSON.parse(await fs.readFile(queueFile,'utf8'))
  const catalog=await readWikiCatalog(root)
- const catalogTotal=catalog.manifest?.total??catalog.stories.length
+ let catalogTotal=catalog.manifest?.total??catalog.stories.length
 
  const schedulePlan=resolveAutoSchedulePlan({
   catalogTotal,
@@ -1007,21 +1459,29 @@ export async function runPublishWikiBatch({
 
  if(!schedulePlan.shouldRun){
   console.log(`[batch] Stage 2 Steady-State Mode (total=${catalogTotal} >= ${bootstrapThreshold}): skipping off-peak ${String(schedulePlan.slotUtcHour).padStart(2,'0')}:00 UTC slot without calling Gemini.`)
-  return {
+  return finalizeAndReport({
    dryRun,
    skippedBySchedule:true,
    schedulePlan,
+   stopReason:'schedule_skipped',
+   hasValidChanges:false,
+   infrastructureFailed:false,
+   budgetStopped:false,
+   quotaStopped:false,
    generatedCount:0,
    addedToCatalog:0,
    catalogTotal,
+   scannedCount:0,
    skippedNoImageCount:0,
    skippedNoLeadImageCount:0,
    skippedQualityCount:0,
    exhaustedKeys:[],
-   quotaStopped:false,
+   apiErrorCounts:{},
+   qualityErrorHistogram:{},
+   elapsedSeconds:elapsedSeconds(),
    errors:[],
    stories:[]
-  }
+  })
  }
 
  const targetPublished=schedulePlan.maxArticles
@@ -1030,17 +1490,35 @@ export async function runPublishWikiBatch({
   throw Error('No Gemini API key configured. Add GEMINI_API_KEY (and optional GEMINI_API_KEY_2, GEMINI_API_KEY_3) to GitHub Secrets or environment variables.')
  }
 
- const keyState={keys:resolvedKeys,activeIndex:0,exhaustedKeys:new Set()}
+ const keyState=ensureKeyState({keys:resolvedKeys,activeIndex:0,exhaustedKeys:new Set()})
  const usedPageIds=new Set(catalog.stories.map(s=>s.sourcePageId))
  const usedImages=new Set(catalog.stories.flatMap(s=>s.pages.flatMap(p=>[p.image,p.imageProvenance?.imagePageUrl]).filter(Boolean)))
  const byTopic=catalog.manifest?.byTopic||Object.fromEntries(WIKI_TOPICS.map(t=>[t,0]))
+
+ // Idempotent crash recovery: reconcile any queue item already committed to the catalog
+ let queueDirty=false
+ let queuePersisted=false
+ for(const qItem of queue.items||[]){
+  if(qItem.status!=='published'&&Number.isSafeInteger(qItem.pageId)&&usedPageIds.has(qItem.pageId)){
+   qItem.status='published'
+   queueDirty=true
+  }
+ }
 
  const explicitTitles=Array.isArray(titles)?titles.map(t=>String(t||'').trim()).filter(Boolean):[]
  const schedule=explicitTitles.length
   ?explicitTitles.map(title=>({title,topic:'History & Geography',status:'pending',_explicit:true}))
   :buildRoundRobinOrder(queue.items,{byTopic,usedPageIds})
  const modelChain=resolveGeminiModelChain({model,fallbackModels})
- console.log(`[batch] Starting ${dryRun?'DRY-RUN ':''}publish [stage=${schedulePlan.stage}]: targetPublished=${targetPublished}, model=${modelChain[0]}, fallbacks=[${modelChain.slice(1).join(', ')}], keys=${resolvedKeys.length}, pending=${schedule.length}, published=${catalogTotal}`)
+
+ const configuredScanCap=Number.isFinite(Number(maxCandidates))&&Number(maxCandidates)>0
+  ?Math.floor(Number(maxCandidates))
+  :(schedulePlan.maxCandidates||targetPublished*3)
+ const maxCandidatesToScan=explicitTitles.length
+  ?schedule.length
+  :Math.min(schedule.length,configuredScanCap)
+
+ console.log(`[batch] Starting ${dryRun?'DRY-RUN ':''}publish [stage=${schedulePlan.stage}]: targetPublished=${targetPublished}, maxCandidates=${maxCandidatesToScan}, budget=${Number.isFinite(maxRuntimeMs)?Math.round(maxRuntimeMs/1000)+'s':'unbounded'}, model=${modelChain[0]}, fallbacks=[${modelChain.slice(1).join(', ')}], keys=${resolvedKeys.length}, pending=${schedule.length}, published=${catalogTotal}`)
 
  const generatedStories=[]
  const publishedItems=[]
@@ -1048,25 +1526,79 @@ export async function runPublishWikiBatch({
  const skippedNoLeadImage=[]
  const skippedQuality=[]
  const transientErrors=[]
+ const qualityErrorHistogram={}
+ let addedToCatalog=0
+ let scannedCount=0
  let quotaStopped=false
+ let budgetStopped=false
+ let wikimediaStopped=false
+ let infrastructureFailed=false
+ let consecutiveInfraFailures=0
  let geminiCalls=0
- // Count successfully published articles (skipped candidates never consume batch quota),
- // bounded by a safe candidate scan cap (targetPublished * 4) to prevent runaway loops.
- const maxCandidatesToScan=explicitTitles.length
-  ?schedule.length
-  :Math.min(schedule.length,targetPublished*4)
 
- const invokeGeminiWithDelay=async prompt=>{
+ const recordQualityHistogram=errors=>{
+  for(const e of errors||[]){
+   const bucket=classifyQualityErrorBucket(e)
+   qualityErrorHistogram[bucket]=(qualityErrorHistogram[bucket]||0)+1
+  }
+ }
+
+ const checkpointQueue=async()=>{
+  if(dryRun)return
+  await saveQueueAtomic(queueFile,queue)
+  queueDirty=false
+  queuePersisted=true
+ }
+
+ if(queueDirty&&!dryRun){
+  await checkpointQueue()
+ }
+
+ const invokeGeminiWithDelay=async(prompt,{reserveMs=minRetryBudgetMs}={})=>{
   if(geminiCalls>0&&delayMs>0){
+   const rem=remainingBudget()
+   if(Number.isFinite(deadlineMs)&&rem<delayMs+reserveMs){
+    throw new PublishingBudgetExceeded(`Runtime budget exhausted before inter-call delay (${Math.max(0,Math.round(rem/1000))}s remaining)`)
+   }
    console.log(`[batch]   -> Waiting ${(delayMs/1000).toFixed(1)}s before next Gemini call...`)
    await waitImpl(delayMs)
   }
   geminiCalls++
-  return callGeminiWithFailover(prompt,keyState,{model:modelChain[0],fallbackModels:modelChain.slice(1),unavailableRetryMs,waitImpl,fetchImpl,callGeminiImpl})
+  return callGeminiWithFailover(prompt,keyState,{
+   model:modelChain[0],
+   fallbackModels:modelChain.slice(1),
+   unavailableRetryMs,
+   maxCooldownMs,
+   requestTimeoutMs,
+   deadlineMs,
+   minCallBudgetMs:Math.min(12_000,reserveMs),
+   nowFn,
+   waitImpl,
+   fetchImpl,
+   callGeminiImpl
+  })
  }
 
  for(let idx=0;idx<maxCandidatesToScan&&generatedStories.length<targetPublished;idx++){
+  const remBeforeCandidate=remainingBudget()
+  if(Number.isFinite(deadlineMs)&&remBeforeCandidate<minCandidateBudgetMs){
+   console.log(`[batch] Runtime budget reached (${Math.max(0,Math.round(remBeforeCandidate/1000))}s left < ${Math.round(minCandidateBudgetMs/1000)}s reserve). Stopping gracefully with ${generatedStories.length} published article(s).`)
+   budgetStopped=true
+   break
+  }
+
+  if(!dryRun&&!hasUsableGeminiRoute(keyState,modelChain)){
+   if(allRoutesFailedByQuotaOnly(keyState,modelChain)){
+    quotaStopped=true
+   }else{
+    infrastructureFailed=true
+   }
+   console.warn(`[batch] No usable Gemini API routes remain. Stopping scan cleanly.`)
+   break
+  }
+
   const item=schedule[idx]
+  scannedCount++
   try{
    console.log(`[batch] (${generatedStories.length+1}/${targetPublished}) Checking [${item.topic}] "${item.title}"...`)
    const source=await fetchPageImpl(item.title,{fetchImpl,spacingMs:250})
@@ -1074,6 +1606,8 @@ export async function runPublishWikiBatch({
    if(!item._explicit&&usedPageIds.has(source.pageId)){
     item.status='published'
     item.pageId=source.pageId
+    queueDirty=true
+    await checkpointQueue()
     continue
    }
 
@@ -1092,6 +1626,8 @@ export async function runPublishWikiBatch({
     item.checkedAt=new Date().toISOString()
     skippedNoLeadImage.push(item.title)
     skippedNoImage.push(item.title)
+    queueDirty=true
+    await checkpointQueue()
     continue
    }
 
@@ -1100,22 +1636,31 @@ export async function runPublishWikiBatch({
 
    let normalizedDraft
    let quality
-   let usedModel=dryRun?'dry-run':modelChain[0]
+   let usedModel=dryRun?'dry-run':(keyState.preferredModel||modelChain[0])
    if(dryRun){
     normalizedDraft=normalizeDraftForCatalog(makeDryRunDraft(source,trimmed.evidence,verifiedPhotos),{source,evidence:trimmed.evidence,verifiedPhotos})
     quality=validateArticleQuality(normalizedDraft,source.sourceTitle)
    }else{
     const prompt=buildBatchPrompt(source,item.topic,trimmed.evidence,verifiedPhotos)
-    const firstRes=await invokeGeminiWithDelay(prompt)
+    const firstRes=await invokeGeminiWithDelay(prompt,{reserveMs:minRetryBudgetMs})
+    consecutiveInfraFailures=0
     usedModel=firstRes.model||usedModel
     normalizedDraft=normalizeDraftForCatalog(firstRes.draft,{source,evidence:trimmed.evidence,verifiedPhotos})
     quality=validateArticleQuality(normalizedDraft,source.sourceTitle)
 
     // Retry ONCE with exact failed checks + objective CEFR diagnostics/overLevelWords if quality gate fails
     if(!quality.ok){
+     recordQualityHistogram(quality.errors)
+     const remBeforeRetry=remainingBudget()
+     if(Number.isFinite(deadlineMs)&&remBeforeRetry<minRetryBudgetMs){
+      console.warn(`[batch]   -> Runtime budget reached before quality retry (${Math.max(0,Math.round(remBeforeRetry/1000))}s left). Leaving "${item.title}" pending and stopping gracefully.`)
+      budgetStopped=true
+      break
+     }
      console.warn(`[batch]   -> Quality gate failed (${quality.errors.length} issue(s)); retrying ONCE with feedback...`)
      const retryPrompt=buildQualityRetryPrompt(source,item.topic,trimmed.evidence,normalizedDraft,quality.errors,verifiedPhotos,quality)
-     const retryRes=await invokeGeminiWithDelay(retryPrompt)
+     const retryRes=await invokeGeminiWithDelay(retryPrompt,{reserveMs:minRetryBudgetMs})
+     consecutiveInfraFailures=0
      usedModel=retryRes.model||usedModel
      normalizedDraft=normalizeDraftForCatalog(retryRes.draft,{source,evidence:trimmed.evidence,verifiedPhotos})
      quality=validateArticleQuality(normalizedDraft,source.sourceTitle)
@@ -1123,12 +1668,15 @@ export async function runPublishWikiBatch({
    }
 
    if(!quality.ok){
+    recordQualityHistogram(quality.errors)
     console.warn(`[batch]   -> SKIPPED_QUALITY after retry: ${quality.errors.slice(0,3).join(' | ')}`)
     item.status='skipped_quality'
     item.pageId=source.pageId
     item.qualityErrors=quality.errors.slice(0,5)
     item.checkedAt=new Date().toISOString()
     skippedQuality.push(item.title)
+    queueDirty=true
+    await checkpointQueue()
     continue
    }
 
@@ -1143,8 +1691,11 @@ export async function runPublishWikiBatch({
     console.log(`[batch]   -> SKIPPED_NO_LEAD_IMAGE (${assigned.reason}).`)
     item.status='skipped_no_lead_image'
     item.pageId=source.pageId
+    item.checkedAt=new Date().toISOString()
     skippedNoLeadImage.push(item.title)
     skippedNoImage.push(item.title)
+    queueDirty=true
+    await checkpointQueue()
     continue
    }
    if(assigned.strippedImages?.length){
@@ -1161,6 +1712,13 @@ export async function runPublishWikiBatch({
    const gate=validateWikiStory(story)
    if(!gate.accepted)throw Error(`Story failed catalog gate: ${gate.errors.join(', ')}`)
 
+   // Atomic per-article checkpointing: write catalog first, then update queue atomically
+   if(!dryRun){
+    const stepCatalog=await appendWikiStories(root,[story])
+    addedToCatalog+=stepCatalog.added
+    catalogTotal=stepCatalog.total
+   }
+
    // Track used IDs/images across this batch
    if(!item._explicit){
     usedPageIds.add(source.pageId)
@@ -1176,91 +1734,178 @@ export async function runPublishWikiBatch({
    item.sourceUrl=source.sourceUrl
    item.status='published'
    item.publishedAt=story.publishedAt
+   queueDirty=true
+   if(!dryRun){
+    await checkpointQueue()
+   }
    const imgBindingSummary=assigned.photos.map(p=>`P${p.pageIndex+1}:${p.imageId}(sec${p.sectionIndex}:${p.sectionHeading})`).join(', ')
-   console.log(`[batch]   -> OK: "${story.title}" [model=${usedModel}] (${trimmed.wordCount}w src, ${assigned.photos.length} embedded photo(s) [${imgBindingSummary}], ${story.pages.length} pages, CEFR FKGL ${quality.metrics['A1-A2'].fkgl}/${quality.metrics['B1-B2'].fkgl}/${quality.metrics['C1-C2'].fkgl}, avg ${quality.metrics['A1-A2'].avgSentenceWords}/${quality.metrics['B1-B2'].avgSentenceWords}/${quality.metrics['C1-C2'].avgSentenceWords}w/sent).`)
+   console.log(`[batch]   -> OK (checkpointed): "${story.title}" [model=${usedModel}] (${trimmed.wordCount}w src, ${assigned.photos.length} embedded photo(s) [${imgBindingSummary}], ${story.pages.length} pages, CEFR FKGL ${quality.metrics['A1-A2'].fkgl}/${quality.metrics['B1-B2'].fkgl}/${quality.metrics['C1-C2'].fkgl}, avg ${quality.metrics['A1-A2'].avgSentenceWords}/${quality.metrics['B1-B2'].avgSentenceWords}/${quality.metrics['C1-C2'].avgSentenceWords}w/sent).`)
   }catch(err){
-   if(err instanceof GeminiQuotaExhausted||err?.isQuota||err?.status===429){
-    console.warn(`[batch] All Gemini API keys hit quota (${err.message}). Saving ${generatedStories.length} generated article(s) and stopping gracefully.`)
+   if(err instanceof PublishingBudgetExceeded||err?.isBudget){
+    console.warn(`[batch] Runtime budget exhausted (${err.message}). Preserving ${generatedStories.length} checkpointed article(s) and stopping gracefully.`)
+    budgetStopped=true
+    item.status='pending'
+    break
+   }
+   if(isQuotaError(err)){
+    console.warn(`[batch] All Gemini API routes hit quota (${err.message}). Preserving ${generatedStories.length} checkpointed article(s) and stopping gracefully.`)
     quotaStopped=true
     item.status='pending'
     break
    }
    if(err instanceof WikiApiPause){
-    console.warn(`[batch] Wikimedia temporary throttle (${err.message}). Stopping batch cleanly and saving progress.`)
+    console.warn(`[batch] Wikimedia temporary throttle (${err.message}). Stopping batch cleanly and preserving progress.`)
+    wikimediaStopped=true
     break
    }
    console.warn(`[batch]   -> Candidate "${item.title}" failed: ${err.message}`)
-   transientErrors.push({title:item.title,error:err.message})
+   transientErrors.push({title:item.title,error:err.message,kind:err?.kind||'error'})
+
+   const isInfraErr=isAuthError(err)||isModelNotFoundError(err)||isUnavailableError(err)||isTimeoutError(err)||Boolean(err?.noUsableRoute)||(isInvalidRequestError(err)&&err?.modelUnsupported)
+   if(isInfraErr){
+    consecutiveInfraFailures++
+   }
+   if(!dryRun&&!hasUsableGeminiRoute(keyState,modelChain)){
+    if(allRoutesFailedByQuotaOnly(keyState,modelChain)){
+     quotaStopped=true
+    }else{
+     infrastructureFailed=true
+    }
+    console.warn(`[batch] No usable Gemini API routes remain after error. Stopping scan cleanly.`)
+    break
+   }
+   if(consecutiveInfraFailures>=2){
+    infrastructureFailed=true
+    console.warn(`[batch] ${consecutiveInfraFailures} consecutive full-chain Gemini infrastructure failures. Stopping scan cleanly.`)
+    break
+   }
   }
  }
 
- let catalogResult={added:0,total:catalog.stories.length}
+ if(!dryRun&&queueDirty){
+  await checkpointQueue()
+ }
+
  if(!dryRun){
-  if(generatedStories.length){
-   catalogResult=await appendWikiStories(root,generatedStories)
-   console.log(`[batch] Appended ${catalogResult.added} new articles to public/wiki-reader/ (catalog total: ${catalogResult.total}).`)
-  }
-  await saveQueueAtomic(queueFile,queue)
-  console.log(`[batch] Updated ${path.relative(root,queueFile)} (published +${publishedItems.length}, skipped_no_lead_image +${skippedNoLeadImage.length}, skipped_quality +${skippedQuality.length}).`)
+  console.log(`[batch] Summary saved: added=${addedToCatalog} (catalog total: ${catalogTotal}), queue updated (published +${publishedItems.length}, skipped_no_lead_image +${skippedNoLeadImage.length}, skipped_quality +${skippedQuality.length}).`)
  }else{
   console.log(`[batch] DRY-RUN complete: validated ${generatedStories.length} article(s), skipped_no_lead_image=${skippedNoLeadImage.length}, skipped_quality=${skippedQuality.length}, errors=${transientErrors.length}. No files modified.`)
  }
 
- return {
+ let stopReason='completed'
+ if(infrastructureFailed){
+  stopReason='infrastructure_failure'
+ }else if(quotaStopped){
+  stopReason='quota_exhausted'
+ }else if(budgetStopped){
+  stopReason='budget_exhausted'
+ }else if(wikimediaStopped){
+  stopReason='wikimedia_throttled'
+ }else if(generatedStories.length>0){
+  stopReason='completed'
+ }else if(transientErrors.length>0){
+  stopReason='infrastructure_failure'
+  infrastructureFailed=true
+ }else if(skippedQuality.length>0){
+  stopReason='quality_rejected'
+ }else{
+  stopReason='no_eligible_candidates'
+ }
+
+ const hasValidChanges=!dryRun&&(addedToCatalog>0||queuePersisted)
+
+ return finalizeAndReport({
   dryRun,
   skippedBySchedule:false,
   schedulePlan,
+  stopReason,
+  hasValidChanges,
+  infrastructureFailed,
+  budgetStopped,
+  quotaStopped,
   generatedCount:generatedStories.length,
-  addedToCatalog:catalogResult.added,
-  catalogTotal:catalogResult.total,
+  addedToCatalog,
+  catalogTotal,
+  scannedCount,
   skippedNoImageCount:skippedNoImage.length,
   skippedNoLeadImageCount:skippedNoLeadImage.length,
   skippedQualityCount:skippedQuality.length,
   exhaustedKeys:[...keyState.exhaustedKeys],
-  quotaStopped,
+  apiErrorCounts:{...keyState.apiErrors},
+  qualityErrorHistogram,
+  elapsedSeconds:elapsedSeconds(),
   errors:transientErrors,
   stories:generatedStories
- }
+ })
 }
 
 function parseArgs(argv){
  const envMaxRaw=String(process.env.MAX_ARTICLES||'').trim()
  const envMax=envMaxRaw&&Number.isFinite(Number(envMaxRaw))&&Number(envMaxRaw)>0?Math.floor(Number(envMaxRaw)):null
+ const envRuntimeRaw=String(process.env.MAX_RUNTIME_MS||'').trim()
+ const envRuntime=envRuntimeRaw&&Number.isFinite(Number(envRuntimeRaw))&&Number(envRuntimeRaw)>0?Math.floor(Number(envRuntimeRaw)):DEFAULT_MAX_RUNTIME_MS
  const opts={
   maxArticles:envMax,
+  maxCandidates:null,
+  maxRuntimeMs:envRuntime,
   eventName:process.env.GITHUB_EVENT_NAME||'',
   delayMs:process.env.GEMINI_DELAY_MS!==undefined?Number(process.env.GEMINI_DELAY_MS):DEFAULT_DELAY_MS,
-   model:process.env.GEMINI_MODEL||DEFAULT_GEMINI_MODEL,
-   fallbackModels:process.env.GEMINI_FALLBACK_MODELS||null,
-   queueFile:DEFAULT_QUEUE_FILE,
-   titles:[],
-   dryRun:false
-  }
-  for(const arg of argv){
-   if(arg==='--dry-run')opts.dryRun=true
-   else if(arg.startsWith('--max-articles=')){
-    const val=Number(arg.split('=')[1])
-    if(Number.isFinite(val)&&val>0)opts.maxArticles=Math.floor(val)
-   }
-   else if(arg.startsWith('--event-name='))opts.eventName=arg.split('=')[1].trim()
-   else if(arg.startsWith('--delay-ms='))opts.delayMs=Math.max(0,Number(arg.split('=')[1])||0)
-   else if(arg.startsWith('--model='))opts.model=arg.split('=')[1].trim()||DEFAULT_GEMINI_MODEL
-   else if(arg.startsWith('--fallback-models='))opts.fallbackModels=arg.split('=')[1].trim()
-   else if(arg.startsWith('--queue-file='))opts.queueFile=path.resolve(arg.split('=')[1])
-   else if(arg.startsWith('--title='))opts.titles.push(arg.slice('--title='.length).trim())
-  }
-  return opts
+  model:process.env.GEMINI_MODEL||DEFAULT_GEMINI_MODEL,
+  fallbackModels:process.env.GEMINI_FALLBACK_MODELS||null,
+  queueFile:DEFAULT_QUEUE_FILE,
+  titles:[],
+  dryRun:false
  }
+ for(const arg of argv){
+  if(arg==='--dry-run')opts.dryRun=true
+  else if(arg.startsWith('--max-articles=')){
+   const val=Number(arg.split('=')[1])
+   if(Number.isFinite(val)&&val>0)opts.maxArticles=Math.floor(val)
+  }
+  else if(arg.startsWith('--max-candidates=')){
+   const val=Number(arg.split('=')[1])
+   if(Number.isFinite(val)&&val>0)opts.maxCandidates=Math.floor(val)
+  }
+  else if(arg.startsWith('--max-runtime-ms=')){
+   const val=Number(arg.split('=')[1])
+   if(Number.isFinite(val)&&val>0)opts.maxRuntimeMs=Math.floor(val)
+  }
+  else if(arg.startsWith('--event-name='))opts.eventName=arg.split('=')[1].trim()
+  else if(arg.startsWith('--delay-ms='))opts.delayMs=Math.max(0,Number(arg.split('=')[1])||0)
+  else if(arg.startsWith('--model='))opts.model=arg.split('=')[1].trim()||DEFAULT_GEMINI_MODEL
+  else if(arg.startsWith('--fallback-models='))opts.fallbackModels=arg.split('=')[1].trim()
+  else if(arg.startsWith('--queue-file='))opts.queueFile=path.resolve(arg.split('=')[1])
+  else if(arg.startsWith('--title='))opts.titles.push(arg.slice('--title='.length).trim())
+ }
+ return opts
+}
 
 if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.url)){
  const opts=parseArgs(process.argv.slice(2))
  runPublishWikiBatch(opts)
   .then(summary=>{
-   console.log(`[batch] Done: published=${summary.generatedCount}, skipped_no_lead_image=${summary.skippedNoLeadImageCount}, skipped_quality=${summary.skippedQualityCount}, skippedBySchedule=${Boolean(summary.skippedBySchedule)}, quotaStopped=${summary.quotaStopped}.`)
-   process.exit(0)
+   console.log(`[batch] Done: stop_reason=${summary.stopReason}, published=${summary.generatedCount}, scanned=${summary.scannedCount}, skipped_no_lead_image=${summary.skippedNoLeadImageCount}, skipped_quality=${summary.skippedQualityCount}, has_valid_changes=${summary.hasValidChanges}, elapsed=${summary.elapsedSeconds}s.`)
+   process.exit(summary.stopReason==='infrastructure_failure'?1:0)
   })
-  .catch(err=>{
+  .catch(async err=>{
    console.error('[batch] Fatal error:',err.message)
+   const fatalSummary={
+    dryRun:opts.dryRun,
+    schedulePlan:{stage:'fatal'},
+    stopReason:'infrastructure_failure',
+    hasValidChanges:false,
+    generatedCount:0,
+    catalogTotal:0,
+    scannedCount:0,
+    skippedNoLeadImageCount:0,
+    skippedQualityCount:0,
+    apiErrorCounts:{fatal:1},
+    qualityErrorHistogram:{},
+    elapsedSeconds:0,
+    errors:[{title:'fatal',error:err.message}]
+   }
+   await writeGithubOutputs(fatalSummary).catch(()=>{})
+   await writeGithubStepSummary(fatalSummary).catch(()=>{})
    process.exit(1)
   })
 }

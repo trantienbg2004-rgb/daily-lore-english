@@ -403,11 +403,11 @@ test('resolveGeminiApiKeys and callGeminiWithFailover rotate through primary + 2
 test('resolveGeminiModelChain and callGeminiWithFailover handle 404 immediately and retry 503/429 before falling back',async()=>{
  assert.deepEqual(
   resolveGeminiModelChain({env:{}}),
-  ['gemini-3.5-flash-lite','gemini-3.1-flash-lite','gemini-3.6-flash','gemini-3.8-flash','gemini-4-hydrogen']
+  ['gemini-3.5-flash-lite','gemini-3.1-flash-lite','gemini-3.6-flash','gemini-3.8-flash']
  )
  assert.deepEqual(
   resolveGeminiModelChain({model:'gemini-3.1-flash-lite',env:{}}),
-  ['gemini-3.1-flash-lite','gemini-3.5-flash-lite','gemini-3.6-flash','gemini-3.8-flash','gemini-4-hydrogen']
+  ['gemini-3.1-flash-lite','gemini-3.5-flash-lite','gemini-3.6-flash','gemini-3.8-flash']
  )
  assert.deepEqual(
   resolveGeminiModelChain({model:'gemini-3.5-flash-lite',env:{GEMINI_FALLBACK_MODELS:'gemini-3.6-flash, gemini-3.8-flash'}}),
@@ -1057,7 +1057,7 @@ test('validateArticleQuality enforces level-specific photo bounds on secondary p
 })
 
 test('resolveAutoSchedulePlan switches cleanly between Stage 1 (Bootstrap <1000) and Stage 2 (Steady-State >=1000)',()=>{
- // Stage 1: catalogTotal < 1000 -> runs ALL 4 UTC slots with maxArticles = 20
+ // Stage 1: catalogTotal < 1000 -> runs ALL 4 UTC slots with maxArticles = 8 and maxCandidates = 24
  for(const utcHour of [0,6,12,18]){
   const plan=resolveAutoSchedulePlan({
    catalogTotal:89,
@@ -1067,7 +1067,8 @@ test('resolveAutoSchedulePlan switches cleanly between Stage 1 (Bootstrap <1000)
   })
   assert.equal(plan.shouldRun,true,`Expected Stage 1 slot ${utcHour}:00 UTC to run`)
   assert.equal(plan.stage,'bootstrap')
-  assert.equal(plan.maxArticles,20)
+  assert.equal(plan.maxArticles,8)
+  assert.equal(plan.maxCandidates,24)
  }
 
  // Stage 2: catalogTotal >= 1000 -> skips 06:00 and 18:00 UTC (even with 40-min GitHub Actions cron delay)

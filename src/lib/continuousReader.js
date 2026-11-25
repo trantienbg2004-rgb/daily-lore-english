@@ -106,3 +106,20 @@ export async function refillCatalog({fetchImpl,baseUrl,pools,seen=new Set(),load
  }
  return {items,pools:updated,done:updated.length>0&&updated.every(p=>p.done),errors}
 }
+
+export function hasUnfetchedShards(pools = []) {
+ if (!Array.isArray(pools) || !pools.length) return false
+ for (const pool of pools) {
+  if (!pool) continue
+  if (!pool.done) return true
+  if (Array.isArray(pool.index) && pool.index.length) {
+   const cache = pool.cache instanceof Map ? pool.cache : null
+   for (const entry of pool.index) {
+    if (entry?.shard && (!cache || !cache.has(entry.shard))) return true
+   }
+  } else if (Array.isArray(pool.order) && pool.cursor < pool.order.length) {
+   return true
+  }
+ }
+ return false
+}

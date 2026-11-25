@@ -4,8 +4,8 @@ on:
   schedule:
     # Run 4 daily UTC slots: 00:00, 06:00, 12:00, 18:00 UTC (07:00, 13:00, 19:00, 01:00 Vietnam time)
     # Automatic 2-stage throttling inside scripts/publish_wiki_batch.mjs:
-    # - Stage 1 (Bootstrap, total < 1000): all 4 slots, 20 published articles/run (~60-80/day)
-    # - Stage 2 (Steady-State, total >= 1000): skips 06:00 & 18:00 UTC, runs 00:00 & 12:00 UTC, 14 published/run (~25-30/day)
+    # - Stage 1 (Bootstrap, total < 1000): all 4 slots, 8 published articles/run, max 24 candidates, 24-min budget
+    # - Stage 2 (Steady-State, total >= 1000): skips 06:00 & 18:00 UTC, runs 00:00 & 12:00 UTC, 14 published/run
     - cron: '0 0,6,12,18 * * *'
   workflow_dispatch:
     inputs:
@@ -16,6 +16,11 @@ on:
         type: string
       rebuild_queue:
         description: 'Force refresh Wikipedia candidate queue before publishing'
+        required: false
+        default: false
+        type: boolean
+      dry_run:
+        description: 'Validate candidates without calling Gemini or modifying repository files'
         required: false
         default: false
         type: boolean
@@ -52,6 +57,7 @@ jobs:
           fi
 
       - name: Top up Wikipedia candidate queue if low
+        if: ${{ github.event.inputs.dry_run != true }}
         env:
           FORCE_REBUILD: ${{ github.event.inputs.rebuild_queue || 'false' }}
         run: |
@@ -62,6 +68,8 @@ jobs:
           fi
 
       - name: Publish Wikipedia batch with Gemini Flash-Lite
+        id: publish
+        continue-on-error: true
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           GEMINI_API_KEY_2: ${{ secrets.GEMINI_API_KEY_2 }}
@@ -71,26 +79,115 @@ jobs:
           GITHUB_EVENT_NAME: ${{ github.event_name }}
           MAX_ARTICLES: ${{ github.event.inputs.max_articles || '' }}
           GEMINI_DELAY_MS: '8000'
+          MAX_RUNTIME_MS: '1440000'
+          DRY_RUN: ${{ github.event.inputs.dry_run || 'false' }}
         run: |
-          if [ -z "$GEMINI_API_KEY" ] && [ -z "$GEMINI_API_KEY_2" ] && [ -z "$GEMINI_API_KEY_3" ] && [ -z "$SAGA_IMAGE_TEST_API_KEY" ]; then
-            echo "ERROR: No Gemini API key secret is configured. Add GEMINI_API_KEY (and optional GEMINI_API_KEY_2 / GEMINI_API_KEY_3) in Settings -> Secrets and variables -> Actions."
+          if [ "$DRY_RUN" != "true" ] && [ -z "$GEMINI_API_KEY" ] && [ -z "$GEMINI_API_KEY_2" ] && [ -z "$GEMINI_API_KEY_3" ] && [ -z "$SAGA_IMAGE_TEST_API_KEY" ]; then
+            echo "ERROR: No Gemini API key secret is configured."
+            {
+              echo "published_count=0"
+              echo "stop_reason=infrastructure_failure"
+              echo "has_valid_changes=false"
+            } >> "$GITHUB_OUTPUT"
             exit 1
           fi
-          node scripts/publish_wiki_batch.mjs
+          if [ "$DRY_RUN" = "true" ]; then
+            node scripts/publish_wiki_batch.mjs --dry-run
+          else
+            node scripts/publish_wiki_batch.mjs
+          fi
 
-      - name: Verify Wiki catalog integrity
-        run: node scripts/build-reader-index.mjs
-
-      - name: Commit and push published articles
+      - name: Verify Wiki catalog and queue integrity
+        id: verify
+        if: ${{ !cancelled() }}
+        continue-on-error: true
+        env:
+          DRY_RUN: ${{ github.event.inputs.dry_run || 'false' }}
         run: |
+          set -euo pipefail
+          node scripts/build-reader-index.mjs
+          node -e "const q=JSON.parse(require('fs').readFileSync('data/wiki_queue.json','utf8')); if(!Array.isArray(q.items)||!q.counts) throw new Error('Invalid data/wiki_queue.json');"
+          CHANGES=$(git status --porcelain -- public/wiki-reader data/wiki_queue.json)
+          if [ -n "$CHANGES" ]; then
+            echo "has_git_changes=true" >> "$GITHUB_OUTPUT"
+            if [ "$DRY_RUN" = "true" ]; then
+              echo "ERROR: Dry-run modified tracked catalog or queue files."
+              exit 1
+            fi
+          else
+            echo "has_git_changes=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Commit and push verified Wiki catalog and queue updates
+        id: push
+        if: ${{ !cancelled() && github.event.inputs.dry_run != true && steps.verify.outcome == 'success' && steps.verify.outputs.has_git_changes == 'true' && steps.publish.outputs.has_valid_changes == 'true' }}
+        continue-on-error: true
+        env:
+          PUBLISHED_COUNT: ${{ steps.publish.outputs.published_count || '0' }}
+          STOP_REASON: ${{ steps.publish.outputs.stop_reason || 'unknown' }}
+        run: |
+          set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add public/wiki-reader data/wiki_queue.json
           if git diff --cached --quiet; then
-            echo "No new catalog or queue changes to commit."
+            echo "No staged catalog or queue changes to commit."
             exit 0
           fi
           TOTAL=$(node -e "const m=JSON.parse(require('fs').readFileSync('public/wiki-reader/manifest.json','utf8')); console.log(m.total)")
-          git commit -m "chore(wiki): auto-publish batch (${TOTAL} total articles)"
-          git pull --rebase origin main
+          if [ "$PUBLISHED_COUNT" -gt 0 ] 2>/dev/null; then
+            MSG="chore(wiki): auto-publish batch (${TOTAL} total articles, +${PUBLISHED_COUNT} new, ${STOP_REASON})"
+          else
+            MSG="chore(wiki): checkpoint queue progress (${TOTAL} total articles, ${STOP_REASON})"
+          fi
+          git commit -m "$MSG"
+          if ! git pull --rebase origin main; then
+            git rebase --abort || true
+            echo "ERROR: git pull --rebase failed."
+            exit 1
+          fi
           git push origin HEAD:main
+
+      - name: Final publishing status check
+        id: final_status
+        if: ${{ !cancelled() }}
+        env:
+          PUBLISH_OUTCOME: ${{ steps.publish.outcome }}
+          VERIFY_OUTCOME: ${{ steps.verify.outcome }}
+          PUSH_OUTCOME: ${{ steps.push.outcome }}
+          PUBLISHED_COUNT: ${{ steps.publish.outputs.published_count }}
+          STOP_REASON: ${{ steps.publish.outputs.stop_reason }}
+          HAS_VALID_CHANGES: ${{ steps.publish.outputs.has_valid_changes }}
+          HAS_GIT_CHANGES: ${{ steps.verify.outputs.has_git_changes }}
+          DRY_RUN: ${{ github.event.inputs.dry_run || 'false' }}
+        run: |
+          set -euo pipefail
+          echo "Workflow status: publish=${PUBLISH_OUTCOME}, verify=${VERIFY_OUTCOME}, push=${PUSH_OUTCOME}, published_count=${PUBLISHED_COUNT:-<missing>}, stop_reason=${STOP_REASON:-<missing>}, has_valid_changes=${HAS_VALID_CHANGES:-<missing>}, has_git_changes=${HAS_GIT_CHANGES:-<missing>}, dry_run=${DRY_RUN}"
+          if [ -n "${GITHUB_STEP_SUMMARY:-}" ]; then
+            {
+              echo ""
+              echo "**Workflow Gates:** publish=\`${PUBLISH_OUTCOME}\` · verify=\`${VERIFY_OUTCOME}\` · push=\`${PUSH_OUTCOME}\` · stop_reason=\`${STOP_REASON:-missing}\` · published=\`${PUBLISHED_COUNT:-missing}\`"
+            } >> "$GITHUB_STEP_SUMMARY"
+          fi
+          if [ -z "$PUBLISHED_COUNT" ] || [ -z "$STOP_REASON" ] || [ -z "$HAS_VALID_CHANGES" ]; then
+            echo "ERROR: Publish step failed to emit required outputs (published_count, stop_reason, has_valid_changes)."
+            exit 1
+          fi
+          if [ "$VERIFY_OUTCOME" != "success" ]; then
+            echo "ERROR: Catalog or queue verification failed."
+            exit 1
+          fi
+          if [ "$PUSH_OUTCOME" = "failure" ]; then
+            echo "ERROR: Pushing verified catalog/queue updates failed."
+            exit 1
+          fi
+          if [ "$DRY_RUN" != "true" ] && [ "$HAS_VALID_CHANGES" = "true" ] && [ "$HAS_GIT_CHANGES" = "true" ] && [ "$PUSH_OUTCOME" != "success" ]; then
+            echo "ERROR: Valid changes were detected but push step did not succeed (push=${PUSH_OUTCOME})."
+            exit 1
+          fi
+          if [ "$PUBLISH_OUTCOME" != "success" ] || [ "$STOP_REASON" = "infrastructure_failure" ]; then
+            echo "ERROR: Publishing failed due to infrastructure error (stop_reason=${STOP_REASON}, publish_outcome=${PUBLISH_OUTCOME}). Any verified checkpointed progress was preserved before failing."
+            exit 1
+          fi
+          echo "Auto Wiki Publish completed cleanly (stop_reason=${STOP_REASON}, published_count=${PUBLISHED_COUNT})."
+

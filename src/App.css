@@ -70,6 +70,9 @@
 .reading-mode .story-layer {position:absolute; inset:0; background:#f8f8f2; will-change:transform}
 .reading-mode .story-layer.outgoing {z-index:2; pointer-events:none}
 .reading-mode .story-layer:not(.outgoing) {z-index:1}
+.reading-mode .story-layer-adjacent {position:absolute; inset:0; background:#f8f8f2; pointer-events:none; z-index:0; will-change:transform; contain:layout style paint}
+.reading-mode .story-layer-adjacent.story-layer-prev {transform:translate3d(0, -100%, 0)}
+.reading-mode .story-layer-adjacent.story-layer-next {transform:translate3d(0, 100%, 0)}
 .reading-mode .reader-gesture {
   height:100%; min-height:0; display:flex; flex-direction:column; overflow:hidden;
   touch-action:none; -webkit-touch-callout:none;

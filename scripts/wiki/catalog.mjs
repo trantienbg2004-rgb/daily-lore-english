@@ -97,6 +97,17 @@ export async function readWikiCatalog(base){
  return {dir,manifest,entries:index.entries,stories}
 }
 
+async function writeFileAtomic(filePath,content){
+ const tmp=`${filePath}.tmp-${process.pid}-${Date.now()}-${Math.random().toString(16).slice(2,8)}`
+ try{
+  await fs.writeFile(tmp,content)
+  await fs.rename(tmp,filePath)
+ }catch(err){
+  await fs.unlink(tmp).catch(()=>{})
+  throw err
+ }
+}
+
 export async function appendWikiStories(base,newStories,{now=new Date()}={}){
  const before=await readWikiCatalog(base)
  const usedIds=new Set(before.stories.map(story=>story.sourcePageId))
@@ -114,12 +125,15 @@ export async function appendWikiStories(base,newStories,{now=new Date()}={}){
  }
  if(!accepted.length)return {added:0,total:before.stories.length,ready:before.manifest?.ready||false}
  await fs.mkdir(before.dir,{recursive:true})
- const numeric=await fs.readdir(before.dir).then(files=>files.filter(file=>/^\d{4}\.json$/.test(file)).map(file=>Number(file.slice(0,4))))
- let nextShard=Math.max(-1,...numeric)+1
+ const referencedNums=before.entries
+  .map(entry=>Number(entry.shard))
+  .filter(n=>Number.isSafeInteger(n)&&n>=0)
+ const priorChunks=Number.isSafeInteger(before.manifest?.chunks)?before.manifest.chunks:0
+ let nextShard=Math.max(-1,...referencedNums,priorChunks-1)+1
  const entries=[...before.entries]
  for(let i=0;i<accepted.length;i+=10){
   const shard=String(nextShard++).padStart(4,'0'),stories=accepted.slice(i,i+10)
-  await fs.writeFile(path.join(before.dir,shard+'.json'),JSON.stringify(stories)+'\n',{flag:'wx'})
+  await writeFileAtomic(path.join(before.dir,shard+'.json'),JSON.stringify(stories)+'\n')
   entries.push(...stories.map(story=>({id:story.sourceUrl,sourcePageId:story.sourcePageId,shard,
    category:story.category,publisher:story.publisher,publishedAt:story.publishedAt,contentType:'wiki',title:story.title})))
  }
@@ -131,15 +145,22 @@ export async function appendWikiStories(base,newStories,{now=new Date()}={}){
   story.pages.filter(page=>page.image).length,0)
  const contentHash=catalogHash(entries,[...before.stories,...accepted])
  const indexName=`catalog-index-${contentHash.slice(0,12)}.json`
- await fs.writeFile(path.join(before.dir,indexName),JSON.stringify({version:3,contentHash,total:entries.length,entries})+'\n',{flag:'wx'})
+ await writeFileAtomic(path.join(before.dir,indexName),JSON.stringify({version:3,contentHash,total:entries.length,entries})+'\n')
  const manifest={feedType:'wiki',editorialVersion:2,ready,targetStories:WIKI_TARGET_STORIES,
   targetPerTopic:WIKI_TARGET_PER_TOPIC,targetMet,total:entries.length,chunks:nextShard,
   withVerifiedPhoto:entries.length,verifiedImageCount,byTopic:counts,contentHash,catalogIndex:indexName,catalogIndexVersion:3,
   updatedAt:now.toISOString(),licenseNotice:'Wikipedia text adaptations: CC BY-SA 4.0; each embedded image has separate credit and rights.'}
- const stage=path.join(before.dir,'manifest.json.tmp-'+process.pid)
- await fs.writeFile(stage,JSON.stringify(manifest,null,2)+'\n')
- await fs.rename(stage,path.join(before.dir,'manifest.json'))
- return {added:accepted.length,total:entries.length,ready,byTopic:counts}
+ await writeFileAtomic(path.join(before.dir,'manifest.json'),JSON.stringify(manifest,null,2)+'\n')
+ // Best-effort cleanup strictly AFTER manifest switch: remove superseded indexes, temp files, and orphaned shards >= nextShard
+ const filesAfter=await fs.readdir(before.dir).catch(()=>[])
+ for(const file of filesAfter){
+  if((/^catalog-index-[0-9a-f]{12}\.json$/.test(file)&&file!==indexName)||/\.tmp-/.test(file)){
+   await fs.unlink(path.join(before.dir,file)).catch(()=>{})
+  }else if(/^\d{4}\.json$/.test(file)&&Number(file.slice(0,4))>=nextShard){
+   await fs.unlink(path.join(before.dir,file)).catch(()=>{})
+  }
+ }
+ return {added:accepted.length,total:entries.length,ready,byTopic:counts,catalogIndex:indexName,chunks:nextShard}
 }
 
 /** Restore a caption from its already recorded, source-embedded evidence.
