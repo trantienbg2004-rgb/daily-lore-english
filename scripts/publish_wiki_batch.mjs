@@ -293,7 +293,19 @@ const CEFR_REVIEW_LEVEL_SCHEMA={
   initialVerdict:{type:'string',enum:['pass','revise','uncertain']},
   finalBand:{type:'string',enum:['A1','A2','B1','B2','C1','C2','?']},
   finalVerdict:{type:'string',enum:['pass','revise','uncertain']},
-  dimensions:{
+  initialDimensions:{
+   type:'object',
+   properties:{
+    vocabulary:{type:'string',enum:['low','fit','high']},
+    syntax:{type:'string',enum:['low','fit','high']},
+    cohesion:{type:'string',enum:['low','fit','high']},
+    abstraction:{type:'string',enum:['low','fit','high']},
+    inference:{type:'string',enum:['low','fit','high']},
+    terms:{type:'string',enum:['low','fit','high']}
+   },
+   required:['vocabulary','syntax','cohesion','abstraction','inference','terms']
+  },
+  finalDimensions:{
    type:'object',
    properties:{
     vocabulary:{type:'string',enum:['low','fit','high']},
@@ -307,7 +319,7 @@ const CEFR_REVIEW_LEVEL_SCHEMA={
   },
   rationale:{type:'string',minLength:20}
  },
- required:['initialBand','initialVerdict','finalBand','finalVerdict','dimensions','rationale']
+ required:['initialBand','initialVerdict','initialDimensions','finalBand','finalVerdict','finalDimensions','rationale']
 }
 
 const CEFR_REVIEW_REPAIR_PAGE_SCHEMA={
@@ -1164,9 +1176,9 @@ export function buildCEFRReviewRepairPrompt(source,topic,evidence,previousDraft,
   '- Preserve every date, quantity, causal limit, source uncertainty and safety qualification that appears in the selected facts. Never invent information.',
   '',
   'REQUIRED TWO-PASS REVIEW',
-  'A. For each level, record initialBand and initialVerdict inside assessment. The initial band must be A1/A2 for A1-A2, B1/B2 for B1-B2, and C1/C2 for C1-C2. Use verdict pass, revise or uncertain. Assess vocabulary, syntax, cohesion, abstraction, inference and specialist-term load. If ANY dimension is low or high, initialVerdict must be revise and the level must be repaired.',
+  'A. For each level, record initialBand, initialVerdict and initialDimensions inside assessment. The initial band must be A1/A2 for A1-A2, B1/B2 for B1-B2, and C1/C2 for C1-C2. Use verdict pass, revise or uncertain. Assess vocabulary, syntax, cohesion, abstraction, inference and specialist-term load. If ANY initial dimension is low or high, initialVerdict must be revise and the level must be repaired.',
   'B. Repair every level that is outside its target band, has a supplied blocking deterministic error, or has a material factual/editorial defect. Return every page that actually needs changing, with its original pageIndex exactly once; omit untouched pages because the program preserves them. Do not change page order, add/remove pages or images, and keep evidenceIds tied to the source. Do not rewrite a passing level unless required by a blocking cross-level issue.',
-  'C. Reread the final versions AFTER all repairs. Record finalBand, finalVerdict and the six dimension values in assessment. A level passes only if finalVerdict=pass, finalBand is inside its assigned pair, and every dimension is fit. Use low for below the target band and high for above it. If uncertain, do not guess: use uncertain.',
+  'C. Reread the complete final versions AFTER applying the page patches. Record finalBand, finalVerdict and finalDimensions inside assessment. A level passes only if finalVerdict=pass, finalBand is inside its assigned pair, and every final dimension is fit. Use low for below the target band and high for above it. If uncertain, do not guess: use uncertain.',
   'D. If initialVerdict is not pass, initialBand is outside the assigned pair, or any dimension is low/high, the repairs array must contain that level and at least one changed page. If no repair is needed, omit that level from repairs. Give a concrete rationale for each final assessment, naming actual vocabulary, syntax or discourse features. The program will attach a verbatim sentence from the final article for audit; do not invent quotations.',
   '',
   'BLOCKING DETERMINISTIC ISSUES TO ADDRESS',
@@ -1223,7 +1235,7 @@ export function applyCEFRReviewRepairs(previousDraft,reviewPayload,{requiredRepa
  for(const level of LEVELS){
   const a=assessment[level]
   if(!a){errors.push(level+': missing descriptor assessment');continue}
-  const initialPass=a.initialVerdict==='pass'&&allowedBands[level].has(String(a.initialBand||''))&&dimensionsFit(a)
+  const initialPass=a.initialVerdict==='pass'&&allowedBands[level].has(String(a.initialBand||''))&&dimensionsFit(a.initialDimensions)
   const needsRepair=required.has(level)||!initialPass
   const patch=repairByLevel.get(level)
   if(needsRepair){
