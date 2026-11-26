@@ -1,0 +1,82 @@
+name: SAGA - Prepare reviewed legacy CEFR content PR
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'scripts/merge_legacy_cefr_pilot_artifact.mjs'
+      - '.github/workflows/merge-legacy-cefr-repair-pilot.yml'
+
+permissions:
+  actions: read
+  contents: write
+
+concurrency:
+  group: saga-legacy-cefr-content-pr
+  cancel-in-progress: false
+
+jobs:
+  prepare-content-pr:
+    if: github.event.action == 'opened' && github.event.pull_request.head.ref == 'content/saga-legacy-cefr-repair-20261127'
+    name: Apply five reviewed replacements to this PR branch
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout PR branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          persist-credentials: true
+
+      - name: Setup Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci --no-audit --no-fund
+
+      - name: Download isolated replacement artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: saga-legacy-cefr-replacement-pilot
+          run-id: 45889273583
+          github-token: ${{ github.token }}
+          path: /tmp/saga-legacy-cefr-repair-pilot/public/wiki-reader
+
+      - name: Merge and validate the five replacements in the PR working tree
+        env:
+          PILOT_ARTIFACT_ROOT: /tmp/saga-legacy-cefr-repair-pilot
+        run: node scripts/merge_legacy_cefr_pilot_artifact.mjs
+
+      - name: Run project tests
+        run: npm test
+
+      - name: Run lint
+        run: npm run lint
+
+      - name: Build production bundle
+        run: npm run build
+
+      - name: Commit only the reviewed catalog replacements to this PR branch
+        env:
+          GITHUB_HEAD_REF: ${{ github.event.pull_request.head.ref }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/wiki-reader
+          git rm scripts/merge_legacy_cefr_pilot_artifact.mjs .github/workflows/merge-legacy-cefr-repair-pilot.yml
+          if git diff --cached --quiet; then
+            echo "No catalog changes were produced."
+            exit 1
+          fi
+          git commit -m "content(saga): repair five legacy A1-A2 variants"
+          git push origin "HEAD:${GITHUB_HEAD_REF}"
+          {
+            echo "## SAGA legacy CEFR content PR"
+            echo "- Replaced only the five independently reviewed articles."
+            echo "- Preserved the other 31 catalog stories and the 36-story total."
+            echo "- Updated versioned shards, catalog index, and manifest."
+            echo "- No production catalog, queue, or deployment was changed by this workflow."
+          } >> "$GITHUB_STEP_SUMMARY"
