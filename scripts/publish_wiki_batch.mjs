@@ -1242,8 +1242,8 @@ export function applyCEFRReviewRepairs(previousDraft,reviewPayload,{requiredRepa
   if(!finalPass(a))errors.push(level+': final descriptor assessment is not a confident pass across all six dimensions')
   const finalText=(merged.variants?.[level]?.pages||[]).map(p=>String(p.text||'').replace(/\s+/g,' ').trim()).join(' ').toLowerCase()
   const quotes=Array.isArray(a.evidence)?a.evidence:[]
-  if(!quotes.length||!quotes.some(q=>cleanQuote(q).length>=8&&finalText.includes(cleanQuote(q)))){
-   errors.push(level+': final assessment lacks an exact, verifiable text excerpt')
+  if(quotes.length!==1||cleanQuote(quotes[0]).length<8||!finalText.includes(cleanQuote(quotes[0]))){
+   errors.push(level+': final assessment must provide exactly one verbatim sentence from the final article')
   }
  }
  return {ok:errors.length===0,draft:merged,errors,finalAssessment:assessment}
