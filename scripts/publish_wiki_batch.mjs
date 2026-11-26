@@ -1194,7 +1194,7 @@ export function buildCEFRReviewRepairPrompt(source,topic,evidence,previousDraft,
  ].join('\n\n')
 }
 
-export function applyCEFRReviewRepairs(previousDraft,reviewPayload,{requiredRepairLevels=[]}={}){
+export function applyCEFRReviewRepairs(previousDraft,reviewPayload,{requiredRepairLevels=[],validEvidenceIds=null}={}){
  const errors=[]
  if(!reviewPayload||typeof reviewPayload!=='object')return {ok:false,draft:previousDraft,errors:['Missing CEFR review payload']}
  const initial=reviewPayload.initialAssessment
@@ -1236,6 +1236,9 @@ export function applyCEFRReviewRepairs(previousDraft,reviewPayload,{requiredRepa
      if(typeof patch.headline==='string'&&patch.headline.trim())merged.variants[level].headline=patch.headline.trim()
      merged.variants[level].pages=oldPages.map((oldPage,idx)=>{
       const next=byIndex.get(idx)
+      if(validEvidenceIds&&(!Array.isArray(next.evidenceIds)||!next.evidenceIds.length||next.evidenceIds.some(id=>!validEvidenceIds.has(id)))){
+       errors.push(level+' repair page '+(idx+1)+': evidenceIds must reference supplied source passages')
+      }
       return {
        ...oldPage,
        text:normalizeParagraphText(next.text,next.paragraphs,{ensureTerminalPunctuation:true}),
@@ -2113,7 +2116,7 @@ export function normalizeDraftForCatalog(rawDraft,{source,evidence,verifiedPhoto
      pageIndex:Number.isInteger(page?.pageIndex)?page.pageIndex:idx,
      focus,
      factIds:Array.isArray(page?.factIds)?page.factIds.map(v=>String(v||'').trim()).filter(Boolean):[],
-     evidenceIds:ids.length?ids:bestEvidenceFor(focus)
+     evidenceIds:ids
     }
    })
    return [level,{
@@ -2725,7 +2728,7 @@ export async function runPublishWikiBatch({
      const reviewPrompt=buildCEFRReviewRepairPrompt(source,item.topic,trimmed.evidence,normalizedDraft,quality)
      const reviewRes=await invokeGeminiWithDelay(reviewPrompt,{reserveMs:minRetryBudgetMs,schema:CEFR_REVIEW_REPAIR_SCHEMA})
      consecutiveInfraFailures=0
-     const reviewOutcome=applyCEFRReviewRepairs(normalizedDraft,reviewRes.draft,{requiredRepairLevels:[...requiredRepairLevels]})
+     const reviewOutcome=applyCEFRReviewRepairs(normalizedDraft,reviewRes.draft,{requiredRepairLevels:[...requiredRepairLevels],validEvidenceIds:new Set(trimmed.evidence.map(e=>e.id))})
      normalizedDraft=normalizeDraftForCatalog(reviewOutcome.draft,{source,evidence:trimmed.evidence,verifiedPhotos})
      quality=validateArticleQuality(normalizedDraft,source.sourceTitle,{source,evidence:trimmed.evidence,requireLevelPlans:true})
      quality.cefrReview=reviewOutcome.finalAssessment||null
