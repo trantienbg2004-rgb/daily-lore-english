@@ -1228,9 +1228,9 @@ export function applyCEFRReviewRepairs(previousDraft,reviewPayload,{requiredRepa
  }
  const merged=structuredClone(previousDraft)
  const finalAssessment=structuredClone(assessment)
- const dimensionsFit=a=>a?.dimensions&&Object.values(a.dimensions).length===6&&Object.values(a.dimensions).every(v=>v==='fit')
+ const dimensionsFit=dimensions=>dimensions&&Object.values(dimensions).length===6&&Object.values(dimensions).every(v=>v==='fit')
  const allowedBandsForAssessment=a=>['A1','A2','B1','B2','C1','C2'].includes(String(a?.finalBand||''))
- const finalPass=a=>a?.finalVerdict==='pass'&&allowedBandsForAssessment(a)&&dimensionsFit(a)
+ const finalPass=a=>a?.finalVerdict==='pass'&&allowedBandsForAssessment(a)&&dimensionsFit(a.finalDimensions)
 
  for(const level of LEVELS){
   const a=assessment[level]
