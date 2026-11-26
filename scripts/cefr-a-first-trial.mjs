@@ -4,7 +4,7 @@ import fs from 'node:fs/promises'
 import path from 'node:path'
 import assert from 'node:assert/strict'
 import {createHash} from 'node:crypto'
-import {buildBatchPrompt,BATCH_STORY_SCHEMA,callGeminiFlashLite,normalizeDraftForCatalog,validateArticleQuality} from './publish_wiki_batch.mjs'
+import {buildBatchPrompt,buildGeminiGenerationConfig,callGeminiFlashLite,normalizeDraftForCatalog,validateArticleQuality} from './publish_wiki_batch.mjs'
 import {profileTextCEFR} from './wiki/cefrProfiler.mjs'
 
 const levels=['A1-A2','B1-B2','C1-C2']
@@ -19,7 +19,8 @@ const sleep=ms=>new Promise(r=>setTimeout(r,ms))
 const safe=e=>({name:e.name,status:e.status??null,message:String(e.message||e).replace(/AIza[A-Za-z0-9_-]+/g,'[REDACTED]').slice(0,500)})
 
 function schemaFor(requested){
- const all=BATCH_STORY_SCHEMA.properties.variants.properties
+ const all=buildGeminiGenerationConfig(model).responseJsonSchema.properties.variants.properties
+ assert(requested.every(l=>all[l]),'Missing level schema')
  return {type:'object',properties:{variants:{type:'object',properties:Object.fromEntries(requested.map(l=>[l,all[l]])),required:requested}},required:['variants']}
 }
 const guidance={
@@ -123,6 +124,18 @@ async function main(){
   const {factSheet,outline}=old.initialDraft
   const plan={factSheet,outline}
   checkPlan(f,plan)
+  // Exercise the full trial path with an archived response, without API access.
+  for(const arm of ['joint','a-first']){
+   let calls=0
+   const mock=await runArm(f,plan,arm,async(_prompt,schema)=>{
+    calls++
+    const requested=schema.properties.variants.required
+    return {draft:{variants:Object.fromEntries(requested.map(l=>[l,old.initialDraft.variants[l]]))},usage:null}
+   },async()=>{})
+   assert(!mock.error,JSON.stringify(mock.error))
+   assert(mock.assessment?.quality&&mock.assessment?.draft,'Missing mock assessment')
+   assert.equal(calls,arm==='joint'?1:3)
+  }
   fixtures.push({f,plan})
  }
  console.log('Frozen fixtures and inherited plans verified structurally; facts still require source review.')
