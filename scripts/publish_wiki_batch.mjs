@@ -2738,7 +2738,7 @@ export async function runPublishWikiBatch({
       for(const level of LEVELS)requiredRepairLevels.add(level)
      }
      const reviewPrompt=buildCEFRReviewRepairPrompt(source,item.topic,trimmed.evidence,normalizedDraft,quality)
-     const reviewRes=await invokeGeminiWithDelay(reviewPrompt,{reserveMs:minRetryBudgetMs,schema:CEFR_REVIEW_REPAIR_SCHEMA})
+     const reviewRes=await invokeGeminiWithDelay(reviewPrompt,{reserveMs:minRetryBudgetMs,schema:buildCEFRReviewRepairSchema(normalizedDraft)})
      consecutiveInfraFailures=0
      const reviewOutcome=applyCEFRReviewRepairs(normalizedDraft,reviewRes.draft,{requiredRepairLevels:[...requiredRepairLevels],validEvidenceIds:new Set(trimmed.evidence.map(e=>e.id))})
      normalizedDraft=normalizeDraftForCatalog(reviewOutcome.draft,{source,evidence:trimmed.evidence,verifiedPhotos})
