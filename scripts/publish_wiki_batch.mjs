@@ -1123,6 +1123,145 @@ export function buildBatchPrompt(source,topic,evidence,verifiedPhotos=[]){
   passages
  ].join('\n')
 }
+
+export function buildCEFRReviewRepairPrompt(source,topic,evidence,previousDraft,qualityResult){
+ const passages=evidence.map(row=>row.id+' [Section '+(row.sectionIndex??0)+': '+row.heading+'] '+row.text).join('\n\n')
+ const deterministicIssues=Array.isArray(qualityResult?.errors)&&qualityResult.errors.length
+  ?qualityResult.errors.map((e,i)=>(i+1)+'. '+e).join('\n')
+  :'No blocking deterministic editorial or source-grounding errors.'
+ const heuristicWarnings=Array.isArray(qualityResult?.metrics?.cefrHeuristicWarnings)
+  ?qualityResult.metrics.cefrHeuristicWarnings
+  :Array.isArray(qualityResult?.cefr?.errors)?qualityResult.cefr.errors:[]
+ const diagnosticSummary=qualityResult?.metrics
+  ?Object.fromEntries(LEVELS.map(level=>[level,{
+   fkgl:qualityResult.metrics[level]?.fkgl??null,
+   averageSentenceWords:qualityResult.metrics[level]?.avgSentenceWords??null,
+   lexicalProfile:qualityResult.metrics[level]?.lexicalProfile??null,
+   overLevelWords:qualityResult.metrics[level]?.overLevelWords??[],
+   b2Words:qualityResult.metrics[level]?.b2Words??[]
+  }]))
+  :{}
+ return [
+  'You are an INDEPENDENT CEFR READING-LEVEL EXAMINER and repair editor. You did not write the supplied article. Your task is to prevent a reader from receiving a text that is materially easier or harder than its assigned band.',
+  'Use the Council of Europe CEFR Companion Volume (2020) reading-comprehension descriptors as the primary standard. Assess the article text for a target reader, not the author. CEFR reading fit depends on the text, reader, context, purpose and task; it is NOT a direct conversion from FKGL, sentence length, syllable count or a single vocabulary list.',
+  '',
+  'TARGET BANDS AND READER EXPECTATIONS',
+  'A1-A2: The text must sit within A1 or A2. A1 readers handle very short, simple text, familiar names, basic words and phrases, often rereading. A2 readers handle short, simple texts about familiar concrete matters using high-frequency everyday or job-related language. Use explicit relations, simple clause patterns and concrete explanations. Do not leave abstract specialist concepts unexplained.',
+  'B1-B2: The text must sit within B1 or B2. B1 readers understand straightforward factual texts and main points on familiar or interest-related topics. B2 readers read independently across a wider range of texts and purposes, with a broad active vocabulary, and can follow viewpoints and more developed explanations. Use natural topic vocabulary, connected explanations, cause/effect and some complex structures without needless academic wording.',
+  'C1-C2: The text must sit within C1 or C2. C1 readers can understand lengthy, complex factual texts, including specialised articles, with opportunities to reread difficult sections. C2 readers can understand abstract and structurally complex texts and appreciate subtle stylistic distinctions and implicit as well as explicit meaning. Use real conceptual depth, precision, nuance, complex relationships and natural syntactic variety.',
+  '',
+  'ASSESS ALL SIX DIMENSIONS',
+  '1. Vocabulary range and contextual meaning (not just rare-word count).',
+  '2. Grammar and syntax: clause structure, subordination, flexibility and density.',
+  '3. Cohesion and discourse: how ideas connect across sentences and sections.',
+  '4. Abstraction and conceptual load.',
+  '5. Inferential effort: explicit facts versus implied relationships and assumptions.',
+  '6. Specialist-term density and whether essential terms are explained in context.',
+  '',
+  'IMPORTANT CALIBRATION RULES',
+  '- Do not award a higher level merely for longer sentences, long words, rare synonyms or academic-sounding phrases. C1/C2 must be precise and nuanced, not thesaurus-stuffed.',
+  '- Do not lower a text merely because it contains a necessary proper noun, date, acronym or one essential technical term that is clearly explained.',
+  '- The internal CEFR-J/Octanove wordlist and FKGL are imperfect screening signals. Word-level CEFR assignment is sense- and corpus-dependent; an unlisted word is NOT automatically C1/C2. Use the exact examples and the whole reading experience.',
+  '- Assess the article body, not the glossary. A glossary can support learning but cannot make an otherwise inaccessible article A1/A2.',
+  '- Do not make A1/A2 childish or factually incomplete. Select fewer, more essential facts and explain them simply. B1/B2 should develop the main points. C1/C2 should deepen interpretation and precision.',
+  '- Use the supplied levelPlans: each level is allowed to select different facts and depth. Do not force identical page focus or identical facts at each page index. Keep at least two shared core facts and preserve the common imageId/page order.',
+  '- Preserve every date, quantity, causal limit, source uncertainty and safety qualification that appears in the selected facts. Never invent information.',
+  '',
+  'REQUIRED TWO-PASS REVIEW',
+  'A. Fill initialAssessment for all three original versions. estimatedBand must be one of A1/A2 for A1-A2, B1/B2 for B1-B2, and C1/C2 for C1-C2. Use verdict pass, too_easy, too_hard or uncertain. Mark each dimension below/within/above relative to the assigned band. Give 1–4 short exact evidence excerpts from the article and a concrete rationale.',
+  'B. Repair every level that is outside its target band, has a supplied blocking deterministic error, or has a material factual/editorial defect. Rewrite the COMPLETE set of pages for that level, not merely a few isolated words. Return all pageIndex values in order, preserve the existing page count and the image binding (the program preserves imageIds), and keep evidenceIds tied to the source. Do not rewrite a passing level unless required by a blocking cross-level issue.',
+  'C. Reread the final versions AFTER all repairs. Fill finalAssessment based on the final text, not on your intention. A level passes only if verdict=pass, estimatedBand is inside its assigned pair, and every dimension is within. If uncertain, do not guess: verdict=uncertain.',
+  'D. If a level fails initialAssessment, its full repair must be present. If no repair is needed, return an empty repairs object. Exact evidence excerpts in finalAssessment must appear verbatim in the final article; the program checks this.',
+  '',
+  'BLOCKING DETERMINISTIC ISSUES TO ADDRESS',
+  deterministicIssues,
+  '',
+  'ADVISORY PROFILER DIAGNOSTICS (NOT CEFR DEFINITIONS)',
+  JSON.stringify({heuristicWarnings,diagnostics:diagnosticSummary}),
+  '',
+  'SOURCE FACT SHEET, VISUAL MAP, LEVEL PLANS AND CURRENT DRAFT',
+  JSON.stringify({
+   factSheet:previousDraft.factSheet||null,
+   outline:previousDraft.outline||[],
+   levelPlans:previousDraft.levelPlans||null,
+   variants:previousDraft.variants
+  }),
+  '',
+  'VERIFIED SOURCE PASSAGES',
+  passages,
+  '',
+  'Return JSON only with initialAssessment, finalAssessment and repairs. Do not include commentary outside the JSON.'
+ ].join('\n\n')
+}
+
+export function applyCEFRReviewRepairs(previousDraft,reviewPayload,{requiredRepairLevels=[]}={}){
+ const errors=[]
+ if(!reviewPayload||typeof reviewPayload!=='object')return {ok:false,draft:previousDraft,errors:['Missing CEFR review payload']}
+ const initial=reviewPayload.initialAssessment
+ const final=reviewPayload.finalAssessment
+ const repairs=reviewPayload.repairs&&typeof reviewPayload.repairs==='object'?reviewPayload.repairs:{}
+ if(!initial||!final)return {ok:false,draft:previousDraft,errors:['CEFR review must include initialAssessment and finalAssessment']}
+ const allowedBands={
+  'A1-A2':new Set(['A1','A2']),
+  'B1-B2':new Set(['B1','B2']),
+  'C1-C2':new Set(['C1','C2'])
+ }
+ const required=new Set(requiredRepairLevels)
+ const merged=structuredClone(previousDraft)
+ const cleanQuote=value=>String(value||'').replace(/\s+/g,' ').trim().toLowerCase()
+ const isInBand=(level,assessment)=>allowedBands[level].has(String(assessment?.estimatedBand||''))
+ const isPass=assessment=>assessment?.verdict==='pass'&&assessment?.dimensions&&Object.values(assessment.dimensions).length===6&&Object.values(assessment.dimensions).every(v=>v==='within')
+ const assessmentNeedsRepair=(level,a)=>!isPass(a)||!isInBand(level,a)
+
+ for(const level of LEVELS){
+  const before=initial[level]
+  const after=final[level]
+  if(!before||!after){
+   errors.push(level+': missing initial or final CEFR assessment')
+   continue
+  }
+  const needsRepair=required.has(level)||assessmentNeedsRepair(level,before)
+  if(needsRepair){
+   const patch=repairs[level]
+   const oldPages=merged.variants?.[level]?.pages||[]
+   if(!patch||!Array.isArray(patch.pages)){
+    errors.push(level+': review identified a mismatch but did not return a complete level repair')
+   }else if(patch.pages.length!==oldPages.length){
+    errors.push(level+': repair page count does not match the existing article')
+   }else{
+    const byIndex=new Map(patch.pages.map(p=>[p.pageIndex,p]))
+    if(oldPages.some((_,idx)=>!byIndex.has(idx))||byIndex.size!==oldPages.length){
+     errors.push(level+': repair must include every pageIndex exactly once')
+    }else{
+     if(typeof patch.headline==='string'&&patch.headline.trim())merged.variants[level].headline=patch.headline.trim()
+     merged.variants[level].pages=oldPages.map((oldPage,idx)=>{
+      const next=byIndex.get(idx)
+      return {
+       ...oldPage,
+       text:normalizeParagraphText(next.text,next.paragraphs,{ensureTerminalPunctuation:true}),
+       ...(typeof next.caption==='string'?{caption:next.caption.trim()}:{}),
+       ...(Array.isArray(next.evidenceIds)&&next.evidenceIds.length?{evidenceIds:next.evidenceIds}:{})
+      }
+     })
+    }
+   }
+  }else if(repairs[level]){
+   // Do not silently apply unsolicited rewrites to a version the examiner marked as passing.
+   errors.push(level+': unexpected repair supplied for a level that passed initial assessment')
+  }
+
+  if(!isInBand(level,after))errors.push(level+': final estimated band '+String(after.estimatedBand||'missing')+' is outside its assigned CEFR group')
+  if(!isPass(after))errors.push(level+': final descriptor assessment is not a confident pass across all six dimensions')
+
+  const finalText=(merged.variants?.[level]?.pages||[]).map(p=>String(p.text||'').replace(/\s+/g,' ').trim()).join(' ').toLowerCase()
+  const quotes=Array.isArray(after.evidence)?after.evidence:[]
+  if(!quotes.length||!quotes.some(q=>cleanQuote(q).length>=8&&finalText.includes(cleanQuote(q)))){
+   errors.push(level+': final assessment lacks an exact, verifiable text excerpt')
+  }
+ }
+ return {ok:errors.length===0,draft:merged,errors,finalAssessment:final}
+}
+
 function formatCEFRRetryBlock(qualityResult){
  const cefr=qualityResult?.cefr||qualityResult
  const profiles=cefr?.profiles
