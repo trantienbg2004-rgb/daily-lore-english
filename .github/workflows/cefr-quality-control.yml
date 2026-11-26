@@ -8,7 +8,9 @@ on:
       - 'scripts/wiki/cefrProfiler.mjs'
       - 'scripts/test/cefr-profiler.test.mjs'
       - 'scripts/test/wiki-content-engine.test.mjs'
+      - 'scripts/cefr-level-control-pilot.mjs'
       - 'docs/CEFR-QUALITY-CONTROL.md'
+      - '.github/workflows/cefr-level-control-pilot.yml'
       - '.github/workflows/cefr-quality-control.yml'
   push:
     branches: [fix/saga-cefr-level-control]
@@ -46,6 +48,7 @@ jobs:
           node --check scripts/wiki/cefrProfiler.mjs
           node --check scripts/test/cefr-profiler.test.mjs
           node --check scripts/test/wiki-content-engine.test.mjs
+          node --check scripts/cefr-level-control-pilot.mjs
       - name: Run complete unit suite
         run: npm test
       - name: Lint
