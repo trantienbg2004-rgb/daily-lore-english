@@ -1,6 +1,12 @@
 name: Validate Gemini Resilience Patch
 
 on:
+  push:
+    branches: [fix/saga-gemini-resilience-20261126]
+    paths:
+      - 'scripts/publish_wiki_batch.mjs'
+      - 'scripts/test/wiki-publish-reliability.test.mjs'
+      - '.github/workflows/validate-gemini-resilience.yml'
   pull_request:
     branches: [main]
     paths:
