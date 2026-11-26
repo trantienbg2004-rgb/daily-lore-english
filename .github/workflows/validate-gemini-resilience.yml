@@ -1,0 +1,40 @@
+name: Validate Gemini Resilience Patch
+
+on:
+  push:
+    branches: [fix/saga-gemini-resilience-20261126]
+    paths:
+      - 'scripts/publish_wiki_batch.mjs'
+      - 'scripts/test/wiki-publish-reliability.test.mjs'
+      - '.github/workflows/validate-gemini-resilience.yml'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'scripts/publish_wiki_batch.mjs'
+      - 'scripts/test/wiki-publish-reliability.test.mjs'
+      - '.github/workflows/validate-gemini-resilience.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Install dependencies
+        run: npm ci
+      - name: Check syntax
+        run: |
+          node --check scripts/publish_wiki_batch.mjs
+          node --check scripts/test/wiki-publish-reliability.test.mjs
+      - name: Run publishing reliability tests
+        run: node --test scripts/test/wiki-publish-reliability.test.mjs
