@@ -76,9 +76,9 @@ async function main(){
  const catalog=await readWikiCatalog(ROOT)
  const stories=Array.isArray(catalog.stories)?catalog.stories:[]
  const heuristic=auditStoriesCEFR(stories,{minKeep:20})
- const candidates=heuristic.results
-  .filter(row=>!row.passed)
-  .sort((a,b)=>b.penalty-a.penalty||String(a.sourceTitle).localeCompare(String(b.sourceTitle)))
+ const candidates=[...heuristic.results]
+  .sort((a,b)=>(Number(a.passed)-Number(b.passed))||
+   (b.penalty-a.penalty)||String(a.sourceTitle).localeCompare(String(b.sourceTitle)))
  const keys=resolveGeminiApiKeys()
  if(!keys.length)throw Error('No Gemini API key configured for independent legacy CEFR review')
  const primary=String(process.env.CEFR_REVIEW_MODEL||'gemini-3.6-flash').trim()
@@ -109,6 +109,7 @@ async function main(){
     sourcePageId:story.sourcePageId,
     sourceTitle:story.sourceTitle,
     title:story.title,
+    heuristicPassed:row.passed,
     heuristicPenalty:row.penalty,
     heuristicErrors:row.errors,
     reviewerModel:response.model,
@@ -129,6 +130,7 @@ async function main(){
     sourcePageId:story.sourcePageId,
     sourceTitle:story.sourceTitle,
     title:story.title,
+    heuristicPassed:row.passed,
     heuristicPenalty:row.penalty,
     heuristicErrors:row.errors,
     error:String(error?.message||error)
