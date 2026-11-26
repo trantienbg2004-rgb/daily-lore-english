@@ -11,6 +11,7 @@ import {
 } from '../wiki/cefrProfiler.mjs'
 import {
  buildQualityRetryPrompt,
+ buildBatchPrompt,
  buildRoundRobinOrder,
  validateArticleQuality
 } from '../publish_wiki_batch.mjs'
@@ -215,4 +216,30 @@ test('applyCEFRRequeue enforces safety floor, prepends removed stories to FRONT 
  assert.equal(schedule[2].title,'Existing Queue Item')
 
  await fs.rm(tmpDir,{recursive:true,force:true})
+})
+
+test('natural pilot preserves A/B limits, does not reward unknown C words, and reports legacy C complexity as warnings',()=>{
+ const variants=Object.fromEntries(['A1-A2','B1-B2','C1-C2'].map(level=>[level,{pages:[{text:'People read books. They like stories. They go home.'}]}]))
+ variants['C1-C2'].pages[0].text='People read books. They like zzzunknownword. They go home.'
+ const old=evaluateArticleCEFR(variants,{naturalPilot:false})
+ const pilot=evaluateArticleCEFR(variants,{naturalPilot:true})
+ assert.deepEqual(pilot.errors.filter(e=>/^(A1-A2|B1-B2|CEFR FKGL separation failed: fkgl\(B1-B2)/.test(e)),
+ old.errors.filter(e=>/^(A1-A2|B1-B2|CEFR FKGL separation failed: fkgl\(B1-B2)/.test(e)))
+ assert.ok(pilot.errors.some(e=>e.includes('known B2-C2 vocabulary share')))
+ assert.ok(pilot.warnings.some(e=>e.includes('legacy minimum')))
+ assert.ok(pilot.warnings.some(e=>e.includes('unlisted vocabulary')))
+ assert.ok(!pilot.errors.some(e=>e.includes('C1-C2 CEFR gate failed: FKGL')))
+ assert.ok(old.errors.some(e=>e.includes('C1-C2 CEFR gate failed: FKGL')))
+})
+test('natural pilot prompt removes C complexity quotas while retaining A and B upper limits',()=>{
+ const source={sourceTitle:'Public Health',pageId:1,sourceRevisionId:2}
+ const evidence=[{id:'P1',sectionIndex:0,heading:'Lead',text:'People need clean water.'}]
+ const legacy=buildBatchPrompt(source,'Health',evidence,[],{naturalPilot:false})
+ const pilot=buildBatchPrompt(source,'Health',evidence,[],{naturalPilot:true})
+ assert.match(legacy,/C1-C2:.*FKGL >= 10.5/)
+ assert.match(pilot,/C1-C2:.*no minimum sentence length or FKGL target/)
+ assert.doesNotMatch(pilot,/C1-C2:.*FKGL >=/)
+ assert.match(pilot,/FKGL <= 6.8/)
+ assert.match(pilot,/FKGL 6.8-10.8/)
+ assert.match(pilot,/Never manufacture complexity/)
 })
