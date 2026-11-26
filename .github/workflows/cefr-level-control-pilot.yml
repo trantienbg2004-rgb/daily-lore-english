@@ -25,7 +25,7 @@ concurrency:
 
 jobs:
   live-pilot:
-    if: github.event_name == 'workflow_dispatch' || github.ref == 'refs/heads/fix/saga-cefr-level-control' || (github.event_name == 'pull_request' && github.event.pull_request.head.ref == 'fix/saga-cefr-level-control')
+    if: github.event_name == 'workflow_dispatch' || github.ref == 'refs/heads/fix/saga-cefr-level-control' || (github.event_name == 'pull_request' && (github.event.pull_request.head.ref == 'fix/saga-cefr-level-control' || github.event.pull_request.head.ref == 'fix/saga-independent-cefr-reviewer-20261127'))
     runs-on: ubuntu-latest
     # Allow bounded model failover plus generation, review, targeted repair, and final re-review for three frozen topics.
     timeout-minutes: 60
@@ -57,7 +57,7 @@ jobs:
           CEFR_PILOT_OUTPUT: /tmp/saga-cefr-level-control-pilot
           CEFR_PILOT_MODEL: gemini-3.5-flash-lite
           CEFR_REVIEW_MODEL: gemini-3.6-flash
-          CEFR_REVIEW_FALLBACK_MODELS: gemini-3.8-flash,gemini-3.1-flash-lite
+          CEFR_REVIEW_FALLBACK_MODELS: gemini-3.8-flash,gemini-3.1-flash-lite,gemini-4-hydrogen
         run: node scripts/cefr-level-control-pilot.mjs
       - uses: actions/upload-artifact@v4
         if: always()

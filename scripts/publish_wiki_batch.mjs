@@ -487,8 +487,10 @@ export function buildGeminiGenerationConfig(model=DEFAULT_GEMINI_MODEL,{schema=B
   responseJsonSchema:schema,
   maxOutputTokens:9500
  }
- // Gemini 4 models restrict deprecated sampling parameters like temperature
- if(!/^gemini-4(?:\b|-)/.test(name)){
+ // Gemini 4 defaults to deep reasoning; LOW preserves token budget for structured reviewer output.
+ if(/^gemini-4(?:\b|-)/.test(name)){
+  config.thinkingConfig={thinkingLevel:'LOW'}
+ }else{
   config.temperature=0.35
  }
  return config
@@ -522,6 +524,25 @@ export function resolveGeminiModelChain({
   if(name&&!chain.includes(name))chain.push(name)
  }
  return chain
+}
+
+/**
+ * Build an independent reviewer chain for one generated article.
+ * The exact model used for generation is never allowed to review that same article.
+ */
+export function buildIndependentCEFRReviewerChain(modelChain,generationModels){
+ const normalize=model=>String(model||'').trim().replace(/^models\//i,'').toLowerCase()
+ const generated=new Set((Array.isArray(generationModels)?generationModels:[generationModels]).map(normalize).filter(Boolean))
+ const seen=new Set()
+ return (Array.isArray(modelChain)?modelChain:[])
+  .map(model=>String(model||'').trim())
+  .filter(Boolean)
+  .filter(model=>{
+   const key=normalize(model)
+   if(!key||generated.has(key)||seen.has(key))return false
+   seen.add(key)
+   return true
+  })
 }
 
 /**
@@ -1309,7 +1330,7 @@ export function applyCEFRReviewRepairs(previousDraft,reviewPayload,{requiredRepa
     }
    }
   }else if(patch){
-   errors.push(level+': unexpected repair supplied for a level that passed initial assessment')
+   warnings.push(level+': ignored unnecessary repair because the initial assessment passed; preserved the original version')
   }
 
   if(!initialPass&&!changedArticleText)errors.push(level+': descriptor review required a text repair but no page text changed')
@@ -2541,7 +2562,7 @@ export async function runPublishWikiBatch({
  const keyState=ensureKeyState({keys:resolvedKeys,activeIndex:0,exhaustedKeys:new Set()})
  // Use a separate, stronger model route for CEFR assessment so the generator does not grade its own work.
  const reviewerModel=String(process.env.CEFR_REVIEW_MODEL||'gemini-3.6-flash').trim()
- const reviewerFallbacks=process.env.CEFR_REVIEW_FALLBACK_MODELS||['gemini-3.8-flash','gemini-3.1-flash-lite']
+ const reviewerFallbacks=process.env.CEFR_REVIEW_FALLBACK_MODELS||['gemini-3.8-flash','gemini-3.1-flash-lite','gemini-4-hydrogen']
  const reviewerModelChain=resolveGeminiModelChain({model:reviewerModel,fallbackModels:reviewerFallbacks})
  const reviewerKeyState=ensureKeyState({...keyState,activeIndex:0,preferredModel:null,lastModelTried:null})
  const sourceUsedPageIds=new Set(sourceCatalog.stories.map(s=>s.sourcePageId))
@@ -2785,6 +2806,7 @@ export async function runPublishWikiBatch({
    let normalizedDraft
    let quality
    let repairUsed=false
+   const generationModelsUsed=new Set()
    let usedModel=dryRun?'dry-run':(keyState.preferredModel||modelChain[0])
    if(dryRun){
     normalizedDraft=normalizeDraftForCatalog(makeDryRunDraft(source,trimmed.evidence,verifiedPhotos),{source,evidence:trimmed.evidence,verifiedPhotos})
@@ -2794,6 +2816,7 @@ export async function runPublishWikiBatch({
     const firstRes=await invokeGeminiWithDelay(prompt,{reserveMs:minRetryBudgetMs,schema:BATCH_STORY_SCHEMA})
     consecutiveInfraFailures=0
     usedModel=firstRes.model||usedModel
+    generationModelsUsed.add(usedModel)
     normalizedDraft=normalizeDraftForCatalog(firstRes.draft,{source,evidence:trimmed.evidence,verifiedPhotos})
     quality=validateArticleQuality(normalizedDraft,source.sourceTitle,{source,evidence:trimmed.evidence})
 
@@ -2809,6 +2832,7 @@ export async function runPublishWikiBatch({
      }
      repairUsed=true
      usedModel=repairOutcome.model||usedModel
+     generationModelsUsed.add(usedModel)
      normalizedDraft=repairOutcome.normalizedDraft
      quality=repairOutcome.quality
     }
@@ -2828,7 +2852,10 @@ export async function runPublishWikiBatch({
       for(const level of LEVELS)requiredRepairLevels.add(level)
      }
      const reviewPrompt=buildCEFRReviewRepairPrompt(source,item.topic,trimmed.evidence,normalizedDraft,quality)
-     const reviewRes=await invokeGeminiWithDelay(reviewPrompt,{reserveMs:minRetryBudgetMs,schema:buildCEFRReviewRepairSchema(normalizedDraft),modelChainOverride:reviewerModelChain,keyStateOverride:reviewerKeyState})
+     const independentReviewerChain=buildIndependentCEFRReviewerChain(reviewerModelChain,[...generationModelsUsed])
+     if(!independentReviewerChain.length)throw Error('No independent CEFR reviewer model available: generator used '+usedModel+'; configured reviewer chain was ['+reviewerModelChain.join(', ')+']. Failing closed rather than allowing self-review.')
+     console.log('[batch]   -> Independent CEFR reviewer route: generator='+usedModel+'; reviewer candidates=['+independentReviewerChain.join(', ')+'].')
+     const reviewRes=await invokeGeminiWithDelay(reviewPrompt,{reserveMs:minRetryBudgetMs,schema:buildCEFRReviewRepairSchema(normalizedDraft),modelChainOverride:independentReviewerChain,keyStateOverride:reviewerKeyState})
      consecutiveInfraFailures=0
      const reviewOutcome=applyCEFRReviewRepairs(normalizedDraft,reviewRes.draft,{requiredRepairLevels:[...requiredRepairLevels],validEvidenceIds:new Set(trimmed.evidence.map(e=>e.id))})
      normalizedDraft=normalizeDraftForCatalog(reviewOutcome.draft,{source,evidence:trimmed.evidence,verifiedPhotos})
@@ -2838,8 +2865,8 @@ export async function runPublishWikiBatch({
       quality.ok=false
       quality.errors.push(...reviewOutcome.errors.map(e=>'CEFR descriptor review: '+e))
      }
-     usedModel=reviewRes.model||usedModel
-     console.log(`[batch]   -> CEFR descriptor review model=${reviewRes.model||reviewerModelChain[0]} [${LEVELS.map(level=>level+':'+(reviewOutcome.finalAssessment?.[level]?.finalBand||'uncertain')).join(' / ')}], repairs=${(reviewRes.draft?.repairs||[]).map(row=>row.level).join(',')||'none'}.`)
+     console.log(`[batch]   -> CEFR descriptor review model=${reviewRes.model||independentReviewerChain[0]} (independent of content generators ${[...generationModelsUsed].join(', ')}) [${LEVELS.map(level=>level+':'+(reviewOutcome.finalAssessment?.[level]?.finalBand||'uncertain')).join(' / ')}], repairs=${(reviewRes.draft?.repairs||[]).map(row=>row.level).join(',')||'none'}.`)
+     if((reviewRes.draft?.repairs||[]).length&&reviewRes.model)generationModelsUsed.add(reviewRes.model)
     }
    }
 
@@ -2854,6 +2881,7 @@ export async function runPublishWikiBatch({
     }
     repairUsed=true
     usedModel=residualRepair.model||usedModel
+    generationModelsUsed.add(usedModel)
     normalizedDraft=residualRepair.normalizedDraft
     quality=residualRepair.quality
     if(!identifyRepairTargets(normalizedDraft,quality).structuralParityFailed){
@@ -2866,7 +2894,10 @@ export async function runPublishWikiBatch({
       for(const level of LEVELS)retryRequiredRepairLevels.add(level)
      }
      const retryReviewPrompt=buildCEFRReviewRepairPrompt(source,item.topic,trimmed.evidence,normalizedDraft,quality)
-     const retryReviewRes=await invokeGeminiWithDelay(retryReviewPrompt,{reserveMs:minRetryBudgetMs,schema:buildCEFRReviewRepairSchema(normalizedDraft),modelChainOverride:reviewerModelChain,keyStateOverride:reviewerKeyState})
+     const independentReviewerChain=buildIndependentCEFRReviewerChain(reviewerModelChain,[...generationModelsUsed])
+     if(!independentReviewerChain.length)throw Error('No independent CEFR reviewer model available after targeted repair: generator used '+usedModel+'; configured reviewer chain was ['+reviewerModelChain.join(', ')+']. Failing closed rather than allowing self-review.')
+     console.log('[batch]   -> Final independent CEFR reviewer route: generator='+usedModel+'; reviewer candidates=['+independentReviewerChain.join(', ')+'].')
+     const retryReviewRes=await invokeGeminiWithDelay(retryReviewPrompt,{reserveMs:minRetryBudgetMs,schema:buildCEFRReviewRepairSchema(normalizedDraft),modelChainOverride:independentReviewerChain,keyStateOverride:reviewerKeyState})
      consecutiveInfraFailures=0
      const retryReviewOutcome=applyCEFRReviewRepairs(normalizedDraft,retryReviewRes.draft,{requiredRepairLevels:[...retryRequiredRepairLevels],validEvidenceIds:new Set(trimmed.evidence.map(e=>e.id))})
      normalizedDraft=normalizeDraftForCatalog(retryReviewOutcome.draft,{source,evidence:trimmed.evidence,verifiedPhotos})
@@ -2876,8 +2907,7 @@ export async function runPublishWikiBatch({
       quality.ok=false
       quality.errors.push(...retryReviewOutcome.errors.map(e=>'CEFR descriptor review after targeted retry: '+e))
      }
-     usedModel=retryReviewRes.model||usedModel
-     console.log(`[batch]   -> Residual targeted repair + final CEFR review model=${retryReviewRes.model||reviewerModelChain[0]} [${LEVELS.map(level=>level+':'+(retryReviewOutcome.finalAssessment?.[level]?.finalBand||'uncertain')).join(' / ')}], repairs=${(retryReviewRes.draft?.repairs||[]).map(row=>row.level).join(',')||'none'}.`)
+     console.log(`[batch]   -> Residual targeted repair + final CEFR review model=${retryReviewRes.model||independentReviewerChain[0]} (independent of content generators ${[...generationModelsUsed].join(', ')}) [${LEVELS.map(level=>level+':'+(retryReviewOutcome.finalAssessment?.[level]?.finalBand||'uncertain')).join(' / ')}], repairs=${(retryReviewRes.draft?.repairs||[]).map(row=>row.level).join(',')||'none'}.`)
     }
    }
 
@@ -2919,6 +2949,7 @@ export async function runPublishWikiBatch({
    }
 
    // If misaligned body images were stripped across A/B/C, ALWAYS revalidate the post-strip draft!
+   // Live CEFR-reviewed text is never rewritten after its final review; a post-strip failure is skipped instead.
    if(assigned.strippedImages?.length){
     console.log(`[batch]   -> Guard stripped ${assigned.strippedImages.length} misaligned body image(s): ${assigned.strippedImages.map(s=>`P${s.pageIndex+1}:${s.reason}`).join(', ')}`)
     const strippedSet=new Set(assigned.strippedImages.map(s=>s.pageIndex))
@@ -2939,7 +2970,7 @@ export async function runPublishWikiBatch({
     }
     quality=validateArticleQuality(normalizedDraft,source.sourceTitle,{source,evidence:trimmed.evidence})
 
-    if(!quality.ok&&!dryRun&&!repairUsed){
+    if(!quality.ok&&!dryRun&&!repairUsed&&callGeminiImpl!==callGeminiFlashLite){
      const repairOutcome=await runOneTargetedRepair({source,item,trimmed,verifiedPhotos,normalizedDraft,quality})
      if(repairOutcome.budgetHit){
       console.warn(`[batch]   -> Runtime budget reached before post-strip repair (${Math.max(0,Math.round(remainingBudget()/1000))}s left). Leaving "${item.title}" ${prevQueueStatus||'pending'} and stopping gracefully.`)
@@ -2948,6 +2979,7 @@ export async function runPublishWikiBatch({
      }
      repairUsed=true
      usedModel=repairOutcome.model||usedModel
+     generationModelsUsed.add(usedModel)
      normalizedDraft=repairOutcome.normalizedDraft
      assigned=assignBatchPhotos(normalizedDraft.variants,{
       source,

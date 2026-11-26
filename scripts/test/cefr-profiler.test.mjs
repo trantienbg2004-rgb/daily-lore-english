@@ -13,6 +13,7 @@ import {
  applyCEFRReviewRepairs,
  buildCEFRReviewRepairPrompt,
  buildCEFRReviewRepairSchema,
+ buildIndependentCEFRReviewerChain,
  buildQualityRetryPrompt,
  buildRoundRobinOrder,
  identifyRepairTargets,
@@ -21,6 +22,28 @@ import {
 } from '../publish_wiki_batch.mjs'
 import {applyCEFRRequeue,auditStoriesCEFR} from '../audit_wiki_cefr.mjs'
 import {makeWikiStory,rewriteWikiCatalog} from '../wiki/catalog.mjs'
+
+test('independent CEFR reviewer chain excludes every model used to generate or repair the article',()=>{
+ const chain=[
+  'models/gemini-3.5-flash-lite',
+  'gemini-3.6-flash',
+  'gemini-3.8-flash',
+  'models/GEMINI-3.1-FLASH-LITE',
+  'gemini-3.6-flash'
+ ]
+ assert.deepEqual(
+  buildIndependentCEFRReviewerChain(chain,['gemini-3.5-flash-lite','models/gemini-3.1-flash-lite']),
+  ['gemini-3.6-flash','gemini-3.8-flash']
+ )
+ assert.deepEqual(
+  buildIndependentCEFRReviewerChain(['models/gemini-3.5-flash-lite'],'gemini-3.5-flash-lite'),
+  []
+ )
+ assert.deepEqual(
+  buildIndependentCEFRReviewerChain(chain,[]),
+  ['models/gemini-3.5-flash-lite','gemini-3.6-flash','gemini-3.8-flash','models/GEMINI-3.1-FLASH-LITE']
+ )
+})
 
 test('data/cefr_wordlist.json is compact (120-250 KB) with 8,000-12,000 lemmas across A1-C2',async()=>{
  const wordlist=loadCEFRWordlist()
@@ -146,6 +169,13 @@ test('CEFR descriptor reviewer accepts in-band assessments, merges partial repai
  const noOp=applyCEFRReviewRepairs(draft,noOpRepair)
  assert.equal(noOp.ok,false,'A reviewer cannot mark a mismatched level as repaired without changing article text')
  assert.ok(noOp.errors.some(e=>/descriptor review required a text repair but no page text changed/.test(e)))
+
+ const unnecessaryRepair=structuredClone(passPayload)
+ unnecessaryRepair.repairs=[{level:'C1-C2',headline:'A Different Academic Title',pages:[{pageIndex:0,text:'The settlement changed through many stages and developed new civic structures.',evidenceIds:['P1']}]}]
+ const ignored=applyCEFRReviewRepairs(draft,unnecessaryRepair)
+ assert.equal(ignored.ok,true,ignored.errors.join(' | '))
+ assert.equal(ignored.draft.variants['C1-C2'].pages[0].text,draft.variants['C1-C2'].pages[0].text,'A passing level must retain its original text')
+ assert.ok(ignored.warnings.some(e=>/ignored unnecessary repair because the initial assessment passed/.test(e)))
 
  const badHeadline=structuredClone(passPayload)
  badHeadline.assessment['A1-A2']=assessment('A2','People built a small town','B1','revise')

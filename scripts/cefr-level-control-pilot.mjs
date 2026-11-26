@@ -5,6 +5,7 @@ import {assignBatchPhotos} from './wiki/batch-media.mjs'
 import {
  buildBatchPrompt,
  buildCEFRReviewRepairPrompt,
+ buildIndependentCEFRReviewerChain,
  buildGeminiGenerationConfig,
  buildCEFRReviewRepairSchema,
  buildTargetedRepairPrompt,
@@ -36,10 +37,11 @@ const modelsUsed={}
 async function save(name,value){
  await fs.writeFile(path.join(OUTPUT,name),JSON.stringify(value,null,2)+'\n')
 }
-async function invoke(prompt,schema,label,{reviewer=false}={}){
+async function invoke(prompt,schema,label,{reviewer=false,excludeModels=[]}={}){
  calls++
  try{
-  const chain=reviewer?reviewerModelChain:generationModelChain
+  const chain=reviewer?buildIndependentCEFRReviewerChain(reviewerModelChain,excludeModels):generationModelChain
+  if(reviewer&&!chain.length)throw Error('No independent reviewer remains after excluding content models: '+excludeModels.join(', '))
   const state=reviewer?reviewerKeyState:keyState
   const result=await callGeminiWithFailover(prompt,state,{
    model:chain[0],
@@ -51,7 +53,7 @@ async function invoke(prompt,schema,label,{reviewer=false}={}){
   })
   if(result.model!==chain[0])modelFallbacks++
   modelsUsed[result.model]=(modelsUsed[result.model]||0)+1
-  console.log('[CEFR-LEVEL-CONTROL-MODEL] '+label+' -> '+result.model+' ('+result.keyLabel+')')
+  console.log('[CEFR-LEVEL-CONTROL-MODEL] '+label+' -> '+result.model+' ('+result.keyLabel+')'+(reviewer?' [independent of '+excludeModels.join(', ')+']':''))
   return result
  }catch(error){
   throw Object.assign(error,{pilotStage:label})
@@ -111,6 +113,7 @@ async function runTopic(id){
  assert.ok(fixture.evidence?.length,'Frozen source evidence is missing')
  assert.ok(fixture.photos?.length,'Frozen verified photos are missing')
  const sourceHash=JSON.stringify({title:fixture.source.sourceTitle,revision:fixture.source.sourceRevisionId,evidence:fixture.evidence.map(x=>x.id)})
+ const generationModelsUsed=[]
  const result={
   fixture:id,
   sourceTitle:fixture.source.sourceTitle,
@@ -124,6 +127,7 @@ async function runTopic(id){
   const generationPrompt=buildBatchPrompt(fixture.source,fixture.topic,fixture.evidence,fixture.photos)
   const generationSchema=buildGeminiGenerationConfig(MODEL).responseJsonSchema
   const generated=await invoke(generationPrompt,generationSchema,id+' generation')
+  if(generated.model)generationModelsUsed.push(generated.model)
   result.generationUsage=generated.usage||null
   let draft=normalizeDraftForCatalog(generated.draft,{source:fixture.source,evidence:fixture.evidence,verifiedPhotos:fixture.photos})
   let quality=validateArticleQuality(draft,fixture.source.sourceTitle,{
@@ -139,6 +143,7 @@ async function runTopic(id){
   if(!quality.ok&&structuralTargets.structuralParityFailed){
    const repairPrompt=buildTargetedRepairPrompt(fixture.source,fixture.topic,fixture.evidence,draft,quality,fixture.photos,structuralTargets)
    const repair=await invoke(repairPrompt,generationSchema,id+' structural rebuild')
+   if(repair.model)generationModelsUsed.push(repair.model)
    const mergedRaw=mergeTargetedRepairs(draft,repair.draft,structuralTargets)
    draft=normalizeDraftForCatalog(mergedRaw,{source:fixture.source,evidence:fixture.evidence,verifiedPhotos:fixture.photos})
    quality=validateArticleQuality(draft,fixture.source.sourceTitle,{
@@ -152,12 +157,13 @@ async function runTopic(id){
   const structuralStillBroken=identifyRepairTargets(draft,quality).structuralParityFailed
   if(!structuralStillBroken){
    const reviewPrompt=buildCEFRReviewRepairPrompt(fixture.source,fixture.topic,fixture.evidence,draft,quality)
-   const review=await invoke(reviewPrompt,buildCEFRReviewRepairSchema(draft),id+' descriptor review',{reviewer:true})
+   const review=await invoke(reviewPrompt,buildCEFRReviewRepairSchema(draft),id+' descriptor review',{reviewer:true,excludeModels:generationModelsUsed})
    result.reviewUsage=review.usage||null
    const applied=applyCEFRReviewRepairs(draft,review.draft,{
     requiredRepairLevels:levelsNeedingRepair(quality),
     validEvidenceIds:new Set(fixture.evidence.map(x=>x.id))
    })
+    if((review.draft?.repairs||[]).length&&review.model)generationModelsUsed.push(review.model)
     result.review={
      ok:applied.ok,
      errors:applied.errors,
@@ -190,6 +196,7 @@ async function runTopic(id){
      const retryPrompt=buildTargetedRepairPrompt(fixture.source,fixture.topic,fixture.evidence,draft,quality,fixture.photos,retryTargets)
      const retrySchema=retryTargets.useTargetedPatch?TARGETED_REPAIR_SCHEMA:generationSchema
      const retryRepair=await invoke(retryPrompt,retrySchema,id+' residual targeted repair')
+     if(retryRepair.model)generationModelsUsed.push(retryRepair.model)
      const retryMerged=mergeTargetedRepairs(draft,retryRepair.draft,retryTargets)
      draft=normalizeDraftForCatalog(retryMerged,{source:fixture.source,evidence:fixture.evidence,verifiedPhotos:fixture.photos})
      quality=validateArticleQuality(draft,fixture.source.sourceTitle,{
@@ -202,7 +209,7 @@ async function runTopic(id){
       result.firstReview=result.review
       result.firstReviewUsage=result.reviewUsage
       const retryReviewPrompt=buildCEFRReviewRepairPrompt(fixture.source,fixture.topic,fixture.evidence,draft,quality)
-      const retryReview=await invoke(retryReviewPrompt,buildCEFRReviewRepairSchema(draft),id+' final descriptor review',{reviewer:true})
+      const retryReview=await invoke(retryReviewPrompt,buildCEFRReviewRepairSchema(draft),id+' final descriptor review',{reviewer:true,excludeModels:generationModelsUsed})
       const retryApplied=applyCEFRReviewRepairs(draft,retryReview.draft,{
        requiredRepairLevels:levelsNeedingRepair(quality),
        validEvidenceIds:new Set(fixture.evidence.map(x=>x.id))
