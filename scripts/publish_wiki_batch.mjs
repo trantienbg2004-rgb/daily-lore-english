@@ -1338,19 +1338,39 @@ export function applyCEFRReviewRepairs(previousDraft,reviewPayload,{requiredRepa
 function formatCEFRRetryBlock(qualityResult){
  const cefr=qualityResult?.cefr||qualityResult
  const profiles=cefr?.profiles
- if(!profiles?.['A1-A2']||!profiles?.['B1-B2']||!profiles?.['C1-C2'])return ''
- const lines=[
-  'ADVISORY CEFR SCREENING SIGNALS — NOT A PASS/FAIL STANDARD:',
-  ...LEVELS.map(level=>{
-   const p=profiles[level]
-   return '- '+level+': FKGL='+p.fkgl+', average sentence='+p.avgSentenceLength+' words, lexical profile='+JSON.stringify(p.lexicalProfile)+', flagged words='+JSON.stringify((p.overLevelWords||[]).slice(0,12))
-  }),
-  '- These signals are imperfect diagnostics, not CEFR definitions. Do NOT rewrite, simplify, lengthen or replace words merely to hit a numeric threshold.',
-  '- Review a flagged word in its sentence and sense. Keep essential names and technical terms when needed; explain them in context for lower-level readers.',
-  '- Make changes only when the actual reading experience is outside the assigned CEFR descriptor band or when a deterministic editorial/source-grounding error requires a correction.',
-  '- Keep C1-C2 natural and precise. Do not create artificial academic jargon or unnecessary complexity.'
- ]
- return '\n\n'+lines.join('\n')
+ const lines=[]
+ if(profiles?.['A1-A2']&&profiles?.['B1-B2']&&profiles?.['C1-C2']){
+  lines.push(
+   'ADVISORY CEFR SCREENING SIGNALS — NOT A PASS/FAIL STANDARD:',
+   ...LEVELS.map(level=>{
+    const p=profiles[level]
+    return '- '+level+': FKGL='+p.fkgl+', average sentence='+p.avgSentenceLength+' words, lexical profile='+JSON.stringify(p.lexicalProfile)+', flagged words='+JSON.stringify((p.overLevelWords||[]).slice(0,12))
+   }),
+   '- These signals are imperfect diagnostics, not CEFR definitions. Do NOT rewrite, simplify, lengthen or replace words merely to hit a numeric threshold.',
+   '- Review a flagged word in its sentence and sense. Keep essential names and technical terms when needed; explain them in context for lower-level readers.',
+   '- Make changes only when the actual reading experience is outside the assigned CEFR descriptor band or when a deterministic editorial/source-grounding error requires a correction.',
+   '- Keep C1-C2 natural and precise. Do not create artificial academic jargon or unnecessary complexity.'
+  )
+ }
+ const reviewer=qualityResult?.cefrReview
+ if(reviewer&&typeof reviewer==='object'){
+  const reviewerLines=LEVELS.filter(level=>reviewer[level]).map(level=>{
+   const a=reviewer[level]
+   return '- '+level+': initialBand='+String(a.initialBand||'?')+', initialVerdict='+String(a.initialVerdict||'?')+', initialDimensions='+JSON.stringify(a.initialDimensions||{})+
+    '; finalBand='+String(a.finalBand||'?')+', finalVerdict='+String(a.finalVerdict||'?')+', finalDimensions='+JSON.stringify(a.finalDimensions||{})+
+    '; reviewer rationale: '+String(a.rationale||'No rationale supplied.')
+  })
+  if(reviewerLines.length){
+   lines.push(
+    'INDEPENDENT CEFR REVIEW FINDINGS — USE THESE CONCRETE DIAGNOSES TO GUIDE THE TARGETED REPAIR:',
+    ...reviewerLines,
+    '- A dimension marked high means the text is too difficult for its assigned band: simplify vocabulary and syntax, explain essential specialist terms, and reduce unnecessary abstraction or inference.',
+    '- A dimension marked low means the text is too easy for its assigned band: add source-supported detail, clearer cause/effect, more developed connections or appropriate conceptual precision without padding or jargon.',
+    '- A dimension marked fit should be preserved; do not damage a dimension that already fits.'
+   )
+  }
+ }
+ return lines.length?'\n\n'+lines.join('\n'):''
 }
 
 /** Identify exact failing headlines, pages, and levels so repair preserves all already-valid content. */
@@ -1516,6 +1536,7 @@ TARGETED RULES:
 - Headlines: ${HEADLINE_WORD_BOUNDS.min}-${HEADLINE_WORD_BOUNDS.max} words, distinct across all 3 levels, never matching "${source.sourceTitle}".
 - Captions on photo pages: complete natural phrase (${CAPTION_LIMITS.targetMinWords}-${CAPTION_LIMITS.targetMaxWords} words, max ${CAPTION_LIMITS.maxChars} chars, never truncated mid-word).
 - If a failed check flags a dry encyclopedia opening, rewrite pageIndex 0 so its FIRST sentence does not begin with the source title/topic followed by “is/was a/an/the”. Use a natural reader-facing question, a concrete source-supported moment, or an action that draws the reader into the subject. Do not merely move the same dictionary definition to sentence two; preserve the assigned CEFR band and do not invent a scene or fact.
+- If independent CEFR review findings are included, repair the exact low/high dimensions and use the reviewer rationale. Every targeted page must receive a substantive text change that addresses the diagnosed reading-level problem; do not return the original wording or make only cosmetic punctuation changes. Preserve all source facts and evidence IDs.
 
 EXISTING HEADLINES (for uniqueness):
 - A1-A2: "${previousDraft.variants['A1-A2']?.headline||''}"
