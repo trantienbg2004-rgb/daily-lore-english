@@ -693,3 +693,14 @@ test('Gemini failover opens a per-request circuit breaker after three models eac
  assert.equal(state.modelCooldownUntil.size,3)
 })
 
+
+
+test('Gemini generation schema keeps paragraphs in the existing text field',()=>{
+ const schema=buildGeminiGenerationConfig().responseJsonSchema
+ for(const level of ['A1-A2','B1-B2','C1-C2']){
+  const page=schema.properties.variants.properties[level].properties.pages.items
+  assert.equal(page.properties.text.type,'string')
+  assert.equal(Object.hasOwn(page.properties,'paragraphs'),false)
+  assert.ok(page.required.includes('text'))
+ }
+})
