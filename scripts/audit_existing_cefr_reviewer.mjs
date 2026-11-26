@@ -39,7 +39,6 @@ const REVIEW_SCHEMA={
  required:LEVELS
 }
 const sleep=ms=>new Promise(resolve=>setTimeout(resolve,ms))
-const wordCount=text=>String(text||'').trim().split(/\s+/).filter(Boolean).length
 
 function buildPrompt(story){
  const sections=LEVELS.map(level=>{
