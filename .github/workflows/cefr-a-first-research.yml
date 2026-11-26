@@ -1,0 +1,57 @@
+name: CEFR A-first Research Trial
+
+on:
+  pull_request:
+    types: [opened]
+    branches: [main]
+    paths:
+      - 'scripts/cefr-a-first-trial.mjs'
+      - '.github/workflows/cefr-a-first-research.yml'
+
+permissions:
+  contents: read
+  actions: read
+
+concurrency:
+  group: auto-wiki-publish
+  cancel-in-progress: false
+
+jobs:
+  experiment:
+    if: github.event.pull_request.head.repo.full_name == github.repository && github.head_ref == 'research/saga-cefr-a-first'
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci --no-audit --no-fund
+      - name: Download exact frozen inputs from matched trial
+        uses: actions/download-artifact@v4
+        with:
+          name: saga-cefr-matched-research
+          path: /tmp/saga-cefr-frozen
+          repository: ${{ github.repository }}
+          run-id: 45857492873
+          github-token: ${{ github.token }}
+      - name: Validate inputs and existing tests before any API request
+        run: |
+          node --check scripts/cefr-a-first-trial.mjs
+          node scripts/cefr-a-first-trial.mjs --check-input
+          npm test
+      - name: Run isolated bounded joint versus A-first trial
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          CEFR_TRIAL_OUTPUT: /tmp/saga-cefr-a-first
+        run: node scripts/cefr-a-first-trial.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: saga-cefr-a-first-research
+          path: /tmp/saga-cefr-a-first/
+          if-no-files-found: warn
+          retention-days: 14
