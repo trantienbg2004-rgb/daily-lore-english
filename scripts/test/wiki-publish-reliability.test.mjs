@@ -155,6 +155,7 @@ test('reliability constants, bootstrap candidate cap, and model generation confi
 
  const gen4Cfg=buildGeminiGenerationConfig('gemini-4-hydrogen')
  assert.equal('temperature' in gen4Cfg,false)
+ assert.deepEqual(gen4Cfg.thinkingConfig,{thinkingLevel:'LOW'})
  assert.equal(gen4Cfg.responseMimeType,'application/json')
 
  const bootstrapPlan=resolveAutoSchedulePlan({catalogTotal:20,eventName:'schedule'})
