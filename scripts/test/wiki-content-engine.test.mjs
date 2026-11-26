@@ -410,6 +410,8 @@ test('content engine: targeted repair patches ONLY failing page/headline while p
 
  const repairPrompt=buildTargetedRepairPrompt(source,'History & Geography',trimmed.evidence,brokenDraft,qBefore,[leadPhoto],targets)
  assert.match(repairPrompt,/TARGETED REPAIR/)
+ assert.match(repairPrompt,/If a failed check flags a dry encyclopedia opening/i)
+ assert.match(repairPrompt,/FIRST sentence does not begin with the source title/i)
  assert.match(repairPrompt,/Do NOT rewrite passing levels or passing pages/)
 
  // Patch ONLY B1-B2 headline + page 2
