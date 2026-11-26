@@ -338,12 +338,14 @@ test('content engine: independent levelPlans allow different content depth while
   },
   'C1-C2':{
    readerObjective:'Understand nuance, implications and the relationship between evidence and interpretation.',
-   selectedFactIds:['F1','F2','F3','F4'],
+   selectedFactIds:['F2','F3','F4'],
    depthNotes:'Explore source-grounded qualifications, conceptual implications and specialist distinctions.'
   }
  }
  const normalized=normalizeDraftForCatalog(raw,{source,evidence:trimmed.evidence,verifiedPhotos:[photo]})
  assert.deepEqual(normalized.levelPlans['A1-A2'].selectedFactIds,['F1','F2'])
+ assert.equal(normalized.sharedCoreFactIds.length,2)
+ for(const level of ['A1-A2','B1-B2','C1-C2'])for(const id of normalized.sharedCoreFactIds)assert.ok(normalized.levelPlans[level].selectedFactIds.includes(id),level+' must retain both shared core facts')
  assert.notDeepEqual(normalized.levelPlans['A1-A2'].selectedFactIds,normalized.levelPlans['C1-C2'].selectedFactIds)
  const fact=validateFactualConsistency(normalized,{source,evidence:trimmed.evidence})
  assert.equal(fact.ok,true,fact.errors.join(' | '))
