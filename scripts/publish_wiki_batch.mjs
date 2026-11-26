@@ -1523,7 +1523,6 @@ TARGETED RULES:
 - Headlines: ${HEADLINE_WORD_BOUNDS.min}-${HEADLINE_WORD_BOUNDS.max} words, distinct across all 3 levels, never matching "${source.sourceTitle}".
 - Captions on photo pages: complete natural phrase (${CAPTION_LIMITS.targetMinWords}-${CAPTION_LIMITS.targetMaxWords} words, max ${CAPTION_LIMITS.maxChars} chars, never truncated mid-word).
 - If a failed check flags a dry encyclopedia opening, rewrite pageIndex 0 so its FIRST sentence does not begin with the source title/topic followed by “is/was a/an/the”. Use a natural reader-facing question, a concrete source-supported moment, or an action that draws the reader into the subject. Do not merely move the same dictionary definition to sentence two; preserve the assigned CEFR band and do not invent a scene or fact.
-- If independent CEFR review findings are included, repair the exact low/high dimensions and use the reviewer rationale. Every targeted page must receive a substantive text change that addresses the diagnosed reading-level problem; do not return the original wording or make only cosmetic punctuation changes. Preserve all source facts and evidence IDs.
 
 EXISTING HEADLINES (for uniqueness):
 - A1-A2: "${previousDraft.variants['A1-A2']?.headline||''}"
@@ -2865,6 +2864,7 @@ export async function runPublishWikiBatch({
       quality.errors.push(...reviewOutcome.errors.map(e=>'CEFR descriptor review: '+e))
      }
      console.log(`[batch]   -> CEFR descriptor review model=${reviewRes.model||independentReviewerChain[0]} (independent of content generators ${[...generationModelsUsed].join(', ')}) [${LEVELS.map(level=>level+':'+(reviewOutcome.finalAssessment?.[level]?.finalBand||'uncertain')).join(' / ')}], repairs=${(reviewRes.draft?.repairs||[]).map(row=>row.level).join(',')||'none'}.`)
+     if((reviewRes.draft?.repairs||[]).length&&reviewRes.model)generationModelsUsed.add(reviewRes.model)
     }
    }
 
@@ -2947,6 +2947,7 @@ export async function runPublishWikiBatch({
    }
 
    // If misaligned body images were stripped across A/B/C, ALWAYS revalidate the post-strip draft!
+   // Live CEFR-reviewed text is never rewritten after its final review; a post-strip failure is skipped instead.
    if(assigned.strippedImages?.length){
     console.log(`[batch]   -> Guard stripped ${assigned.strippedImages.length} misaligned body image(s): ${assigned.strippedImages.map(s=>`P${s.pageIndex+1}:${s.reason}`).join(', ')}`)
     const strippedSet=new Set(assigned.strippedImages.map(s=>s.pageIndex))
@@ -2967,7 +2968,7 @@ export async function runPublishWikiBatch({
     }
     quality=validateArticleQuality(normalizedDraft,source.sourceTitle,{source,evidence:trimmed.evidence})
 
-    if(!quality.ok&&!dryRun&&!repairUsed){
+    if(!quality.ok&&!dryRun&&!repairUsed&&callGeminiImpl!==callGeminiFlashLite){
      const repairOutcome=await runOneTargetedRepair({source,item,trimmed,verifiedPhotos,normalizedDraft,quality})
      if(repairOutcome.budgetHit){
       console.warn(`[batch]   -> Runtime budget reached before post-strip repair (${Math.max(0,Math.round(remainingBudget()/1000))}s left). Leaving "${item.title}" ${prevQueueStatus||'pending'} and stopping gracefully.`)
