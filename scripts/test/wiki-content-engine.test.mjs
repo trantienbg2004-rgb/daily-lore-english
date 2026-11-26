@@ -296,6 +296,12 @@ test('content engine: prompt uses single-source-of-truth midpoint targets & natu
  const goodQuality=validateArticleQuality(goodDraft,source.sourceTitle,{source,evidence:trimmed.evidence})
  assert.equal(goodQuality.ok,true,`Expected valid quality draft, got: ${goodQuality.errors.join(' | ')}`)
 
+ const dryOpeningDraft=structuredClone(goodDraft)
+ dryOpeningDraft.variants['A1-A2'].pages[0].text='Stone Citadel is a historic building made from pale stone.'
+ const dryOpeningQuality=validateArticleQuality(dryOpeningDraft,source.sourceTitle,{source,evidence:trimmed.evidence})
+ assert.equal(dryOpeningQuality.ok,false)
+ assert.ok(dryOpeningQuality.errors.some(e=>/A1-A2 page 1: dry encyclopedia opening detected/.test(e)))
+
  // Natural qualification phrases such as “though” and “according to” preserve source uncertainty.
  const naturalHedgeDraft=structuredClone(goodDraft)
  for(const level of ['A1-A2','B1-B2','C1-C2']){
