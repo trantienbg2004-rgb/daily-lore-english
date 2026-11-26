@@ -199,6 +199,9 @@ test('CEFR reviewer prompt uses official reading descriptors and treats FKGL/wor
  assert.match(prompt,/program will attach a verbatim sentence/)
  assert.match(prompt,/Any changed headline must be 5–11 words/)
  assert.match(prompt,/preserve the existing valid headline/i)
+ assert.match(prompt,/MANDATORY PAGE-1 OPENING REPAIR/i)
+ assert.match(prompt,/you MUST change pageIndex 0/i)
+ assert.match(prompt,/final page must no longer trigger the deterministic opening check/i)
 })
 
 test('applyCEFRRequeue enforces safety floor, prepends removed stories to FRONT of queue without duplicates, and buildRoundRobinOrder prioritizes them first',async()=>{
