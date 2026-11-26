@@ -2726,6 +2726,7 @@ export async function runPublishWikiBatch({
    const mergedRaw=mergeTargetedRepairs(normalizedDraft,retryRes.draft,repairTargets)
    const repairedDraft=normalizeDraftForCatalog(mergedRaw,{source,evidence:trimmed.evidence,verifiedPhotos})
    const repairedQuality=validateArticleQuality(repairedDraft,source.sourceTitle,{source,evidence:trimmed.evidence,requireLevelPlans:!dryRun&&callGeminiImpl===callGeminiFlashLite})
+   if(quality.cefrReview)repairedQuality.cefrReview=quality.cefrReview
    return {
     budgetHit:false,
     model:retryRes.model,
@@ -2818,6 +2819,7 @@ export async function runPublishWikiBatch({
    let normalizedDraft
    let quality
    let repairUsed=false
+   let reviewerModelUsed=null
    let usedModel=dryRun?'dry-run':(keyState.preferredModel||modelChain[0])
    if(dryRun){
     normalizedDraft=normalizeDraftForCatalog(makeDryRunDraft(source,trimmed.evidence,verifiedPhotos),{source,evidence:trimmed.evidence,verifiedPhotos})
@@ -2861,7 +2863,10 @@ export async function runPublishWikiBatch({
       for(const level of LEVELS)requiredRepairLevels.add(level)
      }
      const reviewPrompt=buildCEFRReviewRepairPrompt(source,item.topic,trimmed.evidence,normalizedDraft,quality)
-     const reviewRes=await invokeGeminiWithDelay(reviewPrompt,{reserveMs:minRetryBudgetMs,schema:buildCEFRReviewRepairSchema(normalizedDraft),modelChainOverride:reviewerModelChain,keyStateOverride:reviewerKeyState})
+     const independentReviewerChain=buildIndependentCEFRReviewerChain(reviewerModelChain,usedModel)
+     if(!independentReviewerChain.length)throw Error('No independent CEFR reviewer model available: generator used '+usedModel+'; configured reviewer chain was ['+reviewerModelChain.join(', ')+']. Failing closed rather than allowing self-review.')
+     console.log('[batch]   -> Independent CEFR reviewer route: generator='+usedModel+'; reviewer candidates=['+independentReviewerChain.join(', ')+'].')
+     const reviewRes=await invokeGeminiWithDelay(reviewPrompt,{reserveMs:minRetryBudgetMs,schema:buildCEFRReviewRepairSchema(normalizedDraft),modelChainOverride:independentReviewerChain,keyStateOverride:reviewerKeyState})
      consecutiveInfraFailures=0
      const reviewOutcome=applyCEFRReviewRepairs(normalizedDraft,reviewRes.draft,{requiredRepairLevels:[...requiredRepairLevels],validEvidenceIds:new Set(trimmed.evidence.map(e=>e.id))})
      normalizedDraft=normalizeDraftForCatalog(reviewOutcome.draft,{source,evidence:trimmed.evidence,verifiedPhotos})
@@ -2871,8 +2876,8 @@ export async function runPublishWikiBatch({
       quality.ok=false
       quality.errors.push(...reviewOutcome.errors.map(e=>'CEFR descriptor review: '+e))
      }
-     usedModel=reviewRes.model||usedModel
-     console.log(`[batch]   -> CEFR descriptor review model=${reviewRes.model||reviewerModelChain[0]} [${LEVELS.map(level=>level+':'+(reviewOutcome.finalAssessment?.[level]?.finalBand||'uncertain')).join(' / ')}], repairs=${(reviewRes.draft?.repairs||[]).map(row=>row.level).join(',')||'none'}.`)
+     reviewerModelUsed=reviewRes.model||independentReviewerChain[0]
+     console.log(`[batch]   -> CEFR descriptor review model=${reviewerModelUsed} (independent of generator ${usedModel}) [${LEVELS.map(level=>level+':'+(reviewOutcome.finalAssessment?.[level]?.finalBand||'uncertain')).join(' / ')}], repairs=${(reviewRes.draft?.repairs||[]).map(row=>row.level).join(',')||'none'}.`)
     }
    }
 
@@ -2899,7 +2904,10 @@ export async function runPublishWikiBatch({
       for(const level of LEVELS)retryRequiredRepairLevels.add(level)
      }
      const retryReviewPrompt=buildCEFRReviewRepairPrompt(source,item.topic,trimmed.evidence,normalizedDraft,quality)
-     const retryReviewRes=await invokeGeminiWithDelay(retryReviewPrompt,{reserveMs:minRetryBudgetMs,schema:buildCEFRReviewRepairSchema(normalizedDraft),modelChainOverride:reviewerModelChain,keyStateOverride:reviewerKeyState})
+     const independentReviewerChain=buildIndependentCEFRReviewerChain(reviewerModelChain,usedModel)
+     if(!independentReviewerChain.length)throw Error('No independent CEFR reviewer model available after targeted repair: generator used '+usedModel+'; configured reviewer chain was ['+reviewerModelChain.join(', ')+']. Failing closed rather than allowing self-review.')
+     console.log('[batch]   -> Final independent CEFR reviewer route: generator='+usedModel+'; reviewer candidates=['+independentReviewerChain.join(', ')+'].')
+     const retryReviewRes=await invokeGeminiWithDelay(retryReviewPrompt,{reserveMs:minRetryBudgetMs,schema:buildCEFRReviewRepairSchema(normalizedDraft),modelChainOverride:independentReviewerChain,keyStateOverride:reviewerKeyState})
      consecutiveInfraFailures=0
      const retryReviewOutcome=applyCEFRReviewRepairs(normalizedDraft,retryReviewRes.draft,{requiredRepairLevels:[...retryRequiredRepairLevels],validEvidenceIds:new Set(trimmed.evidence.map(e=>e.id))})
      normalizedDraft=normalizeDraftForCatalog(retryReviewOutcome.draft,{source,evidence:trimmed.evidence,verifiedPhotos})
@@ -2909,8 +2917,8 @@ export async function runPublishWikiBatch({
       quality.ok=false
       quality.errors.push(...retryReviewOutcome.errors.map(e=>'CEFR descriptor review after targeted retry: '+e))
      }
-     usedModel=retryReviewRes.model||usedModel
-     console.log(`[batch]   -> Residual targeted repair + final CEFR review model=${retryReviewRes.model||reviewerModelChain[0]} [${LEVELS.map(level=>level+':'+(retryReviewOutcome.finalAssessment?.[level]?.finalBand||'uncertain')).join(' / ')}], repairs=${(retryReviewRes.draft?.repairs||[]).map(row=>row.level).join(',')||'none'}.`)
+     reviewerModelUsed=retryReviewRes.model||independentReviewerChain[0]
+     console.log(`[batch]   -> Residual targeted repair + final CEFR review model=${reviewerModelUsed} (independent of generator ${usedModel}) [${LEVELS.map(level=>level+':'+(retryReviewOutcome.finalAssessment?.[level]?.finalBand||'uncertain')).join(' / ')}], repairs=${(retryReviewRes.draft?.repairs||[]).map(row=>row.level).join(',')||'none'}.`)
     }
    }
 
@@ -3040,6 +3048,8 @@ export async function runPublishWikiBatch({
      licenseUrl:item._existingStory.licenseUrl||builtStory.licenseUrl
     }
     :builtStory
+   story.generationModel=usedModel
+   if(reviewerModelUsed)story.cefrReviewerModel=reviewerModelUsed
    const gate=validateWikiStory(story)
    if(!gate.accepted)throw Error(`Story failed catalog gate: ${gate.errors.join(', ')}`)
 
