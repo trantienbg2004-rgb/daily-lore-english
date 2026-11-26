@@ -16,7 +16,7 @@ permissions:
 
 concurrency:
   group: saga-cefr-live-level-control-pilot
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   live-pilot:
