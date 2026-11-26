@@ -29,7 +29,7 @@ export const DEFAULT_GEMINI_FALLBACK_MODELS=[
  'gemini-3.6-flash',
  'gemini-3.8-flash'
 ]
-export const DEFAULT_UNAVAILABLE_RETRY_MS=5000
+export const DEFAULT_UNAVAILABLE_RETRY_MS=10_000
 export const DEFAULT_MAX_ARTICLES=15
 export const DEFAULT_REGENERATE_MAX_ARTICLES=3
 export const BOOTSTRAP_THRESHOLD=1000
@@ -41,7 +41,7 @@ export const DEFAULT_MAX_RUNTIME_MS=24*60*1000
 export const DEFAULT_GEMINI_TIMEOUT_MS=60_000
 export const MIN_CANDIDATE_BUDGET_MS=45_000
 export const MIN_RETRY_BUDGET_MS=20_000
-export const MAX_COOLDOWN_MS=15_000
+export const MAX_COOLDOWN_MS=30_000
 // Stop a single request's fallback chain after three distinct models return 503 twice.
 export const MAX_UNAVAILABLE_MODELS_PER_CALL=3
 const LEVELS=['A1-A2','B1-B2','C1-C2']
@@ -522,6 +522,18 @@ export function resolveGeminiModelChain({
   if(name&&!chain.includes(name))chain.push(name)
  }
  return chain
+}
+
+/**
+ * Build an independent reviewer chain for one generated article.
+ * The exact model used for generation is never allowed to review that same article.
+ */
+export function buildIndependentCEFRReviewerChain(modelChain,generationModel){
+ const generated=String(generationModel||'').trim().replace(/^models\//i,'').toLowerCase()
+ return (Array.isArray(modelChain)?modelChain:[])
+  .map(model=>String(model||'').trim())
+  .filter(Boolean)
+  .filter(model=>model.replace(/^models\//i,'').toLowerCase()!==generated)
 }
 
 /**
