@@ -1094,6 +1094,7 @@ export function buildBatchPrompt(source,topic,evidence,verifiedPhotos=[]){
   '- A1-A2 must follow levelPlans[A1-A2]; B1-B2 must follow levelPlans[B1-B2]; C1-C2 must follow levelPlans[C1-C2].',
   '- Each version has '+PAGE_COUNT_BOUNDS.min+'–'+PAGE_COUNT_BOUNDS.max+' pages and the same imageId at each corresponding pageIndex, but its own facts, emphasis, explanation depth and natural wording.',
   '- Do not simply paraphrase one master article three times. Do not make B/C harder only by increasing sentence length or replacing words with rarer synonyms.',
+  '- Every headline must be 5 to 11 words, distinct across levels, and must not repeat the raw Wikipedia title.' ,
   '- Page 1 should open with an engaging, factual hook, not a dry X-is-a definition or an invented scene. The final page should give a source-grounded takeaway.',
   '- Use 1–3 coherent paragraphs per page, separated by a blank line. Every paragraph ends with a complete sentence. Never add filler to reach a word count.',
   '- Flexible visual pacing guidance only (NOT CEFR definitions or hard word-count targets):',
@@ -1116,7 +1117,7 @@ export function buildBatchPrompt(source,topic,evidence,verifiedPhotos=[]){
   '- Add 12–18 useful entries per level where possible. Give the meaning in this article context, not just a generic dictionary meaning.',
   '- CEFR labels on individual words are approximate and sense-dependent; do not assign a level solely from spelling or syllable count.',
   '',
-  'AVAILABLE VERIFIED IMAGES',
+  'AVAILABLE EMBEDDED IMAGES (verified)',
   imageCatalog,
   '',
   'SOURCE PASSAGES (evidence IDs are authoritative)',
@@ -2698,7 +2699,7 @@ export async function runPublishWikiBatch({
     // Keep the existing structural rebuild only for page/image parity failures.
     // CEFR, language and editorial mismatches are handled by the mandatory descriptor reviewer below.
     const initialRepairTargets=identifyRepairTargets(normalizedDraft,quality)
-    if(!quality.ok&&initialRepairTargets.structuralParityFailed){
+    if(!quality.ok&&(initialRepairTargets.structuralParityFailed||callGeminiImpl!==callGeminiFlashLite)){
      const repairOutcome=await runOneTargetedRepair({source,item,trimmed,verifiedPhotos,normalizedDraft,quality})
      if(repairOutcome.budgetHit){
       console.warn(`[batch]   -> Runtime budget reached before structural repair (${Math.max(0,Math.round(remainingBudget()/1000))}s left). Leaving "${item.title}" ${prevQueueStatus||'pending'} and stopping gracefully.`)
