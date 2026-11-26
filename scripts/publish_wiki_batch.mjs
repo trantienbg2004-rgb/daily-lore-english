@@ -1181,32 +1181,33 @@ export function buildCEFRReviewRepairPrompt(source,topic,evidence,previousDraft,
 export function applyCEFRReviewRepairs(previousDraft,reviewPayload,{requiredRepairLevels=[],validEvidenceIds=null}={}){
  const errors=[]
  if(!reviewPayload||typeof reviewPayload!=='object')return {ok:false,draft:previousDraft,errors:['Missing CEFR review payload']}
- const initial=reviewPayload.initialAssessment
- const final=reviewPayload.finalAssessment
- const repairs=reviewPayload.repairs&&typeof reviewPayload.repairs==='object'?reviewPayload.repairs:{}
- if(!initial||!final)return {ok:false,draft:previousDraft,errors:['CEFR review must include initialAssessment and finalAssessment']}
+ const assessment=reviewPayload.assessment
+ const repairRows=Array.isArray(reviewPayload.repairs)?reviewPayload.repairs:[]
+ if(!assessment)return {ok:false,draft:previousDraft,errors:['CEFR review must include assessment for all three levels']}
  const allowedBands={
   'A1-A2':new Set(['A1','A2']),
   'B1-B2':new Set(['B1','B2']),
   'C1-C2':new Set(['C1','C2'])
  }
  const required=new Set(requiredRepairLevels)
+ const repairByLevel=new Map()
+ for(const row of repairRows){
+  if(!LEVELS.includes(row?.level)){errors.push('Repair contains an unknown level');continue}
+  if(repairByLevel.has(row.level)){errors.push(row.level+': duplicate repair entries');continue}
+  repairByLevel.set(row.level,row)
+ }
  const merged=structuredClone(previousDraft)
  const cleanQuote=value=>String(value||'').replace(/\s+/g,' ').trim().toLowerCase()
- const isInBand=(level,assessment)=>allowedBands[level].has(String(assessment?.estimatedBand||''))
- const isPass=assessment=>assessment?.verdict==='pass'&&assessment?.dimensions&&Object.values(assessment.dimensions).length===6&&Object.values(assessment.dimensions).every(v=>v==='within')
- const assessmentNeedsRepair=(level,a)=>!isPass(a)||!isInBand(level,a)
+ const finalPass=a=>a?.finalVerdict==='pass'&&allowedBandsForAssessment(a)&&a?.dimensions&&Object.values(a.dimensions).length===6&&Object.values(a.dimensions).every(v=>v==='fit')
+ const allowedBandsForAssessment=a=>['A1','A2','B1','B2','C1','C2'].includes(String(a?.finalBand||''))
 
  for(const level of LEVELS){
-  const before=initial[level]
-  const after=final[level]
-  if(!before||!after){
-   errors.push(level+': missing initial or final CEFR assessment')
-   continue
-  }
-  const needsRepair=required.has(level)||assessmentNeedsRepair(level,before)
+  const a=assessment[level]
+  if(!a){errors.push(level+': missing descriptor assessment');continue}
+  const initialPass=a.initialVerdict==='pass'&&allowedBands[level].has(String(a.initialBand||''))
+  const needsRepair=required.has(level)||!initialPass
+  const patch=repairByLevel.get(level)
   if(needsRepair){
-   const patch=repairs[level]
    const oldPages=merged.variants?.[level]?.pages||[]
    if(!patch||!Array.isArray(patch.pages)){
     errors.push(level+': review identified a mismatch but did not return a complete level repair')
@@ -1232,21 +1233,19 @@ export function applyCEFRReviewRepairs(previousDraft,reviewPayload,{requiredRepa
      })
     }
    }
-  }else if(repairs[level]){
-   // Do not silently apply unsolicited rewrites to a version the examiner marked as passing.
+  }else if(patch){
    errors.push(level+': unexpected repair supplied for a level that passed initial assessment')
   }
 
-  if(!isInBand(level,after))errors.push(level+': final estimated band '+String(after.estimatedBand||'missing')+' is outside its assigned CEFR group')
-  if(!isPass(after))errors.push(level+': final descriptor assessment is not a confident pass across all six dimensions')
-
+  if(!allowedBands[level].has(String(a.finalBand||'')))errors.push(level+': final estimated band '+String(a.finalBand||'missing')+' is outside its assigned CEFR group')
+  if(!finalPass(a))errors.push(level+': final descriptor assessment is not a confident pass across all six dimensions')
   const finalText=(merged.variants?.[level]?.pages||[]).map(p=>String(p.text||'').replace(/\s+/g,' ').trim()).join(' ').toLowerCase()
-  const quotes=Array.isArray(after.evidence)?after.evidence:[]
+  const quotes=Array.isArray(a.evidence)?a.evidence:[]
   if(!quotes.length||!quotes.some(q=>cleanQuote(q).length>=8&&finalText.includes(cleanQuote(q)))){
    errors.push(level+': final assessment lacks an exact, verifiable text excerpt')
   }
  }
- return {ok:errors.length===0,draft:merged,errors,finalAssessment:final}
+ return {ok:errors.length===0,draft:merged,errors,finalAssessment:assessment}
 }
 
 function formatCEFRRetryBlock(qualityResult){
