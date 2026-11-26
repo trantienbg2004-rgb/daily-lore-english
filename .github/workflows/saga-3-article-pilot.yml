@@ -2,6 +2,10 @@ name: SAGA - 3 Article Pilot
 
 on:
   workflow_dispatch:
+  pull_request:
+    branches: [main]
+    paths:
+      - '.github/workflows/saga-3-article-pilot.yml'
 
 permissions:
   contents: read
@@ -12,6 +16,7 @@ concurrency:
 
 jobs:
   pilot:
+    if: github.event_name == 'workflow_dispatch' || (github.event_name == 'pull_request' && github.event.pull_request.head.ref == 'test/saga-live-pilot-catalog-audit-20261127')
     name: Generate up to 3 isolated Wiki articles
     runs-on: ubuntu-latest
     timeout-minutes: 30
@@ -35,6 +40,12 @@ jobs:
             npm install --no-audit --no-fund
           fi
 
+      - name: Read-only audit of the currently published CEFR catalog
+        run: |
+          mkdir -p /tmp/saga-pilot
+          node scripts/audit_wiki_cefr.mjs --json | tee /tmp/saga-pilot/existing-cefr-audit.json
+          node -e "const r=require('/tmp/saga-pilot/existing-cefr-audit.json'); console.log('Existing catalog CEFR audit:', r.passedCount, 'passed /', r.failedCount, 'failed out of', r.totalArticles)"
+
       - name: Generate isolated three-article pilot
         id: pilot
         env:
@@ -51,6 +62,15 @@ jobs:
             --target-root=/tmp/saga-pilot \
             --max-articles=3 \
             --max-candidates=9
+
+      - name: Upload existing catalog CEFR audit
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: saga-existing-catalog-cefr-audit
+          path: /tmp/saga-pilot/existing-cefr-audit.json
+          if-no-files-found: warn
+          retention-days: 7
 
       - name: Upload isolated pilot catalog
         if: always()
