@@ -29,7 +29,7 @@ export const DEFAULT_GEMINI_FALLBACK_MODELS=[
  'gemini-3.6-flash',
  'gemini-3.8-flash'
 ]
-export const DEFAULT_UNAVAILABLE_RETRY_MS=10_000
+export const DEFAULT_UNAVAILABLE_RETRY_MS=5000
 export const DEFAULT_MAX_ARTICLES=15
 export const DEFAULT_REGENERATE_MAX_ARTICLES=3
 export const BOOTSTRAP_THRESHOLD=1000
@@ -41,7 +41,7 @@ export const DEFAULT_MAX_RUNTIME_MS=24*60*1000
 export const DEFAULT_GEMINI_TIMEOUT_MS=60_000
 export const MIN_CANDIDATE_BUDGET_MS=45_000
 export const MIN_RETRY_BUDGET_MS=20_000
-export const MAX_COOLDOWN_MS=30_000
+export const MAX_COOLDOWN_MS=15_000
 // Stop a single request's fallback chain after three distinct models return 503 twice.
 export const MAX_UNAVAILABLE_MODELS_PER_CALL=3
 const LEVELS=['A1-A2','B1-B2','C1-C2']
@@ -1338,39 +1338,19 @@ export function applyCEFRReviewRepairs(previousDraft,reviewPayload,{requiredRepa
 function formatCEFRRetryBlock(qualityResult){
  const cefr=qualityResult?.cefr||qualityResult
  const profiles=cefr?.profiles
- const lines=[]
- if(profiles?.['A1-A2']&&profiles?.['B1-B2']&&profiles?.['C1-C2']){
-  lines.push(
-   'ADVISORY CEFR SCREENING SIGNALS — NOT A PASS/FAIL STANDARD:',
-   ...LEVELS.map(level=>{
-    const p=profiles[level]
-    return '- '+level+': FKGL='+p.fkgl+', average sentence='+p.avgSentenceLength+' words, lexical profile='+JSON.stringify(p.lexicalProfile)+', flagged words='+JSON.stringify((p.overLevelWords||[]).slice(0,12))
-   }),
-   '- These signals are imperfect diagnostics, not CEFR definitions. Do NOT rewrite, simplify, lengthen or replace words merely to hit a numeric threshold.',
-   '- Review a flagged word in its sentence and sense. Keep essential names and technical terms when needed; explain them in context for lower-level readers.',
-   '- Make changes only when the actual reading experience is outside the assigned CEFR descriptor band or when a deterministic editorial/source-grounding error requires a correction.',
-   '- Keep C1-C2 natural and precise. Do not create artificial academic jargon or unnecessary complexity.'
-  )
- }
- const reviewer=qualityResult?.cefrReview
- if(reviewer&&typeof reviewer==='object'){
-  const reviewerLines=LEVELS.filter(level=>reviewer[level]).map(level=>{
-   const a=reviewer[level]
-   return '- '+level+': initialBand='+String(a.initialBand||'?')+', initialVerdict='+String(a.initialVerdict||'?')+', initialDimensions='+JSON.stringify(a.initialDimensions||{})+
-    '; finalBand='+String(a.finalBand||'?')+', finalVerdict='+String(a.finalVerdict||'?')+', finalDimensions='+JSON.stringify(a.finalDimensions||{})+
-    '; reviewer rationale: '+String(a.rationale||'No rationale supplied.')
-  })
-  if(reviewerLines.length){
-   lines.push(
-    'INDEPENDENT CEFR REVIEW FINDINGS — USE THESE CONCRETE DIAGNOSES TO GUIDE THE TARGETED REPAIR:',
-    ...reviewerLines,
-    '- A dimension marked high means the text is too difficult for its assigned band: simplify vocabulary and syntax, explain essential specialist terms, and reduce unnecessary abstraction or inference.',
-    '- A dimension marked low means the text is too easy for its assigned band: add source-supported detail, clearer cause/effect, more developed connections or appropriate conceptual precision without padding or jargon.',
-    '- A dimension marked fit should be preserved; do not damage a dimension that already fits.'
-   )
-  }
- }
- return lines.length?'\n\n'+lines.join('\n'):''
+ if(!profiles?.['A1-A2']||!profiles?.['B1-B2']||!profiles?.['C1-C2'])return ''
+ const lines=[
+  'ADVISORY CEFR SCREENING SIGNALS — NOT A PASS/FAIL STANDARD:',
+  ...LEVELS.map(level=>{
+   const p=profiles[level]
+   return '- '+level+': FKGL='+p.fkgl+', average sentence='+p.avgSentenceLength+' words, lexical profile='+JSON.stringify(p.lexicalProfile)+', flagged words='+JSON.stringify((p.overLevelWords||[]).slice(0,12))
+  }),
+  '- These signals are imperfect diagnostics, not CEFR definitions. Do NOT rewrite, simplify, lengthen or replace words merely to hit a numeric threshold.',
+  '- Review a flagged word in its sentence and sense. Keep essential names and technical terms when needed; explain them in context for lower-level readers.',
+  '- Make changes only when the actual reading experience is outside the assigned CEFR descriptor band or when a deterministic editorial/source-grounding error requires a correction.',
+  '- Keep C1-C2 natural and precise. Do not create artificial academic jargon or unnecessary complexity.'
+ ]
+ return '\n\n'+lines.join('\n')
 }
 
 /** Identify exact failing headlines, pages, and levels so repair preserves all already-valid content. */
@@ -2726,7 +2706,6 @@ export async function runPublishWikiBatch({
    const mergedRaw=mergeTargetedRepairs(normalizedDraft,retryRes.draft,repairTargets)
    const repairedDraft=normalizeDraftForCatalog(mergedRaw,{source,evidence:trimmed.evidence,verifiedPhotos})
    const repairedQuality=validateArticleQuality(repairedDraft,source.sourceTitle,{source,evidence:trimmed.evidence,requireLevelPlans:!dryRun&&callGeminiImpl===callGeminiFlashLite})
-   if(quality.cefrReview)repairedQuality.cefrReview=quality.cefrReview
    return {
     budgetHit:false,
     model:retryRes.model,
@@ -2819,7 +2798,7 @@ export async function runPublishWikiBatch({
    let normalizedDraft
    let quality
    let repairUsed=false
-   let reviewerModelUsed=null
+   const generationModelsUsed=new Set()
    let usedModel=dryRun?'dry-run':(keyState.preferredModel||modelChain[0])
    if(dryRun){
     normalizedDraft=normalizeDraftForCatalog(makeDryRunDraft(source,trimmed.evidence,verifiedPhotos),{source,evidence:trimmed.evidence,verifiedPhotos})
@@ -2829,6 +2808,7 @@ export async function runPublishWikiBatch({
     const firstRes=await invokeGeminiWithDelay(prompt,{reserveMs:minRetryBudgetMs,schema:BATCH_STORY_SCHEMA})
     consecutiveInfraFailures=0
     usedModel=firstRes.model||usedModel
+    generationModelsUsed.add(usedModel)
     normalizedDraft=normalizeDraftForCatalog(firstRes.draft,{source,evidence:trimmed.evidence,verifiedPhotos})
     quality=validateArticleQuality(normalizedDraft,source.sourceTitle,{source,evidence:trimmed.evidence})
 
@@ -2844,6 +2824,7 @@ export async function runPublishWikiBatch({
      }
      repairUsed=true
      usedModel=repairOutcome.model||usedModel
+     generationModelsUsed.add(usedModel)
      normalizedDraft=repairOutcome.normalizedDraft
      quality=repairOutcome.quality
     }
@@ -2863,7 +2844,7 @@ export async function runPublishWikiBatch({
       for(const level of LEVELS)requiredRepairLevels.add(level)
      }
      const reviewPrompt=buildCEFRReviewRepairPrompt(source,item.topic,trimmed.evidence,normalizedDraft,quality)
-     const independentReviewerChain=buildIndependentCEFRReviewerChain(reviewerModelChain,usedModel)
+     const independentReviewerChain=buildIndependentCEFRReviewerChain(reviewerModelChain,[...generationModelsUsed])
      if(!independentReviewerChain.length)throw Error('No independent CEFR reviewer model available: generator used '+usedModel+'; configured reviewer chain was ['+reviewerModelChain.join(', ')+']. Failing closed rather than allowing self-review.')
      console.log('[batch]   -> Independent CEFR reviewer route: generator='+usedModel+'; reviewer candidates=['+independentReviewerChain.join(', ')+'].')
      const reviewRes=await invokeGeminiWithDelay(reviewPrompt,{reserveMs:minRetryBudgetMs,schema:buildCEFRReviewRepairSchema(normalizedDraft),modelChainOverride:independentReviewerChain,keyStateOverride:reviewerKeyState})
@@ -2876,8 +2857,7 @@ export async function runPublishWikiBatch({
       quality.ok=false
       quality.errors.push(...reviewOutcome.errors.map(e=>'CEFR descriptor review: '+e))
      }
-     reviewerModelUsed=reviewRes.model||independentReviewerChain[0]
-     console.log(`[batch]   -> CEFR descriptor review model=${reviewerModelUsed} (independent of generator ${usedModel}) [${LEVELS.map(level=>level+':'+(reviewOutcome.finalAssessment?.[level]?.finalBand||'uncertain')).join(' / ')}], repairs=${(reviewRes.draft?.repairs||[]).map(row=>row.level).join(',')||'none'}.`)
+     console.log(`[batch]   -> CEFR descriptor review model=${reviewRes.model||independentReviewerChain[0]} (independent of content generators ${[...generationModelsUsed].join(', ')}) [${LEVELS.map(level=>level+':'+(reviewOutcome.finalAssessment?.[level]?.finalBand||'uncertain')).join(' / ')}], repairs=${(reviewRes.draft?.repairs||[]).map(row=>row.level).join(',')||'none'}.`)
     }
    }
 
@@ -2892,6 +2872,7 @@ export async function runPublishWikiBatch({
     }
     repairUsed=true
     usedModel=residualRepair.model||usedModel
+    generationModelsUsed.add(usedModel)
     normalizedDraft=residualRepair.normalizedDraft
     quality=residualRepair.quality
     if(!identifyRepairTargets(normalizedDraft,quality).structuralParityFailed){
@@ -2904,7 +2885,7 @@ export async function runPublishWikiBatch({
       for(const level of LEVELS)retryRequiredRepairLevels.add(level)
      }
      const retryReviewPrompt=buildCEFRReviewRepairPrompt(source,item.topic,trimmed.evidence,normalizedDraft,quality)
-     const independentReviewerChain=buildIndependentCEFRReviewerChain(reviewerModelChain,usedModel)
+     const independentReviewerChain=buildIndependentCEFRReviewerChain(reviewerModelChain,[...generationModelsUsed])
      if(!independentReviewerChain.length)throw Error('No independent CEFR reviewer model available after targeted repair: generator used '+usedModel+'; configured reviewer chain was ['+reviewerModelChain.join(', ')+']. Failing closed rather than allowing self-review.')
      console.log('[batch]   -> Final independent CEFR reviewer route: generator='+usedModel+'; reviewer candidates=['+independentReviewerChain.join(', ')+'].')
      const retryReviewRes=await invokeGeminiWithDelay(retryReviewPrompt,{reserveMs:minRetryBudgetMs,schema:buildCEFRReviewRepairSchema(normalizedDraft),modelChainOverride:independentReviewerChain,keyStateOverride:reviewerKeyState})
@@ -2917,8 +2898,7 @@ export async function runPublishWikiBatch({
       quality.ok=false
       quality.errors.push(...retryReviewOutcome.errors.map(e=>'CEFR descriptor review after targeted retry: '+e))
      }
-     reviewerModelUsed=retryReviewRes.model||independentReviewerChain[0]
-     console.log(`[batch]   -> Residual targeted repair + final CEFR review model=${reviewerModelUsed} (independent of generator ${usedModel}) [${LEVELS.map(level=>level+':'+(retryReviewOutcome.finalAssessment?.[level]?.finalBand||'uncertain')).join(' / ')}], repairs=${(retryReviewRes.draft?.repairs||[]).map(row=>row.level).join(',')||'none'}.`)
+     console.log(`[batch]   -> Residual targeted repair + final CEFR review model=${retryReviewRes.model||independentReviewerChain[0]} (independent of content generators ${[...generationModelsUsed].join(', ')}) [${LEVELS.map(level=>level+':'+(retryReviewOutcome.finalAssessment?.[level]?.finalBand||'uncertain')).join(' / ')}], repairs=${(retryReviewRes.draft?.repairs||[]).map(row=>row.level).join(',')||'none'}.`)
     }
    }
 
@@ -2989,6 +2969,7 @@ export async function runPublishWikiBatch({
      }
      repairUsed=true
      usedModel=repairOutcome.model||usedModel
+     generationModelsUsed.add(usedModel)
      normalizedDraft=repairOutcome.normalizedDraft
      assigned=assignBatchPhotos(normalizedDraft.variants,{
       source,
@@ -3048,8 +3029,6 @@ export async function runPublishWikiBatch({
      licenseUrl:item._existingStory.licenseUrl||builtStory.licenseUrl
     }
     :builtStory
-   story.generationModel=usedModel
-   if(reviewerModelUsed)story.cefrReviewerModel=reviewerModelUsed
    const gate=validateWikiStory(story)
    if(!gate.accepted)throw Error(`Story failed catalog gate: ${gate.errors.join(', ')}`)
 
