@@ -178,6 +178,57 @@ async function runTopic(id){
      const a=applied.finalAssessment?.[level]
      return a?.finalVerdict==='pass'&&['A1','A2','B1','B2','C1','C2'].includes(a.finalBand)
     })
+
+    // Mirror production's one bounded targeted retry for deterministic issues missed
+    // by the first descriptor reviewer, then reassess the changed final text.
+    if(!quality.ok&&!identifyRepairTargets(draft,quality).structuralParityFailed){
+     const retryTargets=identifyRepairTargets(draft,quality)
+     const retryPrompt=buildTargetedRepairPrompt(fixture.source,fixture.topic,fixture.evidence,draft,quality,fixture.photos,retryTargets)
+     const retrySchema=retryTargets.useTargetedPatch?TARGETED_REPAIR_SCHEMA:generationSchema
+     const retryRepair=await invoke(retryPrompt,retrySchema,id+' residual targeted repair')
+     const retryMerged=mergeTargetedRepairs(draft,retryRepair.draft,retryTargets)
+     draft=normalizeDraftForCatalog(retryMerged,{source:fixture.source,evidence:fixture.evidence,verifiedPhotos:fixture.photos})
+     quality=validateArticleQuality(draft,fixture.source.sourceTitle,{
+      source:fixture.source,
+      evidence:fixture.evidence,
+      requireLevelPlans:true
+     })
+     result.postReviewRepair={model:retryRepair.model,ok:quality.ok,errors:quality.errors,targetSummary:retryTargets.targetSummary}
+     if(!identifyRepairTargets(draft,quality).structuralParityFailed){
+      result.firstReview=result.review
+      result.firstReviewUsage=result.reviewUsage
+      const retryReviewPrompt=buildCEFRReviewRepairPrompt(fixture.source,fixture.topic,fixture.evidence,draft,quality)
+      const retryReview=await invoke(retryReviewPrompt,buildCEFRReviewRepairSchema(draft),id+' final descriptor review',{reviewer:true})
+      const retryApplied=applyCEFRReviewRepairs(draft,retryReview.draft,{
+       requiredRepairLevels:levelsNeedingRepair(quality),
+       validEvidenceIds:new Set(fixture.evidence.map(x=>x.id))
+      })
+      result.review={
+       ok:retryApplied.ok,
+       errors:retryApplied.errors,
+       warnings:retryApplied.warnings||[],
+       assessment:retryReview.draft?.assessment||null,
+       finalAssessment:retryApplied.finalAssessment||null,
+       reviewerModelUsed:retryReview.model,
+       repairedLevels:(retryReview.draft?.repairs||[]).map(x=>x.level),
+       repairPageIndexes:Object.fromEntries((retryReview.draft?.repairs||[]).map(x=>[x.level,(x.pages||[]).map(p=>p.pageIndex)]))
+      }
+      result.reviewUsage=retryReview.usage||null
+      draft=normalizeDraftForCatalog(retryApplied.draft,{source:fixture.source,evidence:fixture.evidence,verifiedPhotos:fixture.photos})
+      const retryFinalization=assignAndValidateFinalPhotos(draft,fixture)
+      draft=retryFinalization.draft
+      quality=retryFinalization.quality
+      result.imageAssignment=retryFinalization.assignment
+      result.finalQuality={ok:quality.ok,errors:quality.errors,metrics:quality.metrics,heuristicWarnings:quality.cefr?.errors||[]}
+      result.passed=retryApplied.ok&&retryFinalization.assignment.ok&&quality.ok&&['A1-A2','B1-B2','C1-C2'].every(level=>{
+       const a=retryApplied.finalAssessment?.[level]
+       return a?.finalVerdict==='pass'&&['A1','A2','B1','B2','C1','C2'].includes(a.finalBand)
+      })
+     }else{
+      result.finalQuality={ok:quality.ok,errors:quality.errors,metrics:quality.metrics,heuristicWarnings:quality.cefr?.errors||[]}
+      result.passed=false
+     }
+    }
   }else{
    result.review={ok:false,errors:['Structural page/image parity remained unresolved; production also skips descriptor review in this state.']}
    result.finalQuality={ok:quality.ok,errors:quality.errors,metrics:quality.metrics,heuristicWarnings:quality.cefr?.errors||[]}
