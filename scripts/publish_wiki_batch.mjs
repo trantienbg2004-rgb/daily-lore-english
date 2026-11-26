@@ -487,8 +487,10 @@ export function buildGeminiGenerationConfig(model=DEFAULT_GEMINI_MODEL,{schema=B
   responseJsonSchema:schema,
   maxOutputTokens:9500
  }
- // Gemini 4 models restrict deprecated sampling parameters like temperature
- if(!/^gemini-4(?:\b|-)/.test(name)){
+ // Gemini 4 defaults to deep reasoning; LOW preserves token budget for structured reviewer output.
+ if(/^gemini-4(?:\b|-)/.test(name)){
+  config.thinkingConfig={thinkingLevel:'LOW'}
+ }else{
   config.temperature=0.35
  }
  return config
