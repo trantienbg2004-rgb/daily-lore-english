@@ -197,12 +197,10 @@ const OUTLINE_PAGE_SCHEMA={
  properties:{
   pageIndex:{type:'integer'},
   focus:{type:'string'},
-  factIds:{type:'array',items:{type:'string'},minItems:1},
-  evidenceIds:{type:'array',items:{type:'string'},minItems:1},
   imageId:{anyOf:[{type:'string'},{type:'null'}]},
   imageReason:{type:'string'}
  },
- required:['pageIndex','focus','factIds','evidenceIds','imageId']
+ required:['pageIndex','focus','imageId']
 }
 
 const LEVEL_PLAN_SCHEMA={
@@ -1044,7 +1042,7 @@ export function buildBatchPrompt(source,topic,evidence,verifiedPhotos=[]){
   'STEP 2 — SHARED VISUAL PAGE MAP (outline)',
   '- Create a '+PAGE_COUNT_BOUNDS.min+'-'+PAGE_COUNT_BOUNDS.max+' PAGE OUTLINE with page slots in a logical broad story sequence.',
   '- This shared outline exists ONLY to keep page count, visual order and imageId alignment stable across the three versions.',
-  '- Each slot has pageIndex, a broad visual subject/focus, factIds, evidenceIds, imageId and imageReason.',
+  '- Each slot has pageIndex, a broad visual subject/focus, imageId and imageReason. Fact selection belongs only in each levelPlan.',
   '- Do NOT force all levels to explain the same facts at the same depth or in the same order. The level-specific plans below control content selection and depth.',
   '- The same imageId (or null) must remain at the same pageIndex across all three variants. Only choose an image if it remains relevant to all versions of that page.',
   '',
