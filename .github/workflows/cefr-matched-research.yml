@@ -1,0 +1,50 @@
+name: CEFR Matched Research Trial
+
+on:
+  pull_request:
+    types: [opened]
+    branches: [main]
+    paths:
+      - 'scripts/cefr-matched-trial.mjs'
+      - '.github/workflows/cefr-matched-research.yml'
+
+permissions:
+  contents: read
+
+# Serialize with production publishing to avoid competing for the same API quota.
+concurrency:
+  group: auto-wiki-publish
+  cancel-in-progress: false
+
+jobs:
+  experiment:
+    if: github.event.pull_request.head.repo.full_name == github.repository && github.head_ref == 'research/saga-cefr-matched-trial'
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Install locked dependencies
+        run: npm ci --no-audit --no-fund
+      - name: Run offline preflight before spending API quota
+        run: |
+          node --check scripts/cefr-matched-trial.mjs
+          node scripts/cefr-matched-trial.mjs --self-test
+          npm test
+      - name: Execute bounded matched experiment
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          CEFR_TRIAL_OUTPUT: /tmp/saga-cefr-matched-trial
+        run: node scripts/cefr-matched-trial.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: saga-cefr-matched-research
+          path: /tmp/saga-cefr-matched-trial/
+          if-no-files-found: warn
+          retention-days: 14
