@@ -158,6 +158,7 @@ test('CEFR reviewer prompt uses official reading descriptors and treats FKGL/wor
  assert.match(prompt,/NOT CEFR DEFINITIONS/i)
  assert.match(prompt,/A1-A2/)
  assert.match(prompt,/finalVerdict/)
+ assert.match(prompt,/EXACTLY ONE complete sentence copied character-for-character/)
 })
 
 test('applyCEFRRequeue enforces safety floor, prepends removed stories to FRONT of queue without duplicates, and buildRoundRobinOrder prioritizes them first',async()=>{
