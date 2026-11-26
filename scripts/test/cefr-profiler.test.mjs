@@ -15,6 +15,8 @@ import {
  buildCEFRReviewRepairSchema,
  buildQualityRetryPrompt,
  buildRoundRobinOrder,
+ identifyRepairTargets,
+ mergeTargetedRepairs,
  validateArticleQuality
 } from '../publish_wiki_batch.mjs'
 import {applyCEFRRequeue,auditStoriesCEFR} from '../audit_wiki_cefr.mjs'
@@ -138,9 +140,16 @@ test('CEFR descriptor reviewer accepts in-band assessments, merges partial repai
  assert.match(repaired.draft.variants['B1-B2'].pages[0].text,/Builders changed the town/)
  assert.equal(repaired.draft.variants['B1-B2'].pages[0].imageId,'IMG_0','Repair must preserve image binding')
 
+ const noOpRepair=structuredClone(passPayload)
+ noOpRepair.assessment['B1-B2']=assessment('B1','Local builders compared plans','C1','revise')
+ noOpRepair.repairs=[{level:'B1-B2',pages:[{pageIndex:0,text:'Local builders compared plans and improved the town over several years.',evidenceIds:['P1']}]}]
+ const noOp=applyCEFRReviewRepairs(draft,noOpRepair)
+ assert.equal(noOp.ok,false,'A reviewer cannot mark a mismatched level as repaired without changing article text')
+ assert.ok(noOp.errors.some(e=>/descriptor review required a text repair but no page text changed/.test(e)))
+
  const badHeadline=structuredClone(passPayload)
  badHeadline.assessment['A1-A2']=assessment('A2','People built a small town','B1','revise')
- badHeadline.repairs=[{level:'A1-A2',headline:'The History of Radio',pages:[{pageIndex:0,text:'People built a small town near the river. Families shared food and tools.',evidenceIds:['P1']}]}]
+ badHeadline.repairs=[{level:'A1-A2',headline:'The History of Radio',pages:[{pageIndex:0,text:'People built a small town beside the river. Families shared food and tools.',evidenceIds:['P1']}]}]
  const headlineSafe=applyCEFRReviewRepairs(draft,badHeadline)
  assert.equal(headlineSafe.ok,true,headlineSafe.errors.join(' | '))
  assert.equal(headlineSafe.draft.variants['A1-A2'].headline,'A Simple Story About Town Life','Invalid short reviewer headline must not replace a valid original')
@@ -174,6 +183,55 @@ test('CEFR descriptor reviewer accepts in-band assessments, merges partial repai
  assert.equal(audited.ok,true,audited.errors.join(' | '))
  assert.equal(audited.finalAssessment['A1-A2'].verbatimExcerpt,'People built a small town near the river.')
 
+})
+
+test('identifyRepairTargets scopes descriptor-review failures to only the affected CEFR levels',()=>{
+ const pages=Array.from({length:4},(_,index)=>({text:`Page ${index+1} has source-grounded content.`,imageId:null}))
+ const draft={variants:{
+  'A1-A2':{pages:structuredClone(pages)},
+  'B1-B2':{pages:structuredClone(pages)},
+  'C1-C2':{pages:structuredClone(pages)}
+ }}
+ const targets=identifyRepairTargets(draft,{errors:[
+  'CEFR descriptor review: B1-B2: review identified a mismatch but did not return any changed pages',
+  'CEFR descriptor review after targeted retry: C1-C2: final descriptor assessment is not a confident pass across all six dimensions'
+ ]})
+ assert.equal(targets.structuralParityFailed,false)
+ assert.equal(targets.useTargetedPatch,true)
+ assert.deepEqual(targets.cefrLevels,['B1-B2','C1-C2'])
+ assert.deepEqual(targets.targetSummary.map(item=>item.level),['B1-B2','C1-C2'])
+ assert.deepEqual(targets.targetSummary[0].pageIndexes,[0,1,2,3])
+ assert.deepEqual(targets.targetSummary[1].pageIndexes,[0,1,2,3])
+
+ const planTargets=identifyRepairTargets(draft,{errors:['B1-B2: level plan references unknown factId F8']})
+ assert.equal(planTargets.useTargetedPatch,true)
+ assert.deepEqual(planTargets.targetSummary,[{level:'B1-B2',headline:false,levelPlan:true,pageIndexes:[]}])
+})
+
+test('targeted repair corrects an invalid level-plan fact ID without changing untouched levels or source facts',()=>{
+ const factSheet={coreFacts:[{id:'F1'},{id:'F2'},{id:'F3'},{id:'F4'}]}
+ const levelPlans={
+  'A1-A2':{readerObjective:'Read the essential story',selectedFactIds:['F1','F2'],depthNotes:'Use concrete language'},
+  'B1-B2':{readerObjective:'Understand the main developments',selectedFactIds:['F1','F8','F2'],depthNotes:'Explain cause and effect'},
+  'C1-C2':{readerObjective:'Evaluate the wider implications',selectedFactIds:['F1','F2','F3'],depthNotes:'Add nuance and qualifications'}
+ }
+ const draft={factSheet,sharedCoreFactIds:['F1','F2'],levelPlans,variants:{
+  'A1-A2':{pages:[{text:'A simple page.'}]},
+  'B1-B2':{pages:[{text:'A developed page.'}]},
+  'C1-C2':{pages:[{text:'A nuanced page.'}]}
+ }}
+ const targets=identifyRepairTargets(draft,{errors:['B1-B2: level plan references unknown factId F8']})
+ const merged=mergeTargetedRepairs(draft,{repairs:{
+  'B1-B2':{levelPlan:{selectedFactIds:['F1','F2','F3']}}
+ }},targets)
+ assert.deepEqual(merged.levelPlans['B1-B2'].selectedFactIds,['F1','F2','F3'])
+ assert.deepEqual(merged.levelPlans['A1-A2'],levelPlans['A1-A2'])
+ assert.deepEqual(merged.levelPlans['C1-C2'],levelPlans['C1-C2'])
+ assert.deepEqual(merged.factSheet,factSheet)
+ assert.deepEqual(merged.variants,draft.variants)
+ assert.throws(()=>mergeTargetedRepairs(draft,{repairs:{
+  'B1-B2':{levelPlan:{selectedFactIds:['F1','F8']}}
+ }},targets),/unknown factId/)
 })
 
 test('CEFR reviewer prompt uses official reading descriptors and treats FKGL/wordlist as advisory diagnostics',()=>{

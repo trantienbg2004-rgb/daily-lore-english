@@ -271,6 +271,13 @@ const REPAIR_LEVEL_SCHEMA={
  type:'object',
  properties:{
   headline:{type:'string'},
+  levelPlan:{
+   type:'object',
+   properties:{
+    selectedFactIds:{type:'array',items:{type:'string'},minItems:2,maxItems:10}
+   },
+   required:['selectedFactIds']
+  },
   pages:{type:'array',items:REPAIR_PAGE_SCHEMA}
  }
 }
@@ -1256,6 +1263,7 @@ export function applyCEFRReviewRepairs(previousDraft,reviewPayload,{requiredRepa
   const initialPass=a.initialVerdict==='pass'&&allowedBands[level].has(String(a.initialBand||''))&&dimensionsFit(a.initialDimensions)
   const needsRepair=required.has(level)||!initialPass
   const patch=repairByLevel.get(level)
+  let changedArticleText=false
   if(needsRepair){
    const oldPages=merged.variants?.[level]?.pages||[]
    if(!patch||!Array.isArray(patch.pages)||!patch.pages.length){
@@ -1280,9 +1288,12 @@ export function applyCEFRReviewRepairs(previousDraft,reviewPayload,{requiredRepa
      if(validEvidenceIds&&(!Array.isArray(next.evidenceIds)||!next.evidenceIds.length||next.evidenceIds.some(id=>!validEvidenceIds.has(id)))){
       errors.push(level+' repair page '+(idx+1)+': evidenceIds must reference supplied source passages')
      }
+     const originalText=normalizeParagraphText(oldPage.text,oldPage.paragraphs,{ensureTerminalPunctuation:true})
+     const repairedText=normalizeParagraphText(next.text,next.paragraphs,{ensureTerminalPunctuation:true})
+     if(repairedText.trim()!==originalText.trim())changedArticleText=true
      return {
       ...oldPage,
-      text:normalizeParagraphText(next.text,next.paragraphs,{ensureTerminalPunctuation:true}),
+      text:repairedText,
       ...(typeof next.caption==='string'?{caption:next.caption.trim()}:{}),
       ...(Array.isArray(next.evidenceIds)&&next.evidenceIds.length?{evidenceIds:next.evidenceIds}:{})
      }
@@ -1301,6 +1312,7 @@ export function applyCEFRReviewRepairs(previousDraft,reviewPayload,{requiredRepa
    errors.push(level+': unexpected repair supplied for a level that passed initial assessment')
   }
 
+  if(!initialPass&&!changedArticleText)errors.push(level+': descriptor review required a text repair but no page text changed')
   if(!allowedBands[level].has(String(a.finalBand||'')))errors.push(level+': final estimated band '+String(a.finalBand||'missing')+' is outside its assigned CEFR group')
   if(!finalPass(a))errors.push(level+': final descriptor assessment is not a confident pass across all six dimensions')
   const finalText=(merged.variants?.[level]?.pages||[]).map(p=>String(p.text||'')).join(' ')
@@ -1335,13 +1347,19 @@ export function identifyRepairTargets(draft,qualityResult){
  const pageCount=Math.min(...LEVELS.map(l=>draft?.variants?.[l]?.pages?.length||0))
  const failingHeadlines=new Set()
  const failingPages=Object.fromEntries(LEVELS.map(l=>[l,new Set()]))
+ const failingLevelPlans=new Set()
  const cefrLevels=new Set()
  let structuralParityFailed=false
 
  for(const err of errors){
-  const msg=String(err||'')
+  const msg=String(err||'').replace(/^CEFR descriptor review(?: after targeted retry)?:\s*/i,'')
   if(/Cross-level page count|Cross-level image parity|page count must be between|Outline page count|Outline image mismatch/i.test(msg)){
    structuralParityFailed=true
+   continue
+  }
+  const planMatch=msg.match(/^(A1-A2|B1-B2|C1-C2):\s*(?:level plan references unknown factId|selectedFactIds|missing reader objective|missing level-specific depth notes)/i)
+  if(planMatch){
+   failingLevelPlans.add(planMatch[1].toUpperCase())
    continue
   }
   const pageMatch=msg.match(/^(A1-A2|B1-B2|C1-C2)\s+page\s+(\d+)\b/i)
@@ -1391,14 +1409,16 @@ export function identifyRepairTargets(draft,qualityResult){
  const targetSummary=LEVELS.map(lvl=>({
   level:lvl,
   headline:failingHeadlines.has(lvl),
+  levelPlan:failingLevelPlans.has(lvl),
   pageIndexes:[...failingPages[lvl]].sort((a,b)=>a-b)
- })).filter(item=>item.headline||item.pageIndexes.length>0)
+ })).filter(item=>item.headline||item.levelPlan||item.pageIndexes.length>0)
 
  return {
   structuralParityFailed,
   failingHeadlines:[...failingHeadlines],
   failingPages:Object.fromEntries(LEVELS.map(l=>[l,[...failingPages[l]].sort((a,b)=>a-b)])),
   cefrLevels:[...cefrLevels],
+  failingLevelPlans:[...failingLevelPlans],
   targetSummary,
   useTargetedPatch:!structuralParityFailed&&targetSummary.length>0
  }
@@ -1440,8 +1460,16 @@ ${passages}`
  const failingSnapshot={}
  for(const item of targets.targetSummary){
   const v=previousDraft.variants[item.level]
+  const levelPlan=previousDraft.levelPlans?.[item.level]||{}
   failingSnapshot[item.level]={
    ...(item.headline?{headline:v.headline}:{}),
+   ...(item.levelPlan?{levelPlan:{
+    readerObjective:levelPlan.readerObjective||'',
+    selectedFactIds:levelPlan.selectedFactIds||[],
+    depthNotes:levelPlan.depthNotes||'',
+    validFactIds:(previousDraft.factSheet?.coreFacts||[]).map(f=>f.id),
+    sharedCoreFactIds:previousDraft.sharedCoreFactIds||[]
+   }}:{}),
    ...(item.pageIndexes.length?{
     pages:item.pageIndexes.map(idx=>{
      const p=v.pages[idx]
@@ -1467,8 +1495,9 @@ FAILED CHECKS TO FIX:
 ${issues}${cefrBlock}
 
 TARGETED RULES:
-- Return pure JSON matching: {"repairs":{"A1-A2":{"headline?":"...","pages":[{"pageIndex":0,"text":"...","caption?":"...","evidenceIds":["P1"]}]},"B1-B2":{...},"C1-C2":{...}}}
-- Include ONLY the levels, headlines, and pageIndexes listed in ITEMS TO REPAIR below.
+- Return pure JSON matching: {"repairs":{"A1-A2":{"headline?":"...","levelPlan?":{"selectedFactIds":["F1","F2"]},"pages":[{"pageIndex":0,"text":"...","caption?":"...","evidenceIds":["P1"]}]},"B1-B2":{...},"C1-C2":{...}}}
+- Include ONLY the levels, headlines, levelPlans, and pageIndexes listed in ITEMS TO REPAIR below.
+- For a levelPlan target, return 2-10 selectedFactIds chosen ONLY from that item's validFactIds. Preserve all sharedCoreFactIds, readerObjective and depthNotes. Never invent, rename, or guess a fact ID.
 - Preserve the shared page/image map, each level's own planned focus, paragraph boundaries ("\\n\\n"), dates, numbers, uncertainty/safety conditions, and evidence IDs. Do not add or remove images.
 - Advisory photo section pacing: ${photoLine}
 - Advisory text-only section pacing: ${textLine}
@@ -1529,6 +1558,19 @@ export function mergeTargetedRepairs(previousDraft,repairPayload,repairTargets){
   if(!patch||typeof patch!=='object')continue
   const targetVariant=merged.variants[item.level]
   if(!targetVariant)continue
+
+  if(item.levelPlan){
+   const selected=patch.levelPlan?.selectedFactIds
+   if(!Array.isArray(selected))throw Error('Targeted repair payload missing levelPlan.selectedFactIds for '+item.level)
+   const unique=[...new Set(selected)]
+   const validFactIds=new Set((merged.factSheet?.coreFacts||[]).map(f=>f.id))
+   const invalid=unique.filter(id=>!validFactIds.has(id))
+   if(invalid.length)throw Error('Targeted repair returned unknown factId(s) for '+item.level+': '+invalid.join(', '))
+   if(unique.length<2||unique.length>10)throw Error('Targeted repair selectedFactIds must contain 2-10 valid facts for '+item.level)
+   merged.levelPlans=merged.levelPlans||{}
+   merged.levelPlans[item.level]={...(merged.levelPlans[item.level]||{}),selectedFactIds:unique}
+   appliedChanges++
+  }
 
   if(item.headline&&typeof patch.headline==='string'&&patch.headline.trim()){
    targetVariant.headline=patch.headline.trim()
@@ -2499,7 +2541,7 @@ export async function runPublishWikiBatch({
  const keyState=ensureKeyState({keys:resolvedKeys,activeIndex:0,exhaustedKeys:new Set()})
  // Use a separate, stronger model route for CEFR assessment so the generator does not grade its own work.
  const reviewerModel=String(process.env.CEFR_REVIEW_MODEL||'gemini-3.6-flash').trim()
- const reviewerFallbacks=process.env.CEFR_REVIEW_FALLBACK_MODELS||['gemini-3.8-flash','gemini-3.5-flash-lite']
+ const reviewerFallbacks=process.env.CEFR_REVIEW_FALLBACK_MODELS||['gemini-3.8-flash','gemini-3.1-flash-lite']
  const reviewerModelChain=resolveGeminiModelChain({model:reviewerModel,fallbackModels:reviewerFallbacks})
  const reviewerKeyState=ensureKeyState({...keyState,activeIndex:0,preferredModel:null,lastModelTried:null})
  const sourceUsedPageIds=new Set(sourceCatalog.stories.map(s=>s.sourcePageId))

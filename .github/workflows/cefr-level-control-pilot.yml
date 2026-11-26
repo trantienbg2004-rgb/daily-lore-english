@@ -7,6 +7,12 @@ on:
       - 'scripts/cefr-level-control-pilot.mjs'
       - 'scripts/publish_wiki_batch.mjs'
       - '.github/workflows/cefr-level-control-pilot.yml'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'scripts/cefr-level-control-pilot.mjs'
+      - 'scripts/publish_wiki_batch.mjs'
+      - '.github/workflows/cefr-level-control-pilot.yml'
   workflow_dispatch:
 
 permissions:
@@ -19,9 +25,10 @@ concurrency:
 
 jobs:
   live-pilot:
-    if: github.event_name == 'workflow_dispatch' || github.ref == 'refs/heads/fix/saga-cefr-level-control'
+    if: github.event_name == 'workflow_dispatch' || github.ref == 'refs/heads/fix/saga-cefr-level-control' || (github.event_name == 'pull_request' && github.event.pull_request.head.ref == 'fix/saga-cefr-level-control')
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    # Allow bounded model failover plus generation, review, targeted repair, and final re-review for three frozen topics.
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -50,7 +57,7 @@ jobs:
           CEFR_PILOT_OUTPUT: /tmp/saga-cefr-level-control-pilot
           CEFR_PILOT_MODEL: gemini-3.5-flash-lite
           CEFR_REVIEW_MODEL: gemini-3.6-flash
-          CEFR_REVIEW_FALLBACK_MODELS: gemini-3.8-flash,gemini-3.5-flash-lite
+          CEFR_REVIEW_FALLBACK_MODELS: gemini-3.8-flash,gemini-3.1-flash-lite
         run: node scripts/cefr-level-control-pilot.mjs
       - uses: actions/upload-artifact@v4
         if: always()
