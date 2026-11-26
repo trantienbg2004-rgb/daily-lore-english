@@ -290,3 +290,4 @@ async function main(){
  if(summary.passed!==summary.fixtures)process.exitCode=2
 }
 await main()
+// 2026-11-27: trigger a fresh read-only CI and live CEFR pilot run after syncing the main implementation.
