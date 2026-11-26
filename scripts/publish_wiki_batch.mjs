@@ -45,6 +45,8 @@ export const MAX_COOLDOWN_MS=15_000
 // Stop a single request's fallback chain after three distinct models return 503 twice.
 export const MAX_UNAVAILABLE_MODELS_PER_CALL=3
 const LEVELS=['A1-A2','B1-B2','C1-C2']
+const naturalCEFRPilot=()=>process.env.SAGA_CEFR_EXPERIMENT==='natural-v1'
+export const NATURAL_CEFR_EDITORIAL_RULES='A: aim for accessible A1/A2, concrete familiar words, explicit subjects and direct sentences; explain essential specialist terms in plain words. B: aim for accessible B1/B2, clear links, common collocations and varied natural grammar; do not replace ordinary words merely to sound advanced. C: aim for natural C1 editorial English, with C2 nuance when useful; allow short sentences and common words, avoid rare synonyms, needless nominalizations, nested clauses, padding and artificial academic jargon. Preserve the same facts, uncertainty and section focus. Use level-appropriate wording in headlines and captions too. Never manufacture complexity to increase a readability score.'
 export const PAGE_COUNT_BOUNDS=Object.freeze({min:4,max:6})
 export const HEADLINE_WORD_BOUNDS=Object.freeze({min:5,max:11})
 export const CAPTION_LIMITS=Object.freeze({minWords:3,maxWords:10,maxChars:65,targetMinWords:5,targetMaxWords:8,targetMaxChars:48})
@@ -782,9 +784,11 @@ export function validateArticleQuality(draft,sourceTitle,{
  maxPages=PAGE_COUNT_BOUNDS.max,
  levelBounds=LEVEL_WORD_BOUNDS,
  source=null,
- evidence=null
+ evidence=null,
+ naturalPilot=naturalCEFRPilot()
 }={}){
  const errors=[]
+ const warnings=[]
  const metrics={}
  const rawNorm=normalizeHeadline(sourceTitle)
  const seenHeadlines=new Set()
@@ -883,7 +887,7 @@ export function validateArticleQuality(draft,sourceTitle,{
   }
 
   const sentBand=LEVEL_SENTENCE_BOUNDS[level]
-  if(sentBand&&(stats.avgSentenceWords<sentBand.min||stats.avgSentenceWords>sentBand.max)){
+  if(sentBand&&((stats.avgSentenceWords<sentBand.min&&!(naturalPilot&&level==='C1-C2'))||stats.avgSentenceWords>sentBand.max)){
    errors.push(`${level}: average sentence length ${stats.avgSentenceWords}w outside target band (aim ${sentBand.targetMin}-${sentBand.targetMax} words/sentence)`)
   }
  }
@@ -892,13 +896,20 @@ export function validateArticleQuality(draft,sourceTitle,{
  const a=metrics['A1-A2'],b=metrics['B1-B2'],c=metrics['C1-C2']
  let cefr=null
  if(a&&b&&c){
-  if(!(a.avgSentenceWords<b.avgSentenceWords&&b.avgSentenceWords<c.avgSentenceWords)){
+  if(!(a.avgSentenceWords<b.avgSentenceWords&& (naturalPilot||b.avgSentenceWords<c.avgSentenceWords))){
    errors.push(`CEFR sentence-length progression failed: A1-A2 (${a.avgSentenceWords}w) < B1-B2 (${b.avgSentenceWords}w) < C1-C2 (${c.avgSentenceWords}w) required`)
   }
-  if(!(a.complexityScore<b.complexityScore&&b.complexityScore<c.complexityScore)){
+  if(!(a.complexityScore<b.complexityScore&& (naturalPilot||b.complexityScore<c.complexityScore))){
    errors.push(`CEFR difficulty progression failed: A1-A2 (${a.complexityScore}) < B1-B2 (${b.complexityScore}) < C1-C2 (${c.complexityScore}) required`)
   }
-  cefr=evaluateArticleCEFR(draft.variants,{sourceTitle})
+  if(naturalPilot){
+   if(b.avgSentenceWords>=c.avgSentenceWords)warnings.push('C sentence length does not exceed B; review manually, not a failure')
+   if(b.complexityScore>=c.complexityScore)warnings.push('C legacy complexity score does not exceed B; review manually')
+   const body=level=>draft.variants[level].pages.map(p=>String(p.text||'').trim().replace(/\s+/g,' ').toLowerCase()).join(' ')
+   if(body('B1-B2')===body('C1-C2'))errors.push('C1-C2: body duplicates B1-B2; differentiate natural reading demands without changing facts')
+  }
+  cefr=evaluateArticleCEFR(draft.variants,{sourceTitle,naturalPilot})
+  warnings.push(...(cefr.warnings||[]))
   for(const level of LEVELS){
    const prof=cefr.profiles[level]
    if(prof&&metrics[level]){
@@ -924,7 +935,7 @@ export function validateArticleQuality(draft,sourceTitle,{
   }
  }
 
- return {ok:errors.length===0,errors,metrics,cefr}
+ return {ok:errors.length===0,errors,metrics,cefr,warnings}
 }
 
 function formatEmbeddedImageCatalog(verifiedPhotos=[]){
@@ -946,7 +957,7 @@ function formatWordBoundsSummary(){
  return {photoLine:photoParts.join(' | '),textLine:textParts.join(' | ')}
 }
 
-export function buildBatchPrompt(source,topic,evidence,verifiedPhotos=[]){
+export function buildBatchPrompt(source,topic,evidence,verifiedPhotos=[],{naturalPilot=naturalCEFRPilot()}={}){
  const passages=evidence.map(row=>`${row.id} [Section ${row.sectionIndex ?? 0}: ${row.heading}] ${row.text}`).join('\n\n')
  const imageCatalog=formatEmbeddedImageCatalog(verifiedPhotos)
  const leadIds=verifiedPhotos.filter(p=>p.sectionIndex===0).map(p=>p.imageId)
@@ -984,7 +995,8 @@ STEP 3 — SYNCHRONIZED A/B/C VARIANTS ("variants"):
 3. VOICE, ACCURACY & OBJECTIVE CEFR TARGETS:
    - A1-A2: Simple, concrete everyday English WITHOUT factual oversimplification (keep dates, exceptions, safety cautions, and uncertainty in plain words like "about", "some experts say", "can be risky"). >=${CEFR_THRESHOLDS['A1-A2'].minA1A2Pct}% A1-A2 words, <=${CEFR_THRESHOLDS['A1-A2'].maxC1C2OrUnlistedPct}% C1-C2/unlisted, ${aSent.targetMin}-${aSent.targetMax} words/sentence, FKGL <= ${CEFR_THRESHOLDS['A1-A2'].maxFkgl}.
    - B1-B2: Natural, accessible magazine-style English. >=${CEFR_THRESHOLDS['B1-B2'].minA1ToB2Pct}% A1-B2 words, ${bSent.targetMin}-${bSent.targetMax} words/sentence, FKGL ${CEFR_THRESHOLDS['B1-B2'].minFkgl}-${CEFR_THRESHOLDS['B1-B2'].maxFkgl} (at least +${CEFR_THRESHOLDS['B1-B2'].minFkglGapAboveA1} FKGL above A1-A2).
-   - C1-C2: Nuanced, sophisticated, natural editorial English — NOT artificial academic jargon or thesaurus stuffing. ${cSent.targetMin}-${cSent.targetMax} words/sentence, FKGL >= ${CEFR_THRESHOLDS['C1-C2'].minFkgl} (at least +${CEFR_THRESHOLDS['C1-C2'].minFkglGapAboveB1} FKGL above B1-B2, higher B2+C1-C2 lexical density than B1-B2).
+   - C1-C2: ${naturalPilot?'Natural C1 editorial English with C2 nuance as appropriate; no minimum sentence length or FKGL target. Use known advanced vocabulary when it adds precision, never rare or unlisted words to raise a score. Avoid artificial academic jargon.':`Nuanced, sophisticated, natural editorial English — NOT artificial academic jargon or thesaurus stuffing. ${cSent.targetMin}-${cSent.targetMax} words/sentence, FKGL >= ${CEFR_THRESHOLDS['C1-C2'].minFkgl} (at least +${CEFR_THRESHOLDS['C1-C2'].minFkglGapAboveB1} FKGL above B1-B2, higher B2+C1-C2 lexical density than B1-B2).`}
+   ${naturalPilot?NATURAL_CEFR_EDITORIAL_RULES:''}
 4. STRICT IMAGE & CAPTION BINDING:
    - Page 1 (pages[0]) MUST use ${leadIds.length?'a Section 0 Lead/Infobox photo':'the verified main-subject cover photo'} (${coverHint}).
    - Pages 2..N: bind an "imageId" ONLY when the outline focus AND page text directly depict that exact photo's subject/section (never merely overlapping keywords). Otherwise set "imageId": null. Never reuse an imageId.
@@ -1012,7 +1024,7 @@ function formatCEFRRetryBlock(qualityResult){
   'OBJECTIVE CEFR PROFILER DIAGNOSTICS (TARGETED WORD-SWAP & READABILITY FIXES):',
   `- A1-A2 measured: FKGL=${a.fkgl} (target <= ${CEFR_THRESHOLDS['A1-A2'].maxFkgl}), avgSentence=${a.avgSentenceLength}w, A1-A2 words=${a.lexicalProfile.a1a2Pct}% (min ${CEFR_THRESHOLDS['A1-A2'].minA1A2Pct}%), C1-C2/unlisted=${a.lexicalProfile.c1c2OrUnlistedPct}% (max ${CEFR_THRESHOLDS['A1-A2'].maxC1C2OrUnlistedPct}%)`,
   `- B1-B2 measured: FKGL=${b.fkgl} (target ${CEFR_THRESHOLDS['B1-B2'].minFkgl}-${CEFR_THRESHOLDS['B1-B2'].maxFkgl}, gap above A1-A2=${cefr.gaps?.bMinusA ?? Number((b.fkgl-a.fkgl).toFixed(2))} >= ${CEFR_THRESHOLDS['B1-B2'].minFkglGapAboveA1}), avgSentence=${b.avgSentenceLength}w, A1-B2 words=${b.lexicalProfile.a1ToB2Pct}% (min ${CEFR_THRESHOLDS['B1-B2'].minA1ToB2Pct}%), B2+C1-C2=${b.lexicalProfile.b2PlusC1C2OrUnlistedPct}%`,
-  `- C1-C2 measured: FKGL=${c.fkgl} (target >= ${CEFR_THRESHOLDS['C1-C2'].minFkgl}, gap above B1-B2=${cefr.gaps?.cMinusB ?? Number((c.fkgl-b.fkgl).toFixed(2))} >= ${CEFR_THRESHOLDS['C1-C2'].minFkglGapAboveB1}), avgSentence=${c.avgSentenceLength}w, B2+C1-C2=${c.lexicalProfile.b2PlusC1C2OrUnlistedPct}% (must exceed B1-B2 ${b.lexicalProfile.b2PlusC1C2OrUnlistedPct}%)`
+  naturalCEFRPilot()?`- C1-C2 measured FKGL=${c.fkgl}, avgSentence=${c.avgSentenceLength}w (diagnostics only); use natural C1/C2 nuance, not longer sentences or uncommon words for their own sake.`:`- C1-C2 measured: FKGL=${c.fkgl} (target >= ${CEFR_THRESHOLDS['C1-C2'].minFkgl}, gap above B1-B2=${cefr.gaps?.cMinusB ?? Number((c.fkgl-b.fkgl).toFixed(2))} >= ${CEFR_THRESHOLDS['C1-C2'].minFkglGapAboveB1}), avgSentence=${c.avgSentenceLength}w, B2+C1-C2=${c.lexicalProfile.b2PlusC1C2OrUnlistedPct}% (must exceed B1-B2 ${b.lexicalProfile.b2PlusC1C2OrUnlistedPct}%)`
  ]
  if(a.overLevelWords?.length){
   lines.push(`- MANDATORY A1-A2 WORD SWAPS: Replace these over-level words in A1-A2 with simple everyday A1-A2 equivalents: [${a.overLevelWords.slice(0,20).join(', ')}]`)
@@ -1024,6 +1036,7 @@ function formatCEFRRetryBlock(qualityResult){
   lines.push(`- SIMPLIFY OVER-LEVEL WORDS IN B1-B2: Replace rare/academic words [${b.overLevelWords.slice(0,15).join(', ')}] with clear B1-B2 magazine terms.`)
  }
  lines.push('- KEEP C1-C2 NATURAL: Do NOT stuff artificial academic jargon; use clear, sophisticated natural editorial prose.')
+ if(naturalCEFRPilot())lines.push(NATURAL_CEFR_EDITORIAL_RULES)
  return `\n\n${lines.join('\n')}`
 }
 
@@ -2529,6 +2542,10 @@ export async function runPublishWikiBatch({
     }
    }
 
+   if(naturalCEFRPilot()){
+    const legacy=validateArticleQuality(normalizedDraft,source.sourceTitle,{source,evidence:trimmed.evidence,naturalPilot:false})
+    console.log('[CEFR-PILOT] '+JSON.stringify({title:source.sourceTitle,legacyPass:legacy.ok,legacyErrors:legacy.errors,warnings:quality.warnings,profiles:quality.cefr?.profiles}))
+   }
    const builtStory=makeWikiStory({
     source,
     topic:item.topic,
