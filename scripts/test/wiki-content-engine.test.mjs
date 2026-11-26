@@ -320,6 +320,37 @@ test('content engine: prompt uses single-source-of-truth midpoint targets & natu
  assert.ok(unsafeCheck.errors.some(e=>/absolute overclaim contradicts source uncertainty/i.test(e)))
 })
 
+test('content engine: independent levelPlans allow different content depth while preserving shared evidence and image order',()=>{
+ const source=makeRichSource('Stone Citadel',9150)
+ const trimmed=trimWikipediaEvidence(source,{targetMinWords:300,targetMaxWords:1500})
+ const photo=makeVerifiedPhoto(source,{fileTitle:'File:Stone_Citadel_level-plan.jpg',caption:'Historic view of Stone Citadel',sectionIndex:0,imageId:'IMG_0'})
+ const raw=makeSynchronizedDraft('Stone Citadel')
+ raw.levelPlans={
+  'A1-A2':{
+   readerObjective:'Understand the main concrete facts using simple, explicit language.',
+   pages:raw.outline.map(p=>({pageIndex:p.pageIndex,focus:'Simple explanation: '+p.focus,factIds:p.factIds,evidenceIds:p.evidenceIds}))
+  },
+  'B1-B2':{
+   readerObjective:'Understand factual context, chronology and cause-and-effect links.',
+   pages:raw.outline.map(p=>({pageIndex:p.pageIndex,focus:'Explain context and relationships: '+p.focus,factIds:[...new Set([...p.factIds,'F1'])],evidenceIds:p.evidenceIds}))
+  },
+  'C1-C2':{
+   readerObjective:'Understand nuance, implications and the relationship between evidence and interpretation.',
+   pages:raw.outline.map(p=>({pageIndex:p.pageIndex,focus:'Analyze implications and qualifications: '+p.focus,factIds:[...new Set([...p.factIds,'F2'])],evidenceIds:p.evidenceIds}))
+  }
+ }
+ const normalized=normalizeDraftForCatalog(raw,{source,evidence:trimmed.evidence,verifiedPhotos:[photo]})
+ assert.equal(normalized.levelPlans['A1-A2'].pages.length,5)
+ assert.notEqual(normalized.levelPlans['A1-A2'].pages[0].focus,normalized.levelPlans['C1-C2'].pages[0].focus)
+ const fact=validateFactualConsistency(normalized,{source,evidence:trimmed.evidence})
+ assert.equal(fact.ok,true,fact.errors.join(' | '))
+ const quality=validateArticleQuality(normalized,source.sourceTitle,{source,evidence:trimmed.evidence,requireLevelPlans:true})
+ assert.equal(quality.ok,true,quality.errors.join(' | '))
+ const legacy=validateArticleQuality(makeSynchronizedDraft('Stone Citadel'),source.sourceTitle,{source,evidence:trimmed.evidence,requireLevelPlans:true})
+ assert.equal(legacy.ok,false)
+ assert.ok(legacy.errors.some(e=>/Missing independent levelPlans/.test(e)))
+})
+
 test('content engine: targeted repair patches ONLY failing page/headline while preserving valid levels/pages and rejects invalid repair JSON',()=>{
  const source=makeRichSource('Stone Citadel',9102)
  const trimmed=trimWikipediaEvidence(source,{targetMinWords:300,targetMaxWords:1500})
