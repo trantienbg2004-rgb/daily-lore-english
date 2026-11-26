@@ -674,74 +674,95 @@ function contentTerms(text){
 export function validateFactualConsistency(draft,{source=null,evidence=[]}={}){
  const errors=[]
  if(!draft?.variants)return {ok:false,errors:['Missing variants for factual validation']}
-
  const levelPages=LEVELS.map(l=>draft.variants?.[l]?.pages||[])
  const sharedLen=Math.min(...levelPages.map(p=>p.length))
  const evidenceRows=Array.isArray(evidence)?evidence:[]
  const evidenceMap=new Map(evidenceRows.map(r=>[r.id,r]))
- const fullSourceText=[
-  source?.sourceTitle||'',
-  source?.description||'',
-  ...evidenceRows.map(r=>r.text||'')
- ].join(' ')
+ const validEvidenceIds=new Set(evidenceRows.map(r=>r.id))
+ const fullSourceText=[source?.sourceTitle||'',source?.description||'',...evidenceRows.map(r=>r.text||'')].join(' ')
  const sourceYears=new Set(extractSpecificYears(fullSourceText))
  const sourceQuantities=new Set(extractMeasuredQuantities(fullSourceText))
+ const factSheetFacts=Array.isArray(draft.factSheet?.coreFacts)?draft.factSheet.coreFacts:[]
+ const factIds=new Set(factSheetFacts.map(f=>f.id))
+ const hasLevelPlans=LEVELS.every(level=>Array.isArray(draft.levelPlans?.[level]?.pages))
+ const planPagesByLevel=Object.fromEntries(LEVELS.map(level=>[level,hasLevelPlans?draft.levelPlans[level].pages:(Array.isArray(draft.outline)?draft.outline:[])]))
 
- // 1. Validate shared outline alignment when outline is present
+ // The shared outline is now a visual/page map only. Content focus and selected facts live in levelPlans.
  if(Array.isArray(draft.outline)&&draft.outline.length){
-  if(draft.outline.length!==sharedLen){
-   errors.push(`Outline page count mismatch: outline has ${draft.outline.length} page(s), variants have ${sharedLen}`)
-  }
+  if(draft.outline.length!==sharedLen)errors.push('Visual outline page count mismatch: outline has '+draft.outline.length+' page(s), variants have '+sharedLen)
   for(let i=0;i<Math.min(draft.outline.length,sharedLen);i++){
    const op=draft.outline[i]
-   if(!String(op?.focus||'').trim()){
-    errors.push(`Outline page ${i+1}: missing focus summary`)
-   }
+   if(!String(op?.focus||'').trim())errors.push('Visual outline page '+(i+1)+': missing broad focus summary')
    const oImg=pageImageToken(op)
    for(const level of LEVELS){
     const pImg=pageImageToken(draft.variants[level]?.pages?.[i])
-    if(Object.prototype.hasOwnProperty.call(op||{},'imageId')&&pImg!==oImg){
-     errors.push(`Outline image mismatch on page ${i+1}: outline (${oImg||'null'}) vs ${level} (${pImg||'null'})`)
-    }
+    if(Object.prototype.hasOwnProperty.call(op||{},'imageId')&&pImg!==oImg)errors.push('Outline image mismatch on page '+(i+1)+': outline ('+(oImg||'null')+') vs '+level+' ('+(pImg||'null')+')')
    }
   }
  }
 
- // 2. Cross-level correspondence, grounded dates/quantities, and uncertainty preservation per page
- const uncertainFactIds=new Set(
-  (draft.factSheet?.coreFacts||[]).filter(f=>f?.hasUncertainty).map(f=>f.id)
- )
+ if(hasLevelPlans){
+  const factSets=[]
+  for(const level of LEVELS){
+   const plan=draft.levelPlans[level],pages=plan.pages
+   if(!String(plan.readerObjective||'').trim())errors.push(level+': missing reader objective in level plan')
+   if(pages.length!==levelPages[LEVELS.indexOf(level)].length)errors.push(level+': level plan page count does not match its article pages')
+   const selectedFacts=new Set()
+   for(let idx=0;idx<pages.length;idx++){
+    const page=pages[idx]
+    if(page.pageIndex!==idx)errors.push(level+' plan page '+(idx+1)+': pageIndex is not in sequence')
+    if(!String(page.focus||'').trim())errors.push(level+' plan page '+(idx+1)+': missing level-specific focus')
+    if(!Array.isArray(page.factIds)||!page.factIds.length)errors.push(level+' plan page '+(idx+1)+': missing selected factIds')
+    for(const id of page.factIds||[]){
+     if(!factIds.has(id))errors.push(level+' plan page '+(idx+1)+': unknown factId '+id)
+     selectedFacts.add(id)
+    }
+    if(evidenceRows.length&&(!Array.isArray(page.evidenceIds)||!page.evidenceIds.length||page.evidenceIds.some(id=>!validEvidenceIds.has(id)))errors.push(level+' plan page '+(idx+1)+': evidenceIds must reference supplied source passages')
+   }
+   factSets.push(selectedFacts)
+  }
+  const commonFacts=[...factSets[0]].filter(id=>factSets[1].has(id)&&factSets[2].has(id))
+  if(commonFacts.length<2)errors.push('Level plans must retain at least two shared core facts while allowing different depth and emphasis')
+ }else if(draft.levelPlans){
+  errors.push('Incomplete levelPlans: each of A1-A2, B1-B2 and C1-C2 needs its own page plan')
+ }
+
+ const uncertainFactIds=new Set(factSheetFacts.filter(f=>f?.hasUncertainty).map(f=>f.id))
  const hasGlobalCaveats=Array.isArray(draft.factSheet?.caveatsOrUncertainty)&&draft.factSheet.caveatsOrUncertainty.some(c=>String(c||'').trim())
 
  for(let idx=0;idx<sharedLen;idx++){
   const textsByLevel=Object.fromEntries(LEVELS.map(l=>[l,String(draft.variants[l]?.pages?.[idx]?.text||'')]))
   const evIdsByLevel=Object.fromEntries(LEVELS.map(l=>[l,Array.isArray(draft.variants[l]?.pages?.[idx]?.evidenceIds)?draft.variants[l].pages[idx].evidenceIds:[]]))
 
-  // Cross-level evidence or topic overlap check on matching page index
-  const termSets=LEVELS.map(l=>contentTerms(textsByLevel[l]))
-  const sharedEvAB=evIdsByLevel['A1-A2'].some(id=>evIdsByLevel['B1-B2'].includes(id))
-  const sharedEvBC=evIdsByLevel['B1-B2'].some(id=>evIdsByLevel['C1-C2'].includes(id))
-  const overlapAB=[...termSets[0]].filter(w=>termSets[1].has(w)).length
-  const overlapBC=[...termSets[1]].filter(w=>termSets[2].has(w)).length
-  if(!sharedEvAB&&overlapAB===0){
-   errors.push(`Cross-level factual drift on page ${idx+1}: A1-A2 and B1-B2 share neither evidence passages nor core topic terms`)
-  }
-  if(!sharedEvBC&&overlapBC===0){
-   errors.push(`Cross-level factual drift on page ${idx+1}: B1-B2 and C1-C2 share neither evidence passages nor core topic terms`)
+  // Legacy drafts retain page-by-page correspondence; new drafts use independent level plans.
+  if(!hasLevelPlans){
+   const termSets=LEVELS.map(l=>contentTerms(textsByLevel[l]))
+   const sharedEvAB=evIdsByLevel['A1-A2'].some(id=>evIdsByLevel['B1-B2'].includes(id))
+   const sharedEvBC=evIdsByLevel['B1-B2'].some(id=>evIdsByLevel['C1-C2'].includes(id))
+   const overlapAB=[...termSets[0]].filter(w=>termSets[1].has(w)).length
+   const overlapBC=[...termSets[1]].filter(w=>termSets[2].has(w)).length
+   if(!sharedEvAB&&overlapAB===0)errors.push('Cross-level factual drift on page '+(idx+1)+': A1-A2 and B1-B2 share neither evidence passages nor core topic terms')
+   if(!sharedEvBC&&overlapBC===0)errors.push('Cross-level factual drift on page '+(idx+1)+': B1-B2 and C1-C2 share neither evidence passages nor core topic terms')
+  }else{
+   for(const level of LEVELS){
+    const planPage=planPagesByLevel[level][idx]
+    const pageEvidence=evIdsByLevel[level]
+    const planEvidence=new Set(planPage?.evidenceIds||[])
+    if(evidenceRows.length&&(!pageEvidence.length||pageEvidence.some(id=>!validEvidenceIds.has(id))))errors.push(level+' page '+(idx+1)+': evidenceIds must reference supplied source passages')
+    if(planPage&&pageEvidence.length&&!pageEvidence.some(id=>planEvidence.has(id)))errors.push(level+' page '+(idx+1)+': cited evidence does not support its level-specific page plan')
+   }
   }
 
-  // Year consistency across A/B/C on the same page + source grounding
   const yearsByLevel=Object.fromEntries(LEVELS.map(l=>[l,extractSpecificYears(textsByLevel[l])]))
-  const levelsWithYears=LEVELS.filter(l=>yearsByLevel[l].length>0)
-  if(levelsWithYears.length>=2){
-   const union=new Set(levelsWithYears.flatMap(l=>yearsByLevel[l]))
-   for(let a=0;a<levelsWithYears.length;a++){
-    for(let b=a+1;b<levelsWithYears.length;b++){
-     const yA=yearsByLevel[levelsWithYears[a]]
-     const yB=yearsByLevel[levelsWithYears[b]]
-     const intersects=yA.some(y=>yB.includes(y))
-     if(!intersects&&union.size>=2&&yA.length===1&&yB.length===1){
-      errors.push(`Cross-level date mismatch on page ${idx+1}: ${levelsWithYears[a]} cites ${yA[0]} while ${levelsWithYears[b]} cites ${yB[0]}`)
+  if(!hasLevelPlans){
+   const levelsWithYears=LEVELS.filter(l=>yearsByLevel[l].length>0)
+   if(levelsWithYears.length>=2){
+    const union=new Set(levelsWithYears.flatMap(l=>yearsByLevel[l]))
+    for(let a=0;a<levelsWithYears.length;a++){
+     for(let b=a+1;b<levelsWithYears.length;b++){
+      const yA=yearsByLevel[levelsWithYears[a]],yB=yearsByLevel[levelsWithYears[b]]
+      const intersects=yA.some(y=>yB.includes(y))
+      if(!intersects&&union.size>=2&&yA.length===1&&yB.length===1)errors.push('Cross-level date mismatch on page '+(idx+1)+': '+levelsWithYears[a]+' cites '+yA[0]+' while '+levelsWithYears[b]+' cites '+yB[0])
      }
     }
    }
@@ -750,60 +771,37 @@ export function validateFactualConsistency(draft,{source=null,evidence=[]}={}){
   if(evidenceRows.length){
    for(const level of LEVELS){
     const pageText=textsByLevel[level]
-    for(const year of yearsByLevel[level]){
-     if(!sourceYears.has(year)){
-      errors.push(`${level} page ${idx+1}: ungrounded year "${year}" not found in source evidence`)
-     }
-    }
+    for(const year of yearsByLevel[level])if(!sourceYears.has(year))errors.push(level+' page '+(idx+1)+': ungrounded year "'+year+'" not found in source evidence')
     for(const qty of extractMeasuredQuantities(pageText)){
      const numPart=qty.split(' ')[0]
-     if(!sourceQuantities.has(qty)&&!new RegExp(`\\b${numPart.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')}\\b`).test(fullSourceText)){
-      errors.push(`${level} page ${idx+1}: ungrounded quantity "${qty}" not found in source evidence`)
-     }
+     const escaped=numPart.replace(/[.*+?^$()|[\]\\]/g,'\\$&')
+     if(!sourceQuantities.has(qty)&&!new RegExp('\\b'+escaped+'\\b').test(fullSourceText))errors.push(level+' page '+(idx+1)+': ungrounded quantity "'+qty+'" not found in source evidence')
     }
    }
   }
 
-  // Uncertainty / safety condition preservation check
-  const citedEvidenceText=[...new Set(LEVELS.flatMap(l=>evIdsByLevel[l]))]
-   .map(id=>evidenceMap.get(id)?.text||'')
-   .join(' ')
-  const outlinePage=Array.isArray(draft.outline)?draft.outline[idx]:null
-  const pageHasUncertainFact=Boolean(outlinePage?.factIds?.some(fid=>uncertainFactIds.has(fid)))
-  const sourceHasUncertainty=UNCERTAINTY_SOURCE_RE.test(citedEvidenceText)||pageHasUncertainFact
-
-  if(sourceHasUncertainty){
-   for(const level of LEVELS){
-    const pageText=textsByLevel[level]
-    if(ABSOLUTE_OVERCLAIM_RE.test(pageText)){
-     errors.push(`${level} page ${idx+1}: absolute overclaim contradicts source uncertainty or safety conditions`)
-    }
-    if(pageHasUncertainFact&&!HEDGE_OR_CAUTION_RE.test(pageText)){
-     errors.push(`${level} page ${idx+1}: omits source uncertainty/safety qualification flagged in fact sheet`)
-    }
-   }
+  // Preserve uncertainty for facts selected by each level, not by another level's page plan.
+  for(const level of LEVELS){
+   const planPage=planPagesByLevel[level][idx]
+   const pageHasUncertainFact=Boolean(planPage?.factIds?.some(fid=>uncertainFactIds.has(fid)))
+   const citedEvidenceText=evIdsByLevel[level].map(id=>evidenceMap.get(id)?.text||'').join(' ')
+   const sourceHasUncertainty=UNCERTAINTY_SOURCE_RE.test(citedEvidenceText)||pageHasUncertainFact
+   const pageText=textsByLevel[level]
+   if(sourceHasUncertainty&&ABSOLUTE_OVERCLAIM_RE.test(pageText))errors.push(level+' page '+(idx+1)+': absolute overclaim contradicts source uncertainty or safety conditions')
+   if(pageHasUncertainFact&&!HEDGE_OR_CAUTION_RE.test(pageText))errors.push(level+' page '+(idx+1)+': omits source uncertainty/safety qualification flagged in its level plan')
   }
  }
 
  if(hasGlobalCaveats){
   for(const level of LEVELS){
    const fullLevelText=(draft.variants[level]?.pages||[]).map(p=>p.text||'').join(' ')
-   if(ABSOLUTE_OVERCLAIM_RE.test(fullLevelText)){
-    errors.push(`${level}: article-wide absolute overclaim conflicts with source caveats/uncertainty`)
-   }
-   if(!HEDGE_OR_CAUTION_RE.test(fullLevelText)){
-    errors.push(`${level}: omits nuance/caveat language for source uncertainty`)
-   }
+   if(ABSOLUTE_OVERCLAIM_RE.test(fullLevelText))errors.push(level+': article-wide absolute overclaim conflicts with source caveats/uncertainty')
+   if(!HEDGE_OR_CAUTION_RE.test(fullLevelText))errors.push(level+': omits nuance/caveat language for source uncertainty')
   }
  }
-
  return {ok:errors.length===0,errors}
 }
 
-/**
- * Strict editorial & 4-6 page Fixed-Card quality gate run BEFORE saving any generated article.
- * Uses the exact same exported bounds constants as the generation & repair prompts.
- */
 export function validateArticleQuality(draft,sourceTitle,{
  minPages=PAGE_COUNT_BOUNDS.min,
  maxPages=PAGE_COUNT_BOUNDS.max,
