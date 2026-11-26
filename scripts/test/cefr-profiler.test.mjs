@@ -15,6 +15,7 @@ import {
  buildCEFRReviewRepairSchema,
  buildQualityRetryPrompt,
  buildRoundRobinOrder,
+ identifyRepairTargets,
  validateArticleQuality
 } from '../publish_wiki_batch.mjs'
 import {applyCEFRRequeue,auditStoriesCEFR} from '../audit_wiki_cefr.mjs'
@@ -174,6 +175,25 @@ test('CEFR descriptor reviewer accepts in-band assessments, merges partial repai
  assert.equal(audited.ok,true,audited.errors.join(' | '))
  assert.equal(audited.finalAssessment['A1-A2'].verbatimExcerpt,'People built a small town near the river.')
 
+})
+
+test('identifyRepairTargets scopes descriptor-review failures to only the affected CEFR levels',()=>{
+ const pages=Array.from({length:4},(_,index)=>({text:`Page ${index+1} has source-grounded content.`,imageId:null}))
+ const draft={variants:{
+  'A1-A2':{pages:structuredClone(pages)},
+  'B1-B2':{pages:structuredClone(pages)},
+  'C1-C2':{pages:structuredClone(pages)}
+ }}
+ const targets=identifyRepairTargets(draft,{errors:[
+  'CEFR descriptor review: B1-B2: review identified a mismatch but did not return any changed pages',
+  'CEFR descriptor review after targeted retry: C1-C2: final descriptor assessment is not a confident pass across all six dimensions'
+ ]})
+ assert.equal(targets.structuralParityFailed,false)
+ assert.equal(targets.useTargetedPatch,true)
+ assert.deepEqual(targets.cefrLevels,['B1-B2','C1-C2'])
+ assert.deepEqual(targets.targetSummary.map(item=>item.level),['B1-B2','C1-C2'])
+ assert.deepEqual(targets.targetSummary[0].pageIndexes,[0,1,2,3])
+ assert.deepEqual(targets.targetSummary[1].pageIndexes,[0,1,2,3])
 })
 
 test('CEFR reviewer prompt uses official reading descriptors and treats FKGL/wordlist as advisory diagnostics',()=>{
