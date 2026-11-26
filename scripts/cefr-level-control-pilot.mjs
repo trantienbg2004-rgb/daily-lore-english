@@ -91,9 +91,9 @@ async function runTopic(id){
   result.review={
    ok:applied.ok,
    errors:applied.errors,
-   initialAssessment:review.draft?.initialAssessment||null,
+   assessment:review.draft?.assessment||null,
    finalAssessment:applied.finalAssessment||null,
-   repairedLevels:Object.keys(review.draft?.repairs||{})
+   repairedLevels:(review.draft?.repairs||[]).map(x=>x.level)
   }
   draft=normalizeDraftForCatalog(applied.draft,{source:fixture.source,evidence:fixture.evidence,verifiedPhotos:fixture.photos})
   quality=validateArticleQuality(draft,fixture.source.sourceTitle,{
@@ -104,7 +104,7 @@ async function runTopic(id){
   result.finalQuality={ok:quality.ok,errors:quality.errors,metrics:quality.metrics,heuristicWarnings:quality.cefr?.errors||[]}
   result.passed=applied.ok&&quality.ok&&['A1-A2','B1-B2','C1-C2'].every(level=>{
    const a=applied.finalAssessment?.[level]
-   return a?.verdict==='pass'&&['A1','A2','B1','B2','C1','C2'].includes(a.estimatedBand)
+   return a?.finalVerdict==='pass'&&['A1','A2','B1','B2','C1','C2'].includes(a.finalBand)
   })
   result.finalArticle=draft
  }catch(error){
