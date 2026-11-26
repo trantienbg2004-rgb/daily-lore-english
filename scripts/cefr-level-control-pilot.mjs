@@ -5,6 +5,7 @@ import {
  buildBatchPrompt,
  buildCEFRReviewRepairPrompt,
  buildGeminiGenerationConfig,
+ buildCEFRReviewRepairSchema,
  callGeminiWithFailover,
  resolveGeminiApiKeys,
  normalizeDraftForCatalog,
@@ -81,7 +82,7 @@ async function runTopic(id){
   result.initialQuality={ok:quality.ok,errors:quality.errors,metrics:quality.metrics,heuristicWarnings:quality.cefr?.errors||[]}
 
   const reviewPrompt=buildCEFRReviewRepairPrompt(fixture.source,fixture.topic,fixture.evidence,draft,quality)
-  const review=await invoke(reviewPrompt,CEFR_REVIEW_REPAIR_SCHEMA,id+' descriptor review')
+  const review=await invoke(reviewPrompt,buildCEFRReviewRepairSchema(draft),id+' descriptor review')
   result.reviewUsage=review.usage||null
   const applied=applyCEFRReviewRepairs(draft,review.draft,{
    requiredRepairLevels:levelsNeedingRepair(quality),
@@ -92,7 +93,8 @@ async function runTopic(id){
    errors:applied.errors,
    assessment:review.draft?.assessment||null,
    finalAssessment:applied.finalAssessment||null,
-   repairedLevels:(review.draft?.repairs||[]).map(x=>x.level)
+   repairedLevels:(review.draft?.repairs||[]).map(x=>x.level),
+   repairPageIndexes:Object.fromEntries((review.draft?.repairs||[]).map(x=>[x.level,(x.pages||[]).map(p=>p.pageIndex)]))
   }
   draft=normalizeDraftForCatalog(applied.draft,{source:fixture.source,evidence:fixture.evidence,verifiedPhotos:fixture.photos})
   quality=validateArticleQuality(draft,fixture.source.sourceTitle,{
@@ -149,6 +151,7 @@ async function main(){
    finalErrors:x.finalQuality?.errors||[],
    finalBands:Object.fromEntries(Object.entries(x.review?.finalAssessment||{}).map(([k,v])=>[k,{band:v.finalBand,verdict:v.finalVerdict}])),
    repairedLevels:x.review?.repairedLevels||[],
+   repairPageIndexes:x.review?.repairPageIndexes||{},
    error:x.error||null
   })),
   acceptance:'Exploratory live pipeline check only. All three frozen topics must pass to accept this implementation for a broader rollout; this is not formal CEFR certification.'
