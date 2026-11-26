@@ -18,7 +18,7 @@ import {WIKI_TOPICS} from './wiki/discovery.mjs'
 import {fetchWikipediaParsePage,WikiApiPause} from './wiki/source.mjs'
 import {appendWikiStories,makeWikiStory,readWikiCatalog,replaceWikiStory,validateWikiStory} from './wiki/catalog.mjs'
 import {assignBatchPhotos,collectVerifiedArticlePhotos,findMainSubjectFallbackPhoto,formatCompleteCaption} from './wiki/batch-media.mjs'
-import {CEFR_THRESHOLDS,evaluateArticleCEFR} from './wiki/cefrProfiler.mjs'
+import {CEFR_THRESHOLDS,evaluateArticleCEFR,profileTextCEFR} from './wiki/cefrProfiler.mjs'
 
 const ROOT=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..')
 const DEFAULT_QUEUE_FILE=path.join(ROOT,'data','wiki_queue.json')
@@ -46,6 +46,7 @@ export const MAX_COOLDOWN_MS=15_000
 export const MAX_UNAVAILABLE_MODELS_PER_CALL=3
 const LEVELS=['A1-A2','B1-B2','C1-C2']
 const naturalCEFRPilot=()=>process.env.SAGA_CEFR_EXPERIMENT==='natural-v1'
+export const NATURAL_CEFR_DRAFT_GUIDANCE='Draft A comfortably below the existing maximum FKGL 6.8 (aim around 4-5, not a CEFR definition). Prefer everyday one- or two-syllable words, one main idea per sentence, direct verbs. Draft B comfortably below 10.8 (aim around 8-9), using clear common verbs and links rather than long noun phrases. These are drafting margins, not new pass/fail thresholds. If a technical term is essential, explain it in plain language and preserve the exact source fact. Never raise B merely to increase its gap from A; simplify A when needed. Do not omit qualifications: say explicitly some experts disagree, about, may, or can be risky only where the source supports that qualification. Do not add unsupported uncertainty.'
 export const NATURAL_CEFR_EDITORIAL_RULES='A: aim for accessible A1/A2, concrete familiar words, explicit subjects and direct sentences; explain essential specialist terms in plain words. B: aim for accessible B1/B2, clear links, common collocations and varied natural grammar; do not replace ordinary words merely to sound advanced. C: aim for natural C1 editorial English, with C2 nuance when useful; allow short sentences and common words, avoid rare synonyms, needless nominalizations, nested clauses, padding and artificial academic jargon. Preserve the same facts, uncertainty and section focus. Use level-appropriate wording in headlines and captions too. Never manufacture complexity to increase a readability score.'
 export const PAGE_COUNT_BOUNDS=Object.freeze({min:4,max:6})
 export const HEADLINE_WORD_BOUNDS=Object.freeze({min:5,max:11})
@@ -996,7 +997,7 @@ STEP 3 — SYNCHRONIZED A/B/C VARIANTS ("variants"):
    - A1-A2: Simple, concrete everyday English WITHOUT factual oversimplification (keep dates, exceptions, safety cautions, and uncertainty in plain words like "about", "some experts say", "can be risky"). >=${CEFR_THRESHOLDS['A1-A2'].minA1A2Pct}% A1-A2 words, <=${CEFR_THRESHOLDS['A1-A2'].maxC1C2OrUnlistedPct}% C1-C2/unlisted, ${aSent.targetMin}-${aSent.targetMax} words/sentence, FKGL <= ${CEFR_THRESHOLDS['A1-A2'].maxFkgl}.
    - B1-B2: Natural, accessible magazine-style English. >=${CEFR_THRESHOLDS['B1-B2'].minA1ToB2Pct}% A1-B2 words, ${bSent.targetMin}-${bSent.targetMax} words/sentence, FKGL ${CEFR_THRESHOLDS['B1-B2'].minFkgl}-${CEFR_THRESHOLDS['B1-B2'].maxFkgl} (at least +${CEFR_THRESHOLDS['B1-B2'].minFkglGapAboveA1} FKGL above A1-A2).
    - C1-C2: ${naturalPilot?'Natural C1 editorial English with C2 nuance as appropriate; no minimum sentence length or FKGL target. Use known advanced vocabulary when it adds precision, never rare or unlisted words to raise a score. Avoid artificial academic jargon.':`Nuanced, sophisticated, natural editorial English — NOT artificial academic jargon or thesaurus stuffing. ${cSent.targetMin}-${cSent.targetMax} words/sentence, FKGL >= ${CEFR_THRESHOLDS['C1-C2'].minFkgl} (at least +${CEFR_THRESHOLDS['C1-C2'].minFkglGapAboveB1} FKGL above B1-B2, higher B2+C1-C2 lexical density than B1-B2).`}
-   ${naturalPilot?NATURAL_CEFR_EDITORIAL_RULES:''}
+   ${naturalPilot?NATURAL_CEFR_EDITORIAL_RULES+'\n'+NATURAL_CEFR_DRAFT_GUIDANCE:''}
 4. STRICT IMAGE & CAPTION BINDING:
    - Page 1 (pages[0]) MUST use ${leadIds.length?'a Section 0 Lead/Infobox photo':'the verified main-subject cover photo'} (${coverHint}).
    - Pages 2..N: bind an "imageId" ONLY when the outline focus AND page text directly depict that exact photo's subject/section (never merely overlapping keywords). Otherwise set "imageId": null. Never reuse an imageId.
@@ -1036,7 +1037,7 @@ function formatCEFRRetryBlock(qualityResult){
   lines.push(`- SIMPLIFY OVER-LEVEL WORDS IN B1-B2: Replace rare/academic words [${b.overLevelWords.slice(0,15).join(', ')}] with clear B1-B2 magazine terms.`)
  }
  lines.push('- KEEP C1-C2 NATURAL: Do NOT stuff artificial academic jargon; use clear, sophisticated natural editorial prose.')
- if(naturalCEFRPilot())lines.push(NATURAL_CEFR_EDITORIAL_RULES)
+ if(naturalCEFRPilot())lines.push(NATURAL_CEFR_EDITORIAL_RULES,NATURAL_CEFR_DRAFT_GUIDANCE,'- Repair using plain verbs and shorter familiar words, not just shorter sentences. Preserve essential names, dates, numbers and source-supported qualifications; explain necessary terms instead of blindly swapping them.')
  return `\n\n${lines.join('\n')}`
 }
 
@@ -1165,7 +1166,8 @@ ${passages}`
       imageId:pageImageToken(p),
       text:p.text,
       ...(isPhoto?{caption:p.caption||''}:{}),
-      evidenceIds:p.evidenceIds
+      evidenceIds:p.evidenceIds,
+      ...(naturalCEFRPilot()?{readability:(()=>{const q=profileTextCEFR(p.text,{targetLevel:item.level,sourceTitle:source.sourceTitle});return {fkgl:q.fkgl,avgSentenceWords:q.avgSentenceLength,overLevelWords:q.overLevelWords.slice(0,10),b2Words:q.b2Words.slice(0,8)}})()}: {})
      }
     })
    }:{})
@@ -1191,6 +1193,7 @@ EXISTING HEADLINES (for uniqueness):
 - B1-B2: "${previousDraft.variants['B1-B2']?.headline||''}"
 - C1-C2: "${previousDraft.variants['C1-C2']?.headline||''}"
 
+${naturalCEFRPilot()?`READ-ONLY SHARED FACT SHEET AND OUTLINE (retain every relevant fact and caveat; do not alter these objects):\n${JSON.stringify({factSheet:previousDraft.factSheet||null,outline:previousDraft.outline||null})}\n`:''}
 ITEMS TO REPAIR:
 ${JSON.stringify(failingSnapshot)}
 
@@ -2420,6 +2423,7 @@ export async function runPublishWikiBatch({
     normalizedDraft=normalizeDraftForCatalog(firstRes.draft,{source,evidence:trimmed.evidence,verifiedPhotos})
     quality=validateArticleQuality(normalizedDraft,source.sourceTitle,{source,evidence:trimmed.evidence})
 
+    if(naturalCEFRPilot())console.log('[CEFR-PILOT-DRAFT] '+JSON.stringify({title:source.sourceTitle,phase:'initial',errors:quality.errors,warnings:quality.warnings,profiles:quality.cefr?.profiles}))
     // Perform at most ONE targeted repair of failing pages/levels while preserving valid content
     if(!quality.ok){
      const repairOutcome=await runOneTargetedRepair({source,item,trimmed,verifiedPhotos,normalizedDraft,quality})
@@ -2435,6 +2439,7 @@ export async function runPublishWikiBatch({
     }
    }
 
+   if(naturalCEFRPilot())console.log('[CEFR-PILOT-DRAFT] '+JSON.stringify({title:source.sourceTitle,phase:'final',errors:quality.errors,warnings:quality.warnings,profiles:quality.cefr?.profiles}))
    if(!quality.ok){
     recordQualityHistogram(quality.errors)
     console.warn(`[batch]   -> SKIPPED_QUALITY after repair: ${quality.errors.slice(0,3).join(' | ')}`)
