@@ -2801,6 +2801,44 @@ export async function runPublishWikiBatch({
     }
    }
 
+   // One bounded targeted retry for deterministic issues the descriptor reviewer missed.
+   // The complete article is then reviewed again so no post-review text change bypasses CEFR assessment.
+   if(!dryRun&&callGeminiImpl===callGeminiFlashLite&&!quality.ok&&!identifyRepairTargets(normalizedDraft,quality).structuralParityFailed){
+    const residualRepair=await runOneTargetedRepair({source,item,trimmed,verifiedPhotos,normalizedDraft,quality})
+    if(residualRepair.budgetHit){
+     console.warn(`[batch]   -> Runtime budget reached before residual quality repair (${Math.max(0,Math.round(remainingBudget()/1000))}s left). Leaving "${item.title}" ${prevQueueStatus||'pending'} and stopping gracefully.`)
+     budgetStopped=true
+     break
+    }
+    repairUsed=true
+    usedModel=residualRepair.model||usedModel
+    normalizedDraft=residualRepair.normalizedDraft
+    quality=residualRepair.quality
+    if(!identifyRepairTargets(normalizedDraft,quality).structuralParityFailed){
+     const retryRequiredRepairLevels=new Set()
+     for(const issue of quality.errors||[]){
+      const match=String(issue).match(/^(A1-A2|B1-B2|C1-C2)/)
+      if(match)retryRequiredRepairLevels.add(match[1])
+     }
+     if((quality.errors||[]).length&&!retryRequiredRepairLevels.size){
+      for(const level of LEVELS)retryRequiredRepairLevels.add(level)
+     }
+     const retryReviewPrompt=buildCEFRReviewRepairPrompt(source,item.topic,trimmed.evidence,normalizedDraft,quality)
+     const retryReviewRes=await invokeGeminiWithDelay(retryReviewPrompt,{reserveMs:minRetryBudgetMs,schema:buildCEFRReviewRepairSchema(normalizedDraft),modelChainOverride:reviewerModelChain,keyStateOverride:reviewerKeyState})
+     consecutiveInfraFailures=0
+     const retryReviewOutcome=applyCEFRReviewRepairs(normalizedDraft,retryReviewRes.draft,{requiredRepairLevels:[...retryRequiredRepairLevels],validEvidenceIds:new Set(trimmed.evidence.map(e=>e.id))})
+     normalizedDraft=normalizeDraftForCatalog(retryReviewOutcome.draft,{source,evidence:trimmed.evidence,verifiedPhotos})
+     quality=validateArticleQuality(normalizedDraft,source.sourceTitle,{source,evidence:trimmed.evidence,requireLevelPlans:true})
+     quality.cefrReview=retryReviewOutcome.finalAssessment||null
+     if(!retryReviewOutcome.ok){
+      quality.ok=false
+      quality.errors.push(...retryReviewOutcome.errors.map(e=>'CEFR descriptor review after targeted retry: '+e))
+     }
+     usedModel=retryReviewRes.model||usedModel
+     console.log(`[batch]   -> Residual targeted repair + final CEFR review model=${retryReviewRes.model||reviewerModelChain[0]} [${LEVELS.map(level=>level+':'+(retryReviewOutcome.finalAssessment?.[level]?.finalBand||'uncertain')).join(' / ')}], repairs=${(retryReviewRes.draft?.repairs||[]).map(row=>row.level).join(',')||'none'}.`)
+    }
+   }
+
    if(!quality.ok){
     recordQualityHistogram(quality.errors)
     console.warn(`[batch]   -> SKIPPED_QUALITY after repair: ${quality.errors.slice(0,3).join(' | ')}`)
