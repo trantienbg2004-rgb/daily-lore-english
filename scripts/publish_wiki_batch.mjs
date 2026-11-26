@@ -1254,26 +1254,18 @@ function formatCEFRRetryBlock(qualityResult){
  const cefr=qualityResult?.cefr||qualityResult
  const profiles=cefr?.profiles
  if(!profiles?.['A1-A2']||!profiles?.['B1-B2']||!profiles?.['C1-C2'])return ''
- const a=profiles['A1-A2']
- const b=profiles['B1-B2']
- const c=profiles['C1-C2']
  const lines=[
-  'OBJECTIVE CEFR PROFILER DIAGNOSTICS (TARGETED WORD-SWAP & READABILITY FIXES):',
-  `- A1-A2 measured: FKGL=${a.fkgl} (target <= ${CEFR_THRESHOLDS['A1-A2'].maxFkgl}), avgSentence=${a.avgSentenceLength}w, A1-A2 words=${a.lexicalProfile.a1a2Pct}% (min ${CEFR_THRESHOLDS['A1-A2'].minA1A2Pct}%), C1-C2/unlisted=${a.lexicalProfile.c1c2OrUnlistedPct}% (max ${CEFR_THRESHOLDS['A1-A2'].maxC1C2OrUnlistedPct}%)`,
-  `- B1-B2 measured: FKGL=${b.fkgl} (target ${CEFR_THRESHOLDS['B1-B2'].minFkgl}-${CEFR_THRESHOLDS['B1-B2'].maxFkgl}, gap above A1-A2=${cefr.gaps?.bMinusA ?? Number((b.fkgl-a.fkgl).toFixed(2))} >= ${CEFR_THRESHOLDS['B1-B2'].minFkglGapAboveA1}), avgSentence=${b.avgSentenceLength}w, A1-B2 words=${b.lexicalProfile.a1ToB2Pct}% (min ${CEFR_THRESHOLDS['B1-B2'].minA1ToB2Pct}%), B2+C1-C2=${b.lexicalProfile.b2PlusC1C2OrUnlistedPct}%`,
-  `- C1-C2 measured: FKGL=${c.fkgl} (target >= ${CEFR_THRESHOLDS['C1-C2'].minFkgl}, gap above B1-B2=${cefr.gaps?.cMinusB ?? Number((c.fkgl-b.fkgl).toFixed(2))} >= ${CEFR_THRESHOLDS['C1-C2'].minFkglGapAboveB1}), avgSentence=${c.avgSentenceLength}w, B2+C1-C2=${c.lexicalProfile.b2PlusC1C2OrUnlistedPct}% (must exceed B1-B2 ${b.lexicalProfile.b2PlusC1C2OrUnlistedPct}%)`
+  'ADVISORY CEFR SCREENING SIGNALS — NOT A PASS/FAIL STANDARD:',
+  ...LEVELS.map(level=>{
+   const p=profiles[level]
+   return '- '+level+': FKGL='+p.fkgl+', average sentence='+p.avgSentenceLength+' words, lexical profile='+JSON.stringify(p.lexicalProfile)+', flagged words='+JSON.stringify((p.overLevelWords||[]).slice(0,12))
+  }),
+  '- These signals are imperfect diagnostics, not CEFR definitions. Do NOT rewrite, simplify, lengthen or replace words merely to hit a numeric threshold.',
+  '- Review a flagged word in its sentence and sense. Keep essential names and technical terms when needed; explain them in context for lower-level readers.',
+  '- Make changes only when the actual reading experience is outside the assigned CEFR descriptor band or when a deterministic editorial/source-grounding error requires a correction.',
+  '- Keep C1-C2 natural and precise. Do not create artificial academic jargon or unnecessary complexity.'
  ]
- if(a.overLevelWords?.length){
-  lines.push(`- MANDATORY A1-A2 WORD SWAPS: Replace these over-level words in A1-A2 with simple everyday A1-A2 equivalents: [${a.overLevelWords.slice(0,20).join(', ')}]`)
- }
- if(a.lexicalProfile.a1a2Pct<CEFR_THRESHOLDS['A1-A2'].minA1A2Pct&&a.b2Words?.length){
-  lines.push(`- SIMPLIFY B2 WORDS IN A1-A2: Swap harder B2 words like [${a.b2Words.slice(0,12).join(', ')}] for plain A1-A2 words and split long sentences.`)
- }
- if(b.overLevelWords?.length&&(b.lexicalProfile.a1ToB2Pct<CEFR_THRESHOLDS['B1-B2'].minA1ToB2Pct||b.fkgl>CEFR_THRESHOLDS['B1-B2'].maxFkgl)){
-  lines.push(`- SIMPLIFY OVER-LEVEL WORDS IN B1-B2: Replace rare/academic words [${b.overLevelWords.slice(0,15).join(', ')}] with clear B1-B2 magazine terms.`)
- }
- lines.push('- KEEP C1-C2 NATURAL: Do NOT stuff artificial academic jargon; use clear, sophisticated natural editorial prose.')
- return `\n\n${lines.join('\n')}`
+ return '\n\n'+lines.join('\n')
 }
 
 /** Identify exact failing headlines, pages, and levels so repair preserves all already-valid content. */
