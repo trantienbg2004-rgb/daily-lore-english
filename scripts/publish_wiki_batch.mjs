@@ -738,11 +738,11 @@ export function validateFactualConsistency(draft,{source=null,evidence=[]}={}){
  const sourceYears=new Set(extractSpecificYears(fullSourceText))
  const sourceQuantities=new Set(extractMeasuredQuantities(fullSourceText))
  const factSheetFacts=Array.isArray(draft.factSheet?.coreFacts)?draft.factSheet.coreFacts:[]
- const factIds=new Set(factSheetFacts.map(f=>f.id))
- const hasLevelPlans=LEVELS.every(level=>Array.isArray(draft.levelPlans?.[level]?.pages))
- const planPagesByLevel=Object.fromEntries(LEVELS.map(level=>[level,hasLevelPlans?draft.levelPlans[level].pages:(Array.isArray(draft.outline)?draft.outline:[])]))
+ const factMap=new Map(factSheetFacts.map(f=>[f.id,f]))
+ const factIds=new Set(factMap.keys())
+ const hasLevelPlans=LEVELS.every(level=>Array.isArray(draft.levelPlans?.[level]?.selectedFactIds))
 
- // The shared outline is now a visual/page map only. Content focus and selected facts live in levelPlans.
+ // The shared outline is a visual/page map only. Each level independently selects facts and depth.
  if(Array.isArray(draft.outline)&&draft.outline.length){
   if(draft.outline.length!==sharedLen)errors.push('Visual outline page count mismatch: outline has '+draft.outline.length+' page(s), variants have '+sharedLen)
   for(let i=0;i<Math.min(draft.outline.length,sharedLen);i++){
@@ -759,27 +759,26 @@ export function validateFactualConsistency(draft,{source=null,evidence=[]}={}){
  if(hasLevelPlans){
   const factSets=[]
   for(const level of LEVELS){
-   const plan=draft.levelPlans[level],pages=plan.pages
+   const plan=draft.levelPlans[level]
+   const selected=plan.selectedFactIds
    if(!String(plan.readerObjective||'').trim())errors.push(level+': missing reader objective in level plan')
-   if(pages.length!==levelPages[LEVELS.indexOf(level)].length)errors.push(level+': level plan page count does not match its article pages')
-   const selectedFacts=new Set()
-   for(let idx=0;idx<pages.length;idx++){
-    const page=pages[idx]
-    if(page.pageIndex!==idx)errors.push(level+' plan page '+(idx+1)+': pageIndex is not in sequence')
-    if(!String(page.focus||'').trim())errors.push(level+' plan page '+(idx+1)+': missing level-specific focus')
-    if(!Array.isArray(page.factIds)||!page.factIds.length)errors.push(level+' plan page '+(idx+1)+': missing selected factIds')
-    for(const id of page.factIds||[]){
-     if(!factIds.has(id))errors.push(level+' plan page '+(idx+1)+': unknown factId '+id)
-     selectedFacts.add(id)
-    }
-    if(evidenceRows.length&&(!Array.isArray(page.evidenceIds)||!page.evidenceIds.length||page.evidenceIds.some(id=>!validEvidenceIds.has(id))))errors.push(level+' plan page '+(idx+1)+': evidenceIds must reference supplied source passages')
+   if(!String(plan.depthNotes||'').trim())errors.push(level+': missing level-specific depth notes')
+   if(selected.length<2||selected.length>10)errors.push(level+': selectedFactIds must contain 2-10 facts')
+   const selectedSet=new Set(selected)
+   for(const id of selectedSet)if(!factIds.has(id))errors.push(level+': level plan references unknown factId '+id)
+   factSets.push(selectedSet)
+   const cited=new Set((draft.variants[level]?.pages||[]).flatMap(p=>Array.isArray(p?.evidenceIds)?p.evidenceIds:[]))
+   if(evidenceRows.length&&[...selectedSet].some(id=>{
+    const fact=factMap.get(id)
+    return fact&&!fact.evidenceIds?.some(evId=>cited.has(evId))
+   })){
+    errors.push(level+': article pages do not cite evidence for every selected core fact')
    }
-   factSets.push(selectedFacts)
   }
   const commonFacts=[...factSets[0]].filter(id=>factSets[1].has(id)&&factSets[2].has(id))
   if(commonFacts.length<2)errors.push('Level plans must retain at least two shared core facts while allowing different depth and emphasis')
  }else if(draft.levelPlans){
-  errors.push('Incomplete levelPlans: each of A1-A2, B1-B2 and C1-C2 needs its own page plan')
+  errors.push('Incomplete levelPlans: A1-A2, B1-B2 and C1-C2 each need selectedFactIds')
  }
 
  const uncertainFactIds=new Set(factSheetFacts.filter(f=>f?.hasUncertainty).map(f=>f.id))
@@ -789,7 +788,7 @@ export function validateFactualConsistency(draft,{source=null,evidence=[]}={}){
   const textsByLevel=Object.fromEntries(LEVELS.map(l=>[l,String(draft.variants[l]?.pages?.[idx]?.text||'')]))
   const evIdsByLevel=Object.fromEntries(LEVELS.map(l=>[l,Array.isArray(draft.variants[l]?.pages?.[idx]?.evidenceIds)?draft.variants[l].pages[idx].evidenceIds:[]]))
 
-  // Legacy drafts retain page-by-page correspondence; new drafts use independent level plans.
+  // Legacy drafts retain page-by-page correspondence; new drafts are compared at article level.
   if(!hasLevelPlans){
    const termSets=LEVELS.map(l=>contentTerms(textsByLevel[l]))
    const sharedEvAB=evIdsByLevel['A1-A2'].some(id=>evIdsByLevel['B1-B2'].includes(id))
@@ -800,11 +799,8 @@ export function validateFactualConsistency(draft,{source=null,evidence=[]}={}){
    if(!sharedEvBC&&overlapBC===0)errors.push('Cross-level factual drift on page '+(idx+1)+': B1-B2 and C1-C2 share neither evidence passages nor core topic terms')
   }else{
    for(const level of LEVELS){
-    const planPage=planPagesByLevel[level][idx]
     const pageEvidence=evIdsByLevel[level]
-    const planEvidence=new Set(planPage?.evidenceIds||[])
     if(evidenceRows.length&&(!pageEvidence.length||pageEvidence.some(id=>!validEvidenceIds.has(id))))errors.push(level+' page '+(idx+1)+': evidenceIds must reference supplied source passages')
-    if(planPage&&pageEvidence.length&&!pageEvidence.some(id=>planEvidence.has(id)))errors.push(level+' page '+(idx+1)+': cited evidence does not support its level-specific page plan')
    }
   }
 
@@ -834,17 +830,18 @@ export function validateFactualConsistency(draft,{source=null,evidence=[]}={}){
     }
    }
   }
+ }
 
-  // Preserve uncertainty for facts selected by each level, not by another level's page plan.
-  for(const level of LEVELS){
-   const planPage=planPagesByLevel[level][idx]
-   const pageHasUncertainFact=Boolean(planPage?.factIds?.some(fid=>uncertainFactIds.has(fid)))
-   const citedEvidenceText=evIdsByLevel[level].map(id=>evidenceMap.get(id)?.text||'').join(' ')
-   const sourceHasUncertainty=UNCERTAINTY_SOURCE_RE.test(citedEvidenceText)||pageHasUncertainFact
-   const pageText=textsByLevel[level]
-   if(sourceHasUncertainty&&ABSOLUTE_OVERCLAIM_RE.test(pageText))errors.push(level+' page '+(idx+1)+': absolute overclaim contradicts source uncertainty or safety conditions')
-   if(pageHasUncertainFact&&!HEDGE_OR_CAUTION_RE.test(pageText))errors.push(level+' page '+(idx+1)+': omits source uncertainty/safety qualification flagged in its level plan')
-  }
+ // Source uncertainty is checked against each level's selected facts and the evidence actually cited in its full article.
+ for(const level of LEVELS){
+  const fullText=(draft.variants[level]?.pages||[]).map(p=>p.text||'').join(' ')
+  const citedIds=[...new Set((draft.variants[level]?.pages||[]).flatMap(p=>Array.isArray(p?.evidenceIds)?p.evidenceIds:[]))]
+  const citedText=citedIds.map(id=>evidenceMap.get(id)?.text||'').join(' ')
+  const selectedFactIds=hasLevelPlans?draft.levelPlans[level].selectedFactIds:[]
+  const selectedUncertainty=selectedFactIds.some(id=>uncertainFactIds.has(id))
+  const sourceHasUncertainty=UNCERTAINTY_SOURCE_RE.test(citedText)||selectedUncertainty
+  if(sourceHasUncertainty&&ABSOLUTE_OVERCLAIM_RE.test(fullText))errors.push(level+': absolute overclaim contradicts source uncertainty or safety conditions')
+  if(selectedUncertainty&&!HEDGE_OR_CAUTION_RE.test(fullText))errors.push(level+': omits source uncertainty/safety qualification from selected facts')
  }
 
  if(hasGlobalCaveats){
@@ -874,8 +871,8 @@ export function validateArticleQuality(draft,sourceTitle,{
   return {ok:false,errors:['Missing variants object in generated draft'],metrics}
  }
 
- if(requireLevelPlans&&!LEVELS.every(level=>Array.isArray(draft.levelPlans?.[level]?.pages))){
-  errors.push('Missing independent levelPlans: A1-A2, B1-B2 and C1-C2 must each have their own reading plan')
+ if(requireLevelPlans&&!LEVELS.every(level=>Array.isArray(draft.levelPlans?.[level]?.selectedFactIds))){
+  errors.push('Missing independent levelPlans: A1-A2, B1-B2 and C1-C2 must each select their own core facts and depth')
  }
 
  // 1. Verify page-count parity and imageId/image parity across all 3 CEFR levels
