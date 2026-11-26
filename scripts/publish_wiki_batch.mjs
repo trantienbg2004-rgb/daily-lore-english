@@ -2772,7 +2772,7 @@ export async function runPublishWikiBatch({
       quality.errors.push(...reviewOutcome.errors.map(e=>'CEFR descriptor review: '+e))
      }
      usedModel=reviewRes.model||usedModel
-     console.log(`[batch]   -> CEFR descriptor review [${LEVELS.map(level=>level+':'+(reviewOutcome.finalAssessment?.[level]?.estimatedBand||'uncertain')).join(' / ')}], repairs=${Object.keys(reviewRes.draft?.repairs||{}).join(',')||'none'}.`)
+     console.log(`[batch]   -> CEFR descriptor review model=${reviewRes.model||reviewerModelChain[0]} [${LEVELS.map(level=>level+':'+(reviewOutcome.finalAssessment?.[level]?.finalBand||'uncertain')).join(' / ')}], repairs=${(reviewRes.draft?.repairs||[]).map(row=>row.level).join(',')||'none'}.`)
     }
    }
 
