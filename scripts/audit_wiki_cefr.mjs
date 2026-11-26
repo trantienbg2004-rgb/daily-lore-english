@@ -322,7 +322,7 @@ if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.ur
  }else{
   auditWikiCEFR({root:ROOT,minKeep:opts.minKeep})
    .then(report=>{
-    if(opts.asJson){
+    if(opts.asJsonDetails||opts.asJson){
      if(opts.asJsonDetails){
       const detailed={
        totalArticles:report.totalArticles,
