@@ -11,7 +11,7 @@ const root=path.resolve(process.argv[3]||'.')
 const {stories}=await readWikiCatalog(root)
 if(!stories.length)throw Error('Empty catalog; cannot audit')
 const levels=['A1-A2','B1-B2','C1-C2']
-const fk=(w,s,y)=>Number(Math.max(0,0.39*w/s+11.8*y/w-15.59).toFixed(2))
+const fk=(w,s,y)=>Number(Math.max(0,0.39*(w/s)+11.8*(y/w)-15.59).toFixed(2))
 const rows=[]
 for(const story of stories)for(const level of levels){
  const text=story.levelVariants[level].pages.map(p=>String(p.text||'').trim()).filter(Boolean).join(' ')
