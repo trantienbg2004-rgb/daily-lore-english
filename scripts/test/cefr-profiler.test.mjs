@@ -242,4 +242,8 @@ test('natural pilot prompt removes C complexity quotas while retaining A and B u
  assert.match(pilot,/FKGL <= 6.8/)
  assert.match(pilot,/FKGL 6.8-10.8/)
  assert.match(pilot,/Never manufacture complexity/)
+ assert.match(pilot,/aim around 4-5/)
+ assert.match(pilot,/aim around 8-9/)
+ assert.doesNotMatch(legacy,/aim around 4-5/)
+ assert.match(pilot,/Never raise B merely to increase its gap from A/)
 })
