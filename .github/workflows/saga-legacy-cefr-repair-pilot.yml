@@ -1,0 +1,113 @@
+name: SAGA - Legacy CEFR Repair Pilot
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - '.github/workflows/saga-legacy-cefr-repair-pilot.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: saga-legacy-cefr-repair-pilot
+  cancel-in-progress: false
+
+jobs:
+  repair-pilot:
+    if: github.event_name == 'pull_request' && github.event.pull_request.head.ref == 'test/saga-legacy-cefr-repair-pilot-20261127'
+    name: Generate five replacement articles in an isolated catalog
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+
+      - name: Setup Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci --no-audit --no-fund
+
+      - name: Build isolated queue for the five reviewer-failed source pages
+        run: |
+          mkdir -p /tmp/saga-legacy-cefr-repair-pilot
+          cat > /tmp/saga-legacy-cefr-repair-pilot/queue.json <<'QUEUE'
+          {
+            "version": 1,
+            "items": [
+              {"title":"Cherchell","pageId":2034884,"topic":"History & Geography","source":"cefr_repair_pilot","priority":0,"sourceUrl":"https://en.wikipedia.org/wiki/Cherchell","hasLeadImage":true,"status":"pending"},
+              {"title":"Ancient Olympic Games","pageId":19098431,"topic":"Sports","source":"cefr_repair_pilot","priority":0,"sourceUrl":"https://en.wikipedia.org/wiki/Ancient_Olympic_Games","hasLeadImage":true,"status":"pending"},
+              {"title":"Changeling","pageId":396412,"topic":"Health","source":"cefr_repair_pilot","priority":0,"sourceUrl":"https://en.wikipedia.org/wiki/Changeling","hasLeadImage":true,"status":"pending"},
+              {"title":"GOAT (sports culture)","pageId":79511869,"topic":"Sports","source":"cefr_repair_pilot","priority":0,"sourceUrl":"https://en.wikipedia.org/wiki/GOAT_(sports_culture)","hasLeadImage":true,"status":"pending"},
+              {"title":"Badger culling in the United Kingdom","pageId":36471858,"topic":"Health","source":"cefr_repair_pilot","priority":0,"sourceUrl":"https://en.wikipedia.org/wiki/Badger_culling_in_the_United_Kingdom","hasLeadImage":true,"status":"pending"}
+            ]
+          }
+          QUE
+
+      - name: Generate five replacement articles in isolated catalog
+        id: repair
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_API_KEY_2: ${{ secrets.GEMINI_API_KEY_2 }}
+          GEMINI_API_KEY_3: ${{ secrets.GEMINI_API_KEY_3 }}
+          SAGA_IMAGE_TEST_API_KEY: ${{ secrets.SAGA_IMAGE_TEST_API_KEY }}
+          GEMINI_MODEL: gemini-3.5-flash-lite
+          GEMINI_DELAY_MS: '8000'
+          MAX_RUNTIME_MS: '1440000'
+        run: |
+          node scripts/publish_wiki_batch.mjs \
+            --queue-file=/tmp/saga-legacy-cefr-repair-pilot/queue.json \
+            --page-id=2034884,19098431,396412,79511869,36471858 \
+            --target-root=/tmp/saga-legacy-cefr-repair-pilot \
+            --max-articles=5 \
+            --max-candidates=5 \
+            --max-runtime-ms=1440000
+
+      - name: Upload isolated replacement catalog
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: saga-legacy-cefr-replacement-pilot
+          path: /tmp/saga-legacy-cefr-repair-pilot/public/wiki-reader/
+          if-no-files-found: warn
+          retention-days: 7
+
+      - name: Report repair pilot result
+        if: always()
+        env:
+          PILOT_OUTCOME: ${{ steps.repair.outcome }}
+          GENERATED_COUNT: ${{ steps.repair.outputs.published_count }}
+          STOP_REASON: ${{ steps.repair.outputs.stop_reason }}
+          SCANNED_COUNT: ${{ steps.repair.outputs.scanned_count }}
+          QUALITY_SKIPS: ${{ steps.repair.outputs.skipped_quality_count }}
+          IMAGE_SKIPS: ${{ steps.repair.outputs.skipped_no_lead_count }}
+        run: |
+          {
+            echo "## SAGA legacy CEFR replacement pilot"
+            echo "- Workflow step: ${PILOT_OUTCOME}"
+            echo "- Replacement articles generated: ${GENERATED_COUNT:-unknown}/5"
+            echo "- Candidates scanned: ${SCANNED_COUNT:-unknown}"
+            echo "- Stop reason: ${STOP_REASON:-unknown}"
+            echo "- Quality rejections: ${QUALITY_SKIPS:-unknown}"
+            echo "- Missing suitable image: ${IMAGE_SKIPS:-unknown}"
+            echo "- Output: isolated artifact only; production catalog and queue were not changed."
+          } >> "$GITHUB_STEP_SUMMARY"
+
+          if [ -z "${GENERATED_COUNT:-}" ] || [ -z "${STOP_REASON:-}" ]; then
+            echo "Replacement pilot did not return required result outputs."
+            exit 1
+          fi
+          if [ "$PILOT_OUTCOME" != "success" ] || [ "$STOP_REASON" != "completed" ]; then
+            echo "Replacement pilot did not complete cleanly."
+            exit 1
+          fi
+          if [ "$GENERATED_COUNT" -ne 5 ]; then
+            echo "Expected 5 replacement articles; got $GENERATED_COUNT."
+            exit 1
+          fi
