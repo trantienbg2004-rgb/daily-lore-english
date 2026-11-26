@@ -178,10 +178,6 @@ async function runTopic(id){
      const a=applied.finalAssessment?.[level]
      return a?.finalVerdict==='pass'&&['A1','A2','B1','B2','C1','C2'].includes(a.finalBand)
     })
-    result.passed=applied.ok&&assigned.ok&&quality.ok&&['A1-A2','B1-B2','C1-C2'].every(level=>{
-     const a=applied.finalAssessment?.[level]
-     return a?.finalVerdict==='pass'&&['A1','A2','B1','B2','C1','C2'].includes(a.finalBand)
-    })
   }else{
    result.review={ok:false,errors:['Structural page/image parity remained unresolved; production also skips descriptor review in this state.']}
    result.finalQuality={ok:quality.ok,errors:quality.errors,metrics:quality.metrics,heuristicWarnings:quality.cefr?.errors||[]}
