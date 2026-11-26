@@ -9,6 +9,82 @@ const trim = text => String(text || '')
   .trim()
 const wordCount = text => trim(text).split(/\s+/u).filter(Boolean).length
 
+export function splitParagraphs(text) {
+  return String(text || '')
+    .replace(/\r\n?/gu, '\n')
+    .split(/\n\s*\n+/u)
+    .map(part => trim(part))
+    .filter(Boolean)
+}
+
+export function extractSemanticParagraphs(item) {
+  const originals = item?._sourcePages || item?.pages || []
+  const paragraphs = []
+  const seenImages = new Set()
+  const rawAnchors = []
+  const sectionCount = originals.length
+
+  for (let secIdx = 0; secIdx < originals.length; secIdx++) {
+    const src = originals[secIdx] || {}
+    const secParts = Array.isArray(src.paragraphs) && src.paragraphs.length
+      ? src.paragraphs.flatMap(entry => splitParagraphs(entry))
+      : splitParagraphs(src.text)
+    const startPara = paragraphs.length
+    const totalInSec = Math.max(1, secParts.length)
+    for (let pIdx = 0; pIdx < secParts.length; pIdx++) {
+      const text = secParts[pIdx]
+      const startNorm = sectionCount > 0 ? (secIdx + pIdx / totalInSec) / sectionCount : 0
+      const endNorm = sectionCount > 0 ? (secIdx + (pIdx + 1) / totalInSec) / sectionCount : 1
+      paragraphs.push({
+        index: paragraphs.length,
+        text,
+        sectionIndex: secIdx,
+        paraInSection: pIdx,
+        sectionParagraphCount: totalInSec,
+        words: wordCount(text),
+        chars: text.length,
+        semanticStart: startNorm,
+        semanticEnd: endNorm,
+      })
+    }
+    const endPara = paragraphs.length - 1
+    if (src.image && !seenImages.has(src.image)) {
+      seenImages.add(src.image)
+      rawAnchors.push({
+        page: src,
+        sectionIndex: secIdx,
+        startPara,
+        endPara,
+        hasOwnText: secParts.length > 0,
+      })
+    }
+  }
+
+  const coverIdx = rawAnchors.length
+    ? selectCoverAnchorIndex(
+        item,
+        rawAnchors.map(a => ({page: a.page, start: a.startPara, end: Math.max(a.endPara + 1, a.startPara + 1)})),
+        originals[0]?.text || ''
+      )
+    : -1
+  const coverImage = coverIdx >= 0 ? rawAnchors[coverIdx].page : null
+  const secondaryAnchors = rawAnchors
+    .filter((_, idx) => idx !== coverIdx)
+    .map(anchor => {
+      if (anchor.hasOwnText) return anchor
+      const clamped = Math.min(Math.max(0, anchor.startPara), Math.max(0, paragraphs.length - 1))
+      return {...anchor, startPara: clamped, endPara: clamped}
+    })
+
+  return {
+    paragraphs,
+    sectionCount,
+    coverImage,
+    secondaryAnchors,
+    hasMultiParagraphs: originals.some(p => splitParagraphs(p?.text).length > 1 || (Array.isArray(p?.paragraphs) && p.paragraphs.length > 1)),
+  }
+}
+
 export function sentenceUnits(text) {
   const words = trim(text).split(/\s+/u).filter(Boolean)
   if (!words.length) return []
@@ -765,7 +841,372 @@ export function planBalancedWikiPages(item, fits, {
   return fixed
 }
 
-export function planAnchoredWikiPages(item, fits, {maxPages = 250, uniformRhythm = false, balanced = false} = {}) {
+/**
+ * Paragraph-Aware Adaptive Pagination Engine for SAGA Wiki reading:
+ * - Treats editorial source sections and rendered screen pages as separate concepts.
+ * - Packs COMPLETE paragraphs into screen pages using measured viewport capacity
+ *   (never splitting words, sentences, names, abbreviations, or paragraphs).
+ * - Optimizes contiguous paragraph grouping toward 4-6 pages (preferring 5 when
+ *   appropriate) to reduce excessive bottom whitespace and uneven density without
+ *   forcing wall-to-wall overcrowding.
+ * - Anchors the cover image on Page 1 and every secondary image strictly to a page
+ *   containing paragraph(s) from its own semantic section.
+ * - Uses the existing safe scrolling fallback (`density: 'dense saga-page--dense'`)
+ *   ONLY when a single intact paragraph genuinely overflows available height.
+ * - Emits semantic section & progress metadata on every page so A/B/C level switches
+ *   preserve the reader's semantic position even when rendered page counts differ.
+ */
+export function planParagraphAwareWikiPages(item, fits, {
+  measure = null,
+  preferredPages = 5,
+  minPreferredPages = 4,
+  maxPreferredPages = 6,
+  maxAllowedPages = 8,
+} = {}) {
+  const originals = item?._sourcePages || item?.pages || []
+  if (!originals.length) return null
+  const raw = trim(originals.map(p => splitParagraphs(p?.text).join(' ')).join(' '))
+  if (!raw) return null
+
+  const {paragraphs, sectionCount, coverImage, secondaryAnchors} = extractSemanticParagraphs(item)
+  if (!paragraphs.length) return null
+
+  const N = paragraphs.length
+  const R = secondaryAnchors.length
+  const measureFn = typeof measure === 'function' ? measure : (typeof fits?.measure === 'function' ? fits.measure : null)
+
+  // Memoize candidate DOM measurements so identical (from, to, isCover, img) states are never re-measured.
+  const measureMemo = new Map()
+  const runSingleMeasure = (text, isCover, imageObj, density) => {
+    if (measureFn) {
+      const m = measureFn({text, cover: isCover, image: imageObj || null, density}) || {}
+      const avail = Math.max(1, Number(m.availableHeight) || 1)
+      const unused = Math.max(0, Number(m.unusedVerticalPx ?? m.bottomWhitespacePx ?? 0))
+      const overflowPx = Math.max(0, Number(m.overflowPx) || 0)
+      const ok = Boolean(m.fits)
+      const usedRatio = ok
+        ? Math.min(1, Math.max(0, (avail - unused) / avail))
+        : 1 + overflowPx / avail
+      return {
+        fits: ok,
+        density,
+        usedRatio,
+        unusedRatio: Math.max(0, 1 - Math.min(1, usedRatio)),
+        overflowRatio: ok ? 0 : Math.max(0.05, overflowPx / avail),
+        text,
+      }
+    }
+    const ok = Boolean(fits({text, cover: isCover, image: imageObj || null, density}))
+    const estCap = isCover ? (density === 'compact' ? 390 : 340) : (imageObj ? (density === 'compact' ? 420 : 370) : 620)
+    const usedRatio = ok ? Math.min(0.95, text.length / estCap) : 1.25
+    return {
+      fits: ok,
+      density,
+      usedRatio,
+      unusedRatio: Math.max(0, 1 - Math.min(1, usedRatio)),
+      overflowRatio: ok ? 0 : 0.25,
+      text,
+    }
+  }
+
+  const evaluateCandidate = (from, to, isCover, imageObj) => {
+    const imgKey = imageObj?.image || ''
+    const cacheKey = `${from}:${to}:${isCover ? 1 : 0}:${imgKey}`
+    const cached = measureMemo.get(cacheKey)
+    if (cached) return cached
+
+    const text = paragraphs.slice(from, to).map(p => p.text).join('\n\n')
+    let result = runSingleMeasure(text, isCover, imageObj, '')
+    // Before resorting to a scrollable dense card on a photo page, try the
+    // existing compact photo frame so intact paragraphs fit cleanly without scroll.
+    if (!result.fits && imageObj?.image) {
+      const compactRes = runSingleMeasure(text, isCover, imageObj, 'compact')
+      if (compactRes.fits) result = compactRes
+    }
+    measureMemo.set(cacheKey, result)
+    return result
+  }
+
+  const scorePage = (from, to, isCover, imageObj, evalRes) => {
+    const paraCount = to - from
+    const words = paragraphs.slice(from, to).reduce((sum, p) => sum + p.words, 0)
+    const hasPhoto = Boolean(imageObj?.image)
+    const idealFill = hasPhoto ? 0.74 : 0.62
+
+    if (!evalRes.fits) {
+      // Single intact paragraph genuinely exceeds viewport height -> allow safe scrolling fallback.
+      return {
+        cost: 75 + evalRes.overflowRatio * 55,
+        density: 'dense saga-page--dense',
+        dense: true,
+        fillRatio: 1,
+      }
+    }
+
+    let cost = ((evalRes.usedRatio - idealFill) ** 2) * 115
+    if (evalRes.density === 'compact') cost += 12
+    // Discourage excessive unused whitespace without forcing wall-to-wall packing
+    if (evalRes.unusedRatio > 0.52) {
+      cost += ((evalRes.unusedRatio - 0.52) ** 2) * 210
+    }
+    // Discourage overcrowding right up against the bottom pager
+    if (evalRes.usedRatio > 0.92) {
+      cost += ((evalRes.usedRatio - 0.92) ** 2) * 180
+    }
+    // Penalize tiny orphan/stub pages (e.g. a single 15-word sentence alone on a text page)
+    if (!hasPhoto && words < 26) {
+      cost += ((26 - words) / 26) ** 2 * 60
+    } else if (hasPhoto && words < 18) {
+      cost += ((18 - words) / 18) ** 2 * 45
+    }
+    // Gentle tie-breaker favoring clean semantic section endings when density is comparable
+    const endsOnSectionBoundary = to === N || paragraphs[to - 1].sectionIndex !== paragraphs[to].sectionIndex
+    if (endsOnSectionBoundary) cost -= 1.5
+    // Gentle tie-breaker favoring starting a secondary photo page right on its section's first paragraph
+    if (hasPhoto && !isCover && paraCount > 0) {
+      const startsClean = from === 0 || paragraphs[from - 1].sectionIndex !== paragraphs[from].sectionIndex
+      if (startsClean) cost -= 4
+    }
+
+    return {cost, density: evalRes.density || '', dense: false, fillRatio: evalRes.usedRatio}
+  }
+
+  const pageCountPenalty = k => {
+    if (k === preferredPages) return 0
+    if (k === minPreferredPages) return 16
+    if (k === maxPreferredPages) return 14
+    if (k < minPreferredPages) return 220 * (minPreferredPages - k)
+    if (k === maxPreferredPages + 1) return 75
+    return 180 * (k - maxPreferredPages)
+  }
+
+  const minPossibleK = Math.max(1, Math.min(N, (coverImage ? 1 : 0) + R))
+  const maxPossibleK = Math.min(N, Math.max(maxAllowedPages, minPossibleK))
+
+  // DP state: states[k] is a Map keyed by `${from}:${anchorIdx}` -> { cost, steps }
+  const states = Array.from({length: maxPossibleK + 1}, () => new Map())
+  states[0].set('0:0', {cost: 0, steps: []})
+
+  for (let k = 0; k < maxPossibleK; k++) {
+    const layer = states[k]
+    if (!layer.size) continue
+    const isCover = k === 0
+
+    for (const [key, prev] of layer.entries()) {
+      const sep = key.indexOf(':')
+      const from = Number(key.slice(0, sep))
+      const aIdx = Number(key.slice(sep + 1))
+      if (from >= N) continue
+
+      const remainingAnchors = R - aIdx
+      const maxSlotsLeft = maxPossibleK - k
+      if (remainingAnchors > maxSlotsLeft) continue
+
+      const nextAnchor = aIdx < R ? secondaryAnchors[aIdx] : null
+      const followingAnchor = aIdx + 1 < R ? secondaryAnchors[aIdx + 1] : null
+
+      // Build candidate page modes for slot k:
+      // - Cover slot (k === 0) always uses coverImage (or null if story has no cover).
+      // - Later slots can either be text-only (if not past nextAnchor's section) OR place nextAnchor
+      //   (provided the page slice overlaps nextAnchor's semantic section!).
+      const modes = []
+      if (isCover) {
+        modes.push({imageObj: coverImage, nextA: aIdx, anchor: null})
+      } else {
+        // Mode 1: Text-only page (allowed whenever we haven't exhausted nextAnchor's section)
+        if (!nextAnchor || from < nextAnchor.endPara) {
+          modes.push({imageObj: null, nextA: aIdx, anchor: null})
+        }
+        // Mode 2: Place nextAnchor on this page (allowed whenever from <= nextAnchor.endPara)
+        if (nextAnchor && from <= nextAnchor.endPara) {
+          modes.push({imageObj: nextAnchor.page, nextA: aIdx + 1, anchor: nextAnchor})
+        }
+      }
+
+      for (const mode of modes) {
+        // Compute safe upper bound on `to` so remaining unplaced anchors keep their own section paragraphs
+        let maxTo = N
+        const guardAnchor = mode.anchor ? followingAnchor : nextAnchor
+        if (guardAnchor) {
+          // Leave at least the guardAnchor's section paragraphs available for its page
+          maxTo = Math.min(maxTo, Math.max(from + 1, guardAnchor.startPara > from ? guardAnchor.startPara : guardAnchor.endPara))
+        }
+        // Also ensure enough paragraphs remain for all remaining future anchors
+        const futureAnchorsAfter = R - mode.nextA
+        if (futureAnchorsAfter > 0) {
+          maxTo = Math.min(maxTo, N - futureAnchorsAfter)
+        }
+        // If placing a secondary anchor, prefer not spanning across unrelated later sections past its own section if avoidable
+        const minTo = mode.anchor ? Math.max(from + 1, mode.anchor.startPara + 1) : from + 1
+        if (minTo > maxTo) continue
+
+        for (let to = from + 1; to <= maxTo; to++) {
+          const evalRes = evaluateCandidate(from, to, isCover, mode.imageObj)
+          // Monotonicity guard: never stack multiple paragraphs onto an overflowing page
+          if (!evalRes.fits && to - from > 1) break
+
+          if (to < minTo) {
+            if (!evalRes.fits) break
+            continue
+          }
+
+          // Strict semantic anchoring check for secondary photos: page MUST contain >= 1 paragraph from anchor's section
+          if (mode.anchor) {
+            const overlapsSection = from <= mode.anchor.endPara && (to - 1) >= mode.anchor.startPara
+            if (!overlapsSection) continue
+          }
+
+          // Also keep secondary anchor pages focused on their semantic section (avoid pulling >1 preceding bridge paragraph)
+          let bridgePenalty = 0
+          if (mode.anchor && from < mode.anchor.startPara) {
+            const bridgeParas = mode.anchor.startPara - from
+            if (bridgeParas > 1) continue
+            bridgePenalty = 14
+          }
+
+          const scored = scorePage(from, to, isCover, mode.imageObj, evalRes)
+          const nextCost = prev.cost + scored.cost + bridgePenalty
+          const nextKey = `${to}:${mode.nextA}`
+          const existing = states[k + 1].get(nextKey)
+          if (!existing || nextCost < existing.cost) {
+            states[k + 1].set(nextKey, {
+              cost: nextCost,
+              steps: [
+                ...prev.steps,
+                {
+                  from,
+                  to,
+                  imageObj: mode.imageObj,
+                  density: scored.density,
+                  dense: scored.dense,
+                  fillRatio: scored.fillRatio,
+                },
+              ],
+            })
+          }
+
+          if (!evalRes.fits) break
+        }
+      }
+    }
+  }
+
+  // Pick the globally optimal complete partition across K = 1..maxPossibleK
+  let bestPlan = null
+  let bestTotalCost = Infinity
+  const terminalKey = `${N}:${R}`
+
+  for (let k = 1; k <= maxPossibleK; k++) {
+    const candidate = states[k].get(terminalKey)
+    if (!candidate) continue
+
+    // Compute fill-ratio variance across pages to reward even reading rhythm
+    const fills = candidate.steps.map(s => s.fillRatio)
+    const meanFill = fills.reduce((a, b) => a + b, 0) / Math.max(1, fills.length)
+    const variance = fills.reduce((sum, f) => sum + (f - meanFill) ** 2, 0) / Math.max(1, fills.length)
+    const denseCount = candidate.steps.filter(s => s.dense).length
+
+    const totalCost = candidate.cost + pageCountPenalty(k) + variance * 95 + denseCount * 25
+    if (totalCost < bestTotalCost) {
+      bestTotalCost = totalCost
+      bestPlan = candidate
+    }
+  }
+
+  if (!bestPlan || !bestPlan.steps.length) return null
+
+  const pages = bestPlan.steps.map(step => {
+    const slice = paragraphs.slice(step.from, step.to)
+    const text = slice.map(p => p.text).join('\n\n')
+    const sectionSet = [...new Set(slice.map(p => p.sectionIndex))].sort((a, b) => a - b)
+    const semStart = slice[0]?.semanticStart ?? 0
+    const semEnd = slice[slice.length - 1]?.semanticEnd ?? 1
+    const pageObj = {
+      image: step.imageObj?.image || '',
+      caption: step.imageObj?.caption || '',
+      ...(step.imageObj?.imageProvenance ? {imageProvenance: step.imageObj.imageProvenance} : {}),
+      ...(step.density ? {density: step.density} : {}),
+      text,
+      sourceSectionIndices: sectionSet,
+      sourceSectionCount: sectionCount,
+      semanticRange: {
+        start: Number(semStart.toFixed(4)),
+        end: Number(semEnd.toFixed(4)),
+        mid: Number(((semStart + semEnd) / 2).toFixed(4)),
+      },
+    }
+    Object.defineProperty(pageObj, '_fixedCard', {value: true, enumerable: false})
+    Object.defineProperty(pageObj, '_paragraphBalanced', {value: true, enumerable: false})
+    return pageObj
+  })
+
+  if (trim(pages.map(p => splitParagraphs(p.text).join(' ')).join(' ')) !== raw) return null
+  return pages
+}
+
+/**
+ * Map a reader's current page index from one level/layout to another while
+ * preserving semantic reading position (section + normalized progress), even
+ * when rendered page counts differ across CEFR levels or viewports.
+ */
+export function mapSemanticPageIndex(fromPages, fromPageIndex, toPages) {
+  if (!Array.isArray(toPages) || !toPages.length) return 0
+  if (!Number.isFinite(fromPageIndex) || fromPageIndex <= 0) return 0
+  if (!Array.isArray(fromPages) || !fromPages.length) {
+    return Math.min(Math.max(0, Math.round(fromPageIndex)), toPages.length)
+  }
+  // Preserve the closing card when already on the closing card
+  if (fromPageIndex >= fromPages.length) return toPages.length
+
+  const cur = fromPages[fromPageIndex]
+  const fallbackStart = fromPageIndex / fromPages.length
+  const fallbackEnd = (fromPageIndex + 1) / fromPages.length
+  const targetRange = cur?.semanticRange || {
+    start: fallbackStart,
+    end: fallbackEnd,
+    mid: (fallbackStart + fallbackEnd) / 2,
+  }
+  const targetSections = new Set(
+    Array.isArray(cur?.sourceSectionIndices) && cur.sourceSectionIndices.length
+      ? cur.sourceSectionIndices
+      : [Math.round((targetRange.mid) * Math.max(1, (cur?.sourceSectionCount || fromPages.length) - 1))]
+  )
+
+  let bestIdx = 0
+  let bestScore = -Infinity
+
+  for (let j = 0; j < toPages.length; j++) {
+    const cand = toPages[j]
+    const candStart = j / toPages.length
+    const candEnd = (j + 1) / toPages.length
+    const candRange = cand?.semanticRange || {
+      start: candStart,
+      end: candEnd,
+      mid: (candStart + candEnd) / 2,
+    }
+    const overlap = Math.max(0, Math.min(targetRange.end, candRange.end) - Math.max(targetRange.start, candRange.start))
+    const midDist = Math.abs(targetRange.mid - candRange.mid)
+    const candSections = Array.isArray(cand?.sourceSectionIndices) ? cand.sourceSectionIndices : []
+    const sharedSections = candSections.filter(sec => targetSections.has(sec)).length
+    const sectionBonus = sharedSections > 0 ? 0.35 + sharedSections * 0.1 : 0
+    // Avoid jumping back to Cover Page 0 if the user was already reading mid-article
+    const coverPenalty = (fromPageIndex > 0 && toPages.length > 1 && j === 0 && overlap < 0.08) ? -0.5 : 0
+    const score = overlap * 3.0 + sectionBonus - midDist * 1.4 + coverPenalty
+
+    if (score > bestScore) {
+      bestScore = score
+      bestIdx = j
+    }
+  }
+
+  return bestIdx
+}
+
+export function planAnchoredWikiPages(item, fits, {maxPages = 250, uniformRhythm = false, balanced = false, paragraphAware = false, measure = null} = {}) {
+  if (paragraphAware || measure || (balanced && extractSemanticParagraphs(item).hasMultiParagraphs)) {
+    const adaptive = planParagraphAwareWikiPages(item, fits, {measure})
+    if (adaptive && adaptive.length) return adaptive
+  }
   if (balanced) {
     const fixedCards = planBalancedWikiPages(item, fits)
     if (fixedCards && fixedCards.length) return fixedCards

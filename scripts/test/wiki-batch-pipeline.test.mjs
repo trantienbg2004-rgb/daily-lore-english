@@ -331,18 +331,24 @@ test('validateArticleQuality enforces 4-6 pages, 3-level page/imageId parity, le
  assert.equal(mismatchImgCheck.ok,false)
  assert.ok(mismatchImgCheck.errors.some(e=>/Cross-level image parity mismatch on page 3/i.test(e)))
 
- // Rejects level-specific word-bound violations (A1 photo > 46w, C1 text < 46w)
+ // Flexible paragraph-based length: no hard per-page word-count rejection (advisory targets only)
  const longA1Photo=structuredClone(makeHighQualityDraft('Stone Citadel',{pageCount:5,pageImageIds:['IMG_0',null,null,null,null]}))
- longA1Photo.variants['A1-A2'].pages[0].text+=' Travelers walked along the bright stone road every summer and traded baskets of ripe fruit near the old market fountain.'
+ longA1Photo.variants['A1-A2'].pages[0].text+='\n\nTravelers walked along the bright stone road every summer and traded baskets of ripe fruit near the old market fountain.'
  const longA1Check=validateArticleQuality(longA1Photo,'Stone Citadel')
- assert.equal(longA1Check.ok,false)
- assert.ok(longA1Check.errors.some(e=>/A1-A2 page 1 \(photo page\).*34-46 words/i.test(e)))
+ assert.equal(longA1Check.ok,true,`Flexible multi-paragraph photo section should pass: ${longA1Check.errors.join('; ')}`)
+ assert.deepEqual(longA1Check.metrics['A1-A2'].paragraphCounts,[2,1,1,1,1])
 
  const shortC1Text=structuredClone(makeHighQualityDraft('Stone Citadel',{pageCount:5,pageImageIds:['IMG_0',null,null,null,null]}))
  shortC1Text.variants['C1-C2'].pages[1].text='Nineteenth-century municipal archives demonstrate how Stone Citadel catalyzed commercial integration by anchoring seasonal trade corridors and convening travelling merchants on its central terrace.'
  const shortC1Check=validateArticleQuality(shortC1Text,'Stone Citadel')
- assert.equal(shortC1Check.ok,false)
- assert.ok(shortC1Check.errors.some(e=>/C1-C2 page 2 \(text-only page\).*46-64 words/i.test(e)))
+ assert.equal(shortC1Check.ok,true,`Flexible C1 text section should pass without word-count rejection: ${shortC1Check.errors.join('; ')}`)
+
+ // Still rejects trivially empty/stub pages (< 8 words) and incomplete sentences
+ const stubC1=structuredClone(makeHighQualityDraft('Stone Citadel',{pageCount:5,pageImageIds:['IMG_0',null,null,null,null]}))
+ stubC1.variants['C1-C2'].pages[1].text='Stone arches endured.'
+ const stubCheck=validateArticleQuality(stubC1,'Stone Citadel')
+ assert.equal(stubCheck.ok,false)
+ assert.ok(stubCheck.errors.some(e=>/C1-C2 page 2.*too short or empty/i.test(e)))
 
  // Rejects overly long photo caption
  const longCap=structuredClone(makeHighQualityDraft('Stone Citadel',{pageCount:5,pageImageIds:['IMG_0',null,null,null,null]}))
@@ -1036,24 +1042,28 @@ test('Pure Fixed-Card Mode (balanced) retains anti-sparse borrowing (<25w photo 
  assert.equal(endPages.map(p=>p.text).join(' ').replace(/\s+/g,' ').trim(),rawEnd)
 })
 
-test('validateArticleQuality enforces level-specific photo bounds on secondary photo pages (Page 2/3)',()=>{
+test('validateArticleQuality allows flexible length on secondary photo pages while still enforcing caption limits and complete sentences',()=>{
  const draftWithP3Photo=makeHighQualityDraft('Stone Citadel',{pageCount:5,pageImageIds:['IMG_0',null,'IMG_1',null,null]})
  const okRes=validateArticleQuality(draftWithP3Photo,'Stone Citadel')
  assert.equal(okRes.ok,true,okRes.errors.join('; '))
 
- // Make B1-B2 Page 3 (IMG_1) exceed 44 words -> MUST fail
- const tooLongP3=structuredClone(draftWithP3Photo)
- tooLongP3.variants['B1-B2'].pages[2].text+=' Visiting engineers also drafted comprehensive structural elevations showing how rainwater drained away from the foundations.'
- const tooLongRes=validateArticleQuality(tooLongP3,'Stone Citadel')
- assert.equal(tooLongRes.ok,false)
- assert.ok(tooLongRes.errors.some(e=>/B1-B2 page 3 \(photo page\).*32-44 words/i.test(e)))
+ // Longer multi-paragraph B1-B2 Page 3 (IMG_1) passes cleanly under flexible paragraph-aware rules
+ const flexibleLongP3=structuredClone(draftWithP3Photo)
+ flexibleLongP3.variants['B1-B2'].pages[2].text+='\n\nVisiting engineers also drafted clear drawings showing how rainwater drained safely away from the old foundations.'
+ const flexibleLongRes=validateArticleQuality(flexibleLongP3,'Stone Citadel')
+ assert.equal(flexibleLongRes.ok,true,`Flexible longer photo section should pass: ${flexibleLongRes.errors.join('; ')}`)
 
- // Make A1-A2 Page 3 (IMG_1) sparse (< 34 words) -> MUST fail
- const tooShortP3=structuredClone(draftWithP3Photo)
- tooShortP3.variants['A1-A2'].pages[2].text='Later architects added tall stone arches and bronze gates along the north wall.'
- const tooShortRes=validateArticleQuality(tooShortP3,'Stone Citadel')
- assert.equal(tooShortRes.ok,false)
- assert.ok(tooShortRes.errors.some(e=>/A1-A2 page 3 \(photo page\).*34-46 words/i.test(e)))
+ // Concise A1-A2 Page 3 (IMG_1) passes cleanly while incomplete sentences fail
+ const conciseP3=structuredClone(draftWithP3Photo)
+ conciseP3.variants['A1-A2'].pages[2].text='Later builders added tall stone arches and bronze gates along the north wall for safe entry.'
+ const conciseRes=validateArticleQuality(conciseP3,'Stone Citadel')
+ assert.equal(conciseRes.ok,true,`Concise photo section should pass: ${conciseRes.errors.join('; ')}`)
+
+ const brokenSentenceP3=structuredClone(draftWithP3Photo)
+ brokenSentenceP3.variants['A1-A2'].pages[2].text='Later builders added tall stone arches without finishing the final sentence'
+ const brokenRes=validateArticleQuality(brokenSentenceP3,'Stone Citadel')
+ assert.equal(brokenRes.ok,false)
+ assert.ok(brokenRes.errors.some(e=>/A1-A2 page 3: must end with a complete sentence/i.test(e)))
 })
 
 test('resolveAutoSchedulePlan switches cleanly between Stage 1 (Bootstrap <1000) and Stage 2 (Steady-State >=1000)',()=>{

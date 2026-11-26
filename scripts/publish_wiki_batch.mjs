@@ -133,6 +133,27 @@ const wordCount=text=>String(text||'').trim().split(/\s+/).filter(Boolean).lengt
 const normalizeWords=text=>new Set(String(text||'').toLowerCase().match(/[a-z]{4,}/g)||[])
 const normalizeHeadline=text=>String(text||'').toLowerCase().replace(/[^a-z0-9]+/g,' ').trim()
 
+/** Split article section text into clean non-empty paragraphs while preserving paragraph boundaries. */
+export function splitParagraphs(text){
+ return String(text||'')
+  .replace(/\r\n?/g,'\n')
+  .split(/\n\s*\n+/)
+  .map(part=>part.replace(/\s+/g,' ').trim())
+  .filter(Boolean)
+}
+
+/** Normalize intra-paragraph whitespace while strictly preserving blank-line (`\n\n`) paragraph boundaries. */
+export function normalizeParagraphText(text,paragraphs=null,{ensureTerminalPunctuation=false}={}){
+ const rawParts=Array.isArray(paragraphs)&&paragraphs.length
+  ?paragraphs.flatMap(entry=>splitParagraphs(entry))
+  :splitParagraphs(text)
+ if(!rawParts.length)return ''
+ const cleaned=ensureTerminalPunctuation
+  ?rawParts.map(part=>(/[.!?]["”']?$/.test(part)?part:`${part}.`))
+  :rawParts
+ return cleaned.join('\n\n')
+}
+
 const GLOSSARY_ITEM_SCHEMA={
  type:'object',
  properties:{
@@ -188,6 +209,7 @@ const PAGE_SCHEMA={
  type:'object',
  properties:{
   text:{type:'string'},
+  paragraphs:{type:'array',items:{type:'string'},minItems:1},
   imageId:{anyOf:[{type:'string'},{type:'null'}]},
   caption:{type:'string'},
   evidenceIds:{type:'array',items:{type:'string'},minItems:1}
@@ -224,6 +246,7 @@ const REPAIR_PAGE_SCHEMA={
  properties:{
   pageIndex:{type:'integer'},
   text:{type:'string'},
+  paragraphs:{type:'array',items:{type:'string'},minItems:1},
   caption:{type:'string'},
   evidenceIds:{type:'array',items:{type:'string'},minItems:1}
  },
@@ -821,15 +844,21 @@ export function validateArticleQuality(draft,sourceTitle,{
    continue
   }
 
-  const bounds=levelBounds[level]||LEVEL_WORD_BOUNDS[level]
+  const pageWordCounts=[]
+  const paragraphCounts=[]
   pages.forEach((page,idx)=>{
-   const text=String(page?.text||'').replace(/\s+/g,' ').trim()
-   const wc=wordCount(text)
+   const normalizedText=normalizeParagraphText(page?.text,page?.paragraphs)
+   const paragraphs=splitParagraphs(normalizedText)
+   const flatText=paragraphs.join(' ')
+   const wc=wordCount(flatText)
+   pageWordCounts.push(wc)
+   paragraphCounts.push(paragraphs.length)
    const token=pageImageToken(page)
    const isPhotoPage=idx===0||photoPageIndexes.has(idx)||Boolean(token)
-   const [minW,maxW]=isPhotoPage?bounds.photo:bounds.text
-   if(wc<minW||wc>maxW){
-    errors.push(`${level} page ${idx+1} (${isPhotoPage?'photo page':'text-only page'}): word count ${wc} outside ${level} fixed-card bounds (${minW}-${maxW} words)`)
+   // Flexible paragraph-based article length: do NOT hard-reject per-page word counts.
+   // Only reject empty or trivially broken stubs (< 8 words).
+   if(wc<8){
+    errors.push(`${level} page ${idx+1} (${isPhotoPage?'photo page':'text-only page'}): text is too short or empty (${wc} words)`)
    }
    if(isPhotoPage&&typeof page?.caption==='string'&&page.caption.trim()){
     const cap=page.caption.replace(/\s+/g,' ').trim()
@@ -838,16 +867,22 @@ export function validateArticleQuality(draft,sourceTitle,{
      errors.push(`${level} page ${idx+1}: caption too long (${capWords} words, ${cap.length} chars; aim ${CAPTION_LIMITS.targetMinWords}-${CAPTION_LIMITS.targetMaxWords} words, max ${CAPTION_LIMITS.maxChars} chars)`)
     }
    }
-   if(!/[.!?]["”']?$/.test(text)){
+   if(!paragraphs.length||paragraphs.some(part=>!/[.!?]["”']?$/.test(part))){
     errors.push(`${level} page ${idx+1}: must end with a complete sentence`)
    }
-   if(idx===0&&hasDryEncyclopediaOpening(text,sourceTitle)){
+   if(idx===0&&hasDryEncyclopediaOpening(flatText,sourceTitle)){
     errors.push(`${level} page 1: dry encyclopedia opening detected ("X is a..."); rewrite with a vivid magazine hook`)
    }
   })
 
   const stats=measureLevelDifficulty(pages)
-  metrics[level]=stats
+  metrics[level]={
+   ...stats,
+   pageWordCounts,
+   paragraphCounts,
+   totalParagraphs:paragraphCounts.reduce((sum,n)=>sum+n,0),
+   advisoryBounds:levelBounds[level]||LEVEL_WORD_BOUNDS[level]
+  }
 
   const sentBand=LEVEL_SENTENCE_BOUNDS[level]
   if(sentBand&&(stats.avgSentenceWords<sentBand.min||stats.avgSentenceWords>sentBand.max)){
@@ -941,13 +976,13 @@ STEP 2 — SHARED ${PAGE_COUNT_BOUNDS.min}-${PAGE_COUNT_BOUNDS.max} PAGE OUTLINE
 STEP 3 — SYNCHRONIZED A/B/C VARIANTS ("variants"):
 1. MAGAZINE HEADLINE (PER LEVEL):
    - ${HEADLINE_WORD_BOUNDS.min} to ${HEADLINE_WORD_BOUNDS.max} words in Title Case per level; distinct across levels; NEVER identical to raw title "${source.sourceTitle}".
-2. SHARED PAGE ARC & EXACT WORD COUNTS (TARGET THE MIDDLE OF EACH RANGE):
-   - Page 1 = Vivid magazine hook (NEVER start with "${source.sourceTitle} is a..." or "${source.sourceTitle} was an..."). Middle pages = Focused body beats from the outline. Final page = Lasting takeaway grounded in the source.
-   - Photo pages (Page 1 and any non-null "imageId"):
-     * ${photoLine}
-   - Text-only pages ("imageId": null):
-     * ${textLine}
-   - Every page must end with a complete sentence.
+2. SEMANTIC PARAGRAPHS & NATURAL READING FLOW (TARGET ~5 READING PAGES, FLEXIBLE LENGTH):
+   - Page 1 = Vivid magazine hook (NEVER start with "${source.sourceTitle} is a..." or "${source.sourceTitle} was an..."). Middle sections = Focused body beats from the outline. Final section = Lasting takeaway grounded in the source.
+   - Organize each section into 1–3 coherent, reasonably short paragraphs separated by a blank line ("\\n\\n") in "text" (and optionally echoed in "paragraphs"). Never invent filler or pad text to hit an exact word count; prioritize clarity, factual integrity, and natural paragraph flow.
+   - Advisory length guidance (flexible targets, not rigid cutoffs, to pace a comfortable 4–6 page phone reading experience):
+     * Photo sections: ${photoLine}
+     * Text-only sections: ${textLine}
+   - Every paragraph must end with a complete sentence.
 3. VOICE, ACCURACY & OBJECTIVE CEFR TARGETS:
    - A1-A2: Simple, concrete everyday English WITHOUT factual oversimplification (keep dates, exceptions, safety cautions, and uncertainty in plain words like "about", "some experts say", "can be risky"). >=${CEFR_THRESHOLDS['A1-A2'].minA1A2Pct}% A1-A2 words, <=${CEFR_THRESHOLDS['A1-A2'].maxC1C2OrUnlistedPct}% C1-C2/unlisted, ${aSent.targetMin}-${aSent.targetMax} words/sentence, FKGL <= ${CEFR_THRESHOLDS['A1-A2'].maxFkgl}.
    - B1-B2: Natural, accessible magazine-style English. >=${CEFR_THRESHOLDS['B1-B2'].minA1ToB2Pct}% A1-B2 words, ${bSent.targetMin}-${bSent.targetMax} words/sentence, FKGL ${CEFR_THRESHOLDS['B1-B2'].minFkgl}-${CEFR_THRESHOLDS['B1-B2'].maxFkgl} (at least +${CEFR_THRESHOLDS['B1-B2'].minFkglGapAboveA1} FKGL above A1-A2).
@@ -1086,9 +1121,10 @@ FAILED CHECKS TO FIX:
 ${issues}${cefrBlock}
 
 REMINDERS:
-- Synchronized ${PAGE_COUNT_BOUNDS.min}-${PAGE_COUNT_BOUNDS.max} pages with identical page count and imageId at each pageIndex across A1-A2, B1-B2, C1-C2.
-- Photo pages: ${photoLine}
-- Text-only pages: ${textLine}
+- Synchronized ${PAGE_COUNT_BOUNDS.min}-${PAGE_COUNT_BOUNDS.max} sections with identical section count and imageId at each pageIndex across A1-A2, B1-B2, C1-C2.
+- Use coherent, reasonably short paragraphs separated by "\\n\\n" (never pad with filler; flexible length around advisory pacing targets).
+- Advisory photo section targets: ${photoLine}
+- Advisory text-only section targets: ${textLine}
 - Keep C1-C2 nuanced and natural (no artificial academic jargon), and preserve all dates, quantities, exceptions, and uncertainty.
 
 AVAILABLE EMBEDDED IMAGES:
@@ -1114,7 +1150,7 @@ ${passages}`
      return {
       pageIndex:idx,
       pageType:isPhoto?'photo':'text-only',
-      requiredWords:`${minW}-${maxW} (target ~${wordRangeMidpoint([minW,maxW])})`,
+      advisoryWords:`~${wordRangeMidpoint([minW,maxW])} (flexible around ${minW}-${maxW})`,
       imageId:pageImageToken(p),
       text:p.text,
       ...(isPhoto?{caption:p.caption||''}:{}),
@@ -1133,9 +1169,9 @@ ${issues}${cefrBlock}
 TARGETED RULES:
 - Return pure JSON matching: {"repairs":{"A1-A2":{"headline?":"...","pages":[{"pageIndex":0,"text":"...","caption?":"...","evidenceIds":["P1"]}]},"B1-B2":{...},"C1-C2":{...}}}
 - Include ONLY the levels, headlines, and pageIndexes listed in ITEMS TO REPAIR below.
-- Preserve each page's exact topic beat, dates, numbers, uncertainty/safety conditions, and image binding (do NOT add or remove images).
-- Photo pages: ${photoLine}
-- Text-only pages: ${textLine}
+- Preserve each section's exact topic beat, paragraph boundaries ("\\n\\n"), dates, numbers, uncertainty/safety conditions, and image binding (do NOT add or remove images).
+- Advisory photo section pacing: ${photoLine}
+- Advisory text-only section pacing: ${textLine}
 - Headlines: ${HEADLINE_WORD_BOUNDS.min}-${HEADLINE_WORD_BOUNDS.max} words, distinct across all 3 levels, never matching "${source.sourceTitle}".
 - Captions on photo pages: complete natural phrase (${CAPTION_LIMITS.targetMinWords}-${CAPTION_LIMITS.targetMaxWords} words, max ${CAPTION_LIMITS.maxChars} chars, never truncated mid-word).
 
@@ -1201,11 +1237,12 @@ export function mergeTargetedRepairs(previousDraft,repairPayload,repairTargets){
     if(!patchedPage||typeof patchedPage!=='object')continue
     const idx=Number.isInteger(patchedPage.pageIndex)?patchedPage.pageIndex:arrPos
     if(!allowed.has(idx)||idx<0||idx>=targetVariant.pages.length)continue
-    if(typeof patchedPage.text!=='string'||!patchedPage.text.trim())continue
+    const normalizedText=normalizeParagraphText(patchedPage.text,patchedPage.paragraphs)
+    if(!normalizedText)continue
     const prev=targetVariant.pages[idx]
     targetVariant.pages[idx]={
      ...prev,
-     text:patchedPage.text.trim(),
+     text:normalizedText,
      ...(typeof patchedPage.caption==='string'&&pageImageToken(prev)?{caption:patchedPage.caption.trim()}:{}),
      ...(Array.isArray(patchedPage.evidenceIds)&&patchedPage.evidenceIds.length?{evidenceIds:patchedPage.evidenceIds}:{})
     }
@@ -1727,13 +1764,13 @@ export function normalizeDraftForCatalog(rawDraft,{source,evidence,verifiedPhoto
   const headline=String(srcVar.headline||'').replace(/\s+/g,' ').trim()
 
   const pages=srcVar.pages.map(page=>{
-   const text=String(page?.text||'').replace(/\s+/g,' ').trim()
+   const text=normalizeParagraphText(page?.text,page?.paragraphs,{ensureTerminalPunctuation:true})
    const caption=String(page?.caption||'').replace(/\s+/g,' ').trim()
    const cleanedIds=(Array.isArray(page?.evidenceIds)?page.evidenceIds:[]).filter(id=>validIds.has(id))
    const hasImageIdProp=Object.prototype.hasOwnProperty.call(page||{},'imageId')
    const normalizedImageId=hasImageIdProp?normalizeOptionalImageId(page.imageId,validImageIds):undefined
    return {
-    text:text&&!/[.!?]["”']?$/.test(text)?`${text}.`:text,
+    text,
     ...(hasImageIdProp?{imageId:normalizedImageId}:{}),
     ...(caption?{caption}:{}),
     evidenceIds:cleanedIds.length?cleanedIds:bestEvidenceFor(text)
@@ -1838,16 +1875,16 @@ function makeDryRunDraft(source,evidence,verifiedPhotos=[]){
  const p2ImgId=bodyPhoto?.imageId||null
 
  const a1P3Text=p2ImgId
-  ?`Later, small teams looked at ${bodyFocus} and wrote clear notes. Better tools made their work fast and safe. Young students read short books about ${bodyFocus}. They tried new ways at home and shared what worked.`
-  :`Later, small teams looked at ${bodyFocus} and wrote clear notes for nearby towns. Better tools made their work much faster and safer each day. Young students read short books about ${bodyFocus} at school. They tried new ways at home with their family. Even small farms saw a big change in daily life, school work, and local shops.`
+  ?`Later, small teams looked at ${bodyFocus} and wrote clear notes. Better tools made their work fast and safe.\n\nYoung students read short books about ${bodyFocus}. They tried new ways at home and shared what worked.`
+  :`Later, small teams looked at ${bodyFocus} and wrote clear notes for nearby towns. Better tools made their work much faster and safer each day.\n\nYoung students read short books about ${bodyFocus} at school. They tried new ways at home with their family. Even small farms saw a big change in daily life, school work, and local shops.`
 
  const b1P3Text=p2ImgId
-  ?`As trade grew across the region, local writers and builders studied ${bodyFocus} closely and shared useful methods far from home. Schools and town groups changed parts of ${bodyFocus} to fit local needs, helping trained teams reach new readers in other lands.`
-  :`As trade grew across the region, local writers and builders studied ${bodyFocus} closely and shared useful methods far from home. Schools, workshops, and town groups changed parts of ${bodyFocus} to fit local needs in growing cities. Through shared guides and visiting teachers, this joint effort helped trained teams reach curious readers across borders, building a steady base for future work.`
+  ?`As trade grew across the region, local writers and builders studied ${bodyFocus} closely and shared useful methods far from home.\n\nSchools and town groups changed parts of ${bodyFocus} to fit local needs, helping trained teams reach new readers in other lands.`
+  :`As trade grew across the region, local writers and builders studied ${bodyFocus} closely and shared useful methods far from home. Schools, workshops, and town groups changed parts of ${bodyFocus} to fit local needs in growing cities.\n\nThrough shared guides and visiting teachers, this joint effort helped trained teams reach curious readers across borders, building a steady base for future work.`
 
  const c1P3Text=p2ImgId
-  ?`As transnational communication networks expanded alongside increasingly precise instrumentation, scholars analyzing ${bodyFocus} observed how evolving methodologies transcended their original geographic boundaries. Academic institutions and policy bodies continually recalibrated inherited conventions surrounding ${bodyFocus} in direct response to newly documented empirical and historical realities across continents.`
-  :`As transnational communication networks expanded alongside increasingly precise scientific instrumentation, scholars analyzing ${bodyFocus} observed how evolving methodologies systematically transcended their original geographic and disciplinary boundaries. Academic institutions, archival repositories, and regional policy bodies continually recalibrated inherited conventions surrounding ${bodyFocus} in direct response to newly documented empirical and historical realities. Through sustained cross-border correspondence, collaborative fieldwork, and comparative translation, specialists integrated diverse regional evidence into broader analytical frameworks that reshaped institutional planning across multiple continents.`
+  ?`As transnational communication networks expanded alongside increasingly precise instrumentation, scholars analyzing ${bodyFocus} observed how evolving methodologies transcended their original geographic boundaries.\n\nAcademic institutions and policy bodies continually recalibrated inherited conventions surrounding ${bodyFocus} in direct response to newly documented empirical and historical realities across continents.`
+  :`As transnational communication networks expanded alongside increasingly precise scientific instrumentation, scholars analyzing ${bodyFocus} observed how evolving methodologies systematically transcended their original geographic and disciplinary boundaries.\n\nAcademic institutions, archival repositories, and regional policy bodies continually recalibrated inherited conventions surrounding ${bodyFocus} in direct response to newly documented empirical and historical realities. Through sustained cross-border correspondence, collaborative fieldwork, and comparative translation, specialists integrated diverse regional evidence into broader analytical frameworks that reshaped institutional planning across multiple continents.`
 
  return {
   factSheet:{
@@ -1873,33 +1910,33 @@ function makeDryRunDraft(source,evidence,verifiedPhotos=[]){
    'A1-A2':{
     headline:`How ${topicWord} Changed Daily Life Forever`,
     pages:[
-     {text:`Long ago, people looked at ${topicWord} and asked fresh questions. Early ideas spread fast across small towns and busy schools. Soon, many learners wanted to know more. That simple start opened a wide door for later work.`,imageId:p0ImgId,caption:shortCaption(coverPhoto),evidenceIds:[eId(0)]},
-     {text:`In the first years, small teams tried new plans step by step. They kept clear notes in plain wood books. Each test taught them one useful thing. When a plan failed, they tried again the next day. Friends shared tools on town roads every week. Over time, good work built strong trust among local people and readers.`,imageId:null,caption:'',evidenceIds:[eId(1)]},
+     {text:`Long ago, people looked at ${topicWord} and asked fresh questions. Early ideas spread fast across small towns and busy schools.\n\nSoon, many learners wanted to know more. That simple start opened a wide door for later work.`,imageId:p0ImgId,caption:shortCaption(coverPhoto),evidenceIds:[eId(0)]},
+     {text:`In the first years, small teams tried new plans step by step. They kept clear notes in plain wood books. Each test taught them one useful thing.\n\nWhen a plan failed, they tried again the next day. Friends shared tools on town roads every week. Over time, good work built strong trust among local people and readers.`,imageId:null,caption:'',evidenceIds:[eId(1)]},
      {text:a1P3Text,imageId:p2ImgId,caption:shortCaption(bodyPhoto),evidenceIds:[bodyEvidence.id]},
-     {text:`Hard problems came when people did not agree on new rules or high costs. Some groups asked for slow steps. Other groups wanted fast change. Open talks helped small towns find a fair path together. Leaders heard workers, teachers, and homes before they chose. Soon, people saw that real gain needs both strong plans and kind care.`,imageId:null,caption:'',evidenceIds:[eId(3)]},
-     {text:`Today, the story of ${topicWord} still shapes how we read and plan. Small questions can bring real change when people share clear facts. Students and workers still learn from those first steps. Each new group adds one more short part. It shows that simple care keeps its quiet power in our fast world today.`,imageId:null,caption:'',evidenceIds:[eId(0),eId(3)]}
+     {text:`Hard problems came when people did not agree on new rules or high costs. Some groups asked for slow steps. Other groups wanted fast change.\n\nOpen talks helped small towns find a fair path together. Leaders heard workers, teachers, and homes before they chose. Soon, people saw that real gain needs both strong plans and kind care.`,imageId:null,caption:'',evidenceIds:[eId(3)]},
+     {text:`Today, the story of ${topicWord} still shapes how we read and plan. Small questions can bring real change when people share clear facts.\n\nStudents and workers still learn from those first steps. Each new group adds one more short part. It shows that simple care keeps its quiet power in our fast world today.`,imageId:null,caption:'',evidenceIds:[eId(0),eId(3)]}
     ],
     glossary:[]
    },
    'B1-B2':{
     headline:`Inside the Remarkable Evolution of ${topicWord} Today`,
     pages:[
-     {text:`Long before modern schools studied ${topicWord}, early thinkers saw clear patterns in their own towns. Their notes soon spread through letters, books, and public talks. What began as a small question slowly grew into a strong movement that changed how people viewed the world.`,imageId:p0ImgId,caption:shortCaption(coverPhoto),evidenceIds:[eId(0)]},
-     {text:`During its early years, careful teams compared written records from several regions while testing better ways to work. They wrote down clear wins and hard setbacks in plain reports that everyday readers could follow. Those honest notes helped younger builders learn from proven facts instead of making costly old mistakes again. Across workshops and libraries, close study slowly replaced guesswork with steady standards that lasted for many decades.`,imageId:null,caption:'',evidenceIds:[eId(1)]},
+     {text:`Long before modern schools studied ${topicWord}, early thinkers saw clear patterns in their own towns. Their notes soon spread through letters, books, and public talks.\n\nWhat began as a small question slowly grew into a strong movement that changed how people viewed the world.`,imageId:p0ImgId,caption:shortCaption(coverPhoto),evidenceIds:[eId(0)]},
+     {text:`During its early years, careful teams compared written records from several regions while testing better ways to work. They wrote down clear wins and hard setbacks in plain reports that everyday readers could follow.\n\nThose honest notes helped younger builders learn from proven facts instead of making costly old mistakes again. Across workshops and libraries, close study slowly replaced guesswork with steady standards that lasted for many decades.`,imageId:null,caption:'',evidenceIds:[eId(1)]},
      {text:b1P3Text,imageId:p2ImgId,caption:shortCaption(bodyPhoto),evidenceIds:[bodyEvidence.id]},
-     {text:`Still, fast change rarely came without tension, because different groups often argued about rules, fairness, and long-term costs. Careful critics warned leaders not to move faster than real field tests could support. Strong backers answered that smart reform could finally solve tough daily problems that older systems had ignored for years. Settling those debates took patient talks among writers, town leaders, and watchful citizens.`,imageId:null,caption:'',evidenceIds:[eId(3)]},
-     {text:`Looking back across decades of steady trial and careful change, the lasting story of ${topicWord} shows how shared public study slowly builds stronger human knowledge. Even as modern tools and social goals shift quickly, checking bold claims against clear written records remains vital for wise choices. Curious readers and trained workers still draw real guidance from this rich record whenever new tests challenge old habits around the world.`,imageId:null,caption:'',evidenceIds:[eId(0),eId(3)]}
+     {text:`Still, fast change rarely came without tension, because different groups often argued about rules, fairness, and long-term costs. Careful critics warned leaders not to move faster than real field tests could support.\n\nStrong backers answered that smart reform could finally solve tough daily problems that older systems had ignored for years. Settling those debates took patient talks among writers, town leaders, and watchful citizens.`,imageId:null,caption:'',evidenceIds:[eId(3)]},
+     {text:`Looking back across decades of steady trial and careful change, the lasting story of ${topicWord} shows how shared public study slowly builds stronger human knowledge. Even as modern tools and social goals shift quickly, checking bold claims against clear written records remains vital for wise choices.\n\nCurious readers and trained workers still draw real guidance from this rich record whenever new tests challenge old habits around the world.`,imageId:null,caption:'',evidenceIds:[eId(0),eId(3)]}
     ],
     glossary:[]
    },
    'C1-C2':{
     headline:`Why ${topicWord} Continues to Reshape Modern Perspective`,
     pages:[
-     {text:`Long before contemporary scholarship systematically categorized ${topicWord}, observant practitioners recognized subtle historical anomalies that quietly undermined conventional assumptions across established intellectual traditions. Over subsequent decades, those recurring methodological questions catalyzed an enduring re-evaluation of both formal theoretical frameworks and everyday institutional practice across diverse regions.`,imageId:p0ImgId,caption:shortCaption(coverPhoto),evidenceIds:[eId(0)]},
-     {text:`Throughout its foundational period, methodical investigators synthesized comparative archival documentation from disparate regions while rigorously interrogating prevailing frameworks through sustained empirical scrutiny. By publishing transparent analytical records detailing both structural breakthroughs and persistent methodological uncertainties, they established durable intellectual benchmarks that enabled subsequent scholars to distinguish verifiable causal mechanisms from speculative consensus. Within emerging scholarly networks, disciplined peer verification gradually transformed scattered regional observations into a coherent, self-correcting body of comparative historical and technical knowledge.`,imageId:null,caption:'',evidenceIds:[eId(1)]},
+     {text:`Long before contemporary scholarship systematically categorized ${topicWord}, observant practitioners recognized subtle historical anomalies that quietly undermined conventional assumptions across established intellectual traditions.\n\nOver subsequent decades, those recurring methodological questions catalyzed an enduring re-evaluation of both formal theoretical frameworks and everyday institutional practice across diverse regions.`,imageId:p0ImgId,caption:shortCaption(coverPhoto),evidenceIds:[eId(0)]},
+     {text:`Throughout its foundational period, methodical investigators synthesized comparative archival documentation from disparate regions while rigorously interrogating prevailing frameworks through sustained empirical scrutiny. By publishing transparent analytical records detailing both structural breakthroughs and persistent methodological uncertainties, they established durable intellectual benchmarks that enabled subsequent scholars to distinguish verifiable causal mechanisms from speculative consensus.\n\nWithin emerging scholarly networks, disciplined peer verification gradually transformed scattered regional observations into a coherent, self-correcting body of comparative historical and technical knowledge.`,imageId:null,caption:'',evidenceIds:[eId(1)]},
      {text:c1P3Text,imageId:p2ImgId,caption:shortCaption(bodyPhoto),evidenceIds:[bodyEvidence.id]},
-     {text:`Nevertheless, rapid institutional transformation invariably generated substantive intellectual tension whenever competing constituencies negotiated unfamiliar standards of public accountability, long-term civic governance, and rigorous evidentiary transparency. While cautious observers insisted that comprehensive empirical verification must necessarily precede sweeping structural reform, persistent advocates countered that delaying essential modernization carried equally severe economic and administrative consequences. Resolving those competing imperatives demanded sustained public deliberation across legislative forums, professional associations, and independent research committees committed to balancing institutional stability with measured adaptation.`,imageId:null,caption:'',evidenceIds:[eId(3)]},
-     {text:`Viewed within a broader comparative historical perspective, the long trajectory of ${topicWord} vividly illustrates how cumulative critical inquiry continually renegotiates the boundaries between established institutional orthodoxy and empirical scientific discovery. Rather than settling into a static historical footnote, the subject still provides contemporary analysts an indispensable conceptual framework for evaluating complex social and institutional adaptation under uncertainty. Ultimately, its enduring relevance underscores why transparent archival documentation, methodological humility, and cross-generational dialogue remain vital whenever modern societies confront transformative historical change.`,imageId:null,caption:'',evidenceIds:[eId(0),eId(3)]}
+     {text:`Nevertheless, rapid institutional transformation invariably generated substantive intellectual tension whenever competing constituencies negotiated unfamiliar standards of public accountability, long-term civic governance, and rigorous evidentiary transparency.\n\nWhile cautious observers insisted that comprehensive empirical verification must necessarily precede sweeping structural reform, persistent advocates countered that delaying essential modernization carried equally severe economic and administrative consequences. Resolving those competing imperatives demanded sustained public deliberation across legislative forums, professional associations, and independent research committees committed to balancing institutional stability with measured adaptation.`,imageId:null,caption:'',evidenceIds:[eId(3)]},
+     {text:`Viewed within a broader comparative historical perspective, the long trajectory of ${topicWord} vividly illustrates how cumulative critical inquiry continually renegotiates the boundaries between established institutional orthodoxy and empirical scientific discovery.\n\nRather than settling into a static historical footnote, the subject still provides contemporary analysts an indispensable conceptual framework for evaluating complex social and institutional adaptation under uncertainty. Ultimately, its enduring relevance underscores why transparent archival documentation, methodological humility, and cross-generational dialogue remain vital whenever modern societies confront transformative historical change.`,imageId:null,caption:'',evidenceIds:[eId(0),eId(3)]}
     ],
     glossary:[]
    }

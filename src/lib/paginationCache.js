@@ -8,6 +8,8 @@ export function makePaginationCacheKey({
   colHeight = 0,
   brokenKey = '',
   mediaSig = '',
+  contentSig = '',
+  fontVersion = 0,
 } = {}) {
   const id = String(storyId || '').trim()
   const level = String(readingLevel || '').trim()
@@ -16,6 +18,8 @@ export function makePaginationCacheKey({
   let key = `${id}|${level}|${w}x${h}`
   if (brokenKey) key += `|b:${brokenKey}`
   if (mediaSig) key += `|m:${mediaSig}`
+  if (contentSig) key += `|c:${contentSig}`
+  if (fontVersion) key += `|f:${fontVersion}`
   return key
 }
 

@@ -2537,6 +2537,14 @@
   margin-block: auto;
 }
 
+.lore-editorial-v5 .reader-gesture .article-text > .article-paragraph {
+  margin: 0;
+}
+
+.lore-editorial-v5 .reader-gesture .article-text > .article-paragraph + .article-paragraph {
+  margin-top: 0.72em;
+}
+
 /* Calm editorial skeleton loader on SAGA #f8f8f2 cream paper */
 @keyframes saga-skeleton-pulse {
   0%, 100% { opacity: 0.92; }

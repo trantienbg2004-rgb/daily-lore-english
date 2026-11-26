@@ -330,10 +330,10 @@ test('content engine: targeted repair patches ONLY failing page/headline while p
   evidence:trimmed.evidence,
   verifiedPhotos:[leadPhoto]
  })
- // Break ONLY B1-B2 headline and B1-B2 page 2 (too short) while keeping A1-A2 and C1-C2 valid
+ // Break ONLY B1-B2 headline and B1-B2 page 2 (cut-off incomplete sentence) while keeping A1-A2 and C1-C2 valid
  const brokenDraft=structuredClone(baseDraft)
  brokenDraft.variants['B1-B2'].headline='Stone Citadel'
- brokenDraft.variants['B1-B2'].pages[1].text='In 1892, traders walked 40 kilometers to the square.'
+ brokenDraft.variants['B1-B2'].pages[1].text=brokenDraft.variants['B1-B2'].pages[1].text.replace(/[.!?]+$/,'')
 
  const qBefore=validateArticleQuality(brokenDraft,source.sourceTitle,{source,evidence:trimmed.evidence})
  assert.equal(qBefore.ok,false)
@@ -416,8 +416,8 @@ test('media & captions: word-safe captions, verified main-subject body fallback,
  assert.equal(assignedFallback.photos[0].imageId,'IMG_1')
  assert.equal(assignedFallback.photos[0].isMainSubjectFallback,true)
 
- // 3. Post-strip revalidation: stripping a misaligned body image makes Page 3 too short for text-only bounds ->
- //    runPublishWikiBatch MUST run targeted repair (expanding Page 3 across A/B/C) rather than publishing an unvalidated short page!
+ // 3. Post-strip revalidation: stripping a misaligned body image removes IMG_1 cleanly across A/B/C
+ //    and passes quality validation under flexible paragraph-based length without wasted repair calls.
  const tmpDir=await fs.mkdtemp(path.join(os.tmpdir(),'saga-poststrip-'))
  const queueFile=path.join(tmpDir,'data','wiki_queue.json')
  await fs.mkdir(path.dirname(queueFile),{recursive:true})
@@ -437,9 +437,7 @@ test('media & captions: word-safe captions, verified main-subject body fallback,
    imageId:'IMG_1'
   })
 
-  // Draft puts IMG_1 on Page 3 with photo-page word count (32-42w), which is valid WITH photo but TOO SHORT once IMG_1 is stripped!
   const initialDraft=makeSynchronizedDraft('Stone Citadel',{p0ImgId:'IMG_0',p2ImgId:'IMG_1'})
-  const expandedTextOnlyDraft=makeSynchronizedDraft('Stone Citadel',{p0ImgId:'IMG_0',p2ImgId:null})
   let geminiCallCount=0
 
   const summary=await runPublishWikiBatch({
@@ -461,24 +459,13 @@ test('media & captions: word-safe captions, verified main-subject body fallback,
    }),
    callGeminiImpl:async()=>{
     geminiCallCount++
-    if(geminiCallCount===1)return {draft:initialDraft,usage:null}
-    // Second call is the post-strip targeted repair expanding Page 3 to valid text-only length across A/B/C
-    return {
-     draft:{
-      repairs:{
-       'A1-A2':{pages:[{pageIndex:2,text:expandedTextOnlyDraft.variants['A1-A2'].pages[2].text,evidenceIds:['P3']}]},
-       'B1-B2':{pages:[{pageIndex:2,text:expandedTextOnlyDraft.variants['B1-B2'].pages[2].text,evidenceIds:['P3']}]},
-       'C1-C2':{pages:[{pageIndex:2,text:expandedTextOnlyDraft.variants['C1-C2'].pages[2].text,evidenceIds:['P3']}]}
-      }
-     },
-     usage:null
-    }
+    return {draft:initialDraft,usage:null}
    }
   })
 
-  assert.equal(geminiCallCount,2,'Must trigger targeted post-strip repair when stripping misaligned body photo breaks text-only bounds')
+  assert.equal(geminiCallCount,1,'Stripping misaligned body photo should revalidate cleanly without triggering fixed-word-count repair')
   assert.equal(summary.generatedCount,1)
-  assert.equal(summary.stories[0].pages[2].image||'','','Stripped image must stay removed after repair')
+  assert.equal(summary.stories[0].pages[2].image||'','','Stripped image must stay removed in published story')
   const verify=await verifyWikiRelease(tmpDir)
   assert.equal(verify.total,1)
  }finally{

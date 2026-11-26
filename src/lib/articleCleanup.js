@@ -26,6 +26,13 @@ function removeLeadingCredit(text) {
  }
  return {text:current,credits}
 }
+function normalizeParagraphs(text) {
+ return String(text || '')
+  .replace(/\r\n?/gu, '\n')
+  .split(/\n\s*\n+/u)
+  .map(part => normalize(part))
+  .filter(Boolean)
+}
 export function sanitizeReadingArticle(article) {
  if(!Array.isArray(article?.pages))return article
  const credits=[...(Array.isArray(article.sourceMediaCredits)?article.sourceMediaCredits:[])]
@@ -34,10 +41,18 @@ export function sanitizeReadingArticle(article) {
  const pages=[]
  for(const page of article.pages){
   if(!page||typeof page.text!=='string'){pages.push(page);continue}
-  let text=normalize(page.text)
-  const result=removeLeadingCredit(text)
-  if(result.credits.length){credits.push(...result.credits);text=result.text;changed=true}
-  if(isMediaCredit(text)){credits.push(text);text='';changed=true}
+  const paragraphs=normalizeParagraphs(page.text)
+  const kept=[]
+  for(let i=0;i<paragraphs.length;i++){
+   let part=paragraphs[i]
+   if(i===0){
+    const result=removeLeadingCredit(part)
+    if(result.credits.length){credits.push(...result.credits);part=result.text;changed=true}
+   }
+   if(isMediaCredit(part)){credits.push(part);changed=true;continue}
+   if(part)kept.push(part)
+  }
+  const text=kept.join('\n\n')
   if(text || page.image)pages.push({...page,text})
  }
  if(!changed)return article

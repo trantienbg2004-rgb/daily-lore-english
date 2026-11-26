@@ -3,7 +3,7 @@ import { createPortal } from 'react-dom'
 import './App.css'
 import { initializeSeenHistory, persistReadMarker, readLegacyHistory } from './lib/seenHistory.js'
 import { storyId } from './lib/feedQueue.js'
-import { balancePhotoCoverPage, groupTokenClusters, planAnchoredWikiPages, planReadingPages, rebalanceTextPages } from './lib/readerPagination.js'
+import { balancePhotoCoverPage, groupTokenClusters, mapSemanticPageIndex, planAnchoredWikiPages, planReadingPages, rebalanceTextPages, splitParagraphs } from './lib/readerPagination.js'
 import { shortNewsPages } from './lib/shortNewsPages.js'
 import { sanitizeReadingArticle } from './lib/articleCleanup.js'
 import { refreshCatalog, refillCatalog, hasUnfetchedShards, REFRESH_INTERVAL_MS } from './lib/continuousReader.js'
@@ -408,7 +408,12 @@ function layoutPages(item, reader, badImages = new Set()) {
     const coverHasNoImage = item?.contentType === 'wiki'
       ? !cleanSources.some(p => p.image)
       : !cleanSources[0]?.image
-    const fits = ({text, cover:isCover, image, density = ''}) => {
+    const measureMemo = new Map()
+    const measure = ({text, cover:isCover, image, density = ''}) => {
+      const memoKey = `${isCover ? 1 : 0}|${image?.image || ''}|${density}|${text}`
+      const cached = measureMemo.get(memoKey)
+      if (cached) return cached
+
       heading.classList.add('post-head')
       heading.classList.toggle('post-head--no-image', !image)
       heading.classList.toggle('post-head--cover-no-image', coverHasNoImage)
@@ -446,50 +451,79 @@ function layoutPages(item, reader, badImages = new Set()) {
         photo.style.height = ''
       }
       const fragment = document.createDocumentFragment()
-      const rawTokens = tokenizeWithGlossary(String(text || ''), item.glossary, [], null)
-      const clustered = groupTokenClusters(rawTokens)
-      for (const piece of clustered) {
-        if (piece.kind === 'text') {
-          fragment.appendChild(document.createTextNode(piece.text))
-        } else if (piece.kind === 'cluster') {
-          const cluster = document.createElement('span')
-          cluster.className = 'saga-word-cluster'
-          if (piece.leading) cluster.appendChild(document.createTextNode(piece.leading))
-          const btn = document.createElement('button')
-          btn.type = 'button'
-          btn.className = 'word-token' + (piece.token.kind === 'phrase' ? ' phrase-token' : '')
-          btn.textContent = piece.token.text
-          cluster.appendChild(btn)
-          if (piece.clinging) cluster.appendChild(document.createTextNode(piece.clinging))
-          fragment.appendChild(cluster)
-        } else {
-          const btn = document.createElement('button')
-          btn.type = 'button'
-          btn.className = 'word-token' + (piece.token.kind === 'phrase' ? ' phrase-token' : '')
-          btn.textContent = piece.token.text
-          fragment.appendChild(btn)
+      const paraList = splitParagraphs(String(text || ''))
+      const blocks = paraList.length ? paraList : [String(text || '')]
+      for (const blockText of blocks) {
+        const pEl = document.createElement('p')
+        pEl.className = 'article-paragraph'
+        const rawTokens = tokenizeWithGlossary(blockText, item.glossary, [], null)
+        const clustered = groupTokenClusters(rawTokens)
+        for (const piece of clustered) {
+          if (piece.kind === 'text') {
+            pEl.appendChild(document.createTextNode(piece.text))
+          } else if (piece.kind === 'cluster') {
+            const cluster = document.createElement('span')
+            cluster.className = 'saga-word-cluster'
+            if (piece.leading) cluster.appendChild(document.createTextNode(piece.leading))
+            const btn = document.createElement('button')
+            btn.type = 'button'
+            btn.className = 'word-token' + (piece.token.kind === 'phrase' ? ' phrase-token' : '')
+            btn.textContent = piece.token.text
+            cluster.appendChild(btn)
+            if (piece.clinging) cluster.appendChild(document.createTextNode(piece.clinging))
+            pEl.appendChild(cluster)
+          } else {
+            const btn = document.createElement('button')
+            btn.type = 'button'
+            btn.className = 'word-token' + (piece.token.kind === 'phrase' ? ' phrase-token' : '')
+            btn.textContent = piece.token.text
+            pEl.appendChild(btn)
+          }
         }
+        fragment.appendChild(pEl)
       }
       paragraph.replaceChildren(fragment)
       // Read V8: the pager has a fixed bottom position. Measure the text
       // against its TOP edge, not the pager's bottom (which no longer moves).
       // Reject overflow instead of silently hiding words behind navigation.
+      const cardBounds = card.getBoundingClientRect()
+      const surfaceBounds = surface ? surface.getBoundingClientRect() : cardBounds
       const textBounds = paragraph.getBoundingClientRect()
       const mediaBounds = media.getBoundingClientRect()
       const pagerBounds = pager.getBoundingClientRect()
       const viewportBottom = fixture.getBoundingClientRect().bottom
+      const availableHeight = Math.max(1, pagerBounds.top - cardBounds.top - 8)
+      const contentBottom = Math.max(textBounds.bottom, image ? mediaBounds.bottom : 0)
+      const bottomWhitespacePx = Math.max(0, pagerBounds.top - contentBottom)
+      const unusedVerticalPx = image
+        ? bottomWhitespacePx
+        : Math.max(0, (pagerBounds.top - cardBounds.top) - textBounds.height)
+      const overflowPx = Math.max(0, textBounds.bottom - (pagerBounds.top - 8))
       // The flex pager ends exactly at the reader's bottom; allow subpixel
-      // rounding while keeping the entire paragraph above the pager.
-      return textBounds.height > 0 && textBounds.bottom <= pagerBounds.top - 8
+      // rounding while keeping the entire paragraph block above the pager.
+      const fitsPage = textBounds.height > 0 && textBounds.bottom <= pagerBounds.top - 8
         && (!image || mediaBounds.bottom <= pagerBounds.top - 8)
         && pagerBounds.bottom <= viewportBottom + 1
+      const measured = {
+        fits: fitsPage,
+        usedHeight: textBounds.height,
+        availableHeight: Math.max(1, pagerBounds.top - (image ? surfaceBounds.top : cardBounds.top) - 8),
+        cardAvailableHeight: availableHeight,
+        bottomWhitespacePx,
+        unusedVerticalPx,
+        overflowPx,
+      }
+      measureMemo.set(memoKey, measured)
+      return measured
     }
+    const fits = candidate => measure(candidate).fits
+    fits.measure = measure
     // Failed/corrupt thumbnails may not reserve visual space. Reflow their
     // article text immediately, without altering the original source pages.
     const next = item?.contentType === 'news'
       ? balancePhotoCoverPage(cleanSources, fits)
       : item?.contentType === 'wiki'
-        ? planAnchoredWikiPages({...item,_sourcePages:cleanSources}, fits, {balanced: true})
+        ? planAnchoredWikiPages({...item,_sourcePages:cleanSources}, fits, {balanced: true, paragraphAware: true, measure})
         : planReadingPages({...item,_sourcePages:cleanSources}, fits)
     if (!next.length) return item.pages
     return rebalanceTextPages(next, fits)
@@ -684,6 +718,19 @@ function App() {
   }, [tabSwitchedToRead])
   const [brokenImages, setBrokenImages] = useState(() => new Set())
   const [photoVersion, setPhotoVersion] = useState(0)
+  const [fontVersion, setFontVersion] = useState(0)
+  useEffect(() => {
+    const fonts = typeof document !== 'undefined' ? document.fonts : null
+    if (!fonts) return undefined
+    let active = true
+    const bump = () => { if (active) setFontVersion(v => v + 1) }
+    fonts.ready?.then(bump).catch(() => {})
+    fonts.addEventListener?.('loadingdone', bump)
+    return () => {
+      active = false
+      fonts.removeEventListener?.('loadingdone', bump)
+    }
+  }, [])
   const [showCredits, setShowCredits] = useState(false)
   const [fullArticleStory, setFullArticleStory] = useState(null)
   const fullArticleOpen = Boolean(fullArticleStory)
@@ -740,16 +787,6 @@ function App() {
   const lastNavigationGesture = useRef(0)
   const [slide, setSlide] = useState(null)
   const slideTimer = useRef(null)
-  const changeReadingLevel = level => {
-    if (!isNewsLevel(level) || level === readingLevel) return
-    stopSpeech()
-    setReadingLevel(level)
-    try { localStorage.setItem(NEWS_LEVEL_KEY, level) } catch { /* private mode */ }
-    setStories(items => items.map(item => item.levelVariants ? paginateStory(applyNewsLevel(item, level)) : item))
-    setPage(0)
-    setPageMotion(null)
-    setLevelSettleKey(k => k + 1)
-  }
   const toggleWordMastered = word => {
     if (!word) return
     setWords(current =>
@@ -821,16 +858,30 @@ function App() {
       .join(',')
   }
 
-  const getCachedOrLayoutPages = (item, reader, badImages) => {
+  const getStoryContentSig = item => {
+    const src = item?.contentType === 'news' ? item.pages : (item?._sourcePages || item?.pages || [])
+    const headline = displayHeadline(item)
+    let hash = 2166136261
+    const feedStr = `${headline}\u0001${src.map(p => `${p?.image || ''}\u0002${p?.text || ''}`).join('\u0003')}`
+    for (let i = 0; i < feedStr.length; i++) {
+      hash ^= feedStr.charCodeAt(i)
+      hash = Math.imul(hash, 16777619)
+    }
+    return `${src.length}:${(hash >>> 0).toString(36)}`
+  }
+
+  const getCachedOrLayoutPages = (item, reader, badImages, levelOverride = null) => {
     if (!item || !reader) return item?.pages || []
     const bounds = reader.getBoundingClientRect()
     if (bounds.width < 100 || bounds.height < 220) return item.pages
     const key = makePaginationCacheKey({
       storyId: storyId(item),
-      readingLevel: readingLevelRef.current,
+      readingLevel: levelOverride || readingLevelRef.current,
       colWidth: bounds.width,
       colHeight: bounds.height,
       mediaSig: getStoryMediaSig(item, badImages),
+      contentSig: getStoryContentSig(item),
+      fontVersion,
     })
     const cached = paginationCacheRef.current.get(key)
     if (cached) return cached
@@ -843,6 +894,38 @@ function App() {
 
   const pagesSignature = pages =>
     (Array.isArray(pages) ? pages : []).map(p => `${p.image}|${p.density || ''}|${p.text}`).join('\u0000')
+
+  const changeReadingLevel = level => {
+    if (!isNewsLevel(level) || level === readingLevel) return
+    stopSpeech()
+    const prevStory = stories[storyIndex] || null
+    const prevPages = prevStory?.pages || []
+    const prevPageIndex = page
+    readingLevelRef.current = level
+    setReadingLevel(level)
+    try { localStorage.setItem(NEWS_LEVEL_KEY, level) } catch { /* private mode */ }
+    const reader = document.querySelector('.story-layer:not(.outgoing) .reader-gesture')
+    let targetPages = null
+    const nextStories = stories.map((item, idx) => {
+      if (!item.levelVariants) return item
+      const leveled = paginateStory(applyNewsLevel(item, level))
+      if (idx === storyIndex && reader) {
+        const measured = getCachedOrLayoutPages(leveled, reader, brokenImages, level)
+        targetPages = measured
+        return { ...leveled, pages: measured }
+      }
+      if (idx === storyIndex) targetPages = leveled.pages
+      return leveled
+    })
+    setStories(nextStories)
+    if (targetPages && targetPages.length) {
+      setPage(mapSemanticPageIndex(prevPages, prevPageIndex, targetPages))
+    } else {
+      setPage(0)
+    }
+    setPageMotion(null)
+    setLevelSettleKey(k => k + 1)
+  }
 
   // Recalculate before paint when dimensions change; hit pagination cache in O(1)
   // when already warmed for (storyId, readingLevel, rounded viewport size).
@@ -858,8 +941,9 @@ function App() {
       fitPhoto(reader.querySelector('.article-media img'))
       const next = getCachedOrLayoutPages(story, reader, brokenImages)
       if (pagesSignature(story.pages) !== pagesSignature(next)) {
+        const previousPages = story.pages
         setStories(old => old.map((item, i) => i === storyIndex ? { ...item, pages: next } : item))
-        setPage(p => Math.min(p, next.length))
+        setPage(p => mapSemanticPageIndex(previousPages, p, next))
       }
     }
     const recalculate = () => {
@@ -877,7 +961,7 @@ function App() {
     window.visualViewport?.addEventListener('resize', recalculate)
     document.fonts?.ready.then(recalculate).catch(() => {})
     return () => { cancelled = true; cancelAnimationFrame(frame); observer?.disconnect(); window.removeEventListener('resize', recalculate); window.visualViewport?.removeEventListener('resize', recalculate) }
-  }, [tab, storyIndex, stories.length, readingLevel, story?._sourcePages, story?.pages, brokenImages, photoVersion])
+  }, [tab, storyIndex, stories.length, readingLevel, story?._sourcePages, story?.pages, brokenImages, photoVersion, fontVersion])
 
   // Layer 3 idle warming: pre-compute exact balanced pagination for storyIndex + 1
   // (and storyIndex - 1 if uncached) during idle time so vertical swipes never reflow.
@@ -929,7 +1013,7 @@ function App() {
       cancelled = true
       clearTimeout(handle)
     }
-  }, [tab, storyIndex, stories.length, readingLevel, brokenImages, photoVersion])
+  }, [tab, storyIndex, stories.length, readingLevel, brokenImages, photoVersion, fontVersion])
 
   useLayoutEffect(() => {
     if (tab !== 'read' || !story) return
@@ -1959,7 +2043,6 @@ function App() {
   const renderStory = (item, index, pageNumber, interactive, { imagePriority = interactive ? 'high' : 'low' } = {}) => {
     const closing = pageNumber === item.pages.length
     const itemPage = closing ? null : (item.pages[pageNumber] || item.pages[0])
-    const sentences = closing ? [] : splitPageIntoSentences(itemPage.text)
     const highlightActive = Boolean(interactive && articlePlaying && activeSentenceIndex !== null)
     const pagePhotoMissing = !itemPage?.image || brokenImages.has(itemPage.image)
     const coverPhotoMissing = !item.pages[0]?.image || brokenImages.has(item.pages[0].image)
@@ -2001,26 +2084,35 @@ function App() {
           onReady={interactive ? () => setPhotoVersion(n => n + 1) : undefined} />
       </div>
       <section className={'reading-card ' + (pagePhotoMissing ? 'reading-card-no-photo' : 'reading-card-with-photo')}><div className="reading-topline" aria-hidden="true" />
-        <p key={levelSettleKey ? `lvl-${levelSettleKey}` : 'lvl-0'} className={'article-text' + (levelSettleKey > 0 ? ' saga-level-settle' : '')}>{sentences.map((seg, sIdx) => {
-          const [, leading, core, trailing] = seg.match(/^(\s*)([\s\S]*?)(\s*)$/) || ['', '', seg, '']
-          const tokens = core ? tokenizeWithGlossary(core, item.glossary, staticPhrases, lemmaMap) : []
-          const clustered = groupTokenClusters(tokens)
-          const isCurrentSentence = highlightActive && activeSentenceIndex === sIdx
-          const isDimmedSentence = highlightActive && activeSentenceIndex !== sIdx
-          const sentenceClass = 'saga-sentence' + (isCurrentSentence ? ' saga-sentence--active' : '') + (isDimmedSentence ? ' saga-sentence--dimmed' : '')
-          const renderWordButton = (token, key) => {
-            const saved = isTokenSaved(token, savedTokenSet, lemmaMap)
-            const newlySaved = Boolean(saved && justSavedWord && (String(token.lookupKey || '').toLowerCase() === justSavedWord || String(token.text || '').toLowerCase() === justSavedWord))
-            return <button key={key} type="button" disabled={!interactive} className={'word-token ' + (token.kind === 'glossary' ? 'glossary-token ' : token.kind === 'phrase' ? 'phrase-token ' : '') + (saved ? 'known ' : '') + (newlySaved ? 'just-saved' : '')} onClick={event => onWordClick(event, token.lookupKey, token.entry, token.text)}>{token.text}</button>
-          }
-          return <Fragment key={sIdx}>{leading}{core && <span className={sentenceClass} data-sentence-index={sIdx}>{clustered.map((piece, i) => {
-            if (piece.kind === 'text') return piece.text
-            if (piece.kind === 'cluster') {
-              return <span key={i} className="saga-word-cluster">{piece.leading || ''}{renderWordButton(piece.token)}{piece.clinging || ''}</span>
-            }
-            return renderWordButton(piece.token, i)
-          })}</span>}{trailing}</Fragment>
-        })}</p>
+        <div key={levelSettleKey ? `lvl-${levelSettleKey}` : 'lvl-0'} className={'article-text' + (levelSettleKey > 0 ? ' saga-level-settle' : '')}>{(() => {
+          const paraBlocks = splitParagraphs(itemPage.text)
+          const blocks = paraBlocks.length ? paraBlocks : [itemPage.text || '']
+          let runningSentenceIdx = 0
+          return blocks.map((blockText, pIdx) => {
+            const blockSentences = splitPageIntoSentences(blockText)
+            return <p key={pIdx} className="article-paragraph">{blockSentences.map((seg, localIdx) => {
+              const sIdx = runningSentenceIdx++
+              const [, leading, core, trailing] = seg.match(/^(\s*)([\s\S]*?)(\s*)$/) || ['', '', seg, '']
+              const tokens = core ? tokenizeWithGlossary(core, item.glossary, staticPhrases, lemmaMap) : []
+              const clustered = groupTokenClusters(tokens)
+              const isCurrentSentence = highlightActive && activeSentenceIndex === sIdx
+              const isDimmedSentence = highlightActive && activeSentenceIndex !== sIdx
+              const sentenceClass = 'saga-sentence' + (isCurrentSentence ? ' saga-sentence--active' : '') + (isDimmedSentence ? ' saga-sentence--dimmed' : '')
+              const renderWordButton = (token, key) => {
+                const saved = isTokenSaved(token, savedTokenSet, lemmaMap)
+                const newlySaved = Boolean(saved && justSavedWord && (String(token.lookupKey || '').toLowerCase() === justSavedWord || String(token.text || '').toLowerCase() === justSavedWord))
+                return <button key={key} type="button" disabled={!interactive} className={'word-token ' + (token.kind === 'glossary' ? 'glossary-token ' : token.kind === 'phrase' ? 'phrase-token' : '') + (saved ? 'known ' : '') + (newlySaved ? 'just-saved' : '')} onClick={event => onWordClick(event, token.lookupKey, token.entry, token.text)}>{token.text}</button>
+              }
+              return <Fragment key={localIdx}>{leading}{core && <span className={sentenceClass} data-sentence-index={sIdx}>{clustered.map((piece, i) => {
+                if (piece.kind === 'text') return piece.text
+                if (piece.kind === 'cluster') {
+                  return <span key={i} className="saga-word-cluster">{piece.leading || ''}{renderWordButton(piece.token)}{piece.clinging || ''}</span>
+                }
+                return renderWordButton(piece.token, i)
+              })}</span>}{trailing}</Fragment>
+            })}</p>
+          })
+        })()}</div>
       </section>
       </>}
       </div>
