@@ -42,6 +42,8 @@ export const DEFAULT_GEMINI_TIMEOUT_MS=60_000
 export const MIN_CANDIDATE_BUDGET_MS=45_000
 export const MIN_RETRY_BUDGET_MS=20_000
 export const MAX_COOLDOWN_MS=15_000
+// Stop a single request's fallback chain after three distinct models return 503 twice.
+export const MAX_UNAVAILABLE_MODELS_PER_CALL=3
 const LEVELS=['A1-A2','B1-B2','C1-C2']
 export const PAGE_COUNT_BOUNDS=Object.freeze({min:4,max:6})
 export const HEADLINE_WORD_BOUNDS=Object.freeze({min:5,max:11})
@@ -317,6 +319,17 @@ export class GeminiInvalidRequestError extends Error{
   this.isInvalidRequest=true
   this.modelUnsupported=modelUnsupported
   this.kind='invalid_request'
+ }
+}
+
+export class GeminiMalformedResponseError extends Error{
+ constructor(message,{finishReason='unknown',chars=0}={}){
+  super(message)
+  this.name='GeminiMalformedResponseError'
+  this.finishReason=finishReason
+  this.chars=chars
+  this.kind='invalid_response'
+  this.isMalformedResponse=true
  }
 }
 
@@ -1207,6 +1220,49 @@ export function mergeTargetedRepairs(previousDraft,repairPayload,repairTargets){
  return merged
 }
 
+function extractBalancedJsonObject(text){
+ const raw=String(text||'')
+ const start=raw.indexOf('{')
+ if(start<0)return null
+ let depth=0,inString=false,escaped=false
+ for(let i=start;i<raw.length;i++){
+  const char=raw[i]
+  if(inString){
+   if(escaped)escaped=false
+   else if(char==='\\')escaped=true
+   else if(char==='"')inString=false
+   continue
+  }
+  if(char==='"')inString=true
+  else if(char==='{')depth++
+  else if(char==='}'&&--depth===0)return raw.slice(start,i+1)
+ }
+ return null
+}
+
+export function parseGeminiJsonResponse(text,{finishReason='unknown'}={}){
+ const raw=String(text||'').trim()
+ const fence=String.fromCharCode(96).repeat(3)
+ let cleaned=raw
+ if(cleaned.startsWith(fence)){
+  cleaned=cleaned.slice(fence.length).replace(/^json\b/i,'').trim()
+  if(cleaned.endsWith(fence))cleaned=cleaned.slice(0,-fence.length).trim()
+ }
+ const candidates=[cleaned]
+ const extracted=extractBalancedJsonObject(cleaned)
+ if(extracted&&extracted!==cleaned)candidates.push(extracted)
+ for(const candidate of candidates){
+  try{
+   const parsed=JSON.parse(candidate)
+   if(parsed&&typeof parsed==='object'&&!Array.isArray(parsed))return parsed
+  }catch{}
+ }
+ throw new GeminiMalformedResponseError(
+  'Gemini returned invalid story JSON (finish='+finishReason+', chars='+raw.length+')',
+  {finishReason,chars:raw.length}
+ )
+}
+
 /** Single Gemini Flash-Lite API call with strict response-envelope error classification (never inspects valid 200 article text). */
 export async function callGeminiFlashLite(prompt,{
  apiKey,
@@ -1281,15 +1337,12 @@ export async function callGeminiFlashLite(prompt,{
 
  if(!parsedEnvelope)throw Error('Gemini returned malformed envelope JSON')
  const text=parsedEnvelope?.candidates?.[0]?.content?.parts?.map(p=>p.text||'').join('')||''
- if(!text)throw Error(`Gemini returned empty text (finishReason=${parsedEnvelope?.candidates?.[0]?.finishReason||'unknown'})`)
+ const finishReason=parsedEnvelope?.candidates?.[0]?.finishReason||'unknown'
+ if(!text)throw Error(`Gemini returned empty text (finishReason=${finishReason})`)
 
- try{
-  return {
-   draft:JSON.parse(text),
-   usage:parsedEnvelope.usageMetadata||null
-  }
- }catch{
-  throw Error(`Gemini returned invalid story JSON (chars=${text.length})`)
+ return {
+  draft:parseGeminiJsonResponse(text,{finishReason}),
+  usage:parsedEnvelope.usageMetadata||null
  }
 }
 
@@ -1300,6 +1353,7 @@ const isTimeoutError=err=>err instanceof GeminiTimeoutError||Boolean(err?.isTime
 const isAuthError=err=>err instanceof GeminiAuthError||Boolean(err?.isAuthError)||err?.status===401||err?.status===403
 const isModelNotFoundError=err=>err instanceof GeminiModelNotFoundError||Boolean(err?.isModelNotFound)||err?.status===404||/Gemini HTTP 404|\bNOT_FOUND\b|no longer available/i.test(String(err?.message||''))
 const isInvalidRequestError=err=>err instanceof GeminiInvalidRequestError||Boolean(err?.isInvalidRequest)||err?.status===400
+const isMalformedResponseError=err=>err instanceof GeminiMalformedResponseError||Boolean(err?.isMalformedResponse)||err?.kind==='invalid_response'
 
 function ensureKeyState(keyState){
  if(!keyState.exhaustedKeys)keyState.exhaustedKeys=new Set()
@@ -1367,6 +1421,7 @@ export async function callGeminiWithFailover(
   fallbackModels=null,
   unavailableRetryMs=DEFAULT_UNAVAILABLE_RETRY_MS,
   maxCooldownMs=MAX_COOLDOWN_MS,
+  maxUnavailableModelsPerCall=MAX_UNAVAILABLE_MODELS_PER_CALL,
   requestTimeoutMs=DEFAULT_GEMINI_TIMEOUT_MS,
   deadlineMs=Infinity,
   minCallBudgetMs=12_000,
@@ -1417,6 +1472,8 @@ export async function callGeminiWithFailover(
  let lastAuthError=null
  let lastModelNotFoundError=null
  let lastInvalidError=null
+ let unavailableModelsFailed=0
+ let malformedResponseRetryUsed=false
 
  const remainingBudget=()=>deadlineMs-nowFn()
 
@@ -1541,6 +1598,17 @@ export async function callGeminiWithFailover(
      break
     }
 
+    if(isMalformedResponseError(err)){
+     recordApiError(state,'invalid_response')
+     if(!malformedResponseRetryUsed){
+      malformedResponseRetryUsed=true
+      console.warn(`[batch]   -> Gemini returned malformed JSON (${err.message}). Retrying once on ${activeModel} (${current.label})...`)
+      continue
+     }
+     console.warn(`[batch]   -> Gemini JSON remained invalid after one retry on ${activeModel}; preserving candidate and stopping this request.`)
+     throw err
+    }
+
     if(isUnavailableError(err)){
      recordApiError(state,'unavailable')
      lastUnavailableError=err instanceof GeminiUnavailableError?err:new GeminiUnavailableError(err.message,err?.status||503,{retryAfterMs:err?.retryAfterMs})
@@ -1556,6 +1624,11 @@ export async function callGeminiWithFailover(
      }
      state.modelCooldownUntil.set(activeModel,nowFn()+120_000)
      if(state.preferredModel===activeModel)state.preferredModel=null
+     unavailableModelsFailed++
+     if(unavailableModelsFailed>=Math.max(1,Math.floor(Number(maxUnavailableModelsPerCall)||MAX_UNAVAILABLE_MODELS_PER_CALL))){
+      console.warn(`[batch]   -> ${unavailableModelsFailed} models returned 503/UNAVAILABLE twice; opening the per-request circuit breaker instead of probing more fallbacks.`)
+      throw lastUnavailableError
+     }
      if(nextModel){
       console.warn(`[batch]   -> Model ${activeModel} still unavailable after retry (${err.message}). Cooling down and falling back to ${nextModel}...`)
       break
@@ -2499,7 +2572,7 @@ export async function runPublishWikiBatch({
    console.warn(`[batch]   -> Candidate "${item.title}" failed: ${err.message}`)
    transientErrors.push({title:item.title,error:err.message,kind:err?.kind||'error'})
 
-   const isInfraErr=isAuthError(err)||isModelNotFoundError(err)||isUnavailableError(err)||isTimeoutError(err)||isTemporaryRateLimitError(err)||err?.kind==='mixed_failover_failure'||Boolean(err?.noUsableRoute)||(isInvalidRequestError(err)&&err?.modelUnsupported)
+   const isInfraErr=isAuthError(err)||isModelNotFoundError(err)||isUnavailableError(err)||isTimeoutError(err)||isTemporaryRateLimitError(err)||isMalformedResponseError(err)||err?.kind==='mixed_failover_failure'||Boolean(err?.noUsableRoute)||(isInvalidRequestError(err)&&err?.modelUnsupported)
    if(isInfraErr){
     consecutiveInfraFailures++
    }
