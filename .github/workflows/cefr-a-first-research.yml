@@ -2,7 +2,7 @@ name: CEFR A-first Research Trial
 
 on:
   pull_request:
-    types: [opened]
+    types: [opened, synchronize]
     branches: [main]
     paths:
       - 'scripts/cefr-a-first-trial.mjs'
