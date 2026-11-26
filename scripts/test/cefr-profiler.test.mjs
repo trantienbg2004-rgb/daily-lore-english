@@ -138,6 +138,14 @@ test('CEFR descriptor reviewer accepts in-band assessments, merges partial repai
  assert.match(repaired.draft.variants['B1-B2'].pages[0].text,/Builders changed the town/)
  assert.equal(repaired.draft.variants['B1-B2'].pages[0].imageId,'IMG_0','Repair must preserve image binding')
 
+ const badHeadline=structuredClone(passPayload)
+ badHeadline.assessment['A1-A2']=assessment('A2','People built a small town','B1','revise')
+ badHeadline.repairs=[{level:'A1-A2',headline:'The History of Radio',pages:[{pageIndex:0,text:'People built a small town near the river. Families shared food and tools.',evidenceIds:['P1']}]}]
+ const headlineSafe=applyCEFRReviewRepairs(draft,badHeadline)
+ assert.equal(headlineSafe.ok,true,headlineSafe.errors.join(' | '))
+ assert.equal(headlineSafe.draft.variants['A1-A2'].headline,'A Simple Story About Town Life','Invalid short reviewer headline must not replace a valid original')
+ assert.ok(headlineSafe.warnings.some(e=>/ignored reviewer headline outside 5-11 words/.test(e)))
+
  const twoPageDraft=structuredClone(draft)
  for(const level of ['A1-A2','B1-B2','C1-C2'])twoPageDraft.variants[level].pages.push({text:'The next page explains another part of the story.',imageId:null,evidenceIds:['P1']})
  const partialPayload=structuredClone(passPayload)
@@ -189,6 +197,8 @@ test('CEFR reviewer prompt uses official reading descriptors and treats FKGL/wor
  assert.match(prompt,/A1-A2/)
  assert.match(prompt,/finalVerdict/)
  assert.match(prompt,/program will attach a verbatim sentence/)
+ assert.match(prompt,/Any changed headline must be 5–11 words/)
+ assert.match(prompt,/preserve the existing valid headline/i)
 })
 
 test('applyCEFRRequeue enforces safety floor, prepends removed stories to FRONT of queue without duplicates, and buildRoundRobinOrder prioritizes them first',async()=>{
