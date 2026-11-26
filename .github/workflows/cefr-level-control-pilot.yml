@@ -1,12 +1,6 @@
 name: SAGA CEFR Live Level-Control Pilot
 
 on:
-  push:
-    branches: [fix/saga-cefr-level-control]
-    paths:
-      - 'scripts/cefr-level-control-pilot.mjs'
-      - 'scripts/publish_wiki_batch.mjs'
-      - '.github/workflows/cefr-level-control-pilot.yml'
   pull_request:
     branches: [main]
     paths:
