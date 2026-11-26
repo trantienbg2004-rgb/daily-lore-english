@@ -1,90 +1,90 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-26T01:37:36.577Z",
+  "updatedAt": "2026-11-26T14:39:31.074Z",
   "total": 1795,
   "counts": {
-    "pending": 1628,
-    "published": 9,
+    "pending": 1608,
+    "published": 17,
     "skipped_no_image": 0,
-    "skipped_no_lead_image": 132,
-    "skipped_quality": 26
+    "skipped_no_lead_image": 137,
+    "skipped_quality": 33
   },
   "byTopic": {
     "Politics": {
-      "pending": 163,
+      "pending": 161,
       "published": 2,
       "skipped_no_image": 0,
-      "skipped_no_lead_image": 14,
-      "skipped_quality": 2,
+      "skipped_no_lead_image": 15,
+      "skipped_quality": 3,
       "total": 181
     },
     "Economy": {
-      "pending": 164,
-      "published": 1,
+      "pending": 162,
+      "published": 2,
       "skipped_no_image": 0,
-      "skipped_no_lead_image": 11,
+      "skipped_no_lead_image": 12,
       "skipped_quality": 4,
       "total": 180
     },
     "Conflict & Security": {
-      "pending": 159,
-      "published": 1,
+      "pending": 157,
+      "published": 3,
       "skipped_no_image": 0,
       "skipped_no_lead_image": 17,
       "skipped_quality": 3,
       "total": 180
     },
     "Society": {
-      "pending": 161,
-      "published": 0,
+      "pending": 159,
+      "published": 1,
       "skipped_no_image": 0,
-      "skipped_no_lead_image": 14,
+      "skipped_no_lead_image": 15,
       "skipped_quality": 4,
       "total": 179
     },
     "Culture": {
-      "pending": 160,
+      "pending": 158,
       "published": 0,
       "skipped_no_image": 0,
       "skipped_no_lead_image": 16,
-      "skipped_quality": 3,
+      "skipped_quality": 5,
       "total": 179
     },
     "Science & Technology": {
-      "pending": 166,
-      "published": 1,
-      "skipped_no_image": 0,
-      "skipped_no_lead_image": 11,
-      "skipped_quality": 2,
-      "total": 180
-    },
-    "Environment": {
-      "pending": 165,
+      "pending": 164,
       "published": 1,
       "skipped_no_image": 0,
       "skipped_no_lead_image": 12,
-      "skipped_quality": 2,
+      "skipped_quality": 3,
+      "total": 180
+    },
+    "Environment": {
+      "pending": 163,
+      "published": 2,
+      "skipped_no_image": 0,
+      "skipped_no_lead_image": 12,
+      "skipped_quality": 3,
       "total": 180
     },
     "Health": {
-      "pending": 172,
-      "published": 1,
+      "pending": 170,
+      "published": 2,
       "skipped_no_image": 0,
       "skipped_no_lead_image": 5,
-      "skipped_quality": 2,
+      "skipped_quality": 3,
       "total": 180
     },
     "History & Geography": {
-      "pending": 161,
+      "pending": 159,
       "published": 0,
       "skipped_no_image": 0,
-      "skipped_no_lead_image": 18,
-      "skipped_quality": 2,
+      "skipped_no_lead_image": 19,
+      "skipped_quality": 3,
       "total": 181
     },
     "Sports": {
-      "pending": 157,
-      "published": 2,
+      "pending": 155,
+      "published": 4,
       "skipped_no_image": 0,
       "skipped_no_lead_image": 14,
       "skipped_quality": 2,
@@ -225,10 +225,17 @@
       "priority": 0,
       "sourceUrl": "https://en.wikipedia.org/wiki/Climate_finance_in_Nigeria",
       "hasLeadImage": true,
-      "status": "pending",
+      "status": "skipped_quality",
       "addedAt": "2026-11-22T02:47:22.530Z",
       "requeuedAt": "2026-11-22T02:47:22.530Z",
-      "requeuedReason": "cefr_upgrade"
+      "requeuedReason": "cefr_upgrade",
+      "qualityErrors": [
+        "B1-B2 CEFR gate failed: FKGL 13.84 outside target band 6.8-10.8 (avg sentence 15.31w)",
+        "B1-B2 page 2: omits source uncertainty/safety qualification flagged in fact sheet",
+        "C1-C2 page 2: omits source uncertainty/safety qualification flagged in fact sheet",
+        "A1-A2 page 5: omits source uncertainty/safety qualification flagged in fact sheet"
+      ],
+      "checkedAt": "2026-11-26T14:29:31.098Z"
     },
     {
       "title": "Assisted migration",
@@ -238,10 +245,11 @@
       "priority": 0,
       "sourceUrl": "https://en.wikipedia.org/wiki/Assisted_migration",
       "hasLeadImage": true,
-      "status": "pending",
+      "status": "published",
       "addedAt": "2026-11-22T02:47:22.530Z",
       "requeuedAt": "2026-11-22T02:47:22.530Z",
-      "requeuedReason": "cefr_upgrade"
+      "requeuedReason": "cefr_upgrade",
+      "publishedAt": "2026-11-26T14:36:59.491Z"
     },
     {
       "title": "History of economic inequality",
@@ -327,10 +335,11 @@
       "priority": 0,
       "sourceUrl": "https://en.wikipedia.org/wiki/Greater_Albania",
       "hasLeadImage": true,
-      "status": "pending",
+      "status": "skipped_no_lead_image",
       "addedAt": "2026-11-22T02:47:22.530Z",
       "requeuedAt": "2026-11-22T02:47:22.530Z",
-      "requeuedReason": "cefr_upgrade"
+      "requeuedReason": "cefr_upgrade",
+      "checkedAt": "2026-11-26T14:30:00.440Z"
     },
     {
       "title": "Climate inertia",
@@ -416,10 +425,14 @@
       "priority": 0,
       "sourceUrl": "https://en.wikipedia.org/wiki/Brazilian_Abolitionist_Confederation",
       "hasLeadImage": true,
-      "status": "pending",
+      "status": "skipped_quality",
       "addedAt": "2026-11-22T02:47:22.530Z",
       "requeuedAt": "2026-11-22T02:47:22.530Z",
-      "requeuedReason": "cefr_upgrade"
+      "requeuedReason": "cefr_upgrade",
+      "qualityErrors": [
+        "B1-B2 CEFR gate failed: FKGL 12.79 outside target band 6.8-10.8 (avg sentence 15.5w)"
+      ],
+      "checkedAt": "2026-11-26T14:37:43.539Z"
     },
     {
       "title": "Peace efforts during World War I",
@@ -429,10 +442,11 @@
       "priority": 0,
       "sourceUrl": "https://en.wikipedia.org/wiki/Peace_efforts_during_World_War_I",
       "hasLeadImage": true,
-      "status": "pending",
+      "status": "published",
       "addedAt": "2026-11-22T02:47:22.530Z",
       "requeuedAt": "2026-11-22T02:47:22.530Z",
-      "requeuedReason": "cefr_upgrade"
+      "requeuedReason": "cefr_upgrade",
+      "publishedAt": "2026-11-26T14:27:50.045Z"
     },
     {
       "title": "Feminist movement",
@@ -531,10 +545,11 @@
       "priority": 0,
       "sourceUrl": "https://en.wikipedia.org/wiki/Charter_for_European_Security",
       "hasLeadImage": true,
-      "status": "pending",
+      "status": "skipped_no_lead_image",
       "addedAt": "2026-11-22T02:47:22.530Z",
       "requeuedAt": "2026-11-22T02:47:22.530Z",
-      "requeuedReason": "cefr_upgrade"
+      "requeuedReason": "cefr_upgrade",
+      "checkedAt": "2026-11-26T14:27:04.607Z"
     },
     {
       "title": "Free-culture movement",
@@ -544,10 +559,11 @@
       "priority": 0,
       "sourceUrl": "https://en.wikipedia.org/wiki/Free-culture_movement",
       "hasLeadImage": true,
-      "status": "pending",
+      "status": "published",
       "addedAt": "2026-11-22T02:47:22.530Z",
       "requeuedAt": "2026-11-22T02:47:22.530Z",
-      "requeuedReason": "cefr_upgrade"
+      "requeuedReason": "cefr_upgrade",
+      "publishedAt": "2026-11-26T14:34:38.260Z"
     },
     {
       "title": "History of syphilis",
@@ -612,10 +628,11 @@
       "priority": 0,
       "sourceUrl": "https://en.wikipedia.org/wiki/Antibiotic_use_in_livestock",
       "hasLeadImage": true,
-      "status": "pending",
+      "status": "published",
       "addedAt": "2026-11-22T02:47:22.530Z",
       "requeuedAt": "2026-11-22T02:47:22.530Z",
-      "requeuedReason": "cefr_upgrade"
+      "requeuedReason": "cefr_upgrade",
+      "publishedAt": "2026-11-26T14:33:42.185Z"
     },
     {
       "title": "Antibiotic misuse",
@@ -625,10 +642,14 @@
       "priority": 0,
       "sourceUrl": "https://en.wikipedia.org/wiki/Antibiotic_misuse",
       "hasLeadImage": true,
-      "status": "pending",
+      "status": "skipped_quality",
       "addedAt": "2026-11-22T02:47:22.530Z",
       "requeuedAt": "2026-11-22T02:47:22.530Z",
-      "requeuedReason": "cefr_upgrade"
+      "requeuedReason": "cefr_upgrade",
+      "qualityErrors": [
+        "B1-B2 CEFR gate failed: FKGL 5.99 outside target band 6.8-10.8 (avg sentence 13w)"
+      ],
+      "checkedAt": "2026-11-26T14:38:58.710Z"
     },
     {
       "title": "History of malaria",
@@ -685,10 +706,11 @@
       "priority": 0,
       "sourceUrl": "https://en.wikipedia.org/wiki/Lhasa_Newar",
       "hasLeadImage": true,
-      "status": "pending",
+      "status": "published",
       "addedAt": "2026-11-22T02:47:22.530Z",
       "requeuedAt": "2026-11-22T02:47:22.530Z",
-      "requeuedReason": "cefr_upgrade"
+      "requeuedReason": "cefr_upgrade",
+      "publishedAt": "2026-11-26T14:28:46.241Z"
     },
     {
       "title": "History of rockets",
@@ -732,10 +754,18 @@
       "priority": 0,
       "sourceUrl": "https://en.wikipedia.org/wiki/History_of_the_battery",
       "hasLeadImage": true,
-      "status": "pending",
+      "status": "skipped_quality",
       "addedAt": "2026-11-22T02:47:22.530Z",
       "requeuedAt": "2026-11-22T02:47:22.530Z",
-      "requeuedReason": "cefr_upgrade"
+      "requeuedReason": "cefr_upgrade",
+      "qualityErrors": [
+        "CEFR sentence-length progression failed: A1-A2 (9.38w) < B1-B2 (17.91w) < C1-C2 (17.83w) required",
+        "B1-B2 CEFR gate failed: FKGL 13.21 outside target band 6.8-10.8 (avg sentence 18.18w)",
+        "A1-A2 page 1: absolute overclaim contradicts source uncertainty or safety conditions",
+        "B1-B2 page 1: omits source uncertainty/safety qualification flagged in fact sheet",
+        "A1-A2: article-wide absolute overclaim conflicts with source caveats/uncertainty"
+      ],
+      "checkedAt": "2026-11-26T14:31:43.942Z"
     },
     {
       "title": "Kittanning Path",
@@ -745,10 +775,11 @@
       "priority": 0,
       "sourceUrl": "https://en.wikipedia.org/wiki/Kittanning_Path",
       "hasLeadImage": true,
-      "status": "pending",
+      "status": "skipped_no_lead_image",
       "addedAt": "2026-11-22T02:47:22.530Z",
       "requeuedAt": "2026-11-22T02:47:22.530Z",
-      "requeuedReason": "cefr_upgrade"
+      "requeuedReason": "cefr_upgrade",
+      "checkedAt": "2026-11-26T14:36:14.159Z"
     },
     {
       "title": "Constantinople",
@@ -852,10 +883,11 @@
       "priority": 0,
       "sourceUrl": "https://en.wikipedia.org/wiki/History_of_science_and_technology_in_Africa",
       "hasLeadImage": true,
-      "status": "pending",
+      "status": "skipped_no_lead_image",
       "addedAt": "2026-11-22T02:47:22.530Z",
       "requeuedAt": "2026-11-22T02:47:22.530Z",
-      "requeuedReason": "cefr_upgrade"
+      "requeuedReason": "cefr_upgrade",
+      "checkedAt": "2026-11-26T14:37:44.474Z"
     },
     {
       "title": "King's Highway (ancient)",
@@ -964,10 +996,14 @@
       "priority": 0,
       "sourceUrl": "https://en.wikipedia.org/wiki/Darmstadt",
       "hasLeadImage": true,
-      "status": "pending",
+      "status": "skipped_quality",
       "addedAt": "2026-11-22T02:47:22.530Z",
       "requeuedAt": "2026-11-22T02:47:22.530Z",
-      "requeuedReason": "cefr_upgrade"
+      "requeuedReason": "cefr_upgrade",
+      "qualityErrors": [
+        "B1-B2 CEFR gate failed: FKGL 11.3 outside target band 6.8-10.8 (avg sentence 15w)"
+      ],
+      "checkedAt": "2026-11-26T14:29:59.876Z"
     },
     {
       "title": "Merchant",
@@ -1084,10 +1120,14 @@
       "priority": 0,
       "sourceUrl": "https://en.wikipedia.org/wiki/Conservation_science_(cultural_property)",
       "hasLeadImage": true,
-      "status": "pending",
+      "status": "skipped_quality",
       "addedAt": "2026-11-22T02:47:22.530Z",
       "requeuedAt": "2026-11-22T02:47:22.530Z",
-      "requeuedReason": "cefr_upgrade"
+      "requeuedReason": "cefr_upgrade",
+      "qualityErrors": [
+        "B1-B2 page 4: omits source uncertainty/safety qualification flagged in fact sheet"
+      ],
+      "checkedAt": "2026-11-26T14:28:16.267Z"
     },
     {
       "title": "History of cartography",
@@ -1097,10 +1137,11 @@
       "priority": 0,
       "sourceUrl": "https://en.wikipedia.org/wiki/History_of_cartography",
       "hasLeadImage": true,
-      "status": "pending",
+      "status": "skipped_no_lead_image",
       "addedAt": "2026-11-22T02:47:22.530Z",
       "requeuedAt": "2026-11-22T02:47:22.530Z",
-      "requeuedReason": "cefr_upgrade"
+      "requeuedReason": "cefr_upgrade",
+      "checkedAt": "2026-11-26T14:37:00.393Z"
     },
     {
       "title": "Alcohol tax",
@@ -4809,8 +4850,9 @@
       "priority": 1,
       "sourceUrl": "https://en.wikipedia.org/wiki/Battleship",
       "hasLeadImage": true,
-      "status": "pending",
-      "addedAt": "2026-11-20T08:49:35.085Z"
+      "status": "published",
+      "addedAt": "2026-11-20T08:49:35.085Z",
+      "publishedAt": "2026-11-26T14:35:40.288Z"
     },
     {
       "title": "Atomic bombings of Hiroshima and Nagasaki",
@@ -8331,8 +8373,12 @@
       "priority": 1,
       "sourceUrl": "https://en.wikipedia.org/wiki/Sgt._Pepper%27s_Lonely_Hearts_Club_Band",
       "hasLeadImage": true,
-      "status": "pending",
-      "addedAt": "2026-11-20T08:49:35.085Z"
+      "status": "skipped_quality",
+      "addedAt": "2026-11-20T08:49:35.085Z",
+      "qualityErrors": [
+        "B1-B2 page 4: omits source uncertainty/safety qualification flagged in fact sheet"
+      ],
+      "checkedAt": "2026-11-26T14:36:13.783Z"
     },
     {
       "title": "The Simpsons",
@@ -17315,8 +17361,9 @@
       "priority": 1,
       "sourceUrl": "https://en.wikipedia.org/wiki/Formula_One",
       "hasLeadImage": true,
-      "status": "pending",
-      "addedAt": "2026-11-20T08:49:35.085Z"
+      "status": "published",
+      "addedAt": "2026-11-20T08:49:35.085Z",
+      "publishedAt": "2026-11-26T14:34:11.945Z"
     },
     {
       "title": "American football",
@@ -17326,8 +17373,9 @@
       "priority": 1,
       "sourceUrl": "https://en.wikipedia.org/wiki/American_football",
       "hasLeadImage": true,
-      "status": "pending",
-      "addedAt": "2026-11-20T08:49:35.085Z"
+      "status": "published",
+      "addedAt": "2026-11-20T08:49:35.085Z",
+      "publishedAt": "2026-11-26T14:39:31.052Z"
     },
     {
       "title": "Rock climbing",
