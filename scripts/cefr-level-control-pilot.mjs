@@ -19,7 +19,6 @@ const OUTPUT=process.env.CEFR_PILOT_OUTPUT||'/tmp/saga-cefr-level-control-pilot'
 const API_KEYS=resolveGeminiApiKeys()
 const keyState={keys:API_KEYS,activeIndex:0}
 const TOPICS=['topic-0','topic-1','topic-2']
-const wait=ms=>new Promise(resolve=>setTimeout(resolve,ms))
 const safeError=e=>({name:e?.name||'Error',status:e?.status??null,message:String(e?.message||e).replace(/AIza[A-Za-z0-9_-]+/g,'[REDACTED]').slice(0,500)})
 let calls=0
 
