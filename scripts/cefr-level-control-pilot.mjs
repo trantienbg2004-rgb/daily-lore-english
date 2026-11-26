@@ -8,12 +8,17 @@ import {
  buildCEFRReviewRepairSchema,
  callGeminiWithFailover,
  resolveGeminiApiKeys,
+ resolveGeminiModelChain,
  normalizeDraftForCatalog,
  validateArticleQuality,
  applyCEFRReviewRepairs
 } from './publish_wiki_batch.mjs'
 
 const MODEL=process.env.CEFR_PILOT_MODEL||'gemini-3.5-flash-lite'
+const REVIEW_MODEL=process.env.CEFR_REVIEW_MODEL||'gemini-3.6-flash'
+const generationModelChain=resolveGeminiModelChain({model:MODEL})
+const reviewerModelChain=resolveGeminiModelChain({model:REVIEW_MODEL,fallbackModels:process.env.CEFR_REVIEW_FALLBACK_MODELS||['gemini-3.8-flash','gemini-3.5-flash-lite']})
+const reviewerKeyState={...keyState,activeIndex:0,preferredModel:null,lastModelTried:null}
 const INPUT=process.env.CEFR_FROZEN_INPUT||'/tmp/saga-cefr-frozen'
 const OUTPUT=process.env.CEFR_PILOT_OUTPUT||'/tmp/saga-cefr-level-control-pilot'
 const API_KEYS=resolveGeminiApiKeys()
@@ -21,21 +26,26 @@ const keyState={keys:API_KEYS,activeIndex:0}
 const TOPICS=['topic-0','topic-1','topic-2']
 const safeError=e=>({name:e?.name||'Error',status:e?.status??null,message:String(e?.message||e).replace(/AIza[A-Za-z0-9_-]+/g,'[REDACTED]').slice(0,500)})
 let calls=0,modelFallbacks=0
+const modelsUsed={}
 
 async function save(name,value){
  await fs.writeFile(path.join(OUTPUT,name),JSON.stringify(value,null,2)+'\n')
 }
-async function invoke(prompt,schema,label){
+async function invoke(prompt,schema,label,{reviewer=false}={}){
  calls++
  try{
-  const result=await callGeminiWithFailover(prompt,keyState,{
-   model:MODEL,
+  const chain=reviewer?reviewerModelChain:generationModelChain
+  const state=reviewer?reviewerKeyState:keyState
+  const result=await callGeminiWithFailover(prompt,state,{
+   model:chain[0],
+   fallbackModels:chain.slice(1),
    requestTimeoutMs:120000,
    deadlineMs:Date.now()+240000,
    minCallBudgetMs:12000,
    schema
   })
-  if(result.model!==MODEL)modelFallbacks++
+  if(result.model!==chain[0])modelFallbacks++
+  modelsUsed[result.model]=(modelsUsed[result.model]||0)+1
   console.log('[CEFR-LEVEL-CONTROL-MODEL] '+label+' -> '+result.model+' ('+result.keyLabel+')')
   return result
  }catch(error){
@@ -65,6 +75,7 @@ async function runTopic(id){
   sourceRevisionId:fixture.source.sourceRevisionId,
   sourceHash,
   model:MODEL,
+  reviewerModel:REVIEW_MODEL,
   passed:false
  }
  try{
@@ -81,7 +92,7 @@ async function runTopic(id){
   result.initialQuality={ok:quality.ok,errors:quality.errors,metrics:quality.metrics,heuristicWarnings:quality.cefr?.errors||[]}
 
   const reviewPrompt=buildCEFRReviewRepairPrompt(fixture.source,fixture.topic,fixture.evidence,draft,quality)
-  const review=await invoke(reviewPrompt,buildCEFRReviewRepairSchema(draft),id+' descriptor review')
+  const review=await invoke(reviewPrompt,buildCEFRReviewRepairSchema(draft),id+' descriptor review',{reviewer:true})
   result.reviewUsage=review.usage||null
   const applied=applyCEFRReviewRepairs(draft,review.draft,{
    requiredRepairLevels:levelsNeedingRepair(quality),
@@ -132,8 +143,10 @@ async function main(){
  for(const id of TOPICS)results.push(await runTopic(id))
  const summary={
   model:MODEL,
+  reviewerModel:REVIEW_MODEL,
   calls,
   modelFallbacks,
+  modelsUsed,
   fixtures:results.length,
   passed:results.filter(x=>x.passed).length,
   failed:results.filter(x=>!x.passed).length,
