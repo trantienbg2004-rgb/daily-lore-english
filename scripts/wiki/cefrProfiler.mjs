@@ -18,6 +18,8 @@ const DEFAULT_LEMMAS_PATH=path.join(ROOT,'public','dict','lemmas.json')
 const BAND_RANK={A1:1,A2:2,B1:3,B2:4,C1:5,C2:6,unlisted:7}
 const LEVELS=['A1-A2','B1-B2','C1-C2']
 
+// SAGA INTERNAL SCREENING HEURISTICS ONLY — these FKGL/lexical-list cutoffs are not Council of Europe CEFR standards.
+// CEFR reading fit is multidimensional and context/task dependent; use the independent descriptor review in publish_wiki_batch.mjs for the publication decision.
 export const CEFR_THRESHOLDS={
  'A1-A2':{
   maxFkgl:6.8,

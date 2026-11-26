@@ -283,6 +283,7 @@ test('content engine: prompt uses single-source-of-truth midpoint targets & natu
  assert.match(prompt,new RegExp(`${PAGE_COUNT_BOUNDS.min}-${PAGE_COUNT_BOUNDS.max} PAGE OUTLINE`))
  assert.match(prompt,new RegExp(`${CAPTION_LIMITS.maxChars} chars`))
  assert.match(prompt,/artificial academic jargon/i)
+ assert.match(prompt,/Do not infer absence from silence/i)
 
  // Valid uncertainty-preserving draft passes both factual consistency and full quality gate
  const goodDraft=normalizeDraftForCatalog(makeSynchronizedDraft('Stone Citadel',{withUncertainty:true}),{
@@ -295,6 +296,20 @@ test('content engine: prompt uses single-source-of-truth midpoint targets & natu
  const goodQuality=validateArticleQuality(goodDraft,source.sourceTitle,{source,evidence:trimmed.evidence})
  assert.equal(goodQuality.ok,true,`Expected valid quality draft, got: ${goodQuality.errors.join(' | ')}`)
 
+ const dryOpeningDraft=structuredClone(goodDraft)
+ dryOpeningDraft.variants['A1-A2'].pages[0].text='Stone Citadel is a historic building made from pale stone.'
+ const dryOpeningQuality=validateArticleQuality(dryOpeningDraft,source.sourceTitle,{source,evidence:trimmed.evidence})
+ assert.equal(dryOpeningQuality.ok,false)
+ assert.ok(dryOpeningQuality.errors.some(e=>/A1-A2 page 1: dry encyclopedia opening detected/.test(e)))
+
+ // Natural qualification phrases such as “though” and “according to” preserve source uncertainty.
+ const naturalHedgeDraft=structuredClone(goodDraft)
+ for(const level of ['A1-A2','B1-B2','C1-C2']){
+  naturalHedgeDraft.variants[level].pages[3].text='The source leaves this detail unresolved, though it records the event.'
+ }
+ const naturalHedgeCheck=validateFactualConsistency(naturalHedgeDraft,{source,evidence:trimmed.evidence})
+ assert.equal(naturalHedgeCheck.errors.some(e=>/omits source uncertainty\/safety qualification|omits nuance\/caveat language/.test(e)),false,naturalHedgeCheck.errors.join(' | '))
+
  // 1. Fabricated year & quantity not in source evidence
  const fabDraft=structuredClone(goodDraft)
  fabDraft.variants['B1-B2'].pages[0].text=fabDraft.variants['B1-B2'].pages[0].text.replace('1884','1749')+' Builders moved 950 tons of ore.'
@@ -303,6 +318,13 @@ test('content engine: prompt uses single-source-of-truth midpoint targets & natu
  assert.ok(fabCheck.errors.some(e=>/ungrounded year "1749"/i.test(e)))
  assert.ok(fabCheck.errors.some(e=>/ungrounded quantity "950 tons"/i.test(e)))
  assert.ok(fabCheck.errors.some(e=>/Cross-level date mismatch on page 1/i.test(e)))
+
+ // 1b. Do not turn source silence into a claim that nobody else worked on the topic.
+ const exclusivityDraft=structuredClone(goodDraft)
+ exclusivityDraft.variants['A1-A2'].pages[2].text+=' Other inventors were not working on this idea.'
+ const exclusivityCheck=validateFactualConsistency(exclusivityDraft,{source,evidence:trimmed.evidence})
+ assert.equal(exclusivityCheck.ok,false)
+ assert.ok(exclusivityCheck.errors.some(e=>/unsupported exclusivity claim "other inventors were not"/i.test(e)))
 
  // 2. Cross-level factual drift on page 2 (disjoint evidence + zero topic overlap)
  const driftDraft=structuredClone(goodDraft)
@@ -318,6 +340,47 @@ test('content engine: prompt uses single-source-of-truth midpoint targets & natu
  const unsafeCheck=validateFactualConsistency(unsafeDraft,{source,evidence:trimmed.evidence})
  assert.equal(unsafeCheck.ok,false)
  assert.ok(unsafeCheck.errors.some(e=>/absolute overclaim contradicts source uncertainty/i.test(e)))
+})
+
+test('content engine: independent levelPlans allow different content depth while preserving shared evidence and image order',()=>{
+ const source=makeRichSource('Stone Citadel',9150)
+ const trimmed=trimWikipediaEvidence(source,{targetMinWords:300,targetMaxWords:1500})
+ const photo=makeVerifiedPhoto(source,{fileTitle:'File:Stone_Citadel_level-plan.jpg',caption:'Historic view of Stone Citadel',sectionIndex:0,imageId:'IMG_0'})
+ const raw=makeSynchronizedDraft('Stone Citadel')
+ raw.levelPlans={
+  'A1-A2':{
+   readerObjective:'Understand the main concrete facts using simple, explicit language.',
+   selectedFactIds:['F1','F2'],
+   depthNotes:'Use familiar words, concrete examples and explicit relationships; omit non-essential specialist detail.'
+  },
+  'B1-B2':{
+   readerObjective:'Understand factual context, chronology and cause-and-effect links.',
+   selectedFactIds:['F1','F2','F3'],
+   depthNotes:'Develop context and relationships with natural topic vocabulary and connected explanations.'
+  },
+  'C1-C2':{
+   readerObjective:'Understand nuance, implications and the relationship between evidence and interpretation.',
+   selectedFactIds:['F2','F3','F4'],
+   depthNotes:'Explore source-grounded qualifications, conceptual implications and specialist distinctions.'
+  }
+ }
+ const normalized=normalizeDraftForCatalog(raw,{source,evidence:trimmed.evidence,verifiedPhotos:[photo]})
+ assert.deepEqual(normalized.levelPlans['A1-A2'].selectedFactIds,['F1','F2'])
+ assert.equal(normalized.sharedCoreFactIds.length,2)
+ for(const level of ['A1-A2','B1-B2','C1-C2'])for(const id of normalized.sharedCoreFactIds)assert.ok(normalized.levelPlans[level].selectedFactIds.includes(id),level+' must retain both shared core facts')
+ assert.notDeepEqual(normalized.levelPlans['A1-A2'].selectedFactIds,normalized.levelPlans['C1-C2'].selectedFactIds)
+ const fact=validateFactualConsistency(normalized,{source,evidence:trimmed.evidence})
+ assert.equal(fact.ok,true,fact.errors.join(' | '))
+ const missingCitation=structuredClone(normalized)
+ for(const page of missingCitation.variants['C1-C2'].pages)page.evidenceIds=(page.evidenceIds||[]).filter(id=>id!=='P4')
+ const missingCitationCheck=validateFactualConsistency(missingCitation,{source,evidence:trimmed.evidence})
+ assert.equal(missingCitationCheck.ok,false)
+ assert.ok(missingCitationCheck.errors.some(e=>/C1-C2: selected core facts lack page citations: F4 \(required evidence P4\)/.test(e)),missingCitationCheck.errors.join(' | '))
+ const quality=validateArticleQuality(normalized,source.sourceTitle,{source,evidence:trimmed.evidence,requireLevelPlans:true})
+ assert.equal(quality.ok,true,quality.errors.join(' | '))
+ const legacy=validateArticleQuality(makeSynchronizedDraft('Stone Citadel'),source.sourceTitle,{source,evidence:trimmed.evidence,requireLevelPlans:true})
+ assert.equal(legacy.ok,false)
+ assert.ok(legacy.errors.some(e=>/Missing independent levelPlans/.test(e)))
 })
 
 test('content engine: targeted repair patches ONLY failing page/headline while preserving valid levels/pages and rejects invalid repair JSON',()=>{
@@ -347,6 +410,8 @@ test('content engine: targeted repair patches ONLY failing page/headline while p
 
  const repairPrompt=buildTargetedRepairPrompt(source,'History & Geography',trimmed.evidence,brokenDraft,qBefore,[leadPhoto],targets)
  assert.match(repairPrompt,/TARGETED REPAIR/)
+ assert.match(repairPrompt,/If a failed check flags a dry encyclopedia opening/i)
+ assert.match(repairPrompt,/FIRST sentence does not begin with the source title/i)
  assert.match(repairPrompt,/Do NOT rewrite passing levels or passing pages/)
 
  // Patch ONLY B1-B2 headline + page 2
@@ -370,6 +435,51 @@ test('content engine: targeted repair patches ONLY failing page/headline while p
  // Invalid / empty repair payload must throw, never silently accept
  assert.throws(()=>mergeTargetedRepairs(brokenDraft,{},targets),/missing repairs/i)
  assert.throws(()=>mergeTargetedRepairs(brokenDraft,{repairs:{}},targets),/0 valid changes/i)
+})
+
+test('content engine: structural rebuild preserves source fact sheet and independent CEFR level plans',()=>{
+ const source=makeRichSource('Stone Citadel',9104)
+ const trimmed=trimWikipediaEvidence(source,{targetMinWords:300,targetMaxWords:1500})
+ const leadPhoto=makeVerifiedPhoto(source,{fileTitle:'File:Stone_Citadel_structural.jpg',caption:'Historic view of Stone Citadel',sectionIndex:0,imageId:'IMG_0'})
+ const raw=makeSynchronizedDraft('Stone Citadel')
+ raw.levelPlans={
+  'A1-A2':{readerObjective:'Understand the origin and purpose of the site.',selectedFactIds:['F1','F2'],depthNotes:'Use concrete words and short explanations.'},
+  'B1-B2':{readerObjective:'Explain the site and its regional role.',selectedFactIds:['F1','F2','F3'],depthNotes:'Develop causes, details and consequences.'},
+  'C1-C2':{readerObjective:'Interpret the site within regional history.',selectedFactIds:['F1','F2','F3','F4'],depthNotes:'Use precise historical interpretation and nuance.'}
+ }
+ raw.sharedCoreFactIds=['F1','F2']
+ const draft=normalizeDraftForCatalog(raw,{source,evidence:trimmed.evidence,verifiedPhotos:[leadPhoto]})
+ const before=validateArticleQuality(draft,source.sourceTitle,{source,evidence:trimmed.evidence,requireLevelPlans:true})
+ assert.equal(before.ok,true,before.errors.join(' | '))
+ const structuralPayload={outline:draft.outline,variants:draft.variants}
+ const rebuilt=mergeTargetedRepairs(draft,structuralPayload,{useTargetedPatch:false,structuralParityFailed:true})
+ assert.deepEqual(rebuilt.factSheet,draft.factSheet)
+ assert.deepEqual(rebuilt.levelPlans,draft.levelPlans)
+ assert.deepEqual(rebuilt.sharedCoreFactIds,draft.sharedCoreFactIds)
+ const after=validateArticleQuality(rebuilt,source.sourceTitle,{source,evidence:trimmed.evidence,requireLevelPlans:true})
+ assert.equal(after.ok,true,after.errors.join(' | '))
+})
+
+test('content engine: structural rebuild preserves source fact sheet and independent CEFR plans',()=>{
+ const source=makeRichSource('Stone Citadel',9104)
+ const trimmed=trimWikipediaEvidence(source,{targetMinWords:300,targetMaxWords:1500})
+ const leadPhoto=makeVerifiedPhoto(source,{fileTitle:'File:Stone_Citadel_structural.jpg',caption:'Historic view of Stone Citadel',sectionIndex:0,imageId:'IMG_0'})
+ const raw=makeSynchronizedDraft('Stone Citadel')
+ raw.levelPlans={
+  'A1-A2':{readerObjective:'Understand the site origins and purpose.',selectedFactIds:['F1','F2'],depthNotes:'Use concrete words and short explanations.'},
+  'B1-B2':{readerObjective:'Explain the site and its regional role.',selectedFactIds:['F1','F2','F3'],depthNotes:'Develop causes, details and consequences.'},
+  'C1-C2':{readerObjective:'Interpret the site within regional history.',selectedFactIds:['F1','F2','F3','F4'],depthNotes:'Use precise historical interpretation and nuance.'}
+ }
+ raw.sharedCoreFactIds=['F1','F2']
+ const draft=normalizeDraftForCatalog(raw,{source,evidence:trimmed.evidence,verifiedPhotos:[leadPhoto]})
+ const before=validateArticleQuality(draft,source.sourceTitle,{source,evidence:trimmed.evidence,requireLevelPlans:true})
+ assert.equal(before.ok,true,before.errors.join(' | '))
+ const rebuilt=mergeTargetedRepairs(draft,{outline:draft.outline,variants:draft.variants},{useTargetedPatch:false,structuralParityFailed:true})
+ assert.deepEqual(rebuilt.factSheet,draft.factSheet)
+ assert.deepEqual(rebuilt.levelPlans,draft.levelPlans)
+ assert.deepEqual(rebuilt.sharedCoreFactIds,draft.sharedCoreFactIds)
+ const after=validateArticleQuality(rebuilt,source.sourceTitle,{source,evidence:trimmed.evidence,requireLevelPlans:true})
+ assert.equal(after.ok,true,after.errors.join(' | '))
 })
 
 test('media & captions: word-safe captions, verified main-subject body fallback, outline alignment, and post-strip revalidation',async()=>{

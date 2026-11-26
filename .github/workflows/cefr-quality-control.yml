@@ -1,0 +1,59 @@
+name: Validate SAGA CEFR Quality Control
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'scripts/publish_wiki_batch.mjs'
+      - 'scripts/wiki/cefrProfiler.mjs'
+      - 'scripts/test/cefr-profiler.test.mjs'
+      - 'scripts/test/wiki-content-engine.test.mjs'
+      - 'scripts/cefr-level-control-pilot.mjs'
+      - 'docs/CEFR-QUALITY-CONTROL.md'
+      - '.github/workflows/cefr-level-control-pilot.yml'
+      - '.github/workflows/cefr-quality-control.yml'
+  push:
+    branches: [fix/saga-cefr-level-control]
+    paths:
+      - 'scripts/cefr-level-control-pilot.mjs'
+      - '.github/workflows/cefr-level-control-pilot.yml'
+      - 'scripts/publish_wiki_batch.mjs'
+      - 'scripts/wiki/cefrProfiler.mjs'
+      - 'scripts/test/cefr-profiler.test.mjs'
+      - 'scripts/test/wiki-content-engine.test.mjs'
+      - 'docs/CEFR-QUALITY-CONTROL.md'
+      - '.github/workflows/cefr-quality-control.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: saga-cefr-quality-control-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Install dependencies
+        run: npm ci --no-audit --no-fund
+      - name: Syntax checks
+        run: |
+          node --check scripts/publish_wiki_batch.mjs
+          node --check scripts/wiki/cefrProfiler.mjs
+          node --check scripts/test/cefr-profiler.test.mjs
+          node --check scripts/test/wiki-content-engine.test.mjs
+          node --check scripts/cefr-level-control-pilot.mjs
+      - name: Run complete unit suite
+        run: npm test
+      - name: Lint
+        run: npm run lint
+      - name: Production build
+        run: npm run build

@@ -10,6 +10,9 @@ import {
  profileTextCEFR
 } from '../wiki/cefrProfiler.mjs'
 import {
+ applyCEFRReviewRepairs,
+ buildCEFRReviewRepairPrompt,
+ buildCEFRReviewRepairSchema,
  buildQualityRetryPrompt,
  buildRoundRobinOrder,
  validateArticleQuality
@@ -55,7 +58,7 @@ test('profileTextCEFR excludes proper nouns and numbers while flagging over-leve
  assert.ok(pollutedProfile.lexicalProfile.c1c2OrUnlistedPct>7)
 })
 
-test('validateArticleQuality enforces objective CEFR gates and buildQualityRetryPrompt includes exact overLevelWords feedback',()=>{
+test('validateArticleQuality keeps profiler cutoffs advisory and retry prompt shows contextual diagnostics',()=>{
  const a1BadPages=[
   {text:`Long ago, people in Warsaw studied antimicrobial compounds that leaders promulgated for socioeconomic transformation. Early teams used contemporaneous methodologies and wrote multifaceted paradigms. Soon, many young learners wanted to understand this heterogeneous institutional framework.`,imageId:'IMG_0',evidenceIds:['P1']},
   {text:`In the first years, small teams evaluated bureaucratic protocols while officials promulgated antimicrobial rules and heterogeneous statutes. They kept meticulous archival records in plain notebooks. Each empirical experiment demonstrated one salient methodological insight for subsequent practitioners.`,imageId:null,evidenceIds:['P1']},
@@ -84,7 +87,9 @@ test('validateArticleQuality enforces objective CEFR gates and buildQualityRetry
  }
 
  const quality=validateArticleQuality(draft,'Public Health')
- assert.equal(quality.ok,false)
+ assert.equal(quality.ok,true,'FKGL and wordlist cutoffs are diagnostics, not a standalone CEFR verdict')
+ assert.equal(quality.cefr.ok,false,'The internal profiler should still expose its heuristic warning')
+ assert.ok(quality.metrics.cefrHeuristicWarnings.length>0)
  assert.ok(quality.cefr.profiles['A1-A2'].overLevelWords.includes('antimicrobial'))
  assert.ok(quality.cefr.profiles['A1-A2'].overLevelWords.includes('promulgated'))
  assert.ok(quality.cefr.profiles['A1-A2'].overLevelWords.includes('socioeconomic'))
@@ -98,11 +103,107 @@ test('validateArticleQuality enforces objective CEFR gates and buildQualityRetry
   [{imageId:'IMG_0',sectionIndex:0,sectionHeading:'Lead',fileTitle:'File:Health.jpg',caption:'Health clinic'}],
   quality
  )
- assert.match(retryPrompt,/OBJECTIVE CEFR PROFILER DIAGNOSTICS/i)
+ assert.match(retryPrompt,/ADVISORY CEFR SCREENING SIGNALS/i)
  assert.match(retryPrompt,/antimicrobial/i)
  assert.match(retryPrompt,/promulgated/i)
  assert.match(retryPrompt,/socioeconomic/i)
- assert.match(retryPrompt,/MANDATORY A1-A2 WORD SWAPS/i)
+ assert.match(retryPrompt,/NOT A PASS\/FAIL STANDARD/i)
+ assert.doesNotMatch(retryPrompt,/MANDATORY A1-A2 WORD SWAPS/i)
+})
+
+test('CEFR descriptor reviewer accepts in-band assessments, merges partial repairs and attaches an auditable excerpt',()=>{
+ const dims={vocabulary:'fit',syntax:'fit',cohesion:'fit',abstraction:'fit',inference:'fit',terms:'fit'}
+ const assessment=(band,quote,initialBand=band,initialVerdict='pass')=>({
+  initialBand,initialVerdict,finalBand:band,finalVerdict:'pass',
+  initialDimensions:{...dims},finalDimensions:{...dims},evidence:[quote],rationale:'The text matches the target reading descriptor.'
+ })
+ const draft={variants:{
+  'A1-A2':{headline:'A Simple Story About Town Life',pages:[{text:'People built a small town near the river. Families shared food and tools.',imageId:'IMG_0',evidenceIds:['P1']}]},
+  'B1-B2':{headline:'How the Town Developed Over Time',pages:[{text:'Local builders compared plans and improved the town over several years.',imageId:'IMG_0',evidenceIds:['P1']}]},
+  'C1-C2':{headline:'The Town and Its Lasting Civic Influence',pages:[{text:'The settlement gradually evolved into a regional centre whose institutions shaped later civic arrangements.',imageId:'IMG_0',evidenceIds:['P1']}]}
+ }}
+ const passPayload={assessment:{
+  'A1-A2':assessment('A2','People built a small town'),
+  'B1-B2':assessment('B1','Local builders compared plans'),
+  'C1-C2':assessment('C1','The settlement gradually evolved')
+ },repairs:[]}
+ const pass=applyCEFRReviewRepairs(draft,passPayload)
+ assert.equal(pass.ok,true,pass.errors.join(' | '))
+
+ const needsRepair=structuredClone(passPayload)
+ needsRepair.assessment['B1-B2']=assessment('B1','Builders changed the town','C1','revise')
+ needsRepair.repairs=[{level:'B1-B2',headline:'How Builders Changed the Town',pages:[{pageIndex:0,text:'Builders changed the town over time. They compared plans and shared useful ideas with nearby places.',evidenceIds:['P1']}]}]
+ const repaired=applyCEFRReviewRepairs(draft,needsRepair)
+ assert.equal(repaired.ok,true,repaired.errors.join(' | '))
+ assert.match(repaired.draft.variants['B1-B2'].pages[0].text,/Builders changed the town/)
+ assert.equal(repaired.draft.variants['B1-B2'].pages[0].imageId,'IMG_0','Repair must preserve image binding')
+
+ const badHeadline=structuredClone(passPayload)
+ badHeadline.assessment['A1-A2']=assessment('A2','People built a small town','B1','revise')
+ badHeadline.repairs=[{level:'A1-A2',headline:'The History of Radio',pages:[{pageIndex:0,text:'People built a small town near the river. Families shared food and tools.',evidenceIds:['P1']}]}]
+ const headlineSafe=applyCEFRReviewRepairs(draft,badHeadline)
+ assert.equal(headlineSafe.ok,true,headlineSafe.errors.join(' | '))
+ assert.equal(headlineSafe.draft.variants['A1-A2'].headline,'A Simple Story About Town Life','Invalid short reviewer headline must not replace a valid original')
+ assert.ok(headlineSafe.warnings.some(e=>/ignored reviewer headline outside 5-11 words/.test(e)))
+
+ const twoPageDraft=structuredClone(draft)
+ for(const level of ['A1-A2','B1-B2','C1-C2'])twoPageDraft.variants[level].pages.push({text:'The next page explains another part of the story.',imageId:null,evidenceIds:['P1']})
+ const partialPayload=structuredClone(passPayload)
+ partialPayload.assessment['B1-B2']=assessment('B1','Builders changed the town','C1','revise')
+ partialPayload.repairs=[{level:'B1-B2',pages:[{pageIndex:0,text:'Builders changed the town over time. They compared plans and shared useful ideas with nearby places.',evidenceIds:['P1']}]}]
+ const partial=applyCEFRReviewRepairs(twoPageDraft,partialPayload)
+ assert.equal(partial.ok,true,partial.errors.join(' | '))
+ assert.equal(partial.draft.variants['B1-B2'].pages[1].text,'The next page explains another part of the story.','Untouched page must be preserved')
+
+ const dimensionMismatch=structuredClone(passPayload)
+ dimensionMismatch.assessment['B1-B2'].initialDimensions.syntax='high'
+ dimensionMismatch.repairs=[{level:'B1-B2',pages:[{pageIndex:0,text:'Builders changed the town over time. They compared plans and shared useful ideas with nearby places.',evidenceIds:['P1']}]}]
+ const dimensionRepair=applyCEFRReviewRepairs(draft,dimensionMismatch)
+ assert.equal(dimensionRepair.ok,true,dimensionRepair.errors.join(' | '))
+ assert.match(dimensionRepair.draft.variants['B1-B2'].pages[0].text,/Builders changed the town/)
+
+ const wrongBand=structuredClone(passPayload)
+ wrongBand.assessment['C1-C2'].finalBand='B2'
+ const rejected=applyCEFRReviewRepairs(draft,wrongBand)
+ assert.equal(rejected.ok,false)
+ assert.ok(rejected.errors.some(e=>/outside its assigned CEFR group/.test(e)))
+
+ const noModelQuotes=structuredClone(passPayload)
+ for(const level of ['A1-A2','B1-B2','C1-C2'])delete noModelQuotes.assessment[level].evidence
+ const audited=applyCEFRReviewRepairs(draft,noModelQuotes)
+ assert.equal(audited.ok,true,audited.errors.join(' | '))
+ assert.equal(audited.finalAssessment['A1-A2'].verbatimExcerpt,'People built a small town near the river.')
+
+})
+
+test('CEFR reviewer prompt uses official reading descriptors and treats FKGL/wordlist as advisory diagnostics',()=>{
+ const source={sourceTitle:'Sample Topic',pageId:12,sourceRevisionId:34}
+ const evidence=[{id:'P1',sectionIndex:0,heading:'Lead',text:'A factual source passage about the sample topic.'}]
+ const draft={factSheet:{coreFacts:[]},outline:[],levelPlans:{},variants:{
+  'A1-A2':{headline:'A simple title',pages:[{text:'People use this tool every day.'}]},
+  'B1-B2':{headline:'A clear factual title',pages:[{text:'People use this tool for several practical reasons.'}]},
+  'C1-C2':{headline:'A nuanced title about the subject',pages:[{text:'The tool illustrates a wider institutional shift in practice.'}]}
+ }}
+ const quality={ok:true,errors:[],metrics:{cefrHeuristicWarnings:['FKGL outside internal band'],'A1-A2':{fkgl:8,overLevelWords:['technical']}}}
+ const prompt=buildCEFRReviewRepairPrompt(source,'General',evidence,draft,quality)
+ const repairSchema=buildCEFRReviewRepairSchema(draft)
+ assert.equal(repairSchema.properties.repairs.items.properties.pages.minItems,1)
+ assert.equal(repairSchema.properties.repairs.items.properties.pages.maxItems,1)
+ assert.equal(repairSchema.properties.repairs.items.properties.pages.items.properties.pageIndex.minimum,0)
+ assert.equal(repairSchema.properties.repairs.items.properties.pages.items.properties.pageIndex.maximum,0)
+ assert.match(prompt,/Council of Europe CEFR Companion Volume/i)
+ assert.match(prompt,/six dimensions/i)
+ assert.match(prompt,/NOT CEFR DEFINITIONS/i)
+ assert.match(prompt,/A1-A2/)
+ assert.match(prompt,/finalVerdict/)
+ assert.match(prompt,/program will attach a verbatim sentence/)
+ assert.match(prompt,/Any changed headline must be 5–11 words/)
+ assert.match(prompt,/preserve the existing valid headline/i)
+ assert.match(prompt,/MANDATORY PAGE-1 OPENING REPAIR/i)
+ assert.match(prompt,/you MUST change pageIndex 0/i)
+ assert.match(prompt,/final page must no longer trigger the deterministic opening check/i)
+ assert.match(prompt,/required evidence IDs/i)
+ assert.match(prompt,/Do not merely append an evidence ID without explaining the fact/i)
 })
 
 test('applyCEFRRequeue enforces safety floor, prepends removed stories to FRONT of queue without duplicates, and buildRoundRobinOrder prioritizes them first',async()=>{
