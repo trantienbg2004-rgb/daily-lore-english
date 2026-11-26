@@ -786,11 +786,13 @@ export function validateFactualConsistency(draft,{source=null,evidence=[]}={}){
    for(const id of selectedSet)if(!factIds.has(id))errors.push(level+': level plan references unknown factId '+id)
    factSets.push(selectedSet)
    const cited=new Set((draft.variants[level]?.pages||[]).flatMap(p=>Array.isArray(p?.evidenceIds)?p.evidenceIds:[]))
-   if(evidenceRows.length&&[...selectedSet].some(id=>{
+   const missingFactCitations=[...selectedSet].flatMap(id=>{
     const fact=factMap.get(id)
-    return fact&&!fact.evidenceIds?.some(evId=>cited.has(evId))
-   })){
-    errors.push(level+': article pages do not cite evidence for every selected core fact')
+    if(!fact||fact.evidenceIds?.some(evId=>cited.has(evId)))return []
+    return [{id,evidenceIds:Array.isArray(fact.evidenceIds)?fact.evidenceIds:[]}]
+   })
+   if(evidenceRows.length&&missingFactCitations.length){
+    errors.push(level+': selected core facts lack page citations: '+missingFactCitations.map(row=>row.id+' (required evidence '+(row.evidenceIds.join(', ')||'not mapped')+')').join('; ')+'. Add the fact to a relevant page and cite its own supporting evidenceIds.')
    }
   }
   const commonFacts=[...factSets[0]].filter(id=>factSets[1].has(id)&&factSets[2].has(id))
@@ -1187,7 +1189,7 @@ export function buildCEFRReviewRepairPrompt(source,topic,evidence,previousDraft,
   '- Do not make A1/A2 childish or factually incomplete. Select fewer, more essential facts and explain them simply. B1/B2 should develop the main points. C1/C2 should deepen interpretation and precision.',
   '- Use the supplied levelPlans: each level is allowed to select different facts and depth. Do not force identical facts, page focus or page-by-page order across levels. Keep at least two shared core facts and preserve the common imageId/page order.',
   '- Preserve every date, quantity, causal limit, source uncertainty and safety qualification that appears in the selected facts. Never invent information.' ,
-  '- Every selectedFactId must be explained in the version, and at least one page that actually explains it must cite one of that fact’s own evidenceIds. If the blocking issues flag missing fact citations, repair the relevant page text and its evidenceIds together; do not attach unrelated source IDs just to silence the validator.',
+  '- Every selectedFactId must be explained in the version, and at least one page that actually explains it must cite one of that fact’s own evidenceIds. If a blocking issue lists missing fact IDs and required evidence IDs, add a concise, accurate explanation of each missing fact to a relevant existing page and cite its own required evidenceIds in that same page patch. Do not merely append an evidence ID without explaining the fact, and do not attach unrelated source IDs just to silence the validator.',
   '- For every selected fact marked hasUncertainty=true, include a natural, level-appropriate qualification or safety caveat on the page that explains that fact, and cite its supporting passage. If the blocking issues identify a missing caveat, repair the text before assigning finalVerdict=pass.',
   '',
   'REQUIRED TWO-PASS REVIEW',
