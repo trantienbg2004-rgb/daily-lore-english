@@ -1,24 +1,56 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-26T14:39:31.074Z",
+  "updatedAt": "2026-11-26T16:21:17.394Z",
   "total": 1795,
   "counts": {
-    "pending": 1608,
-    "published": 17,
+    "pending": 1585,
+    "published": 25,
     "skipped_no_image": 0,
-    "skipped_no_lead_image": 137,
-    "skipped_quality": 33
+    "skipped_no_lead_image": 139,
+    "skipped_quality": 46
   },
   "byTopic": {
     "Politics": {
-      "pending": 161,
-      "published": 2,
+      "pending": 159,
+      "published": 3,
       "skipped_no_image": 0,
       "skipped_no_lead_image": 15,
-      "skipped_quality": 3,
+      "skipped_quality": 4,
       "total": 181
     },
     "Economy": {
+      "pending": 159,
+      "published": 4,
+      "skipped_no_image": 0,
+      "skipped_no_lead_image": 13,
+      "skipped_quality": 4,
+      "total": 180
+    },
+    "Conflict & Security": {
+      "pending": 155,
+      "published": 3,
+      "skipped_no_image": 0,
+      "skipped_no_lead_image": 17,
+      "skipped_quality": 5,
+      "total": 180
+    },
+    "Society": {
+      "pending": 156,
+      "published": 2,
+      "skipped_no_image": 0,
+      "skipped_no_lead_image": 16,
+      "skipped_quality": 5,
+      "total": 179
+    },
+    "Culture": {
+      "pending": 155,
+      "published": 0,
+      "skipped_no_image": 0,
+      "skipped_no_lead_image": 16,
+      "skipped_quality": 8,
+      "total": 179
+    },
+    "Science & Technology": {
       "pending": 162,
       "published": 2,
       "skipped_no_image": 0,
@@ -26,65 +58,33 @@
       "skipped_quality": 4,
       "total": 180
     },
-    "Conflict & Security": {
-      "pending": 157,
-      "published": 3,
-      "skipped_no_image": 0,
-      "skipped_no_lead_image": 17,
-      "skipped_quality": 3,
-      "total": 180
-    },
-    "Society": {
-      "pending": 159,
-      "published": 1,
-      "skipped_no_image": 0,
-      "skipped_no_lead_image": 15,
-      "skipped_quality": 4,
-      "total": 179
-    },
-    "Culture": {
-      "pending": 158,
-      "published": 0,
-      "skipped_no_image": 0,
-      "skipped_no_lead_image": 16,
-      "skipped_quality": 5,
-      "total": 179
-    },
-    "Science & Technology": {
-      "pending": 164,
-      "published": 1,
-      "skipped_no_image": 0,
-      "skipped_no_lead_image": 12,
-      "skipped_quality": 3,
-      "total": 180
-    },
     "Environment": {
-      "pending": 163,
+      "pending": 161,
       "published": 2,
       "skipped_no_image": 0,
       "skipped_no_lead_image": 12,
-      "skipped_quality": 3,
+      "skipped_quality": 5,
       "total": 180
     },
     "Health": {
-      "pending": 170,
-      "published": 2,
+      "pending": 168,
+      "published": 3,
       "skipped_no_image": 0,
       "skipped_no_lead_image": 5,
-      "skipped_quality": 3,
+      "skipped_quality": 4,
       "total": 180
     },
     "History & Geography": {
-      "pending": 159,
+      "pending": 157,
       "published": 0,
       "skipped_no_image": 0,
       "skipped_no_lead_image": 19,
-      "skipped_quality": 3,
+      "skipped_quality": 5,
       "total": 181
     },
     "Sports": {
-      "pending": 155,
-      "published": 4,
+      "pending": 153,
+      "published": 6,
       "skipped_no_image": 0,
       "skipped_no_lead_image": 14,
       "skipped_quality": 2,
@@ -322,10 +322,16 @@
       "priority": 0,
       "sourceUrl": "https://en.wikipedia.org/wiki/Flight_shame",
       "hasLeadImage": true,
-      "status": "pending",
+      "status": "skipped_quality",
       "addedAt": "2026-11-22T02:47:22.530Z",
       "requeuedAt": "2026-11-22T02:47:22.530Z",
-      "requeuedReason": "cefr_upgrade"
+      "requeuedReason": "cefr_upgrade",
+      "qualityErrors": [
+        "B1-B2 page 3: omits source uncertainty/safety qualification flagged in fact sheet",
+        "C1-C2 page 3: omits source uncertainty/safety qualification flagged in fact sheet",
+        "B1-B2 page 4: omits source uncertainty/safety qualification flagged in fact sheet"
+      ],
+      "checkedAt": "2026-11-26T16:03:38.550Z"
     },
     {
       "title": "Greater Albania",
@@ -349,10 +355,16 @@
       "priority": 0,
       "sourceUrl": "https://en.wikipedia.org/wiki/Climate_inertia",
       "hasLeadImage": true,
-      "status": "pending",
+      "status": "skipped_quality",
       "addedAt": "2026-11-22T02:47:22.530Z",
       "requeuedAt": "2026-11-22T02:47:22.530Z",
-      "requeuedReason": "cefr_upgrade"
+      "requeuedReason": "cefr_upgrade",
+      "qualityErrors": [
+        "C1-C2 page 1: caption too long (9 words, 73 chars; aim 5-8 words, max 65 chars)",
+        "CEFR sentence-length progression failed: A1-A2 (11w) < B1-B2 (17.4w) < C1-C2 (17.38w) required",
+        "B1-B2 CEFR gate failed: FKGL 10.86 outside target band 6.8-10.8 (avg sentence 17.4w)"
+      ],
+      "checkedAt": "2026-11-26T16:13:14.963Z"
     },
     {
       "title": "Battle of Gettysburg",
@@ -594,10 +606,11 @@
       "priority": 0,
       "sourceUrl": "https://en.wikipedia.org/wiki/Clandestine_Insurgent_Rebel_Clown_Army",
       "hasLeadImage": true,
-      "status": "pending",
+      "status": "published",
       "addedAt": "2026-11-22T02:47:22.530Z",
       "requeuedAt": "2026-11-22T02:47:22.530Z",
-      "requeuedReason": "cefr_upgrade"
+      "requeuedReason": "cefr_upgrade",
+      "publishedAt": "2026-11-26T16:05:32.924Z"
     },
     {
       "title": "Multi-sport event",
@@ -659,10 +672,15 @@
       "priority": 0,
       "sourceUrl": "https://en.wikipedia.org/wiki/History_of_malaria",
       "hasLeadImage": true,
-      "status": "pending",
+      "status": "skipped_quality",
       "addedAt": "2026-11-22T02:47:22.530Z",
       "requeuedAt": "2026-11-22T02:47:22.530Z",
-      "requeuedReason": "cefr_upgrade"
+      "requeuedReason": "cefr_upgrade",
+      "qualityErrors": [
+        "C1-C2 page 2: omits source uncertainty/safety qualification flagged in fact sheet",
+        "C1-C2 page 4: omits source uncertainty/safety qualification flagged in fact sheet"
+      ],
+      "checkedAt": "2026-11-26T16:09:43.798Z"
     },
     {
       "title": "History of biotechnology",
@@ -693,10 +711,11 @@
       "priority": 0,
       "sourceUrl": "https://en.wikipedia.org/wiki/Badger_culling_in_the_United_Kingdom",
       "hasLeadImage": true,
-      "status": "pending",
+      "status": "published",
       "addedAt": "2026-11-22T02:47:22.530Z",
       "requeuedAt": "2026-11-22T02:47:22.530Z",
-      "requeuedReason": "cefr_upgrade"
+      "requeuedReason": "cefr_upgrade",
+      "publishedAt": "2026-11-26T16:17:34.410Z"
     },
     {
       "title": "Lhasa Newar",
@@ -836,10 +855,15 @@
       "priority": 0,
       "sourceUrl": "https://en.wikipedia.org/wiki/Anti-war_movement",
       "hasLeadImage": true,
-      "status": "pending",
+      "status": "skipped_quality",
       "addedAt": "2026-11-22T02:47:22.530Z",
       "requeuedAt": "2026-11-22T02:47:22.530Z",
-      "requeuedReason": "cefr_upgrade"
+      "requeuedReason": "cefr_upgrade",
+      "qualityErrors": [
+        "B1-B2 page 3: omits source uncertainty/safety qualification flagged in fact sheet",
+        "C1-C2 page 4: omits source uncertainty/safety qualification flagged in fact sheet"
+      ],
+      "checkedAt": "2026-11-26T16:14:41.610Z"
     },
     {
       "title": "Conservation and restoration of immovable cultural property",
@@ -897,10 +921,11 @@
       "priority": 0,
       "sourceUrl": "https://en.wikipedia.org/wiki/King's_Highway_(ancient)",
       "hasLeadImage": true,
-      "status": "pending",
+      "status": "skipped_no_lead_image",
       "addedAt": "2026-11-22T02:47:22.530Z",
       "requeuedAt": "2026-11-22T02:47:22.530Z",
-      "requeuedReason": "cefr_upgrade"
+      "requeuedReason": "cefr_upgrade",
+      "checkedAt": "2026-11-26T16:02:39.953Z"
     },
     {
       "title": "Amber Road",
@@ -910,10 +935,11 @@
       "priority": 0,
       "sourceUrl": "https://en.wikipedia.org/wiki/Amber_Road",
       "hasLeadImage": true,
-      "status": "pending",
+      "status": "published",
       "addedAt": "2026-11-22T02:47:22.530Z",
       "requeuedAt": "2026-11-22T02:47:22.530Z",
-      "requeuedReason": "cefr_upgrade"
+      "requeuedReason": "cefr_upgrade",
+      "publishedAt": "2026-11-26T16:12:33.760Z"
     },
     {
       "title": "History of radio",
@@ -923,10 +949,15 @@
       "priority": 0,
       "sourceUrl": "https://en.wikipedia.org/wiki/History_of_radio",
       "hasLeadImage": true,
-      "status": "pending",
+      "status": "skipped_quality",
       "addedAt": "2026-11-22T02:47:22.530Z",
       "requeuedAt": "2026-11-22T02:47:22.530Z",
-      "requeuedReason": "cefr_upgrade"
+      "requeuedReason": "cefr_upgrade",
+      "qualityErrors": [
+        "C1-C2 page 3: omits source uncertainty/safety qualification flagged in fact sheet",
+        "C1-C2: omits nuance/caveat language for source uncertainty"
+      ],
+      "checkedAt": "2026-11-26T16:07:04.933Z"
     },
     {
       "title": "Aden",
@@ -1013,10 +1044,11 @@
       "priority": 0,
       "sourceUrl": "https://en.wikipedia.org/wiki/Merchant",
       "hasLeadImage": true,
-      "status": "pending",
+      "status": "published",
       "addedAt": "2026-11-22T02:47:22.530Z",
       "requeuedAt": "2026-11-22T02:47:22.530Z",
-      "requeuedReason": "cefr_upgrade"
+      "requeuedReason": "cefr_upgrade",
+      "publishedAt": "2026-11-26T16:21:17.371Z"
     },
     {
       "title": "Critique of work",
@@ -1026,10 +1058,11 @@
       "priority": 0,
       "sourceUrl": "https://en.wikipedia.org/wiki/Critique_of_work",
       "hasLeadImage": true,
-      "status": "pending",
+      "status": "skipped_no_lead_image",
       "addedAt": "2026-11-22T02:47:22.530Z",
       "requeuedAt": "2026-11-22T02:47:22.530Z",
-      "requeuedReason": "cefr_upgrade"
+      "requeuedReason": "cefr_upgrade",
+      "checkedAt": "2026-11-26T16:02:39.495Z"
     },
     {
       "title": "Cultural heritage",
@@ -1086,10 +1119,11 @@
       "priority": 0,
       "sourceUrl": "https://en.wikipedia.org/wiki/History_of_multitrack_recording",
       "hasLeadImage": true,
-      "status": "pending",
+      "status": "published",
       "addedAt": "2026-11-22T02:47:22.530Z",
       "requeuedAt": "2026-11-22T02:47:22.530Z",
-      "requeuedReason": "cefr_upgrade"
+      "requeuedReason": "cefr_upgrade",
+      "publishedAt": "2026-11-26T16:15:18.767Z"
     },
     {
       "title": "Archive",
@@ -4862,8 +4896,13 @@
       "priority": 1,
       "sourceUrl": "https://en.wikipedia.org/wiki/Atomic_bombings_of_Hiroshima_and_Nagasaki",
       "hasLeadImage": true,
-      "status": "pending",
-      "addedAt": "2026-11-20T08:49:35.085Z"
+      "status": "skipped_quality",
+      "addedAt": "2026-11-20T08:49:35.085Z",
+      "qualityErrors": [
+        "A1-A2 page 1: omits source uncertainty/safety qualification flagged in fact sheet",
+        "B1-B2 page 1: omits source uncertainty/safety qualification flagged in fact sheet"
+      ],
+      "checkedAt": "2026-11-26T16:08:31.877Z"
     },
     {
       "title": "The Holocaust",
@@ -4873,8 +4912,14 @@
       "priority": 1,
       "sourceUrl": "https://en.wikipedia.org/wiki/The_Holocaust",
       "hasLeadImage": true,
-      "status": "pending",
-      "addedAt": "2026-11-20T08:49:35.085Z"
+      "status": "skipped_quality",
+      "addedAt": "2026-11-20T08:49:35.085Z",
+      "qualityErrors": [
+        "B1-B2 page 1: dry encyclopedia opening detected (\"X is a...\"); rewrite with a vivid magazine hook",
+        "C1-C2 page 2: omits source uncertainty/safety qualification flagged in fact sheet",
+        "C1-C2 page 3: omits source uncertainty/safety qualification flagged in fact sheet"
+      ],
+      "checkedAt": "2026-11-26T16:17:08.315Z"
     },
     {
       "title": "Horses in warfare",
@@ -6596,8 +6641,13 @@
       "priority": 1,
       "sourceUrl": "https://en.wikipedia.org/wiki/Well-being",
       "hasLeadImage": true,
-      "status": "pending",
-      "addedAt": "2026-11-20T08:49:35.085Z"
+      "status": "skipped_quality",
+      "addedAt": "2026-11-20T08:49:35.085Z",
+      "qualityErrors": [
+        "CEFR sentence-length progression failed: A1-A2 (8.74w) < B1-B2 (17.13w) < C1-C2 (16.5w) required",
+        "B1-B2 CEFR gate failed: FKGL 11.5 outside target band 6.8-10.8 (avg sentence 17.13w)"
+      ],
+      "checkedAt": "2026-11-26T16:12:05.183Z"
     },
     {
       "title": "Cognition",
@@ -6607,8 +6657,9 @@
       "priority": 1,
       "sourceUrl": "https://en.wikipedia.org/wiki/Cognition",
       "hasLeadImage": true,
-      "status": "pending",
-      "addedAt": "2026-11-20T08:49:35.085Z"
+      "status": "published",
+      "addedAt": "2026-11-20T08:49:35.085Z",
+      "publishedAt": "2026-11-26T16:20:42.854Z"
     },
     {
       "title": "Book of Kells",
@@ -8401,8 +8452,16 @@
       "priority": 1,
       "sourceUrl": "https://en.wikipedia.org/wiki/Philosophy",
       "hasLeadImage": true,
-      "status": "pending",
-      "addedAt": "2026-11-20T08:49:35.085Z"
+      "status": "skipped_quality",
+      "addedAt": "2026-11-20T08:49:35.085Z",
+      "qualityErrors": [
+        "C1-C2 page 3: caption too long (7 words, 67 chars; aim 5-8 words, max 65 chars)",
+        "A1-A2 CEFR gate failed: FKGL 8.64 exceeds max 6.8 (avg sentence 11.45w; shorten sentences and use simpler everyday A1-A2 words)",
+        "B1-B2 CEFR gate failed: FKGL 16.21 outside target band 6.8-10.8 (avg sentence 14.2w)",
+        "A1-A2 page 4: omits source uncertainty/safety qualification flagged in fact sheet",
+        "B1-B2 page 4: omits source uncertainty/safety qualification flagged in fact sheet"
+      ],
+      "checkedAt": "2026-11-26T16:02:39.137Z"
     },
     {
       "title": "Metaphysics",
@@ -8412,8 +8471,12 @@
       "priority": 1,
       "sourceUrl": "https://en.wikipedia.org/wiki/Metaphysics",
       "hasLeadImage": true,
-      "status": "pending",
-      "addedAt": "2026-11-20T08:49:35.085Z"
+      "status": "skipped_quality",
+      "addedAt": "2026-11-20T08:49:35.085Z",
+      "qualityErrors": [
+        "B1-B2 CEFR gate failed: FKGL 10.83 outside target band 6.8-10.8 (avg sentence 15.55w)"
+      ],
+      "checkedAt": "2026-11-26T16:11:31.586Z"
     },
     {
       "title": "Jaws (film)",
@@ -8423,8 +8486,12 @@
       "priority": 1,
       "sourceUrl": "https://en.wikipedia.org/wiki/Jaws_(film)",
       "hasLeadImage": true,
-      "status": "pending",
-      "addedAt": "2026-11-20T08:49:35.085Z"
+      "status": "skipped_quality",
+      "addedAt": "2026-11-20T08:49:35.085Z",
+      "qualityErrors": [
+        "C1-C2 page 2: omits source uncertainty/safety qualification flagged in fact sheet"
+      ],
+      "checkedAt": "2026-11-26T16:20:12.057Z"
     },
     {
       "title": "The Great Gatsby",
@@ -15399,8 +15466,12 @@
       "priority": 1,
       "sourceUrl": "https://en.wikipedia.org/wiki/Minneapolis",
       "hasLeadImage": true,
-      "status": "pending",
-      "addedAt": "2026-11-20T08:49:35.085Z"
+      "status": "skipped_quality",
+      "addedAt": "2026-11-20T08:49:35.085Z",
+      "qualityErrors": [
+        "B1-B2 CEFR gate failed: FKGL 12.83 outside target band 6.8-10.8 (avg sentence 21.73w)"
+      ],
+      "checkedAt": "2026-11-26T16:04:20.827Z"
     },
     {
       "title": "Bulgaria",
@@ -15410,8 +15481,12 @@
       "priority": 1,
       "sourceUrl": "https://en.wikipedia.org/wiki/Bulgaria",
       "hasLeadImage": true,
-      "status": "pending",
-      "addedAt": "2026-11-20T08:49:35.085Z"
+      "status": "skipped_quality",
+      "addedAt": "2026-11-20T08:49:35.085Z",
+      "qualityErrors": [
+        "B1-B2 CEFR gate failed: FKGL 12.09 outside target band 6.8-10.8 (avg sentence 14.23w)"
+      ],
+      "checkedAt": "2026-11-26T16:14:04.988Z"
     },
     {
       "title": "Canada",
@@ -17385,8 +17460,9 @@
       "priority": 1,
       "sourceUrl": "https://en.wikipedia.org/wiki/Rock_climbing",
       "hasLeadImage": true,
-      "status": "pending",
-      "addedAt": "2026-11-20T08:49:35.085Z"
+      "status": "published",
+      "addedAt": "2026-11-20T08:49:35.085Z",
+      "publishedAt": "2026-11-26T16:10:18.558Z"
     },
     {
       "title": "National Football League",
@@ -17396,8 +17472,9 @@
       "priority": 1,
       "sourceUrl": "https://en.wikipedia.org/wiki/National_Football_League",
       "hasLeadImage": true,
-      "status": "pending",
-      "addedAt": "2026-11-20T08:49:35.085Z"
+      "status": "published",
+      "addedAt": "2026-11-20T08:49:35.085Z",
+      "publishedAt": "2026-11-26T16:18:22.547Z"
     },
     {
       "title": "Tetris",
