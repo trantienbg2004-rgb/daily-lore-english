@@ -136,6 +136,13 @@ test('CEFR descriptor reviewer accepts only in-band final assessments with verif
  assert.match(repaired.draft.variants['B1-B2'].pages[0].text,/Builders changed the town/)
  assert.equal(repaired.draft.variants['B1-B2'].pages[0].imageId,'IMG_0','Repair must preserve image binding')
 
+ const dimensionMismatch=structuredClone(passPayload)
+ dimensionMismatch.assessment['B1-B2'].dimensions.syntax='high'
+ dimensionMismatch.repairs=[{level:'B1-B2',pages:[{pageIndex:0,text:'Builders changed the town over time. They compared plans and shared useful ideas with nearby places.',evidenceIds:['P1']}]}]
+ const dimensionRepair=applyCEFRReviewRepairs(draft,dimensionMismatch)
+ assert.equal(dimensionRepair.ok,true,dimensionRepair.errors.join(' | '))
+ assert.match(dimensionRepair.draft.variants['B1-B2'].pages[0].text,/Builders changed the town/)
+
  const wrongBand=structuredClone(passPayload)
  wrongBand.assessment['C1-C2'].finalBand='B2'
  const rejected=applyCEFRReviewRepairs(draft,wrongBand)
