@@ -1,93 +1,93 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-24T16:56:10.502Z",
+  "updatedAt": "2026-11-26T01:37:36.577Z",
   "total": 1795,
   "counts": {
-    "pending": 1652,
+    "pending": 1628,
     "published": 9,
     "skipped_no_image": 0,
     "skipped_no_lead_image": 132,
-    "skipped_quality": 2
+    "skipped_quality": 26
   },
   "byTopic": {
     "Politics": {
-      "pending": 165,
+      "pending": 163,
       "published": 2,
       "skipped_no_image": 0,
       "skipped_no_lead_image": 14,
-      "skipped_quality": 0,
+      "skipped_quality": 2,
       "total": 181
     },
     "Economy": {
-      "pending": 167,
+      "pending": 164,
       "published": 1,
       "skipped_no_image": 0,
       "skipped_no_lead_image": 11,
-      "skipped_quality": 1,
+      "skipped_quality": 4,
       "total": 180
     },
     "Conflict & Security": {
-      "pending": 162,
+      "pending": 159,
       "published": 1,
       "skipped_no_image": 0,
       "skipped_no_lead_image": 17,
-      "skipped_quality": 0,
+      "skipped_quality": 3,
       "total": 180
     },
     "Society": {
-      "pending": 164,
+      "pending": 161,
       "published": 0,
       "skipped_no_image": 0,
       "skipped_no_lead_image": 14,
-      "skipped_quality": 1,
+      "skipped_quality": 4,
       "total": 179
     },
     "Culture": {
-      "pending": 163,
+      "pending": 160,
       "published": 0,
       "skipped_no_image": 0,
       "skipped_no_lead_image": 16,
-      "skipped_quality": 0,
+      "skipped_quality": 3,
       "total": 179
     },
     "Science & Technology": {
-      "pending": 168,
+      "pending": 166,
       "published": 1,
       "skipped_no_image": 0,
       "skipped_no_lead_image": 11,
-      "skipped_quality": 0,
+      "skipped_quality": 2,
       "total": 180
     },
     "Environment": {
-      "pending": 167,
+      "pending": 165,
       "published": 1,
       "skipped_no_image": 0,
       "skipped_no_lead_image": 12,
-      "skipped_quality": 0,
+      "skipped_quality": 2,
       "total": 180
     },
     "Health": {
-      "pending": 174,
+      "pending": 172,
       "published": 1,
       "skipped_no_image": 0,
       "skipped_no_lead_image": 5,
-      "skipped_quality": 0,
+      "skipped_quality": 2,
       "total": 180
     },
     "History & Geography": {
-      "pending": 163,
+      "pending": 161,
       "published": 0,
       "skipped_no_image": 0,
       "skipped_no_lead_image": 18,
-      "skipped_quality": 0,
+      "skipped_quality": 2,
       "total": 181
     },
     "Sports": {
-      "pending": 159,
+      "pending": 157,
       "published": 2,
       "skipped_no_image": 0,
       "skipped_no_lead_image": 14,
-      "skipped_quality": 0,
+      "skipped_quality": 2,
       "total": 175
     }
   },
@@ -100,10 +100,18 @@
       "priority": 0,
       "sourceUrl": "https://en.wikipedia.org/wiki/Phytoplankton_microbiome",
       "hasLeadImage": true,
-      "status": "pending",
+      "status": "skipped_quality",
       "addedAt": "2026-11-22T02:47:22.530Z",
       "requeuedAt": "2026-11-22T02:47:22.530Z",
-      "requeuedReason": "cefr_upgrade"
+      "requeuedReason": "cefr_upgrade",
+      "qualityErrors": [
+        "A1-A2 page 3 (text-only page): word count 50 outside A1-A2 fixed-card bounds (55-72 words)",
+        "B1-B2 page 2 (text-only page): word count 39 outside B1-B2 fixed-card bounds (52-68 words)",
+        "B1-B2 page 3 (text-only page): word count 45 outside B1-B2 fixed-card bounds (52-68 words)",
+        "C1-C2 page 2 (text-only page): word count 37 outside C1-C2 fixed-card bounds (46-64 words)",
+        "C1-C2 page 3 (text-only page): word count 38 outside C1-C2 fixed-card bounds (46-64 words)"
+      ],
+      "checkedAt": "2026-11-26T01:24:36.599Z"
     },
     {
       "title": "Central Monitoring System",
@@ -133,10 +141,18 @@
       "priority": 0,
       "sourceUrl": "https://en.wikipedia.org/wiki/Anti-capitalism",
       "hasLeadImage": true,
-      "status": "pending",
+      "status": "skipped_quality",
       "addedAt": "2026-11-22T02:47:22.530Z",
       "requeuedAt": "2026-11-22T02:47:22.530Z",
-      "requeuedReason": "cefr_upgrade"
+      "requeuedReason": "cefr_upgrade",
+      "qualityErrors": [
+        "A1-A2 page 2 (text-only page): word count 46 outside A1-A2 fixed-card bounds (55-72 words)",
+        "A1-A2 page 3 (text-only page): word count 46 outside A1-A2 fixed-card bounds (55-72 words)",
+        "A1-A2 page 4 (text-only page): word count 44 outside A1-A2 fixed-card bounds (55-72 words)",
+        "B1-B2 page 1 (photo page): word count 55 outside B1-B2 fixed-card bounds (32-44 words)",
+        "B1-B2 page 2 (text-only page): word count 45 outside B1-B2 fixed-card bounds (52-68 words)"
+      ],
+      "checkedAt": "2026-11-26T01:25:51.054Z"
     },
     {
       "title": "Homonationalism",
@@ -146,10 +162,18 @@
       "priority": 0,
       "sourceUrl": "https://en.wikipedia.org/wiki/Homonationalism",
       "hasLeadImage": true,
-      "status": "pending",
+      "status": "skipped_quality",
       "addedAt": "2026-11-22T02:47:22.530Z",
       "requeuedAt": "2026-11-22T02:47:22.530Z",
-      "requeuedReason": "cefr_upgrade"
+      "requeuedReason": "cefr_upgrade",
+      "qualityErrors": [
+        "A1-A2 page 1 (photo page): word count 57 outside A1-A2 fixed-card bounds (34-46 words)",
+        "A1-A2 page 4 (text-only page): word count 54 outside A1-A2 fixed-card bounds (55-72 words)",
+        "B1-B2 page 1 (photo page): word count 56 outside B1-B2 fixed-card bounds (32-44 words)",
+        "B1-B2 page 1: caption too long (9 words, 69 chars; aim 5-8 words, max 65 chars)",
+        "C1-C2 page 1 (photo page): word count 58 outside C1-C2 fixed-card bounds (28-42 words)"
+      ],
+      "checkedAt": "2026-11-26T01:32:50.982Z"
     },
     {
       "title": "California hide trade",
@@ -159,10 +183,18 @@
       "priority": 0,
       "sourceUrl": "https://en.wikipedia.org/wiki/California_hide_trade",
       "hasLeadImage": true,
-      "status": "pending",
+      "status": "skipped_quality",
       "addedAt": "2026-11-22T02:47:22.530Z",
       "requeuedAt": "2026-11-22T02:47:22.530Z",
-      "requeuedReason": "cefr_upgrade"
+      "requeuedReason": "cefr_upgrade",
+      "qualityErrors": [
+        "A1-A2 page 1 (photo page): word count 47 outside A1-A2 fixed-card bounds (34-46 words)",
+        "A1-A2 page 4 (text-only page): word count 44 outside A1-A2 fixed-card bounds (55-72 words)",
+        "B1-B2 page 1 (photo page): word count 55 outside B1-B2 fixed-card bounds (32-44 words)",
+        "B1-B2 page 2 (photo page): word count 55 outside B1-B2 fixed-card bounds (32-44 words)",
+        "B1-B2 page 3 (photo page): word count 51 outside B1-B2 fixed-card bounds (32-44 words)"
+      ],
+      "checkedAt": "2026-11-26T01:22:50.979Z"
     },
     {
       "title": "Refrigerant",
@@ -172,10 +204,18 @@
       "priority": 0,
       "sourceUrl": "https://en.wikipedia.org/wiki/Refrigerant",
       "hasLeadImage": true,
-      "status": "pending",
+      "status": "skipped_quality",
       "addedAt": "2026-11-22T02:47:22.530Z",
       "requeuedAt": "2026-11-22T02:47:22.530Z",
-      "requeuedReason": "cefr_upgrade"
+      "requeuedReason": "cefr_upgrade",
+      "qualityErrors": [
+        "A1-A2 page 1 (photo page): word count 60 outside A1-A2 fixed-card bounds (34-46 words)",
+        "A1-A2 page 3 (text-only page): word count 53 outside A1-A2 fixed-card bounds (55-72 words)",
+        "B1-B2 page 1 (photo page): word count 61 outside B1-B2 fixed-card bounds (32-44 words)",
+        "C1-C2 page 1 (photo page): word count 55 outside C1-C2 fixed-card bounds (28-42 words)",
+        "B1-B2 CEFR gate failed: FKGL 17.87 outside target band 6.8-10.8 (avg sentence 16.2w)"
+      ],
+      "checkedAt": "2026-11-26T01:31:24.596Z"
     },
     {
       "title": "Climate finance in Nigeria",
@@ -211,10 +251,18 @@
       "priority": 0,
       "sourceUrl": "https://en.wikipedia.org/wiki/History_of_economic_inequality",
       "hasLeadImage": true,
-      "status": "pending",
+      "status": "skipped_quality",
       "addedAt": "2026-11-22T02:47:22.530Z",
       "requeuedAt": "2026-11-22T02:47:22.530Z",
-      "requeuedReason": "cefr_upgrade"
+      "requeuedReason": "cefr_upgrade",
+      "qualityErrors": [
+        "A1-A2 page 1 (photo page): word count 53 outside A1-A2 fixed-card bounds (34-46 words)",
+        "A1-A2 page 3 (text-only page): word count 54 outside A1-A2 fixed-card bounds (55-72 words)",
+        "A1-A2 page 4 (text-only page): word count 50 outside A1-A2 fixed-card bounds (55-72 words)",
+        "A1-A2 page 5 (text-only page): word count 47 outside A1-A2 fixed-card bounds (55-72 words)",
+        "B1-B2 page 1 (photo page): word count 62 outside B1-B2 fixed-card bounds (32-44 words)"
+      ],
+      "checkedAt": "2026-11-26T01:30:47.713Z"
     },
     {
       "title": "Craft cocktail movement",
@@ -224,10 +272,18 @@
       "priority": 0,
       "sourceUrl": "https://en.wikipedia.org/wiki/Craft_cocktail_movement",
       "hasLeadImage": true,
-      "status": "pending",
+      "status": "skipped_quality",
       "addedAt": "2026-11-22T02:47:22.530Z",
       "requeuedAt": "2026-11-22T02:47:22.530Z",
-      "requeuedReason": "cefr_upgrade"
+      "requeuedReason": "cefr_upgrade",
+      "qualityErrors": [
+        "A1-A2 page 3 (text-only page): word count 52 outside A1-A2 fixed-card bounds (55-72 words)",
+        "B1-B2 page 1 (photo page): word count 50 outside B1-B2 fixed-card bounds (32-44 words)",
+        "B1-B2 page 3 (text-only page): word count 44 outside B1-B2 fixed-card bounds (52-68 words)",
+        "B1-B2 page 4 (text-only page): word count 50 outside B1-B2 fixed-card bounds (52-68 words)",
+        "C1-C2 page 1 (photo page): word count 44 outside C1-C2 fixed-card bounds (28-42 words)"
+      ],
+      "checkedAt": "2026-11-26T01:20:36.492Z"
     },
     {
       "title": "Treaty",
@@ -237,10 +293,18 @@
       "priority": 0,
       "sourceUrl": "https://en.wikipedia.org/wiki/Treaty",
       "hasLeadImage": true,
-      "status": "pending",
+      "status": "skipped_quality",
       "addedAt": "2026-11-22T02:47:22.530Z",
       "requeuedAt": "2026-11-22T02:47:22.530Z",
-      "requeuedReason": "cefr_upgrade"
+      "requeuedReason": "cefr_upgrade",
+      "qualityErrors": [
+        "A1-A2 page 1 (photo page): word count 48 outside A1-A2 fixed-card bounds (34-46 words)",
+        "A1-A2 page 2 (text-only page): word count 43 outside A1-A2 fixed-card bounds (55-72 words)",
+        "A1-A2 page 3 (photo page): word count 52 outside A1-A2 fixed-card bounds (34-46 words)",
+        "B1-B2 page 1 (photo page): word count 53 outside B1-B2 fixed-card bounds (32-44 words)",
+        "B1-B2 page 3 (photo page): word count 50 outside B1-B2 fixed-card bounds (32-44 words)"
+      ],
+      "checkedAt": "2026-11-26T01:21:17.366Z"
     },
     {
       "title": "Flight shame",
@@ -289,10 +353,18 @@
       "priority": 0,
       "sourceUrl": "https://en.wikipedia.org/wiki/Battle_of_Gettysburg",
       "hasLeadImage": true,
-      "status": "pending",
+      "status": "skipped_quality",
       "addedAt": "2026-11-22T02:47:22.530Z",
       "requeuedAt": "2026-11-22T02:47:22.530Z",
-      "requeuedReason": "cefr_upgrade"
+      "requeuedReason": "cefr_upgrade",
+      "qualityErrors": [
+        "A1-A2 page 2 (text-only page): word count 50 outside A1-A2 fixed-card bounds (55-72 words)",
+        "A1-A2 page 3 (text-only page): word count 44 outside A1-A2 fixed-card bounds (55-72 words)",
+        "B1-B2 page 1 (photo page): word count 58 outside B1-B2 fixed-card bounds (32-44 words)",
+        "B1-B2 page 3 (text-only page): word count 48 outside B1-B2 fixed-card bounds (52-68 words)",
+        "B1-B2 page 4 (photo page): word count 45 outside B1-B2 fixed-card bounds (32-44 words)"
+      ],
+      "checkedAt": "2026-11-26T01:28:58.702Z"
     },
     {
       "title": "Geneva Conventions",
@@ -302,10 +374,18 @@
       "priority": 0,
       "sourceUrl": "https://en.wikipedia.org/wiki/Geneva_Conventions",
       "hasLeadImage": true,
-      "status": "pending",
+      "status": "skipped_quality",
       "addedAt": "2026-11-22T02:47:22.530Z",
       "requeuedAt": "2026-11-22T02:47:22.530Z",
-      "requeuedReason": "cefr_upgrade"
+      "requeuedReason": "cefr_upgrade",
+      "qualityErrors": [
+        "A1-A2 page 1 (photo page): word count 30 outside A1-A2 fixed-card bounds (34-46 words)",
+        "A1-A2 page 3 (text-only page): word count 38 outside A1-A2 fixed-card bounds (55-72 words)",
+        "A1-A2 page 4 (text-only page): word count 41 outside A1-A2 fixed-card bounds (55-72 words)",
+        "B1-B2 page 3 (text-only page): word count 42 outside B1-B2 fixed-card bounds (52-68 words)",
+        "B1-B2 page 4 (text-only page): word count 36 outside B1-B2 fixed-card bounds (52-68 words)"
+      ],
+      "checkedAt": "2026-11-26T01:36:19.156Z"
     },
     {
       "title": "Diversity of tactics",
@@ -315,10 +395,18 @@
       "priority": 0,
       "sourceUrl": "https://en.wikipedia.org/wiki/Diversity_of_tactics",
       "hasLeadImage": true,
-      "status": "pending",
+      "status": "skipped_quality",
       "addedAt": "2026-11-22T02:47:22.530Z",
       "requeuedAt": "2026-11-22T02:47:22.530Z",
-      "requeuedReason": "cefr_upgrade"
+      "requeuedReason": "cefr_upgrade",
+      "qualityErrors": [
+        "A1-A2 page 2 (text-only page): word count 47 outside A1-A2 fixed-card bounds (55-72 words)",
+        "A1-A2 page 3 (text-only page): word count 40 outside A1-A2 fixed-card bounds (55-72 words)",
+        "A1-A2 page 4 (text-only page): word count 41 outside A1-A2 fixed-card bounds (55-72 words)",
+        "B1-B2 page 4 (text-only page): word count 49 outside B1-B2 fixed-card bounds (52-68 words)",
+        "C1-C2 page 1 (photo page): word count 47 outside C1-C2 fixed-card bounds (28-42 words)"
+      ],
+      "checkedAt": "2026-11-26T01:28:23.915Z"
     },
     {
       "title": "Brazilian Abolitionist Confederation",
@@ -354,10 +442,18 @@
       "priority": 0,
       "sourceUrl": "https://en.wikipedia.org/wiki/Feminist_movement",
       "hasLeadImage": true,
-      "status": "pending",
+      "status": "skipped_quality",
       "addedAt": "2026-11-22T02:47:22.530Z",
       "requeuedAt": "2026-11-22T02:47:22.530Z",
-      "requeuedReason": "cefr_upgrade"
+      "requeuedReason": "cefr_upgrade",
+      "qualityErrors": [
+        "A1-A2 page 2 (text-only page): word count 43 outside A1-A2 fixed-card bounds (55-72 words)",
+        "A1-A2 page 3 (text-only page): word count 45 outside A1-A2 fixed-card bounds (55-72 words)",
+        "A1-A2 page 4 (text-only page): word count 43 outside A1-A2 fixed-card bounds (55-72 words)",
+        "A1-A2 page 5 (text-only page): word count 45 outside A1-A2 fixed-card bounds (55-72 words)",
+        "B1-B2 page 3 (text-only page): word count 37 outside B1-B2 fixed-card bounds (52-68 words)"
+      ],
+      "checkedAt": "2026-11-26T01:35:44.623Z"
     },
     {
       "title": "Climate change and cities",
@@ -380,10 +476,18 @@
       "priority": 0,
       "sourceUrl": "https://en.wikipedia.org/wiki/Economy_of_the_Inca_Empire",
       "hasLeadImage": true,
-      "status": "pending",
+      "status": "skipped_quality",
       "addedAt": "2026-11-22T02:47:22.530Z",
       "requeuedAt": "2026-11-22T02:47:22.530Z",
-      "requeuedReason": "cefr_upgrade"
+      "requeuedReason": "cefr_upgrade",
+      "qualityErrors": [
+        "A1-A2 page 3 (text-only page): word count 51 outside A1-A2 fixed-card bounds (55-72 words)",
+        "B1-B2 page 2 (text-only page): word count 44 outside B1-B2 fixed-card bounds (52-68 words)",
+        "B1-B2 page 3 (text-only page): word count 41 outside B1-B2 fixed-card bounds (52-68 words)",
+        "C1-C2 page 2 (text-only page): word count 37 outside C1-C2 fixed-card bounds (46-64 words)",
+        "C1-C2 page 3 (text-only page): word count 44 outside C1-C2 fixed-card bounds (46-64 words)"
+      ],
+      "checkedAt": "2026-11-26T01:37:36.577Z"
     },
     {
       "title": "Climate change litigation",
@@ -406,10 +510,18 @@
       "priority": 0,
       "sourceUrl": "https://en.wikipedia.org/wiki/Antibiotic_sensitivity_testing",
       "hasLeadImage": true,
-      "status": "pending",
+      "status": "skipped_quality",
       "addedAt": "2026-11-22T02:47:22.530Z",
       "requeuedAt": "2026-11-22T02:47:22.530Z",
-      "requeuedReason": "cefr_upgrade"
+      "requeuedReason": "cefr_upgrade",
+      "qualityErrors": [
+        "A1-A2 page 1 (photo page): word count 53 outside A1-A2 fixed-card bounds (34-46 words)",
+        "A1-A2 page 2 (photo page): word count 55 outside A1-A2 fixed-card bounds (34-46 words)",
+        "A1-A2 page 3 (photo page): word count 52 outside A1-A2 fixed-card bounds (34-46 words)",
+        "A1-A2 page 4 (text-only page): word count 48 outside A1-A2 fixed-card bounds (55-72 words)",
+        "B1-B2 page 1 (photo page): word count 54 outside B1-B2 fixed-card bounds (32-44 words)"
+      ],
+      "checkedAt": "2026-11-26T01:27:08.544Z"
     },
     {
       "title": "Charter for European Security",
@@ -445,10 +557,18 @@
       "priority": 0,
       "sourceUrl": "https://en.wikipedia.org/wiki/History_of_syphilis",
       "hasLeadImage": true,
-      "status": "pending",
+      "status": "skipped_quality",
       "addedAt": "2026-11-22T02:47:22.530Z",
       "requeuedAt": "2026-11-22T02:47:22.530Z",
-      "requeuedReason": "cefr_upgrade"
+      "requeuedReason": "cefr_upgrade",
+      "qualityErrors": [
+        "A1-A2 page 1 (photo page): word count 50 outside A1-A2 fixed-card bounds (34-46 words)",
+        "A1-A2 page 2 (text-only page): word count 53 outside A1-A2 fixed-card bounds (55-72 words)",
+        "A1-A2 page 3 (text-only page): word count 53 outside A1-A2 fixed-card bounds (55-72 words)",
+        "A1-A2 page 4 (text-only page): word count 52 outside A1-A2 fixed-card bounds (55-72 words)",
+        "A1-A2 page 5 (text-only page): word count 54 outside A1-A2 fixed-card bounds (55-72 words)"
+      ],
+      "checkedAt": "2026-11-26T01:34:10.067Z"
     },
     {
       "title": "Clandestine Insurgent Rebel Clown Army",
@@ -471,10 +591,18 @@
       "priority": 0,
       "sourceUrl": "https://en.wikipedia.org/wiki/Multi-sport_event",
       "hasLeadImage": true,
-      "status": "pending",
+      "status": "skipped_quality",
       "addedAt": "2026-11-22T02:47:22.530Z",
       "requeuedAt": "2026-11-22T02:47:22.530Z",
-      "requeuedReason": "cefr_upgrade"
+      "requeuedReason": "cefr_upgrade",
+      "qualityErrors": [
+        "A1-A2 page 1 (photo page): word count 55 outside A1-A2 fixed-card bounds (34-46 words)",
+        "A1-A2 page 2 (text-only page): word count 51 outside A1-A2 fixed-card bounds (55-72 words)",
+        "A1-A2 page 3 (text-only page): word count 52 outside A1-A2 fixed-card bounds (55-72 words)",
+        "A1-A2 page 4 (text-only page): word count 45 outside A1-A2 fixed-card bounds (55-72 words)",
+        "B1-B2 page 1 (photo page): word count 53 outside B1-B2 fixed-card bounds (32-44 words)"
+      ],
+      "checkedAt": "2026-11-26T01:27:41.102Z"
     },
     {
       "title": "Antibiotic use in livestock",
@@ -523,10 +651,18 @@
       "priority": 0,
       "sourceUrl": "https://en.wikipedia.org/wiki/History_of_biotechnology",
       "hasLeadImage": true,
-      "status": "pending",
+      "status": "skipped_quality",
       "addedAt": "2026-11-22T02:47:22.530Z",
       "requeuedAt": "2026-11-22T02:47:22.530Z",
-      "requeuedReason": "cefr_upgrade"
+      "requeuedReason": "cefr_upgrade",
+      "qualityErrors": [
+        "A1-A2 page 1 (photo page): word count 57 outside A1-A2 fixed-card bounds (34-46 words)",
+        "A1-A2 page 3 (text-only page): word count 54 outside A1-A2 fixed-card bounds (55-72 words)",
+        "A1-A2 page 4 (photo page): word count 48 outside A1-A2 fixed-card bounds (34-46 words)",
+        "A1-A2 page 5 (text-only page): word count 50 outside A1-A2 fixed-card bounds (55-72 words)",
+        "B1-B2 page 3 (text-only page): word count 43 outside B1-B2 fixed-card bounds (52-68 words)"
+      ],
+      "checkedAt": "2026-11-26T01:26:26.186Z"
     },
     {
       "title": "Badger culling in the United Kingdom",
@@ -562,10 +698,18 @@
       "priority": 0,
       "sourceUrl": "https://en.wikipedia.org/wiki/History_of_rockets",
       "hasLeadImage": true,
-      "status": "pending",
+      "status": "skipped_quality",
       "addedAt": "2026-11-22T02:47:22.530Z",
       "requeuedAt": "2026-11-22T02:47:22.530Z",
-      "requeuedReason": "cefr_upgrade"
+      "requeuedReason": "cefr_upgrade",
+      "qualityErrors": [
+        "A1-A2 page 2 (text-only page): word count 46 outside A1-A2 fixed-card bounds (55-72 words)",
+        "A1-A2 page 3 (text-only page): word count 52 outside A1-A2 fixed-card bounds (55-72 words)",
+        "A1-A2 page 4 (photo page): word count 49 outside A1-A2 fixed-card bounds (34-46 words)",
+        "B1-B2 page 1 (photo page): word count 48 outside B1-B2 fixed-card bounds (32-44 words)",
+        "B1-B2 page 3 (text-only page): word count 45 outside B1-B2 fixed-card bounds (52-68 words)"
+      ],
+      "checkedAt": "2026-11-26T01:33:27.133Z"
     },
     {
       "title": "History of penicillin",
@@ -614,10 +758,18 @@
       "priority": 0,
       "sourceUrl": "https://en.wikipedia.org/wiki/Constantinople",
       "hasLeadImage": true,
-      "status": "pending",
+      "status": "skipped_quality",
       "addedAt": "2026-11-22T02:47:22.530Z",
       "requeuedAt": "2026-11-22T02:47:22.530Z",
-      "requeuedReason": "cefr_upgrade"
+      "requeuedReason": "cefr_upgrade",
+      "qualityErrors": [
+        "A1-A2 page 4 (photo page): word count 33 outside A1-A2 fixed-card bounds (34-46 words)",
+        "A1-A2 page 5 (text-only page): word count 48 outside A1-A2 fixed-card bounds (55-72 words)",
+        "B1-B2 page 5 (text-only page): word count 34 outside B1-B2 fixed-card bounds (52-68 words)",
+        "C1-C2 page 5 (text-only page): word count 26 outside C1-C2 fixed-card bounds (46-64 words)",
+        "B1-B2 CEFR gate failed: FKGL 13.88 outside target band 6.8-10.8 (avg sentence 18.2w)"
+      ],
+      "checkedAt": "2026-11-26T01:25:14.636Z"
     },
     {
       "title": "Antimicrobial resistance",
@@ -666,10 +818,18 @@
       "priority": 0,
       "sourceUrl": "https://en.wikipedia.org/wiki/Conservation_and_restoration_of_immovable_cultural_property",
       "hasLeadImage": true,
-      "status": "pending",
+      "status": "skipped_quality",
       "addedAt": "2026-11-22T02:47:22.530Z",
       "requeuedAt": "2026-11-22T02:47:22.530Z",
-      "requeuedReason": "cefr_upgrade"
+      "requeuedReason": "cefr_upgrade",
+      "qualityErrors": [
+        "A1-A2 page 2 (text-only page): word count 42 outside A1-A2 fixed-card bounds (55-72 words)",
+        "A1-A2 page 4 (text-only page): word count 40 outside A1-A2 fixed-card bounds (55-72 words)",
+        "B1-B2 page 2 (text-only page): word count 50 outside B1-B2 fixed-card bounds (52-68 words)",
+        "B1-B2 page 4 (text-only page): word count 38 outside B1-B2 fixed-card bounds (52-68 words)",
+        "C1-C2 page 2 (text-only page): word count 42 outside C1-C2 fixed-card bounds (46-64 words)"
+      ],
+      "checkedAt": "2026-11-26T01:22:07.741Z"
     },
     {
       "title": "German question",
@@ -744,10 +904,18 @@
       "priority": 0,
       "sourceUrl": "https://en.wikipedia.org/wiki/Aden",
       "hasLeadImage": true,
-      "status": "pending",
+      "status": "skipped_quality",
       "addedAt": "2026-11-22T02:47:22.530Z",
       "requeuedAt": "2026-11-22T02:47:22.530Z",
-      "requeuedReason": "cefr_upgrade"
+      "requeuedReason": "cefr_upgrade",
+      "qualityErrors": [
+        "A1-A2 page 2 (text-only page): word count 43 outside A1-A2 fixed-card bounds (55-72 words)",
+        "A1-A2 page 3 (text-only page): word count 45 outside A1-A2 fixed-card bounds (55-72 words)",
+        "B1-B2 page 1 (photo page): word count 49 outside B1-B2 fixed-card bounds (32-44 words)",
+        "B1-B2 page 2 (text-only page): word count 40 outside B1-B2 fixed-card bounds (52-68 words)",
+        "B1-B2 page 3 (text-only page): word count 46 outside B1-B2 fixed-card bounds (52-68 words)"
+      ],
+      "checkedAt": "2026-11-26T01:32:01.707Z"
     },
     {
       "title": "Transition town",
@@ -835,10 +1003,18 @@
       "priority": 0,
       "sourceUrl": "https://en.wikipedia.org/wiki/Cultural_heritage",
       "hasLeadImage": true,
-      "status": "pending",
+      "status": "skipped_quality",
       "addedAt": "2026-11-22T02:47:22.530Z",
       "requeuedAt": "2026-11-22T02:47:22.530Z",
-      "requeuedReason": "cefr_upgrade"
+      "requeuedReason": "cefr_upgrade",
+      "qualityErrors": [
+        "A1-A2 page 2 (photo page): word count 51 outside A1-A2 fixed-card bounds (34-46 words)",
+        "A1-A2 page 3 (text-only page): word count 48 outside A1-A2 fixed-card bounds (55-72 words)",
+        "B1-B2 page 1 (photo page): word count 51 outside B1-B2 fixed-card bounds (32-44 words)",
+        "B1-B2 page 2 (photo page): word count 52 outside B1-B2 fixed-card bounds (32-44 words)",
+        "B1-B2 page 3 (text-only page): word count 51 outside B1-B2 fixed-card bounds (52-68 words)"
+      ],
+      "checkedAt": "2026-11-26T01:29:35.615Z"
     },
     {
       "title": "Candida auris",
@@ -887,10 +1063,18 @@
       "priority": 0,
       "sourceUrl": "https://en.wikipedia.org/wiki/Archive",
       "hasLeadImage": true,
-      "status": "pending",
+      "status": "skipped_quality",
       "addedAt": "2026-11-22T02:47:22.530Z",
       "requeuedAt": "2026-11-22T02:47:22.530Z",
-      "requeuedReason": "cefr_upgrade"
+      "requeuedReason": "cefr_upgrade",
+      "qualityErrors": [
+        "A1-A2 page 1 (photo page): word count 53 outside A1-A2 fixed-card bounds (34-46 words)",
+        "A1-A2 page 2 (text-only page): word count 47 outside A1-A2 fixed-card bounds (55-72 words)",
+        "A1-A2 page 4 (text-only page): word count 49 outside A1-A2 fixed-card bounds (55-72 words)",
+        "B1-B2 page 2 (text-only page): word count 46 outside B1-B2 fixed-card bounds (52-68 words)",
+        "B1-B2 page 4 (text-only page): word count 51 outside B1-B2 fixed-card bounds (52-68 words)"
+      ],
+      "checkedAt": "2026-11-26T01:36:55.495Z"
     },
     {
       "title": "Conservation science (cultural property)",
@@ -17112,8 +17296,16 @@
       "priority": 1,
       "sourceUrl": "https://en.wikipedia.org/wiki/Snooker",
       "hasLeadImage": true,
-      "status": "pending",
-      "addedAt": "2026-11-20T08:49:35.085Z"
+      "status": "skipped_quality",
+      "addedAt": "2026-11-20T08:49:35.085Z",
+      "qualityErrors": [
+        "A1-A2 page 1 (photo page): word count 60 outside A1-A2 fixed-card bounds (34-46 words)",
+        "A1-A2 page 2 (photo page): word count 58 outside A1-A2 fixed-card bounds (34-46 words)",
+        "A1-A2 page 3 (text-only page): word count 54 outside A1-A2 fixed-card bounds (55-72 words)",
+        "A1-A2 page 4 (photo page): word count 47 outside A1-A2 fixed-card bounds (34-46 words)",
+        "B1-B2 page 1 (photo page): word count 57 outside B1-B2 fixed-card bounds (32-44 words)"
+      ],
+      "checkedAt": "2026-11-26T01:34:54.156Z"
     },
     {
       "title": "Formula One",
