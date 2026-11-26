@@ -205,6 +205,32 @@ const OUTLINE_PAGE_SCHEMA={
  required:['pageIndex','focus','factIds','evidenceIds','imageId']
 }
 
+const LEVEL_PLAN_PAGE_SCHEMA={
+ type:'object',
+ properties:{
+  pageIndex:{type:'integer'},
+  focus:{type:'string'},
+  factIds:{type:'array',items:{type:'string'},minItems:1},
+  evidenceIds:{type:'array',items:{type:'string'},minItems:1}
+ },
+ required:['pageIndex','focus','factIds','evidenceIds']
+}
+
+const LEVEL_PLAN_SCHEMA={
+ type:'object',
+ properties:{
+  readerObjective:{type:'string'},
+  pages:{type:'array',items:LEVEL_PLAN_PAGE_SCHEMA,minItems:PAGE_COUNT_BOUNDS.min,maxItems:PAGE_COUNT_BOUNDS.max}
+ },
+ required:['readerObjective','pages']
+}
+
+const LEVEL_PLANS_SCHEMA={
+ type:'object',
+ properties:Object.fromEntries(LEVELS.map(level=>[level,LEVEL_PLAN_SCHEMA])),
+ required:LEVELS
+}
+
 const PAGE_SCHEMA={
  type:'object',
  properties:{
@@ -231,13 +257,14 @@ const BATCH_STORY_SCHEMA={
  properties:{
   factSheet:FACT_SHEET_SCHEMA,
   outline:{type:'array',items:OUTLINE_PAGE_SCHEMA,minItems:PAGE_COUNT_BOUNDS.min,maxItems:PAGE_COUNT_BOUNDS.max},
+  levelPlans:LEVEL_PLANS_SCHEMA,
   variants:{
    type:'object',
    properties:Object.fromEntries(LEVELS.map(level=>[level,LEVEL_SCHEMA])),
    required:LEVELS
   }
  },
- required:['factSheet','outline','variants']
+ required:['factSheet','outline','levelPlans','variants']
 }
 
 const REPAIR_PAGE_SCHEMA={
