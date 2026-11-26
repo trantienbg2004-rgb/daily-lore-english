@@ -205,24 +205,14 @@ const OUTLINE_PAGE_SCHEMA={
  required:['pageIndex','focus','factIds','evidenceIds','imageId']
 }
 
-const LEVEL_PLAN_PAGE_SCHEMA={
- type:'object',
- properties:{
-  pageIndex:{type:'integer'},
-  focus:{type:'string'},
-  factIds:{type:'array',items:{type:'string'},minItems:1},
-  evidenceIds:{type:'array',items:{type:'string'},minItems:1}
- },
- required:['pageIndex','focus','factIds','evidenceIds']
-}
-
 const LEVEL_PLAN_SCHEMA={
  type:'object',
  properties:{
   readerObjective:{type:'string'},
-  pages:{type:'array',items:LEVEL_PLAN_PAGE_SCHEMA,minItems:PAGE_COUNT_BOUNDS.min,maxItems:PAGE_COUNT_BOUNDS.max}
+  selectedFactIds:{type:'array',items:{type:'string'},minItems:2,maxItems:10},
+  depthNotes:{type:'string'}
  },
- required:['readerObjective','pages']
+ required:['readerObjective','selectedFactIds','depthNotes']
 }
 
 const LEVEL_PLANS_SCHEMA={
@@ -1067,7 +1057,7 @@ export function buildBatchPrompt(source,topic,evidence,verifiedPhotos=[]){
   '- The same imageId (or null) must remain at the same pageIndex across all three variants. Only choose an image if it remains relevant to all versions of that page.',
   '',
   'STEP 3 — THREE INDEPENDENT READING PLANS (levelPlans)',
-  'Create a separate readerObjective and '+PAGE_COUNT_BOUNDS.min+'–'+PAGE_COUNT_BOUNDS.max+' page plans for EACH level. Each page plan has pageIndex, its own focus, factIds and evidenceIds. Use the shared visual page map only for page order and image alignment. Keep at least two central facts common across all three versions so they remain versions of the same article; other fact selection, explanation depth and emphasis SHOULD differ.',
+  'Create a separate readerObjective, selectedFactIds (2–10 IDs from the fact sheet) and depthNotes for EACH level. Use the shared visual page map only for page order and image alignment; each version may allocate its selected facts differently across pages. Keep at least two central facts common across all three versions so they remain versions of the same article; other fact selection, explanation depth and emphasis SHOULD differ.',
   '',
   'A1-A2 READER PROFILE',
   '- A1 readers recognise familiar names, words and basic phrases in very short, simple text and may reread.',
@@ -1166,7 +1156,7 @@ export function buildCEFRReviewRepairPrompt(source,topic,evidence,previousDraft,
   '- The internal CEFR-J/Octanove wordlist and FKGL are imperfect screening signals. Word-level CEFR assignment is sense- and corpus-dependent; an unlisted word is NOT automatically C1/C2. Use the exact examples and the whole reading experience.',
   '- Assess the article body, not the glossary. A glossary can support learning but cannot make an otherwise inaccessible article A1/A2.',
   '- Do not make A1/A2 childish or factually incomplete. Select fewer, more essential facts and explain them simply. B1/B2 should develop the main points. C1/C2 should deepen interpretation and precision.',
-  '- Use the supplied levelPlans: each level is allowed to select different facts and depth. Do not force identical page focus or identical facts at each page index. Keep at least two shared core facts and preserve the common imageId/page order.',
+  '- Use the supplied levelPlans: each level is allowed to select different facts and depth. Do not force identical facts, page focus or page-by-page order across levels. Keep at least two shared core facts and preserve the common imageId/page order.',
   '- Preserve every date, quantity, causal limit, source uncertainty and safety qualification that appears in the selected facts. Never invent information.',
   '',
   'REQUIRED TWO-PASS REVIEW',
