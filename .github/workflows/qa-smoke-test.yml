@@ -4,6 +4,15 @@ on:
   push:
     branches:
       - main
+  pull_request:
+    branches: [main]
+    paths:
+      - 'src/lib/continuousReader.js'
+      - 'src/lib/recommendationEngine.js'
+      - 'src/lib/feedQueue.js'
+      - 'src/App.jsx'
+      - 'scripts/test/saga-recommendation-v2.test.mjs'
+      - '.github/workflows/qa-smoke-test.yml'
   workflow_dispatch:
 
 permissions:

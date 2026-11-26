@@ -28,8 +28,14 @@ export async function refreshCatalog({fetchImpl,baseUrl,pools=[],now=Date.now(),
   const m=await fetchManifestImpl(fetchImpl,baseUrl,now,WIKI_POOL)
   wikiDeclaredReady=m?.ready===true&&m?.feedType==='wiki'
   if(eligibleManifest(m,WIKI_POOL)){
+   const p=old.get(WIKI_POOL)
+   // A versioned index is immutable: do not download the whole catalog on every poll.
+   if(p?.version===m.version&&Array.isArray(p.index)){
+    next.push(p)
+    return {pools:next,failures,newIds,hasAvailable:true,checkedAt:now}
+   }
    const index=await getIndex(fetchImpl,baseUrl,WIKI_POOL,m,now)
-   const p=old.get(WIKI_POOL),known=new Set(p?.index?.map(entry=>entry.id)||[])
+   const known=new Set(p?.index?.map(entry=>entry.id)||[])
    if(p?.index)for(const entry of index)if(entry.contentType==='wiki'&&!known.has(entry.id))newIds.push(entry.id)
    next.push(p?.version===m.version?p:{path:WIKI_POOL,manifest:m,version:m.version,index,
     order:newsChunkOrder(m.count),cursor:0,done:false,cache:new Map()})
@@ -85,7 +91,7 @@ export async function refillCatalog({fetchImpl,baseUrl,pools,seen=new Set(),load
  const updated=pools.map(p=>({...p})),items=[],errors=[]
  for(const pool of updated){
   if(pool.index){
-   const result=await refillGlobal({pool,fetchImpl,baseUrl,seen,loaded,seenAt,profile,recent,target:target-items.length,random,maxShards:Math.max(urgent?3:10,priorityIds.size),newsOnly,priorityIds,allowRepeat:urgent})
+   const result=await refillGlobal({pool,fetchImpl,baseUrl,seen,loaded,seenAt,profile,recent,target:target-items.length,random,maxShards:urgent?3:10,newsOnly,priorityIds,allowRepeat:urgent})
    items.push(...result.items);errors.push(...result.errors)
    pool.done=result.done;pool.fallback=result.fallback
    continue

@@ -1091,7 +1091,7 @@ function App() {
         const result = await refillCatalog({fetchImpl:fetch,baseUrl:import.meta.env.BASE_URL,
           pools:poolsRef.current,seen:seenRef.current,loaded:loadedRef.current,seenAt:seenAtRef.current,
           profile:recommendationProfileRef.current,recent:storiesRef.current.slice(Math.max(0,storyIndexRef.current-5),storyIndexRef.current+1),
-          target:Math.max(newIds.length,urgent?1:Math.max(1,BUFFER_TARGET-remaining)),urgent,
+          target:Math.min(BUFFER_TARGET,Math.max(newIds.length,urgent?1:Math.max(1,BUFFER_TARGET-remaining))),urgent,
           newsOnly:false,
           priorityIds:new Set(newIds)})
         poolsRef.current = result.pools
