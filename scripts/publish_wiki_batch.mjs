@@ -290,24 +290,26 @@ const TARGETED_REPAIR_SCHEMA={
 const CEFR_REVIEW_LEVEL_SCHEMA={
  type:'object',
  properties:{
-  estimatedBand:{type:'string',enum:['A1','A2','B1','B2','C1','C2','uncertain']},
-  verdict:{type:'string',enum:['pass','too_easy','too_hard','uncertain']},
+  initialBand:{type:'string',enum:['A1','A2','B1','B2','C1','C2','?']},
+  initialVerdict:{type:'string',enum:['pass','revise','uncertain']},
+  finalBand:{type:'string',enum:['A1','A2','B1','B2','C1','C2','?']},
+  finalVerdict:{type:'string',enum:['pass','revise','uncertain']},
   dimensions:{
    type:'object',
    properties:{
-    vocabulary:{type:'string',enum:['below','within','above']},
-    grammarAndSyntax:{type:'string',enum:['below','within','above']},
-    cohesion:{type:'string',enum:['below','within','above']},
-    abstraction:{type:'string',enum:['below','within','above']},
-    inference:{type:'string',enum:['below','within','above']},
-    specialistTermLoad:{type:'string',enum:['below','within','above']}
+    vocabulary:{type:'string',enum:['low','fit','high']},
+    syntax:{type:'string',enum:['low','fit','high']},
+    cohesion:{type:'string',enum:['low','fit','high']},
+    abstraction:{type:'string',enum:['low','fit','high']},
+    inference:{type:'string',enum:['low','fit','high']},
+    terms:{type:'string',enum:['low','fit','high']}
    },
-   required:['vocabulary','grammarAndSyntax','cohesion','abstraction','inference','specialistTermLoad']
+   required:['vocabulary','syntax','cohesion','abstraction','inference','terms']
   },
-  evidence:{type:'array',items:{type:'string'},minItems:1,maxItems:4},
+  evidence:{type:'array',items:{type:'string'},minItems:1,maxItems:2},
   rationale:{type:'string'}
  },
- required:['estimatedBand','verdict','dimensions','evidence','rationale']
+ required:['initialBand','initialVerdict','finalBand','finalVerdict','dimensions','evidence','rationale']
 }
 
 const CEFR_REVIEW_REPAIR_PAGE_SCHEMA={
@@ -324,31 +326,24 @@ const CEFR_REVIEW_REPAIR_PAGE_SCHEMA={
 const CEFR_REVIEW_REPAIR_LEVEL_SCHEMA={
  type:'object',
  properties:{
+  level:{type:'string',enum:LEVELS},
   headline:{type:'string'},
   pages:{type:'array',items:CEFR_REVIEW_REPAIR_PAGE_SCHEMA,minItems:PAGE_COUNT_BOUNDS.min,maxItems:PAGE_COUNT_BOUNDS.max}
  },
- required:['pages']
+ required:['level','pages']
 }
 
 export const CEFR_REVIEW_REPAIR_SCHEMA={
  type:'object',
  properties:{
-  initialAssessment:{
+  assessment:{
    type:'object',
    properties:Object.fromEntries(LEVELS.map(level=>[level,CEFR_REVIEW_LEVEL_SCHEMA])),
    required:LEVELS
   },
-  finalAssessment:{
-   type:'object',
-   properties:Object.fromEntries(LEVELS.map(level=>[level,CEFR_REVIEW_LEVEL_SCHEMA])),
-   required:LEVELS
-  },
-  repairs:{
-   type:'object',
-   properties:Object.fromEntries(LEVELS.map(level=>[level,CEFR_REVIEW_REPAIR_LEVEL_SCHEMA]))
-  }
+  repairs:{type:'array',items:CEFR_REVIEW_REPAIR_LEVEL_SCHEMA,maxItems:3}
  },
- required:['initialAssessment','finalAssessment','repairs']
+ required:['assessment','repairs']
 }
 
 export class GeminiQuotaExhausted extends Error{
