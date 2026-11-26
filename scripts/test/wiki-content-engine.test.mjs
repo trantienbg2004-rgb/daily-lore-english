@@ -328,20 +328,23 @@ test('content engine: independent levelPlans allow different content depth while
  raw.levelPlans={
   'A1-A2':{
    readerObjective:'Understand the main concrete facts using simple, explicit language.',
-   pages:raw.outline.map(p=>({pageIndex:p.pageIndex,focus:'Simple explanation: '+p.focus,factIds:p.factIds,evidenceIds:p.evidenceIds}))
+   selectedFactIds:['F1','F2'],
+   depthNotes:'Use familiar words, concrete examples and explicit relationships; omit non-essential specialist detail.'
   },
   'B1-B2':{
    readerObjective:'Understand factual context, chronology and cause-and-effect links.',
-   pages:raw.outline.map(p=>({pageIndex:p.pageIndex,focus:'Explain context and relationships: '+p.focus,factIds:[...new Set([...p.factIds,'F1'])],evidenceIds:p.evidenceIds}))
+   selectedFactIds:['F1','F2','F3'],
+   depthNotes:'Develop context and relationships with natural topic vocabulary and connected explanations.'
   },
   'C1-C2':{
    readerObjective:'Understand nuance, implications and the relationship between evidence and interpretation.',
-   pages:raw.outline.map(p=>({pageIndex:p.pageIndex,focus:'Analyze implications and qualifications: '+p.focus,factIds:[...new Set([...p.factIds,'F2'])],evidenceIds:p.evidenceIds}))
+   selectedFactIds:['F1','F2','F3','F4'],
+   depthNotes:'Explore source-grounded qualifications, conceptual implications and specialist distinctions.'
   }
  }
  const normalized=normalizeDraftForCatalog(raw,{source,evidence:trimmed.evidence,verifiedPhotos:[photo]})
- assert.equal(normalized.levelPlans['A1-A2'].pages.length,5)
- assert.notEqual(normalized.levelPlans['A1-A2'].pages[0].focus,normalized.levelPlans['C1-C2'].pages[0].focus)
+ assert.deepEqual(normalized.levelPlans['A1-A2'].selectedFactIds,['F1','F2'])
+ assert.notDeepEqual(normalized.levelPlans['A1-A2'].selectedFactIds,normalized.levelPlans['C1-C2'].selectedFactIds)
  const fact=validateFactualConsistency(normalized,{source,evidence:trimmed.evidence})
  assert.equal(fact.ok,true,fact.errors.join(' | '))
  const quality=validateArticleQuality(normalized,source.sourceTitle,{source,evidence:trimmed.evidence,requireLevelPlans:true})
