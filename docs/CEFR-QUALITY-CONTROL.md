@@ -22,7 +22,7 @@ Official reference: https://rm.coe.int/cefr-companion-volume-with-new-descriptor
 ## Production design
 
 1. **One source revision and evidence set.** All three versions are grounded in the same retrieved Wikipedia revision and evidence passages.
-2. **Shared visual map, independent reading plans.** Page count and image binding remain aligned, but A1–A2, B1–B2 and C1–C2 receive separate reader objectives, fact selection, page focus and explanatory depth. At least two central facts remain common.
+2. **Shared visual map, independent reading plans.** Page count and image binding remain aligned, but A1–A2, B1–B2 and C1–C2 receive separate reader objectives, selected core facts and explanatory depth; each version may allocate those facts differently across pages. At least two central facts remain common.
 3. **Level-specific writing.**
    - A1–A2 selects essential concrete facts and explains unavoidable topic terms in simple language.
    - B1–B2 develops main points, context, chronology, cause/effect and relevant viewpoints in natural prose.
