@@ -110,7 +110,7 @@ test('validateArticleQuality enforces objective CEFR gates and buildQualityRetry
  assert.match(retryPrompt,/MANDATORY A1-A2 WORD SWAPS/i)
 })
 
-test('CEFR descriptor reviewer accepts only in-band final assessments with verifiable excerpts and complete repairs',()=>{
+test('CEFR descriptor reviewer accepts in-band assessments, merges partial repairs and attaches an auditable excerpt',()=>{
  const dims={vocabulary:'fit',syntax:'fit',cohesion:'fit',abstraction:'fit',inference:'fit',terms:'fit'}
  const assessment=(band,quote,initialBand=band,initialVerdict='pass')=>({
   initialBand,initialVerdict,finalBand:band,finalVerdict:'pass',
@@ -136,6 +136,15 @@ test('CEFR descriptor reviewer accepts only in-band final assessments with verif
  assert.equal(repaired.ok,true,repaired.errors.join(' | '))
  assert.match(repaired.draft.variants['B1-B2'].pages[0].text,/Builders changed the town/)
  assert.equal(repaired.draft.variants['B1-B2'].pages[0].imageId,'IMG_0','Repair must preserve image binding')
+
+ const twoPageDraft=structuredClone(draft)
+ for(const level of ['A1-A2','B1-B2','C1-C2'])twoPageDraft.variants[level].pages.push({text:'The next page explains another part of the story.',imageId:null,evidenceIds:['P1']})
+ const partialPayload=structuredClone(passPayload)
+ partialPayload.assessment['B1-B2']=assessment('B1','Builders changed the town','C1','revise')
+ partialPayload.repairs=[{level:'B1-B2',pages:[{pageIndex:0,text:'Builders changed the town over time. They compared plans and shared useful ideas with nearby places.',evidenceIds:['P1']}]}]
+ const partial=applyCEFRReviewRepairs(twoPageDraft,partialPayload)
+ assert.equal(partial.ok,true,partial.errors.join(' | '))
+ assert.equal(partial.draft.variants['B1-B2'].pages[1].text,'The next page explains another part of the story.','Untouched page must be preserved')
 
  const dimensionMismatch=structuredClone(passPayload)
  dimensionMismatch.assessment['B1-B2'].dimensions.syntax='high'
@@ -178,7 +187,7 @@ test('CEFR reviewer prompt uses official reading descriptors and treats FKGL/wor
  assert.match(prompt,/NOT CEFR DEFINITIONS/i)
  assert.match(prompt,/A1-A2/)
  assert.match(prompt,/finalVerdict/)
- assert.match(prompt,/EXACTLY ONE complete sentence copied character-for-character/)
+ assert.match(prompt,/program will attach a verbatim sentence/)
 })
 
 test('applyCEFRRequeue enforces safety floor, prepends removed stories to FRONT of queue without duplicates, and buildRoundRobinOrder prioritizes them first',async()=>{
