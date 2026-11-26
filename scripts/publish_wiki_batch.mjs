@@ -1152,10 +1152,10 @@ export function buildCEFRReviewRepairPrompt(source,topic,evidence,previousDraft,
   '- Preserve every date, quantity, causal limit, source uncertainty and safety qualification that appears in the selected facts. Never invent information.',
   '',
   'REQUIRED TWO-PASS REVIEW',
-  'A. Fill initialAssessment for all three original versions. estimatedBand must be one of A1/A2 for A1-A2, B1/B2 for B1-B2, and C1/C2 for C1-C2. Use verdict pass, too_easy, too_hard or uncertain. Mark each dimension below/within/above relative to the assigned band. Give 1–4 short exact evidence excerpts from the article and a concrete rationale.',
+  'A. For each level, record initialBand and initialVerdict inside assessment. The initial band must be A1/A2 for A1-A2, B1/B2 for B1-B2, and C1/C2 for C1-C2. Use verdict pass, revise or uncertain. Assess vocabulary, syntax, cohesion, abstraction, inference and specialist-term load internally.',
   'B. Repair every level that is outside its target band, has a supplied blocking deterministic error, or has a material factual/editorial defect. Rewrite the COMPLETE set of pages for that level, not merely a few isolated words. Return all pageIndex values in order, preserve the existing page count and the image binding (the program preserves imageIds), and keep evidenceIds tied to the source. Do not rewrite a passing level unless required by a blocking cross-level issue.',
-  'C. Reread the final versions AFTER all repairs. Fill finalAssessment based on the final text, not on your intention. A level passes only if verdict=pass, estimatedBand is inside its assigned pair, and every dimension is within. If uncertain, do not guess: verdict=uncertain.',
-  'D. If a level fails initialAssessment, its full repair must be present. If no repair is needed, return an empty repairs object. Exact evidence excerpts in finalAssessment must appear verbatim in the final article; the program checks this.',
+  'C. Reread the final versions AFTER all repairs. Record finalBand, finalVerdict and the six dimension values in assessment. A level passes only if finalVerdict=pass, finalBand is inside its assigned pair, and every dimension is fit. Use low for below the target band and high for above it. If uncertain, do not guess: use uncertain.',
+  'D. If initialVerdict is not pass or initialBand is outside the assigned pair, its full repair must be present in the repairs array with that level identifier. If no repair is needed, return an empty repairs array. Exact evidence excerpts in assessment must appear verbatim in the final article; the program checks this.',
   '',
   'BLOCKING DETERMINISTIC ISSUES TO ADDRESS',
   deterministicIssues,
@@ -1174,7 +1174,7 @@ export function buildCEFRReviewRepairPrompt(source,topic,evidence,previousDraft,
   'VERIFIED SOURCE PASSAGES',
   passages,
   '',
-  'Return JSON only with initialAssessment, finalAssessment and repairs. Do not include commentary outside the JSON.'
+  'Return JSON only with assessment and repairs. Each repair item contains level, optional headline, and all pages. Do not include commentary outside the JSON.'
  ].join('\n\n')
 }
 
