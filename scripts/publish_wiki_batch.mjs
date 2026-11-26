@@ -1153,7 +1153,7 @@ export function buildCEFRReviewRepairPrompt(source,topic,evidence,previousDraft,
   '- Preserve every date, quantity, causal limit, source uncertainty and safety qualification that appears in the selected facts. Never invent information.',
   '',
   'REQUIRED TWO-PASS REVIEW',
-  'A. For each level, record initialBand and initialVerdict inside assessment. The initial band must be A1/A2 for A1-A2, B1/B2 for B1-B2, and C1/C2 for C1-C2. Use verdict pass, revise or uncertain. Assess vocabulary, syntax, cohesion, abstraction, inference and specialist-term load internally.',
+  'A. For each level, record initialBand and initialVerdict inside assessment. The initial band must be A1/A2 for A1-A2, B1/B2 for B1-B2, and C1/C2 for C1-C2. Use verdict pass, revise or uncertain. Assess vocabulary, syntax, cohesion, abstraction, inference and specialist-term load. If ANY dimension is low or high, initialVerdict must be revise and the level must be repaired.',
   'B. Repair every level that is outside its target band, has a supplied blocking deterministic error, or has a material factual/editorial defect. Rewrite the COMPLETE set of pages for that level, not merely a few isolated words. Return all pageIndex values in order, preserve the existing page count and the image binding (the program preserves imageIds), and keep evidenceIds tied to the source. Do not rewrite a passing level unless required by a blocking cross-level issue.',
   'C. Reread the final versions AFTER all repairs. Record finalBand, finalVerdict and the six dimension values in assessment. A level passes only if finalVerdict=pass, finalBand is inside its assigned pair, and every dimension is fit. Use low for below the target band and high for above it. If uncertain, do not guess: use uncertain.',
   'D. If initialVerdict is not pass or initialBand is outside the assigned pair, its full repair must be present in the repairs array with that level identifier. If no repair is needed, return an empty repairs array. For evidence, provide EXACTLY ONE complete sentence copied character-for-character from the FINAL version after all repairs, including the same words, capitalization and punctuation. Do not paraphrase, reconstruct, quote from the pre-repair draft, use ellipses or combine fragments. The program checks exact matching.',
@@ -1199,13 +1199,14 @@ export function applyCEFRReviewRepairs(previousDraft,reviewPayload,{requiredRepa
  }
  const merged=structuredClone(previousDraft)
  const cleanQuote=value=>String(value||'').replace(/\s+/g,' ').trim().toLowerCase()
- const finalPass=a=>a?.finalVerdict==='pass'&&allowedBandsForAssessment(a)&&a?.dimensions&&Object.values(a.dimensions).length===6&&Object.values(a.dimensions).every(v=>v==='fit')
+ const dimensionsFit=a=>a?.dimensions&&Object.values(a.dimensions).length===6&&Object.values(a.dimensions).every(v=>v==='fit')
+ const finalPass=a=>a?.finalVerdict==='pass'&&allowedBandsForAssessment(a)&&dimensionsFit(a)
  const allowedBandsForAssessment=a=>['A1','A2','B1','B2','C1','C2'].includes(String(a?.finalBand||''))
 
  for(const level of LEVELS){
   const a=assessment[level]
   if(!a){errors.push(level+': missing descriptor assessment');continue}
-  const initialPass=a.initialVerdict==='pass'&&allowedBands[level].has(String(a.initialBand||''))
+  const initialPass=a.initialVerdict==='pass'&&allowedBands[level].has(String(a.initialBand||''))&&dimensionsFit(a)
   const needsRepair=required.has(level)||!initialPass
   const patch=repairByLevel.get(level)
   if(needsRepair){
