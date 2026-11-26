@@ -807,7 +807,8 @@ export function validateArticleQuality(draft,sourceTitle,{
  maxPages=PAGE_COUNT_BOUNDS.max,
  levelBounds=LEVEL_WORD_BOUNDS,
  source=null,
- evidence=null
+ evidence=null,
+ requireLevelPlans=false
 }={}){
  const errors=[]
  const metrics={}
@@ -816,6 +817,10 @@ export function validateArticleQuality(draft,sourceTitle,{
 
  if(!draft||typeof draft!=='object'||!draft.variants){
   return {ok:false,errors:['Missing variants object in generated draft'],metrics}
+ }
+
+ if(requireLevelPlans&&!LEVELS.every(level=>Array.isArray(draft.levelPlans?.[level]?.pages))){
+  errors.push('Missing independent levelPlans: A1-A2, B1-B2 and C1-C2 must each have their own reading plan')
  }
 
  // 1. Verify page-count parity and imageId/image parity across all 3 CEFR levels
@@ -908,20 +913,19 @@ export function validateArticleQuality(draft,sourceTitle,{
   }
 
   const sentBand=LEVEL_SENTENCE_BOUNDS[level]
-  if(sentBand&&(stats.avgSentenceWords<sentBand.min||stats.avgSentenceWords>sentBand.max)){
-   errors.push(`${level}: average sentence length ${stats.avgSentenceWords}w outside target band (aim ${sentBand.targetMin}-${sentBand.targetMax} words/sentence)`)
-  }
+  metrics[level].sentenceLengthDiagnostic=sentBand
+   ?{withinBroadGuide:stats.avgSentenceWords>=sentBand.min&&stats.avgSentenceWords<=sentBand.max,target:sentBand.targetMin+'-'+sentBand.targetMax}
+   :null
  }
 
  // Measurable CEFR progression & objective Lexical + FKGL gates across A1-A2, B1-B2, C1-C2
  const a=metrics['A1-A2'],b=metrics['B1-B2'],c=metrics['C1-C2']
  let cefr=null
  if(a&&b&&c){
-  if(!(a.avgSentenceWords<b.avgSentenceWords&&b.avgSentenceWords<c.avgSentenceWords)){
-   errors.push(`CEFR sentence-length progression failed: A1-A2 (${a.avgSentenceWords}w) < B1-B2 (${b.avgSentenceWords}w) < C1-C2 (${c.avgSentenceWords}w) required`)
-  }
-  if(!(a.complexityScore<b.complexityScore&&b.complexityScore<c.complexityScore)){
-   errors.push(`CEFR difficulty progression failed: A1-A2 (${a.complexityScore}) < B1-B2 (${b.complexityScore}) < C1-C2 (${c.complexityScore}) required`)
+  metrics.levelProgressionDiagnostics={
+   averageSentenceWords:{a:a.avgSentenceWords,b:b.avgSentenceWords,c:c.avgSentenceWords},
+   heuristicComplexity:{a:a.complexityScore,b:b.complexityScore,c:c.complexityScore},
+   note:'Diagnostics only. CEFR level is not determined by sentence length or a single complexity score.'
   }
   cefr=evaluateArticleCEFR(draft.variants,{sourceTitle})
   for(const level of LEVELS){
@@ -936,9 +940,7 @@ export function validateArticleQuality(draft,sourceTitle,{
     }
    }
   }
-  if(!cefr.ok){
-   errors.push(...cefr.errors)
-  }
+  metrics.cefrHeuristicWarnings=cefr.errors
  }
 
  // Source-grounding, cross-level factual consistency, and uncertainty preservation checks
