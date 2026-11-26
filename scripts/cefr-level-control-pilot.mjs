@@ -10,8 +10,7 @@ import {
  resolveGeminiApiKeys,
  normalizeDraftForCatalog,
  validateArticleQuality,
- applyCEFRReviewRepairs,
- CEFR_REVIEW_REPAIR_SCHEMA
+ applyCEFRReviewRepairs
 } from './publish_wiki_batch.mjs'
 
 const MODEL=process.env.CEFR_PILOT_MODEL||'gemini-3.5-flash-lite'
