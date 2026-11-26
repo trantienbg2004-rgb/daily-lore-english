@@ -1339,7 +1339,7 @@ export function identifyRepairTargets(draft,qualityResult){
  let structuralParityFailed=false
 
  for(const err of errors){
-  const msg=String(err||'')
+  const msg=String(err||'').replace(/^CEFR descriptor review(?: after targeted retry)?:\\s*/i,'')
   if(/Cross-level page count|Cross-level image parity|page count must be between|Outline page count|Outline image mismatch/i.test(msg)){
    structuralParityFailed=true
    continue
