@@ -1105,7 +1105,7 @@ export function buildBatchPrompt(source,topic,evidence,verifiedPhotos=[]){
   'STEP 5 — IMAGE AND CAPTION BINDING',
   '- Page 1 must use a verified lead/infobox photo ('+(leadIds.length?'one of '+leadIds.join(', '):'the verified main-subject fallback '+coverHint)+').',
   '- On later pages, use only an exact verified imageId that depicts the subject of that page for ALL three levels. Otherwise use null for all three at that pageIndex.',
-  '- Never reuse an imageId. Captions must be accurate, natural, '+CAPTION_LIMITS.targetMinWords+'–'+CAPTION_LIMITS.targetMaxWords+' words where possible, and no more than '+CAPTION_LIMITS.maxChars+' characters. Text-only pages use an empty caption.',
+  '- Never reuse an imageId. Captions must be accurate, natural, '+CAPTION_LIMITS.targetMinWords+'–'+CAPTION_LIMITS.targetMaxWords+' words where possible, and no more than '+CAPTION_LIMITS.maxChars+' chars. Text-only pages use an empty caption.',
   '',
   'STEP 6 — SOURCE ACCURACY',
   '- Every page must cite valid evidenceIds from the supplied passage IDs.',
