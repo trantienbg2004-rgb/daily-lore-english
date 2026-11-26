@@ -2692,11 +2692,13 @@ export async function runPublishWikiBatch({
     normalizedDraft=normalizeDraftForCatalog(firstRes.draft,{source,evidence:trimmed.evidence,verifiedPhotos})
     quality=validateArticleQuality(normalizedDraft,source.sourceTitle,{source,evidence:trimmed.evidence})
 
-    // Perform at most ONE targeted repair of failing pages/levels while preserving valid content
-    if(!quality.ok){
+    // Keep the existing structural rebuild only for page/image parity failures.
+    // CEFR, language and editorial mismatches are handled by the mandatory descriptor reviewer below.
+    const initialRepairTargets=identifyRepairTargets(normalizedDraft,quality)
+    if(!quality.ok&&initialRepairTargets.structuralParityFailed){
      const repairOutcome=await runOneTargetedRepair({source,item,trimmed,verifiedPhotos,normalizedDraft,quality})
      if(repairOutcome.budgetHit){
-      console.warn(`[batch]   -> Runtime budget reached before targeted repair (${Math.max(0,Math.round(remainingBudget()/1000))}s left). Leaving "${item.title}" ${prevQueueStatus||'pending'} and stopping gracefully.`)
+      console.warn(`[batch]   -> Runtime budget reached before structural repair (${Math.max(0,Math.round(remainingBudget()/1000))}s left). Leaving "${item.title}" ${prevQueueStatus||'pending'} and stopping gracefully.`)
       budgetStopped=true
       break
      }
@@ -2704,6 +2706,35 @@ export async function runPublishWikiBatch({
      usedModel=repairOutcome.model||usedModel
      normalizedDraft=repairOutcome.normalizedDraft
      quality=repairOutcome.quality
+    }
+   }
+
+   // Mandatory independent CEFR descriptor review for every live candidate.
+   // The reviewer may repair each failing level once, then must assess the final text.
+   if(!dryRun){
+    const structuralStillBroken=identifyRepairTargets(normalizedDraft,quality).structuralParityFailed
+    if(!structuralStillBroken){
+     const requiredRepairLevels=new Set()
+     for(const issue of quality.errors||[]){
+      const match=String(issue).match(/^(A1-A2|B1-B2|C1-C2)/)
+      if(match)requiredRepairLevels.add(match[1])
+     }
+     if((quality.errors||[]).length&&!requiredRepairLevels.size){
+      for(const level of LEVELS)requiredRepairLevels.add(level)
+     }
+     const reviewPrompt=buildCEFRReviewRepairPrompt(source,item.topic,trimmed.evidence,normalizedDraft,quality)
+     const reviewRes=await invokeGeminiWithDelay(reviewPrompt,{reserveMs:minRetryBudgetMs,schema:CEFR_REVIEW_REPAIR_SCHEMA})
+     consecutiveInfraFailures=0
+     const reviewOutcome=applyCEFRReviewRepairs(normalizedDraft,reviewRes.draft,{requiredRepairLevels:[...requiredRepairLevels]})
+     normalizedDraft=normalizeDraftForCatalog(reviewOutcome.draft,{source,evidence:trimmed.evidence,verifiedPhotos})
+     quality=validateArticleQuality(normalizedDraft,source.sourceTitle,{source,evidence:trimmed.evidence,requireLevelPlans:true})
+     quality.cefrReview=reviewOutcome.finalAssessment||null
+     if(!reviewOutcome.ok){
+      quality.ok=false
+      quality.errors.push(...reviewOutcome.errors.map(e=>'CEFR descriptor review: '+e))
+     }
+     usedModel=reviewRes.model||usedModel
+     console.log(`[batch]   -> CEFR descriptor review [${LEVELS.map(level=>level+':'+(reviewOutcome.finalAssessment?.[level]?.estimatedBand||'uncertain')).join(' / ')}], repairs=${Object.keys(reviewRes.draft?.repairs||{}).join(',')||'none'}.`)
     }
    }
 
