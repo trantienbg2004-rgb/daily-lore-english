@@ -172,6 +172,10 @@ async function runTopic(id){
     const finalization=assignAndValidateFinalPhotos(draft,fixture)
     draft=finalization.draft
     quality=finalization.quality
+    if(!applied.ok){
+     quality.ok=false
+     quality.errors.push(...applied.errors.map(e=>'CEFR descriptor review: '+e))
+    }
     result.imageAssignment=finalization.assignment
     result.finalQuality={ok:quality.ok,errors:quality.errors,metrics:quality.metrics,heuristicWarnings:quality.cefr?.errors||[]}
     result.passed=applied.ok&&finalization.assignment.ok&&quality.ok&&['A1-A2','B1-B2','C1-C2'].every(level=>{
@@ -218,6 +222,10 @@ async function runTopic(id){
       const retryFinalization=assignAndValidateFinalPhotos(draft,fixture)
       draft=retryFinalization.draft
       quality=retryFinalization.quality
+      if(!retryApplied.ok){
+       quality.ok=false
+       quality.errors.push(...retryApplied.errors.map(e=>'CEFR descriptor review after targeted retry: '+e))
+      }
       result.imageAssignment=retryFinalization.assignment
       result.finalQuality={ok:quality.ok,errors:quality.errors,metrics:quality.metrics,heuristicWarnings:quality.cefr?.errors||[]}
       result.passed=retryApplied.ok&&retryFinalization.assignment.ok&&quality.ok&&['A1-A2','B1-B2','C1-C2'].every(level=>{
