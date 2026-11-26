@@ -58,7 +58,7 @@ test('profileTextCEFR excludes proper nouns and numbers while flagging over-leve
  assert.ok(pollutedProfile.lexicalProfile.c1c2OrUnlistedPct>7)
 })
 
-test('validateArticleQuality enforces objective CEFR gates and buildQualityRetryPrompt includes exact overLevelWords feedback',()=>{
+test('validateArticleQuality keeps profiler cutoffs advisory and retry prompt shows contextual diagnostics',()=>{
  const a1BadPages=[
   {text:`Long ago, people in Warsaw studied antimicrobial compounds that leaders promulgated for socioeconomic transformation. Early teams used contemporaneous methodologies and wrote multifaceted paradigms. Soon, many young learners wanted to understand this heterogeneous institutional framework.`,imageId:'IMG_0',evidenceIds:['P1']},
   {text:`In the first years, small teams evaluated bureaucratic protocols while officials promulgated antimicrobial rules and heterogeneous statutes. They kept meticulous archival records in plain notebooks. Each empirical experiment demonstrated one salient methodological insight for subsequent practitioners.`,imageId:null,evidenceIds:['P1']},
