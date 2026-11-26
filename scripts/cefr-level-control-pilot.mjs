@@ -16,13 +16,13 @@ import {
 
 const MODEL=process.env.CEFR_PILOT_MODEL||'gemini-3.5-flash-lite'
 const REVIEW_MODEL=process.env.CEFR_REVIEW_MODEL||'gemini-3.6-flash'
-const generationModelChain=resolveGeminiModelChain({model:MODEL})
-const reviewerModelChain=resolveGeminiModelChain({model:REVIEW_MODEL,fallbackModels:process.env.CEFR_REVIEW_FALLBACK_MODELS||['gemini-3.8-flash','gemini-3.5-flash-lite']})
-const reviewerKeyState={...keyState,activeIndex:0,preferredModel:null,lastModelTried:null}
 const INPUT=process.env.CEFR_FROZEN_INPUT||'/tmp/saga-cefr-frozen'
 const OUTPUT=process.env.CEFR_PILOT_OUTPUT||'/tmp/saga-cefr-level-control-pilot'
 const API_KEYS=resolveGeminiApiKeys()
 const keyState={keys:API_KEYS,activeIndex:0}
+const generationModelChain=resolveGeminiModelChain({model:MODEL})
+const reviewerModelChain=resolveGeminiModelChain({model:REVIEW_MODEL,fallbackModels:process.env.CEFR_REVIEW_FALLBACK_MODELS||['gemini-3.8-flash','gemini-3.5-flash-lite']})
+const reviewerKeyState={...keyState,activeIndex:0,preferredModel:null,lastModelTried:null}
 const TOPICS=['topic-0','topic-1','topic-2']
 const safeError=e=>({name:e?.name||'Error',status:e?.status??null,message:String(e?.message||e).replace(/AIza[A-Za-z0-9_-]+/g,'[REDACTED]').slice(0,500)})
 let calls=0,modelFallbacks=0
