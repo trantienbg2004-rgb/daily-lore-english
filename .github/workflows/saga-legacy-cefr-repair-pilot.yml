@@ -37,18 +37,13 @@ jobs:
       - name: Build isolated queue for the five reviewer-failed source pages
         run: |
           mkdir -p /tmp/saga-legacy-cefr-repair-pilot
-          cat > /tmp/saga-legacy-cefr-repair-pilot/queue.json <<'QUEUE'
-          {
-            "version": 1,
-            "items": [
-              {"title":"Cherchell","pageId":2034884,"topic":"History & Geography","source":"cefr_repair_pilot","priority":0,"sourceUrl":"https://en.wikipedia.org/wiki/Cherchell","hasLeadImage":true,"status":"pending"},
-              {"title":"Ancient Olympic Games","pageId":19098431,"topic":"Sports","source":"cefr_repair_pilot","priority":0,"sourceUrl":"https://en.wikipedia.org/wiki/Ancient_Olympic_Games","hasLeadImage":true,"status":"pending"},
-              {"title":"Changeling","pageId":396412,"topic":"Health","source":"cefr_repair_pilot","priority":0,"sourceUrl":"https://en.wikipedia.org/wiki/Changeling","hasLeadImage":true,"status":"pending"},
-              {"title":"GOAT (sports culture)","pageId":79511869,"topic":"Sports","source":"cefr_repair_pilot","priority":0,"sourceUrl":"https://en.wikipedia.org/wiki/GOAT_(sports_culture)","hasLeadImage":true,"status":"pending"},
-              {"title":"Badger culling in the United Kingdom","pageId":36471858,"topic":"Health","source":"cefr_repair_pilot","priority":0,"sourceUrl":"https://en.wikipedia.org/wiki/Badger_culling_in_the_United_Kingdom","hasLeadImage":true,"status":"pending"}
-            ]
-          }
-          QUE
+          node -e "const fs=require('node:fs'); const q={version:1,items:[
+            {title:'Cherchell',pageId:2034884,topic:'History & Geography',source:'cefr_repair_pilot',priority:0,sourceUrl:'https://en.wikipedia.org/wiki/Cherchell',hasLeadImage:true,status:'pending'},
+            {title:'Ancient Olympic Games',pageId:19098431,topic:'Sports',source:'cefr_repair_pilot',priority:0,sourceUrl:'https://en.wikipedia.org/wiki/Ancient_Olympic_Games',hasLeadImage:true,status:'pending'},
+            {title:'Changeling',pageId:396412,topic:'Health',source:'cefr_repair_pilot',priority:0,sourceUrl:'https://en.wikipedia.org/wiki/Changeling',hasLeadImage:true,status:'pending'},
+            {title:'GOAT (sports culture)',pageId:79511869,topic:'Sports',source:'cefr_repair_pilot',priority:0,sourceUrl:'https://en.wikipedia.org/wiki/GOAT_(sports_culture)',hasLeadImage:true,status:'pending'},
+            {title:'Badger culling in the United Kingdom',pageId:36471858,topic:'Health',source:'cefr_repair_pilot',priority:0,sourceUrl:'https://en.wikipedia.org/wiki/Badger_culling_in_the_United_Kingdom',hasLeadImage:true,status:'pending'}
+          ]}; fs.writeFileSync('/tmp/saga-legacy-cefr-repair-pilot/queue.json',JSON.stringify(q,null,2));"
 
       - name: Generate five replacement articles in isolated catalog
         id: repair
