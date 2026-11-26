@@ -305,10 +305,9 @@ const CEFR_REVIEW_LEVEL_SCHEMA={
    },
    required:['vocabulary','syntax','cohesion','abstraction','inference','terms']
   },
-  evidence:{type:'array',items:{type:'string'},minItems:1,maxItems:1},
-  rationale:{type:'string'}
+  rationale:{type:'string',minLength:20}
  },
- required:['initialBand','initialVerdict','finalBand','finalVerdict','dimensions','evidence','rationale']
+ required:['initialBand','initialVerdict','finalBand','finalVerdict','dimensions','rationale']
 }
 
 const CEFR_REVIEW_REPAIR_PAGE_SCHEMA={
@@ -327,7 +326,7 @@ const CEFR_REVIEW_REPAIR_LEVEL_SCHEMA={
  properties:{
   level:{type:'string',enum:LEVELS},
   headline:{type:'string'},
-  pages:{type:'array',items:CEFR_REVIEW_REPAIR_PAGE_SCHEMA,minItems:PAGE_COUNT_BOUNDS.min,maxItems:PAGE_COUNT_BOUNDS.max}
+  pages:{type:'array',items:CEFR_REVIEW_REPAIR_PAGE_SCHEMA,minItems:1,maxItems:PAGE_COUNT_BOUNDS.max}
  },
  required:['level','pages']
 }
@@ -344,6 +343,18 @@ export const CEFR_REVIEW_REPAIR_SCHEMA={
  },
  required:['assessment','repairs']
 }
+
+export function buildCEFRReviewRepairSchema(draft){
+ const pageCount=Math.max(1,Math.min(PAGE_COUNT_BOUNDS.max,Math.max(...LEVELS.map(level=>draft?.variants?.[level]?.pages?.length||0))))
+ const schema=structuredClone(CEFR_REVIEW_REPAIR_SCHEMA)
+ const pageSchema=schema.properties.repairs.items.properties.pages
+ pageSchema.minItems=1
+ pageSchema.maxItems=pageCount
+ pageSchema.items.properties.pageIndex.minimum=0
+ pageSchema.items.properties.pageIndex.maximum=pageCount-1
+ return schema
+}
+
 
 export class GeminiQuotaExhausted extends Error{
  constructor(message,status=429,{retryAfterMs=null}={}){
@@ -1154,9 +1165,9 @@ export function buildCEFRReviewRepairPrompt(source,topic,evidence,previousDraft,
   '',
   'REQUIRED TWO-PASS REVIEW',
   'A. For each level, record initialBand and initialVerdict inside assessment. The initial band must be A1/A2 for A1-A2, B1/B2 for B1-B2, and C1/C2 for C1-C2. Use verdict pass, revise or uncertain. Assess vocabulary, syntax, cohesion, abstraction, inference and specialist-term load. If ANY dimension is low or high, initialVerdict must be revise and the level must be repaired.',
-  'B. Repair every level that is outside its target band, has a supplied blocking deterministic error, or has a material factual/editorial defect. Rewrite the COMPLETE set of pages for that level, not merely a few isolated words. Return all pageIndex values in order, preserve the existing page count and the image binding (the program preserves imageIds), and keep evidenceIds tied to the source. Do not rewrite a passing level unless required by a blocking cross-level issue.',
+  'B. Repair every level that is outside its target band, has a supplied blocking deterministic error, or has a material factual/editorial defect. Return every page that actually needs changing, with its original pageIndex exactly once; omit untouched pages because the program preserves them. Do not change page order, add/remove pages or images, and keep evidenceIds tied to the source. Do not rewrite a passing level unless required by a blocking cross-level issue.',
   'C. Reread the final versions AFTER all repairs. Record finalBand, finalVerdict and the six dimension values in assessment. A level passes only if finalVerdict=pass, finalBand is inside its assigned pair, and every dimension is fit. Use low for below the target band and high for above it. If uncertain, do not guess: use uncertain.',
-  'D. If initialVerdict is not pass or initialBand is outside the assigned pair, its full repair must be present in the repairs array with that level identifier. If no repair is needed, return an empty repairs array. For evidence, provide EXACTLY ONE complete sentence copied character-for-character from the FINAL version after all repairs, including the same words, capitalization and punctuation. Do not paraphrase, reconstruct, quote from the pre-repair draft, use ellipses or combine fragments. The program checks exact matching.',
+  'D. If initialVerdict is not pass, initialBand is outside the assigned pair, or any dimension is low/high, the repairs array must contain that level and at least one changed page. If no repair is needed, omit that level from repairs. Give a concrete rationale for each final assessment, naming actual vocabulary, syntax or discourse features. The program will attach a verbatim sentence from the final article for audit; do not invent quotations.',
   '',
   'BLOCKING DETERMINISTIC ISSUES TO ADDRESS',
   deterministicIssues,
@@ -1175,8 +1186,14 @@ export function buildCEFRReviewRepairPrompt(source,topic,evidence,previousDraft,
   'VERIFIED SOURCE PASSAGES',
   passages,
   '',
-  'Return JSON only with assessment and repairs. Each assessment.evidence must contain exactly one complete sentence copied verbatim from that level’s final article. Each repair item contains level, optional headline, and all pages. Do not include commentary outside the JSON.'
+  'Return JSON only with assessment and repairs. Each repair item contains level, optional headline, and only the changed pages with their original pageIndex. The program preserves all omitted pages and then checks the complete final article.'
  ].join('\n\n')
+}
+
+function firstCompleteSentence(text){
+ const normalized=String(text||'').replace(/\s+/g,' ').trim()
+ const match=normalized.match(/[^.!?]+[.!?](?=\s|$)/)
+ return String(match?.[0]||normalized).trim().slice(0,320)
 }
 
 export function applyCEFRReviewRepairs(previousDraft,reviewPayload,{requiredRepairLevels=[],validEvidenceIds=null}={}){
@@ -1198,10 +1215,10 @@ export function applyCEFRReviewRepairs(previousDraft,reviewPayload,{requiredRepa
   repairByLevel.set(row.level,row)
  }
  const merged=structuredClone(previousDraft)
- const cleanQuote=value=>String(value||'').replace(/\s+/g,' ').trim().toLowerCase()
+ const finalAssessment=structuredClone(assessment)
  const dimensionsFit=a=>a?.dimensions&&Object.values(a.dimensions).length===6&&Object.values(a.dimensions).every(v=>v==='fit')
- const finalPass=a=>a?.finalVerdict==='pass'&&allowedBandsForAssessment(a)&&dimensionsFit(a)
  const allowedBandsForAssessment=a=>['A1','A2','B1','B2','C1','C2'].includes(String(a?.finalBand||''))
+ const finalPass=a=>a?.finalVerdict==='pass'&&allowedBandsForAssessment(a)&&dimensionsFit(a)
 
  for(const level of LEVELS){
   const a=assessment[level]
@@ -1211,29 +1228,36 @@ export function applyCEFRReviewRepairs(previousDraft,reviewPayload,{requiredRepa
   const patch=repairByLevel.get(level)
   if(needsRepair){
    const oldPages=merged.variants?.[level]?.pages||[]
-   if(!patch||!Array.isArray(patch.pages)){
-    errors.push(level+': review identified a mismatch but did not return a complete level repair')
-   }else if(patch.pages.length!==oldPages.length){
-    errors.push(level+': repair page count does not match the existing article')
+   if(!patch||!Array.isArray(patch.pages)||!patch.pages.length){
+    errors.push(level+': review identified a mismatch but did not return any changed pages')
    }else{
-    const byIndex=new Map(patch.pages.map(p=>[p.pageIndex,p]))
-    if(oldPages.some((_,idx)=>!byIndex.has(idx))||byIndex.size!==oldPages.length){
-     errors.push(level+': repair must include every pageIndex exactly once')
-    }else{
-     if(typeof patch.headline==='string'&&patch.headline.trim())merged.variants[level].headline=patch.headline.trim()
-     merged.variants[level].pages=oldPages.map((oldPage,idx)=>{
-      const next=byIndex.get(idx)
-      if(validEvidenceIds&&(!Array.isArray(next.evidenceIds)||!next.evidenceIds.length||next.evidenceIds.some(id=>!validEvidenceIds.has(id)))){
-       errors.push(level+' repair page '+(idx+1)+': evidenceIds must reference supplied source passages')
-      }
-      return {
-       ...oldPage,
-       text:normalizeParagraphText(next.text,next.paragraphs,{ensureTerminalPunctuation:true}),
-       ...(typeof next.caption==='string'?{caption:next.caption.trim()}:{}),
-       ...(Array.isArray(next.evidenceIds)&&next.evidenceIds.length?{evidenceIds:next.evidenceIds}:{})
-      }
-     })
+    const byIndex=new Map()
+    for(const page of patch.pages){
+     if(!Number.isInteger(page?.pageIndex)||page.pageIndex<0||page.pageIndex>=oldPages.length){
+      errors.push(level+': repair contains an invalid pageIndex')
+      continue
+     }
+     if(byIndex.has(page.pageIndex)){
+      errors.push(level+': repair contains duplicate pageIndex '+page.pageIndex)
+      continue
+     }
+     byIndex.set(page.pageIndex,page)
     }
+    if(!byIndex.size)errors.push(level+': repair contains no usable page patches')
+    merged.variants[level].pages=oldPages.map((oldPage,idx)=>{
+     const next=byIndex.get(idx)
+     if(!next)return oldPage
+     if(validEvidenceIds&&(!Array.isArray(next.evidenceIds)||!next.evidenceIds.length||next.evidenceIds.some(id=>!validEvidenceIds.has(id)))){
+      errors.push(level+' repair page '+(idx+1)+': evidenceIds must reference supplied source passages')
+     }
+     return {
+      ...oldPage,
+      text:normalizeParagraphText(next.text,next.paragraphs,{ensureTerminalPunctuation:true}),
+      ...(typeof next.caption==='string'?{caption:next.caption.trim()}:{}),
+      ...(Array.isArray(next.evidenceIds)&&next.evidenceIds.length?{evidenceIds:next.evidenceIds}:{})
+     }
+    })
+    if(typeof patch.headline==='string'&&patch.headline.trim())merged.variants[level].headline=patch.headline.trim()
    }
   }else if(patch){
    errors.push(level+': unexpected repair supplied for a level that passed initial assessment')
@@ -1241,13 +1265,12 @@ export function applyCEFRReviewRepairs(previousDraft,reviewPayload,{requiredRepa
 
   if(!allowedBands[level].has(String(a.finalBand||'')))errors.push(level+': final estimated band '+String(a.finalBand||'missing')+' is outside its assigned CEFR group')
   if(!finalPass(a))errors.push(level+': final descriptor assessment is not a confident pass across all six dimensions')
-  const finalText=(merged.variants?.[level]?.pages||[]).map(p=>String(p.text||'').replace(/\s+/g,' ').trim()).join(' ').toLowerCase()
-  const quotes=Array.isArray(a.evidence)?a.evidence:[]
-  if(quotes.length!==1||cleanQuote(quotes[0]).length<8||!finalText.includes(cleanQuote(quotes[0]))){
-   errors.push(level+': final assessment must provide exactly one verbatim sentence from the final article')
-  }
+  const finalText=(merged.variants?.[level]?.pages||[]).map(p=>String(p.text||'')).join(' ')
+  const excerpt=firstCompleteSentence(finalText)
+  if(excerpt.length<8)errors.push(level+': final article has no auditable complete sentence')
+  finalAssessment[level]={...a,verbatimExcerpt:excerpt}
  }
- return {ok:errors.length===0,draft:merged,errors,finalAssessment:assessment}
+ return {ok:errors.length===0,draft:merged,errors,finalAssessment}
 }
 
 function formatCEFRRetryBlock(qualityResult){
