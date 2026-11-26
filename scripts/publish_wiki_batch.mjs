@@ -2100,20 +2100,11 @@ export function normalizeDraftForCatalog(rawDraft,{source,evidence,verifiedPhoto
  if(rawDraft?.levelPlans&&typeof rawDraft.levelPlans==='object'){
   levelPlans=Object.fromEntries(LEVELS.map(level=>{
    const rawPlan=rawDraft.levelPlans[level]
-   if(!rawPlan||typeof rawPlan!=='object'||!Array.isArray(rawPlan.pages))return [level,null]
-   const pages=rawPlan.pages.map((page,idx)=>{
-    const focus=String(page?.focus||'').replace(/\s+/g,' ').trim()
-    const ids=(Array.isArray(page?.evidenceIds)?page.evidenceIds:[]).filter(id=>validIds.has(id))
-    return {
-     pageIndex:Number.isInteger(page?.pageIndex)?page.pageIndex:idx,
-     focus,
-     factIds:Array.isArray(page?.factIds)?page.factIds.map(v=>String(v||'').trim()).filter(Boolean):[],
-     evidenceIds:ids
-    }
-   })
+   if(!rawPlan||typeof rawPlan!=='object'||!Array.isArray(rawPlan.selectedFactIds))return [level,null]
    return [level,{
     readerObjective:String(rawPlan.readerObjective||'').replace(/\s+/g,' ').trim(),
-    pages
+    selectedFactIds:rawPlan.selectedFactIds.map(v=>String(v||'').trim()).filter(Boolean),
+    depthNotes:String(rawPlan.depthNotes||'').replace(/\s+/g,' ').trim()
    }]
   }))
  }
