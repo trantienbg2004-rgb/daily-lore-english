@@ -118,7 +118,7 @@ async function runTopic(id){
   initialErrors:result.initialQuality?.errors||[],
   reviewerErrors:result.review?.errors||[],
   finalErrors:result.finalQuality?.errors||[],
-  finalBands:Object.fromEntries(Object.entries(result.review?.finalAssessment||{}).map(([k,v])=>[k,{band:v.estimatedBand,verdict:v.verdict}])),
+  finalBands:Object.fromEntries(Object.entries(result.review?.finalAssessment||{}).map(([k,v])=>[k,{band:v.finalBand,verdict:v.finalVerdict}])),
   repairedLevels:result.review?.repairedLevels||[],
   error:result.error||null
  }))
@@ -148,7 +148,7 @@ async function main(){
    reviewErrors:x.review?.errors||[],
    finalQuality:x.finalQuality?.ok??false,
    finalErrors:x.finalQuality?.errors||[],
-   finalBands:Object.fromEntries(Object.entries(x.review?.finalAssessment||{}).map(([k,v])=>[k,{band:v.estimatedBand,verdict:v.verdict}])),
+   finalBands:Object.fromEntries(Object.entries(x.review?.finalAssessment||{}).map(([k,v])=>[k,{band:v.finalBand,verdict:v.finalVerdict}])),
    repairedLevels:x.review?.repairedLevels||[],
    error:x.error||null
   })),
