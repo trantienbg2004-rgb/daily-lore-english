@@ -708,7 +708,8 @@ function pageImageToken(page){
  *    - Photo pages:     A1-A2 34-46w | B1-B2 32-44w | C1-C2 28-42w
  *    - Text-only pages: A1-A2 55-72w | B1-B2 52-68w | C1-C2 46-64w
  * 5. Concise image captions (when supplied), complete sentences, non-dry Page 1 hook,
- *    and measurable CEFR progression: A1-A2 < B1-B2 < C1-C2.
+ *    and a mandatory descriptor-based CEFR review after deterministic validation.
+ *    FKGL, wordlists and sentence-length progression are diagnostic signals only.
  */
 const FACT_STOPWORDS=new Set('about after again also among another because before being between could every first from great have into just later long made make many more most much must never often only other over people same should since some still such than that their them then there these they this those through time today under very well were what when where which while with would years'.split(' '))
 const UNCERTAINTY_SOURCE_RE=/\b(?:disputed|debated|uncertain|unclear|estimated|approximately|roughly|allegedly|possibly|probably|may cause|can cause|could cause|side effects?|risk of|adverse effects?|safety concerns?|overdose|toxic|fatal|warning|caution|contraindicated|not proven|unproven|scholars disagree|historians disagree|experts disagree|controversial|some (?:scholars|historians|scientists|researchers|critics|experts)|except (?:for|when)|under certain conditions)\b/i
