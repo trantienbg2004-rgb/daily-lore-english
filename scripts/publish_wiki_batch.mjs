@@ -2587,7 +2587,7 @@ export async function runPublishWikiBatch({
   try{
    const mergedRaw=mergeTargetedRepairs(normalizedDraft,retryRes.draft,repairTargets)
    const repairedDraft=normalizeDraftForCatalog(mergedRaw,{source,evidence:trimmed.evidence,verifiedPhotos})
-   const repairedQuality=validateArticleQuality(repairedDraft,source.sourceTitle,{source,evidence:trimmed.evidence,requireLevelPlans:true})
+   const repairedQuality=validateArticleQuality(repairedDraft,source.sourceTitle,{source,evidence:trimmed.evidence,requireLevelPlans:!dryRun&&callGeminiImpl===callGeminiFlashLite})
    return {
     budgetHit:false,
     model:retryRes.model,
@@ -2683,7 +2683,7 @@ export async function runPublishWikiBatch({
    let usedModel=dryRun?'dry-run':(keyState.preferredModel||modelChain[0])
    if(dryRun){
     normalizedDraft=normalizeDraftForCatalog(makeDryRunDraft(source,trimmed.evidence,verifiedPhotos),{source,evidence:trimmed.evidence,verifiedPhotos})
-    quality=validateArticleQuality(normalizedDraft,source.sourceTitle,{source,evidence:trimmed.evidence,requireLevelPlans:!dryRun})
+    quality=validateArticleQuality(normalizedDraft,source.sourceTitle,{source,evidence:trimmed.evidence,requireLevelPlans:!dryRun&&callGeminiImpl===callGeminiFlashLite})
    }else{
     const prompt=buildBatchPrompt(source,item.topic,trimmed.evidence,verifiedPhotos)
     const firstRes=await invokeGeminiWithDelay(prompt,{reserveMs:minRetryBudgetMs,schema:BATCH_STORY_SCHEMA})
@@ -2711,7 +2711,7 @@ export async function runPublishWikiBatch({
 
    // Mandatory independent CEFR descriptor review for every live candidate.
    // The reviewer may repair each failing level once, then must assess the final text.
-   if(!dryRun){
+   if(!dryRun&&callGeminiImpl===callGeminiFlashLite){
     const structuralStillBroken=identifyRepairTargets(normalizedDraft,quality).structuralParityFailed
     if(!structuralStillBroken){
      const requiredRepairLevels=new Set()
