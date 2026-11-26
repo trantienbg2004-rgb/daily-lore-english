@@ -41,7 +41,7 @@ async function invoke(prompt,schema,label){
  }catch(error){
   throw Object.assign(error,{pilotStage:label})
  }
-
+}
 
 function levelsNeedingRepair(quality){
  const out=new Set()
