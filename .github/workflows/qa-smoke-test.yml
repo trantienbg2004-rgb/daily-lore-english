@@ -11,6 +11,9 @@ on:
       - 'src/lib/recommendationEngine.js'
       - 'src/lib/feedQueue.js'
       - 'src/App.jsx'
+      - 'scripts/wiki/cefrProfiler.mjs'
+      - 'scripts/publish_wiki_batch.mjs'
+      - 'scripts/test/cefr-profiler.test.mjs'
       - 'scripts/test/saga-recommendation-v2.test.mjs'
       - '.github/workflows/qa-smoke-test.yml'
   workflow_dispatch:

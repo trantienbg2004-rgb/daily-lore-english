@@ -402,11 +402,13 @@ function joinVariantPages(variant){
 export function evaluateArticleCEFR(variants,{
  sourceTitle='',
  thresholds=CEFR_THRESHOLDS,
+ naturalPilot=false,
  wordlist=null,
  lemmaMap=null
 }={}){
  const profiles={}
  const errors=[]
+ const warnings=[]
  let penalty=0
 
  for(const level of LEVELS){
@@ -462,18 +464,27 @@ export function evaluateArticleCEFR(variants,{
 
  // 3. C1-C2 objective gates
  const tC=thresholds['C1-C2']
- if(c.fkgl<tC.minFkgl){
+ if(naturalPilot&&c.fkgl<tC.minFkgl)warnings.push('C1-C2 FKGL below legacy minimum; inspect naturalness and level separation manually')
+ if(!naturalPilot&&c.fkgl<tC.minFkgl){
   const diff=Number((tC.minFkgl-c.fkgl).toFixed(2))
   penalty+=diff*3.5
-  errors.push(`C1-C2 CEFR gate failed: FKGL ${c.fkgl} is below min ${tC.minFkgl} (avg sentence ${c.avgSentenceLength}w; use richer academic syntax and advanced C1-C2 vocabulary)`)
+  errors.push(`C1-C2 CEFR gate failed: FKGL ${c.fkgl} is below min ${tC.minFkgl} (avg sentence ${c.avgSentenceLength}w; check natural advanced reading demands; do not add academic jargon or length for its own sake)`)
  }
- if(!(c.lexicalProfile.b2PlusC1C2OrUnlistedPct>b.lexicalProfile.b2PlusC1C2OrUnlistedPct)){
+ const knownAdvanced=p=>p.lexicalProfile.b2Pct+p.lexicalProfile.c1Pct+p.lexicalProfile.c2Pct
+ if(naturalPilot&&!(knownAdvanced(c)>knownAdvanced(b))){
+  errors.push('C1-C2 CEFR lexical differentiation: known B2-C2 vocabulary share must exceed B1-B2; unlisted words are not evidence of advanced proficiency')
+  penalty+=1.2
+ }
+ if(!naturalPilot&&!(c.lexicalProfile.b2PlusC1C2OrUnlistedPct>b.lexicalProfile.b2PlusC1C2OrUnlistedPct)){
   const diff=Math.max(0.5,b.lexicalProfile.b2PlusC1C2OrUnlistedPct-c.lexicalProfile.b2PlusC1C2OrUnlistedPct+0.5)
   penalty+=diff*1.2
   errors.push(`C1-C2 CEFR lexical progression failed: C1-C2 advanced ratio (B2+C1+C2+unlisted = ${c.lexicalProfile.b2PlusC1C2OrUnlistedPct}%) must exceed B1-B2 (${b.lexicalProfile.b2PlusC1C2OrUnlistedPct}%)`)
  }
  const gapCB=Number((c.fkgl-b.fkgl).toFixed(2))
- if(gapCB<tC.minFkglGapAboveB1){
+ if(naturalPilot&&gapCB<tC.minFkglGapAboveB1)warnings.push('C1-C2 FKGL gap below legacy minimum; inspect differentiation manually')
+ if(naturalPilot&&c.fkgl>18)warnings.push('C1-C2 FKGL above 18: exploratory readability warning, not a CEFR ceiling')
+ if(naturalPilot&&c.lexicalProfile.unlistedPct>0)warnings.push('C1-C2 unlisted vocabulary: inspect essential terms, names and unnecessarily rare wording separately')
+ if(!naturalPilot&&gapCB<tC.minFkglGapAboveB1){
   const diff=tC.minFkglGapAboveB1-gapCB
   penalty+=diff*4
   errors.push(`CEFR FKGL separation failed: fkgl(C1-C2) ${c.fkgl} - fkgl(B1-B2) ${b.fkgl} = ${gapCB} (must be >= ${tC.minFkglGapAboveB1})`)
@@ -482,6 +493,7 @@ export function evaluateArticleCEFR(variants,{
  return {
   ok:errors.length===0,
   errors,
+  warnings,
   profiles,
   gaps:{
    bMinusA:gapBA,
