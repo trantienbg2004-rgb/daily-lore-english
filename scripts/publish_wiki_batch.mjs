@@ -1328,7 +1328,7 @@ export function applyCEFRReviewRepairs(previousDraft,reviewPayload,{requiredRepa
     }
    }
   }else if(patch){
-   errors.push(level+': unexpected repair supplied for a level that passed initial assessment')
+   warnings.push(level+': ignored unnecessary repair because the initial assessment passed; preserved the original version')
   }
 
   if(!initialPass&&!changedArticleText)errors.push(level+': descriptor review required a text repair but no page text changed')
