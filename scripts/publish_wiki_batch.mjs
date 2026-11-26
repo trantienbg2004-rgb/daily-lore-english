@@ -1478,9 +1478,12 @@ export function mergeTargetedRepairs(previousDraft,repairPayload,repairTargets){
   if(!repairPayload.variants||typeof repairPayload.variants!=='object'){
    throw Error('Structural repair payload missing variants object')
   }
+  // A structural rebuild may regenerate page text and the visual map, but it must not
+  // silently discard or replace the source fact sheet, per-level reading plans,
+  // shared core facts, or other metadata used by downstream quality validation.
   return {
-   ...(repairPayload.factSheet?{factSheet:repairPayload.factSheet}:(previousDraft.factSheet?{factSheet:previousDraft.factSheet}:{})),
-   ...(Array.isArray(repairPayload.outline)?{outline:repairPayload.outline}:(Array.isArray(previousDraft.outline)?{outline:previousDraft.outline}:{})),
+   ...structuredClone(previousDraft),
+   ...(Array.isArray(repairPayload.outline)?{outline:repairPayload.outline}:{}),
    variants:repairPayload.variants
   }
  }
