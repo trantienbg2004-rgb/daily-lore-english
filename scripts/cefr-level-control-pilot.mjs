@@ -6,7 +6,10 @@ import {
  buildCEFRReviewRepairPrompt,
  buildGeminiGenerationConfig,
  buildCEFRReviewRepairSchema,
+ buildTargetedRepairPrompt,
  callGeminiWithFailover,
+ identifyRepairTargets,
+ mergeTargetedRepairs,
  resolveGeminiApiKeys,
  resolveGeminiModelChain,
  normalizeDraftForCatalog,
@@ -91,32 +94,54 @@ async function runTopic(id){
   })
   result.initialQuality={ok:quality.ok,errors:quality.errors,metrics:quality.metrics,heuristicWarnings:quality.cefr?.errors||[]}
 
-  const reviewPrompt=buildCEFRReviewRepairPrompt(fixture.source,fixture.topic,fixture.evidence,draft,quality)
-  const review=await invoke(reviewPrompt,buildCEFRReviewRepairSchema(draft),id+' descriptor review',{reviewer:true})
-  result.reviewUsage=review.usage||null
-  const applied=applyCEFRReviewRepairs(draft,review.draft,{
-   requiredRepairLevels:levelsNeedingRepair(quality),
-   validEvidenceIds:new Set(fixture.evidence.map(x=>x.id))
-  })
-  result.review={
-   ok:applied.ok,
-   errors:applied.errors,
-   assessment:review.draft?.assessment||null,
-   finalAssessment:applied.finalAssessment||null,
-   repairedLevels:(review.draft?.repairs||[]).map(x=>x.level),
-   repairPageIndexes:Object.fromEntries((review.draft?.repairs||[]).map(x=>[x.level,(x.pages||[]).map(p=>p.pageIndex)]))
+  // Match production: structural page/image parity gets one full structural rebuild
+  // before the independent CEFR reviewer is called.
+  const structuralTargets=identifyRepairTargets(draft,quality)
+  if(!quality.ok&&structuralTargets.structuralParityFailed){
+   const repairPrompt=buildTargetedRepairPrompt(fixture.source,fixture.topic,fixture.evidence,draft,quality,fixture.photos,structuralTargets)
+   const repair=await invoke(repairPrompt,generationSchema,id+' structural rebuild')
+   const mergedRaw=mergeTargetedRepairs(draft,repair.draft,structuralTargets)
+   draft=normalizeDraftForCatalog(mergedRaw,{source:fixture.source,evidence:fixture.evidence,verifiedPhotos:fixture.photos})
+   quality=validateArticleQuality(draft,fixture.source.sourceTitle,{
+    source:fixture.source,
+    evidence:fixture.evidence,
+    requireLevelPlans:true
+   })
+   result.structuralRepair={model:repair.model,ok:quality.ok,errors:quality.errors}
   }
-  draft=normalizeDraftForCatalog(applied.draft,{source:fixture.source,evidence:fixture.evidence,verifiedPhotos:fixture.photos})
-  quality=validateArticleQuality(draft,fixture.source.sourceTitle,{
-   source:fixture.source,
-   evidence:fixture.evidence,
-   requireLevelPlans:true
-  })
-  result.finalQuality={ok:quality.ok,errors:quality.errors,metrics:quality.metrics,heuristicWarnings:quality.cefr?.errors||[]}
-  result.passed=applied.ok&&quality.ok&&['A1-A2','B1-B2','C1-C2'].every(level=>{
-   const a=applied.finalAssessment?.[level]
-   return a?.finalVerdict==='pass'&&['A1','A2','B1','B2','C1','C2'].includes(a.finalBand)
-  })
+
+  const structuralStillBroken=identifyRepairTargets(draft,quality).structuralParityFailed
+  if(!structuralStillBroken){
+   const reviewPrompt=buildCEFRReviewRepairPrompt(fixture.source,fixture.topic,fixture.evidence,draft,quality)
+   const review=await invoke(reviewPrompt,buildCEFRReviewRepairSchema(draft),id+' descriptor review',{reviewer:true})
+   result.reviewUsage=review.usage||null
+   const applied=applyCEFRReviewRepairs(draft,review.draft,{
+    requiredRepairLevels:levelsNeedingRepair(quality),
+    validEvidenceIds:new Set(fixture.evidence.map(x=>x.id))
+   })
+   result.review={
+    ok:applied.ok,
+    errors:applied.errors,
+    assessment:review.draft?.assessment||null,
+    finalAssessment:applied.finalAssessment||null,
+    repairedLevels:(review.draft?.repairs||[]).map(x=>x.level),
+    repairPageIndexes:Object.fromEntries((review.draft?.repairs||[]).map(x=>[x.level,(x.pages||[]).map(p=>p.pageIndex)]))
+   }
+   draft=normalizeDraftForCatalog(applied.draft,{source:fixture.source,evidence:fixture.evidence,verifiedPhotos:fixture.photos})
+   quality=validateArticleQuality(draft,fixture.source.sourceTitle,{
+    source:fixture.source,
+    evidence:fixture.evidence,
+    requireLevelPlans:true
+   })
+   result.finalQuality={ok:quality.ok,errors:quality.errors,metrics:quality.metrics,heuristicWarnings:quality.cefr?.errors||[]}
+   result.passed=applied.ok&&quality.ok&&['A1-A2','B1-B2','C1-C2'].every(level=>{
+    const a=applied.finalAssessment?.[level]
+    return a?.finalVerdict==='pass'&&['A1','A2','B1','B2','C1','C2'].includes(a.finalBand)
+   })
+  }else{
+   result.review={ok:false,errors:['Structural page/image parity remained unresolved; production also skips descriptor review in this state.']}
+   result.finalQuality={ok:quality.ok,errors:quality.errors,metrics:quality.metrics,heuristicWarnings:quality.cefr?.errors||[]}
+  }
   result.finalArticle=draft
  }catch(error){
   result.error=safeError(error)
@@ -127,6 +152,7 @@ async function runTopic(id){
   sourceTitle:result.sourceTitle,
   passed:result.passed,
   initialErrors:result.initialQuality?.errors||[],
+  structuralErrors:result.structuralRepair?.errors||[],
   reviewerErrors:result.review?.errors||[],
   finalErrors:result.finalQuality?.errors||[],
   finalBands:Object.fromEntries(Object.entries(result.review?.finalAssessment||{}).map(([k,v])=>[k,{band:v.finalBand,verdict:v.finalVerdict}])),
