@@ -148,7 +148,7 @@ test('CEFR descriptor reviewer accepts in-band assessments, merges partial repai
 
  const badHeadline=structuredClone(passPayload)
  badHeadline.assessment['A1-A2']=assessment('A2','People built a small town','B1','revise')
- badHeadline.repairs=[{level:'A1-A2',headline:'The History of Radio',pages:[{pageIndex:0,text:'People built a small town near the river. Families shared food and tools.',evidenceIds:['P1']}]}]
+ badHeadline.repairs=[{level:'A1-A2',headline:'The History of Radio',pages:[{pageIndex:0,text:'People built a small town beside the river. Families shared food and tools.',evidenceIds:['P1']}]}]
  const headlineSafe=applyCEFRReviewRepairs(draft,badHeadline)
  assert.equal(headlineSafe.ok,true,headlineSafe.errors.join(' | '))
  assert.equal(headlineSafe.draft.variants['A1-A2'].headline,'A Simple Story About Town Life','Invalid short reviewer headline must not replace a valid original')
