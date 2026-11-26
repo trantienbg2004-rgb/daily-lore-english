@@ -296,6 +296,14 @@ test('content engine: prompt uses single-source-of-truth midpoint targets & natu
  const goodQuality=validateArticleQuality(goodDraft,source.sourceTitle,{source,evidence:trimmed.evidence})
  assert.equal(goodQuality.ok,true,`Expected valid quality draft, got: ${goodQuality.errors.join(' | ')}`)
 
+ // Natural qualification phrases such as “though” and “according to” preserve source uncertainty.
+ const naturalHedgeDraft=structuredClone(goodDraft)
+ for(const level of ['A1-A2','B1-B2','C1-C2']){
+  naturalHedgeDraft.variants[level].pages[3].text='The source leaves this detail unresolved, though it records the event.'
+ }
+ const naturalHedgeCheck=validateFactualConsistency(naturalHedgeDraft,{source,evidence:trimmed.evidence})
+ assert.equal(naturalHedgeCheck.errors.some(e=>/omits source uncertainty\/safety qualification|omits nuance\/caveat language/.test(e)),false,naturalHedgeCheck.errors.join(' | '))
+
  // 1. Fabricated year & quantity not in source evidence
  const fabDraft=structuredClone(goodDraft)
  fabDraft.variants['B1-B2'].pages[0].text=fabDraft.variants['B1-B2'].pages[0].text.replace('1884','1749')+' Builders moved 950 tons of ore.'
