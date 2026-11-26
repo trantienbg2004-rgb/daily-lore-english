@@ -1224,7 +1224,8 @@ function firstCompleteSentence(text){
 
 export function applyCEFRReviewRepairs(previousDraft,reviewPayload,{requiredRepairLevels=[],validEvidenceIds=null}={}){
  const errors=[]
- if(!reviewPayload||typeof reviewPayload!=='object')return {ok:false,draft:previousDraft,errors:['Missing CEFR review payload']}
+ const warnings=[]
+ if(!reviewPayload||typeof reviewPayload!=='object')return {ok:false,draft:previousDraft,errors:['Missing CEFR review payload'],warnings}
  const assessment=reviewPayload.assessment
  const repairRows=Array.isArray(reviewPayload.repairs)?reviewPayload.repairs:[]
  if(!assessment)return {ok:false,draft:previousDraft,errors:['CEFR review must include assessment for all three levels']}
@@ -1283,7 +1284,15 @@ export function applyCEFRReviewRepairs(previousDraft,reviewPayload,{requiredRepa
       ...(Array.isArray(next.evidenceIds)&&next.evidenceIds.length?{evidenceIds:next.evidenceIds}:{})
      }
     })
-    if(typeof patch.headline==='string'&&patch.headline.trim())merged.variants[level].headline=patch.headline.trim()
+    if(typeof patch.headline==='string'&&patch.headline.trim()){
+     const candidateHeadline=patch.headline.replace(/\s+/g,' ').trim()
+     const candidateWords=wordCount(candidateHeadline)
+     if(candidateWords<HEADLINE_WORD_BOUNDS.min||candidateWords>HEADLINE_WORD_BOUNDS.max){
+      warnings.push(level+': ignored reviewer headline outside '+HEADLINE_WORD_BOUNDS.min+'-'+HEADLINE_WORD_BOUNDS.max+' words; preserved the existing headline')
+     }else{
+      merged.variants[level].headline=candidateHeadline
+     }
+    }
    }
   }else if(patch){
    errors.push(level+': unexpected repair supplied for a level that passed initial assessment')
@@ -1296,7 +1305,7 @@ export function applyCEFRReviewRepairs(previousDraft,reviewPayload,{requiredRepa
   if(excerpt.length<8)errors.push(level+': final article has no auditable complete sentence')
   finalAssessment[level]={...a,verbatimExcerpt:excerpt}
  }
- return {ok:errors.length===0,draft:merged,errors,finalAssessment}
+ return {ok:errors.length===0,draft:merged,errors,warnings,finalAssessment}
 }
 
 function formatCEFRRetryBlock(qualityResult){
