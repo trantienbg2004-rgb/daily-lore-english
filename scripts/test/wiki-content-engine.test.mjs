@@ -283,6 +283,7 @@ test('content engine: prompt uses single-source-of-truth midpoint targets & natu
  assert.match(prompt,new RegExp(`${PAGE_COUNT_BOUNDS.min}-${PAGE_COUNT_BOUNDS.max} PAGE OUTLINE`))
  assert.match(prompt,new RegExp(`${CAPTION_LIMITS.maxChars} chars`))
  assert.match(prompt,/artificial academic jargon/i)
+ assert.match(prompt,/Do not infer absence from silence/i)
 
  // Valid uncertainty-preserving draft passes both factual consistency and full quality gate
  const goodDraft=normalizeDraftForCatalog(makeSynchronizedDraft('Stone Citadel',{withUncertainty:true}),{
@@ -303,6 +304,13 @@ test('content engine: prompt uses single-source-of-truth midpoint targets & natu
  assert.ok(fabCheck.errors.some(e=>/ungrounded year "1749"/i.test(e)))
  assert.ok(fabCheck.errors.some(e=>/ungrounded quantity "950 tons"/i.test(e)))
  assert.ok(fabCheck.errors.some(e=>/Cross-level date mismatch on page 1/i.test(e)))
+
+ // 1b. Do not turn source silence into a claim that nobody else worked on the topic.
+ const exclusivityDraft=structuredClone(goodDraft)
+ exclusivityDraft.variants['A1-A2'].pages[2].text+=' Other inventors were not working on this idea.'
+ const exclusivityCheck=validateFactualConsistency(exclusivityDraft,{source,evidence:trimmed.evidence})
+ assert.equal(exclusivityCheck.ok,false)
+ assert.ok(exclusivityCheck.errors.some(e=>/unsupported exclusivity claim "other inventors were not"/i.test(e)))
 
  // 2. Cross-level factual drift on page 2 (disjoint evidence + zero topic overlap)
  const driftDraft=structuredClone(goodDraft)
