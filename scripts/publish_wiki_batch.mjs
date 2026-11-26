@@ -528,12 +528,19 @@ export function resolveGeminiModelChain({
  * Build an independent reviewer chain for one generated article.
  * The exact model used for generation is never allowed to review that same article.
  */
-export function buildIndependentCEFRReviewerChain(modelChain,generationModel){
- const generated=String(generationModel||'').trim().replace(/^models\//i,'').toLowerCase()
+export function buildIndependentCEFRReviewerChain(modelChain,generationModels){
+ const normalize=model=>String(model||'').trim().replace(/^models\//i,'').toLowerCase()
+ const generated=new Set((Array.isArray(generationModels)?generationModels:[generationModels]).map(normalize).filter(Boolean))
+ const seen=new Set()
  return (Array.isArray(modelChain)?modelChain:[])
   .map(model=>String(model||'').trim())
   .filter(Boolean)
-  .filter(model=>model.replace(/^models\//i,'').toLowerCase()!==generated)
+  .filter(model=>{
+   const key=normalize(model)
+   if(!key||generated.has(key)||seen.has(key))return false
+   seen.add(key)
+   return true
+  })
 }
 
 /**
