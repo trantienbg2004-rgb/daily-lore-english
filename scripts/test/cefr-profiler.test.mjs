@@ -12,6 +12,7 @@ import {
 import {
  applyCEFRReviewRepairs,
  buildCEFRReviewRepairPrompt,
+ buildCEFRReviewRepairSchema,
  buildQualityRetryPrompt,
  buildRoundRobinOrder,
  validateArticleQuality
@@ -167,6 +168,11 @@ test('CEFR reviewer prompt uses official reading descriptors and treats FKGL/wor
  }}
  const quality={ok:true,errors:[],metrics:{cefrHeuristicWarnings:['FKGL outside internal band'],'A1-A2':{fkgl:8,overLevelWords:['technical']}}}
  const prompt=buildCEFRReviewRepairPrompt(source,'General',evidence,draft,quality)
+ const repairSchema=buildCEFRReviewRepairSchema(draft)
+ assert.equal(repairSchema.properties.repairs.items.properties.pages.minItems,1)
+ assert.equal(repairSchema.properties.repairs.items.properties.pages.maxItems,1)
+ assert.equal(repairSchema.properties.repairs.items.properties.pages.items.properties.pageIndex.minimum,0)
+ assert.equal(repairSchema.properties.repairs.items.properties.pages.items.properties.pageIndex.maximum,0)
  assert.match(prompt,/Council of Europe CEFR Companion Volume/i)
  assert.match(prompt,/six dimensions/i)
  assert.match(prompt,/NOT CEFR DEFINITIONS/i)
