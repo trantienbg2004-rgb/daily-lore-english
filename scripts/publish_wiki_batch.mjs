@@ -1380,7 +1380,7 @@ FAILED CHECKS TO FIX:
 ${issues}${cefrBlock}
 
 REMINDERS:
-- Synchronized ${PAGE_COUNT_BOUNDS.min}-${PAGE_COUNT_BOUNDS.max} sections with identical section count and imageId at each pageIndex across A1-A2, B1-B2, C1-C2.
+- Keep ${PAGE_COUNT_BOUNDS.min}-${PAGE_COUNT_BOUNDS.max} pages and the same imageId at each matching pageIndex across levels, but retain separate levelPlans with different fact selection and explanation depth.
 - Use coherent, reasonably short paragraphs separated by "\\n\\n" (never pad with filler; flexible length around advisory pacing targets).
 - Advisory photo section targets: ${photoLine}
 - Advisory text-only section targets: ${textLine}
@@ -1420,7 +1420,7 @@ ${passages}`
   }
  }
 
- return `Perform a TARGETED REPAIR on ONLY the failing items below for "${source.sourceTitle}" (${topic}). Do NOT rewrite passing levels or passing pages. Stay 100% faithful to the source passages and shared fact sheet/outline.
+ return `Perform a TARGETED REPAIR on ONLY the failing items below for "${source.sourceTitle}" (${topic}). Do NOT rewrite passing levels or passing pages. Stay 100% faithful to the source passages and fact sheet. Preserve each level's own levelPlan; do not force identical page focus or facts across levels.
 
 FAILED CHECKS TO FIX:
 ${issues}${cefrBlock}
@@ -1428,7 +1428,7 @@ ${issues}${cefrBlock}
 TARGETED RULES:
 - Return pure JSON matching: {"repairs":{"A1-A2":{"headline?":"...","pages":[{"pageIndex":0,"text":"...","caption?":"...","evidenceIds":["P1"]}]},"B1-B2":{...},"C1-C2":{...}}}
 - Include ONLY the levels, headlines, and pageIndexes listed in ITEMS TO REPAIR below.
-- Preserve each section's exact topic beat, paragraph boundaries ("\\n\\n"), dates, numbers, uncertainty/safety conditions, and image binding (do NOT add or remove images).
+- Preserve the shared page/image map, each level's own planned focus, paragraph boundaries ("\\n\\n"), dates, numbers, uncertainty/safety conditions, and evidence IDs. Do not add or remove images.
 - Advisory photo section pacing: ${photoLine}
 - Advisory text-only section pacing: ${textLine}
 - Headlines: ${HEADLINE_WORD_BOUNDS.min}-${HEADLINE_WORD_BOUNDS.max} words, distinct across all 3 levels, never matching "${source.sourceTitle}".
