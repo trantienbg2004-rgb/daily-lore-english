@@ -283,6 +283,13 @@ test('content engine: prompt uses single-source-of-truth midpoint targets & natu
  assert.match(prompt,new RegExp(`${PAGE_COUNT_BOUNDS.min}-${PAGE_COUNT_BOUNDS.max} PAGE OUTLINE`))
  assert.match(prompt,new RegExp(`${CAPTION_LIMITS.maxChars} chars`))
  assert.match(prompt,/artificial academic jargon/i)
+ for(const level of ['A1-A2','B1-B2','C1-C2']){
+  const p=wordRangeMidpoint(LEVEL_WORD_BOUNDS[level].photo)
+  const t=wordRangeMidpoint(LEVEL_WORD_BOUNDS[level].text)
+  assert.ok(prompt.includes(level+': PHOTO = exactly '+p+' words'))
+  assert.ok(prompt.includes('TEXT ONLY = exactly '+t+' words'))
+ }
+ assert.match(prompt,/Count whitespace-separated words in the text field only/)
 
  // Valid uncertainty-preserving draft passes both factual consistency and full quality gate
  const goodDraft=normalizeDraftForCatalog(makeSynchronizedDraft('Stone Citadel',{withUncertainty:true}),{
@@ -348,6 +355,14 @@ test('content engine: targeted repair patches ONLY failing page/headline while p
  const repairPrompt=buildTargetedRepairPrompt(source,'History & Geography',trimmed.evidence,brokenDraft,qBefore,[leadPhoto],targets)
  assert.match(repairPrompt,/TARGETED REPAIR/)
  assert.match(repairPrompt,/Do NOT rewrite passing levels or passing pages/)
+ const snapshot=JSON.parse(repairPrompt.split('ITEMS TO REPAIR:\n')[1].split('\n\nSHARED FACT SHEET')[0])
+ const page=snapshot['B1-B2'].pages[0]
+ const n=brokenDraft.variants['B1-B2'].pages[1].text.trim().split(/\s+/).length
+ const target=wordRangeMidpoint(LEVEL_WORD_BOUNDS['B1-B2'].text)
+ assert.equal(page.currentWords,n)
+ assert.equal(page.exactTargetWords,target)
+ assert.equal(page.wordDelta,target-n)
+ assert.match(repairPrompt,/SHARED FACT SHEET AND OUTLINE/)
 
  // Patch ONLY B1-B2 headline + page 2
  const patchPayload={

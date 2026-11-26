@@ -913,6 +913,26 @@ function formatWordBoundsSummary(){
  return {photoLine:photoParts.join(' | '),textLine:textParts.join(' | ')}
 }
 
+function describePageWordBudget(level,isPhoto,previousText=null){
+ const [min,max]=LEVEL_WORD_BOUNDS[level][isPhoto?'photo':'text']
+ const exactTargetWords=wordRangeMidpoint([min,max])
+ const sentenceBounds=LEVEL_SENTENCE_BOUNDS[level]
+ const targetSentenceCount=Math.max(1,Math.round(exactTargetWords/wordRangeMidpoint([sentenceBounds.targetMin,sentenceBounds.targetMax])))
+ const currentWords=previousText===null?null:wordCount(previousText)
+ return {
+  minWords:min,maxWords:max,exactTargetWords,targetSentenceCount,
+  ...(currentWords===null?{}:{currentWords,wordDelta:exactTargetWords-currentWords})
+ }
+}
+
+function formatExactPageTargets(){
+ return LEVELS.map(level=>{
+  const photo=describePageWordBudget(level,true)
+  const text=describePageWordBudget(level,false)
+  return `- ${level}: PHOTO = exactly ${photo.exactTargetWords} words in about ${photo.targetSentenceCount} complete sentences; TEXT ONLY = exactly ${text.exactTargetWords} words in about ${text.targetSentenceCount} complete sentences.`
+ }).join('\n')
+}
+
 export function buildBatchPrompt(source,topic,evidence,verifiedPhotos=[]){
  const passages=evidence.map(row=>`${row.id} [Section ${row.sectionIndex ?? 0}: ${row.heading}] ${row.text}`).join('\n\n')
  const imageCatalog=formatEmbeddedImageCatalog(verifiedPhotos)
@@ -934,7 +954,7 @@ STEP 1 — COMPACT FACT SHEET ("factSheet"):
 - Set "hasUncertainty": true on any fact involving debate, estimates, limits, or safety risks, and list key caveats in "caveatsOrUncertainty".
 
 STEP 2 — SHARED ${PAGE_COUNT_BOUNDS.min}-${PAGE_COUNT_BOUNDS.max} PAGE OUTLINE ("outline"):
-- Plan ONE shared ${PAGE_COUNT_BOUNDS.min} to ${PAGE_COUNT_BOUNDS.max} page story arc ("pageIndex": 0..N-1) before writing variants.
+- Plan ONE shared ${PAGE_COUNT_BOUNDS.min} to ${PAGE_COUNT_BOUNDS.max} page story arc ("pageIndex": 0..N-1) before writing variants. Prefer four well-developed pages; use five or six only when additional distinct source-supported facts require them.
 - Each outline page specifies "focus", "factIds", "evidenceIds", "imageId" (exact ID or null), and brief "imageReason".
 - Every corresponding page index i across A1-A2, B1-B2, and C1-C2 MUST cover the EXACT SAME core facts, subject focus, and "imageId".
 
@@ -947,6 +967,10 @@ STEP 3 — SYNCHRONIZED A/B/C VARIANTS ("variants"):
      * ${photoLine}
    - Text-only pages ("imageId": null):
      * ${textLine}
+   - Use these exact drafting targets separately for EVERY page in EVERY level:
+${formatExactPageTargets()}
+   - Count whitespace-separated words in the text field only (hyphenated words count as one). Do not count headline, caption, glossary, or evidence IDs. Before emitting JSON, recount each page independently and revise it to the target inside its allowed range.
+   - Photo pages MUST be shorter than text-only pages. When a photo page is long, rewrite concisely without deleting core facts or caveats; when a text-only page is short, add concrete source-supported detail, never filler.
    - Every page must end with a complete sentence.
 3. VOICE, ACCURACY & OBJECTIVE CEFR TARGETS:
    - A1-A2: Simple, concrete everyday English WITHOUT factual oversimplification (keep dates, exceptions, safety cautions, and uncertainty in plain words like "about", "some experts say", "can be risky"). >=${CEFR_THRESHOLDS['A1-A2'].minA1A2Pct}% A1-A2 words, <=${CEFR_THRESHOLDS['A1-A2'].maxC1C2OrUnlistedPct}% C1-C2/unlisted, ${aSent.targetMin}-${aSent.targetMax} words/sentence, FKGL <= ${CEFR_THRESHOLDS['A1-A2'].maxFkgl}.
@@ -1089,6 +1113,8 @@ REMINDERS:
 - Synchronized ${PAGE_COUNT_BOUNDS.min}-${PAGE_COUNT_BOUNDS.max} pages with identical page count and imageId at each pageIndex across A1-A2, B1-B2, C1-C2.
 - Photo pages: ${photoLine}
 - Text-only pages: ${textLine}
+${formatExactPageTargets()}
+- Count whitespace-separated words in every text field, excluding captions and headings; recount and revise before returning JSON.
 - Keep C1-C2 nuanced and natural (no artificial academic jargon), and preserve all dates, quantities, exceptions, and uncertainty.
 
 AVAILABLE EMBEDDED IMAGES:
@@ -1115,6 +1141,7 @@ ${passages}`
       pageIndex:idx,
       pageType:isPhoto?'photo':'text-only',
       requiredWords:`${minW}-${maxW} (target ~${wordRangeMidpoint([minW,maxW])})`,
+      ...describePageWordBudget(item.level,isPhoto,p.text),
       imageId:pageImageToken(p),
       text:p.text,
       ...(isPhoto?{caption:p.caption||''}:{}),
@@ -1134,8 +1161,10 @@ TARGETED RULES:
 - Return pure JSON matching: {"repairs":{"A1-A2":{"headline?":"...","pages":[{"pageIndex":0,"text":"...","caption?":"...","evidenceIds":["P1"]}]},"B1-B2":{...},"C1-C2":{...}}}
 - Include ONLY the levels, headlines, and pageIndexes listed in ITEMS TO REPAIR below.
 - Preserve each page's exact topic beat, dates, numbers, uncertainty/safety conditions, and image binding (do NOT add or remove images).
+- Treat each page's exactTargetWords as its own drafting target, not a shared length. currentWords is the actual whitespace-delimited count and wordDelta is the exact number of words to add (positive) or remove (negative). Rewrite toward that target with about targetSentenceCount sentences, preserving meaning. For word-count failures do not merely paraphrase at the old length. Recount each repaired text field before returning JSON.
 - Photo pages: ${photoLine}
 - Text-only pages: ${textLine}
+- Add only source-supported detail; remove redundancy rather than required facts or uncertainty. Do not count captions, headlines or evidence IDs as prose words.
 - Headlines: ${HEADLINE_WORD_BOUNDS.min}-${HEADLINE_WORD_BOUNDS.max} words, distinct across all 3 levels, never matching "${source.sourceTitle}".
 - Captions on photo pages: complete natural phrase (${CAPTION_LIMITS.targetMinWords}-${CAPTION_LIMITS.targetMaxWords} words, max ${CAPTION_LIMITS.maxChars} chars, never truncated mid-word).
 
@@ -1146,6 +1175,9 @@ EXISTING HEADLINES (for uniqueness):
 
 ITEMS TO REPAIR:
 ${JSON.stringify(failingSnapshot)}
+
+SHARED FACT SHEET AND OUTLINE (read-only):
+${JSON.stringify({factSheet:previousDraft.factSheet||null,outline:previousDraft.outline||null})}
 
 SOURCE PASSAGES:
 ${passages}`
