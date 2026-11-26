@@ -229,7 +229,7 @@ const LEVEL_SCHEMA={
  required:['headline','pages']
 }
 
-const BATCH_STORY_SCHEMA={
+export const BATCH_STORY_SCHEMA={
  type:'object',
  properties:{
   factSheet:FACT_SHEET_SCHEMA,
@@ -262,7 +262,7 @@ const REPAIR_LEVEL_SCHEMA={
  }
 }
 
-const TARGETED_REPAIR_SCHEMA={
+export const TARGETED_REPAIR_SCHEMA={
  type:'object',
  properties:{
   repairs:{
