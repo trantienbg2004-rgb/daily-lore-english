@@ -13,6 +13,7 @@ import {
  applyCEFRReviewRepairs,
  buildCEFRReviewRepairPrompt,
  buildCEFRReviewRepairSchema,
+ buildIndependentCEFRReviewerChain,
  buildQualityRetryPrompt,
  buildRoundRobinOrder,
  identifyRepairTargets,
@@ -21,6 +22,28 @@ import {
 } from '../publish_wiki_batch.mjs'
 import {applyCEFRRequeue,auditStoriesCEFR} from '../audit_wiki_cefr.mjs'
 import {makeWikiStory,rewriteWikiCatalog} from '../wiki/catalog.mjs'
+
+test('independent CEFR reviewer chain excludes every model used to generate or repair the article',()=>{
+ const chain=[
+  'models/gemini-3.5-flash-lite',
+  'gemini-3.6-flash',
+  'gemini-3.8-flash',
+  'models/GEMINI-3.1-FLASH-LITE',
+  'gemini-3.6-flash'
+ ]
+ assert.deepEqual(
+  buildIndependentCEFRReviewerChain(chain,['gemini-3.5-flash-lite','models/gemini-3.1-flash-lite']),
+  ['gemini-3.6-flash','gemini-3.8-flash']
+ )
+ assert.deepEqual(
+  buildIndependentCEFRReviewerChain(['models/gemini-3.5-flash-lite'],'gemini-3.5-flash-lite'),
+  []
+ )
+ assert.deepEqual(
+  buildIndependentCEFRReviewerChain(chain,[]),
+  ['models/gemini-3.5-flash-lite','gemini-3.6-flash','gemini-3.8-flash','models/GEMINI-3.1-FLASH-LITE']
+ )
+})
 
 test('data/cefr_wordlist.json is compact (120-250 KB) with 8,000-12,000 lemmas across A1-C2',async()=>{
  const wordlist=loadCEFRWordlist()
