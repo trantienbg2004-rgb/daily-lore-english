@@ -8,6 +8,7 @@ import {
  buildGeminiGenerationConfig,
  buildCEFRReviewRepairSchema,
  buildTargetedRepairPrompt,
+ TARGETED_REPAIR_SCHEMA,
  callGeminiWithFailover,
  identifyRepairTargets,
  mergeTargetedRepairs,
@@ -65,6 +66,43 @@ function levelsNeedingRepair(quality){
  }
  if((quality?.errors||[]).length&&!out.size)for(const level of ['A1-A2','B1-B2','C1-C2'])out.add(level)
  return [...out]
+}
+
+function assignAndValidateFinalPhotos(draft,fixture){
+ const assigned=assignBatchPhotos(draft.variants,{
+  source:fixture.source,
+  articlePhotos:fixture.photos,
+  evidence:fixture.evidence,
+  usedImages:new Set(),
+  outline:draft.outline
+ })
+ if(!assigned.ok){
+  return {
+   draft,
+   quality:{ok:false,errors:['Final photo assignment failed: '+String(assigned.reason||'unknown reason')],metrics:{}},
+   assignment:{ok:false,reason:assigned.reason||null,strippedImages:assigned.strippedImages||[]}
+  }
+ }
+ const imageIdsByPage=new Map((assigned.photos||[]).map(photo=>[photo.pageIndex,photo.imageId]))
+ const strippedIndexes=new Set((assigned.strippedImages||[]).map(row=>row.pageIndex))
+ const finalOutline=Array.isArray(draft.outline)
+  ?draft.outline.map((row,index)=>({...row,imageId:strippedIndexes.has(index)?null:(imageIdsByPage.get(index)||null)}))
+  :draft.outline
+ const finalVariants=Object.fromEntries(['A1-A2','B1-B2','C1-C2'].map(level=>[level,{
+  ...assigned.levelVariants[level],
+  pages:assigned.levelVariants[level].pages.map((page,index)=>({...page,imageId:strippedIndexes.has(index)?null:(imageIdsByPage.get(index)||null)}))
+ }]))
+ const finalDraft={...draft,outline:finalOutline,variants:finalVariants}
+ const quality=validateArticleQuality(finalDraft,fixture.source.sourceTitle,{
+  source:fixture.source,
+  evidence:fixture.evidence,
+  requireLevelPlans:true
+ })
+ return {
+  draft:finalDraft,
+  quality,
+  assignment:{ok:true,reason:null,strippedImages:assigned.strippedImages||[]}
+ }
 }
 
 async function runTopic(id){
@@ -131,33 +169,15 @@ async function runTopic(id){
      repairPageIndexes:Object.fromEntries((review.draft?.repairs||[]).map(x=>[x.level,(x.pages||[]).map(p=>p.pageIndex)]))
     }
     draft=normalizeDraftForCatalog(applied.draft,{source:fixture.source,evidence:fixture.evidence,verifiedPhotos:fixture.photos})
-    // Match production's final Wikimedia photo assignment and caption normalization.
-    const assigned=assignBatchPhotos(draft.variants,{
-     source:fixture.source,
-     articlePhotos:fixture.photos,
-     evidence:fixture.evidence,
-     usedImages:new Set(),
-     outline:draft.outline
-    })
-    result.imageAssignment={ok:assigned.ok,reason:assigned.reason||null,strippedImages:assigned.strippedImages||[]}
-    if(assigned.ok){
-     const imageIdsByPage=new Map((assigned.photos||[]).map(photo=>[photo.pageIndex,photo.imageId]))
-     const strippedIndexes=new Set((assigned.strippedImages||[]).map(row=>row.pageIndex))
-     const finalOutline=Array.isArray(draft.outline)?draft.outline.map((row,index)=>({...row,imageId:strippedIndexes.has(index)?null:(imageIdsByPage.get(index)||null)})):draft.outline
-     const finalVariants=Object.fromEntries(['A1-A2','B1-B2','C1-C2'].map(level=>[level,{
-      ...assigned.levelVariants[level],
-      pages:assigned.levelVariants[level].pages.map((page,index)=>({...page,imageId:strippedIndexes.has(index)?null:(imageIdsByPage.get(index)||null)}))
-     }]))
-     draft={...draft,outline:finalOutline,variants:finalVariants}
-     quality=validateArticleQuality(draft,fixture.source.sourceTitle,{
-      source:fixture.source,
-      evidence:fixture.evidence,
-      requireLevelPlans:true
-     })
-    }else{
-     quality={ok:false,errors:['Final photo assignment failed: '+String(assigned.reason||'unknown reason')],metrics:{}}
-    }
+    const finalization=assignAndValidateFinalPhotos(draft,fixture)
+    draft=finalization.draft
+    quality=finalization.quality
+    result.imageAssignment=finalization.assignment
     result.finalQuality={ok:quality.ok,errors:quality.errors,metrics:quality.metrics,heuristicWarnings:quality.cefr?.errors||[]}
+    result.passed=applied.ok&&finalization.assignment.ok&&quality.ok&&['A1-A2','B1-B2','C1-C2'].every(level=>{
+     const a=applied.finalAssessment?.[level]
+     return a?.finalVerdict==='pass'&&['A1','A2','B1','B2','C1','C2'].includes(a.finalBand)
+    })
     result.passed=applied.ok&&assigned.ok&&quality.ok&&['A1-A2','B1-B2','C1-C2'].every(level=>{
      const a=applied.finalAssessment?.[level]
      return a?.finalVerdict==='pass'&&['A1','A2','B1','B2','C1','C2'].includes(a.finalBand)
