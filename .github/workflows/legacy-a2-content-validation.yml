@@ -1,0 +1,93 @@
+name: Legacy A2 content validation
+on:
+  pull_request:
+    types: [opened, reopened]
+    branches: [main]
+    paths:
+      - '.github/workflows/legacy-a2-content-validation.yml'
+permissions:
+  contents: write
+jobs:
+  validate:
+    if: github.event.pull_request.head.ref == 'content/saga-five-a2-repairs-20261127' && github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm ci --no-audit --no-fund
+      - name: Review and stage only five A2 versions
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_API_KEY_2: ${{ secrets.GEMINI_API_KEY_2 }}
+          GEMINI_API_KEY_3: ${{ secrets.GEMINI_API_KEY_3 }}
+          SAGA_IMAGE_TEST_API_KEY: ${{ secrets.SAGA_IMAGE_TEST_API_KEY }}
+        run: |
+          cat > .legacy-a2-audit.mjs <<'NODE'
+          import fs from 'node:fs/promises'
+          import assert from 'node:assert/strict'
+          import {createHash} from 'node:crypto'
+          import {readWikiCatalog} from './scripts/wiki/catalog.mjs'
+          import {callGeminiWithFailover,resolveGeminiApiKeys} from './scripts/publish_wiki_batch.mjs'
+          const edits={"396412":["Old Stories About Fairies and Children",["Long ago, people in Europe told stories about fairies and children. In these stories, a fairy took a baby away and left another child in its place. People called this child a changeling. These are old stories and beliefs, not real events.","In old Irish stories, people thought a changeling was a child who looked or acted very differently. Some stories said the child could talk like a grown-up. Others said it danced when no one was there. People told these stories because they believed in fairies.","Life was hard for many poor families long ago. They needed food, and family members had to work on farms. A sick child could need a lot of care. Some people who study old stories think that these hard times helped give rise to changeling stories.","In old stories from northern Europe, trolls lived away from people. Some people believed that trolls took babies and left their own children behind. People also believed that trolls were afraid of iron. These were beliefs from the past, not ways to keep children safe.","In a Swedish story, a mother finds a troll child in place of her own son. She is kind to the child and will not hurt it. In the end, her son comes home. A writer named Helena Nyblom later told a story like this."]],"2034884":["An Old Town by the Sea",["Cherchell is a town by the sea in Algeria. It is west of Algiers, the capital of the country. Long ago, the town had other names, such as Iol and Caesarea. It was once home to kings. Today, it still has a port for boats.","Long ago, people called this town Iol. Its old name came from the language of people who lived and traded by the sea. Part of the name meant island. The name of the town changed over time as different people lived there.","Many years ago, people came to this town to buy and sell goods. King Juba II later made it his capital. Today, people can visit a museum there. They can see old pictures made from small pieces of stone. One of these pictures shows grapes.","Many groups ruled the town over the years. An army from the east took it back for the Roman Empire. Much later, Turkish rulers took control of the town. Men such as Oruç Reis and Hayreddin Barbarossa used the port for their ships.","After Algeria became an independent country, Cherchell grew again. People worked with stone and made olive oil and other goods. Long ago, King Juba II and his wife helped build places to store water. Some of these old water stores still help the town today."]],"19098431":["How the Old Olympic Games Began",["Long ago, people went to Olympia in Greece to watch sports. The games were held to honor Zeus, a Greek god. People could travel to the games safely under a special agreement. The winners wore a crown made of olive leaves.","Why did the Greeks start these games? They told different stories about this. In one story, a man named Pelops won a race. He raced in a small cart pulled by horses. The Greeks told other stories about their gods and the games, too.","Aristotle, a Greek thinker, gave a date for the first games. Some people who study the past think the big games started later. It is hard to know the exact date. At first, most winners came from towns near Olympia.","The games were important to people in Greece. Towns wanted to be in charge of them. A man named Pheidon from Argos took control of the place for Pisa. But the town of Elis soon took back control of the games.","At first, people from nearby towns came to the games. Later, the games became famous across Greece. Most people who took part were Greek men. Some women won prizes as the owners of horses and carts."]],"36471858":["Why the UK Stopped Killing Badgers",["Badgers are wild animals. For years, the UK let people kill some badgers to try to stop a disease in cows. This is called culling. By May 2026, this practice had ended. The government wanted to use vaccines instead. Vaccines help protect animals from disease.","The UK has a law to protect badgers. The law dates from 1992. It says that people must not hurt badgers or damage their homes without legal permission. Badgers live in holes in the ground. The law helps keep these wild animals and their homes safe.","Scientists studied what happened when people killed badgers. Some badgers that were left moved to other places. This could help the disease spread to new areas. The results were not simple. It was hard to know how well killing badgers would help stop the disease.","By 2024, the country had spent more than 58 million pounds on killing badgers. Now the government wants to use vaccines to help fight the disease. The aim is to keep farm animals healthy and help farmers. It is not yet clear how well the new plan will work."]],"79511869":["Why Sports Fans Say the GOAT",["Who is the best player of all time? Sports fans often talk about this. They use the word GOAT, which means Greatest of All Time. A goat is also an animal. That is why people sometimes use a picture of a goat when they talk about a great player.","The big letters in GOAT are important. In the past, the word goat could mean something bad in sports. People used it for a player who made a big mistake in a game. The new meaning is very different. It is a way to say someone is great.","The famous boxer Muhammad Ali often said he was the greatest. Years later, his wife Lonnie started a company called Greatest of All Time. These words later became popular in sports. Today, fans use GOAT when they talk about many different sports.","How do people choose the best player? They look at how many prizes a player has won. They also think about how well the player plays. People do not always agree. Some writers have chosen famous players such as Michael Jordan and Jack Nicklaus.","People also make jokes with real goats. One year, the football player Tom Brady had a birthday during training camp. His team brought five goats for him. Each goat stood for one of his five Super Bowl wins at that time. Fans also use goat pictures online."]]}
+          const before=await readWikiCatalog(process.cwd())
+          const ids=Object.keys(edits).map(Number)
+          const changed=structuredClone(before.stories)
+          const keys=resolveGeminiApiKeys()
+          assert.ok(keys.length,'No reviewer key')
+          const state={keys,activeIndex:0}
+          const dims=['vocabulary','syntax','cohesion','abstraction','inference','terms']
+          const schema={type:'object',properties:{band:{type:'string',enum:['A1','A2','B1','B2','C1','C2','?']},verdict:{type:'string',enum:['pass','revise','uncertain']},dimensions:{type:'object',properties:Object.fromEntries(dims.map(d=>[d,{type:'string',enum:['low','fit','high']}])),required:dims},rationale:{type:'string'},sourceFaithful:{type:'boolean'}},required:['band','verdict','dimensions','rationale','sourceFaithful']}
+          let passed=0
+          for(const [i,s] of changed.entries()){
+           if(!ids.includes(s.sourcePageId))continue
+           const old=before.stories[i],a=s.levelVariants['A1-A2'],b=old.levelVariants['A1-A2']
+           const [headline,pages]=edits[s.sourcePageId]
+           assert.equal(a.pages.length,pages.length)
+           a.headline=headline;a.pages.forEach((p,i)=>p.text=pages[i])
+           const mask=x=>({...x,levelVariants:{...x.levelVariants,'A1-A2':{...x.levelVariants['A1-A2'],headline:'',pages:x.levelVariants['A1-A2'].pages.map(p=>({...p,text:''}))}}})
+           assert.deepEqual(mask(s),mask(old))
+           const prompt=['Read-only independent CEFR examiner, Council of Europe Companion Volume reading descriptors. Evaluate the complete new A1-A2 text for actual reading experience. A1/A2 = simple, short, concrete and common words, short sentences and explicit connections; explain necessary proper names and specialist terms. Do not force numeric metrics or penalize essential proper names. Assess vocabulary, syntax, cohesion, abstraction, inference, terms. A pass requires A1 or A2 and all six dimensions fit. Check the new text is a faithful simplification of the prior text and other source-grounded versions; omissions are fine, no added unsupported claims. Source excerpts are partial. Do not rewrite.','Title: '+s.sourceTitle,'NEW: '+JSON.stringify(a.pages.map(p=>p.text)),'OLD: '+JSON.stringify(b.pages.map(p=>p.text)),'B: '+JSON.stringify(s.levelVariants['B1-B2'].pages.map(p=>p.text)),'Source excerpts: '+JSON.stringify(s.sourceEvidence.map(e=>({id:e.id,excerpt:e.excerpt})))].join('\n')
+           try{
+           const r=await callGeminiWithFailover(prompt,state,{model:'gemini-3.1-flash-lite',fallbackModels:['gemini-4-hydrogen','gemini-3.6-flash','gemini-3.8-flash'],schema,requestTimeoutMs:60000,deadlineMs:Date.now()+150000})
+           const x=r.draft;const ok=['A1','A2'].includes(x.band)&&x.verdict==='pass'&&dims.every(d=>x.dimensions[d]==='fit')&&x.sourceFaithful===true
+           console.log('LEGACY_A2_RESULT '+JSON.stringify({title:s.sourceTitle,id:s.sourcePageId,model:r.model,ok,...x}))
+           if(ok)passed++
+           }catch(e){console.log('LEGACY_A2_ERROR '+s.sourceTitle+' '+String(e.message))}
+          }
+          console.log('LEGACY_A2_SUMMARY '+JSON.stringify({passed,total:ids.length,stories:before.stories.length,verifiedImages:before.manifest.verifiedImageCount}))
+          assert.equal(passed,ids.length)
+          const hash=x=>createHash('sha256').update(JSON.stringify(x)).digest('hex')
+          const groups=[...new Set(before.entries.filter(e=>ids.includes(e.sourcePageId)).map(e=>e.shard))]
+          const entries=structuredClone(before.entries)
+          const dir=before.dir
+          const disk=await fs.readdir(dir)
+          let n=Math.max(before.manifest.chunks-1,...disk.filter(f=>/^\d{4}\.json$/.test(f)).map(f=>Number(f.slice(0,4))))+1
+          for(const old of groups){
+           const shard=String(n++).padStart(4,'0')
+           const group=changed.filter((s,i)=>before.entries[i].shard===old)
+           await fs.writeFile(dir+'/'+shard+'.json',JSON.stringify(group)+'\n',{flag:'wx'})
+           entries.forEach(e=>{if(e.shard===old)e.shard=shard})
+          }
+          const contentHash=hash({entries:entries.map(e=>[e.id,e.shard,e.category]),stories:changed.map(hash)})
+          const indexName='catalog-index-'+contentHash.slice(0,12)+'.json'
+          await fs.writeFile(dir+'/'+indexName,JSON.stringify({version:3,contentHash,total:entries.length,entries})+'\n',{flag:'wx'})
+          await fs.writeFile(dir+'/manifest.json',JSON.stringify({...before.manifest,chunks:n,contentHash,catalogIndex:indexName,updatedAt:new Date().toISOString()},null,2)+'\n')
+          const after=await readWikiCatalog(process.cwd())
+          assert.deepEqual(after.stories,changed)
+          assert.equal(after.manifest.verifiedImageCount,before.manifest.verifiedImageCount)
+          console.log('CATALOG_VALIDATED '+JSON.stringify({total:after.stories.length,repaired:ids.length,unchanged:after.stories.length-ids.length,contentHash}))
+          
+          NODE
+          node .legacy-a2-audit.mjs
+      - name: Save verified catalog on isolated PR branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/wiki-reader
+          git commit -m "content(saga): repair five independently reviewed A2 versions"
+          git push origin HEAD:refs/heads/content/saga-five-a2-repairs-20261127
