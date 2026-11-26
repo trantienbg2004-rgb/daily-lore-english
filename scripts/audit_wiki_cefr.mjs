@@ -273,10 +273,11 @@ function printReport(report){
 }
 
 function parseArgs(argv){
- const opts={applyRequeue:false,asJson:false,minKeep:DEFAULT_SAFETY_FLOOR,queueFile:DEFAULT_QUEUE_FILE}
+ const opts={applyRequeue:false,asJson:false,asJsonDetails:false,minKeep:DEFAULT_SAFETY_FLOOR,queueFile:DEFAULT_QUEUE_FILE}
  for(const arg of argv){
   if(arg==='--apply-requeue')opts.applyRequeue=true
   else if(arg==='--json')opts.asJson=true
+  else if(arg==='--json-details')opts.asJsonDetails=true
   else if(arg.startsWith('--min-keep=')){
    const v=Number(arg.split('=')[1])
    if(Number.isFinite(v)&&v>=1)opts.minKeep=Math.floor(v)
@@ -322,6 +323,35 @@ if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.ur
   auditWikiCEFR({root:ROOT,minKeep:opts.minKeep})
    .then(report=>{
     if(opts.asJson){
+     if(opts.asJsonDetails){
+      const detailed={
+       totalArticles:report.totalArticles,
+       passedCount:report.passedCount,
+       failedCount:report.failedCount,
+       safetyFloor:report.safetyFloor,
+       plannedKeptCount:report.plannedKeptCount,
+       plannedRequeueCount:report.plannedRequeueCount,
+       averages:report.averages,
+       topA1OverLevelWords:report.topA1OverLevelWords,
+       articles:report.results.map(row=>({
+        sourcePageId:row.sourcePageId,
+        sourceTitle:row.sourceTitle,
+        title:row.title,
+        category:row.category,
+        passed:row.passed,
+        penalty:row.penalty,
+        errors:row.errors,
+        profiles:Object.fromEntries(LEVELS.map(level=>[level,{
+         fkgl:row.profiles[level]?.fkgl??null,
+         avgSentenceLength:row.profiles[level]?.avgSentenceLength??null,
+         lexicalProfile:row.profiles[level]?.lexicalProfile??null,
+         overLevelWords:row.profiles[level]?.overLevelWords??[],
+         b2Words:row.profiles[level]?.b2Words??[]
+        }]))
+       }))
+      }
+      console.log(JSON.stringify(detailed,null,2))
+     }else{
      const compact={
       totalArticles:report.totalArticles,
       passedCount:report.passedCount,
@@ -333,6 +363,7 @@ if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.ur
       topA1OverLevelWords:report.topA1OverLevelWords
      }
      console.log(JSON.stringify(compact,null,2))
+     }
     }else{
      printReport(report)
     }
