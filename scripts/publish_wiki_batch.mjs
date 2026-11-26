@@ -2467,6 +2467,11 @@ export async function runPublishWikiBatch({
  }
 
  const keyState=ensureKeyState({keys:resolvedKeys,activeIndex:0,exhaustedKeys:new Set()})
+ // Use a separate, stronger model route for CEFR assessment so the generator does not grade its own work.
+ const reviewerModel=String(process.env.CEFR_REVIEW_MODEL||'gemini-3.6-flash').trim()
+ const reviewerFallbacks=process.env.CEFR_REVIEW_FALLBACK_MODELS||['gemini-3.8-flash','gemini-3.5-flash-lite']
+ const reviewerModelChain=resolveGeminiModelChain({model:reviewerModel,fallbackModels:reviewerFallbacks})
+ const reviewerKeyState=ensureKeyState({...keyState,activeIndex:0,preferredModel:null,lastModelTried:null})
  const sourceUsedPageIds=new Set(sourceCatalog.stories.map(s=>s.sourcePageId))
  const targetUsedPageIds=new Set(targetCatalog.stories.map(s=>s.sourcePageId))
  const usedPageIds=new Set([...sourceUsedPageIds,...targetUsedPageIds])
@@ -2570,7 +2575,7 @@ export async function runPublishWikiBatch({
   await checkpointQueue()
  }
 
- const invokeGeminiWithDelay=async(prompt,{reserveMs=minRetryBudgetMs,schema=BATCH_STORY_SCHEMA}={})=>{
+ const invokeGeminiWithDelay=async(prompt,{reserveMs=minRetryBudgetMs,schema=BATCH_STORY_SCHEMA,modelChainOverride=null,keyStateOverride=keyState}={})=>{
   if(geminiCalls>0&&delayMs>0){
    const rem=remainingBudget()
    if(Number.isFinite(deadlineMs)&&rem<delayMs+reserveMs){
@@ -2580,9 +2585,10 @@ export async function runPublishWikiBatch({
    await waitImpl(delayMs)
   }
   geminiCalls++
-  return callGeminiWithFailover(prompt,keyState,{
-   model:modelChain[0],
-   fallbackModels:modelChain.slice(1),
+  const activeModelChain=Array.isArray(modelChainOverride)&&modelChainOverride.length?modelChainOverride:modelChain
+  return callGeminiWithFailover(prompt,keyStateOverride,{
+   model:activeModelChain[0],
+   fallbackModels:activeModelChain.slice(1),
    schema,
    unavailableRetryMs,
    maxCooldownMs,
@@ -2750,7 +2756,7 @@ export async function runPublishWikiBatch({
       for(const level of LEVELS)requiredRepairLevels.add(level)
      }
      const reviewPrompt=buildCEFRReviewRepairPrompt(source,item.topic,trimmed.evidence,normalizedDraft,quality)
-     const reviewRes=await invokeGeminiWithDelay(reviewPrompt,{reserveMs:minRetryBudgetMs,schema:buildCEFRReviewRepairSchema(normalizedDraft)})
+     const reviewRes=await invokeGeminiWithDelay(reviewPrompt,{reserveMs:minRetryBudgetMs,schema:buildCEFRReviewRepairSchema(normalizedDraft),modelChainOverride:reviewerModelChain,keyStateOverride:reviewerKeyState})
      consecutiveInfraFailures=0
      const reviewOutcome=applyCEFRReviewRepairs(normalizedDraft,reviewRes.draft,{requiredRepairLevels:[...requiredRepairLevels],validEvidenceIds:new Set(trimmed.evidence.map(e=>e.id))})
      normalizedDraft=normalizeDraftForCatalog(reviewOutcome.draft,{source,evidence:trimmed.evidence,verifiedPhotos})
