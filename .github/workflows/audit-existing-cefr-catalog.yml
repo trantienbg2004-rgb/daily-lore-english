@@ -1,0 +1,42 @@
+name: Audit Existing SAGA CEFR Catalog
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'scripts/audit_wiki_cefr.mjs'
+      - '.github/workflows/audit-existing-cefr-catalog.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: saga-existing-cefr-audit-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Install dependencies
+        run: npm ci --no-audit --no-fund
+      - name: Run read-only per-article CEFR audit
+        run: |
+          mkdir -p /tmp/saga-existing-cefr-audit
+          node --check scripts/audit_wiki_cefr.mjs
+          node scripts/audit_wiki_cefr.mjs --json-details > /tmp/saga-existing-cefr-audit/report.json
+          node -e "const r=require('/tmp/saga-existing-cefr-audit/report.json'); console.log('Catalog:',r.totalArticles,'| heuristic pass:',r.passedCount,'| heuristic fail:',r.failedCount); for(const a of r.articles.filter(x=>!x.passed)) console.log(a.sourcePageId+' | '+a.sourceTitle+' | penalty='+a.penalty+' | '+a.errors.slice(0,2).join(' ; '))"
+      - name: Upload per-article audit report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: saga-existing-cefr-per-article-audit
+          path: /tmp/saga-existing-cefr-audit/report.json
+          if-no-files-found: warn
+          retention-days: 7
