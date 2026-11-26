@@ -139,6 +139,13 @@ test('CEFR descriptor reviewer accepts in-band assessments, merges partial repai
  assert.match(repaired.draft.variants['B1-B2'].pages[0].text,/Builders changed the town/)
  assert.equal(repaired.draft.variants['B1-B2'].pages[0].imageId,'IMG_0','Repair must preserve image binding')
 
+ const noOpRepair=structuredClone(passPayload)
+ noOpRepair.assessment['B1-B2']=assessment('B1','Local builders compared plans','C1','revise')
+ noOpRepair.repairs=[{level:'B1-B2',pages:[{pageIndex:0,text:'Local builders compared plans and improved the town over several years.',evidenceIds:['P1']}]}]
+ const noOp=applyCEFRReviewRepairs(draft,noOpRepair)
+ assert.equal(noOp.ok,false,'A reviewer cannot mark a mismatched level as repaired without changing article text')
+ assert.ok(noOp.errors.some(e=>/descriptor review required a text repair but no page text changed/.test(e)))
+
  const badHeadline=structuredClone(passPayload)
  badHeadline.assessment['A1-A2']=assessment('A2','People built a small town','B1','revise')
  badHeadline.repairs=[{level:'A1-A2',headline:'The History of Radio',pages:[{pageIndex:0,text:'People built a small town near the river. Families shared food and tools.',evidenceIds:['P1']}]}]
