@@ -2,16 +2,18 @@ name: Validate Gemini Resilience Patch
 
 on:
   push:
-    branches: [fix/saga-gemini-resilience-20261126]
+    branches: [fix/saga-gemini-resilience-20261126, fix/saga-page-word-budget]
     paths:
       - 'scripts/publish_wiki_batch.mjs'
       - 'scripts/test/wiki-publish-reliability.test.mjs'
+      - 'scripts/test/wiki-content-engine.test.mjs'
       - '.github/workflows/validate-gemini-resilience.yml'
   pull_request:
     branches: [main]
     paths:
       - 'scripts/publish_wiki_batch.mjs'
       - 'scripts/test/wiki-publish-reliability.test.mjs'
+      - 'scripts/test/wiki-content-engine.test.mjs'
       - '.github/workflows/validate-gemini-resilience.yml'
   workflow_dispatch:
 
@@ -36,5 +38,10 @@ jobs:
         run: |
           node --check scripts/publish_wiki_batch.mjs
           node --check scripts/test/wiki-publish-reliability.test.mjs
-      - name: Run publishing reliability tests
-        run: node --test scripts/test/wiki-publish-reliability.test.mjs
+          node --check scripts/test/wiki-content-engine.test.mjs
+      - name: Run unit tests
+        run: npm test
+      - name: Run linter
+        run: npm run lint
+      - name: Build
+        run: npm run build
