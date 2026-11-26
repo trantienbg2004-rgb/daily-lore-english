@@ -717,7 +717,7 @@ export function validateFactualConsistency(draft,{source=null,evidence=[]}={}){
      if(!factIds.has(id))errors.push(level+' plan page '+(idx+1)+': unknown factId '+id)
      selectedFacts.add(id)
     }
-    if(evidenceRows.length&&(!Array.isArray(page.evidenceIds)||!page.evidenceIds.length||page.evidenceIds.some(id=>!validEvidenceIds.has(id)))errors.push(level+' plan page '+(idx+1)+': evidenceIds must reference supplied source passages')
+    if(evidenceRows.length&&(!Array.isArray(page.evidenceIds)||!page.evidenceIds.length||page.evidenceIds.some(id=>!validEvidenceIds.has(id))))errors.push(level+' plan page '+(idx+1)+': evidenceIds must reference supplied source passages')
    }
    factSets.push(selectedFacts)
   }
