@@ -275,7 +275,7 @@ const REPAIR_LEVEL_SCHEMA={
  }
 }
 
-const TARGETED_REPAIR_SCHEMA={
+export const TARGETED_REPAIR_SCHEMA={
  type:'object',
  properties:{
   repairs:{
@@ -1474,6 +1474,7 @@ TARGETED RULES:
 - Advisory text-only section pacing: ${textLine}
 - Headlines: ${HEADLINE_WORD_BOUNDS.min}-${HEADLINE_WORD_BOUNDS.max} words, distinct across all 3 levels, never matching "${source.sourceTitle}".
 - Captions on photo pages: complete natural phrase (${CAPTION_LIMITS.targetMinWords}-${CAPTION_LIMITS.targetMaxWords} words, max ${CAPTION_LIMITS.maxChars} chars, never truncated mid-word).
+- If a failed check flags a dry encyclopedia opening, rewrite pageIndex 0 so its FIRST sentence does not begin with the source title/topic followed by “is/was a/an/the”. Use a natural reader-facing question, a concrete source-supported moment, or an action that draws the reader into the subject. Do not merely move the same dictionary definition to sentence two; preserve the assigned CEFR band and do not invent a scene or fact.
 
 EXISTING HEADLINES (for uniqueness):
 - A1-A2: "${previousDraft.variants['A1-A2']?.headline||''}"
