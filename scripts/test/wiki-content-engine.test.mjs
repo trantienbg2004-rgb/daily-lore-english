@@ -408,6 +408,29 @@ test('content engine: targeted repair patches ONLY failing page/headline while p
  assert.throws(()=>mergeTargetedRepairs(brokenDraft,{repairs:{}},targets),/0 valid changes/i)
 })
 
+test('content engine: structural rebuild preserves source fact sheet and independent CEFR level plans',()=>{
+ const source=makeRichSource('Stone Citadel',9104)
+ const trimmed=trimWikipediaEvidence(source,{targetMinWords:300,targetMaxWords:1500})
+ const leadPhoto=makeVerifiedPhoto(source,{fileTitle:'File:Stone_Citadel_structural.jpg',caption:'Historic view of Stone Citadel',sectionIndex:0,imageId:'IMG_0'})
+ const raw=makeSynchronizedDraft('Stone Citadel')
+ raw.levelPlans={
+  'A1-A2':{readerObjective:'Understand the origin and purpose of the site.',selectedFactIds:['F1','F2'],depthNotes:'Use concrete words and short explanations.'},
+  'B1-B2':{readerObjective:'Explain the site and its regional role.',selectedFactIds:['F1','F2','F3'],depthNotes:'Develop causes, details and consequences.'},
+  'C1-C2':{readerObjective:'Interpret the site within regional history.',selectedFactIds:['F1','F2','F3','F4'],depthNotes:'Use precise historical interpretation and nuance.'}
+ }
+ raw.sharedCoreFactIds=['F1','F2']
+ const draft=normalizeDraftForCatalog(raw,{source,evidence:trimmed.evidence,verifiedPhotos:[leadPhoto]})
+ const before=validateArticleQuality(draft,source.sourceTitle,{source,evidence:trimmed.evidence,requireLevelPlans:true})
+ assert.equal(before.ok,true,before.errors.join(' | '))
+ const structuralPayload={outline:draft.outline,variants:draft.variants}
+ const rebuilt=mergeTargetedRepairs(draft,structuralPayload,{useTargetedPatch:false,structuralParityFailed:true})
+ assert.deepEqual(rebuilt.factSheet,draft.factSheet)
+ assert.deepEqual(rebuilt.levelPlans,draft.levelPlans)
+ assert.deepEqual(rebuilt.sharedCoreFactIds,draft.sharedCoreFactIds)
+ const after=validateArticleQuality(rebuilt,source.sourceTitle,{source,evidence:trimmed.evidence,requireLevelPlans:true})
+ assert.equal(after.ok,true,after.errors.join(' | '))
+})
+
 test('media & captions: word-safe captions, verified main-subject body fallback, outline alignment, and post-strip revalidation',async()=>{
  // 1. Word-safe caption formatting (no mid-word slicing or dangling prepositions)
  const cap1=formatCompleteCaption('Stone arches of the northern colonnade in the old valley town [1] during summer festivals',{maxChars:45,maxWords:8})
