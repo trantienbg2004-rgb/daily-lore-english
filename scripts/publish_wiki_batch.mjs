@@ -297,6 +297,70 @@ const TARGETED_REPAIR_SCHEMA={
  required:['repairs']
 }
 
+const CEFR_REVIEW_LEVEL_SCHEMA={
+ type:'object',
+ properties:{
+  estimatedBand:{type:'string',enum:['A1','A2','B1','B2','C1','C2','uncertain']},
+  verdict:{type:'string',enum:['pass','too_easy','too_hard','uncertain']},
+  dimensions:{
+   type:'object',
+   properties:{
+    vocabulary:{type:'string',enum:['below','within','above']},
+    grammarAndSyntax:{type:'string',enum:['below','within','above']},
+    cohesion:{type:'string',enum:['below','within','above']},
+    abstraction:{type:'string',enum:['below','within','above']},
+    inference:{type:'string',enum:['below','within','above']},
+    specialistTermLoad:{type:'string',enum:['below','within','above']}
+   },
+   required:['vocabulary','grammarAndSyntax','cohesion','abstraction','inference','specialistTermLoad']
+  },
+  evidence:{type:'array',items:{type:'string'},minItems:1,maxItems:4},
+  rationale:{type:'string'}
+ },
+ required:['estimatedBand','verdict','dimensions','evidence','rationale']
+}
+
+const CEFR_REVIEW_REPAIR_PAGE_SCHEMA={
+ type:'object',
+ properties:{
+  pageIndex:{type:'integer'},
+  text:{type:'string'},
+  caption:{type:'string'},
+  evidenceIds:{type:'array',items:{type:'string',minLength:1}}
+ },
+ required:['pageIndex','text','evidenceIds']
+}
+
+const CEFR_REVIEW_REPAIR_LEVEL_SCHEMA={
+ type:'object',
+ properties:{
+  headline:{type:'string'},
+  pages:{type:'array',items:CEFR_REVIEW_REPAIR_PAGE_SCHEMA,minItems:PAGE_COUNT_BOUNDS.min,maxItems:PAGE_COUNT_BOUNDS.max}
+ },
+ required:['pages']
+}
+
+const CEFR_REVIEW_REPAIR_SCHEMA={
+ type:'object',
+ properties:{
+  initialAssessment:{
+   type:'object',
+   properties:Object.fromEntries(LEVELS.map(level=>[level,CEFR_REVIEW_LEVEL_SCHEMA])),
+   required:LEVELS
+  },
+  finalAssessment:{
+   type:'object',
+   properties:Object.fromEntries(LEVELS.map(level=>[level,CEFR_REVIEW_LEVEL_SCHEMA])),
+   required:LEVELS
+  },
+  repairs:{
+   type:'object',
+   properties:Object.fromEntries(LEVELS.map(level=>[level,CEFR_REVIEW_REPAIR_LEVEL_SCHEMA]))
+  }
+ },
+ required:['initialAssessment','finalAssessment','repairs']
+}
+
 export class GeminiQuotaExhausted extends Error{
  constructor(message,status=429,{retryAfterMs=null}={}){
   super(message)
