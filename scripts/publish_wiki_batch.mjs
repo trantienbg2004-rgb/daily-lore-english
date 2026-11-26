@@ -1256,6 +1256,7 @@ export function applyCEFRReviewRepairs(previousDraft,reviewPayload,{requiredRepa
   const initialPass=a.initialVerdict==='pass'&&allowedBands[level].has(String(a.initialBand||''))&&dimensionsFit(a.initialDimensions)
   const needsRepair=required.has(level)||!initialPass
   const patch=repairByLevel.get(level)
+  let changedArticleText=false
   if(needsRepair){
    const oldPages=merged.variants?.[level]?.pages||[]
    if(!patch||!Array.isArray(patch.pages)||!patch.pages.length){
@@ -1280,9 +1281,12 @@ export function applyCEFRReviewRepairs(previousDraft,reviewPayload,{requiredRepa
      if(validEvidenceIds&&(!Array.isArray(next.evidenceIds)||!next.evidenceIds.length||next.evidenceIds.some(id=>!validEvidenceIds.has(id)))){
       errors.push(level+' repair page '+(idx+1)+': evidenceIds must reference supplied source passages')
      }
+     const originalText=normalizeParagraphText(oldPage.text,oldPage.paragraphs,{ensureTerminalPunctuation:true})
+     const repairedText=normalizeParagraphText(next.text,next.paragraphs,{ensureTerminalPunctuation:true})
+     if(repairedText.trim()!==originalText.trim())changedArticleText=true
      return {
       ...oldPage,
-      text:normalizeParagraphText(next.text,next.paragraphs,{ensureTerminalPunctuation:true}),
+      text:repairedText,
       ...(typeof next.caption==='string'?{caption:next.caption.trim()}:{}),
       ...(Array.isArray(next.evidenceIds)&&next.evidenceIds.length?{evidenceIds:next.evidenceIds}:{})
      }
@@ -1301,6 +1305,7 @@ export function applyCEFRReviewRepairs(previousDraft,reviewPayload,{requiredRepa
    errors.push(level+': unexpected repair supplied for a level that passed initial assessment')
   }
 
+  if(!initialPass&&!changedArticleText)errors.push(level+': descriptor review required a text repair but no page text changed')
   if(!allowedBands[level].has(String(a.finalBand||'')))errors.push(level+': final estimated band '+String(a.finalBand||'missing')+' is outside its assigned CEFR group')
   if(!finalPass(a))errors.push(level+': final descriptor assessment is not a confident pass across all six dimensions')
   const finalText=(merged.variants?.[level]?.pages||[]).map(p=>String(p.text||'')).join(' ')
