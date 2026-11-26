@@ -5,7 +5,8 @@ import {
  buildBatchPrompt,
  buildCEFRReviewRepairPrompt,
  buildGeminiGenerationConfig,
- callGeminiFlashLite,
+ callGeminiWithFailover,
+ resolveGeminiApiKeys,
  normalizeDraftForCatalog,
  validateArticleQuality,
  applyCEFRReviewRepairs,
@@ -15,34 +16,32 @@ import {
 const MODEL=process.env.CEFR_PILOT_MODEL||'gemini-3.5-flash-lite'
 const INPUT=process.env.CEFR_FROZEN_INPUT||'/tmp/saga-cefr-frozen'
 const OUTPUT=process.env.CEFR_PILOT_OUTPUT||'/tmp/saga-cefr-level-control-pilot'
-const API_KEY=process.env.GEMINI_API_KEY
+const API_KEYS=resolveGeminiApiKeys()
+const keyState={keys:API_KEYS,activeIndex:0}
 const TOPICS=['topic-0','topic-1','topic-2']
 const wait=ms=>new Promise(resolve=>setTimeout(resolve,ms))
 const safeError=e=>({name:e?.name||'Error',status:e?.status??null,message:String(e?.message||e).replace(/AIza[A-Za-z0-9_-]+/g,'[REDACTED]').slice(0,500)})
-let calls=0,retries=0,lastCallAt=0
+let calls=0
 
 async function save(name,value){
  await fs.writeFile(path.join(OUTPUT,name),JSON.stringify(value,null,2)+'\n')
 }
 async function invoke(prompt,schema,label){
- for(let attempt=0;attempt<2;attempt++){
-  if(lastCallAt)await wait(Math.max(0,8000-(Date.now()-lastCallAt)))
-  calls++
-  lastCallAt=Date.now()
-  try{
-   return await callGeminiFlashLite(prompt,{apiKey:API_KEY,model:MODEL,schema,timeoutMs:120000})
-  }catch(error){
-   const retryable=[502,503,504].includes(Number(error?.status))
-   if(attempt===0&&retryable){
-    retries++
-    console.warn('[CEFR-LEVEL-CONTROL] '+label+' transient HTTP '+error.status+'; one retry.')
-    await wait(12000)
-    continue
-   }
-   throw error
-  }
+ calls++
+ try{
+  const result=await callGeminiWithFailover(prompt,keyState,{
+   model:MODEL,
+   requestTimeoutMs:120000,
+   deadlineMs:Date.now()+240000,
+   minCallBudgetMs:12000,
+   schema
+  })
+  console.log('[CEFR-LEVEL-CONTROL-MODEL] '+label+' -> '+result.model+' ('+result.keyLabel+')')
+  return result
+ }catch(error){
+  throw Object.assign(error,{pilotStage:label})
  }
-}
+
 
 function levelsNeedingRepair(quality){
  const out=new Set()
@@ -126,14 +125,14 @@ async function runTopic(id){
 }
 
 async function main(){
- assert.ok(API_KEY,'GEMINI_API_KEY is required')
+ assert.ok(API_KEYS.length,'GEMINI_API_KEY or a backup Gemini key is required')
  await fs.mkdir(OUTPUT,{recursive:true})
  const results=[]
  for(const id of TOPICS)results.push(await runTopic(id))
  const summary={
   model:MODEL,
   calls,
-  retries,
+  retries:null,
   fixtures:results.length,
   passed:results.filter(x=>x.passed).length,
   failed:results.filter(x=>!x.passed).length,
