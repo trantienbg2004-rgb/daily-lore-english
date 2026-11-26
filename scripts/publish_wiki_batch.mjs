@@ -2499,7 +2499,7 @@ export async function runPublishWikiBatch({
  const keyState=ensureKeyState({keys:resolvedKeys,activeIndex:0,exhaustedKeys:new Set()})
  // Use a separate, stronger model route for CEFR assessment so the generator does not grade its own work.
  const reviewerModel=String(process.env.CEFR_REVIEW_MODEL||'gemini-3.6-flash').trim()
- const reviewerFallbacks=process.env.CEFR_REVIEW_FALLBACK_MODELS||['gemini-3.8-flash','gemini-3.5-flash-lite']
+ const reviewerFallbacks=process.env.CEFR_REVIEW_FALLBACK_MODELS||['gemini-3.8-flash','gemini-3.1-flash-lite']
  const reviewerModelChain=resolveGeminiModelChain({model:reviewerModel,fallbackModels:reviewerFallbacks})
  const reviewerKeyState=ensureKeyState({...keyState,activeIndex:0,preferredModel:null,lastModelTried:null})
  const sourceUsedPageIds=new Set(sourceCatalog.stories.map(s=>s.sourcePageId))
