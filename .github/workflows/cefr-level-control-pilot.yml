@@ -43,9 +43,14 @@ jobs:
       - name: Run live generation and descriptor-review pilot (no production writes)
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_API_KEY_2: ${{ secrets.GEMINI_API_KEY_2 }}
+          GEMINI_API_KEY_3: ${{ secrets.GEMINI_API_KEY_3 }}
+          SAGA_IMAGE_TEST_API_KEY: ${{ secrets.SAGA_IMAGE_TEST_API_KEY }}
           CEFR_FROZEN_INPUT: /tmp/saga-cefr-frozen
           CEFR_PILOT_OUTPUT: /tmp/saga-cefr-level-control-pilot
           CEFR_PILOT_MODEL: gemini-3.5-flash-lite
+          CEFR_REVIEW_MODEL: gemini-3.6-flash
+          CEFR_REVIEW_FALLBACK_MODELS: gemini-3.8-flash,gemini-3.5-flash-lite
         run: node scripts/cefr-level-control-pilot.mjs
       - uses: actions/upload-artifact@v4
         if: always()
