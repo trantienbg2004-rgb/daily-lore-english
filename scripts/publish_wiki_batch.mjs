@@ -340,7 +340,7 @@ const CEFR_REVIEW_REPAIR_LEVEL_SCHEMA={
  required:['pages']
 }
 
-const CEFR_REVIEW_REPAIR_SCHEMA={
+export const CEFR_REVIEW_REPAIR_SCHEMA={
  type:'object',
  properties:{
   initialAssessment:{
