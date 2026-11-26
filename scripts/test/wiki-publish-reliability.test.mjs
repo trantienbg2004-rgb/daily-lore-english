@@ -12,6 +12,7 @@ import {
  DEFAULT_MAX_RUNTIME_MS,
  GeminiAuthError,
  GeminiInvalidRequestError,
+ GeminiMalformedResponseError,
  GeminiModelNotFoundError,
  GeminiQuotaExhausted,
  GeminiRateLimitError,
@@ -22,6 +23,7 @@ import {
  buildGeminiGenerationConfig,
  callGeminiFlashLite,
  callGeminiWithFailover,
+ parseGeminiJsonResponse,
  hasUsableGeminiRoute,
  parseRetryAfterMs,
  resolveAutoSchedulePlan,
@@ -639,3 +641,55 @@ test('auto-wiki-publish.yml enforces timeout, concurrency, push gating, and fina
  assert.notEqual(runGate({PUBLISH_OUTCOME:'failure',STOP_REASON:'infrastructure_failure',PUSH_OUTCOME:'success'}).status,0,'Infrastructure failure must fail even after preserving progress')
  assert.notEqual(runGate({PUBLISH_OUTCOME:'failure',STOP_REASON:'completed'}).status,0,'Non-success publish outcome must fail')
 })
+
+test('Gemini story JSON parser accepts fenced and embedded JSON but classifies truncated output',()=>{
+ const expected={headline:'A clear story',pages:[{text:'A short page.'}]}
+ assert.deepEqual(parseGeminiJsonResponse(JSON.stringify(expected)),expected)
+ assert.deepEqual(parseGeminiJsonResponse('Here is the JSON:\n'+JSON.stringify(expected)+'\nThanks.'),expected)
+ assert.deepEqual(parseGeminiJsonResponse(String.fromCharCode(96).repeat(3)+'json\n'+JSON.stringify(expected)+'\n'+String.fromCharCode(96).repeat(3)),expected)
+ assert.throws(
+  ()=>parseGeminiJsonResponse('{"headline":"unfinished"',{finishReason:'MAX_TOKENS'}),
+  err=>err instanceof GeminiMalformedResponseError&&err.finishReason==='MAX_TOKENS'&&err.kind==='invalid_response'
+ )
+})
+
+test('Gemini failover retries malformed JSON once on the same model before accepting a valid response',async()=>{
+ const state={keys:[{label:'GEMINI_API_KEY',key:'test-key'}],activeIndex:0,exhaustedKeys:new Set()}
+ let calls=0
+ const result=await callGeminiWithFailover('prompt',state,{
+  model:'gemini-3.5-flash-lite',
+  fallbackModels:[],
+  waitImpl:async()=>{},
+  callGeminiImpl:async()=>{
+   calls++
+   if(calls===1)throw new GeminiMalformedResponseError('invalid story JSON',{finishReason:'MAX_TOKENS',chars:120})
+   return {draft:{ok:true},usage:null}
+  }
+ })
+ assert.equal(calls,2)
+ assert.deepEqual(result.draft,{ok:true})
+ assert.equal(state.apiErrors.invalid_response,1)
+})
+
+test('Gemini failover opens a per-request circuit breaker after three models each fail twice with 503',async()=>{
+ const state={keys:[{label:'GEMINI_API_KEY',key:'test-key'}],activeIndex:0,exhaustedKeys:new Set()}
+ const calls=[]
+ const models=['gemini-3.5-flash-lite','gemini-3.1-flash-lite','gemini-3.6-flash','gemini-3.8-flash']
+ await assert.rejects(
+  ()=>callGeminiWithFailover('prompt',state,{
+   model:models[0],
+   fallbackModels:models.slice(1),
+   unavailableRetryMs:0,
+   maxCooldownMs:0,
+   waitImpl:async()=>{},
+   callGeminiImpl:async(_prompt,{model})=>{
+    calls.push(model)
+    throw new GeminiUnavailableError('503 overloaded',503,{retryAfterMs:0})
+   }
+  }),
+  err=>err instanceof GeminiUnavailableError
+ )
+ assert.deepEqual(calls,models.slice(0,3).flatMap(model=>[model,model]))
+ assert.equal(state.modelCooldownUntil.size,3)
+})
+
