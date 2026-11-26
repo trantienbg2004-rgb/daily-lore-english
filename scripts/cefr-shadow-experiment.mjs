@@ -48,6 +48,29 @@ export function metrics(rows,ceiling,predict){
  }
  return {tp,fp,tn,fn,missedHardRate:fn/(tp+fn),falseWarningRate:fp/(fp+tn),balancedAccuracy:(tp/(tp+fn)+tn/(tn+fp))/2}
 }
+// Ordinal research classifier: estimate five cumulative boundaries, enforce monotonicity.
+export function predictSixLevels(models,x){
+ const probabilities=models.map(m=>score(m,x))
+ for(let i=1;i<probabilities.length;i++)probabilities[i]=Math.min(probabilities[i],probabilities[i-1])
+ return 1+probabilities.filter(v=>v>=.5).length
+}
+export function evaluateSixLevels(training,held){
+ const models=[1,2,3,4,5].map(n=>train(training,n))
+ const confusion=Array.from({length:6},()=>Array(6).fill(0))
+ const band=n=>Math.ceil(n/2)
+ let exact=0,groupCorrect=0,withinOne=0,under=0,over=0
+ for(const r of held){
+  const p=predictSixLevels(models,r.x)
+  confusion[r.label-1][p-1]++
+  exact+=Number(p===r.label)
+  groupCorrect+=Number(band(p)===band(r.label))
+  withinOne+=Number(Math.abs(p-r.label)<=1)
+  under+=Number(band(p)<band(r.label))
+  over+=Number(band(p)>band(r.label))
+ }
+ return {n:held.length,confusion,exact,groupCorrect,withinOne,under,over,
+  boundaries:models.map(m=>({above:m.ceiling,...metrics(held,m.ceiling,r=>score(m,r.x)>=.5)}))}
+}
 export function experiment(trainText,devText,opts={}){
  const wordlist=opts.wordlist||loadCEFRWordlist(),lemmaMap=opts.lemmaMap||loadLemmaMap()
  const training=parseWikiAuto(trainText),keys=new Set(training.map(r=>r.key))
@@ -56,6 +79,7 @@ export function experiment(trainText,devText,opts={}){
  const tr=prep(training),dev=prep(held)
  const counts=rows=>Array.from({length:6},(_,i)=>rows.filter(r=>r.label===i+1).length)
  return {train:tr.length,dev:dev.length,trainCounts:counts(tr),devCounts:counts(dev),
+  sixLevels:evaluateSixLevels(tr,dev),
   results:[2,4].map(ceiling=>{
    const model=train(tr,ceiling)
    return {ceiling,baseline:metrics(dev,ceiling,r=>r.x[0]>(ceiling===2?6.8:10.8)),
