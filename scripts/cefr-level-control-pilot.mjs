@@ -1,6 +1,7 @@
 import fs from 'node:fs/promises'
 import path from 'node:path'
 import assert from 'node:assert/strict'
+import {assignBatchPhotos} from './wiki/batch-media.mjs'
 import {
  buildBatchPrompt,
  buildCEFRReviewRepairPrompt,
@@ -119,25 +120,48 @@ async function runTopic(id){
     requiredRepairLevels:levelsNeedingRepair(quality),
     validEvidenceIds:new Set(fixture.evidence.map(x=>x.id))
    })
-   result.review={
-    ok:applied.ok,
-    errors:applied.errors,
-    assessment:review.draft?.assessment||null,
-    finalAssessment:applied.finalAssessment||null,
-    repairedLevels:(review.draft?.repairs||[]).map(x=>x.level),
-    repairPageIndexes:Object.fromEntries((review.draft?.repairs||[]).map(x=>[x.level,(x.pages||[]).map(p=>p.pageIndex)]))
-   }
-   draft=normalizeDraftForCatalog(applied.draft,{source:fixture.source,evidence:fixture.evidence,verifiedPhotos:fixture.photos})
-   quality=validateArticleQuality(draft,fixture.source.sourceTitle,{
-    source:fixture.source,
-    evidence:fixture.evidence,
-    requireLevelPlans:true
-   })
-   result.finalQuality={ok:quality.ok,errors:quality.errors,metrics:quality.metrics,heuristicWarnings:quality.cefr?.errors||[]}
-   result.passed=applied.ok&&quality.ok&&['A1-A2','B1-B2','C1-C2'].every(level=>{
-    const a=applied.finalAssessment?.[level]
-    return a?.finalVerdict==='pass'&&['A1','A2','B1','B2','C1','C2'].includes(a.finalBand)
-   })
+    result.review={
+     ok:applied.ok,
+     errors:applied.errors,
+     warnings:applied.warnings||[],
+     assessment:review.draft?.assessment||null,
+     finalAssessment:applied.finalAssessment||null,
+     reviewerModelUsed:review.model,
+     repairedLevels:(review.draft?.repairs||[]).map(x=>x.level),
+     repairPageIndexes:Object.fromEntries((review.draft?.repairs||[]).map(x=>[x.level,(x.pages||[]).map(p=>p.pageIndex)]))
+    }
+    draft=normalizeDraftForCatalog(applied.draft,{source:fixture.source,evidence:fixture.evidence,verifiedPhotos:fixture.photos})
+    // Match production's final Wikimedia photo assignment and caption normalization.
+    const assigned=assignBatchPhotos(draft.variants,{
+     source:fixture.source,
+     articlePhotos:fixture.photos,
+     evidence:fixture.evidence,
+     usedImages:new Set(),
+     outline:draft.outline
+    })
+    result.imageAssignment={ok:assigned.ok,reason:assigned.reason||null,strippedImages:assigned.strippedImages||[]}
+    if(assigned.ok){
+     const imageIdsByPage=new Map((assigned.photos||[]).map(photo=>[photo.pageIndex,photo.imageId]))
+     const strippedIndexes=new Set((assigned.strippedImages||[]).map(row=>row.pageIndex))
+     const finalOutline=Array.isArray(draft.outline)?draft.outline.map((row,index)=>({...row,imageId:strippedIndexes.has(index)?null:(imageIdsByPage.get(index)||null)})):draft.outline
+     const finalVariants=Object.fromEntries(['A1-A2','B1-B2','C1-C2'].map(level=>[level,{
+      ...assigned.levelVariants[level],
+      pages:assigned.levelVariants[level].pages.map((page,index)=>({...page,imageId:strippedIndexes.has(index)?null:(imageIdsByPage.get(index)||null)}))
+     }]))
+     draft={...draft,outline:finalOutline,variants:finalVariants}
+     quality=validateArticleQuality(draft,fixture.source.sourceTitle,{
+      source:fixture.source,
+      evidence:fixture.evidence,
+      requireLevelPlans:true
+     })
+    }else{
+     quality={ok:false,errors:['Final photo assignment failed: '+String(assigned.reason||'unknown reason')],metrics:{}}
+    }
+    result.finalQuality={ok:quality.ok,errors:quality.errors,metrics:quality.metrics,heuristicWarnings:quality.cefr?.errors||[]}
+    result.passed=applied.ok&&assigned.ok&&quality.ok&&['A1-A2','B1-B2','C1-C2'].every(level=>{
+     const a=applied.finalAssessment?.[level]
+     return a?.finalVerdict==='pass'&&['A1','A2','B1','B2','C1','C2'].includes(a.finalBand)
+    })
   }else{
    result.review={ok:false,errors:['Structural page/image parity remained unresolved; production also skips descriptor review in this state.']}
    result.finalQuality={ok:quality.ok,errors:quality.errors,metrics:quality.metrics,heuristicWarnings:quality.cefr?.errors||[]}
