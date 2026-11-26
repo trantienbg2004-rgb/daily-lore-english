@@ -209,7 +209,6 @@ const PAGE_SCHEMA={
  type:'object',
  properties:{
   text:{type:'string'},
-  paragraphs:{type:'array',items:{type:'string'},minItems:1},
   imageId:{anyOf:[{type:'string'},{type:'null'}]},
   caption:{type:'string'},
   evidenceIds:{type:'array',items:{type:'string'},minItems:1}
@@ -246,7 +245,6 @@ const REPAIR_PAGE_SCHEMA={
  properties:{
   pageIndex:{type:'integer'},
   text:{type:'string'},
-  paragraphs:{type:'array',items:{type:'string'},minItems:1},
   caption:{type:'string'},
   evidenceIds:{type:'array',items:{type:'string'},minItems:1}
  },
@@ -978,7 +976,7 @@ STEP 3 — SYNCHRONIZED A/B/C VARIANTS ("variants"):
    - ${HEADLINE_WORD_BOUNDS.min} to ${HEADLINE_WORD_BOUNDS.max} words in Title Case per level; distinct across levels; NEVER identical to raw title "${source.sourceTitle}".
 2. SEMANTIC PARAGRAPHS & NATURAL READING FLOW (TARGET ~5 READING PAGES, FLEXIBLE LENGTH):
    - Page 1 = Vivid magazine hook (NEVER start with "${source.sourceTitle} is a..." or "${source.sourceTitle} was an..."). Middle sections = Focused body beats from the outline. Final section = Lasting takeaway grounded in the source.
-   - Organize each section into 1–3 coherent, reasonably short paragraphs separated by a blank line ("\\n\\n") in "text" (and optionally echoed in "paragraphs"). Never invent filler or pad text to hit an exact word count; prioritize clarity, factual integrity, and natural paragraph flow.
+   - Organize each section into 1–3 coherent, reasonably short paragraphs separated by a blank line ("\\n\\n") in "text". Never invent filler or pad text to hit an exact word count; prioritize clarity, factual integrity, and natural paragraph flow.
    - Advisory length guidance (flexible targets, not rigid cutoffs, to pace a comfortable 4–6 page phone reading experience):
      * Photo sections: ${photoLine}
      * Text-only sections: ${textLine}
