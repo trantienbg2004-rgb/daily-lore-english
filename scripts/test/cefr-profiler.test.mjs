@@ -202,6 +202,8 @@ test('CEFR reviewer prompt uses official reading descriptors and treats FKGL/wor
  assert.match(prompt,/MANDATORY PAGE-1 OPENING REPAIR/i)
  assert.match(prompt,/you MUST change pageIndex 0/i)
  assert.match(prompt,/final page must no longer trigger the deterministic opening check/i)
+ assert.match(prompt,/required evidence IDs/i)
+ assert.match(prompt,/Do not merely append an evidence ID without explaining the fact/i)
 })
 
 test('applyCEFRRequeue enforces safety floor, prepends removed stories to FRONT of queue without duplicates, and buildRoundRobinOrder prioritizes them first',async()=>{
