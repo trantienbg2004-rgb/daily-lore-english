@@ -141,6 +141,12 @@ test('CEFR descriptor reviewer accepts only in-band final assessments with verif
  const rejected=applyCEFRReviewRepairs(draft,wrongBand)
  assert.equal(rejected.ok,false)
  assert.ok(rejected.errors.some(e=>/outside its assigned CEFR group/.test(e)))
+
+ const multipleQuotes=structuredClone(passPayload)
+ multipleQuotes.assessment['A1-A2'].evidence.push('A second quote is not allowed.')
+ const quoteRejected=applyCEFRReviewRepairs(draft,multipleQuotes)
+ assert.equal(quoteRejected.ok,false)
+ assert.ok(quoteRejected.errors.some(e=>/exactly one verbatim sentence/.test(e)))
 })
 
 test('CEFR reviewer prompt uses official reading descriptors and treats FKGL/wordlist as advisory diagnostics',()=>{
