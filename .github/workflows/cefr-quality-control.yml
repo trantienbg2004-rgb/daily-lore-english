@@ -8,6 +8,7 @@ on:
       - 'scripts/wiki/cefrProfiler.mjs'
       - 'scripts/test/cefr-profiler.test.mjs'
       - 'scripts/test/wiki-content-engine.test.mjs'
+      - 'scripts/audit_wiki_cefr.mjs'
       - 'scripts/cefr-level-control-pilot.mjs'
       - 'docs/CEFR-QUALITY-CONTROL.md'
       - '.github/workflows/cefr-level-control-pilot.yml'
@@ -53,6 +54,19 @@ jobs:
           node --check scripts/cefr-level-control-pilot.mjs
       - name: Run complete unit suite
         run: npm test
+      - name: Audit currently published catalog (read-only)
+        run: |
+          mkdir -p /tmp/saga-existing-cefr-audit
+          node scripts/audit_wiki_cefr.mjs --json-details > /tmp/saga-existing-cefr-audit/report.json
+          node -e "const r=require('/tmp/saga-existing-cefr-audit/report.json'); console.log('Catalog:',r.totalArticles,'| heuristic pass:',r.passedCount,'| heuristic fail:',r.failedCount); for(const a of r.articles.filter(x=>!x.passed)) console.log(a.sourcePageId+' | '+a.sourceTitle+' | penalty='+a.penalty+' | '+a.errors.slice(0,2).join(' ; '))"
+      - name: Upload per-article audit report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: saga-existing-cefr-per-article-audit
+          path: /tmp/saga-existing-cefr-audit/report.json
+          if-no-files-found: warn
+          retention-days: 7
       - name: Lint
         run: npm run lint
       - name: Production build
