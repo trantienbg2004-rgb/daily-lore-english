@@ -103,18 +103,19 @@ test('validateArticleQuality enforces objective CEFR gates and buildQualityRetry
   [{imageId:'IMG_0',sectionIndex:0,sectionHeading:'Lead',fileTitle:'File:Health.jpg',caption:'Health clinic'}],
   quality
  )
- assert.match(retryPrompt,/OBJECTIVE CEFR PROFILER DIAGNOSTICS/i)
+ assert.match(retryPrompt,/ADVISORY CEFR SCREENING SIGNALS/i)
  assert.match(retryPrompt,/antimicrobial/i)
  assert.match(retryPrompt,/promulgated/i)
  assert.match(retryPrompt,/socioeconomic/i)
- assert.match(retryPrompt,/MANDATORY A1-A2 WORD SWAPS/i)
+ assert.match(retryPrompt,/NOT A PASS\/FAIL STANDARD/i)
+ assert.doesNotMatch(retryPrompt,/MANDATORY A1-A2 WORD SWAPS/i)
 })
 
 test('CEFR descriptor reviewer accepts in-band assessments, merges partial repairs and attaches an auditable excerpt',()=>{
  const dims={vocabulary:'fit',syntax:'fit',cohesion:'fit',abstraction:'fit',inference:'fit',terms:'fit'}
  const assessment=(band,quote,initialBand=band,initialVerdict='pass')=>({
   initialBand,initialVerdict,finalBand:band,finalVerdict:'pass',
-  dimensions:{...dims},evidence:[quote],rationale:'The text matches the target reading descriptor.'
+  initialDimensions:{...dims},finalDimensions:{...dims},evidence:[quote],rationale:'The text matches the target reading descriptor.'
  })
  const draft={variants:{
   'A1-A2':{headline:'A Simple Story About Town Life',pages:[{text:'People built a small town near the river. Families shared food and tools.',imageId:'IMG_0',evidenceIds:['P1']}]},
@@ -147,7 +148,7 @@ test('CEFR descriptor reviewer accepts in-band assessments, merges partial repai
  assert.equal(partial.draft.variants['B1-B2'].pages[1].text,'The next page explains another part of the story.','Untouched page must be preserved')
 
  const dimensionMismatch=structuredClone(passPayload)
- dimensionMismatch.assessment['B1-B2'].dimensions.syntax='high'
+ dimensionMismatch.assessment['B1-B2'].initialDimensions.syntax='high'
  dimensionMismatch.repairs=[{level:'B1-B2',pages:[{pageIndex:0,text:'Builders changed the town over time. They compared plans and shared useful ideas with nearby places.',evidenceIds:['P1']}]}]
  const dimensionRepair=applyCEFRReviewRepairs(draft,dimensionMismatch)
  assert.equal(dimensionRepair.ok,true,dimensionRepair.errors.join(' | '))
