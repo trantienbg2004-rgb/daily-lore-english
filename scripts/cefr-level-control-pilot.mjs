@@ -20,7 +20,7 @@ const API_KEYS=resolveGeminiApiKeys()
 const keyState={keys:API_KEYS,activeIndex:0}
 const TOPICS=['topic-0','topic-1','topic-2']
 const safeError=e=>({name:e?.name||'Error',status:e?.status??null,message:String(e?.message||e).replace(/AIza[A-Za-z0-9_-]+/g,'[REDACTED]').slice(0,500)})
-let calls=0
+let calls=0,modelFallbacks=0
 
 async function save(name,value){
  await fs.writeFile(path.join(OUTPUT,name),JSON.stringify(value,null,2)+'\n')
@@ -35,6 +35,7 @@ async function invoke(prompt,schema,label){
    minCallBudgetMs:12000,
    schema
   })
+  if(result.model!==MODEL)modelFallbacks++
   console.log('[CEFR-LEVEL-CONTROL-MODEL] '+label+' -> '+result.model+' ('+result.keyLabel+')')
   return result
  }catch(error){
@@ -131,7 +132,7 @@ async function main(){
  const summary={
   model:MODEL,
   calls,
-  retries:null,
+  modelFallbacks,
   fixtures:results.length,
   passed:results.filter(x=>x.passed).length,
   failed:results.filter(x=>!x.passed).length,
