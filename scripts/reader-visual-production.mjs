@@ -39,6 +39,7 @@ try{
       if(!Number.isInteger(total)||total<1||total>40)throw new Error('Unexpected live pager: '+count)
       const article={name,id,total,pages:[]}
       for(let i=1;i<=total;i++){
+        await page.waitForFunction(expected => document.querySelector('.story-layer:not(.outgoing) .lore-page-count')?.textContent?.trim() === expected, `${i}/${total}`, {timeout:10000})
         await page.waitForTimeout(500)
         const m=await active.evaluate(root=>{
           const get=s=>root.querySelector(s)?.getBoundingClientRect()
