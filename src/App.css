@@ -2648,13 +2648,13 @@
   overflow-y: auto;
   overscroll-behavior-y: contain;
   -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
+  scrollbar-width: thin;
 }
 
 .lore-editorial-v5 .reader-gesture:not(.layout-measure-fixture) .page-surface.saga-page--dense .reading-card::-webkit-scrollbar,
 .lore-editorial-v5 .reader-gesture:not(.layout-measure-fixture) .page-surface.page-density-dense .reading-card::-webkit-scrollbar,
 .lore-editorial-v5 .reader-gesture:not(.layout-measure-fixture) .page-surface.page-density-dense-tight .reading-card::-webkit-scrollbar {
-  display: none;
+  width: 5px;
 }
 
 /* ============================================================================
@@ -3996,3 +3996,25 @@
   }
 }
 
+
+/* Fix 03 — adaptive reading comfort. Keep the fixed pager outside the reading surface.
+   A genuine overflow (including a transient font/image reflow) remains reachable. */
+.app-shell.lore-editorial-v5 .reader-gesture:not(.layout-measure-fixture) .page-surface.saga-page--dense {
+  overflow-y: auto;
+  overflow-x: hidden;
+  overscroll-behavior-y: contain;
+  scrollbar-width: thin;
+}
+.app-shell.lore-editorial-v5 .reader-gesture .reading-card .article-text {
+  flex-shrink: 0;
+  overflow-wrap: anywhere;
+}
+.app-shell.lore-editorial-v5 .reader-gesture:not(.layout-measure-fixture) .page-surface.saga-page--dense .reading-card,
+.app-shell.lore-editorial-v5 .reader-gesture:not(.layout-measure-fixture) .page-surface.page-density-dense .reading-card,
+.app-shell.lore-editorial-v5 .reader-gesture:not(.layout-measure-fixture) .page-surface.page-density-dense-tight .reading-card {
+  flex: 0 0 auto;
+  overflow: visible;
+}
+.app-shell.lore-editorial-v5 .reader-gesture:not(.layout-measure-fixture) .page-surface.saga-page--dense .article-text {
+  margin-block: 0;
+}

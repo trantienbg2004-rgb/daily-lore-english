@@ -496,3 +496,33 @@ test.describe('SAGA End-to-End QA Suite', () => {
     })
   }
 })
+
+test.describe('Adaptive reading comfort: viewport extremes', () => {
+  for (const viewport of [{width:320,height:568}, {width:430,height:932}]) {
+    test(`Text stays above navigation across levels at ${viewport.width}x${viewport.height}`, async ({page}) => {
+      await page.setViewportSize(viewport)
+      await page.goto('/', {waitUntil:'domcontentloaded'})
+      await waitForStoryReady(page)
+      const active = page.locator('.story-layer:not(.outgoing)')
+      for (const level of ['Level A (A1-A2 Beginner)', 'Level B (B1-B2 Intermediate)', 'Level C (C1-C2 Advanced)']) {
+        await active.getByRole('radio', {name:level,exact:true}).click()
+        await expect(active.getByRole('radio', {name:level,exact:true})).toHaveAttribute('aria-checked','true')
+        await page.waitForTimeout(350)
+        await assertNoViewportOverflow(page, `${viewport.width}x${viewport.height} ${level}`)
+        const count = await active.locator('.lore-page-count').innerText()
+        const total = Number(count.split('/')[1])
+        expect(total).toBeGreaterThan(1)
+        expect(total).toBeLessThanOrEqual(40)
+      }
+      // Walk the advanced version with navigation controls, checking each screen.
+      const count = await active.locator('.lore-page-count').innerText()
+      const total = Number(count.split('/')[1])
+      for (let i = Number(count.split('/')[0]); i < total; i++) {
+        await active.getByRole('button', {name:'Next page',exact:true}).click()
+        await expect(active.locator('.lore-page-count')).toHaveText(`${i+1}/${total}`)
+        await page.waitForTimeout(320)
+        await assertNoViewportOverflow(page, `${viewport.width}x${viewport.height} advanced page ${i+1}`)
+      }
+    })
+  }
+})
