@@ -37,13 +37,6 @@ jobs:
       - name: Verify both regenerated stories and preserve all other catalog entries
         run: |
           node --input-type=module -e "import {readWikiCatalog,validateWikiStory} from './scripts/wiki/catalog.mjs'; const c=await readWikiCatalog(process.cwd()); for(const id of [20958,79511869]){const s=c.stories.find(x=>x.sourcePageId===id);if(!s||s.readerLayoutVersion!==3||!validateWikiStory(s).accepted)throw Error('Missing validated editorial pilot '+id);console.log(id,s.levelVariants['A1-A2'].pages.length)}"
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add public/wiki-reader
-          if ! git diff --cached --quiet; then
-            git commit -m "test(editorial): stage source-reviewed pilot articles on PR branch"
-            git push origin HEAD:refs/heads/fix/reader-page-rhythm
-          fi
       - run: npm test
       - run: npx playwright install --with-deps chromium
       - run: npm run build
@@ -51,6 +44,15 @@ jobs:
         env:
           SAGA_REQUIRE_EDITORIAL_PILOT: '1'
         run: npm run test:e2e
+      - name: Stage validated pilot data only after browser acceptance
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/wiki-reader
+          if ! git diff --cached --quiet; then
+            git commit -m "test(editorial): stage source-reviewed pilot articles on PR branch"
+            git push origin HEAD:refs/heads/fix/reader-page-rhythm
+          fi
       - uses: actions/upload-artifact@v4
         if: always()
         with:
