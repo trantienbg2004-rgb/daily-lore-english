@@ -4155,8 +4155,14 @@
 }
 /* Keep the page count on small viewports and at larger accessibility zoom;
    all content stays reachable while the pager/nav remain outside the scroll. */
-.app-shell.lore-editorial-v5 .reader-gesture[data-editorial-layout="shared"]:not(.layout-measure-fixture) .page-surface {
+.app-shell.lore-editorial-v5 .reader-gesture[data-editorial-layout="shared"]:not(.layout-measure-fixture) .page-surface.saga-page--dense {
   overflow-y: auto;
   overflow-x: hidden;
   overscroll-behavior-y: contain;
+}
+
+@media (min-width: 410px) and (max-width: 519px) and (min-height: 850px) {
+  .lore-editorial-v5 .reader-gesture[data-editorial-layout="shared"] .reading-card .article-text,
+  .lore-editorial-v5 .reader-gesture[data-editorial-layout="shared"] .reading-card.reading-card-with-photo .article-text,
+  .lore-editorial-v5 .reader-gesture[data-editorial-layout="shared"] .reading-card.reading-card-no-photo .article-text { font-size: 19.5px; }
 }
