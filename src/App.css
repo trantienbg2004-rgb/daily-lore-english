@@ -4166,3 +4166,12 @@
   .lore-editorial-v5 .reader-gesture[data-editorial-layout="shared"] .reading-card.reading-card-with-photo .article-text,
   .lore-editorial-v5 .reader-gesture[data-editorial-layout="shared"] .reading-card.reading-card-no-photo .article-text { font-size: 19.5px; }
 }
+
+/* Calibrated photo budget: keep body space comparable between a shorter
+   desktop reader and tall phones; never stretch text on individual cards. */
+@media (min-width: 520px) {
+  .lore-editorial-v5 .reader-gesture[data-editorial-layout="shared"] .article-media:not(.article-media-empty) { --saga-photo-max-h: clamp(95px, 24dvh, 230px); }
+}
+@media (min-width: 410px) and (max-width: 519px) and (min-height: 850px) {
+  .lore-editorial-v5 .reader-gesture[data-editorial-layout="shared"] .article-media:not(.article-media-empty) { --saga-photo-max-h: clamp(180px, 31dvh, 285px); }
+}
