@@ -1,82 +1,82 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-26T16:21:17.394Z",
+  "updatedAt": "2026-11-27T01:27:26.628Z",
   "total": 1795,
   "counts": {
-    "pending": 1585,
-    "published": 25,
+    "pending": 1576,
+    "published": 33,
     "skipped_no_image": 0,
-    "skipped_no_lead_image": 139,
+    "skipped_no_lead_image": 140,
     "skipped_quality": 46
   },
   "byTopic": {
     "Politics": {
-      "pending": 159,
-      "published": 3,
+      "pending": 158,
+      "published": 4,
       "skipped_no_image": 0,
       "skipped_no_lead_image": 15,
       "skipped_quality": 4,
       "total": 181
     },
     "Economy": {
-      "pending": 159,
-      "published": 4,
+      "pending": 158,
+      "published": 5,
       "skipped_no_image": 0,
       "skipped_no_lead_image": 13,
       "skipped_quality": 4,
       "total": 180
     },
     "Conflict & Security": {
-      "pending": 155,
+      "pending": 154,
       "published": 3,
       "skipped_no_image": 0,
-      "skipped_no_lead_image": 17,
+      "skipped_no_lead_image": 18,
       "skipped_quality": 5,
       "total": 180
     },
     "Society": {
-      "pending": 156,
-      "published": 2,
+      "pending": 155,
+      "published": 3,
       "skipped_no_image": 0,
       "skipped_no_lead_image": 16,
       "skipped_quality": 5,
       "total": 179
     },
     "Culture": {
-      "pending": 155,
-      "published": 0,
+      "pending": 154,
+      "published": 1,
       "skipped_no_image": 0,
       "skipped_no_lead_image": 16,
       "skipped_quality": 8,
       "total": 179
     },
     "Science & Technology": {
-      "pending": 162,
-      "published": 2,
+      "pending": 161,
+      "published": 3,
       "skipped_no_image": 0,
       "skipped_no_lead_image": 12,
       "skipped_quality": 4,
       "total": 180
     },
     "Environment": {
-      "pending": 161,
-      "published": 2,
+      "pending": 160,
+      "published": 3,
       "skipped_no_image": 0,
       "skipped_no_lead_image": 12,
       "skipped_quality": 5,
       "total": 180
     },
     "Health": {
-      "pending": 168,
-      "published": 3,
+      "pending": 167,
+      "published": 4,
       "skipped_no_image": 0,
       "skipped_no_lead_image": 5,
       "skipped_quality": 4,
       "total": 180
     },
     "History & Geography": {
-      "pending": 157,
-      "published": 0,
+      "pending": 156,
+      "published": 1,
       "skipped_no_image": 0,
       "skipped_no_lead_image": 19,
       "skipped_quality": 5,
@@ -489,10 +489,11 @@
       "priority": 0,
       "sourceUrl": "https://en.wikipedia.org/wiki/Climate_change_and_cities",
       "hasLeadImage": true,
-      "status": "pending",
+      "status": "published",
       "addedAt": "2026-11-22T02:47:22.530Z",
       "requeuedAt": "2026-11-22T02:47:22.530Z",
-      "requeuedReason": "cefr_upgrade"
+      "requeuedReason": "cefr_upgrade",
+      "publishedAt": "2026-11-27T01:22:05.836Z"
     },
     {
       "title": "Economy of the Inca Empire",
@@ -760,10 +761,11 @@
       "priority": 0,
       "sourceUrl": "https://en.wikipedia.org/wiki/History_of_penicillin",
       "hasLeadImage": true,
-      "status": "pending",
+      "status": "published",
       "addedAt": "2026-11-22T02:47:22.530Z",
       "requeuedAt": "2026-11-22T02:47:22.530Z",
-      "requeuedReason": "cefr_upgrade"
+      "requeuedReason": "cefr_upgrade",
+      "publishedAt": "2026-11-27T01:27:26.600Z"
     },
     {
       "title": "History of the battery",
@@ -894,10 +896,11 @@
       "priority": 0,
       "sourceUrl": "https://en.wikipedia.org/wiki/German_question",
       "hasLeadImage": true,
-      "status": "pending",
+      "status": "published",
       "addedAt": "2026-11-22T02:47:22.530Z",
       "requeuedAt": "2026-11-22T02:47:22.530Z",
-      "requeuedReason": "cefr_upgrade"
+      "requeuedReason": "cefr_upgrade",
+      "publishedAt": "2026-11-27T01:24:53.606Z"
     },
     {
       "title": "History of science and technology in Africa",
@@ -1106,10 +1109,11 @@
       "priority": 0,
       "sourceUrl": "https://en.wikipedia.org/wiki/Balkan_slave_trade",
       "hasLeadImage": true,
-      "status": "pending",
+      "status": "published",
       "addedAt": "2026-11-22T02:47:22.530Z",
       "requeuedAt": "2026-11-22T02:47:22.530Z",
-      "requeuedReason": "cefr_upgrade"
+      "requeuedReason": "cefr_upgrade",
+      "publishedAt": "2026-11-27T01:26:43.696Z"
     },
     {
       "title": "History of multitrack recording",
@@ -1198,10 +1202,11 @@
       "priority": 0,
       "sourceUrl": "https://en.wikipedia.org/wiki/History_of_photography",
       "hasLeadImage": true,
-      "status": "pending",
+      "status": "published",
       "addedAt": "2026-11-22T02:47:22.530Z",
       "requeuedAt": "2026-11-22T02:47:22.530Z",
-      "requeuedReason": "cefr_upgrade"
+      "requeuedReason": "cefr_upgrade",
+      "publishedAt": "2026-11-27T01:25:30.209Z"
     },
     {
       "title": "Art of the AIDS Crisis",
@@ -4929,8 +4934,9 @@
       "priority": 1,
       "sourceUrl": "https://en.wikipedia.org/wiki/Horses_in_warfare",
       "hasLeadImage": true,
-      "status": "pending",
-      "addedAt": "2026-11-20T08:49:35.085Z"
+      "status": "skipped_no_lead_image",
+      "addedAt": "2026-11-20T08:49:35.085Z",
+      "checkedAt": "2026-11-27T01:24:04.075Z"
     },
     {
       "title": "Assassination of Archduke Franz Ferdinand",
@@ -6669,8 +6675,9 @@
       "priority": 1,
       "sourceUrl": "https://en.wikipedia.org/wiki/Book_of_Kells",
       "hasLeadImage": true,
-      "status": "pending",
-      "addedAt": "2026-11-20T08:49:35.085Z"
+      "status": "published",
+      "addedAt": "2026-11-20T08:49:35.085Z",
+      "publishedAt": "2026-11-27T01:24:02.770Z"
     },
     {
       "title": "Education",
@@ -8501,8 +8508,9 @@
       "priority": 1,
       "sourceUrl": "https://en.wikipedia.org/wiki/The_Great_Gatsby",
       "hasLeadImage": true,
-      "status": "pending",
-      "addedAt": "2026-11-20T08:49:35.085Z"
+      "status": "published",
+      "addedAt": "2026-11-20T08:49:35.085Z",
+      "publishedAt": "2026-11-27T01:21:19.929Z"
     },
     {
       "title": "On the Origin of Species",
@@ -15496,8 +15504,9 @@
       "priority": 1,
       "sourceUrl": "https://en.wikipedia.org/wiki/Canada",
       "hasLeadImage": true,
-      "status": "pending",
-      "addedAt": "2026-11-20T08:49:35.085Z"
+      "status": "published",
+      "addedAt": "2026-11-20T08:49:35.085Z",
+      "publishedAt": "2026-11-27T01:23:27.859Z"
     },
     {
       "title": "Colorado River",
