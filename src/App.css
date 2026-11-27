@@ -4184,50 +4184,15 @@
    and page-scoped CSS variable micro-fit (no clipping, no normal scrollbars).
    ========================================================================== */
 .app-shell.lore-editorial-v5 .reader-gesture {
-  --saga-body-size: clamp(16px, 4.15vw, 17px);
+  --saga-body-size: clamp(19px, 2.55dvh, 21.5px);
   --saga-body-lh: 1.5;
-  --saga-photo-max-h: clamp(120px, 26dvh, 235px);
+  /* Container query height is inactive on .reader-gesture; use 31dvh fallback. */
+  --saga-photo-max-h: clamp(175px, 31dvh, 280px);
 }
 
-@media (max-height: 740px) {
+@media (max-height: 700px) {
   .app-shell.lore-editorial-v5 .reader-gesture {
-    --saga-photo-max-h: clamp(112px, 22dvh, 185px);
-  }
-}
-
-@media (max-height: 670px) {
-  .app-shell.lore-editorial-v5 .reader-gesture {
-    --saga-photo-max-h: clamp(105px, 20dvh, 160px);
-  }
-}
-
-@media (min-width: 410px) and (max-width: 519px) and (min-height: 850px) {
-  .app-shell.lore-editorial-v5 .reader-gesture[data-reading-scale="large"] {
-    --saga-body-size: 18px;
-    --saga-body-lh: 1.52;
-  }
-  .app-shell.lore-editorial-v5 .reader-gesture[data-editorial-layout="shared"] {
-    --saga-body-size: 18.5px;
-    --saga-body-lh: 1.52;
-  }
-}
-
-@media (min-width: 520px) {
-  .app-shell.lore-editorial-v5 .reader-gesture {
-    --saga-body-size: 19px;
-    --saga-body-lh: 1.52;
-    --saga-photo-max-h: clamp(120px, 25dvh, 235px);
-  }
-  .app-shell.lore-editorial-v5 .reader-gesture[data-editorial-layout="shared"] {
-    --saga-body-size: 19.5px;
-    --saga-body-lh: 1.52;
-  }
-}
-
-@media (min-width: 520px) and (min-height: 650px) {
-  .app-shell.lore-editorial-v5 .reader-gesture[data-reading-level="A1-A2"]:not([data-editorial-layout="shared"]) {
-    --saga-body-size: 21px;
-    --saga-body-lh: 1.55;
+    --saga-photo-max-h: clamp(140px, 26dvh, 210px);
   }
 }
 
@@ -4315,7 +4280,7 @@
 /* 2. Flush-Left Natural-Aspect Image Container & Top-Right Zoom Anchor */
 .app-shell.lore-editorial-v5 .reader-gesture .article-media:not(.article-media-empty),
 .app-shell.lore-editorial-v5 .reader-gesture[data-editorial-layout="shared"] .article-media:not(.article-media-empty) {
-  --saga-photo-max-h: clamp(120px, 26dvh, 235px);
+  --saga-photo-max-h: clamp(175px, 31dvh, 280px);
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -4326,24 +4291,10 @@
   margin: 2px 0 8px;
 }
 
-@media (max-height: 740px) {
+@media (max-height: 700px) {
   .app-shell.lore-editorial-v5 .reader-gesture .article-media:not(.article-media-empty),
   .app-shell.lore-editorial-v5 .reader-gesture[data-editorial-layout="shared"] .article-media:not(.article-media-empty) {
-    --saga-photo-max-h: clamp(112px, 22dvh, 185px);
-  }
-}
-
-@media (max-height: 670px) {
-  .app-shell.lore-editorial-v5 .reader-gesture .article-media:not(.article-media-empty),
-  .app-shell.lore-editorial-v5 .reader-gesture[data-editorial-layout="shared"] .article-media:not(.article-media-empty) {
-    --saga-photo-max-h: clamp(105px, 20dvh, 160px);
-  }
-}
-
-@media (min-width: 520px) {
-  .app-shell.lore-editorial-v5 .reader-gesture .article-media:not(.article-media-empty),
-  .app-shell.lore-editorial-v5 .reader-gesture[data-editorial-layout="shared"] .article-media:not(.article-media-empty) {
-    --saga-photo-max-h: clamp(120px, 25dvh, 235px);
+    --saga-photo-max-h: clamp(140px, 26dvh, 210px);
   }
 }
 
@@ -4442,6 +4393,18 @@
   letter-spacing: -0.008em;
   color: #282522;
   margin: 0;
+  max-width: 100%;
+}
+
+@media (min-width: 380px) {
+  .app-shell.lore-editorial-v5 .reader-gesture .page-surface:not([style*="--saga-fit-"]) .reading-card .article-text,
+  .app-shell.lore-editorial-v5 .reader-gesture .page-surface:not([style*="--saga-fit-"]) .reading-card.reading-card-with-photo .article-text,
+  .app-shell.lore-editorial-v5 .reader-gesture .page-surface:not([style*="--saga-fit-"]) .reading-card.reading-card-no-photo .article-text,
+  .app-shell.lore-editorial-v5 .reader-gesture[data-editorial-layout="shared"] .page-surface:not([style*="--saga-fit-"]) .reading-card .article-text,
+  .app-shell.lore-editorial-v5 .reader-gesture[data-editorial-layout="shared"] .page-surface:not([style*="--saga-fit-"]) .reading-card.reading-card-with-photo .article-text,
+  .app-shell.lore-editorial-v5 .reader-gesture[data-editorial-layout="shared"] .page-surface:not([style*="--saga-fit-"]) .reading-card.reading-card-no-photo .article-text {
+    max-width: 92%;
+  }
 }
 
 .app-shell.lore-editorial-v5 .reader-gesture .article-text > .article-paragraph {

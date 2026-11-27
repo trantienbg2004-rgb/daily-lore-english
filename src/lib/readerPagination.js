@@ -883,17 +883,9 @@ export function planParagraphAwareWikiPages(item, fits, {
       const units = sentenceUnits(para.text)
       const start = atoms.length
       let progress = 0
-      // Prefer complete sentences. A long sentence may also break at a
-      // natural clause boundary when that avoids an unnecessary extra page.
-      const beats = units.flatMap(unit => {
-        const words = unit.split(/\s+/u)
-        if (words.length < 16) return [{text: unit, sentenceEnd: true}]
-        const cuts = words.map((word, i) => /[,;:—–][”’"')\]]*$/u.test(word) ? i + 1 : 0)
-          .filter(i => i >= 7 && words.length - i >= 7)
-        if (!cuts.length) return [{text: unit, sentenceEnd: true}]
-        const cut = cuts.sort((a,b) => Math.abs(a - words.length / 2) - Math.abs(b - words.length / 2))[0]
-        return [{text: words.slice(0,cut).join(' '), sentenceEnd: false}, {text: words.slice(cut).join(' '), sentenceEnd: true}]
-      })
+      // Keep every complete sentence intact so pages never split mid-sentence
+      // at a comma, semicolon, or dash (e.g. lowercase clause starts).
+      const beats = units.map(unit => ({text: unit, sentenceEnd: true}))
       for (const beat of beats) {
         const pieces = []
         let remaining = beat.text
@@ -1100,8 +1092,10 @@ export function planParagraphAwareWikiPages(item, fits, {
 
         for (let to = from + 1; to <= maxTo; to++) {
           const evalRes = evaluateCandidate(from, to, isCover, mode.imageObj)
-          // Monotonicity guard: never stack multiple paragraphs onto an overflowing page
-          if (!evalRes.fits && (adaptiveComfort || to - from > 1)) break
+          // Monotonicity guard: never stack multiple atoms onto an overflowing page,
+          // while allowing a single intact sentence to fall back to dense scroll
+          // rather than aborting DP into mid-sentence splitting.
+          if (!evalRes.fits && to - from > 1) break
 
           if (to < minTo) {
             if (!evalRes.fits) break
@@ -1363,7 +1357,7 @@ export function planEditorialWikiPages(item, fits, {fitPage = null} = {}) {
   const variants = levels.map(l => item?.levelVariants?.[l]?.pages)
   const originals = item?._sourcePages || item?.pages || []
   const n = originals.length
-  if (n < 4 || n > (item?.readingLevel==='A1-A2'?6:8) || variants.some((p,i) => !Array.isArray(p) || p.length < 4 || p.length > (i===0?6:8))) return null
+  if (n < 4 || n > 8 || variants.some(p => !Array.isArray(p) || p.length < 4 || p.length > 8)) return null
   if (originals.some(p => !trim(p?.text))) return null
   if (variants.some(p => (p[0]?.image || '') !== (variants[0][0]?.image || ''))) return null
   return originals.map((page,i) => {

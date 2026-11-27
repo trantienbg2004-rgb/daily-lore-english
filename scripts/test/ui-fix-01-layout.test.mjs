@@ -118,10 +118,15 @@ test('planEditorialWikiPages uses bounded microFit before dense fallback and pre
   assert.equal(planned[4].microFit, undefined)
 })
 
-test('App.css UI Fix 01 enforces unified left-axis layout, micro-fit variables, and editorial-meter.mjs empty-figure compatibility', () => {
+test('App.css UI Fix 01 enforces Lore proportions, unified left-axis layout, micro-fit variables, and editorial-meter.mjs empty-figure compatibility', () => {
   const css = fs.readFileSync(new URL('../../src/App.css', import.meta.url), 'utf8')
   const fixBlock = css.slice(css.indexOf('UI Fix 01'))
   assert.ok(fixBlock.length > 500, 'UI Fix 01 CSS block must exist at bottom of App.css')
+  assert.match(fixBlock, /--saga-body-size:\s*clamp\(19px,\s*2\.55dvh,\s*21\.5px\);/)
+  assert.match(fixBlock, /--saga-body-lh:\s*1\.5;/)
+  assert.match(fixBlock, /--saga-photo-max-h:\s*clamp\(175px,\s*31(?:cqh|dvh),\s*280px\);/)
+  assert.match(fixBlock, /@media\s*\(max-height:\s*700px\)[\s\S]*--saga-photo-max-h:\s*clamp\(140px,\s*26dvh,\s*210px\);/)
+  assert.match(fixBlock, /@media\s*\(min-width:\s*380px\)[\s\S]*:not\(\[style\*="--saga-fit-"\]\)[\s\S]*max-width:\s*92%;/)
   assert.match(fixBlock, /-webkit-line-clamp:\s*2;/)
   assert.match(fixBlock, /-webkit-line-clamp:\s*1;/)
   assert.match(fixBlock, /align-self:\s*flex-start;/)
@@ -131,3 +136,25 @@ test('App.css UI Fix 01 enforces unified left-axis layout, micro-fit variables, 
   assert.match(fixBlock, /var\(--saga-fit-photo-max-h/)
   assert.match(fixBlock, /\.layout-measure-fixture \.article-media \.photo-figure\.lore-photo-figure\.hero-media:empty/)
 })
+
+test('adaptive comfort pagination never splits Lhasa Newars Level C mid-sentence at a comma clause', async () => {
+  const {planAnchoredWikiPages, wordCount} = await import('../../src/lib/readerPagination.js')
+  const shard = JSON.parse(fs.readFileSync(new URL('../../public/wiki-reader/0003.json', import.meta.url), 'utf8'))
+  const lhasa = shard.find(s => s.sourceTitle === 'Lhasa Newar')
+  assert.ok(lhasa, 'Lhasa Newar story fixture must exist in shard 0003')
+  const cPages = lhasa.levelVariants['C1-C2'].pages
+  for (const cap of [38, 45, 55, 70]) {
+    const planned = planAnchoredWikiPages(
+      {...lhasa, _sourcePages: cPages, pages: cPages},
+      ({text, image}) => wordCount(text) <= (image ? Math.floor(cap * 0.68) : cap),
+      {paragraphAware: true, balanced: true, adaptiveComfort: true}
+    )
+    assert.ok(planned.length >= 2)
+    for (const p of planned) {
+      const trimmed = p.text.trim()
+      assert.ok(!/^[\s"'“‘([]*\p{Ll}/u.test(trimmed), `Page started lowercase at cap=${cap}: "${trimmed.slice(0, 60)}"`)
+      assert.ok(/[.!?…]["'”’)\]]*$/u.test(trimmed), `Page missing terminal punctuation at cap=${cap}: "${trimmed.slice(-50)}"`)
+    }
+  }
+})
+

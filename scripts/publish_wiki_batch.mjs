@@ -48,14 +48,15 @@ const LEVELS=['A1-A2','B1-B2','C1-C2']
 export const PAGE_COUNT_BOUNDS=Object.freeze({min:4,max:6})
 // Layout budget, not a CEFR definition. Character length predicts rendered
 // line count more reliably than identical word counts across proficiency bands.
-export const EDITORIAL_CARD_CHAR_BOUNDS=Object.freeze({photo:[360,470],text:[640,830]})
-const ADAPTIVE_MAP_GUIDANCE='Each version independently chooses 4–6 pages; B1-B2 and C1-C2 may use 7–8 only for genuinely useful depth. Never fewer than 4 or more than 8. Use the same verified cover imageId in all three versions. Body images may appear at different page indexes, only if relevant to that page. Outline is a broad common topic sequence, not a page-index contract. Plan each actual page as photo or text-only before composing. Do not pad or force equal page counts.'
+export const EDITORIAL_CARD_CHAR_BOUNDS=Object.freeze({photo:[220,340],text:[420,560]})
+export const EDITORIAL_PARAGRAPH_BOUNDS=Object.freeze({photo:[1,2],text:[2,3]})
+const ADAPTIVE_MAP_GUIDANCE='Each version (A1-A2, B1-B2, and C1-C2) independently chooses 4–8 pages (typically 4–6, using 7–8 when genuinely useful for clear pacing or depth). Never fewer than 4 or more than 8. Use the same verified cover imageId in all three versions. Body images may appear at different page indexes, only if relevant to that page. Outline is a broad common topic sequence, not a page-index contract. Plan each actual page as photo or text-only before composing. Do not pad or force equal page counts.'
 const measuredGuidance=budgets=>budgets?[
- 'MANDATORY COPYFITTING. These are measured BODY lengths (not headline or caption). Write the full requested length on EACH page, not the entire article. For every photo page write two developed paragraphs; for text-only pages write two substantial paragraphs. Do not confuse the photo and text-only budgets. Use the following targets for natural prose:',
+ 'MANDATORY COPYFITTING. These are measured BODY lengths (not headline or caption). Write the full requested length on EACH page, not the entire article. For cover and photo pages write 1–2 natural paragraphs; for text-only pages write 2–3 natural paragraphs. Do not confuse the photo and text-only budgets. Use the following targets for natural prose:',
  ...LEVELS.map(l=>l+': '+['cover','photo','text'].map(t=>{const b=budgets[l][t];return t+' '+b.target+' characters (about '+(b.targetWords||Math.round(b.target/(l==='A1-A2'?5.1:l==='B1-B2'?6.4:7.3)))+' words), range '+b.min+'–'+b.max}).join('; ')),
- 'Select the page count and photo IDs before composing. For a level with 4 pages and one cover, the total body budget is ONE cover plus THREE text-only targets. Add source-supported context and explanation, not repetitive filler. Use two paragraphs separated by a blank line. The final page must be as developed as other pages of its type. Treat visual measurements as mandatory constraints; they do not define CEFR.',
+ 'Select the page count (4–8) and photo IDs before composing. For example, a 5-page version with a cover photo on Page 1 and one body photo on Page 3 uses ONE cover target, ONE photo target, and THREE text-only targets. Add source-supported context and explanation, not repetitive filler. Use 1–2 natural paragraphs on cover/photo pages and 2–3 natural paragraphs on text-only pages, separated by a blank line. The final page must be as developed as other pages of its type. Treat visual measurements as mandatory constraints; they do not define CEFR.',
 ].join('\n'):' '
-const EDITORIAL_CARD_GUIDANCE='Use 360–470 characters of natural body prose on EACH photo page, and 640–830 characters on EACH text-only page (spaces included, caption excluded). Aim at 415 and 735 respectively, including the final page. Count the actual characters of each completed body before returning JSON; do not count the caption, headline or evidence IDs. Revise any page outside the stated range before submitting. Use two or three coherent paragraphs where appropriate. Keep each matching pageIndex focused on the same broad editorial subject across A/B/C. Expand with source-supported explanation and concrete detail, not repetition or filler. These are visual budgets, NOT CEFR criteria.'
+const EDITORIAL_CARD_GUIDANCE='Use 220–340 characters of natural body prose on EACH cover/photo page (target ~280), and 420–560 characters on EACH text-only page (target ~490; spaces included, caption excluded), including the final page. Count the actual characters of each completed body before returning JSON; do not count the caption, headline or evidence IDs. Revise any page outside the stated range before submitting. Use 1–2 coherent paragraphs on cover/photo pages and 2–3 coherent paragraphs on text-only pages, separated by a blank line. Expand with source-supported explanation and concrete detail, not repetition or filler. These are visual budgets, NOT CEFR criteria.'
 export const HEADLINE_WORD_BOUNDS=Object.freeze({min:5,max:11})
 export const CAPTION_LIMITS=Object.freeze({minWords:3,maxWords:10,maxChars:65,targetMinWords:5,targetMaxWords:8,targetMaxChars:48})
 export const LEVEL_WORD_BOUNDS=Object.freeze({
@@ -996,7 +997,7 @@ export function validateArticleQuality(draft,sourceTitle,{
   }
 
   const pages=Array.isArray(variant.pages)?variant.pages:[]
-  const levelMax=editorialRhythm&&level!=='A1-A2'?8:maxPages
+  const levelMax=editorialRhythm?8:maxPages
   if(pages.length<minPages||pages.length>levelMax){
    errors.push(`${level}: page count must be between ${minPages} and ${levelMax} (got ${pages.length})`)
    continue
@@ -1015,6 +1016,12 @@ export function validateArticleQuality(draft,sourceTitle,{
    const isPhotoPage=idx===0||(!editorialRhythm&&photoPageIndexes.has(idx))||Boolean(token)
    // Flexible paragraph-based article length: do NOT hard-reject per-page word counts.
    // Only reject empty or trivially broken stubs (< 8 words).
+   if(editorialRhythm){
+    const [minParas,maxParas]=EDITORIAL_PARAGRAPH_BOUNDS[isPhotoPage?'photo':'text']
+    if(paragraphs.length<minParas||paragraphs.length>maxParas){
+     errors.push(`${level} page ${idx+1} (${idx===0?'cover':isPhotoPage?'photo':'text-only'}): requires ${minParas}-${maxParas} paragraphs (got ${paragraphs.length})`)
+    }
+   }
    if(editorialRhythm&&!measuredLayout){
     const chars=flatText.length
     const [min,max]=EDITORIAL_CARD_CHAR_BOUNDS[isPhotoPage?'photo':'text']
@@ -1129,7 +1136,7 @@ export function buildBatchPrompt(source,topic,evidence,verifiedPhotos=[],{editor
   '- Preserve exact dates, quantities, names, causal limits, exceptions, uncertainty and safety qualifications.',
   '- Mark hasUncertainty=true wherever the source is disputed, estimated, qualified or describes a risk. Do not convert uncertainty into certainty.',
   '',
-  'STEP 2 — SHARED VISUAL PAGE MAP (outline)',
+  editorialRhythm?'STEP 2 — BROAD TOPIC OUTLINE (outline)':'STEP 2 — SHARED VISUAL PAGE MAP (outline)',
   ...(editorialRhythm?[ADAPTIVE_MAP_GUIDANCE]:[
   '- Create a '+PAGE_COUNT_BOUNDS.min+'-'+PAGE_COUNT_BOUNDS.max+' PAGE OUTLINE with page slots in a logical broad story sequence.',
   '- This shared outline exists ONLY to keep page count, visual order and imageId alignment stable across the three versions.',
@@ -1138,7 +1145,7 @@ export function buildBatchPrompt(source,topic,evidence,verifiedPhotos=[],{editor
   '- The same imageId (or null) must remain at the same pageIndex across all three variants. Only choose an image if it remains relevant to all versions of that page.']),
   '',
   'STEP 3 — THREE INDEPENDENT READING PLANS (levelPlans)',
-  'First choose sharedCoreFactIds: 2–4 of the most central fact IDs from factSheet. Then create a separate readerObjective, selectedFactIds (2–10 IDs from the fact sheet, INCLUDING every sharedCoreFactId) and depthNotes for EACH level. The selectedFactIds of all three levels must contain at least the same two sharedCoreFactIds. Use the shared visual page map only for page order and image alignment; each version may allocate its selected facts differently across pages. Other fact selection, explanation depth and emphasis SHOULD differ.',
+  'First choose sharedCoreFactIds: 2–4 of the most central fact IDs from factSheet. Then create a separate readerObjective, selectedFactIds (2–10 IDs from the fact sheet, INCLUDING every sharedCoreFactId) and depthNotes for EACH level. The selectedFactIds of all three levels must contain at least the same two sharedCoreFactIds. '+(editorialRhythm?'Each version independently decides its own 4–8 page allocation and body-image placement from its selected facts (sharing only the verified cover image on Page 1).':'Use the shared visual page map only for page order and image alignment; each version may allocate its selected facts differently across pages.')+' Other fact selection, explanation depth and emphasis SHOULD differ.',
   '',
   'A1-A2 READER PROFILE',
   '- A1 readers recognise familiar names, words and basic phrases in very short, simple text and may reread.',
@@ -1168,7 +1175,7 @@ export function buildBatchPrompt(source,topic,evidence,verifiedPhotos=[],{editor
   '- Do not simply paraphrase one master article three times. Do not make B/C harder only by increasing sentence length or replacing words with rarer synonyms.',
   '- Every headline must be 5 to 11 words, distinct across levels, and must not repeat the raw Wikipedia title.' ,
   '- Page 1 should open with an engaging, factual hook, not a dry X-is-a definition or an invented scene. The final page should give a source-grounded takeaway.',
-  '- Use 1–3 coherent paragraphs per page, separated by a blank line. Every paragraph ends with a complete sentence. Never add filler to reach a word count.',
+  editorialRhythm?'- Use 1–2 coherent paragraphs on cover/photo pages and 2–3 coherent paragraphs on text-only pages, separated by a blank line. Every paragraph ends with a complete sentence. Never add filler to reach a word count.':'- Use 1–3 coherent paragraphs per page, separated by a blank line. Every paragraph ends with a complete sentence. Never add filler to reach a word count.',
   ...(editorialRhythm?[budgets?measuredGuidance(budgets):EDITORIAL_CARD_GUIDANCE,'Write complete, natural paragraphs with source-grounded detail; no filler.']: ['- Flexible visual pacing guidance only (NOT CEFR definitions or hard word-count targets):','  * Photo sections: '+photoLine,'  * Text-only sections: '+textLine]),
   '- Sentence-length figures, FKGL and lexical-list percentages are screening clues only. They do NOT define CEFR and must never be gamed.',
   '',
@@ -1546,7 +1553,7 @@ TARGETED RULES:
 - Return pure JSON matching: {"repairs":{"A1-A2":{"headline?":"...","levelPlan?":{"selectedFactIds":["F1","F2"]},"pages":[{"pageIndex":0,"text":"...","caption?":"...","evidenceIds":["P1"]}]},"B1-B2":{...},"C1-C2":{...}}}
 - Include ONLY the levels, headlines, levelPlans, and pageIndexes listed in ITEMS TO REPAIR below.
 - For a levelPlan target, return 2-10 selectedFactIds chosen ONLY from that item's validFactIds. Preserve all sharedCoreFactIds, readerObjective and depthNotes. Never invent, rename, or guess a fact ID.
-- Preserve the shared page/image map, each level's own planned focus, paragraph boundaries ("\\n\\n"), dates, numbers, uncertainty/safety conditions, and evidence IDs. Do not add or remove images.
+- ${editorialRhythm?"Preserve each level's page count, image placement, planned focus":"Preserve the shared page/image map, each level's own planned focus"}, paragraph boundaries ("\\n\\n"), dates, numbers, uncertainty/safety conditions, and evidence IDs. Do not add or remove images.
 ${editorialRhythm?(budgets?measuredGuidance(budgets):EDITORIAL_CARD_GUIDANCE):`- Advisory photo section pacing: ${photoLine}\n- Advisory text-only section pacing: ${textLine}`}
 - Headlines: ${HEADLINE_WORD_BOUNDS.min}-${HEADLINE_WORD_BOUNDS.max} words, distinct across all 3 levels, never matching "${source.sourceTitle}".
 - Captions on photo pages: complete natural phrase (${CAPTION_LIMITS.targetMinWords}-${CAPTION_LIMITS.targetMaxWords} words, max ${CAPTION_LIMITS.maxChars} chars, never truncated mid-word).

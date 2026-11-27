@@ -53,7 +53,7 @@ export function validateWikiStory(story){
  const covers=[]
  for(const level of levels){
   const variant=story?.levelVariants?.[level],pages=variant?.pages
-  if(!nonempty(variant?.headline)||!Array.isArray(pages)||pages.length<4||pages.length>(story.readerLayoutVersion===3?(level==='A1-A2'?6:8):7)){errors.push(level+':structure');continue}
+  if(!nonempty(variant?.headline)||!Array.isArray(pages)||pages.length<4||pages.length>(story.readerLayoutVersion===3?8:7)){errors.push(level+':structure');continue}
   for(const [pageIndex,page] of pages.entries()){
    if(!nonempty(page?.text)||!Array.isArray(page.evidenceIds)||!page.evidenceIds.length||
     page.evidenceIds.some(id=>!evidenceIds.has(id)))errors.push(level+':page-evidence')
