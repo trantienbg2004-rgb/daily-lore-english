@@ -92,7 +92,7 @@ test('No style can draw a pill or square around Read arrows',()=>{
 
 test('Pager stays reserved while pagination checks text fits above it',()=>{
   assert.match(app,/const pager = fixture\.querySelector\('\.page-control'\)/)
-  assert.match(app,/pagerBounds\.top - 8/)
+  assert.match(app,/const safeBottom = Math\.min\(pagerBounds\.top, fixture\.getBoundingClientRect\(\)\.bottom\) - 12/)
   assert.match(app,/pagerBounds\.bottom <= viewportBottom \+ 1/)
   assert.match(css,/\.lore-editorial-v5 \.reader-gesture \.reading-card\s*\{\s*flex:0 0 auto;/)
 })
