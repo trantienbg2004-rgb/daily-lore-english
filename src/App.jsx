@@ -442,8 +442,8 @@ function layoutPages(item, reader, badImages = new Set()) {
         const ratio = asset?.width && asset?.height ? asset.width / asset.height : 4 / 3
         const measuredHeight = Math.min(maxHeight, media.clientWidth / ratio)
         const measuredWidth = Math.min(media.clientWidth, measuredHeight * ratio)
-        figure.style.width = `${Math.round(measuredWidth)}px`
-        figure.style.height = `${Math.round(measuredHeight)}px`
+        figure.style.width = fixture.dataset.editorialLayout === 'shared' ? '' : `${Math.round(measuredWidth)}px`
+        figure.style.height = fixture.dataset.editorialLayout === 'shared' ? '' : `${Math.round(measuredHeight)}px`
         photo.width = asset?.width || 1600
         photo.height = asset?.height || 900
         photo.style.width = `${Math.round(measuredWidth)}px`
@@ -507,7 +507,7 @@ function layoutPages(item, reader, badImages = new Set()) {
       // The flex pager ends exactly at the reader's bottom; allow subpixel
       // rounding while keeping the entire paragraph block above the pager.
       const fitsPage = textBounds.height > 0 && textBounds.bottom <= safeBottom
-        && cardBounds.bottom <= safeBottom + 8
+        && (fixture.dataset.editorialLayout !== 'shared' || cardBounds.bottom <= pagerBounds.top)
         && (!image || mediaBounds.bottom <= safeBottom)
         && pagerBounds.bottom <= viewportBottom + 1
       const measured = {
