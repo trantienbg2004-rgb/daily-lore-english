@@ -4088,3 +4088,90 @@
     line-height: 1.52;
   }
 }
+
+/* Shared editorial card contract: the same visual grid for A/B/C and every
+   page of a given type. A fixed photo slot is NOT a crop: the whole image is
+   contained. No individual page changes font size to artificially fill space. */
+.lore-editorial-v5 .reader-gesture[data-editorial-layout="shared"] .post-head.article-heading {
+  padding: 8px 0 6px;
+  border: 0;
+  margin: 0;
+}
+.lore-editorial-v5 .reader-gesture[data-editorial-layout="shared"] .post-head.article-heading h1,
+.lore-editorial-v5 .reader-gesture[data-editorial-layout="shared"] .post-head.article-heading h1.lore-headline-long {
+  font-size: clamp(19px, 4.8vw, 23px);
+  line-height: 1.18;
+  min-height: 2.36em;
+  letter-spacing: -0.015em;
+  color: #121212;
+  overflow: visible;
+  padding: 0;
+}
+.lore-editorial-v5 .reader-gesture[data-editorial-layout="shared"] .article-media:not(.article-media-empty) {
+  --saga-photo-max-h: clamp(100px, 28dvh, 250px);
+  align-items: center;
+  margin: 0 0 8px;
+}
+.lore-editorial-v5 .reader-gesture[data-editorial-layout="shared"] .article-media .photo-figure.lore-photo-figure.hero-media {
+  width: 100%;
+  height: var(--saga-photo-max-h);
+  max-height: var(--saga-photo-max-h);
+  align-items: center;
+  justify-content: center;
+  box-shadow: none;
+}
+.lore-editorial-v5 .reader-gesture[data-editorial-layout="shared"] .article-media .lore-photo-figure img.hero-photo {
+  align-self: center;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+.lore-editorial-v5 .reader-gesture[data-editorial-layout="shared"] .article-media .lore-photo-caption {
+  margin: 6px 0 0;
+  min-height: 2.64em;
+  text-align: center;
+}
+.lore-editorial-v5 .reader-gesture[data-editorial-layout="shared"] .page-surface .reading-card {
+  flex: 0 0 auto;
+  overflow: visible;
+  padding: 4px 0 10px;
+}
+.lore-editorial-v5 .reader-gesture[data-editorial-layout="shared"] .reading-card .article-text,
+.lore-editorial-v5 .reader-gesture[data-editorial-layout="shared"] .reading-card.reading-card-with-photo .article-text,
+.lore-editorial-v5 .reader-gesture[data-editorial-layout="shared"] .reading-card.reading-card-no-photo .article-text {
+  font-size: clamp(16px, 4.35vw, 18px);
+  line-height: 1.52;
+  margin: 0;
+}
+@media (min-width: 520px) {
+  .lore-editorial-v5 .reader-gesture[data-editorial-layout="shared"] .reading-card .article-text,
+.lore-editorial-v5 .reader-gesture[data-editorial-layout="shared"] .reading-card.reading-card-with-photo .article-text,
+.lore-editorial-v5 .reader-gesture[data-editorial-layout="shared"] .reading-card.reading-card-no-photo .article-text {
+    font-size: 20px;
+    line-height: 1.52;
+  }
+}
+/* Keep the page count on small viewports and at larger accessibility zoom;
+   all content stays reachable while the pager/nav remain outside the scroll. */
+.app-shell.lore-editorial-v5 .reader-gesture[data-editorial-layout="shared"]:not(.layout-measure-fixture) .page-surface.saga-page--dense {
+  overflow-y: auto;
+  overflow-x: hidden;
+  overscroll-behavior-y: contain;
+}
+
+@media (min-width: 410px) and (max-width: 519px) and (min-height: 850px) {
+  .lore-editorial-v5 .reader-gesture[data-editorial-layout="shared"] .reading-card .article-text,
+  .lore-editorial-v5 .reader-gesture[data-editorial-layout="shared"] .reading-card.reading-card-with-photo .article-text,
+  .lore-editorial-v5 .reader-gesture[data-editorial-layout="shared"] .reading-card.reading-card-no-photo .article-text { font-size: 19.5px; }
+}
+
+/* Calibrated photo budget: keep body space comparable between a shorter
+   desktop reader and tall phones; never stretch text on individual cards. */
+@media (min-width: 520px) {
+  .lore-editorial-v5 .reader-gesture[data-editorial-layout="shared"] .article-media:not(.article-media-empty) { --saga-photo-max-h: clamp(95px, 24dvh, 230px); }
+}
+@media (min-width: 410px) and (max-width: 519px) and (min-height: 850px) {
+  .lore-editorial-v5 .reader-gesture[data-editorial-layout="shared"] .article-media:not(.article-media-empty) { --saga-photo-max-h: clamp(180px, 31dvh, 285px); }
+}

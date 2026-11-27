@@ -720,3 +720,30 @@ export function assignBatchPhotos(levelVariants,{source,articlePhotos=[],evidenc
   usedMainSubjectFallback:Boolean(cover?.isMainSubjectFallback)
  }
 }
+
+
+/** Independently assign each level's editorial map using the existing rights
+ * and section-alignment guard. Reusing a source photo across levels is allowed;
+ * reusing it twice in the same level is not. All levels keep one shared cover. */
+export function assignIndependentBatchPhotos(levelVariants, options={}) {
+ const result={}, photos=[], strippedImages=[]
+ const commonCover=levelVariants['B1-B2']?.pages?.[0]?.imageId
+ let coverUrl=null
+ for(const level of LEVELS){
+  const variant=structuredClone(levelVariants[level])
+  if(!variant?.pages?.length)return {ok:false,reason:'missing-level'}
+  if(commonCover)variant.pages[0].imageId=commonCover
+  const single=Object.fromEntries(LEVELS.map(l=>[l,structuredClone(variant)]))
+  const assigned=assignBatchPhotos(single,{...options,outline:null})
+  if(!assigned.ok)return assigned
+  const final=assigned.levelVariants[level]
+  if(coverUrl&&final.pages[0].image!==coverUrl)return {ok:false,reason:'cross-level-cover-mismatch'}
+  coverUrl=final.pages[0].image
+  result[level]=final
+  photos.push(...assigned.photos)
+  for(let i=1;i<variant.pages.length;i++){
+   if(variant.pages[i].imageId&&!final.pages[i].image)strippedImages.push({level,pageIndex:i,reason:'unassigned-or-misaligned'})
+  }
+ }
+ return {ok:true,levelVariants:result,photos:[...new Map(photos.map(p=>[p.url,p])).values()],strippedImages}
+}

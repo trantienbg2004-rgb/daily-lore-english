@@ -12,7 +12,7 @@ export const readableStory = item => {
     item.pages.length >= 4 && item.pages.length <= 7 && words >= 120 &&
     item.pages.some(p => Boolean(p?.image)) && ['A1-A2','B1-B2','C1-C2'].every(level =>
       Array.isArray(item.levelVariants?.[level]?.pages) &&
-      item.levelVariants[level].pages.length >= 4 && item.levelVariants[level].pages.length <= 7 &&
+      item.levelVariants[level].pages.length >= 4 && item.levelVariants[level].pages.length <= (item.readerLayoutVersion===3?(level==='A1-A2'?6:8):7) &&
       item.levelVariants[level].pages.some(p => Boolean(p?.image)))
   if (item.contentType === 'lore') return item.editorialVersion === 1 && item.readingKind === 'full' && item.pages.length >= 3 && words >= 400 && words <= 800 && item.pages.some(p => p.image && p.imageProvenance?.license)
   return item.contentType === 'news' && item.readingKind === 'full' && item.pages.length >= 1 && words >= 10

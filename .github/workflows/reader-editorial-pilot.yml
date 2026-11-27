@@ -1,0 +1,47 @@
+name: Reader editorial pilot
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - '.github/workflows/reader-editorial-pilot.yml'
+      - 'scripts/wiki/editorial-meter.mjs'
+      - 'scripts/wiki/review-editorial-pilot.mjs'
+      - 'src/App.css'
+      - 'src/App.jsx'
+      - 'scripts/publish_wiki_batch.mjs'
+      - 'public/wiki-reader/**'
+permissions:
+  contents: read
+concurrency:
+  group: editorial-approved-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  pilot:
+    if: github.event.pull_request.head.repo.full_name == github.repository && github.head_ref == 'fix/reader-page-rhythm'
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm ci
+      - run: npm test
+      - run: npx playwright install --with-deps chromium
+      - name: Confirm independently reviewed pilot catalog
+        run: |
+          node --input-type=module -e "import {readWikiCatalog} from './scripts/wiki/catalog.mjs'; const c=await readWikiCatalog(process.cwd()); for(const id of [20958,79511869]){const s=c.stories.find(x=>x.sourcePageId===id);if(!s||s.readerLayoutVersion!==3||!s.editorialPilotReview?.model)throw Error('Missing independently reviewed pilot '+id);console.log(id,s.editorialPilotReview)}"
+      - run: npm run build
+      - name: Verify approved article pages without further Gemini calls
+        env:
+          SAGA_REQUIRE_EDITORIAL_PILOT: '1'
+        run: npx playwright test --grep 'Visual regression:' --retries=0
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: editorial-approved-evidence-${{ github.run_id }}
+          path: |
+            test-results/
+            playwright-report/
+          retention-days: 7
+          if-no-files-found: ignore

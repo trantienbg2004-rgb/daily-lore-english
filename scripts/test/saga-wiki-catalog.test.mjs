@@ -3,7 +3,7 @@ import assert from 'node:assert/strict'
 import fs from 'node:fs/promises'
 import os from 'node:os'
 import path from 'node:path'
-import {makeWikiStory,validateWikiStory,appendWikiStories,readWikiCatalog,promoteWikiCatalog,restoreWikiSourceCaptions} from '../wiki/catalog.mjs'
+import {makeWikiStory,validateWikiStory,appendWikiStories,readWikiCatalog,promoteWikiCatalog,restoreWikiSourceCaptions,replaceWikiStory,rewriteWikiCatalog} from '../wiki/catalog.mjs'
 
 function story(id){
  const source={pageId:id,sourceTitle:'Silk Road '+id,sourceUrl:`https://en.wikipedia.org/wiki/Silk_Road_${id}`,
@@ -115,4 +115,25 @@ test('promotion resumes from the staging catalog without duplicating or replacin
   }finally{await fs.rm(conflict,{recursive:true,force:true})}
   assert.equal((await readWikiCatalog(production)).stories.length,2)
  }finally{await fs.rm(staging,{recursive:true,force:true});await fs.rm(production,{recursive:true,force:true})}
+})
+
+
+test('regenerating two articles from a shared shard preserves index order, count and original snapshot',async()=>{
+ const base=await fs.mkdtemp(path.join(os.tmpdir(),'saga-wiki-shared-shard-'))
+ try{
+  await rewriteWikiCatalog(base,[story(42),story(43),story(44)])
+  const initial=await readWikiCatalog(base)
+  const oldShard=await fs.readFile(path.join(initial.dir,'0000.json'),'utf8')
+  for(const id of [42,43]){
+   const old=(await readWikiCatalog(base)).stories.find(s=>s.sourcePageId===id)
+   const next=structuredClone(old)
+   next.levelVariants['A1-A2'].headline='Updated beginner story number '+id
+   await replaceWikiStory(base,next)
+   const c=await readWikiCatalog(base)
+   assert.equal(c.manifest.total,3)
+   assert.deepEqual(c.stories.map(s=>s.sourcePageId),[42,43,44])
+   assert.equal(c.stories.find(s=>s.sourcePageId===id).levelVariants['A1-A2'].headline,next.levelVariants['A1-A2'].headline)
+  }
+  assert.equal(await fs.readFile(path.join(initial.dir,'0000.json'),'utf8'),oldShard)
+ }finally{await fs.rm(base,{recursive:true,force:true})}
 })

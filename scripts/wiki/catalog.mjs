@@ -26,6 +26,7 @@ export function makeWikiStory({source,topic,draft,photos,evidence=[],now=new Dat
   sourceUrl:source.sourceUrl,sourceName:'English Wikipedia',publisher:'Wikipedia contributors',
   sourcePageId:source.pageId,sourceRevisionId:source.sourceRevisionId,sourceRevisionUrl:source.sourceRevisionUrl,
   sourceRetrievedAt:source.sourceRetrievedAt,contentType:'wiki',readingKind:'full',editorialVersion:2,
+  ...(draft.readerLayoutVersion===3?{readerLayoutVersion:3}:{}),
   category:topic,publishedAt:now.toISOString(),license:'CC BY-SA 4.0',licenseUrl:'https://creativecommons.org/licenses/by-sa/4.0/',
   attribution:'Adapted from English Wikipedia contributors; see pinned revision and history. SAGA AI-assisted adaptation under CC BY-SA 4.0. Wikipedia does not endorse SAGA.',
   levelVariants:variants,pages:variants['B1-B2'].pages.map(page=>({...page})),
@@ -52,7 +53,7 @@ export function validateWikiStory(story){
  const covers=[]
  for(const level of levels){
   const variant=story?.levelVariants?.[level],pages=variant?.pages
-  if(!nonempty(variant?.headline)||!Array.isArray(pages)||pages.length<4||pages.length>7){errors.push(level+':structure');continue}
+  if(!nonempty(variant?.headline)||!Array.isArray(pages)||pages.length<4||pages.length>(story.readerLayoutVersion===3?(level==='A1-A2'?6:8):7)){errors.push(level+':structure');continue}
   for(const [pageIndex,page] of pages.entries()){
    if(!nonempty(page?.text)||!Array.isArray(page.evidenceIds)||!page.evidenceIds.length||
     page.evidenceIds.some(id=>!evidenceIds.has(id)))errors.push(level+':page-evidence')
@@ -67,6 +68,7 @@ export function validateWikiStory(story){
      p.evidence?.pageIndex!==pageIndex||!/^File:/.test(p.evidence?.fileTitle||''))errors.push(level+':image-rights')
    }
   }
+  if(story.readerLayoutVersion===3&&new Set(pages.filter(p=>p.image).map(p=>p.image)).size!==pages.filter(p=>p.image).length)errors.push(level+':repeated-image-in-story')
   if(!pages.some(page=>page.image))errors.push(level+':verified-image')
   covers.push(pages[0]?.image)
  }
@@ -84,13 +86,24 @@ export async function readWikiCatalog(base){
  if(manifest.feedType!=='wiki'||manifest.editorialVersion!==2||!/^catalog-index-[0-9a-f]{12}\.json$/.test(manifest.catalogIndex||''))throw Error('Wiki manifest invalid')
  const index=JSON.parse(await fs.readFile(path.join(dir,manifest.catalogIndex),'utf8'))
  if(index.contentHash!==manifest.contentHash||index.total!==manifest.total||index.entries?.length!==manifest.total)throw Error('Wiki catalog index mismatch')
- const stories=[]
+ // A replacement is appended in a new immutable shard. The previous shard
+ // may still contain other active entries and historical copies. The versioned
+ // index, not the physical order of all rows in referenced shards, is canonical.
+ const shards=new Map()
  for(const shard of new Set(index.entries.map(row=>row.shard))){
   if(!/^\d{4}$/.test(shard))throw Error('Wiki shard unsafe')
   const data=JSON.parse(await fs.readFile(path.join(dir,shard+'.json'),'utf8'))
   if(!Array.isArray(data)||data.some(story=>!validateWikiStory(story).accepted))throw Error('Stored Wiki shard invalid')
-  stories.push(...data)
+  shards.set(shard,data)
  }
+ const seen=new Set()
+ const stories=index.entries.map(row=>{
+  if(seen.has(row.sourcePageId))throw Error('Wiki catalog duplicate indexed page')
+  seen.add(row.sourcePageId)
+  const matches=shards.get(row.shard).filter(s=>s.sourcePageId===row.sourcePageId&&s.sourceUrl===row.id)
+  if(matches.length!==1)throw Error('Wiki catalog index entry missing or duplicated')
+  return matches[0]
+ })
  if(stories.length!==manifest.total)throw Error('Wiki catalog total mismatch')
  if(index.entries.some((row,i)=>row.id!==stories[i]?.sourceUrl||row.sourcePageId!==stories[i]?.sourcePageId)||
   catalogHash(index.entries,stories)!==manifest.contentHash)throw Error('Wiki catalog content mismatch')

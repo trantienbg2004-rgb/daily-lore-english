@@ -3,7 +3,7 @@ import { createPortal } from 'react-dom'
 import './App.css'
 import { initializeSeenHistory, persistReadMarker, readLegacyHistory } from './lib/seenHistory.js'
 import { storyId } from './lib/feedQueue.js'
-import { balancePhotoCoverPage, groupTokenClusters, mapSemanticPageIndex, planAnchoredWikiPages, planReadingPages, rebalanceTextPages, splitParagraphs } from './lib/readerPagination.js'
+import { balancePhotoCoverPage, groupTokenClusters, mapSemanticPageIndex, planAnchoredWikiPages, planEditorialWikiPages, planReadingPages, rebalanceTextPages, splitParagraphs } from './lib/readerPagination.js'
 import { shortNewsPages } from './lib/shortNewsPages.js'
 import { sanitizeReadingArticle } from './lib/articleCleanup.js'
 import { refreshCatalog, refillCatalog, hasUnfetchedShards, REFRESH_INTERVAL_MS } from './lib/continuousReader.js'
@@ -364,6 +364,7 @@ function layoutPages(item, reader, badImages = new Set()) {
   fixture.classList.add('layout-measure-fixture')
   fixture.dataset.readingLevel = item.readingLevel || ''
   fixture.dataset.readingScale = ''
+  fixture.dataset.editorialLayout = item?.contentType === 'wiki' && item?.readerLayoutVersion === 3 ? 'shared' : ''
   Object.assign(fixture.style, {
     position:'fixed', left:'-20000px', top:'0', width:`${bounds.width}px`,
     height:`${bounds.height}px`, minHeight:'0', visibility:'hidden',
@@ -441,12 +442,17 @@ function layoutPages(item, reader, badImages = new Set()) {
         const ratio = asset?.width && asset?.height ? asset.width / asset.height : 4 / 3
         const measuredHeight = Math.min(maxHeight, media.clientWidth / ratio)
         const measuredWidth = Math.min(media.clientWidth, measuredHeight * ratio)
-        figure.style.width = `${Math.round(measuredWidth)}px`
-        figure.style.height = `${Math.round(measuredHeight)}px`
+        if (fixture.dataset.editorialLayout === 'shared') {
+          figure.style.width = ''
+          figure.style.height = ''
+        } else {
+          figure.style.width = `${Math.round(measuredWidth)}px`
+          figure.style.height = `${Math.round(measuredHeight)}px`
+        }
         photo.width = asset?.width || 1600
         photo.height = asset?.height || 900
-        photo.style.width = `${Math.round(measuredWidth)}px`
-        photo.style.height = `${Math.round(measuredHeight)}px`
+        photo.style.width = fixture.dataset.editorialLayout === 'shared' ? '' : `${Math.round(measuredWidth)}px`
+        photo.style.height = fixture.dataset.editorialLayout === 'shared' ? '' : `${Math.round(measuredHeight)}px`
       } else {
         figure.style.width = ''
         figure.style.height = ''
@@ -506,6 +512,7 @@ function layoutPages(item, reader, badImages = new Set()) {
       // The flex pager ends exactly at the reader's bottom; allow subpixel
       // rounding while keeping the entire paragraph block above the pager.
       const fitsPage = textBounds.height > 0 && textBounds.bottom <= safeBottom
+        && (fixture.dataset.editorialLayout !== 'shared' || cardBounds.bottom <= pagerBounds.top)
         && (!image || mediaBounds.bottom <= safeBottom)
         && pagerBounds.bottom <= viewportBottom + 1
       const measured = {
@@ -524,6 +531,12 @@ function layoutPages(item, reader, badImages = new Set()) {
     fits.measure = measure
     // Failed/corrupt thumbnails may not reserve visual space. Reflow their
     // article text immediately, without altering the original source pages.
+    // Versioned editorial cards retain the published A/B/C page and photo map.
+    // Older articles continue using their previous lossless layout until rewritten.
+    if (item?.contentType === 'wiki' && item?.readerLayoutVersion === 3) {
+      const editorial = planEditorialWikiPages({...item,_sourcePages:cleanSources}, fits)
+      if (editorial) return editorial
+    }
     const plan = () => item?.contentType === 'news'
       ? balancePhotoCoverPage(cleanSources, fits)
       : item?.contentType === 'wiki'
@@ -2095,7 +2108,7 @@ function App() {
       stopSpeech()
       setFullArticleStory(item)
     }
-    return <div className="reader-gesture" data-reading-level={item.readingLevel || ''} data-reading-scale={itemPage?.readingScale || ''} aria-hidden={!interactive} onTouchStart={interactive ? startGesture : undefined} onTouchMove={interactive ? moveGesture : undefined} onTouchEnd={interactive ? endGesture : undefined} onTouchCancel={interactive ? cancelGesture : undefined} onPointerDown={interactive ? startPointer : undefined} onPointerMove={interactive ? movePointer : undefined} onPointerUp={interactive ? endPointer : undefined} onPointerCancel={interactive ? () => {pointerGesture.current = null; releaseSwipeTransform({ spring: true })} : undefined}>
+    return <div className="reader-gesture" data-reading-level={item.readingLevel || ''} data-editorial-layout={item.readerLayoutVersion === 3 ? 'shared' : ''} data-reading-scale={itemPage?.readingScale || ''} aria-hidden={!interactive} onTouchStart={interactive ? startGesture : undefined} onTouchMove={interactive ? moveGesture : undefined} onTouchEnd={interactive ? endGesture : undefined} onTouchCancel={interactive ? cancelGesture : undefined} onPointerDown={interactive ? startPointer : undefined} onPointerMove={interactive ? movePointer : undefined} onPointerUp={interactive ? endPointer : undefined} onPointerCancel={interactive ? () => {pointerGesture.current = null; releaseSwipeTransform({ spring: true })} : undefined}>
       <header className="topbar lore-reader-topbar">
         <div className="saga-topbar-slot saga-topbar-left">
           {interactive && item.levelVariants && (

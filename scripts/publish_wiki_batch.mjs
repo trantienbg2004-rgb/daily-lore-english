@@ -17,7 +17,7 @@ import {fileURLToPath} from 'node:url'
 import {WIKI_TOPICS} from './wiki/discovery.mjs'
 import {fetchWikipediaParsePage,WikiApiPause} from './wiki/source.mjs'
 import {appendWikiStories,makeWikiStory,readWikiCatalog,replaceWikiStory,validateWikiStory} from './wiki/catalog.mjs'
-import {assignBatchPhotos,collectVerifiedArticlePhotos,findMainSubjectFallbackPhoto,formatCompleteCaption} from './wiki/batch-media.mjs'
+import {assignBatchPhotos,assignIndependentBatchPhotos,collectVerifiedArticlePhotos,findMainSubjectFallbackPhoto,formatCompleteCaption} from './wiki/batch-media.mjs'
 import {CEFR_THRESHOLDS,evaluateArticleCEFR} from './wiki/cefrProfiler.mjs'
 
 const ROOT=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..')
@@ -46,6 +46,16 @@ export const MAX_COOLDOWN_MS=15_000
 export const MAX_UNAVAILABLE_MODELS_PER_CALL=3
 const LEVELS=['A1-A2','B1-B2','C1-C2']
 export const PAGE_COUNT_BOUNDS=Object.freeze({min:4,max:6})
+// Layout budget, not a CEFR definition. Character length predicts rendered
+// line count more reliably than identical word counts across proficiency bands.
+export const EDITORIAL_CARD_CHAR_BOUNDS=Object.freeze({photo:[360,470],text:[640,830]})
+const ADAPTIVE_MAP_GUIDANCE='Each version independently chooses 4–6 pages; B1-B2 and C1-C2 may use 7–8 only for genuinely useful depth. Never fewer than 4 or more than 8. Use the same verified cover imageId in all three versions. Body images may appear at different page indexes, only if relevant to that page. Outline is a broad common topic sequence, not a page-index contract. Plan each actual page as photo or text-only before composing. Do not pad or force equal page counts.'
+const measuredGuidance=budgets=>budgets?[
+ 'MANDATORY COPYFITTING. These are measured BODY lengths (not headline or caption). Write the full requested length on EACH page, not the entire article. For every photo page write two developed paragraphs; for text-only pages write two substantial paragraphs. Do not confuse the photo and text-only budgets. Use the following targets for natural prose:',
+ ...LEVELS.map(l=>l+': '+['cover','photo','text'].map(t=>{const b=budgets[l][t];return t+' '+b.target+' characters (about '+(b.targetWords||Math.round(b.target/(l==='A1-A2'?5.1:l==='B1-B2'?6.4:7.3)))+' words), range '+b.min+'–'+b.max}).join('; ')),
+ 'Select the page count and photo IDs before composing. For a level with 4 pages and one cover, the total body budget is ONE cover plus THREE text-only targets. Add source-supported context and explanation, not repetitive filler. Use two paragraphs separated by a blank line. The final page must be as developed as other pages of its type. Treat visual measurements as mandatory constraints; they do not define CEFR.',
+].join('\n'):' '
+const EDITORIAL_CARD_GUIDANCE='Use 360–470 characters of natural body prose on EACH photo page, and 640–830 characters on EACH text-only page (spaces included, caption excluded). Aim at 415 and 735 respectively, including the final page. Count the actual characters of each completed body before returning JSON; do not count the caption, headline or evidence IDs. Revise any page outside the stated range before submitting. Use two or three coherent paragraphs where appropriate. Keep each matching pageIndex focused on the same broad editorial subject across A/B/C. Expand with source-supported explanation and concrete detail, not repetition or filler. These are visual budgets, NOT CEFR criteria.'
 export const HEADLINE_WORD_BOUNDS=Object.freeze({min:5,max:11})
 export const CAPTION_LIMITS=Object.freeze({minWords:3,maxWords:10,maxChars:65,targetMinWords:5,targetMaxWords:8,targetMaxChars:48})
 export const LEVEL_WORD_BOUNDS=Object.freeze({
@@ -256,6 +266,15 @@ const BATCH_STORY_SCHEMA={
  required:['factSheet','outline','levelPlans','sharedCoreFactIds','variants']
 }
 
+// Gemini rejects highly constrained nested arrays (HTTP 400 state limit).
+// Keep the output shape but enforce all numeric bounds in the local gate.
+export function simplifyEditorialSchema(schema){
+ if(Array.isArray(schema))return schema.map(simplifyEditorialSchema)
+ if(!schema||typeof schema!=='object')return schema
+ return Object.fromEntries(Object.entries(schema).filter(([k])=>!['minItems','maxItems','minLength','maxLength','minimum','maximum'].includes(k)).map(([k,v])=>[k,simplifyEditorialSchema(v)]))
+}
+const ADAPTIVE_STORY_SCHEMA=simplifyEditorialSchema(BATCH_STORY_SCHEMA)
+// Shared outline is a topic outline, not a fixed page map for adaptive stories.
 const REPAIR_PAGE_SCHEMA={
  type:'object',
  properties:{
@@ -364,7 +383,7 @@ export const CEFR_REVIEW_REPAIR_SCHEMA={
 }
 
 export function buildCEFRReviewRepairSchema(draft){
- const pageCount=Math.max(1,Math.min(PAGE_COUNT_BOUNDS.max,Math.max(...LEVELS.map(level=>draft?.variants?.[level]?.pages?.length||0))))
+ const pageCount=Math.max(1,Math.min(8,Math.max(...LEVELS.map(level=>draft?.variants?.[level]?.pages?.length||0))))
  const schema=structuredClone(CEFR_REVIEW_REPAIR_SCHEMA)
  const pageSchema=schema.properties.repairs.items.properties.pages
  pageSchema.minItems=1
@@ -485,7 +504,7 @@ export function buildGeminiGenerationConfig(model=DEFAULT_GEMINI_MODEL,{schema=B
  const config={
   responseMimeType:'application/json',
   responseJsonSchema:schema,
-  maxOutputTokens:9500
+  maxOutputTokens:schema===ADAPTIVE_STORY_SCHEMA?14000:9500
  }
  // Gemini 4 defaults to deep reasoning; LOW preserves token budget for structured reviewer output.
  if(/^gemini-4(?:\b|-)/.test(name)){
@@ -772,11 +791,11 @@ function contentTerms(text){
 /**
  * Deterministic source-grounding, cross-level factual consistency, and uncertainty/safety preservation validator.
  */
-export function validateFactualConsistency(draft,{source=null,evidence=[]}={}){
+export function validateFactualConsistency(draft,{source=null,evidence=[],independentPages=false}={}){
  const errors=[]
  if(!draft?.variants)return {ok:false,errors:['Missing variants for factual validation']}
  const levelPages=LEVELS.map(l=>draft.variants?.[l]?.pages||[])
- const sharedLen=Math.min(...levelPages.map(p=>p.length))
+ const sharedLen=(independentPages?Math.max:Math.min)(...levelPages.map(p=>p.length))
  const evidenceRows=Array.isArray(evidence)?evidence:[]
  const evidenceMap=new Map(evidenceRows.map(r=>[r.id,r]))
  const validEvidenceIds=new Set(evidenceRows.map(r=>r.id))
@@ -789,7 +808,7 @@ export function validateFactualConsistency(draft,{source=null,evidence=[]}={}){
  const hasLevelPlans=LEVELS.every(level=>Array.isArray(draft.levelPlans?.[level]?.selectedFactIds))
 
  // The shared outline is a visual/page map only. Each level independently selects facts and depth.
- if(Array.isArray(draft.outline)&&draft.outline.length){
+ if(!independentPages&&Array.isArray(draft.outline)&&draft.outline.length){
   if(draft.outline.length!==sharedLen)errors.push('Visual outline page count mismatch: outline has '+draft.outline.length+' page(s), variants have '+sharedLen)
   for(let i=0;i<Math.min(draft.outline.length,sharedLen);i++){
    const op=draft.outline[i]
@@ -850,7 +869,7 @@ export function validateFactualConsistency(draft,{source=null,evidence=[]}={}){
   }else{
    for(const level of LEVELS){
     const pageEvidence=evIdsByLevel[level]
-    if(evidenceRows.length&&(!pageEvidence.length||pageEvidence.some(id=>!validEvidenceIds.has(id))))errors.push(level+' page '+(idx+1)+': evidenceIds must reference supplied source passages')
+    if((!independentPages||idx<draft.variants[level].pages.length)&&evidenceRows.length&&(!pageEvidence.length||pageEvidence.some(id=>!validEvidenceIds.has(id))))errors.push(level+' page '+(idx+1)+': evidenceIds must reference supplied source passages')
    }
   }
 
@@ -916,7 +935,9 @@ export function validateArticleQuality(draft,sourceTitle,{
  levelBounds=LEVEL_WORD_BOUNDS,
  source=null,
  evidence=null,
- requireLevelPlans=false
+ requireLevelPlans=false,
+ editorialRhythm=false,
+ measuredLayout=false
 }={}){
  const errors=[]
  const metrics={}
@@ -935,7 +956,7 @@ export function validateArticleQuality(draft,sourceTitle,{
  const levelPageArrays=LEVELS.map(level=>Array.isArray(draft.variants?.[level]?.pages)?draft.variants[level].pages:null)
  const allArraysPresent=levelPageArrays.every(Boolean)
  const pageCounts=levelPageArrays.map(arr=>arr?arr.length:0)
- if(allArraysPresent&&new Set(pageCounts).size!==1){
+ if(!editorialRhythm&&allArraysPresent&&new Set(pageCounts).size!==1){
   errors.push(`Cross-level page count mismatch: A1-A2 (${pageCounts[0]}), B1-B2 (${pageCounts[1]}), C1-C2 (${pageCounts[2]}) must all have the exact same page count N (${minPages}-${maxPages})`)
  }
 
@@ -943,7 +964,7 @@ export function validateArticleQuality(draft,sourceTitle,{
  const photoPageIndexes=new Set([0])
  for(let idx=0;idx<sharedPageLen;idx++){
   const tokens=LEVELS.map((lvl,li)=>pageImageToken(levelPageArrays[li][idx]))
-  if(new Set(tokens).size!==1){
+  if((!editorialRhythm||idx===0)&&new Set(tokens).size!==1){
    errors.push(`Cross-level image parity mismatch on page ${idx+1}: A1-A2 (${tokens[0]||'null'}), B1-B2 (${tokens[1]||'null'}), C1-C2 (${tokens[2]||'null'}) must use the exact same imageId on every matching page index`)
   }
   if(tokens.some(Boolean))photoPageIndexes.add(idx)
@@ -975,8 +996,9 @@ export function validateArticleQuality(draft,sourceTitle,{
   }
 
   const pages=Array.isArray(variant.pages)?variant.pages:[]
-  if(pages.length<minPages||pages.length>maxPages){
-   errors.push(`${level}: page count must be between ${minPages} and ${maxPages} (got ${pages.length})`)
+  const levelMax=editorialRhythm&&level!=='A1-A2'?8:maxPages
+  if(pages.length<minPages||pages.length>levelMax){
+   errors.push(`${level}: page count must be between ${minPages} and ${levelMax} (got ${pages.length})`)
    continue
   }
 
@@ -990,9 +1012,14 @@ export function validateArticleQuality(draft,sourceTitle,{
    pageWordCounts.push(wc)
    paragraphCounts.push(paragraphs.length)
    const token=pageImageToken(page)
-   const isPhotoPage=idx===0||photoPageIndexes.has(idx)||Boolean(token)
+   const isPhotoPage=idx===0||(!editorialRhythm&&photoPageIndexes.has(idx))||Boolean(token)
    // Flexible paragraph-based article length: do NOT hard-reject per-page word counts.
    // Only reject empty or trivially broken stubs (< 8 words).
+   if(editorialRhythm&&!measuredLayout){
+    const chars=flatText.length
+    const [min,max]=EDITORIAL_CARD_CHAR_BOUNDS[isPhotoPage?'photo':'text']
+    if(chars<min||chars>max)errors.push(`${level} page ${idx+1} (${isPhotoPage?'photo':'text-only'}): editorial card body ${chars} characters; requires ${min}-${max} characters of source-grounded prose`)
+   }
    if(wc<8){
     errors.push(`${level} page ${idx+1} (${isPhotoPage?'photo page':'text-only page'}): text is too short or empty (${wc} words)`)
    }
@@ -1053,7 +1080,7 @@ export function validateArticleQuality(draft,sourceTitle,{
 
  // Source-grounding, cross-level factual consistency, and uncertainty preservation checks
  if((Array.isArray(evidence)&&evidence.length)||draft.factSheet||draft.outline){
-  const factual=validateFactualConsistency(draft,{source,evidence:evidence||[]})
+  const factual=validateFactualConsistency(draft,{source,evidence:evidence||[],independentPages:editorialRhythm})
   if(!factual.ok){
    errors.push(...factual.errors)
   }
@@ -1081,7 +1108,7 @@ function formatWordBoundsSummary(){
  return {photoLine:photoParts.join(' | '),textLine:textParts.join(' | ')}
 }
 
-export function buildBatchPrompt(source,topic,evidence,verifiedPhotos=[]){
+export function buildBatchPrompt(source,topic,evidence,verifiedPhotos=[],{editorialRhythm=false,budgets=null}={}){
  const passages=evidence.map(row=>row.id+' [Section '+(row.sectionIndex??0)+': '+row.heading+'] '+row.text).join('\n\n')
  const imageCatalog=formatEmbeddedImageCatalog(verifiedPhotos)
  const leadIds=verifiedPhotos.filter(p=>p.sectionIndex===0).map(p=>p.imageId)
@@ -1103,11 +1130,12 @@ export function buildBatchPrompt(source,topic,evidence,verifiedPhotos=[]){
   '- Mark hasUncertainty=true wherever the source is disputed, estimated, qualified or describes a risk. Do not convert uncertainty into certainty.',
   '',
   'STEP 2 — SHARED VISUAL PAGE MAP (outline)',
+  ...(editorialRhythm?[ADAPTIVE_MAP_GUIDANCE]:[
   '- Create a '+PAGE_COUNT_BOUNDS.min+'-'+PAGE_COUNT_BOUNDS.max+' PAGE OUTLINE with page slots in a logical broad story sequence.',
   '- This shared outline exists ONLY to keep page count, visual order and imageId alignment stable across the three versions.',
   '- Each slot has pageIndex, a broad visual subject/focus, imageId and imageReason. Fact selection belongs only in each levelPlan.',
   '- Do NOT force all levels to explain the same facts at the same depth or in the same order. The level-specific plans below control content selection and depth.',
-  '- The same imageId (or null) must remain at the same pageIndex across all three variants. Only choose an image if it remains relevant to all versions of that page.',
+  '- The same imageId (or null) must remain at the same pageIndex across all three variants. Only choose an image if it remains relevant to all versions of that page.']),
   '',
   'STEP 3 — THREE INDEPENDENT READING PLANS (levelPlans)',
   'First choose sharedCoreFactIds: 2–4 of the most central fact IDs from factSheet. Then create a separate readerObjective, selectedFactIds (2–10 IDs from the fact sheet, INCLUDING every sharedCoreFactId) and depthNotes for EACH level. The selectedFactIds of all three levels must contain at least the same two sharedCoreFactIds. Use the shared visual page map only for page order and image alignment; each version may allocate its selected facts differently across pages. Other fact selection, explanation depth and emphasis SHOULD differ.',
@@ -1136,19 +1164,17 @@ export function buildBatchPrompt(source,topic,evidence,verifiedPhotos=[]){
   '',
   'STEP 4 — WRITE EACH VERSION FROM ITS OWN PLAN',
   '- A1-A2 must follow levelPlans[A1-A2]; B1-B2 must follow levelPlans[B1-B2]; C1-C2 must follow levelPlans[C1-C2].',
-  '- Each version has '+PAGE_COUNT_BOUNDS.min+'–'+PAGE_COUNT_BOUNDS.max+' pages and the same imageId at each corresponding pageIndex, but its own facts, emphasis, explanation depth and natural wording.',
+  editorialRhythm?ADAPTIVE_MAP_GUIDANCE:'- Each version has '+PAGE_COUNT_BOUNDS.min+'–'+PAGE_COUNT_BOUNDS.max+' pages and the same imageId at each corresponding pageIndex, but its own facts, emphasis, explanation depth and natural wording.',
   '- Do not simply paraphrase one master article three times. Do not make B/C harder only by increasing sentence length or replacing words with rarer synonyms.',
   '- Every headline must be 5 to 11 words, distinct across levels, and must not repeat the raw Wikipedia title.' ,
   '- Page 1 should open with an engaging, factual hook, not a dry X-is-a definition or an invented scene. The final page should give a source-grounded takeaway.',
   '- Use 1–3 coherent paragraphs per page, separated by a blank line. Every paragraph ends with a complete sentence. Never add filler to reach a word count.',
-  '- Flexible visual pacing guidance only (NOT CEFR definitions or hard word-count targets):',
-  '  * Photo sections: '+photoLine,
-  '  * Text-only sections: '+textLine,
+  ...(editorialRhythm?[budgets?measuredGuidance(budgets):EDITORIAL_CARD_GUIDANCE,'Write complete, natural paragraphs with source-grounded detail; no filler.']: ['- Flexible visual pacing guidance only (NOT CEFR definitions or hard word-count targets):','  * Photo sections: '+photoLine,'  * Text-only sections: '+textLine]),
   '- Sentence-length figures, FKGL and lexical-list percentages are screening clues only. They do NOT define CEFR and must never be gamed.',
   '',
   'STEP 5 — IMAGE AND CAPTION BINDING',
   '- Page 1 must use a verified lead/infobox photo ('+(leadIds.length?'one of '+leadIds.join(', '):'the verified main-subject fallback '+coverHint)+').',
-  '- On later pages, use only an exact verified imageId that depicts the subject of that page for ALL three levels. Otherwise use null for all three at that pageIndex.',
+  editorialRhythm?'- On later pages use a verified imageId only if it directly depicts the subject of that particular page; otherwise use null.':'- On later pages, use only an exact verified imageId that depicts the subject of that page for ALL three levels. Otherwise use null for all three at that pageIndex.',
   '- Never reuse an imageId. Captions must be accurate, natural, '+CAPTION_LIMITS.targetMinWords+'–'+CAPTION_LIMITS.targetMaxWords+' words where possible, and no more than '+CAPTION_LIMITS.maxChars+' chars. Text-only pages use an empty caption.',
   '',
   'STEP 6 — SOURCE ACCURACY',
@@ -1169,7 +1195,7 @@ export function buildBatchPrompt(source,topic,evidence,verifiedPhotos=[]){
  ].join('\n')
 }
 
-export function buildCEFRReviewRepairPrompt(source,topic,evidence,previousDraft,qualityResult){
+export function buildCEFRReviewRepairPrompt(source,topic,evidence,previousDraft,qualityResult,{editorialRhythm=false,budgets=null}={}){
  const passages=evidence.map(row=>row.id+' [Section '+(row.sectionIndex??0)+': '+row.heading+'] '+row.text).join('\n\n')
  const deterministicIssues=Array.isArray(qualityResult?.errors)&&qualityResult.errors.length
   ?qualityResult.errors.map((e,i)=>(i+1)+'. '+e).join('\n')
@@ -1215,11 +1241,12 @@ export function buildCEFRReviewRepairPrompt(source,topic,evidence,previousDraft,
   '- Assess the article body, not the glossary. A glossary can support learning but cannot make an otherwise inaccessible article A1/A2.',
   '- MANDATORY PAGE-1 OPENING REPAIR: If a supplied deterministic issue says “dry encyclopedia opening” or quotes an “X is a...” opening, you MUST change pageIndex 0 for that level. Do not keep the same opening, merely swap one adjective, or claim that a generic definition is a vivid hook. Start with a source-grounded reader-facing question, concrete moment, vivid action, or specific consequence that naturally draws the reader into the topic. For American football, a simple opening could place two teams trying to move the ball; for philosophy, it could ask a clear everyday question about knowledge or right and wrong. Do not invent a scene or fact. Keep the hook natural and appropriate to the assigned CEFR band. The final page must no longer trigger the deterministic opening check before you mark that level pass.',
   '- Do not make A1/A2 childish or factually incomplete. Select fewer, more essential facts and explain them simply. B1/B2 should develop the main points. C1/C2 should deepen interpretation and precision.',
-  '- Use the supplied levelPlans: each level is allowed to select different facts and depth. Do not force identical facts, page focus or page-by-page order across levels. Keep at least two shared core facts and preserve the common imageId/page order.',
+  editorialRhythm?'- Keep each level’s own page count and image placement, at least two shared core facts, and independent depth. Do not shorten a text-only page to a photo-page length.':'- Use the supplied levelPlans: each level is allowed to select different facts and depth. Do not force identical facts, page focus or page-by-page order across levels. Keep at least two shared core facts and preserve the common imageId/page order.',
   '- Preserve every date, quantity, causal limit, source uncertainty and safety qualification that appears in the selected facts. Never invent information.' ,
   '- Every selectedFactId must be explained in the version, and at least one page that actually explains it must cite one of that fact’s own evidenceIds. If a blocking issue lists missing fact IDs and required evidence IDs, add a concise, accurate explanation of each missing fact to a relevant existing page and cite its own required evidenceIds in that same page patch. Do not merely append an evidence ID without explaining the fact, and do not attach unrelated source IDs just to silence the validator.',
   '- For every selected fact marked hasUncertainty=true, include a natural, level-appropriate qualification or safety caveat on the page that explains that fact, and cite its supporting passage. If the blocking issues identify a missing caveat, repair the text before assigning finalVerdict=pass.',
   '',
+  ...(editorialRhythm?['EDITORIAL PAGE RHYTHM (MANDATORY)',budgets?measuredGuidance(budgets):EDITORIAL_CARD_GUIDANCE,'Repair any body-length error without changing page count or image placement. When changing any page for CEFR, preserve its character budget; count the revised body before returning. Do not shorten the final page into a leftover.']:[]),
   'REQUIRED TWO-PASS REVIEW',
   'A. For each level, record initialBand, initialVerdict and initialDimensions inside assessment. The initial band must be A1/A2 for A1-A2, B1/B2 for B1-B2, and C1/C2 for C1-C2. Use verdict pass, revise or uncertain. Assess vocabulary, syntax, cohesion, abstraction, inference and specialist-term load. If ANY initial dimension is low or high, initialVerdict must be revise and the level must be repaired.',
   'B. Repair every level that is outside its target band, has a supplied blocking deterministic error, or has a material factual/editorial defect. If a blocking issue names a headline, return a corrected headline on that level’s repair item. Any changed headline must be 5–11 words, distinct across levels, and must not repeat the raw Wikipedia title. Otherwise preserve the existing valid headline. Return every page that actually needs changing, with its original pageIndex exactly once; omit untouched pages because the program preserves them. Do not change page order, add/remove pages or images, and keep evidenceIds tied to the source. Do not rewrite a passing level unless required by a blocking cross-level issue.',
@@ -1365,7 +1392,8 @@ function formatCEFRRetryBlock(qualityResult){
 /** Identify exact failing headlines, pages, and levels so repair preserves all already-valid content. */
 export function identifyRepairTargets(draft,qualityResult){
  const errors=Array.isArray(qualityResult?.errors)?qualityResult.errors:[]
- const pageCount=Math.min(...LEVELS.map(l=>draft?.variants?.[l]?.pages?.length||0))
+ const pageCount=Math.max(...LEVELS.map(l=>draft?.variants?.[l]?.pages?.length||0))
+ const levelCount=l=>draft?.variants?.[l]?.pages?.length||0
  const failingHeadlines=new Set()
  const failingPages=Object.fromEntries(LEVELS.map(l=>[l,new Set()]))
  const failingLevelPlans=new Set()
@@ -1387,14 +1415,14 @@ export function identifyRepairTargets(draft,qualityResult){
   if(pageMatch){
    const lvl=pageMatch[1].toUpperCase()
    const idx=Number(pageMatch[2])-1
-   if(failingPages[lvl]&&idx>=0&&idx<pageCount)failingPages[lvl].add(idx)
+   if(failingPages[lvl]&&idx>=0&&idx<levelCount(lvl))failingPages[lvl].add(idx)
    continue
   }
   const crossPageMatch=msg.match(/^Cross-level (?:factual drift|date mismatch) on page (\d+)/i)
   if(crossPageMatch){
    const idx=Number(crossPageMatch[1])-1
    if(idx>=0&&idx<pageCount){
-    for(const lvl of LEVELS)failingPages[lvl].add(idx)
+    for(const lvl of LEVELS)if(idx<levelCount(lvl))failingPages[lvl].add(idx)
    }
    continue
   }
@@ -1424,7 +1452,7 @@ export function identifyRepairTargets(draft,qualityResult){
 
  // For level-wide CEFR failures, include that level's pages as repairable while leaving passing levels untouched
  for(const lvl of cefrLevels){
-  for(let i=0;i<pageCount;i++)failingPages[lvl].add(i)
+  for(let i=0;i<levelCount(lvl);i++)failingPages[lvl].add(i)
  }
 
  const targetSummary=LEVELS.map(lvl=>({
@@ -1446,7 +1474,7 @@ export function identifyRepairTargets(draft,qualityResult){
 }
 
 /** Build a compact targeted repair prompt that rewrites ONLY failing headlines/pages/levels while preserving valid content. */
-export function buildTargetedRepairPrompt(source,topic,evidence,previousDraft,qualityResult,verifiedPhotos=[],repairTargets=null){
+export function buildTargetedRepairPrompt(source,topic,evidence,previousDraft,qualityResult,verifiedPhotos=[],repairTargets=null,{editorialRhythm=false,budgets=null}={}){
  const targets=repairTargets||identifyRepairTargets(previousDraft,qualityResult)
  const failedChecks=Array.isArray(qualityResult?.errors)?qualityResult.errors:(Array.isArray(qualityResult)?qualityResult:[])
  const passages=evidence.map(row=>`${row.id} [Section ${row.sectionIndex ?? 0}: ${row.heading}] ${row.text}`).join('\n\n')
@@ -1462,10 +1490,9 @@ FAILED CHECKS TO FIX:
 ${issues}${cefrBlock}
 
 REMINDERS:
-- Keep ${PAGE_COUNT_BOUNDS.min}-${PAGE_COUNT_BOUNDS.max} pages and the same imageId at each matching pageIndex across levels, but retain separate levelPlans with different fact selection and explanation depth.
+${editorialRhythm?ADAPTIVE_MAP_GUIDANCE:`- Keep ${PAGE_COUNT_BOUNDS.min}-${PAGE_COUNT_BOUNDS.max} pages and the same imageId at each matching pageIndex across levels, but retain separate levelPlans with different fact selection and explanation depth.`}
 - Use coherent, reasonably short paragraphs separated by "\\n\\n" (never pad with filler; flexible length around advisory pacing targets).
-- Advisory photo section targets: ${photoLine}
-- Advisory text-only section targets: ${textLine}
+${editorialRhythm?(budgets?measuredGuidance(budgets):EDITORIAL_CARD_GUIDANCE):`- Advisory photo section targets: ${photoLine}\n- Advisory text-only section targets: ${textLine}`}
 - Keep C1-C2 nuanced and natural (no artificial academic jargon), and preserve all dates, quantities, exceptions, and uncertainty.
 
 AVAILABLE EMBEDDED IMAGES:
@@ -1499,7 +1526,7 @@ ${passages}`
      return {
       pageIndex:idx,
       pageType:isPhoto?'photo':'text-only',
-      advisoryWords:`~${wordRangeMidpoint([minW,maxW])} (flexible around ${minW}-${maxW})`,
+      ...(editorialRhythm&&budgets?{bodyBudget:budgets[item.level][idx===0?'cover':isPhoto?'photo':'text']}:{advisoryWords:`~${wordRangeMidpoint([minW,maxW])} (flexible around ${minW}-${maxW})`}),
       imageId:pageImageToken(p),
       text:p.text,
       ...(isPhoto?{caption:p.caption||''}:{}),
@@ -1520,8 +1547,7 @@ TARGETED RULES:
 - Include ONLY the levels, headlines, levelPlans, and pageIndexes listed in ITEMS TO REPAIR below.
 - For a levelPlan target, return 2-10 selectedFactIds chosen ONLY from that item's validFactIds. Preserve all sharedCoreFactIds, readerObjective and depthNotes. Never invent, rename, or guess a fact ID.
 - Preserve the shared page/image map, each level's own planned focus, paragraph boundaries ("\\n\\n"), dates, numbers, uncertainty/safety conditions, and evidence IDs. Do not add or remove images.
-- Advisory photo section pacing: ${photoLine}
-- Advisory text-only section pacing: ${textLine}
+${editorialRhythm?(budgets?measuredGuidance(budgets):EDITORIAL_CARD_GUIDANCE):`- Advisory photo section pacing: ${photoLine}\n- Advisory text-only section pacing: ${textLine}`}
 - Headlines: ${HEADLINE_WORD_BOUNDS.min}-${HEADLINE_WORD_BOUNDS.max} words, distinct across all 3 levels, never matching "${source.sourceTitle}".
 - Captions on photo pages: complete natural phrase (${CAPTION_LIMITS.targetMinWords}-${CAPTION_LIMITS.targetMaxWords} words, max ${CAPTION_LIMITS.maxChars} chars, never truncated mid-word).
 - If a failed check flags a dry encyclopedia opening, rewrite pageIndex 0 so its FIRST sentence does not begin with the source title/topic followed by “is/was a/an/the”. Use a natural reader-facing question, a concrete source-supported moment, or an action that draws the reader into the subject. Do not merely move the same dictionary definition to sentence two; preserve the assigned CEFR band and do not invent a scene or fact.
@@ -2475,6 +2501,8 @@ export async function runPublishWikiBatch({
  pageIds=[],
  regenerateExisting=false,
  retrySkippedQuality=false,
+ editorialRhythm=process.env.SAGA_EDITORIAL_LAYOUT==='3',
+ editorialMeter=null,
  apiKey=process.env.GEMINI_API_KEY||'',
  apiKeys=null,
  model=process.env.GEMINI_MODEL||DEFAULT_GEMINI_MODEL,
@@ -2491,6 +2519,7 @@ export async function runPublishWikiBatch({
  collectPhotosImpl=collectVerifiedArticlePhotos,
  callGeminiImpl=callGeminiFlashLite
 }={}){
+ if(editorialRhythm&&!dryRun&&!editorialMeter)throw Error('Editorial layout requires a calibrated Chromium meter; refusing unmeasured publishing')
  const startedAtMs=nowFn()
  const deadlineMs=Number.isFinite(maxRuntimeMs)&&maxRuntimeMs>0?startedAtMs+maxRuntimeMs:Infinity
  const remainingBudget=()=>deadlineMs-nowFn()
@@ -2695,6 +2724,24 @@ export async function runPublishWikiBatch({
   })
  }
 
+ const prepareEditorial=({draft,source,trimmed,verifiedPhotos,usedImages=new Set()})=>{
+  if(!editorialMeter||dryRun)return draft
+  const attached=assignIndependentBatchPhotos(draft.variants,{source,articlePhotos:verifiedPhotos,evidence:trimmed.evidence,usedImages})
+  if(!attached.ok)return draft
+  for(const level of LEVELS){
+   for(const [i,p] of draft.variants[level].pages.entries()){
+    const actual=attached.levelVariants[level].pages[i]
+    if(actual?.image){p.imageId=actual.imageProvenance?.evidence?.imageId||p.imageId;p.caption=actual.caption}
+    else{p.imageId=null;p.caption=''}
+   }
+  }
+  return draft
+ }
+ const auditEditorial=async(draft,quality)=>{
+  if(!editorialMeter||dryRun||identifyRepairTargets(draft,quality).structuralParityFailed)return quality
+  const errors=await editorialMeter.audit(draft.variants)
+  return {...quality,ok:quality.ok&&errors.length===0,errors:[...quality.errors,...errors]}
+ }
  const runOneTargetedRepair=async({source,item,trimmed,verifiedPhotos,normalizedDraft,quality})=>{
   recordQualityHistogram(quality.errors)
   const remBeforeRetry=remainingBudget()
@@ -2702,18 +2749,19 @@ export async function runPublishWikiBatch({
    return {budgetHit:true}
   }
   const repairTargets=identifyRepairTargets(normalizedDraft,quality)
-  const repairSchema=repairTargets.useTargetedPatch?TARGETED_REPAIR_SCHEMA:BATCH_STORY_SCHEMA
+  const repairSchema=repairTargets.useTargetedPatch?TARGETED_REPAIR_SCHEMA:editorialRhythm?ADAPTIVE_STORY_SCHEMA:BATCH_STORY_SCHEMA
   const modeLabel=repairTargets.useTargetedPatch
    ?`targeted patch (${repairTargets.targetSummary.map(t=>`${t.level}${t.headline?'[H]':''}${t.pageIndexes.length?`[P${t.pageIndexes.map(i=>i+1).join(',')}]`:''}`).join(', ')})`
    :'structural rebuild'
   console.warn(`[batch]   -> Quality gate failed (${quality.errors.length} issue(s)); running ONE ${modeLabel}...`)
-  const repairPrompt=buildTargetedRepairPrompt(source,item.topic,trimmed.evidence,normalizedDraft,quality,verifiedPhotos)
+  const repairPrompt=buildTargetedRepairPrompt(source,item.topic,trimmed.evidence,normalizedDraft,quality,verifiedPhotos,null,{editorialRhythm,budgets:editorialMeter?.budgets})
   const retryRes=await invokeGeminiWithDelay(repairPrompt,{reserveMs:minRetryBudgetMs,schema:repairSchema})
   consecutiveInfraFailures=0
   try{
    const mergedRaw=mergeTargetedRepairs(normalizedDraft,retryRes.draft,repairTargets)
-   const repairedDraft=normalizeDraftForCatalog(mergedRaw,{source,evidence:trimmed.evidence,verifiedPhotos})
-   const repairedQuality=validateArticleQuality(repairedDraft,source.sourceTitle,{source,evidence:trimmed.evidence,requireLevelPlans:!dryRun&&callGeminiImpl===callGeminiFlashLite})
+   const repairedDraft=prepareEditorial({draft:normalizeDraftForCatalog(mergedRaw,{source,evidence:trimmed.evidence,verifiedPhotos}),source,trimmed,verifiedPhotos})
+   let repairedQuality=validateArticleQuality(repairedDraft,source.sourceTitle,{source,evidence:trimmed.evidence,editorialRhythm:editorialRhythm&&!dryRun,measuredLayout:Boolean(editorialMeter),requireLevelPlans:!dryRun&&callGeminiImpl===callGeminiFlashLite})
+   repairedQuality=await auditEditorial(repairedDraft,repairedQuality)
    return {
     budgetHit:false,
     model:retryRes.model,
@@ -2810,18 +2858,19 @@ export async function runPublishWikiBatch({
    let usedModel=dryRun?'dry-run':(keyState.preferredModel||modelChain[0])
    if(dryRun){
     normalizedDraft=normalizeDraftForCatalog(makeDryRunDraft(source,trimmed.evidence,verifiedPhotos),{source,evidence:trimmed.evidence,verifiedPhotos})
-    quality=validateArticleQuality(normalizedDraft,source.sourceTitle,{source,evidence:trimmed.evidence,requireLevelPlans:!dryRun&&callGeminiImpl===callGeminiFlashLite})
+    quality=validateArticleQuality(normalizedDraft,source.sourceTitle,{source,evidence:trimmed.evidence,editorialRhythm:editorialRhythm&&!dryRun,measuredLayout:Boolean(editorialMeter),requireLevelPlans:!dryRun&&callGeminiImpl===callGeminiFlashLite})
    }else{
-    const prompt=buildBatchPrompt(source,item.topic,trimmed.evidence,verifiedPhotos)
-    const firstRes=await invokeGeminiWithDelay(prompt,{reserveMs:minRetryBudgetMs,schema:BATCH_STORY_SCHEMA})
+    const prompt=buildBatchPrompt(source,item.topic,trimmed.evidence,verifiedPhotos,{editorialRhythm,budgets:editorialMeter?.budgets})
+    const firstRes=await invokeGeminiWithDelay(prompt,{reserveMs:minRetryBudgetMs,schema:editorialRhythm?ADAPTIVE_STORY_SCHEMA:BATCH_STORY_SCHEMA})
     consecutiveInfraFailures=0
     usedModel=firstRes.model||usedModel
     generationModelsUsed.add(usedModel)
-    normalizedDraft=normalizeDraftForCatalog(firstRes.draft,{source,evidence:trimmed.evidence,verifiedPhotos})
-    quality=validateArticleQuality(normalizedDraft,source.sourceTitle,{source,evidence:trimmed.evidence})
+    normalizedDraft=prepareEditorial({draft:normalizeDraftForCatalog(firstRes.draft,{source,evidence:trimmed.evidence,verifiedPhotos}),source,trimmed,verifiedPhotos,usedImages:candidateUsedImages})
+    quality=validateArticleQuality(normalizedDraft,source.sourceTitle,{source,evidence:trimmed.evidence,editorialRhythm:editorialRhythm&&!dryRun,measuredLayout:Boolean(editorialMeter)})
 
     // Keep the existing structural rebuild only for page/image parity failures.
     // CEFR, language and editorial mismatches are handled by the mandatory descriptor reviewer below.
+    quality=await auditEditorial(normalizedDraft,quality)
     const initialRepairTargets=identifyRepairTargets(normalizedDraft,quality)
     if(!quality.ok&&(initialRepairTargets.structuralParityFailed||callGeminiImpl!==callGeminiFlashLite)){
      const repairOutcome=await runOneTargetedRepair({source,item,trimmed,verifiedPhotos,normalizedDraft,quality})
@@ -2851,15 +2900,16 @@ export async function runPublishWikiBatch({
      if((quality.errors||[]).length&&!requiredRepairLevels.size){
       for(const level of LEVELS)requiredRepairLevels.add(level)
      }
-     const reviewPrompt=buildCEFRReviewRepairPrompt(source,item.topic,trimmed.evidence,normalizedDraft,quality)
+     const reviewPrompt=buildCEFRReviewRepairPrompt(source,item.topic,trimmed.evidence,normalizedDraft,quality,{editorialRhythm,budgets:editorialMeter?.budgets})
      const independentReviewerChain=buildIndependentCEFRReviewerChain(reviewerModelChain,[...generationModelsUsed])
      if(!independentReviewerChain.length)throw Error('No independent CEFR reviewer model available: generator used '+usedModel+'; configured reviewer chain was ['+reviewerModelChain.join(', ')+']. Failing closed rather than allowing self-review.')
      console.log('[batch]   -> Independent CEFR reviewer route: generator='+usedModel+'; reviewer candidates=['+independentReviewerChain.join(', ')+'].')
-     const reviewRes=await invokeGeminiWithDelay(reviewPrompt,{reserveMs:minRetryBudgetMs,schema:buildCEFRReviewRepairSchema(normalizedDraft),modelChainOverride:independentReviewerChain,keyStateOverride:reviewerKeyState})
+     const reviewRes=await invokeGeminiWithDelay(reviewPrompt,{reserveMs:minRetryBudgetMs,schema:editorialRhythm?simplifyEditorialSchema(buildCEFRReviewRepairSchema(normalizedDraft)):buildCEFRReviewRepairSchema(normalizedDraft),modelChainOverride:independentReviewerChain,keyStateOverride:reviewerKeyState})
      consecutiveInfraFailures=0
      const reviewOutcome=applyCEFRReviewRepairs(normalizedDraft,reviewRes.draft,{requiredRepairLevels:[...requiredRepairLevels],validEvidenceIds:new Set(trimmed.evidence.map(e=>e.id))})
      normalizedDraft=normalizeDraftForCatalog(reviewOutcome.draft,{source,evidence:trimmed.evidence,verifiedPhotos})
-     quality=validateArticleQuality(normalizedDraft,source.sourceTitle,{source,evidence:trimmed.evidence,requireLevelPlans:true})
+     quality=validateArticleQuality(normalizedDraft,source.sourceTitle,{source,evidence:trimmed.evidence,editorialRhythm:editorialRhythm&&!dryRun,measuredLayout:Boolean(editorialMeter),requireLevelPlans:true})
+     quality=await auditEditorial(normalizedDraft,quality)
      quality.cefrReview=reviewOutcome.finalAssessment||null
      if(!reviewOutcome.ok){
       quality.ok=false
@@ -2872,7 +2922,7 @@ export async function runPublishWikiBatch({
 
    // One bounded targeted retry for deterministic issues the descriptor reviewer missed.
    // The complete article is then reviewed again so no post-review text change bypasses CEFR assessment.
-   if(!dryRun&&callGeminiImpl===callGeminiFlashLite&&!quality.ok&&!identifyRepairTargets(normalizedDraft,quality).structuralParityFailed){
+   if(!dryRun&&callGeminiImpl===callGeminiFlashLite&&!quality.ok&&(!editorialMeter||!repairUsed)&&!identifyRepairTargets(normalizedDraft,quality).structuralParityFailed){
     const residualRepair=await runOneTargetedRepair({source,item,trimmed,verifiedPhotos,normalizedDraft,quality})
     if(residualRepair.budgetHit){
      console.warn(`[batch]   -> Runtime budget reached before residual quality repair (${Math.max(0,Math.round(remainingBudget()/1000))}s left). Leaving "${item.title}" ${prevQueueStatus||'pending'} and stopping gracefully.`)
@@ -2893,15 +2943,16 @@ export async function runPublishWikiBatch({
      if((quality.errors||[]).length&&!retryRequiredRepairLevels.size){
       for(const level of LEVELS)retryRequiredRepairLevels.add(level)
      }
-     const retryReviewPrompt=buildCEFRReviewRepairPrompt(source,item.topic,trimmed.evidence,normalizedDraft,quality)
+     const retryReviewPrompt=buildCEFRReviewRepairPrompt(source,item.topic,trimmed.evidence,normalizedDraft,quality,{editorialRhythm,budgets:editorialMeter?.budgets})
      const independentReviewerChain=buildIndependentCEFRReviewerChain(reviewerModelChain,[...generationModelsUsed])
      if(!independentReviewerChain.length)throw Error('No independent CEFR reviewer model available after targeted repair: generator used '+usedModel+'; configured reviewer chain was ['+reviewerModelChain.join(', ')+']. Failing closed rather than allowing self-review.')
      console.log('[batch]   -> Final independent CEFR reviewer route: generator='+usedModel+'; reviewer candidates=['+independentReviewerChain.join(', ')+'].')
-     const retryReviewRes=await invokeGeminiWithDelay(retryReviewPrompt,{reserveMs:minRetryBudgetMs,schema:buildCEFRReviewRepairSchema(normalizedDraft),modelChainOverride:independentReviewerChain,keyStateOverride:reviewerKeyState})
+     const retryReviewRes=await invokeGeminiWithDelay(retryReviewPrompt,{reserveMs:minRetryBudgetMs,schema:editorialRhythm?simplifyEditorialSchema(buildCEFRReviewRepairSchema(normalizedDraft)):buildCEFRReviewRepairSchema(normalizedDraft),modelChainOverride:independentReviewerChain,keyStateOverride:reviewerKeyState})
      consecutiveInfraFailures=0
      const retryReviewOutcome=applyCEFRReviewRepairs(normalizedDraft,retryReviewRes.draft,{requiredRepairLevels:[...retryRequiredRepairLevels],validEvidenceIds:new Set(trimmed.evidence.map(e=>e.id))})
      normalizedDraft=normalizeDraftForCatalog(retryReviewOutcome.draft,{source,evidence:trimmed.evidence,verifiedPhotos})
-     quality=validateArticleQuality(normalizedDraft,source.sourceTitle,{source,evidence:trimmed.evidence,requireLevelPlans:true})
+     quality=validateArticleQuality(normalizedDraft,source.sourceTitle,{source,evidence:trimmed.evidence,editorialRhythm:editorialRhythm&&!dryRun,measuredLayout:Boolean(editorialMeter),requireLevelPlans:true})
+     quality=await auditEditorial(normalizedDraft,quality)
      quality.cefrReview=retryReviewOutcome.finalAssessment||null
      if(!retryReviewOutcome.ok){
       quality.ok=false
@@ -2927,7 +2978,8 @@ export async function runPublishWikiBatch({
    }
 
    // Strictly outline/section-bound wikipedia-embedded image binding & alignment guard (NO Commons fallback!)
-   let assigned=assignBatchPhotos(normalizedDraft.variants,{
+   const assignPhotos=editorialRhythm&&!dryRun?assignIndependentBatchPhotos:assignBatchPhotos
+   let assigned=assignPhotos(normalizedDraft.variants,{
     source,
     articlePhotos:verifiedPhotos,
     evidence:trimmed.evidence,
@@ -2957,7 +3009,7 @@ export async function runPublishWikiBatch({
      level,
      {
       ...normalizedDraft.variants[level],
-      pages:normalizedDraft.variants[level].pages.map((p,i)=>strippedSet.has(i)?{...p,imageId:null,caption:''}:p)
+      pages:normalizedDraft.variants[level].pages.map((p,i)=>(editorialRhythm?assigned.strippedImages.some(s=>s.level===level&&s.pageIndex===i):strippedSet.has(i))?{...p,imageId:null,caption:''}:p)
      }
     ]))
     const postStripOutline=Array.isArray(normalizedDraft.outline)
@@ -2968,7 +3020,7 @@ export async function runPublishWikiBatch({
      ...(postStripOutline?{outline:postStripOutline}:{}),
      variants:postStripVariants
     }
-    quality=validateArticleQuality(normalizedDraft,source.sourceTitle,{source,evidence:trimmed.evidence})
+    quality=validateArticleQuality(normalizedDraft,source.sourceTitle,{source,evidence:trimmed.evidence,editorialRhythm:editorialRhythm&&!dryRun,measuredLayout:Boolean(editorialMeter)})
 
     if(!quality.ok&&!dryRun&&!repairUsed&&callGeminiImpl!==callGeminiFlashLite){
      const repairOutcome=await runOneTargetedRepair({source,item,trimmed,verifiedPhotos,normalizedDraft,quality})
@@ -2981,7 +3033,7 @@ export async function runPublishWikiBatch({
      usedModel=repairOutcome.model||usedModel
      generationModelsUsed.add(usedModel)
      normalizedDraft=repairOutcome.normalizedDraft
-     assigned=assignBatchPhotos(normalizedDraft.variants,{
+     assigned=assignPhotos(normalizedDraft.variants,{
       source,
       articlePhotos:verifiedPhotos,
       evidence:trimmed.evidence,
@@ -3001,7 +3053,7 @@ export async function runPublishWikiBatch({
       skippedNoImage.push(item.title)
       continue
      }
-     quality=validateArticleQuality(normalizedDraft,source.sourceTitle,{source,evidence:trimmed.evidence})
+     quality=validateArticleQuality(normalizedDraft,source.sourceTitle,{source,evidence:trimmed.evidence,editorialRhythm:editorialRhythm&&!dryRun,measuredLayout:Boolean(editorialMeter)})
     }
 
     if(!quality.ok){
@@ -3020,10 +3072,14 @@ export async function runPublishWikiBatch({
     }
    }
 
+   if(editorialMeter&&!dryRun){
+    const errors=await editorialMeter.audit(assigned.levelVariants)
+    if(errors.length){recordQualityHistogram(errors);console.warn('[batch] Final actual-image layout rejected: '+errors.slice(0,3).join(' | '));skippedQuality.push(item.title);continue}
+   }
    const builtStory=makeWikiStory({
     source,
     topic:item.topic,
-    draft:{variants:assigned.levelVariants},
+    draft:{variants:assigned.levelVariants,...(editorialRhythm&&!dryRun?{readerLayoutVersion:3}:{})},
     photos:assigned.photos,
     evidence:trimmed.evidence
    })
@@ -3236,7 +3292,13 @@ export function parseArgs(argv){
 
 if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.url)){
  const opts=parseArgs(process.argv.slice(2))
- runPublishWikiBatch(opts)
+ const run=async()=>{
+  if(process.env.SAGA_EDITORIAL_LAYOUT!=='3'||opts.dryRun)return runPublishWikiBatch(opts)
+  const {openEditorialMeter}=await import('./wiki/editorial-meter.mjs')
+  const meter=await openEditorialMeter(process.env.SAGA_EDITORIAL_BASE_URL||'http://127.0.0.1:4173')
+  try{return await runPublishWikiBatch({...opts,editorialMeter:meter})}finally{await meter.close()}
+ }
+ run()
   .then(summary=>{
    console.log(`[batch] Done: stop_reason=${summary.stopReason}, published=${summary.generatedCount}, scanned=${summary.scannedCount}, skipped_no_lead_image=${summary.skippedNoLeadImageCount}, skipped_quality=${summary.skippedQualityCount}, has_valid_changes=${summary.hasValidChanges}, elapsed=${summary.elapsedSeconds}s.`)
    process.exit(summary.stopReason==='infrastructure_failure'?1:0)

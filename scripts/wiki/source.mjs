@@ -300,7 +300,7 @@ export async function fetchWikipediaParsePage(title,options={}){
  const url=new URL(WIKI_API)
  for(const [k,v] of Object.entries({
   action:'parse',
-  page:String(title||'').trim(),
+  ...(Number.isSafeInteger(options.revisionId)?{oldid:String(options.revisionId)}:{page:String(title||'').trim()}),
   prop:'text|revid',
   format:'json',
   formatversion:'2',
@@ -311,6 +311,8 @@ export async function fetchWikipediaParsePage(title,options={}){
  if(!parsedApi||!Number.isSafeInteger(parsedApi.pageid)||!Number.isSafeInteger(parsedApi.revid)||typeof parsedApi.text!=='string'){
   throw Error(`Wikipedia action=parse unavailable for "${title}"`)
  }
+ if(Number.isSafeInteger(options.revisionId)&&parsedApi.revid!==options.revisionId)throw Error('Pinned Wikipedia revision identity changed')
+ if(Number.isSafeInteger(options.expectedPageId)&&parsedApi.pageid!==options.expectedPageId)throw Error('Pinned Wikipedia page identity changed')
  const sourceTitle=String(parsedApi.title||title||'').trim()
  const parsed=parseWikipediaHtmlSections(parsedApi.text,{sourceTitle})
  const key=sourceTitle.replace(/ /g,'_')
