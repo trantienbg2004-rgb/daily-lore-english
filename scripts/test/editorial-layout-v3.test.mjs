@@ -9,10 +9,12 @@ import {
 } from '../publish_wiki_batch.mjs'
 import {validateWikiStory} from '../wiki/catalog.mjs'
 import {
+ COMPACT_MICRO_FIT_FLOOR,
  COMPACT_VIEWPORTS,
  PRIMARY_VIEWPORTS,
  METER_VIEWPORTS,
  EDITORIAL_DENSITY_POLICY,
+ isCompactViewport,
  calibrateEditorialBudgets,
  auditEditorialMetrics,
 } from '../wiki/editorial-meter.mjs'
@@ -141,16 +143,22 @@ test('adaptive prompt removes shared visual map conflict and uses mixed photo/te
  assert.match(prompt,/A1-A2, B1-B2, and C1-C2\) independently chooses 4–8 pages/)
 })
 
-test('editorial-meter enforces 4 viewports (incl. 375x667), 74% breathable density, 3 page-type imbalance groups, and min rendered lines',()=>{
+test('editorial-meter enforces compact micro-fit floor, 45%-94% breathable range, 3/5 min lines, and relaxed 32% same-type imbalance',()=>{
  assert.deepEqual(COMPACT_VIEWPORTS,[{width:375,height:667}])
+ assert.equal(isCompactViewport({width:375,height:667}),true)
+ assert.equal(isCompactViewport({width:390,height:844}),false)
+ assert.deepEqual(COMPACT_MICRO_FIT_FLOOR,{fontSizePx:15,lineHeight:1.42,photoMaxHeightDvh:18,photoMinHeightPx:105})
  assert.equal(METER_VIEWPORTS.length,4)
  assert.equal(PRIMARY_VIEWPORTS.length,3)
- assert.equal(EDITORIAL_DENSITY_POLICY.targetFill,0.74)
- assert.equal(EDITORIAL_DENSITY_POLICY.calibrationMinFill,0.60)
+ assert.ok(EDITORIAL_DENSITY_POLICY.targetFill>=0.68&&EDITORIAL_DENSITY_POLICY.targetFill<=0.74)
+ assert.equal(EDITORIAL_DENSITY_POLICY.calibrationMinFill,0.45)
+ assert.equal(EDITORIAL_DENSITY_POLICY.acceptanceMinFill,0.45)
  assert.equal(EDITORIAL_DENSITY_POLICY.calibrationMaxFill,0.90)
- assert.equal(EDITORIAL_DENSITY_POLICY.acceptanceMaxFill,0.92)
+ assert.equal(EDITORIAL_DENSITY_POLICY.acceptanceMaxFill,0.94)
+ assert.ok(EDITORIAL_DENSITY_POLICY.imbalanceSpread>=0.30)
+ assert.deepEqual(EDITORIAL_DENSITY_POLICY.minLines,{cover:3,photo:3,'text-only':5})
 
- // Calibrate synthetic probes: compact 375x667 overflows at 350 chars while primary fills hit 74% at 275 chars
+ // Calibrate synthetic probes: compact 375x667 overflows at 350 chars while primary fills hit target at 275 chars
  const probes=[]
  for(const level of levels)for(const type of ['cover','photo','text'])for(const chars of [200,275,350]){
   probes.push({level,type,photo:type!=='text',cover:type==='cover',chars})
@@ -159,7 +167,7 @@ test('editorial-meter enforces 4 viewports (incl. 375x667), 74% breathable densi
   vp,
   rows:probes.map(p=>{
    const isCompact=vp.width===375
-   const fill=p.chars===200?0.55:p.chars===275?0.74:(isCompact?1.04:0.89)
+   const fill=p.chars===200?0.48:p.chars===275?0.72:(isCompact?1.04:0.89)
    return {
     ...p,
     fill,
@@ -176,31 +184,35 @@ test('editorial-meter enforces 4 viewports (incl. 375x667), 74% breathable densi
  assert.equal(budgets['A1-A2'].text.target,275)
  assert.equal(budgets['A1-A2'].cover.viewports.length,4)
 
- // Audit: check compact overflow rejection, >92% primary rejection, min rendered lines, and 3-way (cover vs photo vs text-only) grouping
+ // Audit: breathable 48% cover (3L), 83% photo (4L), and two text-only pages with 26% spread (56% vs 82%, 5L/7L) MUST ALL PASS
  const rows=[
   {level:'A1-A2',index:0,cover:true,photo:true,pageType:'cover',text:'Cover text sample with enough words to evaluate cleanly.'},
   {level:'A1-A2',index:1,cover:false,photo:true,pageType:'photo',text:'Body photo text sample with enough words to evaluate cleanly.'},
   {level:'A1-A2',index:2,cover:false,photo:false,pageType:'text-only',text:'Text only page sample with enough words to evaluate cleanly.'},
+  {level:'A1-A2',index:3,cover:false,photo:false,pageType:'text-only',text:'Second text only page sample with natural 1-2 sentence variation.'},
  ]
  const metricsOk=METER_VIEWPORTS.map(vp=>({
   vp,
   rows:[
-   // Cover fill 0.62 vs body photo fill 0.86 — >15% apart, MUST NOT trigger imbalance because cover & photo are separate groups!
-   {level:'A1-A2',index:0,cover:true,photo:true,pageType:'cover',fill:vp.width===375?0.95:0.62,overflowPx:0,usedPx:186,availablePx:300,renderedLines:4},
-   {level:'A1-A2',index:1,cover:false,photo:true,pageType:'photo',fill:vp.width===375?0.96:0.86,overflowPx:0,usedPx:258,availablePx:300,renderedLines:5},
-   {level:'A1-A2',index:2,cover:false,photo:false,pageType:'text-only',fill:vp.width===375?0.94:0.76,overflowPx:0,usedPx:228,availablePx:300,renderedLines:6},
+   {level:'A1-A2',index:0,cover:true,photo:true,pageType:'cover',fill:vp.width===375?0.95:0.48,overflowPx:0,usedPx:144,availablePx:300,renderedLines:3},
+   {level:'A1-A2',index:1,cover:false,photo:true,pageType:'photo',fill:vp.width===375?0.96:0.83,overflowPx:0,usedPx:249,availablePx:300,renderedLines:4},
+   {level:'A1-A2',index:2,cover:false,photo:false,pageType:'text-only',fill:vp.width===375?0.92:0.56,overflowPx:0,usedPx:168,availablePx:300,renderedLines:5},
+   {level:'A1-A2',index:3,cover:false,photo:false,pageType:'text-only',fill:vp.width===375?0.94:0.82,overflowPx:0,usedPx:246,availablePx:300,renderedLines:7},
   ],
  }))
  assert.deepEqual(auditEditorialMetrics(rows,metricsOk),[])
 
- // Now trigger: compact 375x667 overflow on page 1, primary fill 0.94 (>92%) on page 2, and 5 rendered lines (<6) on text-only page 3
+ // Now trigger genuine failures: compact overflow, primary >94%, primary <45%, text-only <5L, and extreme >32% same-type imbalance
  const metricsFail=structuredClone(metricsOk)
  metricsFail[0].rows[0].overflowPx=8 // 375x667 overflow
- metricsFail[1].rows[1].fill=0.94 // 390x844 exceeds 92% ceiling
- metricsFail[1].rows[2].renderedLines=5 // text-only < 6 lines
+ metricsFail[1].rows[1].fill=0.96 // 390x844 exceeds 94% ceiling
+ metricsFail[1].rows[2].fill=0.40 // 390x844 below 45% floor (and 42% spread vs 0.82 text-only -> imbalance)
+ metricsFail[1].rows[2].renderedLines=4 // text-only < 5 lines
  const errs=auditEditorialMetrics(rows,metricsFail)
  assert.ok(errs.some(e=>e.includes('A1-A2 page 1 (cover)')&&e.includes('overflow 8px')))
- assert.ok(errs.some(e=>e.includes('A1-A2 page 2 (photo)')&&e.includes('94%')))
- assert.ok(errs.some(e=>e.includes('A1-A2 page 3 (text-only)')&&e.includes('requires at least 6 rendered lines')))
+ assert.ok(errs.some(e=>e.includes('A1-A2 page 2 (photo)')&&e.includes('96%')&&e.includes('utilization too high')))
+ assert.ok(errs.some(e=>e.includes('A1-A2 page 3 (text-only)')&&e.includes('40%')&&e.includes('utilization too low')))
+ assert.ok(errs.some(e=>e.includes('A1-A2 page 3 (text-only)')&&e.includes('requires at least 5 rendered lines')))
+ assert.ok(errs.some(e=>e.includes('A1-A2 page 3 (text-only)')&&e.includes('same-type visual imbalance')))
 })
 

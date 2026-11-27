@@ -6,16 +6,24 @@ const levels=['A1-A2','B1-B2','C1-C2']
 export const COMPACT_VIEWPORTS=[{width:375,height:667}]
 export const PRIMARY_VIEWPORTS=[{width:390,height:844},{width:430,height:932},{width:1366,height:768}]
 export const METER_VIEWPORTS=[...COMPACT_VIEWPORTS,...PRIMARY_VIEWPORTS]
+export const COMPACT_MICRO_FIT_FLOOR=Object.freeze({
+ fontSizePx:15,
+ lineHeight:1.42,
+ photoMaxHeightDvh:18,
+ photoMinHeightPx:105,
+})
 export const EDITORIAL_DENSITY_POLICY=Object.freeze({
- targetFill:0.74,
- calibrationMinFill:0.60,
+ targetFill:0.72,
+ calibrationMinFill:0.45,
+ acceptanceMinFill:0.45,
  calibrationMaxFill:0.90,
- acceptanceMaxFill:0.92,
- imbalanceSpread:0.15,
- imbalanceTolerance:0.075,
- minLines:Object.freeze({cover:4,photo:4,'text-only':6}),
+ acceptanceMaxFill:0.94,
+ imbalanceSpread:0.32,
+ imbalanceTolerance:0.16,
+ minLines:Object.freeze({cover:3,photo:3,'text-only':5}),
 })
 
+export const isCompactViewport=vp=>COMPACT_VIEWPORTS.some(c=>c.width===vp?.width&&c.height===vp?.height)
 export const isPrimaryViewport=vp=>PRIMARY_VIEWPORTS.some(p=>p.width===vp?.width&&p.height===vp?.height)
 export const pageTypeOfRow=row=>{
  if(row?.pageType==='cover'||row?.pageType==='photo'||row?.pageType==='text-only')return row.pageType
@@ -24,7 +32,7 @@ export const pageTypeOfRow=row=>{
  if(row?.cover||row?.index===0)return 'cover'
  return row?.photo?'photo':'text-only'
 }
-export const minLinesForPageType=pageType=>EDITORIAL_DENSITY_POLICY.minLines[pageType==='text'?'text-only':pageType]??4
+export const minLinesForPageType=pageType=>EDITORIAL_DENSITY_POLICY.minLines[pageType==='text'?'text-only':pageType]??3
 
 const specimens={
  'A1-A2':'People often learn about the past by looking at old things. A picture can help us see how people lived. It can show a place, a person or a way of life. We can read about these things and ask why they were important. Some answers are easy to find. Other answers take more time.',
@@ -38,7 +46,7 @@ const sample=(level,n)=>{
  const a=out.split(' '), cut=Math.floor(a.length/2)
  return a.slice(0,cut).join(' ')+'\n\n'+a.slice(cut).join(' ')
 }
-const runMeasure=async(page,rows)=>page.evaluate(rows=>{
+const runMeasure=async(page,rows,{applyCompactMicroFit=false}={})=>page.evaluate(({rows,applyCompactMicroFit,microFit})=>{
  const live=document.querySelector('.story-layer:not(.outgoing) .reader-gesture')
  if(!live)throw Error('Missing actual reader')
  const b=live.getBoundingClientRect()
@@ -51,6 +59,16 @@ const runMeasure=async(page,rows)=>page.evaluate(rows=>{
  try{
   const surface=root.querySelector('.page-surface'), heading=root.querySelector('.article-heading'), h1=heading.querySelector('h1'), media=root.querySelector('.article-media'), card=root.querySelector('.reading-card'), body=root.querySelector('.article-text'), pager=root.querySelector('.page-control')
   surface.className='page-surface'
+  if(applyCompactMicroFit){
+   // Mirror live Reader computeBoundedMicroFit() floor on compact 375x667 screens.
+   surface.style.setProperty('--saga-fit-body-size',microFit.fontSizePx+'px')
+   surface.style.setProperty('--saga-fit-line-height',String(microFit.lineHeight))
+   surface.style.setProperty('--saga-fit-photo-max-h',`max(${microFit.photoMinHeightPx}px, ${microFit.photoMaxHeightDvh}dvh)`)
+  }else{
+   surface.style.removeProperty('--saga-fit-body-size')
+   surface.style.removeProperty('--saga-fit-line-height')
+   surface.style.removeProperty('--saga-fit-photo-max-h')
+  }
   heading.querySelector('.deck')?.remove()
   root.querySelector('.source-footer')?.remove()
   return rows.map(row=>{
@@ -97,7 +115,7 @@ const runMeasure=async(page,rows)=>page.evaluate(rows=>{
    return {...row,text:undefined,usedPx:Math.round(text.height),availablePx:Math.round(available),fill:text.height/available,overflowPx:Math.max(0,Math.ceil(text.bottom-safe)),lineHeight,renderedLines,width:Math.round(text.width)}
   })
  }finally{root.remove()}
-},rows)
+},{rows,applyCompactMicroFit,microFit:COMPACT_MICRO_FIT_FLOOR})
 
 export function calibrateEditorialBudgets(probes,measured){
  const budgets={}
@@ -146,14 +164,15 @@ export function auditEditorialMetrics(rows,metrics){
   const primaryObserved=observed.filter(m=>isPrimaryViewport(m.vp))
   const densityObserved=primaryObserved.length?primaryObserved:observed
   const hasOverflow=observed.some(m=>m.overflowPx>0)
-  const belowFloor=densityObserved.some(m=>m.fill<EDITORIAL_DENSITY_POLICY.calibrationMinFill)
+  const minFill=EDITORIAL_DENSITY_POLICY.acceptanceMinFill??EDITORIAL_DENSITY_POLICY.calibrationMinFill
+  const belowFloor=densityObserved.some(m=>m.fill<minFill)
   const aboveCeiling=densityObserved.some(m=>m.fill>EDITORIAL_DENSITY_POLICY.acceptanceMaxFill)
   const tooFewLines=densityObserved.some(m=>Number.isFinite(m.renderedLines)&&m.renderedLines<minLines)
 
   if(hasOverflow||belowFloor||aboveCeiling){
    const chars=String(row.text||'').replace(/\s+/g,' ').trim().length
    const words=String(row.text||'').trim().split(/\s+/).filter(Boolean).length
-   const lower=Math.ceil(Math.max(...densityObserved.map(m=>chars*EDITORIAL_DENSITY_POLICY.calibrationMinFill/Math.max(.01,m.fill))))
+   const lower=Math.ceil(Math.max(...densityObserved.map(m=>chars*minFill/Math.max(.01,m.fill))))
    const primaryUpper=Math.floor(Math.min(...densityObserved.map(m=>chars*EDITORIAL_DENSITY_POLICY.calibrationMaxFill/Math.max(.01,m.fill))))
    const compactUpper=Math.floor(Math.min(...observed.map(m=>chars*0.98/Math.max(.01,m.fill))))
    const upper=Math.min(primaryUpper,compactUpper)
@@ -206,13 +225,13 @@ export async function openEditorialMeter(baseURL){
   const probes=[]
   for(const level of levels)for(const type of ['cover','photo','text'])for(let chars=150;chars<=1500;chars+=25)probes.push({level,type,photo:type!=='text',cover:type==='cover',chars,text:sample(level,chars)})
   const measured=[]
-  for(const {page,vp} of pages)measured.push({vp,rows:await runMeasure(page,probes)})
+  for(const {page,vp} of pages)measured.push({vp,rows:await runMeasure(page,probes,{applyCompactMicroFit:isCompactViewport(vp)})})
   const budgets=calibrateEditorialBudgets(probes,measured)
   console.log('[editorial-meter] MEASURED BUDGETS',JSON.stringify(budgets))
   const audit=async(variants)=>{
    const rows=levels.flatMap(level=>(variants[level]?.pages||[]).map((p,i)=>({level,index:i,cover:i===0,photo:Boolean(p.image||p.imageId)||i===0,pageType:i===0?'cover':((p.image||p.imageId)?'photo':'text-only'),caption:p.caption,headline:variants[level].headline,text:p.text})))
    const metrics=[]
-   for(const {page,vp} of pages)metrics.push({vp,rows:await runMeasure(page,rows)})
+   for(const {page,vp} of pages)metrics.push({vp,rows:await runMeasure(page,rows,{applyCompactMicroFit:isCompactViewport(vp)})})
    const errors=auditEditorialMetrics(rows,metrics)
    console.log('[editorial-meter] CARD AUDIT',JSON.stringify(metrics))
    return errors
