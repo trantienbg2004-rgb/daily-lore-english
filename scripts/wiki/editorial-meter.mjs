@@ -10,7 +10,7 @@ const specimens={
  'C1-C2':'Historical interpretation depends on the relationship between surviving evidence and the circumstances of its production. Apparent contradictions may reflect differences in perspective rather than straightforward factual disagreement. A convincing account therefore distinguishes documented observations from plausible but necessarily qualified inferences.'
 }
 const sample=(level,n)=>{
- const words=specimens[level].repeat(Math.ceil(n/specimens[level].length)+1).split(/\s+/)
+ const words=(specimens[level]+' ').repeat(Math.ceil(n/specimens[level].length)+1).split(/\s+/)
  let out=''
  for(const w of words){if(out.length+w.length+1>n)break;out+=(out?' ':'')+w}
  const a=out.split(' '), cut=Math.floor(a.length/2)
@@ -100,7 +100,7 @@ export async function openEditorialMeter(baseURL){
     if(!safe.length)throw Error('No safe measured body budget '+level+' '+type)
     const best=safe.sort((a,b)=>a.loss-b.loss)[0]
     const range=safe.filter(c=>c.rows.every(r=>r.fill>=.80&&r.fill<=.98)).map(c=>c.chars)
-    budgets[level][type]={target:best.chars,min:range.length?Math.min(...range):Math.round(best.chars*.92),max:range.length?Math.max(...range):best.chars,compatible:range.length>0,viewports:best.rows.map((r,i)=>({viewport:measured[i].vp,availablePx:r.availablePx,fill:Number(r.fill.toFixed(3)),lineHeight:r.lineHeight}))}
+    budgets[level][type]={target:best.chars,targetWords:sample(level,best.chars).trim().split(/\s+/).length,min:range.length?Math.min(...range):Math.round(best.chars*.92),max:range.length?Math.max(...range):best.chars,compatible:range.length>0,viewports:best.rows.map((r,i)=>({viewport:measured[i].vp,availablePx:r.availablePx,fill:Number(r.fill.toFixed(3)),lineHeight:r.lineHeight}))}
    }
   }
   console.log('[editorial-meter] MEASURED BUDGETS',JSON.stringify(budgets))
@@ -112,7 +112,12 @@ export async function openEditorialMeter(baseURL){
    for(const row of rows){
     const observed=metrics.map(m=>({vp:m.vp,...m.rows.find(r=>r.level===row.level&&r.index===row.index)}))
     if(observed.some(m=>m.fill<.80||m.overflowPx>0)){
-     errors.push(row.level+' page '+(row.index+1)+': measured body layout '+observed.map(m=>m.vp.width+'x'+m.vp.height+' '+Math.round(m.fill*100)+'% ('+m.usedPx+'/'+m.availablePx+' px)').join('; ')+'; target 85–95% with no overflow. '+(observed.some(m=>m.overflowPx>0)?'Shorten or restructure.':'Expand with source-supported detail.'))
+     const chars=row.text.replace(/\s+/g,' ').trim().length
+     const words=row.text.trim().split(/\s+/).length
+     const lower=Math.ceil(Math.max(...observed.map(m=>chars*.82/Math.max(.01,m.fill))))
+     const upper=Math.floor(Math.min(...observed.map(m=>chars*.98/Math.max(.01,m.fill))))
+     const target=Math.max(1,Math.round((lower+upper)/2))
+     errors.push(row.level+' page '+(row.index+1)+' ('+(row.cover?'cover':row.photo?'photo':'text-only')+'): current '+chars+' chars / '+words+' words; measured '+observed.map(m=>m.vp.width+'x'+m.vp.height+' '+Math.round(m.fill*100)+'% ('+m.usedPx+'/'+m.availablePx+' px)').join('; ')+'; rewrite to approximately '+target+' chars / '+Math.round(words*target/Math.max(1,chars))+' words, estimated compatible range '+lower+'–'+upper+' chars. Keep two natural paragraphs and all source-grounded facts.')
     }
    }
    for(const {vp,rows:ms} of metrics)for(const level of levels)for(const photo of [true,false]){

@@ -50,7 +50,11 @@ export const PAGE_COUNT_BOUNDS=Object.freeze({min:4,max:6})
 // line count more reliably than identical word counts across proficiency bands.
 export const EDITORIAL_CARD_CHAR_BOUNDS=Object.freeze({photo:[360,470],text:[640,830]})
 const ADAPTIVE_MAP_GUIDANCE='Each version independently chooses 4–6 pages; B1-B2 and C1-C2 may use 7–8 only for genuinely useful depth. Never fewer than 4 or more than 8. Use the same verified cover imageId in all three versions. Body images may appear at different page indexes, only if relevant to that page. Outline is a broad common topic sequence, not a page-index contract. Plan each actual page as photo or text-only before composing. Do not pad or force equal page counts.'
-const measuredGuidance=budgets=>budgets?'Measured Chromium body budgets (characters, spaces included; not CEFR definitions): '+JSON.stringify(budgets)+'. Aim at target for each page type and level; use measured feedback to adjust.':' '
+const measuredGuidance=budgets=>budgets?[
+ 'MANDATORY COPYFITTING. These are measured BODY lengths (not headline or caption). Write the full requested length on EACH page, not the entire article. For every photo page write two developed paragraphs; for text-only pages write two substantial paragraphs. Do not confuse the photo and text-only budgets. Use the following targets for natural prose:',
+ ...LEVELS.map(l=>l+': '+['cover','photo','text'].map(t=>{const b=budgets[l][t];return t+' '+b.target+' characters (about '+(b.targetWords||Math.round(b.target/(l==='A1-A2'?5.1:l==='B1-B2'?6.4:7.3)))+' words), range '+b.min+'–'+b.max}).join('; ')),
+ 'Select the page count and photo IDs before composing. For a level with 4 pages and one cover, the total body budget is ONE cover plus THREE text-only targets. Add source-supported context and explanation, not repetitive filler. Use two paragraphs separated by a blank line. The final page must be as developed as other pages of its type. Treat visual measurements as mandatory constraints; they do not define CEFR.',
+].join('\n'):' '
 const EDITORIAL_CARD_GUIDANCE='Use 360–470 characters of natural body prose on EACH photo page, and 640–830 characters on EACH text-only page (spaces included, caption excluded). Aim at 415 and 735 respectively, including the final page. Count the actual characters of each completed body before returning JSON; do not count the caption, headline or evidence IDs. Revise any page outside the stated range before submitting. Use two or three coherent paragraphs where appropriate. Keep each matching pageIndex focused on the same broad editorial subject across A/B/C. Expand with source-supported explanation and concrete detail, not repetition or filler. These are visual budgets, NOT CEFR criteria.'
 export const HEADLINE_WORD_BOUNDS=Object.freeze({min:5,max:11})
 export const CAPTION_LIMITS=Object.freeze({minWords:3,maxWords:10,maxChars:65,targetMinWords:5,targetMaxWords:8,targetMaxChars:48})
@@ -500,7 +504,7 @@ export function buildGeminiGenerationConfig(model=DEFAULT_GEMINI_MODEL,{schema=B
  const config={
   responseMimeType:'application/json',
   responseJsonSchema:schema,
-  maxOutputTokens:9500
+  maxOutputTokens:schema===ADAPTIVE_STORY_SCHEMA?14000:9500
  }
  // Gemini 4 defaults to deep reasoning; LOW preserves token budget for structured reviewer output.
  if(/^gemini-4(?:\b|-)/.test(name)){
@@ -1237,7 +1241,7 @@ export function buildCEFRReviewRepairPrompt(source,topic,evidence,previousDraft,
   '- Assess the article body, not the glossary. A glossary can support learning but cannot make an otherwise inaccessible article A1/A2.',
   '- MANDATORY PAGE-1 OPENING REPAIR: If a supplied deterministic issue says “dry encyclopedia opening” or quotes an “X is a...” opening, you MUST change pageIndex 0 for that level. Do not keep the same opening, merely swap one adjective, or claim that a generic definition is a vivid hook. Start with a source-grounded reader-facing question, concrete moment, vivid action, or specific consequence that naturally draws the reader into the topic. For American football, a simple opening could place two teams trying to move the ball; for philosophy, it could ask a clear everyday question about knowledge or right and wrong. Do not invent a scene or fact. Keep the hook natural and appropriate to the assigned CEFR band. The final page must no longer trigger the deterministic opening check before you mark that level pass.',
   '- Do not make A1/A2 childish or factually incomplete. Select fewer, more essential facts and explain them simply. B1/B2 should develop the main points. C1/C2 should deepen interpretation and precision.',
-  '- Use the supplied levelPlans: each level is allowed to select different facts and depth. Do not force identical facts, page focus or page-by-page order across levels. Keep at least two shared core facts and preserve the common imageId/page order.',
+  editorialRhythm?'- Keep each level’s own page count and image placement, at least two shared core facts, and independent depth. Do not shorten a text-only page to a photo-page length.':'- Use the supplied levelPlans: each level is allowed to select different facts and depth. Do not force identical facts, page focus or page-by-page order across levels. Keep at least two shared core facts and preserve the common imageId/page order.',
   '- Preserve every date, quantity, causal limit, source uncertainty and safety qualification that appears in the selected facts. Never invent information.' ,
   '- Every selectedFactId must be explained in the version, and at least one page that actually explains it must cite one of that fact’s own evidenceIds. If a blocking issue lists missing fact IDs and required evidence IDs, add a concise, accurate explanation of each missing fact to a relevant existing page and cite its own required evidenceIds in that same page patch. Do not merely append an evidence ID without explaining the fact, and do not attach unrelated source IDs just to silence the validator.',
   '- For every selected fact marked hasUncertainty=true, include a natural, level-appropriate qualification or safety caveat on the page that explains that fact, and cite its supporting passage. If the blocking issues identify a missing caveat, repair the text before assigning finalVerdict=pass.',
@@ -1522,7 +1526,7 @@ ${passages}`
      return {
       pageIndex:idx,
       pageType:isPhoto?'photo':'text-only',
-      advisoryWords:`~${wordRangeMidpoint([minW,maxW])} (flexible around ${minW}-${maxW})`,
+      ...(editorialRhythm&&budgets?{bodyBudget:budgets[item.level][idx===0?'cover':isPhoto?'photo':'text']}:{advisoryWords:`~${wordRangeMidpoint([minW,maxW])} (flexible around ${minW}-${maxW})`}),
       imageId:pageImageToken(p),
       text:p.text,
       ...(isPhoto?{caption:p.caption||''}:{}),
@@ -2900,7 +2904,7 @@ export async function runPublishWikiBatch({
      const independentReviewerChain=buildIndependentCEFRReviewerChain(reviewerModelChain,[...generationModelsUsed])
      if(!independentReviewerChain.length)throw Error('No independent CEFR reviewer model available: generator used '+usedModel+'; configured reviewer chain was ['+reviewerModelChain.join(', ')+']. Failing closed rather than allowing self-review.')
      console.log('[batch]   -> Independent CEFR reviewer route: generator='+usedModel+'; reviewer candidates=['+independentReviewerChain.join(', ')+'].')
-     const reviewRes=await invokeGeminiWithDelay(reviewPrompt,{reserveMs:minRetryBudgetMs,schema:buildCEFRReviewRepairSchema(normalizedDraft),modelChainOverride:independentReviewerChain,keyStateOverride:reviewerKeyState})
+     const reviewRes=await invokeGeminiWithDelay(reviewPrompt,{reserveMs:minRetryBudgetMs,schema:editorialRhythm?simplifyEditorialSchema(buildCEFRReviewRepairSchema(normalizedDraft)):buildCEFRReviewRepairSchema(normalizedDraft),modelChainOverride:independentReviewerChain,keyStateOverride:reviewerKeyState})
      consecutiveInfraFailures=0
      const reviewOutcome=applyCEFRReviewRepairs(normalizedDraft,reviewRes.draft,{requiredRepairLevels:[...requiredRepairLevels],validEvidenceIds:new Set(trimmed.evidence.map(e=>e.id))})
      normalizedDraft=normalizeDraftForCatalog(reviewOutcome.draft,{source,evidence:trimmed.evidence,verifiedPhotos})
@@ -2943,7 +2947,7 @@ export async function runPublishWikiBatch({
      const independentReviewerChain=buildIndependentCEFRReviewerChain(reviewerModelChain,[...generationModelsUsed])
      if(!independentReviewerChain.length)throw Error('No independent CEFR reviewer model available after targeted repair: generator used '+usedModel+'; configured reviewer chain was ['+reviewerModelChain.join(', ')+']. Failing closed rather than allowing self-review.')
      console.log('[batch]   -> Final independent CEFR reviewer route: generator='+usedModel+'; reviewer candidates=['+independentReviewerChain.join(', ')+'].')
-     const retryReviewRes=await invokeGeminiWithDelay(retryReviewPrompt,{reserveMs:minRetryBudgetMs,schema:buildCEFRReviewRepairSchema(normalizedDraft),modelChainOverride:independentReviewerChain,keyStateOverride:reviewerKeyState})
+     const retryReviewRes=await invokeGeminiWithDelay(retryReviewPrompt,{reserveMs:minRetryBudgetMs,schema:editorialRhythm?simplifyEditorialSchema(buildCEFRReviewRepairSchema(normalizedDraft)):buildCEFRReviewRepairSchema(normalizedDraft),modelChainOverride:independentReviewerChain,keyStateOverride:reviewerKeyState})
      consecutiveInfraFailures=0
      const retryReviewOutcome=applyCEFRReviewRepairs(normalizedDraft,retryReviewRes.draft,{requiredRepairLevels:[...retryRequiredRepairLevels],validEvidenceIds:new Set(trimmed.evidence.map(e=>e.id))})
      normalizedDraft=normalizeDraftForCatalog(retryReviewOutcome.draft,{source,evidence:trimmed.evidence,verifiedPhotos})
