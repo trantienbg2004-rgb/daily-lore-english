@@ -4042,7 +4042,7 @@
 .lore-editorial-v5 .reader-gesture .page-surface.page-density-compact:has(.post-head:not(.post-head--continued)) .article-media {
   --saga-photo-max-h: clamp(106px, 30dvh, 270px);
 }
-@media (max-width: 400px), (max-height: 620px) {
+@media (max-height: 760px) {
   .lore-editorial-v5 .reader-gesture .article-media,
   .lore-editorial-v5 .reader-gesture .page-surface.page-density-compact .article-media,
   .lore-editorial-v5 .reader-gesture .page-surface.page-density-compact:has(.post-head:not(.post-head--continued)) .article-media {
@@ -4050,6 +4050,15 @@
   }
 }
 
+@media (max-width: 519px) and (min-height: 761px) {
+  .lore-editorial-v5 .reader-gesture .article-media,
+  .lore-editorial-v5 .reader-gesture .page-surface.page-density-compact:has(.post-head:not(.post-head--continued)) .article-media {
+    --saga-photo-max-h: clamp(160px, 26dvh, 260px);
+  }
+  .lore-editorial-v5 .reader-gesture .page-surface.page-density-compact .article-media {
+    --saga-photo-max-h: clamp(140px, 22dvh, 230px);
+  }
+}
 /* Beginner reading: a slightly larger type scale on the spacious desktop
    column, without changing mobile typography or shrinking advanced text. */
 @media (min-width: 520px) and (min-height: 650px) {
