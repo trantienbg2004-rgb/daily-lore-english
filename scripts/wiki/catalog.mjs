@@ -86,13 +86,24 @@ export async function readWikiCatalog(base){
  if(manifest.feedType!=='wiki'||manifest.editorialVersion!==2||!/^catalog-index-[0-9a-f]{12}\.json$/.test(manifest.catalogIndex||''))throw Error('Wiki manifest invalid')
  const index=JSON.parse(await fs.readFile(path.join(dir,manifest.catalogIndex),'utf8'))
  if(index.contentHash!==manifest.contentHash||index.total!==manifest.total||index.entries?.length!==manifest.total)throw Error('Wiki catalog index mismatch')
- const stories=[]
+ // A replacement is appended in a new immutable shard. The previous shard
+ // may still contain other active entries and historical copies. The versioned
+ // index, not the physical order of all rows in referenced shards, is canonical.
+ const shards=new Map()
  for(const shard of new Set(index.entries.map(row=>row.shard))){
   if(!/^\d{4}$/.test(shard))throw Error('Wiki shard unsafe')
   const data=JSON.parse(await fs.readFile(path.join(dir,shard+'.json'),'utf8'))
   if(!Array.isArray(data)||data.some(story=>!validateWikiStory(story).accepted))throw Error('Stored Wiki shard invalid')
-  stories.push(...data)
+  shards.set(shard,data)
  }
+ const seen=new Set()
+ const stories=index.entries.map(row=>{
+  if(seen.has(row.sourcePageId))throw Error('Wiki catalog duplicate indexed page')
+  seen.add(row.sourcePageId)
+  const matches=shards.get(row.shard).filter(s=>s.sourcePageId===row.sourcePageId&&s.sourceUrl===row.id)
+  if(matches.length!==1)throw Error('Wiki catalog index entry missing or duplicated')
+  return matches[0]
+ })
  if(stories.length!==manifest.total)throw Error('Wiki catalog total mismatch')
  if(index.entries.some((row,i)=>row.id!==stories[i]?.sourceUrl||row.sourcePageId!==stories[i]?.sourcePageId)||
   catalogHash(index.entries,stories)!==manifest.contentHash)throw Error('Wiki catalog content mismatch')
