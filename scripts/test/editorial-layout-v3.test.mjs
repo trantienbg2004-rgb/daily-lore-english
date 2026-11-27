@@ -29,3 +29,16 @@ test('layout budget is independent of CEFR and rejects sparse editorial pages on
  assert.ok(!validateArticleQuality({variants},'Magna Carta').errors.some(e=>e.includes('editorial card body')))
  assert.deepEqual(EDITORIAL_CARD_CHAR_BOUNDS.photo,[360,470])
 })
+
+test('adaptive editions allow A=4, B=7, C=8 without changing authored slots',()=>{
+ const independent=structuredClone(variants)
+ independent['A1-A2'].pages=independent['A1-A2'].pages.slice(0,4)
+ for(const [l,n] of [['B1-B2',7],['C1-C2',8]])while(independent[l].pages.length<n)independent[l].pages.push({text:'This is another complete sentence.',image:''})
+ const q=validateArticleQuality({variants:independent},'Magna Carta',{editorialRhythm:true,measuredLayout:true})
+ assert.ok(!q.errors.some(e=>/page count|image parity/i.test(e)))
+ for(const l of levels){const p=planEditorialWikiPages({pages:independent[l].pages,levelVariants:independent,readingLevel:l},()=>true);assert.equal(p.length,independent[l].pages.length)}
+ independent['A1-A2'].pages.pop()
+ assert.ok(validateArticleQuality({variants:independent},'Magna Carta',{editorialRhythm:true,measuredLayout:true}).errors.some(e=>e.includes('A1-A2: page count')))
+ independent['C1-C2'].pages.push({text:'Too many pages.',image:''})
+ assert.ok(validateArticleQuality({variants:independent},'Magna Carta',{editorialRhythm:true,measuredLayout:true}).errors.some(e=>e.includes('C1-C2: page count')))
+})
