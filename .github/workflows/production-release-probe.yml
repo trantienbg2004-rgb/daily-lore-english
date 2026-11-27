@@ -1,0 +1,27 @@
+name: Production release probe
+on:
+  push:
+    branches: [fix/production-release-freshness]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+      - name: Compare origin and cached public release
+        shell: bash
+        run: |
+          set -eu
+          echo "EXPECTED CATALOG"
+          jq '{contentHash,catalogIndex,total,updatedAt}' public/wiki-reader/manifest.json
+          for suffix in "" "?release=$GITHUB_SHA"; do
+            for resource in "wiki-reader/manifest.json" ""; do
+              echo "REQUEST https://saga.id.vn/$resource$suffix"
+              curl -sS -L --max-time 15 -H 'Cache-Control: no-cache' -D /tmp/saga-headers -o /tmp/saga-body "https://saga.id.vn/$resource$suffix"
+              cat /tmp/saga-headers
+              if [[ -n "$resource" ]]; then jq '{contentHash,catalogIndex,total,updatedAt}' /tmp/saga-body; else grep -E 'script.*src=|stylesheet.*href=' /tmp/saga-body || true; fi
+            done
+          done
