@@ -85,16 +85,15 @@ export async function openEditorialMeter(baseURL){
    pages.push({page,vp})
   }
   const probes=[]
-  for(const level of levels)for(const photo of [true,false])for(let chars=200;chars<=1500;chars+=25)probes.push({level,photo,cover:photo,chars,text:sample(level,chars)})
+  for(const level of levels)for(const type of ['cover','photo','text'])for(let chars=200;chars<=1500;chars+=25)probes.push({level,type,photo:type!=='text',cover:type==='cover',chars,text:sample(level,chars)})
   const measured=[]
   for(const {page,vp} of pages)measured.push({vp,rows:await runMeasure(page,probes)})
   const budgets={}
   for(const level of levels){
    budgets[level]={}
-   for(const photo of [true,false]){
-    const type=photo?'photo':'text'
-    const candidates=probes.filter(p=>p.level===level&&p.photo===photo).map(p=>{
-     const rows=measured.map(m=>m.rows.find(r=>r.level===level&&r.photo===photo&&r.chars===p.chars))
+   for(const type of ['cover','photo','text']){
+    const candidates=probes.filter(p=>p.level===level&&p.type===type).map(p=>{
+     const rows=measured.map(m=>m.rows.find(r=>r.level===level&&r.type===type&&r.chars===p.chars))
      return {chars:p.chars,rows,loss:rows.reduce((sum,r)=>sum+(r.fill-.90)**2+10*Math.max(0,r.fill-1)**2,0)}
     })
     const safe=candidates.filter(c=>c.rows.every(r=>r.overflowPx===0))
