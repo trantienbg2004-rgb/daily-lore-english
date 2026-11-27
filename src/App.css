@@ -4175,3 +4175,290 @@
 @media (min-width: 410px) and (max-width: 519px) and (min-height: 850px) {
   .lore-editorial-v5 .reader-gesture[data-editorial-layout="shared"] .article-media:not(.article-media-empty) { --saga-photo-max-h: clamp(180px, 31dvh, 285px); }
 }
+
+/* ==========================================================================
+   UI Fix 01 — Lore-Style Unified Left-Axis Editorial Layout & Bounded Micro-Fit
+   Unifies Legacy Wiki, Wiki v3 (data-editorial-layout="shared"), and News
+   on one clean flush-left axis with consistent headline size across Page 1
+   and Page 2+, natural-aspect flush-left photos, compact 1-line captions,
+   and page-scoped CSS variable micro-fit (no clipping, no normal scrollbars).
+   ========================================================================== */
+.app-shell.lore-editorial-v5 .reader-gesture {
+  --saga-body-size: clamp(16px, 4.15vw, 17px);
+  --saga-body-lh: 1.5;
+  --saga-photo-max-h: clamp(120px, 26dvh, 235px);
+}
+
+@media (max-height: 740px) {
+  .app-shell.lore-editorial-v5 .reader-gesture {
+    --saga-photo-max-h: clamp(112px, 22dvh, 185px);
+  }
+}
+
+@media (max-height: 670px) {
+  .app-shell.lore-editorial-v5 .reader-gesture {
+    --saga-photo-max-h: clamp(105px, 20dvh, 160px);
+  }
+}
+
+@media (min-width: 410px) and (max-width: 519px) and (min-height: 850px) {
+  .app-shell.lore-editorial-v5 .reader-gesture[data-reading-scale="large"] {
+    --saga-body-size: 18px;
+    --saga-body-lh: 1.52;
+  }
+  .app-shell.lore-editorial-v5 .reader-gesture[data-editorial-layout="shared"] {
+    --saga-body-size: 18.5px;
+    --saga-body-lh: 1.52;
+  }
+}
+
+@media (min-width: 520px) {
+  .app-shell.lore-editorial-v5 .reader-gesture {
+    --saga-body-size: 19px;
+    --saga-body-lh: 1.52;
+    --saga-photo-max-h: clamp(120px, 25dvh, 235px);
+  }
+  .app-shell.lore-editorial-v5 .reader-gesture[data-editorial-layout="shared"] {
+    --saga-body-size: 19.5px;
+    --saga-body-lh: 1.52;
+  }
+}
+
+@media (min-width: 520px) and (min-height: 650px) {
+  .app-shell.lore-editorial-v5 .reader-gesture[data-reading-level="A1-A2"]:not([data-editorial-layout="shared"]) {
+    --saga-body-size: 21px;
+    --saga-body-lh: 1.55;
+  }
+}
+
+/* 1. Single Consistent Left-Aligned Headline Across Page 1 and Page 2+ */
+.app-shell.lore-editorial-v5 .reader-gesture .post-head,
+.app-shell.lore-editorial-v5 .reader-gesture .post-head.article-heading,
+.app-shell.lore-editorial-v5 .reader-gesture .post-head.post-head--continued,
+.app-shell.lore-editorial-v5 .reader-gesture .post-head.article-heading.article-heading-continued,
+.app-shell.lore-editorial-v5 .reader-gesture .post-head.post-head--no-image:not(.post-head--continued),
+.app-shell.lore-editorial-v5 .reader-gesture .post-head.post-head--no-image.post-head--continued,
+.app-shell.lore-editorial-v5 .reader-gesture .post-head.post-head--cover-no-image.post-head--continued,
+.app-shell.lore-editorial-v5 .reader-gesture[data-editorial-layout="shared"] .post-head.article-heading {
+  width: 100%;
+  max-width: var(--saga-shell-w, 430px);
+  margin: 0;
+  padding: 6px 0 6px;
+  border-bottom: 0;
+  text-align: left;
+}
+
+.app-shell.lore-editorial-v5 .reader-gesture .post-head h1,
+.app-shell.lore-editorial-v5 .reader-gesture .post-head h1.lore-headline-long,
+.app-shell.lore-editorial-v5 .reader-gesture .post-head:not(.post-head--continued) h1,
+.app-shell.lore-editorial-v5 .reader-gesture .post-head:not(.post-head--continued) h1.lore-headline-long,
+.app-shell.lore-editorial-v5 .reader-gesture .post-head.post-head--continued h1,
+.app-shell.lore-editorial-v5 .reader-gesture .post-head.post-head--continued h1.lore-headline-long,
+.app-shell.lore-editorial-v5 .reader-gesture .post-head.article-heading.article-heading-continued h1,
+.app-shell.lore-editorial-v5 .reader-gesture .post-head.article-heading.article-heading-continued h1.lore-headline-long,
+.app-shell.lore-editorial-v5 .reader-gesture .post-head.post-head--no-image:not(.post-head--continued) h1,
+.app-shell.lore-editorial-v5 .reader-gesture .post-head.post-head--no-image:not(.post-head--continued) h1.lore-headline-long,
+.app-shell.lore-editorial-v5 .reader-gesture .post-head.post-head--cover-no-image:not(.post-head--continued) h1,
+.app-shell.lore-editorial-v5 .reader-gesture .post-head.post-head--cover-no-image:not(.post-head--continued) h1.lore-headline-long,
+.app-shell.lore-editorial-v5 .reader-gesture[data-editorial-layout="shared"] .post-head.article-heading h1,
+.app-shell.lore-editorial-v5 .reader-gesture[data-editorial-layout="shared"] .post-head.article-heading h1.lore-headline-long {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: left;
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: clamp(19px, 4.8vw, 22px);
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  color: #121212;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+  white-space: normal;
+  text-transform: none;
+}
+
+@media (min-width: 520px) {
+  .app-shell.lore-editorial-v5 .reader-gesture .post-head h1,
+  .app-shell.lore-editorial-v5 .reader-gesture .post-head h1.lore-headline-long,
+  .app-shell.lore-editorial-v5 .reader-gesture .post-head.post-head--continued h1,
+  .app-shell.lore-editorial-v5 .reader-gesture .post-head.article-heading.article-heading-continued h1,
+  .app-shell.lore-editorial-v5 .reader-gesture[data-editorial-layout="shared"] .post-head.article-heading h1,
+  .app-shell.lore-editorial-v5 .reader-gesture[data-editorial-layout="shared"] .post-head.article-heading h1.lore-headline-long {
+    font-size: 22px;
+  }
+}
+
+.app-shell.lore-editorial-v5 .reader-gesture .post-head .deck,
+.app-shell.lore-editorial-v5 .reader-gesture .post-head .lore-deck {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: left;
+  margin: 4px 0 0;
+  max-width: 100%;
+  font-size: 12.5px;
+  line-height: 1.35;
+  color: #6e6963;
+}
+
+.app-shell.lore-editorial-v5 .reader-gesture .post-head.post-head--continued .deck,
+.app-shell.lore-editorial-v5 .reader-gesture .post-head.article-heading-continued .deck {
+  display: none;
+}
+
+/* 2. Flush-Left Natural-Aspect Image Container & Top-Right Zoom Anchor */
+.app-shell.lore-editorial-v5 .reader-gesture .article-media:not(.article-media-empty),
+.app-shell.lore-editorial-v5 .reader-gesture[data-editorial-layout="shared"] .article-media:not(.article-media-empty) {
+  --saga-photo-max-h: clamp(120px, 26dvh, 235px);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: flex-start;
+  width: 100%;
+  max-width: var(--saga-shell-w, 430px);
+  margin: 2px 0 8px;
+}
+
+@media (max-height: 740px) {
+  .app-shell.lore-editorial-v5 .reader-gesture .article-media:not(.article-media-empty),
+  .app-shell.lore-editorial-v5 .reader-gesture[data-editorial-layout="shared"] .article-media:not(.article-media-empty) {
+    --saga-photo-max-h: clamp(112px, 22dvh, 185px);
+  }
+}
+
+@media (max-height: 670px) {
+  .app-shell.lore-editorial-v5 .reader-gesture .article-media:not(.article-media-empty),
+  .app-shell.lore-editorial-v5 .reader-gesture[data-editorial-layout="shared"] .article-media:not(.article-media-empty) {
+    --saga-photo-max-h: clamp(105px, 20dvh, 160px);
+  }
+}
+
+@media (min-width: 520px) {
+  .app-shell.lore-editorial-v5 .reader-gesture .article-media:not(.article-media-empty),
+  .app-shell.lore-editorial-v5 .reader-gesture[data-editorial-layout="shared"] .article-media:not(.article-media-empty) {
+    --saga-photo-max-h: clamp(120px, 25dvh, 235px);
+  }
+}
+
+.app-shell.lore-editorial-v5 .reader-gesture .page-surface.page-density-compact .article-media:not(.article-media-empty) {
+  --saga-photo-max-h: clamp(105px, 20dvh, 180px);
+}
+
+.app-shell.lore-editorial-v5 .reader-gesture .article-media .photo-figure.lore-photo-figure,
+.app-shell.lore-editorial-v5 .reader-gesture .article-media .photo-figure.lore-photo-figure.hero-media,
+.app-shell.lore-editorial-v5 .reader-gesture[data-editorial-layout="shared"] .article-media .photo-figure.lore-photo-figure,
+.app-shell.lore-editorial-v5 .reader-gesture[data-editorial-layout="shared"] .article-media .photo-figure.lore-photo-figure.hero-media {
+  position: relative;
+  display: inline-flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: flex-start;
+  width: fit-content;
+  height: auto;
+  max-width: 100%;
+  max-height: var(--saga-fit-photo-max-h, var(--saga-photo-max-h));
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  box-shadow:
+    0 0 0 1px hsl(var(--saga-photo-shadow-color, 42deg 18% 18%) / 0.08),
+    0 2px 10px -1px hsl(var(--saga-photo-shadow-color, 42deg 18% 18%) / 0.09);
+}
+
+/* Preserve editorial-meter.mjs empty <figure> probe height without affecting live images */
+.app-shell.lore-editorial-v5 .reader-gesture[data-editorial-layout="shared"].layout-measure-fixture .article-media .photo-figure.lore-photo-figure.hero-media:empty {
+  width: 100%;
+  height: var(--saga-fit-photo-max-h, var(--saga-photo-max-h));
+  box-shadow: none;
+}
+
+.app-shell.lore-editorial-v5 .reader-gesture .article-media .lore-photo-figure img,
+.app-shell.lore-editorial-v5 .reader-gesture .article-media .lore-photo-figure img.hero-photo,
+.app-shell.lore-editorial-v5 .reader-gesture[data-editorial-layout="shared"] .article-media .lore-photo-figure img.hero-photo {
+  display: block;
+  align-self: flex-start;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: var(--saga-fit-photo-max-h, var(--saga-photo-max-h));
+  object-fit: contain;
+  object-position: left top;
+  margin: 0;
+}
+
+/* 3. Flush-Left, Italic, Compact Single-Line Caption */
+.app-shell.lore-editorial-v5 .reader-gesture .article-media .lore-photo-caption,
+.app-shell.lore-editorial-v5 .reader-gesture[data-editorial-layout="shared"] .article-media .lore-photo-caption {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  width: 100%;
+  max-width: 100%;
+  min-height: 0;
+  margin: 5px 0 0;
+  text-align: left;
+  font-style: italic;
+  font-weight: 400;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #6e6963;
+  font-size: clamp(11.5px, 2.9vw, 12.5px);
+  line-height: 1.32;
+}
+
+/* 4. Flush-Left Body Text with Page-Scoped Bounded Micro-Fit Variables */
+.app-shell.lore-editorial-v5 .reader-gesture .page-surface {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.app-shell.lore-editorial-v5 .reader-gesture .page-surface .reading-card,
+.app-shell.lore-editorial-v5 .reader-gesture[data-editorial-layout="shared"] .page-surface .reading-card,
+.app-shell.lore-editorial-v5 .reader-gesture .page-surface.saga-page--text-only .reading-card.reading-card-no-photo {
+  flex: 0 0 auto;
+  overflow: visible;
+  padding: 4px 0 8px;
+  text-align: left;
+}
+
+.app-shell.lore-editorial-v5 .reader-gesture .reading-card .article-text,
+.app-shell.lore-editorial-v5 .reader-gesture .reading-card.reading-card-with-photo .article-text,
+.app-shell.lore-editorial-v5 .reader-gesture .reading-card.reading-card-no-photo .article-text,
+.app-shell.lore-editorial-v5 .reader-gesture[data-editorial-layout="shared"] .reading-card .article-text,
+.app-shell.lore-editorial-v5 .reader-gesture[data-editorial-layout="shared"] .reading-card.reading-card-with-photo .article-text,
+.app-shell.lore-editorial-v5 .reader-gesture[data-editorial-layout="shared"] .reading-card.reading-card-no-photo .article-text {
+  text-align: left;
+  font-size: var(--saga-fit-body-size, var(--saga-body-size));
+  line-height: var(--saga-fit-line-height, var(--saga-body-lh));
+  letter-spacing: -0.008em;
+  color: #282522;
+  margin: 0;
+}
+
+.app-shell.lore-editorial-v5 .reader-gesture .article-text > .article-paragraph {
+  margin: 0;
+  text-align: left;
+}
+
+.app-shell.lore-editorial-v5 .reader-gesture .article-text > .article-paragraph + .article-paragraph {
+  margin-top: 0.72em;
+}
+
+/* 5. Safety Scroll Fallback ONLY for Extreme Oversized Pages Past All Micro-Fit Floors */
+.app-shell.lore-editorial-v5 .reader-gesture:not(.layout-measure-fixture) .page-surface.saga-page--dense,
+.app-shell.lore-editorial-v5 .reader-gesture[data-editorial-layout="shared"]:not(.layout-measure-fixture) .page-surface.saga-page--dense {
+  overflow-y: auto;
+  overflow-x: hidden;
+  overscroll-behavior-y: contain;
+  scrollbar-width: thin;
+}
+

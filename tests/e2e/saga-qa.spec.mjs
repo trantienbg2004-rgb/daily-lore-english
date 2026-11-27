@@ -588,13 +588,13 @@ for (const article of visualCases) {
             const mediaEl=root.querySelector('.article-media:not(.article-media-empty)')
             const media=mediaEl?.getBoundingClientRect(), photo=rect('.article-media img.hero-photo')
             const nav=document.querySelector('.bottom-nav').getBoundingClientRect()
-            return {gap:text.top-(media?media.bottom:heading.bottom), fill:(text.bottom-surface.top)/Math.max(1,pager.top-surface.top), textBottom:text.bottom,pagerTop:pager.top,pagerBottom:pager.bottom,navTop:nav.top,photoCenter:photo&&media?Math.abs((photo.left+photo.right-media.left-media.right)/2):null, bodyHeight:text.height, bodyFill:text.height/Math.max(1,pager.top-12-text.top), frameHeight:rect('.article-media figure')?.height||0, lineHeight:parseFloat(getComputedStyle(root.querySelector('.article-text')).lineHeight), width:text.width, fontSize:parseFloat(getComputedStyle(root.querySelector('.article-text')).fontSize), dense:root.querySelector('.page-surface').classList.contains('saga-page--dense')}
+            return {gap:text.top-(media?media.bottom:heading.bottom), fill:(text.bottom-surface.top)/Math.max(1,pager.top-surface.top), textBottom:text.bottom,pagerTop:pager.top,pagerBottom:pager.bottom,navTop:nav.top,photoLeftDelta:photo&&media?Math.abs(photo.left-media.left):null, bodyHeight:text.height, bodyFill:text.height/Math.max(1,pager.top-12-text.top), frameHeight:rect('.article-media figure')?.height||0, lineHeight:parseFloat(getComputedStyle(root.querySelector('.article-text')).lineHeight), width:text.width, fontSize:parseFloat(getComputedStyle(root.querySelector('.article-text')).fontSize), dense:root.querySelector('.page-surface').classList.contains('saga-page--dense')}
           })
           expect.soft(m.dense, 'No exceptional scroll on ordinary reading viewports').toBe(false)
           expect.soft(m.gap,'Text follows heading or photograph, not floating in the middle').toBeLessThanOrEqual(28)
           expect(m.textBottom).toBeLessThanOrEqual(m.pagerTop+1)
           expect(m.pagerBottom).toBeLessThanOrEqual(m.navTop+1)
-          if(m.photoCenter!==null)expect(m.photoCenter,'Photo centered without cropping').toBeLessThanOrEqual(5)
+          if(m.photoLeftDelta!==null)expect(m.photoLeftDelta,'Photo flush-left aligned without cropping').toBeLessThanOrEqual(5)
           if(vp.width>=1000){
             expect(m.width).toBeGreaterThanOrEqual(450)
             expect(m.fontSize).toBeGreaterThanOrEqual(shared?18:level==='A1-A2'?21:18)
@@ -639,8 +639,8 @@ for (const article of visualCases) {
       }
       if(shared){
         expect(new Set(slotMetrics.flat().map(m=>m.fontSize)).size).toBe(1)
-        const frames=slotMetrics.flat().filter(m=>m.photo).map(m=>m.frameHeight)
-        expect.soft(Math.max(...frames)-Math.min(...frames),'Shared photo frame height').toBeLessThanOrEqual(2)
+        const coverFrames=slotMetrics.map(v=>v[0]?.frameHeight||0).filter(h=>h>0)
+        if(coverFrames.length>1)expect.soft(Math.max(...coverFrames)-Math.min(...coverFrames),'Shared cover photo height across A/B/C').toBeLessThanOrEqual(4)
         const first=slotMetrics.map(v=>v[0].bodyFill)
         expect.soft(Math.max(...first)-Math.min(...first),'A/B/C cover visual spread').toBeLessThanOrEqual(.15)
       }

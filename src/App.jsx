@@ -3,7 +3,7 @@ import { createPortal } from 'react-dom'
 import './App.css'
 import { initializeSeenHistory, persistReadMarker, readLegacyHistory } from './lib/seenHistory.js'
 import { storyId } from './lib/feedQueue.js'
-import { balancePhotoCoverPage, groupTokenClusters, mapSemanticPageIndex, planAnchoredWikiPages, planEditorialWikiPages, planReadingPages, rebalanceTextPages, splitParagraphs } from './lib/readerPagination.js'
+import { balancePhotoCoverPage, computeBoundedMicroFit, groupTokenClusters, mapSemanticPageIndex, planAnchoredWikiPages, planEditorialWikiPages, planReadingPages, rebalanceTextPages, splitParagraphs } from './lib/readerPagination.js'
 import { shortNewsPages } from './lib/shortNewsPages.js'
 import { sanitizeReadingArticle } from './lib/articleCleanup.js'
 import { refreshCatalog, refillCatalog, hasUnfetchedShards, REFRESH_INTERVAL_MS } from './lib/continuousReader.js'
@@ -412,8 +412,18 @@ function layoutPages(item, reader, badImages = new Set()) {
       ? !cleanSources.some(p => p.image)
       : !cleanSources[0]?.image
     const measureMemo = new Map()
-    const measure = ({text, cover:isCover, image, density = ''}) => {
-      const memoKey = `${isCover ? 1 : 0}|${image?.image || ''}|${density}|${text}`
+    const applySurfaceMicroFit = (el, microFit) => {
+      if (!el) return
+      if (microFit?.bodyPx) el.style.setProperty('--saga-fit-body-size', `${microFit.bodyPx}px`)
+      else el.style.removeProperty('--saga-fit-body-size')
+      if (microFit?.lineHeight) el.style.setProperty('--saga-fit-line-height', String(microFit.lineHeight))
+      else el.style.removeProperty('--saga-fit-line-height')
+      if (microFit?.photoMaxPx) el.style.setProperty('--saga-fit-photo-max-h', `${microFit.photoMaxPx}px`)
+      else el.style.removeProperty('--saga-fit-photo-max-h')
+    }
+    const measure = ({text, cover:isCover, image, density = '', microFit = null}) => {
+      const fitKey = microFit ? `${microFit.bodyPx || ''}/${microFit.lineHeight || ''}/${microFit.photoMaxPx || ''}` : ''
+      const memoKey = `${isCover ? 1 : 0}|${image?.image || ''}|${density}|${fitKey}|${text}`
       const cached = measureMemo.get(memoKey)
       if (cached) return cached
 
@@ -429,30 +439,28 @@ function layoutPages(item, reader, badImages = new Set()) {
       surface?.classList.remove('page-density-dense', 'page-density-dense-tight', 'saga-page--dense')
       surface?.classList.toggle('page-density-compact', density === 'compact')
       surface?.classList.toggle('saga-page--text-only', !image)
+      applySurfaceMicroFit(surface, microFit)
       media.style.display = image ? 'flex' : 'none'
       measuredCaption.textContent = image ? photoLabel(image) : ''
       measuredCaption.style.display = measuredCaption.textContent && measuredCaption.textContent !== 'Article photograph' ? '' : 'none'
       if (image) {
         const asset = photoResult(image.image)
+        figure.style.width = ''
+        figure.style.height = ''
         const figMaxStr = getComputedStyle(figure).maxHeight || ''
         const computedMax = figMaxStr.endsWith('px') ? parseFloat(figMaxStr) : NaN
         const maxHeight = Number.isFinite(computedMax) && computedMax > 0
           ? computedMax
-          : Math.min(195, Math.max(138, window.innerHeight * 0.21))
+          : Math.min(235, Math.max(120, window.innerHeight * 0.24))
         const ratio = asset?.width && asset?.height ? asset.width / asset.height : 4 / 3
         const measuredHeight = Math.min(maxHeight, media.clientWidth / ratio)
         const measuredWidth = Math.min(media.clientWidth, measuredHeight * ratio)
-        if (fixture.dataset.editorialLayout === 'shared') {
-          figure.style.width = ''
-          figure.style.height = ''
-        } else {
-          figure.style.width = `${Math.round(measuredWidth)}px`
-          figure.style.height = `${Math.round(measuredHeight)}px`
-        }
+        figure.style.width = `${Math.round(measuredWidth)}px`
+        figure.style.height = `${Math.round(measuredHeight)}px`
         photo.width = asset?.width || 1600
         photo.height = asset?.height || 900
-        photo.style.width = fixture.dataset.editorialLayout === 'shared' ? '' : `${Math.round(measuredWidth)}px`
-        photo.style.height = fixture.dataset.editorialLayout === 'shared' ? '' : `${Math.round(measuredHeight)}px`
+        photo.style.width = `${Math.round(measuredWidth)}px`
+        photo.style.height = `${Math.round(measuredHeight)}px`
       } else {
         figure.style.width = ''
         figure.style.height = ''
@@ -509,9 +517,11 @@ function layoutPages(item, reader, badImages = new Set()) {
       // and image. The denominator is independent of how much text was assigned.
       const unusedVerticalPx = bottomWhitespacePx
       const overflowPx = Math.max(0, contentBottom - safeBottom)
+      const surfaceFits = !surface || surface.scrollHeight <= surface.clientHeight + 1
       // The flex pager ends exactly at the reader's bottom; allow subpixel
       // rounding while keeping the entire paragraph block above the pager.
       const fitsPage = textBounds.height > 0 && textBounds.bottom <= safeBottom
+        && surfaceFits
         && (fixture.dataset.editorialLayout !== 'shared' || cardBounds.bottom <= pagerBounds.top)
         && (!image || mediaBounds.bottom <= safeBottom)
         && pagerBounds.bottom <= viewportBottom + 1
@@ -529,12 +539,55 @@ function layoutPages(item, reader, badImages = new Set()) {
     }
     const fits = candidate => measure(candidate).fits
     fits.measure = measure
+    const fitPage = candidate => {
+      const baseline = measure({...candidate, microFit: null})
+      if (baseline.fits) return {fits: true, microFit: null, dense: false}
+      const bodyStyle = getComputedStyle(paragraph)
+      const baseBodyPx = parseFloat(bodyStyle.fontSize) || 16
+      const computedLhPx = parseFloat(bodyStyle.lineHeight)
+      const baseLineHeight = Number.isFinite(computedLhPx) && baseBodyPx > 0
+        ? computedLhPx / baseBodyPx
+        : 1.5
+      let basePhotoMaxPx = 0
+      if (candidate.image) {
+        const figMaxStr = getComputedStyle(figure).maxHeight || ''
+        const parsedMax = figMaxStr.endsWith('px') ? parseFloat(figMaxStr) : NaN
+        basePhotoMaxPx = Number.isFinite(parsedMax) && parsedMax > 0
+          ? parsedMax
+          : Math.min(235, Math.max(120, window.innerHeight * 0.24))
+      }
+      const result = computeBoundedMicroFit({
+        baseBodyPx,
+        baseLineHeight,
+        basePhotoMaxPx,
+        viewportHeight: window.innerHeight || bounds.height,
+        hasPhoto: Boolean(candidate.image),
+        alreadyOverflowing: true,
+        testFit: nextFit => measure({...candidate, microFit: nextFit}).fits,
+      })
+      applySurfaceMicroFit(surface, null)
+      return result
+    }
+    const applyBoundedMicroFit = pages => pages.map((pageObj, i) => {
+      const baseDensity = pageObj.density === 'compact' ? 'compact' : ''
+      const probe = {text: pageObj.text, cover: i === 0, image: pageObj.image ? pageObj : null, density: baseDensity}
+      if (measure(probe).fits) {
+        const {microFit: _dropFit, ...rest} = pageObj
+        return baseDensity ? {...rest, density: baseDensity} : {...rest, density: ''}
+      }
+      const fitted = fitPage(probe)
+      if (fitted.fits && fitted.microFit) {
+        return {...pageObj, density: baseDensity, microFit: fitted.microFit}
+      }
+      const {microFit: _dropFit, ...rest} = pageObj
+      return {...rest, density: 'dense saga-page--dense'}
+    })
     // Failed/corrupt thumbnails may not reserve visual space. Reflow their
     // article text immediately, without altering the original source pages.
     // Versioned editorial cards retain the published A/B/C page and photo map.
     // Older articles continue using their previous lossless layout until rewritten.
     if (item?.contentType === 'wiki' && item?.readerLayoutVersion === 3) {
-      const editorial = planEditorialWikiPages({...item,_sourcePages:cleanSources}, fits)
+      const editorial = planEditorialWikiPages({...item,_sourcePages:cleanSources}, fits, {fitPage})
       if (editorial) return editorial
     }
     const plan = () => item?.contentType === 'news'
@@ -571,7 +624,7 @@ function layoutPages(item, reader, badImages = new Set()) {
         }
       }
     }
-    return rebalanceTextPages(next, fits).map(p=>({...p,readingScale}))
+    return applyBoundedMicroFit(rebalanceTextPages(next, fits)).map(p=>({...p,readingScale}))
   } catch (error) {
     console.warn('Screen pagination deferred:', error?.message || error)
     return item.pages
@@ -938,7 +991,7 @@ function App() {
   }
 
   const pagesSignature = pages =>
-    (Array.isArray(pages) ? pages : []).map(p => `${p.image}|${p.density || ''}|${p.readingScale || ''}|${p.text}`).join('\u0000')
+    (Array.isArray(pages) ? pages : []).map(p => `${p.image}|${p.density || ''}|${p.readingScale || ''}|${p.microFit ? `${p.microFit.bodyPx || ''}/${p.microFit.lineHeight || ''}/${p.microFit.photoMaxPx || ''}` : ''}|${p.text}`).join('\u0000')
 
   const changeReadingLevel = level => {
     if (!isNewsLevel(level) || level === readingLevel) return
@@ -2120,7 +2173,11 @@ function App() {
           {interactive && <button type="button" className={'icon-button saga-toolbar-audio' + (articlePlaying ? ' is-speaking' : '')} onClick={toggleArticleAudio} aria-pressed={articlePlaying} aria-label={articlePlaying ? 'Stop reading aloud' : 'Read aloud'} title={articlePlaying ? 'Stop reading aloud' : 'Read aloud'}><span className="audio-label" aria-hidden="true">{articlePlaying ? 'STOP' : 'LISTEN'}</span><Icon name="volume" size={18}/></button>}
         </div>
       </header>
-      <div key={`${index}:${pageNumber}`} className={'page-surface ' + (!closing && !pageHasPhoto ? 'saga-page--text-only ' : '') + (itemPage?.density ? `page-density-${itemPage.density} ` : '') + (interactive && pageMotion ? (pageMotion > 0 ? 'page-enter-left' : 'page-enter-right') : '')}>
+      <div key={`${index}:${pageNumber}`} style={itemPage?.microFit ? {
+        ...(itemPage.microFit.bodyPx ? {'--saga-fit-body-size': `${itemPage.microFit.bodyPx}px`} : {}),
+        ...(itemPage.microFit.lineHeight ? {'--saga-fit-line-height': String(itemPage.microFit.lineHeight)} : {}),
+        ...(itemPage.microFit.photoMaxPx ? {'--saga-fit-photo-max-h': `${itemPage.microFit.photoMaxPx}px`} : {}),
+      } : undefined} className={'page-surface ' + (!closing && !pageHasPhoto ? 'saga-page--text-only ' : '') + (itemPage?.density ? `page-density-${itemPage.density} ` : '') + (interactive && pageMotion ? (pageMotion > 0 ? 'page-enter-left' : 'page-enter-right') : '')}>
       {closing ? <section className="story-end" aria-label="Article completed">
         <div className="story-end-center"><Icon name="book" size={56}/><h2>That's the short version.</h2>
           {safeStoryUrl(item.sourceUrl) && <a className="story-end-cta" href={safeStoryUrl(item.sourceUrl)} target="_blank" rel="noopener noreferrer" onClick={handleReadFullArticleClick}>Read the full article</a>}

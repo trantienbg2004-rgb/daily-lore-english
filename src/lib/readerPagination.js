@@ -1261,11 +1261,104 @@ export function mapSemanticPageIndex(fromPages, fromPageIndex, toPages) {
 }
 
 
+export const MICRO_FIT_FLOORS = Object.freeze({
+  minBodyPx: 15,
+  bodyStepPx: 0.5,
+  minLineHeight: 1.42,
+  lineHeightStep: 0.02,
+  minPhotoDvh: 0.18,
+  minPhotoPx: 105,
+  photoStepPx: 10,
+})
+
+const roundFit = (value, decimals = 2) => {
+  const factor = 10 ** decimals
+  return Math.round(value * factor) / factor
+}
+
+/**
+ * Pure bounded micro-fit solver for a single reading page.
+ * Gently steps down page-scoped CSS variables only when content overflows:
+ *   1. Body font-size in 0.5px steps down to floor 15px
+ *   2. Line-height in 0.02 steps down to floor 1.42
+ *   3. Photo max-height in 10px steps down to floor max(105px, 18dvh)
+ * Stops immediately as soon as testFit returns true.
+ * Falls back to dense scrolling ONLY when overflowing after all floors are hit.
+ */
+export function computeBoundedMicroFit({
+  baseBodyPx = 16.5,
+  baseLineHeight = 1.5,
+  basePhotoMaxPx = 0,
+  viewportHeight = 740,
+  hasPhoto = false,
+  alreadyOverflowing = false,
+  testFit,
+} = {}) {
+  if (typeof testFit !== 'function') {
+    return {fits: false, microFit: null, dense: true}
+  }
+  const startBody = Number.isFinite(baseBodyPx) && baseBodyPx > 0 ? roundFit(baseBodyPx, 2) : 16
+  const startLH = Number.isFinite(baseLineHeight) && baseLineHeight > 0 ? roundFit(baseLineHeight, 3) : 1.5
+  const startPhoto = hasPhoto && Number.isFinite(basePhotoMaxPx) && basePhotoMaxPx > 0
+    ? Math.round(basePhotoMaxPx)
+    : 0
+
+  if (!alreadyOverflowing && testFit(null)) {
+    return {fits: true, microFit: null, dense: false}
+  }
+
+  const minBody = Math.min(startBody, MICRO_FIT_FLOORS.minBodyPx)
+  const minLH = Math.min(startLH, MICRO_FIT_FLOORS.minLineHeight)
+  const photoFloor = hasPhoto && startPhoto > 0
+    ? Math.min(startPhoto, Math.max(MICRO_FIT_FLOORS.minPhotoPx, Math.round((Number(viewportHeight) || 740) * MICRO_FIT_FLOORS.minPhotoDvh)))
+    : 0
+
+  let bodyPx = startBody
+  let lineHeight = startLH
+  let photoMaxPx = startPhoto
+
+  const buildSpec = () => {
+    const spec = {}
+    if (bodyPx < startBody - 0.001) spec.bodyPx = roundFit(bodyPx, 2)
+    if (lineHeight < startLH - 0.001) spec.lineHeight = roundFit(lineHeight, 2)
+    if (hasPhoto && photoMaxPx > 0 && photoMaxPx < startPhoto) spec.photoMaxPx = Math.round(photoMaxPx)
+    return Object.keys(spec).length ? spec : null
+  }
+
+  // Step 1: gently step body font-size down toward 15px in 0.5px increments
+  while (bodyPx - 0.001 > minBody) {
+    bodyPx = Math.max(minBody, roundFit(bodyPx - MICRO_FIT_FLOORS.bodyStepPx, 2))
+    const spec = buildSpec()
+    if (testFit(spec)) return {fits: true, microFit: spec, dense: false}
+  }
+
+  // Step 2: gently step line-height down toward 1.42 in 0.02 increments
+  while (lineHeight - 0.001 > minLH) {
+    lineHeight = Math.max(minLH, roundFit(lineHeight - MICRO_FIT_FLOORS.lineHeightStep, 2))
+    const spec = buildSpec()
+    if (testFit(spec)) return {fits: true, microFit: spec, dense: false}
+  }
+
+  // Step 3: gently step photo max-height down toward max(105px, 18dvh)
+  if (hasPhoto && photoMaxPx > photoFloor) {
+    while (photoMaxPx > photoFloor) {
+      photoMaxPx = Math.max(photoFloor, photoMaxPx - MICRO_FIT_FLOORS.photoStepPx)
+      const spec = buildSpec()
+      if (testFit(spec)) return {fits: true, microFit: spec, dense: false}
+    }
+  }
+
+  // Extreme legacy oversized page still overflows after hitting all floors:
+  // allow safe internal scrolling instead of clipping text invisibly.
+  return {fits: false, microFit: null, dense: true}
+}
+
+
 // The publisher already defines a common visual map (4–6 editorial slots)
 // across A/B/C. Reflowing those slots separately destroys that alignment.
-// Preserve each slot exactly. Overflow is a readable, local scroll fallback,
-// not a reason to add a page or hide content.
-export function planEditorialWikiPages(item, fits) {
+// Preserve each slot exactly. Bounded micro-fit resolves tight viewports first;
+// overflow beyond all floors falls back to readable local scroll.
+export function planEditorialWikiPages(item, fits, {fitPage = null} = {}) {
   const levels = ['A1-A2','B1-B2','C1-C2']
   const variants = levels.map(l => item?.levelVariants?.[l]?.pages)
   const originals = item?._sourcePages || item?.pages || []
@@ -1275,7 +1368,18 @@ export function planEditorialWikiPages(item, fits) {
   if (variants.some(p => (p[0]?.image || '') !== (variants[0][0]?.image || ''))) return null
   return originals.map((page,i) => {
     const m = {text: page.text, cover: i===0, image: page.image ? page : null, density: ''}
-    const result = {...page, density: fits(m) ? '' : 'dense saga-page--dense',
+    let density = ''
+    let microFit = null
+    if (!fits(m)) {
+      const fitted = typeof fitPage === 'function' ? fitPage(m) : null
+      if (fitted?.fits && fitted.microFit) {
+        microFit = fitted.microFit
+      } else {
+        density = 'dense saga-page--dense'
+      }
+    }
+    const result = {...page, density,
+      ...(microFit ? {microFit} : {}),
       sourceSectionIndices:[], sourceSectionCount:n,
       semanticRange:{start:i/n,end:(i+1)/n,mid:(i+.5)/n}}
     Object.defineProperty(result,'_fixedCard',{value:true,enumerable:false})
