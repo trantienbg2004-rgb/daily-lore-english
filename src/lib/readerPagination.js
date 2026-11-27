@@ -984,8 +984,10 @@ export function planParagraphAwareWikiPages(item, fits, {
     let cost = ((evalRes.usedRatio - idealFill) ** 2) * 115
     if (evalRes.density === 'compact') cost += 12
     if (adaptiveComfort) {
-      const comfortableWords = hasPhoto ? 38 : 58
-      if (words > comfortableWords) cost += (words - comfortableWords) ** 2 * 0.6
+      // Fit is measured in pixels; a fixed word cap makes taller/wider pages sparse.
+      // Penalize exceptionally long reading beats only, not ordinary paragraphs.
+      const comfortableWords = hasPhoto ? 85 : 110
+      if (words > comfortableWords) cost += (words - comfortableWords) ** 2 * 0.12
     }
     // Discourage excessive unused whitespace without forcing wall-to-wall packing
     if (evalRes.unusedRatio > 0.52) {
@@ -1014,7 +1016,7 @@ export function planParagraphAwareWikiPages(item, fits, {
   }
 
   const pageCountPenalty = k => {
-    if (adaptiveComfort) return k * 5 // density and actual fit, not a fixed five-page target
+    if (adaptiveComfort) return k * 24 // avoid splitting a well-fitting reading beat into sparse pages
     if (k === preferredPages) return 0
     if (k === minPreferredPages) return 16
     if (k === maxPreferredPages) return 14
@@ -1072,7 +1074,7 @@ export function planParagraphAwareWikiPages(item, fits, {
         const guardAnchor = mode.anchor ? followingAnchor : nextAnchor
         if (guardAnchor) {
           // Leave at least the guardAnchor's section paragraphs available for its page
-          maxTo = Math.min(maxTo, Math.max(from + 1, guardAnchor.startPara > from ? guardAnchor.startPara : guardAnchor.endPara))
+          maxTo = Math.min(maxTo, Math.max(from + 1, guardAnchor.startPara > from && !adaptiveComfort ? guardAnchor.startPara : guardAnchor.endPara))
         }
         // Also ensure enough paragraphs remain for all remaining future anchors
         const futureAnchorsAfter = R - mode.nextA
@@ -1103,8 +1105,8 @@ export function planParagraphAwareWikiPages(item, fits, {
           let bridgePenalty = 0
           if (mode.anchor && from < mode.anchor.startPara) {
             const bridgeParas = mode.anchor.startPara - from
-            if (bridgeParas > 1) continue
-            bridgePenalty = 14
+            if (bridgeParas > 1 && !adaptiveComfort) continue
+            bridgePenalty = adaptiveComfort ? Math.min(12, bridgeParas * 3) : 14
           }
 
           const scored = scorePage(from, to, isCover, mode.imageObj, evalRes)
