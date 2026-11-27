@@ -14,8 +14,8 @@ export const COMPACT_MICRO_FIT_FLOOR=Object.freeze({
 })
 export const EDITORIAL_DENSITY_POLICY=Object.freeze({
  targetFill:0.72,
- calibrationMinFill:0.45,
- acceptanceMinFill:0.45,
+ calibrationMinFill:0.35,
+ acceptanceMinFill:0.35,
  calibrationMaxFill:0.90,
  acceptanceMaxFill:0.94,
  imbalanceSpread:0.32,
@@ -177,7 +177,7 @@ export function auditEditorialMetrics(rows,metrics){
    const compactUpper=Math.floor(Math.min(...observed.map(m=>chars*0.98/Math.max(.01,m.fill))))
    const upper=Math.min(primaryUpper,compactUpper)
    const target=Math.max(1,Math.round((lower+Math.max(lower,upper))/2))
-   const paraHint=pageType==='text-only'?'2–3 natural paragraphs':'1–2 natural paragraphs'
+   const paraHint=pageType==='text-only'?'1–3 natural paragraphs':'1–2 natural paragraphs'
    const reasons=[]
    if(hasOverflow)reasons.push('overflow')
    if(aboveCeiling)reasons.push('utilization too high')

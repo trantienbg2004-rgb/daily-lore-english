@@ -10,6 +10,7 @@ import {
  FULL_GENERATION_MAX_OUTPUT_TOKENS,
  MAX_TOKENS_RETRY_OUTPUT_TOKENS,
  REPAIR_MAX_OUTPUT_TOKENS,
+ REWRITE_MAX_REPAIR_ROUNDS,
  GeminiMalformedResponseError,
  buildCEFRReviewRepairPrompt,
  buildGeminiGenerationConfig,
@@ -233,9 +234,9 @@ test('rewrite-outdated preserves id/slug on success, leaves failed stories untou
    const titleMatch=[...sourcesByTitle.keys()].find(t=>prompt.includes(t))
    attemptedRun1.push(titleMatch)
    if(titleMatch==='Stone Bridge'&&failStoneBridge){
-    // Return structurally valid 4-page draft that fails Quality Gate (single paragraph on text-only page)
+    // Return structurally valid 4-page draft that fails Quality Gate (4 paragraphs on text-only page)
     const bad=makeLoreV1EditorialDraft(titleMatch,'Bad')
-    bad.variants['A1-A2'].pages[1].text='Single paragraph wall of text without a paragraph break on a text-only page.'
+    bad.variants['A1-A2'].pages[1].text='First paragraph.\n\nSecond paragraph.\n\nThird paragraph.\n\nFourth paragraph exceeds the 1-3 paragraph cap.'
     return {draft:bad,usage:null}
    }
    return {draft:makeLoreV1EditorialDraft(titleMatch,'Rewritten'),usage:null}
@@ -266,6 +267,8 @@ test('rewrite-outdated preserves id/slug on success, leaves failed stories untou
   assert.equal(run1.remainingOutdatedCount,1)
   assert.equal(run1.hasValidChanges,true)
   assert.equal(run1.stopReason,'completed')
+  assert.equal(REWRITE_MAX_REPAIR_ROUNDS,2)
+  assert.equal(attemptedRun1.filter(t=>t==='Stone Bridge').length,1+REWRITE_MAX_REPAIR_ROUNDS,'Stubborn failing story must stop after 2 repair rounds (1 initial + 2 repairs)')
   assert.ok(!attemptedRun1.includes('Modern Observatory'),'Already lore-v1 story must be skipped')
 
   const afterRun1=await readWikiCatalog(tmpDir)
@@ -434,12 +437,12 @@ test('Gemini generationConfig raises maxOutputTokens, caps thinkingBudget on Gem
 
 test('classifyQualityErrorBucket categorizes all Step 2 rules explicitly (never other) and repair prompts align with Step 2 rules',()=>{
  const cases=[
-  ['A1-A2 page 2 (text-only): requires 2-3 paragraphs (got 1)','paragraph_count'],
-  ['A1-A2 page 3 (text-only): too few rendered lines (390x844 5L); requires at least 6 rendered lines.','rendered_lines'],
+  ['A1-A2 page 2 (text-only): requires 1-3 paragraphs (got 4)','paragraph_count'],
+  ['A1-A2 page 3 (text-only): too few rendered lines (390x844 4L); requires at least 5 rendered lines.','rendered_lines'],
   ['A1-A2 page 1 (cover): overflow — current 350 chars / 60 words; measured 375x667 104% (312/300 px, overflow 12px, 5L); rewrite to approximately 275 chars','overflow'],
-  ['A1-A2 page 2 (photo): utilization too high — current 340 chars / 58 words; measured 390x844 94% (282/300 px, 5L); rewrite to approximately 275 chars','utilization_high'],
-  ['B1-B2 page 4 (text-only): utilization too low — current 310 chars / 50 words; measured 390x844 54% (162/300 px, 6L); rewrite to approximately 460 chars','utilization_low'],
-  ['B1-B2 page 4 (text-only): same-type visual imbalance at 390x844, body fill 61%; target 74%.','imbalance'],
+  ['A1-A2 page 2 (photo): utilization too high — current 340 chars / 58 words; measured 390x844 96% (288/300 px, 5L); rewrite to approximately 275 chars','utilization_high'],
+  ['B1-B2 page 4 (text-only): utilization too low — current 210 chars / 34 words; measured 390x844 31% (93/300 px, 5L); rewrite to approximately 460 chars','utilization_low'],
+  ['B1-B2 page 4 (text-only): same-type visual imbalance at 390x844, body fill 61%; target 72%.','imbalance'],
   ['A1-A2: page count must be between 4 and 8 (got 9)','page_count'],
   ['A1-A2 page 1 (photo): editorial card body 150 characters; requires 220-340 characters of source-grounded prose','editorial_card_bounds'],
   ['CEFR descriptor review: A1-A2: final descriptor assessment is not a confident pass across all six dimensions','cefr_descriptor_review']
@@ -455,18 +458,84 @@ test('classifyQualityErrorBucket categorizes all Step 2 rules explicitly (never 
  const quality={
   ok:false,
   errors:[
-   'A1-A2 page 2 (text-only): requires 2-3 paragraphs (got 1)',
-   'A1-A2 page 3 (text-only): too few rendered lines (390x844 5L); requires at least 6 rendered lines.'
+   'A1-A2 page 2 (text-only): requires 1-3 paragraphs (got 4)',
+   'A1-A2 page 3 (text-only): too few rendered lines (390x844 4L); requires at least 5 rendered lines.'
   ]
  }
  const targeted=buildTargetedRepairPrompt(source,'History & Geography',trimmed.evidence,draft,quality,[],null,{editorialRhythm:true})
- assert.match(targeted,/"requiredParagraphs":"2-3"/)
- assert.match(targeted,/"minRenderedLines":6/)
- assert.match(targeted,/split single-paragraph text-only pages/)
+ assert.match(targeted,/"requiredParagraphs":"1-3"/)
+ assert.match(targeted,/"minRenderedLines":5/)
+ assert.match(targeted,/merge excess paragraphs/)
  assert.doesNotMatch(targeted,/Preserve each level's page count, image placement, planned focus, paragraph boundaries/)
 
  const cefrReview=buildCEFRReviewRepairPrompt(source,'History & Geography',trimmed.evidence,draft,quality,{editorialRhythm:true})
- assert.match(cefrReview,/split single-paragraph text-only pages/)
- assert.match(cefrReview,/at least 6 rendered lines/)
+ assert.match(cefrReview,/1–3 natural paragraphs/)
+ assert.match(cefrReview,/at least 5 rendered lines/)
+ assert.match(cefrReview,/35%–94%/)
+})
+
+test('rewrite-outdated repair cap allows success on round 2 and skips stubborn stories cleanly after 2 repairs',async()=>{
+ const tmpDir=await fs.mkdtemp(path.join(os.tmpdir(),'saga-rewrite-repair-cap-'))
+ try{
+  const seedStories=[
+   makeSeedStory({title:'Stone Bridge',pageId:201,topic:'History & Geography',slug:'stone-bridge-cap'}),
+   makeSeedStory({title:'Ancient Harbor',pageId:202,topic:'Environment',slug:'ancient-harbor-cap'})
+  ]
+  await appendWikiStories(tmpDir,seedStories,{now:new Date('2026-10-01T00:00:00.000Z')})
+
+  const beforeCatalog=await readWikiCatalog(tmpDir)
+  const originalBridge=structuredClone(beforeCatalog.stories.find(s=>s.sourcePageId===201))
+  const sourcesByTitle=new Map([
+   ['Stone Bridge',makeMockSource('Stone Bridge',201)],
+   ['Ancient Harbor',makeMockSource('Ancient Harbor',202)]
+  ])
+  const fakeMeter={
+   budgets:Object.fromEntries(['A1-A2','B1-B2','C1-C2'].map(l=>[l,{
+    cover:{target:280,targetWords:45,min:220,max:340},
+    photo:{target:280,targetWords:45,min:220,max:340},
+    text:{target:490,targetWords:78,min:420,max:560}
+   }])),
+   async audit(){return []}
+  }
+
+  const callsPerTitle={ 'Stone Bridge':0, 'Ancient Harbor':0 }
+  const res=await runPublishWikiBatch({
+   root:tmpDir,
+   rewriteOutdated:true,
+   maxArticles:2,
+   editorialMeter:fakeMeter,
+   apiKey:'test-key',
+   delayMs:0,
+   fetchPageImpl:async title=>sourcesByTitle.get(title),
+   collectPhotosImpl:async source=>makeMockLeadMedia(source),
+   callGeminiImpl:async prompt=>{
+    const titleMatch=[...sourcesByTitle.keys()].find(t=>prompt.includes(t))
+    callsPerTitle[titleMatch]++
+    if(titleMatch==='Stone Bridge'){
+     // Always fails Quality Gate -> must stop at 1 initial + 2 repairs = 3 calls
+     const bad=makeLoreV1EditorialDraft(titleMatch,'AlwaysBad')
+     bad.variants['A1-A2'].pages[0].text='One.\n\nTwo.\n\nThree.'
+     return {draft:bad,usage:null}
+    }
+    if(titleMatch==='Ancient Harbor'&&callsPerTitle[titleMatch]<=2){
+     // Fails initial + repair round 1, then passes on repair round 2 (call #3)
+     const bad=makeLoreV1EditorialDraft(titleMatch,'NeedsTwoRepairs')
+     bad.variants['A1-A2'].pages[0].text='One.\n\nTwo.\n\nThree.'
+     return {draft:bad,usage:null}
+    }
+    return {draft:makeLoreV1EditorialDraft(titleMatch,'FixedOnRound2'),usage:null}
+   }
+  })
+
+  assert.equal(callsPerTitle['Stone Bridge'],3,'Stubborn story stops after 2 repair rounds')
+  assert.equal(callsPerTitle['Ancient Harbor'],3,'Recovering story succeeds on repair round 2')
+  assert.equal(res.rewrittenCount,1)
+  assert.equal(res.skippedQualityCount,1)
+  const afterCatalog=await readWikiCatalog(tmpDir)
+  assert.deepEqual(afterCatalog.stories.find(s=>s.sourcePageId===201),originalBridge)
+  assert.equal(afterCatalog.stories.find(s=>s.sourcePageId===202).editorialProfile,'lore-v1')
+ }finally{
+  await fs.rm(tmpDir,{recursive:true,force:true})
+ }
 })
 

@@ -50,7 +50,8 @@ export const CURRENT_EDITORIAL_PROFILE=EDITORIAL_PROFILE_LORE_V1
 // Layout budget, not a CEFR definition. Character length predicts rendered
 // line count more reliably than identical word counts across proficiency bands.
 export const EDITORIAL_CARD_CHAR_BOUNDS=Object.freeze({photo:[220,340],text:[420,560]})
-export const EDITORIAL_PARAGRAPH_BOUNDS=Object.freeze({photo:[1,2],text:[2,3]})
+export const EDITORIAL_PARAGRAPH_BOUNDS=Object.freeze({photo:[1,2],text:[1,3]})
+export const REWRITE_MAX_REPAIR_ROUNDS=2
 
 export function selectOutdatedWikiStories(stories,{includeOldV3=true,targetProfile=CURRENT_EDITORIAL_PROFILE}={}){
  if(!Array.isArray(stories))return []
@@ -63,11 +64,11 @@ export function selectOutdatedWikiStories(stories,{includeOldV3=true,targetProfi
 }
 const ADAPTIVE_MAP_GUIDANCE='Each version (A1-A2, B1-B2, and C1-C2) independently chooses 4–8 pages (typically 4–6, using 7–8 when genuinely useful for clear pacing or depth). Never fewer than 4 or more than 8. Use the same verified cover imageId in all three versions. Body images may appear at different page indexes, only if relevant to that page. Outline is a broad common topic sequence, not a page-index contract. Plan each actual page as photo or text-only before composing. Do not pad or force equal page counts.'
 const measuredGuidance=budgets=>budgets?[
- 'MANDATORY COPYFITTING. These are measured BODY lengths (not headline or caption). Write the full requested length on EACH page, not the entire article. For cover and photo pages write 1–2 natural paragraphs; for text-only pages write 2–3 natural paragraphs. Do not confuse the photo and text-only budgets. Use the following targets for natural prose:',
+ 'MANDATORY COPYFITTING. These are measured BODY lengths (not headline or caption). Write the full requested length on EACH page, not the entire article. For cover and photo pages write 1–2 natural paragraphs; for text-only pages write 1–3 natural paragraphs. Do not confuse the photo and text-only budgets. Use the following targets for natural prose:',
  ...LEVELS.map(l=>l+': '+['cover','photo','text'].map(t=>{const b=budgets[l][t];return t+' '+b.target+' characters (about '+(b.targetWords||Math.round(b.target/(l==='A1-A2'?5.1:l==='B1-B2'?6.4:7.3)))+' words), range '+b.min+'–'+b.max}).join('; ')),
- 'Select the page count (4–8) and photo IDs before composing. For example, a 5-page version with a cover photo on Page 1 and one body photo on Page 3 uses ONE cover target, ONE photo target, and THREE text-only targets. Add source-supported context and explanation, not repetitive filler. Use 1–2 natural paragraphs on cover/photo pages and 2–3 natural paragraphs on text-only pages, separated by a blank line. The final page must be as developed as other pages of its type. Treat visual measurements as mandatory constraints; they do not define CEFR.',
+ 'Select the page count (4–8) and photo IDs before composing. For example, a 5-page version with a cover photo on Page 1 and one body photo on Page 3 uses ONE cover target, ONE photo target, and THREE text-only targets. Add source-supported context and explanation, not repetitive filler. Use 1–2 natural paragraphs on cover/photo pages and 1–3 natural paragraphs on text-only pages, separated by a blank line. The final page must be as developed as other pages of its type. Treat visual measurements as mandatory constraints; they do not define CEFR.',
 ].join('\n'):' '
-const EDITORIAL_CARD_GUIDANCE='Use 220–340 characters of natural body prose on EACH cover/photo page (target ~280), and 420–560 characters on EACH text-only page (target ~490; spaces included, caption excluded), including the final page. Count the actual characters of each completed body before returning JSON; do not count the caption, headline or evidence IDs. Revise any page outside the stated range before submitting. Use 1–2 coherent paragraphs on cover/photo pages and 2–3 coherent paragraphs on text-only pages, separated by a blank line. Expand with source-supported explanation and concrete detail, not repetition or filler. These are visual budgets, NOT CEFR criteria.'
+const EDITORIAL_CARD_GUIDANCE='Use 220–340 characters of natural body prose on EACH cover/photo page (target ~280), and 420–560 characters on EACH text-only page (target ~490; spaces included, caption excluded), including the final page. Count the actual characters of each completed body before returning JSON; do not count the caption, headline or evidence IDs. Revise any page outside the stated range before submitting. Use 1–2 coherent paragraphs on cover/photo pages and 1–3 coherent paragraphs on text-only pages, separated by a blank line. Expand with source-supported explanation and concrete detail, not repetition or filler. These are visual budgets, NOT CEFR criteria.'
 export const HEADLINE_WORD_BOUNDS=Object.freeze({min:5,max:11})
 export const CAPTION_LIMITS=Object.freeze({minWords:3,maxWords:10,maxChars:65,targetMinWords:5,targetMaxWords:8,targetMaxChars:48})
 export const LEVEL_WORD_BOUNDS=Object.freeze({
@@ -1290,7 +1291,7 @@ export function buildCEFRReviewRepairPrompt(source,topic,evidence,previousDraft,
   ...(editorialRhythm?[
    'EDITORIAL PAGE RHYTHM (MANDATORY)',
    budgets?measuredGuidance(budgets):EDITORIAL_CARD_GUIDANCE,
-   'Repair every layout, paragraph-count, rendered-line, overflow, and visual-imbalance error without changing page count or image placement. Specifically: (1) use 1–2 natural paragraphs separated by "\\n\\n" on cover/photo pages and 2–3 natural paragraphs separated by "\\n\\n" on text-only pages — split single-paragraph text-only pages or merge excess paragraphs whenever a blocking issue flags paragraph count; (2) ensure at least 4 rendered lines on cover/photo pages and at least 6 rendered lines on text-only pages; (3) rewrite any page flagged for overflow, utilization too low/high, or same-type visual imbalance to the approximate character/word target stated in the blocking issue so primary viewports sit near ~74% fill (60%–92%) with 0px overflow on compact 375x667 screens. When changing any page for CEFR, preserve its character budget and paragraph bounds; do not shorten the final page into a leftover.'
+   'Repair every layout, paragraph-count, rendered-line, overflow, and visual-imbalance error without changing page count or image placement. Specifically: (1) use 1–2 natural paragraphs separated by "\\n\\n" on cover/photo pages and 1–3 natural paragraphs separated by "\\n\\n" on text-only pages — merge excess paragraphs whenever a blocking issue flags paragraph count; (2) ensure at least 3 rendered lines on cover/photo pages and at least 5 rendered lines on text-only pages; (3) rewrite any page flagged for overflow, utilization too low/high, or same-type visual imbalance to the approximate character/word target stated in the blocking issue so primary viewports sit near ~72% fill (35%–94%) with 0px overflow on compact 375x667 screens. When changing any page for CEFR, preserve its character budget and paragraph bounds; do not shorten the final page into a leftover.'
   ]:[]),
   'REQUIRED TWO-PASS REVIEW',
   'A. For each level, record initialBand, initialVerdict and initialDimensions inside assessment. The initial band must be A1/A2 for A1-A2, B1/B2 for B1-B2, and C1/C2 for C1-C2. Use verdict pass, revise or uncertain. Assess vocabulary, syntax, cohesion, abstraction, inference and specialist-term load. If ANY initial dimension is low or high, initialVerdict must be revise and the level must be repaired.',
@@ -1571,7 +1572,7 @@ ${passages}`
      return {
       pageIndex:idx,
       pageType:idx===0?'cover':isPhoto?'photo':'text-only',
-      ...(editorialRhythm?{requiredParagraphs:isPhoto?'1-2':'2-3',minRenderedLines:isPhoto?4:6}:{}),
+      ...(editorialRhythm?{requiredParagraphs:isPhoto?'1-2':'1-3',minRenderedLines:isPhoto?3:5}:{}),
       ...(editorialRhythm&&budgets?{bodyBudget:budgets[item.level][idx===0?'cover':isPhoto?'photo':'text']}:{advisoryWords:`~${wordRangeMidpoint([minW,maxW])} (flexible around ${minW}-${maxW})`}),
       imageId:pageImageToken(p),
       text:p.text,
@@ -1592,9 +1593,9 @@ TARGETED RULES:
 - Return pure JSON matching: {"repairs":{"A1-A2":{"headline?":"...","levelPlan?":{"selectedFactIds":["F1","F2"]},"pages":[{"pageIndex":0,"text":"...","caption?":"...","evidenceIds":["P1"]}]},"B1-B2":{...},"C1-C2":{...}}}
 - Include ONLY the levels, headlines, levelPlans, and pageIndexes listed in ITEMS TO REPAIR below.
 - For a levelPlan target, return 2-10 selectedFactIds chosen ONLY from that item's validFactIds. Preserve all sharedCoreFactIds, readerObjective and depthNotes. Never invent, rename, or guess a fact ID.
-- ${editorialRhythm?'Preserve each level\'s page count, image placement, planned focus, dates, numbers, uncertainty/safety conditions, and evidence IDs. Do not add or remove images. Format paragraphs with "\\n\\n" to satisfy every page\'s requiredParagraphs (1–2 paragraphs on cover/photo pages; 2–3 paragraphs on text-only pages — split single-paragraph text-only pages or merge excess paragraphs whenever a failed check flags paragraph count).':'Preserve the shared page/image map, each level\'s own planned focus, paragraph boundaries ("\\n\\n"), dates, numbers, uncertainty/safety conditions, and evidence IDs. Do not add or remove images.'}
+- ${editorialRhythm?'Preserve each level\'s page count, image placement, planned focus, dates, numbers, uncertainty/safety conditions, and evidence IDs. Do not add or remove images. Format paragraphs with "\\n\\n" to satisfy every page\'s requiredParagraphs (1–2 paragraphs on cover/photo pages; 1–3 paragraphs on text-only pages — merge excess paragraphs whenever a failed check flags paragraph count).':'Preserve the shared page/image map, each level\'s own planned focus, paragraph boundaries ("\\n\\n"), dates, numbers, uncertainty/safety conditions, and evidence IDs. Do not add or remove images.'}
 ${editorialRhythm?(budgets?measuredGuidance(budgets):EDITORIAL_CARD_GUIDANCE):`- Advisory photo section pacing: ${photoLine}\n- Advisory text-only section pacing: ${textLine}`}
-${editorialRhythm?'- Layout / line / overflow / imbalance fixes: for any failed check flagging overflow, utilization too low/high, too few rendered lines (<4 on cover/photo or <6 on text-only), or same-type visual imbalance, rewrite that page to match the approximate character/word target stated in the failed check while keeping 0px overflow on compact 375x667 screens and natural source-grounded prose.':''}
+${editorialRhythm?'- Layout / line / overflow / imbalance fixes: for any failed check flagging overflow, utilization too low/high, too few rendered lines (<3 on cover/photo or <5 on text-only), or same-type visual imbalance, rewrite that page to match the approximate character/word target stated in the failed check while keeping 0px overflow on compact 375x667 screens and natural source-grounded prose.':''}
 - Headlines: ${HEADLINE_WORD_BOUNDS.min}-${HEADLINE_WORD_BOUNDS.max} words, distinct across all 3 levels, never matching "${source.sourceTitle}".
 - Captions on photo pages: complete natural phrase (${CAPTION_LIMITS.targetMinWords}-${CAPTION_LIMITS.targetMaxWords} words, max ${CAPTION_LIMITS.maxChars} chars, never truncated mid-word).
 - If a failed check flags a dry encyclopedia opening, rewrite pageIndex 0 so its FIRST sentence does not begin with the source title/topic followed by “is/was a/an/the”. Use a natural reader-facing question, a concrete source-supported moment, or an action that draws the reader into the subject. Do not merely move the same dictionary definition to sentence two; preserve the assigned CEFR band and do not invent a scene or fact.
@@ -2641,6 +2642,7 @@ export async function runPublishWikiBatch({
  rewriteOutdated=false,
  includeOldV3=true,
  retrySkippedQuality=false,
+ maxRepairRounds=null,
  editorialRhythm=process.env.SAGA_EDITORIAL_LAYOUT==='3',
  editorialMeter=null,
  apiKey=process.env.GEMINI_API_KEY||'',
@@ -2661,6 +2663,9 @@ export async function runPublishWikiBatch({
 }={}){
  const effectiveRegenerateExisting=Boolean(regenerateExisting||rewriteOutdated)
  const effectiveEditorialRhythm=Boolean(editorialRhythm||rewriteOutdated)
+ const effectiveMaxRepairRounds=maxRepairRounds!==null&&maxRepairRounds!==undefined&&Number.isFinite(Number(maxRepairRounds))&&Number(maxRepairRounds)>=0
+  ?Math.floor(Number(maxRepairRounds))
+  :(rewriteOutdated?REWRITE_MAX_REPAIR_ROUNDS:null)
  if(effectiveEditorialRhythm&&!dryRun&&!editorialMeter)throw Error('Editorial layout requires a calibrated Chromium meter; refusing unmeasured publishing')
  const startedAtMs=nowFn()
  const deadlineMs=Number.isFinite(maxRuntimeMs)&&maxRuntimeMs>0?startedAtMs+maxRuntimeMs:Infinity
@@ -3000,6 +3005,8 @@ export async function runPublishWikiBatch({
    let normalizedDraft
    let quality
    let repairUsed=false
+   let repairRounds=0
+   const canRunRepairRound=()=>effectiveMaxRepairRounds===null||repairRounds<effectiveMaxRepairRounds
    const generationModelsUsed=new Set()
    let usedModel=dryRun?'dry-run':(keyState.preferredModel||modelChain[0])
    if(dryRun){
@@ -3017,8 +3024,8 @@ export async function runPublishWikiBatch({
     // Keep the existing structural rebuild only for page/image parity failures.
     // CEFR, language and editorial mismatches are handled by the mandatory descriptor reviewer below.
     quality=await auditEditorial(normalizedDraft,quality)
-    const initialRepairTargets=identifyRepairTargets(normalizedDraft,quality)
-    if(!quality.ok&&(initialRepairTargets.structuralParityFailed||callGeminiImpl!==callGeminiFlashLite)){
+    let initialRepairTargets=identifyRepairTargets(normalizedDraft,quality)
+    while(!quality.ok&&(initialRepairTargets.structuralParityFailed||callGeminiImpl!==callGeminiFlashLite)&&canRunRepairRound()){
      const repairOutcome=await runOneTargetedRepair({source,item,trimmed,verifiedPhotos,normalizedDraft,quality})
      if(repairOutcome.budgetHit){
       console.warn(`[batch]   -> Runtime budget reached before structural repair (${Math.max(0,Math.round(remainingBudget()/1000))}s left). Leaving "${item.title}" ${prevQueueStatus||'pending'} and stopping gracefully.`)
@@ -3026,11 +3033,15 @@ export async function runPublishWikiBatch({
       break
      }
      repairUsed=true
+     repairRounds++
      usedModel=repairOutcome.model||usedModel
      generationModelsUsed.add(usedModel)
      normalizedDraft=repairOutcome.normalizedDraft
      quality=repairOutcome.quality
+     initialRepairTargets=identifyRepairTargets(normalizedDraft,quality)
+     if(effectiveMaxRepairRounds===null||callGeminiImpl===callGeminiFlashLite)break
     }
+    if(budgetStopped)break
    }
 
    // Mandatory independent CEFR descriptor review for every live candidate.
@@ -3038,6 +3049,7 @@ export async function runPublishWikiBatch({
    if(!dryRun&&callGeminiImpl===callGeminiFlashLite){
     const structuralStillBroken=identifyRepairTargets(normalizedDraft,quality).structuralParityFailed
     if(!structuralStillBroken){
+     const qualityFailedBeforeReview=!quality.ok
      const requiredRepairLevels=new Set()
      for(const issue of quality.errors||[]){
       const match=String(issue).match(/^(A1-A2|B1-B2|C1-C2)/)
@@ -3052,6 +3064,7 @@ export async function runPublishWikiBatch({
      console.log('[batch]   -> Independent CEFR reviewer route: generator='+usedModel+'; reviewer candidates=['+independentReviewerChain.join(', ')+'].')
      const reviewRes=await invokeGeminiWithDelay(reviewPrompt,{reserveMs:minRetryBudgetMs,schema:effectiveEditorialRhythm?simplifyEditorialSchema(buildCEFRReviewRepairSchema(normalizedDraft)):buildCEFRReviewRepairSchema(normalizedDraft),modelChainOverride:independentReviewerChain,keyStateOverride:reviewerKeyState})
      consecutiveInfraFailures=0
+     if(qualityFailedBeforeReview||(reviewRes.draft?.repairs||[]).length)repairRounds++
      const reviewOutcome=applyCEFRReviewRepairs(normalizedDraft,reviewRes.draft,{requiredRepairLevels:[...requiredRepairLevels],validEvidenceIds:new Set(trimmed.evidence.map(e=>e.id))})
      normalizedDraft=normalizeDraftForCatalog(reviewOutcome.draft,{source,evidence:trimmed.evidence,verifiedPhotos})
      quality=validateArticleQuality(normalizedDraft,source.sourceTitle,{source,evidence:trimmed.evidence,editorialRhythm:effectiveEditorialRhythm&&!dryRun,measuredLayout:Boolean(editorialMeter),requireLevelPlans:true})
@@ -3068,7 +3081,7 @@ export async function runPublishWikiBatch({
 
    // One bounded targeted retry for deterministic issues the descriptor reviewer missed.
    // The complete article is then reviewed again so no post-review text change bypasses CEFR assessment.
-   if(!dryRun&&callGeminiImpl===callGeminiFlashLite&&!quality.ok&&(!editorialMeter||!repairUsed)&&!identifyRepairTargets(normalizedDraft,quality).structuralParityFailed){
+   if(!dryRun&&callGeminiImpl===callGeminiFlashLite&&!quality.ok&&(!editorialMeter||!repairUsed)&&canRunRepairRound()&&!identifyRepairTargets(normalizedDraft,quality).structuralParityFailed){
     const residualRepair=await runOneTargetedRepair({source,item,trimmed,verifiedPhotos,normalizedDraft,quality})
     if(residualRepair.budgetHit){
      console.warn(`[batch]   -> Runtime budget reached before residual quality repair (${Math.max(0,Math.round(remainingBudget()/1000))}s left). Leaving "${item.title}" ${prevQueueStatus||'pending'} and stopping gracefully.`)
@@ -3076,11 +3089,15 @@ export async function runPublishWikiBatch({
      break
     }
     repairUsed=true
+    repairRounds++
     usedModel=residualRepair.model||usedModel
     generationModelsUsed.add(usedModel)
     normalizedDraft=residualRepair.normalizedDraft
     quality=residualRepair.quality
-    if(!identifyRepairTargets(normalizedDraft,quality).structuralParityFailed){
+    const skipFinalReviewOnRepairCap=effectiveMaxRepairRounds!==null&&!quality.ok&&!canRunRepairRound()
+    if(skipFinalReviewOnRepairCap){
+     console.warn(`[batch]   -> Reached max repair cap (${effectiveMaxRepairRounds}) for "${item.title}" with unresolved quality errors; skipping cleanly to preserve quota.`)
+    }else if(!identifyRepairTargets(normalizedDraft,quality).structuralParityFailed){
      const retryRequiredRepairLevels=new Set()
      for(const issue of quality.errors||[]){
       const match=String(issue).match(/^(A1-A2|B1-B2|C1-C2)/)
@@ -3106,6 +3123,8 @@ export async function runPublishWikiBatch({
      }
      console.log(`[batch]   -> Residual targeted repair + final CEFR review model=${retryReviewRes.model||independentReviewerChain[0]} (independent of content generators ${[...generationModelsUsed].join(', ')}) [${LEVELS.map(level=>level+':'+(retryReviewOutcome.finalAssessment?.[level]?.finalBand||'uncertain')).join(' / ')}], repairs=${(retryReviewRes.draft?.repairs||[]).map(row=>row.level).join(',')||'none'}.`)
     }
+   }else if(!dryRun&&!quality.ok&&effectiveMaxRepairRounds!==null&&!canRunRepairRound()){
+    console.warn(`[batch]   -> Reached max repair cap (${effectiveMaxRepairRounds}) for "${item.title}"; skipping cleanly to preserve quota.`)
    }
 
    if(!quality.ok){
@@ -3168,7 +3187,7 @@ export async function runPublishWikiBatch({
     }
     quality=validateArticleQuality(normalizedDraft,source.sourceTitle,{source,evidence:trimmed.evidence,editorialRhythm:effectiveEditorialRhythm&&!dryRun,measuredLayout:Boolean(editorialMeter)})
 
-    if(!quality.ok&&!dryRun&&!repairUsed&&callGeminiImpl!==callGeminiFlashLite){
+    if(!quality.ok&&!dryRun&&!repairUsed&&canRunRepairRound()&&callGeminiImpl!==callGeminiFlashLite){
      const repairOutcome=await runOneTargetedRepair({source,item,trimmed,verifiedPhotos,normalizedDraft,quality})
      if(repairOutcome.budgetHit){
       console.warn(`[batch]   -> Runtime budget reached before post-strip repair (${Math.max(0,Math.round(remainingBudget()/1000))}s left). Leaving "${item.title}" ${prevQueueStatus||'pending'} and stopping gracefully.`)
@@ -3176,6 +3195,7 @@ export async function runPublishWikiBatch({
       break
      }
      repairUsed=true
+     repairRounds++
      usedModel=repairOutcome.model||usedModel
      generationModelsUsed.add(usedModel)
      normalizedDraft=repairOutcome.normalizedDraft

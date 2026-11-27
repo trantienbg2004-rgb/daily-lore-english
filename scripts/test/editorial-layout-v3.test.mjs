@@ -46,7 +46,7 @@ test('permit independent authored maps but reject divergent covers',()=>{
  assert.equal(planEditorialWikiPages({pages,levelVariants:mismatch},()=>true),null)
 })
 
-test('layout budget uses 220-340 / 420-560 fallback bounds and 1-2 / 2-3 paragraph counts when editorialRhythm is enabled',()=>{
+test('layout budget uses 220-340 / 420-560 fallback bounds and 1-2 / 1-3 paragraph counts when editorialRhythm is enabled',()=>{
  const q=validateArticleQuality({variants},'Magna Carta',{editorialRhythm:true})
  assert.ok(q.errors.some(e=>e.includes('editorial card body')&&e.includes('220-340')))
  assert.ok(q.errors.some(e=>e.includes('editorial card body')&&e.includes('420-560')))
@@ -54,14 +54,20 @@ test('layout budget uses 220-340 / 420-560 fallback bounds and 1-2 / 2-3 paragra
  assert.deepEqual(EDITORIAL_CARD_CHAR_BOUNDS.photo,[220,340])
  assert.deepEqual(EDITORIAL_CARD_CHAR_BOUNDS.text,[420,560])
  assert.deepEqual(EDITORIAL_PARAGRAPH_BOUNDS.photo,[1,2])
- assert.deepEqual(EDITORIAL_PARAGRAPH_BOUNDS.text,[2,3])
+ assert.deepEqual(EDITORIAL_PARAGRAPH_BOUNDS.text,[1,3])
+
+ // Single-paragraph text-only page is now accepted (1-3 paragraphs)
+ const singleParaText=structuredClone(variants)
+ singleParaText['B1-B2'].pages[1].text='Single concise paragraph on a text-only page.'
+ const qSingle=validateArticleQuality({variants:singleParaText},'Magna Carta',{editorialRhythm:true,measuredLayout:true})
+ assert.ok(!qSingle.errors.some(e=>e.includes('B1-B2 page 2 (text-only): requires')))
 
  const badParas=structuredClone(variants)
  badParas['A1-A2'].pages[0].text='One.\n\nTwo.\n\nThree.'
- badParas['B1-B2'].pages[1].text='Single wall of text without a paragraph break.'
+ badParas['B1-B2'].pages[1].text='One.\n\nTwo.\n\nThree.\n\nFour.'
  const qp=validateArticleQuality({variants:badParas},'Magna Carta',{editorialRhythm:true,measuredLayout:true})
  assert.ok(qp.errors.some(e=>e.includes('A1-A2 page 1 (cover): requires 1-2 paragraphs (got 3)')))
- assert.ok(qp.errors.some(e=>e.includes('B1-B2 page 2 (text-only): requires 2-3 paragraphs (got 1)')))
+ assert.ok(qp.errors.some(e=>e.includes('B1-B2 page 2 (text-only): requires 1-3 paragraphs (got 4)')))
 })
 
 test('adaptive editions allow 4-8 pages across A1-A2, B1-B2, and C1-C2 in validator, reader, and v3 catalog',()=>{
@@ -139,20 +145,20 @@ test('adaptive prompt removes shared visual map conflict and uses mixed photo/te
  )
  assert.ok(!prompt.includes('Use the shared visual page map only for page order and image alignment'))
  assert.match(prompt,/ONE cover target, ONE photo target, and THREE text-only targets/)
- assert.match(prompt,/1–2 natural paragraphs on cover\/photo pages and 2–3 natural paragraphs on text-only pages/)
+ assert.match(prompt,/1–2 natural paragraphs on cover\/photo pages and 1–3 natural paragraphs on text-only pages/)
  assert.match(prompt,/A1-A2, B1-B2, and C1-C2\) independently chooses 4–8 pages/)
 })
 
-test('editorial-meter enforces compact micro-fit floor, 45%-94% breathable range, 3/5 min lines, and relaxed 32% same-type imbalance',()=>{
+test('editorial-meter enforces compact micro-fit floor, 35%-94% breathable range, 3/5 min lines, and relaxed 32% same-type imbalance',()=>{
  assert.deepEqual(COMPACT_VIEWPORTS,[{width:375,height:667}])
  assert.equal(isCompactViewport({width:375,height:667}),true)
  assert.equal(isCompactViewport({width:390,height:844}),false)
  assert.deepEqual(COMPACT_MICRO_FIT_FLOOR,{fontSizePx:15,lineHeight:1.42,photoMaxHeightDvh:18,photoMinHeightPx:105})
  assert.equal(METER_VIEWPORTS.length,4)
  assert.equal(PRIMARY_VIEWPORTS.length,3)
- assert.ok(EDITORIAL_DENSITY_POLICY.targetFill>=0.68&&EDITORIAL_DENSITY_POLICY.targetFill<=0.74)
- assert.equal(EDITORIAL_DENSITY_POLICY.calibrationMinFill,0.45)
- assert.equal(EDITORIAL_DENSITY_POLICY.acceptanceMinFill,0.45)
+ assert.equal(EDITORIAL_DENSITY_POLICY.targetFill,0.72)
+ assert.equal(EDITORIAL_DENSITY_POLICY.calibrationMinFill,0.35)
+ assert.equal(EDITORIAL_DENSITY_POLICY.acceptanceMinFill,0.35)
  assert.equal(EDITORIAL_DENSITY_POLICY.calibrationMaxFill,0.90)
  assert.equal(EDITORIAL_DENSITY_POLICY.acceptanceMaxFill,0.94)
  assert.ok(EDITORIAL_DENSITY_POLICY.imbalanceSpread>=0.30)
@@ -184,7 +190,7 @@ test('editorial-meter enforces compact micro-fit floor, 45%-94% breathable range
  assert.equal(budgets['A1-A2'].text.target,275)
  assert.equal(budgets['A1-A2'].cover.viewports.length,4)
 
- // Audit: breathable 48% cover (3L), 83% photo (4L), and two text-only pages with 26% spread (56% vs 82%, 5L/7L) MUST ALL PASS
+ // Audit: breathable 38% cover (3L), 83% photo (4L), and two text-only pages with 26% spread (42% vs 68%, 5L/7L) MUST ALL PASS
  const rows=[
   {level:'A1-A2',index:0,cover:true,photo:true,pageType:'cover',text:'Cover text sample with enough words to evaluate cleanly.'},
   {level:'A1-A2',index:1,cover:false,photo:true,pageType:'photo',text:'Body photo text sample with enough words to evaluate cleanly.'},
@@ -194,24 +200,24 @@ test('editorial-meter enforces compact micro-fit floor, 45%-94% breathable range
  const metricsOk=METER_VIEWPORTS.map(vp=>({
   vp,
   rows:[
-   {level:'A1-A2',index:0,cover:true,photo:true,pageType:'cover',fill:vp.width===375?0.95:0.48,overflowPx:0,usedPx:144,availablePx:300,renderedLines:3},
+   {level:'A1-A2',index:0,cover:true,photo:true,pageType:'cover',fill:vp.width===375?0.95:0.38,overflowPx:0,usedPx:114,availablePx:300,renderedLines:3},
    {level:'A1-A2',index:1,cover:false,photo:true,pageType:'photo',fill:vp.width===375?0.96:0.83,overflowPx:0,usedPx:249,availablePx:300,renderedLines:4},
-   {level:'A1-A2',index:2,cover:false,photo:false,pageType:'text-only',fill:vp.width===375?0.92:0.56,overflowPx:0,usedPx:168,availablePx:300,renderedLines:5},
-   {level:'A1-A2',index:3,cover:false,photo:false,pageType:'text-only',fill:vp.width===375?0.94:0.82,overflowPx:0,usedPx:246,availablePx:300,renderedLines:7},
+   {level:'A1-A2',index:2,cover:false,photo:false,pageType:'text-only',fill:vp.width===375?0.92:0.42,overflowPx:0,usedPx:126,availablePx:300,renderedLines:5},
+   {level:'A1-A2',index:3,cover:false,photo:false,pageType:'text-only',fill:vp.width===375?0.94:0.68,overflowPx:0,usedPx:204,availablePx:300,renderedLines:7},
   ],
  }))
  assert.deepEqual(auditEditorialMetrics(rows,metricsOk),[])
 
- // Now trigger genuine failures: compact overflow, primary >94%, primary <45%, text-only <5L, and extreme >32% same-type imbalance
+ // Now trigger genuine failures: compact overflow, primary >94%, primary <35%, text-only <5L, and extreme >32% same-type imbalance
  const metricsFail=structuredClone(metricsOk)
  metricsFail[0].rows[0].overflowPx=8 // 375x667 overflow
  metricsFail[1].rows[1].fill=0.96 // 390x844 exceeds 94% ceiling
- metricsFail[1].rows[2].fill=0.40 // 390x844 below 45% floor (and 42% spread vs 0.82 text-only -> imbalance)
+ metricsFail[1].rows[2].fill=0.30 // 390x844 below 35% floor (and 38% spread vs 0.68 text-only -> imbalance)
  metricsFail[1].rows[2].renderedLines=4 // text-only < 5 lines
  const errs=auditEditorialMetrics(rows,metricsFail)
  assert.ok(errs.some(e=>e.includes('A1-A2 page 1 (cover)')&&e.includes('overflow 8px')))
  assert.ok(errs.some(e=>e.includes('A1-A2 page 2 (photo)')&&e.includes('96%')&&e.includes('utilization too high')))
- assert.ok(errs.some(e=>e.includes('A1-A2 page 3 (text-only)')&&e.includes('40%')&&e.includes('utilization too low')))
+ assert.ok(errs.some(e=>e.includes('A1-A2 page 3 (text-only)')&&e.includes('30%')&&e.includes('utilization too low')))
  assert.ok(errs.some(e=>e.includes('A1-A2 page 3 (text-only)')&&e.includes('requires at least 5 rendered lines')))
  assert.ok(errs.some(e=>e.includes('A1-A2 page 3 (text-only)')&&e.includes('same-type visual imbalance')))
 })
