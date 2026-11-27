@@ -4138,13 +4138,17 @@
   overflow: visible;
   padding: 4px 0 10px;
 }
-.lore-editorial-v5 .reader-gesture[data-editorial-layout="shared"] .reading-card .article-text {
+.lore-editorial-v5 .reader-gesture[data-editorial-layout="shared"] .reading-card .article-text,
+.lore-editorial-v5 .reader-gesture[data-editorial-layout="shared"] .reading-card.reading-card-with-photo .article-text,
+.lore-editorial-v5 .reader-gesture[data-editorial-layout="shared"] .reading-card.reading-card-no-photo .article-text {
   font-size: clamp(16px, 4.35vw, 18px);
   line-height: 1.52;
   margin: 0;
 }
 @media (min-width: 520px) {
-  .lore-editorial-v5 .reader-gesture[data-editorial-layout="shared"] .reading-card .article-text {
+  .lore-editorial-v5 .reader-gesture[data-editorial-layout="shared"] .reading-card .article-text,
+.lore-editorial-v5 .reader-gesture[data-editorial-layout="shared"] .reading-card.reading-card-with-photo .article-text,
+.lore-editorial-v5 .reader-gesture[data-editorial-layout="shared"] .reading-card.reading-card-no-photo .article-text {
     font-size: 20px;
     line-height: 1.52;
   }
