@@ -1111,14 +1111,15 @@
   padding: 0 max(clamp(1rem, 4vw, 1.25rem), var(--saga-safe-right)) var(--saga-space-lg) max(clamp(1rem, 4vw, 1.25rem), var(--saga-safe-left));
 }
 
-/* Always-mobile editorial book-page shell centered on warm #e9e8e2 desk on desktop */
+/* A readable single-column book page: narrow on phones, wider on laptop/desktop. */
 @media (min-width: 520px) {
   .app-shell,
   .app-shell.reading-mode,
   .app-shell:not(.reading-mode) {
     flex: 0 0 auto;
-    width: 430px;
-    max-width: 430px;
+    --saga-shell-w: min(100%, 560px);
+    width: min(100%, 560px);
+    max-width: 560px;
     height: 100dvh;
     max-height: 100dvh;
     min-height: 0;
@@ -1636,9 +1637,9 @@
   padding-bottom: 0.08em;
 }
 
-/* Left-aligned tactile photo frame: zero cropping, locked mobile proportions across ALL viewports & CEFR levels */
+/* Intrinsic image proportions, centered in the reading column. */
 .lore-editorial-v5 .reader-gesture .article-media {
-  --saga-photo-max-h: clamp(138px, 21dvh, 195px);
+  --saga-photo-max-h: clamp(106px, 30dvh, 270px);
   flex: 0 0 auto;
   min-height: 0;
   max-height: none;
@@ -1662,7 +1663,7 @@
 }
 
 .lore-editorial-v5 .reader-gesture .page-surface.page-density-compact .article-media {
-  --saga-photo-max-h: clamp(138px, 21dvh, 195px);
+  --saga-photo-max-h: clamp(90px, 21dvh, 190px);
   flex: 0 0 auto;
   min-height: 0;
   max-height: none;
@@ -2522,7 +2523,7 @@
   }
 }
 
-/* Editorial vertical balance for text-only pages (photo pages stay strictly top-aligned) */
+/* Continuous top-to-bottom reading rhythm on text-only pages. */
 .lore-editorial-v5 .reader-gesture .page-surface.saga-page--text-only .reading-card.reading-card-no-photo {
   flex: 1 1 auto;
   min-height: 0;
@@ -2534,7 +2535,7 @@
 }
 
 .lore-editorial-v5 .reader-gesture .page-surface.saga-page--text-only .reading-card.reading-card-no-photo .article-text {
-  margin-block: auto;
+  margin-block: 0;
 }
 
 .lore-editorial-v5 .reader-gesture .article-text > .article-paragraph {
@@ -4017,4 +4018,21 @@
 }
 .app-shell.lore-editorial-v5 .reader-gesture:not(.layout-measure-fixture) .page-surface.saga-page--dense .article-text {
   margin-block: 0;
+}
+
+/* Reader visual quality: one comfortable column and natural photo proportions. */
+.lore-editorial-v5 .reader-gesture .article-media .photo-figure.lore-photo-figure,
+.lore-editorial-v5 .reader-gesture .article-media .photo-figure.lore-photo-figure.hero-media {
+  align-self: center;
+}
+.lore-editorial-v5 .reader-gesture .article-media .lore-photo-caption {
+  text-align: center;
+}
+@media (min-width: 520px) {
+  .lore-editorial-v5 .reader-gesture .reading-card .article-text,
+  .lore-editorial-v5 .reader-gesture .reading-card.reading-card-with-photo .article-text,
+  .lore-editorial-v5 .reader-gesture .reading-card.reading-card-no-photo .article-text {
+    font-size: 19px;
+    line-height: 1.52;
+  }
 }
