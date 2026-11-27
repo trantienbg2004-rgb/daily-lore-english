@@ -2714,6 +2714,19 @@ export async function runPublishWikiBatch({
   })
  }
 
+ const prepareEditorial=({draft,source,trimmed,verifiedPhotos,usedImages=new Set()})=>{
+  if(!editorialMeter||dryRun)return draft
+  const attached=assignIndependentBatchPhotos(draft.variants,{source,articlePhotos:verifiedPhotos,evidence:trimmed.evidence,usedImages})
+  if(!attached.ok)return draft
+  for(const level of LEVELS){
+   for(const [i,p] of draft.variants[level].pages.entries()){
+    const actual=attached.levelVariants[level].pages[i]
+    if(actual?.image){p.imageId=actual.imageProvenance?.evidence?.imageId||p.imageId;p.caption=actual.caption}
+    else{p.imageId=null;p.caption=''}
+   }
+  }
+  return draft
+ }
  const auditEditorial=async(draft,quality)=>{
   if(!editorialMeter||dryRun||identifyRepairTargets(draft,quality).structuralParityFailed)return quality
   const errors=await editorialMeter.audit(draft.variants)
@@ -2736,7 +2749,7 @@ export async function runPublishWikiBatch({
   consecutiveInfraFailures=0
   try{
    const mergedRaw=mergeTargetedRepairs(normalizedDraft,retryRes.draft,repairTargets)
-   const repairedDraft=normalizeDraftForCatalog(mergedRaw,{source,evidence:trimmed.evidence,verifiedPhotos})
+   const repairedDraft=prepareEditorial({draft:normalizeDraftForCatalog(mergedRaw,{source,evidence:trimmed.evidence,verifiedPhotos}),source,trimmed,verifiedPhotos})
    let repairedQuality=validateArticleQuality(repairedDraft,source.sourceTitle,{source,evidence:trimmed.evidence,editorialRhythm:editorialRhythm&&!dryRun,measuredLayout:Boolean(editorialMeter),requireLevelPlans:!dryRun&&callGeminiImpl===callGeminiFlashLite})
    repairedQuality=await auditEditorial(repairedDraft,repairedQuality)
    return {
@@ -2842,14 +2855,14 @@ export async function runPublishWikiBatch({
     consecutiveInfraFailures=0
     usedModel=firstRes.model||usedModel
     generationModelsUsed.add(usedModel)
-    normalizedDraft=normalizeDraftForCatalog(firstRes.draft,{source,evidence:trimmed.evidence,verifiedPhotos})
+    normalizedDraft=prepareEditorial({draft:normalizeDraftForCatalog(firstRes.draft,{source,evidence:trimmed.evidence,verifiedPhotos}),source,trimmed,verifiedPhotos,usedImages:candidateUsedImages})
     quality=validateArticleQuality(normalizedDraft,source.sourceTitle,{source,evidence:trimmed.evidence,editorialRhythm:editorialRhythm&&!dryRun,measuredLayout:Boolean(editorialMeter)})
 
     // Keep the existing structural rebuild only for page/image parity failures.
     // CEFR, language and editorial mismatches are handled by the mandatory descriptor reviewer below.
     quality=await auditEditorial(normalizedDraft,quality)
     const initialRepairTargets=identifyRepairTargets(normalizedDraft,quality)
-    if(!quality.ok&&(initialRepairTargets.structuralParityFailed||callGeminiImpl!==callGeminiFlashLite||(editorialRhythm&&quality.errors.some(e=>e.includes('editorial card body'))))){
+    if(!quality.ok&&(initialRepairTargets.structuralParityFailed||callGeminiImpl!==callGeminiFlashLite)){
      const repairOutcome=await runOneTargetedRepair({source,item,trimmed,verifiedPhotos,normalizedDraft,quality})
      if(repairOutcome.budgetHit){
       console.warn(`[batch]   -> Runtime budget reached before structural repair (${Math.max(0,Math.round(remainingBudget()/1000))}s left). Leaving "${item.title}" ${prevQueueStatus||'pending'} and stopping gracefully.`)
@@ -2899,7 +2912,7 @@ export async function runPublishWikiBatch({
 
    // One bounded targeted retry for deterministic issues the descriptor reviewer missed.
    // The complete article is then reviewed again so no post-review text change bypasses CEFR assessment.
-   if(!dryRun&&callGeminiImpl===callGeminiFlashLite&&!quality.ok&&!identifyRepairTargets(normalizedDraft,quality).structuralParityFailed){
+   if(!dryRun&&callGeminiImpl===callGeminiFlashLite&&!quality.ok&&(!editorialMeter||!repairUsed)&&!identifyRepairTargets(normalizedDraft,quality).structuralParityFailed){
     const residualRepair=await runOneTargetedRepair({source,item,trimmed,verifiedPhotos,normalizedDraft,quality})
     if(residualRepair.budgetHit){
      console.warn(`[batch]   -> Runtime budget reached before residual quality repair (${Math.max(0,Math.round(remainingBudget()/1000))}s left). Leaving "${item.title}" ${prevQueueStatus||'pending'} and stopping gracefully.`)
