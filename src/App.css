@@ -4069,3 +4069,11 @@
     line-height: 1.55;
   }
 }
+
+/* On tall, wide phones a compact cover is allowed only if needed to fit the
+   next natural reading beat. Normal photo size stays unchanged otherwise. */
+@media (min-width: 410px) and (max-width: 519px) and (min-height: 850px) {
+  .lore-editorial-v5 .reader-gesture .page-surface.page-density-compact:has(.post-head:not(.post-head--continued)) .article-media {
+    --saga-photo-max-h: clamp(140px, 21dvh, 230px);
+  }
+}
