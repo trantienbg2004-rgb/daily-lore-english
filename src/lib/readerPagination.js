@@ -984,8 +984,8 @@ export function planParagraphAwareWikiPages(item, fits, {
     let cost = ((evalRes.usedRatio - idealFill) ** 2) * 115
     if (evalRes.density === 'compact') cost += 12
     if (adaptiveComfort) {
-      const comfortableWords = hasPhoto ? 38 : 58
-      if (words > comfortableWords) cost += (words - comfortableWords) ** 2 * 0.6
+      const comfortableWords = hasPhoto ? 52 : 76
+      if (words > comfortableWords) cost += (words - comfortableWords) ** 2 * 0.12
     }
     // Discourage excessive unused whitespace without forcing wall-to-wall packing
     if (evalRes.unusedRatio > 0.52) {
@@ -1014,7 +1014,7 @@ export function planParagraphAwareWikiPages(item, fits, {
   }
 
   const pageCountPenalty = k => {
-    if (adaptiveComfort) return k * 5 // density and actual fit, not a fixed five-page target
+    if (adaptiveComfort) return k * 14 // prefer fewer well-filled pages, while measured fit remains mandatory
     if (k === preferredPages) return 0
     if (k === minPreferredPages) return 16
     if (k === maxPreferredPages) return 14
