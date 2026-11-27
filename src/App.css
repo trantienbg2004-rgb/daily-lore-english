@@ -4036,3 +4036,16 @@
     line-height: 1.52;
   }
 }
+
+/* Keep cover photograph size stable when switching proficiency levels. On a
+   short/narrow screen reserve enough height for both the image and the text. */
+.lore-editorial-v5 .reader-gesture .page-surface.page-density-compact:has(.post-head:not(.post-head--continued)) .article-media {
+  --saga-photo-max-h: clamp(106px, 30dvh, 270px);
+}
+@media (max-width: 400px), (max-height: 620px) {
+  .lore-editorial-v5 .reader-gesture .article-media,
+  .lore-editorial-v5 .reader-gesture .page-surface.page-density-compact .article-media,
+  .lore-editorial-v5 .reader-gesture .page-surface.page-density-compact:has(.post-head:not(.post-head--continued)) .article-media {
+    --saga-photo-max-h: clamp(90px, 21dvh, 195px);
+  }
+}
