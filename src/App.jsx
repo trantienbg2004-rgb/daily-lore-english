@@ -354,7 +354,7 @@ function safeStoryUrl(url) {
 
 // Measure every story against the actual viewport. News keeps its edited
 // four-to-six-page structure while short photo covers can borrow text below.
-function layoutPages(item, reader, badImages = new Set()) {
+function layoutPages(item, reader, badImages = new Set(), staticPhrases = null, lemmaMap = null) {
   // Editorial pages are source units, not guaranteed screen-sized. Measure
   // every level against the actual phone viewport and the anchored pager.
   const bounds = reader.getBoundingClientRect()
@@ -368,9 +368,12 @@ function layoutPages(item, reader, badImages = new Set()) {
     pointerEvents:'none', zIndex:'-1', transform:'none',
   })
   const surface = fixture.querySelector('.page-surface')
+  surface?.classList.remove('page-enter-left','page-enter-right','is-dragging','saga-page--dense','page-density-dense','page-density-dense-tight')
+  if (surface) surface.style.transform = 'none'
   const heading = fixture.querySelector('.article-heading')
   const media = fixture.querySelector('.article-media')
   const paragraph = fixture.querySelector('.article-text')
+  paragraph?.classList.remove('saga-level-settle')
   const card = fixture.querySelector('.reading-card')
   const pager = fixture.querySelector('.page-control')
   const figure = document.createElement('figure')
@@ -456,7 +459,7 @@ function layoutPages(item, reader, badImages = new Set()) {
       for (const blockText of blocks) {
         const pEl = document.createElement('p')
         pEl.className = 'article-paragraph'
-        const rawTokens = tokenizeWithGlossary(blockText, item.glossary, [], null)
+        const rawTokens = tokenizeWithGlossary(blockText, item.glossary, staticPhrases, lemmaMap)
         const clustered = groupTokenClusters(rawTokens)
         for (const piece of clustered) {
           if (piece.kind === 'text') {
@@ -492,17 +495,19 @@ function layoutPages(item, reader, badImages = new Set()) {
       const mediaBounds = media.getBoundingClientRect()
       const pagerBounds = pager.getBoundingClientRect()
       const viewportBottom = fixture.getBoundingClientRect().bottom
-      const availableHeight = Math.max(1, pagerBounds.top - cardBounds.top - 8)
+      const safeBottom = Math.min(pagerBounds.top, surfaceBounds.bottom) - 16
+      const availableHeight = Math.max(1, safeBottom - cardBounds.top)
       const contentBottom = Math.max(textBounds.bottom, image ? mediaBounds.bottom : 0)
       const bottomWhitespacePx = Math.max(0, pagerBounds.top - contentBottom)
       const unusedVerticalPx = image
         ? bottomWhitespacePx
         : Math.max(0, (pagerBounds.top - cardBounds.top) - textBounds.height)
-      const overflowPx = Math.max(0, textBounds.bottom - (pagerBounds.top - 8))
+      const overflowPx = Math.max(0, textBounds.bottom - safeBottom)
       // The flex pager ends exactly at the reader's bottom; allow subpixel
       // rounding while keeping the entire paragraph block above the pager.
-      const fitsPage = textBounds.height > 0 && textBounds.bottom <= pagerBounds.top - 8
-        && (!image || mediaBounds.bottom <= pagerBounds.top - 8)
+      const fitsPage = textBounds.height > 0 && textBounds.bottom <= safeBottom
+        && (!image || mediaBounds.bottom <= safeBottom)
+        && card.scrollHeight <= card.clientHeight + 2
         && pagerBounds.bottom <= viewportBottom + 1
       const measured = {
         fits: fitsPage,
@@ -882,10 +887,11 @@ function App() {
       mediaSig: getStoryMediaSig(item, badImages),
       contentSig: getStoryContentSig(item),
       fontVersion,
+      brokenKey: `${staticPhrases ? 1 : 0}:${lemmaMap ? 1 : 0}`,
     })
     const cached = paginationCacheRef.current.get(key)
     if (cached) return cached
-    const measured = layoutPages(item, reader, badImages)
+    const measured = layoutPages(item, reader, badImages, staticPhrases, lemmaMap)
     if (Array.isArray(measured) && measured.length) {
       paginationCacheRef.current.set(key, measured)
     }
@@ -961,7 +967,7 @@ function App() {
     window.visualViewport?.addEventListener('resize', recalculate)
     document.fonts?.ready.then(recalculate).catch(() => {})
     return () => { cancelled = true; cancelAnimationFrame(frame); observer?.disconnect(); window.removeEventListener('resize', recalculate); window.visualViewport?.removeEventListener('resize', recalculate) }
-  }, [tab, storyIndex, stories.length, readingLevel, story?._sourcePages, story?.pages, brokenImages, photoVersion, fontVersion])
+  }, [tab, storyIndex, stories.length, readingLevel, story?._sourcePages, story?.pages, brokenImages, photoVersion, fontVersion, staticPhrases, lemmaMap])
 
   // Layer 3 idle warming: pre-compute exact balanced pagination for storyIndex + 1
   // (and storyIndex - 1 if uncached) during idle time so vertical swipes never reflow.
@@ -1906,6 +1912,8 @@ function App() {
   // This makes swiping across the paragraph work on touch screens.
   const startGesture = event => {
     if (event.touches.length !== 1 || selected || fullArticleOpen) { gesture.current = null; return }
+    const scrollSurface = event.target.closest('.page-surface')
+    if (scrollSurface && scrollSurface.scrollHeight > scrollSurface.clientHeight + 2) { gesture.current = null; return }
     const control = event.target.closest('button')
     if ((control && !control.classList.contains('word-token')) || event.target.closest('a, summary, select, label')) { gesture.current = null; return }
     interruptActiveMotion()
@@ -2027,6 +2035,8 @@ function App() {
   // Desktop: wheel navigates stories instead of scrolling the reading screen.
   const onReaderWheel = event => {
     if (selected || fullArticleOpen || event.ctrlKey) return
+    const surface = event.target.closest?.('.page-surface')
+    if (surface && surface.scrollHeight > surface.clientHeight + 2) return
     if (event.cancelable) event.preventDefault()
     const now = Date.now()
     if (now < wheelLock.current) return
