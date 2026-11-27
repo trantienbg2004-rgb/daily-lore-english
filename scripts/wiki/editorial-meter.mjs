@@ -159,7 +159,12 @@ export function auditEditorialMetrics(rows,metrics){
    const upper=Math.min(primaryUpper,compactUpper)
    const target=Math.max(1,Math.round((lower+Math.max(lower,upper))/2))
    const paraHint=pageType==='text-only'?'2–3 natural paragraphs':'1–2 natural paragraphs'
-   errors.push(row.level+' page '+(row.index+1)+' ('+pageType+'): current '+chars+' chars / '+words+' words; measured '+observed.map(m=>m.vp.width+'x'+m.vp.height+' '+Math.round(m.fill*100)+'% ('+m.usedPx+'/'+m.availablePx+' px'+(m.overflowPx>0?', overflow '+m.overflowPx+'px':'')+(Number.isFinite(m.renderedLines)?', '+m.renderedLines+'L':'')+')').join('; ')+'; rewrite to approximately '+target+' chars / '+Math.round(words*target/Math.max(1,chars))+' words, estimated compatible range '+lower+'–'+Math.max(lower,upper)+' chars. Keep '+paraHint+' and all source-grounded facts.')
+   const reasons=[]
+   if(hasOverflow)reasons.push('overflow')
+   if(aboveCeiling)reasons.push('utilization too high')
+   if(belowFloor)reasons.push('utilization too low')
+   const reasonTag=reasons.join(' / ')
+   errors.push(row.level+' page '+(row.index+1)+' ('+pageType+'): '+reasonTag+' — current '+chars+' chars / '+words+' words; measured '+observed.map(m=>m.vp.width+'x'+m.vp.height+' '+Math.round(m.fill*100)+'% ('+m.usedPx+'/'+m.availablePx+' px'+(m.overflowPx>0?', overflow '+m.overflowPx+'px':'')+(Number.isFinite(m.renderedLines)?', '+m.renderedLines+'L':'')+')').join('; ')+'; rewrite to approximately '+target+' chars / '+Math.round(words*target/Math.max(1,chars))+' words, estimated compatible range '+lower+'–'+Math.max(lower,upper)+' chars. Keep '+paraHint+' and all source-grounded facts.')
   }
   if(tooFewLines){
    const failing=densityObserved.filter(m=>Number.isFinite(m.renderedLines)&&m.renderedLines<minLines)

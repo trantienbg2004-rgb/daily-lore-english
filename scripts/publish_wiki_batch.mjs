@@ -510,18 +510,41 @@ export function parseRetryAfterMs(headerValue,nowMs=Date.now()){
  return null
 }
 
-/** Build model-safe Gemini generationConfig (omits deprecated sampling params like temperature on Gemini 4 models). */
-export function buildGeminiGenerationConfig(model=DEFAULT_GEMINI_MODEL,{schema=BATCH_STORY_SCHEMA}={}){
+export const FULL_GENERATION_MAX_OUTPUT_TOKENS=24576
+export const REPAIR_MAX_OUTPUT_TOKENS=12288
+export const MAX_TOKENS_RETRY_OUTPUT_TOKENS=32768
+export const DEFAULT_THINKING_BUDGET=1024
+
+/** Build model-safe Gemini generationConfig (bounds thinking tokens so structured 3-level JSON never hits MAX_TOKENS prematurely). */
+export function buildGeminiGenerationConfig(model=DEFAULT_GEMINI_MODEL,{
+ schema=BATCH_STORY_SCHEMA,
+ maxOutputTokens=null,
+ thinkingConfigOverride=null,
+ omitThinkingConfig=false
+}={}){
  const name=String(model||'').trim().toLowerCase()
+ const isTargetedRepair=schema===TARGETED_REPAIR_SCHEMA
+ const defaultMaxTokens=isTargetedRepair?REPAIR_MAX_OUTPUT_TOKENS:FULL_GENERATION_MAX_OUTPUT_TOKENS
+ const resolvedMaxTokens=Number.isFinite(Number(maxOutputTokens))&&Number(maxOutputTokens)>0
+  ?Math.floor(Number(maxOutputTokens))
+  :defaultMaxTokens
  const config={
   responseMimeType:'application/json',
   responseJsonSchema:schema,
-  maxOutputTokens:schema===ADAPTIVE_STORY_SCHEMA?14000:9500
+  maxOutputTokens:resolvedMaxTokens
  }
- // Gemini 4 defaults to deep reasoning; LOW preserves token budget for structured reviewer output.
- if(/^gemini-4(?:\b|-)/.test(name)){
-  config.thinkingConfig={thinkingLevel:'LOW'}
- }else{
+ if(!omitThinkingConfig){
+  if(thinkingConfigOverride){
+   config.thinkingConfig={...thinkingConfigOverride}
+  }else if(/^gemini-4(?:\b|-)/.test(name)){
+   // Gemini 4 defaults to deep reasoning; LOW preserves token budget for structured reviewer output.
+   config.thinkingConfig={thinkingLevel:'LOW'}
+  }else if(/^gemini-(?:2\.5|3(?:\.\d+)?)(?:\b|-)/.test(name)){
+   // Gemini 2.5/3.x thinking tokens count against maxOutputTokens; cap thinkingBudget so full 3-level JSON never truncates.
+   config.thinkingConfig={thinkingBudget:DEFAULT_THINKING_BUDGET}
+  }
+ }
+ if(!/^gemini-4(?:\b|-)/.test(name)){
   config.temperature=0.35
  }
  return config
@@ -1264,7 +1287,11 @@ export function buildCEFRReviewRepairPrompt(source,topic,evidence,previousDraft,
   '- Every selectedFactId must be explained in the version, and at least one page that actually explains it must cite one of that fact’s own evidenceIds. If a blocking issue lists missing fact IDs and required evidence IDs, add a concise, accurate explanation of each missing fact to a relevant existing page and cite its own required evidenceIds in that same page patch. Do not merely append an evidence ID without explaining the fact, and do not attach unrelated source IDs just to silence the validator.',
   '- For every selected fact marked hasUncertainty=true, include a natural, level-appropriate qualification or safety caveat on the page that explains that fact, and cite its supporting passage. If the blocking issues identify a missing caveat, repair the text before assigning finalVerdict=pass.',
   '',
-  ...(editorialRhythm?['EDITORIAL PAGE RHYTHM (MANDATORY)',budgets?measuredGuidance(budgets):EDITORIAL_CARD_GUIDANCE,'Repair any body-length error without changing page count or image placement. When changing any page for CEFR, preserve its character budget; count the revised body before returning. Do not shorten the final page into a leftover.']:[]),
+  ...(editorialRhythm?[
+   'EDITORIAL PAGE RHYTHM (MANDATORY)',
+   budgets?measuredGuidance(budgets):EDITORIAL_CARD_GUIDANCE,
+   'Repair every layout, paragraph-count, rendered-line, overflow, and visual-imbalance error without changing page count or image placement. Specifically: (1) use 1–2 natural paragraphs separated by "\\n\\n" on cover/photo pages and 2–3 natural paragraphs separated by "\\n\\n" on text-only pages — split single-paragraph text-only pages or merge excess paragraphs whenever a blocking issue flags paragraph count; (2) ensure at least 4 rendered lines on cover/photo pages and at least 6 rendered lines on text-only pages; (3) rewrite any page flagged for overflow, utilization too low/high, or same-type visual imbalance to the approximate character/word target stated in the blocking issue so primary viewports sit near ~74% fill (60%–92%) with 0px overflow on compact 375x667 screens. When changing any page for CEFR, preserve its character budget and paragraph bounds; do not shorten the final page into a leftover.'
+  ]:[]),
   'REQUIRED TWO-PASS REVIEW',
   'A. For each level, record initialBand, initialVerdict and initialDimensions inside assessment. The initial band must be A1/A2 for A1-A2, B1/B2 for B1-B2, and C1/C2 for C1-C2. Use verdict pass, revise or uncertain. Assess vocabulary, syntax, cohesion, abstraction, inference and specialist-term load. If ANY initial dimension is low or high, initialVerdict must be revise and the level must be repaired.',
   'B. Repair every level that is outside its target band, has a supplied blocking deterministic error, or has a material factual/editorial defect. If a blocking issue names a headline, return a corrected headline on that level’s repair item. Any changed headline must be 5–11 words, distinct across levels, and must not repeat the raw Wikipedia title. Otherwise preserve the existing valid headline. Return every page that actually needs changing, with its original pageIndex exactly once; omit untouched pages because the program preserves them. Do not change page order, add/remove pages or images, and keep evidenceIds tied to the source. Do not rewrite a passing level unless required by a blocking cross-level issue.',
@@ -1543,7 +1570,8 @@ ${passages}`
      const [minW,maxW]=isPhoto?LEVEL_WORD_BOUNDS[item.level].photo:LEVEL_WORD_BOUNDS[item.level].text
      return {
       pageIndex:idx,
-      pageType:isPhoto?'photo':'text-only',
+      pageType:idx===0?'cover':isPhoto?'photo':'text-only',
+      ...(editorialRhythm?{requiredParagraphs:isPhoto?'1-2':'2-3',minRenderedLines:isPhoto?4:6}:{}),
       ...(editorialRhythm&&budgets?{bodyBudget:budgets[item.level][idx===0?'cover':isPhoto?'photo':'text']}:{advisoryWords:`~${wordRangeMidpoint([minW,maxW])} (flexible around ${minW}-${maxW})`}),
       imageId:pageImageToken(p),
       text:p.text,
@@ -1564,8 +1592,9 @@ TARGETED RULES:
 - Return pure JSON matching: {"repairs":{"A1-A2":{"headline?":"...","levelPlan?":{"selectedFactIds":["F1","F2"]},"pages":[{"pageIndex":0,"text":"...","caption?":"...","evidenceIds":["P1"]}]},"B1-B2":{...},"C1-C2":{...}}}
 - Include ONLY the levels, headlines, levelPlans, and pageIndexes listed in ITEMS TO REPAIR below.
 - For a levelPlan target, return 2-10 selectedFactIds chosen ONLY from that item's validFactIds. Preserve all sharedCoreFactIds, readerObjective and depthNotes. Never invent, rename, or guess a fact ID.
-- ${editorialRhythm?"Preserve each level's page count, image placement, planned focus":"Preserve the shared page/image map, each level's own planned focus"}, paragraph boundaries ("\\n\\n"), dates, numbers, uncertainty/safety conditions, and evidence IDs. Do not add or remove images.
+- ${editorialRhythm?'Preserve each level\'s page count, image placement, planned focus, dates, numbers, uncertainty/safety conditions, and evidence IDs. Do not add or remove images. Format paragraphs with "\\n\\n" to satisfy every page\'s requiredParagraphs (1–2 paragraphs on cover/photo pages; 2–3 paragraphs on text-only pages — split single-paragraph text-only pages or merge excess paragraphs whenever a failed check flags paragraph count).':'Preserve the shared page/image map, each level\'s own planned focus, paragraph boundaries ("\\n\\n"), dates, numbers, uncertainty/safety conditions, and evidence IDs. Do not add or remove images.'}
 ${editorialRhythm?(budgets?measuredGuidance(budgets):EDITORIAL_CARD_GUIDANCE):`- Advisory photo section pacing: ${photoLine}\n- Advisory text-only section pacing: ${textLine}`}
+${editorialRhythm?'- Layout / line / overflow / imbalance fixes: for any failed check flagging overflow, utilization too low/high, too few rendered lines (<4 on cover/photo or <6 on text-only), or same-type visual imbalance, rewrite that page to match the approximate character/word target stated in the failed check while keeping 0px overflow on compact 375x667 screens and natural source-grounded prose.':''}
 - Headlines: ${HEADLINE_WORD_BOUNDS.min}-${HEADLINE_WORD_BOUNDS.max} words, distinct across all 3 levels, never matching "${source.sourceTitle}".
 - Captions on photo pages: complete natural phrase (${CAPTION_LIMITS.targetMinWords}-${CAPTION_LIMITS.targetMaxWords} words, max ${CAPTION_LIMITS.maxChars} chars, never truncated mid-word).
 - If a failed check flags a dry encyclopedia opening, rewrite pageIndex 0 so its FIRST sentence does not begin with the source title/topic followed by “is/was a/an/the”. Use a natural reader-facing question, a concrete source-supported moment, or an action that draws the reader into the subject. Do not merely move the same dictionary definition to sentence two; preserve the assigned CEFR band and do not invent a scene or fact.
@@ -1717,70 +1746,97 @@ export async function callGeminiFlashLite(prompt,{
  model=DEFAULT_GEMINI_MODEL,
  fetchImpl=fetch,
  timeoutMs=DEFAULT_GEMINI_TIMEOUT_MS,
- schema=BATCH_STORY_SCHEMA
+ schema=BATCH_STORY_SCHEMA,
+ maxOutputTokens=null,
+ thinkingConfigOverride=null,
+ omitThinkingConfig=false
 }={}){
  if(!apiKey)throw Error('GEMINI_API_KEY is required (set env GEMINI_API_KEY or pass --dry-run)')
  const url=`https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(model)}:generateContent`
  const effectiveTimeoutMs=Math.max(5_000,Math.floor(Number(timeoutMs)||DEFAULT_GEMINI_TIMEOUT_MS))
- let response
- try{
-  response=await fetchImpl(url,{
-   method:'POST',
-   headers:{'content-type':'application/json','x-goog-api-key':apiKey},
-   signal:AbortSignal.timeout(effectiveTimeoutMs),
-   body:JSON.stringify({
-    contents:[{role:'user',parts:[{text:prompt}]}],
-    generationConfig:buildGeminiGenerationConfig(model,{schema})
-   })
-  })
- }catch(err){
-  if(err?.name==='TimeoutError'||err?.name==='AbortError'||/timeout|timed out|aborted/i.test(String(err?.message||''))){
-   throw new GeminiTimeoutError(`Gemini request timed out after ${Math.round(effectiveTimeoutMs/1000)}s on ${model}`)
-  }
-  throw err
+
+ const attempts=[
+  buildGeminiGenerationConfig(model,{schema,maxOutputTokens,thinkingConfigOverride,omitThinkingConfig})
+ ]
+ // If a Gemini 3.x model rejects thinkingBudget with HTTP 400, gracefully degrade to thinkingLevel:'LOW' then no thinkingConfig.
+ if(attempts[0].thinkingConfig&&'thinkingBudget' in attempts[0].thinkingConfig){
+  attempts.push(buildGeminiGenerationConfig(model,{schema,maxOutputTokens,thinkingConfigOverride:{thinkingLevel:'LOW'}}))
+  attempts.push(buildGeminiGenerationConfig(model,{schema,maxOutputTokens,omitThinkingConfig:true}))
+ }else if(attempts[0].thinkingConfig){
+  attempts.push(buildGeminiGenerationConfig(model,{schema,maxOutputTokens,omitThinkingConfig:true}))
  }
 
- const rawText=await response.text()
- const retryAfterMs=parseRetryAfterMs(response.headers?.get?.('retry-after'))
-
+ let response=null
+ let rawText=''
  let parsedEnvelope=null
- try{parsedEnvelope=JSON.parse(rawText)}catch{parsedEnvelope=null}
+ let retryAfterMs=null
 
- // Classify API errors ONLY from unsuccessful HTTP responses or explicit error envelopes (never from valid 200 article content)
- const explicitErrorObj=parsedEnvelope&&typeof parsedEnvelope.error==='object'&&parsedEnvelope.error!==null&&!Array.isArray(parsedEnvelope.candidates)
-  ?parsedEnvelope.error
-  :null
-
- if(!response.ok||explicitErrorObj){
-  const effectiveStatus=Number(explicitErrorObj?.code||response.status||0)
-  const errStatusStr=String(explicitErrorObj?.status||'')
-  const errMsg=String(explicitErrorObj?.message||rawText||'').slice(0,260)
-  const errBlob=`${errStatusStr} ${errMsg}`.trim()
-
-  if(effectiveStatus===401||effectiveStatus===403||/API_KEY_INVALID|PERMISSION_DENIED|UNAUTHENTICATED/i.test(errBlob)){
-   throw new GeminiAuthError(`Gemini HTTP ${effectiveStatus||403}: ${errMsg.slice(0,220)}`,effectiveStatus||403)
-  }
-  if(effectiveStatus===404||/\bNOT_FOUND\b|no longer available/i.test(errBlob)){
-   throw new GeminiModelNotFoundError(`Gemini HTTP ${effectiveStatus||404}: ${errMsg.slice(0,220)}`,effectiveStatus||404)
-  }
-  if(effectiveStatus===429||/\bRESOURCE_EXHAUSTED\b|quota exceeded|rate limit/i.test(errBlob)){
-   const looksHardQuota=/quota exceeded|per.?day|daily|limit:\s*0|free.?tier.*limit|billing/i.test(errBlob)
-   const looksTempRateLimit=/rate.?limit|too many requests|per.?minute|\bRPM\b|\bTPM\b|try again shortly/i.test(errBlob)
-   if(looksTempRateLimit&&!looksHardQuota){
-    throw new GeminiRateLimitError(`Gemini HTTP ${effectiveStatus||429} temporary rate limit: ${errMsg.slice(0,220)}`,effectiveStatus||429,{retryAfterMs})
+ for(let attemptIdx=0;attemptIdx<attempts.length;attemptIdx++){
+  const generationConfig=attempts[attemptIdx]
+  try{
+   response=await fetchImpl(url,{
+    method:'POST',
+    headers:{'content-type':'application/json','x-goog-api-key':apiKey},
+    signal:AbortSignal.timeout(effectiveTimeoutMs),
+    body:JSON.stringify({
+     contents:[{role:'user',parts:[{text:prompt}]}],
+     generationConfig
+    })
+   })
+  }catch(err){
+   if(err?.name==='TimeoutError'||err?.name==='AbortError'||/timeout|timed out|aborted/i.test(String(err?.message||''))){
+    throw new GeminiTimeoutError(`Gemini request timed out after ${Math.round(effectiveTimeoutMs/1000)}s on ${model}`)
    }
-   throw new GeminiQuotaExhausted(`Gemini HTTP ${effectiveStatus||429} quota exhausted: ${errMsg.slice(0,220)}`,effectiveStatus||429,{retryAfterMs})
+   throw err
   }
-  if(effectiveStatus===503||effectiveStatus===502||effectiveStatus===504||/\bUNAVAILABLE\b|high demand|overloaded/i.test(errBlob)){
-   throw new GeminiUnavailableError(`Gemini HTTP ${effectiveStatus||503}: ${errMsg.slice(0,220)}`,effectiveStatus||503,{retryAfterMs})
+
+  rawText=await response.text()
+  retryAfterMs=parseRetryAfterMs(response.headers?.get?.('retry-after'))
+
+  parsedEnvelope=null
+  try{parsedEnvelope=JSON.parse(rawText)}catch{parsedEnvelope=null}
+
+  // Classify API errors ONLY from unsuccessful HTTP responses or explicit error envelopes (never from valid 200 article content)
+  const explicitErrorObj=parsedEnvelope&&typeof parsedEnvelope.error==='object'&&parsedEnvelope.error!==null&&!Array.isArray(parsedEnvelope.candidates)
+   ?parsedEnvelope.error
+   :null
+
+  if(!response.ok||explicitErrorObj){
+   const effectiveStatus=Number(explicitErrorObj?.code||response.status||0)
+   const errStatusStr=String(explicitErrorObj?.status||'')
+   const errMsg=String(explicitErrorObj?.message||rawText||'').slice(0,260)
+   const errBlob=`${errStatusStr} ${errMsg}`.trim()
+
+   if((effectiveStatus===400||/\bINVALID_ARGUMENT\b/i.test(errBlob))&&/thinking_?(?:config|budget|level)/i.test(errBlob)&&attemptIdx<attempts.length-1){
+    continue
+   }
+
+   if(effectiveStatus===401||effectiveStatus===403||/API_KEY_INVALID|PERMISSION_DENIED|UNAUTHENTICATED/i.test(errBlob)){
+    throw new GeminiAuthError(`Gemini HTTP ${effectiveStatus||403}: ${errMsg.slice(0,220)}`,effectiveStatus||403)
+   }
+   if(effectiveStatus===404||/\bNOT_FOUND\b|no longer available/i.test(errBlob)){
+    throw new GeminiModelNotFoundError(`Gemini HTTP ${effectiveStatus||404}: ${errMsg.slice(0,220)}`,effectiveStatus||404)
+   }
+   if(effectiveStatus===429||/\bRESOURCE_EXHAUSTED\b|quota exceeded|rate limit/i.test(errBlob)){
+    const looksHardQuota=/quota exceeded|per.?day|daily|limit:\s*0|free.?tier.*limit|billing/i.test(errBlob)
+    const looksTempRateLimit=/rate.?limit|too many requests|per.?minute|\bRPM\b|\bTPM\b|try again shortly/i.test(errBlob)
+    if(looksTempRateLimit&&!looksHardQuota){
+     throw new GeminiRateLimitError(`Gemini HTTP ${effectiveStatus||429} temporary rate limit: ${errMsg.slice(0,220)}`,effectiveStatus||429,{retryAfterMs})
+    }
+    throw new GeminiQuotaExhausted(`Gemini HTTP ${effectiveStatus||429} quota exhausted: ${errMsg.slice(0,220)}`,effectiveStatus||429,{retryAfterMs})
+   }
+   if(effectiveStatus===503||effectiveStatus===502||effectiveStatus===504||/\bUNAVAILABLE\b|high demand|overloaded/i.test(errBlob)){
+    throw new GeminiUnavailableError(`Gemini HTTP ${effectiveStatus||503}: ${errMsg.slice(0,220)}`,effectiveStatus||503,{retryAfterMs})
+   }
+   if(effectiveStatus===400||/\bINVALID_ARGUMENT\b/i.test(errBlob)){
+    const modelUnsupported=/temperature|top_p|top_k|thinking_?(?:config|budget|level)|generation_?config|response_?json_?schema|unsupported.*model|not supported for/i.test(errBlob)
+    throw new GeminiInvalidRequestError(`Gemini HTTP ${effectiveStatus||400}: ${errMsg.slice(0,220)}`,effectiveStatus||400,{modelUnsupported})
+   }
+   const err=Error(`Gemini HTTP ${effectiveStatus||response.status}: ${errMsg.slice(0,220)}`)
+   err.status=effectiveStatus||response.status
+   throw err
   }
-  if(effectiveStatus===400||/\bINVALID_ARGUMENT\b/i.test(errBlob)){
-   const modelUnsupported=/temperature|top_p|top_k|generation_?config|response_?json_?schema|unsupported.*model|not supported for/i.test(errBlob)
-   throw new GeminiInvalidRequestError(`Gemini HTTP ${effectiveStatus||400}: ${errMsg.slice(0,220)}`,effectiveStatus||400,{modelUnsupported})
-  }
-  const err=Error(`Gemini HTTP ${effectiveStatus||response.status}: ${errMsg.slice(0,220)}`)
-  err.status=effectiveStatus||response.status
-  throw err
+  break
  }
 
  if(!parsedEnvelope)throw Error('Gemini returned malformed envelope JSON')
@@ -1922,6 +1978,8 @@ export async function callGeminiWithFailover(
  let lastInvalidError=null
  let unavailableModelsFailed=0
  let malformedResponseRetryUsed=false
+ let activeMaxOutputTokens=null
+ let activeThinkingOverride=null
 
  const remainingBudget=()=>deadlineMs-nowFn()
 
@@ -1956,7 +2014,15 @@ export async function callGeminiWithFailover(
     :requestTimeoutMs
 
    try{
-    const result=await callGeminiImpl(prompt,{apiKey:current.key,model:activeModel,fetchImpl,timeoutMs:clampedTimeoutMs,schema})
+    const result=await callGeminiImpl(prompt,{
+     apiKey:current.key,
+     model:activeModel,
+     fetchImpl,
+     timeoutMs:clampedTimeoutMs,
+     schema,
+     ...(activeMaxOutputTokens?{maxOutputTokens:activeMaxOutputTokens}:{}),
+     ...(activeThinkingOverride?{thinkingConfigOverride:activeThinkingOverride}:{})
+    })
     state.preferredModel=activeModel
     state.modelCooldownUntil.delete(activeModel)
     const fallbackUsed=activeModel!==primaryModel
@@ -2048,10 +2114,28 @@ export async function callGeminiWithFailover(
 
     if(isMalformedResponseError(err)){
      recordApiError(state,'invalid_response')
+     const isMaxTokens=String(err?.finishReason||'').toUpperCase()==='MAX_TOKENS'
      if(!malformedResponseRetryUsed){
       malformedResponseRetryUsed=true
-      console.warn(`[batch]   -> Gemini returned malformed JSON (${err.message}). Retrying once on ${activeModel} (${current.label})...`)
+      if(isMaxTokens){
+       const baseCap=activeMaxOutputTokens||buildGeminiGenerationConfig(activeModel,{schema}).maxOutputTokens
+       activeMaxOutputTokens=Math.max(baseCap*2,MAX_TOKENS_RETRY_OUTPUT_TOKENS)
+       activeThinkingOverride=/^gemini-4(?:\b|-)/.test(String(activeModel||'').trim().toLowerCase())
+        ?{thinkingLevel:'LOW'}
+        :{thinkingBudget:0}
+       console.warn(`[batch]   -> Gemini truncated output at MAX_TOKENS (${err.message}). Retrying once on ${activeModel} (${current.label}) with maxOutputTokens=${activeMaxOutputTokens} and minimized thinking...`)
+      }else{
+       console.warn(`[batch]   -> Gemini returned malformed JSON (${err.message}). Retrying once on ${activeModel} (${current.label})...`)
+      }
       continue
+     }
+     if(isMaxTokens&&nextModel){
+      console.warn(`[batch]   -> Gemini output still hit MAX_TOKENS on ${activeModel} even at maxOutputTokens=${activeMaxOutputTokens}; falling back to ${nextModel}...`)
+      malformedResponseRetryUsed=false
+      activeThinkingOverride=/^gemini-4(?:\b|-)/.test(String(nextModel||'').trim().toLowerCase())
+       ?{thinkingLevel:'LOW'}
+       :{thinkingBudget:0}
+      break
      }
      console.warn(`[batch]   -> Gemini JSON remained invalid after one retry on ${activeModel}; preserving candidate and stopping this request.`)
      throw err
@@ -2420,6 +2504,23 @@ async function saveQueueAtomic(queueFile,queue){
 
 export function classifyQualityErrorBucket(errMsg){
  const msg=String(errMsg||'')
+ if(/requires\s+\d+-\d+\s+paragraphs/i.test(msg))return 'paragraph_count'
+ if(/too few rendered lines|requires at least \d+ rendered lines/i.test(msg))return 'rendered_lines'
+ if(/same-type visual imbalance/i.test(msg))return 'imbalance'
+ if(/(?:^|[,:\s])overflow(?:\s+\d+px|\b)/i.test(msg))return 'overflow'
+ if(/utilization too high/i.test(msg))return 'utilization_high'
+ if(/utilization too low/i.test(msg))return 'utilization_low'
+ if(/measured\b/i.test(msg)&&/rewrite to approximately/i.test(msg)){
+  const pcts=[...msg.matchAll(/\b(\d+)%/g)].map(m=>Number(m[1]))
+  if(pcts.some(p=>p>92))return 'utilization_high'
+  if(pcts.some(p=>p<60))return 'utilization_low'
+  return 'editorial_layout'
+ }
+ if(/editorial card body/i.test(msg))return 'editorial_card_bounds'
+ if(/page count/i.test(msg))return 'page_count'
+ if(/CEFR descriptor review/i.test(msg))return 'cefr_descriptor_review'
+ if(/level plan|selectedFactIds|reader objective|depth notes/i.test(msg))return 'level_plan'
+ if(/text is too short or empty/i.test(msg))return 'short_text'
  if(/fixed-card bounds|word count/i.test(msg)){
   const lvl=msg.match(/^(A1-A2|B1-B2|C1-C2)/)?.[1]||'level'
   const kind=/photo page/i.test(msg)?'photo':'text'
@@ -2444,7 +2545,6 @@ export function classifyQualityErrorBucket(errMsg){
  if(/Factual|contradiction|unverified year|unverified quantity|topic alignment/i.test(msg))return 'factual/consistency'
  if(/Cross-level/i.test(msg))return 'cross-level parity'
  if(/complete sentence/i.test(msg))return 'incomplete sentence'
- if(/page count/i.test(msg))return 'page count'
  return 'other'
 }
 
@@ -2482,7 +2582,7 @@ export function formatPublishStepSummary(summary){
  if(apiEntries.length){
   lines.push('', '**API Errors:** '+apiEntries.map(([k,v])=>`\`${k}\`: ${v}`).join(', '))
  }
- const histEntries=Object.entries(summary.qualityErrorHistogram||{}).filter(([,c])=>c>0).sort((a,b)=>b[1]-a[1]).slice(0,8)
+ const histEntries=Object.entries(summary.qualityErrorHistogram||{}).filter(([,c])=>c>0).sort((a,b)=>b[1]-a[1]).slice(0,12)
  if(histEntries.length){
   lines.push('', '**Quality Gate Error Histogram:**')
   for(const [bucket,count] of histEntries)lines.push(`- ${bucket}: ${count}`)

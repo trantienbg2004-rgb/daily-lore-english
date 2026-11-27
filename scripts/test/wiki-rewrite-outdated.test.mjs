@@ -6,6 +6,17 @@ import path from 'node:path'
 import {fileURLToPath} from 'node:url'
 import {
  CURRENT_EDITORIAL_PROFILE,
+ DEFAULT_THINKING_BUDGET,
+ FULL_GENERATION_MAX_OUTPUT_TOKENS,
+ MAX_TOKENS_RETRY_OUTPUT_TOKENS,
+ REPAIR_MAX_OUTPUT_TOKENS,
+ GeminiMalformedResponseError,
+ buildCEFRReviewRepairPrompt,
+ buildGeminiGenerationConfig,
+ buildTargetedRepairPrompt,
+ callGeminiFlashLite,
+ callGeminiWithFailover,
+ classifyQualityErrorBucket,
  parseArgs,
  runPublishWikiBatch,
  selectOutdatedWikiStories,
@@ -363,3 +374,99 @@ test('SAGA Rewrite Old Articles GitHub Action workflow is manual-only with requi
  assert.match(yaml,/GITHUB_STEP_SUMMARY/)
  assert.match(yaml,/rewritten_count != '0'/)
 })
+
+test('Gemini generationConfig raises maxOutputTokens, caps thinkingBudget on Gemini 2.5/3.x, and escalates cleanly on MAX_TOKENS',async()=>{
+ assert.ok(FULL_GENERATION_MAX_OUTPUT_TOKENS>=16384)
+ assert.ok(REPAIR_MAX_OUTPUT_TOKENS>=8192)
+ assert.ok(MAX_TOKENS_RETRY_OUTPUT_TOKENS>=32768)
+
+ const flashCfg=buildGeminiGenerationConfig('gemini-3.5-flash-lite')
+ assert.equal(flashCfg.maxOutputTokens,FULL_GENERATION_MAX_OUTPUT_TOKENS)
+ assert.deepEqual(flashCfg.thinkingConfig,{thinkingBudget:DEFAULT_THINKING_BUDGET})
+ assert.equal(flashCfg.temperature,0.35)
+
+ const g36Cfg=buildGeminiGenerationConfig('gemini-3.6-flash',{schema:{type:'object',properties:{assessment:{type:'object'},repairs:{type:'array'}}}})
+ assert.equal(g36Cfg.maxOutputTokens,FULL_GENERATION_MAX_OUTPUT_TOKENS)
+ assert.deepEqual(g36Cfg.thinkingConfig,{thinkingBudget:DEFAULT_THINKING_BUDGET})
+
+ const gen4Cfg=buildGeminiGenerationConfig('gemini-4-hydrogen')
+ assert.equal(gen4Cfg.maxOutputTokens,FULL_GENERATION_MAX_OUTPUT_TOKENS)
+ assert.deepEqual(gen4Cfg.thinkingConfig,{thinkingLevel:'LOW'})
+
+ // callGeminiFlashLite gracefully degrades if a model rejects thinkingBudget with HTTP 400
+ const seenThinking=[]
+ const res=await callGeminiFlashLite('test prompt',{
+  apiKey:'test-key',
+  model:'gemini-3.5-flash-lite',
+  fetchImpl:async(_url,init)=>{
+   const body=JSON.parse(init.body)
+   seenThinking.push(body.generationConfig.thinkingConfig||null)
+   if(seenThinking.length===1){
+    return new Response(JSON.stringify({error:{code:400,status:'INVALID_ARGUMENT',message:'thinking_budget is not supported for this model'}}),{status:400})
+   }
+   return new Response(JSON.stringify({candidates:[{finishReason:'STOP',content:{parts:[{text:'{"ok":true}'}]}}]}),{status:200})
+  }
+ })
+ assert.deepEqual(res.draft,{ok:true})
+ assert.deepEqual(seenThinking,[{thinkingBudget:DEFAULT_THINKING_BUDGET},{thinkingLevel:'LOW'}])
+
+ // callGeminiWithFailover escalates maxOutputTokens and disables thinking on MAX_TOKENS retry instead of repeating the same cap
+ const state={keys:[{label:'GEMINI_API_KEY',key:'k1'}],activeIndex:0,exhaustedKeys:new Set()}
+ const callOpts=[]
+ const escalated=await callGeminiWithFailover('prompt',state,{
+  model:'gemini-3.5-flash-lite',
+  fallbackModels:['gemini-3.1-flash-lite'],
+  waitImpl:async()=>{},
+  callGeminiImpl:async(_prompt,opts)=>{
+   callOpts.push({model:opts.model,maxOutputTokens:opts.maxOutputTokens||null,thinkingConfigOverride:opts.thinkingConfigOverride||null})
+   if(callOpts.length===1){
+    throw new GeminiMalformedResponseError('Gemini returned invalid story JSON (finish=MAX_TOKENS, chars=1270)',{finishReason:'MAX_TOKENS',chars:1270})
+   }
+   return {draft:{ok:true},usage:null}
+  }
+ })
+ assert.deepEqual(escalated.draft,{ok:true})
+ assert.equal(callOpts.length,2)
+ assert.equal(callOpts[0].maxOutputTokens,null)
+ assert.ok(callOpts[1].maxOutputTokens>=MAX_TOKENS_RETRY_OUTPUT_TOKENS)
+ assert.deepEqual(callOpts[1].thinkingConfigOverride,{thinkingBudget:0})
+})
+
+test('classifyQualityErrorBucket categorizes all Step 2 rules explicitly (never other) and repair prompts align with Step 2 rules',()=>{
+ const cases=[
+  ['A1-A2 page 2 (text-only): requires 2-3 paragraphs (got 1)','paragraph_count'],
+  ['A1-A2 page 3 (text-only): too few rendered lines (390x844 5L); requires at least 6 rendered lines.','rendered_lines'],
+  ['A1-A2 page 1 (cover): overflow — current 350 chars / 60 words; measured 375x667 104% (312/300 px, overflow 12px, 5L); rewrite to approximately 275 chars','overflow'],
+  ['A1-A2 page 2 (photo): utilization too high — current 340 chars / 58 words; measured 390x844 94% (282/300 px, 5L); rewrite to approximately 275 chars','utilization_high'],
+  ['B1-B2 page 4 (text-only): utilization too low — current 310 chars / 50 words; measured 390x844 54% (162/300 px, 6L); rewrite to approximately 460 chars','utilization_low'],
+  ['B1-B2 page 4 (text-only): same-type visual imbalance at 390x844, body fill 61%; target 74%.','imbalance'],
+  ['A1-A2: page count must be between 4 and 8 (got 9)','page_count'],
+  ['A1-A2 page 1 (photo): editorial card body 150 characters; requires 220-340 characters of source-grounded prose','editorial_card_bounds'],
+  ['CEFR descriptor review: A1-A2: final descriptor assessment is not a confident pass across all six dimensions','cefr_descriptor_review']
+ ]
+ for(const [msg,expected] of cases){
+  assert.equal(classifyQualityErrorBucket(msg),expected,`Failed bucket for: ${msg}`)
+ }
+
+ // Verify Step 2 repair prompts instruct fixing paragraph counts & rendered lines without contradicting themselves
+ const source=makeMockSource('Stone Bridge',101)
+ const trimmed=trimWikipediaEvidence(source,{targetMinWords:50,targetMaxWords:1500})
+ const draft=makeLoreV1EditorialDraft('Stone Bridge','Check')
+ const quality={
+  ok:false,
+  errors:[
+   'A1-A2 page 2 (text-only): requires 2-3 paragraphs (got 1)',
+   'A1-A2 page 3 (text-only): too few rendered lines (390x844 5L); requires at least 6 rendered lines.'
+  ]
+ }
+ const targeted=buildTargetedRepairPrompt(source,'History & Geography',trimmed.evidence,draft,quality,[],null,{editorialRhythm:true})
+ assert.match(targeted,/"requiredParagraphs":"2-3"/)
+ assert.match(targeted,/"minRenderedLines":6/)
+ assert.match(targeted,/split single-paragraph text-only pages/)
+ assert.doesNotMatch(targeted,/Preserve each level's page count, image placement, planned focus, paragraph boundaries/)
+
+ const cefrReview=buildCEFRReviewRepairPrompt(source,'History & Geography',trimmed.evidence,draft,quality,{editorialRhythm:true})
+ assert.match(cefrReview,/split single-paragraph text-only pages/)
+ assert.match(cefrReview,/at least 6 rendered lines/)
+})
+
