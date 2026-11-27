@@ -976,7 +976,7 @@ export function planParagraphAwareWikiPages(item, fits, {
     return result
   }
 
-  const scorePage = (from, to, isCover, imageObj, evalRes) => {
+  const scorePage = (from, to, isCover, imageObj, evalRes, rhythmTarget = 0) => {
     const paraCount = to - from
     const words = paragraphs.slice(from, to).reduce((sum, p) => sum + p.words, 0)
     const hasPhoto = Boolean(imageObj?.image)
@@ -1001,6 +1001,9 @@ export function planParagraphAwareWikiPages(item, fits, {
       const comfortableWords = hasPhoto ? 120 : 150
       if (words > comfortableWords) cost += (words - comfortableWords) ** 2 * 0.025
     }
+    // Each candidate in the second pass is scored against the same reading
+    // beat, including photo pages and the final page. Pixel fit remains hard.
+    if (rhythmTarget > 0) cost += 230 * ((words - rhythmTarget) / rhythmTarget) ** 2
     // Discourage excessive unused whitespace without forcing wall-to-wall packing
     const whitespaceThreshold = adaptiveComfort ? 0.25 : 0.52
     if (evalRes.unusedRatio > whitespaceThreshold) {
@@ -1042,10 +1045,11 @@ export function planParagraphAwareWikiPages(item, fits, {
   const maxPossibleK = adaptiveComfort ? Math.min(N, Math.max(40, minPossibleK)) : Math.min(N, Math.max(maxAllowedPages, minPossibleK))
 
   // DP state: states[k] is a Map keyed by `${from}:${anchorIdx}` -> { cost, steps }
-  const states = Array.from({length: maxPossibleK + 1}, () => new Map())
+  const solve = (limit, rhythmTarget = 0) => {
+  const states = Array.from({length: limit + 1}, () => new Map())
   states[0].set('0:0', {cost: 0, steps: []})
 
-  for (let k = 0; k < maxPossibleK; k++) {
+  for (let k = 0; k < limit; k++) {
     const layer = states[k]
     if (!layer.size) continue
     const isCover = k === 0
@@ -1057,7 +1061,7 @@ export function planParagraphAwareWikiPages(item, fits, {
       if (from >= N) continue
 
       const remainingAnchors = R - aIdx
-      const maxSlotsLeft = maxPossibleK - k
+      const maxSlotsLeft = limit - k
       if (remainingAnchors > maxSlotsLeft) continue
 
       const nextAnchor = aIdx < R ? secondaryAnchors[aIdx] : null
@@ -1122,7 +1126,7 @@ export function planParagraphAwareWikiPages(item, fits, {
             bridgePenalty = adaptiveComfort ? Math.min(12, bridgeParas * 3) : 14
           }
 
-          const scored = scorePage(from, to, isCover, mode.imageObj, evalRes)
+          const scored = scorePage(from, to, isCover, mode.imageObj, evalRes, rhythmTarget)
           const nextCost = prev.cost + scored.cost + bridgePenalty
           const nextKey = `${to}:${mode.nextA}`
           const existing = states[k + 1].get(nextKey)
@@ -1149,6 +1153,9 @@ export function planParagraphAwareWikiPages(item, fits, {
     }
   }
 
+  return states
+  }
+  const states = solve(maxPossibleK)
   // Pick the globally optimal complete partition across K = 1..maxPossibleK
   let bestPlan = null
   let bestTotalCost = Infinity
@@ -1172,6 +1179,24 @@ export function planParagraphAwareWikiPages(item, fits, {
   }
 
   if (!bestPlan || !bestPlan.steps.length) return null
+
+  // Refine the complete partition at its measured page count. Reuse the DOM
+  // measurement cache; never add pages just to equalize word counts.
+  if (adaptiveComfort && bestPlan.steps.length > 1) {
+    const k = bestPlan.steps.length
+    const target = paragraphs.reduce((sum,p)=>sum+p.words,0) / k
+    const refined = solve(k,target)[k].get(terminalKey)
+    const stats = plan => {
+      const fills = plan.steps.map(step=>step.fillRatio)
+      const words = plan.steps.map(step=>paragraphs.slice(step.from,step.to).reduce((sum,p)=>sum+p.words,0))
+      return {mean:fills.reduce((a,b)=>a+b,0)/k, min:Math.min(...fills.slice(0,-1)), imbalance:words.reduce((sum,w)=>sum+((w-target)/target)**2,0)/k, dense:plan.steps.some(s=>s.dense)}
+    }
+    if (refined) {
+      const before = stats(bestPlan), after = stats(refined)
+      // Avoid trading away a whole screen of useful content for symmetry.
+      if (!after.dense && after.mean >= Math.min(before.mean,0.74)-0.015 && after.min >= Math.min(before.min,0.63)-0.015 && after.imbalance < before.imbalance) bestPlan = refined
+    }
+  }
 
   const pages = bestPlan.steps.map(step => {
     const slice = paragraphs.slice(step.from, step.to)
