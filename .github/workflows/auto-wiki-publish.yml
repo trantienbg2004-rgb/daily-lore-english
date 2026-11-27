@@ -67,6 +67,12 @@ jobs:
             node scripts/build_wiki_queue.mjs --target-per-topic=160 --min-pending=200
           fi
 
+      - name: Install Chromium and build the editorial measurement reader
+        if: ${{ inputs.dry_run != true && github.event.inputs.dry_run != 'true' }}
+        run: |
+          npx playwright install --with-deps chromium
+          npm run build
+
       - name: Publish Wikipedia batch with Gemini Flash-Lite
         id: publish
         continue-on-error: true
@@ -76,6 +82,8 @@ jobs:
           GEMINI_API_KEY_3: ${{ secrets.GEMINI_API_KEY_3 }}
           SAGA_IMAGE_TEST_API_KEY: ${{ secrets.SAGA_IMAGE_TEST_API_KEY }}
           GEMINI_MODEL: gemini-3.5-flash-lite
+          SAGA_EDITORIAL_LAYOUT: '3'
+          SAGA_EDITORIAL_BASE_URL: http://127.0.0.1:4173
           GITHUB_EVENT_NAME: ${{ github.event_name }}
           MAX_ARTICLES: ${{ inputs.max_articles || github.event.inputs.max_articles || '' }}
           GEMINI_DELAY_MS: '8000'
@@ -94,7 +102,23 @@ jobs:
           if [ "$DRY_RUN" = "true" ]; then
             node scripts/publish_wiki_batch.mjs --dry-run
           else
-            node scripts/publish_wiki_batch.mjs
+            npm run preview -- --host 127.0.0.1 --port 4173 --strictPort > /tmp/saga-publish-preview.log 2>&1 &
+            PREVIEW_PID=$!
+            trap 'kill "$PREVIEW_PID" 2>/dev/null || true' EXIT
+            for i in $(seq 1 30); do curl -fsS http://127.0.0.1:4173/ > /dev/null && break; sleep 1; done
+            curl -fsS http://127.0.0.1:4173/ > /dev/null
+            # Reserve the daily 06 UTC slot for gradual legacy upgrades; the
+            # other slots continue new measured articles. Rotate past rejected
+            # stories rather than repeatedly spending the quota on the same one.
+            IDS=""
+            if [ "$GITHUB_EVENT_NAME" = "schedule" ] && [ "$(date -u +%H)" = "06" ]; then
+              IDS=$(node --input-type=module -e "import {readWikiCatalog} from './scripts/wiki/catalog.mjs'; const c=await readWikiCatalog(process.cwd());const old=c.stories.filter(s=>s.readerLayoutVersion!==3);if(old.length){const offset=(Math.floor(Date.now()/86400000)*2)%old.length;console.log(Array.from({length:Math.min(2,old.length)},(_,i)=>old[(offset+i)%old.length].sourcePageId).join(','))}")
+            fi
+            if [ -n "$IDS" ]; then
+              node scripts/publish_wiki_batch.mjs --regenerate-existing --page-id="$IDS" --max-articles=2 --max-candidates=2
+            else
+              node scripts/publish_wiki_batch.mjs
+            fi
           fi
 
       - name: Verify Wiki catalog and queue integrity
