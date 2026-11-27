@@ -362,6 +362,7 @@ function layoutPages(item, reader, badImages = new Set()) {
   const fixture = reader.cloneNode(true)
   fixture.setAttribute('aria-hidden', 'true')
   fixture.classList.add('layout-measure-fixture')
+  fixture.dataset.readingLevel = item.readingLevel || ''
   Object.assign(fixture.style, {
     position:'fixed', left:'-20000px', top:'0', width:`${bounds.width}px`,
     height:`${bounds.height}px`, minHeight:'0', visibility:'hidden',
@@ -2065,7 +2066,7 @@ function App() {
       stopSpeech()
       setFullArticleStory(item)
     }
-    return <div className="reader-gesture" aria-hidden={!interactive} onTouchStart={interactive ? startGesture : undefined} onTouchMove={interactive ? moveGesture : undefined} onTouchEnd={interactive ? endGesture : undefined} onTouchCancel={interactive ? cancelGesture : undefined} onPointerDown={interactive ? startPointer : undefined} onPointerMove={interactive ? movePointer : undefined} onPointerUp={interactive ? endPointer : undefined} onPointerCancel={interactive ? () => {pointerGesture.current = null; releaseSwipeTransform({ spring: true })} : undefined}>
+    return <div className="reader-gesture" data-reading-level={item.readingLevel || ''} aria-hidden={!interactive} onTouchStart={interactive ? startGesture : undefined} onTouchMove={interactive ? moveGesture : undefined} onTouchEnd={interactive ? endGesture : undefined} onTouchCancel={interactive ? cancelGesture : undefined} onPointerDown={interactive ? startPointer : undefined} onPointerMove={interactive ? movePointer : undefined} onPointerUp={interactive ? endPointer : undefined} onPointerCancel={interactive ? () => {pointerGesture.current = null; releaseSwipeTransform({ spring: true })} : undefined}>
       <header className="topbar lore-reader-topbar">
         <div className="saga-topbar-slot saga-topbar-left">
           {interactive && item.levelVariants && (
