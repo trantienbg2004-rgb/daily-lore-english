@@ -11,7 +11,7 @@ on:
       - 'src/App.jsx'
       - 'scripts/publish_wiki_batch.mjs'
 permissions:
-  contents: read
+  contents: write
 concurrency:
   group: editorial-offline-${{ github.ref }}
   cancel-in-progress: true
@@ -19,9 +19,11 @@ jobs:
   pilot:
     if: github.event.pull_request.head.repo.full_name == github.repository && github.head_ref == 'fix/reader-page-rhythm'
     runs-on: ubuntu-latest
-    timeout-minutes: 12
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
@@ -35,6 +37,39 @@ jobs:
         env:
           SAGA_REQUIRE_EDITORIAL_PILOT: '1'
         run: npx playwright test --grep 'Visual regression:' --retries=0
+      - name: Independently review both visually accepted source-pinned articles
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_API_KEY_2: ${{ secrets.GEMINI_API_KEY_2 }}
+          GEMINI_API_KEY_3: ${{ secrets.GEMINI_API_KEY_3 }}
+          SAGA_IMAGE_TEST_API_KEY: ${{ secrets.SAGA_IMAGE_TEST_API_KEY }}
+        run: |
+          npm run preview -- --host 127.0.0.1 --port 4173 --strictPort > /tmp/saga-pilot-preview.log 2>&1 &
+          PREVIEW_PID=$!
+          trap 'kill "$PREVIEW_PID" 2>/dev/null || true' EXIT
+          for i in $(seq 1 30); do curl -fsS http://127.0.0.1:4173/ > /dev/null && break; sleep 1; done
+          curl -fsS http://127.0.0.1:4173/ > /dev/null
+          node scripts/wiki/review-editorial-pilot.mjs
+      - name: Install only independently approved stories into the pristine CI catalog
+        run: |
+          git restore --source=HEAD -- public/wiki-reader
+          git clean -fd -- public/wiki-reader
+          node scripts/wiki/review-editorial-pilot.mjs --install-approved
+          npm run build
+      - name: Verify final reviewed reader visually again
+        env:
+          SAGA_REQUIRE_EDITORIAL_PILOT: '1'
+        run: npx playwright test --grep 'Visual regression:' --retries=0
+      - name: Stage only fully reviewed and visually accepted data on the PR branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/wiki-reader
+          git diff --cached --stat
+          if ! git diff --cached --quiet; then
+            git commit -m "feat(editorial): stage two source-pinned independently reviewed copyfit articles"
+            git push origin HEAD:refs/heads/fix/reader-page-rhythm
+          fi
       - uses: actions/upload-artifact@v4
         if: always()
         with:
