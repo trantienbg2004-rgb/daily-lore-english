@@ -11,6 +11,7 @@ const catalogHash=(entries,stories)=>hash({entries:entries.map(row=>[row.id,row.
 const levels=['A1-A2','B1-B2','C1-C2']
 export const WIKI_TARGET_STORIES=200
 export const WIKI_TARGET_PER_TOPIC=15
+export const EDITORIAL_PROFILE_LORE_V1='lore-v1'
 export const wikiTargetMet=(total,counts)=>total>=WIKI_TARGET_STORIES&&
  WIKI_TOPICS.every(topic=>(counts?.[topic]||0)>=WIKI_TARGET_PER_TOPIC)
 const exists=async file=>fs.access(file).then(()=>true,()=>false)
@@ -27,6 +28,8 @@ export function makeWikiStory({source,topic,draft,photos,evidence=[],now=new Dat
   sourcePageId:source.pageId,sourceRevisionId:source.sourceRevisionId,sourceRevisionUrl:source.sourceRevisionUrl,
   sourceRetrievedAt:source.sourceRetrievedAt,contentType:'wiki',readingKind:'full',editorialVersion:2,
   ...(draft.readerLayoutVersion===3?{readerLayoutVersion:3}:{}),
+  ...(nonempty(draft.editorialProfile)?{editorialProfile:draft.editorialProfile.trim()}:{}),
+  ...(nonempty(draft.slug)?{slug:draft.slug.trim()}:{}),
   category:topic,publishedAt:now.toISOString(),license:'CC BY-SA 4.0',licenseUrl:'https://creativecommons.org/licenses/by-sa/4.0/',
   attribution:'Adapted from English Wikipedia contributors; see pinned revision and history. SAGA AI-assisted adaptation under CC BY-SA 4.0. Wikipedia does not endorse SAGA.',
   levelVariants:variants,pages:variants['B1-B2'].pages.map(page=>({...page})),
@@ -196,6 +199,7 @@ async function writeFileAtomic(filePath,content){
   const existing=before.stories[index]
   const normalized=structuredClone(updatedStory)
   normalized.id=existing.id
+  if(existing.slug!==undefined)normalized.slug=existing.slug
   normalized.sourcePageId=existing.sourcePageId
   normalized.category=existing.category
   normalized.publishedAt=existing.publishedAt

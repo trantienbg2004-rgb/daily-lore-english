@@ -16,7 +16,7 @@ import {createHash} from 'node:crypto'
 import {fileURLToPath} from 'node:url'
 import {WIKI_TOPICS} from './wiki/discovery.mjs'
 import {fetchWikipediaParsePage,WikiApiPause} from './wiki/source.mjs'
-import {appendWikiStories,makeWikiStory,readWikiCatalog,replaceWikiStory,validateWikiStory} from './wiki/catalog.mjs'
+import {EDITORIAL_PROFILE_LORE_V1,appendWikiStories,makeWikiStory,readWikiCatalog,replaceWikiStory,validateWikiStory} from './wiki/catalog.mjs'
 import {assignBatchPhotos,assignIndependentBatchPhotos,collectVerifiedArticlePhotos,findMainSubjectFallbackPhoto,formatCompleteCaption} from './wiki/batch-media.mjs'
 import {CEFR_THRESHOLDS,evaluateArticleCEFR} from './wiki/cefrProfiler.mjs'
 
@@ -46,10 +46,21 @@ export const MAX_COOLDOWN_MS=15_000
 export const MAX_UNAVAILABLE_MODELS_PER_CALL=3
 const LEVELS=['A1-A2','B1-B2','C1-C2']
 export const PAGE_COUNT_BOUNDS=Object.freeze({min:4,max:6})
+export const CURRENT_EDITORIAL_PROFILE=EDITORIAL_PROFILE_LORE_V1
 // Layout budget, not a CEFR definition. Character length predicts rendered
 // line count more reliably than identical word counts across proficiency bands.
 export const EDITORIAL_CARD_CHAR_BOUNDS=Object.freeze({photo:[220,340],text:[420,560]})
 export const EDITORIAL_PARAGRAPH_BOUNDS=Object.freeze({photo:[1,2],text:[2,3]})
+
+export function selectOutdatedWikiStories(stories,{includeOldV3=true,targetProfile=CURRENT_EDITORIAL_PROFILE}={}){
+ if(!Array.isArray(stories))return []
+ return stories.filter(story=>{
+  if(!story||typeof story!=='object')return false
+  if(story.editorialProfile===targetProfile)return false
+  if(!includeOldV3&&story.readerLayoutVersion===3)return false
+  return true
+ })
+}
 const ADAPTIVE_MAP_GUIDANCE='Each version (A1-A2, B1-B2, and C1-C2) independently chooses 4–8 pages (typically 4–6, using 7–8 when genuinely useful for clear pacing or depth). Never fewer than 4 or more than 8. Use the same verified cover imageId in all three versions. Body images may appear at different page indexes, only if relevant to that page. Outline is a broad common topic sequence, not a page-index contract. Plan each actual page as photo or text-only before composing. Do not pad or force equal page counts.'
 const measuredGuidance=budgets=>budgets?[
  'MANDATORY COPYFITTING. These are measured BODY lengths (not headline or caption). Write the full requested length on EACH page, not the entire article. For cover and photo pages write 1–2 natural paragraphs; for text-only pages write 2–3 natural paragraphs. Do not confuse the photo and text-only budgets. Use the following targets for natural prose:',
@@ -2438,7 +2449,22 @@ export function classifyQualityErrorBucket(errMsg){
 }
 
 export function formatPublishStepSummary(summary){
- const lines=[
+ const rewrittenCount=Number(summary.rewrittenCount??summary.regeneratedCount??0)
+ const failedCount=Number(summary.failedCount??((summary.skippedNoLeadImageCount||0)+(summary.skippedQualityCount||0)+(summary.errors?.length||0)))
+ const lines=summary.rewriteOutdated?[
+  '### SAGA Rewrite Old Articles Summary',
+  '',
+  '| Metric | Value |',
+  '| --- | --- |',
+  `| Mode | \`${summary.dryRun?'dry-run':'live'}\` (\`rewrite-outdated\`, \`include_old_v3=${Boolean(summary.includeOldV3)}\`) |`,
+  `| Stop Reason | \`${summary.stopReason}\` |`,
+  `| Rewritten Articles | **${rewrittenCount}** (catalog total: **${summary.catalogTotal}**) |`,
+  `| Skipped / Failed | **${failedCount}** (no lead image: ${summary.skippedNoLeadImageCount??0}, quality gate: ${summary.skippedQualityCount??0}, errors: ${summary.errors?.length??0}) |`,
+  `| Remaining Outdated Articles | **${summary.remainingOutdatedCount??0}** (started with ${summary.initialOutdatedCount??0}) |`,
+  `| Candidates Scanned | ${summary.scannedCount??0} |`,
+  `| Valid Repo Changes | \`${Boolean(summary.hasValidChanges)}\` |`,
+  `| Elapsed Time | ${summary.elapsedSeconds??0}s |`
+ ]:[
   '### Auto Wiki Publish Summary',
   '',
   '| Metric | Value |',
@@ -2470,8 +2496,13 @@ export function formatPublishStepSummary(summary){
 export async function writeGithubOutputs(summary,outputPath=process.env.GITHUB_OUTPUT||''){
  if(!outputPath)return false
  const apiErrorCount=Object.values(summary.apiErrorCounts||{}).reduce((sum,v)=>sum+Number(v||0),0)
+ const rewrittenCount=Number(summary.rewrittenCount??summary.regeneratedCount??0)
+ const failedCount=Number(summary.failedCount??((summary.skippedNoLeadImageCount||0)+(summary.skippedQualityCount||0)+(summary.errors?.length||0)))
  const payload=[
   `published_count=${Number(summary.generatedCount||0)}`,
+  `rewritten_count=${rewrittenCount}`,
+  `failed_count=${failedCount}`,
+  ...(summary.remainingOutdatedCount!==undefined&&summary.remainingOutdatedCount!==null?[`remaining_outdated_count=${Number(summary.remainingOutdatedCount)}`]:[]),
   `stop_reason=${String(summary.stopReason||'infrastructure_failure')}`,
   `has_valid_changes=${summary.hasValidChanges?'true':'false'}`,
   `scanned_count=${Number(summary.scannedCount||0)}`,
@@ -2507,6 +2538,8 @@ export async function runPublishWikiBatch({
  titles=[],
  pageIds=[],
  regenerateExisting=false,
+ rewriteOutdated=false,
+ includeOldV3=true,
  retrySkippedQuality=false,
  editorialRhythm=process.env.SAGA_EDITORIAL_LAYOUT==='3',
  editorialMeter=null,
@@ -2526,7 +2559,9 @@ export async function runPublishWikiBatch({
  collectPhotosImpl=collectVerifiedArticlePhotos,
  callGeminiImpl=callGeminiFlashLite
 }={}){
- if(editorialRhythm&&!dryRun&&!editorialMeter)throw Error('Editorial layout requires a calibrated Chromium meter; refusing unmeasured publishing')
+ const effectiveRegenerateExisting=Boolean(regenerateExisting||rewriteOutdated)
+ const effectiveEditorialRhythm=Boolean(editorialRhythm||rewriteOutdated)
+ if(effectiveEditorialRhythm&&!dryRun&&!editorialMeter)throw Error('Editorial layout requires a calibrated Chromium meter; refusing unmeasured publishing')
  const startedAtMs=nowFn()
  const deadlineMs=Number.isFinite(maxRuntimeMs)&&maxRuntimeMs>0?startedAtMs+maxRuntimeMs:Infinity
  const remainingBudget=()=>deadlineMs-nowFn()
@@ -2542,7 +2577,7 @@ export async function runPublishWikiBatch({
   return summary
  }
 
- const queue=regenerateExisting
+ const queue=effectiveRegenerateExisting
   ?await fs.readFile(queueFile,'utf8').then(raw=>JSON.parse(raw)).catch(()=>({version:1,items:[]}))
   :JSON.parse(await fs.readFile(queueFile,'utf8'))
  const sourceCatalog=await readWikiCatalog(resolvedRoot)
@@ -2550,10 +2585,10 @@ export async function runPublishWikiBatch({
  let catalogTotal=targetCatalog.manifest?.total??targetCatalog.stories.length
  const targetStoryIds=new Set(targetCatalog.stories.map(s=>s.id))
 
- const effectiveExplicitMax=maxArticles??(regenerateExisting?DEFAULT_REGENERATE_MAX_ARTICLES:null)
+ const effectiveExplicitMax=maxArticles??(effectiveRegenerateExisting?DEFAULT_REGENERATE_MAX_ARTICLES:null)
  const schedulePlan=resolveAutoSchedulePlan({
   catalogTotal:sourceCatalog.manifest?.total??sourceCatalog.stories.length,
-  eventName:regenerateExisting||isIsolatedPilot?'workflow_dispatch':eventName,
+  eventName:effectiveRegenerateExisting||isIsolatedPilot?'workflow_dispatch':eventName,
   explicitMaxArticles:effectiveExplicitMax,
   now,
   bootstrapThreshold
@@ -2612,7 +2647,7 @@ export async function runPublishWikiBatch({
  // Idempotent crash recovery: reconcile any queue item already committed to the catalog (normal production mode only)
  let queueDirty=false
  let queuePersisted=false
- if(!regenerateExisting&&!isIsolatedPilot){
+ if(!effectiveRegenerateExisting&&!isIsolatedPilot){
   for(const qItem of queue.items||[]){
    if(qItem.status!=='published'&&Number.isSafeInteger(qItem.pageId)&&sourceUsedPageIds.has(qItem.pageId)){
     qItem.status='published'
@@ -2628,9 +2663,13 @@ export async function runPublishWikiBatch({
  const explicitTitleSet=new Set(explicitTitles.map(t=>t.toLowerCase()))
  const explicitPageIdSet=new Set(explicitPageIds)
 
+ const initialOutdatedStories=selectOutdatedWikiStories(sourceCatalog.stories,{includeOldV3})
+ const initialOutdatedCount=initialOutdatedStories.length
+
  let schedule
- if(regenerateExisting){
-  const candidates=sourceCatalog.stories.filter(story=>{
+ if(effectiveRegenerateExisting){
+  const basePool=rewriteOutdated?initialOutdatedStories:sourceCatalog.stories
+  const candidates=basePool.filter(story=>{
    if(explicitPageIdSet.size&&!explicitPageIdSet.has(story.sourcePageId))return false
    if(explicitTitleSet.size){
     const sTitle=String(story.sourceTitle||'').toLowerCase()
@@ -2661,12 +2700,12 @@ export async function runPublishWikiBatch({
 
  const configuredScanCap=Number.isFinite(Number(maxCandidates))&&Number(maxCandidates)>0
   ?Math.floor(Number(maxCandidates))
-  :(schedulePlan.maxCandidates||targetPublished*3)
+  :(rewriteOutdated?schedule.length:(schedulePlan.maxCandidates||targetPublished*3))
  const maxCandidatesToScan=(explicitTitles.length||explicitPageIdSet.size)
   ?schedule.length
   :Math.min(schedule.length,configuredScanCap)
 
- console.log(`[batch] Starting ${dryRun?'DRY-RUN ':''}${regenerateExisting?'REGENERATE ':''}${isIsolatedPilot?'ISOLATED-PILOT ':''}publish [stage=${schedulePlan.stage}]: targetPublished=${targetPublished}, maxCandidates=${maxCandidatesToScan}, budget=${Number.isFinite(maxRuntimeMs)?Math.round(maxRuntimeMs/1000)+'s':'unbounded'}, model=${modelChain[0]}, fallbacks=[${modelChain.slice(1).join(', ')}], keys=${resolvedKeys.length}, candidates=${schedule.length}, catalogTotal=${catalogTotal}`)
+ console.log(`[batch] Starting ${dryRun?'DRY-RUN ':''}${rewriteOutdated?'REWRITE-OUTDATED ':effectiveRegenerateExisting?'REGENERATE ':''}${isIsolatedPilot?'ISOLATED-PILOT ':''}publish [stage=${schedulePlan.stage}]: targetPublished=${targetPublished}, maxCandidates=${maxCandidatesToScan}, budget=${Number.isFinite(maxRuntimeMs)?Math.round(maxRuntimeMs/1000)+'s':'unbounded'}, model=${modelChain[0]}, fallbacks=[${modelChain.slice(1).join(', ')}], keys=${resolvedKeys.length}, candidates=${schedule.length}${rewriteOutdated?`, initialOutdated=${initialOutdatedCount}, includeOldV3=${Boolean(includeOldV3)}`:''}, catalogTotal=${catalogTotal}`)
 
  const generatedStories=[]
  const publishedItems=[]
@@ -2692,7 +2731,7 @@ export async function runPublishWikiBatch({
   }
  }
 
- const canMutateQueue=!dryRun&&!isIsolatedPilot&&!regenerateExisting
+ const canMutateQueue=!dryRun&&!isIsolatedPilot&&!effectiveRegenerateExisting
  const checkpointQueue=async()=>{
   if(!canMutateQueue)return
   await saveQueueAtomic(queueFile,queue)
@@ -2756,18 +2795,18 @@ export async function runPublishWikiBatch({
    return {budgetHit:true}
   }
   const repairTargets=identifyRepairTargets(normalizedDraft,quality)
-  const repairSchema=repairTargets.useTargetedPatch?TARGETED_REPAIR_SCHEMA:editorialRhythm?ADAPTIVE_STORY_SCHEMA:BATCH_STORY_SCHEMA
+  const repairSchema=repairTargets.useTargetedPatch?TARGETED_REPAIR_SCHEMA:effectiveEditorialRhythm?ADAPTIVE_STORY_SCHEMA:BATCH_STORY_SCHEMA
   const modeLabel=repairTargets.useTargetedPatch
    ?`targeted patch (${repairTargets.targetSummary.map(t=>`${t.level}${t.headline?'[H]':''}${t.pageIndexes.length?`[P${t.pageIndexes.map(i=>i+1).join(',')}]`:''}`).join(', ')})`
    :'structural rebuild'
   console.warn(`[batch]   -> Quality gate failed (${quality.errors.length} issue(s)); running ONE ${modeLabel}...`)
-  const repairPrompt=buildTargetedRepairPrompt(source,item.topic,trimmed.evidence,normalizedDraft,quality,verifiedPhotos,null,{editorialRhythm,budgets:editorialMeter?.budgets})
+  const repairPrompt=buildTargetedRepairPrompt(source,item.topic,trimmed.evidence,normalizedDraft,quality,verifiedPhotos,null,{editorialRhythm:effectiveEditorialRhythm,budgets:editorialMeter?.budgets})
   const retryRes=await invokeGeminiWithDelay(repairPrompt,{reserveMs:minRetryBudgetMs,schema:repairSchema})
   consecutiveInfraFailures=0
   try{
    const mergedRaw=mergeTargetedRepairs(normalizedDraft,retryRes.draft,repairTargets)
    const repairedDraft=prepareEditorial({draft:normalizeDraftForCatalog(mergedRaw,{source,evidence:trimmed.evidence,verifiedPhotos}),source,trimmed,verifiedPhotos})
-   let repairedQuality=validateArticleQuality(repairedDraft,source.sourceTitle,{source,evidence:trimmed.evidence,editorialRhythm:editorialRhythm&&!dryRun,measuredLayout:Boolean(editorialMeter),requireLevelPlans:!dryRun&&callGeminiImpl===callGeminiFlashLite})
+   let repairedQuality=validateArticleQuality(repairedDraft,source.sourceTitle,{source,evidence:trimmed.evidence,editorialRhythm:effectiveEditorialRhythm&&!dryRun,measuredLayout:Boolean(editorialMeter),requireLevelPlans:!dryRun&&callGeminiImpl===callGeminiFlashLite})
    repairedQuality=await auditEditorial(repairedDraft,repairedQuality)
    return {
     budgetHit:false,
@@ -2865,15 +2904,15 @@ export async function runPublishWikiBatch({
    let usedModel=dryRun?'dry-run':(keyState.preferredModel||modelChain[0])
    if(dryRun){
     normalizedDraft=normalizeDraftForCatalog(makeDryRunDraft(source,trimmed.evidence,verifiedPhotos),{source,evidence:trimmed.evidence,verifiedPhotos})
-    quality=validateArticleQuality(normalizedDraft,source.sourceTitle,{source,evidence:trimmed.evidence,editorialRhythm:editorialRhythm&&!dryRun,measuredLayout:Boolean(editorialMeter),requireLevelPlans:!dryRun&&callGeminiImpl===callGeminiFlashLite})
+    quality=validateArticleQuality(normalizedDraft,source.sourceTitle,{source,evidence:trimmed.evidence,editorialRhythm:effectiveEditorialRhythm&&!dryRun,measuredLayout:Boolean(editorialMeter),requireLevelPlans:!dryRun&&callGeminiImpl===callGeminiFlashLite})
    }else{
-    const prompt=buildBatchPrompt(source,item.topic,trimmed.evidence,verifiedPhotos,{editorialRhythm,budgets:editorialMeter?.budgets})
-    const firstRes=await invokeGeminiWithDelay(prompt,{reserveMs:minRetryBudgetMs,schema:editorialRhythm?ADAPTIVE_STORY_SCHEMA:BATCH_STORY_SCHEMA})
+    const prompt=buildBatchPrompt(source,item.topic,trimmed.evidence,verifiedPhotos,{editorialRhythm:effectiveEditorialRhythm,budgets:editorialMeter?.budgets})
+    const firstRes=await invokeGeminiWithDelay(prompt,{reserveMs:minRetryBudgetMs,schema:effectiveEditorialRhythm?ADAPTIVE_STORY_SCHEMA:BATCH_STORY_SCHEMA})
     consecutiveInfraFailures=0
     usedModel=firstRes.model||usedModel
     generationModelsUsed.add(usedModel)
     normalizedDraft=prepareEditorial({draft:normalizeDraftForCatalog(firstRes.draft,{source,evidence:trimmed.evidence,verifiedPhotos}),source,trimmed,verifiedPhotos,usedImages:candidateUsedImages})
-    quality=validateArticleQuality(normalizedDraft,source.sourceTitle,{source,evidence:trimmed.evidence,editorialRhythm:editorialRhythm&&!dryRun,measuredLayout:Boolean(editorialMeter)})
+    quality=validateArticleQuality(normalizedDraft,source.sourceTitle,{source,evidence:trimmed.evidence,editorialRhythm:effectiveEditorialRhythm&&!dryRun,measuredLayout:Boolean(editorialMeter)})
 
     // Keep the existing structural rebuild only for page/image parity failures.
     // CEFR, language and editorial mismatches are handled by the mandatory descriptor reviewer below.
@@ -2907,15 +2946,15 @@ export async function runPublishWikiBatch({
      if((quality.errors||[]).length&&!requiredRepairLevels.size){
       for(const level of LEVELS)requiredRepairLevels.add(level)
      }
-     const reviewPrompt=buildCEFRReviewRepairPrompt(source,item.topic,trimmed.evidence,normalizedDraft,quality,{editorialRhythm,budgets:editorialMeter?.budgets})
+     const reviewPrompt=buildCEFRReviewRepairPrompt(source,item.topic,trimmed.evidence,normalizedDraft,quality,{editorialRhythm:effectiveEditorialRhythm,budgets:editorialMeter?.budgets})
      const independentReviewerChain=buildIndependentCEFRReviewerChain(reviewerModelChain,[...generationModelsUsed])
      if(!independentReviewerChain.length)throw Error('No independent CEFR reviewer model available: generator used '+usedModel+'; configured reviewer chain was ['+reviewerModelChain.join(', ')+']. Failing closed rather than allowing self-review.')
      console.log('[batch]   -> Independent CEFR reviewer route: generator='+usedModel+'; reviewer candidates=['+independentReviewerChain.join(', ')+'].')
-     const reviewRes=await invokeGeminiWithDelay(reviewPrompt,{reserveMs:minRetryBudgetMs,schema:editorialRhythm?simplifyEditorialSchema(buildCEFRReviewRepairSchema(normalizedDraft)):buildCEFRReviewRepairSchema(normalizedDraft),modelChainOverride:independentReviewerChain,keyStateOverride:reviewerKeyState})
+     const reviewRes=await invokeGeminiWithDelay(reviewPrompt,{reserveMs:minRetryBudgetMs,schema:effectiveEditorialRhythm?simplifyEditorialSchema(buildCEFRReviewRepairSchema(normalizedDraft)):buildCEFRReviewRepairSchema(normalizedDraft),modelChainOverride:independentReviewerChain,keyStateOverride:reviewerKeyState})
      consecutiveInfraFailures=0
      const reviewOutcome=applyCEFRReviewRepairs(normalizedDraft,reviewRes.draft,{requiredRepairLevels:[...requiredRepairLevels],validEvidenceIds:new Set(trimmed.evidence.map(e=>e.id))})
      normalizedDraft=normalizeDraftForCatalog(reviewOutcome.draft,{source,evidence:trimmed.evidence,verifiedPhotos})
-     quality=validateArticleQuality(normalizedDraft,source.sourceTitle,{source,evidence:trimmed.evidence,editorialRhythm:editorialRhythm&&!dryRun,measuredLayout:Boolean(editorialMeter),requireLevelPlans:true})
+     quality=validateArticleQuality(normalizedDraft,source.sourceTitle,{source,evidence:trimmed.evidence,editorialRhythm:effectiveEditorialRhythm&&!dryRun,measuredLayout:Boolean(editorialMeter),requireLevelPlans:true})
      quality=await auditEditorial(normalizedDraft,quality)
      quality.cefrReview=reviewOutcome.finalAssessment||null
      if(!reviewOutcome.ok){
@@ -2950,15 +2989,15 @@ export async function runPublishWikiBatch({
      if((quality.errors||[]).length&&!retryRequiredRepairLevels.size){
       for(const level of LEVELS)retryRequiredRepairLevels.add(level)
      }
-     const retryReviewPrompt=buildCEFRReviewRepairPrompt(source,item.topic,trimmed.evidence,normalizedDraft,quality,{editorialRhythm,budgets:editorialMeter?.budgets})
+     const retryReviewPrompt=buildCEFRReviewRepairPrompt(source,item.topic,trimmed.evidence,normalizedDraft,quality,{editorialRhythm:effectiveEditorialRhythm,budgets:editorialMeter?.budgets})
      const independentReviewerChain=buildIndependentCEFRReviewerChain(reviewerModelChain,[...generationModelsUsed])
      if(!independentReviewerChain.length)throw Error('No independent CEFR reviewer model available after targeted repair: generator used '+usedModel+'; configured reviewer chain was ['+reviewerModelChain.join(', ')+']. Failing closed rather than allowing self-review.')
      console.log('[batch]   -> Final independent CEFR reviewer route: generator='+usedModel+'; reviewer candidates=['+independentReviewerChain.join(', ')+'].')
-     const retryReviewRes=await invokeGeminiWithDelay(retryReviewPrompt,{reserveMs:minRetryBudgetMs,schema:editorialRhythm?simplifyEditorialSchema(buildCEFRReviewRepairSchema(normalizedDraft)):buildCEFRReviewRepairSchema(normalizedDraft),modelChainOverride:independentReviewerChain,keyStateOverride:reviewerKeyState})
+     const retryReviewRes=await invokeGeminiWithDelay(retryReviewPrompt,{reserveMs:minRetryBudgetMs,schema:effectiveEditorialRhythm?simplifyEditorialSchema(buildCEFRReviewRepairSchema(normalizedDraft)):buildCEFRReviewRepairSchema(normalizedDraft),modelChainOverride:independentReviewerChain,keyStateOverride:reviewerKeyState})
      consecutiveInfraFailures=0
      const retryReviewOutcome=applyCEFRReviewRepairs(normalizedDraft,retryReviewRes.draft,{requiredRepairLevels:[...retryRequiredRepairLevels],validEvidenceIds:new Set(trimmed.evidence.map(e=>e.id))})
      normalizedDraft=normalizeDraftForCatalog(retryReviewOutcome.draft,{source,evidence:trimmed.evidence,verifiedPhotos})
-     quality=validateArticleQuality(normalizedDraft,source.sourceTitle,{source,evidence:trimmed.evidence,editorialRhythm:editorialRhythm&&!dryRun,measuredLayout:Boolean(editorialMeter),requireLevelPlans:true})
+     quality=validateArticleQuality(normalizedDraft,source.sourceTitle,{source,evidence:trimmed.evidence,editorialRhythm:effectiveEditorialRhythm&&!dryRun,measuredLayout:Boolean(editorialMeter),requireLevelPlans:true})
      quality=await auditEditorial(normalizedDraft,quality)
      quality.cefrReview=retryReviewOutcome.finalAssessment||null
      if(!retryReviewOutcome.ok){
@@ -2985,7 +3024,7 @@ export async function runPublishWikiBatch({
    }
 
    // Strictly outline/section-bound wikipedia-embedded image binding & alignment guard (NO Commons fallback!)
-   const assignPhotos=editorialRhythm&&!dryRun?assignIndependentBatchPhotos:assignBatchPhotos
+   const assignPhotos=effectiveEditorialRhythm&&!dryRun?assignIndependentBatchPhotos:assignBatchPhotos
    let assigned=assignPhotos(normalizedDraft.variants,{
     source,
     articlePhotos:verifiedPhotos,
@@ -3016,7 +3055,7 @@ export async function runPublishWikiBatch({
      level,
      {
       ...normalizedDraft.variants[level],
-      pages:normalizedDraft.variants[level].pages.map((p,i)=>(editorialRhythm?assigned.strippedImages.some(s=>s.level===level&&s.pageIndex===i):strippedSet.has(i))?{...p,imageId:null,caption:''}:p)
+      pages:normalizedDraft.variants[level].pages.map((p,i)=>(effectiveEditorialRhythm?assigned.strippedImages.some(s=>s.level===level&&s.pageIndex===i):strippedSet.has(i))?{...p,imageId:null,caption:''}:p)
      }
     ]))
     const postStripOutline=Array.isArray(normalizedDraft.outline)
@@ -3027,7 +3066,7 @@ export async function runPublishWikiBatch({
      ...(postStripOutline?{outline:postStripOutline}:{}),
      variants:postStripVariants
     }
-    quality=validateArticleQuality(normalizedDraft,source.sourceTitle,{source,evidence:trimmed.evidence,editorialRhythm:editorialRhythm&&!dryRun,measuredLayout:Boolean(editorialMeter)})
+    quality=validateArticleQuality(normalizedDraft,source.sourceTitle,{source,evidence:trimmed.evidence,editorialRhythm:effectiveEditorialRhythm&&!dryRun,measuredLayout:Boolean(editorialMeter)})
 
     if(!quality.ok&&!dryRun&&!repairUsed&&callGeminiImpl!==callGeminiFlashLite){
      const repairOutcome=await runOneTargetedRepair({source,item,trimmed,verifiedPhotos,normalizedDraft,quality})
@@ -3060,7 +3099,7 @@ export async function runPublishWikiBatch({
       skippedNoImage.push(item.title)
       continue
      }
-     quality=validateArticleQuality(normalizedDraft,source.sourceTitle,{source,evidence:trimmed.evidence,editorialRhythm:editorialRhythm&&!dryRun,measuredLayout:Boolean(editorialMeter)})
+     quality=validateArticleQuality(normalizedDraft,source.sourceTitle,{source,evidence:trimmed.evidence,editorialRhythm:effectiveEditorialRhythm&&!dryRun,measuredLayout:Boolean(editorialMeter)})
     }
 
     if(!quality.ok){
@@ -3086,7 +3125,10 @@ export async function runPublishWikiBatch({
    const builtStory=makeWikiStory({
     source,
     topic:item.topic,
-    draft:{variants:assigned.levelVariants,...(editorialRhythm&&!dryRun?{readerLayoutVersion:3}:{})},
+    draft:{
+     variants:assigned.levelVariants,
+     ...(effectiveEditorialRhythm&&!dryRun?{readerLayoutVersion:3,editorialProfile:CURRENT_EDITORIAL_PROFILE}:{})
+    },
     photos:assigned.photos,
     evidence:trimmed.evidence
    })
@@ -3094,6 +3136,7 @@ export async function runPublishWikiBatch({
     ?{
      ...builtStory,
      id:item._existingStory.id,
+     ...(item._existingStory.slug!==undefined?{slug:item._existingStory.slug}:{}),
      sourcePageId:item._existingStory.sourcePageId,
      category:item._existingStory.category||builtStory.category,
      topic:item._existingStory.topic||builtStory.topic,
@@ -3186,8 +3229,21 @@ export async function runPublishWikiBatch({
   await checkpointQueue()
  }
 
+ const failedCount=skippedNoLeadImage.length+skippedQuality.length+transientErrors.length
+ let remainingOutdatedCount=Math.max(0,initialOutdatedCount-replacedInCatalog)
+ if(!dryRun&&!isIsolatedPilot){
+  const afterCatalog=await readWikiCatalog(writeRoot)
+  remainingOutdatedCount=selectOutdatedWikiStories(afterCatalog.stories,{includeOldV3}).length
+ }else if(dryRun){
+  remainingOutdatedCount=Math.max(0,initialOutdatedCount-generatedStories.length)
+ }
+
  if(!dryRun){
-  console.log(`[batch] Summary saved (${isIsolatedPilot?`isolated -> ${writeRoot}`:'production'}): added=${addedToCatalog}, regenerated=${replacedInCatalog} (catalog total: ${catalogTotal}), skipped_no_lead_image=${skippedNoLeadImage.length}, skipped_quality=${skippedQuality.length}.`)
+  if(rewriteOutdated){
+   console.log(`[batch] Rewrite summary (${isIsolatedPilot?`isolated -> ${writeRoot}`:'production'}): rewritten=${replacedInCatalog}, skipped_or_failed=${failedCount} (no_lead=${skippedNoLeadImage.length}, quality=${skippedQuality.length}, errors=${transientErrors.length}), remaining_outdated=${remainingOutdatedCount} (catalog total: ${catalogTotal}).`)
+  }else{
+   console.log(`[batch] Summary saved (${isIsolatedPilot?`isolated -> ${writeRoot}`:'production'}): added=${addedToCatalog}, regenerated=${replacedInCatalog} (catalog total: ${catalogTotal}), skipped_no_lead_image=${skippedNoLeadImage.length}, skipped_quality=${skippedQuality.length}.`)
+  }
  }else{
   console.log(`[batch] DRY-RUN complete: validated ${generatedStories.length} article(s), skipped_no_lead_image=${skippedNoLeadImage.length}, skipped_quality=${skippedQuality.length}, errors=${transientErrors.length}. No files modified.`)
  }
@@ -3204,8 +3260,12 @@ export async function runPublishWikiBatch({
  }else if(generatedStories.length>0){
   stopReason='completed'
  }else if(transientErrors.length>0){
-  stopReason='infrastructure_failure'
-  infrastructureFailed=true
+  if(rewriteOutdated){
+   stopReason='all_candidates_failed'
+  }else{
+   stopReason='infrastructure_failure'
+   infrastructureFailed=true
+  }
  }else if(skippedQuality.length>0){
   stopReason='quality_rejected'
  }else{
@@ -3218,7 +3278,9 @@ export async function runPublishWikiBatch({
   dryRun,
   isolatedPilot:isIsolatedPilot,
   outputRoot:writeRoot,
-  regenerateExisting,
+  regenerateExisting:effectiveRegenerateExisting,
+  rewriteOutdated:Boolean(rewriteOutdated),
+  includeOldV3:Boolean(includeOldV3),
   skippedBySchedule:false,
   schedulePlan,
   stopReason,
@@ -3229,6 +3291,10 @@ export async function runPublishWikiBatch({
   generatedCount:generatedStories.length,
   addedToCatalog,
   regeneratedCount:replacedInCatalog,
+  rewrittenCount:replacedInCatalog,
+  failedCount,
+  initialOutdatedCount,
+  remainingOutdatedCount,
   catalogTotal,
   scannedCount,
   skippedNoImageCount:skippedNoImage.length,
@@ -3261,13 +3327,32 @@ export function parseArgs(argv){
   titles:[],
   pageIds:[],
   regenerateExisting:false,
+  rewriteOutdated:false,
+  includeOldV3:true,
+  editorialRhythm:process.env.SAGA_EDITORIAL_LAYOUT==='3',
   retrySkippedQuality:false,
   dryRun:false
  }
  for(const arg of argv){
   if(arg==='--dry-run')opts.dryRun=true
   else if(arg==='--regenerate-existing')opts.regenerateExisting=true
+  else if(arg==='--rewrite-outdated'){
+   opts.rewriteOutdated=true
+   opts.regenerateExisting=true
+   opts.editorialRhythm=true
+  }
+  else if(arg==='--include-old-v3')opts.includeOldV3=true
+  else if(arg==='--no-include-old-v3')opts.includeOldV3=false
+  else if(arg.startsWith('--include-old-v3=')){
+   const raw=arg.slice('--include-old-v3='.length).trim().toLowerCase()
+   opts.includeOldV3=!(raw==='false'||raw==='0'||raw==='no')
+  }
+  else if(arg==='--editorial-rhythm')opts.editorialRhythm=true
   else if(arg==='--retry-skipped-quality')opts.retrySkippedQuality=true
+  else if(arg.startsWith('--limit=')){
+   const val=Number(arg.split('=')[1])
+   if(Number.isFinite(val)&&val>0)opts.maxArticles=Math.floor(val)
+  }
   else if(arg.startsWith('--max-articles=')){
    const val=Number(arg.split('=')[1])
    if(Number.isFinite(val)&&val>0)opts.maxArticles=Math.floor(val)
@@ -3300,24 +3385,34 @@ export function parseArgs(argv){
 if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.url)){
  const opts=parseArgs(process.argv.slice(2))
  const run=async()=>{
-  if(process.env.SAGA_EDITORIAL_LAYOUT!=='3'||opts.dryRun)return runPublishWikiBatch(opts)
+  const needsEditorialMeter=(process.env.SAGA_EDITORIAL_LAYOUT==='3'||opts.editorialRhythm||opts.rewriteOutdated)&&!opts.dryRun
+  if(!needsEditorialMeter)return runPublishWikiBatch(opts)
   const {openEditorialMeter}=await import('./wiki/editorial-meter.mjs')
   const meter=await openEditorialMeter(process.env.SAGA_EDITORIAL_BASE_URL||'http://127.0.0.1:4173')
   try{return await runPublishWikiBatch({...opts,editorialMeter:meter})}finally{await meter.close()}
  }
  run()
   .then(summary=>{
-   console.log(`[batch] Done: stop_reason=${summary.stopReason}, published=${summary.generatedCount}, scanned=${summary.scannedCount}, skipped_no_lead_image=${summary.skippedNoLeadImageCount}, skipped_quality=${summary.skippedQualityCount}, has_valid_changes=${summary.hasValidChanges}, elapsed=${summary.elapsedSeconds}s.`)
+   if(summary.rewriteOutdated){
+    console.log(`[batch] Done (rewrite-outdated): stop_reason=${summary.stopReason}, rewritten=${summary.rewrittenCount}, failed=${summary.failedCount}, remaining_outdated=${summary.remainingOutdatedCount}, scanned=${summary.scannedCount}, has_valid_changes=${summary.hasValidChanges}, elapsed=${summary.elapsedSeconds}s.`)
+   }else{
+    console.log(`[batch] Done: stop_reason=${summary.stopReason}, published=${summary.generatedCount}, scanned=${summary.scannedCount}, skipped_no_lead_image=${summary.skippedNoLeadImageCount}, skipped_quality=${summary.skippedQualityCount}, has_valid_changes=${summary.hasValidChanges}, elapsed=${summary.elapsedSeconds}s.`)
+   }
    process.exit(summary.stopReason==='infrastructure_failure'?1:0)
   })
   .catch(async err=>{
    console.error('[batch] Fatal error:',err.message)
    const fatalSummary={
     dryRun:opts.dryRun,
+    rewriteOutdated:Boolean(opts.rewriteOutdated),
+    includeOldV3:Boolean(opts.includeOldV3),
     schedulePlan:{stage:'fatal'},
     stopReason:'infrastructure_failure',
     hasValidChanges:false,
     generatedCount:0,
+    regeneratedCount:0,
+    rewrittenCount:0,
+    failedCount:0,
     catalogTotal:0,
     scannedCount:0,
     skippedNoLeadImageCount:0,
