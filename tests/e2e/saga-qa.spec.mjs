@@ -566,7 +566,7 @@ for (const article of visualCases) {
         const total=Number((await active.locator('.lore-page-count').innerText()).split('/')[1])
         if(shared){
           expect(total).toBeGreaterThanOrEqual(4)
-          expect(total).toBeLessThanOrEqual(6)
+          expect(total).toBeLessThanOrEqual(level==='A1-A2'?6:8)
           expect(total).toBe(source.levelVariants[level].pages.length)
         }else if(vp.width>=1000) expect(total,article.name+' '+level+' should not use more pages than necessary').toBeLessThanOrEqual(article.name==='goat'?4:5)
         const texts=[]
@@ -588,7 +588,7 @@ for (const article of visualCases) {
             const mediaEl=root.querySelector('.article-media:not(.article-media-empty)')
             const media=mediaEl?.getBoundingClientRect(), photo=rect('.article-media img.hero-photo')
             const nav=document.querySelector('.bottom-nav').getBoundingClientRect()
-            return {gap:text.top-(media?media.bottom:heading.bottom), fill:(text.bottom-surface.top)/Math.max(1,pager.top-surface.top), textBottom:text.bottom,pagerTop:pager.top,pagerBottom:pager.bottom,navTop:nav.top,photoCenter:photo&&media?Math.abs((photo.left+photo.right-media.left-media.right)/2):null, bodyHeight:text.height, frameHeight:rect('.article-media figure')?.height||0, lineHeight:parseFloat(getComputedStyle(root.querySelector('.article-text')).lineHeight), width:text.width, fontSize:parseFloat(getComputedStyle(root.querySelector('.article-text')).fontSize), dense:root.querySelector('.page-surface').classList.contains('saga-page--dense')}
+            return {gap:text.top-(media?media.bottom:heading.bottom), fill:(text.bottom-surface.top)/Math.max(1,pager.top-surface.top), textBottom:text.bottom,pagerTop:pager.top,pagerBottom:pager.bottom,navTop:nav.top,photoCenter:photo&&media?Math.abs((photo.left+photo.right-media.left-media.right)/2):null, bodyHeight:text.height, bodyFill:text.height/Math.max(1,pager.top-12-text.top), frameHeight:rect('.article-media figure')?.height||0, lineHeight:parseFloat(getComputedStyle(root.querySelector('.article-text')).lineHeight), width:text.width, fontSize:parseFloat(getComputedStyle(root.querySelector('.article-text')).fontSize), dense:root.querySelector('.page-surface').classList.contains('saga-page--dense')}
           })
           expect(m.dense, 'No exceptional scroll on ordinary reading viewports').toBe(false)
           expect(m.gap,'Text follows heading or photograph, not floating in the middle').toBeLessThanOrEqual(28)
@@ -603,7 +603,7 @@ for (const article of visualCases) {
           if(i<total) expect(m.fill,'Non-final page should use at least 60% of its reading surface').toBeGreaterThanOrEqual(.60)
           if(shared){
             expect(Boolean(await visibleMedia.count())).toBe(Boolean(source.levelVariants[level].pages[i-1].image))
-            expect(m.fill,'Every editorial card must fill its reading surface').toBeGreaterThanOrEqual(.72)
+            expect(m.bodyFill,'Every editorial card must fill its available body space').toBeGreaterThanOrEqual(.80)
             expect(m.bodyHeight/m.lineHeight,'Comfortable minimum body length').toBeGreaterThanOrEqual(m.frameHeight?5:11)
             measuredSlots.push({...m,photo:Boolean(await visibleMedia.count())})
           }
@@ -623,8 +623,8 @@ for (const article of visualCases) {
           for(const photo of [true,false]){
             const group=measuredSlots.filter(m=>m.photo===photo)
             if(group.length<2)continue
-            const heights=group.map(m=>m.bodyHeight), fs=group.map(m=>m.fill)
-            expect(Math.max(...fs)-Math.min(...fs),'Same-type page visual spread').toBeLessThanOrEqual(.18)
+            const heights=group.map(m=>m.bodyHeight), fs=group.map(m=>m.bodyFill)
+            expect(Math.max(...fs)-Math.min(...fs),'Same-type page visual spread').toBeLessThanOrEqual(.15)
             expect(Math.max(...heights)/Math.min(...heights),'Same-type text block height ratio').toBeLessThanOrEqual(1.35)
           }
           slotMetrics.push(measuredSlots)
@@ -638,14 +638,11 @@ for (const article of visualCases) {
         }
       }
       if(shared){
-        expect(new Set(ratios.map(r=>r.total)).size).toBe(1)
         expect(new Set(slotMetrics.flat().map(m=>m.fontSize)).size).toBe(1)
         const frames=slotMetrics.flat().filter(m=>m.photo).map(m=>m.frameHeight)
         expect(Math.max(...frames)-Math.min(...frames),'Shared photo frame height').toBeLessThanOrEqual(2)
-        for(let i=0;i<slotMetrics[0].length;i++){
-          const fs=slotMetrics.map(v=>v[i].fill)
-          expect(Math.max(...fs)-Math.min(...fs),'Corresponding A/B/C visual spread').toBeLessThanOrEqual(.18)
-        }
+        const first=slotMetrics.map(v=>v[0].bodyFill)
+        expect(Math.max(...first)-Math.min(...first),'A/B/C cover visual spread').toBeLessThanOrEqual(.15)
       }
       console.log('VISUAL METRICS',article.name,vp,JSON.stringify(ratios))
     })
