@@ -589,17 +589,20 @@ for (const article of visualCases) {
           if(m.photoCenter!==null)expect(m.photoCenter,'Photo centered without cropping').toBeLessThanOrEqual(5)
           if(vp.width>=1000){
             expect(m.width).toBeGreaterThanOrEqual(450)
-            expect(m.fontSize).toBeGreaterThanOrEqual(18)
+            expect(m.fontSize).toBeGreaterThanOrEqual(level==='A1-A2'?21:18)
             if(i<total)expect(m.fill,'Nonfinal desktop page should not be mostly empty').toBeGreaterThanOrEqual(.42)
           }
           fills.push(m.fill)
           // DOM textContent concatenates sibling <p> elements without a separator.
           texts.push((await active.locator('.article-text > .article-paragraph').allTextContents()).join(' '))
-          if(vp.width>=1000)await page.screenshot({path:testInfo.outputPath(`${article.name}-${level}-${i}.png`)})
+          await page.screenshot({path:testInfo.outputPath(`${article.name}-${level}-${vp.width}x${vp.height}-${i}.png`)})
           if(i<total) await active.getByRole('button',{name:'Next page',exact:true}).click()
         }
         expect(normalizeVisual(texts.join(' '))).toEqual(normalizeVisual(source.levelVariants[level].pages.map(p=>p.text).join(' ')))
-        if(vp.width>=1000)expect(fills.reduce((s,n)=>s+n,0)/fills.length,'Mean desktop content utilization').toBeGreaterThanOrEqual(.55)
+        if(vp.width>=1000){
+          expect(fills.reduce((s,n)=>s+n,0)/fills.length,'Mean desktop content utilization').toBeGreaterThanOrEqual(level==='A1-A2'?.70:.65)
+          if(level==='A1-A2')expect(total,'Beginner readability must not add unnecessary pages').toBeLessThanOrEqual(article.name==='goat'?3:4)
+        }
         ratios.push({level,total,fills:fills.map(n=>Number(n.toFixed(2)))})
         for(let i=total;i>1;i--){
           await active.getByRole('button',{name:'Previous page',exact:true}).click()
