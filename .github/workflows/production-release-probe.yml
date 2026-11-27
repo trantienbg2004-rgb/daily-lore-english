@@ -11,17 +11,30 @@ jobs:
     timeout-minutes: 3
     steps:
       - uses: actions/checkout@v4
-      - name: Compare origin and cached public release
+      - name: Refresh only stale SAGA entry points if an authorized token exists
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
+          CLOUDFLARE_ZONE_ID: ${{ secrets.CLOUDFLARE_ZONE_ID }}
+          CF_ZONE_ID: ${{ secrets.CF_ZONE_ID }}
         shell: bash
         run: |
           set -eu
-          echo "EXPECTED CATALOG"
-          jq '{contentHash,catalogIndex,total,updatedAt}' public/wiki-reader/manifest.json
-          for suffix in "" "?release=$GITHUB_SHA"; do
-            for resource in "wiki-reader/manifest.json" ""; do
-              echo "REQUEST https://saga.id.vn/$resource$suffix"
-              curl -sS -L --max-time 15 -H 'Cache-Control: no-cache' -D /tmp/saga-headers -o /tmp/saga-body "https://saga.id.vn/$resource$suffix"
-              cat /tmp/saga-headers
-              if [[ -n "$resource" ]]; then jq '{contentHash,catalogIndex,total,updatedAt}' /tmp/saga-body; else grep -E 'script.*src=|stylesheet.*href=' /tmp/saga-body || true; fi
-            done
-          done
+          expected=$(jq -r .contentHash public/wiki-reader/manifest.json)
+          live=$(curl -fsS --max-time 15 https://saga.id.vn/wiki-reader/manifest.json | jq -r .contentHash)
+          echo "EXPECTED=$expected LIVE=$live"
+          if [[ "$live" == "$expected" ]]; then echo "PUBLIC_RELEASE_CURRENT"; exit 0; fi
+          token="${CLOUDFLARE_API_TOKEN:-$CF_API_TOKEN}"
+          zone="${CLOUDFLARE_ZONE_ID:-$CF_ZONE_ID}"
+          if [[ -z "$token" ]]; then echo "BLOCKER: No Cloudflare API token configured in available deployment secrets."; exit 0; fi
+          if [[ -z "$zone" ]]; then
+            response=$(curl -fsS --max-time 15 -H "Authorization: Bearer $token" 'https://api.cloudflare.com/client/v4/zones?name=saga.id.vn') || { echo "BLOCKER: Token cannot look up SAGA zone."; exit 0; }
+            zone=$(printf '%s' "$response" | jq -r '.result[0].id // empty')
+          fi
+          if [[ -z "$zone" ]]; then echo "BLOCKER: No SAGA zone ID available."; exit 0; fi
+          response=$(curl -sS --max-time 15 -X POST -H "Authorization: Bearer $token" -H 'Content-Type: application/json' --data '{"files":["https://saga.id.vn/","https://saga.id.vn/index.html","https://saga.id.vn/wiki-reader/manifest.json"]}' "https://api.cloudflare.com/client/v4/zones/$zone/purge_cache")
+          if ! printf '%s' "$response" | jq -e '.success == true' >/dev/null; then echo "BLOCKER: Scoped cache purge not permitted."; exit 0; fi
+          echo "SCOPED_PURGE_OK"
+          sleep 5
+          curl -fsS -D /tmp/headers --max-time 15 https://saga.id.vn/wiki-reader/manifest.json | jq '{contentHash,catalogIndex,total,updatedAt}'
+          grep -iE 'cf-cache-status|cache-control|age:' /tmp/headers || true
