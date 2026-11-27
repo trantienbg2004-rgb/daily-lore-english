@@ -493,15 +493,13 @@ function layoutPages(item, reader, badImages = new Set()) {
       const mediaBounds = media.getBoundingClientRect()
       const pagerBounds = pager.getBoundingClientRect()
       const viewportBottom = fixture.getBoundingClientRect().bottom
-      const availableHeight = Math.max(1, pagerBounds.top - cardBounds.top - 8)
-      const contentBottom = Math.max(textBounds.bottom, image ? mediaBounds.bottom : 0)
-      const bottomWhitespacePx = Math.max(0, pagerBounds.top - contentBottom)
-      // Auto-centering means the blank area is distributed above and below the text.
-      // Count actual unused space for text-only pages, not just bottom margin.
-      const unusedVerticalPx = image
-        ? bottomWhitespacePx
-        : Math.max(0, availableHeight - textBounds.height)
       const safeBottom = Math.min(pagerBounds.top, fixture.getBoundingClientRect().bottom) - 12
+      const availableHeight = Math.max(1, safeBottom - cardBounds.top)
+      const contentBottom = Math.max(textBounds.bottom, image ? mediaBounds.bottom : 0)
+      const bottomWhitespacePx = Math.max(0, safeBottom - contentBottom)
+      // Measure the same top-aligned flow seen by the user, including the heading
+      // and image. The denominator is independent of how much text was assigned.
+      const unusedVerticalPx = bottomWhitespacePx
       const overflowPx = Math.max(0, contentBottom - safeBottom)
       // The flex pager ends exactly at the reader's bottom; allow subpixel
       // rounding while keeping the entire paragraph block above the pager.
@@ -511,7 +509,7 @@ function layoutPages(item, reader, badImages = new Set()) {
       const measured = {
         fits: fitsPage,
         usedHeight: textBounds.height,
-        availableHeight: Math.max(1, pagerBounds.top - (image ? surfaceBounds.top : cardBounds.top) - 8),
+        availableHeight: Math.max(1, safeBottom - surfaceBounds.top),
         cardAvailableHeight: availableHeight,
         bottomWhitespacePx,
         unusedVerticalPx,
