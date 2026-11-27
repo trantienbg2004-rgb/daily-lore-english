@@ -20,6 +20,8 @@ function resolveChromiumLaunchOptions() {
   return {}
 }
 
+const port=Number(process.env.SAGA_QA_PORT||4173)
+const baseURL='http://127.0.0.1:'+port
 export default defineConfig({
   testDir: './tests/e2e',
   testMatch: /.*\.spec\.mjs/,
@@ -37,7 +39,7 @@ export default defineConfig({
   ],
   outputDir: 'test-results',
   use: {
-    baseURL: 'http://127.0.0.1:4173',
+    baseURL,
     headless: true,
     screenshot: 'only-on-failure',
     trace: 'retain-on-failure',
@@ -54,8 +56,8 @@ export default defineConfig({
     },
   ],
   webServer: {
-    command: 'npm run preview -- --host 127.0.0.1 --port 4173 --strictPort',
-    url: 'http://127.0.0.1:4173',
+    command: 'npm run preview -- --host 127.0.0.1 --port '+port+' --strictPort',
+    url: baseURL,
     reuseExistingServer: !process.env.CI,
     timeout: 60_000,
   },

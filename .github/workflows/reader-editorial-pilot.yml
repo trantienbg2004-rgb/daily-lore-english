@@ -59,6 +59,7 @@ jobs:
       - name: Verify final reviewed reader visually again
         env:
           SAGA_REQUIRE_EDITORIAL_PILOT: '1'
+          SAGA_QA_PORT: '4174'
         run: npx playwright test --grep 'Visual regression:' --retries=0
       - name: Stage only fully reviewed and visually accepted data on the PR branch
         run: |
@@ -77,5 +78,6 @@ jobs:
           path: |
             test-results/
             playwright-report/
+            /tmp/saga-approved-pilots.json
           retention-days: 7
           if-no-files-found: ignore
