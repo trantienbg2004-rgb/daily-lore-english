@@ -12,12 +12,14 @@ test('shared editorial pagination preserves every slot even on a short viewport'
  assert.equal(plan.length,5)
  assert.deepEqual(plan.map(p=>[p.text,p.image]),pages.map(p=>[p.text,p.image]))
  assert.equal(plan[0].density,'dense saga-page--dense')
- assert.deepEqual(plan[2].sourceSectionIndices,[2])
+ assert.equal(plan[2].semanticRange.mid,.5)
  assert.equal(plan.at(-1).semanticRange.end,1)
 })
-test('reject unaligned authored maps',()=>{
+test('permit independent authored maps but reject divergent covers',()=>{
  const mismatch=structuredClone(variants)
  mismatch['C1-C2'].pages[2].image=''
+ assert.equal(planEditorialWikiPages({pages,levelVariants:mismatch},()=>true).length,5)
+ mismatch['C1-C2'].pages[0].image='other'
  assert.equal(planEditorialWikiPages({pages,levelVariants:mismatch},()=>true),null)
 })
 test('layout budget is independent of CEFR and rejects sparse editorial pages only when enabled',()=>{
