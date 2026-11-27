@@ -3999,7 +3999,7 @@
 
 /* Fix 03 — adaptive reading comfort. Keep the fixed pager outside the reading surface.
    A genuine overflow (including a transient font/image reflow) remains reachable. */
-.app-shell.lore-editorial-v5 .reader-gesture:not(.layout-measure-fixture) .page-surface {
+.app-shell.lore-editorial-v5 .reader-gesture:not(.layout-measure-fixture) .page-surface.saga-page--dense {
   overflow-y: auto;
   overflow-x: hidden;
   overscroll-behavior-y: contain;
