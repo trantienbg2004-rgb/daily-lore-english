@@ -262,12 +262,14 @@ const BATCH_STORY_SCHEMA={
  required:['factSheet','outline','levelPlans','sharedCoreFactIds','variants']
 }
 
-const ADAPTIVE_STORY_SCHEMA=structuredClone(BATCH_STORY_SCHEMA)
-for(const level of LEVELS){
- const schema=structuredClone(LEVEL_SCHEMA)
- schema.properties.pages.maxItems=level==='A1-A2'?6:8
- ADAPTIVE_STORY_SCHEMA.properties.variants.properties[level]=schema
+// Gemini rejects highly constrained nested arrays (HTTP 400 state limit).
+// Keep the output shape but enforce all numeric bounds in the local gate.
+export function simplifyEditorialSchema(schema){
+ if(Array.isArray(schema))return schema.map(simplifyEditorialSchema)
+ if(!schema||typeof schema!=='object')return schema
+ return Object.fromEntries(Object.entries(schema).filter(([k])=>!['minItems','maxItems','minLength','maxLength','minimum','maximum'].includes(k)).map(([k,v])=>[k,simplifyEditorialSchema(v)]))
 }
+const ADAPTIVE_STORY_SCHEMA=simplifyEditorialSchema(BATCH_STORY_SCHEMA)
 // Shared outline is a topic outline, not a fixed page map for adaptive stories.
 const REPAIR_PAGE_SCHEMA={
  type:'object',
