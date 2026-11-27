@@ -1003,7 +1003,12 @@ export function planParagraphAwareWikiPages(item, fits, {
     }
     // Each candidate in the second pass is scored against the same reading
     // beat, including photo pages and the final page. Pixel fit remains hard.
-    if (rhythmTarget > 0) cost += 230 * ((words - rhythmTarget) / rhythmTarget) ** 2
+    if (rhythmTarget > 0) {
+      cost += 150 * ((words - rhythmTarget) / rhythmTarget) ** 2
+      // The last page is part of the rhythm, too. Do not move so much text
+      // forward that the final screen becomes a visually empty stub.
+      cost += 650 * Math.max(0, 0.68 - evalRes.usedRatio) ** 2
+    }
     // Discourage excessive unused whitespace without forcing wall-to-wall packing
     const whitespaceThreshold = adaptiveComfort ? 0.25 : 0.52
     if (evalRes.unusedRatio > whitespaceThreshold) {
@@ -1107,6 +1112,10 @@ export function planParagraphAwareWikiPages(item, fits, {
           // Monotonicity guard: never stack multiple paragraphs onto an overflowing page
           if (!evalRes.fits && (adaptiveComfort || to - from > 1)) break
 
+          // Leave a little more headroom during rhythm refinement; the DOM
+          // fixture can underestimate padding and actual token line wrapping.
+          if (rhythmTarget > 0 && evalRes.usedRatio > 0.95) continue
+
           if (to < minTo) {
             if (!evalRes.fits) break
             continue
@@ -1189,12 +1198,12 @@ export function planParagraphAwareWikiPages(item, fits, {
     const stats = plan => {
       const fills = plan.steps.map(step=>step.fillRatio)
       const words = plan.steps.map(step=>paragraphs.slice(step.from,step.to).reduce((sum,p)=>sum+p.words,0))
-      return {mean:fills.reduce((a,b)=>a+b,0)/k, min:Math.min(...fills.slice(0,-1)), imbalance:words.reduce((sum,w)=>sum+((w-target)/target)**2,0)/k, dense:plan.steps.some(s=>s.dense)}
+      return {mean:fills.reduce((a,b)=>a+b,0)/k, min:Math.min(...fills), max:Math.max(...fills), imbalance:words.reduce((sum,w)=>sum+((w-target)/target)**2,0)/k, dense:plan.steps.some(s=>s.dense)}
     }
     if (refined) {
       const before = stats(bestPlan), after = stats(refined)
       // Avoid trading away a whole screen of useful content for symmetry.
-      if (!after.dense && after.mean >= Math.min(before.mean,0.74)-0.015 && after.min >= Math.min(before.min,0.63)-0.015 && after.imbalance < before.imbalance) bestPlan = refined
+      if (!after.dense && after.mean >= Math.min(before.mean,0.74)-0.015 && after.min >= Math.min(before.min,0.66)-0.015 && after.max <= Math.max(before.max,0.95) && after.imbalance < before.imbalance) bestPlan = refined
     }
   }
 
