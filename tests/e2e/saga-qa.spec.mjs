@@ -537,7 +537,7 @@ const visualCases = [
 const readPublic = name => JSON.parse(fs.readFileSync(new URL('../../public/wiki-reader/'+name,import.meta.url),'utf8'))
 const normalizeVisual = value => String(value||'').replace(/\s+/g,' ').replace(/\s+([.,!?;:])/g,'$1').trim()
 for (const article of visualCases) {
-  for (const vp of [{width:1366,height:768},{width:390,height:844}]) {
+  for (const vp of [{width:1366,height:768},{width:390,height:844},{width:430,height:932}]) {
     test(`Visual regression: ${article.name} ${vp.width}x${vp.height}, A/B/C every page`,async({page},testInfo)=>{
       test.setTimeout(120_000)
       await page.setViewportSize(vp)
@@ -592,6 +592,7 @@ for (const article of visualCases) {
             expect(m.fontSize).toBeGreaterThanOrEqual(level==='A1-A2'?21:18)
             if(i<total)expect(m.fill,'Nonfinal desktop page should not be mostly empty').toBeGreaterThanOrEqual(.42)
           }
+          if(i<total) expect(m.fill,'Non-final page should use at least 60% of its reading surface').toBeGreaterThanOrEqual(.60)
           fills.push(m.fill)
           // DOM textContent concatenates sibling <p> elements without a separator.
           texts.push((await active.locator('.article-text > .article-paragraph').allTextContents()).join(' '))
@@ -599,8 +600,9 @@ for (const article of visualCases) {
           if(i<total) await active.getByRole('button',{name:'Next page',exact:true}).click()
         }
         expect(normalizeVisual(texts.join(' '))).toEqual(normalizeVisual(source.levelVariants[level].pages.map(p=>p.text).join(' ')))
+        expect(fills.reduce((s,n)=>s+n,0)/fills.length,'Mean content utilization across the whole article').toBeGreaterThanOrEqual(.72)
         if(vp.width>=1000){
-          expect(fills.reduce((s,n)=>s+n,0)/fills.length,'Mean desktop content utilization').toBeGreaterThanOrEqual(level==='A1-A2'?.70:.65)
+          expect(fills.reduce((s,n)=>s+n,0)/fills.length,'Mean desktop content utilization').toBeGreaterThanOrEqual(.75)
           if(level==='A1-A2')expect(total,'Beginner readability must not add unnecessary pages').toBeLessThanOrEqual(article.name==='goat'?3:4)
         }
         ratios.push({level,total,fills:fills.map(n=>Number(n.toFixed(2)))})
