@@ -1714,7 +1714,13 @@ function App() {
   }
   // Pointer events catch edge gestures missed by touchend after late image
   // loads or a mobile browser cancel. The touch fallback is deduplicated.
+  // A rare overflow must scroll natively, not accidentally advance the story.
+  const scrollableReadingSurface = target => {
+    const surface = target?.closest?.('.page-surface')
+    return Boolean(surface && surface.scrollHeight > surface.clientHeight + 2)
+  }
   const startPointer = event => {
+    if (scrollableReadingSurface(event.target)) return
     if (event.pointerType !== 'touch' || selected || fullArticleOpen || event.target.closest('button, a, summary, select, label')) return
     interruptActiveMotion()
     const now = performance.now()
@@ -1909,6 +1915,7 @@ function App() {
   // Treat word buttons as part of the reading surface, not as navigation controls.
   // This makes swiping across the paragraph work on touch screens.
   const startGesture = event => {
+    if (scrollableReadingSurface(event.target)) { gesture.current = null; return }
     if (event.touches.length !== 1 || selected || fullArticleOpen) { gesture.current = null; return }
     const control = event.target.closest('button')
     if ((control && !control.classList.contains('word-token')) || event.target.closest('a, summary, select, label')) { gesture.current = null; return }
@@ -2030,6 +2037,7 @@ function App() {
 
   // Desktop: wheel navigates stories instead of scrolling the reading screen.
   const onReaderWheel = event => {
+    if (scrollableReadingSurface(event.target)) return
     if (selected || fullArticleOpen || event.ctrlKey) return
     if (event.cancelable) event.preventDefault()
     const now = Date.now()
