@@ -263,7 +263,11 @@ const BATCH_STORY_SCHEMA={
 }
 
 const ADAPTIVE_STORY_SCHEMA=structuredClone(BATCH_STORY_SCHEMA)
-for(const level of LEVELS)ADAPTIVE_STORY_SCHEMA.properties.variants.properties[level].pages.maxItems=level==='A1-A2'?6:8
+for(const level of LEVELS){
+ const schema=structuredClone(LEVEL_SCHEMA)
+ schema.properties.pages.maxItems=level==='A1-A2'?6:8
+ ADAPTIVE_STORY_SCHEMA.properties.variants.properties[level]=schema
+}
 // Shared outline is a topic outline, not a fixed page map for adaptive stories.
 const REPAIR_PAGE_SCHEMA={
  type:'object',
