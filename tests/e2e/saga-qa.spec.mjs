@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test'
+import fs from 'node:fs'
 
 const VIEWPORTS = [
   { name: 'mobile-360', width: 360, height: 740, isMobile: true },
@@ -289,7 +290,7 @@ test.describe('SAGA End-to-End QA Suite', () => {
       expect(match, `Expected page count "1/N", got "${countText}"`).not.toBeNull()
       expect(Number(match[1])).toBe(1)
       const totalPages = Number(match[2])
-      expect(totalPages).toBeGreaterThanOrEqual(4)
+      expect(totalPages).toBeGreaterThanOrEqual(2)
 
       const dotAudit = await page.evaluate(() => {
         const shell = document.querySelector('.app-shell')
@@ -526,3 +527,92 @@ test.describe('Adaptive reading comfort: viewport extremes', () => {
     })
   }
 })
+
+/* Real user-reported articles, deterministic catalog selection, not a random
+   first story. Measure usable space AND overflow. Save every desktop page. */
+const visualCases = [
+  {name:'magna-carta',id:'https://en.wikipedia.org/wiki/Magna_Carta'},
+  {name:'goat',id:'https://en.wikipedia.org/wiki/GOAT_(sports_culture)'},
+]
+const readPublic = name => JSON.parse(fs.readFileSync(new URL('../../public/wiki-reader/'+name,import.meta.url),'utf8'))
+const normalizeVisual = value => String(value||'').replace(/\s+/g,' ').replace(/\s+([.,!?;:])/g,'$1').trim()
+for (const article of visualCases) {
+  for (const vp of [{width:1366,height:768},{width:390,height:844},{width:430,height:932}]) {
+    test(`Visual regression: ${article.name} ${vp.width}x${vp.height}, A/B/C every page`,async({page},testInfo)=>{
+      test.setTimeout(120_000)
+      await page.setViewportSize(vp)
+      const manifest=readPublic('manifest.json')
+      const index=readPublic(manifest.catalogIndex)
+      const entry=index.entries.find(x=>x.id===article.id)
+      expect(entry).toBeTruthy()
+      const source=readPublic(entry.shard+'.json').find(x=>x.sourceUrl===article.id)
+      expect(source).toBeTruthy()
+      await page.route('**/wiki-reader/manifest.json*',r=>r.fulfill({json:{...manifest,total:1,withVerifiedPhoto:1}}))
+      await page.route('**/wiki-reader/'+manifest.catalogIndex+'*',r=>r.fulfill({json:{...index,total:1,entries:[entry]}}))
+      await page.goto('/',{waitUntil:'domcontentloaded'})
+      await waitForStoryReady(page)
+      const active=page.locator('.story-layer:not(.outgoing)')
+      const ratios=[]
+      for(const [level,label] of [['A1-A2','A (A1-A2 Beginner)'],['B1-B2','B (B1-B2 Intermediate)'],['C1-C2','C (C1-C2 Advanced)']]){
+        await active.getByRole('radio',{name:'Level '+label,exact:true}).click()
+        await expect(active.getByRole('radio',{name:'Level '+label,exact:true})).toHaveAttribute('aria-checked','true')
+        await waitForStoryReady(page)
+        await expect(active.locator('h1')).toHaveText(source.levelVariants[level].headline)
+        // The first page is semantic position zero because we return after each level.
+        await expect(active.locator('.lore-page-count')).toHaveText(/^1\/\d+$/)
+        const total=Number((await active.locator('.lore-page-count').innerText()).split('/')[1])
+        if(vp.width>=1000) expect(total,article.name+' '+level+' should not use more pages than necessary').toBeLessThanOrEqual(article.name==='goat'?4:5)
+        const texts=[]
+        const fills=[]
+        for(let i=1;i<=total;i++){
+          await expect(active.locator('.lore-page-count')).toHaveText(`${i}/${total}`)
+          await page.waitForTimeout(350)
+          const visibleMedia=active.locator('.article-media:not(.article-media-empty)')
+          if(await visibleMedia.count()){
+            const photo=visibleMedia.locator('img.hero-photo')
+            await expect(photo).toBeVisible({timeout:15_000})
+            await expect.poll(()=>photo.evaluate(img=>img.complete&&img.naturalWidth>0)).toBe(true)
+          }
+          await assertNoViewportOverflow(page,`${article.name} ${level} page ${i}`)
+          const m=await active.evaluate(root=>{
+            const rect=sel=>root.querySelector(sel)?.getBoundingClientRect()
+            const surface=rect('.page-surface'), heading=rect('.article-heading'), text=rect('.article-text'), pager=rect('.page-control')
+            const mediaEl=root.querySelector('.article-media:not(.article-media-empty)')
+            const media=mediaEl?.getBoundingClientRect(), photo=rect('.article-media img.hero-photo')
+            const nav=document.querySelector('.bottom-nav').getBoundingClientRect()
+            return {gap:text.top-(media?media.bottom:heading.bottom), fill:(text.bottom-surface.top)/Math.max(1,pager.top-surface.top), textBottom:text.bottom,pagerTop:pager.top,pagerBottom:pager.bottom,navTop:nav.top,photoCenter:photo&&media?Math.abs((photo.left+photo.right-media.left-media.right)/2):null, width:text.width, fontSize:parseFloat(getComputedStyle(root.querySelector('.article-text')).fontSize), dense:root.querySelector('.page-surface').classList.contains('saga-page--dense')}
+          })
+          expect(m.dense, 'No exceptional scroll on ordinary reading viewports').toBe(false)
+          expect(m.gap,'Text follows heading or photograph, not floating in the middle').toBeLessThanOrEqual(28)
+          expect(m.textBottom).toBeLessThanOrEqual(m.pagerTop+1)
+          expect(m.pagerBottom).toBeLessThanOrEqual(m.navTop+1)
+          if(m.photoCenter!==null)expect(m.photoCenter,'Photo centered without cropping').toBeLessThanOrEqual(5)
+          if(vp.width>=1000){
+            expect(m.width).toBeGreaterThanOrEqual(450)
+            expect(m.fontSize).toBeGreaterThanOrEqual(level==='A1-A2'?21:18)
+            if(i<total)expect(m.fill,'Nonfinal desktop page should not be mostly empty').toBeGreaterThanOrEqual(.42)
+          }
+          if(i<total) expect(m.fill,'Non-final page should use at least 60% of its reading surface').toBeGreaterThanOrEqual(.60)
+          fills.push(m.fill)
+          // DOM textContent concatenates sibling <p> elements without a separator.
+          texts.push((await active.locator('.article-text > .article-paragraph').allTextContents()).join(' '))
+          await page.screenshot({path:testInfo.outputPath(`${article.name}-${level}-${vp.width}x${vp.height}-${i}.png`)})
+          if(i<total) await active.getByRole('button',{name:'Next page',exact:true}).click()
+        }
+        expect(normalizeVisual(texts.join(' '))).toEqual(normalizeVisual(source.levelVariants[level].pages.map(p=>p.text).join(' ')))
+        expect(fills.reduce((s,n)=>s+n,0)/fills.length,'Mean content utilization across the whole article').toBeGreaterThanOrEqual(.72)
+        if(vp.width>=1000){
+          expect(fills.reduce((s,n)=>s+n,0)/fills.length,'Mean desktop content utilization').toBeGreaterThanOrEqual(.75)
+          if(level==='A1-A2')expect(total,'Beginner readability must not add unnecessary pages').toBeLessThanOrEqual(article.name==='goat'?3:4)
+        }
+        ratios.push({level,total,fills:fills.map(n=>Number(n.toFixed(2)))})
+        for(let i=total;i>1;i--){
+          await active.getByRole('button',{name:'Previous page',exact:true}).click()
+          await expect(active.locator('.lore-page-count')).toHaveText(`${i-1}/${total}`)
+          await page.waitForTimeout(320)
+        }
+      }
+      console.log('VISUAL METRICS',article.name,vp,JSON.stringify(ratios))
+    })
+  }
+}

@@ -362,6 +362,8 @@ function layoutPages(item, reader, badImages = new Set()) {
   const fixture = reader.cloneNode(true)
   fixture.setAttribute('aria-hidden', 'true')
   fixture.classList.add('layout-measure-fixture')
+  fixture.dataset.readingLevel = item.readingLevel || ''
+  fixture.dataset.readingScale = ''
   Object.assign(fixture.style, {
     position:'fixed', left:'-20000px', top:'0', width:`${bounds.width}px`,
     height:`${bounds.height}px`, minHeight:'0', visibility:'hidden',
@@ -493,15 +495,13 @@ function layoutPages(item, reader, badImages = new Set()) {
       const mediaBounds = media.getBoundingClientRect()
       const pagerBounds = pager.getBoundingClientRect()
       const viewportBottom = fixture.getBoundingClientRect().bottom
-      const availableHeight = Math.max(1, pagerBounds.top - cardBounds.top - 8)
-      const contentBottom = Math.max(textBounds.bottom, image ? mediaBounds.bottom : 0)
-      const bottomWhitespacePx = Math.max(0, pagerBounds.top - contentBottom)
-      // Auto-centering means the blank area is distributed above and below the text.
-      // Count actual unused space for text-only pages, not just bottom margin.
-      const unusedVerticalPx = image
-        ? bottomWhitespacePx
-        : Math.max(0, availableHeight - textBounds.height)
       const safeBottom = Math.min(pagerBounds.top, fixture.getBoundingClientRect().bottom) - 12
+      const availableHeight = Math.max(1, safeBottom - cardBounds.top)
+      const contentBottom = Math.max(textBounds.bottom, image ? mediaBounds.bottom : 0)
+      const bottomWhitespacePx = Math.max(0, safeBottom - contentBottom)
+      // Measure the same top-aligned flow seen by the user, including the heading
+      // and image. The denominator is independent of how much text was assigned.
+      const unusedVerticalPx = bottomWhitespacePx
       const overflowPx = Math.max(0, contentBottom - safeBottom)
       // The flex pager ends exactly at the reader's bottom; allow subpixel
       // rounding while keeping the entire paragraph block above the pager.
@@ -511,7 +511,7 @@ function layoutPages(item, reader, badImages = new Set()) {
       const measured = {
         fits: fitsPage,
         usedHeight: textBounds.height,
-        availableHeight: Math.max(1, pagerBounds.top - (image ? surfaceBounds.top : cardBounds.top) - 8),
+        availableHeight: Math.max(1, safeBottom - surfaceBounds.top),
         cardAvailableHeight: availableHeight,
         bottomWhitespacePx,
         unusedVerticalPx,
@@ -524,13 +524,41 @@ function layoutPages(item, reader, badImages = new Set()) {
     fits.measure = measure
     // Failed/corrupt thumbnails may not reserve visual space. Reflow their
     // article text immediately, without altering the original source pages.
-    const next = item?.contentType === 'news'
+    const plan = () => item?.contentType === 'news'
       ? balancePhotoCoverPage(cleanSources, fits)
       : item?.contentType === 'wiki'
         ? planAnchoredWikiPages({...item,_sourcePages:cleanSources}, fits, {balanced: true, paragraphAware: true, adaptiveComfort: true, measure})
         : planReadingPages({...item,_sourcePages:cleanSources}, fits)
+    let next = plan()
     if (!next.length) return item.pages
-    return rebalanceTextPages(next, fits)
+    // Wide, tall phones support two comfortable type sizes. Keep the regular
+    // size unless the larger size genuinely improves the whole article, fits
+    // every page and does not add pages. Never stretch individual short pages.
+    let readingScale = ''
+    const useWidePhoneProfile = item?.contentType === 'wiki'
+      && window.matchMedia('(min-width: 410px) and (max-width: 519px) and (min-height: 850px)').matches
+    if (useWidePhoneProfile) {
+      const quality = pages => {
+        if (!pages.length) return {fits: false, fill: 0}
+        const metrics = pages.map((p,i) => measure({text:p.text,cover:i===0,image:p.image?p:null,density:p.density||''}))
+        return {fits:metrics.every(m=>m.fits),fill:metrics.reduce((sum,m)=>sum+Math.max(0,1-m.unusedVerticalPx/Math.max(1,m.availableHeight)),0)/metrics.length}
+      }
+      const normal = quality(next)
+      if (normal.fits && normal.fill < 0.78) {
+        fixture.dataset.readingScale = 'large'
+        measureMemo.clear()
+        const alternate = plan()
+        const larger = quality(alternate)
+        if (larger.fits && alternate.length <= next.length && larger.fill >= normal.fill + 0.02) {
+          next = alternate
+          readingScale = 'large'
+        } else {
+          fixture.dataset.readingScale = ''
+          measureMemo.clear()
+        }
+      }
+    }
+    return rebalanceTextPages(next, fits).map(p=>({...p,readingScale}))
   } catch (error) {
     console.warn('Screen pagination deferred:', error?.message || error)
     return item.pages
@@ -897,7 +925,7 @@ function App() {
   }
 
   const pagesSignature = pages =>
-    (Array.isArray(pages) ? pages : []).map(p => `${p.image}|${p.density || ''}|${p.text}`).join('\u0000')
+    (Array.isArray(pages) ? pages : []).map(p => `${p.image}|${p.density || ''}|${p.readingScale || ''}|${p.text}`).join('\u0000')
 
   const changeReadingLevel = level => {
     if (!isNewsLevel(level) || level === readingLevel) return
@@ -2067,7 +2095,7 @@ function App() {
       stopSpeech()
       setFullArticleStory(item)
     }
-    return <div className="reader-gesture" aria-hidden={!interactive} onTouchStart={interactive ? startGesture : undefined} onTouchMove={interactive ? moveGesture : undefined} onTouchEnd={interactive ? endGesture : undefined} onTouchCancel={interactive ? cancelGesture : undefined} onPointerDown={interactive ? startPointer : undefined} onPointerMove={interactive ? movePointer : undefined} onPointerUp={interactive ? endPointer : undefined} onPointerCancel={interactive ? () => {pointerGesture.current = null; releaseSwipeTransform({ spring: true })} : undefined}>
+    return <div className="reader-gesture" data-reading-level={item.readingLevel || ''} data-reading-scale={itemPage?.readingScale || ''} aria-hidden={!interactive} onTouchStart={interactive ? startGesture : undefined} onTouchMove={interactive ? moveGesture : undefined} onTouchEnd={interactive ? endGesture : undefined} onTouchCancel={interactive ? cancelGesture : undefined} onPointerDown={interactive ? startPointer : undefined} onPointerMove={interactive ? movePointer : undefined} onPointerUp={interactive ? endPointer : undefined} onPointerCancel={interactive ? () => {pointerGesture.current = null; releaseSwipeTransform({ spring: true })} : undefined}>
       <header className="topbar lore-reader-topbar">
         <div className="saga-topbar-slot saga-topbar-left">
           {interactive && item.levelVariants && (

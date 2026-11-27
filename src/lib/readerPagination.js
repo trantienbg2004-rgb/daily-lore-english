@@ -883,9 +883,20 @@ export function planParagraphAwareWikiPages(item, fits, {
       const units = sentenceUnits(para.text)
       const start = atoms.length
       let progress = 0
-      for (const unit of units) {
+      // Prefer complete sentences. A long sentence may also break at a
+      // natural clause boundary when that avoids an unnecessary extra page.
+      const beats = units.flatMap(unit => {
+        const words = unit.split(/\s+/u)
+        if (words.length < 16) return [{text: unit, sentenceEnd: true}]
+        const cuts = words.map((word, i) => /[,;:—–][”’"')\]]*$/u.test(word) ? i + 1 : 0)
+          .filter(i => i >= 7 && words.length - i >= 7)
+        if (!cuts.length) return [{text: unit, sentenceEnd: true}]
+        const cut = cuts.sort((a,b) => Math.abs(a - words.length / 2) - Math.abs(b - words.length / 2))[0]
+        return [{text: words.slice(0,cut).join(' '), sentenceEnd: false}, {text: words.slice(cut).join(' '), sentenceEnd: true}]
+      })
+      for (const beat of beats) {
         const pieces = []
-        let remaining = unit
+        let remaining = beat.text
         // Exception: a single sentence can exceed a very small viewport.
         while (remaining && !fits({text: remaining, cover: false, image: null, density: ''})) {
           const [part, rest] = splitOversizedSentence(remaining, t => fits({text: t, cover: false, image: null, density: ''}))
@@ -894,12 +905,12 @@ export function planParagraphAwareWikiPages(item, fits, {
           remaining = rest
         }
         if (remaining) pieces.push(remaining)
-        for (const piece of pieces) {
+        for (const [pieceIndex, piece] of pieces.entries()) {
           const words = wordCount(piece)
           const semanticStart = para.semanticStart + (para.semanticEnd - para.semanticStart) * progress / Math.max(1, para.words)
           progress += words
           const semanticEnd = para.semanticStart + (para.semanticEnd - para.semanticStart) * Math.min(1, progress / Math.max(1, para.words))
-          atoms.push({...para, index: atoms.length, originalIndex, text: piece, words, chars: piece.length, semanticStart, semanticEnd})
+          atoms.push({...para, index: atoms.length, originalIndex, text: piece, words, chars: piece.length, semanticStart, semanticEnd, sentenceEnd: beat.sentenceEnd && pieceIndex === pieces.length - 1})
         }
       }
       ranges.push({start, end: atoms.length - 1})
@@ -969,7 +980,7 @@ export function planParagraphAwareWikiPages(item, fits, {
     const paraCount = to - from
     const words = paragraphs.slice(from, to).reduce((sum, p) => sum + p.words, 0)
     const hasPhoto = Boolean(imageObj?.image)
-    const idealFill = adaptiveComfort ? (hasPhoto ? 0.80 : 0.76) : (hasPhoto ? 0.74 : 0.62)
+    const idealFill = adaptiveComfort ? 0.90 : (hasPhoto ? 0.74 : 0.62)
 
     if (!evalRes.fits) {
       // Single intact paragraph genuinely exceeds viewport height -> allow safe scrolling fallback.
@@ -982,14 +993,18 @@ export function planParagraphAwareWikiPages(item, fits, {
     }
 
     let cost = ((evalRes.usedRatio - idealFill) ** 2) * 115
-    if (evalRes.density === 'compact') cost += 12
+    if (evalRes.density === 'compact') cost += adaptiveComfort ? 3 : 12
+    if (adaptiveComfort && paragraphs[to - 1]?.sentenceEnd === false) cost += 8
     if (adaptiveComfort) {
-      const comfortableWords = hasPhoto ? 38 : 58
-      if (words > comfortableWords) cost += (words - comfortableWords) ** 2 * 0.6
+      // Fit is measured in pixels; a fixed word cap makes taller/wider pages sparse.
+      // Penalize exceptionally long reading beats only, not ordinary paragraphs.
+      const comfortableWords = hasPhoto ? 120 : 150
+      if (words > comfortableWords) cost += (words - comfortableWords) ** 2 * 0.025
     }
     // Discourage excessive unused whitespace without forcing wall-to-wall packing
-    if (evalRes.unusedRatio > 0.52) {
-      cost += ((evalRes.unusedRatio - 0.52) ** 2) * 210
+    const whitespaceThreshold = adaptiveComfort ? 0.25 : 0.52
+    if (evalRes.unusedRatio > whitespaceThreshold) {
+      cost += ((evalRes.unusedRatio - whitespaceThreshold) ** 2) * (adaptiveComfort ? 400 : 210)
     }
     // Discourage overcrowding right up against the bottom pager
     if (evalRes.usedRatio > 0.92) {
@@ -1014,7 +1029,7 @@ export function planParagraphAwareWikiPages(item, fits, {
   }
 
   const pageCountPenalty = k => {
-    if (adaptiveComfort) return k * 5 // density and actual fit, not a fixed five-page target
+    if (adaptiveComfort) return k * 45 // merge sparse reading beats whenever the measured content fits
     if (k === preferredPages) return 0
     if (k === minPreferredPages) return 16
     if (k === maxPreferredPages) return 14
@@ -1072,7 +1087,7 @@ export function planParagraphAwareWikiPages(item, fits, {
         const guardAnchor = mode.anchor ? followingAnchor : nextAnchor
         if (guardAnchor) {
           // Leave at least the guardAnchor's section paragraphs available for its page
-          maxTo = Math.min(maxTo, Math.max(from + 1, guardAnchor.startPara > from ? guardAnchor.startPara : guardAnchor.endPara))
+          maxTo = Math.min(maxTo, Math.max(from + 1, guardAnchor.startPara > from && !adaptiveComfort ? guardAnchor.startPara : guardAnchor.endPara))
         }
         // Also ensure enough paragraphs remain for all remaining future anchors
         const futureAnchorsAfter = R - mode.nextA
@@ -1103,8 +1118,8 @@ export function planParagraphAwareWikiPages(item, fits, {
           let bridgePenalty = 0
           if (mode.anchor && from < mode.anchor.startPara) {
             const bridgeParas = mode.anchor.startPara - from
-            if (bridgeParas > 1) continue
-            bridgePenalty = 14
+            if (bridgeParas > 1 && !adaptiveComfort) continue
+            bridgePenalty = adaptiveComfort ? Math.min(12, bridgeParas * 3) : 14
           }
 
           const scored = scorePage(from, to, isCover, mode.imageObj, evalRes)
