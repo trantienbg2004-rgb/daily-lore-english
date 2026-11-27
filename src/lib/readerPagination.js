@@ -969,7 +969,7 @@ export function planParagraphAwareWikiPages(item, fits, {
     const paraCount = to - from
     const words = paragraphs.slice(from, to).reduce((sum, p) => sum + p.words, 0)
     const hasPhoto = Boolean(imageObj?.image)
-    const idealFill = adaptiveComfort ? (hasPhoto ? 0.80 : 0.76) : (hasPhoto ? 0.74 : 0.62)
+    const idealFill = adaptiveComfort ? 0.90 : (hasPhoto ? 0.74 : 0.62)
 
     if (!evalRes.fits) {
       // Single intact paragraph genuinely exceeds viewport height -> allow safe scrolling fallback.
@@ -982,16 +982,17 @@ export function planParagraphAwareWikiPages(item, fits, {
     }
 
     let cost = ((evalRes.usedRatio - idealFill) ** 2) * 115
-    if (evalRes.density === 'compact') cost += 12
+    if (evalRes.density === 'compact') cost += adaptiveComfort ? 3 : 12
     if (adaptiveComfort) {
       // Fit is measured in pixels; a fixed word cap makes taller/wider pages sparse.
       // Penalize exceptionally long reading beats only, not ordinary paragraphs.
-      const comfortableWords = hasPhoto ? 85 : 110
-      if (words > comfortableWords) cost += (words - comfortableWords) ** 2 * 0.12
+      const comfortableWords = hasPhoto ? 120 : 150
+      if (words > comfortableWords) cost += (words - comfortableWords) ** 2 * 0.025
     }
     // Discourage excessive unused whitespace without forcing wall-to-wall packing
-    if (evalRes.unusedRatio > 0.52) {
-      cost += ((evalRes.unusedRatio - 0.52) ** 2) * 210
+    const whitespaceThreshold = adaptiveComfort ? 0.25 : 0.52
+    if (evalRes.unusedRatio > whitespaceThreshold) {
+      cost += ((evalRes.unusedRatio - whitespaceThreshold) ** 2) * (adaptiveComfort ? 400 : 210)
     }
     // Discourage overcrowding right up against the bottom pager
     if (evalRes.usedRatio > 0.92) {
@@ -1016,7 +1017,7 @@ export function planParagraphAwareWikiPages(item, fits, {
   }
 
   const pageCountPenalty = k => {
-    if (adaptiveComfort) return k * 24 // avoid splitting a well-fitting reading beat into sparse pages
+    if (adaptiveComfort) return k * 45 // merge sparse reading beats whenever the measured content fits
     if (k === preferredPages) return 0
     if (k === minPreferredPages) return 16
     if (k === maxPreferredPages) return 14
