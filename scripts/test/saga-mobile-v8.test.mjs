@@ -23,7 +23,7 @@ test('Pager is a sibling below the swiping page surface, never linked to text he
   assert.match(app, /<\/section>\s*<\/>}\s*<\/div>\s*<div className="page-control"/s)
   assert.match(css, /\.reader-gesture > \.page-control\s*\{[^}]*flex:0 0 auto;/s)
   assert.match(css, /\.reader-gesture \.page-surface\s*\{[^}]*overflow:hidden;/s)
-  assert.match(app, /textBounds.bottom <= pagerBounds.top - 8/)
+  assert.match(app, /textBounds.bottom <= safeBottom/)
 })
 
 test('Portrait photos keep their own height, caption and a snug frame in the reading flow',()=>{

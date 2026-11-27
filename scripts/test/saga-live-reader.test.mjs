@@ -113,5 +113,5 @@ test('visible photo descriptions are concise while full source captions remain i
  assert.match(css,/max-width:min\(100%,420px\); max-height:2\.9em; overflow:hidden;/)
  assert.match(css,/@media\(max-width:600px\) \{\s*\.lore-editorial-v5 \.reader-gesture \.article-heading h1,[\s\S]*?font-size:clamp\(22px,6\.2vw,26px\)/)
  assert.match(css,/\.lore-lightbox-close\s*\{[^}]*border:0; border-radius:0;[^}]*background:transparent/s)
- assert.match(app,/mediaBounds\.bottom <= pagerBounds\.top - 8/)
+ assert.match(app,/mediaBounds\.bottom <= safeBottom/)
 })
