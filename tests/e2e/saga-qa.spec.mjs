@@ -1,8 +1,11 @@
 import { test, expect } from '@playwright/test'
 
 const VIEWPORTS = [
+  { name: 'mobile-320', width: 320, height: 568, isMobile: true },
   { name: 'mobile-360', width: 360, height: 740, isMobile: true },
   { name: 'mobile-390', width: 390, height: 844, isMobile: true },
+  { name: 'mobile-430', width: 430, height: 932, isMobile: true },
+  { name: 'tablet-768', width: 768, height: 1024, isMobile: false },
   { name: 'desktop-1280', width: 1280, height: 800, isMobile: false },
 ]
 
@@ -105,6 +108,11 @@ async function assertNoViewportOverflow(page, contextLabel) {
       cardClientHeight: card ? card.clientHeight : 0,
       cardBottom: cardRect ? cardRect.bottom : 0,
       isDenseFallback,
+      surfaceOverflow: surface ? surface.scrollHeight - surface.clientHeight : 0,
+      textWords: text ? text.innerText.trim().split(/\s+/u).filter(Boolean).length : 0,
+      hasPhoto: Boolean(surface?.querySelector('.article-media img')),
+      textTop: textRect?.top || 0,
+      cardTop: cardRect?.top || 0,
       textBottom: textRect ? textRect.bottom : 0,
       pagerTop: pagerRect ? pagerRect.top : 0,
       pagerBottom: pagerRect ? pagerRect.bottom : 0,
@@ -134,6 +142,10 @@ async function assertNoViewportOverflow(page, contextLabel) {
     ).toBeLessThanOrEqual(metrics.pagerTop + 1)
   }
 
+  expect(metrics.isDenseFallback, `[${contextLabel}] Dense fallback on normal viewport`).toBe(false)
+  expect(metrics.surfaceOverflow, `[${contextLabel}] Hidden/scrolling content`).toBeLessThanOrEqual(2)
+  expect(metrics.textWords, `[${contextLabel}] Too much text`).toBeLessThanOrEqual(metrics.hasPhoto ? 55 : 80)
+  if (metrics.textWords) expect(metrics.textTop-metrics.cardTop, `[${contextLabel}] Vertical centering`).toBeLessThanOrEqual(24)
   if (!metrics.isDenseFallback) {
     if (metrics.textBottom > 0 && metrics.pagerTop > 0) {
       expect(
@@ -289,7 +301,7 @@ test.describe('SAGA End-to-End QA Suite', () => {
       expect(match, `Expected page count "1/N", got "${countText}"`).not.toBeNull()
       expect(Number(match[1])).toBe(1)
       const totalPages = Number(match[2])
-      expect(totalPages).toBeGreaterThanOrEqual(4)
+      expect(totalPages).toBeGreaterThanOrEqual(1)
 
       const dotAudit = await page.evaluate(() => {
         const shell = document.querySelector('.app-shell')

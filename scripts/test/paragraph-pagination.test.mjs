@@ -97,7 +97,7 @@ test('paragraph-aware content normalization preserves blank-line boundaries and 
   assert.deepEqual(splitParagraphs(cleaned.pages[0].text), ['First real paragraph.', 'Second real paragraph.'])
 })
 
-test('planParagraphAwareWikiPages keeps every paragraph intact, targets 4-6 pages, preserves secondary image anchoring, and maintains 100% lossless text', () => {
+test('adaptive pages preserve text order, fit the viewport and keep secondary image anchoring', () => {
   const story = makeMultiParagraphStory({ withSecondaryPhoto: true })
   const sourceParas = extractSemanticParagraphs(story).paragraphs.map(p => p.text)
   const expectedFlat = sourceParas.join(' ')
@@ -122,11 +122,11 @@ test('planParagraphAwareWikiPages keeps every paragraph intact, targets 4-6 page
   fitsPhone.measure = measurePhone
 
   const planned = planParagraphAwareWikiPages(story, fitsPhone, { measure: measurePhone })
-  assert.ok(Array.isArray(planned) && planned.length >= 4 && planned.length <= 6, `Expected 4-6 pages, got ${planned?.length}`)
+  assert.ok(Array.isArray(planned) && planned.length > 0)
+  assert.ok(planned.every((p,i) => measurePhone({text:p.text,cover:i===0,image:p.image}).fits))
 
   // Every rendered paragraph matches a complete source paragraph verbatim (0 broken paragraphs)
   const renderedParas = planned.flatMap(p => splitParagraphs(p.text))
-  assert.deepEqual(renderedParas, sourceParas)
   assert.equal(renderedParas.join(' '), expectedFlat)
 
   // Cover photo stays on Page 0; secondary photo stays on a page containing Section 2 (miter gate)
@@ -137,7 +137,7 @@ test('planParagraphAwareWikiPages keeps every paragraph intact, targets 4-6 page
   assert.match(planned[secPhotoIdx].text, /miter gate|water pressure/i)
 })
 
-test('planParagraphAwareWikiPages keeps genuinely oversized single paragraphs intact with dense scrolling fallback instead of clipping or splitting', () => {
+test('adaptive pages split oversized paragraphs instead of hiding text', () => {
   const megaParagraph = 'Early cinema relied on fragile nitrate and acetate film bases that accelerated chemical decay whenever warm air and elevated humidity penetrated ordinary storage cabinets, causing frames to buckle and vibrant dye layers to fade rapidly. Because manually inspecting and scanning millions of historic reels demanded decades of laboratory work, archivists transferred sealed metal canisters into subzero underground vaults to slow molecular breakdown tenfold and preserve cultural memory for future generations.'
   const story = {
     id: 'saga-wiki:77002',
@@ -165,11 +165,11 @@ test('planParagraphAwareWikiPages keeps genuinely oversized single paragraphs in
     }
   }
   const planned = planParagraphAwareWikiPages(story, c => measureTight(c).fits, { measure: measureTight })
-  assert.ok(planned && planned.length >= 4 && planned.length <= 6, `Expected 4-6 pages, got ${planned?.length}`)
-  const megaPage = planned.find(p => p.text.includes('autocatalytic') || p.text.includes('fragile nitrate'))
-  assert.ok(megaPage, 'Oversized paragraph must be preserved intact')
-  assert.equal(megaPage.text, megaParagraph, 'Oversized paragraph must NOT be split mid-sentence')
-  assert.match(String(megaPage.density || ''), /saga-page--dense/, 'Oversized intact paragraph must activate safe scrolling fallback')
+  assert.ok(planned && planned.length > 0)
+  assert.equal(planned.map(p=>p.text).join(' ').replace(/\s+/g,' '),story.pages.map(p=>p.text).join(' ').replace(/\s+/g,' '))
+  assert.ok(planned.every((p,i)=>measureTight({text:p.text,cover:i===0,image:p.image}).fits))
+  assert.ok(planned.every(p=>!p.density), 'Normal viewports must not need scroll fallback')
+  assert.ok(planned.filter(p=>p.sourceSectionIndices.includes(1)).length>1)
 })
 
 test('mapSemanticPageIndex preserves semantic reading position across A/B/C level switches even when rendered page counts differ', () => {
@@ -228,4 +228,16 @@ test('makePaginationCacheKey invalidates on content, viewport, fontVersion, and 
   assert.notEqual(base, makePaginationCacheKey({ storyId: 'saga-wiki:1', readingLevel: 'B1-B2', colWidth: 390, colHeight: 844, mediaSig: '800x600', contentSig: '5:abc123', fontVersion: 1 }))
   assert.notEqual(base, makePaginationCacheKey({ storyId: 'saga-wiki:1', readingLevel: 'B1-B2', colWidth: 390, colHeight: 844, mediaSig: '800x520', contentSig: '5:xyz999', fontVersion: 1 }))
   assert.notEqual(base, makePaginationCacheKey({ storyId: 'saga-wiki:1', readingLevel: 'B1-B2', colWidth: 390, colHeight: 844, mediaSig: '800x520', contentSig: '5:abc123', fontVersion: 2 }))
+})
+
+
+test('adaptive page count responds to capacity, without a fixed four-page minimum or wall of text', () => {
+  const story = {contentType:'wiki',pages:[{text:'A short sentence carries one simple idea. '.repeat(32).trim()}]}
+  const count = s => s.trim().split(/\s+/u).filter(Boolean).length
+  const narrow = planParagraphAwareWikiPages(story,c=>count(c.text)<=32)
+  const wide = planParagraphAwareWikiPages(story,c=>count(c.text)<=120)
+  assert.ok(wide.length < narrow.length)
+  assert.ok(wide.length < 4)
+  assert.ok(wide.every(p=>count(p.text)<=80))
+  for (const pages of [narrow,wide]) assert.equal(pages.map(p=>p.text).join(' '),story.pages[0].text)
 })
