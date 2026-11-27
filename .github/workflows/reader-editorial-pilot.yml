@@ -1,0 +1,63 @@
+name: Reader editorial pilot
+on:
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize, reopened]
+    paths:
+      - '.github/workflows/reader-editorial-pilot.yml'
+permissions:
+  contents: write
+concurrency:
+  group: reader-editorial-pilot
+  cancel-in-progress: false
+jobs:
+  pilot:
+    if: github.event.pull_request.head.repo.full_name == github.repository && github.head_ref == 'fix/reader-page-rhythm'
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm ci
+      - name: Regenerate only the two reported articles in the PR checkout
+        env:
+          SAGA_EDITORIAL_LAYOUT: '3'
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_API_KEY_2: ${{ secrets.GEMINI_API_KEY_2 }}
+          GEMINI_API_KEY_3: ${{ secrets.GEMINI_API_KEY_3 }}
+          SAGA_IMAGE_TEST_API_KEY: ${{ secrets.SAGA_IMAGE_TEST_API_KEY }}
+          GEMINI_MODEL: gemini-3.5-flash-lite
+        run: |
+          node scripts/publish_wiki_batch.mjs --regenerate-existing --page-id=20958,79511869 --max-articles=2 --max-candidates=2 --max-runtime-ms=480000
+      - name: Verify both regenerated stories and preserve all other catalog entries
+        run: |
+          node --input-type=module -e "import {readWikiCatalog,validateWikiStory} from './scripts/wiki/catalog.mjs'; const c=await readWikiCatalog(process.cwd()); for(const id of [20958,79511869]){const s=c.stories.find(x=>x.sourcePageId===id);if(!s||s.readerLayoutVersion!==3||!validateWikiStory(s).accepted)throw Error('Missing validated editorial pilot '+id);console.log(id,s.levelVariants['A1-A2'].pages.length)}"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/wiki-reader
+          if ! git diff --cached --quiet; then
+            git commit -m "test(editorial): stage source-reviewed pilot articles on PR branch"
+            git push origin HEAD:refs/heads/fix/reader-page-rhythm
+          fi
+      - run: npm test
+      - run: npx playwright install --with-deps chromium
+      - run: npm run build
+      - name: Measure editorial slots on actual Chromium pages
+        env:
+          SAGA_REQUIRE_EDITORIAL_PILOT: '1'
+        run: npm run test:e2e
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: editorial-pilot-evidence-${{ github.run_id }}
+          path: |
+            test-results/
+            playwright-report/
+            public/wiki-reader/manifest.json
+          retention-days: 7
+          if-no-files-found: ignore
