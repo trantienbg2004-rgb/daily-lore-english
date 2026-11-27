@@ -4049,3 +4049,14 @@
     --saga-photo-max-h: clamp(90px, 21dvh, 195px);
   }
 }
+
+/* Beginner reading: a slightly larger type scale on the spacious desktop
+   column, without changing mobile typography or shrinking advanced text. */
+@media (min-width: 520px) and (min-height: 650px) {
+  .lore-editorial-v5 .reader-gesture[data-reading-level="A1-A2"] .reading-card .article-text,
+  .lore-editorial-v5 .reader-gesture[data-reading-level="A1-A2"] .reading-card.reading-card-with-photo .article-text,
+  .lore-editorial-v5 .reader-gesture[data-reading-level="A1-A2"] .reading-card.reading-card-no-photo .article-text {
+    font-size: 21px;
+    line-height: 1.55;
+  }
+}
