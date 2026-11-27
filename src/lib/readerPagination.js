@@ -883,9 +883,20 @@ export function planParagraphAwareWikiPages(item, fits, {
       const units = sentenceUnits(para.text)
       const start = atoms.length
       let progress = 0
-      for (const unit of units) {
+      // Prefer complete sentences. A long sentence may also break at a
+      // natural clause boundary when that avoids an unnecessary extra page.
+      const beats = units.flatMap(unit => {
+        const words = unit.split(/\s+/u)
+        if (words.length < 16) return [{text: unit, sentenceEnd: true}]
+        const cuts = words.map((word, i) => /[,;:—–][”’"')\]]*$/u.test(word) ? i + 1 : 0)
+          .filter(i => i >= 7 && words.length - i >= 7)
+        if (!cuts.length) return [{text: unit, sentenceEnd: true}]
+        const cut = cuts.sort((a,b) => Math.abs(a - words.length / 2) - Math.abs(b - words.length / 2))[0]
+        return [{text: words.slice(0,cut).join(' '), sentenceEnd: false}, {text: words.slice(cut).join(' '), sentenceEnd: true}]
+      })
+      for (const beat of beats) {
         const pieces = []
-        let remaining = unit
+        let remaining = beat.text
         // Exception: a single sentence can exceed a very small viewport.
         while (remaining && !fits({text: remaining, cover: false, image: null, density: ''})) {
           const [part, rest] = splitOversizedSentence(remaining, t => fits({text: t, cover: false, image: null, density: ''}))
@@ -894,12 +905,12 @@ export function planParagraphAwareWikiPages(item, fits, {
           remaining = rest
         }
         if (remaining) pieces.push(remaining)
-        for (const piece of pieces) {
+        for (const [pieceIndex, piece] of pieces.entries()) {
           const words = wordCount(piece)
           const semanticStart = para.semanticStart + (para.semanticEnd - para.semanticStart) * progress / Math.max(1, para.words)
           progress += words
           const semanticEnd = para.semanticStart + (para.semanticEnd - para.semanticStart) * Math.min(1, progress / Math.max(1, para.words))
-          atoms.push({...para, index: atoms.length, originalIndex, text: piece, words, chars: piece.length, semanticStart, semanticEnd})
+          atoms.push({...para, index: atoms.length, originalIndex, text: piece, words, chars: piece.length, semanticStart, semanticEnd, sentenceEnd: beat.sentenceEnd && pieceIndex === pieces.length - 1})
         }
       }
       ranges.push({start, end: atoms.length - 1})
@@ -983,6 +994,7 @@ export function planParagraphAwareWikiPages(item, fits, {
 
     let cost = ((evalRes.usedRatio - idealFill) ** 2) * 115
     if (evalRes.density === 'compact') cost += adaptiveComfort ? 3 : 12
+    if (adaptiveComfort && paragraphs[to - 1]?.sentenceEnd === false) cost += 8
     if (adaptiveComfort) {
       // Fit is measured in pixels; a fixed word cap makes taller/wider pages sparse.
       // Penalize exceptionally long reading beats only, not ordinary paragraphs.
