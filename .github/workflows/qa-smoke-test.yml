@@ -14,6 +14,7 @@ on:
       - 'src/App.css'
       - 'src/lib/readerPagination.js'
       - 'tests/e2e/**'
+      - 'scripts/reader-visual-production.mjs'
       - 'scripts/test/adaptive-reading-comfort.test.mjs'
       - 'scripts/test/saga-recommendation-v2.test.mjs'
       - '.github/workflows/qa-smoke-test.yml'
@@ -62,6 +63,12 @@ jobs:
 
       - name: Run Playwright E2E QA suite
         run: npm run test:e2e
+
+      - name: Read-only production visual comparison
+        if: always() && github.event_name == 'pull_request'
+        continue-on-error: true
+        timeout-minutes: 4
+        run: node scripts/reader-visual-production.mjs
 
       - name: Upload Playwright visual evidence and traces
         if: always()
