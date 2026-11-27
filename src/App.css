@@ -4081,9 +4081,9 @@
 /* Large phones have a wider measure than standard phones. Maintain a
    comfortable roughly 45–55-character line instead of tiny desktop-like text. */
 @media (min-width: 410px) and (max-width: 519px) and (min-height: 850px) {
-  .lore-editorial-v5 .reader-gesture .reading-card .article-text,
-  .lore-editorial-v5 .reader-gesture .reading-card.reading-card-with-photo .article-text,
-  .lore-editorial-v5 .reader-gesture .reading-card.reading-card-no-photo .article-text {
+  .lore-editorial-v5 .reader-gesture[data-reading-scale="large"] .reading-card .article-text,
+  .lore-editorial-v5 .reader-gesture[data-reading-scale="large"] .reading-card.reading-card-with-photo .article-text,
+  .lore-editorial-v5 .reader-gesture[data-reading-scale="large"] .reading-card.reading-card-no-photo .article-text {
     font-size: 18px;
     line-height: 1.52;
   }
