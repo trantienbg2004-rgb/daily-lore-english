@@ -976,7 +976,7 @@ export function planParagraphAwareWikiPages(item, fits, {
     return result
   }
 
-  const scorePage = (from, to, isCover, imageObj, evalRes, rhythmTarget = 0) => {
+  const scorePage = (from, to, isCover, imageObj, evalRes) => {
     const paraCount = to - from
     const words = paragraphs.slice(from, to).reduce((sum, p) => sum + p.words, 0)
     const hasPhoto = Boolean(imageObj?.image)
@@ -1000,14 +1000,6 @@ export function planParagraphAwareWikiPages(item, fits, {
       // Penalize exceptionally long reading beats only, not ordinary paragraphs.
       const comfortableWords = hasPhoto ? 120 : 150
       if (words > comfortableWords) cost += (words - comfortableWords) ** 2 * 0.025
-    }
-    // Each candidate in the second pass is scored against the same reading
-    // beat, including photo pages and the final page. Pixel fit remains hard.
-    if (rhythmTarget > 0) {
-      cost += 150 * ((words - rhythmTarget) / rhythmTarget) ** 2
-      // The last page is part of the rhythm, too. Do not move so much text
-      // forward that the final screen becomes a visually empty stub.
-      cost += 650 * Math.max(0, 0.68 - evalRes.usedRatio) ** 2
     }
     // Discourage excessive unused whitespace without forcing wall-to-wall packing
     const whitespaceThreshold = adaptiveComfort ? 0.25 : 0.52
@@ -1050,11 +1042,10 @@ export function planParagraphAwareWikiPages(item, fits, {
   const maxPossibleK = adaptiveComfort ? Math.min(N, Math.max(40, minPossibleK)) : Math.min(N, Math.max(maxAllowedPages, minPossibleK))
 
   // DP state: states[k] is a Map keyed by `${from}:${anchorIdx}` -> { cost, steps }
-  const solve = (limit, rhythmTarget = 0) => {
-  const states = Array.from({length: limit + 1}, () => new Map())
+  const states = Array.from({length: maxPossibleK + 1}, () => new Map())
   states[0].set('0:0', {cost: 0, steps: []})
 
-  for (let k = 0; k < limit; k++) {
+  for (let k = 0; k < maxPossibleK; k++) {
     const layer = states[k]
     if (!layer.size) continue
     const isCover = k === 0
@@ -1066,7 +1057,7 @@ export function planParagraphAwareWikiPages(item, fits, {
       if (from >= N) continue
 
       const remainingAnchors = R - aIdx
-      const maxSlotsLeft = limit - k
+      const maxSlotsLeft = maxPossibleK - k
       if (remainingAnchors > maxSlotsLeft) continue
 
       const nextAnchor = aIdx < R ? secondaryAnchors[aIdx] : null
@@ -1112,10 +1103,6 @@ export function planParagraphAwareWikiPages(item, fits, {
           // Monotonicity guard: never stack multiple paragraphs onto an overflowing page
           if (!evalRes.fits && (adaptiveComfort || to - from > 1)) break
 
-          // Leave a little more headroom during rhythm refinement; the DOM
-          // fixture can underestimate padding and actual token line wrapping.
-          if (rhythmTarget > 0 && evalRes.usedRatio > 0.95) continue
-
           if (to < minTo) {
             if (!evalRes.fits) break
             continue
@@ -1135,7 +1122,7 @@ export function planParagraphAwareWikiPages(item, fits, {
             bridgePenalty = adaptiveComfort ? Math.min(12, bridgeParas * 3) : 14
           }
 
-          const scored = scorePage(from, to, isCover, mode.imageObj, evalRes, rhythmTarget)
+          const scored = scorePage(from, to, isCover, mode.imageObj, evalRes)
           const nextCost = prev.cost + scored.cost + bridgePenalty
           const nextKey = `${to}:${mode.nextA}`
           const existing = states[k + 1].get(nextKey)
@@ -1162,9 +1149,6 @@ export function planParagraphAwareWikiPages(item, fits, {
     }
   }
 
-  return states
-  }
-  const states = solve(maxPossibleK)
   // Pick the globally optimal complete partition across K = 1..maxPossibleK
   let bestPlan = null
   let bestTotalCost = Infinity
@@ -1188,24 +1172,6 @@ export function planParagraphAwareWikiPages(item, fits, {
   }
 
   if (!bestPlan || !bestPlan.steps.length) return null
-
-  // Refine the complete partition at its measured page count. Reuse the DOM
-  // measurement cache; never add pages just to equalize word counts.
-  if (adaptiveComfort && bestPlan.steps.length > 1) {
-    const k = bestPlan.steps.length
-    const target = paragraphs.reduce((sum,p)=>sum+p.words,0) / k
-    const refined = solve(k,target)[k].get(terminalKey)
-    const stats = plan => {
-      const fills = plan.steps.map(step=>step.fillRatio)
-      const words = plan.steps.map(step=>paragraphs.slice(step.from,step.to).reduce((sum,p)=>sum+p.words,0))
-      return {mean:fills.reduce((a,b)=>a+b,0)/k, min:Math.min(...fills), max:Math.max(...fills), imbalance:words.reduce((sum,w)=>sum+((w-target)/target)**2,0)/k, dense:plan.steps.some(s=>s.dense)}
-    }
-    if (refined) {
-      const before = stats(bestPlan), after = stats(refined)
-      // Avoid trading away a whole screen of useful content for symmetry.
-      if (!after.dense && after.mean >= Math.min(before.mean,0.74)-0.015 && after.min >= Math.min(before.min,0.66)-0.015 && after.max <= Math.max(before.max,0.95) && after.imbalance < before.imbalance) bestPlan = refined
-    }
-  }
 
   const pages = bestPlan.steps.map(step => {
     const slice = paragraphs.slice(step.from, step.to)
@@ -1292,6 +1258,29 @@ export function mapSemanticPageIndex(fromPages, fromPageIndex, toPages) {
   }
 
   return bestIdx
+}
+
+
+// The publisher already defines a common visual map (4–6 editorial slots)
+// across A/B/C. Reflowing those slots separately destroys that alignment.
+// Preserve each slot exactly. Overflow is a readable, local scroll fallback,
+// not a reason to add a page or hide content.
+export function planEditorialWikiPages(item, fits) {
+  const levels = ['A1-A2','B1-B2','C1-C2']
+  const variants = levels.map(l => item?.levelVariants?.[l]?.pages)
+  const originals = item?._sourcePages || item?.pages || []
+  const n = originals.length
+  if (n < 4 || n > 6 || variants.some(p => !Array.isArray(p) || p.length !== n)) return null
+  if (originals.some(p => !trim(p?.text))) return null
+  if (variants.some(p => p.some((page,i) => (page?.image || '') !== (variants[0][i]?.image || '')))) return null
+  return originals.map((page,i) => {
+    const m = {text: page.text, cover: i===0, image: page.image ? page : null, density: ''}
+    const result = {...page, density: fits(m) ? '' : 'dense saga-page--dense',
+      sourceSectionIndices:[i], sourceSectionCount:n,
+      semanticRange:{start:i/n,end:(i+1)/n,mid:(i+.5)/n}}
+    Object.defineProperty(result,'_fixedCard',{value:true,enumerable:false})
+    return result
+  })
 }
 
 export function planAnchoredWikiPages(item, fits, {maxPages = 250, uniformRhythm = false, balanced = false, paragraphAware = false, measure = null, adaptiveComfort = false} = {}) {
