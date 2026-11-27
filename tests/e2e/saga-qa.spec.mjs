@@ -564,6 +564,7 @@ for (const article of visualCases) {
         if(vp.width>=1000) expect(total,article.name+' '+level+' should not use more pages than necessary').toBeLessThanOrEqual(article.name==='goat'?4:5)
         const texts=[]
         const fills=[]
+        const wordCounts=[],fontSizes=[]
         for(let i=1;i<=total;i++){
           await expect(active.locator('.lore-page-count')).toHaveText(`${i}/${total}`)
           await page.waitForTimeout(350)
@@ -594,6 +595,9 @@ for (const article of visualCases) {
           }
           if(i<total) expect(m.fill,'Non-final page should use at least 60% of its reading surface').toBeGreaterThanOrEqual(.60)
           fills.push(m.fill)
+          const pageText=(await active.locator('.article-text > .article-paragraph').allTextContents()).join(' ').trim()
+          wordCounts.push(pageText.split(/\s+/).filter(Boolean).length)
+          fontSizes.push(m.fontSize)
           // DOM textContent concatenates sibling <p> elements without a separator.
           texts.push((await active.locator('.article-text > .article-paragraph').allTextContents()).join(' '))
           await page.screenshot({path:testInfo.outputPath(`${article.name}-${level}-${vp.width}x${vp.height}-${i}.png`)})
@@ -605,6 +609,10 @@ for (const article of visualCases) {
           expect(fills.reduce((s,n)=>s+n,0)/fills.length,'Mean desktop content utilization').toBeGreaterThanOrEqual(.75)
           if(level==='A1-A2')expect(total,'Beginner readability must not add unnecessary pages').toBeLessThanOrEqual(article.name==='goat'?3:4)
         }
+        const wordRatio=Math.max(...wordCounts)/Math.max(1,Math.min(...wordCounts))
+        console.log('PAGE RHYTHM',article.name,vp,level,JSON.stringify({wordCounts,wordRatio,fonts:fontSizes,fills}))
+        expect(new Set(fontSizes).size,'Font size stays constant across all pages of an article').toBe(1)
+        expect(wordRatio,'No page should have more than twice another page’s text').toBeLessThanOrEqual(2)
         ratios.push({level,total,fills:fills.map(n=>Number(n.toFixed(2)))})
         for(let i=total;i>1;i--){
           await active.getByRole('button',{name:'Previous page',exact:true}).click()
