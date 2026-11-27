@@ -1246,7 +1246,7 @@ export function mapSemanticPageIndex(fromPages, fromPageIndex, toPages) {
     const midDist = Math.abs(targetRange.mid - candRange.mid)
     const candSections = Array.isArray(cand?.sourceSectionIndices) ? cand.sourceSectionIndices : []
     const sharedSections = candSections.filter(sec => targetSections.has(sec)).length
-    const sectionBonus = sharedSections > 0 ? 0.35 + sharedSections * 0.1 : 0
+    const sectionBonus = sharedSections > 0 && cur?.sourceSectionCount===cand?.sourceSectionCount ? 0.35 + sharedSections * 0.1 : 0
     // Avoid jumping back to Cover Page 0 if the user was already reading mid-article
     const coverPenalty = (fromPageIndex > 0 && toPages.length > 1 && j === 0 && overlap < 0.08) ? -0.5 : 0
     const score = overlap * 3.0 + sectionBonus - midDist * 1.4 + coverPenalty
@@ -1270,13 +1270,13 @@ export function planEditorialWikiPages(item, fits) {
   const variants = levels.map(l => item?.levelVariants?.[l]?.pages)
   const originals = item?._sourcePages || item?.pages || []
   const n = originals.length
-  if (n < 4 || n > 6 || variants.some(p => !Array.isArray(p) || p.length !== n)) return null
+  if (n < 4 || n > (item?.readingLevel==='A1-A2'?6:8) || variants.some((p,i) => !Array.isArray(p) || p.length < 4 || p.length > (i===0?6:8))) return null
   if (originals.some(p => !trim(p?.text))) return null
-  if (variants.some(p => p.some((page,i) => (page?.image || '') !== (variants[0][i]?.image || '')))) return null
+  if (variants.some(p => (p[0]?.image || '') !== (variants[0][0]?.image || ''))) return null
   return originals.map((page,i) => {
     const m = {text: page.text, cover: i===0, image: page.image ? page : null, density: ''}
     const result = {...page, density: fits(m) ? '' : 'dense saga-page--dense',
-      sourceSectionIndices:[i], sourceSectionCount:n,
+      sourceSectionIndices:[], sourceSectionCount:n,
       semanticRange:{start:i/n,end:(i+1)/n,mid:(i+.5)/n}}
     Object.defineProperty(result,'_fixedCard',{value:true,enumerable:false})
     return result
