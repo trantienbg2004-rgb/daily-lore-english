@@ -862,14 +862,52 @@ export function planParagraphAwareWikiPages(item, fits, {
   minPreferredPages = 4,
   maxPreferredPages = 6,
   maxAllowedPages = 8,
+  adaptiveComfort = false,
 } = {}) {
   const originals = item?._sourcePages || item?.pages || []
   if (!originals.length) return null
   const raw = trim(originals.map(p => splitParagraphs(p?.text).join(' ')).join(' '))
   if (!raw) return null
 
-  const {paragraphs, sectionCount, coverImage, secondaryAnchors} = extractSemanticParagraphs(item)
+  const extracted = extractSemanticParagraphs(item)
+  let {paragraphs, secondaryAnchors} = extracted
+  const {sectionCount, coverImage} = extracted
   if (!paragraphs.length) return null
+
+  // Keep real paragraph breaks but allow screen boundaries between sentences.
+  // This gives the planner more choices without changing the source text or image anchors.
+  if (adaptiveComfort) {
+    const ranges = []
+    const atoms = []
+    for (const [originalIndex, para] of paragraphs.entries()) {
+      const units = sentenceUnits(para.text)
+      const start = atoms.length
+      let progress = 0
+      for (const unit of units) {
+        const pieces = []
+        let remaining = unit
+        // Exception: a single sentence can exceed a very small viewport.
+        while (remaining && !fits({text: remaining, cover: false, image: null, density: ''})) {
+          const [part, rest] = splitOversizedSentence(remaining, t => fits({text: t, cover: false, image: null, density: ''}))
+          if (!part || !rest) break
+          pieces.push(part)
+          remaining = rest
+        }
+        if (remaining) pieces.push(remaining)
+        for (const piece of pieces) {
+          const words = wordCount(piece)
+          const semanticStart = para.semanticStart + (para.semanticEnd - para.semanticStart) * progress / Math.max(1, para.words)
+          progress += words
+          const semanticEnd = para.semanticStart + (para.semanticEnd - para.semanticStart) * Math.min(1, progress / Math.max(1, para.words))
+          atoms.push({...para, index: atoms.length, originalIndex, text: piece, words, chars: piece.length, semanticStart, semanticEnd})
+        }
+      }
+      ranges.push({start, end: atoms.length - 1})
+    }
+    secondaryAnchors = secondaryAnchors.map(a => ({...a, startPara: ranges[a.startPara]?.start ?? 0, endPara: ranges[a.endPara]?.end ?? 0}))
+    paragraphs = atoms
+  }
+  const joinParagraphs = slice => slice.reduce((out, p, i) => out + (i ? (adaptiveComfort && p.originalIndex === slice[i - 1].originalIndex ? ' ' : '\n\n') : '') + p.text, '')
 
   const N = paragraphs.length
   const R = secondaryAnchors.length
@@ -915,7 +953,7 @@ export function planParagraphAwareWikiPages(item, fits, {
     const cached = measureMemo.get(cacheKey)
     if (cached) return cached
 
-    const text = paragraphs.slice(from, to).map(p => p.text).join('\n\n')
+    const text = joinParagraphs(paragraphs.slice(from, to))
     let result = runSingleMeasure(text, isCover, imageObj, '')
     // Before resorting to a scrollable dense card on a photo page, try the
     // existing compact photo frame so intact paragraphs fit cleanly without scroll.
@@ -931,7 +969,7 @@ export function planParagraphAwareWikiPages(item, fits, {
     const paraCount = to - from
     const words = paragraphs.slice(from, to).reduce((sum, p) => sum + p.words, 0)
     const hasPhoto = Boolean(imageObj?.image)
-    const idealFill = hasPhoto ? 0.74 : 0.62
+    const idealFill = adaptiveComfort ? (hasPhoto ? 0.80 : 0.76) : (hasPhoto ? 0.74 : 0.62)
 
     if (!evalRes.fits) {
       // Single intact paragraph genuinely exceeds viewport height -> allow safe scrolling fallback.
@@ -945,6 +983,10 @@ export function planParagraphAwareWikiPages(item, fits, {
 
     let cost = ((evalRes.usedRatio - idealFill) ** 2) * 115
     if (evalRes.density === 'compact') cost += 12
+    if (adaptiveComfort) {
+      const comfortableWords = hasPhoto ? 38 : 58
+      if (words > comfortableWords) cost += (words - comfortableWords) ** 2 * 0.6
+    }
     // Discourage excessive unused whitespace without forcing wall-to-wall packing
     if (evalRes.unusedRatio > 0.52) {
       cost += ((evalRes.unusedRatio - 0.52) ** 2) * 210
@@ -972,6 +1014,7 @@ export function planParagraphAwareWikiPages(item, fits, {
   }
 
   const pageCountPenalty = k => {
+    if (adaptiveComfort) return k * 5 // density and actual fit, not a fixed five-page target
     if (k === preferredPages) return 0
     if (k === minPreferredPages) return 16
     if (k === maxPreferredPages) return 14
@@ -981,7 +1024,7 @@ export function planParagraphAwareWikiPages(item, fits, {
   }
 
   const minPossibleK = Math.max(1, Math.min(N, (coverImage ? 1 : 0) + R))
-  const maxPossibleK = Math.min(N, Math.max(maxAllowedPages, minPossibleK))
+  const maxPossibleK = adaptiveComfort ? Math.min(N, Math.max(40, minPossibleK)) : Math.min(N, Math.max(maxAllowedPages, minPossibleK))
 
   // DP state: states[k] is a Map keyed by `${from}:${anchorIdx}` -> { cost, steps }
   const states = Array.from({length: maxPossibleK + 1}, () => new Map())
@@ -1043,7 +1086,7 @@ export function planParagraphAwareWikiPages(item, fits, {
         for (let to = from + 1; to <= maxTo; to++) {
           const evalRes = evaluateCandidate(from, to, isCover, mode.imageObj)
           // Monotonicity guard: never stack multiple paragraphs onto an overflowing page
-          if (!evalRes.fits && to - from > 1) break
+          if (!evalRes.fits && (adaptiveComfort || to - from > 1)) break
 
           if (to < minTo) {
             if (!evalRes.fits) break
@@ -1117,7 +1160,7 @@ export function planParagraphAwareWikiPages(item, fits, {
 
   const pages = bestPlan.steps.map(step => {
     const slice = paragraphs.slice(step.from, step.to)
-    const text = slice.map(p => p.text).join('\n\n')
+    const text = joinParagraphs(slice)
     const sectionSet = [...new Set(slice.map(p => p.sectionIndex))].sort((a, b) => a - b)
     const semStart = slice[0]?.semanticStart ?? 0
     const semEnd = slice[slice.length - 1]?.semanticEnd ?? 1
@@ -1202,12 +1245,12 @@ export function mapSemanticPageIndex(fromPages, fromPageIndex, toPages) {
   return bestIdx
 }
 
-export function planAnchoredWikiPages(item, fits, {maxPages = 250, uniformRhythm = false, balanced = false, paragraphAware = false, measure = null} = {}) {
+export function planAnchoredWikiPages(item, fits, {maxPages = 250, uniformRhythm = false, balanced = false, paragraphAware = false, measure = null, adaptiveComfort = false} = {}) {
   if (paragraphAware || measure || (balanced && extractSemanticParagraphs(item).hasMultiParagraphs)) {
-    const adaptive = planParagraphAwareWikiPages(item, fits, {measure})
+    const adaptive = planParagraphAwareWikiPages(item, fits, {measure, adaptiveComfort})
     if (adaptive && adaptive.length) return adaptive
   }
-  if (balanced) {
+  if (balanced && !adaptiveComfort) {
     const fixedCards = planBalancedWikiPages(item, fits)
     if (fixedCards && fixedCards.length) return fixedCards
   }
@@ -1441,6 +1484,12 @@ export function planAnchoredWikiPages(item, fits, {maxPages = 250, uniformRhythm
   }
 
   if (trim(pages.map(p => p.text).join(' ')) !== raw) throw Error('Paginator text-integrity check failed')
+  if (adaptiveComfort) {
+    for (const [i, page] of pages.entries()) {
+      if (page.text && !fits({text: page.text, cover: i === 0, image: page.image ? page : null, density: page.density || ''})) page.density = 'dense saga-page--dense'
+      Object.defineProperty(page, '_fixedCard', {value: true, enumerable: false})
+    }
+  }
   return pages
 }
 
