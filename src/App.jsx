@@ -423,6 +423,7 @@ function layoutPages(item, reader, badImages = new Set()) {
       card.classList.toggle('reading-card-no-photo', !image)
       card.classList.toggle('reading-card-with-photo', !!image)
       media.classList.toggle('article-media-empty', !image)
+      surface?.classList.remove('page-density-dense', 'page-density-dense-tight', 'saga-page--dense')
       surface?.classList.toggle('page-density-compact', density === 'compact')
       surface?.classList.toggle('saga-page--text-only', !image)
       media.style.display = image ? 'flex' : 'none'
@@ -495,14 +496,17 @@ function layoutPages(item, reader, badImages = new Set()) {
       const availableHeight = Math.max(1, pagerBounds.top - cardBounds.top - 8)
       const contentBottom = Math.max(textBounds.bottom, image ? mediaBounds.bottom : 0)
       const bottomWhitespacePx = Math.max(0, pagerBounds.top - contentBottom)
+      // Auto-centering means the blank area is distributed above and below the text.
+      // Count actual unused space for text-only pages, not just bottom margin.
       const unusedVerticalPx = image
         ? bottomWhitespacePx
-        : Math.max(0, (pagerBounds.top - cardBounds.top) - textBounds.height)
-      const overflowPx = Math.max(0, textBounds.bottom - (pagerBounds.top - 8))
+        : Math.max(0, availableHeight - textBounds.height)
+      const safeBottom = Math.min(pagerBounds.top, fixture.getBoundingClientRect().bottom) - 12
+      const overflowPx = Math.max(0, contentBottom - safeBottom)
       // The flex pager ends exactly at the reader's bottom; allow subpixel
       // rounding while keeping the entire paragraph block above the pager.
-      const fitsPage = textBounds.height > 0 && textBounds.bottom <= pagerBounds.top - 8
-        && (!image || mediaBounds.bottom <= pagerBounds.top - 8)
+      const fitsPage = textBounds.height > 0 && textBounds.bottom <= safeBottom
+        && (!image || mediaBounds.bottom <= safeBottom)
         && pagerBounds.bottom <= viewportBottom + 1
       const measured = {
         fits: fitsPage,
@@ -523,7 +527,7 @@ function layoutPages(item, reader, badImages = new Set()) {
     const next = item?.contentType === 'news'
       ? balancePhotoCoverPage(cleanSources, fits)
       : item?.contentType === 'wiki'
-        ? planAnchoredWikiPages({...item,_sourcePages:cleanSources}, fits, {balanced: true, paragraphAware: true, measure})
+        ? planAnchoredWikiPages({...item,_sourcePages:cleanSources}, fits, {balanced: true, paragraphAware: true, adaptiveComfort: true, measure})
         : planReadingPages({...item,_sourcePages:cleanSources}, fits)
     if (!next.length) return item.pages
     return rebalanceTextPages(next, fits)
