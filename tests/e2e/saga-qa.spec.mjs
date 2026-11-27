@@ -593,7 +593,8 @@ for (const article of visualCases) {
             if(i<total)expect(m.fill,'Nonfinal desktop page should not be mostly empty').toBeGreaterThanOrEqual(.42)
           }
           fills.push(m.fill)
-          texts.push(await active.locator('.article-text').textContent())
+          // DOM textContent concatenates sibling <p> elements without a separator.
+          texts.push((await active.locator('.article-text > .article-paragraph').allTextContents()).join(' '))
           if(vp.width>=1000)await page.screenshot({path:testInfo.outputPath(`${article.name}-${level}-${i}.png`)})
           if(i<total) await active.getByRole('button',{name:'Next page',exact:true}).click()
         }
