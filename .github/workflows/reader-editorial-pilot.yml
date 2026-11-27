@@ -5,6 +5,7 @@ on:
     paths:
       - '.github/workflows/reader-editorial-pilot.yml'
       - 'scripts/wiki/editorial-meter.mjs'
+      - 'scripts/wiki/review-editorial-pilot.mjs'
       - 'scripts/test/editorial-offline-pilot.mjs'
       - 'scripts/test/fixtures/editorial-pilot-texts.mjs'
       - 'src/App.css'

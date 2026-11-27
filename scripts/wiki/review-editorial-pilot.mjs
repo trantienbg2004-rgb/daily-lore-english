@@ -62,11 +62,19 @@ try{
   console.log('PILOT DETERMINISTIC ISSUES',id,JSON.stringify(quality.errors))
   const required=new Set(quality.errors.map(e=>String(e).match(/^(A1-A2|B1-B2|C1-C2)/)?.[1]).filter(Boolean))
   if(quality.errors.length&&!required.size)for(const l of levels)required.add(l)
-  const prompt=buildCEFRReviewRepairPrompt(source,story.category,evidence,draft,quality,{editorialRhythm:true,budgets:meter.budgets})+'\n\nAUTHOR IS CHATGPT, NOT GEMINI. You are the independent examiner. These draft pages already passed actual browser copyfitting. Preserve passing prose and captions. If a factual or CEFR correction is needed, replace rather than add whole sentences where possible, so body length remains similar. Do not change image placement or page count.'
-  const response=await callGeminiWithFailover(prompt,keyState,{model:'gemini-3.5-flash-lite',fallbackModels:['gemini-3.1-flash-lite'],schema:simplifyEditorialSchema(buildCEFRReviewRepairSchema(draft)),deadlineMs:Date.now()+150000,requestTimeoutMs:60000})
-  const reviewed=applyCEFRReviewRepairs(draft,response.draft,{requiredRepairLevels:[...required],validEvidenceIds:new Set(evidence.map(e=>e.id))})
-  const final=validateArticleQuality(reviewed.draft,story.sourceTitle,opts)
-  console.log('INDEPENDENT PILOT REVIEW',id,response.model,JSON.stringify({assessment:Object.fromEntries(levels.map(l=>[l,{band:reviewed.finalAssessment?.[l]?.finalBand,verdict:reviewed.finalAssessment?.[l]?.finalVerdict}])),reviewErrors:reviewed.errors,qualityErrors:final.errors}))
+  const prompt=buildCEFRReviewRepairPrompt(source,story.category,evidence,draft,quality,{editorialRhythm:true,budgets:meter.budgets})+'\n\nAUTHOR IS CHATGPT, NOT GEMINI. You are the independent examiner. These draft pages already passed actual browser copyfitting. Preserve passing prose and captions. If a factual or CEFR correction is needed, replace rather than add whole sentences where possible, so body length remains similar. Do not change image placement or page count. Both sub-bands in each group are valid. If no correction is necessary, initialVerdict and finalVerdict must both be pass, the bands must be within the assigned group, all six dimensions must be fit, and repairs must be omitted for that level. Never declare initial revise followed by final pass without an actual patch. Assess the exact prose, not an imagined revision.'
+  let response,reviewed,final
+  // Retry only an internally contradictory review response, not a genuine
+  // CEFR rejection. No regeneration or more than two logical calls per pilot.
+  for(let attempt=0;attempt<2;attempt++){
+   const feedback=attempt?'\n\nPrevious examiner output violated the response contract: '+reviewed.errors.join(' | ')+'. Reassess the ORIGINAL draft from scratch; either confirm all dimensions fit and initial/final pass without patches, or return the actual necessary patch. Do not mark a failed dimension as passing without a repair.':''
+   response=await callGeminiWithFailover(prompt+feedback,keyState,{model:'gemini-3.5-flash-lite',fallbackModels:['gemini-3.1-flash-lite'],schema:simplifyEditorialSchema(buildCEFRReviewRepairSchema(draft)),deadlineMs:Date.now()+150000,requestTimeoutMs:60000})
+   reviewed=applyCEFRReviewRepairs(draft,response.draft,{requiredRepairLevels:[...required],validEvidenceIds:new Set(evidence.map(e=>e.id))})
+   final=validateArticleQuality(reviewed.draft,story.sourceTitle,opts)
+   console.log('INDEPENDENT PILOT REVIEW',id,response.model,JSON.stringify({attempt:attempt+1,assessment:Object.fromEntries(levels.map(l=>[l,{band:reviewed.finalAssessment?.[l]?.finalBand,verdict:reviewed.finalAssessment?.[l]?.finalVerdict}])),changedPages:(response.draft.repairs||[]).map(r=>({level:r.level,pages:r.pages?.map(p=>p.pageIndex)})),reviewErrors:reviewed.errors,qualityErrors:final.errors}))
+   if(reviewed.ok&&final.ok)break
+   if(!reviewed.errors.length||!reviewed.errors.every(e=>/did not return any changed pages|no page text changed/.test(e)))break
+  }
   if(!reviewed.ok||!final.ok)throw Error('Independent pilot review rejected '+id+': '+[...reviewed.errors,...final.errors].join(' | '))
   const next=structuredClone(story)
   for(const l of levels){
@@ -80,6 +88,6 @@ try{
   next.editorialPilotReview={model:response.model,sourceRevisionId:source.sourceRevisionId,bands:Object.fromEntries(levels.map(l=>[l,reviewed.finalAssessment[l].finalBand]))}
   if(!validateWikiStory(next).accepted)throw Error('Catalog rejected reviewed pilot '+id)
   approved.push(next)
+  await fs.writeFile(output,JSON.stringify(approved,null,2))
  }
- await fs.writeFile(output,JSON.stringify(approved,null,2))
 }finally{await meter.close()}
