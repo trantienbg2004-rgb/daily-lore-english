@@ -442,12 +442,17 @@ function layoutPages(item, reader, badImages = new Set()) {
         const ratio = asset?.width && asset?.height ? asset.width / asset.height : 4 / 3
         const measuredHeight = Math.min(maxHeight, media.clientWidth / ratio)
         const measuredWidth = Math.min(media.clientWidth, measuredHeight * ratio)
-        figure.style.width = fixture.dataset.editorialLayout === 'shared' ? '' : `${Math.round(measuredWidth)}px`
-        figure.style.height = fixture.dataset.editorialLayout === 'shared' ? '' : `${Math.round(measuredHeight)}px`
+        if (fixture.dataset.editorialLayout === 'shared') {
+          figure.style.width = ''
+          figure.style.height = ''
+        } else {
+          figure.style.width = `${Math.round(measuredWidth)}px`
+          figure.style.height = `${Math.round(measuredHeight)}px`
+        }
         photo.width = asset?.width || 1600
         photo.height = asset?.height || 900
-        photo.style.width = `${Math.round(measuredWidth)}px`
-        photo.style.height = `${Math.round(measuredHeight)}px`
+        photo.style.width = fixture.dataset.editorialLayout === 'shared' ? '' : `${Math.round(measuredWidth)}px`
+        photo.style.height = fixture.dataset.editorialLayout === 'shared' ? '' : `${Math.round(measuredHeight)}px`
       } else {
         figure.style.width = ''
         figure.style.height = ''
