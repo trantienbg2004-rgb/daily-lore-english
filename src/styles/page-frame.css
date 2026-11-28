@@ -32,7 +32,13 @@
   position: relative;
   height: 100%;
   min-height: 0;
-  overflow: hidden;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: none;
+}
+
+.saga-frame::-webkit-scrollbar {
+  display: none;
 }
 
 .saga-frame__grid {
@@ -55,18 +61,18 @@
   --pc-lu: clamp(1.5 * var(--pc-f), 100cqh / var(--pc-L), 1.6 * var(--pc-f));
 
   box-sizing: border-box;
-  height: 100cqh;
+  min-height: 100cqh;
   width: 100%;
   display: grid;
-  grid-template-columns: 1fr calc(var(--pc-measure) * 1em) 1fr;
+  grid-template-columns: minmax(0, 1fr);
   grid-template-rows:
-    calc(0.5 * var(--pc-lu))                                   /* 1 pad top   */
+    calc(0.4 * var(--pc-lu))                                   /* 1 pad top   */
     auto                                                       /* 2 title     */
-    minmax(calc(var(--pc-media-min) * var(--pc-lu)), 1fr)      /* 3 media     */
-    calc(0.5 * var(--pc-lu))                                   /* 4 gap       */
-    var(--pc-lu)                                               /* 5 caption   */
+    auto                                                       /* 3 media     */
+    calc(0.25 * var(--pc-lu))                                  /* 4 gap       */
+    auto                                                       /* 5 caption   */
     auto                                                       /* 6 body      */
-    calc(0.5 * var(--pc-lu));                                  /* 7 pad bottom */
+    1fr;                                                       /* 7 bottom    */
 
   font-family: 'Source Serif 4', Georgia, 'Times New Roman', serif;
   font-weight: 400;
@@ -83,7 +89,7 @@
 }
 
 .saga-frame__grid > * {
-  grid-column: 2;
+  grid-column: 1;
   min-width: 0;
 }
 
@@ -131,7 +137,7 @@
   width: auto;
   height: auto;
   max-width: 100%;
-  max-height: 100%;
+  max-height: clamp(130px, 28dvh, 235px);
   object-fit: contain;
   object-position: left top;
 }
@@ -140,9 +146,9 @@
 .saga-frame__caption {
   grid-row: 5;
   align-self: center;
-  margin: 0;
+  margin: 0 0 calc(0.35 * var(--pc-lu));
   font-size: 0.8em;
-  line-height: var(--pc-lu);
+  line-height: 1.35;
   font-style: italic;
   color: #6e6963;
   white-space: nowrap;
@@ -187,7 +193,10 @@
   transition: color 0.18s ease;
 }
 
-.saga-frame__body .saga-word-cluster,
+.saga-frame__body .saga-word-cluster {
+  white-space: nowrap;
+}
+
 .saga-frame__body .saga-word-cluster .word-token.phrase-token {
   white-space: normal;
 }
