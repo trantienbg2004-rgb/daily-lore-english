@@ -1,21 +1,21 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-27T01:27:26.628Z",
+  "updatedAt": "2026-11-28T15:39:11.554Z",
   "total": 1795,
   "counts": {
-    "pending": 1576,
-    "published": 33,
+    "pending": 1569,
+    "published": 36,
     "skipped_no_image": 0,
     "skipped_no_lead_image": 140,
-    "skipped_quality": 46
+    "skipped_quality": 50
   },
   "byTopic": {
     "Politics": {
-      "pending": 158,
+      "pending": 157,
       "published": 4,
       "skipped_no_image": 0,
       "skipped_no_lead_image": 15,
-      "skipped_quality": 4,
+      "skipped_quality": 5,
       "total": 181
     },
     "Economy": {
@@ -27,8 +27,8 @@
       "total": 180
     },
     "Conflict & Security": {
-      "pending": 154,
-      "published": 3,
+      "pending": 153,
+      "published": 4,
       "skipped_no_image": 0,
       "skipped_no_lead_image": 18,
       "skipped_quality": 5,
@@ -43,22 +43,14 @@
       "total": 179
     },
     "Culture": {
-      "pending": 154,
-      "published": 1,
+      "pending": 153,
+      "published": 2,
       "skipped_no_image": 0,
       "skipped_no_lead_image": 16,
       "skipped_quality": 8,
       "total": 179
     },
     "Science & Technology": {
-      "pending": 161,
-      "published": 3,
-      "skipped_no_image": 0,
-      "skipped_no_lead_image": 12,
-      "skipped_quality": 4,
-      "total": 180
-    },
-    "Environment": {
       "pending": 160,
       "published": 3,
       "skipped_no_image": 0,
@@ -66,20 +58,28 @@
       "skipped_quality": 5,
       "total": 180
     },
+    "Environment": {
+      "pending": 159,
+      "published": 3,
+      "skipped_no_image": 0,
+      "skipped_no_lead_image": 12,
+      "skipped_quality": 6,
+      "total": 180
+    },
     "Health": {
-      "pending": 167,
-      "published": 4,
+      "pending": 166,
+      "published": 5,
       "skipped_no_image": 0,
       "skipped_no_lead_image": 5,
       "skipped_quality": 4,
       "total": 180
     },
     "History & Geography": {
-      "pending": 156,
+      "pending": 155,
       "published": 1,
       "skipped_no_image": 0,
       "skipped_no_lead_image": 19,
-      "skipped_quality": 5,
+      "skipped_quality": 6,
       "total": 181
     },
     "Sports": {
@@ -524,10 +524,18 @@
       "priority": 0,
       "sourceUrl": "https://en.wikipedia.org/wiki/Climate_change_litigation",
       "hasLeadImage": true,
-      "status": "pending",
+      "status": "skipped_quality",
       "addedAt": "2026-11-22T02:47:22.530Z",
       "requeuedAt": "2026-11-22T02:47:22.530Z",
-      "requeuedReason": "cefr_upgrade"
+      "requeuedReason": "cefr_upgrade",
+      "qualityErrors": [
+        "C1-C2: selected core facts lack page citations: F6 (required evidence P11). Add the fact to a relevant page and cite its own supporting evidenceIds.",
+        "A1-A2 page 2 (text-only): utilization too low — current 181 chars / 29 words; measured 375x667 21% (85/403 px, 4L); 390x844 33% (194/578 px, 6L); 430x932 29% (194/661 px, 6L); 1366x768 22% (117/522 px, 4L); rewrite to approximately 384 chars / 62 words, estimated compatible range 282–486 chars. Keep 1–3 natural paragraphs and all source-grounded facts.",
+        "A1-A2 page 2 (text-only): too few rendered lines (1366x768 4L); requires at least 5 rendered lines.",
+        "C1-C2 page 3 (text-only): utilization too low — current 201 chars / 26 words; measured 375x667 26% (106/403 px, 5L); 390x844 33% (194/578 px, 6L); 430x932 29% (194/661 px, 6L); 1366x768 24% (117/496 px, 4L); rewrite to approximately 419 chars / 54 words, estimated compatible range 298–540 chars. Keep 1–3 natural paragraphs and all source-grounded facts.",
+        "C1-C2 page 3 (text-only): too few rendered lines (1366x768 4L); requires at least 5 rendered lines."
+      ],
+      "checkedAt": "2026-11-28T15:25:18.106Z"
     },
     {
       "title": "Antibiotic sensitivity testing",
@@ -831,10 +839,11 @@
       "priority": 0,
       "sourceUrl": "https://en.wikipedia.org/wiki/Antimicrobial_resistance",
       "hasLeadImage": true,
-      "status": "pending",
+      "status": "published",
       "addedAt": "2026-11-22T02:47:22.530Z",
       "requeuedAt": "2026-11-22T02:47:22.530Z",
-      "requeuedReason": "cefr_upgrade"
+      "requeuedReason": "cefr_upgrade",
+      "publishedAt": "2026-11-28T15:39:11.517Z"
     },
     {
       "title": "History of Tourette syndrome",
@@ -1229,10 +1238,18 @@
       "priority": 0,
       "sourceUrl": "https://en.wikipedia.org/wiki/History_of_radar",
       "hasLeadImage": true,
-      "status": "pending",
+      "status": "skipped_quality",
       "addedAt": "2026-11-22T02:47:22.530Z",
       "requeuedAt": "2026-11-22T02:47:22.530Z",
-      "requeuedReason": "cefr_upgrade"
+      "requeuedReason": "cefr_upgrade",
+      "qualityErrors": [
+        "A1-A2: selected core facts lack page citations: F6 (required evidence P3). Add the fact to a relevant page and cite its own supporting evidenceIds.",
+        "B1-B2: selected core facts lack page citations: F6 (required evidence P3). Add the fact to a relevant page and cite its own supporting evidenceIds.",
+        "C1-C2: selected core facts lack page citations: F6 (required evidence P3). Add the fact to a relevant page and cite its own supporting evidenceIds.",
+        "A1-A2 page 1 (cover): utilization too low — current 140 chars / 21 words; measured 375x667 25% (64/253 px, 3L); 390x844 56% (161/286 px, 5L); 430x932 37% (129/350 px, 4L); 1366x768 35% (88/253 px, 3L); rewrite to approximately 182 chars / 27 words, estimated compatible range 141–223 chars. Keep 1–2 natural paragraphs and all source-grounded facts.",
+        "A1-A2 page 2 (text-only): utilization too low — current 155 chars / 26 words; measured 375x667 21% (85/403 px, 4L); 390x844 28% (161/578 px, 5L); 430x932 24% (161/661 px, 5L); 1366x768 22% (117/522 px, 4L); rewrite to approximately 371 chars / 62 words, estimated compatible range 242–500 chars. Keep 1–3 natural paragraphs and all source-grounded facts."
+      ],
+      "checkedAt": "2026-11-28T15:35:35.559Z"
     },
     {
       "title": "History of yellow fever",
@@ -1340,8 +1357,12 @@
       "priority": 1,
       "sourceUrl": "https://en.wikipedia.org/wiki/Political_party",
       "hasLeadImage": true,
-      "status": "pending",
-      "addedAt": "2026-11-20T08:49:35.085Z"
+      "status": "skipped_quality",
+      "addedAt": "2026-11-20T08:49:35.085Z",
+      "qualityErrors": [
+        "B1-B2: selected core facts lack page citations: F6 (required evidence P13). Add the fact to a relevant page and cite its own supporting evidenceIds."
+      ],
+      "checkedAt": "2026-11-28T15:33:29.699Z"
     },
     {
       "title": "Domestic violence",
@@ -4946,8 +4967,9 @@
       "priority": 1,
       "sourceUrl": "https://en.wikipedia.org/wiki/Assassination_of_Archduke_Franz_Ferdinand",
       "hasLeadImage": true,
-      "status": "pending",
-      "addedAt": "2026-11-20T08:49:35.085Z"
+      "status": "published",
+      "addedAt": "2026-11-20T08:49:35.085Z",
+      "publishedAt": "2026-11-28T15:19:39.208Z"
     },
     {
       "title": "Eastern Front (World War II)",
@@ -8520,8 +8542,9 @@
       "priority": 1,
       "sourceUrl": "https://en.wikipedia.org/wiki/On_the_Origin_of_Species",
       "hasLeadImage": true,
-      "status": "pending",
-      "addedAt": "2026-11-20T08:49:35.085Z"
+      "status": "published",
+      "addedAt": "2026-11-20T08:49:35.085Z",
+      "publishedAt": "2026-11-28T15:18:43.308Z"
     },
     {
       "title": "Logic",
@@ -15516,8 +15539,12 @@
       "priority": 1,
       "sourceUrl": "https://en.wikipedia.org/wiki/Colorado_River",
       "hasLeadImage": true,
-      "status": "pending",
-      "addedAt": "2026-11-20T08:49:35.085Z"
+      "status": "skipped_quality",
+      "addedAt": "2026-11-20T08:49:35.085Z",
+      "qualityErrors": [
+        "B1-B2 page 3 (text-only): utilization too low — current 232 chars / 43 words; measured 375x667 34% (139/403 px, 6L); 390x844 47% (273/578 px, 8L); 430x932 36% (241/661 px, 7L); 1366x768 31% (161/522 px, 5L); rewrite to approximately 353 chars / 65 words, estimated compatible range 264–441 chars. Keep 1–3 natural paragraphs and all source-grounded facts."
+      ],
+      "checkedAt": "2026-11-28T15:27:44.126Z"
     },
     {
       "title": "Australia",
