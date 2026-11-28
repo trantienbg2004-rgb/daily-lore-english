@@ -98,13 +98,18 @@ async function main() {
           fixable: audit.fixes.length, rewrites: audit.rewrites.length, errors: [...audit].slice(0, 20)})
         continue
       }
-      const res = await refitStory(story, {
-        meter, callGemini, fetchSource: fetchWikipediaRevision,
-        validate: validateWikiStory, factCheck: batch.validateFactualConsistency, maxRounds: opts.maxRounds,
-      })
-      if (res.status === 'ok') await replaceWikiStory(ROOT, res.story)
-      report.push({id: story.sourcePageId, title: story.title, status: res.status, rounds: res.rounds, errors: res.errors})
-      console.log(`[refit] ${res.status.padEnd(18)} ${story.title}`)
+      try {
+        const res = await refitStory(story, {
+          meter, callGemini, fetchSource: fetchWikipediaRevision,
+          validate: validateWikiStory, factCheck: batch.validateFactualConsistency, maxRounds: opts.maxRounds,
+        })
+        if (res.status === 'ok') await replaceWikiStory(ROOT, res.story)
+        report.push({id: story.sourcePageId, title: story.title, status: res.status, rounds: res.rounds, errors: res.errors})
+        console.log(`[refit] ${res.status.padEnd(18)} ${story.title}`)
+      } catch (err) {
+        report.push({id: story.sourcePageId, title: story.title, status: 'error', errors: [err?.message || String(err)]})
+        console.log(`[refit] ${'error'.padEnd(18)} ${story.title}: ${err?.message || err}`)
+      }
     }
   } finally {
     await meter.close()
