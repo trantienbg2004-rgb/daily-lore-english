@@ -1310,8 +1310,8 @@
   text-align: center;
   min-width: 0;
   max-width: 100%;
-  overflow: visible;
-  text-overflow: clip;
+  overflow: hidden;
+  text-overflow: ellipsis;
   white-space: nowrap;
   font-family: var(--font-ui);
   font-size: clamp(10px, 2.7vw, 11.5px);

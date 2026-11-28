@@ -17,7 +17,9 @@
     "wiki:audit-cefr": "node scripts/audit_wiki_cefr.mjs",
     "wiki:queue": "node scripts/build_wiki_queue.mjs",
     "wiki:batch": "node scripts/publish_wiki_batch.mjs",
-    "audit:dict": "node scripts/audit_missing_words.mjs"
+    "audit:dict": "node scripts/audit_missing_words.mjs",
+    "wiki:refit": "node scripts/wiki/refit-catalog.mjs",
+    "wiki:probe": "node tools/build-probe.mjs"
   },
   "dependencies": {
     "cheerio": "^1.2.0",

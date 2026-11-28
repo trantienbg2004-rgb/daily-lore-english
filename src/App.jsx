@@ -24,6 +24,7 @@ import { buildSavedTokenSet, isTokenSaved } from './lib/savedWordsMatch.js'
 import { loadLemmaMap, loadPhraseMap, lookupDictionaryTerm, resolveStaticPhrase, resolveTier1Glossary } from './services/dictionaryService.js'
 import { createArticleReaderController, splitPageIntoSentences } from './lib/readerAudio.js'
 import FullArticleModal from './components/FullArticleModal.jsx'
+import PageFrame from './components/PageFrame.jsx'
 import {
   normalizeSavedWord,
   countWordStates,
@@ -355,6 +356,8 @@ function safeStoryUrl(url) {
 // Measure every story against the actual viewport. News keeps its edited
 // four-to-six-page structure while short photo covers can borrow text below.
 function layoutPages(item, reader, badImages = new Set()) {
+  // Page Contract v1: pages were measured at build time and fit every screen.
+  if (item?.pageContractVersion === 1) return item.pages
   // Editorial pages are source units, not guaranteed screen-sized. Measure
   // every level against the actual phone viewport and the anchored pager.
   const bounds = reader.getBoundingClientRect()
@@ -597,34 +600,7 @@ function layoutPages(item, reader, badImages = new Set()) {
         : planReadingPages({...item,_sourcePages:cleanSources}, fits)
     let next = plan()
     if (!next.length) return item.pages
-    // Wide, tall phones support two comfortable type sizes. Keep the regular
-    // size unless the larger size genuinely improves the whole article, fits
-    // every page and does not add pages. Never stretch individual short pages.
-    let readingScale = ''
-    const useWidePhoneProfile = item?.contentType === 'wiki'
-      && window.matchMedia('(min-width: 410px) and (max-width: 519px) and (min-height: 850px)').matches
-    if (useWidePhoneProfile) {
-      const quality = pages => {
-        if (!pages.length) return {fits: false, fill: 0}
-        const metrics = pages.map((p,i) => measure({text:p.text,cover:i===0,image:p.image?p:null,density:p.density||''}))
-        return {fits:metrics.every(m=>m.fits),fill:metrics.reduce((sum,m)=>sum+Math.max(0,1-m.unusedVerticalPx/Math.max(1,m.availableHeight)),0)/metrics.length}
-      }
-      const normal = quality(next)
-      if (normal.fits && normal.fill < 0.78) {
-        fixture.dataset.readingScale = 'large'
-        measureMemo.clear()
-        const alternate = plan()
-        const larger = quality(alternate)
-        if (larger.fits && alternate.length <= next.length && larger.fill >= normal.fill + 0.02) {
-          next = alternate
-          readingScale = 'large'
-        } else {
-          fixture.dataset.readingScale = ''
-          measureMemo.clear()
-        }
-      }
-    }
-    return applyBoundedMicroFit(rebalanceTextPages(next, fits)).map(p=>({...p,readingScale}))
+    return applyBoundedMicroFit(rebalanceTextPages(next, fits))
   } catch (error) {
     console.warn('Screen pagination deferred:', error?.message || error)
     return item.pages
@@ -2161,6 +2137,39 @@ function App() {
       stopSpeech()
       setFullArticleStory(item)
     }
+    // Body paragraphs (word buttons + sentences), shared by the old layout and PageFrame.
+    const renderParagraphs = () => {
+      const paraBlocks = splitParagraphs(itemPage.text)
+      const blocks = paraBlocks.length ? paraBlocks : [itemPage.text || '']
+      let runningSentenceIdx = 0
+      return blocks.map((blockText, pIdx) => {
+        const blockSentences = splitPageIntoSentences(blockText)
+        return <p key={pIdx} className="article-paragraph">{blockSentences.map((seg, localIdx) => {
+          const sIdx = runningSentenceIdx++
+          const [, leading, core, trailing] = seg.match(/^(\s*)([\s\S]*?)(\s*)$/) || ['', '', seg, '']
+          const tokens = core ? tokenizeWithGlossary(core, item.glossary, staticPhrases, lemmaMap) : []
+          const clustered = groupTokenClusters(tokens)
+          const isCurrentSentence = highlightActive && activeSentenceIndex === sIdx
+          const isDimmedSentence = highlightActive && activeSentenceIndex !== sIdx
+          const sentenceClass = 'saga-sentence' + (isCurrentSentence ? ' saga-sentence--active' : '') + (isDimmedSentence ? ' saga-sentence--dimmed' : '')
+          const renderWordButton = (token, key) => {
+            const saved = isTokenSaved(token, savedTokenSet, lemmaMap)
+            const newlySaved = Boolean(saved && justSavedWord && (String(token.lookupKey || '').toLowerCase() === justSavedWord || String(token.text || '').toLowerCase() === justSavedWord))
+            return <button key={key} type="button" disabled={!interactive} className={'word-token ' + (token.kind === 'glossary' ? 'glossary-token ' : token.kind === 'phrase' ? 'phrase-token' : '') + (saved ? 'known ' : '') + (newlySaved ? 'just-saved' : '')} onClick={event => onWordClick(event, token.lookupKey, token.entry, token.text)}>{token.text}</button>
+          }
+          return <Fragment key={localIdx}>{leading}{core && <span className={sentenceClass} data-sentence-index={sIdx}>{clustered.map((piece, i) => {
+            if (piece.kind === 'text') return piece.text
+            if (piece.kind === 'cluster') {
+              return <span key={i} className="saga-word-cluster">{piece.leading || ''}{renderWordButton(piece.token)}{piece.clinging || ''}</span>
+            }
+            return renderWordButton(piece.token, i)
+          })}</span>}{trailing}</Fragment>
+        })}</p>
+      })
+    }
+    // Page Contract v1: one frame for every page; old layout stays for unmigrated stories.
+    const contract = item.pageContractVersion === 1
+    const frameKind = pageNumber === 0 ? 'cover' : (itemPage?.image && !pagePhotoMissing ? 'photo' : 'card')
     return <div className="reader-gesture" data-reading-level={item.readingLevel || ''} data-editorial-layout={item.readerLayoutVersion === 3 ? 'shared' : ''} data-reading-scale={itemPage?.readingScale || ''} aria-hidden={!interactive} onTouchStart={interactive ? startGesture : undefined} onTouchMove={interactive ? moveGesture : undefined} onTouchEnd={interactive ? endGesture : undefined} onTouchCancel={interactive ? cancelGesture : undefined} onPointerDown={interactive ? startPointer : undefined} onPointerMove={interactive ? movePointer : undefined} onPointerUp={interactive ? endPointer : undefined} onPointerCancel={interactive ? () => {pointerGesture.current = null; releaseSwipeTransform({ spring: true })} : undefined}>
       <header className="topbar lore-reader-topbar">
         <div className="saga-topbar-slot saga-topbar-left">
@@ -2173,16 +2182,25 @@ function App() {
           {interactive && <button type="button" className={'icon-button saga-toolbar-audio' + (articlePlaying ? ' is-speaking' : '')} onClick={toggleArticleAudio} aria-pressed={articlePlaying} aria-label={articlePlaying ? 'Stop reading aloud' : 'Read aloud'} title={articlePlaying ? 'Stop reading aloud' : 'Read aloud'}><span className="audio-label" aria-hidden="true">{articlePlaying ? 'STOP' : 'LISTEN'}</span><Icon name="volume" size={18}/></button>}
         </div>
       </header>
-      <div key={`${index}:${pageNumber}`} style={itemPage?.microFit ? {
+      <div key={`${index}:${pageNumber}`} style={!contract && itemPage?.microFit ? {
         ...(itemPage.microFit.bodyPx ? {'--saga-fit-body-size': `${itemPage.microFit.bodyPx}px`} : {}),
         ...(itemPage.microFit.lineHeight ? {'--saga-fit-line-height': String(itemPage.microFit.lineHeight)} : {}),
         ...(itemPage.microFit.photoMaxPx ? {'--saga-fit-photo-max-h': `${itemPage.microFit.photoMaxPx}px`} : {}),
-      } : undefined} className={'page-surface ' + (!closing && !pageHasPhoto ? 'saga-page--text-only ' : '') + (itemPage?.density ? `page-density-${itemPage.density} ` : '') + (interactive && pageMotion ? (pageMotion > 0 ? 'page-enter-left' : 'page-enter-right') : '')}>
+      } : undefined} className={'page-surface ' + (contract ? 'page-surface--contract ' : '') + (!contract && !closing && !pageHasPhoto ? 'saga-page--text-only ' : '') + (!contract && itemPage?.density ? `page-density-${itemPage.density} ` : '') + (interactive && pageMotion ? (pageMotion > 0 ? 'page-enter-left' : 'page-enter-right') : '')}>
       {closing ? <section className="story-end" aria-label="Article completed">
         <div className="story-end-center"><Icon name="book" size={56}/><h2>That's the short version.</h2>
           {safeStoryUrl(item.sourceUrl) && <a className="story-end-cta" href={safeStoryUrl(item.sourceUrl)} target="_blank" rel="noopener noreferrer" onClick={handleReadFullArticleClick}>Read the full article</a>}
         </div><div className="story-end-next">Swipe up for the next story</div>
-      </section> : <>
+      </section> : contract ? <PageFrame
+        kind={frameKind}
+        headline={displayHeadline(item)}
+        image={pagePhotoMissing ? '' : itemPage.image}
+        caption={photoLabel(itemPage)}
+        focus={itemPage.focus || []}
+        onImageError={interactive ? markBrokenImage : undefined}
+        onOverflow={interactive ? info => console.warn('[page-contract] overflow', storyId(item), pageNumber + 1, info) : undefined}>
+        {renderParagraphs()}
+      </PageFrame> : <>
       <div className={'post-head article-heading lore-article-heading ' + (pagePhotoMissing ? 'post-head--no-image ' : '') + (coverPhotoMissing ? 'post-head--cover-no-image ' : '') + (pageNumber > 0 ? 'post-head--continued ' : '') + (pageNumber > 0 && item.contentType !== 'news' ? 'article-heading-continued' : '')}>
         <h1 className={displayHeadline(item).length > 45 ? 'lore-headline-long' : ''} title={displayHeadline(item)} aria-live={item.contentType === 'news' ? 'polite' : undefined}>{displayHeadline(item)}</h1>
         {pageNumber === 0 && editorialDeck(item) && <p className="deck lore-deck">{editorialDeck(item)}</p>}
@@ -2194,35 +2212,7 @@ function App() {
           onReady={interactive ? () => setPhotoVersion(n => n + 1) : undefined} />
       </div>
       <section className={'reading-card ' + (pagePhotoMissing ? 'reading-card-no-photo' : 'reading-card-with-photo')}><div className="reading-topline" aria-hidden="true" />
-        <div key={levelSettleKey ? `lvl-${levelSettleKey}` : 'lvl-0'} className={'article-text' + (levelSettleKey > 0 ? ' saga-level-settle' : '')}>{(() => {
-          const paraBlocks = splitParagraphs(itemPage.text)
-          const blocks = paraBlocks.length ? paraBlocks : [itemPage.text || '']
-          let runningSentenceIdx = 0
-          return blocks.map((blockText, pIdx) => {
-            const blockSentences = splitPageIntoSentences(blockText)
-            return <p key={pIdx} className="article-paragraph">{blockSentences.map((seg, localIdx) => {
-              const sIdx = runningSentenceIdx++
-              const [, leading, core, trailing] = seg.match(/^(\s*)([\s\S]*?)(\s*)$/) || ['', '', seg, '']
-              const tokens = core ? tokenizeWithGlossary(core, item.glossary, staticPhrases, lemmaMap) : []
-              const clustered = groupTokenClusters(tokens)
-              const isCurrentSentence = highlightActive && activeSentenceIndex === sIdx
-              const isDimmedSentence = highlightActive && activeSentenceIndex !== sIdx
-              const sentenceClass = 'saga-sentence' + (isCurrentSentence ? ' saga-sentence--active' : '') + (isDimmedSentence ? ' saga-sentence--dimmed' : '')
-              const renderWordButton = (token, key) => {
-                const saved = isTokenSaved(token, savedTokenSet, lemmaMap)
-                const newlySaved = Boolean(saved && justSavedWord && (String(token.lookupKey || '').toLowerCase() === justSavedWord || String(token.text || '').toLowerCase() === justSavedWord))
-                return <button key={key} type="button" disabled={!interactive} className={'word-token ' + (token.kind === 'glossary' ? 'glossary-token ' : token.kind === 'phrase' ? 'phrase-token' : '') + (saved ? 'known ' : '') + (newlySaved ? 'just-saved' : '')} onClick={event => onWordClick(event, token.lookupKey, token.entry, token.text)}>{token.text}</button>
-              }
-              return <Fragment key={localIdx}>{leading}{core && <span className={sentenceClass} data-sentence-index={sIdx}>{clustered.map((piece, i) => {
-                if (piece.kind === 'text') return piece.text
-                if (piece.kind === 'cluster') {
-                  return <span key={i} className="saga-word-cluster">{piece.leading || ''}{renderWordButton(piece.token)}{piece.clinging || ''}</span>
-                }
-                return renderWordButton(piece.token, i)
-              })}</span>}{trailing}</Fragment>
-            })}</p>
-          })
-        })()}</div>
+        <div key={levelSettleKey ? `lvl-${levelSettleKey}` : 'lvl-0'} className={'article-text' + (levelSettleKey > 0 ? ' saga-level-settle' : '')}>{renderParagraphs()}</div>
       </section>
       </>}
       </div>

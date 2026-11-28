@@ -528,5 +528,12 @@ test('Commonality ranking + context-aware POS re-ranking picks the right #1 sens
   assert.equal(presentAdj.pos, 'adj')
 })
 
+test('tokenizeWithGlossary keeps digit+letter tokens like 1300s and 17th as plain text', () => {
+  const tokens = tokenizeWithGlossary('In the 1300s and 17th century, 3D art grew.')
+  const words = tokens.filter(t => t.kind === 'word').map(t => t.text)
+  assert.deepEqual(words, ['In', 'the', 'and', 'century', 'art', 'grew'])
+  assert.equal(tokens.map(t => t.text).join(''), 'In the 1300s and 17th century, 3D art grew.')
+})
+
 
 

@@ -21,13 +21,16 @@ export function makeWikiStory({source,topic,draft,photos,evidence=[],now=new Dat
  if(!WIKI_TOPICS.includes(topic)||!source?.pageId||!draft?.variants||!photos?.length)throw Error('Incomplete Wiki story')
  const variants=Object.fromEntries(levels.map(level=>[level,{headline:draft.variants[level]?.headline,
   pages:draft.variants[level]?.pages?.map(page=>({text:page.text,image:page.image||'',caption:page.caption||'',
-   ...(page.imageProvenance?{imageProvenance:page.imageProvenance}:{}),evidenceIds:page.evidenceIds})),
+   ...(page.imageProvenance?{imageProvenance:page.imageProvenance}:{}),evidenceIds:page.evidenceIds,
+   // Page Contract v1: focus words shown on the vocabulary card of pages without a photo.
+   ...(Array.isArray(page.focus)&&page.focus.length?{focus:page.focus.map(f=>({surface:String(f?.surface||''),ipa:String(f?.ipa||''),vi:String(f?.vi||'')}))}:{})})),
   ...(Array.isArray(draft.variants[level]?.glossary)&&draft.variants[level].glossary.length?{glossary:draft.variants[level].glossary.map(item=>({...item}))}:{})}]))
  const story={id:`saga-wiki:${source.pageId}`,title:variants['B1-B2'].headline,sourceTitle:source.sourceTitle,
   sourceUrl:source.sourceUrl,sourceName:'English Wikipedia',publisher:'Wikipedia contributors',
   sourcePageId:source.pageId,sourceRevisionId:source.sourceRevisionId,sourceRevisionUrl:source.sourceRevisionUrl,
   sourceRetrievedAt:source.sourceRetrievedAt,contentType:'wiki',readingKind:'full',editorialVersion:2,
   ...(draft.readerLayoutVersion===3?{readerLayoutVersion:3}:{}),
+  ...(draft.pageContractVersion===1?{pageContractVersion:1}:{}),
   ...(nonempty(draft.editorialProfile)?{editorialProfile:draft.editorialProfile.trim()}:{}),
   ...(nonempty(draft.slug)?{slug:draft.slug.trim()}:{}),
   category:topic,publishedAt:now.toISOString(),license:'CC BY-SA 4.0',licenseUrl:'https://creativecommons.org/licenses/by-sa/4.0/',

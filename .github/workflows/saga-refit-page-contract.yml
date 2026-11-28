@@ -1,0 +1,88 @@
+name: SAGA Refit Articles to Page Contract v1
+
+# Re-fits published articles to the shared page frame without regenerating
+# them: lossless paragraph fixes first, then small Gemini edits (+/- N words,
+# short headlines/captions, 3 focus words per page). Start with dry_run=true.
+on:
+  workflow_dispatch:
+    inputs:
+      limit:
+        description: 'Max articles in this run'
+        required: false
+        default: '5'
+        type: string
+      dry_run:
+        description: 'Measure and report only (no Gemini, no commit)'
+        required: false
+        default: true
+        type: boolean
+
+permissions:
+  contents: write
+
+concurrency:
+  group: saga-refit-page-contract
+  cancel-in-progress: false
+
+jobs:
+  refit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - name: Install dependencies and browsers
+        run: |
+          npm ci || npm install --no-audit --no-fund
+          npx playwright install --with-deps chromium webkit
+          npm run build
+
+      - name: Refit articles
+        id: refit
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_MODEL: gemini-3.5-flash-lite
+          REFIT_LIMIT: ${{ inputs.limit || '5' }}
+          DRY_RUN: ${{ inputs.dry_run && 'true' || 'false' }}
+        run: |
+          set -euo pipefail
+          [[ "$REFIT_LIMIT" =~ ^[1-9][0-9]*$ ]] || { echo "Invalid limit"; exit 1; }
+          npm run preview -- --host 127.0.0.1 --port 4173 --strictPort > /tmp/saga-refit-preview.log 2>&1 &
+          PREVIEW_PID=$!
+          trap 'kill "$PREVIEW_PID" 2>/dev/null || true' EXIT
+          for i in $(seq 1 30); do curl -fsS http://127.0.0.1:4173/meter.html > /dev/null && break; sleep 1; done
+          ARGS=(--base-url http://127.0.0.1:4173 --limit "$REFIT_LIMIT" --webkit)
+          if [ "$DRY_RUN" = "true" ]; then ARGS+=(--dry-run); fi
+          node scripts/wiki/refit-catalog.mjs "${ARGS[@]}"
+          {
+            echo "### Refit report"
+            node -e "const r=require('./refit-report.json');const c={};for(const x of r.report)c[x.status]=(c[x.status]||0)+1;console.log('\`'+JSON.stringify(c)+'\`')"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - uses: actions/upload-artifact@v4
+        if: ${{ !cancelled() }}
+        with:
+          name: refit-report
+          path: refit-report.json
+
+      - name: Verify catalog, build, commit
+        if: ${{ !inputs.dry_run }}
+        run: |
+          set -euo pipefail
+          node scripts/build-reader-index.mjs
+          npm run build
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/wiki-reader
+          if git diff --cached --quiet; then echo "Nothing to commit"; exit 0; fi
+          git commit -m "chore(wiki): refit articles to page contract v1"
+          git pull --rebase origin main
+          git push origin HEAD:main

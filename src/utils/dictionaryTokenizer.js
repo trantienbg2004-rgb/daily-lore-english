@@ -219,6 +219,11 @@ function splitPlainSegment(segment) {
       tokens.push({ kind: 'text', text: part, lookupKey: '', entry: null })
       continue
     }
+    // Keep digit+letter tokens (e.g. 1300s, 17th) as plain text instead of clicking "s"/"th".
+    if (/\d[A-Za-z]|[A-Za-z]\d/u.test(part)) {
+      tokens.push({ kind: 'text', text: part, lookupKey: '', entry: null })
+      continue
+    }
     const match = part.match(/^([^A-Za-z]*)([A-Za-z](?:.*[A-Za-z])?)([^A-Za-z]*)$/u)
     if (!match) {
       tokens.push({ kind: 'text', text: part, lookupKey: '', entry: null })

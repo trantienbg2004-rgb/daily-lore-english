@@ -1004,9 +1004,9 @@ export function planParagraphAwareWikiPages(item, fits, {
     }
     // Penalize tiny orphan/stub pages (e.g. a single 15-word sentence alone on a text page)
     if (!hasPhoto && words < 26) {
-      cost += ((26 - words) / 26) ** 2 * 60
-    } else if (hasPhoto && words < 18) {
-      cost += ((18 - words) / 18) ** 2 * 45
+      cost += ((26 - words) / 26) ** 2 * (adaptiveComfort ? 180 : 60)
+    } else if (hasPhoto && words < 20) {
+      cost += ((20 - words) / 20) ** 2 * (adaptiveComfort ? 140 : 45)
     }
     // Gentle tie-breaker favoring clean semantic section endings when density is comparable
     const endsOnSectionBoundary = to === N || paragraphs[to - 1].sectionIndex !== paragraphs[to].sectionIndex
