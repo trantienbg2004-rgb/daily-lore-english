@@ -19,6 +19,7 @@ import {fetchWikipediaParsePage,WikiApiPause} from './wiki/source.mjs'
 import {EDITORIAL_PROFILE_LORE_V1,appendWikiStories,makeWikiStory,readWikiCatalog,replaceWikiStory,validateWikiStory} from './wiki/catalog.mjs'
 import {assignBatchPhotos,assignIndependentBatchPhotos,collectVerifiedArticlePhotos,findMainSubjectFallbackPhoto,formatCompleteCaption} from './wiki/batch-media.mjs'
 import {CEFR_THRESHOLDS,evaluateArticleCEFR} from './wiki/cefrProfiler.mjs'
+import {copyfitGenerationRules,copyfitLoop,withFocus} from './wiki/copyfit-prompts.mjs'
 
 const ROOT=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..')
 const DEFAULT_QUEUE_FILE=path.join(ROOT,'data','wiki_queue.json')
@@ -287,6 +288,10 @@ export function simplifyEditorialSchema(schema){
  return Object.fromEntries(Object.entries(schema).filter(([k])=>!['minItems','maxItems','minLength','maxLength','minimum','maximum'].includes(k)).map(([k,v])=>[k,simplifyEditorialSchema(v)]))
 }
 const ADAPTIVE_STORY_SCHEMA=simplifyEditorialSchema(BATCH_STORY_SCHEMA)
+// Page Contract v1: same story shape plus `focus` words on every page.
+export const CONTRACT_STORY_SCHEMA=simplifyEditorialSchema({...BATCH_STORY_SCHEMA,properties:{...BATCH_STORY_SCHEMA.properties,
+ variants:{type:'object',properties:Object.fromEntries(LEVELS.map(level=>[level,{...LEVEL_SCHEMA,properties:{...LEVEL_SCHEMA.properties,
+  pages:{type:'array',items:withFocus(PAGE_SCHEMA)}}}])),required:LEVELS}}})
 // Shared outline is a topic outline, not a fixed page map for adaptive stories.
 const REPAIR_PAGE_SCHEMA={
  type:'object',
@@ -1150,7 +1155,8 @@ function formatWordBoundsSummary(){
  return {photoLine:photoParts.join(' | '),textLine:textParts.join(' | ')}
 }
 
-export function buildBatchPrompt(source,topic,evidence,verifiedPhotos=[],{editorialRhythm=false,budgets=null}={}){
+export function buildBatchPrompt(source,topic,evidence,verifiedPhotos=[],{editorialRhythm=false,budgets=null,pageContract=false}={}){
+ const adaptive=editorialRhythm&&!pageContract
  const passages=evidence.map(row=>row.id+' [Section '+(row.sectionIndex??0)+': '+row.heading+'] '+row.text).join('\n\n')
  const imageCatalog=formatEmbeddedImageCatalog(verifiedPhotos)
  const leadIds=verifiedPhotos.filter(p=>p.sectionIndex===0).map(p=>p.imageId)
@@ -1171,8 +1177,8 @@ export function buildBatchPrompt(source,topic,evidence,verifiedPhotos=[],{editor
   '- Preserve exact dates, quantities, names, causal limits, exceptions, uncertainty and safety qualifications.',
   '- Mark hasUncertainty=true wherever the source is disputed, estimated, qualified or describes a risk. Do not convert uncertainty into certainty.',
   '',
-  editorialRhythm?'STEP 2 — BROAD TOPIC OUTLINE (outline)':'STEP 2 — SHARED VISUAL PAGE MAP (outline)',
-  ...(editorialRhythm?[ADAPTIVE_MAP_GUIDANCE]:[
+  adaptive?'STEP 2 — BROAD TOPIC OUTLINE (outline)':'STEP 2 — SHARED VISUAL PAGE MAP (outline)',
+  ...(adaptive?[ADAPTIVE_MAP_GUIDANCE]:[
   '- Create a '+PAGE_COUNT_BOUNDS.min+'-'+PAGE_COUNT_BOUNDS.max+' PAGE OUTLINE with page slots in a logical broad story sequence.',
   '- This shared outline exists ONLY to keep page count, visual order and imageId alignment stable across the three versions.',
   '- Each slot has pageIndex, a broad visual subject/focus, imageId and imageReason. Fact selection belongs only in each levelPlan.',
@@ -1180,7 +1186,7 @@ export function buildBatchPrompt(source,topic,evidence,verifiedPhotos=[],{editor
   '- The same imageId (or null) must remain at the same pageIndex across all three variants. Only choose an image if it remains relevant to all versions of that page.']),
   '',
   'STEP 3 — THREE INDEPENDENT READING PLANS (levelPlans)',
-  'First choose sharedCoreFactIds: 2–4 of the most central fact IDs from factSheet. Then create a separate readerObjective, selectedFactIds (2–10 IDs from the fact sheet, INCLUDING every sharedCoreFactId) and depthNotes for EACH level. The selectedFactIds of all three levels must contain at least the same two sharedCoreFactIds. '+(editorialRhythm?'Each version independently decides its own 4–8 page allocation and body-image placement from its selected facts (sharing only the verified cover image on Page 1).':'Use the shared visual page map only for page order and image alignment; each version may allocate its selected facts differently across pages.')+' Other fact selection, explanation depth and emphasis SHOULD differ.',
+  'First choose sharedCoreFactIds: 2–4 of the most central fact IDs from factSheet. Then create a separate readerObjective, selectedFactIds (2–10 IDs from the fact sheet, INCLUDING every sharedCoreFactId) and depthNotes for EACH level. The selectedFactIds of all three levels must contain at least the same two sharedCoreFactIds. '+(adaptive?'Each version independently decides its own 4–8 page allocation and body-image placement from its selected facts (sharing only the verified cover image on Page 1).':'Use the shared visual page map only for page order and image alignment; each version may allocate its selected facts differently across pages.')+' Other fact selection, explanation depth and emphasis SHOULD differ.',
   '',
   'A1-A2 READER PROFILE',
   '- A1 readers recognise familiar names, words and basic phrases in very short, simple text and may reread.',
@@ -1206,17 +1212,17 @@ export function buildBatchPrompt(source,topic,evidence,verifiedPhotos=[],{editor
   '',
   'STEP 4 — WRITE EACH VERSION FROM ITS OWN PLAN',
   '- A1-A2 must follow levelPlans[A1-A2]; B1-B2 must follow levelPlans[B1-B2]; C1-C2 must follow levelPlans[C1-C2].',
-  editorialRhythm?ADAPTIVE_MAP_GUIDANCE:'- Each version has '+PAGE_COUNT_BOUNDS.min+'–'+PAGE_COUNT_BOUNDS.max+' pages and the same imageId at each corresponding pageIndex, but its own facts, emphasis, explanation depth and natural wording.',
+  adaptive?ADAPTIVE_MAP_GUIDANCE:'- Each version has '+PAGE_COUNT_BOUNDS.min+'–'+PAGE_COUNT_BOUNDS.max+' pages and the same imageId at each corresponding pageIndex, but its own facts, emphasis, explanation depth and natural wording.',
   '- Do not simply paraphrase one master article three times. Do not make B/C harder only by increasing sentence length or replacing words with rarer synonyms.',
   '- Every headline must be 5 to 11 words, distinct across levels, and must not repeat the raw Wikipedia title.' ,
   '- Page 1 should open with an engaging, factual hook, not a dry X-is-a definition or an invented scene. The final page should give a source-grounded takeaway.',
-  editorialRhythm?'- Use 1–2 coherent paragraphs on cover/photo pages and 2–3 coherent paragraphs on text-only pages, separated by a blank line. Every paragraph ends with a complete sentence. Never add filler to reach a word count.':'- Use 1–3 coherent paragraphs per page, separated by a blank line. Every paragraph ends with a complete sentence. Never add filler to reach a word count.',
-  ...(editorialRhythm?[budgets?measuredGuidance(budgets):EDITORIAL_CARD_GUIDANCE,'Write complete, natural paragraphs with source-grounded detail; no filler.']: ['- Flexible visual pacing guidance only (NOT CEFR definitions or hard word-count targets):','  * Photo sections: '+photoLine,'  * Text-only sections: '+textLine]),
+  pageContract?'- Follow the COPYFIT rules below for paragraphs and length. Never add filler to reach a word count.':editorialRhythm?'- Use 1–2 coherent paragraphs on cover/photo pages and 2–3 coherent paragraphs on text-only pages, separated by a blank line. Every paragraph ends with a complete sentence. Never add filler to reach a word count.':'- Use 1–3 coherent paragraphs per page, separated by a blank line. Every paragraph ends with a complete sentence. Never add filler to reach a word count.',
+  ...(pageContract?[copyfitGenerationRules()]:editorialRhythm?[budgets?measuredGuidance(budgets):EDITORIAL_CARD_GUIDANCE,'Write complete, natural paragraphs with source-grounded detail; no filler.']: ['- Flexible visual pacing guidance only (NOT CEFR definitions or hard word-count targets):','  * Photo sections: '+photoLine,'  * Text-only sections: '+textLine]),
   '- Sentence-length figures, FKGL and lexical-list percentages are screening clues only. They do NOT define CEFR and must never be gamed.',
   '',
   'STEP 5 — IMAGE AND CAPTION BINDING',
   '- Page 1 must use a verified lead/infobox photo ('+(leadIds.length?'one of '+leadIds.join(', '):'the verified main-subject fallback '+coverHint)+').',
-  editorialRhythm?'- On later pages use a verified imageId only if it directly depicts the subject of that particular page; otherwise use null.':'- On later pages, use only an exact verified imageId that depicts the subject of that page for ALL three levels. Otherwise use null for all three at that pageIndex.',
+  adaptive?'- On later pages use a verified imageId only if it directly depicts the subject of that particular page; otherwise use null.':'- On later pages, use only an exact verified imageId that depicts the subject of that page for ALL three levels. Otherwise use null for all three at that pageIndex.',
   '- Never reuse an imageId. Captions must be accurate, natural, '+CAPTION_LIMITS.targetMinWords+'–'+CAPTION_LIMITS.targetMaxWords+' words where possible, and no more than '+CAPTION_LIMITS.maxChars+' chars. Text-only pages use an empty caption.',
   '',
   'STEP 6 — SOURCE ACCURACY',
@@ -2265,10 +2271,12 @@ export function normalizeDraftForCatalog(rawDraft,{source,evidence,verifiedPhoto
    const cleanedIds=(Array.isArray(page?.evidenceIds)?page.evidenceIds:[]).filter(id=>validIds.has(id))
    const hasImageIdProp=Object.prototype.hasOwnProperty.call(page||{},'imageId')
    const normalizedImageId=hasImageIdProp?normalizeOptionalImageId(page.imageId,validImageIds):undefined
+   const focus=Array.isArray(page?.focus)?page.focus.slice(0,3).map(f=>({surface:String(f?.surface||'').trim(),ipa:String(f?.ipa||'').trim(),vi:String(f?.vi||'').trim()})).filter(f=>f.surface):[]
    return {
     text,
     ...(hasImageIdProp?{imageId:normalizedImageId}:{}),
     ...(caption?{caption}:{}),
+    ...(focus.length?{focus}:{}),
     evidenceIds:cleanedIds.length?cleanedIds:bestEvidenceFor(text)
    }
   })
@@ -2645,6 +2653,7 @@ export async function runPublishWikiBatch({
  maxRepairRounds=null,
  editorialRhythm=process.env.SAGA_EDITORIAL_LAYOUT==='3',
  editorialMeter=null,
+ pageContract=process.env.SAGA_PAGE_CONTRACT==='1',
  apiKey=process.env.GEMINI_API_KEY||'',
  apiKeys=null,
  model=process.env.GEMINI_MODEL||DEFAULT_GEMINI_MODEL,
@@ -2663,6 +2672,8 @@ export async function runPublishWikiBatch({
 }={}){
  const effectiveRegenerateExisting=Boolean(regenerateExisting||rewriteOutdated)
  const effectiveEditorialRhythm=Boolean(editorialRhythm||rewriteOutdated)
+ // Page Contract v1 needs the line-based copyfit meter (it has applyFixes).
+ const effectivePageContract=Boolean(pageContract&&!dryRun&&typeof editorialMeter?.applyFixes==='function')
  const effectiveMaxRepairRounds=maxRepairRounds!==null&&maxRepairRounds!==undefined&&Number.isFinite(Number(maxRepairRounds))&&Number(maxRepairRounds)>=0
   ?Math.floor(Number(maxRepairRounds))
   :(rewriteOutdated?REWRITE_MAX_REPAIR_ROUNDS:null)
@@ -3013,8 +3024,8 @@ export async function runPublishWikiBatch({
     normalizedDraft=normalizeDraftForCatalog(makeDryRunDraft(source,trimmed.evidence,verifiedPhotos),{source,evidence:trimmed.evidence,verifiedPhotos})
     quality=validateArticleQuality(normalizedDraft,source.sourceTitle,{source,evidence:trimmed.evidence,editorialRhythm:effectiveEditorialRhythm&&!dryRun,measuredLayout:Boolean(editorialMeter),requireLevelPlans:!dryRun&&callGeminiImpl===callGeminiFlashLite})
    }else{
-    const prompt=buildBatchPrompt(source,item.topic,trimmed.evidence,verifiedPhotos,{editorialRhythm:effectiveEditorialRhythm,budgets:editorialMeter?.budgets})
-    const firstRes=await invokeGeminiWithDelay(prompt,{reserveMs:minRetryBudgetMs,schema:effectiveEditorialRhythm?ADAPTIVE_STORY_SCHEMA:BATCH_STORY_SCHEMA})
+    const prompt=buildBatchPrompt(source,item.topic,trimmed.evidence,verifiedPhotos,{editorialRhythm:effectiveEditorialRhythm,budgets:editorialMeter?.budgets,pageContract:effectivePageContract})
+    const firstRes=await invokeGeminiWithDelay(prompt,{reserveMs:minRetryBudgetMs,schema:effectivePageContract?CONTRACT_STORY_SCHEMA:effectiveEditorialRhythm?ADAPTIVE_STORY_SCHEMA:BATCH_STORY_SCHEMA})
     consecutiveInfraFailures=0
     usedModel=firstRes.model||usedModel
     generationModelsUsed.add(usedModel)
@@ -3238,6 +3249,15 @@ export async function runPublishWikiBatch({
     }
    }
 
+   if(effectivePageContract){
+    // Measure lines, fix paragraphs losslessly, then ask Gemini for +/- N words (max 2 rounds).
+    const fit=await copyfitLoop({draft:{variants:assigned.levelVariants},meter:editorialMeter,source,evidence:trimmed.evidence,
+     callGemini:async(prompt,schema)=>(await invokeGeminiWithDelay(prompt,{schema})).draft,maxRounds:2})
+    if(!fit.ok){recordQualityHistogram([...fit.audit]);console.warn('[batch] Page contract not met: '+[...fit.audit].slice(0,3).join(' | '));skippedQuality.push(item.title);continue}
+    const facts=validateFactualConsistency(fit.draft,{source,evidence:trimmed.evidence})
+    if(!facts.ok){recordQualityHistogram(facts.errors);console.warn('[batch] Copyfit edits failed fact check: '+facts.errors.slice(0,3).join(' | '));skippedQuality.push(item.title);continue}
+    assigned.levelVariants=fit.draft.variants
+   }
    if(editorialMeter&&!dryRun){
     const errors=await editorialMeter.audit(assigned.levelVariants)
     if(errors.length){recordQualityHistogram(errors);console.warn('[batch] Final actual-image layout rejected: '+errors.slice(0,3).join(' | '));skippedQuality.push(item.title);continue}
@@ -3247,7 +3267,8 @@ export async function runPublishWikiBatch({
     topic:item.topic,
     draft:{
      variants:assigned.levelVariants,
-     ...(effectiveEditorialRhythm&&!dryRun?{readerLayoutVersion:3,editorialProfile:CURRENT_EDITORIAL_PROFILE}:{})
+     ...(effectiveEditorialRhythm&&!dryRun?{readerLayoutVersion:3,editorialProfile:CURRENT_EDITORIAL_PROFILE}:{}),
+     ...(effectivePageContract?{pageContractVersion:1}:{})
     },
     photos:assigned.photos,
     evidence:trimmed.evidence
@@ -3507,8 +3528,10 @@ if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.ur
  const run=async()=>{
   const needsEditorialMeter=(process.env.SAGA_EDITORIAL_LAYOUT==='3'||opts.editorialRhythm||opts.rewriteOutdated)&&!opts.dryRun
   if(!needsEditorialMeter)return runPublishWikiBatch(opts)
-  const {openEditorialMeter}=await import('./wiki/editorial-meter.mjs')
-  const meter=await openEditorialMeter(process.env.SAGA_EDITORIAL_BASE_URL||'http://127.0.0.1:4173')
+  const baseURL=process.env.SAGA_EDITORIAL_BASE_URL||'http://127.0.0.1:4173'
+  const meter=process.env.SAGA_PAGE_CONTRACT==='1'
+   ?await (await import('./wiki/copyfit-meter.mjs')).openCopyfitMeter(baseURL,{engines:(process.env.SAGA_METER_ENGINES||'chromium,webkit').split(',')})
+   :await (await import('./wiki/editorial-meter.mjs')).openEditorialMeter(baseURL)
   try{return await runPublishWikiBatch({...opts,editorialMeter:meter})}finally{await meter.close()}
  }
  run()

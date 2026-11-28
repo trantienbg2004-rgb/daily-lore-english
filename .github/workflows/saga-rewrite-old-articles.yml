@@ -48,7 +48,7 @@ jobs:
 
       - name: Install Chromium and build editorial measurement reader
         run: |
-          npx playwright install --with-deps chromium
+          npx playwright install --with-deps chromium webkit
           npm run build
 
       - name: Rewrite outdated Wikipedia articles to lore-v1
@@ -61,6 +61,7 @@ jobs:
           SAGA_IMAGE_TEST_API_KEY: ${{ secrets.SAGA_IMAGE_TEST_API_KEY }}
           GEMINI_MODEL: gemini-3.5-flash-lite
           SAGA_EDITORIAL_LAYOUT: '3'
+          SAGA_PAGE_CONTRACT: ${{ vars.SAGA_PAGE_CONTRACT || '0' }}
           SAGA_EDITORIAL_BASE_URL: http://127.0.0.1:4173
           GEMINI_DELAY_MS: '8000'
           MAX_RUNTIME_MS: '1440000'

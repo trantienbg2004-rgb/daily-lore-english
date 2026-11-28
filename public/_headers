@@ -1,0 +1,15 @@
+# Cloudflare Workers Static Assets — copied from public/ into dist/ by Vite.
+# HTML and the catalog manifest must always be revalidated; content-hashed catalog indexes never change.
+# Also add a Cloudflare Cache Rule "Bypass cache" for / , /index.html and /wiki-reader/manifest.json,
+# then purge once after deploy (see the earlier diagnosis doc).
+/
+  Cache-Control: no-cache
+/index.html
+  Cache-Control: no-cache
+/wiki-reader/manifest.json
+  Cache-Control: no-cache
+/meter.html
+  Cache-Control: no-cache
+  X-Robots-Tag: noindex
+/wiki-reader/catalog-index-*
+  Cache-Control: public, max-age=31536000, immutable
