@@ -91,7 +91,18 @@
   --pc-media-min: 5;     /* slots.cover.mediaMin */
 }
 
-/* ---- 2. Title: cover only, at most 2 lines (the meter enforces it) ---- */
+.saga-frame--card .saga-frame__grid {
+  grid-template-rows:
+    calc(0.5 * var(--pc-lu))                                   /* 1 pad top   */
+    auto                                                       /* 2 title     */
+    0                                                          /* 3 no media  */
+    0                                                          /* 4 no gap    */
+    0                                                          /* 5 no cap    */
+    auto                                                       /* 6 body      */
+    1fr;                                                       /* 7 bottom    */
+}
+
+/* ---- 2. Title: every page, at most 2 lines ---- */
 .saga-frame__title {
   grid-row: 2;
   margin: 0;
@@ -104,43 +115,25 @@
   color: #121212;
 }
 
-/* ---- 3. Media slot: photo or card, always fills its row ---- */
+/* ---- 3. Media slot: flush-left natural-ratio photo (no blurred box) ---- */
 .saga-frame__media {
   grid-row: 3;
   position: relative;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
   overflow: hidden;
-  border-radius: 10px;
-  background: #ebe7df;
+  min-height: 0;
 }
 
-.saga-frame__media > img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
+.saga-frame__media > img.saga-photo {
   display: block;
-}
-
-.saga-frame__media[data-fit='cover'] > img.saga-photo {
-  object-fit: cover;
-  object-position: 50% 35%;
-}
-
-/* Aspect too different from the slot: show the whole photo on a soft
-   backdrop made from the same photo, so the slot is never empty. */
-.saga-frame__media[data-fit='contain'] > img.saga-photo {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
   object-fit: contain;
-}
-
-.saga-frame__media > img.saga-photo-backdrop {
-  object-fit: cover;
-  filter: blur(18px) saturate(0.9);
-  transform: scale(1.15);
-  opacity: 0.5;
-}
-
-.saga-frame__media[data-fit='cover'] > img.saga-photo-backdrop {
-  display: none;
+  object-position: left top;
 }
 
 /* ---- 5. Caption: exactly one line (content rule + CSS safety net) ---- */
